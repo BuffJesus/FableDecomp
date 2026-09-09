@@ -851,6 +851,47 @@
       "events": 8
     },
     {
+      "fixture": "entity_bully_initial_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "termination during the initial StartScriptingEntity wait models the function-exit resource destructor and stops before home movement or victim resolution",
+      "expects": [
+        "NewScriptFrame",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "GetHomePos",
+        "GetThingWithScriptName",
+        "StartMovieSequence"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 3
+    },
+    {
+      "fixture": "entity_bully_loop_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "after initial control and an already-home check, termination during the reissued loop-top acquisition exits before teddy, talk, hit, or intimidation branches",
+      "expects": [
+        "GetHomePos",
+        "GetThingWithScriptName",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "IsTalkedToByHero",
+        "MsgIsHitByHero",
+        "StartMovieSequence"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 7
+    },
+    {
       "fixture": "entity_bully_main_terminated",
       "function": "Main",
       "kind": "entity",
@@ -865,6 +906,26 @@
       "result": "ran",
       "trace": "written",
       "events": 1
+    },
+    {
+      "fixture": "entity_bully_talk_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "with initial and loop control acquired, the first talk reaches its action-specific StartScriptingEntity wait; termination exits before the GET_LOST movie and speech",
+      "expects": [
+        "IsTalkedToByHero",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "GetHealth",
+        "GiveHeroYesNoQuestion"
+      ],
+      "result": "ran",
+      "trace": "written",
+      "events": 9
     },
     {
       "fixture": "entity_bully_walks_home",

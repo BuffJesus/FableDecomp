@@ -1,0 +1,5 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["NewScriptFrame","AcquireControl","ReleaseControl"],"forbid":["GetHomePos","GetThingWithScriptName","StartMovieSequence"],"note":"termination during the initial StartScriptingEntity wait models the function-exit resource destructor and stops before home movement or victim resolution"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[false]
+}

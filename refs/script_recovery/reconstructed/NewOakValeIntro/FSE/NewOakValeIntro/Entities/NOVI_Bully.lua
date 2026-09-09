@@ -165,7 +165,7 @@ end
 
 -- Hero presented some other item.
 local function refuse_item(quest, me)
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then return false end
   begin_movie(quest)
   speak_if_alive(quest, me, TEXT.DONT_WANT)
   end_movie(quest)
@@ -213,7 +213,7 @@ end
 -- Phase "talk": hero talked to me -> one line chosen by quest state (inside a movie sequence).
 local function handle_talk(quest, me)
   if not me:IsTalkedToByHero() then return true end
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then return false end
   begin_movie(quest)
   if DoneIntro then
     if F.get(quest, F.HeroAttackedVictim) then
@@ -316,15 +316,15 @@ end
 
 function Main(quest, me)
   if not NOVI.frame(quest, me) then return end
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
-  if not walk_home(quest, me) then return end
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then NOVI.release(quest, me); return end
+  if not walk_home(quest, me) then NOVI.release(quest, me); return end
   local victim = quest:GetThingWithScriptName(VICTIM_SCRIPT_NAME)
   while true do
-    NOVI.acquire(quest, me, ACQUIRE_PRIORITY)      -- retail re-issues StartScriptingEntity every loop
+    if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then NOVI.release(quest, me); return end
     if DoneIntro then
-      if not handle_teddy(quest, me) then return end
+      if not handle_teddy(quest, me) then NOVI.release(quest, me); return end
     end
-    if not handle_talk(quest, me) then return end
+    if not handle_talk(quest, me) then NOVI.release(quest, me); return end
     local hit = handle_hit(quest, me, victim)
     if hit == "removed" or hit == false then return end
     quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())   -- args dropped; target inferred

@@ -1541,8 +1541,32 @@
       "trace": "match"
     },
     {
+      "events": 3,
+      "fixture": "entity_bully_initial_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 7,
+      "fixture": "entity_bully_loop_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 1,
       "fixture": "entity_bully_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 9,
+      "fixture": "entity_bully_talk_acquire_terminated.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1998,8 +2022,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 100,
-    "fixturesPassed": 100,
+    "fixtures": 103,
+    "fixturesPassed": 103,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

@@ -228,7 +228,10 @@
         "entity_bully_accepts_teddy",
         "entity_bully_first_intimidation",
         "entity_bully_four_hits_run_off",
+        "entity_bully_initial_acquire_terminated",
+        "entity_bully_loop_acquire_terminated",
         "entity_bully_main_terminated",
+        "entity_bully_talk_acquire_terminated",
         "entity_bully_walks_home"
       ],
       "evidence": "native-decompile",

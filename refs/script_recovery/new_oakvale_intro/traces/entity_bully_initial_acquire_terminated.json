@@ -11,11 +11,28 @@
       "name": "NewScriptFrame",
       "receiver": "quest",
       "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
     }
   ],
   "fixtures": {
-    "Quest.NewScriptFrame": [
+    "Entity.AcquireControl": [
       false
+    ],
+    "Quest.NewScriptFrame": [
+      true
     ]
   },
   "function": "Main",

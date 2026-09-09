@@ -1,0 +1,9 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["IsTalkedToByHero","AcquireControl","ReleaseControl"],"forbid":["StartMovieSequence","GetHealth","GiveHeroYesNoQuestion"],"note":"with initial and loop control acquired, the first talk reaches its action-specific StartScriptingEntity wait; termination exits before the GET_LOST movie and speech"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true,true,false],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(NOVI_Victim)":[{"handle":"victim","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[true]
+}
