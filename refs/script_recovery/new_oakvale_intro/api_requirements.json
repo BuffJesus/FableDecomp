@@ -6008,8 +6008,8 @@
           "script": "NOVI_AffairMan",
           "function": "Main",
           "seq": 61,
-          "native": "GSI->Pause()",
-          "evidence": "native-decompile"
+          "native": "GSI->Pause(0.4f)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_BarrelMan",
@@ -6022,8 +6022,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 9,
-          "native": "GSI->Pause(?)",
-          "evidence": "native-decompile"
+          "native": "GSI->Pause(3.0f)",
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -6033,10 +6033,11 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
-        "NOVI_AffairMan#61: duration dropped",
-        "NOVI_BarrelMan#63: binding drops the colour"
+        "NOVI_AffairMan#61: 0x00db1b79 pushes 0x3ecccccd before virtual slot 0x5e0 (Pause)",
+        "NOVI_BarrelMan#63: binding drops the colour",
+        "NOVI_BarrelThug#9: 0x00db6e15 pushes IEEE-754 0x40400000 before GSI Pause slot 0x5e0"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -7647,23 +7648,6 @@
       ],
       "fallbackStatus": "direct",
       "blocked": false
-    },
-    {
-      "operation": "GSI->Pause(duration)",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_BarrelThug",
-          "reason": "duration argument dropped by the decompiler; Pause is bound but cannot be called faithfully",
-          "luaLocation": "intro"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
     },
     {
       "operation": "~CScriptGameResourceObjectMovieBase",

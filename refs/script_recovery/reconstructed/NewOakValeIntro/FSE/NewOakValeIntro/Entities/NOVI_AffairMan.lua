@@ -61,7 +61,7 @@ local SPEAK_SELECTION_METHOD = 0          -- _Speak_ third argument literal 0
 local MOVE_WALK = 0                       -- EScriptEntityMoveType literal 0
 local MOVE_RADIUS = 0.0                   -- _MoveToPosition_ float literal 0
 local YESNO_ANSWER_YES = 1                -- MsgIsQuestionAnsweredYesOrNo() == 1
-local PAUSE_SECONDS_UNKNOWN = 0.0         -- unknown: retail Pause() argument dropped by the decompiler
+local KISS_HUG_PAUSE_SECONDS = 0.4        -- native push 0x3ecccccd at 0x00db1b79
 
 -- Entity-local retail fields (this+0x1c..0x20, PDB names)
 local EncounterOver = false            -- 0x1c
@@ -257,7 +257,7 @@ end
 
 -- Sub-phase of AFFAIR: kiss or hug the woman (skipped while the hero is talking to her).
 local function kiss_or_hug(quest, me, woman)
-    quest:Pause(PAUSE_SECONDS_UNKNOWN)
+    quest:Pause(KISS_HUG_PAUSE_SECONDS)
     quest:EntitySetFacingAngleTowardsThing(me, woman)     -- retail args dropped; inference: face each other
     quest:EntitySetFacingAngleTowardsThing(woman, me)
     if math.random(0, 1) == 0 then                        -- rand() & 1 == 0

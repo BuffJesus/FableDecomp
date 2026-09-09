@@ -95,7 +95,7 @@ local function intro(quest, me)
     end
     quest:EntityTeleportToThing(me, quest:GetThingWithScriptName(START_MARKER))
     quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())
-    NOVI.unsupported(quest, "Pause", { "<duration dropped>" })
+    quest:Pause(3.0)
     begin_cutscene(quest)
     speak_if_alive(quest, me, TEXT_EXPLAIN)
     DoneIntro = true

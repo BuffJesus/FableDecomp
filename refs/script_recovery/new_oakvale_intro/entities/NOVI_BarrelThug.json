@@ -53,7 +53,7 @@
     {"seq": 6, "function": "Main", "kind": "wait", "native": "while (!PARENT+0x72 BarrelManLeftHeroInCharge) NewScriptFrame", "argsKnown": true, "lua": "while not F.get(quest, F.BarrelManLeftHeroInCharge)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
     {"seq": 7, "function": "Main", "kind": "call", "native": "EntityTeleportToThing(me, GetThingWithScriptName(\"M_WHouse_ManStart\"))", "argsKnown": true, "lua": "quest:EntityTeleportToThing(me, quest:GetThingWithScriptName(START_MARKER))", "forgeBinding": "EntityTeleportToThing|GetThingWithScriptName", "evidence": "native-decompile", "note": ""},
     {"seq": 8, "function": "Main", "kind": "call", "native": "EntitySetFacingAngleTowardsThing(me, GetHero())", "argsKnown": true, "lua": "quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())", "forgeBinding": "EntitySetFacingAngleTowardsThing", "evidence": "native-decompile", "note": ""},
-    {"seq": 9, "function": "Main", "kind": "call", "native": "GSI->Pause(?)", "argsKnown": false, "lua": "NOVI.unsupported(\"Pause\")", "forgeBinding": "Pause (duration unknown)", "evidence": "native-decompile", "note": ""},
+    {"seq": 9, "function": "Main", "kind": "call", "native": "GSI->Pause(3.0f)", "argsKnown": true, "lua": "quest:Pause(3.0)", "forgeBinding": "Pause", "evidence": "native-disassembly", "note": "0x00db6e15 pushes IEEE-754 0x40400000 before GSI Pause slot 0x5e0"},
     {"seq": 10, "function": "Main", "kind": "call", "native": "StartMovieSequence(\"\"); PauseAll(1)", "argsKnown": true, "lua": "begin_cutscene", "forgeBinding": "StartMovieSequence|PauseAllNonScriptedEntities", "evidence": "native-decompile", "note": ""},
     {"seq": 11, "function": "Main", "kind": "call", "native": "if GetHealth(me)>0: Speak(hero, TEXT_QST_048_BARRELTHUG_EXPLAIN, 0)+wait", "argsKnown": true, "lua": "speak_if_alive(TEXT_EXPLAIN)", "forgeBinding": "SpeakAndWait", "evidence": "native-decompile", "note": "terminate in wait -> PauseAll(0), ~movie, return"},
     {"seq": 12, "function": "Main", "kind": "state-write", "native": "this[0x1c]=1", "argsKnown": true, "lua": "DoneIntro = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
@@ -74,7 +74,6 @@
     {"seq": 27, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating (loop tail)", "argsKnown": true, "lua": "NOVI.frame", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""}
   ],
   "apiGaps": [
-    {"retail": "GSI->Pause(duration)", "reason": "duration argument dropped by the decompiler; Pause is bound but cannot be called faithfully", "luaLocation": "intro"},
     {"retail": "~CScriptGameResourceObjectMovieBase", "reason": "modelled as EndMovieSequence (inference)", "luaLocation": "end_cutscene"},
     {"retail": "StartScriptingEntity priority (intro, chat)", "reason": "priority argument dropped", "luaLocation": "NOVI.acquire(..., DEFAULT_PRIORITY)"}
   ],

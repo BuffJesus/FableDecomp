@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","EntitySetFacingAngleTowardsThing","Log","StartMovieSequence","SpeakAndWait","FollowThing","GetTimer","AddNewConversation","AddPersonToConversation","AddLineToConversation","ReleaseControl"],"note":"after waiting for the barrel man to leave, the thug teleports to his start marker, exposes the unknown intro Pause duration, explains and follows the hero, then emits the first countdown temptation line at timer nine"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","EntitySetFacingAngleTowardsThing","Pause","StartMovieSequence","SpeakAndWait","FollowThing","GetTimer","AddNewConversation","AddPersonToConversation","AddLineToConversation","ReleaseControl"],"note":"after waiting for the barrel man to leave, the thug teleports to his start marker, pauses for the recovered retail 3.0 seconds, explains and follows the hero, then emits the first countdown temptation line at timer nine"},
   "Quest.NewScriptFrame":[true,true,false],
   "Entity.AcquireControl":[true],
   "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[false,true],

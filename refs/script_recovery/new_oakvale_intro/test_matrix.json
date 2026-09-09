@@ -143,7 +143,7 @@
       "forbids": [],
       "result": "ran",
       "trace": "written",
-      "events": 66
+      "events": 67
     },
     {
       "fixture": "entity_affair_wife_wheres_husband",
@@ -165,9 +165,9 @@
         "StartMovieSequence",
         "SpeakAndWait"
       ],
-      "result": "not-run",
-      "trace": null,
-      "events": null
+      "result": "ran",
+      "trace": "written",
+      "events": 17
     },
     {
       "fixture": "entity_affair_woman_busy_chat",
@@ -520,11 +520,11 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "purpose": "after waiting for the barrel man to leave, the thug teleports to his start marker, exposes the unknown intro Pause duration, explains and follows the hero, then emits the first countdown temptation line at timer nine",
+      "purpose": "after waiting for the barrel man to leave, the thug teleports to his start marker, pauses for the recovered retail 3.0 seconds, explains and follows the hero, then emits the first countdown temptation line at timer nine",
       "expects": [
         "EntityTeleportToThing",
         "EntitySetFacingAngleTowardsThing",
-        "Log",
+        "Pause",
         "StartMovieSequence",
         "SpeakAndWait",
         "FollowThing",
@@ -560,10 +560,10 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "purpose": "after the intro, talking to the thug when the barrel man has returned and a barrel was broken selects the retail OUTRO response; the subsequent nag gate exits before creating a conversation",
+      "purpose": "after the recovered retail 3.0-second intro pause, talking to the thug when the barrel man has returned and a barrel was broken selects the retail OUTRO response; the subsequent nag gate exits before creating a conversation",
       "expects": [
         "EntityTeleportToThing",
-        "Log",
+        "Pause",
         "FollowThing",
         "StartMovieSequence",
         "SpeakAndWait",

@@ -839,6 +839,7 @@
     "Quest.Pause": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
     ],
     "Quest.PauseAllNonScriptedEntities": [
@@ -2045,7 +2046,7 @@
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
-    "unsupportedCallSites": 5,
+    "unsupportedCallSites": 4,
     "warnings": 0,
     "wrongScopeApis": 0
   },
@@ -2065,10 +2066,6 @@
     {
       "file": "NewOakValeIntro/deeds.lua",
       "retail": "GiveHeroMorality(-deed)"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "retail": "Pause"
     }
   ],
   "warnings": [],

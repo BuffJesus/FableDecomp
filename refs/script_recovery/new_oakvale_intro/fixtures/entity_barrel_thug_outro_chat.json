@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","Log","FollowThing","StartMovieSequence","SpeakAndWait","EndMovieSequence","ReleaseControl"],"forbid":["AddNewConversation"],"note":"after the intro, talking to the thug when the barrel man has returned and a barrel was broken selects the retail OUTRO response; the subsequent nag gate exits before creating a conversation"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["EntityTeleportToThing","Pause","FollowThing","StartMovieSequence","SpeakAndWait","EndMovieSequence","ReleaseControl"],"forbid":["AddNewConversation"],"note":"after the recovered retail 3.0-second intro pause, talking to the thug when the barrel man has returned and a barrel was broken selects the retail OUTRO response; the subsequent nag gate exits before creating a conversation"},
   "Quest.NewScriptFrame":[true,false],
   "Entity.AcquireControl":[true,true],
   "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[true],

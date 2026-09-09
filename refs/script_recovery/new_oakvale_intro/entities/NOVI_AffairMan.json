@@ -63,7 +63,7 @@
     {"name": "MOVE_WALK", "value": 0, "source": "_MoveToPosition_ 3rd literal 0 line 625", "evidence": "native-decompile"},
     {"name": "MOVE_RADIUS", "value": 0.0, "source": "_MoveToPosition_ 2nd literal 0 line 625", "evidence": "native-decompile"},
     {"name": "YESNO_ANSWER_YES", "value": 1, "source": "iVar10 == 1 line 399", "evidence": "native-decompile"},
-    {"name": "PAUSE_SECONDS_UNKNOWN", "value": 0.0, "source": "GSI->Pause() line 736, argument dropped", "evidence": "unknown"},
+    {"name": "KISS_HUG_PAUSE_SECONDS", "value": 0.4, "source": "0x00db1b79 pushes IEEE-754 0x3ecccccd before GSI Pause slot 0x5e0", "evidence": "native-disassembly"},
     {"name": "DAT_01375748", "value": true, "source": ".data byte 0x01 read from retail Fable.exe; 5th bool of every _PlayAnimation_", "evidence": "retail-bytes"}
   ],
   "phases": [
@@ -135,7 +135,7 @@
     {"seq": 58, "function": "Main", "kind": "state-write", "native": "SaidFirstRangedComment = 1", "argsKnown": true, "lua": "SaidFirstRangedComment = true", "forgeBinding": "n/a", "evidence": "native-decompile", "note": "only in the 13.0 branch"},
     {"seq": 59, "function": "Main", "kind": "call", "native": "conv = AddNewConversation(); AddPersonToConversation(); BadgerIndex step; AddLineToConversation(); AddLineToConversation(conv, WOMAN_DIRTY_WORDS_n, 0, woman, me)", "argsKnown": false, "lua": "ranged_conversation", "forgeBinding": "AddNewConversation|AddPersonToConversation|AddLineToConversation", "evidence": "native-decompile", "note": "keys TEXT_QST_048_AFFAIRMAN_SCRMSG_DIRTY_WORDS_ / TEXT_QST_048_AFFAIRWOMAN_DIRTY_WORDS_"},
     {"seq": 60, "function": "Main", "kind": "branch", "native": "PARENT+0x93 (TalkingToWoman) != 0 -> next frame", "argsKnown": true, "lua": "if not F.get(quest, F.TalkingToWoman)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
-    {"seq": 61, "function": "Main", "kind": "call", "native": "GSI->Pause()", "argsKnown": false, "lua": "quest:Pause(PAUSE_SECONDS_UNKNOWN)", "forgeBinding": "Pause", "evidence": "native-decompile", "note": "duration dropped"},
+    {"seq": 61, "function": "Main", "kind": "call", "native": "GSI->Pause(0.4f)", "argsKnown": true, "lua": "quest:Pause(KISS_HUG_PAUSE_SECONDS)", "forgeBinding": "Pause", "evidence": "native-disassembly", "note": "0x00db1b79 pushes 0x3ecccccd before virtual slot 0x5e0 (Pause)"},
     {"seq": 62, "function": "Main", "kind": "call", "native": "EntitySetFacingAngleTowardsThing(); EntitySetFacingAngleTowardsThing(&stack0xfffffeb4, me)", "argsKnown": false, "lua": "face me->woman, woman->me", "forgeBinding": "EntitySetFacingAngleTowardsThing", "evidence": "inference", "note": ""},
     {"seq": 63, "function": "Main", "kind": "branch", "native": "rand() & 1 == 0", "argsKnown": true, "lua": "math.random(0, 1) == 0", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
     {"seq": 64, "function": "Main", "kind": "state-write", "native": "PARENT+0x83 (ReceiveKiss) = 1; res._PlayAnimation_(\"GIVE_KISS\",0,1,0,1,DAT_01375748,0)", "argsKnown": true, "lua": "F.set(ReceiveKiss); me:PlayAnimation(ANIM_GIVE_KISS)", "forgeBinding": "PlayAnimation", "evidence": "native-decompile", "note": ""},
@@ -157,7 +157,6 @@
     "Near-conversation first AddLineToConversation arguments are dropped; the reversed speaker order for BadgerIndex == 10 is an inference from the visible second line.",
     "The post-talk facing block (LAB_00db1593) compares two stack copies; reading them as woman-then-wife is an inference.",
     "Which stack thing is tested for 'wife within 5' in the talked-to branch (&stack0xfffffeb8) is inferred from the three reply lines.",
-    "GSI->Pause() duration is dropped; PAUSE_SECONDS_UNKNOWN = 0.",
     "EntitySetFacingAngleTowardsThing arguments are dropped in the cower and kiss/hug paths; targets are inferred.",
     "AddPersonToConversation person is dropped; the woman is inferred (she speaks the second line).",
     "The retail wait loops around Speak are host-side in ForgeFSE (Speak is blocking); an extra IsPerformingScriptTask frame loop is kept for parity."

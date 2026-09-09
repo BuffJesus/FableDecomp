@@ -49,7 +49,8 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "fixtures": [
         "entity_affair_wife_main_terminated",
-        "entity_affair_wife_reaches_argument"
+        "entity_affair_wife_reaches_argument",
+        "entity_affair_wife_wheres_husband"
       ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"

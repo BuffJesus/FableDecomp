@@ -103,8 +103,8 @@ Dialogue coverage now carries one Bully instance across two talks: the first emi
 sets `DoneIntro`; the next misses teddy possession, observes `HeroAttackedVictim`, and emits the
 one-shot `IN_COMMON` response. Its loop-tail termination now also models the native resource
 destructor with explicit control release.
-Barrel-thug coverage now follows the leave-in-charge wait through marker teleport, the explicit
-unknown-duration `Pause` audit event, explanation and hero follow, then the first timer-nine
+Barrel-thug coverage now follows the leave-in-charge wait through marker teleport, the recovered
+retail `Pause(3.0)`, explanation and hero follow, then the first timer-nine
 temptation tier. A second path verifies the returned-barrel-man/broken-barrel `OUTRO` response and
 that its closed nag gate creates no dangling conversation. Intro, chat, and hit-action control
 acquisition now propagate termination at their native boundaries; traces verify that intro stops
@@ -149,8 +149,8 @@ that every entity AI branch has been exercised in the game.
 
 ## Remaining parity limits
 
-Five executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 63
+Four executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
+does not expose a direct equivalent. The larger API requirements manifest records 62
 blocked semantic requirements or signature differences. No catalogued native function is
 currently classified as wholly or partially API-blocked, but important call-level limits remain:
 entity scripting acquisition/release semantics, morality values loaded from game data,
@@ -158,11 +158,12 @@ special-ability message variants, exact distance-boundary behavior, and some tim
 behavior. ForgeFSE's Windows-only runtime now selects retail PC platform branches explicitly;
 the missing position-distance helper is reconstructed with squared 3D vector math.
 
-The five explicit sites are two conditional scheduler fallbacks (used only if the registered
+The four explicit sites are two conditional scheduler fallbacks (used only if the registered
 entity `AcquireControl`/`ReleaseControl` methods are unavailable), positive and negative deed
-morality calls whose game-data float is unrecovered, and one `Pause`. The trader, Bully, and
+morality calls whose game-data float is unrecovered. The trader, Bully, and
 AffairWife timer operands formerly listed here are now instruction-level recovered as
-`TalkIntermittentTimer` and value `3`. Supplying guessed morality or pause operands
+`TalkIntermittentTimer` and value `3`; the BarrelThug intro pause is likewise recovered as `3.0`
+and AffairMan's kiss/hug pause as `0.4`. Supplying guessed morality operands
 would reduce the metric while making the reconstruction less faithful, so these remain runtime
 audit points.
 
