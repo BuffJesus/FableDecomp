@@ -1479,6 +1479,14 @@
       "trace": "match"
     },
     {
+      "events": 27,
+      "fixture": "entity_live_father_completes_intro.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 2,
       "fixture": "entity_live_father_entry_cleanup.json",
       "function": "Main",
@@ -1490,6 +1498,14 @@
       "events": 6,
       "fixture": "entity_live_father_init.json",
       "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 28,
+      "fixture": "entity_live_father_pays_good_deeds.json",
+      "function": "Main",
       "kind": "entity",
       "status": "ran",
       "trace": "match"
@@ -1744,8 +1760,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 68,
-    "fixturesPassed": 68,
+    "fixtures": 70,
+    "fixturesPassed": 70,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

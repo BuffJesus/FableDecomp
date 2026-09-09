@@ -1,0 +1,12 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_LiveFather.lua","expect":["RunCutsceneWithSetup","FixMovieSequenceCamera","SetAllSoundsAsMuted","Pause","CameraResetToViewBehindHero","CameraDefault","DisplayGameInfo","AddQuestInfoCounter","DisplayQuestInfo","EndMovieSequence","ReleaseControl"],"note":"Dad completes the retail intro cutscene with Hero/Father actors, shows the PC highlighting card, creates the good-deed HUD counter, closes the movie scope, and releases control on later loop termination"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Quest.GetStateBool(DadFinishedIntro)":[false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Quest.AddQuestInfoCounter":[501],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false]
+}

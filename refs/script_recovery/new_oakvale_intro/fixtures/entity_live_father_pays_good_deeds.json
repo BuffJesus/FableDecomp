@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_LiveFather.lua","expect":["GiveHeroGold","Speak","IsObjectInThingsPossession","GetHeroGold","SetQuestCardObjective","EndMovieSequence","ReleaseControl"],"note":"after two unpaid good deeds, Dad pays two gold, praises the hero, finds neither chocolates nor enough total gold, restores objective one, and performs movie/control cleanup"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true,true],
+  "Quest.GetStateBool(DadFinishedIntro)":[true],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[2],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetHealth":[100,100],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsObjectInThingsPossession":[false],
+  "Quest.GetHeroGold":[3],
+  "Quest.GetActiveQuestName":["Q_NewOakValeIntro"],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false]
+}

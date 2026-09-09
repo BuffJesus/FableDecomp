@@ -617,6 +617,30 @@
       "events": 56
     },
     {
+      "fixture": "entity_live_father_completes_intro",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "purpose": "Dad completes the retail intro cutscene with Hero/Father actors, shows the PC highlighting card, creates the good-deed HUD counter, closes the movie scope, and releases control on later loop termination",
+      "expects": [
+        "RunCutsceneWithSetup",
+        "FixMovieSequenceCamera",
+        "SetAllSoundsAsMuted",
+        "Pause",
+        "CameraResetToViewBehindHero",
+        "CameraDefault",
+        "DisplayGameInfo",
+        "AddQuestInfoCounter",
+        "DisplayQuestInfo",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 27
+    },
+    {
       "fixture": "entity_live_father_entry_cleanup",
       "function": "Main",
       "kind": "entity",
@@ -647,6 +671,26 @@
       "result": "ran",
       "trace": "written",
       "events": 6
+    },
+    {
+      "fixture": "entity_live_father_pays_good_deeds",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "purpose": "after two unpaid good deeds, Dad pays two gold, praises the hero, finds neither chocolates nor enough total gold, restores objective one, and performs movie/control cleanup",
+      "expects": [
+        "GiveHeroGold",
+        "Speak",
+        "IsObjectInThingsPossession",
+        "GetHeroGold",
+        "SetQuestCardObjective",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 28
     },
     {
       "fixture": "entity_teddy_girl_init",

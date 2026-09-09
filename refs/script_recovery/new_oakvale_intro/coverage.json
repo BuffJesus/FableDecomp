@@ -295,7 +295,9 @@
       "operations": 49,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
       "fixtures": [
-        "entity_live_father_entry_cleanup"
+        "entity_live_father_completes_intro",
+        "entity_live_father_entry_cleanup",
+        "entity_live_father_pays_good_deeds"
       ],
       "evidence": "native-decompile",
       "status": "implemented (uncertain args)"
