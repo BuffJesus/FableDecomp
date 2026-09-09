@@ -1,37 +1,40 @@
 {
   "events": [
     {
-      "arguments": [],
+      "arguments": [
+        "Q__OakValeIntro_PostAttack"
+      ],
       "event": "api-call",
-      "name": "GetHeroGold",
+      "name": "ActivateQuest",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        "Q_NewOakValeIntro_PreAttack",
+        0
+      ],
       "event": "api-call",
-      "name": "NewScriptFrame",
+      "name": "DeactivateQuest",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        23.0
+      ],
       "event": "api-call",
-      "name": "GetHeroGold",
+      "name": "SetTimeOfDay",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        "ENVIRONMENT_OV_POSTATTACK",
+        0.0
+      ],
       "event": "api-call",
-      "name": "NewScriptFrame",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [],
-      "event": "api-call",
-      "name": "GetHeroGold",
+      "name": "TransitionToTheme",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -45,7 +48,7 @@
     {
       "arguments": [
         "Q_NewOakValeIntro",
-        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_03",
+        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_06",
         "",
         ""
       ],
@@ -58,20 +61,9 @@
   "fixtures": {
     "Quest.GetActiveQuestName": [
       "Q_NewOakValeIntro"
-    ],
-    "Quest.GetHeroGold": [
-      0,
-      2,
-      3
-    ],
-    "Quest.NewScriptFrame": [
-      true,
-      true,
-      true,
-      false
     ]
   },
-  "function": "WatchForGotGold",
+  "function": "AttackStuff",
   "kind": "quest",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",

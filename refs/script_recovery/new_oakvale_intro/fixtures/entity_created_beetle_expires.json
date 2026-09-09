@@ -1,0 +1,6 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua","expect":["RegisterTimer","SetTimer","RemoveThing","DeregisterTimer"],"note":"lifetime timer expires and the spawned beetle removes itself"},
+  "Quest.NewScriptFrame":[true],
+  "Quest.RegisterTimer":[701],
+  "Quest.GetTimer(701)":[5,0]
+}

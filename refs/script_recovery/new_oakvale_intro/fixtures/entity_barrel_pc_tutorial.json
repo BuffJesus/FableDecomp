@@ -1,0 +1,8 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Barrel.lua","expect":["DisplayGameInfo","MsgIsGameInfoClickedPast","SetStateBool"],"note":"nearby hero receives the PC barrel tutorial, clicks past it, then the entity terminates from its idle loop"},
+  "Quest.NewScriptFrame":[true,true,true,false],
+  "Quest.GetStateBool(InstructionGiven_Barrels)":[false,true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.MsgIsGameInfoClickedPast":[false,true]
+}

@@ -1,0 +1,80 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GuardsDealtWithBadDeeds"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Entity.IsTalkedToByHero": [
+      false
+    ],
+    "Entity.MsgIsHitByAnySpecialAbilityFromHero": [
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      false
+    ],
+    "Quest.GetStateInt(BadDeedsPerformed)": [
+      0
+    ],
+    "Quest.GetStateInt(GuardsDealtWithBadDeeds)": [
+      0
+    ],
+    "Quest.NewScriptFrame": [
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua",
+  "sourceSha256": "a9b9d04dfbcd4cdb797cfc9c0766cac95a0eadabf64061f25150c244928e1b6e"
+}

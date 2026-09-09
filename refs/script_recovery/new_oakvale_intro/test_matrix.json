@@ -144,6 +144,38 @@
       "events": 1
     },
     {
+      "fixture": "entity_barrel_pc_tutorial",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "purpose": "nearby hero receives the PC barrel tutorial, clicks past it, then the entity terminates from its idle loop",
+      "expects": [
+        "DisplayGameInfo",
+        "MsgIsGameInfoClickedPast",
+        "SetStateBool"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 13
+    },
+    {
+      "fixture": "entity_barrel_predicate_fail",
+      "function": "OnPredicateFail",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
+      "purpose": "destroyed barrel publishes instantaneous/persistent flags and its exact position",
+      "expects": [
+        "SetStateBool",
+        "GetPos",
+        "SetStateString"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 4
+    },
+    {
       "fixture": "entity_barrel_thug_init",
       "function": "Init",
       "kind": "entity",
@@ -237,6 +269,23 @@
       "events": 1
     },
     {
+      "fixture": "entity_created_beetle_expires",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "purpose": "lifetime timer expires and the spawned beetle removes itself",
+      "expects": [
+        "RegisterTimer",
+        "SetTimer",
+        "RemoveThing",
+        "DeregisterTimer"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 8
+    },
+    {
       "fixture": "entity_created_beetle_main_terminated",
       "function": "Main",
       "kind": "entity",
@@ -251,6 +300,42 @@
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_created_beetle_timer_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
+      "purpose": "termination during the lifetime wait deregisters the timer without removing the beetle",
+      "expects": [
+        "RegisterTimer",
+        "SetTimer",
+        "DeregisterTimer"
+      ],
+      "forbids": [
+        "RemoveThing"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 6
+    },
+    {
+      "fixture": "entity_dead_father_found_cleanup",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "purpose": "corpse is positioned, DadFound becomes true, marker is removed, and control is released after idle-loop termination",
+      "expects": [
+        "AcquireControl",
+        "EntityTeleportToThing",
+        "PlayLoopingAnimation",
+        "MiniMapRemoveMarker",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 14
     },
     {
       "fixture": "entity_dead_father_init",
@@ -284,6 +369,24 @@
       "events": 1
     },
     {
+      "fixture": "entity_guard_idle_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "purpose": "idle guard polls deeds/talk/hit once and exits on frame termination",
+      "expects": [
+        "GetStateInt",
+        "IsTalkedToByHero",
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "StartMovieSequence"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 6
+    },
+    {
       "fixture": "entity_guard_init",
       "function": "Init",
       "kind": "entity",
@@ -298,6 +401,23 @@
       "result": "ran",
       "trace": "match",
       "events": 9
+    },
+    {
+      "fixture": "entity_live_father_entry_cleanup",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "purpose": "entry-frame termination still executes Main's retail resource-destructor cleanup",
+      "expects": [
+        "NewScriptFrame",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 2
     },
     {
       "fixture": "entity_live_father_init",
@@ -344,6 +464,23 @@
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_theresa_entry_cleanup",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "purpose": "entry-frame termination still executes Main's retail resource-destructor cleanup",
+      "expects": [
+        "NewScriptFrame",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "AcquireControl"
+      ],
+      "result": "ran",
+      "trace": "match",
+      "events": 2
     },
     {
       "fixture": "entity_theresa_init",
@@ -421,6 +558,24 @@
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "quest_attack_stuff_section_swap",
+      "function": "AttackStuff",
+      "kind": "quest",
+      "source": null,
+      "purpose": "direct trace of the pre-attack to post-attack section swap and raid presentation",
+      "expects": [
+        "ActivateQuest",
+        "DeactivateQuest",
+        "SetTimeOfDay",
+        "TransitionToTheme",
+        "SetQuestCardObjective"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 6
     },
     {
       "fixture": "quest_domission_attack_transition",
@@ -538,6 +693,25 @@
         "SetStateBool"
       ],
       "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 3
+    },
+    {
+      "fixture": "quest_post_attack_wait_terminated",
+      "function": "PostAttackStuff",
+      "kind": "quest",
+      "source": null,
+      "purpose": "termination while waiting for the separate post-attack section prevents scene setup",
+      "expects": [
+        "GetThingWithScriptName",
+        "GetAllThingsWithScriptName",
+        "NewScriptFrame"
+      ],
+      "forbids": [
+        "CacheMusicSet",
+        "EntityTeleportToThing"
+      ],
       "result": "ran",
       "trace": "match",
       "events": 3

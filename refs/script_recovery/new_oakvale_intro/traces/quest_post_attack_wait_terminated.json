@@ -2,43 +2,45 @@
   "events": [
     {
       "arguments": [
-        "AttackOver"
+        "M_PostAttackStart"
       ],
       "event": "api-call",
-      "name": "GetStateBool",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": {
-        "2": "AttackOver",
-        "3": true
-      },
-      "event": "api-call",
-      "name": "PersistTransferBool",
+      "name": "GetThingWithScriptName",
       "receiver": "quest",
       "scope": "Quest"
     },
     {
       "arguments": [
-        "AttackOver",
-        true
+        "M_PostAttackStart"
       ],
       "event": "api-call",
-      "name": "SetStateBool",
+      "name": "GetAllThingsWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "NewScriptFrame",
       "receiver": "quest",
       "scope": "Quest"
     }
   ],
   "fixtures": {
-    "Quest.GetStateBool(AttackOver)": [
-      true
+    "Quest.GetAllThingsWithScriptName(M_PostAttackStart)": [
+      {}
     ],
-    "Quest.PersistTransferBool": [
-      true
+    "Quest.GetThingWithScriptName(M_PostAttackStart)": [
+      {
+        "handle": "post_start",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.NewScriptFrame": [
+      false
     ]
   },
-  "function": "OnPersist",
+  "function": "PostAttackStuff",
   "kind": "quest",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",

@@ -91,7 +91,8 @@
       "operations": 8,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
       "fixtures": [
-        "entity_barrel_main_terminated"
+        "entity_barrel_main_terminated",
+        "entity_barrel_pc_tutorial"
       ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
@@ -102,7 +103,9 @@
       "address": "0x00DB7DB0",
       "operations": 2,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_barrel_predicate_fail"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -210,7 +213,7 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "implemented-and-traced"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "NOVI_CreatedBeetle",
@@ -229,7 +232,9 @@
       "operations": 5,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
       "fixtures": [
-        "entity_created_beetle_main_terminated"
+        "entity_created_beetle_expires",
+        "entity_created_beetle_main_terminated",
+        "entity_created_beetle_timer_terminated"
       ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
@@ -244,7 +249,7 @@
         "entity_guard_init"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "NOVI_Guard",
@@ -252,9 +257,11 @@
       "address": "0x00DAC760",
       "operations": 45,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Guard.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_guard_idle_terminated"
+      ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "NOVI_LiveFather",
@@ -274,7 +281,9 @@
       "address": "0x00DB86B0",
       "operations": 49,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_live_father_entry_cleanup"
+      ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
     },
@@ -310,7 +319,7 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "implemented-and-traced"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "NOVI_Theresa",
@@ -330,7 +339,9 @@
       "address": "0x00DB97A0",
       "operations": 48,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Theresa.lua",
-      "fixtures": [],
+      "fixtures": [
+        "entity_theresa_entry_cleanup"
+      ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
     },
@@ -380,7 +391,7 @@
         "entity_villager_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "NOVI_Villager",
@@ -390,7 +401,7 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "implemented-and-traced"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "NOVI_Villager",
@@ -421,10 +432,11 @@
       "operations": 9,
       "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
       "fixtures": [
+        "entity_dead_father_found_cleanup",
         "entity_dead_father_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "OVI_DeadFather",
@@ -453,24 +465,11 @@
       "operations": 7,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [
-        "entity_affair_man_main_terminated",
-        "entity_affair_wife_main_terminated",
-        "entity_affair_woman_main_terminated",
-        "entity_barrel_main_terminated",
-        "entity_barrel_man_main_terminated",
-        "entity_barrel_thug_main_terminated",
-        "entity_book_trader_main_terminated",
-        "entity_bully_main_terminated",
-        "entity_created_beetle_main_terminated",
-        "entity_dead_father_main_terminated",
-        "entity_teddy_girl_main_terminated",
-        "entity_victim_main_terminated",
-        "entity_villager_main_terminated",
         "quest_main_fresh_start",
         "quest_main_reload_after_attack"
       ],
       "evidence": "native-decompile",
-      "status": "implemented-and-traced"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -479,20 +478,6 @@
       "operations": 4,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [
-        "entity_affair_man_init",
-        "entity_affair_wife_init",
-        "entity_affair_woman_init",
-        "entity_barrel_man_init",
-        "entity_barrel_thug_init",
-        "entity_book_trader_init",
-        "entity_bully_init",
-        "entity_dead_father_init",
-        "entity_guard_init",
-        "entity_live_father_init",
-        "entity_teddy_girl_init",
-        "entity_theresa_init",
-        "entity_victim_init",
-        "entity_villager_init",
         "quest_init_resets"
       ],
       "evidence": "native-decompile",
@@ -529,7 +514,9 @@
       "address": "0x00DBE3C0",
       "operations": 3,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
-      "fixtures": [],
+      "fixtures": [
+        "quest_attack_stuff_section_swap"
+      ],
       "evidence": "native-decompile + PDB-name",
       "status": "implemented-and-traced"
     },
@@ -539,9 +526,11 @@
       "address": "0x00DBEB20",
       "operations": 8,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
-      "fixtures": [],
+      "fixtures": [
+        "quest_post_attack_wait_terminated"
+      ],
       "evidence": "native-decompile + PDB-name",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -567,7 +556,7 @@
         "quest_thread_start_barrel_timer_terminated"
       ],
       "evidence": "native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the \"StartBarrelTimer\" name)",
-      "status": "implemented-and-traced"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -611,7 +600,7 @@
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [],
       "evidence": "native-decompile + PDB-name",
-      "status": "implemented-and-traced"
+      "status": "implemented-but-untraced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -626,9 +615,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 30,
-    "implementedUntraced": 0,
-    "uncertain": 6,
+    "implementedAndTraced": 24,
+    "implementedUntraced": 11,
+    "uncertain": 1,
     "apiBlocked": 10,
     "notImplemented": 0,
     "notApplicable": 6

@@ -42,13 +42,15 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 39/39 deterministic fixtures matching their saved traces. These are
-12 quest fixtures, 14 meaningful entity initialization fixtures, and 13 entity entry-frame
-termination fixtures.
+ForgeFSE bindings, and 49/49 deterministic fixtures matching their saved traces. In addition
+to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
+beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
+control cleanup, guard idle polling, and father/Theresa resource release.
 The supporting trace-tool unit suite has 9/9 passing tests.
 
-The coverage manifest classifies 30 functions as implemented and traced, 10 as partly
-API-blocked, 6 as uncertain, 6 as lifecycle/data-only, and none as unimplemented. These
+The coverage manifest classifies 24 functions as implemented and traced, 10 as partly
+API-blocked, 11 as implemented but untraced, 1 as uncertain, 6 as lifecycle/data-only, and
+none as unimplemented. These
 classifications combine native-operation coverage with mock-host traces; they do not mean
 that every entity AI branch has been exercised in the game.
 

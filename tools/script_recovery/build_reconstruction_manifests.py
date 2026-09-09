@@ -48,6 +48,19 @@ def status_for(op: dict, traced_functions: set[str], unsupported: bool) -> str:
     return "implemented-but-untraced"
 
 
+def fixture_covers(entity_kind: str, lua_file: str, function: str, fixture_meta: dict,
+                   fixture_result: dict) -> bool:
+    """Return true only for a passing trace of this exact source/function pair."""
+    fixture_source = fixture_meta.get("source")
+    normalized_source = (fixture_source or "").replace("\\", "/")
+    source_matches = ((entity_kind == "quest" and
+                       (fixture_source is None or normalized_source == lua_file)) or
+                      (entity_kind != "quest" and normalized_source == lua_file))
+    trace_passed = (fixture_result.get("status") == "ran" and
+                    fixture_result.get("trace") in (None, "match", "written"))
+    return fixture_meta.get("function") == function and source_matches and trace_passed
+
+
 def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
     entities = {}
     for path in sorted((evidence_dir / "entities").glob("*.json")):
@@ -169,7 +182,6 @@ def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
                        "region unload/reload thread termination timing"]}
 
     # ---- coverage -------------------------------------------------------------------------------
-    traced_functions = {meta["function"] for stem, meta in fixtures.items() if fixture_status.get(stem, {}).get("status") == "ran"}
     unsupported_by_file = {}
     for u in validation.get("unsupported", []):
         unsupported_by_file.setdefault(Path(u["file"]).stem, []).append(u["retail"])
@@ -179,6 +191,12 @@ def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
         for fn, meta in ent.get("functions", {}).items():
             addr = meta.get("address") if isinstance(meta, dict) else meta
             ops = [o for o in ent.get("operations", []) if o.get("function") == fn]
+            covering = []
+            for stem, fixture_meta in fixtures.items():
+                result = fixture_status.get(stem, {})
+                if fixture_covers(ent.get("kind", "entity"), lua_file, fn, fixture_meta, result):
+                    covering.append(stem)
+            traced_here = {fn} if covering else set()
             if not ops and fn in ("destructor", "RegisterMain"):
                 status = "not-applicable (host lifecycle)"
             elif not ops and (str(addr) in EMPTY_RETAIL_BODIES or "vectors" in fn or (isinstance(meta, dict) and meta.get("emptyRetail"))):
@@ -186,16 +204,15 @@ def build(evidence_dir: Path, fse_root: Path, lua_manager: Path) -> dict:
             elif not ops:
                 status = "not-implemented"
             else:
-                statuses = [status_for(o, traced_functions if ent.get("kind") == "quest" else set(), name in unsupported_by_file and "unsupported" in str(o.get("forgeBinding", "")).lower()) for o in ops]
+                statuses = [status_for(o, traced_here, name in unsupported_by_file and "unsupported" in str(o.get("forgeBinding", "")).lower()) for o in ops]
                 if any(s == "API-blocked" for s in statuses):
                     status = "partially API-blocked"
-                elif all("traced" in s for s in statuses):
-                    status = "implemented-and-traced"
                 elif any(s == "uncertain" for s in statuses):
                     status = "implemented (uncertain args)"
+                elif all(s == "implemented-and-traced" for s in statuses):
+                    status = "implemented-and-traced"
                 else:
                     status = "implemented-but-untraced"
-            covering = [stem for stem, m in fixtures.items() if m["function"] == fn and (ent.get("kind") == "quest" or (m.get("source") or "").endswith(f"{name}.lua"))]
             coverage.append({"script": name, "nativeFunction": fn, "address": addr, "operations": len(ops),
                              "luaLocation": lua_file, "fixtures": covering,
                              "evidence": (meta.get("evidence") if isinstance(meta, dict) else None) or "native-decompile",

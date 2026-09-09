@@ -1,0 +1,4 @@
+{
+  "__meta__":{"function":"AttackStuff","kind":"quest","expect":["ActivateQuest","DeactivateQuest","SetTimeOfDay","TransitionToTheme","SetQuestCardObjective"],"note":"direct trace of the pre-attack to post-attack section swap and raid presentation"},
+  "Quest.GetActiveQuestName":["Q_NewOakValeIntro"]
+}

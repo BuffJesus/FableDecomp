@@ -1,0 +1,9 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Guard.lua","expect":["GetStateInt","IsTalkedToByHero","NewScriptFrame"],"forbid":["StartMovieSequence"],"note":"idle guard polls deeds/talk/hit once and exits on frame termination"},
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GuardsDealtWithBadDeeds)":[0],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.NewScriptFrame":[false]
+}

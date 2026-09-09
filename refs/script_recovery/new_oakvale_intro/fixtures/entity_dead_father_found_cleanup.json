@@ -1,0 +1,8 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/OVI_DeadFather.lua","expect":["AcquireControl","EntityTeleportToThing","PlayLoopingAnimation","MiniMapRemoveMarker","ReleaseControl"],"note":"corpse is positioned, DadFound becomes true, marker is removed, and control is released after idle-loop termination"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.AcquireControl":[true],
+  "Quest.GetThingWithScriptName(MK_OVID_DAD)":[{"handle":"dad_marker","scope":"Entity"},{"handle":"dad_marker","scope":"Entity"}],
+  "Entity.GetAngleXY":[1.25],
+  "Quest.GetStateBool(DadFound)":[false,true]
+}

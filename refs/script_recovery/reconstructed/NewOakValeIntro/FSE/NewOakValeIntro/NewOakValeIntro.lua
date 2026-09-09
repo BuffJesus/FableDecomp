@@ -180,7 +180,8 @@ local function wait_for_attack()
 end
 
 -- AttackStuff @0x00DBE3C0: swap the village sections, jump to night, raided-village theme, objective 6
-function AttackStuff()
+function AttackStuff(questObject)
+    Quest = questObject or Quest
     Quest:ActivateQuest(NOVI.SECTION_POST_ATTACK)
     Quest:DeactivateQuest(NOVI.SECTION_PRE_ATTACK, DEACTIVATE_NOW)
     Quest:SetTimeOfDay(TIME_OF_DAY_RAID)
@@ -208,7 +209,8 @@ local function play_dead_father_scene(hero)
 end
 
 -- PostAttackStuff @0x00DBEB20
-function PostAttackStuff()
+function PostAttackStuff(questObject)
+    Quest = questObject or Quest
     if not wait_for_post_attack_section() then return false end
 
     Quest:CacheMusicSet(MUSIC_SET_POST_ATTACK_ENTRY)

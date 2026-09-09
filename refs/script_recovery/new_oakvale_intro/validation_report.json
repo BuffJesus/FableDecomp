@@ -1261,6 +1261,22 @@
       "trace": "match"
     },
     {
+      "events": 13,
+      "fixture": "entity_barrel_pc_tutorial.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 4,
+      "fixture": "entity_barrel_predicate_fail.json",
+      "function": "OnPredicateFail",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 3,
       "fixture": "entity_barrel_thug_init.json",
       "function": "Init",
@@ -1309,8 +1325,32 @@
       "trace": "match"
     },
     {
+      "events": 8,
+      "fixture": "entity_created_beetle_expires.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 1,
       "fixture": "entity_created_beetle_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 6,
+      "fixture": "entity_created_beetle_timer_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 14,
+      "fixture": "entity_dead_father_found_cleanup.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1333,9 +1373,25 @@
       "trace": "match"
     },
     {
+      "events": 6,
+      "fixture": "entity_guard_idle_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 9,
       "fixture": "entity_guard_init.json",
       "function": "Init",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 2,
+      "fixture": "entity_live_father_entry_cleanup.json",
+      "function": "Main",
       "kind": "entity",
       "status": "ran",
       "trace": "match"
@@ -1359,6 +1415,14 @@
     {
       "events": 1,
       "fixture": "entity_teddy_girl_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 2,
+      "fixture": "entity_theresa_entry_cleanup.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1401,6 +1465,14 @@
       "fixture": "entity_villager_main_terminated.json",
       "function": "Main",
       "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 6,
+      "fixture": "quest_attack_stuff_section_swap.json",
+      "function": "AttackStuff",
+      "kind": "quest",
       "status": "ran",
       "trace": "match"
     },
@@ -1448,6 +1520,14 @@
       "events": 3,
       "fixture": "quest_onpersist_roundtrip.json",
       "function": "OnPersist",
+      "kind": "quest",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 3,
+      "fixture": "quest_post_attack_wait_terminated.json",
+      "function": "PostAttackStuff",
       "kind": "quest",
       "status": "ran",
       "trace": "match"
@@ -1510,8 +1590,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 39,
-    "fixturesPassed": 39,
+    "fixtures": 49,
+    "fixturesPassed": 49,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

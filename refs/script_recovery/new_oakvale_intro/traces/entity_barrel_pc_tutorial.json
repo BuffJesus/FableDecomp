@@ -1,0 +1,166 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "InstructionGiven_Barrels"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        2.0
+      ],
+      "event": "api-call",
+      "name": "IsDistanceBetweenThingsUnder",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NewOakValeIntro: UNSUPPORTED retail call IsXbox"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TEXT_QST_048_INSTRUCTION_BREAK_BARRELS_PC"
+      ],
+      "event": "api-call",
+      "name": "DisplayGameInfo",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "InstructionGiven_Barrels",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "InstructionGiven_Barrels"
+      ],
+      "event": "api-call",
+      "name": "GetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateBool(InstructionGiven_Barrels)": [
+      false,
+      true
+    ],
+    "Quest.IsDistanceBetweenThingsUnder": [
+      true
+    ],
+    "Quest.MsgIsGameInfoClickedPast": [
+      false,
+      true
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      true,
+      true,
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua",
+  "sourceSha256": "2787bec49af9773323e8ee1f3640bb7ea1cc1c7e4a88f4ca15229f131dc4005c"
+}

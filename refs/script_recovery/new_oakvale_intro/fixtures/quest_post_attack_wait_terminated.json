@@ -1,0 +1,6 @@
+{
+  "__meta__":{"function":"PostAttackStuff","kind":"quest","expect":["GetThingWithScriptName","GetAllThingsWithScriptName","NewScriptFrame"],"forbid":["CacheMusicSet","EntityTeleportToThing"],"note":"termination while waiting for the separate post-attack section prevents scene setup"},
+  "Quest.GetThingWithScriptName(M_PostAttackStart)":[{"handle":"post_start","scope":"Entity"}],
+  "Quest.GetAllThingsWithScriptName(M_PostAttackStart)":[{}],
+  "Quest.NewScriptFrame":[false]
+}

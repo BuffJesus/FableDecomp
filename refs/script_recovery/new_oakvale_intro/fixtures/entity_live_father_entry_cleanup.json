@@ -1,0 +1,4 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_LiveFather.lua","expect":["NewScriptFrame","ReleaseControl"],"forbid":["AcquireControl"],"note":"entry-frame termination still executes Main's retail resource-destructor cleanup"},
+  "Quest.NewScriptFrame":[false]
+}

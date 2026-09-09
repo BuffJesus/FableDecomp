@@ -1,0 +1,33 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
+    }
+  ],
+  "fixtures": {
+    "Quest.NewScriptFrame": [
+      false
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Theresa.lua",
+  "sourceSha256": "39e6d955838072a39e7519699d7d8bba90fe703bff5993e8c636037d3c2b6e5a"
+}

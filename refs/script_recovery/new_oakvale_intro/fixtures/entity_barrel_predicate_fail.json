@@ -1,0 +1,4 @@
+{
+  "__meta__":{"function":"OnPredicateFail","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Barrel.lua","expect":["SetStateBool","GetPos","SetStateString"],"note":"destroyed barrel publishes instantaneous/persistent flags and its exact position"},
+  "Entity.GetPos":[{"x":11.25,"y":2.5,"z":-7.75}]
+}
