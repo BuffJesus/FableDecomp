@@ -173,7 +173,7 @@
         "entity_barrel_thug_special_hit"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_BookTrader",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 36,
+    "implementedAndTraced": 37,
     "implementedUntraced": 0,
-    "uncertain": 10,
+    "uncertain": 9,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6

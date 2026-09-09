@@ -192,7 +192,7 @@ the per-script `entities` inventories, fixtures, and source-hashed traces.
 
 ## 2026-09-08 restart checkpoint
 
-The zero-unknown audit remains the acceptance gate. There are 107 operation records with
+The zero-unknown audit remains the acceptance gate. There are 99 operation records with
 `argsKnown: false`; passing fixtures do not override those evidence gaps. The quest inventory
 itself is now at zero unknown operations. The remaining queue, in descending order, is:
 
@@ -205,9 +205,8 @@ itself is now at zero unknown operations. The remaining queue, in descending ord
 | `NOVI_AffairMan` | 12 |
 | `NOVI_TeddyGirl` | 9 |
 | `NOVI_AffairWoman` | 8 |
-| `NOVI_BarrelThug` | 8 |
 
-Resume with `NOVI_BarrelThug` before returning to the larger inventories.
+Resume with `NOVI_AffairWoman` before returning to the larger inventories.
 `NOVI_Villager` is now at zero unknown operations: disassembly at
 `0x00DAE109`-`0x00DAE12F` proves its two ally calls are reciprocal `(me, hero)` and `(hero, me)`.
 `NOVI_LiveFather` is also at zero: `0x00DB93CF`-`0x00DB93D8` explicitly pushes its stored
@@ -222,3 +221,7 @@ teleport is exactly `(hero, guardPoint, false)`.
 `NOVI_BookTrader` is now at zero as well: its hit ability is directly `14`, ally calls are
 reciprocal, control priority is `4`, the full shouting-animation flags are recovered, and the
 roll-up conversation line is `(conversation, text, false, trader, hero)`.
+`NOVI_BarrelThug` is now at zero too. All three control acquisitions use priority `4`; both nag
+timer reads use `PARENT->WatchTimer`; conversation creation and tier-line speaker/listener order
+are proven; and the hit path directly establishes ability `14`, reciprocal allies, deed `2`, and
+the full movie, pause, acquisition, and speech operands.

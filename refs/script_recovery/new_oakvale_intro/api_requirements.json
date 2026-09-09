@@ -1637,8 +1637,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 5,
-          "native": "StartScriptingEntity(me,res,?) loop; termination exits through resource cleanup",
-          "evidence": "native-decompile"
+          "native": "StartScriptingEntity(me, res, 4) loop; termination exits through resource cleanup",
+          "evidence": "asm 0xdb6d20-0xdb6d5d"
         },
         {
           "script": "NOVI_BarrelThug",
@@ -1651,8 +1651,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 16,
-          "native": "StartMovieSequence; PauseAll(1); StartScriptingEntity loop; termination closes the movie and releases resources",
-          "evidence": "native-decompile"
+          "native": "StartMovieSequence(\"\", movieResource); PauseAllNonScriptedEntities(true); StartScriptingEntity(me, res, 4) loop; termination closes the movie and releases resources",
+          "evidence": "asm 0xdb6f95-0xdb704c + cross-callsite GSI slot map"
         },
         {
           "script": "NOVI_BarrelThug",
@@ -2146,8 +2146,8 @@
         "NOVI_BarrelMan#29: case 3",
         "NOVI_BarrelMan#37: thanks branch",
         "NOVI_BarrelMan#77: only reached on termination; the main loop never exits normally",
-        "NOVI_BarrelThug#5: failed intro acquisition must stop before the leave-in-charge wait and teleport",
-        "NOVI_BarrelThug#16: movie starts BEFORE the acquire here, so failure must unpause/end it before Main releases control",
+        "NOVI_BarrelThug#5: both attempts push priority 4, resource, and stored ME_THING (EDI); failed intro acquisition must stop before the leave-in-charge wait and teleport",
+        "NOVI_BarrelThug#16: movie starts BEFORE the priority-4 acquire here, so failure must unpause/end it before Main releases control",
         "NOVI_BookTrader#5: failed host-managed acquisition must stop the iteration before movement or dialogue",
         "NOVI_BookTrader#28: failed acquisition must not play the shout animation or queue its line",
         "NOVI_Bully#13: priority dropped; failure exits before home movement and models the LAB_00dbcceb destructor",
@@ -2409,8 +2409,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 25,
-          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile + cross-script-evidence"
+          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb7924-0xdb799b"
         },
         {
           "script": "NOVI_BookTrader",
@@ -2476,7 +2476,7 @@
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
         "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
-        "NOVI_BarrelThug#25: ability 14 inferred from sibling NOVI hit predicates",
+        "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
         "NOVI_TeddyGirl#41: slots 0x54/0xa8/0xa4; ability 14 comes from sibling NOVI hit predicates"
       ],
@@ -2528,8 +2528,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 25,
-          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile + cross-script-evidence"
+          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb7924-0xdb799b"
         },
         {
           "script": "NOVI_BookTrader",
@@ -2595,7 +2595,7 @@
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
         "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
-        "NOVI_BarrelThug#25: ability 14 inferred from sibling NOVI hit predicates",
+        "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
         "NOVI_TeddyGirl#41: slots 0x54/0xa8/0xa4; ability 14 comes from sibling NOVI hit predicates"
       ],
@@ -2647,8 +2647,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 25,
-          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(?,HERO))",
-          "evidence": "native-decompile + cross-script-evidence"
+          "native": "MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(14,HERO))",
+          "evidence": "asm 0xdb7924-0xdb799b"
         },
         {
           "script": "NOVI_BookTrader",
@@ -2714,7 +2714,7 @@
         "NOVI_AffairWife#51: line 511 shows the 0xe literal",
         "NOVI_AffairWoman#12: CScriptThing vtable slots 0x54/0xa8/0xa4 (retail vtable 0x1238c8c)",
         "NOVI_BarrelMan#51: the ppuVar17 & 1/2/4/8 flag writes are decompiler noise (local bookkeeping of which message was polled)",
-        "NOVI_BarrelThug#25: ability 14 inferred from sibling NOVI hit predicates",
+        "NOVI_BarrelThug#25: 0xdb7993 explicitly pushes ability 0xe into CScriptThing slot 0xa4",
         "NOVI_BookTrader#9: CScriptThing slots 0x54/0xa8/0xa4 receive SCRIPT_NAME_HERO; 0xdb42ab explicitly pushes ability 0xe",
         "NOVI_TeddyGirl#41: slots 0x54/0xa8/0xa4; ability 14 comes from sibling NOVI hit predicates"
       ],
@@ -2822,8 +2822,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 16,
-          "native": "StartMovieSequence; PauseAll(1); StartScriptingEntity loop; termination closes the movie and releases resources",
-          "evidence": "native-decompile"
+          "native": "StartMovieSequence(\"\", movieResource); PauseAllNonScriptedEntities(true); StartScriptingEntity(me, res, 4) loop; termination closes the movie and releases resources",
+          "evidence": "asm 0xdb6f95-0xdb704c + cross-callsite GSI slot map"
         },
         {
           "script": "NOVI_BookTrader",
@@ -2995,7 +2995,7 @@
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
         "NOVI_AffairWoman#14: pause argument dropped; true inferred from sibling scripts",
         "NOVI_AffairWoman#23: facing args dropped; me->hero inferred",
-        "NOVI_BarrelThug#16: movie starts BEFORE the acquire here, so failure must unpause/end it before Main releases control",
+        "NOVI_BarrelThug#16: movie starts BEFORE the priority-4 acquire here, so failure must unpause/end it before Main releases control",
         "NOVI_BookTrader#13: acquisition pushes priority 4, resource, and stored ME_THING. Slot 0x5c8 constructs the empty-name movie resource and slot 0x5ec receives true; the same slot's true/false bracketing is PauseAllNonScriptedEntities throughout this quest",
         "NOVI_TeddyGirl#35: failed chat acquisition exits before opening the movie",
         "NOVI_Theresa#47: no FixMovieSequenceCamera in this block",
@@ -5638,8 +5638,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 20,
-          "native": "conv = AddNewConversation(me?); AddPersonToConversation(conv, GetHero())",
-          "evidence": "native-decompile"
+          "native": "conv = AddNewConversation(me, false, false); AddPersonToConversation(conv, GetHero())",
+          "evidence": "asm 0xdb73f7-0xdb7419"
         },
         {
           "script": "NOVI_BookTrader",
@@ -5714,7 +5714,7 @@
         "NOVI_AffairWife#56: person inferred as the husband",
         "NOVI_BarrelMan#43: where-gone branch; retail 3rd arg bool=false has no named binding parameter (binding: id,key,speaker,listener,showSubtitle?)",
         "NOVI_BarrelMan#75: never removed by retail",
-        "NOVI_BarrelThug#20: created BEFORE the tier test; left dangling when no tier matches",
+        "NOVI_BarrelThug#20: created BEFORE the tier test and left dangling when no tier matches; pushes prove both false flags, stored ME_THING (EDI), then conversation ID and hero",
         "NOVI_Bully#63: listeners inferred; conversation never removed (retail)",
         "NOVI_Bully#69: listener thing unknown",
         "NOVI_TeddyGirl#28: AddNewConversation args dropped",
@@ -5761,8 +5761,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 20,
-          "native": "conv = AddNewConversation(me?); AddPersonToConversation(conv, GetHero())",
-          "evidence": "native-decompile"
+          "native": "conv = AddNewConversation(me, false, false); AddPersonToConversation(conv, GetHero())",
+          "evidence": "asm 0xdb73f7-0xdb7419"
         },
         {
           "script": "NOVI_BookTrader",
@@ -5834,7 +5834,7 @@
         "NOVI_AffairMan#59: keys TEXT_QST_048_AFFAIRMAN_SCRMSG_DIRTY_WORDS_ / TEXT_QST_048_AFFAIRWOMAN_DIRTY_WORDS_",
         "NOVI_AffairWife#42: AddNewConversation args dropped",
         "NOVI_AffairWife#56: person inferred as the husband",
-        "NOVI_BarrelThug#20: created BEFORE the tier test; left dangling when no tier matches",
+        "NOVI_BarrelThug#20: created BEFORE the tier test and left dangling when no tier matches; pushes prove both false flags, stored ME_THING (EDI), then conversation ID and hero",
         "NOVI_Bully#63: listeners inferred; conversation never removed (retail)",
         "NOVI_Bully#69: listener thing unknown",
         "NOVI_TeddyGirl#28: AddNewConversation args dropped",
@@ -5909,8 +5909,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 23,
-          "native": "AddLineToConversation(conv, <tier key>, ..., GetHero())",
-          "evidence": "native-decompile"
+          "native": "AddLineToConversation(conv, <tier key>, false, me, GetHero())",
+          "evidence": "asm tier call sites 0xdb7452-0xdb78df"
         },
         {
           "script": "NOVI_BookTrader",
@@ -5986,6 +5986,7 @@
         "NOVI_AffairWife#60: speaker is the husband thing (&ppuStack_a4)",
         "NOVI_BarrelMan#43: where-gone branch; retail 3rd arg bool=false has no named binding parameter (binding: id,key,speaker,listener,showSubtitle?)",
         "NOVI_BarrelMan#75: never removed by retail",
+        "NOVI_BarrelThug#23: every tier call pushes returned hero as listener, stored ME_THING (EDI) as speaker, false, the selected key, and conversation ID (EBP)",
         "NOVI_BookTrader#30: GetHero result is pushed as listener, stored ME_THING (EBP) as speaker, then false, text, and conversation ID (EBX)",
         "NOVI_Bully#63: listeners inferred; conversation never removed (retail)",
         "NOVI_Bully#69: listener thing unknown",
@@ -6216,8 +6217,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 26,
-          "native": "EntitySetThingAsAllyOfThing x2; AddBadDeed(PARENT,2); StartMovieSequence; PauseAll(1); StartScriptingEntity(me,res,4); if alive Speak(TEXT_QST_048_BARRELTHUG_WHY_HIT)+wait; PauseAll(0); ~movie",
-          "evidence": "native-decompile"
+          "native": "EntitySetThingAsAllyOfThing(me, hero); EntitySetThingAsAllyOfThing(hero, me); AddBadDeed(PARENT,2); StartMovieSequence(\"\", movie); PauseAllNonScriptedEntities(true); StartScriptingEntity(me,res,4); if alive Speak(hero,TEXT_QST_048_BARRELTHUG_WHY_HIT,0,false,true,false)+wait; PauseAllNonScriptedEntities(false); ~movie",
+          "evidence": "asm 0xdb79fc-0xdb7bab"
         },
         {
           "script": "NOVI_BookTrader",
@@ -6301,7 +6302,7 @@
       "semanticDifferences": [
         "NOVI_AffairWife#20: both argument lists dropped; (me,hero)+(hero,me) inferred",
         "NOVI_AffairWife#52: facing target (&stack0xffffff4c) inferred as the hero",
-        "NOVI_BarrelThug#26: ally/deed writes and movie start precede action acquisition; speech follows it",
+        "NOVI_BarrelThug#26: reciprocal ally order, deed 2, empty movie name, pause flags, priority 4, and complete Speak operands are explicit; ally/deed writes and movie start precede action acquisition",
         "NOVI_BookTrader#10: first call pushes returned hero then stored ME_THING (EBP); second pre-pushes EBP, calls GetHero, then pushes hero, proving reciprocal calls; AddBadDeed pushes 2",
         "NOVI_Guard#13: two calls, args dropped; (me,hero)+(hero,me) is an inference from the CNOVI_Villager::Main pattern",
         "NOVI_TeddyGirl#42: args dropped; both directions is an inference",
@@ -6341,15 +6342,15 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 19,
-          "native": "!PARENT+0x73 && GetTimer(?) > 0",
-          "evidence": "native-decompile"
+          "native": "!PARENT+0x73 && GetTimer(PARENT->WatchTimer) > 0",
+          "evidence": "asm 0xdb73a0-0xdb73c5"
         },
         {
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 24,
-          "native": "this+0x20 = GetTimer(?)",
-          "evidence": "native-decompile"
+          "native": "this->LastTimeSpoken = GetTimer(PARENT->WatchTimer)",
+          "evidence": "asm 0xdb78ee-0xdb7907"
         },
         {
           "script": "NOVI_BookTrader",
@@ -6394,13 +6395,13 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_AffairWife#39: 0x00db32aa-0x00db32bd loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_BarrelMan#25: case 2",
         "NOVI_BarrelMan#61: decompile labels the GetPos call GSI->IsXbox because thing slot +0x18 collides with the GSI IsXbox slot; asm proves it is a CScriptThing call",
-        "NOVI_BarrelThug#19: timer id dropped; Lua resolves F.WatchTimer's registered ID (inference)",
-        "NOVI_BarrelThug#24: skipped when no tier matched (goto LAB_00db7924)",
+        "NOVI_BarrelThug#19: the timer ID is loaded directly from PARENT+0x108 (WatchTimer) and passed to GSI slot 0x168 GetTimer",
+        "NOVI_BarrelThug#24: loads PARENT+0x108 WatchTimer; skipped when no tier matched (goto LAB_00db7924)",
         "NOVI_BookTrader#25: 0x00db4ce6-0x00db4cf9 loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_Bully#66: 0x00dbc59b-0x00dbc5ae loads PARENT+0x104 and calls GetTimer slot 0x168",
         "NOVI_CreatedBeetle#3: the second GetTimer call in the decompile has its arg dropped; asm/retail sig GetTimer(long) implies the same timer id",
@@ -7514,8 +7515,8 @@
           "script": "NOVI_BarrelThug",
           "function": "Main",
           "seq": 26,
-          "native": "EntitySetThingAsAllyOfThing x2; AddBadDeed(PARENT,2); StartMovieSequence; PauseAll(1); StartScriptingEntity(me,res,4); if alive Speak(TEXT_QST_048_BARRELTHUG_WHY_HIT)+wait; PauseAll(0); ~movie",
-          "evidence": "native-decompile"
+          "native": "EntitySetThingAsAllyOfThing(me, hero); EntitySetThingAsAllyOfThing(hero, me); AddBadDeed(PARENT,2); StartMovieSequence(\"\", movie); PauseAllNonScriptedEntities(true); StartScriptingEntity(me,res,4); if alive Speak(hero,TEXT_QST_048_BARRELTHUG_WHY_HIT,0,false,true,false)+wait; PauseAllNonScriptedEntities(false); ~movie",
+          "evidence": "asm 0xdb79fc-0xdb7bab"
         },
         {
           "script": "NOVI_BookTrader",
@@ -7609,10 +7610,10 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_BarrelThug#11: terminate in wait -> PauseAll(0), ~movie, return",
-        "NOVI_BarrelThug#26: ally/deed writes and movie start precede action acquisition; speech follows it",
+        "NOVI_BarrelThug#26: reciprocal ally order, deed 2, empty movie name, pause flags, priority 4, and complete Speak operands are explicit; ally/deed writes and movie start precede action acquisition",
         "NOVI_BookTrader#11: hit branch skips the talk branch; acquisition termination must not enter the movie",
         "NOVI_TeddyGirl#19: answer != 1",
         "NOVI_TeddyGirl#45: HeroHitMe and bad-deed writes precede acquisition; movie and speech follow it"
@@ -7672,14 +7673,14 @@
       "blocked": true
     },
     {
-      "operation": "StartScriptingEntity priority (intro, chat)",
+      "operation": "StartScriptingEntity(me, resource, 4)",
       "proposedForgeCall": null,
       "bindingExists": false,
       "bindingScope": null,
       "nativeEvidence": [
         {
           "script": "NOVI_BarrelThug",
-          "reason": "priority argument dropped",
+          "reason": "ForgeFSE host-manages acquisition; explicit nested resource and retail priority are not exposed",
           "luaLocation": "NOVI.acquire(..., DEFAULT_PRIORITY)"
         }
       ],
