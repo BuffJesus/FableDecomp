@@ -22,6 +22,8 @@ Keep missing functions separate from reduced signatures and host-managed behavio
 - `FadeScreenOut` can include a second float and explicit colour in retail.
 - `GiveHeroYesNoQuestion` has additional retail operands.
 - `PlayAnimation`, `PlayLoopingAnimation`, and `PlayCombatAnimation` have larger native flag sets.
+  For example, Dead Father uses seven known native booleans while `PlayLoopingAnimation` exposes
+  only `useMovement` and `allowLooking`; the binding-to-native flag correspondence is undocumented.
 - Speak/task waits interleave task checks, frame advancement, and termination checks.
 - Explicit `EndMovieSequence` is not equivalent to retail destructor cleanup on interruption.
 
@@ -31,17 +33,6 @@ Keep missing functions separate from reduced signatures and host-managed behavio
   lifetime behavior still need runtime verification.
 - `CTCVillage::OnInitialActivate` is engine lifecycle bookkeeping.
 - Lua randomness does not prove exact CRT `rand() % 100` behavior.
-
-Validation currently reports two executable scheduler fallbacks and 59 blocked semantic/signature
-requirements. The low executable count must not be mistaken for API parity.
-ndMovieSequence` matches normal cleanup but is not RAII-equivalent on interruption.
-
-## Host/runtime boundaries
-
-- ForgeFSE owns primary entity `AcquireControl`/`ReleaseControl`; nested resources and exact
-  priority/lifetime behavior still need runtime verification.
-- `CTCVillage::OnInitialActivate` is engine lifecycle bookkeeping.
-- Lua random generation does not prove exact CRT `rand() % 100` behavior.
 
 Validation currently reports two executable `NOVI.unsupported` scheduler fallbacks and 59 blocked
 semantic/signature requirements. The low executable count must not be mistaken for API parity.

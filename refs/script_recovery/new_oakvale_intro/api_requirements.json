@@ -4771,7 +4771,7 @@
           "function": "Main",
           "seq": 39,
           "native": "GSI->ClearThingHasInformation(me)",
-          "evidence": "native-decompile"
+          "evidence": "native-disassembly"
         },
         {
           "script": "NOVI_LiveFather",
@@ -4827,7 +4827,7 @@
       "semanticDifferences": [
         "NOVI_AffairMan#25: LAB_00db1153",
         "NOVI_Bully#31: ClearThingHasInformation arg dropped; me inferred",
-        "NOVI_LiveFather#39: arg dropped by decompiler; me inferred (only thing in scope)",
+        "NOVI_LiveFather#39: 0x00db93cf-0x00db93d8 loads the GSI vtable, forms &this+0x8 (the entity script's ME_THING CScriptThing), pushes it, and calls slot 0x5a4",
         "NOVI_TeddyGirl#38: arg dropped",
         "NOVI_Victim#13: bool args dropped; inferred as undoing Init (scared=false, pushable=true, movement=true)",
         "NOVI_Victim#30: facing target inferred (bully)"
@@ -6293,8 +6293,8 @@
           "script": "NOVI_Villager",
           "function": "Main",
           "seq": 9,
-          "native": "[hit] GSI->EntitySetThingAsAllyOfThing(me, GetHero()); GSI->EntitySetThingAsAllyOfThing(GetHero(me)...)",
-          "evidence": "native-decompile"
+          "native": "[hit] GSI->EntitySetThingAsAllyOfThing(me, GetHero()); GSI->EntitySetThingAsAllyOfThing(GetHero(), me)",
+          "evidence": "native-disassembly"
         }
       ],
       "signatureConfidence": "low",
@@ -6305,7 +6305,7 @@
         "NOVI_BookTrader#10: ally args dropped",
         "NOVI_Guard#13: two calls, args dropped; (me,hero)+(hero,me) is an inference from the CNOVI_Villager::Main pattern",
         "NOVI_TeddyGirl#42: args dropped; both directions is an inference",
-        "NOVI_Villager#9: first call explicit (me,hero); second call's args partly dropped, (hero,me) inferred"
+        "NOVI_Villager#9: 0x00dae109-0x00dae12f: first call pushes hero then me; second pre-pushes me at 0x00dae124, calls zero-argument GetHero, then pushes the returned hero, proving reciprocal (hero,me) despite the decompiler's dropped stack operand"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -9289,13 +9289,13 @@
           "script": "OVI_DeadFather",
           "function": "Main",
           "seq": 7,
-          "native": "res.PlayLoopingAnimation(\"CS_DEAD_DAD\", -1, false, true, false, true, true, DAT_01375748(=1), false, false)",
-          "evidence": "native-decompile + asm push sequence 0xdb8486-0xdb849e"
+          "native": "res.PlayLoopingAnimation(\"CS_DEAD_DAD\", -1, false, true, false, true, true, false, false)",
+          "evidence": "native-decompile + asm 0xdb8476-0xdb84a5 + retail image bytes at 0x01375748"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
-        "OVI_DeadFather#7: mangled sig is (CCharString&, long, 7x bool) but 8 bool-sized pushes precede the call; exact bool mapping unresolved; binding accepts (name, loopCount, useMovement?, allowLooking?) so only the loop count is passed"
+        "OVI_DeadFather#7: mangled sig is (CCharString&, long, 7x bool). Reading the pushes in reverse source order gives false,true,false,true,DAT_01375748,false,false; the retail byte at DAT_01375748 is 1. The binding accepts only (name, loopCount, useMovement?, allowLooking?), and their correspondence to the seven native flags is not documented, so only the exactly representable loop count is passed"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -9311,7 +9311,7 @@
           "function": "Main",
           "seq": 9,
           "native": "GSI->MiniMapRemoveMarker(me)",
-          "evidence": "native-decompile"
+          "evidence": "asm 0xdb8307 (EDI = &this+8 stored ME_THING) + 0xdb84e8-0xdb84ee (push EDI; call GSI slot 0x580)"
         },
         {
           "script": "Q_NewOakValeIntro",
@@ -9328,9 +9328,9 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
+      "signatureConfidence": "high",
       "semanticDifferences": [
-        "OVI_DeadFather#9: arg dropped by decompiler; me is the only marker this class added"
+        "OVI_DeadFather#9: disassembly restores the argument dropped by the decompiler"
       ],
       "fallbackStatus": "direct",
       "blocked": false

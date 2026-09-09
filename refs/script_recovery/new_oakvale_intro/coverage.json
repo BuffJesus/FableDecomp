@@ -326,7 +326,7 @@
         "entity_live_father_pays_good_deeds"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_TeddyGirl",
@@ -449,7 +449,7 @@
         "entity_villager_male_good_mutter"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Villager",
@@ -497,7 +497,7 @@
         "entity_dead_father_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "OVI_DeadFather",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 32,
+    "implementedAndTraced": 35,
     "implementedUntraced": 0,
-    "uncertain": 14,
+    "uncertain": 11,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6

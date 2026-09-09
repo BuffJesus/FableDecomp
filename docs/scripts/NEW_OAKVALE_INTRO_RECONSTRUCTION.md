@@ -192,7 +192,7 @@ the per-script `entities` inventories, fixtures, and source-hashed traces.
 
 ## 2026-09-08 restart checkpoint
 
-The zero-unknown audit remains the acceptance gate. There are 119 operation records with
+The zero-unknown audit remains the acceptance gate. There are 115 operation records with
 `argsKnown: false`; passing fixtures do not override those evidence gaps. The quest inventory
 itself is now at zero unknown operations. The remaining queue, in descending order, is:
 
@@ -208,12 +208,13 @@ itself is now at zero unknown operations. The remaining queue, in descending ord
 | `NOVI_BarrelThug` | 8 |
 | `NOVI_BookTrader` | 5 |
 | `NOVI_BarrelMan` | 3 |
-| `OVI_DeadFather` | 2 |
-| `NOVI_Villager` | 1 |
-| `NOVI_LiveFather` | 1 |
 
-Resume with `NOVI_Villager`'s reciprocal `EntitySetThingAsAllyOfThing` call in
-`CNOVI_Villager::Main @ 0x00DADF80`, then clear `NOVI_LiveFather` and `OVI_DeadFather` before
-returning to the larger inventories. The Ghidra project briefly reported a project lock after a
-timed-out headless disassembly command; no Java process remained, so retry the read-only command
-before treating it as a persistent blocker.
+Resume with `NOVI_BarrelMan` before returning to the larger inventories.
+`NOVI_Villager` is now at zero unknown operations: disassembly at
+`0x00DAE109`-`0x00DAE12F` proves its two ally calls are reciprocal `(me, hero)` and `(hero, me)`.
+`NOVI_LiveFather` is also at zero: `0x00DB93CF`-`0x00DB93D8` explicitly pushes its stored
+`ME_THING` into `ClearThingHasInformation`.
+`OVI_DeadFather` is now at zero too. The signature and push sequence at
+`0x00DB8476`-`0x00DB84A5` recover all seven animation flags as
+`false, true, false, true, true, false, false`; the retail byte at `0x01375748` is `1`.
+The marker-removal call at `0x00DB84E8`-`0x00DB84EE` explicitly pushes the stored `ME_THING`.
