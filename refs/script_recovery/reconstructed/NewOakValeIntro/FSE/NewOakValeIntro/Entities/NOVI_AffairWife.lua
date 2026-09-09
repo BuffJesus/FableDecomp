@@ -75,7 +75,7 @@ function Init(quest, me)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     quest:SetThingHasInformation(me, false)           -- retail passes (me, 0, 1, 0); ForgeFSE binding takes one bool
     quest:EntitySetAsUseMovementInActions(me, false)
-    me:SetIsPushableByHero(false)
+    quest:SetIsPushableByHero(me, false)
     SaidRunningLine = false
     quest:EntitySetDeedReactionsEnabled(me, false)
 end

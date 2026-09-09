@@ -165,12 +165,6 @@
     "Entity.ReleaseControl": [
       "NewOakValeIntro/common.lua"
     ],
-    "Entity.SetIsPushableByHero": [
-      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua"
-    ],
     "Entity.Speak": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
@@ -939,6 +933,10 @@
       "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.SetIsPushableByHero": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",

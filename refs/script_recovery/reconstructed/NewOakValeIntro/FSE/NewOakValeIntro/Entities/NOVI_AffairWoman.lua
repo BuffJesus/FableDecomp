@@ -44,7 +44,7 @@ function Init(quest, me)
     quest:EntitySetAsDamageable(me, false)
     quest:EntitySetAsKillable(me, false)              -- retail passes (me, 0, 0); ForgeFSE binding takes one bool
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    me:SetIsPushableByHero(false)
+    quest:SetIsPushableByHero(me, false)
     quest:EntitySetAsUseMovementInActions(me, false)
 end
 
@@ -147,7 +147,7 @@ end
 local function run_off(quest, me)
     local point = quest:GetThingWithScriptName(SCRIPT_NAME_RUN_OFF_POINT)
     quest:EntitySetAsUseMovementInActions(me, true)
-    me:SetIsPushableByHero(true)                         -- retail restores pushability before she flees
+    quest:SetIsPushableByHero(me, true)                  -- retail restores pushability before she flees
     local target = ZERO_POSITION
     if point then target = point:GetPos() end
     if not move_until_within(quest, me, target, RUN_OFF_ARRIVE_RADIUS, MOVE_RUN) then return false end

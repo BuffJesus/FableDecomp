@@ -80,7 +80,7 @@ function Init(quest, me)
     quest:EntitySetAsDamageable(me, false)
     quest:EntitySetAsKillable(me, false)              -- retail passes (me, 0, 0); ForgeFSE binding takes one bool
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    me:SetIsPushableByHero(false)
+    quest:SetIsPushableByHero(me, false)
     quest:EntitySetAsUseMovementInActions(me, false)
     quest:SetThingHasInformation(me, false)           -- retail passes (me, 0, 0, 0); ForgeFSE binding takes one bool
 end
