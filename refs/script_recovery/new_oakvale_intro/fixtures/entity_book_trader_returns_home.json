@@ -1,0 +1,14 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["GetHomePos","GetPos","MoveToPosition","EntitySetFacingAngleTowardsThing","ReleaseControl"],"note":"squared-vector distance fallback returns the trader home, faces Theresa, then cleans up on idle termination"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.AcquireControl":[true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":3,"y":0,"z":0},{"x":3,"y":0,"z":0},{"x":0,"y":0,"z":0}],
+  "Entity.IsPerformingScriptTask":[false],
+  "Quest.GetThingWithScriptName(NOVI_Theresa)":[{"handle":"theresa","scope":"Entity"}],
+  "Entity.MsgIsHitByHero":[false],
+  "Quest.Log":[null],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[801],
+  "Quest.GetTimer(801)":[1]
+}

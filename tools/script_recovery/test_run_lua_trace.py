@@ -6,6 +6,7 @@ from tools.script_recovery.run_lua_trace import LuaRuntime, run_trace
 
 
 CORPUS = Path("refs/script_recovery/seed_corpus/sources/MeetSister/FSE/MeetSister")
+NOVI_FSE = Path("refs/script_recovery/reconstructed/NewOakValeIntro/FSE")
 
 
 @unittest.skipIf(LuaRuntime is None, "lupa is not installed")
@@ -57,6 +58,22 @@ class LuaTraceTests(unittest.TestCase):
             self.assertEqual([event["arguments"] for event in random_events], [[0, 99], [0, 5]])
             record = next(event for event in trace["events"] if event["name"] == "Record")
             self.assertEqual(record["arguments"], [0, 4])
+
+    def test_novi_pc_platform_and_distance_fallbacks(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "common_fallbacks.lua"
+            source.write_text(
+                'local N=require("NewOakValeIntro.common")\n'
+                'function Main(q,me) q:Record(N.is_xbox(), '
+                'N.distance_from_thing_to_position_over(me,{x=0,y=0,z=0},2), '
+                'N.things_over(q,me,q:GetHero(),20)) end', encoding="utf-8")
+            trace = run_trace(source, "Main", "entity", {
+                "Entity.GetPos": [{"x": 3, "y": 0, "z": 0}],
+                "Quest.GetHero": [{"handle": "hero", "scope": "Entity"}],
+                "Quest.IsDistanceBetweenThingsUnder": [False],
+            }, package_path=NOVI_FSE)
+            record = next(event for event in trace["events"] if event["name"] == "Record")
+            self.assertEqual(record["arguments"], [False, True, True])
 
 
 if __name__ == "__main__":

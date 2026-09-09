@@ -155,7 +155,7 @@ local function teddy_ruined(quest, me)
     local wife = quest:GetThingWithScriptName(WIFE_SCRIPT_NAME)
     me:MoveToThing(wife, WIFE_ARRIVE_RADIUS, WIFE_MOVE_TYPE)   -- retail also passes (false,false,false,true)
     while quest:IsCameraPosOnScreen(me:GetPos()) do
-        local far = NOVI.unsupported(quest, "IsDistanceBetweenThingsOver", { me, quest:GetHero(), HERO_FAR_DISTANCE })
+        local far = NOVI.things_over(quest, me, quest:GetHero(), HERO_FAR_DISTANCE)
         if far then break end
         if not NOVI.frame(quest, me) then return false end
     end

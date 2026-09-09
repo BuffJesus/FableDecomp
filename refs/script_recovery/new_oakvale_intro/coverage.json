@@ -95,7 +95,7 @@
         "entity_barrel_pc_tutorial"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented-and-traced"
     },
     {
       "script": "NOVI_Barrel",
@@ -176,7 +176,8 @@
       "operations": 28,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "fixtures": [
-        "entity_book_trader_main_terminated"
+        "entity_book_trader_main_terminated",
+        "entity_book_trader_returns_home"
       ],
       "evidence": "native-decompile",
       "status": "partially API-blocked"
@@ -201,10 +202,11 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "fixtures": [
         "entity_bully_accepts_teddy",
-        "entity_bully_main_terminated"
+        "entity_bully_main_terminated",
+        "entity_bully_walks_home"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_Bully",
@@ -289,7 +291,7 @@
         "entity_live_father_entry_cleanup"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_TeddyGirl",
@@ -374,7 +376,7 @@
         "entity_victim_main_terminated"
       ],
       "evidence": "native-decompile",
-      "status": "partially API-blocked"
+      "status": "implemented (uncertain args)"
     },
     {
       "script": "NOVI_Villager",
@@ -631,10 +633,10 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 28,
+    "implementedAndTraced": 29,
     "implementedUntraced": 0,
-    "uncertain": 8,
-    "apiBlocked": 10,
+    "uncertain": 11,
+    "apiBlocked": 6,
     "notImplemented": 0,
     "notApplicable": 6
   }

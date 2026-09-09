@@ -1,0 +1,15 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua","expect":["GetHomePos","GetPos","MoveToPosition","GetThingWithScriptName"],"note":"squared-vector distance fallback drives one walk-home iteration before normal idle termination"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.AcquireControl":[true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":3,"y":0,"z":0},{"x":0,"y":0,"z":0}],
+  "Entity.IsPerformingScriptTask":[false],
+  "Quest.GetThingWithScriptName(NOVI_Victim)":[{"handle":"victim","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[901],
+  "Quest.GetTimer(901)":[1]
+}

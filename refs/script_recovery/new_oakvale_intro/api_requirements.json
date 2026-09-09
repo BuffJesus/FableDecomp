@@ -231,6 +231,13 @@
         {
           "script": "NOVI_Barrel",
           "function": "Main",
+          "seq": 5,
+          "native": "if (GSI->IsXbox() == false) key = ..._BREAK_BARRELS_PC else key = ..._BREAK_BARRELS",
+          "evidence": "native-decompile + asm 0xdb7eb8 (ecx=[esi+4] GSI, call [vt+0x18] = cgsi slot 10 IsXbox)"
+        },
+        {
+          "script": "NOVI_Barrel",
+          "function": "Main",
           "seq": 7,
           "native": "PARENT->InstructionGiven_Barrels = true",
           "evidence": "native-decompile"
@@ -483,6 +490,13 @@
         {
           "script": "NOVI_LiveFather",
           "function": "Main",
+          "seq": 23,
+          "native": "if (!GSI->IsXbox()) DisplayGameInfo(\"..._PC\") else DisplayGameInfo(\"...\")",
+          "evidence": "native-disassembly 0x00DB8951 (GSI slot 0x18 = IsXbox)"
+        },
+        {
+          "script": "NOVI_LiveFather",
+          "function": "Main",
           "seq": 33,
           "native": "if (GoodDeedsPerformed == 0 && BadDeedsPerformed == 0)",
           "evidence": "native-decompile + PDB-name"
@@ -693,11 +707,13 @@
         "NOVI_AffairWoman#13: HIT branch",
         "NOVI_AffairWoman#21: TALK branch",
         "NOVI_Barrel#2: re-read every iteration, so another barrel setting it ends this loop too",
+        "NOVI_Barrel#5: ForgeFSE is a Windows PC host, so the retail PC branch is invariant",
         "NOVI_BarrelMan#18: phase 5 has no case label and falls to the same idle handler as phase 0",
         "NOVI_BarrelMan#33: case 4",
         "NOVI_BookTrader#14: -> INTRO_10 then face Theresa, PauseAll(0)",
         "NOVI_Bully#29: NOVI_Victim clears the flag after speaking EVIL_BROS_10",
         "NOVI_Bully#70: keys cycle _10, _20, _30, _40",
+        "NOVI_LiveFather#23: ForgeFSE is a Windows PC host",
         "NOVI_TeddyGirl#36: -> PLEA_POST_BEATEN, DoneIntro=1",
         "NOVI_TeddyGirl#37: -> BAD_FEELING then ClearThingHasInformation(?)",
         "NOVI_Theresa#10: decompiler rendered it as unaff_EDI / cVar28; disassembly proves a zero-initialised stack byte",
@@ -932,6 +948,13 @@
         {
           "script": "NOVI_Barrel",
           "function": "Main",
+          "seq": 5,
+          "native": "if (GSI->IsXbox() == false) key = ..._BREAK_BARRELS_PC else key = ..._BREAK_BARRELS",
+          "evidence": "native-decompile + asm 0xdb7eb8 (ecx=[esi+4] GSI, call [vt+0x18] = cgsi slot 10 IsXbox)"
+        },
+        {
+          "script": "NOVI_Barrel",
+          "function": "Main",
           "seq": 7,
           "native": "PARENT->InstructionGiven_Barrels = true",
           "evidence": "native-decompile"
@@ -1184,6 +1207,13 @@
         {
           "script": "NOVI_LiveFather",
           "function": "Main",
+          "seq": 23,
+          "native": "if (!GSI->IsXbox()) DisplayGameInfo(\"..._PC\") else DisplayGameInfo(\"...\")",
+          "evidence": "native-disassembly 0x00DB8951 (GSI slot 0x18 = IsXbox)"
+        },
+        {
+          "script": "NOVI_LiveFather",
+          "function": "Main",
           "seq": 33,
           "native": "if (GoodDeedsPerformed == 0 && BadDeedsPerformed == 0)",
           "evidence": "native-decompile + PDB-name"
@@ -1394,11 +1424,13 @@
         "NOVI_AffairWoman#13: HIT branch",
         "NOVI_AffairWoman#21: TALK branch",
         "NOVI_Barrel#2: re-read every iteration, so another barrel setting it ends this loop too",
+        "NOVI_Barrel#5: ForgeFSE is a Windows PC host, so the retail PC branch is invariant",
         "NOVI_BarrelMan#18: phase 5 has no case label and falls to the same idle handler as phase 0",
         "NOVI_BarrelMan#33: case 4",
         "NOVI_BookTrader#14: -> INTRO_10 then face Theresa, PauseAll(0)",
         "NOVI_Bully#29: NOVI_Victim clears the flag after speaking EVIL_BROS_10",
         "NOVI_Bully#70: keys cycle _10, _20, _30, _40",
+        "NOVI_LiveFather#23: ForgeFSE is a Windows PC host",
         "NOVI_TeddyGirl#36: -> PLEA_POST_BEATEN, DoneIntro=1",
         "NOVI_TeddyGirl#37: -> BAD_FEELING then ClearThingHasInformation(?)",
         "NOVI_Theresa#10: decompiler rendered it as unaff_EDI / cVar28; disassembly proves a zero-initialised stack byte",
@@ -4460,34 +4492,6 @@
           "seq": 10,
           "native": "IsDistanceFromThingToPositionOver(me, me.GetHomePos(), 0.1)",
           "evidence": "native-decompile"
-        },
-        {
-          "script": "NOVI_Barrel",
-          "function": "Main",
-          "seq": 5,
-          "native": "if (GSI->IsXbox() == false) key = ..._BREAK_BARRELS_PC else key = ..._BREAK_BARRELS",
-          "evidence": "native-decompile + asm 0xdb7eb8 (ecx=[esi+4] GSI, call [vt+0x18] = cgsi slot 10 IsXbox)"
-        },
-        {
-          "script": "NOVI_BookTrader",
-          "function": "Main",
-          "seq": 6,
-          "native": "IsDistanceFromThingToPositionOver(me, me->GetHomePos(), 0.1)",
-          "evidence": "native-decompile"
-        },
-        {
-          "script": "NOVI_Bully",
-          "function": "Main",
-          "seq": 15,
-          "native": "while (IsDistanceFromThingToPositionOver(GetScriptThing(res), home, 2.0))",
-          "evidence": "native-decompile"
-        },
-        {
-          "script": "NOVI_LiveFather",
-          "function": "Main",
-          "seq": 23,
-          "native": "if (!GSI->IsXbox()) DisplayGameInfo(\"..._PC\") else DisplayGameInfo(\"...\")",
-          "evidence": "native-disassembly 0x00DB8951 (GSI slot 0x18 = IsXbox)"
         }
       ],
       "signatureConfidence": "high",
@@ -4495,10 +4499,7 @@
         "NOVI_AffairMan#48: CScriptThing slot 0x1c = GetHomePos; helper reimplemented locally",
         "NOVI_AffairWife#44: helper reimplemented locally",
         "NOVI_AffairWife#58: with the binding missing the fallback always fires",
-        "NOVI_AffairWoman#10: CScriptThing slot 0x1c = GetHomePos; helper reimplemented locally",
-        "NOVI_Barrel#5: nil from the gap stub selects the PC key, i.e. the retail PC branch",
-        "NOVI_BookTrader#6: slot 0x1c = GetHomePos",
-        "NOVI_Bully#15: no ForgeFSE binding; loop body is unreachable until one exists"
+        "NOVI_AffairWoman#10: CScriptThing slot 0x1c = GetHomePos; helper reimplemented locally"
       ],
       "fallbackStatus": "explicit-gap (NOVI.unsupported)",
       "blocked": true
@@ -4800,11 +4801,6 @@
           "script": "NOVI_AffairWoman",
           "reason": "retail static helper, not registered in ForgeFSE",
           "luaLocation": "distance_from_me_to_pos_over (local 3D Euclidean reimplementation, metric is an inference)"
-        },
-        {
-          "script": "NOVI_BookTrader",
-          "reason": "helper not registered in ForgeFSE",
-          "luaLocation": "return_home"
         }
       ],
       "signatureConfidence": "n/a",
@@ -5380,6 +5376,7 @@
         "NOVI_AffairWife#41: both arguments dropped",
         "NOVI_BarrelMan#19: case 1",
         "NOVI_BarrelMan#61: decompile labels the GetPos call GSI->IsXbox because thing slot +0x18 collides with the GSI IsXbox slot; asm proves it is a CScriptThing call",
+        "NOVI_BookTrader#26: timer identity inferred; duration remains unknown and is not guessed",
         "NOVI_Bully#68: SetTimer args dropped",
         "Q_NewOakValeIntro#9: timer ids come from RegisterTimer in the retail constructor @0x00DAAC00; Lua registers them in Init"
       ],
@@ -5709,13 +5706,29 @@
           "seq": 22,
           "native": "GSI->GetThingWithScriptName(\"M_BarrelManWalkOff\"); target = thing.GetPos() (or zero vector if null)",
           "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_BookTrader",
+          "function": "Main",
+          "seq": 6,
+          "native": "IsDistanceFromThingToPositionOver(me, me->GetHomePos(), 0.1)",
+          "evidence": "native-decompile"
+        },
+        {
+          "script": "NOVI_Bully",
+          "function": "Main",
+          "seq": 15,
+          "native": "while (IsDistanceFromThingToPositionOver(GetScriptThing(res), home, 2.0))",
+          "evidence": "native-decompile"
         }
       ],
       "signatureConfidence": "high",
       "semanticDifferences": [
         "NOVI_AffairWoman#36: CScriptThing slot 0x18 = GetPos",
         "NOVI_Barrel#10: 12-byte C3DVector copy into 0x76..0x81",
-        "NOVI_BarrelMan#22: null-thing fallback DAT_0143e8e0 not reproduced (GetPos returns empty table)"
+        "NOVI_BarrelMan#22: null-thing fallback DAT_0143e8e0 not reproduced (GetPos returns empty table)",
+        "NOVI_BookTrader#6: slot 0x1c = GetHomePos; squared 3D Lua fallback",
+        "NOVI_Bully#15: Lua computes squared 3D distance from the bound GetPos vector; exact retail boundary convention remains uncertain"
       ],
       "fallbackStatus": "direct",
       "blocked": false
@@ -5925,28 +5938,6 @@
       "semanticDifferences": [],
       "fallbackStatus": "direct",
       "blocked": false
-    },
-    {
-      "operation": "CGameScriptInterface::IsXbox()",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_Barrel",
-          "reason": "not registered in ForgeFSE Lua (absent from forge_quest_bindings.txt)",
-          "luaLocation": "show_break_instruction (NOVI.unsupported)"
-        },
-        {
-          "script": "NOVI_LiveFather",
-          "reason": "not registered in ForgeFSE; retail selects the Xbox vs PC tutorial text with it",
-          "luaLocation": "intro_cutscene: NOVI.unsupported(quest, \"IsXbox\", {}) (nil -> PC text, matching the PC retail result)"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
     },
     {
       "operation": "OnPredicateFail virtual (entity vtable slot 5)",
@@ -7191,8 +7182,8 @@
       "blocked": true
     },
     {
-      "operation": "missing|MoveToPosition|IsPerformingScriptTask",
-      "proposedForgeCall": "missing|MoveToPosition|IsPerformingScriptTask",
+      "operation": "GetPos|MoveToPosition|IsPerformingScriptTask",
+      "proposedForgeCall": "GetPos|MoveToPosition|IsPerformingScriptTask",
       "bindingExists": false,
       "bindingScope": null,
       "nativeEvidence": [
@@ -7206,9 +7197,9 @@
       ],
       "signatureConfidence": "high",
       "semanticDifferences": [
-        "NOVI_BookTrader#7: terminate -> return"
+        "NOVI_BookTrader#7: terminate -> return; exact distance boundary convention uncertain"
       ],
-      "fallbackStatus": "explicit-gap (NOVI.unsupported)",
+      "fallbackStatus": "direct",
       "blocked": true
     },
     {
@@ -7352,7 +7343,7 @@
       ],
       "signatureConfidence": "low",
       "semanticDifferences": [
-        "NOVI_BookTrader#25: timer id dropped; lua uses F.TalkIntermittentTimer (inference)"
+        "NOVI_BookTrader#25: timer id dropped; Lua resolves the registered intermittent timer ID from quest state (inference)"
       ],
       "fallbackStatus": "direct",
       "blocked": true
@@ -7365,7 +7356,7 @@
       "nativeEvidence": [
         {
           "script": "NOVI_BookTrader",
-          "reason": "both args dropped by the decompiler",
+          "reason": "timer identity is inferred as TalkIntermittentTimer; duration remains dropped by the decompiler",
           "luaLocation": "maybe_shout"
         }
       ],
@@ -7917,23 +7908,6 @@
       "semanticDifferences": [],
       "fallbackStatus": "direct",
       "blocked": false
-    },
-    {
-      "operation": "IsDistanceFromThingToPositionOver(thing, C3DVector, float)",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_Bully",
-          "reason": "not registered in ForgeFSE (only IsDistanceBetweenThingsUnder)",
-          "luaLocation": "walk_home: NOVI.unsupported(quest, \"IsDistanceFromThingToPositionOver\", ...)"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
     },
     {
       "operation": "StartScriptingEntity(me, resource, EScriptAIPriority) / resource release",
@@ -8743,8 +8717,8 @@
       "blocked": false
     },
     {
-      "operation": "IsCameraPosOnScreen|missing",
-      "proposedForgeCall": "IsCameraPosOnScreen|missing",
+      "operation": "IsCameraPosOnScreen|IsDistanceBetweenThingsUnder",
+      "proposedForgeCall": "IsCameraPosOnScreen|IsDistanceBetweenThingsUnder",
       "bindingExists": false,
       "bindingScope": null,
       "nativeEvidence": [
@@ -8758,9 +8732,9 @@
       ],
       "signatureConfidence": "high",
       "semanticDifferences": [
-        "NOVI_TeddyGirl#32: slot 0x18 = GetPos"
+        "NOVI_TeddyGirl#32: slot 0x18 = GetPos; over is the complement of the registered under predicate (equality boundary uncertain)"
       ],
-      "fallbackStatus": "explicit-gap (NOVI.unsupported)",
+      "fallbackStatus": "direct",
       "blocked": true
     },
     {
@@ -8809,23 +8783,6 @@
           "script": "NOVI_TeddyGirl",
           "reason": "ability enum dropped by the decompiler; MsgIsHitByHeroSpecialAbility needs the enum",
           "luaLocation": "hero_hit_me"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
-    },
-    {
-      "operation": "IsDistanceBetweenThingsOver(me, hero, 20.0)",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_TeddyGirl",
-          "reason": "helper not registered (only IsDistanceBetweenThingsUnder); not approximated",
-          "luaLocation": "teddy_ruined wait loop"
         }
       ],
       "signatureConfidence": "n/a",
@@ -9363,8 +9320,8 @@
       "blocked": true
     },
     {
-      "operation": "DisplayGameInfo + MsgIsGameInfoClickedPast; IsXbox missing",
-      "proposedForgeCall": "DisplayGameInfo + MsgIsGameInfoClickedPast; IsXbox missing",
+      "operation": "DisplayGameInfo + MsgIsGameInfoClickedPast",
+      "proposedForgeCall": "DisplayGameInfo + MsgIsGameInfoClickedPast",
       "bindingExists": false,
       "bindingScope": null,
       "nativeEvidence": [
@@ -9377,8 +9334,10 @@
         }
       ],
       "signatureConfidence": "high",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap (NOVI.unsupported)",
+      "semanticDifferences": [
+        "NOVI_Victim#24: ForgeFSE is a Windows PC host"
+      ],
+      "fallbackStatus": "direct",
       "blocked": true
     },
     {
@@ -9442,23 +9401,6 @@
         "NOVI_Victim#33: speaker/listener roles inferred from key names; conversation never removed (retail)"
       ],
       "fallbackStatus": "direct",
-      "blocked": true
-    },
-    {
-      "operation": "IsXbox()",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "NOVI_Victim",
-          "reason": "not registered in ForgeFSE",
-          "luaLocation": "show_hitting_friends_info: NOVI.unsupported(quest, \"IsXbox\", {}) (nil -> PC text, which is the retail PC outcome)"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
       "blocked": true
     },
     {

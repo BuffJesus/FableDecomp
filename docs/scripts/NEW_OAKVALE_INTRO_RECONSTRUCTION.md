@@ -42,27 +42,29 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 55/55 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 57/57 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
-helpers, and deterministic villager reputation-line selection.
-The supporting trace-tool unit suite has 9/9 passing tests.
+helpers, deterministic villager reputation-line selection, and the bully/trader walk-home
+distance fallback.
+The supporting trace-tool unit suite has 18/18 passing tests.
 
-The coverage manifest classifies 28 functions as implemented and traced, 10 as partly
-API-blocked, 8 as implemented with uncertain native arguments, 6 as lifecycle/data-only, and
+The coverage manifest classifies 29 functions as implemented and traced, 6 as partly
+API-blocked, 11 as implemented with uncertain native arguments, 6 as lifecycle/data-only, and
 none as unimplemented. These
 classifications combine native-operation coverage with mock-host traces; they do not mean
 that every entity AI branch has been exercised in the game.
 
 ## Remaining parity limits
 
-Twenty-one explicit `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 139
+Fourteen explicit `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
+does not expose a direct equivalent. The larger API requirements manifest records 135
 required call occurrences whose exact retail behavior is API-blocked. Important limits are
 entity scripting acquisition/release semantics, morality values loaded from game data,
-special-ability message variants, distance predicates, platform checks, and some timer/pause
-behavior.
+special-ability message variants, exact distance-boundary behavior, and some timer/pause
+behavior. ForgeFSE's Windows-only runtime now selects retail PC platform branches explicitly;
+the missing position-distance helper is reconstructed with squared 3D vector math.
 
 Only `AttackOver` is transferred by the native persistence routine. Mock traces cover fresh
 start, reload after attack, attack transition, early termination, persistence, quest markers,

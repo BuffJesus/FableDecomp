@@ -31,6 +31,7 @@
       "NewOakValeIntro/Entities/NOVI_Guard.lua"
     ],
     "Entity.GetPos": [
+      "NewOakValeIntro/common.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
@@ -755,6 +756,7 @@
     "Quest.IsDistanceBetweenThingsUnder": [
       "NewOakValeIntro/common.lua",
       "NewOakValeIntro/common.lua",
+      "NewOakValeIntro/common.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
@@ -1261,7 +1263,7 @@
       "trace": "match"
     },
     {
-      "events": 13,
+      "events": 12,
       "fixture": "entity_barrel_pc_tutorial.json",
       "function": "Main",
       "kind": "entity",
@@ -1309,6 +1311,14 @@
       "trace": "match"
     },
     {
+      "events": 18,
+      "fixture": "entity_book_trader_returns_home.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 63,
       "fixture": "entity_bully_accepts_teddy.json",
       "function": "Main",
@@ -1327,6 +1337,14 @@
     {
       "events": 1,
       "fixture": "entity_bully_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 18,
+      "fixture": "entity_bully_walks_home.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1638,12 +1656,12 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 55,
-    "fixturesPassed": 55,
+    "fixtures": 57,
+    "fixturesPassed": 57,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
-    "unsupportedCallSites": 21,
+    "unsupportedCallSites": 14,
     "warnings": 0,
     "wrongScopeApis": 0
   },
@@ -1673,10 +1691,6 @@
       "retail": "TextEntryExists"
     },
     {
-      "file": "NewOakValeIntro/Entities/NOVI_Barrel.lua",
-      "retail": "IsXbox"
-    },
-    {
       "file": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "retail": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom"
     },
@@ -1698,23 +1712,7 @@
     },
     {
       "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "retail": "IsDistanceFromThingToPositionOver"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "retail": "IsDistanceFromThingToPositionOver"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "retail": "SetTimer"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_Bully.lua",
-      "retail": "IsDistanceFromThingToPositionOver"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
-      "retail": "IsXbox"
     },
     {
       "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
@@ -1723,14 +1721,6 @@
     {
       "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "retail": "CScriptThing::MsgIsHitBySpecialAbilityFrom"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "retail": "IsDistanceBetweenThingsOver"
-    },
-    {
-      "file": "NewOakValeIntro/Entities/NOVI_Victim.lua",
-      "retail": "IsXbox"
     }
   ],
   "warnings": [],

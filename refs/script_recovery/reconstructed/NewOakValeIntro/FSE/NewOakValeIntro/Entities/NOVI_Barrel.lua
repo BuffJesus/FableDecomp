@@ -23,8 +23,7 @@ function Init(quest, me)
 end
 
 local function show_break_instruction(quest, me)
-    -- IsXbox has no ForgeFSE binding; nil (logged) takes the PC branch, which is what retail PC does.
-    local onXbox = NOVI.unsupported(quest, "IsXbox", {})
+    local onXbox = NOVI.is_xbox()
     local key = onXbox and TEXT_BREAK_BARRELS or TEXT_BREAK_BARRELS_PC
     quest:DisplayGameInfo(key)
     while not quest:MsgIsGameInfoClickedPast() do

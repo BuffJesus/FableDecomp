@@ -105,7 +105,7 @@ local function intro_cutscene(quest, me)
     quest:CameraDefault()
 
     -- Retail branches on CGameScriptInterface::IsXbox(); ForgeFSE has no binding (returns nil -> PC text).
-    local on_xbox = NOVI.unsupported(quest, "IsXbox", {})
+    local on_xbox = NOVI.is_xbox()
     local info_key = TEXT_INSTRUCTION_HIGHLIGHTING_PC
     if on_xbox then
         info_key = TEXT_INSTRUCTION_HIGHLIGHTING

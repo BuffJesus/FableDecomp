@@ -139,7 +139,7 @@ end
 local function show_hitting_friends_info(quest, me)
   if DisplayedGameInfo then return true end
   local key = TEXT.INSTRUCTION_HITTING_FRIENDS_PC
-  if NOVI.unsupported(quest, "IsXbox", {}) then key = TEXT.INSTRUCTION_HITTING_FRIENDS end
+  if NOVI.is_xbox() then key = TEXT.INSTRUCTION_HITTING_FRIENDS end
   quest:DisplayGameInfo(key)
   while not quest:MsgIsGameInfoClickedPast() do
     if not NOVI.frame(quest, me) then return false end

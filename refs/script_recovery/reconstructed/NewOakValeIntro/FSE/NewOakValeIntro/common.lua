@@ -65,6 +65,30 @@ function NOVI.things_within(quest, a, b, distance)
     return quest:IsDistanceBetweenThingsUnder(a, b, distance) and true or false
 end
 
+-- ForgeFSE is a Windows PC host, so retail's platform branch is deterministic for this package.
+-- Keeping this in one helper makes the assumption explicit and avoids logging a nonexistent API gap.
+function NOVI.is_xbox()
+    return false
+end
+
+-- Lua equivalent of the retail IsDistanceFromThingToPositionOver helper. Native call sites pass a
+-- C3DVector and a positive radius. The exact boundary convention is not exported, so equality is
+-- treated as not-over; all recovered call sites use nonzero radii and moving entities.
+function NOVI.distance_from_thing_to_position_over(thing, position, distance)
+    if not thing or not position or position.x == nil then return false end
+    local current = thing:GetPos()
+    if not current or current.x == nil then return false end
+    local dx = current.x - position.x
+    local dy = (current.y or 0) - (position.y or 0)
+    local dz = (current.z or 0) - (position.z or 0)
+    return dx * dx + dy * dy + dz * dz > distance * distance
+end
+
+function NOVI.things_over(quest, a, b, distance)
+    if not a or not b then return false end
+    return not quest:IsDistanceBetweenThingsUnder(a, b, distance)
+end
+
 -- Retail scripts loop `while (!StartScriptingEntity(me, resource, priority)) NewScriptFrame()`. ForgeFSE
 -- keeps that scheduler host-managed (the entity binding already owns the scripted resource); the
 -- registered entity method `AcquireControl` is the documented equivalent. The priority is kept for

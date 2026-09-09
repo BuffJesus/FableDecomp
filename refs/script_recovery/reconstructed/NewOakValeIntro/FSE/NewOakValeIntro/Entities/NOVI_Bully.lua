@@ -132,7 +132,7 @@ end
 -- Phase 0: walk to my home position until within HOME_ARRIVE_RADIUS (retail IsDistanceFromThingToPositionOver).
 local function walk_home(quest, me)
   local home = me:GetHomePos()
-  while NOVI.unsupported(quest, "IsDistanceFromThingToPositionOver", { me, home, HOME_ARRIVE_RADIUS }) do
+  while NOVI.distance_from_thing_to_position_over(me, home, HOME_ARRIVE_RADIUS) do
     if not NOVI.frame(quest, me) then return false end
     -- retail MoveToPosition(home, <float>, <EScriptEntityMoveType>, bool, bool); only the position is known
     me:MoveToPosition(home, HOME_ARRIVE_RADIUS, 0)

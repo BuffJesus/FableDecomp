@@ -28,7 +28,7 @@ local IDLE_PRIORITY        = 3        -- StartScriptingEntity(me, res, 3) each l
 local ACTION_PRIORITY      = 4        -- StartScriptingEntity(me, res, 4) for the hit reaction / shout
 local DEFAULT_PRIORITY     = nil      -- dropped by the decompiler
 local SHOUT_ANIM           = "ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED"
-local SHOUT_TIMER          = F.TalkIntermittentTimer   -- GetTimer/SetTimer id dropped (inference)
+local SHOUT_TIMER_VALUE    = nil   -- SetTimer value dropped by the decompiler; do not guess it
 
 -- Text keys
 local TEXT_ON_HIT          = "TEXT_QST_048_TRADER_ON_HIT"
@@ -91,10 +91,10 @@ end
 -- Phase: walk back to the home position, then face Theresa
 local function return_home(quest, me)
     local home = me:GetHomePos()
-    local away = NOVI.unsupported(quest, "IsDistanceFromThingToPositionOver", { me, home, HOME_LEAVE_DISTANCE })
+    local away = NOVI.distance_from_thing_to_position_over(me, home, HOME_LEAVE_DISTANCE)
     if not away then return true end
     while true do
-        local far = NOVI.unsupported(quest, "IsDistanceFromThingToPositionOver", { me, home, HOME_ARRIVE_DISTANCE })
+        local far = NOVI.distance_from_thing_to_position_over(me, home, HOME_ARRIVE_DISTANCE)
         if not far then break end
         if not NOVI.frame(quest, me) then return false end
         me:MoveToPosition(home, HOME_MOVE_RADIUS, HOME_MOVE_TYPE)
@@ -162,10 +162,11 @@ end
 
 -- Phase: random "roll up!" shout at a nearby hero
 local function maybe_shout(quest, me)
-    if quest:GetTimer(SHOUT_TIMER) ~= 0 then return true end
+    local shout_timer = F.get(quest, F.TalkIntermittentTimer)
+    if quest:GetTimer(shout_timer) ~= 0 then return true end
     if math.random(0, SHOUT_CHANCE_MODULO - 1) ~= 0 then return true end   -- rand() % 200 == 0
     if not NOVI.hero_within(quest, me, SHOUT_HERO_DISTANCE) then return true end
-    NOVI.unsupported(quest, "SetTimer", { SHOUT_TIMER, "<value dropped>" })   -- id and value both dropped by the decompiler
+    NOVI.unsupported(quest, "SetTimer", { shout_timer, SHOUT_TIMER_VALUE })
     local conv = quest:AddNewConversation(me)   -- retail (me, 0, 0)
     quest:AddPersonToConversation(conv, quest:GetHero())
     NOVI.acquire(quest, me, ACTION_PRIORITY)

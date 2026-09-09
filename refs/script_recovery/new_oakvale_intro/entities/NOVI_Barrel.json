@@ -27,7 +27,7 @@
     {"seq": 2, "function": "Main", "kind": "branch", "native": "while (PARENT->InstructionGiven_Barrels == false)", "argsKnown": true, "lua": "while not F.get(quest, F.InstructionGiven_Barrels) do", "forgeBinding": "n/a", "evidence": "native-decompile", "note": "re-read every iteration, so another barrel setting it ends this loop too"},
     {"seq": 3, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
     {"seq": 4, "function": "Main", "kind": "branch", "native": "if (IsDistanceBetweenThingsUnder(me, GSI->GetHero(), 2.0))", "argsKnown": true, "lua": "if NOVI.hero_within(quest, me, HERO_TRIGGER_DISTANCE) then", "forgeBinding": "IsDistanceBetweenThingsUnder", "evidence": "native-decompile", "note": ""},
-    {"seq": 5, "function": "Main", "kind": "branch", "native": "if (GSI->IsXbox() == false) key = ..._BREAK_BARRELS_PC else key = ..._BREAK_BARRELS", "argsKnown": true, "lua": "local onXbox = NOVI.unsupported(quest, \"IsXbox\", {}); key = onXbox and TEXT_BREAK_BARRELS or TEXT_BREAK_BARRELS_PC", "forgeBinding": "missing", "evidence": "native-decompile + asm 0xdb7eb8 (ecx=[esi+4] GSI, call [vt+0x18] = cgsi slot 10 IsXbox)", "note": "nil from the gap stub selects the PC key, i.e. the retail PC branch"},
+    {"seq": 5, "function": "Main", "kind": "branch", "native": "if (GSI->IsXbox() == false) key = ..._BREAK_BARRELS_PC else key = ..._BREAK_BARRELS", "argsKnown": true, "lua": "local onXbox = NOVI.is_xbox(); key = onXbox and TEXT_BREAK_BARRELS or TEXT_BREAK_BARRELS_PC", "forgeBinding": "n/a", "evidence": "native-decompile + asm 0xdb7eb8 (ecx=[esi+4] GSI, call [vt+0x18] = cgsi slot 10 IsXbox)", "note": "ForgeFSE is a Windows PC host, so the retail PC branch is invariant"},
     {"seq": 6, "function": "Main", "kind": "wait", "native": "GSI->DisplayGameInfo(key); while (!GSI->MsgIsGameInfoClickedPast()) { NewScriptFrame; if terminating return }", "argsKnown": true, "lua": "quest:DisplayGameInfo(key); while not quest:MsgIsGameInfoClickedPast() do if not NOVI.frame(quest, me) then return false end end", "forgeBinding": "DisplayGameInfo / MsgIsGameInfoClickedPast", "evidence": "native-decompile", "note": ""},
     {"seq": 7, "function": "Main", "kind": "state-write", "native": "PARENT->InstructionGiven_Barrels = true", "argsKnown": true, "lua": "F.set(quest, F.InstructionGiven_Barrels, true)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
     {"seq": 8, "function": "Main", "kind": "wait", "native": "while (!IsTerminating()) GSI->NewScriptFrame()", "argsKnown": true, "lua": "while NOVI.frame(quest, me) do end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "idle forever"},
@@ -35,13 +35,12 @@
     {"seq": 10, "function": "OnPredicateFail", "kind": "state-write", "native": "PARENT->BarrelBrokenPos = me.GetPos() (CScriptThing vtable +0x18)", "argsKnown": true, "lua": "F.set(quest, F.BarrelBrokenPos, me:GetPos())", "forgeBinding": "GetPos (CScriptThing usertype)", "evidence": "native-decompile + retail vtable scan (0x01238C8C +0x18 = ?GetPos@CScriptThing)", "note": "12-byte C3DVector copy into 0x76..0x81"}
   ],
   "apiGaps": [
-    {"retail": "CGameScriptInterface::IsXbox()", "reason": "not registered in ForgeFSE Lua (absent from forge_quest_bindings.txt)", "luaLocation": "show_break_instruction (NOVI.unsupported)"},
     {"retail": "OnPredicateFail virtual (entity vtable slot 5)", "reason": "ForgeFSE has no predicate-fail hook in the binding lists; the Lua function exists but nothing in the host is known to invoke it", "luaLocation": "OnPredicateFail"}
   ],
   "uncertainties": [
     "What makes the barrel predicate fail (destruction / removal of the thing) is not visible in these decompiles; only the OnPredicateFail side effects are.",
     "ForgeFSE has no known OnPredicateFail hook, so BarrelBrokenInstantaneous/Persistent/Pos are never set at runtime unless the host adds one.",
-    "IsXbox is unbound; the Lua always takes the PC text branch (retail PC behaviour), the Xbox key is preserved as a constant.",
+    "IsXbox is unbound, but ForgeFSE is Windows-only; NOVI.is_xbox deterministically selects the retail PC text while preserving the Xbox key as evidence.",
     "The idle loop after the instruction is retail behaviour: the barrel script does nothing else until termination."
   ],
   "cleanupPaths": [

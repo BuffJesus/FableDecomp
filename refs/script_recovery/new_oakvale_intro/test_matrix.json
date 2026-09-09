@@ -157,7 +157,7 @@
       "forbids": [],
       "result": "ran",
       "trace": "match",
-      "events": 13
+      "events": 12
     },
     {
       "fixture": "entity_barrel_predicate_fail",
@@ -238,6 +238,24 @@
       "events": 1
     },
     {
+      "fixture": "entity_book_trader_returns_home",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "squared-vector distance fallback returns the trader home, faces Theresa, then cleans up on idle termination",
+      "expects": [
+        "GetHomePos",
+        "GetPos",
+        "MoveToPosition",
+        "EntitySetFacingAngleTowardsThing",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 18
+    },
+    {
       "fixture": "entity_bully_accepts_teddy",
       "function": "Main",
       "kind": "entity",
@@ -286,6 +304,23 @@
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_bully_walks_home",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "squared-vector distance fallback drives one walk-home iteration before normal idle termination",
+      "expects": [
+        "GetHomePos",
+        "GetPos",
+        "MoveToPosition",
+        "GetThingWithScriptName"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "match",
+      "events": 18
     },
     {
       "fixture": "entity_created_beetle_expires",
