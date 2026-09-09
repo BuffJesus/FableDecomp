@@ -141,7 +141,7 @@ Affair-wife idle coverage now proves the equivalent native timer sequence indepe
 nearby-hero “where's my husband?” branch reads `TalkIntermittentTimer`, writes value `3`, then
 queues its two-person conversation.
 
-The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
+The coverage manifest classifies 30 functions as implemented and traced, 16 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and
 none as unimplemented. These
 classifications combine native-operation coverage with mock-host traces; they do not mean
@@ -149,23 +149,23 @@ that every entity AI branch has been exercised in the game.
 
 ## Remaining parity limits
 
-Four executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
-does not expose a direct equivalent. The larger API requirements manifest records 62
+Two executable `NOVI.unsupported` call sites preserve retail intent where ForgeFSE
+does not expose a direct equivalent. The larger API requirements manifest records 60
 blocked semantic requirements or signature differences. No catalogued native function is
 currently classified as wholly or partially API-blocked, but important call-level limits remain:
-entity scripting acquisition/release semantics, morality values loaded from game data,
+entity scripting acquisition/release semantics,
 special-ability message variants, exact distance-boundary behavior, and some timer/pause
 behavior. ForgeFSE's Windows-only runtime now selects retail PC platform branches explicitly;
 the missing position-distance helper is reconstructed with squared 3D vector math.
 
-The four explicit sites are two conditional scheduler fallbacks (used only if the registered
-entity `AcquireControl`/`ReleaseControl` methods are unavailable), positive and negative deed
-morality calls whose game-data float is unrecovered. The trader, Bully, and
+The two explicit sites are conditional scheduler fallbacks (used only if the registered
+entity `AcquireControl`/`ReleaseControl` methods are unavailable). The trader, Bully, and
 AffairWife timer operands formerly listed here are now instruction-level recovered as
 `TalkIntermittentTimer` and value `3`; the BarrelThug intro pause is likewise recovered as `3.0`
-and AffairMan's kiss/hug pause as `0.4`. Supplying guessed morality operands
-would reduce the metric while making the reconstruction less faithful, so these remain runtime
-audit points.
+and AffairMan's kiss/hug pause as `0.4`. The installed retail `script.bin` resolves
+`OVI_MoralityChangePerDeed` exactly: entry 597 (`SCRIPT_DEF`) decodes it as `0.001`, distinct
+from entry 0 (`NULLDEF_CScriptDef`) whose default is zero. The port therefore applies `+0.001`
+for good deeds and `-0.001` for bad deeds.
 
 The wife argument loop no longer depends on an unavailable `TextEntryExists` binding. Retail
 headers and the installed English `text.big` index prove `_10`, `_20`, `_30`, and `_40` exist
@@ -177,7 +177,7 @@ Only `AttackOver` is transferred by the native persistence routine. Mock traces 
 start, reload after attack, attack transition, early termination, persistence, quest markers,
 the barrel timer, barrel destruction, and gold acquisition. Game-runtime verification is still
 needed for cutscene/camera behavior, section lifetime swaps, hero morphing, UI rendering and
-timer cadence, entity AI blocking behavior, morality amounts, and unload/reload interruption
+timer cadence, entity AI blocking behavior, morality presentation, and unload/reload interruption
 timing. Runtime verification should also confirm `IsObjectInThingsPossession` argument conversion:
 native operation order is preserved at each call site, but no local ForgeFSE signature source is
 available and recovered scripts contain both thing/object and object/thing call shapes.

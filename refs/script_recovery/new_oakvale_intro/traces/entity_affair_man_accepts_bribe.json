@@ -259,10 +259,10 @@
     },
     {
       "arguments": [
-        "NewOakValeIntro: UNSUPPORTED retail call GiveHeroMorality(-deed)"
+        -0.001
       ],
       "event": "api-call",
-      "name": "Log",
+      "name": "GiveHeroMorality",
       "receiver": "quest",
       "scope": "Quest"
     },

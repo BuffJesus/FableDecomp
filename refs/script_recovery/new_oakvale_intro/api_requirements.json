@@ -10208,7 +10208,7 @@
           "function": "AddGoodDeed",
           "seq": 56,
           "native": "GoodDeedsPerformed++; GiveHeroMorality(+gamedata[0xd64])",
-          "evidence": "native-decompile"
+          "evidence": "native-decompile + installed-retail-data"
         },
         {
           "script": "Q_NewOakValeIntro",
@@ -10218,10 +10218,12 @@
           "evidence": "native-decompile"
         }
       ],
-      "signatureConfidence": "low",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap (NOVI.unsupported)",
-      "blocked": true
+      "signatureConfidence": "high",
+      "semanticDifferences": [
+        "Q_NewOakValeIntro#56: DAT_0143e90c+0xd64 maps to CScriptDef::OVI_MoralityChangePerDeed; script.bin entry 597 SCRIPT_DEF decodes the float as 0.001 (NULLDEF_CScriptDef is a separate zero-valued default)"
+      ],
+      "fallbackStatus": "direct",
+      "blocked": false
     },
     {
       "operation": "AddLogbookStoryEntryString",
@@ -10278,23 +10280,6 @@
           "script": "Q_NewOakValeIntro",
           "reason": "ForgeFSE only reports termination through NewScriptFrame's return value",
           "luaLocation": "Main reload branch, DoMission post-wait"
-        }
-      ],
-      "signatureConfidence": "n/a",
-      "semanticDifferences": [],
-      "fallbackStatus": "explicit-gap",
-      "blocked": true
-    },
-    {
-      "operation": "GiveHeroMorality(\u00b1gamedata float @ DAT_0143e90c+0xd64)",
-      "proposedForgeCall": null,
-      "bindingExists": false,
-      "bindingScope": null,
-      "nativeEvidence": [
-        {
-          "script": "Q_NewOakValeIntro",
-          "reason": "the game-data block is not reachable from Lua; amount unknown",
-          "luaLocation": "deeds.lua morality_amount"
         }
       ],
       "signatureConfidence": "n/a",

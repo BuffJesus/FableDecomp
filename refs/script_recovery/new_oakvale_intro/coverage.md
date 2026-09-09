@@ -49,6 +49,6 @@
 | Q_NewOakValeIntro | StartBarrelTimer | 0x00DB4F70 | 4 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_start_barrel_timer, quest_thread_start_barrel_timer_terminated | native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the "StartBarrelTimer" name) | implemented (uncertain args) |
 | Q_NewOakValeIntro | WatchBarrels | 0x00DBE890 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_watch_barrels | native-decompile (LAB_00dbe890 stored next to the "WatchBarrels" name) | implemented-and-traced |
 | Q_NewOakValeIntro | WatchForGotGold | 0x00DBE2E0 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_thread_watch_for_got_gold | native-decompile (donor label CQ_FireHeartScript::CheckGameEnding; pointer stored next to the "WatchForGotGold" name) | implemented-and-traced |
-| Q_NewOakValeIntro | AddGoodDeed | 0x00DB0660 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_add_good_deed_first | native-decompile + PDB-name | implemented (uncertain args) |
+| Q_NewOakValeIntro | AddGoodDeed | 0x00DB0660 | 3 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_add_good_deed_first | native-decompile + PDB-name | implemented-and-traced |
 | Q_NewOakValeIntro | AddBadDeed | 0x00DAEA70 | 1 | `NewOakValeIntro/NewOakValeIntro.lua` | quest_add_bad_deed_first | native-decompile + PDB-name | implemented-and-traced |
 | Q_NewOakValeIntro | destructor | 0x00DBEFA0 | 0 | `NewOakValeIntro/NewOakValeIntro.lua` | - | native-decompile | not-applicable (host lifecycle) |

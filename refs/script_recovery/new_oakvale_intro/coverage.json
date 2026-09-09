@@ -655,7 +655,7 @@
         "quest_add_good_deed_first"
       ],
       "evidence": "native-decompile + PDB-name",
-      "status": "implemented (uncertain args)"
+      "status": "implemented-and-traced"
     },
     {
       "script": "Q_NewOakValeIntro",
@@ -682,9 +682,9 @@
   ],
   "summary": {
     "functions": 52,
-    "implementedAndTraced": 29,
+    "implementedAndTraced": 30,
     "implementedUntraced": 0,
-    "uncertain": 17,
+    "uncertain": 16,
     "apiBlocked": 0,
     "notImplemented": 0,
     "notApplicable": 6
