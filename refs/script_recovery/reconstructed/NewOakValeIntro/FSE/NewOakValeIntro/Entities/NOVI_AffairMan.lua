@@ -64,12 +64,12 @@ local YESNO_ANSWER_YES = 1                -- MsgIsQuestionAnsweredYesOrNo() == 1
 local PAUSE_SECONDS_UNKNOWN = 0.0         -- unknown: retail Pause() argument dropped by the decompiler
 
 -- Entity-local retail fields (this+0x1c..0x20, PDB names)
-local EncounterOver            -- 0x1c
-local SaidFirstRangedComment   -- 0x1d
-local HeroAgreedToKeepQuiet    -- 0x1e
-local HeroSaidHeWouldReportMan -- 0x1f
-local BadgerIndex              -- 0x20 (long)
-local last_conversation        -- retail stack local holding the last AddNewConversation id (inference)
+local EncounterOver = false            -- 0x1c
+local SaidFirstRangedComment = false   -- 0x1d
+local HeroAgreedToKeepQuiet = false    -- 0x1e
+local HeroSaidHeWouldReportMan = false -- 0x1f
+local BadgerIndex = 0                  -- 0x20 (long)
+local last_conversation = nil          -- retail stack local holding the last AddNewConversation id (inference)
 
 function Init(quest, me)
     BadgerIndex = 0

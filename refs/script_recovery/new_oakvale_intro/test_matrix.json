@@ -23,6 +23,47 @@
       "events": 43
     },
     {
+      "fixture": "entity_affair_man_first_near_exchange",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "purpose": "at home with his lover and a nearby hero, the husband emits the first reversed-order _10 line pair, marks the affair discovered, then deterministically initiates the kiss handshake and releases control on termination",
+      "expects": [
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "SetStateBool",
+        "Pause",
+        "random",
+        "PlayAnimation",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 28
+    },
+    {
+      "fixture": "entity_affair_man_first_ranged_exchange",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "purpose": "with the hero outside whisper range but inside 13 units, the husband emits the first screen-message _10 pair and deterministically initiates the hug handshake without marking the near-range discovery flag",
+      "expects": [
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "Pause",
+        "random",
+        "PlayAnimation",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 29
+    },
+    {
       "fixture": "entity_affair_man_init",
       "function": "Init",
       "kind": "entity",

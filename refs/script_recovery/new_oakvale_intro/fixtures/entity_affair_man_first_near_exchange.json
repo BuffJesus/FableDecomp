@@ -1,0 +1,18 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairMan.lua","expect":["AddNewConversation","AddPersonToConversation","AddLineToConversation","SetStateBool","Pause","random","PlayAnimation","ReleaseControl"],"note":"at home with his lover and a nearby hero, the husband emits the first reversed-order _10 line pair, marks the affair discovered, then deterministically initiates the kiss handshake and releases control on termination"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true],
+  "Quest.GetThingWithScriptName(NOVI_AffairWoman)":[{"handle":"lover","scope":"Entity"}],
+  "Quest.GetThingWithScriptName(NOVI_AffairWife)":[{"handle":"wife","scope":"Entity"}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.IsPerformingScriptTask":[false],
+  "Quest.IsDistanceBetweenThingsUnder":[false,true,true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.AddNewConversation":[{"handle":"near_exchange","scope":"Entity"}],
+  "Quest.GetStateBool(TalkingToWoman)":[false],
+  "Lua.math.random":[0]
+}

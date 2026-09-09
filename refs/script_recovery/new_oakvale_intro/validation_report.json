@@ -1198,6 +1198,22 @@
       "trace": "match"
     },
     {
+      "events": 28,
+      "fixture": "entity_affair_man_first_near_exchange.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 29,
+      "fixture": "entity_affair_man_first_ranged_exchange.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 6,
       "fixture": "entity_affair_man_init.json",
       "function": "Init",
@@ -1815,8 +1831,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 77,
-    "fixturesPassed": 77,
+    "fixtures": 79,
+    "fixturesPassed": 79,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

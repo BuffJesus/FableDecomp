@@ -22,6 +22,8 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "fixtures": [
         "entity_affair_man_accepts_bribe",
+        "entity_affair_man_first_near_exchange",
+        "entity_affair_man_first_ranged_exchange",
         "entity_affair_man_main_terminated"
       ],
       "evidence": "native-decompile",
