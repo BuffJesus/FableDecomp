@@ -41386,7 +41386,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b50b80	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CLandscapeBackgroundPatch_vectordeletingdestructor_00b50b80.cpp
 00b50be0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 00b50c60	Set	CShaderBankStateBlock	__thiscall	void	2	CShaderBankStateBlock *,CBankStateBlock *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CShaderBankStateBlock_Set_00b50c60.cpp
-00b50c80	AddWeatherMask	CEngineWeatherRenderer	__thiscall	void	3	CEngineWeatherRenderer *,CWeatherMask *,ulong	1	yes	accepted									
+00b50c80	AddWeatherMask	CEngineWeatherRenderer	__thiscall	void	3	CEngineWeatherRenderer *,CWeatherMask *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CEngineWeatherRenderer_AddWeatherMask_00b50c80.cpp
 00b50e50	GetBoxBoundingSphereRadiusSquared	CEngineWeatherRenderer	__thiscall	float	1	CEngineWeatherRenderer *	1	yes	accepted									
 00b50ee0	CEngine::OverrideRain	CEngine	unknown	undefined	0		0	unmeasured	accepted									
 00b50f40	CEngine::OverrideSnow	CEngine	unknown	undefined	0		0	unmeasured	accepted									

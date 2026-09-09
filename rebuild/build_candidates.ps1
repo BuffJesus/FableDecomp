@@ -132443,6 +132443,13 @@ $catalog = @(
         TestSource = '00/46/CThingMarkerDef_Copy_004644c0_test.cpp'
         PassPattern = 'THING_MARKER_COPY PASS'
     }
+    [pscustomobject]@{
+        Address = '00b50c80'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_AddWeatherMask_00b50c80.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_AddWeatherMask_00b50c80_test.cpp'
+        PassPattern = 'WEATHER_MASK_RING PASS'
+    }
 )
 
 $requestedAddresses = @(

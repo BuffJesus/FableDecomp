@@ -1242,6 +1242,7 @@ CWallMountEffectsDef	_quarantine/CWallMountEffectsDef.h	52	3	QUARANTINED	1 confl
 CWaspQueenBattleDef	_quarantine/CWaspQueenBattleDef.h	68	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CWaterPatchMesh	CWaterPatchMesh.h	32	7	OK	0 retail files
 CWeaponDef	_quarantine/CWeaponDef.h	244	35	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+CWeatherMask	CWeatherMask.h	92	4	OK	0 retail files
 CWhisperBattleDef	_quarantine/CWhisperBattleDef.h	72	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 2 agreeing
 CWideString		0	0	HAND_OWNED	
 CWifeDef	_quarantine/CWifeDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing

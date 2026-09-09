@@ -285,3 +285,26 @@ The second adjacent `CTCPerceiveThing::SetSightRadius` confirms the landed
 sentinel/restore/clamp semantics and shared layouts, yet compiles to the same
 clean 57-byte body against a 59-byte retail duplicate. Artificial padding was
 again rejected. Batch 355 is next; comparer totals remain unchanged.
+
+### Batches 355-357: retail contractions and weather-mask ring
+
+Batches 355 and 356 produced two behavior-complete near matches without a
+parity-safe landing. `CTCDegradableBase::IsFullyDegraded` agrees with the PDB
+member names and exposes a retail `CDegradableDef` contraction from 0x40 to
+0x3c, but its readable form remains 55/59 bytes because the compiler chooses
+different reference-count choreography. `C3DMeshInfo::IsLoaded` likewise has
+its genuine PDB signature and passes its fixture, but remains 60/59 bytes.
+Neither source was padded or rewritten around raw offsets merely to match.
+
+Batch 357 landed `CEngineWeatherRenderer::AddWeatherMask @ 0x00b50c80` as an
+exact 59-byte match. The maintained renderer header now exposes the original
+PDB-named `CWeatherMask WeatherMaskList[3]` rather than a 0x114-byte opaque
+blob, backed by a shared 0x5c-byte `CWeatherMask` layout. The readable method
+copies into the current slot and advances it modulo three; its fixture pushes
+four distinct masks and proves both wraparound and overwrite behavior. The
+PDB's second `unsigned long` parameter is retained even though retail does not
+read it.
+
+The refreshed comparer totals are 18,865 compiled and behavior-tested
+candidates, 8,143 exact matches, 10,678 relocation matches, 14,691 genuine
+landed entries, and 393,911 genuine matched retail bytes. Batch 358 is next.
