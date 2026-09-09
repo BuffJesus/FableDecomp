@@ -30,8 +30,9 @@ local BAD_DEED_TEDDY_TO_BULLY = 3             -- GivenTeddy: AddBadDeed(PARENT, 
 local INTIMIDATE_TIMER_VALUE = nil            -- UNKNOWN: SetTimer value dropped by the decompiler; do not guess
 local INFO_BAR_MAX = 0                        -- AddQuestInfoBar 2nd immediate (0)
 local INFO_BAR_UNCHANGED = -1.0               -- UpdateQuestInfoBar(handle, remaining, -1.0, -1.0)
-local INFO_BAR_SCALE = 1.0                    -- UNKNOWN: retail colour/scale args dropped
-local INFO_BAR_COLOUR = { r = 255, g = 255, b = 255, a = 255 }  -- UNKNOWN: retail colours dropped
+local INFO_BAR_SCALE = 1.0                    -- native push 0x3f800000 at 0x00dbc3eb
+local INFO_BAR_FILLED_COLOUR = { r = 0, g = 255, b = 0, a = 255 }
+local INFO_BAR_EMPTY_COLOUR = { r = 0, g = 0, b = 255, a = 255 }
 local ACQUIRE_PRIORITY = nil                  -- retail EScriptAIPriority dropped; host-managed
 
 local TEDDY_OBJECT = "OBJECT_TEDDY_BEAR_UNGIVEABLE"
@@ -268,7 +269,8 @@ local function handle_hit(quest, me, victim)
   if not hit_by_hero(me) then return true end
   local hero = quest:GetHero()
   if F.get(quest, F.GUIBullyHealthCounter) == HEALTH_COUNTER_UNSET then
-    local handle = quest:AddQuestInfoBar(InitialHealth, INFO_BAR_MAX, INFO_BAR_COLOUR, INFO_BAR_COLOUR,
+    local handle = quest:AddQuestInfoBar(InitialHealth, INFO_BAR_MAX,
+      INFO_BAR_FILLED_COLOUR, INFO_BAR_EMPTY_COLOUR,
       INFO_BAR_ICON, "", INFO_BAR_SCALE)
     F.set(quest, F.GUIBullyHealthCounter, handle)
   end

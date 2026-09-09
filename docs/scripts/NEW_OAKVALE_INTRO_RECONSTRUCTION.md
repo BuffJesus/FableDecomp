@@ -2,6 +2,11 @@
 
 Status: **trace-tested reconstructed port** (shadow-only; not a verified retail port).
 
+This status is intentionally provisional. A Lua file is not considered retail-correct while
+any operand, call target, argument order, branch, or lifecycle behavior remains marked unknown,
+inferred, or API-blocked. The evidence inventories are being re-audited to a zero-unknown
+acceptance criterion across all 22 files.
+
 The package under `refs/script_recovery/reconstructed/NewOakValeIntro/FSE` independently
 reconstructs the retail `Q_NewOakValeIntro` quest from native decompilation, PDB-derived
 names, registry facts, operation IR, and the repository's historical notes. It is deliberately
@@ -26,6 +31,13 @@ The native `Main` binding order is: `NOVI_LiveFather`, `NOVI_Theresa`, `NOVI_Gua
 `NOVI_Villager`, `NOVI_Bully`, `NOVI_Victim`, `NOVI_TeddyGirl`, `NOVI_AffairMan`,
 `NOVI_AffairWoman`, `NOVI_AffairWife`, `NOVI_BookTrader`, `NOVI_BarrelMan`,
 `NOVI_BarrelThug`, `NOVI_Barrel`, `NOVI_CreatedBeetle`, and `OVI_DeadFather`.
+
+The Bully hit HUD is now resolved at instruction level. `CNOVI_Bully::Main` instructions
+`0x00DBC3EB` and `0x00DBC3F0-0x00DBC446` call `AddQuestInfoBar` with current value 4,
+maximum 0, opaque green filled colour `{0,255,0,255}`, opaque blue empty colour
+`{0,0,255,255}`, icon `HUD_QUEST_ICON_GRANDSON`, empty text, and final float `1.0`.
+The x86 reverse push order establishes the two colour roles; the engine's independently
+recovered `CPlayerManager::GetMultiplayerColour` establishes the `CRGBColour` RGBA byte layout.
 
 ## Validation snapshot
 

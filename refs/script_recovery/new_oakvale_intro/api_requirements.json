@@ -8085,8 +8085,8 @@
           "script": "NOVI_Bully",
           "function": "Main",
           "seq": 52,
-          "native": "PARENT+0x64 = GSI->AddQuestInfoBar((float)InitialHealth, 0, <zeroed colour locals>, \"HUD_QUEST_ICON_GRANDSON\", \"\")",
-          "evidence": "native-decompile"
+          "native": "PARENT+0x64 = GSI->AddQuestInfoBar((float)InitialHealth, 0, RGBA(0,255,0,255), RGBA(0,0,255,255), \"HUD_QUEST_ICON_GRANDSON\", \"\", 1.0)",
+          "evidence": "native-disassembly + engine-colour-layout"
         },
         {
           "script": "Q_NewOakValeIntro",
@@ -8098,7 +8098,7 @@
       ],
       "signatureConfidence": "low",
       "semanticDifferences": [
-        "NOVI_Bully#52: colours and scale unknown",
+        "NOVI_Bully#52: x86 reverse push order identifies the green object as filledColour and the blue object as emptyColour; CRGBColour RGBA layout is independently corroborated by CPlayerManager::GetMultiplayerColour",
         "Q_NewOakValeIntro#45: only the 45.0 max, the icon, the empty text and the 1.0 scale are visible; the initial value and the two colour words (built from bl/0xff bytes) are not fully resolved"
       ],
       "fallbackStatus": "direct",
