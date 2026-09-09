@@ -1,0 +1,18 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["GiveHeroYesNoQuestion","GiveHeroObject","GiveHeroGold","SetQuestCardObjective","SetStateBool","ClearThingHasInformation","EntitySetFacingAngleTowardsThing","EndMovieSequence","ReleaseControl"],"note":"a hero with exactly three gold accepts the trader's first offer, receives the chocolate box for the retail -3 gold charge, advances objective four and GivenSweets, then exits with movie/control cleanup"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetStateBool(GivenSweets)":[false],
+  "Quest.GetHealth":[100,100],
+  "Quest.MsgIsQuestionAnsweredYesOrNo":[1],
+  "Quest.GetHeroGold":[3],
+  "Quest.GetActiveQuestName":["Q_NewOakValeIntro"],
+  "Quest.GetThingWithScriptName(NOVI_Theresa)":[{"handle":"theresa","scope":"Entity"}],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[801],
+  "Quest.GetTimer(801)":[1]
+}

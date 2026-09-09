@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 71/71 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 73/73 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -69,6 +69,11 @@ movie, fade/music change, `AttackOver`, and final control release in one determi
 The supporting trace-tool unit suite has 23/23 passing tests. Fixture results now recursively
 materialize entity handles inside returned vectors, so collection APIs such as
 `GetAllThingsWithScriptName` exercise callable entity proxies rather than inert tables.
+Book-trader coverage now includes the complete first sweets purchase at exactly three gold,
+the retail object/charge operands, objective and `GivenSweets` updates, plus the expired-timer,
+winning-random-roll, nearby-hero ambient shout. The shout trace deliberately records the missing
+`SetTimer` duration as an unsupported runtime event before continuing through its animation and
+conversation line.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and

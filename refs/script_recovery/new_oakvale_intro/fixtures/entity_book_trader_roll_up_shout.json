@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["GetTimer","random","IsDistanceBetweenThingsUnder","Log","AddNewConversation","AddPersonToConversation","PlayAnimation","AddLineToConversation","ReleaseControl"],"note":"an expired intermittent timer, winning 1-in-200 roll and nearby hero trigger the roll-up animation/conversation while preserving the unrecovered SetTimer duration as an explicit runtime audit event"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.GetPos":[{"x":0,"y":0,"z":0}],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[801],
+  "Quest.GetTimer(801)":[0],
+  "Lua.math.random":[0],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"roll_up","scope":"Entity"}]
+}

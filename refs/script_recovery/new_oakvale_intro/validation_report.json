@@ -1351,6 +1351,22 @@
       "trace": "match"
     },
     {
+      "events": 22,
+      "fixture": "entity_book_trader_roll_up_shout.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 32,
+      "fixture": "entity_book_trader_sells_sweets.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 31,
       "fixture": "entity_book_trader_special_hit.json",
       "function": "Main",
@@ -1768,8 +1784,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 71,
-    "fixturesPassed": 71,
+    "fixtures": 73,
+    "fixturesPassed": 73,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

@@ -335,6 +335,50 @@
       "events": 18
     },
     {
+      "fixture": "entity_book_trader_roll_up_shout",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "an expired intermittent timer, winning 1-in-200 roll and nearby hero trigger the roll-up animation/conversation while preserving the unrecovered SetTimer duration as an explicit runtime audit event",
+      "expects": [
+        "GetTimer",
+        "random",
+        "IsDistanceBetweenThingsUnder",
+        "Log",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "PlayAnimation",
+        "AddLineToConversation",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 22
+    },
+    {
+      "fixture": "entity_book_trader_sells_sweets",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "a hero with exactly three gold accepts the trader's first offer, receives the chocolate box for the retail -3 gold charge, advances objective four and GivenSweets, then exits with movie/control cleanup",
+      "expects": [
+        "GiveHeroYesNoQuestion",
+        "GiveHeroObject",
+        "GiveHeroGold",
+        "SetQuestCardObjective",
+        "SetStateBool",
+        "ClearThingHasInformation",
+        "EntitySetFacingAngleTowardsThing",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 32
+    },
+    {
       "fixture": "entity_book_trader_special_hit",
       "function": "Main",
       "kind": "entity",
