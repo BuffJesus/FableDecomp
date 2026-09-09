@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Victim.lua","expect":["EntitySetThingAsAllyOfThing","DisplayGameInfo","RunCutsceneWithSetup","FixMovieSequenceCamera","ClearThingHasInformation","EndMovieSequence"],"note":"the first direct hero hit records violence, marks both actors allied, and runs the retail BRATHIT cutscene with HERO and BRAT before normal loop termination"},
+  "Quest.NewScriptFrame":[true,false],
+  "Entity.AcquireControl":[true,true,true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Quest.GetStateBool(BullySubdued)":[false],
+  "Quest.GetStateBool(VictimShake)":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Quest.GetStateBool(GivenHeroTeddy)":[false],
+  "Quest.GetStateBool(VictimComplainsAboutLosingTeddy)":[false]
+}

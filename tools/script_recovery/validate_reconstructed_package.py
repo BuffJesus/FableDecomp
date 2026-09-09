@@ -35,11 +35,28 @@ BINDING_RE = re.compile(r"AddEntityBinding\(\s*\"([^\"]+)\"\s*,\s*\"([^\"]+)\"")
 QUEST_RECEIVERS = {"quest", "Quest"}
 
 
+def strip_lua_line_comment(line: str) -> str:
+    """Strip a Lua line comment without mistaking ``--`` inside quotes for one."""
+    quote = None
+    escaped = False
+    for index, char in enumerate(line):
+        if escaped:
+            escaped = False
+        elif quote and char == "\\":
+            escaped = True
+        elif quote and char == quote:
+            quote = None
+        elif not quote and char in {'"', "'"}:
+            quote = char
+        elif not quote and char == "-" and line[index:index + 2] == "--":
+            return line[:index]
+    return line
+
+
 def executable_matches(pattern: re.Pattern, source: str):
     """Yield regex matches from Lua code, excluding line-comment text."""
     for line in source.splitlines():
-        code = line.split("--", 1)[0]
-        yield from pattern.finditer(code)
+        yield from pattern.finditer(strip_lua_line_comment(line))
 
 
 def lua_compiles(path: Path) -> str | None:

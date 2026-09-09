@@ -1527,6 +1527,14 @@
       "trace": "match"
     },
     {
+      "events": 35,
+      "fixture": "entity_victim_first_hero_hit.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 7,
       "fixture": "entity_victim_init.json",
       "function": "Init",
@@ -1704,8 +1712,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 63,
-    "fixturesPassed": 63,
+    "fixtures": 64,
+    "fixturesPassed": 64,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

@@ -379,6 +379,7 @@
       "operations": 27,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "fixtures": [
+        "entity_victim_first_hero_hit",
         "entity_victim_main_terminated"
       ],
       "evidence": "native-decompile",
