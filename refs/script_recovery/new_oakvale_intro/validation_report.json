@@ -38,7 +38,6 @@
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
-      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
     ],
     "Entity.IsAlive": [
@@ -181,8 +180,6 @@
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
-      "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
-      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua"
@@ -1226,6 +1223,14 @@
       "trace": "match"
     },
     {
+      "events": 66,
+      "fixture": "entity_affair_wife_reaches_argument.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 5,
       "fixture": "entity_affair_woman_init.json",
       "function": "Init",
@@ -1683,20 +1688,16 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 60,
-    "fixturesPassed": 60,
+    "fixtures": 61,
+    "fixturesPassed": 61,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,
-    "unsupportedCallSites": 7,
+    "unsupportedCallSites": 6,
     "warnings": 0,
     "wrongScopeApis": 0
   },
   "unsupported": [
-    {
-      "file": "NewOakValeIntro/common.lua",
-      "retail": "RetailName"
-    },
     {
       "file": "NewOakValeIntro/common.lua",
       "retail": "StartScriptingEntity"

@@ -3,7 +3,7 @@
 | NOVI_AffairMan | Init | 0x00DB0950 | 7 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_init | native-decompile | implemented-and-traced |
 | NOVI_AffairMan | Main | 0x00DB09E0 | 60 | `NewOakValeIntro/Entities/NOVI_AffairMan.lua` | entity_affair_man_main_terminated | native-decompile | implemented (uncertain args) |
 | NOVI_AffairWife | Init | 0x00DB2A70 | 9 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_init | native-decompile | implemented-and-traced |
-| NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_main_terminated | native-decompile | implemented (uncertain args) |
+| NOVI_AffairWife | Main | 0x00DB2B10 | 53 | `NewOakValeIntro/Entities/NOVI_AffairWife.lua` | entity_affair_wife_main_terminated, entity_affair_wife_reaches_argument | native-decompile | implemented (uncertain args) |
 | NOVI_AffairWoman | Init | 0x00DB1E80 | 5 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_init | native-decompile | implemented-and-traced |
 | NOVI_AffairWoman | Main | 0x00DB1F00 | 37 | `NewOakValeIntro/Entities/NOVI_AffairWoman.lua` | entity_affair_woman_main_terminated | native-decompile | implemented (uncertain args) |
 | NOVI_Barrel | Init | 0x00CDEBB0 | 0 | `NewOakValeIntro/Entities/NOVI_Barrel.lua` | - | native-decompile | not-applicable (retail body empty / data only) |

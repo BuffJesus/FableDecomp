@@ -35,6 +35,13 @@ BINDING_RE = re.compile(r"AddEntityBinding\(\s*\"([^\"]+)\"\s*,\s*\"([^\"]+)\"")
 QUEST_RECEIVERS = {"quest", "Quest"}
 
 
+def executable_matches(pattern: re.Pattern, source: str):
+    """Yield regex matches from Lua code, excluding line-comment text."""
+    for line in source.splitlines():
+        code = line.split("--", 1)[0]
+        yield from pattern.finditer(code)
+
+
 def lua_compiles(path: Path) -> str | None:
     try:
         from lupa import LuaRuntime
@@ -123,7 +130,7 @@ def validate(fse_root: Path, package_key: str, fixtures_dir: Path | None, traces
     for f in lua_files:
         rel = f.relative_to(fse_root).as_posix()
         src = f.read_text(encoding="utf-8-sig")
-        for m in CALL_RE.finditer(src):
+        for m in executable_matches(CALL_RE, src):
             receiver, name = m.group(1), m.group(2)
             scope = "Quest" if receiver in QUEST_RECEIVERS else "Entity"
             report["apiCalls"].setdefault(f"{scope}.{name}", []).append(rel)
@@ -133,7 +140,7 @@ def validate(fse_root: Path, package_key: str, fixtures_dir: Path | None, traces
             if not ok:
                 other = name in (entity_names if scope == "Quest" else quest_names)
                 (wrong_scope if other else missing).setdefault(f"{scope}.{name}", set()).add(rel)
-        for m in UNSUPPORTED_RE.finditer(src):
+        for m in executable_matches(UNSUPPORTED_RE, src):
             report["unsupported"].append({"retail": m.group(1), "file": rel})
     report["missingApis"] = {k: sorted(v) for k, v in sorted(missing.items())}
     report["wrongScopeApis"] = {k: sorted(v) for k, v in sorted(wrong_scope.items())}
