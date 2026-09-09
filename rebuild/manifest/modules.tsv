@@ -1476,7 +1476,7 @@ CEngineInternalPrimitiveOcclusionBase	2	3	3	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveOcclusionGroup	2	3	2	0	0	1	1	0	1	0	0
 CEngineInternalPrimitiveParticleDecal	2	2	2	0	0	2	2	2	0	0	0
 CEngineInternalPrimitiveParticleDecalGroup	2	2	2	0	0	2	2	2	0	0	0
-CEngineInternalPrimitiveParticleGroup	13	14	14	0	0	4	4	4	0	0	0
+CEngineInternalPrimitiveParticleGroup	13	14	14	0	0	5	5	5	0	0	0
 CEngineInternalPrimitiveParticleLine	2	6	6	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveParticleLineGroup	2	2	2	0	0	2	2	2	0	0	0
 CEngineInternalPrimitiveParticleMesh	3	3	3	0	0	1	1	1	0	0	0
@@ -3695,7 +3695,7 @@ CThingManager	86	38	38	0	0	0	0	0	0	0	0
 CThingMap	7	9	7	0	0	0	0	0	0	0	0
 CThingMapManager	24	17	16	0	0	2	2	1	1	0	0
 CThingMarker	10	2	2	0	0	0	0	0	0	0	0
-CThingMarkerDef	2	3	3	0	0	2	2	1	1	0	0
+CThingMarkerDef	2	3	3	0	0	3	3	1	2	0	0
 CThingMultiArrowShotDef	2	3	3	0	0	2	2	2	0	0	0
 CThingNPC	0	1	0	0	0	0	0	0	0	0	0
 CThingNoise	7	0	0	0	0	0	0	0	0	0	0

@@ -132436,6 +132436,13 @@ $catalog = @(
         TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_PrimTypeMatchesGroup_00bbbf00_test.cpp'
         PassPattern = 'PARTICLE_GROUP_TYPES PASS'
     }
+    [pscustomobject]@{
+        Address = '004644c0'
+        Module = 'CThingMarkerDef'
+        Source = '00/46/CThingMarkerDef_Copy_004644c0.cpp'
+        TestSource = '00/46/CThingMarkerDef_Copy_004644c0_test.cpp'
+        PassPattern = 'THING_MARKER_COPY PASS'
+    }
 )
 
 $requestedAddresses = @(

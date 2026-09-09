@@ -235,4 +235,16 @@ Retail/debug divergence remained explicit rather than hidden. A proposed
 fourth low-confidence `CDrawGuildSeal::ClearMessages` identity whose `+0x3c4`
 access contradicts the PDB-consistent class, and an
 `IsOriginatedByThing` predicate that reads beyond the donor's eight-byte UID
-filter. Batch 342 is the next crawl target.
+filter.
+
+Batch 346 then landed `CThingMarkerDef::Copy` as a 58-byte relocation match
+using the explicit `CThingMarkerDefRetail` layout. Ego_r describes a 0x8c-byte
+object whose `Graphic`, `TriggerType`, and `Properties` fields begin at +0x74,
++0x84, and +0x88. Retail `GetSizeofClass`, `Transfer`, and `Copy` independently
+prove a 0x88-byte object with those fields shifted to +0x70, +0x80, and +0x84.
+The fixture also verifies retail's more subtle behavior: `Copy` transfers only
+the first 14 bytes of `Graphic`, leaving its two-byte tail untouched.
+
+After that landing the comparer totals are 18,864 compiled and behavior-tested
+candidates, 8,142 exact matches, 10,678 relocation matches, 14,690 genuine
+landed entries, and 393,852 genuine matched retail bytes. Batch 347 is next.
