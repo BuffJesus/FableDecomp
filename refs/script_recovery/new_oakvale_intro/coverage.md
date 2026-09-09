@@ -32,8 +32,8 @@
 | NOVI_Victim | Init | 0x00DAEEB0 | 8 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_init | native-decompile | implemented-and-traced |
 | NOVI_Victim | Main | 0x00DBCD60 | 27 | `NewOakValeIntro/Entities/NOVI_Victim.lua` | entity_victim_first_hero_hit, entity_victim_freed_thanks, entity_victim_main_terminated, entity_victim_repeat_hit_bully_alive | native-decompile | implemented (uncertain args) |
 | NOVI_Villager | Init | 0x00DADF00 | 5 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_init | native-decompile | implemented-and-traced |
-| NOVI_Villager | Main | 0x00DADF80 | 27 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_main_terminated, entity_villager_male_good_mutter | native-decompile | implemented (uncertain args) |
-| NOVI_Villager | GetVillagerSpeechIndex | 0x00DAEBF0 | 1 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_male_good_mutter | native-decompile | implemented-and-traced |
+| NOVI_Villager | Main | 0x00DADF80 | 27 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_female_both_mutter_rerolls, entity_villager_hit_then_reproaches_hero, entity_villager_main_terminated, entity_villager_male_good_mutter | native-decompile | implemented (uncertain args) |
+| NOVI_Villager | GetVillagerSpeechIndex | 0x00DAEBF0 | 1 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | entity_villager_female_both_mutter_rerolls, entity_villager_male_good_mutter | native-decompile | implemented-and-traced |
 | NOVI_Villager | QuestInit(vectors) | 0x00DAADD0 | 0 | `NewOakValeIntro/Entities/NOVI_Villager.lua` | - | native-decompile | not-applicable (retail body empty / data only) |
 | OVI_DeadFather | Init | 0x00DB8290 | 2 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_init | native-decompile | implemented-and-traced |
 | OVI_DeadFather | Main | 0x00DB8300 | 9 | `NewOakValeIntro/Entities/OVI_DeadFather.lua` | entity_dead_father_found_cleanup, entity_dead_father_main_terminated | native-decompile | implemented (uncertain args) |

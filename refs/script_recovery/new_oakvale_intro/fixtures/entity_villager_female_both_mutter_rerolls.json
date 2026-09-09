@@ -1,0 +1,17 @@
+{
+  "__meta__":{"function":"Main","covers":["Main","GetVillagerSpeechIndex"],"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Villager.lua","expect":["random","SetTimer","AddNewConversation","AddPersonToConversation","SetStateInt","AddLineToConversation"],"note":"the one-in-100 idle gate selects the female both-deeds table; speech index 1 matches lastVillagerSpeechIdx, so retail’s retry yields one frame before index 3 is stored and its _40 line is queued"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.MsgIsHitByHero":[false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[false],
+  "Quest.GetStateInt(TalkIntermittentTimer)":[801],
+  "Quest.GetTimer(801)":[0],
+  "Lua.math.random":[0,1,3],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Quest.AddNewConversation":[{"handle":"conversation","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[2],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[1],
+  "Quest.EntityGetSex":[0],
+  "Quest.GetStateInt(lastVillagerSpeechIdx)":[1]
+}

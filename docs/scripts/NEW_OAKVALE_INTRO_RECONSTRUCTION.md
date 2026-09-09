@@ -42,7 +42,7 @@ python tools/script_recovery/validate_reconstructed_package.py `
 
 The 2026-09-08 checkpoint has 22 Lua files, 17 operation inventories (quest plus 16
 entities), 52 catalogued native functions, no Lua syntax errors, no missing or wrong-scope
-ForgeFSE bindings, and 86/86 deterministic fixtures matching their saved traces. In addition
+ForgeFSE bindings, and 88/88 deterministic fixtures matching their saved traces. In addition
 to the quest lifecycle suite, coverage includes entity initialization, entry interruption,
 beetle timer expiry and cleanup, barrel tutorial/destruction reporting, dead-father marker and
 control cleanup, guard idle/talk behavior, father/Theresa resource release, both teddy handoff
@@ -101,6 +101,10 @@ cleanup, movie teardown, and both nested/main control releases.
 Teddy-girl coverage now includes the separate ruined-teddy outcome: the bully-proximity gate,
 `TEDDY_RUINED` conversation, master-data `TeddySolution = "C"`, run toward the affair wife,
 off-screen check, despawn, and final control cleanup.
+Villager coverage now joins a direct female-villager hit to the next talk interaction, proving the
+first violence bad deed, attacked movie line, entity-local `HeroDidHitMe` memory, and female
+done-bad-deeds reproach. A separate female/both-deeds mutter collides with the previous speech
+index, yields the native retry frame, stores the replacement index, and queues the `_40` line.
 
 The coverage manifest classifies 29 functions as implemented and traced, 17 as implemented
 with uncertain native arguments, 6 as lifecycle/data-only, no API-blocked functions, and

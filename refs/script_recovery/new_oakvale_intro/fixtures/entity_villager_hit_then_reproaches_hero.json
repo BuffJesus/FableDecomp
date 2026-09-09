@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Villager.lua","expect":["EntitySetThingAsAllyOfThing","SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","StartMovieSequence","Speak","EndMovieSequence","EntitySetFacingAngleTowardsThing","AddNewConversation","AddPersonToConversation","AddLineToConversation","IsConversationActive","ReleaseControl"],"note":"a female villager records a direct hero hit as the first violence bad deed, speaks the attacked line inside a movie, then remembers HeroDidHitMe and answers the next talk interaction with the female done-bad-deeds reproach"},
+  "Quest.NewScriptFrame":[true,true,false],
+  "Entity.MsgIsHitByHero":[true,false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
+  "Entity.IsTalkedToByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Entity.AcquireControl":[true,true],
+  "Quest.EntityGetSex":[0,0],
+  "Quest.GetHealth":[100],
+  "Quest.AddNewConversation":[{"handle":"reproach","scope":"Entity"}],
+  "Quest.IsConversationActive":[false]
+}

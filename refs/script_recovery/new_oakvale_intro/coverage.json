@@ -426,6 +426,8 @@
       "operations": 27,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "fixtures": [
+        "entity_villager_female_both_mutter_rerolls",
+        "entity_villager_hit_then_reproaches_hero",
         "entity_villager_main_terminated",
         "entity_villager_male_good_mutter"
       ],
@@ -439,6 +441,7 @@
       "operations": 1,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "fixtures": [
+        "entity_villager_female_both_mutter_rerolls",
         "entity_villager_male_good_mutter"
       ],
       "evidence": "native-decompile",

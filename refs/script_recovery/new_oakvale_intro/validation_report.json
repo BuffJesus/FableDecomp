@@ -1725,6 +1725,22 @@
       "trace": "match"
     },
     {
+      "events": 23,
+      "fixture": "entity_villager_female_both_mutter_rerolls.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 36,
+      "fixture": "entity_villager_hit_then_reproaches_hero.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 5,
       "fixture": "entity_villager_init.json",
       "function": "Init",
@@ -1886,8 +1902,8 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 86,
-    "fixturesPassed": 86,
+    "fixtures": 88,
+    "fixturesPassed": 88,
     "luaFiles": 22,
     "missingApis": 0,
     "syntaxErrors": 0,

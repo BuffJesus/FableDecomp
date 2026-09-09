@@ -1243,6 +1243,51 @@
       "events": 27
     },
     {
+      "fixture": "entity_villager_female_both_mutter_rerolls",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "purpose": "the one-in-100 idle gate selects the female both-deeds table; speech index 1 matches lastVillagerSpeechIdx, so retail\u2019s retry yields one frame before index 3 is stored and its _40 line is queued",
+      "expects": [
+        "random",
+        "SetTimer",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "SetStateInt",
+        "AddLineToConversation"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 23
+    },
+    {
+      "fixture": "entity_villager_hit_then_reproaches_hero",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "purpose": "a female villager records a direct hero hit as the first violence bad deed, speaks the attacked line inside a movie, then remembers HeroDidHitMe and answers the next talk interaction with the female done-bad-deeds reproach",
+      "expects": [
+        "EntitySetThingAsAllyOfThing",
+        "SetStateInt",
+        "DisplayGameInfo",
+        "AddLogbookStoryEntryString",
+        "StartMovieSequence",
+        "Speak",
+        "EndMovieSequence",
+        "EntitySetFacingAngleTowardsThing",
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "AddLineToConversation",
+        "IsConversationActive",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "result": "ran",
+      "trace": "written",
+      "events": 36
+    },
+    {
       "fixture": "entity_villager_init",
       "function": "Init",
       "kind": "entity",
