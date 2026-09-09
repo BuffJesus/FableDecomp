@@ -132429,6 +132429,13 @@ $catalog = @(
         TestSource = '00/74/CTCPerceiveThing_SetSightRadius_00744500_test.cpp'
         PassPattern = 'PERCEIVE_THING_SET_SIGHT_RADIUS PASS'
     }
+    [pscustomobject]@{
+        Address = '00bbbf00'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_PrimTypeMatchesGroup_00bbbf00.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_PrimTypeMatchesGroup_00bbbf00_test.cpp'
+        PassPattern = 'PARTICLE_GROUP_TYPES PASS'
+    }
 )
 
 $requestedAddresses = @(

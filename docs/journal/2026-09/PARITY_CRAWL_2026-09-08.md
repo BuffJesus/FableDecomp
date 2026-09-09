@@ -210,6 +210,24 @@ parity. The refreshed totals are 18,862 compiled and behavior-tested
 candidates, 8,141 exact matches, 10,677 relocation matches, 14,688 genuine
 landed entries, and 393,737 genuine matched retail bytes.
 
+### Batches 342-346: particle grouping and retail anomaly triage
+
+Batches 342 through 345 were reviewed and ledgered, and batch 346 was opened.
+`CEngineInternalPrimitiveParticleGroup::PrimTypeMatchesGroup` at `00bbbf00`
+landed as readable C++ with a behavior fixture and an exact 57/57-byte retail
+match. It documents the eight primitive type IDs accepted by the generic
+particle group without introducing guessed object layout.
+
+Two tempting candidates were deliberately withheld. The genuine adjacent
+`C3DCoordI::operator-=` symbol at `00a13c20` has retail behavior that subtracts
+X and Y but adds Z, plus an unused three-byte `maxps`; readable C++ reproduces
+the behavior but only 54/57 bytes, so artificial assembly was not added.
+`GFFloatToLongFloor` at `0048d940` also failed its first boundary fixture and
+requires explicit floating-point-environment analysis before landing. The
+refreshed comparer totals are 18,863 compiled and behavior-tested candidates,
+8,142 exact matches, 10,677 relocation matches, 14,689 genuine landed entries,
+and 393,794 genuine matched retail bytes.
+
 Retail/debug divergence remained explicit rather than hidden. A proposed
 `CTextureManager::FrameEnd` implementation confirmed behavior and the retail
 `0x54` pool stride (`FailedAllocations` at `+0x58c`, versus the donor's

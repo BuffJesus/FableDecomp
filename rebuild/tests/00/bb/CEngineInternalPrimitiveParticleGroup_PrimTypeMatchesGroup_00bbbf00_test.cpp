@@ -1,0 +1,3 @@
+#include <stdio.h>
+class CEngineInternalPrimitiveParticleGroup { public: bool PrimTypeMatchesGroup(long primitiveType); };
+int main() { CEngineInternalPrimitiveParticleGroup group; const long accepted[] = {24, 28, 26, 27, 29, 7, 20, 30}; for (int i = 0; i < 8; ++i) if (!group.PrimTypeMatchesGroup(accepted[i])) return 1; if (group.PrimTypeMatchesGroup(6) || group.PrimTypeMatchesGroup(31)) return 2; printf("PARTICLE_GROUP_TYPES PASS\n"); return 0; }
