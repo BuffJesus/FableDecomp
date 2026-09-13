@@ -1,0 +1,131 @@
+{
+  "address": "0x00DB3FA0",
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "0ab683a00f65b0e5b3a5259dc91a0e7e7fe0327d2d7206bb776f70e7d7915c67",
+  "regions": [
+    {
+      "address": 14368672,
+      "size": 4039,
+      "sha256": "bf617323c56d3a470484368abfcb367ed115de2d44498b69f7aaa1285e4eb53a"
+    },
+    {
+      "address": 8287376,
+      "size": 57,
+      "sha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": 19271468,
+      "size": 4,
+      "sha256": "857121adea475480df9a12096b08adb117a600ace9fe1507847ed6a7488558db"
+    },
+    {
+      "address": 19272492,
+      "size": 4,
+      "sha256": "754dd8978d373e339fb743585106af5b6adfa3ef41b9fb4dffa07655c2bb067d"
+    }
+  ],
+  "acquisitions": [
+    [
+      14368845,
+      3
+    ],
+    [
+      14368888,
+      3
+    ],
+    [
+      14369663,
+      4
+    ],
+    [
+      14369706,
+      4
+    ],
+    [
+      14370174,
+      4
+    ],
+    [
+      14370217,
+      4
+    ],
+    [
+      14372273,
+      4
+    ],
+    [
+      14372316,
+      4
+    ]
+  ],
+  "queries": [
+    [
+      14369830,
+      14369839,
+      240
+    ],
+    [
+      14370362,
+      14370371,
+      276
+    ],
+    [
+      14370591,
+      14370600,
+      252
+    ],
+    [
+      14370786,
+      14370795,
+      216
+    ],
+    [
+      14371235,
+      14371244,
+      228
+    ],
+    [
+      14371629,
+      14371638,
+      180
+    ],
+    [
+      14371825,
+      14371834,
+      192
+    ]
+  ],
+  "edits": [
+    {
+      "old": "GSI->GetHealth()",
+      "count": 1,
+      "new": "GSI->GetHealth(me)"
+    },
+    {
+      "old": "GSI->GetHealth(uVar9)",
+      "count": 4,
+      "new": "GSI->GetHealth(me)"
+    },
+    {
+      "old": "GSI->GetHealth(uVar12)",
+      "count": 2,
+      "new": "GSI->GetHealth(me)"
+    }
+  ],
+  "hostContract": {
+    "name": "GetHealth",
+    "scope": "Quest",
+    "returnType": "float",
+    "parameters": [
+      {
+        "name": "pThing",
+        "type": "CScriptThing*",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Quest API",
+    "description": "Gets health."
+  },
+  "review": "EBP=self at DB3FAC, never overwritten. All eight StartScriptingEntity calls use EBP and resource stack20. Each health getter consumes resource20 after acquisition; no other actor is assigned to it. Getter returns hidden CScriptThing wrapper consumed by GetHealth. Retain wrapper scaffolding/cleanup as unresolved."
+}

@@ -1,0 +1,169 @@
+{
+  "scope": "Execute WaitForPieceOver; frame, lookup, IsAlive and quest APIs are doubles.",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "name": "ready_dead",
+      "piece": true,
+      "set_frame": 0,
+      "alive": [
+        false
+      ],
+      "stop_query": 0,
+      "missing": false,
+      "events": [
+        "query",
+        "lookup",
+        "alive_0",
+        "query",
+        "active",
+        "deactivate",
+        "release_lookup"
+      ]
+    },
+    {
+      "name": "ready_missing",
+      "piece": true,
+      "set_frame": 0,
+      "alive": [],
+      "stop_query": 0,
+      "missing": true,
+      "events": [
+        "query",
+        "lookup",
+        "query",
+        "active",
+        "deactivate",
+        "release_lookup"
+      ]
+    },
+    {
+      "name": "ready_cancel",
+      "piece": true,
+      "set_frame": 0,
+      "alive": [],
+      "stop_query": 1,
+      "missing": false,
+      "events": [
+        "query"
+      ]
+    },
+    {
+      "name": "wait_cancel",
+      "piece": false,
+      "set_frame": 0,
+      "alive": [],
+      "stop_query": 1,
+      "missing": false,
+      "events": [
+        "frame",
+        "query"
+      ]
+    },
+    {
+      "name": "flag_and_cancel",
+      "piece": false,
+      "set_frame": 1,
+      "alive": [],
+      "stop_query": 1,
+      "missing": false,
+      "events": [
+        "frame",
+        "query"
+      ]
+    },
+    {
+      "name": "flag_then_cancel",
+      "piece": false,
+      "set_frame": 1,
+      "alive": [],
+      "stop_query": 2,
+      "missing": false,
+      "events": [
+        "frame",
+        "query",
+        "query"
+      ]
+    },
+    {
+      "name": "wait_then_dead",
+      "piece": false,
+      "set_frame": 1,
+      "alive": [
+        false
+      ],
+      "stop_query": 0,
+      "missing": false,
+      "events": [
+        "frame",
+        "query",
+        "query",
+        "lookup",
+        "alive_0",
+        "query",
+        "active",
+        "deactivate",
+        "release_lookup"
+      ]
+    },
+    {
+      "name": "alive_then_dead",
+      "piece": true,
+      "set_frame": 0,
+      "alive": [
+        true,
+        false
+      ],
+      "stop_query": 0,
+      "missing": false,
+      "events": [
+        "query",
+        "lookup",
+        "alive_1",
+        "frame",
+        "query",
+        "alive_0",
+        "query",
+        "active",
+        "deactivate",
+        "release_lookup"
+      ]
+    },
+    {
+      "name": "alive_wait_cancel",
+      "piece": true,
+      "set_frame": 0,
+      "alive": [
+        true
+      ],
+      "stop_query": 2,
+      "missing": false,
+      "events": [
+        "query",
+        "lookup",
+        "alive_1",
+        "frame",
+        "query",
+        "release_lookup"
+      ]
+    },
+    {
+      "name": "dead_before_deactivate_cancel",
+      "piece": true,
+      "set_frame": 0,
+      "alive": [
+        false
+      ],
+      "stop_query": 2,
+      "missing": false,
+      "events": [
+        "query",
+        "lookup",
+        "alive_0",
+        "query",
+        "release_lookup"
+      ]
+    }
+  ],
+  "bytes": "83ec10568bf18a464884c075218d49008b4e408b01ff501c8bcee861fee8ff84c00f85bd0000008a464884c074e28bcee84bfee8ff84c00f85a70000006aff6898202e018d4c240ce8e370b7ff8b4e408b118d442404508d44240c50ff92200100008d4c2404e8b56fb7ffeb038d49008b4c240c85c9742d8b11ff922c01000084c074218b4e408b01ff501c8bcee8edfde8ff84c074d98d4c2408e8e02c68ff5e83c410c38bcee8d4fde8ff84c075e78b4e408b01578bd18b3a6a008d54240c52ff903c0a00008b4e4050ff97640400008d4c2408e8466fb7ff8d4c240ce89d2c68ff5f5e83c410c3"
+}

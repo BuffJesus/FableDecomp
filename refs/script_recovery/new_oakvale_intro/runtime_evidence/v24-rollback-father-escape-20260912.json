@@ -1,0 +1,7 @@
+{
+  "time": "2026-09-12T10:56:26.268191",
+  "reason": "User reports Escape unresponsive during Father dialogue; suspected v24 regression, cause unproven",
+  "restored": "v23",
+  "verifiedFiles": 25,
+  "log": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260912-v24-father-escape.log"
+}

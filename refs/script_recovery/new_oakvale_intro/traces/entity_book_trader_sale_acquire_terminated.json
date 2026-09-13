@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        3
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -27,9 +29,16 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        0.1
+      ],
       "event": "api-call",
-      "name": "GetPos",
+      "name": "IsDistanceFromPositionOver",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -55,7 +64,9 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -105,5 +116,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-  "sourceSha256": "2cea485500eb0a4f9ec1a0a5d8ef090844c02508b4d6d1310f249d0eefba85ff"
+  "sourceSha256": "e5a5be7fc2227f8327b7902c182acef481207af174fcf12cd866754294509481"
 }

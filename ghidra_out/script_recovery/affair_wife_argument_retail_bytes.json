@@ -1,0 +1,84 @@
+{
+  "schema": "affair-wife-argument-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "region": {
+    "address": "0x00DB35C1",
+    "rangeSize": 1770,
+    "bytesSha256": "7E5DE894592C30DC0AE21DC7E20E59F3798A8F298C4CC42B552D98B646966EFE",
+    "instructionCount": 536,
+    "strings": [
+      "ST_ARGUING_POINT_AWAY",
+      "ST_ARGUING_POINT_AT",
+      "TEXT_QST_048_AFFAIR_WIFE_ON_HIT",
+      "TEXT_QST_048_AFFAIR_WIFE_THANKYOU_SINGLE",
+      "TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_",
+      "TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_10",
+      "TEXT_QST_048_AFFAIRMAN_IN_TROUBLE"
+    ]
+  },
+  "argumentGate": {
+    "heroDistance": 15.0,
+    "distanceSite": "0x00DB35D5",
+    "skipTarget": "0x00DB3CAB"
+  },
+  "animations": [
+    "ST_ARGUING_POINT_AWAY",
+    "ST_ARGUING_POINT_AT"
+  ],
+  "husbandFacing": [
+    {
+      "context": "during pointing animation",
+      "localLoadSite": "0x00DB36D2",
+      "local": "ESP+0x34",
+      "callSite": "0x00DB36D8",
+      "slot": "0x76C",
+      "force": false
+    },
+    {
+      "context": "after hit",
+      "localLoadSite": "0x00DB394E",
+      "local": "ESP+0x34",
+      "callSite": "0x00DB3954",
+      "slot": "0x76C",
+      "force": true
+    },
+    {
+      "context": "after hero talk",
+      "localLoadSite": "0x00DB3B1A",
+      "local": "ESP+0x34",
+      "callSite": "0x00DB3B20",
+      "slot": "0x76C",
+      "force": true
+    }
+  ],
+  "conversation": {
+    "constructor": {
+      "site": "0x00DB3B70",
+      "slot": "0x5B0",
+      "flags": [
+        false,
+        false
+      ]
+    },
+    "addHusband": {
+      "localLoadSite": "0x00DB3B7D",
+      "local": "ESP+0x30",
+      "callSite": "0x00DB3B8A",
+      "slot": "0x5B4"
+    },
+    "wifeLine": {
+      "listenerLocalLoadSite": "0x00DB3C16",
+      "listenerLocal": "ESP+0x30",
+      "callSite": "0x00DB3C24",
+      "slot": "0x5B8"
+    },
+    "husbandLine": {
+      "speakerLocalLoadSite": "0x00DB3C62",
+      "speakerLocal": "ESP+0x34",
+      "callSite": "0x00DB3C6F",
+      "slot": "0x5B8",
+      "speech": "TEXT_QST_048_AFFAIRMAN_IN_TROUBLE"
+    }
+  }
+}

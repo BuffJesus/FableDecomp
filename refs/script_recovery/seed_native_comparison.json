@@ -219,6 +219,67 @@
         "DragonState"
       ],
       "nativePersistenceOnly": []
+    },
+    {
+      "package": "GuildMaster",
+      "nativeScript": "V_GuildMaster",
+      "sharedLiterals": [
+        "",
+        "GuildMasterGameFlow"
+      ],
+      "nativeEntityBindings": [
+        "GuildMasterGameFlow"
+      ],
+      "luaBindingsFoundNative": [
+        "GuildMasterGameFlow"
+      ],
+      "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
+      "sharedPersistenceKeys": [],
+      "luaPersistenceOnly": [
+        "FocalSitesSetupDone",
+        "GMDial_1",
+        "GMDial_2",
+        "GMDial_3",
+        "GMDial_4",
+        "LastDialogueSaid"
+      ],
+      "nativePersistenceOnly": []
+    },
+    {
+      "package": "LUAGameflowAssistance",
+      "nativeScript": "GameflowAssistance",
+      "sharedLiterals": [
+        "",
+        "CombatMultFramesSinceChange",
+        "CombatMultHighestLevel",
+        "FlourishesOffered",
+        "FlourishesPerformed",
+        "HealthWarningsGiven",
+        "SaveWarningsGiven",
+        "SavedRenownLevel",
+        "Tutorial_CombatMultiplier",
+        "Tutorial_LowHealth",
+        "Tutorial_LowMagic",
+        "Tutorial_RenownLevelIncrease",
+        "WillEnergyWarningsGiven"
+      ],
+      "nativeEntityBindings": [],
+      "luaBindingsFoundNative": [],
+      "luaBindingsMissingNativeLifecycle": [],
+      "nativeBindingsMissingLua": [],
+      "sharedPersistenceKeys": [
+        "CombatMultFramesSinceChange",
+        "CombatMultHighestLevel",
+        "FlourishesOffered",
+        "FlourishesPerformed",
+        "HealthWarningsGiven",
+        "SaveWarningsGiven",
+        "SavedRenownLevel",
+        "WillEnergyWarningsGiven"
+      ],
+      "luaPersistenceOnly": [],
+      "nativePersistenceOnly": []
     }
   ]
 }

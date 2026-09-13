@@ -1,0 +1,35 @@
+{
+  "status": "non-registered root/watcher reference; full entity port pending",
+  "watcher_native_cases": 10,
+  "checks": {
+    "native_inventory": true,
+    "three_macro_assets": true,
+    "ten_unique_placements": true
+  },
+  "inputs": [
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\reference\\quest.lua",
+      "sha256": "aeeefcdea2ae36745ca689c4e3b076be85036fd7ab6ab2018aac9c2e8a22c520"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\installed-macros-20260912.json",
+      "sha256": "758303a81904d09d6dadebbd2c116ed82b06faca021fbd98cb049bb2f1ba2f74"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\installed-placements-20260912.json",
+      "sha256": "820ac23538937a3160458ae6e6cec89acdf0a79ecaf2b0aac0ab1b158798ab05"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-inventory-20260912.json",
+      "sha256": "5a8c05799b8f714b5179a2151e6f3e77f45bc21ae373b3509f0f6047905756c2"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-waiter-cases-20260912.json",
+      "sha256": "ba72a8a62c9a70cb2e131c2428ce24debd685d9ee76e3a1ea9ab0ace544545bd"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\PORT_RECOVERY_2026-09-12.md",
+      "sha256": "e68d997c758b57da2b35bb1362d5bc4fc590ee4759ed4ba5d6602d144cb53420"
+    }
+  ]
+}

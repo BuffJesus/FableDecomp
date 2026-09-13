@@ -6,7 +6,7 @@
    "DeactivateQuest",
    "TransitionToTheme",
    "EntityTeleportToThing",
-   "PlayCutscene",
+   "RunCutsceneWithSetup",
    "SetQuestAsCompleted",
    "DeactivateQuestLater"
   ],
@@ -18,6 +18,12 @@
  },
  "Quest.GetActiveQuestName": [
   "Q_NewOakValeIntro"
+ ],
+ "Quest.IsQuestActive(Q_NewOakValeIntro)": [
+  true
+ ],
+ "Quest.IsQuestActive(NewOakValeIntro)": [
+  false
  ],
  "Quest.IsRegionLoaded": [
   true
@@ -52,14 +58,7 @@
    "scope": "Entity"
   }
  ],
- "Quest.GetAllThingsWithScriptName(M_PostAttackStart)": [
-  [
-   {
-    "handle": "M_PostAttackStart",
-    "scope": "Entity"
-   }
-  ]
- ],
+ "Entity.IsAlive": [true],
  "Quest.GetThingWithScriptName(V_OakVale)": [
   {
    "handle": "V_OakVale",

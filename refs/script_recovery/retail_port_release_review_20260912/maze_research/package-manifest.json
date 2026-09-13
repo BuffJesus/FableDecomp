@@ -1,0 +1,328 @@
+{
+  "status": "disabled-source-package-not-deployable-binary-bundle",
+  "native_name": "V_MazeResearch",
+  "entity_ids": {
+    "EmptyGrave": 64,
+    "HistoryBookcase": 65
+  },
+  "validation": {
+    "passed": true,
+    "scope": "Offline source package; engine calls doubled, no live playback approval",
+    "checks": {
+      "reference_and_staged_traces": true,
+      "all_lua_parses": true,
+      "reference_copy_quest.lua": true,
+      "reference_copy_runtime_adapter.lua": true,
+      "both_retail_macros": true,
+      "CS_GET_SWORD_OF_AEONS_REDEEM_flag_order": true,
+      "CS_GET_SWORD_OF_AEONS_SAINT_flag_order": true,
+      "seven_placements": true,
+      "placement_source_unchanged": true,
+      "macro_source_unchanged": true,
+      "native_case_inventory": true
+    },
+    "native_cases": {
+      "history": 11,
+      "grave": 20
+    },
+    "test_log": "test_grave_native_traces (tools.script_recovery.test_maze_research_reference.MazeResearchReferenceTests.test_grave_native_traces) ... ok\ntest_history_native_traces (tools.script_recovery.test_maze_research_reference.MazeResearchReferenceTests.test_history_native_traces) ... ok\ntest_unlimbo_native_outcomes (tools.script_recovery.test_maze_research_reference.MazeResearchReferenceTests.test_unlimbo_native_outcomes) ... ok\ntest_activation_off (tools.script_recovery.test_maze_research_reference.MazeResearchStagedTests.test_activation_off) ... ok\ntest_grave_native_traces (tools.script_recovery.test_maze_research_reference.MazeResearchStagedTests.test_grave_native_traces) ... ok\ntest_history_native_traces (tools.script_recovery.test_maze_research_reference.MazeResearchStagedTests.test_history_native_traces) ... ok\ntest_reference_copies (tools.script_recovery.test_maze_research_reference.MazeResearchStagedTests.test_reference_copies) ... ok\ntest_unlimbo_native_outcomes (tools.script_recovery.test_maze_research_reference.MazeResearchStagedTests.test_unlimbo_native_outcomes) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.054s\n\nOK\n",
+    "inputs": [
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\dllmain.cpp",
+        "sha256": "b31f97f021d35fcd1752af442590ac736e03111ac938c3caef043cd4b0deac26"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\EntityScriptingAPI.h",
+        "sha256": "44e9f799524c7ef71e3a738e493b0ae53cc86fcb342648580867dfb058581f5c"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+        "sha256": "50ff736014baabf1e96181d280147ce70d5de47166356b335468f280ddb60b17"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.h",
+        "sha256": "74ca6c130ee72e69eaace01ee2df0f9425a6ff72049ff58e6568336c0dd943fd"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\framework.h",
+        "sha256": "188c9e04096a0a539b82a8c61784d69fd7334dea8066c181f31b429024974384"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\GameInterface.cpp",
+        "sha256": "5b034142e54e9e83ec5824717a1921c3802bbaee3959651b70322d661242543a"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\GameInterface.h",
+        "sha256": "f6b486d446fc7624d4833a9071996cc8cb7b34ee7eb9866f78e007713d23b815"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityAPI.cpp",
+        "sha256": "d269a45e3a8f58cb22b8f48ceb71571ace91be62d1153de0e182302ed2edc725"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityAPI.h",
+        "sha256": "3fe882926b047706236b96bb41f47d03ea2cb93952104b1eb7a87d4246f657b0"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityHost.cpp",
+        "sha256": "6d7e547e854e4cfad2f923a4bb133a9b90906244a7f0bb78eb6b2ba344efbb82"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityHost.h",
+        "sha256": "8113bc3cff0a8a0de1deef43828fb79d0fe2f9616a9bf6fb8c46be1db6bc211f"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
+        "sha256": "863d9e9506bf9abee76ff92803ecec444f350ff57935ba98aec3398b4d82df18"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.h",
+        "sha256": "ad906c4f77573efbfce78709d5a15aeeec90d1d24bdaf983e101b3447fb372ca"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestHost.cpp",
+        "sha256": "43236f5f039d03e22acbc7086168460c89facf87697daed1b91d0da436f7fe48"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestHost.h",
+        "sha256": "07d92d661ada9606b0a31cfa90be0463264e656cce390556cb0949ff62d99738"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.cpp",
+        "sha256": "d169377ea0daf52bd33880c110d91ccd292a1eb942362120d01f15c59198edd5"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.h",
+        "sha256": "04a984bf8cadd05fad1e352ebb62929f7dedcb8d02c4324a6c4572085aa21102"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailFlags.h",
+        "sha256": "9cec39b1ac3abf79628edd85f2f6fc701fc4e70700679f25bdbdb57528a4708c"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailResources.h",
+        "sha256": "1a5247a4680a12294350441a8768ee7e4c454c99f437646393c066b0f20ee75f"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\ManifestFunctionRegistry.generated.h",
+        "sha256": "c98a3208cb4e7441954c6df9f7251cfacb3778947e6efb67e5338f44ab86031a"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\ManifestFunctionRegistry.h",
+        "sha256": "69b547f649ab819fc2c41c928a1f11ef3270da3cd1ae2887cb3215c5d9f2f042"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\MasterQuest.h",
+        "sha256": "90f02d67bac331c523303e3be886fe2cfc8269bf7830e90cf0cb8957e7ebf306"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\resource.h",
+        "sha256": "94c8dfe3b132637b4937bcfcf8dfe24b1cfd571cb0b72ac3b3b30f8b8dde0e3e"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\RetailScriptShadowRunner.cpp",
+        "sha256": "423ee15d740cfeeb5cf0afbcc66746a873fbfa3fe5343b1a24461e42e1e0f345"
+      },
+      {
+        "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\RetailScriptShadowRunner.h",
+        "sha256": "d10365b8b02a09fa731b53bb023fe36387b9bf57a36f3d55afd2bb851a7c6479"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\maze_research\\runtime_evidence\\native-entity-inventory-20260912.json",
+        "sha256": "1ba3b39e2b1206bb2748b50a8a6ed1f179d96b8926321b1fc8fda59d336dec57"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\maze_research\\runtime_evidence\\native-grave-cases-20260912.json",
+        "sha256": "61fc80b5b486e8e80a23decb4f3b3de46fd48cb0d4efb895313255fb867745fe"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\maze_research\\runtime_evidence\\native-history-cases-20260912.json",
+        "sha256": "76900ed106e076b015b672a7b1e09a94ce3eae12f058ef4c7dddb9154ba9fe62"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\maze_research\\runtime_evidence\\native-unlimbo-task-20260912.json",
+        "sha256": "e5a139f11e9b6641979f26fa2e940c5978394c9ff7c86af5f8cd2e7e5702dc94"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\MazeResearch\\Entities\\EmptyGrave.lua",
+        "sha256": "ebd2383b59ea563bcaa2bc01ed02abff3beec8784319f15da70de5d792ec8f89"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\MazeResearch\\Entities\\HistoryBookcase.lua",
+        "sha256": "4a2dd429c18998f36a4ed00e4c44ce67abbc9c9c2040a94260a8a2c121507a84"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\MazeResearch\\MazeResearch.lua",
+        "sha256": "2074249fc1ac638d7c5c4dfd425bd181ccc9e8bca5587ed637120540e38e8ad8"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\MazeResearch\\quest.lua",
+        "sha256": "cd81dc662d12dcb2ea11280a5117c10a05cc3d38bb46e2825f657f569428c31e"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\MazeResearch\\runtime_adapter.lua",
+        "sha256": "b8e7e6edf62ee6f7b9f8ba4c57239d7823d88c28e8d23992128c9c025c96faef"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\quests.lua",
+        "sha256": "569036aa1dbea93b5aae8ac3b16e60e683a8ffa00db5a041c458c2d551732ff1"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\retail_override.lua",
+        "sha256": "fdd6b5ea7d161c81c42aefb56397589cfe95455e58984f31243ed1d7ec7ce0cc"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\test_maze_research_reference.py",
+        "sha256": "84b3eeb0426eb74aff07d0595c4519249f33c2627ec9e1a67b42fc46e28ec8c9"
+      },
+      {
+        "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\validate_maze_research_package.py",
+        "sha256": "bfff75c65a2938ab0f6081e0bd203c3bfa4961f581bd85eed6fb63a27e70fe35"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "MazeResearch/Entities/EmptyGrave.lua",
+      "sha256": "ebd2383b59ea563bcaa2bc01ed02abff3beec8784319f15da70de5d792ec8f89"
+    },
+    {
+      "path": "MazeResearch/Entities/HistoryBookcase.lua",
+      "sha256": "4a2dd429c18998f36a4ed00e4c44ce67abbc9c9c2040a94260a8a2c121507a84"
+    },
+    {
+      "path": "MazeResearch/MazeResearch.lua",
+      "sha256": "2074249fc1ac638d7c5c4dfd425bd181ccc9e8bca5587ed637120540e38e8ad8"
+    },
+    {
+      "path": "MazeResearch/quest.lua",
+      "sha256": "cd81dc662d12dcb2ea11280a5117c10a05cc3d38bb46e2825f657f569428c31e"
+    },
+    {
+      "path": "MazeResearch/runtime_adapter.lua",
+      "sha256": "b8e7e6edf62ee6f7b9f8ba4c57239d7823d88c28e8d23992128c9c025c96faef"
+    },
+    {
+      "path": "quests.lua",
+      "sha256": "569036aa1dbea93b5aae8ac3b16e60e683a8ffa00db5a041c458c2d551732ff1"
+    },
+    {
+      "path": "retail_override.lua",
+      "sha256": "fdd6b5ea7d161c81c42aefb56397589cfe95455e58984f31243ed1d7ec7ce0cc"
+    }
+  ],
+  "runtime_sources": [
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\dllmain.cpp",
+      "sha256": "b31f97f021d35fcd1752af442590ac736e03111ac938c3caef043cd4b0deac26"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\EntityScriptingAPI.h",
+      "sha256": "44e9f799524c7ef71e3a738e493b0ae53cc86fcb342648580867dfb058581f5c"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+      "sha256": "50ff736014baabf1e96181d280147ce70d5de47166356b335468f280ddb60b17"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.h",
+      "sha256": "74ca6c130ee72e69eaace01ee2df0f9425a6ff72049ff58e6568336c0dd943fd"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\framework.h",
+      "sha256": "188c9e04096a0a539b82a8c61784d69fd7334dea8066c181f31b429024974384"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\GameInterface.cpp",
+      "sha256": "5b034142e54e9e83ec5824717a1921c3802bbaee3959651b70322d661242543a"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\GameInterface.h",
+      "sha256": "f6b486d446fc7624d4833a9071996cc8cb7b34ee7eb9866f78e007713d23b815"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityAPI.cpp",
+      "sha256": "d269a45e3a8f58cb22b8f48ceb71571ace91be62d1153de0e182302ed2edc725"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityAPI.h",
+      "sha256": "3fe882926b047706236b96bb41f47d03ea2cb93952104b1eb7a87d4246f657b0"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityHost.cpp",
+      "sha256": "6d7e547e854e4cfad2f923a4bb133a9b90906244a7f0bb78eb6b2ba344efbb82"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityHost.h",
+      "sha256": "8113bc3cff0a8a0de1deef43828fb79d0fe2f9616a9bf6fb8c46be1db6bc211f"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
+      "sha256": "863d9e9506bf9abee76ff92803ecec444f350ff57935ba98aec3398b4d82df18"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.h",
+      "sha256": "ad906c4f77573efbfce78709d5a15aeeec90d1d24bdaf983e101b3447fb372ca"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestHost.cpp",
+      "sha256": "43236f5f039d03e22acbc7086168460c89facf87697daed1b91d0da436f7fe48"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestHost.h",
+      "sha256": "07d92d661ada9606b0a31cfa90be0463264e656cce390556cb0949ff62d99738"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.cpp",
+      "sha256": "d169377ea0daf52bd33880c110d91ccd292a1eb942362120d01f15c59198edd5"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.h",
+      "sha256": "04a984bf8cadd05fad1e352ebb62929f7dedcb8d02c4324a6c4572085aa21102"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailFlags.h",
+      "sha256": "9cec39b1ac3abf79628edd85f2f6fc701fc4e70700679f25bdbdb57528a4708c"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailResources.h",
+      "sha256": "1a5247a4680a12294350441a8768ee7e4c454c99f437646393c066b0f20ee75f"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\ManifestFunctionRegistry.generated.h",
+      "sha256": "c98a3208cb4e7441954c6df9f7251cfacb3778947e6efb67e5338f44ab86031a"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\ManifestFunctionRegistry.h",
+      "sha256": "69b547f649ab819fc2c41c928a1f11ef3270da3cd1ae2887cb3215c5d9f2f042"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\MasterQuest.h",
+      "sha256": "90f02d67bac331c523303e3be886fe2cfc8269bf7830e90cf0cb8957e7ebf306"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\resource.h",
+      "sha256": "94c8dfe3b132637b4937bcfcf8dfe24b1cfd571cb0b72ac3b3b30f8b8dde0e3e"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\RetailScriptShadowRunner.cpp",
+      "sha256": "423ee15d740cfeeb5cf0afbcc66746a873fbfa3fe5343b1a24461e42e1e0f345"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\RetailScriptShadowRunner.h",
+      "sha256": "d10365b8b02a09fa731b53bb023fe36387b9bf57a36f3d55afd2bb851a7c6479"
+    }
+  ],
+  "activation": "disabled; no legacy registration",
+  "metadata_dependencies": [
+    "../meet_sister/api-proposal.json",
+    "api-proposal.json"
+  ],
+  "persistence_limit": "RetailFlags and retained Things are transient Quest-owned C++ state; no Lua object crosses VMs; no save/load certification.",
+  "live_gates": [
+    "Bookcase cancellation at each journal boundary",
+    "EmptyGrave gates and SAINT/REDEEM macro normal/Escape paths",
+    "Concurrent UNLIMBO task and shared flag visibility",
+    "Streaming, resource lifetime, removal, rewards and cleanup"
+  ]
+}

@@ -50,6 +50,7 @@
       "fixtures": [
         "entity_affair_wife_main_terminated",
         "entity_affair_wife_reaches_argument",
+        "entity_affair_wife_stalled_route_retries",
         "entity_affair_wife_wheres_husband"
       ],
       "evidence": "native-decompile",
@@ -134,15 +135,18 @@
       "script": "NOVI_BarrelMan",
       "nativeFunction": "Main",
       "address": "0x00DB5330",
-      "operations": 11,
+      "operations": 68,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "fixtures": [
+        "entity_barrel_man_absent_broken_then_scolds",
+        "entity_barrel_man_favour_speech_terminated",
         "entity_barrel_man_hands_over_warehouse",
         "entity_barrel_man_main_terminated",
+        "entity_barrel_man_nearby_broken_scolds",
         "entity_barrel_man_rebukes_absent_hero",
         "entity_barrel_man_returns_and_thanks_hero"
       ],
-      "evidence": "native-decompile",
+      "evidence": "native-decompile plus direct retail-byte snapshots of automatic judgment 0x00DB5A48-0x00DB5DED and follow-up dialogue 0x00DB65BF-0x00DB684B",
       "status": "implemented-and-traced"
     },
     {
@@ -170,7 +174,8 @@
         "entity_barrel_thug_intro_and_first_nag",
         "entity_barrel_thug_main_terminated",
         "entity_barrel_thug_outro_chat",
-        "entity_barrel_thug_special_hit"
+        "entity_barrel_thug_special_hit",
+        "entity_barrel_thug_speech_terminated"
       ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
@@ -202,7 +207,8 @@
         "entity_book_trader_sale_acquire_terminated",
         "entity_book_trader_sells_sweets",
         "entity_book_trader_shout_acquire_terminated",
-        "entity_book_trader_special_hit"
+        "entity_book_trader_special_hit",
+        "entity_book_trader_speech_terminated"
       ],
       "evidence": "native-decompile",
       "status": "implemented-and-traced"
@@ -230,9 +236,13 @@
         "entity_bully_first_intimidation",
         "entity_bully_first_talk_then_in_common",
         "entity_bully_four_hits_run_off",
+        "entity_bully_ignores_unowned_presented_item",
         "entity_bully_initial_acquire_terminated",
         "entity_bully_loop_acquire_terminated",
         "entity_bully_main_terminated",
+        "entity_bully_refuses_owned_presented_item",
+        "entity_bully_runoff_hero_acquire_terminated",
+        "entity_bully_runoff_victim_acquire_terminated",
         "entity_bully_talk_acquire_terminated",
         "entity_bully_walks_home"
       ],
@@ -297,6 +307,7 @@
         "entity_guard_answers_good_hero",
         "entity_guard_first_crime_lecture",
         "entity_guard_idle_terminated",
+        "entity_guard_lecture_speech_terminated",
         "entity_guard_repeat_crime_chase"
       ],
       "evidence": "native-decompile",
@@ -354,6 +365,7 @@
         "entity_teddy_girl_ruined_acquire_terminated",
         "entity_teddy_girl_scold_acquire_terminated",
         "entity_teddy_girl_special_hit",
+        "entity_teddy_girl_speech_terminated",
         "entity_teddy_girl_teddy_ruined_walkoff"
       ],
       "evidence": "native-decompile",
@@ -415,6 +427,7 @@
       "operations": 27,
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "fixtures": [
+        "entity_victim_brathit_hero_acquire_terminated",
         "entity_victim_first_hero_hit",
         "entity_victim_freed_thanks",
         "entity_victim_initial_acquire_terminated",
@@ -472,7 +485,7 @@
       "luaLocation": "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "fixtures": [],
       "evidence": "native-decompile",
-      "status": "not-applicable (retail body empty / data only)"
+      "status": "not-applicable (covered by Q_NewOakValeIntro.Init)"
     },
     {
       "script": "OVI_DeadFather",
@@ -493,6 +506,7 @@
       "operations": 9,
       "luaLocation": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
       "fixtures": [
+        "entity_dead_father_acquire_terminated",
         "entity_dead_father_found_cleanup",
         "entity_dead_father_main_terminated"
       ],
@@ -516,7 +530,7 @@
       "operations": 0,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [],
-      "evidence": "native-decompile",
+      "evidence": "retail-byte decode + native-decompile",
       "status": "not-applicable (host lifecycle)"
     },
     {
@@ -553,7 +567,7 @@
       "fixtures": [
         "quest_onpersist_roundtrip"
       ],
-      "evidence": "native-decompile",
+      "evidence": "retail-byte decode + native-decompile",
       "status": "implemented-and-traced"
     },
     {
@@ -566,7 +580,7 @@
         "quest_domission_attack_transition",
         "quest_domission_terminated_during_childhood"
       ],
-      "evidence": "native-decompile + PDB-name",
+      "evidence": "retail-byte phase audit + native-decompile + PDB-name",
       "status": "implemented-and-traced"
     },
     {
@@ -579,7 +593,7 @@
         "quest_attack_stuff_section_swap",
         "quest_domission_attack_transition"
       ],
-      "evidence": "native-decompile + PDB-name",
+      "evidence": "retail-byte decode + native-decompile + PDB-name",
       "status": "implemented-and-traced"
     },
     {
@@ -592,7 +606,7 @@
         "quest_domission_attack_transition",
         "quest_post_attack_wait_terminated"
       ],
-      "evidence": "native-decompile + PDB-name",
+      "evidence": "retail-byte state-transition audit + native-decompile + PDB-name",
       "status": "implemented-and-traced"
     },
     {
@@ -605,7 +619,7 @@
         "quest_thread_manage_core_markers",
         "quest_thread_manage_core_markers_terminated_early"
       ],
-      "evidence": "native-decompile + PDB-name",
+      "evidence": "retail-byte marker audit + native-decompile + PDB-name",
       "status": "implemented-and-traced"
     },
     {
@@ -618,7 +632,7 @@
         "quest_thread_start_barrel_timer",
         "quest_thread_start_barrel_timer_terminated"
       ],
-      "evidence": "native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the \"StartBarrelTimer\" name)",
+      "evidence": "retail-byte thread audit + native-decompile (donor label Script_Guard_Duty; pointer stored by Main next to the \"StartBarrelTimer\" name)",
       "status": "implemented-and-traced"
     },
     {
@@ -630,7 +644,7 @@
       "fixtures": [
         "quest_thread_watch_barrels"
       ],
-      "evidence": "native-decompile (LAB_00dbe890 stored next to the \"WatchBarrels\" name)",
+      "evidence": "retail-byte consequence audit + native-decompile (LAB_00dbe890 stored next to the \"WatchBarrels\" name)",
       "status": "implemented-and-traced"
     },
     {
@@ -642,7 +656,7 @@
       "fixtures": [
         "quest_thread_watch_for_got_gold"
       ],
-      "evidence": "native-decompile (donor label CQ_FireHeartScript::CheckGameEnding; pointer stored next to the \"WatchForGotGold\" name)",
+      "evidence": "retail-byte watcher audit + native-decompile (donor label CQ_FireHeartScript::CheckGameEnding; pointer stored next to the \"WatchForGotGold\" name)",
       "status": "implemented-and-traced"
     },
     {
@@ -676,12 +690,13 @@
       "operations": 0,
       "luaLocation": "NewOakValeIntro/NewOakValeIntro.lua",
       "fixtures": [],
-      "evidence": "native-decompile",
+      "evidence": "native-decompile + call-target/helper-IR",
       "status": "not-applicable (host lifecycle)"
     }
   ],
   "summary": {
     "functions": 52,
+    "operations": 747,
     "implementedAndTraced": 46,
     "implementedUntraced": 0,
     "uncertain": 0,

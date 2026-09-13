@@ -1,0 +1,35 @@
+{
+  "schema": "affair-woman-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_AffairWoman",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DB1E80",
+      "endExclusive": "0x00DB1EF4",
+      "rangeSize": 116,
+      "bytesSha256": "0A531EE2FFD01C3FCE6D4EF35B05145ED37D9797369AA73588692F3059F6D0B5",
+      "instructionCount": 43,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB1F00",
+      "endExclusive": "0x00DB299A",
+      "rangeSize": 2714,
+      "bytesSha256": "680D188A6FEC3D659A3DC26986BAF72BF9CB290E4DA1010800254A57F41BA190",
+      "instructionCount": 808,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "Init and complete Main dispatcher",
+    "liveRelationships": [
+      "NOVI_AffairMan",
+      "NOVI_AffairWife"
+    ],
+    "runOffMarker": "AffairWomanRunOffPoint",
+    "terminalCleanup": "0x00DB296B-0x00DB2999"
+  }
+}

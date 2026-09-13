@@ -1,0 +1,357 @@
+{
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "scope": "Execute the native per-voice position-update slice with synthetic listener poses.\n\nRuns C1C49D through C1C5D9, including coordinate conversion, matrix construction,\ninverse and both position branches. Lock acquisition, voice lookup and backend\nSetPosition are stubs. The update eligibility prefix is not executed. This\nestablishes submitted geometry, not live selection, gain, mixer or device output.\n",
+  "cases": [
+    {
+      "relative": 0,
+      "yaw_degrees": 0,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 0,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        0.0,
+        0.0,
+        39.5
+      ],
+      "listener_distance": 37.151715976519846,
+      "forward_projection": 19.5,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 30,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.43301270189221935,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 30,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        21.887493133544922,
+        0.0,
+        38.41025161743164
+      ],
+      "listener_distance": 37.15171406028559,
+      "forward_projection": 21.887492157531813,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 90,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 3.061616997868383e-17,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 90,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        20.0,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 37.151715976519846,
+      "forward_projection": 9.999999999999998,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 180,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        1.2246468525851679e-16,
+        0.0,
+        -0.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 180,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        2.4494295480792516e-15,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 37.151715976519846,
+      "forward_projection": 19.5,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 270,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        -1.8369701465288538e-16,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 9.184850471683389e-17,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 0,
+      "yaw_degrees": 270,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        3.6741443221188774e-15,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 37.151715976519846,
+      "forward_projection": 10.0,
+      "native_branch": "0xc1c330"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 0,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 0,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        10.0,
+        30.0,
+        20.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 30,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        0.25,
+        0.0,
+        0.4330126941204071
+      ],
+      "listener_distance": 0.4999999932694132,
+      "forward_projection": 0.4999999932694132,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 30,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        10.249999046325684,
+        30.0,
+        20.43301010131836
+      ],
+      "listener_distance": 0.4999972710000397,
+      "forward_projection": 0.49999727099981467,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 90,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        0.5,
+        0.0,
+        3.0616171314629196e-17
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 90,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        10.5,
+        30.0,
+        20.0
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 180,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        6.123234262925839e-17,
+        0.0,
+        -0.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 180,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        10.0,
+        30.0,
+        19.5
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 270,
+      "listener_game_position": [
+        0,
+        0,
+        0
+      ],
+      "submitted_backend_position": [
+        -0.5,
+        0.0,
+        -9.184850732644269e-17
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    },
+    {
+      "relative": 1,
+      "yaw_degrees": 270,
+      "listener_game_position": [
+        10,
+        20,
+        30
+      ],
+      "submitted_backend_position": [
+        9.5,
+        30.0,
+        20.0
+      ],
+      "listener_distance": 0.5,
+      "forward_projection": 0.5,
+      "native_branch": "0xc1c3f0"
+    }
+  ],
+  "native_bytes": {
+    "0xc1c49d": "8d56088d4c2464e807fbffff8d56148d4c244ce8fbfaffff8d56208d4c2458e8effaffff8d442464508d8c2498000000518d7c24608d5c24548db424cc000000e81efaffff68fcba43018d4c2438e8d03affff8b45048b882802000033ff3bcf89bc24fc0000000f86e10000008d9b00000000578d8824020000e8e471ffff8bd88b430485c00f84b00000008b484885c90f84a50000008a4b2584c90f849a0000008d54243c528d4838e8b48001008d54243c8d4c2428e857faffff8a44244884c074198d5424288d8c24940000008d842488000000e878feffffeb1b8d4c24288d9424940000008d8424c40000008d74247ce89bfdffff8b088b50048b4008894c24108d4c2470518d4c2414895424188944241ce839faffff8b108954241c8b4804894c24208b50088b4b0c8d44241c50518954242ce8f7790100",
+    "0xc1bfb0": "d942048bc1d942088b0ad958048908d95808c3",
+    "0xc1bf00": "83ec0c558b6c2418538d442408508bcfe84b9900008b4c240433c089461c89461889461489460c89460889460489462c894628894624890e8b4c2408b80000803f8946208946108b178956048b03894e0c8b4c240c8946088b57048956108b4304894e188946148b570889561c8b4308558d4c2408894620e823970000d9e055d95e248bcfe816970000d9e055d95e288bcbe8099700008b4c2414d9e08bd6d95e2ce8191200005d83c40cc20800",
+    "0xc25860": "8b442408d901d84804d94104d808dee9d94108d808d901d84808dee9d94104d84808d94108d848048b442404dee9d918d95804d95808c20800",
+    "0xc256a0": "8b442404d94008d84908d94004d84904dec1d900d809dec1c20400cc",
+    "0xc1d1c0": "d94208d84a1cd94220d84a04dee9d84a0cd94214d84a04d94208d84a10dee9d84a18dec1d94220d84a10d9421cd84a14dee9d80adec1d9c0d9e1d81d78c93901dfe0f6c4057a15d81ddcde2201d90578c93901dfe0f6c4057a02d9e0d83dd8de2201d94220d84a10d9421cd84a14dee9d8c9d919d94218d84a14d94220d84a0cdee9d8c9d9590cd9421cd84a0cd94218d84a10dee9d8c9d95918d94208d84a1cd94220d84a04dee9d8c9d95904d94220d80ad94218d84a08dee9d8c9d95910d94218d84a04d902d84a1cdee9d8c9d9591cd94214d84a04d94208d84a10dee9d8c9d95908d94208d84a0cd902d84a14dee9d8c9d95914d902d84a10d9420cd84a04dee9d8c9d95920ddd8d9422cd84918d94224d809dec1d94228d8490cdec1d9e0d95924d94228d84910d94224d84904dec1d9411cd84a2cdec1d9e0d95928d9422cd84920d94228d84914dec1d94108d84a24dec1d9e0d9592cc3",
+    "0xc34600": "8b442404568b318bd089328b71048972048b71088972088b490c894a0c5ec20400",
+    "0xc1c330": "d9401883ec0cd84908d9400cd84904dec1d900d809dec1d84024d9401cd84908d94004d809dec1d94010d84904dec1d84028d94020d84908d94008d809dec1d94014d84904dec1d8402cd815dcde2201dfe0f6c4057a06d80de0de2201d9c18bc6d84a0cd9c1d84a18dec1d9c3d80adec1d84224d91c248b0c24d9c1d84a10d9c3d84a04dec1d9c1d84a1cdec1d84228d95c2404d9c9d84a14d9cad84a08dec2d84a20dec1d8422c8b5424048908895004d95c24088b4c240889480883c40cc383ec0cd94118d84a08d9410cd84a04dec1d901d80adec1d84124d91c24d9411cd84a08d94104d80adec1d94110d84a04dec1d84128d95c2404d94120d84a08d94108d80adec1d94114d84a048b1424dec1d8412c8bc889118b542404895104d95c24088b54240889510883c40cc3",
+    "0xc1bff0": "83ec0c8b018b51048904248b4108894424088b442410895424048b14248bc889118b5424048951048b54240889510883c40cc20400"
+  }
+}

@@ -1,0 +1,444 @@
+{
+  "scope": "Source call-site inventory, not an assertion that every native call has been matched. Direct Speak defaults and the native speech operand route have separate evidence. Empty routes are not used by this package.",
+  "routes": {
+    "Speak": [
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 105,
+        "source": "if me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false) == false then"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 103,
+        "source": "if me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false) == false then"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWoman.lua",
+        "line": 67,
+        "source": "if me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false) == false then"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelMan.lua",
+        "line": 107,
+        "source": "return me:Speak(quest:GetHero(), key, SPEECH_SELECTION_METHOD) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelThug.lua",
+        "line": 69,
+        "source": "return me:Speak(quest:GetHero(), key, method or SPEECH_METHOD, false, true, false) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BookTrader.lua",
+        "line": 64,
+        "source": "return me:Speak(quest:GetHero(), key, SPEECH_METHOD, false, true, false) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 107,
+        "source": "return me:Speak(quest:GetHero(), key, SPEAK_SELECTION) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+        "line": 62,
+        "source": "return me:Speak(hero, key, SPEAK_METHOD) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_LiveFather.lua",
+        "line": 74,
+        "source": "return me:Speak(quest:GetHero(), key, SPEAK_METHOD) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_TeddyGirl.lua",
+        "line": 65,
+        "source": "return me:Speak(quest:GetHero(), key, SPEECH_METHOD, false, true, false) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Theresa.lua",
+        "line": 82,
+        "source": "return me:Speak(quest:GetHero(), key, SPEAK_METHOD) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Victim.lua",
+        "line": 59,
+        "source": "return me:Speak(quest:GetHero(), key, selection or SPEAK_SELECTION) ~= false"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Villager.lua",
+        "line": 153,
+        "source": "if me:Speak(hero, key, SPEAK_METHOD) == false then"
+      }
+    ],
+    "Converse": [],
+    "StartAmbientConversation": [],
+    "AddNewConversation": [
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 230,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 250,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 188,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 220,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 275,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelMan.lua",
+        "line": 230,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelMan.lua",
+        "line": 351,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelThug.lua",
+        "line": 145,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BookTrader.lua",
+        "line": 171,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 337,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 357,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+        "line": 124,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+        "line": 159,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_TeddyGirl.lua",
+        "line": 149,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Victim.lua",
+        "line": 184,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Villager.lua",
+        "line": 171,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Villager.lua",
+        "line": 195,
+        "source": "local conv = quest:AddNewConversation(me, false, false)"
+      }
+    ],
+    "AddLineToConversation": [
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 238,
+        "source": "quest:AddLineToConversation(conv, woman_line, woman, me)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 239,
+        "source": "quest:AddLineToConversation(conv, man_line, me, woman)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 241,
+        "source": "quest:AddLineToConversation(conv, man_line, me, woman)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 242,
+        "source": "quest:AddLineToConversation(conv, woman_line, woman, me)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 254,
+        "source": "quest:AddLineToConversation(conv, TEXT_MAN_SCRMSG_DIRTY_WORDS .. n, me, woman)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+        "line": 255,
+        "source": "quest:AddLineToConversation(conv, TEXT_WOMAN_DIRTY_WORDS .. n, woman, me)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 190,
+        "source": "quest:AddLineToConversation(conv, TEXT_WHERES_HUSBAND, me, hero)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 221,
+        "source": "quest:AddLineToConversation(conv, TEXT_RUNNING_TO_HUBBY, me, nil)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 285,
+        "source": "quest:AddLineToConversation(conv, key, me, man)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+        "line": 287,
+        "source": "quest:AddLineToConversation(conv, TEXT_MAN_IN_TROUBLE, man, me)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelMan.lua",
+        "line": 231,
+        "source": "quest:AddLineToConversation(conv, TEXT_WHERE_GONE, me, nil, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelMan.lua",
+        "line": 352,
+        "source": "quest:AddLineToConversation(conv, TEXT_OVERHEAR, me, nil)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BarrelThug.lua",
+        "line": 154,
+        "source": "quest:AddLineToConversation(conv, line, me, quest:GetHero())"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_BookTrader.lua",
+        "line": 175,
+        "source": "quest:AddLineToConversation(conv, TEXT_ROLL_UP, me, quest:GetHero())"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 339,
+        "source": "quest:AddLineToConversation(conv, TEXT.SCRMSG_GET_OFF, me, victim)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 340,
+        "source": "quest:AddLineToConversation(conv, TEXT.VICTIM_REVENGE, me, victim)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 359,
+        "source": "quest:AddLineToConversation(conv, string.format(TEXT.INTIMIDATING_FMT, IntimidateSpeechLoop), me, victim)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+        "line": 126,
+        "source": "quest:AddLineToConversation(conv, \"TEXT_QST_048_SCRMSG_GUARD_GOING_AFTER\", me, hero, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+        "line": 164,
+        "source": "quest:AddLineToConversation(conv, \"TEXT_QST_048_GUARD_ON_TALK_GOOD\", me, hero)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+        "line": 166,
+        "source": "quest:AddLineToConversation(conv, \"TEXT_QST_048_GUARD_ON_TALK_NEUTRAL\", me, hero)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+        "line": 168,
+        "source": "quest:AddLineToConversation(conv, \"TEXT_QST_048_GUARD_ON_TALK_BAD\", me, hero)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_TeddyGirl.lua",
+        "line": 151,
+        "source": "quest:AddLineToConversation(conv, TEXT_TEDDY_RUINED, me, quest:GetHero())"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Victim.lua",
+        "line": 194,
+        "source": "quest:AddLineToConversation(conv, TEXT.EVIL_BROS, me, bully)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Victim.lua",
+        "line": 195,
+        "source": "quest:AddLineToConversation(conv, TEXT.BULLY_HERO_ATTACKS_VICTIM, me, bully)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Villager.lua",
+        "line": 174,
+        "source": "quest:AddLineToConversation(conv, \"TEXT_QST_048_VILLAGER_SPOKEN_TO\" .. suffix, me, hero, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Villager.lua",
+        "line": 176,
+        "source": "quest:AddLineToConversation(conv, \"TEXT_QST_048_VILLAGER_DONE_BAD_DEEDS\" .. suffix, me, hero, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Villager.lua",
+        "line": 200,
+        "source": "quest:AddLineToConversation(conv, lines[index + 1], me, hero, false)"
+      }
+    ],
+    "RunCutsceneWithSetup": [
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 275,
+        "source": "quest:RunCutsceneWithSetup(CS_BULLYRUN1, actors, input_args)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 295,
+        "source": "quest:RunCutsceneWithSetup(CS_BULLYRUN2, actors, {})"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+        "line": 300,
+        "source": "quest:RunCutsceneWithSetup(CS_BULLYRUN_DUMMY, actors, {})"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_LiveFather.lua",
+        "line": 100,
+        "source": "quest:RunCutsceneWithSetup(CUTSCENE_INTRO, { [ACTOR_HERO] = hero, [ACTOR_FATHER] = me }, nil, false, true, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Theresa.lua",
+        "line": 130,
+        "source": "quest:RunCutsceneWithSetup(name, actors, nil, false, true, false)"
+      },
+      {
+        "file": "NewOakValeIntro\\Entities\\NOVI_Victim.lua",
+        "line": 171,
+        "source": "quest:RunCutsceneWithSetup(CS_BRATHIT, actors, {})"
+      },
+      {
+        "file": "NewOakValeIntro\\NewOakValeIntro.lua",
+        "line": 233,
+        "source": "Quest:RunCutsceneWithSetup(CUTSCENE_DEAD_FATHER, { [CUTSCENE_ACTOR_HERO] = hero })"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\common.lua",
+      "sha256": "f78ef0ad0497831358c8357ea2ca1d89a42004e4d85d769a44428fc0fefe1310"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\deeds.lua",
+      "sha256": "373d94bafbca64b90169455922eecbd7118f22ecda1c282dab70f36ff24ddc89"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_AffairMan.lua",
+      "sha256": "89e565f130054b3e2752e2ccdbde12ee7973fd3b1ecd91d7e710c24d03e7c3e9"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_AffairWife.lua",
+      "sha256": "3a1f148386c60102256b95cd32a9fd4a452eaa529e52d6e2c2006ef721ebb667"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_AffairWoman.lua",
+      "sha256": "a56a1eb61de842ca9ec79f2f10db16b87ecd2c8e7b539340ceaebe5985ed6099"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_Barrel.lua",
+      "sha256": "489244277f4320bd35cdfc6ed69de0d3f7cd0cc4d76370857af72da46a88e956"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_BarrelMan.lua",
+      "sha256": "17d54b1b5f0a71976ab6eb0151cf283c0b34a46782e4d42eb08ba48e8e473a46"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_BarrelThug.lua",
+      "sha256": "cbf4d811b34b46d564136f9e7699520cc28d9ca363e06c4bf0f04a819a3fcc0f"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_BookTrader.lua",
+      "sha256": "e5a5be7fc2227f8327b7902c182acef481207af174fcf12cd866754294509481"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+      "sha256": "6e31ad3085a9b5bc873ab53c767c5f59a4f76465970d0380df5e1f44ceb413c8"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_CreatedBeetle.lua",
+      "sha256": "cba5bcf630adb38505691738c1d842e788299f92ea9b53ea86abe08974176a4f"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_Guard.lua",
+      "sha256": "bccaf6197cf9d64099131f85289a3c9a3a7fa95f326fd67bd081550d7a76081e"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_LiveFather.lua",
+      "sha256": "3feb5ec2f211c7cc2b483508a14f62cc2fee20936ccf664feb96a0640a0af3db"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_TeddyGirl.lua",
+      "sha256": "118cd68bc8bbd2d19eabc661d7a39919259bc7fea6df49a0eefb8f35553cf6e0"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_Theresa.lua",
+      "sha256": "55b6c1ff53da42a4140db6a354802e82333f26a6dfcb6d02be9d31c29c668a30"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_Victim.lua",
+      "sha256": "74f9d5cb970dda84115df1c6adff99de238820ef98cecfc72a0947913a56426f"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_Villager.lua",
+      "sha256": "a2a8e426092021fcd6d375be369879d6203aa3085ca6dedc05b1a06b89c5ece7"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\OVI_DeadFather.lua",
+      "sha256": "ab09c88ca01b952ffdf61ac5e6d599952c82c77fc850c728019c50b92d5a7249"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\fields.lua",
+      "sha256": "c39bf99895eabdf6013c0589500eaf03817bf2b648cee85bb572ce26adb83e80"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\NewOakValeIntro.lua",
+      "sha256": "59c0300028b895c41a16e2c46b56a0f4d70cea24fcdf5cbefb6a322a99700495"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\villager_speech.lua",
+      "sha256": "689a2716abe07b0ddc3be28d013020fd2643242b7b329386439eb15a2e2d8a9a"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\quests.lua",
+      "sha256": "1d613d815b3205a10824864c5b72c68ec4db5fa85690202bff454e083b8b5a15"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\retail_override.lua",
+      "sha256": "99d52b5766405fa367e3fc6d6163cb70ae3a1d35e09050d701d221b753a94ccf"
+    }
+  ],
+  "counts": {
+    "Speak": 13,
+    "Converse": 0,
+    "StartAmbientConversation": 0,
+    "AddNewConversation": 17,
+    "AddLineToConversation": 27,
+    "RunCutsceneWithSetup": 7
+  },
+  "runtime_references": [
+    "LuaManager.cpp entity Speak overload registration (false,true,false defaults)",
+    "LuaEntityAPI.cpp Speak_Blocking forwards bool operands to controller Speak",
+    "LuaQuestState.cpp AddNewConversation accepts C++ bools unchanged",
+    "native-script-speech-arguments-20260912.json",
+    "conversation-bool-operands-20260912.json"
+  ]
+}

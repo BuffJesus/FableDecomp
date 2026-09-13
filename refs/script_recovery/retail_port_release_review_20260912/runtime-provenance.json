@@ -1,0 +1,40 @@
+{
+  "scope": "Review-only source snapshots; no binary copied or activation performed.",
+  "runtime_proof": {
+    "path": "D:\\Documents\\FableTLC\\work\\runtime-conversation-lines-final-20260912\\result.json",
+    "sha256": "e6ffe405bf1dd265daa43085048c5bbc957b819a843f03f5990e353867f1060a"
+  },
+  "proof_inputs_verified": 120,
+  "proof_scope": "Build staged-port/resource checks from source in a new directory (Windows x86).\n\nRequires MSVC and the runtime checkout's vendor Lua/sol sources; no prebuilt\nobjects, installed game changes, or engine execution. The engine is mocked.\n",
+  "installed_v23": [
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FableScriptExtender.dll",
+      "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\FableScriptExtender.dll",
+      "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+    }
+  ],
+  "offline_candidate_dll": {
+    "path": "D:\\Code\\ForgeFSE-retail-shadow\\Release\\FableScriptExtender.dll",
+    "sha256": "2cea2e887b1646397a13c3b6ed936dfce5c28944486b45a9392c5a91afc5352b"
+  },
+  "candidate_limit": "Identifies the existing offline build only; these manifests do not attest a clean binary rebuild or live acceptance.",
+  "build_command": {
+    "path": "D:\\Documents\\FableTLC\\work\\maze-runtime-release-20260912\\solution-x86-command.json",
+    "sha256": "2b1424f75da97d88eac928917ee7f2e58384e100f6e5362d9a52de4728d640f0"
+  },
+  "build_log": {
+    "path": "D:\\Documents\\FableTLC\\work\\maze-runtime-release-20260912\\solution-x86-build.log",
+    "sha256": "00cd1c18ec7baf26c8b7e0765926a4f5760b944f98b6a949db746abd3402b0dc"
+  },
+  "shared_manifest": {
+    "path": "D:\\Documents\\FableTLC\\refs\\fse_api_manifest.json",
+    "sha256": "8ac14d1e83ad940ddc174ef80ba62d100c9a332e2876c190e0d2b76889f8dfdd"
+  },
+  "preparer": {
+    "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\prepare_retail_port_reviews.py",
+    "sha256": "03c78634f118d2641574705a9a4eb48ebcfb33124c4bd266110a5dc2186bb3e5"
+  }
+}

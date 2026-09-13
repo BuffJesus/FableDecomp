@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"AddBadDeed","kind":"quest","expect":["SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","SetStateBool"],"note":"first bad deed increments state, displays/logs basics, and records bad-deed enum member zero"},
+  "__meta__":{"function":"AddBadDeed","kind":"quest","expect":["SetStateInt","DisplayGameInfo","AddLogbookTutorialEntry","SetStateBool"],"expectCalls":[{"name":"SetStateInt","argumentAt":{"0":"BadDeedsPerformed","1":1},"count":1},{"name":"GiveHeroMorality","argumentAt":{"0":-0.001},"count":1},{"name":"SetStateBool","argumentAt":{"0":"WhichBadDeedsPerformed_0","1":true},"count":1}],"forbidCalls":[{"name":"SetStateInt","argumentAt":{"0":"GoodDeedsPerformed"}}],"note":"first bad deed increments state, applies retail morality, displays/logs basics, and records bad-deed enum member zero"},
   "Quest.GetStateInt(BadDeedsPerformed)":[0],
   "Quest.GetStateInt(GoodDeedsPerformed)":[0],
   "Quest.MsgIsGameInfoClickedPast":[true]

@@ -4,6 +4,10 @@
   "evidenceLevel": "native-decompile",
   "allocatorAddress": "0x00DBEF70",
   "constructorAddress": "0x00DAAC00",
+  "baseConstructorAddress": "0x00CB8110",
+  "destructorImplementationAddress": "0x00DBEFC0",
+  "baseDestructorAddress": "0x00CBD510",
+  "baseClassSemantic": "CScriptBase",
   "vtableAddress": "0x012D7A28",
   "evidenceAnchors": [],
   "lifecycle": [

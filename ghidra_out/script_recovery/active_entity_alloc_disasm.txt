@@ -1,0 +1,161 @@
+//=== CActiveEntityScriptBase_Create_d9d930 @ 00d9d930 (seed 0x00D9D930) ===
+00d9d930: 83ec10              SUB ESP,0x10
+00d9d933: 53                  PUSH EBX
+00d9d934: 55                  PUSH EBP
+00d9d935: 56                  PUSH ESI
+00d9d936: 8bf1                MOV ESI,ECX
+00d9d938: 8a4614              MOV AL,byte ptr [ESI + 0x14]
+00d9d93b: 84c0                TEST AL,AL
+00d9d93d: 57                  PUSH EDI
+00d9d93e: 0f84a4000000        JZ 0x00d9d9e8
+00d9d944: 8b5608              MOV EDX,dword ptr [ESI + 0x8]
+00d9d947: 8b442428            MOV EAX,dword ptr [ESP + 0x28]
+00d9d94b: 8b4a44              MOV ECX,dword ptr [EDX + 0x44]
+00d9d94e: 50                  PUSH EAX
+00d9d94f: 51                  PUSH ECX
+00d9d950: 8d4c2418            LEA ECX,[ESP + 0x18]
+00d9d954: ff5610              CALL dword ptr [ESI + 0x10]
+00d9d957: 8b5804              MOV EBX,dword ptr [EAX + 0x4]
+00d9d95a: 85db                TEST EBX,EBX
+00d9d95c: 8b28                MOV EBP,dword ptr [EAX]
+00d9d95e: 896c2418            MOV dword ptr [ESP + 0x18],EBP
+00d9d962: 895c241c            MOV dword ptr [ESP + 0x1c],EBX
+00d9d966: 7402                JZ 0x00d9d96a
+00d9d968: ff03                INC dword ptr [EBX]
+00d9d96a: 8d4c2410            LEA ECX,[ESP + 0x10]
+00d9d96e: e88d36f4ff          CALL 0x00ce1000  ; _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+00d9d973: 8b5500              MOV EDX,dword ptr [EBP]
+00d9d976: 8bcd                MOV ECX,EBP
+00d9d978: ff5208              CALL dword ptr [EDX + 0x8]
+00d9d97b: 6a60                PUSH 0x60
+00d9d97d: e89810e6ff          CALL 0x00bfea1a  ; operator_new
+00d9d982: 8bf8                MOV EDI,EAX
+00d9d984: 83c404              ADD ESP,0x4
+00d9d987: 85ff                TEST EDI,EDI
+00d9d989: 743a                JZ 0x00d9d9c5
+00d9d98b: 8b4e18              MOV ECX,dword ptr [ESI + 0x18]
+00d9d98e: 8b4608              MOV EAX,dword ptr [ESI + 0x8]
+00d9d991: 8b542430            MOV EDX,dword ptr [ESP + 0x30]
+00d9d995: 51                  PUSH ECX
+00d9d996: 8b4c242c            MOV ECX,dword ptr [ESP + 0x2c]
+00d9d99a: 89442414            MOV dword ptr [ESP + 0x14],EAX
+00d9d99e: 8b442430            MOV EAX,dword ptr [ESP + 0x30]
+00d9d9a2: 52                  PUSH EDX
+00d9d9a3: 50                  PUSH EAX
+00d9d9a4: 51                  PUSH ECX
+00d9d9a5: 8bcf                MOV ECX,EDI
+00d9d9a7: e86437f4ff          CALL 0x00ce1110  ; CActiveEntityScriptBase
+00d9d9ac: 8b542410            MOV EDX,dword ptr [ESP + 0x10]
+00d9d9b0: 53                  PUSH EBX
+00d9d9b1: 55                  PUSH EBP
+00d9d9b2: 8d4f34              LEA ECX,[EDI + 0x34]
+00d9d9b5: c707446c2d01        MOV dword ptr [EDI],0x12d6c44  ; PTR_`vector_deleting_destructor'_012d6c44
+00d9d9bb: 89575c              MOV dword ptr [EDI + 0x5c],EDX
+00d9d9be: e87d36f4ff          CALL 0x00ce1040  ; ShareData
+00d9d9c3: eb02                JMP 0x00d9d9c7
+00d9d9c5: 33ff                XOR EDI,EDI
+00d9d9c7: 8b742424            MOV ESI,dword ptr [ESP + 0x24]
+00d9d9cb: 57                  PUSH EDI
+00d9d9cc: 8bce                MOV ECX,ESI
+00d9d9ce: e8dd36f4ff          CALL 0x00ce10b0  ; CCountedPointer<CFileInstaller::CFileInfo_const_>
+00d9d9d3: 8d4c2418            LEA ECX,[ESP + 0x18]
+00d9d9d7: e82436f4ff          CALL 0x00ce1000  ; _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+00d9d9dc: 5f                  POP EDI
+00d9d9dd: 8bc6                MOV EAX,ESI
+00d9d9df: 5e                  POP ESI
+00d9d9e0: 5d                  POP EBP
+00d9d9e1: 5b                  POP EBX
+00d9d9e2: 83c410              ADD ESP,0x10
+00d9d9e5: c21000              RET 0x10
+00d9d9e8: 6a60                PUSH 0x60
+00d9d9ea: e82b10e6ff          CALL 0x00bfea1a  ; operator_new
+00d9d9ef: 8bf8                MOV EDI,EAX
+00d9d9f1: 83c404              ADD ESP,0x4
+00d9d9f4: 85ff                TEST EDI,EDI
+00d9d9f6: 742e                JZ 0x00d9da26
+00d9d9f8: 8b4618              MOV EAX,dword ptr [ESI + 0x18]
+00d9d9fb: 8b4c2430            MOV ECX,dword ptr [ESP + 0x30]
+00d9d9ff: 8b54242c            MOV EDX,dword ptr [ESP + 0x2c]
+00d9da03: 8b5e0c              MOV EBX,dword ptr [ESI + 0xc]
+00d9da06: 8b6e08              MOV EBP,dword ptr [ESI + 0x8]
+00d9da09: 50                  PUSH EAX
+00d9da0a: 8b44242c            MOV EAX,dword ptr [ESP + 0x2c]
+00d9da0e: 51                  PUSH ECX
+00d9da0f: 52                  PUSH EDX
+00d9da10: 50                  PUSH EAX
+00d9da11: 8bcf                MOV ECX,EDI
+00d9da13: e8f836f4ff          CALL 0x00ce1110  ; CActiveEntityScriptBase
+00d9da18: c707446c2d01        MOV dword ptr [EDI],0x12d6c44  ; PTR_`vector_deleting_destructor'_012d6c44
+00d9da1e: 895f58              MOV dword ptr [EDI + 0x58],EBX
+00d9da21: 896f5c              MOV dword ptr [EDI + 0x5c],EBP
+00d9da24: eb02                JMP 0x00d9da28
+00d9da26: 33ff                XOR EDI,EDI
+00d9da28: 8b742424            MOV ESI,dword ptr [ESP + 0x24]
+00d9da2c: 57                  PUSH EDI
+00d9da2d: 8bce                MOV ECX,ESI
+00d9da2f: e87c36f4ff          CALL 0x00ce10b0  ; CCountedPointer<CFileInstaller::CFileInfo_const_>
+00d9da34: 5f                  POP EDI
+00d9da35: 8bc6                MOV EAX,ESI
+00d9da37: 5e                  POP ESI
+00d9da38: 5d                  POP EBP
+00d9da39: 5b                  POP EBX
+00d9da3a: 83c410              ADD ESP,0x10
+00d9da3d: c21000              RET 0x10
+
+//=== CTriangleList @ 00db7d00 (seed 0x00DB7D00) ===
+00db7d00: 53                  PUSH EBX
+00db7d01: 56                  PUSH ESI
+00db7d02: 57                  PUSH EDI
+00db7d03: 6a1c                PUSH 0x1c
+00db7d05: 8bda                MOV EBX,EDX
+00db7d07: 8bf9                MOV EDI,ECX
+00db7d09: e80c6de4ff          CALL 0x00bfea1a  ; operator_new
+00db7d0e: 8bf0                MOV ESI,EAX
+00db7d10: 83c404              ADD ESP,0x4
+00db7d13: 85f6                TEST ESI,ESI
+00db7d15: 742b                JZ 0x00db7d42
+00db7d17: 8b4340              MOV EAX,dword ptr [EBX + 0x40]
+00db7d1a: 894604              MOV dword ptr [ESI + 0x4],EAX
+00db7d1d: 8b442414            MOV EAX,dword ptr [ESP + 0x14]
+00db7d21: 50                  PUSH EAX
+00db7d22: 8d4e08              LEA ECX,[ESI + 0x8]
+00db7d25: c70624322c01        MOV dword ptr [ESI],0x12c3224  ; PTR_`vector_deleting_destructor'_012c3224
+00db7d2b: e860416fff          CALL 0x004abe90  ; CScriptThing
+00db7d30: 8b4c2410            MOV ECX,dword ptr [ESP + 0x10]
+00db7d34: c706f0942d01        MOV dword ptr [ESI],0x12d94f0  ; PTR_`vector_deleting_destructor'_012d94f0
+00db7d3a: 895e14              MOV dword ptr [ESI + 0x14],EBX
+00db7d3d: 894e18              MOV dword ptr [ESI + 0x18],ECX
+00db7d40: eb02                JMP 0x00db7d44
+00db7d42: 33f6                XOR ESI,ESI
+00db7d44: 85f6                TEST ESI,ESI
+00db7d46: 8937                MOV dword ptr [EDI],ESI
+00db7d48: 7438                JZ 0x00db7d82
+00db7d4a: 6a0c                PUSH 0xc
+00db7d4c: e8c96ce4ff          CALL 0x00bfea1a  ; operator_new
+00db7d51: 83c404              ADD ESP,0x4
+00db7d54: 85c0                TEST EAX,EAX
+00db7d56: 741d                JZ 0x00db7d75
+00db7d58: 8b0f                MOV ECX,dword ptr [EDI]
+00db7d5a: c70001000000        MOV dword ptr [EAX],0x1
+00db7d60: c7400400eecd00      MOV dword ptr [EAX + 0x4],0xcdee00  ; LAB_00cdee00
+00db7d67: 894808              MOV dword ptr [EAX + 0x8],ECX
+00db7d6a: 894704              MOV dword ptr [EDI + 0x4],EAX
+00db7d6d: 8bc7                MOV EAX,EDI
+00db7d6f: 5f                  POP EDI
+00db7d70: 5e                  POP ESI
+00db7d71: 5b                  POP EBX
+00db7d72: c20800              RET 0x8
+00db7d75: 33c0                XOR EAX,EAX
+00db7d77: 894704              MOV dword ptr [EDI + 0x4],EAX
+00db7d7a: 8bc7                MOV EAX,EDI
+00db7d7c: 5f                  POP EDI
+00db7d7d: 5e                  POP ESI
+00db7d7e: 5b                  POP EBX
+00db7d7f: c20800              RET 0x8
+00db7d82: c7470400000000      MOV dword ptr [EDI + 0x4],0x0
+00db7d89: 8bc7                MOV EAX,EDI
+00db7d8b: 5f                  POP EDI
+00db7d8c: 5e                  POP ESI
+00db7d8d: 5b                  POP EBX
+00db7d8e: c20800              RET 0x8
+

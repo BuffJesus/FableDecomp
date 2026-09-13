@@ -1,0 +1,33 @@
+{
+  "schema": "new-oakvale-entity-vtables/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "imageBase": "0x00400000",
+  "slots": ["destructor", "Main", "Init"],
+  "sharedEntityCleanup": {
+    "address": "0x00F35B40",
+    "classification": "entity-binding base cleanup; exact class name unresolved",
+    "ghidraDonorName": "NUISystem::CFrontEndScreen::~CFrontEndScreen",
+    "baseVtable": "0x012C3224",
+    "scriptThingVtable": "0x01238C8C",
+    "tailTarget": "0x0099A2E0"
+  },
+  "entities": {
+    "NOVI_AffairMan": {"vtable": "0x012D89EC", "destructor": "0x00DB0930", "Main": "0x00DB09E0", "Init": "0x00DB0950"},
+    "NOVI_AffairWife": {"vtable": "0x012D8C98", "destructor": "0x00DB2A50", "Main": "0x00DB2B10", "Init": "0x00DB2A70"},
+    "NOVI_AffairWoman": {"vtable": "0x012D8C08", "destructor": "0x00DB1E60", "Main": "0x00DB1F00", "Init": "0x00DB1E80"},
+    "NOVI_Barrel": {"vtable": "0x012D94F0", "destructor": "0x00DB7DF0", "Main": "0x00DB7E10", "Init": "0x00CDEBB0"},
+    "NOVI_BarrelMan": {"vtable": "0x012D9014", "destructor": "0x00DB5310", "Main": "0x00DB5330", "Init": "0x00DB5260"},
+    "NOVI_BarrelThug": {"vtable": "0x012D9234", "destructor": "0x00DB6C40", "Main": "0x00DB6C60", "Init": "0x00DB6BF0"},
+    "NOVI_BookTrader": {"vtable": "0x012D8E80", "destructor": "0x00DB3EE0", "Main": "0x00DB3FA0", "Init": "0x00DB3F00"},
+    "NOVI_Bully": {"vtable": "0x012D879C", "destructor": "0x00DAED10", "Main": "0x00DBB310", "Init": "0x00DAED30"},
+    "NOVI_CreatedBeetle": {"vtable": "0x012D9560", "destructor": "0x00DB80A0", "Main": "0x00DB80C0", "Init": "0x00CDEBB0"},
+    "NOVI_Guard": {"vtable": "0x012D83C0", "destructor": "0x00DAC630", "Main": "0x00DAC760", "Init": "0x00DAC650"},
+    "NOVI_LiveFather": {"vtable": "0x012D8388", "destructor": "0x00DAC370", "Main": "0x00DB86B0", "Init": "0x00DAC390"},
+    "NOVI_TeddyGirl": {"vtable": "0x012D87D4", "destructor": "0x00DAF060", "Main": "0x00DAF080", "Init": "0x00DAF000"},
+    "NOVI_Theresa": {"vtable": "0x012D83A4", "destructor": "0x00DAC4D0", "Main": "0x00DB97A0", "Init": "0x00DAC4F0"},
+    "NOVI_Victim": {"vtable": "0x012D87B8", "destructor": "0x00DAEE90", "Main": "0x00DBCD60", "Init": "0x00DAEEB0"},
+    "NOVI_Villager": {"vtable": "0x012D8678", "destructor": "0x00DADF60", "Main": "0x00DADF80", "Init": "0x00DADF00"},
+    "OVI_DeadFather": {"vtable": "0x012D957C", "destructor": "0x00DB8270", "Main": "0x00DB8300", "Init": "0x00DB8290"}
+  }
+}

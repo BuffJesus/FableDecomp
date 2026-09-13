@@ -1,0 +1,147 @@
+{
+  "scope": "Execute retail Guardian Init/Main; allocation, strings and engine APIs doubled.",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "initial": false,
+      "events": [
+        [
+          "piece_over",
+          false
+        ],
+        [
+          "bind",
+          "GTDI_Maze",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "spawn",
+          "WaitForPieceOver",
+          ""
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianTrophyDealerInfo",
+          "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01",
+          "HeroGuildComplexInside",
+          "HeroGuildComplexInside"
+        ]
+      ],
+      "adapter_events": [
+        [
+          "piece_over",
+          false
+        ],
+        [
+          "bind",
+          "GTDI_Maze",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "spawn",
+          "WaitForPieceOver",
+          ""
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianTrophyDealerInfo",
+          "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01",
+          "HeroGuildComplexInside",
+          "HeroGuildComplexInside"
+        ]
+      ],
+      "allocations": [
+        28,
+        60
+      ]
+    },
+    {
+      "initial": true,
+      "events": [
+        [
+          "piece_over",
+          false
+        ],
+        [
+          "bind",
+          "GTDI_Maze",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "spawn",
+          "WaitForPieceOver",
+          ""
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianTrophyDealerInfo",
+          "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01",
+          "HeroGuildComplexInside",
+          "HeroGuildComplexInside"
+        ]
+      ],
+      "adapter_events": [
+        [
+          "piece_over",
+          false
+        ],
+        [
+          "bind",
+          "GTDI_Maze",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "spawn",
+          "WaitForPieceOver",
+          ""
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianTrophyDealerInfo",
+          "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01",
+          "HeroGuildComplexInside",
+          "HeroGuildComplexInside"
+        ]
+      ],
+      "allocations": [
+        28,
+        60
+      ]
+    }
+  ],
+  "normalization": "Adjacent native base/game PostAdd calls map to FinalizeEntityBindings; all other events retained.",
+  "bytes": {
+    "0xe27870": "c6414800c3",
+    "0xe27920": "83ec1053565733db6a1c8bf9895c241ce8e570ddff8bf083c40485f6743e6aff6898202e018d4c2414e8a272b7ff8d44240c508d4e04bb01000000c70690202e01e8ca72b7ff897e08c74610b07be200885e14c7461800000000eb0233f6568bcfe8aa08e9fff6c301740c8d4c240c83e3fee84971b7ff8bcfe8920fe9ff8b4f408b11ff92000100006a3ce86a70ddff8bf083c40485f674336aff687c202e018d4c2414e82772b7ff6a008d442410508bce83cb02e8765aebffc7062c202e01c74634c07ae200897e38eb0233f66aff680ed722018d4c241ce8f271b7ff50568bcfe84904e9ff8d4c2414e8d070b7fff6c30274098d4c240ce8c270b7ff6aff68cc8f23018d4c241ce8c271b7ff6aff68cc8f23018d4c2418e8b271b7ff6aff6848202e018d4c2414e8a271b7ff8b4f408bd18b328d442414508d542414528b118d442414508d44242450ff923c0a00008b4f4050ff96a00400008d4c2418e85c70b7ff8d4c240ce85370b7ff8d4c2410e84a70b7ff8d4c2414e84170b7ff5f5e5b83c410c3"
+  }
+}

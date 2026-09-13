@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["FollowThing","EntitySetThingAsAllyOfThing","SetStateInt","DisplayGameInfo","AddLogbookStoryEntryString","StartMovieSequence","AcquireControl","EndMovieSequence","ReleaseControl"],"note":"after intro and nag early-out, a direct hit performs the retail ally/deed writes and opens the movie before action acquisition; termination then closes the movie and releases control without speaking WHY_HIT"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["FollowThing","EntitySetThingAsAllyOfThing","SetStateInt","DisplayGameInfo","AddLogbookTutorialEntry","StartMovieSequence","AcquireControl","EndMovieSequence","ReleaseControl"],"note":"after intro and nag early-out, a direct hit performs the retail ally/deed writes and opens the movie before action acquisition; termination then closes the movie and releases control without speaking WHY_HIT"},
   "Quest.NewScriptFrame":[true],
   "Entity.AcquireControl":[true,false],
   "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[true],

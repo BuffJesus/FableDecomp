@@ -1,0 +1,868 @@
+{
+  "scope": "Native OnPersist calls with a storage transfer double; no save-file engine.",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        false
+      ],
+      "mode": "write",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        false
+      ],
+      "mode": "read",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {}
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        false,
+        true
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        true,
+        false
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true,
+        true
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        true
+      ],
+      "mode": "write",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        false,
+        true
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        true
+      ],
+      "mode": "read",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {}
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        false,
+        true
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        true,
+        false
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        false,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true,
+        true
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        false
+      ],
+      "mode": "write",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        true,
+        false
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        false
+      ],
+      "mode": "read",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {}
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        false,
+        true
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        true,
+        false
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": false,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true,
+        true
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "write",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true,
+        true
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "read",
+      "stored": {},
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {}
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false,
+        false
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": false,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        false,
+        true
+      ],
+      "storage": {
+        "SwordTaken": false,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": false
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        true,
+        false
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": false
+      }
+    },
+    {
+      "entry": "0xea80a0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "SwordTaken": true,
+        "BookRead": true
+      },
+      "calls": [
+        {
+          "name": "SwordTaken",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        },
+        {
+          "name": "BookRead",
+          "offset": "0x49",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true,
+        true
+      ],
+      "storage": {
+        "SwordTaken": true,
+        "BookRead": true
+      }
+    },
+    {
+      "entry": "0xcbd4e0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "read",
+      "stored": {},
+      "calls": [],
+      "final": [
+        true,
+        true
+      ],
+      "storage": {}
+    },
+    {
+      "entry": "0xcbd4e0",
+      "initial": [
+        true,
+        true
+      ],
+      "mode": "write",
+      "stored": {},
+      "calls": [],
+      "final": [
+        true,
+        true
+      ],
+      "storage": {}
+    }
+  ],
+  "bytes": {
+    "0xea80a0": "5156578b7c24108bf18d44240b508d4e485168c8e52e018bcfc644241700e8fdc455ff8d5424105283c6495668bce52e018bcfc644241c00e8e3c455ff5f5e59c20400",
+    "0xcbd4e0": "c20400"
+  }
+}

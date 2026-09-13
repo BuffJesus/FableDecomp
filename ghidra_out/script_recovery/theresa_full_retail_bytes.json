@@ -1,0 +1,36 @@
+{
+  "schema": "theresa-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_Theresa",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DAC4F0",
+      "endExclusive": "0x00DAC57E",
+      "rangeSize": 142,
+      "bytesSha256": "79A6875510FA0B477C26D90F7C0C4BE411EC4939FF4DF5382A789E86BA428244",
+      "instructionCount": 52,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB97A0",
+      "endExclusive": "0x00DBB305",
+      "rangeSize": 7013,
+      "bytesSha256": "32136F38FC41CDF0C3A0BADB7BBA9DAE1CAD47216F015DB0F8D7F8074CED4EFC",
+      "instructionCount": 1865,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "complete Init and Main dispatcher",
+    "outcomes": [
+      "meet",
+      "chocolate yes/no and presentation",
+      "hit response",
+      "raid outro"
+    ],
+    "boundaryCorrection": "translation_unit Main size 7010 truncates the epilogue; exact terminal ret is 0x00DBB304"
+  }
+}

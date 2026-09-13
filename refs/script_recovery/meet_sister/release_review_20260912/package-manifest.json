@@ -1,0 +1,197 @@
+{
+  "status": "disabled-source-package-not-deployable-binary-bundle",
+  "native_name": "QS_MeetSister",
+  "validation": {
+    "lua_files": 7,
+    "legacy_registration": "empty",
+    "native_override": "disabled",
+    "runtime_api_calls": {
+      "Quest": [
+        "AddEntityBinding",
+        "DeactivateQuestLater",
+        "FadeScreenIn",
+        "FinalizeEntityBindings",
+        "GetActiveQuestName",
+        "GetHero",
+        "IsActiveThreadTerminating",
+        "IsRegionLoaded",
+        "RemoveThing",
+        "SetQuestAsCompleted",
+        "SetQuestCardObjective",
+        "WithRetailResources"
+      ],
+      "RetailResources": [
+        "DestroyActorMap",
+        "DestroyMovie",
+        "Frame",
+        "NewActorMap",
+        "NewResource",
+        "Pause",
+        "PrepareResource",
+        "ReleaseResource",
+        "RunMacro",
+        "SetActor",
+        "StartMovie",
+        "TryAcquire"
+      ]
+    },
+    "errors": [],
+    "scope": "Structure and runtime binding presence; metadata and live playback unverified"
+  },
+  "files": [
+    {
+      "path": "MeetSister/Entities/MeetSisterMessenger.lua",
+      "sha256": "df60639d4d689228d6f3c2995e33698042364693e9b8ce1a4546319a8fb5f34f"
+    },
+    {
+      "path": "MeetSister/Entities/MeetSisterSister.lua",
+      "sha256": "c03c63333f7dab17ee82116228e98b825b3fc969b9a6eccfa6b3d2c1bb2c33ee"
+    },
+    {
+      "path": "MeetSister/MeetSister.lua",
+      "sha256": "82d89027c2057e821f6ac72eae66d525eda6e748e55a00c3a01de4f1af17f765"
+    },
+    {
+      "path": "MeetSister/quest.lua",
+      "sha256": "70a3b57f2081675a0949b835e4a1cc7319cb5431e120f23e1b3f264e22e16df1"
+    },
+    {
+      "path": "MeetSister/runtime_adapter.lua",
+      "sha256": "27400d2591da31b954b7167536a7a4aebac8fe1e873b456f58aee80743b0ac1e"
+    },
+    {
+      "path": "quests.lua",
+      "sha256": "36b5935c2e879e88ce37a39a2bdf8fc44dcd646eaa45ba8195c25d66c87cb966"
+    },
+    {
+      "path": "retail_override.lua",
+      "sha256": "cd1dda2e9c117dbb32f5d06c8e5874a221dec6f6b9eb20b691f7792ce8a3be26"
+    }
+  ],
+  "runtime_sources": [
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\dllmain.cpp",
+      "sha256": "b31f97f021d35fcd1752af442590ac736e03111ac938c3caef043cd4b0deac26"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\EntityScriptingAPI.h",
+      "sha256": "44e9f799524c7ef71e3a738e493b0ae53cc86fcb342648580867dfb058581f5c"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+      "sha256": "50ff736014baabf1e96181d280147ce70d5de47166356b335468f280ddb60b17"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.h",
+      "sha256": "74ca6c130ee72e69eaace01ee2df0f9425a6ff72049ff58e6568336c0dd943fd"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\framework.h",
+      "sha256": "188c9e04096a0a539b82a8c61784d69fd7334dea8066c181f31b429024974384"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\GameInterface.cpp",
+      "sha256": "5b034142e54e9e83ec5824717a1921c3802bbaee3959651b70322d661242543a"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\GameInterface.h",
+      "sha256": "f6b486d446fc7624d4833a9071996cc8cb7b34ee7eb9866f78e007713d23b815"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityAPI.cpp",
+      "sha256": "d269a45e3a8f58cb22b8f48ceb71571ace91be62d1153de0e182302ed2edc725"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityAPI.h",
+      "sha256": "3fe882926b047706236b96bb41f47d03ea2cb93952104b1eb7a87d4246f657b0"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityHost.cpp",
+      "sha256": "6d7e547e854e4cfad2f923a4bb133a9b90906244a7f0bb78eb6b2ba344efbb82"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaEntityHost.h",
+      "sha256": "8113bc3cff0a8a0de1deef43828fb79d0fe2f9616a9bf6fb8c46be1db6bc211f"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
+      "sha256": "befc05b2ea2a16bf2fbd87a2d8150433f4fb676ade969c578027e9aa7a36384c"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.h",
+      "sha256": "ad906c4f77573efbfce78709d5a15aeeec90d1d24bdaf983e101b3447fb372ca"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestHost.cpp",
+      "sha256": "43236f5f039d03e22acbc7086168460c89facf87697daed1b91d0da436f7fe48"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestHost.h",
+      "sha256": "07d92d661ada9606b0a31cfa90be0463264e656cce390556cb0949ff62d99738"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.cpp",
+      "sha256": "2227bbbbd51e0da1859ff01c842b8f15c18671a0a75a82a0dd63931385ba04a1"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaQuestState.h",
+      "sha256": "ee90993a7c24fd76b77607591175fa742eff9285249922adec2ce3245aa2547a"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailResources.h",
+      "sha256": "1ffa9ce6773157435987d26154c0e12e34b8984c0f0cb82ef5187e28d7b569a9"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\ManifestFunctionRegistry.generated.h",
+      "sha256": "c98a3208cb4e7441954c6df9f7251cfacb3778947e6efb67e5338f44ab86031a"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\ManifestFunctionRegistry.h",
+      "sha256": "69b547f649ab819fc2c41c928a1f11ef3270da3cd1ae2887cb3215c5d9f2f042"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\MasterQuest.h",
+      "sha256": "90f02d67bac331c523303e3be886fe2cfc8269bf7830e90cf0cb8957e7ebf306"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\resource.h",
+      "sha256": "94c8dfe3b132637b4937bcfcf8dfe24b1cfd571cb0b72ac3b3b30f8b8dde0e3e"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\RetailScriptShadowRunner.cpp",
+      "sha256": "423ee15d740cfeeb5cf0afbcc66746a873fbfa3fe5343b1a24461e42e1e0f345"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\RetailScriptShadowRunner.h",
+      "sha256": "d10365b8b02a09fa731b53bb023fe36387b9bf57a36f3d55afd2bb851a7c6479"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\meet_sister\\runtime_evidence\\installed-marker-camera-dependencies-20260912.json",
+      "sha256": "ed09b7a49c2f9b2f51102ce90c19444d544d3520c521c1d5e420ea6c19f84b82"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\meet_sister\\runtime_evidence\\installed-dialogue-dependencies-20260912.json",
+      "sha256": "da3d24a82f07d70a8bcb4611dbf25f0b29324da82a8376b56cb49f38ecddfa25"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\meet_sister\\runtime_evidence\\native-scheduler-entry-20260912.json",
+      "sha256": "45778a96f758cfb5652ed0a9bec4e1bd47c13ee2e293d38fa25d85555a36238c"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\meet_sister\\runtime_evidence\\native-lua-flow-comparison-20260912.json",
+      "sha256": "54bd821d11fdba18d1be399e9b2c999e07956d2d00d24d5831bba3d9b4264c81"
+    }
+  ],
+  "baseline_install_manifest_sha256": "175a5eff0502ed29f98476551229c7e55e0277cbc48ca27569188cd39bd26b0e",
+  "binary": null,
+  "activation": "disabled; no legacy registration",
+  "prerequisites": [
+    "Build and identify a Release x86 DLL containing the explicit resource API.",
+    "Apply coordinated API metadata changes.",
+    "Use a separate backed-up disposable profile and preserve New Oakvale configuration.",
+    "Verify current installed assets against reviewed dependency evidence.",
+    "Perform live scheduler, resource lifecycle and normal/skip playback acceptance."
+  ]
+}

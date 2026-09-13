@@ -1,0 +1,2871 @@
+{
+  "scope": "Bounded native AddLine scalar/argument-slice inventory; no engine execution.",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "calls": [
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "call": "0xdb198d",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb197f",
+          "operand": "ebp"
+        },
+        {
+          "address": "0xdb1984",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb1985",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb198b",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb198c",
+          "operand": "edi"
+        }
+      ],
+      "slice_start": "0xdb197f",
+      "bytes": "558d442424506a008d4424645057ff92b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB18F8 call 0x99ebf0",
+        "00DB18FD mov edx, eax",
+        "00DB18FF lea ecx, [esp + 0x60]",
+        "00DB1903 call 0x99f570",
+        "00DB1908 lea ecx, [esp + 0xbc]",
+        "00DB190F call 0x99eae0",
+        "00DB1914 lea ecx, [esp + 0xac]",
+        "00DB191B call 0x99eae0",
+        "00DB1920 mov edx, dword ptr [esi + 0x20]",
+        "00DB1923 lea ecx, [esp + 0xc8]",
+        "00DB192A call 0x99f830",
+        "00DB192F push eax",
+        "00DB1930 push -1",
+        "00DB1932 push 0x12d8a74",
+        "00DB1937 lea ecx, [esp + 0xbc]",
+        "00DB193E call 0x99ebf0",
+        "00DB1943 mov edx, eax",
+        "00DB1945 lea ecx, [esp + 0x5c]",
+        "00DB1949 call 0x99f570",
+        "00DB194E lea ecx, [esp + 0xb0]",
+        "00DB1955 call 0x99eae0",
+        "00DB195A lea ecx, [esp + 0xc8]",
+        "00DB1961 call 0x99eae0",
+        "00DB1966 cmp dword ptr [esi + 0x20], ebx",
+        "00DB1969 mov ecx, esi",
+        "00DB196B jne 0xdb199f",
+        "00DB196D call 0xf35b30",
+        "00DB1972 test al, al",
+        "00DB1974 jne 0xdb1d6a",
+        "00DB197A mov ecx, dword ptr [esi + 4]",
+        "00DB197D mov edx, dword ptr [ecx]",
+        "00DB197F push ebp",
+        "00DB1980 lea eax, [esp + 0x24]",
+        "00DB1984 push eax",
+        "00DB1985 push 0",
+        "00DB1987 lea eax, [esp + 0x64]",
+        "00DB198B push eax",
+        "00DB198C push edi",
+        "00DB198D call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "call": "0xdb19bf",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb19b5",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb19b6",
+          "operand": "ebp"
+        },
+        {
+          "address": "0xdb19b7",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb19bd",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb19be",
+          "operand": "edi"
+        }
+      ],
+      "slice_start": "0xdb19b5",
+      "bytes": "50556a008d4424685057ff92b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB1949 call 0x99f570",
+        "00DB194E lea ecx, [esp + 0xb0]",
+        "00DB1955 call 0x99eae0",
+        "00DB195A lea ecx, [esp + 0xc8]",
+        "00DB1961 call 0x99eae0",
+        "00DB1966 cmp dword ptr [esi + 0x20], ebx",
+        "00DB1969 mov ecx, esi",
+        "00DB196B jne 0xdb199f",
+        "00DB196D call 0xf35b30",
+        "00DB1972 test al, al",
+        "00DB1974 jne 0xdb1d6a",
+        "00DB197A mov ecx, dword ptr [esi + 4]",
+        "00DB197D mov edx, dword ptr [ecx]",
+        "00DB197F push ebp",
+        "00DB1980 lea eax, [esp + 0x24]",
+        "00DB1984 push eax",
+        "00DB1985 push 0",
+        "00DB1987 lea eax, [esp + 0x64]",
+        "00DB198B push eax",
+        "00DB198C push edi",
+        "00DB198D call dword ptr [edx + 0x5b8]",
+        "00DB1993 lea eax, [esp + 0x20]",
+        "00DB1997 push eax",
+        "00DB1998 push ebp",
+        "00DB1999 lea eax, [esp + 0x64]",
+        "00DB199D jmp 0xdb19cf",
+        "00DB199F call 0xf35b30",
+        "00DB19A4 test al, al",
+        "00DB19A6 jne 0xdb1d6a",
+        "00DB19AC mov ecx, dword ptr [esi + 4]",
+        "00DB19AF mov edx, dword ptr [ecx]",
+        "00DB19B1 lea eax, [esp + 0x20]",
+        "00DB19B5 push eax",
+        "00DB19B6 push ebp",
+        "00DB19B7 push 0",
+        "00DB19B9 lea eax, [esp + 0x68]",
+        "00DB19BD push eax",
+        "00DB19BE push edi",
+        "00DB19BF call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "call": "0xdb19d8",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb19c9",
+          "operand": "ebp"
+        },
+        {
+          "address": "0xdb19ca",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb19d4",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb19d6",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb19d7",
+          "operand": "edi"
+        }
+      ],
+      "slice_start": "0xdb19c9",
+      "bytes": "55508d4424608b4e048b116a005057ff92b8050000",
+      "alternate_prefixes": [
+        {
+          "entry": "0xdb1993",
+          "bytes": "8d44242050558d442464eb30",
+          "join": "0xdb19cf",
+          "pushes": [
+            "eax",
+            "ebp"
+          ]
+        },
+        {
+          "entry": "0xdb19c5",
+          "bytes": "8d44242055508d442460",
+          "join": "0xdb19cf",
+          "pushes": [
+            "ebp",
+            "eax"
+          ]
+        }
+      ],
+      "context": [
+        "00DB1974 jne 0xdb1d6a",
+        "00DB197A mov ecx, dword ptr [esi + 4]",
+        "00DB197D mov edx, dword ptr [ecx]",
+        "00DB197F push ebp",
+        "00DB1980 lea eax, [esp + 0x24]",
+        "00DB1984 push eax",
+        "00DB1985 push 0",
+        "00DB1987 lea eax, [esp + 0x64]",
+        "00DB198B push eax",
+        "00DB198C push edi",
+        "00DB198D call dword ptr [edx + 0x5b8]",
+        "00DB1993 lea eax, [esp + 0x20]",
+        "00DB1997 push eax",
+        "00DB1998 push ebp",
+        "00DB1999 lea eax, [esp + 0x64]",
+        "00DB199D jmp 0xdb19cf",
+        "00DB199F call 0xf35b30",
+        "00DB19A4 test al, al",
+        "00DB19A6 jne 0xdb1d6a",
+        "00DB19AC mov ecx, dword ptr [esi + 4]",
+        "00DB19AF mov edx, dword ptr [ecx]",
+        "00DB19B1 lea eax, [esp + 0x20]",
+        "00DB19B5 push eax",
+        "00DB19B6 push ebp",
+        "00DB19B7 push 0",
+        "00DB19B9 lea eax, [esp + 0x68]",
+        "00DB19BD push eax",
+        "00DB19BE push edi",
+        "00DB19BF call dword ptr [edx + 0x5b8]",
+        "00DB19C5 lea eax, [esp + 0x20]",
+        "00DB19C9 push ebp",
+        "00DB19CA push eax",
+        "00DB19CB lea eax, [esp + 0x60]",
+        "00DB19CF mov ecx, dword ptr [esi + 4]",
+        "00DB19D2 mov edx, dword ptr [ecx]",
+        "00DB19D4 push 0",
+        "00DB19D6 push eax",
+        "00DB19D7 push edi",
+        "00DB19D8 call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "call": "0xdb1b1d",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb1b10",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb1b11",
+          "operand": "ebp"
+        },
+        {
+          "address": "0xdb1b12",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb1b1b",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb1b1c",
+          "operand": "edi"
+        }
+      ],
+      "slice_start": "0xdb1b10",
+      "bytes": "50556a008d8424800000005057ff92b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB1A7B lea ecx, [esp + 0xb8]",
+        "00DB1A82 call 0x99f830",
+        "00DB1A87 push eax",
+        "00DB1A88 push -1",
+        "00DB1A8A push 0x12d8a48",
+        "00DB1A8F lea ecx, [esp + 0xc0]",
+        "00DB1A96 call 0x99ebf0",
+        "00DB1A9B mov edx, eax",
+        "00DB1A9D lea ecx, [esp + 0x78]",
+        "00DB1AA1 call 0x99f570",
+        "00DB1AA6 lea ecx, [esp + 0xb4]",
+        "00DB1AAD call 0x99eae0",
+        "00DB1AB2 lea ecx, [esp + 0xb8]",
+        "00DB1AB9 call 0x99eae0",
+        "00DB1ABE mov edx, dword ptr [esi + 0x20]",
+        "00DB1AC1 lea ecx, [esp + 0xc4]",
+        "00DB1AC8 call 0x99f830",
+        "00DB1ACD push eax",
+        "00DB1ACE push -1",
+        "00DB1AD0 push 0x12d8a20",
+        "00DB1AD5 lea ecx, [esp + 0xcc]",
+        "00DB1ADC call 0x99ebf0",
+        "00DB1AE1 mov edx, eax",
+        "00DB1AE3 lea ecx, [esp + 0x90]",
+        "00DB1AEA call 0x99f570",
+        "00DB1AEF lea ecx, [esp + 0xc0]",
+        "00DB1AF6 call 0x99eae0",
+        "00DB1AFB lea ecx, [esp + 0xc4]",
+        "00DB1B02 call 0x99eae0",
+        "00DB1B07 mov ecx, dword ptr [esi + 4]",
+        "00DB1B0A mov edx, dword ptr [ecx]",
+        "00DB1B0C lea eax, [esp + 0x20]",
+        "00DB1B10 push eax",
+        "00DB1B11 push ebp",
+        "00DB1B12 push 0",
+        "00DB1B14 lea eax, [esp + 0x80]",
+        "00DB1B1B push eax",
+        "00DB1B1C push edi",
+        "00DB1B1D call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "call": "0xdb1b39",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb1b28",
+          "operand": "ebp"
+        },
+        {
+          "address": "0xdb1b2d",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb1b2e",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb1b37",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb1b38",
+          "operand": "edi"
+        }
+      ],
+      "slice_start": "0xdb1b28",
+      "bytes": "558d442424506a008d8424980000005057ff92b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB1AA6 lea ecx, [esp + 0xb4]",
+        "00DB1AAD call 0x99eae0",
+        "00DB1AB2 lea ecx, [esp + 0xb8]",
+        "00DB1AB9 call 0x99eae0",
+        "00DB1ABE mov edx, dword ptr [esi + 0x20]",
+        "00DB1AC1 lea ecx, [esp + 0xc4]",
+        "00DB1AC8 call 0x99f830",
+        "00DB1ACD push eax",
+        "00DB1ACE push -1",
+        "00DB1AD0 push 0x12d8a20",
+        "00DB1AD5 lea ecx, [esp + 0xcc]",
+        "00DB1ADC call 0x99ebf0",
+        "00DB1AE1 mov edx, eax",
+        "00DB1AE3 lea ecx, [esp + 0x90]",
+        "00DB1AEA call 0x99f570",
+        "00DB1AEF lea ecx, [esp + 0xc0]",
+        "00DB1AF6 call 0x99eae0",
+        "00DB1AFB lea ecx, [esp + 0xc4]",
+        "00DB1B02 call 0x99eae0",
+        "00DB1B07 mov ecx, dword ptr [esi + 4]",
+        "00DB1B0A mov edx, dword ptr [ecx]",
+        "00DB1B0C lea eax, [esp + 0x20]",
+        "00DB1B10 push eax",
+        "00DB1B11 push ebp",
+        "00DB1B12 push 0",
+        "00DB1B14 lea eax, [esp + 0x80]",
+        "00DB1B1B push eax",
+        "00DB1B1C push edi",
+        "00DB1B1D call dword ptr [edx + 0x5b8]",
+        "00DB1B23 mov ecx, dword ptr [esi + 4]",
+        "00DB1B26 mov edx, dword ptr [ecx]",
+        "00DB1B28 push ebp",
+        "00DB1B29 lea eax, [esp + 0x24]",
+        "00DB1B2D push eax",
+        "00DB1B2E push 0",
+        "00DB1B30 lea eax, [esp + 0x98]",
+        "00DB1B37 push eax",
+        "00DB1B38 push edi",
+        "00DB1B39 call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "call": "0xdb3385",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb3378",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb3379",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb337a",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb3380",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb3384",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb3378",
+      "bytes": "50576a008d4c2438518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB330F test al, al",
+        "00DB3311 jne 0xdb3e16",
+        "00DB3317 mov edx, dword ptr [esi + 0x14]",
+        "00DB331A mov ecx, dword ptr [0x143e8f8]",
+        "00DB3320 mov edx, dword ptr [edx + 0x104]",
+        "00DB3326 mov eax, dword ptr [ecx]",
+        "00DB3328 push 3",
+        "00DB332A push edx",
+        "00DB332B call dword ptr [eax + 0x164]",
+        "00DB3331 mov ecx, dword ptr [esi + 4]",
+        "00DB3334 push 0",
+        "00DB3336 push 0",
+        "00DB3338 mov byte ptr [esi + 0x1d], 0",
+        "00DB333C mov eax, dword ptr [ecx]",
+        "00DB333E push edi",
+        "00DB333F call dword ptr [eax + 0x5b0]",
+        "00DB3345 mov ecx, dword ptr [esi + 4]",
+        "00DB3348 mov ebx, dword ptr [ecx]",
+        "00DB334A mov ebp, eax",
+        "00DB334C call dword ptr [ebx + 0x118]",
+        "00DB3352 mov ecx, dword ptr [esi + 4]",
+        "00DB3355 push eax",
+        "00DB3356 push ebp",
+        "00DB3357 call dword ptr [ebx + 0x5b4]",
+        "00DB335D push -1",
+        "00DB335F push 0x12d8dac",
+        "00DB3364 lea ecx, [esp + 0x34]",
+        "00DB3368 call 0x99ebf0",
+        "00DB336D mov ecx, dword ptr [esi + 4]",
+        "00DB3370 mov ebx, dword ptr [ecx]",
+        "00DB3372 call dword ptr [ebx + 0x118]",
+        "00DB3378 push eax",
+        "00DB3379 push edi",
+        "00DB337A push 0",
+        "00DB337C lea ecx, [esp + 0x38]",
+        "00DB3380 push ecx",
+        "00DB3381 mov ecx, dword ptr [esi + 4]",
+        "00DB3384 push ebp",
+        "00DB3385 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "call": "0xdb355f",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb3538",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb3539",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb353c",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb3542",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb355e",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb3538",
+      "bytes": "525733c06a008d54243852c78424840000008c8c2301898424880000008984248c0000008b0155ff90b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB34E0 push eax",
+        "00DB34E1 mov ecx, edi",
+        "00DB34E3 call dword ptr [edx + 0x1c]",
+        "00DB34E6 mov edx, eax",
+        "00DB34E8 mov ecx, edi",
+        "00DB34EA call 0xcbe45c",
+        "00DB34EF test al, al",
+        "00DB34F1 je 0xdb357b",
+        "00DB34F7 mov ecx, esi",
+        "00DB34F9 call 0xf35b30",
+        "00DB34FE test al, al",
+        "00DB3500 jne 0xdb3d90",
+        "00DB3506 mov ecx, dword ptr [esi + 4]",
+        "00DB3509 mov edx, dword ptr [ecx]",
+        "00DB350B push 0",
+        "00DB350D push 0",
+        "00DB350F push edi",
+        "00DB3510 call dword ptr [edx + 0x5b0]",
+        "00DB3516 push -1",
+        "00DB3518 push 0x12d8d80",
+        "00DB351D lea ecx, [esp + 0x34]",
+        "00DB3521 mov ebp, eax",
+        "00DB3523 call 0x99ebf0",
+        "00DB3528 lea ecx, [esp + 0x74]",
+        "00DB352C call 0x99a2d0",
+        "00DB3531 mov ecx, dword ptr [esi + 4]",
+        "00DB3534 lea edx, [esp + 0x74]",
+        "00DB3538 push edx",
+        "00DB3539 push edi",
+        "00DB353A xor eax, eax",
+        "00DB353C push 0",
+        "00DB353E lea edx, [esp + 0x38]",
+        "00DB3542 push edx",
+        "00DB3543 mov dword ptr [esp + 0x84], 0x1238c8c",
+        "00DB354E mov dword ptr [esp + 0x88], eax",
+        "00DB3555 mov dword ptr [esp + 0x8c], eax",
+        "00DB355C mov eax, dword ptr [ecx]",
+        "00DB355E push ebp",
+        "00DB355F call dword ptr [eax + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "call": "0xdb3c24",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb3c1a",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb3c1b",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb3c1c",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb3c22",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb3c23",
+          "operand": "ebx"
+        }
+      ],
+      "slice_start": "0xdb3c1a",
+      "bytes": "52576a008d5424305253ff90b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB3B9E mov dword ptr [esp + 0x3c], edx",
+        "00DB3BA2 call 0x99f830",
+        "00DB3BA7 push eax",
+        "00DB3BA8 push -1",
+        "00DB3BAA push 0x12d8d00",
+        "00DB3BAF lea ecx, [esp + 0x7c]",
+        "00DB3BB3 call 0x99ebf0",
+        "00DB3BB8 mov edx, eax",
+        "00DB3BBA lea ecx, [esp + 0x28]",
+        "00DB3BBE call 0x99f570",
+        "00DB3BC3 lea ecx, [esp + 0x70]",
+        "00DB3BC7 call 0x99eae0",
+        "00DB3BCC lea ecx, [esp + 0x88]",
+        "00DB3BD3 call 0x99eae0",
+        "00DB3BD8 mov ecx, dword ptr [esi + 4]",
+        "00DB3BDB mov eax, dword ptr [ecx]",
+        "00DB3BDD lea edx, [esp + 0x24]",
+        "00DB3BE1 push edx",
+        "00DB3BE2 call dword ptr [eax + 0x598]",
+        "00DB3BE8 test al, al",
+        "00DB3BEA jne 0xdb3c11",
+        "00DB3BEC mov ecx, esi",
+        "00DB3BEE call 0xf35b30",
+        "00DB3BF3 test al, al",
+        "00DB3BF5 lea ecx, [esp + 0x24]",
+        "00DB3BF9 jne 0xdb3d8b",
+        "00DB3BFF push 0x12d8cd8",
+        "00DB3C04 mov dword ptr [esp + 0x40], 0xa",
+        "00DB3C0C call 0x99efe0",
+        "00DB3C11 mov ecx, dword ptr [esi + 4]",
+        "00DB3C14 mov eax, dword ptr [ecx]",
+        "00DB3C16 lea edx, [esp + 0x30]",
+        "00DB3C1A push edx",
+        "00DB3C1B push edi",
+        "00DB3C1C push 0",
+        "00DB3C1E lea edx, [esp + 0x30]",
+        "00DB3C22 push edx",
+        "00DB3C23 push ebx",
+        "00DB3C24 call dword ptr [eax + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "call": "0xdb3c6f",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb3c61",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb3c66",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb3c67",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb3c6d",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb3c6e",
+          "operand": "ebx"
+        }
+      ],
+      "slice_start": "0xdb3c61",
+      "bytes": "578d542434526a008d5424605253ff90b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB3BF9 jne 0xdb3d8b",
+        "00DB3BFF push 0x12d8cd8",
+        "00DB3C04 mov dword ptr [esp + 0x40], 0xa",
+        "00DB3C0C call 0x99efe0",
+        "00DB3C11 mov ecx, dword ptr [esi + 4]",
+        "00DB3C14 mov eax, dword ptr [ecx]",
+        "00DB3C16 lea edx, [esp + 0x30]",
+        "00DB3C1A push edx",
+        "00DB3C1B push edi",
+        "00DB3C1C push 0",
+        "00DB3C1E lea edx, [esp + 0x30]",
+        "00DB3C22 push edx",
+        "00DB3C23 push ebx",
+        "00DB3C24 call dword ptr [eax + 0x5b8]",
+        "00DB3C2A call 0xbfeb16",
+        "00DB3C2F and eax, 0x80000001",
+        "00DB3C34 jns 0xdb3c3b",
+        "00DB3C36 dec eax",
+        "00DB3C37 or eax, 0xfffffffe",
+        "00DB3C3A inc eax",
+        "00DB3C3B jne 0xdb3c7e",
+        "00DB3C3D mov ecx, esi",
+        "00DB3C3F call 0xf35b30",
+        "00DB3C44 test al, al",
+        "00DB3C46 jne 0xdb3d87",
+        "00DB3C4C push -1",
+        "00DB3C4E push 0x12d8cb4",
+        "00DB3C53 lea ecx, [esp + 0x5c]",
+        "00DB3C57 call 0x99ebf0",
+        "00DB3C5C mov ecx, dword ptr [esi + 4]",
+        "00DB3C5F mov eax, dword ptr [ecx]",
+        "00DB3C61 push edi",
+        "00DB3C62 lea edx, [esp + 0x34]",
+        "00DB3C66 push edx",
+        "00DB3C67 push 0",
+        "00DB3C69 lea edx, [esp + 0x60]",
+        "00DB3C6D push edx",
+        "00DB3C6E push ebx",
+        "00DB3C6F call dword ptr [eax + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "call": "0xdb5b17",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb5b0a",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb5b0b",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb5b0c",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb5b15",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb5b16",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb5b0a",
+      "bytes": "50576a008d9424980000005255ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB5A93 call dword ptr [ebp + 0x9e0]",
+        "00DB5A99 test al, al",
+        "00DB5A9B jne 0xdb5c28",
+        "00DB5AA1 mov ecx, dword ptr [esi + 4]",
+        "00DB5AA4 mov edx, dword ptr [ecx]",
+        "00DB5AA6 push 0x41200000",
+        "00DB5AAB call dword ptr [edx + 0x118]",
+        "00DB5AB1 mov edx, eax",
+        "00DB5AB3 mov ecx, edi",
+        "00DB5AB5 call 0xcbe2ff",
+        "00DB5ABA test al, al",
+        "00DB5ABC jne 0xdb5c28",
+        "00DB5AC2 mov ecx, esi",
+        "00DB5AC4 call 0xf35b30",
+        "00DB5AC9 test al, al",
+        "00DB5ACB jne 0xdb6afd",
+        "00DB5AD1 mov ecx, dword ptr [esi + 4]",
+        "00DB5AD4 mov eax, dword ptr [ecx]",
+        "00DB5AD6 push 0",
+        "00DB5AD8 push 0",
+        "00DB5ADA push edi",
+        "00DB5ADB call dword ptr [eax + 0x5b0]",
+        "00DB5AE1 push -1",
+        "00DB5AE3 push 0x12d91b0",
+        "00DB5AE8 lea ecx, [esp + 0x94]",
+        "00DB5AEF mov ebp, eax",
+        "00DB5AF1 call 0x99ebf0",
+        "00DB5AF6 mov ecx, dword ptr [esi + 4]",
+        "00DB5AF9 mov ebx, dword ptr [ecx]",
+        "00DB5AFB lea ecx, [esp + 0x18c]",
+        "00DB5B02 call 0x6e7b40",
+        "00DB5B07 mov ecx, dword ptr [esi + 4]",
+        "00DB5B0A push eax",
+        "00DB5B0B push edi",
+        "00DB5B0C push 0",
+        "00DB5B0E lea edx, [esp + 0x98]",
+        "00DB5B15 push edx",
+        "00DB5B16 push ebp",
+        "00DB5B17 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "call": "0xdb6918",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb6908",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb6909",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb690a",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb6913",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb6917",
+          "operand": "ebx"
+        }
+      ],
+      "slice_start": "0xdb6908",
+      "bytes": "50576a008d8c2488000000518b4e0453ff95b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB689A test edx, edx",
+        "00DB689C jne 0xdb6933",
+        "00DB68A2 mov ecx, dword ptr [esi + 4]",
+        "00DB68A5 mov eax, dword ptr [ecx]",
+        "00DB68A7 push 0x41700000",
+        "00DB68AC call dword ptr [eax + 0x118]",
+        "00DB68B2 mov edx, eax",
+        "00DB68B4 mov ecx, edi",
+        "00DB68B6 call 0xcbe2ff",
+        "00DB68BB test al, al",
+        "00DB68BD je 0xdb6933",
+        "00DB68BF mov ecx, esi",
+        "00DB68C1 call 0xf35b30",
+        "00DB68C6 test al, al",
+        "00DB68C8 jne 0xdb6afd",
+        "00DB68CE mov ecx, dword ptr [esi + 4]",
+        "00DB68D1 push 0",
+        "00DB68D3 push 0",
+        "00DB68D5 mov byte ptr [esi + 0x1e], 1",
+        "00DB68D9 mov edx, dword ptr [ecx]",
+        "00DB68DB push edi",
+        "00DB68DC call dword ptr [edx + 0x5b0]",
+        "00DB68E2 push -1",
+        "00DB68E4 push 0x12d9030",
+        "00DB68E9 lea ecx, [esp + 0x84]",
+        "00DB68F0 mov ebx, eax",
+        "00DB68F2 call 0x99ebf0",
+        "00DB68F7 mov eax, dword ptr [esi + 4]",
+        "00DB68FA mov ebp, dword ptr [eax]",
+        "00DB68FC lea ecx, [esp + 0x12c]",
+        "00DB6903 call 0x6e7b40",
+        "00DB6908 push eax",
+        "00DB6909 push edi",
+        "00DB690A push 0",
+        "00DB690C lea ecx, [esp + 0x88]",
+        "00DB6913 push ecx",
+        "00DB6914 mov ecx, dword ptr [esi + 4]",
+        "00DB6917 push ebx",
+        "00DB6918 call dword ptr [ebp + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb747a",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb746d",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb746e",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb746f",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb7475",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb7479",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb746d",
+      "bytes": "50576a008d4c2464518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB7401 call dword ptr [edx + 0x5b0]",
+        "00DB7407 mov ecx, dword ptr [esi + 4]",
+        "00DB740A mov ebx, dword ptr [ecx]",
+        "00DB740C mov ebp, eax",
+        "00DB740E call dword ptr [ebx + 0x118]",
+        "00DB7414 mov ecx, dword ptr [esi + 4]",
+        "00DB7417 push eax",
+        "00DB7418 push ebp",
+        "00DB7419 call dword ptr [ebx + 0x5b4]",
+        "00DB741F mov eax, dword ptr [esi + 0x14]",
+        "00DB7422 mov ecx, dword ptr [0x143e8f8]",
+        "00DB7428 mov edx, dword ptr [ecx]",
+        "00DB742A add eax, 0x108",
+        "00DB742F mov eax, dword ptr [eax]",
+        "00DB7431 push eax",
+        "00DB7432 call dword ptr [edx + 0x168]",
+        "00DB7438 cmp eax, 0xa",
+        "00DB743B jge 0xdb7489",
+        "00DB743D cmp dword ptr [esi + 0x20], 0xa",
+        "00DB7441 jle 0xdb7489",
+        "00DB7443 mov ecx, esi",
+        "00DB7445 call 0xf35b30",
+        "00DB744A test al, al",
+        "00DB744C jne 0xdb7cdd",
+        "00DB7452 push -1",
+        "00DB7454 push 0x12d9410",
+        "00DB7459 lea ecx, [esp + 0x60]",
+        "00DB745D call 0x99ebf0",
+        "00DB7462 mov ecx, dword ptr [esi + 4]",
+        "00DB7465 mov ebx, dword ptr [ecx]",
+        "00DB7467 call dword ptr [ebx + 0x118]",
+        "00DB746D push eax",
+        "00DB746E push edi",
+        "00DB746F push 0",
+        "00DB7471 lea ecx, [esp + 0x64]",
+        "00DB7475 push ecx",
+        "00DB7476 mov ecx, dword ptr [esi + 4]",
+        "00DB7479 push ebp",
+        "00DB747A call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb74e4",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb74d7",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb74d8",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb74d9",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb74df",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb74e3",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb74d7",
+      "bytes": "50576a008d4c2454518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB746E push edi",
+        "00DB746F push 0",
+        "00DB7471 lea ecx, [esp + 0x64]",
+        "00DB7475 push ecx",
+        "00DB7476 mov ecx, dword ptr [esi + 4]",
+        "00DB7479 push ebp",
+        "00DB747A call dword ptr [ebx + 0x5b8]",
+        "00DB7480 lea ecx, [esp + 0x58]",
+        "00DB7484 jmp 0xdb78e9",
+        "00DB7489 mov eax, dword ptr [esi + 0x14]",
+        "00DB748C mov ecx, dword ptr [0x143e8f8]",
+        "00DB7492 mov edx, dword ptr [ecx]",
+        "00DB7494 add eax, 0x108",
+        "00DB7499 mov eax, dword ptr [eax]",
+        "00DB749B push eax",
+        "00DB749C call dword ptr [edx + 0x168]",
+        "00DB74A2 cmp eax, 0x14",
+        "00DB74A5 jge 0xdb74f3",
+        "00DB74A7 cmp dword ptr [esi + 0x20], 0x14",
+        "00DB74AB jle 0xdb74f3",
+        "00DB74AD mov ecx, esi",
+        "00DB74AF call 0xf35b30",
+        "00DB74B4 test al, al",
+        "00DB74B6 jne 0xdb7cdd",
+        "00DB74BC push -1",
+        "00DB74BE push 0x12d93e8",
+        "00DB74C3 lea ecx, [esp + 0x50]",
+        "00DB74C7 call 0x99ebf0",
+        "00DB74CC mov ecx, dword ptr [esi + 4]",
+        "00DB74CF mov ebx, dword ptr [ecx]",
+        "00DB74D1 call dword ptr [ebx + 0x118]",
+        "00DB74D7 push eax",
+        "00DB74D8 push edi",
+        "00DB74D9 push 0",
+        "00DB74DB lea ecx, [esp + 0x54]",
+        "00DB74DF push ecx",
+        "00DB74E0 mov ecx, dword ptr [esi + 4]",
+        "00DB74E3 push ebp",
+        "00DB74E4 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb754e",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb7541",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb7542",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb7543",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb7549",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb754d",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb7541",
+      "bytes": "50576a008d4c246c518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB74D8 push edi",
+        "00DB74D9 push 0",
+        "00DB74DB lea ecx, [esp + 0x54]",
+        "00DB74DF push ecx",
+        "00DB74E0 mov ecx, dword ptr [esi + 4]",
+        "00DB74E3 push ebp",
+        "00DB74E4 call dword ptr [ebx + 0x5b8]",
+        "00DB74EA lea ecx, [esp + 0x48]",
+        "00DB74EE jmp 0xdb78e9",
+        "00DB74F3 mov eax, dword ptr [esi + 0x14]",
+        "00DB74F6 mov ecx, dword ptr [0x143e8f8]",
+        "00DB74FC mov edx, dword ptr [ecx]",
+        "00DB74FE add eax, 0x108",
+        "00DB7503 mov eax, dword ptr [eax]",
+        "00DB7505 push eax",
+        "00DB7506 call dword ptr [edx + 0x168]",
+        "00DB750C cmp eax, 0x19",
+        "00DB750F jge 0xdb755d",
+        "00DB7511 cmp dword ptr [esi + 0x20], 0x19",
+        "00DB7515 jle 0xdb755d",
+        "00DB7517 mov ecx, esi",
+        "00DB7519 call 0xf35b30",
+        "00DB751E test al, al",
+        "00DB7520 jne 0xdb7cdd",
+        "00DB7526 push -1",
+        "00DB7528 push 0x12d93c0",
+        "00DB752D lea ecx, [esp + 0x68]",
+        "00DB7531 call 0x99ebf0",
+        "00DB7536 mov ecx, dword ptr [esi + 4]",
+        "00DB7539 mov ebx, dword ptr [ecx]",
+        "00DB753B call dword ptr [ebx + 0x118]",
+        "00DB7541 push eax",
+        "00DB7542 push edi",
+        "00DB7543 push 0",
+        "00DB7545 lea ecx, [esp + 0x6c]",
+        "00DB7549 push ecx",
+        "00DB754A mov ecx, dword ptr [esi + 4]",
+        "00DB754D push ebp",
+        "00DB754E call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb75b8",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb75ab",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb75ac",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb75ad",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb75b3",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb75b7",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb75ab",
+      "bytes": "50576a008d4c245c518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB7542 push edi",
+        "00DB7543 push 0",
+        "00DB7545 lea ecx, [esp + 0x6c]",
+        "00DB7549 push ecx",
+        "00DB754A mov ecx, dword ptr [esi + 4]",
+        "00DB754D push ebp",
+        "00DB754E call dword ptr [ebx + 0x5b8]",
+        "00DB7554 lea ecx, [esp + 0x60]",
+        "00DB7558 jmp 0xdb78e9",
+        "00DB755D mov eax, dword ptr [esi + 0x14]",
+        "00DB7560 mov ecx, dword ptr [0x143e8f8]",
+        "00DB7566 mov edx, dword ptr [ecx]",
+        "00DB7568 add eax, 0x108",
+        "00DB756D mov eax, dword ptr [eax]",
+        "00DB756F push eax",
+        "00DB7570 call dword ptr [edx + 0x168]",
+        "00DB7576 cmp eax, 0x1e",
+        "00DB7579 jge 0xdb75c7",
+        "00DB757B cmp dword ptr [esi + 0x20], 0x1e",
+        "00DB757F jle 0xdb75c7",
+        "00DB7581 mov ecx, esi",
+        "00DB7583 call 0xf35b30",
+        "00DB7588 test al, al",
+        "00DB758A jne 0xdb7cdd",
+        "00DB7590 push -1",
+        "00DB7592 push 0x12d9398",
+        "00DB7597 lea ecx, [esp + 0x58]",
+        "00DB759B call 0x99ebf0",
+        "00DB75A0 mov ecx, dword ptr [esi + 4]",
+        "00DB75A3 mov ebx, dword ptr [ecx]",
+        "00DB75A5 call dword ptr [ebx + 0x118]",
+        "00DB75AB push eax",
+        "00DB75AC push edi",
+        "00DB75AD push 0",
+        "00DB75AF lea ecx, [esp + 0x5c]",
+        "00DB75B3 push ecx",
+        "00DB75B4 mov ecx, dword ptr [esi + 4]",
+        "00DB75B7 push ebp",
+        "00DB75B8 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb7622",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb7615",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb7616",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb7617",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb761d",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb7621",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb7615",
+      "bytes": "50576a008d4c2474518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB75AC push edi",
+        "00DB75AD push 0",
+        "00DB75AF lea ecx, [esp + 0x5c]",
+        "00DB75B3 push ecx",
+        "00DB75B4 mov ecx, dword ptr [esi + 4]",
+        "00DB75B7 push ebp",
+        "00DB75B8 call dword ptr [ebx + 0x5b8]",
+        "00DB75BE lea ecx, [esp + 0x50]",
+        "00DB75C2 jmp 0xdb78e9",
+        "00DB75C7 mov eax, dword ptr [esi + 0x14]",
+        "00DB75CA mov ecx, dword ptr [0x143e8f8]",
+        "00DB75D0 mov edx, dword ptr [ecx]",
+        "00DB75D2 add eax, 0x108",
+        "00DB75D7 mov eax, dword ptr [eax]",
+        "00DB75D9 push eax",
+        "00DB75DA call dword ptr [edx + 0x168]",
+        "00DB75E0 cmp eax, 0x22",
+        "00DB75E3 jge 0xdb7631",
+        "00DB75E5 cmp dword ptr [esi + 0x20], 0x22",
+        "00DB75E9 jle 0xdb7631",
+        "00DB75EB mov ecx, esi",
+        "00DB75ED call 0xf35b30",
+        "00DB75F2 test al, al",
+        "00DB75F4 jne 0xdb7cdd",
+        "00DB75FA push -1",
+        "00DB75FC push 0x12d9370",
+        "00DB7601 lea ecx, [esp + 0x70]",
+        "00DB7605 call 0x99ebf0",
+        "00DB760A mov ecx, dword ptr [esi + 4]",
+        "00DB760D mov ebx, dword ptr [ecx]",
+        "00DB760F call dword ptr [ebx + 0x118]",
+        "00DB7615 push eax",
+        "00DB7616 push edi",
+        "00DB7617 push 0",
+        "00DB7619 lea ecx, [esp + 0x74]",
+        "00DB761D push ecx",
+        "00DB761E mov ecx, dword ptr [esi + 4]",
+        "00DB7621 push ebp",
+        "00DB7622 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb768c",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb767f",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb7680",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb7681",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb7687",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb768b",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb767f",
+      "bytes": "50576a008d4c247c518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB7616 push edi",
+        "00DB7617 push 0",
+        "00DB7619 lea ecx, [esp + 0x74]",
+        "00DB761D push ecx",
+        "00DB761E mov ecx, dword ptr [esi + 4]",
+        "00DB7621 push ebp",
+        "00DB7622 call dword ptr [ebx + 0x5b8]",
+        "00DB7628 lea ecx, [esp + 0x68]",
+        "00DB762C jmp 0xdb78e9",
+        "00DB7631 mov eax, dword ptr [esi + 0x14]",
+        "00DB7634 mov ecx, dword ptr [0x143e8f8]",
+        "00DB763A mov edx, dword ptr [ecx]",
+        "00DB763C add eax, 0x108",
+        "00DB7641 mov eax, dword ptr [eax]",
+        "00DB7643 push eax",
+        "00DB7644 call dword ptr [edx + 0x168]",
+        "00DB764A cmp eax, 0x26",
+        "00DB764D jge 0xdb769b",
+        "00DB764F cmp dword ptr [esi + 0x20], 0x26",
+        "00DB7653 jle 0xdb769b",
+        "00DB7655 mov ecx, esi",
+        "00DB7657 call 0xf35b30",
+        "00DB765C test al, al",
+        "00DB765E jne 0xdb7cdd",
+        "00DB7664 push -1",
+        "00DB7666 push 0x12d9348",
+        "00DB766B lea ecx, [esp + 0x78]",
+        "00DB766F call 0x99ebf0",
+        "00DB7674 mov ecx, dword ptr [esi + 4]",
+        "00DB7677 mov ebx, dword ptr [ecx]",
+        "00DB7679 call dword ptr [ebx + 0x118]",
+        "00DB767F push eax",
+        "00DB7680 push edi",
+        "00DB7681 push 0",
+        "00DB7683 lea ecx, [esp + 0x7c]",
+        "00DB7687 push ecx",
+        "00DB7688 mov ecx, dword ptr [esi + 4]",
+        "00DB768B push ebp",
+        "00DB768C call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb76fe",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb76f1",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb76f2",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb76f3",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb76f9",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb76fd",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb76f1",
+      "bytes": "50576a008d4c2468518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB7680 push edi",
+        "00DB7681 push 0",
+        "00DB7683 lea ecx, [esp + 0x7c]",
+        "00DB7687 push ecx",
+        "00DB7688 mov ecx, dword ptr [esi + 4]",
+        "00DB768B push ebp",
+        "00DB768C call dword ptr [ebx + 0x5b8]",
+        "00DB7692 lea ecx, [esp + 0x70]",
+        "00DB7696 jmp 0xdb78e9",
+        "00DB769B mov eax, dword ptr [esi + 0x14]",
+        "00DB769E mov ecx, dword ptr [0x143e8f8]",
+        "00DB76A4 mov edx, dword ptr [ecx]",
+        "00DB76A6 add eax, 0x108",
+        "00DB76AB mov eax, dword ptr [eax]",
+        "00DB76AD push eax",
+        "00DB76AE call dword ptr [edx + 0x168]",
+        "00DB76B4 cmp eax, 0x2d",
+        "00DB76B7 jge 0xdb7924",
+        "00DB76BD cmp dword ptr [esi + 0x20], 0x2d",
+        "00DB76C1 jle 0xdb7924",
+        "00DB76C7 mov ecx, esi",
+        "00DB76C9 call 0xf35b30",
+        "00DB76CE test al, al",
+        "00DB76D0 jne 0xdb7cdd",
+        "00DB76D6 push -1",
+        "00DB76D8 push 0x12d9320",
+        "00DB76DD lea ecx, [esp + 0x64]",
+        "00DB76E1 call 0x99ebf0",
+        "00DB76E6 mov ecx, dword ptr [esi + 4]",
+        "00DB76E9 mov ebx, dword ptr [ecx]",
+        "00DB76EB call dword ptr [ebx + 0x118]",
+        "00DB76F1 push eax",
+        "00DB76F2 push edi",
+        "00DB76F3 push 0",
+        "00DB76F5 lea ecx, [esp + 0x68]",
+        "00DB76F9 push ecx",
+        "00DB76FA mov ecx, dword ptr [esi + 4]",
+        "00DB76FD push ebp",
+        "00DB76FE call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb77a0",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb7790",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb7791",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb7792",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb779b",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb779f",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb7790",
+      "bytes": "50576a008d8c2480000000518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB7724 call dword ptr [edx + 0x5b0]",
+        "00DB772A mov ecx, dword ptr [esi + 4]",
+        "00DB772D mov ebx, dword ptr [ecx]",
+        "00DB772F mov ebp, eax",
+        "00DB7731 call dword ptr [ebx + 0x118]",
+        "00DB7737 mov ecx, dword ptr [esi + 4]",
+        "00DB773A push eax",
+        "00DB773B push ebp",
+        "00DB773C call dword ptr [ebx + 0x5b4]",
+        "00DB7742 mov eax, dword ptr [esi + 0x14]",
+        "00DB7745 mov ecx, dword ptr [0x143e8f8]",
+        "00DB774B mov edx, dword ptr [ecx]",
+        "00DB774D add eax, 0x108",
+        "00DB7752 mov eax, dword ptr [eax]",
+        "00DB7754 push eax",
+        "00DB7755 call dword ptr [edx + 0x168]",
+        "00DB775B cmp eax, 0xa",
+        "00DB775E jge 0xdb77af",
+        "00DB7760 cmp dword ptr [esi + 0x20], 0xa",
+        "00DB7764 jle 0xdb77af",
+        "00DB7766 mov ecx, esi",
+        "00DB7768 call 0xf35b30",
+        "00DB776D test al, al",
+        "00DB776F jne 0xdb7cdd",
+        "00DB7775 push -1",
+        "00DB7777 push 0x12d92f4",
+        "00DB777C lea ecx, [esp + 0x7c]",
+        "00DB7780 call 0x99ebf0",
+        "00DB7785 mov ecx, dword ptr [esi + 4]",
+        "00DB7788 mov ebx, dword ptr [ecx]",
+        "00DB778A call dword ptr [ebx + 0x118]",
+        "00DB7790 push eax",
+        "00DB7791 push edi",
+        "00DB7792 push 0",
+        "00DB7794 lea ecx, [esp + 0x80]",
+        "00DB779B push ecx",
+        "00DB779C mov ecx, dword ptr [esi + 4]",
+        "00DB779F push ebp",
+        "00DB77A0 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb780a",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb77fd",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb77fe",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb77ff",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb7805",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb7809",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb77fd",
+      "bytes": "50576a008d4c2470518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB7791 push edi",
+        "00DB7792 push 0",
+        "00DB7794 lea ecx, [esp + 0x80]",
+        "00DB779B push ecx",
+        "00DB779C mov ecx, dword ptr [esi + 4]",
+        "00DB779F push ebp",
+        "00DB77A0 call dword ptr [ebx + 0x5b8]",
+        "00DB77A6 lea ecx, [esp + 0x74]",
+        "00DB77AA jmp 0xdb78e9",
+        "00DB77AF mov eax, dword ptr [esi + 0x14]",
+        "00DB77B2 mov ecx, dword ptr [0x143e8f8]",
+        "00DB77B8 mov edx, dword ptr [ecx]",
+        "00DB77BA add eax, 0x108",
+        "00DB77BF mov eax, dword ptr [eax]",
+        "00DB77C1 push eax",
+        "00DB77C2 call dword ptr [edx + 0x168]",
+        "00DB77C8 cmp eax, 0x19",
+        "00DB77CB jge 0xdb7819",
+        "00DB77CD cmp dword ptr [esi + 0x20], 0x19",
+        "00DB77D1 jle 0xdb7819",
+        "00DB77D3 mov ecx, esi",
+        "00DB77D5 call 0xf35b30",
+        "00DB77DA test al, al",
+        "00DB77DC jne 0xdb7cdd",
+        "00DB77E2 push -1",
+        "00DB77E4 push 0x12d92c8",
+        "00DB77E9 lea ecx, [esp + 0x6c]",
+        "00DB77ED call 0x99ebf0",
+        "00DB77F2 mov ecx, dword ptr [esi + 4]",
+        "00DB77F5 mov ebx, dword ptr [ecx]",
+        "00DB77F7 call dword ptr [ebx + 0x118]",
+        "00DB77FD push eax",
+        "00DB77FE push edi",
+        "00DB77FF push 0",
+        "00DB7801 lea ecx, [esp + 0x70]",
+        "00DB7805 push ecx",
+        "00DB7806 mov ecx, dword ptr [esi + 4]",
+        "00DB7809 push ebp",
+        "00DB780A call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb7874",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb7867",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb7868",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb7869",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb786f",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb7873",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb7867",
+      "bytes": "50576a008d4c2444518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB77FE push edi",
+        "00DB77FF push 0",
+        "00DB7801 lea ecx, [esp + 0x70]",
+        "00DB7805 push ecx",
+        "00DB7806 mov ecx, dword ptr [esi + 4]",
+        "00DB7809 push ebp",
+        "00DB780A call dword ptr [ebx + 0x5b8]",
+        "00DB7810 lea ecx, [esp + 0x64]",
+        "00DB7814 jmp 0xdb78e9",
+        "00DB7819 mov eax, dword ptr [esi + 0x14]",
+        "00DB781C mov ecx, dword ptr [0x143e8f8]",
+        "00DB7822 mov edx, dword ptr [ecx]",
+        "00DB7824 add eax, 0x108",
+        "00DB7829 mov eax, dword ptr [eax]",
+        "00DB782B push eax",
+        "00DB782C call dword ptr [edx + 0x168]",
+        "00DB7832 cmp eax, 0x23",
+        "00DB7835 jge 0xdb7880",
+        "00DB7837 cmp dword ptr [esi + 0x20], 0x23",
+        "00DB783B jle 0xdb7880",
+        "00DB783D mov ecx, esi",
+        "00DB783F call 0xf35b30",
+        "00DB7844 test al, al",
+        "00DB7846 jne 0xdb7cdd",
+        "00DB784C push -1",
+        "00DB784E push 0x12d929c",
+        "00DB7853 lea ecx, [esp + 0x40]",
+        "00DB7857 call 0x99ebf0",
+        "00DB785C mov ecx, dword ptr [esi + 4]",
+        "00DB785F mov ebx, dword ptr [ecx]",
+        "00DB7861 call dword ptr [ebx + 0x118]",
+        "00DB7867 push eax",
+        "00DB7868 push edi",
+        "00DB7869 push 0",
+        "00DB786B lea ecx, [esp + 0x44]",
+        "00DB786F push ecx",
+        "00DB7870 mov ecx, dword ptr [esi + 4]",
+        "00DB7873 push ebp",
+        "00DB7874 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "call": "0xdb78df",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb78d2",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb78d3",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdb78d4",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb78da",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdb78de",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdb78d2",
+      "bytes": "50576a008d4c2478518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB7868 push edi",
+        "00DB7869 push 0",
+        "00DB786B lea ecx, [esp + 0x44]",
+        "00DB786F push ecx",
+        "00DB7870 mov ecx, dword ptr [esi + 4]",
+        "00DB7873 push ebp",
+        "00DB7874 call dword ptr [ebx + 0x5b8]",
+        "00DB787A lea ecx, [esp + 0x38]",
+        "00DB787E jmp 0xdb78e9",
+        "00DB7880 mov eax, dword ptr [esi + 0x14]",
+        "00DB7883 mov ecx, dword ptr [0x143e8f8]",
+        "00DB7889 mov edx, dword ptr [ecx]",
+        "00DB788B add eax, 0x108",
+        "00DB7890 mov eax, dword ptr [eax]",
+        "00DB7892 push eax",
+        "00DB7893 call dword ptr [edx + 0x168]",
+        "00DB7899 cmp eax, 0x2d",
+        "00DB789C jge 0xdb7924",
+        "00DB78A2 cmp dword ptr [esi + 0x20], 0x2d",
+        "00DB78A6 jle 0xdb7924",
+        "00DB78A8 mov ecx, esi",
+        "00DB78AA call 0xf35b30",
+        "00DB78AF test al, al",
+        "00DB78B1 jne 0xdb7cdd",
+        "00DB78B7 push -1",
+        "00DB78B9 push 0x12d9270",
+        "00DB78BE lea ecx, [esp + 0x74]",
+        "00DB78C2 call 0x99ebf0",
+        "00DB78C7 mov ecx, dword ptr [esi + 4]",
+        "00DB78CA mov ebx, dword ptr [ecx]",
+        "00DB78CC call dword ptr [ebx + 0x118]",
+        "00DB78D2 push eax",
+        "00DB78D3 push edi",
+        "00DB78D4 push 0",
+        "00DB78D6 lea ecx, [esp + 0x78]",
+        "00DB78DA push ecx",
+        "00DB78DB mov ecx, dword ptr [esi + 4]",
+        "00DB78DE push ebp",
+        "00DB78DF call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "call": "0xdb4e55",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdb4e4b",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdb4e4c",
+          "operand": "ebp"
+        },
+        {
+          "address": "0xdb4e4d",
+          "operand": "0"
+        },
+        {
+          "address": "0xdb4e53",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdb4e54",
+          "operand": "ebx"
+        }
+      ],
+      "slice_start": "0xdb4e4b",
+      "bytes": "50556a008d54247c5253ff97b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DB4DE1 je 0xdb4db8",
+        "00DB4DE3 mov ecx, esi",
+        "00DB4DE5 call 0xf35b30",
+        "00DB4DEA test al, al",
+        "00DB4DEC jne 0xdb4f56",
+        "00DB4DF2 push -1",
+        "00DB4DF4 push 0x128f350",
+        "00DB4DF9 lea ecx, [esp + 0x70]",
+        "00DB4DFD call 0x99ebf0",
+        "00DB4E02 push 0",
+        "00DB4E04 xor eax, eax",
+        "00DB4E06 mov al, byte ptr [0x1375748]",
+        "00DB4E0B push 0",
+        "00DB4E0D lea ecx, [esp + 0x70]",
+        "00DB4E11 push eax",
+        "00DB4E12 push 1",
+        "00DB4E14 push 0",
+        "00DB4E16 push 0",
+        "00DB4E18 push 0",
+        "00DB4E1A push ecx",
+        "00DB4E1B lea ecx, [esp + 0x34]",
+        "00DB4E1F call 0x7e73d0",
+        "00DB4E24 lea ecx, [esp + 0x68]",
+        "00DB4E28 call 0x99eae0",
+        "00DB4E2D push -1",
+        "00DB4E2F push 0x12d8e9c",
+        "00DB4E34 lea ecx, [esp + 0x78]",
+        "00DB4E38 call 0x99ebf0",
+        "00DB4E3D mov ecx, dword ptr [esi + 4]",
+        "00DB4E40 mov edi, dword ptr [ecx]",
+        "00DB4E42 call dword ptr [edi + 0x118]",
+        "00DB4E48 mov ecx, dword ptr [esi + 4]",
+        "00DB4E4B push eax",
+        "00DB4E4C push ebp",
+        "00DB4E4D push 0",
+        "00DB4E4F lea edx, [esp + 0x7c]",
+        "00DB4E53 push edx",
+        "00DB4E54 push ebx",
+        "00DB4E55 call dword ptr [edi + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "call": "0xdbc505",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdbc4f8",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdbc4f9",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdbc4fa",
+          "operand": "0"
+        },
+        {
+          "address": "0xdbc503",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdbc504",
+          "operand": "esi"
+        }
+      ],
+      "slice_start": "0xdbc4f8",
+      "bytes": "52576a008d9424cc0000005256ff90b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DBC490 call dword ptr [esi + 0x95c]",
+        "00DBC496 mov edx, dword ptr [ebp + 0x20]",
+        "00DBC499 mov ecx, dword ptr [ebp + 0x1c]",
+        "00DBC49C inc edx",
+        "00DBC49D mov eax, edx",
+        "00DBC49F cmp eax, ecx",
+        "00DBC4A1 mov dword ptr [ebp + 0x20], edx",
+        "00DBC4A4 mov ecx, ebp",
+        "00DBC4A6 jge 0xdbc86b",
+        "00DBC4AC call 0xf35b30",
+        "00DBC4B1 test al, al",
+        "00DBC4B3 jne 0xdbcce2",
+        "00DBC4B9 mov ecx, dword ptr [ebp + 4]",
+        "00DBC4BC mov edx, dword ptr [ecx]",
+        "00DBC4BE push 0",
+        "00DBC4C0 push 0",
+        "00DBC4C2 push edi",
+        "00DBC4C3 call dword ptr [edx + 0x5b0]",
+        "00DBC4C9 mov ecx, dword ptr [ebp + 4]",
+        "00DBC4CC lea edx, [esp + 0x2c]",
+        "00DBC4D0 mov esi, eax",
+        "00DBC4D2 mov eax, dword ptr [ecx]",
+        "00DBC4D4 push edx",
+        "00DBC4D5 push esi",
+        "00DBC4D6 call dword ptr [eax + 0x5b4]",
+        "00DBC4DC push -1",
+        "00DBC4DE push 0x12d9a38",
+        "00DBC4E3 lea ecx, [esp + 0xc8]",
+        "00DBC4EA call 0x99ebf0",
+        "00DBC4EF mov ecx, dword ptr [ebp + 4]",
+        "00DBC4F2 mov eax, dword ptr [ecx]",
+        "00DBC4F4 lea edx, [esp + 0x2c]",
+        "00DBC4F8 push edx",
+        "00DBC4F9 push edi",
+        "00DBC4FA push 0",
+        "00DBC4FC lea edx, [esp + 0xcc]",
+        "00DBC503 push edx",
+        "00DBC504 push esi",
+        "00DBC505 call dword ptr [eax + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "call": "0xdbc540",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdbc533",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdbc534",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdbc535",
+          "operand": "0"
+        },
+        {
+          "address": "0xdbc53e",
+          "operand": "edx"
+        },
+        {
+          "address": "0xdbc53f",
+          "operand": "esi"
+        }
+      ],
+      "slice_start": "0xdbc533",
+      "bytes": "52576a008d9424bc0000005256ff90b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DBC4C2 push edi",
+        "00DBC4C3 call dword ptr [edx + 0x5b0]",
+        "00DBC4C9 mov ecx, dword ptr [ebp + 4]",
+        "00DBC4CC lea edx, [esp + 0x2c]",
+        "00DBC4D0 mov esi, eax",
+        "00DBC4D2 mov eax, dword ptr [ecx]",
+        "00DBC4D4 push edx",
+        "00DBC4D5 push esi",
+        "00DBC4D6 call dword ptr [eax + 0x5b4]",
+        "00DBC4DC push -1",
+        "00DBC4DE push 0x12d9a38",
+        "00DBC4E3 lea ecx, [esp + 0xc8]",
+        "00DBC4EA call 0x99ebf0",
+        "00DBC4EF mov ecx, dword ptr [ebp + 4]",
+        "00DBC4F2 mov eax, dword ptr [ecx]",
+        "00DBC4F4 lea edx, [esp + 0x2c]",
+        "00DBC4F8 push edx",
+        "00DBC4F9 push edi",
+        "00DBC4FA push 0",
+        "00DBC4FC lea edx, [esp + 0xcc]",
+        "00DBC503 push edx",
+        "00DBC504 push esi",
+        "00DBC505 call dword ptr [eax + 0x5b8]",
+        "00DBC50B lea ecx, [esp + 0xc0]",
+        "00DBC512 call 0x99eae0",
+        "00DBC517 push -1",
+        "00DBC519 push 0x12d9a1c",
+        "00DBC51E lea ecx, [esp + 0xb8]",
+        "00DBC525 call 0x99ebf0",
+        "00DBC52A mov ecx, dword ptr [ebp + 4]",
+        "00DBC52D mov eax, dword ptr [ecx]",
+        "00DBC52F lea edx, [esp + 0x2c]",
+        "00DBC533 push edx",
+        "00DBC534 push edi",
+        "00DBC535 push 0",
+        "00DBC537 lea edx, [esp + 0xbc]",
+        "00DBC53E push edx",
+        "00DBC53F push esi",
+        "00DBC540 call dword ptr [eax + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "call": "0xdbc68e",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdbc684",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdbc685",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdbc686",
+          "operand": "0"
+        },
+        {
+          "address": "0xdbc68c",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdbc68d",
+          "operand": "esi"
+        }
+      ],
+      "slice_start": "0xdbc684",
+      "bytes": "50576a008d4424605056ff92b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DBC621 mov eax, dword ptr [eax + 0x104]",
+        "00DBC627 mov edx, dword ptr [ecx]",
+        "00DBC629 push 3",
+        "00DBC62B push eax",
+        "00DBC62C call dword ptr [edx + 0x164]",
+        "00DBC632 mov ecx, dword ptr [ebp + 0x14]",
+        "00DBC635 push 0",
+        "00DBC637 mov byte ptr [ecx + 0x48], 1",
+        "00DBC63B mov ecx, dword ptr [ebp + 4]",
+        "00DBC63E mov edx, dword ptr [ecx]",
+        "00DBC640 push 0",
+        "00DBC642 push edi",
+        "00DBC643 call dword ptr [edx + 0x5b0]",
+        "00DBC649 mov ecx, dword ptr [ebp + 4]",
+        "00DBC64C lea edx, [esp + 0x2c]",
+        "00DBC650 mov esi, eax",
+        "00DBC652 mov eax, dword ptr [ecx]",
+        "00DBC654 push edx",
+        "00DBC655 push esi",
+        "00DBC656 call dword ptr [eax + 0x5b4]",
+        "00DBC65C lea ecx, [esp + 0x54]",
+        "00DBC660 call 0x99e4b0",
+        "00DBC665 mov eax, dword ptr [ebp + 0x28]",
+        "00DBC668 push eax",
+        "00DBC669 lea ecx, [esp + 0x58]",
+        "00DBC66D push 0x12d99f0",
+        "00DBC672 push ecx",
+        "00DBC673 call 0x99f1f0",
+        "00DBC678 mov ecx, dword ptr [ebp + 4]",
+        "00DBC67B mov edx, dword ptr [ecx]",
+        "00DBC67D add esp, 0xc",
+        "00DBC680 lea eax, [esp + 0x2c]",
+        "00DBC684 push eax",
+        "00DBC685 push edi",
+        "00DBC686 push 0",
+        "00DBC688 lea eax, [esp + 0x60]",
+        "00DBC68C push eax",
+        "00DBC68D push esi",
+        "00DBC68E call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "call": "0xdac94b",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdac93c",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdac93d",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdac940",
+          "operand": "ebx"
+        },
+        {
+          "address": "0xdac945",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdac94a",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdac93c",
+      "bytes": "505733db538d44245c508b44244855ff90b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAC8E4 push eax",
+        "00DAC8E5 push edi",
+        "00DAC8E6 call dword ptr [ebp + 0x76c]",
+        "00DAC8EC mov ecx, dword ptr [esi + 4]",
+        "00DAC8EF mov edx, dword ptr [ecx]",
+        "00DAC8F1 push ebx",
+        "00DAC8F2 push ebx",
+        "00DAC8F3 push edi",
+        "00DAC8F4 call dword ptr [edx + 0x5b0]",
+        "00DAC8FA mov ecx, dword ptr [esi + 4]",
+        "00DAC8FD mov edx, dword ptr [ecx]",
+        "00DAC8FF mov ebp, eax",
+        "00DAC901 mov eax, ecx",
+        "00DAC903 mov ebx, dword ptr [eax]",
+        "00DAC905 call dword ptr [edx + 0x118]",
+        "00DAC90B mov ecx, dword ptr [esi + 4]",
+        "00DAC90E push eax",
+        "00DAC90F push ebp",
+        "00DAC910 call dword ptr [ebx + 0x5b4]",
+        "00DAC916 push -1",
+        "00DAC918 push 0x12d8650",
+        "00DAC91D lea ecx, [esp + 0x58]",
+        "00DAC921 call 0x99ebf0",
+        "00DAC926 mov ecx, dword ptr [esi + 4]",
+        "00DAC929 mov edx, dword ptr [ecx]",
+        "00DAC92B mov eax, ecx",
+        "00DAC92D mov eax, dword ptr [eax]",
+        "00DAC92F mov dword ptr [esp + 0x38], eax",
+        "00DAC933 call dword ptr [edx + 0x118]",
+        "00DAC939 mov ecx, dword ptr [esi + 4]",
+        "00DAC93C push eax",
+        "00DAC93D push edi",
+        "00DAC93E xor ebx, ebx",
+        "00DAC940 push ebx",
+        "00DAC941 lea eax, [esp + 0x5c]",
+        "00DAC945 push eax",
+        "00DAC946 mov eax, dword ptr [esp + 0x48]",
+        "00DAC94A push ebp",
+        "00DAC94B call dword ptr [eax + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "call": "0xdad96a",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdad960",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdad961",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdad962",
+          "operand": "0"
+        },
+        {
+          "address": "0xdad968",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdad969",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdad960",
+      "bytes": "50576a008d4424585055ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAD8FC call dword ptr [edx + 0x5b0]",
+        "00DAD902 mov ecx, dword ptr [esi + 4]",
+        "00DAD905 mov edx, dword ptr [ecx]",
+        "00DAD907 mov ebp, eax",
+        "00DAD909 mov eax, ecx",
+        "00DAD90B mov ebx, dword ptr [eax]",
+        "00DAD90D call dword ptr [edx + 0x118]",
+        "00DAD913 mov ecx, dword ptr [esi + 4]",
+        "00DAD916 push eax",
+        "00DAD917 push ebp",
+        "00DAD918 call dword ptr [ebx + 0x5b4]",
+        "00DAD91E mov eax, dword ptr [esi + 0x14]",
+        "00DAD921 mov ecx, dword ptr [eax + 0x58]",
+        "00DAD924 test ecx, ecx",
+        "00DAD926 jne 0xdad97b",
+        "00DAD928 mov edx, dword ptr [eax + 0x54]",
+        "00DAD92B test edx, edx",
+        "00DAD92D jle 0xdad979",
+        "00DAD92F mov ecx, esi",
+        "00DAD931 call 0xf35b30",
+        "00DAD936 test al, al",
+        "00DAD938 jne 0xdade37",
+        "00DAD93E push -1",
+        "00DAD940 push 0x12d843c",
+        "00DAD945 lea ecx, [esp + 0x54]",
+        "00DAD949 call 0x99ebf0",
+        "00DAD94E mov ecx, dword ptr [esi + 4]",
+        "00DAD951 mov edx, dword ptr [ecx]",
+        "00DAD953 mov eax, ecx",
+        "00DAD955 mov ebx, dword ptr [eax]",
+        "00DAD957 call dword ptr [edx + 0x118]",
+        "00DAD95D mov ecx, dword ptr [esi + 4]",
+        "00DAD960 push eax",
+        "00DAD961 push edi",
+        "00DAD962 push 0",
+        "00DAD964 lea eax, [esp + 0x58]",
+        "00DAD968 push eax",
+        "00DAD969 push ebp",
+        "00DAD96A call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "call": "0xdad9b8",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdad9ab",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdad9ac",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdad9ad",
+          "operand": "0"
+        },
+        {
+          "address": "0xdad9b3",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdad9b7",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdad9ab",
+      "bytes": "50576a008d4c2460518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAD949 call 0x99ebf0",
+        "00DAD94E mov ecx, dword ptr [esi + 4]",
+        "00DAD951 mov edx, dword ptr [ecx]",
+        "00DAD953 mov eax, ecx",
+        "00DAD955 mov ebx, dword ptr [eax]",
+        "00DAD957 call dword ptr [edx + 0x118]",
+        "00DAD95D mov ecx, dword ptr [esi + 4]",
+        "00DAD960 push eax",
+        "00DAD961 push edi",
+        "00DAD962 push 0",
+        "00DAD964 lea eax, [esp + 0x58]",
+        "00DAD968 push eax",
+        "00DAD969 push ebp",
+        "00DAD96A call dword ptr [ebx + 0x5b8]",
+        "00DAD970 lea ecx, [esp + 0x4c]",
+        "00DAD974 jmp 0xdada07",
+        "00DAD979 test ecx, ecx",
+        "00DAD97B mov ecx, esi",
+        "00DAD97D jle 0xdad9c4",
+        "00DAD97F call 0xf35b30",
+        "00DAD984 test al, al",
+        "00DAD986 jne 0xdade37",
+        "00DAD98C push -1",
+        "00DAD98E push 0x12d841c",
+        "00DAD993 lea ecx, [esp + 0x5c]",
+        "00DAD997 call 0x99ebf0",
+        "00DAD99C mov ecx, dword ptr [esi + 4]",
+        "00DAD99F mov eax, dword ptr [ecx]",
+        "00DAD9A1 mov edx, ecx",
+        "00DAD9A3 mov ebx, dword ptr [edx]",
+        "00DAD9A5 call dword ptr [eax + 0x118]",
+        "00DAD9AB push eax",
+        "00DAD9AC push edi",
+        "00DAD9AD push 0",
+        "00DAD9AF lea ecx, [esp + 0x60]",
+        "00DAD9B3 push ecx",
+        "00DAD9B4 mov ecx, dword ptr [esi + 4]",
+        "00DAD9B7 push ebp",
+        "00DAD9B8 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "call": "0xdad9fd",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdad9f0",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdad9f1",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdad9f2",
+          "operand": "0"
+        },
+        {
+          "address": "0xdad9f8",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdad9fc",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdad9f0",
+      "bytes": "50576a008d4c2448518b4e0455ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAD98C push -1",
+        "00DAD98E push 0x12d841c",
+        "00DAD993 lea ecx, [esp + 0x5c]",
+        "00DAD997 call 0x99ebf0",
+        "00DAD99C mov ecx, dword ptr [esi + 4]",
+        "00DAD99F mov eax, dword ptr [ecx]",
+        "00DAD9A1 mov edx, ecx",
+        "00DAD9A3 mov ebx, dword ptr [edx]",
+        "00DAD9A5 call dword ptr [eax + 0x118]",
+        "00DAD9AB push eax",
+        "00DAD9AC push edi",
+        "00DAD9AD push 0",
+        "00DAD9AF lea ecx, [esp + 0x60]",
+        "00DAD9B3 push ecx",
+        "00DAD9B4 mov ecx, dword ptr [esi + 4]",
+        "00DAD9B7 push ebp",
+        "00DAD9B8 call dword ptr [ebx + 0x5b8]",
+        "00DAD9BE lea ecx, [esp + 0x54]",
+        "00DAD9C2 jmp 0xdada07",
+        "00DAD9C4 call 0xf35b30",
+        "00DAD9C9 test al, al",
+        "00DAD9CB jne 0xdade37",
+        "00DAD9D1 push -1",
+        "00DAD9D3 push 0x12d83f8",
+        "00DAD9D8 lea ecx, [esp + 0x44]",
+        "00DAD9DC call 0x99ebf0",
+        "00DAD9E1 mov ecx, dword ptr [esi + 4]",
+        "00DAD9E4 mov eax, dword ptr [ecx]",
+        "00DAD9E6 mov edx, ecx",
+        "00DAD9E8 mov ebx, dword ptr [edx]",
+        "00DAD9EA call dword ptr [eax + 0x118]",
+        "00DAD9F0 push eax",
+        "00DAD9F1 push edi",
+        "00DAD9F2 push 0",
+        "00DAD9F4 lea ecx, [esp + 0x48]",
+        "00DAD9F8 push ecx",
+        "00DAD9F9 mov ecx, dword ptr [esi + 4]",
+        "00DAD9FC push ebp",
+        "00DAD9FD call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "call": "0xdafb29",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdafb1c",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdafb1d",
+          "operand": "ebx"
+        },
+        {
+          "address": "0xdafb1e",
+          "operand": "0"
+        },
+        {
+          "address": "0xdafb27",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdafb28",
+          "operand": "esi"
+        }
+      ],
+      "slice_start": "0xdafb1c",
+      "bytes": "50536a008d8424a00000005056ff97b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAFAAC push 0x41200000",
+        "00DAFAB1 lea edx, [esp + 0x2c]",
+        "00DAFAB5 mov ecx, ebx",
+        "00DAFAB7 call 0xcbe2ff",
+        "00DAFABC test al, al",
+        "00DAFABE je 0xdafc99",
+        "00DAFAC4 mov ecx, ebp",
+        "00DAFAC6 call 0xf35b30",
+        "00DAFACB test al, al",
+        "00DAFACD jne 0xdb05da",
+        "00DAFAD3 mov ecx, dword ptr [ebp + 4]",
+        "00DAFAD6 mov edx, dword ptr [ecx]",
+        "00DAFAD8 push 0",
+        "00DAFADA push 0",
+        "00DAFADC push ebx",
+        "00DAFADD call dword ptr [edx + 0x5b0]",
+        "00DAFAE3 mov ecx, dword ptr [ebp + 4]",
+        "00DAFAE6 mov edi, dword ptr [ecx]",
+        "00DAFAE8 mov esi, eax",
+        "00DAFAEA call dword ptr [edi + 0x118]",
+        "00DAFAF0 mov ecx, dword ptr [ebp + 4]",
+        "00DAFAF3 push eax",
+        "00DAFAF4 push esi",
+        "00DAFAF5 call dword ptr [edi + 0x5b4]",
+        "00DAFAFB push -1",
+        "00DAFAFD push 0x12d885c",
+        "00DAFB02 lea ecx, [esp + 0x9c]",
+        "00DAFB09 call 0x99ebf0",
+        "00DAFB0E mov ecx, dword ptr [ebp + 4]",
+        "00DAFB11 mov edi, dword ptr [ecx]",
+        "00DAFB13 call dword ptr [edi + 0x118]",
+        "00DAFB19 mov ecx, dword ptr [ebp + 4]",
+        "00DAFB1C push eax",
+        "00DAFB1D push ebx",
+        "00DAFB1E push 0",
+        "00DAFB20 lea eax, [esp + 0xa0]",
+        "00DAFB27 push eax",
+        "00DAFB28 push esi",
+        "00DAFB29 call dword ptr [edi + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "call": "0xdbda77",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdbda6a",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdbda6b",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdbda6c",
+          "operand": "0"
+        },
+        {
+          "address": "0xdbda75",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdbda76",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdbda6a",
+      "bytes": "50576a008d8424980000005055ff92b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DBD9F8 mov ebp, eax",
+        "00DBD9FA call 0x99ebf0",
+        "00DBD9FF mov ecx, dword ptr [esi + 4]",
+        "00DBDA02 mov edx, dword ptr [ecx]",
+        "00DBDA04 lea eax, [esp + 0x74]",
+        "00DBDA08 push eax",
+        "00DBDA09 lea eax, [esp + 0x3c]",
+        "00DBDA0D push eax",
+        "00DBDA0E call dword ptr [edx + 0x120]",
+        "00DBDA14 lea ecx, [esp + 0x74]",
+        "00DBDA18 call 0x99eae0",
+        "00DBDA1D lea ecx, [esp + 0x38]",
+        "00DBDA21 call 0x4ab130",
+        "00DBDA26 test al, al",
+        "00DBDA28 mov ecx, esi",
+        "00DBDA2A je 0xdbdac0",
+        "00DBDA30 call 0xf35b30",
+        "00DBDA35 test al, al",
+        "00DBDA37 jne 0xdbde0f",
+        "00DBDA3D mov ecx, dword ptr [esi + 4]",
+        "00DBDA40 mov edx, dword ptr [ecx]",
+        "00DBDA42 lea eax, [esp + 0x38]",
+        "00DBDA46 push eax",
+        "00DBDA47 push ebp",
+        "00DBDA48 call dword ptr [edx + 0x5b4]",
+        "00DBDA4E push -1",
+        "00DBDA50 push 0x12d9bd0",
+        "00DBDA55 lea ecx, [esp + 0x94]",
+        "00DBDA5C call 0x99ebf0",
+        "00DBDA61 mov ecx, dword ptr [esi + 4]",
+        "00DBDA64 mov edx, dword ptr [ecx]",
+        "00DBDA66 lea eax, [esp + 0x38]",
+        "00DBDA6A push eax",
+        "00DBDA6B push edi",
+        "00DBDA6C push 0",
+        "00DBDA6E lea eax, [esp + 0x98]",
+        "00DBDA75 push eax",
+        "00DBDA76 push ebp",
+        "00DBDA77 call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "call": "0xdbdaac",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdbdaa2",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdbdaa3",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdbdaa4",
+          "operand": "0"
+        },
+        {
+          "address": "0xdbdaaa",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdbdaab",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdbdaa2",
+      "bytes": "50576a008d4424505055ff92b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DBDA30 call 0xf35b30",
+        "00DBDA35 test al, al",
+        "00DBDA37 jne 0xdbde0f",
+        "00DBDA3D mov ecx, dword ptr [esi + 4]",
+        "00DBDA40 mov edx, dword ptr [ecx]",
+        "00DBDA42 lea eax, [esp + 0x38]",
+        "00DBDA46 push eax",
+        "00DBDA47 push ebp",
+        "00DBDA48 call dword ptr [edx + 0x5b4]",
+        "00DBDA4E push -1",
+        "00DBDA50 push 0x12d9bd0",
+        "00DBDA55 lea ecx, [esp + 0x94]",
+        "00DBDA5C call 0x99ebf0",
+        "00DBDA61 mov ecx, dword ptr [esi + 4]",
+        "00DBDA64 mov edx, dword ptr [ecx]",
+        "00DBDA66 lea eax, [esp + 0x38]",
+        "00DBDA6A push eax",
+        "00DBDA6B push edi",
+        "00DBDA6C push 0",
+        "00DBDA6E lea eax, [esp + 0x98]",
+        "00DBDA75 push eax",
+        "00DBDA76 push ebp",
+        "00DBDA77 call dword ptr [edx + 0x5b8]",
+        "00DBDA7D lea ecx, [esp + 0x8c]",
+        "00DBDA84 call 0x99eae0",
+        "00DBDA89 push -1",
+        "00DBDA8B push 0x12d9ba8",
+        "00DBDA90 lea ecx, [esp + 0x4c]",
+        "00DBDA94 call 0x99ebf0",
+        "00DBDA99 mov ecx, dword ptr [esi + 4]",
+        "00DBDA9C mov edx, dword ptr [ecx]",
+        "00DBDA9E lea eax, [esp + 0x38]",
+        "00DBDAA2 push eax",
+        "00DBDAA3 push edi",
+        "00DBDAA4 push 0",
+        "00DBDAA6 lea eax, [esp + 0x50]",
+        "00DBDAAA push eax",
+        "00DBDAAB push ebp",
+        "00DBDAAC call dword ptr [edx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Villager",
+      "function": "Main",
+      "call": "0xdae534",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdae50b",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdae50c",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdae50d",
+          "operand": "0"
+        },
+        {
+          "address": "0xdae532",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdae533",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdae50b",
+      "bytes": "50576a008d442424506aff68b4862d018d4c2450e8cc06bfff8bd08d4c2444e84110bfff8b4e045055ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAE4C5 mov edx, dword ptr [ecx]",
+        "00DAE4C7 push 0",
+        "00DAE4C9 push 0",
+        "00DAE4CB push edi",
+        "00DAE4CC call dword ptr [edx + 0x5b0]",
+        "00DAE4D2 mov ecx, dword ptr [esi + 4]",
+        "00DAE4D5 mov ebx, dword ptr [ecx]",
+        "00DAE4D7 mov ebp, eax",
+        "00DAE4D9 call dword ptr [ebx + 0x118]",
+        "00DAE4DF mov ecx, dword ptr [esi + 4]",
+        "00DAE4E2 push eax",
+        "00DAE4E3 push ebp",
+        "00DAE4E4 call dword ptr [ebx + 0x5b4]",
+        "00DAE4EA mov al, byte ptr [esi + 0x1c]",
+        "00DAE4ED test al, al",
+        "00DAE4EF mov ecx, esi",
+        "00DAE4F1 je 0xdae549",
+        "00DAE4F3 call 0xf35b30",
+        "00DAE4F8 test al, al",
+        "00DAE4FA jne 0xdaea40",
+        "00DAE500 mov ecx, dword ptr [esi + 4]",
+        "00DAE503 mov ebx, dword ptr [ecx]",
+        "00DAE505 call dword ptr [ebx + 0x118]",
+        "00DAE50B push eax",
+        "00DAE50C push edi",
+        "00DAE50D push 0",
+        "00DAE50F lea eax, [esp + 0x24]",
+        "00DAE513 push eax",
+        "00DAE514 push -1",
+        "00DAE516 push 0x12d86b4",
+        "00DAE51B lea ecx, [esp + 0x50]",
+        "00DAE51F call 0x99ebf0",
+        "00DAE524 mov edx, eax",
+        "00DAE526 lea ecx, [esp + 0x44]",
+        "00DAE52A call 0x99f570",
+        "00DAE52F mov ecx, dword ptr [esi + 4]",
+        "00DAE532 push eax",
+        "00DAE533 push ebp",
+        "00DAE534 call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Villager",
+      "function": "Main",
+      "call": "0xdae58a",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdae561",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdae562",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdae563",
+          "operand": "0"
+        },
+        {
+          "address": "0xdae588",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdae589",
+          "operand": "ebp"
+        }
+      ],
+      "slice_start": "0xdae561",
+      "bytes": "50576a008d4c2424516aff6894862d018d4c2458e87606bfff8bd08d4c244ce8eb0fbfff8b4e045055ff93b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAE50F lea eax, [esp + 0x24]",
+        "00DAE513 push eax",
+        "00DAE514 push -1",
+        "00DAE516 push 0x12d86b4",
+        "00DAE51B lea ecx, [esp + 0x50]",
+        "00DAE51F call 0x99ebf0",
+        "00DAE524 mov edx, eax",
+        "00DAE526 lea ecx, [esp + 0x44]",
+        "00DAE52A call 0x99f570",
+        "00DAE52F mov ecx, dword ptr [esi + 4]",
+        "00DAE532 push eax",
+        "00DAE533 push ebp",
+        "00DAE534 call dword ptr [ebx + 0x5b8]",
+        "00DAE53A lea ecx, [esp + 0x34]",
+        "00DAE53E call 0x99eae0",
+        "00DAE543 lea ecx, [esp + 0x38]",
+        "00DAE547 jmp 0xdae59d",
+        "00DAE549 call 0xf35b30",
+        "00DAE54E test al, al",
+        "00DAE550 jne 0xdaea40",
+        "00DAE556 mov ecx, dword ptr [esi + 4]",
+        "00DAE559 mov ebx, dword ptr [ecx]",
+        "00DAE55B call dword ptr [ebx + 0x118]",
+        "00DAE561 push eax",
+        "00DAE562 push edi",
+        "00DAE563 push 0",
+        "00DAE565 lea ecx, [esp + 0x24]",
+        "00DAE569 push ecx",
+        "00DAE56A push -1",
+        "00DAE56C push 0x12d8694",
+        "00DAE571 lea ecx, [esp + 0x58]",
+        "00DAE575 call 0x99ebf0",
+        "00DAE57A mov edx, eax",
+        "00DAE57C lea ecx, [esp + 0x4c]",
+        "00DAE580 call 0x99f570",
+        "00DAE585 mov ecx, dword ptr [esi + 4]",
+        "00DAE588 push eax",
+        "00DAE589 push ebp",
+        "00DAE58A call dword ptr [ebx + 0x5b8]"
+      ]
+    },
+    {
+      "entity": "NOVI_Villager",
+      "function": "Main",
+      "call": "0xdae988",
+      "line_boolean": 0,
+      "push_order": [
+        "listener",
+        "speaker",
+        "line_boolean",
+        "text",
+        "conversation_id"
+      ],
+      "pushes": [
+        {
+          "address": "0xdae97b",
+          "operand": "eax"
+        },
+        {
+          "address": "0xdae97c",
+          "operand": "edi"
+        },
+        {
+          "address": "0xdae97d",
+          "operand": "0"
+        },
+        {
+          "address": "0xdae983",
+          "operand": "ecx"
+        },
+        {
+          "address": "0xdae987",
+          "operand": "ebx"
+        }
+      ],
+      "slice_start": "0xdae97b",
+      "bytes": "50576a008d4c2420518b4e0453ff95b8050000",
+      "alternate_prefixes": [],
+      "context": [
+        "00DAE907 mov edx, dword ptr [ecx + 0xc0]",
+        "00DAE90D add ecx, 0xc0",
+        "00DAE913 sub eax, edx",
+        "00DAE915 sar eax, 2",
+        "00DAE918 push eax",
+        "00DAE919 mov ecx, esi",
+        "00DAE91B call 0xdaebf0",
+        "00DAE920 mov ecx, dword ptr [esi + 0x14]",
+        "00DAE923 mov edx, dword ptr [ecx + 0xc0]",
+        "00DAE929 jmp 0xdae963",
+        "00DAE92B call 0xf35b30",
+        "00DAE930 test al, al",
+        "00DAE932 jne 0xdaea49",
+        "00DAE938 mov ecx, dword ptr [esi + 0x14]",
+        "00DAE93B mov eax, dword ptr [ecx + 0xf4]",
+        "00DAE941 mov edx, dword ptr [ecx + 0xf0]",
+        "00DAE947 add ecx, 0xf0",
+        "00DAE94D sub eax, edx",
+        "00DAE94F sar eax, 2",
+        "00DAE952 push eax",
+        "00DAE953 mov ecx, esi",
+        "00DAE955 call 0xdaebf0",
+        "00DAE95A mov ecx, dword ptr [esi + 0x14]",
+        "00DAE95D mov edx, dword ptr [ecx + 0xf0]",
+        "00DAE963 lea eax, [edx + eax*4]",
+        "00DAE966 lea ecx, [esp + 0x14]",
+        "00DAE96A push eax",
+        "00DAE96B call 0x99efb0",
+        "00DAE970 mov ecx, dword ptr [esi + 4]",
+        "00DAE973 mov ebp, dword ptr [ecx]",
+        "00DAE975 call dword ptr [ebp + 0x118]",
+        "00DAE97B push eax",
+        "00DAE97C push edi",
+        "00DAE97D push 0",
+        "00DAE97F lea ecx, [esp + 0x20]",
+        "00DAE983 push ecx",
+        "00DAE984 mov ecx, dword ptr [esi + 4]",
+        "00DAE987 push ebx",
+        "00DAE988 call dword ptr [ebp + 0x5b8]"
+      ]
+    }
+  ],
+  "count": 36,
+  "limits": "Scalar false is proven; participant roles require reviewed bound/lookup aliases, not text-prefix inference."
+}

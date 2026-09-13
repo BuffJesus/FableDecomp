@@ -1,0 +1,1845 @@
+--- Fable Custom Quest DLL Attached ---
+--- ForgeFSE v0.1 (fork of FableScriptExtender) ---
+g_LuaEntityHostVTable = 0x70296c28
+    [0] = 0x6ffe8bf0
+    [1] = 0x6ffe8d20
+    [2] = 0x6ffe92f0
+    [3] = 0x6ffe9d70
+    [4] = 0x6ffe9d80
+    [5] = 0x6ffea230
+    [6] = 0x6ffea820
+--- Initializing Fable API Pointers ---
+Module Base Address (g_fableBase): 0x400000
+--- Fable API Pointers Initialized ---
+--- Retail allocator override hook installed (configuration remains opt-in). ---
+[RetailTransition] CMainGameComponent::Update hook installed at 0x418289 (trampoline 0x1a50000).
+[CardClear] 3 hooks installed: UpdateDiskCacheTexture + IsNearlyIdentical(force re-render) + StartComposition(clear).
+[CutsceneCommandDiag] passive command and skip-query hooks installed.
+[CutsceneSkipDiag] passive SetCutsceneMode boundary hook installed.
+[CutsceneSpeechDiag] passive retail Speak boundary hook installed.
+[CutsceneMoveDiag] passive retail movement boundary hooks installed.
+--- Armed identity-preserving retail override for 'Q_NewOakValeIntro'. ---
+--- Replacing retail allocator for 'Q_NewOakValeIntro' while preserving native identity. ---
+--- Load count: 1 ---
+--- Initializing Fable API Pointers ---
+Module Base Address (g_fableBase): 0x400000
+--- Fable API Pointers Initialized ---
+[MapResourceAlias] Hook installed at OpenRetailStaticMap 0xb41e50 (trampoline 0xf660000).
+--- Initializing Game Interface API from VTable ---
+--- Game Interface API (All Batches) Initialized Successfully ---
+--- Initializing LuaManager (in Isolated State mode) ---
+    'LuaManager' initialized. States will be created per-script.
+--- Lua systems initialized successfully. ---
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=IsRegionLoaded argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo2_SisterInBanditCamp
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=SetIsPushableByHero argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=SetThingHasInformation argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=RegisterTimer argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetTimer argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=EntitySetFacingAngleTowardsThing argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=DeregisterTimer argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=EntitySetAsOpinionSourceByString argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=SetIsPushableByHero argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=IsDistanceBetweenThingsUnder argc=3
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=EntitySetFacingAngleTowardsThing argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo::MazeAtTavern
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianTrophyDealerInfo
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=GetAngleXY argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=EntitySetAsKillable argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=EntitySetAsDamageable argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=SetIsPushableByHero argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=KickOffQuestStartScreen argc=3
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianTrophyDealerInfo::GTDI_Maze
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadow] completed mutation-free preflight for QS_MeetSister
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterMessenger scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterMessenger scope=Quest receiver=quest operation=IsRegionLoaded argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterMessenger scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadow] completed mutation-free preflight for QS_MeetSister::MeetSisterMessenger
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=PlayCutscene argc=3
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=RemoveThing argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=SetQuestAsCompleted argc=4
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=DeactivateQuestLater argc=2
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=FadeScreenIn argc=0
+    [RetailShadow] completed mutation-free preflight for QS_MeetSister::MeetSisterSister
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=IsRegionLoaded argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=IsDiggingSpotEnabled argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=SetQuestAsCompleted argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse::ExtraBooty
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=GetAngleXY argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=EntitySetAsKillable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=SetIsPushableByHero argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=RegisterTimer argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=SetTimer argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetTimer argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=DeregisterTimer argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse::FishermansWife
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsAbleToWalkThroughSolidObjects argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsDamageable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetIsThingForcePushable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsKillable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsOpinionSourceByString argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=RegisterTimer argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetTimer argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=IsDistanceBetweenThingsUnder argc=3
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=IsDiggingSpotEnabled argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=FadeOutAndKillEntity argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=DeregisterTimer argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse::GhostFisherman
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadow] completed mutation-free preflight for V_MazeResearch
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=EntitySetInLimbo argc=2
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Entity receiver=me operation=MsgIsUsedByHero argc=0
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadow] completed mutation-free preflight for V_MazeResearch::EmptyGrave
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=SetThingAsUsable argc=2
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Entity receiver=me operation=MsgIsUsedByHero argc=0
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadow] completed mutation-free preflight for V_MazeResearch::HistoryBookcase
+--- Retail shadow preflight complete: passed=16 failed=0 (engine bindings unavailable by design). ---
+--- Reading quests.lua definitions... ---
+    Loading config from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/quests.lua
+!!! WARNING: No valid quest definitions were loaded from quests.lua.
+--- Quests.lua definitions read and sorted. ---
+--- Quest registry (FinalAlbion.qst) already up to date. ---
+--- First-time script registration (populating g_scriptInfos)... ---
+--- Custom scripts registered with the game. ---
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlumsWarehouses.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneBridge.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_4.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarm.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarmEast.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodTeleport.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GrannysHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodHobbeCave.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampMain.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampResidential.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampBoss.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ExecutionTree.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Graveyard_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardCircle.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KrakenChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCells_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonSecretPassage.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCells_2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ArenaCells.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardEntrance.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroDualAreaCave.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DarkwoodChapel.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_4.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_5.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_6.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_7.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_8.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_9.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_4.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_5.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_6.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_7.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\FrescoDome.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_9.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\WitchwoodCavern.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCells_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCourtyard.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGladeMainTown.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPathEntrance.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Fisherman.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ArenaHallOfHeroes.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ArenaExterior.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPath.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\TeleporterGreatwood.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Filler01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstonePosh.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodBanditToll.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardSecretPassage_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonBarracks.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonOffice.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonTortureChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuildComplexInside.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouseCellar.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\MayorsHouseHallway.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\MayorsHouseBedroom.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneTavernCellar.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonSecretPassageExterior.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneJail.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoods.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonIsland.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPath.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\FrescoCaves.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GuildWoods.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GuildExterior.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveEntranceTunnel.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveLarder.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveSideRoom.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveMainChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveNymphChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarmFiller_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodLakeFiller_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditTollFiller_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Filler_GrannysHouse_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Filler_GrannysHouse_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_12.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_13.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_14.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_16.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoodsFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoodsFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPathFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_15.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouse_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood10_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood9_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood8_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood7_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood7_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood7_Leadout_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DarkwoodChapel_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood6_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood5_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood4_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood3_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_24.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_18.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_21.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_22.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_12.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_13.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_14.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_15.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_16.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_17.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_18.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_19.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_20.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_21.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_22.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_23.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_24.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_25.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_26.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_27.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_28.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakValeWest.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakValeEast.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakvaleMemorialGarden.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_26.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_25.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_29.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_30.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_27.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_28.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_29.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_31.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarm_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarm_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_30.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_31.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Hookcoast_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Hookcoast_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoods_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneJail_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneJail_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ExecutionTree_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditToll.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodGrannysHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonSecretPassageExterior_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPath_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouse_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardFiller03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ExecutionTree_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_32.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_12.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\creature_hub.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPathFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveNymphFocal.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_13.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast_Sea_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast_Sea_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakValeWest_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakValeEast_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakvaleMemorialGarden_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakvaleFiller_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Leadout_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_LookoutPoint.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Vista_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Vista_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Vista_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ForgeTest64.lev'.
+[StaticMapProbe] opened state=1 bankIndex=426 bounds=(3328,2304,72)..(3392,2368,83.962)
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+    LuaQuestState object created.
+    (Quest) LuaQuestHost for 'NewOakValeIntro/NewOakValeIntro' created, owning its state AND isolated Lua VM (Fiber-to-Lua-Thread enabled).
+--- Quest 'NewOakValeIntro/NewOakValeIntro': C++ Init() phase ---
+    Loading quest script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/NewOakValeIntro.lua
+[NewOakValeIntro/NewOakValeIntro] Registered game timer with ID: 1
+[NewOakValeIntro/NewOakValeIntro] Registered game timer with ID: 2
+--- Quest 'NewOakValeIntro/NewOakValeIntro': C++ Main() phase ---
+[NewOakValeIntro/NewOakValeIntro] NOVI_AUTHORITY activeName=Q_NewOakValeIntro native=true legacy=false
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_LiveFather' to script 'NewOakValeIntro/Entities/NOVI_LiveFather'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_Theresa' to script 'NewOakValeIntro/Entities/NOVI_Theresa'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_Guard' to script 'NewOakValeIntro/Entities/NOVI_Guard'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_Villager' to script 'NewOakValeIntro/Entities/NOVI_Villager'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_Bully' to script 'NewOakValeIntro/Entities/NOVI_Bully'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_Victim' to script 'NewOakValeIntro/Entities/NOVI_Victim'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_TeddyGirl' to script 'NewOakValeIntro/Entities/NOVI_TeddyGirl'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_AffairMan' to script 'NewOakValeIntro/Entities/NOVI_AffairMan'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_AffairWoman' to script 'NewOakValeIntro/Entities/NOVI_AffairWoman'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_AffairWife' to script 'NewOakValeIntro/Entities/NOVI_AffairWife'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_BookTrader' to script 'NewOakValeIntro/Entities/NOVI_BookTrader'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_BarrelMan' to script 'NewOakValeIntro/Entities/NOVI_BarrelMan'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_BarrelThug' to script 'NewOakValeIntro/Entities/NOVI_BarrelThug'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_Barrel' to script 'NewOakValeIntro/Entities/NOVI_Barrel'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'NOVI_CreatedBeetle' to script 'NewOakValeIntro/Entities/NOVI_CreatedBeetle'...
+[NewOakValeIntro/NewOakValeIntro] Binding entity 'OVI_DeadFather' to script 'NewOakValeIntro/Entities/OVI_DeadFather'...
+[NewOakValeIntro/NewOakValeIntro] Finalizing all entity bindings...
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Binding successful.
+[NewOakValeIntro/NewOakValeIntro]     Finalization complete.
+    Thread 'StartBarrelTimer' registered in slot #0 for region ''
+    Thread 'WatchBarrels' registered in slot #1 for region ''
+    Thread 'WatchForGotGold' registered in slot #2 for region ''
+    Thread 'ManageQuestCoreMarkers' registered in slot #3 for region ''
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x147b53d8
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x147b53d8
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x152e7aa0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x152e7aa0
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x152206f8
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x152206f8
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<6>] === ENTRY ===
+[EntityAllocator<6>] Script: NewOakValeIntro/Entities/NOVI_TeddyGirl
+[EntityAllocator<6>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15519328
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<6>] LuaEntityHost created: this = 0x15519328
+[EntityAllocator<6>] Allocating RefCount block...
+[EntityAllocator<6>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<6>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_TeddyGirl.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_TeddyGirl'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_TeddyGirl'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_TeddyGirl' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_TeddyGirl' <<<<<
+[EntityAllocator<7>] === ENTRY ===
+[EntityAllocator<7>] Script: NewOakValeIntro/Entities/NOVI_AffairMan
+[EntityAllocator<7>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15563138
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<7>] LuaEntityHost created: this = 0x15563138
+[EntityAllocator<7>] Allocating RefCount block...
+[EntityAllocator<7>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<7>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_AffairMan.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_AffairMan'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_AffairMan'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_AffairMan' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_AffairMan' <<<<<
+[EntityAllocator<8>] === ENTRY ===
+[EntityAllocator<8>] Script: NewOakValeIntro/Entities/NOVI_AffairWoman
+[EntityAllocator<8>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15835658
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<8>] LuaEntityHost created: this = 0x15835658
+[EntityAllocator<8>] Allocating RefCount block...
+[EntityAllocator<8>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<8>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_AffairWoman.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_AffairWoman'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_AffairWoman'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_AffairWoman' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_AffairWoman' <<<<<
+[EntityAllocator<10>] === ENTRY ===
+[EntityAllocator<10>] Script: NewOakValeIntro/Entities/NOVI_BookTrader
+[EntityAllocator<10>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x158e4c10
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<10>] LuaEntityHost created: this = 0x158e4c10
+[EntityAllocator<10>] Allocating RefCount block...
+[EntityAllocator<10>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<10>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_BookTrader.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_BookTrader'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_BookTrader'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_BookTrader' <<<<<
+    SetIsPushableByHero ABI probe: api=0x8a6dd0 thing=0x158e4c18 data=0x4966ed0 info=0x16bc5fc8
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_BookTrader' <<<<<
+[EntityAllocator<0>] === ENTRY ===
+[EntityAllocator<0>] Script: NewOakValeIntro/Entities/NOVI_LiveFather
+[EntityAllocator<0>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x159a35f0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<0>] LuaEntityHost created: this = 0x159a35f0
+[EntityAllocator<0>] Allocating RefCount block...
+[EntityAllocator<0>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<0>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_LiveFather.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_LiveFather'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_LiveFather'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_LiveFather' <<<<<
+    SetIsPushableByHero ABI probe: api=0x8a6dd0 thing=0x159a35f8 data=0x49676f0 info=0x16bc6388
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_LiveFather' <<<<<
+[EntityAllocator<1>] === ENTRY ===
+[EntityAllocator<1>] Script: NewOakValeIntro/Entities/NOVI_Theresa
+[EntityAllocator<1>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15a72f48
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<1>] LuaEntityHost created: this = 0x15a72f48
+[EntityAllocator<1>] Allocating RefCount block...
+[EntityAllocator<1>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<1>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Theresa.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Theresa'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Theresa'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Theresa' <<<<<
+    SetIsPushableByHero ABI probe: api=0x8a6dd0 thing=0x15a72f50 data=0x4967dd0 info=0x16bc6220
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Theresa' <<<<<
+[EntityAllocator<2>] === ENTRY ===
+[EntityAllocator<2>] Script: NewOakValeIntro/Entities/NOVI_Guard
+[EntityAllocator<2>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15b35458
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<2>] LuaEntityHost created: this = 0x15b35458
+[EntityAllocator<2>] Allocating RefCount block...
+[EntityAllocator<2>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<2>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Guard'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Guard'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+[EntityAllocator<2>] === ENTRY ===
+[EntityAllocator<2>] Script: NewOakValeIntro/Entities/NOVI_Guard
+[EntityAllocator<2>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15b3c1a8
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<2>] LuaEntityHost created: this = 0x15b3c1a8
+[EntityAllocator<2>] Allocating RefCount block...
+[EntityAllocator<2>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<2>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Guard'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Guard'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+[EntityAllocator<2>] === ENTRY ===
+[EntityAllocator<2>] Script: NewOakValeIntro/Entities/NOVI_Guard
+[EntityAllocator<2>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15cfbad8
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<2>] LuaEntityHost created: this = 0x15cfbad8
+[EntityAllocator<2>] Allocating RefCount block...
+[EntityAllocator<2>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<2>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Guard'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Guard'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15d02438
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x15d02438
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15cf9948
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x15cf9948
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15ec0588
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x15ec0588
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x15ec7968
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x15ec7968
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x16045b50
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x16045b50
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[EntityAllocator<9>] === ENTRY ===
+[EntityAllocator<9>] Script: NewOakValeIntro/Entities/NOVI_AffairWife
+[EntityAllocator<9>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x1604ce10
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<9>] LuaEntityHost created: this = 0x1604ce10
+[EntityAllocator<9>] Allocating RefCount block...
+[EntityAllocator<9>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<9>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_AffairWife.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_AffairWife'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_AffairWife'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_AffairWife' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_AffairWife' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x16d9bc18
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x16d9bc18
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x16da26f8
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x16da26f8
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[EntityAllocator<11>] === ENTRY ===
+[EntityAllocator<11>] Script: NewOakValeIntro/Entities/NOVI_BarrelMan
+[EntityAllocator<11>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x16d99ab8
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<11>] LuaEntityHost created: this = 0x16d99ab8
+[EntityAllocator<11>] Allocating RefCount block...
+[EntityAllocator<11>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<11>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_BarrelMan.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_BarrelMan'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_BarrelMan'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_BarrelMan' <<<<<
+[NewOakValeIntro/NewOakValeIntro] NOVI_PROBE BarrelMan Init watchTimer=2
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_BarrelMan' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x16f126b0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x16f126b0
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x16f19af0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x16f19af0
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x170bdbb0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x170bdbb0
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x170c48a0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x170c48a0
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x17234808
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x17234808
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<13>] === ENTRY ===
+[EntityAllocator<13>] Script: NewOakValeIntro/Entities/NOVI_Barrel
+[EntityAllocator<13>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x1723bdc8
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<13>] LuaEntityHost created: this = 0x1723bdc8
+[EntityAllocator<13>] Allocating RefCount block...
+[EntityAllocator<13>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<13>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Barrel'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+[EntityAllocator<4>] === ENTRY ===
+[EntityAllocator<4>] Script: NewOakValeIntro/Entities/NOVI_Bully
+[EntityAllocator<4>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x17232a08
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<4>] LuaEntityHost created: this = 0x17232a08
+[EntityAllocator<4>] Allocating RefCount block...
+[EntityAllocator<4>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<4>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Bully.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Bully'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Bully'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Bully' <<<<<
+    SetIsPushableByHero ABI probe: api=0x8a6dd0 thing=0x17232a10 data=0x48caf70 info=0x16bc69e8
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Bully' <<<<<
+[EntityAllocator<5>] === ENTRY ===
+[EntityAllocator<5>] Script: NewOakValeIntro/Entities/NOVI_Victim
+[EntityAllocator<5>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x1738d728
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<5>] LuaEntityHost created: this = 0x1738d728
+[EntityAllocator<5>] Allocating RefCount block...
+[EntityAllocator<5>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<5>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Victim.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Victim'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Victim'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Victim' <<<<<
+    SetIsPushableByHero ABI probe: api=0x8a6dd0 thing=0x1738d730 data=0x48cb330 info=0x16bc6a30
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Victim' <<<<<
+[EntityAllocator<12>] === ENTRY ===
+[EntityAllocator<12>] Script: NewOakValeIntro/Entities/NOVI_BarrelThug
+[EntityAllocator<12>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x17460cc0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<12>] LuaEntityHost created: this = 0x17460cc0
+[EntityAllocator<12>] Allocating RefCount block...
+[EntityAllocator<12>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<12>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_BarrelThug.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_BarrelThug'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_BarrelThug'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_BarrelThug' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_BarrelThug' <<<<<
+[EntityAllocator<3>] === ENTRY ===
+[EntityAllocator<3>] Script: NewOakValeIntro/Entities/NOVI_Villager
+[EntityAllocator<3>] Creating LuaEntityHost...
+    [LuaManager] Registered entity script data for host at 0x174680a0
+    [LuaManager] Registering all C++ bindings in new state...
+    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.
+[EntityAllocator<3>] LuaEntityHost created: this = 0x174680a0
+[EntityAllocator<3>] Allocating RefCount block...
+[EntityAllocator<3>] RefCount block created successfully (using CustomEntityHostDeleter).
+[EntityAllocator<3>] === EXIT ===
+    Loading entity script from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+    [LuaEntityHost::Init] Script file loaded for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] Lifecycle functions resolved for 'NewOakValeIntro/Entities/NOVI_Villager'.
+    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+[NewOakValeIntro/NewOakValeIntro] NOVI_PROBE StartBarrelTimer waiting id=2 value=0
+[NewOakValeIntro/NewOakValeIntro] GetAllThingsWithScriptName: API returned 9 copies for 'NOVI_Barrel'.
+===== GetThingWithScriptName START: 'NOVI_LiveFather' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16b06378, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168286467, WrapperPos = (3495.33,866.685,15.7522), pImp.Data = 0x49676f0, pImp.Info = 0x16bc6388, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x49676f0
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+===== GetThingWithScriptName START: 'NOVI_BookTrader' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16b061f8, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168286463, WrapperPos = (3540.95,831.585,8.71272), pImp.Data = 0x4966ed0, pImp.Info = 0x16bc5fc8, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x4966ed0
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+===== GetThingWithScriptName START: 'NOVI_Theresa' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16b06210, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168286475, WrapperPos = (3534.32,932.99,14.1485), pImp.Data = 0x4967dd0, pImp.Info = 0x16bc6220, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x4967dd0
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_BarrelThug' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Bully' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Victim' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_AffairMan' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_AffairWoman' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_BookTrader' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_LiveFather' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Theresa' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Guard' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Barrel' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_AffairWife' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_Villager' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_TeddyGirl' <<<<<
+    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for 'NewOakValeIntro/Entities/NOVI_BarrelMan' <<<<<
+===== GetThingWithScriptName START: 'HerosOldHouse' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16a8d090, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168276305, WrapperPos = (3489.59,872.309,15.751), pImp.Data = 0x49691c8, pImp.Info = 0x16a8cfe8, Info->RefCount = 2, Info->DeleteFunc = 0x7044b0, Info->Data = 0x49691c8
+    Object is valid. Adopting API-owned reference (RefCount=2).
+===== GetThingWithScriptName END (Success) =====
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_BarrelThug': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Bully': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Victim': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_AffairMan': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_AffairWoman': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_BookTrader': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_LiveFather': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Theresa': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Guard': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Guard': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Guard': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Barrel': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_AffairWife': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_Villager': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_TeddyGirl': C++ OnPersist triggered. ---
+--- Entity 'NewOakValeIntro/Entities/NOVI_BarrelMan': C++ OnPersist triggered. ---
+--- Quest 'NewOakValeIntro/NewOakValeIntro': C++ OnPersist() triggered. ---
+    [PERSIST] Transferring bool 'AttackOver'...
+    [PERSIST] ...Value is now: false
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+===== GetThingWithScriptName START: 'NOVI_Bully' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16a8d858, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 1741156926932128341, WrapperPos = (3602.62,859.519,13.7493), pImp.Data = 0x48caf70, pImp.Info = 0x16bc69e8, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x48caf70
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+===== GetThingWithScriptName START: 'NOVI_AffairWoman' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16a8d930, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168286458, WrapperPos = (3481.45,825.929,16.3629), pImp.Data = 0x49676a0, pImp.Info = 0x16bc5fb0, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x49676a0
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+===== GetThingWithScriptName START: 'NOVI_AffairWife' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16a8d948, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168286913, WrapperPos = (3550.59,853.561,9.00055), pImp.Data = 0x49678d0, pImp.Info = 0x16bc6760, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x49678d0
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+===== GetThingWithScriptName START: 'NOVI_AffairWife' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16a8d6d8, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168286913, WrapperPos = (3550.59,853.561,9.00055), pImp.Data = 0x49678d0, pImp.Info = 0x16bc6760, Info->RefCount = 4, Info->DeleteFunc = 0x7044b0, Info->Data = 0x49678d0
+    Object is valid. Adopting API-owned reference (RefCount=4).
+===== GetThingWithScriptName END (Success) =====
+===== GetThingWithScriptName START: 'NOVI_AffairMan' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x16a8d6f0, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168286456, WrapperPos = (3480.42,825.966,16.4338), pImp.Data = 0x4967600, pImp.Info = 0x16bc5ec0, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x4967600
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 3...
+    [LuaEntityAPI] ...Control acquired successfully.
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+[NewOakValeIntro/NewOakValeIntro] --- Starting Movie Sequence ---
+[NewOakValeIntro/NewOakValeIntro] --- Movie Sequence Started Successfully ---
+[NewOakValeIntro/NewOakValeIntro] --- Running Cutscene with Custom Setup: CS_OAKVALE_INTRO_FATHER ---
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'Hero'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'Hero'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'Hero'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Acquiring script control for actor 'Hero'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script control acquired for actor 'Hero'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'Hero': thing=0x1666e4d0 thingData=0x16b9ef78 resourceData=0x16bb2188 resourceInfo=0x16a8dc30 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6557625
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'Hero' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'Father'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'Father'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'Father'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reused existing script-control handle for actor 'Father'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'Father': thing=0x159a35f8 thingData=0x49676f0 resourceData=0x16bb2068 resourceInfo=0x16a8dac8 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6557625
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'Father' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reusing caller-owned movie sequence.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneABI] macro='CS_OAKVALE_INTRO_FATHER' setupOptional=1 setup=0 skippableOptional=1 skippable=1 nativeStackOrder=flags,input,setup,skippable
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] >>>>> ENTERING BLOCKING RunCutsceneMacro_Func for 'CS_OAKVALE_INTRO_FATHER' <<<<<
+    [CutsceneState] before 'CS_OAKVALE_INTRO_FATHER' gui=0x48b9478 actionMode=0 guiActionMode=0 inCutscene=0 skippable=1 skippableWhilePaused=0 alternateSkipInput=0
+[CutsceneSkipDiag] begin macro=CS_OAKVALE_INTRO_FATHER manager=0x48b9478 inCutscene=0 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=0
+[CutsceneSkipDiag] SetCutsceneMode(inCutscene=1, second=1) macro=CS_OAKVALE_INTRO_FATHER manager=0x48b9478 inCutscene=1 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=1
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557625 command=PlayMusic MUSIC_SET_NULL
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557625 command=FadeOut 0.5,0
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557625 command=CameraPause FALSE
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557625 command=Hero.Teleport MK_OVI_ID_HERO,FALSE
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557625 command=Father.Teleport MK_OVI_ID_DAD
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557625 command=Father.LookToThing Hero,FOREVER
+===== GetThingWithScriptName START: 'M_TriggerOutro' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x47e3c68, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 3468016904168291015, WrapperPos = (3539.42,942.634,13.0913), pImp.Data = 0x16b9eb18, pImp.Info = 0x47e3c08, Info->RefCount = 2, Info->DeleteFunc = 0x7044b0, Info->Data = 0x16b9eb18
+    Object is valid. Adopting API-owned reference (RefCount=2).
+===== GetThingWithScriptName END (Success) =====
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+===== PlayCombatAnimation_NonBlocking Wrapper START =====
+===== PlayCombatAnimation_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6557625
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 3...
+    [LuaEntityAPI] ...Control acquired successfully.
+===== GetThingWithScriptName START: 'NOVI_Bully' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x47e3da0, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 1741156926932128341, WrapperPos = (3602.62,859.519,13.7493), pImp.Data = 0x48caf70, pImp.Info = 0x16bc69e8, Info->RefCount = 4, Info->DeleteFunc = 0x7044b0, Info->Data = 0x48caf70
+    Object is valid. Adopting API-owned reference (RefCount=4).
+===== GetThingWithScriptName END (Success) =====
+===== GetThingWithScriptName START: 'M_WHouse_ManStart' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x47e3e60, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 1741156926932128444, WrapperPos = (3585.99,812.65,7), pImp.Data = 0x16b9e4d8, pImp.Info = 0x47e3cb0, Info->RefCount = 2, Info->DeleteFunc = 0x7044b0, Info->Data = 0x16b9e4d8
+    Object is valid. Adopting API-owned reference (RefCount=2).
+===== GetThingWithScriptName END (Success) =====
+===== GetThingWithScriptName START: 'M_WHouse_GuardPoint' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x47e3d10, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 1741156926932128443, WrapperPos = (3588.91,811.935,7), pImp.Data = 0x16b9ec58, pImp.Info = 0x47e3dd0, Info->RefCount = 2, Info->DeleteFunc = 0x7044b0, Info->Data = 0x16b9ec58
+    Object is valid. Adopting API-owned reference (RefCount=2).
+===== GetThingWithScriptName END (Success) =====
+[NewOakValeIntro/NewOakValeIntro] NOVI_PROBE BarrelMan Main phase=0
+===== MoveToPosition_NonBlocking Wrapper START =====
+    [MoveToPositionDiag] thing=0x17232a10 thingData=0x48caf70 handle=0x16a8d210 resourceData=0x16bb1e58 destination=(3605.2,859.268,13.6059) radius=0 moveType=0 avoidObstacles=0 ignorePathPreferability=1
+[CutsceneMoveDiag] issue macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 destination=(3605.2,859.268,13.6059) radius=0 moveType=0 b1=0 b2=1 tick=6557718
+===== MoveToPosition_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6557718
+    [LuaEntityAPI::AcquireControl] Reusing live control handle for nested acquire (depth 1, requested priority 3).
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557718 command=DoScriptFrame 1
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6557718
+    [LuaEntityAPI::AcquireControl] Reusing live control handle for nested acquire (depth 1, requested priority 3).
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6557812
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557812 command=DoCameraPreloading
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557843 command=DoScriptFrame 1
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6557843
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6557843
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6557843 command=PlayAVI dream_sequence_comp.xmv
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559078 command=MuteSounds false
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559078 command=FadeOut 0.5,0
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559078 command=DoScriptFrame 2
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559078
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559187
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559187
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559250
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559250 command=Hero.PlayAnimation CS_WAKING_UP_LOOP,FALSE,FALSE,TRUE,FALSE
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559250
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559312
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e88 active=0 tick=6559312
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559312 command=Hero.PlayAnimation CS_WAKING_UP_ON_STEPS,FALSE,FALSE,TRUE,FALSE
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559312
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559375
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559375
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559375 command=DoScriptFrame 4
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559375
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559437
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559437
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559437
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559515
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559515
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559515
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559578
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559578
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559578
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559640
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559640
+[CutsceneCommandDiag] skipQueryTrue macro=CS_OAKVALE_INTRO_FATHER caller=0xcc0133 tick=6559640
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559640
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559703
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559718
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559718 command=FadeOut
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6559718 command=GamePause 0.5
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559718
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559781
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559781
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559781
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559843
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559843
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559843
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559906
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559906
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559906
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6559984
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6559984
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6559984
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6560046
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6560046
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6560046
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6560109
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6560109
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6560109
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6560171
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6560171
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6560171
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6560250
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6560250
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb3838 active=1 tick=6560250
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb1e58 active=1 tick=6560312
+[CutsceneMoveDiag] poll macro=CS_OAKVALE_INTRO_FATHER controller=0x16bb2038 active=1 tick=6560312
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6560312 command=UseCamera CAM_OVIF_SHOT7
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6560312 command=Hero.Teleport MK_OVIF_HERO5
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6560312 command=Father.Teleport MK_OVI_ID_DAD
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6560312 command=Father.LookInDirection 215
+[CutsceneCommandDiag] macro=CS_OAKVALE_INTRO_FATHER tick=6560312 command=FadeIn
+[CutsceneSkipDiag] end macro=CS_OAKVALE_INTRO_FATHER manager=0x48b9478 inCutscene=0 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=1
+    [CutsceneState] after 'CS_OAKVALE_INTRO_FATHER' gui=0x48b9478 actionMode=0 guiActionMode=0 inCutscene=0 skippable=1 skippableWhilePaused=0 alternateSkipInput=0
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] >>>>> EXITED BLOCKING RunCutsceneMacro_Func <<<<<
+[NewOakValeIntro/NewOakValeIntro]     Releasing cutscene actor handles...
+[NewOakValeIntro/NewOakValeIntro]     Destructing actor map object...
+[NewOakValeIntro/NewOakValeIntro] --- Cutscene Execution Completed ---
+===== GetThingWithScriptName START: 'NOVI_Victim' =====
+    Calling GetThingWithScriptName_ByName_API with heap buffer...
+    API call returned.
+    Heap Buffer After API: CScriptThing* = 0x17c81778, pVTable = 0x1238c8c (Matches Known VTable), WorldUID = 1741156926932128342, WrapperPos = (3602.53,857.217,13.6224), pImp.Data = 0x48cb330, pImp.Info = 0x16bc6a30, Info->RefCount = 3, Info->DeleteFunc = 0x7044b0, Info->Data = 0x48cb330
+    Object is valid. Adopting API-owned reference (RefCount=3).
+===== GetThingWithScriptName END (Success) =====
+    [LuaEntityAPI::AcquireControl] Reusing live control handle for nested acquire (depth 1, requested priority 4).
+[NewOakValeIntro/NewOakValeIntro] --- Ending Movie Sequence ---
+[NewOakValeIntro/NewOakValeIntro]     Destroying movie resource object...
+[NewOakValeIntro/NewOakValeIntro]     Freeing movie handle memory...
+[NewOakValeIntro/NewOakValeIntro] --- Movie Sequence Ended Successfully ---
+    [LuaEntityAPI::AcquireControl] Reusing live control handle for nested acquire (depth 1, requested priority 4).
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayCombatAnimation_NonBlocking Wrapper START =====
+===== PlayCombatAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayCombatAnimation_NonBlocking Wrapper START =====
+===== PlayCombatAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayCombatAnimation_NonBlocking Wrapper START =====
+===== PlayCombatAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayCombatAnimation_NonBlocking Wrapper START =====
+===== PlayCombatAnimation_NonBlocking Wrapper END =====
+[NewOakValeIntro/NewOakValeIntro] [ConversationSpeechDiag] queue tick=6578984 id=1 speakerData=0x48caf70 listenerData=0x48cb330 subtitle=0 key=TEXT_QST_048_BULLY_SCRMSG_INTIMIDATING_10
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'ST_OPINION_DISAPPROVAL_POINT_AT'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+    [HitEvidence] MsgIsHitBy(SCRIPT_NAME_HERO) returned true.
+    [QuestInfoEvidence] AddQuestInfoBar(current=4.000000, max=0.000000, texture='HUD_QUEST_ICON_GRANDSON', scale=1.000000) returned handle 2.
+[NewOakValeIntro/NewOakValeIntro] [ConversationSpeechDiag] queue tick=6581250 id=2 speakerData=0x48caf70 listenerData=0x48cb330 subtitle=0 key=TEXT_QST_048_BULLY_SCRMSG_GET_OFF
+[NewOakValeIntro/NewOakValeIntro] [ConversationSpeechDiag] queue tick=6581250 id=2 speakerData=0x48caf70 listenerData=0x48cb330 subtitle=0 key=TEXT_QST_048_VICTIM_REVENGE
+    [HitEvidence] MsgIsHitBy(SCRIPT_NAME_HERO) returned true.
+[NewOakValeIntro/NewOakValeIntro] [ConversationSpeechDiag] queue tick=6582171 id=3 speakerData=0x48caf70 listenerData=0x48cb330 subtitle=0 key=TEXT_QST_048_BULLY_SCRMSG_GET_OFF
+[NewOakValeIntro/NewOakValeIntro] [ConversationSpeechDiag] queue tick=6582171 id=3 speakerData=0x48caf70 listenerData=0x48cb330 subtitle=0 key=TEXT_QST_048_VICTIM_REVENGE
+===== PlayCombatAnimation_NonBlocking Wrapper START =====
+===== PlayCombatAnimation_NonBlocking Wrapper END =====
+    [HitEvidence] MsgIsHitBy(SCRIPT_NAME_HERO) returned true.
+[NewOakValeIntro/NewOakValeIntro] [ConversationSpeechDiag] queue tick=6583843 id=4 speakerData=0x48caf70 listenerData=0x48cb330 subtitle=0 key=TEXT_QST_048_BULLY_SCRMSG_GET_OFF
+[NewOakValeIntro/NewOakValeIntro] [ConversationSpeechDiag] queue tick=6583843 id=4 speakerData=0x48caf70 listenerData=0x48cb330 subtitle=0 key=TEXT_QST_048_VICTIM_REVENGE
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+    [HitEvidence] MsgIsHitBy(SCRIPT_NAME_HERO) returned true.
+    [LuaEntityAPI] Initializing handle with Helpers...
+    [LuaEntityAPI] ...Helper1 returned false, skipped Helper2.
+    [LuaEntityAPI] Acquiring script control for entity at priority 4...
+    [LuaEntityAPI] ...Control acquired successfully.
+    [LuaEntityAPI::AcquireControl] Borrowed another Lua VM's live control handle.
+[NewOakValeIntro/NewOakValeIntro] NOVI_PROBE BullyRun before bully=(3606.720,862.585,13.703) victim=(3602.534,857.217,13.622)
+[NewOakValeIntro/NewOakValeIntro] --- Starting Movie Sequence ---
+[NewOakValeIntro/NewOakValeIntro] --- Movie Sequence Started Successfully ---
+[NewOakValeIntro/NewOakValeIntro] --- Running Cutscene with Custom Setup: CS_OAKVALEINTRO_BULLYRUN1 ---
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reused existing script-control handle for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'HERO': thing=0x1666e4d0 thingData=0x16b9ef78 resourceData=0x16c28580 resourceInfo=0x14d41d00 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6585578
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'HERO' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reused existing script-control handle for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'BRAT': thing=0x17c81778 thingData=0x48cb330 resourceData=0x16bb1f18 resourceInfo=0x16a8d870 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6585578
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'BRAT' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reused existing script-control handle for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'BULLY': thing=0x17232a10 thingData=0x48caf70 resourceData=0x16bb1e58 resourceInfo=0x16a8d3a8 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6585578
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'BULLY' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Input substitution '$BRATLINE' set to 'TEXT_QST_048_VICTIM_THANKS'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reusing caller-owned movie sequence.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneABI] macro='CS_OAKVALEINTRO_BULLYRUN1' setupOptional=0 setup=0 skippableOptional=0 skippable=1 nativeStackOrder=flags,input,setup,skippable
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] >>>>> ENTERING BLOCKING RunCutsceneMacro_Func for 'CS_OAKVALEINTRO_BULLYRUN1' <<<<<
+    [CutsceneState] before 'CS_OAKVALEINTRO_BULLYRUN1' gui=0x48b9478 actionMode=0 guiActionMode=0 inCutscene=0 skippable=1 skippableWhilePaused=0 alternateSkipInput=0
+[CutsceneSkipDiag] begin macro=CS_OAKVALEINTRO_BULLYRUN1 manager=0x48b9478 inCutscene=0 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=0
+[CutsceneSkipDiag] SetCutsceneMode(inCutscene=1, second=1) macro=CS_OAKVALEINTRO_BULLYRUN1 manager=0x48b9478 inCutscene=1 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=1
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6585578 command=KeepEntityMap TRUE
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6585578 command=FadeOut
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6585578 command=GamePause 0.5
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6585578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6585578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6585640
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6585640
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6585703
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6585703
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6585781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6585781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6585843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6585843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6585906
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6585906
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6585968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6585968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586109
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586171 command=BULLY.ClearCommands TRUE,TRUE
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586171 command=HERO.ClearCommands TRUE,TRUE
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586171 command=UseCamera CAM_OIBR_BRATHERO
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586171
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586250 command=DoScriptFrame 1
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586250
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586312 command=HERO.Teleport MK_OIBR_HERO1
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586312 command=BRAT.Teleport MK_OIBR_BRAT1
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586312 command=BULLY.Teleport MK_OIBR_BULLY1
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586312 command=HERO.PlayLoopingAnim CS_IDLE_STAND,-1,FALSE,TRUE,FALSE,FALSE,TRUE
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586312
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586375 command=DoScriptFrame 1
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586375
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586437 command=DoCameraPreloading
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586484 command=DoScriptFrame 1
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586484
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586484
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586515 command=HERO.LookToThing BULLY,FOREVER
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6586515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586515
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586578 command=BRAT.LookToThing BULLY,FOREVER
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=0 tick=6586578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586578
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586640 command=UseCamera CAM_OIBR_MASTER
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586640
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586703 command=FadeIn
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586703 command=BULLY.DialogadSpeak BULLY,TEXT_QST_048_BULLY_GOING_AWAY
+[CutsceneSpeechDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb1e58 target=0x1ae014 method=0 listen=0 soundIn2D=1 overFade=0 tick=6586703 key=TEXT_QST_048_BULLY_GOING_AWAY
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6586703 command=GamePause 1.5
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586703
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586906
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb1e88 active=0 tick=6586984
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_HUG'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6586984
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587437
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587437
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587640
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587640
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587703
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587703
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=0 tick=6587781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587843
+===== PlayCombatAnimation_NonBlocking Wrapper START =====
+===== PlayCombatAnimation_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587906
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587906
+[CutsceneCommandDiag] skipQueryTrue macro=CS_OAKVALEINTRO_BULLYRUN1 caller=0xcc8a3b tick=6587968
+[CutsceneCommandDiag] skipQueryTrue macro=CS_OAKVALEINTRO_BULLYRUN1 caller=0xcc0133 tick=6587968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6587968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6587984
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588046 command=FadeOut
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588046 command=GamePause 0.5
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588234
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588437
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588437
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588578
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588640 command=HERO.Teleport MK_OIBR_HERO2
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588640 command=BRAT.Teleport MK_OIBR_BRAT1
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588640 command=BRAT.LookToThing HERO,FOREVER
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb2038 active=1 tick=6588640
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x16bb3838 active=1 tick=6588640
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588703 command=HERO.LookAtNothing TRUE
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588703 command=BULLY.Drawable FALSE
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=6588703 command=FadeIn
+[CutsceneSkipDiag] end macro=CS_OAKVALEINTRO_BULLYRUN1 manager=0x48b9478 inCutscene=0 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=1
+    [CutsceneState] after 'CS_OAKVALEINTRO_BULLYRUN1' gui=0x48b9478 actionMode=0 guiActionMode=0 inCutscene=0 skippable=1 skippableWhilePaused=0 alternateSkipInput=0
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] >>>>> EXITED BLOCKING RunCutsceneMacro_Func <<<<<
+[NewOakValeIntro/NewOakValeIntro]     Releasing cutscene actor handles...
+[NewOakValeIntro/NewOakValeIntro]     Destructing cutscene input-substitution map...
+[NewOakValeIntro/NewOakValeIntro]     Destructing actor map object...
+[NewOakValeIntro/NewOakValeIntro] --- Cutscene Execution Completed ---
+[NewOakValeIntro/NewOakValeIntro] NOVI_PROBE BullyRun after1 bully=(3604.479,860.742,13.707) victim=(3605.044,858.252,13.585) bullyTask=false victimTask=false
+[NewOakValeIntro/NewOakValeIntro] --- Running Cutscene with Custom Setup: CS_OAKVALEINTRO_BULLYRUN2 ---
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reused existing script-control handle for actor 'HERO'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'HERO': thing=0x1666e4d0 thingData=0x16b9ef78 resourceData=0x16c28580 resourceInfo=0x14d41d00 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6588718
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'HERO' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reused existing script-control handle for actor 'BRAT'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'BRAT': thing=0x17c81778 thingData=0x48cb330 resourceData=0x16bb1f18 resourceInfo=0x16a8d870 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6588718
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'BRAT' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Base handle constructed for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Initializing script handle for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Script handle initialized for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reused existing script-control handle for actor 'BULLY'.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor identity 'BULLY': thing=0x17232a10 thingData=0x48caf70 resourceData=0x16bb1e58 resourceInfo=0x16a8d3a8 vtable=0x128d86c movePosition=0x903bc0 moveThing=0x903e20 speak=0x904780 taskPoll=0x904ee0 tick=6588718
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Actor 'BULLY' assigned to map.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] Reusing caller-owned movie sequence.
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneABI] macro='CS_OAKVALEINTRO_BULLYRUN2' setupOptional=0 setup=0 skippableOptional=0 skippable=1 nativeStackOrder=flags,input,setup,skippable
+[NewOakValeIntro/NewOakValeIntro]     [RunCutsceneWithSetup] >>>>> ENTERING BLOCKING RunCutsceneMacro_Func for 'CS_OAKVALEINTRO_BULLYRUN2' <<<<<
+    [CutsceneState] before 'CS_OAKVALEINTRO_BULLYRUN2' gui=0x48b9478 actionMode=0 guiActionMode=0 inCutscene=0 skippable=1 skippableWhilePaused=0 alternateSkipInput=0
+[CutsceneSkipDiag] begin macro=CS_OAKVALEINTRO_BULLYRUN2 manager=0x48b9478 inCutscene=0 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=1
+[CutsceneSkipDiag] SetCutsceneMode(inCutscene=1, second=1) macro=CS_OAKVALEINTRO_BULLYRUN2 manager=0x48b9478 inCutscene=1 skipped=0 skippable=1 skippableWhilePaused=0 alternateInput=0 promptPrimary=0 promptSkipScene=0 skipTimerActive=1
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN2 tick=6588718 command=HERO.LookToThing BRAT,FOREVER
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6588718
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6588718
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN2 tick=6588781 command=GamePause 0.2
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6588781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6588781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6588843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6588843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6588906
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6588906
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6588968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6588984
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN2 tick=6589046 command=NoLoadUseCamera CAM_OIBR_BRATHERO
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589046
+[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN2 tick=6589109 command=BRAT.Speak BRAT,TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE
+[CutsceneSpeechDiag] macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 target=0x1ae02c method=0 listen=0 soundIn2D=1 overFade=0 tick=6589109 key=TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589437
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589437
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589437
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=0 tick=6589515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589515
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589578
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589640
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589640
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589703
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589703
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589781
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589843
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589906
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'GIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1e88 active=0 tick=6589906
+===== PlayAnimation_NonBlocking Wrapper START =====
+    [PlayAnimation_NonBlocking] Issuing PlayAnimation command for 'RECEIVE_KISS'...
+    [PlayAnimation_NonBlocking] ...Command issued successfully.
+===== PlayAnimation_NonBlocking Wrapper END =====
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589906
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6589968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6589968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6589968
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6590046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6590046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6590046
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6590109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6590109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6590109
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6590171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6590171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6590171
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6590234
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6590234
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6590250
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6590312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6590312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6590312
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb1f18 active=1 tick=6590375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb2038 active=1 tick=6590375
+[CutsceneMoveDiag] poll macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x16bb3838 active=1 tick=6590375

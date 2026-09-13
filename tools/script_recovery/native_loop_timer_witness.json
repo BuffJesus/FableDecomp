@@ -1,0 +1,39 @@
+{
+  "address": "0x00DB4F70",
+  "size": 562,
+  "sourceSha256": "26965b9153e0092f8348f7eb8c90578a198605bb110774243f6bac3106f48ec9",
+  "annotatedSha256": "c2449b2608a4a1f16f931dddd7e19b6d2ee9f962cf2872f77a79347c156b98da",
+  "bytesSha256": "7beec77a43819ec0718fc5d13a93d2fbbe1d4b5e4612da1c8f69966048298e19",
+  "callSite": "0x00DB4FB6",
+  "windowStart": "0x00DB4FA7",
+  "baseRegister": "esi",
+  "preservedSites": [
+    "0x00DB4F85",
+    "0x00DB4F95",
+    "0x00DB4F9A",
+    "0x00DB4FB6"
+  ],
+  "callees": [
+    {
+      "name": "GetTimer",
+      "address": "0x6e7710",
+      "size": 46,
+      "bytesSha256": "96ec2df84f28c87a0a1ff5424b1d870275ac5e39fee1d5fa7fcee84dd9fe93bf",
+      "vtableEntry": "0x1261074"
+    },
+    {
+      "name": "NewScriptFrame",
+      "address": "0x6e7410",
+      "size": 66,
+      "bytesSha256": "eaaef5ab0afb19130c6d471bde8bb20846bbd69d0728a06eb99ed9728a8e7bf1",
+      "vtableEntry": "0x1260f28"
+    },
+    {
+      "name": "IsActiveThreadTerminating",
+      "address": "0xcb7940",
+      "size": 14,
+      "bytesSha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7",
+      "vtableEntry": null
+    }
+  ]
+}

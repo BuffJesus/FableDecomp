@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["MsgIsHitByAnySpecialAbilityFromHero","MsgIsHitByHeroSpecialAbility","DisplayGameInfo","SpeakAndWait","EntitySetFacingAngleTowardsThing","ReleaseControl"],"note":"a non-excluded hero special ability triggers the trader hit reaction, bad deed, movie cleanup, and Theresa-facing reset"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["MsgIsHitByAnySpecialAbilityFromHero","MsgIsHitByHeroSpecialAbility","DisplayGameInfo","Speak","EntitySetFacingAngleTowardsThing","ReleaseControl"],"note":"a non-excluded hero special ability triggers the trader hit reaction, bad deed, movie cleanup, and Theresa-facing reset"},
   "Quest.NewScriptFrame":[true,false],
   "Entity.AcquireControl":[true],
   "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],

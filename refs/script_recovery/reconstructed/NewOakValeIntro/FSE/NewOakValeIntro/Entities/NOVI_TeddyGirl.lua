@@ -25,7 +25,7 @@ local SPEECH_METHOD         = 0      -- ETextGroupSelectionMethod immediate 0 on
 local BAD_DEED_HIT_ME       = 2      -- AddBadDeed(PARENT, 2)
 local EXCLUDED_HIT_ABILITY  = 14     -- sibling NOVI hit predicates pass 0x0e
 local WALK_OFF_PRIORITY     = 4      -- StartScriptingEntity(me, res, 4) before the walk-off
-local DEFAULT_PRIORITY      = nil    -- priority argument dropped by the decompiler elsewhere
+local DEFAULT_PRIORITY      = 4      -- every StartScriptingEntity site pushes 4 (0x00DAF215 et seq.)
 
 -- Text keys
 local TEXT_LOST_TEDDY       = "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY"
@@ -47,29 +47,28 @@ local FoundTeddy            = false  -- 0x1d
 local SpokeAboutFindingTeddy = false -- 0x1e (never read or written by Main; retail leaves it false)
 local HeroHitMe             = false  -- 0x1f
 
--- Reference to the bully, resolved once at the top of Main (retail keeps it for the whole loop)
-local bully = nil
-
 function Init(quest, me)
     DoneIntro = false
     FoundTeddy = false
     SpokeAboutFindingTeddy = false
     HeroHitMe = false
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    quest:SetThingHasInformation(me, false)   -- retail passes (me,0,1,0); extra args unbound
+    quest:SetThingHasInformation(me, false, true, false)
 end
 
 -- Retail: Speak(hero, key, method, ...) + IsPerformingScriptTask wait loop, guarded by GetHealth(me) > 0.
 local function speak_if_alive(quest, me, key)
     if quest:GetHealth(me) > SPEAK_MIN_HEALTH then
-        me:SpeakAndWait(key, SPEECH_METHOD)   -- host-blocking: retail's per-frame terminate check is inside
+        -- The surrounding native movie resource already owns cinematic mode.
+        return me:Speak(quest:GetHero(), key, SPEECH_METHOD, false, true, false) ~= false
     end
+    return true
 end
 
--- Retail: StartMovieSequence("") + PauseAllNonScriptedEntities(true); the movie object is released by
--- its destructor at scope end (modelled as EndMovieSequence, inference).
+-- Retail: StartMovieSequence("") + PauseAllNonScriptedEntities(true); Forge's per-Lua-VM movie
+-- resource is explicitly released at the native scope boundary by EndMovieSequence.
 local function begin_cutscene(quest)
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -104,23 +103,23 @@ local function offer_teddy(quest, me)
     begin_cutscene(quest)
     if not DoneIntro then
         if not HeroHitMe then
-            speak_if_alive(quest, me, TEXT_LOST_TEDDY)
+            if not speak_if_alive(quest, me, TEXT_LOST_TEDDY) then end_cutscene(quest); return false end
         else
-            speak_if_alive(quest, me, TEXT_PLEA_POST_BEATEN)
+            if not speak_if_alive(quest, me, TEXT_PLEA_POST_BEATEN) then end_cutscene(quest); return false end
         end
         DoneIntro = true
     end
-    quest:GiveHeroYesNoQuestion(TEXT_GIVE_TEDDY_Q, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "")
+    quest:GiveHeroYesNoQuestion(TEXT_GIVE_TEDDY_Q, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "", true)
     local answer = quest:MsgIsQuestionAnsweredYesOrNo()
     while answer < 0 do
         if not NOVI.frame(quest, me) then end_cutscene(quest); return false end
         answer = quest:MsgIsQuestionAnsweredYesOrNo()
     end
     if answer == 1 then
-        speak_if_alive(quest, me, TEXT_FOUND_TEDDY)
+        if not speak_if_alive(quest, me, TEXT_FOUND_TEDDY) then end_cutscene(quest); return false end
         given_teddy(quest, me)
     else
-        speak_if_alive(quest, me, TEXT_REPEAT_PLEA)
+        if not speak_if_alive(quest, me, TEXT_REPEAT_PLEA) then end_cutscene(quest); return false end
     end
     end_cutscene(quest)
     return true
@@ -132,14 +131,14 @@ local function receive_item(quest, me, item)
         if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
         DoneIntro = true
         begin_cutscene(quest)
-        speak_if_alive(quest, me, TEXT_FOUND_TEDDY)
+        if not speak_if_alive(quest, me, TEXT_FOUND_TEDDY) then end_cutscene(quest); return false end
         given_teddy(quest, me)
         end_cutscene(quest)
     elseif not FoundTeddy then
-        -- retail re-polls MsgIsPresentedWithItem and compares the item again (operand dropped; inference: != teddy)
+        -- 0x00DAF6E8-0x00DAF761 re-polls MsgIsPresentedWithItem and compares the same item != teddy.
         if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
         begin_cutscene(quest)
-        speak_if_alive(quest, me, TEXT_DONT_WANT)
+        if not speak_if_alive(quest, me, TEXT_DONT_WANT) then end_cutscene(quest); return false end
         end_cutscene(quest)
     end
     return true
@@ -147,19 +146,21 @@ end
 
 -- Phase: the bully ruined the teddy -> complain and walk off to the affair wife, then despawn
 local function teddy_ruined(quest, me)
-    local conv = quest:AddNewConversation(me)   -- retail args dropped
+    local conv = quest:AddNewConversation(me, false, false)
     quest:AddPersonToConversation(conv, quest:GetHero())
     quest:AddLineToConversation(conv, TEXT_TEDDY_RUINED, me, quest:GetHero())
     F.set_master(quest, F.master.TeddySolution, "C")
     if not NOVI.acquire(quest, me, WALK_OFF_PRIORITY) then return false end
     local wife = quest:GetThingWithScriptName(WIFE_SCRIPT_NAME)
-    me:MoveToThing(wife, WIFE_ARRIVE_RADIUS, WIFE_MOVE_TYPE)   -- retail also passes (false,false,false,true)
+    -- Retail resource call: MoveToThing(wife, 3.0, 1, null-wait, false, false, true).
+    -- Forge supplies the null wait resource internally and exposes the final three booleans here.
+    me:MoveToThing(wife, WIFE_ARRIVE_RADIUS, WIFE_MOVE_TYPE, false, false, true)
     while quest:IsCameraPosOnScreen(me:GetPos()) do
         local far = NOVI.things_over(quest, me, quest:GetHero(), HERO_FAR_DISTANCE)
         if far then break end
         if not NOVI.frame(quest, me) then return false end
     end
-    quest:RemoveThing(me)   -- retail arg dropped; inference: me
+    quest:RemoveThing(me, false, true)
     return true
 end
 
@@ -168,21 +169,21 @@ local function chat(quest, me)
     if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
     begin_cutscene(quest)
     if not FoundTeddy and HeroHitMe then
-        speak_if_alive(quest, me, TEXT_PLEA_POST_BEATEN)
+        if not speak_if_alive(quest, me, TEXT_PLEA_POST_BEATEN) then end_cutscene(quest); return false end
         DoneIntro = true
     elseif DoneIntro then
         if not FoundTeddy then
             if F.get(quest, F.TeddyRuined) then
-                speak_if_alive(quest, me, TEXT_BAD_FEELING)
-                quest:ClearThingHasInformation(me)   -- retail arg dropped; inference: me
+                if not speak_if_alive(quest, me, TEXT_BAD_FEELING) then end_cutscene(quest); return false end
+                quest:ClearThingHasInformation(me)   -- ME_THING proven at 0x00DB00B3-0x00DB00BC
             else
-                speak_if_alive(quest, me, TEXT_REPEAT_PLEA)
+                if not speak_if_alive(quest, me, TEXT_REPEAT_PLEA) then end_cutscene(quest); return false end
             end
         else
-            speak_if_alive(quest, me, TEXT_REPEAT_FOUND)
+            if not speak_if_alive(quest, me, TEXT_REPEAT_FOUND) then end_cutscene(quest); return false end
         end
     else
-        speak_if_alive(quest, me, TEXT_LOST_TEDDY)
+        if not speak_if_alive(quest, me, TEXT_LOST_TEDDY) then end_cutscene(quest); return false end
         DoneIntro = true
     end
     end_cutscene(quest)
@@ -192,23 +193,26 @@ end
 -- Phase: hero hit her
 local function scold_hero(quest, me)
     local hero = quest:GetHero()
-    quest:EntitySetThingAsAllyOfThing(me, hero)   -- retail calls it twice, args dropped (inference: both directions)
+    -- Reciprocal operand order is explicit at 0x00DB0282-0x00DB02A8.
+    quest:EntitySetThingAsAllyOfThing(me, hero)
     quest:EntitySetThingAsAllyOfThing(hero, me)
     HeroHitMe = true
     Deeds.add_bad(quest, me, BAD_DEED_HIT_ME)
     if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
     begin_cutscene(quest)
-    speak_if_alive(quest, me, TEXT_DONT_HIT)
+    if not speak_if_alive(quest, me, TEXT_DONT_HIT) then end_cutscene(quest); return false end
     end_cutscene(quest)
     return true
 end
 
 function Main(quest, me)
     if not NOVI.frame(quest, me) then return end
-    bully = quest:GetThingWithScriptName(BULLY_SCRIPT_NAME)
+    -- Retail retains this counted CScriptThing for the whole Main loop. Forge's
+    -- binding returns a shared_ptr with the matching engine refcount ownership.
+    local bully = quest:GetThingWithScriptName(BULLY_SCRIPT_NAME)
     while true do
         local talked = me:IsTalkedToByHero()
-        local has_teddy = talked and quest:IsObjectInThingsPossession(quest:GetHero(), TEDDY_OBJECT)
+        local has_teddy = talked and quest:IsObjectInThingsPossession(TEDDY_OBJECT, quest:GetHero())
         if has_teddy then
             if not offer_teddy(quest, me) then NOVI.release(quest, me); return end
         else
@@ -216,9 +220,11 @@ function Main(quest, me)
             if presented and not receive_item(quest, me, item) then NOVI.release(quest, me); return end
         end
 
-        if F.get(quest, F.SpokeAboutFindingTeddy)
-           and quest:IsDistanceBetweenThingsUnder(me, bully, BULLY_NEAR_DISTANCE) then
-            if not teddy_ruined(quest, me) then NOVI.release(quest, me); return end
+        if F.get(quest, F.SpokeAboutFindingTeddy) then
+            if bully ~= nil
+               and quest:IsDistanceBetweenThingsUnder(me, bully, BULLY_NEAR_DISTANCE) then
+                if not teddy_ruined(quest, me) then NOVI.release(quest, me); return end
+            end
         end
 
         if me:IsTalkedToByHero() then

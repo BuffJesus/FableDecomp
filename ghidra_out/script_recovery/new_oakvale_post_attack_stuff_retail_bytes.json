@@ -1,0 +1,212 @@
+{
+  "schema": "new-oakvale-post-attack-stuff-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DBEB20",
+  "rangeSize": 1095,
+  "functionBytesSha256": "8DC72F018EB5E9A030D02A244B9B86416B83AE59C0864A3DB40E0B5E9A3A13E7",
+  "instructionCount": 324,
+  "strings": [
+    "M_PostAttackStart",
+    "M_PostAttackStart",
+    "V_OakVale",
+    "OBJECT_TEDDY_BEAR_UNGIVEABLE",
+    "MK_OVI_DADTRIGGER",
+    "HERO",
+    "CS_OAKVALEINTRO_HESDEADJIM",
+    "V_OakVale",
+    "Q__OakValeIntro_PostAttack"
+  ],
+  "indirectCalls": [
+    {
+      "site": "0x00DBEB4F",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBEB59",
+      "slot": "0x12C"
+    },
+    {
+      "site": "0x00DBEB81",
+      "slot": "0x4"
+    },
+    {
+      "site": "0x00DBEBBC",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBEBEB",
+      "slot": "0xAE8"
+    },
+    {
+      "site": "0x00DBEC16",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBEC21",
+      "slot": "0x118"
+    },
+    {
+      "site": "0x00DBEC2B",
+      "slot": "0x760"
+    },
+    {
+      "site": "0x00DBEC64",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBEC6E",
+      "slot": "0x6E0"
+    },
+    {
+      "site": "0x00DBEC8D",
+      "slot": "0x554"
+    },
+    {
+      "site": "0x00DBECAD",
+      "slot": "0x1F4"
+    },
+    {
+      "site": "0x00DBECCB",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBECE4",
+      "slot": "0x684"
+    },
+    {
+      "site": "0x00DBECEF",
+      "slot": "0x680"
+    },
+    {
+      "site": "0x00DBECFC",
+      "slot": "0xAE8"
+    },
+    {
+      "site": "0x00DBED07",
+      "slot": "0x5D8"
+    },
+    {
+      "site": "0x00DBED2C",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBED45",
+      "slot": "0x118"
+    },
+    {
+      "site": "0x00DBED65",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBED81",
+      "slot": "0x118"
+    },
+    {
+      "site": "0x00DBEDBE",
+      "slot": "0x118"
+    },
+    {
+      "site": "0x00DBEDC8",
+      "slot": "0x20"
+    },
+    {
+      "site": "0x00DBEE2F",
+      "slot": "0x5C8"
+    },
+    {
+      "site": "0x00DBEE47",
+      "slot": "0x5EC"
+    },
+    {
+      "site": "0x00DBEE54",
+      "slot": "0x5CC"
+    },
+    {
+      "site": "0x00DBEE8F",
+      "slot": "0x5CC"
+    },
+    {
+      "site": "0x00DBEE9B",
+      "slot": "0x5EC"
+    },
+    {
+      "site": "0x00DBEEDD",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBEEE7",
+      "slot": "0x6E0"
+    },
+    {
+      "site": "0x00DBEF0A",
+      "slot": "0xA20"
+    },
+    {
+      "site": "0x00DBEF2C",
+      "slot": "0x460"
+    },
+    {
+      "site": "0x00DBEF42",
+      "slot": "0xA44"
+    },
+    {
+      "site": "0x00DBEF51",
+      "slot": "0xAE4"
+    }
+  ],
+  "keyDirectCalls": [
+    {
+      "site": "0x00DBEBC1",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBEBD7",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBECC1",
+      "target": "0x00CBE87F"
+    },
+    {
+      "site": "0x00DBECD0",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBED51",
+      "target": "0x00CBE2FF"
+    },
+    {
+      "site": "0x00DBED6A",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBED8D",
+      "target": "0x00CBE2FF"
+    },
+    {
+      "site": "0x00DBED98",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBEE7A",
+      "target": "0x00CBFB7D"
+    }
+  ],
+  "musicSets": [
+    45,
+    57
+  ],
+  "dadTriggerDistanceBits": "0x40A00000",
+  "dadTriggerDistance": 5.0,
+  "dadFoundStore": {
+    "site": "0x00DBEDA9",
+    "offset": "0x51",
+    "width": 1,
+    "value": 1
+  },
+  "heroScriptPriority": 4,
+  "logbookStoryEntry": 20,
+  "cutsceneTarget": "0x00CBFB7D",
+  "distanceHelperTarget": "0x00CBE2FF"
+}

@@ -1,0 +1,974 @@
+{
+  "events": [
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHomePos",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        2.0
+      ],
+      "event": "api-call",
+      "name": "IsDistanceFromPositionOver",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "NOVI_Victim"
+      ],
+      "event": "api-call",
+      "name": "GetThingWithScriptName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4,
+        0,
+        {
+          "a": 255,
+          "b": 0,
+          "g": 255,
+          "r": 0
+        },
+        {
+          "a": 255,
+          "b": 255,
+          "g": 0,
+          "r": 0
+        },
+        "HUD_QUEST_ICON_GRANDSON",
+        "",
+        1.0
+      ],
+      "event": "api-call",
+      "name": "AddQuestInfoBar",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter",
+        700
+      ],
+      "event": "api-call",
+      "name": "SetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false,
+        false
+      ],
+      "event": "api-call",
+      "name": "AddNewConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_one",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddPersonToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_one",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_BULLY_SCRMSG_GET_OFF",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_one",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_VICTIM_REVENGE",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        700,
+        3,
+        -1.0,
+        -1.0
+      ],
+      "event": "api-call",
+      "name": "UpdateQuestInfoBar",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        },
+        true
+      ],
+      "event": "api-call",
+      "name": "EntitySetFacingAngleTowardsThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkIntermittentTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        901
+      ],
+      "event": "api-call",
+      "name": "GetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false,
+        false
+      ],
+      "event": "api-call",
+      "name": "AddNewConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_two",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddPersonToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_two",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_BULLY_SCRMSG_GET_OFF",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_two",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_VICTIM_REVENGE",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        700,
+        2,
+        -1.0,
+        -1.0
+      ],
+      "event": "api-call",
+      "name": "UpdateQuestInfoBar",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        },
+        true
+      ],
+      "event": "api-call",
+      "name": "EntitySetFacingAngleTowardsThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkIntermittentTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        901
+      ],
+      "event": "api-call",
+      "name": "GetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        false,
+        false
+      ],
+      "event": "api-call",
+      "name": "AddNewConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_three",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddPersonToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_three",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_BULLY_SCRMSG_GET_OFF",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hit_three",
+          "scope": "Entity"
+        },
+        "TEXT_QST_048_VICTIM_REVENGE",
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "AddLineToConversation",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        700,
+        1,
+        -1.0,
+        -1.0
+      ],
+      "event": "api-call",
+      "name": "UpdateQuestInfoBar",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "victim",
+          "scope": "Entity"
+        },
+        true
+      ],
+      "event": "api-call",
+      "name": "EntitySetFacingAngleTowardsThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "TalkIntermittentTimer"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        901
+      ],
+      "event": "api-call",
+      "name": "GetTimer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "NewScriptFrame",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsTalkedToByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsHitByHero",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
+        {
+          "handle": "me",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "EntitySetThingAsAllyOfThing",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BullySubdued",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GUIBullyHealthCounter"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        700
+      ],
+      "event": "api-call",
+      "name": "RemoveQuestInfoElement",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "hero",
+      "scope": "Entity"
+    }
+  ],
+  "fixtures": {
+    "Entity.AcquireControl": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "Entity.GetHomePos": [
+      {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    ],
+    "Entity.GetPos": [
+      {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    ],
+    "Entity.IsTalkedToByHero": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "Entity.MsgIsHitByHero": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "Entity.MsgIsPresentedWithItem": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "Quest.AddNewConversation": [
+      {
+        "handle": "hit_one",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hit_two",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hit_three",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.AddQuestInfoBar": [
+      700
+    ],
+    "Quest.GetHero": [
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      },
+      {
+        "handle": "hero",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetStateInt(GUIBullyHealthCounter)": [
+      -999,
+      700,
+      700,
+      700,
+      700,
+      700,
+      700,
+      700
+    ],
+    "Quest.GetStateInt(TalkIntermittentTimer)": [
+      901,
+      901,
+      901
+    ],
+    "Quest.GetThingWithScriptName(NOVI_Victim)": [
+      {
+        "handle": "victim",
+        "scope": "Entity"
+      }
+    ],
+    "Quest.GetTimer(901)": [
+      1,
+      1,
+      1
+    ],
+    "Quest.NewScriptFrame": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "function": "Main",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Bully.lua",
+  "sourceSha256": "c94562bbc276ce43d3206bd5f97725a5b028f9cd04ac05878639994c27657f34"
+}

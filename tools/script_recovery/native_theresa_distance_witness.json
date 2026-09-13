@@ -1,0 +1,23 @@
+{
+  "address": "0x00DB97A0",
+  "size": 7010,
+  "sourceSha256": "291c860ea494de173b983fd15afc35fd30ab9eebd8ce3fd88edb5937bb229e4a",
+  "annotatedSha256": "7c56ddc5f30d3a2ba3fcbbf0ab37530e7adcf6a94d661c8707e1cec46dbb707d",
+  "bytesSha256": "a46219c8f607c546474e343f39ec75248bc5b1eae4cd665102f51dd6bbb966ea",
+  "lookupSite": "0x00DB9844",
+  "distanceSite": "0x00DBA3F9",
+  "scriptNameAddress": "0x012D9930",
+  "scriptName": "M_TriggerOutro",
+  "distance": 2.0,
+  "lookupCount": 1,
+  "originalDistance": "IsDistanceBetweenThingsUnder(pCVar13,(CScriptThing *)&ppuStack_1e8,fVar26)",
+  "outputSlot": "local_native_outro_marker",
+  "distanceReceiver": "pCVar13",
+  "distanceOperand": "fVar26",
+  "knownSetupCalls": {
+    "0x00DBA3ED": [
+      0,
+      "GetHero"
+    ]
+  }
+}

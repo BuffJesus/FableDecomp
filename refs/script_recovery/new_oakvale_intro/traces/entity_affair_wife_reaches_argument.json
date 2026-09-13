@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        3
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -57,7 +59,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -120,7 +124,8 @@
         "TEXT_QST_048_AFFAIR_WIFE_QUESTION",
         "TEXT_OBJECT_HERO_ANSWER_YES",
         "TEXT_OBJECT_HERO_ANSWER_NO",
-        ""
+        "",
+        true
       ],
       "event": "api-call",
       "name": "GiveHeroYesNoQuestion",
@@ -235,7 +240,7 @@
         "TEXT_QST_LOG_BASICS_MAP"
       ],
       "event": "api-call",
-      "name": "AddLogbookStoryEntryString",
+      "name": "AddLogbookTutorialEntry",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -318,7 +323,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        3
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -354,6 +361,52 @@
       "scope": "Entity"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetPos",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetDefName",
+      "receiver": "husband",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetDataString",
+      "receiver": "husband",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "husband",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "GetDistanceBetweenThings",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_PROBE AffairWife ROUTE_START husband_def=<missing> husband_data=<missing> wife=(11.000,0.000,0.000) husband=(20.000,0.000,0.000) distance=-1.000"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [
         {
           "x": 20,
@@ -361,7 +414,9 @@
           "z": 0
         },
         2.0,
-        1
+        1,
+        false,
+        true
       ],
       "event": "api-call",
       "name": "MoveToPosition",
@@ -405,42 +460,25 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        10.0
+      ],
       "event": "api-call",
-      "name": "GetPos",
+      "name": "IsDistanceFromPositionOver",
       "receiver": "me",
       "scope": "Entity"
     },
     {
-      "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        },
-        false,
-        false
-      ],
+      "arguments": [],
       "event": "api-call",
-      "name": "AddNewConversation",
-      "receiver": "quest",
-      "scope": "Quest"
-    },
-    {
-      "arguments": [
-        {
-          "handle": "running_line",
-          "scope": "Entity"
-        },
-        "TEXT_QST_048_AFFAIR_WIFE_RUNNING_TO_HUBBY",
-        {
-          "handle": "me",
-          "scope": "Entity"
-        }
-      ],
-      "event": "api-call",
-      "name": "AddLineToConversation",
-      "receiver": "quest",
-      "scope": "Quest"
+      "name": "IsPerformingScriptTask",
+      "receiver": "me",
+      "scope": "Entity"
     },
     {
       "arguments": [
@@ -468,6 +506,59 @@
       ],
       "event": "api-call",
       "name": "IsDistanceBetweenThingsUnder",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetPos",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetPos",
+      "receiver": "husband",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetDefName",
+      "receiver": "husband",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetDataString",
+      "receiver": "husband",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        {
+          "handle": "me",
+          "scope": "Entity"
+        },
+        {
+          "handle": "husband",
+          "scope": "Entity"
+        }
+      ],
+      "event": "api-call",
+      "name": "GetDistanceBetweenThings",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_PROBE AffairWife ROUTE_REACHED husband_def=<missing> husband_data=<missing> wife=(11.000,0.000,0.000) husband=(11.000,0.000,0.000) distance=-1.000"
+      ],
+      "event": "api-call",
+      "name": "Log",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -517,17 +608,23 @@
     },
     {
       "arguments": [
-        0,
-        1
+        2
       ],
-      "event": "runtime-call",
-      "name": "random",
-      "receiver": "math",
-      "scope": "Lua"
+      "event": "api-call",
+      "name": "RetailRandModulo",
+      "receiver": "quest",
+      "scope": "Quest"
     },
     {
       "arguments": [
-        "ST_ARGUING_POINT_AWAY"
+        "ST_ARGUING_POINT_AWAY",
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
       ],
       "event": "api-call",
       "name": "PlayAnimation",
@@ -562,7 +659,8 @@
         {
           "handle": "husband",
           "scope": "Entity"
-        }
+        },
+        false
       ],
       "event": "api-call",
       "name": "EntitySetFacingAngleTowardsThing",
@@ -607,7 +705,7 @@
     {
       "arguments": [
         {
-          "handle": "argument_line",
+          "handle": "running_line",
           "scope": "Entity"
         },
         {
@@ -623,7 +721,7 @@
     {
       "arguments": [
         {
-          "handle": "argument_line",
+          "handle": "running_line",
           "scope": "Entity"
         },
         "TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_10",
@@ -643,13 +741,12 @@
     },
     {
       "arguments": [
-        0,
-        1
+        2
       ],
-      "event": "runtime-call",
-      "name": "random",
-      "receiver": "math",
-      "scope": "Lua"
+      "event": "api-call",
+      "name": "RetailRandModulo",
+      "receiver": "quest",
+      "scope": "Quest"
     },
     {
       "arguments": [],
@@ -705,6 +802,7 @@
       false,
       false,
       true,
+      true,
       false
     ],
     "Entity.IsTalkedToByHero": [
@@ -716,10 +814,6 @@
     ],
     "Entity.MsgIsHitByHero": [
       false
-    ],
-    "Lua.math.random": [
-      0,
-      1
     ],
     "Quest.AddNewConversation": [
       {
@@ -784,11 +878,15 @@
       true,
       true,
       false
+    ],
+    "Quest.RetailRandModulo(2)": [
+      0,
+      1
     ]
   },
   "function": "Main",
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-  "sourceSha256": "6bdb59f68194ad2439d149c3ddb5754b78d33ada91b0fca5ff364c55bd436875"
+  "sourceSha256": "3a1f148386c60102256b95cd32a9fd4a452eaa529e52d6e2c2006ef721ebb667"
 }

@@ -1,0 +1,222 @@
+{
+  "schema": "barrel-man-judgment-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "regions": [
+    {
+      "name": "automaticJudgment",
+      "address": "0x00DB5A48",
+      "rangeSize": 934,
+      "bytesSha256": "26514521FDD57FFFC074A051923DE83B25B2CE33A6FB1E41EFC057DC2731A001",
+      "instructionCount": 262,
+      "strings": [
+        "TEXT_QST_048_SCRMSG_BARRELMAN_WHERE_GONE",
+        "TEXT_QST_048_INSTRUCTION_LEFT_WAREHOUSE_UNATTENDED",
+        "TEXT_QST_048_BARRELMAN_THANKS",
+        "BRAIN_GOOD_VILLAGER_BASE"
+      ],
+      "indirectCalls": [
+        {
+          "site": "0x00DB5A56",
+          "slot": "0x118"
+        },
+        {
+          "site": "0x00DB5A61",
+          "slot": "0x76C"
+        },
+        {
+          "site": "0x00DB5A6F",
+          "slot": "0x800"
+        },
+        {
+          "site": "0x00DB5A7D",
+          "slot": "0x754"
+        },
+        {
+          "site": "0x00DB5A89",
+          "slot": "0x118"
+        },
+        {
+          "site": "0x00DB5A93",
+          "slot": "0x9E0"
+        },
+        {
+          "site": "0x00DB5AAB",
+          "slot": "0x118"
+        },
+        {
+          "site": "0x00DB5ADB",
+          "slot": "0x5B0"
+        },
+        {
+          "site": "0x00DB5B17",
+          "slot": "0x5B8"
+        },
+        {
+          "site": "0x00DB5B6D",
+          "slot": "0x5C8"
+        },
+        {
+          "site": "0x00DB5B89",
+          "slot": "0x5EC"
+        },
+        {
+          "site": "0x00DB5BAF",
+          "slot": "0x1CC"
+        },
+        {
+          "site": "0x00DB5BC6",
+          "slot": "0xA0"
+        },
+        {
+          "site": "0x00DB5BD5",
+          "slot": "0x1C"
+        },
+        {
+          "site": "0x00DB5BEC",
+          "slot": "0xA0"
+        },
+        {
+          "site": "0x00DB5C16",
+          "slot": "0x5EC"
+        },
+        {
+          "site": "0x00DB5C5A",
+          "slot": "0x20"
+        },
+        {
+          "site": "0x00DB5C66",
+          "slot": "0x1C"
+        },
+        {
+          "site": "0x00DB5C85",
+          "slot": "0x20"
+        },
+        {
+          "site": "0x00DB5CC9",
+          "slot": "0x5C8"
+        },
+        {
+          "site": "0x00DB5CE2",
+          "slot": "0x5EC"
+        },
+        {
+          "site": "0x00DB5D02",
+          "slot": "0x420"
+        },
+        {
+          "site": "0x00DB5D3D",
+          "slot": "0x118"
+        },
+        {
+          "site": "0x00DB5D65",
+          "slot": "0x1C"
+        },
+        {
+          "site": "0x00DB5DA2",
+          "slot": "0x5EC"
+        },
+        {
+          "site": "0x00DB5DD5",
+          "slot": "0x934"
+        }
+      ]
+    },
+    {
+      "name": "followupDialogue",
+      "address": "0x00DB65BF",
+      "rangeSize": 653,
+      "bytesSha256": "42F35D4932B1544B2D680CA28D6C5780821FBD51C9304C879E2E6B944B539199",
+      "instructionCount": 187,
+      "strings": [
+        "TEXT_QST_048_BARRELMAN_LETDOWN_BROKEN",
+        "TEXT_QST_048_BARRELMAN_LETDOWN_NOT_BROKE",
+        "TEXT_QST_048_BARRELMAN_NO_TIME"
+      ],
+      "indirectCalls": [
+        {
+          "site": "0x00DB6628",
+          "slot": "0x420"
+        },
+        {
+          "site": "0x00DB666F",
+          "slot": "0x118"
+        },
+        {
+          "site": "0x00DB6695",
+          "slot": "0x1C"
+        },
+        {
+          "site": "0x00DB66EF",
+          "slot": "0x420"
+        },
+        {
+          "site": "0x00DB672E",
+          "slot": "0x118"
+        },
+        {
+          "site": "0x00DB6755",
+          "slot": "0x1C"
+        },
+        {
+          "site": "0x00DB678B",
+          "slot": "0x5EC"
+        },
+        {
+          "site": "0x00DB67BD",
+          "slot": "0x420"
+        },
+        {
+          "site": "0x00DB67F8",
+          "slot": "0x118"
+        },
+        {
+          "site": "0x00DB681A",
+          "slot": "0x1C"
+        }
+      ]
+    }
+  ],
+  "automaticJudgment": {
+    "returnedFlagStore": {
+      "site": "0x00DB5A4B",
+      "parentOffset": "0x73",
+      "width": 1,
+      "value": 1
+    },
+    "detection": {
+      "visibilitySlot": "0x9E0",
+      "visibilitySite": "0x00DB5A93",
+      "fallbackDistance": 10.0,
+      "distanceSite": "0x00DB5AB5",
+      "shortCircuitOr": true
+    },
+    "readsBarrelBrokenPersistent": false,
+    "detected": {
+      "speech": "TEXT_QST_048_BARRELMAN_THANKS",
+      "deedHelper": "0x00DB0660"
+    },
+    "notDetected": {
+      "conversation": "TEXT_QST_048_SCRMSG_BARRELMAN_WHERE_GONE",
+      "heroLetMeDownStore": "0x00DB5B3C",
+      "instruction": "TEXT_QST_048_INSTRUCTION_LEFT_WAREHOUSE_UNATTENDED",
+      "deedHelper": "0x00DAEA70",
+      "deedEnum": 1
+    },
+    "finalBrain": "BRAIN_GOOD_VILLAGER_BASE",
+    "finalPhase": 5
+  },
+  "followupDialogue": {
+    "heroLetMeDownRead": {
+      "site": "0x00DB65D7",
+      "offset": "0x1D"
+    },
+    "barrelBrokenPersistentRead": {
+      "site": "0x00DB65F4",
+      "parentOffset": "0x75"
+    },
+    "heroStayedSpeech": "TEXT_QST_048_BARRELMAN_NO_TIME",
+    "heroAbsentBrokenSpeech": "TEXT_QST_048_BARRELMAN_LETDOWN_BROKEN",
+    "heroAbsentUnbrokenSpeech": "TEXT_QST_048_BARRELMAN_LETDOWN_NOT_BROKE"
+  }
+}

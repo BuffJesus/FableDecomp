@@ -1,0 +1,59 @@
+{
+  "script": "V_StatueMaster",
+  "package": "StatueMaster",
+  "state": {},
+  "functions": {
+    "Init": {
+      "lines": 0,
+      "todo": [],
+      "calls": [],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 117,
+      "todo": [
+        "unlifted: pppuVar11 = &ppuStack_40;",
+        "unnamed field 0x48 written in Main",
+        "unnamed field 0x4c written in Main",
+        "unnamed field 0x50 written in Main",
+        "unnamed field 0x54 written in Main",
+        "unlifted: *piVar10 = *piVar10 + -1;",
+        "unresolved native control operand: if (unaff_EDI != (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)0x0) {",
+        "unresolved native control operand: if (*(int *)unaff_EDI == 0) {",
+        "unlifted: *unaff_EBX = *unaff_EBX + -1;",
+        "unlifted: *piStack_38 = *piStack_38 + -1;",
+        "unlifted: *piStack_2c = *piStack_2c + -1;"
+      ],
+      "calls": [
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "GetThingWithScriptName",
+        "GetThingWithScriptName",
+        "GetThingWithScriptName",
+        "GetThingWithScriptName",
+        "GetThingWithScriptName",
+        "SetStateFloat",
+        "IsXbox",
+        "SetStateFloat",
+        "SetStateFloat",
+        "SetStateFloat"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 0,
+      "todo": [],
+      "calls": []
+    }
+  },
+  "entities": [
+    "StatueMasterStatue",
+    "StatueMasterCellarDoors",
+    "StatueMasterChest"
+  ],
+  "threads": [],
+  "helpers": [],
+  "entityBodies": {}
+}

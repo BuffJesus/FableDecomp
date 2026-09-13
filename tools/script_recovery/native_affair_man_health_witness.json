@@ -1,0 +1,141 @@
+{
+  "address": "0x00DB09E0",
+  "bodySize": 5058,
+  "resourceOffset": 16,
+  "selfRegister": "ebp",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "77bbfd27889742e4218708142220774ef6dc0901091b8f00a5ac1ded3892c0a7",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 8287376,
+      "size": 57,
+      "sha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": 19271468,
+      "size": 4,
+      "sha256": "857121adea475480df9a12096b08adb117a600ace9fe1507847ed6a7488558db"
+    },
+    {
+      "address": 19272492,
+      "size": 4,
+      "sha256": "754dd8978d373e339fb743585106af5b6adfa3ef41b9fb4dffa07655c2bb067d"
+    },
+    {
+      "address": 19062492,
+      "size": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    }
+  ],
+  "acquisitions": [
+    [
+      14355062,
+      4
+    ],
+    [
+      14355108,
+      4
+    ],
+    [
+      14355637,
+      4
+    ],
+    [
+      14355684,
+      4
+    ],
+    [
+      14356101,
+      4
+    ],
+    [
+      14356148,
+      4
+    ]
+  ],
+  "queries": [
+    [
+      14355723,
+      14355732,
+      312
+    ],
+    [
+      14356270,
+      14356279,
+      288
+    ],
+    [
+      14356457,
+      14356466,
+      228
+    ],
+    [
+      14356667,
+      14356676,
+      300
+    ],
+    [
+      14356905,
+      14356914,
+      252
+    ],
+    [
+      14357344,
+      14357353,
+      264
+    ],
+    [
+      14357549,
+      14357558,
+      276
+    ],
+    [
+      14357754,
+      14357763,
+      240
+    ]
+  ],
+  "edits": [
+    {
+      "old": "GSI->GetHealth()",
+      "new": "GSI->GetHealth(me)",
+      "count": 2
+    },
+    {
+      "old": "GSI->GetHealth(uVar8)",
+      "new": "GSI->GetHealth(me)",
+      "count": 5
+    },
+    {
+      "old": "GSI->GetHealth(uVar9)",
+      "new": "GSI->GetHealth(me)",
+      "count": 1
+    },
+    {
+      "old": "_DAT_0122dedc",
+      "new": "0.0",
+      "count": 8
+    }
+  ],
+  "hostContract": {
+    "name": "GetHealth",
+    "scope": "Quest",
+    "returnType": "float",
+    "parameters": [
+      {
+        "name": "pThing",
+        "type": "CScriptThing*",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Quest API",
+    "description": "Gets health."
+  },
+  "review": "EBP=self from DB09EC. Six acquisitions all use EBP/resource16/priority4. Eight health queries consume that resource through7E7490 hidden outputs. Other resource getter calls used for distance are unchanged; native wrapper ownership remains unresolved. Eight FCOMP instructions use float32 zero at pinned read-only address0122DEDC."
+}

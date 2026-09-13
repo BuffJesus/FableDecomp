@@ -1,0 +1,1770 @@
+{
+  "scope": "Guardian native lifetime evidence using converter analyses read-only.",
+  "function": "0xe27e90",
+  "end_exclusive": "0xe28c9b",
+  "native_sha256": "4a1d07682cb72f99659a27a19204f566c63196b3e9fc51f32863d43cd24764ea",
+  "native_bytes": "83ec785355568bf15733db8d7e08895c2414578d8c2480000000c744247cf0322c01e8d93f68ff8d442478508bcee84ddc10008d4c2478e8e4c2ffff8b4e048b11ff521c8bcee855dc100084c00f85b00d00008b4e048b01536a015357ff90a00500008d4c2458e88424b7ff8d4c2458c74424584c092701895c2460895c2464e8a4a4eaff84c074098d4c2458e84ea8eaff8b4e048b116a048d44245c5057ff522084c0752b8b4e048b11ff521c8bcee8ebdb100084c00f853d0d00008b4e048b016a048d54245c5257ff502084c074d58bcee8c8db100084c00f851a0d00008b4e048b016a015357ff90140800008b4e048b115357ff92100800005383ec0c8bc4c70010172301c7008c8c23018b4e0c8948048b4e103bcb8948087402ff018b4e048b11ff92300d00008b4e048b118bc18b2853538d44243450ff923c0a00008b4e0450ff95d40400008d4c242ce8fc6ab7ff6aff68b08a25018d4c241ce8fc6bb7ff8b4e048b118d4424145057ff92780500008d4c2414e8d26ab7ff8bcee81bdb100084c00f856d0c0000eb048b5c24146aff68c8d125018d4c2428e8bd6bb7ff8b178d44242083cb01508bcf895c2418ff525484c0755d6aff68c8d125018d4c2424e8966bb7ff8b178d44241c83cb02508bcf895c2418ff92a800000084c0742c6aff68c8d125018d4c2420e86c6bb7ff8b178d4424185083cb046a0e8bcf895c241cff92a400000084c07407c644241300eb05c644241301f6c304741083e3fb8d4c2418895c2414e81f6ab7fff6c302741083e3fd8d4c241c895c2414e80a6ab7fff6c301741083e3fe8d4c2420895c2414e8f569b7ff8a44241384c075576aff68c8d125018d4c242ce8ed6ab7ff8b178d442424508bcfff526c8d4c24248ad8e8c669b7ff84db0f85ef0200008b4e048b11ff521c8bcee8ffd9100084c00f84e6feffff8d4c2458e88ef39bff5f5e5d5b83c478c38bcee8dfd9100084c00f85310b00008b4e048b118bc18b28ff92180100008b4e045057ff955c0900008b4e048b118bc18b2857ff92180100008b4e0450ff955c0900008d4c2448e8ea21b7ff33c08d4c2448c74424484c0927018944245089442454e808a2eaff84c074098d4c2448e8b2a5eaff8b4e048bc18b288b016a048d54244c52ff90180100008b4e0450ff552084c07535908b4e048b11ff521c8bcee841d9100084c00f850b0300008b4e048b296a048d44244c50ff95180100008b4e0450ff552084c074cc8bcee815d9100084c00f85df0200008d4c2458e88da1eaff84c074098d4c2458e837a5eaff8b4e048b116a048d44245c5057ff522084c0752e8d49008b4e048b11ff521c8bcee8d1d8100084c00f859b0200008b4e048b016a048d54245c5257ff502084c074d58bcee8aed8100084c00f85780200008d4c2430e8dd3cebff6aff685ce52c018d4c242ce84d69b7ff8d442458508d4c2428518d4c2438e878baeaff8bc8e8533aa8ff8d4c2424e81a68b7ff6aff68745125018d4c242ce81a69b7ff8d542448528d442428508d4c2438e845baeaff8bc8e8203aa8ff8d4c2424e8e767b7ff8d4c2478e85ef88bff6aff680ed722018d4c242ce8de68b7ff8b4e048b118d442478508d44242850ff92c80500008d4c2424e8b067b7ff8b6e048b55006a018bcdff92ec0500008b4e048b016a01ff90cc0500006aff6878212e018d4c242ce89368b7ff6a006a006a006a008d5424408d4c2434e80b78e9ff8d4c2424e86567b7ff6aff685c212e018d4c242ce86568b7ff6a016a006a006a008d5424408d4c2434e8dd77e9ff8d4c2424e83767b7ff6aff6848212e018d4c242ce83768b7ff6a016a006a006a008d5424408d4c2434e8af77e9ff8d4c2424e80967b7ff8b4e048b116a00ff92cc0500008b45006a008bcdff90ec0500008d4c2478e886f78bff8d4c2430e8ad3bebff8d4c2448e8c4f09bffe9630200008bcee818d7100084c00f856a0800008d4c2448e877ee9bff8d4c2448e8879feaff84c074098d4c2448e831a3eaff8b4e048bd18b1a8b116a048d44244c50ff92180100008b4e0450ff532084c075348b4e048b01ff501c8bcee8c1d6100084c00f858b0000008b4e048b296a048d54244c52ff95180100008b4e0450ff552084c074cc8bcee895d6100084c075638d4c2458e8119feaff84c074098d4c2458e8bba2eaff8b4e048b016a048d54245c5257ff502084c0752e8da424000000008b4e048b01ff501c8bcee851d6100084c0751f8b4e048b116a048d44245c5057ff522084c074d98bcee832d6100084c0741a8d4c2448e8c5ef9bff8d4c2458e8bcef9bff5f5e5d5b83c478c38d4c2430e84b3aebff6aff685ce52c018d4c242ce8bb66b7ff8d4c2458518d542428528d4c2438e8e6b7eaff8bc8e8c137a8ff8d4c2424e88865b7ff6aff68745125018d4c242ce88866b7ff8d442448508d4c2428518d4c2438e8b3b7eaff8bc8e88e37a8ff8d4c2424e85565b7ff8d4c2478e8ccf58bff6aff680ed722018d4c242ce84c66b7ff8b4e048b118d442478508d44242850ff92c80500008d4c2424e81e65b7ff8b6e048b55006a018bcdff92ec0500008b4e048b016a01ff90cc0500006aff6878212e018d4c242ce80166b7ff6a006a006a006a008d5424408d4c2434e87975e9ff8d4c2424e8d364b7ff6aff6848212e018d4c242ce8d365b7ff6a016a006a006a008d5424408d4c2434e84b75e9ff8d4c2424e8a564b7ff8b4e048b116a00ff92cc0500008b45006a008bcdff90ec0500008d4c2478e822f58bff8d4c2430e84939ebff8d4c2448e860ee9bff8b5c24148bcee8b5d4100084c00f85070600006aff6800522c018d4c2428e85d65b7ff6aff6820212e018d4c242ce84d65b7ff8b4e048b116a008d442424508d44242c50ff929c0400008d4c2424e81d64b7ff8d4c2420e81464b7ff6aff6898582c018d4c242ce81465b7ff8b4e048b018bd18b2a6a018d542428528d54243852ff90200100008b4e0450ff95cc0800008d4c2430e8362168ff8d4c2424e8cd63b7ff8b4e048b0157ff90a40500008b4e048b1157ff92800500008b561c8b4e048b016a005257ff9068070000b982000000e83861e9ff8b4e048b116a008bc18b286a006a008d44243850ff923c0a00008b4e0450ff95800400008d4c242ce86c63b7ff8b4e14c64148018bcee8aed3100084c00f8500050000eb048b5c24146aff68c8d125018d4c2424e85064b7ff8b178d44241c83cb08508bcf895c2418ff525484c0755d6aff68c8d125018d4c2428e82964b7ff8b178d44242083cb10508bcf895c2418ff92a800000084c0742c6aff68c8d125018d4c242ce8ff63b7ff8b178d4424245083cb206a0e8bcf895c241cff92a400000084c07407c644241300eb05c644241301f6c320741083e3df8d4c2424895c2414e8b262b7fff6c310741083e3ef8d4c2420895c2414e89d62b7fff6c308741083e3f78d4c241c895c2414e88862b7ff8a44241384c00f84650200008bcee8c5d2100084c00f85170400008b4e048b018bd18b1aff90180100008b4e045057ff935c0900008b4e048b018bd18b1a57ff90180100008b4e0450ff935c0900008d4c2458e8099beaff84c074098d4c2458e8b39eeaff8b4e048b116a048d44245c5057ff522084c0752b8b4e048b11ff521c8bcee850d2100084c00f85a20300008b4e048b016a048d54245c5257ff502084c074d58bcee82dd2100084c00f857f0300008d4c2468e84cf28bff6aff680ed722018d4c2420e8cc62b7ff8b4e048b018d542468528d54241c52ff90c80500008d4c2418e89e61b7ff8b6e048b45006a018bcdff90ec0500008b4e048b018bd18b1a6a00ff90180100008b4e045057ff936c0700008b4e048b198d542430528d4c245ce80feb9bff8b4e0450ff9320040000d81ddcde2201dfe0f6c4417504b301eb0232db8d4c2430e8991e68ff84db74688b4e048b016a006a016a006a006804212e01ff9018010000508d4c2470e8c3e99bff8d4c2458e87aea9bff84c0742a8d9b000000008b4e048b11ff521c8bcee841d1100084c00f85480200008d4c2458e850ea9bff84c075dc8bcee825d1100084c00f853f0200008b46048b188d4c243c518d4c245ce86aea9bff8b4e0450ff9320040000d81ddcde2201dfe0f6c4417504b301eb0232db8d4c243ce8f41d68ff84db74638b4e048b116a006a016a006a0068e8202e01ff9218010000508d4c2470e81ee99bff8d4c2458e8d5e99bff84c07425908b4e048b01ff501c8bcee8a1d0100084c00f85a80100008d4c2458e8b0e99bff84c075dc8bcee885d0100084c00f859f0100008b55006a008bcdff92ec0500008d4c2468e8b7f08bff6aff68c8d125018d4c2430e81761b7ff8b078d4c2428518bcfff506c8d4c24288ad8e8f05fb7ff84db0f841f0100008bcee831d0100084c00f85830100008d4c2478e850f08bff6aff680ed722018d4c2434e8d060b7ff8b4e048b118d442478508d44243050ff92c80500008d4c242ce8a25fb7ff8b6e048b55006a018bcdff92ec0500008b4e048b118bc18b186a00ff92180100008b4e045057ff936c0700008b46048b188d4c2448518d4c245ce813e99bff8b4e0450ff9320040000d81ddcde2201dfe0f6c4417504b301eb0232db8d4c2448e89d1c68ff84db745a8b4e048b116a006a016a006a0068e8202e01ff9218010000508d4c2470e8c7e79bff8d4c2458e87ee89bff84c074208b4e048b01ff501c8bcee84bcf100084c0757c8d4c2458e85ee89bff84c075e08bcee833cf100084c075738b55006a008bcdff92ec0500008d4c2478e869ef8bff8b4e048b01ff501c8bcee80acf100084c00f845efbffff8d4c2458e899e89bff5f5e5d5b83c478c38b55006a008bcdff92ec0500008d4c2468eb338b45006a008bcdff90ec0500008d4c2468eb208b55006a008bcdff92ec050000eb0d8b45006a008bcdff90ec0500008d4c2478e8f6ee8bff8d4c2458e83de89bff5f5e5d5b83c478c3",
+  "analysis_sources": [
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\audit_guardian_resource_lifetimes.py",
+      "sha256": "0e7b176240d54383a8024c606a003ceea3397f1befdde2b175bf0c11b2baf122"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\native_call_setup_ir.py",
+      "sha256": "35f519cef4625e0a7646173ca327a91a4e5d3555b5a24b9e3e6f7851cc72c442"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\native_resource_lifetime.py",
+      "sha256": "39bb0e30ffe59e7b14e7578254b1d1a275a353fdec7d7bbe9cf2a9feac699d27"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\lift_native_lua.py",
+      "sha256": "6f349d119e8f0810e8f5672cd3721956b02a28267446f1d0761b959fab841321"
+    }
+  ],
+  "records": [
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14843695,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14843738,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          88
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "resource_end",
+      "setup": {
+        "address": 14844221,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          88
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14844376,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14844366,
+            "GetHero"
+          ],
+          [
+            "stack",
+            72
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14844429,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14844419,
+            "GetHero"
+          ],
+          [
+            "stack",
+            72
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14844486,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14844532,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          88
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "map_entry",
+      "setup": {
+        "address": 14844593,
+        "target": [
+          "constant",
+          13450542
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            88
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "resource_copy",
+      "setup": {
+        "address": 14844600,
+        "target": [
+          "constant",
+          9092368
+        ],
+        "ecx": [
+          "result",
+          14844593,
+          "actor_map_entry"
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            88
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "map_entry",
+      "setup": {
+        "address": 14844644,
+        "target": [
+          "constant",
+          13450542
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "stack",
+          72
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            72
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "resource_copy",
+      "setup": {
+        "address": 14844651,
+        "target": [
+          "constant",
+          9092368
+        ],
+        "ecx": [
+          "result",
+          14844644,
+          "actor_map_entry"
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            72
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "movie_start",
+      "setup": {
+        "address": 14844705,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            120
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "macro",
+      "setup": {
+        "address": 14844781,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "stack",
+          48
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "macro",
+      "setup": {
+        "address": 14844827,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "stack",
+          48
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "macro",
+      "setup": {
+        "address": 14844873,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "stack",
+          48
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "movie_end",
+      "setup": {
+        "address": 14844917,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          120
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "map_end",
+      "setup": {
+        "address": 14844926,
+        "target": [
+          "constant",
+          13483952
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "resource_end",
+      "setup": {
+        "address": 14844935,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14845017,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14845007,
+            "GetHero"
+          ],
+          [
+            "stack",
+            72
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14845069,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14845059,
+            "GetHero"
+          ],
+          [
+            "stack",
+            72
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14845122,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          88
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14845168,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "resource_end",
+      "setup": {
+        "address": 14845190,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "resource_end",
+      "setup": {
+        "address": 14845199,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          88
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "map_entry",
+      "setup": {
+        "address": 14845251,
+        "target": [
+          "constant",
+          13450542
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "stack",
+          36
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            88
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "resource_copy",
+      "setup": {
+        "address": 14845258,
+        "target": [
+          "constant",
+          9092368
+        ],
+        "ecx": [
+          "result",
+          14845251,
+          "actor_map_entry"
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            88
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "map_entry",
+      "setup": {
+        "address": 14845302,
+        "target": [
+          "constant",
+          13450542
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            72
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "resource_copy",
+      "setup": {
+        "address": 14845309,
+        "target": [
+          "constant",
+          9092368
+        ],
+        "ecx": [
+          "result",
+          14845302,
+          "actor_map_entry"
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            72
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "movie_start",
+      "setup": {
+        "address": 14845363,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            120
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "macro",
+      "setup": {
+        "address": 14845439,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "stack",
+          48
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "macro",
+      "setup": {
+        "address": 14845485,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "stack",
+          48
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "movie_end",
+      "setup": {
+        "address": 14845529,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          120
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "map_end",
+      "setup": {
+        "address": 14845538,
+        "target": [
+          "constant",
+          13483952
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "resource_end",
+      "setup": {
+        "address": 14845547,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14846154,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "acquire",
+      "setup": {
+        "address": 14846197,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          88
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            88
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "movie_start",
+      "setup": {
+        "address": 14846259,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          24
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            24
+          ],
+          [
+            "stack",
+            104
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "movie_end",
+      "setup": {
+        "address": 14846660,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          104
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "movie_start",
+      "setup": {
+        "address": 14846767,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            44
+          ],
+          [
+            "stack",
+            120
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "movie_end",
+      "setup": {
+        "address": 14846994,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          120
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "resource_end",
+      "setup": {
+        "address": 14847026,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          88
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "movie_end",
+      "setup": {
+        "address": 14847109,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "kind": "resource_end",
+      "setup": {
+        "address": 14847118,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          88
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "movies": {
+    "0xe28321": [
+      "start",
+      120
+    ],
+    "0xe283f5": [
+      "end",
+      120
+    ],
+    "0xe285b3": [
+      "start",
+      120
+    ],
+    "0xe28659": [
+      "end",
+      120
+    ],
+    "0xe28933": [
+      "start",
+      104
+    ],
+    "0xe28ac4": [
+      "end",
+      104
+    ],
+    "0xe28b2f": [
+      "start",
+      120
+    ],
+    "0xe28c12": [
+      "end",
+      120
+    ],
+    "0xe28c85": [
+      "end",
+      null
+    ]
+  },
+  "single_movie_all_paths": true,
+  "identity_check": {
+    "visited_states": 1121,
+    "shared_end_resources": [
+      104,
+      120
+    ]
+  },
+  "wrong_shared_slot_rejected": true
+}

@@ -1,0 +1,168 @@
+{
+  "scope": "Execute native AddLineToConversation pointer/boolean marshalling only.\n\nThing virtual predicates/accessors and conversation manager are doubles.\nNo actual queue playback or audio output is executed.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "speaker_valid": false,
+      "listener_valid": false,
+      "flag": 0,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": false,
+      "listener_valid": false,
+      "flag": 1,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": false,
+      "listener_valid": true,
+      "flag": 0,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": false,
+      "listener_valid": true,
+      "flag": 1,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": true,
+      "listener_valid": false,
+      "flag": 0,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ],
+        [
+          "valid",
+          "listener"
+        ],
+        [
+          "queue",
+          42,
+          100,
+          0,
+          0
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": true,
+      "listener_valid": false,
+      "flag": 1,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ],
+        [
+          "valid",
+          "listener"
+        ],
+        [
+          "queue",
+          42,
+          100,
+          0,
+          1
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": true,
+      "listener_valid": true,
+      "flag": 0,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ],
+        [
+          "valid",
+          "listener"
+        ],
+        [
+          "queue",
+          42,
+          100,
+          200,
+          0
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": true,
+      "listener_valid": true,
+      "flag": 1,
+      "null_pointer": false,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ],
+        [
+          "valid",
+          "listener"
+        ],
+        [
+          "queue",
+          42,
+          100,
+          200,
+          1
+        ]
+      ],
+      "fault": null
+    },
+    {
+      "speaker_valid": true,
+      "listener_valid": false,
+      "flag": 0,
+      "null_pointer": true,
+      "events": [
+        [
+          "valid",
+          "speaker"
+        ]
+      ],
+      "fault": "Invalid memory read (UC_ERR_READ_UNMAPPED)"
+    }
+  ],
+  "native_bytes": "55568b7424188b068be98bceff902c01000084c0744653578b7c24248b178bcf33dbff922c01000084c074098b078bcfff502c8bd88b54241c8b4d048b4424188b797c528b1650538bceff522c508b442424508bcfe8a651e5ff5f5b5e5dc21400"
+}

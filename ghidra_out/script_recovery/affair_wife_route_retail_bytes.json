@@ -1,0 +1,55 @@
+{
+  "schema": "affair-wife-route-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "region": {
+    "address": "0x00DB3426",
+    "rangeSize": 411,
+    "bytesSha256": "B6CABC23E6BE59C7F20B739AA85C5F621333D68B59110F79D0F94229796BA120",
+    "instructionCount": 118,
+    "strings": [
+      "NOVI_AffairMan",
+      "TEXT_QST_048_AFFAIR_WIFE_RUNNING_TO_HUBBY"
+    ]
+  },
+  "husbandLookup": {
+    "name": "NOVI_AffairMan",
+    "site": "0x00DB3445",
+    "slot": "0x120",
+    "resultLocal": "ESP+0x34"
+  },
+  "movement": {
+    "positionReadSite": "0x00DB3473",
+    "positionVtableSlot": "0x18",
+    "nullPosition": "0x0143E8E0",
+    "callSite": "0x00DB3486",
+    "helper": "0x007E72F0",
+    "radius": 2.0,
+    "moveType": 1,
+    "trailingFlags": [
+      false,
+      true
+    ],
+    "issuedOnce": true
+  },
+  "arrival": {
+    "distance": 3.0,
+    "helper": "0x00CBE2FF",
+    "initialTestSite": "0x00DB34A2",
+    "loopTestSite": "0x00DB3586",
+    "thingOperand": "same live husband local ESP+0x34",
+    "falseLoopTarget": "0x00DB34B0",
+    "reachedTarget": "0x00DB3593"
+  },
+  "runningLine": {
+    "homeDistance": 10.0,
+    "speech": "TEXT_QST_048_AFFAIR_WIFE_RUNNING_TO_HUBBY",
+    "saidFlagStore": "0x00DB3577",
+    "saidFlagOffset": "0x1E"
+  },
+  "transition": {
+    "clearCommandsSite": "0x00DB35A6",
+    "disableMovementInActionsSite": "0x00DB35BB",
+    "slot": "0x844"
+  }
+}

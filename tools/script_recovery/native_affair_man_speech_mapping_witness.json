@@ -1,0 +1,185 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 8287120,
+      "size": 15,
+      "sha256": "6ed98a17747c9559633a28a462363adeb81c9c0fb7884ca840b6b5e1ee2d4376"
+    },
+    {
+      "address": 19762152,
+      "size": 30,
+      "sha256": "4b4d2d584e3650ea97d5fd13037a18ab4e4bf13a40ab6c2fd3288b6800bc7b62"
+    },
+    {
+      "address": 19762116,
+      "size": 34,
+      "sha256": "a1360818f67be5bf2e7631d8ba64adc20fc5bd158604735c219359730ad61ce5"
+    },
+    {
+      "address": 19762080,
+      "size": 34,
+      "sha256": "970efcffe5cb45315c49c6fc60d2b3203a9de8ac24a90c9141bcae9497f30ca8"
+    },
+    {
+      "address": 19762044,
+      "size": 36,
+      "sha256": "326f5d1b72ca8f97e848726a8fea3c3ad27a8897f61326338393350b47ae0d20"
+    },
+    {
+      "address": 19762012,
+      "size": 29,
+      "sha256": "dd496559044758859c0f87fe3f86775ffc25b30ecf409c000797b4c649523ea9"
+    },
+    {
+      "address": 19761932,
+      "size": 32,
+      "sha256": "593aaddd3678db0986fc61036a16530fdb4af3db8d4d6d3b97b4a755fae77402"
+    },
+    {
+      "address": 19761896,
+      "size": 33,
+      "sha256": "463c17ab7fd3780afda5087ecc93a3d3219bb55573a9a1cfc056874da351c296"
+    },
+    {
+      "address": 19761868,
+      "size": 28,
+      "sha256": "a69cd0d154807f14f1cbc8f0ebd70ff9e1a648176539582b2d5c6fb503e2a75a"
+    }
+  ],
+  "contract": {
+    "name": "Speak",
+    "scope": "Entity",
+    "returnType": "bool",
+    "parameters": [
+      {
+        "name": "pMe",
+        "type": "CScriptThing*",
+        "optional": false
+      },
+      {
+        "name": "spTargetThing",
+        "type": "const std::shared_ptr<CScriptThing>&",
+        "optional": false
+      },
+      {
+        "name": "dialogueKey",
+        "type": "const std::string&",
+        "optional": false
+      },
+      {
+        "name": "selectionMethod",
+        "type": "int",
+        "optional": true
+      },
+      {
+        "name": "makeTargetListen",
+        "type": "bool",
+        "optional": true
+      },
+      {
+        "name": "soundIn2D",
+        "type": "bool",
+        "optional": true
+      },
+      {
+        "name": "overScreenFade",
+        "type": "bool",
+        "optional": true
+      }
+    ],
+    "blocking": true,
+    "category": "Entity API",
+    "description": "Speaks to a target and blocks until dialogue completes or is interrupted (Lua binding alias for Speak_Blocking)."
+  },
+  "calls": [
+    {
+      "address": 14355802,
+      "resourceStackOffset": 16,
+      "heroQuery": 14355791,
+      "key": "TEXT_QST_048_AFFAIRMAN_ON_HIT",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    },
+    {
+      "address": 14356353,
+      "resourceStackOffset": 16,
+      "heroQuery": 14356342,
+      "key": "TEXT_QST_048_AFFAIRMAN_HAD_A_DEAL",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    },
+    {
+      "address": 14356540,
+      "resourceStackOffset": 16,
+      "heroQuery": 14356529,
+      "key": "TEXT_QST_048_AFFAIRMAN_SOME_NERVE",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    },
+    {
+      "address": 14356746,
+      "resourceStackOffset": 16,
+      "heroQuery": 14356735,
+      "key": "TEXT_QST_048_AFFAIRMAN_HOW_FIND_OUT",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    },
+    {
+      "address": 14356984,
+      "resourceStackOffset": 16,
+      "heroQuery": 14356973,
+      "key": "TEXT_QST_048_AFFAIRMAN_INTRO",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    },
+    {
+      "address": 14357423,
+      "resourceStackOffset": 16,
+      "heroQuery": 14357412,
+      "key": "TEXT_QST_048_AFFAIRMAN_GOOD_LAD",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    },
+    {
+      "address": 14357628,
+      "resourceStackOffset": 16,
+      "heroQuery": 14357617,
+      "key": "TEXT_QST_048_AFFAIRMAN_DONT_TELL",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    },
+    {
+      "address": 14357833,
+      "resourceStackOffset": 16,
+      "heroQuery": 14357822,
+      "key": "TEXT_QST_048_AFFAIRMAN_SHOO",
+      "selection": 0,
+      "listen": false,
+      "sound2D": true,
+      "overFade": false
+    }
+  ],
+  "review": "Each native 7E7390 call uses resource16 (ESP+28 after six pushes), fresh hero result, pinned key, selection0, listenfalse, sound2Dtrue, overFadefalse. Wrapper dispatches through resource pImp slot34, or RET18 on empty; it does not wait. Native task/frame/termination loops follow in caller. Current me:Speak binding is Speak_Blocking and adds its own wait and termination checks. Generated calls therefore remain behaviorally unresolved even when operands and explicit caller loop compile.",
+  "requiredLowering": "Use an explicit native resource local for acquisition, speech, task queries and destruction together. LuaRetailResources::Speak provides nonblocking dispatch in reviewed runtime source, but its lifecycle must be generated before changing these calls; do not mix it with cached me:AcquireControl."
+}

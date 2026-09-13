@@ -1,6 +1,6 @@
 {
-  "__meta__":{"function":"PostAttackStuff","kind":"quest","expect":["GetThingWithScriptName","GetAllThingsWithScriptName","NewScriptFrame"],"forbid":["CacheMusicSet","EntityTeleportToThing"],"note":"termination while waiting for the separate post-attack section prevents scene setup"},
+  "__meta__":{"function":"PostAttackStuff","kind":"quest","expect":["GetThingWithScriptName","IsAlive","NewScriptFrame"],"forbid":["CacheMusicSet","EntityTeleportToThing"],"note":"termination while waiting for the separate post-attack section prevents scene setup"},
   "Quest.GetThingWithScriptName(M_PostAttackStart)":[{"handle":"post_start","scope":"Entity"}],
-  "Quest.GetAllThingsWithScriptName(M_PostAttackStart)":[{}],
+  "Entity.IsAlive":[false],
   "Quest.NewScriptFrame":[false]
 }

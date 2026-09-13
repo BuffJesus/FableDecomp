@@ -1,0 +1,18 @@
+{
+  "address": "0x00DAF080",
+  "sourceSha256": "75de52d06c81853ab3295ec950451b04e5d4ef9b594f05f570c9fe2b152cb545",
+  "annotatedSha256": "6cc262b2b1226352d2a1e2c6af0bdd8b1ba18595ab67780ecf8db8cc730134a3",
+  "size": 5498,
+  "bytesSha256": "d7b5d3faa973c27e6ed35e4924a637b610ed7bd08726728961a4910e7faa6763",
+  "lookupSite": "0x00DAF110",
+  "distanceSite": "0x00DAFAB7",
+  "scriptNameAddress": "0x012D8338",
+  "scriptName": "NOVI_Bully",
+  "distance": 10.0,
+  "lookupCount": 2,
+  "originalDistance": "IsDistanceBetweenThingsUnder(pCVar8,(CScriptThing *)&uStack_14c,10.0)",
+  "outputSlot": "local_native_cached_bully",
+  "distanceReceiver": "pCVar8",
+  "distanceOperand": "10.0",
+  "knownSetupCalls": {}
+}

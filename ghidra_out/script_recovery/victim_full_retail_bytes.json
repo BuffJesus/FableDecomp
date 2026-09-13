@@ -1,0 +1,38 @@
+{
+  "schema": "victim-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_Victim",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DAEEB0",
+      "endExclusive": "0x00DAEF4C",
+      "rangeSize": 156,
+      "bytesSha256": "C67D6418EEBAAB164D9269A6814A438013DF551B8FAD8EA964E86DA86F55BC23",
+      "instructionCount": 57,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DBCD60",
+      "endExclusive": "0x00DBDE35",
+      "rangeSize": 4309,
+      "bytesSha256": "1FF33BF75900CF8A2DE01BBF2D4426B0ED1D548F33DD888FD89D92B53E28DB22",
+      "instructionCount": 1271,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "complete Init and Main dispatcher",
+    "sharedBullyState": [
+      "BullySubdued",
+      "VictimShake",
+      "BullyRanOff",
+      "HeroAttackedVictim",
+      "GivenHeroTeddy",
+      "VictimComplainsAboutLosingTeddy"
+    ],
+    "boundaryCorrection": "translation_unit Main size 4303 truncates the epilogue; exact terminal ret is 0x00DBDE34"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "scope": "Actual entity adapter and scoped resource/condition checks; root/watcher integration and package assembly remain.",
+  "sources": [
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-guardian-adapter-20260912\\result.json",
+      "sha256": "ba20d5fd109d416cbdd577f6ac7d37c66f1b4ae02c227d2344106ed354d8b68e"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\thing-condition-api-proposal-20260912.json",
+      "sha256": "56233e3212990c51ed4e344ee821938ae8e8ada75f39f86e33f48d58f168d6c5"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-guardian-adapter-release-20260912\\build.log",
+      "sha256": "cf9bcc5edd78e68ecbd8a8181137e6c47de2f08d66ce476a33d51cc89daf905d"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.h",
+      "sha256": "0f1bd81ebd27a9b9e574f7dcc7ec69a00db7077473df48db2a6f9a79aa0c5875"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\FableAPI.cpp",
+      "sha256": "160a72200c990f32f890cd7e92fd67b66bec59d59d07c7d937b4f5d162dea0a5"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailResources.h",
+      "sha256": "9298a9256f2b8450d9923dc510fde9c720eb29d8a72b261774188968bc2fe7b9"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailCondition.h",
+      "sha256": "e162007b2f7a7ffc32dda151a9026fe28cf52d0619750c5abe2c35646ee11e6f"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaManager.cpp",
+      "sha256": "4218eadf5fa577fdb5d8e699c6d10f51fafe205d4b616d6c8b7f84b08c2efa2c"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-thing-lifetime-20260912.json",
+      "sha256": "4ad2db297106e44d55f4a27c160cf578275c23c9129275f8ecb8cc6264fea646"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-condition-registration-20260912.json",
+      "sha256": "1218e4198527bdd824d83cfb6ed209b0319ee314bf2fd134d2374129d1082c50"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\installed-card-component-20260912.json",
+      "sha256": "1c754c1b395d2827e843bc1771349c0a4059a14b9be2cf31230e9956734a976d"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\THING_CONDITION_ADAPTER_REVIEW_2026-09-12.md",
+      "sha256": "9074e5acd30c43dd968fbd227f247c8a6645c1433b0ea3739a7597fd172a6672"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\prove_guardian_thing_lifetime.py",
+      "sha256": "3aa161a3d82f6e78a2db07bb8fe5173e6c124a6f22268cf53882cee02f367e07"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\prove_guardian_condition_registration.py",
+      "sha256": "e8c36c5fe8a449a83ac8b5fd27c8a965e95bcea90b338cd39b0354feb5b2b442"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\guardian_runtime_cases.py",
+      "sha256": "7a28681ae6917130c6e840ac9dd7ab1410ca277d1aeb4c87243fe5dfb40a98c5"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\audit_guardian_quest_card.py",
+      "sha256": "599949635cbe4a5c298bd59bbf1a389a66fce6854038550cdca57c3fae28080c"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\reference\\quest.lua",
+      "sha256": "e2651636460339b07b965f676ab9bd2e40fa43153cde36d0c63c5db09aaa5f08"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\reference\\runtime_adapter.lua",
+      "sha256": "a8bbf3e8b511eb575c2650a3969beddc1aafcff5a4e53b018d80d142fa83077d"
+    }
+  ],
+  "native_api_addresses": {
+    "RetailThing_Copy_API": [
+      "tRetailThingCopy",
+      "0x4ABE90"
+    ],
+    "RetailThing_Destroy_API": [
+      "tRetailThingDestroy",
+      "0x4AA840"
+    ],
+    "RetailEntity_SetCondition_API": [
+      "tRetailEntityCondition",
+      "0xF35B10"
+    ],
+    "g_pRetailAliveConditionVTable": [
+      "void**",
+      "0x12C32F0"
+    ]
+  },
+  "observed_checks": {
+    "native_thing_cases": 16,
+    "native_condition_registration_cases": 8,
+    "actual_guardian_adapter_cases": 28,
+    "matching_guardian_events": 1377,
+    "runtime_binaries_passed": 9,
+    "release_exit_code": 0,
+    "runtime_proof_inputs_still_match": true,
+    "card_object_index": 3736,
+    "card_definition_index": 12321,
+    "card_fields_decoded": 18
+  },
+  "source_dll": {
+    "path": "D:\\Code\\ForgeFSE-retail-shadow\\Release\\FableScriptExtender.dll",
+    "sha256": "682bc0b4906ceb1f343a6c1d38d02652ca73632d1f95fd79e9ce52b6b7e14bf2"
+  },
+  "installed_dlls": {
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FableScriptExtender.dll": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31",
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\FableScriptExtender.dll": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+  },
+  "installed_changes": false,
+  "registered_package": false
+}

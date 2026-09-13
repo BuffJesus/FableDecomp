@@ -1,5 +1,5 @@
 {
-  "schema": "fable-script-test-matrix/0.1",
+  "schema": "fable-script-test-matrix/0.2",
   "script": "Q_NewOakValeIntro",
   "fixtures": [
     {
@@ -12,12 +12,16 @@
         "GiveHeroYesNoQuestion",
         "GiveHeroGold",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "ClearThingHasInformation",
         "EndMovieSequence",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 43
@@ -34,11 +38,15 @@
         "AddLineToConversation",
         "SetStateBool",
         "Pause",
-        "random",
+        "RetailRandModulo",
         "PlayAnimation",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 28
@@ -54,11 +62,15 @@
         "AddPersonToConversation",
         "AddLineToConversation",
         "Pause",
-        "random",
+        "RetailRandModulo",
         "PlayAnimation",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 29
@@ -74,6 +86,10 @@
         "SetIsPushableByHero"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 6
@@ -90,6 +106,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -105,6 +125,10 @@
         "EntitySetDeedReactionsEnabled"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 7
@@ -121,6 +145,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -130,20 +158,48 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "purpose": "wife learns the affair, accepts the hero's answer, runs to her husband, emits the running line and the first numbered argument line, then terminates cleanly",
+      "purpose": "wife learns the affair, accepts the hero's answer, reaches her husband with the single retail move command, emits the running line and first numbered argument line, then terminates cleanly",
       "expects": [
         "GiveHeroYesNoQuestion",
         "MoveToPosition",
         "ClearThingHasInformation",
         "AddNewConversation",
         "AddLineToConversation",
-        "random",
+        "RetailRandModulo",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 67
+      "events": 77
+    },
+    {
+      "fixture": "entity_affair_wife_stalled_route_retries",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "purpose": "intermittent navigation failure: the initial husband movement task ends outside three metres, the wife reissues the identical live-husband route, reaches him, enters the first argument line, and terminates cleanly",
+      "expects": [
+        "GiveHeroYesNoQuestion",
+        "MoveToPosition",
+        "IsPerformingScriptTask",
+        "ClearThingHasInformation",
+        "AddNewConversation",
+        "AddLineToConversation",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 82
     },
     {
       "fixture": "entity_affair_wife_wheres_husband",
@@ -153,7 +209,7 @@
       "purpose": "an eligible nearby-hero idle iteration resets the exact TalkIntermittentTimer field to retail value 3 and queues the wife's where-is-my-husband conversation",
       "expects": [
         "GetTimer",
-        "random",
+        "RetailRandModulo",
         "IsDistanceBetweenThingsUnder",
         "SetTimer",
         "AddNewConversation",
@@ -165,6 +221,10 @@
         "StartMovieSequence",
         "SpeakAndWait"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 17
@@ -186,6 +246,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 31
@@ -201,11 +265,15 @@
         "StartMovieSequence",
         "Speak",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "EndMovieSequence",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 33
@@ -221,6 +289,10 @@
         "SetIsPushableByHero"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 5
@@ -237,6 +309,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -255,6 +331,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 17
@@ -274,6 +354,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 26
@@ -290,9 +374,67 @@
       "forbids": [
         "DisplayGameInfo"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_barrel_man_absent_broken_then_scolds",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "Anniversary-video sequence: destroyed stock, Hero absent at return, unattended warning and bad deed, then explicit interaction selects the three-line broken-stock rebuke rather than thanks",
+      "expects": [
+        "CanThingBe_Seen_ByOtherThing",
+        "IsDistanceBetweenThingsUnder",
+        "AddNewConversation",
+        "DisplayGameInfo",
+        "SetStateInt",
+        "GiveHeroMorality",
+        "IsTalkedToByHero",
+        "Speak",
+        "SetCreatureBrain",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 116
+    },
+    {
+      "fixture": "entity_barrel_man_favour_speech_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "termination during the initial warehouse-favour line unwinds the movie, deregisters the scoped approach timer, and skips the fade, teleports, and handoff state",
+      "expects": [
+        "StartMovieSequence",
+        "Speak",
+        "DeregisterTimer",
+        "PauseAllNonScriptedEntities",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "FadeScreenOut",
+        "EntityTeleportToThing",
+        "SetStateBool"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 28
     },
     {
       "fixture": "entity_barrel_man_hands_over_warehouse",
@@ -318,9 +460,13 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 46
+      "events": 52
     },
     {
       "fixture": "entity_barrel_man_init",
@@ -334,9 +480,13 @@
         "EntitySetSightRadius"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 9
+      "events": 11
     },
     {
       "fixture": "entity_barrel_man_main_terminated",
@@ -350,9 +500,38 @@
       "forbids": [
         "SetCreatureBrain"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_barrel_man_nearby_broken_scolds",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "purpose": "New Oakvale compatibility: destroyed stock suppresses contradictory thanks/good-deed dialogue for a nearby hero and selects the broken-stock rebuke without adding the separate unattended-warehouse deed",
+      "expects": [
+        "CanThingBe_Seen_ByOtherThing",
+        "IsDistanceBetweenThingsUnder",
+        "GetStateBool",
+        "Speak",
+        "SetCreatureBrain",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "AddNewConversation"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 95
     },
     {
       "fixture": "entity_barrel_man_rebukes_absent_hero",
@@ -368,15 +547,19 @@
         "AddNewConversation",
         "AddLineToConversation",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "SetStateBool",
         "SetCreatureBrain",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 79
+      "events": 103
     },
     {
       "fixture": "entity_barrel_man_returns_and_thanks_hero",
@@ -393,16 +576,20 @@
         "CanThingBe_Seen_ByOtherThing",
         "Speak",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "SetQuestCardObjective",
         "UpdateQuestInfoCounter",
         "SetCreatureBrain",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 82
+      "events": 105
     },
     {
       "fixture": "entity_barrel_pc_tutorial",
@@ -416,9 +603,13 @@
         "SetStateBool"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 12
+      "events": 13
     },
     {
       "fixture": "entity_barrel_predicate_fail",
@@ -432,6 +623,10 @@
         "SetStateString"
       ],
       "forbids": [],
+      "covers": [
+        "OnPredicateFail"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 4
@@ -454,9 +649,13 @@
       "forbids": [
         "GetTimer"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 23
+      "events": 24
     },
     {
       "fixture": "entity_barrel_thug_hit_acquire_terminated",
@@ -469,16 +668,20 @@
         "EntitySetThingAsAllyOfThing",
         "SetStateInt",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "StartMovieSequence",
         "AcquireControl",
         "EndMovieSequence",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 38
+      "events": 39
     },
     {
       "fixture": "entity_barrel_thug_init",
@@ -491,6 +694,10 @@
         "EntitySetAsKillable"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 3
@@ -511,6 +718,10 @@
         "EntityTeleportToThing",
         "StartMovieSequence"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 3
@@ -526,7 +737,7 @@
         "EntitySetFacingAngleTowardsThing",
         "Pause",
         "StartMovieSequence",
-        "SpeakAndWait",
+        "Speak",
         "FollowThing",
         "GetTimer",
         "AddNewConversation",
@@ -535,9 +746,13 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 34
+      "events": 35
     },
     {
       "fixture": "entity_barrel_thug_main_terminated",
@@ -551,6 +766,10 @@
       "forbids": [
         "StartMovieSequence"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -566,16 +785,20 @@
         "Pause",
         "FollowThing",
         "StartMovieSequence",
-        "SpeakAndWait",
+        "Speak",
         "EndMovieSequence",
         "ReleaseControl"
       ],
       "forbids": [
         "AddNewConversation"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 33
+      "events": 35
     },
     {
       "fixture": "entity_barrel_thug_special_hit",
@@ -589,13 +812,41 @@
         "MsgIsHitByAnySpecialAbilityFromHero",
         "MsgIsHitByHeroSpecialAbility",
         "DisplayGameInfo",
-        "SpeakAndWait",
+        "Speak",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 43
+      "events": 45
+    },
+    {
+      "fixture": "entity_barrel_thug_speech_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "purpose": "termination reported by Forge's blocking Speak unwinds the movie bracket and skips the post-speech DoneIntro/follow actions",
+      "expects": [
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "Speak",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "FollowThing"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 16
     },
     {
       "fixture": "entity_book_trader_hit_acquire_terminated",
@@ -607,7 +858,7 @@
         "EntitySetThingAsAllyOfThing",
         "SetStateInt",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "AcquireControl",
         "ReleaseControl"
       ],
@@ -616,6 +867,10 @@
         "SpeakAndWait",
         "EntitySetFacingAngleTowardsThing"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 18
@@ -637,6 +892,10 @@
         "AddNewConversation",
         "PlayAnimation"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 3
@@ -652,6 +911,10 @@
         "EntitySetDeedReactionsEnabled"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 7
@@ -668,6 +931,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -677,15 +944,19 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "purpose": "squared-vector distance fallback returns the trader home, faces Theresa, then cleans up on idle termination",
+      "purpose": "the direct retail distance helper returns the trader home, faces Theresa, then cleans up on idle termination",
       "expects": [
         "GetHomePos",
-        "GetPos",
+        "IsDistanceFromPositionOver",
         "MoveToPosition",
         "EntitySetFacingAngleTowardsThing",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 18
@@ -698,7 +969,7 @@
       "purpose": "an expired intermittent timer, winning 1-in-200 roll and nearby hero set TalkIntermittentTimer to the recovered retail value 3 and trigger the roll-up animation/conversation",
       "expects": [
         "GetTimer",
-        "random",
+        "RetailRandModulo",
         "IsDistanceBetweenThingsUnder",
         "SetTimer",
         "AddNewConversation",
@@ -708,6 +979,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 22
@@ -729,6 +1004,10 @@
         "GiveHeroYesNoQuestion",
         "SpeakAndWait"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 9
@@ -751,9 +1030,13 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 32
+      "events": 34
     },
     {
       "fixture": "entity_book_trader_shout_acquire_terminated",
@@ -772,6 +1055,10 @@
         "PlayAnimation",
         "AddLineToConversation"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 18
@@ -786,14 +1073,42 @@
         "MsgIsHitByAnySpecialAbilityFromHero",
         "MsgIsHitByHeroSpecialAbility",
         "DisplayGameInfo",
-        "SpeakAndWait",
+        "Speak",
         "EntitySetFacingAngleTowardsThing",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 31
+      "events": 32
+    },
+    {
+      "fixture": "entity_book_trader_speech_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "purpose": "termination during the hit-reaction speech performs movie cleanup and skips the subsequent Theresa-facing action",
+      "expects": [
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "Speak",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "EntitySetFacingAngleTowardsThing"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 25
     },
     {
       "fixture": "entity_bully_accepts_teddy",
@@ -806,10 +1121,20 @@
         "GiveHeroGold",
         "TakeObjectFromHero",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "ClearThingHasInformation"
       ],
       "forbids": [],
+      "covers": [
+        "Main",
+        "GivenTeddy"
+      ],
+      "coverEvidence": {
+        "GivenTeddy": [
+          "TakeObjectFromHero",
+          "AddLogbookTutorialEntry"
+        ]
+      },
       "result": "ran",
       "trace": "match",
       "events": 62
@@ -828,10 +1153,14 @@
         "AddNewConversation",
         "AddPersonToConversation",
         "AddLineToConversation",
-        "random",
+        "RetailRandModulo",
         "PlayAnimation"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 23
@@ -852,6 +1181,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 44
@@ -861,21 +1194,46 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
-      "purpose": "four direct hero hits create and decrement the bully health bar, set BullySubdued, run both non-teddy BULLYRUN cutscenes with the retail actor/BRATLINE map, award the first good deed, set BullyRanOff, and remove the bully",
+      "purpose": "four direct hero hits create and decrement the bully health bar, set BullySubdued, run the first non-teddy BULLYRUN cutscene, recover its observed short run by restoring drawability and completing MK_OIBR_BULLY2 before hiding, then run the second cutscene, award the first good deed, set BullyRanOff, and remove the bully",
       "expects": [
         "AddQuestInfoBar",
         "UpdateQuestInfoBar",
         "RemoveQuestInfoElement",
         "RunCutsceneWithSetup",
+        "EntitySetAsDrawable",
+        "MoveToPosition",
         "ClearThingHasInformation",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "RemoveThing"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 116
+      "events": 147
+    },
+    {
+      "fixture": "entity_bully_ignores_unowned_presented_item",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "after the intro, a stale presentation message whose named object is no longer in the hero inventory fails retail GSI +0x2e0 and does not enter the DONT_WANT movie branch",
+      "expects": [
+        "MsgIsPresentedWithItem",
+        "IsObjectInThingsPossession"
+      ],
+      "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 35
     },
     {
       "fixture": "entity_bully_init",
@@ -888,6 +1246,10 @@
         "EntitySetThingAsAllyOfThing"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 8
@@ -908,6 +1270,10 @@
         "GetThingWithScriptName",
         "StartMovieSequence"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 3
@@ -929,6 +1295,10 @@
         "MsgIsHitByHero",
         "StartMovieSequence"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 7
@@ -945,9 +1315,89 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
+    },
+    {
+      "fixture": "entity_bully_refuses_owned_presented_item",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "after the intro, two retail presentation polls expose a non-teddy item; GSI +0x2e0 confirms the hero still owns it before the bully delivers DONT_WANT",
+      "expects": [
+        "MsgIsPresentedWithItem",
+        "IsObjectInThingsPossession",
+        "StartMovieSequence",
+        "Speak",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 43
+    },
+    {
+      "fixture": "entity_bully_runoff_hero_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "termination while acquiring the nested Hero resource after the fourth hit exits before the run-off movie, good deed, BullyRanOff state, or entity removal",
+      "expects": [
+        "AddQuestInfoBar",
+        "UpdateQuestInfoBar",
+        "RemoveQuestInfoElement",
+        "AcquireControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "RunCutsceneWithSetup",
+        "AddLogbookStoryEntryString",
+        "RemoveThing"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 73
+    },
+    {
+      "fixture": "entity_bully_runoff_victim_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "purpose": "termination while acquiring Victim unwinds Victim, Hero, then Bully before the run-off movie",
+      "expects": [
+        "AddQuestInfoBar",
+        "UpdateQuestInfoBar",
+        "RemoveQuestInfoElement",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "RunCutsceneWithSetup",
+        "AddLogbookStoryEntryString",
+        "RemoveThing"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 75
     },
     {
       "fixture": "entity_bully_talk_acquire_terminated",
@@ -965,6 +1415,10 @@
         "GetHealth",
         "GiveHeroYesNoQuestion"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 9
@@ -974,14 +1428,18 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
-      "purpose": "squared-vector distance fallback drives one walk-home iteration before normal idle termination",
+      "purpose": "the direct retail distance helper drives one walk-home iteration before normal idle termination",
       "expects": [
         "GetHomePos",
-        "GetPos",
+        "IsDistanceFromPositionOver",
         "MoveToPosition",
         "GetThingWithScriptName"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 18
@@ -999,6 +1457,10 @@
         "DeregisterTimer"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 8
@@ -1015,6 +1477,10 @@
       "forbids": [
         "RegisterTimer"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -1033,9 +1499,37 @@
       "forbids": [
         "RemoveThing"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 6
+    },
+    {
+      "fixture": "entity_dead_father_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+      "purpose": "termination reported by the blocking control-acquisition wrapper unwinds before corpse setup",
+      "expects": [
+        "NewScriptFrame",
+        "AcquireControl",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "EntityTeleportToThing",
+        "PlayLoopingAnimation",
+        "MiniMapRemoveMarker"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 3
     },
     {
       "fixture": "entity_dead_father_found_cleanup",
@@ -1051,6 +1545,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 14
@@ -1066,6 +1564,10 @@
         "SetIsPushableByHero"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 2
@@ -1082,6 +1584,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -1102,6 +1608,10 @@
       "forbids": [
         "StartMovieSequence"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 16
@@ -1123,9 +1633,13 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 53
+      "events": 56
     },
     {
       "fixture": "entity_guard_idle_terminated",
@@ -1141,6 +1655,10 @@
       "forbids": [
         "StartMovieSequence"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 6
@@ -1157,9 +1675,37 @@
         "SetScriptingStateGroup"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 9
+    },
+    {
+      "fixture": "entity_guard_lecture_speech_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "purpose": "termination during the first lecture line closes the movie bracket, releases control, skips every later line, and does not mark GuardsSpokenOnce",
+      "expects": [
+        "StartMovieSequence",
+        "Speak",
+        "PauseAllNonScriptedEntities",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [
+        "SetStateBool"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 34
     },
     {
       "fixture": "entity_guard_repeat_crime_chase",
@@ -1178,9 +1724,13 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 56
+      "events": 59
     },
     {
       "fixture": "entity_live_father_completes_intro",
@@ -1202,9 +1752,13 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 27
+      "events": 28
     },
     {
       "fixture": "entity_live_father_entry_cleanup",
@@ -1219,6 +1773,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 2
@@ -1234,6 +1792,10 @@
         "EntitySetDeedReactionsEnabled"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 6
@@ -1254,6 +1816,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 28
@@ -1273,6 +1839,10 @@
         "StartMovieSequence",
         "GetHealth"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 8
@@ -1288,6 +1858,10 @@
         "SetThingHasInformation"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 4
@@ -1304,6 +1878,10 @@
       "forbids": [
         "GetThingWithScriptName"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -1324,6 +1902,10 @@
         "GiveHeroYesNoQuestion",
         "GetHealth"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 7
@@ -1338,14 +1920,24 @@
         "GiveHeroYesNoQuestion",
         "TakeObjectFromHero",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "SetMasterGameState",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main",
+        "GivenTeddy"
+      ],
+      "coverEvidence": {
+        "GivenTeddy": [
+          "TakeObjectFromHero",
+          "SetMasterGameState"
+        ]
+      },
       "result": "ran",
       "trace": "match",
-      "events": 38
+      "events": 40
     },
     {
       "fixture": "entity_teddy_girl_ruined_acquire_terminated",
@@ -1365,6 +1957,10 @@
         "MoveToThing",
         "RemoveThing"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 14
@@ -1379,7 +1975,7 @@
         "EntitySetThingAsAllyOfThing",
         "SetStateInt",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "AcquireControl",
         "ReleaseControl"
       ],
@@ -1387,6 +1983,10 @@
         "StartMovieSequence",
         "SpeakAndWait"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 20
@@ -1402,13 +2002,39 @@
         "MsgIsHitByHeroSpecialAbility",
         "EntitySetThingAsAllyOfThing",
         "DisplayGameInfo",
-        "SpeakAndWait",
+        "Speak",
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 29
+      "events": 30
+    },
+    {
+      "fixture": "entity_teddy_girl_speech_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "purpose": "termination during the hit-reaction speech reaches the retail movie/pause cleanup path",
+      "expects": [
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "Speak",
+        "EndMovieSequence",
+        "ReleaseControl"
+      ],
+      "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 27
     },
     {
       "fixture": "entity_teddy_girl_teddy_ruined_walkoff",
@@ -1427,6 +2053,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 23
@@ -1452,9 +2082,13 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 56
+      "events": 57
     },
     {
       "fixture": "entity_theresa_entry_cleanup",
@@ -1469,6 +2103,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 2
@@ -1484,9 +2122,38 @@
         "EntitySetAsUseMovementInActions"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 6
+    },
+    {
+      "fixture": "entity_victim_brathit_hero_acquire_terminated",
+      "function": "Main",
+      "kind": "entity",
+      "source": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "purpose": "termination while acquiring the nested Hero resource for BRATHIT exits before constructing the movie and actor map, matching the native StartScriptingEntity retry termination branch",
+      "expects": [
+        "EntitySetThingAsAllyOfThing",
+        "GiveHeroMorality",
+        "AcquireControl"
+      ],
+      "forbids": [
+        "StartMovieSequence",
+        "RunCutsceneWithSetup",
+        "FixMovieSequenceCamera",
+        "ClearThingHasInformation"
+      ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
+      "result": "ran",
+      "trace": "match",
+      "events": 24
     },
     {
       "fixture": "entity_victim_first_hero_hit",
@@ -1503,9 +2170,13 @@
         "EndMovieSequence"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 35
+      "events": 36
     },
     {
       "fixture": "entity_victim_freed_thanks",
@@ -1523,9 +2194,13 @@
         "EndMovieSequence"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 26
+      "events": 29
     },
     {
       "fixture": "entity_victim_init",
@@ -1538,6 +2213,10 @@
         "EntitySetAsDamageable"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 7
@@ -1558,6 +2237,10 @@
         "GetStateBool",
         "StartMovieSequence"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 3
@@ -1574,6 +2257,10 @@
       "forbids": [
         "AcquireControl"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -1594,6 +2281,10 @@
       "forbids": [
         "RunCutsceneWithSetup"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 27
@@ -1603,9 +2294,9 @@
       "function": "Main",
       "kind": "entity",
       "source": "NewOakValeIntro/Entities/NOVI_Villager.lua",
-      "purpose": "the one-in-100 idle gate selects the female both-deeds table; speech index 1 matches lastVillagerSpeechIdx, so retail\u2019s retry yields one frame before index 3 is stored and its _40 line is queued",
+      "purpose": "the one-in-100 idle gate selects the female both-deeds table; speech index 1 matches lastVillagerSpeechIdx, so retail's retry yields one frame before index 3 is stored and its _40 line is queued",
       "expects": [
-        "random",
+        "RetailRandModulo",
         "SetTimer",
         "AddNewConversation",
         "AddPersonToConversation",
@@ -1613,6 +2304,15 @@
         "AddLineToConversation"
       ],
       "forbids": [],
+      "covers": [
+        "Main",
+        "GetVillagerSpeechIndex"
+      ],
+      "coverEvidence": {
+        "GetVillagerSpeechIndex": [
+          "RetailRandModulo"
+        ]
+      },
       "result": "ran",
       "trace": "match",
       "events": 23
@@ -1627,7 +2327,7 @@
         "EntitySetThingAsAllyOfThing",
         "SetStateInt",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "StartMovieSequence",
         "Speak",
         "EndMovieSequence",
@@ -1639,6 +2339,10 @@
         "ReleaseControl"
       ],
       "forbids": [],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 36
@@ -1654,6 +2358,10 @@
         "EntitySetThingAsAllyOfThing"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 5
@@ -1670,6 +2378,10 @@
       "forbids": [
         "IsTalkedToByHero"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 1
@@ -1681,13 +2393,22 @@
       "source": "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "purpose": "deterministic one-in-100 mutter selects male good-deed line index 2 and records the nonrepeating speech index",
       "expects": [
-        "random",
+        "RetailRandModulo",
         "SetTimer",
         "AddNewConversation",
         "SetStateInt",
         "AddLineToConversation"
       ],
       "forbids": [],
+      "covers": [
+        "Main",
+        "GetVillagerSpeechIndex"
+      ],
+      "coverEvidence": {
+        "GetVillagerSpeechIndex": [
+          "RetailRandModulo"
+        ]
+      },
       "result": "ran",
       "trace": "match",
       "events": 21
@@ -1697,14 +2418,18 @@
       "function": "AddBadDeed",
       "kind": "quest",
       "source": null,
-      "purpose": "first bad deed increments state, displays/logs basics, and records bad-deed enum member zero",
+      "purpose": "first bad deed increments state, applies retail morality, displays/logs basics, and records bad-deed enum member zero",
       "expects": [
         "SetStateInt",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "SetStateBool"
       ],
       "forbids": [],
+      "covers": [
+        "AddBadDeed"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 8
@@ -1714,15 +2439,19 @@
       "function": "AddGoodDeed",
       "kind": "quest",
       "source": null,
-      "purpose": "first good deed increments state, displays/logs basics, and points the underfunded hero toward sweets",
+      "purpose": "first good deed increments state, applies retail morality, displays/logs basics, and points the underfunded hero toward sweets",
       "expects": [
         "SetStateInt",
         "DisplayGameInfo",
-        "AddLogbookStoryEntryString",
+        "AddLogbookTutorialEntry",
         "SetQuestCardObjective",
         "UpdateQuestInfoCounter"
       ],
       "forbids": [],
+      "covers": [
+        "AddGoodDeed"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 13
@@ -1732,7 +2461,7 @@
       "function": "AttackStuff",
       "kind": "quest",
       "source": null,
-      "purpose": "direct trace of the pre-attack to post-attack section swap and raid presentation",
+      "purpose": "direct trace of the exact pre-attack to post-attack section swap and raid-presentation operands/order",
       "expects": [
         "ActivateQuest",
         "DeactivateQuest",
@@ -1741,6 +2470,10 @@
         "SetQuestCardObjective"
       ],
       "forbids": [],
+      "covers": [
+        "AttackStuff"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 6
@@ -1762,15 +2495,30 @@
         "TakeObjectFromHero",
         "AddLogbookStoryEntry",
         "FadeScreenIn",
-        "PlayCutscene",
+        "RunCutsceneWithSetup",
         "ResetToDefaultTheme",
         "StopOverrideMusic",
         "SetQuestAsCompleted"
       ],
       "forbids": [],
+      "covers": [
+        "DoMission",
+        "AttackStuff",
+        "PostAttackStuff"
+      ],
+      "coverEvidence": {
+        "AttackStuff": [
+          "TransitionToTheme",
+          "EntityTeleportToThing"
+        ],
+        "PostAttackStuff": [
+          "ResetToDefaultTheme",
+          "SetQuestAsCompleted"
+        ]
+      },
       "result": "ran",
       "trace": "match",
-      "events": 82
+      "events": 87
     },
     {
       "fixture": "quest_domission_terminated_during_childhood",
@@ -1785,6 +2533,10 @@
         "TransitionToTheme",
         "SetQuestAsCompleted"
       ],
+      "covers": [
+        "DoMission"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 25
@@ -1802,16 +2554,20 @@
         "SetTimer"
       ],
       "forbids": [],
+      "covers": [
+        "Init"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 38
+      "events": 36
     },
     {
       "fixture": "quest_main_fresh_start",
       "function": "Main",
       "kind": "quest",
       "source": null,
-      "purpose": "fresh start: childhood setup then blocks on AttackOver until the frame budget ends",
+      "purpose": "fresh start: exact child morph, section activation, one-frame settle, live Hero reacquisition, and childhood controls before blocking on AttackOver",
       "expects": [
         "FinalizeEntityBindings",
         "SetQuestCardObjective",
@@ -1824,9 +2580,13 @@
         "DeactivateQuest",
         "SetQuestAsCompleted"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 52
+      "events": 56
     },
     {
       "fixture": "quest_main_reload_after_attack",
@@ -1838,7 +2598,7 @@
         "DeactivateQuest",
         "TransitionToTheme",
         "EntityTeleportToThing",
-        "PlayCutscene",
+        "RunCutsceneWithSetup",
         "SetQuestAsCompleted",
         "DeactivateQuestLater"
       ],
@@ -1846,9 +2606,13 @@
         "TurnCreatureInto",
         "KickOffQuestStartScreen"
       ],
+      "covers": [
+        "Main"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 78
+      "events": 88
     },
     {
       "fixture": "quest_onpersist_roundtrip",
@@ -1861,6 +2625,10 @@
         "SetStateBool"
       ],
       "forbids": [],
+      "covers": [
+        "OnPersist"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 3
@@ -1873,13 +2641,17 @@
       "purpose": "termination while waiting for the separate post-attack section prevents scene setup",
       "expects": [
         "GetThingWithScriptName",
-        "GetAllThingsWithScriptName",
+        "IsAlive",
         "NewScriptFrame"
       ],
       "forbids": [
         "CacheMusicSet",
         "EntityTeleportToThing"
       ],
+      "covers": [
+        "PostAttackStuff"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 3
@@ -1897,6 +2669,10 @@
         "MsgIsTutorialClickedPast"
       ],
       "forbids": [],
+      "covers": [
+        "ManageQuestCoreMarkers"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 26
@@ -1913,6 +2689,10 @@
       "forbids": [
         "MiniMapRemoveMarker"
       ],
+      "covers": [
+        "ManageQuestCoreMarkers"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 6
@@ -1930,9 +2710,13 @@
         "RemoveQuestInfoElement"
       ],
       "forbids": [],
+      "covers": [
+        "StartBarrelTimer"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 23
+      "events": 26
     },
     {
       "fixture": "quest_thread_start_barrel_timer_terminated",
@@ -1946,9 +2730,13 @@
       "forbids": [
         "RemoveQuestInfoElement"
       ],
+      "covers": [
+        "StartBarrelTimer"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 7
+      "events": 11
     },
     {
       "fixture": "quest_thread_watch_barrels",
@@ -1963,9 +2751,13 @@
         "AddItemToContainer"
       ],
       "forbids": [],
+      "covers": [
+        "WatchBarrels"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
-      "events": 62
+      "events": 64
     },
     {
       "fixture": "quest_thread_watch_for_got_gold",
@@ -1977,18 +2769,20 @@
         "SetQuestCardObjective"
       ],
       "forbids": [],
+      "covers": [
+        "WatchForGotGold"
+      ],
+      "coverEvidence": {},
       "result": "ran",
       "trace": "match",
       "events": 7
     }
   ],
   "runtimeOnlyBranches": [
-    "actual cutscene playback / camera fixing (CS_OAKVALEINTRO_HESDEADJIM)",
-    "section swap side effects (Q_NewOakValeIntro_PreAttack -> Q__OakValeIntro_PostAttack thing lifetimes)",
-    "TurnCreatureInto hero morph and CREATURE_HERO_CHILD controls",
-    "info-bar colour rendering and timer cadence",
-    "morality amounts (game-data float)",
-    "entity AI actions (FollowThing, Speak, conversations) and their blocking semantics",
-    "region unload/reload thread termination timing"
+    "rendered camera/animation presentation parity for CS_OAKVALEINTRO_HESDEADJIM (the 89-command retail macro, 13-use/11-record camera sequence, six-command skip cleanup, runtime execution, camera-fix bracket, and state restoration are proven)",
+    "visual and non-scripted world-population parity after the proven section swap (post-attack Dead Father allocation/init, pre-attack Live Father unwind, and Dead Father Main entry are runtime-observed in three runs)",
+    "engine-side Hero morph result after the proven TurnCreatureInto(CREATURE_HERO_CHILD) out-buffer and post-frame handle-reacquisition boundary",
+    "visual endpoint/pathfinding parity for the intermittent Affair Wife route and Bully run-off compatibility fallback (successful Wife arrival and blocking Speak completion are runtime-observed)",
+    "repeated mid-childhood region unload/reload re-entry timing (normal quest-completion entity unwind, persistence, host destruction, coroutine cleanup, and retained-reference release are proven)"
   ]
 }

@@ -1,0 +1,43 @@
+{
+  "schema": "new-oakvale-timer-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "constructor": {
+    "address": "0x00DAAC00",
+    "rangeSize": 218,
+    "functionBytesSha256": "122B7393A9AF1176987B91D9718BC6C913312D67A5BF4D85F330DA931943756F",
+    "registrations": [
+      {
+        "callAddress": "0x00DAACB6",
+        "interfaceSlot": "0x15C",
+        "storeAddress": "0x00DAACBC",
+        "fieldOffset": "0x104"
+      },
+      {
+        "callAddress": "0x00DAACCA",
+        "interfaceSlot": "0x15C",
+        "storeAddress": "0x00DAACD0",
+        "fieldOffset": "0x108"
+      }
+    ]
+  },
+  "destructor": {
+    "address": "0x00DBEFC0",
+    "rangeSize": 450,
+    "functionBytesSha256": "232D98F62015F85C1AEB9AEF94203CC85704D4EF4DB67FA9E45AA8A65B9454C9",
+    "deregistrations": [
+      {
+        "loadAddress": "0x00DBEFCA",
+        "fieldOffset": "0x108",
+        "callAddress": "0x00DBEFD4",
+        "interfaceSlot": "0x160"
+      },
+      {
+        "loadAddress": "0x00DBEFE0",
+        "fieldOffset": "0x104",
+        "callAddress": "0x00DBEFE9",
+        "interfaceSlot": "0x160"
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "address": "0x00DB5330",
+  "size": 6128,
+  "sourceSha256": "4b7edd24f8d5d936ec037a821e1ae8fb79bbae5ecfde05358e78d9c27b2a33f2",
+  "bytesSha256": "93a3b163ba6b2cc47a851450dd5b1f8a06f08f0d560a6ef39defe6e9d62ab6c3",
+  "lookupSite": "0xdb55e2",
+  "scriptName": "M_BarrelManWalkOff",
+  "scriptNameAddress": "0x12d91f4",
+  "wrapperOffset": 172,
+  "implementationOffset": 176,
+  "querySite": "0xdb5608",
+  "fallbackAddress": "0x143e8e0",
+  "profiledCallees": [
+    {
+      "address": "0x8a7d60",
+      "size": 151,
+      "bytesSha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+    },
+    {
+      "address": "0x99eae0",
+      "size": 12,
+      "bytesSha256": "65d790bd8e62fef3658c4d1320e81e8b1c6d54ab12879256c0e4e4c533c1c53e"
+    },
+    {
+      "address": "0x4aa980",
+      "size": 18,
+      "bytesSha256": "f5c90c753c25a2a2cac25d36b81d4dab11a2555b125fed4241097a24392f47e5"
+    },
+    {
+      "address": "0x7e7490",
+      "size": 57,
+      "bytesSha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": "0xcbe45c",
+      "size": 91,
+      "bytesSha256": "ff5da0431572dcd8e97f57d11e0ab7675b02a5c1567180788324d61fd5110252"
+    },
+    {
+      "address": "0x89b5b0",
+      "size": 454,
+      "bytesSha256": "b6ef67fa058fe9af6ab1d973894da7bee1e9ce37894b98b98a00209694f95fd9"
+    }
+  ],
+  "review": "DB55E2 outputESP+AC and stringESP+A0, RET8. Following string cleanupDB55EF uses A0 and RET0, so frame baseline is unchanged. DB55F4 loads implementationESP+B0 = output+4, null branch fallback143E8E0, else implementation slot18 atDB5608. The scalar-channel copies follow atDB560B. Source explicitly compares impl to null; EBP is the zero register in this caller.",
+  "limitations": [
+    "Fallback vector contents and runtime empty-table normalization remain unresolved.",
+    "Vector channel copying and distance/movement consumers are not lowered by this mapping.",
+    "Later position queries use different cached wrappers and are not included."
+  ],
+  "vectorConsumers": {
+    "copyStart": "0xdb560b",
+    "copyEndExclusive": "0xdb5639",
+    "frameVectorOffset": 184,
+    "channelOffsets": [
+      0,
+      4,
+      8
+    ],
+    "firstDistanceSite": "0xdb5647",
+    "repeatDistanceSite": "0xdb56f2",
+    "repeatActorSite": "0xdb56e4",
+    "actorResourceOffset": 20,
+    "thresholdBits": "0x40000000",
+    "threshold": 2.0,
+    "review": "At DB560B EAX is the queried or fallback vector. Stores B8 before pushes, C0 after one push, and C8 after two pushes normalize to frame offsets B8/BC/C0. GetScriptThing DB5639 consumes hidden output at E8, resource at14, RET4; remaining threshold push leaves ESP at baseline-4. EDX=ESP+BC therefore addresses baseline+B8. Repeat DB56E4/DB56F2 has the same resource, output, vector and threshold. Actor resource ownership itself is not lowered."
+  },
+  "actorAcquisition": {
+    "sites": [
+      "0xdb5577",
+      "0xdb55a4"
+    ],
+    "resourceOffset": 20,
+    "priority": 4,
+    "receiverOrigin": "entity this+8",
+    "review": "DB5339 ESI=entryECX; DB533C EDI=ESI+8. EDI is not reassigned except MOV EDI,EDI until epilogue POPs. Calls follow native callee-save convention. Both acquisition calls pass EDI, resource baselineESP+14, priority4. Success edge enters first position query; false retries and termination exits. No intervening resource rebind before the first two GetScriptThing queries."
+  },
+  "actorAnnotatedSha256": "aa0c45f810675d6175abacd7320e7fd7e9cac197b5bbf755252c70edba38eedd"
+}

@@ -1,0 +1,17 @@
+{
+  "address": "0x00DB4F70",
+  "size": 562,
+  "sourceSha256": "26965b9153e0092f8348f7eb8c90578a198605bb110774243f6bac3106f48ec9",
+  "annotatedSha256": "e2fa56e314c0e5870a4d98268dcc0ed4bab6e2b1ca5d1ad49e1f48b2ed95c6e8",
+  "bytesSha256": "7beec77a43819ec0718fc5d13a93d2fbbe1d4b5e4612da1c8f69966048298e19",
+  "original": "      if (bVar2) {\r\n        ppuVar8 = &puStack_44;\r\n        puStack_44 = (undefined1 *)0xff00ff00;\r\n        pCStack_48 = (CCharString *)0xff00ff00;\r\n        ppCVar5 = &pCStack_48;\r\n      }\r\n      else {\r\n        ppuVar8 = &puStack_40;\r\n        puStack_40 = (undefined1 *)0xffff0000;\r\n        pCStack_3c = (CCharString *)0xffff0000;\r\n        ppCVar5 = &pCStack_3c;\r\n      }\r\n      GSI->ChangeQuestInfoBarColour\r\n                (*(undefined4 *)(param_1 + 0x60),ppCVar5,ppuVar8);",
+  "nativeBranches": {
+    "green": "0x00DB50C9",
+    "red": "0x00DB50F8",
+    "join": "0x00DB5125",
+    "call": "0x00DB512C"
+  },
+  "layout": "BGRA bytes; BL zeroed at 0xDB5008, preserved by native x86 callee ABI",
+  "trueColour": "0xff00ff00",
+  "falseColour": "0xffff0000"
+}

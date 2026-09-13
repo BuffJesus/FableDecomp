@@ -1,0 +1,25 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5058,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "e716213b6db72d3cf4efbc57ae6e623326b9bd89507dd53d762c2427966cfd92",
+  "bytesSha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+  "edits": [
+    {
+      "old": "uStack_118 = uVar17;",
+      "new": "native_arg_man_cleanup_mask = uVar17;",
+      "count": 5
+    },
+    {
+      "old": "uStack_118 = uVar17 & 0xfffffffe;",
+      "new": "native_arg_man_cleanup_mask = uVar17 & 0xfffffffe;",
+      "count": 1
+    },
+    {
+      "old": "uVar14 = uStack_118;",
+      "new": "uVar14 = native_arg_man_cleanup_mask;",
+      "count": 1
+    }
+  ],
+  "review": "Native EBX mask spilled to baseline stack44 after each conditional construction and destruction; last clears4/2/1 atDB0BD3/0BEB/0C03, stores0BDD/0BF5/0C0D. Frame/termination loop1C71..1C82 jumps0B2B which reloads EBX fromstack44 before0B30. Scope edits to scalar mask stores and backedge load; leave address-taken uStack_118 dialogue expression unresolved, not renamed."
+}

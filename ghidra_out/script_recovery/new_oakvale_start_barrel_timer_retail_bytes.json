@@ -1,0 +1,125 @@
+{
+  "schema": "new-oakvale-start-barrel-timer-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DB4F70",
+  "rangeSize": 562,
+  "functionBytesSha256": "7BEEC77A43819EC0718FC5D13A93D2FBBE1D4B5E4612DA1C8F69966048298E19",
+  "instructionCount": 163,
+  "strings": [
+    "",
+    "HUD_CLOCK_ICON",
+    "M_WHouse_GuardPoint"
+  ],
+  "indirectCalls": [
+    {
+      "site": "0x00DB4F85",
+      "slot": "0x168"
+    },
+    {
+      "site": "0x00DB4F95",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DB4FB6",
+      "slot": "0x168"
+    },
+    {
+      "site": "0x00DB503B",
+      "slot": "0x510"
+    },
+    {
+      "site": "0x00DB5075",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DB5095",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DB50B1",
+      "slot": "0x118"
+    },
+    {
+      "site": "0x00DB512C",
+      "slot": "0x534"
+    },
+    {
+      "site": "0x00DB5150",
+      "slot": "0x168"
+    },
+    {
+      "site": "0x00DB5169",
+      "slot": "0x530"
+    },
+    {
+      "site": "0x00DB518C",
+      "slot": "0x548"
+    }
+  ],
+  "keyDirectCalls": [
+    {
+      "site": "0x00DB4F9A",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DB4FC2",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DB509A",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DB50BD",
+      "target": "0x00CBE2FF"
+    },
+    {
+      "site": "0x00DB517A",
+      "target": "0x00CB7940"
+    }
+  ],
+  "fields": {
+    "watchTimer": {
+      "offset": "0x108",
+      "readSites": [
+        "0x00DB4F7C",
+        "0x00DB4FAD",
+        "0x00DB513D"
+      ]
+    },
+    "guiBarrelCounter": {
+      "offset": "0x60",
+      "storeSite": "0x00DB5045",
+      "readSites": [
+        "0x00DB5128",
+        "0x00DB515F",
+        "0x00DB5186"
+      ]
+    },
+    "barrelManSpokenToHeroOnReturn": {
+      "offset": "0x73",
+      "readSites": [
+        "0x00DB5084",
+        "0x00DB516F"
+      ]
+    }
+  },
+  "barArguments": {
+    "current": 45.0,
+    "maximum": 0.0,
+    "colour1": "0xFF00FF00",
+    "colour2": "0xFF00FF00",
+    "texture": "HUD_CLOCK_ICON",
+    "text": "",
+    "scale": 1.0
+  },
+  "guardDistanceBits": "0x40000000",
+  "guardDistance": 2.0,
+  "insideColour": "0xFF00FF00",
+  "outsideColour": "0xFFFF0000",
+  "unchangedMaximum": -1.0,
+  "unchangedScale": -1.0,
+  "terminationCalls": 4,
+  "removeOnNormalExitOnly": true
+}

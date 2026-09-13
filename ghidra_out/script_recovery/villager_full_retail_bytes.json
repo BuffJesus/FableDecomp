@@ -1,0 +1,46 @@
+{
+  "schema": "villager-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_Villager",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DADF00",
+      "endExclusive": "0x00DADF52",
+      "rangeSize": 82,
+      "bytesSha256": "A306C925FE51364685DDD94123FFC6E17C24499B64409BDD681FE800E412BF15",
+      "instructionCount": 33,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DADF80",
+      "endExclusive": "0x00DAEA63",
+      "rangeSize": 2787,
+      "bytesSha256": "3910EB3A5F663C8A896CE64E636E0CB4A6C2FA9C03BC539F44A480B74F8630C1",
+      "instructionCount": 823,
+      "terminal": "ret"
+    },
+    {
+      "name": "GetVillagerSpeechIndex",
+      "address": "0x00DAEBF0",
+      "endExclusive": "0x00DAEC5D",
+      "rangeSize": 109,
+      "bytesSha256": "DC89115B8E75EC1549062450B77A1A32DD284F948D21400B3358C42F4DF2FE2B",
+      "instructionCount": 44,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "complete Init, Main dispatcher, and speech-index helper",
+    "speechAxes": [
+      "sex",
+      "good deeds",
+      "bad deeds",
+      "both/neither",
+      "nonrepeating random index"
+    ],
+    "hitOutcome": "AddBadDeed(2) and attacked speech"
+  }
+}

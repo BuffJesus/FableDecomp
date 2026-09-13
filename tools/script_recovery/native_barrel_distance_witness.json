@@ -1,0 +1,24 @@
+{
+  "address": "0x00DB4F70",
+  "size": 562,
+  "sourceSha256": "26965b9153e0092f8348f7eb8c90578a198605bb110774243f6bac3106f48ec9",
+  "annotatedSha256": "08202489c8c0d7bf6d4af4409aa30f5b4afc107567163f8ff51351f1bd5c46a3",
+  "bytesSha256": "7beec77a43819ec0718fc5d13a93d2fbbe1d4b5e4612da1c8f69966048298e19",
+  "lookupSite": "0x00DB5075",
+  "distanceSite": "0x00DB50BD",
+  "scriptNameAddress": "0x012D9000",
+  "scriptName": "M_WHouse_GuardPoint",
+  "distance": 2.0,
+  "lookupCount": 1,
+  "lookupText": "GSI->GetThingWithScriptName(ppVar9,&stack0xffffffcc);",
+  "originalDistance": "IsDistanceBetweenThingsUnder(pCVar4,(CScriptThing *)&stack0xffffffcc,fVar7)",
+  "outputSlot": "local_native_guard_point",
+  "distanceReceiver": "pCVar4",
+  "distanceOperand": "fVar7",
+  "knownSetupCalls": {
+    "0x00DB50B1": [
+      0,
+      "GetHero"
+    ]
+  }
+}

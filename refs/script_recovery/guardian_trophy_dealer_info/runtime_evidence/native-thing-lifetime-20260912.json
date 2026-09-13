@@ -1,0 +1,219 @@
+{
+  "scope": "Execute native resource Thing getter, counted copies and non-deleting destructor.\n\nExpert GetScriptThing tails into the actual copy constructor. Allocation-free\nbase ctor/dtor and final object/free callbacks are doubles; refcounts execute.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "populated": false,
+      "initial_refs": 1,
+      "copies": 1,
+      "source_first": false,
+      "events": [
+        "copy_refs_1",
+        "destroy_copy_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_source_refs_0"
+      ]
+    },
+    {
+      "populated": false,
+      "initial_refs": 1,
+      "copies": 1,
+      "source_first": true,
+      "events": [
+        "copy_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_source_refs_0",
+        "destroy_copy_refs_0"
+      ]
+    },
+    {
+      "populated": false,
+      "initial_refs": 1,
+      "copies": 2,
+      "source_first": false,
+      "events": [
+        "copy_refs_1",
+        "copy_refs_1",
+        "destroy_copy_refs_1",
+        "destroy_copy_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_source_refs_0"
+      ]
+    },
+    {
+      "populated": false,
+      "initial_refs": 1,
+      "copies": 2,
+      "source_first": true,
+      "events": [
+        "copy_refs_1",
+        "copy_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_source_refs_0",
+        "destroy_copy_refs_0",
+        "destroy_copy_refs_0"
+      ]
+    },
+    {
+      "populated": false,
+      "initial_refs": 2,
+      "copies": 1,
+      "source_first": false,
+      "events": [
+        "copy_refs_2",
+        "destroy_copy_refs_2",
+        "destroy_source_refs_1"
+      ]
+    },
+    {
+      "populated": false,
+      "initial_refs": 2,
+      "copies": 1,
+      "source_first": true,
+      "events": [
+        "copy_refs_2",
+        "destroy_source_refs_1",
+        "destroy_copy_refs_1"
+      ]
+    },
+    {
+      "populated": false,
+      "initial_refs": 2,
+      "copies": 2,
+      "source_first": false,
+      "events": [
+        "copy_refs_2",
+        "copy_refs_2",
+        "destroy_copy_refs_2",
+        "destroy_copy_refs_2",
+        "destroy_source_refs_1"
+      ]
+    },
+    {
+      "populated": false,
+      "initial_refs": 2,
+      "copies": 2,
+      "source_first": true,
+      "events": [
+        "copy_refs_2",
+        "copy_refs_2",
+        "destroy_source_refs_1",
+        "destroy_copy_refs_1",
+        "destroy_copy_refs_1"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 1,
+      "copies": 1,
+      "source_first": false,
+      "events": [
+        "copy_refs_2",
+        "destroy_copy_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_source_refs_0"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 1,
+      "copies": 1,
+      "source_first": true,
+      "events": [
+        "copy_refs_2",
+        "destroy_source_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_copy_refs_0"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 1,
+      "copies": 2,
+      "source_first": false,
+      "events": [
+        "copy_refs_2",
+        "copy_refs_3",
+        "destroy_copy_refs_2",
+        "destroy_copy_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_source_refs_0"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 1,
+      "copies": 2,
+      "source_first": true,
+      "events": [
+        "copy_refs_2",
+        "copy_refs_3",
+        "destroy_source_refs_2",
+        "destroy_copy_refs_1",
+        "delete_object",
+        "free_info",
+        "destroy_copy_refs_0"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 2,
+      "copies": 1,
+      "source_first": false,
+      "events": [
+        "copy_refs_3",
+        "destroy_copy_refs_2",
+        "destroy_source_refs_1"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 2,
+      "copies": 1,
+      "source_first": true,
+      "events": [
+        "copy_refs_3",
+        "destroy_source_refs_2",
+        "destroy_copy_refs_1"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 2,
+      "copies": 2,
+      "source_first": false,
+      "events": [
+        "copy_refs_3",
+        "copy_refs_4",
+        "destroy_copy_refs_3",
+        "destroy_copy_refs_2",
+        "destroy_source_refs_1"
+      ]
+    },
+    {
+      "populated": true,
+      "initial_refs": 2,
+      "copies": 2,
+      "source_first": true,
+      "events": [
+        "copy_refs_3",
+        "copy_refs_4",
+        "destroy_source_refs_3",
+        "destroy_copy_refs_2",
+        "destroy_copy_refs_1"
+      ]
+    }
+  ],
+  "native_bytes": {
+    "0x7e7490": "8b490885c9568b74240875218bcee82d2e1b00c7068c8c2301c7460400000000c74608000000008bc65ec204008b0156ff50308bc65ec2",
+    "0x4abe90": "8bc18b4c2404c7008c8c23018b51048950048b490885c98948087402ff01c20400",
+    "0x4aa840": "568bf1c7068c8c23018b460885c0741cff088b460883380075128b4808ff50048b460850e85341750083c404c7460400000000c74608000000008bce5ee95efa4e00"
+  }
+}

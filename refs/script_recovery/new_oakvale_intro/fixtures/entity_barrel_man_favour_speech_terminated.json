@@ -1,0 +1,14 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelMan.lua","expect":["StartMovieSequence","Speak","DeregisterTimer","PauseAllNonScriptedEntities","EndMovieSequence","ReleaseControl"],"forbid":["FadeScreenOut","EntityTeleportToThing","SetStateBool"],"note":"termination during the initial warehouse-favour line unwinds the movie, deregisters the scoped approach timer, and skips the fade, teleports, and handoff state"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"man_start","scope":"Entity"}],
+  "Quest.GetThingWithScriptName(M_WHouse_GuardPoint)":[{"handle":"guard_point","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true],
+  "Entity.AcquireControl":[true],
+  "Quest.RegisterTimer":[900],
+  "Entity.IsDistanceFromPositionOver":[false],
+  "Quest.GetHealth":[100],
+  "Entity.Speak":[false]
+}

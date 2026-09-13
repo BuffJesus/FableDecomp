@@ -1,0 +1,9 @@
+{
+  "video": "C:\\Users\\Cornelio\\Videos\\Radeon ReLive\\Fable - The Lost Chapters\\Fable - The Lost Chapters_2026.09.12-10.33.mp4",
+  "videoSHA256": "f67720b1d4d74d6abc008402ed56c2f36eb549180ffe98051706752bef110d97",
+  "launchEvidence": "stock-launch-no-extender-20260912.json",
+  "userObservation": "done; visual result pending review",
+  "visualObservation": "Direct stock-launch recording shows Bully disappearing while the scene remains visible, followed by victim/teddy scene.",
+  "moduleEnumerationLimit": "PowerShell returned only seven native/WOW64 modules; this is not an exhaustive enumeration of 32-bit modules. Do not use that list alone as proof of DLL absence.",
+  "additionalEvidence": "Launched Fable.exe directly; extender log remained unchanged from the 10:20 comparison."
+}

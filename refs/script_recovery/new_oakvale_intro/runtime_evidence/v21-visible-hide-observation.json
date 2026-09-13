@@ -1,0 +1,8 @@
+{
+  "version": "v21",
+  "result": "FAILED visual skip test",
+  "userObservation": "He does not run at all now. Just disappears before running.",
+  "log": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260912-v21-visible-hide.log",
+  "sha256": "9a1c6ffd3393b78929ef36035188f6acb5c2ec274697f6acc06f7c9fbb6a92af",
+  "limits": "Command trace proves skip dispatch and no fallback; no fade-state or video capture for this run."
+}

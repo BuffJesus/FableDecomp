@@ -1,0 +1,24 @@
+{
+  "schema": "new-oakvale-quest-teardown/0.1",
+  "class": "NScript::CQ_NewOakValeIntroScript",
+  "deletingDestructor": {
+    "address": "0x00DBEFA0",
+    "implementation": "0x00DBEFC0",
+    "deleteFlag": 1
+  },
+  "implementation": {
+    "semanticClassification": "CQ_NewOakValeIntroScript destructor",
+    "misleadingCurrentName": "CParticleEmitter_Dtor_7",
+    "timerDeregistrationOrder": ["0x108", "0x104"],
+    "vectorDestructionOrder": ["0xF0", "0xE4", "0xD8", "0xCC", "0xC0", "0xB4", "0xA8", "0x9C"],
+    "baseDestructor": "0x00CBD510"
+  },
+  "baseDestructor": {
+    "semanticClassification": "CScriptBase destructor",
+    "misleadingCurrentName": "NParticleEngine::CParticleEmitter::DeleteAllParticles",
+    "exactClassNameResolved": true,
+    "constructor": "0x00CB8110",
+    "consumerScriptDestructors": 125,
+    "evidence": "destroys the list/vector storage initialized by the independently FSE-addressed CScriptBase constructor at offsets 0x04, 0x08, 0x18, and 0x30; all 125 helper-IR consumers are script destructor roles"
+  }
+}

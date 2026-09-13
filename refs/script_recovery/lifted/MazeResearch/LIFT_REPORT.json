@@ -1,0 +1,56 @@
+{
+  "script": "V_MazeResearch",
+  "package": "MazeResearch",
+  "state": {
+    "0x48": [
+      "SwordTaken",
+      "Bool"
+    ],
+    "0x49": [
+      "BookRead",
+      "Bool"
+    ]
+  },
+  "functions": {
+    "Init": {
+      "lines": 2,
+      "todo": [],
+      "calls": [
+        "SetStateBool",
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 5,
+      "todo": [],
+      "calls": [
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "GetActiveQuestName",
+        "SetQuestCardObjective"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 6,
+      "todo": [],
+      "calls": [
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool"
+      ]
+    }
+  },
+  "entities": [
+    "EmptyGrave",
+    "HistoryBookcase"
+  ],
+  "threads": [],
+  "helpers": [],
+  "entityBodies": {}
+}

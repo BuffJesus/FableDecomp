@@ -1,0 +1,10 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BarrelThug.lua","expect":["StartMovieSequence","PauseAllNonScriptedEntities","Speak","EndMovieSequence","ReleaseControl"],"forbid":["FollowThing"],"note":"termination reported by Forge's blocking Speak unwinds the movie bracket and skips the post-speech DoneIntro/follow actions"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true],
+  "Quest.GetStateBool(BarrelManLeftHeroInCharge)":[true],
+  "Quest.GetThingWithScriptName(M_WHouse_ManStart)":[{"handle":"thug_start","scope":"Entity"}],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetHealth":[100],
+  "Entity.Speak":[false]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "new-oakvale-do-mission-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DBDE40",
+  "rangeSize": 1172,
+  "functionBytesSha256": "E3785B3E55A0B1F5556C67316632FAEEC99B891B1BCE0743BD1B762153A91542",
+  "strings": ["StartOakVale","CREATURE_HERO_CHILD","WatchBarrels","WatchForGotGold","ManageQuestCoreMarkers","Q_NewOakValeIntro_PreAttack","HerosOldHouse"],
+  "spawnedCallbacks": ["0x00DBE890","0x00DBE2E0","0x00DBE4E0"],
+  "attackOverReadCount": 3,
+  "attackOverWidths": [1],
+  "terminationTarget": "0x00CB7940",
+  "terminationChecks": 6,
+  "attackStuffTarget": "0x00DBE3C0",
+  "postAttackStuffTarget": "0x00DBEB20",
+  "directPhaseCalls": ["0x00DBE3C0","0x00DBEB20"],
+  "interfaceSlots": ["0x30","0x1C","0x30","0x5D0","0x118","0x178","0xAE8","0x450","0x1C","0x118","0x814","0xA20","0xA18","0x8E8","0x554","0x120","0x6BC","0x6AC","0xA3C","0x4D4","0xAE0","0x1C","0x5D0","0x118","0x814","0x8E8","0xA3C","0x480","0xA3C","0x464"]
+}

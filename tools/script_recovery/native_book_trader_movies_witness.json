@@ -1,0 +1,206 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4042,
+  "bytesSha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974",
+  "setupSize": 4039,
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "3b146c758ebb448fb8a316c719112f38181ca30aa66b28b0b306c6a5bf4295f8",
+  "callees": [
+    {
+      "address": "0x6e7b60",
+      "size": 26,
+      "bytesSha256": "a57f349ecfe373e4e92be7445ba5c8a19d1f7b5c7cd54df6ef3f977deb846834"
+    },
+    {
+      "address": "0x6e7b80",
+      "size": 66,
+      "bytesSha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+    },
+    {
+      "address": "0x89b110",
+      "size": 248,
+      "bytesSha256": "fa21dc33a6b138a069086288ef428e3c843d1164586b9bef423e6503928da06b"
+    }
+  ],
+  "events": [
+    {
+      "operation": "start",
+      "resource": 152,
+      "setup": {
+        "address": 14369780,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          132
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            132
+          ],
+          [
+            "stack",
+            152
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "start",
+      "resource": 44,
+      "setup": {
+        "address": 14370279,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          84
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            84
+          ],
+          [
+            "stack",
+            44
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "end",
+      "resource": [
+        "register",
+        "ecx"
+      ],
+      "setup": {
+        "address": 14372065,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": [
+        "register",
+        "ecx"
+      ],
+      "setup": {
+        "address": 14372689,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "receiverRegister": "ecx",
+  "selections": {
+    "0xdb4510": 152,
+    "0xdb4cdd": 44,
+    "0xdb4f1b": 152,
+    "0xdb4f30": 152,
+    "0xdb4f4d": 44
+  },
+  "constructors": [
+    "CCarriedReadableDef::CCarriedReadableDef(aCStack_ac);",
+    "CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&piStack_118);"
+  ],
+  "destructors": [
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::\\~CScriptGameResourceObjectMovieBase\\(pCVar13\\);",
+      "count": 2
+    }
+  ],
+  "review": "Two movie starts use stack152 and44. Both normal DB4CE1 and terminal DB4F51 destructors receive ECX selected by the five LEA sites at baseline ESP. Other ECX writes and calls invalidate selections. All native CFG paths balance one active movie. Misnamed stackfed0 destructors actually call actor destructor7E74D0 and remain unresolved. Cleanup gotos are a separate lowering problem."
+}

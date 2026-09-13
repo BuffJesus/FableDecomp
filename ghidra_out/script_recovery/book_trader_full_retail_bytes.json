@@ -1,0 +1,33 @@
+{
+  "schema": "book-trader-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_BookTrader",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DB3F00",
+      "endExclusive": "0x00DB3F98",
+      "rangeSize": 152,
+      "bytesSha256": "05CCE86AF9497131631D484B57A42DC009E26EF412850F1C774FC5AEA108E96A",
+      "instructionCount": 56,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB3FA0",
+      "endExclusive": "0x00DB4F6A",
+      "rangeSize": 4042,
+      "bytesSha256": "DE8CF950BA5A3C034CAD90F867CC0E04284EDC4B9E5CC343BD26D340EFB69974",
+      "instructionCount": 1187,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "Init and complete Main dispatcher",
+    "customer": "SCRIPT_NAME_HERO",
+    "faces": "NOVI_Theresa",
+    "saleObject": "OBJECT_CHOCOLATE_BOX_UNGIVEABLE",
+    "terminalCleanup": "0x00DB4F40-0x00DB4F69"
+  }
+}

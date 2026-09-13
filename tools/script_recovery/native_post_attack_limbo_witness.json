@@ -1,0 +1,30 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "4a4ea10302e077981d0fe94dd3006861b1b942362a78b9b6eb7131017eb4dd5a",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "calls": [
+    {
+      "site": "0xdbec6e",
+      "lookup": "0xdbec64",
+      "value": 1,
+      "actor": "ppVar7",
+      "start": 3513,
+      "end": 3536,
+      "original": "GSI->SetVillageLimbo();"
+    },
+    {
+      "site": "0xdbeee7",
+      "lookup": "0xdbeedd",
+      "value": 0,
+      "actor": "ppVar9",
+      "start": 10188,
+      "end": 10211,
+      "original": "GSI->SetVillageLimbo();"
+    }
+  ],
+  "lookupBytesSha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099",
+  "vtableBytes": "60608900",
+  "review": "Each independently constructed V_OakVale lookup returns its hidden wrapper via EAX with RET8; prior flag survives below lookup args. Caller passes that result and true on entry, false after cutscene. Temporary wrapper destructors remain untouched."
+}

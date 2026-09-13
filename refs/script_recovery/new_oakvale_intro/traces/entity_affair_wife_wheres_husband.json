@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        3
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -60,13 +62,12 @@
     },
     {
       "arguments": [
-        0,
-        499
+        500
       ],
-      "event": "runtime-call",
-      "name": "random",
-      "receiver": "math",
-      "scope": "Lua"
+      "event": "api-call",
+      "name": "RetailRandModulo",
+      "receiver": "quest",
+      "scope": "Quest"
     },
     {
       "arguments": [],
@@ -194,9 +195,6 @@
     "Entity.MsgIsHitByHero": [
       false
     ],
-    "Lua.math.random": [
-      0
-    ],
     "Quest.AddNewConversation": [
       {
         "handle": "wheres_husband",
@@ -225,11 +223,14 @@
     "Quest.NewScriptFrame": [
       true,
       false
+    ],
+    "Quest.RetailRandModulo(500)": [
+      0
     ]
   },
   "function": "Main",
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-  "sourceSha256": "6bdb59f68194ad2439d149c3ddb5754b78d33ada91b0fca5ff364c55bd436875"
+  "sourceSha256": "3a1f148386c60102256b95cd32a9fd4a452eaa529e52d6e2c2006ef721ebb667"
 }

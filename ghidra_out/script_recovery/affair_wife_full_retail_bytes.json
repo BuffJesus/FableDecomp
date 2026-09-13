@@ -1,0 +1,33 @@
+{
+  "schema": "affair-wife-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_AffairWife",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DB2A70",
+      "endExclusive": "0x00DB2B10",
+      "rangeSize": 160,
+      "bytesSha256": "EDAED22CED7D7EEBD45484775B3DE8DD026C88501E40B7D03A01E5B99EBECE4A",
+      "instructionCount": 58,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB2B10",
+      "endExclusive": "0x00DB3E2A",
+      "rangeSize": 4890,
+      "bytesSha256": "4E8569324724B2F5BEC18D497526081820ECC349925F16DF6113D270A8EB2F46",
+      "instructionCount": 1485,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "Init and complete Main dispatcher",
+    "husbandLookup": "NOVI_AffairMan",
+    "routeRange": "0x00DB3426-0x00DB35C0",
+    "argumentRange": "0x00DB35C1-0x00DB3CAA",
+    "terminalCleanup": "0x00DB3DD9-0x00DB3E29"
+  }
+}

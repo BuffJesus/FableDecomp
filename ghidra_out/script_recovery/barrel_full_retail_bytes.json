@@ -1,0 +1,44 @@
+{
+  "schema": "barrel-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_Barrel",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00CDEBB0",
+      "endExclusive": "0x00CDEBB1",
+      "rangeSize": 1,
+      "bytesSha256": "AE3F4619B0413D70D3004B9131C3752153074E45725BE13B9A148978895E359E",
+      "instructionCount": 1,
+      "terminal": "ret"
+    },
+    {
+      "name": "OnPredicateFail",
+      "address": "0x00DB7DB0",
+      "endExclusive": "0x00DB7DE1",
+      "rangeSize": 49,
+      "bytesSha256": "E062E2B8E8E68B63BA358C61F3DF7755E32D9E408332B5CF145CC421CB0D0DF8",
+      "instructionCount": 20,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB7E10",
+      "endExclusive": "0x00DB7FEC",
+      "rangeSize": 476,
+      "bytesSha256": "C087279C2925DED07EB775BFBA4D9067FE3F4F91C11E75345045FB48D9D4E220",
+      "instructionCount": 143,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "shared empty Init, complete OnPredicateFail, and complete Main",
+    "predicateWrites": [
+      "BarrelBrokenInstantaneous",
+      "BarrelBrokenPersistent",
+      "BarrelBrokenPos"
+    ],
+    "terminalMain": "0x00DB7FE6-0x00DB7FEB"
+  }
+}

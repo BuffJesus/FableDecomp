@@ -1,0 +1,157 @@
+{
+  "markersAndCameras": {
+    "P_HEROWT": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297638;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_HEROWT;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 46.125977;\r\nPositionY 55.451904;\r\nPositionZ 42.5;\r\nRHSetForwardX 0.91354;\r\nRHSetForwardY 0.406734;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX -0.000397;\r\nRHSetUpY 0.000892;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ],
+    "P_HHTEST": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED_SPLINE",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297648;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\r\nScriptName P_HHTEST;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 36.262939;\r\nPositionY 61.051758;\r\nPositionZ 42.46476;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScriptedSpline;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate FALSE;\r\nHeroIsSubject FALSE;\r\nFOV 0.083333;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2852.262939,-2173.051758,-42.46476);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nTimeToPlay 1.0;\r\nTension 0.0001;\r\nNumKeyCameras 2;\r\nKeyCameras[0].Position C3DCoordF(1.68457,5.137939,0.706772);\r\nKeyCameras[0].LookDirection C3DCoordF(-0.145273,-0.988836,0.03316);\r\nKeyCameras[0].FOV 0.083333;\r\nKeyCameras[0].ShuttleSpeed 1.0;\r\nKeyCameras[0].Duration 7.0;\r\nKeyCameras[0].PauseTime 0.0;\r\nKeyCameras[0].Event \"\";\r\nKeyCameras[0].AnimationSpeed 0.0;\r\nKeyCameras[0].RollAngle 0.0;\r\nKeyCameras[1].Position C3DCoordF(19.672852,-2.536621,2.126637);\r\nKeyCameras[1].LookDirection C3DCoordF(-0.93441,-0.344269,-0.09142);\r\nKeyCameras[1].FOV 0.083333;\r\nKeyCameras[1].ShuttleSpeed 1.0;\r\nKeyCameras[1].Duration 2.0;\r\nKeyCameras[1].PauseTime 0.0;\r\nKeyCameras[1].Event \"\";\r\nKeyCameras[1].AnimationSpeed 0.0;\r\nKeyCameras[1].RollAngle 0.0;\r\nEndCTCCameraPointScriptedSpline;\r\nEndThing;"
+      }
+    ],
+    "P_HHTEST2": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED_SPLINE",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297649;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\r\nScriptName P_HHTEST2;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 39.35791;\r\nPositionY 61.549805;\r\nPositionZ 42.153591;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScriptedSpline;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate FALSE;\r\nHeroIsSubject FALSE;\r\nFOV 0.083333;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2855.35791,-2173.549805,-42.153591);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nTimeToPlay 300.0;\r\nTension 0.8;\r\nNumKeyCameras 2;\r\nKeyCameras[0].Position C3DCoordF(2.176025,-6.804688,1.552094);\r\nKeyCameras[0].LookDirection C3DCoordF(0.994585,0.047605,0.09238);\r\nKeyCameras[0].FOV 0.083333;\r\nKeyCameras[0].ShuttleSpeed 1.0;\r\nKeyCameras[0].Duration 6.0;\r\nKeyCameras[0].PauseTime 0.0;\r\nKeyCameras[0].Event \"\";\r\nKeyCameras[0].AnimationSpeed 0.0;\r\nKeyCameras[0].RollAngle 0.0;\r\nKeyCameras[1].Position C3DCoordF(2.780518,-6.775391,1.608234);\r\nKeyCameras[1].LookDirection C3DCoordF(0.994585,0.047605,0.09238);\r\nKeyCameras[1].FOV 0.083333;\r\nKeyCameras[1].ShuttleSpeed 1.0;\r\nKeyCameras[1].Duration 2.0;\r\nKeyCameras[1].PauseTime 0.0;\r\nKeyCameras[1].Event \"\";\r\nKeyCameras[1].AnimationSpeed 0.0;\r\nKeyCameras[1].RollAngle 0.0;\r\nEndCTCCameraPointScriptedSpline;\r\nEndThing;"
+      }
+    ],
+    "P_MARKERMESSENGER": [
+      {
+        "file": "ArenaExterior.tng",
+        "fileSha256": "e74bfc31e926b42a2ffc02335643d1050079fad4a25d5d5d285546afa7694c2a",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297126;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_MARKERMESSENGER;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 51.974609;\r\nPositionY 84.06958;\r\nPositionZ 120.159561;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ],
+    "P_MARKERMESSENGER2": [
+      {
+        "file": "ArenaExterior.tng",
+        "fileSha256": "e74bfc31e926b42a2ffc02335643d1050079fad4a25d5d5d285546afa7694c2a",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297093;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_MARKERMESSENGER2;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 52.242676;\r\nPositionY 85.706055;\r\nPositionZ 120.05442;\r\nRHSetForwardX -0.104552;\r\nRHSetForwardY -0.994514;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.000687;\r\nRHSetUpY -0.000072;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ],
+    "P_MARKERMESSENGER3": [
+      {
+        "file": "ArenaExterior.tng",
+        "fileSha256": "e74bfc31e926b42a2ffc02335643d1050079fad4a25d5d5d285546afa7694c2a",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297127;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_MARKERMESSENGER3;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 50.078125;\r\nPositionY 74.104492;\r\nPositionZ 119.161438;\r\nRHSetForwardX 0.13917;\r\nRHSetForwardY 0.990245;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ],
+    "P_MESSENGER1": [
+      {
+        "file": "ArenaExterior.tng",
+        "fileSha256": "e74bfc31e926b42a2ffc02335643d1050079fad4a25d5d5d285546afa7694c2a",
+        "definition": "CAMERA_POINT_SCRIPTED_SPLINE",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297128;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\r\nScriptName P_MESSENGER1;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 51.380371;\r\nPositionY 79.992432;\r\nPositionZ 120.208611;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScriptedSpline;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate FALSE;\r\nHeroIsSubject FALSE;\r\nFOV 0.227778;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2291.380371,-3631.992432,-120.208611);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nTimeToPlay 300.0;\r\nTension 0.8;\r\nNumKeyCameras 2;\r\nKeyCameras[0].Position C3DCoordF(4.934814,-6.087402,5.955101);\r\nKeyCameras[0].LookDirection C3DCoordF(-0.358643,0.801027,-0.479302);\r\nKeyCameras[0].FOV 0.227778;\r\nKeyCameras[0].ShuttleSpeed 1.0;\r\nKeyCameras[0].Duration 10.0;\r\nKeyCameras[0].PauseTime 0.0;\r\nKeyCameras[0].Event \"\";\r\nKeyCameras[0].AnimationSpeed 0.0;\r\nKeyCameras[0].RollAngle 0.0;\r\nKeyCameras[1].Position C3DCoordF(4.36792,-4.822266,5.19828);\r\nKeyCameras[1].LookDirection C3DCoordF(-0.358643,0.801027,-0.479302);\r\nKeyCameras[1].FOV 0.227778;\r\nKeyCameras[1].ShuttleSpeed 1.0;\r\nKeyCameras[1].Duration 2.0;\r\nKeyCameras[1].PauseTime 0.0;\r\nKeyCameras[1].Event \"\";\r\nKeyCameras[1].AnimationSpeed 0.0;\r\nKeyCameras[1].RollAngle 0.0;\r\nEndCTCCameraPointScriptedSpline;\r\nEndThing;"
+      }
+    ],
+    "P_MESSENGER2": [
+      {
+        "file": "ArenaExterior.tng",
+        "fileSha256": "e74bfc31e926b42a2ffc02335643d1050079fad4a25d5d5d285546afa7694c2a",
+        "definition": "CAMERA_POINT_SCRIPTED",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297129;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\r\nScriptName P_MESSENGER2;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 53.8479;\r\nPositionY 85.276611;\r\nPositionZ 121.988609;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScripted;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate TRUE;\r\nHeroIsSubject FALSE;\r\nFOV 80.0;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2293.8479,-3637.276611,-121.988609);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nLookDirection.X -0.930597;\r\nLookDirection.Y -0.275859;\r\nLookDirection.Z -0.240606;\r\nLookDirectionEnd.X -0.930597;\r\nLookDirectionEnd.Y -0.275859;\r\nLookDirectionEnd.Z -0.240606;\r\nStartPos.X 0.0;\r\nStartPos.Y 0.0;\r\nStartPos.Z 0.0;\r\nEndPos.X 0.0;\r\nEndPos.Y 0.0;\r\nEndPos.Z 0.0;\r\nTransitionTime 0.0;\r\nEndCTCCameraPointScripted;\r\nEndThing;"
+      }
+    ],
+    "P_SIDEHHNEW": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297701;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\r\nScriptName P_SIDEHHNEW;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 46.373291;\r\nPositionY 58.79834;\r\nPositionZ 43.678986;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScripted;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate TRUE;\r\nHeroIsSubject TRUE;\r\nFOV 30.0;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2862.373291,-2170.79834,-43.678986);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nLookDirection.X 0.082031;\r\nLookDirection.Y -0.992186;\r\nLookDirection.Z 0.094009;\r\nLookDirectionEnd.X 0.082031;\r\nLookDirectionEnd.Y -0.992186;\r\nLookDirectionEnd.Z 0.094009;\r\nStartPos.X 0.0;\r\nStartPos.Y 0.0;\r\nStartPos.Z 0.0;\r\nEndPos.X 0.0;\r\nEndPos.Y 0.0;\r\nEndPos.Z 0.0;\r\nTransitionTime 0.0;\r\nEndCTCCameraPointScripted;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERCAM1": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED_SPLINE",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297479;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\r\nScriptName P_SISTERCAM1;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 30.958252;\r\nPositionY 59.337402;\r\nPositionZ 42.586201;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScriptedSpline;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate FALSE;\r\nHeroIsSubject FALSE;\r\nFOV 0.25;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2846.958252,-2171.337402,-42.586201);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nTimeToPlay 1.0;\r\nTension 0.8;\r\nNumKeyCameras 2;\r\nKeyCameras[0].Position C3DCoordF(-1.863281,8.584961,7.250843);\r\nKeyCameras[0].LookDirection C3DCoordF(0.463848,-0.831997,-0.304347);\r\nKeyCameras[0].FOV 0.25;\r\nKeyCameras[0].ShuttleSpeed 1.0;\r\nKeyCameras[0].Duration 8.0;\r\nKeyCameras[0].PauseTime 0.0;\r\nKeyCameras[0].Event \"\";\r\nKeyCameras[0].AnimationSpeed 0.0;\r\nKeyCameras[0].RollAngle 0.0;\r\nKeyCameras[1].Position C3DCoordF(-1.473633,7.88623,7.250843);\r\nKeyCameras[1].LookDirection C3DCoordF(0.449207,-0.805643,-0.386202);\r\nKeyCameras[1].FOV 0.25;\r\nKeyCameras[1].ShuttleSpeed 1.0;\r\nKeyCameras[1].Duration 2.0;\r\nKeyCameras[1].PauseTime 0.0;\r\nKeyCameras[1].Event \"\";\r\nKeyCameras[1].AnimationSpeed 0.0;\r\nKeyCameras[1].RollAngle 0.0;\r\nEndCTCCameraPointScriptedSpline;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERCAM10": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED_SPLINE",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297484;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\r\nScriptName P_SISTERCAM10;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 35.304932;\r\nPositionY 56.285645;\r\nPositionZ 42.5;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScriptedSpline;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate FALSE;\r\nHeroIsSubject FALSE;\r\nFOV 0.083333;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2851.304932,-2168.285645,-42.5);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nTimeToPlay 1.0;\r\nTension 0.8;\r\nNumKeyCameras 2;\r\nKeyCameras[0].Position C3DCoordF(2.849609,9.872803,0.671532);\r\nKeyCameras[0].LookDirection C3DCoordF(-0.145273,-0.988836,0.033148);\r\nKeyCameras[0].FOV 0.083333;\r\nKeyCameras[0].ShuttleSpeed 1.0;\r\nKeyCameras[0].Duration 12.0;\r\nKeyCameras[0].PauseTime 0.0;\r\nKeyCameras[0].Event \"\";\r\nKeyCameras[0].AnimationSpeed 0.0;\r\nKeyCameras[0].RollAngle 0.0;\r\nKeyCameras[1].Position C3DCoordF(2.642578,9.904053,0.671532);\r\nKeyCameras[1].LookDirection C3DCoordF(-0.145273,-0.988836,0.033148);\r\nKeyCameras[1].FOV 0.083333;\r\nKeyCameras[1].ShuttleSpeed 1.0;\r\nKeyCameras[1].Duration 2.0;\r\nKeyCameras[1].PauseTime 0.0;\r\nKeyCameras[1].Event \"\";\r\nKeyCameras[1].AnimationSpeed 0.0;\r\nKeyCameras[1].RollAngle 0.0;\r\nEndCTCCameraPointScriptedSpline;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERCAM2": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297480;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\r\nScriptName P_SISTERCAM2;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 34.342285;\r\nPositionY 54.037109;\r\nPositionZ 44.214645;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScripted;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate TRUE;\r\nHeroIsSubject TRUE;\r\nFOV 40.0;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2850.342285,-2166.037109,-44.214645);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nLookDirection.X 0.854973;\r\nLookDirection.Y 0.508296;\r\nLookDirection.Z -0.103229;\r\nLookDirectionEnd.X 0.854973;\r\nLookDirectionEnd.Y 0.508296;\r\nLookDirectionEnd.Z -0.103229;\r\nStartPos.X 0.0;\r\nStartPos.Y 0.0;\r\nStartPos.Z 0.0;\r\nEndPos.X 0.0;\r\nEndPos.Y 0.0;\r\nEndPos.Z 0.0;\r\nTransitionTime 0.0;\r\nEndCTCCameraPointScripted;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERCAM3": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297481;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\r\nScriptName P_SISTERCAM3;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 36.484375;\r\nPositionY 55.500977;\r\nPositionZ 44.116898;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScripted;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate TRUE;\r\nHeroIsSubject FALSE;\r\nFOV 40.0;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2852.484375,-2167.500977,-44.116898);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nLookDirection.X -0.445293;\r\nLookDirection.Y -0.893027;\r\nLookDirection.Z 0.064931;\r\nLookDirectionEnd.X -0.445293;\r\nLookDirectionEnd.Y -0.893027;\r\nLookDirectionEnd.Z 0.064931;\r\nStartPos.X 0.0;\r\nStartPos.Y 0.0;\r\nStartPos.Z 0.0;\r\nEndPos.X 0.0;\r\nEndPos.Y 0.0;\r\nEndPos.Z 0.0;\r\nTransitionTime 0.0;\r\nEndCTCCameraPointScripted;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERCAM4": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297482;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\r\nScriptName P_SISTERCAM4;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 33.903076;\r\nPositionY 60.17627;\r\nPositionZ 47.317242;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScripted;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate TRUE;\r\nHeroIsSubject FALSE;\r\nFOV 40.0;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2849.903076,-2172.17627,-47.317242);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nLookDirection.X 0.424331;\r\nLookDirection.Y -0.687523;\r\nLookDirection.Z -0.589284;\r\nLookDirectionEnd.X 0.424331;\r\nLookDirectionEnd.Y -0.687523;\r\nLookDirectionEnd.Z -0.589284;\r\nStartPos.X 0.0;\r\nStartPos.Y 0.0;\r\nStartPos.Z 0.0;\r\nEndPos.X 0.0;\r\nEndPos.Y 0.0;\r\nEndPos.Z 0.0;\r\nTransitionTime 0.0;\r\nEndCTCCameraPointScripted;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERCAM5NEW": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "CAMERA_POINT_SCRIPTED",
+        "record": "NewThing Thing;\r\nPlayer 4;\r\nUID 18446741874686297702;\r\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\r\nScriptName P_SISTERCAM5NEW;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 36.470947;\r\nPositionY 58.044189;\r\nPositionZ 43.141254;\r\nRHSetForwardX 0.0;\r\nRHSetForwardY 0.999994;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.0;\r\nRHSetUpY 0.0;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nStartCTCDCameraPoint;\r\nEndCTCDCameraPoint;\r\nStartCTCCameraPointScripted;\r\nCutInto FALSE;\r\nCutOutOf FALSE;\r\nTestAngleBeforeActivation FALSE;\r\nSelfTerminate TRUE;\r\nHeroIsSubject FALSE;\r\nFOV 40.0;\r\nIsCoordBaseRelativeToParent TRUE;\r\nCoordBase C3DCoordF(-2852.470947,-2170.044189,-43.141254);\r\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\r\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\r\nUsingRelativeCoords FALSE;\r\nUsingRelativeOrientation FALSE;\r\nLookDirection.X -0.005127;\r\nLookDirection.Y -0.97926;\r\nLookDirection.Z 0.202544;\r\nLookDirectionEnd.X -0.005127;\r\nLookDirectionEnd.Y -0.97926;\r\nLookDirectionEnd.Z 0.202544;\r\nStartPos.X 0.0;\r\nStartPos.Y 0.0;\r\nStartPos.Z 0.0;\r\nEndPos.X 0.0;\r\nEndPos.Y 0.0;\r\nEndPos.Z 0.0;\r\nTransitionTime 0.0;\r\nEndCTCCameraPointScripted;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERHEROPOS": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297474;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_SISTERHEROPOS;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 42.760986;\r\nPositionY 62.887695;\r\nPositionZ 40.92392;\r\nRHSetForwardX -0.587786;\r\nRHSetForwardY -0.809009;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.000838;\r\nRHSetUpY -0.000609;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERHEROPOS1": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297475;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_SISTERHEROPOS1;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 36.929443;\r\nPositionY 56.083984;\r\nPositionZ 42.5;\r\nRHSetForwardX -0.559195;\r\nRHSetForwardY -0.829029;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX 0.00081;\r\nRHSetUpY -0.000546;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERPOS": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297473;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_SISTERPOS;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 35.860596;\r\nPositionY 54.614014;\r\nPositionZ 42.494152;\r\nRHSetForwardX 0.529928;\r\nRHSetForwardY 0.848036;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX -0.000717;\r\nRHSetUpY 0.000448;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ],
+    "P_SISTERWT": [
+      {
+        "file": "HauntedHouse.tng",
+        "fileSha256": "3735d38a1a46878c65d252c38da3d9bde97fb14a26402ad08b173f9309f97527",
+        "definition": "MARKER_BASIC",
+        "record": "NewThing Marker;\r\nPlayer 4;\r\nUID 18446741874686297635;\r\nDefinitionType \"MARKER_BASIC\";\r\nScriptName P_SISTERWT;\r\nScriptData \"NULL\";\r\nThingGamePersistent FALSE;\r\nThingLevelPersistent FALSE;\r\nStartCTCPhysicsStandard;\r\nPositionX 46.689453;\r\nPositionY 54.386963;\r\nPositionZ 42.5;\r\nRHSetForwardX 0.951035;\r\nRHSetForwardY 0.30901;\r\nRHSetForwardZ 0.0;\r\nRHSetUpX -0.000302;\r\nRHSetUpY 0.000929;\r\nRHSetUpZ 0.999994;\r\nEndCTCPhysicsStandard;\r\nStartCTCEditor;\r\nEndCTCEditor;\r\nHealth 1.0;\r\nEndThing;"
+      }
+    ]
+  },
+  "missing": []
+}

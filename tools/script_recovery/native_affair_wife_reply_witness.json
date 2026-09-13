@@ -1,0 +1,61 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "939456aa616ee688cbe4e8b834894de9bd5402762b5a9aa2eb993f6ade4f3ba9",
+  "contract": {
+    "name": "AddLineToConversation",
+    "scope": "Quest",
+    "returnType": "void",
+    "parameters": [
+      {
+        "name": "conversationID",
+        "type": "int",
+        "optional": false
+      },
+      {
+        "name": "textKey",
+        "type": "const std::string&",
+        "optional": false
+      },
+      {
+        "name": "spSpeaker",
+        "type": "const std::shared_ptr<CScriptThing>&",
+        "optional": false
+      },
+      {
+        "name": "spListener",
+        "type": "const std::shared_ptr<CScriptThing>&",
+        "optional": false
+      },
+      {
+        "name": "showSubtitle",
+        "type": "sol::optional<bool>",
+        "optional": true
+      }
+    ],
+    "blocking": false,
+    "category": "Quest API",
+    "description": "Adds a dialogue line to an existing ambient conversation."
+  },
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "address": 19762356,
+      "size": 34,
+      "sha256": "5b249bbb9e9ff7d2f0bf4c40b5a20d1450719965ae5fa95f9fc360b4483d0dac"
+    }
+  ],
+  "old": "uVar14 = rand();\r\n            uVar14 = uVar14 & 0x80000001;\r\n            bVar4 = uVar14 == 0;\r\n            if ((int)uVar14 < 0) {\r\n              bVar4 = (uVar14 - 1 | 0xfffffffe) == 0xffffffff;\r\n            }\r\n            ppVar18 = extraout_EDX_27;\r\n            if (bVar4) {\r\n              CCreatureAction_TrollWhackGroundBase::Initialise\r\n                        ((CCreatureAction_TrollWhackGroundBase *)param_1);\r\n              ppVar18 = extraout_EDX_28;\r\n              if (extraout_AL_44 != '\\0') goto LAB_00db3d8b;\r\n              CCharString::CCharString\r\n                        ((CCharString *)aCStack_80,\"TEXT_QST_048_AFFAIRMAN_IN_TROUBLE\",-1);\r\n              GSI->AddLineToConversation(ppVar15,aCStack_80,0,&ppuStack_a4);\r\n              std::\r\n              _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                        ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_80\r\n                         ,extraout_EDX_29,ppVar23);\r\n              ppVar18 = extraout_EDX_30;\r\n            }\r\n            std::\r\n            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)\r\n                       &stack0xffffff50,ppVar18,ppVar23);\r",
+  "new": "native_arg_wife_reply_remainder = GSI->RetailRandModulo(2);\n            if (native_arg_wife_reply_remainder == 0) {\n              native_arg_wife_reply_terminating = GSI->IsActiveThreadTerminating();\n              if (native_arg_wife_reply_terminating) goto LAB_00db3d8b;\n              GSI->AddLineToConversation(ppVar15,\"TEXT_QST_048_AFFAIRMAN_IN_TROUBLE\",0,local_native_cached_husband,me);\n            }",
+  "nativeReview": [
+    "DB3C2A calls retail rand BFEB16; DB3C2F..3C3B computes signed remainder modulo 2 and branches on nonzero.",
+    "Raw EAX is dead on both successors: zero edge calls F35B30; nonzero edge calls string destructor 99EAE0.",
+    "DB3C3F termination checked only for zero remainder; true edge DB3D87 destroys wife-key string then joins actor cleanup DB3D90.",
+    "DB3C57 constructs reply key at stack84. DB3C6F slot5B8 arguments: EBX ID, stack84 text, false, stack48 husband, EDI wife.",
+    "DB3C79 destroys reply string; DB3C82 destroys wife key. Lua strings need neither native temporary destructor. Actor cleanup unchanged."
+  ]
+}

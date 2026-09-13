@@ -91,7 +91,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -209,6 +211,33 @@
       "scope": "Quest"
     },
     {
+      "arguments": [
+        "BadDeedsPerformed"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "GuardsDealtWithBadDeeds"
+      ],
+      "event": "api-call",
+      "name": "GetStateInt",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_PROBE Guard claimed lecture bad=1 dealt=0"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [],
       "event": "api-call",
       "name": "ReleaseControl",
@@ -216,7 +245,9 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -254,7 +285,8 @@
         {
           "handle": "hero",
           "scope": "Entity"
-        }
+        },
+        true
       ],
       "event": "api-call",
       "name": "EntitySetFacingAngleTowardsThing",
@@ -649,5 +681,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua",
-  "sourceSha256": "eb708e104aec275154f66ef93fc5a5c826a98378f73cc0eb26542aff301cfd23"
+  "sourceSha256": "bccaf6197cf9d64099131f85289a3c9a3a7fa95f326fd67bd081550d7a76081e"
 }

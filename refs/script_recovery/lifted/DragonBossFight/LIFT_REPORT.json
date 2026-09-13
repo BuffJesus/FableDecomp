@@ -1,0 +1,282 @@
+{
+  "script": "Q_DragonBossFight",
+  "package": "DragonBossFight",
+  "state": {},
+  "functions": {
+    "Init": {
+      "lines": 11,
+      "todo": [
+        "unnamed field 0x48 written in Init",
+        "unlifted: *(undefined4 *)(this + 100) = 0;",
+        "unnamed field 0x70 written in Init",
+        "unnamed field 0x74 written in Init",
+        "unnamed field 0x78 written in Init"
+      ],
+      "calls": [
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "AddQuestRegion"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 7,
+      "todo": [],
+      "calls": [
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "CreateThread"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:DoMission": {
+      "lines": 151,
+      "todo": [
+        "1 args for 2 params",
+        "unlifted: *(undefined1 *)(*(int *)(this + 0x44) + 0xe4) = 1;",
+        "unresolved native control operand: if (-unaff_EDI / 0xc != 0) {",
+        "1 args for 3 params",
+        "1 args for 3 params",
+        "0 args for 1 params",
+        "unlifted: iStack_88 = -0x10000;",
+        "3 args for 4 params",
+        "unlifted: (*(code *)ppVar5)();",
+        "unnamed field 0x48",
+        "unnamed field 0x48",
+        "0 args for 1 params",
+        "unlifted: pCVar9 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CC",
+        "unlifted: CSubtitleRenderer::SetText ((CSubtitleRenderer *)&stack0xffffff6c,(CFontBank *)ppVar6,pCVa",
+        "unlifted: *(undefined1 *)(*(int *)(this + 0x44) + 0x133) = 0;",
+        "1 args for 3 params",
+        "1 args for 4 params",
+        "unlifted: CSubtitleRenderer::SetText ((CSubtitleRenderer *)&stack0xffffff6c,(CFontBank *)ppVar6,pCVa",
+        "unlifted: *(undefined1 *)(*(int *)(this + 0x44) + 0x133) = 1;",
+        "1 args for 3 params",
+        "1 args for 4 params",
+        "0 args for 1 params",
+        "0 args for 1 params",
+        "1 args for 2 params",
+        "label LAB_00d26a3a"
+      ],
+      "calls": [
+        "GetActiveQuestName",
+        "SetQuestCardObjective",
+        "IsRegionLoaded",
+        "NewScriptFrame",
+        "IsRegionLoaded",
+        "FadeScreenOutUntilNextCallToFadeScreenIn",
+        "GetAllCreaturesExcludingHero",
+        "EntitySetInLimbo",
+        "OverrideMusic",
+        "GetActiveQuestName",
+        "SetQuestCardObjective",
+        "GetActiveQuestName",
+        "KickOffQuestStartScreen",
+        "FadeScreenIn",
+        "SetTeleportingAsActive",
+        "DisplayQuestInfo",
+        "GetThingWithScriptName",
+        "AddQuestInfoBarHealth",
+        "CreateThread",
+        "CreateThread",
+        "NewScriptFrame",
+        "SetTeleportingAsActive",
+        "SetCutsceneActionMode",
+        "SetCutsceneActionMode",
+        "EntitySetInLimbo",
+        "GetActiveQuestName",
+        "SetQuestAsCompleted",
+        "NewScriptFrame",
+        "NewScriptFrame",
+        "NewScriptFrame",
+        "NewScriptFrame",
+        "GetHeroMorality",
+        "PlayAVIMovie",
+        "EntitySetInLimbo",
+        "GetActiveQuestName",
+        "SetQuestAsCompleted",
+        "NewScriptFrame",
+        "NewScriptFrame",
+        "NewScriptFrame",
+        "NewScriptFrame",
+        "GetHeroMorality",
+        "PlayAVIMovie",
+        "GiveHeroMorality",
+        "StopOverrideMusic",
+        "GetActiveQuestName",
+        "DeactivateQuestLater"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:RunEnemySpawning": {
+      "lines": 49,
+      "todo": [
+        "unnamed field 0x7c written in Thread:RunEnemySpawning",
+        "unnamed field 0x78",
+        "unnamed field 0x48",
+        "unnamed field 0x80 written in Thread:RunEnemySpawning",
+        "unnamed field 0x81 written in Thread:RunEnemySpawning",
+        "unnamed field 0x80",
+        "unnamed field 0x90",
+        "unnamed field 0x80 written in Thread:RunEnemySpawning",
+        "unnamed field 0x81",
+        "unnamed field 0x94",
+        "unnamed field 0x81 written in Thread:RunEnemySpawning",
+        "unnamed field 0x48"
+      ],
+      "calls": [
+        "GetAllThingsWithScriptName",
+        "GetAllThingsWithScriptName",
+        "SetStateInt",
+        "SetStateBool",
+        "SetStateBool",
+        "NewScriptFrame",
+        "GetTimer",
+        "SetStateBool",
+        "GetTimer",
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:JackTaunts": {
+      "lines": 34,
+      "todo": [
+        "verify cleanup at LAB_00d26b6e (lifted as early return)",
+        "verify cleanup at LAB_00d26b7e (lifted as early return)",
+        "2 args for 5 params",
+        "label LAB_00d26b7e",
+        "label LAB_00d26b6e"
+      ],
+      "calls": [
+        "RegisterTimer",
+        "SetTimer",
+        "NewScriptFrame",
+        "GetTimer",
+        "GetHero",
+        "AddNewConversation",
+        "GetHero",
+        "GetHero",
+        "AddLineToConversation",
+        "SetTimer",
+        "DeregisterTimer",
+        "DeregisterTimer"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Helper:DoMission_Setup": {
+      "lines": 27,
+      "todo": [
+        "StartScriptingEntity: unresolved entity receiver/resource in quest context",
+        "unlifted: *puVar4 = 0;",
+        "unlifted: *(undefined4 *)(puVar4 + 4) = 0;",
+        "unlifted: *(undefined1 **)(puVar4 + 8) = puVar4;",
+        "unlifted: *(undefined1 **)(puVar4 + 0xc) = puVar4;",
+        "unlifted: this = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,",
+        "unlifted: CFourierAnalysis::CFourierAnalysis((CFourierAnalysis *)this);",
+        "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)(this + 8),",
+        "unlifted: RunCutsceneMacro_Func(in_ECX + 0x84,0);",
+        "unlifted: StdMap_DestroyNode(_DAT_00000004);",
+        "unlifted: _DAT_00000008 = 0;",
+        "unlifted: _DAT_00000004 = 0;",
+        "unlifted: _DAT_0000000c = 0;",
+        "unlifted: (**(code **)(ppVar3 + 4))();"
+      ],
+      "calls": [
+        "GetHero",
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "FixMovieSequenceCamera",
+        "FixMovieSequenceCamera",
+        "PauseAllNonScriptedEntities"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Helper:SpawnMinions": {
+      "lines": 19,
+      "todo": [
+        "unlifted: local_1c = *(int *)(this + 0x68) - *(int *)(this + 0x70);",
+        "unnamed field 0x4c",
+        "CreateEffect: not in FSE manifest",
+        "unnamed field 0x4c",
+        "unlifted: local_20 = local_20 + 1;"
+      ],
+      "calls": [
+        "CreateEffect",
+        "CreateCreature"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Helper:SpawnSummoners": {
+      "lines": 36,
+      "todo": [
+        "unlifted: local_1c = *(int *)(this + 0x6c) - *(int *)(this + 0x74);",
+        "unnamed field 0x58",
+        "CreateEffect: not in FSE manifest",
+        "unnamed field 0x58",
+        "unlifted: *(uint *)(this + 100) = iVar1 + 1U;",
+        "unnamed field 0x5c",
+        "unnamed field 0x58",
+        "unlifted: ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *) ((*(int *)(this + 0x5c) - *(int ",
+        "unlifted: *(undefined4 *)(this + 100) = 0;",
+        "unlifted: local_20 = local_20 + 1;"
+      ],
+      "calls": [
+        "CreateEffect",
+        "CreateCreature"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 0,
+      "todo": [],
+      "calls": []
+    }
+  },
+  "entities": [
+    "Dragon",
+    "DBMinion",
+    "DBSummoner"
+  ],
+  "threads": [
+    {
+      "name": "DoMission",
+      "body": "DoMission"
+    },
+    {
+      "name": "RunEnemySpawning",
+      "body": "0x00D26BA0"
+    },
+    {
+      "name": "JackTaunts",
+      "body": "JackTaunts"
+    }
+  ],
+  "helpers": [
+    {
+      "name": "DoMission_Setup",
+      "address": "0x00D27050",
+      "selectedBy": [
+        "callee:thread 0x00D26190"
+      ]
+    },
+    {
+      "name": "SpawnMinions",
+      "address": "0x00D26CC0",
+      "selectedBy": [
+        "callee:thread 0x00D26BA0"
+      ]
+    },
+    {
+      "name": "SpawnSummoners",
+      "address": "0x00D26E60",
+      "selectedBy": [
+        "callee:thread 0x00D26BA0"
+      ]
+    }
+  ],
+  "entityBodies": {}
+}

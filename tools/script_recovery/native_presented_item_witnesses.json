@@ -1,0 +1,52 @@
+[
+  {
+    "address": "0x00DB97A0",
+    "sourceSha256": "291c860ea494de173b983fd15afc35fd30ab9eebd8ce3fd88edb5937bb229e4a",
+    "annotatedSha256": "96bbaaf83338e499dbca653ba6358af2cde46ecab07fc4919635650f9f7eecce",
+    "callSite": "0xdba4e8",
+    "stringAddress": "0x12d8f24",
+    "itemName": "OBJECT_CHOCOLATE_BOX_UNGIVEABLE",
+    "regions": [
+      {
+        "address": "0xdb97a0",
+        "size": 7010,
+        "sha256": "a46219c8f607c546474e343f39ec75248bc5b1eae4cd665102f51dd6bbb966ea"
+      },
+      {
+        "address": "0x99e960",
+        "size": 65,
+        "sha256": "4e2f2ee367e1bc11ee5155fab3989abdb46f82fadb10f96c33433bd0d04cd5b6"
+      },
+      {
+        "address": "0x4115a0",
+        "size": 88,
+        "sha256": "f2d9c98347f7a336872734fd24f86518ecb0c2bdae6a4e0306e00afc95e407b6"
+      }
+    ]
+  },
+  {
+    "address": "0x00DAF080",
+    "sourceSha256": "75de52d06c81853ab3295ec950451b04e5d4ef9b594f05f570c9fe2b152cb545",
+    "annotatedSha256": "7fd0787cbd38bd59273a210a725a1ac2a365ded7665b2107a30a2c5d2f66bb81",
+    "callSite": "0xdaf740",
+    "stringAddress": "0x12d8958",
+    "itemName": "OBJECT_TEDDY_BEAR_UNGIVEABLE",
+    "regions": [
+      {
+        "address": "0xdaf080",
+        "size": 5498,
+        "sha256": "d7b5d3faa973c27e6ed35e4924a637b610ed7bd08726728961a4910e7faa6763"
+      },
+      {
+        "address": "0x99e960",
+        "size": 65,
+        "sha256": "4e2f2ee367e1bc11ee5155fab3989abdb46f82fadb10f96c33433bd0d04cd5b6"
+      },
+      {
+        "address": "0x4115a0",
+        "size": 88,
+        "sha256": "f2d9c98347f7a336872734fd24f86518ecb0c2bdae6a4e0306e00afc95e407b6"
+      }
+    ]
+  }
+]

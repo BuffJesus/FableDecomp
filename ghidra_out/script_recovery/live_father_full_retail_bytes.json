@@ -1,0 +1,37 @@
+{
+  "schema": "live-father-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_LiveFather",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DAC390",
+      "endExclusive": "0x00DAC41D",
+      "rangeSize": 141,
+      "bytesSha256": "A20A4D9ED2E54BABF424E7E7D988A46DCA0EC905493B9C8C1C4592FCD307203A",
+      "instructionCount": 51,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB86B0",
+      "endExclusive": "0x00DB9795",
+      "rangeSize": 4325,
+      "bytesSha256": "515927904CF53975B43E48FB5D1D818D11EAD12D4E8D9E5E6661A7A39B8A3461",
+      "instructionCount": 1301,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "complete Init and Main dispatcher",
+    "outcomes": [
+      "intro",
+      "good/bad deed reward dialogue",
+      "gold reward",
+      "hit response",
+      "childhood completion"
+    ],
+    "boundaryCorrection": "translation_unit Main size 4319 truncates the epilogue; exact terminal ret is 0x00DB9794"
+  }
+}

@@ -1,0 +1,141 @@
+//=== ?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z @ 004aac60 (seed 0x004AAC60) ===
+004aac60: 8b4904              MOV ECX,dword ptr [ECX + 0x4]
+004aac63: 85c9                TEST ECX,ECX
+004aac65: 7505                JNZ 0x004aac6c
+004aac67: 32c0                XOR AL,AL
+004aac69: c20400              RET 0x4
+004aac6c: 8b01                MOV EAX,dword ptr [ECX]
+004aac6e: ffa08c000000        JMP dword ptr [EAX + 0x8c]
+
+//=== ?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z @ 008d23c0 (seed 0x008D23C0) ===
+008d23c0: 83ec14              SUB ESP,0x14
+008d23c3: 53                  PUSH EBX
+008d23c4: 55                  PUSH EBP
+008d23c5: 56                  PUSH ESI
+008d23c6: 8d710c              LEA ESI,[ECX + 0xc]
+008d23c9: 57                  PUSH EDI
+008d23ca: 8bce                MOV ECX,ESI
+008d23cc: e87ff71200          CALL 0x00a01b50  ; GetPItem
+008d23d1: 85c0                TEST EAX,EAX
+008d23d3: 0f84bd000000        JZ 0x008d2496
+008d23d9: 8bce                MOV ECX,ESI
+008d23db: e870f71200          CALL 0x00a01b50  ; GetPItem
+008d23e0: f6809100000001      TEST byte ptr [EAX + 0x91],0x1
+008d23e7: 0f85a9000000        JNZ 0x008d2496
+008d23ed: a1fc893b01          MOV EAX,[0x013b89fc]  ; DAT_013b89fc
+008d23f2: 8b8088000000        MOV EAX,dword ptr [EAX + 0x88]
+008d23f8: 85c0                TEST EAX,EAX
+008d23fa: 740f                JZ 0x008d240b
+008d23fc: 8b4808              MOV ECX,dword ptr [EAX + 0x8]
+008d23ff: 85c9                TEST ECX,ECX
+008d2401: 7408                JZ 0x008d240b
+008d2403: 8b492c              MOV ECX,dword ptr [ECX + 0x2c]
+008d2406: 8b6918              MOV EBP,dword ptr [ECX + 0x18]
+008d2409: eb02                JMP 0x008d240d
+008d240b: 33ed                XOR EBP,EBP
+008d240d: 85c0                TEST EAX,EAX
+008d240f: 7413                JZ 0x008d2424
+008d2411: 8b4008              MOV EAX,dword ptr [EAX + 0x8]
+008d2414: 85c0                TEST EAX,EAX
+008d2416: 740c                JZ 0x008d2424
+008d2418: 8b502c              MOV EDX,dword ptr [EAX + 0x2c]
+008d241b: 8b421c              MOV EAX,dword ptr [EDX + 0x1c]
+008d241e: 89442410            MOV dword ptr [ESP + 0x10],EAX
+008d2422: eb08                JMP 0x008d242c
+008d2424: c744241000000000    MOV dword ptr [ESP + 0x10],0x0
+008d242c: 8bce                MOV ECX,ESI
+008d242e: e81df71200          CALL 0x00a01b50  ; GetPItem
+008d2433: f6402804            TEST byte ptr [EAX + 0x28],0x4
+008d2437: 745d                JZ 0x008d2496
+008d2439: 8d4c2418            LEA ECX,[ESP + 0x18]
+008d243d: 8d7044              LEA ESI,[EAX + 0x44]
+008d2440: 51                  PUSH ECX
+008d2441: 8bce                MOV ECX,ESI
+008d2443: c744241c42000000    MOV dword ptr [ESP + 0x1c],0x42
+008d244b: e86041b6ff          CALL 0x004365b0  ; LowerBound
+008d2450: 8b7604              MOV ESI,dword ptr [ESI + 0x4]
+008d2453: 3bc6                CMP EAX,ESI
+008d2455: 7405                JZ 0x008d245c
+008d2457: 833842              CMP dword ptr [EAX],0x42
+008d245a: 7e02                JLE 0x008d245e
+008d245c: 8bc6                MOV EAX,ESI
+008d245e: 8b5804              MOV EBX,dword ptr [EAX + 0x4]
+008d2461: 8b430c              MOV EAX,dword ptr [EBX + 0xc]
+008d2464: 8b38                MOV EDI,dword ptr [EAX]
+008d2466: 3bf8                CMP EDI,EAX
+008d2468: 742c                JZ 0x008d2496
+008d246a: 8d9b00000000        LEA EBX,[EBX]
+008d2470: 8b7708              MOV ESI,dword ptr [EDI + 0x8]
+008d2473: 8b4604              MOV EAX,dword ptr [ESI + 0x4]
+008d2476: 3bc5                CMP EAX,EBP
+008d2478: 7e15                JLE 0x008d248f
+008d247a: 3b442410            CMP EAX,dword ptr [ESP + 0x10]
+008d247e: 7f0f                JG 0x008d248f
+008d2480: 8b16                MOV EDX,dword ptr [ESI]
+008d2482: 8bce                MOV ECX,ESI
+008d2484: ff5204              CALL dword ptr [EDX + 0x4]
+008d2487: 83e80a              SUB EAX,0xa
+008d248a: 745f                JZ 0x008d24eb
+008d248c: 48                  DEC EAX
+008d248d: 7413                JZ 0x008d24a2
+008d248f: 8b3f                MOV EDI,dword ptr [EDI]
+008d2491: 3b7b0c              CMP EDI,dword ptr [EBX + 0xc]
+008d2494: 75da                JNZ 0x008d2470
+008d2496: 5f                  POP EDI
+008d2497: 5e                  POP ESI
+008d2498: 5d                  POP EBP
+008d2499: 32c0                XOR AL,AL
+008d249b: 5b                  POP EBX
+008d249c: 83c414              ADD ESP,0x14
+008d249f: c20400              RET 0x4
+008d24a2: 8d44241c            LEA EAX,[ESP + 0x1c]
+008d24a6: 50                  PUSH EAX
+008d24a7: 8d4e10              LEA ECX,[ESI + 0x10]
+008d24aa: e8a1f61200          CALL 0x00a01b50  ; GetPItem
+008d24af: 8bc8                MOV ECX,EAX
+008d24b1: e80a58bfff          CALL 0x004c7cc0  ; GetDefName
+008d24b6: 8b08                MOV ECX,dword ptr [EAX]
+008d24b8: 51                  PUSH ECX
+008d24b9: 8d542418            LEA EDX,[ESP + 0x18]
+008d24bd: 52                  PUSH EDX
+008d24be: b928a83c01          MOV ECX,0x13ca828  ; DAT_013ca828
+008d24c3: e8e8241000          CALL 0x009d49b0  ; GetString
+008d24c8: 8b4c2428            MOV ECX,dword ptr [ESP + 0x28]
+008d24cc: 8d442414            LEA EAX,[ESP + 0x14]
+008d24d0: 50                  PUSH EAX
+008d24d1: e8daca0c00          CALL 0x0099efb0  ; operator=
+008d24d6: 8d4c2414            LEA ECX,[ESP + 0x14]
+008d24da: e801c60c00          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+008d24df: 5f                  POP EDI
+008d24e0: 5e                  POP ESI
+008d24e1: 5d                  POP EBP
+008d24e2: b001                MOV AL,0x1
+008d24e4: 5b                  POP EBX
+008d24e5: 83c414              ADD ESP,0x14
+008d24e8: c20400              RET 0x4
+008d24eb: 8d4c2420            LEA ECX,[ESP + 0x20]
+008d24ef: 51                  PUSH ECX
+008d24f0: 8d4e10              LEA ECX,[ESI + 0x10]
+008d24f3: e858f61200          CALL 0x00a01b50  ; GetPItem
+008d24f8: 8bc8                MOV ECX,EAX
+008d24fa: e8c157bfff          CALL 0x004c7cc0  ; GetDefName
+008d24ff: 8b10                MOV EDX,dword ptr [EAX]
+008d2501: 52                  PUSH EDX
+008d2502: 8d44241c            LEA EAX,[ESP + 0x1c]
+008d2506: 50                  PUSH EAX
+008d2507: b928a83c01          MOV ECX,0x13ca828  ; DAT_013ca828
+008d250c: e89f241000          CALL 0x009d49b0  ; GetString
+008d2511: 8d4c2418            LEA ECX,[ESP + 0x18]
+008d2515: 51                  PUSH ECX
+008d2516: 8b4c242c            MOV ECX,dword ptr [ESP + 0x2c]
+008d251a: e891ca0c00          CALL 0x0099efb0  ; operator=
+008d251f: 8d4c2418            LEA ECX,[ESP + 0x18]
+008d2523: e8b8c50c00          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+008d2528: 5f                  POP EDI
+008d2529: 5e                  POP ESI
+008d252a: 5d                  POP EBP
+008d252b: b001                MOV AL,0x1
+008d252d: 5b                  POP EBX
+008d252e: 83c414              ADD ESP,0x14
+008d2531: c20400              RET 0x4
+

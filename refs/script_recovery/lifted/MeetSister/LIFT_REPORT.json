@@ -1,0 +1,37 @@
+{
+  "script": "QS_MeetSister",
+  "package": "MeetSister",
+  "state": {},
+  "functions": {
+    "Init": {
+      "lines": 0,
+      "todo": [],
+      "calls": [],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 5,
+      "todo": [],
+      "calls": [
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "GetActiveQuestName",
+        "SetQuestCardObjective"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 0,
+      "todo": [],
+      "calls": []
+    }
+  },
+  "entities": [
+    "MeetSisterMessenger",
+    "MeetSisterSister"
+  ],
+  "threads": [],
+  "helpers": [],
+  "entityBodies": {}
+}

@@ -1,0 +1,101 @@
+{
+  "scope": "Execute Father intro entry through Hero acquisition or native cleanup.\n\nNative branches and termination helpers execute. Acquisition, resource/map,\nmovie and macro APIs are doubles. Stops at macro entry, before playback.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "name": "pre_entry_cancel",
+      "acquisitions": [],
+      "stop_at": 1,
+      "queries": 1,
+      "events": [
+        "release_father"
+      ],
+      "dad_finished": false
+    },
+    {
+      "name": "wait_cancel",
+      "acquisitions": [
+        false
+      ],
+      "stop_at": 2,
+      "queries": 2,
+      "events": [
+        "acquire_hero_0",
+        "frame",
+        "release_hero",
+        "release_father"
+      ],
+      "dad_finished": false
+    },
+    {
+      "name": "acquired_cancel",
+      "acquisitions": [
+        true
+      ],
+      "stop_at": 2,
+      "queries": 2,
+      "events": [
+        "acquire_hero_1",
+        "release_hero",
+        "release_father"
+      ],
+      "dad_finished": false
+    },
+    {
+      "name": "normal",
+      "acquisitions": [
+        true
+      ],
+      "stop_at": 0,
+      "queries": 2,
+      "events": [
+        "acquire_hero_1",
+        "movie_start",
+        "pause",
+        "fix_camera",
+        "macro"
+      ],
+      "dad_finished": false
+    },
+    {
+      "name": "retry_success",
+      "acquisitions": [
+        false,
+        true
+      ],
+      "stop_at": 0,
+      "queries": 3,
+      "events": [
+        "acquire_hero_0",
+        "frame",
+        "acquire_hero_1",
+        "movie_start",
+        "pause",
+        "fix_camera",
+        "macro"
+      ],
+      "dad_finished": false
+    },
+    {
+      "name": "retry_acquired_cancel",
+      "acquisitions": [
+        false,
+        true
+      ],
+      "stop_at": 3,
+      "queries": 3,
+      "events": [
+        "acquire_hero_0",
+        "frame",
+        "acquire_hero_1",
+        "release_hero",
+        "release_father"
+      ],
+      "dad_finished": false
+    }
+  ],
+  "bytes": {
+    "0xdb8798": "8bcee891d3170084c00f85da0f00008d4c2428e8f0eaa2ff8b4e048b396a048d54242c52ff97180100008b4e0450ff572084c075378d49008b4e048b01ff501c8bcee851d3170084c00f857f0200008b4e048b396a048d54242c52ff97180100008b4e0450ff572084c074cc8bcee825d3170084c00f85530200008d4c243ce85437f2ff6aff6870452c018d4c2428e8c463beff8d442428508d4c2424518d4c2444e8efb4f1ff8bc8e8ca34afff8d4c2420e89162beff6aff6894972d018d4c2428e89163beff8d542410528d442424508d4c2444e8bcb4f1ff8bc8e89734afff8d4c2420e85e62beff8d8c2480000000e8d2f292ff6aff680ed722018d4c2428e85263beff8b4e048b118d842480000000508d44242450ff92c80500008d4c2420e82162beff8b7e048b176a018bcfff92ec0500008b4e048b016a01ff90cc0500006aff687c972d018d4c2428e80563beff6a015555558d54244c8d4c2430e88072f0ff8d4c2420e8da61beff",
+    "0xdb8a66": "8d4c2428e861eaa2ff8d4c2410e858eaa2ff5f5e5d5b81c4e4000000c3"
+  }
+}

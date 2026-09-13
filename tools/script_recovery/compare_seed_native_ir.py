@@ -24,6 +24,8 @@ SEEDS = {
     "GuardianTrophyDealerInfo": "QS_GuardianTrophyDealerInfo",
     "StatueMaster": "V_StatueMaster",
     "DragonBossFight": "Q_DragonBossFight",
+    "GuildMaster": "V_GuildMaster",
+    "LUAGameflowAssistance": "GameflowAssistance",
 }
 
 

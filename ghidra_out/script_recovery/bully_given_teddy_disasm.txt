@@ -1,0 +1,30 @@
+//=== GivenTeddy @ 00dbcd00 (seed 0x00DBCD00) ===
+00dbcd00: 51                  PUSH ECX
+00dbcd01: 56                  PUSH ESI
+00dbcd02: 8bf1                MOV ESI,ECX
+00dbcd04: 8b4e04              MOV ECX,dword ptr [ESI + 0x4]
+00dbcd07: 8b01                MOV EAX,dword ptr [ECX]
+00dbcd09: 6a01                PUSH 0x1
+00dbcd0b: ff90f8010000        CALL dword ptr [EAX + 0x1f8]
+00dbcd11: 6aff                PUSH -0x1
+00dbcd13: 6858892d01          PUSH 0x12d8958  ; s_OBJECT_TEDDY_BEAR_UNGIVEABLE_012d8958
+00dbcd18: 8d4c240c            LEA ECX,[ESP + 0xc]
+00dbcd1c: e8cf1ebeff          CALL 0x0099ebf0  ; CCharString
+00dbcd21: 8b4e04              MOV ECX,dword ptr [ESI + 0x4]
+00dbcd24: 8b11                MOV EDX,dword ptr [ECX]
+00dbcd26: 8d442404            LEA EAX,[ESP + 0x4]
+00dbcd2a: 50                  PUSH EAX
+00dbcd2b: ff92f4010000        CALL dword ptr [EDX + 0x1f4]
+00dbcd31: 8d4c2404            LEA ECX,[ESP + 0x4]
+00dbcd35: e8a61dbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbcd3a: 8b4e14              MOV ECX,dword ptr [ESI + 0x14]
+00dbcd3d: c6417001            MOV byte ptr [ECX + 0x70],0x1
+00dbcd41: 8b5614              MOV EDX,dword ptr [ESI + 0x14]
+00dbcd44: c6829100000001      MOV byte ptr [EDX + 0x91],0x1
+00dbcd4b: 8b4e14              MOV ECX,dword ptr [ESI + 0x14]
+00dbcd4e: 6a03                PUSH 0x3
+00dbcd50: e81b1dffff          CALL 0x00daea70  ; AddBadDeed
+00dbcd55: 5e                  POP ESI
+00dbcd56: 59                  POP ECX
+00dbcd57: c3                  RET
+

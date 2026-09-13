@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Add the FSE bindings introduced upstream between 2026-08-31 and 2026-09-02.
+"""Add reviewed ForgeFSE bindings absent from the checked-in tooling manifest.
 
-Source of truth: eeeeeAeoN/FableScriptExtender @ master, files
+Source of truth for the first tranche: eeeeeAeoN/FableScriptExtender @ master, files
 `FableScriptExtender/LuaManager.cpp` (binding table), `LuaQuestState.h` and
 `EntityScriptingAPI.h` (declarations).  Every row below is transcribed from a
 declaration; none are inferred.  Retail addresses are deliberately absent - this
 manifest describes the Lua surface, not verified native targets.
+
+The 2026-09-11 conversation/message additions are transcribed from the local reviewed
+ForgeFSE retail-shadow binding table and declarations in those same three files.
 """
 
 from __future__ import annotations
@@ -15,6 +18,7 @@ import json
 from pathlib import Path
 
 UPSTREAM_COMMIT_RANGE = "2026-08-31..2026-09-02"
+LOCAL_REVIEW_DATE = "2026-09-11"
 
 
 def p(name: str, type_: str, optional: bool = False) -> dict:
@@ -23,6 +27,17 @@ def p(name: str, type_: str, optional: bool = False) -> dict:
 
 NEW_FUNCTIONS = [
     # --- Entity scope -----------------------------------------------------
+    {
+        "name": "Speak", "scope": "Entity", "returnType": "bool",
+        "parameters": [
+            p("pMe", "CScriptThing*"), p("spTargetThing", "const std::shared_ptr<CScriptThing>&"),
+            p("dialogueKey", "const std::string&"), p("selectionMethod", "int", True),
+            p("makeTargetListen", "bool", True), p("soundIn2D", "bool", True),
+            p("overScreenFade", "bool", True),
+        ],
+        "blocking": True, "category": "Entity API",
+        "description": "Speaks to a target and blocks until dialogue completes or is interrupted (Lua binding alias for Speak_Blocking).",
+    },
     {
         "name": "GetAngleXY", "scope": "Entity", "returnType": "float",
         "parameters": [p("pMe", "CScriptThing*")],
@@ -114,6 +129,35 @@ NEW_FUNCTIONS = [
         "description": "Returns the distance between two things.",
     },
     {
+        "name": "AddNewConversation", "scope": "Quest", "returnType": "int",
+        "parameters": [p("pThing", "CScriptThing*"), p("b1", "bool"), p("b2", "bool")],
+        "blocking": False, "category": "Conversation",
+        "description": "Creates a conversation with the supplied initial participant.",
+    },
+    {
+        "name": "AddPersonToConversation", "scope": "Quest", "returnType": "void",
+        "parameters": [p("conversationID", "int"), p("pPerson", "CScriptThing*")],
+        "blocking": False, "category": "Conversation",
+        "description": "Adds a participant to an existing conversation.",
+    },
+    {
+        "name": "MsgOnRegionLoaded", "scope": "Quest", "returnType": "sol::object",
+        "parameters": [p("s", "sol::this_state")],
+        "blocking": False, "category": "Messages",
+        "description": "Polls the retail region-loaded message and returns its region name or nil.",
+    },
+    {
+        "name": "GiveHeroQuestCardDirectly", "scope": "Quest", "returnType": "void",
+        "parameters": [p("questCardObjectName", "string"), p("questName", "string"), p("flag", "bool")],
+        "blocking": False, "category": "Quest",
+        "description": "Gives the Hero a quest card directly.",
+    },
+    {
+        "name": "IsXbox", "scope": "Quest", "returnType": "bool", "parameters": [],
+        "blocking": False, "category": "Platform",
+        "description": "Returns the retail platform predicate exposed by ForgeFSE.",
+    },
+    {
         "name": "SetMasterGameState", "scope": "Quest", "returnType": "void",
         "parameters": [p("flagName", "string"), p("value", "any")],
         "blocking": False, "category": "Master Script",
@@ -139,7 +183,7 @@ def main() -> int:
         print(f"already present: {row['scope']}.{row['name']}")
     for row in added:
         print(f"adding: {row['scope']}.{row['name']}")
-    if args.check or not added:
+    if args.check:
         print(f"{len(added)} to add, {len(payload['functions'])} currently in manifest")
         return 0
 
@@ -148,8 +192,8 @@ def main() -> int:
     payload["fseVersion"] = args.fse_version
     payload["apiVersion"] = args.fse_version
     payload["generatedAtUtc"] = args.generated_at
-    payload["buildId"] = f"upstream-{UPSTREAM_COMMIT_RANGE}"
-    payload["fseBuildId"] = f"upstream-{UPSTREAM_COMMIT_RANGE}"
+    payload["buildId"] = f"upstream-{UPSTREAM_COMMIT_RANGE}+local-review-{LOCAL_REVIEW_DATE}"
+    payload["fseBuildId"] = f"upstream-{UPSTREAM_COMMIT_RANGE}+local-review-{LOCAL_REVIEW_DATE}"
     args.manifest.write_text(json.dumps(payload, indent=4), encoding="utf-8")
     print(f"wrote {args.manifest}: {len(payload['functions'])} functions")
     return 0

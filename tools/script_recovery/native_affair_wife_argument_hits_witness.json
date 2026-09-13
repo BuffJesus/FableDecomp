@@ -1,0 +1,62 @@
+{
+  "address": "0x00DB2B10",
+  "size": 4887,
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "f6a0127252052c13e3d235272126c01664626f77f1e4246f2013da71af9b0e43",
+  "bytesSha256": "98d1f6993ac85e4431cdb23efdffdf43b3f3b560ca0b6a7272e68ef1b89233a2",
+  "contracts": {
+    "MsgIsHitByHero": {
+      "name": "MsgIsHitByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero' is met."
+    },
+    "MsgIsHitByAnySpecialAbilityFromHero": {
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by any special ability from hero' is met."
+    },
+    "MsgIsHitByHeroSpecialAbility": {
+      "name": "MsgIsHitByHeroSpecialAbility",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "abilityEnum",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero special ability' is met."
+    }
+  },
+  "old": "          CCharString::CCharString((CCharString *)&ppuStack_74,\"SCRIPT_NAME_HERO\",-1);\r\n          uVar14 = uVar21 | 1;\r\n          cVar5 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8), &ppuStack_74);\r\n          ppVar18 = extraout_EDX_16;\r\n          if (cVar5 == '\\0') {\r\n            CCharString::CCharString(aCStack_78,\"SCRIPT_NAME_HERO\",-1);\r\n            uVar14 = uVar21 | 3;\r\n            cVar5 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n            ppVar18 = extraout_EDX_17;\r\n            if (cVar5 != '\\0') {\r\n              CCharString::CCharString(aCStack_84,\"SCRIPT_NAME_HERO\",-1);\r\n              uVar14 = uVar21 | 7;\r\n              cVar5 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8), 0xe);\r\n              ppVar18 = extraout_EDX_18;\r\n              unaff_EBP = uVar14;\r\n              if (cVar5 == '\\0') goto LAB_00db3762;\r\n            }\r\n            bVar4 = false;\r\n            unaff_EBP = uVar14;\r\n          }\r\n          else {\r\nLAB_00db3762:\r\n            bVar4 = true;\r\n          }\r\n",
+  "new": "          CCharString::CCharString((CCharString *)&ppuStack_74,\"SCRIPT_NAME_HERO\",-1);\r\n          uVar14 = uVar21 | 1;\r\n          cVar5 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8), &ppuStack_74);\r\n          ppVar18 = extraout_EDX_16;\r\n          if (cVar5 == '\\0') {\r\n            CCharString::CCharString(aCStack_78,\"SCRIPT_NAME_HERO\",-1);\r\n            uVar14 = uVar21 | 3;\r\n            cVar5 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n            ppVar18 = extraout_EDX_17;\r\n            if (cVar5 != '\\0') {\r\n              CCharString::CCharString(aCStack_84,\"SCRIPT_NAME_HERO\",-1);\r\n              uVar14 = uVar21 | 7;\r\n              cVar5 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8), 0xe);\r\n              ppVar18 = extraout_EDX_18;\r\n              unaff_EBP = uVar14;\r\n              bVar4 = cVar5 == '\\0';\r\n            }\n            else {\n              bVar4 = false;\n            }\r\n            unaff_EBP = uVar14;\r\n          }\r\n          else {\r\n\r\n            bVar4 = true;\r\n          }\r\n",
+  "review": "Argument-loop hit check: DB36FE selfEDI slot54 HERO true->DB3762 result1; otherwise DB3725 slotA8 false->DB375B result0; otherwise DB3751 slotA4 HERO ability14 false->result1 true->result0. Preserve constructors masks1/3/7, last predicate cVar5 and cleanup following block. Ability operand already correct; recover sibling jump. EDI self remains unchanged."
+}

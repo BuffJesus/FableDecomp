@@ -1,0 +1,205 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "72769abd2c79e0835794fdd53043ff21c33dc76974923c052689c3f84bf456db",
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "address": 19271716,
+      "size": 4,
+      "sha256": "eba0e74a432136d66d7304ef103c3f3e12272b0e266e5ac575bc966c85556d1a"
+    },
+    {
+      "address": 19272892,
+      "size": 4,
+      "sha256": "f7dc0a0456e9f9809e953387e30eaa2ec00468c469e432062e4deb27b9d97433"
+    },
+    {
+      "address": 19272896,
+      "size": 4,
+      "sha256": "55b6937721364bbc34c7dcc03910db8dc382d10f2d1ef01241703d16cdc0a92c"
+    },
+    {
+      "address": 19272900,
+      "size": 4,
+      "sha256": "fd3d5ad405653593b434b43b032666378b2852e4039cb4ce3fcf085fce1dd7bc"
+    }
+  ],
+  "textKey": "TEXT_QST_048_AFFAIR_WIFE_RUNNING_TO_HUBBY",
+  "contracts": {
+    "GetHero": {
+      "name": "GetHero",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets hero."
+    },
+    "AddNewConversation": {
+      "name": "AddNewConversation",
+      "scope": "Quest",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "b1",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "b2",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "Conversation",
+      "description": "Creates a conversation with the supplied initial participant."
+    },
+    "AddPersonToConversation": {
+      "name": "AddPersonToConversation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "pPerson",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "Conversation",
+      "description": "Adds a participant to an existing conversation."
+    },
+    "AddLineToConversation": {
+      "name": "AddLineToConversation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "textKey",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "spSpeaker",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "spListener",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "showSubtitle",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": false,
+      "category": "Quest API",
+      "description": "Adds a dialogue line to an existing ambient conversation."
+    }
+  },
+  "events": [
+    {
+      "site": 14365968,
+      "argumentCount": 3,
+      "setup": {
+        "address": 14365968,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1456
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "old": "uVar11 = GSI->AddNewConversation(pCVar1,0);\r\n        CCharString::CCharString\r\n                  ((CCharString *)&stack0xffffff4c,\"TEXT_QST_048_AFFAIR_WIFE_RUNNING_TO_HUBBY\",-1);\r\n        NHeroInformationScreens::CBase::CBase((CBase *)&ppuStack_6c);\r\n        ppuStack_6c = &PTR__scalar_deleting_destructor__01238c8c;\r\n        uStack_68 = 0;\r\n        uStack_64 = 0;\r\n        GSI->AddLineToConversation\r\n                  (uVar11,&stack0xffffff4c,0,pCVar1,&ppuStack_6c);\r\n        ",
+  "new": "uVar11 = GSI->AddNewConversation(me,false,false);\r\n        CCharString::CCharString\r\n                  ((CCharString *)&stack0xffffff4c,\"TEXT_QST_048_AFFAIR_WIFE_RUNNING_TO_HUBBY\",-1);\r\n        NHeroInformationScreens::CBase::CBase((CBase *)&ppuStack_6c);\r\n        ppuStack_6c = &PTR__scalar_deleting_destructor__01238c8c;\r\n        uStack_68 = 0;\r\n        uStack_64 = 0;\r\n        GSI->AddLineToConversation\r\n                  (uVar11,&stack0xffffff4c,0,me,(CScriptThing *)0x0);\r\n        ",
+  "review": "DB3510 NewConversation selfEDI,false,false; resultEBP at3521. LineDB355F idEBP,textstack44,false,selfEDI,emptyCScriptThingstack116. 352Cbaseconstructor,3543vtable1238C8C,354E/3555zero pImp data/refcount; postpushstores prevent setupdecoder. Fullnativehash pins manual review. Emptywrapper destructor3569 retained in source. Runtime LuaQuestState.cpp3743 maps nil listener to actual zeroCScriptThing with g_pCScriptThingVTable. No hero getter or participant call here.",
+  "textAddress": 19762560
+}

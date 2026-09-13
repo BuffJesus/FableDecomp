@@ -1,0 +1,90 @@
+{
+  "scope": "Offline evidence; runtime adapter and registered Guardian package remain incomplete.",
+  "sources": [
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\reference\\quest.lua",
+      "sha256": "e2651636460339b07b965f676ab9bd2e40fa43153cde36d0c63c5db09aaa5f08"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\test_guardian_entity.py",
+      "sha256": "232aa6400dfa810a7101f11577959ac414bb0366dbd6db73c1200139dc9633de"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\runtime_checks\\retail_resources_smoke.cpp",
+      "sha256": "20000fb91ff7263cf5ed640a0980996515e0f07c0ffa29f6c6ecd5b0a16bf971"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailResources.h",
+      "sha256": "e5c6e83d1f2f7c9acd923e0a944bb55e535efa16cf31d5262e8643ddc6c5c43e"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-guardian-dispatch-20260912\\result.json",
+      "sha256": "7e12f5fee426562237ca317e2c0cae7f8a8865d300d46778139088616f1f95a4"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-guardian-dispatch-release-20260912\\build.log",
+      "sha256": "07bb6e4b0e1e87d03a587bee925d01f454a23f104799cdf861ff23ab42c8da95"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\build_guardian_entity_replay.py",
+      "sha256": "7414725ea09412d2bcb5cba639bfd85106fd679cda8cc0d1b491ad0fbf7e7b0e"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\prove_guardian_entity.py",
+      "sha256": "4e2ef9d7a70202d704209abd4617983195fd50fd9ac63be772292b8faabb8388"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\prove_guardian_resource_dispatch.py",
+      "sha256": "f76f7dc025079fc01884b9969b00f9310f5e2096f11a64fd21c7bfdc63f1a90d"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\prove_guardian_alive_condition.py",
+      "sha256": "05a3aa934dab2ac1a905f2a9d29d888ff6542d83c33e94c175d8468a6ae03d5c"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-entity-cases-20260912.json",
+      "sha256": "bd66cb482d4caa43cd13780571cd551f36285471d78d8f964261f503e35673fd"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-resource-dispatch-20260912.json",
+      "sha256": "5b8dda96109d9bfa788d43f362ae5a3b5527b438667c605c387d91f2ef46cc8f"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-alive-condition-20260912.json",
+      "sha256": "5c27360b4f8288db4a197dc78aa59ed13274e6bd266009acd51e10f590efd674"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\ENTITY_AND_DISPATCH_REVIEW_2026-09-12.md",
+      "sha256": "158f56049a6b2c835412e82a4d9b1924a061ea5bfb855e6c6c7fef106da036ad"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\resource-dispatch-api-proposal-20260912.json",
+      "sha256": "609a4b3a841d80306a25f7085b61c8dc868a69503daeeaabb7528a20216d5c40"
+    }
+  ],
+  "observed_checks": {
+    "full_native_entity_cases": 28,
+    "full_entity_events": 1377,
+    "total_native_reference_cases": 87,
+    "native_resource_dispatch_cases": 10,
+    "native_alive_scheduler_cases": 5,
+    "runtime_binaries_passed": 7,
+    "release_exit_code": 0,
+    "runtime_proof_inputs_still_match": true
+  },
+  "installed_dlls": {
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FableScriptExtender.dll": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31",
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\FableScriptExtender.dll": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+  },
+  "source_dll": {
+    "path": "D:\\Code\\ForgeFSE-retail-shadow\\Release\\FableScriptExtender.dll",
+    "sha256": "58fcea9de937cc1f1302d5f1d6331105aef397116c013daa55c64b9013614c20"
+  },
+  "remaining": [
+    "explicit resource Thing lifetime",
+    "native alive-condition adapter registration",
+    "actual Guardian sol/C++ adapter comparison",
+    "quest-card decoder/component evidence",
+    "registry and disabled package"
+  ]
+}

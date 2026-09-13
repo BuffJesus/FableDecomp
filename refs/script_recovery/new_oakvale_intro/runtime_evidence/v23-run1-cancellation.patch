@@ -1,0 +1,39 @@
+--- LuaManager-v22.cpp
++++ LuaManager.cpp
+@@ -198,7 +198,16 @@
+     auto questState_type = lua.new_usertype<LuaQuestState>("Quest", sol::no_constructor);
+ 
+     questState_type["NewScriptFrame"] = sol::overload(sol::resolve<bool()>(&LuaQuestState::NewScriptFrame),sol::resolve<bool(CScriptThing*)>(&LuaQuestState::NewScriptFrame));
+-    questState_type["IsActiveThreadTerminating"] = &LuaQuestState::IsActiveThreadTerminating;
++    // Each entity VM is registered with its actual host. Retail entity callers
++    // test that host (0x00F35B30), not the owning quest's termination predicate.
++    // This query does not advance a frame or treat cutscene skip as termination.
++    questState_type["IsActiveThreadTerminating"] = [pEntityHost](LuaQuestState& self) {
++        if (pEntityHost) {
++            return IsActiveThreadTerminating_Entity_API &&
++                IsActiveThreadTerminating_Entity_API(pEntityHost);
++        }
++        return self.IsActiveThreadTerminating();
++    };
+     questState_type["Log"] = &LuaQuestState::Log;
+     questState_type["GetFSEInfo"] = &LuaQuestState::GetFSEInfo;
+     questState_type["CreateThread"] = sol::overload([](LuaQuestState& self, const std::string& func) {self.CreateThread(func, sol::lua_nil); }, [](LuaQuestState& self, const std::string& func, sol::table args) {self.CreateThread(func, args); });
+--- NOVI_Bully-v22.lua
++++ NOVI_Bully.lua
+@@ -273,6 +273,16 @@
+   begin_movie(quest)
+   quest:FixMovieSequenceCamera(true)
+   quest:RunCutsceneWithSetup(CS_BULLYRUN1, actors, input_args)
++  -- 0x00DBCBA4 / 0x00DBCBF7 test the active entity thread after RUN1.
++  -- Termination takes 0x00DBCC00's cleanup-only path; a cutscene skip does not.
++  if quest:IsActiveThreadTerminating() then
++    quest:FixMovieSequenceCamera(false)
++    end_movie(quest)
++    NOVI.release(quest, victim)
++    NOVI.release(quest, hero)
++    NOVI.release(quest, me)
++    return false
++  end
+   local bully_after = me:GetPos()
+   local victim_after = victim:GetPos()
+   quest:Log(string.format("NOVI_PROBE BullyRun after1 bully=(%.3f,%.3f,%.3f) victim=(%.3f,%.3f,%.3f) bullyTask=%s victimTask=%s", bully_after.x or 0, bully_after.y or 0, bully_after.z or 0, victim_after.x or 0, victim_after.y or 0, victim_after.z or 0, tostring(me:IsPerformingScriptTask()), tostring(victim:IsPerformingScriptTask())))

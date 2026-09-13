@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["MsgIsHitByAnySpecialAbilityFromHero","MsgIsHitByHeroSpecialAbility","EntitySetThingAsAllyOfThing","DisplayGameInfo","SpeakAndWait","ReleaseControl"],"note":"a non-excluded hero special ability triggers the girl hit reaction and first violence bad deed"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["MsgIsHitByAnySpecialAbilityFromHero","MsgIsHitByHeroSpecialAbility","EntitySetThingAsAllyOfThing","DisplayGameInfo","Speak","ReleaseControl"],"note":"a non-excluded hero special ability triggers the girl hit reaction and first violence bad deed"},
   "Quest.NewScriptFrame":[true,false],
   "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
   "Entity.IsTalkedToByHero":[false],

@@ -116,7 +116,7 @@
         "TEXT_QST_LOG_BASICS_MAP"
       ],
       "event": "api-call",
-      "name": "AddLogbookStoryEntryString",
+      "name": "AddLogbookTutorialEntry",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -131,7 +131,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -208,13 +210,6 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
-      "event": "api-call",
-      "name": "ReleaseControl",
-      "receiver": "me",
-      "scope": "Entity"
-    },
-    {
       "arguments": [
         {
           "handle": "me",
@@ -225,6 +220,13 @@
       "name": "NewScriptFrame",
       "receiver": "quest",
       "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "me",
+      "scope": "Entity"
     },
     {
       "arguments": [],
@@ -260,7 +262,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -282,7 +286,8 @@
         {
           "handle": "hero",
           "scope": "Entity"
-        }
+        },
+        false
       ],
       "event": "api-call",
       "name": "EntitySetFacingAngleTowardsThing",
@@ -295,8 +300,8 @@
           "handle": "me",
           "scope": "Entity"
         },
-        0,
-        0
+        false,
+        false
       ],
       "event": "api-call",
       "name": "AddNewConversation",
@@ -433,5 +438,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua",
-  "sourceSha256": "17dfb7b33602849ce63dd2ac0fd9ee0b96a6bf2f49053d9e658c84a51c3957b1"
+  "sourceSha256": "a2a8e426092021fcd6d375be369879d6203aa3085ca6dedc05b1a06b89c5ece7"
 }

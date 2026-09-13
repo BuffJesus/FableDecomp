@@ -1,0 +1,75 @@
+{
+  "schema": "guard-repeat-lecture-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "regions": [
+    {
+      "name": "claimAndRecheck",
+      "address": "0x00DAC7A3",
+      "rangeSize": 639,
+      "bytesSha256": "5151054BC31DA00AA05BB5584E4FC4C5C7C9D2503B1E8C90348D7336792B6390",
+      "instructionCount": 205,
+      "strings": []
+    },
+    {
+      "name": "lectureSelectionAndBodies",
+      "address": "0x00DACB33",
+      "rangeSize": 3381,
+      "bytesSha256": "CBC591290B09305E9EECD2A8558F8F36983FB5F108C10FCE7CAF0205A2CA868A",
+      "instructionCount": 1001,
+      "strings": [
+        "TEXT_QST_048_GUARD_CAUGHT_YOU_10",
+        "TEXT_QST_048_GUARD_CAUGHT_YOU_20",
+        "TEXT_QST_048_GUARD_CAUGHT_YOU_30",
+        "TEXT_QST_048_GUARD_CAUGHT_YOU_40",
+        "TEXT_QST_048_GUARD_CAUGHT_YOU_50",
+        "TEXT_QST_048_GUARD_CAUGHT_YOU_60",
+        "TEXT_QST_048_GUARD_CAUGHT_YOU_AGAIN",
+        "TEXT_QST_048_GUARD_AFTER_READ_LIST"
+      ]
+    }
+  ],
+  "claiming": {
+    "loopComparison": {
+      "badDeedsSite": "0x00DAC7A3",
+      "badDeedsOffset": "0x58",
+      "dealtSubtractSite": "0x00DAC7A6",
+      "dealtOffset": "0x68",
+      "condition": "BadDeedsPerformed - GuardsDealtWithBadDeeds > 0"
+    },
+    "postChaseRecheck": {
+      "badDeedsSite": "0x00DAC9F8",
+      "dealtSubtractSite": "0x00DAC9FB",
+      "noWorkBranch": "0x00DAD87E"
+    },
+    "claimCurrentCount": {
+      "loadSite": "0x00DACA1C",
+      "storeSite": "0x00DACA1F",
+      "assignment": "GuardsDealtWithBadDeeds = BadDeedsPerformed"
+    }
+  },
+  "lecture": {
+    "spokenOnceRead": {
+      "site": "0x00DACB33",
+      "parentOffset": "0x92"
+    },
+    "repeatBranch": {
+      "site": "0x00DACB3D",
+      "target": "0x00DAD327",
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_AGAIN"
+    },
+    "firstSpeech": [
+      "TEXT_QST_048_GUARD_CAUGHT_YOU_10",
+      "TEXT_QST_048_GUARD_CAUGHT_YOU_20",
+      "TEXT_QST_048_GUARD_CAUGHT_YOU_30",
+      "TEXT_QST_048_GUARD_CAUGHT_YOU_40",
+      "TEXT_QST_048_GUARD_CAUGHT_YOU_50",
+      "TEXT_QST_048_GUARD_CAUGHT_YOU_60"
+    ],
+    "firstSetsSpokenOnce": {
+      "site": "0x00DAD31B",
+      "value": 1
+    },
+    "repeatTailSpeech": "TEXT_QST_048_GUARD_AFTER_READ_LIST"
+  }
+}

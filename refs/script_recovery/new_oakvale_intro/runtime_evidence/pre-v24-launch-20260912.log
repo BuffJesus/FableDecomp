@@ -1,0 +1,764 @@
+--- Fable Custom Quest DLL Attached ---
+--- ForgeFSE v0.1 (fork of FableScriptExtender) ---
+g_LuaEntityHostVTable = 0x70298c28
+    [0] = 0x6ffe8f60
+    [1] = 0x6ffe9090
+    [2] = 0x6ffe9660
+    [3] = 0x6ffea0e0
+    [4] = 0x6ffea0f0
+    [5] = 0x6ffea5a0
+    [6] = 0x6ffeab90
+--- Initializing Fable API Pointers ---
+Module Base Address (g_fableBase): 0x400000
+--- Fable API Pointers Initialized ---
+--- Retail allocator override hook installed (configuration remains opt-in). ---
+[RetailTransition] CMainGameComponent::Update hook installed at 0x418289 (trampoline 0x37f0000).
+[CardClear] 3 hooks installed: UpdateDiskCacheTexture + IsNearlyIdentical(force re-render) + StartComposition(clear).
+[CutsceneCommandDiag] passive command and skip-query hooks installed.
+[CutsceneSkipDiag] passive SetCutsceneMode boundary hook installed.
+[CutsceneSpeechDiag] passive retail Speak boundary hook installed.
+[CutsceneMoveDiag] passive retail movement boundary hooks installed.
+--- Retail allocator override disabled by configuration. ---
+--- Load count: 1 ---
+--- Initializing Fable API Pointers ---
+Module Base Address (g_fableBase): 0x400000
+--- Fable API Pointers Initialized ---
+[MapResourceAlias] Hook installed at OpenRetailStaticMap 0xb41e50 (trampoline 0xf630000).
+--- Initializing Game Interface API from VTable ---
+--- Game Interface API (All Batches) Initialized Successfully ---
+--- Initializing LuaManager (in Isolated State mode) ---
+    'LuaManager' initialized. States will be created per-script.
+--- Lua systems initialized successfully. ---
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=IsRegionLoaded argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo2_SisterInBanditCamp
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=SetIsPushableByHero argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=SetThingHasInformation argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=RegisterTimer argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetTimer argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=EntitySetFacingAngleTowardsThing argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Quest receiver=quest operation=DeregisterTimer argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo2_SisterInBanditCamp::MazeAtTavern
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=EntitySetAsOpinionSourceByString argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=SetIsPushableByHero argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=IsDistanceBetweenThingsUnder argc=3
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=EntitySetFacingAngleTowardsThing argc=2
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=QS_GuardianSisterInfo::MazeAtTavern scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianSisterInfo::MazeAtTavern
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianTrophyDealerInfo
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=GetAngleXY argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=EntitySetAsKillable argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=EntitySetAsDamageable argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=SetIsPushableByHero argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=KickOffQuestStartScreen argc=3
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=QS_GuardianTrophyDealerInfo::GTDI_Maze scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for QS_GuardianTrophyDealerInfo::GTDI_Maze
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=QS_MeetSister scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadow] completed mutation-free preflight for QS_MeetSister
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterMessenger scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterMessenger scope=Quest receiver=quest operation=IsRegionLoaded argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterMessenger scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadow] completed mutation-free preflight for QS_MeetSister::MeetSisterMessenger
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=PlayCutscene argc=3
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=RemoveThing argc=1
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=SetQuestAsCompleted argc=4
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=DeactivateQuestLater argc=2
+    [RetailShadowTrace] script=QS_MeetSister::MeetSisterSister scope=Quest receiver=quest operation=FadeScreenIn argc=0
+    [RetailShadow] completed mutation-free preflight for QS_MeetSister::MeetSisterSister
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=IsRegionLoaded argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse scope=Quest receiver=quest operation=NewScriptFrame argc=0
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=IsDiggingSpotEnabled argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=SetQuestAsCompleted argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::ExtraBooty scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse::ExtraBooty
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=GetAngleXY argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=EntitySetAsKillable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=SetIsPushableByHero argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=RegisterTimer argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=SetTimer argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=GetTimer argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=IsTalkedToByHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=MsgIsHitByHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=MsgIsHitByAnySpecialAbilityFromHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Quest receiver=quest operation=DeregisterTimer argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::FishermansWife scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse::FishermansWife
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsAbleToWalkThroughSolidObjects argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsDamageable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetIsThingForcePushable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsKillable argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetAsOpinionSourceByString argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetHero argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Entity receiver=me operation=AcquireControl argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=EntitySetTargetingType argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetThingHasInformation argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=RegisterTimer argc=0
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetTimer argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=IsDistanceBetweenThingsUnder argc=3
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=IsDiggingSpotEnabled argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=SetStateBool argc=2
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=FadeOutAndKillEntity argc=4
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Quest receiver=quest operation=DeregisterTimer argc=1
+    [RetailShadowTrace] script=Q_HerosOldHouse::GhostFisherman scope=Entity receiver=me operation=ReleaseControl argc=0
+    [RetailShadow] completed mutation-free preflight for Q_HerosOldHouse::GhostFisherman
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=AddEntityBinding argc=2
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=FinalizeEntityBindings argc=0
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=GetActiveQuestName argc=0
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=SetQuestCardObjective argc=4
+    [RetailShadowTrace] script=V_MazeResearch scope=Quest receiver=quest operation=Log argc=1
+    [RetailShadow] completed mutation-free preflight for V_MazeResearch
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=EntitySetInLimbo argc=2
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Entity receiver=me operation=MsgIsUsedByHero argc=0
+    [RetailShadowTrace] script=V_MazeResearch::EmptyGrave scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadow] completed mutation-free preflight for V_MazeResearch::EmptyGrave
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=GetThingWithScriptName argc=1
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=GetStateBool argc=1
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=SetThingAsUsable argc=2
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=MiniMapAddMarker argc=2
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Entity receiver=me operation=MsgIsUsedByHero argc=0
+    [RetailShadowTrace] script=V_MazeResearch::HistoryBookcase scope=Quest receiver=quest operation=NewScriptFrame argc=1
+    [RetailShadow] completed mutation-free preflight for V_MazeResearch::HistoryBookcase
+--- Retail shadow preflight complete: passed=16 failed=0 (engine bindings unavailable by design). ---
+--- Reading quests.lua definitions... ---
+    Loading config from: C:\Programs\Steam\steamapps\common\Fable The Lost Chapters/FSE/quests.lua
+!!! WARNING: No valid quest definitions were loaded from quests.lua.
+--- Quests.lua definitions read and sorted. ---
+--- Quest registry (FinalAlbion.qst) already up to date. ---
+--- First-time script registration (populating g_scriptInfos)... ---
+--- Custom scripts registered with the game. ---
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlumsWarehouses.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneBridge.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_4.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarm.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarmEast.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodTeleport.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GrannysHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodHobbeCave.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampMain.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampResidential.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampBoss.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ExecutionTree.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Graveyard_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardCircle.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KrakenChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCells_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonSecretPassage.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCells_2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ArenaCells.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardEntrance.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroDualAreaCave.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DarkwoodChapel.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_4.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_5.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_6.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_7.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_8.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_9.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_4.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_5.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_6.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_7.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\FrescoDome.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_9.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\WitchwoodCavern.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCells_3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonCourtyard.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGladeMainTown.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPathEntrance.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Fisherman.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ArenaHallOfHeroes.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ArenaExterior.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPath.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\TeleporterGreatwood.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Filler01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstonePosh.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodBanditToll.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardSecretPassage_1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonBarracks.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonOffice.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonTortureChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuildComplexInside.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouseCellar.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\MayorsHouseHallway.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\MayorsHouseBedroom.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneTavernCellar.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonSecretPassageExterior.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneJail.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoods.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonIsland.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPath.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\FrescoCaves.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GuildWoods.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GuildExterior.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveEntranceTunnel.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveLarder.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveSideRoom.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveMainChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveNymphChamber.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarmFiller_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GreatwoodLakeFiller_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditTollFiller_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PicnicArea_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Filler_GrannysHouse_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Filler_GrannysHouse_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Sea_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakVale_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCamp_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_12.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_13.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_14.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_16.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoodsFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoodsFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPathFiller01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_15.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouse_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood10_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood9_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood8_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood7_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood7_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood7_Leadout_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DarkwoodChapel_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood6_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood5_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood4_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood3_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_24.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_18.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_21.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_22.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_10.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_11.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_12.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_13.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_14.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_15.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_16.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_17.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_18.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_19.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_20.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_21.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_22.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_23.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_24.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_25.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_26.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_27.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_28.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakValeWest.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakValeEast.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakvaleMemorialGarden.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_26.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_25.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_29.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_30.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_27.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\KnotholeGlade_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_28.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_29.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Leadout_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Arena_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_31.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BarrowFields_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Greatwood_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarm_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OrchardFarm_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_30.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_31.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Hookcoast_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Hookcoast_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GibbetWoods_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bowerstone_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneJail_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneJail_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ExecutionTree_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditToll.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodGrannysHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonSecretPassageExterior_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HeroGuild_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPath_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HauntedHouse_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardFiller03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ExecutionTree_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Darkwood_Filler_32.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_12.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Sea_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\StartOakVale_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_BanditCampPath_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Barrowfields_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_HauntedHouse_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_DarkwoodSporeSwamp_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodBanditTol_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_GreatwoodCaves_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_KnotholeGlade_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Guild_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\creature_hub.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\PrisonPathFiller02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DesertedFarm_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LookoutPoint_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HobbeCaveNymphFocal.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\GraveyardPathFiller04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BanditCampPath_Filler_13.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast_Sea_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\HookCoast_Sea_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Witchwood_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakValeWest_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakValeEast_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakvaleMemorialGarden_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\BowerstoneSlums_v2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\OakvaleFiller_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes2.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Leadout_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Leadout_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Leadout_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_LookoutPoint.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\Bordello_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Bordello_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DemonDoor_Necropolis_Filler_04.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Filler_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Filler_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Filler_03.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_05.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\SnowspireVillage_Vista_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Vista_01.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\DragonCliff_Vista_02.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes1_Filler_06.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\LostBay_Filler_07.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_08.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\NorthernWastes3_Filler_09.lev'.
+[StaticMapProbe] opening 'Data\Levels\FinalAlbion\ForgeTest64.lev'.
+[StaticMapProbe] opened state=1 bankIndex=426 bounds=(3328,2304,72)..(3392,2368,83.962)
+[CutsceneCommandDiag] macro=<none> tick=8917000 command=PlayMusic MUSIC_SET_NULL
+[CutsceneFadeDiag] tick=8917000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0 inTime=3 outElapsed=0.1 inRemaining=3 colour=0xff000000 freezeCount=28 beforeCommand=PlayMusic MUSIC_SET_NULL
+[CutsceneCommandDiag] macro=<none> tick=8917000 command=FadeOut 0.5,0
+[CutsceneFadeDiag] tick=8917000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0 inTime=3 outElapsed=0.1 inRemaining=3 colour=0xff000000 freezeCount=28 beforeCommand=FadeOut 0.5,0
+[CutsceneCommandDiag] macro=<none> tick=8917000 command=CameraPause FALSE
+[CutsceneFadeDiag] tick=8917000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=28 beforeCommand=CameraPause FALSE
+[CutsceneCommandDiag] macro=<none> tick=8917000 command=Hero.Teleport MK_OVI_ID_HERO,FALSE
+[CutsceneFadeDiag] tick=8917000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=28 beforeCommand=Hero.Teleport MK_OVI_ID_HERO,FALSE
+[CutsceneCommandDiag] macro=<none> tick=8917000 command=Father.Teleport MK_OVI_ID_DAD
+[CutsceneFadeDiag] tick=8917000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=28 beforeCommand=Father.Teleport MK_OVI_ID_DAD
+[CutsceneCommandDiag] macro=<none> tick=8917000 command=Father.LookToThing Hero,FOREVER
+[CutsceneFadeDiag] tick=8917000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=28 beforeCommand=Father.LookToThing Hero,FOREVER
+[CutsceneCommandDiag] macro=<none> tick=8917078 command=DoScriptFrame 1
+[CutsceneFadeDiag] tick=8917078 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=25 beforeCommand=DoScriptFrame 1
+[CutsceneCommandDiag] macro=<none> tick=8917171 command=DoCameraPreloading
+[CutsceneFadeDiag] tick=8917171 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=24 beforeCommand=DoCameraPreloading
+[CutsceneCommandDiag] macro=<none> tick=8917203 command=DoScriptFrame 1
+[CutsceneFadeDiag] tick=8917203 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=24 beforeCommand=DoScriptFrame 1
+[CutsceneCommandDiag] macro=<none> tick=8917203 command=PlayAVI dream_sequence_comp.xmv
+[CutsceneFadeDiag] tick=8917203 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=23 beforeCommand=PlayAVI dream_sequence_comp.xmv
+[CutsceneCommandDiag] macro=<none> tick=8918468 command=MuteSounds false
+[CutsceneFadeDiag] tick=8918468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=23 beforeCommand=MuteSounds false
+[CutsceneCommandDiag] macro=<none> tick=8918468 command=FadeOut 0.5,0
+[CutsceneFadeDiag] tick=8918468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=23 beforeCommand=FadeOut 0.5,0
+[CutsceneCommandDiag] macro=<none> tick=8918468 command=DoScriptFrame 2
+[CutsceneFadeDiag] tick=8918468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 2
+[CutsceneCommandDiag] macro=<none> tick=8918593 command=Hero.PlayAnimation CS_WAKING_UP_LOOP,FALSE,FALSE,TRUE,FALSE
+[CutsceneFadeDiag] tick=8918593 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=Hero.PlayAnimation CS_WAKING_UP_LOOP,FALSE,FALSE,TRUE,FALSE
+[CutsceneCommandDiag] macro=<none> tick=8918671 command=Hero.PlayAnimation CS_WAKING_UP_ON_STEPS,FALSE,FALSE,TRUE,FALSE
+[CutsceneFadeDiag] tick=8918671 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=Hero.PlayAnimation CS_WAKING_UP_ON_STEPS,FALSE,FALSE,TRUE,FALSE
+[CutsceneCommandDiag] macro=<none> tick=8918734 command=DoScriptFrame 4
+[CutsceneFadeDiag] tick=8918734 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 4
+[CutsceneCommandDiag] macro=<none> tick=8919000 command=StartTimeCode
+[CutsceneFadeDiag] tick=8919000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=StartTimeCode
+[CutsceneCommandDiag] macro=<none> tick=8919000 command=PlayMusic MUSIC_SET_OAKVALE
+[CutsceneFadeDiag] tick=8919000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=PlayMusic MUSIC_SET_OAKVALE
+[CutsceneCommandDiag] macro=<none> tick=8919000 command=NoLoadUseCamera CAM_OVI_ID_STANDUP
+[CutsceneFadeDiag] tick=8919000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=NoLoadUseCamera CAM_OVI_ID_STANDUP
+[CutsceneCommandDiag] macro=<none> tick=8919000 command=FadeIn
+[CutsceneFadeDiag] tick=8919000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=FadeIn
+[CutsceneCommandDiag] macro=<none> tick=8919000 command=GamePause 1.6
+[CutsceneFadeDiag] tick=8919000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 1.6
+[CutsceneCommandDiag] skipQueryTrue macro=<none> caller=0xcc8a3b tick=8919203
+[CutsceneCommandDiag] skipQueryTrue macro=<none> caller=0xcc0133 tick=8919203
+[CutsceneCommandDiag] macro=<none> tick=8919265 command=FadeOut
+[CutsceneFadeDiag] tick=8919265 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0.234066 colour=0xff000000 freezeCount=0 beforeCommand=FadeOut
+[CutsceneCommandDiag] macro=<none> tick=8919265 command=GamePause 0.5
+[CutsceneFadeDiag] tick=8919265 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 0.5
+[CutsceneCommandDiag] macro=<none> tick=8919859 command=UseCamera CAM_OVIF_SHOT7
+[CutsceneFadeDiag] tick=8919859 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516312 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=UseCamera CAM_OVIF_SHOT7
+[CutsceneCommandDiag] macro=<none> tick=8919859 command=Hero.Teleport MK_OVIF_HERO5
+[CutsceneFadeDiag] tick=8919859 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516312 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=Hero.Teleport MK_OVIF_HERO5
+[CutsceneCommandDiag] macro=<none> tick=8919859 command=Father.Teleport MK_OVI_ID_DAD
+[CutsceneFadeDiag] tick=8919859 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516312 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=Father.Teleport MK_OVI_ID_DAD
+[CutsceneCommandDiag] macro=<none> tick=8919875 command=Father.LookInDirection 215
+[CutsceneFadeDiag] tick=8919875 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516312 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=Father.LookInDirection 215
+[CutsceneCommandDiag] macro=<none> tick=8919875 command=FadeIn
+[CutsceneFadeDiag] tick=8919875 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516312 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=FadeIn
+[CutsceneCommandDiag] macro=<none> tick=8945328 command=KeepEntityMap TRUE
+[CutsceneFadeDiag] tick=8945328 gsi=0x15faf120 display=0x12aafd90 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516312 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=KeepEntityMap TRUE
+[CutsceneCommandDiag] macro=<none> tick=8945328 command=FadeOut
+[CutsceneFadeDiag] tick=8945328 gsi=0x15faf120 display=0x12aafd90 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516312 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=FadeOut
+[CutsceneCommandDiag] macro=<none> tick=8945328 command=GamePause 0.5
+[CutsceneFadeDiag] tick=8945328 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 0.5
+[CutsceneCommandDiag] macro=<none> tick=8945937 command=BULLY.ClearCommands TRUE,TRUE
+[CutsceneFadeDiag] tick=8945937 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.ClearCommands TRUE,TRUE
+[CutsceneCommandDiag] macro=<none> tick=8945937 command=HERO.ClearCommands TRUE,TRUE
+[CutsceneFadeDiag] tick=8945937 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.ClearCommands TRUE,TRUE
+[CutsceneCommandDiag] macro=<none> tick=8945937 command=UseCamera CAM_OIBR_BRATHERO
+[CutsceneFadeDiag] tick=8945937 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=UseCamera CAM_OIBR_BRATHERO
+[CutsceneCommandDiag] macro=<none> tick=8946000 command=DoScriptFrame 1
+[CutsceneFadeDiag] tick=8946000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 1
+[CutsceneCommandDiag] macro=<none> tick=8946062 command=HERO.Teleport MK_OIBR_HERO1
+[CutsceneFadeDiag] tick=8946062 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.Teleport MK_OIBR_HERO1
+[CutsceneCommandDiag] macro=<none> tick=8946062 command=BRAT.Teleport MK_OIBR_BRAT1
+[CutsceneFadeDiag] tick=8946062 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.Teleport MK_OIBR_BRAT1
+[CutsceneCommandDiag] macro=<none> tick=8946062 command=BULLY.Teleport MK_OIBR_BULLY1
+[CutsceneFadeDiag] tick=8946062 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.Teleport MK_OIBR_BULLY1
+[CutsceneCommandDiag] macro=<none> tick=8946062 command=HERO.PlayLoopingAnim CS_IDLE_STAND,-1,FALSE,TRUE,FALSE,FALSE,TRUE
+[CutsceneFadeDiag] tick=8946062 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.PlayLoopingAnim CS_IDLE_STAND,-1,FALSE,TRUE,FALSE,FALSE,TRUE
+[CutsceneCommandDiag] macro=<none> tick=8946125 command=DoScriptFrame 1
+[CutsceneFadeDiag] tick=8946125 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 1
+[CutsceneCommandDiag] macro=<none> tick=8946203 command=DoCameraPreloading
+[CutsceneFadeDiag] tick=8946203 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoCameraPreloading
+[CutsceneCommandDiag] macro=<none> tick=8946250 command=DoScriptFrame 1
+[CutsceneFadeDiag] tick=8946250 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 1
+[CutsceneCommandDiag] macro=<none> tick=8946265 command=HERO.LookToThing BULLY,FOREVER
+[CutsceneFadeDiag] tick=8946265 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.LookToThing BULLY,FOREVER
+[CutsceneCommandDiag] macro=<none> tick=8946328 command=BRAT.LookToThing BULLY,FOREVER
+[CutsceneFadeDiag] tick=8946328 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.LookToThing BULLY,FOREVER
+[CutsceneCommandDiag] macro=<none> tick=8946390 command=UseCamera CAM_OIBR_MASTER
+[CutsceneFadeDiag] tick=8946390 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=UseCamera CAM_OIBR_MASTER
+[CutsceneCommandDiag] macro=<none> tick=8946468 command=FadeIn
+[CutsceneFadeDiag] tick=8946468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=FadeIn
+[CutsceneCommandDiag] macro=<none> tick=8946468 command=BULLY.DialogadSpeak BULLY,TEXT_QST_048_BULLY_GOING_AWAY
+[CutsceneFadeDiag] tick=8946468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.DialogadSpeak BULLY,TEXT_QST_048_BULLY_GOING_AWAY
+[CutsceneCommandDiag] macro=<none> tick=8946468 command=GamePause 1.5
+[CutsceneFadeDiag] tick=8946468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 1.5
+[CutsceneCommandDiag] skipQueryTrue macro=<none> caller=0xcc8a3b tick=8947796
+[CutsceneCommandDiag] skipQueryTrue macro=<none> caller=0xcc0133 tick=8947796
+[CutsceneCommandDiag] macro=<none> tick=8947859 command=FadeOut
+[CutsceneFadeDiag] tick=8947859 gsi=0x15faf120 display=0x12aafd90 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516293 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=FadeOut
+[CutsceneCommandDiag] macro=<none> tick=8947859 command=GamePause 0.5
+[CutsceneFadeDiag] tick=8947859 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 0.5
+[CutsceneCommandDiag] macro=<none> tick=8948468 command=HERO.Teleport MK_OIBR_HERO2
+[CutsceneFadeDiag] tick=8948468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.Teleport MK_OIBR_HERO2
+[CutsceneCommandDiag] macro=<none> tick=8948468 command=BRAT.Teleport MK_OIBR_BRAT1
+[CutsceneFadeDiag] tick=8948468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.Teleport MK_OIBR_BRAT1
+[CutsceneCommandDiag] macro=<none> tick=8948468 command=BRAT.LookToThing HERO,FOREVER
+[CutsceneFadeDiag] tick=8948468 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.LookToThing HERO,FOREVER
+[CutsceneCommandDiag] macro=<none> tick=8948531 command=HERO.LookAtNothing TRUE
+[CutsceneFadeDiag] tick=8948531 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.LookAtNothing TRUE
+[CutsceneCommandDiag] macro=<none> tick=8948531 command=BULLY.Drawable FALSE
+[CutsceneFadeDiag] tick=8948531 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.Drawable FALSE
+[CutsceneCommandDiag] macro=<none> tick=8948531 command=FadeIn
+[CutsceneFadeDiag] tick=8948531 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=FadeIn
+[CutsceneCommandDiag] macro=<none> tick=8948531 command=HERO.LookToThing BRAT,FOREVER
+[CutsceneFadeDiag] tick=8948531 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.LookToThing BRAT,FOREVER
+[CutsceneCommandDiag] macro=<none> tick=8948593 command=GamePause 0.2
+[CutsceneFadeDiag] tick=8948593 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.43333 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 0.2
+[CutsceneCommandDiag] macro=<none> tick=8948859 command=NoLoadUseCamera CAM_OIBR_BRATHERO
+[CutsceneFadeDiag] tick=8948859 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.166714 colour=0xff000000 freezeCount=0 beforeCommand=NoLoadUseCamera CAM_OIBR_BRATHERO
+[CutsceneCommandDiag] macro=<none> tick=8948937 command=BRAT.Speak BRAT,TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE
+[CutsceneFadeDiag] tick=8948937 gsi=0x15faf120 display=0x12aafd90 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0.100147 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.Speak BRAT,TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE
+[CutsceneCommandDiag] macro=<none> tick=8954000 command=GiveHero OBJECT_TEDDY_BEAR_UNGIVEABLE
+[CutsceneFadeDiag] tick=8954000 gsi=0x15faf120 display=0x12aafd90 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516286 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=GiveHero OBJECT_TEDDY_BEAR_UNGIVEABLE

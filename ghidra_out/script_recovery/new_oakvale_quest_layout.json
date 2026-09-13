@@ -1,0 +1,13 @@
+{
+  "schema": "new-oakvale-quest-layout/0.1",
+  "class": "NScript::CQ_NewOakValeIntroScript",
+  "objectSize": 268,
+  "regions": [
+    {"name": "script-base", "offset": "0x00", "size": 72, "evidence": "base constructor 0x00CB8110, base cleanup 0x00CBD510, plus derived interface/database stores"},
+    {"name": "named-scalar-state", "offset": "0x48", "size": 84, "evidence": "PDB field names and native accesses"},
+    {"name": "villager-speech-vectors", "offset": "0x9C", "size": 96, "evidence": "constructor clears eight 12-byte vector triplets; destructor 0x00DBEFC0 walks and frees all eight in reverse order"},
+    {"name": "bad-deed-kind-array", "offset": "0xFC", "size": 5, "evidence": "Init clears dword plus final byte; Guard reads five entries"},
+    {"name": "alignment-padding", "offset": "0x101", "size": 3, "evidence": "gap before aligned timer pointers"},
+    {"name": "timers", "offset": "0x104", "size": 8, "evidence": "constructor creates two timer handles; destructor 0x00DBEFC0 deregisters both through interface slot 0x160"}
+  ]
+}

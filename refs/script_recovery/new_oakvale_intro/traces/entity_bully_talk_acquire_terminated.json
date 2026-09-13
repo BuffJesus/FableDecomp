@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -27,9 +29,16 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        2.0
+      ],
       "event": "api-call",
-      "name": "GetPos",
+      "name": "IsDistanceFromPositionOver",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -43,7 +52,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -57,7 +68,9 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -108,5 +121,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Bully.lua",
-  "sourceSha256": "bd2414114a509e0d4752673884c5b94ac91bd6ede2bc7721ba48fce500865e51"
+  "sourceSha256": "9f3d4c7bff6d41cdacecd500638fe68c9b52ec736fd4dbe344a9c8ec7d2145cc"
 }

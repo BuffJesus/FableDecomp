@@ -67,5 +67,5 @@
   "kind": "quest",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
-  "sourceSha256": "541230bebd784775518ebf26c48da9a2696127a33776947b864727749bb65470"
+  "sourceSha256": "59c0300028b895c41a16e2c46b56a0f4d70cea24fcdf5cbefb6a322a99700495"
 }

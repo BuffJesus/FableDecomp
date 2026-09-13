@@ -11,6 +11,8 @@ import ghidra.app.decompiler.DecompInterface;
 import ghidra.app.decompiler.DecompileResults;
 import ghidra.app.script.GhidraScript;
 import ghidra.program.model.address.Address;
+import ghidra.program.model.address.AddressRange;
+import ghidra.program.model.address.AddressRangeIterator;
 import ghidra.program.model.data.DataType;
 import ghidra.program.model.listing.Data;
 import ghidra.program.model.listing.Function;
@@ -91,6 +93,14 @@ public class ExportScriptTranslationUnit extends GhidraScript {
             List<String> calls = new ArrayList<>();
             List<String> strings = new ArrayList<>();
             List<String> immediates = new ArrayList<>();
+            List<String> bodyRanges = new ArrayList<>();
+            AddressRangeIterator bodyRangeIterator = f.getBody().getAddressRanges();
+            while (bodyRangeIterator.hasNext()) {
+                AddressRange range = bodyRangeIterator.next();
+                bodyRanges.add("{\"start\":" + json(hex(range.getMinAddress())) +
+                    ",\"endExclusive\":" + json(hex(range.getMaxAddress().add(1))) +
+                    ",\"addressCount\":" + range.getLength() + "}");
+            }
             InstructionIterator ins = currentProgram.getListing().getInstructions(f.getBody(), true);
             while (ins.hasNext()) {
                 Instruction i = ins.next();
@@ -135,7 +145,15 @@ public class ExportScriptTranslationUnit extends GhidraScript {
             if (res != null && res.decompileCompleted() && res.getDecompiledFunction() != null)
                 body = res.getDecompiledFunction().getC();
             else body = null;
-            rows.add("{\"address\":" + json(hex(f.getEntryPoint())) + ",\"size\":" + f.getBody().getNumAddresses() +
+            long bodyExtent = f.getBody().getMaxAddress().subtract(f.getBody().getMinAddress()) + 1;
+            rows.add("{\"address\":" + json(hex(f.getEntryPoint())) +
+                ",\"size\":" + f.getBody().getNumAddresses() +
+                ",\"bodyAddressCount\":" + f.getBody().getNumAddresses() +
+                ",\"bodyMin\":" + json(hex(f.getBody().getMinAddress())) +
+                ",\"bodyMaxInclusive\":" + json(hex(f.getBody().getMaxAddress())) +
+                ",\"bodyEndExclusive\":" + json(hex(f.getBody().getMaxAddress().add(1))) +
+                ",\"bodyExtent\":" + bodyExtent +
+                ",\"bodyRanges\":[" + String.join(",", bodyRanges) + "]" +
                 ",\"currentName\":" + json(f.getName(true)) +
                 ",\"calls\":[" + String.join(",", calls) + "]" +
                 ",\"strings\":[" + String.join(",", strings) + "]" +
@@ -146,7 +164,7 @@ public class ExportScriptTranslationUnit extends GhidraScript {
             println("TU " + hex(f.getEntryPoint()) + " " + f.getName(true));
         }
         try (PrintWriter w = new PrintWriter(new BufferedWriter(new FileWriter(outputFile)))) {
-            w.println("{\"schema\":\"fable-script-translation-unit/0.1\",\"program\":" + json(currentProgram.getName()) +
+            w.println("{\"schema\":\"fable-script-translation-unit/0.2\",\"program\":" + json(currentProgram.getName()) +
                 ",\"range\":[" + json(args[0]) + "," + json(args[1]) + "],\"functionCount\":" + count +
                 ",\"functions\":[" + String.join(",\n", rows) + "]}");
         }

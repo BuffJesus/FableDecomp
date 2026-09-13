@@ -1,0 +1,160 @@
+{
+  "schema": "new-oakvale-manage-core-markers-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DBE4E0",
+  "rangeSize": 944,
+  "functionBytesSha256": "FC7CFC9414F10C1CA5B0B81A3493597B9F5218F27286A85087D8FFE63A807765",
+  "instructionCount": 287,
+  "strings": [
+    "NOVI_LiveFather",
+    "NOVI_BookTrader",
+    "NOVI_Theresa",
+    "HUD_ORB_QUEST_CORE",
+    "HUD_ORB_QUEST_CORE",
+    "HUD_ORB_QUEST_CORE",
+    "HUD_ORB_QUEST_CORE"
+  ],
+  "indirectCalls": [
+    {
+      "site": "0x00DBE506",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBE534",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBE562",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBE590",
+      "slot": "0x578"
+    },
+    {
+      "site": "0x00DBE5A4",
+      "slot": "0x1FC"
+    },
+    {
+      "site": "0x00DBE5B5",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBE5CC",
+      "slot": "0x1FC"
+    },
+    {
+      "site": "0x00DBE5EB",
+      "slot": "0x628"
+    },
+    {
+      "site": "0x00DBE5FA",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBE611",
+      "slot": "0x628"
+    },
+    {
+      "site": "0x00DBE634",
+      "slot": "0x580"
+    },
+    {
+      "site": "0x00DBE659",
+      "slot": "0x578"
+    },
+    {
+      "site": "0x00DBE66F",
+      "slot": "0x1D8"
+    },
+    {
+      "site": "0x00DBE68D",
+      "slot": "0xA4"
+    },
+    {
+      "site": "0x00DBE69C",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBE6B3",
+      "slot": "0xA4"
+    },
+    {
+      "site": "0x00DBE6DD",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBE710",
+      "slot": "0x580"
+    },
+    {
+      "site": "0x00DBE735",
+      "slot": "0x578"
+    },
+    {
+      "site": "0x00DBE755",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBE780",
+      "slot": "0x580"
+    },
+    {
+      "site": "0x00DBE7A5",
+      "slot": "0x578"
+    },
+    {
+      "site": "0x00DBE7F5",
+      "slot": "0x4"
+    },
+    {
+      "site": "0x00DBE82F",
+      "slot": "0x4"
+    },
+    {
+      "site": "0x00DBE869",
+      "slot": "0x4"
+    }
+  ],
+  "terminationCalls": [
+    "0x00DBE5BA",
+    "0x00DBE5D9",
+    "0x00DBE5FF",
+    "0x00DBE61D",
+    "0x00DBE67B",
+    "0x00DBE6A1",
+    "0x00DBE6BF",
+    "0x00DBE6E2",
+    "0x00DBE6F9",
+    "0x00DBE75A",
+    "0x00DBE76D"
+  ],
+  "goldMinimum": 3,
+  "tutorialId": 19,
+  "fieldReads": {
+    "GivenSweets": {
+      "offset": "0x94",
+      "sites": [
+        "0x00DBE6CC",
+        "0x00DBE6EF"
+      ]
+    },
+    "GivenTheresaChocs": {
+      "offset": "0x95",
+      "sites": [
+        "0x00DBE744",
+        "0x00DBE763"
+      ]
+    }
+  },
+  "markerSequence": [
+    "add:father",
+    "remove:father",
+    "add:bookTrader",
+    "remove:bookTrader",
+    "add:theresa",
+    "remove:theresa",
+    "add:father"
+  ]
+}

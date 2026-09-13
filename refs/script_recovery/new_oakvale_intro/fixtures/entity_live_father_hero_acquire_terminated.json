@@ -1,0 +1,38 @@
+{
+  "__meta__": {
+    "function": "Main",
+    "kind": "entity",
+    "source": "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+    "expect": [
+      "AcquireControl",
+      "ReleaseControl"
+    ],
+    "forbid": [
+      "StartMovieSequence",
+      "RunCutsceneWithSetup",
+      "SetStateBool",
+      "DisplayGameInfo",
+      "AddQuestInfoCounter"
+    ],
+    "note": "Hero acquisition failure exits before movie or DadFinishedIntro; native DB87DA -> DB8A66. AcquireControl owns failed-handle cleanup."
+  },
+  "Quest.NewScriptFrame": [
+    true
+  ],
+  "Entity.AcquireControl": [
+    true,
+    false
+  ],
+  "Quest.GetStateBool(DadFinishedIntro)": [
+    false
+  ],
+  "Quest.GetHero": [
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    }
+  ],
+  "Quest.IsActiveThreadTerminating": [
+    false
+  ]
+}

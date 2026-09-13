@@ -11,6 +11,7 @@
   "Entity.AcquireControl":[true],
   "Quest.RegisterTimer":[900],
   "Entity.GetPos":[{"x":10,"y":0,"z":0},{"x":0,"y":0,"z":0},{"x":10,"y":0,"z":0},{"x":10,"y":0,"z":0}],
+  "Entity.IsDistanceFromPositionOver":[true,false],
   "Entity.IsPerformingScriptTask":[false],
   "Quest.GetHealth":[100],
   "Quest.GetThingWithScriptName(M_BarrelManHiddenPos)":[{"handle":"hidden_pos","scope":"Entity"}],

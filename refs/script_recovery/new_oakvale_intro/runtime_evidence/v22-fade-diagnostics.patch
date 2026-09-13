@@ -1,0 +1,70 @@
+--- FableAPI-v21.cpp
++++ FableAPI-v22.cpp
+@@ -717,17 +717,56 @@
+ static tDiagFindCharPos DiagFindCharPos_Original = nullptr;
+ static tDiagIsCutsceneSkipped DiagIsCutsceneSkipped_Original = nullptr;
+ 
++// Passive snapshots, not engine queries: IsCutsceneSkipped consumes a message and
++// must never be called merely to inspect state. Retail byte proof is recorded in
++// runtime_evidence/cutscene-fade-native-analysis-20260912.md.
++static void LogCutsceneFadeSnapshot(const char* command) {
++    uintptr_t gsi = 0, display = 0;
++    unsigned char interfaceBytes[0x30] = {}, displayBytes[0xFC] = {};
++    SIZE_T bytes = 0;
++    const HANDLE process = GetCurrentProcess();
++    const bool readable = ReadProcessMemory(process, ASLR<void*>(0x0143E8F8), &gsi, sizeof(gsi), &bytes)
++        && gsi && ReadProcessMemory(process, reinterpret_cast<void*>(gsi), interfaceBytes, sizeof(interfaceBytes), &bytes);
++    if (readable) memcpy(&display, interfaceBytes + 0xC, sizeof(display));
++    const bool displayReadable = readable && display && ReadProcessMemory(process,
++        reinterpret_cast<void*>(display), displayBytes, sizeof(displayBytes), &bytes);
++    std::ostringstream ss;
++    ss << "[CutsceneFadeDiag] tick=" << GetTickCount() << " gsi=0x" << std::hex << gsi
++       << " display=0x" << display << std::dec << " readable=" << (displayReadable ? 1 : 0);
++    if (displayReadable) {
++        float outTime = 0, inTime = 0, outElapsed = 0, inRemaining = 0;
++        unsigned colour = 0, freezeCount = 0;
++        memcpy(&outTime, displayBytes + 0xC0, 4);
++        memcpy(&inTime, displayBytes + 0xC4, 4);
++        memcpy(&outElapsed, displayBytes + 0xCC, 4);
++        memcpy(&inRemaining, displayBytes + 0xD0, 4);
++        memcpy(&colour, displayBytes + 0xD4, 4);
++        memcpy(&freezeCount, displayBytes + 0xE8, 4);
++        ss << " active=" << unsigned(displayBytes[0xBC])
++           << " fadingIn=" << unsigned(displayBytes[0xC8])
++           << " fadingOut=" << unsigned(displayBytes[0xC9])
++           << " holdUntilIn=" << unsigned(displayBytes[0xD8])
++           << " allowOverride=" << unsigned(interfaceBytes[0x2D])
++           << " outTime=" << outTime << " inTime=" << inTime
++           << " outElapsed=" << outElapsed << " inRemaining=" << inRemaining
++           << " colour=0x" << std::hex << colour << std::dec
++           << " freezeCount=" << freezeCount;
++    }
++    ss << " beforeCommand=" << (command ? command : "<null>");
++    LogToFile(ss.str());
++}
++
+ // The interpreter's first FindCharPos call receives the complete current command.
+ // Restrict to its proven return address: ordinary string calls are only forwarded.
+ static int __fastcall DiagFindCharPos_Detour(const CCharString* command, void*, char needle) {
+-    if (InterlockedCompareExchange(&g_cutsceneSkipDiagActive, 0, 0) &&
+-        reinterpret_cast<uintptr_t>(_ReturnAddress()) == ASLR<uintptr_t>(0x00CC023C)) {
++    if (reinterpret_cast<uintptr_t>(_ReturnAddress()) == ASLR<uintptr_t>(0x00CC023C)) {
+         const char* text = CCharString_ToConstChar_API ? CCharString_ToConstChar_API(command) : nullptr;
+         std::ostringstream ss;
+         ss << "[CutsceneCommandDiag] macro="
+            << (g_cutsceneSkipDiagMacro ? g_cutsceneSkipDiagMacro : "<none>")
+            << " tick=" << GetTickCount() << " command=" << (text ? text : "<null>");
+         LogToFile(ss.str());
++        LogCutsceneFadeSnapshot(text);
+     }
+     return DiagFindCharPos_Original(command, needle);
+ }
+@@ -739,7 +778,7 @@
+     const uintptr_t caller = reinterpret_cast<uintptr_t>(_ReturnAddress());
+     // This can consume a script message: call exactly once and preserve the result.
+     const bool skipped = DiagIsCutsceneSkipped_Original();
+-    if (skipped && InterlockedCompareExchange(&g_cutsceneSkipDiagActive, 0, 0)) {
++    if (skipped) {
+         std::ostringstream ss;
+         ss << "[CutsceneCommandDiag] skipQueryTrue macro="
+            << (g_cutsceneSkipDiagMacro ? g_cutsceneSkipDiagMacro : "<none>")

@@ -1,0 +1,243 @@
+{
+  "script": "V_SingingStones",
+  "package": "SingingStones",
+  "state": {
+    "0x98": [
+      "DoorManIntroComplete",
+      "Bool"
+    ],
+    "0x99": [
+      "DoorManAttackedByHero",
+      "Bool"
+    ],
+    "0x9a": [
+      "DoorManHasBribe",
+      "Bool"
+    ],
+    "0x9b": [
+      "DoorManComplete",
+      "Bool"
+    ]
+  },
+  "functions": {
+    "Init": {
+      "lines": 29,
+      "todo": [
+        "unnamed field 0x50 written in Init",
+        "unlifted: *(undefined4 *)(this + 100) = 1;",
+        "unnamed field 0x48 written in Init",
+        "unnamed field 0x4c written in Init",
+        "unnamed field 0x54 written in Init",
+        "unnamed field 0x58 written in Init",
+        "unnamed field 0x5c written in Init",
+        "unnamed field 0x60 written in Init",
+        "unnamed field 0x68 written in Init",
+        "unnamed field 0x88 written in Init",
+        "unnamed field 0x8c written in Init",
+        "unnamed field 0x90 written in Init",
+        "unnamed field 0x94 written in Init"
+      ],
+      "calls": [
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateInt",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 31,
+      "todo": [],
+      "calls": [
+        "IsRegionLoaded",
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "CreateThread",
+        "CreateThread",
+        "CreateThread",
+        "NewScriptFrame",
+        "IsRegionLoaded"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForCompleteTune": {
+      "lines": 174,
+      "todo": [
+        "unlifted: cStack_83 = '\\0';",
+        "unnamed field 0x48",
+        "unlifted: cStack_82 = '\\x01';",
+        "unlifted: cStack_81 = '\\x01';",
+        "unlifted: cStack_82 = '\\0';",
+        "unlifted: cStack_81 = '\\0';",
+        "2 args for 3 params",
+        "1 args for 2 params",
+        "2 args for 5 params",
+        "unlifted: *(undefined1 *)(*(int *)(this + 0x44) + 0x140) = 1;",
+        "unnamed field 0x48 written in Thread:WatchForCompleteTune",
+        "unnamed field 0x44",
+        "verify cleanup at LAB_00ed3349 (lifted as early return)",
+        "unlifted: switch(*(undefined4 *)pCVar11) {",
+        "unlifted: case 0:",
+        "unlifted: case 1:",
+        "unlifted: case 2:",
+        "unlifted: case 3:",
+        "unlifted: default:",
+        "unlifted: goto switchD_00ed2f97_default;",
+        "unlifted: CCharString::operator+=(aCStack_80,pcVar16);",
+        "unlifted: switchD_00ed2f97_default:",
+        "label LAB_00ed3349",
+        "2 args for 5 params",
+        "unnamed field 0x48 written in Thread:WatchForCompleteTune",
+        "1 args for 3 params",
+        "4 args for 5 params",
+        "unlifted: KillAllThingsInVector (*(CGameScriptInterfaceBase **)(this + 0x40), (vector<CScriptThing,s",
+        "unlifted: Std_Vector_Erase_Range(*(undefined4 *)(this + 0x7c),*(undefined4 *)(this + 0x80));",
+        "unlifted: (**(code **)(ppVar6 + 4))();",
+        "unlifted: cStack_83 = '\\x01';",
+        "2 args for 5 params",
+        "1 args for 3 params",
+        "4 args for 5 params",
+        "unnamed field 0x48 written in Thread:WatchForCompleteTune",
+        "unlifted: KillAllThingsInVector (*(CGameScriptInterfaceBase **)(this + 0x40), (vector<CScriptThing,s",
+        "unlifted: Std_Vector_Erase_Range(*(undefined4 *)(this + 0x7c),*(undefined4 *)(this + 0x80));",
+        "unlifted: joined_r0x00ed3294:",
+        "unlifted: KillAllThingsInVector (*(CGameScriptInterfaceBase **)(this + 0x40), (vector<CScriptThing,s",
+        "unlifted: Std_Vector_Erase_Range();",
+        "1 args for 2 params",
+        "label LAB_00ed3335",
+        "verify cleanup at LAB_00ed3335 (lifted as early return)",
+        "unnamed field 0x44",
+        "unlifted: goto joined_r0x00ed3294;"
+      ],
+      "calls": [
+        "GetHero",
+        "GetNearestWithScriptName",
+        "AddNewConversation",
+        "GetHero",
+        "AddPersonToConversation",
+        "GetHero",
+        "AddLineToConversation",
+        "SetStateInt",
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "Pause",
+        "CameraUseCameraPoint",
+        "SetStateInt",
+        "GetHero",
+        "GetNearestWithScriptName",
+        "AddNewConversation",
+        "GetHero",
+        "AddPersonToConversation",
+        "GetHero",
+        "AddLineToConversation",
+        "Pause",
+        "CameraDefault",
+        "PauseAllNonScriptedEntities",
+        "StartMovieSequence",
+        "PauseAllNonScriptedEntities",
+        "Pause",
+        "CameraUseCameraPoint",
+        "GetHero",
+        "GetNearestWithScriptName",
+        "AddNewConversation",
+        "GetHero",
+        "AddPersonToConversation",
+        "GetHero",
+        "AddLineToConversation",
+        "SetStateInt",
+        "GetAllThingsWithScriptName",
+        "CreateCreature",
+        "GetHero",
+        "GiveThingBestEnemyTarget",
+        "Pause",
+        "CameraDefault",
+        "PauseAllNonScriptedEntities",
+        "NewScriptFrame",
+        "DeactivateQuestLater",
+        "DeactivateQuestLater",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForSpokenToDemonDoors": {
+      "lines": 17,
+      "todo": [
+        "unnamed field 0x44",
+        "unnamed field 0x44"
+      ],
+      "calls": [
+        "ActivateQuest",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForRegionLeaving": {
+      "lines": 38,
+      "todo": [
+        "unlifted: KillAllThingsInVector (*(CGameScriptInterfaceBase **)(this + 0x40), (vector<CScriptThing,s",
+        "unlifted: Std_Vector_Erase_Range(*(undefined4 *)(this + 0x7c),*(undefined4 *)(this + 0x80));"
+      ],
+      "calls": [
+        "IsRegionLoaded",
+        "NewScriptFrame",
+        "IsRegionLoaded",
+        "IsRegionLoaded",
+        "NewScriptFrame",
+        "IsRegionLoaded",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 12,
+      "todo": [],
+      "calls": [
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool"
+      ]
+    }
+  },
+  "entities": [
+    "SingingStone",
+    "ManWithDoorName"
+  ],
+  "threads": [
+    {
+      "name": "WatchForCompleteTune",
+      "body": "0x00ED2BB0"
+    },
+    {
+      "name": "WatchForSpokenToDemonDoors",
+      "body": "0x00ED13B0"
+    },
+    {
+      "name": "WatchForRegionLeaving",
+      "body": "CQ_BanditCampScript::WatchForEndOfScript"
+    }
+  ],
+  "helpers": [],
+  "entityBodies": {}
+}

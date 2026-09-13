@@ -7,6 +7,7 @@
   "Quest.GetThingWithScriptName(AffairWomanRunOffPoint)":[{"handle":"run_off_point","scope":"Entity"}],
   "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
   "Entity.GetPos":[{"x":0,"y":0,"z":0},{"x":10,"y":0,"z":0},{"x":0,"y":0,"z":0},{"x":10,"y":0,"z":0},{"x":10,"y":0,"z":0}],
+  "Entity.IsDistanceFromPositionOver":[false,true,false],
   "Entity.MsgIsHitByHero":[false],
   "Entity.MsgIsHitByAnySpecialAbilityFromHero":[false],
   "Entity.IsTalkedToByHero":[false],

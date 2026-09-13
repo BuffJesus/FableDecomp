@@ -1,0 +1,49 @@
+{
+  "scope": "Execute native near-conversation branch and both participant/key orderings.\n\nEntry prestate supplies bound me, the already-looked-up woman and constructed\nstrings. DB18EC/DB1932 literals and concat output locals identify those strings.\nTermination query and queue API are doubles; no conversation audio runs.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "index": 10,
+      "terminated": false,
+      "events": [
+        [
+          "woman_line",
+          "woman",
+          "me"
+        ],
+        [
+          "man_line",
+          "me",
+          "woman"
+        ]
+      ]
+    },
+    {
+      "index": 10,
+      "terminated": true,
+      "events": []
+    },
+    {
+      "index": 20,
+      "terminated": false,
+      "events": [
+        [
+          "man_line",
+          "me",
+          "woman"
+        ],
+        [
+          "woman_line",
+          "woman",
+          "me"
+        ]
+      ]
+    },
+    {
+      "index": 20,
+      "terminated": true,
+      "events": []
+    }
+  ],
+  "bytes": "8b56208d8c24ac000000e847dfbeff506aff68a08a2d018d8c24c8000000e8f3d2beff8bd08d4c2460e868dcbeff8d8c24bc000000e8ccd1beff8d8c24ac000000e8c0d1beff8b56208d8c24c8000000e801dfbeff506aff68748a2d018d8c24bc000000e8add2beff8bd08d4c245ce822dcbeff8d8c24b0000000e886d1beff8d8c24c8000000e87ad1beff395e208bce7532e8be41180084c00f85f00300008b4e048b11558d442424506a008d4424645057ff92b80500008d44242050558d442464eb30e88c41180084c00f85be0300008b4e048b118d44242050556a008d4424685057ff92b80500008d44242055508d4424608b4e048b116a005057ff92b8050000"
+}

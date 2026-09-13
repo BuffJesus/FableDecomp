@@ -28,6 +28,6 @@ function Main(quest, me)
             return
         end
     end
-    quest:RemoveThing(me)   -- retail: RemoveThing(me, true, true); the two bools are dropped by the binding
+    quest:RemoveThing(me, true, true)
     quest:DeregisterTimer(timer)
 end

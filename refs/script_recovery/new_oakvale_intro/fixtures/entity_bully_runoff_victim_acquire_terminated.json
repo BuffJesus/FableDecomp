@@ -1,0 +1,24 @@
+{
+  "__meta__": {
+    "function": "Main",
+    "kind": "entity",
+    "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+    "expect": ["AddQuestInfoBar", "UpdateQuestInfoBar", "RemoveQuestInfoElement", "AcquireControl", "ReleaseControl"],
+    "forbid": ["StartMovieSequence", "RunCutsceneWithSetup", "AddLogbookStoryEntryString", "RemoveThing"],
+    "note": "termination while acquiring Victim unwinds Victim, Hero, then Bully before the run-off movie"
+  },
+  "Quest.NewScriptFrame": [true, true, true, true],
+  "Entity.AcquireControl": [true, true, true, true, true, true, true, false],
+  "Entity.GetHomePos": [{"x":0,"y":0,"z":0}],
+  "Entity.GetPos": [{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(NOVI_Victim)": [{"handle":"victim","scope":"Entity"}],
+  "Entity.IsTalkedToByHero": [false, false, false, false],
+  "Entity.MsgIsPresentedWithItem": [false, false, false, false],
+  "Entity.MsgIsHitByHero": [true, true, true, true],
+  "Quest.GetHero": [{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(GUIBullyHealthCounter)": [-999,700,700,700,700,700,700,700],
+  "Quest.AddQuestInfoBar": [700],
+  "Quest.AddNewConversation": [{"handle":"hit_one","scope":"Entity"},{"handle":"hit_two","scope":"Entity"},{"handle":"hit_three","scope":"Entity"}],
+  "Quest.GetStateInt(TalkIntermittentTimer)": [901,901,901],
+  "Quest.GetTimer(901)": [1,1,1]
+}

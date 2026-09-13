@@ -1,7 +1,7 @@
 {
   "__meta__":{
-    "function":"Main","covers":["Main","GivenTeddy"],"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-    "expect":["GiveHeroYesNoQuestion","TakeObjectFromHero","DisplayGameInfo","AddLogbookStoryEntryString","SetMasterGameState","ReleaseControl"],
+    "function":"Main","covers":["Main","GivenTeddy"],"coverEvidence":{"GivenTeddy":["TakeObjectFromHero","SetMasterGameState"]},"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+    "expect":["GiveHeroYesNoQuestion","TakeObjectFromHero","DisplayGameInfo","AddLogbookTutorialEntry","SetMasterGameState","ReleaseControl"],
     "note":"hero talks while carrying the teddy, answers yes, receives the first-good-deed flow, and the girl records TeddySolution B"
   },
   "Quest.NewScriptFrame":[true,false],

@@ -53,13 +53,12 @@
     },
     {
       "arguments": [
-        0,
-        99
+        100
       ],
-      "event": "runtime-call",
-      "name": "random",
-      "receiver": "math",
-      "scope": "Lua"
+      "event": "api-call",
+      "name": "RetailRandModulo",
+      "receiver": "quest",
+      "scope": "Quest"
     },
     {
       "arguments": [],
@@ -108,8 +107,8 @@
           "handle": "me",
           "scope": "Entity"
         },
-        0,
-        0
+        false,
+        false
       ],
       "event": "api-call",
       "name": "AddNewConversation",
@@ -173,13 +172,12 @@
     },
     {
       "arguments": [
-        0,
-        5
+        6
       ],
-      "event": "runtime-call",
-      "name": "random",
-      "receiver": "math",
-      "scope": "Lua"
+      "event": "api-call",
+      "name": "RetailRandModulo",
+      "receiver": "quest",
+      "scope": "Quest"
     },
     {
       "arguments": [
@@ -236,10 +234,6 @@
     "Entity.MsgIsHitByHero": [
       false
     ],
-    "Lua.math.random": [
-      0,
-      2
-    ],
     "Quest.AddNewConversation": [
       {
         "handle": "conversation",
@@ -276,11 +270,17 @@
     "Quest.NewScriptFrame": [
       true,
       false
+    ],
+    "Quest.RetailRandModulo(100)": [
+      0
+    ],
+    "Quest.RetailRandModulo(6)": [
+      2
     ]
   },
   "function": "Main",
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua",
-  "sourceSha256": "17dfb7b33602849ce63dd2ac0fd9ee0b96a6bf2f49053d9e658c84a51c3957b1"
+  "sourceSha256": "a2a8e426092021fcd6d375be369879d6203aa3085ca6dedc05b1a06b89c5ece7"
 }

@@ -1,0 +1,35 @@
+{
+  "schema": "new-oakvale-targeted-playtest-analysis/0.3",
+  "checks": {
+    "barrelBrokenRebuke": false,
+    "barrelContradictoryThanks": true,
+    "goldBranchArmed": false,
+    "goldContainerPresent": false,
+    "goldNativeCallStarted": false,
+    "goldNativeCallReturned": false,
+    "legacyGoldBranchEvidence": true,
+    "bullyCompatibilityNeeded": false,
+    "bullyCompatibilityCompleted": false,
+    "wifeRouteStarted": false,
+    "wifeRouteReached": false,
+    "wifeHusbandWorldIdentityCaptured": false
+  },
+  "gold": {
+    "broken": null,
+    "total": 9,
+    "predicateCallbacks": 9,
+    "legacyRemainingBarrelLookup": {
+      "offset": 140265,
+      "success": true,
+      "breaksBefore": 8
+    }
+  },
+  "bullyCompatibilityFrames": null,
+  "wife": {
+    "start": null,
+    "reached": null,
+    "husbandLookup": null
+  },
+  "log": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260910-redtimer-bullyrun-barrels.log",
+  "logSha256": "39519E33CF88022185036D6798D029D7B45E8FBCD2763CE2F67592F8E1CB085E"
+}

@@ -1,0 +1,100 @@
+{
+  "scope": "Execute Father post-macro gates; engine UI/camera calls are doubles.\n\nStarts DB8906 after macro/string cleanup, stops at movie cleanup DB8A51 or\ncounter creation DB8A83. Actual entity->parent termination helpers execute.\nNo scheduler, camera, audio, UI rendering or resource destructor is executed.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "xbox": false,
+      "stop_at_query": 0,
+      "waiting": false,
+      "queries": 2,
+      "tutorial_calls": 1,
+      "frames": 0,
+      "counter_reached": true,
+      "exit_address": "0xdb8a83",
+      "dad_finished": true
+    },
+    {
+      "xbox": false,
+      "stop_at_query": 1,
+      "waiting": false,
+      "queries": 1,
+      "tutorial_calls": 0,
+      "frames": 0,
+      "counter_reached": false,
+      "exit_address": "0xdb8a51",
+      "dad_finished": true
+    },
+    {
+      "xbox": false,
+      "stop_at_query": 2,
+      "waiting": false,
+      "queries": 2,
+      "tutorial_calls": 1,
+      "frames": 0,
+      "counter_reached": false,
+      "exit_address": "0xdb8a51",
+      "dad_finished": true
+    },
+    {
+      "xbox": false,
+      "stop_at_query": 2,
+      "waiting": true,
+      "queries": 2,
+      "tutorial_calls": 1,
+      "frames": 1,
+      "counter_reached": false,
+      "exit_address": "0xdb8a51",
+      "dad_finished": true
+    },
+    {
+      "xbox": true,
+      "stop_at_query": 0,
+      "waiting": false,
+      "queries": 2,
+      "tutorial_calls": 1,
+      "frames": 0,
+      "counter_reached": true,
+      "exit_address": "0xdb8a83",
+      "dad_finished": true
+    },
+    {
+      "xbox": true,
+      "stop_at_query": 1,
+      "waiting": false,
+      "queries": 1,
+      "tutorial_calls": 0,
+      "frames": 0,
+      "counter_reached": false,
+      "exit_address": "0xdb8a51",
+      "dad_finished": true
+    },
+    {
+      "xbox": true,
+      "stop_at_query": 2,
+      "waiting": false,
+      "queries": 2,
+      "tutorial_calls": 1,
+      "frames": 0,
+      "counter_reached": false,
+      "exit_address": "0xdb8a51",
+      "dad_finished": true
+    },
+    {
+      "xbox": true,
+      "stop_at_query": 2,
+      "waiting": true,
+      "queries": 2,
+      "tutorial_calls": 1,
+      "frames": 1,
+      "counter_reached": false,
+      "exit_address": "0xdb8a51",
+      "dad_finished": true
+    }
+  ],
+  "bytes": {
+    "0xdb8906": "8b4e048b1155ff92cc0500008b4e048b0155ff90680a00008b4e14c64152018b4e048b11680000803fff92e00500008b4e048b0155ff90840600008b4e048b11ff92800600008b4e048b01ff501884c08bce747ae8d1d1170084c074108b17558bcfff92ec050000e9de0000006aff6854972d018d4c2428e86d62beff8b4e048b018d54242052ff90cc0100008d4c2420e84461beff8b4e048b01ff90a000000084c00f858c000000908b4e048b11ff521c8bcee871d1170084c075a08b4e048b01ff90a000000084c074deeb67e857d1170084c075866aff6828972d018d4c2428e80362beff8b4e048b018d54242052ff90cc0100008d4c2420e8da60beff8b4e048b01ff90a000000084c075268b4e048b11ff521c8bcee80cd1170084c00f8537ffffff8b4e048b01ff90a000000084c074da8bcee8eed0170084c0743d8b07558bcfff90ec0500008d8c2480000000e823f192ff8d4c243ce84a35f2ff8d4c2428e861eaa2ff8d4c2410e858eaa2ff5f5e5d5b81c4e4000000c3",
+    "0xf35b30": "8b01ff500c8bc8e9041ed8ff",
+    "0xcb7940": "8b412c85c0750332c0c38a4005c3",
+    "0xdac360": "8b4114c3"
+  }
+}

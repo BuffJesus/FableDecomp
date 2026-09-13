@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWoman.lua","expect":["SetStateBool","StartMovieSequence","Speak","DisplayGameInfo","AddLogbookStoryEntryString","EndMovieSequence","ReleaseControl"],"note":"a direct hero hit raises TalkingToWoman during the complaint, records first violence as a bad deed, restores the flag and movie state, then releases main control on termination"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWoman.lua","expect":["SetStateBool","StartMovieSequence","Speak","DisplayGameInfo","AddLogbookTutorialEntry","EndMovieSequence","ReleaseControl"],"note":"a direct hero hit raises TalkingToWoman during the complaint, records first violence as a bad deed, restores the flag and movie state, then releases main control on termination"},
   "Quest.NewScriptFrame":[true,false],
   "Entity.AcquireControl":[true,true],
   "Quest.GetThingWithScriptName(NOVI_AffairWife)":[{"handle":"wife","scope":"Entity"}],

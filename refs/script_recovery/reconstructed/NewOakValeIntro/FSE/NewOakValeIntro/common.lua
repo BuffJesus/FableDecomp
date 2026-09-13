@@ -7,7 +7,6 @@
 --   NewScriptFrame(); if (IsActiveThreadTerminating) NOVI.frame(quest[, me]) -> false when terminating
 --   IsDistanceBetweenThingsUnder(me, GetHero(), d)   NOVI.hero_within(quest, me, d)
 --   StartScriptingEntity(me, res, prio) wait loop    NOVI.acquire(quest, me, prio)
---   <no ForgeFSE binding>                            NOVI.unsupported(quest, "RetailName", args)
 --
 -- Evidence level of the package: reconstructed-source. Nothing here mutates the game on its own.
 
@@ -65,78 +64,45 @@ function NOVI.things_within(quest, a, b, distance)
     return quest:IsDistanceBetweenThingsUnder(a, b, distance) and true or false
 end
 
--- ForgeFSE is a Windows PC host, so retail's platform branch is deterministic for this package.
--- Keeping this in one helper makes the assumption explicit and avoids logging a nonexistent API gap.
-function NOVI.is_xbox()
-    return false
+-- Preserve retail's platform query. Forge binds CGSI::IsXbox directly and returns false on PC.
+function NOVI.is_xbox(quest)
+    if quest == nil then return false end
+    return quest:IsXbox() and true or false
 end
 
--- Lua equivalent of the retail IsDistanceFromThingToPositionOver helper. Native call sites pass a
--- C3DVector and a positive radius. The exact boundary convention is not exported, so equality is
--- treated as not-over; all recovered call sites use nonzero radii and moving entities.
+-- Direct Forge binding to retail helper 0x00CBE45C. This retains the engine's thing validation,
+-- native float arithmetic, and strict distance boundary instead of approximating them in Lua.
 function NOVI.distance_from_thing_to_position_over(thing, position, distance)
     if not thing or not position or position.x == nil then return false end
-    local current = thing:GetPos()
-    if not current or current.x == nil then return false end
-    local dx = current.x - position.x
-    local dy = (current.y or 0) - (position.y or 0)
-    local dz = (current.z or 0) - (position.z or 0)
-    return dx * dx + dy * dy + dz * dz > distance * distance
+    return thing:IsDistanceFromPositionOver(position, distance)
 end
 
 function NOVI.things_over(quest, a, b, distance)
     if not a or not b then return false end
-    return not quest:IsDistanceBetweenThingsUnder(a, b, distance)
+    return quest:IsDistanceBetweenThingsOver(a, b, distance)
 end
 
 -- Retail scripts loop `while (!StartScriptingEntity(me, resource, priority)) NewScriptFrame()`. ForgeFSE
--- keeps that scheduler host-managed (the entity binding already owns the scripted resource); the
--- registered entity method `AcquireControl` is the documented equivalent. The priority is kept for
--- the evidence trail even though ForgeFSE's wrapper does not take it.
+-- exposes that scheduler through the registered entity method `AcquireControl`, which forwards the
+-- retail priority to StartScriptingEntity.
 -- Returns true once control is held; false only when the host reports termination mid-wait (the
 -- retail loop's `NewScriptFrame + IsActiveThreadTerminating` exit). ForgeFSE's wrapper blocks, so the
 -- false path can only be reached through a mock host.
 function NOVI.acquire(quest, me, priority)
-    if me and me.AcquireControl then
-        local result = me:AcquireControl()
-        if result == false then
-            return false
-        end
-        return true
+    if not me then
+        return false
     end
-    NOVI.unsupported(quest, "StartScriptingEntity", { priority = priority })
+    local result = me:AcquireControl(priority)
+    if result == false then
+        return false
+    end
     return true
 end
 
 function NOVI.release(quest, me)
-    if me and me.ReleaseControl then
+    if me then
         me:ReleaseControl()
-    else
-        NOVI.unsupported(quest, "ReleaseScriptingEntity", {})
     end
-end
-
--- A retail float constant the decompiler only shows as a .rdata address. Callers pass the symbol so the
--- gap is visible in traces; the value is NOT guessed.
-function NOVI.UNKNOWN_DISTANCE(symbol)
-    return NOVI.unsupported_value("UNKNOWN_FLOAT", symbol)
-end
-
-NOVI.unsupported_calls = {}
-
--- Explicit marker for a retail operation with no ForgeFSE binding (or an unresolved argument). Logs
--- through the quest so mock traces and the in-game log both show the gap; returns nil.
-function NOVI.unsupported(quest, retail_name, args)
-    table.insert(NOVI.unsupported_calls, retail_name)
-    if quest and quest.Log then
-        quest:Log("NewOakValeIntro: UNSUPPORTED retail call " .. tostring(retail_name))
-    end
-    return nil
-end
-
-function NOVI.unsupported_value(kind, symbol)
-    table.insert(NOVI.unsupported_calls, kind .. ":" .. tostring(symbol))
-    return nil
 end
 
 -- Wait one frame at a time until `predicate()` is true; false means the thread was terminated.

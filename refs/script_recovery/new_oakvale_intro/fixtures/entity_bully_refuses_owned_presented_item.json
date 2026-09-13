@@ -1,0 +1,23 @@
+{
+  "__meta__": {
+    "function": "Main",
+    "kind": "entity",
+    "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+    "expect": ["MsgIsPresentedWithItem", "IsObjectInThingsPossession", "StartMovieSequence", "Speak", "EndMovieSequence", "ReleaseControl"],
+    "note": "after the intro, two retail presentation polls expose a non-teddy item; GSI +0x2e0 confirms the hero still owns it before the bully delivers DONT_WANT"
+  },
+  "Lua.globals": [{"g_PresentedItemName": "OBJECT_APPLE"}],
+  "Quest.NewScriptFrame": [true,true,false],
+  "Entity.AcquireControl": [true,true,true,true],
+  "Entity.GetHomePos": [{"x":0,"y":0,"z":0}],
+  "Quest.GetThingWithScriptName(NOVI_Victim)": [{"handle":"victim","scope":"Entity"}],
+  "Entity.IsTalkedToByHero": [true,false,false],
+  "Entity.MsgIsPresentedWithItem": [true,true],
+  "Quest.IsObjectInThingsPossession": [true],
+  "Quest.GetHealth": [100,100],
+  "Quest.GetHero": [{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
+  "Entity.MsgIsHitByHero": [false,false],
+  "Entity.MsgIsHitByAnySpecialAbilityFromHero": [false,false],
+  "Quest.GetStateInt(TalkIntermittentTimer)": [901,901],
+  "Quest.GetTimer(901)": [1,1]
+}

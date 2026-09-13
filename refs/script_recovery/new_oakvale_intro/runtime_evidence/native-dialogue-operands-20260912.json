@@ -1,0 +1,5338 @@
+{
+  "scope": "Recover native dialogue operands with bounded CFG/register-constant analysis.\n\nCalls are not executed. Cdecl/thiscall callee-saved registers are preserved;\nvolatile registers become unknown at calls. Unknown or ambiguous slices fail.\nOnly functions named by the reviewed entity inventories are traversed.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "functions": [
+    {
+      "entity": "NOVI_AffairMan",
+      "name": "Init",
+      "entry": "0xdb0950",
+      "instruction_count": 58,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "name": "Main",
+      "entry": "0xdb09e0",
+      "instruction_count": 1444,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "name": "Init",
+      "entry": "0xdb2a70",
+      "instruction_count": 58,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "name": "Main",
+      "entry": "0xdb2b10",
+      "instruction_count": 1484,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_AffairWoman",
+      "name": "Init",
+      "entry": "0xdb1e80",
+      "instruction_count": 43,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_AffairWoman",
+      "name": "Main",
+      "entry": "0xdb1f00",
+      "instruction_count": 808,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "name": "Init",
+      "entry": "0xdb5260",
+      "instruction_count": 64,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "name": "Main",
+      "entry": "0xdb5330",
+      "instruction_count": 1743,
+      "switches": [
+        {
+          "address": "0xdb5526",
+          "table": "0xdb6b24",
+          "targets": [
+            "0xdb552d",
+            "0xdb5734",
+            "0xdb588f",
+            "0xdb5a48"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "name": "Init",
+      "entry": "0xdb6bf0",
+      "instruction_count": 25,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "name": "Main",
+      "entry": "0xdb6c60",
+      "instruction_count": 1253,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "name": "Init",
+      "entry": "0xdb3f00",
+      "instruction_count": 56,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "name": "Main",
+      "entry": "0xdb3fa0",
+      "instruction_count": 1186,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Bully",
+      "name": "Init",
+      "entry": "0xdaed30",
+      "instruction_count": 65,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Bully",
+      "name": "Main",
+      "entry": "0xdbb310",
+      "instruction_count": 1906,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Bully",
+      "name": "GivenTeddy",
+      "entry": "0xdbcd00",
+      "instruction_count": 28,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Guard",
+      "name": "Init",
+      "entry": "0xdac650",
+      "instruction_count": 92,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Guard",
+      "name": "Main",
+      "entry": "0xdac760",
+      "instruction_count": 1790,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "name": "Init",
+      "entry": "0xdac390",
+      "instruction_count": 51,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "name": "Main",
+      "entry": "0xdb86b0",
+      "instruction_count": 1299,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "name": "Init",
+      "entry": "0xdaf000",
+      "instruction_count": 37,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "name": "Main",
+      "entry": "0xdaf080",
+      "instruction_count": 1618,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "name": "GivenTeddy",
+      "entry": "0xdb0600",
+      "instruction_count": 29,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "name": "Init",
+      "entry": "0xdac4f0",
+      "instruction_count": 52,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "name": "Main",
+      "entry": "0xdb97a0",
+      "instruction_count": 1864,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Victim",
+      "name": "Init",
+      "entry": "0xdaeeb0",
+      "instruction_count": 57,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Victim",
+      "name": "Main",
+      "entry": "0xdbcd60",
+      "instruction_count": 1269,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Villager",
+      "name": "Init",
+      "entry": "0xdadf00",
+      "instruction_count": 33,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Villager",
+      "name": "Main",
+      "entry": "0xdadf80",
+      "instruction_count": 823,
+      "switches": []
+    },
+    {
+      "entity": "NOVI_Villager",
+      "name": "GetVillagerSpeechIndex",
+      "entry": "0xdaebf0",
+      "instruction_count": 44,
+      "switches": []
+    }
+  ],
+  "calls": [
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb0d5a",
+      "slice_start": "0xdb0d42",
+      "bytes": "6a006a016a006a0068e88b2d01ff9018010000508d4c2428e83166a3ff",
+      "pushes": [
+        {
+          "address": "0xdb0d42",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0d44",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb0d46",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0d48",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0d4a",
+          "operand": "0x12d8be8",
+          "constant": 19762152
+        },
+        {
+          "address": "0xdb0d55",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_ON_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb0f81",
+      "slice_start": "0xdb0f69",
+      "bytes": "6a006a016a006a0068c48b2d01ff9018010000508d4c2428e80a64a3ff",
+      "pushes": [
+        {
+          "address": "0xdb0f69",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0f6b",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb0f6d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0f6f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0f71",
+          "operand": "0x12d8bc4",
+          "constant": 19762116
+        },
+        {
+          "address": "0xdb0f7c",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_HAD_A_DEAL",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb103c",
+      "slice_start": "0xdb1024",
+      "bytes": "6a006a016a006a0068a08b2d01ff9218010000508d4c2428e84f63a3ff",
+      "pushes": [
+        {
+          "address": "0xdb1024",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1026",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb1028",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb102a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb102c",
+          "operand": "0x12d8ba0",
+          "constant": 19762080
+        },
+        {
+          "address": "0xdb1037",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_SOME_NERVE",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb110a",
+      "slice_start": "0xdb10f2",
+      "bytes": "6a006a016a006a00687c8b2d01ff9018010000508d4c2428e88162a3ff",
+      "pushes": [
+        {
+          "address": "0xdb10f2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb10f4",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb10f6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb10f8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb10fa",
+          "operand": "0x12d8b7c",
+          "constant": 19762044
+        },
+        {
+          "address": "0xdb1105",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_HOW_FIND_OUT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb11f8",
+      "slice_start": "0xdb11e0",
+      "bytes": "6a006a016a006a00685c8b2d01ff9218010000508d4c2428e89361a3ff",
+      "pushes": [
+        {
+          "address": "0xdb11e0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb11e2",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb11e4",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb11e6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb11e8",
+          "operand": "0x12d8b5c",
+          "constant": 19762012
+        },
+        {
+          "address": "0xdb11f3",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_INTRO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb13af",
+      "slice_start": "0xdb1397",
+      "bytes": "6a006a016a006a00680c8b2d01ff9218010000508d4c2428e8dc5fa3ff",
+      "pushes": [
+        {
+          "address": "0xdb1397",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1399",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb139b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb139d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb139f",
+          "operand": "0x12d8b0c",
+          "constant": 19761932
+        },
+        {
+          "address": "0xdb13aa",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_GOOD_LAD",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb147c",
+      "slice_start": "0xdb1464",
+      "bytes": "6a006a016a006a0068e88a2d01ff9218010000508d4c2428e80f5fa3ff",
+      "pushes": [
+        {
+          "address": "0xdb1464",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1466",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb1468",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb146a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb146c",
+          "operand": "0x12d8ae8",
+          "constant": 19761896
+        },
+        {
+          "address": "0xdb1477",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_DONT_TELL",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb1549",
+      "slice_start": "0xdb1531",
+      "bytes": "6a006a016a006a0068cc8a2d01ff9218010000508d4c2428e8425ea3ff",
+      "pushes": [
+        {
+          "address": "0xdb1531",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1533",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb1535",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1537",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1539",
+          "operand": "0x12d8acc",
+          "constant": 19761868
+        },
+        {
+          "address": "0xdb1544",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRMAN_SHOO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb1897",
+      "slice_start": "0xdb1892",
+      "bytes": "6a006a0055ff90b0050000",
+      "pushes": [
+        {
+          "address": "0xdb1892",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1894",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1896",
+          "operand": "ebp",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_AffairMan",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb1a35",
+      "slice_start": "0xdb1a2a",
+      "bytes": "6a006a00c6461d018b0155ff90b0050000",
+      "pushes": [
+        {
+          "address": "0xdb1a2a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1a2c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb1a34",
+          "operand": "ebp",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb2e39",
+      "slice_start": "0xdb2e21",
+      "bytes": "6a006a016a006a0068608e2d01ff9018010000508d4c2428e85245a3ff",
+      "pushes": [
+        {
+          "address": "0xdb2e21",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2e23",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb2e25",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2e27",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2e29",
+          "operand": "0x12d8e60",
+          "constant": 19762784
+        },
+        {
+          "address": "0xdb2e34",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIR_WIFE_ON_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb2fe4",
+      "slice_start": "0xdb2fcc",
+      "bytes": "6a006a016a006a00683c8e2d01ff9018010000508d4c2428e8a743a3ff",
+      "pushes": [
+        {
+          "address": "0xdb2fcc",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2fce",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb2fd0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2fd2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2fd4",
+          "operand": "0x12d8e3c",
+          "constant": 19762748
+        },
+        {
+          "address": "0xdb2fdf",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIR_WIFE_LAYABOUT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb318f",
+      "slice_start": "0xdb3177",
+      "bytes": "6a006a016a006a0068f48d2d01ff9218010000508d4c2428e8fc41a3ff",
+      "pushes": [
+        {
+          "address": "0xdb3177",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3179",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb317b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb317d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb317f",
+          "operand": "0x12d8df4",
+          "constant": 19762676
+        },
+        {
+          "address": "0xdb318a",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIR_WIFE_THANKYOU",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb324d",
+      "slice_start": "0xdb3235",
+      "bytes": "6a006a016a006a0068d48d2d01ff9018010000508d4c2428e83e41a3ff",
+      "pushes": [
+        {
+          "address": "0xdb3235",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3237",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb3239",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb323b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb323d",
+          "operand": "0x12d8dd4",
+          "constant": 19762644
+        },
+        {
+          "address": "0xdb3248",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIR_WIFE_PLEA",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb333f",
+      "slice_start": "0xdb3334",
+      "bytes": "6a006a00c6461d008b0157ff90b0050000",
+      "pushes": [
+        {
+          "address": "0xdb3334",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3336",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb333e",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb3510",
+      "slice_start": "0xdb350b",
+      "bytes": "6a006a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdb350b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb350d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb350f",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb3902",
+      "slice_start": "0xdb38ea",
+      "bytes": "6a006a016a006a0068608e2d01ff9018010000508d4c2428e8893aa3ff",
+      "pushes": [
+        {
+          "address": "0xdb38ea",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb38ec",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb38ee",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb38f0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb38f2",
+          "operand": "0x12d8e60",
+          "constant": 19762784
+        },
+        {
+          "address": "0xdb38fd",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIR_WIFE_ON_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb3acb",
+      "slice_start": "0xdb3ab3",
+      "bytes": "6a006a016a006a0068288d2d01ff9018010000508d4c2428e8c038a3ff",
+      "pushes": [
+        {
+          "address": "0xdb3ab3",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3ab5",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb3ab7",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3ab9",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3abb",
+          "operand": "0x12d8d28",
+          "constant": 19762472
+        },
+        {
+          "address": "0xdb3ac6",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIR_WIFE_THANKYOU_SINGLE",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb3b70",
+      "slice_start": "0xdb3b6b",
+      "bytes": "6a006a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdb3b6b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3b6d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb3b6f",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWoman",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb2376",
+      "slice_start": "0xdb235e",
+      "bytes": "6a006a016a006a0068788c2d01ff9018010000508d4c2428e81550a3ff",
+      "pushes": [
+        {
+          "address": "0xdb235e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2360",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb2362",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2364",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2366",
+          "operand": "0x12d8c78",
+          "constant": 19762296
+        },
+        {
+          "address": "0xdb2371",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRWOMAN_ON_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_AffairWoman",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb256f",
+      "slice_start": "0xdb2557",
+      "bytes": "6a006a016a006a0068588c2d01ff9218010000508d4c2428e81c4ea3ff",
+      "pushes": [
+        {
+          "address": "0xdb2557",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb2559",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb255b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb255d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb255f",
+          "operand": "0x12d8c58",
+          "constant": 19762264
+        },
+        {
+          "address": "0xdb256a",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_AFFAIRWOMAN_BUSY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb5adb",
+      "slice_start": "0xdb5ad6",
+      "bytes": "6a006a0057ff90b0050000",
+      "pushes": [
+        {
+          "address": "0xdb5ad6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb5ad8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb5ada",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb5d48",
+      "slice_start": "0xdb5d30",
+      "bytes": "6a006a016a006a00685c912d01ff9018010000508d4c242ce84316a3ff",
+      "pushes": [
+        {
+          "address": "0xdb5d30",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb5d32",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb5d34",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb5d36",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb5d38",
+          "operand": "0x12d915c",
+          "constant": 19763548
+        },
+        {
+          "address": "0xdb5d43",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELMAN_THANKS",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb6043",
+      "slice_start": "0xdb602b",
+      "bytes": "6a006a016a006a006820912d01ff9018010000508d4c242ce84813a3ff",
+      "pushes": [
+        {
+          "address": "0xdb602b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb602d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb602f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6031",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6033",
+          "operand": "0x12d9120",
+          "constant": 19763488
+        },
+        {
+          "address": "0xdb603e",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELMAN_CAREFUL",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb6385",
+      "slice_start": "0xdb636d",
+      "bytes": "6a006a016a006a006800912d01ff9218010000508d4c242ce80610a3ff",
+      "pushes": [
+        {
+          "address": "0xdb636d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb636f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb6371",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6373",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6375",
+          "operand": "0x12d9100",
+          "constant": 19763456
+        },
+        {
+          "address": "0xdb6380",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELMAN_FAVOUR",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb6575",
+      "slice_start": "0xdb655d",
+      "bytes": "6a006a016a006a0068c4902d01ff9218010000508d4c242ce8160ea3ff",
+      "pushes": [
+        {
+          "address": "0xdb655d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb655f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb6561",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6563",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6565",
+          "operand": "0x12d90c4",
+          "constant": 19763396
+        },
+        {
+          "address": "0xdb6570",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELMAN_NOT_LARKING",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb667a",
+      "slice_start": "0xdb6662",
+      "bytes": "6a006a016a006a00689c902d01ff9218010000508d4c242ce8110da3ff",
+      "pushes": [
+        {
+          "address": "0xdb6662",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6664",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb6666",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6668",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb666a",
+          "operand": "0x12d909c",
+          "constant": 19763356
+        },
+        {
+          "address": "0xdb6675",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELMAN_LETDOWN_BROKEN",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb6739",
+      "slice_start": "0xdb6721",
+      "bytes": "6a006a016a006a006870902d01ff9018010000508d4c242ce8520ca3ff",
+      "pushes": [
+        {
+          "address": "0xdb6721",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6723",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb6725",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6727",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6729",
+          "operand": "0x12d9070",
+          "constant": 19763312
+        },
+        {
+          "address": "0xdb6734",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELMAN_LETDOWN_NOT_BROKE",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb6803",
+      "slice_start": "0xdb67eb",
+      "bytes": "6a006a016a006a006850902d01ff9218010000508d4c242ce8880ba3ff",
+      "pushes": [
+        {
+          "address": "0xdb67eb",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb67ed",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb67ef",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb67f1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb67f3",
+          "operand": "0x12d9050",
+          "constant": 19763280
+        },
+        {
+          "address": "0xdb67fe",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELMAN_NO_TIME",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb68dc",
+      "slice_start": "0xdb68d1",
+      "bytes": "6a006a00c6461e018b1157ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdb68d1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb68d3",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb68db",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb6ed0",
+      "slice_start": "0xdb6eb8",
+      "bytes": "6a006a016a006a0068d0942d01ff9018010000508d4c2428e8bb04a3ff",
+      "pushes": [
+        {
+          "address": "0xdb6eb8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6eba",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb6ebc",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6ebe",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb6ec0",
+          "operand": "0x12d94d0",
+          "constant": 19764432
+        },
+        {
+          "address": "0xdb6ecb",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELTHUG_EXPLAIN",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb70f0",
+      "slice_start": "0xdb70d8",
+      "bytes": "6a006a016a006a0068b0942d01ff9218010000508d4c2428e89b02a3ff",
+      "pushes": [
+        {
+          "address": "0xdb70d8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb70da",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb70dc",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb70de",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb70e0",
+          "operand": "0x12d94b0",
+          "constant": 19764400
+        },
+        {
+          "address": "0xdb70eb",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELTHUG_OUTRO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb71a0",
+      "slice_start": "0xdb7188",
+      "bytes": "6a006a016a006a006888942d01ff9018010000508d4c2428e8eb01a3ff",
+      "pushes": [
+        {
+          "address": "0xdb7188",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb718a",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb718c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb718e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7190",
+          "operand": "0x12d9488",
+          "constant": 19764360
+        },
+        {
+          "address": "0xdb719b",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELTHUG_WHY_NOT_SMASH",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb7289",
+      "slice_start": "0xdb7271",
+      "bytes": "6a006a016a006a026860942d01ff9018010000508d4c2428e80201a3ff",
+      "pushes": [
+        {
+          "address": "0xdb7271",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7273",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb7275",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7277",
+          "operand": "2",
+          "constant": 2
+        },
+        {
+          "address": "0xdb7279",
+          "operand": "0x12d9460",
+          "constant": 19764320
+        },
+        {
+          "address": "0xdb7284",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELTHUG_SCRMSG_WELLDONE",
+      "method": 2,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb7345",
+      "slice_start": "0xdb732d",
+      "bytes": "6a006a016a006a026838942d01ff9218010000508d4c2428e84600a3ff",
+      "pushes": [
+        {
+          "address": "0xdb732d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb732f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb7331",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7333",
+          "operand": "2",
+          "constant": 2
+        },
+        {
+          "address": "0xdb7335",
+          "operand": "0x12d9438",
+          "constant": 19764280
+        },
+        {
+          "address": "0xdb7340",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELTHUG_SCRMSG_TEMPT",
+      "method": 2,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb7401",
+      "slice_start": "0xdb73fc",
+      "bytes": "6a006a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdb73fc",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb73fe",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7400",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb7724",
+      "slice_start": "0xdb771f",
+      "bytes": "6a006a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdb771f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7721",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7723",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb7b52",
+      "slice_start": "0xdb7b3a",
+      "bytes": "6a006a016a006a006850922d01ff9018010000508d4c2428e839f8a2ff",
+      "pushes": [
+        {
+          "address": "0xdb7b3a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7b3c",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb7b3e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7b40",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb7b42",
+          "operand": "0x12d9250",
+          "constant": 19763792
+        },
+        {
+          "address": "0xdb7b4d",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BARRELTHUG_WHY_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb4475",
+      "slice_start": "0xdb445d",
+      "bytes": "6a006a016a006a0068e48f2d01ff9018010000508d4c242ce8162fa3ff",
+      "pushes": [
+        {
+          "address": "0xdb445d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb445f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb4461",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4463",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4465",
+          "operand": "0x12d8fe4",
+          "constant": 19763172
+        },
+        {
+          "address": "0xdb4470",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TRADER_ON_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb4695",
+      "slice_start": "0xdb467d",
+      "bytes": "6a006a016a006a0068c48f2d01ff9218010000508d4c242ce8f62ca3ff",
+      "pushes": [
+        {
+          "address": "0xdb467d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb467f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb4681",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4683",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4685",
+          "operand": "0x12d8fc4",
+          "constant": 19763140
+        },
+        {
+          "address": "0xdb4690",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TRADER_INTRO_10",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb4776",
+      "slice_start": "0xdb475e",
+      "bytes": "6a006a016a006a0068a88f2d01ff9018010000508d4c242ce8152ca3ff",
+      "pushes": [
+        {
+          "address": "0xdb475e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4760",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb4762",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4764",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4766",
+          "operand": "0x12d8fa8",
+          "constant": 19763112
+        },
+        {
+          "address": "0xdb4771",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TRADER_INTRO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb4839",
+      "slice_start": "0xdb4821",
+      "bytes": "6a006a016a006a0068888f2d01ff9218010000508d4c242ce8522ba3ff",
+      "pushes": [
+        {
+          "address": "0xdb4821",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4823",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb4825",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4827",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4829",
+          "operand": "0x12d8f88",
+          "constant": 19763080
+        },
+        {
+          "address": "0xdb4834",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TRADER_STILL_GOT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb49f2",
+      "slice_start": "0xdb49da",
+      "bytes": "6a006a016a006a0068448f2d01ff9018010000508d4c242ce89929a3ff",
+      "pushes": [
+        {
+          "address": "0xdb49da",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb49dc",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb49de",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb49e0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb49e2",
+          "operand": "0x12d8f44",
+          "constant": 19763012
+        },
+        {
+          "address": "0xdb49ed",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TRADER_GIVES_SWEETS",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb4b80",
+      "slice_start": "0xdb4b68",
+      "bytes": "6a006a016a006a0068d88e2d01ff9218010000508d4c242ce80b28a3ff",
+      "pushes": [
+        {
+          "address": "0xdb4b68",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4b6a",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb4b6c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4b6e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4b70",
+          "operand": "0x12d8ed8",
+          "constant": 19762904
+        },
+        {
+          "address": "0xdb4b7b",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TRADER_NOT_ENOUGH_CASH",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb4c40",
+      "slice_start": "0xdb4c28",
+      "bytes": "6a006a016a006a0068b88e2d01ff9018010000508d4c242ce84b27a3ff",
+      "pushes": [
+        {
+          "address": "0xdb4c28",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4c2a",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb4c2c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4c2e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4c30",
+          "operand": "0x12d8eb8",
+          "constant": 19762872
+        },
+        {
+          "address": "0xdb4c3b",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TRADER_BUY_LATER",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdb4d70",
+      "slice_start": "0xdb4d6b",
+      "bytes": "6a006a0055ff90b0050000",
+      "pushes": [
+        {
+          "address": "0xdb4d6b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4d6d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb4d6f",
+          "operand": "ebp",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbb783",
+      "slice_start": "0xdbb76b",
+      "bytes": "6a006a016a006a0068609b2d01ff9018010000508d4c2428e808bca2ff",
+      "pushes": [
+        {
+          "address": "0xdbb76b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbb76d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbb76f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbb771",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbb773",
+          "operand": "0x12d9b60",
+          "constant": 19766112
+        },
+        {
+          "address": "0xdbb77e",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_FOUND_TEDDY_ONE",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbb975",
+      "slice_start": "0xdbb95d",
+      "bytes": "6a006a016a006a0068189b2d01ff9218010000508d4c2428e816baa2ff",
+      "pushes": [
+        {
+          "address": "0xdbb95d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbb95f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbb961",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbb963",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbb965",
+          "operand": "0x12d9b18",
+          "constant": 19766040
+        },
+        {
+          "address": "0xdbb970",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_FOUND_TEDDY_TWO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbbc83",
+      "slice_start": "0xdbbc6b",
+      "bytes": "6a006a016a006a0068189b2d01ff9218010000508d4c2428e808b7a2ff",
+      "pushes": [
+        {
+          "address": "0xdbbc6b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbc6d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbbc6f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbc71",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbc73",
+          "operand": "0x12d9b18",
+          "constant": 19766040
+        },
+        {
+          "address": "0xdbbc7e",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_FOUND_TEDDY_TWO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbbd26",
+      "slice_start": "0xdbbd0e",
+      "bytes": "6a006a016a006a0068f89a2d01ff9018010000508d4c2428e865b6a2ff",
+      "pushes": [
+        {
+          "address": "0xdbbd0e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbd10",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbbd12",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbd14",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbd16",
+          "operand": "0x12d9af8",
+          "constant": 19766008
+        },
+        {
+          "address": "0xdbbd21",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_DONT_WANT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbbf04",
+      "slice_start": "0xdbbeec",
+      "bytes": "6a006a016a006a0068dc9a2d01ff9018010000508d4c2428e887b4a2ff",
+      "pushes": [
+        {
+          "address": "0xdbbeec",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbeee",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbbef0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbef2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbef4",
+          "operand": "0x12d9adc",
+          "constant": 19765980
+        },
+        {
+          "address": "0xdbbeff",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_GET_LOST",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbbff6",
+      "slice_start": "0xdbbfde",
+      "bytes": "6a006a016a006a0068bc9a2d01ff9018010000508d4c2428e895b3a2ff",
+      "pushes": [
+        {
+          "address": "0xdbbfde",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbfe0",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbbfe2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbfe4",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbbfe6",
+          "operand": "0x12d9abc",
+          "constant": 19765948
+        },
+        {
+          "address": "0xdbbff1",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_IN_COMMON",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbc0ce",
+      "slice_start": "0xdbc0b6",
+      "bytes": "6a006a016a006a00689c9a2d01ff9218010000508d4c2428e8bdb2a2ff",
+      "pushes": [
+        {
+          "address": "0xdbc0b6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc0b8",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbc0ba",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc0bc",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc0be",
+          "operand": "0x12d9a9c",
+          "constant": 19765916
+        },
+        {
+          "address": "0xdbc0c9",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_NASTY_STREAK",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbc17e",
+      "slice_start": "0xdbc166",
+      "bytes": "6a006a016a006a00687c9a2d01ff9018010000508d4c2428e80db2a2ff",
+      "pushes": [
+        {
+          "address": "0xdbc166",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc168",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbc16a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc16c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc16e",
+          "operand": "0x12d9a7c",
+          "constant": 19765884
+        },
+        {
+          "address": "0xdbc179",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_DONT_HIT_ME",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbc244",
+      "slice_start": "0xdbc22c",
+      "bytes": "6a006a016a006a00685c9a2d01ff9218010000508d4c2428e847b1a2ff",
+      "pushes": [
+        {
+          "address": "0xdbc22c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc22e",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbc230",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc232",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc234",
+          "operand": "0x12d9a5c",
+          "constant": 19765852
+        },
+        {
+          "address": "0xdbc23f",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_BULLY_BADGERING",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdbc4c3",
+      "slice_start": "0xdbc4be",
+      "bytes": "6a006a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdbc4be",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc4c0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc4c2",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_Bully",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdbc643",
+      "slice_start": "0xdbc635",
+      "bytes": "6a00c64148018b4d048b116a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdbc635",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc640",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbc642",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdac8f4",
+      "slice_start": "0xdac8f1",
+      "bytes": "535357ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdac8f1",
+          "operand": "ebx",
+          "constant": 0
+        },
+        {
+          "address": "0xdac8f2",
+          "operand": "ebx",
+          "constant": 0
+        },
+        {
+          "address": "0xdac8f3",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdacbb0",
+      "slice_start": "0xdacb98",
+      "bytes": "6a006a016a006a00682c862d01ff9018010000508d4c2428e8dba7a3ff",
+      "pushes": [
+        {
+          "address": "0xdacb98",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacb9a",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdacb9c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacb9e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacba0",
+          "operand": "0x12d862c",
+          "constant": 19760684
+        },
+        {
+          "address": "0xdacbab",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CAUGHT_YOU_10",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdacc55",
+      "slice_start": "0xdacc3d",
+      "bytes": "6a006a016a006a006808862d01ff9218010000508d4c2428e836a7a3ff",
+      "pushes": [
+        {
+          "address": "0xdacc3d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacc3f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdacc41",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacc43",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacc45",
+          "operand": "0x12d8608",
+          "constant": 19760648
+        },
+        {
+          "address": "0xdacc50",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CAUGHT_YOU_20",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdacd1a",
+      "slice_start": "0xdacd02",
+      "bytes": "6a006a016a006a0068dc852d01ff9218010000508d4c2428e871a6a3ff",
+      "pushes": [
+        {
+          "address": "0xdacd02",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacd04",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdacd06",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacd08",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacd0a",
+          "operand": "0x12d85dc",
+          "constant": 19760604
+        },
+        {
+          "address": "0xdacd15",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_BARREL_BREAKING",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdacde3",
+      "slice_start": "0xdacdcb",
+      "bytes": "6a006a016a006a0068ac852d01ff9218010000508d4c2428e8a8a5a3ff",
+      "pushes": [
+        {
+          "address": "0xdacdcb",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacdcd",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdacdcf",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacdd1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacdd3",
+          "operand": "0x12d85ac",
+          "constant": 19760556
+        },
+        {
+          "address": "0xdacdde",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_DERELICTION_OF_DUTY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdacea2",
+      "slice_start": "0xdace8a",
+      "bytes": "6a006a016a006a006888852d01ff9218010000508d4c2428e8e9a4a3ff",
+      "pushes": [
+        {
+          "address": "0xdace8a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdace8c",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdace8e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdace90",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdace92",
+          "operand": "0x12d8588",
+          "constant": 19760520
+        },
+        {
+          "address": "0xdace9d",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_VIOLENCE",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdacf67",
+      "slice_start": "0xdacf4f",
+      "bytes": "6a006a016a006a006860852d01ff9218010000508d4c2428e824a4a3ff",
+      "pushes": [
+        {
+          "address": "0xdacf4f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacf51",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdacf53",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacf55",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdacf57",
+          "operand": "0x12d8560",
+          "constant": 19760480
+        },
+        {
+          "address": "0xdacf62",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_TEDDY_TO_BULLY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad033",
+      "slice_start": "0xdad01b",
+      "bytes": "6a006a016a006a006834852d01ff9218010000508d4c2428e858a3a3ff",
+      "pushes": [
+        {
+          "address": "0xdad01b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad01d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad01f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad021",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad023",
+          "operand": "0x12d8534",
+          "constant": 19760436
+        },
+        {
+          "address": "0xdad02e",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_CONCEALED_AFFAIR",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad0d8",
+      "slice_start": "0xdad0c0",
+      "bytes": "6a006a016a006a006810852d01ff9018010000508d4c2428e8b3a2a3ff",
+      "pushes": [
+        {
+          "address": "0xdad0c0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad0c2",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad0c4",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad0c6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad0c8",
+          "operand": "0x12d8510",
+          "constant": 19760400
+        },
+        {
+          "address": "0xdad0d3",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CAUGHT_YOU_30",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad183",
+      "slice_start": "0xdad16b",
+      "bytes": "6a006a016a006a0068ec842d01ff9218010000508d4c2428e808a2a3ff",
+      "pushes": [
+        {
+          "address": "0xdad16b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad16d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad16f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad171",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad173",
+          "operand": "0x12d84ec",
+          "constant": 19760364
+        },
+        {
+          "address": "0xdad17e",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CAUGHT_YOU_40",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad228",
+      "slice_start": "0xdad210",
+      "bytes": "6a006a016a006a0068c8842d01ff9018010000508d4c2428e863a1a3ff",
+      "pushes": [
+        {
+          "address": "0xdad210",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad212",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad214",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad216",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad218",
+          "operand": "0x12d84c8",
+          "constant": 19760328
+        },
+        {
+          "address": "0xdad223",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CAUGHT_YOU_50",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad2d3",
+      "slice_start": "0xdad2bb",
+      "bytes": "6a006a016a006a0068a4842d01ff9218010000508d4c2428e8b8a0a3ff",
+      "pushes": [
+        {
+          "address": "0xdad2bb",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad2bd",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad2bf",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad2c1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad2c3",
+          "operand": "0x12d84a4",
+          "constant": 19760292
+        },
+        {
+          "address": "0xdad2ce",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CAUGHT_YOU_60",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad394",
+      "slice_start": "0xdad37c",
+      "bytes": "6a006a016a006a006880842d01ff9218010000508d4c2428e8f79fa3ff",
+      "pushes": [
+        {
+          "address": "0xdad37c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad37e",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad380",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad382",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad384",
+          "operand": "0x12d8480",
+          "constant": 19760256
+        },
+        {
+          "address": "0xdad38f",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CAUGHT_YOU_AGAIN",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad459",
+      "slice_start": "0xdad441",
+      "bytes": "6a006a016a006a0068dc852d01ff9218010000508d4c2428e8329fa3ff",
+      "pushes": [
+        {
+          "address": "0xdad441",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad443",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad445",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad447",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad449",
+          "operand": "0x12d85dc",
+          "constant": 19760604
+        },
+        {
+          "address": "0xdad454",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_BARREL_BREAKING",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad523",
+      "slice_start": "0xdad50b",
+      "bytes": "6a006a016a006a0068ac852d01ff9218010000508d4c2428e8689ea3ff",
+      "pushes": [
+        {
+          "address": "0xdad50b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad50d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad50f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad511",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad513",
+          "operand": "0x12d85ac",
+          "constant": 19760556
+        },
+        {
+          "address": "0xdad51e",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_DERELICTION_OF_DUTY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad5e8",
+      "slice_start": "0xdad5d0",
+      "bytes": "6a006a016a006a006888852d01ff9218010000508d4c2428e8a39da3ff",
+      "pushes": [
+        {
+          "address": "0xdad5d0",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad5d2",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad5d4",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad5d6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad5d8",
+          "operand": "0x12d8588",
+          "constant": 19760520
+        },
+        {
+          "address": "0xdad5e3",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_VIOLENCE",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad6b3",
+      "slice_start": "0xdad69b",
+      "bytes": "6a006a016a006a006860852d01ff9218010000508d4c2428e8d89ca3ff",
+      "pushes": [
+        {
+          "address": "0xdad69b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad69d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad69f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad6a1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad6a3",
+          "operand": "0x12d8560",
+          "constant": 19760480
+        },
+        {
+          "address": "0xdad6ae",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_TEDDY_TO_BULLY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad778",
+      "slice_start": "0xdad760",
+      "bytes": "6a006a016a006a006834852d01ff9218010000508d4c2428e8139ca3ff",
+      "pushes": [
+        {
+          "address": "0xdad760",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad762",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad764",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad766",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad768",
+          "operand": "0x12d8534",
+          "constant": 19760436
+        },
+        {
+          "address": "0xdad773",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_CRIME_CONCEALED_AFFAIR",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdad823",
+      "slice_start": "0xdad80b",
+      "bytes": "6a006a016a006a00685c842d01ff9018010000508d4c2428e8689ba3ff",
+      "pushes": [
+        {
+          "address": "0xdad80b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad80d",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdad80f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad811",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad813",
+          "operand": "0x12d845c",
+          "constant": 19760220
+        },
+        {
+          "address": "0xdad81e",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_AFTER_READ_LIST",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdad8fc",
+      "slice_start": "0xdad8f7",
+      "bytes": "6a006a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdad8f7",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad8f9",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdad8fb",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdadca0",
+      "slice_start": "0xdadc8b",
+      "bytes": "556a01555568dc832d01ff9018010000508d4c2428e8eb96a3ff",
+      "pushes": [
+        {
+          "address": "0xdadc8b",
+          "operand": "ebp",
+          "constant": 0
+        },
+        {
+          "address": "0xdadc8c",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdadc8e",
+          "operand": "ebp",
+          "constant": 0
+        },
+        {
+          "address": "0xdadc8f",
+          "operand": "ebp",
+          "constant": 0
+        },
+        {
+          "address": "0xdadc90",
+          "operand": "0x12d83dc",
+          "constant": 19760092
+        },
+        {
+          "address": "0xdadc9b",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_GUARD_ON_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb8cd9",
+      "slice_start": "0xdb8cc1",
+      "bytes": "6a006a016a006a0068f0962d01ff9018010000508d4c2428e8b2e6a2ff",
+      "pushes": [
+        {
+          "address": "0xdb8cc1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8cc3",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb8cc5",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8cc7",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8cc9",
+          "operand": "0x12d96f0",
+          "constant": 19764976
+        },
+        {
+          "address": "0xdb8cd4",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_DONE_NOTHING_YET",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb8dea",
+      "slice_start": "0xdb8dd2",
+      "bytes": "6a006a016a006a0068c8962d01ff9018010000508d4c2428e8a1e5a2ff",
+      "pushes": [
+        {
+          "address": "0xdb8dd2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8dd4",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb8dd6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8dd8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8dda",
+          "operand": "0x12d96c8",
+          "constant": 19764936
+        },
+        {
+          "address": "0xdb8de5",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_GIVE_REWARD_JUST_GOOD",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb8ea5",
+      "slice_start": "0xdb8e8d",
+      "bytes": "6a006a016a006a0068a0962d01ff9218010000508d4c2428e8e6e4a2ff",
+      "pushes": [
+        {
+          "address": "0xdb8e8d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8e8f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb8e91",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8e93",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8e95",
+          "operand": "0x12d96a0",
+          "constant": 19764896
+        },
+        {
+          "address": "0xdb8ea0",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_GIVE_REWARD_PART_BAD",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb8f96",
+      "slice_start": "0xdb8f7e",
+      "bytes": "6a006a016a006a006880962d01ff9218010000508d4c2428e8f5e3a2ff",
+      "pushes": [
+        {
+          "address": "0xdb8f7e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8f80",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb8f82",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8f84",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb8f86",
+          "operand": "0x12d9680",
+          "constant": 19764864
+        },
+        {
+          "address": "0xdb8f91",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_GIVE_PRESENT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb9072",
+      "slice_start": "0xdb905a",
+      "bytes": "6a006a016a006a00685c962d01ff9018010000508d4c2428e819e3a2ff",
+      "pushes": [
+        {
+          "address": "0xdb905a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb905c",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb905e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9060",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9062",
+          "operand": "0x12d965c",
+          "constant": 19764828
+        },
+        {
+          "address": "0xdb906d",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_YOU_HAVE_ENOUGH",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb9138",
+      "slice_start": "0xdb9120",
+      "bytes": "6a006a016a006a006840962d01ff9218010000508d4c2428e853e2a2ff",
+      "pushes": [
+        {
+          "address": "0xdb9120",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9122",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb9124",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9126",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9128",
+          "operand": "0x12d9640",
+          "constant": 19764800
+        },
+        {
+          "address": "0xdb9133",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_IS_ENOUGH",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb9292",
+      "slice_start": "0xdb927a",
+      "bytes": "6a006a016a006a006824962d01ff9018010000508d4c2428e8f9e0a2ff",
+      "pushes": [
+        {
+          "address": "0xdb927a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb927c",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb927e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9280",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9282",
+          "operand": "0x12d9624",
+          "constant": 19764772
+        },
+        {
+          "address": "0xdb928d",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_ANTISOCIAL",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb933e",
+      "slice_start": "0xdb9326",
+      "bytes": "6a006a016a006a006808962d01ff9218010000508d4c2428e84de0a2ff",
+      "pushes": [
+        {
+          "address": "0xdb9326",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9328",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb932a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb932c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb932e",
+          "operand": "0x12d9608",
+          "constant": 19764744
+        },
+        {
+          "address": "0xdb9339",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_DO_MORE",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb943e",
+      "slice_start": "0xdb9426",
+      "bytes": "6a006a016a006a0068e4952d01ff9218010000508d4c2428e84ddfa2ff",
+      "pushes": [
+        {
+          "address": "0xdb9426",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb9428",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb942a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb942c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb942e",
+          "operand": "0x12d95e4",
+          "constant": 19764708
+        },
+        {
+          "address": "0xdb9439",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_GIVE_PRESENT_ALT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_LiveFather",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb96ca",
+      "slice_start": "0xdb96b2",
+      "bytes": "6a006a016a006a0068cc952d01ff9018010000508d4c2428e8c1dca2ff",
+      "pushes": [
+        {
+          "address": "0xdb96b2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb96b4",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb96b6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb96b8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb96ba",
+          "operand": "0x12d95cc",
+          "constant": 19764684
+        },
+        {
+          "address": "0xdb96c5",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_DAD_TEMPER",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdaf345",
+      "slice_start": "0xdaf330",
+      "bytes": "566a0156566830892d01ff9218010000508d4c242ce84680a3ff",
+      "pushes": [
+        {
+          "address": "0xdaf330",
+          "operand": "esi",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf331",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdaf333",
+          "operand": "esi",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf334",
+          "operand": "esi",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf335",
+          "operand": "0x12d8930",
+          "constant": 19761456
+        },
+        {
+          "address": "0xdaf340",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_PLEA_POST_BEATEN",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdaf412",
+      "slice_start": "0xdaf3fd",
+      "bytes": "566a015656680c892d01ff9018010000508d4c242ce8797fa3ff",
+      "pushes": [
+        {
+          "address": "0xdaf3fd",
+          "operand": "esi",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf3fe",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdaf400",
+          "operand": "esi",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf401",
+          "operand": "esi",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf402",
+          "operand": "0x12d890c",
+          "constant": 19761420
+        },
+        {
+          "address": "0xdaf40d",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdaf5bf",
+      "slice_start": "0xdaf5a7",
+      "bytes": "6a006a016a006a0068c8882d01ff9018010000508d4c242ce8cc7da3ff",
+      "pushes": [
+        {
+          "address": "0xdaf5a7",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf5a9",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdaf5ab",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf5ad",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf5af",
+          "operand": "0x12d88c8",
+          "constant": 19761352
+        },
+        {
+          "address": "0xdaf5ba",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdaf688",
+      "slice_start": "0xdaf670",
+      "bytes": "6a006a016a006a0068a4882d01ff9218010000508d4c242ce8037da3ff",
+      "pushes": [
+        {
+          "address": "0xdaf670",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf672",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdaf674",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf676",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf678",
+          "operand": "0x12d88a4",
+          "constant": 19761316
+        },
+        {
+          "address": "0xdaf683",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_REPEAT_PLEA",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdaf9a6",
+      "slice_start": "0xdaf98e",
+      "bytes": "6a006a016a006a0068c8882d01ff9218010000508d4c242ce8e579a3ff",
+      "pushes": [
+        {
+          "address": "0xdaf98e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf990",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdaf992",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf994",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaf996",
+          "operand": "0x12d88c8",
+          "constant": 19761352
+        },
+        {
+          "address": "0xdaf9a1",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdafa39",
+      "slice_start": "0xdafa21",
+      "bytes": "6a006a016a006a006880882d01ff9018010000508d4c242ce85279a3ff",
+      "pushes": [
+        {
+          "address": "0xdafa21",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafa23",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdafa25",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafa27",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafa29",
+          "operand": "0x12d8880",
+          "constant": 19761280
+        },
+        {
+          "address": "0xdafa34",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_DONT_WANT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdafadd",
+      "slice_start": "0xdafad8",
+      "bytes": "6a006a0053ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdafad8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafada",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafadc",
+          "operand": "ebx",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdafe16",
+      "slice_start": "0xdafdfe",
+      "bytes": "6a006a016a006a006830892d01ff9018010000508d4c242ce87575a3ff",
+      "pushes": [
+        {
+          "address": "0xdafdfe",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafe00",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdafe02",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafe04",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafe06",
+          "operand": "0x12d8930",
+          "constant": 19761456
+        },
+        {
+          "address": "0xdafe11",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_PLEA_POST_BEATEN",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdafede",
+      "slice_start": "0xdafec6",
+      "bytes": "6a006a016a006a00680c892d01ff9218010000508d4c242ce8ad74a3ff",
+      "pushes": [
+        {
+          "address": "0xdafec6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafec8",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdafeca",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafecc",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdafece",
+          "operand": "0x12d890c",
+          "constant": 19761420
+        },
+        {
+          "address": "0xdafed9",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdaffa7",
+      "slice_start": "0xdaff8f",
+      "bytes": "6a006a016a006a006834882d01ff9018010000508d4c242ce8e473a3ff",
+      "pushes": [
+        {
+          "address": "0xdaff8f",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaff91",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdaff93",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaff95",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdaff97",
+          "operand": "0x12d8834",
+          "constant": 19761204
+        },
+        {
+          "address": "0xdaffa2",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_REPEAT_FOUND",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb0069",
+      "slice_start": "0xdb0051",
+      "bytes": "6a006a016a006a006810882d01ff9018010000508d4c242ce82273a3ff",
+      "pushes": [
+        {
+          "address": "0xdb0051",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0053",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb0055",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0057",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0059",
+          "operand": "0x12d8810",
+          "constant": 19761168
+        },
+        {
+          "address": "0xdb0064",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_BAD_FEELING",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb0134",
+      "slice_start": "0xdb011c",
+      "bytes": "6a006a016a006a0068a4882d01ff9218010000508d4c242ce85772a3ff",
+      "pushes": [
+        {
+          "address": "0xdb011c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb011e",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb0120",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0122",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb0124",
+          "operand": "0x12d88a4",
+          "constant": 19761316
+        },
+        {
+          "address": "0xdb012f",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_REPEAT_PLEA",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdb03cc",
+      "slice_start": "0xdb03b4",
+      "bytes": "6a006a016a006a0068f0872d01ff9018010000508d4c242ce8bf6fa3ff",
+      "pushes": [
+        {
+          "address": "0xdb03b4",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb03b6",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdb03b8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb03ba",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdb03bc",
+          "operand": "0x12d87f0",
+          "constant": 19761136
+        },
+        {
+          "address": "0xdb03c7",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_TEDDYGIRL_DONT_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdba1ce",
+      "slice_start": "0xdba1b6",
+      "bytes": "6a006a016a006a006878982d01ff9218010000508d4c2430e8bdd1a2ff",
+      "pushes": [
+        {
+          "address": "0xdba1b6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba1b8",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdba1ba",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba1bc",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba1be",
+          "operand": "0x12d9878",
+          "constant": 19765368
+        },
+        {
+          "address": "0xdba1c9",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_HELLO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdba37a",
+      "slice_start": "0xdba362",
+      "bytes": "6a006a016a006a006850982d01ff9218010000508d4c2430e811d0a2ff",
+      "pushes": [
+        {
+          "address": "0xdba362",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba364",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdba366",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba368",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba36a",
+          "operand": "0x12d9850",
+          "constant": 19765328
+        },
+        {
+          "address": "0xdba375",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_REALLY_GET_PRESENT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdba6c6",
+      "slice_start": "0xdba6b1",
+      "bytes": "576a0157576878982d01ff9018010000508d4c2430e8c5cca2ff",
+      "pushes": [
+        {
+          "address": "0xdba6b1",
+          "operand": "edi",
+          "constant": 0
+        },
+        {
+          "address": "0xdba6b2",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdba6b4",
+          "operand": "edi",
+          "constant": 0
+        },
+        {
+          "address": "0xdba6b5",
+          "operand": "edi",
+          "constant": 0
+        },
+        {
+          "address": "0xdba6b6",
+          "operand": "0x12d9878",
+          "constant": 19765368
+        },
+        {
+          "address": "0xdba6c1",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_HELLO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdba848",
+      "slice_start": "0xdba830",
+      "bytes": "6a006a016a006a00682c982d01ff9218010000508d4c2430e843cba2ff",
+      "pushes": [
+        {
+          "address": "0xdba830",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba832",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdba834",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba836",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba838",
+          "operand": "0x12d982c",
+          "constant": 19765292
+        },
+        {
+          "address": "0xdba843",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_BETTER_PRESENT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdba9ba",
+      "slice_start": "0xdba9a2",
+      "bytes": "6a006a016a006a006878982d01ff9218010000508d4c2430e8d1c9a2ff",
+      "pushes": [
+        {
+          "address": "0xdba9a2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba9a4",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdba9a6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba9a8",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdba9aa",
+          "operand": "0x12d9878",
+          "constant": 19765368
+        },
+        {
+          "address": "0xdba9b5",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_HELLO",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbaa79",
+      "slice_start": "0xdbaa61",
+      "bytes": "6a006a016a006a006808982d01ff9018010000508d4c2430e812c9a2ff",
+      "pushes": [
+        {
+          "address": "0xdbaa61",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbaa63",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbaa65",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbaa67",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbaa69",
+          "operand": "0x12d9808",
+          "constant": 19765256
+        },
+        {
+          "address": "0xdbaa74",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_GET_PRESENT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbab56",
+      "slice_start": "0xdbab3e",
+      "bytes": "6a006a016a006a006850982d01ff9218010000508d4c2430e835c8a2ff",
+      "pushes": [
+        {
+          "address": "0xdbab3e",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbab40",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbab42",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbab44",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbab46",
+          "operand": "0x12d9850",
+          "constant": 19765328
+        },
+        {
+          "address": "0xdbab51",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_REALLY_GET_PRESENT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Theresa",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbad95",
+      "slice_start": "0xdbad7d",
+      "bytes": "6a006a016a006a0068e8972d01ff9218010000508d4c2430e8f6c5a2ff",
+      "pushes": [
+        {
+          "address": "0xdbad7d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbad7f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbad81",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbad83",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbad85",
+          "operand": "0x12d97e8",
+          "constant": 19765224
+        },
+        {
+          "address": "0xdbad90",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_THERESA_DONT_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbd103",
+      "slice_start": "0xdbd0eb",
+      "bytes": "6a006a016a006a0068b4992d01ff9218010000508d4c2428e888a2a2ff",
+      "pushes": [
+        {
+          "address": "0xdbd0eb",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd0ed",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbd0ef",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd0f1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd0f3",
+          "operand": "0x12d99b4",
+          "constant": 19765684
+        },
+        {
+          "address": "0xdbd0fe",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VICTIM_THANKS_AFTER_HIT",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbd1d3",
+      "slice_start": "0xdbd1bb",
+      "bytes": "6a006a016a006a006898992d01ff9018010000508d4c2428e8b8a1a2ff",
+      "pushes": [
+        {
+          "address": "0xdbd1bb",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd1bd",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbd1bf",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd1c1",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd1c3",
+          "operand": "0x12d9998",
+          "constant": 19765656
+        },
+        {
+          "address": "0xdbd1ce",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VICTIM_THANKS",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbd39b",
+      "slice_start": "0xdbd383",
+      "bytes": "6a006a016a006a00687c9c2d01ff9018010000508d4c2428e8f09fa2ff",
+      "pushes": [
+        {
+          "address": "0xdbd383",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd385",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbd387",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd389",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd38b",
+          "operand": "0x12d9c7c",
+          "constant": 19766396
+        },
+        {
+          "address": "0xdbd396",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VICTIM_PLEA_AFTER_ATTACK",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbd46e",
+      "slice_start": "0xdbd456",
+      "bytes": "6a006a016a006a0068609c2d01ff9218010000508d4c2428e81d9fa2ff",
+      "pushes": [
+        {
+          "address": "0xdbd456",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd458",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbd45a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd45c",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd45e",
+          "operand": "0x12d9c60",
+          "constant": 19766368
+        },
+        {
+          "address": "0xdbd469",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VICTIM_PLEA",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdbd9e7",
+      "slice_start": "0xdbd9e2",
+      "bytes": "6a006a0057ff90b0050000",
+      "pushes": [
+        {
+          "address": "0xdbd9e2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd9e4",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbd9e6",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbdbda",
+      "slice_start": "0xdbdbc2",
+      "bytes": "6a006a016a006a0268d09b2d01ff9018010000508d4c2428e8b197a2ff",
+      "pushes": [
+        {
+          "address": "0xdbdbc2",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbdbc4",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbdbc6",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbdbc8",
+          "operand": "2",
+          "constant": 2
+        },
+        {
+          "address": "0xdbdbca",
+          "operand": "0x12d9bd0",
+          "constant": 19766224
+        },
+        {
+          "address": "0xdbdbd5",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VICTIM_EVIL_BROS",
+      "method": 2,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Victim",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdbdd3c",
+      "slice_start": "0xdbdd24",
+      "bytes": "6a006a016a006a0068849b2d01ff9218010000508d4c2428e84f96a2ff",
+      "pushes": [
+        {
+          "address": "0xdbdd24",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbdd26",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdbdd28",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbdd2a",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdbdd2c",
+          "operand": "0x12d9b84",
+          "constant": 19766148
+        },
+        {
+          "address": "0xdbdd37",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VICTIM_EVIL_BROS_10",
+      "method": 0,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Villager",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdae288",
+      "slice_start": "0xdae270",
+      "bytes": "6a006a016a006a016814872d01ff9218010000508d4c2474e80391a3ff",
+      "pushes": [
+        {
+          "address": "0xdae270",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae272",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdae274",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae276",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdae278",
+          "operand": "0x12d8714",
+          "constant": 19760916
+        },
+        {
+          "address": "0xdae283",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VILLAGER_ATTACKED_MALE",
+      "method": 1,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Villager",
+      "function": "Main",
+      "route": "Speak",
+      "call": "0xdae355",
+      "slice_start": "0xdae33d",
+      "bytes": "6a006a016a006a0168ec862d01ff9018010000508d4c2474e83690a3ff",
+      "pushes": [
+        {
+          "address": "0xdae33d",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae33f",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdae341",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae343",
+          "operand": "1",
+          "constant": 1
+        },
+        {
+          "address": "0xdae345",
+          "operand": "0x12d86ec",
+          "constant": 19760876
+        },
+        {
+          "address": "0xdae350",
+          "operand": "eax",
+          "constant": null
+        }
+      ],
+      "text": "TEXT_QST_048_VILLAGER_ATTACKED_FEMALE",
+      "method": 1,
+      "listen": 0,
+      "sound2d": 1,
+      "over_fade": 0
+    },
+    {
+      "entity": "NOVI_Villager",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdae4cc",
+      "slice_start": "0xdae4c7",
+      "bytes": "6a006a0057ff92b0050000",
+      "pushes": [
+        {
+          "address": "0xdae4c7",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae4c9",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae4cb",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    },
+    {
+      "entity": "NOVI_Villager",
+      "function": "Main",
+      "route": "AddNewConversation",
+      "call": "0xdae69e",
+      "slice_start": "0xdae699",
+      "bytes": "6a006a0057ff90b0050000",
+      "pushes": [
+        {
+          "address": "0xdae699",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae69b",
+          "operand": "0",
+          "constant": 0
+        },
+        {
+          "address": "0xdae69d",
+          "operand": "edi",
+          "constant": null
+        }
+      ],
+      "booleans": [
+        0,
+        0
+      ]
+    }
+  ],
+  "counts": {
+    "Speak": 102,
+    "AddNewConversation": 18
+  }
+}

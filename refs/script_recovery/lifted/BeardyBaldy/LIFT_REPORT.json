@@ -1,0 +1,554 @@
+{
+  "script": "V_BeardyBaldy",
+  "package": "BeardyBaldy",
+  "state": {
+    "0x48": [
+      "QuestFinished",
+      "Bool"
+    ],
+    "0x4a": [
+      "QuestActivated",
+      "Bool"
+    ],
+    "0x49": [
+      "QuestComplete",
+      "Bool"
+    ],
+    "0x4c": [
+      "QuestPhase",
+      "Bool"
+    ],
+    "0x50": [
+      "InitialisePhase",
+      "Bool"
+    ],
+    "0x51": [
+      "IntroComplete",
+      "Bool"
+    ],
+    "0x52": [
+      "Phase1RequirementsComplete",
+      "Bool"
+    ],
+    "0x53": [
+      "Phase2RequirementsComplete",
+      "Bool"
+    ],
+    "0x54": [
+      "Phase3RequirementsComplete",
+      "Bool"
+    ],
+    "0x68": [
+      "BeardyBaldyKilled",
+      "Bool"
+    ],
+    "0x69": [
+      "BarberLadyKilled",
+      "Bool"
+    ],
+    "0x65": [
+      "AcquiredNewBeard",
+      "Bool"
+    ],
+    "0x66": [
+      "AcquiredNewTash",
+      "Bool"
+    ],
+    "0x67": [
+      "AllHairChanged",
+      "Bool"
+    ],
+    "0x6c": [
+      "IncorrectHairComboCount",
+      "Bool"
+    ],
+    "0x70": [
+      "AttackedByHero",
+      "Bool"
+    ]
+  },
+  "functions": {
+    "Init": {
+      "lines": 45,
+      "todo": [
+        "unnamed field 0x58 written in Init",
+        "unnamed field 0x5c written in Init",
+        "unnamed field 0x60 written in Init",
+        "unnamed field 0x6a written in Init",
+        "unlifted: *(undefined1 *)(param_1 + 100) = 0;",
+        "unnamed field 0x78 written in Init",
+        "unnamed field 0x7c written in Init",
+        "unnamed field 0x80 written in Init",
+        "unnamed field 0x84 written in Init",
+        "unnamed field 0x88 written in Init",
+        "unnamed field 0x8c written in Init",
+        "unnamed field 0x90 written in Init",
+        "unnamed field 0x94 written in Init",
+        "unnamed field 0x98 written in Init",
+        "unnamed field 0x9c written in Init"
+      ],
+      "calls": [
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString",
+        "SetStateString"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 133,
+      "todo": [
+        "verify cleanup at LAB_00e500eb (lifted as early return)",
+        "label LAB_00e4fb27",
+        "unresolved native control operand: if ((bVar13) || (bVar13 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)this), ppVar9 = extraout_EDX_04, bVar13)",
+        "unlifted: GoTalkToBeardyBaldy(this);",
+        "goto LAB_00e4fef3",
+        "unlifted: lVar5 = CBasicString<char>::Compare((char *)*puStack_24,\"BowerstoneSlumsWarehouses\");",
+        "unlifted: cStack_25 = '\\x01' - (lVar5 != 0);",
+        "verify cleanup at LAB_00e4fb27 (lifted as early return)",
+        "label LAB_00e500eb",
+        "label LAB_00e4fef3",
+        "verify cleanup at LAB_00e4ff2f (lifted as early return)",
+        "unlifted: cStack_25 = '\\x01';",
+        "label LAB_00e4ff2f",
+        "unlifted: cStack_25 = '\\0';",
+        "label LAB_00e5002c",
+        "verify cleanup at LAB_00e500d9 (lifted as early return)",
+        "1 args for 4 params",
+        "1 args for 2 params",
+        "0 args for 1 params",
+        "goto LAB_00e5002c",
+        "label LAB_00e500d9",
+        "goto LAB_00e500eb",
+        "goto LAB_00e4fef3"
+      ],
+      "calls": [
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "MsgOnRegionLoaded",
+        "NewScriptFrame",
+        "MsgOnRegionLoaded",
+        "CreateThread",
+        "CreateThread",
+        "CreateThread",
+        "CreateThread",
+        "CreateThread",
+        "CreateThread",
+        "CreateThread",
+        "SetStateBool",
+        "NewScriptFrame",
+        "IsRegionLoaded",
+        "GetThingWithScriptName",
+        "GetHero",
+        "GetNearestWithScriptName",
+        "IsAlive",
+        "IsAlive",
+        "MiniMapRemoveMarker",
+        "ClearThingHasInformation",
+        "GetActiveQuestName",
+        "SetQuestAsCompleted",
+        "GetActiveQuestName",
+        "RemoveQuestCardFromHero",
+        "GetActiveQuestName",
+        "DeactivateQuestLater",
+        "MiniMapRemoveMarker",
+        "ClearThingHasInformation",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 1,
+      "thingPredicateEvidence": [
+        {
+          "id": "beardy-main-nearest-barber-is-alive",
+          "status": "recovered",
+          "functionAddress": "0x00E4FA20",
+          "receiver": "__native_thing_predicate_1",
+          "predicate": "IsAlive",
+          "nativeRegions": [
+            {
+              "name": "CScriptThing::IsAlive",
+              "address": "0x004AB130",
+              "size": 28,
+              "sha256": "2f058b3a91d179c5bd531a6c5a536915b23fc9e4edce96b78b2029d7d2376000"
+            },
+            {
+              "name": "GetThingWithScriptName hidden-return ABI",
+              "address": "0x008A7D60",
+              "size": 160,
+              "sha256": "34233413b0368ef22aea4af44c1f5c1093a2ca808e2c48df7320952e0e29f2cd"
+            },
+            {
+              "name": "CScriptThing copy layout",
+              "address": "0x004ABE90",
+              "size": 33,
+              "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+            },
+            {
+              "name": "CCharString destructor",
+              "address": "0x0099EAE0",
+              "size": 11,
+              "sha256": "39680d1c87096045f57741672336decfdda997c791478f94b7bfcde47f0d07a9"
+            },
+            {
+              "name": "Beardy lookup and predicate window",
+              "address": "0x00E4FF83",
+              "size": 178,
+              "sha256": "939af6525bef9fb5829ac9dabb7f80a9d537d41339b71cd113bd8b3802f08066"
+            },
+            {
+              "name": "GetHero borrowed return ABI",
+              "address": "0x00891CA0",
+              "size": 173,
+              "sha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+            },
+            {
+              "name": "GetNearestWithScriptName hidden-return ABI",
+              "address": "0x0089A510",
+              "size": 460,
+              "sha256": "26fc439b661e29683b249c1d710931a87f9f0bd44a4b6f2f92c2715ef8896547"
+            }
+          ],
+          "vtableSlots": [
+            {
+              "name": "CScriptThing::IsAlive",
+              "address": "0x01238DB8",
+              "target": "0x004AB130"
+            },
+            {
+              "name": "GetThingWithScriptName",
+              "address": "0x0126102C",
+              "target": "0x008A7D60"
+            },
+            {
+              "name": "GetHero",
+              "address": "0x01261024",
+              "target": "0x00891CA0"
+            },
+            {
+              "name": "GetNearestWithScriptName",
+              "address": "0x01261040",
+              "target": "0x0089A510"
+            }
+          ],
+          "decompileSha256": "d2efa9e740882ad7ef23101ca518fe22b232ad6c959f9971dadd37048232e126",
+          "association": {
+            "lookupCall": "0x00E4FFDA",
+            "predicateCall": "0x00E4FFF3",
+            "lookup": "GetNearestWithScriptName(hero, \"CREATURE_BOWERSTONE_SLUMS_VILLAGER_FEMALE_BARBER\")",
+            "stackBase": "ESP before string argument push at E4FFCA",
+            "wrapperOffset": 32,
+            "implementationOffset": 36,
+            "explanation": "The string argument is pushed at E4FFCA before GetHero, which returns a borrowed wrapper pointer in EAX with plain ret. E4FFD1 pushes that pointer. E4FFD2 computes [esp+0x28], so the hidden result buffer is at base+0x20. GetNearestWithScriptName returns with ret 12; E4FFE9 loads base+0x24, that wrapper implementation. Both null and false IsAlive edges reach E5002C. The distinct Beardy wrapper is base+0x2c and is tested by a direct call at E50030. The native char result is retained in the rewrite because the export reuses cVar1."
+          },
+          "annotatedSha256": "dcb27115fc6a347be6963790e1ae010979d844e6ddce8265317a37a7de9874b8"
+        }
+      ]
+    },
+    "Thread:WatchForQuestFinished": {
+      "lines": 15,
+      "todo": [
+        "unnamed field 0x6a"
+      ],
+      "calls": [
+        "NewScriptFrame",
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForQuestCardConditions": {
+      "lines": 124,
+      "todo": [
+        "goto LAB_00e5097e",
+        "label LAB_00e5097e",
+        "unlifted: GoTalkToBeardyBaldy(this);",
+        "label LAB_00e50dd6",
+        "label LAB_00e50e2a",
+        "label LAB_00e50cfe",
+        "label LAB_00e50ab0",
+        "verify cleanup at LAB_00e50cf5 (lifted as early return)",
+        "unlifted: GoTalkToBeardyBaldy(this);",
+        "unlifted: this[100] = (CV_BeardyBaldyScript)0x0;",
+        "verify cleanup at LAB_00e50e2a (lifted as early return)",
+        "goto LAB_00e50e22",
+        "verify cleanup at LAB_00e50cf5 (lifted as early return)",
+        "verify cleanup at LAB_00e50bfe (lifted as early return)",
+        "unlifted: lVar7 = CBasicString<char>::Compare(*(char **)pCVar12,\"BowerstoneSlumsWarehouses\");",
+        "verify cleanup at LAB_00e50bfe (lifted as early return)",
+        "goto LAB_00e50cf5",
+        "label LAB_00e50bfe",
+        "unlifted: CScriptThing::operator=((CScriptThing *)&ppuStack_3c,pCVar6);",
+        "verify cleanup at LAB_00e50db6 (lifted as early return)",
+        "verify cleanup at LAB_00e50cf5 (lifted as early return)",
+        "verify cleanup at LAB_00e50cf5 (lifted as early return)",
+        "label LAB_00e50db6",
+        "unlifted: GoTalkToBeardyBaldy(this);",
+        "verify cleanup at LAB_00e50dd6 (lifted as early return)",
+        "goto LAB_00e50ab0",
+        "label LAB_00e50cf5",
+        "goto LAB_00e50cfe"
+      ],
+      "calls": [
+        "NewScriptFrame",
+        "GetActiveQuestName",
+        "GiveHeroQuestCardDirectly",
+        "GetActiveQuestName",
+        "SetQuestCardObjective",
+        "NewScriptFrame",
+        "GetActiveQuestName",
+        "SetQuestCardObjective",
+        "SetStateBool",
+        "SetStateBool",
+        "MsgOnRegionLoaded",
+        "NewScriptFrame",
+        "MsgOnRegionLoaded",
+        "NewScriptFrame",
+        "GetThingWithScriptName",
+        "NewScriptFrame",
+        "GetActiveQuestName",
+        "SetQuestCardObjective",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 1
+    },
+    "Thread:WatchForBarberLadyDeath": {
+      "lines": 33,
+      "todo": [],
+      "calls": [
+        "GetHero",
+        "GetNearestWithScriptName",
+        "NewScriptFrame",
+        "NewScriptFrame",
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForBeardyBaldyDeath": {
+      "lines": 27,
+      "todo": [
+        "unlifted: ppVar4 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)local_c;",
+        "unlifted: *local_c[0] = *local_c[0] + -1;",
+        "unlifted: local_c[0] = (int *)0x0;"
+      ],
+      "calls": [
+        "GetThingWithScriptName",
+        "NewScriptFrame",
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForNewHairdo": {
+      "lines": 28,
+      "todo": [
+        "unlifted: this[100] = (CScriptBase)0x1;",
+        "label LAB_00e50201"
+      ],
+      "calls": [
+        "NewScriptFrame",
+        "MsgOnHeroHairTypeChanged",
+        "NewScriptFrame",
+        "MsgOnHeroHairTypeChanged",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForNewBeard": {
+      "lines": 28,
+      "todo": [
+        "label LAB_00e502ce"
+      ],
+      "calls": [
+        "NewScriptFrame",
+        "MsgOnHeroHairTypeChanged",
+        "NewScriptFrame",
+        "MsgOnHeroHairTypeChanged",
+        "SetStateBool",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForNewTash": {
+      "lines": 31,
+      "todo": [
+        "verify cleanup at LAB_00e50320 (lifted as early return)",
+        "label LAB_00e50320",
+        "label LAB_00e503b0"
+      ],
+      "calls": [
+        "NewScriptFrame",
+        "MsgOnHeroHairTypeChanged",
+        "NewScriptFrame",
+        "MsgOnHeroHairTypeChanged",
+        "SetStateBool",
+        "SetStateBool",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Helper:GoTalkToBeardyBaldy_00E50650": {
+      "lines": 33,
+      "todo": [
+        "verify cleanup at LAB_00e5072f (lifted as early return)",
+        "label LAB_00e5072f",
+        "unresolved native control operand: if (unaff_EDI != (int *)0x0) {",
+        "unresolved native control operand: if (*unaff_EDI == 0) {",
+        "unlifted: *piStack_18 = *piStack_18 + -1;"
+      ],
+      "calls": [
+        "GetThingWithScriptName",
+        "GetHero",
+        "GetNearestWithDefName",
+        "MiniMapAddMarker",
+        "MiniMapRemoveMarker"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Helper:GoTalkToBeardyBaldy_00E50E40": {
+      "lines": 33,
+      "todo": [
+        "verify cleanup at LAB_00e50f01 (lifted as early return)",
+        "label LAB_00e50f01",
+        "unresolved native control operand: if (unaff_EDI != (int *)0x0) {",
+        "unresolved native control operand: if (*unaff_EDI == 0) {",
+        "unlifted: *piStack_18 = *piStack_18 + -1;"
+      ],
+      "calls": [
+        "GetThingWithScriptName",
+        "GetHero",
+        "GetNearestWithDefName",
+        "MiniMapRemoveMarker",
+        "MiniMapAddMarker"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 48,
+      "todo": [],
+      "calls": [
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool"
+      ]
+    }
+  },
+  "entities": [
+    "BB_BeardyBaldyMan"
+  ],
+  "threads": [
+    {
+      "name": "WatchForQuestFinished",
+      "body": "CV_AmbushScamScript::WatchForQuestFinished"
+    },
+    {
+      "name": "WatchForQuestCardConditions",
+      "body": "WatchForQuestCardConditions"
+    },
+    {
+      "name": "WatchForBarberLadyDeath",
+      "body": "WatchForBarberLadyDeath"
+    },
+    {
+      "name": "WatchForBeardyBaldyDeath",
+      "body": "WatchForBeardyBaldyDeath"
+    },
+    {
+      "name": "WatchForNewHairdo",
+      "body": "0x00E50150"
+    },
+    {
+      "name": "WatchForNewBeard",
+      "body": "0x00E50210"
+    },
+    {
+      "name": "WatchForNewTash",
+      "body": "0x00E502E0"
+    }
+  ],
+  "helpers": [
+    {
+      "name": "GoTalkToBeardyBaldy_00E50650",
+      "address": "0x00E50650",
+      "selectedBy": [
+        "callee:Main",
+        "callee:thread 0x00E50910"
+      ]
+    },
+    {
+      "name": "GoTalkToBeardyBaldy_00E50E40",
+      "address": "0x00E50E40",
+      "selectedBy": [
+        "callee:thread 0x00E50910"
+      ]
+    }
+  ],
+  "entityBodies": {}
+}

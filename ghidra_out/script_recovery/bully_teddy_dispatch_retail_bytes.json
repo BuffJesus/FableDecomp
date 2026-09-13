@@ -1,0 +1,70 @@
+{
+  "schema": "bully-teddy-dispatch-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "region": {
+    "address": "0x00DBB5F0",
+    "endExclusive": "0x00DBBD83",
+    "rangeSize": 1939,
+    "bytesSha256": "F420D36B93CA108CB3DF004AB938317BB5449CB98B67DC7E5F203E3415D5D754",
+    "instructionCount": 542
+  },
+  "gate": {
+    "field": "DoneIntro",
+    "localOffset": "0x24",
+    "testSite": "0x00DBB5F0"
+  },
+  "dispatch": [
+    {
+      "order": 1,
+      "condition": "talked to by HERO and hero possesses teddy",
+      "talkSlot": "0x6C",
+      "possessionSlot": "0x2E0",
+      "path": "yes/no offer"
+    },
+    {
+      "order": 2,
+      "condition": "presented item equals teddy",
+      "messageSlot": "0x8C",
+      "path": "direct acceptance"
+    },
+    {
+      "order": 3,
+      "condition": "presented other item still possessed by hero",
+      "messageSlot": "0x8C",
+      "possessionSlot": "0x2E0",
+      "path": "refusal"
+    }
+  ],
+  "offer": {
+    "firstLine": "TEXT_QST_048_BULLY_FOUND_TEDDY_ONE",
+    "question": "TEXT_QST_048_GIVE_TEDDY_TO_BULLY",
+    "yes": "TEXT_OBJECT_HERO_ANSWER_YES",
+    "no": "TEXT_OBJECT_HERO_ANSWER_NO",
+    "questionSlot": "0x1C8",
+    "answerSlot": "0x9C",
+    "acceptedAnswer": 1,
+    "acceptedLine": "TEXT_QST_048_BULLY_FOUND_TEDDY_TWO",
+    "victimComplaintParentOffset": "0x96",
+    "givenTeddyCallSite": "0x00DBB9BC",
+    "clearInformationSlot": "0x5A4"
+  },
+  "directAcceptance": {
+    "line": "TEXT_QST_048_BULLY_FOUND_TEDDY_TWO",
+    "victimComplaintParentOffset": "0x96",
+    "givenTeddyCallSite": "0x00DBBCCA",
+    "clearInformationSlot": "0x5A4"
+  },
+  "refusal": {
+    "line": "TEXT_QST_048_BULLY_DONT_WANT",
+    "acquirePriority": 4
+  },
+  "movieScope": {
+    "startSlot": "0x5C8",
+    "pauseSlot": "0x5EC",
+    "normalEnd": [
+      "PauseAllNonScriptedEntities(false)",
+      "destroy movie resource"
+    ]
+  }
+}

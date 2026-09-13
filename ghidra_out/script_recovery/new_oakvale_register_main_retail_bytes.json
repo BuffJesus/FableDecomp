@@ -1,0 +1,24 @@
+{
+  "schema": "new-oakvale-register-main-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DAACE0",
+  "rangeSize": 139,
+  "functionBytesSha256": "862FA6B4C28044CBDAD0DEB7782ABB0C6A832B10954C1AA1BE40732D4A024B69",
+  "allocationSize": 60,
+  "operatorNewTarget": "0x00BFEA1A",
+  "threadName": "Main",
+  "threadNameAddress": "0x012C2F94",
+  "spawnedConstructorTarget": "0x00CDD450",
+  "spawnedVtable": "0x012D7A3C",
+  "spawnedVtableSha256": "622CE97F6EC578D5D5A02A2F7CCE7D47621932A3CD0655138A300E56B95346FC",
+  "spawnedVtableSlots": [
+    "0x00DAAD80",
+    "0x00A44880"
+  ],
+  "mainThunk": "0x00CDD440",
+  "ownerFieldOffset": "0x38",
+  "sectionName": "",
+  "sectionNameAddress": "0x0122D70E",
+  "addSpawnedFunctionTarget": "0x00CB7E50"
+}

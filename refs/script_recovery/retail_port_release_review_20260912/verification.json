@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\retail_port_release_review_20260912\\maze_research\\api-proposal.json",
+      "sha256": "e10a950511b2cb952f96989e0a02b4a370fa8a7309b9c8bd8634f008bc879d36"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\retail_port_release_review_20260912\\maze_research\\package-manifest.json",
+      "sha256": "59744ac72ce418e16637f0d6242e24e2c162d2987cdb7bbf48b22c8d570dc638"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\retail_port_release_review_20260912\\meet_sister\\api-proposal.json",
+      "sha256": "e938c286cf8cdba9ef003b8746a7b3cd0a02cc33e6218e4087e25c088f99d428"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\retail_port_release_review_20260912\\meet_sister\\package-manifest.json",
+      "sha256": "0cc6ef8d9d41a6738152d9f2a0c08cd700e0481e98a4ca8dd089439d675e4fee"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\retail_port_release_review_20260912\\meet_sister\\README.md",
+      "sha256": "329ffd7caadca0cc53c1bb336dbc79506d3fe3e6e0fd480729f44d48d66beb1c"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\retail_port_release_review_20260912\\runtime-provenance.json",
+      "sha256": "3c713a011e786025be92dae91b508e40ea7dc9a6027d9c796d0af45ad3c2309a"
+    }
+  ],
+  "checks": {
+    "runtime_proof_inputs_current": true,
+    "maze_validation": true,
+    "meet_sister_validation": true,
+    "metadata_baseline_current": true,
+    "installed_v23_unchanged": true
+  }
+}

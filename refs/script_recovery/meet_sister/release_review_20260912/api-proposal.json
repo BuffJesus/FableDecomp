@@ -1,0 +1,275 @@
+{
+  "status": "proposal-only-not-applied",
+  "baseline_manifest_sha256": "8ac14d1e83ad940ddc174ef80ba62d100c9a332e2876c190e0d2b76889f8dfdd",
+  "replace_by_identity": [
+    {
+      "scope": "Quest",
+      "name": "AddEntityBinding",
+      "before": {
+        "name": "AddEntityBinding",
+        "scope": "Quest",
+        "returnType": "void",
+        "parameters": [
+          {
+            "name": "entityScriptName",
+            "type": "const std::string&",
+            "optional": false
+          },
+          {
+            "name": "scriptFileName",
+            "type": "const std::string&",
+            "optional": false
+          }
+        ],
+        "blocking": true,
+        "category": "Quest API",
+        "description": "Registers an entity script binding."
+      },
+      "after": {
+        "name": "AddEntityBinding",
+        "scope": "Quest",
+        "returnType": "void",
+        "parameters": [
+          {
+            "name": "entityScriptName",
+            "type": "const std::string&",
+            "optional": false
+          },
+          {
+            "name": "scriptFileName",
+            "type": "const std::string&",
+            "optional": false
+          },
+          {
+            "name": "flags",
+            "type": "int",
+            "optional": true
+          }
+        ],
+        "blocking": true,
+        "category": "Quest API",
+        "description": "Registers an entity binding. Omitted or nil flags default to 0; native binding flags propagate to the active script."
+      }
+    }
+  ],
+  "add_functions": [
+    {
+      "name": "WithRetailResources",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "callback",
+          "type": "sol::protected_function",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Calls callback(resources) synchronously; closes resources at callback exit/error. Retained scopes reject later calls."
+    },
+    {
+      "name": "NewResource",
+      "scope": "RetailResources",
+      "returnType": "unsigned",
+      "parameters": [],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Creates a distinct empty scripted resource local."
+    },
+    {
+      "name": "PrepareResource",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "unsigned",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Runs native preparation helpers for this resource."
+    },
+    {
+      "name": "TryAcquire",
+      "scope": "RetailResources",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "unsigned",
+          "optional": false
+        },
+        {
+          "name": "actor",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "priority",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Makes one native acquisition attempt; does not retry, yield or infer termination."
+    },
+    {
+      "name": "ReleaseResource",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "unsigned",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Destroys this local reference now; actor-map copies may retain ownership."
+    },
+    {
+      "name": "Frame",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [],
+      "blocking": true,
+      "category": "RetailResources API",
+      "description": "Performs one native script frame without an implicit termination query."
+    },
+    {
+      "name": "NewActorMap",
+      "scope": "RetailResources",
+      "returnType": "unsigned",
+      "parameters": [],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Creates a caller-owned actor map."
+    },
+    {
+      "name": "SetActor",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "map",
+          "type": "unsigned",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "resource",
+          "type": "unsigned",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Copies the resource into the map, including an empty resource."
+    },
+    {
+      "name": "DestroyActorMap",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "unsigned",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Destroys the map and its retained resource references now."
+    },
+    {
+      "name": "RunMacro",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "map",
+          "type": "unsigned",
+          "optional": false
+        },
+        {
+          "name": "setup",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "skippable",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "RetailResources API",
+      "description": "Runs the macro with nil flag/input maps and the caller-owned actor map; no implicit acquisition, movie, camera or termination policy."
+    },
+    {
+      "name": "StartMovie",
+      "scope": "RetailResources",
+      "returnType": "unsigned",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Creates and starts one movie local. A second live movie in the same scope is rejected."
+    },
+    {
+      "name": "DestroyMovie",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "unsigned",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Destroys the movie now; reviewed code explicitly unpauses first."
+    },
+    {
+      "name": "Pause",
+      "scope": "RetailResources",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "paused",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "RetailResources API",
+      "description": "Forwards the native non-scripted-entity pause operation; Lua booleans are required."
+    }
+  ],
+  "integration_requirements": [
+    "Coordinate with converter/metadata owner before applying.",
+    "Teach metadata consumers the RetailResources receiver scope; do not classify it as Entity.",
+    "Review callback type support before generating SDK overlays.",
+    "Do not change manifest/build version fields without a coordinated release."
+  ]
+}

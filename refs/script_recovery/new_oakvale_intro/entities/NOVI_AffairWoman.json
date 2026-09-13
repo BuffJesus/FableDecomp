@@ -1,14 +1,18 @@
 {
   "entity": "NOVI_AffairWoman",
   "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman",
+  "vtable": "0x012D8C08",
   "evidenceLevel": "reconstructed-source",
+  "retailByteSnapshots": [
+    {"name": "fullInitMain", "range": "Init 0x00DB1E80-0x00DB1EF4; Main 0x00DB1F00-0x00DB299A", "file": "ghidra_out/script_recovery/affair_woman_full_retail_bytes.json"}
+  ],
   "functions": {
-    "Init": {"address": "0x00DB1E80", "decompileFile": "tu/0x00DB1E80_NScript_CQ_NewOakValeIntroScript_CNOVI_AffairWoman.c"},
-    "Main": {"address": "0x00DB1F00", "decompileFile": "tu/0x00DB1F00_FUN_00db1f00.c", "note": "Ghidra label FUN_00db1f00; NOVI_AffairWoman vtable slot [1]"}
+    "Init": {"address": "0x00DB1E80", "decompileFile": "ghidra_out/script_recovery/native_decompiles/0x00DB1E80.c"},
+    "Main": {"address": "0x00DB1F00", "decompileFile": "ghidra_out/script_recovery/native_decompiles/0x00DB1F00.c", "note": "Ghidra label FUN_00db1f00; NOVI_AffairWoman vtable slot [1]"}
   },
   "localFields": [],
   "parentFieldsRead": ["ReceiveKiss", "ReceiveHug"],
-  "parentFieldsWritten": ["TalkingToWoman", "ReceiveKiss", "ReceiveHug"],
+  "parentFieldsWritten": ["TalkingToWoman", "ReceiveKiss", "ReceiveHug", "BadDeedsPerformed/WhichBadDeedsPerformed (via AddBadDeed)"],
   "masterDataAccess": [],
   "textKeys": ["TEXT_QST_048_AFFAIRWOMAN_ON_HIT", "TEXT_QST_048_AFFAIRWOMAN_BUSY"],
   "objects": [],
@@ -26,7 +30,7 @@
     {"name": "MAIN_CONTROL_PRIORITY", "value": 4, "source": "pCVar24 = &DAT_00000004 immediately before StartScriptingEntity", "evidence": "native-decompile"},
     {"name": "CUTSCENE_CONTROL_PRIORITY", "value": 4, "source": "StartScriptingEntity(pCVar1,&stack0xffffff24,4) in the talked-to branch; dropped in the hit branch", "evidence": "native-decompile"},
     {"name": "BAD_DEED_HIT_WOMAN", "value": 2, "source": "AddBadDeed(PARENT, 2)", "evidence": "native-decompile"},
-    {"name": "HERO_ABILITY_IGNORED_ON_HIT", "value": 14, "source": "argument dropped here; 0xe visible in AffairWife Main line 511", "evidence": "cross-script-evidence"},
+    {"name": "HERO_ABILITY_IGNORED_ON_HIT", "value": 14, "source": "MsgIsHitBySpecialAbilityFrom immediate push 0x0e at 0x00DB21EA", "evidence": "native-disassembly"},
     {"name": "SPEAK_SELECTION_METHOD", "value": 0, "source": "pCVar16 = 0 before every _Speak_", "evidence": "native-decompile"},
     {"name": "MOVE_WALK", "value": 0, "source": "_MoveToPosition_(home, 0, 0, ...) walk-home loop", "evidence": "native-decompile"},
     {"name": "MOVE_RUN", "value": 1, "source": "_MoveToPosition_(&uStack_4c, 0, 1, ...) run-off loop; ForgeFSE ENTITY_MOVE_RUN = 1", "evidence": "native-decompile"},
@@ -44,7 +48,7 @@
   ],
   "operations": [
     {"seq": 1, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsDamageable(me,0)", "argsKnown": true, "lua": "quest:EntitySetAsDamageable(me, false)", "forgeBinding": "EntitySetAsDamageable", "evidence": "native-decompile", "note": ""},
-    {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsKillable(me,0,0)", "argsKnown": true, "lua": "quest:EntitySetAsKillable(me, false)", "forgeBinding": "EntitySetAsKillable", "evidence": "native-decompile", "note": "ForgeFSE binding has one bool"},
+    {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsKillable(me,0,0)", "argsKnown": true, "lua": "quest:EntitySetAsKillable(me, false, false)", "forgeBinding": "EntitySetAsKillable", "evidence": "native-decompile", "note": "ForgeFSE forwards both retail booleans"},
     {"seq": 3, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me,0)", "argsKnown": true, "lua": "quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)", "forgeBinding": "EntitySetAsToAddToComboMultiplierWhenHit", "evidence": "native-decompile", "note": ""},
     {"seq": 4, "function": "Init", "kind": "call", "native": "GSI->SetIsPushableByHero(ME_THING,0)", "argsKnown": true, "lua": "me:SetIsPushableByHero(false)", "forgeBinding": "SetIsPushableByHero", "evidence": "native-decompile", "note": ""},
     {"seq": 5, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsUseMovementInActions(me,0)", "argsKnown": true, "lua": "quest:EntitySetAsUseMovementInActions(me, false)", "forgeBinding": "EntitySetAsUseMovementInActions", "evidence": "native-decompile", "note": ""},
@@ -52,7 +56,7 @@
     {"seq": 7, "function": "Main", "kind": "wait", "native": "while(!StartScriptingEntity(me,res,4)) NewScriptFrame", "argsKnown": true, "lua": "NOVI.acquire(quest, me, MAIN_CONTROL_PRIORITY)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
     {"seq": 8, "function": "Main", "kind": "call", "native": "GSI->GetThingWithScriptName(\"NOVI_AffairWife\")", "argsKnown": true, "lua": "quest:GetThingWithScriptName(SCRIPT_NAME_WIFE)", "forgeBinding": "GetThingWithScriptName", "evidence": "native-decompile", "note": "stored in apStack_98"},
     {"seq": 9, "function": "Main", "kind": "call", "native": "GSI->GetThingWithScriptName(\"NOVI_AffairMan\")", "argsKnown": true, "lua": "quest:GetThingWithScriptName(SCRIPT_NAME_MAN)", "forgeBinding": "GetThingWithScriptName", "evidence": "native-decompile", "note": "stored in aaStack_94"},
-    {"seq": 10, "function": "Main", "kind": "branch", "native": "IsDistanceFromThingToPositionOver(me, me.GetHomePos(), 0.1)", "argsKnown": true, "lua": "NOVI.distance_from_thing_to_position_over(me, me:GetHomePos(), HOME_LEAVE_TOLERANCE)", "forgeBinding": "GetPos", "evidence": "native-decompile", "note": "CScriptThing slot 0x1c = GetHomePos; squared 3D Lua fallback, exact boundary convention uncertain"},
+    {"seq": 10, "function": "Main", "kind": "branch", "native": "IsDistanceFromThingToPositionOver(me, me.GetHomePos(), 0.1)", "argsKnown": true, "lua": "NOVI.distance_from_thing_to_position_over(me, me:GetHomePos(), HOME_LEAVE_TOLERANCE)", "forgeBinding": "IsDistanceFromPositionOver", "evidence": "native-decompile + complete helper prototype", "note": "CScriptThing slot 0x1c = GetHomePos; binding directly calls retail helper 0x00CBE45C"},
     {"seq": 11, "function": "Main", "kind": "wait", "native": "while(IsDistanceFromThingToPositionOver(res.thing, home, 2.0)) { NewScriptFrame; res._MoveToPosition_(home,0,0,0,1..); wait IsPerformingScriptTask }", "argsKnown": true, "lua": "walk_home -> move_until_within", "forgeBinding": "MoveToPosition|IsPerformingScriptTask", "evidence": "native-decompile", "note": ""},
     {"seq": 12, "function": "Main", "kind": "branch", "native": "me.MsgIsHitBy(HERO) || (me.MsgIsHitByAnySpecialAbilityFrom(HERO) && !me.MsgIsHitBySpecialAbilityFrom(14,HERO))", "argsKnown": true, "lua": "hit_by_hero(me)", "forgeBinding": "MsgIsHitByHero|MsgIsHitByAnySpecialAbilityFromHero|MsgIsHitByHeroSpecialAbility", "evidence": "asm 0xdb217c-0xdb21f2", "note": "CScriptThing slots 0x54/0xa8/0xa4; push 0xe at 0xdb21ea directly proves ability 14"},
     {"seq": 13, "function": "Main", "kind": "state-write", "native": "PARENT+0x93 (TalkingToWoman) = 1", "argsKnown": true, "lua": "F.set(quest, F.TalkingToWoman, true)", "forgeBinding": "n/a", "evidence": "native-decompile", "note": "HIT branch"},
@@ -82,20 +86,12 @@
     {"seq": 37, "function": "Main", "kind": "wait", "native": "while(IsDistanceFromThingToPositionOver(res.thing, pos, 2.0)) { NewScriptFrame; res._MoveToPosition_(pos,0,1,0,1..); wait IsPerformingScriptTask }", "argsKnown": true, "lua": "move_until_within(..., RUN_OFF_ARRIVE_RADIUS, MOVE_RUN)", "forgeBinding": "MoveToPosition|IsPerformingScriptTask", "evidence": "native-decompile", "note": ""},
     {"seq": 38, "function": "Main", "kind": "cleanup", "native": "HasPhysicsMesh/Clear idiom on the scripted resource (release)", "argsKnown": true, "lua": "NOVI.release(quest, me)", "forgeBinding": "host-managed", "evidence": "native-disassembly + scripted-resource-lifecycle-pattern", "note": "same concrete resource cleanup idiom that precedes every StartScriptingEntity; here no re-acquire follows"},
     {"seq": 39, "function": "Main", "kind": "wait", "native": "while(IsCameraPosOnScreen(me.GetPos())) NewScriptFrame", "argsKnown": true, "lua": "while quest:IsCameraPosOnScreen(me:GetPos()) do NOVI.frame", "forgeBinding": "IsCameraPosOnScreen", "evidence": "native-decompile", "note": ""},
-    {"seq": 40, "function": "Main", "kind": "call", "native": "GSI->RemoveThing(me, false, true)", "argsKnown": true, "lua": "quest:RemoveThing(me)", "forgeBinding": "RemoveThing", "evidence": "asm 0xdb2959-0xdb2965", "note": "push 1, push 0, and ME_THING precede GSI slot 0x1b0; the binding exposes only the thing"},
+    {"seq": 40, "function": "Main", "kind": "call", "native": "GSI->RemoveThing(me, false, true)", "argsKnown": true, "lua": "quest:RemoveThing(me, false, true)", "forgeBinding": "RemoveThing", "evidence": "asm 0xdb2959-0xdb2965", "note": "push 1, push 0, and ME_THING precede GSI slot 0x1b0; Forge passes both operands"},
     {"seq": 41, "function": "Main", "kind": "cleanup", "native": "LAB_00db296b..2986: DestroyLocal(things); ~MovieBase(main resource); return", "argsKnown": true, "lua": "NOVI.release(quest, me); return", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "normal exit of Main"},
     {"seq": 42, "function": "Main", "kind": "wait", "native": "NewScriptFrame + IsTerminating -> loop", "argsKnown": true, "lua": "NOVI.frame at loop end", "forgeBinding": "NewScriptFrame", "evidence": "native-decompile", "note": ""}
   ],
-  "apiGaps": [
-    {"retail": "StartScriptingEntity nested priority-4 resource / explicit resource release before the off-screen wait", "reason": "ForgeFSE scheduling is host-managed", "luaLocation": "react_to_hit / talked_to_by_hero / run_off via NOVI.acquire/NOVI.release"},
-    {"retail": "EntitySetAsKillable(me, 0, 0)", "reason": "ForgeFSE binding exposes one bool", "luaLocation": "Init"},
-    {"retail": "_PlayAnimation_(name, b1..b6)", "reason": "ForgeFSE PlayAnimation exposes two optional bools; retail flag mapping unknown", "luaLocation": "receive_affection"},
-    {"retail": "~CScriptGameResourceObjectMovieBase ending the movie sequence", "reason": "implicit destructor behaviour; mapped to explicit EndMovieSequence (inference)", "luaLocation": "end_talk_cutscene"}
-  ],
+  "apiGaps": [],
   "uncertainties": [
-    "EntitySetFacingAngleTowardsThing uses a third false argument that ForgeFSE does not expose.",
-    "RemoveThing is retail (me, false, true), while the ForgeFSE binding exposes only the thing.",
-    "Retail leaves TalkingToWoman = true if the thread is terminated inside the hit/talk cutscenes; the Lua keeps that behaviour."
   ],
   "cleanupPaths": [
     {"resource": "control", "acquired": "seq 7 (main scripted resource)", "releasedOn": ["normal (after RemoveThing)", "terminate (destructor at LAB_00db2986)"], "missingOn": []},

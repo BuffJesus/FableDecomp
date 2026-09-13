@@ -1,0 +1,33 @@
+{
+  "schema": "barrel-man-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_BarrelMan",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DB5260",
+      "endExclusive": "0x00DB5307",
+      "rangeSize": 167,
+      "bytesSha256": "700D34947B365ED19535D6DB434E5BB016919EB233688BDDE9D17F0B10C855E0",
+      "instructionCount": 64,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB5330",
+      "endExclusive": "0x00DB6B23",
+      "rangeSize": 6131,
+      "bytesSha256": "093FF71957C0FC83417892E360E1B9DDE3103D49D7DA00D2C2DA1B9E5D65E8C5",
+      "instructionCount": 1744,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "Init and complete Main dispatcher",
+    "judgmentRange": "0x00DB5A88-0x00DB5ABC",
+    "thanksTarget": "0x00DB5C28",
+    "unattendedTarget": "0x00DB5AC2",
+    "terminalCleanup": "0x00DB6AC0-0x00DB6B22"
+  }
+}

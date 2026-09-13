@@ -44,9 +44,9 @@ function Init(quest, me)
   DoneThanks = false
   DisplayedGameInfo = false
   quest:EntitySetAsDamageable(me, false)
-  quest:EntitySetAsKillable(me, false)              -- retail passes a 3rd arg (0); ForgeFSE has 2
+  quest:EntitySetAsKillable(me, false, false)
   quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-  quest:SetThingHasInformation(me, false)           -- retail (me, 0, 0, 0); ForgeFSE has 2 args
+  quest:SetThingHasInformation(me, false, false, false)
   quest:SetIsPushableByHero(me, false)
   quest:EntitySetAsUseMovementInActions(me, false)
   quest:EntitySetAsScared(me, true)
@@ -56,12 +56,13 @@ end
 -- me:Speak is blocking in ForgeFSE, so the per-frame terminate checks inside the wait are host-managed.
 local function speak_if_alive(quest, me, key, selection)
   if quest:GetHealth(me) > ALIVE_HEALTH_THRESHOLD then
-    me:Speak(quest:GetHero(), key, selection or SPEAK_SELECTION)
+    return me:Speak(quest:GetHero(), key, selection or SPEAK_SELECTION) ~= false
   end
+  return true
 end
 
--- Retail movie-sequence scope object: ctor = StartMovieSequence("") + PauseAllNonScriptedEntities(1),
--- dtor = PauseAllNonScriptedEntities(0) (EndMovieSequence inside the dtor is an inference).
+-- Retail movie-sequence scope object: ctor = StartMovieSequence("") + PauseAllNonScriptedEntities(1).
+-- Forge's per-Lua-VM movie resource is explicitly released at the native scope boundary.
 local function begin_movie(quest)
   quest:StartMovieSequence()
   quest:PauseAllNonScriptedEntities(true)
@@ -73,7 +74,7 @@ end
 
 -- Retail inline "was I hit by the hero" test (same inline as NOVI_Bully / NOVI_Villager):
 --   MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(<ability>, HERO))
--- The <ability> immediate is dropped here; NOVI_Villager passes 0xe (cross-script evidence).
+-- Victim's own instruction at 0x00DBD684 pushes 0xe (Heal Life).
 local EXCLUDED_ABILITY = 0xe
 local function hit_by_hero(me)
   if me:MsgIsHitByHero() then return true end
@@ -87,7 +88,7 @@ end
 local function react_to_taunt(quest, me, bully)
   if not F.get(quest, F.VictimShake) then return true end
   F.set(quest, F.VictimShake, false)
-  quest:EntitySetFacingAngleTowardsThing(me, bully)   -- args dropped; target inferred (bully)
+  quest:EntitySetFacingAngleTowardsThing(me, bully, false)
   return true
 end
 
@@ -95,29 +96,30 @@ end
 local function thanks_setup(quest, me)
   if DoneThanks then return true end
   DoneThanks = true
-  quest:EntitySetAsScared(me, false)                  -- args dropped; value inferred (undo Init's true)
+  quest:EntitySetAsScared(me, false)                  -- exact literal 0 in the native freed-state branch
   while not F.get(quest, F.BullyRanOff) do
     if not NOVI.frame(quest, me) then return false end
   end
-  quest:SetIsPushableByHero(me, true)                 -- args dropped; value inferred (undo Init's false)
-  quest:EntitySetAsUseMovementInActions(me, true)     -- args dropped; value inferred (undo Init's false)
+  quest:SetIsPushableByHero(me, true)                 -- exact literal 1 in the native freed-state branch
+  quest:EntitySetAsUseMovementInActions(me, true)     -- exact literal 1 in the native freed-state branch
   quest:ClearThingHasInformation(me)
+  quest:Log("NOVI_PROBE Victim freed setup complete task=" .. tostring(me:IsPerformingScriptTask()))
   return true
 end
 
 -- Hero talked to me before the bully is subdued: plea inside a movie sequence.
 local function plea(quest, me, bully)
-  quest:EntitySetAsScared(me, false)                  -- args dropped; value inferred
-  quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())
+  quest:EntitySetAsScared(me, false)                  -- literal 0 at 0x00DBD23E
+  quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
   begin_movie(quest)
-  NOVI.acquire(quest, me, PLEA_PRIORITY)
+  if not NOVI.acquire(quest, me, PLEA_PRIORITY) then end_movie(quest); return false end
   if not F.get(quest, F.HeroAttackedVictim) then
-    speak_if_alive(quest, me, TEXT.PLEA)
+    if not speak_if_alive(quest, me, TEXT.PLEA) then end_movie(quest); return false end
   else
-    speak_if_alive(quest, me, TEXT.PLEA_AFTER_ATTACK)
+    if not speak_if_alive(quest, me, TEXT.PLEA_AFTER_ATTACK) then end_movie(quest); return false end
   end
   quest:EntitySetAsScared(me, true)
-  quest:EntitySetFacingAngleTowardsThing(me, bully)   -- retail (me, <thing>, 0); target inferred (bully)
+  quest:EntitySetFacingAngleTowardsThing(me, bully, false)
   end_movie(quest)
   return true
 end
@@ -125,11 +127,11 @@ end
 -- Hero talked to me after the bully is subdued: thanks.
 local function thanks(quest, me)
   begin_movie(quest)
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then end_movie(quest); return false end
   if not F.get(quest, F.HeroAttackedVictim) then
-    speak_if_alive(quest, me, TEXT.THANKS)
+    if not speak_if_alive(quest, me, TEXT.THANKS) then end_movie(quest); return false end
   else
-    speak_if_alive(quest, me, TEXT.THANKS_AFTER_HIT)
+    if not speak_if_alive(quest, me, TEXT.THANKS_AFTER_HIT) then end_movie(quest); return false end
   end
   end_movie(quest)
   return true
@@ -139,7 +141,7 @@ end
 local function show_hitting_friends_info(quest, me)
   if DisplayedGameInfo then return true end
   local key = TEXT.INSTRUCTION_HITTING_FRIENDS_PC
-  if NOVI.is_xbox() then key = TEXT.INSTRUCTION_HITTING_FRIENDS end
+  if NOVI.is_xbox(quest) then key = TEXT.INSTRUCTION_HITTING_FRIENDS end
   quest:DisplayGameInfo(key)
   while not quest:MsgIsGameInfoClickedPast() do
     if not NOVI.frame(quest, me) then return false end
@@ -151,37 +153,40 @@ end
 local function handle_talk(quest, me, bully)
   if not me:IsTalkedToByHero() then return true end
   if not F.get(quest, F.BullySubdued) then
-    plea(quest, me, bully)
+    if not plea(quest, me, bully) then return false end
   else
-    thanks(quest, me)
+    if not thanks(quest, me) then return false end
   end
   return show_hitting_friends_info(quest, me)
 end
 
 -- First hit by the hero: CS_OAKVALEINTRO_BRATHIT cutscene (HERO + BRAT).
 local function brat_hit_cutscene(quest, me, bully)
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then return false end
   local hero = quest:GetHero()
-  NOVI.acquire(quest, hero, ACQUIRE_PRIORITY)       -- retail StartScriptingEntity(GetHero(), ...)
+  if not NOVI.acquire(quest, hero, ACQUIRE_PRIORITY) then return false end
   local actors = { HERO = hero, BRAT = me }
   begin_movie(quest)
   quest:FixMovieSequenceCamera(true)
   quest:RunCutsceneWithSetup(CS_BRATHIT, actors, {})
   quest:FixMovieSequenceCamera(false)
   quest:ClearThingHasInformation(me)
-  quest:EntitySetFacingAngleTowardsThing(me, bully)   -- retail (me, <thing>, 0); target inferred (bully)
+  quest:EntitySetFacingAngleTowardsThing(me, bully, false)
   end_movie(quest)
+  -- Retail 0x00DBD9BF destroys the nested Hero scripted-resource handle here;
+  -- the victim's outer handle at [esp+0x10] remains live for the main loop.
+  NOVI.release(quest, hero)
   return true
 end
 
 -- Later hits: victim + bully exchange (or the victim alone once the bully is gone).
 local function evil_bros_exchange(quest, me)
-  local conv = quest:AddNewConversation(me, false, false)   -- retail args dropped
+  local conv = quest:AddNewConversation(me, false, false)   -- exact retail owner/false/false tuple
   local bully = quest:GetThingWithScriptName(BULLY_SCRIPT_NAME)
   if not bully:IsAlive() then
     begin_movie(quest)
-    NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
-    speak_if_alive(quest, me, TEXT.EVIL_BROS, SPEAK_SELECTION_EVIL_BROS)
+    if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then end_movie(quest); return false end
+    if not speak_if_alive(quest, me, TEXT.EVIL_BROS, SPEAK_SELECTION_EVIL_BROS) then end_movie(quest); return false end
     end_movie(quest)
     return true
   end
@@ -194,7 +199,7 @@ end
 local function handle_hit(quest, me, bully)
   if not hit_by_hero(me) then return true end
   local hero = quest:GetHero()
-  -- two ally calls with dropped args; NOVI_Villager shows (me, hero) then (hero, me)
+  -- retail 0x00DBD6FC-0x00DBD722 proves reciprocal (me, hero), then (hero, me)
   quest:EntitySetThingAsAllyOfThing(me, hero)
   quest:EntitySetThingAsAllyOfThing(hero, me)
   Deeds.add_bad(quest, me, BAD_DEED_HIT_VICTIM)
@@ -209,8 +214,8 @@ end
 -- The bully set VictimComplainsAboutLosingTeddy; complain once, then clear it so he continues.
 local function complain_about_teddy(quest, me)
   if not F.get(quest, F.VictimComplainsAboutLosingTeddy) then return true end
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
-  speak_if_alive(quest, me, TEXT.EVIL_BROS_10)
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then return false end
+  if not speak_if_alive(quest, me, TEXT.EVIL_BROS_10) then return false end
   F.set(quest, F.VictimComplainsAboutLosingTeddy, false)
   return true
 end
@@ -223,13 +228,16 @@ function Main(quest, me)
     if not F.get(quest, F.BullySubdued) then
       react_to_taunt(quest, me, bully)
     else
-      if not thanks_setup(quest, me) then return end
+      if not thanks_setup(quest, me) then break end
     end
-    if not handle_talk(quest, me, bully) then return end
-    handle_hit(quest, me, bully)
-    complain_about_teddy(quest, me)
-    if not NOVI.frame(quest, me) then return end
+    if not handle_talk(quest, me, bully) then break end
+    if not handle_hit(quest, me, bully) then break end
+    if not complain_about_teddy(quest, me) then break end
+    if not NOVI.frame(quest, me) then break end
   end
-  -- retail never releases the scripted resource or removes its conversations on termination;
-  -- the movie scope objects unwind via their destructors only.
+  -- Retail reaches its function epilogue here, where the stack-owned scripted resource is
+  -- destroyed and relinquishes control. The Lua host has no C++ stack destructor, so mirror that
+  -- ownership edge explicitly; otherwise the rescued child remains controlled across the raid
+  -- section swap and can continue following the Hero in the burned town.
+  NOVI.release(quest, me)
 end

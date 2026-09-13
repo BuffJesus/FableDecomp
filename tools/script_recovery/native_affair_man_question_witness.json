@@ -1,0 +1,80 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "97cc557089b191ae9eb7424c89c8869dc50f646534fa0cf931c073bc39bf0c44",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 19761964,
+      "size": 46,
+      "sha256": "695d3d796d090d14748f0f0d7facdb79b031868fc9e53f2c1263a01b8e40b231"
+    },
+    {
+      "address": 19669384,
+      "size": 28,
+      "sha256": "74618b3b7448d6347166903495deb42cc3957ebe5af65f35f72f4df921a7ccae"
+    },
+    {
+      "address": 19669356,
+      "size": 27,
+      "sha256": "121370ea9340eed448e20880e489efdd3a78a4a87ffa5090f9f3bf7eb3676512"
+    },
+    {
+      "address": 19060494,
+      "size": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    }
+  ],
+  "contracts": {
+    "GiveHeroYesNoQuestion": {
+      "name": "GiveHeroYesNoQuestion",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "question",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "button1",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "button2",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "button3",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "b5",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gives hero yes no question."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->GiveHeroYesNoQuestion\r\n                        (pCVar20,&ppuStack_fc,aCStack_e4,&uStack_f4,1);",
+      "new": "GSI->GiveHeroYesNoQuestion(\"TEXT_QST_048_AFFAIRMAN_QUESTION_WILL_YOU_TELL\",\"TEXT_OBJECT_HERO_ANSWER_YES\",\"TEXT_OBJECT_HERO_ANSWER_NO\",\"\",true);",
+      "count": 1
+    }
+  ],
+  "review": "DB12BA slot1C8 receives questionstack70,yes7C,no94,empty84,true. Native stringconstructors1258/126B/127E/128E pin labels. Host LuaQuestState.cpp2368 forwards fourstrings and optionalb5, returnsvoid; answer polled separately. Preserve source constructors/destructors and subsequent answer loop.",
+  "unresolved": [
+    "Answer loop and resource cleanup"
+  ]
+}

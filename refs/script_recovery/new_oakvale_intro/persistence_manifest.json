@@ -1,5 +1,5 @@
 {
-  "schema": "fable-script-persistence-manifest/0.1",
+  "schema": "fable-script-persistence-manifest/0.2",
   "script": "Q_NewOakValeIntro",
   "persistedByRetail": [
     "AttackOver"
@@ -25,7 +25,7 @@
       "name": "StopTimeIndex",
       "type": "int",
       "retailOffset": "0x4c",
-      "initValue": "0",
+      "initValue": "nil",
       "survivesSaveLoad": false,
       "retailPersistence": "reset by Init on load",
       "writtenBy": [],
@@ -86,7 +86,7 @@
       "name": "DadOfferedRewards",
       "type": "bool",
       "retailOffset": "0x53",
-      "initValue": "false",
+      "initValue": "nil",
       "survivesSaveLoad": false,
       "retailPersistence": "reset by Init on load",
       "writtenBy": [],
@@ -100,7 +100,12 @@
       "initValue": "0",
       "survivesSaveLoad": false,
       "retailPersistence": "reset by Init on load",
-      "writtenBy": [],
+      "writtenBy": [
+        "NOVI_AffairWife",
+        "NOVI_BarrelMan",
+        "NOVI_Bully",
+        "NOVI_TeddyGirl"
+      ],
       "readBy": [
         "NOVI_Guard",
         "NOVI_LiveFather",
@@ -115,8 +120,22 @@
       "initValue": "0",
       "survivesSaveLoad": false,
       "retailPersistence": "reset by Init on load",
-      "writtenBy": [],
+      "writtenBy": [
+        "NOVI_AffairMan",
+        "NOVI_AffairWife",
+        "NOVI_AffairWoman",
+        "NOVI_BarrelMan",
+        "NOVI_BarrelThug",
+        "NOVI_BookTrader",
+        "NOVI_Bully",
+        "NOVI_LiveFather",
+        "NOVI_TeddyGirl",
+        "NOVI_Theresa",
+        "NOVI_Victim",
+        "NOVI_Villager"
+      ],
       "readBy": [
+        "NOVI_BarrelMan",
         "NOVI_Guard",
         "NOVI_LiveFather",
         "NOVI_Villager"
@@ -501,7 +520,7 @@
       "name": "lastVillagerSpeechIdx",
       "type": "int",
       "retailOffset": "0x98",
-      "initValue": "0",
+      "initValue": "nil",
       "survivesSaveLoad": false,
       "retailPersistence": "reset by Init on load",
       "writtenBy": [
@@ -521,6 +540,9 @@
       "retailPersistence": "reset by Init on load",
       "writtenBy": [],
       "readBy": [
+        "NOVI_AffairWife",
+        "NOVI_BookTrader",
+        "NOVI_Bully",
         "NOVI_Villager"
       ],
       "phasesWhereItMatters": [
@@ -536,13 +558,57 @@
       "retailPersistence": "reset by Init on load",
       "writtenBy": [],
       "readBy": [
-        "NOVI_BarrelMan"
+        "NOVI_BarrelMan",
+        "NOVI_BarrelThug"
+      ],
+      "phasesWhereItMatters": []
+    },
+    {
+      "name": "WhichBadDeedsPerformed",
+      "type": "bool[5]",
+      "retailOffset": "0xfc..0x100",
+      "initValue": "false[5]",
+      "survivesSaveLoad": false,
+      "retailPersistence": "reset by Init on load",
+      "writtenBy": [
+        "NOVI_AffairMan",
+        "NOVI_AffairWife",
+        "NOVI_AffairWoman",
+        "NOVI_BarrelMan",
+        "NOVI_BarrelThug",
+        "NOVI_BookTrader",
+        "NOVI_Bully",
+        "NOVI_LiveFather",
+        "NOVI_TeddyGirl",
+        "NOVI_Theresa",
+        "NOVI_Victim",
+        "NOVI_Villager"
+      ],
+      "readBy": [
+        "NOVI_Guard"
       ],
       "phasesWhereItMatters": []
     }
   ],
   "masterData": [
-    "TeddySolution (CQ_SunnyvaleMasterData+0x54, written by NOVI_TeddyGirl/NOVI_Bully paths)"
+    {
+      "script": "NOVI_TeddyGirl",
+      "field": "TeddySolution",
+      "offset": "0x54",
+      "op": "write",
+      "value": "B",
+      "where": "GivenTeddy 0x00DB0600",
+      "evidence": "native-decompile"
+    },
+    {
+      "script": "NOVI_TeddyGirl",
+      "field": "TeddySolution",
+      "offset": "0x54",
+      "op": "write",
+      "value": "C",
+      "where": "Main teddy_ruined",
+      "evidence": "native-decompile"
+    }
   ],
   "note": "Retail persists only AttackOver. Everything else restarts from Init on load; a save during the childhood therefore resumes the childhood from its beginning of state (entities re-run their Init/Main), which is retail behaviour."
 }

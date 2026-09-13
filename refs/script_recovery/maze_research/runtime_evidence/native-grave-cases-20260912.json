@@ -1,0 +1,1453 @@
+{
+  "scope": "Full native EmptyGrave.Main control flow; resource/engine/scheduling doubles.\n\nLookup returns a valid empty CScriptThing wrapper, exercising null-ref copy paths.\nNo engine resource internals, allocation failure, macro playback or nested task runs.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "options": {
+        "good": false,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 1,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 1,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": false,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 2,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 2,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": false,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 3,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 3,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": false,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 4,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 4,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": false,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 5,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "resource.new"
+        ],
+        [
+          "hero"
+        ],
+        [
+          "acquire",
+          4
+        ],
+        [
+          "map.new"
+        ],
+        [
+          "map.actor",
+          "HERO"
+        ],
+        [
+          "movie.new"
+        ],
+        [
+          "movie.start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "skippable",
+          true
+        ],
+        [
+          "spawn",
+          "UnLimboSword",
+          ""
+        ],
+        [
+          "term",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie.destroy"
+        ],
+        [
+          "map.destroy"
+        ],
+        [
+          "resource.release"
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 5,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": false,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 6,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "resource.new"
+        ],
+        [
+          "hero"
+        ],
+        [
+          "acquire",
+          4
+        ],
+        [
+          "map.new"
+        ],
+        [
+          "map.actor",
+          "HERO"
+        ],
+        [
+          "movie.new"
+        ],
+        [
+          "movie.start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "skippable",
+          true
+        ],
+        [
+          "spawn",
+          "UnLimboSword",
+          ""
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "macro",
+          "CS_GET_SWORD_OF_AEONS_REDEEM",
+          false,
+          true
+        ],
+        [
+          "skippable",
+          false
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie.destroy"
+        ],
+        [
+          "map.destroy"
+        ],
+        [
+          "resource.release"
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "deactivate",
+          "MazeResearch",
+          0
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": true,
+      "queries": 6,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": false,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 7,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "resource.new"
+        ],
+        [
+          "hero"
+        ],
+        [
+          "acquire",
+          4
+        ],
+        [
+          "map.new"
+        ],
+        [
+          "map.actor",
+          "HERO"
+        ],
+        [
+          "movie.new"
+        ],
+        [
+          "movie.start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "skippable",
+          true
+        ],
+        [
+          "spawn",
+          "UnLimboSword",
+          ""
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "macro",
+          "CS_GET_SWORD_OF_AEONS_REDEEM",
+          false,
+          true
+        ],
+        [
+          "skippable",
+          false
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie.destroy"
+        ],
+        [
+          "map.destroy"
+        ],
+        [
+          "resource.release"
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "deactivate",
+          "MazeResearch",
+          0
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": true,
+      "queries": 7,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 1,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 1,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 2,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 2,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 3,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 3,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 4,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 4,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 5,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "resource.new"
+        ],
+        [
+          "hero"
+        ],
+        [
+          "acquire",
+          4
+        ],
+        [
+          "map.new"
+        ],
+        [
+          "map.actor",
+          "HERO"
+        ],
+        [
+          "movie.new"
+        ],
+        [
+          "movie.start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "skippable",
+          true
+        ],
+        [
+          "spawn",
+          "UnLimboSword",
+          ""
+        ],
+        [
+          "term",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie.destroy"
+        ],
+        [
+          "map.destroy"
+        ],
+        [
+          "resource.release"
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 5,
+      "frames": 0
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 6,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "resource.new"
+        ],
+        [
+          "hero"
+        ],
+        [
+          "acquire",
+          4
+        ],
+        [
+          "map.new"
+        ],
+        [
+          "map.actor",
+          "HERO"
+        ],
+        [
+          "movie.new"
+        ],
+        [
+          "movie.start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "skippable",
+          true
+        ],
+        [
+          "spawn",
+          "UnLimboSword",
+          ""
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "macro",
+          "CS_GET_SWORD_OF_AEONS_SAINT",
+          false,
+          true
+        ],
+        [
+          "skippable",
+          false
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie.destroy"
+        ],
+        [
+          "map.destroy"
+        ],
+        [
+          "resource.release"
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "deactivate",
+          "MazeResearch",
+          0
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": true,
+      "queries": 6,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 7,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "resource.new"
+        ],
+        [
+          "hero"
+        ],
+        [
+          "acquire",
+          4
+        ],
+        [
+          "map.new"
+        ],
+        [
+          "map.actor",
+          "HERO"
+        ],
+        [
+          "movie.new"
+        ],
+        [
+          "movie.start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "skippable",
+          true
+        ],
+        [
+          "spawn",
+          "UnLimboSword",
+          ""
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "macro",
+          "CS_GET_SWORD_OF_AEONS_SAINT",
+          false,
+          true
+        ],
+        [
+          "skippable",
+          false
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie.destroy"
+        ],
+        [
+          "map.destroy"
+        ],
+        [
+          "resource.release"
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "deactivate",
+          "MazeResearch",
+          0
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": true,
+      "queries": 7,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 7,
+        "macro_cancel": true
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "resource.new"
+        ],
+        [
+          "hero"
+        ],
+        [
+          "acquire",
+          4
+        ],
+        [
+          "map.new"
+        ],
+        [
+          "map.actor",
+          "HERO"
+        ],
+        [
+          "movie.new"
+        ],
+        [
+          "movie.start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "skippable",
+          true
+        ],
+        [
+          "spawn",
+          "UnLimboSword",
+          ""
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "macro",
+          "CS_GET_SWORD_OF_AEONS_SAINT",
+          false,
+          true
+        ],
+        [
+          "skippable",
+          false
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie.destroy"
+        ],
+        [
+          "map.destroy"
+        ],
+        [
+          "resource.release"
+        ],
+        [
+          "marker.remove"
+        ],
+        [
+          "deactivate",
+          "MazeResearch",
+          0
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": true,
+      "queries": 6,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": false,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 3,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 3,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": true,
+        "used": true,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 4,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": true,
+      "queries": 4,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": false,
+        "position": 1701,
+        "result": 2,
+        "stop_at": 3,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 3,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1700,
+        "result": 2,
+        "stop_at": 4,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 4,
+      "frames": 1
+    },
+    {
+      "options": {
+        "good": true,
+        "read": true,
+        "taken": false,
+        "used": true,
+        "position": 1701,
+        "result": 1,
+        "stop_at": 4,
+        "macro_cancel": false
+      },
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "marker.add",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "lookup",
+          "GoodSword"
+        ],
+        [
+          "limbo",
+          true,
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_sword_taken": false,
+      "queries": 4,
+      "frames": 1
+    }
+  ]
+}

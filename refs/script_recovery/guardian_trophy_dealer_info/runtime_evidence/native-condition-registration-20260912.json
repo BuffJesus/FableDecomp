@@ -1,0 +1,126 @@
+{
+  "scope": "Execute native alive-condition registration, cloning, replacement and teardown.\n\nF35B10, native parent lookup, CB7920, F35A10/F35AA0, CDF130 and counted\ndestructors execute. Allocation/free, base teardown and Thing IsAlive are doubles.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "registrations": 1,
+      "source_first": false,
+      "alive": false,
+      "events": [
+        "registered_refs_2",
+        "alive_0",
+        "condition_cleared"
+      ],
+      "allocations": 2,
+      "frees": 3,
+      "object_deletes": 1
+    },
+    {
+      "registrations": 1,
+      "source_first": false,
+      "alive": true,
+      "events": [
+        "registered_refs_2",
+        "alive_1",
+        "condition_cleared"
+      ],
+      "allocations": 2,
+      "frees": 3,
+      "object_deletes": 1
+    },
+    {
+      "registrations": 1,
+      "source_first": true,
+      "alive": false,
+      "events": [
+        "registered_refs_2",
+        "source_released",
+        "alive_0",
+        "condition_cleared"
+      ],
+      "allocations": 2,
+      "frees": 3,
+      "object_deletes": 1
+    },
+    {
+      "registrations": 1,
+      "source_first": true,
+      "alive": true,
+      "events": [
+        "registered_refs_2",
+        "source_released",
+        "alive_1",
+        "condition_cleared"
+      ],
+      "allocations": 2,
+      "frees": 3,
+      "object_deletes": 1
+    },
+    {
+      "registrations": 2,
+      "source_first": false,
+      "alive": false,
+      "events": [
+        "registered_refs_2",
+        "registered_refs_2",
+        "alive_0",
+        "condition_cleared"
+      ],
+      "allocations": 4,
+      "frees": 5,
+      "object_deletes": 1
+    },
+    {
+      "registrations": 2,
+      "source_first": false,
+      "alive": true,
+      "events": [
+        "registered_refs_2",
+        "registered_refs_2",
+        "alive_1",
+        "condition_cleared"
+      ],
+      "allocations": 4,
+      "frees": 5,
+      "object_deletes": 1
+    },
+    {
+      "registrations": 2,
+      "source_first": true,
+      "alive": false,
+      "events": [
+        "registered_refs_2",
+        "registered_refs_2",
+        "source_released",
+        "alive_0",
+        "condition_cleared"
+      ],
+      "allocations": 4,
+      "frees": 5,
+      "object_deletes": 1
+    },
+    {
+      "registrations": 2,
+      "source_first": true,
+      "alive": true,
+      "events": [
+        "registered_refs_2",
+        "registered_refs_2",
+        "source_released",
+        "alive_1",
+        "condition_cleared"
+      ],
+      "allocations": 4,
+      "frees": 5,
+      "object_deletes": 1
+    }
+  ],
+  "native_bytes": {
+    "0xf35b10": "8b4424048b1150ff520c8bc8e8ff1dd8ffc20400",
+    "0xcb7920": "8b492ce9e8e02700",
+    "0xf35a10": "568bf18b4c24088b01ff5004508d4e2ce87b0000005ec20400",
+    "0xf35aa0": "568bf18b460485c0741cff088b460483380075128b4808ff50048b460450e8f98eccff83c4048b44240885c0c74604000000008906742c6a0ce83c8fccff83c40485c074198b0ec70001000000c74004905af3008948088946045ec2040033c08946045ec2",
+    "0xcdf130": "56576a108bf9e8dff8f1ff8bf083c40485f6741783c704578d4e04c706f0322c01e83acd7cff5f8bc65ec35f33c05ec3",
+    "0xcdf160": "568bf18d4e04c706f0322c01e8cfb67cfff644240801c706f42f2c01740956e838f8f1ff83c4048bc65ec20400"
+  }
+}

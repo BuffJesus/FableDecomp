@@ -1,0 +1,89 @@
+{
+  "scope": "Native conversation-creation bool operands and actual vendor sol conversion experiment; not audible-output proof. Guard EBX is zeroed at DAC76B and has no local reassignment before DAC8F4 on this path.",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "native": [
+    {
+      "address": "0xdac760",
+      "bytes": "81ec480100005355568bf133db578d4c2410895c2434",
+      "disassembly": [
+        "00dac760: sub esp, 0x148",
+        "00dac766: push ebx",
+        "00dac767: push ebp",
+        "00dac768: push esi",
+        "00dac769: mov esi, ecx",
+        "00dac76b: xor ebx, ebx",
+        "00dac76d: push edi",
+        "00dac76e: lea ecx, [esp + 0x10]",
+        "00dac772: mov dword ptr [esp + 0x34], ebx"
+      ]
+    },
+    {
+      "address": "0xdac8ec",
+      "bytes": "8b4e048b11535357ff92b0050000",
+      "disassembly": [
+        "00dac8ec: mov ecx, dword ptr [esi + 4]",
+        "00dac8ef: mov edx, dword ptr [ecx]",
+        "00dac8f1: push ebx",
+        "00dac8f2: push ebx",
+        "00dac8f3: push edi",
+        "00dac8f4: call dword ptr [edx + 0x5b0]"
+      ]
+    },
+    {
+      "address": "0xdad8f2",
+      "bytes": "8b4e048b116a006a0057ff92b0050000",
+      "disassembly": [
+        "00dad8f2: mov ecx, dword ptr [esi + 4]",
+        "00dad8f5: mov edx, dword ptr [ecx]",
+        "00dad8f7: push 0",
+        "00dad8f9: push 0",
+        "00dad8fb: push edi",
+        "00dad8fc: call dword ptr [edx + 0x5b0]"
+      ]
+    },
+    {
+      "address": "0xdae4c2",
+      "bytes": "8b4e048b116a006a0057ff92b0050000",
+      "disassembly": [
+        "00dae4c2: mov ecx, dword ptr [esi + 4]",
+        "00dae4c5: mov edx, dword ptr [ecx]",
+        "00dae4c7: push 0",
+        "00dae4c9: push 0",
+        "00dae4cb: push edi",
+        "00dae4cc: call dword ptr [edx + 0x5b0]"
+      ]
+    },
+    {
+      "address": "0xdae694",
+      "bytes": "8b4e048b016a006a0057ff90b0050000",
+      "disassembly": [
+        "00dae694: mov ecx, dword ptr [esi + 4]",
+        "00dae697: mov eax, dword ptr [ecx]",
+        "00dae699: push 0",
+        "00dae69b: push 0",
+        "00dae69d: push edi",
+        "00dae69e: call dword ptr [eax + 0x5b0]"
+      ]
+    }
+  ],
+  "sol_results": {
+    "false_false": [
+      false,
+      false
+    ],
+    "zero_zero": [
+      true,
+      true
+    ]
+  },
+  "inputs": [
+    {
+      "path": "work\\runtime-20260912-video-comparison\\prove_sol_conversation_bools.cpp",
+      "sha256": "0bb969d868ed0438b201fdad025f4560a6d2f5335791d59887066c042a5f4b3d"
+    },
+    {
+      "path": "work\\meet-sister-clean-runtime-check-20260912-d\\conversation-bools.log",
+      "sha256": "e30560e96018f6fda078d2dfaa320bd63859988cf58978dca1056c252defccb0"
+    }
+  ]
+}

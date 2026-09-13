@@ -1,0 +1,12 @@
+{
+  "__meta__": {
+    "function": "Main",
+    "kind": "entity",
+    "source": "NewOakValeIntro/Entities/OVI_DeadFather.lua",
+    "expect": ["NewScriptFrame", "AcquireControl", "ReleaseControl"],
+    "forbid": ["EntityTeleportToThing", "PlayLoopingAnimation", "MiniMapRemoveMarker"],
+    "note": "termination reported by the blocking control-acquisition wrapper unwinds before corpse setup"
+  },
+  "Quest.NewScriptFrame": [true],
+  "Entity.AcquireControl": [false]
+}

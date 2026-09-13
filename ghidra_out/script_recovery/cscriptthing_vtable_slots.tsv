@@ -1,0 +1,80 @@
+vtable_base	offset	slot_address	target_address	name	mangled	manifest_name	forge_scope
+01238c8c	0x0	01238c8c	004ab170	scalar_deleting_destructor	`scalar_deleting_destructor'	`scalar_deleting_destructor'	
+01238c8c	0x4	01238c90	004aa8b0	GetName	?GetName@CScriptThing@@UBEABVCCharString@@XZ	?GetName@CScriptThing@@UBEABVCCharString@@XZ	
+01238c8c	0x8	01238c94	004aa8d0	GetDefName	?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ	?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ	Entity
+01238c8c	0xc	01238c98	004aa900	GetDataString	?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ	?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ	Entity
+01238c8c	0x10	01238c9c	004aa930	SetDataString	?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z	?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z	
+01238c8c	0x14	01238ca0	004aa940	GetFocalPos	?GetFocalPos@CScriptThing@@UBE?AVC3DVector@@XZ	CScriptThing::GetFocalPos	
+01238c8c	0x18	01238ca4	004aa980	GetPos	?GetPos@CScriptThing@@UBEABVC3DVector@@XZ	?GetPos@CScriptThing@@UBEABVC3DVector@@XZ	Entity
+01238c8c	0x1c	01238ca8	004aa9a0	GetHomePos	?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ	?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ	Entity
+01238c8c	0x20	01238cac	004aa9e0	GetCurrentMapName	?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ	CScriptThing::GetCurrentMapName	Entity
+01238c8c	0x24	01238cb0	004aaa10	GetHomeMapName	?GetHomeMapName@CScriptThing@@UBE?AVCCharString@@XZ	CScriptThing::GetHomeMapName	Entity
+01238c8c	0x28	01238cb4	004aaa40	GetAngleXY	?GetAngleXY@CScriptThing@@UBEMXZ	?GetAngleXY@CScriptThing@@UBEMXZ	Entity
+01238c8c	0x2c	01238cb8	004aaa60	GetPThing	?GetPThing@CScriptThing@@UBEPAVCThing@@XZ	?GetPThing@CScriptThing@@UBEPAVCThing@@XZ	
+01238c8c	0x30	01238cbc	004aaa70	GetPThingUniqueID	?GetPThingUniqueID@CScriptThing@@UBE_KXZ	CScriptThing::GetPThingUniqueID	
+01238c8c	0x34	01238cc0	004aaa90	GetCurrentStateGroupType	?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ	CScriptThing::GetCurrentStateGroupType	
+01238c8c	0x38	01238cc4	004aaaa0	GetCurrentScriptPriority	?GetCurrentScriptPriority@CScriptThing@@UBE?AW4EScriptAIPriority@@XZ	CScriptThing::GetCurrentScriptPriority	
+01238c8c	0x3c	01238cc8	004aaab0	IsSneaking	?IsSneaking@CScriptThing@@UBE_NXZ	CScriptThing::IsSneaking	Entity
+01238c8c	0x40	01238ccc	004aaac0	IsAwareOfHero	?IsAwareOfHero@CScriptThing@@UBE_NXZ	CScriptThing::IsAwareOfHero	Entity
+01238c8c	0x44	01238cd0	004aaad0	MsgIsTriggeredBy	?MsgIsTriggeredBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsTriggeredBy	
+01238c8c	0x48	01238cd4	004aaaf0	MsgIsKilledBy	?MsgIsKilledBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsKilledBy	Entity
+01238c8c	0x4c	01238cd8	004abe60	MsgWhoKilledMe	?MsgWhoKilledMe@CScriptThing@@UBE?AV1@XZ	CScriptThing::MsgWhoKilledMe	Entity
+01238c8c	0x50	01238cdc	004aab10	MsgIsUsedBy	?MsgIsUsedBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsUsedBy	
+01238c8c	0x54	01238ce0	004aab30	MsgIsHitBy	?MsgIsHitBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsHitBy	
+01238c8c	0x58	01238ce4	004aab50	MsgIsHitByWithFlourish	?MsgIsHitByWithFlourish@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsHitByWithFlourish	
+01238c8c	0x5c	01238ce8	004aab70	MsgIsHitByWithDecapitate	?MsgIsHitByWithDecapitate@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsHitByWithDecapitate	
+01238c8c	0x60	01238cec	004aab90	MsgIsHitByWithWeapon	?MsgIsHitByWithWeapon@CScriptThing@@UBE_NABVCCharString@@0@Z	CScriptThing::MsgIsHitByWithWeapon	
+01238c8c	0x64	01238cf0	004aabb0	MsgIsHitByWithProjectileWeapon	?MsgIsHitByWithProjectileWeapon@CScriptThing@@UBE_NABVCCharString@@AAM@Z	CScriptThing::MsgIsHitByWithProjectileWeapon	
+01238c8c	0x68	01238cf4	004abec0	MsgWhoHitMe	?MsgWhoHitMe@CScriptThing@@UBE?AV1@XZ	?MsgWhoHitMe@CScriptThing@@UBE?AV1@XZ	Entity
+01238c8c	0x6c	01238cf8	004aabd0	MsgIsTalkedToBy	?MsgIsTalkedToBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsTalkedToBy	
+01238c8c	0x70	01238cfc	004abf00	MsgWhoTalkedToMe	?MsgWhoTalkedToMe@CScriptThing@@UBE?AV1@XZ	CScriptThing::MsgWhoTalkedToMe	
+01238c8c	0x74	01238d00	004aabf0	MsgExpressionPerformedTo	?MsgExpressionPerformedTo@CScriptThing@@UBE_NAAVCCharString@@@Z	CScriptThing::MsgExpressionPerformedTo	Entity
+01238c8c	0x78	01238d04	004abf40	MsgWhoExpressedToMe	?MsgWhoExpressedToMe@CScriptThing@@UBE?AV1@XZ	CScriptThing::MsgWhoExpressedToMe	
+01238c8c	0x7c	01238d08	004aac10	MsgHowLongWasExpressionPerformed	?MsgHowLongWasExpressionPerformed@CScriptThing@@UBEJXZ	CScriptThing::MsgHowLongWasExpressionPerformed	Entity
+01238c8c	0x80	01238d0c	004aac20	MsgIsKnockedOutBy	?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsKnockedOutBy	
+01238c8c	0x84	01238d10	004abf80	MsgWhoKnockedMeOut	?MsgWhoKnockedMeOut@CScriptThing@@UBE?AV1@XZ	CScriptThing::MsgWhoKnockedMeOut	
+01238c8c	0x88	01238d14	004aac40	MsgReceivedMoney	?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z	CScriptThing::MsgReceivedMoney	Entity
+01238c8c	0x8c	01238d18	004aac60	MsgIsPresentedWithItem	?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z	CScriptThing::MsgIsPresentedWithItem	Entity
+01238c8c	0x90	01238d1c	004aac80	MsgReceivedInventoryItem	?MsgReceivedInventoryItem@CScriptThing@@UBE_NXZ	CScriptThing::MsgReceivedInventoryItem	Entity
+01238c8c	0x94	01238d20	004aaca0	MsgPerformedSpecialAbility	?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z	CScriptThing::MsgPerformedSpecialAbility	Entity
+01238c8c	0x98	01238d24	004aacc0	MsgPerformedAnySpecialAbility	?MsgPerformedAnySpecialAbility@CScriptThing@@UBE_NXZ	CScriptThing::MsgPerformedAnySpecialAbility	Entity
+01238c8c	0x9c	01238d28	004aace0	MsgPerformedAnyAggressiveSpecialAbility	?MsgPerformedAnyAggressiveSpecialAbility@CScriptThing@@UBE_NXZ	CScriptThing::MsgPerformedAnyAggressiveSpecialAbility	Entity
+01238c8c	0xa0	01238d2c	004aad00	MsgPerformedAnyNonAggressiveSpecialAbility	?MsgPerformedAnyNonAggressiveSpecialAbility@CScriptThing@@UBE_NXZ	CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility	Entity
+01238c8c	0xa4	01238d30	004aad20	MsgIsHitBySpecialAbilityFrom	?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z	CScriptThing::MsgIsHitBySpecialAbilityFrom	
+01238c8c	0xa8	01238d34	004aad40	MsgIsHitByAnySpecialAbilityFrom	?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsHitByAnySpecialAbilityFrom	
+01238c8c	0xac	01238d38	004aad60	MsgIsHitByAnyAggressiveSpecialAbilityFrom	?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom	
+01238c8c	0xb0	01238d3c	004aad80	MsgIsHitByAnyNonAggressiveSpecialAbilityFrom	?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom	
+01238c8c	0xb4	01238d40	004aada0	MsgOpenedChest	?MsgOpenedChest@CScriptThing@@UBE_NXZ	CScriptThing::MsgOpenedChest	Entity
+01238c8c	0xb8	01238d44	004aadc0	MsgHitEnemyWithMeleeWeapon	?MsgHitEnemyWithMeleeWeapon@CScriptThing@@UBE_NXZ	CScriptThing::MsgHitEnemyWithMeleeWeapon	
+01238c8c	0xbc	01238d48	004aade0	MsgHitFriendWithMeleeWeapon	?MsgHitFriendWithMeleeWeapon@CScriptThing@@UBE_NXZ	CScriptThing::MsgHitFriendWithMeleeWeapon	
+01238c8c	0xc0	01238d4c	004aae00	MsgHitEnemyWithRangedWeapon	?MsgHitEnemyWithRangedWeapon@CScriptThing@@UBE_NXZ	CScriptThing::MsgHitEnemyWithRangedWeapon	
+01238c8c	0xc4	01238d50	004aae20	MsgHitFriendWithRangedWeapon	?MsgHitFriendWithRangedWeapon@CScriptThing@@UBE_NXZ	CScriptThing::MsgHitFriendWithRangedWeapon	
+01238c8c	0xc8	01238d54	004aae40	MsgHitEnemyWithBareHands	?MsgHitEnemyWithBareHands@CScriptThing@@UBE_NXZ	CScriptThing::MsgHitEnemyWithBareHands	
+01238c8c	0xcc	01238d58	004aae60	MsgHitFriendWithBareHands	?MsgHitFriendWithBareHands@CScriptThing@@UBE_NXZ	CScriptThing::MsgHitFriendWithBareHands	
+01238c8c	0xd0	01238d5c	004aae80	MsgAttackedWithMeleeWeaponWithoutHittingAnything	?MsgAttackedWithMeleeWeaponWithoutHittingAnything@CScriptThing@@UBE_NXZ	CScriptThing::MsgAttackedWithMeleeWeaponWithoutHittingAnything	
+01238c8c	0xd4	01238d60	004aaea0	MsgAttackedWithBareHandsWithoutHittingAnything	?MsgAttackedWithBareHandsWithoutHittingAnything@CScriptThing@@UBE_NXZ	CScriptThing::MsgAttackedWithBareHandsWithoutHittingAnything	
+01238c8c	0xd8	01238d64	004aaec0	MsgTalkedToAnyone	?MsgTalkedToAnyone@CScriptThing@@UBE_NXZ	CScriptThing::MsgTalkedToAnyone	
+01238c8c	0xdc	01238d68	004aaee0	MsgGetThingsKilled	?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z	CScriptThing::MsgGetThingsKilled	
+01238c8c	0xe0	01238d6c	004aaf00	MsgPerformedFlourish	?MsgPerformedFlourish@CScriptThing@@UBE_NXZ	CScriptThing::MsgPerformedFlourish	
+01238c8c	0xe4	01238d70	004aaf20	MsgPerformedSuccessfulFlourish	?MsgPerformedSuccessfulFlourish@CScriptThing@@UBE_NXZ	CScriptThing::MsgPerformedSuccessfulFlourish	
+01238c8c	0xe8	01238d74	004aaf40	MsgOnMoralityChanged	?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z	CScriptThing::MsgOnMoralityChanged	
+01238c8c	0xec	01238d78	004aaf60	MsgOnCutSceneAnimEvent	?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z	?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z	
+01238c8c	0xf0	01238d7c	004aaf80	MsgIsKicked	?MsgIsKicked@CScriptThing@@UBE_NXZ	CScriptThing::MsgIsKicked	Entity
+01238c8c	0xf4	01238d80	004aafa0	IsUnconscious	?IsUnconscious@CScriptThing@@UBE_NXZ	CScriptThing::IsUnconscious	Entity
+01238c8c	0xf8	01238d84	004aafc0	IsUsable	?IsUsable@CScriptThing@@UBE_NXZ	CScriptThing::IsUsable	
+01238c8c	0xfc	01238d88	004aafe0	IsBeingCarriedBy	?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z	CScriptThing::IsBeingCarriedBy	
+01238c8c	0x100	01238d8c	004ab000	IsOpenDoor	?IsOpenDoor@CScriptThing@@UBE_NXZ	?IsOpenDoor@CScriptThing@@UBE_NXZ	Entity
+01238c8c	0x104	01238d90	004ab020	IsSummonedCreature	?IsSummonedCreature@CScriptThing@@UBE_NXZ	CScriptThing::IsSummonedCreature	
+01238c8c	0x108	01238d94	004ab040	SetAsUsable	?SetAsUsable@CScriptThing@@UAEX_N@Z	CScriptThing::SetAsUsable	Entity
+01238c8c	0x10c	01238d98	004ab060	SetFriendsWithEverythingFlag	?SetFriendsWithEverythingFlag@CScriptThing@@UAEX_N@Z	CScriptThing::SetFriendsWithEverythingFlag	Entity
+01238c8c	0x110	01238d9c	004ab080	GetActivationTriggerStatus	?GetActivationTriggerStatus@CScriptThing@@UBE_NXZ	CScriptThing::GetActivationTriggerStatus	
+01238c8c	0x114	01238da0	004ab0a0	SetActivationTriggerStatus	?SetActivationTriggerStatus@CScriptThing@@UAEX_N@Z	CScriptThing::SetActivationTriggerStatus	Entity
+01238c8c	0x118	01238da4	004ab0c0	SetToKillOnLevelUnload	?SetToKillOnLevelUnload@CScriptThing@@UAEX_N@Z	?SetToKillOnLevelUnload@CScriptThing@@UAEX_N@Z	Entity
+01238c8c	0x11c	01238da8	004ab0e0	UpdateThingAttachment	?UpdateThingAttachment@CScriptThing@@UAEXXZ	CScriptThing::UpdateThingAttachment	
+01238c8c	0x120	01238dac	004ab0f0	IncrementScriptCounter	?IncrementScriptCounter@CScriptThing@@UAEXXZ	CScriptThing::IncrementScriptCounter	
+01238c8c	0x124	01238db0	004ab100	DecrementScriptCounter	?DecrementScriptCounter@CScriptThing@@UAEXXZ	CScriptThing::DecrementScriptCounter	
+01238c8c	0x128	01238db4	004ab110	GetScriptCounter	?GetScriptCounter@CScriptThing@@UAEJXZ	CScriptThing::GetScriptCounter	
+01238c8c	0x12c	01238db8	004ab130	IsAlive	?IsAlive@CScriptThing@@UBE_NXZ	?IsAlive@CScriptThing@@UBE_NXZ	Entity
+01238c8c	0x130	01238dbc	004aa890	IsDead	?IsDead@CScriptThing@@UBE_NXZ	CScriptThing::IsDead	Entity
+01238c8c	0x134	01238dc0	004ab150	IsNull	?IsNull@CScriptThing@@UBE_NXZ	?IsNull@CScriptThing@@UBE_NXZ	Entity
+01238c8c	0x138	01238dc4	004aa8a0	IsEqualTo	?IsEqualTo@CScriptThing@@MBE_NABV1@@Z	CScriptThing::IsEqualTo	

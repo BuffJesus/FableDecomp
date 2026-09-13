@@ -1,0 +1,25 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5052,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "ec02a966cbf2b5c96c08fdfcaed4df228115b46a3feea7b238dd61e5dc2370b5",
+  "bytesSha256": "a7161d3ca19506c2cc3e7a1fe7af2b3912b879187e880a7aeb58bd79e562b368",
+  "review": "DB1821 rand; DB1826CDQ, DB1827ECX100, DB182CIDIV, DB182ETEST remainder, DB1830JNE frame pathDB1C71. Nonzero path overwrites EAX with interface vtable then NewScriptFrame; zero path overwrites EDX with cachedwoman andECX withself before distanceDB1841. Neither preserves rawrand or quotient. Source gate stays nested behind conversation inactive and SaidFirstRangedComment. Added DB165C signedremainder50: nonzero reaches frameDB1C71, zero calls terminationDB1673, raw value dead. DB1BAA signedremainder2 uses AND80000001/JNS/DEC/OR/INC, flags tested atDB1BBD; CRT rand nonnegative means masked uVar14 equals remainder0/1. Replace entire sign-correction decompile with native modulo2 and zero comparison, preserving branch meaning and uVar14 remainder. Both branch paths call termination before further use.",
+  "edits": [
+    {
+      "old": "(iVar10 = rand(), iVar10 % 100 != 0)",
+      "new": "(iVar10 = GSI->RetailRandModulo(100), iVar10 != 0)",
+      "modulus": 100
+    },
+    {
+      "old": "iVar10 = rand();\r\n          if (iVar10 % 0x32 != 0) goto LAB_00db1c71;",
+      "new": "iVar10 = GSI->RetailRandModulo(50);\nif (iVar10 != 0) goto LAB_00db1c71;",
+      "modulus": 50
+    },
+    {
+      "old": "uVar14 = rand();\r\n          uVar14 = uVar14 & 0x80000001;\r\n          bVar4 = uVar14 == 0;\r\n          if ((int)uVar14 < 0) {\r\n            bVar4 = (uVar14 - 1 | 0xfffffffe) == 0xffffffff;\r\n          }",
+      "new": "uVar14 = GSI->RetailRandModulo(2);\nbVar4 = uVar14 == 0;",
+      "modulus": 2
+    }
+  ]
+}

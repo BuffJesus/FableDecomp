@@ -1,0 +1,13 @@
+{
+  "schema": "new-oakvale-runtime-observation/0.1",
+  "date": "2026-09-10",
+  "source": "interactive user report correlated with interactive-20260910-redtimer-bullyrun-barrels.log",
+  "buildState": "pre-v9 diagnostic build containing the BGRA correction",
+  "observations": {
+    "warehouseTimerOutOfRangeColour": "red",
+    "formerIncorrectColour": "blue",
+    "countdownLoggedFrom": 45,
+    "countdownLoggedThrough": 0
+  },
+  "scope": "Certifies the corrected out-of-range visual colour and complete integer countdown; it does not generalize to unrelated HUD bars."
+}

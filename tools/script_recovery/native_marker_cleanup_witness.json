@@ -1,0 +1,26 @@
+{
+  "address": "0x00DBE4E0",
+  "size": 944,
+  "sourceSha256": "6e7c86d01ce670e33273f1bd424fc35ca6a2185533484e5ca621be5fdd987355",
+  "annotatedSha256": "5d144891cfa410e4149217658c12a3d4756a15fd5793cc67b634be746c1af0bb",
+  "bytesSha256": "fc7cfc9414f10c1ca5b0b81a3493597b9f5218f27286a85087d8ffe63a807765",
+  "earlyCleanup": "    if (bVar2) {\r\n      if ((unaff_ESI != (int *)0x0) && (*unaff_ESI = *unaff_ESI + -1, *unaff_ESI == 0)) {\r\n        (*(code *)unaff_ESI[1])();\r\n        operator_delete(unaff_ESI);\r\n      }\r\n      NHeroInformationScreens::CBase::CBase((CBase *)&stack0xffffffc8);\r\n      if ((local_24[0] != (int *)0x0) && (*local_24[0] = *local_24[0] + -1, *local_24[0] == 0)) {\r\n        (*(code *)local_24[0][1])();\r\n        operator_delete(local_24[0]);\r\n      }\r\n      local_28 = 0;\r\n      local_24[0] = (int *)0x0;\r\n      NHeroInformationScreens::CBase::CBase((CBase *)&stack0xffffffd4);\r\n      if ((piVar7 != (int *)0x0) && (*piVar7 = *piVar7 + -1, *piVar7 == 0)) {\r\n        (*(code *)piVar7[1])();\r\n        operator_delete(piVar7);\r\n      }\r\n      NHeroInformationScreens::CBase::CBase((CBase *)&stack0xffffffbc);\r\n      return;\r\n    }",
+  "staging": "  ppVar6 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)local_24;",
+  "normalCleanup": [
+    "  C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffffc8);",
+    "  C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffffd4);",
+    "  C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffffbc);"
+  ],
+  "callees": [
+    {
+      "address": "0x4aa840",
+      "size": 66,
+      "bytesSha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    },
+    {
+      "address": "0x99a2e0",
+      "size": 7,
+      "bytesSha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+    }
+  ]
+}

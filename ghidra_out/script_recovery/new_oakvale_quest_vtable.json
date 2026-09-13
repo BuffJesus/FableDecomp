@@ -1,0 +1,36 @@
+{
+  "schema": "new-oakvale-quest-vtable/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "imageBase": "0x00400000",
+  "vtable": "0x012D7A28",
+  "vtableBytesSha256": "AEAE9CD06B004771D624DB1B9EE4C8CF9DA7A13E2E8096759359A8AE8DB61947",
+  "slots": [
+    {
+      "slot": 0,
+      "role": "destructor",
+      "address": "0x00DBEFA0"
+    },
+    {
+      "slot": 1,
+      "role": "RegisterMain",
+      "address": "0x00DAACE0"
+    },
+    {
+      "slot": 2,
+      "role": "Main",
+      "address": "0x00DABAC0"
+    },
+    {
+      "slot": 3,
+      "role": "Init",
+      "address": "0x00DAADD0"
+    },
+    {
+      "slot": 4,
+      "role": "OnPersist",
+      "address": "0x00DAADA0"
+    }
+  ],
+  "deletingDestructorImplementation": "0x00DBEFC0"
+}

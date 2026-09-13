@@ -52,9 +52,9 @@ local PenniesGiven = 0
 function Init(quest, me)
     PenniesGiven = 0
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)                 -- retail passes a trailing (false); ForgeFSE hardcodes true
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    quest:SetThingHasInformation(me, false)              -- retail passes trailing (true, false); ForgeFSE hardcodes (false, false)
+    quest:SetThingHasInformation(me, false, true, false)
     quest:SetIsPushableByHero(me, false)
     quest:EntitySetDeedReactionsEnabled(me, false)
 end
@@ -71,8 +71,9 @@ end
 -- so the per-frame wait (and its terminate check) is host-managed inside the binding.
 local function speak_if_alive(quest, me, key)
     if quest:GetHealth(me) > DEAD_HEALTH then
-        me:Speak(quest:GetHero(), key, SPEAK_METHOD)
+        return me:Speak(quest:GetHero(), key, SPEAK_METHOD) ~= false
     end
+    return true
 end
 
 local function hero_has_chocolates(quest)
@@ -89,9 +90,22 @@ end
 
 -- Phase 1: one-off intro cutscene + tutorial card + HUD counter (runs while DadFinishedIntro is false).
 local function intro_cutscene(quest, me)
+    -- 0xDB879A precedes Hero acquisition; 0xDB8806 checks again after success.
+    -- Do not let the macro wrapper hide an acquisition cancellation after the
+    -- movie has already started and then mark an unplayed intro complete.
+    if quest:IsActiveThreadTerminating() then return false end
     local hero = quest:GetHero()
-    -- Retail acquires the Hero (StartScriptingEntity, priority 4, frame-wait loop) before the movie;
-    -- ForgeFSE RunCutsceneWithSetup acquires its actors itself (host-managed).
+    if not NOVI.acquire(quest, hero, SCRIPT_PRIORITY) then return false end
+    if quest:IsActiveThreadTerminating() then
+        NOVI.release(quest, hero)
+        return false
+    end
+    local function close_intro()
+        end_movie(quest)
+        -- Native 0xDB8AE9 / 0xDB8A6A releases Hero after movie/map cleanup.
+        NOVI.release(quest, hero)
+    end
+    -- The macro wrapper now reuses the caller-owned Father and Hero handles.
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
@@ -104,8 +118,14 @@ local function intro_cutscene(quest, me)
     quest:CameraResetToViewBehindHero(CAMERA_RESET_SECONDS)
     quest:CameraDefault()
 
-    -- Retail branches on CGameScriptInterface::IsXbox(); ForgeFSE has no binding (returns nil -> PC text).
-    local on_xbox = NOVI.is_xbox()
+    -- Retail branches on CGameScriptInterface::IsXbox(); Forge forwards the same virtual query.
+    local on_xbox = NOVI.is_xbox(quest)
+    -- 0xDB895A (Xbox) / 0xDB89D4 (PC): cancellation closes the movie
+    -- before displaying the tutorial. DadFinishedIntro is already set above.
+    if quest:IsActiveThreadTerminating() then
+        close_intro()
+        return false
+    end
     local info_key = TEXT_INSTRUCTION_HIGHLIGHTING_PC
     if on_xbox then
         info_key = TEXT_INSTRUCTION_HIGHLIGHTING
@@ -113,14 +133,19 @@ local function intro_cutscene(quest, me)
     quest:DisplayGameInfo(info_key)
     while not quest:MsgIsGameInfoClickedPast() do
         if not NOVI.frame(quest, me) then
-            end_movie(quest)
+            close_intro()
             return false
         end
     end
 
+    -- 0xDB8A3D rechecks even when the clicked-past query returned immediately.
+    if quest:IsActiveThreadTerminating() then
+        close_intro()
+        return false
+    end
     F.set(quest, F.GUIGoodDeedCounter, quest:AddQuestInfoCounter(HUD_DEED_GOOD_ICON, DEED_COUNTER_START, DEED_COUNTER_SCALE))
     quest:DisplayQuestInfo(true)
-    end_movie(quest)
+    close_intro()
     return true
 end
 
@@ -135,34 +160,34 @@ local function talk_to_hero(quest, me)
     local good_deeds = F.get(quest, F.GoodDeedsPerformed)
     local bad_deeds = F.get(quest, F.BadDeedsPerformed)
     if good_deeds == 0 and bad_deeds == 0 then
-        speak_if_alive(quest, me, TEXT_DONE_NOTHING_YET)
+        if not speak_if_alive(quest, me, TEXT_DONE_NOTHING_YET) then end_movie(quest); return false end
     elseif good_deeds <= PenniesGiven then
         if bad_deeds < 1 then
-            speak_if_alive(quest, me, TEXT_DO_MORE)
+            if not speak_if_alive(quest, me, TEXT_DO_MORE) then end_movie(quest); return false end
             if hero_has_chocolates(quest) then
                 quest:ClearThingHasInformation(me)
-                speak_if_alive(quest, me, TEXT_GIVE_PRESENT_ALT)
+                if not speak_if_alive(quest, me, TEXT_GIVE_PRESENT_ALT) then end_movie(quest); return false end
             end
         else
-            speak_if_alive(quest, me, TEXT_ANTISOCIAL)
+            if not speak_if_alive(quest, me, TEXT_ANTISOCIAL) then end_movie(quest); return false end
         end
     else
         local reward = good_deeds - PenniesGiven          -- one gold per unpaid good deed
         PenniesGiven = PenniesGiven + reward
         quest:GiveHeroGold(reward)
         if bad_deeds == 0 then
-            speak_if_alive(quest, me, TEXT_GIVE_REWARD_JUST_GOOD)
+            if not speak_if_alive(quest, me, TEXT_GIVE_REWARD_JUST_GOOD) then end_movie(quest); return false end
         else
-            speak_if_alive(quest, me, TEXT_GIVE_REWARD_PART_BAD)
+            if not speak_if_alive(quest, me, TEXT_GIVE_REWARD_PART_BAD) then end_movie(quest); return false end
         end
         if hero_has_chocolates(quest) then
-            speak_if_alive(quest, me, TEXT_GIVE_PRESENT)
+            if not speak_if_alive(quest, me, TEXT_GIVE_PRESENT) then end_movie(quest); return false end
             quest:ClearThingHasInformation(me)
         elseif quest:GetHeroGold() > REWARD_GOLD_THRESHOLD then
-            speak_if_alive(quest, me, TEXT_YOU_HAVE_ENOUGH)
+            if not speak_if_alive(quest, me, TEXT_YOU_HAVE_ENOUGH) then end_movie(quest); return false end
             quest:ClearThingHasInformation(me)
         else
-            speak_if_alive(quest, me, TEXT_IS_ENOUGH)
+            if not speak_if_alive(quest, me, TEXT_IS_ENOUGH) then end_movie(quest); return false end
             quest:SetQuestCardObjective(quest:GetActiveQuestName(), TEXT_OBJECTIVE_01, "", "")
         end
     end
@@ -183,7 +208,7 @@ local function react_to_attack(quest, me)
         end_movie(quest)
         return false
     end
-    speak_if_alive(quest, me, TEXT_TEMPER)
+    if not speak_if_alive(quest, me, TEXT_TEMPER) then end_movie(quest); return false end
     end_movie(quest)
     return true
 end

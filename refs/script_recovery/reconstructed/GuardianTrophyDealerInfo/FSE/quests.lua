@@ -1,0 +1,1 @@
+-- No legacy registration. This source-only package is disabled.

@@ -1,0 +1,86 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "6ffe2747a68d21546bf65191bc7f6b2adfd9182ccc84e0d05ef917809373dc9b",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 8971808,
+      "size": 193,
+      "sha256": "891bcab1d82d1901d06514cce2e9d429dbe707255985086c13644fe252f39924"
+    },
+    {
+      "address": 19273336,
+      "size": 4,
+      "sha256": "336819bd4b34341bc7416ea4deb618a718e7cda0f5be9626a031f8d105bddd9d"
+    }
+  ],
+  "contracts": {
+    "Pause": {
+      "name": "Pause",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "duration",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Pauses execution while yielding to the game loop."
+    },
+    "EntitySetFacingAngleTowardsThing": {
+      "name": "EntitySetFacingAngleTowardsThing",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "pTarget",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "snap",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set facing angle towards thing."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->Pause();\r\n          GSI->EntitySetFacingAngleTowardsThing();\r\n          GSI->EntitySetFacingAngleTowardsThing(&stack0xfffffeb4,pCVar1);",
+      "new": "GSI->Pause(0.4000000059604645);\nGSI->EntitySetFacingAngleTowardsThing(me,local_native_cached_woman,true);\nGSI->EntitySetFacingAngleTowardsThing(local_native_cached_woman,me,true);",
+      "count": 1
+    },
+    {
+      "old": "GSI->EntitySetFacingAngleTowardsThing();\r\n          iVar10 = GSI->RetailRandModulo(50);",
+      "new": "GSI->EntitySetFacingAngleTowardsThing(me,local_native_cached_wife,false);\r\n          iVar10 = GSI->RetailRandModulo(50);",
+      "count": 1
+    },
+    {
+      "old": "GSI->EntitySetFacingAngleTowardsThing(&stack0xfffffeac,uVar9);",
+      "new": "GSI->EntitySetFacingAngleTowardsThing(local_native_cached_woman,uVar9,false);",
+      "count": 1
+    }
+  ],
+  "review": "After TalkingToWoman and termination guards, DB1B7E slot5E0 takes float32bits3ECCCCCD (0.4). DB1B91 slot76C receives EBPself,cachedwomanstack32,true; DB1BA4 receives womanstack32,EBPself,true. Preserve order, subsequent retail random selection and branch-specific cancellation checks. Existing state and resource lifetime remain outside these operand edits. DB1656 slot76C receives EBPself,cachedwifewrapperstack44,false, before the existingrandmod50 cower gate. Recover this separately by its complete adjacent-source context, preserving the random call and surrounding conditions. DB1192 faces cachedwomanstack32 toward freshhero from1183, snapfalse pushed1176. At118A LEAESP28 follows two pushes, so baseline32, not40. Keep source uVar9 GetHero and termination guards unchanged.",
+  "unresolved": [
+    "Animation global and remaining flags",
+    "Actor cleanup"
+  ]
+}

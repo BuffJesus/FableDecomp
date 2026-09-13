@@ -1,0 +1,90 @@
+--- v19/FableAPI.cpp
++++ v20/FableAPI.cpp
+@@ -4,6 +4,7 @@
+ #include <sstream>
+ #include <memory>
+ #include <cfloat>
++#include <intrin.h>
+ #include "EntityScriptingAPI.h"
+ #pragma comment(lib, "shlwapi.lib")
+ 
+@@ -709,6 +710,71 @@
+ static bool g_cutsceneSpeakDiagHookInstalled = false;
+ static bool g_cutsceneMovementDiagHooksInstalled = false;
+ static const char* g_cutsceneSkipDiagMacro = nullptr;
++static bool g_cutsceneCommandDiagHooksInstalled = false;
++
++typedef int(__thiscall* tDiagFindCharPos)(const CCharString*, char);
++typedef bool(__cdecl* tDiagIsCutsceneSkipped)();
++static tDiagFindCharPos DiagFindCharPos_Original = nullptr;
++static tDiagIsCutsceneSkipped DiagIsCutsceneSkipped_Original = nullptr;
++
++// The interpreter's first FindCharPos call receives the complete current command.
++// Restrict to its proven return address: ordinary string calls are only forwarded.
++static int __fastcall DiagFindCharPos_Detour(const CCharString* command, void*, char needle) {
++    if (InterlockedCompareExchange(&g_cutsceneSkipDiagActive, 0, 0) &&
++        reinterpret_cast<uintptr_t>(_ReturnAddress()) == ASLR<uintptr_t>(0x00CC023C)) {
++        const char* text = CCharString_ToConstChar_API ? CCharString_ToConstChar_API(command) : nullptr;
++        std::ostringstream ss;
++        ss << "[CutsceneCommandDiag] macro="
++           << (g_cutsceneSkipDiagMacro ? g_cutsceneSkipDiagMacro : "<none>")
++           << " tick=" << GetTickCount() << " command=" << (text ? text : "<null>");
++        LogToFile(ss.str());
++    }
++    return DiagFindCharPos_Original(command, needle);
++}
++static __declspec(naked) void DiagFindCharPos_NakedStub() {
++    __asm { jmp DiagFindCharPos_Detour }
++}
++
++static bool __cdecl DiagIsCutsceneSkipped_Detour() {
++    const uintptr_t caller = reinterpret_cast<uintptr_t>(_ReturnAddress());
++    // This can consume a script message: call exactly once and preserve the result.
++    const bool skipped = DiagIsCutsceneSkipped_Original();
++    if (skipped && InterlockedCompareExchange(&g_cutsceneSkipDiagActive, 0, 0)) {
++        std::ostringstream ss;
++        ss << "[CutsceneCommandDiag] skipQueryTrue macro="
++           << (g_cutsceneSkipDiagMacro ? g_cutsceneSkipDiagMacro : "<none>")
++           << " caller=0x" << std::hex << caller << std::dec << " tick=" << GetTickCount();
++        LogToFile(ss.str());
++    }
++    return skipped;
++}
++static __declspec(naked) void DiagIsCutsceneSkipped_NakedStub() {
++    __asm { jmp DiagIsCutsceneSkipped_Detour }
++}
++
++static void InstallCutsceneCommandDiagnostics() {
++    if (g_cutsceneCommandDiagHooksInstalled) return;
++    const DWORD find = ASLR<DWORD>(0x0099E5A0);
++    const DWORD skipped = ASLR<DWORD>(0x00CBEB7E);
++    const BYTE findExpected[5] = {0x56, 0x8b, 0xf1, 0x8b, 0x06};
++    // cmp byte ptr [ASLR(0x0143E8F4)],0: seven bytes, no relative branch.
++    BYTE skipExpected[7] = {0x80, 0x3d, 0, 0, 0, 0, 0};
++    const DWORD modeAddress = ASLR<DWORD>(0x0143E8F4);
++    memcpy(skipExpected + 2, &modeAddress, sizeof(modeAddress));
++    if (memcmp(reinterpret_cast<const void*>(find), findExpected, sizeof(findExpected)) ||
++        memcmp(reinterpret_cast<const void*>(skipped), skipExpected, sizeof(skipExpected))) {
++        LogToFile("!!! [CutsceneCommandDiag] prologue mismatch; command hooks not installed.");
++        return;
++    }
++    const bool a = InstallInlineHook(find, &DiagFindCharPos_NakedStub, sizeof(findExpected),
++        reinterpret_cast<void**>(&DiagFindCharPos_Original), "CutsceneCommand.FindCharPos");
++    const bool b = InstallInlineHook(skipped, &DiagIsCutsceneSkipped_NakedStub, sizeof(skipExpected),
++        reinterpret_cast<void**>(&DiagIsCutsceneSkipped_Original), "CutsceneCommand.IsCutsceneSkipped");
++    g_cutsceneCommandDiagHooksInstalled = a && b;
++    LogToFile(g_cutsceneCommandDiagHooksInstalled
++        ? "[CutsceneCommandDiag] passive command and skip-query hooks installed."
++        : "!!! [CutsceneCommandDiag] command hook installation incomplete.");
++}
+ 
+ typedef void(__thiscall* tDiagSetCutsceneMode)(void*, bool, bool);
+ typedef void(__thiscall* tDiagScriptedThingSpeak)(void*, const CScriptThing*, const char*,
+@@ -848,6 +914,7 @@
+ 
+ bool InstallCutsceneSkipDiagnosticHooks() {
+     if (g_cutsceneSkipDiagHooksInstalled) return true;
++    InstallCutsceneCommandDiagnostics();
+     const DWORD setMode = ASLR<DWORD>(0x0089D600);
+     const DWORD scriptedThingSpeak = ASLR<DWORD>(0x00904780);
+     const DWORD scriptedThingMove = ASLR<DWORD>(0x00903BC0);

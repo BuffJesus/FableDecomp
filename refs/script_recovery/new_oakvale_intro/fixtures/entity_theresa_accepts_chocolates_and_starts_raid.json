@@ -6,7 +6,7 @@
   "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
   "Quest.IsDistanceBetweenThingsUnder":[true,true,true],
   "Quest.IsObjectInThingsPossession":[true],
-  "Quest.GiveHeroYesNoQuestion":[1],
+  "Quest.MsgIsQuestionAnsweredYesOrNo":[1],
   "Quest.GetAllThingsWithScriptName(NOVI_Guard)":[[{"handle":"guard","scope":"Entity"}]],
   "Entity.IsAlive":[true],
   "Quest.GetActiveQuestName":["Q_NewOakValeIntro"],

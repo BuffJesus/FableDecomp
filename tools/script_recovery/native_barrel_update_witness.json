@@ -1,0 +1,15 @@
+{
+  "address": "0x00DB4F70",
+  "size": 562,
+  "sourceSha256": "26965b9153e0092f8348f7eb8c90578a198605bb110774243f6bac3106f48ec9",
+  "annotatedSha256": "6176fef57e4c9f264784a027a3b1fb338455dbbd67f6cf53b237c45f85b86e47",
+  "bytesSha256": "7beec77a43819ec0718fc5d13a93d2fbbe1d4b5e4612da1c8f69966048298e19",
+  "original": "      iVar3 = **(int **)(param_1 + 0x40);\r\n      pCStack_48 = (CCharString *)\r\n                   GSI->GetTimer\r\n                             (*(undefined4 *)(param_1 + 0x108),0xbf800000,0xbf800000);\r\n      GSI->UpdateQuestInfoBar(*(undefined4 *)(param_1 + 0x60),(float)(int)pCStack_48);",
+  "timerSite": "0x00DB5150",
+  "updateSite": "0x00DB5169",
+  "conversionSites": [
+    "0x00DB515A",
+    "0x00DB5162"
+  ],
+  "nativeTimerCleanupBytes": 4
+}

@@ -1,0 +1,139 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "4b6f019744853f9be493e1ae9317129674efad6eb7a93a9f9656464f0bf1b41b",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    }
+  ],
+  "contracts": {
+    "PauseAllNonScriptedEntities": {
+      "name": "PauseAllNonScriptedEntities",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "isPaused",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Pauses all non scripted entities."
+    },
+    "EndMovieSequence": {
+      "name": "EndMovieSequence",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes end movie sequence."
+    }
+  },
+  "edits": [
+    {
+      "old": "if (extraout_AL_09 != '\\0') goto LAB_00db1085;",
+      "new": "if (extraout_AL_09 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_10 != '\\0') goto LAB_00db1cf3;",
+      "new": "if (extraout_AL_10 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_11 != '\\0') goto LAB_00db1085;",
+      "new": "if (extraout_AL_11 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_15 != '\\0') goto LAB_00db1cf3;",
+      "new": "if (extraout_AL_15 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_16 != '\\0') goto LAB_00db1085;",
+      "new": "if (extraout_AL_16 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_18 != '\\0') goto LAB_00db1085;",
+      "new": "if (extraout_AL_18 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_13 != '\\0') goto LAB_00db1085;",
+      "new": "if (extraout_AL_13 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_19 != '\\0') goto LAB_00db1cf3;",
+      "new": "if (extraout_AL_19 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_20 != '\\0') goto LAB_00db1085;",
+      "new": "if (extraout_AL_20 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_23 != '\\0') goto LAB_00db1d23;",
+      "new": "if (extraout_AL_23 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_26 != '\\0') goto LAB_00db1d0a;",
+      "new": "if (extraout_AL_26 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_27 != '\\0') goto LAB_00db1d23;",
+      "new": "if (extraout_AL_27 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_25 != '\\0') goto LAB_00db1d0a;",
+      "new": "if (extraout_AL_25 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_28 != '\\0') goto LAB_00db1d23;",
+      "new": "if (extraout_AL_28 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_29 != '\\0') goto LAB_00db1d0a;",
+      "new": "if (extraout_AL_29 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_21 != '\\0') goto LAB_00db1d23;",
+      "new": "if (extraout_AL_21 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_30 != '\\0') goto LAB_00db1cf3;",
+      "new": "if (extraout_AL_30 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_31 != '\\0') goto LAB_00db1d0a;",
+      "new": "if (extraout_AL_31 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_32 != '\\0') goto LAB_00db1d23;",
+      "new": "if (extraout_AL_32 != '\\0') {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}",
+      "count": 1
+    }
+  ],
+  "review": "Native cleanup1D0A..1D21 and1D23..1D3A are equivalent: saved interfaceESP38,PauseAll slot5EC(false),movie resourceESP48 destructor6E7B80,thenJMP1D7C actorcleanup. Expand only source conditional jumps to these suffixes, keeping each original predicate and terminal actor target. Existing inline definitions left intact. No actor resource release is inferred. Also expand six source1085 jumps: native1CF3 family explicitly pushesfalse then uses interfaceEDI; native1178->1085 inherits push0 at1176 and usesEDI. Both end movie resource48 and jump1D7C. Body includes native1CF3 incoming0EC4/0F17/1061/10A4/114D/14E3; existing inline source suffix stays unchanged. Do not apply this rule to1D3C, whose source form differs. Four remaining source1CF3 conditional jumps use this same suffix; expand them as well. In particular cancellation in the speech task wait must unpause and end the movie before the actor cleanup destination. Do not expand1243: that is the question-entry path, not a cleanup suffix.",
+  "unresolved": [
+    "Actor cleanup at1D7C"
+  ]
+}

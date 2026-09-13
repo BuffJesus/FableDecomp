@@ -1,0 +1,36 @@
+{
+  "schema": "created-beetle-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_CreatedBeetle",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00CDEBB0",
+      "endExclusive": "0x00CDEBB1",
+      "rangeSize": 1,
+      "bytesSha256": "AE3F4619B0413D70D3004B9131C3752153074E45725BE13B9A148978895E359E",
+      "instructionCount": 1,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB80C0",
+      "endExclusive": "0x00DB81A8",
+      "rangeSize": 232,
+      "bytesSha256": "C85CA258410FDBE74BE25B320E3C9FD8BCA90572C06502935FFE2E6A6C2951F3",
+      "instructionCount": 79,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "shared empty Init and complete Main",
+    "timerSeconds": 5,
+    "removeThingArgs": [
+      true,
+      true
+    ],
+    "normalCleanup": "0x00DB8183-0x00DB8198",
+    "terminationCleanup": "0x00DB8199-0x00DB81A7"
+  }
+}

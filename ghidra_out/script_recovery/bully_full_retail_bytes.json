@@ -1,0 +1,45 @@
+{
+  "schema": "bully-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_Bully",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DAED30",
+      "endExclusive": "0x00DAEDDC",
+      "rangeSize": 172,
+      "bytesSha256": "3D954389798851698F97770B3B65AC75AB62830327CB2BEFA745C6D47148FFA9",
+      "instructionCount": 65,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DBB310",
+      "endExclusive": "0x00DBCCFF",
+      "rangeSize": 6639,
+      "bytesSha256": "F47BA776FB2C395188E93AD75C5EFE688021A27238E2A2FFD27B8E751E900E8D",
+      "instructionCount": 1909,
+      "terminal": "ret"
+    },
+    {
+      "name": "GivenTeddy",
+      "address": "0x00DBCD00",
+      "endExclusive": "0x00DBCD58",
+      "rangeSize": 88,
+      "bytesSha256": "0169698B1146121A67F49725F96ABDD31DD776ED974A5D2D686C67B42CCFEE69",
+      "instructionCount": 28,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "complete Init, Main dispatcher, and GivenTeddy helper",
+    "subsumes": [
+      "teddy dispatch",
+      "health bar",
+      "subdued run-off",
+      "GivenTeddy focused snapshots"
+    ],
+    "boundaryCorrection": "translation_unit Main size 6630 truncates nine epilogue bytes; exact terminal ret is 0x00DBCCFE"
+  }
+}

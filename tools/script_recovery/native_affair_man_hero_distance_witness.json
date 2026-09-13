@@ -1,0 +1,47 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5058,
+  "selfRegister": "ebp",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "41f5f840942d83ca89c8bd39b6b1aa025edf24e06dfbf8278470f08d77c25ae5",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 13361919,
+      "size": 114,
+      "sha256": "9d320829e96a4ce4eff39dc46e20f3f1e0a8ef2099ba02663064501ad10d6c57"
+    },
+    {
+      "address": 19271716,
+      "size": 4,
+      "sha256": "eba0e74a432136d66d7304ef103c3f3e12272b0e266e5ac575bc966c85556d1a"
+    }
+  ],
+  "checks": [
+    {
+      "hero": 14358631,
+      "distance": 14358641,
+      "threshold": 5.0
+    },
+    {
+      "hero": 14359041,
+      "distance": 14359051,
+      "threshold": 13.0
+    }
+  ],
+  "edits": [
+    {
+      "old": "fVar25 = 5.0;\r\n          pCVar7 = (CScriptThing *)GSI->GetHero();\r\n          bVar4 = IsDistanceBetweenThingsUnder(pCVar1,pCVar7,fVar25);",
+      "new": "fVar25 = 5.0;\r\n          pCVar7 = (CScriptThing *)GSI->GetHero();\r\n          bVar4 = IsDistanceBetweenThingsUnder(me,pCVar7,5.0);"
+    },
+    {
+      "old": "fVar25 = 13.0;\r\n            pCVar7 = (CScriptThing *)GSI->GetHero();\r\n            bVar4 = IsDistanceBetweenThingsUnder(pCVar1,pCVar7,fVar25);",
+      "new": "fVar25 = 13.0;\r\n            pCVar7 = (CScriptThing *)GSI->GetHero();\r\n            bVar4 = IsDistanceBetweenThingsUnder(me,pCVar7,13.0);"
+    }
+  ],
+  "review": "Each threshold is pushed before GetHero; CBE2FF consumes EBPself, returnedhero inEDX, and float32stack5/13. Preserve separate freshhero lookups and surroundingbranch priority; explicit constants avoid incidental fVar25 reuse. Native distance semantics delegated to existing host operation."
+}

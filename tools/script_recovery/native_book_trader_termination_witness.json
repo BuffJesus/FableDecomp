@@ -1,0 +1,28 @@
+{
+  "address": "0x00DB3FA0",
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "1ddd894600d2e880fc88d224b10021d08287d2125ec8d8231b900790a24b0e38",
+  "regions": [
+    {
+      "address": 14368672,
+      "size": 4042,
+      "sha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974"
+    },
+    {
+      "address": 15948592,
+      "size": 12,
+      "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+    }
+  ],
+  "edits": [
+    {
+      "old": "CCreatureAction_TrollWhackGroundBase::Initialise\r\n              ((CCreatureAction_TrollWhackGroundBase *)param_1);\r\n    uVar16 = 0;\r\n    cVar5 = extraout_AL_00;",
+      "new": "cVar5 = GSI->IsActiveThreadTerminating();\n      uVar16 = 0;"
+    },
+    {
+      "old": "CCreatureAction_TrollWhackGroundBase::Initialise\r\n                ((CCreatureAction_TrollWhackGroundBase *)param_1);\r\n      uVar16 = uStack_114;\r\n      cVar5 = extraout_AL_40;",
+      "new": "cVar5 = GSI->IsActiveThreadTerminating();\n      uVar16 = uStack_114;"
+    }
+  ],
+  "review": "Native DB4015 and DB4E6E call known termination wrapperF35B30, immediately testAL and branch to exit ontrue. Decompiler saves AL after pure local uVar16 assignments. Capture each query once into bool cVar5, retaining local assignment and loop branch; no reuse of unrelated AL or additional query."
+}

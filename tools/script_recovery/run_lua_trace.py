@@ -93,6 +93,12 @@ end
 function ConfigureFixtures(fixtures)
     FIXTURES = fixtures
     FIXTURE_POS = {}
+    local configured_globals = FIXTURES["Lua.globals"]
+    if configured_globals ~= nil and configured_globals[1] ~= nil then
+        for name, value in pairs(configured_globals[1]) do
+            _G[name] = materialize_fixture(value)
+        end
+    end
     if FIXTURES["Lua.math.random"] ~= nil then
         math.random = function(...)
             local key = "Lua.math.random"

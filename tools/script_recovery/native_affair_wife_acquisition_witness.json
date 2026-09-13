@@ -1,0 +1,29 @@
+{
+  "address": "0x00DB2B10",
+  "annotatedSha256": "c846227aaedf69b3c106e877e741f37b910a34b927762f9697a708159bffed8d",
+  "oldCalls": [
+    "GSI->StartScriptingEntity();",
+    "GSI->StartScriptingEntity();",
+    "GSI->StartScriptingEntity(pCVar1);",
+    "GSI->StartScriptingEntity();",
+    "GSI->StartScriptingEntity();",
+    "GSI->StartScriptingEntity(pCVar1,&stack0xffffff38,4);",
+    "GSI->StartScriptingEntity(pCVar1,&stack0xffffff2c,4);",
+    "GSI->StartScriptingEntity(pCVar1,&stack0xffffff3c);",
+    "GSI->StartScriptingEntity(pCVar1,&stack0xffffff3c);",
+    "GSI->StartScriptingEntity(pCVar1,&stack0xffffff3c);"
+  ],
+  "priorities": [
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "review": "Reviewed source order pairs initialloop,initialhit,firsttalk,argumenthit,argumenttalk matches native acquisitionorder. Preserve cVar5 assignment, frame/termination checks and retrybranches. Map only explicit self, sharedslot16 and priorities; not native resource lifetime or host retry scheduling."
+}

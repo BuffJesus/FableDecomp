@@ -1,0 +1,119 @@
+{
+  "address": "0x00DB2B10",
+  "size": 4890,
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "852c9db927719a5afd4fff1db509df77841e954d1f918c25d771e35524f21b6c",
+  "bytesSha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46",
+  "counts": {
+    "LAB_00db3e11": 2,
+    "LAB_00db2e83": 1,
+    "LAB_00db3dd9": 2,
+    "LAB_00db3de0": 1,
+    "LAB_00db3293": 1,
+    "LAB_00db3def": 3,
+    "LAB_00db3dff": 4,
+    "LAB_00db3e0d": 2,
+    "LAB_00db32a5": 1,
+    "LAB_00db3e05": 1,
+    "LAB_00db3d61": 1
+  },
+  "paths": {
+    "LAB_00db3e11": [
+      "movie_end"
+    ],
+    "LAB_00db2e83": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db3dd9": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db3de0": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db3293": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db3def": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db3dff": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db3e0d": [
+      "movie_end"
+    ],
+    "LAB_00db32a5": [
+      "movie_end"
+    ],
+    "LAB_00db3e05": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db3d61": [
+      "movie_end"
+    ]
+  },
+  "destinations": {
+    "LAB_00db3e11": {
+      "native": "0xDB3E16",
+      "source": "LAB_00db3e16"
+    },
+    "LAB_00db2e83": {
+      "native": "0xDB32AA",
+      "source": "LAB_00db32aa"
+    },
+    "LAB_00db3dd9": {
+      "native": "0xDB3E16",
+      "source": "LAB_00db3e16"
+    },
+    "LAB_00db3de0": {
+      "native": "0xDB3E16",
+      "source": "LAB_00db3e16"
+    },
+    "LAB_00db3293": {
+      "native": "0xDB32AA",
+      "source": "LAB_00db32aa"
+    },
+    "LAB_00db3def": {
+      "native": "0xDB3E16",
+      "source": "LAB_00db3e16"
+    },
+    "LAB_00db3dff": {
+      "native": "0xDB3E16",
+      "source": "LAB_00db3e16"
+    },
+    "LAB_00db3e0d": {
+      "native": "0xDB3E16",
+      "source": "LAB_00db3e16"
+    },
+    "LAB_00db32a5": {
+      "native": "0xDB32AA",
+      "source": "LAB_00db32aa"
+    },
+    "LAB_00db3e05": {
+      "native": "0xDB3E16",
+      "source": "LAB_00db3e16"
+    },
+    "LAB_00db3d61": {
+      "native": "0xDB3D6A",
+      "source": "LAB_00db3d6a"
+    }
+  },
+  "effects": {
+    "0xdb2e8a": "unpause",
+    "0xdb329b": "unpause",
+    "0xdb3de7": "unpause",
+    "0xdb3df7": "unpause",
+    "0xdb3e07": "unpause",
+    "0xdb32a5": "movie_end",
+    "0xdb3e11": "movie_end",
+    "0xdb3d65": "movie_end"
+  },
+  "review": "Requires preceding validated Wife pause/movie recoveries. Each suffix decodes only reviewed unpause/end calls and direct register/argument setup. Normal2E83/3293/32A5 continue32AA, terminal3Dxx/3Exx continueactorcleanup3E16,3D61 closesmovie thenactorcleanup3D6A. Preserve conditions. Actor ownership remains unresolved."
+}

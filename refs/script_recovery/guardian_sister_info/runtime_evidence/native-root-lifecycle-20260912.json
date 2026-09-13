@@ -1,0 +1,1182 @@
+{
+  "scope": "Execute Guardian Sister root lifecycle and entity Init/predicate callback.\n\nNative bytes and termination helper execute; allocations, strings, engine APIs,\nand persistence storage are doubles. No entity Main or live scheduler claim.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "name": "loaded",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        1
+      ],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "loaded_cancel",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        1
+      ],
+      "stop_query": 1,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "wait_cancel",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        0
+      ],
+      "stop_query": 1,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "wait_loaded",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        0,
+        1
+      ],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "loaded_after_wait_cancel",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        0,
+        1
+      ],
+      "stop_query": 2,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "two_waits_loaded",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        0,
+        0,
+        1
+      ],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "two_waits_cancel",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        0,
+        0
+      ],
+      "stop_query": 2,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "noncanonical_loaded",
+      "mode": "root",
+      "initial": true,
+      "regions": [
+        2
+      ],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize_base"
+        ],
+        [
+          "finalize_game"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "adapter_events": [
+        [
+          "state",
+          false
+        ],
+        [
+          "bind",
+          "MazeAtTavern",
+          0
+        ],
+        [
+          "finalize"
+        ],
+        [
+          "active"
+        ],
+        [
+          "objective",
+          "QS_GuardianSisterInfo",
+          "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+          "",
+          "BowerstoneSlums"
+        ],
+        [
+          "region",
+          "BowerstoneSlums",
+          true
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "time",
+          10.0
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "predicate_0",
+      "mode": "predicate",
+      "initial": false,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [],
+      "adapter_events": [],
+      "entity_fields": null
+    },
+    {
+      "name": "predicate_1",
+      "mode": "predicate",
+      "initial": true,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": true,
+      "events": [
+        [
+          "active"
+        ],
+        [
+          "deactivate",
+          "QS_GuardianSisterInfo",
+          0
+        ]
+      ],
+      "adapter_events": [
+        [
+          "active"
+        ],
+        [
+          "deactivate",
+          "QS_GuardianSisterInfo",
+          0
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "entity_init",
+      "mode": "entity_init",
+      "initial": false,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {},
+      "final": false,
+      "events": [],
+      "adapter_events": [],
+      "entity_fields": {
+        "offset_1c": 0,
+        "offset_20": false,
+        "offset_24": 0
+      }
+    },
+    {
+      "name": "write_False",
+      "mode": "persist",
+      "initial": false,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {
+        "GuardianSpokeToHero": false
+      },
+      "final": false,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          false
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          false
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "read_False_0",
+      "mode": "persist",
+      "initial": false,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {},
+      "reading": true,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          false
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          false
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "read_False_1",
+      "mode": "persist",
+      "initial": false,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {
+        "GuardianSpokeToHero": false
+      },
+      "reading": true,
+      "storage": {
+        "GuardianSpokeToHero": false
+      },
+      "final": false,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          false
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          false
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "read_False_2",
+      "mode": "persist",
+      "initial": false,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {
+        "GuardianSpokeToHero": true
+      },
+      "reading": true,
+      "storage": {
+        "GuardianSpokeToHero": true
+      },
+      "final": true,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          true
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          false,
+          false,
+          true
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "write_True",
+      "mode": "persist",
+      "initial": true,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {},
+      "reading": false,
+      "storage": {
+        "GuardianSpokeToHero": true
+      },
+      "final": true,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          true
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          true
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "read_True_0",
+      "mode": "persist",
+      "initial": true,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {},
+      "reading": true,
+      "storage": {},
+      "final": false,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          false
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          false
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "read_True_1",
+      "mode": "persist",
+      "initial": true,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {
+        "GuardianSpokeToHero": false
+      },
+      "reading": true,
+      "storage": {
+        "GuardianSpokeToHero": false
+      },
+      "final": false,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          false
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          false
+        ]
+      ],
+      "entity_fields": null
+    },
+    {
+      "name": "read_True_2",
+      "mode": "persist",
+      "initial": true,
+      "regions": [],
+      "stop_query": 0,
+      "stored": {
+        "GuardianSpokeToHero": true
+      },
+      "reading": true,
+      "storage": {
+        "GuardianSpokeToHero": true
+      },
+      "final": true,
+      "events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          true
+        ]
+      ],
+      "adapter_events": [
+        [
+          "persist",
+          "GuardianSpokeToHero",
+          true,
+          false,
+          true
+        ]
+      ],
+      "entity_fields": null
+    }
+  ],
+  "entity_vtable": "0x12e1e28",
+  "entity_slots": [
+    "0xe25d70",
+    "0xe25f70",
+    "0xe25d20",
+    "0xe25d10",
+    "0xcdebc0",
+    "0xe25d30",
+    "0xcdebe0"
+  ],
+  "native_bytes": {
+    "0xe25a00": "c6414800c3",
+    "0xe25ab0": "83ec1053565733db6a1c8bf1895c241ce8558fddff8bf883c40485ff743e6aff68181e2e018d4c2414e81291b7ff8d44240c508d4f04bb01000000c707101e2e01e83a91b7ff897708c74710705ce200885f14c7471800000000eb0233ff578bcee81a27e9fff6c30174098d4c240ce8bc8fb7ff8bcee8052ee9ff8b4e408b11ff92000100006aff685cb52c018d4c241ce8aa90b7ff6aff680ed722018d4c2418e89a90b7ff6aff68dc1d2e018d4c2414e88a90b7ff8b4e408bc18b388d542414528d442414508b018d542414528d54242452ff903c0a00008b4e4050ff97a00400008d4c2418e8448fb7ff8d4c240ce83b8fb7ff8d4c2410e8328fb7ff8d4c2414e8298fb7ff6aff685cb52c018d4c2414e82990b7ff8b4e408b018d54240c52ff50308ad8f6db1adb8d4c240cfec3e8fb8eb7ff84db744c8da424000000008b4e408b01ff501c8bcee8411de9ff84c0754d6aff685cb52c018d4c2414e8dd8fb7ff8b4e408b118d44240c50ff52308ad8f6db1adb8d4c240cfec3e8af8eb7ff84db75bb8bcee8041de9ff84c075108b4e408b116800002041ff92180a00005f5e5b83c410c3",
+    "0xe25c70": "5356576a288bda8bf9e89c8dddff8bf083c40485f6742b8b43408946048b442414508d4e08c70624322c01e8f06168ff8b4c2410c706281e2e01895e14894e18eb0233f685f6893774386a0ce8598dddff83c40485c0741d8b0fc70001000000c7400400eecd008948088947048bc75f5e5bc2080033c08947048bc75f5e5bc20800c74704000000008bc75f5e5bc20800",
+    "0xe25d20": "33c089411c884120894124c3",
+    "0xe25d30": "51568bf18b46148a484884c9742b8b4e048b01578bd18b3a6a008d54240c52ff903c0a00008b4e0450ff97640400008d4c2408e8788db7ff5f5e59c3",
+    "0xe25f40": "518d4424035083c148518b4c241068601e2e01c644240f00e863e65dff59c20400cccccccccccccccccccccccccccccc",
+    "0xe25f70": "81ec980000005355568bf1578d7e0833db578d4c2468895c241cc7442464f0322c01e8f95e68ff8d442460508bcee86dfb10008d4c2460e804e2ffff8b4e048b11ff521c8bcee875fb100084c00f85a30700008d4c241ce8b443b7ff8d4c241cc744241c4c092701895c2424895c2428e8d4c3eaff84c074098d4c241ce87ec7eaff8b4e048b016a038d5424205257ff502084c0752b8b4e048b01ff501c8bcee81bfb100084c00f85400700008b4e048b116a038d4424205057ff522084c074d58bcee8f8fa100084c00f851d0700006aff68ec1e2e018d4c241ce8a08bb7ff8b4e048b118d4424145057ff92b80900008d4c2414e8768ab7ff6aff68e01e2e018d4c241ce8768bb7ff8b4e048b118d442414508d44245850ff92200100008b108bc8ff52188d4c2454e8a14768ff8d4c2414e8388ab7ff6aff68b08a25018d4c241ce8388bb7ff8b4e048b018d5424145257ff90780500008d4c2414e80e8ab7ff8b4e048b01536a015357ff90a00500005383ec0c8bc4c70010172301c7008c8c23018b4e0c8948048b4e103bcb8948087402ff018b4e048b11ff92300d0000a10ce943018b88680c0000894c24708bcee809fa100084c00f852e060000eb048b5c24188b56148a424884c00f85e10000008a462084c00f85d60000008b4e04db4424708b0151d91c24ff90180100008bd78bc8e89581e9ff84c00f84b20000008bcee8b7f9100084c00f85dc0500006aff68d41e2e018d4c241ce85f8ab7ff33c98a0d485737016a006a008d54241c516a016a006a006a00528d4c243ce81c129cff8d4c2414e82389b7ff8b4e048b016a006a0057ff90b00500008b4e048b198be8ff93180100008b4e045055ff93b40500006aff68b01e2e018d4c2438e8fb89b7ff8b4e048b19ff931801000050576a008d4c243c518b4e0455ff93b80500008d4c2430e8c488b7ff8b5c2418c64620018b56148a424884c075278bcee8fbf8100084c00f85200500008b4e048b296a00ff95180100008b4e045057ff956c0700006aff68c8d125018d4c243ce88b89b7ff8b078d4c24345183cb018bcf895c241cff505484c0755d6aff68c8d125018d4c2454e86489b7ff8b178d44244c83cb02508bcf895c241cff92a800000084c0742c6aff68c8d125018d4c2440e83a89b7ff8b178d4424385083cb046a0e8bcf895c2420ff92a400000084c07407c644241300eb05c644241301f6c304741083e3fb8d4c2438895c2418e8ed87b7fff6c302741083e3fd8d4c244c895c2418e8d887b7fff6c301741083e3fe8d4c2434895c2418e8c387b7ff8a44241384c00f84940100008bcee800f8100084c08d4c241c0f8525040000e878c0eaff84c074098d4c241ce822c4eaff8b4e048b116a048d4424205057ff522084c0752b8b4e048b11ff521c8bcee8bff7100084c00f85e40300008b4e048b016a048d5424205257ff502084c074d58bcee89cf7100084c00f85c10300008d4c2460e8bb178cff6aff680ed722018d4c2450e83b88b7ff8b4e048b018d542460528d54244c52ff90c80500008d4c2448e80d87b7ff8b6e048b45006a018bcdff90ec0500008b4e048b198d94249c000000528d4c2420e897109cff8b4e0450ff9320040000d81ddcde2201dfe0f6c4417504b301eb0232db8d8c249c000000e81e4468ff84db74628b4e048b016a006a016a006a0068941e2e01ff9018010000508d4c2434e8480f9cff8d4c241ce8ff0f9cff84c074248b4e048b11ff521c8bcee8ccf6100084c00f85cc0200008d4c241ce8db0f9cff84c075dc8bcee8b0f6100084c00f85bf0200008b56248b07426a018bcf895624ff900c0100008b4e048b1157ff92100700008b45006a008bcdff90ec0500008d4c2460e8c3168cff6aff68c8d125018d4c2448e82387b7ff8b178d442440508bcfff526c8d4c24408ad8e8fc85b7ff84db0f84210200008bcee83df6100084c08d4c241c0f8562020000e8b5beeaff84c074098d4c241ce85fc2eaff8b4e048b116a048d4424205057ff522084c0752b8b4e048b11ff521c8bcee8fcf5100084c00f85210200008b4e048b016a048d5424205257ff502084c074d58bcee8d9f5100084c00f85fe0100008d4c247ce8380d9cff8b4e048b296a048d84248000000050ff95180100008b4e0450ff55208d4c2454e8e359ebff6aff68e4ea2c018d4c2458e85386b7ff8d4c241c518d542454528d4c245ce87ed7eaff8bc8e85957a8ff8d4c2450e82085b7ff6aff68745125018d4c2434e82086b7ff8d44247c508d4c2430518d4c245ce84bd7eaff8bc8e82657a8ff8d4c242ce8ed84b7ff8d8c248c000000e861158cff6aff680ed722018d4c2444e8e185b7ff8b4e048b118d84248c000000508d44244050ff92c80500008d4c243ce8b084b7ff8b6e048b55006a018bcdff92ec0500006aff68741e2e018d4c244ce8a085b7ff6a016a006a006a008d5424648d4c2454e81895e9ff8d4c2444e87284b7ff8b45006a008bcdff90ec0500008d8c248c000000e8f9148cff8d4c2454e82059ebff8d4c247ce8370e9cff8b4e14c64148018b4e048b1157ff92a40500008b4e048b296a006a006a008d84248000000050ff953c0a00008b4e0450ff95800400008d4c2474e80884b7ff8b4e048b296a008d54247c52ff953c0a00008b4e0450ff95640400008d4c2478e8e383b7ff8b4e048b016a016a0057ff90b00100008b4e048b11ff521c8bcee814f4100084c00f840dfaffff8d4c241ce8a30d9cff5f5e5d5b81c498000000c38b45006a008bcdff90ec050000eb0d8b55006a008bcdff92ec0500008d4c2460e823148cff8d4c241ce86a0d9cff5f5e5d5b81c498000000c3cccccccccccccccccccccccccccccc"
+  }
+}

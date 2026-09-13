@@ -1,0 +1,81 @@
+{
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "scope": "Execute retail scripted-resource assignment/destruction with synthetic locals.\n\nThe resource deleter and heap free are observed stubs. Actual x86 performs the\nrefcount arithmetic and decides when to call them; no live actor is involved.\n",
+  "cases": [
+    {
+      "name": "empty_copy",
+      "passed": true,
+      "deleter_and_free_calls": []
+    },
+    {
+      "name": "same_info_copy",
+      "passed": true,
+      "deleter_and_free_calls": [
+        [
+          "delete",
+          50344192
+        ],
+        [
+          "free",
+          50343936
+        ]
+      ]
+    },
+    {
+      "name": "replace_last_old_ref",
+      "passed": true,
+      "deleter_and_free_calls": [
+        [
+          "delete",
+          50348288
+        ],
+        [
+          "free",
+          50348032
+        ],
+        [
+          "delete",
+          50344192
+        ],
+        [
+          "free",
+          50343936
+        ]
+      ]
+    },
+    {
+      "name": "local_before_map",
+      "passed": true,
+      "deleter_and_free_calls": [
+        [
+          "delete",
+          50344192
+        ],
+        [
+          "free",
+          50343936
+        ]
+      ]
+    },
+    {
+      "name": "map_before_local",
+      "passed": true,
+      "deleter_and_free_calls": [
+        [
+          "delete",
+          50344192
+        ],
+        [
+          "free",
+          50343936
+        ]
+      ]
+    }
+  ],
+  "native_bytes": {
+    "0x8abd10": "538b5c24085657538bf1e891e60e008b7b0c8b460c3bc78b5b08742c85c0741cff088b460c83380075128b4808ff50048b460c50e8732c350083c40485ff895e08897e0c7402ff075f8bc65e5bc20400",
+    "0x99a3b0": "8bc1c20400",
+    "0x7e74d0": "568bf18b460c85c0741cff088b460c83380075128b4808ff50048b460c50e8c974410083c404c7460800000000c7460c00000000c7068c0026018bce5ee91e2f1b00",
+    "0x99a430": "568bf18b460485c0c706d8a729017420c700000000008b46048b480485c9750950e86645260083c404c7460400000000c706101723015ec3"
+  }
+}

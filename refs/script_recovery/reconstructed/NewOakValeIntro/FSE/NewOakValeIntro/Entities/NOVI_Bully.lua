@@ -33,7 +33,7 @@ local INFO_BAR_MAX = 0                        -- AddQuestInfoBar 2nd immediate (
 local INFO_BAR_UNCHANGED = -1.0               -- UpdateQuestInfoBar(handle, remaining, -1.0, -1.0)
 local INFO_BAR_SCALE = 1.0                    -- native push 0x3f800000 at 0x00dbc3eb
 local INFO_BAR_FILLED_COLOUR = { r = 0, g = 255, b = 0, a = 255 }
-local INFO_BAR_EMPTY_COLOUR = { r = 0, g = 0, b = 255, a = 255 }
+local INFO_BAR_EMPTY_COLOUR = { r = 255, g = 0, b = 0, a = 255 }  -- bytes 00 00 ff ff are BGRA (word 0xffff0000 = the barrel-timer red), not RGBA blue
 local ACQUIRE_PRIORITY = 4                    -- every retail StartScriptingEntity site pushes 4
 
 local TEDDY_OBJECT = "OBJECT_TEDDY_BEAR_UNGIVEABLE"
@@ -84,9 +84,9 @@ function Init(quest, me)
   SaidPieceAboutAttackingVictim = false
   IntimidateSpeechLoop = INTIMIDATE_LOOP_START
   quest:EntitySetAsDamageable(me, false)
-  quest:EntitySetAsKillable(me, false)              -- retail passes a 3rd arg (0); ForgeFSE has 2
+  quest:EntitySetAsKillable(me, false, false)
   quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-  quest:SetThingHasInformation(me, false)           -- retail (me, 0, 0, 0); ForgeFSE has 2 args
+  quest:SetThingHasInformation(me, false, false, false)
   quest:EntitySetThingAsAllyOfThing(me, quest:GetHero())
   quest:SetIsPushableByHero(me, false)
 end
@@ -104,12 +104,13 @@ end
 -- me:Speak is blocking in ForgeFSE, so the per-frame terminate checks inside the wait are host-managed.
 local function speak_if_alive(quest, me, key)
   if quest:GetHealth(me) > ALIVE_HEALTH_THRESHOLD then
-    me:Speak(quest:GetHero(), key, SPEAK_SELECTION)
+    return me:Speak(quest:GetHero(), key, SPEAK_SELECTION) ~= false
   end
+  return true
 end
 
 -- Retail movie-sequence scope object: ctor = StartMovieSequence("") + PauseAllNonScriptedEntities(1),
--- dtor = PauseAllNonScriptedEntities(0) (EndMovieSequence inside the dtor is an inference).
+-- Forge's per-Lua-VM movie resource is explicitly released at each native destructor boundary.
 local function begin_movie(quest)
   quest:StartMovieSequence()
   quest:PauseAllNonScriptedEntities(true)
@@ -121,7 +122,7 @@ end
 
 -- Retail inline "was I hit by the hero" test (same inline in NOVI_Victim / NOVI_Villager):
 --   MsgIsHitBy(HERO) || (MsgIsHitByAnySpecialAbilityFrom(HERO) && !MsgIsHitBySpecialAbilityFrom(<ability>, HERO))
--- The <ability> immediate is dropped here; NOVI_Villager passes 0xe (cross-script evidence).
+-- Retail disassembly at 0x00DBC2BB-0x00DBC327 proves the excluded ability operand is 0x0e.
 local EXCLUDED_ABILITY = 0xe
 local function hit_by_hero(me)
   if me:MsgIsHitByHero() then return true end
@@ -136,7 +137,7 @@ local function walk_home(quest, me)
   local home = me:GetHomePos()
   while NOVI.distance_from_thing_to_position_over(me, home, HOME_ARRIVE_RADIUS) do
     if not NOVI.frame(quest, me) then return false end
-    me:MoveToPosition(home, HOME_MOVE_RADIUS, 0)
+    me:MoveToPosition(home, HOME_MOVE_RADIUS, 0, false, true)
     while me:IsPerformingScriptTask() do
       if not NOVI.frame(quest, me) then return false end
     end
@@ -157,7 +158,7 @@ end
 local function accept_presented_teddy(quest, me)
   begin_movie(quest)
   if not wait_victim_complaint(quest, me) then end_movie(quest); return false end
-  speak_if_alive(quest, me, TEXT.FOUND_TEDDY_TWO)
+  if not speak_if_alive(quest, me, TEXT.FOUND_TEDDY_TWO) then end_movie(quest); return false end
   given_teddy(quest, me)
   quest:ClearThingHasInformation(me)
   end_movie(quest)
@@ -168,7 +169,7 @@ end
 local function refuse_item(quest, me)
   if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then return false end
   begin_movie(quest)
-  speak_if_alive(quest, me, TEXT.DONT_WANT)
+  if not speak_if_alive(quest, me, TEXT.DONT_WANT) then end_movie(quest); return false end
   end_movie(quest)
   return true
 end
@@ -176,8 +177,8 @@ end
 -- Hero talked to me while carrying the teddy: ask whether to hand it over.
 local function offer_teddy_dialogue(quest, me)
   begin_movie(quest)
-  speak_if_alive(quest, me, TEXT.FOUND_TEDDY_ONE)
-  quest:GiveHeroYesNoQuestion(TEXT.GIVE_TEDDY_QUESTION, TEXT.ANSWER_YES, TEXT.ANSWER_NO, "")
+  if not speak_if_alive(quest, me, TEXT.FOUND_TEDDY_ONE) then end_movie(quest); return false end
+  quest:GiveHeroYesNoQuestion(TEXT.GIVE_TEDDY_QUESTION, TEXT.ANSWER_YES, TEXT.ANSWER_NO, "", true)
   local answer = quest:MsgIsQuestionAnsweredYesOrNo()
   while answer < 0 do
     if not NOVI.frame(quest, me) then end_movie(quest); return false end
@@ -185,7 +186,7 @@ local function offer_teddy_dialogue(quest, me)
   end
   if answer == ANSWER_YES then
     if not wait_victim_complaint(quest, me) then end_movie(quest); return false end
-    speak_if_alive(quest, me, TEXT.FOUND_TEDDY_TWO)
+    if not speak_if_alive(quest, me, TEXT.FOUND_TEDDY_TWO) then end_movie(quest); return false end
     given_teddy(quest, me)
     quest:ClearThingHasInformation(me)
   end
@@ -196,17 +197,22 @@ end
 -- Phase "teddy" (only once DoneIntro). Returns false on terminate.
 local function handle_teddy(quest, me)
   local talked_with_teddy = me:IsTalkedToByHero()
-    and quest:IsObjectInThingsPossession(quest:GetHero(), TEDDY_OBJECT)
+    and quest:IsObjectInThingsPossession(TEDDY_OBJECT, quest:GetHero())
   if talked_with_teddy then
     return offer_teddy_dialogue(quest, me)
   end
   if me:MsgIsPresentedWithItem() and g_PresentedItemName == TEDDY_OBJECT then
     return accept_presented_teddy(quest, me)
   end
-  -- retail re-queries MsgIsPresentedWithItem here; the second half of its condition is garbled
-  -- in the decompile (inference: any presented item that is not the teddy).
+  -- 0x00DBB60A-0x00DBB67D re-queries the message, then calls GSI +0x2e0
+  -- IsObjectInThingsPossession(presentedName, GetHero()). The teddy path above has
+  -- already failed here, so this is the verified other-owned-item refusal branch.
   if me:MsgIsPresentedWithItem() then
-    return refuse_item(quest, me)
+    local presented = g_PresentedItemName
+    if presented ~= nil and presented ~= ""
+      and quest:IsObjectInThingsPossession(presented, quest:GetHero()) then
+      return refuse_item(quest, me)
+    end
   end
   return true
 end
@@ -219,18 +225,18 @@ local function handle_talk(quest, me)
   if DoneIntro then
     if F.get(quest, F.HeroAttackedVictim) then
       if not SaidPieceAboutAttackingVictim then
-        speak_if_alive(quest, me, TEXT.IN_COMMON)
+        if not speak_if_alive(quest, me, TEXT.IN_COMMON) then end_movie(quest); return false end
         SaidPieceAboutAttackingVictim = true
       elseif HitsTaken < NASTY_STREAK_MAX_HITS then
-        speak_if_alive(quest, me, TEXT.NASTY_STREAK)
+        if not speak_if_alive(quest, me, TEXT.NASTY_STREAK) then end_movie(quest); return false end
       else
-        speak_if_alive(quest, me, TEXT.DONT_HIT_ME)
+        if not speak_if_alive(quest, me, TEXT.DONT_HIT_ME) then end_movie(quest); return false end
       end
     else
-      speak_if_alive(quest, me, TEXT.BADGERING)
+      if not speak_if_alive(quest, me, TEXT.BADGERING) then end_movie(quest); return false end
     end
   else
-    speak_if_alive(quest, me, TEXT.GET_LOST)
+    if not speak_if_alive(quest, me, TEXT.GET_LOST) then end_movie(quest); return false end
     DoneIntro = true
   end
   end_movie(quest)
@@ -239,29 +245,101 @@ end
 
 -- Subdued: run-off cutscene, good deed, remove me. Ends the script.
 local function run_off(quest, me, victim)
-  NOVI.acquire(quest, me, ACQUIRE_PRIORITY)
+  if not NOVI.acquire(quest, me, ACQUIRE_PRIORITY) then return false end
+  -- Native checks termination after successful acquisition too (0xDBC8ED).
+  if quest:IsActiveThreadTerminating() then
+    NOVI.release(quest, me)
+    return false
+  end
   local hero = quest:GetHero()
-  NOVI.acquire(quest, hero, ACQUIRE_PRIORITY)     -- retail StartScriptingEntity(GetHero(), ...)
-  NOVI.acquire(quest, victim, ACQUIRE_PRIORITY)   -- retail StartScriptingEntity(<victim>, ...)
+  if not NOVI.acquire(quest, hero, ACQUIRE_PRIORITY) then
+    -- Retail's 0x00DBCC33 unwind destroys Hero, then the outer Bully resource.
+    NOVI.release(quest, hero)
+    NOVI.release(quest, me)
+    return false
+  end
+  -- 0xDBC96C exits through Hero then Bully destruction before acquiring Victim.
+  if quest:IsActiveThreadTerminating() then
+    NOVI.release(quest, hero)
+    NOVI.release(quest, me)
+    return false
+  end
+  if not NOVI.acquire(quest, victim, ACQUIRE_PRIORITY) then
+    -- Retail's 0x00DBCC2A unwind is strict reverse order: Victim, Hero, Bully.
+    NOVI.release(quest, victim)
+    NOVI.release(quest, hero)
+    NOVI.release(quest, me)
+    return false
+  end
+  -- 0xDBC9E1 exits before constructing the macro maps or starting a movie.
+  if quest:IsActiveThreadTerminating() then
+    NOVI.release(quest, victim)
+    NOVI.release(quest, hero)
+    NOVI.release(quest, me)
+    return false
+  end
   local actors = { HERO = hero, BRAT = victim, BULLY = me }
   local brat_line = TEXT.VICTIM_THANKS
-  if F.get(quest, F.HeroAttackedVictim) then brat_line = TEXT.VICTIM_THANKS_AFTER_HIT end
-  local flags = { ["$BRATLINE"] = brat_line }
+  local attacked_victim = F.get(quest, F.HeroAttackedVictim)
+  -- Both native text branches check before substitution/movie setup
+  -- (0xDBCAA5 / 0xDBCACE), unwinding Victim, Hero and Bully.
+  if quest:IsActiveThreadTerminating() then
+    NOVI.release(quest, victim)
+    NOVI.release(quest, hero)
+    NOVI.release(quest, me)
+    return false
+  end
+  if attacked_victim then brat_line = TEXT.VICTIM_THANKS_AFTER_HIT end
+  -- Retail passes this map<CCharString,CCharString> as RunCutsceneMacro_Func's
+  -- fourth (input_args) operand. ForgeFSE partitions string-valued setup entries
+  -- into that map and keeps boolean-valued entries in the third-operand flag map.
+  local input_args = { ["$BRATLINE"] = brat_line }
+  local bully_before = me:GetPos()
+  local victim_before = victim:GetPos()
+  quest:Log(string.format("NOVI_PROBE BullyRun before bully=(%.3f,%.3f,%.3f) victim=(%.3f,%.3f,%.3f)", bully_before.x or 0, bully_before.y or 0, bully_before.z or 0, victim_before.x or 0, victim_before.y or 0, victim_before.z or 0))
   begin_movie(quest)
   quest:FixMovieSequenceCamera(true)
-  quest:RunCutsceneWithSetup(CS_BULLYRUN1, actors, flags)
+  quest:RunCutsceneWithSetup(CS_BULLYRUN1, actors, input_args)
+  -- 0x00DBCBA4 / 0x00DBCBF7 test the active entity thread after RUN1.
+  -- Termination takes 0x00DBCC00's cleanup-only path; a cutscene skip does not.
+  if quest:IsActiveThreadTerminating() then
+    -- Unlike normal completion at 0xDBCC6F, this native exit does not
+    -- explicitly unfix the camera before movie/resource destruction.
+    end_movie(quest)
+    NOVI.release(quest, victim)
+    NOVI.release(quest, hero)
+    NOVI.release(quest, me)
+    return false
+  end
+  local bully_after = me:GetPos()
+  local victim_after = victim:GetPos()
+  quest:Log(string.format("NOVI_PROBE BullyRun after1 bully=(%.3f,%.3f,%.3f) victim=(%.3f,%.3f,%.3f) bullyTask=%s victimTask=%s", bully_after.x or 0, bully_after.y or 0, bully_after.z or 0, victim_after.x or 0, victim_after.y or 0, victim_after.z or 0, tostring(me:IsPerformingScriptTask()), tostring(victim:IsPerformingScriptTask())))
+  -- RUN1 owns both outcomes: normal RunTo/camera/dialogue, or authored SkipCond.
+  -- A skipped scene intentionally leaves Bully at BULLY1 and hides him. Do not
+  -- resurrect him or issue another move based on distance after the macro returns.
   if not F.get(quest, F.GivenHeroTeddy) then
-    quest:RunCutsceneWithSetup(CS_BULLYRUN2, actors, flags)
+    -- 0x00DBCBBD-0x00DBCBCD passes null flag and input maps to the second macro.
+    quest:RunCutsceneWithSetup(CS_BULLYRUN2, actors, {})
     quest:ClearThingHasInformation(victim)
     F.set(quest, F.GivenHeroTeddy, true)
   else
-    quest:RunCutsceneWithSetup(CS_BULLYRUN_DUMMY, actors, flags)
+    -- 0x00DBCC51-0x00DBCC61 likewise passes null maps to the dummy macro.
+    quest:RunCutsceneWithSetup(CS_BULLYRUN_DUMMY, actors, {})
   end
   quest:FixMovieSequenceCamera(false)
   end_movie(quest)
+  -- Retail destroys the nested victim and Hero resources at 0x00DBCCAA and
+  -- 0x00DBCCAF before changing quest state and removing the bully.
+  NOVI.release(quest, victim)
+  NOVI.release(quest, hero)
   F.set(quest, F.BullyRanOff, true)
   Deeds.add_good(quest, me)
-  quest:RemoveThing(me)                            -- retail RemoveThing(me, 0, 1)
+  -- Retail removes the bully unconditionally after state/deed updates.
+  quest:RemoveThing(me, false, true)
+  -- The outer bully resource is destroyed in the function epilogue at
+  -- 0x00DBCCEF, after RemoveThing.
+  NOVI.release(quest, me)
+  return true
 end
 
 -- Phase "hit": count hero hits on the info bar. Returns "removed" after run_off, false on terminate.
@@ -280,7 +358,7 @@ local function handle_hit(quest, me, victim)
   if InitialHealth <= HitsTaken then
     F.set(quest, F.BullySubdued, true)
     quest:RemoveQuestInfoElement(F.get(quest, F.GUIBullyHealthCounter))
-    run_off(quest, me, victim)
+    if not run_off(quest, me, victim) then return false end
     return "removed"
   end
   local conv = quest:AddNewConversation(me, false, false)
@@ -294,9 +372,11 @@ end
 
 -- Phase "intimidate": timer-gated taunt at the victim while no hit has landed yet.
 local function intimidate(quest, me, victim)
-  local timer = F.get(quest, F.TalkIntermittentTimer)   -- GetTimer/SetTimer id dropped; inference
+  -- 0x00DBC59B-0x00DBC5B4 loads PARENT+0x104 for GetTimer; 0x00DBC614-0x00DBC62C
+  -- loads that same field for SetTimer(timer, 3). PDB layout identifies +0x104 as TalkIntermittentTimer.
+  local timer = F.get(quest, F.TalkIntermittentTimer)
   if quest:GetTimer(timer) ~= 0 then return true end
-  if SpokenOnFirstProximity and math.random(0, INTIMIDATE_RAND_MOD - 1) ~= 0 then return true end
+  if SpokenOnFirstProximity and quest:RetailRandModulo(INTIMIDATE_RAND_MOD) ~= 0 then return true end
   if not (NOVI.hero_within(quest, me, INTIMIDATE_DISTANCE) and HitsTaken == 0) then return true end
   SpokenOnFirstProximity = true
   quest:SetTimer(timer, INTIMIDATE_TIMER_VALUE)
@@ -306,11 +386,11 @@ local function intimidate(quest, me, victim)
   quest:AddLineToConversation(conv, string.format(TEXT.INTIMIDATING_FMT, IntimidateSpeechLoop), me, victim)
   IntimidateSpeechLoop = IntimidateSpeechLoop + INTIMIDATE_LOOP_STEP
   if IntimidateSpeechLoop > INTIMIDATE_LOOP_MAX then IntimidateSpeechLoop = INTIMIDATE_LOOP_START end
-  -- retail PlayAnimation(anim, 0, 0, 0, 1, true, false): non-blocking
-  if math.random(0, 1) == 0 then
-    me:PlayAnimation(ANIM_SHAKE_FIST, false)
+  -- retail PlayAnimation(anim, 0, 0, 0, 1, true, false, false)
+  if quest:RetailRandModulo(2) == 0 then
+    me:PlayAnimation(ANIM_SHAKE_FIST, false, false, false, true, true, false, false)
   else
-    me:PlayAnimation(ANIM_POINT_AT, false)
+    me:PlayAnimation(ANIM_POINT_AT, false, false, false, true, true, false, false)
   end
   return true
 end
@@ -328,7 +408,7 @@ function Main(quest, me)
     if not handle_talk(quest, me) then NOVI.release(quest, me); return end
     local hit = handle_hit(quest, me, victim)
     if hit == "removed" or hit == false then return end
-    quest:EntitySetFacingAngleTowardsThing(me, victim)
+    quest:EntitySetFacingAngleTowardsThing(me, victim, true)
     if not intimidate(quest, me, victim) then return end
     if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end
   end

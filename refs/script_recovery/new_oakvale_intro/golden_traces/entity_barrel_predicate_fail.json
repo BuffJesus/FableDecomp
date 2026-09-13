@@ -1,0 +1,55 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "BarrelBrokenInstantaneous",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "BarrelBrokenPersistent",
+        true
+      ],
+      "event": "api-call",
+      "name": "SetStateBool",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetPos",
+      "receiver": "me",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        "BarrelBrokenPos",
+        "11.250000,2.500000,-7.750000"
+      ],
+      "event": "api-call",
+      "name": "SetStateString",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Entity.GetPos": [
+      {
+        "x": 11.25,
+        "y": 2.5,
+        "z": -7.75
+      }
+    ]
+  },
+  "function": "OnPredicateFail",
+  "kind": "entity",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua",
+  "sourceSha256": "2792d889ce455edc5e2112e69eb94e73f7c08bd30b174a32287c0fb78e4bb506"
+}

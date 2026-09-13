@@ -1,0 +1,32 @@
+{
+  "status": "unapplied; do not regenerate shared metadata from this file",
+  "reason": "Native resource receiver parity for Guardian repeat speech",
+  "operations": [
+    {
+      "owner": "RetailResources",
+      "name": "Speak",
+      "returns": "void",
+      "arguments": [
+        "unsigned resourceId",
+        "CScriptThing* target",
+        "string key",
+        "int selection",
+        "bool listen",
+        "bool sound2D",
+        "bool overFade"
+      ],
+      "native_wrapper": "0x7E7390",
+      "expert_slot": "0x34"
+    },
+    {
+      "owner": "RetailResources",
+      "name": "IsPerformingScriptTask",
+      "returns": "bool",
+      "arguments": [
+        "unsigned resourceId"
+      ],
+      "native_wrapper": "0x7E7450",
+      "expert_slot": "0x68"
+    }
+  ]
+}

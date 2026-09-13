@@ -23,7 +23,7 @@ function Init(quest, me)
 end
 
 local function show_break_instruction(quest, me)
-    local onXbox = NOVI.is_xbox()
+    local onXbox = NOVI.is_xbox(quest)
     local key = onXbox and TEXT_BREAK_BARRELS or TEXT_BREAK_BARRELS_PC
     quest:DisplayGameInfo(key)
     while not quest:MsgIsGameInfoClickedPast() do

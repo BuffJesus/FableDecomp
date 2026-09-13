@@ -1,0 +1,768 @@
+[
+  {
+    "fixture": "entity_bully_run1_terminated_teddy_given.json",
+    "beforeSourceSHA256": "fb2dfad25da53ee4006fbe9a53b1efa4ec9bfae7948acc444ba5be2ca06675aa",
+    "afterSourceSHA256": "f64c66264d456455c63df8a2e6f07d5518e942df4e75da0a439d9c2523ecdb54",
+    "beforeTail": [
+      {
+        "name": "RunCutsceneWithSetup",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "CS_OAKVALEINTRO_BULLYRUN1",
+          {
+            "BULLY": {
+              "handle": "me",
+              "scope": "Entity"
+            },
+            "BRAT": {
+              "handle": "victim",
+              "scope": "Entity"
+            },
+            "HERO": {
+              "handle": "hero",
+              "scope": "Entity"
+            }
+          },
+          {
+            "$BRATLINE": "TEXT_QST_048_VICTIM_THANKS"
+          }
+        ]
+      },
+      {
+        "name": "GetPos",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "GetPos",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "IsPerformingScriptTask",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "IsPerformingScriptTask",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "Log",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "NOVI_PROBE BullyRun after1 bully=(3596.740,851.895,13.375) victim=(3605.044,858.252,13.585) bullyTask=nil victimTask=nil"
+        ]
+      },
+      {
+        "name": "GetStateBool",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GivenHeroTeddy"
+        ]
+      },
+      {
+        "name": "RunCutsceneWithSetup",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "CS_OAKVALEINTRO_BULLYRUNDUMMY",
+          {
+            "BULLY": {
+              "handle": "me",
+              "scope": "Entity"
+            },
+            "BRAT": {
+              "handle": "victim",
+              "scope": "Entity"
+            },
+            "HERO": {
+              "handle": "hero",
+              "scope": "Entity"
+            }
+          },
+          {}
+        ]
+      },
+      {
+        "name": "FixMovieSequenceCamera",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "PauseAllNonScriptedEntities",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "EndMovieSequence",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "hero",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "SetStateBool",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "BullyRanOff",
+          true
+        ]
+      },
+      {
+        "name": "GetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GoodDeedsPerformed"
+        ]
+      },
+      {
+        "name": "SetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GoodDeedsPerformed",
+          1
+        ]
+      },
+      {
+        "name": "GiveHeroMorality",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          0.001
+        ]
+      },
+      {
+        "name": "GetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "BadDeedsPerformed"
+        ]
+      },
+      {
+        "name": "DisplayGameInfo",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "TEXT_QST_048_SCRMSG_DID_FIRST_GOOD_DEED"
+        ]
+      },
+      {
+        "name": "MsgIsGameInfoClickedPast",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "AddLogbookTutorialEntry",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "TEXT_QST_LOG_BASICS_MAP"
+        ]
+      },
+      {
+        "name": "GetHeroGold",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "GetStateBool",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GivenSweets"
+        ]
+      },
+      {
+        "name": "GetActiveQuestName",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "SetQuestCardObjective",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "Q_NewOakValeIntro",
+          "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_02",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "GetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GUIGoodDeedCounter"
+        ]
+      },
+      {
+        "name": "UpdateQuestInfoCounter",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          501,
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "RemoveThing",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          {
+            "handle": "me",
+            "scope": "Entity"
+          },
+          false,
+          true
+        ]
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      }
+    ],
+    "afterTail": [
+      {
+        "name": "RunCutsceneWithSetup",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "CS_OAKVALEINTRO_BULLYRUN1",
+          {
+            "BULLY": {
+              "handle": "me",
+              "scope": "Entity"
+            },
+            "BRAT": {
+              "handle": "victim",
+              "scope": "Entity"
+            },
+            "HERO": {
+              "handle": "hero",
+              "scope": "Entity"
+            }
+          },
+          {
+            "$BRATLINE": "TEXT_QST_048_VICTIM_THANKS"
+          }
+        ]
+      },
+      {
+        "name": "IsActiveThreadTerminating",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "FixMovieSequenceCamera",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "PauseAllNonScriptedEntities",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "EndMovieSequence",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "hero",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      }
+    ],
+    "limit": "Mock termination predicate is true at the post-RUN1 boundary; separate LuaRuntime test raises it inside RUN1."
+  },
+  {
+    "fixture": "entity_bully_run1_terminated_teddy_missing.json",
+    "beforeSourceSHA256": "fb2dfad25da53ee4006fbe9a53b1efa4ec9bfae7948acc444ba5be2ca06675aa",
+    "afterSourceSHA256": "f64c66264d456455c63df8a2e6f07d5518e942df4e75da0a439d9c2523ecdb54",
+    "beforeTail": [
+      {
+        "name": "RunCutsceneWithSetup",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "CS_OAKVALEINTRO_BULLYRUN1",
+          {
+            "BULLY": {
+              "handle": "me",
+              "scope": "Entity"
+            },
+            "BRAT": {
+              "handle": "victim",
+              "scope": "Entity"
+            },
+            "HERO": {
+              "handle": "hero",
+              "scope": "Entity"
+            }
+          },
+          {
+            "$BRATLINE": "TEXT_QST_048_VICTIM_THANKS"
+          }
+        ]
+      },
+      {
+        "name": "GetPos",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "GetPos",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "IsPerformingScriptTask",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "IsPerformingScriptTask",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "Log",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "NOVI_PROBE BullyRun after1 bully=(3596.740,851.895,13.375) victim=(3605.044,858.252,13.585) bullyTask=nil victimTask=nil"
+        ]
+      },
+      {
+        "name": "GetStateBool",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GivenHeroTeddy"
+        ]
+      },
+      {
+        "name": "RunCutsceneWithSetup",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "CS_OAKVALEINTRO_BULLYRUN2",
+          {
+            "BULLY": {
+              "handle": "me",
+              "scope": "Entity"
+            },
+            "BRAT": {
+              "handle": "victim",
+              "scope": "Entity"
+            },
+            "HERO": {
+              "handle": "hero",
+              "scope": "Entity"
+            }
+          },
+          {}
+        ]
+      },
+      {
+        "name": "ClearThingHasInformation",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          {
+            "handle": "victim",
+            "scope": "Entity"
+          }
+        ]
+      },
+      {
+        "name": "SetStateBool",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GivenHeroTeddy",
+          true
+        ]
+      },
+      {
+        "name": "FixMovieSequenceCamera",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "PauseAllNonScriptedEntities",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "EndMovieSequence",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "hero",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "SetStateBool",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "BullyRanOff",
+          true
+        ]
+      },
+      {
+        "name": "GetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GoodDeedsPerformed"
+        ]
+      },
+      {
+        "name": "SetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GoodDeedsPerformed",
+          1
+        ]
+      },
+      {
+        "name": "GiveHeroMorality",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          0.001
+        ]
+      },
+      {
+        "name": "GetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "BadDeedsPerformed"
+        ]
+      },
+      {
+        "name": "DisplayGameInfo",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "TEXT_QST_048_SCRMSG_DID_FIRST_GOOD_DEED"
+        ]
+      },
+      {
+        "name": "MsgIsGameInfoClickedPast",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "AddLogbookTutorialEntry",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "TEXT_QST_LOG_BASICS_MAP"
+        ]
+      },
+      {
+        "name": "GetHeroGold",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "GetStateBool",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GivenSweets"
+        ]
+      },
+      {
+        "name": "GetActiveQuestName",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "SetQuestCardObjective",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "Q_NewOakValeIntro",
+          "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_02",
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "GetStateInt",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "GUIGoodDeedCounter"
+        ]
+      },
+      {
+        "name": "UpdateQuestInfoCounter",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          501,
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "RemoveThing",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          {
+            "handle": "me",
+            "scope": "Entity"
+          },
+          false,
+          true
+        ]
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      }
+    ],
+    "afterTail": [
+      {
+        "name": "RunCutsceneWithSetup",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          "CS_OAKVALEINTRO_BULLYRUN1",
+          {
+            "BULLY": {
+              "handle": "me",
+              "scope": "Entity"
+            },
+            "BRAT": {
+              "handle": "victim",
+              "scope": "Entity"
+            },
+            "HERO": {
+              "handle": "hero",
+              "scope": "Entity"
+            }
+          },
+          {
+            "$BRATLINE": "TEXT_QST_048_VICTIM_THANKS"
+          }
+        ]
+      },
+      {
+        "name": "IsActiveThreadTerminating",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "FixMovieSequenceCamera",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "PauseAllNonScriptedEntities",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": [
+          false
+        ]
+      },
+      {
+        "name": "EndMovieSequence",
+        "receiver": "quest",
+        "event": "api-call",
+        "scope": "Quest",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "victim",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "hero",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      },
+      {
+        "name": "ReleaseControl",
+        "receiver": "me",
+        "event": "api-call",
+        "scope": "Entity",
+        "arguments": []
+      }
+    ],
+    "limit": "Mock termination predicate is true at the post-RUN1 boundary; separate LuaRuntime test raises it inside RUN1."
+  }
+]

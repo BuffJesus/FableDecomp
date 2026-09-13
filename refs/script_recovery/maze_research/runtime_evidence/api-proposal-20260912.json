@@ -1,0 +1,68 @@
+{
+  "status": "review-only, not applied",
+  "baseline_manifest_sha256": "8ac14d1e83ad940ddc174ef80ba62d100c9a332e2876c190e0d2b76889f8dfdd",
+  "additions": [
+    {
+      "receiver": "Quest",
+      "name": "RetailFlags",
+      "parameters": [
+        "name:string"
+      ],
+      "return": "shared RetailFlags"
+    },
+    {
+      "receiver": "Quest",
+      "name": "RetainRetailThing",
+      "parameters": [
+        "name:string",
+        "thing:owned CScriptThing or nil"
+      ],
+      "return": "void"
+    },
+    {
+      "receiver": "Quest",
+      "name": "GetRetainedRetailThing",
+      "parameters": [
+        "name:string"
+      ],
+      "return": "owned CScriptThing or nil"
+    },
+    {
+      "receiver": "RetailFlags",
+      "name": "Get",
+      "parameters": [
+        "name:string"
+      ],
+      "return": "bool"
+    },
+    {
+      "receiver": "RetailFlags",
+      "name": "Set",
+      "parameters": [
+        "name:string",
+        "value:bool"
+      ],
+      "return": "void"
+    },
+    {
+      "receiver": "RetailResources",
+      "name": "RunMacroWithFlags",
+      "parameters": [
+        "name:string",
+        "actorMap:integer",
+        "flags:RetailFlags",
+        "setup:bool",
+        "skippable:bool"
+      ],
+      "return": "void"
+    }
+  ],
+  "ownership_note": "Quest owns transient maps/thing wrappers; C++ shared owners cross VM boundaries; no sol::object transfer or implicit persistence.",
+  "amendments": [
+    {
+      "receiver": "Quest",
+      "name": "SetThingAsUsable",
+      "change": "Accept borrowed or owned Thing synchronously; same Lua arguments."
+    }
+  ]
+}

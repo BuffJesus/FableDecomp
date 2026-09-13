@@ -1,0 +1,47 @@
+{
+  "schema": "teddy-girl-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_TeddyGirl",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DAF000",
+      "endExclusive": "0x00DAF052",
+      "rangeSize": 82,
+      "bytesSha256": "3F12B846F0844FB15DABD90874F4FBBFB487576C55D353F8FBC22DCD129D5DB9",
+      "instructionCount": 37,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DAF080",
+      "endExclusive": "0x00DB0600",
+      "rangeSize": 5504,
+      "bytesSha256": "035FCABE3B7A5308A57C6D4BEC497E8B149BE419C6264EA4A0DDC02638DB1DB6",
+      "instructionCount": 1620,
+      "terminal": "ret"
+    },
+    {
+      "name": "GivenTeddy",
+      "address": "0x00DB0600",
+      "endExclusive": "0x00DB065B",
+      "rangeSize": 91,
+      "bytesSha256": "C14061C7E5C55D733647B1EB092FE0574D08D6C611EF40382893487197968596",
+      "instructionCount": 29,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "complete Init, Main dispatcher, and GivenTeddy helper",
+    "moralityBranches": [
+      "AddGoodDeed",
+      "AddBadDeed(2)"
+    ],
+    "masterSolutions": [
+      "B",
+      "C"
+    ],
+    "boundaryCorrection": "translation_unit Main size 5498 truncates the epilogue; exact terminal ret is 0x00DB05FF"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "witnesses": [
+    {
+      "id": "guardian-wait-for-piece-over-maze-is-alive",
+      "functionAddress": "0x00E27AC0",
+      "decompileSha256": "5e49da6a66862004c1733cc177624237c8856c0dd1583f953b0f2d52507e2a8c",
+      "annotatedSha256": "57fb024118914edc47dbd95508c8a8ab194962a6ae3650323a190914ebbfb70f",
+      "association": {
+        "lookupCall": "0x00E27B1C",
+        "predicateCall": "0x00E27B3A",
+        "lookup": "GetThingWithScriptName(\"GTDI_Maze\")",
+        "stackBase": "ESP after sub esp,0x10; push esi",
+        "wrapperOffset": 8,
+        "implementationOffset": 12,
+        "explanation": "At E27B17, lea eax,[esp+0xc] follows one argument push, so the hidden return buffer is at base+8. GetThingWithScriptName returns with ret 8. The string destructor at E27B26 preserves ESP. E27B30 loads [esp+0xc], the returned wrapper's +4 implementation. Its null check and slot 0x12c call implement the byte-verified CScriptThing::IsAlive body. Both false edges go to E27B65; the frame/termination loop returns to E27B30. The native caller digest includes the final ret at E27BA8, beyond the export's reported size of 230."
+      },
+      "nativeRegions": [
+        {
+          "name": "WaitForPieceOver caller",
+          "address": "0x00E27AC0",
+          "size": 233,
+          "sha256": "aeafe0281f0fe779739bc840b3ee953aefe7b520af8d79c8223d7aecbcaac079"
+        },
+        {
+          "name": "CScriptThing::IsAlive",
+          "address": "0x004AB130",
+          "size": 28,
+          "sha256": "2f058b3a91d179c5bd531a6c5a536915b23fc9e4edce96b78b2029d7d2376000"
+        },
+        {
+          "name": "GetThingWithScriptName hidden-return ABI",
+          "address": "0x008A7D60",
+          "size": 160,
+          "sha256": "34233413b0368ef22aea4af44c1f5c1093a2ca808e2c48df7320952e0e29f2cd"
+        },
+        {
+          "name": "CScriptThing copy layout",
+          "address": "0x004ABE90",
+          "size": 33,
+          "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+        },
+        {
+          "name": "CCharString destructor",
+          "address": "0x0099EAE0",
+          "size": 11,
+          "sha256": "39680d1c87096045f57741672336decfdda997c791478f94b7bfcde47f0d07a9"
+        }
+      ],
+      "vtableSlots": [
+        {
+          "name": "CScriptThing::IsAlive",
+          "address": "0x01238DB8",
+          "target": "0x004AB130"
+        },
+        {
+          "name": "GetThingWithScriptName",
+          "address": "0x0126102C",
+          "target": "0x008A7D60"
+        }
+      ]
+    },
+    {
+      "id": "beardy-main-nearest-barber-is-alive",
+      "functionAddress": "0x00E4FA20",
+      "decompileSha256": "d2efa9e740882ad7ef23101ca518fe22b232ad6c959f9971dadd37048232e126",
+      "annotatedSha256": "dcb27115fc6a347be6963790e1ae010979d844e6ddce8265317a37a7de9874b8",
+      "association": {
+        "lookupCall": "0x00E4FFDA",
+        "predicateCall": "0x00E4FFF3",
+        "lookup": "GetNearestWithScriptName(hero, \"CREATURE_BOWERSTONE_SLUMS_VILLAGER_FEMALE_BARBER\")",
+        "stackBase": "ESP before string argument push at E4FFCA",
+        "wrapperOffset": 32,
+        "implementationOffset": 36,
+        "explanation": "The string argument is pushed at E4FFCA before GetHero, which returns a borrowed wrapper pointer in EAX with plain ret. E4FFD1 pushes that pointer. E4FFD2 computes [esp+0x28], so the hidden result buffer is at base+0x20. GetNearestWithScriptName returns with ret 12; E4FFE9 loads base+0x24, that wrapper implementation. Both null and false IsAlive edges reach E5002C. The distinct Beardy wrapper is base+0x2c and is tested by a direct call at E50030. The native char result is retained in the rewrite because the export reuses cVar1."
+      },
+      "nativeRegions": [
+        {
+          "name": "CScriptThing::IsAlive",
+          "address": "0x004AB130",
+          "size": 28,
+          "sha256": "2f058b3a91d179c5bd531a6c5a536915b23fc9e4edce96b78b2029d7d2376000"
+        },
+        {
+          "name": "GetThingWithScriptName hidden-return ABI",
+          "address": "0x008A7D60",
+          "size": 160,
+          "sha256": "34233413b0368ef22aea4af44c1f5c1093a2ca808e2c48df7320952e0e29f2cd"
+        },
+        {
+          "name": "CScriptThing copy layout",
+          "address": "0x004ABE90",
+          "size": 33,
+          "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+        },
+        {
+          "name": "CCharString destructor",
+          "address": "0x0099EAE0",
+          "size": 11,
+          "sha256": "39680d1c87096045f57741672336decfdda997c791478f94b7bfcde47f0d07a9"
+        },
+        {
+          "name": "Beardy lookup and predicate window",
+          "address": "0x00E4FF83",
+          "size": 178,
+          "sha256": "939af6525bef9fb5829ac9dabb7f80a9d537d41339b71cd113bd8b3802f08066"
+        },
+        {
+          "name": "GetHero borrowed return ABI",
+          "address": "0x00891CA0",
+          "size": 173,
+          "sha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+        },
+        {
+          "name": "GetNearestWithScriptName hidden-return ABI",
+          "address": "0x0089A510",
+          "size": 460,
+          "sha256": "26fc439b661e29683b249c1d710931a87f9f0bd44a4b6f2f92c2715ef8896547"
+        }
+      ],
+      "vtableSlots": [
+        {
+          "name": "CScriptThing::IsAlive",
+          "address": "0x01238DB8",
+          "target": "0x004AB130"
+        },
+        {
+          "name": "GetThingWithScriptName",
+          "address": "0x0126102C",
+          "target": "0x008A7D60"
+        },
+        {
+          "name": "GetHero",
+          "address": "0x01261024",
+          "target": "0x00891CA0"
+        },
+        {
+          "name": "GetNearestWithScriptName",
+          "address": "0x01261040",
+          "target": "0x0089A510"
+        }
+      ],
+      "shape": "if_not_alive",
+      "lookupMethod": "GetNearestWithScriptName"
+    }
+  ]
+}

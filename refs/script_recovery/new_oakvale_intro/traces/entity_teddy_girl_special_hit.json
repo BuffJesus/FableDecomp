@@ -171,7 +171,7 @@
         "TEXT_QST_LOG_BASICS_MAP"
       ],
       "event": "api-call",
-      "name": "AddLogbookStoryEntryString",
+      "name": "AddLogbookTutorialEntry",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -186,7 +186,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -221,12 +223,26 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
         "TEXT_QST_048_TEDDYGIRL_DONT_HIT",
-        0
+        0,
+        false,
+        true,
+        false
       ],
       "event": "api-call",
-      "name": "SpeakAndWait",
+      "name": "Speak",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -321,5 +337,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-  "sourceSha256": "f974c63dd03422742f630bf76edf18fa263143d06e59535d1d86baee8fe58def"
+  "sourceSha256": "118cd68bc8bbd2d19eabc661d7a39919259bc7fea6df49a0eefb8f35553cf6e0"
 }

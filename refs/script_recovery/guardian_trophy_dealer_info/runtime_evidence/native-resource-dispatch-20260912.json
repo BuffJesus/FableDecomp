@@ -1,0 +1,153 @@
+{
+  "scope": "Execute native resource Speak/task wrappers with empty and populated handles.\n\nOnly the expert vtable methods are doubles. Native wrapper null handling,\nreceiver selection, argument forwarding and stack cleanup execute.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "operation": "speak",
+      "populated": false,
+      "arguments": [
+        50356224,
+        50360320,
+        0,
+        0,
+        1,
+        0
+      ],
+      "calls": [],
+      "busy": null
+    },
+    {
+      "operation": "speak",
+      "populated": false,
+      "arguments": [
+        0,
+        50360320,
+        1,
+        1,
+        0,
+        1
+      ],
+      "calls": [],
+      "busy": null
+    },
+    {
+      "operation": "speak",
+      "populated": false,
+      "arguments": [
+        50356224,
+        50360320,
+        2,
+        0,
+        0,
+        0
+      ],
+      "calls": [],
+      "busy": null
+    },
+    {
+      "operation": "busy",
+      "populated": false,
+      "arguments": [],
+      "calls": [],
+      "busy": false
+    },
+    {
+      "operation": "busy",
+      "populated": false,
+      "arguments": [],
+      "calls": [],
+      "busy": false
+    },
+    {
+      "operation": "speak",
+      "populated": true,
+      "arguments": [
+        50356224,
+        50360320,
+        0,
+        0,
+        1,
+        0
+      ],
+      "calls": [
+        [
+          50356224,
+          50360320,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "busy": null
+    },
+    {
+      "operation": "speak",
+      "populated": true,
+      "arguments": [
+        0,
+        50360320,
+        1,
+        1,
+        0,
+        1
+      ],
+      "calls": [
+        [
+          0,
+          50360320,
+          1,
+          1,
+          0,
+          1
+        ]
+      ],
+      "busy": null
+    },
+    {
+      "operation": "speak",
+      "populated": true,
+      "arguments": [
+        50356224,
+        50360320,
+        2,
+        0,
+        0,
+        0
+      ],
+      "calls": [
+        [
+          50356224,
+          50360320,
+          2,
+          0,
+          0,
+          0
+        ]
+      ],
+      "busy": null
+    },
+    {
+      "operation": "busy",
+      "populated": true,
+      "arguments": [],
+      "calls": [
+        []
+      ],
+      "busy": false
+    },
+    {
+      "operation": "busy",
+      "populated": true,
+      "arguments": [],
+      "calls": [
+        []
+      ],
+      "busy": true
+    }
+  ],
+  "native_bytes": {
+    "0x7e7390": "8b490885c974058b01ff6034c21800",
+    "0x7e7450": "8b490885c9750332c0c38b01ff6068"
+  }
+}

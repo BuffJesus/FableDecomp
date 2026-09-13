@@ -1,0 +1,142 @@
+{
+  "address": "0x00DB2B10",
+  "bodySize": 4890,
+  "resourceOffset": 16,
+  "selfRegister": "edi",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "e4f1951ae9bc865d1aa70fb25ec203c08ed98e9c2e89daf16784212b38e68b65",
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "address": 8287376,
+      "size": 57,
+      "sha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": 19271468,
+      "size": 4,
+      "sha256": "857121adea475480df9a12096b08adb117a600ace9fe1507847ed6a7488558db"
+    },
+    {
+      "address": 19272492,
+      "size": 4,
+      "sha256": "754dd8978d373e339fb743585106af5b6adfa3ef41b9fb4dffa07655c2bb067d"
+    },
+    {
+      "address": 19062492,
+      "size": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    }
+  ],
+  "acquisitions": [
+    [
+      14363587,
+      3
+    ],
+    [
+      14363636,
+      3
+    ],
+    [
+      14363985,
+      4
+    ],
+    [
+      14364028,
+      4
+    ],
+    [
+      14364488,
+      4
+    ],
+    [
+      14364532,
+      4
+    ],
+    [
+      14366746,
+      4
+    ],
+    [
+      14366789,
+      4
+    ],
+    [
+      14367185,
+      4
+    ],
+    [
+      14367228,
+      4
+    ]
+  ],
+  "queries": [
+    [
+      14364141,
+      14364150,
+      116
+    ],
+    [
+      14364568,
+      14364577,
+      48
+    ],
+    [
+      14364992,
+      14365001,
+      152
+    ],
+    [
+      14365182,
+      14365191,
+      140
+    ],
+    [
+      14366899,
+      14366908,
+      140
+    ],
+    [
+      14367356,
+      14367365,
+      152
+    ]
+  ],
+  "edits": [
+    {
+      "old": "GSI->GetHealth()",
+      "new": "GSI->GetHealth(me)",
+      "count": 3
+    },
+    {
+      "old": "GSI->GetHealth(uVar11)",
+      "new": "GSI->GetHealth(me)",
+      "count": 3
+    },
+    {
+      "old": "_DAT_0122dedc",
+      "new": "0.0",
+      "count": 6
+    }
+  ],
+  "hostContract": {
+    "name": "GetHealth",
+    "scope": "Quest",
+    "returnType": "float",
+    "parameters": [
+      {
+        "name": "pThing",
+        "type": "CScriptThing*",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Quest API",
+    "description": "Gets health."
+  },
+  "review": "EDI=self at DB2B1C, never overwritten. All ten acquisitions use EDI and resource16. Six 7E7490 getters consume resource16 and return the hidden wrapper passed immediately to slot420 GetHealth. Keep native wrapper cleanup unresolved. All six FCOMP instructions compare against pinned float32 zero at 0122DEDC."
+}

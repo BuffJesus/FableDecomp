@@ -19,7 +19,7 @@ local SCRMSG_METHOD       = 2       -- ETextGroupSelectionMethod immediate 2 on 
 local FOLLOW_DISTANCE     = 1.0     -- DAT_3f800000
 local BAD_DEED_HIT_ME     = 2
 local ACTION_PRIORITY     = 4
-local DEFAULT_PRIORITY    = nil
+local DEFAULT_PRIORITY    = 4      -- all StartScriptingEntity sites push 4 (0x00DB6D25 et seq.)
 local EXCLUDED_HIT_ABILITY = 14   -- sibling NOVI hit predicates pass 0x0e
 local LAST_TIME_INIT      = 9999    -- LastTimeSpoken initial value (Init)
 
@@ -59,14 +59,16 @@ function Init(quest, me)
     DoneIntro = false
     LastTimeSpoken = LAST_TIME_INIT
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
 end
 
 local function speak_if_alive(quest, me, key, method)
     if quest:GetHealth(me) > SPEAK_MIN_HEALTH then
-        me:SpeakAndWait(key, method or SPEECH_METHOD)
+        -- The surrounding native movie resource already owns cinematic mode.
+        return me:Speak(quest:GetHero(), key, method or SPEECH_METHOD, false, true, false) ~= false
     end
+    return true
 end
 
 local function begin_cutscene(quest)
@@ -76,7 +78,7 @@ end
 
 local function end_cutscene(quest)
     quest:PauseAllNonScriptedEntities(false)
-    quest:EndMovieSequence()   -- inference: retail movie object destructor
+    quest:EndMovieSequence()
 end
 
 local function hero_hit_me(quest, me)
@@ -93,11 +95,11 @@ local function intro(quest, me)
     while not F.get(quest, F.BarrelManLeftHeroInCharge) do
         if not NOVI.frame(quest, me) then return false end
     end
-    quest:EntityTeleportToThing(me, quest:GetThingWithScriptName(START_MARKER))
-    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero())
+    quest:EntityTeleportToThing(me, quest:GetThingWithScriptName(START_MARKER), false)
+    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
     quest:Pause(3.0)
     begin_cutscene(quest)
-    speak_if_alive(quest, me, TEXT_EXPLAIN)
+    if not speak_if_alive(quest, me, TEXT_EXPLAIN) then end_cutscene(quest); return false end
     DoneIntro = true
     me:FollowThing(quest:GetHero(), FOLLOW_DISTANCE, true)   -- retail FollowThing(hero, 1.0, 1)
     end_cutscene(quest)
@@ -112,15 +114,15 @@ local function chat(quest, me)
     local broken = F.get(quest, F.BarrelBrokenPersistent)
     if not man_back then
         if not broken then
-            speak_if_alive(quest, me, TEXT_SCRMSG_TEMPT, SCRMSG_METHOD)
+            if not speak_if_alive(quest, me, TEXT_SCRMSG_TEMPT, SCRMSG_METHOD) then end_cutscene(quest); return false end
         else
-            speak_if_alive(quest, me, TEXT_SCRMSG_WELLDONE, SCRMSG_METHOD)
+            if not speak_if_alive(quest, me, TEXT_SCRMSG_WELLDONE, SCRMSG_METHOD) then end_cutscene(quest); return false end
         end
     else
         if not broken then
-            speak_if_alive(quest, me, TEXT_WHY_NOT_SMASH)
+            if not speak_if_alive(quest, me, TEXT_WHY_NOT_SMASH) then end_cutscene(quest); return false end
         else
-            speak_if_alive(quest, me, TEXT_OUTRO)
+            if not speak_if_alive(quest, me, TEXT_OUTRO) then end_cutscene(quest); return false end
         end
     end
     end_cutscene(quest)
@@ -140,7 +142,7 @@ local function nag(quest, me)
     local nag_timer = F.get(quest, F.WatchTimer)
     local timer = quest:GetTimer(nag_timer)
     if F.get(quest, F.BarrelManSpokenToHeroOnReturn) or timer <= 0 then return end
-    local conv = quest:AddNewConversation(me)   -- retail args dropped
+    local conv = quest:AddNewConversation(me, false, false)
     quest:AddPersonToConversation(conv, quest:GetHero())
     local line
     if not F.get(quest, F.BarrelBrokenPersistent) then
@@ -156,12 +158,12 @@ end
 -- Phase: hero hit him
 local function react_to_hit(quest, me)
     local hero = quest:GetHero()
-    quest:EntitySetThingAsAllyOfThing(me, hero)    -- twice in retail, args dropped
+    quest:EntitySetThingAsAllyOfThing(me, hero)    -- reciprocal order proven at 0x00DB79FC-0x00DB7A22
     quest:EntitySetThingAsAllyOfThing(hero, me)
     Deeds.add_bad(quest, me, BAD_DEED_HIT_ME)
     begin_cutscene(quest)
     if not NOVI.acquire(quest, me, ACTION_PRIORITY) then end_cutscene(quest); return false end
-    speak_if_alive(quest, me, TEXT_WHY_HIT)
+    if not speak_if_alive(quest, me, TEXT_WHY_HIT) then end_cutscene(quest); return false end
     end_cutscene(quest)
     return true
 end

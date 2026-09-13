@@ -1,0 +1,175 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4039,
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "106bd9c8d8901b4c8e944f5f305a1144d60636a35177d359df33e771a393a6db",
+  "bytesSha256": "bf617323c56d3a470484368abfcb367ed115de2d44498b69f7aaa1285e4eb53a",
+  "callee": {
+    "address": "0x890ab0",
+    "size": 80,
+    "bytesSha256": "b563e2153b229912c3c24dd4b0d8159b9a73a6da5edf570c4ce27714aea13bcb"
+  },
+  "checkedSites": [],
+  "checkedSetups": [
+    {
+      "address": 14370528,
+      "target": [
+        "memory",
+        [
+          "address",
+          [
+            "memory",
+            [
+              "address",
+              [
+                "register",
+                "ebx"
+              ],
+              0
+            ]
+          ],
+          1516
+        ]
+      ],
+      "ecx": [
+        "register",
+        "ebx"
+      ],
+      "edx": [
+        "register",
+        "edx"
+      ],
+      "stack_arguments": [
+        [
+          "constant",
+          0
+        ]
+      ]
+    },
+    {
+      "address": 14371789,
+      "target": [
+        "memory",
+        [
+          "address",
+          [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "stack",
+                  40
+                ]
+              ],
+              0
+            ]
+          ],
+          1516
+        ]
+      ],
+      "ecx": [
+        "memory",
+        [
+          "stack",
+          40
+        ]
+      ],
+      "edx": [
+        "register",
+        "edx"
+      ],
+      "stack_arguments": [
+        [
+          "constant",
+          0
+        ]
+      ]
+    },
+    {
+      "address": 14372055,
+      "target": [
+        "memory",
+        [
+          "address",
+          [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "stack",
+                  40
+                ]
+              ],
+              0
+            ]
+          ],
+          1516
+        ]
+      ],
+      "ecx": [
+        "memory",
+        [
+          "stack",
+          40
+        ]
+      ],
+      "edx": [
+        "register",
+        "edx"
+      ],
+      "stack_arguments": [
+        [
+          "constant",
+          0
+        ]
+      ]
+    }
+  ],
+  "edits": [
+    {
+      "old": "ppuVar2 = *(undefined ***)(param_1 + 4);",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "ppuStack_124 = ppuVar2;",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "puVar15 = *ppuVar2;",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "puVar15 = (undefined *)*piStack_128;",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(*ppuVar2 + 0x5ec))();",
+      "new": "GSI->PauseAllNonScriptedEntities(true);",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(puVar15 + 0x5ec))(0);",
+      "new": "GSI->PauseAllNonScriptedEntities(false);",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(*piStack_128 + 0x5ec))(0);",
+      "new": "GSI->PauseAllNonScriptedEntities(false);",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(*ppuVar2 + 0x5ec))(0);",
+      "new": "GSI->PauseAllNonScriptedEntities(false);",
+      "count": 1
+    }
+  ],
+  "review": "DB45F6 EBX=interfaceESI+4; push1 then DB45FF saveEBX atESP+2C=baseline28 (nonoverlapping argument), callDB4603pause(true). Shared stack analysis conservatively invalidates pushed1 on this store; trueflag independently reviewed under complete nativecaller hash. DB46E0 uses EBX false; DB4BCD/DB4CD7 use saved28 false, checked by shared setup. Cancellation joinDB4F47 also consumes false. Remove four exact interface/vtable staging assignments after rewriting four source calls; retain unrelated ppuStack_124 resource uses. Full caller pins EBX/saved-slot origins."
+}

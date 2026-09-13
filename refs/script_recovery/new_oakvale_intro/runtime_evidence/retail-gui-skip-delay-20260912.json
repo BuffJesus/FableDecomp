@@ -1,0 +1,39 @@
+{
+  "gameBinSha256": "2cc9495a9ed2a3f0c3f30f502b8229485616dcdfc304513a09324cd76cc52cf5",
+  "field": "TextBoxCutsceneSecondsBeforeSkip",
+  "entries": [
+    {
+      "bank": "game.bin",
+      "entry": "NULLDEF_PLAYER_GUI",
+      "index": 141,
+      "payloadOffset": 1109,
+      "tag": "13371027",
+      "valueHex": "00000000",
+      "seconds": 0.0,
+      "payloadSha256": "84a579d1d2bd539ba32cc6ad81892a1f9d3520014a60594bb455b46d51eac2ec",
+      "context": "05b3bb29000000001337102700000000ac176c8e00000000"
+    },
+    {
+      "bank": "game.bin",
+      "entry": "PLAYER_GUI_DEFAULT",
+      "index": 7074,
+      "payloadOffset": 1213,
+      "tag": "13371027",
+      "valueHex": "00000040",
+      "seconds": 2.0,
+      "payloadSha256": "ef3eb1d9a796b22ab33b0ee3ece2d861f5842df82a9a1410c3000884dcd8995d",
+      "context": "05b3bb29000020411337102700000040ac176c8e00008042"
+    },
+    {
+      "bank": "game.bin",
+      "entry": "PLAYER_GUI_PC",
+      "index": 7075,
+      "payloadOffset": 1213,
+      "tag": "13371027",
+      "valueHex": "00000040",
+      "seconds": 2.0,
+      "payloadSha256": "5ca8d6b9516b9bda8e2d21cc7491d7e9047e4090fc707bfdc1b16220292884c6",
+      "context": "05b3bb29000020411337102700000040ac176c8e00008042"
+    }
+  ]
+}

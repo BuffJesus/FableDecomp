@@ -1,0 +1,58 @@
+{
+  "schema": "bully-health-bar-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "regions": [
+    {
+      "name": "createAndUpdate",
+      "address": "0x00DBC391",
+      "rangeSize": 503,
+      "bytesSha256": "F8D90F7E0BAA2BA4FAC61E348496182FEC3CFC0B55CA15BA05F996000A8AFF0E",
+      "instructionCount": 134
+    },
+    {
+      "name": "subduedRemoval",
+      "address": "0x00DBC86B",
+      "rangeSize": 38,
+      "bytesSha256": "1572EBE51E1984596D7F693CDCD43DB4EA50D07AD794E238E1CC15582169791F",
+      "instructionCount": 11
+    }
+  ],
+  "creation": {
+    "unsetSentinel": -999,
+    "unsetCompareSite": "0x00DBC3A3",
+    "current": "float(InitialHealth)",
+    "maximum": 0.0,
+    "primaryColourBytes": "00 FF 00 FF",
+    "primaryColour": "opaque green",
+    "secondaryColourBytes": "00 00 FF FF",
+    "secondaryColour": "opaque red (BGRA memory order; disasm 0x00DBC40C-0x00DBC424 writes [+0x88]=00 [+0x89]=00 [+0x8a]=FF [+0x8b]=FF)",
+    "texture": "HUD_QUEST_ICON_GRANDSON",
+    "scale": 1.0,
+    "callSite": "0x00DBC446",
+    "slot": "0x510",
+    "handleStoreSite": "0x00DBC44F",
+    "handleParentOffset": "0x64"
+  },
+  "hitState": {
+    "hitsIncrementSite": "0x00DBC49C",
+    "hitsStoreSite": "0x00DBC4A1",
+    "subduedBranchSite": "0x00DBC4A6",
+    "subduedTarget": "0x00DBC86B"
+  },
+  "update": {
+    "current": "float(InitialHealth - HitsTaken)",
+    "maximum": -1.0,
+    "scale": -1.0,
+    "callSite": "0x00DBC582",
+    "slot": "0x530"
+  },
+  "removal": {
+    "bullySubduedStoreSite": "0x00DBC87B",
+    "bullySubduedParentOffset": "0x6C",
+    "handleLoadSite": "0x00DBC885",
+    "handleParentOffset": "0x64",
+    "callSite": "0x00DBC88B",
+    "slot": "0x548"
+  }
+}

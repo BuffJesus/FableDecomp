@@ -1,0 +1,189 @@
+{
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "scope": "Execute retail existing-entity activation/deactivation branches.\n\nLookup returns a synthetic existing active script. Save/reschedule and entity\nnotifications are observed stubs; the branch and FuncPaused store are native.\nThis does not emulate scheduling, region streaming, or creation of a new script.\n",
+  "cases": [
+    {
+      "activation": true,
+      "flags": 0,
+      "trailing_boolean": null,
+      "events": [
+        [
+          "script.init"
+        ],
+        [
+          "reschedule"
+        ],
+        [
+          "entity.activated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": true,
+      "flags": 1,
+      "trailing_boolean": null,
+      "events": [
+        [
+          "pause",
+          0
+        ],
+        [
+          "entity.activated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": true,
+      "flags": 2,
+      "trailing_boolean": null,
+      "events": [
+        [
+          "script.init"
+        ],
+        [
+          "reschedule"
+        ],
+        [
+          "entity.activated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": true,
+      "flags": 3,
+      "trailing_boolean": null,
+      "events": [
+        [
+          "pause",
+          0
+        ],
+        [
+          "entity.activated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 0,
+      "trailing_boolean": false,
+      "events": [
+        [
+          "save"
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 0,
+      "trailing_boolean": true,
+      "events": [
+        [
+          "save"
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 1,
+      "trailing_boolean": false,
+      "events": [
+        [
+          "save"
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 1,
+      "trailing_boolean": true,
+      "events": [
+        [
+          "pause",
+          1
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 2,
+      "trailing_boolean": false,
+      "events": [
+        [
+          "save"
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 2,
+      "trailing_boolean": true,
+      "events": [
+        [
+          "save"
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 3,
+      "trailing_boolean": false,
+      "events": [
+        [
+          "save"
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    },
+    {
+      "activation": false,
+      "flags": 3,
+      "trailing_boolean": true,
+      "events": [
+        [
+          "pause",
+          1
+        ],
+        [
+          "entity.deactivated"
+        ]
+      ],
+      "stack_balanced": true
+    }
+  ],
+  "native_bytes": {
+    "0xcb88b0": "5356578bf98d4424108d7708508bcee87c0f00008b76043bc68b5424148b5c2410740b3b5004720677063b1873028bc63b470c7445807c241c008b4808b801000000741d84413c741850e8f1d027008b4c24188b11ff92240100005f5e5bc210005152884105538bcfe8b2faffff8b4c24188b11ff92240100005f5e5bc21000",
+    "0xcb8960": "83ec1c53568bd9578d44242c8d7b08508bcf895c2410e8c50e00008b4f043bc174138b5424303b5004720a770a8b54242c3b1073028bc13b430c74568b7008f6463c01741e6a008bcee842d027008b4c24348b11ff92200100005f5e5b83c41cc20c008b4e348b01ff50088b4c24308b54242c5651528bcbe803f5ffff8b4c24348b11ff92200100005f5e5b83c41cc20c00",
+    "0xf359f0": "8a442404884128c20400"
+  }
+}

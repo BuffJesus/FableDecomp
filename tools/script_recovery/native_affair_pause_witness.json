@@ -1,0 +1,24 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5052,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "714c301495cca87b0862d6cd4290716cfc992d5ca8d4634265170992739012f1",
+  "bytesSha256": "a7161d3ca19506c2cc3e7a1fe7af2b3912b879187e880a7aeb58bd79e562b368",
+  "callee": {
+    "address": "0x890ab0",
+    "size": 80,
+    "bytesSha256": "b563e2153b229912c3c24dd4b0d8159b9a73a6da5edf570c4ce27714aea13bcb"
+  },
+  "old": "(**(code **)(*ppuStack_140 + 0x5ec))(0);",
+  "count": 5,
+  "checkedSites": [
+    "0xdb15ee",
+    "0xdb1d12",
+    "0xdb1d2b"
+  ],
+  "incomingFlagSites": [
+    "0xdb1d42",
+    "0xdb1d59"
+  ],
+  "review": "DB0E4F EDI=[ESI+4] interface; push1 DB0E54 then DB0E58 storesEDI atESP+3C, baseline38. Normal exitDB15EE and cancellationDB1D12/DB1D2B use saved38 and push0. DB1D42/DB1D59 receive push0 fromDB15A9/DB15CD before conditional exit into epilogues. Slot5EC->890AB0 PauseAllNonScriptedEntities; five identical annotated raw calls correspond to these sites. All become false unpause at original sequence locations before existing movie destructor, no destructor recovery claimed."
+}

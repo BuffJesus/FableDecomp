@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -75,7 +77,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -120,12 +124,13 @@
       "scope": "Quest"
     },
     {
-      "arguments": [
-        {
+      "arguments": {
+        "1": {
           "handle": "lover",
           "scope": "Entity"
-        }
-      ],
+        },
+        "3": false
+      },
       "event": "api-call",
       "name": "EntitySetFacingAngleTowardsThing",
       "receiver": "quest",
@@ -185,7 +190,8 @@
         "TEXT_QST_048_AFFAIRMAN_QUESTION_WILL_YOU_TELL",
         "TEXT_OBJECT_HERO_ANSWER_YES",
         "TEXT_OBJECT_HERO_ANSWER_NO",
-        ""
+        "",
+        true
       ],
       "event": "api-call",
       "name": "GiveHeroYesNoQuestion",
@@ -296,7 +302,7 @@
         "TEXT_QST_LOG_BASICS_MAP"
       ],
       "event": "api-call",
-      "name": "AddLogbookStoryEntryString",
+      "name": "AddLogbookTutorialEntry",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -446,5 +452,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairMan.lua",
-  "sourceSha256": "2884e5d0429093ff692218d4bec61681e761f6f777abae09b6865499fff696c4"
+  "sourceSha256": "89e565f130054b3e2752e2ccdbde12ee7973fd3b1ecd91d7e710c24d03e7c3e9"
 }

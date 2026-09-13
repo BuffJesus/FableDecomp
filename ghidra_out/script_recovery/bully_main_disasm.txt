@@ -1,0 +1,1908 @@
+//=== FUN_00dbb310 @ 00dbb310 (seed 0x00DBB310) ===
+00dbb310: 81ec3c010000        SUB ESP,0x13c
+00dbb316: 53                  PUSH EBX
+00dbb317: 55                  PUSH EBP
+00dbb318: 56                  PUSH ESI
+00dbb319: 8be9                MOV EBP,ECX
+00dbb31b: 57                  PUSH EDI
+00dbb31c: 8d7508              LEA ESI,[EBP + 0x8]
+00dbb31f: 33ff                XOR EDI,EDI
+00dbb321: bbe82f2c01          MOV EBX,0x12c2fe8  ; PTR_LAB_012c2fe8
+00dbb326: 56                  PUSH ESI
+00dbb327: 8d8c24d0000000      LEA ECX,[ESP + 0xd0]
+00dbb32e: 897c243c            MOV dword ptr [ESP + 0x3c],EDI
+00dbb332: 899c24cc000000      MOV dword ptr [ESP + 0xcc],EBX  ; PTR_LAB_012c2fe8
+00dbb339: 89742454            MOV dword ptr [ESP + 0x54],ESI
+00dbb33d: e84e0b6fff          CALL 0x004abe90  ; CScriptThing
+00dbb342: 8d8424c8000000      LEA EAX,[ESP + 0xc8]
+00dbb349: 50                  PUSH EAX
+00dbb34a: 8bcd                MOV ECX,EBP
+00dbb34c: e8bfa71700          CALL 0x00f35b10  ; AllocateMapThingUID
+00dbb351: 8d8c24cc000000      LEA ECX,[ESP + 0xcc]
+00dbb358: 899c24c8000000      MOV dword ptr [ESP + 0xc8],EBX  ; PTR_LAB_012c2fe8
+00dbb35f: e8dcf46eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbb364: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb367: 8b11                MOV EDX,dword ptr [ECX]
+00dbb369: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbb36c: 8bcd                MOV ECX,EBP
+00dbb36e: e8bda71700          CALL 0x00f35b30  ; Initialise
+00dbb373: 84c0                TEST AL,AL
+00dbb375: 0f8579190000        JNZ 0x00dbccf4
+00dbb37b: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb37f: e8fcefbdff          CALL 0x0099a380  ; CBaseIntelligentPointer
+00dbb384: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb388: c74424104c092701    MOV dword ptr [ESP + 0x10],0x127094c  ; PTR_`scalar_deleting_destructor'_0127094c
+00dbb390: 897c2418            MOV dword ptr [ESP + 0x18],EDI
+00dbb394: 897c241c            MOV dword ptr [ESP + 0x1c],EDI
+00dbb398: e81c70f1ff          CALL 0x00cd23b9  ; HasPhysicsMesh
+00dbb39d: 84c0                TEST AL,AL
+00dbb39f: 7409                JZ 0x00dbb3aa
+00dbb3a1: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb3a5: e8c673f1ff          CALL 0x00cd2770  ; Clear
+00dbb3aa: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb3ad: 8b01                MOV EAX,dword ptr [ECX]
+00dbb3af: 6a04                PUSH 0x4
+00dbb3b1: 8d542414            LEA EDX,[ESP + 0x14]
+00dbb3b5: 52                  PUSH EDX
+00dbb3b6: 56                  PUSH ESI
+00dbb3b7: ff5020              CALL dword ptr [EAX + 0x20]
+00dbb3ba: 84c0                TEST AL,AL
+00dbb3bc: 752d                JNZ 0x00dbb3eb
+00dbb3be: 8bff                MOV EDI,EDI
+00dbb3c0: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb3c3: 8b01                MOV EAX,dword ptr [ECX]
+00dbb3c5: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbb3c8: 8bcd                MOV ECX,EBP
+00dbb3ca: e861a71700          CALL 0x00f35b30  ; Initialise
+00dbb3cf: 84c0                TEST AL,AL
+00dbb3d1: 0f8514190000        JNZ 0x00dbcceb
+00dbb3d7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb3da: 8b11                MOV EDX,dword ptr [ECX]
+00dbb3dc: 6a04                PUSH 0x4
+00dbb3de: 8d442414            LEA EAX,[ESP + 0x14]
+00dbb3e2: 50                  PUSH EAX
+00dbb3e3: 56                  PUSH ESI
+00dbb3e4: ff5220              CALL dword ptr [EDX + 0x20]
+00dbb3e7: 84c0                TEST AL,AL
+00dbb3e9: 74d5                JZ 0x00dbb3c0
+00dbb3eb: 8bcd                MOV ECX,EBP
+00dbb3ed: e83ea71700          CALL 0x00f35b30  ; Initialise
+00dbb3f2: 84c0                TEST AL,AL
+00dbb3f4: 0f85f1180000        JNZ 0x00dbcceb
+00dbb3fa: 8b16                MOV EDX,dword ptr [ESI]
+00dbb3fc: 8d442464            LEA EAX,[ESP + 0x64]
+00dbb400: 50                  PUSH EAX
+00dbb401: 8bce                MOV ECX,ESI
+00dbb403: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbb406: be8c8c2301          MOV ESI,0x1238c8c  ; PTR_`scalar_deleting_destructor'_01238c8c
+00dbb40b: eb03                JMP 0x00dbb410
+00dbb410: 6800000040          PUSH 0x40000000
+00dbb415: 8d4c245c            LEA ECX,[ESP + 0x5c]
+00dbb419: 51                  PUSH ECX
+00dbb41a: 8d4c2418            LEA ECX,[ESP + 0x18]
+00dbb41e: e86dc0a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbb423: 8d542468            LEA EDX,[ESP + 0x68]
+00dbb427: 8bc8                MOV ECX,EAX
+00dbb429: e82e30f0ff          CALL 0x00cbe45c  ; IsDistanceFromThingToPositionOver
+00dbb42e: 8ad8                MOV BL,AL
+00dbb430: 8b442460            MOV EAX,dword ptr [ESP + 0x60]
+00dbb434: 3bc7                CMP EAX,EDI
+00dbb436: 89742458            MOV dword ptr [ESP + 0x58],ESI  ; PTR_`scalar_deleting_destructor'_01238c8c
+00dbb43a: 741d                JZ 0x00dbb459
+00dbb43c: ff08                DEC dword ptr [EAX]
+00dbb43e: 8b442460            MOV EAX,dword ptr [ESP + 0x60]
+00dbb442: 3938                CMP dword ptr [EAX],EDI
+00dbb444: 7513                JNZ 0x00dbb459
+00dbb446: 8b4808              MOV ECX,dword ptr [EAX + 0x8]
+00dbb449: ff5004              CALL dword ptr [EAX + 0x4]
+00dbb44c: 8b542460            MOV EDX,dword ptr [ESP + 0x60]
+00dbb450: 52                  PUSH EDX
+00dbb451: e86635e4ff          CALL 0x00bfe9bc  ; operator_delete
+00dbb456: 83c404              ADD ESP,0x4
+00dbb459: 8d4c2458            LEA ECX,[ESP + 0x58]
+00dbb45d: 897c245c            MOV dword ptr [ESP + 0x5c],EDI
+00dbb461: 897c2460            MOV dword ptr [ESP + 0x60],EDI
+00dbb465: e876eebdff          CALL 0x0099a2e0  ; CBase
+00dbb46a: 84db                TEST BL,BL
+00dbb46c: 0f84ca000000        JZ 0x00dbb53c
+00dbb472: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb475: 8b01                MOV EAX,dword ptr [ECX]
+00dbb477: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbb47a: 8bcd                MOV ECX,EBP
+00dbb47c: e8afa61700          CALL 0x00f35b30  ; Initialise
+00dbb481: 84c0                TEST AL,AL
+00dbb483: 0f8562180000        JNZ 0x00dbcceb
+00dbb489: 6a01                PUSH 0x1
+00dbb48b: 57                  PUSH EDI
+00dbb48c: 57                  PUSH EDI
+00dbb48d: 57                  PUSH EDI
+00dbb48e: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbb492: 51                  PUSH ECX
+00dbb493: 8d4c2424            LEA ECX,[ESP + 0x24]
+00dbb497: e854bea2ff          CALL 0x007e72f0  ; ?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z
+00dbb49c: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb4a0: e8abbfa2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbb4a5: 84c0                TEST AL,AL
+00dbb4a7: 7427                JZ 0x00dbb4d0
+00dbb4a9: 8da42400000000      LEA ESP,[ESP]
+00dbb4b0: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb4b3: 8b11                MOV EDX,dword ptr [ECX]
+00dbb4b5: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbb4b8: 8bcd                MOV ECX,EBP
+00dbb4ba: e871a61700          CALL 0x00f35b30  ; Initialise
+00dbb4bf: 84c0                TEST AL,AL
+00dbb4c1: 7530                JNZ 0x00dbb4f3
+00dbb4c3: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb4c7: e884bfa2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbb4cc: 84c0                TEST AL,AL
+00dbb4ce: 75e0                JNZ 0x00dbb4b0
+00dbb4d0: 8bcd                MOV ECX,EBP
+00dbb4d2: e859a61700          CALL 0x00f35b30  ; Initialise
+00dbb4d7: 84c0                TEST AL,AL
+00dbb4d9: 0f8431ffffff        JZ 0x00dbb410
+00dbb4df: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb4e3: e8e8bfa2ff          CALL 0x007e74d0  ; ~CScriptGameResourceObjectMovieBase
+00dbb4e8: 5f                  POP EDI
+00dbb4e9: 5e                  POP ESI
+00dbb4ea: 5d                  POP EBP
+00dbb4eb: 5b                  POP EBX
+00dbb4ec: 81c43c010000        ADD ESP,0x13c
+00dbb4f2: c3                  RET
+00dbb4f3: 8b44241c            MOV EAX,dword ptr [ESP + 0x1c]
+00dbb4f7: 3bc7                CMP EAX,EDI
+00dbb4f9: 741d                JZ 0x00dbb518
+00dbb4fb: ff08                DEC dword ptr [EAX]
+00dbb4fd: 8b44241c            MOV EAX,dword ptr [ESP + 0x1c]
+00dbb501: 3938                CMP dword ptr [EAX],EDI
+00dbb503: 7513                JNZ 0x00dbb518
+00dbb505: 8b4808              MOV ECX,dword ptr [EAX + 0x8]
+00dbb508: ff5004              CALL dword ptr [EAX + 0x4]
+00dbb50b: 8b44241c            MOV EAX,dword ptr [ESP + 0x1c]
+00dbb50f: 50                  PUSH EAX
+00dbb510: e8a734e4ff          CALL 0x00bfe9bc  ; operator_delete
+00dbb515: 83c404              ADD ESP,0x4
+00dbb518: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb51c: 897c2418            MOV dword ptr [ESP + 0x18],EDI
+00dbb520: 897c241c            MOV dword ptr [ESP + 0x1c],EDI
+00dbb524: c74424108c002601    MOV dword ptr [ESP + 0x10],0x126008c  ; PTR_`vector_deleting_destructor'_0126008c
+00dbb52c: e8ffeebdff          CALL 0x0099a430  ; ~CPhysicsMeshInfo
+00dbb531: 5f                  POP EDI
+00dbb532: 5e                  POP ESI
+00dbb533: 5d                  POP EBP
+00dbb534: 5b                  POP EBX
+00dbb535: 81c43c010000        ADD ESP,0x13c
+00dbb53b: c3                  RET
+00dbb53c: 8bcd                MOV ECX,EBP
+00dbb53e: e8eda51700          CALL 0x00f35b30  ; Initialise
+00dbb543: 84c0                TEST AL,AL
+00dbb545: 0f85a0170000        JNZ 0x00dbcceb
+00dbb54b: 6aff                PUSH -0x1
+00dbb54d: 682c832d01          PUSH 0x12d832c  ; s_NOVI_Victim_012d832c
+00dbb552: 8d4c2454            LEA ECX,[ESP + 0x54]
+00dbb556: e89536beff          CALL 0x0099ebf0  ; CCharString
+00dbb55b: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb55e: 8b11                MOV EDX,dword ptr [ECX]
+00dbb560: 8d44244c            LEA EAX,[ESP + 0x4c]
+00dbb564: 50                  PUSH EAX
+00dbb565: 8d442430            LEA EAX,[ESP + 0x30]
+00dbb569: 50                  PUSH EAX
+00dbb56a: ff9220010000        CALL dword ptr [EDX + 0x120]
+00dbb570: 8d4c244c            LEA ECX,[ESP + 0x4c]
+00dbb574: e86735beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb579: 8bcd                MOV ECX,EBP
+00dbb57b: e8b0a51700          CALL 0x00f35b30  ; Initialise
+00dbb580: 84c0                TEST AL,AL
+00dbb582: 0f855a170000        JNZ 0x00dbcce2
+00dbb588: 8b7c2450            MOV EDI,dword ptr [ESP + 0x50]
+00dbb58c: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb590: e8246ef1ff          CALL 0x00cd23b9  ; HasPhysicsMesh
+00dbb595: 84c0                TEST AL,AL
+00dbb597: 7409                JZ 0x00dbb5a2
+00dbb599: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb59d: e8ce71f1ff          CALL 0x00cd2770  ; Clear
+00dbb5a2: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb5a5: 8b11                MOV EDX,dword ptr [ECX]
+00dbb5a7: 6a04                PUSH 0x4
+00dbb5a9: 8d442414            LEA EAX,[ESP + 0x14]
+00dbb5ad: 50                  PUSH EAX
+00dbb5ae: 57                  PUSH EDI
+00dbb5af: ff5220              CALL dword ptr [EDX + 0x20]
+00dbb5b2: 84c0                TEST AL,AL
+00dbb5b4: 752b                JNZ 0x00dbb5e1
+00dbb5b6: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb5b9: 8b11                MOV EDX,dword ptr [ECX]
+00dbb5bb: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbb5be: 8bcd                MOV ECX,EBP
+00dbb5c0: e86ba51700          CALL 0x00f35b30  ; Initialise
+00dbb5c5: 84c0                TEST AL,AL
+00dbb5c7: 0f8515170000        JNZ 0x00dbcce2
+00dbb5cd: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb5d0: 8b01                MOV EAX,dword ptr [ECX]
+00dbb5d2: 6a04                PUSH 0x4
+00dbb5d4: 8d542414            LEA EDX,[ESP + 0x14]
+00dbb5d8: 52                  PUSH EDX
+00dbb5d9: 57                  PUSH EDI
+00dbb5da: ff5020              CALL dword ptr [EAX + 0x20]
+00dbb5dd: 84c0                TEST AL,AL
+00dbb5df: 74d5                JZ 0x00dbb5b6
+00dbb5e1: 8bcd                MOV ECX,EBP
+00dbb5e3: e848a51700          CALL 0x00f35b30  ; Initialise
+00dbb5e8: 84c0                TEST AL,AL
+00dbb5ea: 0f85f2160000        JNZ 0x00dbcce2
+00dbb5f0: 8a4524              MOV AL,byte ptr [EBP + 0x24]
+00dbb5f3: 84c0                TEST AL,AL
+00dbb5f5: 0f8491070000        JZ 0x00dbbd8c
+00dbb5fb: 8bcd                MOV ECX,EBP
+00dbb5fd: e82ea51700          CALL 0x00f35b30  ; Initialise
+00dbb602: 84c0                TEST AL,AL
+00dbb604: 0f85d8160000        JNZ 0x00dbcce2
+00dbb60a: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbb60e: e89d2ebeff          CALL 0x0099e4b0  ; CCharString
+00dbb613: 6aff                PUSH -0x1
+00dbb615: 68c8d12501          PUSH 0x125d1c8  ; s_SCRIPT_NAME_HERO_0125d1c8
+00dbb61a: 8d8c24c0000000      LEA ECX,[ESP + 0xc0]
+00dbb621: e8ca35beff          CALL 0x0099ebf0  ; CCharString
+00dbb626: 8b5c2438            MOV EBX,dword ptr [ESP + 0x38]
+00dbb62a: 8b07                MOV EAX,dword ptr [EDI]
+00dbb62c: 8d8c24b8000000      LEA ECX,[ESP + 0xb8]
+00dbb633: 51                  PUSH ECX
+00dbb634: 83cb01              OR EBX,0x1
+00dbb637: 8bcf                MOV ECX,EDI
+00dbb639: 895c243c            MOV dword ptr [ESP + 0x3c],EBX
+00dbb63d: ff506c              CALL dword ptr [EAX + 0x6c]
+00dbb640: 84c0                TEST AL,AL
+00dbb642: 7440                JZ 0x00dbb684
+00dbb644: 6aff                PUSH -0x1
+00dbb646: 6858892d01          PUSH 0x12d8958  ; s_OBJECT_TEDDY_BEAR_UNGIVEABLE_012d8958
+00dbb64b: 8d8c24a8000000      LEA ECX,[ESP + 0xa8]
+00dbb652: e89935beff          CALL 0x0099ebf0  ; CCharString
+00dbb657: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb65a: 8b31                MOV ESI,dword ptr [ECX]
+00dbb65c: 83cb02              OR EBX,0x2
+00dbb65f: 895c2438            MOV dword ptr [ESP + 0x38],EBX
+00dbb663: ff9618010000        CALL dword ptr [ESI + 0x118]
+00dbb669: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb66c: 50                  PUSH EAX
+00dbb66d: 8d9424a4000000      LEA EDX,[ESP + 0xa4]
+00dbb674: 52                  PUSH EDX
+00dbb675: ff96e0020000        CALL dword ptr [ESI + 0x2e0]
+00dbb67b: 84c0                TEST AL,AL
+00dbb67d: c644242701          MOV byte ptr [ESP + 0x27],0x1
+00dbb682: 7505                JNZ 0x00dbb689
+00dbb684: c644242700          MOV byte ptr [ESP + 0x27],0x0
+00dbb689: f6c302              TEST BL,0x2
+00dbb68c: 7413                JZ 0x00dbb6a1
+00dbb68e: 83e3fd              AND EBX,0xfffffffd
+00dbb691: 8d8c24a0000000      LEA ECX,[ESP + 0xa0]
+00dbb698: 895c2438            MOV dword ptr [ESP + 0x38],EBX
+00dbb69c: e83f34beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb6a1: f6c301              TEST BL,0x1
+00dbb6a4: 7413                JZ 0x00dbb6b9
+00dbb6a6: 83e3fe              AND EBX,0xfffffffe
+00dbb6a9: 8d8c24b8000000      LEA ECX,[ESP + 0xb8]
+00dbb6b0: 895c2438            MOV dword ptr [ESP + 0x38],EBX
+00dbb6b4: e82734beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb6b9: 8a442427            MOV AL,byte ptr [ESP + 0x27]
+00dbb6bd: 84c0                TEST AL,AL
+00dbb6bf: 0f8424030000        JZ 0x00dbb9e9
+00dbb6c5: 8bcd                MOV ECX,EBP
+00dbb6c7: e864a41700          CALL 0x00f35b30  ; Initialise
+00dbb6cc: 84c0                TEST AL,AL
+00dbb6ce: 0f8574110000        JNZ 0x00dbc848
+00dbb6d4: 8d8c24e0000000      LEA ECX,[ESP + 0xe0]
+00dbb6db: e880c492ff          CALL 0x006e7b60  ; CCarriedReadableDef
+00dbb6e0: 6aff                PUSH -0x1
+00dbb6e2: 680ed72201          PUSH 0x122d70e  ; DAT_0122d70e
+00dbb6e7: 8d8c2490000000      LEA ECX,[ESP + 0x90]
+00dbb6ee: e8fd34beff          CALL 0x0099ebf0  ; CCharString
+00dbb6f3: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb6f6: 8b01                MOV EAX,dword ptr [ECX]
+00dbb6f8: 8d9424e0000000      LEA EDX,[ESP + 0xe0]
+00dbb6ff: 52                  PUSH EDX
+00dbb700: 8d94248c000000      LEA EDX,[ESP + 0x8c]
+00dbb707: 52                  PUSH EDX
+00dbb708: ff90c8050000        CALL dword ptr [EAX + 0x5c8]
+00dbb70e: 8d8c2488000000      LEA ECX,[ESP + 0x88]
+00dbb715: e8c633beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb71a: 8b7d04              MOV EDI,dword ptr [EBP + 0x4]
+00dbb71d: 8b07                MOV EAX,dword ptr [EDI]
+00dbb71f: 6a01                PUSH 0x1
+00dbb721: 8bcf                MOV ECX,EDI
+00dbb723: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbb729: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb72c: 8b31                MOV ESI,dword ptr [ECX]
+00dbb72e: 8d542458            LEA EDX,[ESP + 0x58]
+00dbb732: 52                  PUSH EDX
+00dbb733: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbb737: e854bda2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbb73c: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb73f: 50                  PUSH EAX
+00dbb740: ff9620040000        CALL dword ptr [ESI + 0x420]
+00dbb746: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbb74c: dfe0                FNSTSW AX
+00dbb74e: f6c441              TEST AH,0x41
+00dbb751: 7504                JNZ 0x00dbb757
+00dbb753: b301                MOV BL,0x1
+00dbb755: eb02                JMP 0x00dbb759
+00dbb757: 32db                XOR BL,BL
+00dbb759: 8d4c2458            LEA ECX,[ESP + 0x58]
+00dbb75d: e8def06eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbb762: 84db                TEST BL,BL
+00dbb764: 7462                JZ 0x00dbb7c8
+00dbb766: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb769: 8b01                MOV EAX,dword ptr [ECX]
+00dbb76b: 6a00                PUSH 0x0
+00dbb76d: 6a01                PUSH 0x1
+00dbb76f: 6a00                PUSH 0x0
+00dbb771: 6a00                PUSH 0x0
+00dbb773: 68609b2d01          PUSH 0x12d9b60  ; s_TEXT_QST_048_BULLY_FOUND_TEDDY_O_012d9b60
+00dbb778: ff9018010000        CALL dword ptr [EAX + 0x118]
+00dbb77e: 50                  PUSH EAX
+00dbb77f: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbb783: e808bca2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbb788: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb78c: e8bfbca2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbb791: 84c0                TEST AL,AL
+00dbb793: 7424                JZ 0x00dbb7b9
+00dbb795: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb798: 8b11                MOV EDX,dword ptr [ECX]
+00dbb79a: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbb79d: 8bcd                MOV ECX,EBP
+00dbb79f: e88ca31700          CALL 0x00f35b30  ; Initialise
+00dbb7a4: 84c0                TEST AL,AL
+00dbb7a6: 0f8500100000        JNZ 0x00dbc7ac
+00dbb7ac: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb7b0: e89bbca2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbb7b5: 84c0                TEST AL,AL
+00dbb7b7: 75dc                JNZ 0x00dbb795
+00dbb7b9: 8bcd                MOV ECX,EBP
+00dbb7bb: e870a31700          CALL 0x00f35b30  ; Initialise
+00dbb7c0: 84c0                TEST AL,AL
+00dbb7c2: 0f85c30f0000        JNZ 0x00dbc78b
+00dbb7c8: 6aff                PUSH -0x1
+00dbb7ca: 680ed72201          PUSH 0x122d70e  ; DAT_0122d70e
+00dbb7cf: 8d8c24cc000000      LEA ECX,[ESP + 0xcc]
+00dbb7d6: e81534beff          CALL 0x0099ebf0  ; CCharString
+00dbb7db: 6aff                PUSH -0x1
+00dbb7dd: 686c212c01          PUSH 0x12c216c  ; s_TEXT_OBJECT_HERO_ANSWER_NO_012c216c
+00dbb7e2: 8d8c24c4000000      LEA ECX,[ESP + 0xc4]
+00dbb7e9: e80234beff          CALL 0x0099ebf0  ; CCharString
+00dbb7ee: 6aff                PUSH -0x1
+00dbb7f0: 6888212c01          PUSH 0x12c2188  ; s_TEXT_OBJECT_HERO_ANSWER_YES_012c2188
+00dbb7f5: 8d8c249c000000      LEA ECX,[ESP + 0x9c]
+00dbb7fc: e8ef33beff          CALL 0x0099ebf0  ; CCharString
+00dbb801: 6aff                PUSH -0x1
+00dbb803: 683c9b2d01          PUSH 0x12d9b3c  ; s_TEXT_QST_048_GIVE_TEDDY_TO_BULLY_012d9b3c
+00dbb808: 8d8c2494000000      LEA ECX,[ESP + 0x94]
+00dbb80f: e8dc33beff          CALL 0x0099ebf0  ; CCharString
+00dbb814: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb817: 8b01                MOV EAX,dword ptr [ECX]
+00dbb819: 6a01                PUSH 0x1
+00dbb81b: 8d9424c8000000      LEA EDX,[ESP + 0xc8]
+00dbb822: 52                  PUSH EDX
+00dbb823: 8d9424c4000000      LEA EDX,[ESP + 0xc4]
+00dbb82a: 52                  PUSH EDX
+00dbb82b: 8d9424a0000000      LEA EDX,[ESP + 0xa0]
+00dbb832: 52                  PUSH EDX
+00dbb833: 8d94249c000000      LEA EDX,[ESP + 0x9c]
+00dbb83a: 52                  PUSH EDX
+00dbb83b: ff90c8010000        CALL dword ptr [EAX + 0x1c8]
+00dbb841: 8d8c248c000000      LEA ECX,[ESP + 0x8c]
+00dbb848: e89332beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb84d: 8d8c2494000000      LEA ECX,[ESP + 0x94]
+00dbb854: e88732beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb859: 8d8c24bc000000      LEA ECX,[ESP + 0xbc]
+00dbb860: e87b32beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb865: 8d8c24c4000000      LEA ECX,[ESP + 0xc4]
+00dbb86c: e86f32beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbb871: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb874: 8b01                MOV EAX,dword ptr [ECX]
+00dbb876: ff909c000000        CALL dword ptr [EAX + 0x9c]
+00dbb87c: 8bf0                MOV ESI,EAX
+00dbb87e: 85f6                TEST ESI,ESI
+00dbb880: 7d28                JGE 0x00dbb8aa
+00dbb882: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb885: 8b11                MOV EDX,dword ptr [ECX]
+00dbb887: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbb88a: 8bcd                MOV ECX,EBP
+00dbb88c: e89fa21700          CALL 0x00f35b30  ; Initialise
+00dbb891: 84c0                TEST AL,AL
+00dbb893: 0f85130f0000        JNZ 0x00dbc7ac
+00dbb899: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb89c: 8b01                MOV EAX,dword ptr [ECX]
+00dbb89e: ff909c000000        CALL dword ptr [EAX + 0x9c]
+00dbb8a4: 8bf0                MOV ESI,EAX
+00dbb8a6: 85f6                TEST ESI,ESI
+00dbb8a8: 7cd8                JL 0x00dbb882
+00dbb8aa: 8bcd                MOV ECX,EBP
+00dbb8ac: e87fa21700          CALL 0x00f35b30  ; Initialise
+00dbb8b1: 84c0                TEST AL,AL
+00dbb8b3: 0f85d20e0000        JNZ 0x00dbc78b
+00dbb8b9: 83fe01              CMP ESI,0x1
+00dbb8bc: 0f850f010000        JNZ 0x00dbb9d1
+00dbb8c2: 8bcd                MOV ECX,EBP
+00dbb8c4: e867a21700          CALL 0x00f35b30  ; Initialise
+00dbb8c9: 84c0                TEST AL,AL
+00dbb8cb: 0f85db0e0000        JNZ 0x00dbc7ac
+00dbb8d1: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbb8d4: c6819600000001      MOV byte ptr [ECX + 0x96],0x1
+00dbb8db: 8b5514              MOV EDX,dword ptr [EBP + 0x14]
+00dbb8de: 8a8296000000        MOV AL,byte ptr [EDX + 0x96]
+00dbb8e4: 84c0                TEST AL,AL
+00dbb8e6: 7424                JZ 0x00dbb90c
+00dbb8e8: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb8eb: 8b01                MOV EAX,dword ptr [ECX]
+00dbb8ed: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbb8f0: 8bcd                MOV ECX,EBP
+00dbb8f2: e839a21700          CALL 0x00f35b30  ; Initialise
+00dbb8f7: 84c0                TEST AL,AL
+00dbb8f9: 0f858c0e0000        JNZ 0x00dbc78b
+00dbb8ff: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbb902: 8a8196000000        MOV AL,byte ptr [ECX + 0x96]
+00dbb908: 84c0                TEST AL,AL
+00dbb90a: 75dc                JNZ 0x00dbb8e8
+00dbb90c: 8bcd                MOV ECX,EBP
+00dbb90e: e81da21700          CALL 0x00f35b30  ; Initialise
+00dbb913: 84c0                TEST AL,AL
+00dbb915: 0f85910e0000        JNZ 0x00dbc7ac
+00dbb91b: 8b5504              MOV EDX,dword ptr [EBP + 0x4]
+00dbb91e: 8b32                MOV ESI,dword ptr [EDX]
+00dbb920: 8d442464            LEA EAX,[ESP + 0x64]
+00dbb924: 50                  PUSH EAX
+00dbb925: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbb929: e862bba2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbb92e: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb931: 50                  PUSH EAX
+00dbb932: ff9620040000        CALL dword ptr [ESI + 0x420]
+00dbb938: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbb93e: dfe0                FNSTSW AX
+00dbb940: f6c441              TEST AH,0x41
+00dbb943: 7504                JNZ 0x00dbb949
+00dbb945: b301                MOV BL,0x1
+00dbb947: eb02                JMP 0x00dbb94b
+00dbb949: 32db                XOR BL,BL
+00dbb94b: 8d4c2464            LEA ECX,[ESP + 0x64]
+00dbb94f: e8ecee6eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbb954: 84db                TEST BL,BL
+00dbb956: 7462                JZ 0x00dbb9ba
+00dbb958: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb95b: 8b11                MOV EDX,dword ptr [ECX]
+00dbb95d: 6a00                PUSH 0x0
+00dbb95f: 6a01                PUSH 0x1
+00dbb961: 6a00                PUSH 0x0
+00dbb963: 6a00                PUSH 0x0
+00dbb965: 68189b2d01          PUSH 0x12d9b18  ; s_TEXT_QST_048_BULLY_FOUND_TEDDY_T_012d9b18
+00dbb96a: ff9218010000        CALL dword ptr [EDX + 0x118]
+00dbb970: 50                  PUSH EAX
+00dbb971: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbb975: e816baa2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbb97a: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb97e: e8cdbaa2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbb983: 84c0                TEST AL,AL
+00dbb985: 7424                JZ 0x00dbb9ab
+00dbb987: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb98a: 8b01                MOV EAX,dword ptr [ECX]
+00dbb98c: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbb98f: 8bcd                MOV ECX,EBP
+00dbb991: e89aa11700          CALL 0x00f35b30  ; Initialise
+00dbb996: 84c0                TEST AL,AL
+00dbb998: 0f85ed0d0000        JNZ 0x00dbc78b
+00dbb99e: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbb9a2: e8a9baa2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbb9a7: 84c0                TEST AL,AL
+00dbb9a9: 75dc                JNZ 0x00dbb987
+00dbb9ab: 8bcd                MOV ECX,EBP
+00dbb9ad: e87ea11700          CALL 0x00f35b30  ; Initialise
+00dbb9b2: 84c0                TEST AL,AL
+00dbb9b4: 0f85f20d0000        JNZ 0x00dbc7ac
+00dbb9ba: 8bcd                MOV ECX,EBP
+00dbb9bc: e83f130000          CALL 0x00dbcd00  ; GivenTeddy
+00dbb9c1: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbb9c4: 8b442450            MOV EAX,dword ptr [ESP + 0x50]
+00dbb9c8: 8b11                MOV EDX,dword ptr [ECX]
+00dbb9ca: 50                  PUSH EAX
+00dbb9cb: ff92a4050000        CALL dword ptr [EDX + 0x5a4]
+00dbb9d1: 8b17                MOV EDX,dword ptr [EDI]
+00dbb9d3: 6a00                PUSH 0x0
+00dbb9d5: 8bcf                MOV ECX,EDI
+00dbb9d7: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbb9dd: 8d8c24e0000000      LEA ECX,[ESP + 0xe0]
+00dbb9e4: e995030000          JMP 0x00dbbd7e
+00dbb9e9: 8b07                MOV EAX,dword ptr [EDI]
+00dbb9eb: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbb9ef: 51                  PUSH ECX
+00dbb9f0: 8bcf                MOV ECX,EDI
+00dbb9f2: ff908c000000        CALL dword ptr [EAX + 0x8c]
+00dbb9f8: 84c0                TEST AL,AL
+00dbb9fa: 7429                JZ 0x00dbba25
+00dbb9fc: 8b442428            MOV EAX,dword ptr [ESP + 0x28]
+00dbba00: 85c0                TEST EAX,EAX
+00dbba02: 0f854f010000        JNZ 0x00dbbb57
+00dbba08: bf0ed72201          MOV EDI,0x122d70e  ; DAT_0122d70e
+00dbba0d: be58892d01          MOV ESI,0x12d8958  ; s_OBJECT_TEDDY_BEAR_UNGIVEABLE_012d8958
+00dbba12: b91d000000          MOV ECX,0x1d
+00dbba17: 33d2                XOR EDX,EDX
+00dbba19: f3a6                CMPSB.REPE ES:EDI,ESI  ; DAT_0122d70e
+00dbba1b: 0f8452010000        JZ 0x00dbbb73
+00dbba21: 8b7c2450            MOV EDI,dword ptr [ESP + 0x50]
+00dbba25: 8b07                MOV EAX,dword ptr [EDI]
+00dbba27: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbba2b: 51                  PUSH ECX
+00dbba2c: 8bcf                MOV ECX,EDI
+00dbba2e: ff908c000000        CALL dword ptr [EAX + 0x8c]
+00dbba34: 84c0                TEST AL,AL
+00dbba36: 0f8447030000        JZ 0x00dbbd83
+00dbba3c: 6858892d01          PUSH 0x12d8958  ; s_OBJECT_TEDDY_BEAR_UNGIVEABLE_012d8958
+00dbba41: 8d4c242c            LEA ECX,[ESP + 0x2c]
+00dbba45: e8162fbeff          CALL 0x0099e960  ; CCharString::NotEqual
+00dbba4a: 84c0                TEST AL,AL
+00dbba4c: 0f8431030000        JZ 0x00dbbd83
+00dbba52: 8bcd                MOV ECX,EBP
+00dbba54: e8d7a01700          CALL 0x00f35b30  ; Initialise
+00dbba59: 84c0                TEST AL,AL
+00dbba5b: 0f85e70d0000        JNZ 0x00dbc848
+00dbba61: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbba65: e84f69f1ff          CALL 0x00cd23b9  ; HasPhysicsMesh
+00dbba6a: 84c0                TEST AL,AL
+00dbba6c: 7409                JZ 0x00dbba77
+00dbba6e: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbba72: e8f96cf1ff          CALL 0x00cd2770  ; Clear
+00dbba77: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbba7a: 8b11                MOV EDX,dword ptr [ECX]
+00dbba7c: 6a04                PUSH 0x4
+00dbba7e: 8d442414            LEA EAX,[ESP + 0x14]
+00dbba82: 50                  PUSH EAX
+00dbba83: 57                  PUSH EDI
+00dbba84: ff5220              CALL dword ptr [EDX + 0x20]
+00dbba87: 84c0                TEST AL,AL
+00dbba89: 7530                JNZ 0x00dbbabb
+00dbba8b: eb03                JMP 0x00dbba90
+00dbba90: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbba93: 8b11                MOV EDX,dword ptr [ECX]
+00dbba95: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbba98: 8bcd                MOV ECX,EBP
+00dbba9a: e891a01700          CALL 0x00f35b30  ; Initialise
+00dbba9f: 84c0                TEST AL,AL
+00dbbaa1: 0f85a10d0000        JNZ 0x00dbc848
+00dbbaa7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbaaa: 8b01                MOV EAX,dword ptr [ECX]
+00dbbaac: 6a04                PUSH 0x4
+00dbbaae: 8d542414            LEA EDX,[ESP + 0x14]
+00dbbab2: 52                  PUSH EDX
+00dbbab3: 57                  PUSH EDI
+00dbbab4: ff5020              CALL dword ptr [EAX + 0x20]
+00dbbab7: 84c0                TEST AL,AL
+00dbbab9: 74d5                JZ 0x00dbba90
+00dbbabb: 8bcd                MOV ECX,EBP
+00dbbabd: e86ea01700          CALL 0x00f35b30  ; Initialise
+00dbbac2: 84c0                TEST AL,AL
+00dbbac4: 0f857e0d0000        JNZ 0x00dbc848
+00dbbaca: 8d8c24f0000000      LEA ECX,[ESP + 0xf0]
+00dbbad1: e88ac092ff          CALL 0x006e7b60  ; CCarriedReadableDef
+00dbbad6: 6aff                PUSH -0x1
+00dbbad8: 680ed72201          PUSH 0x122d70e  ; DAT_0122d70e
+00dbbadd: 8d8c24a4000000      LEA ECX,[ESP + 0xa4]
+00dbbae4: e80731beff          CALL 0x0099ebf0  ; CCharString
+00dbbae9: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbaec: 8b01                MOV EAX,dword ptr [ECX]
+00dbbaee: 8d9424f0000000      LEA EDX,[ESP + 0xf0]
+00dbbaf5: 52                  PUSH EDX
+00dbbaf6: 8d9424a0000000      LEA EDX,[ESP + 0xa0]
+00dbbafd: 52                  PUSH EDX
+00dbbafe: ff90c8050000        CALL dword ptr [EAX + 0x5c8]
+00dbbb04: 8d8c249c000000      LEA ECX,[ESP + 0x9c]
+00dbbb0b: e8d02fbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbbb10: 8b7504              MOV ESI,dword ptr [EBP + 0x4]
+00dbbb13: 8b06                MOV EAX,dword ptr [ESI]
+00dbbb15: 6a01                PUSH 0x1
+00dbbb17: 8bce                MOV ECX,ESI
+00dbbb19: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbbb1f: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbb22: 8b39                MOV EDI,dword ptr [ECX]
+00dbbb24: 8d942440010000      LEA EDX,[ESP + 0x140]
+00dbbb2b: 52                  PUSH EDX
+00dbbb2c: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbbb30: e85bb9a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbbb35: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbb38: 50                  PUSH EAX
+00dbbb39: ff9720040000        CALL dword ptr [EDI + 0x420]
+00dbbb3f: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbbb45: dfe0                FNSTSW AX
+00dbbb47: f6c441              TEST AH,0x41
+00dbbb4a: 0f85a7010000        JNZ 0x00dbbcf7
+00dbbb50: b301                MOV BL,0x1
+00dbbb52: e9a2010000          JMP 0x00dbbcf9
+00dbbb57: 8b08                MOV ECX,dword ptr [EAX]
+00dbbb59: ba58892d01          MOV EDX,0x12d8958  ; s_OBJECT_TEDDY_BEAR_UNGIVEABLE_012d8958
+00dbbb5e: e80d5a65ff          CALL 0x00411570  ; Compare
+00dbbb63: f7d8                NEG EAX
+00dbbb65: 1ac0                SBB AL,AL
+00dbbb67: fec0                INC AL
+00dbbb69: 88442427            MOV byte ptr [ESP + 0x27],AL
+00dbbb6d: 0f84aefeffff        JZ 0x00dbba21
+00dbbb73: 8bcd                MOV ECX,EBP
+00dbbb75: e8b69f1700          CALL 0x00f35b30  ; Initialise
+00dbbb7a: 84c0                TEST AL,AL
+00dbbb7c: 0f85c60c0000        JNZ 0x00dbc848
+00dbbb82: 8d8c24c8000000      LEA ECX,[ESP + 0xc8]
+00dbbb89: e8d2bf92ff          CALL 0x006e7b60  ; CCarriedReadableDef
+00dbbb8e: 6aff                PUSH -0x1
+00dbbb90: 680ed72201          PUSH 0x122d70e  ; DAT_0122d70e
+00dbbb95: 8d8c24e0000000      LEA ECX,[ESP + 0xe0]
+00dbbb9c: e84f30beff          CALL 0x0099ebf0  ; CCharString
+00dbbba1: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbba4: 8b01                MOV EAX,dword ptr [ECX]
+00dbbba6: 8d9424c8000000      LEA EDX,[ESP + 0xc8]
+00dbbbad: 52                  PUSH EDX
+00dbbbae: 8d9424dc000000      LEA EDX,[ESP + 0xdc]
+00dbbbb5: 52                  PUSH EDX
+00dbbbb6: ff90c8050000        CALL dword ptr [EAX + 0x5c8]
+00dbbbbc: 8d8c24d8000000      LEA ECX,[ESP + 0xd8]
+00dbbbc3: e8182fbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbbbc8: 8b7504              MOV ESI,dword ptr [EBP + 0x4]
+00dbbbcb: 8b06                MOV EAX,dword ptr [ESI]
+00dbbbcd: 6a01                PUSH 0x1
+00dbbbcf: 8bce                MOV ECX,ESI
+00dbbbd1: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbbbd7: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbbbda: c6819600000001      MOV byte ptr [ECX + 0x96],0x1
+00dbbbe1: 8b5514              MOV EDX,dword ptr [EBP + 0x14]
+00dbbbe4: 8a8296000000        MOV AL,byte ptr [EDX + 0x96]
+00dbbbea: 84c0                TEST AL,AL
+00dbbbec: 7426                JZ 0x00dbbc14
+00dbbbee: 8bff                MOV EDI,EDI
+00dbbbf0: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbbf3: 8b01                MOV EAX,dword ptr [ECX]
+00dbbbf5: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbbbf8: 8bcd                MOV ECX,EBP
+00dbbbfa: e8319f1700          CALL 0x00f35b30  ; Initialise
+00dbbbff: 84c0                TEST AL,AL
+00dbbc01: 0f85c60b0000        JNZ 0x00dbc7cd
+00dbbc07: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbbc0a: 8a8196000000        MOV AL,byte ptr [ECX + 0x96]
+00dbbc10: 84c0                TEST AL,AL
+00dbbc12: 75dc                JNZ 0x00dbbbf0
+00dbbc14: 8bcd                MOV ECX,EBP
+00dbbc16: e8159f1700          CALL 0x00f35b30  ; Initialise
+00dbbc1b: 84c0                TEST AL,AL
+00dbbc1d: 0f85cb0b0000        JNZ 0x00dbc7ee
+00dbbc23: 8b5504              MOV EDX,dword ptr [EBP + 0x4]
+00dbbc26: 8b3a                MOV EDI,dword ptr [EDX]
+00dbbc28: 8d842404010000      LEA EAX,[ESP + 0x104]
+00dbbc2f: 50                  PUSH EAX
+00dbbc30: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbbc34: e857b8a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbbc39: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbc3c: 50                  PUSH EAX
+00dbbc3d: ff9720040000        CALL dword ptr [EDI + 0x420]
+00dbbc43: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbbc49: dfe0                FNSTSW AX
+00dbbc4b: f6c441              TEST AH,0x41
+00dbbc4e: 7504                JNZ 0x00dbbc54
+00dbbc50: b301                MOV BL,0x1
+00dbbc52: eb02                JMP 0x00dbbc56
+00dbbc54: 32db                XOR BL,BL
+00dbbc56: 8d8c2404010000      LEA ECX,[ESP + 0x104]
+00dbbc5d: e8deeb6eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbbc62: 84db                TEST BL,BL
+00dbbc64: 7462                JZ 0x00dbbcc8
+00dbbc66: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbc69: 8b11                MOV EDX,dword ptr [ECX]
+00dbbc6b: 6a00                PUSH 0x0
+00dbbc6d: 6a01                PUSH 0x1
+00dbbc6f: 6a00                PUSH 0x0
+00dbbc71: 6a00                PUSH 0x0
+00dbbc73: 68189b2d01          PUSH 0x12d9b18  ; s_TEXT_QST_048_BULLY_FOUND_TEDDY_T_012d9b18
+00dbbc78: ff9218010000        CALL dword ptr [EDX + 0x118]
+00dbbc7e: 50                  PUSH EAX
+00dbbc7f: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbbc83: e808b7a2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbbc88: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbc8c: e8bfb7a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbbc91: 84c0                TEST AL,AL
+00dbbc93: 7424                JZ 0x00dbbcb9
+00dbbc95: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbc98: 8b01                MOV EAX,dword ptr [ECX]
+00dbbc9a: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbbc9d: 8bcd                MOV ECX,EBP
+00dbbc9f: e88c9e1700          CALL 0x00f35b30  ; Initialise
+00dbbca4: 84c0                TEST AL,AL
+00dbbca6: 0f85210b0000        JNZ 0x00dbc7cd
+00dbbcac: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbcb0: e89bb7a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbbcb5: 84c0                TEST AL,AL
+00dbbcb7: 75dc                JNZ 0x00dbbc95
+00dbbcb9: 8bcd                MOV ECX,EBP
+00dbbcbb: e8709e1700          CALL 0x00f35b30  ; Initialise
+00dbbcc0: 84c0                TEST AL,AL
+00dbbcc2: 0f85260b0000        JNZ 0x00dbc7ee
+00dbbcc8: 8bcd                MOV ECX,EBP
+00dbbcca: e831100000          CALL 0x00dbcd00  ; GivenTeddy
+00dbbccf: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbcd2: 8b442450            MOV EAX,dword ptr [ESP + 0x50]
+00dbbcd6: 8b11                MOV EDX,dword ptr [ECX]
+00dbbcd8: 50                  PUSH EAX
+00dbbcd9: ff92a4050000        CALL dword ptr [EDX + 0x5a4]
+00dbbcdf: 8b16                MOV EDX,dword ptr [ESI]
+00dbbce1: 6a00                PUSH 0x0
+00dbbce3: 8bce                MOV ECX,ESI
+00dbbce5: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbbceb: 8d8c24c8000000      LEA ECX,[ESP + 0xc8]
+00dbbcf2: e987000000          JMP 0x00dbbd7e
+00dbbcf7: 32db                XOR BL,BL
+00dbbcf9: 8d8c2440010000      LEA ECX,[ESP + 0x140]
+00dbbd00: e83beb6eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbbd05: 84db                TEST BL,BL
+00dbbd07: 7462                JZ 0x00dbbd6b
+00dbbd09: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbd0c: 8b01                MOV EAX,dword ptr [ECX]
+00dbbd0e: 6a00                PUSH 0x0
+00dbbd10: 6a01                PUSH 0x1
+00dbbd12: 6a00                PUSH 0x0
+00dbbd14: 6a00                PUSH 0x0
+00dbbd16: 68f89a2d01          PUSH 0x12d9af8  ; s_TEXT_QST_048_BULLY_DONT_WANT_012d9af8
+00dbbd1b: ff9018010000        CALL dword ptr [EAX + 0x118]
+00dbbd21: 50                  PUSH EAX
+00dbbd22: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbbd26: e865b6a2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbbd2b: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbd2f: e81cb7a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbbd34: 84c0                TEST AL,AL
+00dbbd36: 7424                JZ 0x00dbbd5c
+00dbbd38: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbd3b: 8b11                MOV EDX,dword ptr [ECX]
+00dbbd3d: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbbd40: 8bcd                MOV ECX,EBP
+00dbbd42: e8e99d1700          CALL 0x00f35b30  ; Initialise
+00dbbd47: 84c0                TEST AL,AL
+00dbbd49: 0f85c00a0000        JNZ 0x00dbc80f
+00dbbd4f: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbd53: e8f8b6a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbbd58: 84c0                TEST AL,AL
+00dbbd5a: 75dc                JNZ 0x00dbbd38
+00dbbd5c: 8bcd                MOV ECX,EBP
+00dbbd5e: e8cd9d1700          CALL 0x00f35b30  ; Initialise
+00dbbd63: 84c0                TEST AL,AL
+00dbbd65: 0f85c50a0000        JNZ 0x00dbc830
+00dbbd6b: 8b06                MOV EAX,dword ptr [ESI]
+00dbbd6d: 6a00                PUSH 0x0
+00dbbd6f: 8bce                MOV ECX,ESI
+00dbbd71: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbbd77: 8d8c24f0000000      LEA ECX,[ESP + 0xf0]
+00dbbd7e: e8fdbd92ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbbd83: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbbd87: e8542dbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbbd8c: 6aff                PUSH -0x1
+00dbbd8e: 68c8d12501          PUSH 0x125d1c8  ; s_SCRIPT_NAME_HERO_0125d1c8
+00dbbd93: 8d8c2498000000      LEA ECX,[ESP + 0x98]
+00dbbd9a: e8512ebeff          CALL 0x0099ebf0  ; CCharString
+00dbbd9f: 8b7c2450            MOV EDI,dword ptr [ESP + 0x50]
+00dbbda3: 8b17                MOV EDX,dword ptr [EDI]
+00dbbda5: 8d842490000000      LEA EAX,[ESP + 0x90]
+00dbbdac: 50                  PUSH EAX
+00dbbdad: 8bcf                MOV ECX,EDI
+00dbbdaf: ff526c              CALL dword ptr [EDX + 0x6c]
+00dbbdb2: 8d8c2490000000      LEA ECX,[ESP + 0x90]
+00dbbdb9: 8ad8                MOV BL,AL
+00dbbdbb: e8202dbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbbdc0: 84db                TEST BL,BL
+00dbbdc2: 0f84d6040000        JZ 0x00dbc29e
+00dbbdc8: 8bcd                MOV ECX,EBP
+00dbbdca: e8619d1700          CALL 0x00f35b30  ; Initialise
+00dbbdcf: 84c0                TEST AL,AL
+00dbbdd1: 0f850b0f0000        JNZ 0x00dbcce2
+00dbbdd7: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbddb: e8d965f1ff          CALL 0x00cd23b9  ; HasPhysicsMesh
+00dbbde0: 84c0                TEST AL,AL
+00dbbde2: 7409                JZ 0x00dbbded
+00dbbde4: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbde8: e88369f1ff          CALL 0x00cd2770  ; Clear
+00dbbded: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbdf0: 8b11                MOV EDX,dword ptr [ECX]
+00dbbdf2: 6a04                PUSH 0x4
+00dbbdf4: 8d442414            LEA EAX,[ESP + 0x14]
+00dbbdf8: 50                  PUSH EAX
+00dbbdf9: 57                  PUSH EDI
+00dbbdfa: ff5220              CALL dword ptr [EDX + 0x20]
+00dbbdfd: 84c0                TEST AL,AL
+00dbbdff: 752b                JNZ 0x00dbbe2c
+00dbbe01: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbe04: 8b11                MOV EDX,dword ptr [ECX]
+00dbbe06: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbbe09: 8bcd                MOV ECX,EBP
+00dbbe0b: e8209d1700          CALL 0x00f35b30  ; Initialise
+00dbbe10: 84c0                TEST AL,AL
+00dbbe12: 0f85ca0e0000        JNZ 0x00dbcce2
+00dbbe18: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbe1b: 8b01                MOV EAX,dword ptr [ECX]
+00dbbe1d: 6a04                PUSH 0x4
+00dbbe1f: 8d542414            LEA EDX,[ESP + 0x14]
+00dbbe23: 52                  PUSH EDX
+00dbbe24: 57                  PUSH EDI
+00dbbe25: ff5020              CALL dword ptr [EAX + 0x20]
+00dbbe28: 84c0                TEST AL,AL
+00dbbe2a: 74d5                JZ 0x00dbbe01
+00dbbe2c: 8bcd                MOV ECX,EBP
+00dbbe2e: e8fd9c1700          CALL 0x00f35b30  ; Initialise
+00dbbe33: 84c0                TEST AL,AL
+00dbbe35: 0f85a70e0000        JNZ 0x00dbcce2
+00dbbe3b: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbbe3f: e81cbd92ff          CALL 0x006e7b60  ; CCarriedReadableDef
+00dbbe44: 6aff                PUSH -0x1
+00dbbe46: 680ed72201          PUSH 0x122d70e  ; DAT_0122d70e
+00dbbe4b: 8d8c24ac000000      LEA ECX,[ESP + 0xac]
+00dbbe52: e8992dbeff          CALL 0x0099ebf0  ; CCharString
+00dbbe57: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbe5a: 8b01                MOV EAX,dword ptr [ECX]
+00dbbe5c: 8d54243c            LEA EDX,[ESP + 0x3c]
+00dbbe60: 52                  PUSH EDX
+00dbbe61: 8d9424a8000000      LEA EDX,[ESP + 0xa8]
+00dbbe68: 52                  PUSH EDX
+00dbbe69: ff90c8050000        CALL dword ptr [EAX + 0x5c8]
+00dbbe6f: 8d8c24a4000000      LEA ECX,[ESP + 0xa4]
+00dbbe76: e8652cbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbbe7b: 8b7504              MOV ESI,dword ptr [EBP + 0x4]
+00dbbe7e: 8b06                MOV EAX,dword ptr [ESI]
+00dbbe80: 6a01                PUSH 0x1
+00dbbe82: 8bce                MOV ECX,ESI
+00dbbe84: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbbe8a: 8a4524              MOV AL,byte ptr [EBP + 0x24]
+00dbbe8d: 84c0                TEST AL,AL
+00dbbe8f: 8bcd                MOV ECX,EBP
+00dbbe91: 0f85bb000000        JNZ 0x00dbbf52
+00dbbe97: e8949c1700          CALL 0x00f35b30  ; Initialise
+00dbbe9c: 84c0                TEST AL,AL
+00dbbe9e: 0f851f030000        JNZ 0x00dbc1c3
+00dbbea4: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbea7: 8b19                MOV EBX,dword ptr [ECX]
+00dbbea9: 8d94241c010000      LEA EDX,[ESP + 0x11c]
+00dbbeb0: 52                  PUSH EDX
+00dbbeb1: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbbeb5: e8d6b5a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbbeba: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbebd: 50                  PUSH EAX
+00dbbebe: ff9320040000        CALL dword ptr [EBX + 0x420]
+00dbbec4: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbbeca: dfe0                FNSTSW AX
+00dbbecc: f6c441              TEST AH,0x41
+00dbbecf: 7504                JNZ 0x00dbbed5
+00dbbed1: b301                MOV BL,0x1
+00dbbed3: eb02                JMP 0x00dbbed7
+00dbbed5: 32db                XOR BL,BL
+00dbbed7: 8d8c241c010000      LEA ECX,[ESP + 0x11c]
+00dbbede: e85de96eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbbee3: 84db                TEST BL,BL
+00dbbee5: 7462                JZ 0x00dbbf49
+00dbbee7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbeea: 8b01                MOV EAX,dword ptr [ECX]
+00dbbeec: 6a00                PUSH 0x0
+00dbbeee: 6a01                PUSH 0x1
+00dbbef0: 6a00                PUSH 0x0
+00dbbef2: 6a00                PUSH 0x0
+00dbbef4: 68dc9a2d01          PUSH 0x12d9adc  ; s_TEXT_QST_048_BULLY_GET_LOST_012d9adc
+00dbbef9: ff9018010000        CALL dword ptr [EAX + 0x118]
+00dbbeff: 50                  PUSH EAX
+00dbbf00: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbbf04: e887b4a2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbbf09: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbf0d: e83eb5a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbbf12: 84c0                TEST AL,AL
+00dbbf14: 7424                JZ 0x00dbbf3a
+00dbbf16: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbf19: 8b11                MOV EDX,dword ptr [ECX]
+00dbbf1b: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbbf1e: 8bcd                MOV ECX,EBP
+00dbbf20: e80b9c1700          CALL 0x00f35b30  ; Initialise
+00dbbf25: 84c0                TEST AL,AL
+00dbbf27: 0f8524090000        JNZ 0x00dbc851
+00dbbf2d: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbf31: e81ab5a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbbf36: 84c0                TEST AL,AL
+00dbbf38: 75dc                JNZ 0x00dbbf16
+00dbbf3a: 8bcd                MOV ECX,EBP
+00dbbf3c: e8ef9b1700          CALL 0x00f35b30  ; Initialise
+00dbbf41: 84c0                TEST AL,AL
+00dbbf43: 0f857a020000        JNZ 0x00dbc1c3
+00dbbf49: c6452401            MOV byte ptr [EBP + 0x24],0x1
+00dbbf4d: e937030000          JMP 0x00dbc289
+00dbbf52: e8d99b1700          CALL 0x00f35b30  ; Initialise
+00dbbf57: 84c0                TEST AL,AL
+00dbbf59: 0f85f2080000        JNZ 0x00dbc851
+00dbbf5f: 8b4514              MOV EAX,dword ptr [EBP + 0x14]
+00dbbf62: 8a486f              MOV CL,byte ptr [EAX + 0x6f]
+00dbbf65: 84c9                TEST CL,CL
+00dbbf67: 8bcd                MOV ECX,EBP
+00dbbf69: 0f846e020000        JZ 0x00dbc1dd
+00dbbf6f: e8bc9b1700          CALL 0x00f35b30  ; Initialise
+00dbbf74: 84c0                TEST AL,AL
+00dbbf76: 0f8547020000        JNZ 0x00dbc1c3
+00dbbf7c: 8a4525              MOV AL,byte ptr [EBP + 0x25]
+00dbbf7f: 84c0                TEST AL,AL
+00dbbf81: 8bcd                MOV ECX,EBP
+00dbbf83: 0f85bb000000        JNZ 0x00dbc044
+00dbbf89: e8a29b1700          CALL 0x00f35b30  ; Initialise
+00dbbf8e: 84c0                TEST AL,AL
+00dbbf90: 0f85bb080000        JNZ 0x00dbc851
+00dbbf96: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbf99: 8b19                MOV EBX,dword ptr [ECX]
+00dbbf9b: 8d942434010000      LEA EDX,[ESP + 0x134]
+00dbbfa2: 52                  PUSH EDX
+00dbbfa3: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbbfa7: e8e4b4a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbbfac: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbfaf: 50                  PUSH EAX
+00dbbfb0: ff9320040000        CALL dword ptr [EBX + 0x420]
+00dbbfb6: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbbfbc: dfe0                FNSTSW AX
+00dbbfbe: f6c441              TEST AH,0x41
+00dbbfc1: 7504                JNZ 0x00dbbfc7
+00dbbfc3: b301                MOV BL,0x1
+00dbbfc5: eb02                JMP 0x00dbbfc9
+00dbbfc7: 32db                XOR BL,BL
+00dbbfc9: 8d8c2434010000      LEA ECX,[ESP + 0x134]
+00dbbfd0: e86be86eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbbfd5: 84db                TEST BL,BL
+00dbbfd7: 7462                JZ 0x00dbc03b
+00dbbfd9: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbbfdc: 8b01                MOV EAX,dword ptr [ECX]
+00dbbfde: 6a00                PUSH 0x0
+00dbbfe0: 6a01                PUSH 0x1
+00dbbfe2: 6a00                PUSH 0x0
+00dbbfe4: 6a00                PUSH 0x0
+00dbbfe6: 68bc9a2d01          PUSH 0x12d9abc  ; s_TEXT_QST_048_BULLY_IN_COMMON_012d9abc
+00dbbfeb: ff9018010000        CALL dword ptr [EAX + 0x118]
+00dbbff1: 50                  PUSH EAX
+00dbbff2: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbbff6: e895b3a2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbbffb: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbbfff: e84cb4a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc004: 84c0                TEST AL,AL
+00dbc006: 7424                JZ 0x00dbc02c
+00dbc008: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc00b: 8b11                MOV EDX,dword ptr [ECX]
+00dbc00d: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbc010: 8bcd                MOV ECX,EBP
+00dbc012: e8199b1700          CALL 0x00f35b30  ; Initialise
+00dbc017: 84c0                TEST AL,AL
+00dbc019: 0f85a4010000        JNZ 0x00dbc1c3
+00dbc01f: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc023: e828b4a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc028: 84c0                TEST AL,AL
+00dbc02a: 75dc                JNZ 0x00dbc008
+00dbc02c: 8bcd                MOV ECX,EBP
+00dbc02e: e8fd9a1700          CALL 0x00f35b30  ; Initialise
+00dbc033: 84c0                TEST AL,AL
+00dbc035: 0f8516080000        JNZ 0x00dbc851
+00dbc03b: c6452501            MOV byte ptr [EBP + 0x25],0x1
+00dbc03f: e945020000          JMP 0x00dbc289
+00dbc044: e8e79a1700          CALL 0x00f35b30  ; Initialise
+00dbc049: 84c0                TEST AL,AL
+00dbc04b: 0f8572010000        JNZ 0x00dbc1c3
+00dbc051: 837d2003            CMP dword ptr [EBP + 0x20],0x3
+00dbc055: 8bcd                MOV ECX,EBP
+00dbc057: 0f8db0000000        JGE 0x00dbc10d
+00dbc05d: e8ce9a1700          CALL 0x00f35b30  ; Initialise
+00dbc062: 84c0                TEST AL,AL
+00dbc064: 0f85e7070000        JNZ 0x00dbc851
+00dbc06a: 8b4504              MOV EAX,dword ptr [EBP + 0x4]
+00dbc06d: 8b18                MOV EBX,dword ptr [EAX]
+00dbc06f: 8d8c2410010000      LEA ECX,[ESP + 0x110]
+00dbc076: 51                  PUSH ECX
+00dbc077: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbc07b: e810b4a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbc080: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc083: 50                  PUSH EAX
+00dbc084: ff9320040000        CALL dword ptr [EBX + 0x420]
+00dbc08a: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbc090: dfe0                FNSTSW AX
+00dbc092: f6c441              TEST AH,0x41
+00dbc095: 7504                JNZ 0x00dbc09b
+00dbc097: b301                MOV BL,0x1
+00dbc099: eb02                JMP 0x00dbc09d
+00dbc09b: 32db                XOR BL,BL
+00dbc09d: 8d8c2410010000      LEA ECX,[ESP + 0x110]
+00dbc0a4: e897e76eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbc0a9: 84db                TEST BL,BL
+00dbc0ab: 0f84d8010000        JZ 0x00dbc289
+00dbc0b1: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc0b4: 8b11                MOV EDX,dword ptr [ECX]
+00dbc0b6: 6a00                PUSH 0x0
+00dbc0b8: 6a01                PUSH 0x1
+00dbc0ba: 6a00                PUSH 0x0
+00dbc0bc: 6a00                PUSH 0x0
+00dbc0be: 689c9a2d01          PUSH 0x12d9a9c  ; s_TEXT_QST_048_BULLY_NASTY_STREAK_012d9a9c
+00dbc0c3: ff9218010000        CALL dword ptr [EDX + 0x118]
+00dbc0c9: 50                  PUSH EAX
+00dbc0ca: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc0ce: e8bdb2a2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbc0d3: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc0d7: e874b3a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc0dc: 84c0                TEST AL,AL
+00dbc0de: 0f8496010000        JZ 0x00dbc27a
+00dbc0e4: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc0e7: 8b01                MOV EAX,dword ptr [ECX]
+00dbc0e9: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbc0ec: 8bcd                MOV ECX,EBP
+00dbc0ee: e83d9a1700          CALL 0x00f35b30  ; Initialise
+00dbc0f3: 84c0                TEST AL,AL
+00dbc0f5: 0f85c8000000        JNZ 0x00dbc1c3
+00dbc0fb: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc0ff: e84cb3a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc104: 84c0                TEST AL,AL
+00dbc106: 75dc                JNZ 0x00dbc0e4
+00dbc108: e96d010000          JMP 0x00dbc27a
+00dbc10d: e81e9a1700          CALL 0x00f35b30  ; Initialise
+00dbc112: 84c0                TEST AL,AL
+00dbc114: 0f85a9000000        JNZ 0x00dbc1c3
+00dbc11a: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc11d: 8b19                MOV EBX,dword ptr [ECX]
+00dbc11f: 8d942428010000      LEA EDX,[ESP + 0x128]
+00dbc126: 52                  PUSH EDX
+00dbc127: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbc12b: e860b3a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbc130: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc133: 50                  PUSH EAX
+00dbc134: ff9320040000        CALL dword ptr [EBX + 0x420]
+00dbc13a: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbc140: dfe0                FNSTSW AX
+00dbc142: f6c441              TEST AH,0x41
+00dbc145: 7504                JNZ 0x00dbc14b
+00dbc147: b301                MOV BL,0x1
+00dbc149: eb02                JMP 0x00dbc14d
+00dbc14b: 32db                XOR BL,BL
+00dbc14d: 8d8c2428010000      LEA ECX,[ESP + 0x128]
+00dbc154: e8e7e66eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbc159: 84db                TEST BL,BL
+00dbc15b: 0f8428010000        JZ 0x00dbc289
+00dbc161: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc164: 8b01                MOV EAX,dword ptr [ECX]
+00dbc166: 6a00                PUSH 0x0
+00dbc168: 6a01                PUSH 0x1
+00dbc16a: 6a00                PUSH 0x0
+00dbc16c: 6a00                PUSH 0x0
+00dbc16e: 687c9a2d01          PUSH 0x12d9a7c  ; s_TEXT_QST_048_BULLY_DONT_HIT_ME_012d9a7c
+00dbc173: ff9018010000        CALL dword ptr [EAX + 0x118]
+00dbc179: 50                  PUSH EAX
+00dbc17a: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc17e: e80db2a2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbc183: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc187: e8c4b2a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc18c: 84c0                TEST AL,AL
+00dbc18e: 7424                JZ 0x00dbc1b4
+00dbc190: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc193: 8b11                MOV EDX,dword ptr [ECX]
+00dbc195: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbc198: 8bcd                MOV ECX,EBP
+00dbc19a: e891991700          CALL 0x00f35b30  ; Initialise
+00dbc19f: 84c0                TEST AL,AL
+00dbc1a1: 0f85aa060000        JNZ 0x00dbc851
+00dbc1a7: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc1ab: e8a0b2a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc1b0: 84c0                TEST AL,AL
+00dbc1b2: 75dc                JNZ 0x00dbc190
+00dbc1b4: 8bcd                MOV ECX,EBP
+00dbc1b6: e875991700          CALL 0x00f35b30  ; Initialise
+00dbc1bb: 84c0                TEST AL,AL
+00dbc1bd: 0f84c6000000        JZ 0x00dbc289
+00dbc1c3: 8b16                MOV EDX,dword ptr [ESI]
+00dbc1c5: 6a00                PUSH 0x0
+00dbc1c7: 8bce                MOV ECX,ESI
+00dbc1c9: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbc1cf: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbc1d3: e8a8b992ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc1d8: e9050b0000          JMP 0x00dbcce2
+00dbc1dd: e84e991700          CALL 0x00f35b30  ; Initialise
+00dbc1e2: 84c0                TEST AL,AL
+00dbc1e4: 0f8567060000        JNZ 0x00dbc851
+00dbc1ea: 8b4504              MOV EAX,dword ptr [EBP + 0x4]
+00dbc1ed: 8b18                MOV EBX,dword ptr [EAX]
+00dbc1ef: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbc1f3: 51                  PUSH ECX
+00dbc1f4: 8d4c2414            LEA ECX,[ESP + 0x14]
+00dbc1f8: e893b2a2ff          CALL 0x007e7490  ; ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dbc1fd: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc200: 50                  PUSH EAX
+00dbc201: ff9320040000        CALL dword ptr [EBX + 0x420]
+00dbc207: d81ddcde2201        FCOMP float ptr [0x0122dedc]  ; DAT_0122dedc
+00dbc20d: dfe0                FNSTSW AX
+00dbc20f: f6c441              TEST AH,0x41
+00dbc212: 7504                JNZ 0x00dbc218
+00dbc214: b301                MOV BL,0x1
+00dbc216: eb02                JMP 0x00dbc21a
+00dbc218: 32db                XOR BL,BL
+00dbc21a: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbc21e: e81de66eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbc223: 84db                TEST BL,BL
+00dbc225: 7462                JZ 0x00dbc289
+00dbc227: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc22a: 8b11                MOV EDX,dword ptr [ECX]
+00dbc22c: 6a00                PUSH 0x0
+00dbc22e: 6a01                PUSH 0x1
+00dbc230: 6a00                PUSH 0x0
+00dbc232: 6a00                PUSH 0x0
+00dbc234: 685c9a2d01          PUSH 0x12d9a5c  ; s_TEXT_QST_048_BULLY_BADGERING_012d9a5c
+00dbc239: ff9218010000        CALL dword ptr [EDX + 0x118]
+00dbc23f: 50                  PUSH EAX
+00dbc240: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc244: e847b1a2ff          CALL 0x007e7390  ; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00dbc249: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc24d: e8feb1a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc252: 84c0                TEST AL,AL
+00dbc254: 7424                JZ 0x00dbc27a
+00dbc256: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc259: 8b01                MOV EAX,dword ptr [ECX]
+00dbc25b: ff501c              CALL dword ptr [EAX + 0x1c]
+00dbc25e: 8bcd                MOV ECX,EBP
+00dbc260: e8cb981700          CALL 0x00f35b30  ; Initialise
+00dbc265: 84c0                TEST AL,AL
+00dbc267: 0f8556ffffff        JNZ 0x00dbc1c3
+00dbc26d: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc271: e8dab1a2ff          CALL 0x007e7450  ; ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dbc276: 84c0                TEST AL,AL
+00dbc278: 75dc                JNZ 0x00dbc256
+00dbc27a: 8bcd                MOV ECX,EBP
+00dbc27c: e8af981700          CALL 0x00f35b30  ; Initialise
+00dbc281: 84c0                TEST AL,AL
+00dbc283: 0f85c8050000        JNZ 0x00dbc851
+00dbc289: 8b16                MOV EDX,dword ptr [ESI]
+00dbc28b: 6a00                PUSH 0x0
+00dbc28d: 8bce                MOV ECX,ESI
+00dbc28f: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbc295: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbc299: e8e2b892ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc29e: 6aff                PUSH -0x1
+00dbc2a0: 68c8d12501          PUSH 0x125d1c8  ; s_SCRIPT_NAME_HERO_0125d1c8
+00dbc2a5: 8d8c24bc000000      LEA ECX,[ESP + 0xbc]
+00dbc2ac: e83f29beff          CALL 0x0099ebf0  ; CCharString
+00dbc2b1: 8b5c2438            MOV EBX,dword ptr [ESP + 0x38]
+00dbc2b5: 8b07                MOV EAX,dword ptr [EDI]
+00dbc2b7: 8d8c24b4000000      LEA ECX,[ESP + 0xb4]
+00dbc2be: 51                  PUSH ECX
+00dbc2bf: 83cb04              OR EBX,0x4
+00dbc2c2: 8bcf                MOV ECX,EDI
+00dbc2c4: 895c243c            MOV dword ptr [ESP + 0x3c],EBX
+00dbc2c8: ff5054              CALL dword ptr [EAX + 0x54]
+00dbc2cb: 84c0                TEST AL,AL
+00dbc2cd: 7569                JNZ 0x00dbc338
+00dbc2cf: 6aff                PUSH -0x1
+00dbc2d1: 68c8d12501          PUSH 0x125d1c8  ; s_SCRIPT_NAME_HERO_0125d1c8
+00dbc2d6: 8d8c24b4000000      LEA ECX,[ESP + 0xb4]
+00dbc2dd: e80e29beff          CALL 0x0099ebf0  ; CCharString
+00dbc2e2: 8b17                MOV EDX,dword ptr [EDI]
+00dbc2e4: 8d8424ac000000      LEA EAX,[ESP + 0xac]
+00dbc2eb: 83cb08              OR EBX,0x8
+00dbc2ee: 50                  PUSH EAX
+00dbc2ef: 8bcf                MOV ECX,EDI
+00dbc2f1: 895c243c            MOV dword ptr [ESP + 0x3c],EBX
+00dbc2f5: ff92a8000000        CALL dword ptr [EDX + 0xa8]
+00dbc2fb: 84c0                TEST AL,AL
+00dbc2fd: 7432                JZ 0x00dbc331
+00dbc2ff: 6aff                PUSH -0x1
+00dbc301: 68c8d12501          PUSH 0x125d1c8  ; s_SCRIPT_NAME_HERO_0125d1c8
+00dbc306: 8d8c24a0000000      LEA ECX,[ESP + 0xa0]
+00dbc30d: e8de28beff          CALL 0x0099ebf0  ; CCharString
+00dbc312: 8b17                MOV EDX,dword ptr [EDI]
+00dbc314: 8d842498000000      LEA EAX,[ESP + 0x98]
+00dbc31b: 50                  PUSH EAX
+00dbc31c: 83cb10              OR EBX,0x10
+00dbc31f: 6a0e                PUSH 0xe
+00dbc321: 8bcf                MOV ECX,EDI
+00dbc323: 895c2440            MOV dword ptr [ESP + 0x40],EBX
+00dbc327: ff92a4000000        CALL dword ptr [EDX + 0xa4]
+00dbc32d: 84c0                TEST AL,AL
+00dbc32f: 7407                JZ 0x00dbc338
+00dbc331: c644242700          MOV byte ptr [ESP + 0x27],0x0
+00dbc336: eb05                JMP 0x00dbc33d
+00dbc338: c644242701          MOV byte ptr [ESP + 0x27],0x1
+00dbc33d: f6c310              TEST BL,0x10
+00dbc340: 7413                JZ 0x00dbc355
+00dbc342: 83e3ef              AND EBX,0xffffffef
+00dbc345: 8d8c2498000000      LEA ECX,[ESP + 0x98]
+00dbc34c: 895c2438            MOV dword ptr [ESP + 0x38],EBX
+00dbc350: e88b27beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc355: f6c308              TEST BL,0x8
+00dbc358: 7413                JZ 0x00dbc36d
+00dbc35a: 83e3f7              AND EBX,0xfffffff7
+00dbc35d: 8d8c24ac000000      LEA ECX,[ESP + 0xac]
+00dbc364: 895c2438            MOV dword ptr [ESP + 0x38],EBX
+00dbc368: e87327beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc36d: f6c304              TEST BL,0x4
+00dbc370: 7413                JZ 0x00dbc385
+00dbc372: 83e3fb              AND EBX,0xfffffffb
+00dbc375: 8d8c24b4000000      LEA ECX,[ESP + 0xb4]
+00dbc37c: 895c2438            MOV dword ptr [ESP + 0x38],EBX
+00dbc380: e85b27beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc385: 8a442427            MOV AL,byte ptr [ESP + 0x27]
+00dbc389: 84c0                TEST AL,AL
+00dbc38b: 0f84f7010000        JZ 0x00dbc588
+00dbc391: 8bcd                MOV ECX,EBP
+00dbc393: e898971700          CALL 0x00f35b30  ; Initialise
+00dbc398: 84c0                TEST AL,AL
+00dbc39a: 0f8542090000        JNZ 0x00dbcce2
+00dbc3a0: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbc3a3: 81796419fcffff      CMP dword ptr [ECX + 0x64],0xfffffc19
+00dbc3aa: 0f85ba000000        JNZ 0x00dbc46a
+00dbc3b0: 8bcd                MOV ECX,EBP
+00dbc3b2: e879971700          CALL 0x00f35b30  ; Initialise
+00dbc3b7: 84c0                TEST AL,AL
+00dbc3b9: 0f8523090000        JNZ 0x00dbcce2
+00dbc3bf: 6aff                PUSH -0x1
+00dbc3c1: 680ed72201          PUSH 0x122d70e  ; DAT_0122d70e
+00dbc3c6: 8d8c24b0000000      LEA ECX,[ESP + 0xb0]
+00dbc3cd: e81e28beff          CALL 0x0099ebf0  ; CCharString
+00dbc3d2: 6aff                PUSH -0x1
+00dbc3d4: 68f0602d01          PUSH 0x12d60f0  ; s_HUD_QUEST_ICON_GRANDSON_012d60f0
+00dbc3d9: 8d8c248c000000      LEA ECX,[ESP + 0x8c]
+00dbc3e0: e80b28beff          CALL 0x0099ebf0  ; CCharString
+00dbc3e5: db451c              FILD dword ptr [EBP + 0x1c]
+00dbc3e8: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc3eb: 680000803f          PUSH 0x3f800000  ; DAT_3f800000
+00dbc3f0: 8d8424ac000000      LEA EAX,[ESP + 0xac]
+00dbc3f7: 50                  PUSH EAX
+00dbc3f8: 8d84248c000000      LEA EAX,[ESP + 0x8c]
+00dbc3ff: 50                  PUSH EAX
+00dbc400: 8d44247c            LEA EAX,[ESP + 0x7c]
+00dbc404: 50                  PUSH EAX
+00dbc405: 8d44245c            LEA EAX,[ESP + 0x5c]
+00dbc409: 50                  PUSH EAX
+00dbc40a: 6a00                PUSH 0x0
+00dbc40c: c684248a000000ff    MOV byte ptr [ESP + 0x8a],0xff
+00dbc414: c684248900000000    MOV byte ptr [ESP + 0x89],0x0
+00dbc41c: c684248800000000    MOV byte ptr [ESP + 0x88],0x0
+00dbc424: c684248b000000ff    MOV byte ptr [ESP + 0x8b],0xff
+00dbc42c: c644246600          MOV byte ptr [ESP + 0x66],0x0
+00dbc431: c6442465ff          MOV byte ptr [ESP + 0x65],0xff
+00dbc436: c644246400          MOV byte ptr [ESP + 0x64],0x0
+00dbc43b: c6442467ff          MOV byte ptr [ESP + 0x67],0xff
+00dbc440: 8b11                MOV EDX,dword ptr [ECX]
+00dbc442: 51                  PUSH ECX
+00dbc443: d91c24              FSTP float ptr [ESP]
+00dbc446: ff9210050000        CALL dword ptr [EDX + 0x510]
+00dbc44c: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbc44f: 894164              MOV dword ptr [ECX + 0x64],EAX
+00dbc452: 8d8c2484000000      LEA ECX,[ESP + 0x84]
+00dbc459: e88226beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc45e: 8d8c24a8000000      LEA ECX,[ESP + 0xa8]
+00dbc465: e87626beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc46a: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc46d: 8b31                MOV ESI,dword ptr [ECX]
+00dbc46f: ff9618010000        CALL dword ptr [ESI + 0x118]
+00dbc475: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc478: 50                  PUSH EAX
+00dbc479: 57                  PUSH EDI
+00dbc47a: ff965c090000        CALL dword ptr [ESI + 0x95c]
+00dbc480: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc483: 8b31                MOV ESI,dword ptr [ECX]
+00dbc485: 57                  PUSH EDI
+00dbc486: ff9618010000        CALL dword ptr [ESI + 0x118]
+00dbc48c: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc48f: 50                  PUSH EAX
+00dbc490: ff965c090000        CALL dword ptr [ESI + 0x95c]
+00dbc496: 8b5520              MOV EDX,dword ptr [EBP + 0x20]
+00dbc499: 8b4d1c              MOV ECX,dword ptr [EBP + 0x1c]
+00dbc49c: 42                  INC EDX
+00dbc49d: 8bc2                MOV EAX,EDX
+00dbc49f: 3bc1                CMP EAX,ECX
+00dbc4a1: 895520              MOV dword ptr [EBP + 0x20],EDX
+00dbc4a4: 8bcd                MOV ECX,EBP
+00dbc4a6: 0f8dbf030000        JGE 0x00dbc86b
+00dbc4ac: e87f961700          CALL 0x00f35b30  ; Initialise
+00dbc4b1: 84c0                TEST AL,AL
+00dbc4b3: 0f8529080000        JNZ 0x00dbcce2
+00dbc4b9: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc4bc: 8b11                MOV EDX,dword ptr [ECX]
+00dbc4be: 6a00                PUSH 0x0
+00dbc4c0: 6a00                PUSH 0x0
+00dbc4c2: 57                  PUSH EDI
+00dbc4c3: ff92b0050000        CALL dword ptr [EDX + 0x5b0]
+00dbc4c9: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc4cc: 8d54242c            LEA EDX,[ESP + 0x2c]
+00dbc4d0: 8bf0                MOV ESI,EAX
+00dbc4d2: 8b01                MOV EAX,dword ptr [ECX]
+00dbc4d4: 52                  PUSH EDX
+00dbc4d5: 56                  PUSH ESI
+00dbc4d6: ff90b4050000        CALL dword ptr [EAX + 0x5b4]
+00dbc4dc: 6aff                PUSH -0x1
+00dbc4de: 68389a2d01          PUSH 0x12d9a38  ; s_TEXT_QST_048_BULLY_SCRMSG_GET_OF_012d9a38
+00dbc4e3: 8d8c24c8000000      LEA ECX,[ESP + 0xc8]
+00dbc4ea: e80127beff          CALL 0x0099ebf0  ; CCharString
+00dbc4ef: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc4f2: 8b01                MOV EAX,dword ptr [ECX]
+00dbc4f4: 8d54242c            LEA EDX,[ESP + 0x2c]
+00dbc4f8: 52                  PUSH EDX
+00dbc4f9: 57                  PUSH EDI
+00dbc4fa: 6a00                PUSH 0x0
+00dbc4fc: 8d9424cc000000      LEA EDX,[ESP + 0xcc]
+00dbc503: 52                  PUSH EDX
+00dbc504: 56                  PUSH ESI
+00dbc505: ff90b8050000        CALL dword ptr [EAX + 0x5b8]
+00dbc50b: 8d8c24c0000000      LEA ECX,[ESP + 0xc0]
+00dbc512: e8c925beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc517: 6aff                PUSH -0x1
+00dbc519: 681c9a2d01          PUSH 0x12d9a1c  ; s_TEXT_QST_048_VICTIM_REVENGE_012d9a1c
+00dbc51e: 8d8c24b8000000      LEA ECX,[ESP + 0xb8]
+00dbc525: e8c626beff          CALL 0x0099ebf0  ; CCharString
+00dbc52a: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc52d: 8b01                MOV EAX,dword ptr [ECX]
+00dbc52f: 8d54242c            LEA EDX,[ESP + 0x2c]
+00dbc533: 52                  PUSH EDX
+00dbc534: 57                  PUSH EDI
+00dbc535: 6a00                PUSH 0x0
+00dbc537: 8d9424bc000000      LEA EDX,[ESP + 0xbc]
+00dbc53e: 52                  PUSH EDX
+00dbc53f: 56                  PUSH ESI
+00dbc540: ff90b8050000        CALL dword ptr [EAX + 0x5b8]
+00dbc546: 8d8c24b0000000      LEA ECX,[ESP + 0xb0]
+00dbc54d: e88e25beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc552: 8b551c              MOV EDX,dword ptr [EBP + 0x1c]
+00dbc555: 8b7520              MOV ESI,dword ptr [EBP + 0x20]
+00dbc558: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc55b: 8b01                MOV EAX,dword ptr [ECX]
+00dbc55d: 2bd6                SUB EDX,ESI
+00dbc55f: 68000080bf          PUSH 0xbf800000
+00dbc564: 89942404010000      MOV dword ptr [ESP + 0x104],EDX
+00dbc56b: db842404010000      FILD dword ptr [ESP + 0x104]
+00dbc572: 8b5514              MOV EDX,dword ptr [EBP + 0x14]
+00dbc575: 8b5264              MOV EDX,dword ptr [EDX + 0x64]
+00dbc578: 68000080bf          PUSH 0xbf800000
+00dbc57d: 51                  PUSH ECX
+00dbc57e: d91c24              FSTP float ptr [ESP]
+00dbc581: 52                  PUSH EDX
+00dbc582: ff9030050000        CALL dword ptr [EAX + 0x530]
+00dbc588: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc58b: 8b01                MOV EAX,dword ptr [ECX]
+00dbc58d: 6a01                PUSH 0x1
+00dbc58f: 8d542430            LEA EDX,[ESP + 0x30]
+00dbc593: 52                  PUSH EDX
+00dbc594: 57                  PUSH EDI
+00dbc595: ff906c070000        CALL dword ptr [EAX + 0x76c]
+00dbc59b: 8b4514              MOV EAX,dword ptr [EBP + 0x14]
+00dbc59e: 8b0df8e84301        MOV ECX,dword ptr [0x0143e8f8]  ; DAT_0143e8f8
+00dbc5a4: 8b11                MOV EDX,dword ptr [ECX]
+00dbc5a6: 0504010000          ADD EAX,0x104
+00dbc5ab: 8b00                MOV EAX,dword ptr [EAX]
+00dbc5ad: 50                  PUSH EAX
+00dbc5ae: ff9268010000        CALL dword ptr [EDX + 0x168]
+00dbc5b4: 85c0                TEST EAX,EAX
+00dbc5b6: 0f85b3010000        JNZ 0x00dbc76f
+00dbc5bc: 8a4526              MOV AL,byte ptr [EBP + 0x26]
+00dbc5bf: 84c0                TEST AL,AL
+00dbc5c1: 7414                JZ 0x00dbc5d7
+00dbc5c3: e84e25e4ff          CALL 0x00bfeb16  ; rand
+00dbc5c8: 99                  CDQ
+00dbc5c9: f73d60c83a01        IDIV dword ptr [0x013ac860]  ; DAT_013ac860
+00dbc5cf: 85d2                TEST EDX,EDX
+00dbc5d1: 0f8598010000        JNZ 0x00dbc76f
+00dbc5d7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc5da: 8b155cc83a01        MOV EDX,dword ptr [0x013ac85c]  ; DAT_013ac85c
+00dbc5e0: 8b01                MOV EAX,dword ptr [ECX]
+00dbc5e2: 52                  PUSH EDX
+00dbc5e3: ff9018010000        CALL dword ptr [EAX + 0x118]
+00dbc5e9: 8bd0                MOV EDX,EAX
+00dbc5eb: 8bcf                MOV ECX,EDI
+00dbc5ed: e80d1df0ff          CALL 0x00cbe2ff  ; IsDistanceBetweenThingsUnder
+00dbc5f2: 84c0                TEST AL,AL
+00dbc5f4: 0f8475010000        JZ 0x00dbc76f
+00dbc5fa: 8b4520              MOV EAX,dword ptr [EBP + 0x20]
+00dbc5fd: 85c0                TEST EAX,EAX
+00dbc5ff: 0f856a010000        JNZ 0x00dbc76f
+00dbc605: 8bcd                MOV ECX,EBP
+00dbc607: e824951700          CALL 0x00f35b30  ; Initialise
+00dbc60c: 84c0                TEST AL,AL
+00dbc60e: 0f85ce060000        JNZ 0x00dbcce2
+00dbc614: 8b4514              MOV EAX,dword ptr [EBP + 0x14]
+00dbc617: c6452601            MOV byte ptr [EBP + 0x26],0x1
+00dbc61b: 8b0df8e84301        MOV ECX,dword ptr [0x0143e8f8]  ; DAT_0143e8f8
+00dbc621: 8b8004010000        MOV EAX,dword ptr [EAX + 0x104]
+00dbc627: 8b11                MOV EDX,dword ptr [ECX]
+00dbc629: 6a03                PUSH 0x3
+00dbc62b: 50                  PUSH EAX
+00dbc62c: ff9264010000        CALL dword ptr [EDX + 0x164]
+00dbc632: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbc635: 6a00                PUSH 0x0
+00dbc637: c6414801            MOV byte ptr [ECX + 0x48],0x1
+00dbc63b: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc63e: 8b11                MOV EDX,dword ptr [ECX]
+00dbc640: 6a00                PUSH 0x0
+00dbc642: 57                  PUSH EDI
+00dbc643: ff92b0050000        CALL dword ptr [EDX + 0x5b0]
+00dbc649: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc64c: 8d54242c            LEA EDX,[ESP + 0x2c]
+00dbc650: 8bf0                MOV ESI,EAX
+00dbc652: 8b01                MOV EAX,dword ptr [ECX]
+00dbc654: 52                  PUSH EDX
+00dbc655: 56                  PUSH ESI
+00dbc656: ff90b4050000        CALL dword ptr [EAX + 0x5b4]
+00dbc65c: 8d4c2454            LEA ECX,[ESP + 0x54]
+00dbc660: e84b1ebeff          CALL 0x0099e4b0  ; CCharString
+00dbc665: 8b4528              MOV EAX,dword ptr [EBP + 0x28]
+00dbc668: 50                  PUSH EAX
+00dbc669: 8d4c2458            LEA ECX,[ESP + 0x58]
+00dbc66d: 68f0992d01          PUSH 0x12d99f0  ; s_TEXT_QST_048_BULLY_SCRMSG_INTIMI_012d99f0
+00dbc672: 51                  PUSH ECX
+00dbc673: e8782bbeff          CALL 0x0099f1f0  ; CCharString::Format_vsnprintf
+00dbc678: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc67b: 8b11                MOV EDX,dword ptr [ECX]
+00dbc67d: 83c40c              ADD ESP,0xc
+00dbc680: 8d44242c            LEA EAX,[ESP + 0x2c]
+00dbc684: 50                  PUSH EAX
+00dbc685: 57                  PUSH EDI
+00dbc686: 6a00                PUSH 0x0
+00dbc688: 8d442460            LEA EAX,[ESP + 0x60]
+00dbc68c: 50                  PUSH EAX
+00dbc68d: 56                  PUSH ESI
+00dbc68e: ff92b8050000        CALL dword ptr [EDX + 0x5b8]
+00dbc694: 8b4d28              MOV ECX,dword ptr [EBP + 0x28]
+00dbc697: be0a000000          MOV ESI,0xa
+00dbc69c: 03ce                ADD ECX,ESI
+00dbc69e: 8bc1                MOV EAX,ECX
+00dbc6a0: 83f828              CMP EAX,0x28
+00dbc6a3: 894d28              MOV dword ptr [EBP + 0x28],ECX
+00dbc6a6: 7e12                JLE 0x00dbc6ba
+00dbc6a8: 8bcd                MOV ECX,EBP
+00dbc6aa: e881941700          CALL 0x00f35b30  ; Initialise
+00dbc6af: 84c0                TEST AL,AL
+00dbc6b1: 0f8522060000        JNZ 0x00dbccd9
+00dbc6b7: 897528              MOV dword ptr [EBP + 0x28],ESI
+00dbc6ba: e85724e4ff          CALL 0x00bfeb16  ; rand
+00dbc6bf: 2501000080          AND EAX,0x80000001
+00dbc6c4: 7905                JNS 0x00dbc6cb
+00dbc6c6: 48                  DEC EAX
+00dbc6c7: 83c8fe              OR EAX,0xfffffffe
+00dbc6ca: 40                  INC EAX
+00dbc6cb: 8bcd                MOV ECX,EBP
+00dbc6cd: 754f                JNZ 0x00dbc71e
+00dbc6cf: e85c941700          CALL 0x00f35b30  ; Initialise
+00dbc6d4: 84c0                TEST AL,AL
+00dbc6d6: 0f85fd050000        JNZ 0x00dbccd9
+00dbc6dc: 6aff                PUSH -0x1
+00dbc6de: 68acf22801          PUSH 0x128f2ac  ; s_ST_OPINION_DISAPPROVAL_SHAKE_FIS_0128f2ac
+00dbc6e3: 8d8c24e4000000      LEA ECX,[ESP + 0xe4]
+00dbc6ea: e80125beff          CALL 0x0099ebf0  ; CCharString
+00dbc6ef: 33c9                XOR ECX,ECX
+00dbc6f1: 8a0d48573701        MOV CL,byte ptr [0x01375748]  ; DAT_01375748
+00dbc6f7: 6a00                PUSH 0x0
+00dbc6f9: 6a00                PUSH 0x0
+00dbc6fb: 8d9424e4000000      LEA EDX,[ESP + 0xe4]
+00dbc702: 51                  PUSH ECX
+00dbc703: 6a01                PUSH 0x1
+00dbc705: 6a00                PUSH 0x0
+00dbc707: 6a00                PUSH 0x0
+00dbc709: 6a00                PUSH 0x0
+00dbc70b: 52                  PUSH EDX
+00dbc70c: 8d4c2430            LEA ECX,[ESP + 0x30]
+00dbc710: e8bbaca2ff          CALL 0x007e73d0  ; ?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z
+00dbc715: 8d8c24dc000000      LEA ECX,[ESP + 0xdc]
+00dbc71c: eb43                JMP 0x00dbc761
+00dbc71e: e80d941700          CALL 0x00f35b30  ; Initialise
+00dbc723: 84c0                TEST AL,AL
+00dbc725: 0f85ae050000        JNZ 0x00dbccd9
+00dbc72b: 6aff                PUSH -0x1
+00dbc72d: 6888992901          PUSH 0x1299988  ; s_ST_OPINION_DISAPPROVAL_POINT_AT_01299988
+00dbc732: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc736: e8b524beff          CALL 0x0099ebf0  ; CCharString
+00dbc73b: 6a00                PUSH 0x0
+00dbc73d: 33c0                XOR EAX,EAX
+00dbc73f: a048573701          MOV AL,[0x01375748]  ; DAT_01375748
+00dbc744: 6a00                PUSH 0x0
+00dbc746: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc74a: 50                  PUSH EAX
+00dbc74b: 6a01                PUSH 0x1
+00dbc74d: 6a00                PUSH 0x0
+00dbc74f: 6a00                PUSH 0x0
+00dbc751: 6a00                PUSH 0x0
+00dbc753: 51                  PUSH ECX
+00dbc754: 8d4c2430            LEA ECX,[ESP + 0x30]
+00dbc758: e873aca2ff          CALL 0x007e73d0  ; ?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z
+00dbc75d: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbc761: e87a23beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc766: 8d4c2454            LEA ECX,[ESP + 0x54]
+00dbc76a: e87123beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbc76f: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc772: 8b11                MOV EDX,dword ptr [ECX]
+00dbc774: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbc777: 8bcd                MOV ECX,EBP
+00dbc779: e8b2931700          CALL 0x00f35b30  ; Initialise
+00dbc77e: 84c0                TEST AL,AL
+00dbc780: 0f8402eeffff        JZ 0x00dbb588
+00dbc786: e957050000          JMP 0x00dbcce2
+00dbc78b: 8b17                MOV EDX,dword ptr [EDI]
+00dbc78d: 6a00                PUSH 0x0
+00dbc78f: 8bcf                MOV ECX,EDI
+00dbc791: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbc797: 8d8c24e0000000      LEA ECX,[ESP + 0xe0]
+00dbc79e: e8ddb392ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc7a3: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc7a7: e931050000          JMP 0x00dbccdd
+00dbc7ac: 8b07                MOV EAX,dword ptr [EDI]
+00dbc7ae: 6a00                PUSH 0x0
+00dbc7b0: 8bcf                MOV ECX,EDI
+00dbc7b2: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbc7b8: 8d8c24e0000000      LEA ECX,[ESP + 0xe0]
+00dbc7bf: e8bcb392ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc7c4: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc7c8: e910050000          JMP 0x00dbccdd
+00dbc7cd: 8b16                MOV EDX,dword ptr [ESI]
+00dbc7cf: 6a00                PUSH 0x0
+00dbc7d1: 8bce                MOV ECX,ESI
+00dbc7d3: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbc7d9: 8d8c24c8000000      LEA ECX,[ESP + 0xc8]
+00dbc7e0: e89bb392ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc7e5: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc7e9: e9ef040000          JMP 0x00dbccdd
+00dbc7ee: 8b06                MOV EAX,dword ptr [ESI]
+00dbc7f0: 6a00                PUSH 0x0
+00dbc7f2: 8bce                MOV ECX,ESI
+00dbc7f4: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbc7fa: 8d8c24c8000000      LEA ECX,[ESP + 0xc8]
+00dbc801: e87ab392ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc806: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc80a: e9ce040000          JMP 0x00dbccdd
+00dbc80f: 8b16                MOV EDX,dword ptr [ESI]
+00dbc811: 6a00                PUSH 0x0
+00dbc813: 8bce                MOV ECX,ESI
+00dbc815: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbc81b: 8d8c24f0000000      LEA ECX,[ESP + 0xf0]
+00dbc822: e859b392ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc827: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc82b: e9ad040000          JMP 0x00dbccdd
+00dbc830: 8b06                MOV EAX,dword ptr [ESI]
+00dbc832: 6a00                PUSH 0x0
+00dbc834: 8bce                MOV ECX,ESI
+00dbc836: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbc83c: 8d8c24f0000000      LEA ECX,[ESP + 0xf0]
+00dbc843: e838b392ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc848: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbc84c: e98c040000          JMP 0x00dbccdd
+00dbc851: 8b06                MOV EAX,dword ptr [ESI]
+00dbc853: 6a00                PUSH 0x0
+00dbc855: 8bce                MOV ECX,ESI
+00dbc857: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbc85d: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbc861: e81ab392ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbc866: e977040000          JMP 0x00dbcce2
+00dbc86b: e8c0921700          CALL 0x00f35b30  ; Initialise
+00dbc870: 84c0                TEST AL,AL
+00dbc872: 0f856a040000        JNZ 0x00dbcce2
+00dbc878: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbc87b: c6416c01            MOV byte ptr [ECX + 0x6c],0x1
+00dbc87f: 8b4514              MOV EAX,dword ptr [EBP + 0x14]
+00dbc882: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc885: 8b4064              MOV EAX,dword ptr [EAX + 0x64]
+00dbc888: 8b11                MOV EDX,dword ptr [ECX]
+00dbc88a: 50                  PUSH EAX
+00dbc88b: ff9248050000        CALL dword ptr [EDX + 0x548]
+00dbc891: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc895: e81f5bf1ff          CALL 0x00cd23b9  ; HasPhysicsMesh
+00dbc89a: 84c0                TEST AL,AL
+00dbc89c: 7409                JZ 0x00dbc8a7
+00dbc89e: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbc8a2: e8c95ef1ff          CALL 0x00cd2770  ; Clear
+00dbc8a7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc8aa: 8b11                MOV EDX,dword ptr [ECX]
+00dbc8ac: 6a04                PUSH 0x4
+00dbc8ae: 8d442414            LEA EAX,[ESP + 0x14]
+00dbc8b2: 50                  PUSH EAX
+00dbc8b3: 57                  PUSH EDI
+00dbc8b4: ff5220              CALL dword ptr [EDX + 0x20]
+00dbc8b7: 84c0                TEST AL,AL
+00dbc8b9: 7530                JNZ 0x00dbc8eb
+00dbc8bb: eb03                JMP 0x00dbc8c0
+00dbc8c0: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc8c3: 8b11                MOV EDX,dword ptr [ECX]
+00dbc8c5: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbc8c8: 8bcd                MOV ECX,EBP
+00dbc8ca: e861921700          CALL 0x00f35b30  ; Initialise
+00dbc8cf: 84c0                TEST AL,AL
+00dbc8d1: 0f850b040000        JNZ 0x00dbcce2
+00dbc8d7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc8da: 8b01                MOV EAX,dword ptr [ECX]
+00dbc8dc: 6a04                PUSH 0x4
+00dbc8de: 8d542414            LEA EDX,[ESP + 0x14]
+00dbc8e2: 52                  PUSH EDX
+00dbc8e3: 57                  PUSH EDI
+00dbc8e4: ff5020              CALL dword ptr [EAX + 0x20]
+00dbc8e7: 84c0                TEST AL,AL
+00dbc8e9: 74d5                JZ 0x00dbc8c0
+00dbc8eb: 8bcd                MOV ECX,EBP
+00dbc8ed: e83e921700          CALL 0x00f35b30  ; Initialise
+00dbc8f2: 84c0                TEST AL,AL
+00dbc8f4: 0f85e8030000        JNZ 0x00dbcce2
+00dbc8fa: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbc8fe: e89da9a2ff          CALL 0x007e72a0  ; CCarriedReadableDef
+00dbc903: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbc907: e8ad5af1ff          CALL 0x00cd23b9  ; HasPhysicsMesh
+00dbc90c: 84c0                TEST AL,AL
+00dbc90e: 7409                JZ 0x00dbc919
+00dbc910: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbc914: e8575ef1ff          CALL 0x00cd2770  ; Clear
+00dbc919: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc91c: 8b31                MOV ESI,dword ptr [ECX]
+00dbc91e: 6a04                PUSH 0x4
+00dbc920: 8d442440            LEA EAX,[ESP + 0x40]
+00dbc924: 50                  PUSH EAX
+00dbc925: ff9618010000        CALL dword ptr [ESI + 0x118]
+00dbc92b: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc92e: 50                  PUSH EAX
+00dbc92f: ff5620              CALL dword ptr [ESI + 0x20]
+00dbc932: 84c0                TEST AL,AL
+00dbc934: 7534                JNZ 0x00dbc96a
+00dbc936: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc939: 8b11                MOV EDX,dword ptr [ECX]
+00dbc93b: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbc93e: 8bcd                MOV ECX,EBP
+00dbc940: e8eb911700          CALL 0x00f35b30  ; Initialise
+00dbc945: 84c0                TEST AL,AL
+00dbc947: 0f85e6020000        JNZ 0x00dbcc33
+00dbc94d: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc950: 8b31                MOV ESI,dword ptr [ECX]
+00dbc952: 6a04                PUSH 0x4
+00dbc954: 8d442440            LEA EAX,[ESP + 0x40]
+00dbc958: 50                  PUSH EAX
+00dbc959: ff9618010000        CALL dword ptr [ESI + 0x118]
+00dbc95f: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc962: 50                  PUSH EAX
+00dbc963: ff5620              CALL dword ptr [ESI + 0x20]
+00dbc966: 84c0                TEST AL,AL
+00dbc968: 74cc                JZ 0x00dbc936
+00dbc96a: 8bcd                MOV ECX,EBP
+00dbc96c: e8bf911700          CALL 0x00f35b30  ; Initialise
+00dbc971: 84c0                TEST AL,AL
+00dbc973: 0f85ba020000        JNZ 0x00dbcc33
+00dbc979: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbc97d: e81ea9a2ff          CALL 0x007e72a0  ; CCarriedReadableDef
+00dbc982: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbc986: e82e5af1ff          CALL 0x00cd23b9  ; HasPhysicsMesh
+00dbc98b: 84c0                TEST AL,AL
+00dbc98d: 7409                JZ 0x00dbc998
+00dbc98f: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbc993: e8d85df1ff          CALL 0x00cd2770  ; Clear
+00dbc998: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc99b: 8b11                MOV EDX,dword ptr [ECX]
+00dbc99d: 6a04                PUSH 0x4
+00dbc99f: 8d442478            LEA EAX,[ESP + 0x78]
+00dbc9a3: 50                  PUSH EAX
+00dbc9a4: 8d442434            LEA EAX,[ESP + 0x34]
+00dbc9a8: 50                  PUSH EAX
+00dbc9a9: ff5220              CALL dword ptr [EDX + 0x20]
+00dbc9ac: 84c0                TEST AL,AL
+00dbc9ae: 752f                JNZ 0x00dbc9df
+00dbc9b0: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc9b3: 8b11                MOV EDX,dword ptr [ECX]
+00dbc9b5: ff521c              CALL dword ptr [EDX + 0x1c]
+00dbc9b8: 8bcd                MOV ECX,EBP
+00dbc9ba: e871911700          CALL 0x00f35b30  ; Initialise
+00dbc9bf: 84c0                TEST AL,AL
+00dbc9c1: 0f8563020000        JNZ 0x00dbcc2a
+00dbc9c7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbc9ca: 8b01                MOV EAX,dword ptr [ECX]
+00dbc9cc: 6a04                PUSH 0x4
+00dbc9ce: 8d542478            LEA EDX,[ESP + 0x78]
+00dbc9d2: 52                  PUSH EDX
+00dbc9d3: 8d542434            LEA EDX,[ESP + 0x34]
+00dbc9d7: 52                  PUSH EDX
+00dbc9d8: ff5020              CALL dword ptr [EAX + 0x20]
+00dbc9db: 84c0                TEST AL,AL
+00dbc9dd: 74d1                JZ 0x00dbc9b0
+00dbc9df: 8bcd                MOV ECX,EBP
+00dbc9e1: e84a911700          CALL 0x00f35b30  ; Initialise
+00dbc9e6: 84c0                TEST AL,AL
+00dbc9e8: 0f853c020000        JNZ 0x00dbcc2a
+00dbc9ee: 8d4c2464            LEA ECX,[ESP + 0x64]
+00dbc9f2: e879f5f1ff          CALL 0x00cdbf70  ; StdMap_Construct_API
+00dbc9f7: 6aff                PUSH -0x1
+00dbc9f9: 6874512501          PUSH 0x1255174  ; DAT_01255174
+00dbc9fe: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbca02: e8e921beff          CALL 0x0099ebf0  ; CCharString
+00dbca07: 8d44243c            LEA EAX,[ESP + 0x3c]
+00dbca0b: 50                  PUSH EAX
+00dbca0c: 8d4c2424            LEA ECX,[ESP + 0x24]
+00dbca10: 51                  PUSH ECX
+00dbca11: 8d4c246c            LEA ECX,[ESP + 0x6c]
+00dbca15: e81473f1ff          CALL 0x00cd3d2e  ; operator[]
+00dbca1a: 8bc8                MOV ECX,EAX
+00dbca1c: e8eff2aeff          CALL 0x008abd10  ; operator=
+00dbca21: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbca25: e8b620beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbca2a: 6aff                PUSH -0x1
+00dbca2c: 68e8992d01          PUSH 0x12d99e8  ; DAT_012d99e8
+00dbca31: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbca35: e8b621beff          CALL 0x0099ebf0  ; CCharString
+00dbca3a: 8d542474            LEA EDX,[ESP + 0x74]
+00dbca3e: 52                  PUSH EDX
+00dbca3f: 8d442424            LEA EAX,[ESP + 0x24]
+00dbca43: 50                  PUSH EAX
+00dbca44: 8d4c246c            LEA ECX,[ESP + 0x6c]
+00dbca48: e8e172f1ff          CALL 0x00cd3d2e  ; operator[]
+00dbca4d: 8bc8                MOV ECX,EAX
+00dbca4f: e8bcf2aeff          CALL 0x008abd10  ; operator=
+00dbca54: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbca58: e88320beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbca5d: 6aff                PUSH -0x1
+00dbca5f: 68fc782601          PUSH 0x12678fc  ; s_BULLY_012678fc
+00dbca64: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbca68: e88321beff          CALL 0x0099ebf0  ; CCharString
+00dbca6d: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbca71: 51                  PUSH ECX
+00dbca72: 8d542424            LEA EDX,[ESP + 0x24]
+00dbca76: 52                  PUSH EDX
+00dbca77: 8d4c246c            LEA ECX,[ESP + 0x6c]
+00dbca7b: e8ae72f1ff          CALL 0x00cd3d2e  ; operator[]
+00dbca80: 8bc8                MOV ECX,EAX
+00dbca82: e889f2aeff          CALL 0x008abd10  ; operator=
+00dbca87: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbca8b: e85020beff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbca90: 8d4c2458            LEA ECX,[ESP + 0x58]
+00dbca94: e837f8beff          CALL 0x009ac2d0  ; Std_Deque_Construct
+00dbca99: 8b4514              MOV EAX,dword ptr [EBP + 0x14]
+00dbca9c: 8a486f              MOV CL,byte ptr [EAX + 0x6f]
+00dbca9f: 84c9                TEST CL,CL
+00dbcaa1: 8bcd                MOV ECX,EBP
+00dbcaa3: 7429                JZ 0x00dbcace
+00dbcaa5: e886901700          CALL 0x00f35b30  ; Initialise
+00dbcaaa: 84c0                TEST AL,AL
+00dbcaac: 0f8566010000        JNZ 0x00dbcc18
+00dbcab2: 6aff                PUSH -0x1
+00dbcab4: 68dc992d01          PUSH 0x12d99dc  ; s_$BRATLINE_012d99dc
+00dbcab9: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbcabd: e82e21beff          CALL 0x0099ebf0  ; CCharString
+00dbcac2: 68b4992d01          PUSH 0x12d99b4  ; s_TEXT_QST_048_VICTIM_THANKS_AFTER_012d99b4
+00dbcac7: 8d4c2424            LEA ECX,[ESP + 0x24]
+00dbcacb: 51                  PUSH ECX
+00dbcacc: eb27                JMP 0x00dbcaf5
+00dbcace: e85d901700          CALL 0x00f35b30  ; Initialise
+00dbcad3: 84c0                TEST AL,AL
+00dbcad5: 0f853d010000        JNZ 0x00dbcc18
+00dbcadb: 6aff                PUSH -0x1
+00dbcadd: 68dc992d01          PUSH 0x12d99dc  ; s_$BRATLINE_012d99dc
+00dbcae2: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbcae6: e80521beff          CALL 0x0099ebf0  ; CCharString
+00dbcaeb: 6898992d01          PUSH 0x12d9998  ; s_TEXT_QST_048_VICTIM_THANKS_012d9998
+00dbcaf0: 8d542424            LEA EDX,[ESP + 0x24]
+00dbcaf4: 52                  PUSH EDX
+00dbcaf5: 8d4c2460            LEA ECX,[ESP + 0x60]
+00dbcaf9: e802fcbeff          CALL 0x009ac700  ; operator[]
+00dbcafe: 8bc8                MOV ECX,EAX
+00dbcb00: e8db24beff          CALL 0x0099efe0  ; operator=
+00dbcb05: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbcb09: e8d21fbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbcb0e: 8d8c24f0000000      LEA ECX,[ESP + 0xf0]
+00dbcb15: e846b092ff          CALL 0x006e7b60  ; CCarriedReadableDef
+00dbcb1a: 6aff                PUSH -0x1
+00dbcb1c: 680ed72201          PUSH 0x122d70e  ; DAT_0122d70e
+00dbcb21: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbcb25: e8c620beff          CALL 0x0099ebf0  ; CCharString
+00dbcb2a: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbcb2d: 8b01                MOV EAX,dword ptr [ECX]
+00dbcb2f: 8d9424f0000000      LEA EDX,[ESP + 0xf0]
+00dbcb36: 52                  PUSH EDX
+00dbcb37: 8d542424            LEA EDX,[ESP + 0x24]
+00dbcb3b: 52                  PUSH EDX
+00dbcb3c: ff90c8050000        CALL dword ptr [EAX + 0x5c8]
+00dbcb42: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbcb46: e8951fbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbcb4b: 8b7504              MOV ESI,dword ptr [EBP + 0x4]
+00dbcb4e: 8b06                MOV EAX,dword ptr [ESI]
+00dbcb50: 6a01                PUSH 0x1
+00dbcb52: 8bce                MOV ECX,ESI
+00dbcb54: ff90ec050000        CALL dword ptr [EAX + 0x5ec]
+00dbcb5a: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbcb5d: 8b11                MOV EDX,dword ptr [ECX]
+00dbcb5f: 6a01                PUSH 0x1
+00dbcb61: ff92cc050000        CALL dword ptr [EDX + 0x5cc]
+00dbcb67: 6aff                PUSH -0x1
+00dbcb69: 687c992d01          PUSH 0x12d997c  ; s_CS_OAKVALEINTRO_BULLYRUN1_012d997c
+00dbcb6e: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbcb72: e87920beff          CALL 0x0099ebf0  ; CCharString
+00dbcb77: 6a01                PUSH 0x1
+00dbcb79: 6a00                PUSH 0x0
+00dbcb7b: 8d442460            LEA EAX,[ESP + 0x60]
+00dbcb7f: 50                  PUSH EAX
+00dbcb80: 6a00                PUSH 0x0
+00dbcb82: 8d542474            LEA EDX,[ESP + 0x74]
+00dbcb86: 8d4c2430            LEA ECX,[ESP + 0x30]
+00dbcb8a: e8ee2ff0ff          CALL 0x00cbfb7d  ; RunCutsceneMacro_Func
+00dbcb8f: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbcb93: e8481fbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbcb98: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbcb9b: 8a416e              MOV AL,byte ptr [ECX + 0x6e]
+00dbcb9e: 84c0                TEST AL,AL
+00dbcba0: 8bcd                MOV ECX,EBP
+00dbcba2: 7553                JNZ 0x00dbcbf7
+00dbcba4: e8878f1700          CALL 0x00f35b30  ; Initialise
+00dbcba9: 84c0                TEST AL,AL
+00dbcbab: 7553                JNZ 0x00dbcc00
+00dbcbad: 6aff                PUSH -0x1
+00dbcbaf: 6860992d01          PUSH 0x12d9960  ; s_CS_OAKVALEINTRO_BULLYRUN2_012d9960
+00dbcbb4: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbcbb8: e83320beff          CALL 0x0099ebf0  ; CCharString
+00dbcbbd: 6a01                PUSH 0x1
+00dbcbbf: 6a00                PUSH 0x0
+00dbcbc1: 6a00                PUSH 0x0
+00dbcbc3: 6a00                PUSH 0x0
+00dbcbc5: 8d542474            LEA EDX,[ESP + 0x74]
+00dbcbc9: 8d4c2430            LEA ECX,[ESP + 0x30]
+00dbcbcd: e8ab2ff0ff          CALL 0x00cbfb7d  ; RunCutsceneMacro_Func
+00dbcbd2: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbcbd6: e8051fbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbcbdb: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbcbde: 8b01                MOV EAX,dword ptr [ECX]
+00dbcbe0: 8d54242c            LEA EDX,[ESP + 0x2c]
+00dbcbe4: 52                  PUSH EDX
+00dbcbe5: ff90a4050000        CALL dword ptr [EAX + 0x5a4]
+00dbcbeb: 8b4514              MOV EAX,dword ptr [EBP + 0x14]
+00dbcbee: c6406e01            MOV byte ptr [EAX + 0x6e],0x1
+00dbcbf2: e978000000          JMP 0x00dbcc6f
+00dbcbf7: e8348f1700          CALL 0x00f35b30  ; Initialise
+00dbcbfc: 84c0                TEST AL,AL
+00dbcbfe: 7441                JZ 0x00dbcc41
+00dbcc00: 8b16                MOV EDX,dword ptr [ESI]
+00dbcc02: 6a00                PUSH 0x0
+00dbcc04: 8bce                MOV ECX,ESI
+00dbcc06: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbcc0c: 8d8c24f0000000      LEA ECX,[ESP + 0xf0]
+00dbcc13: e868af92ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbcc18: 8d4c2458            LEA ECX,[ESP + 0x58]
+00dbcc1c: e8eff6beff          CALL 0x009ac310  ; LTextTreeWalkThrough::Dtor
+00dbcc21: 8d4c2464            LEA ECX,[ESP + 0x64]
+00dbcc25: e886f3f1ff          CALL 0x00cdbfb0  ; StdMap_Destroy_API
+00dbcc2a: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbcc2e: e89da8a2ff          CALL 0x007e74d0  ; ~CScriptGameResourceObjectMovieBase
+00dbcc33: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbcc37: e894a8a2ff          CALL 0x007e74d0  ; ~CScriptGameResourceObjectMovieBase
+00dbcc3c: e9a1000000          JMP 0x00dbcce2
+00dbcc41: 6aff                PUSH -0x1
+00dbcc43: 6840992d01          PUSH 0x12d9940  ; s_CS_OAKVALEINTRO_BULLYRUNDUMMY_012d9940
+00dbcc48: 8d4c2428            LEA ECX,[ESP + 0x28]
+00dbcc4c: e89f1fbeff          CALL 0x0099ebf0  ; CCharString
+00dbcc51: 6a01                PUSH 0x1
+00dbcc53: 6a00                PUSH 0x0
+00dbcc55: 6a00                PUSH 0x0
+00dbcc57: 6a00                PUSH 0x0
+00dbcc59: 8d542474            LEA EDX,[ESP + 0x74]
+00dbcc5d: 8d4c2430            LEA ECX,[ESP + 0x30]
+00dbcc61: e8172ff0ff          CALL 0x00cbfb7d  ; RunCutsceneMacro_Func
+00dbcc66: 8d4c2420            LEA ECX,[ESP + 0x20]
+00dbcc6a: e8711ebeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbcc6f: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbcc72: 8b01                MOV EAX,dword ptr [ECX]
+00dbcc74: 6a00                PUSH 0x0
+00dbcc76: ff90cc050000        CALL dword ptr [EAX + 0x5cc]
+00dbcc7c: 8b16                MOV EDX,dword ptr [ESI]
+00dbcc7e: 6a00                PUSH 0x0
+00dbcc80: 8bce                MOV ECX,ESI
+00dbcc82: ff92ec050000        CALL dword ptr [EDX + 0x5ec]
+00dbcc88: 8d8c24f0000000      LEA ECX,[ESP + 0xf0]
+00dbcc8f: e8ecae92ff          CALL 0x006e7b80  ; ~CScriptGameResourceObjectMovieBase
+00dbcc94: 8d4c2458            LEA ECX,[ESP + 0x58]
+00dbcc98: e873f6beff          CALL 0x009ac310  ; LTextTreeWalkThrough::Dtor
+00dbcc9d: 8d4c2464            LEA ECX,[ESP + 0x64]
+00dbcca1: e80af3f1ff          CALL 0x00cdbfb0  ; StdMap_Destroy_API
+00dbcca6: 8d4c2474            LEA ECX,[ESP + 0x74]
+00dbccaa: e821a8a2ff          CALL 0x007e74d0  ; ~CScriptGameResourceObjectMovieBase
+00dbccaf: 8d4c243c            LEA ECX,[ESP + 0x3c]
+00dbccb3: e818a8a2ff          CALL 0x007e74d0  ; ~CScriptGameResourceObjectMovieBase
+00dbccb8: 8b4514              MOV EAX,dword ptr [EBP + 0x14]
+00dbccbb: c6406d01            MOV byte ptr [EAX + 0x6d],0x1
+00dbccbf: 8b4d14              MOV ECX,dword ptr [EBP + 0x14]
+00dbccc2: e89939ffff          CALL 0x00db0660  ; AddGoodDeed
+00dbccc7: 8b4d04              MOV ECX,dword ptr [EBP + 0x4]
+00dbccca: 8b11                MOV EDX,dword ptr [ECX]
+00dbcccc: 6a01                PUSH 0x1
+00dbccce: 6a00                PUSH 0x0
+00dbccd0: 57                  PUSH EDI
+00dbccd1: ff92b0010000        CALL dword ptr [EDX + 0x1b0]
+00dbccd7: eb09                JMP 0x00dbcce2
+00dbccd9: 8d4c2454            LEA ECX,[ESP + 0x54]
+00dbccdd: e8fe1dbeff          CALL 0x0099eae0  ; _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+00dbcce2: 8d4c242c            LEA ECX,[ESP + 0x2c]
+00dbcce6: e855db6eff          CALL 0x004aa840  ; ~C3DClothPrimitive
+00dbcceb: 8d4c2410            LEA ECX,[ESP + 0x10]
+00dbccef: e8dca7a2ff          CALL 0x007e74d0  ; ~CScriptGameResourceObjectMovieBase
+00dbccf4: 5f                  POP EDI
+00dbccf5: 5e                  POP ESI
+00dbccf6: 5d                  POP EBP
+00dbccf7: 5b                  POP EBX
+00dbccf8: 81c43c010000        ADD ESP,0x13c
+00dbccfe: c3                  RET
+

@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -46,7 +48,8 @@
         {
           "handle": "start_marker",
           "scope": "Entity"
-        }
+        },
+        false
       ],
       "event": "api-call",
       "name": "EntityTeleportToThing",
@@ -69,7 +72,8 @@
         {
           "handle": "hero",
           "scope": "Entity"
-        }
+        },
+        false
       ],
       "event": "api-call",
       "name": "EntitySetFacingAngleTowardsThing",
@@ -114,12 +118,26 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
         "TEXT_QST_048_BARRELTHUG_EXPLAIN",
-        0
+        0,
+        false,
+        true,
+        false
       ],
       "event": "api-call",
-      "name": "SpeakAndWait",
+      "name": "Speak",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -314,7 +332,7 @@
         "TEXT_QST_LOG_BASICS_MAP"
       ],
       "event": "api-call",
-      "name": "AddLogbookStoryEntryString",
+      "name": "AddLogbookTutorialEntry",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -345,7 +363,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -364,12 +384,26 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [
+        {
+          "handle": "hero",
+          "scope": "Entity"
+        },
         "TEXT_QST_048_BARRELTHUG_WHY_HIT",
-        0
+        0,
+        false,
+        true,
+        false
       ],
       "event": "api-call",
-      "name": "SpeakAndWait",
+      "name": "Speak",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -467,5 +501,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-  "sourceSha256": "e6a2de43c8714473f54541ced7b26fa53a1733a62b4da1ebfe722d7d4affde3a"
+  "sourceSha256": "cbf4d811b34b46d564136f9e7699520cc28d9ca363e06c4bf0f04a819a3fcc0f"
 }

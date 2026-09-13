@@ -1,0 +1,28 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "cf1305164583c89eef7bfe7a256907ea578b265fd958e49c07fe7aace8c52a33",
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "address": 15948592,
+      "size": 12,
+      "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+    }
+  ],
+  "edits": [
+    {
+      "old": "CCreatureAction_TrollWhackGroundBase::Initialise((CCreatureAction_TrollWhackGroundBase *)param_1);\r\n  uVar21 = 0;\r\n  cVar5 = extraout_AL_00;",
+      "new": "cVar5 = GSI->IsActiveThreadTerminating();\nuVar21 = 0;"
+    },
+    {
+      "old": "CCreatureAction_TrollWhackGroundBase::Initialise\r\n              ((CCreatureAction_TrollWhackGroundBase *)param_1);\r\n    uVar21 = uStack_8c;\r\n    cVar5 = extraout_AL_22;",
+      "new": "cVar5 = GSI->IsActiveThreadTerminating();\nuVar21 = uStack_8c;"
+    }
+  ],
+  "review": "DB2B8C F35B30 ->TESTAL/JNE33AB; DB339E F35B30 ->TESTAL/JE2B9B. Preserve one result query each and uVar21 assignments. First earlierDB2B5B termination guard untouched. Decompiler extraoutAL00/22 copies separated bypuremaskassignments; emit bool cVar5 to keep loopentry andbackedge semantics."
+}

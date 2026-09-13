@@ -1,0 +1,115 @@
+{
+  "scope": "Execute native Bully post-RUN1 tail through final resource destruction.\n\nNative branches, state writes and entity/parent termination helpers execute.\nMacros, engine operations, strings, map/resource destructors and AddGoodDeed are\ndoubles. This is ordering/branch proof, not live cleanup or rendering proof.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "given_teddy": false,
+      "termination": "none",
+      "events": [
+        "termination_query",
+        "run2",
+        "clear_victim_info",
+        "camera_unfix",
+        "unpause",
+        "movie_destroy",
+        "map_destroy",
+        "release_victim",
+        "release_hero",
+        "good_deed",
+        "remove",
+        "release_bully"
+      ],
+      "ran_off": true,
+      "teddy_after": true
+    },
+    {
+      "given_teddy": false,
+      "termination": "run1",
+      "events": [
+        "termination_query",
+        "unpause",
+        "movie_destroy",
+        "map_destroy",
+        "release_victim",
+        "release_hero",
+        "release_bully"
+      ],
+      "ran_off": false,
+      "teddy_after": false
+    },
+    {
+      "given_teddy": false,
+      "termination": "run2",
+      "events": [
+        "termination_query",
+        "run2",
+        "clear_victim_info",
+        "camera_unfix",
+        "unpause",
+        "movie_destroy",
+        "map_destroy",
+        "release_victim",
+        "release_hero",
+        "good_deed",
+        "remove",
+        "release_bully"
+      ],
+      "ran_off": true,
+      "teddy_after": true
+    },
+    {
+      "given_teddy": true,
+      "termination": "none",
+      "events": [
+        "termination_query",
+        "dummy",
+        "camera_unfix",
+        "unpause",
+        "movie_destroy",
+        "map_destroy",
+        "release_victim",
+        "release_hero",
+        "good_deed",
+        "remove",
+        "release_bully"
+      ],
+      "ran_off": true,
+      "teddy_after": true
+    },
+    {
+      "given_teddy": true,
+      "termination": "run1",
+      "events": [
+        "termination_query",
+        "unpause",
+        "movie_destroy",
+        "map_destroy",
+        "release_victim",
+        "release_hero",
+        "release_bully"
+      ],
+      "ran_off": false,
+      "teddy_after": true
+    },
+    {
+      "given_teddy": true,
+      "termination": "run2",
+      "events": [
+        "termination_query",
+        "dummy",
+        "camera_unfix",
+        "unpause",
+        "movie_destroy",
+        "map_destroy",
+        "release_victim",
+        "release_hero",
+        "good_deed",
+        "remove",
+        "release_bully"
+      ],
+      "ran_off": true,
+      "teddy_after": true
+    }
+  ],
+  "native_tail_bytes": "8b4d148a416e84c08bcd7553e8878f170084c075536aff6860992d018d4c2428e83320beff6a016a006a006a008d5424748d4c2430e8ab2ff0ff8d4c2420e8051fbeff8b4d048b018d54242c52ff90a40500008b4514c6406e01e978000000e8348f170084c074418b166a008bceff92ec0500008d8c24f0000000e868af92ff8d4c2458e8eff6beff8d4c2464e886f3f1ff8d4c2474e89da8a2ff8d4c243ce894a8a2ffe9a10000006aff6840992d018d4c2428e89f1fbeff6a016a006a006a008d5424748d4c2430e8172ff0ff8d4c2420e8711ebeff8b4d048b016a00ff90cc0500008b166a008bceff92ec0500008d8c24f0000000e8ecae92ff8d4c2458e873f6beff8d4c2464e80af3f1ff8d4c2474e821a8a2ff8d4c243ce818a8a2ff8b4514c6406d018b4d14e89939ffff8b4d048b116a016a0057ff92b0010000eb098d4c2454e8fe1dbeff8d4c242ce855db6eff8d4c2410e8dca7a2ff"
+}

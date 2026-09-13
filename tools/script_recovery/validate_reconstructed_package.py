@@ -29,10 +29,17 @@ from audit_forgefse_runtime import extract_bindings  # noqa: E402
 from run_lua_trace import run_trace  # noqa: E402
 
 MAX_ENTITY_SCRIPTS = 300  # ForgeFSE dllmain.cpp g_entityAllocatorPool size
-CALL_RE = re.compile(r"\b(quest|Quest|me|hero|thing|target|father|trader|theresa|village|beetle|barrel|victim|bully|girl|man|woman|wife)\s*:\s*([A-Za-z_][A-Za-z0-9_]*)\s*\(")
+# Every Lua colon call dispatches through its receiver. Quest/Quest are the quest userdata; all
+# other receivers in this package are entity handles. A receiver whitelist silently missed locals
+# such as marker, walkOff, guard, and manStart, so capture identifiers generically.
+CALL_RE = re.compile(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*:\s*([A-Za-z_][A-Za-z0-9_]*)\s*\(")
 UNSUPPORTED_RE = re.compile(r"NOVI\.unsupported\s*\(\s*[^,]+,\s*\"([^\"]+)\"")
 BINDING_RE = re.compile(r"AddEntityBinding\(\s*\"([^\"]+)\"\s*,\s*\"([^\"]+)\"")
 QUEST_RECEIVERS = {"quest", "Quest"}
+# Lua's string library permits method syntax (for example value:match(...)); these are
+# ordinary Lua calls, not ForgeFSE userdata dispatches. Keep this list limited to methods
+# actually observed in the reconstructed package so a typo cannot be silently hidden.
+LUA_VALUE_METHODS = {"match"}
 
 
 def strip_lua_comments(source: str) -> str:
@@ -79,6 +86,80 @@ def strip_lua_comments(source: str) -> str:
 def executable_matches(pattern: re.Pattern, source: str):
     """Yield regex matches from Lua code, excluding comment text."""
     yield from pattern.finditer(strip_lua_comments(source))
+
+
+def strip_lua_quoted_strings(source: str) -> str:
+    """Blank quoted Lua string contents while preserving offsets and line structure."""
+    output = list(source)
+    index = 0
+    while index < len(output):
+        quote = output[index]
+        if quote not in {'"', "'"}:
+            index += 1
+            continue
+        output[index] = " "
+        index += 1
+        escaped = False
+        while index < len(output):
+            char = output[index]
+            output[index] = "\n" if char == "\n" else " "
+            index += 1
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                break
+    return "".join(output)
+
+
+def api_call_matches(source: str):
+    """Yield ForgeFSE-style colon calls, excluding known Lua value methods."""
+    code_only = strip_lua_quoted_strings(strip_lua_comments(source))
+    for match in CALL_RE.finditer(code_only):
+        if match.group(2) not in LUA_VALUE_METHODS:
+            yield match
+
+
+def call_matches_assertion(event: dict, assertion: dict) -> bool:
+    """Return whether one trace event satisfies an argument-aware fixture assertion."""
+    if event.get("name") != assertion.get("name"):
+        return False
+    arguments = event.get("arguments", [])
+    if any(value not in arguments for value in assertion.get("containsArguments", [])):
+        return False
+    for raw_index, value in assertion.get("argumentAt", {}).items():
+        index = int(raw_index)
+        if index >= len(arguments) or arguments[index] != value:
+            return False
+    return True
+
+
+def validate_call_assertions(events: list[dict], meta: dict, fixture_name: str) -> list[str]:
+    """Validate semantic call assertions while retaining legacy name-only expectations."""
+    errors = []
+    for assertion in meta.get("expectCalls", []):
+        matches = [event for event in events if call_matches_assertion(event, assertion)]
+        minimum = int(assertion.get("minCount", assertion.get("count", 1)))
+        maximum = assertion.get("maxCount", assertion.get("count"))
+        if len(matches) < minimum or (maximum is not None and len(matches) > int(maximum)):
+            errors.append(
+                f"{fixture_name}: expected call {assertion!r}, matched {len(matches)} event(s)")
+    for assertion in meta.get("forbidCalls", []):
+        matches = [event for event in events if call_matches_assertion(event, assertion)]
+        if matches:
+            errors.append(
+                f"{fixture_name}: forbidden call {assertion!r} matched {len(matches)} event(s)")
+    cursor = 0
+    for assertion in meta.get("expectCallSequence", []):
+        while cursor < len(events) and not call_matches_assertion(events[cursor], assertion):
+            cursor += 1
+        if cursor == len(events):
+            errors.append(
+                f"{fixture_name}: expected call sequence did not reach {assertion!r}")
+            break
+        cursor += 1
+    return errors
 
 
 def lua_compiles(path: Path) -> str | None:
@@ -169,7 +250,7 @@ def validate(fse_root: Path, package_key: str, fixtures_dir: Path | None, traces
     for f in lua_files:
         rel = f.relative_to(fse_root).as_posix()
         src = f.read_text(encoding="utf-8-sig")
-        for m in executable_matches(CALL_RE, src):
+        for m in api_call_matches(src):
             receiver, name = m.group(1), m.group(2)
             scope = "Quest" if receiver in QUEST_RECEIVERS else "Entity"
             report["apiCalls"].setdefault(f"{scope}.{name}", []).append(rel)
@@ -212,6 +293,10 @@ def validate(fse_root: Path, package_key: str, fixtures_dir: Path | None, traces
                     if forbidden in names:
                         entry["status"] = "expectation-failed"
                         report["errors"].append(f"{fixture.name}: forbidden event {forbidden} traced")
+                semantic_errors = validate_call_assertions(trace["events"], meta, fixture.name)
+                if semantic_errors:
+                    entry["status"] = "expectation-failed"
+                    report["errors"].extend(semantic_errors)
                 if traces_dir:
                     stored = traces_dir / (fixture.stem + ".json")
                     if update_traces or not stored.exists():

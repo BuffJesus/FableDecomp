@@ -1,0 +1,29 @@
+{
+  "address": "0x00DB3FA0",
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "1f69f3484932173a05156edc5464f32f5cd280551b3158da2ec899effcfeb9d7",
+  "bytesSha256": "bf617323c56d3a470484368abfcb367ed115de2d44498b69f7aaa1285e4eb53a",
+  "hostContract": {
+    "name": "EntitySetThingAsAllyOfThing",
+    "scope": "Quest",
+    "returnType": "void",
+    "parameters": [
+      {
+        "name": "spThing1",
+        "type": "const std::shared_ptr<CScriptThing>&",
+        "optional": false
+      },
+      {
+        "name": "spThing2",
+        "type": "const std::shared_ptr<CScriptThing>&",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Quest API",
+    "description": "Invokes entity set thing as ally of thing."
+  },
+  "old": "GSI->GetHero();\r\n          GSI->EntitySetThingAsAllyOfThing();\r\n          iVar11 = **(int **)(param_1 + 4);\r\n          uVar9 = GSI->GetHero(pCVar1);\r\n          GSI->EntitySetThingAsAllyOfThing(uVar9);",
+  "new": "native_arg_book_ally = GSI->GetHero();\n          GSI->EntitySetThingAsAllyOfThing(me,native_arg_book_ally);\n          uVar9 = GSI->GetHero();\n          GSI->EntitySetThingAsAllyOfThing(uVar9,me);",
+  "review": "EBP=self from DB3FAC, unchanged. DB4336 passes self then hero from DB432B. DB434C passes hero from DB4342 then self, pushed before getter. Two independent getter evaluations retained, with second uVar9 assignment preserved. Host LuaQuestState.cpp8966 passes actors in the same order."
+}

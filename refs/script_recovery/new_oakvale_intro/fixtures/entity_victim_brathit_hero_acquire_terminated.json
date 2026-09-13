@@ -1,0 +1,22 @@
+{
+  "__meta__": {
+    "function": "Main",
+    "kind": "entity",
+    "source": "NewOakValeIntro/Entities/NOVI_Victim.lua",
+    "expect": ["EntitySetThingAsAllyOfThing", "GiveHeroMorality", "AcquireControl"],
+    "forbid": ["StartMovieSequence", "RunCutsceneWithSetup", "FixMovieSequenceCamera", "ClearThingHasInformation"],
+    "note": "termination while acquiring the nested Hero resource for BRATHIT exits before constructing the movie and actor map, matching the native StartScriptingEntity retry termination branch"
+  },
+  "Quest.NewScriptFrame": [true],
+  "Entity.AcquireControl": [true, true, false],
+  "Quest.GetThingWithScriptName(NOVI_Bully)": [{"handle":"bully","scope":"Entity"}],
+  "Quest.GetStateBool(BullySubdued)": [false],
+  "Quest.GetStateBool(VictimShake)": [false],
+  "Entity.IsTalkedToByHero": [false],
+  "Entity.MsgIsHitByHero": [true],
+  "Quest.GetHero": [{"handle":"hero","scope":"Entity"}, {"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)": [0],
+  "Quest.GetStateInt(GoodDeedsPerformed)": [0],
+  "Quest.MsgIsGameInfoClickedPast": [true],
+  "Quest.GetStateBool(GivenHeroTeddy)": [false]
+}

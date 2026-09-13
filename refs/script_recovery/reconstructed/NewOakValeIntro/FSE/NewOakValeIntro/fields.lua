@@ -5,8 +5,8 @@
 -- member names (Ego_r.pdb, struct_layouts_egor.tsv). The retail offset in each comment is the retail
 -- Fable.exe layout (PDB offset - 0x14), verified against the constructor @0x00DAAC00 and Init @0x00DAADD0.
 --
--- Only `AttackOver` is persisted by retail (OnPersist @0x00DAADA0); every other field is rebuilt by
--- Init on load. This module deliberately mirrors that: it offers no persistence of its own.
+-- Only `AttackOver` is persisted by retail (OnPersist @0x00DAADA0). Init resets only the fields
+-- explicitly listed below; host/event-produced fields remain nil until their native producer runs.
 --
 -- Evidence: PDB-name (names), native-decompile (offsets, init values).
 
@@ -20,11 +20,11 @@ end
 
 -- bookkeeping written by the quest and read by entities (PARENT + offset)
 F.VictimShake                    = key("VictimShake",                    BOOL,   0x48, false)
-F.StopTimeIndex                  = key("StopTimeIndex",                  INT,    0x4c, 0)
+F.StopTimeIndex                  = key("StopTimeIndex",                  INT,    0x4c, nil) -- filled by SetTimeAsStopped
 F.AttackOver                     = key("AttackOver",                     BOOL,   0x50, false)  -- persisted
 F.DadFound                       = key("DadFound",                       BOOL,   0x51, false)
 F.DadFinishedIntro               = key("DadFinishedIntro",               BOOL,   0x52, false)
-F.DadOfferedRewards              = key("DadOfferedRewards",              BOOL,   0x53, false)
+F.DadOfferedRewards              = key("DadOfferedRewards",              BOOL,   0x53, nil) -- no recovered Init store/use
 F.GoodDeedsPerformed             = key("GoodDeedsPerformed",             INT,    0x54, 0)
 F.BadDeedsPerformed              = key("BadDeedsPerformed",              INT,    0x58, 0)
 F.GUIGoodDeedCounter             = key("GUIGoodDeedCounter",             INT,    0x5c, nil)    -- quest-info handle
@@ -52,7 +52,7 @@ F.TalkingToWoman                 = key("TalkingToWoman",                 BOOL,  
 F.GivenSweets                    = key("GivenSweets",                    BOOL,   0x94, false)
 F.GivenTheresaChocs              = key("GivenTheresaChocs",              BOOL,   0x95, false)
 F.VictimComplainsAboutLosingTeddy = key("VictimComplainsAboutLosingTeddy", BOOL, 0x96, false)
-F.lastVillagerSpeechIdx          = key("lastVillagerSpeechIdx",          INT,    0x98, 0)
+F.lastVillagerSpeechIdx          = key("lastVillagerSpeechIdx",          INT,    0x98, nil) -- first successful roll writes it
 
 -- WhichBadDeedsPerformed[5] (bool[5] @0xfc, indexed by EBadDeeds). The enum names are not in the
 -- PDB tables available here; indices are recorded where retail passes them (see deeds.lua).
@@ -163,7 +163,7 @@ function F.reset_for_init(quest)
     end
 end
 
--- Second half of the retail Init resets (after the WatchTimer SetTimer call).
+-- Second half of the retail Init resets (after the TalkIntermittentTimer SetTimer call).
 function F.reset_for_init_tail(quest)
     F.set(quest, F.GUIBullyHealthCounter, F.GUIBullyHealthCounter.init)
     local ordered = {

@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -39,5 +41,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-  "sourceSha256": "e6a2de43c8714473f54541ced7b26fa53a1733a62b4da1ebfe722d7d4affde3a"
+  "sourceSha256": "cbf4d811b34b46d564136f9e7699520cc28d9ca363e06c4bf0f04a819a3fcc0f"
 }

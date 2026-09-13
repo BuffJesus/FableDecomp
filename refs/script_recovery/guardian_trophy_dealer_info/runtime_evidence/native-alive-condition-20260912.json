@@ -1,0 +1,82 @@
+{
+  "scope": "Execute native scheduler condition checks around a synthetic resume.\n\nCB7950, F35A00 and Guardian's CDF120 alive predicate execute. IsAlive, resume,\ncondition destruction and fiber cleanup are doubles; no real fiber switching.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "name": "alive_before_after",
+      "alive": [
+        true,
+        true
+      ],
+      "paused": false,
+      "condition": true,
+      "events": [
+        "alive_1",
+        "resume",
+        "alive_1"
+      ],
+      "terminating": false,
+      "current_task": 0
+    },
+    {
+      "name": "dead_before",
+      "alive": [
+        false
+      ],
+      "paused": false,
+      "condition": true,
+      "events": [
+        "alive_0",
+        "clear_condition",
+        "predicate_fail",
+        "fiber_cleanup"
+      ],
+      "terminating": true,
+      "current_task": 50339840
+    },
+    {
+      "name": "dead_after_resume",
+      "alive": [
+        true,
+        false
+      ],
+      "paused": false,
+      "condition": true,
+      "events": [
+        "alive_1",
+        "resume",
+        "alive_0",
+        "clear_condition",
+        "predicate_fail",
+        "fiber_cleanup"
+      ],
+      "terminating": true,
+      "current_task": 50339840
+    },
+    {
+      "name": "paused",
+      "alive": [],
+      "paused": true,
+      "condition": true,
+      "events": [],
+      "terminating": false,
+      "current_task": 0
+    },
+    {
+      "name": "no_condition",
+      "alive": [],
+      "paused": false,
+      "condition": false,
+      "events": [
+        "resume"
+      ],
+      "terminating": false,
+      "current_task": 0
+    }
+  ],
+  "bytes": {
+    "0xcb7950": "53568b74240c578bf989772c8a462832db84c00f85810000008bcee890e0270084c08bce74438a462984c08b067418ff50188bcee87738d9ff8b168bceff520c885e29b301eb32ff50048bcee85fe0270084c075248bcec6460501e880e027008b168bceff5214eb10c6460501e86ee027008b068bceff50148a460484c0750484db740e8a460584c0740f8bcee81e38d9ff5f5eb0015bc20400c7472c000000005f5e32c05bc2",
+    "0xf35a00": "8b492c85c97503b001c38b01ff20",
+    "0xcdf120": "83c1048b01ffa02c010000"
+  }
+}

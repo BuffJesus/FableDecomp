@@ -1,0 +1,44 @@
+{
+  "address": "0x00DB3FA0",
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "ccdcb23783ba47170e13ebbc48813001fd9208bed858be5f414bce042b11d7df",
+  "bytesSha256": "bf617323c56d3a470484368abfcb367ed115de2d44498b69f7aaa1285e4eb53a",
+  "hostContract": {
+    "name": "AddLineToConversation",
+    "scope": "Quest",
+    "returnType": "void",
+    "parameters": [
+      {
+        "name": "conversationID",
+        "type": "int",
+        "optional": false
+      },
+      {
+        "name": "textKey",
+        "type": "const std::string&",
+        "optional": false
+      },
+      {
+        "name": "spSpeaker",
+        "type": "const std::shared_ptr<CScriptThing>&",
+        "optional": false
+      },
+      {
+        "name": "spListener",
+        "type": "const std::shared_ptr<CScriptThing>&",
+        "optional": false
+      },
+      {
+        "name": "showSubtitle",
+        "type": "sol::optional<bool>",
+        "optional": true
+      }
+    ],
+    "blocking": false,
+    "category": "Quest API",
+    "description": "Adds a dialogue line to an existing ambient conversation."
+  },
+  "old": "GSI->GetHero();\r\n              GSI->AddLineToConversation(uVar9,aCStack_d4,0);",
+  "new": "native_arg_book_listener = GSI->GetHero();\n              GSI->AddLineToConversation(uVar9,aCStack_d4,me,native_arg_book_listener,false);",
+  "review": "Native DB4D70 creates conversation, DB4D7B saves result EBX (uVar9), preserved until DB4E55. EBP is self CScriptThing from function entry. DB4E38 constructs key at stack112; DB4E42 gets hero. DB4E55 passes conversation,key,false,self,hero. Host LuaQuestState.cpp AddLineToConversation reorders native flag after speaker/listener."
+}

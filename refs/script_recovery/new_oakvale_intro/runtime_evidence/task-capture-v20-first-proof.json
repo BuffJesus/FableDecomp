@@ -1,0 +1,724 @@
+{
+  "schema": "cutscene-task-capture/0.1",
+  "runs": [
+    {
+      "macro": "CS_OAKVALE_INTRO_FATHER",
+      "beginLine": 1328,
+      "actors": {
+        "Father": "0x47e4c80",
+        "Hero": "0x47e4bc0"
+      },
+      "controllers": {
+        "0x47e6630": {
+          "issues": [],
+          "pollCount": 28,
+          "activePollCount": 28,
+          "transitions": [
+            {
+              "line": 1348,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e4500": {
+          "issues": [
+            {
+              "line": 1374,
+              "kind": "issue",
+              "operands": "destination=(3605.2,859.268,13.6059) radius=0 moveType=0 b1=0 b2=1 tick=6010718"
+            }
+          ],
+          "pollCount": 28,
+          "activePollCount": 28,
+          "transitions": [
+            {
+              "line": 1376,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e4ad0": {
+          "issues": [],
+          "pollCount": 1,
+          "activePollCount": 0,
+          "transitions": [
+            {
+              "line": 1401,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e4d70": {
+          "issues": [],
+          "pollCount": 22,
+          "activePollCount": 22,
+          "transitions": [
+            {
+              "line": 1409,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        }
+      },
+      "speech": [],
+      "commands": [
+        {
+          "line": 1330,
+          "tick": 6010625,
+          "command": "PlayMusic MUSIC_SET_NULL"
+        },
+        {
+          "line": 1331,
+          "tick": 6010625,
+          "command": "FadeOut 0.5,0"
+        },
+        {
+          "line": 1332,
+          "tick": 6010625,
+          "command": "CameraPause FALSE"
+        },
+        {
+          "line": 1333,
+          "tick": 6010625,
+          "command": "Hero.Teleport MK_OVI_ID_HERO,FALSE"
+        },
+        {
+          "line": 1334,
+          "tick": 6010625,
+          "command": "Father.Teleport MK_OVI_ID_DAD"
+        },
+        {
+          "line": 1335,
+          "tick": 6010625,
+          "command": "Father.LookToThing Hero,FOREVER"
+        },
+        {
+          "line": 1378,
+          "tick": 6010718,
+          "command": "DoScriptFrame 1"
+        },
+        {
+          "line": 1382,
+          "tick": 6010812,
+          "command": "DoCameraPreloading"
+        },
+        {
+          "line": 1383,
+          "tick": 6010843,
+          "command": "DoScriptFrame 1"
+        },
+        {
+          "line": 1386,
+          "tick": 6010843,
+          "command": "PlayAVI dream_sequence_comp.xmv"
+        },
+        {
+          "line": 1387,
+          "tick": 6016359,
+          "command": "MuteSounds false"
+        },
+        {
+          "line": 1388,
+          "tick": 6016359,
+          "command": "FadeOut 0.5,0"
+        },
+        {
+          "line": 1389,
+          "tick": 6016359,
+          "command": "DoScriptFrame 2"
+        },
+        {
+          "line": 1394,
+          "tick": 6016500,
+          "command": "Hero.PlayAnimation CS_WAKING_UP_LOOP,FALSE,FALSE,TRUE,FALSE"
+        },
+        {
+          "line": 1406,
+          "tick": 6016578,
+          "command": "Hero.PlayAnimation CS_WAKING_UP_ON_STEPS,FALSE,FALSE,TRUE,FALSE"
+        },
+        {
+          "line": 1410,
+          "tick": 6016640,
+          "command": "DoScriptFrame 4"
+        },
+        {
+          "line": 1423,
+          "tick": 6016906,
+          "command": "StartTimeCode"
+        },
+        {
+          "line": 1424,
+          "tick": 6016906,
+          "command": "PlayMusic MUSIC_SET_OAKVALE"
+        },
+        {
+          "line": 1425,
+          "tick": 6016906,
+          "command": "NoLoadUseCamera CAM_OVI_ID_STANDUP"
+        },
+        {
+          "line": 1426,
+          "tick": 6016906,
+          "command": "FadeIn"
+        },
+        {
+          "line": 1427,
+          "tick": 6016906,
+          "command": "GamePause 1.6"
+        },
+        {
+          "line": 1454,
+          "tick": 6017437,
+          "command": "FadeOut"
+        },
+        {
+          "line": 1455,
+          "tick": 6017437,
+          "command": "GamePause 0.5"
+        },
+        {
+          "line": 1483,
+          "tick": 6018031,
+          "command": "UseCamera CAM_OVIF_SHOT7"
+        },
+        {
+          "line": 1484,
+          "tick": 6018031,
+          "command": "Hero.Teleport MK_OVIF_HERO5"
+        },
+        {
+          "line": 1485,
+          "tick": 6018031,
+          "command": "Father.Teleport MK_OVI_ID_DAD"
+        },
+        {
+          "line": 1486,
+          "tick": 6018031,
+          "command": "Father.LookInDirection 215"
+        },
+        {
+          "line": 1487,
+          "tick": 6018031,
+          "command": "FadeIn"
+        }
+      ],
+      "skipQueries": [
+        {
+          "line": 1449,
+          "caller": "0xcc8a3b",
+          "tick": 6017375
+        },
+        {
+          "line": 1450,
+          "caller": "0xcc0133",
+          "tick": 6017375
+        }
+      ],
+      "ended": true,
+      "endLine": 1488,
+      "bullyBoundary": {
+        "controller": null,
+        "issueCount": 0,
+        "pollCount": 0,
+        "interpretation": "Observed calls only. No issue does not prove rejection; no actor-matched poll does not prove task completion. Polls may also belong to speech or other tasks."
+      }
+    },
+    {
+      "macro": "CS_OAKVALEINTRO_BULLYRUN1",
+      "beginLine": 1628,
+      "actors": {
+        "BULLY": "0x47e4500",
+        "BRAT": "0x47e4f50",
+        "HERO": "0x178db540"
+      },
+      "controllers": {
+        "0x47e4d70": {
+          "issues": [],
+          "pollCount": 151,
+          "activePollCount": 147,
+          "transitions": [
+            {
+              "line": 1633,
+              "active": 1
+            },
+            {
+              "line": 1717,
+              "active": 0
+            },
+            {
+              "line": 1734,
+              "active": 1
+            },
+            {
+              "line": 1847,
+              "active": 0
+            },
+            {
+              "line": 1866,
+              "active": 1
+            },
+            {
+              "line": 1975,
+              "active": 0
+            },
+            {
+              "line": 1999,
+              "active": 1
+            },
+            {
+              "line": 2106,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e6630": {
+          "issues": [],
+          "pollCount": 169,
+          "activePollCount": 167,
+          "transitions": [
+            {
+              "line": 1634,
+              "active": 1
+            },
+            {
+              "line": 1751,
+              "active": 0
+            },
+            {
+              "line": 1756,
+              "active": 1
+            },
+            {
+              "line": 1950,
+              "active": 0
+            },
+            {
+              "line": 1955,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e4ad0": {
+          "issues": [],
+          "pollCount": 3,
+          "activePollCount": 0,
+          "transitions": [
+            {
+              "line": 1728,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e4500": {
+          "issues": [
+            {
+              "line": 1837,
+              "kind": "issueThing",
+              "operands": "target=0x1ade58 radius=0 moveType=1 b1=0 b2=0 b3=1 b4=1 tick=6046906"
+            }
+          ],
+          "pollCount": 32,
+          "activePollCount": 31,
+          "transitions": [
+            {
+              "line": 1740,
+              "active": 1
+            },
+            {
+              "line": 1835,
+              "active": 0
+            }
+          ],
+          "actorNames": [
+            "BULLY"
+          ]
+        },
+        "0x47e4f50": {
+          "issues": [],
+          "pollCount": 53,
+          "activePollCount": 51,
+          "transitions": [
+            {
+              "line": 1918,
+              "active": 0
+            },
+            {
+              "line": 1921,
+              "active": 1
+            },
+            {
+              "line": 2079,
+              "active": 0
+            }
+          ],
+          "actorNames": [
+            "BRAT"
+          ]
+        }
+      },
+      "speech": [
+        {
+          "line": 1683,
+          "operands": "macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x47e4500 target=0x1ae014 method=0 listen=0 soundIn2D=1 overFade=0 tick=6043171 key=TEXT_QST_048_BULLY_GOING_AWAY"
+        },
+        {
+          "line": 1920,
+          "operands": "macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x47e4f50 target=0x1ae02c method=0 listen=0 soundIn2D=1 overFade=0 tick=6049187 key=TEXT_QST_048_VICTIM_THANKS"
+        }
+      ],
+      "commands": [
+        {
+          "line": 1630,
+          "tick": 6042046,
+          "command": "KeepEntityMap TRUE"
+        },
+        {
+          "line": 1631,
+          "tick": 6042046,
+          "command": "FadeOut"
+        },
+        {
+          "line": 1632,
+          "tick": 6042046,
+          "command": "GamePause 0.5"
+        },
+        {
+          "line": 1651,
+          "tick": 6042640,
+          "command": "BULLY.ClearCommands TRUE,TRUE"
+        },
+        {
+          "line": 1652,
+          "tick": 6042640,
+          "command": "HERO.ClearCommands TRUE,TRUE"
+        },
+        {
+          "line": 1653,
+          "tick": 6042640,
+          "command": "UseCamera CAM_OIBR_BRATHERO"
+        },
+        {
+          "line": 1656,
+          "tick": 6042703,
+          "command": "DoScriptFrame 1"
+        },
+        {
+          "line": 1659,
+          "tick": 6042765,
+          "command": "HERO.Teleport MK_OIBR_HERO1"
+        },
+        {
+          "line": 1660,
+          "tick": 6042765,
+          "command": "BRAT.Teleport MK_OIBR_BRAT1"
+        },
+        {
+          "line": 1661,
+          "tick": 6042765,
+          "command": "BULLY.Teleport MK_OIBR_BULLY1"
+        },
+        {
+          "line": 1662,
+          "tick": 6042765,
+          "command": "HERO.PlayLoopingAnim CS_IDLE_STAND,-1,FALSE,TRUE,FALSE,FALSE,TRUE"
+        },
+        {
+          "line": 1665,
+          "tick": 6042843,
+          "command": "DoScriptFrame 1"
+        },
+        {
+          "line": 1668,
+          "tick": 6042906,
+          "command": "DoCameraPreloading"
+        },
+        {
+          "line": 1669,
+          "tick": 6042953,
+          "command": "DoScriptFrame 1"
+        },
+        {
+          "line": 1672,
+          "tick": 6042968,
+          "command": "HERO.LookToThing BULLY,FOREVER"
+        },
+        {
+          "line": 1675,
+          "tick": 6043031,
+          "command": "BRAT.LookToThing BULLY,FOREVER"
+        },
+        {
+          "line": 1678,
+          "tick": 6043109,
+          "command": "UseCamera CAM_OIBR_MASTER"
+        },
+        {
+          "line": 1681,
+          "tick": 6043171,
+          "command": "FadeIn"
+        },
+        {
+          "line": 1682,
+          "tick": 6043171,
+          "command": "BULLY.DialogadSpeak BULLY,TEXT_QST_048_BULLY_GOING_AWAY"
+        },
+        {
+          "line": 1684,
+          "tick": 6043171,
+          "command": "GamePause 1.5"
+        },
+        {
+          "line": 1736,
+          "tick": 6044765,
+          "command": "BRAT.PlayAnimation BOY_PULLING_FACES_01,FALSE,TRUE,FALSE,FALSE,TRUE"
+        },
+        {
+          "line": 1739,
+          "tick": 6044828,
+          "command": "BULLY.WaitTask FOO"
+        },
+        {
+          "line": 1836,
+          "tick": 6046906,
+          "command": "BULLY.RunTo MK_OIBR_BULLY2,0,FALSE,FALSE,FALSE,TRUE"
+        },
+        {
+          "line": 1840,
+          "tick": 6046968,
+          "command": "GamePause 0.5"
+        },
+        {
+          "line": 1854,
+          "tick": 6047562,
+          "command": "BRAT.LookToThing HERO,FOREVER"
+        },
+        {
+          "line": 1865,
+          "tick": 6047640,
+          "command": "GamePause 0.6"
+        },
+        {
+          "line": 1886,
+          "tick": 6048296,
+          "command": "HERO.PlayCombatAnim CS_HERO_TURNAROUND"
+        },
+        {
+          "line": 1889,
+          "tick": 6048375,
+          "command": "GamePause 0.6"
+        },
+        {
+          "line": 1910,
+          "tick": 6049046,
+          "command": "UseCamera CAM_OIBR_BRAT"
+        },
+        {
+          "line": 1913,
+          "tick": 6049125,
+          "command": "HERO.LookAtNothing TRUE"
+        },
+        {
+          "line": 1914,
+          "tick": 6049125,
+          "command": "DoScriptFrame 1"
+        },
+        {
+          "line": 1917,
+          "tick": 6049187,
+          "command": "BRAT.WaitTask FOO"
+        },
+        {
+          "line": 1919,
+          "tick": 6049187,
+          "command": "BRAT.Speak BRAT,$BRATLINE"
+        },
+        {
+          "line": 2083,
+          "tick": 6052656,
+          "command": "FadeOut"
+        },
+        {
+          "line": 2084,
+          "tick": 6052656,
+          "command": "GamePause 0.5"
+        },
+        {
+          "line": 2103,
+          "tick": 6053234,
+          "command": "HERO.Teleport MK_OIBR_HERO2"
+        },
+        {
+          "line": 2104,
+          "tick": 6053234,
+          "command": "BRAT.Teleport MK_OIBR_BRAT1"
+        },
+        {
+          "line": 2105,
+          "tick": 6053234,
+          "command": "BRAT.LookToThing HERO,FOREVER"
+        },
+        {
+          "line": 2108,
+          "tick": 6053312,
+          "command": "HERO.LookAtNothing TRUE"
+        },
+        {
+          "line": 2109,
+          "tick": 6053312,
+          "command": "BULLY.Drawable FALSE"
+        },
+        {
+          "line": 2110,
+          "tick": 6053312,
+          "command": "FadeIn"
+        }
+      ],
+      "skipQueries": [
+        {
+          "line": 2080,
+          "caller": "0xcc0133",
+          "tick": 6052562
+        }
+      ],
+      "ended": true,
+      "endLine": 2111,
+      "bullyBoundary": {
+        "controller": "0x47e4500",
+        "issueCount": 1,
+        "pollCount": 32,
+        "interpretation": "Observed calls only. No issue does not prove rejection; no actor-matched poll does not prove task completion. Polls may also belong to speech or other tasks."
+      }
+    },
+    {
+      "macro": "CS_OAKVALEINTRO_BULLYRUN2",
+      "beginLine": 2148,
+      "actors": {
+        "BULLY": "0x47e4500",
+        "BRAT": "0x47e4f50",
+        "HERO": "0x178db540"
+      },
+      "controllers": {
+        "0x47e6630": {
+          "issues": [],
+          "pollCount": 40,
+          "activePollCount": 39,
+          "transitions": [
+            {
+              "line": 2151,
+              "active": 1
+            },
+            {
+              "line": 2208,
+              "active": 0
+            },
+            {
+              "line": 2213,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e4ad0": {
+          "issues": [],
+          "pollCount": 1,
+          "activePollCount": 0,
+          "transitions": [
+            {
+              "line": 2162,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x47e4f50": {
+          "issues": [],
+          "pollCount": 32,
+          "activePollCount": 31,
+          "transitions": [
+            {
+              "line": 2170,
+              "active": 1
+            },
+            {
+              "line": 2265,
+              "active": 0
+            }
+          ],
+          "actorNames": [
+            "BRAT"
+          ]
+        },
+        "0x47e4d70": {
+          "issues": [],
+          "pollCount": 34,
+          "activePollCount": 34,
+          "transitions": [
+            {
+              "line": 2171,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        }
+      },
+      "speech": [
+        {
+          "line": 2169,
+          "operands": "macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x47e4f50 target=0x1ae02c method=0 listen=0 soundIn2D=1 overFade=0 tick=6053718 key=TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE"
+        }
+      ],
+      "commands": [
+        {
+          "line": 2150,
+          "tick": 6053328,
+          "command": "HERO.LookToThing BRAT,FOREVER"
+        },
+        {
+          "line": 2152,
+          "tick": 6053390,
+          "command": "GamePause 0.2"
+        },
+        {
+          "line": 2157,
+          "tick": 6053656,
+          "command": "NoLoadUseCamera CAM_OIBR_BRATHERO"
+        },
+        {
+          "line": 2168,
+          "tick": 6053718,
+          "command": "BRAT.Speak BRAT,TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE"
+        },
+        {
+          "line": 2269,
+          "tick": 6055843,
+          "command": "GiveHero OBJECT_TEDDY_BEAR_UNGIVEABLE"
+        }
+      ],
+      "skipQueries": [
+        {
+          "line": 2266,
+          "caller": "0xcc0133",
+          "tick": 6055781
+        }
+      ],
+      "ended": true,
+      "endLine": 2274,
+      "bullyBoundary": {
+        "controller": "0x47e4500",
+        "issueCount": 0,
+        "pollCount": 0,
+        "interpretation": "Observed calls only. No issue does not prove rejection; no actor-matched poll does not prove task completion. Polls may also belong to speech or other tasks."
+      }
+    }
+  ],
+  "log": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260912-v20-first-proof-snapshot.log",
+  "sha256": "6048602271AEBF4B3B004FADEDF624A51E5161E6F44A114409651847B3F35049"
+}

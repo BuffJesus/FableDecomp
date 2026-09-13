@@ -1,0 +1,9 @@
+{
+  "address": "0x00DAC760",
+  "size": 5864,
+  "sourceSha256": "343058fe4a94ee576678323e121d21ebb5a27be5b4f7e90435de679bdb65fb74",
+  "annotatedSha256": "32343790229fa7c531dc58647da1c77decc4fd6457ed8af056239d62458a4f13",
+  "bytesSha256": "9430cd0cacc6fc2f6b4d5a0cf8c23935500d21734395ac0a76efe6ae61a29331",
+  "fragment": "if ((piStack_13c == (int *)0x0) || (*piStack_13c = *piStack_13c + -1, *piStack_13c != 0))\r\n      goto LAB_00dadd6c;\r\n      (*(code *)piStack_13c[1])();\r\n      goto LAB_00dadd64;",
+  "review": "DADD47 loads shared ownership info from ESP+1C. Null or decremented nonzero reaches DADD6C. Zero invokes info+4 callback using info+8, then frees info at DADD64. DADD6C clears resource fields, sets base vtable126008C, calls99A430, restores frame and returnsDADD8F. All paths exit this function; none falls through to subsequent hero conversation. Native destruction/control release semantics remain unresolved in Lua."
+}

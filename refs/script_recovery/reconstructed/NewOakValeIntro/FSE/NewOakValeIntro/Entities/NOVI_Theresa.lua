@@ -60,9 +60,9 @@ function Init(quest, me)
     DoneIntro = false
     spoken_already = false
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)                 -- retail passes a trailing (false); ForgeFSE hardcodes true
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    quest:SetThingHasInformation(me, false)              -- retail passes trailing (true, false); ForgeFSE hardcodes (false, false)
+    quest:SetThingHasInformation(me, false, true, false)
     quest:SetIsPushableByHero(me, false)
     quest:EntitySetAsUseMovementInActions(me, false)
 end
@@ -79,8 +79,9 @@ end
 -- so the per-frame wait (and its terminate check) is host-managed inside the binding.
 local function speak_if_alive(quest, me, key)
     if quest:GetHealth(me) > DEAD_HEALTH then
-        me:Speak(quest:GetHero(), key, SPEAK_METHOD)
+        return me:Speak(quest:GetHero(), key, SPEAK_METHOD) ~= false
     end
+    return true
 end
 
 local function hero_has_chocolates(quest)
@@ -110,7 +111,7 @@ local function remove_guards(quest)
     local guards = quest:GetAllThingsWithScriptName(SCRIPT_NAME_GUARD)
     for _, guard in ipairs(guards) do
         if guard:IsAlive() then
-            quest:RemoveThing(guard)
+            quest:RemoveThing(guard, false, true)
         end
     end
 end
@@ -129,11 +130,21 @@ local function run_cutscene(quest, name, actors)
     quest:RunCutsceneWithSetup(name, actors, nil, false, true, false)
 end
 
+local function ask_yes_no(quest, me, question)
+    quest:GiveHeroYesNoQuestion(question, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "", true)
+    local answer = quest:MsgIsQuestionAnsweredYesOrNo()
+    while answer < 0 do
+        if not NOVI.frame(quest, me) then return nil end
+        answer = quest:MsgIsQuestionAnsweredYesOrNo()
+    end
+    return answer
+end
+
 -- Phase 1: skip in place until the Hero is within 5m.
 local function skip_until_hero_near(quest, me)
     while true do
         -- Retail PlayCombatAnimation("SKIP", true, false, false, true, false, false) (non-blocking).
-        me:PlayCombatAnimation(ANIM_SKIP)
+        me:PlayCombatAnimation(ANIM_SKIP, true, false, false, true, false, false)
         while not NOVI.hero_within(quest, me, GREET_DISTANCE) and me:IsPerformingScriptTask() do
             if not NOVI.frame(quest, me) then
                 return false
@@ -163,9 +174,8 @@ local function meet_hero(quest, me)
 
     local taken = false
     if hero_has_chocolates(quest) then
-        -- Retail GiveHeroYesNoQuestion(q, yes, no, "", true) + MsgIsQuestionAnsweredYesOrNo() frame-wait;
-        -- the ForgeFSE binding blocks and returns the answer (host-managed wait).
-        local answer = quest:GiveHeroYesNoQuestion(TEXT_GIVE_CHOCOLATE_BOX, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "")
+        local answer = ask_yes_no(quest, me, TEXT_GIVE_CHOCOLATE_BOX)
+        if answer == nil then end_movie(quest); return false, false end
         if answer == ANSWER_YES then
             remove_guards(quest)
             run_cutscene(quest, CUTSCENE_MEET_YES, { [ACTOR_HERO] = hero, [ACTOR_THERESA_MEET] = me })
@@ -185,17 +195,18 @@ local function offer_chocolates(quest, me)
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     local taken = false
-    local answer = quest:GiveHeroYesNoQuestion(TEXT_GIVE_CHOCOLATE_BOX, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "")
+    local answer = ask_yes_no(quest, me, TEXT_GIVE_CHOCOLATE_BOX)
+    if answer == nil then end_movie(quest); return false, false end
     if answer == ANSWER_YES then
         remove_guards(quest)
-        speak_if_alive(quest, me, TEXT_HELLO)
+        if not speak_if_alive(quest, me, TEXT_HELLO) then end_movie(quest); return false, false end
         accept_chocolates(quest, me)
         taken = true
     else
-        speak_if_alive(quest, me, TEXT_REALLY_GET_PRESENT)
+        if not speak_if_alive(quest, me, TEXT_REALLY_GET_PRESENT) then end_movie(quest); return false, false end
     end
     end_movie(quest)
-    return taken
+    return taken, true
 end
 
 -- Phase 3b: the box was presented (gift) to her.
@@ -203,17 +214,19 @@ local function accept_presented_chocolates(quest, me)
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     remove_guards(quest)
-    speak_if_alive(quest, me, TEXT_HELLO)
+    if not speak_if_alive(quest, me, TEXT_HELLO) then end_movie(quest); return false end
     accept_chocolates(quest, me)
     end_movie(quest)
+    return true
 end
 
 -- Phase 3c: something other than the box was presented.
 local function reject_present(quest, me)
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
-    speak_if_alive(quest, me, TEXT_BETTER_PRESENT)
+    if not speak_if_alive(quest, me, TEXT_BETTER_PRESENT) then end_movie(quest); return false end
     end_movie(quest)
+    return true
 end
 
 -- Phase 3d: talked to without the box.
@@ -223,14 +236,15 @@ local function nag_for_present(quest, me, given_chocs)
     if not given_chocs then
         if not spoken_already then
             spoken_already = true
-            speak_if_alive(quest, me, TEXT_GET_PRESENT)
+            if not speak_if_alive(quest, me, TEXT_GET_PRESENT) then end_movie(quest); return false end
         else
-            speak_if_alive(quest, me, TEXT_REALLY_GET_PRESENT)
+            if not speak_if_alive(quest, me, TEXT_REALLY_GET_PRESENT) then end_movie(quest); return false end
         end
     else
-        speak_if_alive(quest, me, TEXT_HELLO)
+        if not speak_if_alive(quest, me, TEXT_HELLO) then end_movie(quest); return false end
     end
     end_movie(quest)
+    return true
 end
 
 -- Phase 3e: the Hero hit her (weapon or non-heal spell).
@@ -241,8 +255,9 @@ local function react_to_attack(quest, me)
     Deeds.add_bad(quest, me, BAD_DEED_HIT_THERESA)
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
-    speak_if_alive(quest, me, TEXT_DONT_HIT)
+    if not speak_if_alive(quest, me, TEXT_DONT_HIT) then end_movie(quest); return false end
     end_movie(quest)
+    return true
 end
 
 -- Phase 4: Hero reached M_TriggerOutro after handing over the box. Main ends after this.
@@ -272,28 +287,28 @@ local function handle_frame(quest, me, given_chocs)
 
     local presented, item = presented_item(me)
     if presented and item == OBJECT_CHOCOLATE_BOX then
-        accept_presented_chocolates(quest, me)
-        return true
+        if not accept_presented_chocolates(quest, me) then return false, false end
+        return true, true
     end
     presented, item = presented_item(me)          -- retail re-queries the message here
     if presented and item ~= OBJECT_CHOCOLATE_BOX then
-        reject_present(quest, me)
-        return false
+        if not reject_present(quest, me) then return false, false end
+        return false, true
     end
 
     if me:IsTalkedToByHero() then
-        nag_for_present(quest, me, given_chocs)
-        return false
+        if not nag_for_present(quest, me, given_chocs) then return false, false end
+        return false, true
     end
     if hero_attacked_me(me) then
-        react_to_attack(quest, me)
-        return false
+        if not react_to_attack(quest, me) then return false, false end
+        return false, true
     end
     -- Idle: keep skipping until the box has been handed over.
     if not given_chocs and not me:IsPerformingScriptTask() then
-        me:PlayCombatAnimation(ANIM_SKIP)
+        me:PlayCombatAnimation(ANIM_SKIP, true, false, false, true, false, false)
     end
-    return false
+    return false, true
 end
 
 local function run(quest, me)
@@ -316,7 +331,9 @@ local function run(quest, me)
                 given_chocs = true
             end
         else
-            if handle_frame(quest, me, given_chocs) then
+            local taken, alive = handle_frame(quest, me, given_chocs)
+            if not alive then return end
+            if taken then
                 given_chocs = true
             end
             if given_chocs and quest:IsDistanceBetweenThingsUnder(quest:GetHero(), outro_marker, OUTRO_TRIGGER_DISTANCE) then

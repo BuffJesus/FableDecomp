@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Victim.lua","expect":["EntitySetAsScared","SetIsPushableByHero","EntitySetAsUseMovementInActions","ClearThingHasInformation","Speak","DisplayGameInfo","EndMovieSequence"],"note":"after the bully runs off, the victim leaves his scared state, restores ordinary movement, thanks an unhostile hero, shows the PC hitting-friends tutorial, and exits on loop termination"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Victim.lua","expect":["EntitySetAsScared","SetIsPushableByHero","EntitySetAsUseMovementInActions","ClearThingHasInformation","Speak","DisplayGameInfo","EndMovieSequence","ReleaseControl"],"note":"after the bully runs off, the victim leaves his scared state, restores ordinary movement, thanks an unhostile hero, shows the PC hitting-friends tutorial, and explicitly releases the Lua-hosted scripted resource on loop termination, mirroring the retail C++ epilogue destructor"},
   "Quest.NewScriptFrame":[true,false],
   "Entity.AcquireControl":[true,true],
   "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],

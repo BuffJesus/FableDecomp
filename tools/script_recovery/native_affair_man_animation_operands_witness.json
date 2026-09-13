@@ -1,0 +1,111 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "0d7c006311926478c392ebbbaf40d78c5bd7901459a9c66cabfd5e339cfe2d8c",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 8287184,
+      "size": 15,
+      "sha256": "b15918b5d8b85acb00708ee1f721e3297fac818c09fedf1a8ff14a30090a50bf"
+    },
+    {
+      "address": 19460604,
+      "size": 30,
+      "sha256": "8c84cf48e3586bd718643f5d080ab7c2b00ade7c9c7991f24ce813f80a8d3518"
+    },
+    {
+      "address": 19761684,
+      "size": 10,
+      "sha256": "525a79747c999e8e846a6d415e83a3fdf324e890f81612996dbbb72dcc5cdd23"
+    },
+    {
+      "address": 19761672,
+      "size": 9,
+      "sha256": "51e6428abdab8eb9763636ba428d5620aaab00f01c37c5aedd0b7c99c0620486"
+    }
+  ],
+  "contracts": {
+    "PlayAnimation": {
+      "name": "PlayAnimation",
+      "scope": "Entity",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "animName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "b1",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b2",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b3",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b4",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b5",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b6",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b7",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": false,
+      "category": "Entity API",
+      "description": "Plays animation."
+    }
+  },
+  "edits": [
+    {
+      "old": "CScriptGameResourceObjectScriptedThingBase::\r\n          _PlayAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString___N111111_Z\r\n                    ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeb4,\r\n                     (CScriptThing *)aCStack_b8,(char *)0x0,(CCharString *)0x0,(CCharString *)0x0,\r\n                     (CCharString *)0x1,(bool)DAT_01375748,false);",
+      "new": "GSI->PlayAnimation(\"ST_OPINION_FEAR_IDLE_COWERING\",false,false,false,true,DAT_01375748,false,false);",
+      "count": 1
+    },
+    {
+      "old": "CScriptGameResourceObjectScriptedThingBase::\r\n              _PlayAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString___N111111_Z\r\n                        ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeb4,\r\n                         (CScriptThing *)aCStack_e4,(char *)0x0,(CCharString *)0x1,\r\n                         (CCharString *)0x0,(CCharString *)0x1,(bool)DAT_01375748,false);",
+      "new": "GSI->PlayAnimation(\"GIVE_KISS\",false,true,false,true,DAT_01375748,false,false);",
+      "count": 1
+    },
+    {
+      "old": "CScriptGameResourceObjectScriptedThingBase::\r\n          _PlayAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString___N111111_Z\r\n                    ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeb4,\r\n                     (CScriptThing *)aCStack_dc,(char *)0x0,(CCharString *)0x1,(CCharString *)0x0,\r\n                     (CCharString *)0x1,(bool)DAT_01375748,false);",
+      "new": "GSI->PlayAnimation(\"GIVE_HUG\",false,true,false,true,DAT_01375748,false,false);",
+      "count": 1
+    }
+  ],
+  "review": "DB16B4 cower flags0,0,0,1,byte01375748,0,0. DB1C0A kiss and1C60 hug flags0,1,0,1,byte01375748,0,0. Each receiver baseline resource16;7E73D0 forwards toimplslot48 unchanged. Preserve native branch guards, state writes and string temporaries; explicit literals pin actualtextbytes. Dynamic flag remains unresolved, not frozen.",
+  "unresolved": [
+    "Runtime access to writable byte01375748",
+    "Actor resource ownership"
+  ]
+}

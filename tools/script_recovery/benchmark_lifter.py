@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""Score lift_native_lua.py against every hand port we have (Aeon's packages and our New Oakvale
+entities) and write the drafts plus a Markdown table. Reproducible; run after changing the lifter."""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from tools.script_recovery.lift_native_lua import compare, lift_cluster, lift_entity, write_package  # noqa: E402
+
+AEON = ROOT / "work" / "aeon_lua_ports"
+NOVI_TU = ROOT / "refs" / "script_recovery" / "new_oakvale_intro" / "translation_unit.json"
+NOVI_LUA = ROOT / "refs" / "script_recovery" / "reconstructed" / "NewOakValeIntro" / "FSE" / "NewOakValeIntro" / "Entities"
+
+QUEST_PAIRS = [("V_MazeResearch", "MazeResearch"), ("QS_MeetSister", "MeetSister"), ("QS_ScytheInfo", "ScytheInfo"),
+               ("V_StatueMaster", "StatueMaster"), ("V_Fisherman", "Fisherman"), ("Q_HerosOldHouse", "HerosOldHouse"),
+               ("V_BeardyBaldy", "BeardyBaldy"), ("Q_SummoningTheShip", "SummoningTheShip"),
+               ("V_SingingStones", "SingingStones"), ("V_RockTrollFirstEncounter", "RockTrollFirstEncounter"),
+               ("QS_GuardianTrophyDealerInfo", "GuardianTrophyDealerInfo"), ("Q_DragonBossFight", "DragonBossFight")]
+ENTITY_PAIRS = [("NOVI_CreatedBeetle", None, "0x00DB80C0"), ("OVI_DeadFather", None, "0x00DB8300"),
+                ("NOVI_Barrel", None, "0x00DB7E10"), ("NOVI_Villager", "0x00DADF00", "0x00DADF80")]
+
+
+class LuaSyntaxChecker:
+    """Compile recovered bodies without running them, using Forge's Lua 5.4 language version."""
+
+    def __init__(self):
+        try:
+            from lupa.lua54 import LuaRuntime
+        except ImportError as exc:
+            raise RuntimeError("syntax scoring requires lupa with its Lua 5.4 runtime") from exc
+        self.runtime = LuaRuntime(unpack_returned_tuples=True)
+        self.version = self.runtime.eval("_VERSION")
+        self.compile = self.runtime.eval(
+            "function(source, name) local fn, err = load(source, '@' .. name, 't', {}); "
+            "return fn ~= nil, err end")
+
+    def check(self, sources: dict[str, str]) -> dict:
+        errors = []
+        for path, source in sorted(sources.items()):
+            ok, error = self.compile(source, path)
+            if not ok:
+                line = re.search(r':(\d+):', error)
+                errors.append({"path": path, "line": int(line[1]) if line else None,
+                               "message": error})
+        return {"runtime": self.version, "ok": not errors, "checked": len(sources),
+                "passed": len(sources) - len(errors), "errors": errors}
+
+
+def recovered_sources(report: dict) -> dict[str, str]:
+    """Only recovered script bodies count: empty binding stubs and registration loaders do not."""
+    if "entity" in report:
+        return {f"entities/{report['entity']}.lua": report["lua"]}
+    package = report["package"]
+    base = f"{package}/FSE/{package}"
+    sources = {f"{base}/{package}.lua": report["lua"]}
+    for name, body in report.get("entityBodies", {}).items():
+        sources[f"{base}/Entities/{name}.lua"] = body["lua"]
+    return sources
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", type=Path, default=ROOT / "refs" / "script_recovery" / "lifted")
+    parser.add_argument("--require-syntax", action="store_true",
+                        help="return nonzero if any recovered Lua body fails to compile")
+    args = parser.parse_args()
+    checker = LuaSyntaxChecker()
+    rows = []
+    syntax = {}
+    for script, package in QUEST_PAIRS:
+        oracle = AEON / package
+        if not oracle.is_dir():
+            continue
+        report = lift_cluster(script)
+        syntax[script] = checker.check(recovered_sources(report))
+        write_package(report, args.out / package)
+        score = compare(report["lua"], oracle)
+        todo = sum(len(f["todo"]) for f in report["functions"].values())
+        entity_todo = sum(len(f["todo"]) for f in report["entityBodies"].values())
+        rows.append((script, "quest", todo, score, len(report["threads"]), len(report["helpers"]),
+                     len(report["entities"]), len(report["entityBodies"]), entity_todo))
+    (args.out / "entities").mkdir(parents=True, exist_ok=True)
+    for entity, init, main in ENTITY_PAIRS:
+        oracle = NOVI_LUA / f"{entity}.lua"
+        if not oracle.is_file() or not NOVI_TU.is_file():
+            continue
+        report = lift_entity(NOVI_TU, entity, init, main)
+        syntax[entity] = checker.check(recovered_sources(report))
+        (args.out / "entities" / f"{entity}.lua").write_text(report["lua"] + "\n", encoding="utf-8")
+        score = compare(report["lua"], oracle)
+        todo = sum(len(f["todo"]) for f in report["functions"].values())
+        rows.append((entity, "entity", todo, score, 0, 0, 0, 0, 0))
+    lines = ["# Lifter benchmark (generated by tools/script_recovery/benchmark_lifter.py)", "",
+             "Recall/precision = interface-call multiset overlap with the hand port (Log calls ignored).",
+             "TODO = statements the lifter refused to guess; entity TODO counts recovered anchored bodies separately. Drafts live next to this file.",
+             "Lua syntax = passing/recovered files compiled with Lua 5.4, without execution. Stubs and registration loaders are excluded; a pass does not prove gameplay behavior.", "",
+             "| script | kind | TODO | entity TODO | recall | precision | oracle calls | threads | helpers | entities | entity bodies | Lua syntax |",
+             "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
+    for name, kind, todo, s, threads, helpers, entities, entity_bodies, entity_todo in rows:
+        checked = syntax[name]
+        lines.append(f"| {name} | {kind} | {todo} | {entity_todo} | {s['recall']:.2f} | {s['precision']:.2f} | {s['oracleCalls']} | {threads} | {helpers} | {entities} | {entity_bodies} | {checked['passed']}/{checked['checked']} |")
+    errors = [error for result in syntax.values() for error in result["errors"]]
+    if errors:
+        lines += ["", "## Syntax failures", ""]
+        lines += [f"- `{error['path']}:{error['line']}`: {error['message']}" for error in errors]
+    (args.out / "LIFT_BENCHMARK.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    summary = {"rows": [{"name": n, "kind": k, "todo": t, "entityTodo": et,
+                          "threads": th, "helpers": h, "entities": e, "entityBodies": eb,
+                          "syntax": syntax[n], **s}
+                         for n, k, t, s, th, h, e, eb, et in rows]}
+    summary["syntax"] = {"runtime": checker.version, "ok": not errors,
+                         "checked": sum(s["checked"] for s in syntax.values()),
+                         "passed": sum(s["passed"] for s in syntax.values()), "errors": errors}
+    (args.out / "LIFT_BENCHMARK.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    print("\n".join(lines[5:]))
+    return 1 if args.require_syntax and errors else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,42 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "d30031d23d0e3cdc43ecf3162b0562166b41326bb94f8df077d9edec68f2aeab",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "calls": [
+    {
+      "site": "0xdbebeb",
+      "slot": 2792,
+      "name": "CacheMusicSet",
+      "start": 2493,
+      "end": 2514,
+      "original": "GSI->CacheMusicSet();",
+      "word": 45,
+      "type": "int",
+      "vtableBytes": "10138900"
+    },
+    {
+      "site": "0xdbece4",
+      "slot": 1668,
+      "name": "CameraResetToViewBehindHero",
+      "start": 5134,
+      "end": 5169,
+      "original": "GSI->CameraResetToViewBehindHero();",
+      "word": 0,
+      "type": "float",
+      "vtableBytes": "c00f8900"
+    },
+    {
+      "site": "0xdbecfc",
+      "slot": 2792,
+      "name": "CacheMusicSet",
+      "start": 5206,
+      "end": 5227,
+      "original": "GSI->CacheMusicSet();",
+      "word": 57,
+      "type": "int",
+      "vtableBytes": "10138900"
+    }
+  ]
+}

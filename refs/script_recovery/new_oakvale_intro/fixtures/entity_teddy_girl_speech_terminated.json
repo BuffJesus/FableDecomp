@@ -1,0 +1,16 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_TeddyGirl.lua","expect":["StartMovieSequence","PauseAllNonScriptedEntities","Speak","EndMovieSequence","ReleaseControl"],"note":"termination during the hit-reaction speech reaches the retail movie/pause cleanup path"},
+  "Quest.NewScriptFrame":[true],
+  "Quest.GetThingWithScriptName(NOVI_Bully)":[{"handle":"bully","scope":"Entity"}],
+  "Entity.IsTalkedToByHero":[false],
+  "Entity.MsgIsPresentedWithItem":[false],
+  "Quest.GetStateBool(SpokeAboutFindingTeddy)":[false],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Entity.AcquireControl":[true],
+  "Quest.GetHealth":[100],
+  "Entity.Speak":[false]
+}

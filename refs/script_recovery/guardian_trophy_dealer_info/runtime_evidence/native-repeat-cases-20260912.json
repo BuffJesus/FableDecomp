@@ -1,0 +1,1805 @@
+{
+  "scope": "Execute native repeat-hit/talk branches, including x87 health comparisons.\n\nThe preceding hit/use predicate and following outer-loop frame are excluded.\nMaze starts acquired. Engine APIs, resource/task operations and movies are\ndoubles; native branches, termination helper and x87 instructions execute.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "replay_sha256": "7d830c607e9df5b86b90d688b5f89f053a0e8a9d321bf14730e40d6d251d192c",
+  "cases": [
+    {
+      "name": "hit_normal",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        1,
+        1
+      ],
+      "busy": [
+        false,
+        false
+      ],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "hit_entry_cancel",
+      "branch": "hit",
+      "acquisitions": [],
+      "health": [],
+      "busy": [],
+      "stop_query": 1,
+      "events": [
+        [
+          "query",
+          true
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "hit_dead",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        0,
+        0
+      ],
+      "busy": [],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          0
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          0
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "hit_negative_health",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        -1,
+        -1
+      ],
+      "busy": [],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          -1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          -1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "hit_busy_then_done",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        1,
+        1
+      ],
+      "busy": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          true
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          true
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "hit_busy_cancel",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        1
+      ],
+      "busy": [
+        true
+      ],
+      "stop_query": 3,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          true
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "hit_after_speech_cancel",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        1
+      ],
+      "busy": [
+        false
+      ],
+      "stop_query": 3,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "talk_normal",
+      "branch": "talk",
+      "acquisitions": [],
+      "health": [
+        1
+      ],
+      "busy": [
+        false
+      ],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "talk_entry_cancel",
+      "branch": "talk",
+      "acquisitions": [],
+      "health": [],
+      "busy": [],
+      "stop_query": 1,
+      "events": [
+        [
+          "query",
+          true
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "talk_dead",
+      "branch": "talk",
+      "acquisitions": [],
+      "health": [
+        0
+      ],
+      "busy": [],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          0
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "talk_negative_health",
+      "branch": "talk",
+      "acquisitions": [],
+      "health": [
+        -1
+      ],
+      "busy": [],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          -1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "talk_busy_then_done",
+      "branch": "talk",
+      "acquisitions": [],
+      "health": [
+        1
+      ],
+      "busy": [
+        true,
+        false
+      ],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          true
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "talk_busy_cancel",
+      "branch": "talk",
+      "acquisitions": [],
+      "health": [
+        1
+      ],
+      "busy": [
+        true
+      ],
+      "stop_query": 2,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          true
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "talk_after_speech_cancel",
+      "branch": "talk",
+      "acquisitions": [],
+      "health": [
+        1
+      ],
+      "busy": [
+        false
+      ],
+      "stop_query": 2,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "hit_wait_cancel",
+      "branch": "hit",
+      "acquisitions": [
+        false
+      ],
+      "health": [],
+      "busy": [],
+      "stop_query": 2,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          false,
+          4
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "hit_acquired_cancel",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [],
+      "busy": [],
+      "stop_query": 2,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "hit_retry",
+      "branch": "hit",
+      "acquisitions": [
+        false,
+        true
+      ],
+      "health": [
+        1,
+        1
+      ],
+      "busy": [
+        false,
+        false
+      ],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          false,
+          4
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "hit_retry_acquired_cancel",
+      "branch": "hit",
+      "acquisitions": [
+        false,
+        true
+      ],
+      "health": [],
+      "busy": [],
+      "stop_query": 3,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          false,
+          4
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "hit_dies_after_hit",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        1,
+        0
+      ],
+      "busy": [
+        false
+      ],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          0
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "hit_alive_for_repeat_only",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        0,
+        1
+      ],
+      "busy": [
+        false
+      ],
+      "stop_query": 0,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          0
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ]
+      ],
+      "continued": true,
+      "maze_owned": true
+    },
+    {
+      "name": "hit_second_busy_cancel",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        1,
+        1
+      ],
+      "busy": [
+        false,
+        true
+      ],
+      "stop_query": 4,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          true
+        ],
+        [
+          "frame"
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    },
+    {
+      "name": "hit_second_finished_cancel",
+      "branch": "hit",
+      "acquisitions": [
+        true
+      ],
+      "health": [
+        1,
+        1
+      ],
+      "busy": [
+        false,
+        false
+      ],
+      "stop_query": 4,
+      "events": [
+        [
+          "query",
+          false
+        ],
+        [
+          "ally",
+          "maze",
+          "hero"
+        ],
+        [
+          "ally",
+          "hero",
+          "maze"
+        ],
+        [
+          "prepare",
+          true
+        ],
+        [
+          "reset"
+        ],
+        [
+          "acquire",
+          true,
+          4
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "movie_start",
+          ""
+        ],
+        [
+          "pause",
+          true
+        ],
+        [
+          "face_hero",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_ON_HIT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          false
+        ],
+        [
+          "resource_thing"
+        ],
+        [
+          "health",
+          1
+        ],
+        [
+          "release_thing"
+        ],
+        [
+          "speak",
+          "TEXT_QST_077_MAZE_REPEAT",
+          0,
+          false,
+          true,
+          false
+        ],
+        [
+          "busy",
+          false
+        ],
+        [
+          "query",
+          true
+        ],
+        [
+          "pause",
+          false
+        ],
+        [
+          "movie_end"
+        ],
+        [
+          "release"
+        ]
+      ],
+      "continued": false,
+      "maze_owned": false
+    }
+  ],
+  "bytes": "6aff68c8d125018d4c2424e85064b7ff8b178d44241c83cb08508bcf895c2418ff525484c0755d6aff68c8d125018d4c2428e82964b7ff8b178d44242083cb10508bcf895c2418ff92a800000084c0742c6aff68c8d125018d4c242ce8ff63b7ff8b178d4424245083cb206a0e8bcf895c241cff92a400000084c07407c644241300eb05c644241301f6c320741083e3df8d4c2424895c2414e8b262b7fff6c310741083e3ef8d4c2420895c2414e89d62b7fff6c308741083e3f78d4c241c895c2414e88862b7ff8a44241384c00f84650200008bcee8c5d2100084c00f85170400008b4e048b018bd18b1aff90180100008b4e045057ff935c0900008b4e048b018bd18b1a57ff90180100008b4e0450ff935c0900008d4c2458e8099beaff84c074098d4c2458e8b39eeaff8b4e048b116a048d44245c5057ff522084c0752b8b4e048b11ff521c8bcee850d2100084c00f85a20300008b4e048b016a048d54245c5257ff502084c074d58bcee82dd2100084c00f857f0300008d4c2468e84cf28bff6aff680ed722018d4c2420e8cc62b7ff8b4e048b018d542468528d54241c52ff90c80500008d4c2418e89e61b7ff8b6e048b45006a018bcdff90ec0500008b4e048b018bd18b1a6a00ff90180100008b4e045057ff936c0700008b4e048b198d542430528d4c245ce80feb9bff8b4e0450ff9320040000d81ddcde2201dfe0f6c4417504b301eb0232db8d4c2430e8991e68ff84db74688b4e048b016a006a016a006a006804212e01ff9018010000508d4c2470e8c3e99bff8d4c2458e87aea9bff84c0742a8d9b000000008b4e048b11ff521c8bcee841d1100084c00f85480200008d4c2458e850ea9bff84c075dc8bcee825d1100084c00f853f0200008b46048b188d4c243c518d4c245ce86aea9bff8b4e0450ff9320040000d81ddcde2201dfe0f6c4417504b301eb0232db8d4c243ce8f41d68ff84db74638b4e048b116a006a016a006a0068e8202e01ff9218010000508d4c2470e81ee99bff8d4c2458e8d5e99bff84c07425908b4e048b01ff501c8bcee8a1d0100084c00f85a80100008d4c2458e8b0e99bff84c075dc8bcee885d0100084c00f859f0100008b55006a008bcdff92ec0500008d4c2468e8b7f08bff6aff68c8d125018d4c2430e81761b7ff8b078d4c2428518bcfff506c8d4c24288ad8e8f05fb7ff84db0f841f0100008bcee831d0100084c00f85830100008d4c2478e850f08bff6aff680ed722018d4c2434e8d060b7ff8b4e048b118d442478508d44243050ff92c80500008d4c242ce8a25fb7ff8b6e048b55006a018bcdff92ec0500008b4e048b118bc18b186a00ff92180100008b4e045057ff936c0700008b46048b188d4c2448518d4c245ce813e99bff8b4e0450ff9320040000d81ddcde2201dfe0f6c4417504b301eb0232db8d4c2448e89d1c68ff84db745a8b4e048b116a006a016a006a0068e8202e01ff9218010000508d4c2470e8c7e79bff8d4c2458e87ee89bff84c074208b4e048b01ff501c8bcee84bcf100084c0757c8d4c2458e85ee89bff84c075e08bcee833cf100084c075738b55006a008bcdff92ec0500008d4c2478e869ef8bff8b4e048b01ff501c8bcee80acf100084c00f845efbffff8d4c2458e899e89bff5f5e5d5b83c478c38b55006a008bcdff92ec0500008d4c2468eb338b45006a008bcdff90ec0500008d4c2468eb208b55006a008bcdff92ec050000eb0d8b45006a008bcdff90ec0500008d4c2478e8f6ee8bff8d4c2458e83de89bff5f5e5d5b83c478c3",
+  "health_threshold": 0.0
+}

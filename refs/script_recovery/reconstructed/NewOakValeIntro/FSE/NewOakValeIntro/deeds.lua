@@ -32,9 +32,9 @@ Deeds.GOLD_FOR_SWEETS = 3
 Deeds.MORALITY_CHANGE_PER_DEED = 0.001
 
 -- The first deed of either kind also writes the "basics" logbook page. Retail calls the sibling of the
--- AddLogbookStoryEntry helper (0x00CBE9EE, string overload) — labelled inference, see doc.
+-- AddLogbookTutorialEntry helper at 0x00CBE9EE (instruction-proven `_TITLE` key and tutorial category 2).
 local function log_basics(quest)
-    quest:AddLogbookStoryEntryString(Deeds.TEXT_LOG_BASICS)
+    quest:AddLogbookTutorialEntry(Deeds.TEXT_LOG_BASICS)
 end
 
 function Deeds.add_good(quest, me)

@@ -1,0 +1,453 @@
+{
+  "address": "0x00DB2B10",
+  "size": 4890,
+  "setupSize": 4887,
+  "startCount": 4,
+  "bytesSha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "f9e82b14b9e5f2c16d91bce07c91f35db92b535415689304d9f34431ed4b4ca8",
+  "callees": [
+    {
+      "address": "0x6e7b60",
+      "size": 26,
+      "bytesSha256": "a57f349ecfe373e4e92be7445ba5c8a19d1f7b5c7cd54df6ef3f977deb846834"
+    },
+    {
+      "address": "0x6e7b80",
+      "size": 66,
+      "bytesSha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+    },
+    {
+      "address": "0x89b110",
+      "size": 248,
+      "bytesSha256": "fa21dc33a6b138a069086288ef428e3c843d1164586b9bef423e6503928da06b"
+    }
+  ],
+  "events": [
+    {
+      "operation": "start",
+      "resource": 164,
+      "setup": {
+        "address": 14364096,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          104
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            104
+          ],
+          [
+            "stack",
+            164
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "start",
+      "resource": 64,
+      "setup": {
+        "address": 14364418,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            88
+          ],
+          [
+            "stack",
+            64
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "end",
+      "resource": [
+        "register",
+        "ecx"
+      ],
+      "setup": {
+        "address": 14365349,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "start",
+      "resource": 64,
+      "setup": {
+        "address": 14366851,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          88
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            88
+          ],
+          [
+            "stack",
+            64
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 64,
+      "setup": {
+        "address": 14367083,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          64
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "start",
+      "resource": 116,
+      "setup": {
+        "address": 14367308,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          104
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            104
+          ],
+          [
+            "stack",
+            116
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 116,
+      "setup": {
+        "address": 14367543,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          116
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 64,
+      "setup": {
+        "address": 14367984,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          64
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 64,
+      "setup": {
+        "address": 14368035,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          64
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 116,
+      "setup": {
+        "address": 14368101,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          116
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": [
+        "register",
+        "ecx"
+      ],
+      "setup": {
+        "address": 14368273,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "receiverRegister": "ecx",
+  "selections": {
+    "0xdb2e90": 164,
+    "0xdb32a1": 64,
+    "0xdb3dba": 164,
+    "0xdb3dd0": 164,
+    "0xdb3e0d": 64
+  },
+  "constructors": [
+    "CCarriedReadableDef::CCarriedReadableDef(aCStack_1c);",
+    "CCarriedReadableDef::CCarriedReadableDef(aCStack_80);",
+    "CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)aaStack_94);",
+    "CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)aaStack_60);"
+  ],
+  "destructors": [
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::\\~CScriptGameResourceObjectMovieBase\\s*\\(pCVar17\\);",
+      "count": 2
+    },
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::\\~CScriptGameResourceObjectMovieBase\\s*\\(\\(CScriptGameResourceObjectMovieBase\\ \\*\\)\\&stack0xffffff58\\);",
+      "count": 2
+    },
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::\\~CScriptGameResourceObjectMovieBase\\s*\\(\\(CScriptGameResourceObjectMovieBase\\ \\*\\)aaStack_94\\);",
+      "count": 1
+    },
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::\\~CScriptGameResourceObjectMovieBase\\s*\\(\\(CScriptGameResourceObjectMovieBase\\ \\*\\)\\&uStack_68\\);",
+      "count": 1
+    },
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::\\~CScriptGameResourceObjectMovieBase\\s*\\(\\(CScriptGameResourceObjectMovieBase\\ \\*\\)aaStack_60\\);",
+      "count": 1
+    }
+  ],
+  "review": "Full body through DB3E29 RET. Starts output resources164/64/64/116. Shared ends DB32A5 and DB3E11 select ECX on incoming paths; five reviewed LEAs use balanced ESP. Four misnamed constructors are6E7B60. Seven movie destructors are6E7B80; other misnamed MovieBase destructors call actor cleanup7E74D0, retained. CFG checks no overlapping movie and matching end on all exits. Source cleanup gotos still require recovery."
+}

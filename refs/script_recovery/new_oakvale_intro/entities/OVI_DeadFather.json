@@ -1,10 +1,14 @@
 {
   "entity": "OVI_DeadFather",
   "nativeClass": "NScript::CQ_NewOakValeIntroScript::COVI_DeadFather",
+  "vtable": "0x012D957C",
+  "retailByteSnapshots": [
+    {"name": "fullLifecycle", "range": "OnPredicateFail 0x00DB8260-0x00DB8261; Init 0x00DB8290-0x00DB82F4; Main 0x00DB8300-0x00DB8516", "file": "ghidra_out/script_recovery/dead_father_full_retail_bytes.json"}
+  ],
   "functions": {
-    "Init": {"address": "0x00DB8290", "decompileFile": "tu/0x00DB8290_FUN_00db8290.c"},
-    "Main": {"address": "0x00DB8300", "decompileFile": "tu/0x00DB8300_NScript_CQ_NewOakValeIntroScript_COVI_DeadFather_M.c"},
-    "OnPredicateFail": {"address": "0x00DB8260", "decompileFile": "tu/0x00DB8260_FUN_00db8260.c", "note": "empty override (ret)"}
+    "Init": {"address": "0x00DB8290", "decompileFile": "ghidra_out/script_recovery/native_decompiles/0x00DB8290.c"},
+    "Main": {"address": "0x00DB8300", "decompileFile": "ghidra_out/script_recovery/native_decompiles/0x00DB8300.c", "note": "exact retail boundary ends at 0x00DB8516; translation_unit size 531 truncates the final epilogue and ret"},
+    "OnPredicateFail": {"address": "0x00DB8260", "decompileFile": "ghidra_out/script_recovery/native_decompiles/0x00DB8260.c", "note": "empty override (ret)"}
   },
   "localFields": [],
   "parentFieldsRead": ["DadFound"],
@@ -25,28 +29,20 @@
     {"id": "found", "entry": "DadFound true -> MiniMapRemoveMarker", "exit": "termination only", "luaFunction": "Main tail loop"}
   ],
   "operations": [
-    {"seq": 1, "function": "Init", "kind": "call", "native": "GSI->MiniMapAddMarker(me, \"HUD_ORB_QUEST_CORE\")", "argsKnown": true, "lua": "quest:MiniMapAddMarker(me, MINIMAP_MARKER)", "forgeBinding": "MiniMapAddMarker", "evidence": "native-decompile", "note": "arg list dropped by decompiler; the string and this+8 are the only values built for the call"},
+    {"seq": 1, "function": "Init", "kind": "call", "native": "GSI->MiniMapAddMarker(me, \"HUD_ORB_QUEST_CORE\")", "argsKnown": true, "lua": "quest:MiniMapAddMarker(me, MINIMAP_MARKER)", "forgeBinding": "MiniMapAddMarker", "evidence": "native Init 0x00DB8290 + PDB signature + Forge forwarding audit", "note": "the decompiler dropped displayed arguments, but the instruction-derived thing/string setup and two-operand PDB signature prove them"},
     {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->SetIsPushableByHero(me, false)", "argsKnown": true, "lua": "quest:SetIsPushableByHero(me, false)", "forgeBinding": "SetIsPushableByHero", "evidence": "native-decompile", "note": ""},
     {"seq": 3, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
-    {"seq": 4, "function": "Main", "kind": "wait", "native": "while (!GSI->StartScriptingEntity(me, res, 4)) { NewScriptFrame; if terminating goto LAB_00db8507 }", "argsKnown": true, "lua": "if not NOVI.acquire(quest, me, SCRIPT_PRIORITY) then NOVI.release(quest, me); return end", "forgeBinding": "host-managed", "evidence": "native-decompile + disassembly (push 4)", "note": ""},
+    {"seq": 4, "function": "Main", "kind": "wait", "native": "while (!GSI->StartScriptingEntity(me, res, 4)) { NewScriptFrame; if terminating goto LAB_00db8507 }", "argsKnown": true, "lua": "if not NOVI.acquire(quest, me, SCRIPT_PRIORITY) then NOVI.release(quest, me); return end", "forgeBinding": "host-managed", "evidence": "native-decompile + disassembly (push 4) + Forge AcquireControl termination path + dynamic acquire-false fixture", "note": "Forge returns false after destroying its pending handle when the entity/quest thread terminates"},
     {"seq": 5, "function": "Main", "kind": "call", "native": "GSI->EntityTeleportToThing(me, GSI->GetThingWithScriptName(\"MK_OVID_DAD\"), false)", "argsKnown": true, "lua": "quest:EntityTeleportToThing(me, marker)", "forgeBinding": "EntityTeleportToThing / GetThingWithScriptName", "evidence": "native-decompile + asm 0xdb83f4 (push 0 = trailing bool)", "note": ""},
     {"seq": 6, "function": "Main", "kind": "call", "native": "GSI->EntitySetFacingAngle(me, GetThingWithScriptName(\"MK_OVID_DAD\").GetAngleXY(), true)", "argsKnown": true, "lua": "marker = quest:GetThingWithScriptName(MARKER_DAD); quest:EntitySetFacingAngle(me, marker:GetAngleXY(), FACE_MARKER_FLAG)", "forgeBinding": "GetThingWithScriptName / GetAngleXY (CScriptThing usertype) / EntitySetFacingAngle", "evidence": "native-decompile + asm 0xdb8453 (call [markerThing+0x28]; CScriptThing vtable 0x01238C8C +0x28 = ?GetAngleXY@CScriptThing) + GSI slot 0x768 = EntitySetFacingAngle", "note": "decompile mislabels the vtable call as GSI->IsActiveThreadTerminating(1) (GSI slot +0x28); retail looks the marker up twice"},
-    {"seq": 7, "function": "Main", "kind": "call", "native": "res.PlayLoopingAnimation(\"CS_DEAD_DAD\", -1, false, true, false, true, true, false, false)", "argsKnown": true, "lua": "me:PlayLoopingAnimation(ANIM_DEAD_DAD, LOOP_FOREVER)", "forgeBinding": "PlayLoopingAnimation", "evidence": "native-decompile + asm 0xdb8476-0xdb84a5 + retail image bytes at 0x01375748", "note": "mangled sig is (CCharString&, long, 7x bool). Reading the pushes in reverse source order gives false,true,false,true,DAT_01375748,false,false; the retail byte at DAT_01375748 is 1. The binding accepts only (name, loopCount, useMovement?, allowLooking?), and their correspondence to the seven native flags is not documented, so only the exactly representable loop count is passed"},
+    {"seq": 7, "function": "Main", "kind": "call", "native": "res.PlayLoopingAnimation(\"CS_DEAD_DAD\", -1, false, true, false, true, true, false, false)", "argsKnown": true, "lua": "me:PlayLoopingAnimation(ANIM_DEAD_DAD, LOOP_FOREVER, false, true, false, true, true, false, false)", "forgeBinding": "PlayLoopingAnimation", "evidence": "native-decompile + asm 0xdb8476-0xdb84a5 + retail image bytes at 0x01375748 + Forge full-operand forwarding audit", "note": "mangled sig is (CCharString&, long, 7x bool). Reading the pushes in reverse source order gives false,true,false,true,DAT_01375748,false,false; the retail byte at DAT_01375748 is 1. Forge's registered nonblocking method accepts seven optional booleans and forwards them unchanged to the seven native vtable slots."},
     {"seq": 8, "function": "Main", "kind": "wait", "native": "while (PARENT->DadFound == false) { NewScriptFrame; if terminating goto LAB_00db8507 }", "argsKnown": true, "lua": "while not F.get(quest, F.DadFound) do if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": ""},
     {"seq": 9, "function": "Main", "kind": "call", "native": "GSI->MiniMapRemoveMarker(me)", "argsKnown": true, "lua": "quest:MiniMapRemoveMarker(me)", "forgeBinding": "MiniMapRemoveMarker", "evidence": "asm 0xdb8307 (EDI = &this+8 stored ME_THING) + 0xdb84e8-0xdb84ee (push EDI; call GSI slot 0x580)", "note": "disassembly restores the argument dropped by the decompiler"},
     {"seq": 10, "function": "Main", "kind": "wait", "native": "do { NewScriptFrame } while (!IsTerminating())", "argsKnown": true, "lua": "while NOVI.frame(quest, me) do end", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "idle forever"},
     {"seq": 11, "function": "Main", "kind": "cleanup", "native": "LAB_00db8507: ~CScriptGameResourceObjectScriptedThingBase (scripted control released)", "argsKnown": true, "lua": "NOVI.release(quest, me)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "reached on every exit path after the acquire"}
   ],
-  "apiGaps": [
-    {"retail": "PlayLoopingAnimation(name, -1, bool x7)", "reason": "binding exposes only (name, loopCount, useMovement?, allowLooking?); the retail flag values are not mapped", "luaLocation": "Main"},
-    {"retail": "EntityTeleportToThing(me, marker, false)", "reason": "binding drops the trailing bool", "luaLocation": "Main"},
-    {"retail": "OnPredicateFail virtual (entity vtable slot 5)", "reason": "empty in retail; ForgeFSE has no predicate-fail hook anyway", "luaLocation": "OnPredicateFail"}
-  ],
-  "uncertainties": [
-    "The minimap marker is added in Init and only removed when DadFound is set; on termination before that the marker stays (retail behaviour, kept).",
-    "MiniMapAddMarker's argument list was dropped by the decompiler; (me, \"HUD_ORB_QUEST_CORE\") is recovered from the values constructed for the call.",
-    "NOVI.acquire is assumed to return false when the thread terminates during the StartScriptingEntity wait."
-  ],
+  "apiGaps": [],
+  "uncertainties": [],
   "cleanupPaths": [
     {"resource": "control", "acquired": "seq 4", "releasedOn": ["normal (unreachable; idle loop)", "terminate"], "missingOn": []},
     {"resource": "marker", "acquired": "Init seq 1", "releasedOn": ["DadFound set (seq 9)"], "missingOn": ["terminate before DadFound (retail leaves the marker)"]}

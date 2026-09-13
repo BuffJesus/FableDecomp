@@ -1,0 +1,15 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4039,
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "7e7a92d285caf56b979ed02a8f463af792fb1ec4d10af00384b8c39c6bdc9949",
+  "bytesSha256": "bf617323c56d3a470484368abfcb367ed115de2d44498b69f7aaa1285e4eb53a",
+  "edits": [
+    {
+      "old": "(iVar11 = rand(), iVar11 % 200 == 0)",
+      "new": "(iVar11 = GSI->RetailRandModulo(200), iVar11 == 0)",
+      "modulus": 200
+    }
+  ],
+  "review": "DB4CFF tests timer return and DB4D01 skips random when nonzero. DB4D07 CRT rand, CDQ/IDIV200 then test remainder atDB4D14, nonzero->DB4E64. Zero path overwrites EDX/ECX and GetHeroDB4D26 overwritesEAX before distance20. Nonzero path also overwrites native return registers before further use; original random value is dead. Preserve timer short-circuit and modulozero gate."
+}

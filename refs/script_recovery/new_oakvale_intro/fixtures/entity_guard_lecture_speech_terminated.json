@@ -1,0 +1,12 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Guard.lua","expect":["StartMovieSequence","Speak","PauseAllNonScriptedEntities","EndMovieSequence","ReleaseControl"],"forbid":["SetStateBool"],"note":"termination during the first lecture line closes the movie bracket, releases control, skips every later line, and does not mark GuardsSpokenOnce"},
+  "Quest.GetStateInt(BadDeedsPerformed)":[1,1,1],
+  "Quest.GetStateInt(GuardsDealtWithBadDeeds)":[0,0],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.IsDistanceBetweenThingsUnder":[true,true],
+  "Entity.AcquireControl":[true,true],
+  "Quest.IsHeroControlledByPlayer":[true],
+  "Quest.GetStateBool(GuardsSpokenOnce)":[false],
+  "Quest.GetHealth":[100],
+  "Entity.Speak":[false]
+}

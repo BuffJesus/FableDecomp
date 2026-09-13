@@ -1,0 +1,11 @@
+{
+  "base_commit": "6a7d719e9ec7a744074ef7653d717d3cae3efe75",
+  "source_checkout": "D:\\Code\\ForgeFSE-retail-shadow",
+  "patch_sha256": "88f80efafa49e273770d498593a1658e5e10326fbf481bd7f52acc6e016971ac",
+  "added_files": [
+    "FableScriptExtender/LuaRetailCondition.h",
+    "FableScriptExtender/LuaRetailFlags.h",
+    "FableScriptExtender/LuaRetailResources.h"
+  ],
+  "scope": "Source checkpoint only. Uncommitted runtime state; not a distributable DLL or claim that this entire state is installed."
+}

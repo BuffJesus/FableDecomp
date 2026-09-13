@@ -18,6 +18,17 @@
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua"
     ],
+    "Entity.GetAngleXY": [
+      "NewOakValeIntro/Entities/OVI_DeadFather.lua"
+    ],
+    "Entity.GetDataString": [
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua"
+    ],
+    "Entity.GetDefName": [
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua"
+    ],
     "Entity.GetHomePos": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
@@ -31,23 +42,45 @@
       "NewOakValeIntro/Entities/NOVI_Guard.lua"
     ],
     "Entity.GetPos": [
-      "NewOakValeIntro/common.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_Barrel.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
     ],
     "Entity.IsAlive": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
-      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Entity.IsDistanceFromPositionOver": [
+      "NewOakValeIntro/common.lua"
     ],
     "Entity.IsPerformingScriptTask": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
@@ -58,8 +91,11 @@
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
-      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua"
     ],
     "Entity.IsTalkedToByHero": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
@@ -83,10 +119,12 @@
     "Entity.MoveToPosition": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua"
     ],
     "Entity.MoveToThing": [
@@ -165,22 +203,26 @@
     "Entity.ReleaseControl": [
       "NewOakValeIntro/common.lua"
     ],
+    "Entity.SetIsPushableByHero": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua"
+    ],
     "Entity.Speak": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua"
-    ],
-    "Entity.SpeakAndWait": [
-      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
-      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
-      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
     ],
     "Quest.ActivateQuest": [
       "NewOakValeIntro/NewOakValeIntro.lua",
@@ -224,7 +266,7 @@
     "Quest.AddLogbookStoryEntry": [
       "NewOakValeIntro/NewOakValeIntro.lua"
     ],
-    "Quest.AddLogbookStoryEntryString": [
+    "Quest.AddLogbookTutorialEntry": [
       "NewOakValeIntro/deeds.lua"
     ],
     "Quest.AddNewConversation": [
@@ -327,6 +369,7 @@
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
       "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua"
     ],
@@ -357,16 +400,25 @@
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
-      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.EntityGetSex": [
       "NewOakValeIntro/Entities/NOVI_Villager.lua",
@@ -386,6 +438,11 @@
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
+    "Quest.EntitySetAsDrawable": [
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua"
     ],
     "Quest.EntitySetAsKillable": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
@@ -560,12 +617,18 @@
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
       "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.GetAllThingsWithScriptName": [
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
-      "NewOakValeIntro/NewOakValeIntro.lua",
       "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.GetDistanceBetweenThings": [
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua"
     ],
     "Quest.GetHealth": [
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
@@ -600,9 +663,12 @@
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
@@ -615,6 +681,7 @@
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
@@ -676,6 +743,7 @@
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
@@ -699,6 +767,9 @@
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
@@ -707,6 +778,8 @@
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
       "NewOakValeIntro/NewOakValeIntro.lua",
       "NewOakValeIntro/NewOakValeIntro.lua"
     ],
@@ -729,8 +802,11 @@
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua"
+    ],
+    "Quest.IsActiveThreadTerminating": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.IsCameraPosOnScreen": [
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
@@ -743,8 +819,10 @@
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua"
     ],
+    "Quest.IsDistanceBetweenThingsOver": [
+      "NewOakValeIntro/common.lua"
+    ],
     "Quest.IsDistanceBetweenThingsUnder": [
-      "NewOakValeIntro/common.lua",
       "NewOakValeIntro/common.lua",
       "NewOakValeIntro/common.lua",
       "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
@@ -761,18 +839,56 @@
     ],
     "Quest.IsObjectInThingsPossession": [
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua"
     ],
+    "Quest.IsQuestActive": [
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
     "Quest.IsRegionLoaded": [
       "NewOakValeIntro/NewOakValeIntro.lua"
+    ],
+    "Quest.IsXbox": [
+      "NewOakValeIntro/common.lua"
     ],
     "Quest.KickOffQuestStartScreen": [
       "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.Log": [
-      "NewOakValeIntro/common.lua"
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.MiniMapAddMarker": [
       "NewOakValeIntro/Entities/OVI_DeadFather.lua",
@@ -804,7 +920,9 @@
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua"
+      "NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua",
+      "NewOakValeIntro/Entities/NOVI_Theresa.lua"
     ],
     "Quest.MsgIsTutorialClickedPast": [
       "NewOakValeIntro/NewOakValeIntro.lua"
@@ -850,12 +968,20 @@
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelThug.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
+      "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
       "NewOakValeIntro/Entities/NOVI_Guard.lua",
@@ -876,6 +1002,7 @@
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
       "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "NewOakValeIntro/Entities/NOVI_Villager.lua",
       "NewOakValeIntro/NewOakValeIntro.lua",
@@ -886,9 +1013,6 @@
     ],
     "Quest.PlayAVIMovie": [
       "NewOakValeIntro/Entities/NOVI_Theresa.lua"
-    ],
-    "Quest.PlayCutscene": [
-      "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.RegisterTimer": [
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
@@ -913,13 +1037,29 @@
     "Quest.ResetToDefaultTheme": [
       "NewOakValeIntro/NewOakValeIntro.lua"
     ],
+    "Quest.RetailRandModulo": [
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
+      "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Bully.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua",
+      "NewOakValeIntro/Entities/NOVI_Villager.lua"
+    ],
     "Quest.RunCutsceneWithSetup": [
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
       "NewOakValeIntro/Entities/NOVI_Theresa.lua",
-      "NewOakValeIntro/Entities/NOVI_Victim.lua"
+      "NewOakValeIntro/Entities/NOVI_Victim.lua",
+      "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.SetAllSoundsAsMuted": [
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua"
@@ -933,10 +1073,6 @@
       "NewOakValeIntro/NewOakValeIntro.lua"
     ],
     "Quest.SetIsPushableByHero": [
-      "NewOakValeIntro/Entities/NOVI_AffairMan.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
-      "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_BookTrader.lua",
       "NewOakValeIntro/Entities/NOVI_Bully.lua",
       "NewOakValeIntro/Entities/NOVI_LiveFather.lua",
@@ -1025,6 +1161,7 @@
       "NewOakValeIntro/Entities/NOVI_AffairWife.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
       "NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
+      "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
       "NewOakValeIntro/Entities/NOVI_BarrelMan.lua",
@@ -1248,8 +1385,16 @@
       "trace": "match"
     },
     {
-      "events": 67,
+      "events": 77,
       "fixture": "entity_affair_wife_reaches_argument.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 82,
+      "fixture": "entity_affair_wife_stalled_route_retries.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1320,7 +1465,23 @@
       "trace": "match"
     },
     {
-      "events": 46,
+      "events": 116,
+      "fixture": "entity_barrel_man_absent_broken_then_scolds.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 28,
+      "fixture": "entity_barrel_man_favour_speech_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 52,
       "fixture": "entity_barrel_man_hands_over_warehouse.json",
       "function": "Main",
       "kind": "entity",
@@ -1328,7 +1489,7 @@
       "trace": "match"
     },
     {
-      "events": 9,
+      "events": 11,
       "fixture": "entity_barrel_man_init.json",
       "function": "Init",
       "kind": "entity",
@@ -1344,7 +1505,15 @@
       "trace": "match"
     },
     {
-      "events": 79,
+      "events": 95,
+      "fixture": "entity_barrel_man_nearby_broken_scolds.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 103,
       "fixture": "entity_barrel_man_rebukes_absent_hero.json",
       "function": "Main",
       "kind": "entity",
@@ -1352,7 +1521,7 @@
       "trace": "match"
     },
     {
-      "events": 82,
+      "events": 105,
       "fixture": "entity_barrel_man_returns_and_thanks_hero.json",
       "function": "Main",
       "kind": "entity",
@@ -1360,7 +1529,7 @@
       "trace": "match"
     },
     {
-      "events": 12,
+      "events": 13,
       "fixture": "entity_barrel_pc_tutorial.json",
       "function": "Main",
       "kind": "entity",
@@ -1376,7 +1545,7 @@
       "trace": "match"
     },
     {
-      "events": 23,
+      "events": 24,
       "fixture": "entity_barrel_thug_chat_acquire_terminated.json",
       "function": "Main",
       "kind": "entity",
@@ -1384,7 +1553,7 @@
       "trace": "match"
     },
     {
-      "events": 38,
+      "events": 39,
       "fixture": "entity_barrel_thug_hit_acquire_terminated.json",
       "function": "Main",
       "kind": "entity",
@@ -1408,7 +1577,7 @@
       "trace": "match"
     },
     {
-      "events": 34,
+      "events": 35,
       "fixture": "entity_barrel_thug_intro_and_first_nag.json",
       "function": "Main",
       "kind": "entity",
@@ -1424,7 +1593,7 @@
       "trace": "match"
     },
     {
-      "events": 33,
+      "events": 35,
       "fixture": "entity_barrel_thug_outro_chat.json",
       "function": "Main",
       "kind": "entity",
@@ -1432,8 +1601,16 @@
       "trace": "match"
     },
     {
-      "events": 43,
+      "events": 45,
       "fixture": "entity_barrel_thug_special_hit.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 16,
+      "fixture": "entity_barrel_thug_speech_terminated.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1496,7 +1673,7 @@
       "trace": "match"
     },
     {
-      "events": 32,
+      "events": 34,
       "fixture": "entity_book_trader_sells_sweets.json",
       "function": "Main",
       "kind": "entity",
@@ -1512,8 +1689,16 @@
       "trace": "match"
     },
     {
-      "events": 31,
+      "events": 32,
       "fixture": "entity_book_trader_special_hit.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 25,
+      "fixture": "entity_book_trader_speech_terminated.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1544,8 +1729,16 @@
       "trace": "match"
     },
     {
-      "events": 116,
+      "events": 147,
       "fixture": "entity_bully_four_hits_run_off.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 35,
+      "fixture": "entity_bully_ignores_unowned_presented_item.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1578,6 +1771,30 @@
     {
       "events": 1,
       "fixture": "entity_bully_main_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 43,
+      "fixture": "entity_bully_refuses_owned_presented_item.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 73,
+      "fixture": "entity_bully_runoff_hero_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 75,
+      "fixture": "entity_bully_runoff_victim_acquire_terminated.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1624,6 +1841,14 @@
       "trace": "match"
     },
     {
+      "events": 3,
+      "fixture": "entity_dead_father_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
       "events": 14,
       "fixture": "entity_dead_father_found_cleanup.json",
       "function": "Main",
@@ -1656,7 +1881,7 @@
       "trace": "match"
     },
     {
-      "events": 53,
+      "events": 56,
       "fixture": "entity_guard_first_crime_lecture.json",
       "function": "Main",
       "kind": "entity",
@@ -1680,7 +1905,15 @@
       "trace": "match"
     },
     {
-      "events": 56,
+      "events": 34,
+      "fixture": "entity_guard_lecture_speech_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 59,
       "fixture": "entity_guard_repeat_crime_chase.json",
       "function": "Main",
       "kind": "entity",
@@ -1688,7 +1921,7 @@
       "trace": "match"
     },
     {
-      "events": 27,
+      "events": 28,
       "fixture": "entity_live_father_completes_intro.json",
       "function": "Main",
       "kind": "entity",
@@ -1752,7 +1985,7 @@
       "trace": "match"
     },
     {
-      "events": 38,
+      "events": 40,
       "fixture": "entity_teddy_girl_returns_teddy.json",
       "function": "Main",
       "kind": "entity",
@@ -1776,8 +2009,16 @@
       "trace": "match"
     },
     {
-      "events": 29,
+      "events": 30,
       "fixture": "entity_teddy_girl_special_hit.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 27,
+      "fixture": "entity_teddy_girl_speech_terminated.json",
       "function": "Main",
       "kind": "entity",
       "status": "ran",
@@ -1792,7 +2033,7 @@
       "trace": "match"
     },
     {
-      "events": 56,
+      "events": 57,
       "fixture": "entity_theresa_accepts_chocolates_and_starts_raid.json",
       "function": "Main",
       "kind": "entity",
@@ -1816,7 +2057,15 @@
       "trace": "match"
     },
     {
-      "events": 35,
+      "events": 24,
+      "fixture": "entity_victim_brathit_hero_acquire_terminated.json",
+      "function": "Main",
+      "kind": "entity",
+      "status": "ran",
+      "trace": "match"
+    },
+    {
+      "events": 36,
       "fixture": "entity_victim_first_hero_hit.json",
       "function": "Main",
       "kind": "entity",
@@ -1824,7 +2073,7 @@
       "trace": "match"
     },
     {
-      "events": 26,
+      "events": 29,
       "fixture": "entity_victim_freed_thanks.json",
       "function": "Main",
       "kind": "entity",
@@ -1928,7 +2177,7 @@
       "trace": "match"
     },
     {
-      "events": 82,
+      "events": 87,
       "fixture": "quest_domission_attack_transition.json",
       "function": "DoMission",
       "kind": "quest",
@@ -1944,7 +2193,7 @@
       "trace": "match"
     },
     {
-      "events": 38,
+      "events": 36,
       "fixture": "quest_init_resets.json",
       "function": "Init",
       "kind": "quest",
@@ -1952,7 +2201,7 @@
       "trace": "match"
     },
     {
-      "events": 52,
+      "events": 56,
       "fixture": "quest_main_fresh_start.json",
       "function": "Main",
       "kind": "quest",
@@ -1960,7 +2209,7 @@
       "trace": "match"
     },
     {
-      "events": 78,
+      "events": 88,
       "fixture": "quest_main_reload_after_attack.json",
       "function": "Main",
       "kind": "quest",
@@ -2000,7 +2249,7 @@
       "trace": "match"
     },
     {
-      "events": 23,
+      "events": 26,
       "fixture": "quest_thread_start_barrel_timer.json",
       "function": "StartBarrelTimer",
       "kind": "quest",
@@ -2008,7 +2257,7 @@
       "trace": "match"
     },
     {
-      "events": 7,
+      "events": 11,
       "fixture": "quest_thread_start_barrel_timer_terminated.json",
       "function": "StartBarrelTimer",
       "kind": "quest",
@@ -2016,7 +2265,7 @@
       "trace": "match"
     },
     {
-      "events": 62,
+      "events": 64,
       "fixture": "quest_thread_watch_barrels.json",
       "function": "WatchBarrels",
       "kind": "quest",
@@ -2041,25 +2290,16 @@
   },
   "summary": {
     "errors": 0,
-    "fixtures": 105,
-    "fixturesPassed": 105,
+    "fixtures": 119,
+    "fixturesPassed": 119,
     "luaFiles": 23,
     "missingApis": 0,
     "syntaxErrors": 0,
-    "unsupportedCallSites": 2,
+    "unsupportedCallSites": 0,
     "warnings": 0,
     "wrongScopeApis": 0
   },
-  "unsupported": [
-    {
-      "file": "NewOakValeIntro/common.lua",
-      "retail": "StartScriptingEntity"
-    },
-    {
-      "file": "NewOakValeIntro/common.lua",
-      "retail": "ReleaseScriptingEntity"
-    }
-  ],
+  "unsupported": [],
   "warnings": [],
   "wrongScopeApis": {}
 }

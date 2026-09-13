@@ -1,0 +1,14 @@
+[
+  {
+    "path": "D:\\Code\\ForgeFSE-retail-shadow\\Release\\FableScriptExtender.dll",
+    "sha256": "b138135b7c0eb7577cb2cb9b9c3030c75a706fe7b8fe74049fb0d94a265f3d45"
+  },
+  {
+    "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FableScriptExtender.dll",
+    "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+  },
+  {
+    "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\FableScriptExtender.dll",
+    "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+  }
+]

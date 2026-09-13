@@ -1,0 +1,151 @@
+{
+  "executable_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "ranges": [
+    {
+      "address": "0x4374f0",
+      "bytes": "8b919402000033c083fa010f95c0c3",
+      "instructions": [
+        "004374f0 mov edx, dword ptr [ecx + 0x294]",
+        "004374f6 xor eax, eax",
+        "004374f8 cmp edx, 1",
+        "004374fb setne al",
+        "004374fe ret "
+      ]
+    },
+    {
+      "address": "0x6495a8",
+      "bytes": "558d6c248c81ece4000000",
+      "instructions": [
+        "006495a8 push ebp",
+        "006495a9 lea ebp, [esp - 0x74]",
+        "006495ad sub esp, 0xe4"
+      ]
+    },
+    {
+      "address": "0x64964e",
+      "bytes": "8b4e0857e81903e0ff8bc8e872e7e3ff8bf88d4d60897d60e88545dfff84c0744768fc0000008d4f20e86477dcff84c074368d455883c744508bcfc74558fc000000e81bcfdeff8b7f043bc774088138fc0000007e028bc78b4804e8c2a7f9ff84c00f8592020000",
+      "instructions": [
+        "0064964e mov ecx, dword ptr [esi + 8]",
+        "00649651 push edi",
+        "00649652 call 0x449970",
+        "00649657 mov ecx, eax",
+        "00649659 call 0x487dd0",
+        "0064965e mov edi, eax",
+        "00649660 lea ecx, [ebp + 0x60]",
+        "00649663 mov dword ptr [ebp + 0x60], edi",
+        "00649666 call 0x43dbf0",
+        "0064966b test al, al",
+        "0064966d je 0x6496b6",
+        "0064966f push 0xfc",
+        "00649674 lea ecx, [edi + 0x20]",
+        "00649677 call 0x410de0",
+        "0064967c test al, al",
+        "0064967e je 0x6496b6",
+        "00649680 lea eax, [ebp + 0x58]",
+        "00649683 add edi, 0x44",
+        "00649686 push eax",
+        "00649687 mov ecx, edi",
+        "00649689 mov dword ptr [ebp + 0x58], 0xfc",
+        "00649690 call 0x4365b0",
+        "00649695 mov edi, dword ptr [edi + 4]",
+        "00649698 cmp eax, edi",
+        "0064969a je 0x6496a4",
+        "0064969c cmp dword ptr [eax], 0xfc",
+        "006496a2 jle 0x6496a6",
+        "006496a4 mov eax, edi",
+        "006496a6 mov ecx, dword ptr [eax + 4]",
+        "006496a9 call 0x5e3e70",
+        "006496ae test al, al",
+        "006496b0 jne 0x649948"
+      ]
+    },
+    {
+      "address": "0x6496b6",
+      "bytes": "8b46108b7828389fbc0000000f8478020000d9056c91250151d91c24c6461801e8c5863900dc05f061390151d95d58d9056c912501d91c24e8ad863900dc05e86139018d87d40000008a4802884d6e8a4801d95d408a00884d6d8bcf88456ce8a6cddeff385e2888456f0f84",
+      "instructions": [
+        "006496b6 mov eax, dword ptr [esi + 0x10]",
+        "006496b9 mov edi, dword ptr [eax + 0x28]",
+        "006496bc cmp byte ptr [edi + 0xbc], bl",
+        "006496c2 je 0x649940",
+        "006496c8 fld dword ptr [0x125916c]",
+        "006496ce push ecx",
+        "006496cf fstp dword ptr [esp]",
+        "006496d2 mov byte ptr [esi + 0x18], 1",
+        "006496d6 call 0x9e1da0",
+        "006496db fadd qword ptr [0x13961f0]",
+        "006496e1 push ecx",
+        "006496e2 fstp dword ptr [ebp + 0x58]",
+        "006496e5 fld dword ptr [0x125916c]",
+        "006496eb fstp dword ptr [esp]",
+        "006496ee call 0x9e1da0",
+        "006496f3 fadd qword ptr [0x13961e8]",
+        "006496f9 lea eax, [edi + 0xd4]",
+        "006496ff mov cl, byte ptr [eax + 2]",
+        "00649702 mov byte ptr [ebp + 0x6e], cl",
+        "00649705 mov cl, byte ptr [eax + 1]",
+        "00649708 fstp dword ptr [ebp + 0x40]",
+        "0064970b mov al, byte ptr [eax]",
+        "0064970d mov byte ptr [ebp + 0x6d], cl",
+        "00649710 mov ecx, edi",
+        "00649712 mov byte ptr [ebp + 0x6c], al",
+        "00649715 call 0x4364c0",
+        "0064971a cmp byte ptr [esi + 0x28], bl",
+        "0064971d mov byte ptr [ebp + 0x6f], al"
+      ]
+    },
+    {
+      "address": "0x649934",
+      "bytes": "807d6fff750ec6462801eb08385e287403885e285f5e5b83c574c9c2",
+      "instructions": [
+        "00649934 cmp byte ptr [ebp + 0x6f], 0xff",
+        "00649938 jne 0x649948",
+        "0064993a mov byte ptr [esi + 0x28], 1",
+        "0064993e jmp 0x649948",
+        "00649940 cmp byte ptr [esi + 0x28], bl",
+        "00649943 je 0x649948",
+        "00649945 mov byte ptr [esi + 0x28], bl",
+        "00649948 pop edi",
+        "00649949 pop esi",
+        "0064994a pop ebx",
+        "0064994b add ebp, 0x74",
+        "0064994e leave "
+      ]
+    },
+    {
+      "address": "0x69eae8",
+      "bytes": "8b0d90873b01e8fd89d9ff84c08b0d90873b010f84c8000000dd05e86139018d442414d95c24",
+      "instructions": [
+        "0069eae8 mov ecx, dword ptr [0x13b8790]",
+        "0069eaee call 0x4374f0",
+        "0069eaf3 test al, al",
+        "0069eaf5 mov ecx, dword ptr [0x13b8790]",
+        "0069eafb je 0x69ebc9",
+        "0069eb01 fld qword ptr [0x13961e8]",
+        "0069eb07 lea eax, [esp + 0x14]"
+      ]
+    },
+    {
+      "address": "0x69ebc9",
+      "bytes": "e86296d9ff8b0d90873b018d54242452e8828ad9ff8b0d90873b018d44242450e8c2a0d9ff8d4c2424518b0d90873b01e8f2a3d9ff8b0d90873b018d54242452e8628ad9ff",
+      "instructions": [
+        "0069ebc9 call 0x438230",
+        "0069ebce mov ecx, dword ptr [0x13b8790]",
+        "0069ebd4 lea edx, [esp + 0x24]",
+        "0069ebd8 push edx",
+        "0069ebd9 call 0x437660",
+        "0069ebde mov ecx, dword ptr [0x13b8790]",
+        "0069ebe4 lea eax, [esp + 0x24]",
+        "0069ebe8 push eax",
+        "0069ebe9 call 0x438cb0",
+        "0069ebee lea ecx, [esp + 0x24]",
+        "0069ebf2 push ecx",
+        "0069ebf3 mov ecx, dword ptr [0x13b8790]",
+        "0069ebf9 call 0x438ff0",
+        "0069ebfe mov ecx, dword ptr [0x13b8790]",
+        "0069ec04 lea edx, [esp + 0x24]",
+        "0069ec08 push edx",
+        "0069ec09 call 0x437670"
+      ]
+    }
+  ]
+}

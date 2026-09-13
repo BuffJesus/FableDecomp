@@ -1,0 +1,18 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "0d9442ac0568dd4072510306533e1cde97b623acbc51fac0a25baa421a421fb9",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "original": "CSubtitleRenderer::SetText\r\n              ((CSubtitleRenderer *)&DAT_00000014,(CFontBank *)ppVar9,pCVar12,(CCharString *)ppVar7,\r\n               pCVar13,pCVar14,uVar15,(float)ppVar6,(bool)CVar4,(bool)uVar16);",
+  "site": "0xdbecc1",
+  "value": 20,
+  "callee": {
+    "address": "0xcbe87f",
+    "size": 225,
+    "bytesSha256": "541e9562b96542fae4b11676728ef7dbc225431488f3ab463968cd248b656fde"
+  },
+  "abi": "void __fastcall(int storyId), input ECX, no stack arguments",
+  "binding": "FableAPI.cpp AddLogbookStoryEntry_Func = ASLR<tAddLogbookStoryEntry>(0xCBE87F); LuaQuestState forwards numeric overload",
+  "review": "ECX copied to EDX at CBE886 for integer string conversion CBE890; builds TEXT_QST_LOG_STORY_ key and dispatches interface slot 4D0; normal RET at CBE95F"
+}

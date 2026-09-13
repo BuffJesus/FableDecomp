@@ -1,0 +1,61 @@
+{
+  "address": "0x00DB3FA0",
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "1e5be147015ea5591d79f9087a1aeab12fb4d50b3eef93deadb5f2031288bec8",
+  "bytesSha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974",
+  "contracts": {
+    "MsgIsHitByHero": {
+      "name": "MsgIsHitByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero' is met."
+    },
+    "MsgIsHitByAnySpecialAbilityFromHero": {
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by any special ability from hero' is met."
+    },
+    "MsgIsHitByHeroSpecialAbility": {
+      "name": "MsgIsHitByHeroSpecialAbility",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "abilityEnum",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero special ability' is met."
+    }
+  },
+  "old": "      CCharString::CCharString(aCStack_cc,\"SCRIPT_NAME_HERO\",-1);\r\n      uVar17 = uVar16 | 1;\r\n      uStack_120 = uVar17;\r\n      cVar5 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8));\r\n      ppVar14 = extraout_EDX_00;\r\n      if (cVar5 == '\\0') {\r\n        CCharString::CCharString(aCStack_100,\"SCRIPT_NAME_HERO\",-1);\r\n        uVar17 = uVar16 | 3;\r\n        uStack_120 = uVar17;\r\n        cVar5 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n        ppVar14 = extraout_EDX_01;\r\n        if (cVar5 != '\\0') {\r\n          CCharString::CCharString(aCStack_c4,\"SCRIPT_NAME_HERO\",-1);\r\n          uVar17 = uVar16 | 7;\r\n          uStack_120 = uVar17;\r\n          cVar5 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n          ppVar14 = extraout_EDX_02;\r\n          if (cVar5 == '\\0') goto LAB_00db42c4;\r\n        }\r\n        bVar4 = false;\r\n      }\r\n      else {\r\nLAB_00db42c4:\r\n        bVar4 = true;\r\n      }\r\n",
+  "new": "      CCharString::CCharString(aCStack_cc,\"SCRIPT_NAME_HERO\",-1);\r\n      uVar17 = uVar16 | 1;\r\n      uStack_120 = uVar17;\r\n      cVar5 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8));\r\n      ppVar14 = extraout_EDX_00;\r\n      if (cVar5 == '\\0') {\r\n        CCharString::CCharString(aCStack_100,\"SCRIPT_NAME_HERO\",-1);\r\n        uVar17 = uVar16 | 3;\r\n        uStack_120 = uVar17;\r\n        cVar5 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n        ppVar14 = extraout_EDX_01;\r\n        if (cVar5 != '\\0') {\r\n          CCharString::CCharString(aCStack_c4,\"SCRIPT_NAME_HERO\",-1);\r\n          uVar17 = uVar16 | 7;\r\n          uStack_120 = uVar17;\r\n          cVar5 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8),14);\r\n          ppVar14 = extraout_EDX_02;\r\n          bVar4 = cVar5 == '\\0';\n        }\n        else {\n          bVar4 = false;\n        }\n      }\n      else {\r\n\r\n        bVar4 = true;\r\n      }\r\n",
+  "review": "Native DB4258 self slot54 SCRIPT_NAME_HERO true->resulttrue DB42C4. Otherwise DB4280 slotA8 false->resultfalse DB42BD. If true DB42B3 slotA4 receives14 then SCRIPT_NAME_HERO: false->resulttrue, true->resultfalse. EBP self unchanged. Preserve all conditional string constructors and mask assignments and subsequent destructor block; replace only special call operand and nested branch structure. Host wrappers use SCRIPT_NAME_HERO and same predicate slots."
+}

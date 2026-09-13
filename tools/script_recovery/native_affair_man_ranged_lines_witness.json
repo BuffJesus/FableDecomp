@@ -1,0 +1,86 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "42aa629a3db7bdf0d06eed146f7d6dc11a1dd5c784080cff3504be85f5ec2352",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 10090544,
+      "size": 116,
+      "sha256": "bb328fb3c5a3d52e3bc3be058e9e7ce43d7b4e4951b37aa7d9fac532c918fddc"
+    },
+    {
+      "address": 19291624,
+      "size": 3,
+      "sha256": "0b782fc3030dbdf3756f17e7adf2ce5808dfc513ca7589adeb679c7d25eaef6f"
+    },
+    {
+      "address": 19761736,
+      "size": 43,
+      "sha256": "876ba3859a907dee8baff547f7be3f8d013620c3c1ddf02c8766d113be3e16f4"
+    },
+    {
+      "address": 19761696,
+      "size": 38,
+      "sha256": "d2d3b2cbab78bcbd41aa11ffc37d89b01ef19763b955d8984e01c4a11065ca1f"
+    }
+  ],
+  "contracts": {
+    "AddLineToConversation": {
+      "name": "AddLineToConversation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "textKey",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "spSpeaker",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "spListener",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "showSubtitle",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": false,
+      "category": "Quest API",
+      "description": "Adds a dialogue line to an existing ambient conversation."
+    }
+  },
+  "edits": [
+    {
+      "old": "GFIntToCharString_API();\r\n              CCharString::CCharString(aCStack_a8,\"TEXT_QST_048_AFFAIRMAN_SCRMSG_DIRTY_WORDS_\",-1);\r\n              CCharString__AppendData();\r\n              std::\r\n              _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                        ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_a8\r\n                         ,extraout_EDX_22,\r\n                         (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n              std::\r\n              _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                        (aaStack_a4,extraout_EDX_23,\r\n                         (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n              GFIntToCharString_API();\r\n              CCharString::CCharString(aCStack_9c,\"TEXT_QST_048_AFFAIRWOMAN_DIRTY_WORDS_\",-1);\r\n              CCharString__AppendData();\r\n              std::\r\n              _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                        ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_9c\r\n                         ,extraout_EDX_24,\r\n                         (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n              std::\r\n              _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                        (aaStack_98,extraout_EDX_25,\r\n                         (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n              GSI->AddLineToConversation();\r\n              GSI->AddLineToConversation\r\n                        (uVar8,aCStack_e4,0,&stack0xfffffeb0,pCVar1);\r\n              std::\r\n              _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                        (aaStack_d0,extraout_EDX_26,\r\n                         (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n              paVar15 = aaStack_e8;\r\n              ppVar16 = extraout_EDX_27;\r\n              goto LAB_00db1b4f;",
+      "new": "native_arg_man_ranged_index = *(int *)(param_1 + 0x20);\nnative_arg_man_ranged_key = \"TEXT_QST_048_AFFAIRMAN_SCRMSG_DIRTY_WORDS_\" .. tostring(native_arg_man_ranged_index);\nnative_arg_woman_ranged_key = \"TEXT_QST_048_AFFAIRWOMAN_DIRTY_WORDS_\" .. tostring(native_arg_man_ranged_index);\nGSI->AddLineToConversation(uVar8,native_arg_man_ranged_key,false,me,local_native_cached_woman);\nGSI->AddLineToConversation(uVar8,native_arg_woman_ranged_key,false,local_native_cached_woman,me);",
+      "count": 1
+    },
+    {
+      "old": "\r\n            std::\r\n            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                      (aaStack_104,extraout_EDX_20,\r\n                       (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n            paVar15 = aaStack_100;\r\n            ppVar16 = extraout_EDX_21;\r\nLAB_00db1b4f:\r\n            std::\r\n            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                      (paVar15,ppVar16,\r\n                       (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r",
+      "new": "\n",
+      "count": 1
+    }
+  ],
+  "review": "DB1A82/1AC8 format field20 with %d. Prefixes12D8A48/12D8A20 produce man baseline74 and woman8C (LEA after pending push). DB1B1D queuesID EDI,man74,false,EBPself,womanstack32. DB1B39 queuesEDI,woman8C,false,womanstack32,EBPself. No termination query between construction and lines. Remove only string destructors1B46/1B4F and near19E9/shared1B4F suffix; both thencontinue at1B54. Full source has only one incoming sharedcleanup jump, inside replaced rangedblock.",
+  "unresolved": [
+    "Actor cleanup",
+    "Conversation distance gate operands"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "lua_files": 7,
+  "legacy_registration": "empty",
+  "native_override": "disabled",
+  "runtime_api_calls": {
+    "Quest": [
+      "AddEntityBinding",
+      "DeactivateQuestLater",
+      "FadeScreenIn",
+      "FinalizeEntityBindings",
+      "GetActiveQuestName",
+      "GetHero",
+      "IsActiveThreadTerminating",
+      "IsRegionLoaded",
+      "RemoveThing",
+      "SetQuestAsCompleted",
+      "SetQuestCardObjective",
+      "WithRetailResources"
+    ],
+    "RetailResources": [
+      "DestroyActorMap",
+      "DestroyMovie",
+      "Frame",
+      "NewActorMap",
+      "NewResource",
+      "Pause",
+      "PrepareResource",
+      "ReleaseResource",
+      "RunMacro",
+      "SetActor",
+      "StartMovie",
+      "TryAcquire"
+    ]
+  },
+  "errors": [],
+  "scope": "Structure and runtime binding presence; metadata and live playback unverified"
+}

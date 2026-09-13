@@ -1,0 +1,229 @@
+{
+  "__meta__": {
+    "function": "Main",
+    "kind": "entity",
+    "source": "NewOakValeIntro/Entities/NOVI_Bully.lua",
+    "note": "Entity termination during RUN1 must unwind without RUN2/dummy or completion. GivenHeroTeddy=True. This is not a cutscene-skip fixture.",
+    "expect": [
+      "RunCutsceneWithSetup",
+      "IsActiveThreadTerminating",
+      "EndMovieSequence",
+      "ReleaseControl"
+    ],
+    "forbid": [
+      "RemoveThing",
+      "DisplayGameInfo",
+      "AddLogbookTutorialEntry",
+      "EntitySetAsDrawable"
+    ],
+    "expectCalls": [
+      {
+        "name": "RunCutsceneWithSetup",
+        "count": 1
+      },
+      {
+        "name": "SetStateBool",
+        "argumentAt": {
+          "0": "GivenHeroTeddy"
+        },
+        "count": 0
+      },
+      {
+        "name": "SetStateBool",
+        "argumentAt": {
+          "0": "BullyRanOff"
+        },
+        "count": 0
+      },
+      {
+        "name": "SetStateInt",
+        "argumentAt": {
+          "0": "GoodDeedsPerformed"
+        },
+        "count": 0
+      }
+    ]
+  },
+  "Quest.NewScriptFrame": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "Entity.GetHomePos": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  ],
+  "Entity.GetPos": [
+    {
+      "x": 3606.763,
+      "y": 861.234,
+      "z": 13.665
+    },
+    {
+      "x": 3602.534,
+      "y": 857.217,
+      "z": 13.622
+    },
+    {
+      "x": 3596.74,
+      "y": 851.895,
+      "z": 13.375
+    },
+    {
+      "x": 3605.044,
+      "y": 858.252,
+      "z": 13.585
+    }
+  ],
+  "Quest.GetThingWithScriptName(NOVI_Victim)": [
+    {
+      "handle": "victim",
+      "scope": "Entity"
+    }
+  ],
+  "Entity.IsTalkedToByHero": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "Entity.MsgIsPresentedWithItem": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "Entity.MsgIsHitByHero": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "Quest.GetHero": [
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hero",
+      "scope": "Entity"
+    }
+  ],
+  "Quest.GetHealth": [
+    100
+  ],
+  "Quest.GetStateInt(GUIBullyHealthCounter)": [
+    -999,
+    700,
+    700,
+    700,
+    700,
+    700,
+    700,
+    700
+  ],
+  "Quest.AddQuestInfoBar": [
+    700
+  ],
+  "Quest.AddNewConversation": [
+    {
+      "handle": "hit_one",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hit_two",
+      "scope": "Entity"
+    },
+    {
+      "handle": "hit_three",
+      "scope": "Entity"
+    }
+  ],
+  "Quest.GetStateInt(TalkIntermittentTimer)": [
+    901,
+    901,
+    901
+  ],
+  "Quest.GetTimer(901)": [
+    1,
+    1,
+    1
+  ],
+  "Quest.GetStateBool(HeroAttackedVictim)": [
+    false
+  ],
+  "Entity.IsDistanceFromPositionOver": [
+    true,
+    true,
+    false
+  ],
+  "Quest.GetStateBool(GivenHeroTeddy)": [
+    true
+  ],
+  "Quest.GetStateInt(GoodDeedsPerformed)": [
+    0
+  ],
+  "Quest.GetStateInt(BadDeedsPerformed)": [
+    0
+  ],
+  "Quest.MsgIsGameInfoClickedPast": [
+    true
+  ],
+  "Quest.GetHeroGold": [
+    0
+  ],
+  "Quest.GetStateBool(GivenSweets)": [
+    false
+  ],
+  "Quest.GetActiveQuestName": [
+    "Q_NewOakValeIntro"
+  ],
+  "Quest.GetStateInt(GUIGoodDeedCounter)": [
+    501
+  ],
+  "Quest.IsActiveThreadTerminating": [
+    false,
+    false,
+    false,
+    false,
+    true
+  ]
+}

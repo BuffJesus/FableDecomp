@@ -55,8 +55,8 @@ local HUSH_MONEY_GOLD = 1                 -- GiveHeroGold(1)
 local BAD_DEED_HIT_MAN = 2                -- AddBadDeed(PARENT, 2)
 local BAD_DEED_TOOK_BRIBE = 4             -- AddBadDeed(PARENT, 4)
 local CUTSCENE_CONTROL_PRIORITY = 4       -- StartScriptingEntity(me, res, 4) in the talked-to branch
-local MAIN_CONTROL_PRIORITY = 4           -- inference: argument dropped by the decompiler; sibling calls use 4
-local HERO_ABILITY_IGNORED_ON_HIT = 14    -- inference: EHeroAbility 0xe, literal visible only in the AffairWife decompile
+local MAIN_CONTROL_PRIORITY = 4           -- explicit push 4 at 0x00DB0A6E and retry 0x00DB0A9C
+local HERO_ABILITY_IGNORED_ON_HIT = 14    -- explicit push 0x0e at 0x00DB0BB0
 local SPEAK_SELECTION_METHOD = 0          -- _Speak_ third argument literal 0
 local MOVE_WALK = 0                       -- EScriptEntityMoveType literal 0
 local MOVE_RADIUS = 0.0                   -- _MoveToPosition_ float literal 0
@@ -69,7 +69,7 @@ local SaidFirstRangedComment = false   -- 0x1d
 local HeroAgreedToKeepQuiet = false    -- 0x1e
 local HeroSaidHeWouldReportMan = false -- 0x1f
 local BadgerIndex = 0                  -- 0x20 (long)
-local last_conversation = nil          -- retail stack local holding the last AddNewConversation id (inference)
+local last_conversation = nil          -- retail stack +0x40, written with the AddNewConversation result
 
 function Init(quest, me)
     BadgerIndex = 0
@@ -78,11 +78,11 @@ function Init(quest, me)
     HeroAgreedToKeepQuiet = false
     HeroSaidHeWouldReportMan = false
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)              -- retail passes (me, 0, 0); ForgeFSE binding takes one bool
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    quest:SetIsPushableByHero(me, false)
+    me:SetIsPushableByHero(false)
     quest:EntitySetAsUseMovementInActions(me, false)
-    quest:SetThingHasInformation(me, false)           -- retail passes (me, 0, 0, 0); ForgeFSE binding takes one bool
+    quest:SetThingHasInformation(me, false, false, false)
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -102,7 +102,9 @@ end
 -- ForgeFSE me:Speak is blocking, so the frame loop is host-side. Returns false on termination.
 local function speak_if_alive(quest, me, key)
     if quest:GetHealth(me) > SPEAK_HEALTH_THRESHOLD then
-        me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false)
+        if me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false) == false then
+            return false
+        end
         while me:IsPerformingScriptTask() do
             if not NOVI.frame(quest, me) then return false end
         end
@@ -118,7 +120,7 @@ local function begin_talk_cutscene(quest, me)
 end
 
 -- Retail: PauseAllNonScriptedEntities(false) then the movie/resource objects are destroyed
--- (inference: the CScriptGameResourceObjectMovieBase destructor ends the movie sequence).
+-- Forge EndMovieSequence invokes the exact retail CScriptGameResourceObjectMovieBase destructor.
 local function end_talk_cutscene(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     NOVI.release(quest, me)
@@ -163,11 +165,10 @@ end
 
 -- Sub-phase of TALK: first conversation — "will you tell?" yes/no question.
 local function ask_hero_to_keep_quiet(quest, me, woman)
-    quest:EntitySetFacingAngleTowardsThing(woman, quest:GetHero())
+    quest:EntitySetFacingAngleTowardsThing(woman, quest:GetHero(), false)
     if not speak_if_alive(quest, me, TEXT_INTRO) then return false end
     F.set(quest, F.HeroDiscoveredInfidelity, true)
-    -- retail GiveHeroYesNoQuestion(question, yes, no, "", 1); the trailing 1 has no ForgeFSE parameter
-    quest:GiveHeroYesNoQuestion(TEXT_QUESTION_WILL_YOU_TELL, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "")
+    quest:GiveHeroYesNoQuestion(TEXT_QUESTION_WILL_YOU_TELL, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "", true)
     local answer = quest:MsgIsQuestionAnsweredYesOrNo()
     while answer < 0 do
         if not NOVI.frame(quest, me) then return false end
@@ -201,11 +202,11 @@ local function talked_to_by_hero(quest, me, woman, wife)
         ok = speak_if_alive(quest, me, TEXT_SHOO)
     end
     if not ok then end_talk_cutscene(quest, me); return false end
-    -- inference: the partner (woman if alive, else wife) is turned to face him before the scene ends
+    -- 0x00DB1593-0x00DB15E0: face the live partner toward him before the scene ends.
     if woman and woman:IsAlive() then
-        quest:EntitySetFacingAngleTowardsThing(woman, me)
+        quest:EntitySetFacingAngleTowardsThing(woman, me, false)
     elseif wife and wife:IsAlive() then
-        quest:EntitySetFacingAngleTowardsThing(wife, me)
+        quest:EntitySetFacingAngleTowardsThing(wife, me, false)
     end
     end_talk_cutscene(quest, me)
     return true
@@ -216,7 +217,7 @@ local function walk_home(quest, me)
     local home = me:GetHomePos()
     while NOVI.distance_from_thing_to_position_over(me, home, HOME_ARRIVE_RADIUS) do
         if not NOVI.frame(quest, me) then return false end
-        me:MoveToPosition(home, MOVE_RADIUS, MOVE_WALK)
+        me:MoveToPosition(home, MOVE_RADIUS, MOVE_WALK, false, true)
         while me:IsPerformingScriptTask() do
             if not NOVI.frame(quest, me) then return false end
         end
@@ -226,14 +227,13 @@ end
 
 -- Sub-phase of AFFAIR: hero within 5 — the lovers whisper a numbered line pair; sets HeroDiscoveredInfidelity.
 local function near_conversation(quest, me, woman)
-    local conv = quest:AddNewConversation(me, false, false)   -- retail args dropped by the decompiler
+    local conv = quest:AddNewConversation(me, false, false)
     last_conversation = conv
-    quest:AddPersonToConversation(conv, woman)                -- retail args dropped; inference: the woman joins
+    quest:AddPersonToConversation(conv, woman)
     local n = next_badger_index()
     local man_line = TEXT_MAN_DIRTY_WORDS_NEAR .. n
     local woman_line = TEXT_WOMAN_DIRTY_WORDS_NEAR .. n
-    -- retail: the very first exchange (BadgerIndex == 10) uses the reversed speaker order (inference on the
-    -- dropped first-line arguments; the second line's speaker/listener order is visible)
+    -- Retail reverses the first exchange at BadgerIndex 10 (complete operands at 0x00DB1966-0x00DB19D8).
     if BadgerIndex == BADGER_RESET then
         quest:AddLineToConversation(conv, woman_line, woman, me)
         quest:AddLineToConversation(conv, man_line, me, woman)
@@ -247,33 +247,33 @@ end
 -- Sub-phase of AFFAIR: hero within 13 — screen-message version; marks SaidFirstRangedComment.
 local function ranged_conversation(quest, me, woman)
     SaidFirstRangedComment = true
-    local conv = quest:AddNewConversation(me, false, false)   -- retail args dropped by the decompiler
+    local conv = quest:AddNewConversation(me, false, false)
     last_conversation = conv
-    quest:AddPersonToConversation(conv, woman)                -- retail args dropped; inference: the woman joins
+    quest:AddPersonToConversation(conv, woman)
     local n = next_badger_index()
-    quest:AddLineToConversation(conv, TEXT_MAN_SCRMSG_DIRTY_WORDS .. n, me, woman)   -- first line args dropped; inference
+    quest:AddLineToConversation(conv, TEXT_MAN_SCRMSG_DIRTY_WORDS .. n, me, woman)
     quest:AddLineToConversation(conv, TEXT_WOMAN_DIRTY_WORDS .. n, woman, me)
 end
 
 -- Sub-phase of AFFAIR: kiss or hug the woman (skipped while the hero is talking to her).
 local function kiss_or_hug(quest, me, woman)
     quest:Pause(KISS_HUG_PAUSE_SECONDS)
-    quest:EntitySetFacingAngleTowardsThing(me, woman)     -- retail args dropped; inference: face each other
-    quest:EntitySetFacingAngleTowardsThing(woman, me)
-    if math.random(0, 1) == 0 then                        -- rand() & 1 == 0
+    quest:EntitySetFacingAngleTowardsThing(me, woman, true)
+    quest:EntitySetFacingAngleTowardsThing(woman, me, true)
+    if quest:RetailRandModulo(2) == 0 then                -- retail rand() & 1 == 0
         F.set(quest, F.ReceiveKiss, true)
-        me:PlayAnimation(ANIM_GIVE_KISS)                  -- retail flags (0,1,0,1,DAT_01375748=true,0)
+        me:PlayAnimation(ANIM_GIVE_KISS, false, true, false, true, true, false, false)
     else
         F.set(quest, F.ReceiveHug, true)
-        me:PlayAnimation(ANIM_GIVE_HUG)                   -- retail flags (0,1,0,1,DAT_01375748=true,0)
+        me:PlayAnimation(ANIM_GIVE_HUG, false, true, false, true, true, false, false)
     end
 end
 
 -- Phase AFFAIR: at home with the woman beside him. Returns false on termination.
 local function affair_at_home(quest, me, woman)
     -- retail gate: conversation active, or (first ranged comment said and rand()%100 != 0), or woman not within 2
-    if last_conversation and quest:IsConversationActive(last_conversation) then return true end  -- retail arg dropped
-    if SaidFirstRangedComment and math.random(0, REPEAT_COMMENT_CHANCE_ONE_IN - 1) ~= 0 then return true end
+    if last_conversation and quest:IsConversationActive(last_conversation) then return true end  -- retail pushes the saved handle (stack +0x40)
+    if SaidFirstRangedComment and quest:RetailRandModulo(REPEAT_COMMENT_CHANCE_ONE_IN) ~= 0 then return true end
     if not quest:IsDistanceBetweenThingsUnder(me, woman, LOVERS_TOGETHER_DISTANCE) then return true end
 
     if NOVI.hero_within(quest, me, HERO_NEAR_DISTANCE) then
@@ -290,9 +290,9 @@ end
 -- Phase IDLE dispatcher (only reached when no scripted task is running). Returns false on termination.
 local function idle_behaviour(quest, me, woman, wife)
     if quest:IsDistanceBetweenThingsUnder(me, wife, WIFE_COWER_DISTANCE) then
-        quest:EntitySetFacingAngleTowardsThing(me, wife)  -- retail args dropped; inference: face the wife
-        if math.random(0, COWER_CHANCE_ONE_IN - 1) == 0 then
-            me:PlayAnimation(ANIM_COWER)                  -- retail flags (0,0,0,1,DAT_01375748=true,0)
+        quest:EntitySetFacingAngleTowardsThing(me, wife, false)
+        if quest:RetailRandModulo(COWER_CHANCE_ONE_IN) == 0 then
+            me:PlayAnimation(ANIM_COWER, false, false, false, true, true, false, false)
         end
         return true
     end

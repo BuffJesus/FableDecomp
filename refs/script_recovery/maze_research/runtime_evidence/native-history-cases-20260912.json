@@ -1,0 +1,760 @@
+{
+  "scope": "Execute full HistoryBookcase.Main bytes with engine/string/thing doubles.",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 1,
+      "events": [
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": false,
+      "queries": 1,
+      "frames": 0
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 2,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": false,
+      "queries": 2,
+      "frames": 0
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 3,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "objective",
+          "MazeResearch",
+          "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+          "HeroGuildComplexInside",
+          ""
+        ],
+        [
+          "remove_marker",
+          "me"
+        ],
+        [
+          "lookup",
+          "EmptyGrave"
+        ],
+        [
+          "add_marker",
+          "EmptyGrave",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_10"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 3,
+      "frames": 0
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 4,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "objective",
+          "MazeResearch",
+          "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+          "HeroGuildComplexInside",
+          ""
+        ],
+        [
+          "remove_marker",
+          "me"
+        ],
+        [
+          "lookup",
+          "EmptyGrave"
+        ],
+        [
+          "add_marker",
+          "EmptyGrave",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_10"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_20"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 4,
+      "frames": 0
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 5,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "objective",
+          "MazeResearch",
+          "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+          "HeroGuildComplexInside",
+          ""
+        ],
+        [
+          "remove_marker",
+          "me"
+        ],
+        [
+          "lookup",
+          "EmptyGrave"
+        ],
+        [
+          "add_marker",
+          "EmptyGrave",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_10"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_20"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_30"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 5,
+      "frames": 0
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 6,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "objective",
+          "MazeResearch",
+          "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+          "HeroGuildComplexInside",
+          ""
+        ],
+        [
+          "remove_marker",
+          "me"
+        ],
+        [
+          "lookup",
+          "EmptyGrave"
+        ],
+        [
+          "add_marker",
+          "EmptyGrave",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_10"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_20"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_30"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_40"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 6,
+      "frames": 0
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 7,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "objective",
+          "MazeResearch",
+          "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+          "HeroGuildComplexInside",
+          ""
+        ],
+        [
+          "remove_marker",
+          "me"
+        ],
+        [
+          "lookup",
+          "EmptyGrave"
+        ],
+        [
+          "add_marker",
+          "EmptyGrave",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_10"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_20"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_30"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_40"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 7,
+      "frames": 1
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": true,
+      "stop_at_query": 8,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "objective",
+          "MazeResearch",
+          "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+          "HeroGuildComplexInside",
+          ""
+        ],
+        [
+          "remove_marker",
+          "me"
+        ],
+        [
+          "lookup",
+          "EmptyGrave"
+        ],
+        [
+          "add_marker",
+          "EmptyGrave",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_10"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_20"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_30"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_40"
+        ],
+        [
+          "clicked",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 8,
+      "frames": 2
+    },
+    {
+      "book_read": false,
+      "used": false,
+      "clicked": true,
+      "stop_at_query": 3,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "used",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": false,
+      "queries": 3,
+      "frames": 2
+    },
+    {
+      "book_read": false,
+      "used": true,
+      "clicked": false,
+      "stop_at_query": 4,
+      "events": [
+        [
+          "term",
+          false
+        ],
+        [
+          "usable",
+          "me",
+          true
+        ],
+        [
+          "add_marker",
+          "me",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "used",
+          true
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "objective",
+          "MazeResearch",
+          "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+          "HeroGuildComplexInside",
+          ""
+        ],
+        [
+          "remove_marker",
+          "me"
+        ],
+        [
+          "lookup",
+          "EmptyGrave"
+        ],
+        [
+          "add_marker",
+          "EmptyGrave",
+          "HUD_ORB_QUEST_VIGNETTE"
+        ],
+        [
+          "display",
+          "TEXT_QST_B01_JOURNAL_ENTRY_10"
+        ],
+        [
+          "clicked",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "clicked",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 4,
+      "frames": 2
+    },
+    {
+      "book_read": true,
+      "used": false,
+      "clicked": false,
+      "stop_at_query": 2,
+      "events": [
+        [
+          "frame"
+        ],
+        [
+          "term",
+          false
+        ],
+        [
+          "frame"
+        ],
+        [
+          "term",
+          true
+        ]
+      ],
+      "final_book_read": true,
+      "queries": 2,
+      "frames": 2
+    }
+  ]
+}

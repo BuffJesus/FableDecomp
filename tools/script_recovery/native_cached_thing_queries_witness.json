@@ -1,0 +1,29 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5052,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "34c351392ff1774ed417c4e474694fd6e8d602083412dd5bdeee912eacfb39e8",
+  "bytesSha256": "a7161d3ca19506c2cc3e7a1fe7af2b3912b879187e880a7aeb58bd79e562b368",
+  "callee": {
+    "address": "0x4ab130",
+    "size": 28,
+    "bytesSha256": "2f058b3a91d179c5bd531a6c5a536915b23fc9e4edce96b78b2029d7d2376000"
+  },
+  "queries": [
+    {
+      "site": "0xdb1597",
+      "lookupSite": "0xdb0ad9",
+      "slot": "local_native_cached_woman",
+      "old": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ((CScriptThing *)&stack0xfffffea8)",
+      "new": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ(local_native_cached_woman)"
+    },
+    {
+      "site": "0xdb15bb",
+      "lookupSite": "0xdb0b07",
+      "slot": "local_native_cached_wife",
+      "old": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ((CScriptThing *)&stack0xfffffeb4)",
+      "new": "CScriptThing::_IsAlive_CScriptThing__UBE_NXZ(local_native_cached_wife)"
+    }
+  ],
+  "review": "FirstqueryDB1597 receiverESP+20 matches woman lookupDB0AD9 output20. SecondDB15BB receiverESP+2C matches wife lookupDB0B07 output2C. These offsets use same caller baseline (no intervening argument pushes at either IsAlive). Shared lookup recoveries introduce named cached slots. Queries retain original ordering and branch structure; facing-target assignment and movie cleanup remain unresolved."
+}

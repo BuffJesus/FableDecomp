@@ -1,0 +1,2 @@
+# script	class	rangeLo	rangeHi	lifecycle(role=addr,...)	threads(name=addr,...)	output
+Q_DragonBossFight	CQ_DragonBossFightScript	0x00D254B0	0x00D27270	destructor=0x00D27270,RegisterMain=0x00D25520,Main=0x00D255E0,Init=0x00D254B0,OnPersist=0x00CBD4E0	DoMission=0x00D26190,RunEnemySpawning=0x00D26BA0,JackTaunts=0x00D26A50	D:\Documents\FableTLC\refs\script_recovery\native_threads\Q_DragonBossFight.json

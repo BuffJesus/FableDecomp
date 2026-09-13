@@ -1,0 +1,18 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4039,
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "8d3a7bc786a7e7bfbb43da87cc412a349a65eddf4a86cff0d59249b07e9cdcc0",
+  "bytesSha256": "bf617323c56d3a470484368abfcb367ed115de2d44498b69f7aaa1285e4eb53a",
+  "edits": [
+    {
+      "old": "GSI->GetTimer();",
+      "new": "GSI->GetTimer(*(int *)(*(int *)(param_1 + 0x14) + 0x104));"
+    },
+    {
+      "old": "GSI->SetTimer();",
+      "new": "GSI->SetTimer(*(int *)(*(int *)(param_1 + 0x14) + 0x104), 3);"
+    }
+  ],
+  "review": "DB4CF9 reads parent quest +0x104; DB4D60 resets the same field to 3. Timer nonzero skips the random gate. Parent inventory names this Int field TalkIntermittentTimer."
+}

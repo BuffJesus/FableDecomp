@@ -1,0 +1,82 @@
+{
+  "address": "0x00DB3FA0",
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "6e3b8b9dcf6e2e862dc3a9c1bcce344a60be2d6b36d403f46c6edf3e32e82973",
+  "bytesSha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974",
+  "counts": {
+    "LAB_00db4f51": 2,
+    "LAB_00db4f39": 7,
+    "LAB_00db46da": 7,
+    "LAB_00db4f3f": 2,
+    "LAB_00db4f4d": 2,
+    "LAB_00db4bc5": 2,
+    "LAB_00db4f45": 1,
+    "LAB_00db4ce1": 1
+  },
+  "paths": {
+    "LAB_00db4f51": [
+      "movie_end"
+    ],
+    "LAB_00db4f39": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db46da": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db4f3f": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db4f4d": [
+      "movie_end"
+    ],
+    "LAB_00db4f45": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db4bc5": [
+      "unpause",
+      "movie_end"
+    ],
+    "LAB_00db4ce1": [
+      "movie_end"
+    ]
+  },
+  "review": "Terminal suffixes reach native DB4F56 actor cleanup after checked movie/unpause events. Source final LAB_DB4F5A holds the actor destructor corresponding to native callDB4F5A; native DB4F56 only selects its receiver. Expand jumps preserving condition and script effects, retaining final actor cleanup label. Normal movie-end continuation DB4CE1 is excluded. DB4BC5 also unpauses then jumps to terminal DB4F4D. DB4CE1 is the normal end followed by DB4CE6 timer check; it must not exit the function.",
+  "destinations": {
+    "LAB_00db4f51": {
+      "native": "0xDB4F56",
+      "source": "LAB_00db4f5a"
+    },
+    "LAB_00db4f39": {
+      "native": "0xDB4F56",
+      "source": "LAB_00db4f5a"
+    },
+    "LAB_00db46da": {
+      "native": "0xDB4F56",
+      "source": "LAB_00db4f5a"
+    },
+    "LAB_00db4f3f": {
+      "native": "0xDB4F56",
+      "source": "LAB_00db4f5a"
+    },
+    "LAB_00db4f4d": {
+      "native": "0xDB4F56",
+      "source": "LAB_00db4f5a"
+    },
+    "LAB_00db4bc5": {
+      "native": "0xDB4F56",
+      "source": "LAB_00db4f5a"
+    },
+    "LAB_00db4f45": {
+      "native": "0xDB4F56",
+      "source": "LAB_00db4f5a"
+    },
+    "LAB_00db4ce1": {
+      "native": "0xDB4CE6",
+      "source": "LAB_00db4ce6"
+    }
+  }
+}

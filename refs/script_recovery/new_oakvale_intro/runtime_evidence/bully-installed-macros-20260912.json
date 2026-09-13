@@ -1,0 +1,67 @@
+[
+  {
+    "name": "CS_OAKVALEINTRO_BULLYRUN1",
+    "commands": [
+      "KeepEntityMap TRUE",
+      "FadeOut",
+      "GamePause 0.5",
+      "BULLY.ClearCommands TRUE,TRUE",
+      "HERO.ClearCommands TRUE,TRUE",
+      "UseCamera CAM_OIBR_BRATHERO",
+      "DoScriptFrame 1",
+      "HERO.Teleport MK_OIBR_HERO1",
+      "BRAT.Teleport MK_OIBR_BRAT1",
+      "BULLY.Teleport MK_OIBR_BULLY1",
+      "HERO.PlayLoopingAnim CS_IDLE_STAND,-1,FALSE,TRUE,FALSE,FALSE,TRUE",
+      "DoScriptFrame 1",
+      "DoCameraPreloading",
+      "DoScriptFrame 1",
+      "HERO.LookToThing BULLY,FOREVER",
+      "BRAT.LookToThing BULLY,FOREVER",
+      "UseCamera CAM_OIBR_MASTER",
+      "FadeIn",
+      "BULLY.DialogadSpeak BULLY,TEXT_QST_048_BULLY_GOING_AWAY",
+      "GamePause 1.5",
+      "BRAT.PlayAnimation BOY_PULLING_FACES_01,FALSE,TRUE,FALSE,FALSE,TRUE",
+      "BULLY.WaitTask FOO",
+      "BULLY.RunTo MK_OIBR_BULLY2,0,FALSE,FALSE,FALSE,TRUE",
+      "GamePause 0.5",
+      "BRAT.LookToThing HERO,FOREVER",
+      "GamePause 0.6",
+      "HERO.PlayCombatAnim CS_HERO_TURNAROUND",
+      "GamePause 0.6",
+      "UseCamera CAM_OIBR_BRAT",
+      "HERO.LookAtNothing TRUE",
+      "DoScriptFrame 1",
+      "BRAT.WaitTask FOO",
+      "BRAT.Speak BRAT,$BRATLINE",
+      "HERO.Teleport MK_OIBR_HERO2",
+      "BULLY.Drawable FALSE"
+    ],
+    "skipCommands": [
+      "FadeOut",
+      "GamePause 0.5",
+      "HERO.Teleport MK_OIBR_HERO2",
+      "BRAT.Teleport MK_OIBR_BRAT1",
+      "BRAT.LookToThing HERO,FOREVER",
+      "HERO.LookAtNothing TRUE",
+      "BULLY.Drawable FALSE",
+      "FadeIn"
+    ],
+    "leftover": 0
+  },
+  {
+    "name": "CS_OAKVALEINTRO_BULLYRUN2",
+    "commands": [
+      "HERO.LookToThing BRAT,FOREVER",
+      "GamePause 0.2",
+      "NoLoadUseCamera CAM_OIBR_BRATHERO",
+      "BRAT.Speak BRAT,TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE",
+      "GiveHero OBJECT_TEDDY_BEAR_UNGIVEABLE"
+    ],
+    "skipCommands": [
+      "GiveHero OBJECT_TEDDY_BEAR_UNGIVEABLE"
+    ],
+    "leftover": 0
+  }
+]

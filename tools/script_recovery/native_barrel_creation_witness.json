@@ -1,0 +1,22 @@
+{
+  "address": "0x00DB4F70",
+  "size": 562,
+  "sourceSha256": "26965b9153e0092f8348f7eb8c90578a198605bb110774243f6bac3106f48ec9",
+  "annotatedSha256": "33cf7c8f848af3e3206a607c599f79d2e223c6dbacbb343fe35e1cd478cc5051",
+  "bytesSha256": "7beec77a43819ec0718fc5d13a93d2fbbe1d4b5e4612da1c8f69966048298e19",
+  "original": "    pCStack_3c = (CCharString *)0xdb4fe1;\r\n    CCharString::CCharString(aCStack_1c,\"\",-1);\r\n    pCStack_3c = (CCharString *)0xdb4ff1;\r\n    CCharString::CCharString(aCStack_18,\"HUD_CLOCK_ICON\",-1);\r\n    pCStack_3c = aCStack_18;\r\n    puStack_40 = &stack0xffffffdc;\r\n    puStack_44 = &uStack_20;\r\n    pCStack_48 = (CCharString *)0x0;\r\n    uStack_1e = 0;\r\n    uStack_1f = 0xff;\r\n    uStack_20 = 0;\r\n    uStack_1d = 0xff;\r\n    ppVar9 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)0x42340000;\r\n    uVar6 = GSI->AddQuestInfoBar();\r\n    *(int *)(param_1 + 0x60) = (int)uVar6;\r\n",
+  "callSite": "0x00DB503B",
+  "strings": {
+    "0x0122D70E": "",
+    "0x012CA7C8": "HUD_CLOCK_ICON"
+  },
+  "arguments": [
+    45.0,
+    0.0,
+    "BGRA:0xff00ff00",
+    "BGRA:0xff00ff00",
+    "HUD_CLOCK_ICON",
+    "",
+    1.0
+  ]
+}

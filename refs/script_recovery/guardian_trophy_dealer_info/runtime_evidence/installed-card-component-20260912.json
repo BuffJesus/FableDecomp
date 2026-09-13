@@ -1,0 +1,81 @@
+{
+  "scope": "Resolve the installed Guardian reward card through the documented card links.\n\nThe generic OBJECT decoder failure remains; this checks the known component\ntag/link/back-reference and completely decodes its CQuestCardDef payload.\n",
+  "object": {
+    "index": 3736,
+    "name": "OBJECT_QUEST_CARD_FIND_TROPHY_DEALER",
+    "definition": "OBJECT",
+    "payload_sha256": "6d6778b10b8773d5ad10fb0da9435e82aa7a63de00a8eeb177c1106b04935f17",
+    "payload_hex": "010001080058a9031cea23000047010000f9b8b13ceb2300004701000056103280ad2300001d010000037cad83ed230000470100008cb25986ae2300001d010000881b969aac2300001d0100008aa4c3b421300000980e00009c9fc8e1af2300001d0100005b9e9f4207000000389804000000000000e59704000000000000fc9704000000000000159804000000000000c79904000000000000781e05000000000000891e05000000000000ce6cab01576db4ea012c55aaf501855b2e79001b00a2c901523acb9d0000596dd4011dbbbc380057db00b9003537c36c0190cfb1e3008d391cc200e3bbf4eb00a4f8b12701021e95e2016efa45ea00b634bd0e00a3defcf3009e76923300dd23524e0004dab56700c906c8300f1d0000e993dc150000d041773452a5010000008687b4780000803ffeef4443cdccccbdb6c9226200000000909d15a400000040c516246a0000803fa874d2090000004090788bc7fffffffff5f55b34ffffffffc8636b2e050000002d110000000000000000803f01f01ca0a000000000aac8eae0d30a000005714fedd30a0000a75959cf00000000e1a1a61700000000e6c2d2f600000000321fea8000f456492400c473c22301e3b83f2500efdf12d100"
+  },
+  "card": {
+    "index": 12321,
+    "name": "",
+    "definition": "CQuestCardDef",
+    "payload_sha256": "bfe41d2ea6865a965328080f6cba6926475cab478e913ed7c2f6aee1a26466b6",
+    "payload_hex": "010001c79ea606f92800001dc7a862d62e0000788822e800000000c6498d2a000000008d48e06f2aa305000e116f73ffffffff51ff3a2d490a0000a8fd9438000000006859beffb00400001fde245a00000000c1eb9539015b389e3c000097a0d5003a77320c0040ee438f00000000a4fb011600000000bce3553900c074264600000000"
+  },
+  "decoded": {
+    "QuestName": 10489,
+    "QuestSummary": 11990,
+    "QuestObjective": 0,
+    "SuccessSummary": 0,
+    "RegionName": "Witchwood2",
+    "TeleporterRegionName": "@names+0xFFFFFFFF",
+    "InventoryCategory": 2633,
+    "RenownReward": 0,
+    "GoldReward": 1200,
+    "RewardObjects": "00000000",
+    "IsCoreQuest": true,
+    "IsVignette": false,
+    "IsExclusive": false,
+    "MakeVignetteRouteAppearOnMinimap": false,
+    "Prerequisites": "00000000",
+    "NumBoasts": 0,
+    "CanPlayerCancel": false,
+    "QuestEpilogue": 0
+  },
+  "component_tag_offset": 77,
+  "component_index_offset": 81,
+  "parent_index_offset": 85,
+  "texts": {
+    "QuestName": {
+      "content": "Find the Archaeologist",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "GUI",
+      "identifier": "TEXT_QUEST_FIND_TROPHY_DEALER_TITLE",
+      "tags": [],
+      "speaker_index": 330,
+      "id": 10489,
+      "type": 0,
+      "name": "TEXT_QUEST_FIND_TROPHY_DEALER_TITLE"
+    },
+    "QuestSummary": {
+      "content": "Find the Archaeologist missing in Witchwood.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "GUI",
+      "identifier": "TEXT_QUEST_FIND_TROPHY_DEALER_SUMMARY",
+      "tags": [],
+      "speaker_index": 330,
+      "id": 11990,
+      "type": 0,
+      "name": "TEXT_QUEST_FIND_TROPHY_DEALER_SUMMARY"
+    }
+  },
+  "category": {
+    "index": 2633,
+    "name": "INVENTORY_CATEGORY_QUEST_CARD_BLANK",
+    "definition": "INVENTORY_CATEGORY",
+    "payload_sha256": "4f3cc97deddba673e4181146dd06e727a78c5da0a0a9c7f2834976e2f7859dc8",
+    "payload_hex": "01000100003bdcd5d5480a0000953228ee64000000768bd2c800411199b60090cbccae000f785cf53c2600009f25cdbf00ea84d2881200000032eede4900"
+  },
+  "layout_source": "docs/formats/QUEST_CARD_BYTE_LAYOUT.md",
+  "source_sha256": {
+    "data/CompiledDefs/game.bin": "2cc9495a9ed2a3f0c3f30f502b8229485616dcdfc304513a09324cd76cc52cf5",
+    "data/CompiledDefs/names.bin": "56d70f5d81231fc7a1a515a93fbc2f1f2ae8c3ff59e4c56dddfa91995fcd523a",
+    "data/lang/English/text.big": "531c4514f5597e6426c8a2f1bd3ed39b3dd1dc9a8d38982e2303bb19f8ff33fc"
+  },
+  "limits": [
+    "Unrelated OBJECT fields are not decoded by this audit.",
+    "This verifies existing definition references, not in-game card display or quest activation."
+  ]
+}

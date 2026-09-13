@@ -1,0 +1,42 @@
+{
+  "status": "unapplied metadata proposal",
+  "owner": "runtime session",
+  "additions": [
+    {
+      "owner": "RetailResources",
+      "name": "NewThingFromResource",
+      "signature": "unsigned(unsigned resource)"
+    },
+    {
+      "owner": "RetailResources",
+      "name": "NewThingFromScriptName",
+      "signature": "unsigned(string name)"
+    },
+    {
+      "owner": "RetailResources",
+      "name": "ThingHealth",
+      "signature": "float(unsigned thing)"
+    },
+    {
+      "owner": "RetailResources",
+      "name": "ThingAlive",
+      "signature": "bool(unsigned thing)"
+    },
+    {
+      "owner": "RetailResources",
+      "name": "SetTeleporterActive",
+      "signature": "void(unsigned thing, bool active)"
+    },
+    {
+      "owner": "RetailResources",
+      "name": "DestroyThing",
+      "signature": "void(unsigned thing)"
+    },
+    {
+      "owner": "Quest",
+      "name": "RegisterBoundAliveCondition",
+      "signature": "void()",
+      "constraint": "entity VM and current native task required"
+    }
+  ]
+}

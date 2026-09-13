@@ -1,0 +1,37 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5052,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "fe550bdf9219ea15cb4c12f4cb75faeaa1455b169c599a5c40e5136a1d7ad44b",
+  "bytesSha256": "a7161d3ca19506c2cc3e7a1fe7af2b3912b879187e880a7aeb58bd79e562b368",
+  "lookupSite": "0xdb0ad9",
+  "scriptNameAddress": "0x12d82f8",
+  "scriptName": "NOVI_AffairWoman",
+  "distance": 2.0,
+  "lookupCount": 1,
+  "lookupOccurrence": 0,
+  "originalDistance": "IsDistanceBetweenThingsUnder(pCVar1,(CScriptThing *)apStack_13c,2.0)",
+  "outputSlot": "local_native_cached_woman",
+  "distanceReceiver": "pCVar1",
+  "distanceOperand": "2.0",
+  "distanceChecks": [
+    {
+      "distanceSite": "0xdb1841",
+      "knownSetupCalls": {},
+      "receiverRegister": "ebp"
+    }
+  ],
+  "review": "First lookup DB0AD9 writes baselineESP+20. DB1841 reads ESP+24 after pushing float2.0, therefore cached woman wrapper20. EBP=self this+8 as reviewed in wife witness. Check lies behind conversation/random short-circuit guards; recovery only replaces operands in place.",
+  "profiledCallees": [
+    {
+      "address": "0xcbe2ff",
+      "size": 114,
+      "bytesSha256": "9d320829e96a4ce4eff39dc46e20f3f1e0a8ef2099ba02663064501ad10d6c57"
+    },
+    {
+      "address": "0x8a7d60",
+      "size": 151,
+      "bytesSha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "8b3c50825a6c9d47544875b1d7e8ddac59b4265e5f7a742a9e0c45bb633b77eb",
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4887,
+      "sha256": "98d1f6993ac85e4431cdb23efdffdf43b3f3b560ca0b6a7272e68ef1b89233a2"
+    },
+    {
+      "address": 19273552,
+      "size": 4,
+      "sha256": "756f14e18b4aab1df896b11dbf2c83d978b99dc891f5fda1a67e6ceb0d00cf42"
+    },
+    {
+      "address": 19272880,
+      "size": 4,
+      "sha256": "d1a86b2d70301cb7b38df895fa76210b115a338332103a0b469e80e596d4c0af"
+    }
+  ],
+  "contracts": {
+    "EntitySetAsUseMovementInActions": {
+      "name": "EntitySetAsUseMovementInActions",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "spThing",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "bUseMovement",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set as use movement in actions."
+    },
+    "ClearThingHasInformation": {
+      "name": "ClearThingHasInformation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Clears thing has information."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->EntitySetAsUseMovementInActions();",
+      "new": "GSI->EntitySetAsUseMovementInActions(me,true);"
+    },
+    {
+      "old": "GSI->ClearThingHasInformation();",
+      "new": "GSI->ClearThingHasInformation(me);"
+    }
+  ],
+  "review": "EDI=self from DB2B1C LEA[ESI+8], no intervening writes in Main. DB345C passes EDI,true; DB3491 passes EDI. Husband lookupDB3445 has hidden outputstack48, implementation at52; inline positionDB3462..3476 uses fallback143E8E0 ifnull. MoveDB3486 uses resource16 and vectorEAX/radius2/movetype1/false/true. Position fallback and movement lowering remain unresolved; these edits only restore self actors around it."
+}

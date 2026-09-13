@@ -1,0 +1,846 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4042,
+  "bytesSha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974",
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "strings": {},
+  "profiledCallees": [
+    {
+      "address": "0x00CD23B9",
+      "size": 9,
+      "bytesSha256": "4709c48eae7699b36b7eeb43e313220d557b4fde38b603a9e8df9164e944e298"
+    },
+    {
+      "address": "0x00CD2770",
+      "size": 16,
+      "bytesSha256": "c533ae5d358e4c7bd75002630d31c9148a38ffb7159bceae44823bd66cd654a1"
+    },
+    {
+      "address": "0x007E70E0",
+      "size": 53,
+      "bytesSha256": "f09787ca69e7d470afdee26230b7bcc19c9553bc6e65770479d5e6b4c9833e8e"
+    },
+    {
+      "address": "0x007E74D0",
+      "size": 66,
+      "bytesSha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+    },
+    {
+      "address": "0x0089B5B0",
+      "size": 454,
+      "bytesSha256": "b6ef67fa058fe9af6ab1d973894da7bee1e9ce37894b98b98a00209694f95fd9"
+    },
+    {
+      "address": "0x008ABD10",
+      "size": 96,
+      "bytesSha256": "461cc7437a512506666e93e11190135a35a13f206af180033c7ac7ecf1377fe6"
+    },
+    {
+      "address": "0x00903810",
+      "size": 178,
+      "bytesSha256": "dc3f89f532685e4454e26266e5a7d494c7499c592bc0b632799219f89d189eb8"
+    }
+  ],
+  "events": [
+    {
+      "name": "has_resource",
+      "site": "0xdb402e",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14368814,
+        "target": [
+          "constant",
+          13444025
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "reset",
+      "site": "0xdb403b",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14368827,
+        "target": [
+          "constant",
+          13444976
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb404d",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14368845,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          20
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb4078",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14368888,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "name": "destroy",
+      "site": "0xdb41c7",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14369223,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "has_resource",
+      "site": "0xdb4360",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14369632,
+        "target": [
+          "constant",
+          13444025
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "reset",
+      "site": "0xdb436d",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14369645,
+        "target": [
+          "constant",
+          13444976
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb437f",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14369663,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb43aa",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14369706,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          20
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "has_resource",
+      "site": "0xdb455f",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14370143,
+        "target": [
+          "constant",
+          13444025
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "reset",
+      "site": "0xdb456c",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14370156,
+        "target": [
+          "constant",
+          13444976
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb457e",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14370174,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb45a9",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14370217,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          20
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "has_resource",
+      "site": "0xdb4d92",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14372242,
+        "target": [
+          "constant",
+          13444025
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "reset",
+      "site": "0xdb4d9f",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14372255,
+        "target": [
+          "constant",
+          13444976
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb4db1",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14372273,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdb4ddc",
+      "knownCalls": {},
+      "argumentCount": 3,
+      "setup": {
+        "address": 14372316,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          20
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "destroy",
+      "site": "0xdb4f5a",
+      "knownCalls": {},
+      "argumentCount": 0,
+      "setup": {
+        "address": 14372698,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "resourceOffset": 20,
+  "semantics": {
+    "presence": "resource.pImp.Data != null, independent of acquire return",
+    "reset": "release pImp reference and zero pointer and refcount metadata",
+    "success": "StartScriptingEntity installs scripted resource via8AB960 then returns true",
+    "failure": "early false path may leave resource unchanged; fallback path installs903810 resource via8ABD10 then returns false",
+    "runtimeGap": "AcquireControl retries internally and destroys its handle on termination; its return boolean does not model native resource presence or per-attempt scheduling",
+    "requiredRecovery": "Preserve resource identity and resets across priority3/4; prove fallback/failed acquisition semantics before lowering presence and destruction"
+  },
+  "review": "One stack20 resource, eight self acquisitions, four conditional resets, two out-of-line actor destructors plus two inline reference-counted exit cleanups DB4E7B/DB4EC6 (not mapped as destructor calls). Native DB89B715..89B76D fallback assigns then returnsfalse. Do not equate has_resource with acquisition success.",
+  "sharedDestructorReceiver": {
+    "site": "0xDB4F5A",
+    "resourceOffset": 20,
+    "selectionSites": [
+      "0xDB41A1",
+      "0xDB4555",
+      "0xDB4F56"
+    ],
+    "review": "Two conditional direct entries have LEA ECX,[ESP+14] immediately before their JNE. Fallthrough entry selects ECX atDB4F56. Linear call-window intentionally reports incoming ECX, not an invented stack value."
+  }
+}

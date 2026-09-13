@@ -1,0 +1,36 @@
+{
+  "schema": "guard-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_Guard",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DAC650",
+      "endExclusive": "0x00DAC760",
+      "rangeSize": 272,
+      "bytesSha256": "9EFEC91E92E5796636F80F97D165B8B3692FFCC26A4A3DB7FAAA6D009D461AA0",
+      "instructionCount": 92,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DAC760",
+      "endExclusive": "0x00DADE4B",
+      "rangeSize": 5867,
+      "bytesSha256": "F4669E1D122FD17BF1A67528BB0797CC98AA759E328C25CF7A553071E8004629",
+      "instructionCount": 1791,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "Init and complete Main dispatcher",
+    "claimRange": "0x00DAC7A3-0x00DACA21",
+    "lectureRange": "0x00DACB33-0x00DAD867",
+    "sharedCounters": [
+      "BadDeedsPerformed",
+      "GuardsDealtWithBadDeeds"
+    ],
+    "terminalCleanup": "0x00DADE16-0x00DADE4A"
+  }
+}

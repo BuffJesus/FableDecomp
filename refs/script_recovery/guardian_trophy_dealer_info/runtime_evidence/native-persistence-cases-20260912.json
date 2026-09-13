@@ -1,0 +1,195 @@
+{
+  "scope": "Guardian native OnPersist with doubled storage; No save-file engine.",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        false
+      ],
+      "mode": "write",
+      "stored": {},
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false
+      ],
+      "storage": {
+        "PieceOver": false
+      }
+    },
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        false
+      ],
+      "mode": "read",
+      "stored": {},
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false
+      ],
+      "storage": {}
+    },
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "PieceOver": false
+      },
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false
+      ],
+      "storage": {
+        "PieceOver": false
+      }
+    },
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        false
+      ],
+      "mode": "read",
+      "stored": {
+        "PieceOver": true
+      },
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": false,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true
+      ],
+      "storage": {
+        "PieceOver": true
+      }
+    },
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        true
+      ],
+      "mode": "write",
+      "stored": {},
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true
+      ],
+      "storage": {
+        "PieceOver": true
+      }
+    },
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        true
+      ],
+      "mode": "read",
+      "stored": {},
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false
+      ],
+      "storage": {}
+    },
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "PieceOver": false
+      },
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": false
+        }
+      ],
+      "final": [
+        false
+      ],
+      "storage": {
+        "PieceOver": false
+      }
+    },
+    {
+      "entry": "0xe27e60",
+      "initial": [
+        true
+      ],
+      "mode": "read",
+      "stored": {
+        "PieceOver": true
+      },
+      "calls": [
+        {
+          "name": "PieceOver",
+          "offset": "0x48",
+          "before": true,
+          "default": false,
+          "after": true
+        }
+      ],
+      "final": [
+        true
+      ],
+      "storage": {
+        "PieceOver": true
+      }
+    }
+  ],
+  "bytes": "518d4424035083c148518b4c241068dc202e01c644240f00e843c75dff59c20400cccccccccccccccccccccccccccccc"
+}

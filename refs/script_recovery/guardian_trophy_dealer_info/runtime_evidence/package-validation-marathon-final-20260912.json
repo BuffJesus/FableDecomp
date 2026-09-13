@@ -1,0 +1,200 @@
+{
+  "passed": true,
+  "scope": "Validate disabled Guardian staging against compiled checks and local evidence.\n\nReads installed files only. No launch, install, activation, or save writes.\n",
+  "checks": {
+    "compiled_checks_passed": true,
+    "compiled_inventory": true,
+    "compiled_inputs_unchanged": true,
+    "compiled_outputs_unchanged": true,
+    "six_lua_files_parse": true,
+    "all_package_files_in_compiled_hashes": true,
+    "two_native_root_comparisons": true,
+    "reference_copy_quest.lua": true,
+    "reference_copy_runtime_adapter.lua": true,
+    "disabled": true,
+    "no_legacy_registration": true,
+    "one_override_one_entity": true,
+    "override_identity": true,
+    "entity_identity": true,
+    "seed_identity_agrees": true,
+    "native_registry_name": true,
+    "single_inactive_native_registration": true,
+    "no_current_registry_conflicts": true,
+    "card_assets_unchanged": true,
+    "macro_asset_unchanged": true,
+    "placement_assets_unchanged": true,
+    "installed_dlls_still_v23": true
+  },
+  "conflicts": [],
+  "examined_registries": [
+    "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\retail_override.lua",
+    "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\retail_override.lua",
+    "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\retail_override.lua",
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\retail_override.lua",
+    "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\quests.lua",
+    "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\quests.lua",
+    "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\quests.lua",
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\quests.lua"
+  ],
+  "limits": [
+    "Native engine APIs and scheduler are doubled in compiled checks.",
+    "Root replay covers successful allocations; native allocation failure is not a Lua allocation contract.",
+    "Entity ID 69 comes from the seed Lua registry, not a native numeric entity ID.",
+    "Conflict checks cover the listed installed and reconstructed profiles at these hashes.",
+    "Requires newer uninstalled runtime APIs; live scheduler, streaming, save/load and playback remain unverified."
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\data\\Levels\\FinalAlbion.qst",
+      "sha256": "c6e47d60d7d8e712a7a70e54d6c11ed749882241fde0693d561a08ecbc281a0a"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FableScriptExtender.dll",
+      "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\FableScriptExtender.dll",
+      "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\quests.lua",
+      "sha256": "d8b51d5bba67d2736501b1f05315c994169fec8a339d16c8c5ae972b79a379d9"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\retail_override.lua",
+      "sha256": "8b71227ecb06a07b7acdce28b860d474c7f39f0ba8646d101032a3c194045aaa"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\ghidra_out\\quest_registry_table.tsv",
+      "sha256": "9e96e95ef0784aa7ff0199b2c36093c85c06bb2d8553bac6067c132f74065e6e"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\reference\\quest.lua",
+      "sha256": "e2651636460339b07b965f676ab9bd2e40fa43153cde36d0c63c5db09aaa5f08"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\reference\\runtime_adapter.lua",
+      "sha256": "d0c3eb199e109639733ccae541f84ea50c212e3dafa1def4752211c666e77327"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\installed-card-component-20260912.json",
+      "sha256": "1c754c1b395d2827e843bc1771349c0a4059a14b9be2cf31230e9956734a976d"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\installed-macros-20260912.json",
+      "sha256": "758303a81904d09d6dadebbd2c116ed82b06faca021fbd98cb049bb2f1ba2f74"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\installed-placements-20260912.json",
+      "sha256": "820ac23538937a3160458ae6e6cec89acdf0a79ecaf2b0aac0ab1b158798ab05"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-alive-condition-20260912.json",
+      "sha256": "5c27360b4f8288db4a197dc78aa59ed13274e6bd266009acd51e10f590efd674"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-condition-registration-20260912.json",
+      "sha256": "1218e4198527bdd824d83cfb6ed209b0319ee314bf2fd134d2374129d1082c50"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-encounter-cases-20260912.json",
+      "sha256": "0ae1bd9d4e99093e77c35c0fbfd1f6a11118d70922a51cf6a4ac90b43be4a2db"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-entity-cases-20260912.json",
+      "sha256": "bd66cb482d4caa43cd13780571cd551f36285471d78d8f964261f503e35673fd"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-inventory-20260912.json",
+      "sha256": "5a8c05799b8f714b5179a2151e6f3e77f45bc21ae373b3509f0f6047905756c2"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-persistence-cases-20260912.json",
+      "sha256": "9de90cef6c9ff5f055c0f70248c720d02255631d09fbe8bf312990d53bb87f76"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-repeat-cases-20260912.json",
+      "sha256": "96f2aac4e16e1145a7849b2795ce5c7983f8bcd2af85120ef8d01c0b479612dc"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-resource-dispatch-20260912.json",
+      "sha256": "5b8dda96109d9bfa788d43f362ae5a3b5527b438667c605c387d91f2ef46cc8f"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-resource-lifetimes-20260912.json",
+      "sha256": "77b64be0efb5ac20b3b233ed3f7aa0697fda87dfc0336c10e56a11399a69cf56"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-root-cases-20260912.json",
+      "sha256": "3fd6abdc385373319d194cdb83ad9846be3c1098bb16bf7fd15ea76e19240d0f"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-thing-lifetime-20260912.json",
+      "sha256": "4ad2db297106e44d55f4a27c160cf578275c23c9129275f8ecb8cc6264fea646"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-waiter-cases-20260912.json",
+      "sha256": "ba72a8a62c9a70cb2e131c2428ce24debd685d9ee76e3a1ea9ab0ace544545bd"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\GuardianTrophyDealerInfo\\FSE\\GuardianTrophyDealerInfo\\Entities\\GTDI_Maze.lua",
+      "sha256": "d8f833b443524072a10cb356c3d31f90b3e36ee1101d68a642079e13595269a3"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\GuardianTrophyDealerInfo\\FSE\\GuardianTrophyDealerInfo\\GuardianTrophyDealerInfo.lua",
+      "sha256": "ffe717209be8e67da674300186ed74dde2c8051df2acb6c895b23ab69b0bbea9"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\GuardianTrophyDealerInfo\\FSE\\GuardianTrophyDealerInfo\\quest.lua",
+      "sha256": "e2651636460339b07b965f676ab9bd2e40fa43153cde36d0c63c5db09aaa5f08"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\GuardianTrophyDealerInfo\\FSE\\GuardianTrophyDealerInfo\\runtime_adapter.lua",
+      "sha256": "d0c3eb199e109639733ccae541f84ea50c212e3dafa1def4752211c666e77327"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\GuardianTrophyDealerInfo\\FSE\\quests.lua",
+      "sha256": "c2df4f5f91a1289c61a248b9cde221ee64bd93d08375ff9a22afa10bb72449a3"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\GuardianTrophyDealerInfo\\FSE\\retail_override.lua",
+      "sha256": "cefcac878a3ddf8c46261e6c785ab541bb9e1b696f6928defe44db72e6ce50b3"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\quests.lua",
+      "sha256": "569036aa1dbea93b5aae8ac3b16e60e683a8ffa00db5a041c458c2d551732ff1"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MazeResearch\\FSE\\retail_override.lua",
+      "sha256": "fdd6b5ea7d161c81c42aefb56397589cfe95455e58984f31243ed1d7ec7ce0cc"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\quests.lua",
+      "sha256": "36b5935c2e879e88ce37a39a2bdf8fc44dcd646eaa45ba8195c25d66c87cb966"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\retail_override.lua",
+      "sha256": "cd1dda2e9c117dbb32f5d06c8e5874a221dec6f6b9eb20b691f7792ce8a3be26"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\quests.lua",
+      "sha256": "1d613d815b3205a10824864c5b72c68ec4db5fa85690202bff454e083b8b5a15"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\retail_override.lua",
+      "sha256": "99d52b5766405fa367e3fc6d6163cb70ae3a1d35e09050d701d221b753a94ccf"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\seed_corpus\\corpus_index.json",
+      "sha256": "98e6a5d0598139169ce8d20575725459821853b9962e7770ce5ed0442f489de7"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\tools\\script_recovery\\validate_guardian_package.py",
+      "sha256": "b21b5da3f171bf85b52d072c8e6fd649c5d709e58bd6afea10db75f4d1a466e3"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-marathon-verified-regression-20260912\\result.json",
+      "sha256": "f98a3b43486f22a52fff1831fbbb52b21b64c9465bd9e366740aa8751122425e"
+    }
+  ]
+}

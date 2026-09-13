@@ -1,0 +1,25 @@
+{
+  "schema": "new-oakvale-ai-action-observations/0.1",
+  "scope": "New Oakvale ForgeFSE override only",
+  "observations": {
+    "wifeReachedHusbandInAtLeastOneRun": true,
+    "wifeSometimesStoppedBeforeHusband": true,
+    "wifeIssueClassification": "intermittent path-completion variance",
+    "bullyRunEndedShortInObservedRun": true,
+    "blockingSpeechCompletedInArchivedRun": true
+  },
+  "provenByLog": {
+    "file": "single-authority-childhood-complete-20260910.log",
+    "markers": [
+      "Key: TEXT_QST_048_AFFAIRMAN_GOOD_LAD",
+      "[Speak_Blocking] Entering wait loop...",
+      "[Speak_Blocking] ...Wait loop finished after 20 frames."
+    ]
+  },
+  "provenByUserPlaytest": [
+    "The Wife has successfully reached the husband before.",
+    "On some runs she stops in the middle of the route and scolds the air.",
+    "The Bully disappeared instead of visibly completing his run-off."
+  ],
+  "note": "Successful and failed Wife endpoints are both retained: neither observation is generalized into an always-successful or always-failing claim."
+}

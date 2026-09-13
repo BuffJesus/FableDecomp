@@ -1,0 +1,71 @@
+{
+  "schema": "new-oakvale-barrel-man-text-assets/0.1",
+  "source": "installed English text.big",
+  "sourceSha256": "531C4514F5597E6426C8A2F1BD3ED39B3DD1DC9A8D38982E2303BB19F8FF33FC",
+  "groups": {
+    "TEXT_QST_048_BARRELMAN_THANKS": {
+      "id": 27355,
+      "members": [
+        {
+          "id": 7482,
+          "name": "TEXT_QST_048_BARRELMAN_THANKS_10",
+          "text": "Excellent! Thanks, lad. You've done me a big favour.",
+          "speaker": "WORKER",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "id": 7478,
+          "name": "TEXT_QST_048_BARRELMAN_THANKS_20",
+          "text": "I'll let your dad know what a splendid watchman you made.",
+          "speaker": "WORKER",
+          "speechbank": "ScriptDialogue.lug"
+        }
+      ]
+    },
+    "TEXT_QST_048_BARRELMAN_LETDOWN_BROKEN": {
+      "id": 28042,
+      "members": [
+        {
+          "id": 13209,
+          "name": "TEXT_QST_048_BARRELMAN_LETDOWN_BROKEN_10",
+          "text": "A fat lot of good you were.",
+          "speaker": "WORKER",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "id": 13223,
+          "name": "TEXT_QST_048_BARRELMAN_LETDOWN_BROKEN_20",
+          "text": "Now my stock is damaged! And to think I trusted you with it.",
+          "speaker": "WORKER",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "id": 13235,
+          "name": "TEXT_QST_048_BARRELMAN_LETDOWN_BROKEN_30",
+          "text": "If I find out it was you, well... you better hope I don't!",
+          "speaker": "WORKER",
+          "speechbank": "ScriptDialogue.lug"
+        }
+      ]
+    },
+    "TEXT_QST_048_BARRELMAN_LETDOWN_NOT_BROKE": {
+      "id": 28322,
+      "members": [
+        {
+          "id": 15009,
+          "name": "TEXT_QST_048_BARRELMAN_LETDOWN_NOT_BROKE_10",
+          "text": "Oi! Where did you go, you little ruffian?",
+          "speaker": "WORKER",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "id": 15018,
+          "name": "TEXT_QST_048_BARRELMAN_LETDOWN_NOT_BROKE_20",
+          "text": "I'm lucky my stock wasn't damaged with nobody watching!",
+          "speaker": "WORKER",
+          "speechbank": "ScriptDialogue.lug"
+        }
+      ]
+    }
+  }
+}

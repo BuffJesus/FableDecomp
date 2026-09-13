@@ -1,0 +1,160 @@
+{
+  "scope": "Actual staged entity Init/Main, adapter, vendor sol/Lua and C++ LuaRetailResources. Engine entry points and Quest operations are test doubles. Native engine/scheduler/playback are not executed. Root binding is outside this resource integration harness.",
+  "cases": [
+    {
+      "entry": "messenger",
+      "scenario": "normal",
+      "events": 21,
+      "pass": true
+    },
+    {
+      "entry": "messenger",
+      "scenario": "hero_failed",
+      "events": 21,
+      "pass": true
+    },
+    {
+      "entry": "messenger",
+      "scenario": "macro_terminated",
+      "events": 21,
+      "pass": true
+    },
+    {
+      "entry": "messenger",
+      "scenario": "retry_success",
+      "events": 27,
+      "pass": true
+    },
+    {
+      "entry": "sister",
+      "scenario": "normal",
+      "events": 24,
+      "pass": true
+    },
+    {
+      "entry": "sister",
+      "scenario": "hero_failed",
+      "events": 24,
+      "pass": true
+    },
+    {
+      "entry": "sister",
+      "scenario": "macro_terminated",
+      "events": 24,
+      "pass": true
+    },
+    {
+      "entry": "sister",
+      "scenario": "retry_success",
+      "events": 30,
+      "pass": true
+    },
+    {
+      "entry": "messenger",
+      "scenario": "acquire_cancelled",
+      "events": 12,
+      "pass": true
+    },
+    {
+      "entry": "sister",
+      "scenario": "acquire_cancelled",
+      "events": 8,
+      "pass": true
+    },
+    {
+      "entry": "messenger",
+      "scenario": "region_wait",
+      "events": 27,
+      "pass": true
+    },
+    {
+      "entry": "messenger",
+      "scenario": "region_cancelled",
+      "events": 5,
+      "pass": true
+    },
+    {
+      "entry": "messenger",
+      "scenario": "already_terminating",
+      "events": 4,
+      "pass": true
+    },
+    {
+      "entry": "sister",
+      "scenario": "post_acquire_terminating",
+      "events": 7,
+      "pass": true
+    }
+  ],
+  "event_count": 255,
+  "files": [
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\meet_sister\\runtime_evidence\\native-lua-flow-comparison-20260912.json",
+      "sha256": "54bd821d11fdba18d1be399e9b2c999e07956d2d00d24d5831bba3d9b4264c81"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\meet_sister_cpp_integration.cpp",
+      "sha256": "fd76141241519a7c471bc4ad6a2dc54a906c24a9ca063b6b12abe0129b0a77ac"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\prepare_meet_sister_cpp_integration.py",
+      "sha256": "f46915926e9bdfa92a4f7e2cd9b2056312287c3ba95eb0feee5a8d2b45615bca"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\retail_resources_smoke.cpp",
+      "sha256": "cd946868faa72df77f440b686720c7fc307f8a65db21cc47c7cd1bfd104575d3"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\binding-flags-lua-check\\meet-sister-cases.lua",
+      "sha256": "e0b16fbbce9838aa15718b4332e215df6389f12851d16b268e20208a6c366285"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\binding-flags-lua-check\\meet-sister-integration.rsp",
+      "sha256": "2d90c64425b02a433ae38cf447817b12eeaee36e17a4a05c4eedc51f0bc0643a"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\binding-flags-lua-check\\meet-sister-integration.cmd",
+      "sha256": "867db23b875ddc868f5e7590dfdccbb049896fb28a830eb96893eea60bd7dce9"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\binding-flags-lua-check\\meet-sister-integration-result.log",
+      "sha256": "2b87b0bb167850bb9715aff0e657e701d9894988a8988cba0d852941a2444a3e"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\work\\runtime-20260912-video-comparison\\binding-flags-lua-check\\meet-sister-integration.exe",
+      "sha256": "e643555d7d14df4ca55a3facefeeebda8c939f1993f1866f8ee7b38f09274b79"
+    },
+    {
+      "path": "D:\\Code\\ForgeFSE-retail-shadow\\FableScriptExtender\\LuaRetailResources.h",
+      "sha256": "1ffa9ce6773157435987d26154c0e12e34b8984c0f0cb82ef5187e28d7b569a9"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\quests.lua",
+      "sha256": "36b5935c2e879e88ce37a39a2bdf8fc44dcd646eaa45ba8195c25d66c87cb966"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\retail_override.lua",
+      "sha256": "cd1dda2e9c117dbb32f5d06c8e5874a221dec6f6b9eb20b691f7792ce8a3be26"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\MeetSister.lua",
+      "sha256": "82d89027c2057e821f6ac72eae66d525eda6e748e55a00c3a01de4f1af17f765"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\quest.lua",
+      "sha256": "70a3b57f2081675a0949b835e4a1cc7319cb5431e120f23e1b3f264e22e16df1"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\runtime_adapter.lua",
+      "sha256": "27400d2591da31b954b7167536a7a4aebac8fe1e873b456f58aee80743b0ac1e"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\Entities\\MeetSisterMessenger.lua",
+      "sha256": "df60639d4d689228d6f3c2995e33698042364693e9b8ce1a4546319a8fb5f34f"
+    },
+    {
+      "path": "D:\\Documents\\FableTLC\\refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\Entities\\MeetSisterSister.lua",
+      "sha256": "c03c63333f7dab17ee82116228e98b825b3fc969b9a6eccfa6b3d2c1bb2c33ee"
+    }
+  ]
+}

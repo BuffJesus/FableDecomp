@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -31,7 +33,30 @@
     {
       "arguments": [],
       "event": "api-call",
+      "name": "IsActiveThreadTerminating",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
       "name": "GetHero",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        4
+      ],
+      "event": "api-call",
+      "name": "AcquireControl",
+      "receiver": "hero",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsActiveThreadTerminating",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -136,6 +161,20 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsXbox",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsActiveThreadTerminating",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [
         "TEXT_QST_048_INSTRUCTION_HIGHLIGHTING_PC"
       ],
@@ -148,6 +187,13 @@
       "arguments": [],
       "event": "api-call",
       "name": "MsgIsGameInfoClickedPast",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsActiveThreadTerminating",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -199,6 +245,15 @@
     },
     {
       "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "hero",
+      "scope": "Entity"
+    },
+    {
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -283,5 +338,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_LiveFather.lua",
-  "sourceSha256": "09ec0edabaad68d5a030203cd3a9cb4930d63d2d5179081e26892d32fd90d968"
+  "sourceSha256": "c1138f7df265ac71e80ade0b08b96b7c8dd9cdf04467ee80912da78831a08361"
 }

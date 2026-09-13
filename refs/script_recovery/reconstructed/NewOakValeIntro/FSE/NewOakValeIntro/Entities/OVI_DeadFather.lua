@@ -29,11 +29,10 @@ function Main(quest, me)
     if not NOVI.frame(quest, me) then return end
     if not NOVI.acquire(quest, me, SCRIPT_PRIORITY) then NOVI.release(quest, me); return end
     local marker = quest:GetThingWithScriptName(MARKER_DAD)
-    quest:EntityTeleportToThing(me, marker)              -- retail: (me, marker, false)
+    quest:EntityTeleportToThing(me, marker, false)
     marker = quest:GetThingWithScriptName(MARKER_DAD)    -- retail looks the marker up a second time
     quest:EntitySetFacingAngle(me, marker:GetAngleXY(), FACE_MARKER_FLAG)   -- CScriptThing vtable +0x28 = GetAngleXY
-    -- retail: PlayLoopingAnimation("CS_DEAD_DAD", -1, <bool flags>); only the loop count maps to the binding
-    me:PlayLoopingAnimation(ANIM_DEAD_DAD, LOOP_FOREVER)
+    me:PlayLoopingAnimation(ANIM_DEAD_DAD, LOOP_FOREVER, false, true, false, true, true, false, false)
     while not F.get(quest, F.DadFound) do
         if not NOVI.frame(quest, me) then NOVI.release(quest, me); return end
     end

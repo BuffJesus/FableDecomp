@@ -19,6 +19,7 @@
           "handle": "me",
           "scope": "Entity"
         },
+        false,
         false
       ],
       "event": "api-call",
@@ -45,6 +46,8 @@
           "handle": "me",
           "scope": "Entity"
         },
+        false,
+        true,
         false
       ],
       "event": "api-call",
@@ -67,16 +70,12 @@
     },
     {
       "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        },
         false
       ],
       "event": "api-call",
       "name": "SetIsPushableByHero",
-      "receiver": "quest",
-      "scope": "Quest"
+      "receiver": "me",
+      "scope": "Entity"
     },
     {
       "arguments": [
@@ -97,5 +96,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairWife.lua",
-  "sourceSha256": "6bdb59f68194ad2439d149c3ddb5754b78d33ada91b0fca5ff364c55bd436875"
+  "sourceSha256": "3a1f148386c60102256b95cd32a9fd4a452eaa529e52d6e2c2006ef721ebb667"
 }

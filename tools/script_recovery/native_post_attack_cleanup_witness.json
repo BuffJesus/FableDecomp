@@ -1,0 +1,22 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "22a5f537560de9db5cc5e35c6f6551362c5759c2959645d804e41e5ff1f7efc7",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "staging": "    ppVar9 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)local_38;",
+  "cleanup": "    if ((local_38[0] != (int *)0x0) && (*local_38[0] = *local_38[0] + -1, *local_38[0] == 0)) {\r\n      (*(code *)local_38[0][1])();\r\n      operator_delete(local_38[0]);\r\n    }\r\n    local_3c = 0;\r\n    local_38[0] = (int *)0x0;\r\n    NHeroInformationScreens::CBase::CBase((CBase *)&stack0xffffffc0);\r\n",
+  "callees": [
+    {
+      "address": "0x99a2e0",
+      "size": 7,
+      "bytesSha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+    }
+  ],
+  "review": {
+    "lookup": "0xDBEB4F: slot 0x120, string wrapper ESP+0x0c, hidden result ESP+0x10",
+    "predicate": "0xDBEB59: returned wrapper IsAlive slot 0x12c; saved AL determines break",
+    "cleanup": "0xDBEB61..0xDBEBA5: decrement result wrapper info at ESP+0x18, invoke info callback/free only at zero, clear impl/info, restore base vtable",
+    "retained": "string cleanup at 0xDBEBAE, frame at 0xDBEBBC, termination at 0xDBEBC1 and 0xDBEBD7, loop backedge to 0xDBEB30"
+  }
+}

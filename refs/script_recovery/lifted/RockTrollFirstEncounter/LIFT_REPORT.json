@@ -1,0 +1,127 @@
+{
+  "script": "V_RockTrollFirstEncounter",
+  "package": "RockTrollFirstEncounter",
+  "state": {
+    "0x4d": [
+      "Activated",
+      "Bool"
+    ],
+    "0x4e": [
+      "RockTrollTriggered",
+      "Bool"
+    ],
+    "0x54": [
+      "PlayedExhumeCutScene",
+      "Bool"
+    ],
+    "0x55": [
+      "AddedItemsToRockTroll",
+      "Bool"
+    ],
+    "0x50": [
+      "RockTrollHealthBarID",
+      "Bool"
+    ]
+  },
+  "functions": {
+    "Init": {
+      "lines": 13,
+      "todo": [
+        "unlifted: iStack_4 = param_1;",
+        "unnamed field 0x48 written in Init",
+        "unnamed field 0x49 written in Init",
+        "unnamed field 0x4a written in Init"
+      ],
+      "calls": [
+        "SetCreatureGeneratorsEnabled",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool",
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 59,
+      "todo": [
+        "unnamed field 0x4a",
+        "unnamed field 0x4a",
+        "0 args for 1 params",
+        "1 args for 2 params",
+        "label LAB_00ec4112"
+      ],
+      "calls": [
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "IsRegionLoaded",
+        "NewScriptFrame",
+        "IsRegionLoaded",
+        "CreateThread",
+        "ActivateQuest",
+        "SetStateBool",
+        "NewScriptFrame",
+        "RemoveQuestInfoElement",
+        "DisplayQuestInfo",
+        "MsgOnRegionLoaded",
+        "NewScriptFrame",
+        "MsgOnRegionLoaded",
+        "SetCreatureGeneratorsEnabled",
+        "DeactivateQuestLater",
+        "GetActiveQuestName",
+        "DeactivateQuestLater"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Thread:WatchForRegionExit": {
+      "lines": 17,
+      "todo": [],
+      "calls": [
+        "IsRegionLoaded",
+        "SetCreatureGeneratorsEnabled",
+        "NewScriptFrame",
+        "IsRegionLoaded"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 15,
+      "todo": [],
+      "calls": [
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool",
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool"
+      ]
+    }
+  },
+  "entities": [
+    "RTFE_Sparrow",
+    "RTFE_RockTroll",
+    "M_RTFERockTrollTrigger"
+  ],
+  "threads": [
+    {
+      "name": "WatchForRegionExit",
+      "body": "0x00EC4130"
+    }
+  ],
+  "helpers": [],
+  "entityBodies": {}
+}

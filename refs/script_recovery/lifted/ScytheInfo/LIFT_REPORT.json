@@ -1,0 +1,69 @@
+{
+  "script": "QS_ScytheInfo",
+  "package": "ScytheInfo",
+  "state": {},
+  "functions": {
+    "Init": {
+      "lines": 2,
+      "todo": [
+        "unnamed field 0x48 written in Init"
+      ],
+      "calls": [
+        "SetStateBool"
+      ],
+      "literalByteComparisons": 0
+    },
+    "Main": {
+      "lines": 50,
+      "todo": [
+        "verify cleanup at LAB_00e29db9 (lifted as early return)",
+        "verify cleanup at LAB_00e29e58 (lifted as early return)",
+        "2 args for 4 params",
+        "label LAB_00e29db0",
+        "label LAB_00e29db9",
+        "unnamed field 0x48",
+        "1 args for 4 params",
+        "1 args for 2 params",
+        "label LAB_00e29e58",
+        "verify cleanup at LAB_00e29db0 (lifted as early return)",
+        "unnamed field 0x48"
+      ],
+      "calls": [
+        "AddEntityBinding",
+        "AddEntityBinding",
+        "FinalizeEntityBindings",
+        "GetActiveQuestName",
+        "SetQuestCardObjective",
+        "RegisterTimer",
+        "SetTimer",
+        "IsRegionLoaded",
+        "NewScriptFrame",
+        "GetTimer",
+        "HeroReceiveMessageFromGuildMaster",
+        "SetTimer",
+        "IsRegionLoaded",
+        "DeregisterTimer",
+        "GetActiveQuestName",
+        "SetQuestAsCompleted",
+        "GetActiveQuestName",
+        "DeactivateQuestLater",
+        "FadeScreenIn",
+        "DeregisterTimer",
+        "NewScriptFrame"
+      ],
+      "literalByteComparisons": 0
+    },
+    "OnPersist": {
+      "lines": 0,
+      "todo": [],
+      "calls": []
+    }
+  },
+  "entities": [
+    "ScytheMarker",
+    "ScytheNearOracle"
+  ],
+  "threads": [],
+  "helpers": [],
+  "entityBodies": {}
+}

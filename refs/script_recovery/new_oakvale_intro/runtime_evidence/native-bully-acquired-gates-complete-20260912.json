@@ -1,0 +1,125 @@
+{
+  "scope": "Execute Bully successful-acquisition gates through input selection before movie construction.\n\nNative branches and termination helpers execute. Acquisition, resource/map,\nmovie and macro APIs are doubles. Stops at macro entry, before playback.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "stop_at": 0,
+      "attacked": false,
+      "queries": 4,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "ready_for_movie"
+      ]
+    },
+    {
+      "stop_at": 1,
+      "attacked": false,
+      "queries": 1,
+      "events": [
+        "acquire_bully",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 2,
+      "attacked": false,
+      "queries": 2,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "release_hero",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 3,
+      "attacked": false,
+      "queries": 3,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "release_victim",
+        "release_hero",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 4,
+      "attacked": false,
+      "queries": 4,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "release_victim",
+        "release_hero",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 0,
+      "attacked": true,
+      "queries": 4,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "ready_for_movie"
+      ]
+    },
+    {
+      "stop_at": 1,
+      "attacked": true,
+      "queries": 1,
+      "events": [
+        "acquire_bully",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 2,
+      "attacked": true,
+      "queries": 2,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "release_hero",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 3,
+      "attacked": true,
+      "queries": 3,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "release_victim",
+        "release_hero",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 4,
+      "attacked": true,
+      "queries": 4,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "release_victim",
+        "release_hero",
+        "release_bully"
+      ]
+    }
+  ],
+  "bytes": {
+    "0xdbc8a7": "8b4d048b116a048d4424145057ff522084c07530eb038d49008b4d048b11ff521c8bcde86192170084c00f850b0400008b4d048b016a048d5424145257ff502084c074d58bcde83e92170084c00f85e80300008d4c243ce89da9a2ff8d4c243ce8ad5af1ff84c074098d4c243ce8575ef1ff8b4d048b316a048d44244050ff96180100008b4d0450ff562084c075348b4d048b11ff521c8bcde8eb91170084c00f85e60200008b4d048b316a048d44244050ff96180100008b4d0450ff562084c074cc8bcde8bf91170084c00f85ba0200008d4c2474e81ea9a2ff8d4c2474e82e5af1ff84c074098d4c2474e8d85df1ff8b4d048b116a048d442478508d44243450ff522084c0752f8b4d048b11ff521c8bcde87191170084c00f85630200008b4d048b016a048d542478528d54243452ff502084c074d18bcde84a91170084c00f853c0200008d4c2464e879f5f1ff6aff68745125018d4c2428e8e921beff8d44243c508d4c2424518d4c246ce81473f1ff8bc8e8eff2aeff8d4c2420e8b620beff6aff68e8992d018d4c2428e8b621beff8d542474528d442424508d4c246ce8e172f1ff8bc8e8bcf2aeff8d4c2420e88320beff6aff68fc7826018d4c2428e88321beff8d4c2410518d542424528d4c246ce8ae72f1ff8bc8e889f2aeff8d4c2420e85020beff8d4c2458e837f8beff8b45148a486f84c98bcd7429e88690170084c00f85660100006aff68dc992d018d4c2428e82e21beff68b4992d018d4c242451eb27e85d90170084c00f853d0100006aff68dc992d018d4c2428e80521beff6898992d018d542424528d4c2460e802fcbeff8bc8e8db24beff8d4c2420e8d21fbeff8d8c24f0000000e846b092ff",
+    "0xdbcc18": "8d4c2458e8eff6beff8d4c2464e886f3f1ff8d4c2474e89da8a2ff8d4c243ce894a8a2ffe9a1000000",
+    "0xdbcce2": "8d4c242ce855db6eff8d4c2410e8dca7a2ff"
+  }
+}

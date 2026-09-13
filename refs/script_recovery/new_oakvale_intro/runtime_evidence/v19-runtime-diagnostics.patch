@@ -1,0 +1,103 @@
+--- session-start/FableAPI.cpp
++++ v19/FableAPI.cpp
+@@ -773,6 +773,7 @@
+            << " listen=" << (makeTargetListen ? 1 : 0)
+            << " soundIn2D=" << (soundIn2D ? 1 : 0)
+            << " overFade=" << (overScreenFade ? 1 : 0)
++           << " tick=" << GetTickCount()
+            << " key=" << (dialogueKey ? dialogueKey : "<null>");
+         LogToFile(ss.str());
+     }
+@@ -798,7 +799,8 @@
+         if (pPos) ss << pPos->x << ',' << pPos->y << ',' << pPos->z;
+         else ss << "<null>";
+         ss << ") radius=" << radius << " moveType=" << static_cast<int>(moveType)
+-           << " b1=" << (b1 ? 1 : 0) << " b2=" << (b2 ? 1 : 0);
++           << " b1=" << (b1 ? 1 : 0) << " b2=" << (b2 ? 1 : 0)
++           << " tick=" << GetTickCount();
+         LogToFile(ss.str());
+     }
+     DiagScriptedThingMoveToPosition_Original(pThis, pPos, radius, moveType, b1, b2);
+@@ -818,7 +820,8 @@
+            << " target=0x" << reinterpret_cast<uintptr_t>(pTarget)
+            << std::dec << " radius=" << radius << " moveType=" << static_cast<int>(moveType)
+            << " b1=" << (b1 ? 1 : 0) << " b2=" << (b2 ? 1 : 0)
+-           << " b3=" << (b3 ? 1 : 0) << " b4=" << (b4 ? 1 : 0);
++           << " b3=" << (b3 ? 1 : 0) << " b4=" << (b4 ? 1 : 0)
++           << " tick=" << GetTickCount();
+         LogToFile(ss.str());
+     }
+     DiagScriptedThingMoveToThing_Original(pThis, pTarget, radius, moveType, b1, b2, b3, b4);
+@@ -834,7 +837,7 @@
+         ss << "[CutsceneMoveDiag] poll macro="
+            << (g_cutsceneSkipDiagMacro ? g_cutsceneSkipDiagMacro : "<none>")
+            << " controller=0x" << std::hex << reinterpret_cast<uintptr_t>(pThis)
+-           << std::dec << " active=" << (result ? 1 : 0);
++           << std::dec << " active=" << (result ? 1 : 0) << " tick=" << GetTickCount();
+         LogToFile(ss.str());
+     }
+     return result;
+--- session-start/LuaEntityAPI.cpp
++++ v19/LuaEntityAPI.cpp
+@@ -2805,7 +2805,11 @@
+                 << "\n    Method: " << std::dec << selectionMethod
+                 << "\n    Listen: " << (makeTargetListen ? "true" : "false")
+                 << "\n    2D Sound: " << (soundIn2D ? "true" : "false")
+-                << "\n    Over Fade: " << (overScreenFade ? "true" : "false");
++                << "\n    Over Fade: " << (overScreenFade ? "true" : "false")
++                << "\n    [EntitySpeechDiag] tick=" << GetTickCount()
++                << " speakerData=0x" << std::hex << reinterpret_cast<uintptr_t>(pMe->pImp.Data)
++                << " controller=0x" << reinterpret_cast<uintptr_t>(pExpert)
++                << std::dec << " soundIn2D=" << soundIn2D << " key=" << dialogueKey;
+             LogToFile(ss_log.str());
+ 
+ 
+--- session-start/LuaQuestState.cpp
++++ v19/LuaQuestState.cpp
+@@ -1833,6 +1833,17 @@
+                << " thingData=0x" << reinterpret_cast<uintptr_t>(actorThing->pImp.Data)
+                << " resourceData=0x" << reinterpret_cast<uintptr_t>(aa.handle.pImp.Data)
+                << " resourceInfo=0x" << reinterpret_cast<uintptr_t>(aa.handle.pImp.Info);
++            if (aa.handle.pImp.Data) {
++                const auto slots = *reinterpret_cast<const uintptr_t* const*>(aa.handle.pImp.Data);
++                if (slots) {
++                    ss << " vtable=0x" << reinterpret_cast<uintptr_t>(slots)
++                       << " movePosition=0x" << slots[0x10 / 4]
++                       << " moveThing=0x" << slots[0x14 / 4]
++                       << " speak=0x" << slots[0x34 / 4]
++                       << " taskPoll=0x" << slots[0x68 / 4];
++                }
++            }
++            ss << std::dec << " tick=" << GetTickCount();
+             Log(ss.str());
+         }
+         Log("    [RunCutsceneWithSetup] Actor '" + actorName + "' assigned to map.");
+@@ -3693,6 +3704,14 @@
+     // 4. Call AddNewConversation
+     Log("    Calling AddNewConversation...");
+     int convoID = AddNewConversation_API(m_pGameInterface, pSpeaker, bSoundIn2D, bPlayDuringCutscene);
++    {
++        std::ostringstream ss;
++        ss << "[ConversationSpeechDiag] create tick=" << GetTickCount() << " id=" << convoID
++           << " speakerData=0x" << std::hex << reinterpret_cast<uintptr_t>(pSpeaker->pImp.Data)
++           << " listenerData=0x" << reinterpret_cast<uintptr_t>(pListener->pImp.Data)
++           << std::dec << " soundIn2D=" << bSoundIn2D << " duringCutscene=" << bPlayDuringCutscene;
++        Log(ss.str());
++    }
+ 
+     if (convoID == -1) { // Assuming -1 is the error/invalid ID
+         Log("!!! ERROR: AddNewConversation_API failed, returned -1!");
+@@ -3753,7 +3772,12 @@
+     // 5. Call AddLineToConversation
+     AddLineToConversation_API(m_pGameInterface, conversationID, fsKey, bShowSubtitle, pSpeaker, pListener);
+ 
+-    // Log("    Line '" + textKey + "' added to conversation " + std::to_string(conversationID)); // Too spammy
++    std::ostringstream ss;
++    ss << "[ConversationSpeechDiag] queue tick=" << GetTickCount() << " id=" << conversationID
++       << " speakerData=0x" << std::hex << reinterpret_cast<uintptr_t>(pSpeaker->pImp.Data)
++       << " listenerData=0x" << reinterpret_cast<uintptr_t>(pListener->pImp.Data)
++       << std::dec << " subtitle=" << bShowSubtitle << " key=" << textKey;
++    Log(ss.str());
+ }
+ 
+ bool LuaQuestState::IsConversationActive(int conversationID)

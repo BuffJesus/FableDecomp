@@ -1,0 +1,421 @@
+{
+  "scope": "Read Guardian Sister's installed macro, text and Bowerstone placements.",
+  "macro_name": "CS_GUARDIANSISTER_BOWERSTONE",
+  "macro_payload_sha256": "ed98ef8b37c52b0a128c6a409330d10dbb445b5920dc0cece5acdacc21217e3e",
+  "macro": {
+    "Macro": [
+      "NoDialogCam TRUE",
+      "RegisterActor MazeAtTavern",
+      "FadeOut",
+      "GamePause 0.5",
+      "RemoveExtras TRUE",
+      "CameraPause FALSE",
+      "AnimationPause FALSE",
+      "HERO.Teleport MK_GSI_HERO",
+      "ME.Teleport MK_GSI_MAZE",
+      "ME.LookAtNothing TRUE",
+      "HERO.LookAtNothing TRUE",
+      "ME.EntitySetMaxWalkingSpeed 0.14",
+      "HERO.EntitySetMaxWalkingSpeed 0.14",
+      "Create CREATURE_BS_VILLAGER_MALE,MK_GSI_FAN1A,FAN1",
+      "Create CREATURE_BS_VILLAGER_MALE,MK_GSI_FAN2A,FAN2",
+      "GamePause 0.1",
+      "DoCameraPreloading",
+      "GamePause 0.1",
+      "UseCamera CAM_GSI_SHOT1",
+      "FAN1.WalkTo MK_GSI_FAN1B,0,FALSE,FALSE,FALSE,TRUE",
+      "FAN2.WalkTo MK_GSI_FAN2B,0,FALSE,FALSE,FALSE,TRUE",
+      "FadeIn",
+      "ME.DialogadSpeak ME,'TEXT_CS_027_BOWERSTONE_20'",
+      "ME.DialogadSpeak ME,'TEXT_CS_027_BOWERSTONE_30'",
+      "FAN1.WalkTo MK_GSI_FAN1B,0,TRUE,TRUE,FALSE,TRUE",
+      "FAN1.LookInDirection 250,FALSE",
+      "FAN2.WalkTo MK_GSI_FAN2B,0,TRUE,TRUE,FALSE,TRUE",
+      "FAN2.LookInDirection 300,FALSE",
+      "GamePause 0.5",
+      "FAN1.PlayLoopingAnim SCRIPT_CHEER_1,3,FALSE,FALSE,TRUE,FALSE",
+      "FAN1.PlayAnimation SCRIPT_CHEER_2,FALSE,FALSE,TRUE,FALSE",
+      "FAN1.PlayLoopingAnim SCRIPT_CHEER_1,2,FALSE,FALSE,TRUE,FALSE",
+      "GamePause 1.2",
+      "FAN2.PlayLoopingAnim SCRIPT_CHEER_3,5",
+      "ME.WaitTask FOO",
+      "UseCamera CAM_GSI_HERO",
+      "ME.DialogadSpeak ME,'TEXT_CS_027_BOWERSTONE_40'",
+      "GamePause 1.5",
+      "HERO.PlayAnimation CS_PRISON_HERO_LOOKAROUND,FALSE,TRUE,FALSE,FALSE",
+      "ME.WaitTask FOO",
+      "UseCamera CAM_GSI_SHOT4,-1,NULL,0,0",
+      "FAN2.Teleport MK_GSI_FAN2C",
+      "ME.Speak ME,'TEXT_CS_027_BOWERSTONE_50'",
+      "ME.ClearCommands FALSE",
+      "ME.WalkTo MK_GSI_MAZE2,0,FALSE,FALSE,FALSE,TRUE",
+      "ME.DialogSpeak HERO,'TEXT_CS_027_BOWERSTONE_60'",
+      "ME.DialogSpeak HERO,'TEXT_CS_027_BOWERSTONE_65'",
+      "GamePause 0.6",
+      "UseCamera CAM_GSI_SHOT4",
+      "FAN1.LookInDirection 210",
+      "GamePause 0.8",
+      "HERO.WalkTo MK_GSI_HERO2,0,FALSE,FALSE,FALSE,TRUE",
+      "GamePause 4.0",
+      "UseCamera CAM_GSI_SHOT5,-1,NULL,0,0",
+      "FAN1.PlayAnimation STANDARD_HEAD_SCRATCH",
+      "GamePause 0.5",
+      "FAN2.WalkTo MK_GSI_FAN2A,0,FALSE,FALSE,FALSE,TRUE",
+      "HERO.WalkTo MK_GSI_HERO2,0,TRUE,TRUE,FALSE,TRUE",
+      "HERO.LookInDirection 250,FALSE",
+      "ME.WalkTo MK_GSI_MAZE2,0,TRUE,TRUE,FALSE,TRUE",
+      "ME.LookInDirection 70,FALSE",
+      "GamePause 0.8",
+      "UseCamera CAM_GSI_SHOT5",
+      "WaitActiveDialog",
+      "ME.DialogadSpeak ME,'TEXT_CS_027_BOWERSTONE_70'",
+      "FAN1.WaitTask FOO",
+      "FAN1.WalkTo MK_GSI_FAN2A,0,FALSE,FALSE,FALSE,TRUE",
+      "ME.WaitTask FOO",
+      "UseCamera CAM_GSI_MAZE2",
+      "FAN1.Teleport MK_GSI_FAN1END",
+      "FAN2.Teleport MK_GSI_FAN2END",
+      "ME.Speak ME,'TEXT_CS_027_BOWERSTONE_80'",
+      "UseCamera CAM_GSI_HERO2",
+      "ME.DialogadSpeak ME,'TEXT_CS_027_BOWERSTONE_90'",
+      "GamePause 1.0",
+      "HERO.PlayAnimation CS_HERO_LISTEN4",
+      "GamePause 1.0",
+      "ME.DialogadSpeak ME,'TEXT_CS_027_BOWERSTONE_100'",
+      "GamePause 1.5",
+      "UseCamera CAM_GSI_MAZE2",
+      "ME.WaitTask FOO",
+      "ME.DialogadSpeak ME,'TEXT_CS_027_BOWERSTONE_130'",
+      "GamePause 2.5",
+      "UseCamera CAM_GSI_HERO2",
+      "GamePause 2.5",
+      "HERO.Teleport MK_GSI_HERO2B",
+      "UseCamera CAM_GSI_END",
+      "HERO.PlayAnimation CS_HERO_SIGHS,FALSE,TRUE,FALSE,FALSE",
+      "ME.WaitTask FOO",
+      "CreateEffect MAZE_TELEPORT_OUT_01,ME",
+      "GamePause 0.5",
+      "ME.FadeOut 1.0",
+      "GamePause 0.5",
+      "FadeOut",
+      "GamePause 0.5",
+      "ME.Drawable FALSE",
+      "NoDialogCam FALSE",
+      "RemoveExtras FALSE",
+      "ME.EntitySetMaxWalkingSpeed 0",
+      "HERO.EntitySetMaxWalkingSpeed 0",
+      "FadeIn"
+    ],
+    "SkipCond": [
+      "FadeOut",
+      "GamePause 0.5",
+      "ME.Drawable FALSE",
+      "NoDialogCam FALSE",
+      "RemoveExtras FALSE",
+      "HERO.Teleport MK_GSI_HERO2B",
+      "ME.EntitySetMaxWalkingSpeed 0",
+      "HERO.EntitySetMaxWalkingSpeed 0",
+      "FadeIn"
+    ]
+  },
+  "requested_text_keys": [
+    "TEXT_CS_027_BOWERSTONE_100",
+    "TEXT_CS_027_BOWERSTONE_130",
+    "TEXT_CS_027_BOWERSTONE_20",
+    "TEXT_CS_027_BOWERSTONE_30",
+    "TEXT_CS_027_BOWERSTONE_40",
+    "TEXT_CS_027_BOWERSTONE_50",
+    "TEXT_CS_027_BOWERSTONE_60",
+    "TEXT_CS_027_BOWERSTONE_65",
+    "TEXT_CS_027_BOWERSTONE_70",
+    "TEXT_CS_027_BOWERSTONE_80",
+    "TEXT_CS_027_BOWERSTONE_90",
+    "TEXT_QST_027_MAZE_CALL_HERO_OVER_10",
+    "TEXT_QST_027_MAZE_ON_HIT_10",
+    "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01"
+  ],
+  "texts": {
+    "TEXT_CS_027_BOWERSTONE_100": {
+      "content": "I'm afraid it's only a rumour, and there's no way to be certain yet. But I thought you should know.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_100",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3513,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_100",
+      "payload_sha256": "6c7482e2c22a2bdb11ff704d48fd0a7eca479fda54b9e030435454536992410c"
+    },
+    "TEXT_CS_027_BOWERSTONE_130": {
+      "content": "And for pity's sake, boy, make sure you replace that basic equipment while you're here.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_130",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3525,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_130",
+      "payload_sha256": "4fbcbbfcb42d261f38a20cb1433c559ca499daafefbc898d6884f7f8420da6e2"
+    },
+    "TEXT_CS_027_BOWERSTONE_20": {
+      "content": "Been enjoying all the attention, have you?",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_20",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3315,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_20",
+      "payload_sha256": "592cbb2c01edfbd98a0a310c40bd74e6412d60bab87b23c54c7e753fe422b59c"
+    },
+    "TEXT_CS_027_BOWERSTONE_30": {
+      "content": "Yes, I heard about your encounter with the Wasp Queen.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_30",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3326,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_30",
+      "payload_sha256": "878d93fc316519cc711658b8827cb9b5b9624abec639a6cd7d6a4d687f588337"
+    },
+    "TEXT_CS_027_BOWERSTONE_40": {
+      "content": "Most of Bowerstone is talking about it. But you shouldn't let that kind of thing go to your head.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_40",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3329,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_40",
+      "payload_sha256": "626ae1b4a97af1cd56377247a884c189ccc737cd9547de6fd1bd92c4f20f1187"
+    },
+    "TEXT_CS_027_BOWERSTONE_50": {
+      "content": "Anyway, that's not why I called you here. You see, there are dark forces gathering that put your giant insect to shame.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_50",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3328,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_50",
+      "payload_sha256": "6f1240f1be04869735c6b10d49efc299d753f1064c2b932036011b6c7ebd4530"
+    },
+    "TEXT_CS_027_BOWERSTONE_60": {
+      "content": "Tell me, how much do you remember of the night I took you to the Guild? Of the raid on Oakvale?",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_60",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3339,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_60",
+      "payload_sha256": "36c4d20936f35f8624d9cff56b4b59e709c950001c00123e62074863dda76e32"
+    },
+    "TEXT_CS_027_BOWERSTONE_65": {
+      "content": "Not much, I wager. A most terrible night.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_65",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3380,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_65",
+      "payload_sha256": "ddcd21a114d068ba3d2e9351d6f58d148c51714f5be216a79882869650131ee5"
+    },
+    "TEXT_CS_027_BOWERSTONE_70": {
+      "content": "I'd thought those bandits had killed your whole family. And that you were going to be next.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_70",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3343,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_70",
+      "payload_sha256": "544cb3bf077bc6c6e0929916b602cd00d5aefc66843cfbaf804e5acfd1862825"
+    },
+    "TEXT_CS_027_BOWERSTONE_80": {
+      "content": "But it seems there may have been another survivor.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_80",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3346,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_80",
+      "payload_sha256": "2e10790ab9696fd62b6477c6369ab961971d8449ce50dd59311da864f8ff5fde"
+    },
+    "TEXT_CS_027_BOWERSTONE_90": {
+      "content": "Your sister.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_CS_027_BOWERSTONE_90",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3363,
+      "type": 0,
+      "name": "TEXT_CS_027_BOWERSTONE_90",
+      "payload_sha256": "1655026c99c9682c35a715f0d1af302811b7827f8f4fc456db3962b4cd4ecee2"
+    },
+    "TEXT_QST_027_MAZE_CALL_HERO_OVER_10": {
+      "content": "Over here!",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_027_MAZE_CALL_HERO_OVER_10",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 10039,
+      "type": 0,
+      "name": "TEXT_QST_027_MAZE_CALL_HERO_OVER_10",
+      "payload_sha256": "9fa30c216d7bfad8afcb7e5306e4990125ec15b207c3f38ccbc559a08cb91d25"
+    },
+    "TEXT_QST_027_MAZE_ON_HIT_10": {
+      "content": "Don't anger me, boy!",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_027_MAZE_ON_HIT_10",
+      "tags": [
+        [
+          0,
+          "CONVERSATION_ATTITUDE_ANGER"
+        ]
+      ],
+      "speaker_index": 16,
+      "id": 4382,
+      "type": 0,
+      "name": "TEXT_QST_027_MAZE_ON_HIT_10",
+      "payload_sha256": "ab1a06c70c884e7314944c28a17da83004c6a766a2892b782d3ed60da67664f4"
+    },
+    "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01": {
+      "content": "Meet Maze at Bowerstone Tavern.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "UNSPOKEN",
+      "identifier": "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+      "tags": [],
+      "speaker_index": 79,
+      "id": 19795,
+      "type": 0,
+      "name": "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01",
+      "payload_sha256": "be35a504a507aba176f2c6ff3b57ae73111a9723e5f98798172dc8d59985f0ac"
+    }
+  },
+  "placements": [
+    {
+      "name": "CAM_GSI_SHOT5",
+      "record": "NewThing Thing;\nPlayer 4;\nUID 18446741874686342174;\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\nScriptName CAM_GSI_SHOT5;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 170.451416;\nPositionY 90.289551;\nPositionZ 24.5;\nRHSetForwardX 0.0;\nRHSetForwardY 0.999994;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCDCameraPoint;\nEndCTCDCameraPoint;\nStartCTCCameraPointScriptedSpline;\nCutInto FALSE;\nCutOutOf FALSE;\nTestAngleBeforeActivation FALSE;\nSelfTerminate FALSE;\nHeroIsSubject FALSE;\nFOV 0.2;\nIsCoordBaseRelativeToParent TRUE;\nCoordBase C3DCoordF(-3274.451416,-4090.289551,-24.5);\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\nUsingRelativeCoords FALSE;\nUsingRelativeOrientation FALSE;\nTimeToPlay 1.35;\nTension 0.8;\nNumKeyCameras 2;\nKeyCameras[0].Position C3DCoordF(0.0,0.0,1.359385);\nKeyCameras[0].LookDirection C3DCoordF(0.431898,0.899198,-0.070044);\nKeyCameras[0].FOV 0.2;\nKeyCameras[0].ShuttleSpeed 1.0;\nKeyCameras[0].Duration 5.0;\nKeyCameras[0].PauseTime 0.0;\nKeyCameras[0].Event \"\";\nKeyCameras[0].AnimationSpeed 0.0;\nKeyCameras[0].RollAngle 0.0;\nKeyCameras[1].Position C3DCoordF(0.205078,0.423828,1.47648);\nKeyCameras[1].LookDirection C3DCoordF(0.431898,0.899198,-0.070046);\nKeyCameras[1].FOV 0.2;\nKeyCameras[1].ShuttleSpeed 1.0;\nKeyCameras[1].Duration 2.0;\nKeyCameras[1].PauseTime 0.0;\nKeyCameras[1].Event \"\";\nKeyCameras[1].AnimationSpeed 0.0;\nKeyCameras[1].RollAngle 0.0;\nEndCTCCameraPointScriptedSpline;\nEndThing;"
+    },
+    {
+      "name": "CAM_GSI_HERO2",
+      "record": "NewThing Thing;\nPlayer 4;\nUID 18446741874686341917;\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\nScriptName CAM_GSI_HERO2;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 172.20166;\nPositionY 93.370117;\nPositionZ 26.075747;\nRHSetForwardX 0.0;\nRHSetForwardY 0.999994;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCDCameraPoint;\nEndCTCDCameraPoint;\nStartCTCCameraPointScripted;\nCutInto FALSE;\nCutOutOf FALSE;\nTestAngleBeforeActivation FALSE;\nSelfTerminate TRUE;\nHeroIsSubject TRUE;\nFOV 72.0;\nIsCoordBaseRelativeToParent TRUE;\nCoordBase C3DCoordF(-3276.20166,-4093.369873,-26.075747);\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\nUsingRelativeCoords FALSE;\nUsingRelativeOrientation FALSE;\nLookDirection.X 0.78274;\nLookDirection.Y 0.620381;\nLookDirection.Z 0.049455;\nLookDirectionEnd.X 0.78274;\nLookDirectionEnd.Y 0.620381;\nLookDirectionEnd.Z 0.049455;\nStartPos.X 0.0;\nStartPos.Y 0.0;\nStartPos.Z 0.0;\nEndPos.X 0.0;\nEndPos.Y 0.0;\nEndPos.Z 0.0;\nTransitionTime 0.0;\nEndCTCCameraPointScripted;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_HERO2",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686341899;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_HERO2;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 172.77124;\nPositionY 93.753418;\nPositionZ 24.430651;\nRHSetForwardX -0.939687;\nRHSetForwardY -0.342018;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "CAM_GSI_END",
+      "record": "NewThing Thing;\nPlayer 4;\nUID 18446741874686341389;\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\nScriptName CAM_GSI_END;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 177.338135;\nPositionY 89.958008;\nPositionZ 25.163536;\nRHSetForwardX 0.0;\nRHSetForwardY 0.999994;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCDCameraPoint;\nEndCTCDCameraPoint;\nStartCTCCameraPointScripted;\nCutInto FALSE;\nCutOutOf FALSE;\nTestAngleBeforeActivation FALSE;\nSelfTerminate TRUE;\nHeroIsSubject FALSE;\nFOV 72.0;\nIsCoordBaseRelativeToParent TRUE;\nCoordBase C3DCoordF(-3281.338135,-4089.958008,-25.163536);\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\nUsingRelativeCoords FALSE;\nUsingRelativeOrientation FALSE;\nLookDirection.X -0.794894;\nLookDirection.Y 0.606668;\nLookDirection.Z -0.009836;\nLookDirectionEnd.X -0.794894;\nLookDirectionEnd.Y 0.606668;\nLookDirectionEnd.Z -0.009836;\nStartPos.X 0.0;\nStartPos.Y 0.0;\nStartPos.Z 0.0;\nEndPos.X 0.0;\nEndPos.Y 0.0;\nEndPos.Z 0.0;\nTransitionTime 0.0;\nEndCTCCameraPointScripted;\nEndThing;"
+    },
+    {
+      "name": "CAM_GSI_MAZE2",
+      "record": "NewThing Thing;\nPlayer 4;\nUID 18446741874686341307;\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\nScriptName CAM_GSI_MAZE2;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 172.400391;\nPositionY 93.364258;\nPositionZ 26.266474;\nRHSetForwardX 0.0;\nRHSetForwardY 0.999994;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCDCameraPoint;\nEndCTCDCameraPoint;\nStartCTCCameraPointScripted;\nCutInto FALSE;\nCutOutOf FALSE;\nTestAngleBeforeActivation FALSE;\nSelfTerminate TRUE;\nHeroIsSubject FALSE;\nFOV 72.0;\nIsCoordBaseRelativeToParent TRUE;\nCoordBase C3DCoordF(-3276.400391,-4093.364014,-26.266474);\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\nUsingRelativeCoords FALSE;\nUsingRelativeOrientation FALSE;\nLookDirection.X -0.993497;\nLookDirection.Y -0.111338;\nLookDirection.Z -0.023829;\nLookDirectionEnd.X -0.993497;\nLookDirectionEnd.Y -0.111338;\nLookDirectionEnd.Z -0.023829;\nStartPos.X 0.0;\nStartPos.Y 0.0;\nStartPos.Z 0.0;\nEndPos.X 0.0;\nEndPos.Y 0.0;\nEndPos.Z 0.0;\nTransitionTime 0.0;\nEndCTCCameraPointScripted;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_HERO2B",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686340825;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_HERO2B;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 173.911377;\nPositionY 93.787109;\nPositionZ 24.386551;\nRHSetForwardX -0.866007;\nRHSetForwardY -0.499986;\nRHSetForwardZ 0.0;\nRHSetUpX 0.000173;\nRHSetUpY -0.000299;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_MAZE2",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686340823;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_MAZE2;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 171.23584;\nPositionY 93.329102;\nPositionZ 24.476786;\nRHSetForwardX -0.707091;\nRHSetForwardY -0.70709;\nRHSetForwardZ 0.0;\nRHSetUpX 0.000244;\nRHSetUpY -0.000244;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_FAN2C",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686340782;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_FAN2C;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 181.845947;\nPositionY 102.35498;\nPositionZ 23.09832;\nRHSetForwardX -0.573573;\nRHSetForwardY -0.819147;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "CAM_GSI_SHOT4",
+      "record": "NewThing Thing;\nPlayer 4;\nUID 18446741874686340748;\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\nScriptName CAM_GSI_SHOT4;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 180.709717;\nPositionY 102.653809;\nPositionZ 23.349863;\nRHSetForwardX 0.0;\nRHSetForwardY 0.999994;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCDCameraPoint;\nEndCTCDCameraPoint;\nStartCTCCameraPointScriptedSpline;\nCutInto FALSE;\nCutOutOf FALSE;\nTestAngleBeforeActivation FALSE;\nSelfTerminate FALSE;\nHeroIsSubject TRUE;\nFOV 0.2;\nIsCoordBaseRelativeToParent TRUE;\nCoordBase C3DCoordF(-3284.709717,-4102.653809,-23.349863);\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\nUsingRelativeCoords FALSE;\nUsingRelativeOrientation FALSE;\nTimeToPlay 300.0;\nTension 0.8;\nNumKeyCameras 2;\nKeyCameras[0].Position C3DCoordF(0.0,0.0,1.634476);\nKeyCameras[0].LookDirection C3DCoordF(-0.730834,0.677847,0.080034);\nKeyCameras[0].FOV 0.2;\nKeyCameras[0].ShuttleSpeed 1.0;\nKeyCameras[0].Duration 3.0;\nKeyCameras[0].PauseTime 0.0;\nKeyCameras[0].Event \"\";\nKeyCameras[0].AnimationSpeed 0.0;\nKeyCameras[0].RollAngle 0.0;\nKeyCameras[1].Position C3DCoordF(0.0,0.0,1.634476);\nKeyCameras[1].LookDirection C3DCoordF(-0.737875,-0.672926,0.052059);\nKeyCameras[1].FOV 0.2;\nKeyCameras[1].ShuttleSpeed 1.0;\nKeyCameras[1].Duration 2.0;\nKeyCameras[1].PauseTime 0.0;\nKeyCameras[1].Event \"\";\nKeyCameras[1].AnimationSpeed 0.0;\nKeyCameras[1].RollAngle 0.0;\nEndCTCCameraPointScriptedSpline;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_FAN1A",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686340584;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_FAN1A;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 187.943848;\nPositionY 104.189453;\nPositionZ 21.716057;\nRHSetForwardX -0.996189;\nRHSetForwardY 0.087158;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_FAN2A",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686340573;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_FAN2A;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 189.542969;\nPositionY 97.852539;\nPositionZ 21.518223;\nRHSetForwardX -0.86602;\nRHSetForwardY 0.499998;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_FAN2B",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686340540;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_FAN2B;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 181.178467;\nPositionY 102.794922;\nPositionZ 23.262665;\nRHSetForwardX -0.86602;\nRHSetForwardY 0.499998;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_FAN1B",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686340511;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_FAN1B;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 181.318115;\nPositionY 104.679688;\nPositionZ 23.353804;\nRHSetForwardX -0.939687;\nRHSetForwardY -0.342018;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "CAM_GSI_HERO",
+      "record": "NewThing Thing;\nPlayer 4;\nUID 18446741874686340485;\nDefinitionType \"CAMERA_POINT_SCRIPTED\";\nScriptName CAM_GSI_HERO;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 179.324463;\nPositionY 103.583496;\nPositionZ 25.346966;\nRHSetForwardX 0.0;\nRHSetForwardY 0.999994;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCDCameraPoint;\nEndCTCDCameraPoint;\nStartCTCCameraPointScripted;\nCutInto FALSE;\nCutOutOf FALSE;\nTestAngleBeforeActivation FALSE;\nSelfTerminate TRUE;\nHeroIsSubject TRUE;\nFOV 72.0;\nIsCoordBaseRelativeToParent TRUE;\nCoordBase C3DCoordF(-3283.324463,-4103.583496,-25.346966);\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\nUsingRelativeCoords FALSE;\nUsingRelativeOrientation FALSE;\nLookDirection.X 0.95579;\nLookDirection.Y 0.032714;\nLookDirection.Z -0.292226;\nLookDirectionEnd.X 0.95579;\nLookDirectionEnd.Y 0.032714;\nLookDirectionEnd.Z -0.292226;\nStartPos.X 0.0;\nStartPos.Y 0.0;\nStartPos.Z 0.0;\nEndPos.X 0.0;\nEndPos.Y 0.0;\nEndPos.Z 0.0;\nTransitionTime 0.0;\nEndCTCCameraPointScripted;\nEndThing;"
+    },
+    {
+      "name": "CAM_GSI_SHOT1",
+      "record": "NewThing Thing;\nPlayer 4;\nUID 18446741874686340236;\nDefinitionType \"CAMERA_POINT_SCRIPTED_SPLINE\";\nScriptName CAM_GSI_SHOT1;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 174.153564;\nPositionY 98.976563;\nPositionZ 24.923901;\nRHSetForwardX 0.0;\nRHSetForwardY 0.999994;\nRHSetForwardZ 0.0;\nRHSetUpX 0.0;\nRHSetUpY 0.0;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCDCameraPoint;\nEndCTCDCameraPoint;\nStartCTCCameraPointScriptedSpline;\nCutInto FALSE;\nCutOutOf FALSE;\nTestAngleBeforeActivation FALSE;\nSelfTerminate FALSE;\nHeroIsSubject FALSE;\nFOV 0.2;\nIsCoordBaseRelativeToParent TRUE;\nCoordBase C3DCoordF(-3278.153564,-4098.976563,-24.923901);\nCoordAxisUp C3DCoordF(0.0,0.0,1.0);\nCoordAxisFwd C3DCoordF(1.0,0.0,0.0);\nUsingRelativeCoords FALSE;\nUsingRelativeOrientation FALSE;\nTimeToPlay 1.0;\nTension 0.8;\nNumKeyCameras 2;\nKeyCameras[0].Position C3DCoordF(0.0,0.0,0.0);\nKeyCameras[0].LookDirection C3DCoordF(0.683964,0.729366,0.014755);\nKeyCameras[0].FOV 0.2;\nKeyCameras[0].ShuttleSpeed 1.0;\nKeyCameras[0].Duration 6.0;\nKeyCameras[0].PauseTime 0.0;\nKeyCameras[0].Event \"\";\nKeyCameras[0].AnimationSpeed 0.0;\nKeyCameras[0].RollAngle 0.0;\nKeyCameras[1].Position C3DCoordF(0.683594,0.729004,0.174744);\nKeyCameras[1].LookDirection C3DCoordF(0.683964,0.729366,0.014755);\nKeyCameras[1].FOV 0.2;\nKeyCameras[1].ShuttleSpeed 1.0;\nKeyCameras[1].Duration 2.0;\nKeyCameras[1].PauseTime 0.0;\nKeyCameras[1].Event \"\";\nKeyCameras[1].AnimationSpeed 0.0;\nKeyCameras[1].RollAngle 0.0;\nEndCTCCameraPointScriptedSpline;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_MAZE",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686321422;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_MAZE;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 178.184814;\nPositionY 103.951172;\nPositionZ 23.772203;\nRHSetForwardX 0.996172;\nRHSetForwardY -0.087154;\nRHSetForwardZ 0.0;\nRHSetUpX 0.00003;\nRHSetUpY 0.000344;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "MK_GSI_HERO",
+      "record": "NewThing Marker;\nPlayer 4;\nUID 18446741874686321423;\nDefinitionType \"MARKER_BASIC\";\nScriptName MK_GSI_HERO;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 180.213867;\nPositionY 103.537109;\nPositionZ 23.552118;\nRHSetForwardX -0.996189;\nRHSetForwardY 0.087157;\nRHSetForwardZ 0.0;\nRHSetUpX -0.00003;\nRHSetUpY -0.000344;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "M_MazeExit",
+      "record": "NewThing Marker;\nPlayer -1;\nUID 18446741874686299596;\nDefinitionType \"MARKER_BASIC\";\nScriptName M_MazeExit;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsStandard;\nPositionX 203.953125;\nPositionY 66.931641;\nPositionZ 20.3881;\nRHSetForwardX 0.271418;\nRHSetForwardY -0.962456;\nRHSetForwardZ 0.0;\nRHSetUpX 0.000576;\nRHSetUpY 0.000162;\nRHSetUpZ 0.999994;\nEndCTCPhysicsStandard;\nStartCTCEditor;\nEndCTCEditor;\nHealth 1.0;\nEndThing;"
+    },
+    {
+      "name": "MazeAtTavern",
+      "record": "NewThing AICreature;\nPlayer 2;\nUID 18446741874686299915;\nDefinitionType \"CREATURE_RIVAL_HERO_MAZE\";\nScriptName MazeAtTavern;\nScriptData \"NULL\";\nThingGamePersistent FALSE;\nThingLevelPersistent FALSE;\nStartCTCPhysicsNavigator;\nPositionX 178.19165;\nPositionY 103.949707;\nPositionZ 23.771473;\nRHSetForwardX 0.996172;\nRHSetForwardY -0.087155;\nRHSetForwardZ 0.0;\nRHSetUpX 0.000095;\nRHSetUpY 0.001088;\nRHSetUpZ 0.999994;\nEndCTCPhysicsNavigator;\nStartCTCTargeted;\nTargetable TRUE;\nEndCTCTargeted;\nStartCTCTalk;\nEndCTCTalk;\nStartCTCEditor;\nEndCTCEditor;\nStartCTCHero;\nLastWeaponEquippedID 0;\nhero_title_object_def_name \"OBJECT_HERO_TITLE_MAZE\";\nEndCTCHero;\nStartCTCContainerRewardHero;\nEndCTCContainerRewardHero;\nStartCTCEnemy;\nFriendsWithEverythingFlag FALSE;\nEnableFollowersEnemyProxy TRUE;\nFactionName \"\";\nEndCTCEnemy;\nHealth 400.0;\nOverridingBrainName NULL;\nHasInformation FALSE;\nWanderWithInformation FALSE;\nWaveWithInformation FALSE;\nContinueAIWithInformation FALSE;\nEnableCreatureAutoPlacing FALSE;\nAllowedToFollowHero FALSE;\nRegionFollowingOverriddenFromScript FALSE;\nRespondingToFollowAndWait TRUE;\nCanBeCourted FALSE;\nCanBeMarried FALSE;\nInitialPosX 3282.19165;\nInitialPosY 4103.949707;\nInitialPosZ 23.869583;\nEndThing;"
+    }
+  ],
+  "region_definition": "NewRegion 3;\nRegionName \"BowerstoneSlums\";\nNewDisplayName \"TXT_REGION_BOWERSTONE_SLUMS\";\nRegionDef \"REGION_BOWERSTONE_SLUMS\";\nAppearOnWorldMap;\nMiniMapGraphic MINIMAP_BOWERSTONESLUMS;\nMiniMapScale 1.1;\nMiniMapOffsetX -1.0;\nMiniMapOffsetY -36.0;\nWorldMapOffsetX 1008.0;\nWorldMapOffsetY 839.0;\nNameGraphicOffsetX 49.0;\nNameGraphicOffsetY 32.0;\nMiniMapRegionExitTextOffsetX[BowerstoneTavernCellar] 0.0;\nMiniMapRegionExitTextOffsetY[BowerstoneTavernCellar] 18.0;\nContainsMap \"FinalAlbion\\BowerstoneSlums_v2.lev\";\nEndRegion;",
+  "missing_authored_placements": [
+    "MK_GSI_FAN1END",
+    "MK_GSI_FAN2END"
+  ],
+  "sources": [
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\data\\Levels\\FinalAlbion.wld",
+      "sha256": "fc13cc56b19cf249df965f0d46f71fce3239dd81d82a5c39d569f4726223a854"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\data\\Levels\\FinalAlbion\\BowerstoneSlums_v2.tng",
+      "sha256": "7486361f6d6d8176607f3c9e5d73d9d518b9f371ddac64f211b42721607b5f79"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\data\\CompiledDefs\\script.bin",
+      "sha256": "3d6d09939b612478f70c6aa1eb45a5be0e850b27d534f78d996a00466501c1d9"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\data\\CompiledDefs\\names.bin",
+      "sha256": "56d70f5d81231fc7a1a515a93fbc2f1f2ae8c3ff59e4c56dddfa91995fcd523a"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\data\\lang\\English\\text.big",
+      "sha256": "531c4514f5597e6426c8a2f1bd3ed39b3dd1dc9a8d38982e2303bb19f8ff33fc"
+    }
+  ],
+  "limits": [
+    "Placement inventory covers macro tokens and native root/entity anchors in BowerstoneSlums only.",
+    "Presence and decoding do not validate engine playback or audible speech."
+  ]
+}

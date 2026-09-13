@@ -1,0 +1,426 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5058,
+  "setupSize": 5052,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "09792c4447f69a7487f10e0108d165ca2388ab06832b3fa02c133df64c69eda6",
+  "bytesSha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+  "events": [
+    {
+      "operation": "start",
+      "resource": 96,
+      "setup": {
+        "address": 14355569,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            152
+          ],
+          [
+            "stack",
+            96
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 96,
+      "setup": {
+        "address": 14355901,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          96
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "start",
+      "resource": 72,
+      "setup": {
+        "address": 14356029,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            168
+          ],
+          [
+            "stack",
+            72
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 72,
+      "setup": {
+        "address": 14356627,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 72,
+      "setup": {
+        "address": 14358008,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 96,
+      "setup": {
+        "address": 14359708,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          96
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 96,
+      "setup": {
+        "address": 14359733,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          96
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 96,
+      "setup": {
+        "address": 14359759,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          96
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 96,
+      "setup": {
+        "address": 14359785,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          96
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 72,
+      "setup": {
+        "address": 14359811,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 72,
+      "setup": {
+        "address": 14359836,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 72,
+      "setup": {
+        "address": 14359861,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 72,
+      "setup": {
+        "address": 14359884,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "operation": "end",
+      "resource": 72,
+      "setup": {
+        "address": 14359907,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "destructors": [
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase\\s*\\(\\(CScriptGameResourceObjectMovieBase\\s*\\*\\)&ppuStack_fc\\);",
+      "count": 5
+    },
+    {
+      "pattern": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase\\s*\\(\\(CScriptGameResourceObjectMovieBase\\s*\\*\\)aCStack_114\\);",
+      "count": 7
+    }
+  ],
+  "constructor": "CCarriedReadableDef::CCarriedReadableDef(aCStack_114);",
+  "callees": [
+    {
+      "address": "0x6e7b60",
+      "size": 26,
+      "bytesSha256": "a57f349ecfe373e4e92be7445ba5c8a19d1f7b5c7cd54df6ef3f977deb846834"
+    },
+    {
+      "address": "0x6e7b80",
+      "size": 66,
+      "bytesSha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+    },
+    {
+      "address": "0x99a380",
+      "size": 16,
+      "bytesSha256": "b71859a29a8d92798dbd7f77a95673c020ea7c658af47907cd55424d3b3d0065"
+    },
+    {
+      "address": "0x89b110",
+      "size": 248,
+      "bytesSha256": "fa21dc33a6b138a069086288ef428e3c843d1164586b9bef423e6503928da06b"
+    }
+  ],
+  "review": "Two nonoverlapping movie lifetimes: startDB0C71 resource96 from inline ctor99A380/vtable1260EF4; startDB0E3D resource72 constructed6E7B60. Both class strings use empty122D70E. Twelve exact destructor6E7B80 sites match active resource on all CFG paths. Complete extent5058 includes ADDESP140/RET endingDB1DA2 (export size5052 cuts epilogue). Unrelated misnamed MovieBase destructor with stack0xfffffeb4 is not replaced."
+}

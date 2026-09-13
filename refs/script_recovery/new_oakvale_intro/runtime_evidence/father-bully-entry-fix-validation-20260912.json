@@ -1,0 +1,55 @@
+{
+  "status": "offline source fixes validated; not installed",
+  "inputs": [
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_LiveFather.lua",
+      "sha256": "c1138f7df265ac71e80ade0b08b96b7c8dd9cdf04467ee80912da78831a08361"
+    },
+    {
+      "path": "refs\\script_recovery\\reconstructed\\NewOakValeIntro\\FSE\\NewOakValeIntro\\Entities\\NOVI_Bully.lua",
+      "sha256": "9f3d4c7bff6d41cdacecd500638fe68c9b52ec736fd4dbe344a9c8ec7d2145cc"
+    },
+    {
+      "path": "tools\\script_recovery\\test_father_intro_acquisition.py",
+      "sha256": "220c9ae280b8547924f8862f9ca3f4f9f0f92e75c921c642ef7523e24df303c5"
+    },
+    {
+      "path": "tools\\script_recovery\\test_father_intro_cancellation.py",
+      "sha256": "9f87a9163d44c87dbe9e10e05c1098b4966fbdee37ad63eb90c348bff0c73e30"
+    },
+    {
+      "path": "tools\\script_recovery\\test_bully_acquired_gates.py",
+      "sha256": "8e4ba5f30575c63aad088006afae95e37d86af2503b7201bc9d8ffd29610fdeb"
+    },
+    {
+      "path": "tools\\script_recovery\\test_bully_completion_cancellation.py",
+      "sha256": "5bdae8199f6a9a6517d952ed31f97cbf8e803fddda8d337a7b10b77dafad0a21"
+    },
+    {
+      "path": "work\\runtime-father-bully-acquired-final-20260912\\result.json",
+      "sha256": "1e2f7a52a367696b2157c303ee9633f0e55b3867952af9e8c906f16d6681b35a"
+    },
+    {
+      "path": "work\\father-bully-acquired-package-final-20260912.json",
+      "sha256": "d661845d1c566a8ae112738678e6a5a23d7cdd0561d4cd9900107047a8c768dd"
+    }
+  ],
+  "runtime_proof_inputs_current": 120,
+  "installed_dlls": [
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FableScriptExtender.dll",
+      "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+    },
+    {
+      "path": "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\FableScriptExtender.dll",
+      "sha256": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+    }
+  ],
+  "native_cases": {
+    "father_entry": 6,
+    "father_post_macro": 8,
+    "bully_entry": 10,
+    "bully_completion": 6
+  },
+  "fixtures_passed": 123
+}

@@ -1,0 +1,14 @@
+{
+  "schema":"new-oakvale-attack-stuff-retail-bytes/0.1",
+  "source":"installed retail Fable.exe PE image",
+  "sourceSha256":"41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address":"0x00DBE3C0",
+  "rangeSize":285,
+  "functionBytesSha256":"E842CCECCF47BFB0BC2C829A199B0889340D6FD750ED429578FD489B732E80DC",
+  "strings":["Q__OakValeIntro_PostAttack","Q_NewOakValeIntro_PreAttack","ENVIRONMENT_OV_POSTATTACK","TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_06"],
+  "interfaceSlots":["0x450","0x460","0xA18","0xA40","0xA3C","0x4A0"],
+  "timeOfDayBits":"0x41B80000",
+  "timeOfDay":23.0,
+  "deactivateDelay":0,
+  "themeTransitionSeconds":0.0
+}

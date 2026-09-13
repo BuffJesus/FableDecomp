@@ -1,0 +1,34 @@
+{
+  "status": "offline built and tested; not installed",
+  "runtime_sha256": {
+    "FableScriptExtender/LuaRetailResources.h": "1ffa9ce6773157435987d26154c0e12e34b8984c0f0cb82ef5187e28d7b569a9",
+    "FableScriptExtender/LuaManager.cpp": "befc05b2ea2a16bf2fbd87a2d8150433f4fb676ade969c578027e9aa7a36384c",
+    "FableScriptExtender/LuaQuestState.cpp": "2227bbbbd51e0da1859ff01c842b8f15c18671a0a75a82a0dd63931385ba04a1",
+    "FableScriptExtender/LuaQuestState.h": "ee90993a7c24fd76b77607591175fa742eff9285249922adec2ce3245aa2547a",
+    "Release/FableScriptExtender.dll": "723dc275766f3afd9bb65500b936778cc4d2896f0c90bf6697e83783e5c0a20c"
+  },
+  "package_sha256": {
+    "refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\quests.lua": "36b5935c2e879e88ce37a39a2bdf8fc44dcd646eaa45ba8195c25d66c87cb966",
+    "refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\retail_override.lua": "cd1dda2e9c117dbb32f5d06c8e5874a221dec6f6b9eb20b691f7792ce8a3be26",
+    "refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\MeetSister.lua": "82d89027c2057e821f6ac72eae66d525eda6e748e55a00c3a01de4f1af17f765",
+    "refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\quest.lua": "70a3b57f2081675a0949b835e4a1cc7319cb5431e120f23e1b3f264e22e16df1",
+    "refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\runtime_adapter.lua": "27400d2591da31b954b7167536a7a4aebac8fe1e873b456f58aee80743b0ac1e",
+    "refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\Entities\\MeetSisterMessenger.lua": "df60639d4d689228d6f3c2995e33698042364693e9b8ce1a4546319a8fb5f34f",
+    "refs\\script_recovery\\reconstructed\\MeetSister\\FSE\\MeetSister\\Entities\\MeetSisterSister.lua": "c03c63333f7dab17ee82116228e98b825b3fc969b9a6eccfa6b3d2c1bb2c33ee"
+  },
+  "checks": {
+    "release_x86": true,
+    "native_resource_refcount_cases": 5,
+    "native_script_cases_through_adapter": 15,
+    "native_script_cases_through_package_entrypoints": 15,
+    "focused_unit_tests": 12,
+    "new_oakvale_fixtures": 122,
+    "control_abi_audit": true,
+    "cpp_sol_resource_smoke": true
+  },
+  "limits": [
+    "No game playback/scheduler validation",
+    "Shared API metadata pending converter-session coordination",
+    "New Oakvale live Escape/fade/audio issues unresolved"
+  ]
+}

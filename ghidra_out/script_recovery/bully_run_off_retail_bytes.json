@@ -1,0 +1,109 @@
+{
+  "schema": "bully-run-off-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "region": {
+    "address": "0x00DBC86B",
+    "endExclusive": "0x00DBCCF4",
+    "rangeSize": 1161,
+    "bytesSha256": "54BBC268F854CA0D3E1F101975E389FE44CD0842E48AB35297AF8A8FCA8F2E0E",
+    "instructionCount": 339
+  },
+  "subdued": {
+    "stateStoreSite": "0x00DBC87B",
+    "stateParentOffset": "0x6C",
+    "barRemovalSite": "0x00DBC88B",
+    "barRemovalSlot": "0x548"
+  },
+  "acquisition": {
+    "priority": 4,
+    "order": [
+      "BULLY",
+      "HERO",
+      "BRAT"
+    ],
+    "initialSites": [
+      "0x00DBC8B4",
+      "0x00DBC92F",
+      "0x00DBC9A9"
+    ],
+    "retrySites": [
+      "0x00DBC8E4",
+      "0x00DBC963",
+      "0x00DBC9D8"
+    ]
+  },
+  "actorMap": {
+    "HERO": "hero resource",
+    "BRAT": "victim resource",
+    "BULLY": "bully resource",
+    "keyPushSites": [
+      "0x00DBC9F9",
+      "0x00DBCA2C",
+      "0x00DBCA5F"
+    ]
+  },
+  "inputArgs": {
+    "key": "$BRATLINE",
+    "keyPushSites": [
+      "0x00DBCAB4",
+      "0x00DBCADd"
+    ],
+    "selector": "HeroAttackedVictim",
+    "selectorParentOffset": "0x6F",
+    "trueValue": "TEXT_QST_048_VICTIM_THANKS_AFTER_HIT",
+    "falseValue": "TEXT_QST_048_VICTIM_THANKS"
+  },
+  "cutscenes": [
+    {
+      "name": "CS_OAKVALEINTRO_BULLYRUN1",
+      "callSite": "0x00DBCB8A",
+      "actorMap": true,
+      "inputArgs": "$BRATLINE",
+      "pause": true,
+      "fixedCamera": true
+    },
+    {
+      "name": "CS_OAKVALEINTRO_BULLYRUN2",
+      "callSite": "0x00DBCBCD",
+      "condition": "not GivenHeroTeddy",
+      "actorMap": true,
+      "inputArgs": null
+    },
+    {
+      "name": "CS_OAKVALEINTRO_BULLYRUNDUMMY",
+      "callSite": "0x00DBCC61",
+      "condition": "GivenHeroTeddy",
+      "actorMap": true,
+      "inputArgs": null
+    }
+  ],
+  "teddyBranch": {
+    "stateLoadSite": "0x00DBCB9B",
+    "stateParentOffset": "0x6E",
+    "clearVictimInformationSite": "0x00DBCBE5",
+    "clearSlot": "0x5A4",
+    "stateStoreSite": "0x00DBCBEe"
+  },
+  "normalCleanup": [
+    "FixMovieSequenceCamera(false)",
+    "PauseAllNonScriptedEntities(false)",
+    "destroy movie resource",
+    "destroy input-argument map",
+    "destroy actor map",
+    "release BRAT",
+    "release HERO"
+  ],
+  "success": {
+    "bullyRanOffStoreSite": "0x00DBCCBB",
+    "bullyRanOffParentOffset": "0x6D",
+    "addGoodDeedSite": "0x00DBCCC2",
+    "removeThingSite": "0x00DBCCD1",
+    "removeThingArgs": [
+      "BULLY",
+      false,
+      true
+    ],
+    "releaseBullySite": "0x00DBCCEF"
+  }
+}

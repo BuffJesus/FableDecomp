@@ -1,0 +1,10 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "6c5f0e18aeee1e6416f5bb03849e77c4ee354fbc37f462fa070a37bc2d91982a",
+  "nativeSha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46",
+  "old": "uVar14 = rand();\r\n      uVar14 = uVar14 & 0x80000001;\r\n      bVar4 = uVar14 == 0;\r\n      if ((int)uVar14 < 0) {\r\n        bVar4 = (uVar14 - 1 | 0xfffffffe) == 0xffffffff;\r\n      }\r\n",
+  "new": "native_arg_wife_animation_remainder = GSI->RetailRandModulo(2);\n      bVar4 = native_arg_wife_animation_remainder == 0;\n",
+  "review": "DB3600 calls BFEB16. DB3605..3610 computes signed remainder modulo2. MOV ECX at3611 preserves flags; JNE3613 selects POINT_AT for nonzero, POINT_AWAY for zero. Both successors immediately call F35B30 (3615/365A), discarding raw EAX. Branch-local termination checks, animation calls and flags remain unchanged; this recovery only replaces the dead random temporary and selector.",
+  "animationOperands": "Unresolved full animation flags, including mutable DAT_01375748. No claim of animation-call parity."
+}

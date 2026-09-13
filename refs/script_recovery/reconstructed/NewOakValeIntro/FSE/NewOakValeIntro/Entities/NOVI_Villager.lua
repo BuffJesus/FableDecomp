@@ -111,10 +111,10 @@ end
 -- 0-based index (nil when the thread is terminated; retail returns 0 and its caller ignores it).
 local function get_villager_speech_index(quest, me, count)
   local last = F.get(quest, F.lastVillagerSpeechIdx)
-  local index = math.random(0, count - 1)
+  local index = quest:RetailRandModulo(count)
   while index == last do
     if not NOVI.frame(quest, me) then return nil end
-    index = math.random(0, count - 1)
+    index = quest:RetailRandModulo(count)
   end
   F.set(quest, F.lastVillagerSpeechIdx, index)
   return index
@@ -140,6 +140,7 @@ end
 -- Phase: the hero hit me.
 local function react_to_hit(quest, me)
   local hero = quest:GetHero()
+  -- Reciprocal order is instruction-proven at 0x00DAE109-0x00DAE12F.
   quest:EntitySetThingAsAllyOfThing(me, hero)
   quest:EntitySetThingAsAllyOfThing(hero, me)
   Deeds.add_bad(quest, me, BAD_DEED_VIOLENCE)
@@ -149,12 +150,15 @@ local function react_to_hit(quest, me)
   quest:PauseAllNonScriptedEntities(true)
   local key = "TEXT_QST_048_VILLAGER_ATTACKED" .. sex_suffix(quest, me)
   if quest:GetHealth(me) > ALIVE_HEALTH then
-    me:Speak(hero, key, SPEAK_METHOD)
+    if me:Speak(hero, key, SPEAK_METHOD) == false then
+      quest:PauseAllNonScriptedEntities(false)
+      quest:EndMovieSequence()
+      NOVI.release(quest, me)
+      return false
+    end
   end
   quest:PauseAllNonScriptedEntities(false)
   quest:EndMovieSequence()
-  -- retail releases the scripted resource at the top of the next loop iteration
-  NOVI.release(quest, me)
   return true
 end
 
@@ -163,8 +167,8 @@ local function answer_hero(quest, me)
   local suffix = sex_suffix(quest, me)
   if not NOVI.acquire(quest, me, CONTROL_PRIORITY) then return false end
   local hero = quest:GetHero()
-  quest:EntitySetFacingAngleTowardsThing(me, hero)
-  local conv = quest:AddNewConversation(me, 0, 0)
+  quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+  local conv = quest:AddNewConversation(me, false, false)
   quest:AddPersonToConversation(conv, hero)
   if not HeroDidHitMe then
     quest:AddLineToConversation(conv, "TEXT_QST_048_VILLAGER_SPOKEN_TO" .. suffix, me, hero, false)
@@ -183,12 +187,12 @@ end
 local function mutter_about_hero(quest, me)
   local timer = F.get(quest, F.TalkIntermittentTimer)
   if quest:GetTimer(timer) ~= TIMER_IDLE then return true end
-  if math.random(0, MUTTER_CHANCE_ONE_IN - 1) ~= 0 then return true end
+  if quest:RetailRandModulo(MUTTER_CHANCE_ONE_IN) ~= 0 then return true end
   if not NOVI.hero_within(quest, me, MUTTER_DISTANCE) then return true end
 
   quest:SetTimer(timer, MUTTER_TIMER_VALUE)
   local hero = quest:GetHero()
-  local conv = quest:AddNewConversation(me, 0, 0)
+  local conv = quest:AddNewConversation(me, false, false)
   quest:AddPersonToConversation(conv, hero)
   local lines = pick_reputation_table(quest, me)
   local index = get_villager_speech_index(quest, me, #lines)
@@ -200,21 +204,31 @@ end
 function Init(quest, me)
   HeroDidHitMe = false
   quest:EntitySetAsDamageable(me, false)
-  quest:EntitySetAsKillable(me, false)
+  quest:EntitySetAsKillable(me, false, false)
   quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
   quest:EntitySetThingAsAllyOfThing(me, quest:GetHero())
 end
 
 function Main(quest, me)
   if not NOVI.frame(quest, me) then return end   -- retail: one frame before the loop
+  local hit_control_held = false
   while true do
+    -- Retail keeps the hit-branch resource across the bottom frame and clears it here.
+    if hit_control_held then
+      NOVI.release(quest, me)
+      hit_control_held = false
+    end
     if hero_hit_me(me) then
       if not react_to_hit(quest, me) then return end
+      hit_control_held = true
     elseif me:IsTalkedToByHero() then
       if not answer_hero(quest, me) then return end
     else
       if not mutter_about_hero(quest, me) then return end
     end
-    if not NOVI.frame(quest, me) then return end
+    if not NOVI.frame(quest, me) then
+      if hit_control_held then NOVI.release(quest, me) end
+      return
+    end
   end
 end

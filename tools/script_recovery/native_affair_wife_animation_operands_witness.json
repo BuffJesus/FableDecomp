@@ -1,0 +1,32 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "d5eab8f6eee142642daf39f7340632cfbaffcecedfdfbc88f3258bf019626650",
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "address": 8287184,
+      "size": 15,
+      "sha256": "b15918b5d8b85acb00708ee1f721e3297fac818c09fedf1a8ff14a30090a50bf"
+    }
+  ],
+  "edits": [
+    {
+      "old": "CScriptGameResourceObjectScriptedThingBase::\r\n        _PlayAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString___N111111_Z\r\n                  ((CScriptGameResourceObjectScriptedThingBase *)&stack0xffffff3c,\r\n                   (CScriptThing *)&stack0xffffff58,(char *)0x0,(CCharString *)0x0,\r\n                   (CCharString *)0x0,(CCharString *)0x1,(bool)DAT_01375748,false);",
+      "new": "GSI->PlayAnimation(\"ST_ARGUING_POINT_AWAY\",false,false,false,true,DAT_01375748,false,false);"
+    },
+    {
+      "old": "CScriptGameResourceObjectScriptedThingBase::\r\n        _PlayAnimation_CScriptGameResourceObjectScriptedThingBase__UAEXABVCCharString___N111111_Z\r\n                  ((CScriptGameResourceObjectScriptedThingBase *)&stack0xffffff3c,aCStack_70,\r\n                   (char *)0x0,(CCharString *)0x0,(CCharString *)0x0,(CCharString *)0x1,\r\n                   (bool)DAT_01375748,false);",
+      "new": "GSI->PlayAnimation(\"ST_ARGUING_POINT_AT\",false,false,false,true,DAT_01375748,false,false);"
+    }
+  ],
+  "review": "DB364F/3695: resource16 receiver; eight native stack arguments are key,false,false,false,true,byte[01375748],false,false. Wrapper7E73D0 forwards unchanged to implslot48 or RET20 on absent resource.",
+  "unresolved": [
+    "Runtime value of writable byte01375748",
+    "Resource ownership and cleanup"
+  ]
+}

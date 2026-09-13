@@ -102,3 +102,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Mario rig (`work/mario_hero/stage_bindaxis4`): parent-relative ANIM translations stretch the
   segments; mesh-only rest/inverse-bind edits are insufficient. Parked.
 - ForgeFSE canonical fork is `D:\Code\ForgeFSE-retail-shadow`; `D:\Code\ForgeFSE` is stale.
+- `validate_tooling_sdk.py` FAILs with "mirror drift" whenever `export_fse_native_overlay.py` / `gen_fable_engine_header.py` ran with `--output`/`--no-mirrors`; the mirrors are plain byte copies, so re-run the generator in default mode (or copy the canonical file) before trusting the gate.
+- ForgeFSE `LuaEntityAPI` nested control: never request a second `StartScriptingEntity` resource for an actor the same VM already controls; the engine treats Forge handles as foreign owners and never grants it (Affair Wife hang, 2026-09-11). Nested acquires must reuse the live handle; a re-acquire at the held priority is idempotent (retail Main loops re-call StartScriptingEntity on the same resource every iteration), only a priority change counts a depth level; `audit_forgefse_control_abi.py` pins this.
+- Installed `FinalAlbion.qst` may still carry `AddQuest("NewOakValeIntro", TRUE)` from the additive-quest era; under the identity-preserving override it is a competing authority (`NOVI_AUTHORITY ... legacy=true`). Check it before every single-authority run.
+- Retail colour immediates are written as B,G,R,A memory bytes (`CRGBColour`); read them in memory order, never as RGBA (Bully bar `00 00 FF FF` is red). Hand-transcribed byte strings in snapshot exporters must be checked against a capstone disassembly of the installed exe.
+

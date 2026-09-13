@@ -1,0 +1,675 @@
+{
+  "rows": [
+    {
+      "name": "V_MazeResearch",
+      "kind": "quest",
+      "todo": 0,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 2,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 11,
+      "liftedCalls": 13,
+      "matched": 11,
+      "recall": 1.0,
+      "precision": 0.846,
+      "missingFromLift": [],
+      "extraInLift": [
+        "SetStateBool"
+      ]
+    },
+    {
+      "name": "QS_MeetSister",
+      "kind": "quest",
+      "todo": 0,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 2,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 5,
+      "liftedCalls": 5,
+      "matched": 5,
+      "recall": 1.0,
+      "precision": 1.0,
+      "missingFromLift": [],
+      "extraInLift": []
+    },
+    {
+      "name": "QS_ScytheInfo",
+      "kind": "quest",
+      "todo": 12,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 2,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 26,
+      "liftedCalls": 24,
+      "matched": 23,
+      "recall": 0.885,
+      "precision": 0.958,
+      "missingFromLift": [
+        "DeregisterTimer",
+        "PersistTransferBool",
+        "SetStateBool"
+      ],
+      "extraInLift": [
+        "GetActiveQuestName"
+      ]
+    },
+    {
+      "name": "V_StatueMaster",
+      "kind": "quest",
+      "todo": 11,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 3,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "StatueMaster/FSE/StatueMaster/StatueMaster.lua",
+            "line": 24,
+            "message": "StatueMaster/FSE/StatueMaster/StatueMaster.lua:24: unexpected symbol near '*'"
+          }
+        ]
+      },
+      "oracleCalls": 13,
+      "liftedCalls": 14,
+      "matched": 9,
+      "recall": 0.692,
+      "precision": 0.643,
+      "missingFromLift": [
+        "SetStateString"
+      ],
+      "extraInLift": [
+        "IsXbox",
+        "SetStateFloat"
+      ]
+    },
+    {
+      "name": "V_Fisherman",
+      "kind": "quest",
+      "todo": 3,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 4,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 26,
+      "liftedCalls": 25,
+      "matched": 21,
+      "recall": 0.808,
+      "precision": 0.84,
+      "missingFromLift": [
+        "GetStateInt",
+        "PersistTransferInt",
+        "SetStateInt"
+      ],
+      "extraInLift": [
+        "GetStateBool",
+        "PersistTransferBool",
+        "SetStateBool"
+      ]
+    },
+    {
+      "name": "Q_HerosOldHouse",
+      "kind": "quest",
+      "todo": 18,
+      "entityTodo": 104,
+      "threads": 1,
+      "helpers": 0,
+      "entities": 2,
+      "entityBodies": 1,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 2,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "HerosOldHouse/FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+            "line": 27,
+            "message": "HerosOldHouse/FSE/HerosOldHouse/Entities/GhostFisherman.lua:27: unexpected symbol near '*'"
+          },
+          {
+            "path": "HerosOldHouse/FSE/HerosOldHouse/HerosOldHouse.lua",
+            "line": 105,
+            "message": "HerosOldHouse/FSE/HerosOldHouse/HerosOldHouse.lua:105: unexpected symbol near '*'"
+          }
+        ]
+      },
+      "oracleCalls": 38,
+      "liftedCalls": 43,
+      "matched": 37,
+      "recall": 0.974,
+      "precision": 0.86,
+      "missingFromLift": [
+        "AddEntityBinding"
+      ],
+      "extraInLift": [
+        "GetStateBool",
+        "GetThingWithScriptName",
+        "IsRegionLoaded",
+        "NewScriptFrame"
+      ]
+    },
+    {
+      "name": "V_BeardyBaldy",
+      "kind": "quest",
+      "todo": 86,
+      "entityTodo": 0,
+      "threads": 7,
+      "helpers": 2,
+      "entities": 1,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "BeardyBaldy/FSE/BeardyBaldy/BeardyBaldy.lua",
+            "line": 79,
+            "message": "BeardyBaldy/FSE/BeardyBaldy/BeardyBaldy.lua:79: ')' expected near '='"
+          }
+        ]
+      },
+      "oracleCalls": 179,
+      "liftedCalls": 183,
+      "matched": 153,
+      "recall": 0.855,
+      "precision": 0.836,
+      "missingFromLift": [
+        "GetNearestWithDefName",
+        "GetStateInt",
+        "GetStateString",
+        "GetThingWithScriptName",
+        "GiveQuestCardDirectly",
+        "IsRegionLoaded",
+        "IsWearingHairstyle",
+        "PersistTransferInt",
+        "PersistTransferString",
+        "SetStateInt"
+      ],
+      "extraInLift": [
+        "GetActiveQuestName",
+        "GetNearestWithScriptName",
+        "GetStateBool",
+        "GiveHeroQuestCardDirectly",
+        "MsgOnHeroHairTypeChanged",
+        "MsgOnRegionLoaded",
+        "NewScriptFrame",
+        "PersistTransferBool",
+        "SetStateString"
+      ]
+    },
+    {
+      "name": "Q_SummoningTheShip",
+      "kind": "quest",
+      "todo": 72,
+      "entityTodo": 0,
+      "threads": 1,
+      "helpers": 1,
+      "entities": 6,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "SummoningTheShip/FSE/SummoningTheShip/SummoningTheShip.lua",
+            "line": 148,
+            "message": "SummoningTheShip/FSE/SummoningTheShip/SummoningTheShip.lua:148: unexpected symbol near '&'"
+          }
+        ]
+      },
+      "oracleCalls": 94,
+      "liftedCalls": 85,
+      "matched": 66,
+      "recall": 0.702,
+      "precision": 0.776,
+      "missingFromLift": [
+        "DeregisterTimer",
+        "GetStateBool",
+        "GetStateInt",
+        "PersistTransferBool",
+        "PersistTransferInt",
+        "PlayCutscene",
+        "RegisterTimer",
+        "SetQuestAsFailed",
+        "SetStateBool",
+        "SetStateInt",
+        "StartAmbientConversation"
+      ],
+      "extraInLift": [
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "FixMovieSequenceCamera",
+        "GetActiveQuestName",
+        "GetHero",
+        "GetThingWithScriptName",
+        "IsLevelLoaded",
+        "PauseAllNonScriptedEntities",
+        "StartMovieSequence"
+      ]
+    },
+    {
+      "name": "V_SingingStones",
+      "kind": "quest",
+      "todo": 62,
+      "entityTodo": 0,
+      "threads": 3,
+      "helpers": 0,
+      "entities": 2,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "SingingStones/FSE/SingingStones/SingingStones.lua",
+            "line": 93,
+            "message": "SingingStones/FSE/SingingStones/SingingStones.lua:93: unexpected symbol near '*'"
+          }
+        ]
+      },
+      "oracleCalls": 86,
+      "liftedCalls": 97,
+      "matched": 66,
+      "recall": 0.767,
+      "precision": 0.68,
+      "missingFromLift": [
+        "DeactivateQuestLater",
+        "EndMovieSequence",
+        "GetActiveQuestName",
+        "GetMasterGameState",
+        "SetMasterGameState",
+        "SetStateBool",
+        "StartAmbientConversation"
+      ],
+      "extraInLift": [
+        "AddNewConversation",
+        "AddPersonToConversation",
+        "GetHero",
+        "GetStateInt",
+        "IsRegionLoaded",
+        "SetStateInt",
+        "SetStateString"
+      ]
+    },
+    {
+      "name": "V_RockTrollFirstEncounter",
+      "kind": "quest",
+      "todo": 9,
+      "entityTodo": 0,
+      "threads": 1,
+      "helpers": 0,
+      "entities": 3,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 69,
+      "liftedCalls": 51,
+      "matched": 44,
+      "recall": 0.638,
+      "precision": 0.863,
+      "missingFromLift": [
+        "AddQuestInfoBarHealth",
+        "DisplayQuestInfo",
+        "GetHealth",
+        "GetStateInt",
+        "GetThingWithScriptName",
+        "NewScriptFrame",
+        "PersistTransferInt",
+        "RemoveQuestInfoElement",
+        "SetStateInt"
+      ],
+      "extraInLift": [
+        "GetStateBool",
+        "IsRegionLoaded",
+        "MsgOnRegionLoaded",
+        "PersistTransferBool",
+        "SetStateBool"
+      ]
+    },
+    {
+      "name": "QS_GuardianTrophyDealerInfo",
+      "kind": "quest",
+      "todo": 2,
+      "entityTodo": 120,
+      "threads": 1,
+      "helpers": 0,
+      "entities": 1,
+      "entityBodies": 1,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 2,
+        "passed": 1,
+        "errors": [
+          {
+            "path": "GuardianTrophyDealerInfo/FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+            "line": 182,
+            "message": "...Info/FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua:182: unexpected symbol near '&'"
+          }
+        ]
+      },
+      "oracleCalls": 14,
+      "liftedCalls": 16,
+      "matched": 14,
+      "recall": 1.0,
+      "precision": 0.875,
+      "missingFromLift": [],
+      "extraInLift": [
+        "CreateThread",
+        "GetStateBool"
+      ]
+    },
+    {
+      "name": "Q_DragonBossFight",
+      "kind": "quest",
+      "todo": 76,
+      "entityTodo": 0,
+      "threads": 3,
+      "helpers": 3,
+      "entities": 3,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "DragonBossFight/FSE/DragonBossFight/DragonBossFight.lua",
+            "line": 15,
+            "message": "DragonBossFight/FSE/DragonBossFight/DragonBossFight.lua:15: unexpected symbol near '*'"
+          }
+        ]
+      },
+      "oracleCalls": 121,
+      "liftedCalls": 103,
+      "matched": 75,
+      "recall": 0.62,
+      "precision": 0.728,
+      "missingFromLift": [
+        "AddLogbookStoryEntryString",
+        "AddQuestRegion",
+        "CreateEffectAtPos",
+        "DeactivateQuestLater",
+        "DeregisterTimer",
+        "DisplayQuestInfo",
+        "EndCutscene",
+        "GetAllThingsWithDefName",
+        "GetCutsceneFlag",
+        "GetHealth",
+        "GetThingWithScriptName",
+        "GiveHeroMorality",
+        "PersistTransferInt",
+        "PlayAVIMovie",
+        "PlayCutscene",
+        "RegisterTimer",
+        "RemoveThing",
+        "RunCutscene",
+        "SetHUDEnabled",
+        "SetMasterGameState",
+        "SetStateInt",
+        "StartAmbientConversation",
+        "StartCutscene",
+        "StopOverrideMusic"
+      ],
+      "extraInLift": [
+        "AddEntityBinding",
+        "AddNewConversation",
+        "CreateEffect",
+        "FixMovieSequenceCamera",
+        "GetActiveQuestName",
+        "GetHero",
+        "GetStateInt",
+        "IsRegionLoaded",
+        "NewScriptFrame",
+        "PauseAllNonScriptedEntities",
+        "StartMovieSequence"
+      ]
+    },
+    {
+      "name": "NOVI_CreatedBeetle",
+      "kind": "entity",
+      "todo": 0,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 0,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 6,
+      "liftedCalls": 9,
+      "matched": 6,
+      "recall": 1.0,
+      "precision": 0.667,
+      "missingFromLift": [],
+      "extraInLift": [
+        "GetTimer",
+        "NewScriptFrame"
+      ]
+    },
+    {
+      "name": "OVI_DeadFather",
+      "kind": "entity",
+      "todo": 4,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 0,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 8,
+      "liftedCalls": 14,
+      "matched": 6,
+      "recall": 0.75,
+      "precision": 0.429,
+      "missingFromLift": [
+        "MiniMapAddMarker",
+        "SetIsPushableByHero"
+      ],
+      "extraInLift": [
+        "AcquireControl",
+        "GetStateBool",
+        "NewScriptFrame"
+      ]
+    },
+    {
+      "name": "NOVI_Barrel",
+      "kind": "entity",
+      "todo": 0,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 0,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "oracleCalls": 3,
+      "liftedCalls": 17,
+      "matched": 2,
+      "recall": 0.667,
+      "precision": 0.118,
+      "missingFromLift": [
+        "GetPos"
+      ],
+      "extraInLift": [
+        "DisplayGameInfo",
+        "GetHero",
+        "GetStateBool",
+        "IsDistanceBetweenThingsUnder",
+        "IsXbox",
+        "MsgIsGameInfoClickedPast",
+        "NewScriptFrame",
+        "SetStateBool"
+      ]
+    },
+    {
+      "name": "NOVI_Villager",
+      "kind": "entity",
+      "todo": 80,
+      "entityTodo": 0,
+      "threads": 0,
+      "helpers": 0,
+      "entities": 0,
+      "entityBodies": 0,
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "entities/NOVI_Villager.lua",
+            "line": 236,
+            "message": "entities/NOVI_Villager.lua:236: unexpected symbol near '*'"
+          }
+        ]
+      },
+      "oracleCalls": 38,
+      "liftedCalls": 100,
+      "matched": 33,
+      "recall": 0.868,
+      "precision": 0.33,
+      "missingFromLift": [
+        "EndMovieSequence",
+        "RetailRandModulo"
+      ],
+      "extraInLift": [
+        "AcquireControl",
+        "EntityGetSex",
+        "GetHealth",
+        "GetHero",
+        "GetStateBool",
+        "GetStateInt",
+        "IsConversationActive",
+        "IsDistanceBetweenThingsUnder",
+        "IsPerformingScriptTask",
+        "NewScriptFrame",
+        "PauseAllNonScriptedEntities",
+        "SetStateBool",
+        "Speak"
+      ]
+    }
+  ],
+  "syntax": {
+    "runtime": "Lua 5.4",
+    "ok": false,
+    "checked": 18,
+    "passed": 9,
+    "errors": [
+      {
+        "path": "StatueMaster/FSE/StatueMaster/StatueMaster.lua",
+        "line": 24,
+        "message": "StatueMaster/FSE/StatueMaster/StatueMaster.lua:24: unexpected symbol near '*'"
+      },
+      {
+        "path": "HerosOldHouse/FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+        "line": 27,
+        "message": "HerosOldHouse/FSE/HerosOldHouse/Entities/GhostFisherman.lua:27: unexpected symbol near '*'"
+      },
+      {
+        "path": "HerosOldHouse/FSE/HerosOldHouse/HerosOldHouse.lua",
+        "line": 105,
+        "message": "HerosOldHouse/FSE/HerosOldHouse/HerosOldHouse.lua:105: unexpected symbol near '*'"
+      },
+      {
+        "path": "BeardyBaldy/FSE/BeardyBaldy/BeardyBaldy.lua",
+        "line": 79,
+        "message": "BeardyBaldy/FSE/BeardyBaldy/BeardyBaldy.lua:79: ')' expected near '='"
+      },
+      {
+        "path": "SummoningTheShip/FSE/SummoningTheShip/SummoningTheShip.lua",
+        "line": 148,
+        "message": "SummoningTheShip/FSE/SummoningTheShip/SummoningTheShip.lua:148: unexpected symbol near '&'"
+      },
+      {
+        "path": "SingingStones/FSE/SingingStones/SingingStones.lua",
+        "line": 93,
+        "message": "SingingStones/FSE/SingingStones/SingingStones.lua:93: unexpected symbol near '*'"
+      },
+      {
+        "path": "GuardianTrophyDealerInfo/FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+        "line": 182,
+        "message": "...Info/FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua:182: unexpected symbol near '&'"
+      },
+      {
+        "path": "DragonBossFight/FSE/DragonBossFight/DragonBossFight.lua",
+        "line": 15,
+        "message": "DragonBossFight/FSE/DragonBossFight/DragonBossFight.lua:15: unexpected symbol near '*'"
+      },
+      {
+        "path": "entities/NOVI_Villager.lua",
+        "line": 236,
+        "message": "entities/NOVI_Villager.lua:236: unexpected symbol near '*'"
+      }
+    ]
+  }
+}

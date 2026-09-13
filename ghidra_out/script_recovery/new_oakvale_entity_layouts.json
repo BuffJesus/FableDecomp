@@ -1,0 +1,22 @@
+{
+  "schema": "new-oakvale-entity-layouts/0.1",
+  "source": "refs/script_recovery/new_oakvale_intro/translation_unit.json allocator decompiles",
+  "entities": {
+    "NOVI_AffairMan": {"allocator": "0x00DB0880", "objectSize": 36},
+    "NOVI_AffairWife": {"allocator": "0x00DB29A0", "objectSize": 32},
+    "NOVI_AffairWoman": {"allocator": "0x00DB1DB0", "objectSize": 28},
+    "NOVI_Barrel": {"allocator": "0x00DB7D00", "objectSize": 28},
+    "NOVI_BarrelMan": {"allocator": "0x00DB51B0", "objectSize": 36},
+    "NOVI_BarrelThug": {"allocator": "0x00DB6B40", "objectSize": 36},
+    "NOVI_BookTrader": {"allocator": "0x00DB3E30", "objectSize": 32},
+    "NOVI_Bully": {"allocator": "0x00DAEC60", "objectSize": 44},
+    "NOVI_CreatedBeetle": {"allocator": "0x00DB7FF0", "objectSize": 28},
+    "NOVI_Guard": {"allocator": "0x00DAC580", "objectSize": 28},
+    "NOVI_LiveFather": {"allocator": "0x00DAC2C0", "objectSize": 32},
+    "NOVI_TeddyGirl": {"allocator": "0x00DAEF50", "objectSize": 32},
+    "NOVI_Theresa": {"allocator": "0x00DAC420", "objectSize": 32},
+    "NOVI_Victim": {"allocator": "0x00DAEDE0", "objectSize": 32},
+    "NOVI_Villager": {"allocator": "0x00DADE50", "objectSize": 32},
+    "OVI_DeadFather": {"allocator": "0x00DB81B0", "objectSize": 28}
+  }
+}

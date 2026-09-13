@@ -1,0 +1,40 @@
+[
+  {
+    "script": "Q_DragonBossFight",
+    "package": "DragonBossFight",
+    "class": "CQ_DragonBossFightScript",
+    "rangeLo": "0x00D254B0",
+    "rangeHi": "0x00D27270",
+    "lifecycle": {
+      "destructor": "0x00D27270",
+      "RegisterMain": "0x00D25520",
+      "Main": "0x00D255E0",
+      "Init": "0x00D254B0",
+      "OnPersist": "0x00CBD4E0"
+    },
+    "threads": [
+      {
+        "thread": "DoMission",
+        "address": "0x00D26190",
+        "recordedBody": "DoMission",
+        "functionsTsvName": "DoMission"
+      },
+      {
+        "thread": "RunEnemySpawning",
+        "address": "0x00D26BA0",
+        "recordedBody": "0x00D26BA0"
+      },
+      {
+        "thread": "JackTaunts",
+        "address": "0x00D26A50",
+        "recordedBody": "JackTaunts",
+        "functionsTsvName": "JackTaunts"
+      }
+    ],
+    "sharedBodyStores": [
+      "0x00CDD440"
+    ],
+    "problems": [],
+    "output": "D:\\Documents\\FableTLC\\refs\\script_recovery\\native_threads\\Q_DragonBossFight.json"
+  }
+]

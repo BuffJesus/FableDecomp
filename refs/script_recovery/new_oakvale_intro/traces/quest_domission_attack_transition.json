@@ -50,7 +50,10 @@
     },
     {
       "arguments": [
-        "WatchBarrels"
+        "WatchBarrels",
+        {
+          "region": ""
+        }
       ],
       "event": "api-call",
       "name": "CreateThread",
@@ -59,7 +62,10 @@
     },
     {
       "arguments": [
-        "WatchForGotGold"
+        "WatchForGotGold",
+        {
+          "region": ""
+        }
       ],
       "event": "api-call",
       "name": "CreateThread",
@@ -68,7 +74,10 @@
     },
     {
       "arguments": [
-        "ManageQuestCoreMarkers"
+        "ManageQuestCoreMarkers",
+        {
+          "region": ""
+        }
       ],
       "event": "api-call",
       "name": "CreateThread",
@@ -113,6 +122,7 @@
           "handle": "hero",
           "scope": "Entity"
         },
+        false,
         false
       ],
       "event": "api-call",
@@ -261,6 +271,13 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "IsActiveThreadTerminating",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [
         "Q__OakValeIntro_PostAttack"
       ],
@@ -327,13 +344,11 @@
       "scope": "Quest"
     },
     {
-      "arguments": [
-        "M_PostAttackStart"
-      ],
+      "arguments": [],
       "event": "api-call",
-      "name": "GetAllThingsWithScriptName",
-      "receiver": "quest",
-      "scope": "Quest"
+      "name": "IsAlive",
+      "receiver": "M_PostAttackStart",
+      "scope": "Entity"
     },
     {
       "arguments": [],
@@ -352,13 +367,11 @@
       "scope": "Quest"
     },
     {
-      "arguments": [
-        "M_PostAttackStart"
-      ],
+      "arguments": [],
       "event": "api-call",
-      "name": "GetAllThingsWithScriptName",
-      "receiver": "quest",
-      "scope": "Quest"
+      "name": "IsAlive",
+      "receiver": "M_PostAttackStart",
+      "scope": "Entity"
     },
     {
       "arguments": [
@@ -394,7 +407,8 @@
         {
           "handle": "M_PostAttackStart",
           "scope": "Entity"
-        }
+        },
+        false
       ],
       "event": "api-call",
       "name": "EntityTeleportToThing",
@@ -571,7 +585,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "hero",
@@ -613,7 +629,7 @@
         }
       ],
       "event": "api-call",
-      "name": "PlayCutscene",
+      "name": "RunCutsceneWithSetup",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -634,6 +650,20 @@
       "name": "PauseAllNonScriptedEntities",
       "receiver": "quest",
       "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "EndMovieSequence",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "ReleaseControl",
+      "receiver": "hero",
+      "scope": "Entity"
     },
     {
       "arguments": [
@@ -695,6 +725,22 @@
       "scope": "Quest"
     },
     {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetActiveQuestName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_PROBE complete_quest activeName='Q_NewOakValeIntro'"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
       "arguments": [
         0.5,
         0.0
@@ -717,7 +763,8 @@
           "handle": "hero",
           "scope": "Entity"
         },
-        true
+        true,
+        false
       ],
       "event": "api-call",
       "name": "EntitySetAsKillable",
@@ -771,17 +818,12 @@
     }
   ],
   "fixtures": {
+    "Entity.IsAlive": [
+      false,
+      true
+    ],
     "Quest.GetActiveQuestName": [
       "Q_NewOakValeIntro"
-    ],
-    "Quest.GetAllThingsWithScriptName(M_PostAttackStart)": [
-      [],
-      [
-        {
-          "handle": "M_PostAttackStart",
-          "scope": "Entity"
-        }
-      ]
     ],
     "Quest.GetHero": [
       {
@@ -854,5 +896,5 @@
   "kind": "quest",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
-  "sourceSha256": "541230bebd784775518ebf26c48da9a2696127a33776947b864727749bb65470"
+  "sourceSha256": "59c0300028b895c41a16e2c46b56a0f4d70cea24fcdf5cbefb6a322a99700495"
 }

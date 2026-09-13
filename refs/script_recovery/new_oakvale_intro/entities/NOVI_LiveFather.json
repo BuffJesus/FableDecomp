@@ -2,16 +2,19 @@
   "entity": "NOVI_LiveFather",
   "nativeClass": "NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather",
   "vtable": "0x012D8388",
+  "retailByteSnapshots": [
+    {"name": "fullInitMain", "range": "Init 0x00DAC390-0x00DAC41D; Main 0x00DB86B0-0x00DB9795", "file": "ghidra_out/script_recovery/live_father_full_retail_bytes.json"}
+  ],
   "functions": {
-    "Init": {"address": "0x00DAC390", "decompileFile": "tu/0x00DAC390_NScript_CQ_NewOakValeIntroScript_CNOVI_LiveFather_.c"},
-    "Main": {"address": "0x00DB86B0", "decompileFile": "tu/0x00DB86B0_FUN_00db86b0.c"}
+    "Init": {"address": "0x00DAC390", "decompileFile": "ghidra_out/script_recovery/native_decompiles/0x00DAC390.c"},
+    "Main": {"address": "0x00DB86B0", "decompileFile": "ghidra_out/script_recovery/native_decompiles/0x00DB86B0.c", "note": "exact retail boundary ends at 0x00DB9795; translation_unit size 4319 truncates the final six-byte epilogue instruction and ret"}
   },
   "luaFile": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_LiveFather.lua",
   "localFields": [
     {"name": "PenniesGiven", "offset": "0x1c", "type": "long", "initValue": 0, "evidence": "PDB-name; Init writes *(this+0x1c)=0 (native-decompile)"}
   ],
   "parentFieldsRead": ["DadFinishedIntro", "GoodDeedsPerformed", "BadDeedsPerformed"],
-  "parentFieldsWritten": ["DadFinishedIntro", "GUIGoodDeedCounter", "BadDeedsPerformed (via AddBadDeed)", "WhichBadDeedsPerformed[2] (via AddBadDeed, inference)"],
+  "parentFieldsWritten": ["DadFinishedIntro", "GUIGoodDeedCounter", "BadDeedsPerformed (via AddBadDeed)", "WhichBadDeedsPerformed[2] (via AddBadDeed)"],
   "masterDataAccess": [],
   "textKeys": [
     "TEXT_QST_048_INSTRUCTION_HIGHLIGHTING",
@@ -57,15 +60,15 @@
   "operations": [
     {"seq": 1, "function": "Init", "kind": "state-write", "native": "*(this+0x1c) = 0 (PenniesGiven)", "argsKnown": true, "lua": "PenniesGiven = 0", "forgeBinding": "n/a", "evidence": "native-decompile", "note": ""},
     {"seq": 2, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsDamageable(me, 0)", "argsKnown": true, "lua": "quest:EntitySetAsDamageable(me, false)", "forgeBinding": "EntitySetAsDamageable", "evidence": "native-decompile", "note": ""},
-    {"seq": 3, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsKillable(me, 0, 0)", "argsKnown": true, "lua": "quest:EntitySetAsKillable(me, false)", "forgeBinding": "EntitySetAsKillable", "evidence": "native-decompile", "note": "retail 3rd arg false; ForgeFSE binding hardcodes true"},
+    {"seq": 3, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsKillable(me, 0, 0)", "argsKnown": true, "lua": "quest:EntitySetAsKillable(me, false, false)", "forgeBinding": "EntitySetAsKillable", "evidence": "native-decompile", "note": "ForgeFSE forwards the retail trailing false"},
     {"seq": 4, "function": "Init", "kind": "call", "native": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me, 0)", "argsKnown": true, "lua": "quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)", "forgeBinding": "EntitySetAsToAddToComboMultiplierWhenHit", "evidence": "native-decompile", "note": ""},
-    {"seq": 5, "function": "Init", "kind": "call", "native": "GSI->SetThingHasInformation(me, 0, 1, 0)", "argsKnown": true, "lua": "quest:SetThingHasInformation(me, false)", "forgeBinding": "SetThingHasInformation", "evidence": "native-decompile + disassembly 0x00DAC3CF", "note": "retail trailing args (true, false); ForgeFSE hardcodes (false, false)"},
+    {"seq": 5, "function": "Init", "kind": "call", "native": "GSI->SetThingHasInformation(me, 0, 1, 0)", "argsKnown": true, "lua": "quest:SetThingHasInformation(me, false, true, false)", "forgeBinding": "SetThingHasInformation", "evidence": "native-decompile + disassembly 0x00DAC3CF", "note": "ForgeFSE forwards the retail trailing true,false pair"},
     {"seq": 6, "function": "Init", "kind": "call", "native": "GSI->SetIsPushableByHero(ME_THING, 0)", "argsKnown": true, "lua": "quest:SetIsPushableByHero(me, false)", "forgeBinding": "SetIsPushableByHero", "evidence": "native-decompile", "note": ""},
     {"seq": 7, "function": "Init", "kind": "call", "native": "GSI->EntitySetDeedReactionsEnabled(me, 0)", "argsKnown": true, "lua": "quest:EntitySetDeedReactionsEnabled(me, false)", "forgeBinding": "EntitySetDeedReactionsEnabled", "evidence": "native-decompile", "note": ""},
     {"seq": 8, "function": "Main", "kind": "wait", "native": "GSI->NewScriptFrame(); if (IsTerminating()) return;", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end", "forgeBinding": "NewScriptFrame", "evidence": "native-decompile", "note": ""},
     {"seq": 9, "function": "Main", "kind": "wait", "native": "while (!GSI->StartScriptingEntity(me, res, 4)) { NewScriptFrame; if IsTerminating goto release }", "argsKnown": true, "lua": "NOVI.acquire(quest, me, SCRIPT_PRIORITY)", "forgeBinding": "host-managed", "evidence": "native-decompile + disassembly 0x00DB873C", "note": ""},
     {"seq": 10, "function": "Main", "kind": "branch", "native": "if (*(PARENT+0x52) == 0) -> intro path (DadFinishedIntro)", "argsKnown": true, "lua": "if not F.get(quest, F.DadFinishedIntro) then", "forgeBinding": "n/a", "evidence": "native-decompile + PDB-name", "note": ""},
-    {"seq": 11, "function": "Main", "kind": "wait", "native": "while (!StartScriptingEntity(GetHero(), heroRes, 4)) { NewScriptFrame; IsTerminating }", "argsKnown": true, "lua": "(folded into quest:RunCutsceneWithSetup actor acquisition)", "forgeBinding": "host-managed", "evidence": "native-decompile + disassembly 0x00DB87B5", "note": "ForgeFSE acquires cutscene actors with SCRIPT_AI_PRIORITY_HIGHEST and no wait loop"},
+    {"seq": 11, "function": "Main", "kind": "wait", "native": "while (!StartScriptingEntity(GetHero(), heroRes, 4)) { NewScriptFrame; IsTerminating }", "argsKnown": true, "lua": "(folded into quest:RunCutsceneWithSetup actor acquisition)", "forgeBinding": "host-managed", "evidence": "native-decompile + disassembly 0x00DB87B5", "note": "ForgeFSE RunCutsceneWithSetup now retries StartScriptingEntity at SCRIPT_AI_PRIORITY_VERY_HIGH (numeric 4), matching retail"},
     {"seq": 12, "function": "Main", "kind": "call", "native": "map[\"Hero\"] = heroRes; map[\"Father\"] = meRes", "argsKnown": true, "lua": "{ Hero = hero, Father = me }", "forgeBinding": "RunCutsceneWithSetup actors table", "evidence": "native-decompile + string refs 0x012C4570/0x012D9794", "note": ""},
     {"seq": 13, "function": "Main", "kind": "call", "native": "GSI->StartMovieSequence(\"\", movie)", "argsKnown": true, "lua": "quest:StartMovieSequence()", "forgeBinding": "StartMovieSequence", "evidence": "native-decompile", "note": ""},
     {"seq": 14, "function": "Main", "kind": "call", "native": "GSI->PauseAllNonScriptedEntities(1)", "argsKnown": true, "lua": "quest:PauseAllNonScriptedEntities(true)", "forgeBinding": "PauseAllNonScriptedEntities", "evidence": "native-disassembly 0x00DB88C4 (slot 0x5ec)", "note": ""},
@@ -112,20 +115,8 @@
     {"seq": 55, "function": "Main", "kind": "wait", "native": "LAB_00db9720: NewScriptFrame; if IsTerminating -> ~res, return; goto LAB_00db8b00", "argsKnown": true, "lua": "if not NOVI.frame(quest, me) then return end (loop)", "forgeBinding": "NewScriptFrame", "evidence": "native-decompile", "note": ""},
     {"seq": 56, "function": "Main", "kind": "cleanup", "native": "LAB_00db9785: ~CScriptGameResourceObjectScriptedThingBase(meRes); return", "argsKnown": true, "lua": "NOVI.release(quest, me) (Main wrapper)", "forgeBinding": "host-managed", "evidence": "native-decompile", "note": "reached from every exit path"}
   ],
-  "apiGaps": [
-    {"retail": "StartScriptingEntity(hero, res, priority 4) wait loop before the cutscene", "reason": "ForgeFSE RunCutsceneWithSetup acquires actors itself with SCRIPT_AI_PRIORITY_HIGHEST and no per-frame wait", "luaLocation": "intro_cutscene (comment)"},
-    {"retail": "EntitySetAsKillable(me, false, false)", "reason": "ForgeFSE binding takes 2 args and hardcodes the 3rd as true", "luaLocation": "Init"},
-    {"retail": "SetThingHasInformation(me, false, true, false)", "reason": "ForgeFSE binding takes 2 args and hardcodes the trailing pair as (false, false)", "luaLocation": "Init"},
-    {"retail": "Speak(hero, key, 0, false, true, false) + IsPerformingScriptTask/NewScriptFrame/IsTerminating wait loop", "reason": "ForgeFSE me:Speak is blocking; the per-frame terminate check inside the wait is host-managed and not observable from Lua", "luaLocation": "speak_if_alive"}
-  ],
+  "apiGaps": [],
   "uncertainties": [
-    "Retail keeps the movie sequence / entity pause open across the tutorial card and HUD counter; ForgeFSE RunCutsceneWithSetup internally re-issues StartMovieSequence/PauseAll(true) and tears them down (PauseAll(false) + movie dtor) right after the cutscene macro, so explicit quest:StartMovieSequence/PauseAll calls around it may nest or double-toggle in ForgeFSE (inference).",
-    "Speak trailing bools (false, true, false) are matched by ForgeFSE's Speak_Blocking defaults; method 0 is GROUP_SELECT_FIRST per the ForgeFSE enum (cross-script-evidence, not PDB).",
-    "MsgIsHitBySpecialAbilityFrom ability immediate is 0xE (14). FSE's convenience MsgIsHitByHealLifeFromHero passes 30, inconsistent with its own enum header (HERO_ABILITY_HEAL_LIFE_SPELL = 0xE); the Lua therefore uses MsgIsHitByHeroSpecialAbility(14).",
-    "ClearThingHasInformation argument was dropped by the decompiler in every call site; me is inferred (the only CScriptThing pushed in those blocks).",
-    "EntitySetThingAsAllyOfThing binding expects shared_ptr<CScriptThing> for both args; passing the raw entity `me` pointer relies on sol conversion (cross-script-evidence from other entity scripts).",
-    "GiveHeroGold receives (GoodDeedsPerformed - PenniesGiven) computed BEFORE the field update (eax holds the difference); PenniesGiven ends equal to GoodDeedsPerformed.",
-    "PenniesGiven is not persisted; if the entity script restarts (e.g. save load) Dad pays for all good deeds again (retail behaviour)."
   ],
   "cleanupPaths": [
     {"resource": "control (me, priority 4)", "acquired": "seq 9 / 29 / 31 / 52", "releasedOn": ["normal (never: infinite loop)", "terminate (seq 56, all paths)"], "missingOn": []},

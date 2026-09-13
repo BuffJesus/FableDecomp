@@ -66,7 +66,9 @@
         {
           "handle": "me",
           "scope": "Entity"
-        }
+        },
+        false,
+        false
       ],
       "event": "api-call",
       "name": "AddNewConversation",
@@ -135,7 +137,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -195,5 +199,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_TeddyGirl.lua",
-  "sourceSha256": "f974c63dd03422742f630bf76edf18fa263143d06e59535d1d86baee8fe58def"
+  "sourceSha256": "118cd68bc8bbd2d19eabc661d7a39919259bc7fea6df49a0eefb8f35553cf6e0"
 }

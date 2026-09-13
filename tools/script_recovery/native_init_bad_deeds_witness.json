@@ -1,0 +1,9 @@
+{
+  "address": "0x00DAADD0",
+  "sourceSha256": "9815c2df4c120d43d5cd6915e575f728c9f2e59ba878bede918f3eb112558ac1",
+  "annotatedSha256": "d4616f66ceb04c0eb4f2ac300c801296274eca664f4d184b1c120d0513d52780",
+  "bytesSha256": "e40adc41d9f7625e7348ee34cc1bab9218eedbc7d85eb18405ff578166325f97",
+  "old": "*(undefined4 *)(param_1 + 0xfc) = 0;\r\n  *(undefined1 *)(param_1 + 0x100) = 0;",
+  "new": "*(undefined1 *)(this + 0xfc + 0) = 0;\n  *(undefined1 *)(this + 0xfc + 1) = 0;\n  *(undefined1 *)(this + 0xfc + 2) = 0;\n  *(undefined1 *)(this + 0xfc + 3) = 0;\n  *(undefined1 *)(this + 0xfc + 4) = 0;",
+  "review": "Init zero stores at questFC dword and100 byte clear exactly five bytes FC..100. Persistence manifest WhichBadDeedsPerformed bool[5], consumed via zero-based indexed bool state by AddBadDeed and Guard. Emit five matching element writes, not scalar self_FC/self_100 keys."
+}

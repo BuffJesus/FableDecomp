@@ -8,6 +8,22 @@
    "EntitySetMaxHealth",
    "AddItemToContainer"
   ],
+  "expectCalls": [
+   {"name":"SetStateInt","argumentAt":{"0":"BadDeedsPerformed","1":1},"count":1},
+   {"name":"GiveHeroMorality","argumentAt":{"0":-0.001},"count":1},
+   {"name":"CreateCreature","argumentAt":{"0":"CREATURE_OAKVALE_STAG_BEETLE","2":"NOVI_CreatedBeetle"},"count":2},
+   {"name":"EntitySetMaxHealth","argumentAt":{"1":2.0,"2":true},"count":2},
+   {"name":"AddItemToContainer","argumentAt":{"1":"OBJECT_GOLD_1"},"count":1}
+  ],
+  "forbidCalls": [
+   {"name":"SetStateInt","argumentAt":{"0":"GoodDeedsPerformed"}}
+  ],
+  "expectCallSequence": [
+   {"name":"SetStateInt","argumentAt":{"0":"BadDeedsPerformed"}},
+   {"name":"CreateCreature","argumentAt":{"0":"CREATURE_OAKVALE_STAG_BEETLE"}},
+   {"name":"CreateCreature","argumentAt":{"0":"CREATURE_OAKVALE_STAG_BEETLE"}},
+   {"name":"AddItemToContainer","argumentAt":{"1":"OBJECT_GOLD_1"}}
+  ],
   "note": "six barrels; breaks 1..5: first = bad deed 0, 3rd/4th = beetles, 5th = gold; stops at AttackOver"
  },
  "Quest.GetAllThingsWithScriptName": [

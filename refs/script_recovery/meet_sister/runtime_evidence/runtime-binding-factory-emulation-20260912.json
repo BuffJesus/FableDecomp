@@ -1,0 +1,46 @@
+{
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "factory": "0xe7ed60",
+  "constructor": "0xce1110",
+  "scope": "Execute Forge's selected retail binding factory and real base constructor.\n\nAllocators, entity Init and refcount/string/task helpers are stubs. Field loads,\nargument forwarding and constructor stores execute the installed x86 bytes.\nThis does not emulate the game scheduler or prove a live quest lifecycle.\n",
+  "cases": [
+    {
+      "binding_flags": 0,
+      "constructor_flags": 0,
+      "active_flags": 0,
+      "stack_balanced": true
+    },
+    {
+      "binding_flags": 1,
+      "constructor_flags": 1,
+      "active_flags": 1,
+      "stack_balanced": true
+    },
+    {
+      "binding_flags": 2,
+      "constructor_flags": 2,
+      "active_flags": 2,
+      "stack_balanced": true
+    },
+    {
+      "binding_flags": 3,
+      "constructor_flags": 3,
+      "active_flags": 3,
+      "stack_balanced": true
+    },
+    {
+      "binding_flags": 2147483648,
+      "constructor_flags": 2147483648,
+      "active_flags": 2147483648,
+      "stack_balanced": true
+    },
+    {
+      "binding_flags": 4294967295,
+      "constructor_flags": 4294967295,
+      "active_flags": 4294967295,
+      "stack_balanced": true
+    }
+  ],
+  "factory_bytes": "83ec105355568bf18a461484c0570f84a40000008b56088b4424288b4a4450518d4c2418ff56108b580485db8b28896c2418895c241c7402ff038d4c2410e85d22e6ff8b55008bcdff52086a60e868fcd7ff8bf883c40485ff743a8b4e188b46088b542430518b4c242c894424148b4424305250518bcfe83423e6ff8b54241053558d4f34c70704a62e0189575ce84d22e6ffeb0233ff8b742424578bcee8ad22e6ff8d4c2418e8f421e6ff5f8bc65e5d5b83c410c21000",
+  "constructor_bytes": "5356578b7c24108b078bf18bcfff500468cdcccc3d6a406a018bce8bd8e80e36d6ff83c8ff538d4e20c7069c2f2c01c746140100000089461889461ce8dfdacbff8d4e24e857d3cbff8b4c241c8b54241433c088462888462989462c894630c70694352c01894634894638894e3c8b4c2418895640894e44c746488c8c23018b570489564c8b7f083bf8897e507402ff075f8bc65e5bc21000"
+}

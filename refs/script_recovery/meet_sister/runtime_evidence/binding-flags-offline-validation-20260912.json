@@ -1,0 +1,22 @@
+{
+  "scope": "Offline optional entity-binding flags; not installed; shared manifests not regenerated",
+  "source_and_build_sha256": {
+    "FableScriptExtender/LuaQuestState.h": "ee90993a7c24fd76b77607591175fa742eff9285249922adec2ce3245aa2547a",
+    "FableScriptExtender/LuaQuestState.cpp": "2227bbbbd51e0da1859ff01c842b8f15c18671a0a75a82a0dd63931385ba04a1",
+    "FableScriptExtender/FableAPI.h": "74ca6c130ee72e69eaace01ee2df0f9425a6ff72049ff58e6568336c0dd943fd",
+    "Release/FableScriptExtender.dll": "8719d8579125a2465baf378a68f72ab97f56eee64c77d23b40fd5965b464b9e8"
+  },
+  "checks": {
+    "release_x86_build": true,
+    "native_factory_constructor_cases": 6,
+    "real_sol_method_cases": 4,
+    "focused_unittests": 10,
+    "control_abi_audit": true,
+    "installed_v23_files_verified": 25
+  },
+  "remaining": [
+    "Resource identities and actor-map lifetimes need a supported runtime adapter",
+    "Shared API metadata coordination before regeneration",
+    "Live New Oakvale Escape/fade/audio evidence still pending"
+  ]
+}

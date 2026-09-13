@@ -1,0 +1,54 @@
+{
+  "schema": "new-oakvale-watch-for-got-gold-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DBE2E0",
+  "rangeSize": 212,
+  "functionBytesSha256": "47F139092E2B64CC78D20C89B6BD6A9E4590759B7B76D14FD51A7D3ACCE5982B",
+  "instructionCount": 65,
+  "strings": [
+    "",
+    "",
+    "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_03"
+  ],
+  "indirectCalls": [
+    {
+      "site": "0x00DBE2EB",
+      "slot": "0x1FC"
+    },
+    {
+      "site": "0x00DBE2FB",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBE312",
+      "slot": "0x1FC"
+    },
+    {
+      "site": "0x00DBE37A",
+      "slot": "0xA3C"
+    },
+    {
+      "site": "0x00DBE384",
+      "slot": "0x4A0"
+    }
+  ],
+  "goldComparison": {
+    "sites": [
+      "0x00DBE2F1",
+      "0x00DBE318"
+    ],
+    "operation": ">",
+    "operand": 2,
+    "equivalentMinimumGold": 3
+  },
+  "terminationCalls": [
+    "0x00DBE300",
+    "0x00DBE31F"
+  ],
+  "objective": "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_03",
+  "objectiveTrailingStrings": [
+    "",
+    ""
+  ]
+}

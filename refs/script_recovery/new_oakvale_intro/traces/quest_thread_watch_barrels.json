@@ -119,7 +119,7 @@
         "TEXT_QST_LOG_BASICS_MAP"
       ],
       "event": "api-call",
-      "name": "AddLogbookStoryEntryString",
+      "name": "AddLogbookTutorialEntry",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -360,6 +360,15 @@
     },
     {
       "arguments": [
+        "NOVI_PROBE WatchBarrels GOLD_ARM broken=5 total=6 container_present=true"
+      ],
+      "event": "api-call",
+      "name": "Log",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
         {
           "handle": "b5",
           "scope": "Entity"
@@ -368,6 +377,15 @@
       ],
       "event": "api-call",
       "name": "AddItemToContainer",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "NOVI_PROBE WatchBarrels GOLD_INSERT_RETURNED item=OBJECT_GOLD_1 container_present=true"
+      ],
+      "event": "api-call",
+      "name": "Log",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -695,5 +713,5 @@
   "kind": "quest",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
-  "sourceSha256": "541230bebd784775518ebf26c48da9a2696127a33776947b864727749bb65470"
+  "sourceSha256": "59c0300028b895c41a16e2c46b56a0f4d70cea24fcdf5cbefb6a322a99700495"
 }

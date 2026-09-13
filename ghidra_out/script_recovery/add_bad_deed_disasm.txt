@@ -1,0 +1,34 @@
+Retail Fable.exe x86 excerpts for
+NScript::CQ_NewOakValeIntroScript::AddBadDeed(EBadDeeds) at 0x00DAEA70.
+
+00daea70: 56                 push esi
+00daea71: 8bf1               mov esi,ecx                  ; quest object
+00daea73: 8b4e40             mov ecx,dword ptr [esi+0x40]
+00daea76: 57                 push edi
+00daea77: ff4658             inc dword ptr [esi+0x58]    ; BadDeedsPerformed++
+00daea7a: 8b150ce94301       mov edx,dword ptr [0x0143e90c]
+00daea80: d982640d0000       fld dword ptr [edx+0xd64]
+00daea86: 8b01               mov eax,dword ptr [ecx]
+00daea88: 51                 push ecx
+00daea89: d9e0               fchs
+00daea8b: d91c24             fstp dword ptr [esp]
+00daea8e: ff9070020000       call dword ptr [eax+0x270] ; GiveHeroMorality(-value)
+00daea94: 837e5801           cmp dword ptr [esi+0x58],1
+00daea98: 8b7c240c           mov edi,dword ptr [esp+0xc] ; EBadDeeds kind argument
+
+; first-deed path, after notification/logbook work
+00daeb4b: c68437fc00000001   mov byte ptr [edi+esi+0xfc],1
+00daeb53: 5f                 pop edi
+00daeb54: 5e                 pop esi
+00daeb55: c20400             ret 4
+
+; ordinary path reads the same indexed byte before deciding whether to notify
+00daeb67: 8a8437fc000000     mov al,byte ptr [edi+esi+0xfc]
+00daeb6e: 84c0               test al,al
+00daeb70: 7570               jne 0x00daebe2
+
+; shared ordinary-path tail
+00daebe2: c68437fc00000001   mov byte ptr [edi+esi+0xfc],1
+00daebea: 5f                 pop edi
+00daebeb: 5e                 pop esi
+00daebec: c20400             ret 4

@@ -1,0 +1,37 @@
+{
+  "address": "0x00DAADD0",
+  "sourceSha256": "9815c2df4c120d43d5cd6915e575f728c9f2e59ba878bede918f3eb112558ac1",
+  "annotatedSha256": "775f23377af7a807cdc3abb5962da706e330e2d80ff450dcdc8d5fe0293265db",
+  "bytesSha256": "e40adc41d9f7625e7348ee34cc1bab9218eedbc7d85eb18405ff578166325f97",
+  "timerContract": {
+    "name": "SetTimer",
+    "scope": "Quest",
+    "returnType": "void",
+    "parameters": [
+      {
+        "name": "timerId",
+        "type": "int",
+        "optional": false
+      },
+      {
+        "name": "timeValue",
+        "type": "int",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Quest API",
+    "description": "Sets timer."
+  },
+  "edits": [
+    {
+      "old": "  ppVar4 = *(pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> **)(param_1 + 0x104);\r\n  GSI->SetTimer(ppVar4,0);",
+      "new": "  GSI->SetTimer(*(int *)(param_1 + 0x104),0);"
+    },
+    {
+      "old": "*(undefined4 *)(param_1 + 100) = 0xfffffc19;",
+      "new": "*(int *)(param_1 + 0x64) = -999;"
+    }
+  ],
+  "review": "DAAE2A SetTimer uses entry quest +104 and zeroed EBX. DAAE30 writes0xfffffc19 to +64, signed Int GUIBullyHealthCounter=-999 per persistence inventory. The mistyped ppVar4 load is dead after speech construction materialization. Preserve timer reset before sentinel store."
+}

@@ -1,0 +1,25 @@
+import json
+import unittest
+from pathlib import Path
+
+from tools.script_recovery.audit_new_oakvale_manage_core_markers import audit
+from tools.script_recovery.export_new_oakvale_manage_core_markers import export
+
+
+class NewOakValeManageCoreMarkersAuditTests(unittest.TestCase):
+    def test_retail_lua_and_interface_evidence_agree(self):
+        root = Path(__file__).resolve().parents[2]
+        result = audit(root)
+        self.assertTrue(result["ok"], result)
+        self.assertEqual(result["retailBytes"], 944)
+
+    def test_checked_in_snapshot_reproduces_from_installed_exe(self):
+        root = Path(__file__).resolve().parents[2]
+        exe = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
+        if not exe.exists(): self.skipTest("installed retail executable is unavailable")
+        actual = export(exe, root / "refs/script_recovery/new_oakvale_intro/entities/Q_NewOakValeIntro.json")
+        expected = json.loads((root / "ghidra_out/script_recovery/new_oakvale_manage_core_markers_retail_bytes.json").read_text(encoding="utf-8"))
+        self.assertEqual(actual, expected)
+
+
+if __name__ == "__main__": unittest.main()

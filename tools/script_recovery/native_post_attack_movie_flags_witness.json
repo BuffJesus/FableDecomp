@@ -1,0 +1,42 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "7345539a6b28c232f5b28ae1701cb3f4ce99137aad83a249efad86a94c013946",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "calls": [
+    {
+      "site": "0xdbee47",
+      "slot": 1516,
+      "name": "PauseAllNonScriptedEntities",
+      "start": 8496,
+      "end": 8531,
+      "original": "GSI->PauseAllNonScriptedEntities();",
+      "word": 1,
+      "type": "bool",
+      "vtableBytes": "b00a8900"
+    },
+    {
+      "site": "0xdbee54",
+      "slot": 1484,
+      "name": "FixMovieSequenceCamera",
+      "start": 8541,
+      "end": 8571,
+      "original": "GSI->FixMovieSequenceCamera();",
+      "word": 1,
+      "type": "bool",
+      "vtableBytes": "00e58800"
+    },
+    {
+      "site": "0xdbee8f",
+      "slot": 1484,
+      "name": "FixMovieSequenceCamera",
+      "start": 9337,
+      "end": 9367,
+      "original": "GSI->FixMovieSequenceCamera();",
+      "word": 0,
+      "type": "bool",
+      "vtableBytes": "00e58800"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "schema": "new-oakvale-bully-run-variance/0.2",
+  "marker": [
+    3596.74,
+    851.895,
+    13.375
+  ],
+  "runStartMarker": [
+    3604.479,
+    860.742,
+    13.707
+  ],
+  "measurementNote": "moved includes the authored pre-run teleport; runStartDisplacement is endpoint displacement, not sampled path length.",
+  "runs": [
+    {
+      "index": 0,
+      "start": [
+        3606.752,
+        861.234,
+        13.665
+      ],
+      "end": [
+        3604.479,
+        860.742,
+        13.707
+      ],
+      "moved": 2.326,
+      "markerRemaining": 11.759,
+      "reachedRetailTolerance": false,
+      "runStartDisplacement": 0.0,
+      "endedAtPreRunTeleport": true,
+      "log": "barrel-visibility-crash-20260909-2038.log"
+    },
+    {
+      "index": 0,
+      "start": [
+        3606.753,
+        861.29,
+        13.68
+      ],
+      "end": [
+        3604.479,
+        860.742,
+        13.707
+      ],
+      "moved": 2.339,
+      "markerRemaining": 11.759,
+      "reachedRetailTolerance": false,
+      "runStartDisplacement": 0.0,
+      "endedAtPreRunTeleport": true,
+      "log": "instrumented-playthrough-20260909-193731.log"
+    },
+    {
+      "index": 0,
+      "start": [
+        3606.752,
+        861.396,
+        13.679
+      ],
+      "end": [
+        3604.479,
+        860.742,
+        13.707
+      ],
+      "moved": 2.365,
+      "markerRemaining": 11.759,
+      "reachedRetailTolerance": false,
+      "runStartDisplacement": 0.0,
+      "endedAtPreRunTeleport": true,
+      "log": "interactive-20260910-redtimer-bullyrun-barrels.log"
+    },
+    {
+      "index": 0,
+      "start": [
+        3606.753,
+        861.479,
+        13.684
+      ],
+      "end": [
+        3604.479,
+        860.742,
+        13.707
+      ],
+      "moved": 2.391,
+      "markerRemaining": 11.759,
+      "reachedRetailTolerance": false,
+      "runStartDisplacement": 0.0,
+      "endedAtPreRunTeleport": true,
+      "log": "interactive-20260911-v11-single-authority-clean.log"
+    },
+    {
+      "index": 0,
+      "start": [
+        3606.757,
+        861.43,
+        13.681
+      ],
+      "end": [
+        3604.479,
+        860.742,
+        13.707
+      ],
+      "moved": 2.38,
+      "markerRemaining": 11.759,
+      "reachedRetailTolerance": false,
+      "runStartDisplacement": 0.0,
+      "endedAtPreRunTeleport": true,
+      "log": "interactive-20260911-v13-bully-bar-red.log"
+    },
+    {
+      "index": 0,
+      "start": [
+        3606.759,
+        861.275,
+        13.67
+      ],
+      "end": [
+        3604.479,
+        860.742,
+        13.707
+      ],
+      "moved": 2.342,
+      "markerRemaining": 11.759,
+      "reachedRetailTolerance": false,
+      "runStartDisplacement": 0.0,
+      "endedAtPreRunTeleport": true,
+      "log": "interactive-20260911-v14-diag-bully-video.log"
+    },
+    {
+      "index": 0,
+      "start": [
+        3606.752,
+        861.396,
+        13.679
+      ],
+      "end": [
+        3604.479,
+        860.742,
+        13.707
+      ],
+      "moved": 2.365,
+      "markerRemaining": 11.759,
+      "reachedRetailTolerance": false,
+      "runStartDisplacement": 0.0,
+      "endedAtPreRunTeleport": true,
+      "log": "single-authority-childhood-complete-20260910.log"
+    },
+    {
+      "index": 0,
+      "start": [
+        3606.745,
+        861.278,
+        13.666
+      ],
+      "end": [
+        3596.74,
+        851.895,
+        13.375
+      ],
+      "moved": 13.72,
+      "markerRemaining": 0.0,
+      "reachedRetailTolerance": true,
+      "runStartDisplacement": 11.759,
+      "endedAtPreRunTeleport": false,
+      "log": "timer-crash-20260909-194627.log"
+    }
+  ],
+  "runCount": 8,
+  "complete": 1,
+  "incomplete": 7,
+  "nondeterministic": true
+}

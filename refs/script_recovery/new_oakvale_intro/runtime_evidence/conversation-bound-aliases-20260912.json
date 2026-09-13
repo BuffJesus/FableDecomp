@@ -1,0 +1,188 @@
+{
+  "scope": "Callee-saved bound-register reaching definitions at all 36 line calls.\n\nBully stack+50 is initialized from entity+8 at DBB31C/DBB339. The pending\npush means the store's written +54 is the later frame's +50 slot.\nOther participant lookup identities remain a manual native/source review.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "entities": [
+    {
+      "entity": "NOVI_AffairMan",
+      "bound_register": "ebp",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdb09ec",
+          "bytes": "8d6e08",
+          "instruction": "lea ebp, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdb198d",
+        "0xdb19bf",
+        "0xdb19d8",
+        "0xdb1b1d",
+        "0xdb1b39"
+      ]
+    },
+    {
+      "entity": "NOVI_AffairWife",
+      "bound_register": "edi",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdb2b1c",
+          "bytes": "8d7e08",
+          "instruction": "lea edi, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdb3385",
+        "0xdb355f",
+        "0xdb3c24",
+        "0xdb3c6f"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelMan",
+      "bound_register": "edi",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdb533c",
+          "bytes": "8d7e08",
+          "instruction": "lea edi, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdb5b17",
+        "0xdb6918"
+      ]
+    },
+    {
+      "entity": "NOVI_BarrelThug",
+      "bound_register": "edi",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdb6c6c",
+          "bytes": "8d7e08",
+          "instruction": "lea edi, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdb747a",
+        "0xdb74e4",
+        "0xdb754e",
+        "0xdb75b8",
+        "0xdb7622",
+        "0xdb768c",
+        "0xdb76fe",
+        "0xdb77a0",
+        "0xdb780a",
+        "0xdb7874",
+        "0xdb78df"
+      ]
+    },
+    {
+      "entity": "NOVI_BookTrader",
+      "bound_register": "ebp",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdb3fac",
+          "bytes": "8d6e08",
+          "instruction": "lea ebp, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdb4e55"
+      ]
+    },
+    {
+      "entity": "NOVI_Bully",
+      "bound_register": "edi",
+      "host_register": "ebp",
+      "last_definitions": [
+        {
+          "address": "0xdbbd9f",
+          "bytes": "8b7c2450",
+          "instruction": "mov edi, dword ptr [esp + 0x50]"
+        }
+      ],
+      "calls": [
+        "0xdbc505",
+        "0xdbc540",
+        "0xdbc68e"
+      ]
+    },
+    {
+      "entity": "NOVI_Guard",
+      "bound_register": "edi",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdac7dd",
+          "bytes": "8d7e08",
+          "instruction": "lea edi, [esi + 8]"
+        },
+        {
+          "address": "0xdad8a7",
+          "bytes": "8d7e08",
+          "instruction": "lea edi, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdac94b",
+        "0xdad96a",
+        "0xdad9b8",
+        "0xdad9fd"
+      ]
+    },
+    {
+      "entity": "NOVI_TeddyGirl",
+      "bound_register": "ebx",
+      "host_register": "ebp",
+      "last_definitions": [
+        {
+          "address": "0xdafaa9",
+          "bytes": "8d5d08",
+          "instruction": "lea ebx, [ebp + 8]"
+        }
+      ],
+      "calls": [
+        "0xdafb29"
+      ]
+    },
+    {
+      "entity": "NOVI_Victim",
+      "bound_register": "edi",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdbcd6c",
+          "bytes": "8d7e08",
+          "instruction": "lea edi, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdbda77",
+        "0xdbdaac"
+      ]
+    },
+    {
+      "entity": "NOVI_Villager",
+      "bound_register": "edi",
+      "host_register": "esi",
+      "last_definitions": [
+        {
+          "address": "0xdadf89",
+          "bytes": "8d7e08",
+          "instruction": "lea edi, [esi + 8]"
+        }
+      ],
+      "calls": [
+        "0xdae534",
+        "0xdae58a",
+        "0xdae988"
+      ]
+    }
+  ],
+  "bully_saved_bound_prefix": "8be9578d750833ffbbe82f2c01568d8c24d0000000897c243c899c24cc00000089742454"
+}

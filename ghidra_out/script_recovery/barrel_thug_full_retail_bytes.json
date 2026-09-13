@@ -1,0 +1,42 @@
+{
+  "schema": "barrel-thug-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CNOVI_BarrelThug",
+  "regions": [
+    {
+      "name": "Init",
+      "address": "0x00DB6BF0",
+      "endExclusive": "0x00DB6C31",
+      "rangeSize": 65,
+      "bytesSha256": "D2DC4A56B4F8265BAFA812550A582DA8E8B2B0E989BEE90C0E8BF32F2B45D8BA",
+      "instructionCount": 25,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB6C60",
+      "endExclusive": "0x00DB7CF1",
+      "rangeSize": 4241,
+      "bytesSha256": "EAFDE7CB9A35B3F6D7C158C455496AF2EA89444352B04E4F7B39DCBDE39ADA09",
+      "instructionCount": 1254,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "Init and complete Main dispatcher",
+    "questState": [
+      "BarrelManLeftHeroInCharge",
+      "BarrelManSpokenToHeroOnReturn",
+      "BarrelBrokenPersistent",
+      "WatchTimer"
+    ],
+    "phases": [
+      "intro",
+      "chat",
+      "nag",
+      "hit"
+    ],
+    "terminalCleanup": "0x00DB7CB5-0x00DB7CF0"
+  }
+}

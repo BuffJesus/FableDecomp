@@ -1,0 +1,29 @@
+{
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "file_checks": {
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\OpenAL32.dll": false,
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\wrap_oal.dll": false,
+    "C:\\Windows\\SysWOW64\\OpenAL32.dll": false,
+    "C:\\Windows\\SysWOW64\\wrap_oal.dll": false,
+    "C:\\Windows\\System32\\OpenAL32.dll": false,
+    "C:\\Windows\\System32\\wrap_oal.dll": false
+  },
+  "known_imports": {
+    "0x143fd78": "GetCurrentDirectoryA",
+    "0x143fe40": "LoadLibraryA",
+    "0x143febc": "GetSystemDirectoryA"
+  },
+  "native_bytes": {
+    "0x4022b0": "e80b2c5a008b407ca394833b01",
+    "0x9a4ec0": "b818a63c01c3",
+    "0xc565f0": "81ec50030000a1a8c83901568bf1898424500300008a860c01000084c074238a84245803000084c0751832c05e8b8c244c030000e8d083faff81c450030000c204005355578b3d78fd43018d442410506805010000c6860c01000001ffd785c08b1d40fe43018b2d3cfe43010f84b100000068388d2b0168040100008d4c241851e81afaffff8d54241052ffd385c0894604752e8d442410506805010000ffd785c0741e68288d2b0168040100008d4c241851e8e8f9ffff8d54241052ffd38946048b460485c074538bcee8c0f2ffff84c0743b68188d2b018bcee8d0f3ffff84c0742b8bcee825f4ffff84c074198bcee80afcffff84c07407b001e9fd0000008bcee8c8f2ffff8bcee891fbffff8b460450ffd5c74604000000008bcee86df5ffff68050100008d4c241451ff15bcfe430185c00f84c100000068388d2b0168040100008d54241852e851f9ffff8d84241c020000508d4c241451ff15b8fe430183f8ff0f849100000050ff15b4fe43018d54241052ffd385c0894604747c8bcee809f2ffff84c074646a008bcee81cf3ffff84c074578d842418010000508bcee809f6ffff8bce8ad8e8f0faffff84db743b8d8c2418010000518bcee8edf2ffff84c074288bcee842f3ffff84c074168bcee827fbffff84c00f8519ffffff8bcee8e8f1ffff8bcee8b1faffff8b560452ffd5c746040000000032c08b8c245c0300005f5d5b5ee8fb81faff81c450030000c2",
+    "0xc57460": "a1b4bd430185c0750c6a00b9b0bd4301e87bf1ffff8b0db4bd430133c085c90f95c0c20c00",
+    "0xc574b0": "568bf18b464485c075238a860401000084c068908b2b017407e87262ffffeb0a8b460450ff1544fe43018946448b4c240c8b5424085152ff564483c4085ec2"
+  },
+  "findings": [
+    "C565F0 searches current directory for /OpenAL32.dll and /wrap_oal.dll, then system directory for /OpenAL32.dll",
+    "All six explicitly checked files absent at inspection time",
+    "This does not identify the active backend or prove OpenAL is the speech attenuation cause",
+    "Observer now captures static loader +4 module, +104 builtin-proc flag, +10C attempted byte; live values pending"
+  ]
+}

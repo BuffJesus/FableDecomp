@@ -59,6 +59,10 @@ local MOVE_RUN = 1                        -- EScriptEntityMoveType literal 1
 local YESNO_ANSWER_YES = 1                -- MsgIsQuestionAnsweredYesOrNo() == 1
 local TIMER_VALUE = 3                     -- native push 3 at 0x00db3328
 local ZERO_POSITION = { x = 0.0, y = 0.0, z = 0.0 }   -- DAT_0143e8e0: used when the husband thing is missing
+-- Compatibility recovery for an engine navigation task that can occasionally finish short of its
+-- requested point.  The retail command remains the primary route; this only reissues that identical
+-- command after it has ended while the retail 3-metre arrival predicate is still false.
+local ROUTE_RETRY_LIMIT = 4
 
 -- Entity-local retail fields (this+0x1c..0x1e, PDB names)
 local GoingForHusband      -- 0x1c
@@ -71,11 +75,11 @@ function Init(quest, me)
     GoingForHusband = false
     ForceFirstTimeSpeak = true
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)              -- retail passes (me, 0, 0); ForgeFSE binding takes one bool
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    quest:SetThingHasInformation(me, false)           -- retail passes (me, 0, 1, 0); ForgeFSE binding takes one bool
+    quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetAsUseMovementInActions(me, false)
-    quest:SetIsPushableByHero(me, false)
+    me:SetIsPushableByHero(false)
     SaidRunningLine = false
     quest:EntitySetDeedReactionsEnabled(me, false)
 end
@@ -96,7 +100,9 @@ end
 -- Retail: if (GetHealth(scripted me) > 0) { Speak(hero, key); while IsPerformingScriptTask: frame }.
 local function speak_if_alive(quest, me, key)
     if quest:GetHealth(me) > SPEAK_HEALTH_THRESHOLD then
-        me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false)
+        if me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false) == false then
+            return false
+        end
         while me:IsPerformingScriptTask() do
             if not NOVI.frame(quest, me) then return false end
         end
@@ -111,15 +117,14 @@ local function begin_movie(quest)
 end
 
 -- Retail: PauseAllNonScriptedEntities(false) then the movie/resource objects are destroyed
--- (inference: the CScriptGameResourceObjectMovieBase destructor ends the movie sequence).
+-- Forge EndMovieSequence invokes the exact retail CScriptGameResourceObjectMovieBase destructor.
 local function end_movie(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     NOVI.release(quest, me)
     quest:EndMovieSequence()
 end
 
--- Retail: EntitySetThingAsAllyOfThing twice around GetHero() (both argument lists dropped).
--- inference: (me, hero) then (hero, me) — she stops being a valid target after being hit.
+-- Retail reciprocal order is instruction-proven at 0x00DB2CF8-0x00DB2D1E.
 local function become_hero_ally(quest, me)
     local hero = quest:GetHero()
     quest:EntitySetThingAsAllyOfThing(me, hero)
@@ -143,8 +148,7 @@ end
 
 -- Sub-phase of TALK: "did you see him?" yes/no question (only once HeroDiscoveredInfidelity is set).
 local function ask_hero_about_husband(quest, me)
-    -- retail GiveHeroYesNoQuestion(question, yes, no, "", 1); the trailing 1 has no ForgeFSE parameter
-    quest:GiveHeroYesNoQuestion(TEXT_QUESTION, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "")
+    quest:GiveHeroYesNoQuestion(TEXT_QUESTION, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "", true)
     local answer = quest:MsgIsQuestionAnsweredYesOrNo()
     while answer < 0 do
         if not NOVI.frame(quest, me) then return false end
@@ -162,7 +166,7 @@ end
 
 -- Phase TALK (idle): layabout complaint, then the question if the hero knows. Returns false on termination.
 local function talked_to_by_hero(quest, me)
-    begin_movie(quest)                                    -- PauseAllNonScriptedEntities argument dropped; inference: true
+    begin_movie(quest)                                    -- literal true proven at 0x00DB2F17
     if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then end_movie(quest, me); return false end
     if not speak_if_alive(quest, me, TEXT_LAYABOUT) then end_movie(quest, me); return false end
     if F.get(quest, F.HeroDiscoveredInfidelity) then
@@ -176,12 +180,12 @@ end
 local function ask_wheres_husband(quest, me)
     local timer = F.get(quest, F.TalkIntermittentTimer)
     if quest:GetTimer(timer) ~= 0 then return end
-    if not (ForceFirstTimeSpeak or math.random(0, ASK_AGAIN_CHANCE_ONE_IN - 1) == 0) then return end
+    if not (ForceFirstTimeSpeak or quest:RetailRandModulo(ASK_AGAIN_CHANCE_ONE_IN) == 0) then return end
     if not NOVI.hero_within(quest, me, HERO_ASK_DISTANCE) then return end
     quest:SetTimer(timer, TIMER_VALUE)
     ForceFirstTimeSpeak = false
     local hero = quest:GetHero()
-    local conv = quest:AddNewConversation(me, false, false)   -- retail args dropped by the decompiler
+    local conv = quest:AddNewConversation(me, false, false)   -- explicit pushes at 0x00DB3334-0x00DB333F
     quest:AddPersonToConversation(conv, hero)
     quest:AddLineToConversation(conv, TEXT_WHERES_HUSBAND, me, hero)
 end
@@ -193,24 +197,52 @@ end
 -- Phase RUN: one MoveToPosition to where the husband stands; returns the husband thing.
 local function start_running_to_husband(quest, me)
     local man = quest:GetThingWithScriptName(SCRIPT_NAME_MAN)
-    quest:EntitySetAsUseMovementInActions(me, true)      -- retail args dropped; literal 1 nearby (inference: (me, true))
+    quest:EntitySetAsUseMovementInActions(me, true)      -- literal true + ME_THING proven at 0x00DB3454-0x00DB345C
     local target = ZERO_POSITION
     if man then target = man:GetPos() end
-    me:MoveToPosition(target, RUN_TO_HUSBAND_RADIUS, MOVE_RUN)
+    local wifePos = me:GetPos()
+    quest:Log(string.format(
+        "NOVI_PROBE AffairWife ROUTE_START husband_def=%s husband_data=%s wife=(%.3f,%.3f,%.3f) husband=(%.3f,%.3f,%.3f) distance=%.3f",
+        man and man:GetDefName() or "<missing>", man and man:GetDataString() or "<missing>",
+        wifePos.x or 0, wifePos.y or 0, wifePos.z or 0,
+        target.x or 0, target.y or 0, target.z or 0,
+        man and (quest:GetDistanceBetweenThings(me, man) or -1) or -1))
+    me:MoveToPosition(target, RUN_TO_HUSBAND_RADIUS, MOVE_RUN, false, true)
     quest:ClearThingHasInformation(me)
     return man
 end
 
 -- Phase RUN wait loop: say the running line once she is 10 from home; wait until within 3 of him.
 local function wait_until_husband_reached(quest, me, man)
+    local retryCount = 0
     while not quest:IsDistanceBetweenThingsUnder(me, man, HUSBAND_REACHED_DISTANCE) do
         if not SaidRunningLine and NOVI.distance_from_thing_to_position_over(me, me:GetHomePos(), RUNNING_LINE_DISTANCE) then
             local conv = quest:AddNewConversation(me, false, false)   -- retail AddNewConversation(me, 0)
             quest:AddLineToConversation(conv, TEXT_RUNNING_TO_HUBBY, me, nil)   -- retail listener is a null CScriptThing
             SaidRunningLine = true
         end
+        if retryCount < ROUTE_RETRY_LIMIT and not me:IsPerformingScriptTask() then
+            local target = man and man:GetPos() or ZERO_POSITION
+            local wifePos = me:GetPos()
+            retryCount = retryCount + 1
+            quest:Log(string.format(
+                "NOVI_PROBE AffairWife ROUTE_RETRY count=%d wife=(%.3f,%.3f,%.3f) husband=(%.3f,%.3f,%.3f) distance=%.3f",
+                retryCount,
+                wifePos.x or 0, wifePos.y or 0, wifePos.z or 0,
+                target.x or 0, target.y or 0, target.z or 0,
+                man and (quest:GetDistanceBetweenThings(me, man) or -1) or -1))
+            me:MoveToPosition(target, RUN_TO_HUSBAND_RADIUS, MOVE_RUN, false, true)
+        end
         if not NOVI.frame(quest, me) then return false end
     end
+    local wifePos = me:GetPos()
+    local manPos = man and man:GetPos() or ZERO_POSITION
+    quest:Log(string.format(
+        "NOVI_PROBE AffairWife ROUTE_REACHED husband_def=%s husband_data=%s wife=(%.3f,%.3f,%.3f) husband=(%.3f,%.3f,%.3f) distance=%.3f",
+        man and man:GetDefName() or "<missing>", man and man:GetDataString() or "<missing>",
+        wifePos.x or 0, wifePos.y or 0, wifePos.z or 0,
+        manPos.x or 0, manPos.y or 0, manPos.z or 0,
+        man and (quest:GetDistanceBetweenThings(me, man) or -1) or -1))
     return true
 end
 
@@ -221,19 +253,19 @@ local function argue_react_to_hit(quest, me, man)
     if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then return false end
     begin_movie(quest)
     if not speak_if_alive(quest, me, TEXT_ON_HIT) then end_movie(quest, me); return false end
-    quest:EntitySetFacingAngleTowardsThing(me, man) -- retail (me, husband, 1); trailing flag unavailable
+    quest:EntitySetFacingAngleTowardsThing(me, man, true)
     end_movie(quest, me)
     return true
 end
 
 -- Sub-phase of ARGUE: talked to while arguing.
 local function argue_talked_to(quest, me, man)
-    if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then return false end   -- retail priority dropped
+    if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then return false end   -- retail pushes priority 4 at 0x00DB39C9/0x00DB39F4
     me:ClearAllActions()
     me:ClearCommands()
     begin_movie(quest)
     if not speak_if_alive(quest, me, TEXT_THANKYOU_SINGLE) then end_movie(quest, me); return false end
-    quest:EntitySetFacingAngleTowardsThing(me, man) -- retail (me, husband, 1); trailing flag unavailable
+    quest:EntitySetFacingAngleTowardsThing(me, man, true)
     end_movie(quest, me)
     return true
 end
@@ -251,7 +283,7 @@ local function argue_conversation(quest, me, man)
         key = TEXT_WHATS_THIS_FALLBACK
     end
     quest:AddLineToConversation(conv, key, me, man)
-    if math.random(0, 1) == 0 then                                -- rand() & 1 == 0
+    if quest:RetailRandModulo(2) == 0 then                        -- retail rand() & 1 == 0
         quest:AddLineToConversation(conv, TEXT_MAN_IN_TROUBLE, man, me)
     end
 end
@@ -262,21 +294,21 @@ local function argue_with_husband(quest, me, man)
     quest:EntitySetAsUseMovementInActions(me, false)
     while true do
         if NOVI.hero_within(quest, me, ARGUE_HERO_DISTANCE) then
-            if math.random(0, 1) == 0 then                        -- rand() & 1 == 0
-                me:PlayAnimation(ANIM_POINT_AWAY)                 -- retail flags (0,0,0,1,DAT_01375748=true,0)
+            if quest:RetailRandModulo(2) == 0 then                -- retail rand() & 1 == 0
+                me:PlayAnimation(ANIM_POINT_AWAY, false, false, false, true, true, false, false)
             else
-                me:PlayAnimation(ANIM_POINT_AT)                   -- retail flags (0,0,0,1,DAT_01375748=true,0)
+                me:PlayAnimation(ANIM_POINT_AT, false, false, false, true, true, false, false)
             end
             while me:IsPerformingScriptTask() do
                 if not NOVI.frame(quest, me) then return false end
-                quest:EntitySetFacingAngleTowardsThing(me, man)
+                quest:EntitySetFacingAngleTowardsThing(me, man, false)
                 if hit_by_hero(me) then
                     if not argue_react_to_hit(quest, me, man) then return false end
                 end
                 if me:IsTalkedToByHero() then
                     if not argue_talked_to(quest, me, man) then return false end
                 end
-                if not (last_conversation and quest:IsConversationActive(last_conversation)) then   -- retail arg dropped
+                if not (last_conversation and quest:IsConversationActive(last_conversation)) then   -- retail pushes the saved AddNewConversation handle
                     argue_conversation(quest, me, man)
                 end
             end

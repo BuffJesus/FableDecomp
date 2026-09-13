@@ -1,0 +1,91 @@
+{
+  "address": "0x00DBE4E0",
+  "size": 944,
+  "sourceSha256": "6e7c86d01ce670e33273f1bd424fc35ca6a2185533484e5ca621be5fdd987355",
+  "annotatedSha256": "6f1c428850c8a7336c891b4156b4f06152e1f994430b1e27937da26057a5dfb3",
+  "bytesSha256": "fc7cfc9414f10c1ca5b0b81a3493597b9f5218f27286a85087d8ffe63a807765",
+  "actors": {
+    "father": {
+      "offset": 12,
+      "stringAddress": "0x12d8378",
+      "scriptName": "NOVI_LiveFather",
+      "output": "local_native_marker_father"
+    },
+    "trader": {
+      "offset": 36,
+      "stringAddress": "0x12d82d8",
+      "scriptName": "NOVI_BookTrader",
+      "output": "local_native_marker_trader"
+    },
+    "theresa": {
+      "offset": 24,
+      "stringAddress": "0x12d8360",
+      "scriptName": "NOVI_Theresa",
+      "output": "local_native_marker_theresa"
+    }
+  },
+  "textureAddress": "0x01258AB0",
+  "texture": "HUD_ORB_QUEST_CORE",
+  "calls": [
+    {
+      "site": "0xdbe506",
+      "slot": 288,
+      "actor": "father",
+      "original": "GSI->GetThingWithScriptName();"
+    },
+    {
+      "site": "0xdbe534",
+      "slot": 288,
+      "actor": "trader",
+      "original": "GSI->GetThingWithScriptName();"
+    },
+    {
+      "site": "0xdbe562",
+      "slot": 288,
+      "actor": "theresa",
+      "original": "GSI->GetThingWithScriptName();"
+    },
+    {
+      "site": "0xdbe590",
+      "slot": 1400,
+      "actor": "father",
+      "original": "GSI->MiniMapAddMarker();"
+    },
+    {
+      "site": "0xdbe634",
+      "slot": 1408,
+      "actor": "father",
+      "original": "GSI->MiniMapRemoveMarker();"
+    },
+    {
+      "site": "0xdbe659",
+      "slot": 1400,
+      "actor": "trader",
+      "original": "GSI->MiniMapAddMarker(ppVar5,&stack0xffffffb4);"
+    },
+    {
+      "site": "0xdbe710",
+      "slot": 1408,
+      "actor": "trader",
+      "original": "GSI->MiniMapRemoveMarker();"
+    },
+    {
+      "site": "0xdbe735",
+      "slot": 1400,
+      "actor": "theresa",
+      "original": "GSI->MiniMapAddMarker(&stack0xffffffc4,&stack0xffffffb4);"
+    },
+    {
+      "site": "0xdbe780",
+      "slot": 1408,
+      "actor": "theresa",
+      "original": "GSI->MiniMapRemoveMarker();"
+    },
+    {
+      "site": "0xdbe7a5",
+      "slot": 1400,
+      "actor": "father",
+      "original": "GSI->MiniMapAddMarker(&stack0xffffffb8,&stack0xffffffb4);"
+    }
+  ]
+}

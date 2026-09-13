@@ -1,0 +1,20 @@
+{
+  "schema": "new-oakvale-onpersist-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DAADA0",
+  "rangeSize": 33,
+  "functionBytesSha256": "1C64D4F6E084EC19A985B5C030BA9FC35B6C711E5C69BE7FC336C883D1E3702F",
+  "transfers": [
+    {
+      "key": "AttackOver",
+      "keyAddress": "0x012D7A58",
+      "fieldOffset": "0x50",
+      "fieldAddressInstruction": "0x00DAADA6",
+      "valueWidth": 1,
+      "defaultWidth": 1,
+      "defaultValue": 0,
+      "transferTarget": "0x004045C0"
+    }
+  ]
+}

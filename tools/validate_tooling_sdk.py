@@ -22,11 +22,13 @@ def main() -> int:
     root = args.root.resolve()
     manifest_path = root / "rebuild" / "manifest" / "functions.tsv"
     overlay_path = root / "rebuild" / "sdk" / "fse_native_overlay.json"
+    fse_manifest_path = root / "refs" / "fse_api_manifest.json"
     header_path = root / "ghidra_out" / "fable_engine.h"
     with manifest_path.open("r", encoding="utf-8-sig", newline="") as stream:
         functions = list(csv.DictReader(stream, delimiter="\t"))
     by_address = {f"0x{int(row['address'], 16):08X}": row for row in functions}
     overlay = json.loads(overlay_path.read_text(encoding="utf-8-sig"))
+    fse_manifest = json.loads(fse_manifest_path.read_text(encoding="utf-8-sig"))
     errors: list[str] = []
     if overlay.get("schemaVersion") != "1.1.0":
         errors.append(f"expected overlay schema 1.1.0, found {overlay.get('schemaVersion')!r}")
@@ -36,14 +38,16 @@ def main() -> int:
     if policy.get("engineVerificationIsNotBindingVerification") is not True:
         errors.append("overlay policy must separate engine verification from binding verification")
     fse_functions = overlay.get("functions", [])
-    # AlbionSecrets' 2025-11-05 tutorial header and the corresponding
-    # LuaManager registrations expose 933 unique Lua-facing names.  The older
-    # 931-row snapshot omitted the two conversation-construction functions.
-    if len(fse_functions) != 933:
-        errors.append(f"expected 933 FSE functions, found {len(fse_functions)}")
     names = [(item.get("scope"), item.get("name")) for item in fse_functions]
     if len(names) != len(set(names)):
         errors.append("duplicate scope/name rows in FSE overlay")
+    manifest_names = [(item.get("scope"), item.get("name"))
+                      for item in fse_manifest.get("functions", [])]
+    if len(names) != len(manifest_names):
+        errors.append(
+            f"overlay has {len(names)} FSE functions, manifest has {len(manifest_names)}")
+    if set(names) != set(manifest_names):
+        errors.append("overlay scope/name keys differ from the FSE manifest")
     candidate_count = 0
     recommended_count = 0
     hook_approved_count = 0

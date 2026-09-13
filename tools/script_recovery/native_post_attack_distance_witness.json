@@ -1,0 +1,40 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "4933cd38ad1b9821c2fc82b3173da677498eb6b3e60c409810a8f39b11ada773",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "scriptNameAddress": "0x12d9de4",
+  "scriptName": "MK_OVI_DADTRIGGER",
+  "lookupSite": "0xdbed2c",
+  "lookupText": "      ppVar9 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&stack0xffffff94;\r\n      GSI->GetThingWithScriptName();",
+  "lookupCount": 1,
+  "distanceChecks": [
+    {
+      "distanceSite": "0xdbed51",
+      "heroSite": "0xdbed45",
+      "knownSetupCalls": {
+        "0xdbed45": [
+          0,
+          "hero"
+        ]
+      }
+    },
+    {
+      "distanceSite": "0xdbed8d",
+      "heroSite": "0xdbed81",
+      "knownSetupCalls": {
+        "0xdbed81": [
+          0,
+          "hero"
+        ]
+      }
+    }
+  ],
+  "distance": 5.0,
+  "originalDistance": "IsDistanceBetweenThingsUnder(pCVar8,(CScriptThing *)&stack0xffffff8c,fVar11)",
+  "outputSlot": "local_native_father_trigger",
+  "distanceReceiver": "pCVar8",
+  "distanceOperand": "5.0",
+  "review": "Both distance windows address cached output at baseline ESP+28; GetHero result goes into ECX, 5.0 is pushed; lookup is outside wait, both checks share output. Per-function stack baseline relationship reviewed, not globally inferred."
+}

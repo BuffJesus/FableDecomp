@@ -1,0 +1,52 @@
+{
+  "schema": "bully-given-teddy-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "region": {
+    "address": "0x00DBCD00",
+    "endExclusive": "0x00DBCD58",
+    "rangeSize": 88,
+    "bytesSha256": "0169698B1146121A67F49725F96ABDD31DD776ED974A5D2D686C67B42CCFEE69",
+    "instructionCount": 28
+  },
+  "operations": [
+    {
+      "order": 1,
+      "name": "GiveHeroGold",
+      "value": 1,
+      "argumentSite": "0x00DBCD09",
+      "callSite": "0x00DBCD0B",
+      "slot": "0x1F8"
+    },
+    {
+      "order": 2,
+      "name": "TakeObjectFromHero",
+      "object": "OBJECT_TEDDY_BEAR_UNGIVEABLE",
+      "stringPushSite": "0x00DBCD13",
+      "callSite": "0x00DBCD2B",
+      "slot": "0x1F4"
+    },
+    {
+      "order": 3,
+      "name": "SpokeAboutFindingTeddy",
+      "value": true,
+      "storeSite": "0x00DBCD3D",
+      "parentOffset": "0x70"
+    },
+    {
+      "order": 4,
+      "name": "TeddyRuined",
+      "value": true,
+      "storeSite": "0x00DBCD44",
+      "parentOffset": "0x91"
+    },
+    {
+      "order": 5,
+      "name": "AddBadDeed",
+      "value": 3,
+      "argumentSite": "0x00DBCD4E",
+      "callSite": "0x00DBCD50",
+      "target": "0x00DAEA70"
+    }
+  ]
+}

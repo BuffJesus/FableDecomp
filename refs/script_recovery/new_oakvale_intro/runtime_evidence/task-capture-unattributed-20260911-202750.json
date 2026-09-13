@@ -1,0 +1,240 @@
+{
+  "schema": "cutscene-task-capture/0.1",
+  "runs": [
+    {
+      "macro": "CS_OAKVALE_INTRO_FATHER",
+      "beginLine": 1327,
+      "actors": {
+        "Father": "0x48cfcd8",
+        "Hero": "0x48d0278"
+      },
+      "controllers": {
+        "0x48d18f8": {
+          "issues": [],
+          "pollCount": 33,
+          "activePollCount": 33,
+          "transitions": [
+            {
+              "line": 1341,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48cfa68": {
+          "issues": [
+            {
+              "line": 1367,
+              "kind": "issue",
+              "operands": "destination=(3605.2,859.268,13.6059) radius=0 moveType=0 b1=0 b2=1"
+            }
+          ],
+          "pollCount": 33,
+          "activePollCount": 33,
+          "transitions": [
+            {
+              "line": 1369,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48cf9d8": {
+          "issues": [],
+          "pollCount": 1,
+          "activePollCount": 0,
+          "transitions": [
+            {
+              "line": 1386,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48cf978": {
+          "issues": [],
+          "pollCount": 27,
+          "activePollCount": 27,
+          "transitions": [
+            {
+              "line": 1393,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        }
+      },
+      "speech": [],
+      "ended": true,
+      "endLine": 1472,
+      "bullyBoundary": {
+        "controller": null,
+        "issueCount": 0,
+        "pollCount": 0,
+        "interpretation": "Observed calls only. No issue does not prove rejection; no actor-matched poll does not prove task completion. Polls may also belong to speech or other tasks."
+      }
+    },
+    {
+      "macro": "CS_OAKVALEINTRO_BULLYRUN1",
+      "beginLine": 1597,
+      "actors": {
+        "BULLY": "0x48cfa68",
+        "HERO": "0x16559560",
+        "BRAT": "0x48cfac8"
+      },
+      "controllers": {
+        "0x48cf978": {
+          "issues": [],
+          "pollCount": 39,
+          "activePollCount": 37,
+          "transitions": [
+            {
+              "line": 1599,
+              "active": 0
+            },
+            {
+              "line": 1616,
+              "active": 1
+            },
+            {
+              "line": 1691,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48d18f8": {
+          "issues": [],
+          "pollCount": 48,
+          "activePollCount": 48,
+          "transitions": [
+            {
+              "line": 1600,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48cf9d8": {
+          "issues": [],
+          "pollCount": 1,
+          "activePollCount": 0,
+          "transitions": [
+            {
+              "line": 1610,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        }
+      },
+      "speech": [
+        {
+          "line": 1636,
+          "operands": "macro=CS_OAKVALEINTRO_BULLYRUN1 controller=0x48cfa68 target=0x1ae014 method=0 listen=0 soundIn2D=1 overFade=0 key=TEXT_QST_048_BULLY_GOING_AWAY"
+        }
+      ],
+      "ended": true,
+      "endLine": 1696,
+      "bullyBoundary": {
+        "controller": "0x48cfa68",
+        "issueCount": 0,
+        "pollCount": 0,
+        "interpretation": "Observed calls only. No issue does not prove rejection; no actor-matched poll does not prove task completion. Polls may also belong to speech or other tasks."
+      }
+    },
+    {
+      "macro": "CS_OAKVALEINTRO_BULLYRUN2",
+      "beginLine": 1748,
+      "actors": {
+        "BULLY": "0x48cfa68",
+        "HERO": "0x16559560",
+        "BRAT": "0x48cfac8"
+      },
+      "controllers": {
+        "0x48d18f8": {
+          "issues": [],
+          "pollCount": 46,
+          "activePollCount": 45,
+          "transitions": [
+            {
+              "line": 1750,
+              "active": 1
+            },
+            {
+              "line": 1851,
+              "active": 0
+            },
+            {
+              "line": 1856,
+              "active": 1
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48cf9d8": {
+          "issues": [],
+          "pollCount": 1,
+          "activePollCount": 0,
+          "transitions": [
+            {
+              "line": 1757,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48cf978": {
+          "issues": [],
+          "pollCount": 41,
+          "activePollCount": 40,
+          "transitions": [
+            {
+              "line": 1763,
+              "active": 1
+            },
+            {
+              "line": 1884,
+              "active": 0
+            }
+          ],
+          "actorNames": []
+        },
+        "0x48cfac8": {
+          "issues": [],
+          "pollCount": 38,
+          "activePollCount": 37,
+          "transitions": [
+            {
+              "line": 1768,
+              "active": 1
+            },
+            {
+              "line": 1881,
+              "active": 0
+            }
+          ],
+          "actorNames": [
+            "BRAT"
+          ]
+        }
+      },
+      "speech": [
+        {
+          "line": 1767,
+          "operands": "macro=CS_OAKVALEINTRO_BULLYRUN2 controller=0x48cfac8 target=0x1ae02c method=0 listen=0 soundIn2D=1 overFade=0 key=TEXT_QST_048_VICTIM_THANKS_HAVE_ROSIE"
+        }
+      ],
+      "ended": true,
+      "endLine": 1887,
+      "bullyBoundary": {
+        "controller": "0x48cfa68",
+        "issueCount": 0,
+        "pollCount": 0,
+        "interpretation": "Observed calls only. No issue does not prove rejection; no actor-matched poll does not prove task completion. Polls may also belong to speech or other tasks."
+      }
+    }
+  ],
+  "log": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\session-start-20260912\\installed\\FSE\\FableScriptExtender.log",
+  "sha256": "C6A2F666517B51D7446416530FA47674FF929352B8AB19567C566861BEAF0E18"
+}

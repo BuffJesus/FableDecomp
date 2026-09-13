@@ -9,7 +9,7 @@
   "Entity.IsTalkedToByHero":[false],
   "Quest.GetStateInt(TalkIntermittentTimer)":[901],
   "Quest.GetTimer(901)":[0],
-  "Lua.math.random":[0],
+  "Quest.RetailRandModulo(200)":[0],
   "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
   "Quest.IsDistanceBetweenThingsUnder":[true],
   "Quest.AddNewConversation":[{"handle":"roll_up","scope":"Entity"}]

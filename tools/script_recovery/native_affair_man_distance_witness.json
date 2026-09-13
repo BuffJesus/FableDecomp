@@ -1,0 +1,43 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5052,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "36b1654abd212d61063029da6b2c8019ab0d38e4af7a45aa1b5ac71b4afbd0ba",
+  "bytesSha256": "a7161d3ca19506c2cc3e7a1fe7af2b3912b879187e880a7aeb58bd79e562b368",
+  "lookupSite": "0xdb0b07",
+  "scriptNameAddress": "0x12d82e8",
+  "scriptName": "NOVI_AffairWife",
+  "distance": 5.0,
+  "lookupCount": 2,
+  "lookupOccurrence": 1,
+  "originalDistance": "IsDistanceBetweenThingsUnder(pCVar1,(CScriptThing *)&stack0xfffffeb8,5.0)",
+  "outputSlot": "local_native_cached_wife",
+  "distanceReceiver": "pCVar1",
+  "distanceOperand": "5.0",
+  "distanceChecks": [
+    {
+      "distanceSite": "0xdb0ee7",
+      "knownSetupCalls": {},
+      "receiverRegister": "ebp"
+    },
+    {
+      "distanceSite": "0xdb162d",
+      "knownSetupCalls": {},
+      "receiverRegister": "ebp",
+      "originalDistance": "IsDistanceBetweenThingsUnder(pCVar1,aCStack_130,5.0)"
+    }
+  ],
+  "review": "DB0B07 second lookup returns wife wrapper baselineESP+2C. Both checks address ESP+30 after pushing 5.0, therefore the same cached wrapper despite distinct decompiler stack names. EBP=entity this+8 atDB09EC and is not written again until epilogue. First lookupDB0AD9 is AffairWoman atESP+20 and must not be relabeled as wife.",
+  "profiledCallees": [
+    {
+      "address": "0xcbe2ff",
+      "size": 114,
+      "bytesSha256": "9d320829e96a4ce4eff39dc46e20f3f1e0a8ef2099ba02663064501ad10d6c57"
+    },
+    {
+      "address": "0x8a7d60",
+      "size": 151,
+      "bytesSha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+    }
+  ]
+}

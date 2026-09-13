@@ -1,0 +1,42 @@
+{
+  "schema": "bully-skip-runtime-audit/0.1",
+  "ok": true,
+  "checks": {
+    "bothNativeMacrosReturned": true,
+    "baselineExecutedNativeRunTo": true,
+    "baselineIssuedMovementOnBullyController": true,
+    "baselineHadNoLuaFallback": true,
+    "earlySkipQueryObserved": true,
+    "earlySkipCommandsMatchRetailSkipCondExactly": true,
+    "earlySkipNeverDispatchedRunTo": true,
+    "earlySkipHadNoNativeMovementIssueOnBully": true,
+    "earlySkipEndedAtBully1": true,
+    "luaFallbackRanAfterSkip": true,
+    "fallbackReachedBully2": true
+  },
+  "inputs": {
+    "userReportedUnskipped": {
+      "path": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260912-v20-unskipped-success.log",
+      "sha256": "3694107FE4FB6C5FB779D18950F59101D0CD64F9DCF4F6A48F6509F48619E473"
+    },
+    "earlySkip": {
+      "path": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260912-v20-early-skip-complete.log",
+      "sha256": "4AAB4224667D43FFE49C0E928E741F3612C80A5945082C3CA828683F741A24E8"
+    },
+    "macros": {
+      "path": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\bully-installed-macros-20260912.json",
+      "sha256": "D76AAEB039418E153E95E7E6CD7422596B308A3F5D872E19445ED3FB85525CF0"
+    }
+  },
+  "earlySkipExecutedTail": [
+    "FadeOut",
+    "GamePause 0.5",
+    "HERO.Teleport MK_OIBR_HERO2",
+    "BRAT.Teleport MK_OIBR_BRAT1",
+    "BRAT.LookToThing HERO,FOREVER",
+    "HERO.LookAtNothing TRUE",
+    "BULLY.Drawable FALSE",
+    "FadeIn"
+  ],
+  "limits": "Observed command dispatch and endpoint evidence; visual fix and audio require separate live verification. A true engine skip query alone does not prove user input."
+}

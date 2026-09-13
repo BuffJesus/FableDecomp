@@ -1,0 +1,19 @@
+{
+  "schema": "new-oakvale-quest-ownership/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "imageBase": "0x00400000",
+  "allocator": {
+    "address": "0x00DBEF70",
+    "functionBytesSha256": "DB58036BE52FC41BF97D9991948457FB1B17111B1605367F1934ECF237DE1D4B",
+    "objectSize": 268,
+    "operatorNewTarget": "0x00BFEA1A",
+    "constructorTarget": "0x00DAAC00"
+  },
+  "constructor": {
+    "address": "0x00DAAC00",
+    "functionBytesSha256": "89A9BEDAC2BCAB6F69AFC617168771A529E609213CBF6CE8C2CD0A4576DE55CC",
+    "baseConstructorTarget": "0x00CB8110",
+    "installedVtable": "0x012D7A28"
+  }
+}

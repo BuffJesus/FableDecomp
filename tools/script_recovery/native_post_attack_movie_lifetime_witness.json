@@ -1,0 +1,20 @@
+{
+  "address": "0x00DBEB20",
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "d92287b5b911d386e2f93dab75bf1d52bb2a65de6dc06b6d18f0c128d7657bac",
+  "constructor": "CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&stack0xffffff9c);",
+  "destructor": "CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase\r\n                  ((CScriptGameResourceObjectMovieBase *)&stack0xffffff74);",
+  "callees": [
+    {
+      "address": "0x6e7b60",
+      "size": 26,
+      "bytesSha256": "a57f349ecfe373e4e92be7445ba5c8a19d1f7b5c7cd54df6ef3f977deb846834"
+    },
+    {
+      "address": "0x6e7b80",
+      "size": 66,
+      "bytesSha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+    }
+  ],
+  "binding": "Runtime CBaseObject_Construct_API99A380, movie vtable1260EF4, destructor6E7B80. StartMovieSequence constructs per-Lua-state resource and passes empty class; EndMovieSequence invokes same derived destructor before freeing."
+}

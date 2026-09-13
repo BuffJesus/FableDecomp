@@ -1,0 +1,166 @@
+{
+  "scope": "Execute native map constructors/destructors with bounded heap/string doubles.\n\nOne-node boolean trees are supplied explicitly, not inserted by a mocked parser.\nWrong actor cleanup stops at the resource destructor before invalid reads.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "ctor": "0xcdbf70",
+      "dtor": "0x7add50",
+      "populated": false,
+      "value": false,
+      "sentinel_allocation": [
+        36
+      ],
+      "events": [
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0xcdbf70",
+      "dtor": "0x7add50",
+      "populated": true,
+      "value": false,
+      "sentinel_allocation": [
+        36
+      ],
+      "events": [
+        "destroy_key",
+        "free_node",
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0xcdbf70",
+      "dtor": "0x7add50",
+      "populated": true,
+      "value": true,
+      "sentinel_allocation": [
+        36
+      ],
+      "events": [
+        "destroy_key",
+        "free_node",
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0xcdbf70",
+      "dtor": "0xcdbfb0",
+      "populated": false,
+      "value": false,
+      "sentinel_allocation": [
+        36
+      ],
+      "events": [
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0xcdbf70",
+      "dtor": "0xcdbfb0",
+      "populated": true,
+      "value": false,
+      "sentinel_allocation": [
+        36
+      ],
+      "events": [
+        "INVALID_boolean_value_as_resource"
+      ]
+    },
+    {
+      "ctor": "0xcdbf70",
+      "dtor": "0xcdbfb0",
+      "populated": true,
+      "value": true,
+      "sentinel_allocation": [
+        36
+      ],
+      "events": [
+        "INVALID_boolean_value_as_resource"
+      ]
+    },
+    {
+      "ctor": "0x9ac2d0",
+      "dtor": "0x7add50",
+      "populated": false,
+      "value": false,
+      "sentinel_allocation": [
+        24
+      ],
+      "events": [
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0x9ac2d0",
+      "dtor": "0x7add50",
+      "populated": true,
+      "value": false,
+      "sentinel_allocation": [
+        24
+      ],
+      "events": [
+        "destroy_key",
+        "free_node",
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0x9ac2d0",
+      "dtor": "0x7add50",
+      "populated": true,
+      "value": true,
+      "sentinel_allocation": [
+        24
+      ],
+      "events": [
+        "destroy_key",
+        "free_node",
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0x9ac2d0",
+      "dtor": "0xcdbfb0",
+      "populated": false,
+      "value": false,
+      "sentinel_allocation": [
+        24
+      ],
+      "events": [
+        "free_head"
+      ]
+    },
+    {
+      "ctor": "0x9ac2d0",
+      "dtor": "0xcdbfb0",
+      "populated": true,
+      "value": false,
+      "sentinel_allocation": [
+        24
+      ],
+      "events": [
+        "INVALID_boolean_value_as_resource"
+      ]
+    },
+    {
+      "ctor": "0x9ac2d0",
+      "dtor": "0xcdbfb0",
+      "populated": true,
+      "value": true,
+      "sentinel_allocation": [
+        24
+      ],
+      "events": [
+        "INVALID_boolean_value_as_resource"
+      ]
+    }
+  ],
+  "bytes": {
+    "0xcdbf70": "568bf16a24c70600000000e88e2af2ff8906c7460400000000c600008b06c74004000000008b068940088b0683c40489400c8bc65ec3cccccccccccccccccccc568bf18b460485c074278b068b4804518bcee88374ffff8b068940088b16c74204000000008b0689400cc74604000000008b3685f6740956e8272af2ff83c4045ec3",
+    "0x9ac2d0": "568bf16a18c70600000000e82e2725008906c7460400000000c600008b06c74004000000008b068940088b0683c40489400c8bc65ec3",
+    "0x7add50": "568bf18b460485c074278b068b4804518bcee8e9eeffff8b068940088b16c74204000000008b0689400cc74604000000008b3685f6740956e8870c450083c4045ec3",
+    "0x7acc50": "53568b74240c85f68bd9742a578d49008b460c508bcbe8e5ffffff8b7e088d4e10e86a1e1f0056e8981d450083c40485ff8bf775db5f5e5bc20400",
+    "0xcd344a": "558bec51538b5d0885db894dfc746756578b7b0c85ff74448b770ceb23ff760c8b4dfce8d8ffffff8b46088d4e10894508e834f3ffff56e88eb5f2ff8b75085985f675d98b77088d4f10e81bf3ffff57e875b5f2ff85f6598bfe75bc8b73088d4b10e803f3ffff53e85db5f2ff85f6598bde759d5f5e5bc9c20400",
+    "0xcd27b4": "568bf18d4e04e8114db1ff8bce5ee919c3ccff"
+  }
+}

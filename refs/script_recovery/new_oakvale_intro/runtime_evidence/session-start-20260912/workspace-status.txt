@@ -1,0 +1,652 @@
+ M docs/HANDOFF.md
+ M docs/INDEX.md
+ M docs/ROADMAP.md
+ M docs/pipeline/GOTCHAS.md
+ M docs/scripts/NEW_OAKVALE_INTRO_RECONSTRUCTION.md
+ M rebuild/ARTIFACT_INDEX.tsv
+ M rebuild/compile-gate/README.md
+ M rebuild/compile-gate/summary.json
+ M rebuild/sdk/fse_native_overlay.json
+ M refs/fse_api_manifest.json
+ M refs/script_recovery/foundation_audit.json
+ M refs/script_recovery/native_clusters/Q_NewOakValeIntro.json
+ M refs/script_recovery/new_oakvale_intro/FORGEFSE_API_GAPS.md
+ M refs/script_recovery/new_oakvale_intro/api_requirements.json
+ M refs/script_recovery/new_oakvale_intro/coverage.json
+ M refs/script_recovery/new_oakvale_intro/coverage.md
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_AffairMan.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_AffairWife.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_AffairWoman.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_Barrel.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_BarrelMan.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_BarrelThug.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_BookTrader.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_Bully.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_CreatedBeetle.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_Guard.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_LiveFather.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_TeddyGirl.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_Theresa.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_Victim.json
+ M refs/script_recovery/new_oakvale_intro/entities/NOVI_Villager.json
+ M refs/script_recovery/new_oakvale_intro/entities/OVI_DeadFather.json
+ M refs/script_recovery/new_oakvale_intro/entities/Q_NewOakValeIntro.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_man_accepts_bribe.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_man_first_near_exchange.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_man_first_ranged_exchange.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_wife_reaches_argument.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_wife_wheres_husband.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_woman_hit_reaction.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_woman_runs_off.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_man_hands_over_warehouse.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_man_rebukes_absent_hero.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_man_returns_and_thanks_hero.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_thug_hit_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_thug_intro_and_first_nag.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_thug_outro_chat.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_thug_special_hit.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_book_trader_hit_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_book_trader_returns_home.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_book_trader_roll_up_shout.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_book_trader_shout_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_book_trader_special_hit.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_accepts_teddy.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_first_intimidation.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_four_hits_run_off.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_walks_home.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_teddy_girl_returns_teddy.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_teddy_girl_scold_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_teddy_girl_special_hit.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_theresa_accepts_chocolates_and_starts_raid.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_victim_freed_thanks.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_villager_female_both_mutter_rerolls.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_villager_hit_then_reproaches_hero.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/entity_villager_male_good_mutter.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_add_bad_deed_first.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_add_good_deed_first.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_attack_stuff_section_swap.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_domission_attack_transition.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_main_fresh_start.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_main_reload_after_attack.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_post_attack_wait_terminated.json
+ M refs/script_recovery/new_oakvale_intro/fixtures/quest_thread_watch_barrels.json
+ M refs/script_recovery/new_oakvale_intro/persistence_manifest.json
+ M refs/script_recovery/new_oakvale_intro/state_manifest.json
+ M refs/script_recovery/new_oakvale_intro/test_matrix.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_man_accepts_bribe.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_man_first_near_exchange.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_man_first_ranged_exchange.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_man_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_man_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_wife_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_wife_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_wife_reaches_argument.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_wife_wheres_husband.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_woman_busy_chat.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_woman_hit_reaction.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_woman_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_woman_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_woman_receives_kiss.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_affair_woman_runs_off.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_hands_over_warehouse.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_rebukes_absent_hero.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_returns_and_thanks_hero.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_pc_tutorial.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_predicate_fail.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_chat_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_hit_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_intro_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_intro_and_first_nag.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_outro_chat.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_special_hit.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_hit_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_idle_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_returns_home.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_roll_up_shout.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_sale_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_sells_sweets.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_shout_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_special_hit.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_accepts_teddy.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_first_intimidation.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_first_talk_then_in_common.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_four_hits_run_off.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_initial_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_loop_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_talk_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_bully_walks_home.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_created_beetle_expires.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_created_beetle_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_created_beetle_timer_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_dead_father_found_cleanup.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_dead_father_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_dead_father_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_guard_answers_good_hero.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_guard_first_crime_lecture.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_guard_idle_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_guard_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_guard_repeat_crime_chase.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_live_father_completes_intro.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_live_father_entry_cleanup.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_live_father_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_live_father_pays_good_deeds.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_chat_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_offer_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_returns_teddy.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_ruined_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_scold_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_special_hit.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_teddy_ruined_walkoff.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_theresa_accepts_chocolates_and_starts_raid.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_theresa_entry_cleanup.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_theresa_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_victim_first_hero_hit.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_victim_freed_thanks.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_victim_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_victim_initial_acquire_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_victim_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_victim_repeat_hit_bully_alive.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_villager_female_both_mutter_rerolls.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_villager_hit_then_reproaches_hero.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_villager_init.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_villager_main_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/entity_villager_male_good_mutter.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_add_bad_deed_first.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_add_good_deed_first.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_attack_stuff_section_swap.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_domission_attack_transition.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_domission_terminated_during_childhood.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_init_resets.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_main_fresh_start.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_main_reload_after_attack.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_onpersist_roundtrip.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_post_attack_wait_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_thread_manage_core_markers.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_thread_manage_core_markers_terminated_early.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_thread_start_barrel_timer.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_thread_start_barrel_timer_terminated.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_thread_watch_barrels.json
+ M refs/script_recovery/new_oakvale_intro/traces/quest_thread_watch_for_got_gold.json
+ M refs/script_recovery/new_oakvale_intro/translation_unit.json
+ M refs/script_recovery/new_oakvale_intro/validation_report.json
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairMan.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairWife.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairWoman.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Barrel.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelMan.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BarrelThug.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_BookTrader.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Bully.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_CreatedBeetle.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Guard.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_LiveFather.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_TeddyGirl.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Theresa.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Victim.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Villager.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/OVI_DeadFather.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/common.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/deeds.lua
+ M refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/fields.lua
+ M refs/script_recovery/seed_native_comparison.json
+ M tools/ghidra_scripts/ExportScriptTranslationUnit.java
+ M tools/script_recovery/annotate_interface_slots.py
+ M tools/script_recovery/build_reconstruction_manifests.py
+ M tools/script_recovery/compare_seed_native_ir.py
+ M tools/script_recovery/run_lua_trace.py
+ M tools/script_recovery/test_build_reconstruction_manifests.py
+ M tools/script_recovery/test_extract_native_operation_ir.py
+ M tools/script_recovery/test_run_lua_trace.py
+ M tools/script_recovery/test_validate_reconstructed_package.py
+ M tools/script_recovery/update_fse_manifest_2026_09.py
+ M tools/script_recovery/validate_reconstructed_package.py
+ M tools/validate_tooling_sdk.py
+?? 0x0382cff0
+?? docs/journal/2026-09/BULLY_RUNTO_STALL_2026-09-11.md
+?? docs/journal/2026-09/NEW_OAKVALE_MARATHON_CHECKPOINT_2026-09-09.md
+?? docs/journal/2026-09/NEW_OAKVALE_PARALLEL_SESSION_PROMPT_2026-09-12.md
+?? docs/scripts/LIFTER.md
+?? docs/scripts/LUA_GAMEFLOW_PARITY.md
+?? docs/scripts/NEW_OAKVALE_NPC_PARITY_AUDIT.md
+?? ghidra_out/script_recovery/active_entity_alloc_disasm.txt
+?? ghidra_out/script_recovery/active_entity_base_native.c
+?? ghidra_out/script_recovery/add_bad_deed_disasm.txt
+?? ghidra_out/script_recovery/affair_man_full_retail_bytes.json
+?? ghidra_out/script_recovery/affair_static_world_inventory.txt
+?? ghidra_out/script_recovery/affair_wife_argument_retail_bytes.json
+?? ghidra_out/script_recovery/affair_wife_full_retail_bytes.json
+?? ghidra_out/script_recovery/affair_wife_route_disasm.txt
+?? ghidra_out/script_recovery/affair_wife_route_retail_bytes.json
+?? ghidra_out/script_recovery/affair_woman_full_retail_bytes.json
+?? ghidra_out/script_recovery/barrel_full_retail_bytes.json
+?? ghidra_out/script_recovery/barrel_man_donor.c
+?? ghidra_out/script_recovery/barrel_man_full_retail_bytes.json
+?? ghidra_out/script_recovery/barrel_man_judgment_retail_bytes.json
+?? ghidra_out/script_recovery/barrel_man_main_disasm.txt
+?? ghidra_out/script_recovery/barrel_man_text_assets.json
+?? ghidra_out/script_recovery/barrel_predicate_native.c
+?? ghidra_out/script_recovery/barrel_thug_full_retail_bytes.json
+?? ghidra_out/script_recovery/barrel_thug_speech_disasm.txt
+?? ghidra_out/script_recovery/book_trader_full_retail_bytes.json
+?? ghidra_out/script_recovery/bully_full_retail_bytes.json
+?? ghidra_out/script_recovery/bully_given_teddy_disasm.txt
+?? ghidra_out/script_recovery/bully_given_teddy_retail_bytes.json
+?? ghidra_out/script_recovery/bully_health_bar_retail_bytes.json
+?? ghidra_out/script_recovery/bully_main_disasm.txt
+?? ghidra_out/script_recovery/bully_run_off_retail_bytes.json
+?? ghidra_out/script_recovery/bully_teddy_dispatch_retail_bytes.json
+?? ghidra_out/script_recovery/created_beetle_full_retail_bytes.json
+?? ghidra_out/script_recovery/created_beetle_main_disasm.txt
+?? ghidra_out/script_recovery/cscriptthing_vtable_slots.tsv
+?? ghidra_out/script_recovery/dead_father_full_retail_bytes.json
+?? ghidra_out/script_recovery/guard_full_retail_bytes.json
+?? ghidra_out/script_recovery/guard_main_disasm.txt
+?? ghidra_out/script_recovery/guard_repeat_lecture_retail_bytes.json
+?? ghidra_out/script_recovery/live_father_full_retail_bytes.json
+?? ghidra_out/script_recovery/logbook_helpers_disasm.txt
+?? ghidra_out/script_recovery/logbook_helpers_native.c
+?? ghidra_out/script_recovery/native_allocators/
+?? ghidra_out/script_recovery/native_decompiles/
+?? ghidra_out/script_recovery/native_destructors/
+?? ghidra_out/script_recovery/native_quest_construction/
+?? ghidra_out/script_recovery/native_support/
+?? ghidra_out/script_recovery/native_support_decompiles/
+?? ghidra_out/script_recovery/native_threads_job.json
+?? ghidra_out/script_recovery/native_threads_job.tsv
+?? ghidra_out/script_recovery/new_oakvale_attack_stuff_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_do_mission_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_entity_layouts.json
+?? ghidra_out/script_recovery/new_oakvale_entity_vtables.json
+?? ghidra_out/script_recovery/new_oakvale_init_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_main_bindings_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_main_tail_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_manage_core_markers_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_onpersist_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_post_attack_stuff_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_quest_full_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_quest_layout.json
+?? ghidra_out/script_recovery/new_oakvale_quest_ownership.json
+?? ghidra_out/script_recovery/new_oakvale_quest_teardown.json
+?? ghidra_out/script_recovery/new_oakvale_quest_vtable.json
+?? ghidra_out/script_recovery/new_oakvale_register_main_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_start_barrel_timer_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_timer_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_watch_barrels_retail_bytes.json
+?? ghidra_out/script_recovery/new_oakvale_watch_for_got_gold_retail_bytes.json
+?? ghidra_out/script_recovery/presented_item_native.c
+?? ghidra_out/script_recovery/presented_item_native_disasm.txt
+?? ghidra_out/script_recovery/teddy_girl_full_retail_bytes.json
+?? ghidra_out/script_recovery/theresa_full_retail_bytes.json
+?? ghidra_out/script_recovery/theresa_presented_item_disasm.txt
+?? ghidra_out/script_recovery/thing_position_donor.c
+?? ghidra_out/script_recovery/timer_world_update_donor.c
+?? ghidra_out/script_recovery/victim_full_retail_bytes.json
+?? ghidra_out/script_recovery/villager_full_retail_bytes.json
+?? refs/script_recovery/lifted/
+?? refs/script_recovery/native_threads/
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_affair_wife_stalled_route_retries.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_man_absent_broken_then_scolds.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_man_favour_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_man_nearby_broken_scolds.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_barrel_thug_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_book_trader_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_ignores_unowned_presented_item.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_refuses_owned_presented_item.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_runoff_hero_acquire_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_bully_runoff_victim_acquire_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_dead_father_acquire_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_guard_lecture_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_teddy_girl_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/fixtures/entity_victim_brathit_hero_acquire_terminated.json
+?? refs/script_recovery/new_oakvale_intro/golden_traces/
+?? refs/script_recovery/new_oakvale_intro/retail_tng_npc_baseline.json
+?? refs/script_recovery/new_oakvale_intro/runtime_evidence/
+?? refs/script_recovery/new_oakvale_intro/runtime_playtest/retail_override.lua
+?? refs/script_recovery/new_oakvale_intro/traces/entity_affair_wife_stalled_route_retries.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_absent_broken_then_scolds.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_favour_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_barrel_man_nearby_broken_scolds.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_barrel_thug_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_book_trader_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_bully_ignores_unowned_presented_item.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_bully_refuses_owned_presented_item.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_bully_runoff_hero_acquire_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_bully_runoff_victim_acquire_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_dead_father_acquire_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_guard_lecture_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_teddy_girl_speech_terminated.json
+?? refs/script_recovery/new_oakvale_intro/traces/entity_victim_brathit_hero_acquire_terminated.json
+?? tmp_after_continue.png
+?? tmp_after_cutscene_fix.png
+?? tmp_after_pickb.png
+?? tmp_anniversary_contact.jpg
+?? tmp_anniversary_frames/
+?? tmp_anniversary_full.mp4
+?? tmp_controlled.png
+?? tmp_current_replay.png
+?? tmp_fable_ack_move.png
+?? tmp_fable_after_move.png
+?? tmp_fable_boot_state.png
+?? tmp_fable_clickmove.png
+?? tmp_fable_cursor.png
+?? tmp_fable_live.png
+?? tmp_fable_menu2.png
+?? tmp_fable_now.png
+?? tmp_fable_restored.png
+?? tmp_fable_screen.png
+?? tmp_fable_screen2.png
+?? tmp_fable_window.png
+?? tmp_gameinfo.png
+?? tmp_load_hit.png
+?? tmp_menu_fail.png
+?? tmp_moved.png
+?? tmp_navE.png
+?? tmp_profile_move_cal.png
+?? tmp_registry_opening.png
+?? tmp_stage15.png
+?? tmp_stage19.png
+?? tmp_target_profile_menu.png
+?? tools/ghidra_scripts/DecompFuncsToDirectory.java
+?? tools/ghidra_scripts/ExportScriptThreadBodies.java
+?? tools/script_recovery/analyze_bully_run_variance.py
+?? tools/script_recovery/analyze_new_oakvale_targeted_playtest.py
+?? tools/script_recovery/audit_add_bad_deed_field_propagation.py
+?? tools/script_recovery/audit_affair_man_full_bytes.py
+?? tools/script_recovery/audit_affair_static_world_identity.py
+?? tools/script_recovery/audit_affair_wife_argument_bytes.py
+?? tools/script_recovery/audit_affair_wife_full_bytes.py
+?? tools/script_recovery/audit_affair_wife_position_chain.py
+?? tools/script_recovery/audit_affair_wife_route.py
+?? tools/script_recovery/audit_affair_wife_route_bytes.py
+?? tools/script_recovery/audit_affair_woman_full_bytes.py
+?? tools/script_recovery/audit_barrel_full_bytes.py
+?? tools/script_recovery/audit_barrel_man_consequence.py
+?? tools/script_recovery/audit_barrel_man_enum_constants.py
+?? tools/script_recovery/audit_barrel_man_full_bytes.py
+?? tools/script_recovery/audit_barrel_man_judgment_bytes.py
+?? tools/script_recovery/audit_barrel_man_phase_reachability.py
+?? tools/script_recovery/audit_barrel_man_text_assets.py
+?? tools/script_recovery/audit_barrel_predicate_lifecycle.py
+?? tools/script_recovery/audit_barrel_reward_component.py
+?? tools/script_recovery/audit_barrel_thug_full_bytes.py
+?? tools/script_recovery/audit_barrel_thug_speech_operands.py
+?? tools/script_recovery/audit_book_trader_full_bytes.py
+?? tools/script_recovery/audit_bully_cutscene_wrapper_boundary.py
+?? tools/script_recovery/audit_bully_full_bytes.py
+?? tools/script_recovery/audit_bully_given_teddy_bytes.py
+?? tools/script_recovery/audit_bully_health_bar_bytes.py
+?? tools/script_recovery/audit_bully_run_off_bytes.py
+?? tools/script_recovery/audit_bully_teddy_dispatch_bytes.py
+?? tools/script_recovery/audit_created_beetle_full_bytes.py
+?? tools/script_recovery/audit_created_beetle_timer_operand.py
+?? tools/script_recovery/audit_dead_father_acquire_termination.py
+?? tools/script_recovery/audit_dead_father_cutscene_asset.py
+?? tools/script_recovery/audit_dead_father_cutscene_execution.py
+?? tools/script_recovery/audit_dead_father_full_bytes.py
+?? tools/script_recovery/audit_dead_father_looping_animation_abi.py
+?? tools/script_recovery/audit_dead_father_minimap_marker.py
+?? tools/script_recovery/audit_dead_father_movie_bracket.py
+?? tools/script_recovery/audit_final_barrel_gold_abi.py
+?? tools/script_recovery/audit_final_barrel_gold_release.py
+?? tools/script_recovery/audit_forgefse_colour_abi.py
+?? tools/script_recovery/audit_forgefse_control_abi.py
+?? tools/script_recovery/audit_forgefse_conversation_abi.py
+?? tools/script_recovery/audit_forgefse_entity_setup_abi.py
+?? tools/script_recovery/audit_forgefse_fade_colour.py
+?? tools/script_recovery/audit_forgefse_hero_ability_abi.py
+?? tools/script_recovery/audit_forgefse_lookup_position_abi.py
+?? tools/script_recovery/audit_forgefse_movement_abi.py
+?? tools/script_recovery/audit_forgefse_movie_destructor.py
+?? tools/script_recovery/audit_forgefse_remove_thing_abi.py
+?? tools/script_recovery/audit_forgefse_retail_rng.py
+?? tools/script_recovery/audit_forgefse_speech_termination.py
+?? tools/script_recovery/audit_forgefse_timer_abi.py
+?? tools/script_recovery/audit_gold_piece_definition.py
+?? tools/script_recovery/audit_guard_full_bytes.py
+?? tools/script_recovery/audit_guard_lecture_distance.py
+?? tools/script_recovery/audit_guard_repeat_lecture.py
+?? tools/script_recovery/audit_guard_repeat_lecture_bytes.py
+?? tools/script_recovery/audit_live_father_full_bytes.py
+?? tools/script_recovery/audit_logbook_helpers.py
+?? tools/script_recovery/audit_lua_gameflow.py
+?? tools/script_recovery/audit_new_oakvale_ai_runtime_evidence.py
+?? tools/script_recovery/audit_new_oakvale_allocators.py
+?? tools/script_recovery/audit_new_oakvale_attack_stuff.py
+?? tools/script_recovery/audit_new_oakvale_child_morph_boundary.py
+?? tools/script_recovery/audit_new_oakvale_cleanup_paths.py
+?? tools/script_recovery/audit_new_oakvale_constants.py
+?? tools/script_recovery/audit_new_oakvale_cutscenes_threads.py
+?? tools/script_recovery/audit_new_oakvale_destructors.py
+?? tools/script_recovery/audit_new_oakvale_do_mission.py
+?? tools/script_recovery/audit_new_oakvale_entity_layouts.py
+?? tools/script_recovery/audit_new_oakvale_entity_vtables.py
+?? tools/script_recovery/audit_new_oakvale_full_entity_snapshots.py
+?? tools/script_recovery/audit_new_oakvale_full_native_coverage.py
+?? tools/script_recovery/audit_new_oakvale_inventory_structure.py
+?? tools/script_recovery/audit_new_oakvale_local_fields.py
+?? tools/script_recovery/audit_new_oakvale_main_bindings.py
+?? tools/script_recovery/audit_new_oakvale_main_tail.py
+?? tools/script_recovery/audit_new_oakvale_manage_core_markers.py
+?? tools/script_recovery/audit_new_oakvale_morality_amount.py
+?? tools/script_recovery/audit_new_oakvale_native_sources.py
+?? tools/script_recovery/audit_new_oakvale_no_gap_scaffolding.py
+?? tools/script_recovery/audit_new_oakvale_npc_baseline.py
+?? tools/script_recovery/audit_new_oakvale_parent_field_usage.py
+?? tools/script_recovery/audit_new_oakvale_persistence.py
+?? tools/script_recovery/audit_new_oakvale_phases.py
+?? tools/script_recovery/audit_new_oakvale_post_attack_stuff.py
+?? tools/script_recovery/audit_new_oakvale_quest_construction.py
+?? tools/script_recovery/audit_new_oakvale_quest_full_bytes.py
+?? tools/script_recovery/audit_new_oakvale_quest_initialization.py
+?? tools/script_recovery/audit_new_oakvale_quest_layout.py
+?? tools/script_recovery/audit_new_oakvale_quest_teardown.py
+?? tools/script_recovery/audit_new_oakvale_register_main.py
+?? tools/script_recovery/audit_new_oakvale_section_swap_boundary.py
+?? tools/script_recovery/audit_new_oakvale_section_swap_runtime.py
+?? tools/script_recovery/audit_new_oakvale_start_barrel_timer.py
+?? tools/script_recovery/audit_new_oakvale_symbolic_resources.py
+?? tools/script_recovery/audit_new_oakvale_teardown_boundary.py
+?? tools/script_recovery/audit_new_oakvale_timer_lifecycle.py
+?? tools/script_recovery/audit_new_oakvale_timer_render_closure.py
+?? tools/script_recovery/audit_new_oakvale_villager_speech_vectors.py
+?? tools/script_recovery/audit_new_oakvale_watch_barrels.py
+?? tools/script_recovery/audit_new_oakvale_watch_for_got_gold.py
+?? tools/script_recovery/audit_presented_item_repeatability.py
+?? tools/script_recovery/audit_quest_info_bar_render_chain.py
+?? tools/script_recovery/audit_reconstructed_speech_propagation.py
+?? tools/script_recovery/audit_teddy_girl_full_bytes.py
+?? tools/script_recovery/audit_theresa_full_bytes.py
+?? tools/script_recovery/audit_theresa_given_chocs_lifetime.py
+?? tools/script_recovery/audit_victim_full_bytes.py
+?? tools/script_recovery/audit_victim_init_identity.py
+?? tools/script_recovery/audit_villager_full_bytes.py
+?? tools/script_recovery/audit_villager_hit_control_lifetime.py
+?? tools/script_recovery/audit_villager_speech_vectors.py
+?? tools/script_recovery/benchmark_lifter.py
+?? tools/script_recovery/export_affair_man_full_bytes.py
+?? tools/script_recovery/export_affair_wife_argument.py
+?? tools/script_recovery/export_affair_wife_full_bytes.py
+?? tools/script_recovery/export_affair_wife_position_chain.ps1
+?? tools/script_recovery/export_affair_wife_route.py
+?? tools/script_recovery/export_affair_woman_full_bytes.py
+?? tools/script_recovery/export_barrel_full_bytes.py
+?? tools/script_recovery/export_barrel_man_full_bytes.py
+?? tools/script_recovery/export_barrel_man_judgment.py
+?? tools/script_recovery/export_barrel_man_text_assets.py
+?? tools/script_recovery/export_barrel_thug_full_bytes.py
+?? tools/script_recovery/export_book_trader_full_bytes.py
+?? tools/script_recovery/export_bully_full_bytes.py
+?? tools/script_recovery/export_bully_given_teddy.py
+?? tools/script_recovery/export_bully_health_bar.py
+?? tools/script_recovery/export_bully_run_off.py
+?? tools/script_recovery/export_bully_teddy_dispatch.py
+?? tools/script_recovery/export_created_beetle_full_bytes.py
+?? tools/script_recovery/export_dead_father_full_bytes.py
+?? tools/script_recovery/export_guard_full_bytes.py
+?? tools/script_recovery/export_guard_repeat_lecture.py
+?? tools/script_recovery/export_live_father_full_bytes.py
+?? tools/script_recovery/export_native_threads.py
+?? tools/script_recovery/export_new_oakvale_allocators.ps1
+?? tools/script_recovery/export_new_oakvale_attack_stuff.py
+?? tools/script_recovery/export_new_oakvale_destructors.ps1
+?? tools/script_recovery/export_new_oakvale_do_mission.py
+?? tools/script_recovery/export_new_oakvale_init_writes.py
+?? tools/script_recovery/export_new_oakvale_main_bindings.py
+?? tools/script_recovery/export_new_oakvale_main_tail.py
+?? tools/script_recovery/export_new_oakvale_manage_core_markers.py
+?? tools/script_recovery/export_new_oakvale_native_sources.ps1
+?? tools/script_recovery/export_new_oakvale_onpersist.py
+?? tools/script_recovery/export_new_oakvale_post_attack_stuff.py
+?? tools/script_recovery/export_new_oakvale_quest_construction.ps1
+?? tools/script_recovery/export_new_oakvale_quest_full_bytes.py
+?? tools/script_recovery/export_new_oakvale_quest_ownership.py
+?? tools/script_recovery/export_new_oakvale_quest_vtable.py
+?? tools/script_recovery/export_new_oakvale_register_main.py
+?? tools/script_recovery/export_new_oakvale_start_barrel_timer.py
+?? tools/script_recovery/export_new_oakvale_timer_lifecycle.py
+?? tools/script_recovery/export_new_oakvale_vtables.py
+?? tools/script_recovery/export_new_oakvale_watch_barrels.py
+?? tools/script_recovery/export_new_oakvale_watch_for_got_gold.py
+?? tools/script_recovery/export_quest_info_bar_render_chain.ps1
+?? tools/script_recovery/export_teddy_girl_full_bytes.py
+?? tools/script_recovery/export_theresa_full_bytes.py
+?? tools/script_recovery/export_victim_full_bytes.py
+?? tools/script_recovery/export_villager_full_bytes.py
+?? tools/script_recovery/lift_native_lua.py
+?? tools/script_recovery/native_literal_loops.py
+?? tools/script_recovery/prepare_new_oakvale_test_bundle.py
+?? tools/script_recovery/test_analyze_bully_run_variance.py
+?? tools/script_recovery/test_analyze_new_oakvale_targeted_playtest.py
+?? tools/script_recovery/test_audit_add_bad_deed_field_propagation.py
+?? tools/script_recovery/test_audit_affair_man_full_bytes.py
+?? tools/script_recovery/test_audit_affair_static_world_identity.py
+?? tools/script_recovery/test_audit_affair_wife_argument_bytes.py
+?? tools/script_recovery/test_audit_affair_wife_full_bytes.py
+?? tools/script_recovery/test_audit_affair_wife_position_chain.py
+?? tools/script_recovery/test_audit_affair_wife_route.py
+?? tools/script_recovery/test_audit_affair_wife_route_bytes.py
+?? tools/script_recovery/test_audit_affair_woman_full_bytes.py
+?? tools/script_recovery/test_audit_barrel_full_bytes.py
+?? tools/script_recovery/test_audit_barrel_man_consequence.py
+?? tools/script_recovery/test_audit_barrel_man_enum_constants.py
+?? tools/script_recovery/test_audit_barrel_man_full_bytes.py
+?? tools/script_recovery/test_audit_barrel_man_judgment_bytes.py
+?? tools/script_recovery/test_audit_barrel_man_phase_reachability.py
+?? tools/script_recovery/test_audit_barrel_man_text_assets.py
+?? tools/script_recovery/test_audit_barrel_predicate_lifecycle.py
+?? tools/script_recovery/test_audit_barrel_reward_component.py
+?? tools/script_recovery/test_audit_barrel_thug_full_bytes.py
+?? tools/script_recovery/test_audit_barrel_thug_speech_operands.py
+?? tools/script_recovery/test_audit_book_trader_full_bytes.py
+?? tools/script_recovery/test_audit_bully_cutscene_wrapper_boundary.py
+?? tools/script_recovery/test_audit_bully_full_bytes.py
+?? tools/script_recovery/test_audit_bully_given_teddy_bytes.py
+?? tools/script_recovery/test_audit_bully_health_bar_bytes.py
+?? tools/script_recovery/test_audit_bully_run_off_bytes.py
+?? tools/script_recovery/test_audit_bully_teddy_dispatch_bytes.py
+?? tools/script_recovery/test_audit_created_beetle_full_bytes.py
+?? tools/script_recovery/test_audit_created_beetle_timer_operand.py
+?? tools/script_recovery/test_audit_dead_father_acquire_termination.py
+?? tools/script_recovery/test_audit_dead_father_cutscene_asset.py
+?? tools/script_recovery/test_audit_dead_father_cutscene_execution.py
+?? tools/script_recovery/test_audit_dead_father_full_bytes.py
+?? tools/script_recovery/test_audit_dead_father_looping_animation_abi.py
+?? tools/script_recovery/test_audit_dead_father_minimap_marker.py
+?? tools/script_recovery/test_audit_dead_father_movie_bracket.py
+?? tools/script_recovery/test_audit_final_barrel_gold_abi.py
+?? tools/script_recovery/test_audit_final_barrel_gold_release.py
+?? tools/script_recovery/test_audit_forgefse_colour_abi.py
+?? tools/script_recovery/test_audit_forgefse_control_abi.py
+?? tools/script_recovery/test_audit_forgefse_conversation_abi.py
+?? tools/script_recovery/test_audit_forgefse_entity_setup_abi.py
+?? tools/script_recovery/test_audit_forgefse_fade_colour.py
+?? tools/script_recovery/test_audit_forgefse_hero_ability_abi.py
+?? tools/script_recovery/test_audit_forgefse_lookup_position_abi.py
+?? tools/script_recovery/test_audit_forgefse_movement_abi.py
+?? tools/script_recovery/test_audit_forgefse_movie_destructor.py
+?? tools/script_recovery/test_audit_forgefse_remove_thing_abi.py
+?? tools/script_recovery/test_audit_forgefse_retail_rng.py
+?? tools/script_recovery/test_audit_forgefse_speech_termination.py
+?? tools/script_recovery/test_audit_forgefse_timer_abi.py
+?? tools/script_recovery/test_audit_gold_piece_definition.py
+?? tools/script_recovery/test_audit_guard_full_bytes.py
+?? tools/script_recovery/test_audit_guard_lecture_distance.py
+?? tools/script_recovery/test_audit_guard_repeat_lecture.py
+?? tools/script_recovery/test_audit_guard_repeat_lecture_bytes.py
+?? tools/script_recovery/test_audit_live_father_full_bytes.py
+?? tools/script_recovery/test_audit_logbook_helpers.py
+?? tools/script_recovery/test_audit_lua_gameflow.py
+?? tools/script_recovery/test_audit_new_oakvale_ai_runtime_evidence.py
+?? tools/script_recovery/test_audit_new_oakvale_allocators.py
+?? tools/script_recovery/test_audit_new_oakvale_attack_stuff.py
+?? tools/script_recovery/test_audit_new_oakvale_child_morph_boundary.py
+?? tools/script_recovery/test_audit_new_oakvale_cleanup_paths.py
+?? tools/script_recovery/test_audit_new_oakvale_constants.py
+?? tools/script_recovery/test_audit_new_oakvale_cutscenes_threads.py
+?? tools/script_recovery/test_audit_new_oakvale_destructors.py
+?? tools/script_recovery/test_audit_new_oakvale_do_mission.py
+?? tools/script_recovery/test_audit_new_oakvale_entity_layouts.py
+?? tools/script_recovery/test_audit_new_oakvale_entity_vtables.py
+?? tools/script_recovery/test_audit_new_oakvale_full_entity_snapshots.py
+?? tools/script_recovery/test_audit_new_oakvale_full_native_coverage.py
+?? tools/script_recovery/test_audit_new_oakvale_inventory_structure.py
+?? tools/script_recovery/test_audit_new_oakvale_local_fields.py
+?? tools/script_recovery/test_audit_new_oakvale_main_bindings.py
+?? tools/script_recovery/test_audit_new_oakvale_main_tail.py
+?? tools/script_recovery/test_audit_new_oakvale_manage_core_markers.py
+?? tools/script_recovery/test_audit_new_oakvale_morality_amount.py
+?? tools/script_recovery/test_audit_new_oakvale_native_sources.py
+?? tools/script_recovery/test_audit_new_oakvale_no_gap_scaffolding.py
+?? tools/script_recovery/test_audit_new_oakvale_npc_baseline.py
+?? tools/script_recovery/test_audit_new_oakvale_parent_field_usage.py
+?? tools/script_recovery/test_audit_new_oakvale_persistence.py
+?? tools/script_recovery/test_audit_new_oakvale_phases.py
+?? tools/script_recovery/test_audit_new_oakvale_post_attack_stuff.py
+?? tools/script_recovery/test_audit_new_oakvale_quest_construction.py
+?? tools/script_recovery/test_audit_new_oakvale_quest_full_bytes.py
+?? tools/script_recovery/test_audit_new_oakvale_quest_initialization.py
+?? tools/script_recovery/test_audit_new_oakvale_quest_layout.py
+?? tools/script_recovery/test_audit_new_oakvale_quest_teardown.py
+?? tools/script_recovery/test_audit_new_oakvale_register_main.py
+?? tools/script_recovery/test_audit_new_oakvale_section_swap_boundary.py
+?? tools/script_recovery/test_audit_new_oakvale_section_swap_runtime.py
+?? tools/script_recovery/test_audit_new_oakvale_start_barrel_timer.py
+?? tools/script_recovery/test_audit_new_oakvale_symbolic_resources.py
+?? tools/script_recovery/test_audit_new_oakvale_teardown_boundary.py
+?? tools/script_recovery/test_audit_new_oakvale_timer_lifecycle.py
+?? tools/script_recovery/test_audit_new_oakvale_timer_render_closure.py
+?? tools/script_recovery/test_audit_new_oakvale_villager_speech_vectors.py
+?? tools/script_recovery/test_audit_new_oakvale_watch_barrels.py
+?? tools/script_recovery/test_audit_new_oakvale_watch_for_got_gold.py
+?? tools/script_recovery/test_audit_presented_item_repeatability.py
+?? tools/script_recovery/test_audit_quest_info_bar_render_chain.py
+?? tools/script_recovery/test_audit_reconstructed_speech_propagation.py
+?? tools/script_recovery/test_audit_teddy_girl_full_bytes.py
+?? tools/script_recovery/test_audit_theresa_full_bytes.py
+?? tools/script_recovery/test_audit_theresa_given_chocs_lifetime.py
+?? tools/script_recovery/test_audit_victim_full_bytes.py
+?? tools/script_recovery/test_audit_victim_init_identity.py
+?? tools/script_recovery/test_audit_villager_full_bytes.py
+?? tools/script_recovery/test_audit_villager_hit_control_lifetime.py
+?? tools/script_recovery/test_audit_villager_speech_vectors.py
+?? tools/script_recovery/test_benchmark_lifter.py
+?? tools/script_recovery/test_lift_native_lua.py
+?? tools/script_recovery/test_native_literal_loops.py
+?? tools/script_recovery/test_prepare_new_oakvale_test_bundle.py
+?? tools/script_recovery/test_translation_unit_body_ranges.py
+?? tools/script_recovery/test_validate_gameflow_authority.py
+?? tools/script_recovery/test_validate_new_oakvale_authority.py
+?? tools/script_recovery/validate_gameflow_authority.py
+?? tools/script_recovery/validate_new_oakvale_authority.py

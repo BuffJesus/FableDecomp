@@ -1,0 +1,69 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "c5d539a33897a9fb43c47aa37e87358b0a50ccbbe6a7c476737307a112bbd257",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    }
+  ],
+  "contracts": {
+    "ClearThingHasInformation": {
+      "name": "ClearThingHasInformation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Clears thing has information."
+    },
+    "PauseAllNonScriptedEntities": {
+      "name": "PauseAllNonScriptedEntities",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "isPaused",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Pauses all non scripted entities."
+    },
+    "EndMovieSequence": {
+      "name": "EndMovieSequence",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes end movie sequence."
+    }
+  },
+  "edits": [
+    {
+      "old": "goto LAB_00db1153;",
+      "new": "GSI->ClearThingHasInformation(me);\ngoto LAB_00db1593;",
+      "count": 2
+    },
+    {
+      "old": "goto LAB_00db1144;",
+      "new": "native_arg_man_talk_terminating = GSI->IsActiveThreadTerminating();\nif (native_arg_man_talk_terminating) {\nGSI->PauseAllNonScriptedEntities(false);\nGSI->EndMovieSequence();\ngoto LAB_00db1d7c;\n}\nGSI->ClearThingHasInformation(me);\ngoto LAB_00db1593;",
+      "count": 1
+    }
+  ],
+  "review": "DB1153 loads quest interface, PUSH EBP self1158, slot5A4 ClearThingHasInformation1159, JMP1593. Inline at both source1153 jumps. DB1144 first queries termination throughF35B30 at1146; JNE114D goes1CF3 unpausefalse/endmovie/actorcleanup, otherwise reaches1153. Inline checked suffix at sole source1144 jump. Preserve original inline suffixes. This prevents successful SOME_NERVE and HOW_FIND_OUT speech paths falling into cancellation cleanup because a goto was emitted as TODO.",
+  "unresolved": [
+    "Shared continuation1593 and native resource ownership require their existing recovery; this pass only recovers incoming talk suffixes."
+  ]
+}

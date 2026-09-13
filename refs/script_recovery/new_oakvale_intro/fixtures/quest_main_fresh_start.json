@@ -14,10 +14,33 @@
    "DeactivateQuest",
    "SetQuestAsCompleted"
   ],
-  "note": "fresh start: childhood setup then blocks on AttackOver until the frame budget ends"
+  "expectCalls": [
+   {"name":"TurnCreatureInto","argumentAt":{"1":"CREATURE_HERO_CHILD"},"count":1},
+   {"name":"ActivateQuest","argumentAt":{"0":"Q_NewOakValeIntro_PreAttack"},"count":1},
+   {"name":"EntitySetAsKillable","argumentAt":{"1":false,"2":false},"count":1},
+   {"name":"SetHeroSleepingAsEnabled","argumentAt":{"0":false},"count":1},
+   {"name":"DisplayMoneyBag","argumentAt":{"0":true},"count":1}
+  ],
+  "expectCallSequence": [
+   {"name":"GetHero"},
+   {"name":"TurnCreatureInto","argumentAt":{"1":"CREATURE_HERO_CHILD"}},
+   {"name":"ActivateQuest","argumentAt":{"0":"Q_NewOakValeIntro_PreAttack"}},
+   {"name":"NewScriptFrame"},
+   {"name":"GetHero"},
+   {"name":"EntitySetAsKillable","argumentAt":{"1":false,"2":false}},
+   {"name":"SetHeroSleepingAsEnabled","argumentAt":{"0":false}},
+   {"name":"DisplayMoneyBag","argumentAt":{"0":true}}
+  ],
+  "note": "fresh start: exact child morph, section activation, one-frame settle, live Hero reacquisition, and childhood controls before blocking on AttackOver"
  },
  "Quest.GetActiveQuestName": [
   "Q_NewOakValeIntro"
+ ],
+ "Quest.IsQuestActive(Q_NewOakValeIntro)": [
+  true
+ ],
+ "Quest.IsQuestActive(NewOakValeIntro)": [
+  false
  ],
  "Quest.IsRegionLoaded": [
   false,

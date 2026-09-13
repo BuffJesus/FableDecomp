@@ -1,0 +1,148 @@
+{
+  "schema": "new-oakvale-quest-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "CQ_NewOakValeIntroScript",
+  "regions": [
+    {
+      "name": "RegisterMain",
+      "address": "0x00DAACE0",
+      "endExclusive": "0x00DAAD6B",
+      "rangeSize": 139,
+      "bytesSha256": "862FA6B4C28044CBDAD0DEB7782ABB0C6A832B10954C1AA1BE40732D4A024B69",
+      "instructionCount": 47,
+      "terminal": "ret"
+    },
+    {
+      "name": "OnPersist",
+      "address": "0x00DAADA0",
+      "endExclusive": "0x00DAADC1",
+      "rangeSize": 33,
+      "bytesSha256": "1C64D4F6E084EC19A985B5C030BA9FC35B6C711E5C69BE7FC336C883D1E3702F",
+      "instructionCount": 11,
+      "terminal": "ret"
+    },
+    {
+      "name": "Init",
+      "address": "0x00DAADD0",
+      "endExclusive": "0x00DABABA",
+      "rangeSize": 3306,
+      "bytesSha256": "E40ADC41D9F7625E7348EE34CC1BAB9218EEDBC7D85EB18405FF578166325F97",
+      "instructionCount": 1063,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DABAC0",
+      "endExclusive": "0x00DAC2B4",
+      "rangeSize": 2036,
+      "bytesSha256": "3E37913E139E9D2555C9C3791694F82CC489116F87E15A2D32788CA7BF5E7A4E",
+      "instructionCount": 608,
+      "terminal": "ret"
+    },
+    {
+      "name": "AddBadDeed",
+      "address": "0x00DAEA70",
+      "endExclusive": "0x00DAEBEF",
+      "rangeSize": 383,
+      "bytesSha256": "753AF26B2782E0BE9FD4B147E452E8D1585F374DD1C3E8F78D3EB94722D7CC33",
+      "instructionCount": 113,
+      "terminal": "ret"
+    },
+    {
+      "name": "AddGoodDeed",
+      "address": "0x00DB0660",
+      "endExclusive": "0x00DB0880",
+      "rangeSize": 544,
+      "bytesSha256": "19C66A9CB848B1FD83155620CC241A10898A853BDDAC18163BF8D8C266105E04",
+      "instructionCount": 157,
+      "terminal": "ret"
+    },
+    {
+      "name": "StartBarrelTimer",
+      "address": "0x00DB4F70",
+      "endExclusive": "0x00DB51A2",
+      "rangeSize": 562,
+      "bytesSha256": "7BEEC77A43819EC0718FC5D13A93D2FBBE1D4B5E4612DA1C8F69966048298E19",
+      "instructionCount": 163,
+      "terminal": "ret"
+    },
+    {
+      "name": "DoMission",
+      "address": "0x00DBDE40",
+      "endExclusive": "0x00DBE2D4",
+      "rangeSize": 1172,
+      "bytesSha256": "E3785B3E55A0B1F5556C67316632FAEEC99B891B1BCE0743BD1B762153A91542",
+      "instructionCount": 361,
+      "terminal": "ret"
+    },
+    {
+      "name": "WatchForGotGold",
+      "address": "0x00DBE2E0",
+      "endExclusive": "0x00DBE3B4",
+      "rangeSize": 212,
+      "bytesSha256": "47F139092E2B64CC78D20C89B6BD6A9E4590759B7B76D14FD51A7D3ACCE5982B",
+      "instructionCount": 65,
+      "terminal": "ret"
+    },
+    {
+      "name": "AttackStuff",
+      "address": "0x00DBE3C0",
+      "endExclusive": "0x00DBE4DD",
+      "rangeSize": 285,
+      "bytesSha256": "E842CCECCF47BFB0BC2C829A199B0889340D6FD750ED429578FD489B732E80DC",
+      "instructionCount": 83,
+      "terminal": "ret"
+    },
+    {
+      "name": "ManageQuestCoreMarkers",
+      "address": "0x00DBE4E0",
+      "endExclusive": "0x00DBE890",
+      "rangeSize": 944,
+      "bytesSha256": "FC7CFC9414F10C1CA5B0B81A3493597B9F5218F27286A85087D8FFE63A807765",
+      "instructionCount": 287,
+      "terminal": "ret"
+    },
+    {
+      "name": "WatchBarrels",
+      "address": "0x00DBE890",
+      "endExclusive": "0x00DBEB17",
+      "rangeSize": 647,
+      "bytesSha256": "3C48CE5C57E30E903C5E6790F7DFD2D4A5CF9B7664F433134D6909840FD06BF2",
+      "instructionCount": 208,
+      "terminal": "ret"
+    },
+    {
+      "name": "PostAttackStuff",
+      "address": "0x00DBEB20",
+      "endExclusive": "0x00DBEF67",
+      "rangeSize": 1095,
+      "bytesSha256": "8DC72F018EB5E9A030D02A244B9B86416B83AE59C0864A3DB40E0B5E9A3A13E7",
+      "instructionCount": 324,
+      "terminal": "ret"
+    },
+    {
+      "name": "DeletingDestructor",
+      "address": "0x00DBEFA0",
+      "endExclusive": "0x00DBEFBE",
+      "rangeSize": 30,
+      "bytesSha256": "BAC3190DCB132403A9B07623506D119AB5A60013328045DB825670C7FC33822D",
+      "instructionCount": 11,
+      "terminal": "ret"
+    },
+    {
+      "name": "DestructorImplementation",
+      "address": "0x00DBEFC0",
+      "endExclusive": "0x00DBF182",
+      "rangeSize": 450,
+      "bytesSha256": "232D98F62015F85C1AEB9AEF94203CC85704D4EF4DB67FA9E45AA8A65B9454C9",
+      "instructionCount": 140,
+      "terminal": "jmp"
+    }
+  ],
+  "coverage": {
+    "operations": "complete quest lifecycle and every named quest helper",
+    "mainBoundaryCorrection": "translation_unit Main size 2018 stops at the first return; complete cleanup epilogue ends at 0x00DAC2B3",
+    "destructorTailJump": "0x00DBF17D -> CScriptBase destructor 0x00CBD510"
+  }
+}

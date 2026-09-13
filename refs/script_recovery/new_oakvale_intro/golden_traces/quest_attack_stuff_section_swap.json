@@ -1,0 +1,71 @@
+{
+  "events": [
+    {
+      "arguments": [
+        "Q__OakValeIntro_PostAttack"
+      ],
+      "event": "api-call",
+      "name": "ActivateQuest",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Q_NewOakValeIntro_PreAttack",
+        0
+      ],
+      "event": "api-call",
+      "name": "DeactivateQuest",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        23.0
+      ],
+      "event": "api-call",
+      "name": "SetTimeOfDay",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "ENVIRONMENT_OV_POSTATTACK",
+        0.0
+      ],
+      "event": "api-call",
+      "name": "TransitionToTheme",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "GetActiveQuestName",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [
+        "Q_NewOakValeIntro",
+        "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_06",
+        "",
+        ""
+      ],
+      "event": "api-call",
+      "name": "SetQuestCardObjective",
+      "receiver": "quest",
+      "scope": "Quest"
+    }
+  ],
+  "fixtures": {
+    "Quest.GetActiveQuestName": [
+      "Q_NewOakValeIntro"
+    ]
+  },
+  "function": "AttackStuff",
+  "kind": "quest",
+  "schema": "forgefse-lua-event-trace/0.1",
+  "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/NewOakValeIntro.lua",
+  "sourceSha256": "2bd478b523d83f9e8434edf836698db0b585cae21b2f58a5ad7f0a287dd45c48"
+}

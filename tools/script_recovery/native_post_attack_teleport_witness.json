@@ -1,0 +1,26 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "annotatedSha256": "04dac546f0856ec8244ed9f8403d8657a4258012192d3ee40bb9903e289aa332",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "original": "    piVar5 = *(int **)(this + 0x40);\r\n    iVar1 = *piVar5;\r\n    uVar16 = SUB41(&stack0xffffffbc,0);\r\n    CVar4 = (CCarriedReadableDef)GSI->GetThingWithScriptName();\r\n    ppVar6 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)\r\n             GSI->GetHero();\r\n    GSI->EntityTeleportToThing();\r\n",
+  "callees": [
+    {
+      "address": "0x8a7d60",
+      "size": 151,
+      "bytesSha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+    },
+    {
+      "address": "0x891ca0",
+      "size": 173,
+      "bytesSha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+    },
+    {
+      "address": "0x88e540",
+      "size": 86,
+      "bytesSha256": "5e529bd4c736d8b8d5e1c03993f55d73134deca8a3a8356e55352dc0f99050b0"
+    }
+  ],
+  "review": "Lookup returns hidden output wrapper in EAX and RET 8; GetHero returns ESI wrapper and RET 0. Both preserve EBX/ESI/EDI. Teleport consumes hero, lookup, false and RET 12. Native wrapper cleanup after call remains untouched."
+}

@@ -1,0 +1,83 @@
+{
+  "scope": "Manifest of completed Guardian offline evidence and observed validation results; no runtime integration or live acceptance claim.",
+  "sources": [
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\reference\\quest.lua",
+      "sha256": "018452e22f9afd0f89a64d4c7f11595c9d165840bc7a03a34741a34d832fb89a"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-resource-lifetimes-20260912.json",
+      "sha256": "77b64be0efb5ac20b3b233ed3f7aa0697fda87dfc0336c10e56a11399a69cf56"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-encounter-cases-20260912.json",
+      "sha256": "0ae1bd9d4e99093e77c35c0fbfd1f6a11118d70922a51cf6a4ac90b43be4a2db"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-repeat-cases-20260912.json",
+      "sha256": "96f2aac4e16e1145a7849b2795ce5c7983f8bcd2af85120ef8d01c0b479612dc"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\native-waiter-cases-20260912.json",
+      "sha256": "ba72a8a62c9a70cb2e131c2428ce24debd685d9ee76e3a1ea9ab0ace544545bd"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\installed-dialogue-card-20260912.json",
+      "sha256": "c3174cd8dbdb1218753071781d0f50b626993d049a90992c5cebebc47753f95b"
+    },
+    {
+      "path": "refs\\script_recovery\\guardian_trophy_dealer_info\\runtime_evidence\\ENCOUNTER_RESOURCE_REVIEW_2026-09-12.md",
+      "sha256": "51a828578a349faf1098c6efd61edec4b421a4ad1a22a67c088286c0d7793036"
+    },
+    {
+      "path": "tools\\script_recovery\\audit_guardian_resource_lifetimes.py",
+      "sha256": "0e7b176240d54383a8024c606a003ceea3397f1befdde2b175bf0c11b2baf122"
+    },
+    {
+      "path": "tools\\script_recovery\\audit_guardian_assets.py",
+      "sha256": "579a398a4d16497d8e9536c89e8a04375a05c57cbfa96820eea883e072ade143"
+    },
+    {
+      "path": "tools\\script_recovery\\test_guardian_encounter.py",
+      "sha256": "5723ee15ae66beadc4dac3ce34b1ca51a3b665cf1505175faf5d51a2d169e3c0"
+    },
+    {
+      "path": "tools\\script_recovery\\test_guardian_repeat.py",
+      "sha256": "2c62a563d0a105b7cf837112d323c5fb18e563e6f7ba73281cd5c58f39bb5f99"
+    },
+    {
+      "path": "tools\\script_recovery\\test_guardian_trophy_waiter.py",
+      "sha256": "5aa1066cd015e8a9d6c63a053d339a2b2b54f70bfcb4988e131e86f23478de8d"
+    },
+    {
+      "path": "tools\\script_recovery\\test_guardian_resource_lifetimes.py",
+      "sha256": "38b06c1ac1c5dc659714d4f427ccbfe2fcf5e1cd4beb9322445bd43424c93045"
+    },
+    {
+      "path": "work\\runtime-20260912-video-comparison\\prove_guardian_encounter.py",
+      "sha256": "492ae2be31131b1fb1dc63da062cd2ababa3a7c2eb487667318bc3d4dec6fd23"
+    },
+    {
+      "path": "work\\runtime-20260912-video-comparison\\prove_guardian_repeat.py",
+      "sha256": "7d830c607e9df5b86b90d688b5f89f053a0e8a9d321bf14730e40d6d251d192c"
+    }
+  ],
+  "installed_dll_sha256": {
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FableScriptExtender.dll": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31",
+    "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\FSE\\FableScriptExtender.dll": "c3900b3db85423e1a7e4035825b265225e4892eb26522b92580aa2a055539d31"
+  },
+  "observed_validation": {
+    "encounter_replay_cases": 27,
+    "repeat_replay_cases": 22,
+    "reference_native_cases_passed": 59,
+    "unittest_methods_passed": 4,
+    "negative_movie_mutations_rejected": 5,
+    "movie_identity_states": 1121,
+    "required_text_keys_resolved": 11,
+    "macro_definitions_resolved": 3,
+    "quest_card_generic_decode": "failed; error and raw payload preserved"
+  },
+  "runtime_source_changed": false,
+  "installed_files_changed": false,
+  "registered_port": false
+}

@@ -1,0 +1,422 @@
+{
+  "address": "0x00DBEB20",
+  "size": 1095,
+  "sourceSha256": "02a75ed25bce11932b745a67eb943df15feef1366935f7797fa6b42c744352ed",
+  "bytesSha256": "8dc72f018eb5e9a030d02a244b9b86416b83ae59c0864a3db40e0b5e9a3a13e7",
+  "events": [
+    {
+      "name": "actor_construct",
+      "site": "0xdbedad",
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413229,
+        "target": [
+          "constant",
+          8286880
+        ],
+        "ecx": [
+          "stack",
+          40
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "acquire",
+      "site": "0xdbedc8",
+      "argumentCount": 3,
+      "knownCalls": {
+        "0xdbedbe": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14413256,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14413246,
+            "hero"
+          ],
+          [
+            "stack",
+            40
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "name": "map_construct",
+      "site": "0xdbedcf",
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413263,
+        "target": [
+          "constant",
+          13483888
+        ],
+        "ecx": [
+          "stack",
+          16
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "map_entry",
+      "site": "0xdbedf2",
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413298,
+        "target": [
+          "constant",
+          13450542
+        ],
+        "ecx": [
+          "stack",
+          16
+        ],
+        "edx": [
+          "stack",
+          12
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "name": "map_assign",
+      "site": "0xdbedf9",
+      "argumentCount": 1,
+      "knownCalls": {
+        "0xdbedf2": [
+          4,
+          "entry"
+        ]
+      },
+      "setup": {
+        "address": 14413305,
+        "target": [
+          "constant",
+          9092368
+        ],
+        "ecx": [
+          "result",
+          14413298,
+          "entry"
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            40
+          ]
+        ]
+      }
+    },
+    {
+      "name": "movie_construct",
+      "site": "0xdbee0b",
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413323,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          56
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "movie_start",
+      "site": "0xdbee2f",
+      "argumentCount": 2,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413359,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "stack",
+          12
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            12
+          ],
+          [
+            "stack",
+            56
+          ]
+        ]
+      }
+    },
+    {
+      "name": "cutscene",
+      "site": "0xdbee7a",
+      "argumentCount": 4,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413434,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          12
+        ],
+        "edx": [
+          "stack",
+          16
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "movie_destroy",
+      "site": "0xdbeea5",
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413477,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          56
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "map_destroy",
+      "site": "0xdbeeae",
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413486,
+        "target": [
+          "constant",
+          13483952
+        ],
+        "ecx": [
+          "stack",
+          16
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "actor_destroy",
+      "site": "0xdbeeb7",
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14413495,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          40
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "profiledCallees": [
+    {
+      "address": "0x891ca0",
+      "size": 173,
+      "bytesSha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+    },
+    {
+      "address": "0xcd3d2e",
+      "size": 118,
+      "bytesSha256": "3c3d4c3b0e8961a2b824ed910539b500713c22d3ab942430d3559691ae6d2aa5"
+    }
+  ],
+  "strings": {
+    "0x1255174": "HERO",
+    "0x12d9dc8": "CS_OAKVALEINTRO_HESDEADJIM"
+  },
+  "resources": {
+    "actor": {
+      "windowStackOffset": 40,
+      "actorResultSite": "0xdbedbe",
+      "priority": 4,
+      "acquire": "acquire",
+      "release": "actor_destroy",
+      "construct": "actor_construct"
+    },
+    "actors": {
+      "windowStackOffset": 16,
+      "construct": "map_construct",
+      "binding": {
+        "key": "HERO",
+        "resource": "actor",
+        "entry": "map_entry",
+        "assignment": "map_assign"
+      },
+      "release": "map_destroy"
+    },
+    "movie": {
+      "windowStackOffset": 56,
+      "construct": "movie_construct",
+      "start": "movie_start",
+      "release": "movie_destroy"
+    }
+  },
+  "cutscene": {
+    "event": "cutscene",
+    "name": "CS_OAKVALEINTRO_HESDEADJIM",
+    "actorMap": "actors",
+    "flagMap": null,
+    "inputMap": null,
+    "setupCondition": false,
+    "skippable": true
+  },
+  "limitations": [
+    "Stack offsets are relative to instruction windows; equality across these windows is reviewed for this pinned function, not general frame inference.",
+    "Native control failure and runtime AcquireControl retry behavior differ; resource lowering remains unresolved.",
+    "RunCutsceneWithSetup adds acquisition, termination and cleanup behavior; this graph alone does not prove equivalence."
+  ]
+}

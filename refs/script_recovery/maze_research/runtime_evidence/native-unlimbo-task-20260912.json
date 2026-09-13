@@ -1,0 +1,122 @@
+{
+  "scope": "Execute retail EmptyGrave Init and its UNLIMBO task, with engine/map doubles.\n\nThe actual branch/query instructions execute. Frame doubles deliver flag changes\nand termination; no real scheduling, macro playback, map allocator or rendering.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "name": "Init resets existing true flag",
+      "initial_flag": 1,
+      "initial_terminated": false,
+      "changes": [],
+      "events": [],
+      "final_flag": 0
+    },
+    {
+      "name": "flag already true",
+      "initial_flag": 1,
+      "initial_terminated": false,
+      "changes": [],
+      "events": [
+        [
+          "limbo",
+          0,
+          true
+        ],
+        [
+          "alpha",
+          0,
+          true
+        ]
+      ],
+      "final_flag": 1
+    },
+    {
+      "name": "flag set after two frames",
+      "initial_flag": 0,
+      "initial_terminated": false,
+      "changes": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "events": [
+        [
+          "frame",
+          0,
+          0
+        ],
+        [
+          "frame",
+          1,
+          0
+        ],
+        [
+          "limbo",
+          0,
+          true
+        ],
+        [
+          "alpha",
+          0,
+          true
+        ]
+      ],
+      "final_flag": 1
+    },
+    {
+      "name": "cancel while waiting",
+      "initial_flag": 0,
+      "initial_terminated": false,
+      "changes": [
+        [
+          0,
+          1
+        ]
+      ],
+      "events": [
+        [
+          "frame",
+          0,
+          1
+        ]
+      ],
+      "final_flag": 0
+    },
+    {
+      "name": "flag and cancellation same frame",
+      "initial_flag": 0,
+      "initial_terminated": false,
+      "changes": [
+        [
+          1,
+          1
+        ]
+      ],
+      "events": [
+        [
+          "frame",
+          1,
+          1
+        ]
+      ],
+      "final_flag": 1
+    },
+    {
+      "name": "flag true but already cancelled",
+      "initial_flag": 1,
+      "initial_terminated": true,
+      "changes": [],
+      "events": [],
+      "final_flag": 1
+    }
+  ],
+  "native_bytes": {
+    "0xea80f0": "51566aff8bf168d4e52e018d4c240ce8ec6aafff8b4e148d4424045083c158e8fc5da0ff8d4c2404c60000e8c069afff5e59c3",
+    "0xea85e0": "515356576aff8bf168d4e52e018d4c2414e8fa65afff8d44240c8d7e58508bcfe80b59a0ff8038008d4c240c0f94c3e8cc64afff84db74428b4e408b11ff521c8bcee819f3e0ff84c0755f6aff68d4e52e018d4c2414e8b565afff8d44240c508bcfe8c958a0ff8038008d4c240c0f94c3e88a64afff84db75be8bcee8dff2e0ff84c075258b4e408b116a016a008d7e4c57ff92140700008b76408b066a016a00578bceff90f80700005f5e5b59c3",
+    "0xcb7940": "8b412c85c0750332c0c38a4005c3"
+  }
+}

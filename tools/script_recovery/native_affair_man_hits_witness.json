@@ -1,0 +1,69 @@
+{
+  "address": "0x00DB09E0",
+  "size": 5058,
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "bc8b51a555b03d254baab3b5eae429614b573844d24b334251565819ad81b186",
+  "bytesSha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+  "contracts": {
+    "MsgIsHitByHero": {
+      "name": "MsgIsHitByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero' is met."
+    },
+    "MsgIsHitByAnySpecialAbilityFromHero": {
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by any special ability from hero' is met."
+    },
+    "MsgIsHitByHeroSpecialAbility": {
+      "name": "MsgIsHitByHeroSpecialAbility",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "abilityEnum",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero special ability' is met."
+    }
+  },
+  "old": "CCharString::CCharString(aCStack_cc,\"SCRIPT_NAME_HERO\",-1);\r\n        uVar17 = uVar14 | 1;\r\n        uStack_118 = uVar17;\r\n        cVar5 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8));\r\n        ppVar16 = extraout_EDX_01;\r\n        if (cVar5 == '\\0') {\r\n          CCharString::CCharString(aCStack_d4,\"SCRIPT_NAME_HERO\",-1);\r\n          uVar17 = uVar14 | 3;\r\n          uStack_118 = uVar17;\r\n          cVar5 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n          ppVar16 = extraout_EDX_02;\r\n          if (cVar5 != '\\0') {\r\n            CCharString::CCharString(aCStack_c0,\"SCRIPT_NAME_HERO\",-1);\r\n            uVar17 = uVar14 | 7;\r\n            uStack_118 = uVar17;\r\n            cVar5 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n            ppVar16 = extraout_EDX_03;\r\n            if (cVar5 == '\\0') goto LAB_00db0bc9;\r\n          }\r\n          cStack_11d = '\\0';\r\n        }\r\n        else {\r\nLAB_00db0bc9:\r\n          cStack_11d = '\\x01';\r\n        }\r\n",
+  "new": "CCharString::CCharString(aCStack_cc,\"SCRIPT_NAME_HERO\",-1);\r\n        uVar17 = uVar14 | 1;\r\n        uStack_118 = uVar17;\r\n        cVar5 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8));\r\n        ppVar16 = extraout_EDX_01;\r\n        if (cVar5 == '\\0') {\r\n          CCharString::CCharString(aCStack_d4,\"SCRIPT_NAME_HERO\",-1);\r\n          uVar17 = uVar14 | 3;\r\n          uStack_118 = uVar17;\r\n          cVar5 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8));\r\n          ppVar16 = extraout_EDX_02;\r\n          if (cVar5 != '\\0') {\r\n            CCharString::CCharString(aCStack_c0,\"SCRIPT_NAME_HERO\",-1);\r\n            uVar17 = uVar14 | 7;\r\n            uStack_118 = uVar17;\r\n            cVar5 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8),14);\r\n            ppVar16 = extraout_EDX_03;\r\n            cStack_11d = cVar5 == '\\0';\n          }\n          else {\n            cStack_11d = false;\n          }\n        }\n        else {\n          cStack_11d = true;\n        }\n",
+  "renames": [
+    {
+      "old": "cStack_11d",
+      "new": "native_arg_man_hit",
+      "count": 4
+    }
+  ],
+  "review": "EBP=self. DB0B57 ordinary hit slot54 true reaches result1 at0BC9. Else0B85 anyspecial slotA8 false reaches0BC2 result0. Else0BB8 slotA4 consumes ability14 pushed0BB0; false reachesresult1, true result0. Preserve conditional string construction, masks1/3/7, cVar5 last query, and later cleanup."
+}

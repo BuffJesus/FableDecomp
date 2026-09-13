@@ -4,23 +4,28 @@
     "generatorVersion": "1.0.0",
     "apiVersion": "1.1.0",
     "generatedAtUtc": "2026-09-02T00:00:00Z",
-    "buildId": "upstream-2026-08-31..2026-09-02",
-    "fseBuildId": "upstream-2026-08-31..2026-09-02",
+    "buildId": "upstream-2026-08-31..2026-09-02+local-review-2026-09-11",
+    "fseBuildId": "upstream-2026-08-31..2026-09-02+local-review-2026-09-11",
     "functions": [
         {
             "name": "AcquireControl",
             "scope": "Entity",
-            "returnType": "void",
+            "returnType": "bool",
             "parameters": [
                 {
                     "name": "pMe",
                     "type": "CScriptThing*",
                     "optional": false
+                },
+                {
+                    "name": "priority",
+                    "type": "int",
+                    "optional": true
                 }
             ],
             "blocking": true,
             "category": "Entity API",
-            "description": "Acquires scripted control of this entity."
+            "description": "Acquires scripted control of this entity and reports false if the script thread terminates while waiting."
         },
         {
             "name": "ClearAllActionsIncludingLoopingAnimations_NonBlocking",
@@ -1581,6 +1586,51 @@
             "description": "Sets to kill on level unload for an entity."
         },
         {
+            "name": "Speak",
+            "scope": "Entity",
+            "returnType": "bool",
+            "parameters": [
+                {
+                    "name": "pMe",
+                    "type": "CScriptThing*",
+                    "optional": false
+                },
+                {
+                    "name": "spTargetThing",
+                    "type": "const std::shared_ptr<CScriptThing>&",
+                    "optional": false
+                },
+                {
+                    "name": "dialogueKey",
+                    "type": "const std::string&",
+                    "optional": false
+                },
+                {
+                    "name": "selectionMethod",
+                    "type": "int",
+                    "optional": true
+                },
+                {
+                    "name": "makeTargetListen",
+                    "type": "bool",
+                    "optional": true
+                },
+                {
+                    "name": "soundIn2D",
+                    "type": "bool",
+                    "optional": true
+                },
+                {
+                    "name": "overScreenFade",
+                    "type": "bool",
+                    "optional": true
+                }
+            ],
+            "blocking": true,
+            "category": "Entity API",
+            "description": "Speaks to a target and blocks until dialogue completes or is interrupted (Lua binding alias for Speak_Blocking)."
+        },
+        {
             "name": "SpeakAndWait",
             "scope": "Entity",
             "returnType": "void",
@@ -1608,7 +1658,7 @@
         {
             "name": "Speak_Blocking",
             "scope": "Entity",
-            "returnType": "void",
+            "returnType": "bool",
             "parameters": [
                 {
                     "name": "pMe",
@@ -2151,6 +2201,31 @@
             "description": "Adds a logbook story entry by text key."
         },
         {
+            "name": "AddNewConversation",
+            "scope": "Quest",
+            "returnType": "int",
+            "parameters": [
+                {
+                    "name": "pThing",
+                    "type": "CScriptThing*",
+                    "optional": false
+                },
+                {
+                    "name": "b1",
+                    "type": "bool",
+                    "optional": false
+                },
+                {
+                    "name": "b2",
+                    "type": "bool",
+                    "optional": false
+                }
+            ],
+            "blocking": false,
+            "category": "Conversation",
+            "description": "Creates a conversation with the supplied initial participant."
+        },
+        {
             "name": "AddNewRumourToCategory",
             "scope": "Quest",
             "returnType": "void",
@@ -2169,6 +2244,26 @@
             "blocking": true,
             "category": "Quest API",
             "description": "Adds new rumour to category."
+        },
+        {
+            "name": "AddPersonToConversation",
+            "scope": "Quest",
+            "returnType": "void",
+            "parameters": [
+                {
+                    "name": "conversationID",
+                    "type": "int",
+                    "optional": false
+                },
+                {
+                    "name": "pPerson",
+                    "type": "CScriptThing*",
+                    "optional": false
+                }
+            ],
+            "blocking": false,
+            "category": "Conversation",
+            "description": "Adds a participant to an existing conversation."
         },
         {
             "name": "AddQuestCard",
@@ -9432,6 +9527,31 @@
             "description": "Gives a specific object to the hero."
         },
         {
+            "name": "GiveHeroQuestCardDirectly",
+            "scope": "Quest",
+            "returnType": "void",
+            "parameters": [
+                {
+                    "name": "questCardObjectName",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "questName",
+                    "type": "string",
+                    "optional": false
+                },
+                {
+                    "name": "flag",
+                    "type": "bool",
+                    "optional": false
+                }
+            ],
+            "blocking": false,
+            "category": "Quest",
+            "description": "Gives the Hero a quest card directly."
+        },
+        {
             "name": "GiveHeroRenownPoints",
             "scope": "Quest",
             "returnType": "void",
@@ -10705,6 +10825,15 @@
             "description": "Returns whether wearing hairstyle."
         },
         {
+            "name": "IsXbox",
+            "scope": "Quest",
+            "returnType": "bool",
+            "parameters": [],
+            "blocking": false,
+            "category": "Platform",
+            "description": "Returns the retail platform predicate exposed by ForgeFSE."
+        },
+        {
             "name": "KickOffCreditsScreen",
             "scope": "Quest",
             "returnType": "void",
@@ -11338,6 +11467,21 @@
             "description": "Returns whether message condition 'on quest failed' is met."
         },
         {
+            "name": "MsgOnRegionLoaded",
+            "scope": "Quest",
+            "returnType": "sol::object",
+            "parameters": [
+                {
+                    "name": "s",
+                    "type": "sol::this_state",
+                    "optional": false
+                }
+            ],
+            "blocking": false,
+            "category": "Messages",
+            "description": "Polls the retail region-loaded message and returns its region name or nil."
+        },
+        {
             "name": "MsgOnTavernGameFinished",
             "scope": "Quest",
             "returnType": "sol::object",
@@ -11525,11 +11669,16 @@
                     "name": "value",
                     "type": "bool",
                     "optional": false
+                },
+                {
+                    "name": "defaultValue",
+                    "type": "sol::optional<bool>",
+                    "optional": true
                 }
             ],
             "blocking": true,
             "category": "Quest API",
-            "description": "Returns whether persist transfer bool."
+            "description": "Transfers a boolean through CPersistContext using a distinct optional default value."
         },
         {
             "name": "PersistTransferFloat",

@@ -1,0 +1,7 @@
+{
+  "capturedAt": "2026-09-12T09:34:00.260768",
+  "log": "interactive-20260912-v20-unskipped-success.log",
+  "sha256": "3694107FE4FB6C5FB779D18950F59101D0CD64F9DCF4F6A48F6509F48619E473",
+  "userObservation": "I didn't skip this time and everything worked like it should",
+  "interpretation": "User reports no skip input. Native skip-query true late in RUN1 is an engine result, not evidence of a user key press. Native RunTo executed, post-macro endpoint BULLY2, no compatibility move."
+}

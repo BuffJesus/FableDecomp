@@ -1,0 +1,20 @@
+{
+  "functions": [
+    {
+      "address": "0x00DAEA70",
+      "size": 383,
+      "sourceSha256": "88c5cb83eca60fd70fe1d156aef911fca0f687305add2869f945ce5d950bae69",
+      "annotatedSha256": "ce55b5f4561d5f863a5e43e6519aceff9cf10fd78e58fdf761e3cf2913760090",
+      "bytesSha256": "753af26b2782e0be9fd4b147e452e8d1585f374dd1c3e8f78d3eb94722d7cc33",
+      "sign": -1
+    },
+    {
+      "address": "0x00DB0660",
+      "size": 544,
+      "sourceSha256": "a74d276cb18e63c011d56cb024633c9922769359beff55fd786ecf2f7912c8c3",
+      "annotatedSha256": "474a47692c396ea82497b1463cef5241cfc5e3e819a2c2e8b651152ed2978b6b",
+      "bytesSha256": "19c66a9cb848b1fd83155620cc241a10898a853bddac18163bf8d8c266105e04",
+      "sign": 1
+    }
+  ]
+}

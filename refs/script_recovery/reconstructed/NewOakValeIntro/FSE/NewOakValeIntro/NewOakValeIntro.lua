@@ -81,7 +81,7 @@ local TUTORIAL_QUEST_CORE_MARKER      = 19    -- DisplayTutorial(0x13)
 local GOLD_NEEDED_FOR_SWEETS          = 3     -- GetHeroGold() < 3 / > 2 checks
 local DAD_TRIGGER_DISTANCE            = 5.0
 local WAREHOUSE_GUARD_POINT_DISTANCE  = 2.0
-local BARREL_WATCH_SECONDS            = 45.0  -- AddQuestInfoBar max value
+local BARREL_WATCH_SECONDS            = 45.0  -- AddQuestInfoBar initial/current value
 local INFO_BAR_SCALE                  = 1.0
 local INFO_BAR_UNCHANGED              = -1.0  -- UpdateQuestInfoBar(id, value, -1, -1)
 local BEETLE_MAX_HEALTH               = 2.0
@@ -89,9 +89,15 @@ local BEETLES_FROM_LAST_N_BARRELS     = 3     -- broken > count-4 spawns a beetl
 local LOGBOOK_STORY_ENTRY_RAID        = 20    -- Gameflow adds 10 before and 30 after this quest
 local HERO_SCRIPT_PRIORITY            = 4     -- StartScriptingEntity(hero, resource, 4)
 local DEACTIVATE_NOW                  = 0
+local NATIVE_QUEST_NAME               = "Q_NewOakValeIntro"
 
 local function active_name()
-    return Quest:GetActiveQuestName()
+    -- The retail override host exposes the package display name here, while
+    -- native gameflow and quest messages retain the compiled retail identity.
+    -- Normalize only this known override boundary.
+    local name = Quest:GetActiveQuestName()
+    if name == "NewOakValeIntro" then return NATIVE_QUEST_NAME end
+    return name
 end
 
 local function count(things)
@@ -109,13 +115,12 @@ end
 function Init(questObject)
     Quest = questObject
     F.reset_for_init(Quest)
-    -- retail registers both CTimer handles in the constructor; ForgeFSE has no constructor hook
-    if not F.get(Quest, F.TalkIntermittentTimer) then
-        F.set(Quest, F.TalkIntermittentTimer, Quest:RegisterTimer())
-    end
-    if not F.get(Quest, F.WatchTimer) then
-        F.set(Quest, F.WatchTimer, Quest:RegisterTimer())
-    end
+    -- Retail registers both CTimer handles unconditionally in the constructor.
+    -- Forge state returns integer 0 for an unset field, and 0 is truthy in Lua;
+    -- testing `if not field` therefore skipped both registrations at runtime.
+    -- Init runs once for each constructed override host, so register both here.
+    F.set(Quest, F.TalkIntermittentTimer, Quest:RegisterTimer())
+    F.set(Quest, F.WatchTimer, Quest:RegisterTimer())
     Quest:SetTimer(F.get_int(Quest, F.TalkIntermittentTimer), 0)
     F.reset_for_init_tail(Quest)
     -- villager speech lists: see villager_speech.lua (retail fills eight quest vectors here)
@@ -124,13 +129,19 @@ end
 -- retail OnPersist @0x00DAADA0: the only persisted member is AttackOver
 function OnPersist(questObject, context)
     Quest = questObject
-    local attack_over = Quest:PersistTransferBool(context, "AttackOver", F.get(Quest, F.AttackOver) or false)
+    local attack_over = Quest:PersistTransferBool(context, "AttackOver", F.get(Quest, F.AttackOver) or false, false)
     F.set(Quest, F.AttackOver, attack_over)
 end
 
 -- retail Main @0x00DABAC0
 function Main(questObject)
     Quest = questObject
+    -- Read-only single-authority diagnostic.  Under the identity-preserving profile the
+    -- allocator executes as retail Q_NewOakValeIntro and the legacy compatibility name
+    -- must not be active beside it.  A true/true result proves competing quest owners.
+    Quest:Log("NOVI_AUTHORITY activeName=" .. tostring(Quest:GetActiveQuestName()) ..
+        " native=" .. tostring(Quest:IsQuestActive(NATIVE_QUEST_NAME)) ..
+        " legacy=" .. tostring(Quest:IsQuestActive("NewOakValeIntro")))
     for _, binding in ipairs(ENTITY_BINDINGS) do
         Quest:AddEntityBinding(binding[1], binding[2])
     end
@@ -139,12 +150,12 @@ function Main(questObject)
 
     if F.get(Quest, F.AttackOver) then
         -- reload after the raid: the post-attack section is torn down before DoMission re-enters it.
-        -- Retail checks IsActiveThreadTerminating here without a frame; ForgeFSE exposes no such query.
+        if Quest:IsActiveThreadTerminating() then return end
         Quest:DeactivateQuest(NOVI.SECTION_POST_ATTACK, DEACTIVATE_NOW)
     end
 
     Quest:SetQuestCardObjective(active_name(), TEXT_OBJECTIVE_START, "", "")
-    Quest:CreateThread("StartBarrelTimer")
+    Quest:CreateThread("StartBarrelTimer", { region = "" })
     DoMission(Quest)
 end
 
@@ -163,16 +174,16 @@ local function begin_childhood()
     Quest:FadeScreenOutUntilNextCallToFadeScreenIn(FADE_OUT_INTO_CHILDHOOD_SECONDS, FADE_HOLD_SECONDS)
     Quest:TurnCreatureInto(Quest:GetHero(), NOVI.CREATURE_HERO_CHILD)
 
-    Quest:CreateThread("WatchBarrels")
-    Quest:CreateThread("WatchForGotGold")
-    Quest:CreateThread("ManageQuestCoreMarkers")
+    Quest:CreateThread("WatchBarrels", { region = "" })
+    Quest:CreateThread("WatchForGotGold", { region = "" })
+    Quest:CreateThread("ManageQuestCoreMarkers", { region = "" })
 
     Quest:CacheMusicSet(MUSIC_SET_CHILDHOOD)
     Quest:ActivateQuest(NOVI.SECTION_PRE_ATTACK)
     if not Quest:NewScriptFrame() then return false end
 
     local hero = Quest:GetHero()
-    Quest:EntitySetAsKillable(hero, false)
+    Quest:EntitySetAsKillable(hero, false, false)
     Quest:SetTimeAsStopped(true)                       -- retail also receives &StopTimeIndex
     Quest:SetTimeOfDay(TIME_OF_DAY_CHILDHOOD)
     Quest:SetHeroSleepingAsEnabled(false)
@@ -205,21 +216,26 @@ end
 
 local function wait_for_post_attack_section()
     return NOVI.wait_until(Quest, nil, function()
-        Quest:GetThingWithScriptName(NOVI.MARKER_POST_ATTACK_START)
-        return count(Quest:GetAllThingsWithScriptName(NOVI.MARKER_POST_ATTACK_START)) > 0
+        local marker = Quest:GetThingWithScriptName(NOVI.MARKER_POST_ATTACK_START)
+        -- Retail 0x00DBEB40-0x00DBEB59 calls CScriptThing::IsAlive (vtable
+        -- +0x12c) on this single returned handle and keeps waiting while false.
+        return marker ~= nil and marker:IsAlive()
     end)
 end
 
 -- the dead-father cutscene as retail stages it (movie sequence + macro), then the raid cleanup
 local function play_dead_father_scene(hero)
-    NOVI.acquire(Quest, hero, HERO_SCRIPT_PRIORITY)
+    if not NOVI.acquire(Quest, hero, HERO_SCRIPT_PRIORITY) then return false end
     Quest:StartMovieSequence()
     Quest:PauseAllNonScriptedEntities(true)
     Quest:FixMovieSequenceCamera(true)
     -- retail RunCutsceneMacro_Func(CS_OAKVALEINTRO_HESDEADJIM, {HERO=hero}, 1, 0, 0, 0)
-    Quest:PlayCutscene(CUTSCENE_DEAD_FATHER, { [CUTSCENE_ACTOR_HERO] = hero })
+    Quest:RunCutsceneWithSetup(CUTSCENE_DEAD_FATHER, { [CUTSCENE_ACTOR_HERO] = hero })
     Quest:FixMovieSequenceCamera(false)
     Quest:PauseAllNonScriptedEntities(false)
+    Quest:EndMovieSequence()
+    NOVI.release(Quest, hero)
+    return true
 end
 
 -- PostAttackStuff @0x00DBEB20
@@ -229,7 +245,7 @@ function PostAttackStuff(questObject)
 
     Quest:CacheMusicSet(MUSIC_SET_POST_ATTACK_ENTRY)
     local start = Quest:GetThingWithScriptName(NOVI.MARKER_POST_ATTACK_START)
-    Quest:EntityTeleportToThing(Quest:GetHero(), start)
+    Quest:EntityTeleportToThing(Quest:GetHero(), start, false)
     local village = Quest:GetThingWithScriptName(NOVI.VILLAGE_OAKVALE)
     Quest:SetVillageLimbo(village, true)
     Quest:DisplayMoneyBag(false)
@@ -249,7 +265,7 @@ function PostAttackStuff(questObject)
     if not reached then return false end
 
     F.set(Quest, F.DadFound, true)
-    play_dead_father_scene(Quest:GetHero())
+    if not play_dead_father_scene(Quest:GetHero()) then return false end
 
     village = Quest:GetThingWithScriptName(NOVI.VILLAGE_OAKVALE)
     Quest:SetVillageLimbo(village, false)
@@ -261,8 +277,9 @@ function PostAttackStuff(questObject)
 end
 
 local function complete_quest()
+    Quest:Log("NOVI_PROBE complete_quest activeName='" .. tostring(active_name()) .. "'")
     Quest:FadeScreenOutUntilNextCallToFadeScreenIn(FADE_OUT_AT_COMPLETION_SECONDS, FADE_HOLD_SECONDS)
-    Quest:EntitySetAsKillable(Quest:GetHero(), true)
+    Quest:EntitySetAsKillable(Quest:GetHero(), true, false)
     Quest:SetHeroSleepingAsEnabled(true)
     Quest:SetQuestAsCompleted(active_name(), false, false, false)
     Quest:DeactivateQuestLater(active_name(), DEACTIVATE_NOW)
@@ -277,7 +294,8 @@ function DoMission(questObject)
         if not wait_for_attack() then return end
     end
 
-    -- retail re-checks termination here; ForgeFSE reports it through the last NewScriptFrame result
+    -- Retail performs a bare termination re-check after the AttackOver wait.
+    if Quest:IsActiveThreadTerminating() then return end
     AttackStuff()
     if not PostAttackStuff() then return end
     complete_quest()
@@ -292,16 +310,22 @@ end
 function StartBarrelTimer(questObject)
     local quest = questObject or Quest
     local watch_timer = F.get_int(quest, F.WatchTimer)
+    quest:Log("NOVI_PROBE StartBarrelTimer waiting id=" .. tostring(watch_timer) .. " value=" .. tostring(quest:GetTimer(watch_timer)))
 
     local armed = NOVI.wait_until(quest, nil, function()
         return quest:GetTimer(watch_timer) > 0
     end)
     if not armed then return end
+    quest:Log("NOVI_PROBE StartBarrelTimer armed value=" .. tostring(quest:GetTimer(watch_timer)))
 
-    local bar = quest:AddQuestInfoBar(0, BARREL_WATCH_SECONDS,
+    -- x86 thiscall arguments are pushed right-to-left.  Retail 0x00DB500F pushes 0
+    -- (second float) and 0x00DB5036 pushes 45.0 (first float), so this is (45, 0).
+    -- The former reconstructed (0, 45) call created the observed permanently empty bar.
+    local bar = quest:AddQuestInfoBar(BARREL_WATCH_SECONDS, 0,
         NOVI.COLOUR_GREEN, NOVI.COLOUR_GREEN, NOVI.HUD_CLOCK_ICON, "", INFO_BAR_SCALE)
     F.set(quest, F.GUIBarrelCounter, bar)
     local guard_point = quest:GetThingWithScriptName(NOVI.MARKER_WAREHOUSE_GUARD)
+    local last_timer_value = -1
 
     while not F.get(quest, F.BarrelManSpokenToHeroOnReturn) do
         if not quest:NewScriptFrame() then return end   -- retail leaves the bar on termination
@@ -310,7 +334,12 @@ function StartBarrelTimer(questObject)
             colour = NOVI.COLOUR_GREEN
         end
         quest:ChangeQuestInfoBarColour(bar, colour, colour)
-        quest:UpdateQuestInfoBar(bar, quest:GetTimer(watch_timer), INFO_BAR_UNCHANGED, INFO_BAR_UNCHANGED)
+        local timer_value = quest:GetTimer(watch_timer)
+        quest:UpdateQuestInfoBar(bar, timer_value, INFO_BAR_UNCHANGED, INFO_BAR_UNCHANGED)
+        if timer_value ~= last_timer_value then
+            quest:Log("NOVI_PROBE StartBarrelTimer update bar=" .. tostring(bar) .. " value=" .. tostring(timer_value))
+            last_timer_value = timer_value
+        end
     end
     quest:RemoveQuestInfoElement(bar)
 end
@@ -339,7 +368,11 @@ function WatchBarrels(questObject)
                 Deeds.add_bad(quest, nil, Deeds.BAD_DEED_BARREL_BROKEN)
             elseif broken == total - 1 then
                 local last_barrel = quest:GetThingWithScriptName(NOVI.SCRIPT_BARREL)
+                quest:Log("NOVI_PROBE WatchBarrels GOLD_ARM broken=" .. tostring(broken) ..
+                    " total=" .. tostring(total) .. " container_present=" .. tostring(last_barrel ~= nil))
                 quest:AddItemToContainer(last_barrel, NOVI.OBJECT_GOLD_1)
+                quest:Log("NOVI_PROBE WatchBarrels GOLD_INSERT_RETURNED item=" ..
+                    NOVI.OBJECT_GOLD_1 .. " container_present=" .. tostring(last_barrel ~= nil))
             elseif broken > total - (BEETLES_FROM_LAST_N_BARRELS + 1) then
                 local beetle = quest:CreateCreature(NOVI.CREATURE_STAG_BEETLE,
                     F.get(quest, F.BarrelBrokenPos), NOVI.SCRIPT_CREATED_BEETLE)

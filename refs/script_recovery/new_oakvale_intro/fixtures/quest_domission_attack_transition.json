@@ -2,6 +2,10 @@
  "__meta__": {
   "function": "DoMission",
   "covers": ["DoMission", "AttackStuff", "PostAttackStuff"],
+  "coverEvidence": {
+   "AttackStuff": ["TransitionToTheme", "EntityTeleportToThing"],
+   "PostAttackStuff": ["ResetToDefaultTheme", "SetQuestAsCompleted"]
+  },
   "kind": "quest",
   "expect": [
    "ActivateQuest",
@@ -14,7 +18,7 @@
    "TakeObjectFromHero",
    "AddLogbookStoryEntry",
    "FadeScreenIn",
-   "PlayCutscene",
+   "RunCutsceneWithSetup",
    "ResetToDefaultTheme",
    "StopOverrideMusic",
    "SetQuestAsCompleted"
@@ -74,15 +78,7 @@
    "scope": "Entity"
   }
  ],
- "Quest.GetAllThingsWithScriptName(M_PostAttackStart)": [
-  [],
-  [
-   {
-    "handle": "M_PostAttackStart",
-    "scope": "Entity"
-   }
-  ]
- ],
+ "Entity.IsAlive": [false, true],
  "Quest.GetThingWithScriptName(V_OakVale)": [
   {
    "handle": "V_OakVale",

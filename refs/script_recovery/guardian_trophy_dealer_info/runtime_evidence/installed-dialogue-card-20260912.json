@@ -1,0 +1,255 @@
+{
+  "scope": "Read installed Guardian text, macro and quest-card definitions; never write assets.",
+  "source_sha256": {
+    "data/CompiledDefs/names.bin": "56d70f5d81231fc7a1a515a93fbc2f1f2ae8c3ff59e4c56dddfa91995fcd523a",
+    "data/CompiledDefs/game.bin": "2cc9495a9ed2a3f0c3f30f502b8229485616dcdfc304513a09324cd76cc52cf5",
+    "data/CompiledDefs/script.bin": "3d6d09939b612478f70c6aa1eb45a5be0e850b27d534f78d996a00466501c1d9",
+    "data/lang/English/text.big": "531c4514f5597e6426c8a2f1bd3ed39b3dd1dc9a8d38982e2303bb19f8ff33fc"
+  },
+  "requested_text_keys": [
+    "TEXT_QST_077_MAZE_INTRO_05",
+    "TEXT_QST_077_MAZE_INTRO_10",
+    "TEXT_QST_077_MAZE_INTRO_100",
+    "TEXT_QST_077_MAZE_INTRO_110",
+    "TEXT_QST_077_MAZE_INTRO_20",
+    "TEXT_QST_077_MAZE_INTRO_60",
+    "TEXT_QST_077_MAZE_INTRO_70",
+    "TEXT_QST_077_MAZE_INTRO_90",
+    "TEXT_QST_077_MAZE_ON_HIT",
+    "TEXT_QST_077_MAZE_REPEAT",
+    "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01"
+  ],
+  "texts": {
+    "TEXT_QST_077_MAZE_INTRO_05": {
+      "content": "So you really found your sister.  I would never have imagined her living among Bandits.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_05",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3852,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_05",
+      "payload_sha256": "3259a7ebe79f2745b9e65e5ab79e3cbc0212def409b45187b9809c99e999d5c3"
+    },
+    "TEXT_QST_077_MAZE_INTRO_10": {
+      "content": "You've really come a long way these last few years, haven't you?",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_10",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3825,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_10",
+      "payload_sha256": "d3b345f48c34e7cc300b408b7859a9fd25b9121956784aed0e59d7102b671f2b"
+    },
+    "TEXT_QST_077_MAZE_INTRO_100": {
+      "content": "There's a rumour he may be hiding somewhere in Witchwood. That is, if he isn't dead already.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_100",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 4083,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_100",
+      "payload_sha256": "21c6ce8c6e8fe06dd4fe253ba3887aedc3b3f68d62d876cddecb710a58aa8e58"
+    },
+    "TEXT_QST_077_MAZE_INTRO_110": {
+      "content": "You can use a Cullis Gate to get there. I only hope it isn't too late.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_110",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 4088,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_110",
+      "payload_sha256": "4b11aafa99a402f7018a70387b8f3e4bb3fb640a1c879f51f29274b743d549af"
+    },
+    "TEXT_QST_077_MAZE_INTRO_20": {
+      "content": "People are starting to ask when they'll see you in the Arena out in Witchwood.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_20",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3834,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_20",
+      "payload_sha256": "c9af0f15dc57868f979989110772355a10af147e6349b6fa40d9d7340ea23d82"
+    },
+    "TEXT_QST_077_MAZE_INTRO_60": {
+      "content": "But before you go wandering again. I've left a Quest Card of my own. A favour, if you will.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_60",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3830,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_60",
+      "payload_sha256": "f99f60ee62c9438e635435447d5b0a195fb3d5d878b6e8ce1870015c3496f896"
+    },
+    "TEXT_QST_077_MAZE_INTRO_70": {
+      "content": "An old friend of mine has gone missing. Calls himself the Archaeologist.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_70",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3861,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_70",
+      "payload_sha256": "48d5d1c7569bd14d4b84299625325bc7a934268d7207f557811fb52233bc160b"
+    },
+    "TEXT_QST_077_MAZE_INTRO_90": {
+      "content": "He may have stumbled on to something big. Perhaps big enough to put his life in danger.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_INTRO_90",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3856,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_INTRO_90",
+      "payload_sha256": "621250d533b1dba9055489775d32d2a4e44b712101c21ab27753d8a35947513d"
+    },
+    "TEXT_QST_077_MAZE_ON_HIT": {
+      "content": "Ah, Hero. Your enthusiasm for the battle is exemplary, if sometimes misplaced.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_ON_HIT",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3261,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_ON_HIT",
+      "payload_sha256": "0ef7e2c98e3d357feb03187893e9e2b85b6b6c8c883df9248089cc413e53ddbc"
+    },
+    "TEXT_QST_077_MAZE_REPEAT": {
+      "content": "Still here? Go and look for the Archaeologist.",
+      "speechbank": "ScriptDialogue.lug",
+      "speaker": "MAZE",
+      "identifier": "TEXT_QST_077_MAZE_REPEAT",
+      "tags": [],
+      "speaker_index": 16,
+      "id": 3182,
+      "type": 0,
+      "name": "TEXT_QST_077_MAZE_REPEAT",
+      "payload_sha256": "2b27eb8d142d06f49e55f05bdd372336ea893b4d6f35965cf4e4925f9c39af19"
+    },
+    "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01": {
+      "content": "Meet Maze in his quarters at the Guild.",
+      "speechbank": "",
+      "speaker": "",
+      "identifier": "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01",
+      "tags": [],
+      "speaker_index": 3,
+      "id": 20400,
+      "type": 0,
+      "name": "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01",
+      "payload_sha256": "c7aa6281243c9b2e7fc931aecee07dc99396ec136ed0c55b4f8425250a98cc71"
+    }
+  },
+  "macros": [
+    {
+      "name": "CS_MAZE_TROPHY_INFO_SETUP",
+      "payload_sha256": "49e338e6100a07285403e603cd41bbe54147bf4b17d3d3c293740215bb1369ef",
+      "Macro": [
+        "KeepEntityMap TRUE",
+        "FadeOut",
+        "GamePause 0.5",
+        "PutUpYourSwords",
+        "HERO.ClearCommands TRUE,TRUE",
+        "HERO.Teleport MK_MTI_HERO1",
+        "MAZE.Teleport MK_MTI_MAZE1",
+        "UseCamera CAM_MTI_SHOT1,-1,NULL,0,0",
+        "FadeIn"
+      ],
+      "SkipCond": []
+    },
+    {
+      "name": "CS_MAZE_TROPHY_INFO_HITME",
+      "payload_sha256": "a5ccf72db38c7ee9dd3c823f795bcaa74270665d38c742caf2ee49be509a49c2",
+      "Macro": [
+        "KeepEntityMap TRUE",
+        "MAZE.LookAtNothing TRUE",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_ON_HIT"
+      ],
+      "SkipCond": []
+    },
+    {
+      "name": "CS_MAZE_TROPHY_INFO",
+      "payload_sha256": "5b9228920e01d901e0833fe2544e2c171c86f039468de7481087b22c022d1651",
+      "Macro": [
+        "HERO.EntitySetMaxWalkingSpeed 0.13",
+        "MAZE.EntitySetMaxWalkingSpeed 0.13",
+        "MAZE.LookAtNothing TRUE",
+        "GamePause 0.5",
+        "MAZE.PlayCombatAnim TURNING_C180",
+        "MAZE.WaitTask FOO",
+        "MAZE.DialogadSpeak MAZE,TEXT_QST_077_MAZE_INTRO_05",
+        "GamePause 3.0",
+        "HERO.PlayAnimation CS_HERO_LISTEN1",
+        "MAZE.WaitTask FOO",
+        "GamePause 0.2",
+        "MAZE.WalkTo MK_MTI_MAZE2,0,FALSE,FALSE,FALSE",
+        "GamePause 0.3",
+        "MAZE.DialogSpeak HERO,TEXT_QST_077_MAZE_INTRO_10",
+        "MAZE.DialogSpeak HERO,TEXT_QST_077_MAZE_INTRO_20",
+        "GamePause 0.5",
+        "UseCamera CAM_MTI_SHOT1",
+        "GamePause 0.4",
+        "HERO.WalkTo MK_MTI_HERO2,0,FALSE,FALSE,FALSE",
+        "MAZE.WaitTask FOO",
+        "MAZE.LookInDirection 0,FALSE",
+        "HERO.WaitTask FOO",
+        "HERO.LookInDirection 65,FALSE",
+        "WaitActiveDialog",
+        "MAZE.DialogadSpeak MAZE,TEXT_QST_077_MAZE_INTRO_60",
+        "GamePause 2.0",
+        "UseCamera CAM_MTI_SHOT2,-1,NULL,3,3",
+        "MAZE.WaitTask FOO",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_70",
+        "UseCamera CAM_MTI_SHOT3",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_90",
+        "MAZE.LookInDirection 250,FALSE",
+        "GamePause 0.7",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_100",
+        "UseCamera CAM_MTI_MAZE",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_110",
+        "HERO.EntitySetMaxWalkingSpeed 0",
+        "MAZE.EntitySetMaxWalkingSpeed 0",
+        "FadeOut",
+        "GamePause 0.5",
+        "FadeIn"
+      ],
+      "SkipCond": [
+        "FadeOut",
+        "GamePause 0.5",
+        "HERO.EntitySetMaxWalkingSpeed 0",
+        "MAZE.EntitySetMaxWalkingSpeed 0",
+        "HERO.Teleport MK_MTI_HERO2",
+        "MAZE.Teleport MK_MTI_MAZE2",
+        "FadeIn"
+      ]
+    }
+  ],
+  "quest_card": {
+    "name": "OBJECT_QUEST_CARD_FIND_TROPHY_DEALER",
+    "index": 3736,
+    "definition": "OBJECT",
+    "index_in_definition": 997,
+    "payload_sha256": "6d6778b10b8773d5ad10fb0da9435e82aa7a63de00a8eeb177c1106b04935f17",
+    "payload_hex": "010001080058a9031cea23000047010000f9b8b13ceb2300004701000056103280ad2300001d010000037cad83ed230000470100008cb25986ae2300001d010000881b969aac2300001d0100008aa4c3b421300000980e00009c9fc8e1af2300001d0100005b9e9f4207000000389804000000000000e59704000000000000fc9704000000000000159804000000000000c79904000000000000781e05000000000000891e05000000000000ce6cab01576db4ea012c55aaf501855b2e79001b00a2c901523acb9d0000596dd4011dbbbc380057db00b9003537c36c0190cfb1e3008d391cc200e3bbf4eb00a4f8b12701021e95e2016efa45ea00b634bd0e00a3defcf3009e76923300dd23524e0004dab56700c906c8300f1d0000e993dc150000d041773452a5010000008687b4780000803ffeef4443cdccccbdb6c9226200000000909d15a400000040c516246a0000803fa874d2090000004090788bc7fffffffff5f55b34ffffffffc8636b2e050000002d110000000000000000803f01f01ca0a000000000aac8eae0d30a000005714fedd30a0000a75959cf00000000e1a1a61700000000e6c2d2f600000000321fea8000f456492400c473c22301e3b83f2500efdf12d100",
+    "decoded": null,
+    "leftover": null,
+    "decode_error": "error: unpack requires a buffer of 4 bytes"
+  },
+  "limits": [
+    "Definition presence and localized group/member resolution only; no speech waveform or playback verification.",
+    "Quest-card payload archived; downstream component links are not certified by this inventory."
+  ]
+}

@@ -26,7 +26,7 @@ local SPEECH_METHOD        = 0
 local BAD_DEED_HIT_ME      = 2        -- AddBadDeed(PARENT, 2)
 local IDLE_PRIORITY        = 3        -- StartScriptingEntity(me, res, 3) each loop iteration
 local ACTION_PRIORITY      = 4        -- StartScriptingEntity(me, res, 4) for the hit reaction / shout
-local DEFAULT_PRIORITY     = nil      -- dropped by the decompiler
+local DEFAULT_PRIORITY     = 4        -- sale acquisition pushes 4 at 0x00DB4377/0x00DB43A2
 local SHOUT_ANIM           = "ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED"
 local SHOUT_TIMER_VALUE    = 3     -- native push 3 at 0x00db4d5d
 
@@ -50,9 +50,9 @@ local DoneIntro = false
 function Init(quest, me)
     DoneIntro = false
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    quest:SetThingHasInformation(me, false)    -- retail (me,0,1,0)
+    quest:SetThingHasInformation(me, false, true, false)
     quest:SetIsPushableByHero(me, false)
     quest:EntitySetAsUseMovementInActions(me, false)
     quest:EntitySetDeedReactionsEnabled(me, false)
@@ -60,8 +60,10 @@ end
 
 local function speak_if_alive(quest, me, key)
     if quest:GetHealth(me) > SPEAK_MIN_HEALTH then
-        me:SpeakAndWait(key, SPEECH_METHOD)
+        -- The surrounding native movie resource already owns cinematic mode.
+        return me:Speak(quest:GetHero(), key, SPEECH_METHOD, false, true, false) ~= false
     end
+    return true
 end
 
 local function begin_cutscene(quest)
@@ -71,11 +73,11 @@ end
 
 local function end_cutscene(quest)
     quest:PauseAllNonScriptedEntities(false)
-    quest:EndMovieSequence()   -- inference: retail movie object destructor
+    quest:EndMovieSequence()
 end
 
 local function face_theresa(quest, me)
-    quest:EntitySetFacingAngleTowardsThing(me, quest:GetThingWithScriptName(THERESA_SCRIPT_NAME))
+    quest:EntitySetFacingAngleTowardsThing(me, quest:GetThingWithScriptName(THERESA_SCRIPT_NAME), false)
 end
 
 local function hero_hit_me(quest, me)
@@ -95,7 +97,7 @@ local function return_home(quest, me)
         local far = NOVI.distance_from_thing_to_position_over(me, home, HOME_ARRIVE_DISTANCE)
         if not far then break end
         if not NOVI.frame(quest, me) then return false end
-        me:MoveToPosition(home, HOME_MOVE_RADIUS, HOME_MOVE_TYPE)
+        me:MoveToPosition(home, HOME_MOVE_RADIUS, HOME_MOVE_TYPE, false, true)
         while me:IsPerformingScriptTask() do
             if not NOVI.frame(quest, me) then return false end
         end
@@ -107,12 +109,12 @@ end
 -- Phase: hero hit him
 local function react_to_hit(quest, me)
     local hero = quest:GetHero()
-    quest:EntitySetThingAsAllyOfThing(me, hero)    -- twice in retail, args dropped
+    quest:EntitySetThingAsAllyOfThing(me, hero)    -- reciprocal order proven at 0x00DB4326-0x00DB4357
     quest:EntitySetThingAsAllyOfThing(hero, me)
     Deeds.add_bad(quest, me, BAD_DEED_HIT_ME)
     if not NOVI.acquire(quest, me, ACTION_PRIORITY) then return false end
     begin_cutscene(quest)
-    speak_if_alive(quest, me, TEXT_ON_HIT)
+    if not speak_if_alive(quest, me, TEXT_ON_HIT) then end_cutscene(quest); return false end
     face_theresa(quest, me)
     end_cutscene(quest)
     return true
@@ -121,20 +123,20 @@ end
 -- Phase: the sweets sale dialogue
 local function sell_sweets(quest, me)
     if not NOVI.acquire(quest, me, DEFAULT_PRIORITY) then return false end
-    begin_cutscene(quest)   -- slot 0x5ec(1)/(0) here; inference = PauseAllNonScriptedEntities
+    begin_cutscene(quest)   -- slot 0x5ec true/false bracket is PauseAllNonScriptedEntities
     if F.get(quest, F.GivenSweets) then
-        speak_if_alive(quest, me, TEXT_INTRO_10)
+        if not speak_if_alive(quest, me, TEXT_INTRO_10) then end_cutscene(quest); return false end
         face_theresa(quest, me)
         end_cutscene(quest)
         return true
     end
     if not DoneIntro then
-        speak_if_alive(quest, me, TEXT_INTRO)
+        if not speak_if_alive(quest, me, TEXT_INTRO) then end_cutscene(quest); return false end
         DoneIntro = true
     else
-        speak_if_alive(quest, me, TEXT_STILL_GOT)
+        if not speak_if_alive(quest, me, TEXT_STILL_GOT) then end_cutscene(quest); return false end
     end
-    quest:GiveHeroYesNoQuestion(TEXT_BUY_SWEETS_Q, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "")
+    quest:GiveHeroYesNoQuestion(TEXT_BUY_SWEETS_Q, TEXT_ANSWER_YES, TEXT_ANSWER_NO, "", true)
     local answer = quest:MsgIsQuestionAnsweredYesOrNo()
     while answer < 0 do
         if not NOVI.frame(quest, me) then end_cutscene(quest); return false end
@@ -142,9 +144,9 @@ local function sell_sweets(quest, me)
     end
     if answer == 1 then
         if quest:GetHeroGold() < SWEETS_PRICE then
-            speak_if_alive(quest, me, TEXT_NOT_ENOUGH_CASH)
+            if not speak_if_alive(quest, me, TEXT_NOT_ENOUGH_CASH) then end_cutscene(quest); return false end
         else
-            speak_if_alive(quest, me, TEXT_GIVES_SWEETS)
+            if not speak_if_alive(quest, me, TEXT_GIVES_SWEETS) then end_cutscene(quest); return false end
             quest:GiveHeroObject(SWEETS_OBJECT, -1)   -- retail (name, -1, 0)
             quest:GiveHeroGold(-SWEETS_PRICE)
             quest:SetQuestCardObjective(quest:GetActiveQuestName(), TEXT_OBJECTIVE_04, "", "")
@@ -152,7 +154,7 @@ local function sell_sweets(quest, me)
             quest:ClearThingHasInformation(me)
         end
     else
-        speak_if_alive(quest, me, TEXT_BUY_LATER)
+        if not speak_if_alive(quest, me, TEXT_BUY_LATER) then end_cutscene(quest); return false end
     end
     face_theresa(quest, me)
     end_cutscene(quest)
@@ -163,13 +165,13 @@ end
 local function maybe_shout(quest, me)
     local shout_timer = F.get(quest, F.TalkIntermittentTimer)
     if quest:GetTimer(shout_timer) ~= 0 then return true end
-    if math.random(0, SHOUT_CHANCE_MODULO - 1) ~= 0 then return true end   -- rand() % 200 == 0
+    if quest:RetailRandModulo(SHOUT_CHANCE_MODULO) ~= 0 then return true end -- retail rand() % 200 == 0
     if not NOVI.hero_within(quest, me, SHOUT_HERO_DISTANCE) then return true end
     quest:SetTimer(shout_timer, SHOUT_TIMER_VALUE)
-    local conv = quest:AddNewConversation(me)   -- retail (me, 0, 0)
+    local conv = quest:AddNewConversation(me, false, false)
     quest:AddPersonToConversation(conv, quest:GetHero())
     if not NOVI.acquire(quest, me, ACTION_PRIORITY) then return false end
-    me:PlayAnimation(SHOUT_ANIM)   -- retail bools (0,0,0,1,DAT_01375748,false) unbound
+    me:PlayAnimation(SHOUT_ANIM, false, false, false, true, true, false, false)
     quest:AddLineToConversation(conv, TEXT_ROLL_UP, me, quest:GetHero())
     return true
 end

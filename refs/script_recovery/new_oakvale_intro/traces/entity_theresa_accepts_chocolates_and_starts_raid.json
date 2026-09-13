@@ -22,7 +22,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -30,7 +32,13 @@
     },
     {
       "arguments": [
-        "SKIP"
+        "SKIP",
+        true,
+        false,
+        false,
+        true,
+        false,
+        false
       ],
       "event": "api-call",
       "name": "PlayCombatAnimation",
@@ -164,10 +172,18 @@
         "TEXT_QST_048_GIVE_CHOCOLATE_BOX",
         "TEXT_OBJECT_HERO_ANSWER_YES",
         "TEXT_OBJECT_HERO_ANSWER_NO",
-        ""
+        "",
+        true
       ],
       "event": "api-call",
       "name": "GiveHeroYesNoQuestion",
+      "receiver": "quest",
+      "scope": "Quest"
+    },
+    {
+      "arguments": [],
+      "event": "api-call",
+      "name": "MsgIsQuestionAnsweredYesOrNo",
       "receiver": "quest",
       "scope": "Quest"
     },
@@ -192,7 +208,9 @@
         {
           "handle": "guard",
           "scope": "Entity"
-        }
+        },
+        false,
+        true
       ],
       "event": "api-call",
       "name": "RemoveThing",
@@ -309,7 +327,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -627,9 +647,6 @@
         "scope": "Entity"
       }
     ],
-    "Quest.GiveHeroYesNoQuestion": [
-      1
-    ],
     "Quest.IsDistanceBetweenThingsUnder": [
       true,
       true,
@@ -637,6 +654,9 @@
     ],
     "Quest.IsObjectInThingsPossession": [
       true
+    ],
+    "Quest.MsgIsQuestionAnsweredYesOrNo": [
+      1
     ],
     "Quest.NewScriptFrame": [
       true,
@@ -647,5 +667,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Theresa.lua",
-  "sourceSha256": "39e6d955838072a39e7519699d7d8bba90fe703bff5993e8c636037d3c2b6e5a"
+  "sourceSha256": "55b6c1ff53da42a4140db6a354802e82333f26a6dfcb6d02be9d31c29c668a30"
 }

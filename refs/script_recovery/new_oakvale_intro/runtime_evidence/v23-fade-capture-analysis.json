@@ -1,0 +1,159 @@
+{
+  "sourceLog": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260912-v23-visible-hide.log",
+  "conclusion": "Skip FadeOut was accepted and completed in the sampled engine state, but scene remains visible in video. Render/presentation discrepancy, not fade timer rejection for this run.",
+  "observedRunToBeforeSkip": true,
+  "skipQueryTick": 8574640,
+  "skipFadeOutTick": 8574703,
+  "hideTick": 8575375,
+  "hideSnapshot": {
+    "active": true,
+    "fadingOut": false,
+    "fadingIn": false,
+    "holdUntilIn": true,
+    "outTime": 0.5,
+    "outElapsed": 0.516086,
+    "colour": "0xff000000",
+    "freezeCount": 0
+  },
+  "afterRun1Position": [
+    3601.102,
+    856.481,
+    13.607
+  ],
+  "afterRun1BullyTask": true,
+  "limitations": [
+    "Global command log identifies macro bracket; screenshots alone cannot identify an internal renderer object.",
+    "Video/log are from same user test; precise frame-to-tick synchronization is not yet measured.",
+    "No original retail comparison capture yet."
+  ],
+  "events": [
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8569578 command=KeepEntityMap TRUE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8569578 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=KeepEntityMap TRUE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8569578 command=FadeOut",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8569578 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0 inTime=0.5 outElapsed=0 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=FadeOut"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8569578 command=GamePause 0.5",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8569578 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 0.5"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570171 command=BULLY.ClearCommands TRUE,TRUE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570171 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.ClearCommands TRUE,TRUE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570171 command=HERO.ClearCommands TRUE,TRUE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570171 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.ClearCommands TRUE,TRUE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570171 command=UseCamera CAM_OIBR_BRATHERO",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570171 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=UseCamera CAM_OIBR_BRATHERO"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570250 command=DoScriptFrame 1",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570250 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 1"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570312 command=HERO.Teleport MK_OIBR_HERO1",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.Teleport MK_OIBR_HERO1"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570312 command=BRAT.Teleport MK_OIBR_BRAT1",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.Teleport MK_OIBR_BRAT1"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570312 command=BULLY.Teleport MK_OIBR_BULLY1",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.Teleport MK_OIBR_BULLY1"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570312 command=HERO.PlayLoopingAnim CS_IDLE_STAND,-1,FALSE,TRUE,FALSE,FALSE,TRUE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.PlayLoopingAnim CS_IDLE_STAND,-1,FALSE,TRUE,FALSE,FALSE,TRUE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570375 command=DoScriptFrame 1",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570375 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 1"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570437 command=DoCameraPreloading",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570437 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoCameraPreloading"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570484 command=DoScriptFrame 1",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570484 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=DoScriptFrame 1"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570515 command=HERO.LookToThing BULLY,FOREVER",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570515 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.LookToThing BULLY,FOREVER"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570578 command=BRAT.LookToThing BULLY,FOREVER",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570578 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.LookToThing BULLY,FOREVER"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570640 command=UseCamera CAM_OIBR_MASTER",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570640 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=UseCamera CAM_OIBR_MASTER"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570703 command=FadeIn",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570703 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=FadeIn"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570703 command=BULLY.DialogadSpeak BULLY,TEXT_QST_048_BULLY_GOING_AWAY",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570703 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.DialogadSpeak BULLY,TEXT_QST_048_BULLY_GOING_AWAY"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8570703 command=GamePause 1.5",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8570703 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=1 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 1.5"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8572312 command=BRAT.PlayAnimation BOY_PULLING_FACES_01,FALSE,TRUE,FALSE,FALSE,TRUE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8572312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.PlayAnimation BOY_PULLING_FACES_01,FALSE,TRUE,FALSE,FALSE,TRUE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8572375 command=BULLY.WaitTask FOO",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8572375 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.WaitTask FOO"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8574437 command=BULLY.RunTo MK_OIBR_BULLY2,0,FALSE,FALSE,FALSE,TRUE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8574437 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.RunTo MK_OIBR_BULLY2,0,FALSE,FALSE,FALSE,TRUE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8574515 command=GamePause 0.5",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8574515 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 0.5"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8574703 command=FadeOut",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8574703 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=0 fadingIn=0 fadingOut=0 holdUntilIn=0 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.515748 inRemaining=0 colour=0xff000000 freezeCount=0 beforeCommand=FadeOut"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8574703 command=GamePause 0.5",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8574703 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=1 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=GamePause 0.5"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8575312 command=HERO.Teleport MK_OIBR_HERO2",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8575312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516086 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.Teleport MK_OIBR_HERO2"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8575312 command=BRAT.Teleport MK_OIBR_BRAT1",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8575312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516086 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.Teleport MK_OIBR_BRAT1"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8575312 command=BRAT.LookToThing HERO,FOREVER",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8575312 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516086 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BRAT.LookToThing HERO,FOREVER"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8575375 command=HERO.LookAtNothing TRUE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8575375 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516086 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=HERO.LookAtNothing TRUE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8575375 command=BULLY.Drawable FALSE",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8575375 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516086 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=BULLY.Drawable FALSE"
+    },
+    {
+      "commandLine": "[CutsceneCommandDiag] macro=CS_OAKVALEINTRO_BULLYRUN1 tick=8575375 command=FadeIn",
+      "fadeSnapshot": "[CutsceneFadeDiag] tick=8575375 gsi=0x166a5e98 display=0x14d8b998 readable=1 active=1 fadingIn=0 fadingOut=0 holdUntilIn=1 allowOverride=1 outTime=0.5 inTime=0.5 outElapsed=0.516086 inRemaining=0.5 colour=0xff000000 freezeCount=0 beforeCommand=FadeIn"
+    }
+  ]
+}

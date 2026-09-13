@@ -72,7 +72,7 @@ class LuaTraceTests(unittest.TestCase):
             alive_calls = [event for event in trace["events"] if event["name"] == "IsAlive"]
             self.assertEqual([event["receiver"] for event in alive_calls], ["first", "second"])
 
-    def test_novi_pc_platform_and_distance_fallbacks(self):
+    def test_novi_pc_platform_and_retail_distance_binding(self):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "common_fallbacks.lua"
             source.write_text(
@@ -81,9 +81,9 @@ class LuaTraceTests(unittest.TestCase):
                 'N.distance_from_thing_to_position_over(me,{x=0,y=0,z=0},2), '
                 'N.things_over(q,me,q:GetHero(),20)) end', encoding="utf-8")
             trace = run_trace(source, "Main", "entity", {
-                "Entity.GetPos": [{"x": 3, "y": 0, "z": 0}],
+                "Entity.IsDistanceFromPositionOver": [True],
                 "Quest.GetHero": [{"handle": "hero", "scope": "Entity"}],
-                "Quest.IsDistanceBetweenThingsUnder": [False],
+                "Quest.IsDistanceBetweenThingsOver": [True],
             }, package_path=NOVI_FSE)
             record = next(event for event in trace["events"] if event["name"] == "Record")
             self.assertEqual(record["arguments"], [False, True, True])

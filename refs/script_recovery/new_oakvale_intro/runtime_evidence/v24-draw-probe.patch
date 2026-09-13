@@ -1,0 +1,77 @@
+--- v23/FableAPI.cpp
++++ v24/FableAPI.cpp
+@@ -717,6 +717,23 @@
+ static tDiagFindCharPos DiagFindCharPos_Original = nullptr;
+ static tDiagIsCutsceneSkipped DiagIsCutsceneSkipped_Original = nullptr;
+ 
++// Retail CDrawScreenFade::Draw is __thiscall with one argument (ret 4).
++// Count entry/return only: no logging, engine queries, or state writes on the draw path.
++typedef void(__thiscall* tDiagDrawScreenFade)(void*, void*);
++static tDiagDrawScreenFade DiagDrawScreenFade_Original = nullptr;
++static volatile LONG g_fadeDrawEntered = 0, g_fadeDrawReturned = 0;
++static volatile LONG g_fadeDrawObject = 0, g_fadeDrawTick = 0;
++static void __fastcall DiagDrawScreenFade_Detour(void* self, void*, void* prepareInfo) {
++    InterlockedExchange(&g_fadeDrawObject, reinterpret_cast<LONG>(self));
++    InterlockedExchange(&g_fadeDrawTick, static_cast<LONG>(GetTickCount()));
++    InterlockedIncrement(&g_fadeDrawEntered);
++    DiagDrawScreenFade_Original(self, prepareInfo);
++    InterlockedIncrement(&g_fadeDrawReturned);
++}
++static __declspec(naked) void DiagDrawScreenFade_NakedStub() {
++    __asm { jmp DiagDrawScreenFade_Detour }
++}
++
+ // Passive snapshots, not engine queries: IsCutsceneSkipped consumes a message and
+ // must never be called merely to inspect state. Retail byte proof is recorded in
+ // runtime_evidence/cutscene-fade-native-analysis-20260912.md.
+@@ -752,6 +769,34 @@
+            << " colour=0x" << std::hex << colour << std::dec
+            << " freezeCount=" << freezeCount;
+     }
++    // These are installed-retail offsets, not donor CPlayerGui header offsets.
++    uintptr_t gui = 0, draw = 0, mainGame = 0, renderDisplay = 0;
++    unsigned guiMode = 0;
++    unsigned char guiBytes[0x298] = {}, drawBytes[0x2C] = {};
++    const bool guiReadable = ReadProcessMemory(process, ASLR<void*>(0x013B8790),
++        &gui, sizeof(gui), &bytes) && gui && ReadProcessMemory(process,
++        reinterpret_cast<void*>(gui), guiBytes, sizeof(guiBytes), &bytes);
++    if (guiReadable) {
++        memcpy(&draw, guiBytes + 0x168, sizeof(draw));
++        memcpy(&guiMode, guiBytes + 0x294, sizeof(guiMode));
++    }
++    const bool drawReadable = guiReadable && draw && ReadProcessMemory(process,
++        reinterpret_cast<void*>(draw), drawBytes, sizeof(drawBytes), &bytes);
++    if (drawReadable) memcpy(&mainGame, drawBytes + 0x10, sizeof(mainGame));
++    const bool renderDisplayReadable = drawReadable && mainGame && ReadProcessMemory(process,
++        reinterpret_cast<void*>(mainGame + 0x28), &renderDisplay, sizeof(renderDisplay), &bytes);
++    ss << " guiReadable=" << guiReadable << " guiMode=" << guiMode
++       << " drawReadable=" << drawReadable << " drawObject=0x" << std::hex << draw
++       << " renderDisplay=0x" << renderDisplay << std::dec
++       << " renderDisplayReadable=" << renderDisplayReadable
++       << " sameDisplay=" << (displayReadable && renderDisplayReadable && display == renderDisplay)
++       << " drawFlag=" << unsigned(drawBytes[0x18])
++       << " drawOpaqueSticky=" << unsigned(drawBytes[0x28])
++       << " drawEntered=" << InterlockedCompareExchange(&g_fadeDrawEntered, 0, 0)
++       << " drawReturned=" << InterlockedCompareExchange(&g_fadeDrawReturned, 0, 0)
++       << " lastDrawObject=0x" << std::hex << static_cast<unsigned long>(
++           InterlockedCompareExchange(&g_fadeDrawObject, 0, 0)) << std::dec
++       << " lastDrawTick=" << static_cast<unsigned long>(InterlockedCompareExchange(&g_fadeDrawTick, 0, 0));
+     ss << " beforeCommand=" << (command ? command : "<null>");
+     LogToFile(ss.str());
+ }
+@@ -793,6 +838,15 @@
+ 
+ static void InstallCutsceneCommandDiagnostics() {
+     if (g_cutsceneCommandDiagHooksInstalled) return;
++    // push ebp; lea ebp,[esp-0x74]: five complete bytes, no relative operand.
++    const DWORD drawFade = ASLR<DWORD>(0x006495A8);
++    const BYTE drawExpected[5] = {0x55, 0x8d, 0x6c, 0x24, 0x8c};
++    if (!memcmp(reinterpret_cast<const void*>(drawFade), drawExpected, sizeof(drawExpected))) {
++        InstallInlineHook(drawFade, &DiagDrawScreenFade_NakedStub, sizeof(drawExpected),
++            reinterpret_cast<void**>(&DiagDrawScreenFade_Original), "CutsceneFade.DrawScreenFade");
++    } else {
++        LogToFile("!!! [CutsceneFadeDiag] draw prologue mismatch; draw probe not installed.");
++    }
+     const DWORD find = ASLR<DWORD>(0x0099E5A0);
+     const DWORD skipped = ASLR<DWORD>(0x00CBEB7E);
+     const BYTE findExpected[5] = {0x56, 0x8b, 0xf1, 0x8b, 0x06};

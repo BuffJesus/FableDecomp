@@ -1,0 +1,90 @@
+{
+  "script_sha256": "3d6d09939b612478f70c6aa1eb45a5be0e850b27d534f78d996a00466501c1d9",
+  "macros": [
+    {
+      "name": "CS_MAZE_TROPHY_INFO_SETUP",
+      "index": 329,
+      "payload_sha256": "49e338e6100a07285403e603cd41bbe54147bf4b17d3d3c293740215bb1369ef",
+      "Macro": [
+        "KeepEntityMap TRUE",
+        "FadeOut",
+        "GamePause 0.5",
+        "PutUpYourSwords",
+        "HERO.ClearCommands TRUE,TRUE",
+        "HERO.Teleport MK_MTI_HERO1",
+        "MAZE.Teleport MK_MTI_MAZE1",
+        "UseCamera CAM_MTI_SHOT1,-1,NULL,0,0",
+        "FadeIn"
+      ],
+      "SkipCond": []
+    },
+    {
+      "name": "CS_MAZE_TROPHY_INFO_HITME",
+      "index": 330,
+      "payload_sha256": "a5ccf72db38c7ee9dd3c823f795bcaa74270665d38c742caf2ee49be509a49c2",
+      "Macro": [
+        "KeepEntityMap TRUE",
+        "MAZE.LookAtNothing TRUE",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_ON_HIT"
+      ],
+      "SkipCond": []
+    },
+    {
+      "name": "CS_MAZE_TROPHY_INFO",
+      "index": 331,
+      "payload_sha256": "5b9228920e01d901e0833fe2544e2c171c86f039468de7481087b22c022d1651",
+      "Macro": [
+        "HERO.EntitySetMaxWalkingSpeed 0.13",
+        "MAZE.EntitySetMaxWalkingSpeed 0.13",
+        "MAZE.LookAtNothing TRUE",
+        "GamePause 0.5",
+        "MAZE.PlayCombatAnim TURNING_C180",
+        "MAZE.WaitTask FOO",
+        "MAZE.DialogadSpeak MAZE,TEXT_QST_077_MAZE_INTRO_05",
+        "GamePause 3.0",
+        "HERO.PlayAnimation CS_HERO_LISTEN1",
+        "MAZE.WaitTask FOO",
+        "GamePause 0.2",
+        "MAZE.WalkTo MK_MTI_MAZE2,0,FALSE,FALSE,FALSE",
+        "GamePause 0.3",
+        "MAZE.DialogSpeak HERO,TEXT_QST_077_MAZE_INTRO_10",
+        "MAZE.DialogSpeak HERO,TEXT_QST_077_MAZE_INTRO_20",
+        "GamePause 0.5",
+        "UseCamera CAM_MTI_SHOT1",
+        "GamePause 0.4",
+        "HERO.WalkTo MK_MTI_HERO2,0,FALSE,FALSE,FALSE",
+        "MAZE.WaitTask FOO",
+        "MAZE.LookInDirection 0,FALSE",
+        "HERO.WaitTask FOO",
+        "HERO.LookInDirection 65,FALSE",
+        "WaitActiveDialog",
+        "MAZE.DialogadSpeak MAZE,TEXT_QST_077_MAZE_INTRO_60",
+        "GamePause 2.0",
+        "UseCamera CAM_MTI_SHOT2,-1,NULL,3,3",
+        "MAZE.WaitTask FOO",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_70",
+        "UseCamera CAM_MTI_SHOT3",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_90",
+        "MAZE.LookInDirection 250,FALSE",
+        "GamePause 0.7",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_100",
+        "UseCamera CAM_MTI_MAZE",
+        "MAZE.Speak MAZE,TEXT_QST_077_MAZE_INTRO_110",
+        "HERO.EntitySetMaxWalkingSpeed 0",
+        "MAZE.EntitySetMaxWalkingSpeed 0",
+        "FadeOut",
+        "GamePause 0.5",
+        "FadeIn"
+      ],
+      "SkipCond": [
+        "FadeOut",
+        "GamePause 0.5",
+        "HERO.EntitySetMaxWalkingSpeed 0",
+        "MAZE.EntitySetMaxWalkingSpeed 0",
+        "HERO.Teleport MK_MTI_HERO2",
+        "MAZE.Teleport MK_MTI_MAZE2",
+        "FadeIn"
+      ]
+    }
+  ]
+}

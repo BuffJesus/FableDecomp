@@ -1,0 +1,33 @@
+Retail Fable.exe x86 excerpt for
+NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::Main (0x00DB80C0).
+
+00db8116: ff905c010000       call dword ptr [eax+0x15c] ; RegisterTimer
+00db811c: 8b0df8e84301       mov ecx,dword ptr [0x0143e8f8]
+00db8122: 8b11               mov edx,dword ptr [ecx]
+00db8124: 8bf8               mov edi,eax                 ; retain timer ID
+00db8126: 6a05               push 5
+00db8128: 57                 push edi
+00db8129: ff9264010000       call dword ptr [edx+0x164] ; SetTimer(timer, 5)
+00db812f: 8b0df8e84301       mov ecx,dword ptr [0x0143e8f8]
+00db8135: 8b01               mov eax,dword ptr [ecx]
+00db8137: 57                 push edi
+00db8138: ff9068010000       call dword ptr [eax+0x168] ; first GetTimer(timer)
+00db813e: 85c0               test eax,eax
+00db8140: 7426               je 0x00db8168
+00db8142: 8b4e04             mov ecx,dword ptr [esi+4]
+00db8145: 8b11               mov edx,dword ptr [ecx]
+00db8147: ff521c             call dword ptr [edx+0x1c]  ; NewScriptFrame
+00db814a: 8bce               mov ecx,esi
+00db814c: e8dfd91700         call 0x00f35b30            ; IsTerminating
+00db8151: 84c0               test al,al
+00db8153: 8b0df8e84301       mov ecx,dword ptr [0x0143e8f8]
+00db8159: 57                 push edi
+00db815a: 753d               jne 0x00db8199
+00db815c: 8b01               mov eax,dword ptr [ecx]
+00db815e: ff9068010000       call dword ptr [eax+0x168] ; second GetTimer(timer)
+00db8164: 85c0               test eax,eax
+00db8166: 75da               jne 0x00db8142
+
+EDI has held the RegisterTimer return since 0x00DB8124. The second push occurs
+before the termination branch: on its fall-through path, the slot-0x168 call at
+0x00DB815E consumes that exact timer ID; on the taken path, retail cleanup consumes it.

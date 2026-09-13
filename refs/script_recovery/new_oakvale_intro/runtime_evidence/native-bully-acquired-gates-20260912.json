@@ -1,0 +1,51 @@
+{
+  "scope": "Execute Bully successful-acquisition gates before actor-map construction.\n\nNative branches and termination helpers execute. Acquisition, resource/map,\nmovie and macro APIs are doubles. Stops at macro entry, before playback.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "stop_at": 0,
+      "queries": 3,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "ready_for_map"
+      ]
+    },
+    {
+      "stop_at": 1,
+      "queries": 1,
+      "events": [
+        "acquire_bully",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 2,
+      "queries": 2,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "release_hero",
+        "release_bully"
+      ]
+    },
+    {
+      "stop_at": 3,
+      "queries": 3,
+      "events": [
+        "acquire_bully",
+        "acquire_hero",
+        "acquire_victim",
+        "release_victim",
+        "release_hero",
+        "release_bully"
+      ]
+    }
+  ],
+  "bytes": {
+    "0xdbc8a7": "8b4d048b116a048d4424145057ff522084c07530eb038d49008b4d048b11ff521c8bcde86192170084c00f850b0400008b4d048b016a048d5424145257ff502084c074d58bcde83e92170084c00f85e80300008d4c243ce89da9a2ff8d4c243ce8ad5af1ff84c074098d4c243ce8575ef1ff8b4d048b316a048d44244050ff96180100008b4d0450ff562084c075348b4d048b11ff521c8bcde8eb91170084c00f85e60200008b4d048b316a048d44244050ff96180100008b4d0450ff562084c074cc8bcde8bf91170084c00f85ba0200008d4c2474e81ea9a2ff8d4c2474e82e5af1ff84c074098d4c2474e8d85df1ff8b4d048b116a048d442478508d44243450ff522084c0752f8b4d048b11ff521c8bcde87191170084c00f85630200008b4d048b016a048d542478528d54243452ff502084c074d18bcde84a91170084c00f853c0200008d4c2464e879f5f1ff",
+    "0xdbcc2a": "8d4c2474e89da8a2ff8d4c243ce894a8a2ffe9a1000000",
+    "0xdbcce2": "8d4c242ce855db6eff8d4c2410e8dca7a2ff"
+  }
+}

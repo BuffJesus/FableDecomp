@@ -33,7 +33,7 @@ local WIFE_FLEE_DISTANCE = 5.0            -- wife this close -> run off
 local MAIN_CONTROL_PRIORITY = 4           -- DAT_00000004 loaded before StartScriptingEntity
 local CUTSCENE_CONTROL_PRIORITY = 4       -- StartScriptingEntity(me, res, 4) in the talked-to branch
 local BAD_DEED_HIT_WOMAN = 2              -- AddBadDeed(PARENT, 2)
-local HERO_ABILITY_IGNORED_ON_HIT = 14    -- inference: EHeroAbility 0xe, literal visible only in the AffairWife decompile
+local HERO_ABILITY_IGNORED_ON_HIT = 14    -- explicit push 0x0e at 0x00DB21EA
 local SPEAK_SELECTION_METHOD = 0          -- _Speak_ third argument literal 0
 local MOVE_WALK = 0                       -- EScriptEntityMoveType literal 0 (walk home)
 local MOVE_RUN = 1                        -- EScriptEntityMoveType literal 1 (run off)
@@ -42,9 +42,9 @@ local ZERO_POSITION = { x = 0.0, y = 0.0, z = 0.0 }   -- DAT_0143e8e0: used when
 
 function Init(quest, me)
     quest:EntitySetAsDamageable(me, false)
-    quest:EntitySetAsKillable(me, false)              -- retail passes (me, 0, 0); ForgeFSE binding takes one bool
+    quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-    quest:SetIsPushableByHero(me, false)
+    me:SetIsPushableByHero(false)
     quest:EntitySetAsUseMovementInActions(me, false)
 end
 
@@ -64,7 +64,9 @@ end
 -- Retail: if (GetHealth(scripted me) > 0) { Speak(hero, key); while IsPerformingScriptTask: frame }.
 local function speak_if_alive(quest, me, key)
     if quest:GetHealth(me) > SPEAK_HEALTH_THRESHOLD then
-        me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false)
+        if me:Speak(quest:GetHero(), key, SPEAK_SELECTION_METHOD, false, true, false) == false then
+            return false
+        end
         while me:IsPerformingScriptTask() do
             if not NOVI.frame(quest, me) then return false end
         end
@@ -73,7 +75,7 @@ local function speak_if_alive(quest, me, key)
 end
 
 -- Retail: PauseAllNonScriptedEntities(false) then the movie/resource objects are destroyed
--- (inference: the CScriptGameResourceObjectMovieBase destructor ends the movie sequence).
+-- Forge EndMovieSequence invokes the exact retail CScriptGameResourceObjectMovieBase destructor.
 local function end_talk_cutscene(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     NOVI.release(quest, me)
@@ -84,7 +86,7 @@ end
 local function move_until_within(quest, me, pos, radius, move_type)
     while NOVI.distance_from_thing_to_position_over(me, pos, radius) do
         if not NOVI.frame(quest, me) then return false end
-        me:MoveToPosition(pos, MOVE_RADIUS, move_type)
+        me:MoveToPosition(pos, MOVE_RADIUS, move_type, false, true)
         while me:IsPerformingScriptTask() do
             if not NOVI.frame(quest, me) then return false end
         end
@@ -121,11 +123,11 @@ local function talked_to_by_hero(quest, me, man)
     me:ClearCommands()
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
-    quest:EntitySetFacingAngleTowardsThing(man, quest:GetHero())  -- retail (man, hero, false); binding drops false
+    quest:EntitySetFacingAngleTowardsThing(man, quest:GetHero(), false)
     if not NOVI.acquire(quest, me, CUTSCENE_CONTROL_PRIORITY) then end_talk_cutscene(quest, me); return false end
     if not speak_if_alive(quest, me, TEXT_BUSY) then end_talk_cutscene(quest, me); return false end
-    -- retail EntitySetFacingAngleTowardsThing(<thing>, me, 0): inference — the man is turned back to face her
-    if man then quest:EntitySetFacingAngleTowardsThing(man, me) end -- retail trailing false is not exposed
+    -- 0x00DB25B4-0x00DB25C1: the stored man is turned back toward her with trailing false.
+    if man then quest:EntitySetFacingAngleTowardsThing(man, me, false) end
     F.set(quest, F.TalkingToWoman, false)
     end_talk_cutscene(quest, me)
     return true
@@ -134,11 +136,11 @@ end
 -- Phase RECEIVE: consume the kiss/hug flags the man raised.
 local function receive_affection(quest, me)
     if F.get(quest, F.ReceiveKiss) and not me:IsPerformingScriptTask() then
-        me:PlayAnimation(ANIM_RECEIVE_KISS)               -- retail flags (0,1,0,1,DAT_01375748=true,0)
+        me:PlayAnimation(ANIM_RECEIVE_KISS, false, true, false, true, true, false, false)
         F.set(quest, F.ReceiveKiss, false)
     end
     if F.get(quest, F.ReceiveHug) and not me:IsPerformingScriptTask() then
-        me:PlayAnimation(ANIM_RECEIVE_HUG)                -- retail flags (0,1,0,1,DAT_01375748=true,0)
+        me:PlayAnimation(ANIM_RECEIVE_HUG, false, true, false, true, true, false, false)
         F.set(quest, F.ReceiveHug, false)
     end
 end
@@ -147,7 +149,7 @@ end
 local function run_off(quest, me)
     local point = quest:GetThingWithScriptName(SCRIPT_NAME_RUN_OFF_POINT)
     quest:EntitySetAsUseMovementInActions(me, true)
-    quest:SetIsPushableByHero(me, true)                  -- retail restores pushability before she flees
+    me:SetIsPushableByHero(true)                         -- retail restores pushability before she flees
     local target = ZERO_POSITION
     if point then target = point:GetPos() end
     if not move_until_within(quest, me, target, RUN_OFF_ARRIVE_RADIUS, MOVE_RUN) then return false end
@@ -155,7 +157,7 @@ local function run_off(quest, me)
     while quest:IsCameraPosOnScreen(me:GetPos()) do
         if not NOVI.frame(quest, me) then return false end
     end
-    quest:RemoveThing(me)
+    quest:RemoveThing(me, false, true)
     return true
 end
 

@@ -1,0 +1,45 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "address": 8286960,
+      "size": 15,
+      "sha256": "f422947cd4124238721205bddcbb8357769d3d134c1d022ee02d428a5e7fbf6c"
+    }
+  ],
+  "query": {
+    "start": 14365794,
+    "implementationStackOffset": 52,
+    "wrapperStackOffset": 48,
+    "presentCall": 14365811,
+    "presentSlot": 24,
+    "absentPointer": 21227744,
+    "join": 14365814
+  },
+  "move": {
+    "site": 14365830,
+    "callee": 8286960,
+    "resourceStackOffset": 16,
+    "position": "EAX from the position branch",
+    "radiusBits": 1073741824,
+    "radius": 2.0,
+    "moveType": 1,
+    "avoidObstacles": false,
+    "ignorePathPreferability": true
+  },
+  "loweringStatus": "unresolved",
+  "requiredRuntimeBehavior": [
+    "Read cached husband implementation; when present obtain its position via slot18.",
+    "When implementation is absent read the current vector at0143E8E0, not an assumed zero vector.",
+    "Issue one MoveToPosition using resource16 and the selected snapshot, radius2,type1,false,true.",
+    "Preserve existing control lifetime and subsequent ClearThingHasInformation/distance query."
+  ],
+  "hostMismatch": "GetPos returns an empty table for an absent implementation; MoveToPosition converts missing components tozero. This composition does not establish equivalence to the native fallback vector.",
+  "fallbackEvidence": "0143E8E0 lies in virtual section tail with no raw bytes; neither initial nor runtime vector values are proven by RData.bytes_at."
+}

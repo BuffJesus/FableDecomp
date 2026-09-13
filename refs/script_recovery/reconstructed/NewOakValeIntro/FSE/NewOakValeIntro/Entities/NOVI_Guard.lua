@@ -30,7 +30,7 @@ local FOLLOW_DISTANCE = 1.0              -- _FollowThing_ float arg (0x3f800000)
 local FOLLOW_AVOID_OBSTACLES = true      -- _FollowThing_ bool arg (1)
 local ALIVE_HEALTH = 0.0                 -- _DAT_0122dedc (retail .rdata = 0.0): speak only while GetHealth(me) > 0
 local SPEAK_METHOD = 0                   -- ETextGroupSelectionMethod literal passed to _Speak_ (0)
--- 0xe literal in the sibling CNOVI_Villager::Main hit test; the Guard decompile dropped the arg.
+-- Guard's own instruction at 0x00DADADB pushes 0xe (Heal Life).
 local EXCLUDED_HIT_ABILITY = 14
 local CUTSCENE_BEHAVIOUR_ON = 1          -- EntitySetCutsceneBehaviour(me, 1) (register held 0x00000001)
 local CUTSCENE_BEHAVIOUR_OFF = 2         -- push 2 before GSI slot 0x800 at 0x00dac9ec
@@ -59,16 +59,18 @@ end
 -- me:Speak == FSE Speak_Blocking(target, key, method, false, true, false) -> same args, host waits.
 local function speak_if_alive(quest, me, hero, key)
   if quest:GetHealth(me) > ALIVE_HEALTH then
-    me:Speak(hero, key, SPEAK_METHOD)
+    return me:Speak(hero, key, SPEAK_METHOD) ~= false
   end
+  return true
 end
 
 local function speak_crime_list(quest, me, hero)
   for index = 0, 4 do
     if F.get(quest, F.WhichBadDeedsPerformed, index) then
-      speak_if_alive(quest, me, hero, CRIME_LINES[index])
+      if not speak_if_alive(quest, me, hero, CRIME_LINES[index]) then return false end
     end
   end
+  return true
 end
 
 -- Retail wraps the whole lecture in one StartMovieSequence("") + PauseAllNonScriptedEntities(true)
@@ -76,23 +78,28 @@ end
 local function lecture_hero(quest, me, hero)
   quest:StartMovieSequence()
   quest:PauseAllNonScriptedEntities(true)
-  quest:EntitySetFacingAngleTowardsThing(me, hero)
+  quest:EntitySetFacingAngleTowardsThing(me, hero, true)
   if F.get(quest, F.GuardsSpokenOnce) then
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_AGAIN")
-    speak_crime_list(quest, me, hero)
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_AFTER_READ_LIST")
+    if not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_AGAIN")
+       or not speak_crime_list(quest, me, hero)
+       or not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_AFTER_READ_LIST") then
+      quest:PauseAllNonScriptedEntities(false); quest:EndMovieSequence(); return false
+    end
   else
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_10")
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_20")
-    speak_crime_list(quest, me, hero)
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_30")
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_40")
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_50")
-    speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_60")
+    if not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_10")
+       or not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_20")
+       or not speak_crime_list(quest, me, hero)
+       or not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_30")
+       or not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_40")
+       or not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_50")
+       or not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_CAUGHT_YOU_60") then
+      quest:PauseAllNonScriptedEntities(false); quest:EndMovieSequence(); return false
+    end
     F.set(quest, F.GuardsSpokenOnce, true)
   end
   quest:PauseAllNonScriptedEntities(false)
   quest:EndMovieSequence()
+  return true
 end
 
 local function chase_distance(quest)
@@ -113,8 +120,8 @@ local function chase_and_lecture(quest, me)
   if not NOVI.acquire(quest, me, CONTROL_PRIORITY) then return false end
 
   if not NOVI.hero_within(quest, me, LECTURE_DISTANCE) then
-    quest:EntitySetFacingAngleTowardsThing(me, hero)
-    local conv = quest:AddNewConversation(me, 0, 0)
+    quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+    local conv = quest:AddNewConversation(me, false, false)
     quest:AddPersonToConversation(conv, hero)
     quest:AddLineToConversation(conv, "TEXT_QST_048_SCRMSG_GUARD_GOING_AFTER", me, hero, false)
     me:FollowThing(hero, FOLLOW_DISTANCE, FOLLOW_AVOID_OBSTACLES)
@@ -132,6 +139,7 @@ local function chase_and_lecture(quest, me)
     return true
   end
   F.set(quest, F.GuardsDealtWithBadDeeds, F.get(quest, F.BadDeedsPerformed))
+  quest:Log("NOVI_PROBE Guard claimed lecture bad=" .. tostring(F.get(quest, F.BadDeedsPerformed)) .. " dealt=" .. tostring(F.get(quest, F.GuardsDealtWithBadDeeds)))
 
   NOVI.release(quest, me)
   if not NOVI.acquire(quest, me, CONTROL_PRIORITY) then return false end
@@ -139,7 +147,7 @@ local function chase_and_lecture(quest, me)
     if not NOVI.frame(quest, me) then NOVI.release(quest, me); return false end
   end
 
-  lecture_hero(quest, me, hero)
+  if not lecture_hero(quest, me, hero) then NOVI.release(quest, me); return false end
   NOVI.release(quest, me)
   return true
 end
@@ -147,8 +155,8 @@ end
 -- Phase: reply when the hero talks to me (no scripted control is taken for this).
 local function answer_hero(quest, me)
   local hero = quest:GetHero()
-  quest:EntitySetFacingAngleTowardsThing(me, hero)
-  local conv = quest:AddNewConversation(me, 0, 0)
+  quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+  local conv = quest:AddNewConversation(me, false, false)
   quest:AddPersonToConversation(conv, hero)
   local bad = F.get(quest, F.BadDeedsPerformed)
   local good = F.get(quest, F.GoodDeedsPerformed)
@@ -174,7 +182,12 @@ local function react_to_hit(quest, me)
   if not NOVI.acquire(quest, me, CONTROL_PRIORITY) then return false end
   quest:StartMovieSequence()
   quest:PauseAllNonScriptedEntities(true)
-  speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_ON_HIT")
+  if not speak_if_alive(quest, me, hero, "TEXT_QST_048_GUARD_ON_HIT") then
+    NOVI.release(quest, me)
+    quest:PauseAllNonScriptedEntities(false)
+    quest:EndMovieSequence()
+    return false
+  end
   NOVI.release(quest, me)
   quest:PauseAllNonScriptedEntities(false)
   quest:EndMovieSequence()
@@ -183,7 +196,7 @@ end
 
 function Init(quest, me)
   quest:EntitySetAsDamageable(me, false)
-  quest:EntitySetAsKillable(me, false)
+  quest:EntitySetAsKillable(me, false, false)
   quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
   quest:SetWanderCentrePoint(me, me:GetHomePos())
   quest:SetWanderMinDistance(me, WANDER_MIN_DISTANCE)

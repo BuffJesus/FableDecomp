@@ -1,0 +1,14 @@
+{
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_BookTrader.lua","expect":["StartMovieSequence","PauseAllNonScriptedEntities","Speak","EndMovieSequence","ReleaseControl"],"forbid":["EntitySetFacingAngleTowardsThing"],"note":"termination during the hit-reaction speech performs movie cleanup and skips the subsequent Theresa-facing action"},
+  "Quest.NewScriptFrame":[true],
+  "Entity.AcquireControl":[true],
+  "Entity.GetHomePos":[{"x":0,"y":0,"z":0}],
+  "Entity.IsDistanceFromPositionOver":[false],
+  "Entity.MsgIsHitByHero":[true],
+  "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
+  "Quest.GetStateInt(BadDeedsPerformed)":[0],
+  "Quest.GetStateInt(GoodDeedsPerformed)":[0],
+  "Quest.MsgIsGameInfoClickedPast":[true],
+  "Quest.GetHealth":[100],
+  "Entity.Speak":[false]
+}

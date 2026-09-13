@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "witnesses": [
+    {
+      "id": "fisherman-main-deferred-deactivation-delay",
+      "functionAddress": "0x00E7B4E0",
+      "decompileSha256": "b7d4edf6dc0aec26618121252f2c97b5d8cf8e518b39ffcb6e66e34997e5d0ff",
+      "annotatedSha256": "41ec025a3a93d99ffdb3f6d29951d65d9714e1f81070f3d3d5f96628bd88aa10",
+      "association": "EBP is zeroed at E7B4EB and never reassigned before push ebp at E7B775. The getter at E7B77B takes only its hidden string return buffer and returns with ret 4, leaving the zero delay on the stack. E7B784 pushes its EAX string result; E7B785 calls DeactivateQuestLater(name,0). The decompiler incorrectly lists zero as a GetActiveQuestName argument. The complete Main bytes pin the zero register definition and intervening instructions.",
+      "nativeRegions": [
+        {
+          "name": "Fisherman Main",
+          "address": "0x00E7B4E0",
+          "size": 698,
+          "sha256": "c3304105ac0b6ec22d63fd0de6b88d4ff9b16d7adc90bf13921f18f9025affce"
+        },
+        {
+          "name": "GetActiveQuestName hidden return ABI",
+          "address": "0x00891880",
+          "size": 55,
+          "sha256": "16be665e98324dd7e073b3051dd5383d6b6018ef15dd23e68591f84c5af189a1"
+        },
+        {
+          "name": "DeactivateQuestLater dispatch",
+          "address": "0x00892F10",
+          "size": 11,
+          "sha256": "68dd51a97a670c9066384bfae26eb35ba2ac9655bbdf24bbd38b797ef9f7384c"
+        }
+      ],
+      "vtableSlots": [
+        {
+          "name": "GetActiveQuestName",
+          "address": "0x01261948",
+          "target": "0x00891880"
+        },
+        {
+          "name": "DeactivateQuestLater",
+          "address": "0x01261370",
+          "target": "0x00892F10"
+        }
+      ]
+    }
+  ]
+}

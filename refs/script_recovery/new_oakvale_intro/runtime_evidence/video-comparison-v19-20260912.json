@@ -1,0 +1,16 @@
+{
+  "log": "refs\\script_recovery\\new_oakvale_intro\\runtime_evidence\\interactive-20260912-v19-bully-video.log",
+  "logSha256": "4EBE3808E2D2BE2B2868AD78631E3CB6AA761C87C533E121B8F6FB42DDB403FF",
+  "video": "C:\\Users\\Cornelio\\Videos\\Radeon ReLive\\Fable - The Lost Chapters\\Fable - The Lost Chapters_2026.09.12-09.17.mp4",
+  "videoSha256": "0572EA014ED676F4D550AE934D5B9A2CBFF95DE023FD912DB7FEB5C65B804B92",
+  "dllSha256": "227C6E78FF000D787D486E1F240039B1D0B2676B91E0A28998DF8138D97557A8",
+  "reference": "https://www.youtube.com/watch?v=Wc-6dgTt4YY",
+  "referenceDownloadedRange": [
+    52,
+    82
+  ],
+  "userTimeSeconds": 38,
+  "authoritySingle": true,
+  "luaRuntimeErrors": 0,
+  "errorMarkers": 0
+}

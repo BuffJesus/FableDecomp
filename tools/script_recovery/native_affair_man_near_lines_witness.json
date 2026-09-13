@@ -1,0 +1,81 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "eb703e20d7245d06cfa21dd64dcb0d1f27f12ec7289b10e0304f0676ad394b47",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 10090544,
+      "size": 116,
+      "sha256": "bb328fb3c5a3d52e3bc3be058e9e7ce43d7b4e4951b37aa7d9fac532c918fddc"
+    },
+    {
+      "address": 19291624,
+      "size": 3,
+      "sha256": "0b782fc3030dbdf3756f17e7adf2ce5808dfc513ca7589adeb679c7d25eaef6f"
+    },
+    {
+      "address": 19761824,
+      "size": 41,
+      "sha256": "f9ced7f97cf02de319e59a05e4d9d81dc4d858a69ff4d3620b1c1718b41a08e9"
+    },
+    {
+      "address": 19761780,
+      "size": 43,
+      "sha256": "7c1b62ea54c62f2b32bb4af87343bea7252c7d2122ba8bb8f167af358ab0c55b"
+    }
+  ],
+  "contracts": {
+    "AddLineToConversation": {
+      "name": "AddLineToConversation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "textKey",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "spSpeaker",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "spListener",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "showSubtitle",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": false,
+      "category": "Quest API",
+      "description": "Adds a dialogue line to an existing ambient conversation."
+    }
+  },
+  "edits": [
+    {
+      "old": "GFIntToCharString_API();\r\n            CCharString::CCharString(aCStack_a0,\"TEXT_QST_048_AFFAIRMAN_DIRTY_WORDS_NEAR_\",-1);\r\n            CCharString__AppendData();\r\n            std::\r\n            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_a0,\r\n                       extraout_EDX_14,\r\n                       (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n            std::\r\n            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                      (aaStack_b0,extraout_EDX_15,\r\n                       (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n            GFIntToCharString_API();\r\n            CCharString::CCharString(aCStack_ac,\"TEXT_QST_048_AFFAIRWOMAN_DIRTY_WORDS_NEAR_\",-1);\r\n            CCharString__AppendData();\r\n            std::\r\n            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_ac,\r\n                       extraout_EDX_16,\r\n                       (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n            std::\r\n            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                      (aaStack_94,extraout_EDX_17,\r\n                       (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n            if (*(int *)(param_1 + 0x20) == 10) {\r\n              CCreatureAction_TrollWhackGroundBase::Initialise\r\n                        ((CCreatureAction_TrollWhackGroundBase *)param_1);\r\n              ppVar16 = extraout_EDX_18;\r\n              if (extraout_AL_46 != '\\0') {\r\nLAB_00db1d6a:\r\n                std::\r\n                _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                          (aaStack_104,ppVar16,\r\n                           (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n                std::\r\n                _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                          (aaStack_100,extraout_EDX_30,\r\n                           (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar26);\r\n                goto LAB_00db1d7c;\r\n              }\r\n              GSI->AddLineToConversation();\r\n              pCVar13 = aCStack_114;\r\n              pCVar7 = pCVar1;\r\n              pCVar23 = (CScriptThing *)&stack0xfffffeb0;\r\n            }\r\n            else {\r\n              CCreatureAction_TrollWhackGroundBase::Initialise\r\n                        ((CCreatureAction_TrollWhackGroundBase *)param_1);\r\n              ppVar16 = extraout_EDX_19;\r\n              if (extraout_AL_47 != '\\0') goto LAB_00db1d6a;\r\n              GSI->AddLineToConversation();\r\n              pCVar7 = (CScriptThing *)&stack0xfffffeb0;\r\n              pCVar13 = (CCarriedReadableDef *)&uStack_118;\r\n              pCVar23 = pCVar1;\r\n            }\r\n            GSI->AddLineToConversation(uVar8,pCVar13,0,pCVar7,pCVar23);\r\n            ",
+      "new": "native_arg_man_line_index = *(int *)(param_1 + 0x20);\nnative_arg_man_near_key = \"TEXT_QST_048_AFFAIRMAN_DIRTY_WORDS_NEAR_\" .. tostring(native_arg_man_line_index);\nnative_arg_woman_near_key = \"TEXT_QST_048_AFFAIRWOMAN_DIRTY_WORDS_NEAR_\" .. tostring(native_arg_man_line_index);\nif (native_arg_man_line_index == 10) {\n  native_arg_man_line_terminating = GSI->IsActiveThreadTerminating();\n  if (native_arg_man_line_terminating) goto LAB_00db1d7c;\n  GSI->AddLineToConversation(uVar8,native_arg_woman_near_key,false,local_native_cached_woman,me);\n  GSI->AddLineToConversation(uVar8,native_arg_man_near_key,false,me,local_native_cached_woman);\n}\nelse {\n  native_arg_man_line_terminating = GSI->IsActiveThreadTerminating();\n  if (native_arg_man_line_terminating) goto LAB_00db1d7c;\n  GSI->AddLineToConversation(uVar8,native_arg_man_near_key,false,me,local_native_cached_woman);\n  GSI->AddLineToConversation(uVar8,native_arg_woman_near_key,false,local_native_cached_woman,me);\n}\n",
+      "count": 1
+    }
+  ],
+  "review": "DB18E4/192A format current field20 integer using99F830/%d. Prefixes12D8AA0/12D8A74 produce man baseline5C/woman baseline58 (constructor output LEA includes one pending push). At index10,198D queueswoman baseline58 speakerstack32 listenerEBP; shared19D8 queuesman baseline5C speakerEBP listenerstack32. Otherindices19BF manfirst,19D8 womansecond. EDI ID, false subtitle in all calls. Branch-local termination196D/199F retained; string-only cleanup1D6A removed, actorcleanup1D7C retained. Source confirms no outside incoming1D6A references. Counterupdate/wrap and discovered-infidelity write remain outside edit.",
+  "unresolved": [
+    "Ranged dialogue",
+    "Actor cleanup"
+  ]
+}

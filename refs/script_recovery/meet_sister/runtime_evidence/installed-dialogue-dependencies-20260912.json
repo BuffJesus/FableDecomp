@@ -1,0 +1,107 @@
+{
+  "textBigSha256": "531c4514f5597e6426c8a2f1bd3ed39b3dd1dc9a8d38982e2303bb19f8ff33fc",
+  "groups": [
+    {
+      "name": "TEXT_QST_082_MESSENGER_INTRO",
+      "id": 27291,
+      "members": [
+        {
+          "name": "TEXT_QST_082_MESSENGER_INTRO_01",
+          "text": "Hey you! Theresa wants you to meet her at the Grey House!",
+          "speaker": "BANDIT_MESSENGER",
+          "speechbank": "ScriptDialogue.lug"
+        }
+      ],
+      "content": null,
+      "speaker": null,
+      "speechbank": null
+    },
+    {
+      "name": "TEXT_QST_082_THERESA_INTRO",
+      "id": 27110,
+      "members": [
+        {
+          "name": "TEXT_QST_082_THERESA_INTRO_02",
+          "text": "So you've finally met Jack of Blades.",
+          "speaker": "THERESA",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "name": "TEXT_QST_082_THERESA_INTRO_03",
+          "text": "I met him long ago, of course. When he burned down our home and cut out my eyes.",
+          "speaker": "THERESA",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "name": "TEXT_QST_082_THERESA_INTRO_04",
+          "text": "But he wasn't lying when he said he knew where mother was.",
+          "speaker": "THERESA",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "name": "TEXT_QST_082_THERESA_INTRO_05",
+          "text": "He's kept her in Bargate Prison ever since the night of the raid.",
+          "speaker": "THERESA",
+          "speechbank": "ScriptDialogue.lug"
+        },
+        {
+          "name": "TEXT_QST_082_THERESA_INTRO_06",
+          "text": "I haven't been able to get inside, but the Archaeologist knows of an ancient secret passage.",
+          "speaker": "THERESA",
+          "speechbank": "ScriptDialogue.lug"
+        }
+      ],
+      "content": null,
+      "speaker": null,
+      "speechbank": null
+    },
+    {
+      "name": "TEXT_QST_082_THERESA_SECOND_02",
+      "id": 6076,
+      "members": [],
+      "content": "You've met him already, haven't you? Jack's creatures are still after him, just like they're after me.",
+      "speaker": "THERESA",
+      "speechbank": "ScriptDialogue.lug"
+    },
+    {
+      "name": "TEXT_QST_082_THERESA_SECOND_03",
+      "id": 6066,
+      "members": [],
+      "content": "I can't stay here much longer. I've left the details in a Quest Card at the Guild.",
+      "speaker": "THERESA",
+      "speechbank": "ScriptDialogue.lug"
+    },
+    {
+      "name": "TEXT_QST_082_THERESA_SECOND_04",
+      "id": 6069,
+      "members": [],
+      "content": "You have to get Mother out. She's the only one who knows how to reach the Sword.",
+      "speaker": "THERESA",
+      "speechbank": "ScriptDialogue.lug"
+    },
+    {
+      "name": "TEXT_QST_082_THERESA_SECOND_05",
+      "id": 6087,
+      "members": [],
+      "content": "You did read the book I sent, didn't you? The Sword is everything, and it could turn the world to nothing.",
+      "speaker": "THERESA",
+      "speechbank": "ScriptDialogue.lug"
+    },
+    {
+      "name": "TEXT_QST_082_THERESA_SECOND_06",
+      "id": 6096,
+      "members": [],
+      "content": "Oh, and Mother has a gift for you too. More power than you can imagine...",
+      "speaker": "THERESA",
+      "speechbank": "ScriptDialogue.lug"
+    },
+    {
+      "name": "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY",
+      "id": 13891,
+      "members": [],
+      "content": "Meet Theresa outside the Grey House.",
+      "speaker": "",
+      "speechbank": ""
+    }
+  ]
+}

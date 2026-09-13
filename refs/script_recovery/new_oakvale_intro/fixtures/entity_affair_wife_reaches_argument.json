@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWife.lua","expect":["GiveHeroYesNoQuestion","MoveToPosition","ClearThingHasInformation","AddNewConversation","AddLineToConversation","random","ReleaseControl"],"note":"wife learns the affair, accepts the hero's answer, runs to her husband, emits the running line and the first numbered argument line, then terminates cleanly"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairWife.lua","expect":["GiveHeroYesNoQuestion","MoveToPosition","ClearThingHasInformation","AddNewConversation","AddLineToConversation","RetailRandModulo","ReleaseControl"],"expectCalls":[{"name":"MoveToPosition","argumentAt":{"1":2.0,"2":1,"3":false,"4":true},"count":1}],"forbidCalls":[],"note":"wife learns the affair, accepts the hero's answer, reaches her husband with the single retail move command, emits the running line and first numbered argument line, then terminates cleanly"},
   "Quest.NewScriptFrame":[true,true,true,true,false],
   "Entity.AcquireControl":[true],
   "Entity.MsgIsHitByHero":[false],
@@ -21,6 +21,6 @@
   "Quest.IsDistanceBetweenThingsUnder":[false,true,true],
   "Quest.GetHero":[{"handle":"hero","scope":"Entity"}],
   "Quest.AddNewConversation":[{"handle":"running_line","scope":"Entity"},{"handle":"argument_line","scope":"Entity"}],
-  "Lua.math.random":[0,1],
-  "Entity.IsPerformingScriptTask":[false,false,true,false]
+  "Quest.RetailRandModulo(2)":[0,1],
+  "Entity.IsPerformingScriptTask":[false,false,true,true,false]
 }

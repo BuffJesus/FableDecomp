@@ -1,0 +1,257 @@
+{
+  "address": "0x00DB2B10",
+  "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+  "annotatedSha256": "30f34741b9e897482ac025a5922eb17c595c60b2da7295b6c21f69b3488adad3",
+  "regions": [
+    {
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "address": 19271716,
+      "size": 4,
+      "sha256": "eba0e74a432136d66d7304ef103c3f3e12272b0e266e5ac575bc966c85556d1a"
+    },
+    {
+      "address": 19272892,
+      "size": 4,
+      "sha256": "f7dc0a0456e9f9809e953387e30eaa2ec00468c469e432062e4deb27b9d97433"
+    },
+    {
+      "address": 19272896,
+      "size": 4,
+      "sha256": "55b6937721364bbc34c7dcc03910db8dc382d10f2d1ef01241703d16cdc0a92c"
+    },
+    {
+      "address": 19272900,
+      "size": 4,
+      "sha256": "fd3d5ad405653593b434b43b032666378b2852e4039cb4ce3fcf085fce1dd7bc"
+    }
+  ],
+  "textKey": "TEXT_QST_048_AFFAIR_WIFE_WHERES_HUSBAND",
+  "contracts": {
+    "GetHero": {
+      "name": "GetHero",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets hero."
+    },
+    "AddNewConversation": {
+      "name": "AddNewConversation",
+      "scope": "Quest",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "b1",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "b2",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "Conversation",
+      "description": "Creates a conversation with the supplied initial participant."
+    },
+    "AddPersonToConversation": {
+      "name": "AddPersonToConversation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "pPerson",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "Conversation",
+      "description": "Adds a participant to an existing conversation."
+    },
+    "AddLineToConversation": {
+      "name": "AddLineToConversation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "textKey",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "spSpeaker",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "spListener",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "showSubtitle",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": false,
+      "category": "Quest API",
+      "description": "Adds a dialogue line to an existing ambient conversation."
+    }
+  },
+  "events": [
+    {
+      "site": 14365527,
+      "hero": 14365516,
+      "argumentCount": 2,
+      "setup": {
+        "address": 14365527,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1460
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "eax"
+          ],
+          [
+            "result",
+            14365516,
+            "hero"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14365573,
+      "hero": 14365554,
+      "argumentCount": 5,
+      "setup": {
+        "address": 14365573,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1464
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            44
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "result",
+            14365554,
+            "hero"
+          ]
+        ]
+      }
+    }
+  ],
+  "old": "uVar11 = GSI->AddNewConversation();\r\n        iVar10 = **(int **)(param_1 + 4);\r\n        GSI->GetHero();\r\n        GSI->AddPersonToConversation(uVar11);\r\n        CCharString::CCharString\r\n                  ((CCharString *)&stack0xffffff50,\"TEXT_QST_048_AFFAIR_WIFE_WHERES_HUSBAND\",-1);\r\n        iVar10 = **(int **)(param_1 + 4);\r\n        uVar12 = GSI->GetHero();\r\n        GSI->AddLineToConversation(uVar11,&stack0xffffff50,0,pCVar1,uVar12);",
+  "new": "uVar11 = GSI->AddNewConversation(me,false,false);\r\n        \r\n        native_arg_wife_participant = GSI->GetHero();\n        GSI->AddPersonToConversation(uVar11,native_arg_wife_participant);\r\n        CCharString::CCharString\r\n                  ((CCharString *)&stack0xffffff50,\"TEXT_QST_048_AFFAIR_WIFE_WHERES_HUSBAND\",-1);\r\n        \r\n        uVar12 = GSI->GetHero();\r\n        GSI->AddLineToConversation(uVar11,&stack0xffffff50,0,me,uVar12);",
+  "review": "DB3334push0/3336push0/3338storefirstspeechfalse/333EpushselfEDI/333Fslot5B0. Postpushstore prevents genericsetup; rawbody pins reviewedarguments. DB334A EBP=EAXnewID; AddPersonDB3357 usesID and freshhero334C (setup incomingEAX denotesID). AddLineDB3385 usesEBPID,textstack44 constructedDB3368 key12D8DAC,false,selfEDI,freshhero3372. Preservebothgetters and uVar11ID/uVar12listener. Native lineorder id,text,flag,speaker,listener convertedbyexistinglifter."
+}

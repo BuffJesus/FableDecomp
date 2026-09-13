@@ -1,0 +1,136 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "2cf3827f971be398623c153dd50855684c9fa3b24fee1fc6473d31f14b5c0a29",
+  "regions": [
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 8287376,
+      "size": 57,
+      "sha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": 8286960,
+      "size": 15,
+      "sha256": "f422947cd4124238721205bddcbb8357769d3d134c1d022ee02d428a5e7fbf6c"
+    },
+    {
+      "address": 13362268,
+      "size": 91,
+      "sha256": "ff5da0431572dcd8e97f57d11e0ab7675b02a5c1567180788324d61fd5110252"
+    }
+  ],
+  "contracts": {
+    "GetHomePos": {
+      "name": "GetHomePos",
+      "scope": "Entity",
+      "returnType": "sol::table",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "s",
+          "type": "sol::this_state",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Gets home pos for an entity."
+    },
+    "IsDistanceFromPositionOver": {
+      "scope": "Entity",
+      "returnType": "bool",
+      "blocking": false,
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*"
+        },
+        {
+          "name": "position",
+          "type": "sol::table",
+          "nativeKind": "vector"
+        },
+        {
+          "name": "distance",
+          "type": "float"
+        }
+      ]
+    },
+    "MoveToPosition": {
+      "name": "MoveToPosition",
+      "scope": "Entity",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "position",
+          "type": "sol::table",
+          "optional": false,
+          "nativeKind": "vector"
+        },
+        {
+          "name": "radius",
+          "type": "float",
+          "optional": false
+        },
+        {
+          "name": "moveType",
+          "type": "sol::optional<int>",
+          "optional": true
+        },
+        {
+          "name": "b1",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b2",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": false,
+      "category": "Entity API",
+      "description": "Moves to position."
+    }
+  },
+  "edits": [
+    {
+      "old": "            CScriptThing::GetHomePos((CScriptThing *)(this + 8));",
+      "new": "\nnative_arg_man_home_position = CScriptThing::GetHomePos((CScriptThing *)(this + 8));",
+      "count": 1
+    },
+    {
+      "old": "pCVar7 = (CScriptThing *)\r\n                     CScriptGameResourceObjectScriptedThingBase::\r\n                     _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                               ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeb4);\r\n            bVar4 = IsDistanceFromThingToPositionOver(pCVar7,(C3DVector *)aCStack_90,fVar25);",
+      "new": "bVar4 = GSI->IsDistanceFromPositionOver(native_arg_man_home_position,2.0);",
+      "count": 1
+    },
+    {
+      "old": "pCVar7 = (CScriptThing *)\r\n                         CScriptGameResourceObjectScriptedThingBase::\r\n                         _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                                   ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeb4);\r\n                bVar4 = IsDistanceFromThingToPositionOver(pCVar7,(C3DVector *)aCStack_90,fVar25);",
+      "new": "bVar4 = GSI->IsDistanceFromPositionOver(native_arg_man_home_position,2.0);",
+      "count": 1
+    },
+    {
+      "old": "CScriptGameResourceObjectScriptedThingBase::\r\n                _MoveToPosition_CScriptGameResourceObjectScriptedThingBase__UAEXABVC3DVector__MW4EScriptEntityMoveType___N2_Z\r\n                          ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeb4,\r\n                           (CScriptThing *)aCStack_90,(char *)0x0,(CCharString *)0x0,\r\n                           (CCharString *)0x0,(CCharString *)0x1,SUB41(pCVar26,0),\r\n                           (bool)SUB41(pppuVar27,0));",
+      "new": "GSI->MoveToPosition(native_arg_man_home_position,0.0,0,false,true);",
+      "count": 1
+    }
+  ],
+  "review": "DB1707 calls self EBP GetHomePos slot1C into baseline ESP+CC. Preserve this second snapshot separately from first DB16D7 query / 0.1 gate. DB171B and17C5 get actor wrappers from resource baseline16, acquired for self in pinned body. Hidden output consumes one argument (7E7490 RET4); DB1720/17CA LEA ESP+D0 with remaining radius push thus selects same baselineCC position. Both CBE45C calls compare distance over2.0. DB176F movement uses same baselineCC (LEA ESP+DC after four pushes), resource16 (LEA ESP+24 after five), radius0, moveType0, false,true. Preserve existing frame, termination and task loops; do not inject waiting via host API. Wrapper destructors are retained in source. Existing resource ownership remains unresolved.",
+  "unresolved": [
+    "Acquisition and release lifetime of native resource16; recovery assumes the existing selected self control handle."
+  ]
+}

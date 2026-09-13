@@ -1,0 +1,99 @@
+{
+  "address": "0x00DB09E0",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "annotatedSha256": "c1c53f5101dd779d7c389c82efa8342f3f163adeeaaea365a85c8cf75b6d734b",
+  "bytesSha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+  "contracts": {
+    "AddNewConversation": {
+      "name": "AddNewConversation",
+      "scope": "Quest",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "b1",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "b2",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "Conversation",
+      "description": "Creates a conversation with the supplied initial participant."
+    },
+    "AddPersonToConversation": {
+      "name": "AddPersonToConversation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "pPerson",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": false,
+      "category": "Conversation",
+      "description": "Adds a participant to an existing conversation."
+    },
+    "IsConversationActive": {
+      "name": "IsConversationActive",
+      "scope": "Quest",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "conversationID",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Returns whether conversation active."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->AddNewConversation()",
+      "new": "GSI->AddNewConversation(me,false,false)",
+      "count": 2
+    },
+    {
+      "old": "GSI->AddPersonToConversation()",
+      "new": "GSI->AddPersonToConversation(uVar8,local_native_cached_woman)",
+      "count": 2
+    },
+    {
+      "old": "uStack_11c = 0;",
+      "new": "native_arg_man_conversation_id = 0;",
+      "count": 1
+    },
+    {
+      "old": "uStack_128 = uVar8;",
+      "new": "uStack_128 = uVar8;\nnative_arg_man_conversation_id = uVar8;",
+      "count": 2
+    },
+    {
+      "old": "GSI->IsConversationActive()",
+      "new": "GSI->IsConversationActive(native_arg_man_conversation_id)",
+      "count": 1
+    }
+  ],
+  "review": "DB1897/1A35 slot5B0 consumes EBP=self,false,false. EDI receives returned ID. DB18AE/1A4C slot5B4 consumes EDI and cached woman wrapperstack32. Preserve uVar8 and saved ID stores, counter, termination and surrounding conditions. Saved ID stack64 initialized by DB0B18 using EDI=0 from0A41; read1805 and passed180C toslot5C0. Both new IDs stored18AA/1A48 atESP48 aftertwo pushes, baseline64. Scalar initialization/save/query now use a dedicated local; unrelated address-taken stack names remain.",
+  "unresolved": [
+    "Numbered dialogue construction and line operands"
+  ]
+}

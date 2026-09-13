@@ -1,0 +1,55 @@
+{
+  "scope": "Execute native coroutine entry and active-entity dispatch wrappers.\n\nSynthetic parent/current-task association models the store at CB7959. No fiber\nswitch or region scheduler is run. Entity Main is a double that executes the\nactual F35B30/CB7940 query before returning; it does not execute Lua or a quest.\n",
+  "exe_sha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "cases": [
+    {
+      "wrapper": "retail",
+      "initial_terminated": false,
+      "events": [
+        "entity_main",
+        "entry_query_0",
+        "scheduler_yield"
+      ],
+      "final_running": false,
+      "final_terminated": true
+    },
+    {
+      "wrapper": "retail",
+      "initial_terminated": true,
+      "events": [
+        "scheduler_yield"
+      ],
+      "final_running": false,
+      "final_terminated": true
+    },
+    {
+      "wrapper": "forge_factory",
+      "initial_terminated": false,
+      "events": [
+        "entity_main",
+        "entry_query_0",
+        "scheduler_yield"
+      ],
+      "final_running": false,
+      "final_terminated": true
+    },
+    {
+      "wrapper": "forge_factory",
+      "initial_terminated": true,
+      "events": [
+        "scheduler_yield"
+      ],
+      "final_running": false,
+      "final_terminated": true
+    }
+  ],
+  "native_bytes": {
+    "0xa446a0": "558bec6aff68f009210164a10000000050648925000000005183ec085356578965f08b45088945ec33c97402eb4b8b55ec0fb6420585c075408b4decc6410401c745fc000000008b55ec8b028b4decff5010eb06b8fa46a400c3c745fcffffffff8b4dec0fb6510585d2750b8b45ec8b108b4decff5208ebb58b45ecc640040033c97402eb07e8253ff9ffebf9",
+    "0xe29220": "568bf18b4e3485c9740b8b01ff5004c64605015ec3",
+    "0xe7ee70": "568bf18b4e3485c9740b8b01ff5004c64605015ec3",
+    "0xf35b30": "8b01ff500c8bc8e9041ed8ff",
+    "0xcb7940": "8b412c85c0750332c0c38a4005c3",
+    "0xe29010": "8b4114c3",
+    "0xcb7950": "53568b74240c578bf989772c8a462832db84c00f85810000008bcee890e0270084c08bce74438a462984c08b067418ff50188bcee87738d9ff8b168bceff520c885e29b301eb32ff50048bcee85fe0270084c075248bcec6460501e880e027008b168bceff5214eb10c6460501e86ee027008b068bceff50148a460484c0750484db740e8a460584c0740f8bcee81e38d9ff5f5eb0015bc20400"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairMan.lua","expect":["AddNewConversation","AddPersonToConversation","AddLineToConversation","Pause","random","PlayAnimation","ReleaseControl"],"note":"with the hero outside whisper range but inside 13 units, the husband emits the first screen-message _10 pair and deterministically initiates the hug handshake without marking the near-range discovery flag"},
+  "__meta__":{"function":"Main","kind":"entity","source":"NewOakValeIntro/Entities/NOVI_AffairMan.lua","expect":["AddNewConversation","AddPersonToConversation","AddLineToConversation","Pause","RetailRandModulo","PlayAnimation","ReleaseControl"],"note":"with the hero outside whisper range but inside 13 units, the husband emits the first screen-message _10 pair and deterministically initiates the hug handshake without marking the near-range discovery flag"},
   "Quest.NewScriptFrame":[true,false],
   "Entity.AcquireControl":[true],
   "Quest.GetThingWithScriptName(NOVI_AffairWoman)":[{"handle":"lover","scope":"Entity"}],
@@ -14,5 +14,5 @@
   "Quest.GetHero":[{"handle":"hero","scope":"Entity"},{"handle":"hero","scope":"Entity"}],
   "Quest.AddNewConversation":[{"handle":"ranged_exchange","scope":"Entity"}],
   "Quest.GetStateBool(TalkingToWoman)":[false],
-  "Lua.math.random":[1]
+  "Quest.RetailRandModulo(2)":[1]
 }

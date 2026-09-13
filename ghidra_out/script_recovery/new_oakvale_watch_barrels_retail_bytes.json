@@ -1,0 +1,114 @@
+{
+  "schema": "new-oakvale-watch-barrels-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "address": "0x00DBE890",
+  "rangeSize": 647,
+  "functionBytesSha256": "3C48CE5C57E30E903C5E6790F7DFD2D4A5CF9B7664F433134D6909840FD06BF2",
+  "instructionCount": 208,
+  "strings": [
+    "NOVI_Barrel",
+    "NOVI_Barrel",
+    "NOVI_Barrel",
+    "OBJECT_GOLD_1",
+    "NOVI_CreatedBeetle",
+    "CREATURE_OAKVALE_STAG_BEETLE"
+  ],
+  "indirectCalls": [
+    {
+      "site": "0x00DBE8CF",
+      "slot": "0x12C"
+    },
+    {
+      "site": "0x00DBE8EC",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBE91D",
+      "slot": "0x12C"
+    },
+    {
+      "site": "0x00DBE9B6",
+      "slot": "0x0"
+    },
+    {
+      "site": "0x00DBEA01",
+      "slot": "0x120"
+    },
+    {
+      "site": "0x00DBEA2F",
+      "slot": "0x924"
+    },
+    {
+      "site": "0x00DBEA85",
+      "slot": "0x16C"
+    },
+    {
+      "site": "0x00DBEAAE",
+      "slot": "0x428"
+    },
+    {
+      "site": "0x00DBEAC2",
+      "slot": "0x1C"
+    },
+    {
+      "site": "0x00DBEAE6",
+      "slot": "0x0"
+    }
+  ],
+  "keyDirectCalls": [
+    {
+      "site": "0x00DBE8F1",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBE937",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBE966",
+      "target": "0x00CB7940"
+    },
+    {
+      "site": "0x00DBE997",
+      "target": "0x00DAEA70"
+    },
+    {
+      "site": "0x00DBEAC7",
+      "target": "0x00CB7940"
+    }
+  ],
+  "fields": {
+    "attackOver": {
+      "offset": "0x50",
+      "readSites": [
+        "0x00DBE973"
+      ]
+    },
+    "barrelBrokenInstantaneous": {
+      "offset": "0x74",
+      "writeSites": [
+        "0x00DBE960",
+        "0x00DBE98D"
+      ],
+      "readSites": [
+        "0x00DBE97E"
+      ]
+    },
+    "barrelBrokenPos": {
+      "offset": "0x76",
+      "addressSite": "0x00DBEA77"
+    }
+  },
+  "firstBreakBadDeed": {
+    "counter": 1,
+    "enum": 0,
+    "callSite": "0x00DBE997",
+    "target": "0x00DAEA70"
+  },
+  "goldBreakIndex": "total-1",
+  "beetleThreshold": "broken>total-4",
+  "createdBeetleMaxHealth": 2.0,
+  "createdBeetleHealthSetAbsolute": true,
+  "terminationCalls": 4
+}

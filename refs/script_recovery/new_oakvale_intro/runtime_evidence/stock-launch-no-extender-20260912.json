@@ -1,0 +1,16 @@
+﻿{
+    "verifiedAt":  "2026-09-12T10:33:30.8071731-06:00",
+    "processId":  15444,
+    "executable":  "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters\\Fable.exe",
+    "moduleCount":  7,
+    "extenderAbsent":  true,
+    "modules":  [
+                    "Fable.exe",
+                    "ntdll.dll",
+                    "wow64.dll",
+                    "wow64base.dll",
+                    "wow64win.dll",
+                    "wow64con.dll",
+                    "wow64cpu.dll"
+                ]
+}

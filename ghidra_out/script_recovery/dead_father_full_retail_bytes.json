@@ -1,0 +1,46 @@
+{
+  "schema": "dead-father-full-retail-bytes/0.1",
+  "source": "installed retail Fable.exe PE image",
+  "sourceSha256": "41DC91090AE853715AC06D2E9FC96E5D545381D197ED55D624C642F34509AC10",
+  "nativeClass": "COVI_DeadFather",
+  "regions": [
+    {
+      "name": "OnPredicateFail",
+      "address": "0x00DB8260",
+      "endExclusive": "0x00DB8261",
+      "rangeSize": 1,
+      "bytesSha256": "AE3F4619B0413D70D3004B9131C3752153074E45725BE13B9A148978895E359E",
+      "instructionCount": 1,
+      "terminal": "ret"
+    },
+    {
+      "name": "Init",
+      "address": "0x00DB8290",
+      "endExclusive": "0x00DB82F4",
+      "rangeSize": 100,
+      "bytesSha256": "1E5791E2AD268477A5F1D854203D0FA4F7C26FBFCAE317664902C251CC12CFA5",
+      "instructionCount": 34,
+      "terminal": "ret"
+    },
+    {
+      "name": "Main",
+      "address": "0x00DB8300",
+      "endExclusive": "0x00DB8516",
+      "rangeSize": 534,
+      "bytesSha256": "DDBE6687A9F8F9C1A46FCF0DBA9FCB5B944B79F835EF7D46368FF18134FD5BD8",
+      "instructionCount": 172,
+      "terminal": "ret"
+    }
+  ],
+  "coverage": {
+    "operations": "empty predicate override, complete Init and Main",
+    "boundaryCorrection": "translation_unit Main size 531 truncates the final epilogue; exact terminal ret is 0x00DB8515",
+    "lifecycle": [
+      "minimap marker",
+      "dad pose",
+      "DadFound wait",
+      "marker removal",
+      "control cleanup"
+    ]
+  }
+}

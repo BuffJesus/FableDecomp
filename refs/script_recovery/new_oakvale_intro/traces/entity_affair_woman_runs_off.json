@@ -13,7 +13,9 @@
       "scope": "Quest"
     },
     {
-      "arguments": [],
+      "arguments": [
+        4
+      ],
       "event": "api-call",
       "name": "AcquireControl",
       "receiver": "me",
@@ -45,9 +47,16 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        0.1
+      ],
       "event": "api-call",
-      "name": "GetPos",
+      "name": "IsDistanceFromPositionOver",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -131,16 +140,12 @@
     },
     {
       "arguments": [
-        {
-          "handle": "me",
-          "scope": "Entity"
-        },
         true
       ],
       "event": "api-call",
       "name": "SetIsPushableByHero",
-      "receiver": "quest",
-      "scope": "Quest"
+      "receiver": "me",
+      "scope": "Entity"
     },
     {
       "arguments": [],
@@ -150,9 +155,16 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        2.0
+      ],
       "event": "api-call",
-      "name": "GetPos",
+      "name": "IsDistanceFromPositionOver",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -171,12 +183,14 @@
     {
       "arguments": [
         {
-          "x": 10,
+          "x": 0,
           "y": 0,
           "z": 0
         },
         0.0,
-        1
+        1,
+        false,
+        true
       ],
       "event": "api-call",
       "name": "MoveToPosition",
@@ -191,9 +205,16 @@
       "scope": "Entity"
     },
     {
-      "arguments": [],
+      "arguments": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        2.0
+      ],
       "event": "api-call",
-      "name": "GetPos",
+      "name": "IsDistanceFromPositionOver",
       "receiver": "me",
       "scope": "Entity"
     },
@@ -229,7 +250,9 @@
         {
           "handle": "me",
           "scope": "Entity"
-        }
+        },
+        false,
+        true
       ],
       "event": "api-call",
       "name": "RemoveThing",
@@ -282,6 +305,11 @@
         "z": 0
       }
     ],
+    "Entity.IsDistanceFromPositionOver": [
+      false,
+      true,
+      false
+    ],
     "Entity.IsPerformingScriptTask": [
       false
     ],
@@ -333,5 +361,5 @@
   "kind": "entity",
   "schema": "forgefse-lua-event-trace/0.1",
   "source": "refs/script_recovery/reconstructed/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairWoman.lua",
-  "sourceSha256": "3aed86c2e6e7a5d670556e644205e3a0bf7e4b81357a3c07b42d2f58416fa985"
+  "sourceSha256": "a56a1eb61de842ca9ec79f2f10db16b87ecd2c8e7b539340ceaebe5985ed6099"
 }

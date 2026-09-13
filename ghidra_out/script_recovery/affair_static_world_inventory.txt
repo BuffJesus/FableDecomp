@@ -1,0 +1,43 @@
+Static FinalAlbion TNG inventory for the New Oakvale affair trio.
+
+Sources scanned recursively (`*.tng`):
+  D:\Code\Fable\ChocolateBox\ChocolateBox\AeonEdition\Levels\FinalAlbion
+  D:\Code\Fable\ChocolateBox\ChocolateBox\FableDataFolder\data\Levels\FinalAlbion
+
+Installed-game extraction chain:
+  ghidra_out/installed_game/finalalbion_wad_entries.csv records WAD entry 405 as
+  Data\Levels\FinalAlbion\StartOakValeWest.tng, size 576997.
+  work/local_detail_re/tng/Data/Levels/FinalAlbion/StartOakValeWest.tng is the extracted payload,
+  size 576997, SHA256 A444FCC91B17EA72CBAAC5012439420F540D099C68529FB5E717B4D02C3B48EA.
+  It is byte-identical to the FableDataFolder copy (same size and SHA256).
+
+Each source tree contains exactly one exact ScriptName occurrence for each of:
+  NOVI_AffairMan count=1
+  NOVI_AffairWoman count=1
+  NOVI_AffairWife count=1
+
+All three occur in StartOakValeWest.tng. Both exports agree on identity and coordinates:
+
+NOVI_AffairMan
+  UID 18446741874686306552
+  DefinitionType CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED
+  local position (24.422607, 89.966431, 16.433842)
+  world initial position (3480.422607, 825.966431, 16.433842)
+
+NOVI_AffairWoman
+  UID 18446741874686306554
+  DefinitionType CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED
+  local position (25.445313, 89.928528, 16.362904)
+  world initial position (3481.445313, 825.928528, 16.362904)
+
+NOVI_AffairWife
+  UID 18446741874686307009
+  DefinitionType CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED
+  local position (94.591553, 117.561218, 9.000546)
+  world initial position (3550.591553, 853.561218, 9.000546)
+
+The shared sector origin derived from every local/world pair is (3456, 736, 0).
+Authored 3D separation: Man-Woman ~= 1.026 m; Man-Wife ~= 75.765 m.
+
+Conclusion: the installed/authored world has no duplicate affair script identity. This does not prove the
+runtime rendered model and queried CScriptThing positions remain coincident after AI/movement.

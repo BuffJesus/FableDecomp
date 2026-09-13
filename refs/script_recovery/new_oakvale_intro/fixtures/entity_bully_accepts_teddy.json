@@ -1,7 +1,7 @@
 {
   "__meta__":{
-    "function":"Main","covers":["Main","GivenTeddy"],"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua",
-    "expect":["GiveHeroYesNoQuestion","GiveHeroGold","TakeObjectFromHero","DisplayGameInfo","AddLogbookStoryEntryString","ClearThingHasInformation"],
+    "function":"Main","covers":["Main","GivenTeddy"],"coverEvidence":{"GivenTeddy":["TakeObjectFromHero","AddLogbookTutorialEntry"]},"kind":"entity","source":"NewOakValeIntro/Entities/NOVI_Bully.lua",
+    "expect":["GiveHeroYesNoQuestion","GiveHeroGold","TakeObjectFromHero","DisplayGameInfo","AddLogbookTutorialEntry","ClearThingHasInformation"],
     "note":"after his first conversation, the bully accepts the teddy, rewards one gold, records TeddyRuined and bad-deed kind 3, then exits on frame termination"
   },
   "Quest.NewScriptFrame":[true,true,true,false],
