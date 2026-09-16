@@ -21,6 +21,10 @@ def recover_affair_man_hits(function, source, rdata, manifest):
     return _recover_hits(function, source, rdata, manifest, 'native_affair_man_hits_witness.json')
 
 
+def recover_barrel_hits(function, source, rdata, manifest):
+    return _recover_hits(function, source, rdata, manifest, 'native_barrel_hits_witness.json')
+
+
 def _recover_hits(function, source, rdata, manifest, filename):
     witness = json.loads(Path(__file__).with_name(filename).read_text())
     if str(function.get('address', '')).lower() != witness['address'].lower():

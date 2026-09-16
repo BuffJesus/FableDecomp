@@ -1,0 +1,45 @@
+{
+  "address": "0x00E2A320",
+  "size": 1503,
+  "nativeSha256": "315ea06ccacfc1669200990bccf81a55a7abae5befe79ec0cd15057e78415249",
+  "sourceSha256": "5641b89a5974e580d69a7d79dc906b60a80b6bbfef4895ad64243f772e4523b3",
+  "hostSnapshotSha256": "476de1bb9f4e2e88dc94aa72b83ef4a805addfc5b586872c8ecfff9ce2387949",
+  "destructor": {
+    "address": "0x007E74D0",
+    "size": 66,
+    "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+  },
+  "events": {
+    "0xe2a374": [
+      "start",
+      "frame64"
+    ],
+    "0xe2a3ac": [
+      "use",
+      "frame64"
+    ],
+    "0xe2a3d7": [
+      "use",
+      "frame64"
+    ],
+    "0xe2a86f": [
+      "end",
+      "frame64"
+    ],
+    "0xe2a88f": [
+      "end",
+      "frame64"
+    ],
+    "0xe2a8b3": [
+      "end",
+      "frame64"
+    ],
+    "0xe2a8f2": [
+      "end",
+      "frame64"
+    ]
+  },
+  "resource": "frame64; same receiver on both native acquisition sites and all four destruction exits",
+  "cancellation": "Native unsuccessful attempt -> frame E2A3B8 -> entity termination E2A3BD -> destructor E2A8F2; no extra frame after cancellation. Host AcquireControl already implements this loop and releases actual output on cancellation.",
+  "limitation": "Host may borrow or reuse an existing control where retail constructs a distinct resource; preserve host borrowed/nested ownership and retain pending equivalence review."
+}

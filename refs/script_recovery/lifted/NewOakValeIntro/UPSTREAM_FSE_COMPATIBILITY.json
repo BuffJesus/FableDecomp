@@ -1,0 +1,17 @@
+{
+  "schema": "new-oakvale-upstream-fse-compatibility/0.1",
+  "upstream": "https://github.com/eeeeeAeoN/FableScriptExtender",
+  "basis": "upstream master LuaManager.cpp binding declarations compared with NewOakValeIntro FSE Lua call sites",
+  "questCallsChecked": 114,
+  "entityCallsChecked": 19,
+  "missingQuestBindings": ["GetStateFloat", "SetStateFloat", "RetailRandModulo", "IsActiveThreadTerminating"],
+  "missingEntityBindings": ["IsDistanceFromPositionOver"],
+  "compatibleWithoutPorting": false,
+  "requiredPorts": [
+    "Add the five missing bindings or replace their call sites with upstream-supported wrappers.",
+    "Use the upstream quests.lua registration format and package paths.",
+    "Re-run native/runtime validation because Lua syntax alone does not establish ABI compatibility."
+  ],
+  "localForgeFSE": "The package targets the local ForgeFSE fork, whose manifest contains the required bindings.",
+  "liveVerification": "deferred"
+}

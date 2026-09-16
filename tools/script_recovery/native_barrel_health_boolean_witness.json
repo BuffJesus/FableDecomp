@@ -1,0 +1,44 @@
+{
+  "address": "0x00DB5330",
+  "annotatedSha256": "9f36111be7d4a7ddd9e28c9a4337ec5f686e54b1eebfeaa8f1f5b2017d9906db",
+  "regions": [
+    {
+      "address": 14377789,
+      "size": 23,
+      "sha256": "3120f802a0c18052c63f847effa632d846d3d9f0bc6b5c435692ba276c26f690"
+    },
+    {
+      "address": 14378281,
+      "size": 23,
+      "sha256": "3120f802a0c18052c63f847effa632d846d3d9f0bc6b5c435692ba276c26f690"
+    },
+    {
+      "address": 14378542,
+      "size": 23,
+      "sha256": "3120f802a0c18052c63f847effa632d846d3d9f0bc6b5c435692ba276c26f690"
+    }
+  ],
+  "edits": [
+    {
+      "old": "puVar5 = (undefined4 *)CONCAT13(1,(int3)puVar28);\r\n              if (fVar20 <= (float10)0.0) {\r\n                puVar5 = (undefined4 *)((uint)puVar28 & 0xffffff);\r\n              }\r\n              puVar28 = puVar5;",
+      "new": "native_arg_barrel_has_health = fVar20 > 0.0;",
+      "count": 1
+    },
+    {
+      "old": "puVar5 = (undefined4 *)CONCAT13(1,(int3)puVar28);\r\n          if (fVar20 <= (float10)0.0) {\r\n            puVar5 = (undefined4 *)((uint)puVar28 & 0xffffff);\r\n          }\r\n          puVar28 = puVar5;",
+      "new": "native_arg_barrel_has_health = fVar20 > 0.0;",
+      "count": 1
+    },
+    {
+      "old": "puVar5 = (undefined4 *)CONCAT13(1,(int3)puVar28);\r\n        if (fVar20 <= (float10)0.0) {\r\n          puVar5 = (undefined4 *)((uint)puVar28 & 0xffffff);\r\n        }\r\n        puVar28 = puVar5;",
+      "new": "native_arg_barrel_has_health = fVar20 > 0.0;",
+      "count": 1
+    },
+    {
+      "old": "(char)((uint)puVar28 >> 0x18) != '\\0'",
+      "new": "native_arg_barrel_has_health",
+      "count": 3
+    }
+  ],
+  "review": "Each FCOMP zero sets x87 C0/C2/C3; FNSTSW/TEST AH,41 admits only ordered greater-than. Byte at baseline19 starts true and clears on less/equal/unordered. Replace packed high byte with a named boolean fVar20>0.0, preserving the intervening temporary Thing destructor. puVar28 lower24bits are not consumed by any later behavior; its earlier resource-address use is retained."
+}

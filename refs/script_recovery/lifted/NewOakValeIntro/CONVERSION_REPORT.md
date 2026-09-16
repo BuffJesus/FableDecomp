@@ -7,20 +7,20 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | NOVI_AffairMan | Init | 0x00DB0950 | True | 0 |
 | NOVI_AffairMan | Main | 0x00DB09E0 | True | 36 |
 | NOVI_AffairWife | Init | 0x00DB2A70 | True | 0 |
-| NOVI_AffairWife | Main | 0x00DB2B10 | False | 62 |
+| NOVI_AffairWife | Main | 0x00DB2B10 | True | 61 |
 | NOVI_AffairWoman | Init | 0x00DB1E80 | True | 0 |
-| NOVI_AffairWoman | Main | 0x00DB1F00 | False | 45 |
+| NOVI_AffairWoman | Main | 0x00DB1F00 | True | 37 |
 | NOVI_Barrel | Init | 0x00CDEBB0 | True | 0 |
 | NOVI_Barrel | Main | 0x00DB7E10 | True | 0 |
-| NOVI_Barrel | OnPredicateFail | 0x00DB7DB0 | True | 3 |
-| NOVI_BarrelMan | Init | 0x00DB5260 | True | 5 |
-| NOVI_BarrelMan | Main | 0x00DB5330 | False | 109 |
+| NOVI_Barrel | OnPredicateFail | 0x00DB7DB0 | True | 0 |
+| NOVI_BarrelMan | Init | 0x00DB5260 | True | 0 |
+| NOVI_BarrelMan | Main | 0x00DB5330 | True | 68 |
 | NOVI_BarrelThug | Init | 0x00DB6BF0 | True | 0 |
 | NOVI_BarrelThug | Main | 0x00DB6C60 | True | 95 |
 | NOVI_BookTrader | Init | 0x00DB3F00 | True | 0 |
-| NOVI_BookTrader | Main | 0x00DB3FA0 | True | 30 |
+| NOVI_BookTrader | Main | 0x00DB3FA0 | True | 21 |
 | NOVI_Bully | Init | 0x00DAED30 | True | 0 |
-| NOVI_Bully | Main | 0x00DBB310 | False | 143 |
+| NOVI_Bully | Main | 0x00DBB310 | True | 128 |
 | NOVI_Bully | GivenTeddy | 0x00DBCD00 | True | 0 |
 | NOVI_CreatedBeetle | Init | 0x00CDEBB0 | True | 0 |
 | NOVI_CreatedBeetle | Main | 0x00DB80C0 | True | 0 |
@@ -32,7 +32,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | NOVI_TeddyGirl | Main | 0x00DAF080 | True | 133 |
 | NOVI_TeddyGirl | GivenTeddy | 0x00DB0600 | True | 0 |
 | NOVI_Theresa | Init | 0x00DAC4F0 | True | 0 |
-| NOVI_Theresa | Main | 0x00DB97A0 | True | 182 |
+| NOVI_Theresa | Main | 0x00DB97A0 | True | 181 |
 | NOVI_Victim | Init | 0x00DAEEB0 | True | 0 |
 | NOVI_Victim | Main | 0x00DBCD60 | True | 100 |
 | NOVI_Villager | Init | 0x00DADF00 | True | 0 |
@@ -45,8 +45,8 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_NewOakValeIntro | Main | 0x00DABAC0 | True | 6 |
 | Q_NewOakValeIntro | Init | 0x00DAADD0 | True | 0 |
 | Q_NewOakValeIntro | OnPersist | 0x00DAADA0 | True | 0 |
-| Q_NewOakValeIntro | DoMission | 0x00DBDE40 | True | 8 |
-| Q_NewOakValeIntro | AttackStuff | 0x00DBE3C0 | True | 2 |
+| Q_NewOakValeIntro | DoMission | 0x00DBDE40 | True | 0 |
+| Q_NewOakValeIntro | AttackStuff | 0x00DBE3C0 | True | 0 |
 | Q_NewOakValeIntro | PostAttackStuff | 0x00DBEB20 | True | 9 |
 | Q_NewOakValeIntro | ManageQuestCoreMarkers | 0x00DBE4E0 | True | 1 |
 | Q_NewOakValeIntro | StartBarrelTimer | 0x00DB4F70 | True | 0 |
@@ -58,4 +58,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 
 Shared native helper module: `FSE/NewOakValeIntro/native_quest_helpers.lua`; functions: AddBadDeed, AddGoodDeed. Its diagnostics are included in file syntax totals.
 
-Summary: `{"owners": 17, "functions": 51, "missing": 0, "functionSyntaxPassed": 47, "fileSyntaxPassed": 14, "fileSyntaxChecked": 18, "todo": 1296}`
+Summary: `{"owners": 17, "functions": 51, "missing": 0, "functionSyntaxPassed": 51, "fileSyntaxPassed": 18, "fileSyntaxChecked": 18, "todo": 1203}`

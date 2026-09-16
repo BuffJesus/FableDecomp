@@ -699,7 +699,7 @@ class QuestLiftTests(unittest.TestCase):
         out = lifter.lift("Main", native)
         self.assertEqual(out, ['    Quest:SetQuestCardObjective("OBJECT_APPLE", "", '
                                'nil --[[missing]], nil --[[missing]])'])
-        self.assertEqual(lifter.todo, ["2 args for 4 params"])
+        self.assertEqual(lifter.todo, ["SetQuestCardObjective: missing region1, region2 (2 args for 4 params)"])
 
     def test_char_pointer_literal_feeds_string_constructor(self):
         native = ('{\n  pcVar15 = "TEXT_EXACT";\n'

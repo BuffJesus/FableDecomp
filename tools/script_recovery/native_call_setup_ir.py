@@ -211,9 +211,15 @@ def call_setup(instructions, known_calls=None, *, argument_count=None):
             def reads_memory(value):
                 return isinstance(value, tuple) and (value[0] == 'memory'
                     or any(reads_memory(part) for part in value[1:]))
+            destination = address(args[0], ins)
             registers = {name: unknown if reads_memory(value) else value
                          for name, value in registers.items()}
-            stack.clear()
+            if destination[0] == 'stack':
+                first_byte, last_byte = destination[1], destination[1] + args[0].size
+                stack = {slot: fact for slot, fact in stack.items()
+                         if not (slot < last_byte and first_byte < slot + 4) and not reads_memory(fact)}
+            else:
+                stack.clear()
             continue
         if (op == 'mov' and len(args) == 2 and args[0].type == X86_OP_REG
                 and args[0].size == 1 and args[1].type == X86_OP_MEM and args[1].size == 1

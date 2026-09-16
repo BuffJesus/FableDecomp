@@ -1,0 +1,8 @@
+{
+  "nativeRegion": "0x00DB4234",
+  "nativeSize": 215,
+  "nativeSha256": "9f4c6da6b350ddf283d1cda52b583e4876fb7492333d6dc7a6d1de5686b62681",
+  "oldLua": "            uVar17 = uVar16 | 1\n            cVar5 = me:MsgIsHitByHero()\n            if not cVar5 then\n                uVar17 = uVar16 | 3\n                cVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()\n                if cVar5 then\n                    uVar17 = uVar16 | 7\n                    cVar5 = me:MsgIsHitByHeroSpecialAbility(14)\n                    bVar4 = not cVar5\n                else\n                    bVar4 = false\n                end\n            else\n                bVar4 = true\n            end\n            if (uVar17 & 4) ~= 0 then\n                uVar17 = uVar17 & 0xfffffffb\n            end\n            if (uVar17 & 2) ~= 0 then\n                uVar17 = uVar17 & 0xfffffffd\n            end\n            if (uVar17 & 1) ~= 0 then\n                -- TODO(native): uStack_120 = uVar17 & 0xfffffffe;\n            end\n",
+  "oldLuaSha256": "aa8ba07411b333cba523b45ba2750eebc204aa55b2afbc7c5a9eda1b4a4d75a7",
+  "review": "DB4258/DB4280/DB42B3 query self EBP slots54/A8/A4 with SCRIPT_NAME_HERO and excluded ability14. Constructors99EBF0 at DB4242/DB426A/DB4298 create stack78/44/80 only as short circuit requires. DB42DC/DB42F1/DB4306 destroy them in reverse conditional order before testing the saved boolean at DB430B. EBX low mask bits only track these strings in this region; preserve the surrounding resource state. Same scoped IsHitByHeroExceptAbility runtime helper as the husband candidate."
+}

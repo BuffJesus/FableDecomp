@@ -16,6 +16,7 @@ from tools.script_recovery.lift_native_lua import (
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters
 from tools.script_recovery.native_speech_vectors import recover_vectors, vector_prelude, SOURCE_HASH, NATIVE_HASH
+from tools.script_recovery.native_quest_vector_fields import new_oakvale_vectors
 
 EVIDENCE = ROOT / 'refs/script_recovery/new_oakvale_intro'
 OUTPUT = ROOT / 'refs/script_recovery/lifted/NewOakValeIntro'
@@ -34,7 +35,9 @@ def inventories(root=EVIDENCE):
     return [json.loads(p.read_text(encoding='utf-8-sig')) for p in sorted((root / 'entities').glob('*.json'))]
 
 
-def convert(out=OUTPUT):
+def convert(out=OUTPUT, *, flat_control=False):
+    if flat_control and Path(out).resolve() == OUTPUT.resolve():
+        raise ValueError('experimental flat control output must be separate from the canonical draft')
     manifest, slots, rdata = load_manifest(), load_slots(), RData()
     things, returning = load_thing_tables(manifest, slots)
     tu = json.loads((EVIDENCE / 'translation_unit.json').read_text(encoding='utf-8-sig'))
@@ -48,11 +51,15 @@ def convert(out=OUTPUT):
     fields = json.loads((EVIDENCE / 'persistence_manifest.json').read_text())['fields']
     quest_state = {f['retailOffset'].lower(): (f['name'], {'bool': 'Bool', 'int': 'Int', 'float': 'Float'}[f['type']])
                    for f in fields if f['type'] in ('bool', 'int', 'float')}
+    state_vectors, vector_components, vector_evidence = new_oakvale_vectors(rdata)
+    quest_state.update(vector_components)
     quest_arrays = {f['retailOffset'].split('..')[0].lower(): (f['name'], 'Bool')
                     for f in fields if re.fullmatch(r'bool\[\d+\]', f['type'])}
     checker = LuaSyntaxChecker()
     report = {'schema': 'new-oakvale-converter-coverage/0.1', 'source': 'native exports and reviewed inventories',
               'packages': [], 'functions': [], 'aliases': [], 'missing': [], 'syntax': {}}
+    report['nativeStateVectors'] = vector_evidence
+    report['controlMode'] = 'flat experimental' if flat_control else 'structured draft'
     all_sources = {}
     for inventory in entries:
         owner = inventory['entity']
@@ -64,13 +71,21 @@ def convert(out=OUTPUT):
             if access.get('op') == 'write' and isinstance(access.get('value'), str):
                 master_candidates.setdefault(access['offset'].lower(), set()).add(access['field'])
         master_strings = {offset: next(iter(names)) for offset, names in master_candidates.items() if len(names) == 1}
+        parent_state = load_entity_parent_state(owner) if entity else {}
+        parent_fields = set(inventory.get('parentFieldsRead', [])) | set(inventory.get('parentFieldsWritten', []))
+        if inventory.get('nativeClass', '').startswith('NScript::CQ_NewOakValeIntroScript::'):
+            for vector_name in state_vectors.values():
+                if vector_name in parent_fields:
+                    parent_state.update({offset: field for offset, field in vector_components.items()
+                                         if field[0].startswith(vector_name + '_')})
         lifter = Lifter(manifest, state, 'quest', entity, 'NewOakValeIntro', rdata,
                         thing_sigs=thing_signatures(things),
-                        parent_state=load_entity_parent_state(owner) if entity else {},
+                        parent_state=parent_state,
                         native_constants=load_entity_constants(owner),
                         state_receiver='__native_entity_state' if entity else 'quest',
                         live_termination=True, state_arrays=quest_arrays if not entity else {},
-                        master_strings=master_strings, native_gotos=True, static_vectors=static_vectors, readable_locals=True)
+                        master_strings=master_strings, native_gotos=True, static_vectors=static_vectors, readable_locals=True,
+                        state_vectors=state_vectors if not entity else {}, flat_control=flat_control)
         # Address identity, not similarity-derived labels, determines local helper names.
         local_names = {f['address'].lower(): name for name, f in inventory['functions'].items()
                        if re.fullmatch(r'[A-Za-z_]\w*', name) and not f.get('coverageAlias')}
@@ -170,6 +185,11 @@ def convert(out=OUTPUT):
                 row['barrelColourEvidence'] = lifter.barrel_colour_evidence
                 row['barrelUpdateEvidence'] = lifter.barrel_update_evidence
                 row['barrelCreationEvidence'] = lifter.barrel_creation_evidence
+                row['barrelSpawnHealthEvidence'] = lifter.barrel_spawn_health_evidence
+                row['dispatchScaffoldingEvidence'] = lifter.dispatch_scaffolding_evidence
+                row['flatControlEvidence'] = lifter.flat_control_evidence
+                row['structuredSwitchEvidence'] = lifter.structured_switch_evidence
+                row['affairWomanPositionEvidence'] = lifter.affair_woman_position_evidence
                 row['questMarkerEvidence'] = lifter.quest_marker_evidence
                 row['markerCleanupEvidence'] = lifter.marker_cleanup_evidence
                 row['postAttackCleanupEvidence'] = lifter.post_attack_cleanup_evidence
@@ -181,8 +201,13 @@ def convert(out=OUTPUT):
                 row['postAttackLimboEvidence'] = lifter.post_attack_limbo_evidence
                 row['postAttackResourceEvidence'] = lifter.post_attack_resource_evidence
                 row['bookTraderResourceEvidence'] = lifter.book_trader_resource_evidence
+                row['bookTraderLifetimeEvidence'] = lifter.book_trader_lifetime_evidence
                 row['postAttackMovieLifetimeEvidence'] = lifter.post_attack_movie_lifetime_evidence
                 row['barrelPositionEvidence'] = lifter.barrel_position_evidence
+                row['bullyMessageEvidence'] = lifter.bully_message_evidence
+                row['bullyTeddyOfferEvidence'] = lifter.bully_teddy_offer_evidence
+                row['bullyPresentedItemEvidence'] = lifter.bully_presented_item_evidence
+                row['bullyHitResultEvidence'] = lifter.bully_hit_result_evidence
                 row['guardCleanupEvidence'] = lifter.guard_cleanup_evidence
                 row['affairManDistanceEvidence'] = lifter.affair_man_distance_evidence
                 row['affairManWomanDistanceEvidence'] = lifter.affair_man_woman_distance_evidence
@@ -201,6 +226,11 @@ def convert(out=OUTPUT):
                 row['bookTraderHitEvidence'] = lifter.book_trader_hit_evidence
                 row['bookTraderTerminationEvidence'] = lifter.book_trader_termination_evidence
                 row['bookTraderAcquisitionEvidence'] = lifter.book_trader_acquisition_evidence
+                row['bookTraderHomeEvidence'] = lifter.book_trader_home_evidence
+                row['bookTraderHealthValuesEvidence'] = lifter.book_trader_health_values_evidence
+                row['barrelInitEvidence'] = lifter.barrel_init_evidence
+                row['doMissionOperandEvidence'] = lifter.do_mission_operand_evidence
+                row['attackStuffOperandEvidence'] = lifter.attack_stuff_operand_evidence
                 row['speechVectorInitEvidence'] = lifter.speech_vector_init_evidence
                 row['initScalarEvidence'] = lifter.init_scalar_evidence
                 row['initBadDeedEvidence'] = lifter.init_bad_deed_evidence
@@ -276,7 +306,7 @@ def convert(out=OUTPUT):
         shared_lifter = Lifter(manifest, quest_state, 'quest', False, 'NewOakValeIntro', rdata,
                                callee_names=aliases, thing_sigs=thing_signatures(things),
                                live_termination=True, execution_entity=True, state_arrays=quest_arrays,
-                               native_gotos=True, readable_locals=True)
+                               native_gotos=True, readable_locals=True, state_vectors=state_vectors, flat_control=flat_control)
         shared_lifter.helper_names = set(quest_helpers.values())
         for address, helper in quest_helpers.items():
             sig = function_parameters(by_address[address]['decompile'], member=True)
@@ -322,6 +352,7 @@ def convert(out=OUTPUT):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, default=OUTPUT)
+    parser.add_argument('--flat-control', action='store_true')
     args = parser.parse_args()
-    result = convert(args.out)
+    result = convert(args.out, flat_control=args.flat_control)
     print(json.dumps(result['summary'], indent=2))

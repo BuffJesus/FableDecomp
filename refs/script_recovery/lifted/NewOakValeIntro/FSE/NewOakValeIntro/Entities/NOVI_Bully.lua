@@ -28,7 +28,7 @@ function Init(quest, me)
 end
 
 function Main(quest, me)
-    local aVar26, aVar5, bVar3, cVar4, fVar18, fVar2, fVar28, iVar8, native_arg_sequence_1, native_arg_sequence_2, pCVar10, pCVar22, pCVar24, pCVar25, pCVar29, pCVar6, paVar14, pcVar17, pcVar21, ppVar11, ppVar20, ppVar23, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar12, uVar16, uVar19, uVar27, uVar7
+    local aVar26, aVar5, bVar3, cVar4, fVar18, fVar2, fVar28, iVar8, native_arg_bully_hit, native_arg_bully_talked_with_teddy, native_arg_bully_teddy_holder, native_arg_sequence_1, pCVar10, pCVar22, pCVar24, pCVar25, pCVar29, pCVar6, paVar14, pcVar21, ppVar11, ppVar20, ppVar23, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, uVar12, uVar16, uVar19, uVar27, uVar7
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -59,7 +59,7 @@ function Main(quest, me)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         if not alive then goto LAB_00dbcceb end
-        me:MoveToPosition(nil --[[missing]], 0x0, 0x0, false, true)
+        me:MoveToPosition(nil --[[missing]], aCStack_f4, 0x0, false, false)
         bVar3 = me:IsPerformingScriptTask()
         if bVar3 then
             repeat
@@ -98,17 +98,14 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             if alive then
                 uVar16 = uStack_120 | 1
-                cVar4 = (**(*pCVar6 + 0x6c))()
-                if cVar4 == 0 then
-                    -- LAB_00dbb684: (native jump target)
-                    -- TODO(native): uStack_134 = uStack_134 & 0xffffff;
+                cVar4 = me:IsTalkedToByHero()
+                if not cVar4 then
+                    native_arg_bully_talked_with_teddy = false
                 else
                     uVar16 = uVar12 | 3
-                    r2 = quest:GetHero()
-                    -- TODO(native): IsObjectInThingsPossession is not a ForgeFSE binding
-                    quest:IsObjectInThingsPossession()
-                    -- TODO(native): uStack_134 = CONCAT13(1,(undefined3)uStack_134);
-                    if cVar4 == 0 then return end  -- TODO(native): goto LAB_00dbb684
+                    native_arg_bully_teddy_holder = quest:GetHero()
+                    cVar4 = quest:IsObjectInThingsPossession("OBJECT_TEDDY_BEAR_UNGIVEABLE", native_arg_bully_teddy_holder)
+                    native_arg_bully_talked_with_teddy = cVar4
                 end
                 if (uVar16 & 2) ~= 0 then
                     uVar16 = uVar16 & 0xfffffffd
@@ -116,16 +113,11 @@ function Main(quest, me)
                 if (uVar16 & 1) ~= 0 then
                     -- TODO(native): uStack_120 = uVar16 & 0xfffffffe;
                 end
-                if uStack_134._3_1_ == 0 then
-                    cVar4 = (**(*pCVar6 + 0x8c))()
-                    if cVar4 ~= 0 then
-                        if "" ~= nil then
-                            -- TODO(native): lVar9 = CBasicString<char>::Compare ((char *)*puStack_130,"OBJECT_TEDDY_BEAR_UNGIVEABLE");
-                            cVar4 = '\x01' - (lVar9 ~= 0)
-                            -- TODO(native): uStack_134 = CONCAT13(cVar4,(undefined3)uStack_134);
-                            pCVar6 = pCVar6
-                            if cVar4 == 0 then goto LAB_00dbba25 end
-                            -- LAB_00dbbb73: (native jump target)
+                if not native_arg_bully_talked_with_teddy then
+                    cVar4 = me:MsgIsPresentedWithItem()
+                    if cVar4 then
+                        pCVar6 = pCVar6
+                        if g_PresentedItemName == "OBJECT_TEDDY_BEAR_UNGIVEABLE" then
                             alive = not quest:IsActiveThreadTerminating()
                             if not alive then goto LAB_00dbc848 end
                             -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_90);
@@ -146,7 +138,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             if alive then
                                 -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeac);
-                                fVar18 = quest:GetHealth(r2)
+                                fVar18 = quest:GetHealth(r1)
                                 fVar2 = _DAT_0122dedc
                                 if fVar2 < fVar18 then
                                     aVar5 = 0x0
@@ -155,7 +147,7 @@ function Main(quest, me)
                                     pCVar22 = 0x0
                                     pcVar21 = "TEXT_QST_048_BULLY_FOUND_TEDDY_TWO"
                                     pCVar6 = quest:GetHero()
-                                    r3 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
+                                    r2 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
                                     bVar3 = me:IsPerformingScriptTask()
                                     if bVar3 then
                                         repeat
@@ -178,36 +170,10 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             goto LAB_00dbccdd
                         end
-                        iVar8 = 0x1d
-                        bVar3 = true
-                        pcVar21 = "OBJECT_TEDDY_BEAR_UNGIVEABLE"
-                        pcVar17 = ""
-                        repeat
-                            if iVar8 == 0 then break end
-                            iVar8 = iVar8 + -1
-                            bVar3 = *pcVar21 == *pcVar17
-                            pcVar21 = pcVar21 + 1
-                            pcVar17 = pcVar17 + 1
-                        until not (bVar3)
-                        if bVar3 then return end  -- TODO(native): goto LAB_00dbbb73
                     end
-                    ::LAB_00dbba25::
-                    cVar4 = (**(*pCVar6 + 0x8c))()
-                    native_arg_sequence_1 = false
-                    if cVar4 == 0 then
-                        native_arg_sequence_1 = true
-                    else
-                        native_arg_sequence_1 = false
-                    end
-                    if not native_arg_sequence_1 then
-                        cVar4 = CCharString__NotEqual()
-                        if cVar4 == 0 then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                    if native_arg_sequence_1 then
+                    -- LAB_00dbba25: (native jump target)
+                    cVar4 = me:MsgIsPresentedWithItem()
+                    if (not cVar4) or (g_PresentedItemName == "OBJECT_TEDDY_BEAR_UNGIVEABLE") then
                         -- LAB_00dbbd83: (native jump target)
                         goto LAB_00dbbd8c
                     end
@@ -230,7 +196,7 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(false)
                             -- TODO(native): aVar5 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffeac);
-                            fVar18 = quest:GetHealth(r1)
+                            fVar18 = quest:GetHealth(nil --[[missing]])
                             fVar2 = _DAT_0122dedc
                             if fVar2 < fVar18 then
                                 aVar26 = 0x0
@@ -239,7 +205,7 @@ function Main(quest, me)
                                 pCVar22 = 0x0
                                 pcVar21 = "TEXT_QST_048_BULLY_DONT_WANT"
                                 pCVar6 = quest:GetHero()
-                                r4 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar26 ~= 0))
+                                r3 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar26 ~= 0))
                                 bVar3 = me:IsPerformingScriptTask()
                                 if bVar3 then
                                     repeat
@@ -312,7 +278,7 @@ function Main(quest, me)
                                         pCVar22 = 0x0
                                         pcVar21 = "TEXT_QST_048_BULLY_FOUND_TEDDY_TWO"
                                         pCVar6 = quest:GetHero()
-                                        r5 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar26 ~= 0))
+                                        r4 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar26 ~= 0))
                                         bVar3 = me:IsPerformingScriptTask()
                                         if bVar3 then
                                             repeat
@@ -335,7 +301,7 @@ function Main(quest, me)
                             goto LAB_00dbccdd
                         end
                         ::LAB_00dbb9d1::
-                        quest:PauseAllNonScriptedEntities(nil --[[missing]])
+                        quest:PauseAllNonScriptedEntities(false)
                         -- TODO(native): this = (CScriptGameResourceObjectMovieBase *)aCStack_78;
                         -- LAB_00dbbd7e: (native jump target)
                         -- TODO(native): goto LAB_00dbbd83
@@ -346,7 +312,7 @@ function Main(quest, me)
                     pCVar22 = 0x0
                     pcVar21 = "TEXT_QST_048_BULLY_FOUND_TEDDY_ONE"
                     pCVar6 = quest:GetHero()
-                    r6 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
+                    r5 = me:Speak(pCVar6, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
                     bVar3 = me:IsPerformingScriptTask()
                     if bVar3 then
                         repeat
@@ -366,8 +332,8 @@ function Main(quest, me)
             break
         end
         ::LAB_00dbbd8c::
-        cVar4 = (**(*pCStack_108 + 0x6c))()
-        if cVar4 ~= 0 then
+        cVar4 = me:IsTalkedToByHero()
+        if cVar4 then
             alive = not quest:IsActiveThreadTerminating()
             if not alive then break end
             -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xfffffeb8);
@@ -406,7 +372,7 @@ function Main(quest, me)
                                 pCVar22 = 0x0
                                 pcVar21 = "TEXT_QST_048_BULLY_IN_COMMON"
                                 pCVar10 = quest:GetHero()
-                                r7 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
+                                r6 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
                                 bVar3 = me:IsPerformingScriptTask()
                                 if bVar3 then
                                     repeat
@@ -436,7 +402,7 @@ function Main(quest, me)
                                     pCVar22 = 0x0
                                     pcVar21 = "TEXT_QST_048_BULLY_NASTY_STREAK"
                                     pCVar10 = quest:GetHero()
-                                    r8 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
+                                    r7 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
                                     bVar3 = me:IsPerformingScriptTask()
                                     if bVar3 then
                                         repeat
@@ -461,7 +427,7 @@ function Main(quest, me)
                                     pCVar22 = 0x0
                                     pcVar21 = "TEXT_QST_048_BULLY_DONT_HIT_ME"
                                     pCVar10 = quest:GetHero()
-                                    r9 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
+                                    r8 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
                                     bVar3 = me:IsPerformingScriptTask()
                                     if bVar3 then
                                         repeat
@@ -490,7 +456,7 @@ function Main(quest, me)
                             pCVar22 = 0x0
                             pcVar21 = "TEXT_QST_048_BULLY_BADGERING"
                             pCVar10 = quest:GetHero()
-                            r10 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
+                            r9 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
                             bVar3 = me:IsPerformingScriptTask()
                             if bVar3 then
                                 repeat
@@ -527,7 +493,7 @@ function Main(quest, me)
                 pCVar22 = 0x0
                 pcVar21 = "TEXT_QST_048_BULLY_GET_LOST"
                 pCVar10 = quest:GetHero()
-                r11 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
+                r10 = me:Speak(pCVar10, pcVar21, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), (aVar5 ~= 0))
                 bVar3 = me:IsPerformingScriptTask()
                 if bVar3 then
                     repeat
@@ -545,19 +511,19 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities((aVar5 ~= 0))
         end
         uVar16 = uStack_120 | 4
-        cVar4 = (**(*pCVar6 + 0x54))()
-        if cVar4 == 0 then
+        cVar4 = me:MsgIsHitByHero()
+        if not cVar4 then
             uVar16 = uVar12 | 0xc
-            cVar4 = (**(*pCVar6 + 0xa8))()
-            if cVar4 ~= 0 then
+            cVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
+            if cVar4 then
                 uVar16 = uVar12 | 0x1c
-                cVar4 = (**(*pCVar6 + 0xa4))()
-                if cVar4 == 0 then return end  -- TODO(native): goto LAB_00dbc338
+                cVar4 = me:MsgIsHitByHeroSpecialAbility(14)
+                native_arg_bully_hit = not cVar4
+            else
+                native_arg_bully_hit = false
             end
-            -- TODO(native): uStack_134 = uStack_134 & 0xffffff;
         else
-            -- LAB_00dbc338: (native jump target)
-            -- TODO(native): uStack_134 = CONCAT13(1,(undefined3)uStack_134);
+            native_arg_bully_hit = true
         end
         if (uVar16 & 0x10) ~= 0 then
             uVar16 = uVar16 & 0xffffffef
@@ -568,19 +534,19 @@ function Main(quest, me)
         if (uVar16 & 4) ~= 0 then
             -- TODO(native): uStack_120 = uVar16 & 0xfffffffb;
         end
-        if uStack_134._3_1_ ~= 0 then
+        if native_arg_bully_hit then
             alive = not quest:IsActiveThreadTerminating()
             if not alive then break end
-            if *(__native_entity_state:GetStateInt("self_0x14") + 100) == -999 then
+            if quest:GetStateInt("GUIBullyHealthCounter") == -999 then
                 alive = not quest:IsActiveThreadTerminating()
                 if not alive then break end
                 uVar19 = quest:AddQuestInfoBar(__native_entity_state:GetStateInt("InitialHealth"), 0, 0xff, 0x0, "HUD_QUEST_ICON_GRANDSON", "", 0xff)
-                -- TODO(native): *(int *)(*(int *)(param_1 + 0x14) + 100) = (int)uVar19;
+                quest:SetStateInt("GUIBullyHealthCounter", uVar19)
             end
+            r11 = quest:GetHero()
+            quest:EntitySetThingAsAllyOfThing(r11, nil --[[missing]])
             r12 = quest:GetHero()
             quest:EntitySetThingAsAllyOfThing(r12, nil --[[missing]])
-            r13 = quest:GetHero()
-            quest:EntitySetThingAsAllyOfThing(r13, nil --[[missing]])
             iVar8 = __native_entity_state:GetStateInt("HitsTaken")
             __native_entity_state:SetStateInt("HitsTaken", iVar8 + 1)
             if __native_entity_state:GetStateInt("InitialHealth") <= iVar8 + 1 then
@@ -604,35 +570,35 @@ function Main(quest, me)
             quest:AddLineToConversation(ppVar11, "TEXT_QST_048_BULLY_SCRMSG_GET_OFF", nil --[[missing]], nil --[[missing]], false)
             quest:AddLineToConversation(ppVar11, "TEXT_QST_048_VICTIM_REVENGE", nil --[[missing]], nil --[[missing]], false)
             -- TODO(native): iStack_94 = *(int *)(param_1 + 0x1c) - *(int *)(param_1 + 0x20);
-            quest:UpdateQuestInfoBar(*(__native_entity_state:GetStateInt("self_0x14") + 100), iStack_94, 0xbf800000, 0xbf800000)
+            quest:UpdateQuestInfoBar(quest:GetStateInt("GUIBullyHealthCounter"), iStack_94, 0xbf800000, 0xbf800000)
         end
         quest:EntitySetFacingAngleTowardsThing(nil --[[missing]], nil --[[missing]])
         iVar8 = quest:GetTimer(0xff)
-        native_arg_sequence_2 = false
+        native_arg_sequence_1 = false
         if iVar8 == 0 then
-            native_arg_sequence_2 = true
+            native_arg_sequence_1 = true
         else
-            native_arg_sequence_2 = false
+            native_arg_sequence_1 = false
         end
-        if native_arg_sequence_2 then
+        if native_arg_sequence_1 then
             if not __native_entity_state:GetStateBool("SpokenOnFirstProximity") then
-                native_arg_sequence_2 = true
+                native_arg_sequence_1 = true
             else
-                native_arg_sequence_2 = false
+                native_arg_sequence_1 = false
             end
-            if not native_arg_sequence_2 then
+            if not native_arg_sequence_1 then
                 iVar8 = rand()
                 if iVar8 % DAT_013ac860 == 0 then
-                    native_arg_sequence_2 = true
+                    native_arg_sequence_1 = true
                 else
-                    native_arg_sequence_2 = false
+                    native_arg_sequence_1 = false
                 end
             end
         end
-        if native_arg_sequence_2 then
+        if native_arg_sequence_1 then
             -- TODO(native): fVar28 = DAT_013ac85c;
             pCVar10 = quest:GetHero()
-            bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar10, nil --[[missing]], nil --[[missing]])
+            bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar10, nil --[[missing]], native_arg_bully_hit)
             if (bVar3) and (__native_entity_state:GetStateInt("HitsTaken") == 0) then
                 alive = not quest:IsActiveThreadTerminating()
                 if not alive then break end
@@ -694,13 +660,13 @@ function Main(quest, me)
         -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_11c);
         if bVar3 then
         end
-        r14 = quest:GetHero()
+        r13 = quest:GetHero()
         cVar4 = me:AcquireControl(4)
         while not cVar4 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             if not alive then goto LAB_00dbcc33 end
-            r15 = quest:GetHero()
+            r14 = quest:GetHero()
             cVar4 = me:AcquireControl(4)
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -754,7 +720,7 @@ function Main(quest, me)
                             end
                             ppVar23 = 0x0
                             -- TODO(native): RunCutsceneMacro_Func(0,0,0,1);
-                            quest:ClearThingHasInformation(r15)
+                            quest:ClearThingHasInformation(r14)
                             quest:SetStateBool("GivenHeroTeddy", true)
                         else
                             alive = not quest:IsActiveThreadTerminating()
@@ -768,7 +734,7 @@ function Main(quest, me)
                         -- TODO(native): StdMap_Destroy_API();
                         quest:SetStateBool("BullyRanOff", true)
                         require("NewOakValeIntro.native_quest_helpers").AddGoodDeed(quest, me)
-                        quest:RemoveThing(r14, false, true)
+                        quest:RemoveThing(r13, false, true)
                         goto LAB_00dbcce2
                     end
                 end

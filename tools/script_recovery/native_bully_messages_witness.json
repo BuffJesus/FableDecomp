@@ -1,0 +1,102 @@
+{
+  "address": "0x00DBB310",
+  "size": 6630,
+  "sourceSha256": "2820811c164953903787b116389a1a1a95792cc5dd899af9400c0f1856399ea6",
+  "annotatedSha256": "5a0ec1f3d830cf742f9ee3a2e376a7972f9da2f697a48398f75dc4fde8542876",
+  "bytesSha256": "d1fa37c8ec9fc04f95ae6c1cf6bf1541edf4ad12eb3ab8c56b12396da7263a81",
+  "contracts": {
+    "IsTalkedToByHero": {
+      "name": "IsTalkedToByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether talked to by hero for an entity."
+    },
+    "MsgIsHitByHero": {
+      "name": "MsgIsHitByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero' is met."
+    },
+    "MsgIsHitByAnySpecialAbilityFromHero": {
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by any special ability from hero' is met."
+    },
+    "MsgIsHitByHeroSpecialAbility": {
+      "name": "MsgIsHitByHeroSpecialAbility",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "abilityEnum",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero special ability' is met."
+    }
+  },
+  "edits": [
+    {
+      "old": "(**(code **)(*(int *)pCVar6 + 0x6c))()",
+      "new": "CScriptThing::MsgIsTalkedToBy((CScriptThing *)(this + 8),aCStack_a0)",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(*(int *)pCStack_108 + 0x6c))()",
+      "new": "CScriptThing::MsgIsTalkedToBy((CScriptThing *)(this + 8),aCStack_c8)",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(*(int *)pCVar6 + 0x54))()",
+      "new": "CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8),aCStack_a4)",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(*(int *)pCVar6 + 0xa8))()",
+      "new": "CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8),aCStack_ac)",
+      "count": 1
+    },
+    {
+      "old": "(**(code **)(*(int *)pCVar6 + 0xa4))()",
+      "new": "CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8),14,aaStack_c0)",
+      "count": 1
+    }
+  ],
+  "review": "DBB31C sets ESI=scriptthisEBP+8, DBB339 saves ESI at baseline80. DBB588 reloads EDI for first talkDBB63D. DBBD9F reloads EDI before talkDBBDAF; no later EDI writes before hit calls DBC2C8/DBC2F5/DBC327. Hero-name construction precedes every query, and DBC31F pushes excluded ability14. Whole native function is guarded because masked constructor setup exceeds call-window IR. This recovers actor/arguments only; original conditional string cleanup and result control flow remain."
+}

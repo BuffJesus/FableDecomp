@@ -22,7 +22,7 @@ function Init(quest, me)
 end
 
 function Main(quest, me)
-    local __native_condition_1, bVar4, cVar5, fVar18, fVar23, fVar3, iVar11, native_arg_book_ally, native_arg_book_listener, pCVar1, pCVar13, pCVar20, pCVar21, pCVar22, pCVar24, pCVar7, pCVar8, pcVar19, piVar25, ppVar10, r1, r2, r3, r4, r5, r6, r7, uVar12, uVar16, uVar17, uVar6, uVar9
+    local __native_condition_1, bVar4, cVar5, fVar18, fVar23, iVar11, native_arg_book_ally, native_arg_book_has_health, native_arg_book_health_actor, native_arg_book_home, native_arg_book_initial_home, native_arg_book_listener, pCVar1, pCVar13, pCVar20, pCVar21, pCVar22, pCVar24, pCVar8, pcVar19, piVar25, ppVar10, r1, r2, r3, r4, r5, r6, r7, uVar12, uVar16, uVar17, uVar6, uVar9
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -50,22 +50,20 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             if not alive then break end
             fVar23 = 0.1
-            pCVar7 = me:GetHomePos()
-            bVar4 = (me ~= nil and me:IsDistanceFromPositionOver(pCVar7, fVar23))
+            native_arg_book_initial_home = me:GetHomePos()
+            bVar4 = (me ~= nil and me:IsDistanceFromPositionOver(native_arg_book_initial_home, fVar23))
             if bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 if alive then
-                    me:GetHomePos()
+                    native_arg_book_home = me:GetHomePos()
                     while true do
                         fVar23 = 2.0
-                        -- TODO(native): pCVar8 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffed0);
-                        -- TODO(native): bVar4 = IsDistanceFromThingToPositionOver(pCVar8,aCStack_9c,fVar23);
-                        bVar4 = nil --[[unresolved native result]]
+                        bVar4 = (me ~= nil and me:IsDistanceFromPositionOver(native_arg_book_home, fVar23))
                         if not bVar4 then break end
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         if not alive then goto LAB_00db4f5a end
-                        me:MoveToPosition(pCVar7, 0x0, 0x0, false, true)
+                        me:MoveToPosition(native_arg_book_home, 0.0, 0, false, true)
                         bVar4 = me:IsPerformingScriptTask()
                         if bVar4 then
                             repeat
@@ -137,10 +135,9 @@ function Main(quest, me)
                         pCVar20 = ""
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): uVar6 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);
                         fVar18 = quest:GetHealth(me)
-                        fVar3 = _DAT_0122dedc
-                        if fVar3 < fVar18 then
+                        native_arg_book_has_health = fVar18 > 0.0
+                        if native_arg_book_has_health then
                             bVar4 = false
                             pCVar22 = 0x1
                             pCVar21 = 0x0
@@ -203,10 +200,9 @@ function Main(quest, me)
                         if quest:GetStateBool("GivenSweets") then
                             alive = not quest:IsActiveThreadTerminating()
                             if alive then
-                                -- TODO(native): uVar9 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);
                                 fVar18 = quest:GetHealth(me)
-                                fVar3 = _DAT_0122dedc
-                                if fVar3 < fVar18 then
+                                native_arg_book_has_health = fVar18 > 0.0
+                                if native_arg_book_has_health then
                                     bVar4 = false
                                     pCVar22 = 0x1
                                     pCVar21 = 0x0
@@ -256,10 +252,9 @@ function Main(quest, me)
                                 quest:EndMovieSequence()
                                 goto LAB_00db4f5a
                             end
-                            -- TODO(native): uVar12 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);
                             fVar18 = quest:GetHealth(me)
-                            fVar3 = _DAT_0122dedc
-                            if fVar3 < fVar18 then
+                            native_arg_book_has_health = fVar18 > 0.0
+                            if native_arg_book_has_health then
                                 bVar4 = false
                                 pCVar22 = 0x1
                                 pCVar21 = 0x0
@@ -295,10 +290,9 @@ function Main(quest, me)
                                 quest:EndMovieSequence()
                                 goto LAB_00db4f5a
                             end
-                            -- TODO(native): uVar12 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);
                             fVar18 = quest:GetHealth(me)
-                            fVar3 = _DAT_0122dedc
-                            if fVar3 < fVar18 then
+                            native_arg_book_has_health = fVar18 > 0.0
+                            if native_arg_book_has_health then
                                 bVar4 = false
                                 pCVar22 = 0x1
                                 pCVar21 = 0x0
@@ -359,10 +353,9 @@ function Main(quest, me)
                                         quest:EndMovieSequence()
                                         goto LAB_00db4f5a
                                     end
-                                    -- TODO(native): uVar9 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);
                                     fVar18 = quest:GetHealth(me)
-                                    fVar3 = _DAT_0122dedc
-                                    if fVar3 < fVar18 then
+                                    native_arg_book_has_health = fVar18 > 0.0
+                                    if native_arg_book_has_health then
                                         bVar4 = false
                                         pCVar22 = 0x1
                                         pCVar21 = 0x0
@@ -398,10 +391,9 @@ function Main(quest, me)
                                         quest:EndMovieSequence()
                                         goto LAB_00db4f5a
                                     end
-                                    -- TODO(native): uVar9 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);
                                     fVar18 = quest:GetHealth(me)
-                                    fVar3 = _DAT_0122dedc
-                                    if fVar3 < fVar18 then
+                                    native_arg_book_has_health = fVar18 > 0.0
+                                    if native_arg_book_has_health then
                                         bVar4 = false
                                         pCVar22 = 0x1
                                         pCVar21 = 0x0
@@ -449,10 +441,9 @@ function Main(quest, me)
                             quest:EndMovieSequence()
                             goto LAB_00db4f5a
                         end
-                        -- TODO(native): uVar9 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);
                         fVar18 = quest:GetHealth(me)
-                        fVar3 = _DAT_0122dedc
-                        if fVar3 < fVar18 then
+                        native_arg_book_has_health = fVar18 > 0.0
+                        if native_arg_book_has_health then
                             bVar4 = false
                             pCVar22 = 0x1
                             pCVar21 = 0x0

@@ -1,0 +1,16 @@
+{
+  "address": 14373777,
+  "size": 261,
+  "sha256": "6ad8a153601451a3ae4669d0d6da9016aadd0bc62f976316d8a16a8fbbbf33f5",
+  "oldLua": "    quest:SetCreatureBrain(nil --[[missing]], \"BRAIN_PASSIVE_OVERRIDE\")\n    -- TODO(native): puStack_1bc = aCStack_1b8;\n    me:GetHomePos()\n    -- TODO(native): uStack_1c4 = *(undefined4 *)(param_1 + 0xc);\n    -- TODO(native): piStack_1c0 = *(int **)(param_1 + 0x10);\n    if piStack_1c0 ~= nil then\n        -- TODO(native): *piStack_1c0 = *piStack_1c0 + 1;\n    end\n    quest:SetWanderCentrePoint(nil --[[missing]], nil --[[missing]])\n    -- TODO(native): ppuStack_1d4 = *(undefined ***)(param_1 + 0xc);\n    -- TODO(native): piStack_1d0 = *(int **)(param_1 + 0x10);\n    if piStack_1d0 ~= nil then\n        -- TODO(native): *piStack_1d0 = *piStack_1d0 + 1;\n    end\n    quest:SetWanderMinDistance(nil --[[missing]], 0)\n    -- TODO(native): ppuStack_1e4 = *(undefined ***)(param_1 + 0xc);\n    -- TODO(native): piStack_1e0 = *(int **)(param_1 + 0x10);\n    if piStack_1e0 ~= nil then\n        -- TODO(native): *piStack_1e0 = *piStack_1e0 + 1;\n    end\n    quest:SetWanderMaxDistance(nil --[[missing]], 0)\n    -- TODO(native): ppuStack_1f4 = *(undefined ***)(param_1 + 0xc);\n    -- TODO(native): piStack_1f0 = *(int **)(param_1 + 0x10);\n    if piStack_1f0 ~= nil then\n        -- TODO(native): *piStack_1f0 = *piStack_1f0 + 1;\n    end\n    quest:SetScriptingStateGroup(nil --[[missing]], 4)\n",
+  "oldLuaSha256": "284c2146333b12bf463e13ce1b9930218fdd2fae5929c8ec7c8671649a7be3b4",
+  "brainLiteral": 19763740,
+  "calls": {
+    "brain": 2356,
+    "home": 28,
+    "center": 3052,
+    "minimum": 3064,
+    "maximum": 3076,
+    "stateGroup": 3136
+  }
+}

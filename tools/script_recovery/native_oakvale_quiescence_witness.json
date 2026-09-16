@@ -1,0 +1,35 @@
+{
+  "regions": [
+    {
+      "address": 13336416,
+      "size": 394,
+      "sha256": "e57a5c20c6f5453fa3142baabe9941e19a400ac04da5da5e897318aae31bb9b5"
+    },
+    {
+      "address": 10793472,
+      "size": 32,
+      "sha256": "87b54341c3f080eede293edfcbac9ef917f525d58b6fe4c229684b2f0ad14fab"
+    },
+    {
+      "address": 10765856,
+      "size": 62,
+      "sha256": "a1ccffb429d2701afb20332aa0fd46d9f31a51e7d7f631c97f23e496ef4ee15a"
+    },
+    {
+      "address": 13489344,
+      "size": 35,
+      "sha256": "11eb076059f0d5e5b40822ae44e71bf2bf2dffa3103a8cf8b7de10aa0f2bebb0"
+    },
+    {
+      "address": 13349008,
+      "size": 89,
+      "sha256": "36409da12d7eacc1a0bdc0d57380604465e87b80cdf3cf73344809040f6bc47a"
+    },
+    {
+      "address": 13336144,
+      "size": 135,
+      "sha256": "3bdf6833636ad81f61867b10e481e5e1bed719fc78f9c344b26fadfb6fbecd16"
+    }
+  ],
+  "limits": "Original process termination and container traversal, including conditional entity Thing validity/kill calls and shared reference preservation. Virtual Thing operations and container frees are doubled; real engine scheduling is unverified."
+}

@@ -1,0 +1,241 @@
+{
+  "schema": "orchard-farm-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "3201935ffd3a8089172e366e30d2d4fbfe8f90113fe1a43c6e56b998923a831d",
+  "exportedFunctions": 82,
+  "quests": [
+    {
+      "script": "Q_OrchardFarmRaid",
+      "allocator": "0x00DD1EF0",
+      "vtable": "0x012DAF78",
+      "entities": [
+        {
+          "name": "GuardTeamSpawn",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCC796",
+          "addBindingCall": "0x00DCC7CF",
+          "factoryStore": "0x00DCC7BF",
+          "factory": "0x00DCD0E0",
+          "vtable": "0x012DB2D4",
+          "functions": {
+            "destructor": "0x00DCF6E0",
+            "Main": "0x00DCD350",
+            "Init": "0x00DCD1D0",
+            "GetParentScript": "0x00DCD1C0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BanditTeamSpawn",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCC7F7",
+          "addBindingCall": "0x00DCC839",
+          "factoryStore": "0x00DCC81B",
+          "factory": "0x00DCD0E0",
+          "vtable": "0x012DB2D4",
+          "functions": {
+            "destructor": "0x00DCF6E0",
+            "Main": "0x00DCD350",
+            "Init": "0x00DCD1D0",
+            "GetParentScript": "0x00DCD1C0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Artefact",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCC861",
+          "addBindingCall": "0x00DCC89D",
+          "factoryStore": "0x00DCC888",
+          "factory": "0x00DCDB80",
+          "vtable": "0x012DB348",
+          "functions": {
+            "destructor": "0x00DCDC30",
+            "Main": "0x00DCDC50",
+            "Init": "0x00DCFA10",
+            "GetParentScript": "0x00DCDC20",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00DCF920",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "OrchardFarmWhisper",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCC8C5",
+          "addBindingCall": "0x00DCC901",
+          "factoryStore": "0x00DCC8EC",
+          "factory": "0x00DCEF50",
+          "vtable": "0x012DB3E0",
+          "functions": {
+            "destructor": "0x00DCF090",
+            "Main": "0x00DCF0B0",
+            "Init": "0x00DCF000",
+            "GetParentScript": "0x00DCEFF0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "GuardTeamMember",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCC92E",
+          "addBindingCall": "0x00DCC96A",
+          "factoryStore": "0x00DCC955",
+          "factory": "0x00DCDE20",
+          "vtable": "0x012DB364",
+          "functions": {
+            "destructor": "0x00DCF760",
+            "Main": "0x00DCE230",
+            "Init": "0x00DCDF60",
+            "GetParentScript": "0x00DCDEC0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00DCDED0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BanditTeamMember",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCC992",
+          "addBindingCall": "0x00DCC9CE",
+          "factoryStore": "0x00DCC9B9",
+          "factory": "0x00DCDE20",
+          "vtable": "0x012DB364",
+          "functions": {
+            "destructor": "0x00DCF760",
+            "Main": "0x00DCE230",
+            "Init": "0x00DCDF60",
+            "GetParentScript": "0x00DCDEC0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00DCDED0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "FarmRearEntrance",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCC9F8",
+          "addBindingCall": "0x00DCCA34",
+          "factoryStore": "0x00DCCA1F",
+          "factory": "0x00DCF3D0",
+          "vtable": "0x012DB4B8",
+          "functions": {
+            "destructor": "0x00DCF4A0",
+            "Main": "0x00DCF4C0",
+            "Init": "0x00DCF480",
+            "GetParentScript": "0x00DCF470",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "M_WhisperFarmRaidIntro",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCCA5C",
+          "addBindingCall": "0x00DCCA9B",
+          "factoryStore": "0x00DCCA86",
+          "factory": "0x00DCF540",
+          "vtable": "0x012DB4D4",
+          "functions": {
+            "destructor": "0x00DCF5F0",
+            "Main": "0x00DD1AC0",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00DCF5E0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "MK_OFI_GWLL_WHIS2",
+          "registrationFunction": "0x00DCC770",
+          "namePush": "0x00DCCAC5",
+          "addBindingCall": "0x00DCCB04",
+          "factoryStore": "0x00DCCAEF",
+          "factory": "0x00DCF610",
+          "vtable": "0x012DB4F0",
+          "functions": {
+            "destructor": "0x00DCF6C0",
+            "Main": "0x00DD1EB0",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00DCF6B0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00DCC040"
+      ]
+    },
+    {
+      "script": "Q_OrchardFarmRaidEvil",
+      "allocator": "0x00DD2300",
+      "vtable": "0x012DB7B0",
+      "entities": [],
+      "vtableWriters": [
+        "0x00DD1FE0",
+        "0x00DD2300"
+      ]
+    },
+    {
+      "script": "Q_OrchardFarmRaidGood",
+      "allocator": "0x00DD2680",
+      "vtable": "0x012DB810",
+      "entities": [],
+      "vtableWriters": [
+        "0x00DD2360",
+        "0x00DD2680"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00DCC770",
+      "store": "0x00DCCD72",
+      "body": "0x00DD03D0",
+      "name": "ProcessGameRulesEvil",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00DCC770",
+      "store": "0x00DCCDEB",
+      "body": "0x00DD0F60",
+      "name": "ProcessGameRulesGood",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00DCC770",
+      "store": "0x00DCCE69",
+      "body": "0x00DCFA60",
+      "name": "DoCutsceneIfRequired",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00DCC770",
+      "store": "0x00DCCEE7",
+      "body": "0x00DCCF30",
+      "name": "WatchForExternalScriptDeactivation",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

@@ -1,0 +1,70 @@
+{
+  "regions": [
+    {
+      "address": "0xe2a320",
+      "size": 80,
+      "sha256": "3b98a171a144d8199f662c9baab2b2320751cf503a12d1869feacac41480cee0"
+    },
+    {
+      "address": "0x12c32f0",
+      "size": 12,
+      "sha256": "bc1f9da08bd468984395ddd18a6e4177974f706283a00abea0054fd0b577312c"
+    },
+    {
+      "address": "0xcdf120",
+      "size": 11,
+      "sha256": "40a7e2375c981213238d2049b1e5399dc38409a7f9bad24830daf651c3838443"
+    },
+    {
+      "address": "0xcdf130",
+      "size": 48,
+      "sha256": "0478fc19020c57ecd985cc9d04d550cd42fb28d4cebbcaf608685bf8cc5926ec"
+    },
+    {
+      "address": "0xcdf160",
+      "size": 45,
+      "sha256": "3d8dc476c6a920393f4b8b514b39a7865c65c16e6fe1a4534d79a77369ea630d"
+    },
+    {
+      "address": "0xf35b10",
+      "size": 20,
+      "sha256": "ed8c26784a62fe26a7822ca3b9fd97f37a4c892f01b8bc54c54dad1a2cf7e6a2"
+    },
+    {
+      "address": "0xcb7920",
+      "size": 8,
+      "sha256": "2409002f93a4e3c24776b4a26a0a3d138233a019e0ec1439db4ff8a14968bf84"
+    },
+    {
+      "address": "0xf35a10",
+      "size": 25,
+      "sha256": "767d42ff00975f8a6acc948de55d85a5bc952f39b6fbbded79211aaff51ec8df"
+    },
+    {
+      "address": "0xe241b0",
+      "size": 84,
+      "sha256": "8a4cd359e3e06108740404bac91c517635413603ef7bf8b1da991919069afb19"
+    },
+    {
+      "address": "0x4abe90",
+      "size": 33,
+      "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+    },
+    {
+      "address": "0xf35b30",
+      "size": 12,
+      "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+    },
+    {
+      "address": "0xcb7940",
+      "size": 14,
+      "sha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7"
+    }
+  ],
+  "sourceSha256": "84913bb2df32cda83a8039c5d51debba1f11b2edce016e63d7b6284bbc1d4a88",
+  "hostSha256": "e162007b2f7a7ffc32dda151a9026fe28cf52d0619750c5abe2c35646ee11e6f",
+  "bindingSha256": "7ea98bef346560948bedce784f21db7d3333cf95443ad8a21eab2e19f85ff6fd",
+  "condition": "16-byte local: vtable12C32F0 + copied bound Thing at+4; predicateCDF120 dispatches Thing.IsAlive slot12C",
+  "lifetime": "F35B10 gets parent via entityvtable+C, CB7920 selects active thread+2C, F35A10 calls condition clone slot4 before storing clone. CloneCDF130 allocates16 and counted-copies Thing; E241B0 destroys only caller local; thread owns clone.",
+  "termination": "Use native condition predicate and registration, never a Lua polling substitute. F35B30 reads parent active-thread termination through CB7940 task flag+5."
+}

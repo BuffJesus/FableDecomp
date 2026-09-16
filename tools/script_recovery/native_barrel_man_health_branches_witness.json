@@ -1,0 +1,62 @@
+{
+  "branches": [
+    {
+      "address": 14376200,
+      "size": 31,
+      "sha256": "ffc82b2f059f796cca91ec8a5d82019f43341f4be431aa827a95de4ac0568262",
+      "destroy": 14376226,
+      "output": 312,
+      "result": "bl"
+    },
+    {
+      "address": 14376963,
+      "size": 31,
+      "sha256": "be2653a31c9a04ab2db0719692e08805fb01fffff8f9944feab9c21fa5c5797f",
+      "destroy": 14376989,
+      "output": 336,
+      "result": "bl"
+    },
+    {
+      "address": 14377789,
+      "size": 39,
+      "sha256": "a742786fdb6b828dd7b2459430a3568b6432dc1ffd5ed3dd637c6135c5b8be04",
+      "destroy": 14377819,
+      "output": 360,
+      "result": "al"
+    },
+    {
+      "address": 14378281,
+      "size": 39,
+      "sha256": "e9868e722cb2f1fb7c494da4a26286da663edc435c0d96ee59115873ab98048b",
+      "destroy": 14378311,
+      "output": 288,
+      "result": "al"
+    },
+    {
+      "address": 14378542,
+      "size": 39,
+      "sha256": "0c9e1f45e1a86ea2b73245aa1fae70073b38031e4f234265a4198841219fda6a",
+      "destroy": 14378572,
+      "output": 324,
+      "result": "al"
+    },
+    {
+      "address": 14378741,
+      "size": 31,
+      "sha256": "a1ab82b8052db9aa9b6c8787a277d0cecd685e7ca5df3d6c4e5a565815573a19",
+      "destroy": 14378767,
+      "output": 372,
+      "result": "bl"
+    },
+    {
+      "address": 14378947,
+      "size": 31,
+      "sha256": "49eac8b00f883bfab794eb970d3d2f1f0c5df4c5d2496980f215c7fd792b7261",
+      "destroy": 14378973,
+      "output": 348,
+      "result": "bl"
+    }
+  ],
+  "thresholdAddress": 19062492,
+  "thresholdHex": "00000000"
+}

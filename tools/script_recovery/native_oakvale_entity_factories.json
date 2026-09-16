@@ -1,0 +1,182 @@
+{
+  "bindingWitness": "ghidra_out\\script_recovery\\new_oakvale_main_bindings_retail_bytes.json",
+  "bindingWitnessSha256": "121a9ec0927cff7473e36f064cc47a23a69f5651484e79b005886853444c05b4",
+  "factories": [
+    {
+      "name": "NOVI_LiveFather",
+      "address": 14336704,
+      "size": 145,
+      "sha256": "9b439a20afd3ab62b592821d3fcf9d117a3c689924225cbcec44f6c7ba0f1f4c",
+      "entitySize": 32,
+      "vtable": 19760008,
+      "destructor": 14336880,
+      "destructorSize": 30,
+      "destructorSha256": "45a89c1ebdec93ff3ae74bbe3bd1f0f6ab520d71131f61c773478b577e309aab"
+    },
+    {
+      "name": "NOVI_Theresa",
+      "address": 14337056,
+      "size": 145,
+      "sha256": "c9e1bbecf713e2b8b8284a034c9b9461ddb976bbde463220e11c1f732109f839",
+      "entitySize": 32,
+      "vtable": 19760036,
+      "destructor": 14337232,
+      "destructorSize": 30,
+      "destructorSha256": "e8f3f52b4a38d7e0b0615667873f3266a54136b9ab7396e11d809f965b13bdfe"
+    },
+    {
+      "name": "NOVI_Guard",
+      "address": 14337408,
+      "size": 145,
+      "sha256": "91ca31c53076ce43fc8b3b052c71cb13d57e6fb6e4ce3a4d5eeff85d845b1747",
+      "entitySize": 28,
+      "vtable": 19760064,
+      "destructor": 14337584,
+      "destructorSize": 30,
+      "destructorSha256": "299e51efffc9657ad884983750591b4cf7e7b288d6b8c9203770ffa623faba7a"
+    },
+    {
+      "name": "NOVI_Villager",
+      "address": 14343760,
+      "size": 145,
+      "sha256": "137b3508a172fc371bcaa87c456db85423854be84cf8e31c4b3c14e248419add",
+      "entitySize": 32,
+      "vtable": 19760760,
+      "destructor": 14344032,
+      "destructorSize": 30,
+      "destructorSha256": "c3d6f00c8b7cac3e6b4b43811faa5bebbd9f0326b554bb89c3ffc97bf2f91471"
+    },
+    {
+      "name": "NOVI_Bully",
+      "address": 14347360,
+      "size": 145,
+      "sha256": "2a0cdfa233d8e0cc3243fee0a8d861360fc9fa329fca4250d837b0bd24634216",
+      "entitySize": 44,
+      "vtable": 19761052,
+      "destructor": 14347536,
+      "destructorSize": 30,
+      "destructorSha256": "67c49dd62cb21f42ec392332b06b813d9b0391b1321a33e3b0244577a26fa34a"
+    },
+    {
+      "name": "NOVI_Victim",
+      "address": 14347744,
+      "size": 145,
+      "sha256": "caf9d51022e4eb5136b8f1bfb9ba5d3f04e30b588af9734a1edfbaefff92a18a",
+      "entitySize": 32,
+      "vtable": 19761080,
+      "destructor": 14347920,
+      "destructorSize": 30,
+      "destructorSha256": "311484d9387d5de01cbf2be93477027b04ec85e1619f1b313ba859fe44c87220"
+    },
+    {
+      "name": "NOVI_TeddyGirl",
+      "address": 14348112,
+      "size": 145,
+      "sha256": "aad9a7449465df59c396aa6d1710ec9ae1f2998cd835b6499f62a3e05adaa8ec",
+      "entitySize": 32,
+      "vtable": 19761108,
+      "destructor": 14348384,
+      "destructorSize": 30,
+      "destructorSha256": "b3afa3fde82500e5908f398628dd1d8e76471bdcfbdc6a047fcb52e001503770"
+    },
+    {
+      "name": "NOVI_AffairMan",
+      "address": 14354560,
+      "size": 145,
+      "sha256": "019811e3dad7943b891b81ed36957414573826625c61247d45f476f575a5935e",
+      "entitySize": 36,
+      "vtable": 19761644,
+      "destructor": 14354736,
+      "destructorSize": 30,
+      "destructorSha256": "5f09844c2398e22a410cd2401a8f11b383fece8640e8878ec98b7f3bd21277b3"
+    },
+    {
+      "name": "NOVI_AffairWoman",
+      "address": 14359984,
+      "size": 145,
+      "sha256": "297f6fb82dc4f2c243940c295dbc88d12cbdceb768d9766125fce397b30b8bce",
+      "entitySize": 28,
+      "vtable": 19762184,
+      "destructor": 14360160,
+      "destructorSize": 30,
+      "destructorSha256": "4627c21f42b26cd1b924a30ab862962ef0d3326ae0505fe1790c93e0d5c4d612"
+    },
+    {
+      "name": "NOVI_AffairWife",
+      "address": 14363040,
+      "size": 145,
+      "sha256": "be7e71c5f2a49e4c9e1f2828f3439a8ec69a016818d3f76f31f508aad17c2d5f",
+      "entitySize": 32,
+      "vtable": 19762328,
+      "destructor": 14363216,
+      "destructorSize": 30,
+      "destructorSha256": "9adb05c25a3b1b2de8c6b4a1762cbbc3c5c79490bb3fd775e893d0f99a3821fd"
+    },
+    {
+      "name": "NOVI_BookTrader",
+      "address": 14368304,
+      "size": 145,
+      "sha256": "b1014b2cee9bcee5485ee99bfb849acef32ad0059cb03fa463c1e466aab73b5e",
+      "entitySize": 32,
+      "vtable": 19762816,
+      "destructor": 14368480,
+      "destructorSize": 30,
+      "destructorSha256": "01c3d2ee87ab085e3f490ff14fd1e2023daf3ab26346dc0053b7bf8a2d943d74"
+    },
+    {
+      "name": "NOVI_BarrelMan",
+      "address": 14373296,
+      "size": 145,
+      "sha256": "a01ad00c48e1c78398b0c75aa7701f241d37f45de75b4eb3cc33c20c907e580d",
+      "entitySize": 36,
+      "vtable": 19763220,
+      "destructor": 14373648,
+      "destructorSize": 30,
+      "destructorSha256": "44fceef43d7d4c5dfd8b4dd991e402c1dee592ed4fb63a10512f1ac84b96f3da"
+    },
+    {
+      "name": "NOVI_BarrelThug",
+      "address": 14379840,
+      "size": 145,
+      "sha256": "afcc8e191f8931612e2e300a22bfb10edbaae0989b10cdf2b53a3ab8f1d24da6",
+      "entitySize": 36,
+      "vtable": 19763764,
+      "destructor": 14380096,
+      "destructorSize": 30,
+      "destructorSha256": "7ab61dcc974eda9d12e59057186c82d9fa4d3783dddd69904c0c854e1b67020c"
+    },
+    {
+      "name": "NOVI_Barrel",
+      "address": 14384384,
+      "size": 145,
+      "sha256": "d1ceccca0201b8c60688933a7f1ca825abf36acd09916b08fd2092ccc65e4dda",
+      "entitySize": 28,
+      "vtable": 19764464,
+      "destructor": 14384624,
+      "destructorSize": 30,
+      "destructorSha256": "8c89cb0a58898cfd7231163544bc2eda67eb42a1a350f5174f19b6b701ceef44"
+    },
+    {
+      "name": "NOVI_CreatedBeetle",
+      "address": 14385136,
+      "size": 145,
+      "sha256": "c991bdb7e2f24912929cbdfb614b07fd8b9ed3fddbdfda4d6e5395224b11413b",
+      "entitySize": 28,
+      "vtable": 19764576,
+      "destructor": 14385312,
+      "destructorSize": 30,
+      "destructorSha256": "c833904512a5d04dfd6916499a345f5805c399be1fd36e4f3b5c15e3ef20f306"
+    },
+    {
+      "name": "OVI_DeadFather",
+      "address": 14385584,
+      "size": 145,
+      "sha256": "953c411b4129199f9cb81e6bdd5258e3046dfaf0557103fa8b3758648c97b8c0",
+      "entitySize": 28,
+      "vtable": 19764604,
+      "destructor": 14385776,
+      "destructorSize": 30,
+      "destructorSha256": "64de824f865d226b84841cbe5c189f3c81c6ee44d8257aeeda2e4669db92350b"
+    }
+  ]
+}

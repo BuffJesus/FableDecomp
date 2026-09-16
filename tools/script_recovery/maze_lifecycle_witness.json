@@ -1,0 +1,74 @@
+{
+  "native": [
+    {
+      "name": "rootMain",
+      "address": 15366144,
+      "size": 374,
+      "sha256": "2297b926a836d20e3ded799d40fa9a54cff29098a98ec4cf3f08c5f3ad5f8a7d"
+    },
+    {
+      "name": "rootInit",
+      "address": 15365968,
+      "size": 9,
+      "sha256": "cc59461c65d14c8353b26d877ab6564cf45fed4c4daf814bdbf648833654ffa8"
+    },
+    {
+      "name": "destructor",
+      "address": 15369920,
+      "size": 48,
+      "sha256": "11b1455e5068dad5aa4f68f86bd322db4690de48c74befc4b584512984d9c64f"
+    },
+    {
+      "name": "swordAssignment",
+      "address": 15368618,
+      "size": 148,
+      "sha256": "3cb47b823814dc440f1029f79f0f427837a3b1a2d0e533e117386925b586e419"
+    },
+    {
+      "name": "helper",
+      "address": 15369696,
+      "size": 175,
+      "sha256": "cff53c0defc64d0c4f0239a7700fda3ec80eed59bfb2ba2c2b809b41fb22c69c"
+    }
+  ],
+  "host": [
+    {
+      "file": "LuaQuestHost.cpp",
+      "start": "void LuaQuestHost::Main()",
+      "end": "void LuaQuestHost::CreateThread(",
+      "line": 109,
+      "sha256": "b63e9e73bd17191add5e67e04e89b589b7cd870ee5abba2101ed849c186f4aff"
+    },
+    {
+      "file": "LuaQuestHost.cpp",
+      "start": "void LuaQuestHost::CreateThread(",
+      "end": "void LuaQuestHost::OnPersist(",
+      "line": 140,
+      "sha256": "a349df3d66fa9cfa91a6df76c78db6a0d0a27e05c465037d2c0cf8cb3f24cb79"
+    },
+    {
+      "file": "LuaQuestState.h",
+      "start": "    std::shared_ptr<LuaRetailFlags> RetailFlags(",
+      "end": "    void Log(",
+      "line": 83,
+      "sha256": "e24da4011f76879053d123108eab82dd557a54ef28693a66fd5a89d27577de83"
+    },
+    {
+      "file": "LuaQuestState.cpp",
+      "start": "void LuaQuestState::AddEntityBinding(",
+      "end": "bool LuaQuestState::PersistTransferBool(",
+      "line": 2460,
+      "sha256": "73b9eb67982947b7e65c3968576f465f42abcb7ff1a66c9a8e337a447351e7b3"
+    }
+  ],
+  "sources": {
+    "Main": "cc4f4fcc423f53167b2c83adfc78c9e9dc34d57c2862227359c5865797ea1c78",
+    "Init": "3c1c30d1062e404a47f3190706944a70e0b5fa25b61cd600a4eb5802554535a1"
+  },
+  "strings": {
+    "0x12ee4b4": "EmptyGrave",
+    "0x12ee49c": "HistoryBookcase",
+    "0x1238fcc": "HeroGuildComplexInside",
+    "0x12ee474": "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01"
+  }
+}

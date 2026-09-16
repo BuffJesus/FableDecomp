@@ -1,0 +1,47 @@
+{
+  "regions": [
+    {
+      "address": "0xdb41e6",
+      "size": 74,
+      "sha256": "6583960fa674379b8f7ea1d54f5db738d6a8e185dba70b01b4efcd55ba6cd0e8"
+    },
+    {
+      "address": "0xdb44ba",
+      "size": 74,
+      "sha256": "1cd6ddc9d962c72ba95d079143dc05bbd73b50e35468d5836cc4f5b87a2f41c3"
+    },
+    {
+      "address": "0xdb4c85",
+      "size": 74,
+      "sha256": "639da8ef8350f8c03e36129f556d6c458cd2960d7f0b5b212a651d8026bc72da"
+    },
+    {
+      "address": "0x8a7d60",
+      "size": 151,
+      "sha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+    },
+    {
+      "address": "0x88e620",
+      "size": 193,
+      "sha256": "891bcab1d82d1901d06514cce2e9d429dbe707255985086c13644fe252f39924"
+    },
+    {
+      "address": "0x126102c",
+      "size": 4,
+      "sha256": "126fb8fde0011bc940cd2d321bf79d4a368d6da141b49252e89f0d5a270ee59a"
+    },
+    {
+      "address": "0x1261678",
+      "size": 4,
+      "sha256": "336819bd4b34341bc7416ea4deb618a718e7cda0f5be9626a031f8d105bddd9d"
+    }
+  ],
+  "scriptName": "NOVI_Theresa",
+  "scriptNameAddress": "0x12d8360",
+  "snapFlags": [
+    false,
+    true,
+    false
+  ],
+  "review": "Three sequential Lua facing sites correspond to native DB4215/DB44E9/DB4CB4. Each pushes snap0/1/0 BEFORE GetThingWithScriptName at DB420A/DB44DE/DB4CA9. Getter8A7D60 consumes hidden output and name only (ret8 at8A7DD8/8A7DF4), leaving snap for facing88E620 (ret12 at88E6DE). Receiver is game[ESI+4], actor EBP, target getter EAX. Thing destructor4AA840 then string destructor99EAE0 execute immediately after each facing call. This witness restores snap flags only; exact Thing/string lifetime lowering remains pending."
+}

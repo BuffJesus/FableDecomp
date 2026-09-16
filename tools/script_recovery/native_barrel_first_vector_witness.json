@@ -1,0 +1,35 @@
+{
+  "annotatedSha256": "d5838ca47604ba2132ff8e98eaa7f294514a9d99fccee6fc9c734380e70f124a",
+  "edits": [
+    {
+      "old": "GSI->GetThingWithScriptName(aCStack_15c,aCStack_168);",
+      "new": "GSI->GetThingWithScriptName(&local_native_walkoff_point,\"M_BarrelManWalkOff\");",
+      "count": 1
+    },
+    {
+      "old": "      if (piStack_158 == (int *)0x0) {\r\n        puVar5 = &DAT_0143e8e0;\r\n      }\r\n      else {\r\n        puVar5 = (undefined4 *)(**(code **)(*piStack_158 + 0x18))();\r\n      }\r\n      uStack_150 = *puVar5;\r\n      ppuStack_14c = (undefined **)puVar5[1];\r\n      fVar25 = 2.0;\r\n      uStack_148 = puVar5[2];\r\n",
+      "new": "      native_arg_walkoff_position = GSI->RetailThingPosition(local_native_walkoff_point);\n      fVar25 = 2.0;\n",
+      "count": 1
+    },
+    {
+      "old": "(CScriptThing *)&uStack_150,(char *)0x0,(CCharString *)0x1,(CCharString *)0x0,\r\n                     (CCharString *)0x0,SUB41(ppVar27,0),(bool)SUB41(puVar28,0)",
+      "new": "native_arg_walkoff_position,0.0,1,0,0",
+      "count": 1
+    },
+    {
+      "old": "(C3DVector *)&uStack_150",
+      "new": "native_arg_walkoff_position",
+      "count": 2
+    }
+  ],
+  "moveSite": "0xDB568A",
+  "moveResourceOffset": 20,
+  "moveVectorOffset": 184,
+  "moveOperands": [
+    0.0,
+    1,
+    false,
+    false
+  ],
+  "review": "Native pushes EBP zero, EBP zero,1,EBP zero,vectorB8; resource14. Caller establishes EBP=0 atDB533F and resets atDB6942 before next dispatch iteration."
+}

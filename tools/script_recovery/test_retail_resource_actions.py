@@ -29,14 +29,14 @@ class RetailResourceActionsTests(unittest.TestCase):
             runtime=root/'runtime'
             header=runtime/'FableScriptExtender/LuaRetailResources.h'
             header.parent.mkdir(parents=True)
-            source='class LuaRetailResources {\n    unsigned NewThingFromResource(unsigned id) {\n    }\n};\n    type["NewThingFromResource"] = &LuaRetailResources::NewThingFromResource;\n'
+            source='class LuaRetailResources {\n    unsigned NewThingFromResource(unsigned id) {\n    }\n};\n    RegisterRetailFlags(lua);\n    type["NewThingFromResource"] = &LuaRetailResources::NewThingFromResource;\n'
             header.write_text(source)
             out=root/'proposal'
             prepare(runtime,out)
             self.assertEqual(header.read_text(),source)
             candidate=(out/'LuaRetailResources.h').read_text()
             for method in METHODS:
-                self.assertIn(f'void {method}(',candidate)
+                self.assertRegex(candidate,rf' (void|bool) {method}\(')
                 self.assertIn(f'type["{method}"] = &LuaRetailResources::{method};',candidate)
             header.write_text(candidate)
             with self.assertRaisesRegex(ValueError,'already contains'):

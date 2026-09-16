@@ -1,0 +1,930 @@
+{
+  "address": "0x00E29B20",
+  "size": 846,
+  "sourceSha256": "6ad8b5839fa800872ac440ad6f03f695758847b39bbad3ef1e60ef15a21ad26f",
+  "annotatedSha256": "65f5fd342558a6494d39fd45571e5c5dbbe204bc8c4a3cd556159b6cb21a3570",
+  "regions": [
+    {
+      "address": 14850848,
+      "size": 846,
+      "sha256": "a93fe5044e4690306ce54fde501ef09e034c35e609fae644eb2fac68136b8b00"
+    },
+    {
+      "address": 14850672,
+      "size": 5,
+      "sha256": "293be38a9aa39e77fc09cdee8dc06c874ece4eaffff92bcff3061f57509b1e4e"
+    },
+    {
+      "address": 14853584,
+      "size": 13,
+      "sha256": "5adff5146dd1eb2a8b6c273efd5c04627d2297b6607a5ab1500a7d6d37b28329"
+    },
+    {
+      "address": 19274056,
+      "size": 4,
+      "sha256": "a6fdfd5fd67fc5af3ef508b2466e7de6f164177b13865a6a41bcecbc4563d898"
+    },
+    {
+      "address": 19272620,
+      "size": 4,
+      "sha256": "2d74405f5004ad4af1d21b191c494cc63a3d00a9c3083c9a40171c76fdc2b8f9"
+    },
+    {
+      "address": 19272532,
+      "size": 4,
+      "sha256": "e0c7e2be853f9dfbd1b74288ffa1f9fca04e8797bb36301b8f88f05fb0b6cbaa"
+    },
+    {
+      "address": 19272588,
+      "size": 4,
+      "sha256": "4af04b740a2cac9131ee1e4be00ab9ebb979eaf061d42fe52c106757132523c6"
+    },
+    {
+      "address": 19272560,
+      "size": 4,
+      "sha256": "8b07cdaf1258f122a2202e25cb32657a411e02891e1b9dfb27518496937ed78b"
+    },
+    {
+      "address": 19271784,
+      "size": 4,
+      "sha256": "f2bdbb01a5a397e814cec5f8ac606fa2066c6547b1e3ef6fde6cf7e4ffffab12"
+    },
+    {
+      "address": 19271788,
+      "size": 4,
+      "sha256": "11f1b66d1eeb59ea9c62fb584498b0d3a6223ff705bf8959fad3ad365940a054"
+    },
+    {
+      "address": 19271792,
+      "size": 4,
+      "sha256": "e0e5740871d4ce559ce99d0bb0e6e0bd68f62022458e57cff82f0351b3d3a4ff"
+    },
+    {
+      "address": 19271796,
+      "size": 4,
+      "sha256": "b1e7c8d295774b7900896f29f9a13f2a7035a44eac9418712c6f105a4e9b4d51"
+    }
+  ],
+  "calls": [
+    {
+      "site": 14851159,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            2620
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851169,
+      "count": 4,
+      "known": {
+        "14851159": [
+          4,
+          "quest"
+        ]
+      },
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1184
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14851159,
+            "quest"
+          ],
+          [
+            "stack",
+            12
+          ],
+          [
+            "stack",
+            16
+          ],
+          [
+            "stack",
+            20
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851404,
+      "count": 4,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1096
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            20
+          ],
+          [
+            "stack",
+            16
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851593,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            2620
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851603,
+      "count": 4,
+      "known": {
+        "14851593": [
+          4,
+          "quest"
+        ]
+      },
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1152
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14851593,
+            "quest"
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851634,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            2620
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851644,
+      "count": 2,
+      "known": {
+        "14851634": [
+          4,
+          "quest"
+        ]
+      },
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1124
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14851634,
+            "quest"
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851219,
+      "count": 0,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            348
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14851238,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            356
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "eax"
+          ],
+          [
+            "constant",
+            100
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851439,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            356
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            100
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14851681,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            352
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ]
+        ]
+      }
+    }
+  ],
+  "strings": {
+    "0x12c4538": "NorthernWastes3",
+    "0x122d70e": null,
+    "0x12e232c": "TEXT_QUEST_AWAKEN_ORACLE_OBJECTIVE_03",
+    "0x12c78dc": "NorthernWastes2",
+    "0x12e22f8": "TEXT_QST_B03_SCYTHE_RETURN_TO_SNOWSPIRE_REMINDER_10"
+  },
+  "contracts": {
+    "SetQuestCardObjective": {
+      "name": "SetQuestCardObjective",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "objectiveText",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "region1",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "region2",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets quest card objective."
+    },
+    "HeroReceiveMessageFromGuildMaster": {
+      "name": "HeroReceiveMessageFromGuildMaster",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "messageKey",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "graphicName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "highPriority",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "alwaysPlay",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes hero receive message from guild master."
+    },
+    "SetQuestAsCompleted": {
+      "name": "SetQuestAsCompleted",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "showScreen",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "updateLogbook",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "showQuestCompleteScreen",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets quest as completed."
+    },
+    "DeactivateQuestLater": {
+      "name": "DeactivateQuestLater",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "delayFrames",
+          "type": "unsigned int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Deactivates quest later."
+    },
+    "RegisterTimer": {
+      "name": "RegisterTimer",
+      "scope": "Quest",
+      "returnType": "int",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes register timer."
+    },
+    "SetTimer": {
+      "name": "SetTimer",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "timerId",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "timeValue",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets timer."
+    },
+    "GetTimer": {
+      "name": "GetTimer",
+      "scope": "Quest",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "timerId",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets timer."
+    },
+    "DeregisterTimer": {
+      "name": "DeregisterTimer",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "timerId",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes deregister timer."
+    },
+    "GetActiveQuestName": {
+      "name": "GetActiveQuestName",
+      "scope": "Quest",
+      "returnType": "std::string",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets active quest name."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->SetQuestCardObjective();",
+      "new": "GSI->SetQuestCardObjective(ppVar4,\"TEXT_QUEST_AWAKEN_ORACLE_OBJECTIVE_03\",\"\",\"NorthernWastes3\");",
+      "count": 1
+    },
+    {
+      "old": "GSI->HeroReceiveMessageFromGuildMaster(ppVar8,&puStack_2c);",
+      "new": "GSI->HeroReceiveMessageFromGuildMaster(\"TEXT_QST_B03_SCYTHE_RETURN_TO_SNOWSPIRE_REMINDER_10\",\"\",1,1);",
+      "count": 1
+    },
+    {
+      "old": "GSI->SetQuestAsCompleted();",
+      "new": "GSI->SetQuestAsCompleted(ppVar4,0,0,0);",
+      "count": 1
+    },
+    {
+      "old": "GSI->DeactivateQuestLater();",
+      "new": "GSI->DeactivateQuestLater(ppVar4,0);",
+      "count": 1
+    },
+    {
+      "old": "GSI->SetTimer();",
+      "new": "GSI->SetTimer(uVar5,100);",
+      "count": 1
+    },
+    {
+      "old": "GSI->GetTimer();",
+      "new": "GSI->GetTimer(uVar5);",
+      "count": 1
+    },
+    {
+      "old": "GSI->DeregisterTimer();",
+      "new": "GSI->DeregisterTimer(uVar5);",
+      "count": 2
+    },
+    {
+      "old": "if (bVar7) goto LAB_00e29db9;",
+      "new": "if (bVar7) {\n      GSI->DeregisterTimer(uVar5);\n      return;\n    }",
+      "count": 1
+    },
+    {
+      "old": "LAB_00e29db9:",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "if (bVar7) goto LAB_00e29e58;",
+      "new": "if (bVar7) {\n      GSI->DeregisterTimer(uVar5);\n      return;\n    }",
+      "count": 1
+    },
+    {
+      "old": "LAB_00e29e58:",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "if (bVar7) goto LAB_00e29db0;",
+      "new": "if (bVar7) {\n      GSI->DeregisterTimer(uVar5);\n      return;\n    }",
+      "count": 1
+    },
+    {
+      "old": "LAB_00e29db0:",
+      "new": "",
+      "count": 1
+    }
+  ],
+  "timerEvents": {
+    "0xe29c93": [
+      "start",
+      "SnowspireReminder"
+    ],
+    "0xe29ca6": [
+      "use",
+      "SnowspireReminder"
+    ],
+    "0xe29d00": [
+      "use",
+      "SnowspireReminder"
+    ],
+    "0xe29d6f": [
+      "use",
+      "SnowspireReminder"
+    ],
+    "0xe29db9": [
+      "end",
+      "SnowspireReminder"
+    ],
+    "0xe29e61": [
+      "end",
+      "SnowspireReminder"
+    ]
+  },
+  "state": {
+    "0x48": [
+      "MissionSucceeded",
+      "Bool"
+    ]
+  },
+  "review": [
+    "Native EDI stores RegisterTimer EAX at E29CA1 and remains callee-saved through both cleanup exits; E29CF9 pushes EDI before conditional branch to E29DB9. Standard call-window IR cannot traverse this split; exact full-function bytes plus aligned CFG prove both timer release paths.",
+    "Objective native arguments: active quest return, frame12 objective text, frame16 empty region1, frame20 NorthernWastes3 region2. Reminder flags are true,true; completion flags false,false,false; deactivation delay0.",
+    "Ego_r PDB CQS_ScytheInfoScript has single own bool MissionSucceeded at debug0x5C; retail Init writes false at0x48, Main polls it, and E2A5D9 writes true through parent. Cross-build member name is secondary evidence; retail offsets derive from bytes. FableWin Main local SnowspireReminder is CTimer."
+  ],
+  "initSourceSha256": "40afb3d1ed0a474f8463a3271844c421b90b82c1a6b1dca70599c3ec5fc6f970"
+}

@@ -1,0 +1,15 @@
+{
+  "address": 14360320,
+  "size": 2714,
+  "nativeSha256": "680d188a6fec3d659a3dc26986baf72bf9cb290e4da1010800254a57f41ba190",
+  "draftSha256": "eaf8c60de47dd602fd4f0fb734644750d3ce84b91d38071e177e61b2656cb4e3",
+  "review": [
+    "DB2038 F35B30 followed by test AL/JNE cleanup; DB26E6 F35B30 result tested before JE loop back toDB2047. Lua alive already holds the negation; loop must consume that boolean, not unresolved AL or numeric zero.",
+    "DB290D and DB293D call bound self EBP GetPos slot18; results are pushed directly to camera slot694 atDB2914/DB2944. No yield occurs between getter and camera query.",
+    "DB2965 RemoveThing slot1B0 arguments are bound self EBP, false, true. The run-off marker has its separate Thing destructor atDB296F."
+  ],
+  "bindings": {
+    "0x694": 7238400,
+    "0x1b0": 8982736
+  }
+}

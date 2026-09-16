@@ -1,0 +1,184 @@
+{
+  "address": 14354912,
+  "size": 5058,
+  "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+  "things": [
+    {
+      "name": "NOVI_AffairWoman",
+      "stringAddress": 19759864,
+      "stackSlot": 32,
+      "lookup": {
+        "address": 14355161,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            32
+          ],
+          [
+            "stack",
+            64
+          ]
+        ]
+      },
+      "destroy": {
+        "address": 14359945,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          32
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "name": "NOVI_AffairWife",
+      "stringAddress": 19759848,
+      "stackSlot": 44,
+      "lookup": {
+        "address": 14355207,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            44
+          ],
+          [
+            "stack",
+            64
+          ]
+        ]
+      },
+      "destroy": {
+        "address": 14359936,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          44
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "review": "Woman slot32 lookupDB0AD9 and wife slot44 lookupDB0B07 each remain live across Main. Early resource-acquire exits skip both lookups/dtors. DB1D7C join destroys wife at DB1D80, then woman at DB1D89, then actor resource DB1D92. All uses keep the same captured Things; no lookup refresh is introduced."
+}

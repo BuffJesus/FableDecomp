@@ -146,8 +146,7 @@ function Main(quest, me)
             -- TODO(native): RunCutsceneMacro_Func(0,0);
             uVar11 = quest:GetHero()
             pCVar20 = "OBJECT_CHOCOLATE_BOX_UNGIVEABLE"
-            -- TODO(native): IsObjectInThingsPossession is not a ForgeFSE binding
-            quest:IsObjectInThingsPossession(pCVar20, uVar11)
+            cVar5 = quest:IsObjectInThingsPossession(pCVar20, uVar11)
             if not cVar5 then goto LAB_00db9e86 end
             alive = not quest:IsActiveThreadTerminating()
             if not alive then
@@ -208,8 +207,7 @@ function Main(quest, me)
             else
                 -- TODO(native): uStack_1ec = uVar3 | 3;
                 r3 = quest:GetHero()
-                -- TODO(native): IsObjectInThingsPossession is not a ForgeFSE binding
-                quest:IsObjectInThingsPossession()
+                cVar5 = quest:IsObjectInThingsPossession("OBJECT_CHOCOLATE_BOX_UNGIVEABLE", r3)
                 if not cVar5 then return end  -- TODO(native): goto LAB_00db9f53
             end
             if (uStack_1ec & 2) ~= 0 then
@@ -240,7 +238,7 @@ function Main(quest, me)
                     r4 = quest:GetAllThingsWithScriptName("NOVI_Guard")
                     -- TODO(native): KillAllThingsInVector(*(CGameScriptInterfaceBase **)(param_1 + 4),avStack_ec,false);
                     -- TODO(native): uVar7 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&pppuStack_210);
-                    fVar17 = quest:GetHealth(r3)
+                    fVar17 = quest:GetHealth(r1)
                     fVar2 = _DAT_0122dedc
                     if fVar2 < fVar17 then
                         bVar4 = false
@@ -324,7 +322,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         if alive then
                             r6 = quest:GetHero()
-                            quest:EntitySetThingAsAllyOfThing(r6, r1)
+                            quest:EntitySetThingAsAllyOfThing(r6, nil --[[missing]])
                             r7 = quest:GetHero()
                             quest:EntitySetThingAsAllyOfThing(r7, nil --[[missing]])
                             require("NewOakValeIntro.native_quest_helpers").AddBadDeed(quest, me, 2)

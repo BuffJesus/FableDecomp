@@ -1,0 +1,150 @@
+[
+  {
+    "create": 14344760,
+    "query": 14344769,
+    "destroy": 14344798,
+    "output": [
+      "stack",
+      68
+    ],
+    "querySetup": {
+      "address": 14344769,
+      "target": [
+        "memory",
+        [
+          "address",
+          [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "address",
+                  [
+                    "register",
+                    "esi"
+                  ],
+                  4
+                ]
+              ],
+              0
+            ]
+          ],
+          1056
+        ]
+      ],
+      "ecx": [
+        "memory",
+        [
+          "address",
+          [
+            "register",
+            "esi"
+          ],
+          4
+        ]
+      ],
+      "edx": [
+        "unknown"
+      ],
+      "stack_arguments": [
+        [
+          "result",
+          14344760,
+          "thing"
+        ]
+      ]
+    },
+    "destroySetup": {
+      "address": 14344798,
+      "target": [
+        "constant",
+        4892736
+      ],
+      "ecx": [
+        "stack",
+        68
+      ],
+      "edx": [
+        "register",
+        "edx"
+      ],
+      "stack_arguments": []
+    }
+  },
+  {
+    "create": 14344969,
+    "query": 14344978,
+    "destroy": 14345007,
+    "output": [
+      "stack",
+      80
+    ],
+    "querySetup": {
+      "address": 14344978,
+      "target": [
+        "memory",
+        [
+          "address",
+          [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "address",
+                  [
+                    "register",
+                    "esi"
+                  ],
+                  4
+                ]
+              ],
+              0
+            ]
+          ],
+          1056
+        ]
+      ],
+      "ecx": [
+        "memory",
+        [
+          "address",
+          [
+            "register",
+            "esi"
+          ],
+          4
+        ]
+      ],
+      "edx": [
+        "unknown"
+      ],
+      "stack_arguments": [
+        [
+          "result",
+          14344969,
+          "thing"
+        ]
+      ]
+    },
+    "destroySetup": {
+      "address": 14345007,
+      "target": [
+        "constant",
+        4892736
+      ],
+      "ecx": [
+        "stack",
+        80
+      ],
+      "edx": [
+        "register",
+        "edx"
+      ],
+      "stack_arguments": []
+    }
+  }
+]

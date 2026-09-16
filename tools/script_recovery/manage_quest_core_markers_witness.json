@@ -1,0 +1,56 @@
+{
+  "regions": [
+    {
+      "address": 14410976,
+      "size": 944,
+      "sha256": "fc7cfc9414f10c1ca5b0b81a3493597b9f5218f27286a85087d8ffe63a807765"
+    },
+    {
+      "address": 4892736,
+      "size": 66,
+      "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    },
+    {
+      "address": 10068704,
+      "size": 7,
+      "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+    }
+  ],
+  "decompileSha256": "6e7c86d01ce670e33273f1bd424fc35ca6a2185533484e5ca621be5fdd987355",
+  "literals": {
+    "0x12d8378": "NOVI_LiveFather",
+    "0x12d82d8": "NOVI_BookTrader",
+    "0x12d8360": "NOVI_Theresa",
+    "0x1258ab0": "HUD_ORB_QUEST_CORE"
+  },
+  "slots": {
+    "0x120": 9076064,
+    "0x578": 8986448,
+    "0x580": 8986608,
+    "0x1fc": 9015200,
+    "0x1c": 7238672,
+    "0x628": 8972672,
+    "0x1d8": 9037584,
+    "0xa4": 8995776
+  },
+  "existingEvidence": [
+    "native_quest_markers_witness.json",
+    "native_marker_cleanup_witness.json"
+  ],
+  "ownership": {
+    "father": 12,
+    "trader": 36,
+    "theresa": 24,
+    "key": 8,
+    "cleanup": [
+      "theresa",
+      "trader",
+      "father"
+    ]
+  },
+  "entry": "No initial frame or condition inside this native helper; preserve caller thread-entry semantics.",
+  "limits": [
+    "No unconditional marker removal on cancellation/error.",
+    "Engine registration/state/scheduler/save-restore and pre-return failed lookup construction remain pending."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "address": "0x00DBB310",
+  "annotatedSha256": "3771a37606b8ba903693bf935d842a1fff02e5099c48c8c3d74aca0f9936b590",
+  "regions": [
+    {
+      "address": 14398224,
+      "size": 6630,
+      "sha256": "d1fa37c8ec9fc04f95ae6c1cf6bf1541edf4ad12eb3ab8c56b12396da7263a81"
+    },
+    {
+      "address": 10085568,
+      "size": 15,
+      "sha256": "4ba3b993225caf80df7766426201e2827153bcbefb139ff84d6801040a1236bf"
+    },
+    {
+      "address": 4265328,
+      "size": 48,
+      "sha256": "0cfe33e838a4d2c64cd8b17d5be6501a03286a0aa99099bfda289866635d5c2b"
+    },
+    {
+      "address": 10086752,
+      "size": 65,
+      "sha256": "4e2f2ee367e1bc11ee5155fab3989abdb46f82fadb10f96c33433bd0d04cd5b6"
+    },
+    {
+      "address": 4265376,
+      "size": 88,
+      "sha256": "f2d9c98347f7a336872734fd24f86518ecb0c2bdae6a4e0306e00afc95e407b6"
+    },
+    {
+      "address": 19060494,
+      "size": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "address": 19507956,
+      "size": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    }
+  ],
+  "itemAddress": "0x12D8958",
+  "itemName": "OBJECT_TEDDY_BEAR_UNGIVEABLE",
+  "hostContract": {
+    "name": "MsgIsPresentedWithItem",
+    "scope": "Entity",
+    "returnType": "bool",
+    "parameters": [
+      {
+        "name": "pMe",
+        "type": "CScriptThing*",
+        "optional": false
+      },
+      {
+        "name": "s",
+        "type": "sol::this_state",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Entity API",
+    "description": "Returns whether message condition 'is presented with item' is met."
+  },
+  "edits": [
+    {
+      "old": "(**(code **)(*(int *)pCVar6 + 0x8c))()",
+      "new": "CScriptThing::MsgIsPresentedWithItem((CScriptThing *)(this + 8),&puStack_130)",
+      "count": 2
+    },
+    {
+      "old": "            if (puStack_130 != (undefined4 *)0x0) {\r\n              lVar9 = CBasicString<char>::Compare\r\n                                ((char *)*puStack_130,\"OBJECT_TEDDY_BEAR_UNGIVEABLE\");\r\n              cVar4 = '\\x01' - (lVar9 != 0);\r\n              uStack_134 = CONCAT13(cVar4,(undefined3)uStack_134);\r\n              pCVar6 = pCStack_108;\r\n              if (cVar4 == '\\0') goto LAB_00dbba25;\r\nLAB_00dbbb73:\r\n",
+      "new": "            pCVar6 = pCStack_108;\r\n            if (g_PresentedItemName == \"OBJECT_TEDDY_BEAR_UNGIVEABLE\") {\r\n",
+      "count": 1
+    },
+    {
+      "old": "            iVar8 = 0x1d;\r\n            bVar3 = true;\r\n            pcVar21 = \"OBJECT_TEDDY_BEAR_UNGIVEABLE\";\r\n            pcVar17 = \"\";\r\n            do {\r\n              if (iVar8 == 0) break;\r\n              iVar8 = iVar8 + -1;\r\n              bVar3 = *pcVar21 == *pcVar17;\r\n              pcVar21 = pcVar21 + 1;\r\n              pcVar17 = pcVar17 + 1;\r\n            } while (bVar3);\r\n            pCVar6 = pCStack_108;\r\n            if (bVar3) goto LAB_00dbbb73;\r\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "if ((cVar4 == '\\0') ||\r\n             (cVar4 = CCharString__NotEqual(), ppVar15 = extraout_EDX_10, cVar4 == '\\0'))",
+      "new": "if ((cVar4 == '\\0') || (g_PresentedItemName == \"OBJECT_TEDDY_BEAR_UNGIVEABLE\"))",
+      "count": 1
+    }
+  ],
+  "review": "Native two non-consuming slot8C calls DBB9F2/DBBA2E share output wrapper40. First nonempty output compares exact bytes via411570 atDBBB5E; empty-wrapper fallback compares empty byte122D70E against nonemptyTEDDY and cannot match. DBBA45 NotEqual determines refusal on second true query. Keep both queries; each global name read immediately follows its successful query without calls/yields. LuaEntityAPI publishes ToConstChar99E4C0 result: empty wrapper returns pinned non-null empty string129AAF4; valid nonempty wrapper returns its native buffer. Native output/string ownership remains a draft limitation; this pass recovers value/control semantics, not explicit ownership."
+}

@@ -1,0 +1,51 @@
+{
+  "spans": [
+    {
+      "address": 15484224,
+      "size": 68,
+      "sha256": "299f34c4b2511dde72f798c00f5a5cf0120a6566a4de19e7ae85609076e4c13c"
+    },
+    {
+      "address": 15484304,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    },
+    {
+      "address": 15484320,
+      "size": 28,
+      "sha256": "00c3e9447ac4ce7e619e772e81764b8f45e92a4dfd71d0212e140eb271c7a7bb"
+    },
+    {
+      "address": 15487840,
+      "size": 54,
+      "sha256": "1055abcbeefc568cf97fa50b049a254b682752e5a4c6d201fe14426137e759a7"
+    },
+    {
+      "address": 13336848,
+      "size": 82,
+      "sha256": "e6f373ec2d9955a87e28ff6f4e46aa8a5bfb70cda644f9794a7eae1d8dab6524"
+    },
+    {
+      "address": 10068720,
+      "size": 9,
+      "sha256": "b061da723fd24f053148a6c2e12667f2da7ee30f88c896c3a732f6e8f5495c11"
+    },
+    {
+      "address": 15481936,
+      "size": 77,
+      "sha256": "e89d988d82a406a91614e90a7ab289752f92e2d25ba7b52d4c4e7fe95143814d"
+    },
+    {
+      "address": 15484048,
+      "size": 132,
+      "sha256": "a14506986e09dc4300f2666ba2fdc1bb37ceba1c1acd3fe6f0975f6151def272"
+    }
+  ],
+  "iconAddress": 19745776,
+  "icon": "HUD_ORB_RED_SMALL",
+  "rootAwakeOffset": 76,
+  "limitations": [
+    "No TrollAwake producer proved. Imported allocation is not assumed to zero storage. Constructor experiment supplies nonzero memory, not a claim about engine heap contents.",
+    "Entity destruction delegates to F35B40; teardown scheduling remains an integration gate."
+  ]
+}

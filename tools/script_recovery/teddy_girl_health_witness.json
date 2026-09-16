@@ -1,0 +1,178 @@
+{
+  "mainAddress": 14348416,
+  "mainSize": 5504,
+  "mainSha256": "035fcabe3b7a5308a57c6d4bec497e8b149be419c6264ea4a0ddc02638db1db6",
+  "draftSha256": "cf1a42fd1fb887343552e0f4797bd551d022d6f94bd3aef1654c8f792a296e2a",
+  "thresholdAddress": 19062492,
+  "thresholdHex": "00000000",
+  "healthSites": [
+    {
+      "start": 14349028,
+      "end": 14349091,
+      "getter": 14349045,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        228
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_PLEA_POST_BEATEN"
+    },
+    {
+      "start": 14349237,
+      "end": 14349300,
+      "getter": 14349254,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        216
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY"
+    },
+    {
+      "start": 14349663,
+      "end": 14349726,
+      "getter": 14349680,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        252
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY"
+    },
+    {
+      "start": 14349864,
+      "end": 14349927,
+      "getter": 14349881,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        276
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_REPEAT_PLEA"
+    },
+    {
+      "start": 14350374,
+      "end": 14350872,
+      "getter": 14350391,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        324
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_DONT_WANT"
+    },
+    {
+      "start": 14350662,
+      "end": 14350725,
+      "getter": 14350679,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        300
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_FOUND_TEDDY"
+    },
+    {
+      "start": 14351798,
+      "end": 14351861,
+      "getter": 14351815,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        348
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_PLEA_POST_BEATEN"
+    },
+    {
+      "start": 14351998,
+      "end": 14352061,
+      "getter": 14352015,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        240
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_LOST_TEDDY"
+    },
+    {
+      "start": 14352195,
+      "end": 14352258,
+      "getter": 14352212,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        336
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_REPEAT_FOUND"
+    },
+    {
+      "start": 14352393,
+      "end": 14352456,
+      "getter": 14352410,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        264
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_BAD_FEELING"
+    },
+    {
+      "start": 14352596,
+      "end": 14352659,
+      "getter": 14352613,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        312
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_REPEAT_PLEA"
+    },
+    {
+      "start": 14353260,
+      "end": 14353323,
+      "getter": 14353277,
+      "control": [
+        "stack",
+        20
+      ],
+      "output": [
+        "stack",
+        288
+      ],
+      "speech": "TEXT_QST_048_TEDDYGIRL_DONT_HIT"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "guild-training-native-field-map/0.1",
+  "basis": "native Init constants cross-checked against PDB layout names and entity state access offsets",
+  "maps": {
+    "Q_GuildTrainingSkill": {
+      "0x48": "TargetsHit",
+      "0x4C": "TutorialState",
+      "0x50": "GenericTutorialCounter",
+      "0x54": "TotalTrainingDummies"
+    },
+    "Q_GuildTrainingWill": {
+      "0x48": "TargetsHit",
+      "0x4C": "TutorialState",
+      "0x50": "TotalTrainingDummiesCounter",
+      "0x54": "GenericTutorialCounter"
+    },
+    "Q_GuildTrainingPreMelee": {
+      "0x4C": "PreMeleeMode",
+      "0x50": "DummyHits"
+    },
+    "Q_GuildTrainingMelee": {
+      "0x4C": "TutorialState"
+    },
+    "Q_GuildTrainingWoodsDeparture": {
+      "0x48": "MissionSucceeded",
+      "0x49": "MissionFailed",
+      "0x4A": "MissionOver",
+      "0x4C": "DepartureMissionPoint"
+    },
+    "Q_GuildTrainingWoodsMelee": {
+      "0x48": "MissionSucceeded",
+      "0x49": "MissionFailed",
+      "0x4A": "MissionOver",
+      "0x4B": "ScorpionsAlive"
+    }
+  },
+  "limits": [
+    "The native offsets are authoritative for the executable; PDB names are used only where the Init constants and observed state transitions agree.",
+    "WillDummy's 0x14 and 0x18 pointer layers remain entity-data evidence and are not assigned quest names here."
+  ]
+}

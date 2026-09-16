@@ -1,0 +1,157 @@
+{
+  "address": "0x00DB5330",
+  "bodySize": 6128,
+  "sourceSha256": "4b7edd24f8d5d936ec037a821e1ae8fb79bbae5ecfde05358e78d9c27b2a33f2",
+  "annotatedSha256": "a2a53ba6ec69c8d4e565ba14550da77df80be1edffba7654e22ef181eb3e1959",
+  "regions": [
+    {
+      "address": 14373680,
+      "size": 6128,
+      "sha256": "93a3b163ba6b2cc47a851450dd5b1f8a06f08f0d560a6ef39defe6e9d62ab6c3"
+    },
+    {
+      "address": 19062492,
+      "size": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    }
+  ],
+  "resourceOffset": 20,
+  "selfRegister": "edi",
+  "acquisitions": [
+    [
+      14374263,
+      4
+    ],
+    [
+      14374308,
+      4
+    ],
+    [
+      14375090,
+      4
+    ],
+    [
+      14375140,
+      4
+    ],
+    [
+      14376026,
+      4
+    ],
+    [
+      14376069,
+      4
+    ],
+    [
+      14376771,
+      4
+    ],
+    [
+      14376820,
+      4
+    ],
+    [
+      14377302,
+      4
+    ],
+    [
+      14377348,
+      4
+    ]
+  ],
+  "queries": [
+    [
+      14376185,
+      14376194,
+      312
+    ],
+    [
+      14376948,
+      14376957,
+      336
+    ],
+    [
+      14377774,
+      14377783,
+      360
+    ],
+    [
+      14378266,
+      14378275,
+      288
+    ],
+    [
+      14378527,
+      14378536,
+      324
+    ],
+    [
+      14378726,
+      14378735,
+      372
+    ],
+    [
+      14378932,
+      14378941,
+      348
+    ]
+  ],
+  "edits": [
+    {
+      "old": "uVar4 = CScriptGameResourceObjectScriptedThingBase::\r\n                _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                          ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe00);",
+      "new": "uVar4 = me;",
+      "count": 1
+    },
+    {
+      "old": "uVar4 = CScriptGameResourceObjectScriptedThingBase::\r\n              _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                        ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe00);",
+      "new": "uVar4 = me;",
+      "count": 1
+    },
+    {
+      "old": "uVar6 = CScriptGameResourceObjectScriptedThingBase::\r\n                    _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                              ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe00);",
+      "new": "uVar6 = me;",
+      "count": 2
+    },
+    {
+      "old": "uVar6 = CScriptGameResourceObjectScriptedThingBase::\r\n                      _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                                ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe00);",
+      "new": "uVar6 = me;",
+      "count": 1
+    },
+    {
+      "old": "uVar6 = CScriptGameResourceObjectScriptedThingBase::\r\n                  _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                            ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe00);",
+      "new": "uVar6 = me;",
+      "count": 1
+    },
+    {
+      "old": "uVar6 = CScriptGameResourceObjectScriptedThingBase::\r\n                _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                          ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe00);",
+      "new": "uVar6 = me;",
+      "count": 1
+    },
+    {
+      "old": "GSI->GetHealth()",
+      "new": "GSI->GetHealth(uVar4)",
+      "count": 2
+    },
+    {
+      "old": "_DAT_0122dedc",
+      "new": "0.0",
+      "count": 7
+    }
+  ],
+  "hostContract": {
+    "name": "GetHealth",
+    "scope": "Quest",
+    "returnType": "float",
+    "parameters": [
+      {
+        "name": "pThing",
+        "type": "CScriptThing*",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Quest API",
+    "description": "Gets health."
+  },
+  "review": "Ten acquisitions bind self EDI and resource20 at priority4. Seven getters return the temporary wrapper consumed by slot420 GetHealth. Preserve cleanup diagnostics. All seven comparisons use pinned float zero122DEDC. Packed boolean lowering follows separately with x87 unordered behavior checked."
+}

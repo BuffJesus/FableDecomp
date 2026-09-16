@@ -1,0 +1,47 @@
+{
+  "regions": [
+    {
+      "name": "actorPrefix",
+      "address": 15485440,
+      "size": 257,
+      "sha256": "3e7471b98c52177f921c6ba04ba38b98e556b36acae69ed9dfe860ac553b22cb"
+    },
+    {
+      "name": "actorResourcePhases",
+      "address": 15485697,
+      "size": 506,
+      "sha256": "ef85ae27ed2aaf18ba278784677b1d5d4f8df35ff66404185d84b7eaf9c35251"
+    },
+    {
+      "name": "finalResourceCleanup",
+      "address": 15486963,
+      "size": 14,
+      "sha256": "b0175ebf2e7743cfb6aaf345c1ea04cd90081abee2e216ee99b3d6930967eacc"
+    },
+    {
+      "name": "dispatch",
+      "address": 15487728,
+      "size": 50,
+      "sha256": "39ca9c2085ea555c82f640c810ab7cc9fc7c0e4f4e6a24bd5afe6e7dd9a43c3d"
+    },
+    {
+      "name": "threadDestructor",
+      "address": 15487792,
+      "size": 40,
+      "sha256": "34bf0417d1640660aa77fa27b6f3a8b6a6f8c504fc50c7ff6c6b84f94cefbf12"
+    }
+  ],
+  "gaps": [
+    "Continuation functions are not actorMain; item/macro/animation/targeting body absent.",
+    "CreateRetainedThingThread adapter pending; must preserve capturedThing, false entryflag, emptyregion, native allocation/error policy and teardownquiescence.",
+    "Hero phase only runs inside notPlayedExhume branch after omitteditemwork; no automaticphasecomposition."
+  ],
+  "proof": [
+    "EC4A00..4B01 registers killedhelper before selfconstruction; falseconstructorflagEC4A75, emptyregionEC4AAD, retainedThing atthread+3C.",
+    "Self resource preparedonce, TryAcquire4 atEC4B40/6B reuses stack3C; cancelEC4B51, finalguardEC4B74.",
+    "Hero resource atstack4C, preguardEC4C11, prepareonce, freshGetHeroEC4C4D/7F andpriority4EC4C57/89.",
+    "Hero cancellation cleanupEC4C9F precedes selfcleanupEC4CA8. Successbranch atEC4CFB keeps both alive.",
+    "Shared dispatchEC52F0 increments capturedInfo into a separate byvalueargument; callee destroyscopy; threadcompletionbyte5 setafterreturn.",
+    "Thread destructorEC5330 destroys storedargument at+3C before native spawnedfunctionbase."
+  ]
+}

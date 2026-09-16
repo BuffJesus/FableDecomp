@@ -1,0 +1,79 @@
+{
+  "profiles": [
+    {
+      "address": 13452368,
+      "size": 23,
+      "sha256": "9ba50598f19b4f95960aae399ca734b4d66783da4a2db9b50cd028f53b5dcafc"
+    },
+    {
+      "address": 13452400,
+      "size": 20,
+      "sha256": "ac782bca8e7eb5e9e8f7c6726c7d40dd2b0942446a3ff2fa6c657959c966454d"
+    }
+  ],
+  "regions": [
+    {
+      "address": 14377479,
+      "size": 4,
+      "sha256": "95600244dc022c9168bb3510c89de6bb775cad7edcdee7179d2e6141380f45d6"
+    },
+    {
+      "address": 14377528,
+      "size": 4,
+      "sha256": "378c2ffcaf403564897f30e9d3f959de16cb2d5f80dfbc091590facd6e4e48f0"
+    },
+    {
+      "address": 14377598,
+      "size": 21,
+      "sha256": "533018ffbf51bc941bf858c09b41db9a64dccda9ed5c636f74983391b35dc541"
+    },
+    {
+      "address": 14377632,
+      "size": 15,
+      "sha256": "728d932bfc90bcdee106a8fa6c320caffa35ebc0e3efda5fb6ec0092ec1ad406"
+    },
+    {
+      "address": 14378211,
+      "size": 9,
+      "sha256": "73c54ba78c8908d9684d511f7cb992c19a6a15762c842af4aa4b01f48616de73"
+    },
+    {
+      "address": 14379712,
+      "size": 9,
+      "sha256": "cbe8fc29e78f18be0fd44e58b25e84d347b3a378bd018d020d83859b9e925bc5"
+    },
+    {
+      "address": 14379735,
+      "size": 9,
+      "sha256": "290d5659be8e7c52f39977ce305dd8505cd5d77c3d4f923f54dd87c12a770081"
+    }
+  ],
+  "globalInterface": 21227768,
+  "stack": 68,
+  "events": [
+    {
+      "site": 14377483,
+      "operation": "start"
+    },
+    {
+      "site": 14377609,
+      "operation": "use"
+    },
+    {
+      "site": 14377641,
+      "operation": "use"
+    },
+    {
+      "site": 14378215,
+      "operation": "end"
+    },
+    {
+      "site": 14379716,
+      "operation": "end"
+    },
+    {
+      "site": 14379739,
+      "operation": "end"
+    }
+  ]
+}

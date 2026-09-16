@@ -1,0 +1,249 @@
+{
+  "address": "0x00E2A900",
+  "size": 499,
+  "nativeSha256": "2095bdd62e2d3f00b92a0aeee6b11a0cfbda8ab4de160c1f632fd2adc2953358",
+  "hostSourcePath": "refs/script_recovery/new_oakvale_intro/runtime_evidence/session-start-20260912/forge-source/LuaQuestState.cpp",
+  "hostSourceSha256": "e5e9edb27aeea87237bda2117ea116185d767c90ff1f2c8a2597a8617781f394",
+  "calls": [
+    {
+      "site": 14854602,
+      "count": 1,
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1484
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                64
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14854783,
+      "count": 4,
+      "expected": {
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          64
+        ],
+        "edx": [
+          "register",
+          "ebx"
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ],
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            76
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14854798,
+      "count": 1,
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1484
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "nativeAcquisition": {
+    "site": "0x00E2A93E",
+    "nextCall": "0x00E2A94C",
+    "priority": 4,
+    "resultUsed": false
+  },
+  "proposal": {
+    "adapter": "RunCutsceneWithSetup",
+    "arguments": {
+      "macro": "CS_ORACLE_AWAKENS",
+      "actors": {
+        "SCYTHE": "existing controlled me",
+        "HERO": "hero"
+      },
+      "flags": null,
+      "setupcond": false,
+      "skippable": true,
+      "fixCamera": false
+    },
+    "cameraBracket": [
+      true,
+      false
+    ],
+    "callerOwnsMovie": true,
+    "status": "not lowered: acquisition failure semantics differ",
+    "nativeFailure": "Hero priority4 acquisition result is ignored and execution proceeds with its output resource.",
+    "hostFailure": "RunCutsceneWithSetup retries acquisition, yielding until success or termination, and reuses an existing control handle if available.",
+    "requiredDecision": "Expose an adapter acquisition mode preserving the native single attempt, or establish and document a precondition guaranteeing the Hero acquisition succeeds. Do not silently use the retrying adapter as equivalent.",
+    "otherReview": "Native nonnull empty input map differs from host nullptr: an unresolved $ argument becomes literal NULL with the native map and remains unchanged with nullptr. Preserve an explicit empty map or prove this macro never uses substitution arguments."
+  },
+  "hostEvidence": [
+    {
+      "line": 1801,
+      "claim": "FindControlHandle resource reuse"
+    },
+    {
+      "line": 1805,
+      "claim": "retrying StartScriptingEntity while loop"
+    },
+    {
+      "line": 1881,
+      "claim": "borrow caller movie by Lua state"
+    },
+    {
+      "line": 1931,
+      "claim": "camera/movie disposal only for owned movie"
+    }
+  ],
+  "inputSubstitution": {
+    "blocks": [
+      {
+        "address": "0xcc03b5",
+        "size": 247,
+        "sha256": "e786dfb55af32eb19fdc39788dbe811a67c92838707c62de27b5b5927f60560b"
+      },
+      {
+        "address": "0x41c830",
+        "size": 22,
+        "sha256": "3e5f1961ab83ce257cba0431c7d9119ecc31d17d45d1bf10493929765a5b76c0"
+      },
+      {
+        "address": "0x9ef360",
+        "size": 21,
+        "sha256": "2cd78519396e52448b7256c017fccf3b86f76bb8006ee39adf6e03c6fc6b614c"
+      }
+    ],
+    "strings": [
+      {
+        "address": "0x012c2620",
+        "value": "$"
+      },
+      {
+        "address": "0x012393e4",
+        "value": "NULL"
+      }
+    ],
+    "nullMap": "Skips the substitution loop at 0xCC03B9, leaving argument strings unchanged.",
+    "emptyMap": "For a nonempty argument beginning with $, map lookup misses and 0xCC049B assigns literal NULL.",
+    "lookup": "0xCC0446 calls map find through 0x9EF360; 0x41C830 compares iterator nodes using SETNE.",
+    "argumentCount": 11,
+    "equivalent": false
+  }
+}

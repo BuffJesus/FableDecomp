@@ -1,0 +1,153 @@
+{
+  "regions": [
+    {
+      "address": 13504656,
+      "size": 13,
+      "sha256": "79799465eeefd0a55764c14adb23c8f19148e55b57877033361c813e377a2d44"
+    },
+    {
+      "address": 13504672,
+      "size": 13,
+      "sha256": "c03389e9db2cf8ab040dd13092d7a351f92154c8357fbaf9fa20f9d945f5e3aa"
+    },
+    {
+      "address": 19674516,
+      "size": 28,
+      "sha256": "df4155c6c00232d379311ed394b72239c4ee2679b96278cd08ec1bccc22ac429"
+    },
+    {
+      "address": 13334864,
+      "size": 167,
+      "sha256": "703f7ab07ca56bfd4d998b39f8b0594043fbb6553d7c8e1d08e8c3c3971766b5"
+    },
+    {
+      "address": 14384560,
+      "size": 49,
+      "sha256": "e062e2b8e8e68b63ba358c61f3df7755e32d9e408332b5cf145cc421cb0d0df8"
+    },
+    {
+      "address": 13495216,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    },
+    {
+      "address": 13495232,
+      "size": 3,
+      "sha256": "e598d0c3ba86d917b177d7adde0556aa99bc355543c57aee0a3e50b684dd7e99"
+    },
+    {
+      "address": 13495248,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    },
+    {
+      "address": 13495264,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    },
+    {
+      "address": 14385760,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    }
+  ],
+  "limits": "Original active-entity forwarding and vtable slots. Scheduler dispatch and per-entity callback bodies have separate evidence.",
+  "entityTables": [
+    {
+      "name": "NOVI_LiveFather",
+      "address": 19760008,
+      "size": 28,
+      "sha256": "7604c0464433a2bfbcc31944f55e48bde3376fa2e38380dfe50dedb4d1764aa6"
+    },
+    {
+      "name": "NOVI_Theresa",
+      "address": 19760036,
+      "size": 28,
+      "sha256": "8cee14613d15a32711f372ece4872ff256e601a415b1372927b2b873db988296"
+    },
+    {
+      "name": "NOVI_Guard",
+      "address": 19760064,
+      "size": 28,
+      "sha256": "bf60446c6aba13c63615397fb72b78383bee268d589428e848f3593d90999c0a"
+    },
+    {
+      "name": "NOVI_Villager",
+      "address": 19760760,
+      "size": 28,
+      "sha256": "c4dd73b93cdaf364a47f7a4df844efadfc6f81ebc6a35d884adc42cd07ce32e2"
+    },
+    {
+      "name": "NOVI_Bully",
+      "address": 19761052,
+      "size": 28,
+      "sha256": "6fe869b31652613c058441670278daff33ee4d70e405e9188332ed44bfff1823"
+    },
+    {
+      "name": "NOVI_Victim",
+      "address": 19761080,
+      "size": 28,
+      "sha256": "a10c1b943d1eda814d256b8f71a908ef769844704937776070a02c400778d25a"
+    },
+    {
+      "name": "NOVI_TeddyGirl",
+      "address": 19761108,
+      "size": 28,
+      "sha256": "c4d2ea6c70b30c914df3fc55794e841d09ca28f7a0fea7ec024e4ff42c54e422"
+    },
+    {
+      "name": "NOVI_AffairMan",
+      "address": 19761644,
+      "size": 28,
+      "sha256": "7dcf23b33a7f2a50addc54787821575bb2b76dd0ce0a37d9713369bfee7d1380"
+    },
+    {
+      "name": "NOVI_AffairWoman",
+      "address": 19762184,
+      "size": 28,
+      "sha256": "03bbd8d0afd53cd039360e3bef255d690acbb7d781284e1f57fb129235b739dc"
+    },
+    {
+      "name": "NOVI_AffairWife",
+      "address": 19762328,
+      "size": 28,
+      "sha256": "89f39b3ff495b665c56fcbd5301cab233ab0773396d8dc7f48291d7f1ab7643a"
+    },
+    {
+      "name": "NOVI_BookTrader",
+      "address": 19762816,
+      "size": 28,
+      "sha256": "0399d603d1373fd6796947fea624bdb18b3d8aef8a37359dcb66d405b34b0dc0"
+    },
+    {
+      "name": "NOVI_BarrelMan",
+      "address": 19763220,
+      "size": 28,
+      "sha256": "d197f89309a80769fe6aa55af513e4254d489ac1be332b9740d8f22d043a1733"
+    },
+    {
+      "name": "NOVI_BarrelThug",
+      "address": 19763764,
+      "size": 28,
+      "sha256": "a118154fb524212da69c833031309c6b5d4445331288e2e61fa561a428e9d709"
+    },
+    {
+      "name": "NOVI_Barrel",
+      "address": 19764464,
+      "size": 28,
+      "sha256": "834e3afe06bb7dfa62dff1e46d1b7ca275ad6ec77cd1128b774bb50fdefced61"
+    },
+    {
+      "name": "NOVI_CreatedBeetle",
+      "address": 19764576,
+      "size": 28,
+      "sha256": "8abae8141b118d62b42e0eb274094030cc6c9eb0deba0c68b0bee0385eea46e9"
+    },
+    {
+      "name": "OVI_DeadFather",
+      "address": 19764604,
+      "size": 28,
+      "sha256": "b2e9217eb2b0e33c1ca4e2df714eaf31218e7643e3afac9e727b9a17135b568c"
+    }
+  ]
+}

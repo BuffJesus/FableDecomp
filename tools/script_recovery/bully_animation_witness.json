@@ -1,0 +1,20 @@
+{
+  "ranges": [
+    {
+      "address": 8287184,
+      "size": 15,
+      "sha256": "b15918b5d8b85acb00708ee1f721e3297fac818c09fedf1a8ff14a30090a50bf"
+    },
+    {
+      "address": 9456112,
+      "size": 250,
+      "sha256": "ad82a2a2faf75eb67895301a19e2b99c98c3e6fb90facf23a962bae7cd908e01"
+    },
+    {
+      "address": 9450736,
+      "size": 117,
+      "sha256": "b6fe2dd70fb101bde78356540bdaceefa919fe056ce5320e31df52cefcf61433"
+    }
+  ],
+  "review": "7E73D0 forwards8 arguments unchanged;904AA3 pushes fifth raw flag into9034F0 constructor arg9.903536 loads byte arg9 and903548 stores action+1D without normalization."
+}

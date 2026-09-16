@@ -1,0 +1,212 @@
+{
+  "sourceSha256": "8707b8502a5bcef71e72c6873f7cebc152dfd64b8cd7df6e276294bcadbfd5be",
+  "regions": [
+    {
+      "name": "Main",
+      "address": 15483632,
+      "size": 412,
+      "sha256": "ae7f021ee8e63c528982c9132db249cc3fc715b2551421f6305b17b5138836c5"
+    },
+    {
+      "name": "SCRIPT_DEF field registration",
+      "address": 15927483,
+      "size": 24,
+      "sha256": "b3d4363fddf92d6257a6f1a808a8dfd17ac1d23078195a2908582e6539ab27ae"
+    },
+    {
+      "name": "bound alive registration",
+      "address": 15948560,
+      "size": 30,
+      "sha256": "3e88409d15656c0f5d19d7d7a345c6616b9950abe2192ea075e9be2976cb3fa3"
+    },
+    {
+      "name": "Thing destructor",
+      "address": 4892736,
+      "size": 66,
+      "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    },
+    {
+      "name": "parent flag persistence",
+      "address": 15485296,
+      "size": 144,
+      "sha256": "62aeecc1fa3f5c5d5dda9a957214f17a77b5a43fa776b237e080926e94c9e5fd"
+    }
+  ],
+  "strings": {
+    "0x12f16ac": "M_RTFERockTrollSpawnPos",
+    "0x12f1644": "RTFE_RockTroll",
+    "0x12f1688": "CREATURE_ROCK_TROLL_START_STANDING",
+    "0x12ff200": "RockTrollTriggerProximity",
+    "0x12f1760": "RockTrollTriggered"
+  },
+  "calls": [
+    {
+      "site": 15483764,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "address": 15483764,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            16
+          ],
+          [
+            "stack",
+            8
+          ]
+        ]
+      }
+    },
+    {
+      "site": 15483974,
+      "count": 5,
+      "known": {
+        "15483947": [
+          0,
+          "position"
+        ]
+      },
+      "expected": {
+        "address": 15483974,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            364
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            28
+          ],
+          [
+            "stack",
+            8
+          ],
+          [
+            "register",
+            "eax"
+          ],
+          [
+            "stack",
+            12
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "proof": {
+    "parentFlag": "Read EC433B/writeEC446A parent+4E, original persisted nameRockTrollTriggered.",
+    "range": "F308C0 lea[esi+72C],F308C7 push12FF200 RockTrollTriggerProximity; repeated native loadsEC4389/EC43C1.",
+    "pollOrder": "float load precedes Hero getter; distance Hero ECX versus bound me EDX; initial frame and each cancellation query retained.",
+    "spawn": "EC4434 false; hidden outputEC4446; destroyoutputEC4450, definitionEC4459,scriptEC4460; then state+4E and RemoveThing(me,false,true)EC4476; retained spawnMkr destroyEC4480.",
+    "limits": "Full native hash pins calls not decoded by call-window IR; no claim every operand was independently decoded."
+  }
+}

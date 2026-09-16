@@ -1,0 +1,30 @@
+{
+  "schema": "guild-race-marker-witness/0.1",
+  "regions": [
+    {
+      "address": 13896352,
+      "size": 97,
+      "sha256": "6397c0090f6584b6377c7d1bd731ea5b67c152bcf4015831b5ff5c045a57673e"
+    },
+    {
+      "address": 13896336,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    }
+  ],
+  "parentField": {
+    "name": "ReachedPlatform",
+    "retailOffset": "0x4D",
+    "debugOffset": "0x61",
+    "debugToRetailDelta": 20,
+    "evidence": "Ego_r CQ_GuildTrainingScript layout; native GameState/CurrentBirdsKilled persistence anchors and RaceMarker byte write"
+  },
+  "boundaries": [
+    "entity termination query F35B30",
+    "distance helper CBE2FF",
+    "GetHero",
+    "MiniMapRemoveMarker",
+    "NewScriptFrame"
+  ],
+  "limits": "Main control flow and parent byte write are executed; engine call implementations and live scheduling are not simulated."
+}

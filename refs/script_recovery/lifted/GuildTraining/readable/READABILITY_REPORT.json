@@ -1,0 +1,32 @@
+{
+  "schema": "guild-training-readable-package/0.1",
+  "package": "GuildTraining",
+  "status": "partial-disabled-review-artifact",
+  "registrationEnabled": false,
+  "reviewedEntities": [
+    "RaceMarker",
+    "SpeedFriend",
+    "KillBird",
+    "HeroBed",
+    "PreMeleeDummy",
+    "MeleeThunder"
+  ],
+  "reviewedQuestFunctions": [
+    "Q_GuildTrainingSkill.Init",
+    "Q_GuildTrainingWill.Init",
+    "Q_GuildTrainingDeparture.Main",
+    "Q_GuildTrainingWoodsDeparture.Main",
+    "Q_GuildTrainingWoodsMelee.Main",
+    "Q_GuildTrainingWoodsMelee.DoMission",
+    "Q_GuildTrainingWoodsMelee.WatchForLeaving",
+    "Q_GuildTrainingWoodsMelee.TeleportOutHero"
+  ],
+  "nativeInventory": "refs/script_recovery/guild_training/inventory.json",
+  "stateAccessLedger": "refs/script_recovery/guild_training/state_access.json",
+  "liveVerification": "deferred by user; no installation or profile/save writes",
+  "limits": [
+    "Quest registration remains empty.",
+    "Unreviewed quest and entity bodies are excluded.",
+    "Runtime integration, persistence parity, and live gameplay are unverified."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "regions": [
+    {
+      "name": "helper",
+      "address": 15487296,
+      "size": 421,
+      "sha256": "70b9f894f9e0515d7f95c67f2555352b85604f6684ca8cf13f0f6fa892cad3bd"
+    },
+    {
+      "name": "threshold",
+      "address": 19511868,
+      "size": 4,
+      "sha256": "0f2f3591427956b004ca17393783192e0f81858c06bb5496aa2cea004f1ee863"
+    },
+    {
+      "name": "retainedArgumentDispatch",
+      "address": 15487728,
+      "size": 50,
+      "sha256": "39ca9c2085ea555c82f640c810ab7cc9fc7c0e4f4e6a24bd5afe6e7dd9a43c3d"
+    },
+    {
+      "name": "threadDestructor",
+      "address": 15487792,
+      "size": 40,
+      "sha256": "34bf0417d1640660aa77fa27b6f3a8b6a6f8c504fc50c7ff6c6b84f94cefbf12"
+    }
+  ],
+  "strings": {
+    "0x125d1c8": "SCRIPT_NAME_HERO",
+    "0x12d75d4": "HUD_QUEST_ICON_ROCK_TROLL"
+  },
+  "proof": [
+    "No bound condition or initial frame in helper body. By-value12byteThing released on every exit, parent thread retained copy remains.",
+    "Hero hit54 short-circuits aggressive abilityAC; first CString remains live across optional second construction/poll, then second and first destruct in reverse order even emptyData.",
+    "EC5260 compares x87health against raw17b7d138; testAH41 accepts strictlygreater ordered values, excludes equality and NaN.",
+    "EC528D/91 write colour bytesR,A=255;EC52A8/AD writeG,B=0. BGRA bytes0000ffff, scale3F800000.",
+    "EC52BF writes full EAX parent+50 before textureCString destructionEC52C2; DisplayQuestInfo(true) follows.",
+    "Native helper wrapperEC52F0 copies retainedThing to call stack and incrementsInfo; threaddtorEC5330 releases retainedThing separately.",
+    "Pending copiedThing scope must implement atomic nested hit/ability filters, health on ownedThing, and AddHealthBarToState storingIntbeforetexturedestructor."
+  ]
+}

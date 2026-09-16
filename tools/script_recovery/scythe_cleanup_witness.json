@@ -1,0 +1,4 @@
+{
+  "sourceSha256": "3eda4ce364d12d23176f47059e3870bd4bce5557ffe9d2457b698a58784f0d57",
+  "policy": "Additional host-error containment, not a claim about native exception semantics. Track only resources opened by this callback. Native normal/cancellation cleanup remains unchanged. Attempt pause/movie/timer/control cleanup independently; preserve original body error."
+}

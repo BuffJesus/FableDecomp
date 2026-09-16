@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "ScytheMarker": "b50a00e3d444984d24ca08b42ad354ea32711d76fa5c2fc657a28444b2404e92",
+    "ScytheNearOracle": "08648f0e936adae11f77cf72ccfa7ffd747886eaa8904e549b7514d460b34ee6"
+  },
+  "regions": [
+    {
+      "address": "0xe29f50",
+      "size": 195,
+      "sha256": "6eec78725cc3d81bb92803c93caed19c41b2a8cb86afb7468307a89f2417cb91"
+    },
+    {
+      "address": "0xe2a320",
+      "size": 1503,
+      "sha256": "315ea06ccacfc1669200990bccf81a55a7abae5befe79ec0cd15057e78415249"
+    },
+    {
+      "address": "0x4aa840",
+      "size": 66,
+      "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    }
+  ],
+  "review": "Marker CreateCreature output frame20 survives strings destroyed E29FA7/E29FB0 and RemoveThing E29FBF; inline release E29FC5..E2A00A follows removal. Initial near lookup target consumed by facing E2A446 and destroyed E2A44F before timer E2A466, with CString destroyed afterward. Preserve empty output objects. Hero getters return borrowed engine pointers; no ownership extension required for GetHero."
+}

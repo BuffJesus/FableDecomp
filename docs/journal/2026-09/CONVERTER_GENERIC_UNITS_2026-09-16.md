@@ -1,0 +1,71 @@
+# Converter generalised to quest units; Guild audited, pivot to Orchard Farm — 2026-09-16
+
+## Decisions
+- User: "Finish guild training with the converter, then we'll ship both." Then Aeon (Discord) reported
+  Guild training almost hand-ported, proposed a split: **we take Orchard Farm**. User: "pivot to orchard farm".
+- The converter must be used and improved, not bypassed by hand-porting (user re-confirmed mid-session).
+
+## Aeon port audit (new tool)
+`tools/script_recovery/audit_port_against_pdb.py` — compares a hand-ported package against the debug PDB
+class (entities/threads/helpers present?) and the string literals the native class references (from
+`ego_r.exe`). Reports in `work/aeon_port_audit/`. WaspBoss: structurally complete, leads =
+`TEXT_AI_GOSSIP_WASPBOSS_KILLED`, actor keys `VICTIM`/`VILL1-3`, `$HEROTITLE`/`ToothHobbe`.
+GuardianSisterInfo(2): complete (Main + `MazeAtTavern`), lead = `M_MazeExit`. Method can't see wrong
+branches/timers — that needs a TU export + API-sequence diff.
+
+## Generic converter pipeline (all new, quest-agnostic)
+1. `script_units.py` — registry {evidence dir, address range, IR glob, scripts, PDB pattern, package}.
+   Units: `guild_training`, `orchard_farm` (0xDCC040–0xDD2700; `Q_OrchardFarm_Barricade` is a
+   resource-only section quest, no class).
+2. `export_guild_training.py --unit X` / `guild_training_inventory.py --unit X` — parametrised
+   (register-sourced factory stores; factory→constructor vtable follow). Guild output byte-identical.
+3. `quest_unit_evidence.py --unit X` → `refs/script_recovery/<unit>/units/<Q>.json`:
+   - PDB (`Ego_r`) function names; helpers matched to retail by string sets against `ego_r.exe`;
+     entity binding → class by string match (`GuardTeamSpawn`→`CTeamSpawn`); entity helpers
+     (`GoOnPatrol`…) classified bsim/strings/size-rank (WEAK flagged).
+   - **Retail offsets = PDB − 0x14 (quest classes) − 4 per STL container member before the field**
+     (debug STL carries an iterator-debugging pointer). Entities: delta 0. `CScriptThing` is 12 in both.
+     Verified against retail `Init` writes for Guild (11/11) and Orchard (HeroTeam 0x78, bools 0x88–0x8b).
+   - Struct arrays expanded (`Teams_1_MemberCount`@0xe4), `CScriptThing` members → `thingFields`,
+     pointer members, array descriptors (base/stride/members/pointers), master-data layout
+     (`CQ_SunnyvaleMasterData`, delta 0, matches FSE `MasterQuest.h`).
+4. `convert_quest_unit.py --unit X` — Oakvale `Lifter` path without per-function hooks; entity
+   helpers lifted into the entity file; quest helpers called from entities via `native_quest_helpers`.
+   `sol::this_state` stripped from manifest arity.
+5. `native_evidence_lowering.py` — pre-`annotate` source pass: master data ↔ `Get/SetMasterGameState`,
+   Thing members ↔ `quest:GetStateThing/SetStateThing`, dynamic struct-array index ↔ keyed state
+   (`"Teams_" .. tostring(i) .. "_MemberCount"`), pointer-into-array (`MyTeam`) as index state with
+   chained `EnemyTeam`, `vector<CScriptThing>` ↔ `GetStateListCount/At`, inlined counted-pointer
+   assign/release folded back to `CScriptThing::operator=`. Ghidra quirks handled: `=\r\n` wraps,
+   decimal offsets, `()` on the next line.
+6. Lifter change: parent-helper receiver accepts `*(T *)(this+0x14)` (one star). **Oakvale gate:
+   regenerated draft byte-identical** (`scratchpad/gate.sh`).
+
+## Numbers
+- Guild (kept as a benchmark for Aeon's port): 152 fns, 120→ compile, 3699→3561 diagnostics.
+- Orchard Farm: 82 native fns; unit = 12 owners / 58 fns; 32→41 compile, 660→544 diagnostics.
+
+## Runtime bindings the Orchard Lua will need (NoviCompatibility DLL, not yet written)
+`quest:GetStateThing/SetStateThing`, `GetStateListCount/GetStateListAt` (+push), `quest:RetailResources()`
+(long-lived `resources` handle instead of `WithRetailResources` closures), entity-state `Thing` kind.
+
+## Typed TU export — DONE (first version)
+`tools/script_recovery/ghidra_typing_spec.py` (FSE typedefs → `refs/script_recovery/typing/gsi_prototypes.json`:
+918 GSI slots, 65 fixed engine helpers, 79 CScriptThing slots) + `tools/ghidra_scripts/ExportTypedTranslationUnit.java`
+(read-only in-memory: helper signatures by address, per-call-site `HighFunctionDBUtil.writeOverride` for GSI/thing
+vcalls found by register provenance from `this`; Ghidra's `__thiscall` needs `this` as an explicit first param).
+Orchard: 218 overrides, `RunCutsceneMacro_Func(&key,&map,0,0,false,true)` now fully argumented. The converter
+prefers `translation_unit_typed.json`. New typed shapes handled in the lowering: `(int)this`, wrapped call
+heads/args (`join_wrapped_statements`), `&"literal"`, `->field_0x..`, `_bv` placeholders, explicit receiver
+arg stripping; `annotate` alias regexes widened to any identifier (typed exports name temporaries after
+prototype params). Oakvale gate still identical. Orchard: 36/58 compile, 708 diagnostics (typed input).
+Open typed-export lever: by-value `CScriptThing` params (Ghidra emits `in_stack_…` copies / `pThing` aliases).
+
+**Tooling gotcha (cost an hour):** Git Bash heredocs and `python -c` mangle backslashes — `\1` became a literal
+`\x01` byte inside regex replacements. Write patch scripts to files (Write tool) and run them; never inline.
+
+## Next
+(was) Typed TU export (Ghidra headless, read-only in-memory): per-call-site prototype overrides for the 918
+GSI slots from FSE's native typedefs (`GameInterface.h`), real signatures for engine helpers
+(CCharString/CScriptThing ctors, `RunCutsceneMacro_Func`, map ops). That removes the arg-less
+`RunCutsceneMacro_Func(0,0,0,1)` / `SetIsPushableByHero()` class of diagnostics for every unit.

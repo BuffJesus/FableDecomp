@@ -1,0 +1,41 @@
+{
+  "regions": [
+    {
+      "name": "phase",
+      "address": 15485825,
+      "size": 128,
+      "sha256": "4ab1ece64e10b683e17e39e5974c70c4a3442a33594d25147367b2eae32774a6"
+    },
+    {
+      "name": "convert",
+      "address": 4283760,
+      "size": 25,
+      "sha256": "5d25bf8d028f3d3177c51c19da040833f927308f2fb913e47b0b59ef34ae1a66"
+    },
+    {
+      "name": "lookup",
+      "address": 10308016,
+      "size": 59,
+      "sha256": "33d56cf0e703706a327784cc26e43c747089ce9ddabe0c07263a761a6b2dea24"
+    },
+    {
+      "name": "fields",
+      "address": 15927507,
+      "size": 58,
+      "sha256": "86b6bda3276f6a54f00907dbef419a90e706711da40397488f1405390a143ef8"
+    }
+  ],
+  "strings": {
+    "0x12ff1ec": "RockTrollReward1",
+    "0x12ff1d8": "RockTrollReward2"
+  },
+  "proof": [
+    "Retail registrationF308DD/F308FA names CDefStringfields+730/+734 RockTrollReward1/2.",
+    "Phase reloads globaldefinition before EACH conversionEC4B9A/4BCA; target boundThingEDI remains same.",
+    "415D70 passes fieldtoken to manager13CA828 lookup9D49B0, constructs hidden outputCString; it does not return borrowed text.",
+    "Token-1 causes native defaultCString construction99E4B0; all other tokens lookup stream995E70 and constructCStringliteral atbuffer+token+4.",
+    "Each CString survives AddItemToContainer and dies before secondglobalread or finalstatewrite; emptyCString is still passed to container.",
+    "AddedItems gate skips bothcalls and cancelquery ifalreadytrue. Otherwise onecancelcheck precedes both consumers, no interitemcancelcheck.",
+    "Continuation owns outerselfresource; error before bothitems finish must not mark AddedItems true. Runtimeadapterproposal is isolated, not installed."
+  ]
+}

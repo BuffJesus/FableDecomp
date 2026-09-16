@@ -1,0 +1,22 @@
+{
+  "blocks": [
+    {
+      "name": "hit",
+      "address": 14376430,
+      "size": 229,
+      "sha256": "f1123522823086ff4ea00575299eabf312b60810abbb974207811f54e2d761c1",
+      "oldLua": "        ppuVar17 = (ppuStack_1c8 | 1)\n        cVar2 = me:MsgIsHitByHero()\n        if not cVar2 then\n            ppuVar17 = (ppuVar18 | 3)\n            cVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()\n            if cVar2 then\n                ppuVar17 = (ppuVar18 | 7)\n                cVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)\n                bVar3 = not cVar2\n            else\n                bVar3 = false\n            end\n        else\n            bVar3 = true\n        end\n        if (ppuVar17 & 4) ~= 0 then\n            ppuVar17 = (ppuVar17 & 0xfffffffb)\n        end\n        if (ppuVar17 & 2) ~= 0 then\n            ppuVar17 = (ppuVar17 & 0xfffffffd)\n        end\n        if (ppuVar17 & 1) ~= 0 then\n            ppuVar17 = (ppuVar17 & 0xfffffffe)\n        end\n",
+      "newLua": "        bVar3 = resources:IsHitByHeroExceptAbility(me, 14)\n"
+    },
+    {
+      "name": "interaction",
+      "address": 14377123,
+      "size": 121,
+      "sha256": "70cf9cf14a4ec605b2a646fc44a904486dc9fdff16739f8b543a5bafef0167e3",
+      "oldLua": "        if __native_entity_state:GetStateInt(\"MyPhase\") == 0 then\n            -- TODO(native): fVar25 = DAT_013ac858;\n            pCVar7 = quest:GetHero()\n            bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar7, fVar20)\n            if not bVar3 then return end  -- TODO(native): goto LAB_00db60c9\n            -- LAB_00db60fb: (native jump target)\n            bVar3 = true\n        else\n            -- LAB_00db60c9: (native jump target)\n            ppuVar17 = (ppuVar17 | 8)\n            cVar2 = me:IsTalkedToByHero()\n            bVar3 = false\n            if cVar2 then return end  -- TODO(native): goto LAB_00db60fb\n        end\n        if (ppuVar17 & 8) ~= 0 then\n            -- TODO(native): ppuStack_1c8 = (undefined **)((uint)ppuVar17 & 0xfffffff7);\n        end\n",
+      "newLua": "        bVar3 = false\n        if __native_entity_state:GetStateInt(\"MyPhase\") == 0 then\n            bVar3 = resources:IsHeroWithinBarrelApproachDistance(me)\n        end\n        if not bVar3 then\n            bVar3 = me:IsTalkedToByHero()\n        end\n"
+    }
+  ],
+  "literal": 19255752,
+  "distanceAddress": 20629592
+}

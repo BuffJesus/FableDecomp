@@ -1,0 +1,41 @@
+{
+  "functions": [
+    {
+      "address": 14363248,
+      "size": 160,
+      "sha256": "edaed22ced7d7eebd45484775b3de8dd026c88501e40b7d03a01e5b99ebece4a"
+    },
+    {
+      "address": 9072080,
+      "size": 218,
+      "sha256": "8270d47d77b1cf84d679faa32498b92bfa2f6f13d05ce925b00c6a699e67fe9d"
+    }
+  ],
+  "slots": {
+    "0x810": 8973008,
+    "0x814": 8973104,
+    "0x838": 8973248,
+    "0x5a0": 8971328,
+    "0x844": 8973344,
+    "0xd30": 9072080,
+    "0x94c": 8976464
+  },
+  "stateStores": {
+    "GoingForHusband": [
+      14363257,
+      28,
+      0
+    ],
+    "ForceFirstTimeSpeak": [
+      14363261,
+      29,
+      1
+    ],
+    "SaidRunningLine": [
+      14363392,
+      30,
+      0
+    ]
+  },
+  "ownership": "copy Info retained before D30;8A6DD0 consumes reference before SaidRunningLine store; pointer calls not filtered"
+}

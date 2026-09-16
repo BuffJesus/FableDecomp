@@ -19,6 +19,10 @@ def recover_affair_wife_pause(function, source, rdata, manifest):
     return _recover_pause(function, source, rdata, manifest, 'native_affair_wife_pause_witness.json')
 
 
+def recover_barrel_pause(function, source, rdata, manifest):
+    return _recover_pause(function, source, rdata, manifest, 'native_barrel_pause_witness.json')
+
+
 def _recover_pause(function, source, rdata, manifest, witness_file):
     witness = json.loads(Path(__file__).with_name(witness_file).read_text())
     if str(function.get('address', '')).lower() != witness['address'].lower():
@@ -50,6 +54,10 @@ def _recover_pause(function, source, rdata, manifest, witness_file):
                                  expected['address'], argument_count=1)
         if setup is None or json.loads(json.dumps(asdict(setup))) != expected:
             return reject('saved-interface pause operands changed')
+    for expected in witness.get('checkedBytes', []):
+        raw = bytes.fromhex(expected['hex'])
+        if rdata.bytes_at(int(expected['address'], 16), len(raw)) != raw:
+            return reject('saved-interface pause instruction evidence changed')
     edits = witness.get('edits') or [{'old': witness['old'], 'count': witness['count'],
                                       'new': 'GSI->PauseAllNonScriptedEntities(false);'}]
     if any(source.count(edit['old']) != edit['count'] for edit in edits):

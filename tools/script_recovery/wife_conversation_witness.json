@@ -1,0 +1,13 @@
+{
+  "address": 14365489,
+  "size": 99,
+  "sha256": "125eee1a7435d499adcedbe092c221d1b09ec7413fc67dcf47d3fc66ed45dc33",
+  "literal": 19762604,
+  "text": "TEXT_QST_048_AFFAIR_WIFE_WHERES_HUSBAND",
+  "slots": {
+    "0x118": 8985760,
+    "0x5b0": 8980160,
+    "0x5b4": 8980240,
+    "0x5b8": 8980304
+  }
+}

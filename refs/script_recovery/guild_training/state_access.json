@@ -1,0 +1,2696 @@
+{
+  "schema": "guild-native-state-access/0.1",
+  "sourceTranslationUnit": "D:\\Documents\\FableTLC\\refs\\script_recovery\\guild_training\\translation_unit.json",
+  "lifecycleFunctions": 90,
+  "functions": [
+    {
+      "script": "Q_GuildTraining",
+      "role": "destructor",
+      "address": "0x00D50650",
+      "offsets": {
+        "0x60": {
+          "count": 1,
+          "context": [
+            "veText *this,uint param_1)    {    CIEngine *unaff_ESI;        CTimer::~CTimer((CTimer *)(this + 0x60));    NParticleEngine::CParticleEmitter::DeleteAllParticles((CParticleEmitter *)this,unaff_ESI);   "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining",
+      "role": "Main",
+      "address": "0x00D3BC60",
+      "offsets": {
+        "0x48": {
+          "count": 1,
+          "context": [
+            " undefined4 local_1c;    undefined1 auStack_18 [24];        local_1c = 0;    if (*(int *)(this + 0x48) == 0) {      bVar3 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)this);      if (bVar3) "
+          ]
+        },
+        "0x40": {
+          "count": 24,
+          "context": [
+            "CScriptBase *)this);      if (bVar3) {        return;      }      (**(code **)(**(int **)(this + 0x40) + 0x21c))();      puStack_40 = (undefined1 *)0xd3bca2;      CCharString::CCharString(aCStack_20,\"G",
+            ";      CCharString::CCharString(aCStack_20,\"GuildArrivalHSP\",-1);      piVar1 = *(int **)(this + 0x40);      iVar2 = *piVar1;      puStack_40 = auStack_18;      uStack_44 = 0xd3bcbe;      uStack_44 = (",
+            "e,class_CParticleMorphs::CEntry> *)&stack0xffffffcc;      cVar4 = (**(code **)(**(int **)(this + 0x40) + 0x2c))();      cVar4 = '\\x01' - (cVar4 != '\\0');      std::      _Cons_val<std::allocator<std::p"
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining",
+      "role": "Init",
+      "address": "0x00D3B3D0",
+      "offsets": {
+        "0x48": {
+          "count": 1,
+          "context": [
+            "  void __fastcall FUN_00d3b3d0(CGameflowScript *param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x50) = 0;    param_1[0x4e] = (CGameflowScript)0x0;    *(undefin"
+          ]
+        },
+        "0x50": {
+          "count": 1,
+          "context": [
+            "CGameflowScript *param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x50) = 0;    param_1[0x4e] = (CGameflowScript)0x0;    *(undefined4 *)(param_1 + 0x58) = 0;    param_1[0"
+          ]
+        },
+        "0x58": {
+          "count": 1,
+          "context": [
+            "ined4 *)(param_1 + 0x50) = 0;    param_1[0x4e] = (CGameflowScript)0x0;    *(undefined4 *)(param_1 + 0x58) = 0;    param_1[0x5c] = (CGameflowScript)0x0;    (**(code **)(*DAT_0143e8f8 + 0x164))(*(undefined4"
+          ]
+        },
+        "0x60": {
+          "count": 1,
+          "context": [
+            "m_1[0x5c] = (CGameflowScript)0x0;    (**(code **)(*DAT_0143e8f8 + 0x164))(*(undefined4 *)(param_1 + 0x60),0);    param_1[100] = (CGameflowScript)0x0;    param_1[0x65] = (CGameflowScript)0x0;    NScript::C"
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining",
+      "role": "OnPersist",
+      "address": "0x00D3BC10",
+      "offsets": {
+        "0x48": {
+          "count": 1,
+          "context": [
+            "Stack_4[3] = '\\0';    CPersistContext::Transfer<signed_char>(param_2,\"GameState\",(char *)(param_1 + 0x48),acStack_4);    param_2 = (CPersistContext *)0x0;    CPersistContext::Transfer<signed_char>        "
+          ]
+        },
+        "0x54": {
+          "count": 1,
+          "context": [
+            "  CPersistContext::Transfer<signed_char>              (this,\"CurrentBirdsKilled\",(char *)(param_1 + 0x54),(char *)&param_2);    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingDeparture",
+      "role": "RegisterMain",
+      "address": "0x00D50760",
+      "offsets": {
+        "0x34": {
+          "count": 1,
+          "context": [
+            " *(undefined ***)this = &PTR__vector_deleting_destructor__012cf6a0;      *(undefined1 **)(this + 0x34) = &LAB_00cdd440;      *(CGuiVarTransferStruct **)(this + 0x38) = param_1;    }    CCharString::CCh"
+          ]
+        },
+        "0x38": {
+          "count": 1,
+          "context": [
+            "6a0;      *(undefined1 **)(this + 0x34) = &LAB_00cdd440;      *(CGuiVarTransferStruct **)(this + 0x38) = param_1;    }    CCharString::CCharString((CCharString *)&uStack_4,\"\",-1);    CGuiVarTransferStr"
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingDeparture",
+      "role": "Main",
+      "address": "0x00D50800",
+      "offsets": {
+        "0x40": {
+          "count": 9,
+          "context": [
+            "    }    CTCVillage::OnInitialActivate((CTCVillage *)param_1);    (**(code **)(**(int **)(param_1 + 0x40) + 0x100))();    CCharString::CCharString((CCharString *)&uStack_4,\"Q_GuildTrainingWoodsDeparture\",",
+            "oMorphType,class_CParticleMorphs::CEntry> *)&uStack_4;    cVar2 = (**(code **)(**(int **)(param_1 + 0x40) + 0x470))();    std::    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry",
+            "         extraout_EDX_00,ppVar4);    while (cVar2 == '\\0') {      (**(code **)(**(int **)(param_1 + 0x40) + 0x1c))();      bVar5 = CScriptBase::IsActiveThreadTerminating(param_1);      if (bVar5) {       "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingDeparture",
+      "role": "Init",
+      "address": "0x00D506B0",
+      "offsets": {
+        "0x40": {
+          "count": 2,
+          "context": [
+            "  CCharString::CCharString(local_10,\"HeroDepartureStartMarker\",-1);    piVar1 = *(int **)(this + 0x40);    iVar2 = *piVar1;    uVar3 = (**(code **)(iVar2 + 0x120))(local_c,local_10);    ppVar4 = (pair<",
+            "try>_> *)&stack0xffffffdc,               extraout_EDX,ppVar4);    (**(code **)(**(int **)(this + 0x40) + 0x5d8))();    this[0x48] = (CQ_GuildTrainingDepartureScript)0x0;    *(undefined4 *)(this + 0x4c)"
+          ]
+        },
+        "0x4C": {
+          "count": 1,
+          "context": [
+            "40) + 0x5d8))();    this[0x48] = (CQ_GuildTrainingDepartureScript)0x0;    *(undefined4 *)(this + 0x4c) = 0;    *(undefined4 *)(this + 0x50) = 0;    *(undefined4 *)(this + 0x54) = 0;    return;  }    "
+          ]
+        },
+        "0x50": {
+          "count": 1,
+          "context": [
+            "GuildTrainingDepartureScript)0x0;    *(undefined4 *)(this + 0x4c) = 0;    *(undefined4 *)(this + 0x50) = 0;    *(undefined4 *)(this + 0x54) = 0;    return;  }    "
+          ]
+        },
+        "0x54": {
+          "count": 1,
+          "context": [
+            "*(undefined4 *)(this + 0x4c) = 0;    *(undefined4 *)(this + 0x50) = 0;    *(undefined4 *)(this + 0x54) = 0;    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingMelee",
+      "role": "Main",
+      "address": "0x00D55E90",
+      "offsets": {
+        "0x40": {
+          "count": 21,
+          "context": [
+            "I);    }    CTCVillage::OnInitialActivate((CTCVillage *)this);    (**(code **)(**(int **)(this + 0x40) + 0x100))();    puStack_74 = (undefined1 *)0xd55ff5;    CCharString::CCharString((CCharString *)&u",
+            "ing::CCharString((CCharString *)&local_58,\"TheRealGuildmaster\",-1);    piVar5 = *(int **)(this + 0x40);    iVar1 = *piVar5;    puStack_74 = auStack_2c;    uStack_78 = 0xd5601f;    uStack_78 = (**(code ",
+            "Var17 = &ppuStack_48;    uStack_90 = 0xd5610e;    piVar5 = (int *)(**(code **)(**(int **)(this + 0x40) + 0x120))();    iVar1 = **(int **)(this + 0x40);    uStack_90 = 0;    ppuStack_94 = &puStack_74;  "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingMelee",
+      "role": "Init",
+      "address": "0x00D55DA0",
+      "offsets": {
+        "0x48": {
+          "count": 1,
+          "context": [
+            "  void __fastcall FUN_00d55da0(int param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined1 *)(param_1 + 0x50) = 0;    *(undefine"
+          ]
+        },
+        "0x4C": {
+          "count": 1,
+          "context": [
+            "FUN_00d55da0(int param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined1 *)(param_1 + 0x50) = 0;    *(undefined1 *)(param_1 + 0x52) = 0;    *(undefine"
+          ]
+        },
+        "0x50": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined1 *)(param_1 + 0x50) = 0;    *(undefined1 *)(param_1 + 0x52) = 0;    *(undefined1 *)(param_1 + 0x51) = 0;    *(undefine"
+          ]
+        },
+        "0x52": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x4c) = 1;    *(undefined1 *)(param_1 + 0x50) = 0;    *(undefined1 *)(param_1 + 0x52) = 0;    *(undefined1 *)(param_1 + 0x51) = 0;    *(undefined1 *)(param_1 + 0x53) = 0;    *(undefine"
+          ]
+        },
+        "0x51": {
+          "count": 1,
+          "context": [
+            "fined1 *)(param_1 + 0x50) = 0;    *(undefined1 *)(param_1 + 0x52) = 0;    *(undefined1 *)(param_1 + 0x51) = 0;    *(undefined1 *)(param_1 + 0x53) = 0;    *(undefined1 *)(param_1 + 0x54) = 1;    *(undefine"
+          ]
+        },
+        "0x53": {
+          "count": 1,
+          "context": [
+            "fined1 *)(param_1 + 0x52) = 0;    *(undefined1 *)(param_1 + 0x51) = 0;    *(undefined1 *)(param_1 + 0x53) = 0;    *(undefined1 *)(param_1 + 0x54) = 1;    *(undefined1 *)(param_1 + 0x55) = 0;    *(undefine"
+          ]
+        },
+        "0x54": {
+          "count": 1,
+          "context": [
+            "fined1 *)(param_1 + 0x51) = 0;    *(undefined1 *)(param_1 + 0x53) = 0;    *(undefined1 *)(param_1 + 0x54) = 1;    *(undefined1 *)(param_1 + 0x55) = 0;    *(undefined1 *)(param_1 + 0x56) = 0;    return;  }"
+          ]
+        },
+        "0x55": {
+          "count": 1,
+          "context": [
+            "fined1 *)(param_1 + 0x53) = 0;    *(undefined1 *)(param_1 + 0x54) = 1;    *(undefined1 *)(param_1 + 0x55) = 0;    *(undefined1 *)(param_1 + 0x56) = 0;    return;  }    "
+          ]
+        },
+        "0x56": {
+          "count": 1,
+          "context": [
+            "fined1 *)(param_1 + 0x54) = 1;    *(undefined1 *)(param_1 + 0x55) = 0;    *(undefined1 *)(param_1 + 0x56) = 0;    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee",
+      "role": "RegisterMain",
+      "address": "0x00D51460",
+      "offsets": {
+        "0x34": {
+          "count": 1,
+          "context": [
+            " *(undefined ***)this = &PTR__vector_deleting_destructor__012cf79c;      *(undefined1 **)(this + 0x34) = &LAB_00cdd440;      *(CGuiVarTransferStruct **)(this + 0x38) = param_1;    }    CCharString::CCh"
+          ]
+        },
+        "0x38": {
+          "count": 1,
+          "context": [
+            "79c;      *(undefined1 **)(this + 0x34) = &LAB_00cdd440;      *(CGuiVarTransferStruct **)(this + 0x38) = param_1;    }    CCharString::CCharString((CCharString *)&uStack_4,\"\",-1);    CGuiVarTransferStr"
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee",
+      "role": "Main",
+      "address": "0x00D51520",
+      "offsets": {
+        "0x40": {
+          "count": 29,
+          "context": [
+            "    }    CTCVillage::OnInitialActivate((CTCVillage *)param_1);    (**(code **)(**(int **)(param_1 + 0x40) + 0x100))();    *(undefined1 *)(*(int *)(param_1 + 0x44) + 0xc0) = 1;    CCharString::CCharString(",
+            "um_EHeroMorphType,class_CParticleMorphs::CEntry> *)&uStack_68;    (**(code **)(**(int **)(param_1 + 0x40) + 0x120))();    std::    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry",
+            "m_EHeroMorphType,class_CParticleMorphs::CEntry> *)&piStack_88;    (**(code **)(**(int **)(param_1 + 0x40) + 0x120))();    std::    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry"
+          ]
+        },
+        "0x44": {
+          "count": 2,
+          "context": [
+            "m_1);    (**(code **)(**(int **)(param_1 + 0x40) + 0x100))();    *(undefined1 *)(*(int *)(param_1 + 0x44) + 0xc0) = 1;    CCharString::CCharString((CCharString *)&piStack_88,\"PreMeleeMaze\",-1);    ppVar9 ",
+            "ase)0x1;            param_1[0x54] = (CScriptBase)0x1;            *(undefined1 *)(*(int *)(param_1 + 0x44) + 0xc0) = 0;            CTimer::CTimer((CTimer *)&uStack_104);            uVar3 = uStack_104;     "
+          ]
+        },
+        "0x4C": {
+          "count": 1,
+          "context": [
+            ":CEntry>_> *)&stack0xffffff5c,               extraout_EDX_05,ppVar12);    *(undefined4 *)(param_1 + 0x4c) = 0;    CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)&ppuStack_78);"
+          ]
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x44",
+          "fieldOffset": "0xC0",
+          "expression": "*(undefined1 *)(*(int *)(param_1 + 0x44) + 0xc0)"
+        },
+        {
+          "ownerOffset": "0x44",
+          "fieldOffset": "0xC0",
+          "expression": "*(undefined1 *)(*(int *)(param_1 + 0x44) + 0xc0)"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee",
+      "role": "Init",
+      "address": "0x00D51450",
+      "offsets": {
+        "0x49": {
+          "count": 1,
+          "context": [
+            "  void __fastcall FUN_00d51450(int param_1)    {    *(undefined1 *)(param_1 + 0x49) = 0;    *(undefined1 *)(param_1 + 0x4a) = 0;    *(undefined1 *)(param_1 + 0x54) = 0;    *(undefine"
+          ]
+        },
+        "0x4A": {
+          "count": 1,
+          "context": [
+            "FUN_00d51450(int param_1)    {    *(undefined1 *)(param_1 + 0x49) = 0;    *(undefined1 *)(param_1 + 0x4a) = 0;    *(undefined1 *)(param_1 + 0x54) = 0;    *(undefined1 *)(param_1 + 0x55) = 0;    return;  }"
+          ]
+        },
+        "0x54": {
+          "count": 1,
+          "context": [
+            "fined1 *)(param_1 + 0x49) = 0;    *(undefined1 *)(param_1 + 0x4a) = 0;    *(undefined1 *)(param_1 + 0x54) = 0;    *(undefined1 *)(param_1 + 0x55) = 0;    return;  }    "
+          ]
+        },
+        "0x55": {
+          "count": 1,
+          "context": [
+            "fined1 *)(param_1 + 0x4a) = 0;    *(undefined1 *)(param_1 + 0x54) = 0;    *(undefined1 *)(param_1 + 0x55) = 0;    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingSkill",
+      "role": "Main",
+      "address": "0x00D5AB40",
+      "offsets": {
+        "0x40": {
+          "count": 1,
+          "context": [
+            "    }    CTCVillage::OnInitialActivate((CTCVillage *)param_1);    (**(code **)(**(int **)(param_1 + 0x40) + 0x100))();    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingSkill",
+      "role": "Init",
+      "address": "0x00D5AA80",
+      "offsets": {
+        "0x48": {
+          "count": 1,
+          "context": [
+            "  void __fastcall FUN_00d5aa80(int param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefine"
+          ]
+        },
+        "0x4C": {
+          "count": 1,
+          "context": [
+            "FUN_00d5aa80(int param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefined4 *)(param_1 + 0x54) = 3;    return;  }"
+          ]
+        },
+        "0x50": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefined4 *)(param_1 + 0x54) = 3;    return;  }    "
+          ]
+        },
+        "0x54": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefined4 *)(param_1 + 0x54) = 3;    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWill",
+      "role": "destructor",
+      "address": "0x00D61C00",
+      "offsets": {
+        "0x60": {
+          "count": 1,
+          "context": [
+            "r<CConversation>_>              ((vector<CConversation,std::allocator<CConversation>_> *)(this + 0x60));    NParticleEngine::CParticleEmitter::DeleteAllParticles((CParticleEmitter *)this,unaff_ESI);   "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWill",
+      "role": "Main",
+      "address": "0x00D5DD40",
+      "offsets": {
+        "0x40": {
+          "count": 1,
+          "context": [
+            "    }    CTCVillage::OnInitialActivate((CTCVillage *)param_1);    (**(code **)(**(int **)(param_1 + 0x40) + 0x100))();    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWill",
+      "role": "Init",
+      "address": "0x00D5DC80",
+      "offsets": {
+        "0x48": {
+          "count": 1,
+          "context": [
+            "  void __fastcall FUN_00d5dc80(int param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefine"
+          ]
+        },
+        "0x4C": {
+          "count": 1,
+          "context": [
+            "FUN_00d5dc80(int param_1)    {    *(undefined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefined4 *)(param_1 + 0x54) = 0;    *(undefine"
+          ]
+        },
+        "0x50": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x48) = 0;    *(undefined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefined4 *)(param_1 + 0x54) = 0;    *(undefined1 *)(param_1 + 0x5c) = 0;    *(undefine"
+          ]
+        },
+        "0x54": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x4c) = 1;    *(undefined4 *)(param_1 + 0x50) = 0;    *(undefined4 *)(param_1 + 0x54) = 0;    *(undefined1 *)(param_1 + 0x5c) = 0;    *(undefined1 *)(param_1 + 0x5d) = 0;    return;  }"
+          ]
+        },
+        "0x5C": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x50) = 0;    *(undefined4 *)(param_1 + 0x54) = 0;    *(undefined1 *)(param_1 + 0x5c) = 0;    *(undefined1 *)(param_1 + 0x5d) = 0;    return;  }    "
+          ]
+        },
+        "0x5D": {
+          "count": 1,
+          "context": [
+            "fined4 *)(param_1 + 0x54) = 0;    *(undefined1 *)(param_1 + 0x5c) = 0;    *(undefined1 *)(param_1 + 0x5d) = 0;    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWill",
+      "role": "OnPersist",
+      "address": "0x00D5E070",
+      "offsets": {
+        "0x5C": {
+          "count": 1,
+          "context": [
+            ";    CPersistContext::Transfer<signed_char>              (param_2,\"TestFinished\",(char *)(param_1 + 0x5c),(char *)((int)&uStack_4 + 3));    param_2 = (CPersistContext *)((uint)param_2 & 0xffffff00);    CP"
+          ]
+        },
+        "0x5D": {
+          "count": 1,
+          "context": [
+            ";    CPersistContext::Transfer<signed_char>              (this,\"BanditsDefeated\",(char *)(param_1 + 0x5d),(char *)&param_2);    return;  }    "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture",
+      "role": "Main",
+      "address": "0x00D61D20",
+      "offsets": {
+        "0x40": {
+          "count": 7,
+          "context": [
+            "oMorphType,class_CParticleMorphs::CEntry> *)&local_28;    cVar2 = (**(code **)(**(int **)(this + 0x40) + 0x2c))();    std::    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>",
+            "      CTCVillage::OnInitialActivate((CTCVillage *)this);          (**(code **)(**(int **)(this + 0x40) + 0x100))();          pCVar5 = ::operator_new(0x3c);          if (pCVar5 == (CSpawnedFunc<NScript:",
+            "eroMorphType,class_CParticleMorphs::CEntry> *)&local_28;          (**(code **)(**(int **)(this + 0x40) + 0x4a0))();          std::          _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMo"
+          ]
+        },
+        "0x4C": {
+          "count": 1,
+          "context": [
+            "28,                       extraout_EDX_07,unaff_EDI);          }          *(undefined4 *)(this + 0x4c) = 0;          paStack_48 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)0xd620"
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsMelee",
+      "role": "Main",
+      "address": "0x00D66620",
+      "offsets": {
+        "0x40": {
+          "count": 5,
+          "context": [
+            "roMorphType,class_CParticleMorphs::CEntry> *)&local_8;    cVar2 = (**(code **)(**(int **)(this + 0x40) + 0x2c))();    std::    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>",
+            "            extraout_EDX,ppVar7);    while (cVar2 == '\\0') {      (**(code **)(**(int **)(this + 0x40) + 0x1c))();      bVar3 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)this);      if (bVa",
+            "ng((CCharString *)&stack0xfffffff4,\"GuildWoods\",-1);      cVar2 = (**(code **)(**(int **)(this + 0x40) + 0x2c))(&stack0xfffffff4);      std::      _Cons_val<std::allocator<std::pair<EHeroMorphType,CPar"
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsWill",
+      "role": "Main",
+      "address": "0x00D67890",
+      "offsets": {
+        "0x40": {
+          "count": 51,
+          "context": [
+            "    }    CTCVillage::OnInitialActivate((CTCVillage *)param_1);    (**(code **)(**(int **)(param_1 + 0x40) + 0x100))();    CCharString::CCharString((CCharString *)&ppuStack_84,\"GuildWoods\",-1);    ppVar10 ",
+            "rphType,class_CParticleMorphs::CEntry> *)&ppuStack_84;    cVar4 = (**(code **)(**(int **)(param_1 + 0x40) + 0x2c))();    std::    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>",
+            "        extraout_EDX_00,ppVar10);    while (cVar4 == '\\0') {      (**(code **)(**(int **)(param_1 + 0x40) + 0x1c))();      bVar5 = CScriptBase::IsActiveThreadTerminating(param_1);      if (bVar5) {       "
+          ]
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.AppleGirl",
+      "role": "Main",
+      "address": "0x00D3D150",
+      "offsets": {
+        "0x1C": {
+          "count": 7,
+          "context": []
+        },
+        "0x20": {
+          "count": 6,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.AppleGirl",
+      "role": "Init",
+      "address": "0x00D3D110",
+      "offsets": {
+        "0x25": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.AppleGirl",
+      "role": "GetParentScript",
+      "address": "0x00D3D100",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.AppleGirl",
+      "role": "OnPersist",
+      "address": "0x00D44650",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x20": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.ApprenticeSpeedTest",
+      "role": "Main",
+      "address": "0x00D3E2E0",
+      "offsets": {
+        "0xC": {
+          "count": 1,
+          "context": []
+        },
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x1C": {
+          "count": 15,
+          "context": []
+        },
+        "0x14": {
+          "count": 6,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4D"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4D"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4D"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4D"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4D"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.ApprenticeSpeedTest",
+      "role": "GetParentScript",
+      "address": "0x00D3E290",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.ApprenticeSpeedTest",
+      "role": "OnPersist",
+      "address": "0x00D446A0",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.SpeedFriend",
+      "role": "Main",
+      "address": "0x00D408B0",
+      "offsets": {
+        "0xC": {
+          "count": 1,
+          "context": []
+        },
+        "0x10": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.SpeedFriend",
+      "role": "GetParentScript",
+      "address": "0x00D40860",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.RaceMarker",
+      "role": "Main",
+      "address": "0x00D40AA0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4D"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.RaceMarker",
+      "role": "GetParentScript",
+      "address": "0x00D40A80",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.MeleeApprentice",
+      "role": "Main",
+      "address": "0x00D40CF0",
+      "offsets": {
+        "0x18": {
+          "count": 3,
+          "context": []
+        },
+        "0x14": {
+          "count": 3,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB0"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.MeleeApprentice",
+      "role": "Init",
+      "address": "0x00D40CC0",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x24": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.MeleeApprentice",
+      "role": "GetParentScript",
+      "address": "0x00D40CB0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.CombatApprentice",
+      "role": "Main",
+      "address": "0x00D4A270",
+      "offsets": {
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x18": {
+          "count": 11,
+          "context": []
+        },
+        "0x14": {
+          "count": 10,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB4"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.CombatApprentice",
+      "role": "Init",
+      "address": "0x00D41AE0",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.CombatApprentice",
+      "role": "GetParentScript",
+      "address": "0x00D41AD0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.SkillApprentice",
+      "role": "Main",
+      "address": "0x00D4C720",
+      "offsets": {
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x18": {
+          "count": 18,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB8"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.SkillApprentice",
+      "role": "GetParentScript",
+      "address": "0x00D41BB0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.WillApprentice",
+      "role": "Main",
+      "address": "0x00D4EFE0",
+      "offsets": {
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x18": {
+          "count": 13,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xBC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xBC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xBC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xBC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xBC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xBC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.WillApprentice",
+      "role": "GetParentScript",
+      "address": "0x00D43320",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.HeroBed",
+      "role": "GetParentScript",
+      "address": "0x00D40BD0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.SkillTarget",
+      "role": "Main",
+      "address": "0x00D41D00",
+      "offsets": {
+        "0x20": {
+          "count": 2,
+          "context": []
+        },
+        "0x1C": {
+          "count": 7,
+          "context": []
+        },
+        "0x24": {
+          "count": 5,
+          "context": []
+        },
+        "0x18": {
+          "count": 22,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9E"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9E"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC5"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC3"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC5"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC4"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.SkillTarget",
+      "role": "Init",
+      "address": "0x00D41CA0",
+      "offsets": {
+        "0x20": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.SkillTarget",
+      "role": "GetParentScript",
+      "address": "0x00D41C90",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.WillDummy",
+      "role": "Main",
+      "address": "0x00D43450",
+      "offsets": {
+        "0x18": {
+          "count": 4,
+          "context": []
+        },
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9F"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9F"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x60"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.WillDummy",
+      "role": "GetParentScript",
+      "address": "0x00D43400",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.BirdKiller",
+      "role": "Main",
+      "address": "0x00D4DEA0",
+      "offsets": {
+        "0x1C": {
+          "count": 8,
+          "context": []
+        },
+        "0x14": {
+          "count": 6,
+          "context": []
+        },
+        "0x24": {
+          "count": 4,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.BirdKiller",
+      "role": "Init",
+      "address": "0x00D42FF0",
+      "offsets": {
+        "0x20": {
+          "count": 1,
+          "context": []
+        },
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x24": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.BirdKiller",
+      "role": "GetParentScript",
+      "address": "0x00D42FE0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.BirdKiller",
+      "role": "OnPersist",
+      "address": "0x00D44C60",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x24": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.KillBird",
+      "role": "GetParentScript",
+      "address": "0x00D430E0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTraining.KillBird",
+      "role": "OnPredicateFail",
+      "address": "0x00D43120",
+      "offsets": {
+        "0x14": {
+          "count": 2,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x65"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.PreMeleeMaze",
+      "role": "Main",
+      "address": "0x00D43DB0",
+      "offsets": {
+        "0x18": {
+          "count": 3,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTraining.PreMeleeMaze",
+      "role": "GetParentScript",
+      "address": "0x00D43D70",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingDeparture.TheRealGuildmaster",
+      "role": "Main",
+      "address": "0x00D50C60",
+      "offsets": {
+        "0xC": {
+          "count": 1,
+          "context": []
+        },
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x18": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingDeparture.TheRealGuildmaster",
+      "role": "Init",
+      "address": "0x00D50A80",
+      "offsets": {
+        "0x1E": {
+          "count": 1,
+          "context": []
+        },
+        "0x1C": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingDeparture.TheRealGuildmaster",
+      "role": "GetParentScript",
+      "address": "0x00D50A70",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingMelee.TheRealGuildmaster",
+      "role": "Main",
+      "address": "0x00D58490",
+      "offsets": {
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x14": {
+          "count": 28,
+          "context": []
+        },
+        "0x18": {
+          "count": 2,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x52"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x51"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x53"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x56"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x56"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingMelee.TheRealGuildmaster",
+      "role": "Init",
+      "address": "0x00D56670",
+      "offsets": {
+        "0x1D": {
+          "count": 1,
+          "context": []
+        },
+        "0x1C": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingMelee.TheRealGuildmaster",
+      "role": "GetParentScript",
+      "address": "0x00D56660",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingMelee.MeleeOpponent",
+      "role": "Main",
+      "address": "0x00D56790",
+      "offsets": {
+        "0x14": {
+          "count": 31,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x53"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x51"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x52"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x56"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x56"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingMelee.MeleeOpponent",
+      "role": "Init",
+      "address": "0x00D56750",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        },
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x20": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingMelee.MeleeOpponent",
+      "role": "GetParentScript",
+      "address": "0x00D56740",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingMelee.MeleeThunder",
+      "role": "Main",
+      "address": "0x00D58080",
+      "offsets": {
+        "0x14": {
+          "count": 8,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingMelee.MeleeThunder",
+      "role": "GetParentScript",
+      "address": "0x00D58040",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee.TheRealGuildmaster",
+      "role": "Main",
+      "address": "0x00D52E90",
+      "offsets": {
+        "0x14": {
+          "count": 16,
+          "context": []
+        },
+        "0x18": {
+          "count": 4,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x54"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9D"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9D"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9D"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9D"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x49"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee.TheRealGuildmaster",
+      "role": "Init",
+      "address": "0x00D51ED0",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x1D": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee.TheRealGuildmaster",
+      "role": "GetParentScript",
+      "address": "0x00D51EC0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee.PreMeleeDummy",
+      "role": "Main",
+      "address": "0x00D51FC0",
+      "offsets": {
+        "0x14": {
+          "count": 10,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x50"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee.PreMeleeDummy",
+      "role": "GetParentScript",
+      "address": "0x00D51FA0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee.PreMeleeWhisper",
+      "role": "Main",
+      "address": "0x00D524A0",
+      "offsets": {
+        "0x14": {
+          "count": 4,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4A"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4A"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x55"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee.PreMeleeWhisper",
+      "role": "GetParentScript",
+      "address": "0x00D522D0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingSkill.TheRealGuildmaster",
+      "role": "Main",
+      "address": "0x00D5AE70",
+      "offsets": {
+        "0xC": {
+          "count": 1,
+          "context": []
+        },
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x14": {
+          "count": 7,
+          "context": []
+        },
+        "0x18": {
+          "count": 34,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9E"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC3"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC3"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC4"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9E"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC1"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA8"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC1"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA4"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC3"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xA0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC3"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC4"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC5"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC5"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC3"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingSkill.TheRealGuildmaster",
+      "role": "Init",
+      "address": "0x00D5AC90",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingSkill.TheRealGuildmaster",
+      "role": "GetParentScript",
+      "address": "0x00D5AC80",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWill.TheRealGuildmaster",
+      "role": "Main",
+      "address": "0x00D5E0C0",
+      "offsets": {
+        "0x10": {
+          "count": 1,
+          "context": []
+        },
+        "0x14": {
+          "count": 19,
+          "context": []
+        },
+        "0x18": {
+          "count": 17,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9F"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC2"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC2"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xAC"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xB0"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5D"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5D"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5D"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0xC6"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x5C"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWill.TheRealGuildmaster",
+      "role": "GetParentScript",
+      "address": "0x00D5DE80",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture.ArtifactThief",
+      "role": "GetParentScript",
+      "address": "0x00D62400",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture.FinalMaze",
+      "role": "Main",
+      "address": "0x00D647F0",
+      "offsets": {
+        "0x20": {
+          "count": 12,
+          "context": []
+        },
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x48"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture.FinalMaze",
+      "role": "GetParentScript",
+      "address": "0x00D62310",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture.ScorpionHome",
+      "role": "Main",
+      "address": "0x00D643A0",
+      "offsets": {
+        "0x14": {
+          "count": 5,
+          "context": []
+        },
+        "0x1C": {
+          "count": 4,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture.ScorpionHome",
+      "role": "Init",
+      "address": "0x00D63D80",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x20": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture.ScorpionHome",
+      "role": "GetParentScript",
+      "address": "0x00D63D60",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsMelee.ScorpionHome",
+      "role": "Main",
+      "address": "0x00D67270",
+      "offsets": {
+        "0x14": {
+          "count": 3,
+          "context": []
+        },
+        "0x1C": {
+          "count": 4,
+          "context": []
+        },
+        "0x18": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4B"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4B"
+        },
+        {
+          "ownerOffset": "0x18",
+          "fieldOffset": "0x9C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4B"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWoodsMelee.ScorpionHome",
+      "role": "Init",
+      "address": "0x00D66C60",
+      "offsets": {
+        "0x1C": {
+          "count": 1,
+          "context": []
+        },
+        "0x20": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsMelee.ScorpionHome",
+      "role": "GetParentScript",
+      "address": "0x00D66C40",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    },
+    {
+      "script": "Q_GuildTrainingWoodsWill.WillWhisper",
+      "role": "Main",
+      "address": "0x00D68810",
+      "offsets": {
+        "0x14": {
+          "count": 4,
+          "context": []
+        }
+      },
+      "indirectStateAccess": [
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4B"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4B"
+        },
+        {
+          "ownerOffset": "0x14",
+          "fieldOffset": "0x4C"
+        }
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWoodsWill.WillWhisper",
+      "role": "GetParentScript",
+      "address": "0x00D687C0",
+      "offsets": {
+        "0x14": {
+          "count": 1,
+          "context": []
+        }
+      },
+      "indirectStateAccess": []
+    }
+  ],
+  "limits": "Offsets are native evidence only; semantic field names require class/layout and runtime confirmation."
+}

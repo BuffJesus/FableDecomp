@@ -1,0 +1,174 @@
+{
+  "events": [
+    {
+      "site": 14344180,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14344180,
+        "target": [
+          "constant",
+          10085552
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14346603,
+      "name": "assign",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14346603,
+        "target": [
+          "constant",
+          10088368
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "unknown"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14346632,
+      "name": "line",
+      "argumentCount": 5,
+      "setup": {
+        "address": 14346632,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1464
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebx"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "result",
+            14346613,
+            "hero"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14346665,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14346665,
+        "target": [
+          "constant",
+          10087136
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14346829,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14346829,
+        "target": [
+          "constant",
+          10087136
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "helpers": [
+    {
+      "address": 10085552,
+      "size": 15,
+      "sha256": "38179c19e44630e074ee6f21daa0d5c804a503009c57b443f53f87ca6df50e63"
+    },
+    {
+      "address": 10088368,
+      "size": 40,
+      "sha256": "fbc889371f4dd3fbcb6c29e8698ed39e03c1330fdf8e09dd0f1e25d5a09aeab0"
+    }
+  ]
+}

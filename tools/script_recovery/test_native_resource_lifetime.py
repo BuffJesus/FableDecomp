@@ -1,10 +1,22 @@
 import unittest
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
 
-from tools.script_recovery.native_resource_lifetime import check_single_resource_lifetime
+from tools.script_recovery.native_resource_lifetime import check_single_resource_lifetime,check_resource_lifetimes
 
 
 class ResourceLifetimeTests(unittest.TestCase):
+    def test_concurrent_locals_are_independent_and_all_must_close(self):
+        decoder=Cs(CS_ARCH_X86,CS_MODE_32);decoder.detail=True
+        ins=list(decoder.disasm(bytes.fromhex('e800000000 e800000000 e800000000 e800000000 c3'),0x1000))
+        events={0x1000:('start',36),0x1005:('start',48),0x100A:('end',48),0x100F:('end',36)}
+        self.assertTrue(check_resource_lifetimes(ins,events))
+        self.assertFalse(check_single_resource_lifetime(ins,events))
+        for site in (0x100A,0x100F):
+            changed=dict(events);del changed[site]
+            self.assertFalse(check_resource_lifetimes(ins,changed))
+        changed=dict(events);changed[0x1005]=('start',36)
+        self.assertFalse(check_resource_lifetimes(ins,changed))
+
     def test_shared_destructor_checks_each_incoming_resource(self):
         # Two independent starts converge on one destructor with selected ECX.
         raw = bytes.fromhex('740b e800000000 8d4c2448 eb09 e800000000 8d4c2460 e800000000 c3')

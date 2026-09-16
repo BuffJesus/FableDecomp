@@ -24,7 +24,7 @@ function Init(quest, me)
 end
 
 function Main(quest, me)
-    local CVar29, CVar31, bVar4, cVar5, fVar22, fVar3, fVar33, iVar10, native_arg_sequence_1, native_arg_wife_ally_hero, native_arg_wife_animation_remainder, native_arg_wife_argument_id, native_arg_wife_hit, native_arg_wife_line_counter, native_arg_wife_line_key, native_arg_wife_participant, native_arg_wife_reply_remainder, native_arg_wife_reply_terminating, native_arg_wife_reverse_hero, pCVar1, pCVar13, pCVar17, pCVar24, pCVar27, pCVar28, pCVar30, pCVar35, pCVar8, pCVar9, paVar32, paVar34, pcVar26, piVar20, ppVar15, ppVar25, ppuVar2, puVar19, r1, r2, r3, r4, r5, r6, r7, uVar11, uVar12, uVar14, uVar21
+    local CVar29, CVar31, bVar4, cVar5, fVar22, fVar3, fVar33, iVar10, native_arg_sequence_1, native_arg_wife_ally_hero, native_arg_wife_animation_remainder, native_arg_wife_argument_id, native_arg_wife_hit, native_arg_wife_line_counter, native_arg_wife_line_key, native_arg_wife_participant, native_arg_wife_reply_remainder, native_arg_wife_reply_terminating, native_arg_wife_reverse_hero, pCVar1, pCVar13, pCVar17, pCVar24, pCVar27, pCVar28, pCVar30, pCVar35, pCVar8, pCVar9, paVar32, paVar34, pcVar26, piVar20, ppVar15, ppVar25, r1, r2, r3, r4, r5, r6, r7, uVar11, uVar12, uVar14, uVar21
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -64,11 +64,8 @@ function Main(quest, me)
             r1 = quest:GetThingWithScriptName("NOVI_AffairMan")
             pCVar27 = 0x1
             quest:EntitySetAsUseMovementInActions(me, true)
-            if nil == nil then
-            else
-                pCVar9 = (**(*0x0 + 0x18))()
-            end
-            me:MoveToPosition(nil --[[missing]], 0x40000000, 0x1, false, true)
+            pCVar9 = RetailThingPosition(r1)
+            me:MoveToPosition(pCVar9, 2.0, 1, false, true)
             -- TODO(native): ppVar23 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar1;
             quest:ClearThingHasInformation(me)
             bVar4 = quest:IsDistanceBetweenThingsUnder(me, r1, 3.0)
@@ -167,7 +164,6 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             if not alive then goto LAB_00db3e16 end
             quest:StartMovieSequence()
-            ppuVar2 = *(param_1 + 4)
             quest:PauseAllNonScriptedEntities(true)
             -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xffffff44);
             if bVar4 then
@@ -624,7 +620,6 @@ function Main(quest, me)
         end
     until false
     -- LAB_00db3dd9: (native jump target)
-    puVar19 = *ppuVar2
     -- LAB_00db3e05: (native jump target)
     quest:PauseAllNonScriptedEntities(false)
     -- LAB_00db3e0d: (native jump target)

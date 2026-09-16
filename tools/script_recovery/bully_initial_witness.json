@@ -1,0 +1,83 @@
+{
+  "mainAddress": 14398224,
+  "mainSize": 6639,
+  "mainSha256": "f47ba776fb2c395188e93ad75c5efe688021a27238e2a2ffd27b8e751e900e8d",
+  "draftSha256": "2921b096542c4ac2a71283d8a868dcf76c9388f0910c95055efd40fa4a3ff74b",
+  "healthSites": [
+    {
+      "start": 14399273,
+      "destroy": 14399325,
+      "end": 14399330
+    },
+    {
+      "start": 14399771,
+      "destroy": 14399823,
+      "end": 14399828
+    },
+    {
+      "start": 14400287,
+      "destroy": 14400768,
+      "end": 14400773
+    },
+    {
+      "start": 14400547,
+      "destroy": 14400605,
+      "end": 14400610
+    },
+    {
+      "start": 14401188,
+      "destroy": 14401246,
+      "end": 14401251
+    },
+    {
+      "start": 14401430,
+      "destroy": 14401488,
+      "end": 14401493
+    },
+    {
+      "start": 14401642,
+      "destroy": 14401700,
+      "end": 14401705
+    },
+    {
+      "start": 14401818,
+      "destroy": 14401876,
+      "end": 14401881
+    },
+    {
+      "start": 14402026,
+      "destroy": 14402078,
+      "end": 14402083
+    }
+  ],
+  "thresholdAddress": 19062492,
+  "thresholdHex": "00000000",
+  "home": {
+    "start": 14398458,
+    "success": 14398780,
+    "snapshot": 14398467,
+    "getter": 14398494,
+    "distance": 14398505,
+    "move": 14398615,
+    "resourceStackOffset": 16,
+    "positionStackOffset": 100,
+    "temporaryStackOffset": 88
+  },
+  "limits": [
+    "Phases only; full actor retained-resource/movie scope map remains incomplete.",
+    "Do not apply health replacements to a cached entity wrapper or retained Victim."
+  ],
+  "draftTextSha256": "358ce190f5957dd8652b7de5242c048a321ee18eb7a3431f746531db014e2a09",
+  "helperSpans": [
+    {
+      "address": 8287376,
+      "size": 55,
+      "sha256": "b42e366f671fa8b0358addcc74d339d70ed64698324340092106c6f1390fd695"
+    },
+    {
+      "address": 13362268,
+      "size": 91,
+      "sha256": "ff5da0431572dcd8e97f57d11e0ab7675b02a5c1567180788324d61fd5110252"
+    }
+  ]
+}

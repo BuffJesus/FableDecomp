@@ -1,0 +1,338 @@
+{
+  "sourceSha256": "ce0918604079b010c7bebbeec91a29500369f94ce1cdefa5bf79dcfcaa127d28",
+  "regions": [
+    {
+      "name": "Main",
+      "address": 15482176,
+      "size": 994,
+      "sha256": "b32bd220bde2157932b5200e06774175f9903f0624c0b4b50294f7d99002ac78"
+    },
+    {
+      "name": "GetActiveQuestName ABI",
+      "address": 8984704,
+      "size": 55,
+      "sha256": "16be665e98324dd7e073b3051dd5383d6b6018ef15dd23e68591f84c5af189a1"
+    }
+  ],
+  "strings": {
+    "0x12f165c": "RTFE_Sparrow",
+    "0x12f1644": "RTFE_RockTroll",
+    "0x12f162c": "M_RTFERockTrollTrigger",
+    "0x12cc268": "Witchwood1",
+    "0x12f1618": "WatchForRegionExit",
+    "0x12f15f4": "V_RockTrollFirstEncounter_Activate",
+    "0x122d70e": ""
+  },
+  "calls": [
+    {
+      "site": 15482935,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15482935,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1352
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            80
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "memory",
+            [
+              "address",
+              [
+                "register",
+                "esi"
+              ],
+              80
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "site": 15482948,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15482948,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1284
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 15483059,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "address": 15483059,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            2232
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "stack",
+          16
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            16
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "site": 15483102,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "address": 15483102,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1124
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "stack",
+          16
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            16
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 15483139,
+      "count": 2,
+      "known": {
+        "15483129": [
+          4,
+          "questName"
+        ]
+      },
+      "expected": {
+        "address": 15483139,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1124
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            15483129,
+            "questName"
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "proof": {
+    "healthBar": "EC4031 DWORD parent+50 ->RemoveQuestInfoElementEC4037; original PDB longRockTrollHealthBarID.",
+    "mission": "EC3FFA/EC4018 byte parent+4A; original PDB MissionOver role, not donor-offset substitution.",
+    "display": "EC4042 push0 ->DisplayQuestInfoEC4044.",
+    "regionMessage": "EC404E constructs CString once. EC405D/EC4085 pass same buffer, branch on AL. EC4116 destroys after callback cancellation or completed sideeffects; returned region string not inspected.",
+    "deactivation": "Child zeroEC40D7/DE. Self zeroEC40F2 remains across getterret4EC40F9 thenEC4103.",
+    "thread": "WatchForRegionExit targetEC4130 storedbeforeAddSpawnedFunction, regionempty.",
+    "limit": "Call-window coverage partial; full-function hash anchors remaining control flow/operands."
+  }
+}

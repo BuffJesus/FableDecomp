@@ -1,0 +1,76 @@
+{
+  "regions": [
+    {
+      "name": "Main",
+      "address": 14363408,
+      "size": 4890,
+      "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46"
+    },
+    {
+      "name": "format",
+      "address": 10090544,
+      "size": 116,
+      "sha256": "bb328fb3c5a3d52e3bc3be058e9e7ce43d7b4e4951b37aa7d9fac532c918fddc"
+    },
+    {
+      "name": "concat",
+      "address": 10089840,
+      "size": 130,
+      "sha256": "022034bd576cdac9b501333cb2c79d45ce167089fe6fa102c9a8442432934c4e"
+    },
+    {
+      "name": "literal",
+      "address": 10087408,
+      "size": 61,
+      "sha256": "8c27b64a613d8319d3e866b8224ecfcedf8e5ccaf92a81314c16631d41f3f100"
+    },
+    {
+      "name": "destroy",
+      "address": 10087136,
+      "size": 12,
+      "sha256": "65d790bd8e62fef3658c4d1320e81e8b1c6d54ab12879256c0e4e4c533c1c53e"
+    },
+    {
+      "name": "release",
+      "address": 10086832,
+      "size": 87,
+      "sha256": "e0ccad7278cb78743022e17eb02dad9b144f7132dc1538d5adb393a625d3e5de"
+    },
+    {
+      "name": "assign",
+      "address": 10088416,
+      "size": 69,
+      "sha256": "86905b4d8450fcb8745bbf74f6de0b10a6e83d68a849ca2ad5758bab3f37a7de"
+    },
+    {
+      "name": "textExists",
+      "address": 8986736,
+      "size": 67,
+      "sha256": "565a223b43a19c1c8a2a8cd572da4540c0e73324255c66efa7076dcc32b3926f"
+    }
+  ],
+  "strings": {
+    "19762432": "TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_",
+    "19762392": "TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_10",
+    "19291624": "%d"
+  },
+  "bindings": {
+    "0x598": 8986736
+  },
+  "keyEvents": {
+    "start": [
+      14367678
+    ],
+    "use": [
+      14367714,
+      14367756,
+      14367780,
+      14367855
+    ],
+    "end": [
+      14367874,
+      14368139
+    ]
+  },
+  "review": "Result CString at stack36 constructed by concat3BBE after suffixformat3BA2 and prefixctor3BB3. Prefixdestroy3BC7 then suffixdestroy3BD3. Text query3BE2 returns rawbool; missing branch termchecks before resettingcounter10 and assigning samekey3C0C. Mainline3C24 uses samekey; optional replystring3C57..3C79 is nested inside mainkey lifetime. Mainkey ends3C82 or3D8B, always before retained husband cleanup."
+}

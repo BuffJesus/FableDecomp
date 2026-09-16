@@ -130,29 +130,29 @@ PATTERNS = [
 # Interface-field aliases: `iVarN = **(int **)(this + 4);` (cached vtable) / `piVarN = *(int **)(this + 4);`
 # (cached object); quest scripts spell the field `+ 0x40`.
 RE_GSI_ALIAS = re.compile(
-    r"^[ \t]*(?P<var>iVar\d+|piVar\d+|iStack_[0-9a-f]+|ppuVar\d+) = "
+    r"^[ \t]*(?P<var>[A-Za-z_]\w*) = "
     r"\*{1,2}\(int \*\*\)\((?:this|param_\d+|\w+) \+ (?:4|0x40)\);", re.M)
 # The entity's own CScriptThing lives at +8: `pCVarN = (CScriptThing *)(this + 8);` (cast optional).
 RE_ME_ALIAS = re.compile(
-    r"^[ \t]*(?P<var>pCVar\d+) = (?:\(CScriptThing \*\))?\(?(?:this|param_\d+) \+ 8\)?;", re.M)
+    r"^[ \t]*(?P<var>[A-Za-z_]\w*) = (?:\(CScriptThing \*\))?\(?(?:this|param_\d+) \+ 8\)?;", re.M)
 # `pCVarN = pCVarM;` copies whatever pCVarM aliases.
-RE_COPY_ALIAS = re.compile(r"^[ \t]*(?P<var>pCVar\d+|piVar\d+) = (?P<src>pCVar\d+|piVar\d+);", re.M)
+RE_COPY_ALIAS = re.compile(r"^[ \t]*(?P<var>[A-Za-z_]\w*) = (?P<src>[A-Za-z_]\w*);", re.M)
 # A CScriptThing returned (by value, through the hidden slot Ghidra shows as `&stack...`) by an
 # interface call: `piVarN = (int *)(**(code **)(**(int **)(this + 4) + 0x120))(` (GetThingWithScriptName),
 # or by a thing slot that returns a CScriptThing (`*piVarM + 0x68` MsgWhoHitMe).
 RE_THING_ALIAS = re.compile(
-    r"^[ \t]*(?P<var>pCVar\d+|piVar\d+) = (?:\((?:int|CScriptThing) \*\))?\s*\(\*\*\(code \*\*\)\("
+    r"^[ \t]*(?P<var>[A-Za-z_]\w*) = (?:\((?:int|CScriptThing) \*\))?\s*\(\*\*\(code \*\*\)\("
     r"(?:\*\*\(int \*\*\)\((?:this|param_\d+) \+ (?:4|0x40)\)|iVar\d+|\*DAT_0143e8f8"
-    r"|\*(?:\(int \*\))?(?P<via>piVar\d+|pCVar\d+|\((?:this|param_\d+) \+ 8\))) \+ "
+    r"|\*(?:\(int \*\))?(?P<via>[A-Za-z_]\w*|\((?:this|param_\d+) \+ 8\))) \+ "
     r"(?P<off>" + OFFSET + r")\)\)\(", re.M)
 # Any other assignment to a candidate receiver name ends its alias.
-RE_ANY_DEF = re.compile(r"^[ \t]*(?P<var>pCVar\d+|piVar\d+|iVar\d+) = ", re.M)
+RE_ANY_DEF = re.compile(r"^[ \t]*(?P<var>[A-Za-z_]\w*) = ", re.M)
 
 # Call heads through a CScriptThing vtable (`*(int *)recv + off` = recv->vtbl[off]).
 THING_PATTERNS = [
     re.compile(r"\(\*\*\(code \*\*\)\(\*\(int \*\)\((?P<recv>(?:this|param_\d+) \+ 8)\) \+ (?P<off>" + OFFSET + r")\)\)\("),
-    re.compile(r"\(\*\*\(code \*\*\)\(\*\(int \*\)(?P<recv>pCVar\d+|pCStack_[0-9a-f]+) \+ (?P<off>" + OFFSET + r")\)\)\("),
-    re.compile(r"\(\*\*\(code \*\*\)\(\*(?P<recv>piVar\d+) \+ (?P<off>" + OFFSET + r")\)\)\("),
+    re.compile(r"\(\*\*\(code \*\*\)\(\*\(int \*\)(?P<recv>[A-Za-z_]\w*) \+ (?P<off>" + OFFSET + r")\)\)\("),
+    re.compile(r"\(\*\*\(code \*\*\)\(\*(?P<recv>[A-Za-z_]\w*) \+ (?P<off>" + OFFSET + r")\)\)\("),
 ]
 ME_RECEIVER = "(CScriptThing *)(this + 8)"
 RE_THING_RETURN = re.compile(r"@CScriptThing@@[UM][AB]E\?AV1@")

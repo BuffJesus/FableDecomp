@@ -14,6 +14,14 @@ def decode(raw, address=0x1000):
 
 
 class CallSetupTests(unittest.TestCase):
+    def test_disjoint_stack_store_preserves_only_nonmemory_argument_facts(self):
+        setup = call_setup(decode(bytes.fromhex('6a07 c744240801000000 e800000000')), argument_count=1)
+        self.assertEqual(setup.stack_arguments, (('constant', 7),))
+        # A prior load can alias the written bytes even when its argument slot does not.
+        self.assertIsNone(call_setup(decode(bytes.fromhex('ff37 c744240801000000 e800000000')), argument_count=1))
+        # A four-byte store beginning before the argument still overlaps its low bytes.
+        self.assertIsNone(call_setup(decode(bytes.fromhex('6a07 c74424fe01000000 e800000000')), argument_count=1))
+
     def test_zeroed_low_byte_load_preserves_dynamic_unsigned_byte(self):
         for prefix,load,push in (('31c9','8a0d48573701','51'),('31d2','8a1548573701','52')):
             setup=call_setup(decode(bytes.fromhex(prefix+load+push+'e800000000')),argument_count=1)

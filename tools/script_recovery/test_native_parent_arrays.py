@@ -9,6 +9,25 @@ from tools.script_recovery.test_lift_native_lua import make
 
 
 class ParentArrayTests(unittest.TestCase):
+    def test_decimal_and_hex_offsets_share_reviewed_parent_state(self):
+        fields = load_entity_parent_state('NOVI_Bully')
+        self.assertEqual(fields['0x64'], ('GUIBullyHealthCounter', 'Int'))
+        for offset in ('100', '0x64', '0x064'):
+            lifter = make(entity=True)
+            lifter.parent_state = fields
+            source = ('{\n*(int *)(*(int *)(param_1 + 0x14) + ' + offset + ') = 42;\n'
+                      'iVar8 = *(int *)(*(int *)(param_1 + 0x14) + ' + offset + ');\nreturn iVar8;\n}')
+            body = '\n'.join(lifter.lift('State', source))
+            self.assertEqual(lifter.todo, [])
+            lua, values = LuaRuntime(), {}
+            quest = lua.table_from({'SetStateInt': lambda _, key, value: values.update({key: value}),
+                                    'GetStateInt': lambda _, key: values[key]})
+            self.assertEqual(lua.execute('return function(quest)\n' + body + '\nend')(quest), 42)
+            self.assertEqual(values, {'GUIBullyHealthCounter': 42})
+        lifter = make(entity=True)
+        lifter.parent_state = {}
+        self.assertNotIn('GUIBullyHealthCounter', lifter.expr('*(int *)(*(int *)(param_1 + 0x14) + 100)'))
+
     def test_unresolved_reassignment_invalidates_parent_alias(self):
         for replacement in ('FUN_00123456()', '&local_40', 'DAT_00123456'):
             with self.subTest(replacement=replacement):

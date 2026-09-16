@@ -1,0 +1,19 @@
+{
+  "address": 14375496,
+  "size": 122,
+  "blocks": [
+    {
+      "oldLua": "                            uVar6 = quest:GetHero()\n                            quest:EntitySetFacingAngleTowardsThing(me, uVar6)\n",
+      "newLua": "                            resources:FaceBarrelManTowardsHero(me)\n"
+    },
+    {
+      "oldLua": "                            uVar6 = quest:GetHero()\n                            cVar2 = quest:CanThingBe_Seen_ByOtherThing(uVar6, r5)\n                            if cVar2 then\n",
+      "newLua": "                            if resources:ShouldBarrelManThankHero(me) then\n"
+    },
+    {
+      "oldLua": "                            fVar25 = 10.0\n                            pCVar7 = quest:GetHero()\n                            bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar7, fVar25)\n                            if bVar3 then return end  -- TODO(native): goto LAB_00db5c28\n",
+      "newLua": ""
+    }
+  ],
+  "sha256": "2dbbd3fafa1a66b4c49b3c2144ae1c441de6aa0a6352e7455780fb277258d5f7"
+}

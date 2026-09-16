@@ -1,0 +1,1109 @@
+{
+  "markers": [
+    {
+      "create": 14374069,
+      "identity": [
+        "stack",
+        36
+      ],
+      "name": "M_WHouse_ManStart",
+      "literal": 19763720,
+      "setup": {
+        "address": 14374069,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          36
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            60
+          ]
+        ]
+      },
+      "string": {
+        "create": 14374049,
+        "use": 14374069,
+        "destroy": 14374079,
+        "identity": [
+          "stack",
+          60
+        ],
+        "constructSetup": {
+          "address": 14374049,
+          "target": [
+            "constant",
+            10087408
+          ],
+          "ecx": [
+            "stack",
+            60
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": [
+            [
+              "constant",
+              19763720
+            ],
+            [
+              "constant",
+              4294967295
+            ]
+          ]
+        },
+        "destroySetup": {
+          "address": 14374079,
+          "target": [
+            "constant",
+            10087136
+          ],
+          "ecx": [
+            "stack",
+            60
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    },
+    {
+      "create": 14374115,
+      "identity": [
+        "stack",
+        48
+      ],
+      "name": "M_WHouse_GuardPoint",
+      "literal": 19763200,
+      "setup": {
+        "address": 14374115,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          48
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            48
+          ],
+          [
+            "stack",
+            60
+          ]
+        ]
+      },
+      "string": {
+        "create": 14374095,
+        "use": 14374115,
+        "destroy": 14374125,
+        "identity": [
+          "stack",
+          60
+        ],
+        "constructSetup": {
+          "address": 14374095,
+          "target": [
+            "constant",
+            10087408
+          ],
+          "ecx": [
+            "stack",
+            60
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": [
+            [
+              "constant",
+              19763200
+            ],
+            [
+              "constant",
+              4294967295
+            ]
+          ]
+        },
+        "destroySetup": {
+          "address": 14374125,
+          "target": [
+            "constant",
+            10087136
+          ],
+          "ecx": [
+            "stack",
+            60
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    },
+    {
+      "create": 14374370,
+      "identity": [
+        "stack",
+        172
+      ],
+      "name": "M_BarrelManWalkOff",
+      "literal": 19763700,
+      "setup": {
+        "address": 14374370,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          172
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            172
+          ],
+          [
+            "stack",
+            160
+          ]
+        ]
+      },
+      "string": {
+        "create": 14374344,
+        "use": 14374370,
+        "destroy": 14374383,
+        "identity": [
+          "stack",
+          160
+        ],
+        "constructSetup": {
+          "address": 14374344,
+          "target": [
+            "constant",
+            10087408
+          ],
+          "ecx": [
+            "stack",
+            160
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": [
+            [
+              "constant",
+              19763700
+            ],
+            [
+              "constant",
+              4294967295
+            ]
+          ]
+        },
+        "destroySetup": {
+          "address": 14374383,
+          "target": [
+            "constant",
+            10087136
+          ],
+          "ecx": [
+            "stack",
+            160
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    },
+    {
+      "create": 14374846,
+      "identity": [
+        "stack",
+        208
+      ],
+      "name": "M_BarrelManWalkOff",
+      "literal": 19763700,
+      "setup": {
+        "address": 14374846,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            208
+          ],
+          [
+            "stack",
+            152
+          ]
+        ]
+      },
+      "string": {
+        "create": 14374820,
+        "use": 14374846,
+        "destroy": 14374859,
+        "identity": [
+          "stack",
+          152
+        ],
+        "constructSetup": {
+          "address": 14374820,
+          "target": [
+            "constant",
+            10087408
+          ],
+          "ecx": [
+            "stack",
+            152
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": [
+            [
+              "constant",
+              19763700
+            ],
+            [
+              "constant",
+              4294967295
+            ]
+          ]
+        },
+        "destroySetup": {
+          "address": 14374859,
+          "target": [
+            "constant",
+            10087136
+          ],
+          "ecx": [
+            "stack",
+            152
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    },
+    {
+      "create": 14374904,
+      "identity": [
+        "stack",
+        220
+      ],
+      "name": "M_BarrelManWalkOffAlt",
+      "literal": 19763676,
+      "setup": {
+        "address": 14374904,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            220
+          ],
+          [
+            "stack",
+            132
+          ]
+        ]
+      },
+      "string": {
+        "create": 14374878,
+        "use": 14374904,
+        "destroy": 14374917,
+        "identity": [
+          "stack",
+          132
+        ],
+        "constructSetup": {
+          "address": 14374878,
+          "target": [
+            "constant",
+            10087408
+          ],
+          "ecx": [
+            "stack",
+            132
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": [
+            [
+              "constant",
+              19763676
+            ],
+            [
+              "constant",
+              4294967295
+            ]
+          ]
+        },
+        "destroySetup": {
+          "address": 14374917,
+          "target": [
+            "constant",
+            10087136
+          ],
+          "ecx": [
+            "stack",
+            132
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    },
+    {
+      "create": 14378025,
+      "identity": [
+        "stack",
+        384
+      ],
+      "name": "M_WHouse_GuardPoint",
+      "literal": 19763200,
+      "setup": {
+        "address": 14378025,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          384
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            384
+          ],
+          [
+            "stack",
+            108
+          ]
+        ]
+      },
+      "string": {
+        "create": 14377996,
+        "use": 14378025,
+        "destroy": 14378069,
+        "identity": [
+          "stack",
+          108
+        ],
+        "constructSetup": {
+          "address": 14377996,
+          "target": [
+            "constant",
+            10087408
+          ],
+          "ecx": [
+            "stack",
+            108
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": [
+            [
+              "constant",
+              19763200
+            ],
+            [
+              "constant",
+              4294967295
+            ]
+          ]
+        },
+        "destroySetup": {
+          "address": 14378069,
+          "target": [
+            "constant",
+            10087136
+          ],
+          "ecx": [
+            "stack",
+            108
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    },
+    {
+      "create": 14378110,
+      "identity": [
+        "stack",
+        408
+      ],
+      "name": "M_BarrelManHiddenPos",
+      "literal": 19763432,
+      "setup": {
+        "address": 14378110,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          116
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            408
+          ],
+          [
+            "stack",
+            116
+          ]
+        ]
+      },
+      "string": {
+        "create": 14378085,
+        "use": 14378110,
+        "destroy": 14378143,
+        "identity": [
+          "stack",
+          116
+        ],
+        "constructSetup": {
+          "address": 14378085,
+          "target": [
+            "constant",
+            10087408
+          ],
+          "ecx": [
+            "stack",
+            116
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": [
+            [
+              "constant",
+              19763432
+            ],
+            [
+              "constant",
+              4294967295
+            ]
+          ]
+        },
+        "destroySetup": {
+          "address": 14378143,
+          "target": [
+            "constant",
+            10087136
+          ],
+          "ecx": [
+            "stack",
+            116
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    }
+  ],
+  "ends": [
+    {
+      "site": 14374698,
+      "identity": [
+        "register",
+        "ecx"
+      ],
+      "setup": {
+        "address": 14374698,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14375033,
+      "identity": [
+        "stack",
+        220
+      ],
+      "setup": {
+        "address": 14375033,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          220
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14375045,
+      "identity": [
+        "stack",
+        208
+      ],
+      "setup": {
+        "address": 14375045,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          208
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14378060,
+      "identity": [
+        "stack",
+        384
+      ],
+      "setup": {
+        "address": 14378060,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          384
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14378134,
+      "identity": [
+        "stack",
+        408
+      ],
+      "setup": {
+        "address": 14378134,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          408
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14379398,
+      "identity": [
+        "stack",
+        48
+      ],
+      "setup": {
+        "address": 14379398,
+        "target": [
+          "constant",
+          10068704
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14379456,
+      "identity": [
+        "stack",
+        36
+      ],
+      "setup": {
+        "address": 14379456,
+        "target": [
+          "constant",
+          10068704
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14379541,
+      "identity": [
+        "stack",
+        172
+      ],
+      "setup": {
+        "address": 14379541,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          172
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14379558,
+      "identity": [
+        "stack",
+        220
+      ],
+      "setup": {
+        "address": 14379558,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          220
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14379570,
+      "identity": [
+        "register",
+        "ecx"
+      ],
+      "setup": {
+        "address": 14379570,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14379777,
+      "identity": [
+        "stack",
+        48
+      ],
+      "setup": {
+        "address": 14379777,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14379786,
+      "identity": [
+        "stack",
+        36
+      ],
+      "setup": {
+        "address": 14379786,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "selections": {
+    "14374678": [
+      "stack",
+      172
+    ],
+    "14379563": [
+      "stack",
+      208
+    ]
+  },
+  "baseDestructor": {
+    "address": 10068704,
+    "size": 7,
+    "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+  }
+}

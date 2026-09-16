@@ -1,0 +1,34 @@
+{
+  "regions": [
+    {
+      "name": "phaseAndUnwind",
+      "address": 15486702,
+      "size": 278,
+      "sha256": "208c5b01a38e552a4e2b28f43e7db9a904e56198401287b1822328f5d606db10"
+    },
+    {
+      "name": "animationHelper",
+      "address": 8287184,
+      "size": 15,
+      "sha256": "b15918b5d8b85acb00708ee1f721e3297fac818c09fedf1a8ff14a30090a50bf"
+    },
+    {
+      "name": "taskHelper",
+      "address": 8287312,
+      "size": 16,
+      "sha256": "d05cc2c1e9c32a81b4f84d5201dd4fa1983802ce77483aba53b5e2367800acac"
+    }
+  ],
+  "strings": {
+    "0x127a550": "SPECIAL_BOAST",
+    "0x127a43c": "SPECIAL_IDLE"
+  },
+  "proof": [
+    "EC4EF9/4F2F CStringconstruct precedes dynamic rawbyte readsEC4F01/4F37 from1375748; each CString dies immediately after helpercall.",
+    "Both calls push animation thenseven32bitslots0,0,0,1,zeroextendedbyte,0,0. No boolean normalization of changing rawbyte is inferred.",
+    "7E73D0 loads resourceData+8 and taildispatches Data.vtable+48; emptyData ret32 withoutplay, but outer CStringstillconstructed/destroyed.",
+    "7E7450 polls resourceData.vtable+68, returnsfalse for emptyData. Frame/cancelcheck aftereachbusyquery, independentcheckafteridle.",
+    "EC4F97 queries validity;CD2770 clears control only ifvalid. Resourceobject remainslive across finaltargetingcontinuation, destructor laterEC4FF7.",
+    "No TrollAwake read/write inthisphase; producer unresolved does not blockbounded recovery."
+  ]
+}

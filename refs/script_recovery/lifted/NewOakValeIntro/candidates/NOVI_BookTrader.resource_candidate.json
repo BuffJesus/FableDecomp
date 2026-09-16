@@ -1,0 +1,188 @@
+{
+  "schema": "book-trader-resource-candidate/0.1",
+  "status": "disabled-incomplete",
+  "draftSha256": "6fa14a054e654386ba6831550d4f193dfc1c3866eee11b435b826813fc100dfc",
+  "candidateSha256": "76365f808e43564d95cbb0f268888f0a0d4268fffcd8f558abdab46d141e904d",
+  "rewrites": {
+    "scoped conversation setup": 1,
+    "scoped conversation line": 1,
+    "hit string scope": 1,
+    "prepare": 4,
+    "acquire": 8,
+    "speak": 7,
+    "task query": 16,
+    "movement": 1,
+    "animation": 1,
+    "live animation byte": 1,
+    "movie start": 2,
+    "movie end": 26,
+    "movie pause": 28,
+    "health temporary": 7,
+    "distance temporary": 1,
+    "early resource exits": 3,
+    "common resource exit": 1,
+    "resource construction": 1,
+    "facing snap flags": 3,
+    "scoped named facing": 3
+  },
+  "nativeResourceEvents": {
+    "construct": 1,
+    "has_resource": 4,
+    "reset": 4,
+    "acquire": 8,
+    "get_thing": 8,
+    "move": 1,
+    "task_query": 16,
+    "destroy": 2,
+    "speak": 7,
+    "animation": 1,
+    "inline_destroy_end": 2
+  },
+  "nativeTemporaryThings": 8,
+  "lifetimeStatus": "one constructor, all mapped uses, four destruction exits verified",
+  "movies": {
+    "status": "native-operands-and-single-active-lifetime-verified",
+    "starts": [
+      "0xdb43f4",
+      "0xdb45e7"
+    ],
+    "nativeDestructors": 2,
+    "className": "",
+    "bytesSha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974"
+  },
+  "syntax": {
+    "runtime": "Lua 5.4",
+    "ok": true,
+    "checked": 1,
+    "passed": 1,
+    "errors": []
+  },
+  "hitScope": {
+    "nativeRegion": "0x00DB4234",
+    "nativeSize": 215,
+    "nativeSha256": "9f4c6da6b350ddf283d1cda52b583e4876fb7492333d6dc7a6d1de5686b62681",
+    "oldLuaSha256": "aa8ba07411b333cba523b45ba2750eebc204aa55b2afbc7c5a9eda1b4a4d75a7",
+    "review": "DB4258/DB4280/DB42B3 query self EBP slots54/A8/A4 with SCRIPT_NAME_HERO and excluded ability14. Constructors99EBF0 at DB4242/DB426A/DB4298 create stack78/44/80 only as short circuit requires. DB42DC/DB42F1/DB4306 destroy them in reverse conditional order before testing the saved boolean at DB430B. EBX low mask bits only track these strings in this region; preserve the surrounding resource state. Same scoped IsHitByHeroExceptAbility runtime helper as the husband candidate."
+  },
+  "facingEvidence": {
+    "regions": [
+      {
+        "address": "0xdb41e6",
+        "size": 74,
+        "sha256": "6583960fa674379b8f7ea1d54f5db738d6a8e185dba70b01b4efcd55ba6cd0e8"
+      },
+      {
+        "address": "0xdb44ba",
+        "size": 74,
+        "sha256": "1cd6ddc9d962c72ba95d079143dc05bbd73b50e35468d5836cc4f5b87a2f41c3"
+      },
+      {
+        "address": "0xdb4c85",
+        "size": 74,
+        "sha256": "639da8ef8350f8c03e36129f556d6c458cd2960d7f0b5b212a651d8026bc72da"
+      },
+      {
+        "address": "0x8a7d60",
+        "size": 151,
+        "sha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+      },
+      {
+        "address": "0x88e620",
+        "size": 193,
+        "sha256": "891bcab1d82d1901d06514cce2e9d429dbe707255985086c13644fe252f39924"
+      },
+      {
+        "address": "0x126102c",
+        "size": 4,
+        "sha256": "126fb8fde0011bc940cd2d321bf79d4a368d6da141b49252e89f0d5a270ee59a"
+      },
+      {
+        "address": "0x1261678",
+        "size": 4,
+        "sha256": "336819bd4b34341bc7416ea4deb618a718e7cda0f5be9626a031f8d105bddd9d"
+      }
+    ],
+    "scriptName": "NOVI_Theresa",
+    "scriptNameAddress": "0x12d8360",
+    "snapFlags": [
+      false,
+      true,
+      false
+    ],
+    "review": "Three sequential Lua facing sites correspond to native DB4215/DB44E9/DB4CB4. Each pushes snap0/1/0 BEFORE GetThingWithScriptName at DB420A/DB44DE/DB4CA9. Getter8A7D60 consumes hidden output and name only (ret8 at8A7DD8/8A7DF4), leaving snap for facing88E620 (ret12 at88E6DE). Receiver is game[ESI+4], actor EBP, target getter EAX. Thing destructor4AA840 then string destructor99EAE0 execute immediately after each facing call. This witness restores snap flags only; exact Thing/string lifetime lowering remains pending."
+  },
+  "conversationEvidence": {
+    "schema": "book-trader-conversation/0.1",
+    "windows": [
+      {
+        "address": 14372198,
+        "size": 40,
+        "sha256": "3c32437676d240a12cf7e5d545528d64498d24a04d8f504339667625fcdca0c9"
+      },
+      {
+        "address": 14372397,
+        "size": 55,
+        "sha256": "1cc8d4cf1927b0c245e89e4b91dffa69cee74344d48b12a42d7868af463e953f"
+      },
+      {
+        "address": 8985760,
+        "size": 173,
+        "sha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+      },
+      {
+        "address": 8980304,
+        "size": 97,
+        "sha256": "e9c4e195ecf1309446c0cd0c4f9b16dec243269db1e3ae3903ffbf6292aa66fd"
+      },
+      {
+        "address": 8980160,
+        "size": 65,
+        "sha256": "a920744c6ef139d6dfb9f86fe5e9055fed090ced6969dd90ee53d2cb117788e5"
+      },
+      {
+        "address": 8980240,
+        "size": 53,
+        "sha256": "7667e106d74acfa07f504b2198308dc7161ecbd2e9955d91534ee19539653348"
+      }
+    ],
+    "bindings": {
+      "0x118": 8985760,
+      "0x5b0": 8980160,
+      "0x5b4": 8980240,
+      "0x5b8": 8980304
+    },
+    "review": [
+      "DB4D70 self/false/false; DB4D7B retains conversation in EBX; DB4D88 adds DB4D7D hero.",
+      "DB4E38 CString at stack112 precedes DB4E42 GetHero; DB4E55 conversation/key/false/self/hero; DB4E5F destroys key.",
+      "GetHero 891CA0 updates interface+0x30; ESI becomes that address at891CB8, returned EAX at891D46. Local weak reference cleanup ends891D40; no caller-owned output or copy.",
+      "AddLine890750 calls speaker and listener IsAlive virtuals; preserve actual returned hero value including empty, without synthesizing a replacement.",
+      "Create8906C0 and AddPerson890710 call native IsAlive without a host IsNull precheck. DB4D88 is unconditional after creation/hero lookup, including nonpositive IDs."
+    ],
+    "status": "verified",
+    "heroOwnership": "borrowed interface+0x30",
+    "lineAdapter": "AddConversationLineToHero",
+    "setupAdapter": "StartConversationWithHero",
+    "remaining": "full runtime/gameplay integration"
+  },
+  "namedThingScopes": {
+    "count": 3,
+    "order": "name construction, lookup, facing, Thing destruction, name destruction",
+    "adapter": "tools/script_recovery/scythe_thing_adapters.inc:FaceThingByScriptName"
+  },
+  "requiresExtension": [
+    "MoveToPosition",
+    "PlayAnimation",
+    "ReadAnimationArgument5",
+    "ThingIsDistanceFromPositionOver",
+    "IsHitByHeroExceptAbility"
+  ],
+  "requiresQuestExtension": [
+    "FaceThingByScriptName",
+    "AddConversationLineToHero",
+    "StartConversationWithHero"
+  ],
+  "openGaps": [
+    "Standalone entry predicate integration remains pending; the readable builder restores it separately.",
+    "Runtime extension is unapplied; full DLL/gameplay validation is pending."
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "address": "0x00E2A0F0",
+  "size": 120,
+  "sourceSha256": "e828fd1e7f81ca0eaa23ad459e0ded16da87a255b39a88a89bd3df23bbe6c7fa",
+  "annotatedSha256": "1402e8ecf3d46ae97a88051ac074022a0a5258582b530a116aa13507d07a2b14",
+  "regions": [
+    {
+      "address": 14852336,
+      "size": 120,
+      "sha256": "a4a31dc196721f5fbd468c975ea7eb6fdb28367e16939f1b6e4c13ad39644288"
+    },
+    {
+      "address": 19801016,
+      "size": 20,
+      "sha256": "f4be38bdaa9094b52859f43021b6e83ec2a22fe1fbea60ef6cfc7fbc9d6df82e"
+    },
+    {
+      "address": 19274416,
+      "size": 4,
+      "sha256": "4b15e0ad34203067f9e84ae4d8f9aa5e4cb104d3b901983eeee015a33bb31972"
+    },
+    {
+      "address": 19274812,
+      "size": 4,
+      "sha256": "b5c93ad529175eaa86dffff679623cb9600e522b18c72913cf438305fbc9b635"
+    },
+    {
+      "address": 19273504,
+      "size": 4,
+      "sha256": "d5a22d755d421c277a8984387a90723b6b004e8259253a4716b44248c5ac77ac"
+    },
+    {
+      "address": 19273540,
+      "size": 4,
+      "sha256": "84a25af3b529b4b390f853cc0ba2f6250b4f6d13c4a365e3ce0f06d883014c98"
+    },
+    {
+      "address": 19272876,
+      "size": 4,
+      "sha256": "75cd5f6dadd88bde14f9d5080d4d128b60fc474d6d06c1ec748453ea304c3ff4"
+    }
+  ],
+  "calls": [
+    {
+      "site": 14852351,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ecx"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            2980
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ecx"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "address",
+            [
+              "register",
+              "ecx"
+            ],
+            8
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14852415,
+      "count": 3,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            2068
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14852429,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            2104
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14852447,
+      "count": 4,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1440
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "contracts": {
+    "SetIsThingForcePushable": {
+      "name": "SetIsThingForcePushable",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "spThing",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "bIsPushable",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets is thing force pushable."
+    },
+    "SetIsPushableByHero": {
+      "name": "SetIsPushableByHero",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "spThing",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "bIsPushable",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets is pushable by hero."
+    },
+    "EntitySetAsKillable": {
+      "name": "EntitySetAsKillable",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "isKillable",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "forceDead",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set as killable."
+    },
+    "EntitySetAsToAddToComboMultiplierWhenHit": {
+      "name": "EntitySetAsToAddToComboMultiplierWhenHit",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "doesAddToCombo",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set as to add to combo multiplier when hit."
+    },
+    "SetThingHasInformation": {
+      "name": "SetThingHasInformation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "wander",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "wave",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "continueAI",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets thing has information."
+    }
+  },
+  "strings": {},
+  "edits": [
+    {
+      "old": "uVar2 = *(undefined4 *)(this + 0xc);\n  piVar3 = *(int **)(this + 0x10);\n  if (piVar3 != (int *)0x0) {\n    *piVar3 = *piVar3 + 1;\n  }\n  GSI->SetIsPushableByHero\n            (&PTR__scalar_deleting_destructor__01238c8c,uVar2,piVar3,0);",
+      "new": "GSI->SetIsPushableByHero(me,0);",
+      "count": 1
+    }
+  ],
+  "review": "E2A105 pushes false, E2A107 allocates a12-byte by-value CScriptThing and E2A112..123 copy wrapper vtable, this+0xC implementation and this+0x10 counter; E2A128 increments reference count when non-null. E2A12F consumes this copied self wrapper and false. This native by-value setup is folded to the host thing parameter; other flags remain native zeros."
+}

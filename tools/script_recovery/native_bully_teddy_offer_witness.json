@@ -1,0 +1,70 @@
+{
+  "address": "0x00DBB310",
+  "annotatedSha256": "202ffec2780781c02b6329f81f3c249b4cf8f1852900d8c92d3a12433e0c30a5",
+  "regions": [
+    {
+      "address": 14398995,
+      "size": 166,
+      "sha256": "a256381a6155d37b8e634cd019eaf8c2de0578f661a55c06674be4ddf5c4a0b4"
+    }
+  ],
+  "stringAddress": "0x12D8958",
+  "itemName": "OBJECT_TEDDY_BEAR_UNGIVEABLE",
+  "contracts": {
+    "IsObjectInThingsPossession": {
+      "name": "IsObjectInThingsPossession",
+      "scope": "Quest",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "objectDefName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": false
+    },
+    "GetHero": {
+      "name": "GetHero",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets hero."
+    },
+    "IsTalkedToByHero": {
+      "name": "IsTalkedToByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether talked to by hero for an entity."
+    }
+  },
+  "edits": [
+    {
+      "old": "        if (cVar4 == '\\0') {\r\nLAB_00dbb684:\r\n          uStack_134 = uStack_134 & 0xffffff;\r\n        }\r\n        else {\r\n          CCharString::CCharString(aCStack_b8,\"OBJECT_TEDDY_BEAR_UNGIVEABLE\",-1);\r\n          iVar8 = **(int **)(param_1 + 4);\r\n          uVar16 = uVar12 | 3;\r\n          uStack_120 = uVar16;\r\n          GSI->GetHero();\r\n          cVar4 = GSI->IsObjectInThingsPossession();\r\n          uStack_134 = CONCAT13(1,(undefined3)uStack_134);\r\n          ppVar15 = extraout_EDX_01;\r\n          if (cVar4 == '\\0') goto LAB_00dbb684;\r\n        }\r\n",
+      "new": "        if (cVar4 == '\\0') {\r\n          native_arg_bully_talked_with_teddy = false;\r\n        }\r\n        else {\r\n          CCharString::CCharString(aCStack_b8,\"OBJECT_TEDDY_BEAR_UNGIVEABLE\",-1);\r\n          iVar8 = **(int **)(param_1 + 4);\r\n          uVar16 = uVar12 | 3;\r\n          uStack_120 = uVar16;\r\n          native_arg_bully_teddy_holder = GSI->GetHero();\r\n          cVar4 = GSI->IsObjectInThingsPossession(\"OBJECT_TEDDY_BEAR_UNGIVEABLE\",native_arg_bully_teddy_holder);\r\n          native_arg_bully_talked_with_teddy = cVar4 != '\\0';\r\n          ppVar15 = extraout_EDX_01;\r\n        }\r\n",
+      "count": 1
+    },
+    {
+      "old": "if (uStack_134._3_1_ == '\\0')",
+      "new": "if (!native_arg_bully_talked_with_teddy)",
+      "count": 1
+    }
+  ],
+  "review": "DBB642 branches to false if hero did not talk. Otherwise DBB663 GetHero, DBB675 possession slot2E0 with CCharString at baseline160 and returned hero. DBB67D sets result byte39 true, DBB682 jumps past false store only when possession true. Both conditional CCharString destructor blocks are preserved; only shared high-byte result is replaced by a named boolean. Query order remains talk, optional hero, optional possession."
+}

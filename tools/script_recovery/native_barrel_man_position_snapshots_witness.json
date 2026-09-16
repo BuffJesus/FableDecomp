@@ -1,0 +1,28 @@
+{
+  "snapshots": [
+    {
+      "name": "M_BarrelManWalkOff",
+      "address": 14374388,
+      "size": 69,
+      "sha256": "dd315a099c10b1e29b39d11ac6c3e5a882064b2550a40baaa5f6f09bff18c484",
+      "markerStack": 172,
+      "snapshotStack": 184,
+      "temporaryOutputStack": 232,
+      "fallbackAddress": 21227744,
+      "resourceStack": 20,
+      "thresholdBits": 1073741824
+    },
+    {
+      "name": "M_WHouse_ManStart",
+      "address": 14375189,
+      "size": 66,
+      "sha256": "b53c90e188f2fe025943cb9b927d69960470ae1eb5b978bb5b22e6dc3f184520",
+      "markerStack": 36,
+      "snapshotStack": 196,
+      "temporaryOutputStack": 244,
+      "fallbackAddress": 21227744,
+      "resourceStack": 20,
+      "thresholdBits": 1073741824
+    }
+  ]
+}

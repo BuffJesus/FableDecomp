@@ -1,0 +1,24 @@
+{
+  "regions": [
+    {
+      "address": 14375744,
+      "size": 232,
+      "sha256": "dce8b84c1318ca058dab0d16546e2754464d68c21c8f853ad72ff4f780153de7"
+    },
+    {
+      "address": 14376367,
+      "size": 63,
+      "sha256": "4699e3cf59511aac989f875ca4903caae4befa34cca47f491d4f5fe8842930f4"
+    },
+    {
+      "address": 14379580,
+      "size": 50,
+      "sha256": "07268666eba5c7721f15a908a1c4ee23f95962fba15703b4fce502af8b2c0bb3"
+    }
+  ],
+  "oldLua": "                            -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_118);\n                            pCVar22 = \"\"\n                            quest:StartMovieSequence()\n                            quest:PauseAllNonScriptedEntities(true)\n                            quest:DisplayGameInfo(\"TEXT_QST_048_INSTRUCTION_LEFT_WAREHOUSE_UNATTENDED\")\n                            cVar2 = quest:MsgIsGameInfoClickedPast()\n                            while not cVar2 do\n                                alive = quest:NewScriptFrame(me)\n                                alive = not quest:IsActiveThreadTerminating()\n                                if not alive then\n                                    quest:PauseAllNonScriptedEntities(false)\n                                    goto LAB_00db6af8\n                                end\n                                cVar2 = quest:MsgIsGameInfoClickedPast()\n                            end\n                            alive = not quest:IsActiveThreadTerminating()\n                            if alive then\n                                require(\"NewOakValeIntro.native_quest_helpers\").AddBadDeed(quest, me, 1)\n                                quest:PauseAllNonScriptedEntities(false)\n                                -- TODO(native): goto LAB_00db5daf\n                            end\n                            quest:PauseAllNonScriptedEntities(false)\n                            goto LAB_00db6af8\n",
+  "strings": {
+    "0x12d917c": "TEXT_QST_048_INSTRUCTION_LEFT_WAREHOUSE_UNATTENDED",
+    "0x12d9140": "BRAIN_GOOD_VILLAGER_BASE"
+  }
+}

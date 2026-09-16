@@ -46,8 +46,7 @@ function Main(quest, me)
         else
             -- TODO(native): piStack_140 = (int *)(uVar4 | 3);
             r2 = quest:GetHero()
-            -- TODO(native): IsObjectInThingsPossession is not a ForgeFSE binding
-            quest:IsObjectInThingsPossession()
+            cVar5 = quest:IsObjectInThingsPossession("OBJECT_TEDDY_BEAR_UNGIVEABLE", r2)
             -- TODO(native): uStack_150 = (int *)CONCAT13(1,(undefined3)uStack_150);
             if not cVar5 then return end  -- TODO(native): goto LAB_00daf1a4
         end
@@ -81,7 +80,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     if alive then
                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe94);
-                        fVar18 = quest:GetHealth(r2)
+                        fVar18 = quest:GetHealth(r1)
                         fVar3 = _DAT_0122dedc
                         if fVar3 < fVar18 then
                             bVar6 = false
@@ -111,7 +110,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     if alive then
                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe94);
-                        fVar18 = quest:GetHealth(r1)
+                        fVar18 = quest:GetHealth(nil --[[missing]])
                         fVar3 = _DAT_0122dedc
                         if fVar3 < fVar18 then
                             bVar6 = false
@@ -386,7 +385,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     if not alive then return end  -- TODO(native): goto LAB_00db0582
                     me:GetPos()
-                    cVar5 = quest:IsCameraPosOnScreen(fVar25)
+                    cVar5 = quest:IsCameraPosOnScreen(nil --[[missing]])
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 if not alive then
@@ -533,7 +532,7 @@ function Main(quest, me)
                         end
                     end
                     ::LAB_00db05a2::
-                    quest:PauseAllNonScriptedEntities(nil --[[missing]])
+                    quest:PauseAllNonScriptedEntities((fVar25 ~= 0))
                     -- TODO(native): goto LAB_00db05d5
                 end
                 alive = not quest:IsActiveThreadTerminating()

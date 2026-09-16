@@ -1,0 +1,12 @@
+{
+  "address": 14374957,
+  "size": 93,
+  "sha256": "c8e4605e0fa6654f210c19491b40920b63fdd318a04de3a7eb2288e90b8c4897",
+  "old": "                    if not cVar2 then\n                        alive = not quest:IsActiveThreadTerminating()\n                        if not alive then\n                            -- LAB_00db6a1f: (native jump target)\n                            -- TODO(native): this = (C3DClothPrimitive *)apStack_138;\n                            -- TODO(native): goto LAB_00db6a32\n                        end\n                        native_arg_teleport_point = r4\n                    else\n                        alive = not quest:IsActiveThreadTerminating()\n                        if not alive then return end  -- TODO(native): goto LAB_00db6a1f\n                        native_arg_teleport_point = r5\n                    end\n",
+  "new": "                    alive = not quest:IsActiveThreadTerminating()\n                    if not alive then goto LAB_00db6afd end\n                    if not cVar2 then\n                        native_arg_teleport_point = r4\n                    else\n                        native_arg_teleport_point = r5\n                    end\n",
+  "primaryStack": 208,
+  "alternateStack": 220,
+  "cancellationTarget": 14379551,
+  "teleportSite": 14375013,
+  "phase": 3
+}

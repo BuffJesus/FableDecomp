@@ -249,13 +249,12 @@ function Main(quest, me)
                                             if not alive then return end  -- TODO(native): goto LAB_00db8d23
                                         end
                                         r6 = quest:GetHero()
-                                        -- TODO(native): IsObjectInThingsPossession is not a ForgeFSE binding
-                                        quest:IsObjectInThingsPossession()
+                                        cVar6 = quest:IsObjectInThingsPossession("OBJECT_CHOCOLATE_BOX_UNGIVEABLE", r6)
                                         aVar22 = SUB41(ppVar7,0)
                                         if cVar6 then
                                             alive = not quest:IsActiveThreadTerminating()
                                             if not alive then goto LAB_00db974b end
-                                            quest:ClearThingHasInformation(r6)
+                                            quest:ClearThingHasInformation(nil --[[missing]])
                                             -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&stack0xffffff00);
                                             fVar13 = quest:GetHealth(nil --[[missing]])
                                             fVar3 = _DAT_0122dedc
@@ -341,8 +340,7 @@ function Main(quest, me)
                                             end
                                             -- LAB_00db8eea: (native jump target)
                                             r10 = quest:GetHero()
-                                            -- TODO(native): IsObjectInThingsPossession is not a ForgeFSE binding
-                                            quest:IsObjectInThingsPossession()
+                                            cVar6 = quest:IsObjectInThingsPossession("OBJECT_CHOCOLATE_BOX_UNGIVEABLE", r10)
                                             if not cVar6 then
                                                 iVar10 = quest:GetHeroGold()
                                                 if 3 < iVar10 then
@@ -350,7 +348,7 @@ function Main(quest, me)
                                                     aVar22 = SUB41(ppVar7,0)
                                                     if alive then
                                                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ ((CScriptGameResourceObjectScriptedThingBase *)&pppuStack_fc);
-                                                        fVar13 = quest:GetHealth(r10)
+                                                        fVar13 = quest:GetHealth(nil --[[missing]])
                                                         fVar3 = _DAT_0122dedc
                                                         if fVar3 < fVar13 then
                                                             bVar5 = false

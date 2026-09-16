@@ -1,0 +1,10 @@
+{
+  "address": 14377985,
+  "size": 163,
+  "sha256": "b7904f60b8a1ea175fdd29fdd0d1a86ec68208cabe6f793ed4cbdc5571ff7ee7",
+  "oldLua": "            local guardPoint = quest:GetThingWithScriptName(\"M_WHouse_GuardPoint\")\n            quest:EntityTeleportToThing(quest:GetHero(), guardPoint, false)\n            local hiddenPoint = quest:GetThingWithScriptName(\"M_BarrelManHiddenPos\")\n            quest:EntityTeleportToThing(me, hiddenPoint, false)\n",
+  "strings": {
+    "0x12d9000": "M_WHouse_GuardPoint",
+    "0x12d90e8": "M_BarrelManHiddenPos"
+  }
+}

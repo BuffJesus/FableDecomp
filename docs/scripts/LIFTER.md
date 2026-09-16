@@ -1965,3 +1965,61 @@ unproven partial-register loads remain rejected; memory writes invalidate this
 fact. Separately, ten resource-returned Things have verified create/query/destroy
 paths and operands, including the two home-distance queries. Cached lookup and
 hit-condition wrappers and movie lifetimes still need their own lowering.
+
+### Resource-aware husband candidate (2026-09-13)
+
+`tools/script_recovery/generate_affair_man_resource_candidate.py` rewrites the converter's
+NOVI_AffairMan draft into a separate, DISABLED candidate under
+`refs/script_recovery/lifted/NewOakValeIntro/candidates/`. It re-verifies the husband
+resource witness (57 events, ten temporary Things, lifetime CFG) and the speech witness
+against the native bytes first, then applies nineteen counted rewrites; any count that
+differs from the witness raises instead of emitting a partial file. One `man_resource`
+id spans Main inside `quest:WithRetailResources`: constructed after the entry termination
+check (DB0A3C), prepared at the three has/reset sites, tried at the six acquisition sites
+with `(me, 4)`, used by all eight non-waiting `Speak` calls, nineteen task polls, three
+animations, one move and both clears, and released on normal exits at the DB1D8E/DB1D92 join.
+Lua errors use scope Close, which now owns the movie and pause state as well. The
+ten `GetScriptThing` wrappers become `NewThingFromResource` / query / `DestroyThing`
+triples: eight `ThingHealth`, two `ThingIsDistanceFromPositionOver` (home, 2.0 m).
+The 0.1 m home-leave check stays on the cached entity because retail calls the helper on
+`me` there. The animation byte 0x01375748 becomes a raising stub, not a constant.
+
+The prepared extension now has five methods: the fifth,
+`ThingIsDistanceFromPositionOver`, calls retail helper 0x00CBE45C
+(`__fastcall bool(CScriptThing*, const C3DVector*, float)`) on a Thing entry; its
+prologue bytes are checked and the C++ harness covers forwarding, kind mismatch,
+missing coordinates and an unavailable helper. The extension is still unapplied and
+unbuilt. Tests execute the candidate against recording mocks for the hit path, a
+termination inside the acquisition loop and termination before construction, and
+prove the draft's cached-control calls are gone. This is not engine ABI or gameplay
+parity; cached woman/wife lookups and hit wrappers keep the draft lowering.
+
+Review follow-up: DB0C8C game-interface slot 379 receives true (push 1 at DB0C88),
+now checked by call-setup IR before correcting the hit pause. Three dead SUB41 assignments
+are removed, with rejection if uVar6 gains a consumer. Invalid syntax now rejects before
+output. Tests cover talk success/retry and cancellation during acquisition and speech.
+Candidate tests: 11/11; focused resource set: 24/24. The external critic failed before
+producing a verdict; see the 2026-09-13 handoff for recovered-review provenance.
+
+Movie continuation: the generator re-verifies the existing movie witness hashes,
+14 call setups (two starts, twelve destructors), empty class string, API binding and
+single-active-movie CFG. It emits StartMovie("")/DestroyMovie(man_movie)/Pause through
+the existing bridge. The 33 Lua destructor tails expand 12 native sites; these rewrite
+counts guard the reviewed Lua layout, not a one-to-one native call count. Recording
+mocks model live entries and scope Close; health/speech errors on hit and talk paths
+verify unpause, reverse-order destruction and error propagation. No full engine test
+is claimed. Dead movie entries, like Things, remain allocated until Main exits.
+
+
+### Woman structured readability (2026-09-13)
+
+`readable_affair_woman.py` hides only the reviewed inert movie helper during local
+analysis and expands exactly two inline cleanup-and-jump cancellation statements.
+The latter were unsupported by the CFG analyzer and previously prevented all local
+splitting/literal cleanup. The expansion retains cleanup before the jump and records
+its original text/line in the function map. Reaching definitions now separate ten
+reused locals, leaving no scratch names in the woman's generated readable source.
+`structure_affair_woman_lua.py` then replaces native cleanup joins with helpers and
+a run-off loop. `test_structure_affair_woman.py` compares call/frame/cancellation
+traces across original, renamed and structured sources, including actual run-off
+movement and errors. These are transformation checks, not proof of full native parity.

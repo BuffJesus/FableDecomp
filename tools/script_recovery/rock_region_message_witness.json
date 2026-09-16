@@ -1,0 +1,30 @@
+{
+  "regions": [
+    {
+      "name": "defaultConstructor",
+      "address": 10085552,
+      "size": 15,
+      "sha256": "38179c19e44630e074ee6f21daa0d5c804a503009c57b443f53f87ca6df50e63"
+    },
+    {
+      "name": "destructor",
+      "address": 10087136,
+      "size": 12,
+      "sha256": "65d790bd8e62fef3658c4d1320e81e8b1c6d54ab12879256c0e4e4c533c1c53e"
+    },
+    {
+      "name": "release",
+      "address": 10086832,
+      "size": 87,
+      "sha256": "e0ccad7278cb78743022e17eb02dad9b144f7132dc1538d5adb393a625d3e5de"
+    }
+  ],
+  "semantics": [
+    "Default constructor 99E4B0 writes null and increments 13BD800.",
+    "Destructor 99EAE0 calls release99E9B0 then decrements13BD800, including empty values.",
+    "Release99E9B0 checks null, decrements string refcount, frees only final ownership, then clears buffer.",
+    "Root EC404E constructs once; EC405D/EC4085 poll the same stack14 CString and branch on AL alone.",
+    "Root EC4116 destroys after success sideeffects or cancellation.",
+    "Host callback error cleanup is an explicit safe adapter policy; engine fault recovery and scheduler teardown are not certified."
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "address": "0x00DBE3C0",
+  "size": 285,
+  "sourceSha256": "67bd8e2de62a0b4b0542ff2b0e5fc98b1564c5df4ff6f4bc50e5e6959fe3ebc2",
+  "annotatedSha256": "8ba1d1535f5dcd59a92cc90af5aeb05e4674ddf7639e39728b34d8050a3713d2",
+  "bytesSha256": "e842cceccf47bfb0bc2c829a199b0889340d6fd750ed429578fd489b732e80dc",
+  "contracts": {
+    "DeactivateQuest": {
+      "name": "DeactivateQuest",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "delay",
+          "type": "unsigned int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Deactivates quest."
+    },
+    "SetTimeOfDay": {
+      "name": "SetTimeOfDay",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "time",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets time of day."
+    },
+    "TransitionToTheme": {
+      "name": "TransitionToTheme",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "themeName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "duration",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes transition to theme."
+    },
+    "SetQuestCardObjective": {
+      "name": "SetQuestCardObjective",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "objectiveText",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "region1",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "region2",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets quest card objective."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->DeactivateQuest();",
+      "replacements": [
+        "GSI->DeactivateQuest(\"Q_NewOakValeIntro_PreAttack\",0);"
+      ]
+    },
+    {
+      "old": "GSI->SetTimeOfDay();",
+      "replacements": [
+        "GSI->SetTimeOfDay(23.0);"
+      ]
+    },
+    {
+      "old": "GSI->TransitionToTheme();",
+      "replacements": [
+        "GSI->TransitionToTheme(\"ENVIRONMENT_OV_POSTATTACK\",0.0);"
+      ]
+    },
+    {
+      "old": "GSI->SetQuestCardObjective();",
+      "replacements": [
+        "GSI->SetQuestCardObjective(ppVar2,\"TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_06\",\"\",\"\");"
+      ]
+    }
+  ],
+  "abiRegions": [
+    {
+      "address": 8984704,
+      "size": 55,
+      "sha256": "16be665e98324dd7e073b3051dd5383d6b6018ef15dd23e68591f84c5af189a1"
+    },
+    {
+      "address": 19274056,
+      "size": 4,
+      "sha256": "a6fdfd5fd67fc5af3ef508b2466e7de6f164177b13865a6a41bcecbc4563d898"
+    },
+    {
+      "address": 19759724,
+      "size": 27,
+      "sha256": "9e5752148e2ad2cff01c61bbcb13237fd209a89eb4d2a0d893a55b0b3915162b"
+    },
+    {
+      "address": 19766452,
+      "size": 28,
+      "sha256": "27dc8eadbeba9997054af768b8435cf2450d29d860e49cc7125ddb8fe4ac527d"
+    },
+    {
+      "address": 19766652,
+      "size": 26,
+      "sha256": "66a299d9d7c31b1bf76ce7dd1850ab27b9eccf97c99c245f375009d8248d744c"
+    },
+    {
+      "address": 19766612,
+      "size": 38,
+      "sha256": "614b482a5a6f10049b3541e2e8907aff19de062bbba15197fbf1b6b896e59c30"
+    },
+    {
+      "address": 19060494,
+      "size": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    }
+  ],
+  "review": "ESI=this, interface=ESI+40. DBE40C DeactivateQuest(pre-attack,0). DBE425 SetTimeOfDay IEEE754 0x41B80000=23.0. DBE447 TransitionToTheme(postattack,0.0). DBE4A3 GetActiveQuestName consumes hidden string return only; DBE4AD receives that result, objective text, empty region1 and empty region2. Full function and all literal bytes pinned; string cleanup remains a separate integration concern."
+}

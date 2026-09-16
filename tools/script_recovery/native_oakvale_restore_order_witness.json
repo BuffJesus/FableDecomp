@@ -1,0 +1,25 @@
+{
+  "regions": [
+    {
+      "address": 4931560,
+      "size": 34,
+      "sha256": "16771c11cb60586ad50a2f371dda2d4b3a091bfd472454c9c4fc4e21fd2c41da"
+    },
+    {
+      "address": 13334784,
+      "size": 16,
+      "sha256": "ddd12b74035e4d744b8c88e370133fcca00e93056972218a01846616367afde0"
+    },
+    {
+      "address": 13335728,
+      "size": 171,
+      "sha256": "e2393bfcced19d05513b504ad18339e365cc359723087cd670d54279539bbd0c"
+    },
+    {
+      "address": 13338256,
+      "size": 239,
+      "sha256": "29f1411f817808035c629da1218ca9be137f2f414f4e8a5116e0e9094ee65041"
+    }
+  ],
+  "limits": "Activation tail starts after successful quest allocation. Persistence parser/transfer bodies remain separate checks."
+}

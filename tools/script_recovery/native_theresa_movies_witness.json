@@ -1,0 +1,982 @@
+{
+  "events": [
+    {
+      "site": 14391972,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14391972,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          204
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14392017,
+      "name": "start",
+      "argumentCount": 2,
+      "setup": {
+        "address": 14392017,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            276
+          ],
+          [
+            "stack",
+            204
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14393000,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14393000,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          204
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14393270,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14393270,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          288
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14393315,
+      "name": "start",
+      "argumentCount": 2,
+      "setup": {
+        "address": 14393315,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          200
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            200
+          ],
+          [
+            "stack",
+            288
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14394326,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14394326,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14394635,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14394635,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          384
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14394674,
+      "name": "start",
+      "argumentCount": 2,
+      "setup": {
+        "address": 14394674,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            76
+          ],
+          [
+            "stack",
+            384
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14394810,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14394810,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          400
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14394855,
+      "name": "start",
+      "argumentCount": 2,
+      "setup": {
+        "address": 14394855,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          180
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            180
+          ],
+          [
+            "stack",
+            400
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14395407,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395407,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          400
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395638,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395638,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          252
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395677,
+      "name": "start",
+      "argumentCount": 2,
+      "setup": {
+        "address": 14395677,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            88
+          ],
+          [
+            "stack",
+            252
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14396118,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396118,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          252
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396653,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396653,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          328
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396695,
+      "name": "start",
+      "argumentCount": 2,
+      "setup": {
+        "address": 14396695,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            120
+          ],
+          [
+            "stack",
+            328
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14397196,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397196,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          204
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397248,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397248,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          288
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397285,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397285,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          288
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397335,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397335,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          288
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397385,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397385,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          288
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397434,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397434,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          400
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397483,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397483,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          400
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397521,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397521,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          384
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397559,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397559,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          384
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397597,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397597,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          252
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397649,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397649,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          328
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397753,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397753,
+        "target": [
+          "constant",
+          7240544
+        ],
+        "ecx": [
+          "stack",
+          384
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397792,
+      "name": "start",
+      "argumentCount": 2,
+      "setup": {
+        "address": 14397792,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1480
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            56
+          ],
+          [
+            "stack",
+            384
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14398163,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14398163,
+        "target": [
+          "constant",
+          7240576
+        ],
+        "ecx": [
+          "stack",
+          384
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "selections": {
+    "14394319": [
+      "stack",
+      288
+    ],
+    "14395551": [
+      "stack",
+      384
+    ],
+    "14396327": [
+      "stack",
+      252
+    ],
+    "14396902": [
+      "stack",
+      328
+    ]
+  },
+  "review": "Seven movie constructions at six stack slots. Four predecessor LEAs select the shared destructor at DBA3D6. Slot384 reused by outro after prior scope ends; control slot328 is distinct in time from movie slot328."
+}

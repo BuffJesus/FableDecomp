@@ -57,7 +57,7 @@ class BullyRunOffByteAuditTests(unittest.TestCase):
                     }
                     assert(run_off(quest, bully, victim) == false)
                     assert(table.concat(events, ",") ==
-                        "movie:start,pause:true,camera:true,run1,camera:false,pause:false,movie:end,release:victim,release:hero,release:bully")
+                        "movie:start,pause:true,camera:true,run1,pause:false,movie:end,release:victim,release:hero,release:bully")
                 ''')
 
     def test_run1_termination_unwinds_without_success_for_both_teddy_states(self):
@@ -76,14 +76,27 @@ class BullyRunOffByteAuditTests(unittest.TestCase):
                 first = next(i for i, e in enumerate(events) if e["name"] == "RunCutsceneWithSetup")
                 tail = events[first + 1:]
                 self.assertEqual([e["name"] for e in tail], [
-                    "IsActiveThreadTerminating", "FixMovieSequenceCamera",
+                    "IsActiveThreadTerminating",
                     "PauseAllNonScriptedEntities", "EndMovieSequence",
                     "ReleaseControl", "ReleaseControl", "ReleaseControl",
                 ])
                 self.assertEqual([e["receiver"] for e in tail[-3:]],
                                  ["victim", "hero", "me"])
                 self.assertEqual(tail[1]["arguments"], [False])
-                self.assertEqual(tail[2]["arguments"], [False])
+
+    def test_native_cancellation_cleanup_does_not_explicitly_unfix_camera(self):
+        # Both post-RUN1 termination branches enter DBCC00. The explicit
+        # camera unfix at DBCC76 belongs only to normal completion.
+        from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+        from tools.script_recovery.lift_native_lua import RData
+        data = RData()
+        self.assertEqual(data.bytes_at(0xDBCBA4, 9).hex(), 'e8878f170084c07553')
+        self.assertEqual(data.bytes_at(0xDBCBF7, 9).hex(), 'e8348f170084c07441')
+        instructions = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(data.bytes_at(0xDBCC00, 0x41), 0xDBCC00))
+        self.assertEqual([i.op_str for i in instructions if i.mnemonic == 'call'], [
+            'dword ptr [edx + 0x5ec]', '0x6e7b80', '0x9ac310', '0xcdbfb0', '0x7e74d0', '0x7e74d0'])
+        self.assertEqual((instructions[-1].mnemonic, instructions[-1].op_str), ('jmp', '0xdbcce2'))
+        self.assertEqual(data.bytes_at(0xDBCC74, 8).hex(), '6a00ff90cc050000')
 
     def test_retail_lua_and_inventory_agree(self):
         root = Path(__file__).resolve().parents[2]

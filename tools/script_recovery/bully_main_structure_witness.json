@@ -1,0 +1,16 @@
+{
+  "regionSha256": "42243f8bd5c905e7ad12bcd39542db8d373211a2060ca8262367aa1d5f304580",
+  "nativePhaseBoundaries": {
+    "selfRetry": [
+      "DBC891",
+      "DBC8FA"
+    ],
+    "heroVictimControls": [
+      "DBC8FA",
+      "DBC9EE",
+      "DBCC2A",
+      "DBCCE2"
+    ]
+  },
+  "boundary": "Original native acquisition/cleanup instructions; movie body separately verified. Whole body source-to-source comparison, not new whole-native proof."
+}

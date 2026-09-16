@@ -1,0 +1,6 @@
+{
+  "address": 14347952,
+  "size": 156,
+  "sha256": "c67d6418eebaab164d9269a6814a438013df551b8fad8ea964e86da86f55bc23",
+  "review": "Original Init: DoneThanks byte1d and DisplayedGameInfo byte1c reset in that order; pointer damage/kill/combo/information, retained by-value pushable false, movement false, scared true."
+}

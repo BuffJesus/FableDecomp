@@ -1,0 +1,20 @@
+{
+  "functions": [
+    {
+      "name": "Init",
+      "address": 14348288,
+      "size": 82,
+      "sha256": "3f12b846f0844fb15dabd90874f4fbbfb487576c55d353f8fbc22dcd129d5db9"
+    },
+    {
+      "name": "GivenTeddy",
+      "address": 14353920,
+      "size": 91,
+      "sha256": "c14061c7e5c55d733647b1eb092fe0574d08d6c611ef40382893487197968596"
+    }
+  ],
+  "literals": {
+    "19761496": "OBJECT_TEDDY_BEAR_UNGIVEABLE",
+    "19061988": "B"
+  }
+}

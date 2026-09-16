@@ -1,0 +1,35 @@
+{
+  "address": "0x00DB5330",
+  "size": 6128,
+  "sourceSha256": "4b7edd24f8d5d936ec037a821e1ae8fb79bbae5ecfde05358e78d9c27b2a33f2",
+  "annotatedSha256": "e0f7ac723b2c503bbda86250c9d19ff4777f77ebbb70f42a84a9644fb563c51d",
+  "bytesSha256": "93a3b163ba6b2cc47a851450dd5b1f8a06f08f0d560a6ef39defe6e9d62ab6c3",
+  "edits": [
+    {
+      "old": "ppuVar18 = *(undefined ***)(param_1 + 4);",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "ppuStack_1d4 = ppuVar18;",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "ppuVar18 = ppuStack_1d8;",
+      "new": "",
+      "count": 5
+    },
+    {
+      "old": "puVar14 = *ppuStack_1d8;",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "puVar14 = *ppuVar18;",
+      "new": "",
+      "count": 1
+    }
+  ],
+  "review": "All remaining uses of these particular assignments were the five pause dispatches recovered immediately before this pass. Remove only the interface/vtable loads and their saved aliases, retaining the earlier ppuVar18 mask alias and its two mask consumers. ppuStack_1d4 earlier entity-resource initialization is not removed. Full annotated correspondence guards against new uses or reuse of these slots."
+}

@@ -1,0 +1,721 @@
+{
+  "temporaries": [
+    {
+      "create": 14374457,
+      "output": [
+        "stack",
+        232
+      ],
+      "query": 14374471,
+      "kind": "distance",
+      "querySetup": {
+        "address": 14374471,
+        "target": [
+          "constant",
+          13362268
+        ],
+        "ecx": [
+          "result",
+          14374457,
+          "thing"
+        ],
+        "edx": [
+          "stack",
+          184
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1073741824
+          ]
+        ]
+      },
+      "destroy": 14374485,
+      "destroySetup": {
+        "address": 14374485,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          232
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14374628,
+      "output": [
+        "stack",
+        232
+      ],
+      "query": 14374642,
+      "kind": "distance",
+      "querySetup": {
+        "address": 14374642,
+        "target": [
+          "constant",
+          13362268
+        ],
+        "ecx": [
+          "result",
+          14374628,
+          "thing"
+        ],
+        "edx": [
+          "stack",
+          184
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1073741824
+          ]
+        ]
+      },
+      "destroy": 14374656,
+      "destroySetup": {
+        "address": 14374656,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          232
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14375255,
+      "output": [
+        "stack",
+        244
+      ],
+      "query": 14375269,
+      "kind": "distance",
+      "querySetup": {
+        "address": 14375269,
+        "target": [
+          "constant",
+          13362268
+        ],
+        "ecx": [
+          "result",
+          14375255,
+          "thing"
+        ],
+        "edx": [
+          "stack",
+          196
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1073741824
+          ]
+        ]
+      },
+      "destroy": 14375283,
+      "destroySetup": {
+        "address": 14375283,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          244
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14375428,
+      "output": [
+        "stack",
+        244
+      ],
+      "query": 14375442,
+      "kind": "distance",
+      "querySetup": {
+        "address": 14375442,
+        "target": [
+          "constant",
+          13362268
+        ],
+        "ecx": [
+          "result",
+          14375428,
+          "thing"
+        ],
+        "edx": [
+          "stack",
+          196
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1073741824
+          ]
+        ]
+      },
+      "destroy": 14375456,
+      "destroySetup": {
+        "address": 14375456,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          244
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14376185,
+      "output": [
+        "stack",
+        312
+      ],
+      "query": 14376194,
+      "kind": "health",
+      "querySetup": {
+        "address": 14376194,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14376185,
+            "thing"
+          ]
+        ]
+      },
+      "destroy": 14376226,
+      "destroySetup": {
+        "address": 14376226,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          312
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14376948,
+      "output": [
+        "stack",
+        336
+      ],
+      "query": 14376957,
+      "kind": "health",
+      "querySetup": {
+        "address": 14376957,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14376948,
+            "thing"
+          ]
+        ]
+      },
+      "destroy": 14376989,
+      "destroySetup": {
+        "address": 14376989,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          336
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14377774,
+      "output": [
+        "stack",
+        360
+      ],
+      "query": 14377783,
+      "kind": "health",
+      "querySetup": {
+        "address": 14377783,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14377774,
+            "thing"
+          ]
+        ]
+      },
+      "destroy": 14377819,
+      "destroySetup": {
+        "address": 14377819,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          360
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14378266,
+      "output": [
+        "stack",
+        288
+      ],
+      "query": 14378275,
+      "kind": "health",
+      "querySetup": {
+        "address": 14378275,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14378266,
+            "thing"
+          ]
+        ]
+      },
+      "destroy": 14378311,
+      "destroySetup": {
+        "address": 14378311,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          288
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14378527,
+      "output": [
+        "stack",
+        324
+      ],
+      "query": 14378536,
+      "kind": "health",
+      "querySetup": {
+        "address": 14378536,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14378527,
+            "thing"
+          ]
+        ]
+      },
+      "destroy": 14378572,
+      "destroySetup": {
+        "address": 14378572,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          324
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14378726,
+      "output": [
+        "stack",
+        372
+      ],
+      "query": 14378735,
+      "kind": "health",
+      "querySetup": {
+        "address": 14378735,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14378726,
+            "thing"
+          ]
+        ]
+      },
+      "destroy": 14378767,
+      "destroySetup": {
+        "address": 14378767,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          372
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "create": 14378932,
+      "output": [
+        "stack",
+        348
+      ],
+      "query": 14378941,
+      "kind": "health",
+      "querySetup": {
+        "address": 14378941,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14378932,
+            "thing"
+          ]
+        ]
+      },
+      "destroy": 14378973,
+      "destroySetup": {
+        "address": 14378973,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          348
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ]
+}

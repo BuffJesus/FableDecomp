@@ -1,0 +1,264 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2::Main	10517632	54
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::IsThingCarryingCrate	10496000	190
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	4	0
+0	7	i		6	4	1	3	30006	-4	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>::CreateActiveEntityScript	10504208	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetNearestCrateToMe	10497344	315
+0	7	this		0	4	4	5	18	0	0
+0	7	Distance		8	4	1	3	30006	-28	0
+0	7	i		6	4	1	3	30006	-24	0
+0	7	dist		8	4	1	3	30006	-16	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::Alloc	10502352	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CArtefact::Main	10494960	627
+0	7	this		0	4	4	5	18	0	0
+0	7	HeroInsideDropRadius		10	1	1	3	30006	-49	0
+0	7	StolenPos	CScriptThing	0	12	1	3	30006	-40	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2::Alloc	10502992	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::Main	10501280	1061
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GoOnPatrol	10495808	180
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::DoMultiplierCutscene	10505296	1439
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-60	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::DoCutsceneIfRequired	10506736	3213
+0	7	this		0	4	4	5	18	0	0
+0	7	TeamMemberSpawn	CScriptThing	0	12	1	3	30006	-156	0
+0	7	seh_bandit1	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-108	0
+0	7	seh_bandit2	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-92	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	Bandits	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-76	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-60	0
+0	7	seh_guard	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-140	0
+0	7	Guard	CScriptThing	0	12	1	3	30006	-120	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-136	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-92	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-60	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-164	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-108	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CArtefact::OnPredicateFail	10504784	362
+0	7	this		0	4	4	5	18	0	0
+0	7	test	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::`scalar deleting destructor'	10504176	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::CTeamSpawn	10491360	175
+0	7	this		0	4	4	5	18	0	0
+0	7	parent_class		0	4	3	3	30006	4	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CArtefact::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro::Main	10517584	45
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation	10488832	548
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::~CCrateTeamMember	10503344	143
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::Init	10500848	249
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Alloc	10496192	233
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CArtefact::Init	10505152	124
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::RegisterMain	10503840	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_OrchardFarmRaidScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::Main	10517696	2493
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidGoodScript::RegisterMain	10522352	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_OrchardFarmRaidEvilScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Init	10496432	901
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidGoodScript::Main	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamManager::CCrateTeamManager	9178288	143
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::Init	10492112	448
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_OrchardFarmRaidGoodScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro::Alloc	10502816	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::OnPredicateFail	10495600	202
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::ProcessGameRulesGood	10513680	3901
+0	7	this		0	4	4	5	18	0	0
+0	7	CrateCounterGUI		13	4	1	3	30006	-136	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-184	0
+0	7	Whisper	CScriptThing	0	12	1	3	30006	-132	0
+0	7	FrontGate	CScriptThing	0	12	1	3	30006	-84	0
+0	7	BackGate	CScriptThing	0	12	1	3	30006	-168	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-200	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-40	0
+0	7	seh_whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-156	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-216	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-200	0
+0	7	seh_whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-216	0
+0	7	whisper	CScriptThing	0	12	1	3	30006	-168	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-184	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-40	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-156	0
+FUNCTION	NScript::CQ_OrchardFarmRaidEvilScript::Init	10520544	695
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_OrchardFarmRaidEvilScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::Init	10583888	22
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::`scalar deleting destructor'	10520512	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidGoodScript::Alloc	10522656	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidGoodScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::Alloc	10520400	102
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_OrchardFarmRaidGoodScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::MakeTeamMemberComment	10491536	366
+0	7	this		0	4	4	5	18	0	0
+0	7	comment_to_make		0	4	3	3	30006	4	0
+0	7	speaker		0	4	3	3	30006	8	0
+0	7	comment_type	NScript::CQ_OrchardFarmRaidScript::ERaidComment	6	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::Init	10489648	1702
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::~CTeamSpawn	10503168	174
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidGoodScript::Init	10521648	695
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::Main	10497664	3174
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+0	7	ExitMarker	CScriptThing	0	12	1	3	30006	-56	0
+0	7	CrateStealingStatusChanged		10	1	1	3	30006	-109	0
+0	7	NearestCrate	CScriptThing	0	12	1	3	30006	-68	0
+FUNCTION	CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>::CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>	10503648	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::Main	10492560	2221
+0	7	this		0	4	4	5	18	0	0
+0	7	MembersAlive		13	4	1	3	30006	-116	0
+0	7	NewMember	CScriptThing	0	12	1	3	30006	-72	0
+0	7	NewMember	CScriptThing	0	12	1	3	30006	-60	0
+0	7	Guard	CScriptThing	0	12	1	3	30006	-84	0
+0	7	NewMember	CScriptThing	0	12	1	3	30006	-96	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::~CQ_OrchardFarmRaidScript	10520192	197
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidEvilScript::RegisterMain	10521248	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::ProcessGameRulesEvil	10509952	3720
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-208	0
+0	7	Whisper	CScriptThing	0	12	1	3	30006	-128	0
+0	7	FrontGate	CScriptThing	0	12	1	3	30006	-84	0
+0	7	BackGate	CScriptThing	0	12	1	3	30006	-140	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-160	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-112	0
+0	7	seh_whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-176	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-192	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-208	0
+0	7	seh_whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-160	0
+0	7	whisper	CScriptThing	0	12	1	3	30006	-140	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-176	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-112	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-192	0
+FUNCTION	NScript::CQ_OrchardFarmRaidEvilScript::Main	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamManager::~CCrateTeamManager	9178432	228
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidEvilScript::Alloc	10521552	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::`scalar deleting destructor'	10504144	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::Alloc	10491904	208
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_OrchardFarmRaidEvilScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::OnPersist	10504704	73
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CArtefact::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CArtefact::Alloc	10494784	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>	10503488	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::Main	10502528	283
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::Alloc	10501104	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::ReplaceQuestCards	10489392	249
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_OrchardFarmRaidScript::CQ_OrchardFarmRaidScript	10488608	215
+0	7	this		0	4	4	5	18	0	0
+0	7	master_script_data		0	4	3	3	30006	4	0
+0	7	game		0	4	3	3	30006	8	0
+MATCHES	80

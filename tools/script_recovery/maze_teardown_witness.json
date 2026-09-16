@@ -1,0 +1,53 @@
+{
+  "regions": [
+    {
+      "name": "TerminateProcess",
+      "address": 10793472,
+      "size": 32,
+      "sha256": "87b54341c3f080eede293edfcbac9ef917f525d58b6fe4c229684b2f0ad14fab"
+    },
+    {
+      "name": "KillSpawnedFunction",
+      "address": 13335200,
+      "size": 92,
+      "sha256": "2cd4099a0f6e6b723e4a2905841a033e79a938dee63c119b7856154b033ec00c"
+    },
+    {
+      "name": "KillAllThreads",
+      "address": 13336416,
+      "size": 388,
+      "sha256": "3936b1c4ed6e38b626b96777eb6202fbcece41298f3297719f2d1f5a1e2b7848"
+    },
+    {
+      "name": "RunSpawnedFunctions",
+      "address": 13335616,
+      "size": 107,
+      "sha256": "141afc6db8fd554074c5f79e4e75f055adb7b3291e06b7d89b6c7c6ef36956bc"
+    },
+    {
+      "name": "UpdateSpawnedFunction",
+      "address": 13334864,
+      "size": 169,
+      "sha256": "9c8779f3ff37688300c35fe60358edaa632f7e7de4797d5c3fe26bd043292805"
+    },
+    {
+      "name": "MazeDestructor",
+      "address": 15369920,
+      "size": 48,
+      "sha256": "11b1455e5068dad5aa4f68f86bd322db4690de48c74befc4b584512984d9c64f"
+    },
+    {
+      "name": "ManagerDrainCall",
+      "address": 4930141,
+      "size": 37,
+      "sha256": "fb97e4d9b67cb91aa651ec32d8961274c2ddc2f60f177164689293e3665f8b4b"
+    }
+  ],
+  "findings": {
+    "KillAllThreads": "CB7F60 synchronously terminates parent+4 spawned list and parent+8 entity vector, restores active-thread pointer+2C around calls, clears list and resets vector end.",
+    "TerminateProcess": "A4B200 writes+5=1 and invokes vtable+4 repeatedly until active+4=0; no timeout and no forced exit.",
+    "KillSpawnedFunction": "CB7AA0 sets+5 for matching name/ID only; does not unlink or drive process.",
+    "manager": "Only known direct KillAllThreads caller is4B3A77 in CQuestManager::DeactivateQuest4B3A20; it installs manager current-quest+88 around drain before removing active quest references.",
+    "destructor": "EA86C6 flags,EA86CE Sword,EA86D5 base destructor. Current host CleanupThreads only unrefs Lua registry stacks; it is not native queue removal."
+  }
+}

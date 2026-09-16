@@ -1,0 +1,1066 @@
+{
+  "functions": {
+    "HistoryBookcase.Main": {
+      "address": 15366976,
+      "size": 938,
+      "nativeSha256": "77dad972682cf2c8cec6cf9f56810504c43919914f569fb5f9adf1cf53174b8d",
+      "decompileSha256": "0492ed353f4eba04c69839d8712268e4b23546e59408cdf72c67f9efb87dd18f",
+      "path": "work\\maze_converter\\evidence\\decompiles\\0x00EA7B40.c"
+    },
+    "HistoryBookcase.Init": {
+      "address": 15366928,
+      "size": 1,
+      "nativeSha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+      "decompileSha256": "04c4a9d56b2be601407ed9f69be9d6f340f04d18fd0147e41218f9651bb35a4f",
+      "path": "work\\maze_converter\\evidence\\decompiles\\0x00EA7B10.c"
+    },
+    "EmptyGrave.Main": {
+      "address": 15368496,
+      "size": 1191,
+      "nativeSha256": "29269a9aed88fb42e4886bef4502b0e812abbcc3165d39ae61b72ca66fc94496",
+      "decompileSha256": "69c643ff40a11c749366790202db23f9d025a2151b800819252b6bb6a3fa2bee",
+      "path": "work\\maze_converter\\evidence\\decompiles\\0x00EA8130.c"
+    },
+    "EmptyGrave.Init": {
+      "address": 15368432,
+      "size": 51,
+      "nativeSha256": "3492eb83af85316dc83c1d33f6ff5a437c7894122f3e5fbd87f3d43d859343d7",
+      "decompileSha256": "cebb48f1916dfb7316b843b4be28e7ce04fdb762ebe9e0bdff974be0bfd4cf68",
+      "path": "work\\maze_converter\\evidence\\decompiles\\0x00EA80F0.c"
+    },
+    "MazeResearch.UNLIMBO": {
+      "address": 15369696,
+      "size": 175,
+      "nativeSha256": "cff53c0defc64d0c4f0239a7700fda3ec80eed59bfb2ba2c2b809b41fb22c69c",
+      "decompileSha256": "ba46bad7a2a9df200b9fc4bd06d80b0b2c7e9ca9d751a017bb5be8afbe65737f",
+      "path": "work\\maze_converter\\evidence\\decompiles\\0x00EA85E0.c"
+    }
+  },
+  "regions": [
+    {
+      "address": 15365856,
+      "size": 100,
+      "sha256": "d33cf07c96021c3e54d37f0d46c44e1dd046a7c8a0c437259c365649ce66fe1e"
+    },
+    {
+      "address": 19850432,
+      "size": 16,
+      "sha256": "e6efb5ec58ab682e9d5a5a18db1690a2cfa247ce39c26759be3fd701ba411c89"
+    },
+    {
+      "address": 19850460,
+      "size": 16,
+      "sha256": "4e9ba724a86b61bb6c5b07e3acdac1f70856b0c2a2b4cf15cd182d89cdd7bf59"
+    },
+    {
+      "address": 15366544,
+      "size": 164,
+      "sha256": "acdf6e94993e839a913d34db18ff678cc5b5ec79e17e2e0daeae9943f61c694a"
+    },
+    {
+      "address": 15366752,
+      "size": 164,
+      "sha256": "3a00ee5532952362004d5c554edd1b5ea0be0b6c0b5467e9eb3ee9a509d144da"
+    },
+    {
+      "address": 4892736,
+      "size": 66,
+      "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    }
+  ],
+  "calls": [
+    {
+      "base": 15366976,
+      "size": 938,
+      "site": 15367024,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "address": 15367024,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1788
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            8
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15366976,
+      "size": 938,
+      "site": 15367057,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "address": 15367057,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1400
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          12
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15366976,
+      "size": 938,
+      "site": 15367295,
+      "count": 4,
+      "known": {
+        "15367285": [
+          4,
+          "quest"
+        ]
+      },
+      "expected": {
+        "address": 15367295,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1184
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            15367285,
+            "quest"
+          ],
+          [
+            "stack",
+            12
+          ],
+          [
+            "stack",
+            16
+          ],
+          [
+            "stack",
+            20
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15366976,
+      "size": 938,
+      "site": 15367415,
+      "count": 2,
+      "known": {
+        "15367405": [
+          8,
+          "grave"
+        ]
+      },
+      "expected": {
+        "address": 15367415,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1400
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            15367405,
+            "grave"
+          ],
+          [
+            "stack",
+            16
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15369696,
+      "size": 175,
+      "site": 15369842,
+      "count": 3,
+      "known": {},
+      "expected": {
+        "address": 15369842,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            1812
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                64
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            76
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15369696,
+      "size": 175,
+      "site": 15369860,
+      "count": 3,
+      "known": {},
+      "expected": {
+        "address": 15369860,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    64
+                  ]
+                ],
+                0
+              ]
+            ],
+            2040
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            64
+          ]
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15368782,
+      "count": 3,
+      "known": {},
+      "expected": {
+        "address": 15368782,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1812
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                20
+              ]
+            ],
+            76
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369116,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15369116,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1516
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369129,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15369129,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1484
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369390,
+      "count": 4,
+      "known": {},
+      "expected": {
+        "address": 15369390,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "stack",
+          64
+        ],
+        "stack_arguments": [
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                20
+              ]
+            ],
+            88
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369451,
+      "count": 4,
+      "known": {},
+      "expected": {
+        "address": 15369451,
+        "target": [
+          "constant",
+          13368189
+        ],
+        "ecx": [
+          "stack",
+          40
+        ],
+        "edx": [
+          "stack",
+          64
+        ],
+        "stack_arguments": [
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                20
+              ]
+            ],
+            88
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369472,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15369472,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1484
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369500,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15369500,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                0
+              ]
+            ],
+            1516
+          ]
+        ],
+        "ecx": [
+          "register",
+          "ebp"
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369631,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15369631,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                0
+              ]
+            ],
+            1516
+          ]
+        ],
+        "ecx": [
+          "register",
+          "ebp"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "base": 15368496,
+      "size": 1191,
+      "site": 15369646,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "address": 15369646,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                0
+              ]
+            ],
+            1516
+          ]
+        ],
+        "ecx": [
+          "register",
+          "ebp"
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "review": {
+    "state": {
+      "0x48": "SwordTaken bool",
+      "0x49": "BookRead bool",
+      "0x4c": "Sword retained Thing",
+      "0x58": "cs_flags bool map"
+    },
+    "master": "Retail +4>1700, +88==2, +8C selects SAINT; PDB role names and checked GetMasterGameState wrapper give PostSavePosition/JackBossBattleResult/JackBossBattleHeroGoodAtEnd.",
+    "camera": "Slot5CC is named FixMovieSequenceCamera by current checked interface. Existing native trace oracle calls this event skippable; tests preserve opcode-event identity rather than adopting that old label as API semantics.",
+    "limits": [
+      "Native full-function hashes cover rejected/unresolved local call-window decodes; do not claim all operands come from call-window IR.",
+      "Existing native CPU execution fixtures test branch and event order independently of reconstructed Lua.",
+      "HistoryBookcase transient EmptyGrave lookup needs scoped marker adapter before activation.",
+      "Host scheduler, save/load and concurrent helper/map ownership require integration review."
+    ],
+    "thread": "EA8419 constructs explicit empty region; CreateThread(name,{region=\"\"}) avoids host default Class region and passes no Lua VM-local arguments."
+  },
+  "strings": {
+    "0x1258a64": "HUD_ORB_QUEST_VIGNETTE",
+    "0x125d1c8": "SCRIPT_NAME_HERO",
+    "0x1238fcc": "HeroGuildComplexInside",
+    "0x12ee578": "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_02",
+    "0x12ee4b4": "EmptyGrave",
+    "0x12ee558": "TEXT_QST_B01_JOURNAL_ENTRY_10",
+    "0x12ee538": "TEXT_QST_B01_JOURNAL_ENTRY_20",
+    "0x12ee518": "TEXT_QST_B01_JOURNAL_ENTRY_30",
+    "0x12ee4f8": "TEXT_QST_B01_JOURNAL_ENTRY_40",
+    "0x12ee628": "GoodSword",
+    "0x1255174": "HERO",
+    "0x12ee618": "UnLimboSword",
+    "0x12c9934": "ParentClass.",
+    "0x12ee5fc": "CS_GET_SWORD_OF_AEONS_SAINT",
+    "0x12ee5dc": "CS_GET_SWORD_OF_AEONS_REDEEM",
+    "0x12ee5d4": "UNLIMBO",
+    "0x122d70e": "",
+    "0x12ee5c8": "SwordTaken",
+    "0x12ee5bc": "BookRead"
+  },
+  "persist": {
+    "address": 15368352,
+    "size": 67,
+    "nativeSha256": "0c857253bc7f16eb47004e78e6fa8293360ec936c83f3087e49834f892093340",
+    "sourceSha256": "273b6318150e6ab254220bf09f6bcc9019cf341f3fc0e31cae8fce085d812fb9"
+  }
+}

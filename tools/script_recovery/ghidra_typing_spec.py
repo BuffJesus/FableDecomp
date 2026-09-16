@@ -1,0 +1,135 @@
+"""Build the prototype spec for the typed translation-unit export from FSE's native typedefs.
+
+FSE (ForgeFSE-retail-shadow) calls the retail engine through `__thiscall` typedefs that encode the
+real ABI (hidden return slots, by-value CScriptThing/CCharString/C3DVector). This turns them into a
+JSON that `ExportTypedTranslationUnit.java` applies inside a read-only Ghidra session:
+
+  slots     GSI vtable offset -> {name, ret, params}      (GameInterface.h + GameInterface.cpp pVTable[i])
+  helpers   fixed engine address -> {name, cc, ret, params} (FableAPI.cpp ASLR<t...>(0x...) lines)
+  thingSlots CScriptThing vtable offset -> {name, ret, params} (EntityScriptingAPI.h CScriptThingVTable)
+
+Types are reduced to what the decompiler needs for argument recovery: sizes and pointer-ness.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+FSE = Path(r'D:\Code\ForgeFSE-retail-shadow\FableScriptExtender')
+TYPEDEF = re.compile(r'typedef\s+(.+?)\s*\(\s*(__thiscall|__cdecl|__stdcall|__fastcall)?\s*\*\s*(t\w+)\s*\)\s*\((.*?)\)\s*;', re.S)
+SLOT = re.compile(r'^\s*(\w+)\s*=\s*\(\s*(t\w+)\s*\)\s*pVTable\[(\d+)\]', re.M)
+FIXED = re.compile(r'^\s*(\w+)\s*=\s*ASLR<(t\w+)>\((0x[0-9A-Fa-f]+)\)', re.M)
+BY_VALUE = {'CScriptThing': 12, 'CCharString': 4, 'C3DVector': 12, 'CRGBColour': 4, 'CWideString': 4, 'CRGBFloatColour': 16}
+
+
+def ghidra_type(ctype: str) -> str:
+    t = ctype.strip().replace('const ', '').replace('struct ', '').strip()
+    if t.endswith('&'):
+        t = t[:-1].strip() + '*'
+    if t.endswith('*'):
+        base = t.rstrip('* ').strip()
+        return f'{base} *' if base in BY_VALUE else 'void *'
+    if t in ('void',):
+        return 'void'
+    if t in ('bool',):
+        return 'bool'
+    if t in ('float',):
+        return 'float'
+    if t in ('double',):
+        return 'double'
+    if t in ('unsigned __int64', 'uint64_t', '__int64'):
+        return 'ulonglong'
+    if t in ('unsigned int', 'unsigned long', 'size_t', 'DWORD', 'unsigned'):
+        return 'uint'
+    if t in ('int', 'long', 'short', 'char', 'unsigned char', 'unsigned short') or t.startswith('E'):
+        return 'int'
+    if t in BY_VALUE:
+        return t
+    return 'void *' if 'std::' in t or '<' in t else 'int'
+
+
+def parse_params(text: str):
+    params = []
+    depth, cur = 0, ''
+    for ch in text:
+        if ch == '<':
+            depth += 1
+        elif ch == '>':
+            depth -= 1
+        if ch == ',' and depth == 0:
+            params.append(cur); cur = ''
+        else:
+            cur += ch
+    if cur.strip():
+        params.append(cur)
+    out = []
+    for p in params:
+        p = ' '.join(p.split())
+        if p in ('', 'void'):
+            continue
+        m = re.match(r'(.+?)\s*([A-Za-z_]\w*)$', p)
+        if m and not p.endswith('*') and not p.endswith('&'):
+            ctype, name = m.group(1), m.group(2)
+        else:
+            ctype, name = p, f'p{len(out)}'
+        out.append({'name': name, 'type': ghidra_type(ctype), 'ctype': ctype})
+    return out
+
+
+def drop_this(params):
+    """__thiscall passes the receiver in ECX; the typedefs spell it as a first `This` parameter."""
+    return params[1:] if params and params[0]['name'].lower() == 'this' else params
+
+
+def typedefs(*headers):
+    out = {}
+    for h in headers:
+        for ret, cc, name, params in TYPEDEF.findall(h.read_text(encoding='utf-8', errors='replace')):
+            out[name] = {'ret': ghidra_type(ret), 'cret': ' '.join(ret.split()), 'cc': cc or '__cdecl',
+                         'params': parse_params(params)}
+    return out
+
+
+def main():
+    a = argparse.ArgumentParser(description=__doc__)
+    a.add_argument('--fse', type=Path, default=FSE)
+    a.add_argument('--out', type=Path, default=ROOT / 'refs/script_recovery/typing/gsi_prototypes.json')
+    args = a.parse_args()
+    tds = typedefs(args.fse / 'GameInterface.h', args.fse / 'FableAPI.h', args.fse / 'EntityScriptingAPI.h')
+    slots = {}
+    for api, td, index in SLOT.findall((args.fse / 'GameInterface.cpp').read_text(encoding='utf-8', errors='replace')):
+        if td in tds:
+            spec = tds[td]
+            # drop the explicit `This` first parameter: __thiscall passes it in ECX
+            params = drop_this(spec['params'])
+            slots[hex(int(index) * 4)] = {'name': api.replace('_API', ''), 'ret': spec['ret'], 'params': params, 'typedef': td}
+    helpers = {}
+    for api, td, address in FIXED.findall((args.fse / 'FableAPI.cpp').read_text(encoding='utf-8', errors='replace')):
+        if td in tds:
+            spec = tds[td]
+            cc = spec['cc']
+            params = spec['params']
+            if cc == '__thiscall':
+                params = drop_this(params)
+            helpers[hex(int(address, 16))] = {'name': api, 'cc': cc, 'ret': spec['ret'], 'params': params, 'typedef': td}
+    thing_slots = {}
+    header = (args.fse / 'EntityScriptingAPI.h').read_text(encoding='utf-8', errors='replace')
+    block = header[header.index('struct CScriptThingVTable'):]
+    block = block[:block.index('};')]
+    for td, name, offset in re.findall(r'(t\w+)\s+(\w+);\s*//\s*(0x[0-9A-Fa-f]+)', block):
+        if td in tds:
+            spec = tds[td]
+            params = drop_this(spec['params'])
+            thing_slots[hex(int(offset, 16))] = {'name': name, 'ret': spec['ret'], 'params': params, 'typedef': td}
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    spec = {'schema': 'ghidra-typing-spec/1', 'source': str(args.fse), 'byValue': BY_VALUE,
+            'slots': slots, 'helpers': helpers, 'thingSlots': thing_slots}
+    args.out.write_text(json.dumps(spec, indent=1) + '\n', encoding='utf-8')
+    print(json.dumps({'slots': len(slots), 'helpers': len(helpers), 'thingSlots': len(thing_slots), 'out': str(args.out)}, indent=2))
+
+
+if __name__ == '__main__':
+    main()

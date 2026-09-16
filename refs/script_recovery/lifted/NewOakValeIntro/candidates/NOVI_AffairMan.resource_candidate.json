@@ -1,0 +1,291 @@
+{
+  "schema": "affair-man-resource-candidate/0.1",
+  "status": "disabled-candidate-not-registered",
+  "draft": "refs/script_recovery/lifted/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_AffairMan.lua",
+  "draftSha256": "cd703e54843c06189c976f5a690ff0112d4994000cf18fa528cd50a0649f97de",
+  "nativeAddress": "0x00DB09E0",
+  "nativeSize": 5058,
+  "nativeBytesSha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+  "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+  "resourceEvents": {
+    "construct": 1,
+    "has_resource": 3,
+    "reset": 3,
+    "acquire": 6,
+    "get_thing": 10,
+    "speak": 8,
+    "task_query": 19,
+    "clear_actions": 1,
+    "clear_commands": 1,
+    "animation": 3,
+    "move": 1,
+    "destroy": 1
+  },
+  "temporaryThings": 10,
+  "lifetimeStatus": "constructor/preparation/acquisition/action/task/getter/destructor paths verified",
+  "temporaryThingStatus": "ten getter/query/destructor lifetimes verified",
+  "rewrites": {
+    "hit movie pause": 1,
+    "dead byte casts": 3,
+    "movie start": 2,
+    "movie end": 33,
+    "movie pause": 35,
+    "resource address take": 1,
+    "preparation": 3,
+    "acquisition": 6,
+    "speech": 8,
+    "task query": 19,
+    "clear actions": 1,
+    "clear commands": 1,
+    "animation": 3,
+    "animation byte": 3,
+    "movement": 1,
+    "health Thing": 8,
+    "home distance Thing": 2,
+    "construction": 1,
+    "destruction": 1,
+    "hit string scope": 1,
+    "hit mask reload": 1,
+    "cached Thing lookup": 2,
+    "cached Thing alive": 2,
+    "cached Thing distance": 3,
+    "cached Thing facing default": 2,
+    "cached Thing facing": 4,
+    "cached Thing conversation person": 2,
+    "cached Thing conversation line": 6,
+    "cached Thing destruction": 1
+  },
+  "syntax": {
+    "runtime": "Lua 5.4",
+    "ok": true,
+    "checked": 1,
+    "passed": 1,
+    "errors": []
+  },
+  "hitMoviePause": {
+    "callAddress": "0x00DB0C8C",
+    "value": true,
+    "status": "native-operands-verified"
+  },
+  "cleanupStatus": "normal join verified natively; Lua errors use scope fallback for resources, movies and pause",
+  "movies": {
+    "status": "native-operands-and-single-active-lifetime-verified",
+    "starts": [
+      "0xdb0c71",
+      "0xdb0e3d"
+    ],
+    "nativeDestructors": 12,
+    "className": "",
+    "bytesSha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+  },
+  "hitScope": {
+    "nativeRegion": "0x00DB0B30",
+    "nativeSize": 236,
+    "nativeSha256": "7a15201228e55f9cafa7ec92caf2bb70254f0c5c8bcc1bae10fffe6c14ff28ca",
+    "oldLuaSha256": "8ca5aef33d3c1b3503b07b00edf993a579307565a98adda755123562db789faf",
+    "review": "Native queries slots54/A8/A4 on self EBP with SCRIPT_NAME_HERO and excluded ability14; conditional CCharString construction99EBF0 and reverse destruction99EAE0 at DB0BE1/DB0BF9/DB0C11. The mask represents only these string locals. One helper returns the same short-circuit boolean and destroys all constructed names before returning."
+  },
+  "cachedThings": {
+    "address": 14354912,
+    "size": 5058,
+    "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+    "things": [
+      {
+        "name": "NOVI_AffairWoman",
+        "stringAddress": 19759864,
+        "stackSlot": 32,
+        "lookup": {
+          "address": 14355161,
+          "target": [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "address",
+                  [
+                    "memory",
+                    [
+                      "address",
+                      [
+                        "register",
+                        "esi"
+                      ],
+                      4
+                    ]
+                  ],
+                  0
+                ]
+              ],
+              288
+            ]
+          ],
+          "ecx": [
+            "memory",
+            [
+              "address",
+              [
+                "register",
+                "esi"
+              ],
+              4
+            ]
+          ],
+          "edx": [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "address",
+                  [
+                    "register",
+                    "esi"
+                  ],
+                  4
+                ]
+              ],
+              0
+            ]
+          ],
+          "stack_arguments": [
+            [
+              "stack",
+              32
+            ],
+            [
+              "stack",
+              64
+            ]
+          ]
+        },
+        "destroy": {
+          "address": 14359945,
+          "target": [
+            "constant",
+            4892736
+          ],
+          "ecx": [
+            "stack",
+            32
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      },
+      {
+        "name": "NOVI_AffairWife",
+        "stringAddress": 19759848,
+        "stackSlot": 44,
+        "lookup": {
+          "address": 14355207,
+          "target": [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "address",
+                  [
+                    "memory",
+                    [
+                      "address",
+                      [
+                        "register",
+                        "esi"
+                      ],
+                      4
+                    ]
+                  ],
+                  0
+                ]
+              ],
+              288
+            ]
+          ],
+          "ecx": [
+            "memory",
+            [
+              "address",
+              [
+                "register",
+                "esi"
+              ],
+              4
+            ]
+          ],
+          "edx": [
+            "memory",
+            [
+              "address",
+              [
+                "memory",
+                [
+                  "address",
+                  [
+                    "register",
+                    "esi"
+                  ],
+                  4
+                ]
+              ],
+              0
+            ]
+          ],
+          "stack_arguments": [
+            [
+              "stack",
+              44
+            ],
+            [
+              "stack",
+              64
+            ]
+          ]
+        },
+        "destroy": {
+          "address": 14359936,
+          "target": [
+            "constant",
+            4892736
+          ],
+          "ecx": [
+            "stack",
+            44
+          ],
+          "edx": [
+            "register",
+            "edx"
+          ],
+          "stack_arguments": []
+        }
+      }
+    ],
+    "review": "Woman slot32 lookupDB0AD9 and wife slot44 lookupDB0B07 each remain live across Main. Early resource-acquire exits skip both lookups/dtors. DB1D7C join destroys wife at DB1D80, then woman at DB1D89, then actor resource DB1D92. All uses keep the same captured Things; no lookup refresh is introduced."
+  },
+  "requiresExtension": [
+    "MoveToPosition",
+    "PlayAnimation",
+    "ClearCommands",
+    "ClearAllActions",
+    "ThingIsDistanceFromPositionOver",
+    "ReadAnimationArgument5",
+    "IsHitByHeroExceptAbility",
+    "ThingsAreWithinDistance",
+    "FaceThing",
+    "AddConversationPerson",
+    "AddConversationLine"
+  ],
+  "openGaps": [
+    "animation argument accessor is proposed and tested offline, but not integrated into the runtime",
+    "bounded live-entry storage is implemented in the combined runtime proposal but remains unapplied",
+    "proposed bridge passes MSVC x86/sol tests with engine doubles; full runtime DLL and gameplay validation remain pending",
+    "the draft TODO(native) diagnostics carried over unchanged"
+  ]
+}

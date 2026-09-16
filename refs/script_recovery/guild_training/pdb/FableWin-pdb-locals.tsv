@@ -1,0 +1,2074 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::`scalar deleting destructor'	53896384	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::CKillBird	53692608	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::Init	53614912	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::~CSkillTarget	53720112	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CHeroBed::Init	53616496	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::GetParentScript	53588864	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::Main	53819600	224
+0	7	this		0	4	4	3	30006	-40	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::GetParentScript	53921744	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::`scalar deleting destructor'	57878880	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Init	53945104	45
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::`scalar deleting destructor'	57961328	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::Main	53588976	20504
+0	7			0	0	2	1	0	0	53609460
+0	7			0	0	2	1	0	0	53609440
+0	7			0	0	2	1	0	0	53609420
+0	7			0	0	2	1	0	0	53609400
+0	7	this		0	4	4	3	30006	-992	0
+0	7	Green		10	1	1	3	30006	-77	0
+0	7	RaceTimer	CTimer	0	4	1	3	30006	-76	0
+0	7	village	CScriptThing	0	12	1	3	30006	-72	0
+0	7	KillRaceTimer	CTimer	0	4	1	3	30006	-60	0
+0	7	RunningGameTimerID		13	4	1	3	30006	-56	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-52	0
+0	7	LineOfSpeech		13	4	1	3	30006	-36	0
+0	7	SpeedFriend	CScriptThing	0	12	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-17	0
+0	7	SpeedTimer	CTimer	0	4	1	3	30006	-16	0
+0	6			0	1179	0	1	0	0	53590568
+1	7	Conversation		13	4	1	3	30006	-84	0
+0	6			0	3098	0	1	0	0	53591941
+1	7	answer		13	4	1	3	30006	-108	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+0	6			0	1179	0	1	0	0	53595486
+1	7	Conversation		13	4	1	3	30006	-112	0
+0	6			0	679	0	1	0	0	53597048
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-132	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+0	6			0	1001	0	1	0	0	53597854
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-136	0
+0	6			0	786	0	1	0	0	53598966
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-172	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-156	0
+0	6			0	1206	0	1	0	0	53600678
+1	7	Conversation		13	4	1	3	30006	-176	0
+0	6			0	2958	0	1	0	0	53602078
+1	7	answer		13	4	1	3	30006	-200	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-196	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	6			0	1206	0	1	0	0	53605483
+1	7	Conversation		13	4	1	3	30006	-204	0
+0	6			0	2208	0	1	0	0	53606883
+1	7	answer		13	4	1	3	30006	-228	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-224	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-208	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::OnPredicateFail	53614928	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::GetMasterData	53626224	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::InitialiseVariables	53940960	32
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::Main	53921936	11833
+0	7	this		0	4	4	3	30006	-684	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-36	0
+0	7	CallTimer	CTimer	0	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	701	0	1	0	0	53922726
+1	7	Conversation		13	4	1	3	30006	-40	0
+0	6			0	711	0	1	0	0	53923968
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-60	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-44	0
+0	6			0	711	0	1	0	0	53924742
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-80	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-64	0
+0	6			0	3129	0	1	0	0	53925963
+1	7	answer		13	4	1	3	30006	-104	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+0	6			0	3336	0	1	0	0	53929155
+1	7	answer		13	4	1	3	30006	-128	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-124	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-108	0
+1	6			0	630	0	1	0	0	53931837
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-148	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-132	0
+0	6			0	456	0	1	0	0	53933187
+1	7	Conversation		13	4	1	3	30006	-152	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForLeaving	53943552	146
+0	7	this		0	4	4	3	30006	-8	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-1	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::CPreMeleeWhisper	53766832	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::Init	53709264	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::GetMasterData	53765008	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::Main	53801440	12415
+0	7	this		0	4	4	3	30006	-548	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	790	0	1	0	0	53802541
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-52	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-36	0
+0	6			0	10159	0	1	0	0	53803619
+1	7	InsultTimer	CTimer	0	4	1	3	30006	-60	0
+1	7	BadHit		13	4	1	3	30006	-56	0
+1	6			0	235	0	1	0	0	53804476
+2	7	Conversation		13	4	1	3	30006	-64	0
+1	6			0	233	0	1	0	0	53805736
+2	7	Conversation		13	4	1	3	30006	-68	0
+1	6			0	235	0	1	0	0	53806963
+2	7	Conversation		13	4	1	3	30006	-72	0
+1	6			0	1044	0	1	0	0	53807447
+2	7	Conversation		13	4	1	3	30006	-88	0
+2	7	Maze	CScriptThing	0	12	1	3	30006	-84	0
+1	6			0	235	0	1	0	0	53808656
+2	7	Conversation		13	4	1	3	30006	-92	0
+1	6			0	233	0	1	0	0	53809140
+2	7	Conversation		13	4	1	3	30006	-96	0
+1	6			0	235	0	1	0	0	53809447
+2	7	Conversation		13	4	1	3	30006	-100	0
+1	6			0	225	0	1	0	0	53810602
+2	7	Conversation		13	4	1	3	30006	-104	0
+1	6			0	299	0	1	0	0	53810890
+2	7	Thunder	CScriptThing	0	12	1	3	30006	-120	0
+2	7	Conversation		13	4	1	3	30006	-108	0
+1	6			0	223	0	1	0	0	53811648
+2	7	Conversation		13	4	1	3	30006	-124	0
+1	6			0	311	0	1	0	0	53811934
+2	7	Thunder	CScriptThing	0	12	1	3	30006	-140	0
+2	7	Conversation		13	4	1	3	30006	-128	0
+1	6			0	232	0	1	0	0	53812596
+2	7	Conversation		13	4	1	3	30006	-144	0
+1	6			0	320	0	1	0	0	53812891
+2	7	Thunder	CScriptThing	0	12	1	3	30006	-160	0
+2	7	Conversation		13	4	1	3	30006	-148	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::CWillApprentice	53693776	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::RegisterMain	53720528	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::GetMasterData	53718752	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::GetMasterData	53801040	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::`scalar deleting destructor'	53938944	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::Alloc	53693584	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::GetParentScript	53693856	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::`scalar deleting destructor'	57961200	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::`scalar deleting destructor'	57961008	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CRaceMarker::GetParentScript	53615856	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::Main	53577344	8992
+0	7			0	0	2	1	0	0	53586320
+0	7	this		0	4	4	3	30006	-440	0
+0	7	village	CScriptThing	0	12	1	3	30006	-52	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-40	0
+0	7	AppleTimer	CTimer	0	4	1	3	30006	-24	0
+0	7	NewApples		13	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	233	0	1	0	0	53578171
+1	7	Conversation		13	4	1	3	30006	-56	0
+0	6			0	2320	0	1	0	0	53578562
+1	7	answer		13	4	1	3	30006	-80	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-76	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-60	0
+0	6			0	225	0	1	0	0	53581596
+1	7	Conversation		13	4	1	3	30006	-84	0
+0	6			0	225	0	1	0	0	53581896
+1	7	Conversation		13	4	1	3	30006	-88	0
+0	6			0	257	0	1	0	0	53582839
+1	7	Conversation		13	4	1	3	30006	-92	0
+0	6			0	259	0	1	0	0	53583181
+1	7	Conversation		13	4	1	3	30006	-96	0
+0	6			0	259	0	1	0	0	53583515
+1	7	Conversation		13	4	1	3	30006	-100	0
+0	6			0	1460	0	1	0	0	53583875
+1	7	Conversation		13	4	1	3	30006	-104	0
+1	6			0	706	0	1	0	0	53584629
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-124	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-108	0
+0	6			0	233	0	1	0	0	53585960
+1	7	Conversation		13	4	1	3	30006	-128	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::Main	53715040	2961
+0	7	this		0	4	4	3	30006	-188	0
+0	7	PreMeleeMazeTargetMarker	CScriptThing	0	12	1	3	30006	-44	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	538	0	1	0	0	53716318
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-64	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-48	0
+0	6			0	589	0	1	0	0	53717311
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-84	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-68	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::`scalar deleting destructor'	53772736	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CRaceMarker::Alloc	53615584	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::SuspendableProcess	57917680	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::Main	53693008	457
+0	7	this		0	4	4	3	30006	-52	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::Init	53667024	110
+0	7	this		0	4	4	3	30006	-24	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::`scalar deleting destructor'	53725856	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>	57891536	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::Alloc	53851680	120
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::OnPredicateFail	53709280	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::Main	53626592	18940
+0	7			0	0	2	1	0	0	53645504
+0	7	this		0	4	4	3	30006	-1020	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-52	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-48	0
+0	7	HasInformation		10	1	1	3	30006	-29	0
+0	7	CombatApprenticeTargetMarker	CScriptThing	0	12	1	3	30006	-28	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	815	0	1	0	0	53628269
+1	7	Conversation		13	4	1	3	30006	-56	0
+0	6			0	585	0	1	0	0	53629416
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-76	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-60	0
+0	6			0	575	0	1	0	0	53630172
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-96	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	6			0	14553	0	1	0	0	53630822
+1	7	Whisper	CScriptThing	0	12	1	3	30006	-108	0
+1	6			0	603	0	1	0	0	53631001
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-128	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-112	0
+1	6			0	13672	0	1	0	0	53631691
+2	7	answer		13	4	1	3	30006	-132	0
+2	6			0	3516	0	1	0	0	53631691
+3	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+3	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-136	0
+2	6			0	10061	0	1	0	0	53635302
+3	7	InsultTimer	CTimer	0	4	1	3	30006	-176	0
+3	7	Disqualified		10	1	1	3	30006	-169	0
+3	7	HeroInitialHealth		8	4	1	3	30006	-168	0
+3	7	SuperDisqualified		10	1	1	3	30006	-161	0
+3	7	WhisperHealth		13	4	1	3	30006	-160	0
+3	7	WhisperInitialHealth		8	4	1	3	30006	-156	0
+3	6			0	4214	0	1	0	0	53636209
+4	7	Power		8	4	1	3	30006	-180	0
+4	6			0	773	0	1	0	0	53636544
+5	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-200	0
+5	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-184	0
+4	6			0	771	0	1	0	0	53637494
+5	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-220	0
+5	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-204	0
+4	6			0	235	0	1	0	0	53638942
+5	7	Conversation		13	4	1	3	30006	-224	0
+4	6			0	233	0	1	0	0	53639621
+5	7	Conversation		13	4	1	3	30006	-228	0
+4	6			0	233	0	1	0	0	53640190
+5	7	Conversation		13	4	1	3	30006	-232	0
+3	6			0	3365	0	1	0	0	53641949
+4	7	MeleeGrade		13	4	1	3	30006	-248	0
+4	7	RelativeHealth		8	4	1	3	30006	-244	0
+4	7	WhisperEndingHealth		8	4	1	3	30006	-240	0
+4	7	HeroEndingHealth		8	4	1	3	30006	-236	0
+4	6			0	202	0	1	0	0	53642103
+5	7	i		13	4	1	3	30006	-252	0
+4	6			0	3009	0	1	0	0	53642305
+5	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-324	0
+5	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-308	0
+5	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-292	0
+5	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-276	0
+5	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-272	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::CTheRealGuildmaster	53722160	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::Alloc	53896592	117
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Alloc	53936736	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>::GetEntityScriptName	57741488	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Init	53817264	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::GetParentScript	53937008	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::GetMasterData	53650272	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::`scalar deleting destructor'	53718784	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::OnPredicateFail	53667168	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>	57917424	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>	57917184	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Alloc	53721968	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::SuspendableProcess	57744784	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main	53722304	2765
+0	7	this		0	4	4	3	30006	-280	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	669	0	1	0	0	53723098
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-88	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-52	0
+0	6			0	521	0	1	0	0	53724433
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-108	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::Main	53948064	6373
+0	7	this		0	4	4	3	30006	-500	0
+0	7	Whisper	CScriptThing	0	12	1	3	30006	-64	0
+0	7	AllBandits	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-52	0
+0	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	1129	0	1	0	0	53949787
+1	7	BanditHandles	std::vector<CScriptGameResourceObjectScriptedThingBase,std::allocator<CScriptGameResourceObjectScriptedThingBase> >	0	20	1	3	30006	-140	0
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-120	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-84	0
+1	6			0	107	0	1	0	0	53949828
+2	7	i		13	4	1	3	30006	-144	0
+0	6			0	352	0	1	0	0	53950925
+1	7	i		13	4	1	3	30006	-148	0
+0	6			0	1009	0	1	0	0	53952286
+1	7	HLStyleConversationIndex		13	4	1	3	30006	-152	0
+0	6			0	769	0	1	0	0	53953605
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-208	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-192	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-172	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::RegisterMain	53896816	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::CTheRealGuildmaster	53852928	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::RunCeremonyCutscene	53574016	2308
+0	7	this		0	4	4	3	30006	-264	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	2062	0	1	0	0	53574248
+1	7	GM	CScriptThing	0	12	1	3	30006	-128	0
+1	7	Whisper	CScriptThing	0	12	1	3	30006	-116	0
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-104	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-88	0
+1	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-72	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+1	7	seh_GM	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-52	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-36	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CHeroBed::~CHeroBed	53719984	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::OnPredicateFail	53902528	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::~CTheRealGuildmaster	53725952	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>::SuspendableProcess	57742480	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>::CreateActiveEntityScript	57739216	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57739559
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>::GetEntityScriptName	57744944	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::Init	53958144	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CQ_GuildTrainingDepartureScript	53720464	41
+0	7	this		0	4	4	3	30006	-4	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>	57916624	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>	57916384	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::Main	53897120	1757
+0	7	this		0	4	4	3	30006	-208	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>	57968656	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::Main	53731840	26528
+0	7			0	0	2	1	0	0	53758352
+0	7	this		0	4	4	3	30006	-1560	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-76	0
+0	7	ChatSentence		13	4	1	3	30006	-72	0
+0	7	GuiCounter		13	4	1	3	30006	-68	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-64	0
+0	7	DummyAmount		13	4	1	3	30006	-48	0
+0	7	NotTalkedTo		10	1	1	3	30006	-41	0
+0	7	GuiCounter2		13	4	1	3	30006	-40	0
+0	7	Turned		10	1	1	3	30006	-35	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-34	0
+0	7	StillChild		10	1	1	3	30006	-33	0
+0	7	ExpTimer	CTimer	0	4	1	3	30006	-32	0
+0	7	DummyTimer	CTimer	0	4	1	3	30006	-28	0
+0	7	ExpOrb	CScriptThing	0	12	1	3	30006	-24	0
+0	6			0	1018	0	1	0	0	53733144
+1	7	Conversation		13	4	1	3	30006	-80	0
+0	6			0	889	0	1	0	0	53734225
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-136	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-100	0
+0	6			0	977	0	1	0	0	53736505
+1	7	Conversation		13	4	1	3	30006	-140	0
+0	6			0	771	0	1	0	0	53737619
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-196	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-180	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-164	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-160	0
+0	6			0	977	0	1	0	0	53739751
+1	7	Conversation		13	4	1	3	30006	-200	0
+0	6			0	1312	0	1	0	0	53740877
+1	7	DummyPos	C3DVector	0	12	1	3	30006	-292	0
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-280	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-264	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-248	0
+1	7	particle_effect	CScriptThing	0	12	1	3	30006	-244	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-232	0
+1	7	Dummy	CScriptThing	0	12	1	3	30006	-212	0
+0	6			0	242	0	1	0	0	53743362
+1	7	Conversation		13	4	1	3	30006	-296	0
+0	6			0	823	0	1	0	0	53743741
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-352	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-336	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-320	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-316	0
+0	6			0	3046	0	1	0	0	53746957
+1	7	answer		13	4	1	3	30006	-412	0
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-408	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-392	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-376	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-372	0
+0	6			0	2311	0	1	0	0	53750928
+1	7	answer		13	4	1	3	30006	-436	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-432	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-416	0
+0	6			0	3099	0	1	0	0	53753421
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-456	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-440	0
+1	6			0	2160	0	1	0	0	53754330
+2	7	answer		13	4	1	3	30006	-460	0
+0	6			0	964	0	1	0	0	53756728
+1	7	Conversation		13	4	1	3	30006	-464	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::SuspendableProcess	57917280	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::Init	53902512	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::GetParentScript	53577184	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::GetMasterData	53851456	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::DoMission	53942640	728
+0	7	this		0	4	4	3	30006	-92	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::GetParentScript	53722240	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::`scalar deleting destructor'	57961072	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::OnPredicateFail	53945168	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>::GetEntityScriptName	57743792	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::Init	53766944	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::GetParentScript	53958112	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::~CApprenticeSpeedTest	53719888	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>::CreateActiveEntityScript	57746128	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57746471
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::Alloc	53765040	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::SuspendableProcess	57919280	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::~CWillWhisper	53959856	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>::CreateActiveEntityScript	57747280	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57747623
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::Alloc	53921472	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::`scalar deleting destructor'	57879136	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForTermination	53941008	1301
+0	7	this		0	4	4	3	30006	-108	0
+0	7	HLStyleConversationIndex		13	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingScript>	57891408	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>	57891568	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>	57891472	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>	57968560	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>	57968592	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>	57968496	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>	57968720	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::~CSkillApprentice	53720080	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::Alloc	53588592	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::`scalar deleting destructor'	53947408	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::Main	53773632	2799
+0	7	this		0	4	4	3	30006	-304	0
+0	7	Whisper	CScriptThing	0	12	1	3	30006	-60	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-48	0
+0	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	417	0	1	0	0	53775433
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-80	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CQ_GuildTrainingMeleeScript	53773152	41
+0	7	this		0	4	4	3	30006	-4	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::Alloc	53504464	120
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::SuspendableProcess	57740176	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::`scalar deleting destructor'	57878944	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>	57968688	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::CPreMeleeDummy	53765232	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::`scalar deleting destructor'	53939072	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::`scalar deleting destructor'	53718912	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::Init	53853040	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>::CreateActiveEntityScript	57740368	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57740711
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::`scalar deleting destructor'	53896320	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::OnPredicateFail	53921920	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::GetMasterData	53896288	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::KeepBookcaseExitRemoved	53525712	866
+0	7	this		0	4	4	3	30006	-84	0
+0	7	BookExit	CScriptThing	0	12	1	3	30006	-40	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-25	0
+0	7	Bookcase	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::~CSpeedFriend	53719920	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::~CWillDummy	53720240	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CHeroBed::Main	53616512	1137
+0	7	this		0	4	4	3	30006	-128	0
+0	7	ApprenticeBeds	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-88	0
+0	7	BrownBeds	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-68	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-45	0
+0	7	NumBrownBeds		13	4	1	3	30006	-44	0
+0	7	NumPalletBeds		13	4	1	3	30006	-40	0
+0	7	PalletBeds	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-36	0
+0	7	NumApprenticeBeds		13	4	1	3	30006	-16	0
+0	6			0	178	0	1	0	0	53616718
+1	7	i		13	4	1	3	30006	-92	0
+0	6			0	178	0	1	0	0	53617036
+1	7	i		13	4	1	3	30006	-96	0
+0	6			0	178	0	1	0	0	53617354
+1	7	i		13	4	1	3	30006	-100	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::Main	53614944	507
+0	7	this		0	4	4	3	30006	-56	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::OnPredicateFail	53588912	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>::GetEntityScriptName	57742640	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main	53817280	1064
+0	7	this		0	4	4	3	30006	-36	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::Init	53715024	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::Init	53692720	65
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>	57918224	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>	57917984	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::`scalar deleting destructor'	53959696	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::Init	53588896	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::Init	53626560	18
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::CMeleeThunder	53817152	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::Init	53921776	114
+0	7	this		0	4	4	3	30006	-24	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::Init	53577216	18
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingScript>::`scalar deleting destructor'	57878752	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingScript>::CActiveEntityScript<NScript::CQ_GuildTrainingScript>	57916224	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingScript>::CActiveEntityScript<NScript::CQ_GuildTrainingScript>	57915984	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::GetParentScript	53614880	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::`scalar deleting destructor'	53772672	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CHeroBed::GetParentScript	53616464	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::Alloc	53766640	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::InitialiseVariables	53956032	46
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::GetParentScript	53692688	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::Main	53709296	4311
+0	7	this		0	4	4	3	30006	-344	0
+0	7	initial_angle		8	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	441	0	1	0	0	53710767
+1	7	Conversation		13	4	1	3	30006	-24	0
+0	6			0	465	0	1	0	0	53711244
+1	7	Conversation		13	4	1	3	30006	-28	0
+0	6			0	465	0	1	0	0	53712574
+1	7	Conversation		13	4	1	3	30006	-32	0
+0	6			0	465	0	1	0	0	53713075
+1	7	Conversation		13	4	1	3	30006	-36	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main	53945184	1700
+0	7	this		0	4	4	3	30006	-148	0
+0	7	GuiCounter		13	4	1	3	30006	-24	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-17	0
+0	7	StickTimer	CTimer	0	4	1	3	30006	-16	0
+0	6			0	1266	0	1	0	0	53945477
+1	7	AllScorpions	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-44	0
+1	6			0	205	0	1	0	0	53945684
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-48	0
+1	6			0	385	0	1	0	0	53946346
+2	7	NearestScorpionSpawn	CScriptThing	0	12	1	3	30006	-60	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::CWillDummy	53709152	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::SuspendableProcess	57918480	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::GetParentScript	53714992	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::~CMeleeApprentice	53720016	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::CMeleeApprentice	53618128	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks	53518160	5727
+0	7	this		0	4	4	3	30006	-368	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-25	0
+0	7	Maze	CScriptThing	0	12	1	3	30006	-24	0
+0	6			0	992	0	1	0	0	53518285
+1	7	AllThings	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-48	0
+1	6			0	869	0	1	0	0	53518338
+2	7	i		13	4	1	3	30006	-52	0
+0	6			0	1221	0	1	0	0	53519509
+1	7	AllThings	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-72	0
+1	6			0	878	0	1	0	0	53519782
+2	7	i		13	4	1	3	30006	-76	0
+0	6			0	566	0	1	0	0	53521565
+1	7	HLStyleConversationIndex		13	4	1	3	30006	-80	0
+0	6			0	1202	0	1	0	0	53522325
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-156	0
+1	7	HLStyleConversationIndex		13	4	1	3	30006	-140	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+1	7	seh_Maze	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-120	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-100	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::GetMasterData	53666688	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::Init	53801376	41
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::Alloc	53902208	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::Main	53667184	11549
+0	7	this		0	4	4	3	30006	-636	0
+0	7	initial_angle		8	4	1	3	30006	-164	0
+0	7	reverse		10	1	1	3	30006	-157	0
+0	7	move_point	CScriptThing	0	12	1	3	30006	-156	0
+0	7	Staticvector	C3DVector	0	12	1	3	30006	-144	0
+0	7	start_point	CScriptThing	0	12	1	3	30006	-132	0
+0	7	start_pos	C3DVector	0	12	1	3	30006	-120	0
+0	7	static_pos	C3DVector	0	12	1	3	30006	-108	0
+0	7	Staticreversevector	C3DVector	0	12	1	3	30006	-96	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-82	0
+0	7	StillActive		10	1	1	3	30006	-81	0
+0	7	my_pos	C3DVector	0	12	1	3	30006	-80	0
+0	7	vector	C3DVector	0	12	1	3	30006	-68	0
+0	7	reversevector	C3DVector	0	12	1	3	30006	-56	0
+0	7	count		13	4	1	3	30006	-44	0
+0	7	InPosition		10	1	1	3	30006	-37	0
+0	7	static_point	CScriptThing	0	12	1	3	30006	-36	0
+0	7	destination_pos	C3DVector	0	12	1	3	30006	-24	0
+0	6			0	9668	0	1	0	0	53668928
+1	7	StartAgain		10	1	1	3	30006	-169	0
+1	7	HitTimer	CTimer	0	4	1	3	30006	-168	0
+1	6			0	1371	0	1	0	0	53669920
+2	7	PowerMultiplier		8	4	1	3	30006	-176	0
+2	7	HitHard		10	1	1	3	30006	-170	0
+1	6			0	7021	0	1	0	0	53671464
+2	7	PowerMultiplier		8	4	1	3	30006	-180	0
+2	6			0	320	0	1	0	0	53672695
+3	7	Teacher	CScriptThing	0	12	1	3	30006	-196	0
+3	7	Conversation		13	4	1	3	30006	-184	0
+2	6			0	320	0	1	0	0	53673111
+3	7	ApprenticeTeacher	CScriptThing	0	12	1	3	30006	-212	0
+3	7	Conversation		13	4	1	3	30006	-200	0
+2	6			0	1179	0	1	0	0	53674699
+3	7	Teacher	CScriptThing	0	12	1	3	30006	-228	0
+3	7	Conversation		13	4	1	3	30006	-216	0
+2	6			0	1179	0	1	0	0	53675974
+3	7	Teacher	CScriptThing	0	12	1	3	30006	-244	0
+3	7	Conversation		13	4	1	3	30006	-232	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::Alloc	53725984	117
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::Alloc	53681664	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::~CQ_GuildTrainingWoodsWillScript	53959824	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CQ_GuildTrainingSkillScript	53819168	41
+0	7	this		0	4	4	3	30006	-4	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::CBirdKiller	53681856	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::GetParentScript	53681936	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::`scalar deleting destructor'	53772800	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::GetParentScript	53666992	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::OnPersist	53852368	58
+0	7	this		0	4	4	3	30006	-4	0
+0	7	context		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>	57917824	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>	57917584	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::OnPredicateFail	53577248	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>	57743680	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::`scalar deleting destructor'	53818624	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::CSpeedFriend	53614800	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::Init	53819536	51
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::GetParentScript	53626528	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::`scalar deleting destructor'	53939008	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::TeleportOutHero	53901456	602
+0	7	this		0	4	4	3	30006	-52	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	382	0	1	0	0	53901634
+1	7	HLStyleConversationIndex		13	4	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::`scalar deleting destructor'	53719360	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::`scalar deleting destructor'	53851488	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Init	53722272	25
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>	57917024	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>	57916784	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::OnPersist	53682080	53
+0	7	this		0	4	4	3	30006	-4	0
+0	7	context		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::Init	53773520	80
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>::`scalar deleting destructor'	57879008	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::GetParentScript	53766912	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingScript>	57968464	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::OnPersist	53588928	33
+0	7	this		0	4	4	3	30006	-4	0
+0	7	context		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::~CQ_GuildTrainingWillScript	53896448	78
+0	7	this		0	4	4	3	30006	-16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::GetParentScript	53902480	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::Main	53853056	34580
+0	7			0	0	2	1	0	0	53887608
+0	7	this		0	4	4	3	30006	-2004	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-44	0
+0	7	ChatSentence		13	4	1	3	30006	-40	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-36	0
+0	7	SpeechTimer	CTimer	0	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	28901	0	1	0	0	53853736
+1	7	WillRepeating		10	1	1	3	30006	-45	0
+1	6			0	583	0	1	0	0	53854278
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-68	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-52	0
+1	6			0	540	0	1	0	0	53855123
+2	7	Conversation		13	4	1	3	30006	-72	0
+1	6			0	26695	0	1	0	0	53855867
+2	7	WillHelpTimer	CTimer	0	4	1	3	30006	-104	0
+2	7	Disqualified		10	1	1	3	30006	-97	0
+2	7	ViewTimer	CTimer	0	4	1	3	30006	-96	0
+2	7	WillTimer	CTimer	0	4	1	3	30006	-92	0
+2	7	ability	EHeroAbility	6	4	1	3	30006	-88	0
+2	7	WillGameScoreInfoID		13	4	1	3	30006	-84	0
+2	7	WillGameTimerID		13	4	1	3	30006	-80	0
+2	7	SpokenToMe		10	1	1	3	30006	-73	0
+2	6			0	800	0	1	0	0	53855883
+3	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-160	0
+3	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+3	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-128	0
+3	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-124	0
+2	6			0	767	0	1	0	0	53858372
+3	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-212	0
+3	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-196	0
+3	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-180	0
+2	6			0	244	0	1	0	0	53863287
+3	7	HLStyleConversationIndex		13	4	1	3	30006	-216	0
+2	6			0	17124	0	1	0	0	53865402
+3	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-268	0
+3	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-252	0
+3	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-236	0
+3	6			0	7489	0	1	0	0	53866098
+4	7	answer		13	4	1	3	30006	-276	0
+4	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-272	0
+4	6			0	6058	0	1	0	0	53867173
+5	7	Whisper	CScriptThing	0	12	1	3	30006	-308	0
+5	7	answer2		13	4	1	3	30006	-296	0
+5	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-292	0
+5	6			0	303	0	1	0	0	53871981
+6	7	WillApprentice	CScriptThing	0	12	1	3	30006	-320	0
+3	6			0	8684	0	1	0	0	53873747
+4	7	answer		13	4	1	3	30006	-352	0
+4	7	WillGrade		13	4	1	3	30006	-348	0
+4	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-344	0
+4	7	csargs	std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CCharString> > >	0	20	1	3	30006	-340	0
+4	6			0	277	0	1	0	0	53873766
+5	7	i		6	4	1	3	30006	-356	0
+4	6			0	6268	0	1	0	0	53875777
+5	7	Whisper	CScriptThing	0	12	1	3	30006	-388	0
+5	7	answer2		13	4	1	3	30006	-376	0
+5	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-372	0
+5	6			0	303	0	1	0	0	53880765
+6	7	WillApprentice	CScriptThing	0	12	1	3	30006	-400	0
+0	6			0	303	0	1	0	0	53883150
+1	7	WillApprentice	CScriptThing	0	12	1	3	30006	-412	0
+0	6			0	2651	0	1	0	0	53884831
+1	7	answer		13	4	1	3	30006	-436	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-432	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-416	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CHeroBed::CHeroBed	53616384	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::`scalar deleting destructor'	53818752	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::Main	53902544	15140
+0	7	this		0	4	4	3	30006	-780	0
+0	7	MazeConv		13	4	1	3	30006	-44	0
+0	7	GuiCounter		13	4	1	3	30006	-40	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-36	0
+0	7	MazeCommentTimer	CTimer	0	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	669	0	1	0	0	53903134
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-100	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-84	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-68	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-64	0
+0	6			0	946	0	1	0	0	53907567
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+0	6			0	961	0	1	0	0	53912142
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-140	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-124	0
+0	6			0	747	0	1	0	0	53916732
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-196	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-180	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-164	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-160	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>	57968528	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::Alloc	53666720	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::WatchForTermination	53956096	518
+0	7	this		0	4	4	3	30006	-52	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::GetParentScript	53709232	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>	57891440	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::Main	53766960	4512
+0	7			0	0	2	1	0	0	53771396
+0	7	this		0	4	4	3	30006	-300	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-36	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	3741	0	1	0	0	53767554
+1	7	ZDifference		8	4	1	3	30006	-52	0
+1	7	nearest_tag	CScriptThing	0	12	1	3	30006	-48	0
+1	6			0	597	0	1	0	0	53767685
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+1	6			0	2599	0	1	0	0	53768684
+2	7	TextIndex		13	4	1	3	30006	-100	0
+2	7	Conversation		13	4	1	3	30006	-96	0
+2	7	AllChatMarkers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-92	0
+2	6			0	352	0	1	0	0	53768847
+3	7	i		13	4	1	3	30006	-104	0
+3	6			0	230	0	1	0	0	53768964
+4	7	CurrentTextIndex		13	4	1	3	30006	-108	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::CTheRealGuildmaster	53731696	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::Alloc	53720304	117
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::`scalar deleting destructor'	53772608	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::PhaseOne	53957696	13
+0	7	this		0	4	4	3	30006	-8	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-1	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::Init	53731808	25
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::CSkillApprentice	53650496	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::GossipSetup	53505184	3166
+0	7	this		0	4	4	3	30006	-424	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingScript>::CreateActiveEntityScript	57738064	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57738407
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::`scalar deleting destructor'	53718976	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::Main	53958176	1206
+0	7	this		0	4	4	3	30006	-108	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>	57891504	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CHeroBed::`scalar deleting destructor'	53719104	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::~CQ_GuildTrainingSkillScript	53851616	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::GetMasterData	53947312	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingScript>::SuspendableProcess	57737872	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::CSkillTarget	53666912	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::CScorpionHome	53936928	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::GetMasterData	53714688	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::OnPersist	53509152	53
+0	7	this		0	4	4	3	30006	-4	0
+0	7	context		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::~CQ_GuildTrainingMeleeScript	53818880	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::~CPreMeleeWhisper	53772960	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>::CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>	57743552	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::GetParentScript	53817232	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::CAppleGirl	53577104	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::~CQ_GuildTrainingDepartureScript	53725920	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::SuspendableProcess	57741328	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CHeroBed::Alloc	53616192	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSpeedFriend::Alloc	53614608	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::~CScorpionHome	53939296	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::CApprenticeSpeedTest	53588784	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::Main	53509232	5643
+0	7	this		0	4	4	3	30006	-480	0
+0	7	village	CScriptThing	0	12	1	3	30006	-28	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingScript>	57737920	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::`scalar deleting destructor'	53959760	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>	57740096	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::~CTheRealGuildmaster	53772896	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::RegisterMain	53947760	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::Main	53682160	8197
+0	7	this		0	4	4	3	30006	-456	0
+0	7	BirdTimer	CTimer	0	4	1	3	30006	-40	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-36	0
+0	7	NewBirds		13	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	500	0	1	0	0	53682580
+1	7	AllBirdMarkers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-60	0
+1	6			0	304	0	1	0	0	53682677
+2	7	i		13	4	1	3	30006	-64	0
+2	6			0	206	0	1	0	0	53682770
+3	7	NewBird	CScriptThing	0	12	1	3	30006	-76	0
+0	6			0	233	0	1	0	0	53683351
+1	7	Conversation		13	4	1	3	30006	-80	0
+0	6			0	2570	0	1	0	0	53683730
+1	7	answer		13	4	1	3	30006	-104	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+1	6			0	578	0	1	0	0	53685196
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-140	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-124	0
+0	6			0	234	0	1	0	0	53686677
+1	7	Conversation		13	4	1	3	30006	-144	0
+0	6			0	234	0	1	0	0	53686974
+1	7	Conversation		13	4	1	3	30006	-148	0
+0	6			0	318	0	1	0	0	53687441
+1	7	Conversation		13	4	1	3	30006	-152	0
+0	6			0	330	0	1	0	0	53687841
+1	7	Conversation		13	4	1	3	30006	-156	0
+0	6			0	268	0	1	0	0	53688234
+1	7	Conversation		13	4	1	3	30006	-160	0
+0	6			0	1104	0	1	0	0	53688609
+1	7	Conversation		13	4	1	3	30006	-164	0
+1	6			0	683	0	1	0	0	53688749
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-184	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-168	0
+0	6			0	242	0	1	0	0	53690013
+1	7	Conversation		13	4	1	3	30006	-188	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::`scalar deleting destructor'	53719168	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::`scalar deleting destructor'	57961264	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::`scalar deleting destructor'	53947344	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CRaceMarker::CRaceMarker	53615776	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::Main	53765360	1018
+0	7	this		0	4	4	3	30006	-84	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>::SuspendableProcess	57743632	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::`scalar deleting destructor'	53718848	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>::CreateActiveEntityScript	57743824	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57744167
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>::GetEntityScriptName	57739184	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::GetParentScript	53945072	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::`scalar deleting destructor'	57961136	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Alloc	53944800	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::Alloc	53939328	117
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::~CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>	57968624	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::Alloc	53617936	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CRaceMarker::Init	53615888	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>	57891600	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::CTheRealGuildmaster	53777328	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::SuspendableProcess	57916880	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>	57919424	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>	57919184	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingScript::RegisterMain	53504752	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>::SuspendableProcess	57745936	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::Init	53693888	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::Main	53820224	24976
+0	7			0	0	2	1	0	0	53845172
+0	7	this		0	4	4	3	30006	-1236	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-52	0
+0	7	ChatSentence		13	4	1	3	30006	-48	0
+0	7	SkillApprentice	CScriptThing	0	12	1	3	30006	-44	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	559	0	1	0	0	53821266
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+0	6			0	540	0	1	0	0	53822071
+1	7	Conversation		13	4	1	3	30006	-76	0
+0	6			0	21130	0	1	0	0	53822837
+1	7	WeaponFired		10	1	1	3	30006	-145	0
+1	7	ArcheryGameScoreInfoID		13	4	1	3	30006	-144	0
+1	7	SkillTimer	CTimer	0	4	1	3	30006	-140	0
+1	7	GuiCounter		13	4	1	3	30006	-136	0
+1	7	ArcheryRing	CScriptThing	0	12	1	3	30006	-132	0
+1	7	BlackButton		13	4	1	3	30006	-120	0
+1	7	XButton		13	4	1	3	30006	-116	0
+1	7	Disqualified		10	1	1	3	30006	-109	0
+1	7	ArcheryHighScoreInfoID		13	4	1	3	30006	-108	0
+1	7	SkillHelpTimer	CTimer	0	4	1	3	30006	-104	0
+1	7	ArcheryGameTimerID		13	4	1	3	30006	-100	0
+1	7	SoftConv		13	4	1	3	30006	-96	0
+1	7	CurrentScore		13	4	1	3	30006	-92	0
+1	7	LeftTrigger		13	4	1	3	30006	-88	0
+1	7	TurnOffInterface		10	1	1	3	30006	-82	0
+1	7	NewHighScore		10	1	1	3	30006	-81	0
+1	7	Zoomed		13	4	1	3	30006	-80	0
+1	6			0	1906	0	1	0	0	53822871
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-204	0
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-188	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-172	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-168	0
+1	6			0	2193	0	1	0	0	53830466
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-260	0
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-244	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-228	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-224	0
+1	6			0	1067	0	1	0	0	53833861
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-264	0
+1	6			0	1165	0	1	0	0	53837400
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-268	0
+1	6			0	244	0	1	0	0	53838983
+2	7	Conversation		13	4	1	3	30006	-272	0
+1	6			0	4117	0	1	0	0	53839808
+2	7	answer		13	4	1	3	30006	-332	0
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-328	0
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-312	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-296	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-292	0
+2	6			0	936	0	1	0	0	53840898
+3	7	csargs	std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CCharString> > >	0	20	1	3	30006	-356	0
+3	7	SkillGrade		13	4	1	3	30006	-336	0
+3	6			0	286	0	1	0	0	53840917
+4	7	i		6	4	1	3	30006	-360	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>	57891632	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::Alloc	53777136	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::~CTheRealGuildmaster	53851648	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::RegisterMain	53773216	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::GetMasterData	53725760	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::~CAppleGirl	53719856	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::GetParentScript	53820160	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::`scalar deleting destructor'	57960880	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>::GetEntityScriptName	57747248	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>::GetEntityScriptName	57740336	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::WatchForLeaving	53901200	201
+0	7	this		0	4	4	3	30006	-8	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-1	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Init	53937040	45
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::~CQ_GuildTrainingPreMeleeScript	53772864	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::InitialiseVariables	53899328	32
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::`scalar deleting destructor'	53818688	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::`scalar deleting destructor'	53939136	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::SuspendableProcess	57916480	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CQ_GuildTrainingWoodsWillScript	53947696	41
+0	7	this		0	4	4	3	30006	-4	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::Main	53852448	224
+0	7	this		0	4	4	3	30006	-40	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::WatchForTermination	53899376	546
+0	7	this		0	4	4	3	30006	-52	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::`scalar deleting destructor'	53851552	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::RegisterMain	53819232	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingScript>::CSpawnedFunc<NScript::CQ_GuildTrainingScript>	57737792	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2	53572704	1040
+0	7	this		0	4	4	3	30006	-144	0
+0	7	GM	CScriptThing	0	12	1	3	30006	-100	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-88	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-49	0
+0	7	seh_GM	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-48	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-32	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::GetParentScript	53777408	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::RunSaveXPCutscene	53571392	1040
+0	7	this		0	4	4	3	30006	-144	0
+0	7	GM	CScriptThing	0	12	1	3	30006	-100	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-88	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-49	0
+0	7	seh_GM	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-48	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-32	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>	57740224	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>::GetEntityScriptName	57746096	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::Main	53777472	18852
+0	7			0	0	2	1	0	0	53796296
+0	7	this		0	4	4	3	30006	-1252	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-52	0
+0	7	Whisper	CScriptThing	0	12	1	3	30006	-48	0
+0	7	ChatSentence		13	4	1	3	30006	-36	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	591	0	1	0	0	53778608
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+0	6			0	536	0	1	0	0	53779371
+1	7	Conversation		13	4	1	3	30006	-76	0
+0	6			0	14764	0	1	0	0	53780162
+1	7	Thunder	CScriptThing	0	12	1	3	30006	-140	0
+1	7	MeleeGrade		13	4	1	3	30006	-128	0
+1	7	GuiCounter		13	4	1	3	30006	-124	0
+1	7	RelativeHealth		8	4	1	3	30006	-120	0
+1	7	HeroInitialHealth		8	4	1	3	30006	-116	0
+1	7	MeleeHelpTimer	CTimer	0	4	1	3	30006	-112	0
+1	7	seh_Thunder	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-108	0
+1	7	WhisperHealth		13	4	1	3	30006	-92	0
+1	7	WhisperEndingHealth		8	4	1	3	30006	-88	0
+1	7	WhisperInitialHealth		8	4	1	3	30006	-84	0
+1	7	HeroEndingHealth		8	4	1	3	30006	-80	0
+1	6			0	1176	0	1	0	0	53780191
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-212	0
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-196	0
+2	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-180	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-164	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-160	0
+1	6			0	242	0	1	0	0	53781760
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-216	0
+1	6			0	276	0	1	0	0	53782227
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-220	0
+1	6			0	1226	0	1	0	0	53782680
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-292	0
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-276	0
+2	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-260	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-240	0
+1	6			0	276	0	1	0	0	53785313
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-296	0
+1	6			0	1504	0	1	0	0	53786362
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-368	0
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-352	0
+2	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-336	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-320	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-316	0
+1	6			0	242	0	1	0	0	53788681
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-372	0
+1	6			0	244	0	1	0	0	53789276
+2	7	HLStyleConversationIndex		13	4	1	3	30006	-376	0
+1	6			0	208	0	1	0	0	53789790
+2	7	i		13	4	1	3	30006	-380	0
+1	6			0	4534	0	1	0	0	53790076
+2	7	answer		13	4	1	3	30006	-476	0
+2	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-472	0
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-456	0
+2	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-440	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-424	0
+2	7	csargs	std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CCharString> > >	0	20	1	3	30006	-420	0
+2	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-400	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::~CArtifactThief	53939264	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::Alloc	53819888	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::`scalar deleting destructor'	53719552	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::~CTheRealGuildmaster	53818912	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::~CMeleeOpponent	53818944	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>::`scalar deleting destructor'	57878816	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::CTheRealGuildmaster	53820080	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::OnPredicateFail	53958160	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::Alloc	53576912	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingScript>::`scalar deleting destructor'	57960816	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::Init	53650608	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CRaceMarker::`scalar deleting destructor'	53719040	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::RegisterMain	53851968	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::Main	53939856	872
+0	7	this		0	4	4	3	30006	-96	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::Main	53618272	6362
+0	7	this		0	4	4	3	30006	-408	0
+0	7	MeleeApprenticeMarker	CScriptThing	0	12	1	3	30006	-44	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-32	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	551	0	1	0	0	53620525
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-64	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-48	0
+0	6			0	551	0	1	0	0	53621616
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-84	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-68	0
+0	6			0	551	0	1	0	0	53622323
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+0	6			0	551	0	1	0	0	53623181
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-124	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-108	0
+0	6			0	568	0	1	0	0	53623795
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-128	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::Main	53721152	644
+0	7	this		0	4	4	3	30006	-72	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::Init	53726512	39
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>::`scalar deleting destructor'	57879072	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>::CreateActiveEntityScript	57741520	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57741863
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::~CMeleeThunder	53818976	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::RegisterMain	53939552	239
+0	7	this		0	4	4	3	30006	-44	0
+FUNCTION	NScript::CQ_GuildTrainingScript::RunArrivalCutscene	53516288	1493
+0	7	this		0	4	4	3	30006	-176	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-25	0
+0	7	Maze	CScriptThing	0	12	1	3	30006	-24	0
+0	6			0	1047	0	1	0	0	53516669
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-100	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-84	0
+1	7	seh_Maze	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-68	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-52	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-48	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::GetParentScript	53765312	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::~CQ_GuildTrainingScript	53719744	78
+0	7	this		0	4	4	3	30006	-16	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>::`scalar deleting destructor'	57879200	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::EndMission	53957712	102
+0	7	this		0	4	4	3	30006	-8	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-1	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::OnPredicateFail	53937104	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::DoMission	53900064	909
+0	7	this		0	4	4	3	30006	-100	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::Alloc	53852736	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::GetParentScript	53853008	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::Alloc	53957840	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::`scalar deleting destructor'	57879264	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::GetParentScript	53618208	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::EndMission	53943760	224
+0	7	this		0	4	4	3	30006	-28	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>::CreateActiveEntityScript	57744976	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57745319
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::CCombatApprentice	53626448	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::DoMission	53956752	540
+0	7	this		0	4	4	3	30006	-68	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingScript::KeepTabsOnWhisper	53526800	2046
+0	7	this		0	4	4	3	30006	-192	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::`scalar deleting destructor'	57960944	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::~CFinalMaze	53939232	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main	53937120	1448
+0	7	this		0	4	4	3	30006	-148	0
+0	7	GuiCounter		13	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	981	0	1	0	0	53937476
+1	7	AllScorpions	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-40	0
+1	6			0	383	0	1	0	0	53938059
+2	7	NearestScorpionSpawn	CScriptThing	0	12	1	3	30006	-52	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::SuspendableProcess	57918880	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>::CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>	57745856	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CRaceMarker::Main	53615904	221
+0	7	this		0	4	4	3	30006	-8	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-1	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::~CQ_GuildTrainingWoodsMeleeScript	53947472	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::WatchForSparrowKilled	53525328	296
+0	7	this		0	4	4	3	30006	-28	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::`scalar deleting destructor'	53719616	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::~CTheRealGuildmaster	53896560	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CRaceMarker::~CRaceMarker	53719952	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::Main	53693904	12016
+0	7			0	0	2	1	0	0	53705892
+0	7	this		0	4	4	3	30006	-556	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-60	0
+0	7	village	CScriptThing	0	12	1	3	30006	-56	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	HasInformation		10	1	1	3	30006	-26	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-25	0
+0	7	WillApprenticeTargetMarker	CScriptThing	0	12	1	3	30006	-24	0
+0	6			0	851	0	1	0	0	53695721
+1	7	Conversation		13	4	1	3	30006	-64	0
+0	6			0	613	0	1	0	0	53696843
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-84	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-68	0
+0	6			0	603	0	1	0	0	53697651
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+0	6			0	7401	0	1	0	0	53698341
+1	7	answer		13	4	1	3	30006	-108	0
+1	6			0	2390	0	1	0	0	53698341
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-128	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-112	0
+1	6			0	4919	0	1	0	0	53700823
+2	7	Disqualified		10	1	1	3	30006	-149	0
+2	7	ViewTimer	CTimer	0	4	1	3	30006	-148	0
+2	7	WillTimer	CTimer	0	4	1	3	30006	-144	0
+2	7	ability	EHeroAbility	6	4	1	3	30006	-140	0
+2	7	WillGameScoreInfoID		13	4	1	3	30006	-136	0
+2	7	WillGameTimerID		13	4	1	3	30006	-132	0
+2	6			0	254	0	1	0	0	53702147
+3	7	HLStyleConversationIndex		13	4	1	3	30006	-156	0
+2	6			0	2387	0	1	0	0	53703277
+3	7	WillGrade		13	4	1	3	30006	-160	0
+3	6			0	230	0	1	0	0	53703296
+4	7	i		6	4	1	3	30006	-164	0
+3	6			0	2138	0	1	0	0	53703526
+4	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-220	0
+4	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-204	0
+4	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-188	0
+4	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-184	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::OnPredicateFail	53692816	147
+0	7	this		0	4	4	3	30006	-28	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::~CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>	57891664	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::WatchForLeaving	53957440	201
+0	7	this		0	4	4	3	30006	-8	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-1	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::Alloc	53650304	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingScript>::GetEntityScriptName	57738032	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::~CKillBird	53720176	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::~CPreMeleeMaze	53720272	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::~CCombatApprentice	53720048	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::Alloc	53801072	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::GetParentScript	53801344	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::`scalar deleting destructor'	53725792	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::~CQ_GuildTrainingWoodsDepartureScript	53939200	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>	57741248	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>::CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>	57742400	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>::CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>	57738944	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>	57747008	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>	57741376	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>	57742528	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>	57919024	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>	57918784	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>	57739072	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>	57747136	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>	57918624	118
+0	7	this		0	4	4	3	30006	-16	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	entity_script		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>	57918384	67
+0	7	this		0	4	4	3	30006	-4	0
+0	7	entity		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	parent_script		0	4	3	3	30006	20	0
+0	7	func		0	4	3	3	30006	24	0
+0	7	flags		14	4	3	3	30006	28	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::Init	53820192	18
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::Alloc	53626256	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::Init	53765344	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CQ_GuildTrainingScript	53504624	100
+0	7	this		0	4	4	3	30006	-16	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::CQ_GuildTrainingWillScript	53851840	100
+0	7	this		0	4	4	3	30006	-16	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CQ_GuildTrainingPreMeleeScript	53726144	41
+0	7	this		0	4	4	3	30006	-4	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::Alloc	53692416	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::`scalar deleting destructor'	53818816	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::`scalar deleting destructor'	53719296	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingSkillScript::Alloc	53819008	117
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::Alloc	53714720	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::Init	53681968	69
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>	57745984	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CQ_GuildTrainingWoodsMeleeScript	53939488	41
+0	7	this		0	4	4	3	30006	-4	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::SuspendableProcess	57918080	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	NScript::CQ_GuildTrainingScript::Init	53505056	102
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::CScorpionHome	53944992	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::`scalar deleting destructor'	53719680	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>::CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>	57744832	82
+0	7	this		0	4	4	3	30006	-4	0
+0	7	thing_script_name		0	4	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	12	0
+0	7	class_alloc_func		0	4	3	3	30006	16	0
+0	7	flags		14	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::`scalar deleting destructor'	53719424	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CKillBird::`scalar deleting destructor'	53719488	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::GetParentScript	53650576	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::Alloc	53772992	117
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::~CScorpionHome	53947504	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::Init	53777440	25
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::~CWillApprentice	53720208	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingDepartureScript::Init	53720832	248
+0	7	this		0	4	4	3	30006	-36	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillDummy::Alloc	53708960	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CWillApprentice::GetMasterData	53708928	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>::SuspendableProcess	57739024	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>::CreateActiveEntityScript	57742672	696
+0	7	this		0	4	4	3	30006	-80	0
+0	7	thing		0	4	3	3	30006	12	0
+0	7	entity_uid		7	8	3	3	30006	16	0
+0	6			0	219	0	1	0	0	57743015
+1	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CAppleGirl::OnPersist	53577264	53
+0	7	this		0	4	4	3	30006	-4	0
+0	7	context		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::CPreMeleeMaze	53714912	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CCombatApprentice::`scalar deleting destructor'	53719232	44
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::Main	53726560	3949
+0	7	this		0	4	4	3	30006	-344	0
+0	7	Whisper	CScriptThing	0	12	1	3	30006	-56	0
+0	7	ExpressionTimer	CTimer	0	4	1	3	30006	-44	0
+0	7	GuildMaster	CScriptThing	0	12	1	3	30006	-40	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-25	0
+0	7	Maze	CScriptThing	0	12	1	3	30006	-24	0
+0	6			0	2065	0	1	0	0	53727563
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-160	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+1	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-128	0
+1	7	seh_Maze	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-112	0
+1	7	seh_GuildMaster	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-96	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-76	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillApprentice::Main	53650624	12844
+0	7			0	0	2	1	0	0	53663440
+0	7	this		0	4	4	3	30006	-624	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-64	0
+0	7	village	CScriptThing	0	12	1	3	30006	-60	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-48	0
+0	7	HasInformation		10	1	1	3	30006	-29	0
+0	7	SkillApprenticeTargetMarker	CScriptThing	0	12	1	3	30006	-28	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	851	0	1	0	0	53652453
+1	7	Conversation		13	4	1	3	30006	-68	0
+0	6			0	613	0	1	0	0	53653575
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-88	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-72	0
+0	6			0	603	0	1	0	0	53654383
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-108	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+0	6			0	8214	0	1	0	0	53655073
+1	7	answer		13	4	1	3	30006	-112	0
+1	6			0	2909	0	1	0	0	53655073
+2	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-132	0
+2	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+1	6			0	5213	0	1	0	0	53658074
+2	7	ArcheryGameScoreInfoID		13	4	1	3	30006	-156	0
+2	7	SkillTimer	CTimer	0	4	1	3	30006	-152	0
+2	7	Disqualified		10	1	1	3	30006	-145	0
+2	7	ArcheryHighScoreInfoID		13	4	1	3	30006	-144	0
+2	7	ArcheryGameTimerID		13	4	1	3	30006	-140	0
+2	7	NewHighScore		10	1	1	3	30006	-133	0
+2	6			0	242	0	1	0	0	53659764
+3	7	Conversation		13	4	1	3	30006	-160	0
+2	6			0	2601	0	1	0	0	53660623
+3	7	SkillGrade		13	4	1	3	30006	-164	0
+3	6			0	215	0	1	0	0	53660642
+4	7	i		13	4	1	3	30006	-168	0
+3	6			0	2367	0	1	0	0	53660857
+4	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-224	0
+4	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-208	0
+4	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-192	0
+4	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-188	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::CWillWhisper	53958032	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CSkillTarget::GetMasterData	53681632	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CMeleeApprentice::Init	53618240	25
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::CMeleeOpponent	53801264	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::~CPreMeleeDummy	53772928	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::CFinalMaze	53902400	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::CArtifactThief	53921664	62
+0	7	this		0	4	4	3	30006	-4	0
+0	7	parent_class		0	4	3	3	30006	8	0
+0	7	pmaster_data		0	4	3	3	30006	12	0
+0	7	thing		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_GuildTrainingScript::RunTutorials	53529360	33618
+0	7	this		0	4	4	3	30006	-3000	0
+0	7	AllApples	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-88	0
+0	7	BookExit	CScriptThing	0	12	1	3	30006	-68	0
+0	7	village	CScriptThing	0	12	1	3	30006	-56	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-41	0
+0	7	Bookcase	CScriptThing	0	12	1	3	30006	-40	0
+0	7	GuildmasterReminder	CTimer	0	4	1	3	30006	-28	0
+0	7	FrontDoors	CScriptThing	0	12	1	3	30006	-24	0
+0	6			0	846	0	1	0	0	53536404
+1	7	AllAppleMarkers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	20	1	3	30006	-108	0
+1	6			0	414	0	1	0	0	53536742
+2	7	i		13	4	1	3	30006	-112	0
+2	6			0	292	0	1	0	0	53536859
+3	7	NewApple	CScriptThing	0	12	1	3	30006	-124	0
+0	6			0	1271	0	1	0	0	53553201
+1	7	GM	CScriptThing	0	12	1	3	30006	-208	0
+1	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-196	0
+1	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-180	0
+1	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-164	0
+1	7	seh_GM	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-160	0
+1	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	20	1	3	30006	-144	0
+0	6			0	474	0	1	0	0	53558042
+1	7	HLStyleConversationIndex		13	4	1	3	30006	-212	0
+0	6			0	209	0	1	0	0	53561183
+1	7	i		13	4	1	3	30006	-216	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::GetParentScript	53731776	17
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::Alloc	53731504	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>	57744704	59
+0	7	this		0	4	4	3	30006	-4	0
+0	7	name		0	4	3	3	30006	8	0
+0	7	number		14	4	3	3	30006	12	0
+0	7	pclass		0	4	3	3	30006	16	0
+0	7	func		0	4	3	3	30006	20	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::TeleportOutHero	53944048	602
+0	7	this		0	4	4	3	30006	-52	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-13	0
+0	6			0	382	0	1	0	0	53944226
+1	7	HLStyleConversationIndex		13	4	1	3	30006	-20	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsMeleeScript::PhaseOne	53943744	13
+0	7	this		0	4	4	3	30006	-8	0
+0	7	_Fail_Val	TRetVoid	0	1	1	3	30006	-1	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsDepartureScript::CQ_GuildTrainingWoodsDepartureScript	53896752	41
+0	7	this		0	4	4	3	30006	-4	0
+0	7	master_script_data		0	4	3	3	30006	8	0
+0	7	game		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::OnPredicateFail	53682064	11
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::SuspendableProcess	57747088	33
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_GuildTrainingScript>::SuspendableProcess	57916080	107
+0	7	this		0	4	4	3	30006	-8	0
+FUNCTION	NScript::CQ_GuildTrainingWoodsWillScript::Alloc	53947536	117
+0	7	master_script_data		0	4	3	3	30006	-24	0
+0	7	game		0	4	3	3	30006	-28	0
+FUNCTION	NScript::CQ_GuildTrainingWillScript::Init	53852272	71
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Alloc	53816960	151
+0	7	parent_class		0	4	3	3	30006	-32	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_GuildTrainingScript::CBirdKiller::~CBirdKiller	53720144	19
+0	7	this		0	4	4	3	30006	-4	0
+FUNCTION	NScript::CQ_GuildTrainingPreMeleeScript::RegisterMain	53726208	239
+0	7	this		0	4	4	3	30006	-44	0
+MATCHES	422

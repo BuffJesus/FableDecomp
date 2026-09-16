@@ -1,0 +1,4 @@
+{
+  "sourceSha256": "789528e014a910b8d1383cbd6b1ca05b3dbe73223001ad909def1fa2deb677f7",
+  "block": "                    -- TODO(native): this_00 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(*(int *)(this + 0x14) + 0x58),(CCharString *)&stack0xffffff78);\n                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)this_00,pCVar18);\n                    -- TODO(native): PlayCutscene(*(CQS_ScytheInfoScript **)(this + 0x14));"
+}

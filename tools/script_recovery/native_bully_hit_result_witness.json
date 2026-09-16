@@ -1,0 +1,78 @@
+{
+  "address": "0x00DBB310",
+  "annotatedSha256": "814ad33905cfdb7b0dff1e6e982d66597e95ebb518b525c6af5712f09565b04e",
+  "regions": [
+    {
+      "address": 14402208,
+      "size": 228,
+      "sha256": "40aba6a6bc968616a21176d67fc8802a18c219dfa29a9adbd13fd53201b56264"
+    }
+  ],
+  "stringAddress": "0x125D1C8",
+  "itemName": "SCRIPT_NAME_HERO",
+  "contracts": {
+    "MsgIsHitByHero": {
+      "name": "MsgIsHitByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero' is met."
+    },
+    "MsgIsHitByAnySpecialAbilityFromHero": {
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by any special ability from hero' is met."
+    },
+    "MsgIsHitByHeroSpecialAbility": {
+      "name": "MsgIsHitByHeroSpecialAbility",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "abilityEnum",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero special ability' is met."
+    }
+  },
+  "edits": [
+    {
+      "old": "    cVar4 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8),aCStack_a4);\r\n    ppVar15 = extraout_EDX_20;\r\n    if (cVar4 == '\\0') {\r\n      CCharString::CCharString(aCStack_ac,\"SCRIPT_NAME_HERO\",-1);\r\n      uVar16 = uVar12 | 0xc;\r\n      uStack_120 = uVar16;\r\n      cVar4 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8),aCStack_ac);\r\n      ppVar15 = extraout_EDX_21;\r\n      if (cVar4 != '\\0') {\r\n        CCharString::CCharString((CCharString *)aaStack_c0,\"SCRIPT_NAME_HERO\",-1);\r\n        uVar16 = uVar12 | 0x1c;\r\n        uStack_120 = uVar16;\r\n        cVar4 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8),14,aaStack_c0);\r\n        ppVar15 = extraout_EDX_22;\r\n        if (cVar4 == '\\0') goto LAB_00dbc338;\r\n      }\r\n      uStack_134 = uStack_134 & 0xffffff;\r\n    }\r\n    else {\r\nLAB_00dbc338:\r\n      uStack_134 = CONCAT13(1,(undefined3)uStack_134);\r\n    }\r\n",
+      "new": "    cVar4 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8),aCStack_a4);\r\n    ppVar15 = extraout_EDX_20;\r\n    if (cVar4 == '\\0') {\r\n      CCharString::CCharString(aCStack_ac,\"SCRIPT_NAME_HERO\",-1);\r\n      uVar16 = uVar12 | 0xc;\r\n      uStack_120 = uVar16;\r\n      cVar4 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8),aCStack_ac);\r\n      ppVar15 = extraout_EDX_21;\r\n      if (cVar4 != '\\0') {\r\n        CCharString::CCharString((CCharString *)aaStack_c0,\"SCRIPT_NAME_HERO\",-1);\r\n        uVar16 = uVar12 | 0x1c;\r\n        uStack_120 = uVar16;\r\n        cVar4 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8),14,aaStack_c0);\r\n        ppVar15 = extraout_EDX_22;\r\n        native_arg_bully_hit = cVar4 == '\\0';\r\n      }\r\n      else {\r\n        native_arg_bully_hit = false;\r\n      }\r\n    }\r\n    else {\r\n      native_arg_bully_hit = true;\r\n    }\r\n",
+      "count": 1
+    },
+    {
+      "old": "if (uStack_134._3_1_ != '\\0')",
+      "new": "if (native_arg_bully_hit)",
+      "count": 1
+    }
+  ],
+  "review": "DBC2C8 slot54 true -> true at DBC338. Otherwise DBC2F5 slotA8 false -> falseDBC331. Else DBC327 slotA4 receives14; false -> trueDBC338, true -> falseDBC331. These stores affect only the high result byte at baseline39. Keep conditional hero strings and mask cleanup intact; replace the mixed resource-pointer/byte decompiler name with a dedicated boolean. Explicit native string lifetime remains unresolved."
+}

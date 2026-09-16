@@ -1,0 +1,419 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman::Main	10354048	3556
+0	7	this		0	4	4	5	18	0	0
+0	7	AffairWife	CScriptThing	0	12	1	3	30006	-168	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-200	0
+0	7	AffairMan	CScriptThing	0	12	1	3	30006	-180	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-24	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-68	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-152	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-40	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-152	0
+0	7	RunOffPos	CScriptThing	0	12	1	3	30006	-124	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-112	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::Alloc	10347344	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::Init	10369872	188
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::OnPersist	10386528	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::~CQ_NewOakValeIntroScript	10422832	705
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug::Init	10377600	71
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::Init	10384464	160
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::Alloc	10339552	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::Alloc	10340544	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::Init	10387280	2333
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::Init	10340112	174
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Init	10327792	158
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::Main	10370240	7348
+0	7			0	0	2	1	0	0	10377572
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-428	0
+0	7	guard_hero_start_position	CScriptThing	0	12	1	3	30006	-400	0
+0	7	guard_man_start_position	CScriptThing	0	12	1	3	30006	-412	0
+0	7	barrelman_near_distance		8	4	2	1	0	0	14892460
+0	7	need_wee_frequency		13	4	2	1	0	0	14892456
+0	7	walk_away_pos	CScriptThing	0	12	1	3	30006	-280	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-240	0
+0	7	return_pos_2	CScriptThing	0	12	1	3	30006	-216	0
+0	7	return_pos_1	CScriptThing	0	12	1	3	30006	-268	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-228	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-180	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-384	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-164	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-384	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-256	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-384	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-376	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-384	0
+0	7	WaitTimer	CTimer	0	4	1	3	30006	-360	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::Alloc	10357616	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::`scalar deleting destructor'	10423664	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::Alloc	10423552	102
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman::Init	10353904	132
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::WatchBarrels	10386576	702
+0	7	this		0	4	4	5	18	0	0
+0	7	barrels	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-28	0
+0	7	last_barrel	CScriptThing	0	12	1	3	30006	-52	0
+0	7	beetle	CScriptThing	0	12	1	3	30006	-40	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::Alloc	10382848	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::WatchForGotGold	10325136	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::Alloc	10363920	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::Main	10413056	5390
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-304	0
+0	7	Bully	CScriptThing	0	12	1	3	30006	-288	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-268	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-168	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-268	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-136	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-88	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-268	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-104	0
+0	7	bully	CScriptThing	0	12	1	3	30006	-260	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-268	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Main	10396368	8633
+0	7	this		0	4	4	5	18	0	0
+0	7	leaving_sister_switch	CScriptThing	0	12	1	3	30006	-520	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-540	0
+0	7	gift_given		10	1	1	3	30006	-541	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-236	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-164	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-504	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-220	0
+0	7	nearby_guards	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-252	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-268	0
+0	7	item_presented	CCharString	0	4	1	3	30006	-548	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-284	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-504	0
+0	7	nearby_guards	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-200	0
+0	7	nearby_guards	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-184	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-132	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-504	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-504	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-304	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-504	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-116	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-504	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-252	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-148	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-504	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-268	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::AddBadDeed	10325856	483
+0	7	this		0	4	4	5	18	0	0
+0	7	which_deed	NScript::CQ_NewOakValeIntroScript::EBadDeeds	6	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::Alloc	10383696	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::RegisterMain	10385728	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::Alloc	10327280	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::Main	10419920	2909
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::GetVillagerSpeechIndex	10335056	125
+0	7	this		0	4	4	5	18	0	0
+0	7	maxTags		13	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::AttackStuff	10325440	409
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug::Main	10377888	4876
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-248	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-112	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-184	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-228	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-184	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-128	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-184	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::Main	10384624	741
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Alloc	10327952	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::Alloc	10370064	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::Init	10327456	159
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::Init	10347520	153
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Init	10334960	92
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::Init	10357792	178
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::OnPredicateFail	10382768	65
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::Init	10340288	81
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::Init	10339728	195
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::Alloc	10384288	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Main	10328464	6481
+0	7	this		0	4	4	5	18	0	0
+0	7	close_range		8	4	2	1	0	0	14891860
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-340	0
+0	7	approach_ranges		0	16	2	1	0	0	14891864
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-316	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-324	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-256	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-324	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::Alloc	10327616	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::Init	10364096	172
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::Main	10383872	401
+0	7	this		0	4	4	5	18	0	0
+0	7	AutoDie	CTimer	0	4	1	3	30006	-32	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::Main	10347680	6041
+0	7	this		0	4	4	5	18	0	0
+0	7	AffairWoman	CScriptThing	0	12	1	3	30006	-324	0
+0	7	AffairWife	CScriptThing	0	12	1	3	30006	-312	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-340	0
+0	7	AffairConversation		13	4	1	3	30006	-276	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-188	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-264	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-300	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-264	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-144	0
+0	7	badger_string_him	CCharString	0	4	1	3	30006	-272	0
+0	7	badger_string_her	CCharString	0	4	1	3	30006	-268	0
+0	7	badger_string_him	CCharString	0	4	1	3	30006	-252	0
+0	7	badger_string_her	CCharString	0	4	1	3	30006	-256	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug::Alloc	10377712	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::AddGoodDeed	10338688	699
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::StartBarrelTimer	10369184	676
+0	7	this		0	4	4	5	18	0	0
+0	7	guard_pos	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::Main	10391024	5336
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-248	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-228	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-204	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-200	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-228	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-128	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-124	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-128	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman::Alloc	10353728	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::Alloc	10339936	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Alloc	10335184	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CQ_NewOakValeIntroScript	10324848	278
+0	7	this		0	4	4	5	18	0	0
+0	7	master_script_data		0	4	3	3	30006	4	0
+0	7	game		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::Main	10405008	8047
+0	7	this		0	4	4	5	18	0	0
+0	7	victim	CScriptThing	0	12	1	3	30006	-316	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-336	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-84	0
+0	7	dist		8	4	2	1	0	0	14892872
+0	7	freq		13	4	2	1	0	0	14892876
+0	7	item_presented	CCharString	0	4	1	3	30006	-320	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-260	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-272	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-272	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-116	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-272	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-292	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-272	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-292	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-116	0
+0	7	seh_Victim	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-228	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-272	0
+0	7	csargs	std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CCharString> > >	0	16	1	3	30006	-132	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-260	0
+0	7	tag	CCharString	0	4	1	3	30006	-268	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::Main	10383024	669
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Init	10328128	323
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::PostAttackStuff	10389616	1396
+0	7	this		0	4	4	5	18	0	0
+0	7	dead_dad	CScriptThing	0	12	1	3	30006	-56	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-76	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-72	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Main	10335360	3324
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	speechTag	CCharString	0	4	1	3	30006	-124	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+0	7	suffix	CCharString	0	4	1	3	30006	-120	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::Main	10364272	4906
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-308	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-184	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-160	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-268	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-288	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-268	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::DoMission	10418448	1471
+0	7	this		0	4	4	5	18	0	0
+0	7	hoh	CScriptThing	0	12	1	3	30006	-36	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers	10326352	925
+0	7	this		0	4	4	5	18	0	0
+0	7	trader	CScriptThing	0	12	1	3	30006	-24	0
+0	7	father	CScriptThing	0	12	1	3	30006	-48	0
+0	7	sister	CScriptThing	0	12	1	3	30006	-36	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::GivenTeddy	10340384	145
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::GivenTeddy	10339392	145
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::Main	10357984	5926
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-184	0
+0	7	HaranguingConversation		13	4	1	3	30006	-68	0
+0	7	husband	CScriptThing	0	12	1	3	30006	-164	0
+0	7	badger_index		13	4	1	3	30006	-128	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-92	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-60	0
+0	7	badger_string	CCharString	0	4	1	3	30006	-152	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-96	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-96	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::Main	10340720	6621
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-360	0
+0	7	Bully	CScriptThing	0	12	1	3	30006	-340	0
+0	7	item_presented	CCharString	0	4	1	3	30006	-364	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-304	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-308	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-188	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-308	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-172	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-308	0
+0	7	runawaypoint	CScriptThing	0	12	1	3	30006	-216	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-324	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-308	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-204	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-308	0
+FUNCTION	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+MATCHES	100

@@ -170,7 +170,7 @@ class FullConversionCoverageTests(unittest.TestCase):
             self.assertEqual(len(report['packages']), 17)
             self.assertEqual(len(report['functions']), 51)
             self.assertGreater(report['summary']['todo'], 0)
-            self.assertFalse(report['syntax']['ok'])
+            self.assertTrue(report['syntax']['ok'], report['syntax']['errors'])
             self.assertEqual((output / 'FSE/quests.lua').read_text().splitlines()[-1], 'Quests = {}')
             self.assertEqual(json.loads((output / 'CONVERSION_REPORT.json').read_text())['summary'], report['summary'])
 

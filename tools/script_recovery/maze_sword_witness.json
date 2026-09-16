@@ -1,0 +1,29 @@
+{
+  "regions": [
+    {
+      "address": 12577212,
+      "size": 6,
+      "sha256": "7fa5d37fa1ffb3bd9e713271f1380d6dac8947f000b423524b8d0dc0c4e29add"
+    },
+    {
+      "address": 12577300,
+      "size": 6,
+      "sha256": "b71d024dd5fe873f524418f65f2935de312629ff56f7ca1345aecaeb42d0c9a5"
+    },
+    {
+      "address": 15368618,
+      "size": 148,
+      "sha256": "3cb47b823814dc440f1029f79f0f427837a3b1a2d0e533e117386925b586e419"
+    }
+  ],
+  "imports": {
+    "0x1440154": {
+      "dll": "MSVCR71.dll",
+      "name": "free"
+    },
+    "0x1440164": {
+      "dll": "MSVCR71.dll",
+      "name": "??3@YAXPAX@Z"
+    }
+  }
+}

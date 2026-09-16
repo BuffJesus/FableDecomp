@@ -1,0 +1,11 @@
+{
+  "address": 14376682,
+  "size": 44,
+  "sha256": "e87d4831f4809e9d9e207a84641c64954f9e69b7b23f345b3182e0f9f2544a1c",
+  "oldLua": "            uVar6 = quest:GetHero()\n            quest:EntitySetThingAsAllyOfThing(me, uVar6)\n            uVar6 = quest:GetHero()\n            quest:EntitySetThingAsAllyOfThing(uVar6, r3)\n",
+  "newLua": "            resources:SetBarrelManHeroAllies(me)\n",
+  "bindings": {
+    "0x1261024": "a01c8900",
+    "0x1261868": "c07e8a00"
+  }
+}

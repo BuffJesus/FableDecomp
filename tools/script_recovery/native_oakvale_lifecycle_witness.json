@@ -1,0 +1,31 @@
+{
+  "regions": [
+    {
+      "address": 14413728,
+      "size": 30,
+      "sha256": "bac3190dcb132403a9b07623506d119ab5a60013328045db825670c7fc33822d"
+    },
+    {
+      "address": 14413760,
+      "size": 450,
+      "sha256": "232d98f62015f85c1aeb9aef94203cc85704d4ef4db67fa9e45aa8a65b9454c9"
+    },
+    {
+      "address": 13358352,
+      "size": 148,
+      "sha256": "81ba74b33c939326cbaf66978614281f18ead68db5b8bfcdb0350ddf023ac29f"
+    }
+  ],
+  "speechOffsets": [
+    240,
+    228,
+    216,
+    204,
+    192,
+    180,
+    168,
+    156
+  ],
+  "baseDestructor": 13358352,
+  "limits": "Original scalar destructor and owner cleanup; base member cleanup calls are engine boundaries."
+}

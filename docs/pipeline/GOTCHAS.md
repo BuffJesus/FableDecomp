@@ -107,3 +107,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Installed `FinalAlbion.qst` may still carry `AddQuest("NewOakValeIntro", TRUE)` from the additive-quest era; under the identity-preserving override it is a competing authority (`NOVI_AUTHORITY ... legacy=true`). Check it before every single-authority run.
 - Retail colour immediates are written as B,G,R,A memory bytes (`CRGBColour`); read them in memory order, never as RGBA (Bully bar `00 00 FF FF` is red). Hand-transcribed byte strings in snapshot exporters must be checked against a capstone disassembly of the installed exe.
 
+- Git Bash heredoc / `python -c` patches mangle backslashes: a regex replacement `\1` lands as a literal 0x01 byte. Write patch scripts to a file and run them (2026-09-16).
+- Debug-PDB (Ego_r) class offsets → retail: quest classes −0x14, entities 0, and −4 per STL container member preceding the field (debug iterator pointer); CScriptThing is 12 bytes in both (2026-09-16).
+- Ghidra `__thiscall` FunctionDefinitions need `this` as an explicit first parameter or every argument shifts one slot (2026-09-16).

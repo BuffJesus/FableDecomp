@@ -1,0 +1,52 @@
+{
+  "functions": [
+    {
+      "name": "Init",
+      "address": 14385808,
+      "size": 100,
+      "sha256": "1e5791e2ad268477a5f1d854203d0fa4f7c26fbfcae317664902c251cc12cfa5"
+    },
+    {
+      "name": "Main",
+      "address": 14385920,
+      "size": 534,
+      "sha256": "ddbe6687a9f8f9c1a46fcf0dba9fcb5b944b79f835ef7d46368ff18134fd5bd8"
+    },
+    {
+      "name": "OnPredicateFail",
+      "address": 14385760,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    },
+    {
+      "name": "pushable",
+      "address": 9072080,
+      "size": 218,
+      "sha256": "8270d47d77b1cf84d679faa32498b92bfa2f6f13d05ce925b00c6a699e67fe9d"
+    },
+    {
+      "name": "loopForwarder",
+      "address": 8287216,
+      "size": 15,
+      "sha256": "6e76b7549945884abe4f73aec46876780723a1eaf3c46f0ff260401f16e2af7c"
+    }
+  ],
+  "draftSha256": "1e4db453eb8416309b91be23a72182a78bf7c7ce1264163b780e212f895d9ac0",
+  "vtable": 19271436,
+  "slots": {
+    "0x1c": "0x6e7410",
+    "0x20": "0x89b5b0",
+    "0x120": "0x8a7d60",
+    "0x578": "0x891f50",
+    "0x580": "0x891ff0",
+    "0x760": "0x88e540",
+    "0x768": "0x89bdf0",
+    "0xd30": "0x8a6dd0"
+  },
+  "strings": {
+    "0x1258ab0": "HUD_ORB_QUEST_CORE",
+    "0x12d95a4": "MK_OVID_DAD",
+    "0x12d9598": "CS_DEAD_DAD"
+  },
+  "review": "Full lifecycle, self marker and removal, alive-only entry condition12C32F0, two scoped marker Things, raw animation flag5 from1375748 forwarded unchanged by7E73F0; remaining flags false,true,false,true,raw,false,false; loop count -1."
+}

@@ -1,0 +1,276 @@
+{
+  "mainAddress": 14337888,
+  "mainSize": 5867,
+  "mainSha256": "f4669e1d122fd17bf1a67528bb0797cc98aa759e328c25cf7a553071e8004629",
+  "draftSha256": "cab534dc995baa3aab2dd6c0473f6c6a500a3d58d389ecdcf1de74f9fa2c06bb",
+  "thresholdAddress": 19062492,
+  "thresholdHex": "00000000",
+  "healthSites": [
+    {
+      "start": 14338896,
+      "end": 14338959,
+      "getter": 14338913,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        320
+      ],
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_10"
+    },
+    {
+      "start": 14339061,
+      "end": 14339124,
+      "getter": 14339078,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        284
+      ],
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_20"
+    },
+    {
+      "start": 14339258,
+      "end": 14339321,
+      "getter": 14339275,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        308
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_BARREL_BREAKING"
+    },
+    {
+      "start": 14339459,
+      "end": 14339522,
+      "getter": 14339476,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        332
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_DERELICTION_OF_DUTY"
+    },
+    {
+      "start": 14339656,
+      "end": 14339713,
+      "getter": 14339670,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        116
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_VIOLENCE"
+    },
+    {
+      "start": 14339847,
+      "end": 14339910,
+      "getter": 14339864,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        152
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_TEDDY_TO_BULLY"
+    },
+    {
+      "start": 14340051,
+      "end": 14340114,
+      "getter": 14340068,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        248
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_CONCEALED_AFFAIR"
+    },
+    {
+      "start": 14340216,
+      "end": 14340279,
+      "getter": 14340233,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        176
+      ],
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_30"
+    },
+    {
+      "start": 14340387,
+      "end": 14340450,
+      "getter": 14340404,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        296
+      ],
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_40"
+    },
+    {
+      "start": 14340552,
+      "end": 14340615,
+      "getter": 14340569,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        200
+      ],
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_50"
+    },
+    {
+      "start": 14340723,
+      "end": 14340786,
+      "getter": 14340740,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        272
+      ],
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_60"
+    },
+    {
+      "start": 14340916,
+      "end": 14340979,
+      "getter": 14340933,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        224
+      ],
+      "speech": "TEXT_QST_048_GUARD_CAUGHT_YOU_AGAIN"
+    },
+    {
+      "start": 14341113,
+      "end": 14341176,
+      "getter": 14341130,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        128
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_BARREL_BREAKING"
+    },
+    {
+      "start": 14341315,
+      "end": 14341378,
+      "getter": 14341332,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        140
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_DERELICTION_OF_DUTY"
+    },
+    {
+      "start": 14341512,
+      "end": 14341575,
+      "getter": 14341529,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        164
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_VIOLENCE"
+    },
+    {
+      "start": 14341715,
+      "end": 14341778,
+      "getter": 14341732,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        188
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_TEDDY_TO_BULLY"
+    },
+    {
+      "start": 14341912,
+      "end": 14341975,
+      "getter": 14341929,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        212
+      ],
+      "speech": "TEXT_QST_048_GUARD_CRIME_CONCEALED_AFFAIR"
+    },
+    {
+      "start": 14342083,
+      "end": 14342146,
+      "getter": 14342100,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        236
+      ],
+      "speech": "TEXT_QST_048_GUARD_AFTER_READ_LIST"
+    },
+    {
+      "start": 14343235,
+      "end": 14343298,
+      "getter": 14343252,
+      "control": [
+        "stack",
+        16
+      ],
+      "output": [
+        "stack",
+        260
+      ],
+      "speech": "TEXT_QST_048_GUARD_ON_HIT"
+    }
+  ]
+}

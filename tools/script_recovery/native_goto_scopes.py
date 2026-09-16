@@ -1,6 +1,8 @@
 """Identify C jumps that Lua can represent without entering a nested lexical scope."""
 import re
 
+LABEL_TOKEN = r'(?:LAB_[0-9a-f]+|FLOW_[a-z0-9_]+)'
+
 
 def supported_jumps(statements):
     scopes, labels, uses = [], {}, []
@@ -11,13 +13,13 @@ def supported_jumps(statements):
             if not scopes:
                 return set(), set()
             scopes.pop()
-        label = re.match(r'^(LAB_[0-9a-f]+):\s*(.*)$', line)
+        label = re.match(r'^(' + LABEL_TOKEN + r'):\s*(.*)$', line)
         if label:
             if label[1] in labels:
                 return set(), set()
             labels[label[1]] = tuple(scopes)
             line = label[2]
-        jump = re.search(r'\bgoto (LAB_[0-9a-f]+);\s*$', line)
+        jump = re.search(r'\bgoto (' + LABEL_TOKEN + r');\s*$', line)
         if jump:
             uses.append((line, jump[1], tuple(scopes)))
         if line.endswith('{'):

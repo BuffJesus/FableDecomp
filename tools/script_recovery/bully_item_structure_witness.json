@@ -1,0 +1,10 @@
+{
+  "regionSha256": "f0ceb3f1e280a1a560f67368c6440830924c75100fe9607e45f28039060bfd76",
+  "nativeEvidence": [
+    "bully_presented_output.prove",
+    "bully_dialogue_joins.lower",
+    "bully_literal_scopes.lower",
+    "bully_lifecycle.prove"
+  ],
+  "boundary": "Only structured item/question phase; original native proofs remain generator prerequisites; phase comparison is source-to-source, not new whole-native proof."
+}

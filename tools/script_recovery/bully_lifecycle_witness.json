@@ -1,0 +1,20 @@
+{
+  "ranges": [
+    {
+      "address": 14347568,
+      "size": 172,
+      "sha256": "3d954389798851698f97770b3b65ac75ab62830327cb2befa745c6d47148ffa9"
+    },
+    {
+      "address": 14404864,
+      "size": 88,
+      "sha256": "0169698b1146121a67f49725f96abdd31dd776ed974a5d2d686c67b42ccfee69"
+    },
+    {
+      "address": 9072080,
+      "size": 218,
+      "sha256": "8270d47d77b1cf84d679faa32498b92bfa2f6f13d05ce925b00c6a699e67fe9d"
+    }
+  ],
+  "review": "Init seven field writes precede four raw bound-Thing calls, one fresh Hero/unfiltered ally call and retained by-value pushability argument. GivenTeddy gold1, scoped Teddy removal, two parent flags then AddBadDeed3. Pushability callee destroys its by-value argument on both branches."
+}

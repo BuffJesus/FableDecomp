@@ -105,7 +105,7 @@ function OnPersist(quest, context)
 end
 
 function DoMission(quest)
-    local CVar1, bVar4, p_Var5, ppVar7, r1, r2, r3, r4, uVar8
+    local CVar1, bVar4, native_arg_mission_hero_after, native_arg_mission_hero_before, native_arg_mission_house, p_Var5, ppVar7, r1, uVar8
     local alive = true
     local pCVar9 = "StartOakVale"
     local cVar3 = quest:IsRegionLoaded("StartOakVale")
@@ -130,7 +130,7 @@ function DoMission(quest)
             return
         end
         uVar8 = 0
-        quest:FadeScreenOutUntilNextCallToFadeScreenIn(0x40000000, uVar8)
+        quest:FadeScreenOutUntilNextCallToFadeScreenIn(2.0, 0.0)
         p_Var5 = quest:GetHero()
         r1 = quest:TurnCreatureInto(p_Var5, "CREATURE_HERO_CHILD")
         quest:CreateThread("WatchBarrels")  -- native thread body 0x00DBE890: lift it as function WatchBarrels(quest)
@@ -144,7 +144,7 @@ function DoMission(quest)
         quest:CreateThread("ManageQuestCoreMarkers")  -- native thread body ManageQuestCoreMarkers: lift it as function ManageQuestCoreMarkers(quest)
         if (uVar8 & 4) ~= 0 then
         end
-        quest:CacheMusicSet(0)
+        quest:CacheMusicSet(46)
         quest:ActivateQuest("Q_NewOakValeIntro_PreAttack")
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -152,19 +152,17 @@ function DoMission(quest)
         if bVar4 then
             return
         end
-        r2 = quest:GetHero()
-        quest:EntitySetAsKillable(r2, false)
+        native_arg_mission_hero_before = quest:GetHero()
+        quest:EntitySetAsKillable(native_arg_mission_hero_before, false, false)
         quest:SetTimeAsStopped(true)
-        quest:SetTimeOfDay(0x41400000)
-        quest:SetHeroSleepingAsEnabled(nil --[[missing]])
+        quest:SetTimeOfDay(12.0)
+        quest:SetHeroSleepingAsEnabled(false)
         quest:DisplayMoneyBag(true)
-        r3 = quest:GetThingWithScriptName("HerosOldHouse")
-        -- TODO(native): OverrideAutomaticHouseLocking is not a ForgeFSE binding
-        quest:OverrideAutomaticHouseLocking()
-        -- TODO(native): OpenHouseDoors is not a ForgeFSE binding
-        quest:OpenHouseDoors()
+        native_arg_mission_house = quest:GetThingWithScriptName("HerosOldHouse")
+        quest:OverrideAutomaticHouseLocking(native_arg_mission_house, true)
+        quest:OpenHouseDoors(native_arg_mission_house)
         ppVar7 = quest:GetActiveQuestName()
-        quest:KickOffQuestStartScreen(ppVar7, true, nil --[[missing]])
+        quest:KickOffQuestStartScreen(ppVar7, false, true)
         quest:OverrideMusic(0x13, false, true)
         CVar1 = quest:GetStateBool("AttackOver")
         while not CVar1 do
@@ -182,12 +180,12 @@ function DoMission(quest)
     if not bVar4 then
         AttackStuff(quest)
         PostAttackStuff(quest)
-        quest:FadeScreenOutUntilNextCallToFadeScreenIn(0x3f000000, nil --[[missing]])
-        r4 = quest:GetHero()
-        quest:EntitySetAsKillable(r4, nil --[[missing]])
-        quest:SetHeroSleepingAsEnabled(nil --[[missing]])
+        quest:FadeScreenOutUntilNextCallToFadeScreenIn(0.5, 0.0)
+        native_arg_mission_hero_after = quest:GetHero()
+        quest:EntitySetAsKillable(native_arg_mission_hero_after, true, false)
+        quest:SetHeroSleepingAsEnabled(true)
         ppVar7 = quest:GetActiveQuestName()
-        quest:SetQuestAsCompleted(ppVar7, false, nil --[[missing]], nil --[[missing]])
+        quest:SetQuestAsCompleted(ppVar7, false, false, false)
         ppVar7 = quest:GetActiveQuestName()
         quest:DeactivateQuestLater(ppVar7, 0)
     end
@@ -196,9 +194,9 @@ end
 function AttackStuff(quest)
     local pCVar3 = "Q__OakValeIntro_PostAttack"
     quest:ActivateQuest("Q__OakValeIntro_PostAttack")
-    quest:DeactivateQuest("Q_NewOakValeIntro_PreAttack", nil --[[missing]])
-    quest:SetTimeOfDay(0x41b80000)
-    quest:TransitionToTheme("ENVIRONMENT_OV_POSTATTACK", nil --[[missing]])
+    quest:DeactivateQuest("Q_NewOakValeIntro_PreAttack", 0)
+    quest:SetTimeOfDay(23.0)
+    quest:TransitionToTheme("ENVIRONMENT_OV_POSTATTACK", 0.0)
     local ppVar2 = quest:GetActiveQuestName()
     quest:SetQuestCardObjective(ppVar2, "TEXT_QUEST_OAKVALE_INTRO_OBJECTIVE_06", "", "")
 end
@@ -462,8 +460,8 @@ function WatchBarrels(quest)
                         -- TODO(native): this = (C3DClothPrimitive *)&uStack_20;
                     else
                         if iVar4 <= iVar3 + -4 then goto LAB_00dbeabd end
-                        r2 = quest:CreateCreature("CREATURE_OAKVALE_STAG_BEETLE", param_1 + 0x76, "NOVI_CreatedBeetle")
-                        quest:EntitySetMaxHealth(r2, 0x40000000, true)
+                        r2 = quest:CreateCreature("CREATURE_OAKVALE_STAG_BEETLE", {x = quest:GetStateFloat("BarrelBrokenPos_x"), y = quest:GetStateFloat("BarrelBrokenPos_y"), z = quest:GetStateFloat("BarrelBrokenPos_z")}, "NOVI_CreatedBeetle")
+                        quest:EntitySetMaxHealth(r2, 2.0, true)
                         -- TODO(native): this = (C3DClothPrimitive *)apStack_14;
                     end
                 end

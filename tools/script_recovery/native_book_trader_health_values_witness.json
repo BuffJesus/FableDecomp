@@ -1,0 +1,166 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4042,
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "234994abb541f1f27da7c446f4b4f04bdbb26c7dfacaef99f6bf05fe4d00210c",
+  "regions": [
+    {
+      "address": 14368672,
+      "size": 4042,
+      "sha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974"
+    },
+    {
+      "address": 19062492,
+      "size": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    {
+      "address": 8287376,
+      "size": 57,
+      "sha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": 19272492,
+      "size": 4,
+      "sha256": "754dd8978d373e339fb743585106af5b6adfa3ef41b9fb4dffa07655c2bb067d"
+    },
+    {
+      "address": 19271468,
+      "size": 4,
+      "sha256": "857121adea475480df9a12096b08adb117a600ace9fe1507847ed6a7488558db"
+    }
+  ],
+  "queries": [
+    [
+      14369830,
+      14369839,
+      240
+    ],
+    [
+      14370362,
+      14370371,
+      276
+    ],
+    [
+      14370591,
+      14370600,
+      252
+    ],
+    [
+      14370786,
+      14370795,
+      216
+    ],
+    [
+      14371235,
+      14371244,
+      228
+    ],
+    [
+      14371629,
+      14371638,
+      180
+    ],
+    [
+      14371825,
+      14371834,
+      192
+    ]
+  ],
+  "acquisitions": [
+    [
+      14368845,
+      3
+    ],
+    [
+      14368888,
+      3
+    ],
+    [
+      14369663,
+      4
+    ],
+    [
+      14369706,
+      4
+    ],
+    [
+      14370174,
+      4
+    ],
+    [
+      14370217,
+      4
+    ],
+    [
+      14372273,
+      4
+    ],
+    [
+      14372316,
+      4
+    ]
+  ],
+  "hostContract": {
+    "name": "GetHealth",
+    "scope": "Quest",
+    "returnType": "float",
+    "parameters": [
+      {
+        "name": "pThing",
+        "type": "CScriptThing*",
+        "optional": false
+      }
+    ],
+    "blocking": true,
+    "category": "Quest API",
+    "description": "Gets health."
+  },
+  "literal": {
+    "address": 19062492,
+    "hex": "00000000",
+    "value": 0.0
+  },
+  "edits": [
+    {
+      "old": "uVar6 = CScriptGameResourceObjectScriptedThingBase::\r\n                    _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                              ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);\r\n            fVar18 = (float10)GSI->GetHealth(me);\r\n            fVar3 = (float10)_DAT_0122dedc;",
+      "count": 1,
+      "new": "native_arg_book_health_actor = me;\n            fVar18 = (float10)GSI->GetHealth(native_arg_book_health_actor);\n            native_arg_book_has_health = fVar18 > 0.0;"
+    },
+    {
+      "old": "uVar9 = CScriptGameResourceObjectScriptedThingBase::\r\n                        _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                                  ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);\r\n                fVar18 = (float10)GSI->GetHealth(me);\r\n                fVar3 = (float10)_DAT_0122dedc;",
+      "count": 1,
+      "new": "native_arg_book_health_actor = me;\n            fVar18 = (float10)GSI->GetHealth(native_arg_book_health_actor);\n            native_arg_book_has_health = fVar18 > 0.0;"
+    },
+    {
+      "old": "uVar12 = CScriptGameResourceObjectScriptedThingBase::\r\n                       _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                                 ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);\r\n              fVar18 = (float10)GSI->GetHealth(me);\r\n              fVar3 = (float10)_DAT_0122dedc;",
+      "count": 2,
+      "new": "native_arg_book_health_actor = me;\n            fVar18 = (float10)GSI->GetHealth(native_arg_book_health_actor);\n            native_arg_book_has_health = fVar18 > 0.0;"
+    },
+    {
+      "old": "uVar9 = CScriptGameResourceObjectScriptedThingBase::\r\n                          _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                                    ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4)\r\n                  ;\r\n                  fVar18 = (float10)GSI->GetHealth(me);\r\n                  fVar3 = (float10)_DAT_0122dedc;",
+      "count": 2,
+      "new": "native_arg_book_health_actor = me;\n            fVar18 = (float10)GSI->GetHealth(native_arg_book_health_actor);\n            native_arg_book_has_health = fVar18 > 0.0;"
+    },
+    {
+      "old": "uVar9 = CScriptGameResourceObjectScriptedThingBase::\r\n                    _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                              ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec4);\r\n            fVar18 = (float10)GSI->GetHealth(me);\r\n            fVar3 = (float10)_DAT_0122dedc;",
+      "count": 1,
+      "new": "native_arg_book_health_actor = me;\n            fVar18 = (float10)GSI->GetHealth(native_arg_book_health_actor);\n            native_arg_book_has_health = fVar18 > 0.0;"
+    },
+    {
+      "old": "if (fVar3 < fVar18)",
+      "new": "if (native_arg_book_has_health)",
+      "count": 7
+    }
+  ],
+  "comparisonSites": [
+    "0xdb4435",
+    "0xdb4649",
+    "0xdb472e",
+    "0xdb47f1",
+    "0xdb49b2",
+    "0xdb4b3c",
+    "0xdb4c00"
+  ],
+  "review": "All seven FCOMP float32 +0.0 / FNSTSW AX / TEST AH,0x41 sequences accept only ordered greater-than. Less/equal/unordered reject. The boolean is materialized before the temporary destructor and tested after it. Native getter EAX immediately feeds GetHealth, then FNSTSW overwrites AX; similarity-decompiler uVar6/uVar9/uVar12 names do not represent stable actor values. Recover a named self alias for the health consumer and retain temporary destructor statements. Other stale speech operands remain outside this pass."
+}

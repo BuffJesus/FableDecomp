@@ -1,0 +1,48 @@
+{
+  "schema": "book-trader-conversation/0.1",
+  "windows": [
+    {
+      "address": 14372198,
+      "size": 40,
+      "sha256": "3c32437676d240a12cf7e5d545528d64498d24a04d8f504339667625fcdca0c9"
+    },
+    {
+      "address": 14372397,
+      "size": 55,
+      "sha256": "1cc8d4cf1927b0c245e89e4b91dffa69cee74344d48b12a42d7868af463e953f"
+    },
+    {
+      "address": 8985760,
+      "size": 173,
+      "sha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+    },
+    {
+      "address": 8980304,
+      "size": 97,
+      "sha256": "e9c4e195ecf1309446c0cd0c4f9b16dec243269db1e3ae3903ffbf6292aa66fd"
+    },
+    {
+      "address": 8980160,
+      "size": 65,
+      "sha256": "a920744c6ef139d6dfb9f86fe5e9055fed090ced6969dd90ee53d2cb117788e5"
+    },
+    {
+      "address": 8980240,
+      "size": 53,
+      "sha256": "7667e106d74acfa07f504b2198308dc7161ecbd2e9955d91534ee19539653348"
+    }
+  ],
+  "bindings": {
+    "0x118": 8985760,
+    "0x5b0": 8980160,
+    "0x5b4": 8980240,
+    "0x5b8": 8980304
+  },
+  "review": [
+    "DB4D70 self/false/false; DB4D7B retains conversation in EBX; DB4D88 adds DB4D7D hero.",
+    "DB4E38 CString at stack112 precedes DB4E42 GetHero; DB4E55 conversation/key/false/self/hero; DB4E5F destroys key.",
+    "GetHero 891CA0 updates interface+0x30; ESI becomes that address at891CB8, returned EAX at891D46. Local weak reference cleanup ends891D40; no caller-owned output or copy.",
+    "AddLine890750 calls speaker and listener IsAlive virtuals; preserve actual returned hero value including empty, without synthesizing a replacement.",
+    "Create8906C0 and AddPerson890710 call native IsAlive without a host IsNull precheck. DB4D88 is unconditional after creation/hero lookup, including nonpositive IDs."
+  ]
+}

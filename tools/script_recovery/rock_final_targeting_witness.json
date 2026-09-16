@@ -1,0 +1,12 @@
+{
+  "address": "0x00EC4FA9",
+  "size": 91,
+  "sha256": "8371dbc30c01459a09976be7a40e400a9e70dd2935b0c199fb698b1d2077f97d",
+  "proof": [
+    "EC4FB2 GetHero thenEC4FC0 ForceLook receives boundTroll and directrawresult; EC4FCF queriesHeroagain forEC4FDA GiveBestEnemy.",
+    "No null-outputfilter, copy, temporaryThing destructor or intervening cancellationquery.",
+    "Final loop framesEC4FE5 before terminationEC4FEA; repeatsuntiltrue then resourceobjectdestructorEC4FF7.",
+    "Resource control was cleared by priorphase; object lifetime extends through targetingandloop.",
+    "Current generic sharedptrtarget wrappers skipnull; isolated atomicadapterrequired."
+  ]
+}

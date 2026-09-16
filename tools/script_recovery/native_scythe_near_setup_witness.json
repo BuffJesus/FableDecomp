@@ -1,0 +1,826 @@
+{
+  "address": "0x00E2A320",
+  "size": 1503,
+  "sourceSha256": "bdb55d48eefdf0b0ae58d3ac5373302fecd3e688edbae24596adb6aff3a8125f",
+  "annotatedSha256": "1be56fa7ac0503ecc079c6859ada1562d726a05ef56ae7643b64cd814a8acf25",
+  "regions": [
+    {
+      "address": 14852896,
+      "size": 1503,
+      "sha256": "315ea06ccacfc1669200990bccf81a55a7abae5befe79ec0cd15057e78415249"
+    },
+    {
+      "address": 13452400,
+      "size": 20,
+      "sha256": "ac782bca8e7eb5e9e8f7c6726c7d40dd2b0942446a3ff2fa6c657959c966454d"
+    },
+    {
+      "address": 15948592,
+      "size": 16,
+      "sha256": "2d4a440e87bd403b5d42e8bcc592c3054382525c465c1b19cfb4830c462de0bd"
+    },
+    {
+      "address": 19271724,
+      "size": 4,
+      "sha256": "126fb8fde0011bc940cd2d321bf79d4a368d6da141b49252e89f0d5a270ee59a"
+    },
+    {
+      "address": 19271716,
+      "size": 4,
+      "sha256": "eba0e74a432136d66d7304ef103c3f3e12272b0e266e5ac575bc966c85556d1a"
+    },
+    {
+      "address": 19273336,
+      "size": 4,
+      "sha256": "336819bd4b34341bc7416ea4deb618a718e7cda0f5be9626a031f8d105bddd9d"
+    },
+    {
+      "address": 19271468,
+      "size": 4,
+      "sha256": "857121adea475480df9a12096b08adb117a600ace9fe1507847ed6a7488558db"
+    },
+    {
+      "address": 19271784,
+      "size": 4,
+      "sha256": "f2bdbb01a5a397e814cec5f8ac606fa2066c6547b1e3ef6fde6cf7e4ffffab12"
+    },
+    {
+      "address": 19271788,
+      "size": 4,
+      "sha256": "11f1b66d1eeb59ea9c62fb584498b0d3a6223ff705bf8959fad3ad365940a054"
+    },
+    {
+      "address": 19271792,
+      "size": 4,
+      "sha256": "e0e5740871d4ce559ce99d0bb0e6e0bd68f62022458e57cff82f0351b3d3a4ff"
+    },
+    {
+      "address": 19271796,
+      "size": 4,
+      "sha256": "b1e7c8d295774b7900896f29f9a13f2a7035a44eac9418712c6f105a4e9b4d51"
+    }
+  ],
+  "calls": [
+    {
+      "site": 14853179,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            52
+          ],
+          [
+            "stack",
+            24
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14853190,
+      "count": 3,
+      "known": {
+        "14853179": [
+          8,
+          "marker"
+        ]
+      },
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1900
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "result",
+            14853179,
+            "marker"
+          ],
+          [
+            "register",
+            "ebx"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14853334,
+      "count": 3,
+      "known": {
+        "14853323": [
+          0,
+          "hero"
+        ]
+      },
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1900
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "result",
+            14853323,
+            "hero"
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14853222,
+      "count": 0,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            348
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14853287,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            360
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14853355,
+      "count": 2,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            356
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "memory",
+            [
+              "stack",
+              24
+            ]
+          ],
+          [
+            "constant",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14854245,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            352
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14854277,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            352
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14854313,
+      "count": 1,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "constant",
+                    21227768
+                  ]
+                ],
+                0
+              ]
+            ],
+            352
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "constant",
+            21227768
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "memory",
+            [
+              "stack",
+              24
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14854377,
+      "count": 0,
+      "known": {},
+      "expected": {
+        "target": [
+          "constant",
+          13452400
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14853036,
+      "count": 3,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            64
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14853079,
+      "count": 3,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "stack",
+            64
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    }
+  ],
+  "strings": {
+    "0x12c7d28": "MK_OW_SCYTHE3"
+  },
+  "contracts": {
+    "GetThingWithScriptName": {
+      "name": "GetThingWithScriptName",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [
+        {
+          "name": "scriptName",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets thing with script name."
+    },
+    "GetHero": {
+      "name": "GetHero",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets hero."
+    },
+    "EntitySetFacingAngleTowardsThing": {
+      "name": "EntitySetFacingAngleTowardsThing",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "pTarget",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "snap",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set facing angle towards thing."
+    },
+    "RegisterTimer": {
+      "name": "RegisterTimer",
+      "scope": "Quest",
+      "returnType": "int",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes register timer."
+    },
+    "SetTimer": {
+      "name": "SetTimer",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "timerId",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "timeValue",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets timer."
+    },
+    "GetTimer": {
+      "name": "GetTimer",
+      "scope": "Quest",
+      "returnType": "int",
+      "parameters": [
+        {
+          "name": "timerId",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets timer."
+    },
+    "DeregisterTimer": {
+      "name": "DeregisterTimer",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "timerId",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes deregister timer."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->RegisterTimer();",
+      "new": "TurningTimer = GSI->RegisterTimer();",
+      "count": 1
+    },
+    {
+      "old": "GSI->GetTimer()",
+      "new": "GSI->GetTimer(TurningTimer)",
+      "count": 1
+    },
+    {
+      "old": "GSI->SetTimer();",
+      "new": "GSI->SetTimer(TurningTimer,2);",
+      "count": 1
+    },
+    {
+      "old": "GSI->DeregisterTimer();",
+      "new": "GSI->DeregisterTimer(TurningTimer);",
+      "count": 3
+    },
+    {
+      "old": "CTimer::~CTimer((CTimer *)&stack0xffffff9c);",
+      "new": "GSI->DeregisterTimer(TurningTimer);",
+      "count": 1
+    },
+    {
+      "old": "GSI->StartScriptingEntity();",
+      "new": "GSI->StartScriptingEntity(me,&ppuStack_30,4);",
+      "count": 2
+    },
+    {
+      "old": "GSI->GetThingWithScriptName();\n      ppVar21 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar1;\n      GSI->EntitySetFacingAngleTowardsThing();",
+      "new": "native_arg_scythe_initial_target = GSI->GetThingWithScriptName(\"MK_OW_SCYTHE3\");\n      GSI->EntitySetFacingAngleTowardsThing(me,native_arg_scythe_initial_target,0);",
+      "count": 1
+    },
+    {
+      "old": "GSI->GetHero();\n          GSI->EntitySetFacingAngleTowardsThing();",
+      "new": "native_arg_scythe_turn_target = GSI->GetHero();\n          GSI->EntitySetFacingAngleTowardsThing(me,native_arg_scythe_turn_target,0);",
+      "count": 1
+    },
+    {
+      "old": "CCreatureAction_TrollWhackGroundBase::Initialise((CCreatureAction_TrollWhackGroundBase *)this)\n      ;\n      uVar4 = 0;\n      cVar6 = extraout_AL_02;",
+      "new": "cVar6 = GSI->IsActiveThreadTerminating();\n      uVar4 = 0;",
+      "count": 1
+    },
+    {
+      "old": "CCreatureAction_TrollWhackGroundBase::Initialise\n                  ((CCreatureAction_TrollWhackGroundBase *)this);\n        uVar4 = uVar12;\n        cVar6 = extraout_AL_08;",
+      "new": "cVar6 = GSI->IsActiveThreadTerminating();\n      uVar4 = uVar12;",
+      "count": 1
+    },
+    {
+      "old": "if (extraout_AL_04 != '\\0') goto LAB_00e2a89c;",
+      "new": "if (extraout_AL_04 != '\\0') {\n            GSI->DeregisterTimer(TurningTimer);\n            CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase((CScriptGameResourceObjectMovieBase *)local_5c);\n            return;\n          }",
+      "count": 1
+    }
+  ],
+  "timerEvents": {
+    "0xe2a466": [
+      "start",
+      "TurningTimer"
+    ],
+    "0xe2a4a7": [
+      "use",
+      "TurningTimer"
+    ],
+    "0xe2a4eb": [
+      "use",
+      "TurningTimer"
+    ],
+    "0xe2a865": [
+      "end",
+      "TurningTimer"
+    ],
+    "0xe2a885": [
+      "end",
+      "TurningTimer"
+    ],
+    "0xe2a8a9": [
+      "end",
+      "TurningTimer"
+    ],
+    "0xe2a8e9": [
+      "end",
+      "TurningTimer"
+    ]
+  },
+  "review": "Timer registration EAX stored EBP and frame24 at E2A46C/E2A470. Facing temporarily reuses EBP, so SetTimer and some cleanup use frame24; backedge reloads EBP. CD4470 is the CTimer destructor and calls DeregisterTimer with *this. All native exit paths after registration dispose the same timer once, checked by CFG. StartScripting binds self EDI(this+8) to frame64 priority4. Both facing calls target self and snap false; the initial lookup consumes8 bytes leaving EBXzero as facing snap argument. Termination AL is captured immediately at entry and loop bottom. Controlled-resource and movie lifetimes remain unresolved."
+}

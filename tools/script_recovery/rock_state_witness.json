@@ -1,0 +1,52 @@
+{
+  "sources": {
+    "Init": "64cdedb944a781d6e3344662c23c97e439c1b94e4d72e6501a86c38c1126474e",
+    "OnPersist": "220a3263b2c7604ffe7b714e4f907aeabb9f5d9b213f626e90cfa7c60c3f7796"
+  },
+  "regions": [
+    {
+      "name": "Init",
+      "address": 15481936,
+      "size": 77,
+      "sha256": "e89d988d82a406a91614e90a7ab289752f92e2d25ba7b52d4c4e7fe95143814d"
+    },
+    {
+      "name": "OnPersist",
+      "address": 15485296,
+      "size": 144,
+      "sha256": "62aeecc1fa3f5c5d5dda9a957214f17a77b5a43fa776b237e080926e94c9e5fd"
+    },
+    {
+      "name": "TransferInt",
+      "address": 4262880,
+      "size": 208,
+      "sha256": "580b3f37c79990d5e7948da846c845cd68e83e25b514a7bde54b999ea247b6c0"
+    },
+    {
+      "name": "TransferByte",
+      "address": 4212160,
+      "size": 208,
+      "sha256": "bd2ce61eca3d8ab3711388050a573dc38af686ce4cf943cadec118e5374e0fb1"
+    }
+  ],
+  "strings": {
+    "0x12cc268": "Witchwood1",
+    "0x12e1d78": "Activated",
+    "0x12f1760": "RockTrollTriggered",
+    "0x12f1748": "PlayedExhumeCutScene",
+    "0x12f1730": "AddedItemsToRockTroll",
+    "0x12f1718": "RockTrollHealthBarID"
+  },
+  "pdb": {
+    "path": "work/rock_trigger_converter/evidence/PDB-class-layout.txt",
+    "sha256": "dbcb6da1e1108cb41d1afeab21c2a48e9be000ceadee6bf3f146b7dac825ff02",
+    "use": "Original member names/types only. Retail offsets come from instruction operands, never debug offsets."
+  },
+  "proof": [
+    "EC3C81/84/87 zero retail +48/+49/+4A corresponding to original MissionSucceeded/Failed/Over member sequence.",
+    "EC3C96 writes DWORD+50, original long RockTrollHealthBarID; +4B/+4C are untouched.",
+    "EC49F0 writes DWORD default0; EC49F4 calls 410BE0, distinct from four byte transfers4045C0.",
+    "410BFF/410C06 use DWORD default;410C13 saves DWORD;410C74/76 apply DWORD default on optional load.",
+    "MissionOver is not in native OnPersist. No implied persistence of all shared state."
+  ]
+}

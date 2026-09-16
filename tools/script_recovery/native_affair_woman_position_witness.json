@@ -1,0 +1,40 @@
+{
+  "address": "0x00DB1F00",
+  "size": 2714,
+  "sourceSha256": "f63fafd215dc1b603c8076ac1844318354a4e4215c135349151f7abefb119447",
+  "annotatedSha256": "b25604ab74e79a695bfec9932067a8983dbb2afe4d6aeac8d156105d60e57997",
+  "nativeSha256": "680d188a6fec3d659a3dc26986baf72bf9cb290e4da1010800254a57f41ba190",
+  "edits": [
+    {
+      "old": "CCharString::CCharString(aCStack_84,\"AffairWomanRunOffPoint\",-1);\r\n        ppVar20 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&ppuStack_80;\r\n        GSI->GetThingWithScriptName();\r\n        std::\r\n        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_8c,\r\n                   extraout_EDX_11,ppVar20);\r\n        GSI->EntitySetAsUseMovementInActions();\r\n        iVar3 = **(int **)(param_1 + 4);\r\n        CScriptThing::CScriptThing((CScriptThing *)&stack0xffffff18,pCVar1);\r\n        GSI->SetIsPushableByHero();\r\n        if (piStack_7c == (int *)0x0) {\r\n          puVar10 = &DAT_0143e8e0;\r\n        }\r\n        else {\r\n          puVar10 = (undefined4 *)(**(code **)(*piStack_7c + 0x18))();\r\n        }\r\n        uStack_4c = *puVar10;\r\n        uStack_48 = puVar10[1];\r\n        fVar21 = 2.0;\r\n        uStack_44 = puVar10[2];\r\n",
+      "new": "CCharString::CCharString(aCStack_84,\"AffairWomanRunOffPoint\",-1);\r\n        ppVar20 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&ppuStack_80;\r\n        GSI->GetThingWithScriptName(&local_native_runoff_point,\"AffairWomanRunOffPoint\");\r\n        std::\r\n        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\r\n                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_8c,\r\n                   extraout_EDX_11,ppVar20);\r\n        GSI->EntitySetAsUseMovementInActions(me,1);\r\n        iVar3 = **(int **)(param_1 + 4);\r\n        CScriptThing::CScriptThing((CScriptThing *)&stack0xffffff18,pCVar1);\r\n        GSI->SetIsPushableByHero(me,1);\r\n        native_arg_runoff_position = GSI->RetailThingPosition(local_native_runoff_point);\n        fVar21 = 2.0;\n",
+      "count": 1
+    },
+    {
+      "old": "(CScriptThing *)&uStack_4c,(char *)0x0,(CCharString *)0x1,(CCharString *)0x0,\r\n             (CCharString *)0x1,SUB41(ppVar22,0),(bool)SUB41(pppuVar23,0)",
+      "new": "native_arg_runoff_position,0.0,1,0,1",
+      "count": 1
+    },
+    {
+      "old": "(C3DVector *)&uStack_4c",
+      "new": "native_arg_runoff_position",
+      "count": 2
+    },
+    {
+      "old": "joined_r0x00db282e",
+      "new": "LAB_00db282e",
+      "count": 3
+    }
+  ],
+  "nativeSites": {
+    "lookup": "0xDB2794 writes stack48, stringstack44",
+    "movementInActions": "0xDB27AB EBP self,true",
+    "pushable": "0xDB27C6 by-value EBP self,true",
+    "position": "0xDB27CC..DB2804 impl stack4C, slot18 or live0143E8E0, copies XYZ",
+    "move": "0xDB285F resource stack10, position stack7C,radius0,type1,false,true"
+  },
+  "string": {
+    "address": "0x12d8c24",
+    "value": "AffairWomanRunOffPoint"
+  }
+}

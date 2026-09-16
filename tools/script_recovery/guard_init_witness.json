@@ -1,0 +1,36 @@
+{
+  "address": 14337616,
+  "size": 272,
+  "sha256": "9efec91e92e5796636f80f97d165b8b3692ffcc26a4a3db7faaa6d009d461aa0",
+  "vtable": 19271436,
+  "consumers": [
+    {
+      "slot": 3052,
+      "address": 9053104,
+      "size": 265,
+      "sha256": "00e2395fba2df275cf24f29c3de08d0132f55c6538ee7f8d4d20b25c5b873e11",
+      "name": "centre"
+    },
+    {
+      "slot": 3064,
+      "address": 9053840,
+      "size": 218,
+      "sha256": "2fb788eb05da520230daa8c85e172bec8caeec7ef558784fcf64e460fec5d7b8",
+      "name": "minimum"
+    },
+    {
+      "slot": 3076,
+      "address": 9054544,
+      "size": 218,
+      "sha256": "55eb435002cb7abb10c0d188299ffe5751bc9c8831e37f99281fcae9b808c2ef",
+      "name": "maximum"
+    },
+    {
+      "slot": 3136,
+      "address": 9058000,
+      "size": 218,
+      "sha256": "a3acee406984942ba3458d6887b1b8743aadeeed9ef0503fc845082d0745c169",
+      "name": "stateGroup"
+    }
+  ]
+}

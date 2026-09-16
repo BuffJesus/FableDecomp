@@ -1,0 +1,302 @@
+{
+  "address": "0x00E29F50",
+  "size": 195,
+  "sourceSha256": "13ce7dc7658ae1c30ca3dc21b233c8045849d0a717269635f23dfcb83e78a0eb",
+  "annotatedSha256": "f8d90c197055985a69c71b750c7484de85c24b15c87b72082f7cfb9a7cfadb03",
+  "regions": [
+    {
+      "address": 14851920,
+      "size": 195,
+      "sha256": "6eec78725cc3d81bb92803c93caed19c41b2a8cb86afb7468307a89f2417cb91"
+    },
+    {
+      "address": 19800960,
+      "size": 20,
+      "sha256": "f3211d87cbf3ce5777aeab99dda6294705da89470d77c16a748ff1be63fcbd7d"
+    },
+    {
+      "address": 14851712,
+      "size": 145,
+      "sha256": "cce96b5e4b438ff843b69d71ad333c2834cd70f1318e5db374183a1aeda328c0"
+    },
+    {
+      "address": 19271800,
+      "size": 4,
+      "sha256": "e09054adda32d2dc9a327b02bc3a1496955b2bdd4f5806cd44c5de305632273e"
+    },
+    {
+      "address": 19271868,
+      "size": 4,
+      "sha256": "5c188c1b0b851d41c0e2211777afddf01aa8c8b40f3ae849503799d19406b385"
+    },
+    {
+      "address": 13495216,
+      "size": 1,
+      "sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e"
+    }
+  ],
+  "calls": [
+    {
+      "site": 14851980,
+      "count": 0,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                8
+              ]
+            ],
+            24
+          ]
+        ],
+        "ecx": [
+          "address",
+          [
+            "register",
+            "esi"
+          ],
+          8
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14851997,
+      "count": 5,
+      "known": {
+        "14851980": [
+          0,
+          "position"
+        ]
+      },
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            364
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            20
+          ],
+          [
+            "stack",
+            12
+          ],
+          [
+            "result",
+            14851980,
+            "position"
+          ],
+          [
+            "stack",
+            16
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14852031,
+      "count": 3,
+      "known": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            432
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    }
+  ],
+  "contracts": {
+    "GetPos": {
+      "name": "GetPos",
+      "scope": "Entity",
+      "returnType": "sol::table",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "s",
+          "type": "sol::this_state",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Gets pos for an entity."
+    },
+    "CreateCreature": {
+      "name": "CreateCreature",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [
+        {
+          "name": "defName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "position",
+          "type": "sol::table",
+          "optional": false,
+          "nativeKind": "vector"
+        },
+        {
+          "name": "scriptName",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Creates creature."
+    },
+    "RemoveThing": {
+      "name": "RemoveThing",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "immediate",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "removeFromWorld",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Removes thing."
+    }
+  },
+  "strings": {
+    "0x12e2354": "ScytheNearOracle",
+    "0x12e239c": "CREATURE_RIVAL_HERO_SCYTHE"
+  },
+  "edits": [
+    {
+      "old": "ppuStack_2c = (undefined **)CScriptThing::GetPos((CScriptThing *)(this + 8));",
+      "new": "native_arg_scythe_spawn_position = CScriptThing::GetPos(me);",
+      "count": 1
+    },
+    {
+      "old": "GSI->CreateCreature(ppVar2,local_14);",
+      "new": "native_arg_spawned_scythe = GSI->CreateCreature(\"CREATURE_RIVAL_HERO_SCYTHE\",native_arg_scythe_spawn_position,\"ScytheNearOracle\");",
+      "count": 1
+    },
+    {
+      "old": "GSI->RemoveThing(this + 8,0,1);",
+      "new": "GSI->RemoveThing(me,0,1);",
+      "count": 1
+    },
+    {
+      "old": "ppuStack_2c = &PTR__scalar_deleting_destructor__01238c8c;\n  if (piVar3 != (int *)0x0) {\n    *piVar3 = *piVar3 + -1;\n    if (*piVar3 == 0) {\n      (*(code *)piVar3[1])();\n      operator_delete(piVar3);\n    }\n  }\n  NHeroInformationScreens::CBase::CBase((CBase *)&ppuStack_2c);",
+      "new": "CScriptThing::~CScriptThing((CScriptThing *)apStack_c);",
+      "count": 1
+    }
+  ],
+  "review": "Allocator E29EB4 installs12E2380; vtable Main isE29F50 and Init is shared CDEBB0. Self=this+8 in EDI. CreateCreature gets hidden Thing output frame20, def frame12, position result of self GetPos slot18, script frame16, native final false. Audited LuaQuestState::CreateCreature likewise hardcodes false. Spawned wrapper lifetime cleanup remains retained as native scaffolding; remove marker false,true occurs after spawn even for empty spawn result. Inline E29FC5..E2A00A cleanup reads counter at frame28, decrements it and destroys implementation only on final reference; this is the frame20 hidden output Thing temporary. Recover its destructor as one native statement, kept in intermediate source. The host created-Thing local remains scoped through marker removal."
+}

@@ -1,0 +1,13 @@
+{
+  "address": "0x00EC4130",
+  "size": 176,
+  "sha256": "3d331a5a13692cacf8cc3dc5beffe29e21e912c0aa1013788f4ab4608d0fbd47",
+  "proof": [
+    "Root Main byte/source/call witnesses establish named WatchForRegionExit registration, false helper flag and empty region.",
+    "EC4140/EC4182 construct Witchwood1 and EC415B/EC419D destroy after each IsRegionLoaded result is captured.",
+    "EC4169 yields only while loaded, then EC416E checks current termination before repolling.",
+    "EC41A8 independently checks termination after unloaded result before enabling generatorsEC41CD with true.",
+    "EC41D7 destroys final region name after generator call; no retained Thing/resource exists in this helper.",
+    "Body does not emulate scheduler pre-entry policy; native false helper flag and manager teardown remain integration gates."
+  ]
+}

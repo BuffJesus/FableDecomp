@@ -1,0 +1,395 @@
+{
+  "address": "0x00DBDE40",
+  "size": 1179,
+  "sourceSha256": "00e2fa39dc58b623d4167ddfa7e47327e036454b4bdd39dddc570ff9cee1b069",
+  "annotatedSha256": "73138dfebb8fcff00b5ca65f9f306e4435321221ed7419c2189c40cebc0b49e5",
+  "bytesSha256": "48e0261d2bf35126828a1aecec4bedcc4a4226ef5eb196c80ed3602032dc6948",
+  "contracts": {
+    "CacheMusicSet": {
+      "name": "CacheMusicSet",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "eType",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes cache music set."
+    },
+    "DeactivateQuestLater": {
+      "name": "DeactivateQuestLater",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "delayFrames",
+          "type": "unsigned int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Deactivates quest later."
+    },
+    "EntitySetAsKillable": {
+      "name": "EntitySetAsKillable",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "isKillable",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "forceDead",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set as killable."
+    },
+    "FadeScreenOutUntilNextCallToFadeScreenIn": {
+      "name": "FadeScreenOutUntilNextCallToFadeScreenIn",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "fadeTime",
+          "type": "float",
+          "optional": false
+        },
+        {
+          "name": "holdTime",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes fade screen out until next call to fade screen in."
+    },
+    "GetActiveQuestName": {
+      "name": "GetActiveQuestName",
+      "scope": "Quest",
+      "returnType": "std::string",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets active quest name."
+    },
+    "GetHero": {
+      "name": "GetHero",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets hero."
+    },
+    "GetThingWithScriptName": {
+      "name": "GetThingWithScriptName",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [
+        {
+          "name": "scriptName",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets thing with script name."
+    },
+    "KickOffQuestStartScreen": {
+      "name": "KickOffQuestStartScreen",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "isStory",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "isGold",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes kick off quest start screen."
+    },
+    "OpenHouseDoors": {
+      "name": "OpenHouseDoors",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pHouse",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": false
+    },
+    "OverrideAutomaticHouseLocking": {
+      "name": "OverrideAutomaticHouseLocking",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pHouse",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "overrideLocking",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": false
+    },
+    "SetHeroSleepingAsEnabled": {
+      "name": "SetHeroSleepingAsEnabled",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "bIsEnabled",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets hero sleeping as enabled."
+    },
+    "SetQuestAsCompleted": {
+      "name": "SetQuestAsCompleted",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "questName",
+          "type": "const std::string&",
+          "optional": false
+        },
+        {
+          "name": "showScreen",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "updateLogbook",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "showQuestCompleteScreen",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets quest as completed."
+    },
+    "SetTimeOfDay": {
+      "name": "SetTimeOfDay",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "time",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets time of day."
+    },
+    "TurnCreatureInto": {
+      "name": "TurnCreatureInto",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [
+        {
+          "name": "spTarget",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "newDefName",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes turn creature into."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->FadeScreenOutUntilNextCallToFadeScreenIn();",
+      "replacements": [
+        "GSI->FadeScreenOutUntilNextCallToFadeScreenIn(2.0,0.0);",
+        "GSI->FadeScreenOutUntilNextCallToFadeScreenIn(0.5,0.0);"
+      ]
+    },
+    {
+      "old": "GSI->GetHero();",
+      "replacements": [
+        "GSI->GetHero();",
+        "native_arg_mission_hero_before = GSI->GetHero();",
+        "native_arg_mission_hero_after = GSI->GetHero();"
+      ]
+    },
+    {
+      "old": "GSI->TurnCreatureInto();",
+      "replacements": [
+        "GSI->TurnCreatureInto(p_Var5,\"CREATURE_HERO_CHILD\");"
+      ]
+    },
+    {
+      "old": "GSI->CacheMusicSet();",
+      "replacements": [
+        "GSI->CacheMusicSet(46);"
+      ]
+    },
+    {
+      "old": "GSI->EntitySetAsKillable();",
+      "replacements": [
+        "GSI->EntitySetAsKillable(native_arg_mission_hero_before,0,0);",
+        "GSI->EntitySetAsKillable(native_arg_mission_hero_after,1,0);"
+      ]
+    },
+    {
+      "old": "GSI->SetTimeOfDay();",
+      "replacements": [
+        "GSI->SetTimeOfDay(12.0);"
+      ]
+    },
+    {
+      "old": "GSI->SetHeroSleepingAsEnabled();",
+      "replacements": [
+        "GSI->SetHeroSleepingAsEnabled(0);",
+        "GSI->SetHeroSleepingAsEnabled(1);"
+      ]
+    },
+    {
+      "old": "GSI->GetThingWithScriptName();",
+      "replacements": [
+        "native_arg_mission_house = GSI->GetThingWithScriptName(\"HerosOldHouse\");"
+      ]
+    },
+    {
+      "old": "GSI->OverrideAutomaticHouseLocking();",
+      "replacements": [
+        "GSI->OverrideAutomaticHouseLocking(native_arg_mission_house,1);"
+      ]
+    },
+    {
+      "old": "GSI->OpenHouseDoors(&puStack_68);",
+      "replacements": [
+        "GSI->OpenHouseDoors(native_arg_mission_house);"
+      ]
+    },
+    {
+      "old": "GSI->GetActiveQuestName(&uStack_70,0,1);",
+      "replacements": [
+        "GSI->GetActiveQuestName();"
+      ]
+    },
+    {
+      "old": "GSI->KickOffQuestStartScreen();",
+      "replacements": [
+        "GSI->KickOffQuestStartScreen(ppVar7,0,1);"
+      ]
+    },
+    {
+      "old": "GSI->SetQuestAsCompleted();",
+      "replacements": [
+        "GSI->SetQuestAsCompleted(ppVar7,0,0,0);"
+      ]
+    },
+    {
+      "old": "GSI->DeactivateQuestLater();",
+      "replacements": [
+        "GSI->DeactivateQuestLater(ppVar7,0);"
+      ]
+    }
+  ],
+  "review": "ESI=this and interface=ESI+40. DBDF00 fade2.0/0; DBE0C0 music46; DBE11D hero,false,false; DBE13E time12.0; DBE14B sleepingfalse. DBE17D house lookup output stack18 with HerosOldHouse name. DBE198 override same Thing,true and DBE1A8 doors same Thing. GetActiveQuestName hidden return consumes only its output: DBE1CA screen(name,false,true); DBE247 fade0.5/0; DBE264 hero,true,false; DBE271 sleepingtrue; DBE295 completion(name,false,false,false); DBE2BE deferreddeactivation(name,0). Full function pins staging and control order. Native string/Thing ownership remains separate. Native SetTimeAsStopped passes parent4C; existing LuaQuestState forwards the per-instance m_stopTimeIndex address on both stop and resume.",
+  "abiRegions": [
+    {
+      "address": 8985760,
+      "size": 173,
+      "sha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+    },
+    {
+      "address": 8984704,
+      "size": 55,
+      "sha256": "16be665e98324dd7e073b3051dd5383d6b6018ef15dd23e68591f84c5af189a1"
+    },
+    {
+      "address": 19271716,
+      "size": 4,
+      "sha256": "eba0e74a432136d66d7304ef103c3f3e12272b0e266e5ac575bc966c85556d1a"
+    },
+    {
+      "address": 19274056,
+      "size": 4,
+      "sha256": "a6fdfd5fd67fc5af3ef508b2466e7de6f164177b13865a6a41bcecbc4563d898"
+    },
+    {
+      "address": 19766536,
+      "size": 20,
+      "sha256": "b23cb52a120b923234ca34e8f43cf2835596ba1613735714a58b2b260b8f402a"
+    },
+    {
+      "address": 19766436,
+      "size": 14,
+      "sha256": "b4807a9d4a2ff01d9f86031cf0160b99bb62a2c3d81b390ac2457db9df077db9"
+    },
+    {
+      "address": 19766452,
+      "size": 28,
+      "sha256": "27dc8eadbeba9997054af768b8435cf2450d29d860e49cc7125ddb8fe4ac527d"
+    }
+  ],
+  "getterAbi": "GetHero returns interface-owned Thing reference at interface+30 with plain ret (no stack arguments). GetActiveQuestName constructs caller-owned CCharString and ret4 consumes only hidden return address. Both helpers and their vtable entries are pinned.",
+  "runtimeTimeStopEvidence": {
+    "definition": "LuaQuestState.cpp:9596",
+    "field": "LuaQuestState.h:1080",
+    "forwarding": "SetTimeAsStopped_API(m_pGameInterface, bIsStopped, &m_stopTimeIndex);",
+    "fieldDeclaration": "int m_stopTimeIndex = 0;",
+    "scope": "same LuaQuestState object across DoMission and PostAttackStuff; source review only"
+  }
+}

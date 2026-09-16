@@ -1,0 +1,755 @@
+{
+  "schema": "guild-training-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "c0b11536f5ca12b45f71a381eecb559daa9dea976c4119af530558ce244ecef3",
+  "exportedFunctions": 277,
+  "quests": [
+    {
+      "script": "Q_GuildTraining",
+      "allocator": "0x00D50600",
+      "vtable": "0x012CD458",
+      "entities": [
+        {
+          "name": "AppleGirl",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3BF9D",
+          "addBindingCall": "0x00D3BFD8",
+          "factoryStore": "0x00D3BFC3",
+          "factory": "0x00D3D060",
+          "vtable": "0x012CD7E8",
+          "functions": {
+            "destructor": "0x00D3D130",
+            "Main": "0x00D3D150",
+            "Init": "0x00D3D110",
+            "GetParentScript": "0x00D3D100",
+            "OnPersist": "0x00D44650",
+            "OnPredicateFail": "0x00D3D120",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "ApprenticeSpeedTest",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C000",
+          "addBindingCall": "0x00D3C03C",
+          "factoryStore": "0x00D3C027",
+          "factory": "0x00D3E1F0",
+          "vtable": "0x012CDA40",
+          "functions": {
+            "destructor": "0x00D3E2C0",
+            "Main": "0x00D3E2E0",
+            "Init": "0x00D3E2A0",
+            "GetParentScript": "0x00D3E290",
+            "OnPersist": "0x00D446A0",
+            "OnPredicateFail": "0x00D3E2B0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SpeedFriend",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C064",
+          "addBindingCall": "0x00D3C0A0",
+          "factoryStore": "0x00D3C08B",
+          "factory": "0x00D407C0",
+          "vtable": "0x012CDF28",
+          "functions": {
+            "destructor": "0x00D40890",
+            "Main": "0x00D408B0",
+            "Init": "0x00D40870",
+            "GetParentScript": "0x00D40860",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D40880",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "RaceMarker",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C0C8",
+          "addBindingCall": "0x00D3C104",
+          "factoryStore": "0x00D3C0EF",
+          "factory": "0x00D409E0",
+          "vtable": "0x012CDF44",
+          "functions": {
+            "destructor": "0x00D40B10",
+            "Main": "0x00D40AA0",
+            "Init": "0x00D40A90",
+            "GetParentScript": "0x00D40A80",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "MeleeApprentice",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C12C",
+          "addBindingCall": "0x00D3C168",
+          "factoryStore": "0x00D3C153",
+          "factory": "0x00D40C10",
+          "vtable": "0x012CDF7C",
+          "functions": {
+            "destructor": "0x00D40CD0",
+            "Main": "0x00D40CF0",
+            "Init": "0x00D40CC0",
+            "GetParentScript": "0x00D40CB0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "CombatApprentice",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C190",
+          "addBindingCall": "0x00D3C1CC",
+          "factoryStore": "0x00D3C1B7",
+          "factory": "0x00D41A30",
+          "vtable": "0x012CE094",
+          "functions": {
+            "destructor": "0x00D41AF0",
+            "Main": "0x00D4A270",
+            "Init": "0x00D41AE0",
+            "GetParentScript": "0x00D41AD0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SkillApprentice",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C1F4",
+          "addBindingCall": "0x00D3C230",
+          "factoryStore": "0x00D3C21B",
+          "factory": "0x00D41B10",
+          "vtable": "0x012CE0B0",
+          "functions": {
+            "destructor": "0x00D41BD0",
+            "Main": "0x00D4C720",
+            "Init": "0x00D41BC0",
+            "GetParentScript": "0x00D41BB0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WillApprentice",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C258",
+          "addBindingCall": "0x00D3C297",
+          "factoryStore": "0x00D3C282",
+          "factory": "0x00D43280",
+          "vtable": "0x012CE348",
+          "functions": {
+            "destructor": "0x00D43340",
+            "Main": "0x00D4EFE0",
+            "Init": "0x00D43330",
+            "GetParentScript": "0x00D43320",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "HeroBed",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C2C1",
+          "addBindingCall": "0x00D3C300",
+          "factoryStore": "0x00D3C2EB",
+          "factory": "0x00D40B30",
+          "vtable": "0x012CDF60",
+          "functions": {
+            "destructor": "0x00D40BF0",
+            "Main": "0x00D446D0",
+            "Init": "0x00D40BE0",
+            "GetParentScript": "0x00D40BD0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SkillTarget",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C32B",
+          "addBindingCall": "0x00D3C36A",
+          "factoryStore": "0x00D3C355",
+          "factory": "0x00D41BF0",
+          "vtable": "0x012CE0CC",
+          "functions": {
+            "destructor": "0x00D41CE0",
+            "Main": "0x00D41D00",
+            "Init": "0x00D41CA0",
+            "GetParentScript": "0x00D41C90",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D41CD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WillDummy",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C395",
+          "addBindingCall": "0x00D3C3D4",
+          "factoryStore": "0x00D3C3BF",
+          "factory": "0x00D43360",
+          "vtable": "0x012CE364",
+          "functions": {
+            "destructor": "0x00D43430",
+            "Main": "0x00D43450",
+            "Init": "0x00D43410",
+            "GetParentScript": "0x00D43400",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D43420",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BirdKiller",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C3FF",
+          "addBindingCall": "0x00D3C43E",
+          "factoryStore": "0x00D3C429",
+          "factory": "0x00D42F40",
+          "vtable": "0x012CE310",
+          "functions": {
+            "destructor": "0x00D43020",
+            "Main": "0x00D4DEA0",
+            "Init": "0x00D42FF0",
+            "GetParentScript": "0x00D42FE0",
+            "OnPersist": "0x00D44C60",
+            "OnPredicateFail": "0x00D43010",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "KillBird",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C469",
+          "addBindingCall": "0x00D3C4A8",
+          "factoryStore": "0x00D3C493",
+          "factory": "0x00D43040",
+          "vtable": "0x012CE32C",
+          "functions": {
+            "destructor": "0x00D43170",
+            "Main": "0x00D43190",
+            "Init": "0x00D430F0",
+            "GetParentScript": "0x00D430E0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D43120",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "PreMeleeMaze",
+          "registrationFunction": "0x00D3BC60",
+          "namePush": "0x00D3C4D3",
+          "addBindingCall": "0x00D3C512",
+          "factoryStore": "0x00D3C4FD",
+          "factory": "0x00D43CD0",
+          "vtable": "0x012CE420",
+          "functions": {
+            "destructor": "0x00D43D90",
+            "Main": "0x00D43DB0",
+            "Init": "0x00D43D80",
+            "GetParentScript": "0x00D43D70",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D3B390",
+        "0x00D50600"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingDeparture",
+      "allocator": "0x00D513C0",
+      "vtable": "0x012CF670",
+      "entities": [
+        {
+          "name": "TheRealGuildmaster",
+          "registrationFunction": "0x00D50800",
+          "namePush": "0x00D5081E",
+          "addBindingCall": "0x00D5085B",
+          "factoryStore": "0x00D50847",
+          "factory": "0x00D509D0",
+          "vtable": "0x012CF6C4",
+          "functions": {
+            "destructor": "0x00D50A90",
+            "Main": "0x00D50C60",
+            "Init": "0x00D50A80",
+            "GetParentScript": "0x00D50A70",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D50680",
+        "0x00D513C0"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingMelee",
+      "allocator": "0x00D5A9F0",
+      "vtable": "0x012D0274",
+      "entities": [
+        {
+          "name": "TheRealGuildmaster",
+          "registrationFunction": "0x00D55E90",
+          "namePush": "0x00D55EB3",
+          "addBindingCall": "0x00D55EF0",
+          "factoryStore": "0x00D55EDC",
+          "factory": "0x00D565C0",
+          "vtable": "0x012D030C",
+          "functions": {
+            "destructor": "0x00D56680",
+            "Main": "0x00D58490",
+            "Init": "0x00D56670",
+            "GetParentScript": "0x00D56660",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "MeleeOpponent",
+          "registrationFunction": "0x00D55E90",
+          "namePush": "0x00D55F18",
+          "addBindingCall": "0x00D55F58",
+          "factoryStore": "0x00D55F3F",
+          "factory": "0x00D566A0",
+          "vtable": "0x012D0328",
+          "functions": {
+            "destructor": "0x00D56770",
+            "Main": "0x00D56790",
+            "Init": "0x00D56750",
+            "GetParentScript": "0x00D56740",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "MeleeThunder",
+          "registrationFunction": "0x00D55E90",
+          "namePush": "0x00D55F80",
+          "addBindingCall": "0x00D55FC0",
+          "factoryStore": "0x00D55FA7",
+          "factory": "0x00D57FA0",
+          "vtable": "0x012D0564",
+          "functions": {
+            "destructor": "0x00D58060",
+            "Main": "0x00D58080",
+            "Init": "0x00D58050",
+            "GetParentScript": "0x00D58040",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D55D70",
+        "0x00D5A9F0"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingPreMelee",
+      "allocator": "0x00D55D10",
+      "vtable": "0x012CF788",
+      "entities": [
+        {
+          "name": "TheRealGuildmaster",
+          "registrationFunction": "0x00D51520",
+          "namePush": "0x00D51546",
+          "addBindingCall": "0x00D51583",
+          "factoryStore": "0x00D5156F",
+          "factory": "0x00D51E20",
+          "vtable": "0x012CF83C",
+          "functions": {
+            "destructor": "0x00D51EE0",
+            "Main": "0x00D52E90",
+            "Init": "0x00D51ED0",
+            "GetParentScript": "0x00D51EC0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "PreMeleeDummy",
+          "registrationFunction": "0x00D51520",
+          "namePush": "0x00D515AB",
+          "addBindingCall": "0x00D515EB",
+          "factoryStore": "0x00D515D2",
+          "factory": "0x00D51F00",
+          "vtable": "0x012CF858",
+          "functions": {
+            "destructor": "0x00D52210",
+            "Main": "0x00D51FC0",
+            "Init": "0x00D51FB0",
+            "GetParentScript": "0x00D51FA0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "PreMeleeWhisper",
+          "registrationFunction": "0x00D51520",
+          "namePush": "0x00D51613",
+          "addBindingCall": "0x00D51653",
+          "factoryStore": "0x00D5163A",
+          "factory": "0x00D52230",
+          "vtable": "0x012CF874",
+          "functions": {
+            "destructor": "0x00D522F0",
+            "Main": "0x00D524A0",
+            "Init": "0x00D522E0",
+            "GetParentScript": "0x00D522D0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D51420",
+        "0x00D55D10"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingSkill",
+      "allocator": "0x00D5DBF0",
+      "vtable": "0x012D09A0",
+      "entities": [
+        {
+          "name": "TheRealGuildmaster",
+          "registrationFunction": "0x00D5AB40",
+          "namePush": "0x00D5AB5E",
+          "addBindingCall": "0x00D5AB9B",
+          "factoryStore": "0x00D5AB87",
+          "factory": "0x00D5ABE0",
+          "vtable": "0x012D09D8",
+          "functions": {
+            "destructor": "0x00D5ACA0",
+            "Main": "0x00D5AE70",
+            "Init": "0x00D5AC90",
+            "GetParentScript": "0x00D5AC80",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D5AA50",
+        "0x00D5DBF0"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWill",
+      "allocator": "0x00D61BB0",
+      "vtable": "0x012D1038",
+      "entities": [
+        {
+          "name": "TheRealGuildmaster",
+          "registrationFunction": "0x00D5DD40",
+          "namePush": "0x00D5DD5E",
+          "addBindingCall": "0x00D5DD9B",
+          "factoryStore": "0x00D5DD87",
+          "factory": "0x00D5DDE0",
+          "vtable": "0x012D1070",
+          "functions": {
+            "destructor": "0x00D5DEA0",
+            "Main": "0x00D5E0C0",
+            "Init": "0x00D5DE90",
+            "GetParentScript": "0x00D5DE80",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D5DC50",
+        "0x00D61BB0"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWoodsDeparture",
+      "allocator": "0x00D664D0",
+      "vtable": "0x012D15FC",
+      "entities": [
+        {
+          "name": "ArtifactThief",
+          "registrationFunction": "0x00D61D20",
+          "namePush": "0x00D61DDF",
+          "addBindingCall": "0x00D61E28",
+          "factoryStore": "0x00D61E0F",
+          "factory": "0x00D62360",
+          "vtable": "0x012D16DC",
+          "functions": {
+            "destructor": "0x00D62460",
+            "Main": "0x00D62480",
+            "Init": "0x00D62410",
+            "GetParentScript": "0x00D62400",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D62450",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "FinalMaze",
+          "registrationFunction": "0x00D61D20",
+          "namePush": "0x00D61E50",
+          "addBindingCall": "0x00D61E90",
+          "factoryStore": "0x00D61E77",
+          "factory": "0x00D62270",
+          "vtable": "0x012D16C0",
+          "functions": {
+            "destructor": "0x00D62340",
+            "Main": "0x00D647F0",
+            "Init": "0x00D62320",
+            "GetParentScript": "0x00D62310",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D62330",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "ScorpionHome",
+          "registrationFunction": "0x00D61D20",
+          "namePush": "0x00D61EB8",
+          "addBindingCall": "0x00D61EF8",
+          "factoryStore": "0x00D61EDF",
+          "factory": "0x00D63CC0",
+          "vtable": "0x012D19C0",
+          "functions": {
+            "destructor": "0x00D63DA0",
+            "Main": "0x00D643A0",
+            "Init": "0x00D63D80",
+            "GetParentScript": "0x00D63D60",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D63D70",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D61C30",
+        "0x00D664D0"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWoodsMelee",
+      "allocator": "0x00D67740",
+      "vtable": "0x012D1D1C",
+      "entities": [
+        {
+          "name": "ScorpionHome",
+          "registrationFunction": "0x00D66620",
+          "namePush": "0x00D666DC",
+          "addBindingCall": "0x00D6671D",
+          "factoryStore": "0x00D66709",
+          "factory": "0x00D66BA0",
+          "vtable": "0x012D1DA0",
+          "functions": {
+            "destructor": "0x00D66C80",
+            "Main": "0x00D67270",
+            "Init": "0x00D66C60",
+            "GetParentScript": "0x00D66C40",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D66C50",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D66530",
+        "0x00D67740"
+      ]
+    },
+    {
+      "script": "Q_GuildTrainingWoodsWill",
+      "allocator": "0x00D68EA0",
+      "vtable": "0x012D1E08",
+      "entities": [
+        {
+          "name": "WillWhisper",
+          "registrationFunction": "0x00D67890",
+          "namePush": "0x00D678CC",
+          "addBindingCall": "0x00D67909",
+          "factoryStore": "0x00D678F5",
+          "factory": "0x00D68720",
+          "vtable": "0x012D1F60",
+          "functions": {
+            "destructor": "0x00D687F0",
+            "Main": "0x00D68810",
+            "Init": "0x00D687D0",
+            "GetParentScript": "0x00D687C0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D687E0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D677A0",
+        "0x00D68EA0"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00D3BC60",
+      "store": "0x00D3C5EB",
+      "body": "0x00D45DD0",
+      "name": "RunTutorials",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D3BC60",
+      "store": "0x00D3C669",
+      "body": "0x00D45060",
+      "name": "CheckFriendlyAttacks",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D3BC60",
+      "store": "0x00D3C6E6",
+      "body": "0x00D3CBD0",
+      "name": "KeepTabsOnWhisper",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D3BC60",
+      "store": "0x00D3C767",
+      "body": "0x00D3C840",
+      "name": "WatchForSparrowKilled",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D3BC60",
+      "store": "0x00D3C7E8",
+      "body": "0x00D3C8F0",
+      "name": "KeepBookcaseExitRemoved",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D61D20",
+      "store": "0x00D61F57",
+      "body": "0x00D62140",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D61D20",
+      "store": "0x00D61FCF",
+      "body": "0x00D63DC0",
+      "name": "DoMission",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D63DC0",
+      "store": "0x00D63EC5",
+      "body": "0x00D64000",
+      "name": "WatchForLeaving",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D63DC0",
+      "store": "0x00D63F41",
+      "body": "0x00D64080",
+      "name": "TeleportOutHero",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D66620",
+      "store": "0x00D66780",
+      "body": "0x00D66880",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D66620",
+      "store": "0x00D667F8",
+      "body": "0x00D66CA0",
+      "name": "DoMission",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D66CA0",
+      "store": "0x00D66DA5",
+      "body": "0x00D66E90",
+      "name": "WatchForLeaving",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D66CA0",
+      "store": "0x00D66E21",
+      "body": "0x00D66F50",
+      "name": "TeleportOutHero",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D67890",
+      "store": "0x00D67A86",
+      "body": "0x00D68600",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D67890",
+      "store": "0x00D67B02",
+      "body": "0x00D68AE0",
+      "name": "DoMission",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D68AE0",
+      "store": "0x00D68BE5",
+      "body": "0x00D68C50",
+      "name": "WatchForLeaving",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

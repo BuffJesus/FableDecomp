@@ -48,6 +48,17 @@ from native_loop_timer import recover_loop_timer  # noqa: E402
 from native_colours import colour_literal, recover_barrel_colours  # noqa: E402
 from native_barrel_update import recover_barrel_update  # noqa: E402
 from native_barrel_creation import recover_barrel_creation  # noqa: E402
+from native_quest_vector_fields import recover_barrel_spawn_health
+from native_dispatch_scaffolding import prune_dispatch_loads, recover_barrel_dispatch
+from native_affair_woman_position import recover_affair_woman_position
+from native_flat_control import flatten_control
+from native_structured_switch import lower_nonfallthrough_switches
+from native_goto_scopes import LABEL_TOKEN
+from native_barrel_position import recover_first_barrel_vector, recover_barrel_teleport_choice, recover_barrel_return_position
+from native_barrel_departure import recover_barrel_departure
+from native_bully_messages import recover_bully_messages
+from native_bully_teddy_offer import recover_bully_teddy_offer, recover_bully_hit_result
+from native_bully_presented_item import recover_bully_presented_item
 from native_quest_markers import recover_quest_markers  # noqa: E402
 from native_marker_cleanup import recover_marker_cleanup, OWNERSHIP_LIMITATION  # noqa: E402
 from native_post_attack_cleanup import recover_post_attack_cleanup  # noqa: E402
@@ -62,16 +73,21 @@ from native_teddy_distance import recover_affair_man_distance, recover_affair_ma
 from native_sequence_conditions import expand_sequence_conditions  # noqa: E402
 from native_cached_thing_queries import recover_cached_thing_queries  # noqa: E402
 from native_affair_facing import recover_affair_facing  # noqa: E402
-from native_affair_pause import recover_affair_pause, recover_book_trader_pause, recover_affair_wife_pause  # noqa: E402
+from native_affair_pause import recover_affair_pause, recover_book_trader_pause, recover_affair_wife_pause, recover_barrel_pause  # noqa: E402
 from native_book_trader_timer import recover_book_trader_timer, recover_affair_wife_timer  # noqa: E402
 from native_book_trader_line import recover_book_trader_line  # noqa: E402
-from native_book_trader_health import recover_book_trader_health, recover_affair_wife_health, recover_affair_man_health  # noqa: E402
+from native_book_trader_health import recover_book_trader_health, recover_affair_wife_health, recover_affair_man_health, recover_barrel_health, recover_barrel_health_boolean  # noqa: E402
 from native_book_trader_allies import recover_book_trader_allies, recover_affair_wife_allies  # noqa: E402
 from native_affair_movies import recover_book_trader_movies, recover_affair_wife_movies  # noqa: E402
 from native_book_trader_cleanup import recover_book_trader_cleanup, recover_affair_wife_cleanup  # noqa: E402
 from native_book_trader_hits import recover_book_trader_hits, recover_affair_wife_hits, recover_affair_wife_argument_hits  # noqa: E402
 from native_book_trader_termination import recover_book_trader_termination, recover_affair_wife_termination  # noqa: E402
 from native_book_trader_acquisition import recover_book_trader_acquisition  # noqa: E402
+from native_book_trader_home import recover_book_trader_home  # noqa: E402
+from native_book_trader_health_values import recover_book_trader_health_values  # noqa: E402
+from native_barrel_init import recover_barrel_init  # noqa: E402
+from native_do_mission_operands import recover_do_mission_operands, recover_attack_stuff_operands  # noqa: E402
+from native_book_trader_lifetime import map_book_trader_lifetime  # noqa: E402
 from native_speech_vectors import recover_init_vector_construction  # noqa: E402
 from native_init_scalars import recover_init_scalars, recover_init_bad_deeds  # noqa: E402
 from native_affair_wife_route import recover_affair_wife_route  # noqa: E402
@@ -86,8 +102,8 @@ from native_affair_wife_text_sequence import recover_affair_wife_text_sequence  
 from native_affair_wife_reply import recover_affair_wife_reply  # noqa: E402
 from native_affair_wife_animation_random import recover_affair_wife_animation_random  # noqa: E402
 from native_affair_wife_animation_operands import recover_affair_wife_animation_operands  # noqa: E402
-from native_affair_wife_position import map_affair_wife_position  # noqa: E402
-from native_book_trader_hits import recover_affair_man_hits  # noqa: E402
+from native_affair_wife_position import map_affair_wife_position, recover_affair_wife_position  # noqa: E402
+from native_book_trader_hits import recover_affair_man_hits, recover_barrel_hits  # noqa: E402
 from native_affair_wife_mask import recover_affair_man_mask  # noqa: E402
 from native_affair_man_conversation import recover_affair_man_conversation, recover_affair_man_near_lines, recover_affair_man_ranged_lines  # noqa: E402
 from native_affair_man_conversation import recover_affair_man_affection_setup  # noqa: E402
@@ -154,7 +170,7 @@ RE_BINDING = re.compile(
 RE_CONS_VAL = re.compile(r'std::\s*_Cons_val<[^;]*?;', re.S)
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
-RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (LAB_[0-9a-f]+);\s*$')
+RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (' + LABEL_TOKEN + r');\s*$')
 RE_IF_BREAK = re.compile(r'^\s*if\s*\((.*)\)\s*break;\s*$')
 RE_THING_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?CScriptThing::(\w+)\s*\(\s*([^,]+?)\s*(?:,(.*))?\);\s*$')
 RE_THREAD = re.compile(
@@ -167,7 +183,7 @@ RE_STORE = re.compile(r'^\s*\*\((\w+) \*\)\((?:this|param_1) \+ (0x[0-9a-fA-F]+)
 RE_STORE_IDX = re.compile(r'^\s*(?:this|param_1)\[(0x[0-9a-fA-F]+)\] = (?:\([^)]*\))?([^;]+);\s*$')
 RE_LOAD = re.compile(r'\*\((\w+) \*\)\((?:this|param_1) \+ (0x[0-9a-fA-F]+)\)|(?:this|param_1)\[(0x[0-9a-fA-F]+)\]')
 RE_PARENT_LOAD = re.compile(
-    r'\*\((\w+) \*\)\(\*\(int \*\)\((?:this|param_1) \+ 0x14\) \+ (0x[0-9a-fA-F]+)\)')
+    r'\*\((\w+) \*\)\(\*\(int \*\)\((?:this|param_1) \+ 0x14\) \+ (0x[0-9a-fA-F]+|[0-9]+)\)')
 RE_IF = re.compile(r'^\s*if \((.*)\) \{\s*$')
 RE_IF_RECHECK_TERMINATING = re.compile(
     r'^\s*if \(\(\s*!\s*(?P<var>\w+)\s*\)\s*&&\s*\(\s*(?P=var)\s*=\s*'
@@ -175,8 +191,8 @@ RE_IF_RECHECK_TERMINATING = re.compile(
 RE_ELSE_IF = re.compile(r'^\s*else if \((.*)\) \{\s*$')
 RE_WHILE = re.compile(r'^\s*while\s*\((.*)\)\s*\{\s*$')
 RE_DO_WHILE_END = re.compile(r'^\s*\}\s*while\s*\(\s*(.*?)\s*\)\s*;\s*$')
-RE_LABEL = re.compile(r'^\s*(LAB_[0-9a-f]+):\s*(.*)$')
-RE_GOTO = re.compile(r'^\s*goto (LAB_[0-9a-f]+);\s*$')
+RE_LABEL = re.compile(r'^\s*(' + LABEL_TOKEN + r'):\s*(.*)$')
+RE_GOTO = re.compile(r'^\s*goto (' + LABEL_TOKEN + r');\s*$')
 RE_CAST = re.compile(r'\((?:undefined\d?|byte|uint|int|float(?:10)?|bool|char|long|short|ushort|code|[A-Za-z_]\w*(?:::\w+)* \*+|[A-Z]\w+)\)')
 RE_DECL = re.compile(r'^\s*[\w:<>,\*\s]+\s+\*{0,3}\w+(\s*\[\d+\])?;\s*$')
 RE_EXTRAOUT = re.compile(r"extraout_AL(?:_\d+)?\s*(==|!=)\s*'\\0'")
@@ -219,7 +235,7 @@ NOISE = ("extraout_EDX", "unaff_EDI", "uStack_4 = 0;", "CTCVillage::OnInitialAct
          "**(int **)(param_1 + 0x40)", "**(int **)(this + 0x40)", "& 0xffffff00", "= param_1 & 0xffffff",
          "*DAT_0143e8f8", "CScriptThing::CScriptThing(", "AllocateMapThingUID", "~C3DClothPrimitive",
          "CScriptThing::~CScriptThing", "**(this + 4)", "CBaseIntelligentPointer::", "_scalar_deleting_destructor",
-         "_vector_deleting_destructor", "CMemoryDataOutputStream::Clear", "= me;", "::~", "local_4 = 0;",
+         "_vector_deleting_destructor", "CMemoryDataOutputStream::Clear", "::~", "local_4 = 0;",
          # native_helper_operation_ir.json identifies 0x0099A2E0 as a complete opaque-vtable-token
          # initializer. Its only effect is native temporary object lifetime; Lua has no counterpart.
          "NHeroInformationScreens::CBase::CBase(")
@@ -295,6 +311,21 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
     A newer or differently shaped manifest entry is left intact for its own review.
     """
     result = copy.deepcopy(manifest)
+    # LuaManager registers this current host binding, omitted by the older SDK.
+    # LuaQuestState forwards the definition string and the supplied Thing.
+    result.setdefault('IsObjectInThingsPossession', {
+        'name': 'IsObjectInThingsPossession', 'scope': 'Quest', 'returnType': 'bool',
+        'parameters': [{'name': 'objectDefName', 'type': 'const std::string&', 'optional': False},
+                       {'name': 'pThing', 'type': 'CScriptThing*', 'optional': False}],
+        'blocking': False})
+    # Existing LuaManager bindings absent from the older SDK manifest.
+    for name, parameters in {
+        'OpenHouseDoors': [('pHouse', 'CScriptThing*')],
+        'OverrideAutomaticHouseLocking': [('pHouse', 'CScriptThing*'), ('overrideLocking', 'bool')],
+    }.items():
+        result.setdefault(name, {'name': name, 'scope': 'Quest', 'returnType': 'void',
+            'parameters': [{'name': key, 'type': kind, 'optional': False} for key, kind in parameters],
+            'blocking': False})
     # LuaManager binds MoveToPosition to the existing-handle, nonblocking API.
     # Keep both native movement flags; the older SDK omits them.
     movement = result.get('MoveToPosition', {})
@@ -324,6 +355,13 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
                        {'name': 'distance', 'type': 'float'}]})
     centre = result.get('SetWanderCentrePoint', {})
     for parameter in centre.get('parameters', []):
+        if parameter.get('name') == 'pos' and parameter.get('type') == 'sol::table':
+            parameter['nativeKind'] = 'vector'
+    creature = result.get('CreateCreature', {})
+    for parameter in creature.get('parameters', []):
+        if parameter.get('name') == 'position' and parameter.get('type') == 'sol::table':
+            parameter['nativeKind'] = 'vector'
+    for parameter in result.get('IsCameraPosOnScreen', {}).get('parameters', []):
         if parameter.get('name') == 'pos' and parameter.get('type') == 'sol::table':
             parameter['nativeKind'] = 'vector'
     result.setdefault('RetailRandModulo', {'scope': 'Quest', 'returnType': 'int',
@@ -437,6 +475,18 @@ def load_entity_parent_state(entity: str, inventory_root: Path = ENTITY_INVENTOR
     """
     inventory_path = inventory_root / f"{entity}.json"
     manifest_path = inventory_root.parent / "persistence_manifest.json"
+    # Guild Training has an independently reviewed native field map rather than
+    # the New Oakvale persistence inventory. Use it only for qualified Guild
+    # entities; unknown fields remain unresolved as before.
+    if entity.startswith("Q_GuildTraining"):
+        field_map_path = ROOT / "refs" / "script_recovery" / "guild_training" / "native_field_maps.json"
+        if field_map_path.is_file():
+            maps = json.loads(field_map_path.read_text(encoding="utf-8-sig")).get("maps", {})
+            script = entity.split(".", 1)[0]
+            fields = maps.get(script, {})
+            bool_names = {"MissionSucceeded", "MissionFailed", "MissionOver", "ScorpionsAlive"}
+            return {str(offset).lower(): (name, "Bool" if name in bool_names else "Int")
+                    for offset, name in fields.items()}
     if not inventory_path.is_file() or not manifest_path.is_file():
         return {}
     inventory = json.loads(inventory_path.read_text(encoding="utf-8-sig"))
@@ -580,14 +630,17 @@ class Lifter:
                  live_termination: bool = False, execution_entity: bool = False,
                  state_arrays: dict[str, tuple[str, str]] | None = None,
                  master_strings: dict[str, str] | None = None, native_gotos: bool = False,
-                 static_vectors: dict[str, list[str]] | None = None, readable_locals: bool = False):
+                 static_vectors: dict[str, list[str]] | None = None, readable_locals: bool = False,
+                 state_vectors: dict[str, str] | None = None, flat_control: bool = False):
         self.manifest = manifest
         self.state = state
         self.state_arrays = state_arrays or {}
         self.master_strings = master_strings or {}
-        self.native_gotos = native_gotos
+        self.flat_control = flat_control
+        self.native_gotos = native_gotos or flat_control
         self.readable_locals = readable_locals
         self.static_vectors = static_vectors or {}
+        self.state_vectors = state_vectors or {}
         self.parent_state = parent_state or {}
         self.native_constants = native_constants or {}
         self.receiver = receiver          # "Quest" (quest mode) or "quest" (entity mode)
@@ -653,6 +706,11 @@ class Lifter:
         self.barrel_colour_evidence = []
         self.barrel_update_evidence = []
         self.barrel_creation_evidence = []
+        self.barrel_spawn_health_evidence = []
+        self.dispatch_scaffolding_evidence = []
+        self.flat_control_evidence = {}
+        self.structured_switch_evidence = []
+        self.affair_woman_position_evidence = []
         self.quest_marker_evidence = []
         self.marker_cleanup_evidence = []
         self.post_attack_cleanup_evidence = []
@@ -664,8 +722,13 @@ class Lifter:
         self.post_attack_limbo_evidence = []
         self.post_attack_resource_evidence = []
         self.book_trader_resource_evidence = []
+        self.book_trader_lifetime_evidence = []
         self.post_attack_movie_lifetime_evidence = []
         self.barrel_position_evidence = []
+        self.bully_message_evidence = []
+        self.bully_teddy_offer_evidence = []
+        self.bully_presented_item_evidence = []
+        self.bully_hit_result_evidence = []
         self.speech_vector_init_evidence = []
         self.init_scalar_evidence = []
         self.init_bad_deed_evidence = []
@@ -727,6 +790,11 @@ class Lifter:
         self.book_trader_hit_evidence = []
         self.book_trader_termination_evidence = []
         self.book_trader_acquisition_evidence = []
+        self.book_trader_home_evidence = []
+        self.book_trader_health_values_evidence = []
+        self.barrel_init_evidence = []
+        self.do_mission_operand_evidence = []
+        self.attack_stuff_operand_evidence = []
         self.readable_local_names = {}
 
     # ---- helpers -------------------------------------------------------------------------------
@@ -771,6 +839,12 @@ class Lifter:
 
     def expr(self, text: str) -> str:
         text = text.strip()
+        for variable, kind in self.kinds.items():
+            if kind == 'vector':
+                for index, axis in enumerate('xyz'):
+                    pattern = (r'(?<![\w*])\*' + re.escape(variable) + r'\b' if index == 0
+                               else r'\b' + re.escape(variable) + r'\[' + str(index) + r'\]')
+                    text = re.sub(pattern, variable + '.' + axis, text)
         colour = colour_literal(text)
         if colour is not None:
             return colour
@@ -819,7 +893,8 @@ class Lifter:
 
         if self.entity:
             def parent_load(match: re.Match) -> str:
-                field = self.parent_state.get(match[2].lower())
+                offset = hex(int(match[2], 16 if match[2].lower().startswith('0x') else 10))
+                field = self.parent_state.get(offset)
                 if field is None:
                     return match[0]
                 name, kind = field
@@ -861,8 +936,14 @@ class Lifter:
         if "alive" in text:
             self.used_alive = True
         text = re.sub(r'\s+', " ", text).strip()
+        vector_address = re.fullmatch(r'(?:this|param_1) \+ (0x[0-9a-fA-F]+)', text)
+        if not self.entity and vector_address and vector_address[1].lower() in self.state_vectors:
+            return self.state_vector_expression(self.state_vectors[vector_address[1].lower()])
         text = fold_decisive_condition(text)
         return 'me' if self.entity and text == '(me)' else text
+
+    def state_vector_expression(self, name):
+        return '{' + ', '.join(f'{axis} = {self.state_receiver}:GetStateFloat("{name}_{axis}")' for axis in 'xyz') + '}'
 
     def inline_thing_call(self, match: re.Match) -> str:
         """`CScriptThing::Name(recv, args)` inside an expression (already cast-stripped)."""
@@ -882,6 +963,8 @@ class Lifter:
         return f"{recv}:{name}({', '.join(args)})"
 
     def kind_of(self, arg: str) -> str | None:
+        if any(arg == self.state_vector_expression(name) for name in self.state_vectors.values()):
+            return 'vector'
         if arg == "me":
             return "thing"
         if arg.startswith('"'):
@@ -926,7 +1009,8 @@ class Lifter:
         self.temps[name] = value
         self.order.append(name)
 
-    def place_args(self, params: list[dict], parsed: list[str], *, explicit_things: tuple[str, ...] = ()) -> list[str]:
+    def place_args(self, params: list[dict], parsed: list[str], *, explicit_things: tuple[str, ...] = (),
+                   call_name: str | None = None) -> list[str]:
         """Fill the manifest parameter slots by type.
 
         String parameters can only come from string literals / temporaries / interface results;
@@ -998,7 +1082,9 @@ class Lifter:
         while result and result[-1] is None and "optional" in params[len(result) - 1].get("type", ""):
             result.pop()
         if any(a is None for a in result):
-            self.todo.append(f"{len([a for a in result if a])} args for {len(params)} params")
+            counts = f"{len([a for a in result if a])} args for {len(params)} params"
+            missing = ', '.join(params[i].get('name', str(i)) for i, value in enumerate(result) if value is None)
+            self.todo.append(f'{call_name}: missing {missing} ({counts})' if call_name else counts)
         for i, value in enumerate(result):
             if (params[i].get('type', '').strip() in ('int', 'long', 'signed int')
                     and value and re.fullmatch(r'0x[0-9a-fA-F]{8}', value)
@@ -1064,6 +1150,17 @@ class Lifter:
         return None
 
     def interface_call(self, target: str | None, name: str, argtext: str) -> bool:
+        if name == 'RetailThingPosition':
+            operands = self.arguments(argtext)
+            if not target or len(operands) != 1:
+                raise ValueError('Reviewed RetailThingPosition requires one actor and a result')
+            actor = self.expr(operands[0])
+            if self.kind_of(actor) != 'thing':
+                raise ValueError('Reviewed RetailThingPosition actor lost its Thing provenance')
+            self.emit(f'{self.declare(target)} = RetailThingPosition({actor})')
+            self.kinds[target] = 'vector'
+            self.calls.append(name)
+            return True
         spec = self.manifest.get(name)
         if (not self.execution_entity
                 and (name == 'StartScriptingEntity' or spec and spec.get('scope') == 'Entity')):
@@ -1077,6 +1174,16 @@ class Lifter:
             if target:
                 self.forget_value(target)
                 self.emit(f'{self.declare(target)} = nil --[[unresolved native result]]')
+            return True
+        if name == 'NewScriptFrame' and spec:
+            # Retail's no-argument frame call uses its active script thread.
+            # The host bridge receives that execution entity explicitly; it is
+            # not a missing native operand and must not consume a staged Thing.
+            call = (f'{self.receiver}:NewScriptFrame(me)' if self.execution_entity
+                    else f'{self.receiver}:NewScriptFrame()')
+            self.emit(f'alive = {call}')
+            self.used_alive = True
+            self.calls.append(name)
             return True
         if name == "PostAddScriptedEntities":
             self.emit(f"{self.receiver}:FinalizeEntityBindings()")
@@ -1140,17 +1247,11 @@ class Lifter:
             else:
                 args.append(self.expr(a))
         if spec:
-            args = self.place_args(params, args, explicit_things=tuple(explicit_things))
+            args = self.place_args(params, args, explicit_things=tuple(explicit_things), call_name=name)
             required = len([p for p in params if "optional" not in p.get("type", "")])
             if len(args) < required:
                 self.todo.append(f"{name}: {len(args)} args for {len(params)} params")
             receiver = "me" if spec["scope"] == "Entity" else self.receiver
-            if name == "NewScriptFrame":
-                call = f"{self.receiver}:NewScriptFrame(me)" if self.execution_entity else f"{self.receiver}:NewScriptFrame()"
-                self.emit(f"alive = {call}")
-                self.used_alive = True
-                self.calls.append(name)
-                return True
             call = f"{receiver}:{name}({', '.join(args)})"
             if target:
                 self.emit(f"{self.declare(target)} = {call}")
@@ -1282,6 +1383,22 @@ class Lifter:
         if self.entity:
             decompile, self.self_wrapper_arguments = fold_self_wrapper_arguments(decompile)
         if native_function is not None:
+            decompile, self.do_mission_operand_evidence = recover_do_mission_operands(
+                native_function, decompile, self.rdata, self.manifest)
+            decompile, self.attack_stuff_operand_evidence = recover_attack_stuff_operands(
+                native_function, decompile, self.rdata, self.manifest)
+            decompile, self.barrel_init_evidence = recover_barrel_init(
+                native_function, decompile, self.rdata, self.manifest, self.parent_state)
+            decompile, self.bully_message_evidence = recover_bully_messages(
+                native_function, decompile, self.rdata, self.manifest)
+            decompile, self.bully_teddy_offer_evidence = recover_bully_teddy_offer(
+                native_function, decompile, self.rdata, self.manifest)
+            decompile, self.bully_presented_item_evidence = recover_bully_presented_item(
+                native_function, decompile, self.rdata, self.manifest)
+            decompile, self.bully_hit_result_evidence = recover_bully_hit_result(
+                native_function, decompile, self.rdata, self.manifest)
+            decompile, self.affair_woman_position_evidence = recover_affair_woman_position(
+                native_function, decompile, self.rdata, self.manifest)
             decompile, self.affair_wife_route_evidence = recover_affair_wife_route(
                 native_function, decompile, self.rdata, self.manifest)
             decompile, self.affair_wife_distance_evidence = recover_affair_wife_distance(
@@ -1328,7 +1445,8 @@ class Lifter:
                 native_function, decompile, self.rdata)
             decompile, self.affair_wife_animation_operands_evidence = recover_affair_wife_animation_operands(
                 native_function, decompile, self.rdata)
-            self.affair_wife_position_evidence = map_affair_wife_position(native_function, self.rdata)
+            decompile, self.affair_wife_position_evidence = recover_affair_wife_position(
+                native_function, decompile, self.rdata)
             decompile, self.speech_vector_init_evidence = recover_init_vector_construction(
                 native_function, decompile, self.rdata, self.static_vectors)
             decompile, self.init_scalar_evidence = recover_init_scalars(
@@ -1338,11 +1456,34 @@ class Lifter:
             self.barrel_position_evidence = map_barrel_position(native_function, self.rdata)
             if self.entity:
                 decompile = recover_first_barrel_actors(decompile, self.barrel_position_evidence)
+                decompile = recover_first_barrel_vector(decompile, self.barrel_position_evidence, self.rdata)
+                decompile = recover_barrel_teleport_choice(
+                    decompile, self.barrel_position_evidence, self.rdata, self.manifest)
+                decompile = recover_barrel_return_position(decompile, self.barrel_position_evidence, self.rdata)
+                decompile, pause_evidence = recover_barrel_pause(native_function, decompile, self.rdata, self.manifest)
+                if self.barrel_position_evidence:
+                    self.barrel_position_evidence[0]['pauseEvidence'] = pause_evidence
+                decompile, hit_evidence = recover_barrel_hits(native_function, decompile, self.rdata, self.manifest)
+                if self.barrel_position_evidence:
+                    self.barrel_position_evidence[0]['hitEvidence'] = hit_evidence
+                decompile, dispatch_evidence = recover_barrel_dispatch(native_function, decompile, self.rdata)
+                if self.barrel_position_evidence:
+                    self.barrel_position_evidence[0]['dispatchEvidence'] = dispatch_evidence
+                decompile, health_evidence = recover_barrel_health(native_function, decompile, self.rdata, self.manifest)
+                if self.barrel_position_evidence:
+                    self.barrel_position_evidence[0]['healthEvidence'] = health_evidence
+                decompile, health_boolean_evidence = recover_barrel_health_boolean(native_function, decompile, self.rdata)
+                if self.barrel_position_evidence:
+                    self.barrel_position_evidence[0]['healthBooleanEvidence'] = health_boolean_evidence
+                decompile, departure_evidence = recover_barrel_departure(native_function, decompile, self.rdata, self.manifest)
+                if self.barrel_position_evidence:
+                    self.barrel_position_evidence[0]['departureEvidence'] = departure_evidence
                 decompile, self.guard_cleanup_evidence = recover_guard_cleanup(native_function, decompile, self.rdata)
                 if self.guard_cleanup_evidence and self.guard_cleanup_evidence[0]['status'] == 'recovered':
                     self.todo.append(self.guard_cleanup_evidence[0]['ownershipLimitation'])
             self.post_attack_resource_evidence = map_post_attack_resources(native_function, self.rdata)
             self.book_trader_resource_evidence = map_book_trader_resources(native_function, self.rdata)
+            self.book_trader_lifetime_evidence = map_book_trader_lifetime(native_function, self.rdata)
             if not self.entity:
                 decompile, self.post_attack_cleanup_evidence = recover_post_attack_cleanup(native_function, decompile, self.rdata)
                 if self.post_attack_cleanup_evidence and self.post_attack_cleanup_evidence[0]['status'] == 'recovered':
@@ -1369,6 +1510,8 @@ class Lifter:
                 decompile, self.barrel_update_evidence = recover_barrel_update(
                     native_function, decompile, self.rdata, self.manifest)
                 decompile, self.barrel_creation_evidence = recover_barrel_creation(
+                    native_function, decompile, self.rdata, self.manifest)
+                decompile, self.barrel_spawn_health_evidence = recover_barrel_spawn_health(
                     native_function, decompile, self.rdata, self.manifest)
             decompile, self.presented_item_evidence = recover_presented_item_comparison(
                 native_function, decompile, self.rdata)
@@ -1446,6 +1589,10 @@ class Lifter:
                 native_function, decompile, self.rdata)
             decompile, self.book_trader_acquisition_evidence = recover_book_trader_acquisition(
                 native_function, decompile, self.book_trader_resource_evidence)
+            decompile, self.book_trader_home_evidence = recover_book_trader_home(
+                native_function, decompile, self.rdata, self.manifest)
+            decompile, self.book_trader_health_values_evidence = recover_book_trader_health_values(
+                native_function, decompile, self.rdata, self.manifest)
             decompile, self.operand_evidence = recover_reviewed_call_operands(
                 native_function, decompile, self.rdata.bytes_at)
             decompile, self.thing_predicate_evidence = recover_reviewed_thing_predicates(
@@ -1503,6 +1650,14 @@ class Lifter:
         statements = strip_declarations(text)
         statements, sequence_assignments = expand_sequence_conditions(
             statements, self.source_names, preserve=RE_IF_RECHECK_TERMINATING.match)
+        if self.flat_control:
+            statements, self.flat_control_evidence = flatten_control(statements)
+            self.todo.extend('unresolved flat control condition: ' + item['expression'][:120]
+                             for item in self.flat_control_evidence['unresolvedConditions'])
+        else:
+            statements, self.structured_switch_evidence = lower_nonfallthrough_switches(statements)
+            self.todo.extend('switch lowering rejected: ' + item['reason']
+                             for item in self.structured_switch_evidence if item['status'] == 'rejected')
         self.sequence_temporaries = sequence_assignments - self.source_names
         self.mutable_scalars.update(sequence_assignments)
         if self.native_gotos:
@@ -1526,6 +1681,8 @@ class Lifter:
             self.statement(role, line)
         self.collapse_acquire_loops()
         self.legalize_nonterminal_returns()
+        self.out, self.dispatch_scaffolding_evidence = prune_dispatch_loads(self.out, entity=self.entity)
+        self.hoisted_scalars.difference_update(e['local'] for e in self.dispatch_scaffolding_evidence)
         if self.used_alive:
             self.out.insert(0, "    local alive = true")
         if self.hoisted_scalars:
@@ -1636,6 +1793,9 @@ class Lifter:
         m = RE_IF_GOTO.match(line)
         if m:
             cond = self.expr(m.group(1))
+            if self.flat_control and (self.kind_of(cond) == 'number' or
+                    re.fullmatch(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)', cond)):
+                cond = f'({cond} ~= 0)'
             if stripped in self.lua_jumps:
                 self.emit(f'if {cond} then goto {m[2]} end')
             elif m.group(2) in self.cleanup_labels:
@@ -1895,9 +2055,15 @@ class Lifter:
             self.emit(f'{self.state_receiver}:SetState{kind}("{name}_" .. ({self.expr(array_store[2])}), {value})')
             self.calls.append('SetState' + kind)
             return
-        parent_store = re.fullmatch(RE_PARENT_LOAD.pattern + r'\s*=\s*([^;]+);', stripped)
-        if self.entity and parent_store and parent_store[2].lower() in self.parent_state:
-            name, kind = self.parent_state[parent_store[2].lower()]
+        parent_store_source = stripped
+        for alias in self.parent_aliases:
+            parent_store_source = re.sub(r'^\*\((\w+) \*\)\(' + re.escape(alias) + r' \+ (0x[0-9a-f]+)\)',
+                lambda m: f'*({m[1]} *)(*(int *)(this + 0x14) + {m[2]})', parent_store_source)
+        parent_store = re.fullmatch(RE_PARENT_LOAD.pattern + r'\s*=\s*([^;]+);', parent_store_source)
+        parent_offset = (hex(int(parent_store[2], 16 if parent_store[2].lower().startswith('0x') else 10))
+                         if parent_store else None)
+        if self.entity and parent_store and parent_offset in self.parent_state:
+            name, kind = self.parent_state[parent_offset]
             value = parent_store[3].strip()
             if kind == "Bool" and value in ("0", "0x0", "1", "0x1", "'\\0'", "'\\x01'"):
                 value = "false" if value in ("0", "0x0", "'\\0'") else "true"
@@ -1963,7 +2129,7 @@ class Lifter:
             parent_helper = self.parent_helpers.get(name)
             if parent_helper:
                 operands = self.arguments(argtext)
-                parent = re.fullmatch(r'\*\(\w+\s*\*\*\)\((?:this|param_1)\s*\+\s*0x14\)',
+                parent = re.fullmatch(r'\*\(\w+\s*\*{1,2}\)\((?:this|param_1)\s*\+\s*0x14\)',
                                       operands[0] if operands else '')
                 if not self.entity or not (parent or (operands and operands[0] in self.parent_aliases)) or len(operands) != parent_helper['arity'] + 1:
                     self.todo.append(f'{name}: unproven parent helper receiver or arity')
@@ -1983,7 +2149,9 @@ class Lifter:
                 operands = self.arguments(argtext)
                 # Speak's second native operand is its target, not another implicit receiver. The
                 # reviewed vtable typedef and LuaManager overload both retain it.
-                drop = 1 if mangled.group(1) == "Speak" else 2
+                # MoveToPosition likewise has only the resource receiver before
+                # its position/radius/type/two flags (0x7E72F0, RET 0x14).
+                drop = 1 if mangled.group(1) in ("Speak", "MoveToPosition") else 2
                 operands = operands[drop:]
                 if mangled.group(1) == "Speak":
                     # The retail typedef has target, key, method and three bools. Ghidra sometimes
@@ -2179,8 +2347,40 @@ def lift_cluster(script: str) -> dict:
     # native-thread export supplies the actual bodies. Feed those through the same annotator and
     # lifter instead of leaving the largest quest scripts as empty thread declarations.
     thread_path = ROOT / "refs" / "script_recovery" / "native_threads" / f"{script}.json"
-    if report["threads"] and thread_path.is_file():
+    thread_export = None
+    if thread_path.is_file():
         thread_export = json.loads(thread_path.read_text(encoding="utf-8-sig"))
+    elif script.startswith("Q_GuildTraining"):
+        # Guild's read-only translation-unit export contains the worker bodies, but
+        # its native_threads sidecar is intentionally absent until the thread names
+        # are reviewed. Use only bodies explicitly referenced by CreateThread stores
+        # in the Guild ownership inventory; never broaden this to every TU function.
+        guild_tu = ROOT / "refs" / "script_recovery" / "guild_training" / "translation_unit.json"
+        guild_inventory = ROOT / "refs" / "script_recovery" / "guild_training" / "inventory.json"
+        if guild_tu.is_file() and guild_inventory.is_file():
+            tu = json.loads(guild_tu.read_text(encoding="utf-8-sig"))
+            inv = json.loads(guild_inventory.read_text(encoding="utf-8-sig"))
+            cluster_path = ROOT / "refs" / "script_recovery" / "native_clusters" / f"{script}.json"
+            cluster_data = json.loads(cluster_path.read_text(encoding="utf-8-sig")) if cluster_path.is_file() else {}
+            main_addresses = {str(f.get("address", "")).upper() for f in cluster_data.get("lifecycle", [])
+                              if f.get("role") in ("Main", "Init")}
+            own_addresses = [int(str(f.get("address", "0")), 16) for f in cluster_data.get("lifecycle", [])
+                             if f.get("address")]
+            range_lo, range_hi = (min(own_addresses), max(own_addresses)) if own_addresses else (0, 0)
+            wanted = {(t.get("name"), str(t.get("body", "")).upper())
+                      for t in inv.get("threads", [])
+                      if (t.get("registrationFunction", "").upper() in main_addresses or
+                          range_lo <= int(str(t.get("registrationFunction", "0")), 16) <= range_hi)}
+            exported = []
+            for fn in tu.get("functions", []):
+                address = str(fn.get("address", "")).upper()
+                terminal = str(fn.get("currentName", "")).split("::")[-1]
+                matches = [(name, body) for name, body in wanted
+                           if body == address or (name and terminal == name)]
+                for name, body in matches:
+                    exported.append({**fn, "selectedBy": [f"thread:{name}"], "address": address})
+            thread_export = {"functions": exported}
+    if report["threads"] and thread_export is not None:
         exported = thread_export.get("functions", [])
         helpers = [f for f in exported if f.get("decompile") and
                    any(str(s).startswith("callee:") for s in f.get("selectedBy", []))]

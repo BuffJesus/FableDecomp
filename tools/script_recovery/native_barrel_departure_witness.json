@@ -1,0 +1,153 @@
+{
+  "address": "0x00DB5330",
+  "annotatedSha256": "bff8a1ce5efcc577700128aa1567efe56c1cb2a60eda056fd004b7e48ef8d698",
+  "regions": [
+    {
+      "address": 14377930,
+      "size": 272,
+      "sha256": "bede73b7bd9b0494432d62dccaf5b26927190eb8cb21b0ccc120209a0b17b1d7"
+    }
+  ],
+  "strings": {
+    "0x12d9000": "M_WHouse_GuardPoint",
+    "0x12d90e8": "M_BarrelManHiddenPos"
+  },
+  "contracts": {
+    "FadeScreenOut": {
+      "name": "FadeScreenOut",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "fadeTime",
+          "type": "float",
+          "optional": false
+        },
+        {
+          "name": "holdTime",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes fade screen out."
+    },
+    "FadeScreenIn": {
+      "name": "FadeScreenIn",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes fade screen in."
+    },
+    "Pause": {
+      "name": "Pause",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "duration",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Pauses execution while yielding to the game loop."
+    },
+    "EntityTeleportToThing": {
+      "name": "EntityTeleportToThing",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThingToMove",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "pTargetThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "b3",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity teleport to thing."
+    },
+    "GetThingWithScriptName": {
+      "name": "GetThingWithScriptName",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [
+        {
+          "name": "scriptName",
+          "type": "const std::string&",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets thing with script name."
+    },
+    "GetHero": {
+      "name": "GetHero",
+      "scope": "Quest",
+      "returnType": "std::shared_ptr<CScriptThing>",
+      "parameters": [],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Gets hero."
+    }
+  },
+  "edits": [
+    {
+      "old": "GSI->FadeScreenOut(0x3f800000,0x3f800000,0xff000000);",
+      "new": "GSI->FadeScreenOut(1.0,1.0);",
+      "count": 1
+    },
+    {
+      "old": "GSI->Pause(0x40000000);",
+      "new": "GSI->Pause(2.0);",
+      "count": 1
+    },
+    {
+      "old": "iVar11 = *piVar8;",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "uVar6 = GSI->GetThingWithScriptName(auStack_a4,aCStack_1b8,0);",
+      "new": "local_native_guard_point = GSI->GetThingWithScriptName(&local_native_guard_point,\"M_WHouse_GuardPoint\");",
+      "count": 1
+    },
+    {
+      "old": "ppVar12 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)\r\n                  GSI->GetHero(uVar6);",
+      "new": "native_arg_barrel_hero = GSI->GetHero();",
+      "count": 1
+    },
+    {
+      "old": "GSI->EntityTeleportToThing();",
+      "new": "GSI->EntityTeleportToThing(native_arg_barrel_hero,local_native_guard_point,false);",
+      "count": 1
+    },
+    {
+      "old": "uVar6 = GSI->GetThingWithScriptName(aCStack_a0,&uStack_1c4,0);",
+      "new": "local_native_hidden_point = GSI->GetThingWithScriptName(&local_native_hidden_point,\"M_BarrelManHiddenPos\");",
+      "count": 1
+    },
+    {
+      "old": "GSI->EntityTeleportToThing(pCVar1,uVar6);",
+      "new": "GSI->EntityTeleportToThing(me,local_native_hidden_point,false);",
+      "count": 1
+    }
+  ],
+  "review": "DB63CA constructs opaque black RGBA; DB63E1/63E6 push float1 for hold/fade. Runtime FadeScreenOut hardcodes same black. DB63F6 pushes float2 Pause. DB6416 pushes teleport false before two-argument lookupDB6429; its result is pushed then GetHeroDB6435 supplies moving actor at DB643F. DB646F similarly stages false before lookupDB647E; DB6489 moves selfEDI. DB64BC fade-in takes no arguments. Remove only dead interface vtable load iVar11=*piVar8; earlier timer/actor uses remain."
+}

@@ -1,0 +1,24 @@
+{
+  "name": "SCRIPT_NAME_HERO",
+  "literal": 19255752,
+  "ability": 14,
+  "blocks": [
+    {
+      "address": 14363669,
+      "size": 206,
+      "nativeSha256": "17864288553cf1e1fac9d5d99a99949f88c2319f00b4d9e14aa0745b7b72d7e1",
+      "oldLua": "        piVar20 = (uVar21 | 8)\n        cVar5 = me:MsgIsHitByHero()\n        if not cVar5 then\n            piVar20 = (uVar21 | 0x18)\n            cVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()\n            if cVar5 then\n                piVar20 = (uVar21 | 0x38)\n                cVar5 = me:MsgIsHitByHeroSpecialAbility(14)\n                native_arg_wife_hit = not cVar5\n            else\n                native_arg_wife_hit = false\n            end\n        else\n            native_arg_wife_hit = true\n        end\n        if (piVar20 & 0x20) ~= 0 then\n            piVar20 = (piVar20 & 0xffffffdf)\n        end\n        if (piVar20 & 0x10) ~= 0 then\n            piVar20 = (piVar20 & 0xffffffef)\n        end\n        if (piVar20 & 8) ~= 0 then\n            -- TODO(native): piStack_98 = (int *)((uint)piVar20 & 0xfffffff7);\n        end\n",
+      "oldLuaSha256": "85806637fffc5b1e213db7fd7e29a8ac6389401446e7097f7fddb598996350ee",
+      "result": "native_arg_wife_hit"
+    },
+    {
+      "address": 14366430,
+      "size": 206,
+      "nativeSha256": "ea477f867e968eda3e5cf5ef391b5a33b8bcd4dab5de119dee188a5cf29b16f1",
+      "oldLua": "                    uVar14 = uVar21 | 1\n                    cVar5 = me:MsgIsHitByHero()\n                    if not cVar5 then\n                        uVar14 = uVar21 | 3\n                        cVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()\n                        if cVar5 then\n                            uVar14 = uVar21 | 7\n                            cVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)\n                            bVar4 = not cVar5\n                        else\n                            bVar4 = false\n                        end\n                    else\n                        bVar4 = true\n                    end\n                    if (uVar14 & 4) ~= 0 then\n                        uVar14 = uVar14 & 0xfffffffb\n                    end\n                    uVar21 = uVar14\n                    if (uVar14 & 2) ~= 0 then\n                        uVar14 = uVar14 & 0xfffffffd\n                        uVar21 = uVar14\n                    end\n                    if (uVar14 & 1) ~= 0 then\n                        uVar21 = uVar14 & 0xfffffffe\n                    end\n",
+      "oldLuaSha256": "118827ae834ab4efb438a609601eef768d76841fbb9f85c0c80ceba595e7cb79",
+      "result": "bVar4"
+    }
+  ],
+  "review": "Two short-circuit hit scopes. Conditional hero CString locals constructed per query; result saved at ESP+23, all constructed strings destroyed in reverse order, then result loaded/tested. EBX masks track construction only."
+}

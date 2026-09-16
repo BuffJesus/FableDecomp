@@ -1,0 +1,42 @@
+{
+  "regions": [
+    {
+      "address": 14366242,
+      "size": 129,
+      "sha256": "769f1d8b2731d9df57fb44bfc07e67cfdb9a57fe361c8645ea109adcb82d4512"
+    },
+    {
+      "address": 8287184,
+      "size": 15,
+      "sha256": "b15918b5d8b85acb00708ee1f721e3297fac818c09fedf1a8ff14a30090a50bf"
+    }
+  ],
+  "literals": {
+    "0x12d8d68": "ST_ARGUING_POINT_AWAY",
+    "0x12d8d54": "ST_ARGUING_POINT_AT"
+  },
+  "nativeCalls": [
+    "DB362D CString",
+    "DB3636 raw byte",
+    "DB364F animation",
+    "DB3672 CString",
+    "DB367B raw byte",
+    "DB3695 animation",
+    "DB369E shared destructor"
+  ],
+  "flags": [
+    false,
+    false,
+    false,
+    true,
+    "raw byte at 1375748",
+    false,
+    false
+  ],
+  "method": "PlayWifeArgumentAnimation",
+  "limits": [
+    "Raw byte forwarded without inference about dynamic expert noncanonical values.",
+    "Native helper empty expert returns only after caller constructs key and loads byte.",
+    "Engine exceptions during CString construction and throwing destructors remain outside proved cleanup."
+  ]
+}

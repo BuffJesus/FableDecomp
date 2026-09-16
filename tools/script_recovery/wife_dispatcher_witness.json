@@ -1,0 +1,45 @@
+{
+  "address": 14363408,
+  "size": 4890,
+  "sha256": "4e8569324724b2f5bec18d497526081820ecc349925f16df6113d270a8eb2f46",
+  "phaseBoundaries": {
+    "interaction": [
+      "DB2C15",
+      "DB32AA",
+      "DB3E16"
+    ],
+    "idle": [
+      "DB32AA",
+      "DB3394"
+    ],
+    "route": [
+      "DB3454",
+      "DB34A7"
+    ],
+    "runningLine": [
+      "DB34C7",
+      "DB357B"
+    ],
+    "argument": [
+      "DB3600",
+      "DB3CAB",
+      "DB3D90"
+    ]
+  },
+  "realInstructions": "entry, condition local cleanup, acquisition loops, GoingForHusband branch, retained lookup, initial route-distance branch, approach frame/cancellation/distance backedge, post-arrival queries, argument distance/query/loop tail, normal resource cleanup",
+  "limits": "Phase internals and engine APIs are doubled. Control output Data may be populated; inline cleanup Info-zero branch only in this dispatcher fixture.",
+  "provenCorrection": {
+    "trigger": "First husband distance is outside three units",
+    "nativePath": ["DB34A9", "DB34B0", "DB34B5 frame", "DB34BA cancellation", "DB34C7 running-line policy"],
+    "before": "First running-line/distance check occurred before any approach frame or query.",
+    "after": "Each approach iteration yields and checks cancellation before running-line/distance policy.",
+    "implementation": "wife_complete_candidate.correct_approach_entry; same public generator interface"
+  },
+  "focusedGate": {
+    "tests": 6,
+    "seconds": 24.376,
+    "status": "OK",
+    "outerNativeCases": 2092,
+    "candidateSha256": "120309d4565fc026b4bb9a0720065028f69c9289066bc0f7619a0ca3dfca4379"
+  }
+}

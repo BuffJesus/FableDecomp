@@ -1,0 +1,40 @@
+{
+  "address": 14354912,
+  "size": 5058,
+  "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc",
+  "boundaries": {
+    "hitPredicate": [
+      "DB0B30",
+      "DB0C1A"
+    ],
+    "talkPredicate": [
+      "DB0DC7",
+      "DB0DF8"
+    ],
+    "hitBody": [
+      "DB0C31",
+      "DB1C71",
+      "DB1D7C"
+    ],
+    "talkBody": [
+      "DB0E0F",
+      "DB1C71",
+      "DB1D7C"
+    ],
+    "idleBody": [
+      "DB1622",
+      "DB1C71",
+      "DB1D7C"
+    ]
+  },
+  "scope": "Original entry/condition copy lifetime/initial control retries/retained lookups/predicate branch precedence/pre-phase cancellation/task branch/frame backedge/actor destruction joins. Inner phase bodies and engine APIs doubled; resource destructor is a checked call boundary.",
+  "entryOwnership": "Candidate comparison applies the builder-owned shared RegisterBoundConsciousCondition recovery exactly once; generator does not add a second registration.",
+  "focusedGate": {
+    "originalByteCases": 2016,
+    "tests": 7,
+    "seconds": 24.860,
+    "status": "OK",
+    "finding": "No dispatcher ordering/control/normal-cleanup discrepancy found within the declared phase boundaries.",
+    "candidateSha256": "5146fff69b85ce92106b0648743b6bc117f8ecd25ffc60324bbae52bba20d951"
+  }
+}

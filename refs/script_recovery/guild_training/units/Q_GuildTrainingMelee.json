@@ -1,0 +1,805 @@
+{
+  "schema": "quest-unit-evidence/1",
+  "script": "Q_GuildTrainingMelee",
+  "package": "GuildTrainingMelee",
+  "nativeClass": "NScript::CQ_GuildTrainingMeleeScript",
+  "allocator": "0x00D5A9F0",
+  "vtable": "0x012D0274",
+  "master": {
+    "fields": {
+      "0x8": [
+        "HenchmanCommentaryState",
+        "Int"
+      ],
+      "0xc": [
+        "HenchmanOverrideState",
+        "Int"
+      ],
+      "0x10": [
+        "HenchmanSacrificedBodge",
+        "Bool"
+      ],
+      "0x11": [
+        "HauntedBarrowFieldsCompleted",
+        "Bool"
+      ],
+      "0x14": [
+        "RandomEntityVillagerMax",
+        "Int"
+      ],
+      "0x18": [
+        "RandomEntityGuardMax",
+        "Int"
+      ],
+      "0x1c": [
+        "RandomEntityBanditMax",
+        "Int"
+      ],
+      "0x20": [
+        "RandomEntityVillagerCount",
+        "Int"
+      ],
+      "0x24": [
+        "RandomEntityGuardCount",
+        "Int"
+      ],
+      "0x28": [
+        "RandomEntityBanditCount",
+        "Int"
+      ],
+      "0x2c": [
+        "RandomEntityVillagerPercentage",
+        "Float"
+      ],
+      "0x30": [
+        "RandomEntityGuardPercentage",
+        "Float"
+      ],
+      "0x34": [
+        "RandomEntityBanditPercentage",
+        "Float"
+      ],
+      "0x38": [
+        "RandomEntitySheriffAlive",
+        "Bool"
+      ],
+      "0x39": [
+        "RandomEntityLieutenantAlive",
+        "Bool"
+      ],
+      "0x3a": [
+        "BanditCampTwinbladeKilled",
+        "Bool"
+      ],
+      "0x44": [
+        "ArcheryHighScore",
+        "Int"
+      ],
+      "0x48": [
+        "FriendOfForeman",
+        "Bool"
+      ],
+      "0x49": [
+        "BridgeOpened",
+        "Bool"
+      ],
+      "0x4a": [
+        "GrannyMemoryReturned",
+        "Bool"
+      ],
+      "0x4b": [
+        "IsLunaHuman",
+        "Bool"
+      ],
+      "0x4c": [
+        "CondemnedManDead",
+        "Bool"
+      ],
+      "0x4d": [
+        "CondemnedManForgiven",
+        "Bool"
+      ],
+      "0x4e": [
+        "CondemnedManMeetsBodyGuard",
+        "Bool"
+      ],
+      "0x4f": [
+        "CondemnedManMeetsBodyGuardCutSceneStart",
+        "Bool"
+      ],
+      "0x50": [
+        "CondemnedManMeetsBodyGuardCutSceneFinished",
+        "Bool"
+      ],
+      "0x58": [
+        "OrchardFarmRaidLastCompleted",
+        "Int"
+      ],
+      "0x5c": [
+        "OrchardFarmTraderEscortCounter",
+        "Int"
+      ],
+      "0x60": [
+        "SeenAbbeyMotherAtGuild",
+        "Bool"
+      ],
+      "0x61": [
+        "DefeatedThunder",
+        "Bool"
+      ],
+      "0x62": [
+        "LostToThunder",
+        "Bool"
+      ],
+      "0x63": [
+        "KilledThunder",
+        "Bool"
+      ],
+      "0x64": [
+        "CollectedSoulFromArena",
+        "Bool"
+      ],
+      "0x65": [
+        "KilledBriar",
+        "Bool"
+      ],
+      "0x66": [
+        "CollectedSoulFromMother",
+        "Bool"
+      ],
+      "0x67": [
+        "KilledGM",
+        "Bool"
+      ],
+      "0x68": [
+        "CollectedSoulFromNostro",
+        "Bool"
+      ],
+      "0x6c": [
+        "DeliveredSoul",
+        "Int"
+      ],
+      "0x74": [
+        "WhisperKilledByHero",
+        "Bool"
+      ],
+      "0x75": [
+        "ArenaFinished",
+        "Bool"
+      ],
+      "0x76": [
+        "GatesRequireClosing",
+        "Bool"
+      ],
+      "0x77": [
+        "GatesRequireOpening",
+        "Bool"
+      ],
+      "0x78": [
+        "HeroDrunkness",
+        "Int"
+      ],
+      "0x7c": [
+        "TrophyDealerHeroSpokenToDemonDoors",
+        "Bool"
+      ],
+      "0x80": [
+        "VillagerAngryRating",
+        "Float"
+      ],
+      "0x84": [
+        "MotherDodgingKraken",
+        "Bool"
+      ],
+      "0x88": [
+        "JackBossBattleResult",
+        "Int"
+      ],
+      "0x8c": [
+        "JackBossBattleHeroGoodAtEnd",
+        "Bool"
+      ],
+      "0x8d": [
+        "WifeLeavingYou",
+        "Bool"
+      ],
+      "0x8e": [
+        "WifeLeftYou",
+        "Bool"
+      ],
+      "0x90": [
+        "CurrentScene",
+        "Int"
+      ],
+      "0x94": [
+        "StartNextScene",
+        "Bool"
+      ],
+      "0x98": [
+        "CurrentChapter",
+        "Int"
+      ],
+      "0x9c": [
+        "ScorpionsDestroyed",
+        "Bool"
+      ],
+      "0x9d": [
+        "ScorpionsDestroyedCutscenePlayed",
+        "Bool"
+      ],
+      "0x9e": [
+        "SkillTrainingStarted",
+        "Bool"
+      ],
+      "0x9f": [
+        "WillTrainingStarted",
+        "Bool"
+      ],
+      "0xa0": [
+        "MovingDummiesNeeded",
+        "Bool"
+      ],
+      "0xa4": [
+        "SkillScore",
+        "Int"
+      ],
+      "0xa8": [
+        "HighestSkillScore",
+        "Int"
+      ],
+      "0xac": [
+        "WillScore",
+        "Int"
+      ],
+      "0xb0": [
+        "MeleeApprenticeNeededForCutscene",
+        "Bool"
+      ],
+      "0xb4": [
+        "GlobalMeleeGrade",
+        "Int"
+      ],
+      "0xb8": [
+        "GlobalSkillGrade",
+        "Int"
+      ],
+      "0xbc": [
+        "GlobalWillGrade",
+        "Int"
+      ],
+      "0xc0": [
+        "GuildWarningOccuring",
+        "Bool"
+      ],
+      "0xc1": [
+        "SkillTestOccuring",
+        "Bool"
+      ],
+      "0xc2": [
+        "WillTestOccuring",
+        "Bool"
+      ],
+      "0xc3": [
+        "SkillRepeating",
+        "Bool"
+      ],
+      "0xc4": [
+        "SkillRepeatKnown",
+        "Bool"
+      ],
+      "0xc5": [
+        "SkillDummyReset",
+        "Bool"
+      ],
+      "0xc6": [
+        "HeroTakingGuildTest",
+        "Bool"
+      ],
+      "0xc7": [
+        "SwordInTheStoneComplete",
+        "Bool"
+      ],
+      "0xc8": [
+        "AmbushTradersAllGuardsDead",
+        "Bool"
+      ],
+      "0xc9": [
+        "AmbushTradersAllTradersDead",
+        "Bool"
+      ],
+      "0xcc": [
+        "AmbushTradersKillCount",
+        "Int"
+      ],
+      "0xd0": [
+        "AmbushTradersBanditHireCount",
+        "Int"
+      ],
+      "0xd4": [
+        "AmbushTradersSpyDead",
+        "Bool"
+      ],
+      "0xd5": [
+        "StruckDealWithLadyGrey",
+        "Bool"
+      ],
+      "0xd6": [
+        "HeroExposedLadyGrey",
+        "Bool"
+      ],
+      "0xd7": [
+        "HeroMarriedLadyGrey",
+        "Bool"
+      ],
+      "0xd8": [
+        "BountyHuntWithinTimeLimit",
+        "Bool"
+      ],
+      "0xd9": [
+        "BountyHuntDecapitation",
+        "Bool"
+      ],
+      "0xda": [
+        "BountyHuntTimeLimitExceeded",
+        "Bool"
+      ],
+      "0xe0": [
+        "BreakSiegeFinished",
+        "Bool"
+      ],
+      "0xe1": [
+        "WhiteBalverineFinished",
+        "Bool"
+      ],
+      "0xe2": [
+        "MadBomberFinished",
+        "Bool"
+      ],
+      "0xe3": [
+        "BodyGuardsMustStandAndWait",
+        "Bool"
+      ],
+      "0xe4": [
+        "BodyGuardsInLimbo",
+        "Bool"
+      ],
+      "0xe5": [
+        "WifeHeroFlirting",
+        "Bool"
+      ],
+      "0xe8": [
+        "PrisonRaceNumber",
+        "Int"
+      ],
+      "0xec": [
+        "PrisonRaceWonByHero",
+        "Bool"
+      ],
+      "0xed": [
+        "WasPrisonRaceEverWonByHero",
+        "Bool"
+      ],
+      "0xee": [
+        "PrisonKeyStolenByHero",
+        "Bool"
+      ],
+      "0xef": [
+        "BooksPreviouslyOpened_0",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
+        "Bool"
+      ],
+      "0xf7": [
+        "BooksPreviouslyOpened_2",
+        "Bool"
+      ],
+      "0xf2": [
+        "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf4": [
+        "HeroDollsScriptUsingTeacher",
+        "Bool"
+      ],
+      "0xf8": [
+        "MaxChickenKickingScore",
+        "Int"
+      ],
+      "0x108": [
+        "TimeAdvancePointTriggered",
+        "Bool"
+      ],
+      "0x109": [
+        "OFBRCratesStolen",
+        "Bool"
+      ],
+      "0x10a": [
+        "OFBR_NoCratesWereStolen",
+        "Bool"
+      ],
+      "0x10b": [
+        "DarkwoodAllTradersAlive",
+        "Bool"
+      ],
+      "0x10c": [
+        "MadBomberNoBombsExplode",
+        "Bool"
+      ],
+      "0x10d": [
+        "HobbeCavePerpertratorKilled",
+        "Bool"
+      ],
+      "0x110": [
+        "HobbeCaveInnocentSacrificed",
+        "Int"
+      ],
+      "0x114": [
+        "HobbeCaveBoyUnharmed",
+        "Bool"
+      ],
+      "0x115": [
+        "BanditCampKillNoBandits",
+        "Bool"
+      ],
+      "0x116": [
+        "BreakSiegeNoAssistance",
+        "Bool"
+      ],
+      "0x117": [
+        "BreakSiegeKilledLeader",
+        "Bool"
+      ],
+      "0x118": [
+        "OrchardFarmBanditKilled",
+        "Bool"
+      ],
+      "0x119": [
+        "OrchardFarmGuardKilled",
+        "Bool"
+      ],
+      "0x11a": [
+        "BanditCampKillManyBandits",
+        "Bool"
+      ],
+      "0x11b": [
+        "HobbeContestKillMoreHobbes",
+        "Bool"
+      ],
+      "0x11c": [
+        "GraveyardKillAllInnocents",
+        "Bool"
+      ],
+      "0x120": [
+        "DarkwoodPickpocketedAllTraders",
+        "Int"
+      ],
+      "0x124": [
+        "HangingTreeBanditKilled",
+        "Bool"
+      ],
+      "0x125": [
+        "HangingTreeGuardKilled",
+        "Bool"
+      ],
+      "0x126": [
+        "TCGKillNoBandits",
+        "Bool"
+      ],
+      "0x127": [
+        "TCGMadeTimeLimit",
+        "Bool"
+      ],
+      "0x128": [
+        "TCEKeepBanditFollowerAlive",
+        "Bool"
+      ],
+      "0x129": [
+        "TCEMadeTimeLimit",
+        "Bool"
+      ],
+      "0x12a": [
+        "RansomVictimVictimNoDamage",
+        "Bool"
+      ],
+      "0x12b": [
+        "RansomVictimKidnappersKilled",
+        "Bool"
+      ],
+      "0x12c": [
+        "RansomVictimSaveVictim",
+        "Bool"
+      ],
+      "0x12d": [
+        "RansomVictimHaveVictimKilled",
+        "Bool"
+      ],
+      "0x12e": [
+        "MinionCampBriarNoDamage",
+        "Bool"
+      ],
+      "0x12f": [
+        "FireHeartFreeAllPrisoners",
+        "Bool"
+      ],
+      "0x130": [
+        "FireHeartKillAllPrisoners",
+        "Bool"
+      ],
+      "0x131": [
+        "TCETimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x132": [
+        "TCGTimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x133": [
+        "HeroWoreMask",
+        "Bool"
+      ],
+      "0x140": [
+        "SingingStonesInSync",
+        "Bool"
+      ]
+    },
+    "unmapped": [
+      {
+        "offset": "0x4",
+        "pdbOffset": "0x4",
+        "type": "EGameflowPosition",
+        "name": "PostSavePosition"
+      },
+      {
+        "offset": "0x3c",
+        "pdbOffset": "0x3c",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateCurrent"
+      },
+      {
+        "offset": "0x40",
+        "pdbOffset": "0x40",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateRequired"
+      },
+      {
+        "offset": "0x70",
+        "pdbOffset": "0x70",
+        "type": "EPlaceInHeroSouls",
+        "name": "CurrentHeroSoulsPosition"
+      },
+      {
+        "offset": "0xdc",
+        "pdbOffset": "0xdc",
+        "type": "ulong",
+        "name": "AchievementsWorthyOfSong"
+      },
+      {
+        "offset": "0xfc",
+        "pdbOffset": "0xfc",
+        "type": "ulong",
+        "name": "StoryTellerSpecialStories"
+      },
+      {
+        "offset": "0x100",
+        "pdbOffset": "0x100",
+        "type": "ulong",
+        "name": "StoryTellerToldSpecialStories"
+      },
+      {
+        "offset": "0x104",
+        "pdbOffset": "0x104",
+        "type": "EHeroNames",
+        "name": "GHeroName"
+      },
+      {
+        "offset": "0x134",
+        "pdbOffset": "0x134",
+        "type": "vector<CCharString,std::allocator<CCharString>_>",
+        "name": "BoastRegions"
+      }
+    ],
+    "things": {}
+  },
+  "quest": {
+    "functions": {
+      "destructor": {
+        "address": "0x00d5aa30",
+        "evidence": "cluster lifecycle slot"
+      },
+      "RegisterMain": {
+        "address": "0x00d55dd0",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Main": {
+        "address": "0x00d55e90",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Init": {
+        "address": "0x00d55da0",
+        "evidence": "cluster lifecycle slot"
+      },
+      "OnPersist": {
+        "address": "0x00cbd4e0",
+        "evidence": "cluster lifecycle slot"
+      }
+    },
+    "fields": {
+      "0x48": [
+        "GenericTutorialCounter",
+        "Int"
+      ],
+      "0x4c": [
+        "TutorialState",
+        "Int"
+      ],
+      "0x50": [
+        "TalkedToWhisper",
+        "Bool"
+      ],
+      "0x51": [
+        "WhisperArrived",
+        "Bool"
+      ],
+      "0x52": [
+        "EarlyHitWhisper",
+        "Bool"
+      ],
+      "0x53": [
+        "WhisperStopWalking",
+        "Bool"
+      ],
+      "0x54": [
+        "MeleeRepeating",
+        "Bool"
+      ],
+      "0x55": [
+        "MeleeRepeatKnown",
+        "Bool"
+      ],
+      "0x56": [
+        "MeleeOpponentReset",
+        "Bool"
+      ]
+    },
+    "thingFields": {},
+    "unmappedFields": [],
+    "arrays": [],
+    "retailOffsetDelta": -20,
+    "pdbMembersUnused": [],
+    "nestedPdbMembers": {}
+  },
+  "entities": {
+    "TheRealGuildmaster": {
+      "nativeClass": "NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster",
+      "classEvidence": "name",
+      "vtable": "0x012D030C",
+      "functions": {
+        "destructor": {
+          "address": "0x00d56680"
+        },
+        "Main": {
+          "address": "0x00d58490"
+        },
+        "Init": {
+          "address": "0x00d56670"
+        },
+        "GetParentScript": {
+          "address": "0x00d56660"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "WhisperLate",
+          "Bool"
+        ],
+        "0x1d": [
+          "WhisperEarly",
+          "Bool"
+        ],
+        "0x1e": [
+          "HeroStanding",
+          "Bool"
+        ],
+        "0x1f": [
+          "WhisperStanding",
+          "Bool"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "MeleeOpponent": {
+      "nativeClass": "NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent",
+      "classEvidence": "name",
+      "vtable": "0x012D0328",
+      "functions": {
+        "destructor": {
+          "address": "0x00d56770"
+        },
+        "Main": {
+          "address": "0x00d56790"
+        },
+        "Init": {
+          "address": "0x00d56750"
+        },
+        "GetParentScript": {
+          "address": "0x00d56740"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "BadHit",
+          "Int"
+        ],
+        "0x20": [
+          "RepeatMelee",
+          "Bool"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "MeleeThunder": {
+      "nativeClass": "NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder",
+      "classEvidence": "name",
+      "vtable": "0x012D0564",
+      "functions": {
+        "destructor": {
+          "address": "0x00d58060"
+        },
+        "Main": {
+          "address": "0x00d58080"
+        },
+        "Init": {
+          "address": "0x00d58050"
+        },
+        "GetParentScript": {
+          "address": "0x00d58040"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "BadHit",
+          "Int"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    }
+  }
+}

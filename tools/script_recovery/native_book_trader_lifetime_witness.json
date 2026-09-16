@@ -1,0 +1,2489 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4042,
+  "regions": [
+    {
+      "address": 14368672,
+      "size": 4042,
+      "sha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974"
+    },
+    {
+      "address": 10068864,
+      "size": 21,
+      "sha256": "b69f14e8e1e992d56445e1137e2e7a09afbc815f8098a87016dffc55cf2881b5"
+    },
+    {
+      "address": 10069040,
+      "size": 56,
+      "sha256": "1d75d831d3f6e008489a4847244a3e123b663f8f7de361ca3f15fc938a470796"
+    },
+    {
+      "address": 14369168,
+      "size": 37,
+      "sha256": "173b56c3c8a2fc46ef81a60be21605ac370d639067c7c2b58351d92ab87fcf3e"
+    },
+    {
+      "address": 14369015,
+      "size": 85,
+      "sha256": "c24239c04898b21376d2788747d5d03ec760abb40ce55cf0cfa084d6039332f5"
+    },
+    {
+      "address": 14372475,
+      "size": 64,
+      "sha256": "8d7a1d1cbffe8daa4369f05ec0a8971fba21670f4c84957dfe6bb91ce4e0b744"
+    },
+    {
+      "address": 14372550,
+      "size": 62,
+      "sha256": "d7777bd22aa3002d63aa84bb274881a52add72b913aaae77f52f3abc6b73a1f3"
+    },
+    {
+      "address": 10068864,
+      "size": 21,
+      "sha256": "b69f14e8e1e992d56445e1137e2e7a09afbc815f8098a87016dffc55cf2881b5"
+    },
+    {
+      "address": 13444025,
+      "size": 9,
+      "sha256": "4709c48eae7699b36b7eeb43e313220d557b4fde38b603a9e8df9164e944e298"
+    },
+    {
+      "address": 13444976,
+      "size": 16,
+      "sha256": "c533ae5d358e4c7bd75002630d31c9148a38ffb7159bceae44823bd66cd654a1"
+    },
+    {
+      "address": 8287440,
+      "size": 66,
+      "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+    },
+    {
+      "address": 8287120,
+      "size": 15,
+      "sha256": "6ed98a17747c9559633a28a462363adeb81c9c0fb7884ca840b6b5e1ee2d4376"
+    },
+    {
+      "address": 8287312,
+      "size": 15,
+      "sha256": "8cd82544848c32f27d59262ae38103111471c5bf77aca56a447f046075261552"
+    },
+    {
+      "address": 8287184,
+      "size": 15,
+      "sha256": "b15918b5d8b85acb00708ee1f721e3297fac818c09fedf1a8ff14a30090a50bf"
+    },
+    {
+      "address": 8286960,
+      "size": 15,
+      "sha256": "f422947cd4124238721205bddcbb8357769d3d134c1d022ee02d428a5e7fbf6c"
+    },
+    {
+      "address": 8287232,
+      "size": 13,
+      "sha256": "be3e6dff0237fe7c5f1de55124d4e101e068477077669f1d3874f4b6c60ee59a"
+    },
+    {
+      "address": 8287072,
+      "size": 13,
+      "sha256": "eeada8181bb317c9f464d17483528d8cdccafb08da4fc93208d89e52fcfaee4c"
+    },
+    {
+      "address": 8287376,
+      "size": 57,
+      "sha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": 4892736,
+      "size": 66,
+      "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    },
+    {
+      "address": 8985760,
+      "size": 173,
+      "sha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+    },
+    {
+      "address": 19271716,
+      "size": 4,
+      "sha256": "eba0e74a432136d66d7304ef103c3f3e12272b0e266e5ac575bc966c85556d1a"
+    },
+    {
+      "address": 10068704,
+      "size": 21,
+      "sha256": "fc96753fa75b3cb580a0953f1c47c40f812708cb58a40523f3e3429d5fd01638"
+    }
+  ],
+  "setups": [
+    {
+      "site": 14368764,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14368764,
+        "target": [
+          "constant",
+          10068864
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14368996,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14368996,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            136
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369148,
+      "argumentCount": 5,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369148,
+        "target": [
+          "constant",
+          8286960
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            168
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369157,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369157,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14369195,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369195,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "register",
+          "ecx"
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14369830,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369830,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "stack",
+          240
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            240
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369909,
+      "argumentCount": 6,
+      "knownCalls": {
+        "14369898": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14369909,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14369898,
+            "hero"
+          ],
+          [
+            "constant",
+            19763172
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369918,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369918,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14369954,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369954,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370362,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370362,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            276
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370453,
+      "argumentCount": 6,
+      "knownCalls": {
+        "14370442": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14370453,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14370442,
+            "hero"
+          ],
+          [
+            "constant",
+            19763140
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370462,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370462,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370498,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370498,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370591,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370591,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "stack",
+          252
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            252
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370678,
+      "argumentCount": 6,
+      "knownCalls": {
+        "14370667": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14370678,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14370667,
+            "hero"
+          ],
+          [
+            "constant",
+            19763112
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370687,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370687,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370723,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370723,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370786,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370786,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            216
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370873,
+      "argumentCount": 6,
+      "knownCalls": {
+        "14370862": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14370873,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14370862,
+            "hero"
+          ],
+          [
+            "constant",
+            19763080
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370882,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370882,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370923,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370923,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371235,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371235,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "stack",
+          228
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            228
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371314,
+      "argumentCount": 6,
+      "knownCalls": {
+        "14371303": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14371314,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14371303,
+            "hero"
+          ],
+          [
+            "constant",
+            19763012
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371323,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371323,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371359,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371359,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371629,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371629,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            180
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371712,
+      "argumentCount": 6,
+      "knownCalls": {
+        "14371701": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14371712,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14371701,
+            "hero"
+          ],
+          [
+            "constant",
+            19762904
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371721,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371721,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371757,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371757,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371825,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371825,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "stack",
+          192
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            192
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371904,
+      "argumentCount": 6,
+      "knownCalls": {
+        "14371893": [
+          0,
+          "hero"
+        ]
+      },
+      "setup": {
+        "address": 14371904,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14371893,
+            "hero"
+          ],
+          [
+            "constant",
+            19762872
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371913,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371913,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371949,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371949,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14372383,
+      "argumentCount": 7,
+      "knownCalls": {},
+      "setup": {
+        "address": 14372383,
+        "target": [
+          "constant",
+          8287184
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            104
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "unsigned_byte",
+            [
+              "memory",
+              [
+                "constant",
+                20404040
+              ]
+            ]
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14372534,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14372534,
+        "target": [
+          "constant",
+          10069040
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14372607,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14372607,
+        "target": [
+          "constant",
+          10069040
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14369010,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14368996": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14369010,
+        "target": [
+          "constant",
+          13362268
+        ],
+        "ecx": [
+          "result",
+          14368996,
+          "controlled_actor"
+        ],
+        "edx": [
+          "stack",
+          168
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1073741824
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369095,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369095,
+        "target": [
+          "constant",
+          10068704
+        ],
+        "ecx": [
+          "stack",
+          136
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14369839,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14369830": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14369839,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14369830,
+            "controlled_actor"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369871,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14369871,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          240
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370371,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14370362": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14370371,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14370362,
+            "controlled_actor"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370407,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370407,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          276
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370600,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14370591": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14370600,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14370591,
+            "controlled_actor"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370636,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370636,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          252
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14370795,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14370786": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14370795,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14370786,
+            "controlled_actor"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14370831,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14370831,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          216
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371244,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14371235": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14371244,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14371235,
+            "controlled_actor"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371276,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371276,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          228
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371638,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14371629": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14371638,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14371629,
+            "controlled_actor"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371670,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371670,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          180
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14371834,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14371825": [
+          4,
+          "controlled_actor"
+        ]
+      },
+      "setup": {
+        "address": 14371834,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1056
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14371825,
+            "controlled_actor"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14371866,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14371866,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          192
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "resourceEvents": [
+    {
+      "site": 14368764,
+      "operation": "start",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "construct"
+    },
+    {
+      "site": 14368814,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "has_resource"
+    },
+    {
+      "site": 14368827,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "reset"
+    },
+    {
+      "site": 14368845,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14368888,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14368996,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14369148,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "move"
+    },
+    {
+      "site": 14369157,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14369195,
+      "operation": "use",
+      "identity": [
+        "register",
+        "ecx"
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14369223,
+      "operation": "end",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "destroy"
+    },
+    {
+      "site": 14369632,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "has_resource"
+    },
+    {
+      "site": 14369645,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "reset"
+    },
+    {
+      "site": 14369663,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14369706,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14369830,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14369909,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "speak"
+    },
+    {
+      "site": 14369918,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14369954,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14370143,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "has_resource"
+    },
+    {
+      "site": 14370156,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "reset"
+    },
+    {
+      "site": 14370174,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14370217,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14370362,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14370453,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "speak"
+    },
+    {
+      "site": 14370462,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14370498,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14370591,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14370678,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "speak"
+    },
+    {
+      "site": 14370687,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14370723,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14370786,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14370873,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "speak"
+    },
+    {
+      "site": 14370882,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14370923,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14371235,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14371314,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "speak"
+    },
+    {
+      "site": 14371323,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14371359,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14371629,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14371712,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "speak"
+    },
+    {
+      "site": 14371721,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14371757,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14371825,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "get_thing"
+    },
+    {
+      "site": 14371904,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "speak"
+    },
+    {
+      "site": 14371913,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14371949,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "task_query"
+    },
+    {
+      "site": 14372242,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "has_resource"
+    },
+    {
+      "site": 14372255,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "reset"
+    },
+    {
+      "site": 14372273,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14372316,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "acquire"
+    },
+    {
+      "site": 14372383,
+      "operation": "use",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "animation"
+    },
+    {
+      "site": 14372534,
+      "operation": "end",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "inline_destroy_end"
+    },
+    {
+      "site": 14372607,
+      "operation": "end",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "inline_destroy_end"
+    },
+    {
+      "site": 14372698,
+      "operation": "end",
+      "identity": [
+        "stack",
+        20
+      ],
+      "name": "destroy"
+    }
+  ],
+  "thingEvents": [
+    {
+      "site": 14368996,
+      "operation": "start",
+      "identity": [
+        "stack",
+        136
+      ]
+    },
+    {
+      "site": 14369010,
+      "operation": "use",
+      "identity": [
+        "stack",
+        136
+      ]
+    },
+    {
+      "site": 14369095,
+      "operation": "end",
+      "identity": [
+        "stack",
+        136
+      ]
+    },
+    {
+      "site": 14369830,
+      "operation": "start",
+      "identity": [
+        "stack",
+        240
+      ]
+    },
+    {
+      "site": 14369839,
+      "operation": "use",
+      "identity": [
+        "stack",
+        240
+      ]
+    },
+    {
+      "site": 14369871,
+      "operation": "end",
+      "identity": [
+        "stack",
+        240
+      ]
+    },
+    {
+      "site": 14370362,
+      "operation": "start",
+      "identity": [
+        "stack",
+        276
+      ]
+    },
+    {
+      "site": 14370371,
+      "operation": "use",
+      "identity": [
+        "stack",
+        276
+      ]
+    },
+    {
+      "site": 14370407,
+      "operation": "end",
+      "identity": [
+        "stack",
+        276
+      ]
+    },
+    {
+      "site": 14370591,
+      "operation": "start",
+      "identity": [
+        "stack",
+        252
+      ]
+    },
+    {
+      "site": 14370600,
+      "operation": "use",
+      "identity": [
+        "stack",
+        252
+      ]
+    },
+    {
+      "site": 14370636,
+      "operation": "end",
+      "identity": [
+        "stack",
+        252
+      ]
+    },
+    {
+      "site": 14370786,
+      "operation": "start",
+      "identity": [
+        "stack",
+        216
+      ]
+    },
+    {
+      "site": 14370795,
+      "operation": "use",
+      "identity": [
+        "stack",
+        216
+      ]
+    },
+    {
+      "site": 14370831,
+      "operation": "end",
+      "identity": [
+        "stack",
+        216
+      ]
+    },
+    {
+      "site": 14371235,
+      "operation": "start",
+      "identity": [
+        "stack",
+        228
+      ]
+    },
+    {
+      "site": 14371244,
+      "operation": "use",
+      "identity": [
+        "stack",
+        228
+      ]
+    },
+    {
+      "site": 14371276,
+      "operation": "end",
+      "identity": [
+        "stack",
+        228
+      ]
+    },
+    {
+      "site": 14371629,
+      "operation": "start",
+      "identity": [
+        "stack",
+        180
+      ]
+    },
+    {
+      "site": 14371638,
+      "operation": "use",
+      "identity": [
+        "stack",
+        180
+      ]
+    },
+    {
+      "site": 14371670,
+      "operation": "end",
+      "identity": [
+        "stack",
+        180
+      ]
+    },
+    {
+      "site": 14371825,
+      "operation": "start",
+      "identity": [
+        "stack",
+        192
+      ]
+    },
+    {
+      "site": 14371834,
+      "operation": "use",
+      "identity": [
+        "stack",
+        192
+      ]
+    },
+    {
+      "site": 14371866,
+      "operation": "end",
+      "identity": [
+        "stack",
+        192
+      ]
+    }
+  ],
+  "selections": {
+    "14369185": [
+      "stack",
+      20
+    ]
+  },
+  "review": "One resource frame20 starts DB3FFC; initialization stores resource vtable127094C and empty pImp. Four exits: full destructor DB41C7/DB4F5A, inline counted-pImp release followed by base destructor DB4EB6/DB4EFF. Early termination DB3FF2 skips construction. EDI is zero from DB402C through initial acquisition cancellation to DB4EC6, preserving nonvolatile ABI. Task query DB41AB uses ECX selected by LEA DB41A1 across a conditional branch; CFG tracks that selection. Eight temporary Things: seven health queries/destructors and one distance query with inline cleanup ending DB4147. Full byte regions pin conditional callback/free and weak-handle cleanup. Speech GetHero calls are zero-argument return-reference helpers; animation argument5 remains a live byte load."
+}

@@ -1,0 +1,498 @@
+{
+  "address": 14360320,
+  "size": 2714,
+  "nativeSha256": "680d188a6fec3d659a3dc26986baf72bf9cb290e4da1010800254a57f41ba190",
+  "sourceSha256": "f63fafd215dc1b603c8076ac1844318354a4e4215c135349151f7abefb119447",
+  "actors": [
+    {
+      "name": "NOVI_AffairWife",
+      "literal": 19759848,
+      "output": [
+        "stack",
+        48
+      ],
+      "create": 14360569,
+      "uses": [
+        14362319
+      ],
+      "destroy": 14363009
+    },
+    {
+      "name": "NOVI_AffairMan",
+      "literal": 19759884,
+      "output": [
+        "stack",
+        36
+      ],
+      "create": 14360615,
+      "uses": [
+        14361765,
+        14362049
+      ],
+      "destroy": 14363000
+    },
+    {
+      "name": "AffairWomanRunOffPoint",
+      "literal": 19762212,
+      "output": [
+        "stack",
+        72
+      ],
+      "create": 14362516,
+      "uses": [
+        14362589
+      ],
+      "destroy": 14362991
+    }
+  ],
+  "calls": [
+    {
+      "site": 14360569,
+      "argumentCount": 2,
+      "knownCalls": {},
+      "setup": {
+        "address": 14360569,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            48
+          ],
+          [
+            "stack",
+            60
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14360615,
+      "argumentCount": 2,
+      "knownCalls": {},
+      "setup": {
+        "address": 14360615,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "stack",
+            60
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14362516,
+      "argumentCount": 2,
+      "knownCalls": {},
+      "setup": {
+        "address": 14362516,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            288
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          72
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            72
+          ],
+          [
+            "stack",
+            68
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14361765,
+      "argumentCount": 3,
+      "knownCalls": {
+        "14361750": [
+          0,
+          "GetHero"
+        ]
+      },
+      "setup": {
+        "address": 14361765,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1900
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "result",
+            14361750,
+            "GetHero"
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14362049,
+      "argumentCount": 3,
+      "knownCalls": {},
+      "setup": {
+        "address": 14362049,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            1900
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "esi"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            36
+          ],
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14362319,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "setup": {
+        "address": 14362319,
+        "target": [
+          "constant",
+          13361919
+        ],
+        "ecx": [
+          "register",
+          "ebp"
+        ],
+        "edx": [
+          "stack",
+          48
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1084227584
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14363009,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14363009,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          48
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14363000,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14363000,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          36
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14362991,
+      "argumentCount": 0,
+      "knownCalls": {},
+      "setup": {
+        "address": 14362991,
+        "target": [
+          "constant",
+          4892736
+        ],
+        "ecx": [
+          "stack",
+          72
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "hitScope": {
+    "start": 14360956,
+    "end": 14361163,
+    "oldLua": "        uVar13 = uVar12 | 1\n        cVar6 = me:MsgIsHitByHero()\n        if not cVar6 then\n            uVar13 = uVar12 | 3\n            cVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()\n            if cVar6 then\n                uVar13 = uVar12 | 7\n                cVar6 = me:MsgIsHitByHeroSpecialAbility(nil --[[missing]])\n                if not cVar6 then return end  -- TODO(native): goto LAB_00db2203\n            end\n            -- TODO(native): cStack_a5 = '\\0';\n        else\n            -- LAB_00db2203: (native jump target)\n            -- TODO(native): cStack_a5 = '\\x01';\n        end\n        if (uVar13 & 4) ~= 0 then\n            uVar13 = uVar13 & 0xfffffffb\n        end\n        if (uVar13 & 2) ~= 0 then\n            uVar13 = uVar13 & 0xfffffffd\n        end\n        if (uVar13 & 1) ~= 0 then\n            -- TODO(native): uStack_88 = uVar13 & 0xfffffffe;\n        end\n",
+    "predicate": "directHeroHit or (anyHeroAbility and not excludedHeroAbility14)",
+    "literal": 19255752,
+    "name": "SCRIPT_NAME_HERO",
+    "review": "Conditional CString creation2187/21AF/21DA, native self queries219D/21C5/21F2, reverse string destruction2218/222D/2242. EBX bits track only constructed strings; bool storedstack23 and testedaftercleanup."
+  },
+  "review": [
+    "Wife stack48 survives through radius5 self/wife queryDB26CF, destroyedDB2981.",
+    "Man stack36 faces hero atDB24A5 and self atDB25C1, both snapfalse; destroyedDB2978 before wife.",
+    "Runoff marker stack72 position is copied from implslot18 or globalzero atDB27CC..DB2804; destroyedDB296F before man/wife. Marker identity is distinct from bound self removedDB2965."
+  ]
+}

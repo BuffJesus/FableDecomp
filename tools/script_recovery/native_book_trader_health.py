@@ -16,6 +16,30 @@ def recover_affair_man_health(function, source, rdata, manifest):
                                      witness_file='native_affair_man_health_witness.json')
 
 
+def recover_barrel_health(function, source, rdata, manifest):
+    return recover_book_trader_health(function, source, rdata, manifest,
+                                     witness_file='native_barrel_health_witness.json')
+
+
+def recover_barrel_health_boolean(function, source, rdata):
+    witness = json.loads(Path(__file__).with_name('native_barrel_health_boolean_witness.json').read_text())
+    if str(function.get('address', '')).lower() != witness['address'].lower():
+        return source, []
+    def reject(reason):
+        return source, [{'status': 'rejected', 'reason': reason}]
+    if hashlib.sha256(source.encode()).hexdigest() != witness['annotatedSha256']:
+        return reject('packed health result correspondence changed')
+    for region in witness['regions']:
+        raw = rdata.bytes_at(region['address'], region['size'])
+        if raw is None or hashlib.sha256(raw).hexdigest() != region['sha256']:
+            return reject('native health comparison changed')
+    if any(source.count(edit['old']) != edit['count'] for edit in witness['edits']):
+        return reject('packed health result uses changed')
+    for edit in witness['edits']:
+        source = source.replace(edit['old'], edit['new'])
+    return source, [dict(witness, status='recovered')]
+
+
 def recover_book_trader_health(function, source, rdata, manifest, *,
                               witness_file='native_book_trader_health_witness.json'):
     witness = json.loads(Path(__file__).with_name(witness_file).read_text())

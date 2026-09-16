@@ -1,0 +1,24 @@
+{
+  "mainAddress": 14386864,
+  "mainSize": 4325,
+  "mainSha256": "515927904cf53975b43e48fb5d1d818d11ead12d4e8d9e5e6661a7a39b8a3461",
+  "draftSha256": "cffff049fa8892289aa23d9cdc948d8d5dce941aff23a96cda65f78ccdf6e3ff",
+  "start": 14390425,
+  "end": 14391072,
+  "cancel": 14391169,
+  "controlOffset": 16,
+  "movieOffset": 100,
+  "temporaryOffset": 128,
+  "maskOffset": 56,
+  "predicateOffset": 39,
+  "healthGetter": 14390907,
+  "thresholdAddress": 19062492,
+  "thresholdHex": "00000000",
+  "literals": {
+    "19255752": "SCRIPT_NAME_HERO",
+    "19764684": "TEXT_QST_048_DAD_TEMPER"
+  },
+  "predicateAbility": 14,
+  "badDeed": 2,
+  "priority": 4
+}

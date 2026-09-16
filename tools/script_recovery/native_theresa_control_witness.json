@@ -1,0 +1,1543 @@
+{
+  "address": 14391200,
+  "size": 7013,
+  "sha256": "32136f38fc41cdf0c3a0badb7bba9dae1cad47216f015db0f8d7f8074ced4efc",
+  "events": [
+    {
+      "site": 14391307,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14391307,
+        "target": [
+          "constant",
+          10068864
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14391398,
+      "name": "has",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14391398,
+        "target": [
+          "constant",
+          13444025
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14391411,
+      "name": "reset",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14391411,
+        "target": [
+          "constant",
+          13444976
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14391432,
+      "name": "acquire",
+      "argumentCount": 3,
+      "setup": {
+        "address": 14391432,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "stack",
+          24
+        ],
+        "stack_arguments": [
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            8
+          ],
+          [
+            "stack",
+            24
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14391476,
+      "name": "acquire",
+      "argumentCount": 3,
+      "setup": {
+        "address": 14391476,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                4
+              ]
+            ],
+            0
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebx"
+          ],
+          [
+            "stack",
+            24
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14391582,
+      "name": "animation",
+      "argumentCount": 7,
+      "setup": {
+        "address": 14391582,
+        "target": [
+          "constant",
+          8287200
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            188
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14391636,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14391636,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14391791,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14391791,
+        "target": [
+          "constant",
+          8286880
+        ],
+        "ecx": [
+          "stack",
+          344
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14391821,
+      "name": "acquire",
+      "argumentCount": 3,
+      "setup": {
+        "address": 14391821,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14391811,
+            "GetHero"
+          ],
+          [
+            "stack",
+            344
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14393024,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14393024,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          344
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14393727,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14393727,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            464
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14393806,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14393806,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14393795,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765368
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14393815,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14393815,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14393851,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14393851,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14394155,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14394155,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            428
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14394234,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14394234,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14394223,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765328
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14394243,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14394243,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14394283,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14394283,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14394721,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14394721,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            416
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14395002,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14395002,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "stack",
+          500
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            500
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14395078,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14395078,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14395067,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765368
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "register",
+            "edi"
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14395087,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395087,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395123,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395123,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395464,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14395464,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14395453,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765292
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14395473,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395473,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395515,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395515,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395751,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14395751,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            440
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14395834,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14395834,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14395823,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765368
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14395843,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395843,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395883,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14395883,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14395942,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14395942,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "stack",
+          476
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            476
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14396025,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14396025,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14396014,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765256
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14396034,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396034,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396075,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396075,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396167,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14396167,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            488
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14396246,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14396246,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14396235,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765328
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14396255,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396255,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396291,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396291,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396742,
+      "name": "get_thing",
+      "argumentCount": 1,
+      "setup": {
+        "address": 14396742,
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            452
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14396821,
+      "name": "speak",
+      "argumentCount": 6,
+      "setup": {
+        "address": 14396821,
+        "target": [
+          "constant",
+          8287120
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14396810,
+            "GetHero"
+          ],
+          [
+            "constant",
+            19765224
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14396830,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396830,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396866,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396866,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396930,
+      "name": "task",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14396930,
+        "target": [
+          "constant",
+          8287312
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14396995,
+      "name": "animation",
+      "argumentCount": 7,
+      "setup": {
+        "address": 14396995,
+        "target": [
+          "constant",
+          8287200
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            56
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            1
+          ],
+          [
+            "constant",
+            0
+          ],
+          [
+            "constant",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14397135,
+      "name": "destroy_inline",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397135,
+        "target": [
+          "constant",
+          10069040
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397220,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397220,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          344
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397829,
+      "name": "construct",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14397829,
+        "target": [
+          "constant",
+          8286880
+        ],
+        "ecx": [
+          "stack",
+          328
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14397859,
+      "name": "acquire",
+      "argumentCount": 3,
+      "setup": {
+        "address": 14397859,
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "ebp"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "ebp"
+            ],
+            4
+          ]
+        ],
+        "edx": [
+          "unknown"
+        ],
+        "stack_arguments": [
+          [
+            "result",
+            14397849,
+            "GetHero"
+          ],
+          [
+            "stack",
+            328
+          ],
+          [
+            "constant",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14398139,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14398139,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          328
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    },
+    {
+      "site": 14398197,
+      "name": "destroy",
+      "argumentCount": 0,
+      "setup": {
+        "address": 14398197,
+        "target": [
+          "constant",
+          8287440
+        ],
+        "ecx": [
+          "stack",
+          24
+        ],
+        "edx": [
+          "register",
+          "edx"
+        ],
+        "stack_arguments": []
+      }
+    }
+  ],
+  "resourceLocals": {
+    "theresaControl": 24,
+    "meetingHeroControl": 344,
+    "outroHeroControl": 328
+  },
+  "review": "One retained Theresa control; two separately constructed Hero controls for meeting and outro. Every constructor, resource action, acquisition and destructor in complete Main is included. Movie and temporary Thing ownership are separate gates."
+}

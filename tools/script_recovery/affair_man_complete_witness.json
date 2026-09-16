@@ -1,0 +1,45 @@
+{
+  "functions": [
+    {
+      "address": 14354768,
+      "size": 144,
+      "sha256": "3ce547b354d04225a652ed360651e9b72165fd048884c88d2cf519985508df6a"
+    },
+    {
+      "address": 14354912,
+      "size": 5058,
+      "sha256": "1dc2784d3eaf30cae5bac1833339ac004d4dfb69baaf171ebc6520eb7c9a43dc"
+    },
+    {
+      "address": 9072080,
+      "size": 218,
+      "sha256": "8270d47d77b1cf84d679faa32498b92bfa2f6f13d05ce925b00c6a699e67fe9d"
+    },
+    {
+      "address": 8287184,
+      "size": 15,
+      "sha256": "b15918b5d8b85acb00708ee1f721e3297fac818c09fedf1a8ff14a30090a50bf"
+    }
+  ],
+  "literals": {
+    "0x128f1fc": "ST_OPINION_FEAR_IDLE_COWERING",
+    "0x12d8a14": "GIVE_KISS",
+    "0x12d8a08": "GIVE_HUG"
+  },
+  "slots": {
+    "0x810": 8973008,
+    "0x814": 8973104,
+    "0x838": 8973248,
+    "0xd30": 9072080,
+    "0x844": 8973344,
+    "0x5a0": 8971328
+  },
+  "sourceSha256": "aec7cc1cd616d87404fcb832c4be997eb97c7861c266f26c275d3c5964db46b7",
+  "historicalComments": [
+    "-- TODO(native): piStack_12c = piVar2;",
+    "-- TODO(native): paVar15 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_b8;",
+    "-- TODO(native): paVar15 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_e4;",
+    "-- TODO(native): paVar15 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_dc;"
+  ],
+  "classification": "Cached movie receiver already lowered to owned movie; three temporary pointer notes refer to CString destructor joins. Native CString/byte order now handled atomically."
+}

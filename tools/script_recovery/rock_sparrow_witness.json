@@ -1,0 +1,51 @@
+{
+  "regions": [
+    {
+      "name": "rootBinding",
+      "address": 15482176,
+      "size": 127,
+      "sha256": "1c9aff5bca18f9d06b41cc4af22c5a7b33a4bb3c35156b9597221d38a41006f3"
+    },
+    {
+      "name": "allocator",
+      "address": 15484352,
+      "size": 145,
+      "sha256": "6ee9465f7ed94f48d47ae2e33daeb8a844023d2f397020fa5d26461ebfb13c82"
+    },
+    {
+      "name": "vtable",
+      "address": 19863264,
+      "size": 28,
+      "sha256": "cd2164701e8816ca54edf47311b5ceb756f1ef26112afb2f524c28ce04701124"
+    },
+    {
+      "name": "Main",
+      "address": 15484592,
+      "size": 259,
+      "sha256": "59c7e5f77b43318c01d592bb0357536bca547835a2a6ebcd3ce319ded8597b31"
+    }
+  ],
+  "sources": [
+    {
+      "path": "work/rock_trigger_converter/evidence/0x00EC46B0.c",
+      "sha256": "bcc124bd875924e252166d9e1d0bd43f3ce19010a46cfa6191aea3b0673c02a8"
+    },
+    {
+      "path": "work/rock_trigger_converter/evidence/PDB-all-locals.tsv",
+      "sha256": "39596235ba9c7533ba63774fe16b45337017f111aad01c5e229c683c6f6aeb11"
+    },
+    {
+      "path": "work/rock_trigger_converter/evidence/PDB-class-layout.txt",
+      "sha256": "dbcb6da1e1108cb41d1afeab21c2a48e9be000ceadee6bf3f146b7dac825ff02"
+    }
+  ],
+  "proof": [
+    "EC3D60 binds RTFE_Sparrow to allocatorEC45C0 atEC3D93; allocator stores vtable12F16E0, whose Main slot+4 isEC46B0.",
+    "EC46D3 registers copied bound-alive condition before initial frameEC46E6 and terminationEC46EB.",
+    "EC4734/EC475B push priority4, same resource stack8 and bound Thing this+8 for each acquire.",
+    "Failure branch yields then cancellation check; no retry preparation/destruction. Failed output may be populated.",
+    "EC4778 andEC4796 read parent+4C; original PDB member TrollAwake. Init and OnPersist do not write this field.",
+    "EC479F termination query is still executed once after awake even though its result is discarded before resource destructionEC47A8.",
+    "No speech/fly/remove/mission state write follows the wait; native function returnsEC47B2."
+  ]
+}

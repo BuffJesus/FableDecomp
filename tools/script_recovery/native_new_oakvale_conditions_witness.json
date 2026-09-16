@@ -1,0 +1,369 @@
+{
+  "schema": "new-oakvale-entry-conditions/0.1",
+  "entries": [
+    {
+      "address": "0x00DADF80",
+      "calls": [
+        "0xdadfac"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "3583b584c9a4e4c94ea3d68de945b7a5cfb138ffd7723025bfc8df44a485b3ce",
+      "owner": "NOVI_Villager",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "ece67ecf0e61f1c7d3050e28e71eed118850b096f81695a70e3db3d0c70c77ef",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "30fe0a424c352a22821e5a55319a5169fbd12381810712a8cfc8fe1d4cabd828"
+      ]
+    },
+    {
+      "address": "0x00DAF080",
+      "calls": [
+        "0xdaf0ae"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "17a0c60d76a6498a40a4e76221d8693899fc6159e00076031552d0373e38b4d8",
+      "owner": "NOVI_TeddyGirl",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "75de52d06c81853ab3295ec950451b04e5d4ef9b594f05f570c9fe2b152cb545",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "b1d4e1b0567dd5d9bfaed94c100726205ff69826cc8f4b9bd84cea6d8817fbcb"
+      ]
+    },
+    {
+      "address": "0x00DB09E0",
+      "calls": [
+        "0xdb0a0f"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "42c14982ce08bd7128609e496cbc90a3d4ec6665775e780722da5ef23cf546e4",
+      "owner": "NOVI_AffairMan",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "4ed8de6f65fb4916890083cda1790213a2d6df0d2e0c5017e8027abb16a372a8",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "2f208223cb63d13c6d29bb9bb51d01e4ff4651b7d25f004b82e271271e4086db",
+        "43f29638a29775b555724ea1220616b1a15cb0180d9a520b2f147cca78c2b41f",
+        "8c9bce00b91320cddb022c421023b9f8707b3d7680542c166ab3d3ae2b7db91d"
+      ]
+    },
+    {
+      "address": "0x00DB1F00",
+      "calls": [
+        "0xdb1f2f"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "67923aef150649c58ad54cf3e45e23f2b00e0a2c2aab09082c9864a643ba651b",
+      "owner": "NOVI_AffairWoman",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "f63fafd215dc1b603c8076ac1844318354a4e4215c135349151f7abefb119447",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "028ab0c41613058263f36c0039d96750088924555fed017775621044ff8ca3fd",
+        "8932d7090b5f6b2d5ae33a336d3bb22db9e183201013f115574a6b374b3c1bbd"
+      ]
+    },
+    {
+      "address": "0x00DB2B10",
+      "calls": [
+        "0xdb2b3f"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "0f9dd68c014b829d4de2e7c88df9964987f002aa0f70e76ca5cf45779bf19d59",
+      "owner": "NOVI_AffairWife",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "99dea022f8430fb98ff4ca6bedb9f9e6b3333fd647c8a371145be9b25b244de9",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "5a9bcfc7c1d82f3f7bfc28a26cea6c3cfe084a5869b758fde924677a17813a86",
+        "b67be7b0697b7854719180509915187d4f032968f82a16a83701914d1324815b"
+      ]
+    },
+    {
+      "address": "0x00DB3FA0",
+      "calls": [
+        "0xdb3fcf"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "8dd463e2f4ab074699216732912cf3aaca73b456e3416011461580420b436704",
+      "owner": "NOVI_BookTrader",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "16f1227ba72d9a7f49e3065a268adbfe0fb92192d746bb2c5512d2f11b7bee5f",
+        "b161539cd6fe9c32505ceb64117630961673fece0dc73191b261eaa467a595e3"
+      ]
+    },
+    {
+      "address": "0x00DB5330",
+      "calls": [
+        "0xdb535f"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "b493a788217cde22eb0027f23e63c6717980db3dfa4b6dce88cb678b5bfaa210",
+      "owner": "NOVI_BarrelMan",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "4b7edd24f8d5d936ec037a821e1ae8fb79bbae5ecfde05358e78d9c27b2a33f2",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "af632d57ca0e35102c2d4b60b9b490bc6d60487d03c5235c01cee65a54bd3aff"
+      ]
+    },
+    {
+      "address": "0x00DB6C60",
+      "calls": [
+        "0xdb6c98"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "57590c2b6f7df67aaa7748f374abee8c79f1488b4f37bd65835dbf7edb48e6e7",
+      "owner": "NOVI_BarrelThug",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "1678e468c87ac000c4e59c99a14842f5b411dd663faf363637820602dd11934e",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "0e6b5500d990743bc5b51926a80909a32abb6f47d76cb972da55894d06ff5fde"
+      ]
+    },
+    {
+      "address": "0x00DB7E10",
+      "calls": [
+        "0xdb7e33"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "73ff63e945ffa82b8a77fc9fd415d3c5526d03da793403edfea7ed791288754e",
+      "owner": "NOVI_Barrel",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "3f790a6ef91799306e18a9ca3e5ea1ceb138b45df026e664c17dcf60d55caed3",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "4121e689c4468b662fa0c4d8c9248fc8f26d4adac190a921ffac1855c1fc98f1"
+      ]
+    },
+    {
+      "address": "0x00DB80C0",
+      "calls": [
+        "0xdb80e5"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "c85ca258410fdbe74be25b320e3c9fd8bca90572c06502935ffe2e6a6c2951f3",
+      "owner": "NOVI_CreatedBeetle",
+      "function": "Main",
+      "entrySize": 232,
+      "sourceSha256": "3e0abc89466f32f61a3b289c3c045213e405a3ec68540f6437a492677145d7b7",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "c866092c974f7204bb8b557bed88e4e20af13862646dda45768adf83fecdaf40"
+      ]
+    },
+    {
+      "address": "0x00DB8300",
+      "calls": [
+        "0xdb8323"
+      ],
+      "knownConditionVTables": [
+        "0x12c32f0"
+      ],
+      "entrySha256": "b9ae2664a07dd8f2c203a40c91eb5dc0f11e29529c6c7c1affd78c43e4dd690a",
+      "owner": "OVI_DeadFather",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "3a1efc56674cf379729305b5436624c42c61452450cb61e7fe83565703e8e513",
+      "method": "RegisterBoundAliveCondition",
+      "luaPrefixSha256s": [
+        "954dac8d5ad4044e171f274b46bee0308b9cbedc94761de9a9fd9677a4dd5dfa"
+      ]
+    },
+    {
+      "address": "0x00DB86B0",
+      "calls": [
+        "0xdb86df"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "da2352814a6964853a5bd23920fba87f3b4651c0120abba29255a32c2e0c95ea",
+      "owner": "NOVI_LiveFather",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "635858884f60b7f7bcab4eba521cbe2b42fdb69cbb6a88b77c4aadc7f22299c7",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "777b1c5a2128dbe47ea47a7c2b4174f2b760540a50d59ed5bfb622f4072cb9e2"
+      ]
+    },
+    {
+      "address": "0x00DB97A0",
+      "calls": [
+        "0xdb97d8"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "69a7338741c9e31bfd07a12655bf6c7ede9b0920750e99eae75a5643969a4ee2",
+      "owner": "NOVI_Theresa",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "291c860ea494de173b983fd15afc35fd30ab9eebd8ce3fd88edb5937bb229e4a",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "938c62193b61089f2a3f64765b7f48bb24b6c07b9422d45e90796e610b7c7ad1"
+      ]
+    },
+    {
+      "address": "0x00DBB310",
+      "calls": [
+        "0xdbb34c"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "b575c0081f390b000898dbf2eab21695f8977f7aac4e03291e209505ef9e83bb",
+      "owner": "NOVI_Bully",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "2820811c164953903787b116389a1a1a95792cc5dd899af9400c0f1856399ea6",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "fb2714c60c8dce00b2b81066f77c1f48b00752c7795e48c0cf86d2c9b7ddafed"
+      ]
+    },
+    {
+      "address": "0x00DBCD60",
+      "calls": [
+        "0xdbcd8f"
+      ],
+      "knownConditionVTables": [
+        "0x12c2fe8"
+      ],
+      "entrySha256": "6123962fe407b2a9e8663f38b4690310fd001339a3a9512f0f35202665943052",
+      "owner": "NOVI_Victim",
+      "function": "Main",
+      "entrySize": 256,
+      "sourceSha256": "605f2e3c77c6362d3784fb4d6e89508ba420a91b818201b6de951029d02868a0",
+      "method": "RegisterBoundConsciousCondition",
+      "luaPrefixSha256s": [
+        "a5a0fda67f36aa44728a96ce888f2c8f809880f39abcc89bde68d56de8625feb"
+      ]
+    }
+  ],
+  "regions": [
+    {
+      "address": "0x12c32f0",
+      "size": 12,
+      "sha256": "bc1f9da08bd468984395ddd18a6e4177974f706283a00abea0054fd0b577312c"
+    },
+    {
+      "address": "0xcdf120",
+      "size": 11,
+      "sha256": "40a7e2375c981213238d2049b1e5399dc38409a7f9bad24830daf651c3838443"
+    },
+    {
+      "address": "0xcdf130",
+      "size": 48,
+      "sha256": "0478fc19020c57ecd985cc9d04d550cd42fb28d4cebbcaf608685bf8cc5926ec"
+    },
+    {
+      "address": "0xcdf160",
+      "size": 45,
+      "sha256": "3d8dc476c6a920393f4b8b514b39a7865c65c16e6fe1a4534d79a77369ea630d"
+    },
+    {
+      "address": "0xf35b10",
+      "size": 20,
+      "sha256": "ed8c26784a62fe26a7822ca3b9fd97f37a4c892f01b8bc54c54dad1a2cf7e6a2"
+    },
+    {
+      "address": "0xcb7920",
+      "size": 8,
+      "sha256": "2409002f93a4e3c24776b4a26a0a3d138233a019e0ec1439db4ff8a14968bf84"
+    },
+    {
+      "address": "0xf35a10",
+      "size": 25,
+      "sha256": "767d42ff00975f8a6acc948de55d85a5bc952f39b6fbbded79211aaff51ec8df"
+    },
+    {
+      "address": "0xe241b0",
+      "size": 84,
+      "sha256": "8a4cd359e3e06108740404bac91c517635413603ef7bf8b1da991919069afb19"
+    },
+    {
+      "address": "0x4abe90",
+      "size": 33,
+      "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+    },
+    {
+      "address": "0xf35b30",
+      "size": 12,
+      "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+    },
+    {
+      "address": "0xcb7940",
+      "size": 14,
+      "sha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7"
+    },
+    {
+      "address": "0x12c2fe8",
+      "size": 12,
+      "sha256": "6df22ea14e1ea22fb1831e7e056625760d23b0654e3ad142a5307522866b8e4c"
+    },
+    {
+      "address": "0xcddab0",
+      "size": 44,
+      "sha256": "249a1e38f22e5e6764bafe4a9021b000c67b2b83bc13c59a2c615716d96f04f3"
+    },
+    {
+      "address": "0xcddae0",
+      "size": 48,
+      "sha256": "ab72c702b630e7f28d0cbdd10ef51c5b1a7d0da2d90104516a88861777a6c3b2"
+    },
+    {
+      "address": "0xcddb10",
+      "size": 45,
+      "sha256": "af7362b6e2e39f34ab902be295e3a10d554fad73ec912c2d280406647a09f850"
+    },
+    {
+      "address": "0x4aa840",
+      "size": 66,
+      "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    },
+    {
+      "address": "0x99a2e0",
+      "size": 21,
+      "sha256": "fc96753fa75b3cb580a0953f1c47c40f812708cb58a40523f3e3429d5fd01638"
+    }
+  ],
+  "review": "Each entry constructs a16-byte condition containing a counted copy of bound self, registers via F35B10 (thread-owned clone), destroys caller local before first frame.14entries use alive-and-conscious12C2FE8, DeadFather existence-only12C32F0. Other entries are not inferred from this inventory.",
+  "predicateBytes": "8b4104568d71048bceff902c01000084c074158b168bceff92f400000084c07507b8010000005ec333c05ec3"
+}

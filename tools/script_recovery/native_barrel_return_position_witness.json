@@ -1,0 +1,59 @@
+{
+  "annotatedSha256": "3ff26986d98f5d97303477af718003691007457e04404d3a48c969009d80f513",
+  "nativeSha256": "93a3b163ba6b2cc47a851450dd5b1f8a06f08f0d560a6ef39defe6e9d62ab6c3",
+  "edits": [
+    {
+      "old": "CCharString::CCharString((CCharString *)&puStack_1bc,\"M_WHouse_ManStart\",-1);\r\n  ppVar27 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&ppuStack_1d4;\r\n  GSI->GetThingWithScriptName();\r\n",
+      "new": "CCharString::CCharString((CCharString *)&puStack_1bc,\"M_WHouse_ManStart\",-1);\r\n  ppVar27 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&ppuStack_1d4;\r\n  GSI->GetThingWithScriptName(&local_native_man_start,\"M_WHouse_ManStart\");\r\n",
+      "count": 1
+    },
+    {
+      "old": "      if (piStack_1e0 == (int *)0x0) {\r\n        puVar5 = &DAT_0143e8e0;\r\n      }\r\n      else {\r\n        puVar5 = (undefined4 *)(**(code **)(*piStack_1e0 + 0x18))();\r\n      }\r\n      piStack_144 = (int *)*puVar5;\r\n      uStack_140 = puVar5[1];\r\n      fVar25 = 2.0;\r\n      uStack_13c = puVar5[2];\r\n",
+      "new": "      native_arg_man_start_position = GSI->RetailThingPosition(local_native_man_start);\n      fVar25 = 2.0;\n",
+      "count": 1
+    },
+    {
+      "old": "(CScriptThing *)&piStack_144,(char *)0x0,(CCharString *)0x1,(CCharString *)0x0,\r\n                     (CCharString *)0x0,SUB41(ppVar27,0),(bool)SUB41(puVar28,0)",
+      "new": "native_arg_man_start_position,0.0,1,0,0",
+      "count": 1
+    },
+    {
+      "old": "(C3DVector *)&piStack_144",
+      "new": "native_arg_man_start_position",
+      "count": 2
+    },
+    {
+      "old": "pCVar7 = (CScriptThing *)\r\n               CScriptGameResourceObjectScriptedThingBase::\r\n               _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                         ((CScriptGameResourceObjectScriptedThingBase *)&ppuStack_1f4);",
+      "new": "pCVar7 = me;",
+      "count": 1
+    },
+    {
+      "old": "pCVar7 = (CScriptThing *)\r\n                   CScriptGameResourceObjectScriptedThingBase::\r\n                   _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                             ((CScriptGameResourceObjectScriptedThingBase *)&ppuStack_1f4);",
+      "new": "pCVar7 = me;",
+      "count": 1
+    }
+  ],
+  "lookupSite": "0xDB54B5",
+  "lookupWrapperOffset": 36,
+  "queryImplementationOffset": 40,
+  "querySite": "0xDB5915",
+  "acquisitionSites": [
+    "0xDB58B2",
+    "0xDB58E4"
+  ],
+  "getters": [
+    "0xDB5957",
+    "0xDB5A04"
+  ],
+  "distances": [
+    "0xDB5965",
+    "0xDB5A12"
+  ],
+  "movementSite": "0xDB59A8",
+  "resourceOffset": 20,
+  "vectorOffset": 196,
+  "string": {
+    "address": "0x12D9208",
+    "value": "M_WHouse_ManStart"
+  }
+}

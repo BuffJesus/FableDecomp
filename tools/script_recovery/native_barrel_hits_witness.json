@@ -1,0 +1,62 @@
+{
+  "address": "0x00DB5330",
+  "size": 6128,
+  "sourceSha256": "4b7edd24f8d5d936ec037a821e1ae8fb79bbae5ecfde05358e78d9c27b2a33f2",
+  "annotatedSha256": "73679e017c59f5d63f7575ac9a7e87c1f039ec538f6d5e0675b85ac8394f19dc",
+  "bytesSha256": "93a3b163ba6b2cc47a851450dd5b1f8a06f08f0d560a6ef39defe6e9d62ab6c3",
+  "contracts": {
+    "MsgIsHitByHero": {
+      "name": "MsgIsHitByHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero' is met."
+    },
+    "MsgIsHitByAnySpecialAbilityFromHero": {
+      "name": "MsgIsHitByAnySpecialAbilityFromHero",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by any special ability from hero' is met."
+    },
+    "MsgIsHitByHeroSpecialAbility": {
+      "name": "MsgIsHitByHeroSpecialAbility",
+      "scope": "Entity",
+      "returnType": "bool",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "abilityEnum",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Returns whether message condition 'is hit by hero special ability' is met."
+    }
+  },
+  "old": "    CCharString::CCharString((CCharString *)&uStack_188,\"SCRIPT_NAME_HERO\",-1);\r\n    ppuVar18 = ppuStack_1c8;\r\n    ppuVar17 = (undefined **)((uint)ppuStack_1c8 | 1);\r\n    ppuStack_1c8 = ppuVar17;\r\n    cVar2 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8), &uStack_188);\r\n    ppVar16 = extraout_EDX_10;\r\n    if (cVar2 == '\\0') {\r\n      CCharString::CCharString(aCStack_174,\"SCRIPT_NAME_HERO\",-1);\r\n      ppuVar17 = (undefined **)((uint)ppuVar18 | 3);\r\n      ppuStack_1c8 = ppuVar17;\r\n      cVar2 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8), aCStack_174);\r\n      ppVar16 = extraout_EDX_11;\r\n      if (cVar2 != '\\0') {\r\n        CCharString::CCharString((CCharString *)&ppuStack_190,\"SCRIPT_NAME_HERO\",-1);\r\n        ppuVar17 = (undefined **)((uint)ppuVar18 | 7);\r\n        ppuStack_1c8 = ppuVar17;\r\n        cVar2 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8), 0xe,&ppuStack_190);\r\n        ppVar16 = extraout_EDX_12;\r\n        if (cVar2 == '\\0') goto LAB_00db5e85;\r\n      }\r\n      bVar3 = false;\r\n    }\r\n    else {\r\nLAB_00db5e85:\r\n      bVar3 = true;\r\n    }\r\n",
+  "new": "    CCharString::CCharString((CCharString *)&uStack_188,\"SCRIPT_NAME_HERO\",-1);\r\n    ppuVar18 = ppuStack_1c8;\r\n    ppuVar17 = (undefined **)((uint)ppuStack_1c8 | 1);\r\n    ppuStack_1c8 = ppuVar17;\r\n    cVar2 = CScriptThing::MsgIsHitBy((CScriptThing *)(this + 8), &uStack_188);\r\n    ppVar16 = extraout_EDX_10;\r\n    if (cVar2 == '\\0') {\r\n      CCharString::CCharString(aCStack_174,\"SCRIPT_NAME_HERO\",-1);\r\n      ppuVar17 = (undefined **)((uint)ppuVar18 | 3);\r\n      ppuStack_1c8 = ppuVar17;\r\n      cVar2 = CScriptThing::MsgIsHitByAnySpecialAbilityFrom((CScriptThing *)(this + 8), aCStack_174);\r\n      ppVar16 = extraout_EDX_11;\r\n      if (cVar2 != '\\0') {\r\n        CCharString::CCharString((CCharString *)&ppuStack_190,\"SCRIPT_NAME_HERO\",-1);\r\n        ppuVar17 = (undefined **)((uint)ppuVar18 | 7);\r\n        ppuStack_1c8 = ppuVar17;\r\n        cVar2 = CScriptThing::MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8), 0xe,&ppuStack_190);\r\n        ppVar16 = extraout_EDX_12;\r\n        bVar3 = cVar2 == '\\0';\r\n      }\r\n      else {\r\n        bVar3 = false;\r\n      }\r\n    }\r\n    else {\r\n      bVar3 = true;\r\n    }\r\n",
+  "review": "DB5E18 self EDI slot54 true -> true at DB5E85; otherwise DB5E45 slotA8 false -> false DB5E7E; else DB5E74 slotA4 with ability14 and hero string false -> true. Preserve all constructors, masks, and following reverse destructor block. Only eliminate the nested-entry jump by assigning its boolean result inside the branch. Native string ownership is still unresolved in the draft."
+}

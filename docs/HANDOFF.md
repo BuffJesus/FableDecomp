@@ -1,4 +1,1741 @@
-# Resume here (one page) — updated 2026-09-11 (evening, after the v11 playthrough)
+# CURRENT (later 2026-09-16): converter generalised; target = Orchard Farm (Aeon does Guild)
+
+Aeon is hand-porting Guild training; Oakvale intro is complete (1 class, 51/51 converter fns, incl. post-raid).
+New generic pipeline: `script_units.py` → `export_guild_training.py --unit` → `guild_training_inventory.py --unit`
+→ `quest_unit_evidence.py --unit` → `convert_quest_unit.py --unit` (+ `native_evidence_lowering.py`).
+Typed TU export works (`ghidra_typing_spec.py` + `ExportTypedTranslationUnit.java`, 218 call-site overrides on Orchard).
+Orchard Farm draft: `refs/script_recovery/lifted/OrchardFarm/draft` (36/58 compile, 708 diags on typed input). Oakvale draft
+regenerates byte-identical (gate: scratch `gate.sh` = convert_new_oakvale + diff). Next lever = by-value CScriptThing args in
+the typed export, then the cutscene/actor-map lowering (`StdMap_*` → `resources:NewActorMap/SetActor/RunMacro`).
+GOTCHA: never patch Python via bash heredoc/python -c (backslashes → \x01 bytes); use script files.
+Aeon-port audit tool: `audit_port_against_pdb.py`. Journal: journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md
+
+# CURRENT: Party Mode removed; sidecar v4 played clean through childhood; Discord zip rebuilt — 2026-09-16
+
+Party Mode is **gone** (user decision after it broke music/loading in-game; two `MAZE_TELEPORT_OUT_01`
+plays then breakage). Removed at the converter/source level; readable package regenerated with zero
+markers and restored indentation. Clean bundle **`work/new-oakvale-original-fse-20260912/local-candidate-v4`**
+(same two DLLs as v3) — user completed childhood on it, zero Lua errors.
+Discord package: **`work/NewOakValeIntro-sidecar-playtest-20260916.zip`** (extract into game root, run
+`Launch New Oakvale Intro.bat`; replaces nothing) — built by `tools/script_recovery/build_discord_playtest_zip.py`,
+tester path verified live. The older `NewOakValeIntro-readable-discord-playtest.zip` is superseded.
+Rebuild chain: `build_readable_new_oakvale.py` -> stage readable + `retail_override.lua` (enabled=true) ->
+`build_novi_compat_bundle.py --skip-build --readable <stage> --bundle <vN>` -> `build_discord_playtest_zip.py`.
+Known failing (pre-existing): `test_watch_barrels_loop.py` expects a `RewardRemainingBarrel` binding.
+Details: [journal](journal/2026-09/PARTY_MODE_REMOVED_SIDECAR_V4_2026-09-16.md). Work is uncommitted.
+Everything below is historical.
+
+# STOPPED FOR SLEEP: Party Mode upgrade ready for tomorrow's playtest — 2026-09-14
+
+User requested stopping tonight and updating docs. **Do not launch or test further tonight.**
+Next-session details: [Party Mode handoff](journal/2026-09/PARTY_MODE_UPGRADE_2026-09-14.md).
+
+User confirmed a full successful childhood playthrough of the prior stock-FSE-plus-sidecar
+v3 bundle. New Party Mode is staged separately in `work/party-mode-v2/sidecar` and
+`work/party-mode-v2/forge`: milestone celebrations, score/ranks/combos, configurable
+effects, cutscene suppression, and quiet debug markers. New visuals are **not live-tested**.
+14 automated tests, 45 Lua syntax checks, and sidecar preflight pass. Installed game,
+saves, and original v3 bundle unchanged. No game launched or background jobs started
+this session. Work is uncommitted. See the linked note for the exact launch command.
+
+The older checkpoints below are historical; this stop point takes precedence.
+
+# LIVE: New Oakvale readable Lua runs through stock FSE + NoviCompatibility sidecar - 2026-09-14 21:16
+
+Bundle: work/new-oakvale-original-fse-20260912/local-candidate-v3 (stock FSE, empty registry, plus
+NoviCompatibility.dll built from ForgeFSE-retail-shadow + scalar-ABI patch + 3 sidecar deltas; Lua =
+converter readable package verbatim, loaded via retail_override.lua, NOT as a custom quest).
+First run: override armed, 16/16 entities Init+Main clean, zero Lua errors, Bully reactions firing.
+Rebuild/reassemble: python tools/script_recovery/build_novi_compat_bundle.py
+Launch: python <bundle>/local_test.py --game-dir "<Fable dir>" --launch --save-dir "<saves>"
+Details + root causes: journal/2026-09/NOVI_STOCK_FSE_SIDECAR_LIVE_2026-09-14.md
+Still user-verified only: child start after New Game, Father scene, Escape, audio, save/reload.
+
+# Active: Hero's Guild recovery - 2026-09-14
+
+User requested Guild training work while New Oakvale waits for live verification.
+Continue offline; do not install, activate, touch profiles/saves, or ask for live testing.
+See [Guild recovery](scripts/GUILD_TRAINING_RECOVERY.md) for commands and remaining work.
+
+Guild: nine quests, 28 native entity bindings, 16 threads, 277 exported bodies.
+All entity lifecycle slot bodies exported. Readable RaceMarker matches original
+x86 traces in 128 cases; six entity slices plus five quest functions are reviewed and 31 Guild tests pass. Diagnostic entity lift now consumes the reviewed Guild parent field map: 6/28 entity files parse with 4,045 unresolved diagnostics; the baseline remains non-candidate.
+4/28 syntax passes with 4,128 diagnostics; it is not an installable candidate.
+Next: field/persistence recovery, larger tutorial entities, and the missing ScorpionHome lift binding.
+No pending processes at this checkpoint.
+
+Oakvale readability: removed inline hex-wrap expressions in deed count, father,
+bully and guard snippets; 11 focused tests pass, regenerated package 18/18 syntax.
+The frozen offline bundle below predates these Lua edits. Its host evidence is
+for its frozen bytes, not the newly regenerated readable package. DLL unchanged.
+
+# Current offline marathon checkpoint - 2026-09-14
+
+See [the marathon checkpoint](journal/2026-09/NEW_OAKVALE_MARATHON_2026-09-14.md).
+User selected offline-only and is at work. No installation, activation, profile or
+save changes; do not request live verification. Both full suites pass (1,511/1,528),
+with six later native tests and expanded complete-host checks separately green.
+
+Current stage: work/oakvale_entity_scalar_abi_integration. Native callback timing and
+entity scalar return ABI are corrected. Actual host verifies all281required methods,
+64entity VM file loads/default callbacks, emitted Barrel state writes, Init/persistence,
+entity ownership, Windows fibers and process drain before Lua teardown.
+Current disabled bundle: work/oakvale_offline_candidate_20260914 (30hashed files).
+DLL SHA256: 545f709a46c288ff3a881a09a79cf846f34cf874e162684779e34bf546116e74.
+No pending processes. Canonical runtime, installed game, profiles and saves unchanged.
+Live gameplay/save-reload parity remains unverified and deferred by user direction.
+
+The September 13 stop notice and older status below are historical.
+
+# Resume here (one page) — updated 2026-09-13 (converter candidate)
+
+## STOPPED FOR THE NIGHT — 2026-09-13
+
+User requested sleep; resume only when asked. Read the [night checkpoint](journal/2026-09/NEW_OAKVALE_CONVERTER_NIGHT_HANDOFF_2026-09-13.md) first.
+It supersedes running-process claims and earlier metrics below. Suite16 is terminal:
+1,488 tests, one failure and two import errors, all identified in that checkpoint.
+No root or worker processes remain running. Readable package has51 functions,
+18/18 syntax passes and two explicit native TODOs; integration is NOT complete.
+Latest common runtime stage: work/oakvale_timer_integration. Worker StartBarrelTimer
+checkpoint: work/start_barrel_timer/INTEGRATION.md (two later edits unvalidated).
+
+
+## Active converter marathon (2026-09-13)
+
+### Timer owner composed into common resource stage
+
+- Added prepare_oakvale_timer_integration.py and run_oakvale_timer_integration_checks.py. Composition validates all inherited source/helper hashes, preserves inherited implementation files (including LuaManager.cpp), and emits a cumulative patch against the unchanged runtime checkout. Generalized isolated timer preparation output and check runner without changing their defaults.
+- work/oakvale_timer_integration now includes marker/resource methods plus explicit registry lifetime policy, allocator propagation, transient timer state access, and last-member timer ownership. All three affected actual host translation units compiled; all 28 actual-FSE/real-Lua policy cases passed; six command exits 0; x86 executable SHA980834ba6c6f2871de4cda2efcb85c50af5531d1b9ca6a692a768924fcee35ad. Full common registration compile also passed, object SHA47487b437bf2d8966c4b88fecd3efdc3f837eaef70f68879f5c2d6cb5a44b30e. Cumulative patch git apply --check passed. No runtime modifications or activation.
+- Full DLL linking, scheduler teardown and restore ordering remain unproved; this integration does not close those gates. PostAttackStuff full dispatcher still needs four atomic adapters before emission. Worker continues StartBarrelTimer recovery.
+- Suite16 remains verified live at shell8977; no terminal result yet, visible failure/error markers require diagnosis once it finishes. Timer checks19461 and registration16542 consumed successfully.
+
+
+### Structured PostAttackStuff dispatcher candidate; timer proposal ready for review
+
+- Added isolated post_attack_body.lua: readable two waits with exact termination queries, scoped retained Dadtrigger, existing movie helper, then restoration and final triggerrelease. No goto/pointer temporaries. NOT wired into builder yet: four new lookup/query capabilities are still unimplemented (PostAttackStartIsAlive,TeleportToPostAttackStart,SetPostAttackVillageLimbo,PostAttackHeroNearTrigger). Existing emitted cutscene-only integration remains authoritative.
+- test_post_attack_dispatcher executes original1095bytefunction controlflow with explicit boundaries for initial lookup/alive, worldsetup, camera+retainedtriggerlookup, distancequery, movie,worldrestore. Real branches/frame/termination/return and finaltriggerdestructor call checked.108delay/cancellation scenarios passed1test0.825s. This does NOT prove phase internals; post_attack_cutscene already has its separate originalcaller proof, remaining atomiclookups need native operand/lifetime and compiled adapter checks.
+- Native atomic scopes for nextstep: initial name CStringstack12 -> lookupoutputstack16 -> IsAlive on returnedpointer; output inlinecleanup BEFORE nameclose. Teleport uses same key/output, forwards returnedmarker plus freshHero and false; closes output BEFORE key. Village limbo true/false each fresh key/output, passes returnedpointer and flag, closes output BEFORE key. Retained Dadtriggerstack28 constructedonce, nameclosedbefore distance loop; each distance uses freshHero andownedtrigger,5.0; finaltriggercloseDBEF5B after all restoration or cancellation. Native SetTimeAsStopped passes false plus parent+4C; current runtime method uses quest-owned m_stopTimeIndex, already matching storage intent but mergedstate/gameplay needs proof.
+- Timer worker proposal now ready: work/oakvale_timer_host_proposal/INTEGRATION.md and oakvale-timer-host.patch. Opt-in nativeLifetime=NewOakValeIntro, defaultoff; finalslot{file,policy}propagation; transient timer accessors and last-member ownership. All3realruntime translationunitscompile;28realLua/actualFSE policies; final1test26.760sOK,all6commands0,PE014c,exeSHA3bcb82db9f99ffa07230aeeab755c34e696a7e25d62ead9f0527638a1db853ae. Root has NOT yet reviewed/merged this proposal. Header/runtime sources remain unchanged.
+- Worker reassigned to StartBarrelTimer structured/native recovery, isolatedfilesonly. Marker helper is integrated from priorstep.
+- Fullsuite16 continues verifiedLIVE shell8977 (lastpollsamehandle), log nearing terminal but no summary yet; at leastoneF visible. Do not restart. All other root sessions consumed. No new persistent build in this dispatcher-only step.
+
+
+### Quest-marker helper emitted and common registrations composed
+
+- Added readable_manage_quest_core_markers.py with exact raw helper SHA guard, existing whole-native-function/literal/slot proof and generator integration. Builder replaces only ManageQuestCoreMarkers and records questMarkers. No new entry frame/condition; cancellation retains the installed marker while destroying retained Theresa->Trader->Father Things.
+- test_manage_quest_core_markers_readable passed2tests38.047s: final emitted whole-quest source invoked for28native comparisons across cancellation/tutorial/refcount/empty-Thing paths, no rawlabels/gotos/pointertemps in helper; changed draft rejected. Worker fullhelper gate1718nativecases and128actualFSE/x86Lua cases passed,4tests59.723s; isolated host evidence remains distinct from commonstage link/runtime validation.
+- Added prepare_quest_markers_resource_extension.py over postattackstage, merging AddCoreQuestMarker/RemoveCoreQuestMarker. Existing postattack preparation/registration runners now accept optional fragments/methods/output/prepare function; defaults unchanged. Commonmarker stageSHA845ba587eafd8425f2822474c7605aa85b986562f2ab102615a5c9fb13e118f2; allregistration compilepassed COFF014cSHA14414a74a6e26952248c11bbbd17958d3a16cf419cfe1d2b77d32551f90d28fc. git apply --checkpassed; no apply. Fullcommon owner linking/behavior stillpending (worker smoke harness usesbaselineheader, whereas commonstage registers many more capabilities).
+- Persistent buildsession14670 consumed exit0,18/18Lua syntax,51ledgerrows. Registration89746terminalconsumed. Marker source helper fromwork/manage_quest_core_markers/INTEGRATION.md fullyintegrated; broad suite16 startedbeforemarker changes.
+- Timer host integration delegated to /root/book_trader_home, isolated proposal only. Require registry opt-in metadata(defaultoff), propagated through final sorted allocator slots and retail-override prefix; allocator scriptName is file path, so don't infer policy from questname. Owner beforeInit, transient GetStateInt timer IDs bypass persistent globals, reject writes toownedIDs, owner destruction before speechlists; native/global quiescence/save-load remain separate. Agent ownsnewtimerintegrationfiles; root has not changed postattackstage contents beyond objective (timer parent stable).
+- Fullsuite16 stillRUNNING shell8977, log work/converter_marathon_suite_20260913_16.log shows at leastonefailure, no terminalsummary yet. Keep handle; don'trestart. No other root sessions active.
+
+
+### Native timer owner recovered; host integration remains required
+
+- Lifecycle audit found a concrete gap: readable Init uses TalkIntermittentTimer and later WatchTimer, but generated Lua never registers either timer. Native constructor DAACAE..DAACD6 registers via singleton143E8F8 slot15C twice, stores ambient+104 thenwatch+108. Native destructor DBEFC0..DBEFEF deregisters watch thenambient via slot160 before eight speech vectors and base cleanup. The current destructor TODO cannot safely become a no-op.
+- Added retail_oakvale_timers.h, independent owner with fresh singleton/vtable lookup for EACH register/deregister call, signed IDs preserved (including0/-1/duplicates), reverseclose, idempotent destruction, primary-error preservation and partial successful-construction cleanup. No runtime files changed and it is NOT yet attached to LuaQuestState/LuaQuestHost or exposed to generated Lua.
+- test_native_oakvale_timers executes original constructor/destructor timer regions under full witness hashes for25signed-handle pairs and switches singleton interface between everycall. Checks stores, reverseorder, call ABI/stack balance. 1test0.121sOK. Vectors/base destructor are outside this focused gate.
+- run_oakvale_timers_runtime_checks uses actual FSE types/x86 virtual engine doubles:56policies(50normalexplicit/deferredclosure+4partialconstructionerror+2cleanupfailure). Both commands0,PE014c,exeSHA495b2f1edb2ef9e20a72bc8ebe26ea1e29c7581152828de2d06e6268a396022d. Live registration side effect followed by native exception before handle return remains outside the proved contract.
+- Next integration decision requires constructor/lifecycle fidelity: LuaQuestHost.cpp constructor sets base/interface thencreates LuaQuestState; current script loading/Init occurs later in LuaQuestHost::Init. Timers must exist before Init state writes and be closed before RetailVillagerSpeechListOwner. Staged LuaQuestState has speechlistowner member nearline1071. Consider an explicit NewOakValeIntro host-construction hook plus state publication, with name/registration contract tested; do not merely add lazy registration at the first timer getter or remove destructorTODO without host ownership. Current host destructor only CleanupThreads(), then C++members; review state/VM destruction order (LuaQuestHost.h members state115,VM116) before attaching owners.
+- Background marker recovery full original function gate passed1280wait/cancel+432refcount/empty+6signedgold paths; agent compiling adapters, files not yet integrated.
+- Fullsuite16 shellsession8977 remains verified LIVE (lastpollreturned samehandle). Log has at least one F; terminal summary/failure names not yet available. Do not restart. No other root sessions active. Previous fullsuite15green; suite16 result pending. No new persistent readable build in this timer-owner step; owner integration is still outstanding.
+
+
+### Initial quest objective atomic scope recovered and compiled; suite16 running
+
+- native_oakvale_objective.py verifies caller DAC198..DAC219, actual GetActiveQuestName891880 bothret4paths, slotsA3C/4A0, SetObjective ret16, empty/quest literals. test_native_oakvale_objective executes original caller AND actual getter with/without active quest; checks three arguments staged across getter, ownedoutput return, exact four destructor order and balanced stack. Native/source/API mutations rejected.
+- retail_oakvale_objective.inc adds SetInitialOakvaleObjective: region2 thenregion1 thenobjective CString construction, GetActiveQuestName into ownedoutput, returned pointer forwarded unchanged to setter, ownedoutput thenobjective/region1/region2 cleanup. Failures preserve first error and close completed constructions once. Pre-return getter/constructor failure with partially constructed output remains outside contract.
+- Added method to prepare_post_attack_resource_extension alongside Heroacquisition. FullstageSHAe8bff3de6df10efc6b3d6716980177a297b4020d94c0e3155ca84181f0cfd89c; fullregistrationCOFF014cSHA4b895031c938dad1d4b5496b4f5c62b3fd8d37361daeaf8b248965a656aadca5. Patch git apply --check passed; not applied. Prior postattack27policy evidence refers to prior header hash and does not claim this new method.
+- ActualFSE/x86/realLua objective harness36policies passed: three returned-pointer cases (owned/alias/null), five failing construction/get/set stages and cleanup failures, staleclosedowner rejection, exact cleanuporder. All3commands0, PE014c exeSHAadd7a441713b51ad94a84328548fad3a5debda35fba74b6b5f4abe011471f984. Generic runner parameterized for harness/output/limits/native-scope; original postattack default unchanged.
+- Builder replaces initial objective genericwrapper block with scoped atomicmethod and records initialObjective. test_oakvale_objective_readable checks final emitted Main16bindings/finalization/state/cancel/deactivation/objective/thread/mission sequence. Combined emission/native gates4tests40.431sOK. Persistent buildsession66038 consumed:exit0,18/18Lua syntax,51ledgerrows. Still disabled/uninstalled.
+- Worker completed AffairMan native outer dispatcher2016boundedcomparisons, no mismatch; updated generator banner/report. Worker now recovering ManageQuestCoreMarkers DBE4E0size944 with three retainedThings/destruction order and cancellation marker behavior. No shared edits requested.
+- Full recovery suite16 RUNNING, authoritative shellsession8977. Log work/converter_marathon_suite_20260913_16.log; terminal result will be work/converter_marathon_suite_20260913_16.result.json. Started after latest persistent build; do NOT restart or infer completion from elapsed time. Pollsamehandle. All other root sessions consumed. Prior fullsuite15passed1445tests; suite16 result pending.
+
+
+### Husband complete candidate integrated; startup finalization review
+
+- Builder now uses affair_man_complete.generate, skips the already-applied husband label/structure/presentation passes, records completePass pending evidence and explicit __resource_main ledger mapping. Existing generic final naming remains. New test_affair_man_complete_readable checks final Init scope/actor, three atomic animation calls, one bound-conscious registration, ledger mapping and18 final-vs-reviewed Main cancellation traces. Combined with wife_complete_readable:2tests62.375sOK.
+- Native condition recovery initially rejected the changed declaration prefix, correctly. Reviewed its exact two lines (one local declaration list and local alive=true, no effects), added SHA8c9bce00b91320cddb022c421023b9f8707b3d7680542c166ab3d3ae2b7db91d to the husband entry witness; no native gate weakened. Existing native condition tests4/4passed0.840s. Emission harness separately supplies a condition mock; isolated husband generator still leaves condition insertion to builder.
+- Wife generator now includes worker's two animation-site fixes via PlayWifeArgumentAnimation. Existing emitted Wife integration passed against it. Worker native16animation,32actualFSE/x86Lua,768wholecandidate+3errors,2092dispatcher scenarios remain separate gates. Runtime method remains in isolated animation_proposal, requiring shared merge. Worker is now doing AffairMan native outer dispatcher; do not treat source-to-source traces as that proof.
+- Resolved prior Main DAC146/DAC152 uncertainty: LuaQuestState::FinalizeEntityBindings invokes PostAddScriptedEntities_CScriptBase_API then PostAddScriptedEntities_API (source lines2505/2506). FableAPI.cpp maps first toCB8930; GameInterface.cpp maps second to vtable64/slot100, whose retail target is6E7460. Do NOT add duplicate finalization calls to Lua. Allocator bridge/count/failure/live scheduling still need full integration.
+- Next startup recovery target: native objective block DAC198..DAC218 constructs empty region2, empty region1, objective literal, then GetActiveQuestName into owned output atstack1C; its returned alias is the first operand to SetQuestCardObjective with the three earlier-staged operands. Cleanup order is owned output,objective,region1,region2. Current Lua converts active name to std::string and reconstructs four keys, changing ownership/order. Existing GameInterface.h APIs expose exact CCharString pointer signatures. Need atomic reviewed adapter and native caller/callee ABI check, including returned-alias vs owned-output behavior.
+- Persistent generation session19823 consumed:exit0,18/18syntax,51native ledger rows. No root sessions active. Runtime proposals remain unapplied; no game installation or goal completion.
+
+
+### Post-attack compiled adapter and missing DeadFather quest binding
+
+- Added prepare_post_attack_resource_extension.py over the verified WatchBarrels stage, preserving inherited source/helper hashes. It adds and registers TryAcquirePostAttackHero from retail_post_attack_actions.inc without applying anything. Candidate SHA27f37a90ee3f0c0731fd0531a4270e74dfcdfcf0375015b371482237f8c90150. Patch git apply --check passed in ForgeFSE-retail-shadow.
+- run_post_attack_scope_runtime_checks.py compiled actual staged FSE class + real Lua. 27 policies passed: empty/nonempty Hero, returned acquisition true/false independently of populated resource, getter/acquisition exceptions including mutation before throw, stale/closed IDs, fresh Hero on repeated calls, unavailable API rejection, exactly-once owner destruction. All three commands0, PE014c, executableSHAd4e5452b065c371e36c42f0274c47fe6e383017e44c035105065531367677fcc. Engine calls doubled; full compiled movie/quest composition still pending.
+- run_post_attack_registration_compile.py passed all staged registration templates, COFF014c, objectSHAd9b27e40d6662086303d6fcbda18cbf92fc628d32fe1deb154cf5317499c84fd. Report wording was corrected from copied WatchBarrels labels; no test evidence changed.
+- Found functional Main gap: raw/readable emitted15bindings; native DABAC0 has16. readable_new_oakvale_main_bindings.py verifies full2018native bytes, prior1670bytebindingwitness, literals/callback stores, and exact missing draft scope; restores OVI_DeadFather after NOVI_CreatedBeetle. Also replaces accidental stale-pointer deactivation argument with native EBP=0. Builder records mainBindings evidence. Two tests0.019sOK verify16orderedbinding callbacks and postattack startup/cancellation, reject altered source/native correspondence.
+- Main is not yet fully recovered. Inspect native DAC146 callCB8930 then game slot100 atDAC152 (not represented as a separate call in current Lua), objective CString scopes DAC198..DAC218, native spawned-thread initialization, RegisterMain and destructor. Restoring the missing binding does not certify all Main semantics or allocation-failure behavior.
+- Worker completed isolated affair_man_complete candidate (Init/rawanimation fixes,384nativeInit+24animation,180sourcecomparisons,76compiledpolicies) and is now correcting the shared Wife animation CString/raw-byte ordering gap. Root has NOT integrated affair_man_complete yet; use work/affair_man_complete/INTEGRATION.md, skip old husband structure/presentation when integrating. Persistent generation session22581 consumed:exit0,18/18syntax,51ledgerrows. No root processes active. Goal remains active; no runtime install.
+
+
+### Post-attack movie scope recovered; Wife dispatcher correction emitted
+
+- Added post_attack_cutscene.lua and readable_post_attack_cutscene.py, integrated into the builder. Native DBEDA5..DBEEBC stores DadFound, constructs Hero control, makes one acquisition attempt (including empty Hero/failure), constructs map/HERO entry then movie, pauses/fixes camera, runs CS_OAKVALEINTRO_HESDEADJIM with null flags/input and setup=false/skippable=true, then clears camera/pause and destroys movie->map->control. Surrounding PostAttackStuff lookup/distance/cleanup-join code is still pending.
+- test_post_attack_cutscene executes original native caller instructions with ABI-checked engine doubles for four Hero/acquisition combinations, comparing exact scoped events; three separate Lua-error scenarios verify cleanup continues and primary macro failure survives cleanup failure. test_post_attack_readable checks final emitted helper against original caller and rejects source/native/literal/API-slot changes. Combined four tests30.297sOK, plus expanded API mutation gate1test0.025sOK.
+- retail_post_attack_actions.inc proposes TryAcquirePostAttackHero, forwarding fresh empty/nonempty Hero without filtering. It is not yet merged/registered/compiled in a runtime stage; this is the next concrete adapter gate. Existing map/movie/macro owner integration and real engine exceptions remain separate gates.
+- Worker completed Wife native outer dispatcher:2092 bounded original-byte scenarios with five explicit phase boundaries, identifying and fixing the first approach frame/termination ordering. Root reran test_wife_complete_readable against the correction:1test33.917sOK. Worker moved to AffairMan Init/animation review; found existing animation bridge string/raw-byte ordering concerns shared by Wife, so zero comments does not imply complete semantics.
+- Persistent readable build exit0,18/18 Lua syntax,51native ledger rows. Current renamed-local metrics277/264semantic/13scratch reflect new already-named source inputs and are not a completion measure. Runtime and game installation remain unchanged. Full suite15 remains last broad regression; these changes have focused gates only.
+
+
+### Wife complete-candidate builder integration; native dispatcher audit active
+
+- Shared readable builder now uses wife_complete_candidate.generate directly, without reapplying the earlier structure/presentation passes. Recovered Init preserves copied-Thing consumption before SaidRunningLine=false; intermittent conversation uses the atomic CString/Hero ordering adapter. Completion-pass evidence and pending limits are retained, and Wife ledger rows now expose implementationFunction.
+- New test_wife_complete_readable exercises the final builder output: one conscious condition, recovered adapter calls, no executable native labels/gotos or TODO(native), Main ledger mapping, 24 phase/cancellation trace comparisons and two injected-error cleanup comparisons. Passed 1 test in 27.407s, process0. Earlier integration attempts caught a test incorrectly rejecting provenance comments and the absent explicit Wife ledger field; both corrected. Persistent readable package has not yet been regenerated for this integration.
+- Background /root/book_trader_home is auditing the original Wife Main dispatcher. It found a concrete first-distance-failure ordering discrepancy: DB34A9->DB34B0 yields at DB34B5 and checks termination at DB34BA before running-line/home checks. Candidate correction and native proof remain in progress; the passing emission comparison does not prove this native behavior. Consume agent results and rerun affected gates before publishing the updated readable artifact.
+- Root next quest-body target remains PostAttackStuff DBEB20, size1095; existing native_post_attack_* witnesses cover resource graph, movie flags/lifetime, scalar/teleport/limbo/distance/logbook/cleanup evidence. Current readable body still lacks Hero/map/macro ownership and has a cleanup goto. No runtime installation or goal-completion claim.
+
+
+### DeadFather integrated into readable package
+
+- Reviewed dead_father_candidate.py and work/dead_father_converter/INTEGRATION.md. Added generate_dead_father_readable_candidate.py with existing full native/slot/literal/raw-draft proofs, bound-host no-argument alive-condition normalization, and Init/Main/OnPredicateFail entrypoints. No entity state invented; parent DadFound remains authoritative. Four scoped runtime methods and raw animation-byte semantics retained.
+- Builder emits recovered DeadFather lifecycle, records pending engine limits, and maps native Init/Main/OnPredicateFail ledger rows to DeadFather-prefixed functions. No second condition insertion; no conscious condition substitution.
+- test_dead_father_readable checks emitted noTODO/LAB/goto/raw pointer vars, one alive condition, four cancellation stages, Init actor call, parent flag, marker removal timing, outer cleanup and empty predicate-fail override. Combined with test_dead_father_main:4 tests33.135sOK process0, including existing3072 native comparisons.
+- Persistent readable generation exit0,18/18 Lua syntax,51native ledger rows. Four DeadFather methods still require common staged-runtime merge/registration and owner validation; no DLL/game install. Pre-return lookup ownership, condition/scheduler/save-load and downstream noncanonical-animation-byte interpretation remain documented gates.
+
+
+### Fully structured Bully integrated; regression suite15 passed
+
+- Reviewed work/bully_converter/complete_structure/INTEGRATION.md and generator. Switched readable builder to bully_main_structure.generate, retaining original native prerequisites, item lowering and outer-region witness. Updated structure report to no unstructured joins, preserved phase/source-differential validation limits.
+- test_bully_structured_readable checks emitted no goto/LAB/TODO(native)/pointer variable names, presence of BullyAcquirePrepared/BullyRunoffControls and disabled registration, then20 emitted-vs-reviewed wholebody cancellation/macro-error scenarios.1test43.199sOK exit0. Persistent readable build exit0:18/18 Lua files parse,51 native ledger rows. No runtime changes.
+- Full suite15 is terminal and passed:1445 tests1285.285sOK; process0 elapsed1292.231494s, log work/converter_marathon_suite_20260913_15.log and .result.json. Session89515 consumed/closed, do not poll/restart it. Discovery began before newest WatchBarrels files and subsequent integrations; those have separate focused gates and will require later regression coverage.
+- Bully structural completeness does not close merged capabilities/owner/state/persistence/scheduler/gameplay gates. Worker continues AffairWife ownership/readability; root reviewed DeadFather contract and still owes its readable integration.
+
+
+### WatchBarrels reward runtime and readable integration complete offline
+
+- Extended actual full-class runtime harness to gold and beetle operations:32 added cases inject failure at each of seven operation steps plus independent cleanup failures. Owned outputs differ from returned aliases; all strings/Things close, original failure preserved. Gold name closes before item key; beetle names close before health2.0/true. Position1,-2,3.5 forwarded. Total56 snapshot/reward cases passed; Lua build/build/test0, PE014c exeSHA8551f740ae1d11b18558b492485c3ef0f879aded10385f4514d0dd2f0fc79815. Getter/create failure remains before successful output construction in these cases.
+- Added readable_watch_barrels.py with exact raw-body/native647-byte guards, composing scoped snapshot/decision helpers and native AddBadDeed(quest,deed) callback. Readable builder records WatchBarrels remaining validation limits. Original string search accidentally found a function-name mention in earlier comments; corrected to declaration-line anchors in lowerer and emitted-test extraction. Preserved the rest of the quest.
+- test_watch_barrels_readable passes1test38.384s: actual emitted helpers execute four breaks with baddeed1/gold1/beetles2, one snapshotClose and refresh-error preservation despite cleanup failure. Persistent regeneration exit0:18/18 Lua files parse;51 native ledger rows. WatchBarrels has no raw labels/TODOs in readable package.
+- Staged full patch passes git apply --check against unchanged runtime. Not applied/installed. Single whole-native snapshot+loop composition, parent state scheduling/persistence, pre-return owned output exceptions, merged DLL/gameplay remain pending. Full suite session89515 still requires final result; it predates these new files/edits. DeadFather and completed Bully await root integration; worker now recovering AffairWife Init/conversation ownership.
+
+
+### WatchBarrels staged owner and compiled snapshot checks
+
+- Added prepare_watch_barrels_resource_extension.py over BarrelThug stage. Adds snapshot shared owner kind, deterministic Close integration, NewBarrelWatchSnapshot and two reward methods, plus snapshot Refresh/Count/Close Lua bindings. Parent/source/helper hashes verified. Unapplied proposal in work/watch_barrels_resource_integration, candidateSHA8c3290e44a8870bf8a116448836195e3504b6a7bd2653e4038cb3811d845e798.
+- run_watch_barrels_registration_compile.py passes full staged registration compilation x86COFF014c; objectSHAbad81cc10432964841684bc6aecf7b8e66dc211ef0fa40750230686c0a52125a. Includes reward methods; compilation alone is not their behavior proof.
+- watch_barrels_scope_runtime_harness.cpp executes actual full-class snapshot through real Lua.24 cases: vectorcount0/2, getterreturn0/1/7, getter writes vector then throws, explicit/deferred Close. Same vector reused on second refresh, keys destroyed before vector, one Close total, stale Count/Refresh rejected, retained Lua reference and garbage collection inert after scope teardown.
+- Lua build/build/test all exit0, PE014c, exeSHA946e5d437ed854002f1fb2a7f7a7538332cdae519bd41f757ff679f57c0def8a. Engine vector getter/destructor are doubles; native actual destructor separately compared. Reward runtime execution and full quest integration remain pending. No runtime installation.
+- Worker provided stable partial Bully item structure at work/bully_converter/structured_candidate/INTEGRATION.md; explicitly reassigned remaining16 gotos/TODOs toward full structured Main. Root still owes DeadFather integration and regression results.
+
+
+### WatchBarrels snapshot lifetime recovered
+
+- Added watch_barrels_body.lua/watchBarrelsWithSnapshot. One empty snapshot owner spans repeated Refresh calls and decision loop. Refresh return<=0 controls frame/termination/retry; after success a separate termination query precedes Count; loop gets actual vector count. Every exit and Lua error attempts snapshot Close once, preserving original error.
+- test_watch_barrels_snapshot.py executes original647-byte entry/count/cleanup and actual50-byte8AC970 vector destructor.216 cases cover pending0/1/3, vectorcount0/1/4, allocated-empty versus null vector, cancel0..5 and inline/direct-helper cleanup paths. Distinguishes getter return1 from actual vector length. Element destructors receive flag0 in vector order; cdecl free and final caller stack balance verified. Decision loop remains separately tested boundary.
+- Added retail_barrel_watch_snapshot.h proposal with empty three-pointer vector, repeated refresh scoped CString, independent byte-count/12, deterministic idempotent Close and stale-use rejection. Not yet factory-registered/staged/compiled; resource scope must own it before Lua use. Getter mutation/exception teardown requires compiled checks.
+- Combined snapshot and consequence-loop gate2 tests1.631sOK exit0 (216+900 comparisons). Snapshot class and reward methods still require actual FSE/Lua integration before replacing emitted WatchBarrels. Full suite session89515 continues; poll same handle or result file before declaring terminal.
+
+
+### WatchBarrels consequence callers and adapter source recovered
+
+- Expanded test_watch_barrels_loop.py: original gold/beetle branches now execute instead of jumping over reward blocks. Tests verify all CString constructor/destructor scopes, getter/CreateCreature operands, gold insertion to owned Thing40, beetle max-health2.0/true on owned Thing52, and owned temporary cleanup. Return aliases deliberately differ from owned output addresses.900 comparisons still pass,1test1.419sOK.
+- Added retail_watch_barrels_rewards.inc source proposal with RewardRemainingBarrel and SpawnBarrelBeetle. Gold lookup name closes before item key; item closes before barrel. Beetle script then definition keys; create(false), definition/script destructors before health, then owned beetle closes. Exception cleanup preserves first error and attempts remaining owned locals. Pre-return getter/construction ownership remains unresolved; these new methods are not staged/compiled/applied yet.
+- Updated readable decision helper to pass explicit BarrelBrokenPos_x/y/z to SpawnBarrelBeetle. Existing900-case test verifies position table mapping as well as reward selection. Raw native position-pointer ABI checked; state float extraction/engine integration remains a later gate.
+- Full suite session89515 remains in progress as last polled; log work/converter_marathon_suite_20260913_15.log. Do not restart without checking confirmed terminal state. DeadFather worker completed isolated candidate in work/dead_father_converter/INTEGRATION.md; now delegated Bully recovery. Root integration still pending.
+
+
+### WatchBarrels decision loop recovery; broader regression in progress
+
+- Added watch_barrels_loop.lua/processBarrelBreaks for DBE960..DBEAD4 after snapshot count and prior termination query. Initial instantaneous flag clear, termination, AttackOver short circuit, per-break signed32 counter increment/flagclear, first-break bad deed0, gold at total-1, beetle when broken>total-4, frame and termination order preserved. Reward/generation adapters and caller snapshot ownership remain explicit boundaries.
+- test_watch_barrels_loop.py executes original decision instructions with consequence blocks abstracted:900 cases over total0..8, four break patterns, attack ending0/1/3/8/12 and cancellation0/1/2/5/10.1test1.105sOK exit0. Exact647-byte WatchBarrels Main SHA3c48ce5c57e30e903c5e6790f7dfd2d4a5cf9b7664f433134d6909840fd06bf2 pinned. Helper remains isolated; full snapshot refresh/count/destruction, temporary gold/beetle ABI adapters, merged quest entry/helper integration still pending.
+- Started full recovery unittest discovery before adding new WatchBarrels test. Log work/converter_marathon_suite_20260913_15.log; terminal record will be sibling .result.json. Confirmed running via exec session89515 at checkpoint; do not restart without polling that handle/terminal record. No failing markers in latest log, but no suite completion claim. This run may not discover new files added after it started.
+
+
+### BarrelThug integrated into readable package
+
+- Added test_native_barrel_thug_dispatch.py:480 original-byte entry/dispatcher/predicate/outer-cleanup comparisons. Covers initial DoneIntro, talk, ordinary/any/excluded14 hit combinations, entry/post-construction cancellation and independent phase failures. Executes original talk CString and hit one/two/three CString cleanup, actual return epilogues and empty-control inline destructor; separately verified phase bodies are abstracted.1test0.684sOK.
+- Added generate_barrel_thug_readable_candidate.py composing eight readable helper modules with entity Bool/Int state and Init/Main entrypoints. Verifies exact native Main/Init hashes, raw draft hash and bound-conscious condition witness. Phase source hashes and remaining limitations recorded.
+- Readable builder emits BarrelThug and maps Main/Init ledger to runBarrelThugMainAfterCondition/initializeBarrelThug. test_barrel_thug_readable_integration checks emitted noTODO/noLAB/no raw variable placeholders, single bound condition, Init/entrycancel, disabled registration and native ledger.1test31.460sOK exit0.
+- Persistent generation exit0:18/18 Lua files parse,51 native ledger rows. Readable package now70 TODO occurrences (raw historical diagnostics1203 retained). BarrelThug now readable in Entities/NOVI_BarrelThug.lua; no installation or registration enabled.
+- Remaining gates: single unabstracted whole-engine execution, pre-return native getter ownership on errors, merged adapter/owner/state/persistence/scheduler/DLL and gameplay. Root still owes broader regression suite after recent integrations; next recovery targets remaining quest/AffairWife/Bully/AffairMan gaps while DeadFather is delegated.
+
+
+### Victim integrated into readable package
+
+- Reviewed work/victim_converter/INTEGRATION.md and isolated complete phase composition. Added generate_victim_resource_candidate.py with raw draft SHA84ae057af7f25b7901ff24a3fbdbc08092d2841a10c5c816ca1d303dcd15ab5a guard, byte-backed conscious-condition verification, bound-host no-argument registration normalization, entity DoneThanks/DisplayedGameInfo storage, and AddBadDeed(quest,me,deed) callback glue.
+- build_readable_new_oakvale now emits Victim candidate and maps Main/Init to VictimMain/VictimInit in native ledger. Phase code unchanged; candidate pending validations retained in readability report. Six actor methods and reused ownership/movie/conversation services still need merged runtime validation.
+- test_victim_readable_integration checks emitted syntax/disabled registration/no raw labels/placeholders, exact single condition call, entry cancellation before resource allocation, entity state reset and callback arguments, plus ledger function linkage.1test33.085sOK exit0. An initial copied test assertion mistakenly compared argument count to false; corrected to zero before passing gate.
+- Persistent readable regeneration exit0:18/18 Lua files parse;51 native ledger rows; historical raw1203 diagnostics retained. New readable NOVI_Victim.lua is available for inspection. No game registration/install; scheduler/state persistence and whole-engine validation remain unresolved as documented.
+
+
+### BarrelThug all seven adapters exercised with real Lua
+
+- Extended barrel_thug_scope_runtime_harness.cpp to execute placement, conversation creation and remark addition using actual staged class/FSE types/Lua. Full gate36 policies: prior8 Init/reset/speech/follow,16 placement and12 remark cases. Includes null/present raw Hero; lookup throwing before output construction, teleport/facing/line/Hero errors and independent key cleanup errors.
+- Placement asserts teleport uses returned lookup alias while destructor receives distinct owned output; Thing closes before key, then fresh Hero/facingfalse. Empty CString payload still receives deterministic destructor. Remark creation forwards actor,false,false and signed conversationID -7 to AddPerson; line forwards same ID, owned key,false,actor,rawHero. Original operation errors survive key cleanup failures.
+- Lua build/build/test all exit0; actual x86 PE014c exeSHA716c46b5419467e17e0dae19f34e337fbffcdbaf1a23bba4ad5380548592a58c. Resource candidate unchanged SHAaa996f74bc41fb56397e5e23df3de9bb2c891d7ca494868ce28bbaf136cf3502. Updated report limits to reflect expanded coverage without changing tested adapter code.
+- Remaining: full original Main dispatcher/condition/predicate composition; getter failure after native output construction but before return; engine reset/lifetime/scheduler/state and DLL/gameplay validation. Runtime proposal unapplied; readable integration still pending.
+
+
+### BarrelThug staged full-class registration and first runtime checks
+
+- Added prepare_barrel_thug_resource_extension.py, staging seven methods over verified Theresa proposal in work/barrel_thug_resource_integration. Validates parent/source/additional/helper hashes; copies full inherited artifacts and emits unapplied multi-file patch. Candidate resource SHAaa996f74bc41fb56397e5e23df3de9bb2c891d7ca494868ce28bbaf136cf3502.
+- run_barrel_thug_registration_compile.py compiles full staged registrations including bound-conscious host with actual FSE types. Passed exit0, x86 COFF014c; object SHAb532d30df71aaf8fd1cd726926e11c117c9c040740d74dbd331793e760897b0f. This is compilation, not linked runtime/gameplay proof.
+- barrel_thug_scope_runtime_harness.cpp reuses established full-class API doubles and executes actual staged Init/reset/speech/follow through real Lua.8 policies over controlled/empty resource, null/present Hero and selection0/2; stale reset after explicit release rejected; repeated scope close idempotent. Engine reset double deliberately records call without changing resource so forwarding can be inspected independently.
+- run_barrel_thug_scope_runtime_checks.py: Lua build/build/test all exit0, PE014c, exeSHAe580e3d0ea233b6dd9b97367d6c75690c3dde8f80dd2f8f866ed65916a1be9a8. Placement/remark runtime behavior, native full dispatcher/predicate, merged engine ownership/state/scheduler/DLL/live remain pending. Runtime checkout untouched.
+- Worker completed isolated Victim full Init/Main; work/victim_converter/INTEGRATION.md ready for root integration. Worker now assigned remaining DeadFather (or Bully if already covered), keeping shared builder and handoff root-owned.
+
+
+### BarrelThug Init and runtime adapter source; placement ABI test corrected
+
+- Recovered barrel_thug_init.lua: DoneIntrofalse and LastTimeSpoken9999 before damagefalse/killfalsefalse/combofalse. test_barrel_thug_init executes exact65-byte DB6BF0 body SHAd2dc4a56b4f8265bafa812550a582da8e8b2b0e989bee90c0e8bf32f2b45d8ba across6 initial-state combinations and compares Lua/ABI events.
+- Corrected earlier intro emulator boundary: lookup8A7D60 consumes TWO args (ret8), teleport88E540 consumes THREE (ret12). DB6DC0's push0 is staged for teleport across lookup, not a lookup argument. Previous doubles incorrectly consumed3+2 instead of2+3, obscuring that fact while total stack balanced. New vtable and both lookup-return/teleport-return opcode checks pin the callee contract; corrected902 intro comparisons pass. No recovered Lua change needed; placement adapter correctly calls teleport(actor,returnedAlias,false). Earlier chronological notes must be read with this correction.
+- Added retail_barrel_thug_actions.inc with seven proposed methods: InitializeBarrelThugActor, ResetResource (unconditional helper2), SpeakBarrelThug (fresh Hero even empty control), FollowBarrelThugHero (1.0,true), PlaceBarrelThugAtStart (owned output versus returned alias, reverse cleanup, facefalse), NewBarrelThugRemarkConversation and AddBarrelThugRemark. This is source only: not yet staged in full class, registered, compiled or applied. Getter exceptions before returning ownership remain an explicit integration concern.
+- Focused Init/intro gate4 tests2.159sOK process0. Full dispatcher/entry/predicate validation and compiled real-FSE/Lua adapter checks remain next, before readable integration. Background worker continues Victim full composition/runtime proposal.
+
+
+### BarrelThug hit response and initial Main composition
+
+- Added barrel_thug_hit.lua, DB79FC..DB7BB0 after native hit predicate string cleanup. Entry termination; two fresh raw Hero ally updates in opposite directions; parent AddBadDeed2; movie128; pause; retained control16 prepare/acquire4 retry; post-acquisition termination; owned Thing200 ordered health check; WHY_HIT selection0/nonblocking task wait; unpause/movie destruction. No speech/final speech termination when health is nonpositive or NaN.
+- Extended native conversation emulator for hit branch without replacing instruction bytes.480 comparisons cover health0/positive/negative/NaN, busy0/2, cancel0..9, acquisitionpending0/1/3 and held/empty control. Checks ally operands even for null Hero, parent receiver/deed2, movie/key/Thing slots, real cancel epilogues and stack return. Engine methods and AddBadDeed are boundaries; hit predicate before79FC remains outside this test.
+- Added barrel_thug_main_body.lua composing intro, talk, timed remarks, hit and frame loop with one outer resource and caller-owned bound-conscious registration. test_barrel_thug_main_body runs actual helper composition on no-intro/no-talk/returned/no-hit routes with four outer termination points and tests original phase error survives failing outer cleanup.
+- Combined Main composition/hit/talk gate6 tests7.458sOK exit0. Full original Main dispatcher/entry/predicate comparison remains pending; do not treat Lua composition checks as native parity. Init and all pending BarrelThug adapters still need recovery/staging and real FSE/Lua validation. Helpers remain isolated, no readable regeneration/deployment yet.
+
+
+### BarrelThug timed remarks recovered
+
+- Added barrel_thug_timed_remarks.lua for native DB73A0..DB7924. Parent returned flag short-circuits initial timer read; inactive/expired route term-checks then unconditionally resets retained control via CD2770. Active route reads broken flag between termination checks, creates conversation with actor/false/false and adds fresh Hero before threshold selection.
+- TEMPT thresholds10,20,25,30,34,38,45 and WELLDONE thresholds10,25,35,45 preserve strict timer<threshold and LastTimeSpoken>threshold. Each failed threshold rereads timer; LastTimeSpoken queried only after timer comparison succeeds. Selected line gets its own termination check, owned CString/fresh Hero/add-line/destructor, then fresh timer read stored to LastTimeSpoken. No match leaves LastTimeSpoken untouched.
+- test_barrel_thug_timed_remarks.py:2264 original-byte comparisons passed (both flags, seven prior LastTimeSpoken values,20 timer boundary values, cancellation0..3 and24 varying-timer sequences). Original signed branches, all11 line constants/stack CString receiver checks, conversation ABI and real cancellation destructor/return run; engine calls are doubles.1test3.786sOK exit0.
+- ResetResource, NewBarrelThugRemarkConversation and AddBarrelThugRemark are explicit pending runtime adapters; GetBarrelWatchTimer already exists in prior proposals. New helper remains isolated pending remaining hit phase/Init/dispatcher and runtime integration. This reduces a recovery gap, not emitted TODO count or deployment gates.
+
+
+### BarrelThug introduction recovered through movie/follow transition
+
+- Added barrel_thug_intro_prepare.lua and barrel_thug_intro.lua, structured DB6CFB..DB6F4E. Retained control priority4 retry; wait for parent BarrelManLeftHeroInCharge; termination ordering; place at M_WHouse_ManStart, face fresh Hero with snapfalse, pause3.0; movie/pause; owned Thing health gate; EXPLAIN selection0 and native task wait; DoneIntrotrue before fresh-Hero FollowThing distance1.0/true; unpause/movie destruction.
+- test_barrel_thug_intro_prepare.py executes original bytes and actual cancel epilogues:198 prelude comparisons plus704 complete intro comparisons. Includes pending acquisition/wait states, initially held control, cancellation0..10, positive/zero/negative/NaN health and busy speech. Checks original placement ABI uses lookup returned alias for teleport while destroying stack-owned output, string lifetime, facing arguments, movie/Thing receivers, follow operands and state-store ordering, final stack balance.
+- Empty literal at122D70E verified as zero byte (RData.string_at returns None for empty text). Initial full test mismatch was that test decoding, corrected without altering recovered Lua.
+- Combined intro/conversation gate5 tests9.635sOK exit0. Runtime calls remain doubles; PlaceBarrelThugAtStart, SpeakBarrelThug and FollowBarrelThugHero adapters not staged yet. Lua StartMovie internals and outer control destruction modeled in tests. Helpers still isolated; Main dispatcher/timer/hit/Init and actual runtime ownership/registration/state/live integration remain pending.
+
+
+### BarrelThug composed conversation movie and acquisition
+
+- Added tools/script_recovery/barrel_thug_conversation.lua: native DB6F86..DB73A0 entry termination, movie, pause, prepare retained control, priority4 acquisition retry/frame/termination, post-acquisition termination, existing four-way speech helper, unpause/movie close. Main must close its outer control on false. Helper remains isolated, not emitted.
+- Extended test_barrel_thug_talk_body.py to execute original movie/acquisition and speech instructions together, through actual cancellation epilogues and returns: 1920 cases (state flags, four health values including NaN, busy tasks, cancellation0..9, acquisition pending0/1/3, resource initially present/absent). Existing336 speech cases also pass.
+- Acquisition cancellation DB7C44 uses inline movie pImp cleanup6E7AB0 then base destructor99A430, then control destructor7E74D0. Test checks both receivers, order and base vtable126008C before normalizing to movie.close. Other cancellation paths call movie destructor6E7B80; entry cancellation constructs no movie. Native stack return balance checked.
+- Added12 Lua bridge-error scenarios: failures during preparation/acquisition/health/speech/task/frame still attempt unpause and movie destruction, preserve first error even if both cleanup calls fail, and release any temporary Thing.
+- Focused gate:3 tests5.156sOK process exit0. Engine APIs remain doubles; StartMovie internals and outer caller control release modeled on Lua side. Runtime adapter SpeakBarrelThug, full Main composition, staged owner integration and gameplay remain pending. No runtime changes or installation.
+
+
+### BarrelThug conversation recovery started
+
+- Remaining readable TODO distribution inspected: quest22, AffairMan4, AffairWife26, BarrelThug42, Bully15, Victim53, DeadFather3. Victim remains delegated.
+- Added barrel_thug_talk_body.lua for DB7052..DB738A, inside already acquired movie/control scope. Parent returned/broken flags read with native termination-query ordering; four health-gated speech choices preserve method2 for SCRMSG_TEMPT/WELLDONE and method0 for WHY_NOT_SMASH/OUTRO. Temporary Thing closes before speech; ordered health>0; task polling and final termination retained.
+- test_barrel_thug_talk_body.py passes336 original-byte comparisons over both state flags, positive/negative/zero/NaN health, busy task and cancellation1..7. Actual branch/x87/temporary destructor/speech setup/wait execute; native APIs are doubles. Full Main bytes DB6C60..DB7CF1 SHAeafde7cb9a35b3f6d7c158c455496af2ea89444352b04e4f7b39dcbde39ada09 pinned.1test0.525sOK.
+- Helper is isolated, not yet emitted. SpeakBarrelThug adapter remains to be staged (fresh raw Hero, controlled resource speech and exact selection/booleans). Caller movie/acquisition/cleanup, intro, timer/nag/hit and Init still pending.
+
+
+### LiveFather readable integration
+
+- Reviewed isolated candidate and INTEGRATION.md. Added generate_live_father_resource_candidate.py, byte-hash-gated on raw draft, with entity PenniesGiven owner, Init/Main entry points and native helper AddBadDeed(quest,me,deed) callback. Normalized conscious-condition call to the no-argument bound-host API; verifies existing native entry witness and exactly one registration.
+- Readable builder now emits LiveFather candidate, maps native Main/Init ledger rows to LiveFatherMain/LiveFatherInit and reports staged owner/runtime limitations. Phase code unchanged from worker's native-checked candidate.
+- test_live_father_readable_integration verifies emitted syntax/disabled registration, no raw labels/placeholders, condition before frame, Init resetting isolated entity state and exact bad-deed callback injection. Combined with original entry/routine tests:5 tests30.820sOK, process exit0.
+- Persistent readable regeneration exit0, syntax passes. Runtime source unchanged. Full merged owner validation, active-quest getter pre-return ownership, scheduler/persistence/live gameplay remain pending; no full-completion claim.
+- Victim recovery remains delegated; root can now tackle remaining raw quest/helper/entity gaps and merged runtime review.
+
+
+### Theresa integrated into readable package
+
+- build_readable_new_oakvale now uses verified Theresa candidate, retains entry evidence/validation limits, and maps native Main/Init ledger rows to runTheresaMainAfterCondition/initializeTheresa. Candidate generator accepts explicit draft_path and still rejects changed raw draft.
+- test_theresa_readable_integration runs emitted readable output through actual-helper72 route/cancellation scenarios and entry/Init checks; checks disabled registration, ledger mapping and absence of raw placeholders. Initial unittest discovery also included imported candidate test class:3 tests41.000sOK. Removed direct class import to avoid duplicate discovery. PowerShell stderr redirection reported NativeCommandError despite unittest OK; this is not a failing test. Subsequent generation used subprocess with merged output and explicit exit propagation.
+- Authoritative readable generation completed exit0. Package syntax passes;51 native function ledger rows,629 renamed locals535semantic94scratch;1203 historical raw diagnostics retained. Emitted Theresa454lines,zeroTODO/zeroLAB; whole readable FSE tree252TODO occurrences. Counts are readability metrics, not parity proof.
+- Candidate exists in readable/FSE/NewOakValeIntro/Entities/NOVI_Theresa.lua. Runtime proposal unapplied; package Quests={} and status disabled-incomplete.
+- LiveFather isolated candidate ready for root review/integration (agent notes work/live_father_converter/INTEGRATION.md); background agent now recovering Victim. Remaining Theresa gates include merged runtime execution, counted/transition extensions beyond bounded dispatcher tests, state/scheduler and live gameplay.
+
+
+### Theresa recurring dispatcher native comparison
+
+- Added test_native_theresa_dispatch.py:576 one-iteration original-byte vs readable Main cases over offer/gift/talk/hit precedence, existing given flag, busy task, departure proximity and cancellation. Executes DB9ECA onward native branch/join instructions, presented construction/destruction, idle task/termination and actual departure helper argument setup (fresh Hero including null, retained trigger, float2.0).
+- Explicit abstractions: combined offer query, presented selector, talk/hit predicates, all phase interiors, skip action. Successful acceptance boundary sets Main-local given flag. Other phase boundaries preserve it. Stops at next-frame, cancellation outer cleanup, or outro entry; synthetic Lua boundary cleanup excluded. Seeded prior given state via a stub first meeting. This is not a monolithic full-Main or engine run.
+- Native boundary stubs must write result byte stack22, not only EAX: original joins reload AL from stack. Fixed test stub accordingly; no implementation change required.
+- Combined native dispatcher/acquisition + actual-helper candidate tests:4 tests13.451sOK. Acquisition42cases, dispatcher576, actual assembled gift routes72. Candidate still disabled.
+- Next: review/integrate readable builder with evidence/limits, strengthen missing counted cleanup and transition coverage as needed, broad recovery gate and merged runtime/gameplay validation. Background LiveFather Main recovery ongoing.
+
+
+### Theresa native acquisition comparison
+
+- Added test_native_theresa_acquisition.py:42 original-byte vs readable Main entry/acquisition cases, pending attempts0/1/3, prepare has/reset true/false, termination query1..7. Executes initial frame/termination, control constructor, post-trigger termination, priority4 retries, post-acquisition termination, real inline/call cleanup exits through native return.
+- Scope boundary: begins DB97F0 after separately verified condition; trigger construction/lookup is a compiled-adapter boundary; successful acquisition stops DB98CA before state dispatch. Matching Lua uses a synthetic boundary exception and excludes that artificial cleanup from trace. Actual cancelled paths include cleanup. Inline cleanup tested with null Info; no counted-payload destruction claim.
+- Test passed1/0.830s. An initial Unicorn return sentinel needed a RET instruction to avoid decoder fetch across unmapped page; fixed harness setup, no candidate semantic change.
+- Next: extend original-byte comparison through full message dispatcher and phase joins. Current test is NOT whole Main parity. Candidate/readable integration remains pending.
+
+
+### Theresa actual-helper composition and condition proposal merged
+
+- Assembled candidate runs72 actual-Lua-helper scenarios: meeting/offer/presented gift routes, each uncancelled or cancellation queries1..23. Fake engine/resource methods track owners; successful paths verify ordered quest-info removal, gift state/objective/clear and movie/map/control/presented/trigger cleanup. Phase functions are NOT replaced in this test. This remains Lua composition, not original-byte whole-Main or real-engine validation. Candidate tests2/8.908sOK.
+- prepare_theresa_resource_extension now merges conscious_condition_registration.inc and retail_conscious_condition.h into inherited staged LuaManager and helper artifacts, updating additionalSources hash. Exact staged registration compiled with real LuaEntityHost/QuestState types and all resource registrations. Candidate report no longer lists missing condition merge; host/scheduler behavior remains pending.
+- Fixed patch serialization: write_text on Windows doubled existing CRLF in the unified diff, causing git apply --check to reject runtime headers/manager. write_bytes preserves exact patch line endings. Regenerated full proposal now passes git apply --check against D:/Code/ForgeFSE-retail-shadow. Nothing applied.
+- Next major proof: original-byte outer dispatcher vs assembled Main, then readable builder integration with explicit remaining gameplay/state/runtime limits. Candidate remains disabled.
+
+
+### Theresa assembled candidate and entry-condition correction
+
+- Correction to earlier entries: F35B10 in Theresa Main is condition registration, NOT master binding. Existing native_new_oakvale_conditions verifier proves condition vtable12C2FE8 and RegisterBoundConsciousCondition for Theresa (entry SHA69a7338741c9e31bfd07a12655bf6c7ede9b0920750e99eae75a5643969a4ee2). Registration clones bound Thing and destroys caller copy before first frame.
+- Renamed body runTheresaMainAfterCondition. Added generate_theresa_resource_candidate.py: verifies raw draft SHA, condition and native Init/control/movie/health/map/vector evidence; concatenates17 readable helpers with Init/Main and explicit entity-state mapping1D/1C. Candidate at work/theresa_converter/candidate/NOVI_Theresa.resource_candidate.lua, report adjacent. No LAB/goto. Still disabled, not installed or integrated in readable package.
+- Main registers bound-conscious condition then enters resource scope/body; Init invokes recovered initializer. Generated-code test verifies Init plus condition-before-frame/entry cancellation. Combined candidate/Main/Init gate5 tests4.792sOK.
+- Current Theresa staged LuaManager only has bound-ALIVE registration. Conscious-condition proposal exists separately in prepare_new_oakvale_conditions.py and must be merged; no assumption that API already exists in runtime.
+- Remaining: full original-byte outer dispatcher comparison; actual composed nontrivial phase execution/error paths; condition proposal merge; parent/entity state/coroutine/DLL/gameplay validation. Whole completion remains unproven.
+
+
+### Theresa Init runtime adapter
+
+- Added theresa_init_body.lua (DoneIntro=false then AskedForPresent=false before engine calls) and staged InitializeTheresaActor. Actual native Init reset offsets remain1D/1C; state-name mapping still must be integrated into candidate schema.
+- Actor calls preserve native damagefalse, killfalse/false, combofalse, infofalse/true/false, by-value retained Thing pushabilityfalse, movementfalse. Copy Info RefCount increments before D30; compiled callee double consumes it. This is ABI/ownership boundary validation, not proof of real callee internals.
+- Original Init plus Lua-reset tests:2 tests,0.162s,OK. Full staged x86/real-Lua owner harness23 policies pass, including4 payload/Info combinations. Full sol registration passes matching candidate SHA db9c27a8b42aeaeacd117df9413513964b0eae880fe11d49b67a919ca83720fd. Proposal now17 methods, unapplied.
+- Master binding remains unresolved at integration level: native prologue copies actor into an expression, calls F35B10, destroys copy before first frame. runTheresaMainAfterMaster deliberately starts after it; do not label it complete Main. Need inspect host thread binding, original-byte outer dispatcher, assemble helpers into candidate/readable package, and broader state/runtime validation.
+
+
+### Theresa Main composition and talk-offer ownership
+
+- Added `theresa_main_body.lua`: runTheresaMainAfterMaster composes recovered phases from native DB97F0 (initial frame) onward. Caller must still establish native master-actor binding. Owns control24, trigger44, per-iteration presented16; repeated acquisition priority4, intro path vs message dispatch, presented cleanup before next frame/outro termination query, trigger before control cleanup. Entity AskedForPresent proxy preserves write-through timing rather than deferred state copy.
+- `test_theresa_main_body.py`:two tests pass, with10 dispatch/ownership scenarios plus entry cancellation. All phase interiors are doubles here; this is composition coverage, NOT full original-byte Main comparison. Main helper remains unintegrated and Init/master adapter incomplete.
+- Added staged TheresaTalkOffersChocolates to preserve DB9EE0..DB9F94 nested key lifetime: talk key remains alive during conditional chocolate possession query; both keys reverse-close before branch. WasVillagerTalkedTo followed by separate possession would destroy the outer key too soon.
+- Full staged owner/real-Lua/x86 harness19 policies passed; four new talk/possession combinations verify short circuit and two simultaneously live keys, including null Hero retained from preceding case. Full sol registration compiled after the change. Runtime proposal now16 methods, unapplied.
+- Next: original-byte outer Main comparison and master/Init bridge, actual assembled helper composition, candidate generation/readable integration, remaining runtime/state/scheduler verification. No full-parity claim.
+
+
+### Theresa retained departure trigger adapter
+
+- Staged NewTheresaDepartureTrigger and IsTheresaHeroNearTrigger; proposal now15 methods. Dedicated lookup keeps M_TriggerOutro CString until lookup returns and always destroys it, including null string storage. Generic FableString skips null-storage destruction, so generic NewThingFromScriptName was not reused for this path.
+- Lookup forwards owned Thing output, ignores returned alias, and rolls back Thing after string cleanup on lookup error. Distance uses fresh raw Hero (including null) first, retained Thing second, float2.0.
+- Full staged owner/x86/real-Lua harness now15 policies passed: four Hero-null/result combinations plus lookup-error cleanup, on top of earlier10. Two distance calls reuse one retained output; released-handle queries reject. Engine and lookup helpers are doubles; native callsite operands were inspected, not yet a separate automated trigger caller comparison.
+- Full sol registration and scope harness use matching candidate SHA: 1849ba4d27c1607fc72e991c957287fc068fc6b2484ebbee92484919123d2e73. No runtime source applied. Full Theresa Main/Init remains next, along with message adapter review and native trigger caller coverage.
+- Background LiveFather hit/payment six-test gate passed; worker now recovering Main/Init/caller composition in isolated artifacts.
+
+
+### Theresa retained-output runtime integration
+
+- Added `retail_theresa_presented.inc` and composed it into the staged Theresa owner: NewPresentedItemOutput, PollPresentedItem, PresentedItemMatches, DestroyPresentedItemOutput. Uses default constructor99E4B0, bound actor virtual8C, inequality helper99E960 inverted, and scope-owned CString destruction. One output persists across both polls.
+- Uses monotonic Entry.id and Release erasure, not historical m_entries.size(). New allocation cannot revive a released handle. Staged proposal now13 methods.
+- Full staged owner harness:10 policies pass (previous8 plus normal/error presented cases). Actual compiled x86 C++ owner and real Lua execute; default-constructor/comparison/engine slots are doubles. Checks same output pointer, both match outcomes, explicit destruction, stale-handle rejection after reallocation, and scope cleanup after query exception. Native comparison helper behavior separately covered by196 predicate cases.
+- Full sol registration compiles as x86 COFF014c. Both registration and scope harness use candidateSHA1f999419d5f0a0fd090f34d06ea2a6bf8dd17fbdd2154589442e12a7e74a14b0. Scope exeSHA5ec6b7870dcdd5446ad569e8a3b51abe66a6dee4a3b01d267da433af576613ba; all build/test exits0. Logs/results under work/theresa_scope_runtime_checks and work/theresa_resource_integration.
+- Proposal remains unapplied; full Main composition, retained departure trigger, remaining message APIs, Init/runtime state and live scheduler validation remain outstanding.
+
+
+### Theresa presented-item selector
+
+- `theresa_presented_choice.lua` preserves two calls to PollPresentedItem on the same retained output. First successful equality selects chocolates; otherwise a second successful inequality selects other-present. A second poll can mutate the output even if the first returned false. No single cached poll substitution.
+- `test_theresa_presented_choice.py`:196 original-byte cases execute DBA490 caller, DBA588 comparison and actual helper bodies99E960/411570/4115A0. Includes null/allocated-empty, exact/lowercase/prefix-difference/high-byte text and all pairs of query booleans. Engine output mutation is a double; output destructor belongs to Main and is outside this predicate.
+- Selector/offer/outro gate:7 tests,6.031s,OK.
+- Reuse contract identified in bully_presented_methods.inc (NewPresentedItemOutput/PollPresentedItem/PresentedItemMatches/DestroyPresentedItemOutput), but Theresa staged owner does not yet compose those methods. Adapt to current owner container/IDs rather than copying old size-based ID logic blindly.
+- Native outer-loop evidence: retained trigger key M_TriggerOutro, output slot44; control24; presented text16 allocated only after DoneIntro. Trigger check calls CBE2FF with fresh Hero in ECX, retained trigger in EDX and float2.0. Idle path skips task/animation when Main-local given flag is true. Hit predicate is ordinary-hit OR (any-special AND NOT ability14), retaining all temporary keys until reverse cleanup.
+- Next: compose retained-output/trigger/message adapters and full Theresa Main; helpers remain unregistered and unintegrated. Background LiveFather payment work continues.
+
+
+### Theresa outro recovered
+
+- Added `theresa_outro_body.lua`, native DBB0E4..DBB2D8: entry cancellation, DisplayQuestInfo(false), remove GUIBullyHealthCounter/ GUIGoodDeedCounter/GUIBarrelCounter in native order, movie384 then Hero control328, one priority4 acquisition attempt with ignored result, HERO/Theresa actor map, CS_OAKVALE_INTRO_THERESA, raid AVI, 0.5-second black fade/zero hold, OverrideMusic(25,false,false), AttackOver=true.
+- Cleanup is actor map then Hero control then unpause/movie destructor. Main retains outer presented text and Theresa control and owns subsequent termination query.
+- `test_theresa_outro_body.py`:16 original-byte comparison cases plus13 Lua-only partial-construction/error cleanup cases. Actor-map construction is a separately tested abstracted boundary; engine/CString bodies are doubles. Original caller operands, state store and cleanup execute. This does not prove engine coroutine behavior or full Main parity.
+- Outro/actor-map/movie/offer combined gate:11 tests,10.881s,OK. Actual runtime FadeScreenOut wrapper reviewed: converts Lua0.5 to float and forwards opaque black RGBA(0,0,0,255), matching native stack bytes; this review is not compiled/live adapter validation.
+- Remaining root work: Theresa outer message/presented-item predicates, retained trigger and Main composition, Init integration, staged runtime/full readable generation and broader validation. Helpers remain unintegrated, runtime source unchanged.
+- Background LiveFather hit phase stable:2304 native comparisons/10 Lua error cases; worker continues payment and gold dialogue.
+
+
+### Theresa presented-gift and talk recovery
+
+- Added `theresa_presented_gift.lua`: accepted presented chocolates (DBA5A4..DBA814) and rejected present response (DBA4F5..DBA8A6 plus shared destructor). Caller retains presented-item text. Accepted path closes guards before movie and commits gift only after speech completes.
+- Added `theresa_talk_body.lua`: ordinary talk response DBA8E0..DBABAE, choosing HELLO/GET_PRESENT/REALLY_GET_PRESENT from Main-local givenChocolates and entity byte1C (askedForPresent). Chooses branch before second termination query, then writes askedForPresent before health. No state-write on cancellation before that point.
+- Extended original-byte composition harness:108 presented-response cases and252 talk cases; original movie construction, x87 health, speech polling, cancellation and cleanup execute. Gift commit and guard construction remain separately tested abstracted boundaries; presented-item and talk-message predicates are outside these phase entries.
+- Combined offer/question/hit/gift gate:11 tests,8.282s,OK. Full Theresa Main, outer message predicates and outro remain outstanding. These helpers are not yet emitted into the readable package; no runtime patch applied.
+
+
+### Theresa later-offer composition checkpoint
+
+- `theresa_offer_choice.lua` preserves signed answer polling and both unconditional post-answer termination queries in DB A004..A10F/A31A (addresses without spaces in source).
+- `theresa_offer_body.lua` composes that choice with resource health/speech and gift helpers, and closes guard vector before unpausing/destroying the movie. The presented-item CString remains owned by Main outside this phase.
+- `test_theresa_offer_body.py`: 324 original-byte cases across answers, pending answers, zero/positive/NaN health, busy task polls and cancellation positions. Executes original question, health, speech waits and cleanup. Guard construction and gift-commit tail are explicit abstracted boundaries, separately covered by existing native tests; this is not whole-Main parity.
+- Eight additional Lua-only error cases verify nested Thing/guard/movie cleanup and primary-error preservation, including the Main-local gift flag boundary.
+- Combined offer/question/hit/native-gift/Lua-gift gate: 9 tests, 5.666s, OK. Earlier full-suite result is not evidence for these newly added tests.
+- Next: remaining Theresa presented-item/talk/outro paths, full Main composition and runtime integration. Background agent is recovering LiveFather hit response; TeddyGirl checkpoint is stable (18 tests, 1568 dispatcher cases, 14 merged-owner scenarios). No runtime source applied or live installation performed.
+
+
+Theresa hit prelude now structured in theresa_hit_body.lua: termination, two fresh
+Hero ally calls via reviewed shared bridge, AddBadDeed2, then hit movie. Added45
+native/Lua cases; combined hit3 tests2.499s passes (120movie+45prelude pluserrorpolicy).
+
+Shared GetScriptThing rollback carried from TeddyGirl into Theresa preparer, expanded
+to cover missing getter validation as well as a throwing getter. Owned Thing is
+marked live before call; catch Destroy(e) closes it before an ID can escape. Full
+staged class x86/realLua harness now8 policies, all3commands0, executableSHA
+3c8fc2bc6b4d242fa71b8d498b97631f2a3a973c189034f72b05ad701d2a60ee.
+New cases normalreturnedID /getterthrows /missinggetter assert one immediateThing
+close before outerresource close and no duplicate cleanup. Earlier vector-reference
+policies still pass. Native destructor callbacks remain nonthrowing doubles here;
+no SEH/corruptoutput claim. NEXT Theresa talk/presented/outro, nativeflag operands,
+and full candidate composition. Runtime proposal unapplied.
+
+Theresa hit movie now structured via theresa_speech_body.lua +theresa_hit_movie.lua.
+Original DBACE6..DBADED plus shared normal/cancel destructors compared to Lua in120
+cases (8health values x3taskdurations x5cancels). Includes originalx87 compare and
+retainedBL through destructor. Lua-only health/errorcleanup tests close innerThing
+before unpause/movie even when all cleanup calls throw; original health error kept.
+Combined2 tests1.096s pass. SpeakTheresa adapter adds rawfreshHero->resource v34,
+selection0,false,true,false; emptyresource still fetchesHero. Actual FSE/realLua/x86
+harness67 policies passes; full9-method staged registration recompiled successfully.
+NEXT integrate hit prelude (allies+baddeed), remaining talk/presented/outro branches.
+Background TeddyGirl found shared NewThingFromResource pre-ID getter rollback gap;
+its isolated fix/evidence pending final, then carry into Theresa proposal too. Do not
+claim all resource error paths closed until that shared constructor-failure case is
+reviewed. Full staged scope5-case result predates newest SpeakTheresa method, but
+new action harness and complete registration cover that addition independently.
+
+Theresa full staged resource class now EXECUTION-tested for guard ownership:
+run_theresa_scope_runtime_checks builds actual composed header/FSE types/realLua/x86,
+5 policies pass (explicitclose yes/no xscopeClose/destructor, plus getterfailure).
+Surviving Lua sharedvector becomes inert after scopeclose; repeatedClose/GC never
+redestroys vector; partial getter allocation cleaned and inactive entry safely
+cleared. Actual class factory/Add/Close/destructor execute, helper addresses route
+to doubles; original vector helper implementations separately tested. All3commands
+exit0 PE014c executableSHAb7db916a40877e5f41cc3e1582a2b20057e504aff7700dfd6369b8d8b763df03.
+Evidence work/theresa_scope_runtime_checks. NEXT Theresa remaining talk/presented/
+hit/outro phases and full Main; DLL/gameplay/common scheduler/state remain pending.
+
+Theresa fullclass proposal now composed over Villager via
+prepare_theresa_resource_extension.py ->work/theresa_resource_integration.
+Eight methods (seven action methods plus NewTheresaGuardVector) and guard Lua type
+registered. Factory stores shared vector in normal m_entries lifetime sequence;
+Kind::TheresaGuardVector Close during fallback makes borrowed Lua refs inert while
+allowing explicit native-position close. All parent helper/additional-source hashes
+validated before staging, runtime source untouched. Inherited Villager quest-state/
+manager changes carried forward. run_theresa_registration_compile completed exit0,
+x86COFF014c; registration-result.json records candidate/input/object hashes.
+This proves template compilation, NOT runtime execution of merged owner teardown.
+NEXT exercise full staged owner with surviving Lua vector refs, then Theresa
+remaining dialogue/presentation/hit/outro. Existing standalone action/owner harness
+still63 cases; no claim those tests execute newly merged class.
+
+Theresa outer meeting native differential now passes192 cases1.103s:
+test_native_theresa_meeting executes original outer instructions, original signed
+answer polling and cancellation cleanup; compares actual meeting/question Lua.
+Variations possession/acquisition booleans, answers0/1/2 afterpending-1, cancel1..8,
+rawHero null/non-null. Confirms single ignored-result acquisition, cameraoff and
+DoneIntro only normalpath, unpause/movie/map/Hero cleanup and first two termchecks.
+Explicit abstract boundaries: actor-map construction, question string construction,
+and accepted-gift body; those have separate tests. API/CString bodies are doubles.
+NEXT scope-owned guard factory/full runtime merge, then Theresa talk/presentation/
+hit/outro phase recovery. New tests separate from completed suite14 count.
+
+Theresa meeting composed in theresa_meeting_body.lua using actual actor-map/question/
+acceptance helpers. 96 Lua composition scenarios pass0.026s: two pre-construction
+termination checks, single ignored-result Hero acquisition, movie/pause/fixedcamera,
+MEET macro, possession, question/acceptance, normal cameraoff+DoneIntro, movie/map/
+Hero cleanup. Cancellation intentionally does not emit cameraoff (native cleanup
+AEDF..AF24 only unpauses/destroys). Whole meeting original-native differential remains.
+TryAcquireTheresaHero and DoesTheresaHeroHaveChocolates staged in actions fragment;
+rawfreshHero forwarded even null, failed acquisition may populate resource, possession
+key constructed BEFORE Hero lookup and destroyed after boolcapture. Expanded actual
+FSE/realLua/x86 harness63 policies passes; executableSHA
+bdf4b5ff6128bae2de819da5898ad6005231b1ee648b7af81f1af26214f743c4.
+NEXT native outer-meeting comparison and missing scope-owned guard factory/class merge;
+then remaining talk/presented/hit/outro Main branches. TeddyGirl agent reactivated on
+whole native Main comparison; its readable integration is stable.
+
+Theresa retained vector owner staged in retail_theresa_guard_vector.h. Raw12-byte
+vector getter, native removalCBED82 and destruction8AC970, key cleanup, idempotent
+Close and destructor fallback. Actual-FSE/realLua/x86 action harness now45 policies
+passed; executableSHA8d9623ebc79dbe87f18bb4fc368a277f5a4b1639a9426124b013fc25917bb7b2.
+New owner tests use injected helper/API doubles; original helper loops separately
+verified. Full resource scope must still own returned vectors until Close: factory/
+owner-list wiring and class registration are pending, not supplied by standalone owner.
+
+Accepted phase now structured: theresa_accept_chocolates.lua composes retainedguards,
+remove, HERO/THER actor map, MEET_YES macro(false,true), giftcommit, actor-map cleanup,
+then vector Close. Composed actual Lua9 success/failure cases pass0.005s; phases were
+individually native-verified, this is not a whole accepted-region native differential.
+Required NewTheresaGuardVector factory explicitly pending above. NEXT full accepted
+native trace, meeting composition and runtime factory/owner registration.
+
+Theresa guard vectors verified in full Main CFG: slots364/304/316, three getters,
+three removals and seven normal/cancel destruction sites. New native_theresa_guard_vectors
+pins complete removal56 bytes CBED82 (SHA4413c70ec94bfffe057e5d493bb4548e1437519e571512567583297a5d4d6c67)
+and destructor50 bytes8AC970. Native helper test32 vector/mask cases pass0.973s:
+IsAlive virtual12C lowAL, RemoveThing virtual1B0(thing,false,true) only alive,
+then destructor iterates all owned Things virtual0(false) and frees nonnull storage.
+Null empty and allocated-empty both checked; actual ret4 and stack balance verified.
+Evidence work/theresa_converter/guard_vectors_evidence.json. Getter allocation and
+retention, wider caller zero flag provenance, and staged vector owner still pending.
+NEXT vector runtime owner and full accepted/meeting phase composition. Helper bytes
+and caller scopes are proven separately from game API/destructor callback internals.
+
+Theresa gift adapter implemented: TakeTheresaChocolatesAndUpdateObjective preserves
+itemCString scope, three objective input strings, returned GetActiveQuestName pointer
+versus owned output, reverse cleanup; separate ClearTheresaInformation forwards bound
+actor directly. New theresa_gift_commit.lua sets persistentflag before update and
+Main-invocation progress.givenChocolates only after update/before clear. Lua failure
+boundary tests plus native three-tail test pass2 tests0.770s. Expanded actual-FSE /
+realLua x86 harness now34 policies, all3 commands exit0; executableSHA
+6937f36708ae2aa9714c2e6420a1303f4cd1c0135e95813011e8b03ef91195ff.
+Tests cover alias questname, emptyCStringstorage, failed getters/objective/constructors,
+closed scope, and existing approach/question methods. Fragment remains staged;
+fullclass registration/DLL/gameplay pending. NEXT guard-vector retained ownership
+and full accepted/meeting phase composition. No live runtime changes.
+
+Theresa gift commit caller tail now executes all3 original regions: DB9D8B..9E6D,
+DBA213..A301, DBA70B..A7F0. test_native_theresa_gift_commit1 test0.798s passes24
+cases (3sites xreturnedQuestNamealias xoldstate xemptyCStringstorage). State95=true
+precedes first item call; item CString constructed/taken/destroyed; empty/empty/
+objective CString scopes then GetActiveQuestName output and SetQuestCardObjective
+using RETURNED pointer; cleanup owns output not alias, then objective/empties.
+Main-local given flag17=true BEFORE ClearThingHasInformation(boundactor). Tests
+assert exactsequence, empty storage cleanup, stack balance, no retained strings.
+API bodies are doubles, not engine proof. NEXT implement raw gift-tail adapter
+with caller preserving localflag-before-clear order; then full accepted phase and
+meeting composition. TeddyGirl background currently merging only its builder branch
+and staging seven+split-movie adapters (41 actual-FSE/x86 cases already passed).
+
+Theresa approach/question runtime methods now implemented in staged
+retail_theresa_actions.inc: IsTheresaNearHero rawfreshHero +distance, PlayTheresaSkip
+explicitresource virtual4C and all6flags, ShowTheresaChocolateQuestion raw4CString
+native construction/API/reversecleanup order. run_theresa_actions_runtime_checks
+compiled actual FSE headers and realLua x86, all3 commands exit0; PE014c; executable
+SHAaa0e1cedab6d694133c0e3a878ae29d3c193b251ddc5ed3542d0f3e94ce53b67.
+22 harness policies cover empty/live resource, emptyCString storage, nullrawHero,
+constructor/action/destructor exceptions and closed scope. Original error preserved
+while cleaning all constructed keys. Evidence work/theresa_actions_runtime_checks.
+Full LuaRetailResources class merge/registration and DLL/gameplay remain pending;
+fragment harness supplies resource-owner double and engine-call doubles.
+NEXT accepted chocolate transaction and whole meeting composition. Background
+TeddyGirl explicitly reactivated on staged adapters/readable integration after its
+full candidate checkpoint (3977 native cases); preserve root Theresa ownership.
+
+Theresa chocolate question phase now structured in theresa_chocolate_question.lua:
+askTheresaAboutChocolates returns nil cancellation /false decline /true answer1.
+NativeDB9B7F..DB9C87 comparison test passes96 cases (pending0/1/3, answers0/1/2/
+INT_MAX, cancellation1..8), test_theresa_chocolate_question1 test1.096s.
+Native question CString order empty/NO/YES/question, API argument order question/
+YES/NO/empty,true, reverse destruction before first signed answer poll. Negative
+INT_MIN stays pending; post-answer termination always occurs and accepting has an
+additional termination check. Required ShowTheresaChocolateQuestion adapter remains
+explicit/unimplemented. NEXT accepted chocolate transaction, native helper bodies,
+and runtime adapter staging before whole meeting/Main composition.
+
+Theresa actor maps now verified: three constructions, six resource assignments,
+three macro uses and four destructor sites pass full Main CFG. Meeting map228 and
+acceptance map60 bind HERO->control344 / THER->control24; outro reused map60 binds
+HERO->control328 / Theresa->control24 (role spelling/case differs intentionally).
+Native lookup consumes only key; assignment uses returned entry pointer and the
+resource argument left on stack. Six original binding-region traces cover alternate
+returned-entry aliases and match actual theresa_cutscene_actors.lua named helper.
+Two Lua-only partial binding errors prove map cleanup and original error retention.
+New test_native_theresa_actor_maps:2 tests1.768s pass. Native map internals/retention
+still separate; work/theresa_converter/actor_maps_evidence.json records boundaries.
+NEXT meeting question/answer and cutscene execution phase, plus required staged
+runtime approach adapters. Full Theresa integration remains pending. Existing
+runtime ActorMap methods available; exact CString failure cleanup remains a gate.
+
+Theresa first structured phase implemented: theresa_approach_body.lua exports
+waitForHeroToApproachTheresa for originalDB98E4..DB99CA after control acquisition.
+Named loop preserves entry termination, SKIP scope, fresh rawHero/distance5,
+task polling, post-task termination, second fresh proximity query and retryframe.
+New test_theresa_approach_body executes original instructions against actual Lua:
+192 scenarios (four proximity sequences xfour task sequences x12 cancellations),
+1 test2.948s passes. Native booleans carry nonzero upperEAX and rawHero alternates
+null/non-null. CString/action/game bodies are doubles; exact SKIP thunk already
+separately checked. Required PlayTheresaSkip/IsTheresaNearHero resource adapters
+are explicit but not yet staged. Full Theresa builder integration awaits remaining
+phases. NEXT meeting resource/cutscene bindings and staged adapter implementations.
+TeddyGirl agent reports12 tests34.182s,3209 native phase comparisons and20 callback
+error cases; movement/whole Main composition still active. No new full suite needed
+yet; new focused tests are separate from terminal suite14's1336 results.
+
+Theresa SKIP animation contract now executes both original call regions and actual
+7E73E0 thunk: eight cases (two sites x empty/live resource x empty/nonempty CString
+storage), test_native_theresa_animation1 test0.758s passes. Resource pImp virtual4C
+is PlayCombatAnimation, not PlayAnimation virtual48; exact six flags1,0,0,1,0,0.
+Native CString always constructed/destroyed even when resource pImp is empty;
+actual empty thunk returns28 bytes. Draft cached me:PlayCombatAnimation has only
+two flags and requires explicit-resource replacement. Engine action and CString
+bodies are still doubles. Speech inventory is8 sites, fresh Hero and selection0 /
+listenfalse / sound2Dtrue / overFadefalse; DBA6C6 uses EDI zero set atDBA608, wider
+path verification still needed. NEXT structure initial SKIP/proximity phase and
+compare original control flow, then meeting cutscene bindings. No draft replaced yet.
+
+Theresa health caller lifetimes now verified for all8 GetScriptThing sites: output
+slots464/428/416/500/440/476/488/452, resource24, returned getter pointer passed to
+health v420 and owned output destroyed4AA840. Full Main CFG proves each temporary
+closes. Slot416 comparison atDBA570 jumps to cleanupDBA822; nonlocal join retained.
+New native_theresa_health.py +test_native_theresa_health.py:2 tests1.867s pass,
+72 original-x86 comparisons versus actual Lua health>0 including signedzero,
+subnormals, infinities andNaN; destructor EAX clobber preserves BL result.
+Evidence work/theresa_converter/health_evidence.json. These tests were added after
+suite14; do not include them in its1336 count. NEXT speech operands (one site uses
+EDI zero from wider scope), animation CString scopes, cutscene binding maps, then
+structured phase composition. Raw positive health comparisons are already oriented
+correctly; this step verifies ownership/order rather than changing those predicates.
+TeddyGirl agent reports2633 native/Lua phase cases and is continuing movement/hit.
+
+Theresa ownership checkpoint: complete Main7013 bytes atDB97A0 SHA
+32136f38fc41cdf0c3a0badb7bba9dae1cad47216f015db0f8d7f8074ced4efc.
+New native_theresa_control verifier/witness covers50 calls: retained control24,
+meeting Hero control344, outro Hero control328, four acquisitions priority4,
+eight speaks, two animation calls. All constructed CFG paths close exactly once.
+New native_theresa_movies verifier/witness covers30 events: seven constructions,
+seven starts,16 cleanup sites; four LEAs select shared destructorDBA3D6.
+Joint control+movie CFG test proves stack-slot reuse does not overlap ownership.
+Focused Init/control/movie5 tests passed4.828s; after adding joint scope test,
+movie3 tests passed4.839s. Evidence work/theresa_converter/ownership_evidence.json.
+Caller-scope proof only: helper bodies, pause operands, temporary Things, cutscene
+binding maps and actual readable/runtime lowering remain. NEXT those phase contracts.
+TeddyGirl agent still advancing movement/presented/hit; latest report adds480 talk,
+25 presented-output,32 cleanup-mask and32 Init/GivenTeddy native/Lua cases.
+
+Suite14 is TERMINAL SUCCESS: 1336 tests in802.911s, process exit0,
+runner elapsed804.721s. Evidence work/converter_marathon_suite_20260913_14.log
+and .result.json; session95089 consumed terminal result. Do not poll/restart it.
+Newer tests separately passed: Villager dispatcher +ambient gate +composed candidate,
+6 tests7.197s (300 dispatcher scenarios and432 ambient gate scenarios).
+Dispatcher executes original outer instructions but abstracts separately verified
+message/dialogue regions; this does not prove whole-engine composition. Candidate
+REPORT remaining gates updated accordingly and regenerated.
+
+Root now owns Theresa; background book_trader_home agent remains active on TeddyGirl.
+New native_theresa_init.py and test_native_theresa_init.py pin all142 Init bytes at
+DAC4F0 (SHA79a6875510fa0b477c26d90f7c0c4be411ec4939ff4df5382a789e86ba428244).
+18 original-x86 scenarios pass0.165s: both state bytes reset before APIs; five calls
+use bound actor; pushability slotD30 receives inline copied Thing and increments
+nonnull Info refcount. Test explicitly models callee consumption; it does not prove
+callee destruction. Existing Forge LuaQuestState::SetIsPushableByHero already
+retains copied Info. NEXT verify callee cleanup and Theresa Main resource/phase
+contracts before generating a structured replacement. No runtime proposal applied.
+
+Villager ambient gate original-x86 trace now passes432 cases (2.355s): signed timer
+and random values, low-byte proximity/termination, null/raw Hero, timer IDs-1/0/73,
+short circuits, fresh global timer interface and ID after termination, then set3 /
+create(false,false) / freshHero / participant. New test_native_villager_ambient_gate.
+This was added after suite14 discovery; tested separately. NEXT outer native Main
+dispatcher composition against already-proved dialogue helpers. TeddyGirl agent
+active on retained item/movement/lifecycle phases. Suite14 remains session95089;
+keep polling that handle, no restarted suite.
+
+Villager Init audited/recovered: complete82-byte DADF00 SHA
+a306c925fe51364685ddd94123ffc6e17c24499b64409bdd681fe800e412bf15.
+Twelve native cases prove HeroDidHitMe reset before damageablefalse/killablefalsefalse/
+combofalse/freshhero/ally(bound,hero), no copied handles or IsNull queries.
+Existing Quest damage/combo wrappers added IsNull filtering; new InitializeVillager
+adapter removes it. Candidate/readable Init now uses adapter. Message/Init compiled
+harness passes32 policies; focused native+composed5 tests pass1.147s; all15 staged
+method registrations compile. Readable package regenerated18/18 syntax,51 functions.
+Suite14 still RUNNING at session95089; latest poll returned live, log only dots.
+NEXT original dispatcher/ambient-gate comparison, then broader runtime/state gates.
+
+Villager native message checks now pass31 cases (27 hit +4 talk): original x86
+low-AL booleans with nonzero upper EAX, ordinary/special/excluded14 short circuit,
+reverse CString cleanup and talk BL survival across destructor clobber. Wife
+shared trace helper generalized by code page; combined4 tests pass0.607s. Compiled
+actual-FSE/real-Lua Villager message harness passes30 policies including empty
+CString storage, query/cleanup exceptions and original-error preservation.
+Full recovery suite14 RUNNING: unified exec session95089, launched via
+work/run_converter_suite14.py; log work/converter_marathon_suite_20260913_14.log.
+Poll that live handle; do not restart on observation timeout. Result JSON appears
+only after terminal subprocess status. NEXT original whole dispatcher/ambient
+gate comparison and Villager Init audit; suite failures to resolve when available.
+
+Full disabled Villager Main composed and integrated into readable builder. Generator:
+generate_villager_resource_candidate.py; work/villager_candidate contains candidate
+and REPORT. Three proved dialogue helpers + named outer loop preserve single
+control/key lifetime, hit/talk/ambient dispatch, priority4 retries, first condition
+registration and explicit reverse cleanup. New raw-CString hit/talk message bridge
+and ally forwarding compile in staged proposal (14 methods). Whole-body harness:
+76 cancellation points +4 injected errors, repeated on emitted readable source;
+4 tests pass0.990s. Readable Villager has no goto/LAB/missing/pCVar/fVar/cVar/scratch
+markers; this is a readability result, not full engine parity. Package18/18 syntax,
+51 functions,759 renamed locals (620 semantic/139 scratch),1203 historical raw
+diagnostics retained. Remaining: original-x86 dispatcher/message/gate comparison,
+Villager Init full audit, parent/helper/scheduler integration and DLL/gameplay.
+
+Villager ambient timer/proximity adapters added to staged proposal (now11 methods):
+ShouldVillagerStartAmbientConversation reads global timer, signed rand%100, fresh
+raw hero and native distance5; StartVillagerAmbientConversation sets global timer3,
+creates(false,false), gets fresh hero, adds participant. SetVillagerAmbientTimer also
+handles Init0, correcting quest Init's previous cached-interface call. Compiled
+actual-FSE/real-Lua ambient harness passes218 policies including changed global
+timer receiver, signed IDs/randoms, null hero, short circuits and closed scope.
+All Villager registrations compile; quest Init test passes. Native gate operands
+reviewed directly atDAE614..DAE6B6; independent full gate trace still to add. NEXT
+compose full Villager Main, verify dispatcher cancellation and remaining Init.
+
+Villager speech lists now have a staged quest owner: LuaQuestState owns one
+RetailVillagerSpeechListOwner, entities already share that state, Get returns the
+same list object, owner destruction closes lists despite surviving Lua references.
+Unapplied LuaQuestState.h/LuaManager.cpp changes are in Villager proposal with
+source/candidate hashes. All registrations compile; actual-list/owner Lua harness
+passes4 scenarios. Full host teardown/timer/scheduler ordering remains pending.
+Readable quest Init now appends42 keys in native order through the owner, preserving
+repeated Init appends. villager_quest_speech_lists.py recovery + test passes; builder
+quest-only branch added, Guard preserved. Package regenerated:18/18 syntax,
+51 functions,805 renamed locals (648 semantic/157 scratch),1203 historical diagnostics.
+NEXT full Villager Main composition, ambient timer/proximity bridge, Init audit.
+
+Villager ambient selector now calls actual AssignVillagerSpeechText resource method;
+retired placeholder speechLists:AssignToText. Native288 selection cases pass2.328s;
+compiled real-Lua list harness passes with actual method registration, text handle
+validation, null-list rejection, replacement and retention across growth/Close.
+Composed unapplied proposal now exists: prepare_villager_resource_extension.py over
+Barrel, reusing Bully NewText/DestroyText semantics; eight methods plus speech-list
+usertype. run_villager_registration_compile.py passed all actual-FSE x86 template
+registrations. work/villager_resource_integration holds header/patch/proposal and
+registration-result.json. Live runtime SHA unchanged. NEXT quest lifetime/Init/list
+teardown binding and full Villager Main composition; DLL/gameplay still pending.
+
+Villager owned speech-list bridge now executes through real Lua/actual FSE types:
+3 scenarios (1/2/5 append rounds across8 lists; 384 appends) cover native-boundary
+arguments, dynamic counts, retained selection across growth, invalid index, closed
+access, idempotent Close, descending vectors/ascending entries and selected text
+surviving list teardown. Runner: run_villager_speech_lists_runtime_checks.py;
+work/villager_speech_lists_runtime_checks/result.json. Native calls are doubles.
+Independent native storage suite3 tests passes0.203s, now including full450-byte
+DBEFC0 destructor (SHA232d98f62015f85c1aeb9aef94203cc85704d4ef4db67fa9e45aa8a65b9454c9):
+timers108/104, eight vectors descending, entries forward, each buffer freed, base
+tailcall last. Actual native Init/growth/copy remain covered. NEXT resource Text
+assignment adapter, quest-lifetime ownership, full Villager Main composition.
+
+Villager vector growth now executes actual433530 (316 bytes SHA
+1c48ffbb40875ecde275517336150895f5379a47d32e5e8ddf16499dab3a489c),
+plus actual CString copy/wrapper. Two tests/six scenarios pass0.139s: first/repeated
+Init, growth/spare capacity, retained strings after relocation, freed old buffers.
+Heap and literal create/destroy remain doubles. New unapplied bridge core
+retail_villager_speech_lists.h compiles against actual x86 FSE types; Append uses
+native copy/growth, Count stays dynamic, CopySelectedTo reloads storage, Close
+releases descending vectors/ascending entries. Compile log under
+work/villager_speech_lists_proposal. NEXT actual bridge execution against these
+native traces, full destructor trace, then quest ownership and Main composition.
+
+Villager speech-storage Init trace added: test_villager_speech_storage passes4
+capacity/repeated-init cases (0.073s), 252 total appends across42 keys/eight vectors.
+Executes original Init3306 bytes plus actual CString copy99EC30 (61 bytes SHA
+a3acb13754a768da17ddb398c1ed55dcaeabd496848d6fd57bd892aedf2ccc86) and
+null-check wrapper44B110 (11 exact bytes). Literal construction/destruction and
+vector growth433530 remain boundary doubles. Verifies construct -> copy/insert ->
+temporary destroy, retained reference1 per entry, original append order, and second
+Init appending rather than resetting vectors. Spare-capacity copy count matches
+retail global CString allocation counter. NEXT implement owned-vector bridge and
+verify native growth/destruction boundary; connect it to quest lifetime/Main.
+
+Villager ambient selection helper villager_ambient_selection.lua passes288 native
+x86 differential cases (2.129s): signed deed counters, sex0/1/2, both termination
+checks and changed vector storage after index helper. Preserves exact counter-read
+order, dynamic vector count, and post-yield vector reload before CString assignment.
+AddVillagerAmbientText bridge forwards retained key/fresh raw hero/false/bound actor
+without constructing temporary strings; updated actual-FSE/real-Lua harness passed.
+The speechLists Count/AssignToText interface is still awaiting owned native CString
+vector integration; helper is not presented as an installed runtime capability.
+Next evidence sources: native_speech_vectors.py and quest construction/teardown
+metadata, then full Villager Main composition with talk/attacked/ambient helpers.
+
+Villager attacked dialogue now has structured helper villager_attacked_body.lua.
+Original x86 movie/health/speech differential passes288 cases (5.128s): sex0/1/2,
+zero/signed-zero/positive/negative/subnormal/infinities/NaN, 0-2 task frames, all
+termination positions. One movie; resource-derived health Thing destroyed before
+speech; positive ordered health only; unpause then movie destroy on every exit.
+New retail_villager_speech.inc preserves fresh borrowed hero and speech flags
+selection1/listenfalse/sound2Dtrue/overFadefalse. Updated actual-FSE-types/real-Lua
+text runner includes its forwarding checks. Both Villager phase helpers remain
+separate pending full Main composition and ambient-vector CString ownership.
+
+Villager structured talk helper (tools/script_recovery/villager_talk_body.lua) now
+matches original x86 DAE3F3..DAE607/DAEA49 in 756 cases: sex0/1/2, hit history,
+0-2 acquire failures, 0-2 active frames, each termination point, held/empty control.
+Both sex branches join assignment/acquisition; both hit branches join conversation
+polling; cancellation destroys suffix before outer cleanup. Native differential
+test passed17.430s. StartVillagerTalkConversation added to text bridge: fresh hero
+for facing(false), create(false,false), fresh hero participant; updated compiled
+100-case harness passed with changing hero results. Helper remains separate until
+full Villager owning-resource/movie/string candidate composition; no claim of
+completed Main integration. Background Bully integration complete; Guard assigned.
+
+Villager owned-text bridge now passes 100 compiled x86 policies through actual FSE
+types and real Lua (engine calls are doubles). AssignVillagerSuffix preserves the
+owned suffix; AddVillagerTalkLine preserves hero-first lookup, constructor/concat
+return pointers, exact line arguments, and reverse result/prefix cleanup, including
+original-error preservation. Native suffix and temporary tests: 2 tests OK (1.427s).
+Evidence: work/villager_text_runtime_checks/result.json and test.log; implementation
+retail_villager_text_actions.inc, runner run_villager_text_runtime_checks.py.
+NEXT compose owned Text storage and Villager candidate; native vector CString
+assignment/lifecycle still needs integration. No DLL/gameplay validation claimed.
+
+Villager talk temporary original-instruction trace passes24 cases: both prefix
+branches, raw hero null/non-null, conversation IDs-1/0/73, aliased constructor/concat
+return pointers. Native call order hero -> prefix construct -> concat(suffix24) ->
+AddLine(false,bound actor,hero) -> result destroy -> prefix destroy. Result52/prefix56
+and result60/prefix64 share prefix destructorDAE59D. Suffix survives. Test
+test_native_villager_talk_temporaries passes0.354s. NEXT owned CString runtime bridge
+and composed Villager candidate using verified control/movie/health/string scopes.
+
+Villager talk suffix CString24 lifetime verified across acquisition, conversation
+polling and all normal/cancel exits. DAE3F7 default construct; DAE43D assigns _MALE
+or _FEMALE; DAE52A/DAE580 concatenate selected prefix into temporary52/60 using
+suffix24; DAE602/DAEA44 destroy suffix. Shared cleanup receiver LEAs pinned and full
+CFG passes. Prefix literals DONE_BAD_DEEDS/SPOKEN_TO verified. Native call setup
+checks confirm suffix operand and prefix constructor result. NEXT temporary prefix/
+result scopes, then owned-string adapter/candidate. Full suite13 already completed
+1282 tests OK; new Villager checks run separately.
+
+Villager retained conversation-key map verified: default CString at stack20 constructed
+DADFF4, assigned by99EFB0 atDAE96B from chosen vector element, passed atDAE988 with
+flag0/bound actor/fresh raw hero, destroyedDAE9A9 orDAEA4D before control. Full CFG
+key lifetime passes; default/assign helper bytes pinned (assignment retains source
+string storage). Event omission and wrong key/speaker/listener setup tests added.
+NEXT temporary talk-response CString24, literal key scopes, then owned-string-aware
+Villager candidate; do not replace retained native key with transient host string.
+
+Full suite13 COMPLETE:1282 tests/761.213s/OK, Python subprocess exit0 (elapsed761.869s).
+Evidence work/converter_marathon_suite_20260913_13.log and.result.json. Session52671
+is terminal; do not poll/restart it. Villager modules added after suite discovery
+were validated by separate focused commands and are not claimed included in1282.
+
+Villager movie pause paths now tested through original instructions:18 cases prove
+early sex-branch cancellation carries EBX=0 from construction, while normal/late
+cleanup pushes explicit zero even with arbitrary EBX. Pause(false) precedes movie
+destruction on every checked exit. Corrected earlier classification: DAE2E4 is a
+post-speech cancellation destructor, not a second normal destructor; DAE3AB is normal.
+Lifetime coverage was already correct. Two native pause tests pass0.345s. NEXT map
+retained CString20 and temporary keys, then build Villager resource candidate.
+
+Villager hit movie lifetime now verified: stack108 constructor/start, normal
+destruction DAE3AB, cancellation destroys DAE2E4/DAEA06/21/39; seven events
+and six pause calls all on live movie paths. Coverage verifier caught initially
+omitted male normal cleanup and now rejects every single event/pause omission.
+native_villager_movie_scope test passes2.862s. NEXT prove pause flag dataflow (EBX
+zero at early cancellations and shared-push join), retained conversation CString,
+then candidate lowering. Full suite13 remains verified live at session52671.
+
+Villager two health temporaries verified: control92 -> Thing68 atDAE238/queryDAE241/
+destroyDAE25E; control92 -> Thing80 atDAE309/queryDAE312/destroyDAE32F. Queries use
+returned Thing, not bound/cached actor; full temporary CFG lifetime passes. Zero
+threshold122DEDC is pinned. Native x87 comparison/destructor checks18 float cases
+cover signed zero, subnormals, infinities and NaN, preserving BL across EAX-clobbering
+destructor. Combined Villager/Barrel health4 tests pass1.183s. NEXT movie and retained
+CString map, resource-aware Villager generator. Suite13 still live session52671.
+
+Villager owning control map now verified directly from all2787 Main bytes:23 events,
+single baseline stack92 resource, four bound-EDI priority4 acquisitions, two speech
+and two temporary-Thing getters, cleanup through inline/full joins. Full CFG lifetime
+check passes. Movie constructorDAE1AE excluded by pinned Main bytes/vtable sequence.
+native_villager_control_resource.py verifies helper profiles, event completeness and
+exact call setups; omission/wrong-actor tests added. Existing reconstructed-port
+audit only matched text and is not substituted for this evidence. NEXT map the two
+health temporaries, movie and retained conversation CString, then generate candidate.
+
+Villager missing ally target and sex-query actor restored to bound me, pinned to
+DAE109..DAE135 and DAE206..DAE212. Nine original-instruction ally traces preserve
+both hero queries and directions, including empty/changing pointers; changed native
+regions reject. Combined Villager3 tests pass2.240s. Builder composes operand fix
+with termination correction. Two resource-derived health placeholders remain, along
+with owning resource/movie/string and cached-hero semantics. No completion inferred
+from reduced placeholder count. Full suite13 continues on existing session52671.
+
+Villager readable loop termination now uses the actual IsActiveThreadTerminating
+boolean instead of undefined extraout_AL_00/32 followed by numeric comparison.
+Native DADFF9..DAE008 and DAE996..DAE9A5 pinned; original instructions tested for
+all256 AL values at both sites (512 branches) with high EAX bits nonzero. Two tests
+pass2.147s. Raw draft untouched; builder applies recovery before normal readability.
+This fixes premature exit but does not solve Villager resource/speech/string scopes.
+Suite13 remains live session52671 (last verified after new focused tests); the new
+Villager test was added after discovery began and is independently validated.
+
+Barrel outer-loop differential gate added:162 frame-count/phase-stop/interaction-stop/
+boundary-error cases preserve call order and guard/start/resource cleanup; old loop's
+unreachable movie cleanup is asserted unreachable. Interaction720 cases still pass.
+Full script-recovery suite13 RUNNING via unified exec session52671; do not restart
+while handle is live. Log work/converter_marathon_suite_20260913_13.log; terminal
+result will be written to matching.result.json by Python subprocess wrapper. This
+avoids PowerShell stderr status ambiguity. Current readable gap audit refreshed.
+
+Barrel Init global timer reset corrected in separate native_barrel_init_timer.py:
+WithRetailResources scope calls ResetBarrelWatchTimer(WatchTimer), native global
+interface slot164 with value0. Existing native_barrel_init.py is the earlier lifter
+operand recovery; a filename collision was restored from original session history,
+including its original witness, and both original Init tests pass. Combined Init/
+candidate5 tests pass6.286s. Movement/timer compiled gate now16 policies (adds reset
+IDs0/-1/73); complete staged registration compile succeeds. Readable builder rerun.
+Native Init review confirms actor flags, copied home vector and sight10, but runtime
+API/home-float/entity-state lifecycle validation remains. No live runtime applied.
+
+Structured Barrel candidate integrated into build_readable_new_oakvale and readable
+FSE/NewOakValeIntro/Entities/NOVI_BarrelMan.lua. Builder reports18/18 files compile,
+51 functions represented. Main mapping now recognizes __resource_main for Barrel.
+Generator verifies original entry-condition correspondence then registers the bound
+conscious condition before first frame in structured output; builder avoids duplicate
+registration. Phase1 timer DB552D..DB5547 verified and corrected to existing staged
+SetBarrelWatchTimer(global receiver, WatchTimer ID,45). Candidate3 tests pass7.129s;
+entry-condition/readability15 tests report OK2.744s (PowerShell stderr redirection
+reports NativeCommandError despite unittest OK; do not treat shell status as test
+failure). Banner/remaining report now explicitly distinguish structured Main from
+pending Init/lifecycle/API and composed runtime/gameplay validation. NEXT inspect Init
+against native, broaden full-loop transitions, and run integration/full-suite gates.
+
+Barrel Main now structured: handleBarrelInteraction owns hit/approach/talk/overhear
+dispatch; outer while preserves top termination, phase, interaction, frame order.
+All exits after construction share guard/start/resource cleanup. Removed dead scratch
+declaration and unreachable movie cleanup labels. Differential720 interaction cases
+cover phase, hit, approach/talk short circuit, overhear, cancellation and helper false
+returns; combined4 tests pass6.101s including candidate resource/error cleanup. Exact
+before-source witnesses are readable_barrel_interaction_before.lua and
+readable_barrel_loop_before.lua. NEXT verify full-loop transitions/cleanup, fix phase1
+global timer setter, restore standalone entry condition, integrate readable builder,
+then reassess remaining NewOakvale entities and runtime parity. This is presentation
+and offline validation, not full quest completion.
+
+Barrel nested phase switch now lowers to advanceBarrelPhase with if/elseif branches,
+shared successful return phase finalization, and existing reviewed action helpers.
+The initial phase read, nonzero-phase termination check, and second phase read stay
+distinct. Differential672 cases cover both reads (including changed phase), phases
+0..5, thank/failure choice, cancellation and every action helper returning false.
+Combined4 tests pass6.012s; candidate regenerated/syntax passes. Presentation witness
+is readable_barrel_phase_before.lua. NEXT: structure per-frame hit/talk/overhear body
+and outer loop; remove dead labels/locals; check phase1 global WatchTimer setter;
+restore entry condition and integrate readable. Background Bully continues HUD/question
+CString order and colour operands after its38-test isolated checkpoint passed.
+
+Barrel control-flow presentation now factors five identical verified acquisition
+loops into acquireBarrelControl. Prepare once; first acquire before frame; failed
+acquire frame/termination order preserved; final termination query after success.
+readable_barrel_control.py requires all five exact loop correspondences, applies
+after native lowerings. Differential Lua checks126 failure/cancellation/error cases
+produce identical traces/results; combined4 tests pass7.244s. Candidate regenerated.
+NEXT: structured phase dispatch and per-frame interaction body, remove obsolete
+labels/scratch locals, restore standalone entry condition and integrate readable.
+
+Original conversation instructions now pass12 Unicorn traces (both sites, IDs-1/0/73,
+constructor result aliases): exact call arguments and listener-before-key cleanup,
+including EAX clobber after each boundary. New test_native_barrel_conversation_trace.py.
+Overhear scratch block now lowers to phase==0 and ShouldBarrelOverhear(me,heard), then
+termination check, state write, conversation. DB687C..DB68CE pinned. Proposed method
+calls retail rand BFEB16 only when already heard, reads live signed divisor13AC854
+AFTER rand, tests signed remainder zero, then fresh raw hero/distance-under15. Native
+IDIV exceptional operands raise an explicit host error. Candidate regenerated/syntax
+passes. Original-instruction/Lua gate comparison now passes192 cases across phase,
+heard state, signed random/divisor, distance and cancellation. The rand hook mutates
+the divisor from zero to its actual value, checking native read-after-rand ordering.
+Lua check validates state write before conversation and skips both on cancellation.
+Compiled actual-FSE-type/real-Lua x86 overhear checks now pass67 policies, including
+the post-rand live divisor, signed remainder, empty raw hero, both division faults and
+closed scope (work/barrel_overhear_runtime_checks/result.json). Engine/random calls
+are doubles; this is not gameplay proof. NEXT: structure whole Barrel dispatch and
+integrate readable output. Background Bully agent confirmed
+running during this checkpoint.
+
+Barrel failure/overhear conversation operands now lower to AddBarrelConversation.
+The native sequences construct the text CString, construct empty listener via6E7B40,
+call AddLine(conversation,key,false,bound actor,constructor result), destroy listener,
+then destroy CString. Failure text is TEXT_QST_048_SCRMSG_BARRELMAN_WHERE_GONE;
+overhear text is TEXT_QST_048_BARRELMAN_OVERHEAR. Generator pins both native regions,
+constructor bytes, literals and exact source correspondence. Staged adapter includes
+reverse temporary cleanup on host exceptions; no runtime installation. Combined4
+evidence-rejection/candidate tests pass5.537s; full staged FSE registration compiles;
+candidate regenerated and Lua syntax passes. Compiled x86 actual-FSE-type/real-Lua
+conversation harness now passes28 policies (work/barrel_conversation_runtime_checks):
+both lines, signed conversation IDs, empty CString, returned target identity, reverse
+cleanup, original line error preserved over cleanup error, and closed scope rejection.
+Engine APIs and constructor are doubles; original-instruction argument trace remains
+to be checked. NEXT: native argument trace, overhear random/distance predicate, then
+whole Barrel structured dispatch/readable integration. Gameplay remains unvalidated.
+
+Barrel return encounter now restores BOTH edges into THANKS: visible(hero, bound me)
+or distance-under10(bound me, freshly queried hero). The old draft used unrelated r5
+for visibility and exited Main on positive distance. FaceBarrelManTowardsHero preserves
+the native raw hero and false third argument. Both new runtime methods are staged in
+retail_barrel_return_encounter.inc; complete FSE registration compilation passes.
+Original-instruction Unicorn checks cover16 visibility/distance/empty/changing-hero
+cases and exact branch destinations/operands. Combined candidate/native4 tests pass
+5.798s. Candidate regenerated. Actual C++/Lua x86 boundary execution now passes35
+policies (work/barrel_return_encounter_runtime_checks/result.json): all eight empty
+hero combinations, both visibility/distance outcomes, no distance dependency on a
+visible result, and closed-scope rejection. Engine calls are doubles. Failure
+conversation research confirms 6E7B40 constructs an empty CScriptThing (vtable1238C8C,
+both pImp fields zero); literal12D91B0 is TEXT_QST_048_SCRMSG_BARRELMAN_WHERE_GONE.
+Next: failure/overhear conversation scopes and final structured dispatch. The
+runtime methods are unapplied; compilation/native emulation are not gameplay proof.
+
+Barrel returnToWarehouse helper now composes into phase3: one position snapshot from
+the Main-owned warehouseStartMarker, controlled distance/move/task loop, cancellation
+before phase4 write. Native DB5915..DB5A48 and exact intermediate Lua are pinned.
+Main now owns warehouseStartMarker and warehouseGuardMarker; explicit shared cleanup
+destroys guard then start before control resource. Existing markerMap verifies both
+lookup/name lifetimes and native inline/full cleanup equivalence. Remaining early
+returns and errors use the existing resource callback cleanup policy. Helper36 cases
+and combined7 tests pass (6.163s); candidate regenerated, Lua syntax passes. Candidate
+query-error case verifies temporary5 -> walkoff4 -> guard3 -> start2 -> resource1.
+Phase4 visibility/conversation operands and overall control-flow integration remain.
+
+Barrel phase2 now lowers to teleportWalkOff: fresh WatchTimer ID/global timer query
+per poll, equality 15, two owned markers, primary-position camera query, cancellation
+check after camera, selected teleport and phase3 write before alternate/primary cleanup.
+Native DB5734..DB588F bytes and intermediate Lua correspondence are pinned. New helper
+tests exercise 42 timer/camera/cancellation cases; combined helper/candidate 5 tests pass
+(5.839s). Candidate regenerated and Lua 5.4 syntax passes. Three marker/timer methods
+are composed into the unapplied Barrel runtime proposal; complete registration compiles
+with actual FSE headers (candidate SHA 8919581a506af1d54c1669be9c0176ebeca79f6e61b3c1fbbf1f0a9ae3c53dbf).
+The three new methods now also pass 35 actual-FSE-type/real-Lua x86 boundary policies
+(work/barrel_marker_runtime_checks/result.json; executable SHA
+ee3ad2af83a6fad099c241ea214eccd3752dc01dc33db439999892a1929b9b77).
+Cases cover changing global timer receivers and signed IDs/results, exact borrowed or
+fallback/null position pointers, both selected owned wrapper targets, and closed scopes.
+Engine calls are doubles. Next: retained main markers/phase3 and remaining
+phase4/conversation operands. Registration compilation
+does not establish runtime behavior or DLL/gameplay parity. Readable Barrel integration
+and overall NewOakValeIntro completion remain pending.
+
+
+Barrel phase1 walk-off marker owned scope integrated. walkOffFromWarehouse constructs
+one NewThingFromScriptName marker, snapshots ThingPosition once, retains it through
+all distance/move/task/termination checks, writes phase2 on success BEFORE destruction,
+and destroys once on cancellation. Full marker/string/inline-cleanup verifier now runs
+at candidate generation. Helper36mocked movement/cancellation/wait cases pass; whole
+candidate tests updated for marker2 / controlled temporary3 and query-error cleanup
+thing3->marker2->resource1. Combined4tests pass5.961s; candidate regenerated/compiles.
+Next phase2: native5734/577C GetTimer uses CURRENT GLOBAL interface and re-reads quest
+WatchTimer ID each poll, waits equality15. Lookup primary208 then alternate220; camera
+queries primary implementation position or fallback, termcheck then chosen teleport;
+phase3 write precedes destroy220 then208. Need owned camera/teleport adapters and
+GetBarrelWatchTimer; phase1 SetTimer45 should use existing global SetBarrelWatchTimer.
+Background Bully agent now has full disabled Main, finishing runoff actor/string maps.
+
+
+
+Barrel departure markers now lower to TeleportBarrelDepartureActors(me). Native6401..64A4
+pins independent guard/hidden name scopes: construct name, lookup owned marker, optional
+fresh borrowed hero, teleport using lookup RETURN pointer, destroy marker then name.
+retail_barrel_departure.inc preserves empty keys/markers and null hero forwarding; error
+cleanup keeps original error and closes marker before string. Actual FSE/Lua harness
+passes21 policies incl16empty/null/returned-target combinations plus5error sites.
+Candidate3tests pass4.066s; candidate regenerated/compiles. Combined proposal now7methods;
+full registration compile re-run succeeds at work/barrel_resource_integration. Runtime
+unmodified; remaining retained main/walk-off markers and body structure still pending.
+User clarified status questions mean ALL NewOakValeIntro: report51functions/18compiling
+files but behavior incomplete; affair trio/Book furthest developed, Barrel/Bully active,
+other entities/main quest and full DLL/playthrough still outstanding. Do not present
+Barrel-only progress as whole-quest completion or infer a percentage from syntax counts.
+
+
+
+Barrel movement adapters validated and runtime proposal consolidated. Actual FSE-type /
+real-Lua harness passes13 policies: fresh hero/GetPos each call, exact borrowed vector
+pointer (including returned null forwarded), bound-actor distance4.0, original native
+resource wrapper move2.0/type1/false/true even empty resource, WatchTimer45 through global
+interface, call errors/closed scope. work/barrel_movement_runtime_checks all3commands0,
+PE014c. prepare_barrel_resource_extension composes6Barrel/timer methods over wife/man/
+woman proposal plus helperheaders in work/barrel_resource_integration. Complete composed
+RegisterRetailResources templates compile to x86 object via run_barrel_registration_compile;
+registration-result.json hashes source/headers/object. This is compilation only, no link/
+DLL/gameplay. Original runtime remains unchanged. Next focus: owned departure markers and
+remaining cached marker lookups, then final structured Barrel body/readable integration.
+
+
+
+Barrel phase zero structured in native_barrel_initial_interaction.py and integrated into
+candidate. playInitialInteraction keeps WithTimer live through movement, favour speech,
+fade/departure/state updates; native normal timer destruction precedes PrepareResource
+then movie finish. Cancellation closes timer before movie without reset. The zero-ID
+piVar8 placeholder and dropped successful departure join are removed. Helper tests
+cover240 mocked movement/busy/health/termination/remaining-time scenarios, both expired
+and positive timer paths; pass0.014s. Earlier combined initial/candidate4tests pass4.559s.
+Candidate regenerated/compiles. New retail_barrel_movement.inc proposes fresh borrowed
+hero GetPos distance4.0 and native resource move2.0,type1,false,true plus WatchTimer45
+through global interface. THESE THREE METHODS STILL NEED COMPILED CHECKS/INTEGRATION.
+Departure currently retains old quest lookup/teleport wrappers; exact owned marker/
+CString/borrowed hero lowering is still pending. No full Barrel gameplay parity claim.
+
+
+
+Owned timer adapter ready for phase-zero composition: retail_owned_timer.h exposes
+Set/Get within WithRetailOwnedTimer callback; resources method proposal is WithTimer.
+Registration, Set, Get and deregistration each resolve current global143E8F8 and native
+virtual slots15C/164/168/160; preserves any returned ID incl0/-1 and signed remaining.
+Callback must return bool; close precedes return, escaped objects are inert, BODY errors
+win over cleanup errors, closed owner cannot deregister again on GC. Actual FSE types
+and real Lua harness passes27 policies, all3build/testcommands0, PE014c; artifacts
+work/owned_timer_runtime_checks. prepare_owned_timer_extension emits reviewable patch
+and complete candidate headers in work/owned_timer_proposal; original runtime unchanged.
+Full resource-class/DLL registration remains untested. Next: phase-zero Lua uses
+WithTimer across movement, favour speech and departure, returning before movie cleanup.
+
+
+
+Barrel phase-zero timer ownership verified by native_barrel_man_timer.py/witness.
+CTimer at stack68 constructs viaCD4450 (23bytes), storing the ID returned by current
+global interface143E8F8 slot15C. Movement caches ID in EBP, sets2 via global slot164,
+polls signed remaining>0 via168. NativeCD4470 destructor (20bytes) re-reads global
+interface and deregisters storedID via160. Six events through full bounded-switch CFG
+prove one cleanup on every constructed path (normal64E7, cancellations6AC4/6ADB).
+Two tests pass8.175s: omissions rejected, original ctor/dtor execute8 ID/global-switch
+cases incl0,73,-1. Candidate now verifies/reports timer map, but timer Lua lowering
+remains next; current raw piVar8=0 is NOT the native timer identity. Need owned scope
+with fresh global receiver per timer operation, plus phase-zero movement/teleport joins.
+
+
+
+Barrel nonzero interaction dialogue composed into candidate. playReturnInteraction
+preserves phase1..3 NOT_LARKING, phase5 HeroLetMeDown/BarrelBroken selection, and
+phase4/other no-speech finish. Exact termination checks occur before the same state
+reads; positive-health speech uses the reviewed wait helper. Normal paths prepare/reset
+control before unpause+movie destruction; cancellation closes movie without reset.
+All4movie constructions now use resource StartMovie; final interaction scope's common
+native destructor join is explicit. Phase-zero timer/movement/teleport flow still has
+known missing joins/operands and remains incomplete. Helper tests cover480 mocked
+phase/flag/health/cancellation/wait scenarios. Combined return-dialogue/candidate/speech
+5tests pass3.834s; generated candidate compiles. Retained marker composition still pending.
+
+
+
+Barrel thanks/careful movie scopes now composed via native_barrel_speech_movies.py.
+Candidate helpers playThanksMovie/playCarefulMovie share the native task/frame/term
+wait shape, unpause then destroy their movie once, and return explicit continuation.
+Thanks awards the good deed even when health is nonpositive/unordered (speech skipped),
+but not on cancellation; careful returns to LAB6933 instead of the draft's wrong Main
+return. Whole native movie/resource witnesses and exact intermediate Lua correspondences
+are verified before rewrite. Helper tests cover72 mocked health/task/cancellation cases;
+combined speech/failure/candidate6tests pass2.991s. Candidate regenerated and compiles.
+These tests exercise helper semantics, not complete native/gameplay execution. Movie72
+(the larger interaction movie) and retained marker lifetimes still require composition.
+
+
+
+Barrel unattended-warehouse movie composed into control candidate via
+native_barrel_failure_movie.py/witness. showWarehouseFailure owns one empty-name movie,
+pauses, displays the instruction, polls frames/termination, awards bad deed1 only on
+normal dismissal, unpauses and destroys exactly once. Native DB5C23 joins DB5DAF then
+restores BRAIN_GOOD_VILLAGER_BASE and phase5; draft incorrectly unpaused twice and
+exited Main. Candidate now restores the normal join and keeps cancellation on cleanup.
+Native movie inventory/lifetime map re-verified at generation. Two helper/source tests
+cover24 mocked dismissal/cancellation schedules plus5native byte mutation guards;
+combined candidate tests5pass3.197s. Candidate regenerated/compiles. These are helper
+behavior tests against reviewed native flow, not full native execution comparisons.
+Three other movie scopes and retained marker ownership remain to compose. Background
+worker continues Bully presented-item output and movie cleanup joins.
+
+
+
+Barrel health branch checkpoint: all7 native x87 comparison/destructor/result sequences
+verified by native_barrel_man_health_branches.py/witness. Native tests execute63 cases
+(7sites x9values: signed zeros, positive/negative, subnormals, infinities, NaN), including
+result survival across destructor EAX clobber. One inverted raw fVar19<=fVar20 branch
+is corrected to not(fVar19>fVar20), preserving native NaN behavior. Integrated in both
+resource candidate and readable builder. Two focused tests pass0.150s; combined
+candidate+health5tests pass2.547s. Both artifacts regenerated; readable18/18 compile,
+51functions,1056names/887semantic/169scratch unchanged. Movie/marker ownership
+composition and remaining control-flow/operand recovery continue next.
+
+
+
+Barrel hit-branch ally operands recovered: DB5EEA..DB5F16 proves bound actor -> first
+borrowed hero, fresh second GetHero -> bound actor. The raw draft incorrectly used
+walk-off marker r3 in the second direction. Candidate now calls SetBarrelManHeroAllies.
+Native test covers9 independent null/same/different hero pairs, exact call order and
+five instruction/binding mutation guards. Combined ally/candidate tests5pass2.363s.
+The staged approach adapter now includes ally method; actual FSE type/Lua harness
+passes30 policies (19approach +9ally pairs +2ally errors), all build/test commands0,
+PE014c. No raw hero copies or null-hero filtering; exceptions stop subsequent queries.
+Candidate regenerated and syntax passes. Adapter is still not registered/applied to
+runtime; retained markers/movies, hero movement/distance and conversation operands
+remain. Background Bully worker is composing verified joined loops and mask scopes;
+its corrected initial comparison count is174 (30home+144health), not earlier204.
+
+
+
+Barrel hit/interaction masks recovered and integrated into the separate control candidate.
+DB5DEE..DB5ED3 uses IsHitByHeroExceptAbility(me,14), preserving short-circuit hero-name
+CString lifetimes and reverse cleanup. DB60A3..DB611C is phase0 approach OR talk;
+talk is queried when approach is false, and phase!=0 skips approach. This removes
+unresolved ppuVar17/ppuVar18 masks and two erroneous early returns in those blocks.
+Three native tests pass:64 hit cases plus64 approach/talk cases, mutated branch/source
+rejection. Combined with candidate tests:6pass3.414s. Approach reads live float13AC858
+BEFORE fresh borrowed GetHero and forwards even null hero to native distanceCBE2FF.
+Proposed retail_barrel_approach.inc compiles with actual FSE types and real Lua in
+work/barrel_approach_runtime_checks:19 policies pass, all3commands exit0, PE014c.
+Native test mutates threshold during GetHero to prove load order; compiled harness
+also covers null/populated hero, signed zero/NaN bits and query errors. Host class
+registration/DLL/gameplay remain pending. Retained marker/movie composition and
+remaining hit-branch ally/conversation operands are still needed for full BarrelMain.
+Background agent continues Bully joined acquisition branches/cleanup masks.
+
+
+
+Barrel control candidate now exists at work/barrel_man_candidate/, regenerated with
+python -m tools.script_recovery.generate_barrel_man_resource_candidate. Source hash,
+66-event owning-resource map and11 temporary Thing lifetimes are re-verified. It lowers
+6 preparations,10 acquisitions,20 task polls,7 speeches,3 moves,7 health reads and4
+marker-distance queries. Hero move arguments corrected to position,2.0,1,false,true.
+Three tests pass2.663s:20 entry/acquisition/first-distance cancellation+retry scenarios,
+query-error temporary-before-resource cleanup, changed draft rejection. Candidate Lua
+compiles, but is deliberately not integrated into readable yet: retained marker/movie
+ownership, borrowed hero operands, hit/conversation/control-flow gaps remain. Running
+past the initial phase exposed an existing unresolved ppuStack_1c8 cleanup mask in the
+hit block; next useful step is native hit CString lifetime lowering (raw lines307..400)
+and then composing movie/marker ownership. No cached-health or control APIs remain
+in this candidate, though two borrowed-hero distance calls remain cached pending audit.
+
+
+
+Barrel camera cancellation fix is integrated into the readable builder. The raw draft's
+offscreen branch ignored termination and could still teleport. Both camera outcomes
+now perform one termination check before selecting primary marker208 or alternate220;
+termination jumps to the existing cleanup join. Native DB582D..DB588A versus emitted
+Lua passes16 cases (camera/termination AL0,1,2,255), verifying destination, phase and
+normal marker destruction order. Two tests pass0.067s, including source and four native
+branch mutation guards. Full readable regeneration compiles18/18 files; totals remain
+51functions,1056names,887semantic,169scratch. This is a control-flow repair, not proof
+that Barrel's remaining resource/marker lifetime lowering is complete.
+Files: native_barrel_camera_cancellation.py, witness, test; builder integration.
+
+
+
+Barrel marker snapshot checkpoint: native_barrel_man_position_snapshots.py/witness
+pins walk-off marker172 -> value snapshot184 and warehouse marker36 -> snapshot196.
+Original instructions pass12 cases covering populated/empty markers, live fallback
+0x143E8E0, negative zero, NaN payloads and infinities. Both snapshots retain all12
+bytes after the source vector changes. Tests also verify the staged distance2.0,
+controlled-Thing output and owning-resource20 arguments; six byte mutations reject.
+The controlled temporary-Thing verifier now checks all four distance consumers use
+the corresponding proven snapshot. Camera position remains a separate borrowed
+query; full resource-aware Barrel Lua composition remains pending. Audit:
+work/barrel_man_position_snapshots_audit.json.
+
+
+
+Barrel inline cleanup equivalence checkpoint: native_barrel_man_inline_cleanup.py/witness
+pins DB694C..DB6A03 and actual native4AA840/7E74D0 destructor bodies plusbasehelpers.
+Two tests pass1.743s. Original inline instructions versus actual calls DestroyThing48,
+DestroyThing36,ReleaseResource20 match across216 combinations (Info null/ref1/ref2 for
+threeobjects, independently empty/populatedData), including event order, finalcounts,
+objectfields and stackbalance. Delete/free/resource-base boundaries are engine doubles;
+Thing base destructor99A2E0 itself executes. Mutating five release instructions rejects.
+Marker verifier now also re-verifies this evidence, and work/barrel_man_markers_audit.json
+links it. This resolves inline cleanup expansion for lowering; marker query/position
+provenance and the full resource-aware Barrel candidate remain next. The background
+worker is now recovering actual Bully operands/resources in an isolated candidate.
+
+
+
+Barrel named-marker checkpoint: native_barrel_man_markers.py/witness covers7named lookups,
+12cleanup boundaries and7nameCString scopes. Warehouse start/guard coexist; phase walkoff
+slots172/208/220 and teleport slots384/408 have independent ownership. Shared DB6A32
+cleanup selects172 or208 by reviewedECX LEAs. Both normal and inlinebase destructor exits
+are included; base99A2E0 seven-byte body pinned. Two tests pass39.069s: every omittedlookup/
+cleanup, missingreceiver selection and premature stringdestruction reject. Audit:
+work/barrel_man_markers_audit.json. This proves lookup/cleanup boundaries; all marker-use/
+position provenance and inline strong-release semantics still need review before lowering.
+Readable final passes integrated for husband, BookTrader, wife and woman. Book now uses
+short-circuit timer==0 and random==0 directly (random queried only when timer is exactly0),
+and wife removes sole immediate animation comparison temporary with callback unchanged.
+Ten husband/Book/wife tests pass8.003s; woman two tests pass1.433s, including507wholewoman
+scenarios. Fourpasses simplify48literal booleans total and remove redundant temporaries;
+source maps retain provenance and presentation reports. Final rebuild passes18/18files; current totals1056renamed/887semantic/169scratch. Background worker is now auditing actual executable
+readable gaps, distinguishing them from historical comment diagnostics.
+
+
+
+Husband final presentation integrated: builder now applies readable_affair_man.py after
+structure_cleanup, folds17numeric literal comparisons to actual Lua booleans, and removes
+the exact immediate randomChoice3 comparison temporary. Presentation changes/source hashes
+are reported; ledger excludes the removed scratch name. Six husband tests pass5.181s,
+including186before/after behavior/error traces and existing structure checks. Background
+worker now investigates BookTrader readability. User clarified they had been viewingraw
+FSEoutput, and now knows readable/FSE is the current review copy.
+Barrel marker work in progress: seven named-lookups found (stack36/48 persistent markers,
+172/208/220 phasewalkoff handles,384/408 teleporttemporaries). Concurrent-owner checker
+added to native_resource_lifetime.py;11resource/movie tests pass9.760s, including independent
+concurrent locals, no doubleownership and missingcleanup rejection. The single-active
+contract still rejects overlaps. Namedmarker witness/usage mapping is not yet complete.
+Shareddestructor DB6A32 selects172 viaLEADB5716 or208 viaLEADB6A2B; DB572A uses172.
+
+
+
+Barrel movie checkpoint: native_barrel_man_movies.py/witness verifies four nonoverlapping
+movie scopes (stack272,256,88,72),12movie events and17pause calls through the bounded phase
+switch. Movie88 uses inline99A380 construction; allfourclassstrings construct/query/destroy
+beforepause. Nine explicitECX receiver selections establish shared destructor destinations.
+Movie and pause lifetimes are checked separately; unpause must use a live movie and all
+paused exits must balance. Three tests pass10.656s: omit eachmovie/pauseevent, omit each
+selectedreceiver, earlyclassdestruction and wrongpauseidentity reject. Audit:
+work/barrel_man_movies_audit.json. Retained markers/vector provenance and complete Lua
+lowering remain. User asked specifically for background readability work; the existing
+worker is now improving husband literal/control readability, with Rock proposals stable.
+User's exact pCVar22/LAB_00db1d7c examples are inraw FSE/Entities output; readable husband
+already has noexecutablegotos. Use readable/FSE/... for review.
+
+
+
+Barrel temporary Thing checkpoint: native_barrel_man_temporary_things.py/witness verifies
+all11GetScriptThing outputs: four distance and seven health queries, with immediate
+DestroyThing calls and complete lifetime CFG through the guarded phase switch. Distance
+uses the returned Thing inECX, stackvector inEDX, and float2.0 onstack; health passes the
+returned Thing to interface slot+420. The caller's output stackslot and destructorreceiver
+must match. Missing entries, wrong outputslot and premature destruction reject at each
+of11sites (33mutations). New two tests passed alongside three imported owning-resource
+tests (5/5,39.589s); the import was then changed to module-qualified form to avoid duplicate
+suite discovery, and discovery now confirms two new tests. Audit:
+work/barrel_man_temporary_things_audit.json. No Lua body promotion yet; vector provenance,
+retained markers, movie/pause scopes and complete operand validation remain next.
+
+
+
+Barrel owning-resource checkpoint: native_barrel_man_resources.py/witness verifies66
+control-resource events at baseline stack20 across Main DB5330..DB6B23, with creation
+DB538C and destructor joins DB69FE/DB6B13. DB5F8E is separately pinned as movie-local
+construction (vtable1260EF4), not a second control resource. Native bounded phase switch
+DB5526 reads four targets atDB6B24; native_bounded_switch.py proves the unsigned CMP/JA
+bound, table separation/alignment and absence of guard-bypassing edges. The lifetime
+checker accepts only caller-proven indirect target lists; unknown edges still reject.
+21focused tests pass, covering new map/switch tests and wife/woman lifetime regressions.
+Omitting any of66events rejects, deleting either cleanup fails CFG, and mutated table,
+selector, resource/movie bytes, unaligned targets and guard bypasses reject. Audit is
+work/barrel_man_resources_audit.json. This verifies owning-resource boundaries only;
+11temporary Things, retained markers, movie/pause lifetimes and complete operand/self
+provenance need follow-up before resource-aware Barrel Lua lowering. The four-entry jump
+table is outside the reviewed instruction body. No runtime/canonical/game changes.
+
+
+
+Barrel setup compiled API checkpoint: run_barrel_man_setup_runtime_checks extracts all
+five existing LuaQuestState setup method bodies unchanged and compiles them in a minimal
+host shell with actual FSE argument types and vendor Lua. All three build/test commands
+pass;12Lua cases cover populated/empty actorData, null/non-null Info and three homepositions.
+The recovered Lua calls produce brainCString construct/query/destroy, one home query,
+then center/min0/max1/group4. Each by-value consumer sees the same actor data with one
+additional reference and returns it to baseline. Native setter consumers and home query
+are doubles; fullhost/gameplay integration is still unproven. Evidence and hashes are in
+work/barrel_man_setup_runtime_checks/result.json. New executable is barrel-wander-check.exe
+(the earlier name triggered Windows installer-name elevation detection; no elevation used).
+Resource/movie/retainedmarker recovery for the rest of BarrelMan Main remains next.
+
+
+
+Barrel Man setup checkpoint and suite result: full recovery suite12 finished successfully,
+1161 tests in512.242s, captured Pythonexit0 (.log/.result.json under work/). That snapshot
+preceded the new talk/setup tests and subsequent generator integration; those changes
+passed21focused tests separately (wife candidate/readability, talk scopes, Barrel setup).
+The readable builder now replaces Barrel Man's missing opening actor/position arguments
+with bound me and one actual home-position read. Native maximum wander distance is1.0,
+not the old draft's0; minimum remains0.0 and state group4. Brain isBRAIN_PASSIVE_OVERRIDE.
+`native_barrel_man_setup.py`/witness pins261nativebytes and exact draft region; newtests
+execute original caller instructions for two positions and null/non-null reference-info,
+checking four copied Thing arguments, reference increments/consumer cleanup, stack balance,
+and matching Lua calls. Existing FSE wrappers already retain their by-value arguments;
+complete compiled setup-method comparison and the rest of Barrel resource scopes remain.
+Wife generator now re-verifies both native talk scopes and records them in its report.
+No canonical raw port/runtime/game files changed. Older suite-running notes are superseded.
+
+
+
+Wife existing talk method checkpoint: `run_wife_talk_runtime_checks` extracts the current
+IsTalkedToByHero method unchanged from runtime LuaEntityAPI.cpp and compiles it with
+actual FSE types and vendor Lua. All three build/test commands pass; PE x86 0x014c,
+input/method/executable hashes in work/wife_talk_runtime_checks/result.json. Tests check
+slot+0x6c, same CString identity, construct/query/destroy for true/false and query errors,
+and null actor/vtable/method guards. The harness invokes through an isolated Lua closure;
+it does not claim complete host registration or runtime/gameplay validation. Existing
+method mapping is supported for the verified wife path, so no new adapter is needed.
+work/affair_wife_talk_audit.json now links both native and compiled evidence. Generator
+integration of the witness remains next; full suite 12 continues in session45867 and
+production generator sources were kept stable during it. Poll that handle.
+
+
+
+Wife talk-query checkpoint: both native 39-byte CString/query/destruction scopes are
+pinned by native_affair_wife_talk.py and its witness. Two new tests pass: eight original
+instruction traces preserve BL through a destructor clobbering EAX, and ten mutations
+reject. Native query uses self EDI, SCRIPT_NAME_HERO and vtable+0x6c, then destroys the
+string before branching. work/affair_wife_talk_audit.json records the existing runtime
+IsTalkedToByHero source/body hash; compiled method comparison remains pending, so no
+new adapter or completed-runtime claim was introduced.
+Full recovery suite 12 is currently running in exec session 45867, writing
+work/converter_marathon_suite_20260913_12.log and .result.json on completion. Poll that
+live handle; do not restart merely for slow output. Discovery preceded the two new
+talk tests, which were run separately. Runtime/readable production sources stayed stable
+during this suite run. The background worker is researching Rock Troll exhumation.
+
+
+
+Wife helper-storage checkpoint: shared generated temporaries can now become independent
+helper locals only when every using helper assigns them before every read and no outer
+code or argument callback observes them. The synchronous argument callback is excluded
+from analysis only for variables it never mentions; all captured variables stay shared.
+Tests explicitly prevent localization for outer reads, callback captures and helper reads
+before assignment. The retained husband, counter and conversation ID remain outside.
+Role splitting now exposes taskRunning/controlAcquired/questionAnswer/distance values,
+and literal speech arguments inline. Unused declarations are removed with provenance.
+Six structure/readability tests pass (768 three-way traces, three error policies, and
+negative boundary checks); combined wife tests passed 17 before declaration pruning,
+then all six structure tests passed again. All 18 regenerated package files compile.
+Current totals: {"renamedLocals": 1060, "semanticNames": 889, "scratchNames": 171, "functions": 51, "rawDiagnostics": 1203}. Native/gameplay gaps remain active.
+
+
+
+Wife resource-method execution checkpoint: `run_wife_argument_key_checks` now compiles
+and executes the complete staged resource header through actual sol/Lua bindings, in
+addition to direct C++ and standalone Lua scope checks. All seven build/test commands
+pass; all three executables are PE x86 (0x014c), with source/executable hashes recorded
+in `work/wife_argument_key_checks/result.json`. The unchanged ASLR concatenation call
+runs through a private test-process trampoline to an engine double.
+Six resource-binding policies cover live/missing text with success, callback error,
+and reply error. They check native key identity, owned husband resolution, key closure
+before actor closure, escaped/closed rejection, and invalid actor kinds/nil/fractional
+IDs. The lookup string double now models a populated native string so the existing
+FableString wrapper actually destroys it. No runtime source or game installation changed.
+The proposal remains `work/wife_resource_integration/resource-integration.patch`.
+Full DLL/gameplay and remaining wife native scopes/operands remain unfinished; the older
+checkpoint saying resource-method execution is pending is superseded.
+
+
+
+Wife whole-package integration checkpoint: the readable builder now uses the verified
+wife candidate, structures it before local analysis, preserves helper provenance, and
+counts helper-local names in the native Main ledger. The generator-owned entry condition
+is restored exactly once. The review output has no executable wife goto/address labels;
+registration remains empty. All 18 Lua files compile. Current ledger: 1033 renamed locals,
+843 semantic names, 190 unresolved scratch names across 51 functions (historical raw
+1203 diagnostics retained). These totals reflect candidate replacement and helper scope
+accounting, not a direct before/after quality score.
+16 focused wife tests pass, including 768 three-way branch/cancellation comparisons and
+three three-way exception cleanup traces (health, speech, reply). Shared scratch values,
+remaining native operand/string-scope gaps, full resource binding execution and gameplay
+validation remain unfinished. The earlier note saying wife is absent from the package is
+superseded by this checkpoint.
+
+
+Wife local-readability checkpoint: `readable_affair_wife.py` localizes eight exclusive
+helper values only after proving every read is preceded by an assignment on every
+reachable helper path. It leaves shared husband/predicate values outside, then applies
+existing name/literal passes and wraps declarations. Unsupported helper syntax rejects.
+`work/affair_wife_candidate/NOVI_AffairWife.readable.lua` compiles; mapping in readability.json.
+Four structure/readability tests pass; all 768 original/structured/readable call+frame
+traces match. Explicit tests reject prior-call carried values and preserve shared locals.
+Remaining reused shared temporaries still need role splitting, and the wife is not yet
+promoted into the whole readable package. Runtime method execution and other native
+operand/cleanup validation gates remain active.
+
+
+Wife structure/entry checkpoint: candidate generator now restores the verified bound
+conscious condition before the first frame; reviewed prefix contains declarations only.
+`structure_affair_wife_lua.py` replaces all three native labels with returns and helpers
+waitUntilNearHusband/processHeroInteraction/runBody. No executable goto/address labels
+remain. Artifact: `work/affair_wife_candidate/NOVI_AffairWife.structured.lua` (compiles).
+768 before/after call+frame+termination traces match over 12 scenarios, including actual
+approach waiting/running-line branch. Thirteen structure/candidate tests pass; earlier
+15 candidate/entry tests passed. Next: local-role splitting around closures and remaining
+operand/runtime integration review. Wife output is still isolated, not yet in readable
+builder; full resource-method execution and DLL/gameplay validation remain outstanding.
+
+
+Wife health/disclosure follow-up: first hit branch now uses `not (health > zero)`
+instead of `health <= zero`, preserving native rejection of unordered/NaN health.
+`test_native_affair_wife_health_branches.py` executes all six original FCOMP/FNSTSW
+branch sequences across NaN, infinities, signed zero, +/-1 and positive subnormal.
+Disclosure question tests now cover yes/no routing and 118 cancellation cases with
+immediate/delayed answers; the helper mock now includes AddGoodDeed. Thirteen focused
+candidate/health tests pass. Candidate regenerated, still isolated and disabled.
+Next: finish diagnostic/operand audit and structure wife Lua; full resource-method
+execution, entry registration and DLL/gameplay validation remain pending.
+
+
+Wife live argument-key candidate checkpoint: generated Lua now uses WithArgumentKey,
+Exists, ResetToFirst and AddArgumentKeyLine, holding the native key through the optional
+husband reply. Cancellation returns false from the key callback, then returns through
+husband/resource cleanup. Fixed counter>40 specialization is removed from this candidate;
+tests accept valid _50 and reset only absent text. `native_affair_wife_argument_key.py`
+pins full Main plus numeric/concat/literal/destructor/release/assignment/text-query helpers,
+literals and binding, and checks both key destructor paths across the native CFG.
+Eleven argument-key/candidate tests pass, including reply error and key-before-actor cleanup.
+Runtime proposal remains unapplied; full resource-method execution, entry condition,
+remaining call/operand audit and readable wife structure still pending.
+
+
+Wife argument-key Lua checkpoint: `retail_wife_argument_key_lua.h` registers
+Exists/ResetToFirst and owns the native key through a protected callback with an
+explicit boolean continuation result. Real vendor-Lua/x86 tests cover normal/reset,
+false cancellation, Lua error, invalid return and escaped userdata after close.
+`prepare_wife_resource_extension.py` stages WithArgumentKey/AddArgumentKeyLine over
+the owned-position proposal, resolves actors through existing owned-Thing resolver,
+and includes the two helper headers. Actual full resource type registration compiles;
+patch `work/wife_resource_integration/resource-integration.patch` passes apply --check.
+Runtime unchanged. Next: pin native concat/helper profiles and replace candidate's
+counter fallback/string-per-call behavior with callback scope; test persistent key
+through reply/cancellation. Full resource method execution/DLL/gameplay remain pending.
+
+
+Wife argument-key runtime checkpoint: staged `retail_wife_argument_key.h` retains
+one CCharString across Exists/ResetToFirst/AddLine, matching native numeric suffix,
+prefix, concatenation, prefix destruction then suffix destruction. Uses a separate
+99F570 two-CCharString signature (existing char*-left overload is different).
+Actual MSVC x86 FSE-type harness passes identity, live text lookup (including valid
+_50), fallback, destruction, closed use and exception cleanup checks. Repro:
+`python -m tools.script_recovery.run_wife_argument_key_checks`; result and hashes in
+`work/wife_argument_key_checks/result.json`. Scope is staged only: Lua exposure,
+native helper profile pins and candidate callback lowering still required. Current
+wife candidate still uses pinned-bank counter fallback; do not claim that gap closed.
+Inspected existing LuaEntityAPI::IsTalkedToByHero: FableString hero-name lifetime is
+scoped around native call for valid bound actor; standalone native comparison pending.
+
+
+Wife hit-scope checkpoint: both native mask blocks now lower to
+`resources:IsHitByHeroExceptAbility(me,14)`. `native_affair_wife_hit_scopes.py`
+pins DB2C15..DB2CE3 and DB36DE..DB37AC plus exact expanded-Lua correspondence.
+Original instruction execution in Unicorn covers both scopes and all eight input
+combinations: query short-circuit order, correct ability14, reverse destruction,
+result only after cleanup, and balanced stack. Candidate mocks reject unscoped hit
+calls and test ability exclusion. Nine native-hit/candidate tests pass. Uses existing
+local Unicorn under work/runtime_re_tools when absent from default Python packages.
+Next wife gaps: talked-to CString and persistent argument-line CString ownership,
+entry condition, remaining operands and readable control structure. Full DLL/gameplay
+validation remains outstanding; wife candidate remains disabled and isolated.
+
+
+Wife candidate follow-up: uses the already-staged `AddConversationPerson` and
+`AddConversationLine` resource methods (the earlier pending-method names were
+superseded after inspecting `retail_thing_actions.inc`). Two unused CVar29/SUB41
+stores are removed. Six candidate tests pass, including 220 partner-path cancellation
+cases across hit/talk/zero-health variants and explicit wife/husband speaker ordering.
+The same borrowed/owned resolver handles facing and conversation arguments; no
+resource IDs are passed to raw host Thing wrappers. Native line-string lifetime
+still spans more than one call and remains an explicit gap despite matching call
+arguments. Candidate remains isolated in work/affair_wife_candidate, not promoted.
+
+
+Wife candidate checkpoint: `generate_affair_wife_resource_candidate.py` now emits
+`work/affair_wife_candidate/NOVI_AffairWife.resource_candidate.lua` plus evidence report.
+It rechecks all three scope maps and exact raw-draft hash. One resource surrounds
+10 acquisition sites, six speech/health temporaries, 14 task polls, owned husband
+movement/query uses and four movie starts. Existing expanded Lua has 30 pause and
+26 movie-end call sites, distinct from the 17/7 native call sites due to duplicated
+cleanup branches. Three omitted partner-cleanup jumps now return through the owning
+body scope. Initial cancellation precedes resource construction. Four candidate tests
+pass (136 cancellation scenarios across idle/acquisition/hit/busy paths plus speech
+ordering and changed-draft rejection). This candidate is NOT in the readable builder:
+owned conversation APIs, scoped hit/talk/conversation strings, entry condition and
+full partner/argument-path behavior still need work. Do not pass resource IDs to raw
+host Thing methods; two explicit pending owned-conversation methods are emitted.
+
+
+Wife retained-actor checkpoint: `native_affair_wife_actor_scope.py` verifies the sole
+husband lookup (DB3445, stack48), eight movement/distance/facing/conversation uses,
+five destruction joins, and the temporary lookup CString. Speaker/listener order is
+wife-to-husband then husband-to-wife; distance checks use 3.0. Nine combined
+resource/movie/actor tests pass. Audit: `work/affair_wife_actor_scope_audit.json`.
+The current wife draft has one cached `r1` husband and 10 cached AcquireControl sites;
+next step is a separate resource-aware generator using the three new scope maps,
+while restoring omitted cancellation cleanup and preserving conversation strings.
+
+
+Wife movie checkpoint: `native_affair_wife_movie_scopes.py` now verifies four movie
+constructions, 15 movie events and 17 pause calls over the complete native CFG.
+Five pinned ECX selections disambiguate shared destructor sites DB32A5/DB3E11.
+All four empty-class CString temporaries are constructed, passed to StartMovie and
+destroyed before pausing. Seven combined resource/movie tests passed, followed by
+three movie tests with class-string coverage. Audit: `work/affair_wife_movie_scopes_audit.json`.
+Next: retained actor scopes and resource-aware wife Lua lowering; the existing wife
+movie witness remains separate because prior emitter passes consume its older schema.
+
+
+Wife ownership checkpoint: `native_affair_wife_resource_scope.py` verifies all 60
+resource events against the full 4,890 native bytes, helper profiles and argument
+setups. One resource at stack16 is constructed at DB2B6C; two initial acquisitions
+use priority3, eight later sites use priority4. Every constructed CFG path ends at
+one of six full destructors or the inline strong/base cleanup ending DB3407.
+Six temporary controlled-Thing health queries also pass full CFG lifetime checks.
+Audit: `work/affair_wife_resource_scope_audit.json`; eight scope/lifetime tests pass.
+Next wife work: retained husband/other actor and movie scopes, then a disabled
+resource-aware candidate; current wife Lua still uses cached control and is incomplete.
+
+
+Latest checkpoint: the readable woman now comes from the verified resource/movie/actor
+candidate and structured helpers (`acquireAndRun`, `runInteractions`,
+`runOffAndWaitForCamera`). No executable gotos or address labels remain in that file.
+507 cancellation scenarios compare original, renamed and structured call traces;
+two actual run-off movements, three injected errors and entry-condition ordering also
+pass. Focused woman/entry/readability batch: **34 tests passed**. Owned `ThingPosition`
+passes actual x86/vendor Lua binding tests (`work/woman_owned_position_checks/result.json`);
+proposal remains unapplied. Latest readable totals: 51 functions, 18/18 files compile,
+883 semantic names and 179 scratch names; 1,203 raw diagnostics are historical conservative
+counts, not a current unresolved-TODO count. Latest full suite `_11.log`: **1,065 tests
+passed**, Python exit 0, before this woman integration. Woman local analysis now expands the two reviewed inline movie cancellation exits
+before reaching-definition analysis. Ten reused locals split into call-specific values;
+no scratch names remain in the woman file. The expanded exits and unchanged traces are
+covered by the 22-test readability/entry follow-up. Next: review remaining native operands
+and complete other New Oakvale bodies/ownership. Full DLL/gameplay validation remains outstanding.
+
+
+User requested a completion plan and sustained work through New Oakvale Intro, including
+human-readable output. Goal remains ACTIVE; do not stop at syntax/readability milestones.
+Plan: [NEW_OAKVALE_CONVERTER_PLAN.md](scripts/NEW_OAKVALE_CONVERTER_PLAN.md).
+Readable package: `refs/script_recovery/lifted/NewOakValeIntro/readable/` (disabled), built by
+`python tools/script_recovery/build_readable_new_oakvale.py`; includes a per-function ledger
+and reversible name maps. Latest generation: **51/51 functions and 18/18 files compile**;
+1,203 diagnostics remain. Readable output has 873 semantic names and 192 scratch names.
+The readable husband now uses ordinary local helpers/returns and a while loop:
+no executable gotos or native labels remain. `structure_affair_man_lua.py` preserves
+the candidate's traces across 225 cancellation/retry/error/partner-availability
+scenarios. Literal staging removal also eliminates 157 locals with checked dominance.
+This does not establish full runtime/gameplay parity. Full suite `_08.log` ran 1,010
+tests with four Scythe fault-injection failures; the corrected focused tests pass.
+`_09.log` passed 1,019 tests in 324.897 seconds (before the new entry-condition pass).
+
+Husband candidate now owns cached woman/wife Things and movie/pause state, classifies hits
+with scoped hero-name strings, and reads the live animation argument through a narrow API.
+Combined runtime proposal: `work/man_resource_integration/resource-integration.patch` (11
+methods, RetailThingPosition global, bounded live-entry storage, no reused IDs). It passes git apply --check and
+actual MSVC x86 / vendor sol+Lua tests with engine doubles:
+`work/new_oakvale_converter_resource_x86_20260913_06/result.json`. Runtime checkout/game are
+unchanged; no full DLL or gameplay validation yet. Candidate tests 17/17; previous focused
+batch 39/39 (before the last cached-Thing cancellation test was added).
+Shared-temp splitting and dead literal removal now preserve tested traces. Barrel position
+copy/spawn/health, wife position/movement, and woman run-off position/setup are recovered.
+Barrel phase 1/3 destination snapshots, phase 2 camera-selected teleport, five saved-interface
+pause calls and hit-predicate control flow are recovered. Non-fall-through switches now
+use a single selector evaluation and a loop that preserves case-level break targets.
+Barrel health/departure and Bully talk, teddy possession/presentation and hit-result
+predicates now have focused native evidence and behavior tests. Decimal parent offsets
+resolve to the same reviewed quest fields as hexadecimal offsets.
+Next: complete resource/Thing/movie/timer ownership, remaining operands and cleanup
+branches across the package, then behavior and runtime integration. Latest full suite: **966 passed**, exit 0, in
+`work/converter_marathon_suite_20260913_07.log` (343.792 seconds; before the newer mission operand pass).
+Experimental `--flat-control` handles
+switches and nested jumps, but must not be promoted before operand/ownership validation.
+Detailed chronology: [09-13 handoff](journal/2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-13.md).
+BookTrader home/health and BarrelMan Init now have checked operand/value recovery.
+BookTrader also has a complete native 54-event resource/8-temporary-Thing lifetime map.
+Its separate ownership-aware Lua candidate is now included in the disabled readable
+package. Eight candidate tests cover hit ordering, cancellation, movement, live animation
+reads, error cleanup, scoped hit results and changed evidence rejection. The latest
+BookTrader/husband candidate set passes 25 tests. BookTrader's three conditional hero-name
+strings now use the reviewed scoped hit helper; native DB4234..DB430B proves construction,
+short-circuit calls, ability 14 and reverse destruction before the result is consumed.
+Three Theresa facing sites preserve native snap flags false/true/false and scoped
+Thing/string cleanup through the proposed quest:FaceThingByScriptName adapter.
+Twelve BookTrader candidate tests pass, including purchase/decline/pending-answer cancellation and repeat-purchase prevention. Conversation and entry predicates remain
+open. The latest readable rebuild still compiles all 18 files; this is not behavioral completion.
+The readable builder now restores 14 alive-and-conscious registrations plus
+DeadFather's existence-only registration before their first frames. Native bytes,
+counted clones and the actual Lua binding pass x86 checks; the unapplied patch is
+`work/new_oakvale_conditions/condition-integration.patch`. Guard is separately
+audited: its Main has no condition registration, so none is synthesized.
+Original PDB locals/scopes are retained and linked in the readability report; see
+[PDB evidence](scripts/NEW_OAKVALE_PDB_EVIDENCE.md). One user-requested background agent
+is progressing ScytheInfo independently. Full suite `_07.log` passed966 tests.
+
+## Converter continuation (2026-09-13)
+
+**Resource-aware husband candidate landed (separate, DISABLED).**
+`python tools/script_recovery/generate_affair_man_resource_candidate.py` re-verifies the
+57-event native resource map and writes
+`refs/script_recovery/lifted/NewOakValeIntro/candidates/NOVI_AffairMan.resource_candidate.lua`:
+one `man_resource` inside `quest:WithRetailResources` from construction to a single release,
+non-waiting `resources:Speak` plus the retail task poll, ten `NewThingFromResource` triples,
+animation byte 0x01375748 as a raising stub. Nineteen rewrites are counted, including movie ownership, hit-pause and dead-cast fixes.
+The prepared extension gained `ThingIsDistanceFromPositionOver` (helper 0x00CBE45C); it is still
+unapplied and unbuilt. Registration stays `Quests = {}`; converter draft untouched.
+Review follow-up: hit pause corrected to true; three dead SUB41 calls removed.
+Gates: candidate tests 15/15; resource/movie focused set recorded in the linked handoff. Earlier full-suite checkpoint:
+878 tests, known Bully two failures/two errors (`work/converter_resource_candidate_tests.log`); not rerun for this follow-up.
+The external critic never ran (spend limit); completed verifier findings were recovered.
+Movie/pause calls now use the resource scope; error tests verify unpause, temporary/movie destruction and resource release.
+Read [the 2026-09-13 handoff](journal/2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-13.md) first.
+Next: cached woman/wife + hit-wrapper ownership, scope storage growth, a reviewed runtime read of
+0x01375748, then runtime-owner coordination on the five-method patch.
 
 ## Converter continuation (2026-09-12)
 
@@ -836,3 +2573,7 @@ Recovery tests pass 293/293.
 - Sibling repos hold the moved modding docs: FableForge `D:\Code\FableForge\docs\from_fabletlc\` and ForgeFSE-retail-shadow `docs\from_fabletlc\`. `docs/modding/README.md` is the index; do not recreate those docs here.
 - `native_conversion_readiness.json` silently loses all interface resolution if regenerated without `--vtable-slots` and `--interface-catalog`.
 - Two ForgeFSE forks existed; only `ForgeFSE-retail-shadow` is canonical. Any binding port must land there.
+
+Offline-only direction: user selected "Keep working offline only" and is at work,
+unavailable for live verification. No activation, installation or save/profile changes.
+Continue native/compiled offline integration; do not ask again about live testing.

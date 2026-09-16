@@ -1,0 +1,1327 @@
+{
+  "schema": "quest-unit-evidence/1",
+  "script": "Q_OrchardFarmRaid",
+  "package": "OrchardFarmRaid",
+  "nativeClass": "NScript::CQ_OrchardFarmRaidScript",
+  "allocator": "0x00DD1EF0",
+  "vtable": "0x012DAF78",
+  "master": {
+    "fields": {
+      "0x8": [
+        "HenchmanCommentaryState",
+        "Int"
+      ],
+      "0xc": [
+        "HenchmanOverrideState",
+        "Int"
+      ],
+      "0x10": [
+        "HenchmanSacrificedBodge",
+        "Bool"
+      ],
+      "0x11": [
+        "HauntedBarrowFieldsCompleted",
+        "Bool"
+      ],
+      "0x14": [
+        "RandomEntityVillagerMax",
+        "Int"
+      ],
+      "0x18": [
+        "RandomEntityGuardMax",
+        "Int"
+      ],
+      "0x1c": [
+        "RandomEntityBanditMax",
+        "Int"
+      ],
+      "0x20": [
+        "RandomEntityVillagerCount",
+        "Int"
+      ],
+      "0x24": [
+        "RandomEntityGuardCount",
+        "Int"
+      ],
+      "0x28": [
+        "RandomEntityBanditCount",
+        "Int"
+      ],
+      "0x2c": [
+        "RandomEntityVillagerPercentage",
+        "Float"
+      ],
+      "0x30": [
+        "RandomEntityGuardPercentage",
+        "Float"
+      ],
+      "0x34": [
+        "RandomEntityBanditPercentage",
+        "Float"
+      ],
+      "0x38": [
+        "RandomEntitySheriffAlive",
+        "Bool"
+      ],
+      "0x39": [
+        "RandomEntityLieutenantAlive",
+        "Bool"
+      ],
+      "0x3a": [
+        "BanditCampTwinbladeKilled",
+        "Bool"
+      ],
+      "0x44": [
+        "ArcheryHighScore",
+        "Int"
+      ],
+      "0x48": [
+        "FriendOfForeman",
+        "Bool"
+      ],
+      "0x49": [
+        "BridgeOpened",
+        "Bool"
+      ],
+      "0x4a": [
+        "GrannyMemoryReturned",
+        "Bool"
+      ],
+      "0x4b": [
+        "IsLunaHuman",
+        "Bool"
+      ],
+      "0x4c": [
+        "CondemnedManDead",
+        "Bool"
+      ],
+      "0x4d": [
+        "CondemnedManForgiven",
+        "Bool"
+      ],
+      "0x4e": [
+        "CondemnedManMeetsBodyGuard",
+        "Bool"
+      ],
+      "0x4f": [
+        "CondemnedManMeetsBodyGuardCutSceneStart",
+        "Bool"
+      ],
+      "0x50": [
+        "CondemnedManMeetsBodyGuardCutSceneFinished",
+        "Bool"
+      ],
+      "0x58": [
+        "OrchardFarmRaidLastCompleted",
+        "Int"
+      ],
+      "0x5c": [
+        "OrchardFarmTraderEscortCounter",
+        "Int"
+      ],
+      "0x60": [
+        "SeenAbbeyMotherAtGuild",
+        "Bool"
+      ],
+      "0x61": [
+        "DefeatedThunder",
+        "Bool"
+      ],
+      "0x62": [
+        "LostToThunder",
+        "Bool"
+      ],
+      "0x63": [
+        "KilledThunder",
+        "Bool"
+      ],
+      "0x64": [
+        "CollectedSoulFromArena",
+        "Bool"
+      ],
+      "0x65": [
+        "KilledBriar",
+        "Bool"
+      ],
+      "0x66": [
+        "CollectedSoulFromMother",
+        "Bool"
+      ],
+      "0x67": [
+        "KilledGM",
+        "Bool"
+      ],
+      "0x68": [
+        "CollectedSoulFromNostro",
+        "Bool"
+      ],
+      "0x6c": [
+        "DeliveredSoul",
+        "Int"
+      ],
+      "0x74": [
+        "WhisperKilledByHero",
+        "Bool"
+      ],
+      "0x75": [
+        "ArenaFinished",
+        "Bool"
+      ],
+      "0x76": [
+        "GatesRequireClosing",
+        "Bool"
+      ],
+      "0x77": [
+        "GatesRequireOpening",
+        "Bool"
+      ],
+      "0x78": [
+        "HeroDrunkness",
+        "Int"
+      ],
+      "0x7c": [
+        "TrophyDealerHeroSpokenToDemonDoors",
+        "Bool"
+      ],
+      "0x80": [
+        "VillagerAngryRating",
+        "Float"
+      ],
+      "0x84": [
+        "MotherDodgingKraken",
+        "Bool"
+      ],
+      "0x88": [
+        "JackBossBattleResult",
+        "Int"
+      ],
+      "0x8c": [
+        "JackBossBattleHeroGoodAtEnd",
+        "Bool"
+      ],
+      "0x8d": [
+        "WifeLeavingYou",
+        "Bool"
+      ],
+      "0x8e": [
+        "WifeLeftYou",
+        "Bool"
+      ],
+      "0x90": [
+        "CurrentScene",
+        "Int"
+      ],
+      "0x94": [
+        "StartNextScene",
+        "Bool"
+      ],
+      "0x98": [
+        "CurrentChapter",
+        "Int"
+      ],
+      "0x9c": [
+        "ScorpionsDestroyed",
+        "Bool"
+      ],
+      "0x9d": [
+        "ScorpionsDestroyedCutscenePlayed",
+        "Bool"
+      ],
+      "0x9e": [
+        "SkillTrainingStarted",
+        "Bool"
+      ],
+      "0x9f": [
+        "WillTrainingStarted",
+        "Bool"
+      ],
+      "0xa0": [
+        "MovingDummiesNeeded",
+        "Bool"
+      ],
+      "0xa4": [
+        "SkillScore",
+        "Int"
+      ],
+      "0xa8": [
+        "HighestSkillScore",
+        "Int"
+      ],
+      "0xac": [
+        "WillScore",
+        "Int"
+      ],
+      "0xb0": [
+        "MeleeApprenticeNeededForCutscene",
+        "Bool"
+      ],
+      "0xb4": [
+        "GlobalMeleeGrade",
+        "Int"
+      ],
+      "0xb8": [
+        "GlobalSkillGrade",
+        "Int"
+      ],
+      "0xbc": [
+        "GlobalWillGrade",
+        "Int"
+      ],
+      "0xc0": [
+        "GuildWarningOccuring",
+        "Bool"
+      ],
+      "0xc1": [
+        "SkillTestOccuring",
+        "Bool"
+      ],
+      "0xc2": [
+        "WillTestOccuring",
+        "Bool"
+      ],
+      "0xc3": [
+        "SkillRepeating",
+        "Bool"
+      ],
+      "0xc4": [
+        "SkillRepeatKnown",
+        "Bool"
+      ],
+      "0xc5": [
+        "SkillDummyReset",
+        "Bool"
+      ],
+      "0xc6": [
+        "HeroTakingGuildTest",
+        "Bool"
+      ],
+      "0xc7": [
+        "SwordInTheStoneComplete",
+        "Bool"
+      ],
+      "0xc8": [
+        "AmbushTradersAllGuardsDead",
+        "Bool"
+      ],
+      "0xc9": [
+        "AmbushTradersAllTradersDead",
+        "Bool"
+      ],
+      "0xcc": [
+        "AmbushTradersKillCount",
+        "Int"
+      ],
+      "0xd0": [
+        "AmbushTradersBanditHireCount",
+        "Int"
+      ],
+      "0xd4": [
+        "AmbushTradersSpyDead",
+        "Bool"
+      ],
+      "0xd5": [
+        "StruckDealWithLadyGrey",
+        "Bool"
+      ],
+      "0xd6": [
+        "HeroExposedLadyGrey",
+        "Bool"
+      ],
+      "0xd7": [
+        "HeroMarriedLadyGrey",
+        "Bool"
+      ],
+      "0xd8": [
+        "BountyHuntWithinTimeLimit",
+        "Bool"
+      ],
+      "0xd9": [
+        "BountyHuntDecapitation",
+        "Bool"
+      ],
+      "0xda": [
+        "BountyHuntTimeLimitExceeded",
+        "Bool"
+      ],
+      "0xe0": [
+        "BreakSiegeFinished",
+        "Bool"
+      ],
+      "0xe1": [
+        "WhiteBalverineFinished",
+        "Bool"
+      ],
+      "0xe2": [
+        "MadBomberFinished",
+        "Bool"
+      ],
+      "0xe3": [
+        "BodyGuardsMustStandAndWait",
+        "Bool"
+      ],
+      "0xe4": [
+        "BodyGuardsInLimbo",
+        "Bool"
+      ],
+      "0xe5": [
+        "WifeHeroFlirting",
+        "Bool"
+      ],
+      "0xe8": [
+        "PrisonRaceNumber",
+        "Int"
+      ],
+      "0xec": [
+        "PrisonRaceWonByHero",
+        "Bool"
+      ],
+      "0xed": [
+        "WasPrisonRaceEverWonByHero",
+        "Bool"
+      ],
+      "0xee": [
+        "PrisonKeyStolenByHero",
+        "Bool"
+      ],
+      "0xef": [
+        "BooksPreviouslyOpened_0",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
+        "Bool"
+      ],
+      "0xf7": [
+        "BooksPreviouslyOpened_2",
+        "Bool"
+      ],
+      "0xf2": [
+        "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf4": [
+        "HeroDollsScriptUsingTeacher",
+        "Bool"
+      ],
+      "0xf8": [
+        "MaxChickenKickingScore",
+        "Int"
+      ],
+      "0x108": [
+        "TimeAdvancePointTriggered",
+        "Bool"
+      ],
+      "0x109": [
+        "OFBRCratesStolen",
+        "Bool"
+      ],
+      "0x10a": [
+        "OFBR_NoCratesWereStolen",
+        "Bool"
+      ],
+      "0x10b": [
+        "DarkwoodAllTradersAlive",
+        "Bool"
+      ],
+      "0x10c": [
+        "MadBomberNoBombsExplode",
+        "Bool"
+      ],
+      "0x10d": [
+        "HobbeCavePerpertratorKilled",
+        "Bool"
+      ],
+      "0x110": [
+        "HobbeCaveInnocentSacrificed",
+        "Int"
+      ],
+      "0x114": [
+        "HobbeCaveBoyUnharmed",
+        "Bool"
+      ],
+      "0x115": [
+        "BanditCampKillNoBandits",
+        "Bool"
+      ],
+      "0x116": [
+        "BreakSiegeNoAssistance",
+        "Bool"
+      ],
+      "0x117": [
+        "BreakSiegeKilledLeader",
+        "Bool"
+      ],
+      "0x118": [
+        "OrchardFarmBanditKilled",
+        "Bool"
+      ],
+      "0x119": [
+        "OrchardFarmGuardKilled",
+        "Bool"
+      ],
+      "0x11a": [
+        "BanditCampKillManyBandits",
+        "Bool"
+      ],
+      "0x11b": [
+        "HobbeContestKillMoreHobbes",
+        "Bool"
+      ],
+      "0x11c": [
+        "GraveyardKillAllInnocents",
+        "Bool"
+      ],
+      "0x120": [
+        "DarkwoodPickpocketedAllTraders",
+        "Int"
+      ],
+      "0x124": [
+        "HangingTreeBanditKilled",
+        "Bool"
+      ],
+      "0x125": [
+        "HangingTreeGuardKilled",
+        "Bool"
+      ],
+      "0x126": [
+        "TCGKillNoBandits",
+        "Bool"
+      ],
+      "0x127": [
+        "TCGMadeTimeLimit",
+        "Bool"
+      ],
+      "0x128": [
+        "TCEKeepBanditFollowerAlive",
+        "Bool"
+      ],
+      "0x129": [
+        "TCEMadeTimeLimit",
+        "Bool"
+      ],
+      "0x12a": [
+        "RansomVictimVictimNoDamage",
+        "Bool"
+      ],
+      "0x12b": [
+        "RansomVictimKidnappersKilled",
+        "Bool"
+      ],
+      "0x12c": [
+        "RansomVictimSaveVictim",
+        "Bool"
+      ],
+      "0x12d": [
+        "RansomVictimHaveVictimKilled",
+        "Bool"
+      ],
+      "0x12e": [
+        "MinionCampBriarNoDamage",
+        "Bool"
+      ],
+      "0x12f": [
+        "FireHeartFreeAllPrisoners",
+        "Bool"
+      ],
+      "0x130": [
+        "FireHeartKillAllPrisoners",
+        "Bool"
+      ],
+      "0x131": [
+        "TCETimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x132": [
+        "TCGTimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x133": [
+        "HeroWoreMask",
+        "Bool"
+      ],
+      "0x140": [
+        "SingingStonesInSync",
+        "Bool"
+      ]
+    },
+    "unmapped": [
+      {
+        "offset": "0x4",
+        "pdbOffset": "0x4",
+        "type": "EGameflowPosition",
+        "name": "PostSavePosition"
+      },
+      {
+        "offset": "0x3c",
+        "pdbOffset": "0x3c",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateCurrent"
+      },
+      {
+        "offset": "0x40",
+        "pdbOffset": "0x40",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateRequired"
+      },
+      {
+        "offset": "0x70",
+        "pdbOffset": "0x70",
+        "type": "EPlaceInHeroSouls",
+        "name": "CurrentHeroSoulsPosition"
+      },
+      {
+        "offset": "0xdc",
+        "pdbOffset": "0xdc",
+        "type": "ulong",
+        "name": "AchievementsWorthyOfSong"
+      },
+      {
+        "offset": "0xfc",
+        "pdbOffset": "0xfc",
+        "type": "ulong",
+        "name": "StoryTellerSpecialStories"
+      },
+      {
+        "offset": "0x100",
+        "pdbOffset": "0x100",
+        "type": "ulong",
+        "name": "StoryTellerToldSpecialStories"
+      },
+      {
+        "offset": "0x104",
+        "pdbOffset": "0x104",
+        "type": "EHeroNames",
+        "name": "GHeroName"
+      },
+      {
+        "offset": "0x134",
+        "pdbOffset": "0x134",
+        "type": "vector<CCharString,std::allocator<CCharString>_>",
+        "name": "BoastRegions"
+      }
+    ],
+    "things": {}
+  },
+  "quest": {
+    "functions": {
+      "destructor": {
+        "address": "0x00dd1f20",
+        "evidence": "cluster lifecycle slot"
+      },
+      "RegisterMain": {
+        "address": "0x00dcc660",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Main": {
+        "address": "0x00dcc770",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Init": {
+        "address": "0x00dcc140",
+        "evidence": "cluster lifecycle slot"
+      },
+      "OnPersist": {
+        "address": "0x00dcc720",
+        "evidence": "cluster lifecycle slot"
+      },
+      "ProcessGameRulesEvil": {
+        "address": "0x00dd03d0",
+        "spawnedAs": "ProcessGameRulesEvil",
+        "evidence": "inventory thread registration"
+      },
+      "ProcessGameRulesGood": {
+        "address": "0x00dd0f60",
+        "spawnedAs": "ProcessGameRulesGood",
+        "evidence": "inventory thread registration"
+      },
+      "DoCutsceneIfRequired": {
+        "address": "0x00dcfa60",
+        "spawnedAs": "DoCutsceneIfRequired",
+        "evidence": "inventory thread registration"
+      },
+      "WatchForExternalScriptDeactivation": {
+        "address": "0x00dccf30",
+        "spawnedAs": "WatchForExternalScriptDeactivation",
+        "evidence": "inventory thread registration"
+      },
+      "MakeTeamMemberComment": {
+        "address": "0x00dcda80",
+        "evidence": "bsim label only; string sets inconclusive",
+        "bsimAgrees": true,
+        "callers": [
+          "BanditTeamMember",
+          "BanditTeamSpawn",
+          "GuardTeamMember",
+          "GuardTeamSpawn"
+        ]
+      },
+      "DoMultiplierCutscene": {
+        "address": "0x00dd1af0",
+        "evidence": "PDB-name via string-set match (jaccard 0.70)",
+        "bsimAgrees": true,
+        "callers": [
+          "MK_OFI_GWLL_WHIS2",
+          "M_WhisperFarmRaidIntro"
+        ]
+      },
+      "ReplaceQuestCards": {
+        "address": "0x00dd0eb0",
+        "evidence": "PDB-name via string-set match (jaccard 1.00)",
+        "bsimAgrees": true,
+        "callers": [
+          "quest"
+        ]
+      }
+    },
+    "fields": {
+      "0x48": [
+        "CrateCount",
+        "Int"
+      ],
+      "0x4c": [
+        "CommentTimer",
+        "Int"
+      ],
+      "0x50": [
+        "DoneIntroduction",
+        "Bool"
+      ],
+      "0x51": [
+        "HeroAtWrongEntrance",
+        "Bool"
+      ],
+      "0x52": [
+        "WhisperSpawned",
+        "Bool"
+      ],
+      "0x60": [
+        "MissionSucceeded",
+        "Bool"
+      ],
+      "0x78": [
+        "HeroTeam",
+        "Int"
+      ],
+      "0x7c": [
+        "BanditWavesSpawned",
+        "Int"
+      ],
+      "0x80": [
+        "RemindHeroOfObjectivesTimer",
+        "Int"
+      ],
+      "0x88": [
+        "HeroMetWhisperBeforeFarm",
+        "Bool"
+      ],
+      "0x89": [
+        "ShownCombatMultiplierTutorial",
+        "Bool"
+      ],
+      "0x8a": [
+        "ShownCombatFlourishTutorial",
+        "Bool"
+      ],
+      "0x8b": [
+        "WhisperInCutscene",
+        "Bool"
+      ],
+      "0x8c": [
+        "Teams_0_StateCounter_0",
+        "Int"
+      ],
+      "0x90": [
+        "Teams_0_StateCounter_1",
+        "Int"
+      ],
+      "0x94": [
+        "Teams_0_StateCounter_2",
+        "Int"
+      ],
+      "0x98": [
+        "Teams_0_StateCounter_3",
+        "Int"
+      ],
+      "0x9c": [
+        "Teams_0_StateCounter_4",
+        "Int"
+      ],
+      "0xa0": [
+        "Teams_0_StateCounter_5",
+        "Int"
+      ],
+      "0xa4": [
+        "Teams_0_MemberCount",
+        "Int"
+      ],
+      "0xa8": [
+        "Teams_0_TeamReinforcementsTimer",
+        "Int"
+      ],
+      "0xac": [
+        "Teams_0_MaxTeamMembers",
+        "Int"
+      ],
+      "0xcc": [
+        "Teams_1_StateCounter_0",
+        "Int"
+      ],
+      "0xd0": [
+        "Teams_1_StateCounter_1",
+        "Int"
+      ],
+      "0xd4": [
+        "Teams_1_StateCounter_2",
+        "Int"
+      ],
+      "0xd8": [
+        "Teams_1_StateCounter_3",
+        "Int"
+      ],
+      "0xdc": [
+        "Teams_1_StateCounter_4",
+        "Int"
+      ],
+      "0xe0": [
+        "Teams_1_StateCounter_5",
+        "Int"
+      ],
+      "0xe4": [
+        "Teams_1_MemberCount",
+        "Int"
+      ],
+      "0xe8": [
+        "Teams_1_TeamReinforcementsTimer",
+        "Int"
+      ],
+      "0xec": [
+        "Teams_1_MaxTeamMembers",
+        "Int"
+      ]
+    },
+    "thingFields": {
+      "0xb0": "Teams_0_CrateDropPos",
+      "0xbc": "Teams_0_TeamCrateCarrier",
+      "0xf0": "Teams_1_CrateDropPos",
+      "0xfc": "Teams_1_TeamCrateCarrier"
+    },
+    "unmappedFields": [
+      {
+        "offset": "0x54",
+        "pdbOffset": "0x68",
+        "type": "vector<CScriptThing,std::allocator<CScriptThing>_>",
+        "name": "CrateList"
+      },
+      {
+        "offset": "0x64",
+        "pdbOffset": "0x7c",
+        "type": "<unnamed-type-MissionFailed>",
+        "name": "MissionFailed"
+      },
+      {
+        "offset": "0x68",
+        "pdbOffset": "0x80",
+        "type": "CWideString[4]",
+        "name": "FailReasons"
+      }
+    ],
+    "arrays": [
+      {
+        "name": "FailReasons",
+        "element": "CWideString",
+        "base": "0x68",
+        "stride": 4,
+        "count": 4,
+        "members": {},
+        "things": {},
+        "pointers": {}
+      },
+      {
+        "name": "Teams",
+        "element": "CCrateTeamManager",
+        "base": "0x8c",
+        "stride": 64,
+        "count": 2,
+        "members": {
+          "0x0": [
+            "StateCounter_0",
+            "Int"
+          ],
+          "0x4": [
+            "StateCounter_1",
+            "Int"
+          ],
+          "0x8": [
+            "StateCounter_2",
+            "Int"
+          ],
+          "0xc": [
+            "StateCounter_3",
+            "Int"
+          ],
+          "0x10": [
+            "StateCounter_4",
+            "Int"
+          ],
+          "0x14": [
+            "StateCounter_5",
+            "Int"
+          ],
+          "0x18": [
+            "MemberCount",
+            "Int"
+          ],
+          "0x1c": [
+            "TeamReinforcementsTimer",
+            "Int"
+          ],
+          "0x20": [
+            "MaxTeamMembers",
+            "Int"
+          ]
+        },
+        "things": {
+          "0x24": "CrateDropPos",
+          "0x30": "TeamCrateCarrier"
+        },
+        "pointers": {
+          "0x3c": "EnemyTeam"
+        }
+      }
+    ],
+    "retailOffsetDelta": -20,
+    "pdbMembersUnused": [],
+    "nestedPdbMembers": {
+      "CCrateTeamMember": [
+        "GetNearestCrateToMe",
+        "GoOnPatrol",
+        "IsThingCarryingCrate"
+      ]
+    }
+  },
+  "entities": {
+    "GuardTeamSpawn": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CTeamSpawn",
+      "classEvidence": "string-set match (jaccard 0.86)",
+      "vtable": "0x012DB2D4",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf6e0"
+        },
+        "Main": {
+          "address": "0x00dcd350"
+        },
+        "Init": {
+          "address": "0x00dcd1d0"
+        },
+        "GetParentScript": {
+          "address": "0x00dcd1c0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x28": [
+          "TeamID",
+          "Int"
+        ],
+        "0x2c": [
+          "TeamMemberLimit",
+          "Int"
+        ],
+        "0x30": [
+          "TeamRespawnTime",
+          "Int"
+        ],
+        "0x3c": [
+          "BanditsLeftID",
+          "Int"
+        ]
+      },
+      "thingFields": {
+        "0x1c": "OtherSpawnPoint"
+      },
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "BanditTeamSpawn": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CTeamSpawn",
+      "classEvidence": "string-set match (jaccard 0.86)",
+      "vtable": "0x012DB2D4",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf6e0"
+        },
+        "Main": {
+          "address": "0x00dcd350"
+        },
+        "Init": {
+          "address": "0x00dcd1d0"
+        },
+        "GetParentScript": {
+          "address": "0x00dcd1c0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x28": [
+          "TeamID",
+          "Int"
+        ],
+        "0x2c": [
+          "TeamMemberLimit",
+          "Int"
+        ],
+        "0x30": [
+          "TeamRespawnTime",
+          "Int"
+        ],
+        "0x3c": [
+          "BanditsLeftID",
+          "Int"
+        ]
+      },
+      "thingFields": {
+        "0x1c": "OtherSpawnPoint"
+      },
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "Artefact": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CArtefact",
+      "classEvidence": "name",
+      "vtable": "0x012DB348",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcdc30"
+        },
+        "Main": {
+          "address": "0x00dcdc50"
+        },
+        "Init": {
+          "address": "0x00dcfa10"
+        },
+        "GetParentScript": {
+          "address": "0x00dcdc20"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00dcf920"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "OrchardFarmWhisper": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper",
+      "classEvidence": "name",
+      "vtable": "0x012DB3E0",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf090"
+        },
+        "Main": {
+          "address": "0x00dcf0b0"
+        },
+        "Init": {
+          "address": "0x00dcf000"
+        },
+        "GetParentScript": {
+          "address": "0x00dceff0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "GuardTeamMember": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember",
+      "classEvidence": "string-set match (jaccard 0.88)",
+      "vtable": "0x012DB364",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf760"
+        },
+        "Main": {
+          "address": "0x00dce230"
+        },
+        "Init": {
+          "address": "0x00dcdf60"
+        },
+        "GetParentScript": {
+          "address": "0x00dcdec0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00dcded0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {
+        "GoOnPatrol": {
+          "address": "0x00dcec70",
+          "evidence": "bsim label agrees with a PDB nested member"
+        },
+        "IsThingCarryingCrate": {
+          "address": "0x00dced10",
+          "evidence": "bsim label agrees with a PDB nested member"
+        },
+        "GetNearestCrateToMe": {
+          "address": "0x00dcedf0",
+          "evidence": "WEAK: size-rank pairing (retail 350 B vs debug 315 B)"
+        },
+        "helper_DCEC50": {
+          "address": "0x00dcec50",
+          "evidence": "unnamed entity helper",
+          "size": 29
+        }
+      },
+      "fields": {
+        "0x1c": [
+          "CurrentAIState",
+          "Int"
+        ],
+        "0x20": [
+          "PreviousAIState",
+          "Int"
+        ],
+        "0x24": [
+          "TeamID",
+          "Int"
+        ],
+        "0x28": [
+          "MemberState",
+          "Int"
+        ]
+      },
+      "thingFields": {
+        "0x30": "ThingToPatrolTo"
+      },
+      "unmappedFields": [
+        {
+          "offset": "0x2c",
+          "pdbOffset": "0x2c",
+          "type": "CCrateTeamManager *",
+          "name": "MyTeam"
+        }
+      ],
+      "arrays": []
+    },
+    "BanditTeamMember": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember",
+      "classEvidence": "string-set match (jaccard 0.88)",
+      "vtable": "0x012DB364",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf760"
+        },
+        "Main": {
+          "address": "0x00dce230"
+        },
+        "Init": {
+          "address": "0x00dcdf60"
+        },
+        "GetParentScript": {
+          "address": "0x00dcdec0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00dcded0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {
+        "GoOnPatrol": {
+          "address": "0x00dcec70",
+          "evidence": "bsim label agrees with a PDB nested member"
+        },
+        "IsThingCarryingCrate": {
+          "address": "0x00dced10",
+          "evidence": "bsim label agrees with a PDB nested member"
+        },
+        "GetNearestCrateToMe": {
+          "address": "0x00dcedf0",
+          "evidence": "WEAK: size-rank pairing (retail 350 B vs debug 315 B)"
+        },
+        "helper_DCEC50": {
+          "address": "0x00dcec50",
+          "evidence": "unnamed entity helper",
+          "size": 29
+        }
+      },
+      "fields": {
+        "0x1c": [
+          "CurrentAIState",
+          "Int"
+        ],
+        "0x20": [
+          "PreviousAIState",
+          "Int"
+        ],
+        "0x24": [
+          "TeamID",
+          "Int"
+        ],
+        "0x28": [
+          "MemberState",
+          "Int"
+        ]
+      },
+      "thingFields": {
+        "0x30": "ThingToPatrolTo"
+      },
+      "unmappedFields": [
+        {
+          "offset": "0x2c",
+          "pdbOffset": "0x2c",
+          "type": "CCrateTeamManager *",
+          "name": "MyTeam"
+        }
+      ],
+      "arrays": []
+    },
+    "FarmRearEntrance": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance",
+      "classEvidence": "name",
+      "vtable": "0x012DB4B8",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf4a0"
+        },
+        "Main": {
+          "address": "0x00dcf4c0"
+        },
+        "Init": {
+          "address": "0x00dcf480"
+        },
+        "GetParentScript": {
+          "address": "0x00dcf470"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "M_WhisperFarmRaidIntro": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro",
+      "classEvidence": "name",
+      "vtable": "0x012DB4D4",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf5f0"
+        },
+        "Main": {
+          "address": "0x00dd1ac0"
+        },
+        "Init": {
+          "address": "0x00cdebb0"
+        },
+        "GetParentScript": {
+          "address": "0x00dcf5e0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    },
+    "MK_OFI_GWLL_WHIS2": {
+      "nativeClass": "NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2",
+      "classEvidence": "name",
+      "vtable": "0x012DB4F0",
+      "functions": {
+        "destructor": {
+          "address": "0x00dcf6c0"
+        },
+        "Main": {
+          "address": "0x00dd1eb0"
+        },
+        "Init": {
+          "address": "0x00cdebb0"
+        },
+        "GetParentScript": {
+          "address": "0x00dcf6b0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "arrays": []
+    }
+  }
+}

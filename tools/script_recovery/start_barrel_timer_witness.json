@@ -1,0 +1,49 @@
+{
+  "sourceSha256": "26965b9153e0092f8348f7eb8c90578a198605bb110774243f6bac3106f48ec9",
+  "strings": {
+    "0x0122D70E": "",
+    "0x012CA7C8": "HUD_CLOCK_ICON",
+    "0x12d9000": "M_WHouse_GuardPoint"
+  },
+  "regions": [
+    {
+      "address": 14372720,
+      "size": 562,
+      "sha256": "7beec77a43819ec0718fc5d13a93d2fbbe1d4b5e4612da1c8f69966048298e19"
+    },
+    {
+      "address": 4892736,
+      "size": 66,
+      "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+    },
+    {
+      "address": 10068704,
+      "size": 7,
+      "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+    }
+  ],
+  "slots": {
+    "0x168": 7239440,
+    "0x1c": 7238672,
+    "0x510": 8985280,
+    "0x120": 9076064,
+    "0x118": 8985760,
+    "0x534": 8985504,
+    "0x530": 8985472,
+    "0x548": 8985616
+  },
+  "fields": {
+    "WatchTimer": 264,
+    "GUIBarrelCounter": 96,
+    "BarrelManSpokenToHeroOnReturn": 115
+  },
+  "existingEvidence": [
+    "native_barrel_creation_witness.json",
+    "export_new_oakvale_start_barrel_timer.py"
+  ],
+  "limits": [
+    "Distance callee and engine APIs are checked boundaries.",
+    "No auto HUD removal on cancellation or exception.",
+    "Host integration, state binding, engine quiescence and restore timing remain pending."
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "address": "0x00DB5260",
+  "size": 167,
+  "sourceSha256": "98029335f900d70ec4b61f475819ef4f5abda288e04fd5244cb75ea95d02ee15",
+  "annotatedSha256": "2462b44e9def6122f77620859465f665174d0c0a6fba9ae1ef52076afae3f4ac",
+  "bytesSha256": "700d34947b365ed19535d6db434e5bb016919eb233688bdde9d17f0b10c855e0",
+  "contracts": {
+    "SetTimer": {
+      "name": "SetTimer",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "timerId",
+          "type": "int",
+          "optional": false
+        },
+        {
+          "name": "timeValue",
+          "type": "int",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets timer."
+    },
+    "EntitySetAsDamageable": {
+      "name": "EntitySetAsDamageable",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "isDamageable",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set as damageable."
+    },
+    "EntitySetAsKillable": {
+      "name": "EntitySetAsKillable",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "isKillable",
+          "type": "bool",
+          "optional": false
+        },
+        {
+          "name": "forceDead",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set as killable."
+    },
+    "EntitySetAsToAddToComboMultiplierWhenHit": {
+      "name": "EntitySetAsToAddToComboMultiplierWhenHit",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "doesAddToCombo",
+          "type": "bool",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set as to add to combo multiplier when hit."
+    },
+    "SetThingHasInformation": {
+      "name": "SetThingHasInformation",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pThing",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "wander",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "wave",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "continueAI",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Sets thing has information."
+    },
+    "EntitySetSightRadius": {
+      "name": "EntitySetSightRadius",
+      "scope": "Quest",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "spThing",
+          "type": "const std::shared_ptr<CScriptThing>&",
+          "optional": false
+        },
+        {
+          "name": "radius",
+          "type": "float",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Quest API",
+      "description": "Invokes entity set sight radius."
+    }
+  },
+  "parentFields": {
+    "0x108": [
+      "WatchTimer",
+      "Int"
+    ],
+    "0x85": [
+      "WarehouseMeetPoint_x",
+      "Float"
+    ],
+    "0x89": [
+      "WarehouseMeetPoint_y",
+      "Float"
+    ],
+    "0x8d": [
+      "WarehouseMeetPoint_z",
+      "Float"
+    ]
+  },
+  "edits": [
+    {
+      "old": "uStack_20 = *(undefined4 *)(*(int *)(this + 0x14) + 0x108);",
+      "new": "native_arg_barrel_watch_timer = *(int *)(*(int *)(this + 0x14) + 0x108);"
+    },
+    {
+      "old": "GSI->SetTimer();",
+      "new": "GSI->SetTimer(native_arg_barrel_watch_timer,0);"
+    },
+    {
+      "old": "GSI->EntitySetAsDamageable();",
+      "new": "GSI->EntitySetAsDamageable(me,0);"
+    },
+    {
+      "old": "GSI->EntitySetAsKillable();",
+      "new": "GSI->EntitySetAsKillable(me,0,0);"
+    },
+    {
+      "old": "GSI->EntitySetAsToAddToComboMultiplierWhenHit();",
+      "new": "GSI->EntitySetAsToAddToComboMultiplierWhenHit(me,0);"
+    },
+    {
+      "old": "GSI->SetThingHasInformation(pCVar1,0,1);",
+      "new": "GSI->SetThingHasInformation(me,0,1,0);"
+    },
+    {
+      "old": "GSI->EntitySetSightRadius(pCVar1,0x41200000);",
+      "new": "GSI->EntitySetSightRadius(me,10.0);"
+    },
+    {
+      "old": "*(undefined4 *)(iVar2 + 0x85) = *puVar3;",
+      "new": "*(float *)(*(int *)(this + 0x14) + 0x85) = puVar3.x;"
+    },
+    {
+      "old": "*(undefined4 *)(iVar2 + 0x89) = puVar3[1];",
+      "new": "*(float *)(*(int *)(this + 0x14) + 0x89) = puVar3.y;"
+    },
+    {
+      "old": "*(undefined4 *)(iVar2 + 0x8d) = puVar3[2];",
+      "new": "*(float *)(*(int *)(this + 0x14) + 0x8d) = puVar3.z;"
+    }
+  ],
+  "review": "Whole Init bytes: ESI=this, EBX=0, EDI=this+8. DB527D SetTimer(parent108,0); DB5293 damageable false; DB52A1 killable false/false; DB52AE combo false; DB52BE information false/true/false. DB52CD home getter returns vector copied by DB52D0..DB52E6 into parent85/89/8D; DB52FA sight radius IEEE754 0x41200000 =10.0. WarehouseMeetPoint name/ownership from quest and BarrelMan inventories; native type is a copied C3DVector, transient."
+}

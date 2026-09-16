@@ -1,0 +1,416 @@
+"""Evidence-driven lowering of aggregate/pointer field access in Ghidra C, before `annotate`.
+
+The generic lifter understands scalar `*(T *)(this + OFF)` fields (state maps) and interface
+slot calls. Retail quest classes also use, per the PDB layouts in a unit JSON:
+
+  master data      *(T *)(*(int *)(this + MD) + OFF)             -> GSI->Get/SetMasterGameState("Name")
+  Thing members    (CScriptThing *)(BASE + OFF), operator=, vcalls -> THING_Get/THING_Set("Name") pseudo-calls
+  struct arrays    *(T *)(IDX * STRIDE + BASE + MEMBER + PARENT)  -> GSI->Get/SetStateKind(__key("Teams_", IDX, "_Member"))
+  array pointers   this->MyTeam = &parent->Teams[i]; *(T *)(MyTeam + M) -> index kept in state, keyed access
+  thing vectors    (end - begin) / 12, *(begin + i*12)              -> LIST_Count("Name"), LIST_At("Name", i)
+
+Every rewrite is driven by offsets in the unit evidence; nothing is inferred from names. Pseudo
+calls are turned into Lua by `finish_lua` after the lifter has run. Unmatched shapes are left
+untouched for the lifter's own diagnostics.
+"""
+from __future__ import annotations
+
+import re
+
+SELF = r'(?:this|param_1)'
+TYPE = r'(?:undefined1|undefined4|undefined2|int|uint|char|byte|bool|float|short|ushort|long|ulong|CScriptThing|undefined)'
+BOOL_TRUE = {'1', "'\\x01'", 'true'}
+BOOL_FALSE = {'0', "'\\0'", 'false'}
+
+
+def off_re(n):
+    return f'(?:{hex(n)}|{n})'
+
+
+def _lit(value, kind):
+    v = ' '.join(value.split())
+    if kind == 'Bool':
+        if v in BOOL_TRUE:
+            return 'true'
+        if v in BOOL_FALSE:
+            return 'false'
+    return v
+
+
+# Inlined CScriptThing::operator= (VC7.1 inlines the counted-pointer assignment): the source
+# thing's Data (+4) and Info (+8) are read into temporaries, the destination's old Info is
+# released (refcount--, destroy+delete at zero), Data/Info are stored, the new Info is retained.
+RE_COUNTED_ASSIGN = re.compile(
+    r'(?P<ind>[ \t]*)(?:(?P<i>\w+) = \*\(int \*\*\)\((?P<src>[^;\n]+?) \+ 8\);\s*(?P<d>\w+) = \*\(undefined4 \*\)\((?P=src) \+ 4\);'
+    r'|(?P<d2>\w+) = \*\(undefined4 \*\)\((?P<src2>[^;\n]+?) \+ 4\);\s*(?P<i2>\w+) = \*\(int \*\*\)\((?P=src2) \+ 8\);)\s*'
+    r'(?P<o>\w+) = \*\(int \*\*\)\((?P<dst8>[^;\n]+?)\);\s*'
+    r'if \((?P=o) != (?P<iref>\w+)\) \{\s*'
+    r'if \((?P=o) != \(int \*\)0x0\) \{\s*'
+    r'\*(?P=o) = \*(?P=o) \+ -1;\s*'
+    r'if \(\*\*\(int \*\*\)\((?P=dst8)\) == 0\) \{\s*'
+    r'\(\*\(code \*\)\(\*\(int \*\*\)\((?P=dst8)\)\)\[1\]\)\(\);\s*'
+    r'operator_delete\(\*\(void \*\*\)\((?P=dst8)\)\);\s*\}\s*\}\s*'
+    r'\*\(undefined4 \*\)\((?P<dst4>[^;\n]+?)\) = (?P<dref>\w+);\s*'
+    r'\*\(int \*\*\)\((?P=dst8)\) = (?P=iref);\s*'
+    r'if \((?P=iref) != \(int \*\)0x0\) \{\s*\*(?P=iref) = \*(?P=iref) \+ 1;\s*\}\s*\}[ \t]*\r?\n?')
+
+
+def _split_offset(expr):
+    m = re.fullmatch(r'\s*(.+?) \+ (0x[0-9a-f]+|\d+)\s*', expr)
+    if not m:
+        return None, None
+    return m.group(1), int(m.group(2), 0)
+
+
+def fold_counted_pointer_assign(text):
+    def repl(m):
+        src = m.group('src') or m.group('src2')
+        iname = m.group('i') or m.group('i2')
+        dname = m.group('d') or m.group('d2')
+        if m.group('iref') != iname or m.group('dref') != dname:
+            return m.group(0)
+        base8, off8 = _split_offset(m.group('dst8'))
+        base4, off4 = _split_offset(m.group('dst4'))
+        if base8 is None or base8 != base4 or off8 != off4 + 4:
+            return m.group(0)
+        thing = f'({base8} + {hex(off4 - 4)})' if off4 - 4 else f'({base8})'
+        return f'{m.group("ind")}CScriptThing::operator=((CScriptThing *){thing},(CScriptThing *){src.strip()});\n'
+    return RE_COUNTED_ASSIGN.sub(repl, text)
+
+# Release to null (`thing = CScriptThing()` / reset): old Info released, Data and Info zeroed.
+RE_COUNTED_RELEASE = re.compile(
+    r'(?P<ind>[ \t]*)(?P<o>\w+) = \*\(int \*\*\)\((?P<dst8>[^;\n]+?)\);\s*'
+    r'(?:\w+ = [^;\n]+;\s*)*'
+    r'if \((?P=o) != \(int \*\)0x0\) \{\s*'
+    r'\*(?P=o) = \*(?P=o) \+ -1;\s*'
+    r'if \(\*\*\(int \*\*\)\((?P=dst8)\) == 0\) \{\s*'
+    r'\(\*\(code \*\)\(\*\(int \*\*\)\((?P=dst8)\)\)\[1\]\)\(\);\s*'
+    r'operator_delete\(\*\(void \*\*\)\((?P=dst8)\)\);\s*\}\s*'
+    r'(?P<inner>\})?\s*'
+    r'\*\(undefined4 \*\)\((?P<dst4>[^;\n]+?)\) = 0;\s*'
+    r'\*\(undefined4 \*\)\((?P=dst8)\) = 0;\s*'
+    r'(?(inner)|\})[ \t]*\r?\n?')
+
+
+def fold_counted_pointer_release(text):
+    def repl(m):
+        base8, off8 = _split_offset(m.group('dst8'))
+        base4, off4 = _split_offset(m.group('dst4'))
+        if base8 is None or base8 != base4 or off8 != off4 + 4:
+            return m.group(0)
+        thing = f'({base8} + {hex(off4 - 4)})' if off4 - 4 else f'({base8})'
+        kept = re.findall(r'^[ \t]*(\w+ = [^;\n]+;)', m.group(0)[m.group(0).index(';') + 1:m.group(0).index('if (')], re.M)
+        prefix = ''.join(m.group('ind') + k + '\n' for k in kept)
+        return f'{prefix}{m.group("ind")}CScriptThing::operator=((CScriptThing *){thing},(CScriptThing *)0x0);\n'
+    return RE_COUNTED_RELEASE.sub(repl, text)
+
+
+def join_wrapped_statements(text: str) -> str:
+    """Ghidra wraps long expressions; the lifter is line-based. Join a line into the next while its
+    parentheses are open, or while it ends mid-expression (identifier, comma or operator)."""
+    out, buffer = [], ''
+    for line in text.splitlines():
+        stripped = line.strip()
+        if buffer:
+            buffer += ('' if stripped.startswith('(') and buffer.rstrip()[-1:].isalnum() else ' ') + stripped
+        else:
+            buffer = line.rstrip()
+        code = re.sub(r'"(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\'', '', buffer)
+        depth = code.count('(') - code.count(')')
+        head = buffer.strip()
+        tail = head[-1:] if head else ''
+        unterminated = bool(head) and not head.startswith(('//', '/*', '*', '#')) and head not in ('else', 'do') \
+            and (tail.isalnum() or tail in ',=+-|&<>*/!_')
+        if (depth > 0 or unterminated) and not stripped.endswith('{'):
+            continue
+        out.append(buffer)
+        buffer = ''
+    if buffer:
+        out.append(buffer)
+    return '\n'.join(out) + ('\n' if text.endswith('\n') else '')
+
+
+def normalise_typed_decompile(text: str) -> str:
+    """Typed exports (ExportTypedTranslationUnit) print a few shapes the untyped pipeline never saw."""
+    text = re.sub(r'\(int\)(this(?:_\d+)?)\b', r'\1', text)                 # (int)this + 0x40
+    text = re.sub(r'\)\)[ \t]*\r?\n[ \t]+\(', '))(', text)                   # call head wrapped before its argument list
+    text = join_wrapped_statements(text)
+    text = re.sub(r'&("(?:[^"\\]|\\.)*")', r'\1', text)                      # &"literal" (propagated CCharString temp)
+    text = re.sub(r'\*&(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
+    text = re.sub(r'(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
+    text = re.sub(r'\b(CScriptThing|CCharString|C3DVector|CRGBColour|CWideString|CRGBFloatColour)_bv\b', r'\1', text)
+    return text
+
+
+class LoweringSpec:
+    def __init__(self, unit, owner, *, entity, thing_slots):
+        self.entity = entity
+        self.thing_slots = thing_slots or {}
+        q = unit['quest']
+        self.parent_fields = {int(k, 16): tuple(v) for k, v in q['fields'].items()}
+        self.parent_things = {int(k, 16): v for k, v in q.get('thingFields', {}).items()}
+        self.parent_arrays = [dict(a, base=int(a['base'], 16), members={int(k, 16): tuple(v) for k, v in a['members'].items()},
+                                   things={int(k, 16): v for k, v in a['things'].items()},
+                                   pointers={int(k, 16): v for k, v in a.get('pointers', {}).items()}) for a in q.get('arrays', [])]
+        self.parent_lists = {int(x['offset'], 16): x['name'] for x in q.get('unmappedFields', [])
+                             if x['type'].startswith('vector<CScriptThing')}
+        master = unit.get('master', {})
+        self.master_fields = {int(k, 16): tuple(v) for k, v in master.get('fields', {}).items()}
+        if entity:
+            e = unit['entities'][owner]
+            self.self_fields = {int(k, 16): tuple(v) for k, v in e['fields'].items()}
+            self.self_things = {int(k, 16): v for k, v in e.get('thingFields', {}).items()}
+            self.self_arrays = []
+            self.self_lists = {int(x['offset'], 16): x['name'] for x in e.get('unmappedFields', [])
+                               if x['type'].startswith('vector<CScriptThing')}
+            self.self_pointers = self._array_pointers(e.get('unmappedFields', []), self.parent_arrays)
+            self.parent_off, self.master_off = 0x14, 0x18
+        else:
+            self.self_fields, self.self_things = self.parent_fields, self.parent_things
+            self.self_arrays, self.self_lists, self.self_pointers = self.parent_arrays, self.parent_lists, {}
+            self.parent_off, self.master_off = None, 0x44
+        self.diagnostics = []
+
+    @staticmethod
+    def _array_pointers(unmapped, arrays):
+        out = {}
+        for x in unmapped:
+            m = re.fullmatch(r'(\w+) \*', x['type'])
+            if not m:
+                continue
+            for a in arrays:
+                if a.get('element') == m.group(1):
+                    out[int(x['offset'], 16)] = {'name': x['name'], 'array': a}
+        return out
+
+
+def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
+    diag = []
+    text = source
+    # 0. member functions: Ghidra's untyped `param_1` is `this`; typed pointer derefs of the parent
+    text = re.sub(r'\*\((?:C\w+Script) \*\*\)\((' + SELF + r') \+ 0x14\)', r'*(int *)(\1 + 0x14)', text)
+    text = re.sub(r'\*\((?:C\w+MasterData) \*\*\)\((' + SELF + r') \+ (0x18|0x44)\)', r'*(int *)(\1 + \2)', text)
+    text = re.sub(r'\bparam_1\b', 'this', text)
+    text = normalise_typed_decompile(text)
+    text = fold_counted_pointer_assign(text)
+    text = fold_counted_pointer_release(text)
+
+    parent = r'\*\(int \*\)\(this \+ 0x14\)'
+    # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
+    def inline_alias(text, base_pattern, kinds):
+        alias_re = re.compile(r'^[ \t]*(\w+) = (?:\([\w ]+\*\))?' + base_pattern + r';\s*$', re.M)
+        for m in list(alias_re.finditer(text)):
+            var = m.group(1)
+            if re.search(r'^[ \t]*' + re.escape(var) + r' = (?!(?:\([\w ]+\*\))?' + base_pattern + ';)', text, re.M):
+                diag.append(f'alias {var} of {kinds} is reassigned; left as is')
+                continue
+            text = text.replace(m.group(0), '')
+            text = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: '(' + m.group(0).split('= ', 1)[1].rstrip(';').strip() + ')', text)
+        return text
+    if spec.entity:
+        text = inline_alias(text, parent, 'parent')
+    text = inline_alias(text, r'\*\(int \*\)\(this \+ ' + off_re(spec.master_off) + r'\)', 'master')
+    if spec.entity:
+        text = inline_alias(text, r'\*\(int \*\)\(' + parent + r' \+ 0x44\)', 'parent master')
+    text = text.replace('((*(int *)(this + 0x14)))', '(*(int *)(this + 0x14))')
+
+    # 2. master data (self, or parent's for entities)
+    master_bases = [r'\*\(int \*\)\(this \+ ' + off_re(spec.master_off) + r'\)', r'\(\*\(int \*\)\(this \+ ' + off_re(spec.master_off) + r'\)\)']
+    if spec.entity:
+        master_bases += [r'\*\(int \*\)\(' + parent + r' \+ 0x44\)', r'\(\*\(int \*\)\(' + parent + r' \+ 0x44\)\)']
+    for base in master_bases:
+        def master_store(m):
+            off = int(m.group(2), 16)
+            f = spec.master_fields.get(off)
+            if not f:
+                return m.group(0)
+            return f'{m.group(1)}GSI->SetMasterGameState("{f[0]}", {_lit(m.group(3), f[1])});'
+        text = re.sub(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + base + r' \+ (0x[0-9a-f]+)\) =\s*([^;]+);', master_store, text, flags=re.M)
+        def master_load(m):
+            off = int(m.group(1), 16)
+            f = spec.master_fields.get(off)
+            return f'GSI->GetMasterGameState("{f[0]}")' if f else m.group(0)
+        text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + base + r' \+ (0x[0-9a-f]+)\)', master_load, text)
+
+    # 3. bases for field families: (regex, fields, things, arrays, lists, receiver tag)
+    families = []
+    if spec.entity:
+        families.append((parent, spec.parent_things, spec.parent_arrays, spec.parent_lists, 'QUEST'))
+        families.append((r'this', spec.self_things, spec.self_arrays, spec.self_lists, 'ENTITY'))
+    else:
+        families.append((r'this', spec.self_things, spec.self_arrays, spec.self_lists, 'QUEST'))
+
+    def thing_call(receiver_expr, slot_hex, rest_start, text_after):
+        slot = spec.thing_slots.get(int(slot_hex, 0))
+        if not slot:
+            return None
+        tail = ', ' if text_after[:1] not in (')', '') else ''
+        return f'CScriptThing::{slot[0]}({receiver_expr}{tail}'
+
+    for base, things, arrays, lists, tag in families:
+        # 3a. struct arrays with dynamic index: *(T *)(IDX * STRIDE + BASE+MEMBER + PARENTBASE)
+        for a in arrays:
+            stride = a['stride']
+            for member_off, (mname, kind) in a['members'].items():
+                absolute = a['base'] + member_off
+                key = f'__key("{a["name"]}_", {{idx}}, "_{mname}")'
+                idx_form = r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|\w+) \* ' + off_re(stride)
+                pat_store = re.compile(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\) =\s*([^;]+);', re.M)
+                text = pat_store.sub(lambda m, k=key, kind=kind, tag=tag: f'{m.group(1)}GSI->SetState{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
+                pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\)')
+                text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
+            # scalar sub-arrays with a trailing byte index: *(T *)(BASE + ABS + IDX * 4)  (Teams[0].StateCounter[i])
+            for member_off, (mname, kind) in a['members'].items():
+                sub = re.match(r'(.+)_(\d+)$', mname)
+                if not sub or sub.group(2) != '0':
+                    continue
+                absolute = a['base'] + member_off
+                key = f'__key("{a["name"]}_0_{sub.group(1)}_", {{idx}}, "")'
+                pat_store = re.compile(r'^([ 	]*)\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\) =\s*([^;]+);', re.M)
+                text = pat_store.sub(lambda m, k=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
+                pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\)')
+                text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
+            # element address taken: IDX * STRIDE + BASE + PARENT  -> array pointer value (index)
+            text = re.sub(r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|\w+) \* ' + off_re(stride) + r' \+ ' + off_re(a['base']) + r' \+ ' + base,
+                          lambda m, a=a: f'__element("{a["name"]}", {m.group("idx")})', text)
+            for index in range(a['count']):
+                text = re.sub(r'(?:\(int\))?\(' + base + r' \+ ' + off_re(a['base'] + index * stride) + r'\)',
+                              f'__element("{a["name"]}", {index})', text)
+                text = re.sub(r'(?<![\w(])' + base + r' \+ ' + off_re(a['base'] + index * stride) + r'(?![\w)])',
+                              f'__element("{a["name"]}", {index})', text)
+            # element pointer members (Teams[i].EnemyTeam): stored as the sibling index, read through
+            for pmember, pname in a.get('pointers', {}).items():
+                for index in range(a['count']):
+                    absolute = a['base'] + index * stride + pmember
+                    text = re.sub(r'^([ \t]*)\*\(\w+ \*\*?\)\(' + base + r' \+ ' + off_re(absolute) + r'\) =\s*__element\("' + a['name'] + r'", (\d+)\);',
+                                  lambda m, k=f'{a["name"]}_{index}_{pname}': f'{m.group(1)}GSI->SetStateInt("{k}", {m.group(2)});', text, flags=re.M)
+            # temporaries holding an element address: substitute and drop the assignment
+            for m in list(re.finditer(r'^[ \t]*(\w+) = (?:\(int \*\))?(__element\("' + a['name'] + r'", [^;]+\));\s*$', text, re.M)):
+                var, value = m.group(1), m.group(2)
+                if len(re.findall(r'^[ \t]*' + re.escape(var) + r' = ', text, re.M)) == 1:
+                    text = text.replace(m.group(0), '')
+                    text = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: value, text)
+            # static index forms already expanded in evidence as scalar fields (Teams_0_MemberCount): lifter state map
+        # 3b. Thing members
+        for off, name in things.items():
+            recv = f'{tag}THING_Get("{name}")'
+            text = re.sub(r'CScriptThing::operator=\(\(CScriptThing \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*([^;]+)\);',
+                          lambda m, name=name, tag=tag: f'{tag}THING_Set("{name}", {"nil" if m.group(1).strip() == "(CScriptThing *)0x0" else m.group(1).strip()});', text)
+            text = re.sub(r'CScriptThing::~CScriptThing\(\(CScriptThing \*\)\(' + base + r' \+ ' + off_re(off) + r'\)\);', '', text)
+            # vcall on the thing: (**(code **)(*(int *)(BASE + OFF) + SLOT))(
+            def vcall(m, recv=recv):
+                out = thing_call(recv, m.group(1), m.end(), text[m.end():m.end() + 1])
+                return out if out else m.group(0)
+            text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
+            # the thing's counted pointer Data (+4) compared to null: (BASE+OFF+4)
+            text = re.sub(r'\*\(int \*\)\(' + base + r' \+ ' + off_re(off + 4) + r'\)', f'__thing_valid({recv})', text)
+            text = re.sub(r'\(CScriptThing \*\)\(' + base + r' \+ ' + off_re(off) + r'\)', recv, text)
+        # 3c. Thing vectors
+        for off, name in lists.items():
+            begin = r'\*\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\)'
+            end = r'\*\(int \*\)\(' + base + r' \+ ' + off_re(off + 4) + r'\)'
+            text = re.sub(r'\(uint\)\(\(' + end + r' -\s*' + begin + r'\) / 0xc\)', f'{tag}LIST_Count("{name}")', text)
+            text = re.sub(end + r' -\s*' + begin, f'({tag}LIST_Count("{name}") * 0xc)', text)
+            text = re.sub(r'\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\)', f'{tag}LIST_Begin("{name}")', text)
+            # element: *(int *)(BEGIN + IDX)  (IDX in bytes, stride 0xc) and vcalls on it
+            def elem_vcall(m, name=name, tag=tag):
+                out = thing_call(f'{tag}LIST_At("{name}", ({m.group(1)}) / 0xc)', m.group(2), m.end(), text[m.end():m.end() + 1])
+                return out if out else m.group(0)
+            text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + begin + r' \+ (\w+)\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', elem_vcall, text)
+            text = re.sub(r'\(CScriptThing \*\)\(' + begin + r' \+ (\w+)\)', lambda m, name=name, tag=tag: f'{tag}LIST_At("{name}", ({m.group(1)}) / 0xc)', text)
+            text = re.sub(begin + r' \+ (\w+)\b', lambda m, name=name, tag=tag: f'{tag}LIST_At("{name}", ({m.group(1)}) / 0xc)', text)
+            text = re.sub(begin, f'{tag}LIST_Begin("{name}")', text)
+            text = re.sub(end, f'{tag}LIST_End("{name}")', text)
+
+    # 4. entity pointer-into-parent-array fields (MyTeam): store index, keyed access through it
+    if spec.entity:
+        for off, info in spec.self_pointers.items():
+            a, pname = info['array'], info['name']
+            ptr = r'\*\(int \*\)\(this \+ ' + off_re(off) + r'\)'
+            text = re.sub(r'^([ \t]*)(\w+) = (?:\(int \*\))?__element\("' + a['name'] + r'", ([^;]+)\);\s*\n[ \t]*\*\(int \*\*?\)\(this \+ ' + off_re(off) + r'\) = \2;',
+                          lambda m, pname=pname: f'{m.group(1)}ENTITYSTATE_SetInt("{pname}", {m.group(3).strip()});', text, flags=re.M)
+            text = re.sub(r'^([ \t]*)\*\(int \*\*?\)\(this \+ ' + off_re(off) + r'\) =\s*(?:\(int \*\))?__element\("' + a['name'] + r'", ([^;]+)\);',
+                          lambda m, pname=pname: f'{m.group(1)}ENTITYSTATE_SetInt("{pname}", {m.group(2).strip()});', text, flags=re.M)
+            idx = f'ENTITYSTATE_GetInt("{pname}")'
+            for member_off, (mname, kind) in a['members'].items():
+                key = f'__key("{a["name"]}_", {idx}, "_{mname}")'
+                if member_off == 0:
+                    text = re.sub(r'^([ \t]*)\*\*\(int \*\*\)\(this \+ ' + off_re(off) + r'\) =\s*([^;]+);',
+                                  lambda m, key=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
+                    text = re.sub(r'\*\*\(int \*\*\)\(this \+ ' + off_re(off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
+                text = re.sub(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\) =\s*([^;]+);',
+                              lambda m, key=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
+                text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
+            for pmember, pname in a.get('pointers', {}).items():
+                # *(T *)(*(int *)(MyTeam + EnemyTeam) + M) -> member M of Teams[Teams_<MyTeam>_EnemyTeam]
+                chained_idx = f'QUESTSTATE_GetInt(__key("{a["name"]}_", {idx}, "_{pname}"))'
+                chained = r'\*\(int \*\)\(' + ptr + r' \+ ' + off_re(pmember) + r'\)'
+                for member_off, (mname, kind) in a['members'].items():
+                    key = f'__key("{a["name"]}_", {chained_idx}, "_{mname}")'
+                    text = re.sub(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\) =\s*([^;]+);',
+                                  lambda m, key=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
+                    text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
+                for member_off, tname in a['things'].items():
+                    recv = f'QUESTTHING_Get(__key("{a["name"]}_", {chained_idx}, "_{tname}"))'
+                    def vcall(m, recv=recv):
+                        out = thing_call(recv, m.group(1), m.end(), text[m.end():m.end() + 1])
+                        return out if out else m.group(0)
+                    text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
+                    text = re.sub(r'\(CScriptThing \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\)', recv, text)
+            for member_off, tname in a['things'].items():
+                recv = f'QUESTTHING_Get(__key("{a["name"]}_", {idx}, "_{tname}"))'
+                def vcall(m, recv=recv):
+                    out = thing_call(recv, m.group(1), m.end(), text[m.end():m.end() + 1])
+                    return out if out else m.group(0)
+                text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
+                text = re.sub(r'\*\(int \*\)\(' + ptr + r' \+ ' + off_re(member_off + 4) + r'\)', f'__thing_valid({recv})', text)
+                text = re.sub(r'\(CScriptThing \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', recv, text)
+                text = re.sub(r'CScriptThing::operator=\(' + re.escape(recv) + r',\s*([^;]+)\);',
+                              lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_", {idx}, "_{tname}"), {m.group(1).strip()});', text)
+    return text, diag
+
+
+GSI_RECEIVER = r'(?:\(\w+ \*\*?\))?\*\((?:int|void|undefined4|CScriptThing_bv|CCharString_bv|C3DVector_bv) \*\*\)\(this \+ (?:4|0x40)\)'
+ME_RECEIVER = r'(?:\(CScriptThing(?:_bv)? \*\))?\(this \+ 8\)'
+
+
+def strip_receiver_arguments(text: str) -> str:
+    """Typed exports show the __thiscall receiver as an explicit first argument of overridden
+    calls; the lifter's `GSI->Name(` / `CScriptThing::Name(me, ` forms carry it implicitly."""
+    text = re.sub(r'(GSI->\w+\()' + GSI_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
+    text = re.sub(r'(CScriptThing::\w+\(me, ?)' + ME_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
+    text = re.sub(r'(CScriptThing::\w+\((\w+), ?)\2(?:,\s*|(?=\)))', r'\1', text)
+    # typed by-value placeholders read as their real classes
+    text = text.replace('_bv *', ' *').replace('_bv)', ')')
+    return text
+
+
+LUA_PSEUDO = [
+    (re.compile(r'QUESTTHING_Get\('), 'quest:GetStateThing('),
+    (re.compile(r'QUESTTHING_Set\('), 'quest:SetStateThing('),
+    (re.compile(r'ENTITYTHING_Get\('), '__native_entity_state:GetStateThing('),
+    (re.compile(r'ENTITYTHING_Set\('), '__native_entity_state:SetStateThing('),
+    (re.compile(r'ENTITYSTATE_GetInt\('), '__native_entity_state:GetStateInt('),
+    (re.compile(r'ENTITYSTATE_SetInt\('), '__native_entity_state:SetStateInt('),
+    (re.compile(r'QUESTLIST_Count\('), 'quest:GetStateListCount('),
+    (re.compile(r'QUESTLIST_At\('), 'quest:GetStateListAt('),
+    (re.compile(r'ENTITYLIST_Count\('), '__native_entity_state:GetStateListCount('),
+    (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
+    (re.compile(r'__thing_valid\('), 'IsThingValid('),
+    (re.compile(r'QUESTSTATE_Get(Int|Bool|Float|String)\('), r'quest:GetState\1('),
+    (re.compile(r'ENTITYSTATE_Get(Int|Bool|Float|String)\('), r'__native_entity_state:GetState\1('),
+    (re.compile(r'GSI->(Get|Set)State(Int|Bool|Float|String|Thing)\('), r'quest:\1State\2('),
+    (re.compile(r'GSI->(Get|Set)MasterGameState\('), r'quest:\1MasterGameState('),
+]
+KEY = re.compile(r'__key\(("[^"]*"), (.+?), ("[^"]*")\)')
+
+
+def finish_lua(text: str) -> str:
+    """Turn lowering pseudo-calls into Lua after the lifter has run."""
+    for pattern, repl in LUA_PSEUDO:
+        text = pattern.sub(repl, text)
+    previous = None
+    while previous != text:
+        previous = text
+        text = KEY.sub(lambda m: f'{m.group(1)} .. tostring({m.group(2)}) .. {m.group(3)}', text)
+    return text

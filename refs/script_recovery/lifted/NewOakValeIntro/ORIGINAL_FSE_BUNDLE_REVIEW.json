@@ -1,0 +1,22 @@
+{
+  "schema": "new-oakvale-original-fse-bundle-review/0.1",
+  "bundle": "work/new-oakvale-original-fse-20260912/local-test-ready",
+  "originalFseDll": {
+    "sha256": "36ffb32ce4f1689d08cd5deef37829760d9f2a840aa9e801e79c86135fdb95ea",
+    "sourceCommit": "b2432e82b2ef1e5fd50b8fac2a8809bd2bd107d6",
+    "sourceModified": false
+  },
+  "addonDll": {"name": "NoviCompatibility.dll", "sha256": "74e2b482d12196be91c743152becf20243db43b5089a0e9df6c6f8108ded5755"},
+  "launcher": {"name": "NoviLocalLauncher.exe", "sha256": "98fdf6a3469641c13b8551449c8bb16263bbfd0b8d5ebe2ae68e938608dee68a"},
+  "preflight": {"passed": true, "gameLaunched": false, "installedFilesChanged": false},
+  "recordedRun": {
+    "completedChildhood": true,
+    "errorLines": 0,
+    "originalLogErrors": 0,
+    "addonLogErrors": 0,
+    "knownWarnings": ["empty upstream quests.lua registry", "non-standard install skipped registry self-heal", "one ReleaseControl no-handle warning"]
+  },
+  "usefulness": "This is a local compatibility test bundle and evidence source, not a public Discord release. The original upstream DLL is unchanged; the add-on supplies the New Oakvale support layer.",
+  "distribution": "not performed",
+  "liveVerification": "recorded local playthrough exists; current regenerated readable package still requires a new run"
+}

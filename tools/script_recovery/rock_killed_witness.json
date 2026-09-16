@@ -1,0 +1,39 @@
+{
+  "regions": [
+    {
+      "name": "caller",
+      "address": 15485440,
+      "size": 257,
+      "sha256": "3e7471b98c52177f921c6ba04ba38b98e556b36acae69ed9dfe860ac553b22cb"
+    },
+    {
+      "name": "helper",
+      "address": 15486992,
+      "size": 293,
+      "sha256": "c659d578bf2ec6f7e8c300758ce7982edfb13c8fe3349d484af776572c99fbc9"
+    }
+  ],
+  "sources": [
+    {
+      "path": "work/rock_trigger_converter/evidence/0x00EC5010.c",
+      "sha256": "bcbda341be8d10410014438e4491c809ce1790373aef76db7eb47d47598e941f"
+    },
+    {
+      "path": "work/rock_trigger_converter/evidence/0x00EC4A00.c",
+      "sha256": "62e788ecee428e132760b7e7efe1b251fea6b25b9b7c083a9a856517bede8912"
+    },
+    {
+      "path": "work/rock_trigger_converter/evidence/PDB-all-locals.tsv",
+      "sha256": "39596235ba9c7533ba63774fe16b45337017f111aad01c5e229c683c6f6aeb11"
+    }
+  ],
+  "proof": [
+    "MainEC4A00 constructs named ParentClass.WatchForRockTrollKilled, false flag, empty region, stores functionEC5010 and retainedCScriptThing atthread+3C.",
+    "Helper argument is by-value12byteThing, ret12. ConditioncopyEC5027 then parentCB7920registrationEC5033; temporaryconditiondestroyEC503C.",
+    "InitialframeEC5046 beforetermEC504B. Failed polls yield/check cancellation; successful poll gets independent termEC50FB.",
+    "EC50AB constructs emptyfilter CString even if Data null; Data vtable+48 atEC50C3 is MsgIsKilledBy; filterdestroyEC50CC always follows.",
+    "Success EC5107 DWORDhealthbar+50?RemoveQuestInfoElement, DisplayQuestInfo(false), MissionOverbyte+4A=true, then argumentdestroyEC5128.",
+    "Initial cancellation inline releaseEC5054..EC508F equals ownedargument destruction; otherexits call4AA840. Conditionclone and threadstoredargument have separate later lifetimes.",
+    "Pending WithCopiedThreadThing must copy exact argument ownership, register parent-thread condition and call atomic MsgIsKilledBy with emptyfilter scope even emptyData; no existing raw Lua userdata lifetime is assumed."
+  ]
+}

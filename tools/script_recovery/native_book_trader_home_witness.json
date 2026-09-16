@@ -1,0 +1,455 @@
+{
+  "address": "0x00DB3FA0",
+  "size": 4042,
+  "sourceSha256": "237a43679c87d7d054d92d687061c2de8342e04fca034a3dee7ba42e35058333",
+  "annotatedSha256": "b3fae28592378ebfe8705a12554271a9847446b7cdb211ac18e390debed24fa0",
+  "regions": [
+    {
+      "address": 14368672,
+      "size": 4042,
+      "sha256": "de8cf950ba5a3c034cad90f867cc0e04284edc4b9e5cc343bd26d340efb69974"
+    },
+    {
+      "address": 8287376,
+      "size": 57,
+      "sha256": "2e4b5ca9627d95c544d96c0c987f5d52c5dc1c9757d4bdeae1323802089375c6"
+    },
+    {
+      "address": 8286960,
+      "size": 15,
+      "sha256": "f422947cd4124238721205bddcbb8357769d3d134c1d022ee02d428a5e7fbf6c"
+    },
+    {
+      "address": 13362268,
+      "size": 91,
+      "sha256": "ff5da0431572dcd8e97f57d11e0ab7675b02a5c1567180788324d61fd5110252"
+    }
+  ],
+  "calls": [
+    {
+      "site": 14368845,
+      "argumentCount": 3,
+      "knownCalls": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14368888,
+      "argumentCount": 3,
+      "knownCalls": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "memory",
+                  [
+                    "address",
+                    [
+                      "register",
+                      "esi"
+                    ],
+                    4
+                  ]
+                ],
+                0
+              ]
+            ],
+            32
+          ]
+        ],
+        "ecx": [
+          "memory",
+          [
+            "address",
+            [
+              "register",
+              "esi"
+            ],
+            4
+          ]
+        ],
+        "stack_arguments": [
+          [
+            "register",
+            "ebp"
+          ],
+          [
+            "stack",
+            20
+          ],
+          [
+            "constant",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14368928,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                0
+              ]
+            ],
+            28
+          ]
+        ],
+        "ecx": [
+          "register",
+          "ebp"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            300
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14368935,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14368928": [
+          4,
+          "home"
+        ]
+      },
+      "expected": {
+        "target": [
+          "constant",
+          13362268
+        ],
+        "ecx": [
+          "register",
+          "ebp"
+        ],
+        "edx": [
+          "result",
+          14368928,
+          "home"
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1036831949
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14368976,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "expected": {
+        "target": [
+          "memory",
+          [
+            "address",
+            [
+              "memory",
+              [
+                "address",
+                [
+                  "register",
+                  "ebp"
+                ],
+                0
+              ]
+            ],
+            28
+          ]
+        ],
+        "ecx": [
+          "register",
+          "ebp"
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            168
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14368996,
+      "argumentCount": 1,
+      "knownCalls": {},
+      "expected": {
+        "target": [
+          "constant",
+          8287376
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            136
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369010,
+      "argumentCount": 1,
+      "knownCalls": {
+        "14368996": [
+          4,
+          "actor"
+        ]
+      },
+      "expected": {
+        "target": [
+          "constant",
+          13362268
+        ],
+        "ecx": [
+          "result",
+          14368996,
+          "actor"
+        ],
+        "edx": [
+          "stack",
+          168
+        ],
+        "stack_arguments": [
+          [
+            "constant",
+            1073741824
+          ]
+        ]
+      }
+    },
+    {
+      "site": 14369148,
+      "argumentCount": 5,
+      "knownCalls": {},
+      "expected": {
+        "target": [
+          "constant",
+          8286960
+        ],
+        "ecx": [
+          "stack",
+          20
+        ],
+        "stack_arguments": [
+          [
+            "stack",
+            168
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "register",
+            "edi"
+          ],
+          [
+            "constant",
+            1
+          ]
+        ]
+      }
+    }
+  ],
+  "contracts": {
+    "GetHomePos": {
+      "name": "GetHomePos",
+      "scope": "Entity",
+      "returnType": "sol::table",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "s",
+          "type": "sol::this_state",
+          "optional": false
+        }
+      ],
+      "blocking": true,
+      "category": "Entity API",
+      "description": "Gets home pos for an entity."
+    },
+    "MoveToPosition": {
+      "name": "MoveToPosition",
+      "scope": "Entity",
+      "returnType": "void",
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*",
+          "optional": false
+        },
+        {
+          "name": "position",
+          "type": "sol::table",
+          "optional": false,
+          "nativeKind": "vector"
+        },
+        {
+          "name": "radius",
+          "type": "float",
+          "optional": false
+        },
+        {
+          "name": "moveType",
+          "type": "sol::optional<int>",
+          "optional": true
+        },
+        {
+          "name": "b1",
+          "type": "sol::optional<bool>",
+          "optional": true
+        },
+        {
+          "name": "b2",
+          "type": "sol::optional<bool>",
+          "optional": true
+        }
+      ],
+      "blocking": false,
+      "category": "Entity API",
+      "description": "Moves to position."
+    },
+    "IsDistanceFromPositionOver": {
+      "scope": "Entity",
+      "returnType": "bool",
+      "blocking": false,
+      "parameters": [
+        {
+          "name": "pMe",
+          "type": "CScriptThing*"
+        },
+        {
+          "name": "position",
+          "type": "sol::table",
+          "nativeKind": "vector"
+        },
+        {
+          "name": "distance",
+          "type": "float"
+        }
+      ]
+    }
+  },
+  "edits": [
+    {
+      "old": "pCVar7 = (C3DVector *)CScriptThing::GetHomePos((CScriptThing *)(this + 8));",
+      "new": "native_arg_book_initial_home = CScriptThing::GetHomePos(me);",
+      "count": 1
+    },
+    {
+      "old": "bVar4 = IsDistanceFromThingToPositionOver(pCVar1,pCVar7,fVar23);",
+      "new": "bVar4 = IsDistanceFromThingToPositionOver(me,native_arg_book_initial_home,fVar23);",
+      "count": 1
+    },
+    {
+      "old": "CScriptThing::GetHomePos((CScriptThing *)(this + 8));\r\n          while",
+      "new": "native_arg_book_home = CScriptThing::GetHomePos(me);\r\n          while",
+      "count": 1
+    },
+    {
+      "old": "pCVar8 = (CScriptThing *)\r\n                     CScriptGameResourceObjectScriptedThingBase::\r\n                     _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ\r\n                               ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffed0);",
+      "new": "pCVar8 = me;",
+      "count": 1
+    },
+    {
+      "old": "bVar4 = IsDistanceFromThingToPositionOver(pCVar8,aCStack_9c,fVar23);",
+      "new": "bVar4 = IsDistanceFromThingToPositionOver(pCVar8,native_arg_book_home,fVar23);",
+      "count": 1
+    },
+    {
+      "old": "(CScriptThing *)aCStack_9c,(char *)0x0,(CCharString *)0x0,(CCharString *)0x0,\r\n                       (CCharString *)0x1,SUB41(pCVar24,0),(bool)SUB41(&ppuStack_124,0))",
+      "new": "native_arg_book_home,0.0,0,0,1)",
+      "count": 1
+    }
+  ],
+  "proof": [
+    "DB3FAC sets EBP to entity this+8; acquisition DB404D/DB4078 binds that actor to stack20 at priority3.",
+    "DB402C zeroes callee-saved EDI. It stays zero through the home loop; movement DB416B..DB417C pushes final flag1 then three EDI zeros then stack168 position.",
+    "Home slot0x1C DB40A0 writes stack300 and returns its pointer for the initial 0.1 distance. DB40D0 writes a separate stack168 snapshot; loop backedge DB41BD targets DB40D3 after that snapshot call.",
+    "With balanced native calls the DB40D0 output, DB40F2 EDX and DB417C first argument all denote frame stack168. Temporary wrapper stack136 supplies the controlled actor; its native cleanup remains unresolved."
+  ]
+}

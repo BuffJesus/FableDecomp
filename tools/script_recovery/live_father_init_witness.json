@@ -1,0 +1,19 @@
+{
+  "functions": [
+    {
+      "address": 14336912,
+      "size": 141,
+      "name": "Init",
+      "sha256": "a20a4d9ed2e54babf424e7e7d988a46dca0ec905493b9c8c1c4592fcd307203a"
+    },
+    {
+      "address": 9072080,
+      "size": 218,
+      "name": "SetIsPushableByHero",
+      "slot": 3376,
+      "sha256": "8270d47d77b1cf84d679faa32498b92bfa2f6f13d05ce925b00c6a699e67fe9d"
+    }
+  ],
+  "vtable": 19271436,
+  "review": "Original Init writes PenniesGiven zero then four pointer consumers, one retained by-value Thing for pushable=false, and deed reactions=false. The 218-byte callee destroys the copied reference, resets fields, invokes base destructor, ret16."
+}

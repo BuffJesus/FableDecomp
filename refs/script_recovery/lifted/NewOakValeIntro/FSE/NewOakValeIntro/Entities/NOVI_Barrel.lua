@@ -89,8 +89,8 @@ function OnPredicateFail(quest, me)
     quest:SetStateBool("BarrelBrokenInstantaneous", true)
     quest:SetStateBool("BarrelBrokenPersistent", true)
     local puVar2 = me:GetPos()
-    -- TODO(native): *(undefined4 *)(iVar1 + 0x76) = *puVar2;
-    -- TODO(native): *(undefined4 *)(iVar1 + 0x7a) = puVar2[1];
-    -- TODO(native): *(undefined4 *)(iVar1 + 0x7e) = puVar2[2];
+    quest:SetStateFloat("BarrelBrokenPos_x", puVar2.x)
+    quest:SetStateFloat("BarrelBrokenPos_y", puVar2.y)
+    quest:SetStateFloat("BarrelBrokenPos_z", puVar2.z)
 end
 

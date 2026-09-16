@@ -1,0 +1,19 @@
+{
+  "schema": "guild-training-followup-chain/0.1",
+  "basis": "Q_GuildTraining.RunTutorials native x86 string and call-order evidence",
+  "sourceFunction": "0x00D45DD0",
+  "rule": "After each completed training quest, the controller yields a script frame, verifies the quest is no longer active, and stages the next follow-up quest while the player remains in the Guild.",
+  "nativeCallOffsets": {"isActiveQuest": "0x470", "stageQuest": "0x450", "postStage": "0x488", "completionLabel": "0xB40", "frame": "0x1C"},
+  "chains": [
+    {"trainingQuest": "Q_GuildTrainingMelee", "completionLabel": "Complete Melee", "followupQuest": "Q_GuildTrainingSkill"},
+    {"trainingQuest": "Q_GuildTrainingSkill", "completionLabel": "Complete Skill", "followupQuest": "Q_GuildTrainingWill"},
+    {"trainingQuest": "Q_GuildTrainingWill", "completionLabel": "Complete Will", "followupQuest": "Q_GuildTrainingDeparture"}
+  ],
+  "npcEvidence": {
+    "entity": "TheRealGuildmaster",
+    "arrivalBoundary": "HeroGuildComplex",
+    "waitAfterCompletion": true,
+    "nativeStrings": ["TheRealGuildmaster", "TEXT_QST_LOG_GUILD_THEGUILD"]
+  },
+  "liveVerification": "deferred"
+}

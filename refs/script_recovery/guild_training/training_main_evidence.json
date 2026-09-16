@@ -1,0 +1,31 @@
+{
+  "schema": "guild-training-main-evidence/0.1",
+  "basis": "native translation-unit anchor extraction",
+  "training": {
+    "Melee": {
+      "address": "0x00D52E90",
+      "teacher": "M_MeleeTeacherStand",
+      "quest": "Q_GuildTrainingMelee",
+      "completionLabel": "Complete Melee"
+    },
+    "Skill": {
+      "address": "0x00D5AE70",
+      "teacher": "M_SkillTeacherStand",
+      "quest": "Q_GuildTrainingSkill",
+      "completionLabel": "Complete Skill"
+    },
+    "Will": {
+      "address": "0x00D5E0C0",
+      "teacher": "M_WillTeacherStand",
+      "quest": "Q_GuildTrainingWill",
+      "completionLabel": "Complete Will"
+    }
+  },
+  "sharedNpc": "TheRealGuildmaster",
+  "followup": [
+    "Q_GuildTrainingSkill",
+    "Q_GuildTrainingWill",
+    "Q_GuildTrainingDeparture"
+  ],
+  "liveVerification": "deferred"
+}
