@@ -7,7 +7,7 @@ function DoMultiplierCutscene(quest, me)
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
     puStack_38 = resources:NewActorMap()
-    resources:SetActor(puStack_38, "HERO", 0x0)
+    resources:SetActor(puStack_38, "HERO", local_10)
     appuStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -129,7 +129,7 @@ function DoMultiplierCutscene(quest, me)
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
     resources:DestroyActorMap(pCVar5)
-    resources:ReleaseResource(0x0)
+    resources:ReleaseResource(local_10)
     return extraout_EAX
 end
 
@@ -143,13 +143,11 @@ function MakeTeamMemberComment(quest, me, native_arg_comment_to_make, native_arg
         return extraout_var << 8
     end
     local conversationID = quest:AddNewConversation(nil --[[missing]], (native_arg_comment_to_make ~= 0), false)
-    iVar2 = *piVar1
     pCVar3 = quest:GetHero()
     quest:AddPersonToConversation(conversationID, pCVar3)
-    iVar2 = *piVar1
     local r1 = quest:GetHero()
     pCVar3 = 0x0
-    local p2 = (**(*native_arg_comment_to_make + 0xc))()
+    local p2 = native_arg_comment_to_make:GetDataString()
     local pvVar4 = CCharString__AppendData(&stack0xfffffff0,this + 0x84,p2)
     pvVar4 = CCharString__AppendCString(&uStack_14,pvVar4,p2_00)
     local pLine = CCharString__AppendData(&stack0x00000000,pvVar4,"_")

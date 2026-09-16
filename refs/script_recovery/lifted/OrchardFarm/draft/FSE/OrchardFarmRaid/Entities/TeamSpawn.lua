@@ -35,7 +35,7 @@ function Main(quest, me)
                 return
             end
             quest:DisplayQuestInfo(true)
-            iVar4 = quest:AddQuestInfoCounterList("HUD_QUEST_ICON_BANDIT", &"HUD_QUEST_ICON_BANDIT", __native_entity_state:GetStateInt("TeamMemberLimit") * 3)
+            iVar4 = quest:AddQuestInfoCounterList("HUD_QUEST_ICON_BANDIT", "HUD_QUEST_ICON_BANDIT", __native_entity_state:GetStateInt("TeamMemberLimit") * 3)
             __native_entity_state:SetStateInt("BanditsLeftID", iVar4)
             quest:UpdateQuestInfoCounterList(__native_entity_state:GetStateInt("BanditsLeftID"), __native_entity_state:GetStateInt("TeamMemberLimit") * 3, -1)
         end

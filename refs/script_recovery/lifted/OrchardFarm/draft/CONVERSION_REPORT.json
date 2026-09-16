@@ -318,7 +318,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 207,
+          "lines": 208,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -327,8 +327,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil",
-                "line": 185,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:185: unexpected symbol near '*'"
+                "line": 186,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:186: unexpected symbol near '*'"
               }
             ]
           },
@@ -358,7 +358,7 @@
             "unlifted: *(undefined4 *)(this + 100) = 1;",
             "unlifted: ppuStack_80[0] = 0;",
             "unlifted: this_00 = *(int **)(this + 0x40);",
-            "unlifted: aCStack_1c[0] = (CCharString)ENGINE_SquaredDistance(uStack_b8, pCVar5);",
+            "unlifted: aCStack_1c[0] = (CCharString)ENGINE_SquaredDistance(u_stk_b8, pCVar5);",
             "goto LAB_00dd1736",
             "label LAB_00dd1728",
             "label LAB_00dd1742",
@@ -483,7 +483,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 256,
+          "lines": 258,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -492,8 +492,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood",
-                "line": 70,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood:70: unexpected symbol near '&'"
+                "line": 236,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood:236: unexpected symbol near '*'"
               }
             ]
           },
@@ -735,10 +735,11 @@
             "GetHero",
             "AddPersonToConversation",
             "GetHero",
+            "GetDataString",
             "AddLineToConversation",
             "SetTimer"
           ],
-          "lines": 22,
+          "lines": 20,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -747,8 +748,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:MakeTeamMemberComment",
-                "line": 11,
-                "message": "...rchardFarmRaid/OrchardFarmRaid.lua:MakeTeamMemberComment:11: unexpected symbol near '*'"
+                "line": 16,
+                "message": "...rchardFarmRaid/OrchardFarmRaid.lua:MakeTeamMemberComment:16: unexpected symbol near '&'"
               }
             ]
           },
@@ -969,8 +970,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Main",
-                "line": 26,
-                "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Main:26: unexpected symbol near '&'"
+                "line": 44,
+                "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Main:44: unexpected symbol near '*'"
               }
             ]
           },
@@ -1202,6 +1203,7 @@
             "unlifted: std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);"
           ],
           "calls": [
+            "QUESTLIST_BeginValue",
             "QUESTTHING_Empty",
             "GetFurthestWithScriptName",
             "QUESTTHING_Empty",
@@ -1210,16 +1212,10 @@
           "lines": 21,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/Artefact.lua:OnPredicateFail",
-                "line": 3,
-                "message": "FSE/OrchardFarmRaid/Entities/Artefact.lua:OnPredicateFail:3: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -1276,7 +1272,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 73,
+          "lines": 69,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1285,8 +1281,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main",
-                "line": 21,
-                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main:21: unexpected symbol near '*'"
+                "line": 51,
+                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main:51: unexpected symbol near '&'"
               }
             ]
           },
@@ -1316,19 +1312,13 @@
             "EntitySetAsDamageable",
             "EntitySetAllowBossPhaseChanges"
           ],
-          "lines": 12,
+          "lines": 11,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Init",
-                "line": 9,
-                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Init:9: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -1390,31 +1380,24 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: cStack_5d = '\\0';",
             "GetCurrentStateGroupType: CScriptThing method not in FSE manifest",
             "unlifted: this_00 = auStack_58;",
             "unlifted: this_00 = auStack_54;",
             "unlifted: this_00 = auStack_50;",
             "label LAB_00dce594",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),\"\",-1);",
-            "unlifted: local_5c = local_5c | 1;",
+            "IsBeingCarriedBy: CScriptThing method not in FSE manifest",
             "verify cleanup at LAB_00dce594 (lifted as early return)",
-            "unlifted: local_5c = local_5c & 0xfffffffe;",
             "label LAB_00dcebab",
-            "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "SetCombatNearbyBreakOffRange: missing spThing (1 args for 2 params)",
-            "SetStealStealableItems: missing spThing (1 args for 2 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "SetCombatNearbyBreakOffRange: missing spThing (1 args for 2 params)",
-            "SetStealStealableItems: missing spThing (1 args for 2 params)",
-            "SetRecoverStealableItems: missing spThing (1 args for 2 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
+            "unlifted: pThing_06._4_4_ = uVar8;",
+            "unlifted: pThing_06._0_4_ = auStack_48;",
+            "unlifted: pThing_06._8_4_ = uVar10;",
             "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
-            "SetStealStealableItems: missing spThing (1 args for 2 params)",
-            "SetRecoverStealableItems: missing spThing (1 args for 2 params)",
             "unnamed field 0x2c",
             "EntityFollowThing: missing spTarget (3 args for 4 params)",
             "unnamed field 0x2c",
@@ -1423,8 +1406,7 @@
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: CCharString::CCharString(\"REQUEST_PROTECTION\",\"TeamExitMarker\",-1);",
-            "unlifted: bVar2 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);",
-            "MoveToPosition: missing position (4 args for 5 params)"
+            "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1455,6 +1437,8 @@
             "SetStateInt",
             "IsDead",
             "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsBeingCarriedBy",
             "IsActiveThreadTerminating",
             "IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
@@ -1503,6 +1487,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "GetPos",
             "MoveToPosition",
             "IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
@@ -1513,7 +1498,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 423,
+          "lines": 420,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1522,15 +1507,15 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Main",
-                "line": 137,
-                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Main:137: unexpected symbol near '*'"
+                "line": 238,
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Main:238: unexpected symbol near '*'"
               }
             ]
           },
           "readableLocalNames": {},
           "nativeJumps": [
             "if (*(int *)(this + 0x1c) != 1) goto LAB_00dce500;",
-            "if (bVar2) goto LAB_00dcec33;"
+            "if (bVar6) goto LAB_00dcec33;"
           ],
           "nativeLabels": [
             "LAB_00dce500",
@@ -1550,7 +1535,6 @@
           "todo": [
             "GetName: CScriptThing method not in FSE manifest",
             "label LAB_00dce00a",
-            "unlifted: cStack_11 = '\\x01' - (iVar3 != 0);",
             "verify cleanup at LAB_00dce00a (lifted as early return)",
             "SetDataString: CScriptThing method not in FSE manifest",
             "SetDataString: CScriptThing method not in FSE manifest",
@@ -1584,7 +1568,7 @@
             "QUESTSTATE_SetInt",
             "ENTITYTHING_Set"
           ],
-          "lines": 57,
+          "lines": 59,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1593,8 +1577,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init",
-                "line": 56,
-                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init:56: unexpected symbol near '*'"
+                "line": 57,
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init:57: unexpected symbol near '*'"
               }
             ]
           },
@@ -1715,27 +1699,24 @@
             "returnKind": "number"
           },
           "todo": [
-            "IsHeroAllowedHenchmenInRegion: missing regionName (0 args for 1 params)"
+            "GetName: CScriptThing method not in FSE manifest",
+            "IsBeingCarriedBy: CScriptThing method not in FSE manifest"
           ],
           "calls": [
             "IsActiveThreadTerminating",
-            "IsHeroAllowedHenchmenInRegion",
+            "IsAlive",
+            "GetName",
+            "IsBeingCarriedBy",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 31,
+          "lines": 32,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:IsThingCarryingCrate",
-                "line": 14,
-                "message": "...rmRaid/Entities/CrateTeamMember.lua:IsThingCarryingCrate:14: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -1755,34 +1736,21 @@
             "parameters": [],
             "returnKind": "number"
           },
-          "todo": [
-            "unlifted: local_18 = 1e+07;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
-            "unlifted: local_14 = local_14 + 1;",
-            "unlifted: in_stack_00000004[1] = local_c;",
-            "unlifted: in_stack_00000004[2] = local_c;",
-            "unlifted: *local_c = *local_c + 1;"
-          ],
+          "todo": [],
           "calls": [
-            "QUESTLIST_Begin",
             "QUESTTHING_Empty",
             "ENGINE_SquaredDistance",
-            "QUESTLIST_Begin",
+            "QUESTLIST_BeginValue",
+            "QUESTLIST_At_CrateList",
             "QUESTTHING_Empty"
           ],
-          "lines": 32,
+          "lines": 22,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:GetNearestCrateToMe",
-                "line": 6,
-                "message": "...armRaid/Entities/CrateTeamMember.lua:GetNearestCrateToMe:6: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -2123,37 +2091,32 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 9,
-        "passed": 3,
+        "passed": 4,
         "errors": [
           {
-            "path": "FSE/OrchardFarmRaid/Entities/Artefact.lua",
-            "line": 79,
-            "message": "FSE/OrchardFarmRaid/Entities/Artefact.lua:79: unexpected symbol near '*'"
-          },
-          {
             "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
-            "line": 149,
-            "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:149: unexpected symbol near '*'"
+            "line": 250,
+            "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:250: unexpected symbol near '*'"
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua",
-            "line": 33,
-            "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:33: unexpected symbol near '*'"
+            "line": 63,
+            "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:63: unexpected symbol near '&'"
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua",
-            "line": 38,
-            "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:38: unexpected symbol near '&'"
+            "line": 56,
+            "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:56: unexpected symbol near '*'"
           },
           {
             "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua",
-            "line": 308,
-            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:308: unexpected symbol near '*'"
+            "line": 309,
+            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:309: unexpected symbol near '*'"
           },
           {
             "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-            "line": 146,
-            "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:146: unexpected symbol near '*'"
+            "line": 151,
+            "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:151: unexpected symbol near '&'"
           }
         ]
       },
@@ -2240,8 +2203,8 @@
           "errors": [
             {
               "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-              "line": 146,
-              "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:146: unexpected symbol near '*'"
+              "line": 151,
+              "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:151: unexpected symbol near '&'"
             }
           ]
         }
@@ -2250,10 +2213,10 @@
         "owners": 8,
         "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 29,
-        "fileSyntaxPassed": 3,
+        "functionSyntaxPassed": 33,
+        "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 9,
-        "todo": 191
+        "todo": 177
       }
     },
     {
@@ -2451,9 +2414,9 @@
     "owners": 10,
     "functions": 46,
     "missing": 2,
-    "functionSyntaxPassed": 33,
-    "fileSyntaxPassed": 5,
+    "functionSyntaxPassed": 37,
+    "fileSyntaxPassed": 6,
     "fileSyntaxChecked": 11,
-    "todo": 191
+    "todo": 177
   }
 }

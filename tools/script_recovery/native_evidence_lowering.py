@@ -130,6 +130,39 @@ def join_wrapped_statements(text: str) -> str:
     return '\n'.join(out) + ('\n' if text.endswith('\n') else '')
 
 
+RE_LOCAL_COUNTED_RELEASE = re.compile(
+    r'^[ \t]*if \(\((\w+) != \(int \*\)0x0\) && \(\*\1 = \*\1 \+ -1, \*\1 == 0\)\) \{\s*\r?\n'
+    r'[ \t]*\(\*\(code \*\)\1\[1\]\)\(\);\s*\r?\n[ \t]*operator_delete\(\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+
+
+def drop_local_counted_releases(text):
+    return RE_LOCAL_COUNTED_RELEASE.sub('', text)
+
+
+RE_BV_THING_CTOR = re.compile(
+    r'^[ \t]*CScriptThing::CScriptThing\s*\(\s*\(CScriptThing \*\)&stack0x([0-9a-f]+),\s*(?:\(CScriptThing \*\))?(\w+)(?:,[^;]*)?\);[ \t]*\r?\n', re.M)
+
+
+def fold_by_value_things(text: str, code_range=None) -> str:
+    """By-value CScriptThing arguments (typed export): the copy constructor fills an outgoing slot
+    (`&stack0xNN`) and the decompiler reassembles it into a `pThing._0_4_/_4_4_/_8_4_` temporary that
+    is passed to the call. The argument is simply the copied source."""
+    if code_range:
+        lo, hi = code_range
+        text = re.sub(r'^[ \t]*\w+ = (?:\([\w ]+\*+\))?0x([0-9a-f]{6,7});[ \t]*\r?\n',
+                      lambda m: '' if lo <= int(m.group(1), 16) < hi else m.group(0), text, flags=re.M)
+    while (m := RE_BV_THING_CTOR.search(text)):
+        slot, src = m.group(1), m.group(2)
+        text = text[:m.start()] + text[m.end():]
+        use = re.search(r'^[ \t]*(\w+)\._0_4_ = in_stack_' + slot + r';[ \t]*\r?\n', text, re.M)
+        if not use:
+            continue
+        var = use.group(1)
+        text = re.sub(r'^[ \t]*' + re.escape(var) + r'\._\d+_4_ = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'\b' + re.escape(var) + r'\b', src, text)
+    return text
+
+
 def normalise_typed_decompile(text: str) -> str:
     """Typed exports (ExportTypedTranslationUnit) print a few shapes the untyped pipeline never saw."""
     text = re.sub(r'\(int\)(this(?:_\d+)?)\b', r'\1', text)                 # (int)this + 0x40
@@ -248,6 +281,7 @@ def fold_actor_maps(text, resolve_string=None):
 # ---- retail resource objects (controlled entities, movies) ----------------------------------------
 # Addresses proven by FSE's own resource implementation (FableAPI.cpp / LuaRetailResources.h).
 RESOURCE_CTOR = {0x7E72A0}            # CScriptGameResourceObjectScriptedThingBase::ctor (bsim: CCarriedReadableDef)
+THING_DTOR = {0x4AA840}  # CScriptThing::~CScriptThing (vtable 01238c8c, releases Info)
 RESOURCE_DTOR = {0x7E74D0}            # CSGROSTB_Destroy_API
 MOVIE_CTOR = {0x6E7B40, 0x6E7B60}     # CScriptGameResourceObjectMovieBase ctors
 MOVIE_DTOR = {0x6E7B80}               # MovieResource_Destroy_API
@@ -263,7 +297,7 @@ def _strip_addr(arg):
 # g_pMovieObjectVTable, g_pCScriptThingVTable)
 RE_INLINE_CTOR = re.compile(
     r'^(?P<ind>[ \t]*)(?:\*\(undefined \*\*\*\))?(?P<obj>&?\w+)(?:\[0\])? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|01238c8c);[ \t]*\r?\n'
-    r'(?:[ \t]*(?:\w+ = 0;|\w+\[\d\] = (?:\(\w+ \*\))?0x0;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
+    r'(?:[ \t]*(?:\w+ = 0;|\w+ = \(\w+ \*\)0x0;|\w+\[\d\] = (?:\(\w+ \*\))?0x0;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
 
 
 def fold_inline_constructors(text):
@@ -278,12 +312,29 @@ def fold_inline_constructors(text):
     return RE_INLINE_CTOR.sub(repl, text)
 
 
+def _vtable_only_body(byte_at, target):
+    """`8B C1 C7 00 vt C3` / `C7 01 vt C3`: a ctor/dtor that only installs a vtable."""
+    if byte_at is None:
+        return False
+    b = bytes(byte_at(target + i) for i in range(9))
+    return b[:4] == b'\x8b\xc1\xc7\x00' and b[8] == 0xC3 or b[:2] == b'\xc7\x01' and b[6] == 0xC3
+
+
+def drop_trivial_base_calls(text, call_labels, byte_at):
+    for label, target in call_labels.items():
+        if _vtable_only_body(byte_at, target):
+            text = re.sub(r'^[ \t]*' + re.escape(label) + r'\s*\([^;]*\);[ \t]*\r?\n', '', text, flags=re.M)
+    return text
+
+
 def fold_resource_objects(text, call_labels):
     """call_labels: {label text as printed in the decompile: target address}. Rewrites constructor /
     destructor calls of resource and movie objects into the retail-resource pseudo API."""
     for label, target in call_labels.items():
         if target in RESOURCE_CTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = RESOURCE_NewResource();', text, flags=re.M)
+        elif target in THING_DTOR:
+            text = re.sub(r'^[ \t]*' + re.escape(label) + r'\s*\(\(CScriptThing \*\)(\w+)[^;]*\);[ \t]*\r?\n', '', text, flags=re.M)
         elif target in RESOURCE_DTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}RESOURCE_ReleaseResource({_strip_addr(m.group(2))});', text, flags=re.M)
         elif target in MOVIE_CTOR:
@@ -361,6 +412,17 @@ def fold_offset_string_temporaries(text: str) -> str:
     return text
 
 
+def rename_scalar_stack_locals(text):
+    """Ghidra stack names (`local_14`, `uStack_8`) are refused by the lifter's assignment rule (they
+    are usually object slots). Ones that only ever appear as plain scalars get lifter-visible names."""
+    for name in sorted(set(re.findall(r'\b(?:[A-Za-z]+Stack_|local_)[0-9a-f]+\b', text))):
+        if re.search(r'[&*]' + re.escape(name) + r'\b|\b' + re.escape(name) + r'\s*[\[.]|\(\w+ \*+\)' + re.escape(name) + r'\b', text):
+            continue
+        m = re.fullmatch(r'([A-Za-z]*)(?:Stack_|local_)([0-9a-f]+)', name)
+        text = re.sub(r'\b' + re.escape(name) + r'\b', f'{m.group(1) or "v"}_stk_{m.group(2)}', text)
+    return text
+
+
 def lower_after_annotate(text):
     text = fold_name_compare(text)
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
@@ -419,10 +481,14 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\*\((?:C\w+MasterData) \*\*\)\((' + SELF + r') \+ (0x18|0x44)\)', r'*(int *)(\1 + \2)', text)
     text = re.sub(r'\bparam_1\b', 'this', text)
     text = normalise_typed_decompile(text)
+    for m in set(re.findall(r'^[ \t]*(\w+) = \*\(int \*\*\)\(this \+ (4|0x40)\);', text, re.M)):
+        text = re.sub(r'^([ \t]*)(\w+) = \*' + re.escape(m[0]) + r';', lambda mm, off=m[1]: f'{mm.group(1)}{mm.group(2)} = **(int **)(this + {off});', text, flags=re.M)
+    text = fold_by_value_things(text, getattr(spec, 'code_range', None))
     text = fold_counted_pointer_assign(text)
     text = fold_counted_pointer_release(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
+    text = drop_trivial_base_calls(text, getattr(spec, 'call_labels', {}), getattr(spec, 'byte_at', None))
     text = fold_inline_constructors(text)
     text = canonicalise_stack_objects(text)
     text = fold_offset_string_temporaries(text)
@@ -575,18 +641,102 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             end = r'\*\(int \*\)\(' + base + r' \+ ' + off_re(off + 4) + r'\)'
             text = re.sub(r'\(uint\)\(\(' + end + r' -\s*' + begin + r'\) / 0xc\)', f'{tag}LIST_Count("{name}")', text)
             text = re.sub(end + r' -\s*' + begin, f'({tag}LIST_Count("{name}") * 0xc)', text)
-            text = re.sub(r'\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\)', f'{tag}LIST_Begin("{name}")', text)
+            # pointer-to-begin temporaries: P = (int *)(BASE + OFF); *P is the begin value, P[1] the end
+            ptr_pat = re.compile(r'^[ \t]*(\w+) = \(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\);[ \t]*\r?\n', re.M)
+            pos = 0
+            while (m := ptr_pat.search(text, pos)):
+                pos = m.start()
+                var = m.group(1)
+                head, tail = text[:m.start()], text[m.end():]
+                nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
+                scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+                scope = re.sub(r'\*' + re.escape(var) + r'\b', f'{tag}LIST_BeginValue("{name}")', scope)
+                scope = re.sub(r'\b' + re.escape(var) + r'\[1\]', f'{tag}LIST_EndValue("{name}")', scope)
+                text = head + scope + rest
             # element: *(int *)(BEGIN + IDX)  (IDX in bytes, stride 0xc) and vcalls on it
             def elem_vcall(m, name=name, tag=tag):
-                out = thing_call(f'{tag}LIST_At("{name}", ({m.group(1)}) / 0xc)', m.group(2), m.end(), text[m.end():m.end() + 1])
+                out = thing_call(f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', m.group(2), m.end(), text[m.end():m.end() + 1])
                 return out if out else m.group(0)
             text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + begin + r' \+ (\w+)\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', elem_vcall, text)
-            text = re.sub(r'\(CScriptThing \*\)\(' + begin + r' \+ (\w+)\)', lambda m, name=name, tag=tag: f'{tag}LIST_At("{name}", ({m.group(1)}) / 0xc)', text)
-            text = re.sub(begin + r' \+ (\w+)\b', lambda m, name=name, tag=tag: f'{tag}LIST_At("{name}", ({m.group(1)}) / 0xc)', text)
-            text = re.sub(begin, f'{tag}LIST_Begin("{name}")', text)
-            text = re.sub(end, f'{tag}LIST_End("{name}")', text)
+            text = re.sub(r'\(CScriptThing \*\)\(' + begin + r' \+ (\w+)\)', lambda m, name=name, tag=tag: f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', text)
+            text = re.sub(begin + r' \+ (\w+)\b', lambda m, name=name, tag=tag: f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', text)
+            text = re.sub(begin, f'{tag}LIST_BeginValue("{name}")', text)
+            text = re.sub(end, f'{tag}LIST_EndValue("{name}")', text)
+            bv, ev = f'{tag}LIST_BeginValue("{name}")', f'{tag}LIST_EndValue("{name}")'
+            # arithmetic on begin/end values after alias substitution
+            text = text.replace(f'{ev} - {bv}', f'({tag}LIST_Count("{name}") * 0xc)')
+            text = re.sub(r'\*\(int \*\)\(' + re.escape(bv) + r' \+ (\w+)\)', lambda m, name=name, tag=tag: f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', text)
+            text = re.sub(r'\*' + re.escape(bv), f'{tag}LIST_At_{name}(0)', text)
+            text = re.sub(re.escape(bv) + r' \+ (\w+)\b', lambda m, name=name, tag=tag: f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', text)
+            text = re.sub(r'\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\)', f'{tag}LIST_Ref("{name}")', text)
             text = re.sub(r'Vector_PushBack_ScriptThing\(\(void \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*([^;]+)\);',
                           lambda m, name=name, tag=tag: f'{tag}LIST_Push("{name}", {m.group(1).strip()});', text)
+
+    # 3c'. helpers returning a CScriptThing through a hidden pointer: Ghidra drops the pointer push, so the
+    # call reads `Helper(this);` and the result is the stack object whose Data (`X._4_4_`) is used next.
+    hidden = {label for label, target in getattr(spec, 'call_labels', {}).items() if target in getattr(spec, 'hidden_thing_returns', set())}
+    for label in hidden:
+        pat = re.compile(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]*)\);[ \t]*\r?\n', re.M)
+        pos = 0
+        while (m := pat.search(text, pos)):
+            use = re.search(r'\b((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\._4_4_', text[m.end():])
+            if not use:
+                pos = m.end()
+                continue
+            obj = use.group(1)
+            name = 'thing_' + re.sub(r'^.*?(?:Stack_|local_)', '', obj)
+            text = text[:m.start()] + f'{m.group(1)}{name} = {label}({m.group(2)});\n' + text[m.end():]
+            text = re.sub(r'\(CScriptThing \*\)' + re.escape(obj) + r'\b', name, text)
+            text = re.sub(r'\b' + re.escape(obj) + r'\b', name, text)
+            pos = m.start() + 1
+    # Data-pointer idioms on a stack thing: `(int *)X._4_4_ == (int *)0x0` is validity, `(**(code **)(*(int *)X._4_4_ + SLOT))(` a thing call
+    text = re.sub(r'\(int \*\)(\w+)\._4_4_ == \(int \*\)0x0', r'!__thing_valid(\1)', text)
+    text = re.sub(r'\(int \*\)(\w+)\._4_4_ != \(int \*\)0x0', r'__thing_valid(\1)', text)
+    text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)(\w+)\._4_4_ \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
+                  lambda h: thing_call(h.group(1), h.group(2), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
+    # 3d. vcalls through a saved vtable temporary of a lowered thing: V = *(int *)(THING); (**(code **)(V + SLOT))(
+    RE_VT_TEMP = re.compile(r'^[ \t]*(\w+) = \*\(int \*\)\(((?:QUEST|ENTITY)(?:THING_Get|LIST_At_\w+)\([^;\n]*\))\);[ \t]*\r?\n', re.M)
+    for m in list(RE_VT_TEMP.finditer(text)):
+        var, recv = m.group(1), m.group(2)
+        pat = re.compile(r'\(\*\*\(code \*\*\)\(' + re.escape(var) + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(')
+        after = text[m.end():]
+        nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', after, re.M)
+        scope, rest = (after[:nxt.start()], after[nxt.start():]) if nxt else (after, '')
+        hits = list(pat.finditer(scope))
+        if not hits or any(thing_call(recv, h.group(1), 0, '') is None for h in hits):
+            continue
+        scope = pat.sub(lambda h: thing_call(recv, h.group(1), h.end(), scope[h.end():h.end() + 1]), scope)
+        text = text[:m.start()] + scope + rest
+    # 3e. vcalls on CScriptThing parameters: (**(code **)(*(int *)param + SLOT))(
+    sig = re.search(r'\(\s*\w+ \*this(?:,([^)]*))?\)\s*\r?\n\r?\n?\{', text)
+    for pname in (re.findall(r'\b(\w+)\s*(?:,|$)', sig.group(1)) if sig and sig.group(1) else []):
+        pat = re.compile(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + re.escape(pname) + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(')
+        text = pat.sub(lambda h: thing_call(pname, h.group(1), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
+    # 3f. inline CScriptThing copies out of a list element into a stack thing (counted-pointer form)
+    RE_ELEM_PARTS = re.compile(r'^[ \t]*(\w+) = \*\(int \*\*\)\((\w+) \+ 8 \+ (\w+)\);[ \t]*\r?\n[ \t]*(\w+) = \*\(undefined4 \*\)\(\2 \+ 4 \+ \3\);[ \t]*\r?\n', re.M)
+    for m in list(RE_ELEM_PARTS.finditer(text)):
+        ptr, basevar, idx, data = m.groups()
+        src = re.search(r'^[ \t]*' + re.escape(basevar) + r' = ((?:QUEST|ENTITY)LIST_BeginValue\("(\w+)"\));', text[:m.start()], re.M)
+        if not src:
+            continue
+        tag = src.group(1).split('LIST_')[0]
+        elem = f'{tag}LIST_At_{src.group(2)}(({idx}) / 0xc)'
+        assign = re.compile(r'^([ \t]*)if \((\w+) != ' + ptr + r'\) \{\s*\r?\n[ \t]*if \(\(\2 != \(int \*\)0x0\) && \(\*\2 = \*\2 \+ -1, \*\2 == 0\)\) \{\s*\r?\n[ \t]*\(\*\(code \*\)\2\[1\]\)\(\);\s*\r?\n[ \t]*operator_delete\(\2\);\s*\r?\n[ \t]*\}\s*\r?\n'
+                            r'(?:[ \t]*(\w+) = \w+;[ \t]*\r?\n)*?'
+                            r'[ \t]*\w+ = ' + data + r';[ \t]*\r?\n[ \t]*\2 = ' + ptr + r';[ \t]*\r?\n[ \t]*if \(' + ptr + r' != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*' + ptr + r' = \*' + ptr + r' \+ 1;\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+        am = assign.search(text, m.end())
+        if not am:
+            continue
+        inner = re.findall(r'^[ \t]*(\w+ = \w+;)[ \t]*$', text[am.start():am.end()], re.M)
+        keep = [ln for ln in inner if not ln.startswith((am.group(2) + ' =',)) and not ln.endswith((f'= {data};', f'= {ptr};'))]
+        repl = ''.join(f'{am.group(1)}{ln}\n' for ln in keep) + f'{am.group(1)}{am.group(2)} = {elem};\n'
+        text = text[:am.start()] + repl + text[am.end():]
+        text = text[:m.start()] + text[m.end():]
+    # 3g. return-by-hidden-pointer of a CScriptThing: *ret = &vtable; ret[1] = X; ret[2] = X; if (X) *X += 1
+    text = re.sub(r'^([ \t]*)\*(\w+) = &PTR_[A-Za-z_]*_01238c8c;[ \t]*\r?\n[ \t]*\2\[1\] = (\w+);[ \t]*\r?\n[ \t]*\2\[2\] = \3;[ \t]*\r?\n[ \t]*if \(\3 != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\3 = \*\3 \+ 1;\s*\r?\n[ \t]*\}[ \t]*\r?\n',
+                  lambda m: f'{m.group(1)}ret_thing = {m.group(3)};\n', text, flags=re.M)
+    if 'ret_thing = ' in text:
+        text = re.sub(r'return \(int\)in_stack_\w+;', 'return ret_thing;', text)
 
     # 4. entity pointer-into-parent-array fields (MyTeam): store index, keyed access through it
     if spec.entity:
@@ -633,6 +783,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'\(CScriptThing \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', recv, text)
                 text = re.sub(r'CScriptThing::operator=\(' + re.escape(recv) + r',\s*([^;]+)\);',
                               lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_" .. {idx} .. "_{tname}"), {m.group(1).strip()});', text)
+    text = re.sub(r'\b(\d+(?:\.\d+)?)e\+?(-?\d+)\b', lambda m: repr(float(m.group(0))), text)
+    text = drop_local_counted_releases(text)
+    text = rename_scalar_stack_locals(text)
     return text, diag
 
 
@@ -664,6 +817,10 @@ LUA_PSEUDO = [
     (re.compile(r'QUESTLIST_Count\('), 'quest:GetStateListCount('),
     (re.compile(r'QUESTLIST_At\('), 'quest:GetStateListAt('),
     (re.compile(r'QUESTLIST_Push\('), 'quest:StateListPush('),
+    (re.compile(r'QUESTLIST_(?:BeginValue|Ref)\('), 'quest:GetStateListRef('),
+    (re.compile(r'QUESTLIST_EndValue\('), 'quest:GetStateListEnd('),
+    (re.compile(r'ENTITYLIST_(?:BeginValue|Ref)\('), '__native_entity_state:GetStateListRef('),
+    (re.compile(r'ENTITYLIST_EndValue\('), '__native_entity_state:GetStateListEnd('),
     (re.compile(r'ENTITYLIST_Push\('), '__native_entity_state:StateListPush('),
     (re.compile(r'ENTITYLIST_Count\('), '__native_entity_state:GetStateListCount('),
     (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
@@ -671,8 +828,6 @@ LUA_PSEUDO = [
     (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
-    (re.compile(r'ENGINE_StrCmp\(([^,]+), ([^)]+)\)'), r'((\1 == \2) and 0 or 1)'),
-    (re.compile(r'ENGINE_SquaredDistance\(([^,]+), ([^)]+)\)'), r'(quest:GetDistanceBetweenThings(\1, \2) ^ 2)'),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
     (re.compile(r'RESOURCE_(\w+)\('), r'resources:\1('),
@@ -684,9 +839,50 @@ LUA_PSEUDO = [
 KEY = re.compile(r'__key\(')
 
 
+def _split_top(args):
+    out, depth, cur, quote = [], 0, '', None
+    for ch in args:
+        if quote:
+            cur += ch
+            if ch == quote:
+                quote = None
+            continue
+        if ch in '"\'':
+            quote = ch
+        elif ch in '([{':
+            depth += 1
+        elif ch in ')]}':
+            depth -= 1
+        elif ch == ',' and depth == 0:
+            out.append(cur.strip()); cur = ''
+            continue
+        cur += ch
+    if cur.strip():
+        out.append(cur.strip())
+    return out
+
+
+def _expand_calls(text, name, render):
+    """Replace every `name(<balanced args>)` with render(args_list), innermost first."""
+    while True:
+        i = text.find(name + '(')
+        if i < 0:
+            return text
+        j, depth = i + len(name) + 1, 1
+        while j < len(text) and depth:
+            depth += {'(': 1, ')': -1}.get(text[j], 0)
+            j += 1
+        inner = text[i + len(name) + 1:j - 1]
+        text = text[:i] + render(_split_top(inner)) + text[j:]
+
+
 def finish_lua(text: str) -> str:
     """Turn lowering pseudo-calls into Lua after the lifter has run."""
+    text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
+    text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
+    text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)
     for pattern, repl in LUA_PSEUDO:
         text = pattern.sub(repl, text)
     text = KEY.sub('(', text)
+    text = re.sub(r'&("[^"]*")', r'\1', text)
     return text

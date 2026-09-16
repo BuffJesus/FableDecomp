@@ -12,14 +12,15 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, bVar2, bVar4, cVar3, iVar5, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, native_arg_sequence_5, p0, p0_00, pCVar6, piVar1, r1, uVar7, uVar8
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, p0, p0_00, piVar1, r1, thing_38
     local alive = true
+    bVar6 = false
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
-        cVar3 = quest:GetStateBool("DoneIntroduction")
-        while not cVar3 do
+        cVar4 = quest:GetStateBool("DoneIntroduction")
+        while not cVar4 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -28,24 +29,24 @@ function Main(quest, me)
             end
             if quest:GetStateBool("HeroAtWrongEntrance") then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then
+                bVar6 = not alive
+                if bVar6 then
                     return
                 end
                 quest:RemoveThing(me, false, false)
                 if 0 < quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then
+                    bVar6 = not alive
+                    if bVar6 then
                         return
                     end
                     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) + -1)
                 end
-                iVar5 = __native_entity_state:GetStateInt("MemberState") + __native_entity_state:GetStateInt("TeamID") * 0x10
-                quest:SetStateInt(("Teams_0_StateCounter_" .. iVar5), quest:GetStateInt(("Teams_0_StateCounter_" .. iVar5)) + -1)
+                iVar7 = __native_entity_state:GetStateInt("MemberState") + __native_entity_state:GetStateInt("TeamID") * 0x10
+                quest:SetStateInt(("Teams_0_StateCounter_" .. iVar7), quest:GetStateInt(("Teams_0_StateCounter_" .. iVar7)) + -1)
                 return
             end
-            cVar3 = quest:GetStateBool("DoneIntroduction")
+            cVar4 = quest:GetStateBool("DoneIntroduction")
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -75,43 +76,43 @@ function Main(quest, me)
                 end
                 require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING_03", me, 0)
             end
-            cVar3 = quest:GetStateBool("WhisperSpawned")
-            -- TODO(native): cStack_5d = '\0';
-            while not cVar3 do
+            bVar2 = false
+            cVar4 = quest:GetStateBool("WhisperSpawned")
+            while not cVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then
+                bVar3 = not alive
+                if bVar3 then
                     return
                 end
                 GoOnPatrol(quest, me)
                 -- TODO(native): GetCurrentStateGroupType is not a ForgeFSE binding
-                iVar5 = me:GetCurrentStateGroupType()
-                __native_entity_state:SetStateInt("CurrentAIState", iVar5)
-                if iVar5 ~= __native_entity_state:GetStateInt("PreviousAIState") then
+                iVar7 = me:GetCurrentStateGroupType()
+                __native_entity_state:SetStateInt("CurrentAIState", iVar7)
+                if iVar7 ~= __native_entity_state:GetStateInt("PreviousAIState") then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then
+                    bVar3 = not alive
+                    if bVar3 then
                         return
                     end
                     if __native_entity_state:GetStateInt("CurrentAIState") == 2 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then
+                        bVar3 = not alive
+                        if bVar3 then
                             return
                         end
                         if __native_entity_state:GetStateInt("MemberState") == 3 then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then
+                            bVar3 = not alive
+                            if bVar3 then
                                 return
                             end
                             require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "DEFENDING", me, 0)
                             -- TODO(native): this_00 = auStack_58;
                         else
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then
+                            bVar3 = not alive
+                            if bVar3 then
                                 return
                             end
                             require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FOLLOWING", me, 0)
@@ -120,8 +121,8 @@ function Main(quest, me)
                     else
                         if __native_entity_state:GetStateInt("CurrentAIState") ~= 1 then goto LAB_00dce500 end
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then
+                        bVar3 = not alive
+                        if bVar3 then
                             return
                         end
                         require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "ATTACKING", me, 0)
@@ -131,70 +132,62 @@ function Main(quest, me)
                 ::LAB_00dce500::
                 __native_entity_state:SetStateInt("PreviousAIState", __native_entity_state:GetStateInt("CurrentAIState"))
                 if __native_entity_state:GetStateInt("MemberState") == 1 then
-                    cVar3 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
-                    if (cVar3) and (quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_2")) == 0) then
+                    cVar4 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
+                    if (cVar4) and (quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_2")) == 0) then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then
+                        bVar3 = not alive
+                        if bVar3 then
                             return
                         end
-                        GetNearestCrateToMe(quest, me)
-                        native_arg_sequence_1 = false
-                        if auStack_38._4_4_ == nil then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
+                        thing_38 = GetNearestCrateToMe(quest, me)
+                        __native_condition_1 = not IsThingValid(thing_38)
+                        if not __native_condition_1 then
+                            cVar4 = (thing_38 ~= nil and thing_38:IsAlive())
+                            __native_condition_1 = not cVar4
                         end
-                        if not native_arg_sequence_1 then
-                            cVar3 = (**(*auStack_38._4_4_ + 300))()
-                            if cVar3 == 0 then
+                        if __native_condition_1 then
+                            -- LAB_00dce594: (native jump target)
+                            bVar3 = false
+                        else
+                            -- TODO(native): CCharString::CCharString((CCharString *)(auStack_50 + 4),"",-1);
+                            bVar6 = true
+                            native_arg_sequence_1 = false
+                            if IsThingValid(thing_38) then
                                 native_arg_sequence_1 = true
                             else
                                 native_arg_sequence_1 = false
                             end
-                        end
-                        if native_arg_sequence_1 then
-                            -- LAB_00dce594: (native jump target)
-                            bVar2 = false
-                        else
-                            -- TODO(native): CCharString::CCharString((CCharString *)(auStack_50 + 4),"",-1);
-                            -- TODO(native): local_5c = local_5c | 1;
-                            native_arg_sequence_2 = false
-                            if auStack_38._4_4_ ~= nil then
-                                native_arg_sequence_2 = true
-                            else
-                                native_arg_sequence_2 = false
-                            end
-                            if native_arg_sequence_2 then
-                                cVar3 = (**(*auStack_38._4_4_ + 0xfc))()
-                                if cVar3 ~= 0 then
-                                    native_arg_sequence_2 = true
+                            if native_arg_sequence_1 then
+                                -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
+                                cVar4 = thing_38:IsBeingCarriedBy("ATTACKING")
+                                if cVar4 then
+                                    native_arg_sequence_1 = true
                                 else
-                                    native_arg_sequence_2 = false
+                                    native_arg_sequence_1 = false
                                 end
                             end
-                            if native_arg_sequence_2 then return end  -- TODO(native): goto LAB_00dce594
-                            bVar2 = true
+                            if native_arg_sequence_1 then return end  -- TODO(native): goto LAB_00dce594
+                            bVar3 = true
                         end
-                        if (local_5c & 1) ~= 0 then
-                            -- TODO(native): local_5c = local_5c & 0xfffffffe;
+                        if bVar6 then
+                            bVar6 = false
                         end
-                        if bVar2 then
+                        if bVar3 then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then
+                            bVar3 = not alive
+                            if bVar3 then
                                 -- LAB_00dcebab: (native jump target)
                                 return
                             end
-                            bVar2 = quest:IsDistanceBetweenThingsUnder(me, nil --[[missing]], auStack_38)
+                            bVar3 = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                             if (quest:GetStateInt("HeroTeam") == 0) and (__native_entity_state:GetStateInt("TeamID") == 1) then
                                 alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                if bVar2 then return end  -- TODO(native): goto LAB_00dcebab
-                                bVar2 = true
+                                bVar3 = not alive
+                                if bVar3 then return end  -- TODO(native): goto LAB_00dcebab
+                                bVar3 = true
                             end
-                            bVar4 = IsDistanceBetweenThingsOver(auStack_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")),5.0)
-                            if (bVar4) and (bVar2 ~= false) then
+                            bVar5 = IsDistanceBetweenThingsOver(thing_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")),5.0)
+                            if (bVar5) and (bVar3 ~= false) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if bVar2 then return end  -- TODO(native): goto LAB_00dcebab
@@ -203,101 +196,105 @@ function Main(quest, me)
                                     bVar2 = not alive
                                     if bVar2 then return end  -- TODO(native): goto LAB_00dcebab
                                     quest:EntityStopFollowing(me)
-                                    uVar8 = 0x6b
-                                    quest:SetCombatNearbyBreakOffRange(nil --[[missing]], in_stack_ffffff80)
-                                    pCVar6 = 0xdce67d
-                                    uVar7 = 0x86
-                                    quest:SetStealStealableItems(nil --[[missing]], in_stack_ffffff78)
+                                    fVar9 = 4.0
+                                    quest:SetCombatNearbyBreakOffRange(me, fVar9)
+                                    bVar2 = true
+                                    quest:SetStealStealableItems(me, bVar2)
+                                    bVar2 = false
                                 else
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if bVar2 then return end  -- TODO(native): goto LAB_00dcebab
-                                    uVar8 = 0xb4
-                                    quest:SetCombatNearbyBreakOffRange(nil --[[missing]], in_stack_ffffff80)
-                                    pCVar6 = 0xdce6c5
-                                    uVar7 = 0xce
-                                    quest:SetStealStealableItems(nil --[[missing]], in_stack_ffffff78)
+                                    fVar9 = 4.0
+                                    quest:SetCombatNearbyBreakOffRange(me, fVar9)
+                                    bVar2 = false
+                                    quest:SetStealStealableItems(me, bVar2)
+                                    bVar2 = true
                                 end
-                                quest:SetRecoverStealableItems(nil --[[missing]], (pCVar6 ~= 0))
+                                quest:SetRecoverStealableItems(me, bVar2)
+                                bVar2 = true
                                 helper_DCEC50(quest, me, 2)
                                 require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
-                            elseif cStack_5d ~= 0 then
+                            elseif bVar2 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if bVar2 then return end  -- TODO(native): goto LAB_00dcebab
-                                uVar8 = 0x4c
+                                -- TODO(native): pThing_06._4_4_ = uVar8;
+                                -- TODO(native): pThing_06._0_4_ = auStack_48;
+                                -- TODO(native): pThing_06._8_4_ = uVar10;
                                 quest:ResetCombatNearbyBreakOffRange(nil --[[missing]])
-                                pCVar6 = 0xdce766
-                                uVar7 = 0x6f
-                                quest:SetStealStealableItems(nil --[[missing]], in_stack_ffffff78)
-                                quest:SetRecoverStealableItems(nil --[[missing]], (pCVar6 ~= 0))
+                                bVar2 = false
+                                quest:SetStealStealableItems(me, bVar2)
+                                bVar2 = false
+                                quest:SetRecoverStealableItems(me, bVar2)
                                 helper_DCEC50(quest, me, 0)
+                                bVar2 = false
                             end
                         end
                     end
-                    native_arg_sequence_3 = false
+                    native_arg_sequence_2 = false
                     if __native_entity_state:GetStateInt("MemberState") == 1 then
-                        native_arg_sequence_3 = true
+                        native_arg_sequence_2 = true
                     else
-                        native_arg_sequence_3 = false
+                        native_arg_sequence_2 = false
                     end
-                    if native_arg_sequence_3 then
-                        cVar3 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsAlive()
-                        if cVar3 then
-                            native_arg_sequence_3 = true
+                    if native_arg_sequence_2 then
+                        cVar4 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsAlive()
+                        if cVar4 then
+                            native_arg_sequence_2 = true
                         else
-                            native_arg_sequence_3 = false
+                            native_arg_sequence_2 = false
                         end
                     end
-                    if native_arg_sequence_3 then
-                        cVar3 = (**(**(__native_entity_state:GetStateInt("self_0x2c") + 0x34) + 0x138))()
-                        if cVar3 == 0 then
-                            native_arg_sequence_3 = true
+                    if native_arg_sequence_2 then
+                        cVar4 = (**(**(__native_entity_state:GetStateInt("self_0x2c") + 0x34) + 0x138))()
+                        if cVar4 == 0 then
+                            native_arg_sequence_2 = true
                         else
-                            native_arg_sequence_3 = false
+                            native_arg_sequence_2 = false
                         end
                     end
-                    if native_arg_sequence_3 then
+                    if native_arg_sequence_2 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then
+                        bVar3 = not alive
+                        if bVar3 then
                             return
                         end
                         helper_DCEC50(quest, me, 3)
                         quest:EntityStopFollowing(me)
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then
+                        bVar3 = not alive
+                        if bVar3 then
                             return
                         end
                         quest:EntityFollowThing(me, nil --[[missing]], quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")), 1.0)
                         require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "DEFENDING", me, 0)
                     end
                 end
-                __native_condition_1 = __native_entity_state:GetStateInt("MemberState") == 3
-                if __native_condition_1 then
-                    cVar3 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
-                    __native_condition_1 = cVar3 or (iVar5 = IsThingCarryingCrate(this,__native_entity_state:GetStateInt("self_0x2c") + 0x30), iVar5 == 0 )
+                __native_condition_2 = __native_entity_state:GetStateInt("MemberState") == 3
+                if __native_condition_2 then
+                    cVar4 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
+                    __native_condition_2 = cVar4 or (iVar7 = IsThingCarryingCrate(this,__native_entity_state:GetStateInt("self_0x2c") + 0x30), iVar7 == 0 )
                 end
-                if __native_condition_1 then
+                if __native_condition_2 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then
+                    bVar3 = not alive
+                    if bVar3 then
                         return
                     end
                     quest:EntityStopFollowing(me)
                     helper_DCEC50(quest, me, 0)
                 end
-                __native_condition_2 = __native_entity_state:GetStateInt("MemberState") == 1
-                if __native_condition_2 then
-                    cVar3 = quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")):IsAlive()
-                    __native_condition_2 = cVar3
+                __native_condition_3 = __native_entity_state:GetStateInt("MemberState") == 1
+                if __native_condition_3 then
+                    cVar4 = quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")):IsAlive()
+                    __native_condition_3 = cVar4
                 end
-                if __native_condition_2 then
+                if __native_condition_3 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then
+                    bVar3 = not alive
+                    if bVar3 then
                         return
                     end
                     helper_DCEC50(quest, me, 4)
@@ -305,37 +302,37 @@ function Main(quest, me)
                     quest:EntityFollowThing(me, nil --[[missing]], quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0)
                     require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
                 end
-                __native_condition_3 = __native_entity_state:GetStateInt("MemberState") == 4
-                if __native_condition_3 then
-                    cVar3 = quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")):IsDead()
-                    __native_condition_3 = cVar3 or (iVar5 = IsThingCarryingCrate(this,*(__native_entity_state:GetStateInt("self_0x2c") + 0x3c) + 0x30), iVar5 == 0)
+                __native_condition_4 = __native_entity_state:GetStateInt("MemberState") == 4
+                if __native_condition_4 then
+                    cVar4 = quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")):IsDead()
+                    __native_condition_4 = cVar4 or (iVar7 = IsThingCarryingCrate(this,*(__native_entity_state:GetStateInt("self_0x2c") + 0x3c) + 0x30), iVar7 == 0)
                 end
-                if __native_condition_3 then
+                if __native_condition_4 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then
+                    bVar3 = not alive
+                    if bVar3 then
                         return
                     end
                     helper_DCEC50(quest, me, 0)
                 end
-                native_arg_sequence_4 = false
+                native_arg_sequence_3 = false
                 if __native_entity_state:GetStateInt("MemberState") == 2 then
-                    native_arg_sequence_4 = true
+                    native_arg_sequence_3 = true
                 else
-                    native_arg_sequence_4 = false
+                    native_arg_sequence_3 = false
                 end
-                if native_arg_sequence_4 then
-                    iVar5 = IsThingCarryingCrate(quest, me, me)
-                    if iVar5 ~= 0 then
-                        native_arg_sequence_4 = true
+                if native_arg_sequence_3 then
+                    iVar7 = IsThingCarryingCrate(quest, me, me)
+                    if iVar7 ~= 0 then
+                        native_arg_sequence_3 = true
                     else
-                        native_arg_sequence_4 = false
+                        native_arg_sequence_3 = false
                     end
                 end
-                if native_arg_sequence_4 then
+                if native_arg_sequence_3 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then
+                    bVar3 = not alive
+                    if bVar3 then
                         return
                     end
                     helper_DCEC50(quest, me, 5)
@@ -346,24 +343,24 @@ function Main(quest, me)
                         -- TODO(native): *piVar1 = *piVar1 + 1;
                     end
                 end
-                native_arg_sequence_5 = false
+                native_arg_sequence_4 = false
                 if __native_entity_state:GetStateInt("MemberState") == 5 then
-                    native_arg_sequence_5 = true
+                    native_arg_sequence_4 = true
                 else
-                    native_arg_sequence_5 = false
+                    native_arg_sequence_4 = false
                 end
-                if native_arg_sequence_5 then
-                    iVar5 = IsThingCarryingCrate(quest, me, me)
-                    if iVar5 == 0 then
-                        native_arg_sequence_5 = true
+                if native_arg_sequence_4 then
+                    iVar7 = IsThingCarryingCrate(quest, me, me)
+                    if iVar7 == 0 then
+                        native_arg_sequence_4 = true
                     else
-                        native_arg_sequence_5 = false
+                        native_arg_sequence_4 = false
                     end
                 end
-                if native_arg_sequence_5 then
+                if native_arg_sequence_4 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then
+                    bVar3 = not alive
+                    if bVar3 then
                         return
                     end
                     local_20 = nil
@@ -374,60 +371,60 @@ function Main(quest, me)
                         -- TODO(native): *piVar1 = *piVar1 + 1;
                     end
                 end
-                cVar3 = quest:GetStateBool("WhisperSpawned")
+                cVar4 = quest:GetStateBool("WhisperSpawned")
             end
             alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if not bVar2 then
+            bVar6 = not alive
+            if not bVar6 then
                 quest:EntityStopFollowing(me)
                 -- TODO(native): CCharString::CCharString("REQUEST_PROTECTION","TeamExitMarker",-1);
                 r1 = quest:GetNearestWithScriptName(me, "REQUEST_PROTECTION")
                 aCStack_10 = resources:NewResource()
-                -- TODO(native): bVar2 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);
-                if bVar2 then
+                -- TODO(native): bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);
+                if bVar6 then
                 end
-                bVar2 = resources:TryAcquire(aCStack_10, me, 4)
-                while not bVar2 do
+                bVar6 = resources:TryAcquire(aCStack_10, me, 4)
+                while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then goto LAB_00dcec33 end
-                    bVar2 = resources:TryAcquire(aCStack_10, me, 4)
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00dcec33 end
+                    bVar6 = resources:TryAcquire(aCStack_10, me, 4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if not bVar2 then
+                bVar6 = not alive
+                if not bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    while not bVar2 do
-                        iVar5 = me:IsPerformingScriptTask()
-                        if not iVar5 then
+                    bVar6 = not alive
+                    while not bVar6 do
+                        iVar7 = me:IsPerformingScriptTask()
+                        if not iVar7 then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then break end
-                            if r1._4_4_ == nil then
+                            bVar6 = not alive
+                            if bVar6 then break end
+                            if not IsThingValid(r1) then
                             else
-                                p0_00 = (**(*r1._4_4_ + 0x18))()
+                                p0_00 = r1:GetPos()
                             end
-                            me:MoveToPosition(nil --[[missing]], 0x3f000000, 1, false, true)
+                            me:MoveToPosition(p0_00, 0x3f000000, 1, false, true)
                         end
-                        bVar2 = quest:IsDistanceBetweenThingsUnder(me, r1, 2.0)
-                        if bVar2 then
+                        bVar6 = quest:IsDistanceBetweenThingsUnder(me, r1, 2.0)
+                        if bVar6 then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if not bVar2 then
+                            bVar6 = not alive
+                            if not bVar6 then
                                 quest:FadeOutAndKillEntity(me, true, 3.0, true)
                                 repeat
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
-                                    bVar2 = not alive
-                                until not (not bVar2)
+                                    bVar6 = not alive
+                                until not (not bVar6)
                             end
                             break
                         end
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
+                        bVar6 = not alive
                     end
                 end
                 ::LAB_00dcec33::
@@ -438,7 +435,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local bVar6, iVar3, pCVar2, pThing, piVar1
+    local bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1, u_stk_c
     -- TODO(native): GetName is not a ForgeFSE binding
     piVar1 = me:GetName()
     if piVar1 == nil then
@@ -451,8 +448,8 @@ function Init(quest, me)
         end
     else
         iVar3 = ((piVar1 == "BanditTeamMember") and 0 or 1)
-        -- TODO(native): cStack_11 = '\x01' - (iVar3 != 0);
-        if cStack_11 ~= 0 then return end  -- TODO(native): goto LAB_00dce00a
+        c_stk_11 = '\x01' - (iVar3 ~= 0)
+        if c_stk_11 ~= 0 then return end  -- TODO(native): goto LAB_00dce00a
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     ::LAB_00dcdf96::
@@ -489,12 +486,14 @@ function Init(quest, me)
     __native_entity_state:SetStateInt("PreviousAIState", 2)
     __native_entity_state:SetStateInt("MemberState", 0)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_0"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_0")) + 1)
+    u_stk_c = 0
     __native_entity_state:SetStateThing("ThingToPatrolTo", nil)
     if nil ~= nil then
         -- TODO(native): *piStack_8 = *piStack_8 + -1;
         if *0x0 == 0 then
         end
     end
+    u_stk_c = 0
 end
 
 function OnPersist(quest, context)
@@ -566,11 +565,12 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
             bVar1 = not alive
             uVar4 = extraout_var
             if bVar1 then goto LAB_00dcedc1 end
-            cVar2 = (**(*(*QUESTLIST_Begin("CrateList") + iVar6) + 300))()
-            if cVar2 ~= 0 then
-                iVar5 = *(*QUESTLIST_Begin("CrateList") + iVar6)
-                uVar3 = (**(*native_arg_thing + 4))()
-                cVar2 = quest:IsHeroAllowedHenchmenInRegion(nil --[[missing]])
+            cVar2 = quest:GetStateListAt("CrateList", (iVar6) / 0xc):IsAlive()
+            if cVar2 then
+                -- TODO(native): GetName is not a ForgeFSE binding
+                uVar3 = native_arg_thing:GetName()
+                -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
+                cVar2 = quest:GetStateListAt("CrateList", (iVar6) / 0xc):IsBeingCarriedBy(uVar3)
                 if cVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar1 = not alive
@@ -588,38 +588,28 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
 end
 
 function GetNearestCrateToMe(quest, me)
-    local fVar5, iVar4, uVar1
-    -- TODO(native): local_18 = 1e+07;
-    local piVar2 = QUESTLIST_Begin("CrateList")
+    local fVar5, iVar4, v_stk_14, v_stk_18
+    v_stk_18 = 10000000.0
     local local_c = nil
-    local iVar3 = QUESTLIST_End("CrateList") - *piVar2
+    local iVar3 = (quest:GetStateListCount("CrateList") * 0xc)
     iVar4 = iVar3 >> 0x1f
+    v_stk_14 = 0
     if iVar3 / 0xc + iVar4 ~= iVar4 then
         iVar4 = 0
         repeat
-            fVar5 = (quest:GetDistanceBetweenThings(me, (*piVar2 + iVar4) ^ 2))
-            if fVar5 < local_18 then
-                iVar3 = *QUESTLIST_Begin("CrateList")
-                piVar2 = *(iVar3 + 8 + iVar4)
-                uVar1 = *(iVar3 + 4 + iVar4)
-                if 0x0 ~= piVar2 then
-                    if piVar2 ~= nil then
-                        -- TODO(native): *piVar2 = *piVar2 + 1;
-                    end
-                end
+            fVar5 = (quest:GetDistanceBetweenThings(me, (quest:GetStateListAt("CrateList", (iVar4) / 0xc))) ^ 2)
+            if fVar5 < v_stk_18 then
+                iVar3 = quest:GetStateListRef("CrateList")
+                v_stk_18 = fVar5
+                local_c = quest:GetStateListAt("CrateList", (iVar4) / 0xc)
             end
-            piVar2 = QUESTLIST_Begin("CrateList")
-            -- TODO(native): local_14 = local_14 + 1;
+            v_stk_14 = v_stk_14 + 1
             iVar4 = iVar4 + 0xc
-        until not (local_14 < ((QUESTLIST_End("CrateList") - *piVar2) / 0xc))
+        until not (v_stk_14 < (((quest:GetStateListCount("CrateList") * 0xc)) / 0xc))
     end
-    -- TODO(native): in_stack_00000004[1] = local_c;
-    -- TODO(native): in_stack_00000004[2] = local_c;
-    if piVar2 ~= nil then
-        -- TODO(native): *local_c = *local_c + 1;
-    end
+    local ret_thing = local_c
     local_c = nil
-    return in_stack_00000004
+    return ret_thing
 end
 
 function helper_DCEC50(quest, me, native_arg_param_1)

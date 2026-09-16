@@ -1670,7 +1670,7 @@ class Lifter:
         self.mutable_scalars.update(sequence_assignments)
         if self.native_gotos:
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
-        definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+)\s*=(?!=)', text))
+        definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+)\s*=(?!=)', text))
         if self.lua_labels:
             self.mutable_scalars.update(definitions)
         for line in statements:
@@ -1748,7 +1748,7 @@ class Lifter:
             call = f'{name}({", ".join(lifted)})'
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
-                self.kinds[target] = 'thing' if name.endswith('THING_Get') or name.endswith('LIST_At') else 'number'
+                self.kinds[target] = 'thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') else 'number'
             else:
                 self.emit(call)
             self.calls.append(name)

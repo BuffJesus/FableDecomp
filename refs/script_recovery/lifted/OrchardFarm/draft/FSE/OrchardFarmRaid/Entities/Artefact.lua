@@ -76,8 +76,8 @@ end
 
 function OnPredicateFail(quest, me)
     local cVar1, local_c
-    local p0 = *QUESTLIST_Begin("CrateList")
-    if p0 ~= QUESTLIST_End("CrateList") then
+    local p0 = quest:GetStateListRef("CrateList")
+    if p0 ~= quest:GetStateListEnd("CrateList") then
         while true do
             -- TODO(native): local_c = *(int **)(p0 + 8);
             -- TODO(native): local_c = *(int **)(p0 + 4);
@@ -89,7 +89,7 @@ function OnPredicateFail(quest, me)
             if cVar1 ~= 0 then break end
             local_c = nil
             p0 = p0 + 0xc
-            if p0 == QUESTLIST_End("CrateList") then
+            if p0 == quest:GetStateListEnd("CrateList") then
                 return
             end
         end

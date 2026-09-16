@@ -53,6 +53,34 @@ public class ExportTypedTranslationUnit extends GhidraScript {
     private Map<String, FunctionDefinitionDataType> slotDefs = new HashMap<>();
     private Map<String, FunctionDefinitionDataType> thingDefs = new HashMap<>();
     private int overrides = 0, helpersTyped = 0;
+    // CScriptThing copy constructor (retail 0x4ABE90): `sub esp,0xc; mov ecx,esp; push src; call ctor` builds a
+    // by-value CScriptThing argument in the outgoing area. FSE's typedefs spell those params `CScriptThing *`.
+    private static final long THING_COPY_CTOR = 0x4ABE90L;
+    private int byValueSites = 0;
+    private Map<String, FunctionDefinitionDataType> byValueDefs = new HashMap<>();
+
+    /** A copy of def whose first `count` CScriptThing* parameters become 12-byte by-value structs. */
+    private FunctionDefinitionDataType withByValueThings(FunctionDefinitionDataType def, int count) {
+        String key = def.getName() + "#bv" + count;
+        FunctionDefinitionDataType cached = byValueDefs.get(key);
+        if (cached != null) return cached;
+        FunctionDefinitionDataType copy = new FunctionDefinitionDataType(def.getName() + "_bv" + count);
+        copy.setReturnType(def.getReturnType());
+        ParameterDefinition[] src = def.getArguments();
+        List<ParameterDefinition> params = new ArrayList<>();
+        int left = count;
+        for (ParameterDefinition pd : src) {
+            DataType t = pd.getDataType();
+            boolean thingPtr = t instanceof Pointer && ((Pointer) t).getDataType() == byValue.get("CScriptThing");
+            if (left > 0 && thingPtr && !pd.getName().equals("this")) { params.add(new ParameterDefinitionImpl(pd.getName(), byValue.get("CScriptThing"), null)); left--; }
+            else params.add(pd);
+        }
+        if (left != 0) return null;   // more by-value constructions than CScriptThing* params: leave the site alone
+        copy.setArguments(params.toArray(new ParameterDefinition[0]));
+        try { copy.setCallingConvention(def.getCallingConventionName()); } catch (Exception e) { }
+        byValueDefs.put(key, copy);
+        return copy;
+    }
 
     private DataType type(String name) {
         switch (name) {
@@ -144,8 +172,10 @@ public class ExportTypedTranslationUnit extends GhidraScript {
     private void overrideCalls(Function f) {
         Map<String, String> tags = new HashMap<>();
         tags.put("ECX", THIS);
-        long espDelta = 0, espBeforePushes = 0;
+        long espDelta = 0, espBeforePushes = 0, argStart = -1;
         boolean pushing = false;
+        int byValuePending = 0;
+        Instruction prev = null;
         InstructionIterator ins = currentProgram.getListing().getInstructions(f.getBody(), true);
         while (ins.hasNext()) {
             Instruction i = ins.next();
@@ -153,7 +183,9 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             int n = i.getNumOperands();
             if (mn.equals("PUSH")) {
                 if (!pushing) { espBeforePushes = espDelta; pushing = true; }
+                if (argStart < 0) argStart = espDelta;
                 espDelta += 4;
+                prev = i;
                 continue;
             }
             if (mn.equals("POP") && n == 1) {
@@ -169,7 +201,13 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 Object[] d0 = i.getOpObjects(0), s1 = i.getOpObjects(1);
                 if (d0.length >= 1 && "ESP".equals(regName(d0[0])) && s1.length >= 1 && s1[0] instanceof Scalar) {
                     long v = ((Scalar) s1[0]).getSignedValue();
+                    // `sub esp, N` immediately followed by `mov ecx, esp` reserves a by-value argument slot
+                    Instruction nx = i.getNext();
+                    boolean reserve = mn.equals("SUB") && nx != null && nx.getMnemonicString().equalsIgnoreCase("MOV")
+                        && nx.getNumOperands() == 2 && nx.getOpObjects(1).length == 1 && "ESP".equals(regName(nx.getOpObjects(1)[0]));
+                    if (reserve && argStart < 0) argStart = espDelta;
                     espDelta += mn.equals("SUB") ? v : -v;
+                    prev = i;
                     continue;
                 }
             }
@@ -188,6 +226,11 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         FunctionDefinitionDataType def = null;
                         if (GSIVT.equals(tag)) def = slotDefs.get(key);
                         else if (MEVT.equals(tag)) def = thingDefs.get(key);
+                        if (def != null && byValuePending > 0) {
+                            FunctionDefinitionDataType bv = withByValueThings(def, byValuePending);
+                            if (bv != null) { def = bv; byValueSites++; }
+                            else println("by-value mismatch at " + i.getAddress() + ": " + byValuePending + " constructions for " + def.getName());
+                        }
                         if (def != null) {
                             try { HighFunctionDBUtil.writeOverride(f, i.getAddress(), def); overrides++; }
                             catch (Exception ex) { println("override failed at " + i.getAddress() + ": " + ex); }
@@ -195,9 +238,20 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     }
                 }
                 tags.remove("EAX"); tags.remove("ECX"); tags.remove("EDX");
+                if (target == THING_COPY_CTOR) {
+                    // the copy constructor only pops its own `push src`; the by-value slot stays reserved for the real call
+                    if (pushing) espDelta = espBeforePushes;
+                    pushing = false;
+                    byValuePending++;
+                    prev = i;
+                    continue;
+                }
                 // callee-cleaned conventions pop their arguments; cdecl callers restore ESP themselves
-                if (pushing && !cdeclTargets.contains(target)) espDelta = espBeforePushes;
+                if (!cdeclTargets.contains(target)) { if (argStart >= 0) espDelta = argStart; else if (pushing) espDelta = espBeforePushes; }
                 pushing = false;
+                argStart = -1;
+                byValuePending = 0;
+                prev = i;
                 continue;
             }
             pushing = false;
@@ -282,7 +336,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             try { f.setCallingConvention("__thiscall"); } catch (Exception e) { }
             overrideCalls(f);
         }
-        println("Call-site overrides written: " + overrides);
+        println("Call-site overrides written: " + overrides + " (by-value CScriptThing sites: " + byValueSites + ")");
         DecompInterface decompiler = new DecompInterface();
         decompiler.setSimplificationStyle("decompile");
         decompiler.openProgram(currentProgram);

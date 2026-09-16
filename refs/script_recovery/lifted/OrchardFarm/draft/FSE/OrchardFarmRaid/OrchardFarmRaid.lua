@@ -116,7 +116,7 @@ end
 
 function ProcessGameRulesEvil(quest)
     local resources = quest:RetailResources()
-    local appuStack_9c, appuStack_ac, appuStack_bc, bVar10, bVar4, cStack_c1, cVar1, fStack_14, fVar5, iVar11, pCVar6, pCVar8, pMessage, pPosition, r1, r2, r3, r4
+    local appuStack_9c, appuStack_ac, appuStack_bc, bVar10, bVar4, cVar1, c_stk_c1, fVar5, f_stk_14, iVar11, pCVar6, pCVar8, pMessage, pPosition, r1, r2, r3, r4
     local alive = true
     local function __cleanup_LAB_00dd0b11()
         pCVar6 = 0x0
@@ -147,6 +147,7 @@ function ProcessGameRulesEvil(quest)
     if not bVar4 then
         quest:DisplayQuestInfo(true)
         fVar5 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
+        f_stk_14 = fVar5
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
@@ -187,10 +188,10 @@ function ProcessGameRulesEvil(quest)
                     quest:FixMovieSequenceCamera(true)
                     -- TODO(native): this_00 = *(int **)(this + 0x40);
                     pCVar6 = quest:GetHero()
-                    fStack_14 = (quest:GetDistanceBetweenThings(r3, pCVar6) ^ 2)
+                    f_stk_14 = (quest:GetDistanceBetweenThings(r3, pCVar6) ^ 2)
                     pCVar6 = quest:GetHero()
                     fVar5 = (quest:GetDistanceBetweenThings(appuStack_9c, pCVar6) ^ 2)
-                    if fStack_14 <= fVar5 then
+                    if f_stk_14 <= fVar5 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if not bVar4 then
@@ -245,11 +246,11 @@ function ProcessGameRulesEvil(quest)
                     resources:DestroyActorMap(r2)
                     resources:ReleaseResource(appuStack_ac)
                     resources:ReleaseResource(appuStack_bc)
-                    fVar5 = fStack_14
+                    fVar5 = f_stk_14
                 end
                 pCVar6 = quest:GetHero()
-                cStack_c1 = pCVar6:MsgIsKilledBy("")
-                if cStack_c1 then
+                c_stk_c1 = pCVar6:MsgIsKilledBy("")
+                if c_stk_c1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
@@ -334,7 +335,7 @@ end
 
 function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
-    local aCStack_98, amStack_8c, bVar12, bVar3, cStack_c5, cVar1, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4
+    local aCStack_98, amStack_8c, bVar12, bVar3, cVar1, c_stk_c5, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4, u_stk_b8
     local alive = true
     local function __cleanup_LAB_00dd1728()
         pCVar7 = 0x0
@@ -407,6 +408,7 @@ function ProcessGameRulesGood(quest)
                     quest:MiniMapAddMarker(pCVar5, "HUD_ORB_RED_SMALL")
                     r2 = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
                     r3 = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
+                    u_stk_b8 = 0
                     amStack_8c = resources:NewResource()
                     -- TODO(native): ppuStack_80[0] = 0;
                     resources:TryAcquire(amStack_8c, r1, 4)
@@ -415,7 +417,7 @@ function ProcessGameRulesGood(quest)
                     pCVar5 = quest:GetHero()
                     resources:TryAcquire(puVar10, pCVar5, iVar11)
                     aCStack_98 = resources:NewActorMap()
-                    resources:SetActor(aCStack_98, "HERO", &"")
+                    resources:SetActor(aCStack_98, "HERO", "")
                     resources:SetActor(aCStack_98, "WHISPER", amStack_8c)
                     ppuStack_9c = resources:StartMovie("")
                     quest:StartMovieSequence()
@@ -423,7 +425,7 @@ function ProcessGameRulesGood(quest)
                     quest:FixMovieSequenceCamera(true)
                     -- TODO(native): this_00 = *(int **)(this + 0x40);
                     pCVar5 = quest:GetHero()
-                    -- TODO(native): aCStack_1c[0] = (CCharString)(quest:GetDistanceBetweenThings(uStack_b8, pCVar5) ^ 2);
+                    -- TODO(native): aCStack_1c[0] = (CCharString)(quest:GetDistanceBetweenThings(u_stk_b8, pCVar5) ^ 2);
                     pCVar5 = quest:GetHero()
                     fVar9 = (quest:GetDistanceBetweenThings(auStack_b0 + 4, pCVar5) ^ 2)
                     if aCStack_1c[0] <= fVar9 then
@@ -481,6 +483,7 @@ function ProcessGameRulesGood(quest)
                     resources:DestroyActorMap(aCStack_98)
                     resources:ReleaseResource(amStack_8c)
                     resources:ReleaseResource("")
+                    iVar4 = i_stk_14
                 end
                 native_arg_sequence_1 = false
                 if quest:GetStateInt("CrateCount") == 0 then
@@ -501,8 +504,8 @@ function ProcessGameRulesGood(quest)
                     return
                 end
                 pCVar7 = quest:GetHero()
-                cStack_c5 = pCVar7:MsgIsKilledBy("")
-                if cStack_c5 then
+                c_stk_c5 = pCVar7:MsgIsKilledBy("")
+                if c_stk_c5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -579,7 +582,7 @@ function ProcessGameRulesGood(quest)
                         return
                     end
                     ReplaceQuestCards(quest)
-                    quest:RemoveQuestInfoElement(0)
+                    quest:RemoveQuestInfoElement(u_stk_b8)
                     bVar12 = true
                     pMessage = (this + *(this + 100) * 4 + 0x68)
                     bVar3 = true
@@ -825,13 +828,11 @@ function MakeTeamMemberComment(quest, native_arg_comment_to_make, native_arg_spe
         return extraout_var << 8
     end
     local conversationID = quest:AddNewConversation(nil --[[missing]], (native_arg_comment_to_make ~= 0), false)
-    iVar2 = *piVar1
     pCVar3 = quest:GetHero()
     quest:AddPersonToConversation(conversationID, pCVar3)
-    iVar2 = *piVar1
     local r1 = quest:GetHero()
     pCVar3 = 0x0
-    local p2 = (**(*native_arg_comment_to_make + 0xc))()
+    local p2 = native_arg_comment_to_make:GetDataString()
     local pvVar4 = CCharString__AppendData(&stack0xfffffff0,this + 0x84,p2)
     pvVar4 = CCharString__AppendCString(&uStack_14,pvVar4,p2_00)
     local pLine = CCharString__AppendData(&stack0x00000000,pvVar4,"_")
@@ -848,7 +849,7 @@ function DoMultiplierCutscene(quest)
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
     puStack_38 = resources:NewActorMap()
-    resources:SetActor(puStack_38, "HERO", 0x0)
+    resources:SetActor(puStack_38, "HERO", local_10)
     appuStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -970,7 +971,7 @@ function DoMultiplierCutscene(quest)
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
     resources:DestroyActorMap(pCVar5)
-    resources:ReleaseResource(0x0)
+    resources:ReleaseResource(local_10)
     return extraout_EAX
 end
 

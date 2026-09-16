@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import os
 import sys
 from pathlib import Path
 
@@ -60,6 +61,9 @@ class UnitConverter:
         self.things, self.returning = load_thing_tables(self.manifest, self.slots)
         tu = json.loads(Path(tu_path).read_text(encoding='utf-8-sig'))
         self.by_address = {f['address'].lower(): f for f in tu['functions']}
+        self.code_range = tuple(int(a, 16) for a in tu['range']) if tu.get('range') else None
+        self.hidden_thing_returns = {int(f['address'], 16) for f in tu['functions']
+                                     if re.search(r'\*in_stack_\w+ = &PTR_\w*_01238c8c;', f.get('decompile') or '')}
         self.checker = LuaSyntaxChecker()
         self.flat_control = flat_control
 
@@ -118,6 +122,8 @@ class UnitConverter:
                     lifter.helper_parameters[helper] = [p['lua'] for p in signatures[helper]['parameters']]
                     if signatures[helper]['returnKind']:
                         lifter.helper_return_kinds[helper] = signatures[helper]['returnKind']
+                    if int(address, 16) in self.hidden_thing_returns:
+                        lifter.helper_return_kinds[helper] = 'thing'
             relative = f'FSE/{package}/Entities/{owner}.lua' if entity else f'FSE/{package}/{package}.lua'
             chunks = [f'-- Generated native draft: {owner}. Review coverage report before use.',
                       '-- Registration remains disabled until the package is verified.', '']
@@ -164,8 +170,12 @@ class UnitConverter:
                 spec_l.resolve_string = self.rdata.string_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
+                spec_l.hidden_thing_returns = self.hidden_thing_returns
+                spec_l.code_range = self.code_range
                 lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature), spec_l)
                 source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)))
+                if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):
+                    print(f'===== LOWERED {owner}.{name}', source, sep='\n', file=sys.stderr)
                 if name == 'OnPersist':
                     body, _, calls = lift_persist(source, 'quest')
                     todo, params = [], 'quest, context'
@@ -233,6 +243,8 @@ class UnitConverter:
                     shared_lifter.helper_parameters[helper] = [p['lua'] for p in sig['parameters']]
                     if sig['returnKind']:
                         shared_lifter.helper_return_kinds[helper] = sig['returnKind']
+                    if int(address, 16) in self.hidden_thing_returns:
+                        shared_lifter.helper_return_kinds[helper] = 'thing'
                 kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES else 'unknown' for p in signature['parameters']}
                 body = shared_lifter.lift(name, source, native_function=fn, parameters=kinds)
                 params = 'quest, me' + ''.join(', ' + p['lua'] for p in signature['parameters'])

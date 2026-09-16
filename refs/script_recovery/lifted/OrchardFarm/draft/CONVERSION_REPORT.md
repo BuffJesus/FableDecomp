@@ -21,18 +21,18 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_OrchardFarmRaid | Artefact | Main | 0x00dcdc50 | True | 10 |
 | Q_OrchardFarmRaid | Artefact | Init | 0x00dcfa10 | True | 1 |
 | Q_OrchardFarmRaid | Artefact | OnPersist | 0x00cdebc0 | True | 0 |
-| Q_OrchardFarmRaid | Artefact | OnPredicateFail | 0x00dcf920 | False | 6 |
+| Q_OrchardFarmRaid | Artefact | OnPredicateFail | 0x00dcf920 | True | 6 |
 | Q_OrchardFarmRaid | OrchardFarmWhisper | Main | 0x00dcf0b0 | False | 4 |
-| Q_OrchardFarmRaid | OrchardFarmWhisper | Init | 0x00dcf000 | False | 2 |
+| Q_OrchardFarmRaid | OrchardFarmWhisper | Init | 0x00dcf000 | True | 2 |
 | Q_OrchardFarmRaid | OrchardFarmWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_OrchardFarmRaid | OrchardFarmWhisper | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_OrchardFarmRaid | CrateTeamMember | Main | 0x00dce230 | False | 35 |
-| Q_OrchardFarmRaid | CrateTeamMember | Init | 0x00dcdf60 | False | 8 |
+| Q_OrchardFarmRaid | CrateTeamMember | Main | 0x00dce230 | False | 27 |
+| Q_OrchardFarmRaid | CrateTeamMember | Init | 0x00dcdf60 | False | 7 |
 | Q_OrchardFarmRaid | CrateTeamMember | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_OrchardFarmRaid | CrateTeamMember | OnPredicateFail | 0x00dcded0 | True | 3 |
 | Q_OrchardFarmRaid | CrateTeamMember | GoOnPatrol | 0x00dcec70 | True | 2 |
-| Q_OrchardFarmRaid | CrateTeamMember | IsThingCarryingCrate | 0x00dced10 | False | 1 |
-| Q_OrchardFarmRaid | CrateTeamMember | GetNearestCrateToMe | 0x00dcedf0 | False | 6 |
+| Q_OrchardFarmRaid | CrateTeamMember | IsThingCarryingCrate | 0x00dced10 | True | 2 |
+| Q_OrchardFarmRaid | CrateTeamMember | GetNearestCrateToMe | 0x00dcedf0 | True | 0 |
 | Q_OrchardFarmRaid | CrateTeamMember | helper_DCEC50 | 0x00dcec50 | True | 4 |
 | Q_OrchardFarmRaid | FarmRearEntrance | Main | 0x00dcf4c0 | True | 0 |
 | Q_OrchardFarmRaid | FarmRearEntrance | Init | 0x00dcf480 | True | 0 |
@@ -51,4 +51,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_OrchardFarmRaidGood | Q_OrchardFarmRaidGood | Main | 0x00dd2390 | True | 0 |
 | Q_OrchardFarmRaidGood | Q_OrchardFarmRaidGood | Init | 0x00dd23a0 | True | 0 |
 
-Summary: `{"owners": 10, "functions": 46, "missing": 2, "functionSyntaxPassed": 33, "fileSyntaxPassed": 5, "fileSyntaxChecked": 11, "todo": 191}`
+Summary: `{"owners": 10, "functions": 46, "missing": 2, "functionSyntaxPassed": 37, "fileSyntaxPassed": 6, "fileSyntaxChecked": 11, "todo": 177}`
