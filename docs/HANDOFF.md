@@ -18,7 +18,10 @@ provenance tracker, ego_r signature param types, CCharString concat/members/arra
 condition trees (`native_condition_tree.py`), goto-only regions (`native_cleanup_regions.py`), stack colours (BGRA→{R,G,B,A}),
 bool return idioms. FSE typedef evidence: GSI slots 0xcc4 SetCombatNearbyBreakOffRange / 0xcd0 SetStealStealableItems take
 CScriptThing BY VALUE (FSE declares `CScriptThing *`) — tell Aeon.
-Next: readable pass for Orchard (like `build_readable_new_oakvale.py`), NoviCompatibility bindings per
+Readable pass DONE (generic): `python tools/script_recovery/build_readable_unit.py --unit orchard_farm` →
+`refs/script_recovery/lifted/OrchardFarm/readable` (12 files, all compile, READABLE_REPORT.json with reversible local maps;
+folds: termination idiom, list arithmetic, byte indices, dead stores, constant guards, colours, decimal literals).
+Next: NoviCompatibility bindings per
 `refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md` / `docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md`, in-game test, ship with the Oakvale zip.
 Known: `test_watch_barrels_loop.py` pre-existing failure. Journal: journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md (night section).
 

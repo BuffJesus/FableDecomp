@@ -148,3 +148,15 @@ express the condition (gate-safe). Goto-only regions (constant-false guard + lab
 Remaining 133 diagnostics: 68 informational (label/goto/cleanup-verify), the rest single shapes (`CCharString__AssignFromWide`
 members, `std::map` cutscene actor maps in the cutscene helpers, `CreateCreature`/`EntityFollowThing` missing operands,
 `GetName/IsBeingCarriedBy/SetDataString` not FSE bindings — already in the API appendix).
+
+## Readable pass (generic) — `build_readable_unit.py`
+Draft → `lifted/OrchardFarm/readable`: per-function folds run before and after `readable_lua.readable_source`
+(role names, reused-temporary splitting, literal inlining): scheduler-termination idiom → `if quest:IsActiveThreadTerminating() then`,
+`(count*0xc)/0xc` and the signed-division count test → `count`, byte-stepped loop indices → element indices,
+`return extraout_EAX` → `return`, dead literal/nil stores and `thing = nil` releases before returns, constant-false guards,
+`((cond) and 0 or 1) == 0` → `cond`, EH flag init, empty ifs, BGRA colours, small hex → decimal, unused declarations.
+Converter fixes surfaced by the pass: hidden-return slot names must not be renamed (`GetThingWithScriptName((CScriptThing *)auStack_1c, …)`),
+Ghidra reuses a stack slot for an int and then a hidden CScriptThing result (typed cast wins), lowered accessors carry
+their kind for operand placement (`accessor_kinds`, unit converter only), by-address string temporaries are positional,
+typed exports need no temp shedding, GSI vtable temporaries get their own names (`gsivtN`, noise for the lifter).
+Result: Orchard 11/11 draft files + 12/12 readable files compile; 130 diagnostics.
