@@ -158,27 +158,35 @@ RE_CSTR_MASTER_ASSIGN = re.compile(
     r'^\s*CCharString::operator=\s*\(\(CCharString \*\)\(\*\(int \*\)\((?:this|param_1) \+ 0x18\) \+ '
     r'(0x[0-9a-fA-F]+)\),"((?:[^"\\]|\\.)*)"\);\s*$')
 RE_SLOT_ASSIGN = re.compile(r'^\s*((?:[pu]|pu|pC|pi|pf)?[a-zA-Z]*Stack_\w+|local_\w+) = (?:\([^)]*\))?(.+);\s*$')
-RE_LOCAL_ASSIGN = re.compile(r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+) = (.+);\s*$')
+# Ghidra names locals `xVarN`; typed exports (prototype overrides) name them after callee parameters
+# (`pThing`, `thing1`, `string`). Any identifier that is not a keyword/global is a local assignment.
+RE_LOCAL_ASSIGN = re.compile(
+    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+'
+    r'|(?!(?:this|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
+    r'(?![A-Za-z_]*Var\d)(?!\w*Stack_)[A-Za-z_]\w*) = (.+);\s*$')
 RE_ADDR_OF = re.compile(r'^(?:\([^)]*\))?\s*&(\w+|stack0x[0-9a-f]+)$')
 RE_STRING_PARAM = re.compile(r'string|CCharString|char', re.I)
 RE_TRANSFER = re.compile(
     r'CPersistContext::Transfer<(\w+)>\s*\(\s*\w+\s*,\s*"(\w+)"\s*,\s*\([^)]*\)\(\w+ \+ (0x[0-9a-fA-F]+)\)')
 RE_BINDING = re.compile(
-    r'(?P<var>pCVar\d+) = (?:::)?operator_new\(0x1c\);.*?'
+    r'(?P<var>\w+) = (?:::)?operator_new\(0x1c\);.*?'
     r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>[^"]+)",-1\);.*?'
     r'CScriptBase::AddEntityScriptBinding\([^,]+,(?P=var)\);\s*if \([^{]*\) \{[^}]*?_Cons_val[^}]*?\}', re.S)
 RE_CONS_VAL = re.compile(r'std::\s*_Cons_val<[^;]*?;', re.S)
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
+# Evidence-lowering pseudo statements (native_evidence_lowering.py) are emitted as-is with lifted operands.
+RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+)\s*\((.*)\);\s*$')
 RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (' + LABEL_TOKEN + r');\s*$')
 RE_IF_BREAK = re.compile(r'^\s*if\s*\((.*)\)\s*break;\s*$')
 RE_THING_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?CScriptThing::(\w+)\s*\(\s*([^,]+?)\s*(?:,(.*))?\);\s*$')
 RE_THREAD = re.compile(
     r'(\w+) = (?:::)?operator_new\(0x3c\);.*?CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"([^"]+)",-1\);'
     r'.*?CSpawnedFunc<[^>]*>::\s*CSpawnedFunc<[^>]*>\s*\([^;]*;.*?\+ 0x34\) = &?([\w:]+);.*?\}'
+    r'(?:\s*CCharString::CCharString\(\(CCharString \*\)&\w+,&DAT_[0-9a-f]+,-1\);)?'
     r'(?:\s*CGuiVarTransferStruct::Add\([^;]*;)?', re.S)
 RE_GUI_TRANSFER_ADD = re.compile(
-    r'CGuiVarTransferStruct::Add\([^,]+,\s*\(CGuiVarTransferBase \*\)(\w+)\s*\);')
+    r'CGuiVarTransferStruct::Add\([^,]+,\s*(?:\(CGuiVarTransferBase \*\))?(\w+)\s*(?:,\s*\w+)?\);')
 RE_STORE = re.compile(r'^\s*\*\((\w+) \*\)\((?:this|param_1) \+ (0x[0-9a-fA-F]+)\) = ([^;]+);\s*$')
 RE_STORE_IDX = re.compile(r'^\s*(?:this|param_1)\[(0x[0-9a-fA-F]+)\] = (?:\([^)]*\))?([^;]+);\s*$')
 RE_LOAD = re.compile(r'\*\((\w+) \*\)\((?:this|param_1) \+ (0x[0-9a-fA-F]+)\)|(?:this|param_1)\[(0x[0-9a-fA-F]+)\]')
@@ -1731,6 +1739,18 @@ class Lifter:
             self.todo = [t for t in self.todo if not t.startswith("collapse the StartScriptingEntity")]
 
     def statement(self, role: str, line: str) -> None:
+        pseudo = RE_PSEUDO_CALL.match(line)
+        if pseudo:
+            target, name, argtext = pseudo.group(1), pseudo.group(2), pseudo.group(3)
+            lifted = [self.expr(a) for a in self.arguments(argtext)]
+            call = f'{name}({", ".join(lifted)})'
+            if target:
+                self.emit(f'{self.declare(target)} = {call}')
+                self.kinds[target] = 'thing' if name.endswith('THING_Get') or name.endswith('LIST_At') else 'number'
+            else:
+                self.emit(call)
+            self.calls.append(name)
+            return
         stripped = line.strip()
         if not stripped:
             return

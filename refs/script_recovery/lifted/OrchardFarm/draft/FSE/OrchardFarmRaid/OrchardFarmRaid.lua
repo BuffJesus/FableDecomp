@@ -2,126 +2,20 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local pCVar5, pCVar6, piVar1, piVar3, puVar4, uVar2
+    local pCVar5
     local alive = true
-    local bVar8 = puVar4 == nil
-    if bVar8 then
-        puVar4 = 0x0
-    else
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 1;
-    end
-    bVar8 = not bVar8
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if bVar8 then
-    end
+    quest:AddEntityBinding("GuardTeamSpawn", "OrchardFarmRaid/Entities/GuardTeamSpawn")
     local bVar7 = not bVar8 and bVar8
-    if puVar4 == nil then
-        puVar4 = 0x0
-    else
-        bVar7 = bVar7 | 2
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 1;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if (bVar7 & 2) ~= 0 then
-        bVar7 = bVar7 & 0xfd
-    end
-    if puVar4 == nil then
-        puVar4 = 0x0
-    else
-        bVar7 = bVar7 | 4
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 1;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if (bVar7 & 4) ~= 0 then
-        bVar7 = bVar7 & 0xfb
-    end
-    if puVar4 == nil then
-        puVar4 = 0x0
-    else
-        bVar7 = bVar7 | 8
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 1;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if (bVar7 & 8) ~= 0 then
-        bVar7 = bVar7 & 0xf7
-    end
-    if puVar4 == nil then
-        puVar4 = 0x0
-    else
-        bVar7 = bVar7 | 0x10
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 1;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if (bVar7 & 0x10) ~= 0 then
-        bVar7 = bVar7 & 0xef
-    end
-    if puVar4 == nil then
-        puVar4 = 0x0
-    else
-        bVar7 = bVar7 | 0x20
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 1;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if (bVar7 & 0x20) ~= 0 then
-        bVar7 = bVar7 & 0xdf
-    end
-    if puVar4 == nil then
-        puVar4 = 0x0
-    else
-        bVar7 = bVar7 | 0x40
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 0;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if (bVar7 & 0x40) ~= 0 then
-        bVar7 = bVar7 & 0xbf
-    end
-    if puVar4 == nil then
-        puVar4 = 0x0
-    else
-        bVar7 = bVar7 | 0x80
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 0;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if bVar7 < 0 then
-    end
-    bVar8 = puVar4 == nil
-    if bVar8 then
-        puVar4 = 0x0
-    else
-        -- TODO(native): CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);
-        -- TODO(native): puVar4[2] = this;
-        -- TODO(native): *(undefined1 *)(puVar4 + 5) = 1;
-        -- TODO(native): puVar4[6] = 0;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);
-    if not bVar8 then
-    end
+    quest:AddEntityBinding("BanditTeamSpawn", "OrchardFarmRaid/Entities/BanditTeamSpawn")
+    quest:AddEntityBinding("Artefact", "OrchardFarmRaid/Entities/Artefact")
+    quest:AddEntityBinding("OrchardFarmWhisper", "OrchardFarmRaid/Entities/OrchardFarmWhisper")
+    quest:AddEntityBinding("GuardTeamMember", "OrchardFarmRaid/Entities/GuardTeamMember")
+    quest:AddEntityBinding("BanditTeamMember", "OrchardFarmRaid/Entities/BanditTeamMember")
+    quest:AddEntityBinding("FarmRearEntrance", "OrchardFarmRaid/Entities/FarmRearEntrance")
+    quest:AddEntityBinding("M_WhisperFarmRaidIntro", "OrchardFarmRaid/Entities/M_WhisperFarmRaidIntro")
+    quest:AddEntityBinding("MK_OFI_GWLL_WHIS2", "OrchardFarmRaid/Entities/MK_OFI_GWLL_WHIS2")
     quest:FinalizeEntityBindings()
-    bVar8 = quest:IsQuestActive("Q_OrchardFarm_Barricade")
+    local bVar8 = quest:IsQuestActive("Q_OrchardFarm_Barricade")
     if not bVar8 then
         quest:ActivateQuest("Q_OrchardFarm_Barricade")
     end
@@ -132,67 +26,20 @@ function Main(quest)
             bVar8 = not alive
             if not bVar8 then
                 pCVar5 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
-                piVar1 = *&*(pCVar5 + 0x8)
-                uVar2 = *&*(pCVar5 + 0x4)
-                piVar3 = *(this + 0xf8)
-                if piVar3 ~= piVar1 then
-                    if piVar3 ~= nil then
-                        -- TODO(native): *piVar3 = *piVar3 + -1;
-                        if **(this + 0xf8) == 0 then
-                            -- TODO(native): (*(code *)(*(int **)(this + 0xf8))[1])();
-                        end
-                    end
-                    -- TODO(native): name field 0xf4 (undefined4)
-                    quest:SetStateInt("self_0xf4", uVar2)
-                    -- TODO(native): *(int **)(this + 0xf8) = piVar1;
-                    if piVar1 ~= nil then
-                        -- TODO(native): *piVar1 = *piVar1 + 1;
-                    end
-                end
+                quest:SetStateThing("Teams_1_CrateDropPos", pCVar5)
                 pCVar5 = quest:GetThingWithScriptName("GuardTeamCrateDrop")
-                piVar1 = *&*(pCVar5 + 0x8)
-                uVar2 = *&*(pCVar5 + 0x4)
-                piVar3 = *(this + 0xb8)
-                if piVar3 ~= piVar1 then
-                    if piVar3 ~= nil then
-                        -- TODO(native): *piVar3 = *piVar3 + -1;
-                        if **(this + 0xb8) == 0 then
-                            -- TODO(native): (*(code *)(*(int **)(this + 0xb8))[1])();
-                        end
-                    end
-                    -- TODO(native): name field 0xb4 (undefined4)
-                    quest:SetStateInt("self_0xb4", uVar2)
-                    -- TODO(native): *(int **)(this + 0xb8) = piVar1;
-                    if piVar1 ~= nil then
-                        -- TODO(native): *piVar1 = *piVar1 + 1;
-                    end
-                end
+                quest:SetStateThing("Teams_0_CrateDropPos", pCVar5)
                 if quest:GetStateInt("HeroTeam") == 1 then
                     quest:CreateThread("ProcessGameRulesEvil")  -- native thread body 0x00DD03D0: lift it as function ProcessGameRulesEvil(quest)
-                    -- TODO(native): CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);
-                    -- TODO(native): CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName);
                 else
                     quest:CreateThread("ProcessGameRulesGood")  -- native thread body 0x00DD0F60: lift it as function ProcessGameRulesGood(quest)
-                    -- TODO(native): CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);
-                    -- TODO(native): CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName_00);
                 end
                 if not bVar8 then
                 end
                 quest:CreateThread("DoCutsceneIfRequired")  -- native thread body 0x00DCFA60: lift it as function DoCutsceneIfRequired(quest)
-                -- TODO(native): CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);
-                -- TODO(native): CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName_01);
                 if not bVar8 then
                 end
-                -- TODO(native): bVar8 = pCVar6 == (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;
-                if bVar8 then
-                    pCVar6 = 0x0
-                else
-                    -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(pCVar6,&local_14,0);
-                    -- TODO(native): *(code **)(pCVar6 + 0x34) = CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation;
-                    -- TODO(native): *(CQ_GuildTrainingScript **)(pCVar6 + 0x38) = this;
-                end
-                -- TODO(native): CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);
-                -- TODO(native): CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName_02);
+                quest:CreateThread("WatchForExternalScriptDeactivation")  -- native thread body CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation: lift it as function WatchForExternalScriptDeactivation(quest)
                 if not bVar8 then
                 end
             end
@@ -233,12 +80,12 @@ function Init(quest)
     quest:SetStateBool("ShownCombatFlourishTutorial", false)
     quest:SetStateBool("WhisperInCutscene", false)
     quest:SetStateInt("Teams_1_EnemyTeam", 0)
-    -- TODO(native): quest:SetStateThing("Teams_0_TeamCrateCarrier", nil);
-    -- TODO(native): quest:SetStateThing("Teams_1_TeamCrateCarrier", nil);
-    -- TODO(native): CCharString__AssignFromWide(L"PROBLEM: Tell Ben problem with Orchard Farm fail reasons");
-    -- TODO(native): CCharString__AssignFromWide(L"TEXT_QST_051_FAILED_HERO_KILLED");
-    -- TODO(native): CCharString__AssignFromWide(L"TEXT_QST_051_FAILED_CRATES_STOLEN");
-    -- TODO(native): CCharString__AssignFromWide(L"TEXT_QST_051_FAILED_TEAM_KILLED");
+    quest:SetStateThing("Teams_0_TeamCrateCarrier", nil)
+    quest:SetStateThing("Teams_1_TeamCrateCarrier", nil)
+    -- TODO(native): CCharString__AssignFromWide(this + 0x68,0x12db0c8);
+    -- TODO(native): CCharString__AssignFromWide(this + 0x6c,0x12db088);
+    -- TODO(native): CCharString__AssignFromWide(this + 0x70,0x12db040);
+    -- TODO(native): CCharString__AssignFromWide(this + 0x74,0x12db000);
     local bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidEvil")
     if bVar2 then
         quest:SetStateInt("HeroTeam", 1)
@@ -247,7 +94,6 @@ function Init(quest)
         -- TODO(native): CCharString::CCharString((CCharString *)&local_1c,&DAT_0122d70e,-1);
         quest:SetQuestCardObjective("Q_OrchardFarmRaidEvil", "TEXT_QUEST_PROTECT_FARM_EVIL_OBJECTIVE_01", "HeroGuildComplexInside", nil --[[missing]])
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", false)
-        -- TODO(native): string = "GreatwoodEntrance";
     else
         bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidGood")
         if not bVar2 then
@@ -257,25 +103,18 @@ function Init(quest)
         -- TODO(native): name field 0x84 (CCharString)
         quest:SetStateString("self_0x84", "TEXT_QST_052_")
         -- TODO(native): CCharString::CCharString((CCharString *)&CStack_20,&DAT_0122d70e,-1);
-        quest:SetQuestCardObjective("Q_OrchardFarmRaidGood", "TEXT_QUEST_PROTECT_FARM_OBJECTIVE_01", "Greatwood", nil --[[missing]])
+        quest:SetQuestCardObjective("Q_OrchardFarmRaidGood", "TEXT_QUEST_PROTECT_FARM_OBJECTIVE_01", "Greatwood", "GreatwoodEntrance")
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodEntrance", false)
-        -- TODO(native): string = "GreatwoodLake";
     end
-    -- TODO(native): CCharString::CCharString((CCharString *)&local_1c,string,-1);
-    quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", nil --[[missing]], true)
+    quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", true)
 end
 
 function OnPersist(quest, context)
-    local shownCombatMultiplierTutorial = quest:GetStateBool("ShownCombatMultiplierTutorial") or false
-    shownCombatMultiplierTutorial = quest:PersistTransferBool(context, "ShownCombatMultiplierTutorial", shownCombatMultiplierTutorial)
-    quest:SetStateBool("ShownCombatMultiplierTutorial", shownCombatMultiplierTutorial)
-    local heroMetWhisperBeforeFarm = quest:GetStateBool("HeroMetWhisperBeforeFarm") or false
-    heroMetWhisperBeforeFarm = quest:PersistTransferBool(context, "HeroMetWhisperBeforeFarm", heroMetWhisperBeforeFarm)
-    quest:SetStateBool("HeroMetWhisperBeforeFarm", heroMetWhisperBeforeFarm)
 end
 
 function ProcessGameRulesEvil(quest)
-    local bVar4, cStack_c1, cVar1, fVar5, pCVar6, pCVar8, pPosition, r1, r2, r3, r4, uStack_138, uStack_f0
+    local resources = quest:RetailResources()
+    local bVar4, cStack_c1, cVar1, id, pCVar5, pCVar7, pMessage, pPosition, r1, r2, r3, r4, uStack_138, uStack_b0, uStack_f0
     local alive = true
     cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
@@ -291,12 +130,12 @@ function ProcessGameRulesEvil(quest)
     bVar4 = not alive
     if not bVar4 then
         quest:DisplayQuestInfo(true)
-        fVar5 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
+        id = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
             repeat
-                quest:UpdateQuestInfoCounter(fVar5, 3 - quest:GetStateInt("CrateCount"), -1)
+                quest:UpdateQuestInfoCounter(id, 3 - quest:GetStateInt("CrateCount"), -1)
                 if (quest:GetStateInt("CrateCount") == 0) and (not quest:GetStateBool("WhisperSpawned")) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -307,44 +146,44 @@ function ProcessGameRulesEvil(quest)
                     quest:SetStateBool("WhisperSpawned", true)
                     -- TODO(native): CCharString::CCharString((CCharString *)&CStack_54,&DAT_0122d70e,-1);
                     quest:SetQuestCardObjective("Q_OrchardFarmRaidEvil", "TEXT_QUEST_PROTECT_FARM_EVIL_OBJECTIVE_02", "Greatwood", nil --[[missing]])
-                    pCVar6 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM")
+                    pCVar5 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM")
                     bVar4 = false
-                    pCVar8 = "OrchardFarmWhisper"
-                    pPosition = pCVar6:GetPos()
-                    r1 = quest:CreateCreature(pCVar8, pPosition, "GuardTeamSpawn")
-                    quest:RemoveQuestInfoElement(fVar5)
+                    pCVar7 = "OrchardFarmWhisper"
+                    pPosition = pCVar5:GetPos()
+                    r1 = quest:CreateCreature(pCVar7, pPosition, "GuardTeamSpawn")
+                    quest:RemoveQuestInfoElement(id)
                     quest:MiniMapAddMarker(r1, "HUD_ORB_RED_SMALL")
                     quest:EntityAttachToScript(r1, "Q_OrchardFarmRaid")
                     r2 = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
                     r3 = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
                     -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: (CScriptThing *)auStack_64,appuStack_ac,4
-                    -- TODO(native): ePriority = 4;
-                    -- TODO(native): pppuVar10 = &ppuStack_bc;
-                    pCVar6 = quest:GetHero()
-                    -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: pCVar6,pppuVar10,ePriority
+                    -- TODO(native): pppuVar9 = &ppuStack_bc;
+                    pCVar5 = quest:GetHero()
+                    -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: pCVar5,pppuVar9,ePriority
                     -- TODO(native): StdMap_Construct_API(amStack_80);
                     -- TODO(native): CCharString::CCharString((CCharString *)&CStack_50,&DAT_01255174,-1);
-                    -- TODO(native): pppuVar10 = &ppuStack_bc;
-                    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_80,&CStack_50);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pppuVar10);
-                    -- TODO(native): pppuVar10 = appuStack_ac;
-                    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_80,&CStack_4c);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pppuVar10);
+                    -- TODO(native): pppuVar9 = &ppuStack_bc;
+                    -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_80,&CStack_50);
+                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pppuVar9);
+                    -- TODO(native): pppuVar9 = appuStack_ac;
+                    -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_80,&CStack_4c);
+                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pppuVar9);
                     -- TODO(native): CCharString::CCharString((CCharString *)&CStack_24,&DAT_0122d70e,-1);
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(false)
                     quest:FixMovieSequenceCamera(true)
                     -- TODO(native): this_00 = *(int **)(this + 0x40);
-                    pCVar6 = (**(*this_00 + 0x118))(this_00)
-                    -- TODO(native): fStack_14 = GetSquaredDistanceBetweenThings(aCStack_78,(CScriptThing *)pCVar6);
-                    pCVar6 = (**(*this_00 + 0x118))(this_00)
-                    fVar5 = GetSquaredDistanceBetweenThings(&uStack_90,pCVar6)
-                    if fStack_14 <= fVar5 then
+                    -- TODO(native): (**(code **)(*this_00 + 0x118))(this_00);
+                    -- TODO(native): GetSquaredDistanceBetweenThings(auStack_78);
+                    -- TODO(native): fStack_14 = (float)extraout_ST0;
+                    -- TODO(native): (**(code **)(*this_00 + 0x118))(this_00);
+                    -- TODO(native): GetSquaredDistanceBetweenThings(&uStack_90);
+                    if fStack_14 <= extraout_ST0_00 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if not bVar4 then
                             -- TODO(native): RunCutsceneMacro_Func(aCStack_30,&CStack_8c.field_0x8,(void *)0x0,(void *)0x0,false,true);
-                            pCVar8 = "CS_ORCHARD_EVIL_WHISPER_BACK"
+                            pCVar7 = "CS_ORCHARD_EVIL_WHISPER_BACK"
                             goto LAB_00dd08eb
                         end
                         -- TODO(native): goto LAB_00dd0b1f
@@ -353,15 +192,15 @@ function ProcessGameRulesEvil(quest)
                     bVar4 = not alive
                     if bVar4 then
                         -- LAB_00dd0b11: (native jump target)
-                        pCVar6 = 0x0
-                        quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
+                        pCVar5 = 0x0
+                        quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
                         -- LAB_00dd0b2b: (native jump target)
                         -- TODO(native): StdMap_Destroy_API(&CStack_8c.field_0x4);
                         return
                     end
                     -- TODO(native): CCharString::CCharString((CCharString *)(auStack_64 + 8),"CS_ORCHARD_EVIL_WHISPER_FRONT",-1);
                     -- TODO(native): RunCutsceneMacro_Func((CCharString *)(auStack_64 + 8),&CStack_8c.field_0x8,(void *)0x0,(void *)0x0 ,false,true);
-                    pCVar8 = (r1 + 8)
+                    pCVar7 = (r1 + 8)
                     ::LAB_00dd08eb::
                     quest:FixMovieSequenceCamera(false)
                     if not quest:GetStateBool("ShownCombatFlourishTutorial") then
@@ -386,8 +225,8 @@ function ProcessGameRulesEvil(quest)
                                 if not bVar4 then goto LAB_00dd0977 end
                             end
                             -- LAB_00dd0b1f: (native jump target)
-                            pCVar6 = 0x0
-                            quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
+                            pCVar5 = 0x0
+                            quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
                             -- TODO(native): goto LAB_00dd0b2b
                         end
                         ::LAB_00dd0977::
@@ -398,8 +237,8 @@ function ProcessGameRulesEvil(quest)
                     -- TODO(native): StdMap_Destroy_API(amStack_80);
                 end
                 -- TODO(native): CCharString::CCharString(aCStack_3c,&DAT_0122d70e,-1);
-                pCVar6 = quest:GetHero()
-                cStack_c1 = pCVar6:MsgIsKilledBy("CS_ORCHARD_EVIL_WHISPER_BACK")
+                pCVar5 = quest:GetHero()
+                cStack_c1 = pCVar5:MsgIsKilledBy("CS_ORCHARD_EVIL_WHISPER_BACK")
                 if cStack_c1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -414,31 +253,28 @@ function ProcessGameRulesEvil(quest)
                     if bVar4 then
                         return
                     end
-                    quest:GiveHeroExperience(0)
+                    quest:GiveHeroExperience(4)
                     r4 = quest:GetThingWithScriptName("OrchardFarmWhisper")
                     -- TODO(native): appuStack_ac[0] = (undefined **)0x0;
                     uStack_f0 = quest:GetHero()
                     -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
                     -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-                    -- TODO(native): StdMap_Construct_API(&uStack_b0);
-                    -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff14,&DAT_01255174,-1);
-                    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&uStack_b0,(CCharString *)&stack0xffffff14);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,puVar9);
-                    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&uStack_b0,(CCharString *)&stack0xffffff14);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,puVar9);
+                    uStack_b0 = resources:NewActorMap()
+                    resources:SetActor(uStack_b0, "HERO", &stack0xffffff30)
+                    resources:SetActor(uStack_b0, "WHISPER", &stack0xffffff20)
                     -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff14,&DAT_0122d70e,-1);
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): RunCutsceneMacro_Func(&CStack_f8,&ppuStack_bc,(void *)0x0,(void *)0x0,false,true);
+                    resources:RunMacro("CS_ORCHARD_EVIL_OUTRO", 0x0, false, true)
                     quest:PauseAllNonScriptedEntities(false)
                     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&CStack_c8);
-                    -- TODO(native): StdMap_Destroy_API(&CStack_c0);
+                    resources:DestroyActorMap(CStack_c0)
                     -- TODO(native): CSubtitleRenderer::SetText(0x55);
                     quest:GiveHeroMorality(4)
                     quest:SetMasterGameState("OrchardFarmRaidLastCompleted", 1)
                     quest:RemoveQuestInfoElement(0x0)
-                    pCVar6 = quest:GetThingWithScriptName("OFFarmhouseDoor")
-                    quest:SetThingAsUsable(pCVar6, false)
+                    pCVar5 = quest:GetThingWithScriptName("OFFarmhouseDoor")
+                    quest:SetThingAsUsable(pCVar5, false)
                     uStack_138 = quest:GetActiveQuestName()
                     quest:SetQuestAsCompleted(uStack_138, false, false, false)
                     quest:SetQuestAsCompleted("Q_OrchardFarmRaidEvil", true, false, nil --[[missing]])
@@ -459,11 +295,10 @@ function ProcessGameRulesEvil(quest)
                     end
                     ReplaceQuestCards(quest)
                     quest:RemoveQuestInfoElement(nil --[[missing]])
-                    -- TODO(native): b2 = true;
-                    -- TODO(native): pMessage = (CWideString *)(this + *(int *)(this + 100) * 4 + 0x68);
+                    pMessage = (this + *(this + 100) * 4 + 0x68)
                     bVar4 = true
-                    pCVar8 = quest:GetActiveQuestName()
-                    quest:SetQuestAsFailed(pCVar8, bVar4, "Q_OrchardFarmRaid", pMessage)
+                    pCVar7 = quest:GetActiveQuestName()
+                    quest:SetQuestAsFailed(pCVar7, bVar4, "Q_OrchardFarmRaid", (pMessage ~= 0))
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidEvil", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
                 end
@@ -479,7 +314,8 @@ function ProcessGameRulesEvil(quest)
 end
 
 function ProcessGameRulesGood(quest)
-    local bVar3, cStack_c5, cVar1, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pPosition, puVar10, r1, r2, r3, r4, r5, uStack_13c
+    local resources = quest:RetailResources()
+    local bVar3, cStack_c5, cVar1, iVar10, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, puVar9, r1, r2, r3, r4, r5, uStack_13c
     local alive = true
     cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
@@ -543,14 +379,13 @@ function ProcessGameRulesGood(quest)
                     r3 = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
                     -- TODO(native): auStack_74[0] = 0;
                     -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: &CStack_6c,appuStack_80,4
-                    iVar11 = 4
+                    iVar10 = 4
                     pCVar5 = quest:GetHero()
-                    -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: pCVar5,puVar10,iVar11
+                    -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: pCVar5,puVar9,iVar10
                     -- TODO(native): StdMap_Construct_API(amStack_8c);
                     -- TODO(native): CCharString::CCharString((CCharString *)&CStack_38,&DAT_01255174,-1);
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_8c,&CStack_38);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);
-                    -- TODO(native): pOther_00 = appuStack_80;
+                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar9);
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_8c,&CStack_50);
                     -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);
                     -- TODO(native): CCharString::CCharString((CCharString *)&CStack_60,&DAT_0122d70e,-1);
@@ -558,11 +393,12 @@ function ProcessGameRulesGood(quest)
                     quest:PauseAllNonScriptedEntities(false)
                     quest:FixMovieSequenceCamera(true)
                     -- TODO(native): this_00 = *(int **)(this + 0x40);
-                    pCVar5 = (**(*this_00 + 0x118))(this_00)
-                    -- TODO(native): aCStack_1c[0] = (CCharString) GetSquaredDistanceBetweenThings((CScriptThing *)&uStack_b8,(CScriptThing *)pCVar5);
-                    pCVar5 = (**(*this_00 + 0x118))(this_00)
-                    fVar9 = GetSquaredDistanceBetweenThings(aCStack_ac,pCVar5)
-                    if aCStack_1c[0] <= fVar9 then
+                    -- TODO(native): (**(code **)(*this_00 + 0x118))(this_00);
+                    -- TODO(native): GetSquaredDistanceBetweenThings(&uStack_b8);
+                    -- TODO(native): aCStack_1c[0] = (CCharString)(float)extraout_ST0;
+                    -- TODO(native): (**(code **)(*this_00 + 0x118))(this_00);
+                    -- TODO(native): GetSquaredDistanceBetweenThings(auStack_ac);
+                    if aCStack_1c[0] <= extraout_ST0_00 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if not bVar3 then
@@ -579,7 +415,7 @@ function ProcessGameRulesGood(quest)
                         pCVar7 = 0x0
                         quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))
                         -- LAB_00dd1742: (native jump target)
-                        -- TODO(native): StdMap_Destroy_API(&uStack_94);
+                        resources:DestroyActorMap(0)
                         return
                     end
                     -- TODO(native): RunCutsceneMacro_Func(aCStack_4c,&uStack_90,(void *)0x0,(void *)0x0,false,true);
@@ -654,7 +490,7 @@ function ProcessGameRulesGood(quest)
                     if bVar3 then
                         return
                     end
-                    quest:GiveHeroExperience(iVar11)
+                    quest:GiveHeroExperience(iVar10)
                     r4 = quest:GetThingWithScriptName("OrchardFarmWhisper")
                     -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_cc);
                     -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)(auStack_a8 + 4));
@@ -665,17 +501,16 @@ function ProcessGameRulesGood(quest)
                     -- TODO(native): StdMap_Construct_API(amStack_c8);
                     -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff10,&DAT_01255174,-1);
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_c8,(CCharString *)&stack0xffffff10);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);
-                    -- TODO(native): pOther = &uStack_bc;
+                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar9);
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_c8,(CCharString *)&stack0xffffff10);
                     -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther);
                     -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_a0);
                     -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff10,&DAT_0122d70e,-1);
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(4)
-                    -- TODO(native): RunCutsceneMacro_Func(&CStack_fc,&stack0xffffff2c,(void *)0x0,(void *)0x0,false,true);
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): StdMap_Destroy_API(&stack0xffffff28);
+                    resources:RunMacro("CS_ORCHARD_GOOD_OUTRO", stack0xffffff2c, false, true)
+                    quest:PauseAllNonScriptedEntities(4)
+                    resources:DestroyActorMap(stack0xffffff28)
                     -- TODO(native): CSubtitleRenderer::SetText(0x50);
                     -- TODO(native): pCVar7 = *(CScriptThing **)(DAT_0143e90c + 0xd9c);
                     quest:GiveHeroMorality(0)
@@ -692,7 +527,7 @@ function ProcessGameRulesGood(quest)
                     quest:SetMasterGameState("OrchardFarmRaidLastCompleted", 2)
                     quest:RemoveQuestInfoElement(0)
                     pCVar5 = quest:GetThingWithScriptName("OFFarmhouseDoor")
-                    quest:SetThingAsUsable(pCVar5, nil --[[missing]])
+                    quest:SetThingAsUsable(pCVar5, false)
                     uStack_13c = quest:GetActiveQuestName()
                     quest:SetQuestAsCompleted(uStack_13c, false, false, false)
                     quest:SetQuestAsCompleted("Q_OrchardFarmRaidGood", true, nil --[[missing]], nil --[[missing]])
@@ -715,10 +550,9 @@ function ProcessGameRulesGood(quest)
                     ReplaceQuestCards(quest)
                     quest:RemoveQuestInfoElement(nil --[[missing]])
                     bVar3 = true
-                    -- TODO(native): pMessage = (CWideString *)(this + *(int *)(this + 100) * 4 + 0x68);
-                    -- TODO(native): b1 = (C3DClothPrimitive)0x1;
+                    pMessage = (this + *(this + 100) * 4 + 0x68)
                     pCVar8 = quest:GetActiveQuestName()
-                    quest:SetQuestAsFailed(pCVar8, b1, "CS_ORCHARD_GOOD_OUTRO", pMessage)
+                    quest:SetQuestAsFailed(pCVar8, true, "WHISPER", (pMessage ~= 0))
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidGood", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
                 end
@@ -734,7 +568,8 @@ function ProcessGameRulesGood(quest)
 end
 
 function DoCutsceneIfRequired(quest)
-    local CStack_bc, CStack_e8, bVar2, pCVar3, piVar6, r1, r2, uVar5
+    local resources = quest:RetailResources()
+    local CStack_bc, CStack_e8, bVar2, pCVar3, piStack_88, piVar6, r1, r2, stack0xffffff60, uVar5
     local alive = true
     if quest:GetStateInt("HeroTeam") == 1 then
         alive = not quest:IsActiveThreadTerminating()
@@ -744,16 +579,16 @@ function DoCutsceneIfRequired(quest)
             return
         end
         pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
-        piVar6 = *&*(pCVar3 + 0x8)
-        uVar5 = *&*(pCVar3 + 0x4)
+        piVar6 = *(pCVar3 + 0x8)
+        uVar5 = *(pCVar3 + 0x4)
         if 0x0 == piVar6 then goto LAB_00dcfb65 end
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
         pCVar3 = quest:GetThingWithScriptName("GuardTeamSpawn")
-        piVar6 = *&*(pCVar3 + 0x8)
-        uVar5 = *&*(pCVar3 + 0x4)
+        piVar6 = *(pCVar3 + 0x8)
+        uVar5 = *(pCVar3 + 0x4)
         if 0x0 == piVar6 then goto LAB_00dcfb65 end
     end
     if piVar6 ~= nil then
@@ -781,7 +616,6 @@ function DoCutsceneIfRequired(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
-        -- TODO(native): dist = 10.0;
         pCVar3 = quest:GetHero()
         bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar3, nil --[[missing]], auStack_90)
         if bVar2 then
@@ -805,30 +639,21 @@ function DoCutsceneIfRequired(quest)
                 CStack_e8 = quest:GetHero()
                 -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
                 quest:SheatheHeroWeapons()
-                -- TODO(native): StdMap_Construct_API(&stack0xffffff60);
-                -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_01255174,-1);
-                -- TODO(native): pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xffffff60,(CCharString *)&stack0xffffff28);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pCVar7);
-                -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_012d1f04,-1);
-                -- TODO(native): pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xffffff60,(CCharString *)&stack0xffffff28);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pCVar7);
-                -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_012d1efc,-1);
-                -- TODO(native): pOther = &CStack_7c.field_0x8;
-                -- TODO(native): pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xffffff60,(CCharString *)&stack0xffffff28);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pOther);
-                -- TODO(native): pOther_00 = auStack_54;
-                -- TODO(native): pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xffffff60,(CCharString *)&stack0xffffff28);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pOther_00);
+                stack0xffffff60 = resources:NewActorMap()
+                resources:SetActor(stack0xffffff60, "HERO", &CStack_64)
+                resources:SetActor(stack0xffffff60, "BAN1", &CStack_94)
+                resources:SetActor(stack0xffffff60, "BAN2", pCVar3.field_0x8)
+                resources:SetActor(stack0xffffff60, "GUARD", &auStack_54)
                 -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_84);
                 -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_0122d70e,-1);
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(false)
                 quest:FixMovieSequenceCamera(4)
-                -- TODO(native): RunCutsceneMacro_Func(&CStack_e8,&stack0xffffff50,(void *)0x0,(void *)0x0,false,true);
+                resources:RunMacro("CS_ORCHARD_EVIL_INTRO", stack0xffffff50, false, true)
                 quest:FixMovieSequenceCamera(0x4)
                 pCVar3 = 0x0
                 quest:PauseAllNonScriptedEntities((pCVar3 ~= 0))
-                -- TODO(native): StdMap_Destroy_API(&pCStack_b8);
+                resources:DestroyActorMap(pCStack_b8)
                 quest:KickOffQuestStartScreen("Q_OrchardFarmRaidEvil", false, false)
                 pCVar3 = quest:GetThingWithScriptName("OF_MainGates")
                 quest:OpenDoor(pCVar3)
@@ -841,11 +666,8 @@ function DoCutsceneIfRequired(quest)
                 -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_5c);
                 CStack_bc = quest:GetHero()
                 -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-                -- TODO(native): StdMap_Construct_API(&piStack_88);
-                -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff54,&DAT_01255174,-1);
-                -- TODO(native): pOther_01 = &uStack_68;
-                -- TODO(native): pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&piStack_88,(CCharString *)&stack0xffffff54);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pOther_01);
+                piStack_88 = resources:NewActorMap()
+                resources:SetActor(piStack_88, "HERO", &uStack_68)
                 -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_58);
                 -- TODO(native): CCharString::CCharString((CCharString *)&stack0xffffff54,&DAT_0122d70e,-1);
                 quest:StartMovieSequence()
@@ -854,8 +676,8 @@ function DoCutsceneIfRequired(quest)
                 -- TODO(native): RunCutsceneMacro_Func(&CStack_bc,&stack0xffffff68,(void *)0x0,(void *)0x0,false,true);
                 quest:FixMovieSequenceCamera(false)
                 quest:PauseAllNonScriptedEntities(false)
-                -- TODO(native): StdMap_Destroy_API(&stack0xffffff60);
-                quest:KickOffQuestStartScreen("Q_OrchardFarmRaidGood", false, nil --[[missing]])
+                resources:DestroyActorMap(stack0xffffff60)
+                quest:KickOffQuestStartScreen("Q_OrchardFarmRaidGood", nil --[[missing]], nil --[[missing]])
             end
             quest:DeactivateQuest("Q_OrchardFarm_Barricade", 0)
             quest:Pause(0x3f800000)
@@ -950,60 +772,38 @@ function WatchForExternalScriptDeactivation(quest)
     until false
 end
 
-function MakeTeamMemberComment(quest, native_arg_param_1, native_arg_param_2, native_arg_param_3)
+function MakeTeamMemberComment(quest, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)
     local alive = true
-    local uVar3 = quest:GetStateInt("CommentTimer")
+    -- TODO(native): uStack_14 = *(undefined4 *)(this + 0x4c);
     local iVar1 = quest:GetTimer(nil --[[missing]])
     if 0 < iVar1 then
         alive = not quest:IsActiveThreadTerminating()
-        return false
+        return extraout_var << 8
     end
     local uVar2 = quest:AddNewConversation(nil --[[missing]], false, false)
     local uStack_30 = quest:GetHero()
     quest:AddPersonToConversation(nil --[[missing]], uStack_30)
     local uStack_38 = quest:GetHero()
-    -- TODO(native): uVar3 = (**(code **)(*(int *)native_arg_param_1 + 0xc))(puVar4,&DAT_01244db4,uVar3,0);
-    -- TODO(native): CCharString__AppendData(uVar3);
-    -- TODO(native): CCharString__AppendCString(puVar4);
-    uVar3 = CCharString__AppendData(puVar5)
-    quest:AddLineToConversation(uVar2, uVar3, uStack_38, nil --[[missing]])
-    quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
-    return true
+    -- TODO(native): iVar3 = (**(code **)(*(int *)native_arg_comment_to_make + 0xc))(p0,&DAT_01244db4,uStack_14,0);
+    -- TODO(native): CCharString__AppendData(&uStack_24,iVar3);
+    -- TODO(native): CCharString__AppendCString(&uStack_28,(int)p0);
+    local iVar3 = CCharString__AppendData(&uStack_14,p0_00)
+    quest:AddLineToConversation(uVar2, iVar3, uStack_38, nil --[[missing]])
+    uVar2 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
+    return CONCAT31((int3)(uVar2 >> 8),1)
 end
 
 function DoMultiplierCutscene(quest)
-    local bVar4, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, piVar2, piVar3
+    local resources = quest:RetailResources()
+    local bVar4, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, puStack_38
     local alive = true
-    -- TODO(native): ePriority = 4;
-    -- TODO(native): pScriptObject = local_10;
     pCVar5 = quest:GetHero()
     -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: pCVar5,pScriptObject,ePriority
-    -- TODO(native): puStack_38 = malloc(0x24);
-    -- TODO(native): *puStack_38 = 0;
-    -- TODO(native): *(undefined4 *)(puStack_38 + 4) = 0;
-    -- TODO(native): *(undefined1 **)(puStack_38 + 8) = puStack_38;
-    -- TODO(native): *(undefined1 **)(puStack_38 + 0xc) = puStack_38;
-    -- TODO(native): CCharString::CCharString((CCharString *)&CStack_40,&DAT_01255174,-1);
-    -- TODO(native): this_00 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&puStack_38,&CStack_40);
-    -- TODO(native): CFourierAnalysis::CFourierAnalysis(this_00);
-    piVar3 = 0x0
-    piVar2 = *(this_00 + 0xc)
-    if piVar2 ~= nil then
-        if piVar2 ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 + -1;
-            if **(this_00 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(this_00 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(CScriptThing **)(this_00 + 8) = local_3c;
-        -- TODO(native): *(int **)(this_00 + 0xc) = piVar3;
-        if piVar3 ~= nil then
-            -- TODO(native): *piVar3 = *piVar3 + 1;
-        end
-    end
+    puStack_38 = resources:NewActorMap()
+    resources:SetActor(puStack_38, "HERO", &local_c)
     -- TODO(native): CCharString::CCharString((CCharString *)&CStack_40,&DAT_0122d70e,-1);
     quest:StartMovieSequence()
-    quest:PauseAllNonScriptedEntities(false)
+    quest:PauseAllNonScriptedEntities(piVar2)
     quest:FixMovieSequenceCamera(true)
     bVar4 = quest:IsRegionLoaded("GreatwoodLake")
     native_arg_sequence_1 = false
@@ -1027,19 +827,18 @@ function DoMultiplierCutscene(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
-            -- TODO(native): string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWLL";
             -- TODO(native): goto LAB_00dd1d98
         end
         -- LAB_00dd1d15: (native jump target)
-        quest:PauseAllNonScriptedEntities(false)
+        quest:PauseAllNonScriptedEntities(piVar2)
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
-            -- TODO(native): dist = 20.0;
+            -- TODO(native): local_3c = (CScriptThing *)piVar3;
             local_3c = quest:GetHero()
             pCVar5 = quest:GetThingWithScriptName("MK_OFI_GWL")
-            bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar5, local_3c, dist)
+            bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar5, local_3c, 20.0)
             if bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -1048,24 +847,21 @@ function DoMultiplierCutscene(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
-                        -- TODO(native): string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL";
                         -- TODO(native): goto LAB_00dd1d98
                     end
                     -- LAB_00dd1e3d: (native jump target)
-                    quest:PauseAllNonScriptedEntities(false)
+                    quest:PauseAllNonScriptedEntities(piVar2)
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
                     -- LAB_00dd1e53: (native jump target)
-                    quest:PauseAllNonScriptedEntities(false)
+                    quest:PauseAllNonScriptedEntities(piVar2)
                     goto LAB_00dd1e95
                 end
-                -- TODO(native): string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL";
                 -- LAB_00dd1d98: (native jump target)
-                -- TODO(native): CCharString::CCharString((CCharString *)&CStack_40,string,-1);
-                -- TODO(native): RunCutsceneMacro_Func(&CStack_40,&puStack_38,(void *)0x0,(void *)0x0,false,true);
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", puStack_38, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -1109,27 +905,27 @@ function DoMultiplierCutscene(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then return end  -- TODO(native): goto LAB_00dd1e3d
-                        -- TODO(native): string = "CS_ORCHARD_EVIL_WHISPERINTRO_LOP";
                     else
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then return end  -- TODO(native): goto LAB_00dd1e53
-                        -- TODO(native): string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP";
                     end
                     -- TODO(native): goto LAB_00dd1d98
                 end
             end
         end
         ::LAB_00dd1e70::
-        quest:PauseAllNonScriptedEntities(false)
+        quest:PauseAllNonScriptedEntities(piVar2)
     end
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&uStack_18);
     ::LAB_00dd1e95::
-    -- TODO(native): StdMap_Destroy_API(&puStack_38);
+    resources:DestroyActorMap(puStack_38)
+    return extraout_EAX
 end
 
 function ReplaceQuestCards(quest)
     quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM", "Q_OrchardFarmRaidGood", false, false)
     quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM_EVIL", "Q_OrchardFarmRaidEvil", false, false)
+    return extraout_EAX
 end
 

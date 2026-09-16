@@ -69,3 +69,19 @@ Open typed-export lever: by-value `CScriptThing` params (Ghidra emits `in_stack_
 GSI slots from FSE's native typedefs (`GameInterface.h`), real signatures for engine helpers
 (CCharString/CScriptThing ctors, `RunCutsceneMacro_Func`, map ops). That removes the arg-less
 `RunCutsceneMacro_Func(0,0,0,1)` / `SetIsPushableByHero()` class of diagnostics for every unit.
+
+## Later rounds (same day, after the wip commit)
+- Unit-function prototypes from the PDB stack parameters (`ghidra_typing_spec.py --unit`, void for
+  lifecycle/threads) + `infer_helper_prototypes.py` (ret-N purge for FSE-untyped engine helpers) → 128 typed
+  helpers, 218 call-site overrides.
+- Lifter (all gated byte-identical on Oakvale): `RE_LOCAL_ASSIGN` accepts typed-export local names
+  (not Ghidra `xVarN`/`Stack_`/`local_`), `RE_BINDING` any var, `RE_THREAD` tolerates the empty
+  section-name ctor, `RE_GUI_TRANSFER_ADD` without cast, `RE_PSEUDO_CALL` pass-through for
+  `QUEST*/ENTITY*/ACTORMAP_/RESOURCE_` pseudo statements.
+- Lowering: `in_stack_` artefact folding, `)`+newline+`;` join, `::` continuation, `*(T **)&x->field`,
+  keyed stores as `QUESTSTATE_Set*`, cutscene actor maps (`malloc(0x24)` header / `StdMap_Construct_API`,
+  `operator[]` + counted assign or resource `operator=`, `RunCutsceneMacro_Func`, `StdMap_Destroy_API`)
+  → `resources:NewActorMap/SetActor/RunMacro/DestroyActorMap` with `local resources = quest:RetailResources()`.
+- Orchard draft: 9/9 bindings + 4 threads register like Oakvale; quest Main is readable; 469 diagnostics
+  (44 cleanup-label, 42 label/goto, 17 unnamed fields, rest cutscene/resource locals). Known Ghidra
+  artefact left: FPO `stack0x…` local names (stable per function).

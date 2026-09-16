@@ -41,17 +41,17 @@ def _lit(value, kind):
 # thing's Data (+4) and Info (+8) are read into temporaries, the destination's old Info is
 # released (refcount--, destroy+delete at zero), Data/Info are stored, the new Info is retained.
 RE_COUNTED_ASSIGN = re.compile(
-    r'(?P<ind>[ \t]*)(?:(?P<i>\w+) = \*\(int \*\*\)\((?P<src>[^;\n]+?) \+ 8\);\s*(?P<d>\w+) = \*\(undefined4 \*\)\((?P=src) \+ 4\);'
-    r'|(?P<d2>\w+) = \*\(undefined4 \*\)\((?P<src2>[^;\n]+?) \+ 4\);\s*(?P<i2>\w+) = \*\(int \*\*\)\((?P=src2) \+ 8\);)\s*'
-    r'(?P<o>\w+) = \*\(int \*\*\)\((?P<dst8>[^;\n]+?)\);\s*'
+    r'(?P<ind>[ \t]*)(?:(?P<i>\w+) = \*\(\w+ \*{1,2}\)\((?P<src>[^;\n]+?) \+ (?:8|0x8)\);\s*(?P<d>\w+) = \*\(\w+ \*{1,2}\)\((?P=src) \+ (?:4|0x4)\);'
+    r'|(?P<d2>\w+) = \*\(\w+ \*{1,2}\)\((?P<src2>[^;\n]+?) \+ (?:4|0x4)\);\s*(?P<i2>\w+) = \*\(\w+ \*{1,2}\)\((?P=src2) \+ (?:8|0x8)\);)\s*'
+    r'(?P<o>\w+) = \*\(\w+ \*{1,2}\)\((?P<dst8>[^;\n]+?)\);\s*'
     r'if \((?P=o) != (?P<iref>\w+)\) \{\s*'
     r'if \((?P=o) != \(int \*\)0x0\) \{\s*'
     r'\*(?P=o) = \*(?P=o) \+ -1;\s*'
     r'if \(\*\*\(int \*\*\)\((?P=dst8)\) == 0\) \{\s*'
     r'\(\*\(code \*\)\(\*\(int \*\*\)\((?P=dst8)\)\)\[1\]\)\(\);\s*'
     r'operator_delete\(\*\(void \*\*\)\((?P=dst8)\)\);\s*\}\s*\}\s*'
-    r'\*\(undefined4 \*\)\((?P<dst4>[^;\n]+?)\) = (?P<dref>\w+);\s*'
-    r'\*\(int \*\*\)\((?P=dst8)\) = (?P=iref);\s*'
+    r'\*\(\w+ \*{1,2}\)\((?P<dst4>[^;\n]+?)\) = (?P<dref>\w+);\s*'
+    r'\*\(\w+ \*{1,2}\)\((?P=dst8)\) = (?P=iref);\s*'
     r'if \((?P=iref) != \(int \*\)0x0\) \{\s*\*(?P=iref) = \*(?P=iref) \+ 1;\s*\}\s*\}[ \t]*\r?\n?')
 
 
@@ -120,7 +120,7 @@ def join_wrapped_statements(text: str) -> str:
         head = buffer.strip()
         tail = head[-1:] if head else ''
         unterminated = bool(head) and not head.startswith(('//', '/*', '*', '#')) and head not in ('else', 'do') \
-            and (tail.isalnum() or tail in ',=+-|&<>*/!_')
+            and (tail.isalnum() or tail in ',=+-|&<>*/!_' or head.endswith('::'))
         if (depth > 0 or unterminated) and not stripped.endswith('{'):
             continue
         out.append(buffer)
@@ -133,12 +133,108 @@ def join_wrapped_statements(text: str) -> str:
 def normalise_typed_decompile(text: str) -> str:
     """Typed exports (ExportTypedTranslationUnit) print a few shapes the untyped pipeline never saw."""
     text = re.sub(r'\(int\)(this(?:_\d+)?)\b', r'\1', text)                 # (int)this + 0x40
+    text = re.sub(r'\)[ \t]*\r?\n[ \t]*;', ');', text)                        # `...)` newline `;`
     text = re.sub(r'\)\)[ \t]*\r?\n[ \t]+\(', '))(', text)                   # call head wrapped before its argument list
     text = join_wrapped_statements(text)
     text = re.sub(r'&("(?:[^"\\]|\\.)*")', r'\1', text)                      # &"literal" (propagated CCharString temp)
+    text = re.sub(r'\*\((\w+ \*+)\)&(\w+)->field_0x([0-9a-f]+)', r'*(\1)(\2 + 0x\3)', text)
     text = re.sub(r'\*&(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
     text = re.sub(r'(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
     text = re.sub(r'\b(CScriptThing|CCharString|C3DVector|CRGBColour|CWideString|CRGBFloatColour)_bv\b', r'\1', text)
+    text = fold_outgoing_stack_slots(text)
+    return text
+
+
+def fold_outgoing_stack_slots(text: str) -> str:
+    """With prototype overrides the decompiler sometimes models the outgoing argument area as
+    `in_stack_XXXXXXXX` variables: a return-address materialisation (`= (undefined **)0xADDR`, dropped)
+    and value staging (`in_stack_X = (T *)local;` then `(int)in_stack_X` as an argument, inlined)."""
+    text = re.sub(r'^[ \t]*in_stack_[0-9a-f]+ = \(undefined \*\*\)0x[0-9a-f]+;[ \t]*\r?\n', '', text, flags=re.M)
+    for m in list(re.finditer(r'^[ \t]*(in_stack_[0-9a-f]+) = (?:\([\w ]+\*+\))?([^;\n]+);[ \t]*\r?\n', text, re.M)):
+        var, value = m.group(1), m.group(2).strip()
+        if len(re.findall(r'^[ \t]*' + var + r' = ', text, re.M)) != 1:
+            continue
+        text = text.replace(m.group(0), '')
+        text = re.sub(r'(?:\((?:int|\w+ \*+)\))?\b' + var + r'\b', lambda _: value, text)
+    return text
+
+
+# ---- cutscene actor maps -----------------------------------------------------------------------
+# std::map<CCharString, CCountedPointer<...>> built inline (header node malloc + 4 links), filled with
+# operator[] + counted-pointer assignment, run through RunCutsceneMacro_Func, destroyed with
+# StdMap_Destroy_API. Lowered to the retail-resource API used by the readable New Oakvale package.
+RE_MAP_NEW = re.compile(
+    r'^(?P<ind>[ \t]*)(?:(?P<m0>\w+) = \(undefined1 \*\)0x0;\s*)?(?P<map>\w+) = (?:\(\w+ \*\))?malloc\(0x24\);\s*'
+    r'(?:\w+ = 0;\s*)?\*(?P=map) = 0;\s*\*\(undefined4 \*\)\((?P=map) \+ 4\) = 0;\s*'
+    r'\*\(undefined1 \*\*\)\((?P=map) \+ 8\) = (?P=map);\s*\*\(undefined1 \*\*\)\((?P=map) \+ 0xc\) = (?P=map);[ \t]*\r?\n', re.M)
+RE_MAP_SET = re.compile(
+    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
+    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\(\(map<[^;]*?\*\)&(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
+    r'(?:[\w:]+::\w+\(\(?[\w ]*\*?\)?(?P=node)\);\s*)?'
+    r'(?P<body>(?:[^;{}]*;\s*){0,4})'
+    r'if \(\w+ != \w+\) \{\s*if \(\w+ != \(int \*\)0x0\) \{\s*\*\w+ = \*\w+ \+ -1;\s*if \(\*\*\(int \*\*\)\((?P=node) \+ 0xc\) == 0\) \{\s*'
+    r'\(\*\(code \*\)\(\*\(int \*\*\)\((?P=node) \+ 0xc\)\)\[1\]\)\(\);\s*operator_delete\(\*\(void \*\*\)\((?P=node) \+ 0xc\)\);\s*\}\s*\}\s*'
+    r'\*\((?:CScriptThing|int|undefined4) \*\*?\)\((?P=node) \+ 8\) = (?P<data>\w+);\s*'
+    r'\*\((?:int|undefined) \*\*\)\((?P=node) \+ 0xc\) = (?P<info>\w+);\s*'
+    r'if \((?P=info) != \((?:int|undefined) \*\*?\)0x0\) \{\s*\*(?P=info) = \*(?P=info) \+ 1;\s*\}\s*\}\s*'
+    r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
+RE_MAP_RUN = re.compile(
+    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
+    r'RunCutsceneMacro_Func\(&(?P=key),&(?P<map>\w+),\(void \*\)0x0,\(void \*\)0x0,(?P<setup>true|false),(?P<skip>true|false)\);\s*'
+    r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
+RE_MAP_DESTROY = re.compile(r'^([ \t]*)StdMap_Destroy_API\(&(\w+)\);', re.M)
+RE_MAP_NEW2 = re.compile(r'^([ \t]*)StdMap_Construct_API\(&(\w+)\);', re.M)
+# resource-valued maps (std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>): the value is a
+# controlled-entity resource handle assigned with the resource operator=.
+RE_MAP_SET2 = re.compile(
+    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
+    r'(?:(?P<alias>\w+) = (?P<thing>&?[\w.]+);\s*)?(?:\w+ = 0x[0-9a-f]{6,7};\s*)?'
+    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\(\(map<[^;]*?\*\)&(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
+    r'CScriptGameResourceObjectScriptedThingBase::operator=\((?P=node),(?P<src>&?\w+)\);\s*'
+    r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
+
+
+def _resolve_local_thing(body, data, info):
+    """Follow `a = b;` copies inside the assignment body to the source thing of a map/actor store.
+    Ghidra splits a stack CScriptThing into local_N (vtable), local_{N-4} (Data), local_{N-8} (Info)."""
+    alias = dict(re.findall(r'(\w+) = (\w+);', body))
+    for _ in range(4):
+        data, info = alias.get(data, data), alias.get(info, info)
+    m_data = re.fullmatch(r'\*\((?:\w+ \*+)\)\((\w+) \+ (?:4|0x4)\)', data)
+    m_info = re.fullmatch(r'\*\((?:\w+ \*+)\)\((\w+) \+ (?:8|0x8)\)', info)
+    if m_data and m_info and m_data.group(1) == m_info.group(1):
+        return m_data.group(1)
+    a, b = re.fullmatch(r'local_([0-9a-f]+)', data), re.fullmatch(r'local_([0-9a-f]+)', info)
+    if a and b and int(a.group(1), 16) == int(b.group(1), 16) + 4:
+        return f'&local_{int(a.group(1), 16) + 4:x}'
+    return None
+
+
+def fold_actor_maps(text, resolve_string=None):
+    def keyval(v):
+        if v.startswith('&DAT_') and resolve_string:
+            literal = resolve_string(int(v[5:], 16))
+            if literal is not None:
+                return '"' + literal + '"'
+        return v
+    text = RE_MAP_NEW.sub(lambda m: f'{m.group("ind")}{m.group("map")} = ACTORMAP_New();\n', text)
+
+    def set_repl(m):
+        thing = _resolve_local_thing(m.group('body'), m.group('data'), m.group('info'))
+        if thing is None:
+            return m.group(0)
+        return f'{m.group("ind")}ACTORMAP_Set({m.group("map")}, {keyval(m.group("keyval"))}, (CScriptThing *){thing});\n'
+    text = RE_MAP_SET.sub(set_repl, text)
+    text = RE_MAP_NEW2.sub(r'\1\2 = ACTORMAP_New();', text)
+
+    def set2_repl(m):
+        src = m.group('src')
+        if m.group('alias') and src == m.group('alias'):
+            src = m.group('thing') if m.group('thing').startswith('&') else '&' + m.group('thing')
+        return f'{m.group("ind")}ACTORMAP_Set({m.group("map")}, {keyval(m.group("keyval"))}, {src});\n'
+    text = RE_MAP_SET2.sub(set2_repl, text)
+    text = RE_MAP_RUN.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacro({keyval(m.group("keyval"))}, {m.group("map")}, {m.group("setup")}, {m.group("skip")});\n', text)
+    text = RE_MAP_DESTROY.sub(r'\1ACTORMAP_Destroy(\2);', text)
     return text
 
 
@@ -194,6 +290,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = normalise_typed_decompile(text)
     text = fold_counted_pointer_assign(text)
     text = fold_counted_pointer_release(text)
+    text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
 
     parent = r'\*\(int \*\)\(this \+ 0x14\)'
     # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
@@ -256,7 +353,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 key = f'__key("{a["name"]}_", {{idx}}, "_{mname}")'
                 idx_form = r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|\w+) \* ' + off_re(stride)
                 pat_store = re.compile(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\) =\s*([^;]+);', re.M)
-                text = pat_store.sub(lambda m, k=key, kind=kind, tag=tag: f'{m.group(1)}GSI->SetState{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
+                text = pat_store.sub(lambda m, k=key, kind=kind, tag=tag: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
                 pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\)')
                 text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
             # scalar sub-arrays with a trailing byte index: *(T *)(BASE + ABS + IDX * 4)  (Teams[0].StateCounter[i])
@@ -267,7 +364,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 absolute = a['base'] + member_off
                 key = f'__key("{a["name"]}_0_{sub.group(1)}_", {{idx}}, "")'
                 pat_store = re.compile(r'^([ 	]*)\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\) =\s*([^;]+);', re.M)
-                text = pat_store.sub(lambda m, k=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
+                text = pat_store.sub(lambda m, k=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
                 pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\)')
                 text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
             # element address taken: IDX * STRIDE + BASE + PARENT  -> array pointer value (index)
@@ -283,7 +380,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 for index in range(a['count']):
                     absolute = a['base'] + index * stride + pmember
                     text = re.sub(r'^([ \t]*)\*\(\w+ \*\*?\)\(' + base + r' \+ ' + off_re(absolute) + r'\) =\s*__element\("' + a['name'] + r'", (\d+)\);',
-                                  lambda m, k=f'{a["name"]}_{index}_{pname}': f'{m.group(1)}GSI->SetStateInt("{k}", {m.group(2)});', text, flags=re.M)
+                                  lambda m, k=f'{a["name"]}_{index}_{pname}': f'{m.group(1)}QUESTSTATE_SetInt("{k}", {m.group(2)});', text, flags=re.M)
             # temporaries holding an element address: substitute and drop the assignment
             for m in list(re.finditer(r'^[ \t]*(\w+) = (?:\(int \*\))?(__element\("' + a['name'] + r'", [^;]+\));\s*$', text, re.M)):
                 var, value = m.group(1), m.group(2)
@@ -336,10 +433,10 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 key = f'__key("{a["name"]}_", {idx}, "_{mname}")'
                 if member_off == 0:
                     text = re.sub(r'^([ \t]*)\*\*\(int \*\*\)\(this \+ ' + off_re(off) + r'\) =\s*([^;]+);',
-                                  lambda m, key=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
+                                  lambda m, key=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
                     text = re.sub(r'\*\*\(int \*\*\)\(this \+ ' + off_re(off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
                 text = re.sub(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\) =\s*([^;]+);',
-                              lambda m, key=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
+                              lambda m, key=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
                 text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
             for pmember, pname in a.get('pointers', {}).items():
                 # *(T *)(*(int *)(MyTeam + EnemyTeam) + M) -> member M of Teams[Teams_<MyTeam>_EnemyTeam]
@@ -348,7 +445,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 for member_off, (mname, kind) in a['members'].items():
                     key = f'__key("{a["name"]}_", {chained_idx}, "_{mname}")'
                     text = re.sub(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\) =\s*([^;]+);',
-                                  lambda m, key=key, kind=kind: f'{m.group(1)}GSI->SetState{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
+                                  lambda m, key=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
                     text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
                 for member_off, tname in a['things'].items():
                     recv = f'QUESTTHING_Get(__key("{a["name"]}_", {chained_idx}, "_{tname}"))'
@@ -397,8 +494,12 @@ LUA_PSEUDO = [
     (re.compile(r'ENTITYLIST_Count\('), '__native_entity_state:GetStateListCount('),
     (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
     (re.compile(r'__thing_valid\('), 'IsThingValid('),
-    (re.compile(r'QUESTSTATE_Get(Int|Bool|Float|String)\('), r'quest:GetState\1('),
-    (re.compile(r'ENTITYSTATE_Get(Int|Bool|Float|String)\('), r'__native_entity_state:GetState\1('),
+    (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
+    (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
+    (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
+    (re.compile(r'RESOURCE_(\w+)\('), r'resources:\1('),
+    (re.compile(r'QUESTSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'quest:\1State\2('),
+    (re.compile(r'ENTITYSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'__native_entity_state:\1State\2('),
     (re.compile(r'GSI->(Get|Set)State(Int|Bool|Float|String|Thing)\('), r'quest:\1State\2('),
     (re.compile(r'GSI->(Get|Set)MasterGameState\('), r'quest:\1MasterGameState('),
 ]

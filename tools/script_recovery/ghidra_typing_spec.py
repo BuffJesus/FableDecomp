@@ -15,9 +15,11 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 FSE = Path(r'D:\Code\ForgeFSE-retail-shadow\FableScriptExtender')
 TYPEDEF = re.compile(r'typedef\s+(.+?)\s*\(\s*(__thiscall|__cdecl|__stdcall|__fastcall)?\s*\*\s*(t\w+)\s*\)\s*\((.*?)\)\s*;', re.S)
 SLOT = re.compile(r'^\s*(\w+)\s*=\s*\(\s*(t\w+)\s*\)\s*pVTable\[(\d+)\]', re.M)
@@ -93,10 +95,58 @@ def typedefs(*headers):
     return out
 
 
+def pdb_parameters(tsv):
+    """qualified function name -> [(name, size, stack offset)] for stack parameters, in push order."""
+    out, current = {}, None
+    for line in Path(tsv).read_text(encoding='utf-8', errors='replace').splitlines():
+        cols = line.split('\t')
+        if cols[0] == 'FUNCTION' and len(cols) >= 4:
+            current = cols[1]
+            out.setdefault(current, [])
+        elif current and len(cols) >= 10 and cols[0] == '0' and cols[6] == '3' and cols[7] == '3':
+            try:
+                out[current].append((cols[2], int(cols[5]), int(cols[9])))
+            except ValueError:
+                pass
+    return {k: sorted(set(v), key=lambda t: t[2]) for k, v in out.items()}
+
+
+def size_type(size):
+    return {1: 'bool', 4: 'int', 12: 'CScriptThing', 8: 'ulonglong'}.get(size, 'int')
+
+
+def unit_functions(unit_dir):
+    """Prototypes for a unit's own functions (quest members, entity members, helpers) from the PDB."""
+    params = pdb_parameters(Path(unit_dir) / 'pdb' / 'Ego_r-pdb-locals.tsv')
+    out = {}
+    for path in sorted((Path(unit_dir) / 'units').glob('*.json')):
+        unit = json.loads(path.read_text(encoding='utf-8'))
+        qualified = unit['nativeClass']
+        rows = [(name, f['address'], f'{qualified}::{name}') for name, f in unit['quest']['functions'].items()
+                if name != 'destructor' and not name.startswith('helper_')]
+        void_names = {'Main', 'Init', 'OnPersist', 'RegisterMain', 'OnPredicateFail'} | {
+            n for n, f in unit['quest']['functions'].items() if f.get('spawnedAs')}
+        for ename, ent in unit['entities'].items():
+            klass = ent['nativeClass']
+            for name, f in list(ent['functions'].items()) + list(ent.get('helpers', {}).items()):
+                if name in ('destructor', 'GetParentScript', 'OnInterrupted') or name.startswith('helper_'):
+                    continue
+                rows.append((f'{ename}.{name}', f['address'], f'{klass}::{name}'))
+        for label, address, qname in rows:
+            if qname not in params:
+                continue
+            plist = [{'name': n, 'type': size_type(sz), 'ctype': f'pdb size {sz}'} for n, sz, _ in params[qname]]
+            out.setdefault(address.lower(), {'name': qname.split('::', 1)[1].replace('::', '__'), 'cc': '__thiscall',
+                                             'ret': 'void' if qname.split('::')[-1] in void_names else 'int',
+                                             'params': plist, 'source': 'PDB stack parameters'})
+    return out
+
+
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('--fse', type=Path, default=FSE)
     a.add_argument('--out', type=Path, default=ROOT / 'refs/script_recovery/typing/gsi_prototypes.json')
+    a.add_argument('--unit', help='also type this unit\'s own functions from its PDB parameters')
     args = a.parse_args()
     tds = typedefs(args.fse / 'GameInterface.h', args.fse / 'FableAPI.h', args.fse / 'EntityScriptingAPI.h')
     slots = {}
@@ -124,11 +174,17 @@ def main():
             spec = tds[td]
             params = drop_this(spec['params'])
             thing_slots[hex(int(offset, 16))] = {'name': name, 'ret': spec['ret'], 'params': params, 'typedef': td}
+    unit_fns = {}
+    if args.unit:
+        from tools.script_recovery.script_units import unit as script_unit
+        unit_fns = unit_functions(script_unit(args.unit)['evidence'])
+        helpers.update(unit_fns)
+        args.out = script_unit(args.unit)['evidence'] / 'typing_spec.json'
     args.out.parent.mkdir(parents=True, exist_ok=True)
     spec = {'schema': 'ghidra-typing-spec/1', 'source': str(args.fse), 'byValue': BY_VALUE,
             'slots': slots, 'helpers': helpers, 'thingSlots': thing_slots}
     args.out.write_text(json.dumps(spec, indent=1) + '\n', encoding='utf-8')
-    print(json.dumps({'slots': len(slots), 'helpers': len(helpers), 'thingSlots': len(thing_slots), 'out': str(args.out)}, indent=2))
+    print(json.dumps({'slots': len(slots), 'helpers': len(helpers), 'unitFunctions': len(unit_fns), 'thingSlots': len(thing_slots), 'out': str(args.out)}, indent=2))
 
 
 if __name__ == '__main__':

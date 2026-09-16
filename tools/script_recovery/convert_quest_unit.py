@@ -141,8 +141,9 @@ class UnitConverter:
                         candidates.setdefault(call['currentName'], set()).add(local_names[call['target'].lower()])
                 lifter.callee_names.update({label: next(iter(names)) for label, names in candidates.items() if len(names) == 1})
                 signature = signatures.get(name) or function_parameters(fn['decompile'], member=True)
-                lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature),
-                                               LoweringSpec(unit, owner, entity=entity, thing_slots=self.thing_slots))
+                spec_l = LoweringSpec(unit, owner, entity=entity, thing_slots=self.thing_slots)
+                spec_l.resolve_string = self.rdata.string_at
+                lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature), spec_l)
                 source = strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity))
                 if name == 'OnPersist':
                     body, _, calls = lift_persist(source, 'quest')
@@ -160,6 +161,8 @@ class UnitConverter:
                     todo.extend('lowering: ' + d for d in lowering_diag)
                 row['nativeSignature'] = signature
                 function_source = finish_lua('\n'.join([f'function {name}({params})'] + body + ['end', '']))
+                if 'resources:' in function_source:
+                    function_source = function_source.replace('\n', '\n    local resources = quest:RetailResources()\n', 1)
                 if not entity and name in helpers.values():
                     shared_inputs[name] = (source, fn, signature, dict(lifter.callee_names))
                 row.update(todo=todo, calls=calls, lines=len(body),

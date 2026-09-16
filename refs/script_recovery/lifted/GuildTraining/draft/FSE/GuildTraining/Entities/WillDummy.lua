@@ -201,7 +201,6 @@ function Main(quest, me)
         end
         -- TODO(native): pCStack_14c = pCStack_128;
         quest:EntitySetFacingAngle(nil --[[missing]], nil --[[missing]])
-        -- TODO(native): in_stack_fffffea8 = pCVar1;
         quest:EntitySetTargetable(nil --[[missing]], nil --[[missing]])
     end
     alive = quest:NewScriptFrame(me)

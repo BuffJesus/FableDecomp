@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar4, fVar10, fVar3, pCVar12, pCVar15, pCVar16, pCVar18, pCVar8, pCVar9, pcVar14, piVar7, r2, r3, r4, r5, r6
+    local bVar4, fVar10, fVar3, iRam00000001, pCVar12, pCVar15, pCVar16, pCVar18, pCVar8, pCVar9, pcVar14, piVar7, r2, r3, r4, r5, r6
     local alive = true
     -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_f8);
     if bVar4 then
@@ -42,7 +42,7 @@ function Main(quest, me)
             if (pCStack_11c ~= nil) and (*pCStack_11c = *pCStack_11c + -1, *pCStack_11c == 0) then
                 -- TODO(native): (**(code **)(pCStack_11c + 4))();
             end
-            -- TODO(native): iRam00000001 = iRam00000001 + -1;
+            iRam00000001 = iRam00000001 + -1
             if iRam00000001 == 0 then
                 -- TODO(native): (*_DAT_00000005)();
             end

@@ -2769,7 +2769,6 @@
             "EntitySetAllowBossPhaseChanges: missing spThing (1 args for 2 params)",
             "SetFriendsWithEverythingFlag: 0 operands for 1 params",
             "unlifted: (**(code **)(pCStack_11c + 4))();",
-            "unlifted: iRam00000001 = iRam00000001 + -1;",
             "unlifted: (*_DAT_00000005)();",
             "verify cleanup at LAB_00d41a07 (lifted as early return)",
             "unlifted: bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xfffffecc);",
@@ -5265,7 +5264,6 @@
             "EntitySetFacingAngle: missing angle (1 args for 3 params)",
             "unlifted: pCStack_14c = pCStack_128;",
             "EntitySetFacingAngle: missing spThing, angle (0 args for 3 params)",
-            "unlifted: in_stack_fffffea8 = pCVar1;",
             "EntitySetTargetable: missing pThing, isTargetable (0 args for 2 params)",
             "unlifted: goto joined_r0x00d434fc;"
           ],
@@ -5352,7 +5350,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 197,
+          "lines": 196,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -6191,7 +6189,7 @@
         "functionSyntaxPassed": 55,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 15,
-        "todo": 1344
+        "todo": 1342
       }
     },
     {
@@ -10640,7 +10638,6 @@
             "CreateCreature: missing position (2 args for 3 params)",
             "label LAB_00d61ad8",
             "unlifted: in_stack_fffffd3c = (CCharString *)0x0;",
-            "unlifted: in_stack_fffffd38 = (CCharString *)0xd61aea;",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScrip",
             "verify cleanup at LAB_00d61b44 (lifted as early return)",
@@ -11157,7 +11154,7 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities"
           ],
-          "lines": 1120,
+          "lines": 1119,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -11360,7 +11357,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 265
+        "todo": 264
       }
     },
     {
@@ -13815,6 +13812,6 @@
     "functionSyntaxPassed": 120,
     "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 37,
-    "todo": 3035
+    "todo": 3032
   }
 }

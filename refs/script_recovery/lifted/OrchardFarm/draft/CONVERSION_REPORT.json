@@ -57,85 +57,27 @@
             "parameters": [],
             "returnKind": null
           },
-          "todo": [
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 1;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 1;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 1;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 1;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 1;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 1;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 0;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 0;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: CCharString::CCharString((CCharString *)(puVar4 + 1),&local_14);",
-            "unlifted: puVar4[2] = this;",
-            "unlifted: *(undefined1 *)(puVar4 + 5) = 1;",
-            "unlifted: puVar4[6] = 0;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,puVar4);",
-            "unlifted: *piVar3 = *piVar3 + -1;",
-            "unlifted: (*(code *)(*(int **)(this + 0xf8))[1])();",
-            "unnamed field 0xf4 written in Main",
-            "unlifted: *(int **)(this + 0xf8) = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: *piVar3 = *piVar3 + -1;",
-            "unlifted: (*(code *)(*(int **)(this + 0xb8))[1])();",
-            "unnamed field 0xb4 written in Main",
-            "unlifted: *(int **)(this + 0xb8) = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);",
-            "unlifted: CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName);",
-            "unlifted: CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);",
-            "unlifted: CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName_00);",
-            "unlifted: CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);",
-            "unlifted: CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName_01);",
-            "unlifted: bVar8 = pCVar6 == (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;",
-            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
-            "unlifted: *(code **)(pCVar6 + 0x34) = CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation;",
-            "unlifted: *(CQ_GuildTrainingScript **)(pCVar6 + 0x38) = this;",
-            "unlifted: CCharString::CCharString((CCharString *)&local_10,&DAT_0122d70e,-1);",
-            "unlifted: CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar6,sectionName_02);"
-          ],
+          "todo": [],
           "calls": [
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
             "FinalizeEntityBindings",
             "IsQuestActive",
             "ActivateQuest",
             "IsRegionLoaded",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
-            "SetStateInt",
+            "QUESTTHING_Set",
             "GetThingWithScriptName",
-            "SetStateInt",
+            "QUESTTHING_Set",
+            "CreateThread",
             "CreateThread",
             "CreateThread",
             "CreateThread",
@@ -143,19 +85,13 @@
             "IsActiveThreadTerminating",
             "IsRegionLoaded"
           ],
-          "lines": 202,
+          "lines": 49,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:Main",
-                "line": 132,
-                "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:Main:132: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -176,22 +112,15 @@
             "unlifted: this_00 = &local_1c;",
             "unlifted: this_00 = &CStack_18;",
             "unlifted: *(undefined4 *)(this + 100) = 0;",
-            "unlifted: QUESTTHING_Set(\"Teams_0_TeamCrateCarrier\", nil);",
-            "unlifted: QUESTTHING_Set(\"Teams_1_TeamCrateCarrier\", nil);",
-            "unlifted: CCharString__AssignFromWide(L\"PROBLEM: Tell Ben problem with Orchard Farm fail reasons\");",
-            "unlifted: CCharString__AssignFromWide(L\"TEXT_QST_051_FAILED_HERO_KILLED\");",
-            "unlifted: CCharString__AssignFromWide(L\"TEXT_QST_051_FAILED_CRATES_STOLEN\");",
-            "unlifted: CCharString__AssignFromWide(L\"TEXT_QST_051_FAILED_TEAM_KILLED\");",
+            "unlifted: CCharString__AssignFromWide(this + 0x68,0x12db0c8);",
+            "unlifted: CCharString__AssignFromWide(this + 0x6c,0x12db088);",
+            "unlifted: CCharString__AssignFromWide(this + 0x70,0x12db040);",
+            "unlifted: CCharString__AssignFromWide(this + 0x74,0x12db000);",
             "unnamed field 0x84 written in Init",
             "unlifted: CCharString::CCharString((CCharString *)&local_1c,&DAT_0122d70e,-1);",
             "SetQuestCardObjective: missing region2 (3 args for 4 params)",
-            "unlifted: string = \"GreatwoodEntrance\";",
             "unnamed field 0x84 written in Init",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_20,&DAT_0122d70e,-1);",
-            "SetQuestCardObjective: missing region2 (3 args for 4 params)",
-            "unlifted: string = \"GreatwoodLake\";",
-            "unlifted: CCharString::CCharString((CCharString *)&local_1c,string,-1);",
-            "MiniMapAllowRouteBetweenRegions: missing region2 (2 args for 3 params)"
+            "unlifted: CCharString::CCharString((CCharString *)&CStack_20,&DAT_0122d70e,-1);"
           ],
           "calls": [
             "AddQuestRegion",
@@ -203,7 +132,7 @@
             "SetMasterGameState",
             "SetMasterGameState",
             "SetTimer",
-            "SetStateInt",
+            "QUESTSTATE_SetInt",
             "SetStateBool",
             "SetStateBool",
             "SetStateBool",
@@ -212,7 +141,9 @@
             "SetStateBool",
             "SetStateBool",
             "SetStateBool",
-            "SetStateInt",
+            "QUESTSTATE_SetInt",
+            "QUESTTHING_Set",
+            "QUESTTHING_Set",
             "IsQuestActive",
             "SetStateInt",
             "SetStateString",
@@ -225,7 +156,7 @@
             "MiniMapAllowRouteBetweenRegions",
             "MiniMapAllowRouteBetweenRegions"
           ],
-          "lines": 56,
+          "lines": 53,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -246,23 +177,16 @@
           "nativeSignature": {
             "parameters": [
               {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "CPersistContext *"
+                "native": "context",
+                "lua": "native_arg_context",
+                "type": "int"
               }
             ],
             "returnKind": null
           },
           "todo": [],
-          "calls": [
-            "GetStateBool",
-            "PersistTransferBool",
-            "SetStateBool",
-            "GetStateBool",
-            "PersistTransferBool",
-            "SetStateBool"
-          ],
-          "lines": 6,
+          "calls": [],
+          "lines": 0,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -285,20 +209,23 @@
             "unlifted: CCharString::CCharString((CCharString *)&CStack_54,&DAT_0122d70e,-1);",
             "SetQuestCardObjective: missing region2 (3 args for 4 params)",
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
-            "unlifted: ePriority = 4;",
-            "unlifted: pppuVar10 = &ppuStack_bc;",
+            "unlifted: pppuVar9 = &ppuStack_bc;",
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
             "unlifted: StdMap_Construct_API(amStack_80);",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_50,&DAT_01255174,-1);",
-            "unlifted: pppuVar10 = &ppuStack_bc;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pppuVar10);",
-            "unlifted: pppuVar10 = appuStack_ac;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pppuVar10);",
+            "unlifted: pppuVar9 = &ppuStack_bc;",
+            "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pppuVar9);",
+            "unlifted: pppuVar9 = appuStack_ac;",
+            "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pppuVar9);",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_24,&DAT_0122d70e,-1);",
             "unlifted: this_00 = *(int **)(this + 0x40);",
-            "unlifted: fStack_14 = GetSquaredDistanceBetweenThings(aCStack_78,(CScriptThing *)pCVar6);",
+            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
+            "unlifted: GetSquaredDistanceBetweenThings(auStack_78);",
+            "unlifted: fStack_14 = (float)extraout_ST0;",
+            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
+            "unlifted: GetSquaredDistanceBetweenThings(&uStack_90);",
             "unlifted: RunCutsceneMacro_Func(aCStack_30,&CStack_8c.field_0x8,(void *)0x0,(void *)0x0,false,true);",
             "goto LAB_00dd0b1f",
             "label LAB_00dd0b11",
@@ -316,21 +243,11 @@
             "unlifted: appuStack_ac[0] = (undefined **)0x0;",
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
-            "unlifted: StdMap_Construct_API(&uStack_b0);",
-            "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff14,&DAT_01255174,-1);",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,puVar9);",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,puVar9);",
             "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff14,&DAT_0122d70e,-1);",
-            "unlifted: RunCutsceneMacro_Func(&CStack_f8,&ppuStack_bc,(void *)0x0,(void *)0x0,false,true);",
             "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
-            "unlifted: StdMap_Destroy_API(&CStack_c0);",
             "unlifted: CSubtitleRenderer::SetText(0x55);",
             "SetQuestAsCompleted: missing showQuestCompleteScreen (3 args for 4 params)",
-            "RemoveQuestInfoElement: missing id (0 args for 1 params)",
-            "unlifted: b2 = true;",
-            "unlifted: pMessage = (CWideString *)(this + *(int *)(this + 100) * 4 + 0x68);"
+            "RemoveQuestInfoElement: missing id (0 args for 1 params)"
           ],
           "calls": [
             "NewScriptFrame",
@@ -379,9 +296,14 @@
             "GiveHeroExperience",
             "GetThingWithScriptName",
             "GetHero",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
             "PauseAllNonScriptedEntities",
+            "ACTORMAP_Destroy",
             "GiveHeroMorality",
             "SetMasterGameState",
             "RemoveQuestInfoElement",
@@ -403,7 +325,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 201,
+          "lines": 197,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -412,8 +334,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil",
-                "line": 62,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:62: unexpected symbol near '*'"
+                "line": 149,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:149: unexpected symbol near '&'"
               }
             ]
           },
@@ -450,18 +372,20 @@
             "unlifted: StdMap_Construct_API(amStack_8c);",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_38,&DAT_01255174,-1);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);",
-            "unlifted: pOther_00 = appuStack_80;",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar9);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_60,&DAT_0122d70e,-1);",
             "unlifted: this_00 = *(int **)(this + 0x40);",
-            "unlifted: aCStack_1c[0] = (CCharString) GetSquaredDistanceBetweenThings((CScriptThing *)&uStack_b8,(",
+            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
+            "unlifted: GetSquaredDistanceBetweenThings(&uStack_b8);",
+            "unlifted: aCStack_1c[0] = (CCharString)(float)extraout_ST0;",
+            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
+            "unlifted: GetSquaredDistanceBetweenThings(auStack_ac);",
             "unlifted: RunCutsceneMacro_Func(aCStack_34,&uStack_90,(void *)0x0,(void *)0x0,false,true);",
             "goto LAB_00dd1736",
             "label LAB_00dd1728",
             "label LAB_00dd1742",
-            "unlifted: StdMap_Destroy_API(&uStack_94);",
             "unlifted: RunCutsceneMacro_Func(aCStack_4c,&uStack_90,(void *)0x0,(void *)0x0,false,true);",
             "verify cleanup at LAB_00dd1728 (lifted as early return)",
             "verify cleanup at LAB_00dd1728 (lifted as early return)",
@@ -478,21 +402,15 @@
             "unlifted: StdMap_Construct_API(amStack_c8);",
             "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff10,&DAT_01255174,-1);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);",
-            "unlifted: pOther = &uStack_bc;",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar9);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther);",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef(aCStack_a0);",
             "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff10,&DAT_0122d70e,-1);",
-            "unlifted: RunCutsceneMacro_Func(&CStack_fc,&stack0xffffff2c,(void *)0x0,(void *)0x0,false,true);",
-            "unlifted: StdMap_Destroy_API(&stack0xffffff28);",
             "unlifted: CSubtitleRenderer::SetText(0x50);",
             "unlifted: pCVar7 = *(CScriptThing **)(DAT_0143e90c + 0xd9c);",
-            "SetThingAsUsable: missing bIsUsable (1 args for 2 params)",
             "SetQuestAsCompleted: missing updateLogbook, showQuestCompleteScreen (2 args for 4 params)",
-            "RemoveQuestInfoElement: missing id (0 args for 1 params)",
-            "unlifted: pMessage = (CWideString *)(this + *(int *)(this + 100) * 4 + 0x68);",
-            "unlifted: b1 = (C3DClothPrimitive)0x1;"
+            "RemoveQuestInfoElement: missing id (0 args for 1 params)"
           ],
           "calls": [
             "NewScriptFrame",
@@ -524,6 +442,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
+            "ACTORMAP_Destroy",
             "FixMovieSequenceCamera",
             "IsActiveThreadTerminating",
             "DisplayTutorial",
@@ -547,7 +466,9 @@
             "GetHero",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
             "PauseAllNonScriptedEntities",
+            "ACTORMAP_Destroy",
             "GiveHeroMorality",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
@@ -573,7 +494,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 252,
+          "lines": 250,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -582,8 +503,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood",
-                "line": 81,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood:81: unexpected symbol near '*'"
+                "line": 229,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood:229: unexpected symbol near '*'"
               }
             ]
           },
@@ -617,7 +538,6 @@
             "verify cleanup at LAB_00dcfe47 (lifted as early return)",
             "goto LAB_00dcfe3f",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "unlifted: dist = 10.0;",
             "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
@@ -631,37 +551,15 @@
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
             "unlifted: pCStack_e4 = aCStack_58;",
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
-            "unlifted: StdMap_Construct_API(&stack0xffffff60);",
-            "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_01255174,-1);",
-            "unlifted: pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pCVar7);",
-            "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_012d1f04,-1);",
-            "unlifted: pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pCVar7);",
-            "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_012d1efc,-1);",
-            "unlifted: pOther = &CStack_7c.field_0x8;",
-            "unlifted: pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pOther);",
-            "unlifted: pOther_00 = auStack_54;",
-            "unlifted: pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pOther_00);",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_84);",
             "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff28,&DAT_0122d70e,-1);",
-            "unlifted: RunCutsceneMacro_Func(&CStack_e8,&stack0xffffff50,(void *)0x0,(void *)0x0,false,true);",
-            "unlifted: StdMap_Destroy_API(&pCStack_b8);",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_5c);",
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
-            "unlifted: StdMap_Construct_API(&piStack_88);",
-            "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff54,&DAT_01255174,-1);",
-            "unlifted: pOther_01 = &uStack_68;",
-            "unlifted: pCVar4 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar4,pOther_01);",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef(aCStack_58);",
             "unlifted: CCharString::CCharString((CCharString *)&stack0xffffff54,&DAT_0122d70e,-1);",
             "unlifted: RunCutsceneMacro_Func(&CStack_bc,&stack0xffffff68,(void *)0x0,(void *)0x0,false,true);",
-            "unlifted: StdMap_Destroy_API(&stack0xffffff60);",
-            "KickOffQuestStartScreen: missing isGold (2 args for 3 params)",
+            "KickOffQuestStartScreen: missing isStory, isGold (1 args for 3 params)",
             "SetThingAsUsable: missing bIsUsable (1 args for 2 params)",
             "goto LAB_00dd03b8",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
@@ -690,11 +588,18 @@
             "GetNearestWithScriptName",
             "GetHero",
             "SheatheHeroWeapons",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
+            "RESOURCE_RunMacro",
             "FixMovieSequenceCamera",
             "PauseAllNonScriptedEntities",
+            "ACTORMAP_Destroy",
             "KickOffQuestStartScreen",
             "GetThingWithScriptName",
             "OpenDoor",
@@ -702,11 +607,14 @@
             "GetThingWithScriptName",
             "OpenDoor",
             "GetHero",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "FixMovieSequenceCamera",
             "PauseAllNonScriptedEntities",
+            "ACTORMAP_Destroy",
             "KickOffQuestStartScreen",
             "DeactivateQuest",
             "Pause",
@@ -735,7 +643,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 171,
+          "lines": 158,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -744,8 +652,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:DoCutsceneIfRequired",
-                "line": 12,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:DoCutsceneIfRequired:12: unexpected symbol near '*'"
+                "line": 13,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:DoCutsceneIfRequired:13: unexpected symbol near '*'"
               }
             ]
           },
@@ -805,30 +713,31 @@
           "nativeSignature": {
             "parameters": [
               {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CCharString *"
+                "native": "comment_to_make",
+                "lua": "native_arg_comment_to_make",
+                "type": "int"
               },
               {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "CScriptThing *"
+                "native": "speaker",
+                "lua": "native_arg_speaker",
+                "type": "int"
               },
               {
-                "native": "param_3",
-                "lua": "native_arg_param_3",
-                "type": "ERaidComment"
+                "native": "comment_type",
+                "lua": "native_arg_comment_type",
+                "type": "int"
               }
             ],
-            "returnKind": "bool"
+            "returnKind": "number"
           },
           "todo": [
+            "unlifted: uStack_14 = *(undefined4 *)(this + 0x4c);",
             "GetTimer: missing timerId (0 args for 1 params)",
             "AddNewConversation: missing pThing (2 args for 3 params)",
             "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "unlifted: uVar3 = (**(code **)(*(int *)native_arg_param_1 + 0xc))(puVar4,&DAT_01244db4,uVar3,0);",
-            "unlifted: CCharString__AppendData(uVar3);",
-            "unlifted: CCharString__AppendCString(puVar4);",
+            "unlifted: iVar3 = (**(code **)(*(int *)native_arg_comment_to_make + 0xc))(p0,&DAT_01244db4,uStack_14",
+            "unlifted: CCharString__AppendData(&uStack_24,iVar3);",
+            "unlifted: CCharString__AppendCString(&uStack_28,(int)p0);",
             "AddLineToConversation: missing spListener (3 args for 5 params)"
           ],
           "calls": [
@@ -844,10 +753,16 @@
           "lines": 18,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": true,
+            "ok": false,
             "checked": 1,
-            "passed": 1,
-            "errors": []
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:MakeTeamMemberComment",
+                "line": 16,
+                "message": "...rchardFarmRaid/OrchardFarmRaid.lua:MakeTeamMemberComment:16: unexpected symbol near '&'"
+              }
+            ]
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -861,52 +776,31 @@
           "evidence": "PDB-name via string-set match (jaccard 0.70)",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": "number"
           },
           "todo": [
-            "unlifted: ePriority = 4;",
-            "unlifted: pScriptObject = local_10;",
             "StartScriptingEntity: unresolved entity receiver/resource in quest context",
-            "unlifted: puStack_38 = malloc(0x24);",
-            "unlifted: *puStack_38 = 0;",
-            "unlifted: *(undefined4 *)(puStack_38 + 4) = 0;",
-            "unlifted: *(undefined1 **)(puStack_38 + 8) = puStack_38;",
-            "unlifted: *(undefined1 **)(puStack_38 + 0xc) = puStack_38;",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_40,&DAT_01255174,-1);",
-            "unlifted: this_00 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CFourierAnalysis::CFourierAnalysis(this_00);",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(this_00 + 0xc))[1])();",
-            "unlifted: *(CScriptThing **)(this_00 + 8) = local_3c;",
-            "unlifted: *(int **)(this_00 + 0xc) = piVar3;",
-            "unlifted: *piVar3 = *piVar3 + 1;",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_40,&DAT_0122d70e,-1);",
-            "unlifted: string = \"CS_ORCHARD_GOOD_WHISPERINTRO_GWLL\";",
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
-            "unlifted: dist = 20.0;",
+            "unlifted: local_3c = (CScriptThing *)piVar3;",
             "verify cleanup at LAB_00dd1d15 (lifted as early return)",
-            "unlifted: string = \"CS_ORCHARD_GOOD_WHISPERINTRO_GWL\";",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
             "label LAB_00dd1e53",
-            "unlifted: string = \"CS_ORCHARD_EVIL_WHISPERINTRO_GWL\";",
             "label LAB_00dd1d98",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_40,string,-1);",
-            "unlifted: RunCutsceneMacro_Func(&CStack_40,&puStack_38,(void *)0x0,(void *)0x0,false,true);",
             "verify cleanup at LAB_00dd1e53 (lifted as early return)",
             "verify cleanup at LAB_00dd1e53 (lifted as early return)",
             "verify cleanup at LAB_00dd1e3d (lifted as early return)",
             "verify cleanup at LAB_00dd1e3d (lifted as early return)",
-            "unlifted: string = \"CS_ORCHARD_EVIL_WHISPERINTRO_LOP\";",
             "verify cleanup at LAB_00dd1e53 (lifted as early return)",
-            "unlifted: string = \"CS_ORCHARD_GOOD_WHISPERINTRO_LOP\";",
             "goto LAB_00dd1d98",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
-            "unlifted: StdMap_Destroy_API(&puStack_38);"
+            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti"
           ],
           "calls": [
             "GetHero",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
@@ -922,6 +816,7 @@
             "PauseAllNonScriptedEntities",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
             "FixMovieSequenceCamera",
             "IsActiveThreadTerminating",
             "DisplayTutorial",
@@ -935,9 +830,10 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "PauseAllNonScriptedEntities"
+            "PauseAllNonScriptedEntities",
+            "ACTORMAP_Destroy"
           ],
-          "lines": 154,
+          "lines": 126,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -946,8 +842,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:DoMultiplierCutscene",
-                "line": 17,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:DoMultiplierCutscene:17: unexpected symbol near '*'"
+                "line": 8,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:DoMultiplierCutscene:8: unexpected symbol near '&'"
               }
             ]
           },
@@ -969,14 +865,14 @@
           "evidence": "PDB-name via string-set match (jaccard 1.00)",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": "number"
           },
           "todo": [],
           "calls": [
             "AddQuestCard",
             "AddQuestCard"
           ],
-          "lines": 2,
+          "lines": 3,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1003,15 +899,14 @@
             "CreateCreature: missing defName, scriptName (1 args for 3 params)",
             "goto LAB_00dcd9ed",
             "CreateCreature: missing defName, scriptName (1 args for 3 params)",
-            "unlifted: ENTITYTHING_Set(\"OtherSpawnPoint\", (CScriptThing *)pCVar6);",
             "label LAB_00dcd9ed",
             "unlifted: *(undefined4 *)(*(int *)(this + 0x14) + 100) = 3;",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_5c);",
             "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(CScriptThing *)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
             "verify cleanup at LAB_00dcda68 (lifted as early return)",
             "CreateCreature: missing scriptName (2 args for 3 params)",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(CScriptThing *)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
             "goto LAB_00dcd9ed"
           ],
           "calls": [
@@ -1031,6 +926,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "SetTimer",
+            "QUESTSTATE_GetInt",
             "GetHero",
             "GetPos",
             "IsCameraPosOnScreen",
@@ -1047,6 +943,7 @@
             "EntityAttachToScript",
             "Pause",
             "GetRandomThingWithScriptName",
+            "ENTITYTHING_Set",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -1064,6 +961,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetPos",
@@ -1105,26 +1003,21 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(this + 0x24))[1])();",
-            "unnamed field 0x20 written in Init",
-            "unlifted: *(int **)(this + 0x24) = piVar4;",
-            "unlifted: *piVar4 = *piVar4 + 1;",
             "unlifted: *uStack_4 = *uStack_4 + -1;",
             "unlifted: local_c._4_4_ = 0;",
             "GetName: CScriptThing method not in FSE manifest",
             "label LAB_00dcd306",
             "unnamed field 0x34 written in Init",
-            "unlifted: lVar5 = CBasicString<char>::Compare(*(char **)*piVar4,\"BanditTeamSpawn\");",
+            "unlifted: iVar5 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar4);",
             "verify cleanup at LAB_00dcd306 (lifted as early return)",
             "unnamed field 0x34 written in Init",
-            "unlifted: CCharString::operator=((CCharString *)(this + 0x38),pcVar9);",
+            "unlifted: CCharString::operator=((CCharString *)(this + 0x38),pcVar8);",
             "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd6c);",
             "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd70);"
           ],
           "calls": [
             "GetRandomThingWithScriptName",
-            "SetStateInt",
+            "ENTITYTHING_Set",
             "GetName",
             "SetStateInt",
             "SetStateString",
@@ -1137,7 +1030,7 @@
             "SetStateInt",
             "SetStateInt"
           ],
-          "lines": 59,
+          "lines": 43,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1146,8 +1039,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:Init",
-                "line": 4,
-                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:Init:4: unexpected symbol near '*'"
+                "line": 7,
+                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:Init:7: unexpected symbol near '*'"
               }
             ]
           },
@@ -1219,15 +1112,14 @@
             "CreateCreature: missing defName, scriptName (1 args for 3 params)",
             "goto LAB_00dcd9ed",
             "CreateCreature: missing defName, scriptName (1 args for 3 params)",
-            "unlifted: ENTITYTHING_Set(\"OtherSpawnPoint\", (CScriptThing *)pCVar6);",
             "label LAB_00dcd9ed",
             "unlifted: *(undefined4 *)(*(int *)(this + 0x14) + 100) = 3;",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_5c);",
             "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(CScriptThing *)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
             "verify cleanup at LAB_00dcda68 (lifted as early return)",
             "CreateCreature: missing scriptName (2 args for 3 params)",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(CScriptThing *)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
             "goto LAB_00dcd9ed"
           ],
           "calls": [
@@ -1247,6 +1139,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "SetTimer",
+            "QUESTSTATE_GetInt",
             "GetHero",
             "GetPos",
             "IsCameraPosOnScreen",
@@ -1263,6 +1156,7 @@
             "EntityAttachToScript",
             "Pause",
             "GetRandomThingWithScriptName",
+            "ENTITYTHING_Set",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -1280,6 +1174,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetPos",
@@ -1321,26 +1216,21 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(this + 0x24))[1])();",
-            "unnamed field 0x20 written in Init",
-            "unlifted: *(int **)(this + 0x24) = piVar4;",
-            "unlifted: *piVar4 = *piVar4 + 1;",
             "unlifted: *uStack_4 = *uStack_4 + -1;",
             "unlifted: local_c._4_4_ = 0;",
             "GetName: CScriptThing method not in FSE manifest",
             "label LAB_00dcd306",
             "unnamed field 0x34 written in Init",
-            "unlifted: lVar5 = CBasicString<char>::Compare(*(char **)*piVar4,\"BanditTeamSpawn\");",
+            "unlifted: iVar5 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar4);",
             "verify cleanup at LAB_00dcd306 (lifted as early return)",
             "unnamed field 0x34 written in Init",
-            "unlifted: CCharString::operator=((CCharString *)(this + 0x38),pcVar9);",
+            "unlifted: CCharString::operator=((CCharString *)(this + 0x38),pcVar8);",
             "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd6c);",
             "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd70);"
           ],
           "calls": [
             "GetRandomThingWithScriptName",
-            "SetStateInt",
+            "ENTITYTHING_Set",
             "GetName",
             "SetStateInt",
             "SetStateString",
@@ -1353,7 +1243,7 @@
             "SetStateInt",
             "SetStateInt"
           ],
-          "lines": 59,
+          "lines": 43,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1362,8 +1252,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:Init",
-                "line": 4,
-                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:Init:4: unexpected symbol near '*'"
+                "line": 7,
+                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:Init:7: unexpected symbol near '*'"
               }
             ]
           },
@@ -1440,10 +1330,8 @@
             "unlifted: undefined4 uStack_14;",
             "unlifted: undefined **local_10;",
             "unlifted: CScriptThing local_c [12];",
-            "unlifted: p0 = (CScriptThing *)(this + 8);",
             "label LAB_00dcddfe",
             "unlifted: auStack_1c._4_4_ = 0;",
-            "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
             "label LAB_00dcddcf",
             "verify cleanup at LAB_00dcddfe (lifted as early return)",
             "goto LAB_00dcddf6",
@@ -1468,7 +1356,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 61,
+          "lines": 60,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1492,7 +1380,7 @@
           },
           "todo": [
             "unlifted: CStack_4 = (CCharString)this;",
-            "unlifted: Vector_PushBack_ScriptThing((CScriptThing *)(this + 8));"
+            "unlifted: Vector_PushBack_ScriptThing((void *)(*(int *)(this + 0x14) + 0x54),this + 8);"
           ],
           "calls": [
             "SetStateInt",
@@ -1542,11 +1430,11 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: local_4 = *(int **)(iVar2 + 8);",
-            "unlifted: local_8 = *(int **)(iVar2 + 4);",
+            "unlifted: local_4 = *(int **)(p0 + 8);",
+            "unlifted: local_8 = *(int **)(p0 + 4);",
             "unlifted: *local_4 = *local_4 + 1;",
             "unnamed field 0xc",
-            "unlifted: std__vector__pop_back(iVar2);"
+            "unlifted: std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);"
           ],
           "calls": [],
           "lines": 18,
@@ -1578,24 +1466,10 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: p0 = (CScriptThing *)(this + 8);",
-            "EntitySetAsKillable: missing pThing (2 args for 3 params)",
-            "EntitySetAsToAddToComboMultiplierWhenHit: missing pThing (1 args for 2 params)",
-            "EntitySetCombatType: missing spThing (1 args for 2 params)",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "EntitySetAsToAddToComboMultiplierWhenHit: missing pThing (1 args for 2 params)",
-            "EntitySetAsKillable: missing pThing (2 args for 3 params)",
-            "EntitySetAsDamageable: missing pThing (1 args for 2 params)",
             "unlifted: CStack_18._1_1_ = 0xff;",
             "unlifted: CStack_18._3_1_ = 0xff;",
             "unlifted: CStack_18._2_1_ = 0;",
-            "unlifted: CStack_18._0_1_ = 0;",
-            "AddQuestInfoBarHealth: missing spThing (3 args for 4 params)",
-            "EntitySetCombatType: missing spThing (1 args for 2 params)",
-            "GetHealth: missing pThing (0 args for 1 params)"
+            "unlifted: CStack_18._0_1_ = 0;"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1632,7 +1506,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 74,
+          "lines": 73,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1641,8 +1515,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main",
-                "line": 22,
-                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main:22: unexpected symbol near '*'"
+                "line": 21,
+                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main:21: unexpected symbol near '*'"
               }
             ]
           },
@@ -1661,18 +1535,9 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: string = \"FACTION_GUARDS_ENEMY\";",
-            "unlifted: string = \"FACTION_BANDITS\";",
             "unlifted: CStack_4 = (CCharString)this;",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_4,string,-1);",
-            "unlifted: pThing = (CScriptThing *)(this + 8);",
-            "EntitySetInFaction: missing pThing, factionName (0 args for 2 params)",
-            "EntitySetAsKillable: missing pThing (2 args for 3 params)",
             "unlifted: this_00 = *(int **)(this + 4);",
-            "unlifted: pThing2 = (**(code **)(*this_00 + 0x118))(this_00);",
-            "EntitySetAsAwareOfThing: missing spThing1, spThing2 (0 args for 2 params)",
-            "EntitySetAsDamageable: missing pThing (1 args for 2 params)",
-            "EntitySetAllowBossPhaseChanges: missing spThing (1 args for 2 params)"
+            "EntitySetAsAwareOfThing: missing spThing2 (1 args for 2 params)"
           ],
           "calls": [
             "EntitySetInFaction",
@@ -1681,7 +1546,7 @@
             "EntitySetAsDamageable",
             "EntitySetAllowBossPhaseChanges"
           ],
-          "lines": 16,
+          "lines": 12,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1690,8 +1555,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Init",
-                "line": 13,
-                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Init:13: unexpected symbol near '*'"
+                "line": 9,
+                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Init:9: unexpected symbol near '*'"
               }
             ]
           },
@@ -1755,37 +1620,26 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: p0 = (CScriptThing *)(this + 8);",
-            "RemoveThing: missing pThing (2 args for 3 params)",
-            "SetStateInt: missing key (1 args for 2 params)",
-            "SetStateInt: missing key (1 args for 2 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce357;",
             "GetCurrentStateGroupType: CScriptThing method not in FSE manifest",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce40a;",
             "unlifted: this_00 = auStack_58;",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_54;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce4be;",
             "unlifted: this_00 = auStack_54;",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_50;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce4f7;",
             "unlifted: this_00 = auStack_50;",
             "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
-            "GetNearestCrateToMe: 0 helper operands for 1 parameters",
             "label LAB_00dce594",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)0xdce572;",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),&DAT_0122d70e,-1);",
             "verify cleanup at LAB_00dce594 (lifted as early return)",
             "label LAB_00dcebab",
-            "IsDistanceBetweenThingsUnder: missing spThing1, spThing2 (1 args for 3 params)",
+            "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unlifted: in_stack_ffffff74 = (CScriptThing *)0xdce662;",
             "SetCombatNearbyBreakOffRange: missing spThing (1 args for 2 params)",
-            "unlifted: in_stack_ffffff64 = (CScriptThing *)0xdce67d;",
             "SetStealStealableItems: missing spThing (1 args for 2 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
@@ -1794,15 +1648,11 @@
             "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
             "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_48;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce716;",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdce74c;",
             "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
-            "unlifted: in_stack_ffffff80 = (undefined **)0x0;",
             "unlifted: in_stack_ffffff6c = (CScriptThing *)0xdce766;",
             "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
-            "unlifted: in_stack_ffffff70 = (CScriptThing *)0x0;",
-            "unlifted: in_stack_ffffff5c = (CScriptThing *)0xdce780;",
             "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
             "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
             "unnamed field 0x2c",
@@ -1810,23 +1660,21 @@
             "unlifted: in_stack_ffffff7c = p0;",
             "EntityFollowThing: missing spFollower, spTarget, bUnknown (1 args for 4 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)&piStack_44;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce84e;",
             "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
+            "unnamed field 0x2c",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
             "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
             "unlifted: in_stack_ffffff7c = p0;",
             "EntityFollowThing: missing spFollower, spTarget, distance, bUnknown (0 args for 4 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_40;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce924;",
             "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
-            "unlifted: CScriptThing::operator=(QUESTTHING_Get(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_Tea",
+            "unnamed field 0x2c",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_40 + 4),\"REQUEST_PROTECTION\",-1);",
             "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdcea0a;",
             "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
-            "unlifted: CScriptThing::operator= (QUESTTHING_Get(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_Te",
             "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdceaa0;",
@@ -1835,13 +1683,9 @@
             "GetNearestWithScriptName: missing spRelativeTo (1 args for 2 params)",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&local_20);",
             "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&local_20);",
-            "unlifted: pppuVar9 = &local_20;",
-            "unlifted: p0_00 = p0;",
             "collapse the StartScriptingEntity retry loop around AcquireControl",
             "collapse the StartScriptingEntity retry loop around AcquireControl",
-            "MoveToPosition: missing position (4 args for 5 params)",
-            "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
-            "FadeOutAndKillEntity: missing thing (3 args for 4 params)"
+            "MoveToPosition: missing position (4 args for 5 params)"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1851,8 +1695,8 @@
             "IsActiveThreadTerminating",
             "RemoveThing",
             "IsActiveThreadTerminating",
-            "SetStateInt",
-            "SetStateInt",
+            "QUESTSTATE_SetInt",
+            "QUESTSTATE_SetInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsInCutscene",
@@ -1904,8 +1748,10 @@
             "IsDead",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "QUESTTHING_Set",
             "SetCombatNearbyBreakOffRange",
             "IsActiveThreadTerminating",
+            "QUESTTHING_Set",
             "SetCombatNearbyBreakOffRange",
             "IsActiveThreadTerminating",
             "EntityStopFollowing",
@@ -1927,7 +1773,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 450,
+          "lines": 435,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1936,8 +1782,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Main",
-                "line": 131,
-                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Main:131: ')' expected near ':'"
+                "line": 126,
+                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Main:126: ')' expected near ':'"
               }
             ]
           },
@@ -1962,29 +1808,14 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: pThing = (CScriptThing *)(this + 8);",
             "GetName: CScriptThing method not in FSE manifest",
             "label LAB_00dce00a",
-            "unlifted: lVar3 = CBasicString<char>::Compare(*(char **)*piVar1,\"BanditTeamMember\");",
-            "unlifted: cStack_11 = '\\x01' - (lVar3 != 0);",
+            "unlifted: iVar3 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar1);",
+            "unlifted: cStack_11 = '\\x01' - (iVar3 != 0);",
             "verify cleanup at LAB_00dce00a (lifted as early return)",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "EntitySetThingAsAllyOfThing: missing spThing2 (1 args for 2 params)",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "MiniMapAddMarker: missing spThing (1 args for 2 params)",
-            "SetIsThingTurncoatable: missing spThing (1 args for 2 params)",
-            "EntitySetAsDisplayingEmoteIcon: missing spThing (1 args for 2 params)",
             "SetDataString: CScriptThing method not in FSE manifest",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "EntitySetThingAsAllyOfThing: missing spThing2 (1 args for 2 params)",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "MiniMapAddMarker: missing spThing (1 args for 2 params)",
-            "EntitySetAsDisplayingEmoteIcon: missing spThing (1 args for 2 params)",
             "SetDataString: CScriptThing method not in FSE manifest",
-            "unlifted: ENTITYSTATE_SetInt(\"MyTeam\", *(int *)(this + 0x24));",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "SetStateInt: missing key (1 args for 2 params)",
-            "unlifted: ENTITYTHING_Set(\"ThingToPatrolTo\", nil);",
             "unlifted: *piStack_8 = *piStack_8 + -1;"
           ],
           "calls": [
@@ -2006,12 +1837,14 @@
             "MiniMapAddMarker",
             "EntitySetAsDisplayingEmoteIcon",
             "SetDataString",
+            "ENTITYSTATE_SetInt",
             "SetStateInt",
             "SetStateInt",
             "SetStateInt",
-            "SetStateInt"
+            "QUESTSTATE_SetInt",
+            "ENTITYTHING_Set"
           ],
-          "lines": 58,
+          "lines": 57,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -2020,8 +1853,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Init",
-                "line": 6,
-                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Init:6: unexpected symbol near '*'"
+                "line": 5,
+                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Init:5: unexpected symbol near '*'"
               }
             ]
           },
@@ -2067,13 +1900,12 @@
           "todo": [
             "unnamed field 0x14",
             "unlifted: *piVar1 = *piVar1 + -1;",
-            "SetStateInt: missing key (1 args for 2 params)",
             "unlifted: pvStack_4 = this;",
             "unlifted: CCharString::CCharString((CCharString *)&pvStack_4,&DAT_0122d70e,-1);",
             "MsgIsKilledBy: 0 operands for 1 params"
           ],
           "calls": [
-            "SetStateInt",
+            "QUESTSTATE_SetInt",
             "MsgIsKilledBy",
             "SetMasterGameState",
             "SetMasterGameState"
@@ -2098,14 +1930,13 @@
           "evidence": "bsim label agrees with a PDB nested member",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": "number"
           },
           "todo": [
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "unnamed field 0x2c",
-            "unlifted: *piVar1 = *piVar1 + -1;",
-            "SetStateInt: missing key (1 args for 2 params)"
+            "unlifted: *piVar1 = *piVar1 + -1;"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -2117,9 +1948,9 @@
             "EntityFollowThing",
             "EntitySetAsMirroringHeroEnemyRelationsWhileFollowing",
             "SetStateInt",
-            "SetStateInt"
+            "QUESTSTATE_SetInt"
           ],
-          "lines": 28,
+          "lines": 30,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2140,12 +1971,12 @@
           "nativeSignature": {
             "parameters": [
               {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CScriptThing *"
+                "native": "thing",
+                "lua": "native_arg_thing",
+                "type": "int"
               }
             ],
-            "returnKind": "bool"
+            "returnKind": "number"
           },
           "todo": [
             "IsHeroAllowedHenchmenInRegion: missing regionName (0 args for 1 params)"
@@ -2156,7 +1987,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 30,
+          "lines": 31,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -2165,14 +1996,18 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:IsThingCarryingCrate",
-                "line": 15,
-                "message": "...rmRaid/Entities/GuardTeamMember.lua:IsThingCarryingCrate:15: unexpected symbol near '*'"
+                "line": 14,
+                "message": "...rmRaid/Entities/GuardTeamMember.lua:IsThingCarryingCrate:14: unexpected symbol near '*'"
               }
             ]
           },
           "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
+          "nativeJumps": [
+            "if (bVar1) goto LAB_00dcedc1;"
+          ],
+          "nativeLabels": [
+            "LAB_00dcedc1"
+          ]
         },
         {
           "owner": "GuardTeamMember",
@@ -2181,25 +2016,21 @@
           "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
           "evidence": "WEAK: size-rank pairing (retail 350 B vs debug 315 B)",
           "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "undefined4 *"
-              }
-            ],
-            "returnKind": null
+            "parameters": [],
+            "returnKind": "number"
           },
           "todo": [
             "unlifted: local_18 = 1e+07;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
+            "unlifted: GetSquaredDistanceBetweenThings((void *)(this + 8));",
+            "unlifted: local_18 = (float)extraout_ST0;",
+            "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: local_14 = local_14 + 1;",
-            "unlifted: native_arg_param_2[1] = local_8;",
-            "unlifted: native_arg_param_2[2] = local_4;",
+            "unlifted: in_stack_00000004[1] = local_8;",
+            "unlifted: in_stack_00000004[2] = local_4;",
             "unlifted: *local_4 = *local_4 + 1;"
           ],
           "calls": [],
-          "lines": 30,
+          "lines": 29,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -2208,8 +2039,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:GetNearestCrateToMe",
-                "line": 5,
-                "message": "...armRaid/Entities/GuardTeamMember.lua:GetNearestCrateToMe:5: unexpected symbol near '*'"
+                "line": 12,
+                "message": "...armRaid/Entities/GuardTeamMember.lua:GetNearestCrateToMe:12: unexpected symbol near '*'"
               }
             ]
           },
@@ -2265,37 +2096,26 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: p0 = (CScriptThing *)(this + 8);",
-            "RemoveThing: missing pThing (2 args for 3 params)",
-            "SetStateInt: missing key (1 args for 2 params)",
-            "SetStateInt: missing key (1 args for 2 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce357;",
             "GetCurrentStateGroupType: CScriptThing method not in FSE manifest",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce40a;",
             "unlifted: this_00 = auStack_58;",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_54;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce4be;",
             "unlifted: this_00 = auStack_54;",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_50;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce4f7;",
             "unlifted: this_00 = auStack_50;",
             "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
-            "GetNearestCrateToMe: 0 helper operands for 1 parameters",
             "label LAB_00dce594",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)0xdce572;",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),&DAT_0122d70e,-1);",
             "verify cleanup at LAB_00dce594 (lifted as early return)",
             "label LAB_00dcebab",
-            "IsDistanceBetweenThingsUnder: missing spThing1, spThing2 (1 args for 3 params)",
+            "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unlifted: in_stack_ffffff74 = (CScriptThing *)0xdce662;",
             "SetCombatNearbyBreakOffRange: missing spThing (1 args for 2 params)",
-            "unlifted: in_stack_ffffff64 = (CScriptThing *)0xdce67d;",
             "SetStealStealableItems: missing spThing (1 args for 2 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
@@ -2304,15 +2124,11 @@
             "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
             "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_48;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce716;",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdce74c;",
             "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
-            "unlifted: in_stack_ffffff80 = (undefined **)0x0;",
             "unlifted: in_stack_ffffff6c = (CScriptThing *)0xdce766;",
             "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
-            "unlifted: in_stack_ffffff70 = (CScriptThing *)0x0;",
-            "unlifted: in_stack_ffffff5c = (CScriptThing *)0xdce780;",
             "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
             "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
             "unnamed field 0x2c",
@@ -2320,23 +2136,21 @@
             "unlifted: in_stack_ffffff7c = p0;",
             "EntityFollowThing: missing spFollower, spTarget, bUnknown (1 args for 4 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)&piStack_44;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce84e;",
             "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
+            "unnamed field 0x2c",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
             "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
             "unlifted: in_stack_ffffff7c = p0;",
             "EntityFollowThing: missing spFollower, spTarget, distance, bUnknown (0 args for 4 params)",
             "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_40;",
-            "unlifted: in_stack_ffffff80 = (undefined **)0xdce924;",
             "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
-            "unlifted: CScriptThing::operator=(QUESTTHING_Get(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_Tea",
+            "unnamed field 0x2c",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_40 + 4),\"REQUEST_PROTECTION\",-1);",
             "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdcea0a;",
             "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
-            "unlifted: CScriptThing::operator= (QUESTTHING_Get(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_Te",
             "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdceaa0;",
@@ -2345,13 +2159,9 @@
             "GetNearestWithScriptName: missing spRelativeTo (1 args for 2 params)",
             "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&local_20);",
             "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&local_20);",
-            "unlifted: pppuVar9 = &local_20;",
-            "unlifted: p0_00 = p0;",
             "collapse the StartScriptingEntity retry loop around AcquireControl",
             "collapse the StartScriptingEntity retry loop around AcquireControl",
-            "MoveToPosition: missing position (4 args for 5 params)",
-            "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
-            "FadeOutAndKillEntity: missing thing (3 args for 4 params)"
+            "MoveToPosition: missing position (4 args for 5 params)"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2361,8 +2171,8 @@
             "IsActiveThreadTerminating",
             "RemoveThing",
             "IsActiveThreadTerminating",
-            "SetStateInt",
-            "SetStateInt",
+            "QUESTSTATE_SetInt",
+            "QUESTSTATE_SetInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsInCutscene",
@@ -2414,8 +2224,10 @@
             "IsDead",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "QUESTTHING_Set",
             "SetCombatNearbyBreakOffRange",
             "IsActiveThreadTerminating",
+            "QUESTTHING_Set",
             "SetCombatNearbyBreakOffRange",
             "IsActiveThreadTerminating",
             "EntityStopFollowing",
@@ -2437,7 +2249,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 450,
+          "lines": 435,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -2446,8 +2258,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Main",
-                "line": 131,
-                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Main:131: ')' expected near ':'"
+                "line": 126,
+                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Main:126: ')' expected near ':'"
               }
             ]
           },
@@ -2472,29 +2284,14 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: pThing = (CScriptThing *)(this + 8);",
             "GetName: CScriptThing method not in FSE manifest",
             "label LAB_00dce00a",
-            "unlifted: lVar3 = CBasicString<char>::Compare(*(char **)*piVar1,\"BanditTeamMember\");",
-            "unlifted: cStack_11 = '\\x01' - (lVar3 != 0);",
+            "unlifted: iVar3 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar1);",
+            "unlifted: cStack_11 = '\\x01' - (iVar3 != 0);",
             "verify cleanup at LAB_00dce00a (lifted as early return)",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "EntitySetThingAsAllyOfThing: missing spThing2 (1 args for 2 params)",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "MiniMapAddMarker: missing spThing (1 args for 2 params)",
-            "SetIsThingTurncoatable: missing spThing (1 args for 2 params)",
-            "EntitySetAsDisplayingEmoteIcon: missing spThing (1 args for 2 params)",
             "SetDataString: CScriptThing method not in FSE manifest",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "EntitySetThingAsAllyOfThing: missing spThing2 (1 args for 2 params)",
-            "EntitySetInFaction: missing pThing (1 args for 2 params)",
-            "MiniMapAddMarker: missing spThing (1 args for 2 params)",
-            "EntitySetAsDisplayingEmoteIcon: missing spThing (1 args for 2 params)",
             "SetDataString: CScriptThing method not in FSE manifest",
-            "unlifted: ENTITYSTATE_SetInt(\"MyTeam\", *(int *)(this + 0x24));",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "SetStateInt: missing key (1 args for 2 params)",
-            "unlifted: ENTITYTHING_Set(\"ThingToPatrolTo\", nil);",
             "unlifted: *piStack_8 = *piStack_8 + -1;"
           ],
           "calls": [
@@ -2516,12 +2313,14 @@
             "MiniMapAddMarker",
             "EntitySetAsDisplayingEmoteIcon",
             "SetDataString",
+            "ENTITYSTATE_SetInt",
             "SetStateInt",
             "SetStateInt",
             "SetStateInt",
-            "SetStateInt"
+            "QUESTSTATE_SetInt",
+            "ENTITYTHING_Set"
           ],
-          "lines": 58,
+          "lines": 57,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -2530,8 +2329,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Init",
-                "line": 6,
-                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Init:6: unexpected symbol near '*'"
+                "line": 5,
+                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Init:5: unexpected symbol near '*'"
               }
             ]
           },
@@ -2577,13 +2376,12 @@
           "todo": [
             "unnamed field 0x14",
             "unlifted: *piVar1 = *piVar1 + -1;",
-            "SetStateInt: missing key (1 args for 2 params)",
             "unlifted: pvStack_4 = this;",
             "unlifted: CCharString::CCharString((CCharString *)&pvStack_4,&DAT_0122d70e,-1);",
             "MsgIsKilledBy: 0 operands for 1 params"
           ],
           "calls": [
-            "SetStateInt",
+            "QUESTSTATE_SetInt",
             "MsgIsKilledBy",
             "SetMasterGameState",
             "SetMasterGameState"
@@ -2608,14 +2406,13 @@
           "evidence": "bsim label agrees with a PDB nested member",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": "number"
           },
           "todo": [
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "unnamed field 0x2c",
-            "unlifted: *piVar1 = *piVar1 + -1;",
-            "SetStateInt: missing key (1 args for 2 params)"
+            "unlifted: *piVar1 = *piVar1 + -1;"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -2627,9 +2424,9 @@
             "EntityFollowThing",
             "EntitySetAsMirroringHeroEnemyRelationsWhileFollowing",
             "SetStateInt",
-            "SetStateInt"
+            "QUESTSTATE_SetInt"
           ],
-          "lines": 28,
+          "lines": 30,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2650,12 +2447,12 @@
           "nativeSignature": {
             "parameters": [
               {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CScriptThing *"
+                "native": "thing",
+                "lua": "native_arg_thing",
+                "type": "int"
               }
             ],
-            "returnKind": "bool"
+            "returnKind": "number"
           },
           "todo": [
             "IsHeroAllowedHenchmenInRegion: missing regionName (0 args for 1 params)"
@@ -2666,7 +2463,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 30,
+          "lines": 31,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -2675,14 +2472,18 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:IsThingCarryingCrate",
-                "line": 15,
-                "message": "...mRaid/Entities/BanditTeamMember.lua:IsThingCarryingCrate:15: unexpected symbol near '*'"
+                "line": 14,
+                "message": "...mRaid/Entities/BanditTeamMember.lua:IsThingCarryingCrate:14: unexpected symbol near '*'"
               }
             ]
           },
           "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
+          "nativeJumps": [
+            "if (bVar1) goto LAB_00dcedc1;"
+          ],
+          "nativeLabels": [
+            "LAB_00dcedc1"
+          ]
         },
         {
           "owner": "BanditTeamMember",
@@ -2691,25 +2492,21 @@
           "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
           "evidence": "WEAK: size-rank pairing (retail 350 B vs debug 315 B)",
           "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "undefined4 *"
-              }
-            ],
-            "returnKind": null
+            "parameters": [],
+            "returnKind": "number"
           },
           "todo": [
             "unlifted: local_18 = 1e+07;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
+            "unlifted: GetSquaredDistanceBetweenThings((void *)(this + 8));",
+            "unlifted: local_18 = (float)extraout_ST0;",
+            "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: local_14 = local_14 + 1;",
-            "unlifted: native_arg_param_2[1] = local_8;",
-            "unlifted: native_arg_param_2[2] = local_4;",
+            "unlifted: in_stack_00000004[1] = local_8;",
+            "unlifted: in_stack_00000004[2] = local_4;",
             "unlifted: *local_4 = *local_4 + 1;"
           ],
           "calls": [],
-          "lines": 30,
+          "lines": 29,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -2718,8 +2515,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:GetNearestCrateToMe",
-                "line": 5,
-                "message": "...rmRaid/Entities/BanditTeamMember.lua:GetNearestCrateToMe:5: unexpected symbol near '*'"
+                "line": 12,
+                "message": "...rmRaid/Entities/BanditTeamMember.lua:GetNearestCrateToMe:12: unexpected symbol near '*'"
               }
             ]
           },
@@ -3066,13 +2863,13 @@
         "errors": [
           {
             "path": "FSE/OrchardFarmRaid/Entities/Artefact.lua",
-            "line": 89,
-            "message": "FSE/OrchardFarmRaid/Entities/Artefact.lua:89: unexpected symbol near '*'"
+            "line": 88,
+            "message": "FSE/OrchardFarmRaid/Entities/Artefact.lua:88: unexpected symbol near '*'"
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-            "line": 143,
-            "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:143: ')' expected near ':'"
+            "line": 138,
+            "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:138: ')' expected near ':'"
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua",
@@ -3081,8 +2878,8 @@
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
-            "line": 143,
-            "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:143: ')' expected near ':'"
+            "line": 138,
+            "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:138: ')' expected near ':'"
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua",
@@ -3091,18 +2888,18 @@
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua",
-            "line": 34,
-            "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:34: unexpected symbol near '*'"
+            "line": 33,
+            "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:33: unexpected symbol near '*'"
           },
           {
             "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua",
-            "line": 135,
-            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:135: unexpected symbol near '*'"
+            "line": 263,
+            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:263: unexpected symbol near '&'"
           },
           {
             "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-            "line": 19,
-            "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:19: unexpected symbol near '*'"
+            "line": 9,
+            "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:9: unexpected symbol near '&'"
           }
         ]
       },
@@ -3115,54 +2912,32 @@
         ],
         "todo": {
           "DoMultiplierCutscene": [
-            "unlifted: ePriority = 4;",
-            "unlifted: pScriptObject = local_10;",
             "collapse the StartScriptingEntity retry loop around AcquireControl",
-            "unlifted: puStack_38 = malloc(0x24);",
-            "unlifted: *puStack_38 = 0;",
-            "unlifted: *(undefined4 *)(puStack_38 + 4) = 0;",
-            "unlifted: *(undefined1 **)(puStack_38 + 8) = puStack_38;",
-            "unlifted: *(undefined1 **)(puStack_38 + 0xc) = puStack_38;",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_40,&DAT_01255174,-1);",
-            "unlifted: this_00 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CFourierAnalysis::CFourierAnalysis(this_00);",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(this_00 + 0xc))[1])();",
-            "unlifted: *(CScriptThing **)(this_00 + 8) = local_3c;",
-            "unlifted: *(int **)(this_00 + 0xc) = piVar3;",
-            "unlifted: *piVar3 = *piVar3 + 1;",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_40,&DAT_0122d70e,-1);",
-            "unlifted: string = \"CS_ORCHARD_GOOD_WHISPERINTRO_GWLL\";",
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
-            "unlifted: dist = 20.0;",
+            "unlifted: local_3c = (CScriptThing *)piVar3;",
             "verify cleanup at LAB_00dd1d15 (lifted as early return)",
-            "unlifted: string = \"CS_ORCHARD_GOOD_WHISPERINTRO_GWL\";",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
             "label LAB_00dd1e53",
-            "unlifted: string = \"CS_ORCHARD_EVIL_WHISPERINTRO_GWL\";",
             "label LAB_00dd1d98",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_40,string,-1);",
-            "unlifted: RunCutsceneMacro_Func(&CStack_40,&puStack_38,(void *)0x0,(void *)0x0,false,true);",
             "verify cleanup at LAB_00dd1e53 (lifted as early return)",
             "verify cleanup at LAB_00dd1e53 (lifted as early return)",
             "verify cleanup at LAB_00dd1e3d (lifted as early return)",
             "verify cleanup at LAB_00dd1e3d (lifted as early return)",
-            "unlifted: string = \"CS_ORCHARD_EVIL_WHISPERINTRO_LOP\";",
             "verify cleanup at LAB_00dd1e53 (lifted as early return)",
-            "unlifted: string = \"CS_ORCHARD_GOOD_WHISPERINTRO_LOP\";",
             "goto LAB_00dd1d98",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
-            "unlifted: StdMap_Destroy_API(&puStack_38);"
+            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti"
           ],
           "MakeTeamMemberComment": [
+            "unlifted: uStack_14 = *(undefined4 *)(this + 0x4c);",
             "GetTimer: missing timerId (0 args for 1 params)",
             "AddNewConversation: missing pThing (2 args for 3 params)",
             "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "unlifted: uVar3 = (**(code **)(*(int *)native_arg_param_1 + 0xc))(puVar4,&DAT_01244db4,uVar3,0);",
-            "unlifted: CCharString__AppendData(uVar3);",
-            "unlifted: CCharString__AppendCString(puVar4);",
+            "unlifted: iVar3 = (**(code **)(*(int *)native_arg_comment_to_make + 0xc))(p0,&DAT_01244db4,uStack_14",
+            "unlifted: CCharString__AppendData(&uStack_24,iVar3);",
+            "unlifted: CCharString__AppendCString(&uStack_28,(int)p0);",
             "AddLineToConversation: missing spListener (3 args for 5 params)"
           ]
         },
@@ -3174,8 +2949,8 @@
           "errors": [
             {
               "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-              "line": 19,
-              "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:19: unexpected symbol near '*'"
+              "line": 9,
+              "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:9: unexpected symbol near '&'"
             }
           ]
         }
@@ -3187,7 +2962,7 @@
         "functionSyntaxPassed": 34,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 11,
-        "todo": 688
+        "todo": 449
       }
     },
     {
@@ -3432,6 +3207,6 @@
     "functionSyntaxPassed": 36,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 13,
-    "todo": 708
+    "todo": 469
   }
 }

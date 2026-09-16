@@ -118,7 +118,7 @@ function Main(quest, me)
                             quest:EntityAttachToScript(r2, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
                             pCVar6 = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
-                            -- TODO(native): __native_entity_state:SetStateThing("OtherSpawnPoint", (CScriptThing *)pCVar6);
+                            __native_entity_state:SetStateThing("OtherSpawnPoint", pCVar6)
                             iVar9 = iVar9 + 1
                         until not (iVar9 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                     end
@@ -159,8 +159,8 @@ function Main(quest, me)
                         end
                         pCVar6 = quest:GetHero()
                         r3 = quest:GetNearestWithScriptName(pCVar6, "GuardTeamMember")
-                        bVar3 = (r3 ~= nil and r3:IsAlive())
-                        if bVar3 then
+                        iVar4 = (r3 ~= nil and r3:IsAlive())
+                        if iVar4 then
                             fVar8 = 15.0
                             pCVar6 = quest:GetHero()
                             bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, r3, fVar8)
@@ -217,7 +217,7 @@ function Main(quest, me)
                                 pCVar7 = (this + 0x34)
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", pCVar5, "NEXT_WAVE")
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&CStack_5c,(CScriptThing *)pCVar6);
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -226,7 +226,7 @@ function Main(quest, me)
                                 pCVar7 = (this + 0x34)
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature("GuardTeamMember", pCVar5, nil --[[missing]])
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&CStack_5c,(CScriptThing *)pCVar6);
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);
                             end
                             quest:EntityAttachToScript(pCVar6, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
@@ -247,25 +247,9 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local bVar8, iVar6, pCVar3, pcVar9, piVar2, piVar4, uVar1
+    local bVar7, iVar5, pCVar3, pcVar8, piVar4
     pCVar3 = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
-    piVar4 = *&*(pCVar3 + 0x8)
-    uVar1 = *&*(pCVar3 + 0x4)
-    piVar2 = *(this + 0x24)
-    if piVar2 ~= piVar4 then
-        if piVar2 ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 + -1;
-            if **(this + 0x24) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(this + 0x24))[1])();
-            end
-        end
-        -- TODO(native): name field 0x20 (undefined4)
-        __native_entity_state:SetStateInt("self_0x20", uVar1)
-        -- TODO(native): *(int **)(this + 0x24) = piVar4;
-        if piVar4 ~= nil then
-            -- TODO(native): *piVar4 = *piVar4 + 1;
-        end
-    end
+    __native_entity_state:SetStateThing("OtherSpawnPoint", pCVar3)
     if uStack_4 ~= nil then
         -- TODO(native): *uStack_4 = *uStack_4 + -1;
         if *uStack_4 == 0 then
@@ -275,26 +259,26 @@ function Init(quest, me)
     -- TODO(native): GetName is not a ForgeFSE binding
     piVar4 = me:GetName()
     if *piVar4 == nil then
-        iVar6 = 15
-        bVar8 = false
-        if bVar8 then
+        iVar5 = 15
+        bVar7 = false
+        if bVar7 then
             -- LAB_00dcd306: (native jump target)
             __native_entity_state:SetStateInt("TeamID", 1)
             -- TODO(native): name field 0x34 (CCharString)
             quest:SetStateString("self_0x34", "BanditTeamMember")
-            pcVar9 = "CREATURE_BANDIT_GRUNT"
+            pcVar8 = "CREATURE_BANDIT_GRUNT"
             goto LAB_00dcd2bb
         end
     else
-        -- TODO(native): lVar5 = CBasicString<char>::Compare(*(char **)*piVar4,"BanditTeamSpawn");
-        if lVar5 == 0 then return end  -- TODO(native): goto LAB_00dcd306
+        -- TODO(native): iVar5 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar4);
+        if iVar5 == 0 then return end  -- TODO(native): goto LAB_00dcd306
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     -- TODO(native): name field 0x34 (CCharString)
     quest:SetStateString("self_0x34", "GuardTeamMember")
-    pcVar9 = "CREATURE_ORCHARD_FARM_GUARD"
+    pcVar8 = "CREATURE_ORCHARD_FARM_GUARD"
     ::LAB_00dcd2bb::
-    -- TODO(native): CCharString::operator=((CCharString *)(this + 0x38),pcVar9);
+    -- TODO(native): CCharString::operator=((CCharString *)(this + 0x38),pcVar8);
     if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         __native_entity_state:SetStateInt("TeamMemberLimit", 2)
         -- TODO(native): uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd6c);

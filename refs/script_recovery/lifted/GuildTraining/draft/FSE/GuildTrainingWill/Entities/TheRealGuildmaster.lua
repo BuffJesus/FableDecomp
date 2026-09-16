@@ -922,7 +922,6 @@ function Main(quest, me)
                                 r28 = quest:CreateCreature("MeleeApprenticeMarker", nil --[[missing]], "MeleeApprentice")
                                 -- LAB_00d61ad8: (native jump target)
                                 -- TODO(native): in_stack_fffffd3c = (CCharString *)0x0;
-                                -- TODO(native): in_stack_fffffd38 = (CCharString *)0xd61aea;
                                 quest:PauseAllNonScriptedEntities(nil --[[missing]])
                                 goto LAB_00d61af3
                             end
@@ -954,7 +953,7 @@ function Main(quest, me)
                                 end
                                 piVar9 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                                 pCVar6 = piVar9:GetPos()
-                                me:MoveToPosition(pCVar6, in_stack_fffffd30, in_stack_fffffd34, in_stack_fffffd38, in_stack_fffffd3c)
+                                me:MoveToPosition(pCVar6, in_stack_fffffd30, in_stack_fffffd34, 0xd61aea, in_stack_fffffd3c)
                                 -- TODO(native): goto LAB_00d61ad8
                             end
                         end

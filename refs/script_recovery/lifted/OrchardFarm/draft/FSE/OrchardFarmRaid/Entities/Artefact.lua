@@ -22,7 +22,6 @@ function Main(quest, me)
     -- TODO(native): undefined4 uStack_14;
     -- TODO(native): undefined **local_10;
     -- TODO(native): CScriptThing local_c [12];
-    -- TODO(native): p0 = (CScriptThing *)(this + 8);
     bVar4 = false
     local r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     alive = not quest:IsActiveThreadTerminating()
@@ -33,7 +32,7 @@ function Main(quest, me)
             -- TODO(native): auStack_1c._4_4_ = 0;
             return
         end
-        bVar2 = quest:IsDistanceBetweenThingsUnder(r1, nil --[[missing]], p0)
+        bVar2 = quest:IsDistanceBetweenThingsUnder(me, r1, 3.0)
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -50,7 +49,7 @@ function Main(quest, me)
                 if not bVar3 then
                     -- TODO(native): *(int *)((*(int *)(this + 0x14)) + 0x48) = *(int *)((*(int *)(this + 0x14)) + 0x48) + -1;
                     -- TODO(native): *(undefined1 *)(*(int *)((*(int *)(this + 0x14)) + 0x44) + 0x109) = 1;
-                    quest:RemoveThing(r1, p0, false)
+                    quest:RemoveThing(me, false, true)
                 end
                 -- LAB_00dcddbf: (native jump target)
                 return
@@ -77,7 +76,7 @@ end
 function Init(quest, me)
     quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + 1)
     -- TODO(native): CStack_4 = (CCharString)this;
-    -- TODO(native): Vector_PushBack_ScriptThing((CScriptThing *)(this + 8));
+    -- TODO(native): Vector_PushBack_ScriptThing((void *)(*(int *)(this + 0x14) + 0x54),this + 8);
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
 end
 
@@ -86,22 +85,22 @@ end
 
 function OnPredicateFail(quest, me)
     local cVar1
-    local iVar2 = *QUESTLIST_Begin("CrateList")
-    if iVar2 ~= QUESTLIST_End("CrateList") then
+    local p0 = *QUESTLIST_Begin("CrateList")
+    if p0 ~= QUESTLIST_End("CrateList") then
         while true do
-            -- TODO(native): local_4 = *(int **)(iVar2 + 8);
-            -- TODO(native): local_8 = *(int **)(iVar2 + 4);
+            -- TODO(native): local_4 = *(int **)(p0 + 8);
+            -- TODO(native): local_8 = *(int **)(p0 + 4);
             if local_4 ~= nil then
                 -- TODO(native): *local_4 = *local_4 + 1;
             end
             cVar1 = (**(*local_8 + 0x138))(__native_entity_state:GetStateInt("self_0xc"))
             if cVar1 ~= 0 then break end
-            iVar2 = iVar2 + 0xc
-            if iVar2 == QUESTLIST_End("CrateList") then
+            p0 = p0 + 0xc
+            if p0 == QUESTLIST_End("CrateList") then
                 return
             end
         end
-        -- TODO(native): std__vector__pop_back(iVar2);
+        -- TODO(native): std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);
     end
 end
 
