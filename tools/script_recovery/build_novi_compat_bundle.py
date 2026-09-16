@@ -39,6 +39,16 @@ def stage_source(shadow, patch, out):
     subprocess.run(['git', 'apply', str(patch)], cwd=out, check=True)
 
 
+EXTRA_PATCHES = sorted((REPO / 'tools/script_recovery/sidecar_patches').glob('*.patch'))
+
+
+def apply_extra_patches(out):
+    """Committed source patches on top of the ABI patch + sidecar deltas (converter-unit bindings)."""
+    for patch in EXTRA_PATCHES:
+        subprocess.run(['git', 'apply', str(patch)], cwd=out, check=True)
+        print('applied', patch.name)
+
+
 def apply_sidecar_deltas(out, sidecar_src):
     root = out / 'FableScriptExtender'
     p = root / 'FableAPI.cpp'; s = p.read_text(encoding='utf-8', errors='replace')
@@ -101,6 +111,7 @@ def main():
     if not args.skip_build:
         stage_source(args.shadow, args.patch, args.out_source)
         apply_sidecar_deltas(args.out_source, args.sidecar_src)
+        apply_extra_patches(args.out_source)
         dll = build(args.out_source)
     else:
         dll = args.out_source / 'Release' / 'FableScriptExtender.dll'

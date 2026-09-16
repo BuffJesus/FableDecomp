@@ -160,3 +160,15 @@ Ghidra reuses a stack slot for an int and then a hidden CScriptThing result (typ
 their kind for operand placement (`accessor_kinds`, unit converter only), by-address string temporaries are positional,
 typed exports need no temp shedding, GSI vtable temporaries get their own names (`gsivtN`, noise for the lifter).
 Result: Orchard 11/11 draft files + 12/12 readable files compile; 130 diagnostics.
+
+## DLL bindings for converter units — `sidecar_patches/novi-unit-bindings.patch`
+`NoviUnitBindings.h` registered from `LuaManager.cpp` after `RegisterRetailResources`: thing-valued quest state
+(retained copies via the retail CScriptThing copy ctor 0x4ABE90 / dtor 0x4AA840), `vector<CScriptThing>` state lists
+(Count/At/Push/Erase/Clear), one long-lived `LuaRetailResources` per quest state (`quest:RetailResources()`),
+`ReadGlobalGameData(offset)` (`*(DAT_0143e90c)+offset`), CScriptThing `GetName`/`SetDataString`/`IsBeingCarriedBy`/
+`GetCurrentStateGroupType` (own vtable) and `IsEqualTo` (implementation vtable slot 0x138, as retail calls it).
+Built clean (MSBuild Release x86). The bundle builder applies every `sidecar_patches/*.patch` after the sidecar deltas.
+Converter: CTimer members are now listed in the unit evidence (`timers`) and Init starts with
+`quest:SetStateInt("<Timer>", quest:RegisterTimer())` — the native class constructor does exactly that (GSI slot 0x15c,
+seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesTimer/Teams[i].TeamReinforcementsTimer).
+`build_unit_playtest_package.py` stages Oakvale + Orchard under one retail_override profile → local-candidate-v5.

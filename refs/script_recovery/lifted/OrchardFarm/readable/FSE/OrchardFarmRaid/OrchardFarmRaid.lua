@@ -46,6 +46,10 @@ function Main(quest)
 end
 
 function Init(quest)
+    quest:SetStateInt("CommentTimer", quest:RegisterTimer())  -- native constructor: CTimer member
+    quest:SetStateInt("RemindHeroOfObjectivesTimer", quest:RegisterTimer())  -- native constructor: CTimer member
+    quest:SetStateInt("Teams_0_TeamReinforcementsTimer", quest:RegisterTimer())  -- native constructor: CTimer member
+    quest:SetStateInt("Teams_1_TeamReinforcementsTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     local isQuestActive = quest:IsQuestActive("Q_OrchardFarmRaidGood")
     if isQuestActive then
         quest:AddQuestRegion("Q_OrchardFarmRaidGood", "OrchardFarm")

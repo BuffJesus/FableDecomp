@@ -21,7 +21,16 @@ CScriptThing BY VALUE (FSE declares `CScriptThing *`) — tell Aeon.
 Readable pass DONE (generic): `python tools/script_recovery/build_readable_unit.py --unit orchard_farm` →
 `refs/script_recovery/lifted/OrchardFarm/readable` (12 files, all compile, READABLE_REPORT.json with reversible local maps;
 folds: termination idiom, list arithmetic, byte indices, dead stores, constant guards, colours, decimal literals).
-Next: NoviCompatibility bindings per
+DLL bindings DONE: `tools/script_recovery/sidecar_patches/novi-unit-bindings.patch` (NoviUnitBindings.h: GetStateThing/SetStateThing,
+GetStateListCount/At/Push/Erase, RetailResources(), ReadGlobalGameData, thing GetName/SetDataString/IsBeingCarriedBy/
+GetCurrentStateGroupType/IsEqualTo) — applied by `build_novi_compat_bundle.py` (apply_extra_patches); built clean in
+work/new-oakvale-original-fse-20260912/sidecar-abi-v2 (scratch git repo, commit "NoviUnitBindings"). Converter now emits
+`quest:RegisterTimer()` for CTimer members in Init (evidence: quest ctor slot 0x15c). Playtest bundle **local-candidate-v5**
+(`build_unit_playtest_package.py`: Oakvale v4 Lua + Orchard readable + retail_override entries Q_OrchardFarmRaid/Evil/Good,
+entity ids 216–224); preflight passes; static API coverage check = no missing quest/thing/resources methods.
+NEXT (user-driven): launch v5 (`python local_test.py --game-dir <Fable> --launch --save-dir <saves>`), reach Orchard Farm,
+read NoviCompatibility/FableScriptExtender.log for Lua errors; then fix converter/bindings from the log.
+Was next: NoviCompatibility bindings per
 `refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md` / `docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md`, in-game test, ship with the Oakvale zip.
 Known: `test_watch_barrels_loop.py` pre-existing failure. Journal: journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md (night section).
 

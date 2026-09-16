@@ -147,7 +147,7 @@
             "MiniMapAllowRouteBetweenRegions",
             "MiniMapAllowRouteBetweenRegions"
           ],
-          "lines": 56,
+          "lines": 60,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

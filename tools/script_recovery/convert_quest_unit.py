@@ -83,6 +83,7 @@ class UnitConverter:
         all_sources, shared_names, shared_inputs = {}, set(), {}
         shared_module = f'{package}.native_quest_helpers'
         owners = [('quest', unit['script'], quest_functions, quest_state, {})]
+        timers = {unit['script']: unit['quest'].get('timers', [])}
         # Several bindings can share one native class (GuardTeamMember/BanditTeamMember -> CCrateTeamMember):
         # emit that class once and register every binding name against the shared file.
         by_class = {}
@@ -103,6 +104,7 @@ class UnitConverter:
             ent_functions = {n: f for n, f in ent['functions'].items() if n not in SKIP_ROLES}
             ent_functions.update(ent.get('helpers', {}))   # entity-class members, lifted into the same file
             owners.append(('entity', class_owner[name], ent_functions, state_map(ent['fields']), quest_state))
+            timers[class_owner[name]] = ent.get('timers', [])
         for kind, owner, functions, state, parent_state in owners:
             entity = kind == 'entity'
             lifter = Lifter(self.manifest, state, 'quest', entity, package, self.rdata,
@@ -189,6 +191,12 @@ class UnitConverter:
                                        else 'string' if 'CCharString' in p['type'] else 'unknown'
                                        for p in signature['parameters']}
                     body = lifter.lift(name, source, native_function=fn, parameters=parameter_kinds)
+                    if name == 'Init' and timers.get(owner):
+                        # The native class constructor registers every CTimer member through GSI RegisterTimer
+                        # (slot 0x15c) before Init runs; the converter has no constructor body, so Init does it.
+                        receiver = '__native_entity_state' if entity else 'quest'
+                        body = [f'    {receiver}:SetStateInt("{t}", quest:RegisterTimer())  -- native constructor: CTimer member'
+                                for t in timers[owner]] + body
                     calls, todo = list(lifter.calls), list(lifter.todo)
                     params = 'quest, me' if entity else 'quest'
                     params += ''.join(', ' + p['lua'] for p in signature['parameters'])

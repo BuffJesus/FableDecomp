@@ -72,6 +72,9 @@ def retail_size(layouts, name):
     return size - 4 * sum(1 for f in layouts.get(name, [[]])[0] if CONTAINER.match(f['type']))
 
 
+TIMER_FIELDS = []   # names of CTimer members collected by expand_member (reset per class_fields call)
+
+
 def expand_member(layouts, prefix, offset, ftype, fields, skipped, things, pdb_offset):
     """Map one member (scalar, thing, array or nested struct) onto retail offsets."""
     kind = KIND.get(ftype)
@@ -79,6 +82,8 @@ def expand_member(layouts, prefix, offset, ftype, fields, skipped, things, pdb_o
         kind = 'Int'   # anonymous / named enums are 4-byte ints
     if kind is not None:
         fields[hex(offset)] = [prefix, kind]
+        if ftype == 'CTimer':
+            TIMER_FIELDS.append(prefix)   # the class constructor registers it (GSI RegisterTimer, slot 0x15c)
         return
     if ftype in THING_TYPES:
         things[hex(offset)] = prefix
@@ -157,6 +162,7 @@ def class_fields(layouts, name, parent_class=None, delta=0):
     if not copies:
         return {}, [], {}
     fields, skipped, things = {}, [], {}
+    TIMER_FIELDS.clear()
     shift = 0   # debug-build STL containers carry one extra (iterator-debugging) pointer each
     for f in sorted(copies[0], key=lambda f: f['offset']):
         retail = f['offset'] + delta - shift
@@ -168,6 +174,7 @@ def class_fields(layouts, name, parent_class=None, delta=0):
             skipped.append({'offset': hex(retail), 'pdbOffset': hex(f['offset']), 'type': f['type'], 'name': f['name']})
             continue
         expand_member(layouts, f['name'], retail, f['type'], fields, skipped, things, f['offset'])
+    fields['__timers__'] = list(TIMER_FIELDS)
     return fields, skipped, things
 
 
@@ -381,20 +388,24 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
     for row in unmatched:
         functions[f'helper_{row["address"][2:].lstrip("0").upper()}'] = {'evidence': 'unmatched retail helper', **row}
     fields, skipped, things = class_fields(layouts, class_name, delta=QUEST_RETAIL_DELTA)
+    quest_timers = fields.pop('__timers__', [])
+    master_fields = list(class_fields(layouts, 'CQ_SunnyvaleMasterData'))
+    master_fields[0].pop('__timers__', None)
     entities = {}
     for e in quest_inv['entities']:
         klass = binding_class[e['name']]
         ent_fields, ent_skipped, ent_things = class_fields(layouts, klass, parent_class=class_name)
+        ent_timers = ent_fields.pop('__timers__', [])
         entities[e['name']] = {'nativeClass': f'{qualified}::{klass}', 'classEvidence': binding_evidence[e['name']],
                                'vtable': e.get('vtable'),
                                'functions': {k: {'address': str(v).lower()} for k, v in e['functions'].items()},
                                'helpers': entity_helpers.get(klass, {}),
-                               'fields': ent_fields, 'thingFields': ent_things, 'unmappedFields': ent_skipped,
+                               'fields': ent_fields, 'thingFields': ent_things, 'unmappedFields': ent_skipped, 'timers': ent_timers,
                                'arrays': array_descriptors(layouts, klass, parent_class=class_name)}
     return {'schema': 'quest-unit-evidence/1', 'script': script, 'package': package or script[2:],
             'nativeClass': qualified, 'allocator': quest_inv['allocator'], 'vtable': quest_inv['vtable'],
-            'master': dict(zip(('fields', 'unmapped', 'things'), class_fields(layouts, 'CQ_SunnyvaleMasterData'))),
-            'quest': {'functions': functions, 'fields': fields, 'thingFields': things, 'unmappedFields': skipped,
+            'master': dict(zip(('fields', 'unmapped', 'things'), master_fields)),
+            'quest': {'functions': functions, 'fields': fields, 'thingFields': things, 'unmappedFields': skipped, 'timers': quest_timers,
                       'arrays': array_descriptors(layouts, class_name, delta=QUEST_RETAIL_DELTA), 'retailOffsetDelta': QUEST_RETAIL_DELTA,
                       'pdbMembersUnused': sorted(set(members) - used), 'nestedPdbMembers': {k: sorted(v) for k, v in nested_members.items()}},
             'entities': entities}

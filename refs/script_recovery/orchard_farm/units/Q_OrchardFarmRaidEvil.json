@@ -626,6 +626,7 @@
     "fields": {},
     "thingFields": {},
     "unmappedFields": [],
+    "timers": [],
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],

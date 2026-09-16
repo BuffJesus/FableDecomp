@@ -1,4 +1,8 @@
-# Orchard Farm draft: runtime bindings not yet in the NoviCompatibility DLL (2026-09-16)
+# Orchard Farm draft: runtime bindings for the NoviCompatibility DLL (2026-09-16) — IMPLEMENTED
+
+All rows below are implemented in `tools/script_recovery/sidecar_patches/novi-unit-bindings.patch`
+(`NoviUnitBindings.h`, applied by `build_novi_compat_bundle.py`); plus `quest:StateListErase`, `thing:IsEqualTo`,
+`thing:GetDataString` (existing), and `quest:RegisterTimer()` initialisation of CTimer members emitted by the converter.
 
 Generated Lua (refs/script_recovery/lifted/OrchardFarm/draft) calls these; add them to the sidecar
 (ForgeFSE-retail-shadow + scalar-ABI patch tree) before the package can run.

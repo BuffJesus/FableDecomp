@@ -3682,7 +3682,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 100,
+     "sourceLine": 104,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3691,7 +3691,7 @@
     },
     {
      "function": "ProcessGameRulesEvil",
-     "sourceLine": 103,
+     "sourceLine": 107,
      "locals": {
       "appuStack_9c": {
        "name": "scratchValue",
@@ -3857,7 +3857,7 @@
     },
     {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 314,
+     "sourceLine": 318,
      "locals": {
       "aCStack_98": {
        "name": "scratchValue",
@@ -4063,7 +4063,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 571,
+     "sourceLine": 575,
      "locals": {
       "aCStack_10": {
        "name": "scratchValue",
@@ -4582,7 +4582,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 721,
+     "sourceLine": 725,
      "locals": {
       "bVar1_1": {
        "name": "isActiveThreadTerminating",
@@ -4678,7 +4678,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 760,
+     "sourceLine": 764,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -4735,7 +4735,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 779,
+     "sourceLine": 783,
      "locals": {
       "appuStack_20": {
        "name": "scratchValue",
@@ -4828,7 +4828,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 912,
+     "sourceLine": 916,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},

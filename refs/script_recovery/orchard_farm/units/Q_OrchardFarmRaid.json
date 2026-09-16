@@ -835,6 +835,12 @@
         "name": "CrateList"
       }
     ],
+    "timers": [
+      "CommentTimer",
+      "RemindHeroOfObjectivesTimer",
+      "Teams_0_TeamReinforcementsTimer",
+      "Teams_1_TeamReinforcementsTimer"
+    ],
     "arrays": [
       {
         "name": "FailReasons",
@@ -972,6 +978,7 @@
         "0x1c": "OtherSpawnPoint"
       },
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "BanditTeamSpawn": {
@@ -1032,6 +1039,7 @@
         "0x1c": "OtherSpawnPoint"
       },
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "Artefact": {
@@ -1065,6 +1073,7 @@
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "OrchardFarmWhisper": {
@@ -1098,6 +1107,7 @@
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "GuardTeamMember": {
@@ -1175,6 +1185,7 @@
           "name": "MyTeam"
         }
       ],
+      "timers": [],
       "arrays": []
     },
     "BanditTeamMember": {
@@ -1252,6 +1263,7 @@
           "name": "MyTeam"
         }
       ],
+      "timers": [],
       "arrays": []
     },
     "FarmRearEntrance": {
@@ -1285,6 +1297,7 @@
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "M_WhisperFarmRaidIntro": {
@@ -1318,6 +1331,7 @@
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "MK_OFI_GWLL_WHIS2": {
@@ -1351,6 +1365,7 @@
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     }
   }

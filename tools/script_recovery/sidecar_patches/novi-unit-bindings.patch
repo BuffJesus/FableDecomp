@@ -1,0 +1,188 @@
+diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
+index 8c1e959..bf57644 100644
+--- a/FableScriptExtender/LuaManager.cpp
++++ b/FableScriptExtender/LuaManager.cpp
+@@ -8,6 +8,7 @@
+ #include "LuaRetailResources.h"
+ #include "LuaRetailCondition.h"
+ #include "LuaRetailConsciousCondition.h"
++#include "NoviUnitBindings.h"
+ #include <sstream>
+ 
+ void ReleaseScriptThing(CScriptThing* thing) {
+@@ -201,6 +202,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+ 
+     auto questState_type = lua.new_usertype<LuaQuestState>("Quest", sol::no_constructor);
+     RegisterRetailResources(lua);
++    RegisterNoviUnitBindings(questState_type, cscriptThing_type);   // converter-unit bindings (Orchard Farm ...)
+     questState_type["GetVillagerSpeechLists"] = &LuaQuestState::GetVillagerSpeechLists;
+     questState_type["RetailFlags"] = &LuaQuestState::RetailFlags;
+     questState_type["RetainRetailThing"] = &LuaQuestState::RetainRetailThing;
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+new file mode 100644
+index 0000000..7b8b2d1
+--- /dev/null
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -0,0 +1,162 @@
++#pragma once
++// Bindings the converter-generated quest units (Orchard Farm, ...) need beyond the New Oakvale set.
++// Evidence: docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md and refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md
++// in the FableTLC tree. Every binding mirrors one native idiom the lowering pass recognises:
++//
++//   quest:GetStateThing / SetStateThing        CScriptThing quest members (Teams[i].TeamCrateCarrier, ...)
++//   quest:GetStateListCount / GetStateListAt   std::vector<CScriptThing> members (CrateList), stride-12 iteration
++//   quest:StateListPush / StateListErase       Vector_PushBack_ScriptThing 0x8ADF90 / vector::erase 0xCD3152
++//   quest:RetailResources()                    one long-lived LuaRetailResources per quest state
++//   quest:ReadGlobalGameData(offset)           *(int *)(*(DAT_0143e90c) + offset)
++//   thing:GetName / SetDataString / IsBeingCarriedBy / GetCurrentStateGroupType / IsEqualTo
++//                                              CScriptThing vtable slots 0x04 / 0x10 / 0xFC / 0x34 / 0x138
++#include "sol/sol.hpp"
++#include "FableAPI.h"
++#include "EntityScriptingAPI.h"
++#include "LuaQuestState.h"
++#include "LuaRetailResources.h"
++#include <map>
++#include <memory>
++#include <string>
++#include <vector>
++
++struct NoviUnitQuestData {
++    std::map<std::string, std::vector<std::shared_ptr<CScriptThing>>> lists;
++    std::shared_ptr<LuaRetailResources> resources;
++};
++
++inline NoviUnitQuestData& NoviUnitData(LuaQuestState& self) {
++    // Quest states live for the quest instance; a side table keeps this header self-contained.
++    static std::map<LuaQuestState*, NoviUnitQuestData> table;
++    return table[&self];
++}
++
++// A copy of a thing handle owned by Lua/state storage (retail CScriptThing copy constructor + destructor).
++inline std::shared_ptr<CScriptThing> NoviCopyThing(const CScriptThing* source) {
++    if (!source || !Game_malloc || !RetailThing_Copy_API || !RetailThing_Destroy_API) return nullptr;
++    auto* buffer = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
++    if (!buffer) return nullptr;
++    memset(buffer, 0, sizeof(CScriptThing));
++    RetailThing_Copy_API(buffer, source);
++    return std::shared_ptr<CScriptThing>(buffer, [](CScriptThing* p) {
++        if (!p) return;
++        RetailThing_Destroy_API(p);
++        Game_free(p);
++    });
++}
++
++inline std::string NoviCCharStringToStd(const CCharString* text) {
++    if (!text || !text->pStringData || !CCharString_ToConstChar_API) return "";
++    const char* raw = CCharString_ToConstChar_API(const_cast<CCharString*>(text));
++    return raw ? std::string(raw) : "";
++}
++
++inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::usertype<CScriptThing>& thing) {
++    // ---- thing-valued quest state ---------------------------------------------------------------
++    quest["GetStateThing"] = [](LuaQuestState& self, const std::string& name) {
++        return self.GetRetainedRetailThing(name);
++    };
++    quest["SetStateThing"] = [](LuaQuestState& self, const std::string& name, sol::object value) {
++        if (value.is<std::shared_ptr<CScriptThing>>()) {
++            auto sp = value.as<std::shared_ptr<CScriptThing>>();
++            self.RetainRetailThing(name, sp ? NoviCopyThing(sp.get()) : nullptr);
++        } else if (value.is<CScriptThing*>()) {
++            self.RetainRetailThing(name, NoviCopyThing(value.as<CScriptThing*>()));
++        } else {
++            self.RetainRetailThing(name, nullptr);
++        }
++    };
++    // ---- std::vector<CScriptThing> quest state --------------------------------------------------
++    quest["GetStateListCount"] = [](LuaQuestState& self, const std::string& name) {
++        auto& lists = NoviUnitData(self).lists;
++        auto it = lists.find(name);
++        return it == lists.end() ? 0 : static_cast<int>(it->second.size());
++    };
++    quest["GetStateListAt"] = [](LuaQuestState& self, const std::string& name, int index) -> std::shared_ptr<CScriptThing> {
++        auto& lists = NoviUnitData(self).lists;
++        auto it = lists.find(name);
++        if (it == lists.end() || index < 0 || index >= static_cast<int>(it->second.size())) return nullptr;
++        return it->second[static_cast<size_t>(index)];
++    };
++    quest["StateListPush"] = [](LuaQuestState& self, const std::string& name, sol::object value) {
++        std::shared_ptr<CScriptThing> copy;
++        if (value.is<std::shared_ptr<CScriptThing>>()) {
++            auto sp = value.as<std::shared_ptr<CScriptThing>>();
++            copy = sp ? NoviCopyThing(sp.get()) : nullptr;
++        } else if (value.is<CScriptThing*>()) {
++            copy = NoviCopyThing(value.as<CScriptThing*>());
++        }
++        NoviUnitData(self).lists[name].push_back(copy);
++    };
++    quest["StateListErase"] = [](LuaQuestState& self, const std::string& name, int index) {
++        auto& lists = NoviUnitData(self).lists;
++        auto it = lists.find(name);
++        if (it == lists.end() || index < 0 || index >= static_cast<int>(it->second.size())) return;
++        it->second.erase(it->second.begin() + index);
++    };
++    quest["StateListClear"] = [](LuaQuestState& self, const std::string& name) { NoviUnitData(self).lists[name].clear(); };
++    // ---- long-lived retail resources ------------------------------------------------------------
++    quest["RetailResources"] = [](LuaQuestState& self) {
++        auto& data = NoviUnitData(self);
++        if (!data.resources) data.resources = std::make_shared<LuaRetailResources>(self.GetGameInterface());
++        return data.resources;
++    };
++    quest["CloseRetailResources"] = [](LuaQuestState& self) {
++        auto& data = NoviUnitData(self);
++        if (data.resources) { data.resources->Close(); data.resources.reset(); }
++    };
++    // ---- global game data table -----------------------------------------------------------------
++    quest["ReadGlobalGameData"] = [](LuaQuestState&, int offset) -> int {
++        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        if (!definitions || offset < 0) return 0;
++        return *reinterpret_cast<const volatile int*>(definitions + offset);
++    };
++    quest["ReadGlobalGameDataFloat"] = [](LuaQuestState&, int offset) -> float {
++        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        if (!definitions || offset < 0) return 0.0f;
++        return *reinterpret_cast<const volatile float*>(definitions + offset);
++    };
++    // ---- CScriptThing methods -------------------------------------------------------------------
++    thing["GetName"] = [](CScriptThing* me) -> std::string {
++        if (!me || !me->pVTable) return "";
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        return vt->GetName ? NoviCCharStringToStd(vt->GetName(me)) : "";
++    };
++    thing["SetDataString"] = [](CScriptThing* me, const std::string& value) {
++        if (!me || !me->pVTable || !CCharString_Construct_Literal || !CCharString_Destroy) return;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        if (!vt->SetDataString) return;
++        CCharString text{};
++        CCharString_Construct_Literal(&text, value.c_str(), -1);
++        vt->SetDataString(me, &text);
++        CCharString_Destroy(&text);
++    };
++    thing["IsBeingCarriedBy"] = [](CScriptThing* me, const std::string& carrierName) -> bool {
++        if (!me || !me->pVTable || !CCharString_Construct_Literal || !CCharString_Destroy) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        if (!vt->IsBeingCarriedBy) return false;
++        CCharString text{};
++        CCharString_Construct_Literal(&text, carrierName.c_str(), -1);
++        const bool carried = vt->IsBeingCarriedBy(me, &text);
++        CCharString_Destroy(&text);
++        return carried;
++    };
++    thing["GetCurrentStateGroupType"] = [](CScriptThing* me) -> int {
++        if (!me || !me->pVTable) return 0;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        return vt->GetCurrentStateGroupType ? static_cast<int>(vt->GetCurrentStateGroupType(me)) : 0;
++    };
++    // CScriptThing::operator== goes through the implementation object's vtable (CGameScriptThing slot 0x138),
++    // exactly as the native scripts call it (`(**(**(int **)(thing + 4) + 0x138))(data, other.Data)`).
++    thing["IsEqualTo"] = [](CScriptThing* me, sol::object other) -> bool {
++        if (!me) return false;
++        const CScriptThing* rhs = nullptr;
++        if (other.is<std::shared_ptr<CScriptThing>>()) rhs = other.as<std::shared_ptr<CScriptThing>>().get();
++        else if (other.is<CScriptThing*>()) rhs = other.as<CScriptThing*>();
++        if (!rhs) return false;
++        auto* imp = reinterpret_cast<CGameScriptThing*>(me->pImp.Data);
++        if (!imp || !imp->pVTable) return me->pImp.Data == rhs->pImp.Data;
++        auto* vt = reinterpret_cast<CGameScriptThingVTable*>(imp->pVTable);
++        return vt->IsEqualTo ? vt->IsEqualTo(imp, rhs) : me->pImp.Data == rhs->pImp.Data;
++    };
++}
