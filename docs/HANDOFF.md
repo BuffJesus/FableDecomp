@@ -28,6 +28,8 @@ work/new-oakvale-original-fse-20260912/sidecar-abi-v2 (scratch git repo, commit 
 `quest:RegisterTimer()` for CTimer members in Init (evidence: quest ctor slot 0x15c). Playtest bundle **local-candidate-v5**
 (`build_unit_playtest_package.py`: Oakvale v4 Lua + Orchard readable + retail_override entries Q_OrchardFarmRaid/Evil/Good,
 entity ids 216–224); preflight passes; static API coverage check = no missing quest/thing/resources methods.
+KNOWN BUG (found cross-referencing Aeon's port, work/aeon_new_oakvale/CROSSREF.md): our readable NOVI_Bully `BullyProximity`
+sends TEXT_QST_048_BULLY_BADGERING; retail formats TEXT_QST_048_BULLY_SCRMSG_INTIMIDATING_%d (bully_proximity.py line 24). Fix + rebuild v4/v5.
 NEXT (user-driven): launch v5 (`python local_test.py --game-dir <Fable> --launch --save-dir <saves>`), reach Orchard Farm,
 read NoviCompatibility/FableScriptExtender.log for Lua errors; then fix converter/bindings from the log.
 Was next: NoviCompatibility bindings per
