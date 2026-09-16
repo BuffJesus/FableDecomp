@@ -11,17 +11,19 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, bVar4
+    local bVar2, bVar3, bVar4, p0, r1
     local alive = true
     bVar4 = false
-    local r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
+    r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     alive = not quest:IsActiveThreadTerminating()
-    local bVar2 = not alive
+    bVar2 = not alive
     repeat
         if bVar2 then
             r1 = nil
+            -- LAB_00dcddfe: (native jump target)
             return
         end
+        ::FLOW_after_lab_00dcddfe::
         bVar2 = quest:IsDistanceBetweenThingsUnder(me, r1, 3.0)
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
@@ -29,7 +31,8 @@ function Main(quest, me)
             if bVar2 then
                 -- LAB_00dcddcf: (native jump target)
                 r1 = nil
-                return
+                do return end
+                goto FLOW_after_lab_00dcddfe
             end
             -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
             bVar2 = me:IsBeingCarriedBy("SCRIPT_NAME_HERO")
@@ -41,13 +44,17 @@ function Main(quest, me)
                     quest:SetMasterGameState("OFBRCratesStolen", true)
                     quest:RemoveThing(me, false, true)
                 end
+                -- LAB_00dcddbf: (native jump target)
                 return
             end
-            if bVar3 then return end
+            ::FLOW_after_lab_00dcddbf::
+            do return end
+            if bVar3 then goto FLOW_after_lab_00dcddbf end
             if not bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end
+                do return end
+                if bVar4 then goto FLOW_after_lab_00dcddbf end
                 bVar4 = true
             end
         else

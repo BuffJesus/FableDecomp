@@ -130,12 +130,6 @@ function ProcessGameRulesEvil(quest)
         resources:ReleaseResource(appuStack_bc)
         resources:ReleaseResource(aCStack_c4)
     end
-    local function __cleanup_LAB_00dd0b2b()
-        resources:ReleaseResource(appuStack_ac)
-        resources:DestroyActorMap(r2)
-        resources:ReleaseResource(appuStack_bc)
-        resources:ReleaseResource(aCStack_c4)
-    end
     cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
         alive = quest:NewScriptFrame()
@@ -211,6 +205,7 @@ function ProcessGameRulesEvil(quest)
                         __cleanup_LAB_00dd0b11()
                         return
                     end
+                    ::FLOW_after_lab_00dd0b2b::
                     resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", r2, false, true)
                     pCVar8 = "CS_ORCHARD_EVIL_WHISPER_FRONT"
                     ::LAB_00dd08eb::
@@ -239,7 +234,12 @@ function ProcessGameRulesEvil(quest)
                             -- LAB_00dd0b1f: (native jump target)
                             pCVar6 = 0x0
                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                            __cleanup_LAB_00dd0b2b(); return
+                            resources:ReleaseResource(appuStack_ac)
+                            resources:DestroyActorMap(r2)
+                            resources:ReleaseResource(appuStack_bc)
+                            resources:ReleaseResource(aCStack_c4)
+                            do return end
+                            goto FLOW_after_lab_00dd0b2b
                         end
                         ::LAB_00dd0977::
                         quest:SetStateBool("ShownCombatFlourishTutorial", true)
@@ -339,17 +339,11 @@ end
 
 function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
-    local aCStack_98, amStack_8c, auStack_c4, bVar12, bVar3, cVar1, c_stk_c5, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4
+    local CStack_cc_b3, aCStack_98, amStack_8c, auStack_c4, bVar12, bVar3, cVar1, c_stk_c5, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4
     local alive = true
     local function __cleanup_LAB_00dd1728()
         pCVar7 = 0x0
         quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))
-        resources:ReleaseResource((r2 + 4))
-        resources:DestroyActorMap(ppuStack_9c)
-        resources:ReleaseResource(amStack_8c)
-        resources:ReleaseResource(CStack_cc)
-    end
-    local function __cleanup_LAB_00dd1742()
         resources:ReleaseResource((r2 + 4))
         resources:DestroyActorMap(ppuStack_9c)
         resources:ReleaseResource(amStack_8c)
@@ -385,8 +379,8 @@ function ProcessGameRulesGood(quest)
                 end
                 pCVar5 = quest:GetHero()
                 pCVar7 = ""
-                -- TODO(native): CStack_cc._3_1_ = CScriptThing::MsgIsKilledBy(pCVar5);
-                if CStack_cc._3_1_ ~= 0 then
+                CStack_cc_b3 = pCVar5:MsgIsKilledBy("")
+                if CStack_cc_b3 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -448,6 +442,7 @@ function ProcessGameRulesGood(quest)
                         __cleanup_LAB_00dd1728()
                         return
                     end
+                    ::FLOW_after_lab_00dd1742::
                     resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", ppuStack_9c, false, true)
                     pCVar8 = "CS_ORCHARD_GOOD_WHISPER_FRONT"
                     ::LAB_00dd14ee::
@@ -476,7 +471,12 @@ function ProcessGameRulesGood(quest)
                             -- LAB_00dd1736: (native jump target)
                             pCVar7 = 0x0
                             quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))
-                            __cleanup_LAB_00dd1742(); return
+                            resources:ReleaseResource((r2 + 4))
+                            resources:DestroyActorMap(ppuStack_9c)
+                            resources:ReleaseResource(amStack_8c)
+                            resources:ReleaseResource(CStack_cc)
+                            do return end
+                            goto FLOW_after_lab_00dd1742
                         end
                         ::LAB_00dd157a::
                         quest:SetStateBool("ShownCombatFlourishTutorial", true)
@@ -608,13 +608,14 @@ end
 
 function DoCutsceneIfRequired(quest)
     local resources = quest:RetailResources()
-    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2
+    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, amStack_5c, au_stk_90, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2
     local alive = true
-    local au_stk_90 = nil
+    au_stk_90 = nil
     if quest:GetStateInt("HeroTeam") == 1 then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
+            -- LAB_00dd03b8: (native jump target)
             return
         end
         pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
@@ -622,18 +623,24 @@ function DoCutsceneIfRequired(quest)
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end
+        do return end
+        pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        au_stk_90 = pCVar3
+        if bVar2 then goto FLOW_after_lab_00dd03b8 end
         pCVar3 = quest:GetThingWithScriptName("GuardTeamSpawn")
         au_stk_90 = pCVar3
     end
+    ::FLOW_after_lab_00dd03b8::
     -- LAB_00dcfb65: (native jump target)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     repeat
         if bVar2 then
             au_stk_90 = nil
+            -- LAB_00dcfe47: (native jump target)
             return
         end
+        ::FLOW_after_lab_00dcfe47::
         bVar2 = quest:IsRegionLoaded("OrchardFarm")
         while not bVar2 do
             alive = quest:NewScriptFrame()
@@ -641,25 +648,35 @@ function DoCutsceneIfRequired(quest)
             bVar2 = not alive
             if bVar2 then
                 au_stk_90 = nil
-                return
+                do return end
+                goto FLOW_after_lab_00dcfe47
             end
             bVar2 = quest:IsRegionLoaded("OrchardFarm")
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end
+        do return end
+        pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        au_stk_90 = pCVar3
+        if bVar2 then goto FLOW_after_lab_00dd03b8 end
         pCVar3 = quest:GetHero()
         bVar2 = quest:IsDistanceBetweenThingsUnder(au_stk_90, pCVar3, 10.0)
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
-            if bVar2 then return end
+            do return end
+            pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+            au_stk_90 = pCVar3
+            if bVar2 then goto FLOW_after_lab_00dd03b8 end
             if quest:GetStateInt("HeroTeam") == 1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                if bVar2 then return end
+                do return end
+                pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+                au_stk_90 = pCVar3
+                if bVar2 then goto FLOW_after_lab_00dd03b8 end
                 r1 = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                r2 = quest:GetNearestWithScriptName(pCVar3, "GuardTeamMember")
+                r2 = quest:GetNearestWithScriptName(au_stk_90, "GuardTeamMember")
                 amStack_5c = resources:StartMovie("")
                 aCStack_30 = resources:StartMovie("")
                 aCStack_20 = resources:StartMovie("")
@@ -696,7 +713,10 @@ function DoCutsceneIfRequired(quest)
             else
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                if bVar2 then return end
+                do return end
+                pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+                au_stk_90 = pCVar3
+                if bVar2 then goto FLOW_after_lab_00dd03b8 end
                 pCVar3 = quest:GetThingWithScriptName("OF_MainGates")
                 quest:OpenDoor(pCVar3)
                 amStack_5c = resources:StartMovie("")
@@ -724,11 +744,17 @@ function DoCutsceneIfRequired(quest)
             bVar2 = false
             pCVar3 = quest:GetThingWithScriptName("OFFarmhouseDoor")
             quest:SetThingAsUsable(pCVar3, bVar2)
-            return
+            do return end
+            pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+            au_stk_90 = pCVar3
+            goto FLOW_after_lab_00dd03b8
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end
+        do return end
+        pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        au_stk_90 = pCVar3
+        if bVar2 then goto FLOW_after_lab_00dd03b8 end
         quest:SetStateBool("HeroAtWrongEntrance", true)
         pCVar3 = quest:GetThingWithScriptName("OF_MainGates")
         -- TODO(native): CloseDoor is not a ForgeFSE binding
@@ -743,25 +769,37 @@ function DoCutsceneIfRequired(quest)
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
-            if bVar2 then return end
+            do return end
+            pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+            au_stk_90 = pCVar3
+            if bVar2 then goto FLOW_after_lab_00dd03b8 end
             bVar2 = quest:MsgIsGameInfoClickedPast()
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end
+        do return end
+        pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        au_stk_90 = pCVar3
+        if bVar2 then goto FLOW_after_lab_00dd03b8 end
         bVar2 = quest:IsRegionLoaded("OrchardFarm")
         if bVar2 then
             repeat
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                if bVar2 then return end
+                do return end
+                pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+                au_stk_90 = pCVar3
+                if bVar2 then goto FLOW_after_lab_00dd03b8 end
                 bVar2 = quest:IsRegionLoaded("OrchardFarm")
             until not (bVar2)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end
+        do return end
+        pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        au_stk_90 = pCVar3
+        if bVar2 then goto FLOW_after_lab_00dd03b8 end
         quest:SetStateBool("HeroAtWrongEntrance", false)
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -787,8 +825,10 @@ function WatchForExternalScriptDeactivation(quest)
             bVar1 = true
             bVar3 = quest:IsQuestActive("Q_OrchardFarmRaidEvil")
             bVar2 = true
-            if bVar3 then return end  -- TODO(native): goto LAB_00dccfa3
+            bVar2 = false
+            if bVar3 then goto FLOW_after_lab_00dccfa3 end
         end
+        ::FLOW_after_lab_00dccfa3::
         if bVar1 then
             bVar1 = false
         end
@@ -891,7 +931,8 @@ function DoMultiplierCutscene(quest)
             if bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end  -- TODO(native): goto LAB_00dd1d15
+                quest:PauseAllNonScriptedEntities(false)
+                if bVar4 then goto FLOW_after_lab_00dd1d15 end
                 if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -964,6 +1005,7 @@ function DoMultiplierCutscene(quest)
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)
     end
+    ::FLOW_after_lab_00dd1d15::
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
     resources:DestroyActorMap(pCVar5)

@@ -119,12 +119,6 @@ function ProcessGameRulesEvil(quest)
         resources:ReleaseResource(scratchValue3)
         resources:ReleaseResource(aCStack_c4)
     end
-    local function __cleanup_LAB_00dd0b2b()
-        resources:ReleaseResource(scratchValue2)
-        resources:DestroyActorMap(scratchValue12)
-        resources:ReleaseResource(scratchValue3)
-        resources:ReleaseResource(aCStack_c4)
-    end
     doneIntroduction = quest:GetStateBool("DoneIntroduction")
     while not doneIntroduction do
         alive = quest:NewScriptFrame()
@@ -198,6 +192,7 @@ function ProcessGameRulesEvil(quest)
                         __cleanup_LAB_00dd0b11()
                         return
                     end
+                    ::FLOW_after_lab_00dd0b2b::
                     resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", scratchValue12, false, true)
                     scratchValue10 = "CS_ORCHARD_EVIL_WHISPER_FRONT"
                     ::LAB_00dd08eb::
@@ -224,7 +219,12 @@ function ProcessGameRulesEvil(quest)
                             -- LAB_00dd0b1f: (native jump target)
                             scratchValue9 = 0
                             quest:PauseAllNonScriptedEntities((scratchValue9 ~= 0))
-                            __cleanup_LAB_00dd0b2b(); return
+                            resources:ReleaseResource(scratchValue2)
+                            resources:DestroyActorMap(scratchValue12)
+                            resources:ReleaseResource(scratchValue3)
+                            resources:ReleaseResource(aCStack_c4)
+                            do return end
+                            goto FLOW_after_lab_00dd0b2b
                         end
                         ::LAB_00dd0977::
                         quest:SetStateBool("ShownCombatFlourishTutorial", true)
@@ -320,153 +320,153 @@ end
 
 function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
-    local scratchValue, scratchValue2, scratchValue3, predicateResult, scratchValue4
-    local doneIntroduction, scratchValue5, scratchValue6, scratchValue7, scratchValue8, sequence1
-    local scratchValue9, scratchValue10, scratchValue11, pMessage, pOther_00, pPosition
-    local scratchValue12, scratchValue13, scratchValue14, scratchValue15, whisper, whisper2
+    local scratchValue, scratchValue2, scratchValue3, scratchValue4, predicateResult, scratchValue5
+    local doneIntroduction, scratchValue6, scratchValue7, scratchValue8, scratchValue9, sequence1
+    local scratchValue10, scratchValue11, scratchValue12, pMessage, pOther_00, pPosition
+    local scratchValue13, scratchValue14, scratchValue15, scratchValue16, whisper, whisper2
     local orchardFarmWhisper
     local alive = true
     local function __cleanup_LAB_00dd1728()
-        scratchValue10 = 0
-        quest:PauseAllNonScriptedEntities((scratchValue10 ~= 0))
+        scratchValue11 = 0
+        quest:PauseAllNonScriptedEntities((scratchValue11 ~= 0))
         resources:ReleaseResource((whisper + 4))
-        resources:DestroyActorMap(scratchValue13)
-        resources:ReleaseResource(scratchValue2)
-        resources:ReleaseResource(CStack_cc)
-    end
-    local function __cleanup_LAB_00dd1742()
-        resources:ReleaseResource((whisper + 4))
-        resources:DestroyActorMap(scratchValue13)
-        resources:ReleaseResource(scratchValue2)
+        resources:DestroyActorMap(scratchValue14)
+        resources:ReleaseResource(scratchValue3)
         resources:ReleaseResource(CStack_cc)
     end
     doneIntroduction = quest:GetStateBool("DoneIntroduction")
     while not doneIntroduction do
         alive = quest:NewScriptFrame()
-        scratchValue4 = quest:IsActiveThreadTerminating()
-        if scratchValue4 then
+        scratchValue5 = quest:IsActiveThreadTerminating()
+        if scratchValue5 then
             return
         end
         doneIntroduction = quest:GetStateBool("DoneIntroduction")
     end
     alive = not quest:IsActiveThreadTerminating()
-    scratchValue4 = not alive
-    if not scratchValue4 then
+    scratchValue5 = not alive
+    if not scratchValue5 then
         quest:DisplayQuestInfo(true)
-        scratchValue8 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
+        scratchValue9 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
         alive = not quest:IsActiveThreadTerminating()
-        scratchValue4 = not alive
-        if not scratchValue4 then
+        scratchValue5 = not alive
+        if not scratchValue5 then
             repeat
-                quest:UpdateQuestInfoCounter(scratchValue8, quest:GetStateInt("CrateCount"), -1)
+                quest:UpdateQuestInfoCounter(scratchValue9, quest:GetStateInt("CrateCount"), -1)
                 if (quest:GetStateInt("CrateCount") == 0) and (not quest:GetStateBool("WhisperSpawned")) then
-                    scratchValue4 = quest:IsActiveThreadTerminating()
-                    if scratchValue4 then
+                    scratchValue5 = quest:IsActiveThreadTerminating()
+                    if scratchValue5 then
                         return
                     end
                     quest:SetStateInt("MissionFailed", 2)
                 end
-                scratchValue9 = quest:GetHero()
-                scratchValue10 = ""
-                -- TODO(native): CStack_cc._3_1_ = CScriptThing::MsgIsKilledBy(pCVar5);
-                if CStack_cc._3_1_ ~= 0 then
-                    scratchValue4 = quest:IsActiveThreadTerminating()
-                    if scratchValue4 then
+                scratchValue10 = quest:GetHero()
+                scratchValue11 = ""
+                scratchValue = scratchValue10:MsgIsKilledBy("")
+                if scratchValue then
+                    scratchValue5 = quest:IsActiveThreadTerminating()
+                    if scratchValue5 then
                         return
                     end
                     quest:SetStateInt("MissionFailed", 1)
                 end
                 if (2 < quest:GetStateInt("BanditWavesSpawned")) and (not quest:GetStateBool("WhisperSpawned")) then
-                    scratchValue4 = quest:IsActiveThreadTerminating()
-                    if scratchValue4 then
+                    scratchValue5 = quest:IsActiveThreadTerminating()
+                    if scratchValue5 then
                         return
                     end
                     quest:SetStateBool("WhisperSpawned", true)
                     quest:SetStateBool("WhisperInCutscene", true)
                     quest:SetQuestCardObjective("Q_OrchardFarmRaidGood", "TEXT_QUEST_PROTECT_FARM_OBJECTIVE_02", "", "Greatwood")
-                    quest:RemoveQuestInfoElement(scratchValue8)
-                    scratchValue9 = quest:GetThingWithScriptName("BanditTeamSpawn")
-                    scratchValue4 = false
-                    pPosition = scratchValue9:GetPos()
-                    scratchValue15 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", pPosition, "OrchardFarmWhisper")
-                    quest:EntityAttachToScript(scratchValue15, "Q_OrchardFarmRaid")
-                    quest:MiniMapAddMarker(scratchValue9, "HUD_ORB_RED_SMALL")
+                    quest:RemoveQuestInfoElement(scratchValue9)
+                    scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+                    scratchValue5 = false
+                    pPosition = scratchValue10:GetPos()
+                    scratchValue16 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", pPosition, "OrchardFarmWhisper")
+                    quest:EntityAttachToScript(scratchValue16, "Q_OrchardFarmRaid")
+                    quest:MiniMapAddMarker(scratchValue10, "HUD_ORB_RED_SMALL")
                     whisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
                     whisper2 = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
+                    scratchValue4 = resources:NewResource()
                     scratchValue3 = resources:NewResource()
-                    scratchValue2 = resources:NewResource()
                     -- TODO(native): ppuStack_80[0] = 0;
-                    resources:TryAcquire(scratchValue2, scratchValue15, 4)
-                    scratchValue7 = 4
-                    scratchValue14 = scratchValue3
-                    scratchValue9 = quest:GetHero()
-                    resources:TryAcquire(scratchValue14, scratchValue9, scratchValue7)
-                    scratchValue = resources:NewActorMap()
-                    resources:SetActor(scratchValue, "HERO", scratchValue3)
-                    resources:SetActor(scratchValue, "WHISPER", scratchValue2)
-                    scratchValue13 = resources:StartMovie("")
+                    resources:TryAcquire(scratchValue3, scratchValue16, 4)
+                    scratchValue8 = 4
+                    scratchValue15 = scratchValue4
+                    scratchValue10 = quest:GetHero()
+                    resources:TryAcquire(scratchValue15, scratchValue10, scratchValue8)
+                    scratchValue2 = resources:NewActorMap()
+                    resources:SetActor(scratchValue2, "HERO", scratchValue4)
+                    resources:SetActor(scratchValue2, "WHISPER", scratchValue3)
+                    scratchValue14 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     -- TODO(native): this_00 = *(int **)(this + 0x40);
-                    scratchValue9 = quest:GetHero()
+                    scratchValue10 = quest:GetHero()
                     -- TODO(native): aCStack_1c[0] = (CCharString)(quest:GetDistanceBetweenThings(auStack_c4, pCVar5) ^ 2);
-                    scratchValue9 = quest:GetHero()
-                    scratchValue6 = (quest:GetDistanceBetweenThings(auStack_b0 + 4, scratchValue9) ^ 2)
-                    if aCStack_1c[0] <= scratchValue6 then
+                    scratchValue10 = quest:GetHero()
+                    scratchValue7 = (quest:GetDistanceBetweenThings(auStack_b0 + 4, scratchValue10) ^ 2)
+                    if aCStack_1c[0] <= scratchValue7 then
                         alive = not quest:IsActiveThreadTerminating()
-                        scratchValue4 = not alive
-                        if not scratchValue4 then
-                            resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", scratchValue13, false, true)
-                            scratchValue11 = "CS_ORCHARD_GOOD_WHISPER_BACK"
+                        scratchValue5 = not alive
+                        if not scratchValue5 then
+                            resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", scratchValue14, false, true)
+                            scratchValue12 = "CS_ORCHARD_GOOD_WHISPER_BACK"
                             goto LAB_00dd14ee
                         end
                         -- TODO(native): goto LAB_00dd1736
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    scratchValue4 = not alive
-                    if scratchValue4 then
+                    scratchValue5 = not alive
+                    if scratchValue5 then
                         __cleanup_LAB_00dd1728()
                         return
                     end
-                    resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", scratchValue13, false, true)
-                    scratchValue11 = "CS_ORCHARD_GOOD_WHISPER_FRONT"
+                    ::FLOW_after_lab_00dd1742::
+                    resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", scratchValue14, false, true)
+                    scratchValue12 = "CS_ORCHARD_GOOD_WHISPER_FRONT"
                     ::LAB_00dd14ee::
                     quest:FixMovieSequenceCamera(false)
                     if not quest:GetStateBool("ShownCombatFlourishTutorial") then
-                        scratchValue4 = quest:IsActiveThreadTerminating()
-                        if scratchValue4 then __cleanup_LAB_00dd1728(); return end
-                        scratchValue4 = quest:DisplayTutorial(18)
-                        if scratchValue4 then
+                        scratchValue5 = quest:IsActiveThreadTerminating()
+                        if scratchValue5 then __cleanup_LAB_00dd1728(); return end
+                        scratchValue5 = quest:DisplayTutorial(18)
+                        if scratchValue5 then
                             alive = not quest:IsActiveThreadTerminating()
-                            scratchValue4 = not alive
-                            if not scratchValue4 then
-                                scratchValue4 = quest:MsgIsTutorialClickedPast()
-                                while not scratchValue4 do
+                            scratchValue5 = not alive
+                            if not scratchValue5 then
+                                scratchValue5 = quest:MsgIsTutorialClickedPast()
+                                while not scratchValue5 do
                                     alive = quest:NewScriptFrame()
-                                    scratchValue4 = quest:IsActiveThreadTerminating()
-                                    if scratchValue4 then __cleanup_LAB_00dd1728(); return end
-                                    scratchValue4 = quest:MsgIsTutorialClickedPast()
+                                    scratchValue5 = quest:IsActiveThreadTerminating()
+                                    if scratchValue5 then __cleanup_LAB_00dd1728(); return end
+                                    scratchValue5 = quest:MsgIsTutorialClickedPast()
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
-                                scratchValue4 = not alive
-                                if not scratchValue4 then goto LAB_00dd157a end
+                                scratchValue5 = not alive
+                                if not scratchValue5 then goto LAB_00dd157a end
                             end
                             -- LAB_00dd1736: (native jump target)
-                            scratchValue10 = 0
-                            quest:PauseAllNonScriptedEntities((scratchValue10 ~= 0))
-                            __cleanup_LAB_00dd1742(); return
+                            scratchValue11 = 0
+                            quest:PauseAllNonScriptedEntities((scratchValue11 ~= 0))
+                            resources:ReleaseResource((whisper + 4))
+                            resources:DestroyActorMap(scratchValue14)
+                            resources:ReleaseResource(scratchValue3)
+                            resources:ReleaseResource(CStack_cc)
+                            do return end
+                            goto FLOW_after_lab_00dd1742
                         end
                         ::LAB_00dd157a::
                         quest:SetStateBool("ShownCombatFlourishTutorial", true)
                     end
                     quest:SetStateBool("WhisperInCutscene", false)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(scratchValue13)
-                    resources:DestroyActorMap(scratchValue)
-                    resources:ReleaseResource(scratchValue2)
+                    resources:ReleaseResource(scratchValue14)
+                    resources:DestroyActorMap(scratchValue2)
                     resources:ReleaseResource(scratchValue3)
-                    scratchValue8 = i_stk_14
+                    resources:ReleaseResource(scratchValue4)
+                    scratchValue9 = i_stk_14
                 end
                 sequence1 = false
                 if quest:GetStateInt("CrateCount") == 0 then
@@ -476,8 +476,8 @@ function ProcessGameRulesGood(quest)
                 end
                 if sequence1 then
                     alive = not quest:IsActiveThreadTerminating()
-                    scratchValue4 = not alive
-                    if scratchValue4 then
+                    scratchValue5 = not alive
+                    if scratchValue5 then
                         sequence1 = true
                     else
                         sequence1 = false
@@ -486,92 +486,92 @@ function ProcessGameRulesGood(quest)
                 if sequence1 then
                     return
                 end
-                scratchValue10 = quest:GetHero()
-                scratchValue5 = scratchValue10:MsgIsKilledBy("")
-                if scratchValue5 then
-                    scratchValue4 = quest:IsActiveThreadTerminating()
-                    if scratchValue4 then
+                scratchValue11 = quest:GetHero()
+                scratchValue6 = scratchValue11:MsgIsKilledBy("")
+                if scratchValue6 then
+                    scratchValue5 = quest:IsActiveThreadTerminating()
+                    if scratchValue5 then
                         return
                     end
                     quest:SetStateInt("MissionFailed", 1)
                 end
                 if quest:GetStateBool("MissionSucceeded") then
-                    scratchValue4 = quest:IsActiveThreadTerminating()
-                    if scratchValue4 then
+                    scratchValue5 = quest:IsActiveThreadTerminating()
+                    if scratchValue5 then
                         return
                     end
                     quest:GiveHeroExperience(quest:ReadGlobalGameData(3432))
                     orchardFarmWhisper = quest:GetThingWithScriptName("OrchardFarmWhisper")
-                    scratchValue3 = resources:StartMovie("")
-                    scratchValue13 = resources:StartMovie("")
-                    scratchValue14 = scratchValue3 + 4
-                    scratchValue10 = quest:GetHero()
-                    resources:TryAcquire(scratchValue14, scratchValue10, 4)
-                    resources:TryAcquire(scratchValue13, orchardFarmWhisper, 4)
+                    scratchValue4 = resources:StartMovie("")
+                    scratchValue14 = resources:StartMovie("")
+                    scratchValue15 = scratchValue4 + 4
+                    scratchValue11 = quest:GetHero()
+                    resources:TryAcquire(scratchValue15, scratchValue11, 4)
+                    resources:TryAcquire(scratchValue14, orchardFarmWhisper, 4)
                     -- TODO(native): StdMap_Construct_API(auStack_a8 + 4);
-                    scratchValue14 = scratchValue3 + 4
+                    scratchValue15 = scratchValue4 + 4
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(auStack_a8 + 4),&CStack_cc);
                     -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);
-                    pOther_00 = scratchValue13
+                    pOther_00 = scratchValue14
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(auStack_a8 + 4),&CStack_cc);
                     -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);
-                    scratchValue12 = resources:StartMovie("")
+                    scratchValue13 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     -- TODO(native): RunCutsceneMacro_Func(&CStack_cc,auStack_a8 + 4,(void *)0x0,(void *)0x0,false,true);
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(scratchValue12)
+                    resources:ReleaseResource(scratchValue13)
                     -- TODO(native): StdMap_Destroy_API(auStack_a8 + 4);
                     -- TODO(native): CSubtitleRenderer::SetText(0x50);
                     quest:GiveHeroMorality(quest:ReadGlobalGameData(3484))
                     if quest:GetMasterGameState("OFBRCratesStolen") == 0 then
-                        scratchValue4 = quest:IsActiveThreadTerminating()
-                        if scratchValue4 then goto LAB_00dd1a93 end
+                        scratchValue5 = quest:IsActiveThreadTerminating()
+                        if scratchValue5 then goto LAB_00dd1a93 end
                         quest:SetMasterGameState("OFBR_NoCratesWereStolen", true)
                         alive = quest:NewScriptFrame()
-                        scratchValue4 = quest:IsActiveThreadTerminating()
-                        if scratchValue4 then goto LAB_00dd1a93 end
+                        scratchValue5 = quest:IsActiveThreadTerminating()
+                        if scratchValue5 then goto LAB_00dd1a93 end
                     end
                     quest:SetMasterGameState("OrchardFarmRaidLastCompleted", 2)
                     quest:RemoveQuestInfoElement(4)
-                    scratchValue4 = true
-                    scratchValue10 = quest:GetThingWithScriptName("OFFarmhouseDoor")
-                    quest:SetThingAsUsable(scratchValue10, scratchValue4)
+                    scratchValue5 = true
+                    scratchValue11 = quest:GetThingWithScriptName("OFFarmhouseDoor")
+                    quest:SetThingAsUsable(scratchValue11, scratchValue5)
                     predicateResult = false
-                    scratchValue4 = false
-                    scratchValue11 = quest:GetActiveQuestName()
-                    quest:SetQuestAsCompleted(scratchValue11, scratchValue4, predicateResult, false)
+                    scratchValue5 = false
+                    scratchValue12 = quest:GetActiveQuestName()
+                    quest:SetQuestAsCompleted(scratchValue12, scratchValue5, predicateResult, false)
                     quest:SetQuestAsCompleted("Q_OrchardFarmRaidGood", true, false, false)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidGood", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
                     repeat
                         alive = quest:NewScriptFrame()
                         alive = not quest:IsActiveThreadTerminating()
-                        scratchValue4 = not alive
-                    until not (not scratchValue4)
+                        scratchValue5 = not alive
+                    until not (not scratchValue5)
                     ::LAB_00dd1a93::
-                    resources:ReleaseResource(scratchValue13)
-                    resources:ReleaseResource(scratchValue3)
+                    resources:ReleaseResource(scratchValue14)
+                    resources:ReleaseResource(scratchValue4)
                     return
                 end
                 if quest:GetStateInt("MissionFailed") ~= 0 then
-                    scratchValue4 = quest:IsActiveThreadTerminating()
-                    if scratchValue4 then
+                    scratchValue5 = quest:IsActiveThreadTerminating()
+                    if scratchValue5 then
                         return
                     end
                     ReplaceQuestCards(quest)
-                    quest:RemoveQuestInfoElement(scratchValue7)
+                    quest:RemoveQuestInfoElement(scratchValue8)
                     predicateResult = true
                     pMessage = quest:GetStateString(("FailReasons_" .. quest:GetStateInt("MissionFailed")))
-                    scratchValue4 = true
-                    scratchValue11 = quest:GetActiveQuestName()
-                    quest:SetQuestAsFailed(scratchValue11, scratchValue4, pMessage, predicateResult)
+                    scratchValue5 = true
+                    scratchValue12 = quest:GetActiveQuestName()
+                    quest:SetQuestAsFailed(scratchValue12, scratchValue5, pMessage, predicateResult)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidGood", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
                 end
                 alive = quest:NewScriptFrame()
-                scratchValue4 = quest:IsActiveThreadTerminating()
-                if scratchValue4 then
+                scratchValue5 = quest:IsActiveThreadTerminating()
+                if scratchValue5 then
                     return
                 end
             until false
@@ -582,140 +582,203 @@ end
 function DoCutsceneIfRequired(quest)
     local resources = quest:RetailResources()
     local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6
-    local scratchValue7, scratchValue8, predicateResult, isRegionLoaded
-    local isDistanceBetweenThingsUnder, instructionDismissed, isRegionLoaded2, isRegionLoaded3
-    local scratchValue9, banditTeamSpawn, guardTeamSpawn, hero, hero2, mainGates, mainGates2, hero3
-    local ofFarmhouseDoor, mainGates3, getThingWithScriptName, scratchValue10, scratchValue11
+    local scratchValue7, scratchValue8, scratchValue9, scratchValue10, scratchValue11
     local getAllThingsWithScriptName, getNearestWithScriptName
     local alive = true
-    local scratchValue12 = nil
+    scratchValue6 = nil
     if quest:GetStateInt("HeroTeam") == 1 then
-        if quest:IsActiveThreadTerminating() then
+        alive = not quest:IsActiveThreadTerminating()
+        scratchValue7 = not alive
+        if scratchValue7 then
+            -- LAB_00dd03b8: (native jump target)
             return
         end
-        banditTeamSpawn = quest:GetThingWithScriptName("BanditTeamSpawn")
-        scratchValue12 = banditTeamSpawn
+        scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        scratchValue6 = scratchValue10
     else
-        if quest:IsActiveThreadTerminating() then return end
-        guardTeamSpawn = quest:GetThingWithScriptName("GuardTeamSpawn")
-        scratchValue12 = guardTeamSpawn
+        alive = not quest:IsActiveThreadTerminating()
+        scratchValue7 = not alive
+        do return end
+        scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        scratchValue6 = scratchValue10
+        if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
+        scratchValue10 = quest:GetThingWithScriptName("GuardTeamSpawn")
+        scratchValue6 = scratchValue10
     end
+    ::FLOW_after_lab_00dd03b8::
     -- LAB_00dcfb65: (native jump target)
     alive = not quest:IsActiveThreadTerminating()
-    predicateResult = not alive
+    scratchValue7 = not alive
     repeat
-        if predicateResult then
+        if scratchValue7 then
+            scratchValue6 = nil
+            -- LAB_00dcfe47: (native jump target)
             return
         end
-        isRegionLoaded = quest:IsRegionLoaded("OrchardFarm")
-        while not isRegionLoaded do
+        ::FLOW_after_lab_00dcfe47::
+        scratchValue7 = quest:IsRegionLoaded("OrchardFarm")
+        while not scratchValue7 do
             alive = quest:NewScriptFrame()
-            if quest:IsActiveThreadTerminating() then return end
-            isRegionLoaded = quest:IsRegionLoaded("OrchardFarm")
+            alive = not quest:IsActiveThreadTerminating()
+            scratchValue7 = not alive
+            if scratchValue7 then
+                scratchValue6 = nil
+                do return end
+                goto FLOW_after_lab_00dcfe47
+            end
+            scratchValue7 = quest:IsRegionLoaded("OrchardFarm")
         end
-        if quest:IsActiveThreadTerminating() then return end
-        hero = quest:GetHero()
-        isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(scratchValue12, hero, 10.0)
-        if isDistanceBetweenThingsUnder then
-            if quest:IsActiveThreadTerminating() then return end
+        alive = not quest:IsActiveThreadTerminating()
+        scratchValue7 = not alive
+        do return end
+        scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        scratchValue6 = scratchValue10
+        if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
+        scratchValue10 = quest:GetHero()
+        scratchValue7 = quest:IsDistanceBetweenThingsUnder(scratchValue6, scratchValue10, 10.0)
+        if scratchValue7 then
+            alive = not quest:IsActiveThreadTerminating()
+            scratchValue7 = not alive
+            do return end
+            scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+            scratchValue6 = scratchValue10
+            if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
             if quest:GetStateInt("HeroTeam") == 1 then
-                if quest:IsActiveThreadTerminating() then return end
+                alive = not quest:IsActiveThreadTerminating()
+                scratchValue7 = not alive
+                do return end
+                scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+                scratchValue6 = scratchValue10
+                if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
                 getAllThingsWithScriptName = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                getNearestWithScriptName = quest:GetNearestWithScriptName(hero, "GuardTeamMember")
-                scratchValue6 = resources:StartMovie("")
+                getNearestWithScriptName = quest:GetNearestWithScriptName(scratchValue6, "GuardTeamMember")
+                scratchValue5 = resources:StartMovie("")
                 scratchValue3 = resources:StartMovie("")
                 scratchValue2 = resources:StartMovie("")
                 scratchValue = resources:StartMovie("")
                 resources:TryAcquire(scratchValue, getNearestWithScriptName, 4)
-                resources:TryAcquire(scratchValue6, 0, 4)
+                resources:TryAcquire(scratchValue5, 0, 4)
                 resources:TryAcquire(scratchValue3, 0 + 1, 4)
-
-                scratchValue10 = scratchValue2
-                hero2 = quest:GetHero()
-                resources:TryAcquire(scratchValue10, hero2, (4))
+                scratchValue8 = 4
+                scratchValue11 = scratchValue2
+                scratchValue10 = quest:GetHero()
+                resources:TryAcquire(scratchValue11, scratchValue10, scratchValue8)
                 quest:SheatheHeroWeapons()
-                scratchValue7 = resources:NewActorMap()
-                resources:SetActor(scratchValue7, "HERO", scratchValue2)
-                resources:SetActor(scratchValue7, "BAN1", scratchValue7)
-                resources:SetActor(scratchValue7, "BAN2", scratchValue3)
-                resources:SetActor(scratchValue7, "GUARD", scratchValue)
+                scratchValue5 = resources:NewActorMap()
+                resources:SetActor(scratchValue5, "HERO", scratchValue2)
+                resources:SetActor(scratchValue5, "BAN1", scratchValue5)
+                resources:SetActor(scratchValue5, "BAN2", scratchValue3)
+                resources:SetActor(scratchValue5, "GUARD", scratchValue)
                 scratchValue4 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
-                resources:RunMacro("CS_ORCHARD_EVIL_INTRO", scratchValue7, false, true)
+                resources:RunMacro("CS_ORCHARD_EVIL_INTRO", scratchValue5, false, true)
                 quest:FixMovieSequenceCamera(false)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:ReleaseResource(scratchValue4)
-                resources:DestroyActorMap(scratchValue7)
+                resources:DestroyActorMap(scratchValue5)
                 resources:ReleaseResource(scratchValue)
                 resources:ReleaseResource(scratchValue2)
                 resources:ReleaseResource(scratchValue3)
-                resources:ReleaseResource(scratchValue7)
+                resources:ReleaseResource(scratchValue5)
                 quest:KickOffQuestStartScreen("Q_OrchardFarmRaidEvil", true, false)
-                mainGates = quest:GetThingWithScriptName("OF_MainGates")
-                quest:OpenDoor(mainGates)
+                scratchValue10 = quest:GetThingWithScriptName("OF_MainGates")
+                quest:OpenDoor(scratchValue10)
             else
-                if quest:IsActiveThreadTerminating() then return end
-                mainGates2 = quest:GetThingWithScriptName("OF_MainGates")
-                quest:OpenDoor(mainGates2)
-                scratchValue8 = resources:StartMovie("")
-
-                scratchValue11 = scratchValue8
-                hero3 = quest:GetHero()
-                resources:TryAcquire(scratchValue11, hero3, (4))
-                scratchValue9 = resources:NewActorMap()
-                resources:SetActor(scratchValue9, "HERO", scratchValue8)
+                alive = not quest:IsActiveThreadTerminating()
+                scratchValue7 = not alive
+                do return end
+                scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+                scratchValue6 = scratchValue10
+                if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
+                scratchValue10 = quest:GetThingWithScriptName("OF_MainGates")
+                quest:OpenDoor(scratchValue10)
                 scratchValue5 = resources:StartMovie("")
+                scratchValue8 = 4
+                scratchValue11 = scratchValue5
+                scratchValue10 = quest:GetHero()
+                resources:TryAcquire(scratchValue11, scratchValue10, scratchValue8)
+                scratchValue9 = resources:NewActorMap()
+                resources:SetActor(scratchValue9, "HERO", scratchValue5)
+                scratchValue4 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
                 resources:RunMacro("CS_ORCHARD_GOOD_INTRO", scratchValue9, false, true)
                 quest:FixMovieSequenceCamera(false)
                 quest:PauseAllNonScriptedEntities(false)
-                resources:ReleaseResource(scratchValue5)
+                resources:ReleaseResource(scratchValue4)
                 resources:DestroyActorMap(scratchValue9)
-                resources:ReleaseResource(scratchValue8)
+                resources:ReleaseResource(scratchValue5)
                 quest:KickOffQuestStartScreen("Q_OrchardFarmRaidGood", true, false)
             end
             quest:DeactivateQuest("Q_OrchardFarm_Barricade", 0)
             quest:Pause(1.0)
             quest:SetStateBool("DoneIntroduction", true)
-
-            ofFarmhouseDoor = quest:GetThingWithScriptName("OFFarmhouseDoor")
-            quest:SetThingAsUsable(ofFarmhouseDoor, (false))
-            return
+            scratchValue7 = false
+            scratchValue10 = quest:GetThingWithScriptName("OFFarmhouseDoor")
+            quest:SetThingAsUsable(scratchValue10, scratchValue7)
+            do return end
+            scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+            scratchValue6 = scratchValue10
+            goto FLOW_after_lab_00dd03b8
         end
-        if quest:IsActiveThreadTerminating() then return end
+        alive = not quest:IsActiveThreadTerminating()
+        scratchValue7 = not alive
+        do return end
+        scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        scratchValue6 = scratchValue10
+        if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
         quest:SetStateBool("HeroAtWrongEntrance", true)
-        mainGates3 = quest:GetThingWithScriptName("OF_MainGates")
+        scratchValue10 = quest:GetThingWithScriptName("OF_MainGates")
         -- TODO(native): CloseDoor is not a ForgeFSE binding
-        quest:CloseDoor(mainGates3)
-
-        getThingWithScriptName = quest:GetThingWithScriptName(getAllThingsWithScriptName)
-        quest:SetThingAsUsable(getThingWithScriptName, (false))
+        quest:CloseDoor(scratchValue10)
+        scratchValue7 = false
+        scratchValue10 = quest:GetThingWithScriptName(getAllThingsWithScriptName)
+        quest:SetThingAsUsable(scratchValue10, scratchValue7)
         quest:Pause(1.0)
         quest:DisplayGameInfo("TEXT_QST_051_WRONG_ENTRANCE")
-        instructionDismissed = quest:MsgIsGameInfoClickedPast()
-        while not instructionDismissed do
+        scratchValue7 = quest:MsgIsGameInfoClickedPast()
+        while not scratchValue7 do
             alive = quest:NewScriptFrame()
-            if quest:IsActiveThreadTerminating() then return end
-            instructionDismissed = quest:MsgIsGameInfoClickedPast()
+            alive = not quest:IsActiveThreadTerminating()
+            scratchValue7 = not alive
+            do return end
+            scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+            scratchValue6 = scratchValue10
+            if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
+            scratchValue7 = quest:MsgIsGameInfoClickedPast()
         end
-        if quest:IsActiveThreadTerminating() then return end
-        isRegionLoaded2 = quest:IsRegionLoaded("OrchardFarm")
-        if isRegionLoaded2 then
+        alive = not quest:IsActiveThreadTerminating()
+        scratchValue7 = not alive
+        do return end
+        scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        scratchValue6 = scratchValue10
+        if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
+        scratchValue7 = quest:IsRegionLoaded("OrchardFarm")
+        if scratchValue7 then
             repeat
                 alive = quest:NewScriptFrame()
-                if quest:IsActiveThreadTerminating() then return end
-                isRegionLoaded3 = quest:IsRegionLoaded("OrchardFarm")
-            until not (isRegionLoaded3)
+                alive = not quest:IsActiveThreadTerminating()
+                scratchValue7 = not alive
+                do return end
+                scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+                scratchValue6 = scratchValue10
+                if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
+                scratchValue7 = quest:IsRegionLoaded("OrchardFarm")
+            until not (scratchValue7)
         end
-        if quest:IsActiveThreadTerminating() then return end
+        alive = not quest:IsActiveThreadTerminating()
+        scratchValue7 = not alive
+        do return end
+        scratchValue10 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        scratchValue6 = scratchValue10
+        if scratchValue7 then goto FLOW_after_lab_00dd03b8 end
         quest:SetStateBool("HeroAtWrongEntrance", false)
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
-        predicateResult = not alive
+        scratchValue7 = not alive
     until false
 end
 
@@ -733,9 +796,11 @@ function WatchForExternalScriptDeactivation(quest)
         else
             predicateResult = true
             isQuestActive2 = quest:IsQuestActive("Q_OrchardFarmRaidEvil")
-            predicateResult2 = true
-            if isQuestActive2 then return end  -- TODO(native): goto LAB_00dccfa3
+
+            predicateResult2 = false
+            if isQuestActive2 then goto FLOW_after_lab_00dccfa3 end
         end
+        ::FLOW_after_lab_00dccfa3::
         if predicateResult then
             predicateResult = false
         end
@@ -833,7 +898,8 @@ function DoMultiplierCutscene(quest)
             if scratchValue2 then
                 alive = not quest:IsActiveThreadTerminating()
                 scratchValue2 = not alive
-                if scratchValue2 then return end  -- TODO(native): goto LAB_00dd1d15
+                quest:PauseAllNonScriptedEntities(false)
+                if scratchValue2 then goto FLOW_after_lab_00dd1d15 end
                 if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     scratchValue2 = not alive
@@ -901,6 +967,7 @@ function DoMultiplierCutscene(quest)
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)
     end
+    ::FLOW_after_lab_00dd1d15::
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
     resources:DestroyActorMap(scratchValue4)

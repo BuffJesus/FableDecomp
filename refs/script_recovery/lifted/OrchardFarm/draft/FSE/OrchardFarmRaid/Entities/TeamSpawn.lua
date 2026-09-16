@@ -12,9 +12,9 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1
+    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1
     local alive = true
-    local cVar1 = quest:GetStateBool("DoneIntroduction")
+    cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
@@ -96,7 +96,7 @@ function Main(quest, me)
                                     i_stk_70 = i_stk_70 + 1
                                 until not (i_stk_70 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                             end
-                            -- TODO(native): goto LAB_00dcd9ed
+                            goto LAB_00dcd9ed
                         end
                     end
                     alive = not quest:IsActiveThreadTerminating()
@@ -123,7 +123,7 @@ function Main(quest, me)
                             i_stk_70 = i_stk_70 + 1
                         until not (i_stk_70 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                     end
-                    -- LAB_00dcd9ed: (native jump target)
+                    ::LAB_00dcd9ed::
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -211,6 +211,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
+                                    -- LAB_00dcda68: (native jump target)
                                     return
                                 end
                                 bVar3 = false
@@ -221,21 +222,34 @@ function Main(quest, me)
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
-                                if bVar3 then return end
+                                do return end
+                                bVar3 = false
+                                pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
+                                pCVar5 = me:GetPos()
+                                pCVar6 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", pCVar5, pCVar8)
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
+                                if bVar3 then goto FLOW_after_lab_00dcda68 end
                                 bVar3 = false
                                 pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), pCVar5, pCVar8)
                                 -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
                             end
+                            ::FLOW_after_lab_00dcda68::
                             quest:EntityAttachToScript(pCVar6, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
                             iVar7 = iVar7 + 1
                         until not (iVar7 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                     end
-                    -- TODO(native): goto LAB_00dcd9ed
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar3 = not alive
+                    if bVar3 then
+                        return
+                    end
+                    goto FLOW_after_lab_00dcd9ed
                 end
             end
+            ::FLOW_after_lab_00dcd9ed::
             cVar1 = quest:GetStateBool("WhisperSpawned")
         end
         alive = not quest:IsActiveThreadTerminating()

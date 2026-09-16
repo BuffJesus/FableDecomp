@@ -20,10 +20,10 @@ index 8c1e959..bf57644 100644
      questState_type["RetainRetailThing"] = &LuaQuestState::RetainRetailThing;
 diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
 new file mode 100644
-index 0000000..7b8b2d1
+index 0000000..563568f
 --- /dev/null
 +++ b/FableScriptExtender/NoviUnitBindings.h
-@@ -0,0 +1,162 @@
+@@ -0,0 +1,174 @@
 +#pragma once
 +// Bindings the converter-generated quest units (Orchard Farm, ...) need beyond the New Oakvale set.
 +// Evidence: docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md and refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md
@@ -77,10 +77,22 @@ index 0000000..7b8b2d1
 +    return raw ? std::string(raw) : "";
 +}
 +
++// An unset CScriptThing member is an empty handle in retail (IsAlive false, IsDead true, IsEqualTo false),
++// never a null pointer: scripts call methods on it without checking.
++inline std::shared_ptr<CScriptThing> NoviEmptyThing() {
++    if (!Game_malloc) return nullptr;
++    auto* buffer = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
++    if (!buffer) return nullptr;
++    memset(buffer, 0, sizeof(CScriptThing));
++    buffer->pVTable = g_pCScriptThingVTable;
++    return std::shared_ptr<CScriptThing>(buffer, [](CScriptThing* p) { if (p) Game_free(p); });
++}
++
 +inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::usertype<CScriptThing>& thing) {
 +    // ---- thing-valued quest state ---------------------------------------------------------------
 +    quest["GetStateThing"] = [](LuaQuestState& self, const std::string& name) {
-+        return self.GetRetainedRetailThing(name);
++        auto thing = self.GetRetainedRetailThing(name);
++        return thing ? thing : NoviEmptyThing();
 +    };
 +    quest["SetStateThing"] = [](LuaQuestState& self, const std::string& name, sol::object value) {
 +        if (value.is<std::shared_ptr<CScriptThing>>()) {

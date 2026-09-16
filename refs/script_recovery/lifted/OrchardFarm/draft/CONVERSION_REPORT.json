@@ -205,7 +205,6 @@
             "verify cleanup at LAB_00dd0b11 (lifted as early return)",
             "verify cleanup at LAB_00dd0b11 (lifted as early return)",
             "label LAB_00dd0b1f",
-            "goto LAB_00dd0b2b",
             "unlifted: pppuVar9 = appuStack_ac;",
             "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "unlifted: CSubtitleRenderer::SetText(0x55);"
@@ -265,6 +264,10 @@
             "MsgIsTutorialClickedPast",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_ReleaseResource",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
             "SetStateBool",
             "SetStateBool",
             "PauseAllNonScriptedEntities",
@@ -317,7 +320,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 208,
+          "lines": 214,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -327,10 +330,12 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
+            "goto FLOW_after_lab_00dd0b2b;",
             "goto LAB_00dd08eb;",
             "if (!bVar4) goto LAB_00dd0977;"
           ],
           "nativeLabels": [
+            "FLOW_after_lab_00dd0b2b",
             "LAB_00dd08eb",
             "LAB_00dd0977"
           ]
@@ -346,7 +351,6 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: CStack_cc._3_1_ = CScriptThing::MsgIsKilledBy(pCVar5);",
             "unlifted: ppuStack_80[0] = 0;",
             "unlifted: this_00 = *(int **)(this + 0x40);",
             "unlifted: aCStack_1c[0] = (CCharString)ENGINE_SquaredDistance(auStack_c4, pCVar5);",
@@ -356,7 +360,6 @@
             "verify cleanup at LAB_00dd1728 (lifted as early return)",
             "verify cleanup at LAB_00dd1728 (lifted as early return)",
             "label LAB_00dd1736",
-            "goto LAB_00dd1742",
             "unlifted: StdMap_Construct_API(auStack_a8 + 4);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);",
@@ -377,6 +380,7 @@
             "IsActiveThreadTerminating",
             "SetStateInt",
             "GetHero",
+            "MsgIsKilledBy",
             "IsActiveThreadTerminating",
             "SetStateInt",
             "IsActiveThreadTerminating",
@@ -425,6 +429,10 @@
             "MsgIsTutorialClickedPast",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_ReleaseResource",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
             "SetStateBool",
             "SetStateBool",
             "PauseAllNonScriptedEntities",
@@ -478,7 +486,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 258,
+          "lines": 264,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -488,11 +496,13 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
+            "goto FLOW_after_lab_00dd1742;",
             "goto LAB_00dd14ee;",
             "if (!bVar3) goto LAB_00dd157a;",
             "if (bVar3) goto LAB_00dd1a93;"
           ],
           "nativeLabels": [
+            "FLOW_after_lab_00dd1742",
             "LAB_00dd14ee",
             "LAB_00dd157a",
             "LAB_00dd1a93"
@@ -510,27 +520,16 @@
           },
           "todo": [
             "label LAB_00dd03b8",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
             "label LAB_00dcfb65",
             "label LAB_00dcfe47",
-            "goto LAB_00dcfe47",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "goto LAB_00dd03b8",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "CloseDoor: not in FSE manifest",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "verify cleanup at LAB_00dd03b8 (lifted as early return)"
+            "CloseDoor: not in FSE manifest"
           ],
           "calls": [
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "GetThingWithScriptName",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
@@ -540,10 +539,13 @@
             "QUESTTHING_Empty",
             "IsRegionLoaded",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "GetAllThingsWithScriptName",
             "GetNearestWithScriptName",
             "RESOURCE_StartMovie",
@@ -579,6 +581,7 @@
             "OpenDoor",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
+            "GetThingWithScriptName",
             "OpenDoor",
             "RESOURCE_StartMovie",
             "GetHero",
@@ -601,7 +604,9 @@
             "SetStateBool",
             "GetThingWithScriptName",
             "SetThingAsUsable",
+            "GetThingWithScriptName",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "SetStateBool",
             "GetThingWithScriptName",
             "CloseDoor",
@@ -612,18 +617,22 @@
             "MsgIsGameInfoClickedPast",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "MsgIsGameInfoClickedPast",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "IsRegionLoaded",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "IsRegionLoaded",
             "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
             "SetStateBool",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 161,
+          "lines": 197,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -632,8 +641,15 @@
             "errors": []
           },
           "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
+          "nativeJumps": [
+            "goto FLOW_after_lab_00dcfe47;",
+            "goto FLOW_after_lab_00dd03b8;",
+            "if (bVar2) goto FLOW_after_lab_00dd03b8;"
+          ],
+          "nativeLabels": [
+            "FLOW_after_lab_00dcfe47",
+            "FLOW_after_lab_00dd03b8"
+          ]
         },
         {
           "owner": "Q_OrchardFarmRaid",
@@ -646,8 +662,7 @@
             "returnKind": null
           },
           "todo": [
-            "label LAB_00dccfa3",
-            "verify cleanup at LAB_00dccfa3 (lifted as early return)"
+            "label LAB_00dccfa3"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -660,7 +675,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 40,
+          "lines": 42,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -669,8 +684,12 @@
             "errors": []
           },
           "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
+          "nativeJumps": [
+            "if (bVar3) goto FLOW_after_lab_00dccfa3;"
+          ],
+          "nativeLabels": [
+            "FLOW_after_lab_00dccfa3"
+          ]
         },
         {
           "owner": "Q_OrchardFarmRaid",
@@ -739,7 +758,6 @@
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
             "unlifted: local_3c = (CScriptThing *)piVar3;",
-            "verify cleanup at LAB_00dd1d15 (lifted as early return)",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
             "label LAB_00dd1e53",
@@ -770,6 +788,7 @@
             "GetThingWithScriptName",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_ReleaseResource",
@@ -794,7 +813,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 130,
+          "lines": 132,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -805,9 +824,11 @@
           "readableLocalNames": {},
           "nativeJumps": [
             "goto LAB_00dd1e95;",
+            "if (bVar4) goto FLOW_after_lab_00dd1d15;",
             "if (native_arg_sequence_2) goto LAB_00dd1e70;"
           ],
           "nativeLabels": [
+            "FLOW_after_lab_00dd1d15",
             "LAB_00dd1e70",
             "LAB_00dd1e95"
           ]
@@ -850,13 +871,10 @@
             "returnKind": null
           },
           "todo": [
-            "goto LAB_00dcd9ed",
-            "label LAB_00dcd9ed",
             "label LAB_00dcda68",
             "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
-            "verify cleanup at LAB_00dcda68 (lifted as early return)",
             "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
-            "goto LAB_00dcd9ed"
+            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -925,12 +943,16 @@
             "ENTITYSTATE_GetString",
             "GetPos",
             "CreateCreature",
+            "ENTITYSTATE_GetString",
+            "GetPos",
+            "CreateCreature",
             "EntityAttachToScript",
             "Pause",
             "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
             "RemoveQuestInfoElement"
           ],
-          "lines": 233,
+          "lines": 246,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -939,8 +961,16 @@
             "errors": []
           },
           "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
+          "nativeJumps": [
+            "goto FLOW_after_lab_00dcd9ed;",
+            "goto LAB_00dcd9ed;",
+            "if (bVar3) goto FLOW_after_lab_00dcda68;"
+          ],
+          "nativeLabels": [
+            "FLOW_after_lab_00dcd9ed",
+            "FLOW_after_lab_00dcda68",
+            "LAB_00dcd9ed"
+          ]
         },
         {
           "owner": "TeamSpawn",
@@ -1051,11 +1081,8 @@
           "todo": [
             "label LAB_00dcddfe",
             "label LAB_00dcddcf",
-            "goto LAB_00dcddfe",
             "IsBeingCarriedBy: CScriptThing method not in FSE manifest",
             "label LAB_00dcddbf",
-            "verify cleanup at LAB_00dcddbf (lifted as early return)",
-            "verify cleanup at LAB_00dcddbf (lifted as early return)",
             "verify cleanup at LAB_00dcddcf (lifted as early return)"
           ],
           "calls": [
@@ -1075,7 +1102,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 51,
+          "lines": 56,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1084,8 +1111,15 @@
             "errors": []
           },
           "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
+          "nativeJumps": [
+            "goto FLOW_after_lab_00dcddfe;",
+            "if (bVar3) goto FLOW_after_lab_00dcddbf;",
+            "if (bVar4) goto FLOW_after_lab_00dcddbf;"
+          ],
+          "nativeLabels": [
+            "FLOW_after_lab_00dcddbf",
+            "FLOW_after_lab_00dcddfe"
+          ]
         },
         {
           "owner": "Artefact",
@@ -1325,21 +1359,14 @@
             "label LAB_00dce594",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),\"\",-1);",
             "IsBeingCarriedBy: CScriptThing method not in FSE manifest",
-            "verify cleanup at LAB_00dce594 (lifted as early return)",
             "label LAB_00dcebab",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
             "unnamed field 0x2c",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
             "unlifted: pThing_06._4_4_ = uVar8;",
             "unlifted: pThing_06._0_4_ = auStack_48;",
             "unlifted: pThing_06._8_4_ = uVar10;",
             "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
             "IsEqualTo: CScriptThing method not in FSE manifest",
             "EntityFollowThing: missing spTarget (3 args for 4 params)",
-            "unlifted: CCharString::CCharString(\"REQUEST_PROTECTION\",\"TeamExitMarker\",-1);",
             "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);"
           ],
           "calls": [
@@ -1434,7 +1461,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 411,
+          "lines": 418,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1445,9 +1472,14 @@
           "readableLocalNames": {},
           "nativeJumps": [
             "if (*(int *)(this + 0x1c) != 1) goto LAB_00dce500;",
-            "if (bVar6) goto LAB_00dcec33;"
+            "if (bVar2) goto FLOW_after_lab_00dcebab;",
+            "if (bVar3) goto FLOW_after_lab_00dcebab;",
+            "if (bVar6) goto LAB_00dcec33;",
+            "if (native_arg_sequence_1) goto FLOW_after_lab_00dce594;"
           ],
           "nativeLabels": [
+            "FLOW_after_lab_00dce594",
+            "FLOW_after_lab_00dcebab",
             "LAB_00dce500",
             "LAB_00dcec33"
           ]
@@ -1545,17 +1577,16 @@
             "returnKind": null
           },
           "todo": [
-            "unnamed field 0x14",
-            "unlifted: *piVar1 = *piVar1 + -1;",
             "unlifted: pvStack_4 = this;"
           ],
           "calls": [
+            "QUESTSTATE_SetInt",
             "QUESTSTATE_SetInt",
             "MsgIsKilledBy",
             "SetMasterGameState",
             "SetMasterGameState"
           ],
-          "lines": 13,
+          "lines": 12,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2034,21 +2065,9 @@
             "resources:ReleaseResource(appuStack_bc)",
             "resources:ReleaseResource(aCStack_c4)"
           ],
-          "LAB_00dd0b2b": [
-            "resources:ReleaseResource(appuStack_ac)",
-            "resources:DestroyActorMap(r2)",
-            "resources:ReleaseResource(appuStack_bc)",
-            "resources:ReleaseResource(aCStack_c4)"
-          ],
           "LAB_00dd1728": [
             "pCVar7 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))",
-            "resources:ReleaseResource((r2 + 4))",
-            "resources:DestroyActorMap(ppuStack_9c)",
-            "resources:ReleaseResource(amStack_8c)",
-            "resources:ReleaseResource(CStack_cc)"
-          ],
-          "LAB_00dd1742": [
             "resources:ReleaseResource((r2 + 4))",
             "resources:DestroyActorMap(ppuStack_9c)",
             "resources:ReleaseResource(amStack_8c)",
@@ -2087,7 +2106,6 @@
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
             "unlifted: local_3c = (CScriptThing *)piVar3;",
-            "verify cleanup at LAB_00dd1d15 (lifted as early return)",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
             "label LAB_00dd1e53",
@@ -2117,7 +2135,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 126
+        "todo": 94
       }
     },
     {
@@ -2318,6 +2336,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 126
+    "todo": 94
   }
 }

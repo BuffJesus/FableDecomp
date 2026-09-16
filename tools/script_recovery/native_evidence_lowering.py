@@ -276,6 +276,8 @@ def normalise_typed_decompile(text: str) -> str:
     """Typed exports (ExportTypedTranslationUnit) print a few shapes the untyped pipeline never saw."""
     text = re.sub(r'return CONCAT31\([^;]*?,\s*(0|1)\);', lambda m: f'return {"true" if m.group(1) == "1" else "false"};', text)
     text = re.sub(r"return CONCAT31\(\w+,\s*'\\x01' - (\w+)\);", r'return !\1;', text)
+    text = re.sub(r"'\\x01' - \(([^;()]+(?:\([^;()]*\)[^;()]*)*)\)", r'!(\1)', text)
+    text = re.sub(r'return CONCAT31\(\w+,\s*([^;]+)\);', r'return \1;', text)
     text = re.sub(r'return \(uint\)extraout_var(?:_\d+)? << 8;', 'return false;', text)
     text = re.sub(r'return \(uint\)(\w+) << 8;', r'return false;', text)
     text = re.sub(r'\(int\)(this(?:_\d+)?)\b', r'\1', text)                 # (int)this + 0x40
@@ -291,6 +293,8 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\*\) \(', '*)(', text)
     text = re.sub(r'^[ \t]*(\w+) = !(\w+) && \2;[ \t]*\r?\n', '', text, flags=re.M)   # EH-state flag init (always false)
     text = re.sub(r'\((?:undefined\d?|uchar|char|byte)\s+\[\d+\]\)', '', text)   # array-typed value casts
+    # a byte slice of a stack slot used as a scalar (`CStack_cc._3_1_ = call(); if (CStack_cc._3_1_ != 0)`)
+    text = re.sub(r'\b(\w+)\._(\d+)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     return text
 
@@ -540,15 +544,18 @@ def fold_offset_string_temporaries(text: str) -> str:
     """A CCharString literal constructed at an offset inside a stack struct (`(auStack_64 + 8)`) is a
     temporary the lifter cannot track by name; substitute the literal for its uses and drop the
     constructor/destructor pair."""
-    for m in list(RE_OFFSET_STRING_CTOR.finditer(text)):
+    pos = 0
+    while (m := RE_OFFSET_STRING_CTOR.search(text, pos)):
         expr, lit = m.group('expr'), m.group('lit')
-        if text.count(m.group(0)) != 1:
-            continue
         head, tail = text[:m.start()], text[m.end():]
-        tail = re.sub(r'^[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(\(CCharString \*\)\(' + re.escape(expr) + r'\)\);[ \t]*\r?\n', '', tail, count=1, flags=re.M)
-        tail = re.sub(r'\(CCharString \*\)\(' + re.escape(expr) + r'\)', lit, tail)
-        tail = re.sub(r'(?<![\w])\(' + re.escape(expr) + r'\)', lit, tail)
-        text = head + tail
+        # the slot may be reused by a later construction: substitute only up to that point
+        reuse = re.search(r'^[ \t]*CCharString::(?:CCharString|operator=)\(\(CCharString \*\)\(' + re.escape(expr) + r'\),', tail, re.M)
+        scope, rest = (tail[:reuse.start()], tail[reuse.start():]) if reuse else (tail, '')
+        scope = re.sub(r'^[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(\(CCharString \*\)\(' + re.escape(expr) + r'\)\);[ \t]*\r?\n', '', scope, count=1, flags=re.M)
+        scope = re.sub(r'\(CCharString \*\)\(' + re.escape(expr) + r'\)', lit, scope)
+        scope = re.sub(r'(?<![\w])\(' + re.escape(expr) + r'\)', lit, scope)
+        text = head + scope + rest
+        pos = m.start()
     return text
 
 
@@ -750,10 +757,38 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                     continue
                 absolute = a['base'] + member_off
                 key = f'__key("{a["name"]}_0_{sub.group(1)}_" .. {{idx}})'
+                # the compiler folds Teams[T].StateCounter[S] into one index: S + T * (stride/4)
+                ints = stride // 4
+                idx_expr = r'(?:\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\("[^"]*"\)|\w+)'
+                flattened = {}
+                for m in list(re.finditer(r'^[ \t]*(\w+) = (' + idx_expr + r') \+ (' + idx_expr + r') \* ' + off_re(ints) + r';[ \t]*\r?\n', text, re.M)):
+                    flattened[m.group(1)] = (m.group(2), m.group(3), m.group(0))
                 pat_store = re.compile(r'^([ 	]*)\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* 4\) =\s*([^;]+);', re.M)
                 text = pat_store.sub(lambda m, k=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
                 pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* 4\)')
                 text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
+                for var, (sidx, tidx, line) in flattened.items():
+                    two_d = f'__key("{a["name"]}_" .. {tidx} .. "_{sub.group(1)}_" .. {sidx})'
+                    if f'_{sub.group(1)}_" .. {var})' in text:
+                        text = text.replace(f'__key("{a["name"]}_0_{sub.group(1)}_" .. {var})', two_d)
+                        if not re.search(r'\b' + re.escape(var) + r'\b', text.replace(line, '')):
+                            text = text.replace(line, '', 1)
+            for member_off, (mname, kind) in a['members'].items():
+                absolute = a['base'] + member_off
+                key = f'__key("{a["name"]}_" .. {{idx}} .. "_{mname}")'
+                pat = re.compile(r'^([ \t]*)(\w+) = \(int \*\)\((?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\("[^"]*"\)|\w+) \* ' + off_re(stride) + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\);[ \t]*\r?\n', re.M)
+                pos = 0
+                while (m := pat.search(text, pos)):
+                    var, k = m.group(2), key.format(idx=m.group('idx'))
+                    head, tail = text[:m.start()], text[m.end():]
+                    nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
+                    scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+                    scope = re.sub(r'^([ \t]*)\*' + re.escape(var) + r' = \*' + re.escape(var) + r' \+ (-?(?:0x[0-9a-f]+|\d+));',
+                                   lambda mm, k=k, kind=kind: f'{mm.group(1)}QUESTSTATE_Set{kind}({k}, QUESTSTATE_Get{kind}({k}) + {mm.group(2)});', scope, flags=re.M)
+                    scope = re.sub(r'^([ \t]*)\*' + re.escape(var) + r' = ([^;]+);', lambda mm, k=k, kind=kind: f'{mm.group(1)}QUESTSTATE_Set{kind}({k}, {mm.group(2).strip()});', scope, flags=re.M)
+                    scope = re.sub(r'\*' + re.escape(var) + r'\b', f'{tag}STATE_Get{kind}({k})', scope)
+                    text = head + scope + rest
+                    pos = m.start()
             # element address taken: IDX * STRIDE + BASE + PARENT  -> array pointer value (index)
             text = re.sub(r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* ' + off_re(stride) + r' \+ ' + off_re(a['base']) + r' \+ ' + base,
                           lambda m, a=a: f'__element("{a["name"]}", {m.group("idx")})', text)
@@ -1053,7 +1088,6 @@ LUA_PSEUDO = [
     (re.compile(r'ENTITYLIST_Push\('), '__native_entity_state:StateListPush('),
     (re.compile(r'ENTITYLIST_Count\('), '__native_entity_state:GetStateListCount('),
     (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
-    (re.compile(r'__thing_valid\('), 'IsThingValid('),
     (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
@@ -1108,6 +1142,7 @@ def _expand_calls(text, name, render):
 def finish_lua(text: str) -> str:
     """Turn lowering pseudo-calls into Lua after the lifter has run."""
     text = re.sub(r'ENGINE_(IsDistanceBetweenThings(?:Under|Over))\(', r'quest:\1(', text)
+    text = _expand_calls(text, '__thing_valid', lambda a: f'({a[0]} ~= nil and not {a[0]}:IsNull())')
     text = _expand_calls(text, 'ENGINE_Colour', lambda a: '{R = %s, G = %s, B = %s, A = %s}' % tuple(a))
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')

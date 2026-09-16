@@ -53,7 +53,8 @@ function DoMultiplierCutscene(quest, me)
             if isDistanceBetweenThingsUnder then
                 alive = not quest:IsActiveThreadTerminating()
                 predicateResult3 = not alive
-                if predicateResult3 then return end  -- TODO(native): goto LAB_00dd1d15
+                quest:PauseAllNonScriptedEntities(false)
+                if predicateResult3 then goto FLOW_after_lab_00dd1d15 end
                 if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     predicateResult4 = not alive
@@ -130,6 +131,7 @@ function DoMultiplierCutscene(quest, me)
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)
     end
+    ::FLOW_after_lab_00dd1d15::
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
     resources:DestroyActorMap(scratchValue6)

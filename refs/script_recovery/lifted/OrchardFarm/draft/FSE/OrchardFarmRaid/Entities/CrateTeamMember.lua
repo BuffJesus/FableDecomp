@@ -43,7 +43,7 @@ function Main(quest, me)
                     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) + -1)
                 end
                 iVar7 = __native_entity_state:GetStateInt("MemberState") + __native_entity_state:GetStateInt("TeamID") * 0x10
-                quest:SetStateInt(("Teams_0_StateCounter_" .. iVar7), quest:GetStateInt(("Teams_0_StateCounter_" .. iVar7)) + -1)
+                quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
                 return
             end
             cVar4 = quest:GetStateBool("DoneIntroduction")
@@ -140,7 +140,7 @@ function Main(quest, me)
                             return
                         end
                         thing_38 = GetNearestCrateToMe(quest, me)
-                        __native_condition_1 = not IsThingValid(thing_38)
+                        __native_condition_1 = not (thing_38 ~= nil and not thing_38:IsNull())
                         if not __native_condition_1 then
                             cVar4 = (thing_38 ~= nil and thing_38:IsAlive())
                             __native_condition_1 = not cVar4
@@ -152,7 +152,7 @@ function Main(quest, me)
                             -- TODO(native): CCharString::CCharString((CCharString *)(auStack_50 + 4),"",-1);
                             bVar6 = true
                             native_arg_sequence_1 = false
-                            if IsThingValid(thing_38) then
+                            if (thing_38 ~= nil and not thing_38:IsNull()) then
                                 native_arg_sequence_1 = true
                             else
                                 native_arg_sequence_1 = false
@@ -166,9 +166,11 @@ function Main(quest, me)
                                     native_arg_sequence_1 = false
                                 end
                             end
-                            if native_arg_sequence_1 then return end  -- TODO(native): goto LAB_00dce594
+                            bVar3 = false
+                            if native_arg_sequence_1 then goto FLOW_after_lab_00dce594 end
                             bVar3 = true
                         end
+                        ::FLOW_after_lab_00dce594::
                         if bVar6 then
                             bVar6 = false
                         end
@@ -176,24 +178,29 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
+                                -- LAB_00dcebab: (native jump target)
                                 return
                             end
+                            ::FLOW_after_lab_00dcebab::
                             bVar3 = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                             if (quest:GetStateInt("HeroTeam") == 0) and (__native_entity_state:GetStateInt("TeamID") == 1) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
-                                if bVar3 then return end
+                                do return end
+                                if bVar3 then goto FLOW_after_lab_00dcebab end
                                 bVar3 = true
                             end
                             bVar5 = quest:IsDistanceBetweenThingsOver(thing_38, (__native_entity_state:GetStateInt("self_0x2c") + 0x24), 5.0)
                             if (bVar5) and (bVar3 ~= false) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
-                                if bVar2 then return end
+                                do return end
+                                if bVar2 then goto FLOW_after_lab_00dcebab end
                                 if __native_entity_state:GetStateInt("TeamID") == 1 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
-                                    if bVar2 then return end
+                                    do return end
+                                    if bVar2 then goto FLOW_after_lab_00dcebab end
                                     quest:EntityStopFollowing(me)
                                     fVar9 = 4.0
                                     quest:SetCombatNearbyBreakOffRange(me, fVar9)
@@ -203,7 +210,8 @@ function Main(quest, me)
                                 else
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
-                                    if bVar2 then return end
+                                    do return end
+                                    if bVar2 then goto FLOW_after_lab_00dcebab end
                                     fVar9 = 4.0
                                     quest:SetCombatNearbyBreakOffRange(me, fVar9)
                                     bVar2 = false
@@ -217,7 +225,8 @@ function Main(quest, me)
                             elseif bVar2 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
-                                if bVar2 then return end
+                                do return end
+                                if bVar2 then goto FLOW_after_lab_00dcebab end
                                 -- TODO(native): pThing_06._4_4_ = uVar8;
                                 -- TODO(native): pThing_06._0_4_ = auStack_48;
                                 -- TODO(native): pThing_06._8_4_ = uVar10;
@@ -367,8 +376,7 @@ function Main(quest, me)
             bVar6 = not alive
             if not bVar6 then
                 quest:EntityStopFollowing(me)
-                -- TODO(native): CCharString::CCharString("REQUEST_PROTECTION","TeamExitMarker",-1);
-                r1 = quest:GetNearestWithScriptName(me, "REQUEST_PROTECTION")
+                r1 = quest:GetNearestWithScriptName(me, "TeamExitMarker")
                 aCStack_10 = resources:NewResource()
                 -- TODO(native): bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);
                 if bVar6 then
@@ -392,7 +400,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then break end
-                            if not IsThingValid(r1) then
+                            if not (r1 ~= nil and not r1:IsNull()) then
                             else
                                 p0_00 = r1:GetPos()
                             end
@@ -439,7 +447,7 @@ function Init(quest, me)
         end
     else
         iVar3 = ((piVar1 == "BanditTeamMember") and 0 or 1)
-        c_stk_11 = '\x01' - (iVar3 ~= 0)
+        c_stk_11 = not (iVar3 ~= 0)
         if c_stk_11 ~= 0 then __region_LAB_00dce00a(); goto LAB_00dcdf96 end
     end
     __native_entity_state:SetStateInt("TeamID", 0)
@@ -486,10 +494,9 @@ function OnPersist(quest, context)
 end
 
 function OnPredicateFail(quest, me)
-    local piVar1 = (__native_entity_state:GetStateInt("TeamID") * 0x40 + 0xa4 + __native_entity_state:GetStateInt("self_0x14"))
-    -- TODO(native): *piVar1 = *piVar1 + -1;
+    quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) + -1)
     local iVar3 = __native_entity_state:GetStateInt("MemberState") + __native_entity_state:GetStateInt("TeamID") * 0x10
-    quest:SetStateInt(("Teams_0_StateCounter_" .. iVar3), quest:GetStateInt(("Teams_0_StateCounter_" .. iVar3)) + -1)
+    quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
     -- TODO(native): pvStack_4 = this;
     local cVar2 = me:MsgIsKilledBy("")
     if cVar2 then
@@ -507,13 +514,13 @@ function GoOnPatrol(quest, me)
     if __native_entity_state:GetStateInt("MemberState") ~= 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
-        return CONCAT31(extraout_var,bVar3)
+        return bVar3
     end
     if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            return CONCAT31(extraout_var_00,bVar3)
+            return bVar3
         end
         bVar3 = true
         fVar5 = 3.0
@@ -523,7 +530,7 @@ function GoOnPatrol(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            return CONCAT31(extraout_var_01,bVar3)
+            return bVar3
         end
         bVar3 = true
         fVar5 = 1.0

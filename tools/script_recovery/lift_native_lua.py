@@ -35,7 +35,7 @@ from native_thing_predicates import recover_reviewed_thing_predicates  # noqa: E
 from native_call_operands import recover_reviewed_call_operands  # noqa: E402
 from native_self_wrapper import fold_self_wrapper_arguments  # noqa: E402
 from native_deeds import recover_deed_operands  # noqa: E402
-from native_goto_scopes import supported_jumps  # noqa: E402
+from native_goto_scopes import supported_jumps, duplicate_sibling_tails  # noqa: E402
 from native_subregisters import fold_literal_slices, fold_unsigned_three_byte_casts  # noqa: E402
 from native_constant_conditions import fold_decisive_condition  # noqa: E402
 from native_conditions import conditional_call_assignment  # noqa: E402
@@ -1685,6 +1685,9 @@ class Lifter:
         self.sequence_temporaries = sequence_assignments - self.source_names
         self.mutable_scalars.update(sequence_assignments)
         if self.native_gotos:
+            if self.accessor_kinds:
+                # unit converter: jumps into sibling blocks become tail copies + a jump past the block
+                statements = duplicate_sibling_tails(statements)
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
         definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
         if self.lua_labels:
