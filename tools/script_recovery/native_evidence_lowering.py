@@ -173,7 +173,7 @@ RE_MAP_NEW = re.compile(
     r'\*\(undefined1 \*\*\)\((?P=map) \+ 8\) = (?P=map);\s*\*\(undefined1 \*\*\)\((?P=map) \+ 0xc\) = (?P=map);[ \t]*\r?\n', re.M)
 RE_MAP_SET = re.compile(
     r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
-    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\(\(map<[^;]*?\*\)&(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
+    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
     r'(?:[\w:]+::\w+\(\(?[\w ]*\*?\)?(?P=node)\);\s*)?'
     r'(?P<body>(?:[^;{}]*;\s*){0,4})'
     r'if \(\w+ != \w+\) \{\s*if \(\w+ != \(int \*\)0x0\) \{\s*\*\w+ = \*\w+ \+ -1;\s*if \(\*\*\(int \*\*\)\((?P=node) \+ 0xc\) == 0\) \{\s*'
@@ -186,14 +186,16 @@ RE_MAP_RUN = re.compile(
     r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
     r'RunCutsceneMacro_Func\(&(?P=key),&(?P<map>\w+),\(void \*\)0x0,\(void \*\)0x0,(?P<setup>true|false),(?P<skip>true|false)\);\s*'
     r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
-RE_MAP_DESTROY = re.compile(r'^([ \t]*)StdMap_Destroy_API\(&(\w+)\);', re.M)
-RE_MAP_NEW2 = re.compile(r'^([ \t]*)StdMap_Construct_API\(&(\w+)\);', re.M)
+RE_MAP_DESTROY = re.compile(r'^([ \t]*)StdMap_Destroy_API\(&?(\w+)(?:\.field_0x4)?\);', re.M)
+RE_MAP_RUN_VAR = re.compile(
+    r'^(?P<ind>[ \t]*)RunCutsceneMacro_Func\((?P<key>(?:\(CCharString \*\))?&?\(?[\w. +]+\)?),&?(?P<map>[\w.]+),\(void \*\)0x0,\(void \*\)0x0 ?,(?P<setup>true|false),(?P<skip>true|false)\);', re.M)
+RE_MAP_NEW2 = re.compile(r'^([ \t]*)StdMap_Construct_API\(&?(\w+)\);', re.M)
 # resource-valued maps (std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>): the value is a
 # controlled-entity resource handle assigned with the resource operator=.
 RE_MAP_SET2 = re.compile(
     r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
     r'(?:(?P<alias>\w+) = (?P<thing>&?[\w.]+);\s*)?(?:\w+ = 0x[0-9a-f]{6,7};\s*)?'
-    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\(\(map<[^;]*?\*\)&(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
+    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
     r'CScriptGameResourceObjectScriptedThingBase::operator=\((?P=node),(?P<src>&?\w+)\);\s*'
     r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
 
@@ -239,6 +241,75 @@ def fold_actor_maps(text, resolve_string=None):
     text = RE_MAP_SET2.sub(set2_repl, text)
     text = RE_MAP_RUN.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacro({keyval(m.group("keyval"))}, {m.group("map")}, {m.group("setup")}, {m.group("skip")});\n', text)
     text = RE_MAP_DESTROY.sub(r'\1ACTORMAP_Destroy(\2);', text)
+    text = RE_MAP_RUN_VAR.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacro({_strip_addr(m.group("key"))}, {m.group("map").split(".field")[0]}, {m.group("setup")}, {m.group("skip")});', text)
+    return text
+
+
+# ---- retail resource objects (controlled entities, movies) ----------------------------------------
+# Addresses proven by FSE's own resource implementation (FableAPI.cpp / LuaRetailResources.h).
+RESOURCE_CTOR = {0x7E72A0}            # CScriptGameResourceObjectScriptedThingBase::ctor (bsim: CCarriedReadableDef)
+RESOURCE_DTOR = {0x7E74D0}            # CSGROSTB_Destroy_API
+MOVIE_CTOR = {0x6E7B40, 0x6E7B60}     # CScriptGameResourceObjectMovieBase ctors
+MOVIE_DTOR = {0x6E7B80}               # MovieResource_Destroy_API
+
+
+def _strip_addr(arg):
+    arg = arg.strip()
+    arg = re.sub(r'^\([\w :*]+\*\)', '', arg).strip()
+    return arg[1:] if arg.startswith('&') else arg
+
+
+# vtable pointers stored by inlined constructors (FSE: g_pCScriptGameResourceObjectScriptedThingBaseVTable,
+# g_pMovieObjectVTable, g_pCScriptThingVTable)
+RE_INLINE_CTOR = re.compile(
+    r'^(?P<ind>[ \t]*)(?:\*\(undefined \*\*\*\))?(?P<obj>&?\w+)(?:\[0\])? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|01238c8c);[ \t]*\r?\n'
+    r'(?:[ \t]*(?:\w+ = 0;|\w+\[\d\] = (?:\(\w+ \*\))?0x0;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
+
+
+def fold_inline_constructors(text):
+    def repl(m):
+        obj = m.group('obj').lstrip('&')
+        vt = m.group('vt')
+        if vt == '0127094c':
+            return f'{m.group("ind")}{obj} = RESOURCE_NewResource();\n'
+        if vt == '01260ef4':
+            return f'{m.group("ind")}{obj} = RESOURCE_StartMovie("");\n'
+        return f'{m.group("ind")}{obj} = QUESTTHING_Empty();\n'
+    return RE_INLINE_CTOR.sub(repl, text)
+
+
+def fold_resource_objects(text, call_labels):
+    """call_labels: {label text as printed in the decompile: target address}. Rewrites constructor /
+    destructor calls of resource and movie objects into the retail-resource pseudo API."""
+    for label, target in call_labels.items():
+        if target in RESOURCE_CTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = RESOURCE_NewResource();', text, flags=re.M)
+        elif target in RESOURCE_DTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}RESOURCE_ReleaseResource({_strip_addr(m.group(2))});', text, flags=re.M)
+        elif target in MOVIE_CTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;,]+?)(?:,[^;]*)?\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = RESOURCE_StartMovie("");', text, flags=re.M)
+        elif target in MOVIE_DTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;,]+?)(?:,[^;]*)?\);', lambda m: f'{m.group(1)}RESOURCE_DestroyMovie({_strip_addr(m.group(2))});', text, flags=re.M)
+    return text
+
+
+SQUARED_DISTANCE = {0xCBE512}   # float __fastcall GetSquaredDistanceBetweenThings(a, b)
+
+
+def fold_engine_helpers(text, call_labels):
+    """Engine helpers with a direct FSE Lua equivalent. Squared distance becomes the FSE distance
+    squared (the pseudo call keeps the comparison semantics; finish_lua expands it)."""
+    for label, target in call_labels.items():
+        if target in SQUARED_DISTANCE:
+            text = re.sub(re.escape(label) + r'\s*\(([^,;]+),([^;)]+)\)',
+                          lambda m: f'ENGINE_SquaredDistance({_strip_addr(m.group(1))}, {m.group(2).strip()})', text)
+    return text
+
+
+def lower_after_annotate(text):
+    """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
+    text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
+                  lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
     return text
 
 
@@ -295,6 +366,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_counted_pointer_assign(text)
     text = fold_counted_pointer_release(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
+    text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
+    text = fold_inline_constructors(text)
+    text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))
 
     parent = r'\*\(int \*\)\(this \+ 0x14\)'
     # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
@@ -511,6 +585,8 @@ LUA_PSEUDO = [
     (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
     (re.compile(r'__thing_valid\('), 'IsThingValid('),
     (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
+    (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
+    (re.compile(r'ENGINE_SquaredDistance\(([^,]+), ([^)]+)\)'), r'(quest:GetDistanceBetweenThings(\1, \2) ^ 2)'),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
     (re.compile(r'RESOURCE_(\w+)\('), r'resources:\1('),

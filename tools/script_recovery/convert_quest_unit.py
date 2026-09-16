@@ -28,7 +28,7 @@ from tools.script_recovery.lift_native_lua import (  # noqa: E402
 )
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters  # noqa: E402
-from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments  # noqa: E402
+from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate  # noqa: E402
 from tools.script_recovery.annotate_interface_slots import load_thing_slots  # noqa: E402
 
 ENTITY_STATE = '''local __native_entity_state = {}
@@ -161,8 +161,9 @@ class UnitConverter:
                 representative = next((n for n, o in class_owner.items() if o == owner), owner) if entity else owner
                 spec_l = LoweringSpec(unit, representative, entity=entity, thing_slots=self.thing_slots)
                 spec_l.resolve_string = self.rdata.string_at
+                spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
                 lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature), spec_l)
-                source = strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity))
+                source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)))
                 if name == 'OnPersist':
                     body, _, calls = lift_persist(source, 'quest')
                     todo, params = [], 'quest, context'

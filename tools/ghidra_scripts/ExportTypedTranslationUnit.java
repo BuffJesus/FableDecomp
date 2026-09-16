@@ -103,13 +103,16 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         for (Map.Entry<String, JsonElement> e : spec.getAsJsonObject("helpers").entrySet()) {
             JsonObject ho = e.getValue().getAsJsonObject();
             Address a = toAddr(Long.parseLong(e.getKey().substring(2), 16));
+            if (ho.get("cc").getAsString().equals("__cdecl")) cdeclTargets.add(a.getOffset());
             Function f = getFunctionAt(a);
             if (f == null) {
                 Function containing = getFunctionContaining(a);
-                if (containing != null) { println("HELPER " + a + " " + ho.get("name").getAsString() + " is inside " + containing.getName() + "; skipped"); continue; }
                 if (getInstructionAt(a) == null) disassemble(a);
+                // FSE's proven entry points may sit inside a larger Ghidra function (fall-through code
+                // shared by several script helpers). Splitting it here is in-memory only.
                 f = createFunction(a, ho.get("name").getAsString());
-                if (f == null) { println("HELPER " + a + " could not be defined"); continue; }
+                if (f == null) { println("HELPER " + a + " could not be defined" + (containing != null ? " (inside " + containing.getName() + ")" : "")); continue; }
+                if (containing != null) println("HELPER " + a + " " + ho.get("name").getAsString() + " split out of " + containing.getName());
             }
             String cc = ho.get("cc").getAsString();
             FunctionDefinitionDataType def = definition(ho.get("name").getAsString(), ho, cc);
@@ -122,6 +125,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 helpersTyped++;
             } catch (Exception ex) { println("HELPER " + a + " signature rejected: " + ex); }
         }
+        cdeclTargets.add(0xBFEA1AL); cdeclTargets.add(0xBFE9BCL); cdeclTargets.add(0xBFEA0EL); cdeclTargets.add(0xBFEA14L);
         println("Typing spec: " + slotDefs.size() + " GSI slots, " + thingDefs.size() + " thing slots, " + helpersTyped + " helpers typed");
     }
 
@@ -130,15 +134,49 @@ public class ExportTypedTranslationUnit extends GhidraScript {
 
     private String regName(Object o) { return (o instanceof Register) ? ((Register) o).getName() : null; }
 
+    private java.util.Set<Long> cdeclTargets = new java.util.HashSet<>();
+
+    private String stackKey(String base, long disp, long espDelta) {
+        // ESP-relative displacements move with pushes; key slots by their frame offset instead.
+        return base.equals("ESP") ? ("STK:" + (disp + espDelta)) : ("BP:" + disp);
+    }
+
     private void overrideCalls(Function f) {
         Map<String, String> tags = new HashMap<>();
         tags.put("ECX", THIS);
+        long espDelta = 0, espBeforePushes = 0;
+        boolean pushing = false;
         InstructionIterator ins = currentProgram.getListing().getInstructions(f.getBody(), true);
         while (ins.hasNext()) {
             Instruction i = ins.next();
             String mn = i.getMnemonicString().toUpperCase();
             int n = i.getNumOperands();
+            if (mn.equals("PUSH")) {
+                if (!pushing) { espBeforePushes = espDelta; pushing = true; }
+                espDelta += 4;
+                continue;
+            }
+            if (mn.equals("POP") && n == 1) {
+                espDelta -= 4;
+                Object[] ops = i.getOpObjects(0);
+                String r = ops.length >= 1 ? regName(ops[0]) : null;
+                // callee-saved registers are only popped in (possibly mid-function) epilogues; the
+                // linear scan continues into blocks where they still hold their tagged values
+                if (r != null && !r.equals("ESI") && !r.equals("EDI") && !r.equals("EBX") && !r.equals("EBP")) tags.remove(r);
+                continue;
+            }
+            if ((mn.equals("SUB") || mn.equals("ADD")) && n == 2) {
+                Object[] d0 = i.getOpObjects(0), s1 = i.getOpObjects(1);
+                if (d0.length >= 1 && "ESP".equals(regName(d0[0])) && s1.length >= 1 && s1[0] instanceof Scalar) {
+                    long v = ((Scalar) s1[0]).getSignedValue();
+                    espDelta += mn.equals("SUB") ? v : -v;
+                    continue;
+                }
+            }
             if (mn.equals("CALL")) {
+                long target = -1;
+                if (n == 1 && i.getOpObjects(0).length == 1 && i.getOpObjects(0)[0] instanceof Address)
+                    target = ((Address) i.getOpObjects(0)[0]).getOffset();
                 if (n == 1) {
                     Object[] ops = i.getOpObjects(0);
                     String base = ops.length >= 1 ? regName(ops[0]) : null;
@@ -157,47 +195,51 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     }
                 }
                 tags.remove("EAX"); tags.remove("ECX"); tags.remove("EDX");
+                // callee-cleaned conventions pop their arguments; cdecl callers restore ESP themselves
+                if (pushing && !cdeclTargets.contains(target)) espDelta = espBeforePushes;
+                pushing = false;
                 continue;
             }
+            pushing = false;
             if (n == 2 && (mn.equals("MOV") || mn.equals("LEA"))) {
                 Object[] dst = i.getOpObjects(0), src = i.getOpObjects(1);
                 boolean dstReg = i.getOperandType(0) == ghidra.program.model.lang.OperandType.REGISTER;
                 boolean srcReg = i.getOperandType(1) == ghidra.program.model.lang.OperandType.REGISTER;
                 String d = dst.length >= 1 ? regName(dst[0]) : null;
-                String s = src.length >= 1 ? regName(src[0]) : null;
+                String sName = src.length >= 1 ? regName(src[0]) : null;
                 long disp = 0; boolean hasDisp = false;
                 for (Object o : src) if (o instanceof Scalar) { disp = ((Scalar) o).getSignedValue(); hasDisp = true; }
                 if (dstReg && d != null) {
                     String tag = null;
-                    if (mn.equals("MOV") && srcReg && s != null) tag = tags.get(s);
-                    else if (mn.equals("MOV") && s != null) {
-                        String st = tags.get(s);
-                        if (s.equals("ESP") || s.equals("EBP")) tag = tags.get("STK" + s + ":" + disp);
+                    if (mn.equals("MOV") && srcReg && sName != null) tag = tags.get(sName);
+                    else if (mn.equals("MOV") && sName != null) {
+                        String st = tags.get(sName);
+                        if (sName.equals("ESP") || sName.equals("EBP")) tag = tags.get(stackKey(sName, disp, espDelta));
                         else if (THIS.equals(st) && !hasDisp) tag = null;
                         else if (THIS.equals(st) && (disp == 4 || disp == 0x40)) tag = GSI;
                         else if (THIS.equals(st) && disp == 0x14) tag = PARENT;
                         else if (PARENT.equals(st) && disp == 0x40) tag = GSI;
                         else if (GSI.equals(st) && !hasDisp) tag = GSIVT;
                         else if (ME.equals(st) && !hasDisp) tag = MEVT;
-                    } else if (mn.equals("LEA") && s != null && THIS.equals(tags.get(s)) && disp == 8) tag = ME;
+                    } else if (mn.equals("LEA") && sName != null && THIS.equals(tags.get(sName)) && disp == 8) tag = ME;
                     if (tag != null) tags.put(d, tag); else tags.remove(d);
-                } else if (mn.equals("MOV") && d != null && (d.equals("ESP") || d.equals("EBP")) && srcReg && s != null) {
+                    if (d.equals("ESP")) espDelta = 0;
+                } else if (mn.equals("MOV") && d != null && (d.equals("ESP") || d.equals("EBP")) && srcReg && sName != null) {
                     long ddisp = 0;
                     for (Object o : dst) if (o instanceof Scalar) ddisp = ((Scalar) o).getSignedValue();
-                    String tag = tags.get(s);
-                    if (tag != null) tags.put("STK" + d + ":" + ddisp, tag); else tags.remove("STK" + d + ":" + ddisp);
+                    String tag = tags.get(sName);
+                    String key = stackKey(d, ddisp, espDelta);
+                    if (tag != null) tags.put(key, tag); else tags.remove(key);
                 }
                 continue;
             }
-            // any other instruction writing a register invalidates it (conservative)
             for (int k = 0; k < n; k++) {
                 if (i.getOperandType(k) == ghidra.program.model.lang.OperandType.REGISTER && k == 0
-                        && !mn.equals("PUSH") && !mn.equals("CMP") && !mn.equals("TEST")) {
+                        && !mn.equals("CMP") && !mn.equals("TEST")) {
                     Object[] ops = i.getOpObjects(k);
                     if (ops.length >= 1 && regName(ops[0]) != null) tags.remove(regName(ops[0]));
                 }
             }
-            if (mn.equals("POP") && n == 1) { Object[] ops = i.getOpObjects(0); if (ops.length >= 1 && regName(ops[0]) != null) tags.remove(regName(ops[0])); }
         }
     }
 

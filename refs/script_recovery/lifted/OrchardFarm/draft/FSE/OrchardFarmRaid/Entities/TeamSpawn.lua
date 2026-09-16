@@ -11,7 +11,8 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, fVar8, iVar4, iVar9, pCVar5, pCVar6, pCVar7, r1, r2, r3, thing1
+    local resources = quest:RetailResources()
+    local CStack_5c, bVar3, fVar8, iVar4, iVar9, pCVar5, pCVar6, pCVar7, r1, r2, r3, thing1
     local alive = true
     local cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
@@ -205,7 +206,7 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
-                            -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_5c);
+                            CStack_5c = resources:StartMovie("")
                             if (iVar9 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -270,7 +271,7 @@ function Init(quest, me)
             goto LAB_00dcd2bb
         end
     else
-        -- TODO(native): iVar5 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar4);
+        -- TODO(native): iVar5 = CBasicString<char>::Compare(*(void **)*piVar4,"BanditTeamSpawn");
         if iVar5 == 0 then return end  -- TODO(native): goto LAB_00dcd306
     end
     __native_entity_state:SetStateInt("TeamID", 0)

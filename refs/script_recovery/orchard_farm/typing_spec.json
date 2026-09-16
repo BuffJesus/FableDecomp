@@ -14321,7 +14321,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCharString::CCharString"
   },
   "0x99e4b0": {
@@ -14329,7 +14329,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCharString::CCharString"
   },
   "0x99a2d0": {
@@ -14337,7 +14337,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "NHeroInformationScreens::CBase::CBase"
   },
   "0x99a2e0": {
@@ -14345,7 +14345,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "NHeroInformationScreens::CBase::CBase"
   },
   "0x99b800": {
@@ -14359,7 +14359,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCharString::AssignFromWide"
   },
   "0xcdd4c0": {
@@ -14367,15 +14367,26 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "std::_Dest_val<std::allocator<CMacro>,CMacro>"
   },
   "0x411570": {
    "name": "CBasicString_char___Compare",
-   "cc": "__thiscall",
+   "cc": "__fastcall",
    "ret": "int",
-   "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "params": [
+    {
+     "name": "p0",
+     "type": "void *",
+     "ctype": "ecx"
+    },
+    {
+     "name": "p1",
+     "type": "void *",
+     "ctype": "edx"
+    }
+   ],
+   "source": "inferred ret 0 (ecx=True, edx=True, fpu=False)",
    "bsimLabel": "CBasicString<char>::Compare"
   },
   "0x8ab980": {
@@ -14389,7 +14400,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CScriptThing::operator="
   },
   "0x4ab130": {
@@ -14397,7 +14408,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CScriptThing::?IsAlive@CScriptThing@@UBE_NXZ"
   },
   "0x6e7b40": {
@@ -14405,41 +14416,61 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCarriedReadableDef::CCarriedReadableDef"
   },
   "0x99f570": {
    "name": "CCharString__AppendData",
-   "cc": "__thiscall",
+   "cc": "__fastcall",
    "ret": "int",
    "params": [
     {
      "name": "p0",
+     "type": "void *",
+     "ctype": "ecx"
+    },
+    {
+     "name": "p1",
+     "type": "void *",
+     "ctype": "edx"
+    },
+    {
+     "name": "p2",
      "type": "int",
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=True, fpu=False)",
    "bsimLabel": "CCharString::AppendData"
   },
   "0x99f600": {
    "name": "CCharString__AppendCString",
-   "cc": "__thiscall",
+   "cc": "__fastcall",
    "ret": "int",
    "params": [
     {
      "name": "p0",
+     "type": "void *",
+     "ctype": "ecx"
+    },
+    {
+     "name": "p1",
+     "type": "void *",
+     "ctype": "edx"
+    },
+    {
+     "name": "p2",
      "type": "int",
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=True, fpu=False)",
    "bsimLabel": "CCharString::AppendCString"
   },
   "0xf35b40": {
    "name": "NUISystem__CFrontEndScreen__~CFrontEndScreen",
    "cc": "__thiscall",
-   "ret": "int",
+   "ret": "float",
    "params": [
     {
      "name": "p0",
@@ -14447,7 +14478,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=False, fpu=True)",
    "bsimLabel": "NUISystem::CFrontEndScreen::~CFrontEndScreen"
   },
   "0x7e72a0": {
@@ -14455,7 +14486,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCarriedReadableDef::CCarriedReadableDef"
   },
   "0x7e7450": {
@@ -14463,7 +14494,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CScriptThing::?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ"
   },
   "0x7e72f0": {
@@ -14497,15 +14528,26 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 20 (ecx used)",
+   "source": "inferred ret 20 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CScriptGameResourceObjectScriptedThingBase::?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z"
   },
   "0xcbe512": {
    "name": "GetSquaredDistanceBetweenThings",
-   "cc": "__thiscall",
-   "ret": "int",
-   "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "cc": "__fastcall",
+   "ret": "float",
+   "params": [
+    {
+     "name": "p0",
+     "type": "void *",
+     "ctype": "ecx"
+    },
+    {
+     "name": "p1",
+     "type": "void *",
+     "ctype": "edx"
+    }
+   ],
+   "source": "inferred ret 0 (ecx=True, edx=True, fpu=True)",
    "bsimLabel": "GetSquaredDistanceBetweenThings"
   },
   "0xce1000": {
@@ -14513,7 +14555,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>"
   },
   "0xce1110": {
@@ -14542,7 +14584,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 16 (ecx used)",
+   "source": "inferred ret 16 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CActiveEntityScriptBase::CActiveEntityScriptBase"
   },
   "0xce1040": {
@@ -14561,7 +14603,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 8 (ecx used)",
+   "source": "inferred ret 8 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCountedPointer<CScriptThing>::ShareData"
   },
   "0xce10b0": {
@@ -14575,7 +14617,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCountedPointer<CFileInstaller::CFileInfo_const_>::CCountedPointer<CFileInstaller::CFileInfo_const_>"
   },
   "0xcd3152": {
@@ -14589,7 +14631,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "std::vector::pop_back"
   },
   "0x8adf90": {
@@ -14603,7 +14645,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "Vector_PushBack_ScriptThing"
   },
   "0x6e7b60": {
@@ -14611,7 +14653,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCarriedReadableDef::CCarriedReadableDef"
   },
   "0x8ac970": {
@@ -14619,7 +14661,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>"
   },
   "0x99a3b0": {
@@ -14633,7 +14675,7 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 4 (ecx used)",
+   "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CFourierAnalysis::CFourierAnalysis"
   },
   "0xcdb3c0": {
@@ -14641,7 +14683,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "NScript::CQ_OrchardFarmRaidScript::CCrateTeamManager::~CCrateTeamManager"
   },
   "0x99b510": {
@@ -14649,7 +14691,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCharString::~CCharString"
   },
   "0xcbd510": {
@@ -14657,7 +14699,7 @@
    "cc": "__thiscall",
    "ret": "int",
    "params": [],
-   "source": "inferred ret 0 (ecx used)",
+   "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "NParticleEngine::CParticleEmitter::DeleteAllParticles"
   }
  },

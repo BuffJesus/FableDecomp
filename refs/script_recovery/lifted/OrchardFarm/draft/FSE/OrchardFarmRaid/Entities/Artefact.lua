@@ -75,23 +75,26 @@ function OnPersist(quest, context)
 end
 
 function OnPredicateFail(quest, me)
-    local cVar1
+    local cVar1, local_c
     local p0 = *QUESTLIST_Begin("CrateList")
     if p0 ~= QUESTLIST_End("CrateList") then
         while true do
             -- TODO(native): local_4 = *(int **)(p0 + 8);
             -- TODO(native): local_8 = *(int **)(p0 + 4);
+            local_c = nil
             if local_4 ~= nil then
                 -- TODO(native): *local_4 = *local_4 + 1;
             end
             cVar1 = quest:GetFurthestWithScriptName(nil --[[missing]], nil --[[missing]])
             if cVar1 ~= 0 then break end
+            local_c = nil
             p0 = p0 + 0xc
             if p0 == QUESTLIST_End("CrateList") then
                 return
             end
         end
         -- TODO(native): std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);
+        local_c = nil
     end
 end
 
