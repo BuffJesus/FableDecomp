@@ -77,7 +77,7 @@
             "IsActiveThreadTerminating",
             "IsRegionLoaded"
           ],
-          "lines": 49,
+          "lines": 48,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -357,15 +357,14 @@
             "verify cleanup at LAB_00dd1728 (lifted as early return)",
             "label LAB_00dd1736",
             "goto LAB_00dd1742",
-            "unlifted: StdMap_Construct_API(au_stk_a8 + 4);",
+            "unlifted: StdMap_Construct_API(auStack_a8 + 4);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);",
-            "unlifted: RunCutsceneMacro_Func(&CStack_cc,au_stk_a8 + 4,(void *)0x0,(void *)0x0,false,true);",
-            "unlifted: StdMap_Destroy_API(au_stk_a8 + 4);",
-            "unlifted: CSubtitleRenderer::SetText(0x50);",
-            "RemoveQuestInfoElement: missing id (0 args for 1 params)"
+            "unlifted: RunCutsceneMacro_Func(&CStack_cc,auStack_a8 + 4,(void *)0x0,(void *)0x0,false,true);",
+            "unlifted: StdMap_Destroy_API(auStack_a8 + 4);",
+            "unlifted: CSubtitleRenderer::SetText(0x50);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -850,14 +849,12 @@
             "returnKind": null
           },
           "todo": [
-            "CreateCreature: missing scriptName (2 args for 3 params)",
             "goto LAB_00dcd9ed",
-            "CreateCreature: missing scriptName (2 args for 3 params)",
             "label LAB_00dcd9ed",
             "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=(C_stk_54,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
             "verify cleanup at LAB_00dcda68 (lifted as early return)",
-            "unlifted: CScriptThing::operator=(C_stk_54,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
             "goto LAB_00dcd9ed"
           ],
           "calls": [
@@ -932,13 +929,19 @@
             "IsActiveThreadTerminating",
             "RemoveQuestInfoElement"
           ],
-          "lines": 233,
+          "lines": 239,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": true,
+            "ok": false,
             "checked": 1,
-            "passed": 1,
-            "errors": []
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Main",
+                "line": 62,
+                "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Main:62: unexpected symbol near '*'"
+              }
+            ]
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -1222,13 +1225,19 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 65,
+          "lines": 69,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": true,
+            "ok": false,
             "checked": 1,
-            "passed": 1,
-            "errors": []
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main",
+                "line": 21,
+                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main:21: unexpected symbol near '*'"
+              }
+            ]
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -1256,13 +1265,19 @@
             "EntitySetAsDamageable",
             "EntitySetAllowBossPhaseChanges"
           ],
-          "lines": 11,
+          "lines": 12,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": true,
+            "ok": false,
             "checked": 1,
-            "passed": 1,
-            "errors": []
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Init",
+                "line": 9,
+                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Init:9: unexpected symbol near '*'"
+              }
+            ]
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -1344,8 +1359,6 @@
             "unlifted: pThing_06._8_4_ = uVar10;",
             "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
             "IsEqualTo: CScriptThing method not in FSE manifest",
-            "EntityFollowThing: missing spTarget (3 args for 4 params)",
-            "EntityFollowThing: missing spTarget (3 args for 4 params)",
             "unlifted: CCharString::CCharString(\"REQUEST_PROTECTION\",\"TeamExitMarker\",-1);",
             "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);"
           ],
@@ -1441,13 +1454,19 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 411,
+          "lines": 418,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": true,
+            "ok": false,
             "checked": 1,
-            "passed": 1,
-            "errors": []
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Main",
+                "line": 187,
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Main:187: unexpected symbol near '*'"
+              }
+            ]
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -1504,13 +1523,19 @@
             "QUESTSTATE_SetInt",
             "ENTITYTHING_Set"
           ],
-          "lines": 53,
+          "lines": 55,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": true,
+            "ok": false,
             "checked": 1,
-            "passed": 1,
-            "errors": []
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init",
+                "line": 22,
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init:22: unexpected symbol near '*'"
+              }
+            ]
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -1598,13 +1623,19 @@
             "SetStateInt",
             "QUESTSTATE_SetInt"
           ],
-          "lines": 33,
+          "lines": 35,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": true,
+            "ok": false,
             "checked": 1,
-            "passed": 1,
-            "errors": []
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:GoOnPatrol",
+                "line": 15,
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:GoOnPatrol:15: unexpected symbol near '*'"
+              }
+            ]
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -2014,10 +2045,26 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": true,
+        "ok": false,
         "checked": 9,
-        "passed": 9,
-        "errors": []
+        "passed": 6,
+        "errors": [
+          {
+            "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
+            "line": 198,
+            "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:198: unexpected symbol near '*'"
+          },
+          {
+            "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua",
+            "line": 33,
+            "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:33: unexpected symbol near '*'"
+          },
+          {
+            "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua",
+            "line": 74,
+            "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:74: unexpected symbol near '*'"
+          }
+        ]
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -2037,26 +2084,26 @@
             "pCVar6 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))",
             "resources:ReleaseResource(appuStack_ac)",
-            "resources:DestroyActorMap(C_stk_8c)",
+            "resources:DestroyActorMap(r2)",
             "resources:ReleaseResource(appuStack_bc)",
             "resources:ReleaseResource(aC_stk_c4)"
           ],
           "LAB_00dd0b2b": [
             "resources:ReleaseResource(appuStack_ac)",
-            "resources:DestroyActorMap(C_stk_8c)",
+            "resources:DestroyActorMap(r2)",
             "resources:ReleaseResource(appuStack_bc)",
             "resources:ReleaseResource(aC_stk_c4)"
           ],
           "LAB_00dd1728": [
             "pCVar7 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))",
-            "resources:ReleaseResource((au_stk_a8 + 4))",
+            "resources:ReleaseResource((r2 + 4))",
             "resources:DestroyActorMap(ppuStack_9c)",
             "resources:ReleaseResource(amStack_8c)",
             "resources:ReleaseResource(CStack_cc)"
           ],
           "LAB_00dd1742": [
-            "resources:ReleaseResource((au_stk_a8 + 4))",
+            "resources:ReleaseResource((r2 + 4))",
             "resources:DestroyActorMap(ppuStack_9c)",
             "resources:ReleaseResource(amStack_8c)",
             "resources:ReleaseResource(CStack_cc)"
@@ -2120,10 +2167,10 @@
         "owners": 8,
         "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 42,
-        "fileSyntaxPassed": 9,
+        "functionSyntaxPassed": 36,
+        "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 9,
-        "todo": 133
+        "todo": 128
       }
     },
     {
@@ -2321,9 +2368,9 @@
     "owners": 10,
     "functions": 46,
     "missing": 2,
-    "functionSyntaxPassed": 46,
-    "fileSyntaxPassed": 11,
+    "functionSyntaxPassed": 40,
+    "fileSyntaxPassed": 8,
     "fileSyntaxChecked": 11,
-    "todo": 133
+    "todo": 128
   }
 }

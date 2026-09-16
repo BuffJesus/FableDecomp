@@ -978,6 +978,11 @@ class Lifter:
             return "thing"
         if arg.startswith('"'):
             return "string"
+        # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
+        accessor = re.match(r'(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)\(|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)\(|(?:QUEST|ENTITY)(?:THING_Get|LIST_At)', arg)
+        if accessor and self.accessor_kinds:
+            kind = accessor.group(1) or accessor.group(2) or 'Thing'
+            return {'String': 'string', 'Int': 'number', 'Float': 'number', 'Bool': 'bool', 'Thing': 'thing'}[kind]
         return self.kinds.get(arg)
 
     def arguments(self, text: str) -> list[str]:
@@ -1045,6 +1050,8 @@ class Lifter:
             # a local of unknown kind may hold an interface string result (old behaviour); a local
             # known to hold a thing/number/bool/vector, or a numeric literal, is not a string operand
             if a in self.kinds or a == "me":
+                return self.kind_of(a) == "string"
+            if self.accessor_kinds and self.kind_of(a) is not None:
                 return self.kind_of(a) == "string"
             if RE_NUMERIC_EXPR.fullmatch(a):
                 return False
@@ -1231,6 +1238,9 @@ class Lifter:
             if slot and slot not in self.temps:
                 return_slot = slot
                 operands = operands[1:]
+        if self.accessor_kinds:
+            # a staged string temporary passed by address is a positional operand (unit converter only)
+            operands = [a[1:] if a.startswith("&") and a[1:] in self.temps else a for a in operands]
         raw_args = [a for a in operands if not a.startswith("&") and a not in ("this", "param_1")]
         params = None
         if spec:
@@ -1239,7 +1249,8 @@ class Lifter:
             if len(raw_args) > len(params):
                 # Ghidra guessed a prototype wider than the real one: the extras are usually the
                 # string temporaries of the NEXT call. Shed those first, then trailing operands.
-                raw_args = [a for a in raw_args if a not in self.temps] or raw_args
+                if not self.accessor_kinds:   # typed exports carry the real operand list: only trailing extras go
+                    raw_args = [a for a in raw_args if a not in self.temps] or raw_args
                 raw_args = raw_args[:len(params)]
         args: list[str] = []
         explicit_things: list[str] = []
@@ -1741,6 +1752,7 @@ class Lifter:
 
     prelude_only = False
     last_condition = None
+    accessor_kinds = False   # unit converter: lowered state accessors carry their kind
 
     def conditional_prelude(self, role, parts):
         """Emit a conditional call assignment as a value (its condition variable) without opening

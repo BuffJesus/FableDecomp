@@ -1,4 +1,4 @@
--- Generated native draft: Artefact. Review coverage report before use.
+-- Readable native conversion: Artefact. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
 local __native_entity_state = {}
@@ -11,54 +11,50 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, bVar4
+    local predicateResult, predicateResult2, predicateResult3
     local alive = true
-    bVar4 = false
-    local r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
+    predicateResult2 = false
+    local banditTeamCrateDrop = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     alive = not quest:IsActiveThreadTerminating()
-    local bVar2 = not alive
+    local scratchValue = not alive
     repeat
-        if bVar2 then
-            r1 = nil
+        if scratchValue then
             return
         end
-        bVar2 = quest:IsDistanceBetweenThingsUnder(me, r1, 3.0)
-        if bVar2 then
+        scratchValue = quest:IsDistanceBetweenThingsUnder(me, banditTeamCrateDrop, 3.0)
+        if scratchValue then
             alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then
+            scratchValue = not alive
+            if scratchValue then
                 -- LAB_00dcddcf: (native jump target)
-                r1 = nil
                 return
             end
             -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
-            bVar2 = me:IsBeingCarriedBy("SCRIPT_NAME_HERO")
+            scratchValue = me:IsBeingCarriedBy("SCRIPT_NAME_HERO")
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if not bVar2 then
-                if not bVar3 then
+            predicateResult = not alive
+            if not scratchValue then
+                if not predicateResult then
                     quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + -1)
                     quest:SetMasterGameState("OFBRCratesStolen", true)
                     quest:RemoveThing(me, false, true)
                 end
                 return
             end
-            if bVar3 then return end
-            if not bVar4 then
-                alive = not quest:IsActiveThreadTerminating()
-                bVar4 = not alive
-                if bVar4 then return end
-                bVar4 = true
+            if predicateResult then return end
+            if not predicateResult2 then
+                if quest:IsActiveThreadTerminating() then return end
+                predicateResult2 = true
             end
         else
             alive = not quest:IsActiveThreadTerminating()
-            bVar4 = not alive
-            if bVar4 then return end  -- TODO(native): goto LAB_00dcddcf
-            bVar4 = false
+            predicateResult3 = not alive
+            if predicateResult3 then return end  -- TODO(native): goto LAB_00dcddcf
+            predicateResult2 = false
         end
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
+        scratchValue = not alive
     until false
 end
 
@@ -73,26 +69,26 @@ function OnPersist(quest, context)
 end
 
 function OnPredicateFail(quest, me)
-    local bVar1, local_c
+    local getFurthestWithScriptName
     local p0 = quest:GetStateListRef("CrateList")
     if p0 ~= quest:GetStateListEnd("CrateList") then
         while true do
             -- TODO(native): local_c = *(int **)(p0 + 8);
             -- TODO(native): local_c = *(int **)(p0 + 4);
-            local_c = nil
-            if local_c ~= nil then
+
+            if (nil) ~= nil then
                 -- TODO(native): *local_c = *local_c + 1;
             end
-            bVar1 = quest:GetFurthestWithScriptName(me, nil --[[missing]])
-            if bVar1 then break end
-            bVar1 = nil
-            p0 = p0 + 0xc
+            getFurthestWithScriptName = quest:GetFurthestWithScriptName(me, nil --[[missing]])
+            if getFurthestWithScriptName then break end
+
+            p0 = p0 + 12
             if p0 == quest:GetStateListEnd("CrateList") then
                 return
             end
         end
         -- TODO(native): std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);
-        bVar1 = nil
+
     end
 end
 

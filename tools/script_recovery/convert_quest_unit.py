@@ -112,6 +112,7 @@ class UnitConverter:
                             flat_control=self.flat_control)
             local_names = {f['address'].lower(): n for n, f in functions.items()
                            if re.fullmatch(r'[A-Za-z_]\w*', n) and n not in ('Main', 'Init', 'OnPersist', 'OnPredicateFail')}
+            lifter.accessor_kinds = True
             lifter.helper_names = set(local_names.values())
             lifter.binding_files = binding_files
             signatures = {}
@@ -238,6 +239,7 @@ class UnitConverter:
                                        callee_names=aliases, thing_sigs=thing_signatures(self.things),
                                        live_termination=True, execution_entity=True, native_gotos=True,
                                        readable_locals=True, flat_control=self.flat_control)
+                shared_lifter.accessor_kinds = True
                 shared_lifter.helper_names = set(helpers.values())
                 for address, helper in helpers.items():
                     helper_fn = self.native(address)

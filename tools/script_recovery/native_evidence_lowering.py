@@ -202,6 +202,31 @@ def fold_stack_colours(text: str) -> str:
     return text
 
 
+RE_GSIVT_LOAD = re.compile(r'^([ \t]*)(\w+) = \*\*\(int \*\*\)\(this \+ (?:0x40|4)\);[ \t]*\r?\n', re.M)
+
+
+def isolate_gsi_vtable_temps(text: str) -> str:
+    """Ghidra reuses one register temporary for the GSI vtable (`iVar4 = **(int **)(this + 0x40)`)
+    and for ordinary values; the lifter's alias tracking then loses the ordinary values. Each vtable
+    load gets its own name, scoped to its uses up to the next reassignment."""
+    n = 0
+    pos = 0
+    while (m := RE_GSIVT_LOAD.search(text, pos)):
+        var = m.group(2)
+        n += 1
+        alias = f'__gsivt_{n}'
+        head, tail = text[:m.end()], text[m.end():]
+        nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
+        scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+        scope = re.sub(r'\(\*\*\(code \*\*\)\(' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)
+        if re.search(r'\b' + re.escape(var) + r'\b', scope):
+            pos = m.end()          # other uses of the same temporary: leave this load alone
+            continue
+        text = head[:m.start()] + m.group(0).replace(f'{var} = ', f'{alias} = ', 1) + scope + rest
+        pos = m.start() + 1
+    return text
+
+
 def drop_tangled_releases(text):
     text = RE_TANGLED_RELEASE_A.sub(lambda m: f'{m.group(1)}goto {m.group(3)};\n', text)
     for m in list(RE_TANGLED_RELEASE_B.finditer(text)):
@@ -264,6 +289,7 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\b(CScriptThing|CCharString|C3DVector|CRGBColour|CWideString|CRGBFloatColour)_bv\b', r'\1', text)
     text = fold_outgoing_stack_slots(text)
     text = re.sub(r'\*\) \(', '*)(', text)
+    text = re.sub(r'^[ \t]*(\w+) = !(\w+) && \2;[ \t]*\r?\n', '', text, flags=re.M)   # EH-state flag init (always false)
     text = re.sub(r'\((?:undefined\d?|uchar|char|byte)\s+\[\d+\]\)', '', text)   # array-typed value casts
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     return text
@@ -529,10 +555,21 @@ def fold_offset_string_temporaries(text: str) -> str:
 def rename_scalar_stack_locals(text):
     """Ghidra stack names (`local_14`, `uStack_8`) are refused by the lifter's assignment rule (they
     are usually object slots). Ones that only ever appear as plain scalars get lifter-visible names."""
+    # hidden-return slots of GSI/helper calls (`GSI->GetThingWithScriptName((CScriptThing *)auStack_1c, ...)`) are
+    # the lifter's slot aliases (`r1`): keep their spelling
+    # (at this stage GSI calls are still raw vcalls with the receiver as first argument, so the slot may be any argument)
+    STK = r'((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)'
+    hidden = set(re.findall(r'\)\)\s*\((?:\*\(int \*\*\)\(this \+ (?:4|0x40)\),\s*)?(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]', text))   # vcall first argument
+    hidden |= set(re.findall(r'GSI->\w+\(\s*(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]', text))
+    hidden |= set(re.findall(r'\b\w+\(\s*&' + STK + r'\s*[,)]', text))                                                       # helper hidden result
+    # a slot that receives a lowered value by plain assignment is a handle, not a hidden result
+    hidden -= set(re.findall(r'^[ \t]*' + STK + r' = \w+;', text, re.M))
     # a stack CScriptThing that only ever holds lowered values is a plain handle: drop its casts
-    text = re.sub(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', r'\1', text)
+    text = re.sub(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', lambda m: m.group(0) if m.group(1) in hidden else m.group(1), text)
     body = re.sub(r'^[ \t]*(?:[\w:<>,]+ )+\**\w+(?: \[\d+\])?;[ \t]*\r?$', '', text, flags=re.M)   # declarations
     for name in sorted(set(re.findall(r'\b(?:[A-Za-z]+Stack_|local_)[0-9a-f]+\b', body))):
+        if name in hidden:
+            continue
         if re.search(r'[&*]' + re.escape(name) + r'\b|\b' + re.escape(name) + r'\s*[\[.]|\(\w+ \*+\)' + re.escape(name) + r'\b', body):
             continue
         m = re.fullmatch(r'([A-Za-z]*)(?:Stack_|local_)([0-9a-f]+)', name)
@@ -602,6 +639,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     for m in set(re.findall(r'^[ \t]*(\w+) = \*\(int \*\*\)\(this \+ (4|0x40)\);', text, re.M)):
         text = re.sub(r'^([ \t]*)(\w+) = \*' + re.escape(m[0]) + r';', lambda mm, off=m[1]: f'{mm.group(1)}{mm.group(2)} = **(int **)(this + {off});', text, flags=re.M)
     text = fold_by_value_things(text, getattr(spec, 'code_range', None))
+    text = isolate_gsi_vtable_temps(text)
     text = fold_tangled_thing_assign(text)
     text = fold_stack_colours(text)
     if spec.entity:

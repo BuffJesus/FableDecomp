@@ -1,14 +1,14 @@
 -- Generated from the same native helper bodies as the quest draft.
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
-    local appuStack_20, bVar4, local_10, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, pu_stk_38, v_stk_3c
+    local appuStack_20, bVar4, local_10, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, puStack_38, v_stk_3c
     local alive = true
     v_stk_3c = 0x0
     local_10 = resources:NewResource()
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
-    pu_stk_38 = resources:NewActorMap()
-    resources:SetActor(pu_stk_38, "HERO", local_10)
+    puStack_38 = resources:NewActorMap()
+    resources:SetActor(puStack_38, "HERO", local_10)
     appuStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -22,7 +22,7 @@ function DoMultiplierCutscene(quest, me)
     end
     if not native_arg_sequence_1 then
         bVar4 = true
-        if quest:GetStateInt("HeroTeam") ~= 0 then
+        if quest:GetStateInt("HeroTeam") ~= 0 ~= 0 then
             native_arg_sequence_1 = true
         else
             native_arg_sequence_1 = false
@@ -51,7 +51,7 @@ function DoMultiplierCutscene(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then return end  -- TODO(native): goto LAB_00dd1d15
-                if quest:GetStateInt("HeroTeam") ~= 1 then
+                if quest:GetStateInt("HeroTeam") ~= 1 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
@@ -71,7 +71,7 @@ function DoMultiplierCutscene(quest, me)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
-                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", pu_stk_38, false, true)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", pCVar5, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -111,7 +111,7 @@ function DoMultiplierCutscene(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if not bVar4 then
-                    if quest:GetStateInt("HeroTeam") == 1 then
+                    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then return end  -- TODO(native): goto LAB_00dd1e3d
@@ -129,7 +129,7 @@ function DoMultiplierCutscene(quest, me)
     end
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(pu_stk_38)
+    resources:DestroyActorMap(pCVar5)
     resources:ReleaseResource(local_10)
     return extraout_EAX
 end
