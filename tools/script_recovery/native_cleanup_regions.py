@@ -16,14 +16,14 @@ from __future__ import annotations
 
 import re
 
-LABEL_LINE = re.compile(r'^(?P<ind>[ \t]*)-- (?P<label>LAB_[0-9a-f]+): \(native jump target\)\s*$')
+LABEL_LINE = re.compile(r'^(?P<ind>[ \t]*)-- (?P<label>LAB_[0-9a-f]+(?:_c\d+)?): \(native jump target\)\s*$')
 CONTROL = re.compile(r'^\s*(if |while |for |repeat|until |else|elseif |end\b|goto |::|function |local function )')
-EARLY_RETURN = re.compile(r'^(?P<ind>[ \t]*)(?P<cond>if .+ then )?return end  -- TODO\(native\): goto (?P<label>LAB_[0-9a-f]+)\s*$')
-COMMENT_GOTO = re.compile(r'^(?P<ind>[ \t]*)-- TODO\(native\): goto (?P<label>LAB_[0-9a-f]+)\s*$')
-INLINE_GOTO = re.compile(r'^(?P<ind>[ \t]*)if true then return end  -- TODO\(native\): goto (?P<label>LAB_[0-9a-f]+)\s*$')
+EARLY_RETURN = re.compile(r'^(?P<ind>[ \t]*)(?P<cond>if .+ then )?return end  -- TODO\(native\): goto (?P<label>LAB_[0-9a-f]+(?:_c\d+)?)\s*$')
+COMMENT_GOTO = re.compile(r'^(?P<ind>[ \t]*)-- TODO\(native\): goto (?P<label>LAB_[0-9a-f]+(?:_c\d+)?)\s*$')
+INLINE_GOTO = re.compile(r'^(?P<ind>[ \t]*)if true then return end  -- TODO\(native\): goto (?P<label>LAB_[0-9a-f]+(?:_c\d+)?)\s*$')
 
 
-GOTO_LINE = re.compile(r'^\s*goto (LAB_[0-9a-f]+)\s*$')
+GOTO_LINE = re.compile(r'^\s*goto (LAB_[0-9a-f]+(?:_c\d+)?)\s*$')
 
 
 def _terminal(s):

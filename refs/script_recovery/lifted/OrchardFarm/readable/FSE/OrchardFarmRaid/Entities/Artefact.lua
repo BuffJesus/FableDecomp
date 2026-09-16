@@ -69,7 +69,6 @@ end
 
 function Init(quest, me)
     quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + 1)
-    -- TODO(native): xStack_4 = (CCharString)this;
     quest:StateListPush("CrateList", me)
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
 end

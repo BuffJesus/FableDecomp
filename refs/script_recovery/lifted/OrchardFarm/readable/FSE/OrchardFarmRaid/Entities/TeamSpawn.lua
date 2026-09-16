@@ -192,7 +192,6 @@ function Main(quest, me)
                                 teamMemberName4 = __native_entity_state:GetStateString("TeamMemberName")
                                 position4 = me:GetPos()
                                 scratchValue3 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), position4, teamMemberName4)
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&xStack_3c,(int)pCVar6);
                             end
                             quest:EntityAttachToScript(scratchValue3, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
@@ -217,30 +216,30 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local scratchValue, scratchValue2, getName, scratchValue3
-    local function __region_LAB_00dcd306()
-        __native_entity_state:SetStateInt("TeamID", 1)
-        __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
-        scratchValue2 = "CREATURE_BANDIT_GRUNT"
-    end
-    scratchValue = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
-    __native_entity_state:SetStateThing("OtherSpawnPoint", scratchValue)
-    scratchValue = nil
+    local getRandomThingWithScriptName, scratchValue, getName, scratchValue2, scratchValue3
+    getRandomThingWithScriptName = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
+    __native_entity_state:SetStateThing("OtherSpawnPoint", getRandomThingWithScriptName)
+
     getName = me:GetName()
     if getName == nil then
     else
-        if getName == "BanditTeamSpawn" then __region_LAB_00dcd306(); goto LAB_00dcd2bb end
+        if getName == "BanditTeamSpawn" then
+            __native_entity_state:SetStateInt("TeamID", 1)
+            __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
+            scratchValue = "CREATURE_BANDIT_GRUNT"
+            goto LAB_00dcd2bb
+        end
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     __native_entity_state:SetStateString("TeamMemberName", "GuardTeamMember")
-    scratchValue2 = "CREATURE_ORCHARD_FARM_GUARD"
+    scratchValue = "CREATURE_ORCHARD_FARM_GUARD"
     ::LAB_00dcd2bb::
-    __native_entity_state:SetStateString("TeamMemberDefName", scratchValue2)
+    __native_entity_state:SetStateString("TeamMemberDefName", scratchValue)
     if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         __native_entity_state:SetStateInt("TeamMemberLimit", 2)
-        scratchValue3 = quest:ReadGlobalGameData(3436)
+        scratchValue2 = quest:ReadGlobalGameData(3436)
         __native_entity_state:SetStateInt("BanditsLeftID", 0)
-        __native_entity_state:SetStateInt("TeamRespawnTime", scratchValue3)
+        __native_entity_state:SetStateInt("TeamRespawnTime", scratchValue2)
         return
     end
     __native_entity_state:SetStateInt("TeamMemberLimit", 3)

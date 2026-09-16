@@ -539,6 +539,9 @@ class UnitConverter:
             shared = '\n'.join(['-- Generated from the same native helper bodies as the quest draft.',
                                 'local ' + ', '.join(names)] + [shared_sources[n] for n in names] +
                                ['return {' + ', '.join(f'{n} = {n}' for n in names) + '}\n'])
+            shared, shared_hoisted = hoist_cleanup_regions(shared)
+            if shared_hoisted:
+                report.setdefault('cleanupRegions', {})[shared_path] = shared_hoisted
             (out / shared_path).write_text(shared, encoding='utf-8')
             report['sharedHelpers'] = {'path': shared_path, 'functions': names, 'todo': shared_diagnostics,
                                        'syntax': self.checker.check({shared_path: shared})}

@@ -167,7 +167,7 @@ function Main(quest, me)
                                 end
                                 scratchValue8 = true
                             end
-                            isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(xStack_38, (__native_entity_state:GetStateInt("self_0x2c") + 36), 5.0)
+                            isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(xStack_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")), 5.0)
                             if (isDistanceBetweenThingsOver) and (scratchValue8 ~= false) then
                                 if quest:IsActiveThreadTerminating() then
                                     return
@@ -262,7 +262,7 @@ function Main(quest, me)
                     end
                     helper_DCEC50(quest, me, 4)
                     quest:EntityStopFollowing(me)
-                    quest:EntityFollowThing(me, nil --[[missing]], quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0)
+                    quest:EntityFollowThing(me, quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0, true)
                     require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
                 end
                 scratchValue6 = __native_entity_state:GetStateInt("MemberState") == 4
@@ -333,7 +333,7 @@ function Main(quest, me)
                 quest:EntityStopFollowing(me)
                 getNearestWithScriptName = quest:GetNearestWithScriptName(me, "TeamExitMarker")
                 scratchValue14 = resources:NewResource()
-                -- TODO(native): bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)xStack_24);
+
                 controlAcquired = resources:TryAcquire(scratchValue14, me, 4)
                 while not controlAcquired do
                     alive = quest:NewScriptFrame(me)
@@ -382,16 +382,16 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local predicateResult, scratchValue, hero, getName
-    local function __region_LAB_00dce00a()
-        __native_entity_state:SetStateInt("TeamID", 1)
-    end
+    local predicateResult, scratchValue, hero, hero2, getName
     getName = me:GetName()
     if getName == nil then
     else
         scratchValue = ((getName == "BanditTeamMember") and 0 or 1)
         predicateResult = not (scratchValue ~= 0)
-        if predicateResult ~= 0 then __region_LAB_00dce00a(); goto LAB_00dcdf96 end
+        if predicateResult ~= 0 then
+            __native_entity_state:SetStateInt("TeamID", 1)
+            goto LAB_00dcdf96
+        end
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     ::LAB_00dcdf96::
@@ -410,8 +410,8 @@ function Init(quest, me)
     else
         if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
             quest:EntitySetInFaction(me, "FACTION_VILLAGERS")
-            hero = quest:GetHero()
-            quest:EntitySetThingAsAllyOfThing(me, hero)
+            hero2 = quest:GetHero()
+            quest:EntitySetThingAsAllyOfThing(me, hero2)
         else
             quest:EntitySetInFaction(me, "FACTION_GUARDS_ENEMY")
             quest:MiniMapAddMarker(me, "HUD_ORB_RED_SMALL")
@@ -434,7 +434,6 @@ end
 function OnPredicateFail(quest, me)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) + -1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
-    -- TODO(native): xStack_4 = this;
     local scratchValue = me:MsgIsKilledBy("")
     if scratchValue then
         if __native_entity_state:GetStateInt("TeamID") == 1 then

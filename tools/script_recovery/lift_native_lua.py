@@ -35,7 +35,7 @@ from native_thing_predicates import recover_reviewed_thing_predicates  # noqa: E
 from native_call_operands import recover_reviewed_call_operands  # noqa: E402
 from native_self_wrapper import fold_self_wrapper_arguments  # noqa: E402
 from native_deeds import recover_deed_operands  # noqa: E402
-from native_goto_scopes import supported_jumps, duplicate_sibling_tails  # noqa: E402
+from native_goto_scopes import supported_jumps, duplicate_sibling_tails, merge_equivalent_regions  # noqa: E402
 from native_subregisters import fold_literal_slices, fold_unsigned_three_byte_casts  # noqa: E402
 from native_constant_conditions import fold_decisive_condition  # noqa: E402
 from native_conditions import conditional_call_assignment  # noqa: E402
@@ -329,6 +329,26 @@ def _wide_string_at(self, va: int) -> str | None:
 
 
 RData.wide_string_at = _wide_string_at
+
+
+def _balanced_call(text: str, open_at: int) -> bool:
+    """True when the parenthesis at open_at closes exactly at the end of text (one whole call)."""
+    depth, quote = 0, None
+    for k in range(open_at, len(text)):
+        ch = text[k]
+        if quote:
+            if ch == quote:
+                quote = None
+            continue
+        if ch in '"\'':
+            quote = ch
+        elif ch == '(':
+            depth += 1
+        elif ch == ')':
+            depth -= 1
+            if depth == 0:
+                return k == len(text) - 1
+    return False
 
 
 def load_manifest() -> dict[str, dict]:
@@ -1005,8 +1025,9 @@ class Lifter:
         if arg.startswith('"'):
             return "string"
         # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
-        accessor = re.fullmatch(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*))'
-                                r'\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)', arg.strip())
+        accessor = re.match(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*))\(', arg.strip())
+        if accessor and not _balanced_call(arg.strip(), accessor.end() - 1):
+            accessor = None     # the accessor is only a prefix of a larger expression
         if accessor and self.accessor_kinds:
             kind = accessor.group(1) or accessor.group(2) or 'Thing'
             return {'String': 'string', 'Int': 'number', 'Float': 'number', 'Bool': 'bool', 'Thing': 'thing'}[kind]
@@ -1687,7 +1708,7 @@ class Lifter:
         # an ordinary Lua return without a review marker only when the target is the final label and
         # its suffix contains no script-interface call or state write.  This is intentionally
         # conservative: branch/join labels and any ambiguous suffix remain TODOs.
-        labels = list(re.finditer(r'(?m)^\s*(LAB_[0-9a-f]+):', text))
+        labels = list(re.finditer(r'(?m)^\s*(LAB_[0-9a-f]+(?:_c\d+)?):', text))
         if labels:
             final = labels[-1]
             suffix = text[final.end():]
@@ -1713,9 +1734,17 @@ class Lifter:
         if self.native_gotos:
             if self.accessor_kinds:
                 # unit converter: jumps into sibling blocks become tail copies + a jump past the block
-                statements = duplicate_sibling_tails(statements)
+                statements = duplicate_sibling_tails(merge_equivalent_regions(statements))
+                import os as _os
+                if _os.environ.get('GOTO_DUMP') and _os.environ['GOTO_DUMP'] in (role or ''):
+                    Path(_os.environ['GOTO_DUMP_FILE']).write_text('\n'.join(statements), encoding='utf-8')
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
         definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
+        if self.accessor_kinds:
+            # typed exports name staged locals after callee parameters (`string`, `pMessage`): a value staged
+            # in several branches before a shared jump target is a real mutable local, not a temporary
+            definitions.update(Counter(re.findall(r'(?<![\w.>-])([a-z][A-Za-z0-9_]*)\s*=(?!=)', text))
+                               - Counter({k: v for k, v in definitions.items()}))
         if self.lua_labels:
             self.mutable_scalars.update(definitions)
         for line in statements:

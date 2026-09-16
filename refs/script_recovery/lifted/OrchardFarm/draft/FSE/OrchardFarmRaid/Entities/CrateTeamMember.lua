@@ -186,7 +186,7 @@ function Main(quest, me)
                                 end
                                 bVar3 = true
                             end
-                            bVar5 = quest:IsDistanceBetweenThingsOver(xStack_38, (__native_entity_state:GetStateInt("self_0x2c") + 0x24), 5.0)
+                            bVar5 = quest:IsDistanceBetweenThingsOver(xStack_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")), 5.0)
                             if (bVar5) and (bVar3 ~= false) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
@@ -297,7 +297,7 @@ function Main(quest, me)
                     end
                     helper_DCEC50(quest, me, 4)
                     quest:EntityStopFollowing(me)
-                    quest:EntityFollowThing(me, nil --[[missing]], quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0)
+                    quest:EntityFollowThing(me, quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0, true)
                     require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
                 end
                 __native_condition_7 = __native_entity_state:GetStateInt("MemberState") == 4
@@ -374,8 +374,8 @@ function Main(quest, me)
                 quest:EntityStopFollowing(me)
                 r1 = quest:GetNearestWithScriptName(me, "TeamExitMarker")
                 xStack_24 = resources:NewResource()
-                -- TODO(native): bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)xStack_24);
-                if bVar6 then
+                bVar6 = false
+                if bVar6 ~= 0 then
                 end
                 bVar6 = resources:TryAcquire(xStack_24, me, 4)
                 while not bVar6 do
@@ -430,20 +430,21 @@ end
 
 function Init(quest, me)
     local bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1
-    local function __region_LAB_00dce00a()
-        __native_entity_state:SetStateInt("TeamID", 1)
-    end
     piVar1 = me:GetName()
     if piVar1 == nil then
         bVar6 = false
         if bVar6 then
-            __region_LAB_00dce00a()
+            -- LAB_00dce00a: (native jump target)
+            __native_entity_state:SetStateInt("TeamID", 1)
             goto LAB_00dcdf96
         end
     else
         iVar3 = ((piVar1 == "BanditTeamMember") and 0 or 1)
         c_stk_11 = not (iVar3 ~= 0)
-        if c_stk_11 ~= 0 then __region_LAB_00dce00a(); goto LAB_00dcdf96 end
+        if c_stk_11 ~= 0 then
+            __native_entity_state:SetStateInt("TeamID", 1)
+            goto LAB_00dcdf96
+        end
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     ::LAB_00dcdf96::
@@ -486,7 +487,6 @@ end
 function OnPredicateFail(quest, me)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) + -1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
-    -- TODO(native): xStack_4 = this;
     local cVar2 = me:MsgIsKilledBy("")
     if cVar2 then
         if __native_entity_state:GetStateInt("TeamID") == 1 then

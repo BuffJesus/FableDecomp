@@ -419,6 +419,9 @@ RESOURCE_DTOR = {0x7E74D0}            # CSGROSTB_Destroy_API
 MOVIE_CTOR = {0x6E7B60}              # CScriptGameResourceObjectMovieBase ctor (stores vtable 01260ef4)
 THING_CTOR = {0x6E7B40}              # CScriptThing::CScriptThing() (stores vtable 01238c8c, Info/Data = 0; disasm 2026-09-16)
 MOVIE_DTOR = {0x6E7B80}               # MovieResource_Destroy_API
+COUNTED_RELEASE = {0x6E7AB0, 0xCE1000}   # CCountedPointer release: decref [this+4], zero [this], [this+4] (disasm 2026-09-16)
+BASE_OBJECT_DTOR = {0x99A430}         # CBaseIntelligentPointer::~ (bsim: CPhysicsMeshInfo::~CPhysicsMeshInfo)
+RESOURCE_ACQUIRED = {0xCD23B9}        # bool __thiscall (this): [this+8] != 0, the resource's counted handle (disasm 2026-09-16)
 
 
 def _strip_addr(arg):
@@ -503,6 +506,16 @@ def fold_resource_objects(text, call_labels):
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;,]+?)(?:,[^;]*)?\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = RESOURCE_StartMovie("");', text, flags=re.M)
         elif target in MOVIE_DTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;,]+?)(?:,[^;]*)?\);', lambda m: f'{m.group(1)}RESOURCE_DestroyMovie({_strip_addr(m.group(2))});', text, flags=re.M)
+        elif target in COUNTED_RELEASE:
+            # `release(X); X[0] = &PTR_<movie vtable>; base_dtor(X);` is the inlined movie destructor
+            # Ghidra may spell the three member accesses (+8, +0, +0) under different slot names: the base
+            # destructor's operand (a call operand the export restored) names the object
+            text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'::\s*') + r'\s*\(([^;,]+?)\);[ \t]*\r?\n'
+                          r'[ \t]*\w+(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_0126008c;[ \t]*\r?\n'
+                          r'[ \t]*[\w:~]+\s*\(\(\w+ \*\)(\w+)\);[ \t]*\r?\n',
+                          lambda m: f'{m.group(1)}RESOURCE_DestroyMovie({m.group(3)});\n', text, flags=re.M)
+        elif target in RESOURCE_ACQUIRED:
+            text = re.sub(re.escape(label) + r'\s*\(([^;,]+?)\)', lambda m: f'RESOURCE_IsAcquired({_strip_addr(m.group(1))})', text)
     return text
 
 
@@ -646,6 +659,8 @@ def lower_after_annotate(text):
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
     text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
                   lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
+    # receiver aliases (`this_00 = *(int **)(this + 0x40);`) are dead once their vcalls read `GSI->`
+    text = drop_dead_local_stores(text)
     return text
 
 
@@ -1115,14 +1130,17 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
                 text = re.sub(r'\*\(int \*\)\(' + ptr + r' \+ ' + off_re(member_off + 4) + r'\)', f'__thing_valid({recv})', text)
                 text = re.sub(r'\(CScriptThing \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', recv, text)
-                # bare member address as a by-reference argument
+                # bare member address as a by-reference argument, also parenthesised after a cast was stripped
                 text = re.sub(r'(?<![\w*(])' + ptr + r' \+ ' + off_re(member_off) + r'(?![\w])', recv, text)
+                text = re.sub(r'\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', recv, text)
                 text = re.sub(r'CScriptThing::operator=\(' + re.escape(recv) + r',\s*([^;]+)\);',
                               lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_" .. {idx} .. "_{tname}"), {m.group(1).strip()});', text)
     text = re.sub(r'\b(\d+(?:\.\d+)?)e\+?(-?\d+)\b', lambda m: repr(float(m.group(0))), text)
     # a remaining CScriptThing::operator= on a plain local is a handle copy (members were lowered above)
-    text = re.sub(r'^([ \t]*)CScriptThing::operator=\(\(CScriptThing \*\)(\w+),\s*\((?:int|CScriptThing \*)\)(\w+)\);', r'\1\2 = \3;', text, flags=re.M)
+    text = re.sub(r'^([ \t]*)CScriptThing::operator=\(\(CScriptThing \*\)&?(\w+),\s*\((?:int|CScriptThing \*)\)(\w+)\);', r'\1\2 = \3;', text, flags=re.M)
     text = drop_local_counted_releases(text)
+    text = re.sub(r'^[ \t]*(?:[A-Za-z]+Stack_|local_)[0-9a-f]+ = (?:\(\w+\))?this;[ \t]*\r?\n', '', text, flags=re.M)
+    text = re.sub(r'^[ \t]*(\w+) = \((?:\w+ \*+)\)\w+;[ \t]*\r?\n(?=[ \t]*\1 = )', '', text, flags=re.M)
     text = drop_dead_local_stores(text)
     text = rename_scalar_stack_locals(text)
     return text, diag
@@ -1195,6 +1213,7 @@ LUA_PSEUDO = [
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
+    (re.compile(r'RESOURCE_IsAcquired\(\w+\)'), 'false'),   # a freshly constructed stack resource has no handle yet ([this+8] == 0)
     (re.compile(r'RESOURCE_(\w+)\('), r'resources:\1('),
     (re.compile(r'QUESTSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'quest:\1State\2('),
     (re.compile(r'ENTITYSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'__native_entity_state:\1State\2('),

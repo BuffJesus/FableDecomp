@@ -228,7 +228,6 @@ function Main(quest, me)
                                 pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), pCVar5, pCVar8)
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&xStack_3c,(int)pCVar6);
                             end
                             quest:EntityAttachToScript(pCVar6, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
@@ -256,11 +255,6 @@ end
 
 function Init(quest, me)
     local bVar7, iVar5, pCVar3, pcVar8, piVar4, uVar1
-    local function __region_LAB_00dcd306()
-        __native_entity_state:SetStateInt("TeamID", 1)
-        __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
-        pcVar8 = "CREATURE_BANDIT_GRUNT"
-    end
     pCVar3 = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
     __native_entity_state:SetStateThing("OtherSpawnPoint", pCVar3)
     pCVar3 = nil
@@ -268,12 +262,20 @@ function Init(quest, me)
     if piVar4 == nil then
         bVar7 = false
         if bVar7 then
-            __region_LAB_00dcd306()
+            -- LAB_00dcd306: (native jump target)
+            __native_entity_state:SetStateInt("TeamID", 1)
+            __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
+            pcVar8 = "CREATURE_BANDIT_GRUNT"
             goto LAB_00dcd2bb
         end
     else
         iVar5 = ((piVar4 == "BanditTeamSpawn") and 0 or 1)
-        if iVar5 == 0 then __region_LAB_00dcd306(); goto LAB_00dcd2bb end
+        if iVar5 == 0 then
+            __native_entity_state:SetStateInt("TeamID", 1)
+            __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
+            pcVar8 = "CREATURE_BANDIT_GRUNT"
+            goto LAB_00dcd2bb
+        end
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     __native_entity_state:SetStateString("TeamMemberName", "GuardTeamMember")

@@ -77,10 +77,8 @@ function Init(quest, me)
     if quest:GetStateInt("HeroTeam") == 1 then
     else
     end
-    -- TODO(native): xStack_8 = (CCharString)this;
     quest:EntitySetInFaction(me, "FACTION_BANDITS")
     quest:EntitySetAsKillable(me, false, true)
-    -- TODO(native): this_00 = *(int **)(this + 4);
     local pThing2 = quest:GetHero()
     quest:EntitySetAsAwareOfThing(me, pThing2)
     quest:EntitySetAsDamageable(me, false)
