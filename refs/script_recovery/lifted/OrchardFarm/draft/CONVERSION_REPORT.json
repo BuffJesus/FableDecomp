@@ -478,7 +478,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 259,
+          "lines": 258,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -738,6 +738,7 @@
           "todo": [
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
+            "unlifted: local_3c = (CScriptThing *)piVar3;",
             "verify cleanup at LAB_00dd1d15 (lifted as early return)",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
@@ -793,7 +794,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 131,
+          "lines": 130,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2035,13 +2036,13 @@
             "resources:ReleaseResource(appuStack_ac)",
             "resources:DestroyActorMap(r2)",
             "resources:ReleaseResource(appuStack_bc)",
-            "resources:ReleaseResource(aC_stk_c4)"
+            "resources:ReleaseResource(aCStack_c4)"
           ],
           "LAB_00dd0b2b": [
             "resources:ReleaseResource(appuStack_ac)",
             "resources:DestroyActorMap(r2)",
             "resources:ReleaseResource(appuStack_bc)",
-            "resources:ReleaseResource(aC_stk_c4)"
+            "resources:ReleaseResource(aCStack_c4)"
           ],
           "LAB_00dd1728": [
             "pCVar7 = 0x0",
@@ -2089,6 +2090,7 @@
           "DoMultiplierCutscene": [
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
+            "unlifted: local_3c = (CScriptThing *)piVar3;",
             "verify cleanup at LAB_00dd1d15 (lifted as early return)",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
@@ -2119,7 +2121,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 129
+        "todo": 130
       }
     },
     {
@@ -2320,6 +2322,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 129
+    "todo": 130
   }
 }

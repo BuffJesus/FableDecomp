@@ -5,10 +5,8 @@ function DoMultiplierCutscene(quest, me)
     local isDistanceBetweenThingsUnder, predicateResult3, predicateResult4, predicateResult5
     local predicateResult6, scratchValue3, predicateResult7, scratchValue4, predicateResult8
     local predicateResult9, predicateResult10, predicateResult11, predicateResult12, scratchValue5
-    local sequence12, sequence22, scratchValue6, pScriptObject, scratchValue7, v_stk_3c_1
-    local v_stk_3c_2
+    local hero, sequence12, sequence22, scratchValue6, pScriptObject, scratchValue7
     local alive = true
-    v_stk_3c_1 = 0
     scratchValue5 = resources:NewResource()
     scratchValue6 = quest:GetHero()
     resources:TryAcquire(pScriptObject, scratchValue6, 4)
@@ -48,10 +46,10 @@ function DoMultiplierCutscene(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         predicateResult2 = not alive
         if not predicateResult2 then
-            v_stk_3c_1 = piVar3
-            v_stk_3c_2 = quest:GetHero()
+            -- TODO(native): local_3c = (CScriptThing *)piVar3;
+            hero = quest:GetHero()
             scratchValue6 = quest:GetThingWithScriptName("MK_OFI_GWL")
-            isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(scratchValue6, v_stk_3c_2, 20.0)
+            isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(scratchValue6, hero, 20.0)
             if isDistanceBetweenThingsUnder then
                 alive = not quest:IsActiveThreadTerminating()
                 predicateResult3 = not alive

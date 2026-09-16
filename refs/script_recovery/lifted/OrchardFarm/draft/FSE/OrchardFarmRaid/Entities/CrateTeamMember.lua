@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, v_stk_20
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38
     local alive = true
     bVar6 = false
     alive = quest:NewScriptFrame(me)
@@ -357,8 +357,8 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    v_stk_20 = nil
-                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), v_stk_20)
+                    local_20 = nil
+                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), local_20)
                     helper_DCEC50(quest, me, 0)
                 end
                 cVar4 = quest:GetStateBool("WhisperSpawned")

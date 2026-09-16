@@ -1236,6 +1236,9 @@ class Lifter:
             # A by-value CScriptThing/CCharString result travels through a hidden first operand;
             # remember which stack slot so later uses of that slot resolve to the result.
             slot = self.slot_name(operands[0])
+            if slot and self.accessor_kinds and slot in self.temps and operands[0].lstrip().startswith('(CScriptThing *)'):
+                # Ghidra reused the stack slot: an explicitly CScriptThing-typed address is the hidden result
+                self.temps.pop(slot); self.order.remove(slot)
             if slot and slot not in self.temps:
                 return_slot = slot
                 operands = operands[1:]

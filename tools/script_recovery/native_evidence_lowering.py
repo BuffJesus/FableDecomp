@@ -559,11 +559,11 @@ def rename_scalar_stack_locals(text):
     # the lifter's slot aliases (`r1`): keep their spelling
     # (at this stage GSI calls are still raw vcalls with the receiver as first argument, so the slot may be any argument)
     STK = r'((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)'
-    hidden = set(re.findall(r'\)\)\s*\((?:\*\(int \*\*\)\(this \+ (?:4|0x40)\),\s*)?(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]', text))   # vcall first argument
-    hidden |= set(re.findall(r'GSI->\w+\(\s*(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]', text))
-    hidden |= set(re.findall(r'\b\w+\(\s*&' + STK + r'\s*[,)]', text))                                                       # helper hidden result
+    # any stack object passed as a call argument (bare array name, `&name` or `(CScriptThing *)name`) is an
+    # address the lifter resolves through its slot table
+    hidden = set(re.findall(r'[(,]\s*(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]', text))
     # a slot that receives a lowered value by plain assignment is a handle, not a hidden result
-    hidden -= set(re.findall(r'^[ \t]*' + STK + r' = \w+;', text, re.M))
+    hidden -= set(re.findall(r'^[ \t]*' + STK + r' = (?:p[A-Z]\w*|thing_\w+|r\d+|native_arg_\w+);', text, re.M))   # pointer-typed values only
     # a stack CScriptThing that only ever holds lowered values is a plain handle: drop its casts
     text = re.sub(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', lambda m: m.group(0) if m.group(1) in hidden else m.group(1), text)
     body = re.sub(r'^[ \t]*(?:[\w:<>,]+ )+\**\w+(?: \[\d+\])?;[ \t]*\r?$', '', text, flags=re.M)   # declarations

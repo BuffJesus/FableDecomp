@@ -12,7 +12,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_OrchardFarmRaid | Q_OrchardFarmRaid | DoCutsceneIfRequired | 0x00dcfa60 | True | 16 |
 | Q_OrchardFarmRaid | Q_OrchardFarmRaid | WatchForExternalScriptDeactivation | 0x00dccf30 | True | 2 |
 | Q_OrchardFarmRaid | Q_OrchardFarmRaid | MakeTeamMemberComment | 0x00dcda80 | True | 0 |
-| Q_OrchardFarmRaid | Q_OrchardFarmRaid | DoMultiplierCutscene | 0x00dd1af0 | True | 14 |
+| Q_OrchardFarmRaid | Q_OrchardFarmRaid | DoMultiplierCutscene | 0x00dd1af0 | True | 15 |
 | Q_OrchardFarmRaid | Q_OrchardFarmRaid | ReplaceQuestCards | 0x00dd0eb0 | True | 0 |
 | Q_OrchardFarmRaid | TeamSpawn | Main | 0x00dcd350 | True | 7 |
 | Q_OrchardFarmRaid | TeamSpawn | Init | 0x00dcd1d0 | True | 3 |
@@ -51,4 +51,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_OrchardFarmRaidGood | Q_OrchardFarmRaidGood | Main | 0x00dd2390 | True | 0 |
 | Q_OrchardFarmRaidGood | Q_OrchardFarmRaidGood | Init | 0x00dd23a0 | True | 0 |
 
-Summary: `{"owners": 10, "functions": 46, "missing": 2, "functionSyntaxPassed": 46, "fileSyntaxPassed": 11, "fileSyntaxChecked": 11, "todo": 129}`
+Summary: `{"owners": 10, "functions": 46, "missing": 2, "functionSyntaxPassed": 46, "fileSyntaxPassed": 11, "fileSyntaxChecked": 11, "todo": 130}`
