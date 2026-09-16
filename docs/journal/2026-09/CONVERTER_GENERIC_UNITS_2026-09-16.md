@@ -191,3 +191,15 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
 - Remaining draft residue (52): dtor-selection `this_00` aliases, `_Dest_val` movie release, `HasPhysicsMesh` mislabel (0xCD23B9),
   DoMultiplierCutscene actor-map residue (`local_3c`), TeamSpawn `&xStack_3c` handle copy.
 
+## Night 3 — residue cleared (commit ede5dfa)
+- Draft TODO(native): 52 -> 0. Goto structuring: `merge_equivalent_regions` (identical cleanup tails behind labels at
+  different depths -> the shallowest one), sibling-tail copies may contain their own labels (`_cN`), inline straight-line
+  invisible targets, stop at unconditional jumps, skip sibling else-branches, one FLOW label per exit point.
+- Semantics recovered: the WHISPERINTRO cutscene choice (GWLL / GWL / EVIL_GWL / LOP) had collapsed to one literal — the typed
+  export's `string` staging is now a mutable local; the shared helper module's terminating paths now run
+  PauseAll(false)+DestroyMovie (cleanup hoisting was only applied to package files); nested `Teams_..EnemyTeam..` keys no
+  longer shift EntityFollowThing's arguments; Teams[MyTeam].CrateDropPos distance operand; movie destructor fold;
+  0xCD23B9 = resource acquired test (false on a fresh handle).
+- Verification: readable 12/12, smoke harness 0 problems (draft + readable), Oakvale gate identical, 203 converter tests
+  (test_watch_barrels_readable pre-existing failure), v5 preflight ok. In-game run of v5 is the next (user-driven) step.
+

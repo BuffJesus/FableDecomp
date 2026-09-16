@@ -31,6 +31,11 @@ entity ids 216–224); preflight passes; static API coverage check = no missing 
 FIXED: Bully intimidation line (was BULLY_BADGERING; retail formats BULLY_SCRMSG_INTIMIDATING_%d, bully_proximity.py) —
 readable rebuilt, staged at work/oakvale_readable_stage_20260916b, **v5 rebuilt from it** (Oakvale + Orchard, preflight ok).
 Aeon cross-reference: work/aeon_new_oakvale/CROSSREF.md. Pre-existing: test_bully_proximity.py mock lacks RetailRandModulo (fails before the fix too).
+ede5dfa: Orchard draft has **zero TODO(native)** (goto scopes: sibling-tail copies with internal labels, equivalent cleanup
+tails merged, DoMultiplierCutscene's four WHISPERINTRO macros via the mutable `string`; shared helper module hoists cleanup
+regions too). Remaining diagnostics are informational (labels/gotos, 5 `verify cleanup` = `__cleanup_X(); return`). v5 rebuilt.
+GuildTraining regenerated drafts are NOT committed (the tail copies grow that untyped unit; todo 3032 -> 4029) — revisit when it
+gets a typed export.
 2f3e957/ca781cd: TeamSpawn sibling-goto regression fixed (d3444b3 had spawned twice + returned early); typed export now tracks
 exact stack depth (callee purge sizes, lazy saves, lea esp padding) and records per-site `ecxStack/edxStack/pushedStack` +
 `indirectCalls`; `restore_stack_operands` (convert_quest_unit.py) renames drifted Ghidra stack names by (slot, lifetime) →
