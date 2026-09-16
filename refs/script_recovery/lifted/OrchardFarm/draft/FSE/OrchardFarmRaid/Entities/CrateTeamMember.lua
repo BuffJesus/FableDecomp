@@ -86,7 +86,6 @@ function Main(quest, me)
                     return
                 end
                 GoOnPatrol(quest, me)
-                -- TODO(native): GetCurrentStateGroupType is not a ForgeFSE binding
                 iVar7 = me:GetCurrentStateGroupType()
                 __native_entity_state:SetStateInt("CurrentAIState", iVar7)
                 if iVar7 ~= __native_entity_state:GetStateInt("PreviousAIState") then
@@ -158,7 +157,6 @@ function Main(quest, me)
                                 native_arg_sequence_1 = false
                             end
                             if native_arg_sequence_1 then
-                                -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
                                 cVar4 = thing_38:IsBeingCarriedBy("ATTACKING")
                                 if cVar4 then
                                     native_arg_sequence_1 = true
@@ -166,8 +164,10 @@ function Main(quest, me)
                                     native_arg_sequence_1 = false
                                 end
                             end
-                            bVar3 = false
-                            if native_arg_sequence_1 then goto FLOW_after_lab_00dce594 end
+                            if native_arg_sequence_1 then
+                                bVar3 = false
+                                goto FLOW_after_lab_00dce594
+                            end
                             bVar3 = true
                         end
                         ::FLOW_after_lab_00dce594::
@@ -181,26 +181,28 @@ function Main(quest, me)
                                 -- LAB_00dcebab: (native jump target)
                                 return
                             end
-                            ::FLOW_after_lab_00dcebab::
                             bVar3 = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                             if (quest:GetStateInt("HeroTeam") == 0) and (__native_entity_state:GetStateInt("TeamID") == 1) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
-                                do return end
-                                if bVar3 then goto FLOW_after_lab_00dcebab end
+                                if bVar3 then
+                                    return
+                                end
                                 bVar3 = true
                             end
                             bVar5 = quest:IsDistanceBetweenThingsOver(thing_38, (__native_entity_state:GetStateInt("self_0x2c") + 0x24), 5.0)
                             if (bVar5) and (bVar3 ~= false) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
-                                do return end
-                                if bVar2 then goto FLOW_after_lab_00dcebab end
+                                if bVar2 then
+                                    return
+                                end
                                 if __native_entity_state:GetStateInt("TeamID") == 1 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
-                                    do return end
-                                    if bVar2 then goto FLOW_after_lab_00dcebab end
+                                    if bVar2 then
+                                        return
+                                    end
                                     quest:EntityStopFollowing(me)
                                     fVar9 = 4.0
                                     quest:SetCombatNearbyBreakOffRange(me, fVar9)
@@ -210,8 +212,9 @@ function Main(quest, me)
                                 else
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
-                                    do return end
-                                    if bVar2 then goto FLOW_after_lab_00dcebab end
+                                    if bVar2 then
+                                        return
+                                    end
                                     fVar9 = 4.0
                                     quest:SetCombatNearbyBreakOffRange(me, fVar9)
                                     bVar2 = false
@@ -225,8 +228,9 @@ function Main(quest, me)
                             elseif bVar2 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
-                                do return end
-                                if bVar2 then goto FLOW_after_lab_00dcebab end
+                                if bVar2 then
+                                    return
+                                end
                                 -- TODO(native): pThing_06._4_4_ = uVar8;
                                 -- TODO(native): pThing_06._0_4_ = auStack_48;
                                 -- TODO(native): pThing_06._8_4_ = uVar10;
@@ -247,7 +251,6 @@ function Main(quest, me)
                     end
                     __native_condition_2 = __native_condition_3
                     if __native_condition_2 then
-                        -- TODO(native): IsEqualTo is not a ForgeFSE binding
                         bVar3 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsEqualTo(me)
                         __native_condition_2 = not bVar3
                     end
@@ -434,7 +437,6 @@ end
 
 function Init(quest, me)
     local bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1, u_stk_c
-    -- TODO(native): GetName is not a ForgeFSE binding
     local function __region_LAB_00dce00a()
         __native_entity_state:SetStateInt("TeamID", 1)
     end
@@ -463,7 +465,6 @@ function Init(quest, me)
             quest:SetIsThingTurncoatable(me, false)
             quest:EntitySetAsDisplayingEmoteIcon(me, false)
         end
-        -- TODO(native): SetDataString is not a ForgeFSE binding
         me:SetDataString("BANDIT")
     else
         if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
@@ -475,7 +476,6 @@ function Init(quest, me)
             quest:MiniMapAddMarker(me, "HUD_ORB_RED_SMALL")
             quest:EntitySetAsDisplayingEmoteIcon(me, false)
         end
-        -- TODO(native): SetDataString is not a ForgeFSE binding
         me:SetDataString("GUARD")
     end
     __native_entity_state:SetStateInt("MyTeam", __native_entity_state:GetStateInt("TeamID"))
@@ -559,9 +559,7 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
             if bVar1 then goto LAB_00dcedc1 end
             cVar2 = quest:GetStateListAt("CrateList", (iVar6) / 0xc):IsAlive()
             if cVar2 then
-                -- TODO(native): GetName is not a ForgeFSE binding
                 uVar3 = native_arg_thing:GetName()
-                -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
                 cVar2 = quest:GetStateListAt("CrateList", (iVar6) / 0xc):IsBeingCarriedBy(uVar3)
                 if cVar2 then
                     alive = not quest:IsActiveThreadTerminating()

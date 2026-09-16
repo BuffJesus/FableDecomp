@@ -5,13 +5,13 @@ function DoMultiplierCutscene(quest, me)
     local isDistanceBetweenThingsUnder, predicateResult3, predicateResult4, predicateResult5
     local predicateResult6, scratchValue3, predicateResult7, scratchValue4, predicateResult8
     local predicateResult9, predicateResult10, predicateResult11, predicateResult12, scratchValue5
-    local hero, sequence12, sequence22, scratchValue6, pScriptObject, scratchValue7
+    local hero, sequence12, sequence22, hero2, gwl, pScriptObject, scratchValue6
     local alive = true
     scratchValue5 = resources:NewResource()
-    scratchValue6 = quest:GetHero()
-    resources:TryAcquire(pScriptObject, scratchValue6, 4)
-    scratchValue7 = resources:NewActorMap()
-    resources:SetActor(scratchValue7, "HERO", scratchValue5)
+    hero2 = quest:GetHero()
+    resources:TryAcquire(pScriptObject, hero2, 4)
+    scratchValue6 = resources:NewActorMap()
+    resources:SetActor(scratchValue6, "HERO", scratchValue5)
     scratchValue = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -48,13 +48,15 @@ function DoMultiplierCutscene(quest, me)
         if not predicateResult2 then
             -- TODO(native): local_3c = (CScriptThing *)piVar3;
             hero = quest:GetHero()
-            scratchValue6 = quest:GetThingWithScriptName("MK_OFI_GWL")
-            isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(scratchValue6, hero, 20.0)
+            gwl = quest:GetThingWithScriptName("MK_OFI_GWL")
+            isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(gwl, hero, 20.0)
             if isDistanceBetweenThingsUnder then
                 alive = not quest:IsActiveThreadTerminating()
                 predicateResult3 = not alive
-                quest:PauseAllNonScriptedEntities(false)
-                if predicateResult3 then goto FLOW_after_lab_00dd1d15 end
+                if predicateResult3 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    goto FLOW_after_lab_00dd1d15
+                end
                 if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     predicateResult4 = not alive
@@ -63,7 +65,7 @@ function DoMultiplierCutscene(quest, me)
                     end
                     -- LAB_00dd1e3d: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(scratchValue)
+                    resources:DestroyMovie(scratchValue)
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -71,7 +73,7 @@ function DoMultiplierCutscene(quest, me)
                 if predicateResult5 then
                     -- LAB_00dd1e53: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(scratchValue)
+                    resources:DestroyMovie(scratchValue)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)

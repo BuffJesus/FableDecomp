@@ -9,7 +9,7 @@
      "function": "Main",
      "rewrites": {
       "flags": 0,
-      "termination": 0,
+      "termination": 2,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
@@ -18,7 +18,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 1,
+      "declarations": 0,
       "decimalLiterals": 0
      }
     },
@@ -79,95 +79,53 @@
      "function": "Main",
      "sourceLine": 13,
      "locals": {
-      "bVar2_1": {
-       "name": "predicateResult",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult",
-        "predicateResult"
-       ]
-      },
-      "bVar2_2": {
-       "name": "isDistanceBetweenThingsUnder",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isDistanceBetweenThingsUnder"
-       ]
-      },
-      "bVar2_3": {
-       "name": "predicateResult2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar2_4": {
-       "name": "isBeingCarriedBy",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isBeingCarriedBy"
-       ]
-      },
       "bVar3": {
-       "name": "predicateResult3",
+       "name": "predicateResult",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
        ]
       },
       "bVar4": {
-       "name": "predicateResult4",
-       "basis": "consistent call/state result",
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "predicateResult",
+        "isActiveThreadTerminating",
         "predicateResult",
+        "isActiveThreadTerminating",
+        "predicateResult"
+       ]
+      },
+      "r1": {
+       "name": "scratchValue2",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        "banditTeamCrateDrop",
+        null
+       ]
+      },
+      "bVar2": {
+       "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         "predicateResult",
+        "isDistanceBetweenThingsUnder",
         "predicateResult",
+        "isBeingCarriedBy",
         "predicateResult"
        ]
       }
      },
-     "splitLocals": {
-      "bVar2": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar2, bVar3, bVar4, r1\n",
-       "versions": {
-        "bVar2_1": [
-         7,
-         56
-        ],
-        "bVar2_2": [
-         15
-        ],
-        "bVar2_3": [
-         18
-        ],
-        "bVar2_4": [
-         26
-        ]
-       }
-      },
-      "r1": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar2, bVar3, bVar4, r1\n",
-       "versions": {
-        "r1_1": [
-         5
-        ],
-        "r1_2": [
-         10,
-         21
-        ]
-       }
-      }
-     },
+     "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
     },
     {
      "function": "Init",
-     "sourceLine": 72,
+     "sourceLine": 70,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -176,7 +134,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 79,
+     "sourceLine": 77,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -185,7 +143,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 82,
+     "sourceLine": 80,
      "locals": {
       "bVar1": {
        "name": "getStateListAt",
@@ -201,7 +159,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1
+   "wrappedDeclarations": 0
   },
   "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua": {
    "functions": [
@@ -209,7 +167,7 @@
      "function": "Main",
      "rewrites": {
       "flags": 0,
-      "termination": 22,
+      "termination": 27,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
@@ -217,8 +175,8 @@
       "emptyIfs": 1,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 4,
-      "declarations": 5,
+      "flagTests": 27,
+      "declarations": 28,
       "decimalLiterals": 2
      }
     },
@@ -418,58 +376,240 @@
         null
        ]
       },
-      "bVar2": {
-       "name": "scratchValue9",
-       "basis": "reused or unresolved native temporary",
+      "bVar2_1": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "predicateResult",
-        "isActiveThreadTerminating",
-        "predicateResult",
-        "isActiveThreadTerminating",
-        "isInCutscene",
-        "isActiveThreadTerminating",
-        "isInCutscene",
-        "isActiveThreadTerminating",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar2_2": {
+       "name": "isActiveThreadTerminating",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_3": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar2_4": {
+       "name": "isActiveThreadTerminating2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_5": {
+       "name": "isInCutscene",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isInCutscene"
+       ]
+      },
+      "bVar2_6": {
+       "name": "isActiveThreadTerminating3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_7": {
+       "name": "isInCutscene2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isInCutscene"
+       ]
+      },
+      "bVar2_8": {
+       "name": "isActiveThreadTerminating4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_9": {
+       "name": "predicateResult4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
         "predicateResult",
         "predicateResult",
         "predicateResult"
        ]
       },
-      "bVar3": {
-       "name": "scratchValue10",
+      "bVar2_10": {
+       "name": "isActiveThreadTerminating5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_11": {
+       "name": "isActiveThreadTerminating6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_13": {
+       "name": "predicateResult5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar2_14": {
+       "name": "isActiveThreadTerminating7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_16": {
+       "name": "isActiveThreadTerminating8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_1": {
+       "name": "isActiveThreadTerminating9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_2": {
+       "name": "isActiveThreadTerminating10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_3": {
+       "name": "isActiveThreadTerminating11",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_4": {
+       "name": "isActiveThreadTerminating12",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_5": {
+       "name": "isActiveThreadTerminating13",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_6": {
+       "name": "isActiveThreadTerminating14",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_7": {
+       "name": "isActiveThreadTerminating15",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_8": {
+       "name": "predicateResult6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar3_9": {
+       "name": "predicateResult7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_10": {
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
         "isDistanceBetweenThingsUnder",
-        "predicateResult",
-        "predicateResult",
-        "getStateThing",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
+        "predicateResult"
+       ]
+      },
+      "bVar3_11": {
+       "name": "isActiveThreadTerminating16",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_12": {
+       "name": "getStateThing",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getStateThing"
+       ]
+      },
+      "bVar3_13": {
+       "name": "isActiveThreadTerminating17",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_14": {
+       "name": "isActiveThreadTerminating18",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_15": {
+       "name": "isActiveThreadTerminating19",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_16": {
+       "name": "isActiveThreadTerminating20",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_17": {
+       "name": "isActiveThreadTerminating21",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_18": {
+       "name": "isActiveThreadTerminating22",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_19": {
+       "name": "isActiveThreadTerminating23",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
@@ -481,7 +621,7 @@
        ]
       },
       "bVar6_1": {
-       "name": "predicateResult2",
+       "name": "predicateResult8",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult",
@@ -490,21 +630,21 @@
        ]
       },
       "bVar6_2": {
-       "name": "isActiveThreadTerminating",
+       "name": "isActiveThreadTerminating24",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
       "bVar6_3": {
-       "name": "isActiveThreadTerminating2",
+       "name": "isActiveThreadTerminating25",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
       "bVar6_4": {
-       "name": "predicateResult3",
+       "name": "predicateResult9",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
@@ -519,21 +659,21 @@
        ]
       },
       "bVar6_6": {
-       "name": "isActiveThreadTerminating3",
+       "name": "isActiveThreadTerminating26",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
       "bVar6_7": {
-       "name": "predicateResult4",
+       "name": "predicateResult10",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
        ]
       },
       "bVar6_8": {
-       "name": "predicateResult5",
+       "name": "predicateResult11",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult",
@@ -541,7 +681,7 @@
        ]
       },
       "bVar6_9": {
-       "name": "isActiveThreadTerminating4",
+       "name": "isActiveThreadTerminating27",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
@@ -555,14 +695,14 @@
        ]
       },
       "bVar6_11": {
-       "name": "predicateResult6",
+       "name": "predicateResult12",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
        ]
       },
       "bVar6_12": {
-       "name": "predicateResult7",
+       "name": "predicateResult13",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
@@ -585,14 +725,14 @@
        ]
       },
       "cVar4_3": {
-       "name": "getStateThing",
+       "name": "getStateThing2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "getStateThing"
        ]
       },
       "cVar4_4": {
-       "name": "scratchValue11",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -606,39 +746,31 @@
        ]
       },
       "cVar4_6": {
-       "name": "getStateThing2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "getStateThing"
-       ]
-      },
-      "cVar4_7": {
        "name": "getStateThing3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "getStateThing"
        ]
       },
-      "cVar4_8": {
+      "cVar4_7": {
        "name": "getStateThing4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "getStateThing"
        ]
       },
-      "cVar4_9": {
+      "cVar4_8": {
        "name": "getStateThing5",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "getStateThing"
        ]
       },
-      "fVar9": {
-       "name": "scratchValue12",
-       "basis": "reused or unresolved native temporary",
+      "cVar4_9": {
+       "name": "getStateThing6",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null
+        "getStateThing"
        ]
       },
       "iVar7_1": {
@@ -656,28 +788,28 @@
        ]
       },
       "iVar7_3": {
-       "name": "scratchValue13",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar7_4": {
-       "name": "scratchValue14",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar7_5": {
-       "name": "scratchValue15",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar7_6": {
-       "name": "scratchValue16",
+       "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -729,13 +861,142 @@
       }
      },
      "splitLocals": {
+      "bVar2": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38\n",
+       "versions": {
+        "bVar2_1": [
+         8
+        ],
+        "bVar2_2": [
+         13
+        ],
+        "bVar2_3": [
+         37
+        ],
+        "bVar2_4": [
+         40
+        ],
+        "bVar2_5": [
+         44
+        ],
+        "bVar2_6": [
+         48
+        ],
+        "bVar2_7": [
+         52
+        ],
+        "bVar2_8": [
+         55
+        ],
+        "bVar2_9": [
+         61,
+         196,
+         213
+        ],
+        "bVar2_10": [
+         169
+        ],
+        "bVar2_11": [
+         174
+        ],
+        "bVar2_12": [
+         181
+        ],
+        "bVar2_13": [
+         183,
+         193
+        ],
+        "bVar2_14": [
+         185
+        ],
+        "bVar2_15": [
+         191
+        ],
+        "bVar2_16": [
+         200
+        ],
+        "bVar2_17": [
+         208
+        ],
+        "bVar2_18": [
+         210
+        ]
+       }
+      },
+      "bVar3": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38\n",
+       "versions": {
+        "bVar3_1": [
+         65
+        ],
+        "bVar3_2": [
+         73
+        ],
+        "bVar3_3": [
+         78
+        ],
+        "bVar3_4": [
+         83
+        ],
+        "bVar3_5": [
+         90
+        ],
+        "bVar3_6": [
+         99
+        ],
+        "bVar3_7": [
+         112
+        ],
+        "bVar3_8": [
+         124,
+         143,
+         146
+        ],
+        "bVar3_9": [
+         154
+        ],
+        "bVar3_10": [
+         159,
+         165
+        ],
+        "bVar3_11": [
+         161
+        ],
+        "bVar3_12": [
+         224
+        ],
+        "bVar3_13": [
+         228
+        ],
+        "bVar3_14": [
+         235
+        ],
+        "bVar3_15": [
+         254
+        ],
+        "bVar3_16": [
+         267
+        ],
+        "bVar3_17": [
+         287
+        ],
+        "bVar3_18": [
+         308
+        ],
+        "bVar3_19": [
+         331
+        ]
+       }
+      },
       "bVar6": {
        "declarationLine": 3,
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38\n",
        "versions": {
         "bVar6_1": [
          5,
-         128,
+         127,
          150
         ],
         "bVar6_2": [
@@ -745,33 +1006,33 @@
          24
         ],
         "bVar6_4": [
-         344
+         342
         ],
         "bVar6_5": [
-         350,
-         355
-        ],
-        "bVar6_6": [
+         348,
          353
         ],
+        "bVar6_6": [
+         351
+        ],
         "bVar6_7": [
-         358
+         356
         ],
         "bVar6_8": [
-         361,
-         389
+         359,
+         387
         ],
         "bVar6_9": [
-         365
+         363
         ],
         "bVar6_10": [
-         373
+         371
         ],
         "bVar6_11": [
-         376
+         374
         ],
         "bVar6_12": [
-         382
+         380
         ]
        }
       },
@@ -785,28 +1046,40 @@
         ],
         "cVar4_2": [
          62,
-         341
+         339
         ],
         "cVar4_3": [
-         111
+         110
         ],
         "cVar4_4": [
-         120
+         119
         ],
         "cVar4_5": [
-         137
+         135
         ],
         "cVar4_6": [
-         220
+         219
         ],
         "cVar4_7": [
-         247
+         245
         ],
         "cVar4_8": [
-         265
+         263
         ],
         "cVar4_9": [
-         280
+         278
+        ]
+       }
+      },
+      "fVar9": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38\n",
+       "versions": {
+        "fVar9_1": [
+         179
+        ],
+        "fVar9_2": [
+         189
         ]
        }
       },
@@ -818,22 +1091,22 @@
          30
         ],
         "iVar7_2": [
-         71
+         70
         ],
         "iVar7_3": [
-         250
+         248
         ],
         "iVar7_4": [
-         283
+         281
         ],
         "iVar7_5": [
-         302
+         300
         ],
         "iVar7_6": [
-         325
+         323
         ],
         "iVar7_7": [
-         363
+         361
         ]
        }
       },
@@ -842,13 +1115,13 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         129
+         128
         ],
         "native_arg_sequence_1_2": [
-         131,
-         133,
-         139,
-         141
+         130,
+         132,
+         137,
+         139
         ]
        }
       },
@@ -857,13 +1130,13 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38\n",
        "versions": {
         "native_arg_sequence_2_1": [
-         295
+         293
         ],
         "native_arg_sequence_2_2": [
+         295,
          297,
-         299,
-         304,
-         306
+         302,
+         304
         ]
        }
       },
@@ -872,43 +1145,121 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38\n",
        "versions": {
         "native_arg_sequence_3_1": [
-         318
+         316
         ],
         "native_arg_sequence_3_2": [
+         318,
          320,
-         322,
-         327,
-         329
+         325,
+         327
         ]
        }
       }
      },
      "removedLiteralLocals": {
       "native_arg_sequence_1_1": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_3_1, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
-       "129": "                            native_arg_sequence_1_1 = false\n"
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_3_1, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+       "128": "                            native_arg_sequence_1_1 = false\n"
       },
       "native_arg_sequence_2_1": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_3_1, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
-       "295": "                native_arg_sequence_2_1 = false\n"
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_3_1, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+       "293": "                native_arg_sequence_2_1 = false\n"
       },
       "native_arg_sequence_3_1": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_3_1, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
-       "318": "                native_arg_sequence_3_1 = false\n"
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_3_1, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+       "316": "                native_arg_sequence_3_1 = false\n"
       }
      },
      "inlinedLiteralLocals": {
-      "local_20": {
-       "literal": "nil",
-       "definitionLine": 337,
+      "bVar2_12": {
+       "literal": "true",
+       "definitionLine": 181,
        "readLines": [
-        338
+        182
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
-        "337": "                    local_20 = nil\n",
-        "338": "                    quest:SetStateThing((\"Teams_\" .. __native_entity_state:GetStateInt(\"MyTeam\") .. \"_TeamCrateCarrier\"), local_20)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+        "181": "                                    bVar2_12 = true\n",
+        "182": "                                    quest:SetStealStealableItems(me, bVar2_12)\n"
+       }
+      },
+      "bVar2_15": {
+       "literal": "false",
+       "definitionLine": 191,
+       "readLines": [
+        192
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+        "191": "                                    bVar2_15 = false\n",
+        "192": "                                    quest:SetStealStealableItems(me, bVar2_15)\n"
+       }
+      },
+      "bVar2_17": {
+       "literal": "false",
+       "definitionLine": 208,
+       "readLines": [
+        209
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_13, bVar2_14, bVar2_16, bVar2_17, bVar2_18, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+        "208": "                                bVar2_17 = false\n",
+        "209": "                                quest:SetStealStealableItems(me, bVar2_17)\n"
+       }
+      },
+      "bVar2_18": {
+       "literal": "false",
+       "definitionLine": 210,
+       "readLines": [
+        211
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_13, bVar2_14, bVar2_16, bVar2_18, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+        "210": "                                bVar2_18 = false\n",
+        "211": "                                quest:SetRecoverStealableItems(me, bVar2_18)\n"
+       }
+      },
+      "fVar9_1": {
+       "literal": "4.0",
+       "definitionLine": 179,
+       "readLines": [
+        180
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_13, bVar2_14, bVar2_16, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_1, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+        "179": "                                    fVar9_1 = 4.0\n",
+        "180": "                                    quest:SetCombatNearbyBreakOffRange(me, fVar9_1)\n"
+       }
+      },
+      "fVar9_2": {
+       "literal": "4.0",
+       "definitionLine": 189,
+       "readLines": [
+        190
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_13, bVar2_14, bVar2_16, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, fVar9_2, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+        "189": "                                    fVar9_2 = 4.0\n",
+        "190": "                                    quest:SetCombatNearbyBreakOffRange(me, fVar9_2)\n"
+       }
+      },
+      "local_20": {
+       "literal": "nil",
+       "definitionLine": 335,
+       "readLines": [
+        336
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_13, bVar2_14, bVar2_16, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar5, bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, bVar6_9, bVar6_10, bVar6_11, bVar6_12, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, iVar7_1, iVar7_2, iVar7_3, iVar7_4, iVar7_5, iVar7_6, iVar7_7, local_20, native_arg_sequence_1_2, native_arg_sequence_2_2, native_arg_sequence_3_2, p0_00, r1, thing_38\n",
+        "335": "                    local_20 = nil\n",
+        "336": "                    quest:SetStateThing((\"Teams_\" .. __native_entity_state:GetStateInt(\"MyTeam\") .. \"_TeamCrateCarrier\"), local_20)\n"
        }
       }
      },
@@ -916,7 +1267,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 411,
+     "sourceLine": 409,
      "locals": {
       "c_stk_11": {
        "name": "predicateResult",
@@ -956,7 +1307,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 462,
+     "sourceLine": 457,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -965,7 +1316,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 465,
+     "sourceLine": 460,
      "locals": {
       "iVar3": {
        "name": "getStateInt",
@@ -989,7 +1340,7 @@
     },
     {
      "function": "GoOnPatrol",
-     "sourceLine": 480,
+     "sourceLine": 475,
      "locals": {
       "bVar3_1": {
        "name": "predicateResult",
@@ -1133,7 +1484,7 @@
     },
     {
      "function": "IsThingCarryingCrate",
-     "sourceLine": 514,
+     "sourceLine": 509,
      "locals": {
       "native_arg_thing": {
        "name": "thing",
@@ -1201,7 +1552,7 @@
          8
         ],
         "bVar1_2": [
-         18
+         16
         ]
        }
       },
@@ -1213,7 +1564,7 @@
          10
         ],
         "cVar2_2": [
-         15
+         13
         ]
        }
       }
@@ -1224,7 +1575,7 @@
     },
     {
      "function": "GetNearestCrateToMe",
-     "sourceLine": 544,
+     "sourceLine": 537,
      "locals": {
       "fVar5": {
        "name": "scratchValue",
@@ -1280,7 +1631,7 @@
     },
     {
      "function": "helper_DCEC50",
-     "sourceLine": 567,
+     "sourceLine": 560,
      "locals": {
       "native_arg_param_1": {
        "name": "param1",
@@ -1947,7 +2298,7 @@
      "function": "Main",
      "rewrites": {
       "flags": 0,
-      "termination": 21,
+      "termination": 22,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
@@ -1955,8 +2306,8 @@
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 0,
-      "declarations": 0,
+      "flagTests": 22,
+      "declarations": 22,
       "decimalLiterals": 1
      }
     },
@@ -2017,42 +2368,199 @@
      "function": "Main",
      "sourceLine": 13,
      "locals": {
-      "bVar3": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
+      "bVar3_1": {
+       "name": "isActiveThreadTerminating",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "isActiveThreadTerminating",
-        "predicateResult",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isDistanceBetweenThingsOver",
-        "isCameraPosOnScreen",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "predicateResult",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "predicateResult",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isDistanceBetweenThingsUnder",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "isActiveThreadTerminating",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "isActiveThreadTerminating",
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_2": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_3": {
+       "name": "isActiveThreadTerminating2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_4": {
+       "name": "isActiveThreadTerminating3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_5": {
+       "name": "isActiveThreadTerminating4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_6": {
+       "name": "isActiveThreadTerminating5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_7": {
+       "name": "isActiveThreadTerminating6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_8": {
+       "name": "isDistanceBetweenThingsOver",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isDistanceBetweenThingsOver"
+       ]
+      },
+      "bVar3_9": {
+       "name": "isCameraPosOnScreen",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isCameraPosOnScreen"
+       ]
+      },
+      "bVar3_10": {
+       "name": "isActiveThreadTerminating7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_11": {
+       "name": "isActiveThreadTerminating8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_13": {
+       "name": "isActiveThreadTerminating9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_14": {
+       "name": "isActiveThreadTerminating10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_15": {
+       "name": "isActiveThreadTerminating11",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_16": {
+       "name": "isActiveThreadTerminating12",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_17": {
+       "name": "isActiveThreadTerminating13",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_18": {
+       "name": "isActiveThreadTerminating14",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_19": {
+       "name": "isActiveThreadTerminating15",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_20": {
+       "name": "isDistanceBetweenThingsUnder",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isDistanceBetweenThingsUnder"
+       ]
+      },
+      "bVar3_21": {
+       "name": "isActiveThreadTerminating16",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_22": {
+       "name": "isActiveThreadTerminating17",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_23": {
+       "name": "isActiveThreadTerminating18",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_24": {
+       "name": "isActiveThreadTerminating19",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_25": {
+       "name": "isActiveThreadTerminating20",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_26": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_27": {
+       "name": "isActiveThreadTerminating21",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_28": {
+       "name": "isActiveThreadTerminating22",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_29": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
         "predicateResult"
        ]
       },
@@ -2073,7 +2581,7 @@
        ]
       },
       "iVar4_1": {
-       "name": "scratchValue2",
+       "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -2094,7 +2602,7 @@
        ]
       },
       "iVar4_4": {
-       "name": "scratchValue3",
+       "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -2108,22 +2616,45 @@
        ]
       },
       "iVar7": {
-       "name": "scratchValue4",
+       "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
         null
        ]
       },
-      "pCVar5": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
+      "pCVar5_1": {
+       "name": "position",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "position",
-        "position",
-        "getStateThing",
-        "position",
-        "position",
+        "position"
+       ]
+      },
+      "pCVar5_2": {
+       "name": "position2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "position"
+       ]
+      },
+      "pCVar5_3": {
+       "name": "getStateThing",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getStateThing"
+       ]
+      },
+      "pCVar5_4": {
+       "name": "position3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "position"
+       ]
+      },
+      "pCVar5_5": {
+       "name": "position4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
         "position"
        ]
       },
@@ -2149,169 +2680,318 @@
        ]
       },
       "pCVar6_4": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "pCVar6_5": {
-       "name": "scratchValue7",
+       "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
         null
        ]
       },
-      "pCVar8": {
+      "pCVar8_1": {
        "name": "teamMemberName",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "teamMemberName",
-        "teamMemberName",
-        "teamMemberName",
-        "teamMemberName",
+        "teamMemberName"
+       ]
+      },
+      "pCVar8_2": {
+       "name": "teamMemberName2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "teamMemberName"
+       ]
+      },
+      "pCVar8_3": {
+       "name": "teamMemberName3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "teamMemberName"
+       ]
+      },
+      "pCVar8_4": {
+       "name": "teamMemberName4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
         "teamMemberName"
        ]
       },
       "r1": {
-       "name": "scratchValue8",
+       "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r2": {
-       "name": "scratchValue9",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
+      },
+      "r3": {
+       "name": "getNearestWithScriptName",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getNearestWithScriptName"
+       ]
       }
      },
      "splitLocals": {
+      "bVar3": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+       "versions": {
+        "bVar3_1": [
+         7
+        ],
+        "bVar3_2": [
+         14
+        ],
+        "bVar3_3": [
+         18
+        ],
+        "bVar3_4": [
+         30
+        ],
+        "bVar3_5": [
+         35
+        ],
+        "bVar3_6": [
+         41
+        ],
+        "bVar3_7": [
+         45
+        ],
+        "bVar3_8": [
+         53
+        ],
+        "bVar3_9": [
+         56
+        ],
+        "bVar3_10": [
+         58
+        ],
+        "bVar3_11": [
+         65
+        ],
+        "bVar3_12": [
+         69,
+         92,
+         184,
+         194
+        ],
+        "bVar3_13": [
+         81
+        ],
+        "bVar3_14": [
+         88
+        ],
+        "bVar3_15": [
+         104
+        ],
+        "bVar3_16": [
+         110
+        ],
+        "bVar3_17": [
+         115
+        ],
+        "bVar3_18": [
+         122
+        ],
+        "bVar3_19": [
+         129
+        ],
+        "bVar3_20": [
+         139
+        ],
+        "bVar3_21": [
+         141
+        ],
+        "bVar3_22": [
+         150
+        ],
+        "bVar3_23": [
+         157
+        ],
+        "bVar3_24": [
+         164
+        ],
+        "bVar3_25": [
+         172
+        ],
+        "bVar3_26": [
+         179
+        ],
+        "bVar3_27": [
+         190
+        ],
+        "bVar3_28": [
+         205
+        ],
+        "bVar3_29": [
+         216
+        ]
+       }
+      },
       "cVar1": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
        "versions": {
         "cVar1_1": [
-         5,
-         12
+         4,
+         11
         ],
         "cVar1_2": [
-         28,
-         220
+         27,
+         213
         ]
        }
       },
       "fVar9": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
        "versions": {
         "fVar9_1": [
-         52
+         51
         ],
         "fVar9_2": [
-         138
+         137
         ]
        }
       },
       "iVar4": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
        "versions": {
         "iVar4_1": [
-         24
+         23
         ],
         "iVar4_2": [
-         40
+         39
         ],
         "iVar4_3": [
-         51
+         50
         ],
         "iVar4_4": [
-         136
+         135
         ],
         "iVar4_5": [
-         169
+         168
         ]
        }
       },
       "i_stk_70": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
        "versions": {
         "i_stk_70_1": [
-         63,
-         76
+         62,
+         75
         ],
         "i_stk_70_2": [
-         86,
-         101
+         85,
+         100
+        ]
+       }
+      },
+      "pCVar5": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+       "versions": {
+        "pCVar5_1": [
+         55
+        ],
+        "pCVar5_2": [
+         71
+        ],
+        "pCVar5_3": [
+         94
+        ],
+        "pCVar5_4": [
+         186
+        ],
+        "pCVar5_5": [
+         196
         ]
        }
       },
       "pCVar6": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
        "versions": {
         "pCVar6_1": [
-         99
+         98
         ],
         "pCVar6_2": [
-         134
+         133
         ],
         "pCVar6_3": [
-         139
+         138
         ],
         "pCVar6_4": [
-         188
-        ],
-        "pCVar6_5": [
-         197,
-         203
+         187,
+         197
         ]
        }
       },
-      "r3": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
+      "pCVar8": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local CStack_54, bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1\n",
        "versions": {
-        "r3_1": [
-         135
+        "pCVar8_1": [
+         70
         ],
-        "r3_2": [
-         177
+        "pCVar8_2": [
+         93
+        ],
+        "pCVar8_3": [
+         185
+        ],
+        "pCVar8_4": [
+         195
         ]
        }
       }
      },
-     "removedLiteralLocals": {},
+     "removedLiteralLocals": {
+      "CStack_54": {
+       "2": "    local CStack_54, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1\n",
+       "176": "                            CStack_54 = nil\n"
+      },
+      "bVar3_12": {
+       "2": "    local CStack_54, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1\n",
+       "69": "                                    bVar3_12 = false\n",
+       "92": "                            bVar3_12 = false\n",
+       "184": "                                bVar3_12 = false\n",
+       "194": "                                bVar3_12 = false\n"
+      }
+     },
      "inlinedLiteralLocals": {
       "fVar9_1": {
        "literal": "15.0",
-       "definitionLine": 52,
+       "definitionLine": 51,
        "readLines": [
-        54
+        53
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar8, r1, r2, r3_1, r3_2, thing1\n",
-        "52": "                    fVar9_1 = 15.0\n",
-        "54": "                    bVar3 = quest:IsDistanceBetweenThingsOver(thing1, me, fVar9_1)\n"
+        "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1\n",
+        "51": "                    fVar9_1 = 15.0\n",
+        "53": "                    bVar3_8 = quest:IsDistanceBetweenThingsOver(thing1, me, fVar9_1)\n"
        }
       },
       "fVar9_2": {
        "literal": "15.0",
-       "definitionLine": 138,
+       "definitionLine": 137,
        "readLines": [
-        140
+        139
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, cVar1_1, cVar1_2, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar8, r1, r2, r3_1, r3_2, thing1\n",
-        "138": "                            fVar9_2 = 15.0\n",
-        "140": "                            bVar3 = quest:IsDistanceBetweenThingsUnder(r3_1, pCVar6_3, fVar9_2)\n"
+        "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1\n",
+        "137": "                            fVar9_2 = 15.0\n",
+        "139": "                            bVar3_20 = quest:IsDistanceBetweenThingsUnder(r3, pCVar6_3, fVar9_2)\n"
        }
       }
      },
@@ -2319,7 +2999,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 242,
+     "sourceLine": 235,
      "locals": {
       "pCVar3": {
        "name": "scratchValue",
@@ -2360,7 +3040,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 276,
+     "sourceLine": 268,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2369,7 +3049,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 279,
+     "sourceLine": 271,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2577,16 +3257,22 @@
         "predicateResult"
        ]
       },
-      "pCVar5": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
+      "pCVar5_1": {
+       "name": "hero2",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "hero",
+        "hero"
+       ]
+      },
+      "pCVar5_2": {
+       "name": "gwl",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
         "gwl"
        ]
       },
       "puStack_38": {
-       "name": "scratchValue7",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -2616,38 +3302,38 @@
          49
         ],
         "bVar4_6": [
-         54
+         56
         ],
         "bVar4_7": [
-         64
+         66
         ],
         "bVar4_8": [
-         82
+         84
         ],
         "bVar4_9": [
-         90
+         92
         ],
         "bVar4_10": [
-         93
+         95
         ],
         "bVar4_11": [
-         95,
-         101
+         97,
+         103
         ],
         "bVar4_12": [
-         99
+         101
         ],
         "bVar4_13": [
-         104
+         106
         ],
         "bVar4_14": [
-         110
+         112
         ],
         "bVar4_15": [
-         114
+         116
         ],
         "bVar4_16": [
-         118
+         120
         ]
        }
       },
@@ -2671,25 +3357,37 @@
        "originalDeclaration": "    local appuStack_20, bVar4, local_10, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, puStack_38\n",
        "versions": {
         "native_arg_sequence_2_1": [
-         74
+         76
         ],
         "native_arg_sequence_2_2": [
-         76,
          78,
-         84,
-         86
+         80,
+         86,
+         88
+        ]
+       }
+      },
+      "pCVar5": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local appuStack_20, bVar4, local_10, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, puStack_38\n",
+       "versions": {
+        "pCVar5_1": [
+         5
+        ],
+        "pCVar5_2": [
+         45
         ]
        }
       }
      },
      "removedLiteralLocals": {
       "native_arg_sequence_1_1": {
-       "2": "    local appuStack_20, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, local_10, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, pCVar5, pScriptObject, puStack_38\n",
+       "2": "    local appuStack_20, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, local_10, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, pCVar5_1, pCVar5_2, pScriptObject, puStack_38\n",
        "14": "    native_arg_sequence_1_1 = false\n"
       },
       "native_arg_sequence_2_1": {
-       "2": "    local appuStack_20, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, local_10, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, pCVar5, pScriptObject, puStack_38\n",
-       "74": "                native_arg_sequence_2_1 = false\n"
+       "2": "    local appuStack_20, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, local_10, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, pCVar5_1, pCVar5_2, pScriptObject, puStack_38\n",
+       "76": "                native_arg_sequence_2_1 = false\n"
       }
      },
      "inlinedLiteralLocals": {},
@@ -2697,7 +3395,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 138,
+     "sourceLine": 140,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -2846,16 +3544,16 @@
      "function": "DoCutsceneIfRequired",
      "rewrites": {
       "flags": 0,
-      "termination": 0,
+      "termination": 11,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
-      "nilReleases": 0,
+      "nilReleases": 1,
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 0,
-      "declarations": 0,
+      "flagTests": 10,
+      "declarations": 11,
       "decimalLiterals": 0
      }
     },
@@ -3009,15 +3707,14 @@
      "function": "ProcessGameRulesEvil",
      "sourceLine": 107,
      "locals": {
-      "appuStack_9c": {
+      "amStack_80": {
        "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
         null
        ]
       },
-      "appuStack_ac": {
+      "appuStack_9c": {
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -3025,8 +3722,16 @@
         null
        ]
       },
-      "appuStack_bc": {
+      "appuStack_ac": {
        "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "appuStack_bc": {
+       "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3042,7 +3747,7 @@
        ]
       },
       "bVar4": {
-       "name": "scratchValue4",
+       "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "isActiveThreadTerminating",
@@ -3078,14 +3783,14 @@
        ]
       },
       "c_stk_c1": {
-       "name": "scratchValue5",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "fVar5": {
-       "name": "scratchValue6",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3094,14 +3799,6 @@
        ]
       },
       "f_stk_14": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "iVar11": {
        "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -3109,23 +3806,31 @@
         null
        ]
       },
-      "pCVar6": {
+      "iVar11": {
        "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "pCVar6": {
+       "name": "scratchValue10",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
         null,
         "guardTeamSpawn",
         "hero",
         "hero",
         "hero",
-        null,
         "hero",
         "hero",
         "ofFarmhouseDoor"
        ]
       },
       "pCVar8": {
-       "name": "scratchValue10",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3136,18 +3841,17 @@
        ]
       },
       "r1": {
-       "name": "scratchValue11",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r2": {
-       "name": "scratchValue12",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "whisper",
-        null,
         null
        ]
       },
@@ -3182,25 +3886,46 @@
         null
        ]
       },
-      "aCStack_98": {
+      "aCStack_7c": {
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "amStack_8c": {
+      "aCStack_98": {
        "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "auStack_c4": {
+      "amStack_8c": {
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        null
+       ]
+      },
+      "auStack_a8_p4": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         null,
+        null
+       ]
+      },
+      "auStack_c4": {
+       "name": "scratchValue6",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "auStack_c4_p4": {
+       "name": "scratchValue7",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         null
        ]
       },
@@ -3213,7 +3938,7 @@
        ]
       },
       "bVar3": {
-       "name": "scratchValue5",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "isActiveThreadTerminating",
@@ -3254,28 +3979,28 @@
        ]
       },
       "c_stk_c5": {
-       "name": "scratchValue6",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "fVar9": {
-       "name": "scratchValue7",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar11": {
-       "name": "scratchValue8",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar4": {
-       "name": "scratchValue9",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3294,7 +4019,7 @@
        ]
       },
       "pCVar5": {
-       "name": "scratchValue10",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "hero",
@@ -3305,7 +4030,7 @@
        ]
       },
       "pCVar7": {
-       "name": "scratchValue11",
+       "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3317,7 +4042,7 @@
        ]
       },
       "pCVar8": {
-       "name": "scratchValue12",
+       "name": "scratchValue15",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3327,31 +4052,22 @@
        ]
       },
       "ppuStack_80": {
-       "name": "scratchValue13",
+       "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null
-       ]
-      },
-      "ppuStack_9c": {
-       "name": "scratchValue14",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
         null
        ]
       },
       "puVar10": {
-       "name": "scratchValue15",
+       "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
         null,
         null
        ]
       },
       "r1": {
-       "name": "scratchValue16",
+       "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3386,7 +4102,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 575,
+     "sourceLine": 571,
      "locals": {
       "aCStack_10": {
        "name": "scratchValue",
@@ -3409,80 +4125,168 @@
         null
        ]
       },
-      "aCStack_40": {
+      "aCStack_40_1": {
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
+        null
+       ]
+      },
+      "aCStack_40_2": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "aCStack_50_1": {
+       "name": "scratchValue6",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "aCStack_50_2": {
+       "name": "scratchValue7",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         null
        ]
       },
       "amStack_5c": {
-       "name": "scratchValue5",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
-        null,
         null
        ]
       },
-      "au_stk_90": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
+      "bVar2_1": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        "predicateResult"
        ]
       },
-      "bVar2": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
+      "bVar2_2": {
+       "name": "isActiveThreadTerminating",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "isRegionLoaded",
-        "predicateResult",
-        "isRegionLoaded",
-        "predicateResult",
-        "isDistanceBetweenThingsUnder",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "instructionDismissed",
-        "predicateResult",
-        "instructionDismissed",
-        "predicateResult",
-        "isRegionLoaded",
-        "predicateResult",
-        "isRegionLoaded",
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_3": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
         "predicateResult",
         "predicateResult"
        ]
       },
-      "iVar8": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
+      "bVar2_4": {
+       "name": "isRegionLoaded",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null
+        "isRegionLoaded",
+        "isRegionLoaded"
+       ]
+      },
+      "bVar2_5": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar2_6": {
+       "name": "isActiveThreadTerminating2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_7": {
+       "name": "isDistanceBetweenThingsUnder",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isDistanceBetweenThingsUnder"
+       ]
+      },
+      "bVar2_8": {
+       "name": "isActiveThreadTerminating3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_9": {
+       "name": "isActiveThreadTerminating4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_10": {
+       "name": "isActiveThreadTerminating5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_12": {
+       "name": "isActiveThreadTerminating6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_14": {
+       "name": "instructionDismissed",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "instructionDismissed",
+        "instructionDismissed"
+       ]
+      },
+      "bVar2_15": {
+       "name": "isActiveThreadTerminating7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_16": {
+       "name": "isActiveThreadTerminating8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_17": {
+       "name": "isRegionLoaded2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded"
+       ]
+      },
+      "bVar2_18": {
+       "name": "isActiveThreadTerminating9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_19": {
+       "name": "isRegionLoaded3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded"
+       ]
+      },
+      "bVar2_20": {
+       "name": "isActiveThreadTerminating10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
        ]
       },
       "pCStack_70": {
@@ -3492,38 +4296,87 @@
         null
        ]
       },
-      "pCVar3": {
-       "name": "scratchValue10",
-       "basis": "reused or unresolved native temporary",
+      "pCVar3_1": {
+       "name": "banditTeamSpawn",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "banditTeamSpawn",
-        "banditTeamSpawn",
-        "guardTeamSpawn",
-        "banditTeamSpawn",
-        "hero",
-        "banditTeamSpawn",
-        "banditTeamSpawn",
-        "hero",
-        "mainGates",
-        "banditTeamSpawn",
-        "mainGates",
-        "hero",
-        "ofFarmhouseDoor",
-        "banditTeamSpawn",
-        "banditTeamSpawn",
-        "mainGates",
-        "getThingWithScriptName",
-        "banditTeamSpawn",
-        "banditTeamSpawn",
-        "banditTeamSpawn",
         "banditTeamSpawn"
        ]
       },
-      "pCVar7": {
+      "pCVar3_2": {
+       "name": "guardTeamSpawn",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "guardTeamSpawn"
+       ]
+      },
+      "pCVar3_3": {
+       "name": "hero",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar3_4": {
+       "name": "hero2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar3_5": {
+       "name": "mainGates",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "mainGates"
+       ]
+      },
+      "pCVar3_6": {
+       "name": "mainGates2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "mainGates"
+       ]
+      },
+      "pCVar3_7": {
+       "name": "hero3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar3_8": {
+       "name": "ofFarmhouseDoor",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "ofFarmhouseDoor"
+       ]
+      },
+      "pCVar3_9": {
+       "name": "mainGates3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "mainGates"
+       ]
+      },
+      "pCVar3_10": {
+       "name": "mainGates4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "mainGates"
+       ]
+      },
+      "pCVar7_1": {
+       "name": "scratchValue10",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "pCVar7_2": {
        "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
         null
        ]
       },
@@ -3540,16 +4393,233 @@
        "assignmentRoles": [
         "getNearestWithScriptName"
        ]
+      },
+      "au_stk_90": {
+       "name": "scratchValue12",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null,
+        null,
+        null
+       ]
       }
      },
-     "splitLocals": {},
+     "splitLocals": {
+      "aCStack_40": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, aCStack_50, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2\n",
+       "versions": {
+        "aCStack_40_1": [
+         77
+        ],
+        "aCStack_40_2": [
+         107
+        ]
+       }
+      },
+      "aCStack_50": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, aCStack_50, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2\n",
+       "versions": {
+        "aCStack_50_1": [
+         60
+        ],
+        "aCStack_50_2": [
+         100
+        ]
+       }
+      },
+      "bVar2": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, aCStack_50, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2\n",
+       "versions": {
+        "bVar2_1": [
+         8
+        ],
+        "bVar2_2": [
+         16
+        ],
+        "bVar2_3": [
+         25,
+         170
+        ],
+        "bVar2_4": [
+         32,
+         40
+        ],
+        "bVar2_5": [
+         36
+        ],
+        "bVar2_6": [
+         42
+        ],
+        "bVar2_7": [
+         47
+        ],
+        "bVar2_8": [
+         49
+        ],
+        "bVar2_9": [
+         54
+        ],
+        "bVar2_10": [
+         94
+        ],
+        "bVar2_11": [
+         122
+        ],
+        "bVar2_12": [
+         127
+        ],
+        "bVar2_13": [
+         134
+        ],
+        "bVar2_14": [
+         139,
+         146
+        ],
+        "bVar2_15": [
+         142
+        ],
+        "bVar2_16": [
+         148
+        ],
+        "bVar2_17": [
+         152
+        ],
+        "bVar2_18": [
+         156
+        ],
+        "bVar2_19": [
+         160
+        ],
+        "bVar2_20": [
+         163
+        ]
+       }
+      },
+      "iVar8": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, aCStack_50, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2\n",
+       "versions": {
+        "iVar8_1": [
+         67
+        ],
+        "iVar8_2": [
+         101
+        ]
+       }
+      },
+      "pCVar3": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, aCStack_50, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2\n",
+       "versions": {
+        "pCVar3_1": [
+         13
+        ],
+        "pCVar3_2": [
+         20
+        ],
+        "pCVar3_3": [
+         46
+        ],
+        "pCVar3_4": [
+         69
+        ],
+        "pCVar3_5": [
+         91
+        ],
+        "pCVar3_6": [
+         98
+        ],
+        "pCVar3_7": [
+         103
+        ],
+        "pCVar3_8": [
+         123
+        ],
+        "pCVar3_9": [
+         132
+        ],
+        "pCVar3_10": [
+         135
+        ]
+       }
+      },
+      "pCVar7": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, aCStack_50, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2\n",
+       "versions": {
+        "pCVar7_1": [
+         68
+        ],
+        "pCVar7_2": [
+         102
+        ]
+       }
+      }
+     },
      "removedLiteralLocals": {},
-     "inlinedLiteralLocals": {},
+     "inlinedLiteralLocals": {
+      "bVar2_11": {
+       "literal": "false",
+       "definitionLine": 122,
+       "readLines": [
+        124
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40_1, aCStack_40_2, aCStack_50_1, aCStack_50_2, amStack_5c, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCStack_70, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2\n",
+        "122": "            bVar2_11 = false\n",
+        "124": "            quest:SetThingAsUsable(pCVar3_8, bVar2_11)\n"
+       }
+      },
+      "bVar2_13": {
+       "literal": "false",
+       "definitionLine": 134,
+       "readLines": [
+        136
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40_1, aCStack_40_2, aCStack_50_1, aCStack_50_2, amStack_5c, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCStack_70, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2\n",
+        "134": "        bVar2_13 = false\n",
+        "136": "        quest:SetThingAsUsable(pCVar3_10, bVar2_13)\n"
+       }
+      },
+      "iVar8_1": {
+       "literal": "4",
+       "definitionLine": 67,
+       "readLines": [
+        70
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40_1, aCStack_40_2, aCStack_50_1, aCStack_50_2, amStack_5c, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCStack_70, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2\n",
+        "67": "                iVar8_1 = 4\n",
+        "70": "                resources:TryAcquire(pCVar7_1, pCVar3_4, iVar8_1)\n"
+       }
+      },
+      "iVar8_2": {
+       "literal": "4",
+       "definitionLine": 101,
+       "readLines": [
+        104
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local aCStack_10, aCStack_20, aCStack_30, aCStack_40_1, aCStack_40_2, aCStack_50_1, aCStack_50_2, amStack_5c, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_2, pCStack_70, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2\n",
+        "101": "                iVar8_2 = 4\n",
+        "104": "                resources:TryAcquire(pCVar7_2, pCVar3_7, iVar8_2)\n"
+       }
+      }
+     },
      "removedLiteralLocalsAfterInlining": {}
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 776,
+     "sourceLine": 744,
      "locals": {
       "bVar1_1": {
        "name": "isActiveThreadTerminating",
@@ -3586,10 +4656,11 @@
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult",
+        "predicateResult",
         "predicateResult"
        ]
       },
-      "bVar2_4": {
+      "bVar2_3": {
        "name": "isActiveThreadTerminating3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -3615,10 +4686,10 @@
         "bVar1_2": [
          7,
          14,
-         22
+         24
         ],
         "bVar1_3": [
-         25
+         27
         ]
        }
       },
@@ -3631,29 +4702,22 @@
         ],
         "bVar2_2": [
          12,
-         17
+         16,
+         18
         ],
         "bVar2_3": [
-         16
-        ],
-        "bVar2_4": [
-         35
+         37
         ]
        }
       }
      },
-     "removedLiteralLocals": {
-      "bVar2_3": {
-       "2": "    local bVar1_1, bVar1_2, bVar1_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar3\n",
-       "16": "            bVar2_3 = true\n"
-      }
-     },
+     "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 817,
+     "sourceLine": 787,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -3710,7 +4774,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 836,
+     "sourceLine": 806,
      "locals": {
       "appuStack_20": {
        "name": "scratchValue",
@@ -3803,7 +4867,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 971,
+     "sourceLine": 943,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},

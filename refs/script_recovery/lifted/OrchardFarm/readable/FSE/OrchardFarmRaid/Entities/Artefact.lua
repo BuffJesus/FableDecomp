@@ -11,36 +11,34 @@ do
 end
 
 function Main(quest, me)
-    local predicateResult, isDistanceBetweenThingsUnder, predicateResult2, isBeingCarriedBy
-    local predicateResult3, predicateResult4, r1_1, r1_2
+    local predicateResult, scratchValue
     local alive = true
-    predicateResult4 = false
-    r1_1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
+    local function __cleanup_LAB_00dcddcf()
+        scratchValue2 = nil
+    end
+    scratchValue = false
+    local scratchValue2 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     alive = not quest:IsActiveThreadTerminating()
-    predicateResult = not alive
+    local scratchValue3 = not alive
     repeat
-        if predicateResult then
-            r1_2 = nil
+        if scratchValue3 then
+            scratchValue2 = nil
             -- LAB_00dcddfe: (native jump target)
             return
         end
-        ::FLOW_after_lab_00dcddfe::
-        isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, r1_1, 3.0)
-        if isDistanceBetweenThingsUnder then
+        scratchValue3 = quest:IsDistanceBetweenThingsUnder(me, scratchValue2, 3.0)
+        if scratchValue3 then
             alive = not quest:IsActiveThreadTerminating()
-            predicateResult2 = not alive
-            if predicateResult2 then
-                -- LAB_00dcddcf: (native jump target)
-                r1_2 = nil
-                do return end
-                goto FLOW_after_lab_00dcddfe
+            scratchValue3 = not alive
+            if scratchValue3 then
+                __cleanup_LAB_00dcddcf()
+                return
             end
-            -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
-            isBeingCarriedBy = me:IsBeingCarriedBy("SCRIPT_NAME_HERO")
+            scratchValue3 = me:IsBeingCarriedBy("SCRIPT_NAME_HERO")
             alive = not quest:IsActiveThreadTerminating()
-            predicateResult3 = not alive
-            if not isBeingCarriedBy then
-                if not predicateResult3 then
+            predicateResult = not alive
+            if not scratchValue3 then
+                if not predicateResult then
                     quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + -1)
                     quest:SetMasterGameState("OFBRCratesStolen", true)
                     quest:RemoveThing(me, false, true)
@@ -48,25 +46,24 @@ function Main(quest, me)
                 -- LAB_00dcddbf: (native jump target)
                 return
             end
-            ::FLOW_after_lab_00dcddbf::
-            do return end
-            if predicateResult3 then goto FLOW_after_lab_00dcddbf end
-            if not predicateResult4 then
-                alive = not quest:IsActiveThreadTerminating()
-                predicateResult4 = not alive
-                do return end
-                if predicateResult4 then goto FLOW_after_lab_00dcddbf end
-                predicateResult4 = true
+            if predicateResult then
+                return
+            end
+            if not scratchValue then
+                scratchValue = quest:IsActiveThreadTerminating()
+                if scratchValue then
+                    return
+                end
+                scratchValue = true
             end
         else
-            alive = not quest:IsActiveThreadTerminating()
-            predicateResult4 = not alive
-            if predicateResult4 then return end  -- TODO(native): goto LAB_00dcddcf
-            predicateResult4 = false
+            scratchValue = quest:IsActiveThreadTerminating()
+            if scratchValue then __cleanup_LAB_00dcddcf(); return end
+            scratchValue = false
         end
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        predicateResult = not alive
+        scratchValue3 = not alive
     until false
 end
 
@@ -85,7 +82,6 @@ function OnPredicateFail(quest, me)
     p0 = 0
     if p0 ~= quest:GetStateListCount("CrateList") then
         while true do
-            -- TODO(native): IsEqualTo is not a ForgeFSE binding
             getStateListAt = quest:GetStateListAt("CrateList", p0):IsEqualTo(me)
             if getStateListAt then break end
             p0 = p0 + 1

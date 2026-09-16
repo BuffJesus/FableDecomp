@@ -114,12 +114,10 @@ def duplicate_sibling_tails(statements):
                 exit_index = j
             # the tail: everything from the label to that close, minus the braces that merely end the
             # blocks enclosing the label (plain `}` only; an else-chain there would change the meaning)
-            region, depth, ok = [], 0, True
+            region, depth, ok, terminated = [], 0, True, False
             head = re.match(r'^' + LABEL_TOKEN + r':\s*(.*)$', statements[label_index].strip())
-            if head and head[1]:
-                region.append(head[1])
-            for raw in statements[label_index + 1:close]:
-                t = raw.strip()
+            lines = ([head[1]] if head and head[1] else []) + [raw.strip() for raw in statements[label_index + 1:close]]
+            for t in lines:
                 if not t:
                     continue
                 if re.search(r'\bgoto\b|^(?:' + LABEL_TOKEN + r'):', t):
@@ -132,18 +130,29 @@ def duplicate_sibling_tails(statements):
                             break
                         continue
                     depth -= 1
+                if depth == 0 and t in ('break;', 'continue;'):
+                    ok = False      # would leave a loop the jump site may not share
+                    break
                 if t.endswith('{'):
                     depth += 1
                 region.append(t)
+                if depth == 0 and t == 'return;':
+                    terminated = True   # nothing after a top-level return in the tail runs
+                    break
             if ok and depth == 0:
-                chosen = (exit_index, region)
+                chosen = (exit_index, region, terminated)
             break
         if chosen is None:
             continue
-        exit_index, region = chosen
+        exit_index, region, terminated = chosen
         indent = statements[index][:len(statements[index]) - len(statements[index].lstrip())]
-        name = synthetic.setdefault(exit_index, f'FLOW_after_{target.lower()}')
-        edits[index] = [indent + r for r in region if r] + [statements[index].replace(f'goto {target};', f'goto {name};')]
+        leave = [] if terminated else [f'goto {synthetic.setdefault(exit_index, f"FLOW_after_{target.lower()}")};']
+        conditional = re.match(r'^(if \(.*\)) goto ' + re.escape(target) + r';\s*$', statements[index].strip())
+        if conditional:
+            # `if (c) goto L;` runs the tail only when c holds: keep it under the condition
+            edits[index] = [indent + conditional[1] + ' {'] + [indent + '  ' + r for r in region + leave if r] + [indent + '}']
+        else:
+            edits[index] = [indent + r for r in region if r] + ([statements[index].replace(f'goto {target};', leave[0])] if leave else [])
     if not edits:
         return statements
     out = []

@@ -404,7 +404,8 @@ def fold_actor_maps(text, resolve_string=None):
 RESOURCE_CTOR = {0x7E72A0}            # CScriptGameResourceObjectScriptedThingBase::ctor (bsim: CCarriedReadableDef)
 THING_DTOR = {0x4AA840}  # CScriptThing::~CScriptThing (vtable 01238c8c, releases Info)
 RESOURCE_DTOR = {0x7E74D0}            # CSGROSTB_Destroy_API
-MOVIE_CTOR = {0x6E7B40, 0x6E7B60}     # CScriptGameResourceObjectMovieBase ctors
+MOVIE_CTOR = {0x6E7B60}              # CScriptGameResourceObjectMovieBase ctor (stores vtable 01260ef4)
+THING_CTOR = {0x6E7B40}              # CScriptThing::CScriptThing() (stores vtable 01238c8c, Info/Data = 0; disasm 2026-09-16)
 MOVIE_DTOR = {0x6E7B80}               # MovieResource_Destroy_API
 
 
@@ -448,6 +449,32 @@ def drop_trivial_base_calls(text, call_labels, byte_at):
     return text
 
 
+MAP_CTOR_LABEL = 'StdMap_Construct_API'
+
+
+def name_offset_objects(text, call_labels):
+    """Ghidra types some stack objects as `auStack_c4 + 4` (a 4-byte prefix it split off). A resource,
+    movie, thing or actor-map constructor called on such an address defines an object the folds cannot
+    name; give it the identifier `<slot>_p<N>` from the constructor onward so it lowers like a plain
+    stack object (canonicalise_stack_objects shifts the slot extent by N)."""
+    ctor_labels = [label for label, target in call_labels.items()
+                   if target in RESOURCE_CTOR | MOVIE_CTOR | THING_CTOR] + [MAP_CTOR_LABEL]
+    if not ctor_labels:
+        return text
+    pat = re.compile(r'(?:' + '|'.join(re.escape(l) for l in ctor_labels) + r')\s*\((?:\(\w+ \*\))?\(?(\w+) \+ (4|8|0xc)\)?(?=[,)])')
+    pos = 0
+    while (m := pat.search(text, pos)):
+        slot, off = m.group(1), m.group(2)
+        name = f'{slot}_p{off.replace("0x", "")}'
+        head, tail = text[:m.start()], text[m.start():]
+        expr = re.escape(slot) + r' \+ ' + re.escape(off)
+        # `(cast)(slot + N)` / `= (slot + N)` lose their parentheses; `f(slot + N)` keeps the call's own
+        tail = re.sub(r'(?<![\w])\(' + expr + r'\)|(?<![\w])' + expr + r'(?![\w])', name, tail)
+        text = head + tail
+        pos = m.start() + 1
+    return text
+
+
 def fold_resource_objects(text, call_labels):
     """call_labels: {label text as printed in the decompile: target address}. Rewrites constructor /
     destructor calls of resource and movie objects into the retail-resource pseudo API."""
@@ -458,6 +485,8 @@ def fold_resource_objects(text, call_labels):
             text = re.sub(r'^[ \t]*' + re.escape(label) + r'\s*\((?:\(\w+ \*\))?&?(\w+)[^;]*\);[ \t]*\r?\n', '', text, flags=re.M)
         elif target in RESOURCE_DTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}RESOURCE_ReleaseResource({_strip_addr(m.group(2))});', text, flags=re.M)
+        elif target in THING_CTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;,]+?)(?:,[^;]*)?\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = QUESTTHING_Empty();', text, flags=re.M)
         elif target in MOVIE_CTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;,]+?)(?:,[^;]*)?\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = RESOURCE_StartMovie("");', text, flags=re.M)
         elif target in MOVIE_DTOR:
@@ -468,6 +497,10 @@ def fold_resource_objects(text, call_labels):
 SQUARED_DISTANCE = {0xCBE512}   # float __fastcall GetSquaredDistanceBetweenThings(a, b)
 STRING_CONCAT = {0x99F570, 0x99F600}   # CCharString operator+ (dest, a, b) -> dest; disassembly 2026-09-16
 DISTANCE_PREDICATES = {0xCBE2FF: 'IsDistanceBetweenThingsUnder', 0xCBE3EA: 'IsDistanceBetweenThingsOver'}   # bool __fastcall (a, b, float)
+# void __fastcall AddLogbookStoryEntry(int n) (bsim label: CSubtitleRenderer::SetText): builds
+# "TEXT_QST_LOG_STORY_<n>_NAME"/"_DESC" and calls GSI slot 0x4d0 AddLogBookEntry (disassembly 0xCBE87F,
+# 2026-09-16). ForgeFSE binds the same address as quest:AddLogbookStoryEntry(int) (FableAPI.cpp).
+STORY_LOGBOOK = {0xCBE87F}
 
 
 def fold_engine_helpers(text, call_labels):
@@ -480,6 +513,8 @@ def fold_engine_helpers(text, call_labels):
         elif target in STRING_CONCAT:
             text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*([^,;]+),\s*([^;)]+)\)',
                           lambda m: f'ENGINE_Concat({m.group(1).strip().lstrip("&")}, {m.group(2).strip().lstrip("&")})', text)
+        elif target in STORY_LOGBOOK:
+            text = re.sub(re.escape(label) + r'\s*\((0x[0-9a-f]+|\d+)\)', lambda m: f'GSI->AddLogbookStoryEntry({int(m.group(1), 0)})', text)
         elif target in DISTANCE_PREDICATES:
             name = DISTANCE_PREDICATES[target]
             text = re.sub(re.escape(label) + r'\s*\(([^,;]+),\s*([^,;]+),\s*([^;)]+)\)',
@@ -508,7 +543,7 @@ def fold_name_compare(text):
     return text
 
 
-STACK_OBJECT_SIZES = {'RESOURCE_NewResource': 16, 'RESOURCE_StartMovie': 16, 'ACTORMAP_New': 16, 'QUESTTHING_Empty': 12}
+STACK_OBJECT_SIZES = {'RESOURCE_NewResource': 16, 'RESOURCE_StartMovie': 16, 'ACTORMAP_New': 12, 'QUESTTHING_Empty': 12}   # std::_Tree: comp/pad, _Myhead, _Mysize
 RE_STACK_NAME = re.compile(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)\b')
 
 
@@ -517,22 +552,31 @@ def canonicalise_stack_objects(text: str) -> str:
     stack object (a 16-byte resource/movie/map) appear under several names. Objects created by the
     pseudo API give their base slot and size; every slot name inside that extent becomes the base."""
     bases = []
-    for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+) = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|QUESTTHING_Empty)\(', text):
-        bases.append((m.group(1), int(m.group(2), 16), STACK_OBJECT_SIZES[m.group(3)], m.group(1) + m.group(2)))
+    for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)(?:_p([48c]))? = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|QUESTTHING_Empty)\(', text):
+        shift = int(m.group(3), 16) if m.group(3) else 0
+        bases.append((m.start(), m.group(1), int(m.group(2), 16) - shift, STACK_OBJECT_SIZES[m.group(4)], m.group(0)[:m.group(0).index(' =')]))
     if not bases:
         return text
+    # the same stack bytes may host a different object later in the function: each object's names
+    # are rewritten only from its constructor up to the next constructor whose extent overlaps
+    pieces = []
+    for i, (start, prefix, boff, size, name) in enumerate(bases):
+        def overlaps(b):
+            return b[2] - b[3] < boff and boff - size < b[2] and b[2] != boff   # extents (off-size, off]
+        # the object's text runs from the previous overlapping construction (its members may be read
+        # before the constructor line, e.g. an iterator element copy) to the next one
+        region_start = next((b[0] for b in reversed(bases[:i]) if overlaps(b)), 0)
+        region_end = next((b[0] for b in bases[i + 1:] if overlaps(b)), len(text))
+        pieces.append((region_start, region_end, prefix, boff, size, name))
 
-    def repl(m):
-        prefix, off = m.group(1), int(m.group(2), 16)
-        for bprefix, boff, size, name in bases:
-            if boff - size < off < boff:
-                return name
-        return m.group(0)
-    text = RE_STACK_NAME.sub(repl, text)
-    # `&base + N` / `(base + N)` spellings of the same object collapse to the base
-    for _, _, _, name in bases:
-        text = re.sub(r'\(' + re.escape(name) + r' \+ (?:4|8|0xc|12)\)', name, text)
-        text = re.sub(r'&' + re.escape(name) + r'\b', name, text)
+    def rewrite(segment, boff, size, name):
+        segment = RE_STACK_NAME.sub(lambda m: name if (boff - size < int(m.group(2), 16) < boff or int(m.group(2), 16) == boff) and m.group(0) != name else m.group(0), segment)
+        segment = re.sub(r'\(' + re.escape(name) + r' \+ (?:4|8|0xc|12)\)', name, segment)
+        segment = re.sub(r'&' + re.escape(name) + r'\b', name, segment)
+        return segment
+    # rewrite spans back to front so earlier offsets stay valid (spans of one extent do not overlap)
+    for start, end, prefix, boff, size, name in sorted(pieces, key=lambda x: (x[0], x[1]), reverse=True):
+        text = text[:start] + rewrite(text[start:end], boff, size, name) + text[end:]
     return text
 
 
@@ -658,6 +702,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                   else f'(**(code **)(*(int *)({m.group(1)} + {hex(int(m.group(2), 0) - 4)}) + {m.group(3)}))(', text)
     text = fold_counted_pointer_assign(text)
     text = fold_counted_pointer_release(text)
+    text = name_offset_objects(text, getattr(spec, 'call_labels', {}))
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
     text = drop_trivial_base_calls(text, getattr(spec, 'call_labels', {}), getattr(spec, 'byte_at', None))
@@ -910,6 +955,17 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(r'^([ \t]*)CCharString::(?:operator=|CCharString)\(' + member + r',\s*([^;]+?)(?:,\s*-1)?\);',
                           lambda m, name=name, tag=tag: f'{m.group(1)}{tag}STATE_SetString("{name}", {m.group(2).strip()});', text, flags=re.M)
             text = re.sub(r'^[ \t]*CCharString::~CCharString\(' + member + r'\);[ \t]*\r?\n', '', text, flags=re.M)
+            # CCharString::AssignFromWide(&member, L"...") (0x99B800): the literal is a UTF-16 .rdata string
+            resolve_wide = getattr(spec, 'resolve_wide', None)
+            if resolve_wide:
+                def assign_wide(m, name=name, tag=tag):
+                    literal = resolve_wide(int(m.group(2), 16))
+                    if literal is None:
+                        return m.group(0)
+                    literal = literal.replace('\\', '\\\\').replace('"', '\\"')
+                    return f'{m.group(1)}{tag}STATE_SetString("{name}", "{literal}");'
+                text = re.sub(r'^([ \t]*)CCharString(?:::|__)AssignFromWide\((?:\(CCharString \*\))?\(?' + base + r' \+ ' + off_re(off) + r'\)?,\s*(0x[0-9a-f]+)\);',
+                              assign_wide, text, flags=re.M)
             text = re.sub(member, f'{tag}STATE_GetString("{name}")', text)
     # 3c'. helpers returning a CScriptThing through a hidden pointer: Ghidra drops the pointer push, so the
     # call reads `Helper(this);` and the result is the stack object whose Data (`X._4_4_`) is used next.

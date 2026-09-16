@@ -305,6 +305,30 @@ class RData:
         return None
 
 
+def _wide_string_at(self, va: int) -> str | None:
+    """Read a NUL-terminated UTF-16LE literal wholly contained in a file-backed section."""
+    if not self.ok:
+        return None
+    rva = va - self.base
+    for sva, size, raw in self.raw_secs:
+        if sva <= rva < sva + size:
+            off = raw + (rva - sva)
+            limit = min(off + 1024, raw + size, len(self.data))
+            end = off
+            while end + 1 < limit and self.data[end:end + 2] != b"\0\0":
+                end += 2
+            if end + 1 >= limit:
+                return None
+            chunk = self.data[off:end]
+            if chunk and all(32 <= b < 127 for b in chunk[0::2]) and not any(chunk[1::2]):
+                return chunk.decode("utf-16-le")
+            return None
+    return None
+
+
+RData.wide_string_at = _wide_string_at
+
+
 def load_manifest() -> dict[str, dict]:
     data = json.loads(MANIFEST.read_text(encoding="utf-8-sig"))
     functions = data["functions"] if isinstance(data["functions"], list) else list(data["functions"].values())

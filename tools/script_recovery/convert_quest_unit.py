@@ -50,9 +50,124 @@ def state_map(fields):
     return {offset.lower(): (name, kind) for offset, (name, kind) in fields.items()}
 
 
+SIDECAR_PATCHES = ROOT / 'tools' / 'script_recovery' / 'sidecar_patches'
+RE_SIDECAR_BINDING = re.compile(r'^\+\s*(quest|thing)\["(\w+)"\]\s*=\s*\[\]\(([^)]*)\)\s*(?:->\s*([^{]+?))?\s*\{', re.M)
+
+
+def sidecar_bindings():
+    """Manifest entries for the bindings the NoviCompatibility sidecar adds on top of stock ForgeFSE
+    (evidence: the added `quest["X"]` / `thing["X"]` lines of tools/script_recovery/sidecar_patches/*.patch)."""
+    entries = {}
+    for patch in sorted(SIDECAR_PATCHES.glob('*.patch')) if SIDECAR_PATCHES.is_dir() else []:
+        for scope, name, params, ret in RE_SIDECAR_BINDING.findall(patch.read_text(encoding='utf-8', errors='replace')):
+            parameters = []
+            for param in [x.strip() for x in params.split(',') if x.strip()]:
+                if 'LuaQuestState' in param or 'sol::this_state' in param:
+                    continue
+                kind, _, pname = param.rpartition(' ')
+                kind = kind.replace('const ', '').replace('&', '').strip()
+                if kind == 'CScriptThing*' and pname == 'me':
+                    parameters.append({'name': 'pMe', 'type': 'CScriptThing*', 'optional': False})
+                else:
+                    parameters.append({'name': pname or f'arg{len(parameters)}', 'type': 'CScriptThing*' if kind == 'sol::object' else kind, 'optional': False})
+            # lambdas without a trailing return type: reviewed against the patch bodies
+            ret = (ret or {'GetStateThing': 'CScriptThing*', 'GetStateListCount': 'int'}.get(name, 'void')).strip()
+            ret = {'std::string': 'const std::string&', 'std::shared_ptr<CScriptThing>': 'CScriptThing*'}.get(ret, ret)
+            entries[name] = {'name': name, 'scope': 'Entity' if scope == 'thing' else 'Quest', 'returnType': ret,
+                             'parameters': parameters, 'blocking': False, 'category': 'NoviCompatibility sidecar'}
+    return entries
+
+
+# The host DLL sources (canonical fork first, then the local sidecar build tree): the older SDK manifest
+# lacks bindings ForgeFSE registers today (CloseDoor, GetStateFloat, IsActiveThreadTerminating, ...).
+FORGEFSE_SOURCES = [Path(r'D:/Code/ForgeFSE-retail-shadow/FableScriptExtender'),
+                    ROOT / 'work/new-oakvale-original-fse-20260912/sidecar-abi-v2/FableScriptExtender']
+RE_HOST_BINDING = re.compile(r'^\s*(questState_type|cscriptThing_type)\["(\w+)"\]\s*=\s*&(?:LuaQuestState|CScriptThing)::(\w+)\s*;', re.M)
+RE_HOST_LAMBDA = re.compile(r'^\s*(questState_type|cscriptThing_type)\["(\w+)"\]\s*=\s*\[[^\]]*\]\(([^)]*)\)\s*(?:->\s*([^{]+?))?\s*\{', re.M)
+
+
+def host_bindings():
+    """Manifest entries for `questState_type["X"] = &LuaQuestState::Y;` registrations whose prototype is in
+    LuaQuestState.h, plus inline lambdas with an explicit parameter list. Missing sources -> nothing added."""
+    sources = [d for d in FORGEFSE_SOURCES if (d / 'LuaManager.cpp').is_file()]
+    if not sources:
+        return {}
+    # the sidecar build tree may carry bindings the canonical fork does not yet (GetStateFloat): union them
+    manager = '\n'.join((d / 'LuaManager.cpp').read_text(encoding='utf-8', errors='replace') for d in sources)
+    header = '\n'.join((d / 'LuaQuestState.h').read_text(encoding='utf-8', errors='replace') for d in sources if (d / 'LuaQuestState.h').is_file())
+    protos = {m.group(2): (m.group(1).strip(), m.group(3))
+              for m in re.finditer(r'^\s*((?:const\s+)?[\w:<>*&]+(?:\s*\*)?)\s+(\w+)\s*\(([^)]*)\)\s*(?:const)?\s*;', header, re.M)}
+
+    def params(text, scope):
+        out = []
+        for param in [x.strip() for x in text.split(',') if x.strip()]:
+            if 'LuaQuestState' in param or 'sol::this_state' in param or 'sol::variadic_args' in param:
+                continue
+            kind, _, pname = param.partition('=')[0].strip().rpartition(' ')
+            kind = kind.replace('const ', '').replace('&', '').replace(' *', '*').strip()
+            if scope == 'cscriptThing_type' and not out and kind == 'CScriptThing*':
+                pname = 'pMe'
+            out.append({'name': pname or f'arg{len(out)}', 'type': 'CScriptThing*' if kind == 'sol::object' else kind,
+                        'optional': '=' in param})
+        return out
+
+    entries = {}
+    for scope, name, member in RE_HOST_BINDING.findall(manager):
+        if member not in protos:
+            continue
+        ret, plist = protos[member]
+        parameters = params(plist, scope)
+        if scope == 'cscriptThing_type':
+            parameters.insert(0, {'name': 'pMe', 'type': 'CScriptThing*', 'optional': False})
+        entries[name] = {'name': name, 'scope': 'Entity' if scope == 'cscriptThing_type' else 'Quest',
+                         'returnType': {'std::string': 'const std::string&', 'std::shared_ptr<CScriptThing>': 'CScriptThing*'}.get(ret, ret),
+                         'parameters': parameters, 'blocking': False, 'category': 'ForgeFSE host binding'}
+    for scope, name, plist, ret in RE_HOST_LAMBDA.findall(manager):
+        # a lambda without a trailing return type usually forwards a same-named member: take its prototype
+        ret = (ret or (protos[name][0] if name in protos else 'void')).strip()
+        entries.setdefault(name, {'name': name, 'scope': 'Entity' if scope == 'cscriptThing_type' else 'Quest',
+                                  'returnType': {'std::string': 'const std::string&'}.get(ret, ret),
+                                  'parameters': params(plist, scope), 'blocking': False, 'category': 'ForgeFSE host binding'})
+    return entries
+
+
+# labels whose lowering rules key on the printed text rather than the target address
+LABEL_TEXT_RULES = {'CCharString::CCharString', 'CCharString::operator='}
+
+
+def disambiguate_call_labels(decompile, calls):
+    """bsim propagates one label over byte-similar bodies, so a function may call e.g. the scripted-thing
+    resource ctor (0x7E72A0) and the movie ctor (0x6E7B60) under the same printed name. The lowering keys
+    on {label: target}, so the last site would win for all. Rename the k-th printed occurrence to
+    `<label>__at<target>` following the site order (the decompiler prints straight-line calls in address
+    order); when the printed count differs from the site count the text is left alone."""
+    by_label = {}
+    for c in calls:
+        if c.get('currentName'):
+            by_label.setdefault(c['currentName'], []).append(int(c['target'], 16))
+    renamed = {}
+    for label, targets in by_label.items():
+        if len(set(targets)) < 2 or label in LABEL_TEXT_RULES:
+            continue
+        pattern = re.compile(r'(?<![\w:])' + re.escape(label) + r'(?=\s*\()')
+        if len(pattern.findall(decompile)) != len(targets):
+            continue
+        it = iter(targets)
+
+        def repl(m, it=it, label=label):
+            target = next(it)
+            new = f'{label}__at{target:x}'
+            renamed[new] = target
+            return new
+        decompile = pattern.sub(repl, decompile)
+    return decompile, renamed
+
+
 class UnitConverter:
     def __init__(self, tu_path, *, flat_control=False):
         self.manifest, self.slots, self.rdata = load_manifest(), load_slots(), RData()
+        for name, spec in {**host_bindings(), **sidecar_bindings()}.items():
+            self.manifest.setdefault(name, spec)
         # sol::this_state is a binding artefact, never a Lua argument: drop it for arity checks.
         for spec in self.manifest.values():
             if isinstance(spec, dict) and 'parameters' in spec:
@@ -171,13 +286,16 @@ class UnitConverter:
                 representative = next((n for n, o in class_owner.items() if o == owner), owner) if entity else owner
                 spec_l = LoweringSpec(unit, representative, entity=entity, thing_slots=self.thing_slots)
                 spec_l.resolve_string = self.rdata.string_at
+                spec_l.resolve_wide = self.rdata.wide_string_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
+                decompile, renamed = disambiguate_call_labels(fn['decompile'], fn.get('calls', []))
+                spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output
                 spec_l.call_labels.update({k.replace('::', '__'): v for k, v in list(spec_l.call_labels.items()) if '::' in k})
                 spec_l.hidden_thing_returns = self.hidden_thing_returns
                 spec_l.code_range = self.code_range
-                lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature), spec_l)
+                lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)
                 source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)))
                 if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):
                     print(f'===== LOWERED {owner}.{name}', source, sep='\n', file=sys.stderr)

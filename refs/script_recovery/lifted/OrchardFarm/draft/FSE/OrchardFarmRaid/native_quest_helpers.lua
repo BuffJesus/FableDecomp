@@ -49,8 +49,10 @@ function DoMultiplierCutscene(quest, me)
             if bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                quest:PauseAllNonScriptedEntities(false)
-                if bVar4 then goto FLOW_after_lab_00dd1d15 end
+                if bVar4 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    goto FLOW_after_lab_00dd1d15
+                end
                 if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -59,7 +61,7 @@ function DoMultiplierCutscene(quest, me)
                     end
                     -- LAB_00dd1e3d: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(appuStack_20)
+                    resources:DestroyMovie(appuStack_20)
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -67,11 +69,11 @@ function DoMultiplierCutscene(quest, me)
                 if bVar4 then
                     -- LAB_00dd1e53: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(appuStack_20)
+                    resources:DestroyMovie(appuStack_20)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
-                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", pCVar5, false, true)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", puStack_38, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -130,7 +132,7 @@ function DoMultiplierCutscene(quest, me)
     ::FLOW_after_lab_00dd1d15::
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(pCVar5)
+    resources:DestroyActorMap(puStack_38)
     resources:ReleaseResource(local_10)
     return extraout_EAX
 end

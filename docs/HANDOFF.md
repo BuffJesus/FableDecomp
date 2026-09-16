@@ -31,6 +31,11 @@ entity ids 216–224); preflight passes; static API coverage check = no missing 
 FIXED: Bully intimidation line (was BULLY_BADGERING; retail formats BULLY_SCRMSG_INTIMIDATING_%d, bully_proximity.py) —
 readable rebuilt, staged at work/oakvale_readable_stage_20260916b, **v5 rebuilt from it** (Oakvale + Orchard, preflight ok).
 Aeon cross-reference: work/aeon_new_oakvale/CROSSREF.md. Pre-existing: test_bully_proximity.py mock lacks RetailRandModulo (fails before the fix too).
+SMOKE HARNESS: `python tools/script_recovery/smoke_run_unit.py --unit orchard_farm [--stage readable]` (lupa mock runtime, frame
+budget, unknown-method check vs DLL sources) — Orchard 11/11 files run, 0 problems (commit d3444b3); v5 rebuilt + preflight ok.
+Converter residue (all cosmetic to the draft, readable runs): DoCutsceneIfRequired/DoMultiplierCutscene actor-map std::map
+residue + `string = ...; goto LAB_00dd1d98` staging, ProcessGameRules gotos LAB_00dd0b1f/LAB_00dd1736, Artefact LAB_00dcddcf,
+`CCharString__AssignFromWide` FailReasons init, `EntityFollowThing(me, nil, ...)`, `ResetCombatNearbyBreakOffRange(nil)`.
 NEXT (user-driven): launch v5 (`python local_test.py --game-dir <Fable> --launch --save-dir <saves>`), reach Orchard Farm,
 read NoviCompatibility/FableScriptExtender.log for Lua errors; then fix converter/bindings from the log.
 Was next: NoviCompatibility bindings per
