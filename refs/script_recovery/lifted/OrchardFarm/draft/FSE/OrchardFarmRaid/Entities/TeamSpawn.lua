@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CStack_5c, bVar3, fVar8, iVar4, iVar9, pCVar5, pCVar6, pCVar7, r1, r2, r3, thing1
+    local bVar3, fVar8, iVar4, iVar9, pCVar5, pCVar6, pCVar7, r1, r2, r3, thing1
     local alive = true
     local cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
@@ -164,7 +164,7 @@ function Main(quest, me)
                         if iVar4 then
                             fVar8 = 15.0
                             pCVar6 = quest:GetHero()
-                            bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, r3, fVar8)
+                            bVar3 = quest:IsDistanceBetweenThingsUnder(r3, pCVar6, fVar8)
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -206,7 +206,7 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
-                            CStack_5c = resources:StartMovie("")
+                            r3 = resources:StartMovie("")
                             if (iVar9 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -218,7 +218,7 @@ function Main(quest, me)
                                 pCVar7 = (this + 0x34)
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", pCVar5, "NEXT_WAVE")
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -227,7 +227,7 @@ function Main(quest, me)
                                 pCVar7 = (this + 0x34)
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature("GuardTeamMember", pCVar5, nil --[[missing]])
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);
                             end
                             quest:EntityAttachToScript(pCVar6, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)

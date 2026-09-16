@@ -30,6 +30,7 @@ from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E40
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters  # noqa: E402
 from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate  # noqa: E402
 from tools.script_recovery.annotate_interface_slots import load_thing_slots  # noqa: E402
+from tools.script_recovery.native_cleanup_regions import hoist_cleanup_regions  # noqa: E402
 
 ENTITY_STATE = '''local __native_entity_state = {}
 do
@@ -193,7 +194,9 @@ class UnitConverter:
                     row['nativeLabels'] = sorted(lifter.lua_labels)
                 report['functions'].append(row)
                 chunks.append(function_source)
-            source = '\n'.join(chunks)
+            source, hoisted = hoist_cleanup_regions('\n'.join(chunks))
+            if hoisted:
+                report.setdefault('cleanupRegions', {})[relative] = hoisted
             destination = out / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_text(source + '\n', encoding='utf-8')

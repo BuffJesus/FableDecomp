@@ -204,7 +204,6 @@
             "goto LAB_00dd0b1f",
             "label LAB_00dd0b11",
             "label LAB_00dd0b2b",
-            "unlifted: CCharString::CCharString((CCharString *)(auStack_64 + 8),\"CS_ORCHARD_EVIL_WHISPER_FRONT\",-",
             "verify cleanup at LAB_00dd0b11 (lifted as early return)",
             "verify cleanup at LAB_00dd0b11 (lifted as early return)",
             "label LAB_00dd0b1f",
@@ -319,7 +318,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 208,
+          "lines": 207,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -328,8 +327,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil",
-                "line": 52,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:52: unexpected symbol near '&'"
+                "line": 185,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:185: unexpected symbol near '*'"
               }
             ]
           },
@@ -357,7 +356,7 @@
             "unlifted: *(undefined4 *)(this + 100) = 2;",
             "unlifted: CStack_cc._3_1_ = CScriptThing::MsgIsKilledBy(pCVar5);",
             "unlifted: *(undefined4 *)(this + 100) = 1;",
-            "unlifted: auStack_74[0] = 0;",
+            "unlifted: ppuStack_80[0] = 0;",
             "unlifted: this_00 = *(int **)(this + 0x40);",
             "unlifted: aCStack_1c[0] = (CCharString)ENGINE_SquaredDistance(uStack_b8, pCVar5);",
             "goto LAB_00dd1736",
@@ -829,16 +828,10 @@
           "lines": 130,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:DoMultiplierCutscene",
-                "line": 9,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:DoMultiplierCutscene:9: unexpected symbol near '&'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -895,10 +888,10 @@
             "label LAB_00dcd9ed",
             "unlifted: *(undefined4 *)(*(int *)(this + 0x14) + 100) = 3;",
             "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);",
             "verify cleanup at LAB_00dcda68 (lifted as early return)",
             "CreateCreature: missing scriptName (2 args for 3 params)",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);",
             "goto LAB_00dcd9ed"
           ],
           "calls": [
@@ -1201,9 +1194,9 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: local_4 = *(int **)(p0 + 8);",
-            "unlifted: local_8 = *(int **)(p0 + 4);",
-            "unlifted: *local_4 = *local_4 + 1;",
+            "unlifted: local_c = *(int **)(p0 + 8);",
+            "unlifted: local_c = *(int **)(p0 + 4);",
+            "unlifted: *local_c = *local_c + 1;",
             "unnamed field 0xc",
             "GetFurthestWithScriptName: missing spRelativeTo, scriptName (0 args for 2 params)",
             "unlifted: std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);"
@@ -1427,10 +1420,9 @@
             "unnamed field 0x2c",
             "EntityFollowThing: missing spTarget (3 args for 4 params)",
             "unnamed field 0x2c",
-            "unlifted: CCharString::CCharString((CCharString *)(auStack_40 + 4),\"REQUEST_PROTECTION\",-1);",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: CCharString::CCharString((CCharString *)(auStack_40 + 4),\"TeamExitMarker\",-1);",
+            "unlifted: CCharString::CCharString(\"REQUEST_PROTECTION\",\"TeamExitMarker\",-1);",
             "unlifted: bVar2 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);",
             "MoveToPosition: missing position (4 args for 5 params)"
           ],
@@ -1521,7 +1513,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 424,
+          "lines": 423,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1767,9 +1759,9 @@
             "unlifted: local_18 = 1e+07;",
             "unlifted: *piVar2 = *piVar2 + 1;",
             "unlifted: local_14 = local_14 + 1;",
-            "unlifted: in_stack_00000004[1] = local_8;",
-            "unlifted: in_stack_00000004[2] = local_4;",
-            "unlifted: *local_4 = *local_4 + 1;"
+            "unlifted: in_stack_00000004[1] = local_c;",
+            "unlifted: in_stack_00000004[2] = local_c;",
+            "unlifted: *local_c = *local_c + 1;"
           ],
           "calls": [
             "QUESTLIST_Begin",
@@ -2155,13 +2147,13 @@
           },
           {
             "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua",
-            "line": 168,
-            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:168: unexpected symbol near '&'"
+            "line": 308,
+            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:308: unexpected symbol near '*'"
           },
           {
             "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-            "line": 10,
-            "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:10: unexpected symbol near '&'"
+            "line": 146,
+            "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:146: unexpected symbol near '*'"
           }
         ]
       },
@@ -2176,6 +2168,38 @@
         "FarmRearEntrance": "OrchardFarmRaid/Entities/FarmRearEntrance",
         "M_WhisperFarmRaidIntro": "OrchardFarmRaid/Entities/M_WhisperFarmRaidIntro",
         "MK_OFI_GWLL_WHIS2": "OrchardFarmRaid/Entities/MK_OFI_GWLL_WHIS2"
+      },
+      "cleanupRegions": {
+        "FSE/OrchardFarmRaid/OrchardFarmRaid.lua": {
+          "LAB_00dd0b11": [
+            "pCVar6 = 0x0",
+            "quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))",
+            "resources:ReleaseResource(appuStack_ac)",
+            "resources:DestroyActorMap(r2)",
+            "resources:ReleaseResource(appuStack_bc)",
+            "resources:ReleaseResource(aCStack_c4)"
+          ],
+          "LAB_00dd0b2b": [
+            "resources:ReleaseResource(appuStack_ac)",
+            "resources:DestroyActorMap(r2)",
+            "resources:ReleaseResource(appuStack_bc)",
+            "resources:ReleaseResource(aCStack_c4)"
+          ],
+          "LAB_00dd1728": [
+            "pCVar7 = 0x0",
+            "quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))",
+            "resources:ReleaseResource((r2 + 4))",
+            "resources:DestroyActorMap(ppuStack_9c)",
+            "resources:ReleaseResource(amStack_8c)",
+            "resources:ReleaseResource(CStack_cc)"
+          ],
+          "LAB_00dd1742": [
+            "resources:ReleaseResource((r2 + 4))",
+            "resources:DestroyActorMap(ppuStack_9c)",
+            "resources:ReleaseResource(amStack_8c)",
+            "resources:ReleaseResource(CStack_cc)"
+          ]
+        }
       },
       "sharedHelpers": {
         "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
@@ -2216,8 +2240,8 @@
           "errors": [
             {
               "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-              "line": 10,
-              "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:10: unexpected symbol near '&'"
+              "line": 146,
+              "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:146: unexpected symbol near '*'"
             }
           ]
         }
@@ -2226,10 +2250,10 @@
         "owners": 8,
         "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 28,
+        "functionSyntaxPassed": 29,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 9,
-        "todo": 193
+        "todo": 191
       }
     },
     {
@@ -2427,9 +2451,9 @@
     "owners": 10,
     "functions": 46,
     "missing": 2,
-    "functionSyntaxPassed": 32,
+    "functionSyntaxPassed": 33,
     "fileSyntaxPassed": 5,
     "fileSyntaxChecked": 11,
-    "todo": 193
+    "todo": 191
   }
 }

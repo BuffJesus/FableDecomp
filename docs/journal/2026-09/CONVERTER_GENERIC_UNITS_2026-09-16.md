@@ -85,3 +85,22 @@ GSI slots from FSE's native typedefs (`GameInterface.h`), real signatures for en
 - Orchard draft: 9/9 bindings + 4 threads register like Oakvale; quest Main is readable; 469 diagnostics
   (44 cleanup-label, 42 label/goto, 17 unnamed fields, rest cutscene/resource locals). Known Ghidra
   artefact left: FPO `stack0x…` local names (stable per function).
+
+## Evening rounds (Orchard converter, after the second wip commit)
+- Ghidra tracker: callee-saved `pop`s (mid-function epilogues) no longer drop `this`; ESP-delta
+  keyed stack slots → 322 call-site overrides (was 218), arg-less vcalls 126→34.
+- Resource lifecycle lowered generically: `CScriptGameResourceObjectScriptedThingBase` ctor/dtor
+  (0x7E72A0/0x7E74D0, FSE-proven), movie ctor/dtor, inlined vtable-store constructors
+  (`PTR_…0127094c/01260ef4/01238c8c`), `StartScriptingEntity(thing,res,prio)` → `resources:TryAcquire`,
+  actor maps (both `malloc(0x24)` and `StdMap_Construct_API` forms; Thing and resource values),
+  `RunCutsceneMacro_Func` with literal or variable keys, `GetSquaredDistanceBetweenThings`
+  (fastcall, float) → `GetDistanceBetweenThings^2`, `&DAT_` string literals (incl. pooled ""),
+  global game-data reads → `quest:ReadGlobalGameData(off)`, `me:GetName()` + strcmp team derivation,
+  pointer-to-array-member increments, offset-built string temporaries.
+- `native_cleanup_regions.py`: cleanup epilogues (release/destroy) hoisted into
+  `local function __cleanup_LAB_x()`; early exits call it instead of leaking (was a real bug in
+  the early-return lowering). Stack-object slot names canonicalised to the creating base
+  (`uStack_a4` → `appuStack_ac`). Shared native classes → one entity file with N bindings.
+- Orchard draft: 46 fns (deduped), 33 compile, 191 diagnostics; quest Main / Evil+Good Init /
+  Artefact / CrateTeamMember.Init read as retail logic. `refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md`
+  lists the bindings the DLL needs. Oakvale gate identical throughout; converter tests OK.

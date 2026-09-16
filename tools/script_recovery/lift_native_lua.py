@@ -1742,6 +1742,8 @@ class Lifter:
         pseudo = RE_PSEUDO_CALL.match(line)
         if pseudo:
             target, name, argtext = pseudo.group(1), pseudo.group(2), pseudo.group(3)
+            if target:
+                target = self.slot_results.get(target, target)
             lifted = [self.expr(a) for a in self.arguments(argtext)]
             call = f'{name}({", ".join(lifted)})'
             if target:

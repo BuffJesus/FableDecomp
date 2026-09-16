@@ -313,6 +313,54 @@ def fold_name_compare(text):
     return text
 
 
+STACK_OBJECT_SIZES = {'RESOURCE_NewResource': 16, 'RESOURCE_StartMovie': 16, 'ACTORMAP_New': 16, 'QUESTTHING_Empty': 12}
+RE_STACK_NAME = re.compile(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)\b')
+
+
+def canonicalise_stack_objects(text: str) -> str:
+    """Ghidra names each stack slot separately (`appuStack_ac` … `uStack_a4`), so members of one
+    stack object (a 16-byte resource/movie/map) appear under several names. Objects created by the
+    pseudo API give their base slot and size; every slot name inside that extent becomes the base."""
+    bases = []
+    for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+) = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|QUESTTHING_Empty)\(', text):
+        bases.append((m.group(1), int(m.group(2), 16), STACK_OBJECT_SIZES[m.group(3)], m.group(1) + m.group(2)))
+    if not bases:
+        return text
+
+    def repl(m):
+        prefix, off = m.group(1), int(m.group(2), 16)
+        for bprefix, boff, size, name in bases:
+            if boff - size < off < boff:
+                return name
+        return m.group(0)
+    text = RE_STACK_NAME.sub(repl, text)
+    # `&base + N` / `(base + N)` spellings of the same object collapse to the base
+    for _, _, _, name in bases:
+        text = re.sub(r'\(' + re.escape(name) + r' \+ (?:4|8|0xc|12)\)', name, text)
+        text = re.sub(r'&' + re.escape(name) + r'\b', name, text)
+    return text
+
+
+RE_OFFSET_STRING_CTOR = re.compile(
+    r'^[ \t]*CCharString::CCharString\(\(CCharString \*\)\((?P<expr>\w+ \+ (?:\d+|0x[0-9a-f]+))\),(?P<lit>"[^"]*"),-1\);[ \t]*\r?\n', re.M)
+
+
+def fold_offset_string_temporaries(text: str) -> str:
+    """A CCharString literal constructed at an offset inside a stack struct (`(auStack_64 + 8)`) is a
+    temporary the lifter cannot track by name; substitute the literal for its uses and drop the
+    constructor/destructor pair."""
+    for m in list(RE_OFFSET_STRING_CTOR.finditer(text)):
+        expr, lit = m.group('expr'), m.group('lit')
+        if text.count(m.group(0)) != 1:
+            continue
+        head, tail = text[:m.start()], text[m.end():]
+        tail = re.sub(r'^[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(\(CCharString \*\)\(' + re.escape(expr) + r'\)\);[ \t]*\r?\n', '', tail, count=1, flags=re.M)
+        tail = re.sub(r'\(CCharString \*\)\(' + re.escape(expr) + r'\)', lit, tail)
+        tail = re.sub(r'(?<![\w])\(' + re.escape(expr) + r'\)', lit, tail)
+        text = head + tail
+    return text
+
+
 def lower_after_annotate(text):
     text = fold_name_compare(text)
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
@@ -376,6 +424,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
     text = fold_inline_constructors(text)
+    text = canonicalise_stack_objects(text)
+    text = fold_offset_string_temporaries(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))
     resolve = getattr(spec, 'resolve_string', None)
     if resolve:

@@ -116,8 +116,22 @@ end
 
 function ProcessGameRulesEvil(quest)
     local resources = quest:RetailResources()
-    local CStack_8c, amStack_80, appuStack_9c, appuStack_ac, appuStack_bc, bVar10, bVar4, cStack_c1, cVar1, fStack_14, fVar5, iVar11, pCVar6, pCVar8, pMessage, pPosition, r1, r2, r3, r4
+    local appuStack_9c, appuStack_ac, appuStack_bc, bVar10, bVar4, cStack_c1, cVar1, fStack_14, fVar5, iVar11, pCVar6, pCVar8, pMessage, pPosition, r1, r2, r3, r4
     local alive = true
+    local function __cleanup_LAB_00dd0b11()
+        pCVar6 = 0x0
+        quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
+        resources:ReleaseResource(appuStack_ac)
+        resources:DestroyActorMap(r2)
+        resources:ReleaseResource(appuStack_bc)
+        resources:ReleaseResource(aCStack_c4)
+    end
+    local function __cleanup_LAB_00dd0b2b()
+        resources:ReleaseResource(appuStack_ac)
+        resources:DestroyActorMap(r2)
+        resources:ReleaseResource(appuStack_bc)
+        resources:ReleaseResource(aCStack_c4)
+    end
     cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
         alive = quest:NewScriptFrame()
@@ -164,18 +178,18 @@ function ProcessGameRulesEvil(quest)
                     -- TODO(native): pppuVar9 = appuStack_bc;
                     pCVar6 = quest:GetHero()
                     resources:TryAcquire(pppuVar9, pCVar6, iVar11)
-                    amStack_80 = resources:NewActorMap()
-                    resources:SetActor(amStack_80, "HERO", &appuStack_bc)
-                    resources:SetActor(amStack_80, "WHISPER", &appuStack_ac)
+                    r2 = resources:NewActorMap()
+                    resources:SetActor(r2, "HERO", appuStack_bc)
+                    resources:SetActor(r2, "WHISPER", appuStack_ac)
                     appuStack_9c = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     -- TODO(native): this_00 = *(int **)(this + 0x40);
                     pCVar6 = quest:GetHero()
-                    fStack_14 = (quest:GetDistanceBetweenThings(auStack_78, pCVar6) ^ 2)
+                    fStack_14 = (quest:GetDistanceBetweenThings(r3, pCVar6) ^ 2)
                     pCVar6 = quest:GetHero()
-                    fVar5 = (quest:GetDistanceBetweenThings(uStack_90, pCVar6) ^ 2)
+                    fVar5 = (quest:GetDistanceBetweenThings(appuStack_9c, pCVar6) ^ 2)
                     if fStack_14 <= fVar5 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
@@ -189,25 +203,17 @@ function ProcessGameRulesEvil(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
-                        -- LAB_00dd0b11: (native jump target)
-                        pCVar6 = 0x0
-                        quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                        -- LAB_00dd0b2b: (native jump target)
-                        resources:ReleaseResource(uStack_a4)
-                        resources:DestroyActorMap(r2)
-                        resources:ReleaseResource(uStack_b4)
-                        resources:ReleaseResource(aCStack_c4)
+                        __cleanup_LAB_00dd0b11()
                         return
                     end
-                    -- TODO(native): CCharString::CCharString((CCharString *)(auStack_64 + 8),"CS_ORCHARD_EVIL_WHISPER_FRONT",-1);
-                    resources:RunMacro((r1 + 8), r2, false, true)
-                    pCVar8 = (r1 + 8)
+                    resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", r2, false, true)
+                    pCVar8 = "CS_ORCHARD_EVIL_WHISPER_FRONT"
                     ::LAB_00dd08eb::
                     quest:FixMovieSequenceCamera(false)
                     if not quest:GetStateBool("ShownCombatFlourishTutorial") then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
-                        if bVar4 then return end  -- TODO(native): goto LAB_00dd0b11
+                        if bVar4 then __cleanup_LAB_00dd0b11(); return end
                         bVar4 = quest:DisplayTutorial(0x12)
                         if bVar4 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -218,7 +224,7 @@ function ProcessGameRulesEvil(quest)
                                     alive = quest:NewScriptFrame()
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar4 = not alive
-                                    if bVar4 then return end  -- TODO(native): goto LAB_00dd0b11
+                                    if bVar4 then __cleanup_LAB_00dd0b11(); return end
                                     bVar4 = quest:MsgIsTutorialClickedPast()
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
@@ -228,7 +234,7 @@ function ProcessGameRulesEvil(quest)
                             -- LAB_00dd0b1f: (native jump target)
                             pCVar6 = 0x0
                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                            -- TODO(native): goto LAB_00dd0b2b
+                            __cleanup_LAB_00dd0b2b(); return
                         end
                         ::LAB_00dd0977::
                         quest:SetStateBool("ShownCombatFlourishTutorial", true)
@@ -236,7 +242,7 @@ function ProcessGameRulesEvil(quest)
                     quest:SetStateBool("WhisperInCutscene", false)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:ReleaseResource(appuStack_9c)
-                    resources:DestroyActorMap(amStack_80)
+                    resources:DestroyActorMap(r2)
                     resources:ReleaseResource(appuStack_ac)
                     resources:ReleaseResource(appuStack_bc)
                     fVar5 = fStack_14
@@ -266,15 +272,15 @@ function ProcessGameRulesEvil(quest)
                     pCVar6 = quest:GetHero()
                     resources:TryAcquire(pppuVar9, pCVar6, iVar11)
                     resources:TryAcquire(appuStack_bc, r4, 4)
-                    CStack_8c = resources:NewActorMap()
-                    resources:SetActor(r2, "HERO", &appuStack_ac)
-                    resources:SetActor(r2, "WHISPER", &appuStack_bc)
+                    r2 = resources:NewActorMap()
+                    resources:SetActor(r2, "HERO", appuStack_ac)
+                    resources:SetActor(r2, "WHISPER", appuStack_bc)
                     appuStack_9c = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     resources:RunMacro("CS_ORCHARD_EVIL_OUTRO", r2, false, true)
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&uStack_94);
+                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_9c);
                     resources:DestroyActorMap(r2)
                     -- TODO(native): CSubtitleRenderer::SetText(0x55);
                     quest:GiveHeroMorality(quest:ReadGlobalGameData(0xd98))
@@ -328,8 +334,22 @@ end
 
 function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
-    local aCStack_7c, aCStack_98, amStack_8c, bVar12, bVar3, cStack_c5, cVar1, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4
+    local aCStack_98, amStack_8c, bVar12, bVar3, cStack_c5, cVar1, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4
     local alive = true
+    local function __cleanup_LAB_00dd1728()
+        pCVar7 = 0x0
+        quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))
+        resources:ReleaseResource((r2 + 4))
+        resources:DestroyActorMap(ppuStack_9c)
+        resources:ReleaseResource(amStack_8c)
+        resources:ReleaseResource(CStack_cc)
+    end
+    local function __cleanup_LAB_00dd1742()
+        resources:ReleaseResource((r2 + 4))
+        resources:DestroyActorMap(ppuStack_9c)
+        resources:ReleaseResource(amStack_8c)
+        resources:ReleaseResource(CStack_cc)
+    end
     cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
         alive = quest:NewScriptFrame()
@@ -387,16 +407,16 @@ function ProcessGameRulesGood(quest)
                     quest:MiniMapAddMarker(pCVar5, "HUD_ORB_RED_SMALL")
                     r2 = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
                     r3 = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
-                    ppuStack_80 = resources:NewResource()
-                    -- TODO(native): auStack_74[0] = 0;
-                    resources:TryAcquire(ppuStack_80, r1, 4)
+                    amStack_8c = resources:NewResource()
+                    -- TODO(native): ppuStack_80[0] = 0;
+                    resources:TryAcquire(amStack_8c, r1, 4)
                     iVar11 = 4
                     puVar10 = ""
                     pCVar5 = quest:GetHero()
                     resources:TryAcquire(puVar10, pCVar5, iVar11)
-                    amStack_8c = resources:NewActorMap()
-                    resources:SetActor(amStack_8c, "HERO", &"")
-                    resources:SetActor(amStack_8c, "WHISPER", &ppuStack_80)
+                    aCStack_98 = resources:NewActorMap()
+                    resources:SetActor(aCStack_98, "HERO", &"")
+                    resources:SetActor(aCStack_98, "WHISPER", amStack_8c)
                     ppuStack_9c = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
@@ -410,7 +430,7 @@ function ProcessGameRulesGood(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if not bVar3 then
-                            resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", uStack_90, false, true)
+                            resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", ppuStack_9c, false, true)
                             pCVar8 = "CS_ORCHARD_GOOD_WHISPER_BACK"
                             goto LAB_00dd14ee
                         end
@@ -419,24 +439,17 @@ function ProcessGameRulesGood(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
-                        -- LAB_00dd1728: (native jump target)
-                        pCVar7 = 0x0
-                        quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))
-                        -- LAB_00dd1742: (native jump target)
-                        resources:ReleaseResource((r2 + 4))
-                        resources:DestroyActorMap(uStack_94)
-                        resources:ReleaseResource(aCStack_88)
-                        resources:ReleaseResource(CStack_cc)
+                        __cleanup_LAB_00dd1728()
                         return
                     end
-                    resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", uStack_90, false, true)
+                    resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", ppuStack_9c, false, true)
                     pCVar8 = "CS_ORCHARD_GOOD_WHISPER_FRONT"
                     ::LAB_00dd14ee::
                     quest:FixMovieSequenceCamera(false)
                     if not quest:GetStateBool("ShownCombatFlourishTutorial") then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
-                        if bVar3 then return end  -- TODO(native): goto LAB_00dd1728
+                        if bVar3 then __cleanup_LAB_00dd1728(); return end
                         bVar3 = quest:DisplayTutorial(0x12)
                         if bVar3 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -447,7 +460,7 @@ function ProcessGameRulesGood(quest)
                                     alive = quest:NewScriptFrame()
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
-                                    if bVar3 then return end  -- TODO(native): goto LAB_00dd1728
+                                    if bVar3 then __cleanup_LAB_00dd1728(); return end
                                     bVar3 = quest:MsgIsTutorialClickedPast()
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
@@ -457,7 +470,7 @@ function ProcessGameRulesGood(quest)
                             -- LAB_00dd1736: (native jump target)
                             pCVar7 = 0x0
                             quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))
-                            -- TODO(native): goto LAB_00dd1742
+                            __cleanup_LAB_00dd1742(); return
                         end
                         ::LAB_00dd157a::
                         quest:SetStateBool("ShownCombatFlourishTutorial", true)
@@ -465,8 +478,8 @@ function ProcessGameRulesGood(quest)
                     quest:SetStateBool("WhisperInCutscene", false)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:ReleaseResource(ppuStack_9c)
-                    resources:DestroyActorMap(amStack_8c)
-                    resources:ReleaseResource(ppuStack_80)
+                    resources:DestroyActorMap(aCStack_98)
+                    resources:ReleaseResource(amStack_8c)
                     resources:ReleaseResource("")
                 end
                 native_arg_sequence_1 = false
@@ -506,24 +519,24 @@ function ProcessGameRulesGood(quest)
                     quest:GiveHeroExperience(quest:ReadGlobalGameData(0xd68))
                     r4 = quest:GetThingWithScriptName("OrchardFarmWhisper")
                     -- TODO(native): (auStack_c4 + 4) = resources:StartMovie("");
-                    aCStack_98 = resources:StartMovie("")
+                    ppuStack_9c = resources:StartMovie("")
                     puVar10 = "" + 4
                     pCVar7 = quest:GetHero()
                     resources:TryAcquire(puVar10, pCVar7, 4)
-                    resources:TryAcquire(aCStack_98, r4, 4)
+                    resources:TryAcquire(ppuStack_9c, r4, 4)
                     -- TODO(native): StdMap_Construct_API(auStack_a8 + 4);
                     puVar10 = "" + 4
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(auStack_a8 + 4),&CStack_cc);
                     -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);
-                    pOther_00 = aCStack_98
+                    pOther_00 = ppuStack_9c
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(auStack_a8 + 4),&CStack_cc);
                     -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);
-                    aCStack_7c = resources:StartMovie("")
+                    ppuStack_80 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     -- TODO(native): RunCutsceneMacro_Func(&CStack_cc,auStack_a8 + 4,(void *)0x0,(void *)0x0,false,true);
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(aCStack_7c)
+                    resources:ReleaseResource(ppuStack_80)
                     -- TODO(native): StdMap_Destroy_API(auStack_a8 + 4);
                     -- TODO(native): CSubtitleRenderer::SetText(0x50);
                     quest:GiveHeroMorality(quest:ReadGlobalGameData(0xd9c))
@@ -555,7 +568,7 @@ function ProcessGameRulesGood(quest)
                         bVar3 = not alive
                     until not (not bVar3)
                     ::LAB_00dd1a93::
-                    resources:ReleaseResource(aCStack_98)
+                    resources:ReleaseResource(ppuStack_9c)
                     resources:ReleaseResource(("" + 4))
                     return
                 end
@@ -588,7 +601,7 @@ end
 
 function DoCutsceneIfRequired(quest)
     local resources = quest:RetailResources()
-    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, aCStack_50, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, piVar6, r1, r2, uVar5
+    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, piVar6, r1, r2, uVar5
     local alive = true
     -- TODO(native): auStack_90._4_4_ = 0;
     if quest:GetStateInt("HeroTeam") == 1 then
@@ -650,23 +663,23 @@ function DoCutsceneIfRequired(quest)
                 if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
                 r1 = quest:GetAllThingsWithScriptName("BanditTeamMember")
                 r2 = quest:GetNearestWithScriptName(nil --[[missing]], "GuardTeamMember")
-                aCStack_50 = resources:StartMovie("")
+                amStack_5c = resources:StartMovie("")
                 aCStack_30 = resources:StartMovie("")
                 aCStack_20 = resources:StartMovie("")
                 aCStack_10 = resources:StartMovie("")
                 resources:TryAcquire(aCStack_10, r2, 4)
-                resources:TryAcquire(aCStack_50, 0x0, 4)
-                resources:TryAcquire(aCStack_30, 0x0 + 1, 4)
+                resources:TryAcquire(amStack_5c, pCStack_70, 4)
+                resources:TryAcquire(aCStack_30, pCStack_70 + 1, 4)
                 iVar8 = 4
                 pCVar7 = aCStack_20
                 pCVar3 = quest:GetHero()
                 resources:TryAcquire(pCVar7, pCVar3, iVar8)
                 quest:SheatheHeroWeapons()
                 amStack_5c = resources:NewActorMap()
-                resources:SetActor(amStack_5c, "HERO", &aCStack_20)
-                resources:SetActor(amStack_5c, "BAN1", &aCStack_50)
-                resources:SetActor(amStack_5c, "BAN2", &aCStack_30)
-                resources:SetActor(amStack_5c, "GUARD", &aCStack_10)
+                resources:SetActor(amStack_5c, "HERO", aCStack_20)
+                resources:SetActor(amStack_5c, "BAN1", amStack_5c)
+                resources:SetActor(amStack_5c, "BAN2", aCStack_30)
+                resources:SetActor(amStack_5c, "GUARD", aCStack_10)
                 aCStack_40 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
@@ -679,7 +692,7 @@ function DoCutsceneIfRequired(quest)
                 resources:ReleaseResource(aCStack_10)
                 resources:ReleaseResource(aCStack_20)
                 resources:ReleaseResource(aCStack_30)
-                resources:ReleaseResource(aCStack_50)
+                resources:ReleaseResource(amStack_5c)
                 quest:KickOffQuestStartScreen("Q_OrchardFarmRaidEvil", true, false)
                 pCVar3 = quest:GetThingWithScriptName("OF_MainGates")
                 quest:OpenDoor(pCVar3)
@@ -689,13 +702,13 @@ function DoCutsceneIfRequired(quest)
                 if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
                 pCVar3 = quest:GetThingWithScriptName("OF_MainGates")
                 quest:OpenDoor(pCVar3)
-                aCStack_50 = resources:StartMovie("")
+                amStack_5c = resources:StartMovie("")
                 iVar8 = 4
-                pCVar7 = aCStack_50
+                pCVar7 = amStack_5c
                 pCVar3 = quest:GetHero()
                 resources:TryAcquire(pCVar7, pCVar3, iVar8)
                 pCStack_70 = resources:NewActorMap()
-                resources:SetActor(pCStack_70, "HERO", &aCStack_50)
+                resources:SetActor(pCStack_70, "HERO", amStack_5c)
                 aCStack_40 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
@@ -705,7 +718,7 @@ function DoCutsceneIfRequired(quest)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:ReleaseResource(aCStack_40)
                 resources:DestroyActorMap(pCStack_70)
-                resources:ReleaseResource(aCStack_50)
+                resources:ReleaseResource(amStack_5c)
                 quest:KickOffQuestStartScreen("Q_OrchardFarmRaidGood", true, false)
             end
             quest:DeactivateQuest("Q_OrchardFarm_Barricade", 0)
@@ -835,7 +848,7 @@ function DoMultiplierCutscene(quest)
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
     puStack_38 = resources:NewActorMap()
-    resources:SetActor(puStack_38, "HERO", &local_c)
+    resources:SetActor(puStack_38, "HERO", 0x0)
     appuStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -898,7 +911,7 @@ function DoMultiplierCutscene(quest)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
-                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", puStack_38, false, true)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", pCVar5, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -954,10 +967,10 @@ function DoMultiplierCutscene(quest)
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)
     end
-    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&uStack_18);
+    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(puStack_38)
-    resources:ReleaseResource(local_10)
+    resources:DestroyActorMap(pCVar5)
+    resources:ReleaseResource(0x0)
     return extraout_EAX
 end
 

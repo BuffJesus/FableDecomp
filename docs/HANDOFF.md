@@ -4,7 +4,7 @@ Aeon is hand-porting Guild training; Oakvale intro is complete (1 class, 51/51 c
 New generic pipeline: `script_units.py` → `export_guild_training.py --unit` → `guild_training_inventory.py --unit`
 → `quest_unit_evidence.py --unit` → `convert_quest_unit.py --unit` (+ `native_evidence_lowering.py`).
 Typed TU export works (`ghidra_typing_spec.py` + `ExportTypedTranslationUnit.java`, 218 call-site overrides on Orchard).
-Orchard Farm draft: `refs/script_recovery/lifted/OrchardFarm/draft` (36/58 compile, 708 diags on typed input). Oakvale draft
+Orchard Farm draft: `refs/script_recovery/lifted/OrchardFarm/draft` (46 fns after class dedup, 33 compile, 191 diags; resources/cutscenes/cleanup lowered; API gaps in refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md). Oakvale draft
 regenerates byte-identical (gate: scratch `gate.sh` = convert_new_oakvale + diff). Next lever = by-value CScriptThing args in
 the typed export, then the cutscene/actor-map lowering (`StdMap_*` → `resources:NewActorMap/SetActor/RunMacro`).
 GOTCHA: never patch Python via bash heredoc/python -c (backslashes → \x01 bytes); use script files.

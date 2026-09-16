@@ -340,8 +340,7 @@ function Main(quest, me)
                     end
                     helper_DCEC50(quest, me, 5)
                     quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), me)
-                    -- TODO(native): CCharString::CCharString((CCharString *)(auStack_40 + 4),"REQUEST_PROTECTION",-1);
-                    require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, ("FETCHING" + 4), me, 0)
+                    require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "REQUEST_PROTECTION", me, 0)
                     piVar1 = *(this + 0x10)
                     if piVar1 ~= nil then
                         -- TODO(native): *piVar1 = *piVar1 + 1;
@@ -368,7 +367,7 @@ function Main(quest, me)
                         return
                     end
                     local_20 = nil
-                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), &local_20)
+                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), local_20)
                     helper_DCEC50(quest, me, 0)
                     piVar1 = *(this + 0x10)
                     if piVar1 ~= nil then
@@ -381,8 +380,8 @@ function Main(quest, me)
             bVar2 = not alive
             if not bVar2 then
                 quest:EntityStopFollowing(me)
-                -- TODO(native): CCharString::CCharString((CCharString *)(auStack_40 + 4),"TeamExitMarker",-1);
-                r1 = quest:GetNearestWithScriptName(me, "FETCHING")
+                -- TODO(native): CCharString::CCharString("REQUEST_PROTECTION","TeamExitMarker",-1);
+                r1 = quest:GetNearestWithScriptName(me, "REQUEST_PROTECTION")
                 aCStack_10 = resources:NewResource()
                 -- TODO(native): bVar2 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);
                 if bVar2 then
@@ -614,10 +613,10 @@ function GetNearestCrateToMe(quest, me)
             iVar4 = iVar4 + 0xc
         until not (local_14 < ((QUESTLIST_End("CrateList") - *piVar2) / 0xc))
     end
-    -- TODO(native): in_stack_00000004[1] = local_8;
-    -- TODO(native): in_stack_00000004[2] = local_4;
+    -- TODO(native): in_stack_00000004[1] = local_c;
+    -- TODO(native): in_stack_00000004[2] = local_c;
     if piVar2 ~= nil then
-        -- TODO(native): *local_4 = *local_4 + 1;
+        -- TODO(native): *local_c = *local_c + 1;
     end
     local_c = nil
     return in_stack_00000004

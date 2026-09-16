@@ -79,11 +79,11 @@ function OnPredicateFail(quest, me)
     local p0 = *QUESTLIST_Begin("CrateList")
     if p0 ~= QUESTLIST_End("CrateList") then
         while true do
-            -- TODO(native): local_4 = *(int **)(p0 + 8);
-            -- TODO(native): local_8 = *(int **)(p0 + 4);
+            -- TODO(native): local_c = *(int **)(p0 + 8);
+            -- TODO(native): local_c = *(int **)(p0 + 4);
             local_c = nil
-            if local_4 ~= nil then
-                -- TODO(native): *local_4 = *local_4 + 1;
+            if local_c ~= nil then
+                -- TODO(native): *local_c = *local_c + 1;
             end
             cVar1 = quest:GetFurthestWithScriptName(nil --[[missing]], nil --[[missing]])
             if cVar1 ~= 0 then break end

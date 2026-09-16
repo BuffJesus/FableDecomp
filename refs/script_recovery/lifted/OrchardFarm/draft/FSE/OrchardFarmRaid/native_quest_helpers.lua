@@ -7,7 +7,7 @@ function DoMultiplierCutscene(quest, me)
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
     puStack_38 = resources:NewActorMap()
-    resources:SetActor(puStack_38, "HERO", &local_c)
+    resources:SetActor(puStack_38, "HERO", 0x0)
     appuStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -70,7 +70,7 @@ function DoMultiplierCutscene(quest, me)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
-                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", puStack_38, false, true)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", pCVar5, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -126,10 +126,10 @@ function DoMultiplierCutscene(quest, me)
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)
     end
-    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&uStack_18);
+    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(puStack_38)
-    resources:ReleaseResource(local_10)
+    resources:DestroyActorMap(pCVar5)
+    resources:ReleaseResource(0x0)
     return extraout_EAX
 end
 
