@@ -121,7 +121,8 @@ function BullyProximity(quest, resources, me, victim, control, state)
     quest:SetStateBool("VictimShake", true)
     local conversation = resources:NewConversation(me, false, false)
     resources:AddConversationPerson(conversation, victim)
-    resources:AddConversationLine(conversation, "TEXT_QST_048_BULLY_BADGERING", me, victim, false)
+    -- Native DBC673: CCharString::Format("TEXT_QST_048_BULLY_SCRMSG_INTIMIDATING_%d", IntimidateSpeechLoop) before the +10 step.
+    resources:AddConversationLine(conversation, "TEXT_QST_048_BULLY_SCRMSG_INTIMIDATING_" .. tostring(state:GetStateInt("IntimidateSpeechLoop")), me, victim, false)
     local nextLine = wrapSignedInt32(state:GetStateInt("IntimidateSpeechLoop") + 10)
     state:SetStateInt("IntimidateSpeechLoop", nextLine)
     if nextLine > 40 then

@@ -12645,8 +12645,8 @@
     },
     "FSE/NewOakValeIntro/Entities/NOVI_Bully.lua": {
       "origin": "verified Bully resource/movie/retained actor candidate; staged runtime adapters",
-      "inputSha256": "d42710fd81ac8bc3aaec1f6c90923c11a38b8003343c72effc287c8494710e58",
-      "outputSha256": "d42710fd81ac8bc3aaec1f6c90923c11a38b8003343c72effc287c8494710e58",
+      "inputSha256": "378b6724a541e72985f2ba3dbd32d69cca415c9d8aee77c68c33d1420d25b70f",
+      "outputSha256": "378b6724a541e72985f2ba3dbd32d69cca415c9d8aee77c68c33d1420d25b70f",
       "functions": [
         {
           "function": "BullyAcquirePrepared",
@@ -12713,7 +12713,7 @@
         },
         {
           "function": "BullyHitConversation",
-          "sourceLine": 143,
+          "sourceLine": 144,
           "locals": {},
           "splitLocals": {},
           "removedLiteralLocals": {},
@@ -12722,7 +12722,7 @@
         },
         {
           "function": "BullySetHeroAlliance",
-          "sourceLine": 150,
+          "sourceLine": 151,
           "locals": {},
           "splitLocals": {},
           "removedLiteralLocals": {},
@@ -12731,7 +12731,7 @@
         },
         {
           "function": "BullyRunoffMovie",
-          "sourceLine": 157,
+          "sourceLine": 158,
           "locals": {},
           "splitLocals": {},
           "removedLiteralLocals": {},
@@ -12740,7 +12740,7 @@
         },
         {
           "function": "Init",
-          "sourceLine": 211,
+          "sourceLine": 212,
           "locals": {},
           "splitLocals": {},
           "removedLiteralLocals": {},
@@ -12749,7 +12749,7 @@
         },
         {
           "function": "resourceBody",
-          "sourceLine": 224,
+          "sourceLine": 225,
           "locals": {},
           "splitLocals": {},
           "removedLiteralLocals": {},
@@ -12758,7 +12758,7 @@
         },
         {
           "function": "GivenTeddy",
-          "sourceLine": 392,
+          "sourceLine": 393,
           "locals": {},
           "splitLocals": {},
           "removedLiteralLocals": {},
@@ -12767,7 +12767,7 @@
         },
         {
           "function": "Main",
-          "sourceLine": 401,
+          "sourceLine": 402,
           "locals": {},
           "splitLocals": {},
           "removedLiteralLocals": {},
@@ -17523,7 +17523,7 @@
           "status": "verified native scheduler condition",
           "lifetime": "registration clones bound Thing; caller copy destroyed before first frame"
         },
-        "sourceSha256": "d42710fd81ac8bc3aaec1f6c90923c11a38b8003343c72effc287c8494710e58",
+        "sourceSha256": "378b6724a541e72985f2ba3dbd32d69cca415c9d8aee77c68c33d1420d25b70f",
         "executableMissingOperandCount": 0,
         "unappliedProposalDirectories": [
           "work/bully_converter/talk_proposal",
@@ -44280,7 +44280,7 @@
       "status": "verified native scheduler condition",
       "lifetime": "registration clones bound Thing; caller copy destroyed before first frame"
     },
-    "sourceSha256": "d42710fd81ac8bc3aaec1f6c90923c11a38b8003343c72effc287c8494710e58",
+    "sourceSha256": "378b6724a541e72985f2ba3dbd32d69cca415c9d8aee77c68c33d1420d25b70f",
     "executableMissingOperandCount": 0,
     "unappliedProposalDirectories": [
       "work/bully_converter/talk_proposal",

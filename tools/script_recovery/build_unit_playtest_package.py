@@ -85,7 +85,7 @@ def stage(unit_name, oakvale, out):
 def main():
     a = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     a.add_argument('--unit', default='orchard_farm')
-    a.add_argument('--oakvale', type=Path, default=WORK / 'local-candidate-v4' / 'NoviCompatibility')
+    a.add_argument('--oakvale', type=Path, default=ROOT / 'work' / 'oakvale_readable_stage_20260916b')   # readable + v4 retail_override.lua (Bully fix)
     a.add_argument('--stage', type=Path, default=ROOT / 'work' / 'unit_playtest_stage')
     a.add_argument('--dll', type=Path, default=WORK / 'sidecar-abi-v2' / 'Release' / 'FableScriptExtender.dll')
     a.add_argument('--template', type=Path, default=WORK / 'local-candidate-v2')
