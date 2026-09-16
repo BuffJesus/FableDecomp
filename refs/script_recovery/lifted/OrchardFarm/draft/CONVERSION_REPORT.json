@@ -100,15 +100,15 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: CStack_20._3_1_ = GSI->IsQuestActive(&local_1c);",
-            "unlifted: this_00 = &local_1c;",
             "unlifted: this_00 = &CStack_18;",
+            "unlifted: this_00 = &local_1c;",
             "unlifted: CCharString__AssignFromWide(this + 0x68,0x12db0c8);",
             "unlifted: CCharString__AssignFromWide(this + 0x6c,0x12db088);",
             "unlifted: CCharString__AssignFromWide(this + 0x70,0x12db040);",
             "unlifted: CCharString__AssignFromWide(this + 0x74,0x12db000);"
           ],
           "calls": [
+            "IsQuestActive",
             "AddQuestRegion",
             "AddQuestRegion",
             "SetMasterGameState",
@@ -695,12 +695,12 @@
               {
                 "native": "comment_to_make",
                 "lua": "native_arg_comment_to_make",
-                "type": "int"
+                "type": "CCharString_bv *"
               },
               {
                 "native": "speaker",
                 "lua": "native_arg_speaker",
-                "type": "int"
+                "type": "CScriptThing_bv *"
               },
               {
                 "native": "comment_type",
@@ -710,12 +710,7 @@
             ],
             "returnKind": "number"
           },
-          "todo": [
-            "unlifted: uStack_14 = *(undefined4 *)(this + 0x4c);",
-            "GetTimer: missing timerId (0 args for 1 params)",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)"
-          ],
+          "todo": [],
           "calls": [
             "GetTimer",
             "IsActiveThreadTerminating",
@@ -724,22 +719,19 @@
             "AddPersonToConversation",
             "GetHero",
             "GetDataString",
+            "ENGINE_Concat",
+            "ENGINE_Concat",
+            "ENGINE_Concat",
             "AddLineToConversation",
             "SetTimer"
           ],
-          "lines": 20,
+          "lines": 18,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:MakeTeamMemberComment",
-                "line": 16,
-                "message": "...rchardFarmRaid/OrchardFarmRaid.lua:MakeTeamMemberComment:16: unexpected symbol near '&'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -870,15 +862,14 @@
             "returnKind": null
           },
           "todo": [
-            "CreateCreature: missing defName, scriptName (1 args for 3 params)",
+            "CreateCreature: missing scriptName (2 args for 3 params)",
             "goto LAB_00dcd9ed",
-            "CreateCreature: missing defName, scriptName (1 args for 3 params)",
+            "CreateCreature: missing scriptName (2 args for 3 params)",
             "label LAB_00dcd9ed",
             "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
             "verify cleanup at LAB_00dcda68 (lifted as early return)",
-            "CreateCreature: missing scriptName (2 args for 3 params)",
-            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
             "goto LAB_00dcd9ed"
           ],
           "calls": [
@@ -2048,7 +2039,7 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 9,
-        "passed": 6,
+        "passed": 7,
         "errors": [
           {
             "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua",
@@ -2059,11 +2050,6 @@
             "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua",
             "line": 615,
             "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:615: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-            "line": 151,
-            "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:151: unexpected symbol near '&'"
           }
         ]
       },
@@ -2155,35 +2141,24 @@
             "goto LAB_00dd1d98",
             "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti"
           ],
-          "MakeTeamMemberComment": [
-            "unlifted: uStack_14 = *(undefined4 *)(this + 0x4c);",
-            "GetTimer: missing timerId (0 args for 1 params)",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)"
-          ]
+          "MakeTeamMemberComment": []
         },
         "syntax": {
           "runtime": "Lua 5.4",
-          "ok": false,
+          "ok": true,
           "checked": 1,
-          "passed": 0,
-          "errors": [
-            {
-              "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
-              "line": 151,
-              "message": "FSE/OrchardFarmRaid/native_quest_helpers.lua:151: unexpected symbol near '&'"
-            }
-          ]
+          "passed": 1,
+          "errors": []
         }
       },
       "summary": {
         "owners": 8,
         "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 39,
-        "fileSyntaxPassed": 6,
+        "functionSyntaxPassed": 40,
+        "fileSyntaxPassed": 7,
         "fileSyntaxChecked": 9,
-        "todo": 145
+        "todo": 139
       }
     },
     {
@@ -2381,9 +2356,9 @@
     "owners": 10,
     "functions": 46,
     "missing": 2,
-    "functionSyntaxPassed": 43,
-    "fileSyntaxPassed": 8,
+    "functionSyntaxPassed": 44,
+    "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 11,
-    "todo": 145
+    "todo": 139
   }
 }

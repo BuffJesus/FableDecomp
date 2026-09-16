@@ -14119,13 +14119,13 @@
    "params": [
     {
      "name": "comment_to_make",
-     "type": "int",
-     "ctype": "pdb size 4"
+     "type": "CCharString *",
+     "ctype": "ego_r signature"
     },
     {
      "name": "speaker",
-     "type": "int",
-     "ctype": "pdb size 4"
+     "type": "CScriptThing *",
+     "ctype": "ego_r signature"
     },
     {
      "name": "comment_type",
@@ -14316,6 +14316,46 @@
    "params": [],
    "source": "PDB stack parameters"
   },
+  "0x99f570": {
+   "name": "CCharString_ConcatString",
+   "cc": "__fastcall",
+   "ret": "CCharString *",
+   "params": [
+    {
+     "name": "dest",
+     "type": "CCharString *"
+    },
+    {
+     "name": "a",
+     "type": "CCharString *"
+    },
+    {
+     "name": "b",
+     "type": "CCharString *"
+    }
+   ],
+   "source": "disassembly 2026-09-16"
+  },
+  "0x99f600": {
+   "name": "CCharString_ConcatCString",
+   "cc": "__fastcall",
+   "ret": "CCharString *",
+   "params": [
+    {
+     "name": "dest",
+     "type": "CCharString *"
+    },
+    {
+     "name": "a",
+     "type": "CCharString *"
+    },
+    {
+     "name": "b",
+     "type": "char *"
+    }
+   ],
+   "source": "disassembly 2026-09-16"
+  },
   "0x99aed0": {
    "name": "CCharString__CCharString",
    "cc": "__thiscall",
@@ -14418,54 +14458,6 @@
    "params": [],
    "source": "inferred ret 0 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCarriedReadableDef::CCarriedReadableDef"
-  },
-  "0x99f570": {
-   "name": "CCharString__AppendData",
-   "cc": "__fastcall",
-   "ret": "int",
-   "params": [
-    {
-     "name": "p0",
-     "type": "void *",
-     "ctype": "ecx"
-    },
-    {
-     "name": "p1",
-     "type": "void *",
-     "ctype": "edx"
-    },
-    {
-     "name": "p2",
-     "type": "int",
-     "ctype": "inferred"
-    }
-   ],
-   "source": "inferred ret 4 (ecx=True, edx=True, fpu=False)",
-   "bsimLabel": "CCharString::AppendData"
-  },
-  "0x99f600": {
-   "name": "CCharString__AppendCString",
-   "cc": "__fastcall",
-   "ret": "int",
-   "params": [
-    {
-     "name": "p0",
-     "type": "void *",
-     "ctype": "ecx"
-    },
-    {
-     "name": "p1",
-     "type": "void *",
-     "ctype": "edx"
-    },
-    {
-     "name": "p2",
-     "type": "int",
-     "ctype": "inferred"
-    }
-   ],
-   "source": "inferred ret 4 (ecx=True, edx=True, fpu=False)",
-   "bsimLabel": "CCharString::AppendCString"
   },
   "0xf35b40": {
    "name": "NUISystem__CFrontEndScreen__~CFrontEndScreen",

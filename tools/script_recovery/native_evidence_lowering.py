@@ -237,6 +237,10 @@ def fold_by_value_things(text: str, code_range=None) -> str:
 
 def normalise_typed_decompile(text: str) -> str:
     """Typed exports (ExportTypedTranslationUnit) print a few shapes the untyped pipeline never saw."""
+    text = re.sub(r'return CONCAT31\([^;]*?,\s*(0|1)\);', lambda m: f'return {"true" if m.group(1) == "1" else "false"};', text)
+    text = re.sub(r"return CONCAT31\(\w+,\s*'\\x01' - (\w+)\);", r'return !\1;', text)
+    text = re.sub(r'return \(uint\)extraout_var(?:_\d+)? << 8;', 'return false;', text)
+    text = re.sub(r'return \(uint\)(\w+) << 8;', r'return false;', text)
     text = re.sub(r'\(int\)(this(?:_\d+)?)\b', r'\1', text)                 # (int)this + 0x40
     text = re.sub(r'\)[ \t]*\r?\n[ \t]*;', ');', text)                        # `...)` newline `;`
     text = re.sub(r'\)\)[ \t]*\r?\n[ \t]+\(', '))(', text)                   # call head wrapped before its argument list
@@ -419,6 +423,7 @@ def fold_resource_objects(text, call_labels):
 
 
 SQUARED_DISTANCE = {0xCBE512}   # float __fastcall GetSquaredDistanceBetweenThings(a, b)
+STRING_CONCAT = {0x99F570, 0x99F600}   # CCharString operator+ (dest, a, b) -> dest; disassembly 2026-09-16
 DISTANCE_PREDICATES = {0xCBE2FF: 'IsDistanceBetweenThingsUnder', 0xCBE3EA: 'IsDistanceBetweenThingsOver'}   # bool __fastcall (a, b, float)
 
 
@@ -429,6 +434,9 @@ def fold_engine_helpers(text, call_labels):
         if target in SQUARED_DISTANCE:
             text = re.sub(re.escape(label) + r'\s*\(([^,;]+),([^;)]+)\)',
                           lambda m: f'ENGINE_SquaredDistance({_strip_addr(m.group(1))}, {m.group(2).strip()})', text)
+        elif target in STRING_CONCAT:
+            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*([^,;]+),\s*([^;)]+)\)',
+                          lambda m: f'ENGINE_Concat({m.group(1).strip().lstrip("&")}, {m.group(2).strip().lstrip("&")})', text)
         elif target in DISTANCE_PREDICATES:
             name = DISTANCE_PREDICATES[target]
             text = re.sub(re.escape(label) + r'\s*\(([^,;]+),\s*([^,;]+),\s*([^;)]+)\)',
@@ -828,8 +836,11 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = text[:m.start()] + scope + rest
     # 3e. vcalls on CScriptThing parameters: (**(code **)(*(int *)param + SLOT))(
     sig = re.search(r'\(\s*\w+ \*this(?:,([^)]*))?\)\s*\r?\n\r?\n?\{', text)
-    for pname in (re.findall(r'\b(\w+)\s*(?:,|$)', sig.group(1)) if sig and sig.group(1) else []):
-        pat = re.compile(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + re.escape(pname) + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(')
+    pnames = re.findall(r'\b(\w+)\s*(?:,|$)', sig.group(1)) if sig and sig.group(1) else []
+    for pname in list(pnames):
+        pnames += re.findall(r'^[ \t]*(\w+) = ' + re.escape(pname) + r';', text, re.M)
+    for pname in pnames:
+        pat = re.compile(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + re.escape(pname) + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\((?:' + re.escape(pname) + r'\s*(?:,\s*&\w+\s*(?=\)))?(?:,\s*)?)?')
         text = pat.sub(lambda h: thing_call(pname, h.group(1), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
     # 3f. inline CScriptThing copies out of a list element into a stack thing (counted-pointer form)
     RE_ELEM_PARTS = re.compile(r'^[ \t]*(\w+) = \*\(int \*\*\)\((\w+) \+ 8 \+ (\w+)\);[ \t]*\r?\n[ \t]*(\w+) = \*\(undefined4 \*\)\(\2 \+ 4 \+ \3\);[ \t]*\r?\n', re.M)
@@ -928,7 +939,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     return text, diag
 
 
-GSI_RECEIVER = r'(?:\(\w+ \*\*?\))?\*\((?:int|void|undefined4|CScriptThing_bv|CCharString_bv|C3DVector_bv) \*\*\)\(this \+ (?:4|0x40)\)'
+GSI_RECEIVER = r'(?:(?:\(\w+ \*\*?\))?\*\((?:int|void|undefined4|CScriptThing_bv|CCharString_bv|C3DVector_bv) \*\*\)\(this \+ (?:4|0x40)\)|DAT_0143e8f8)'
 ME_RECEIVER = r'(?:\(CScriptThing(?:_bv)? \*\))?\(this \+ 8\)'
 
 
@@ -1018,6 +1029,7 @@ def _expand_calls(text, name, render):
 def finish_lua(text: str) -> str:
     """Turn lowering pseudo-calls into Lua after the lifter has run."""
     text = re.sub(r'ENGINE_(IsDistanceBetweenThings(?:Under|Over))\(', r'quest:\1(', text)
+    text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)

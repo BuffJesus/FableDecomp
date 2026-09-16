@@ -160,7 +160,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
     // register/stack provenance tags
     private static final String THIS = "THIS", GSI = "GSI", GSIVT = "GSIVT", PARENT = "PARENT", ME = "ME", MEVT = "MEVT";
     private static final String MEMPTR = "MEMPTR", MEMPTRVT = "MEMPTRVT";
-    private int dataSites = 0;
+    private int dataSites = 0, paramThings = 0;
 
     private String regName(Object o) { return (o instanceof Register) ? ((Register) o).getName() : null; }
 
@@ -168,24 +168,34 @@ public class ExportTypedTranslationUnit extends GhidraScript {
 
     private String stackKey(String base, long disp, long espDelta) {
         // ESP-relative displacements move with pushes; key slots by their frame offset instead.
-        return base.equals("ESP") ? ("STK:" + (disp + espDelta)) : ("BP:" + disp);
+        return base.equals("ESP") ? ("STK:" + (disp - espDelta)) : ("BP:" + disp);   // entry-relative: esp_now = esp_entry - espDelta
     }
 
     private void overrideCalls(Function f) {
         Map<String, String> tags = new HashMap<>();
         tags.put("ECX", THIS);
+        // CScriptThing parameters (typed from the PDB / ego_r signature) live at entry-relative stack slots
+        for (Parameter prm : f.getParameters()) {
+            DataType t = prm.getDataType();
+            boolean thingPtr = t instanceof Pointer && ((Pointer) t).getDataType().getName().startsWith("CScriptThing");
+            if (thingPtr && prm.isStackVariable()) { tags.put("STK:" + prm.getStackOffset(), ME); paramThings++; println("thing param " + prm.getName() + " @STK:" + prm.getStackOffset() + " in " + f.getName()); }
+            else if (thingPtr) println("param " + prm.getName() + " of " + f.getName() + " is a thing but not stack-resident: " + prm.getVariableStorage());
+        }
         long espDelta = 0, espBeforePushes = 0, argStart = -1;
         boolean pushing = false;
         int byValuePending = 0;
         Instruction prev = null;
         InstructionIterator ins = currentProgram.getListing().getInstructions(f.getBody(), true);
+        long bodyDelta = 0;   // depth before a (possibly mid-function) epilogue: restored after its RET
         while (ins.hasNext()) {
             Instruction i = ins.next();
             String mn = i.getMnemonicString().toUpperCase();
             int n = i.getNumOperands();
+            if (mn.equals("RET")) { espDelta = bodyDelta; pushing = false; argStart = -1; continue; }
+            boolean epilogueOp = mn.equals("POP") || ((mn.equals("ADD")) && n == 2 && i.getOpObjects(0).length >= 1 && "ESP".equals(regName(i.getOpObjects(0)[0])));
+            if (!epilogueOp) bodyDelta = espDelta;
             if (mn.equals("PUSH")) {
                 if (!pushing) { espBeforePushes = espDelta; pushing = true; }
-                if (argStart < 0) argStart = espDelta;
                 espDelta += 4;
                 prev = i;
                 continue;
@@ -207,7 +217,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     Instruction nx = i.getNext();
                     boolean reserve = mn.equals("SUB") && nx != null && nx.getMnemonicString().equalsIgnoreCase("MOV")
                         && nx.getNumOperands() == 2 && nx.getOpObjects(1).length == 1 && "ESP".equals(regName(nx.getOpObjects(1)[0]));
-                    if (reserve && argStart < 0) argStart = espDelta;
+                    if (reserve && argStart < 0) argStart = pushing ? espBeforePushes : espDelta;   // the argument area began with any pushes just before
                     espDelta += mn.equals("SUB") ? v : -v;
                     prev = i;
                     continue;
@@ -270,7 +280,10 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 for (Object o : src) if (o instanceof Scalar) { disp = ((Scalar) o).getSignedValue(); hasDisp = true; }
                 if (dstReg && d != null) {
                     String tag = null;
-                    if (mn.equals("MOV") && srcReg && sName != null) tag = tags.get(sName);
+                    boolean gsiGlobal = false;
+                    for (Object o : src) if (o instanceof Address && ((Address) o).getOffset() == 0x143e8f8L) gsiGlobal = true;
+                    if (mn.equals("MOV") && gsiGlobal && sName == null) tag = GSI;   // g_ScriptInterface singleton
+                    else if (mn.equals("MOV") && srcReg && sName != null) tag = tags.get(sName);
                     else if (mn.equals("MOV") && sName != null) {
                         String st = tags.get(sName);
                         if (sName.equals("ESP") || sName.equals("EBP")) tag = tags.get(stackKey(sName, disp, espDelta));
@@ -343,7 +356,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             try { f.setCallingConvention("__thiscall"); } catch (Exception e) { }
             overrideCalls(f);
         }
-        println("Call-site overrides written: " + overrides + " (by-value CScriptThing sites: " + byValueSites + ", Data-pointer thing sites: " + dataSites + ")");
+        println("Call-site overrides written: " + overrides + " (by-value CScriptThing sites: " + byValueSites + ", Data-pointer thing sites: " + dataSites + ", thing params tagged: " + paramThings + ")");
         DecompInterface decompiler = new DecompInterface();
         decompiler.setSimplificationStyle("decompile");
         decompiler.openProgram(currentProgram);

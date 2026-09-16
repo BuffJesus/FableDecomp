@@ -170,6 +170,8 @@ class UnitConverter:
                 spec_l.resolve_string = self.rdata.string_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
+                # Ghidra prints some namespaced labels with `__` in C output
+                spec_l.call_labels.update({k.replace('::', '__'): v for k, v in list(spec_l.call_labels.items()) if '::' in k})
                 spec_l.hidden_thing_returns = self.hidden_thing_returns
                 spec_l.code_range = self.code_range
                 lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature), spec_l)
@@ -181,7 +183,9 @@ class UnitConverter:
                     todo, params = [], 'quest, context'
                 else:
                     parameter_kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES
-                                       else 'bool' if p['type'] == 'bool' else 'unknown'
+                                       else 'bool' if p['type'] == 'bool'
+                                       else 'thing' if 'CScriptThing' in p['type']
+                                       else 'string' if 'CCharString' in p['type'] else 'unknown'
                                        for p in signature['parameters']}
                     body = lifter.lift(name, source, native_function=fn, parameters=parameter_kinds)
                     calls, todo = list(lifter.calls), list(lifter.todo)
@@ -245,7 +249,8 @@ class UnitConverter:
                         shared_lifter.helper_return_kinds[helper] = sig['returnKind']
                     if int(address, 16) in self.hidden_thing_returns:
                         shared_lifter.helper_return_kinds[helper] = 'thing'
-                kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES else 'unknown' for p in signature['parameters']}
+                kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES else 'bool' if p['type'] == 'bool' else 'thing' if 'CScriptThing' in p['type']
+                         else 'string' if 'CCharString' in p['type'] else 'unknown' for p in signature['parameters']}
                 body = shared_lifter.lift(name, source, native_function=fn, parameters=kinds)
                 params = 'quest, me' + ''.join(', ' + p['lua'] for p in signature['parameters'])
                 shared_sources[name] = finish_lua('\n'.join([f'function {name}({params})'] + body + ['end', '']))

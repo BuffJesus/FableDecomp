@@ -134,26 +134,24 @@ function DoMultiplierCutscene(quest, me)
 end
 
 function MakeTeamMemberComment(quest, me, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)
-    local pCVar3
     local alive = true
-    -- TODO(native): uStack_14 = *(undefined4 *)(this + 0x4c);
-    local iVar2 = quest:GetTimer(nil --[[missing]])
-    if 0 < iVar2 then
+    local iVar1 = quest:GetTimer(quest:GetStateInt("CommentTimer"))
+    local pSpeaker = native_arg_speaker
+    if 0 < iVar1 then
         alive = not quest:IsActiveThreadTerminating()
-        return extraout_var << 8
+        return false
     end
-    local conversationID = quest:AddNewConversation(nil --[[missing]], (native_arg_comment_to_make ~= 0), false)
-    pCVar3 = quest:GetHero()
-    quest:AddPersonToConversation(conversationID, pCVar3)
-    local r1 = quest:GetHero()
-    pCVar3 = 0x0
-    local p2 = native_arg_comment_to_make:GetDataString()
-    local pvVar4 = CCharString__AppendData(&stack0xfffffff0,this + 0x84,p2)
-    pvVar4 = CCharString__AppendCString(&uStack_14,pvVar4,p2_00)
-    local pLine = CCharString__AppendData(&stack0x00000000,pvVar4,"_")
-    quest:AddLineToConversation(conversationID, pLine, r1, nil --[[missing]], unaff_retaddr)
-    local uVar5 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
-    return CONCAT31((int3)(uVar5 >> 8),1)
+    local conversationID = quest:AddNewConversation(native_arg_speaker, false, false)
+    local pCVar2 = quest:GetHero()
+    quest:AddPersonToConversation(conversationID, pCVar2)
+    pCVar2 = quest:GetHero()
+    local pCVar3 = pSpeaker:GetDataString()
+    pCVar3 = (quest:GetStateString("TextSystemScriptCode") .. pCVar3)
+    pCVar3 = (pCVar3 .. "_")
+    pCVar3 = (pCVar3 .. native_arg_comment_to_make)
+    quest:AddLineToConversation(conversationID, pCVar3, pSpeaker, pCVar2, false)
+    local uVar4 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
+    return true
 end
 
 return {DoMultiplierCutscene = DoMultiplierCutscene, MakeTeamMemberComment = MakeTeamMemberComment}

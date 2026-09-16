@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, fVar8, iVar4, iVar9, pCVar5, pCVar6, pCVar7, r1, r2, r3, thing1
+    local bVar3, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1
     local alive = true
     local cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
@@ -35,7 +35,7 @@ function Main(quest, me)
                 return
             end
             quest:DisplayQuestInfo(true)
-            iVar4 = quest:AddQuestInfoCounterList("HUD_QUEST_ICON_BANDIT", "HUD_QUEST_ICON_BANDIT", __native_entity_state:GetStateInt("TeamMemberLimit") * 3)
+            iVar4 = quest:AddQuestInfoCounterList("HUD_QUEST_ICON_BANDIT", __native_entity_state:GetStateInt("TeamMemberLimit") * 3, 1.0)
             __native_entity_state:SetStateInt("BanditsLeftID", iVar4)
             quest:UpdateQuestInfoCounterList(__native_entity_state:GetStateInt("BanditsLeftID"), __native_entity_state:GetStateInt("TeamMemberLimit") * 3, -1)
         end
@@ -67,9 +67,9 @@ function Main(quest, me)
                     end
                     quest:SetTimer(quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_TeamReinforcementsTimer")), __native_entity_state:GetStateInt("TeamRespawnTime"))
                     iVar4 = quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"))
-                    fVar8 = 15.0
+                    fVar9 = 15.0
                     thing1 = quest:GetHero()
-                    bVar3 = quest:IsDistanceBetweenThingsOver(thing1, me, fVar8)
+                    bVar3 = quest:IsDistanceBetweenThingsOver(thing1, me, fVar9)
                     if bVar3 then
                         pCVar5 = me:GetPos()
                         bVar3 = quest:IsCameraPosOnScreen(pCVar5)
@@ -79,7 +79,7 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
-                            iVar9 = 0
+                            i_stk_70 = 0
                             if __native_entity_state:GetStateInt("TeamMemberLimit") ~= iVar4 and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4 then
                                 repeat
                                     alive = not quest:IsActiveThreadTerminating()
@@ -88,13 +88,13 @@ function Main(quest, me)
                                         return
                                     end
                                     bVar3 = false
-                                    pCVar7 = __native_entity_state:GetStateString("TeamMemberName")
+                                    pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                     pCVar5 = me:GetPos()
-                                    r1 = quest:CreateCreature(nil --[[missing]], pCVar5, nil --[[missing]])
+                                    r1 = quest:CreateCreature(pCVar8, pCVar5, nil --[[missing]])
                                     quest:EntityAttachToScript(r1, "Q_OrchardFarmRaid")
                                     quest:Pause(2.0)
-                                    iVar9 = iVar9 + 1
-                                until not (iVar9 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
+                                    i_stk_70 = i_stk_70 + 1
+                                until not (i_stk_70 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                             end
                             -- TODO(native): goto LAB_00dcd9ed
                         end
@@ -104,7 +104,7 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    iVar9 = 0
+                    i_stk_70 = 0
                     if __native_entity_state:GetStateInt("TeamMemberLimit") ~= iVar4 and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4 then
                         repeat
                             alive = not quest:IsActiveThreadTerminating()
@@ -113,15 +113,15 @@ function Main(quest, me)
                                 return
                             end
                             bVar3 = false
-                            pCVar7 = __native_entity_state:GetStateString("TeamMemberName")
+                            pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                             pCVar5 = __native_entity_state:GetStateThing("OtherSpawnPoint"):GetPos()
-                            r2 = quest:CreateCreature(nil --[[missing]], pCVar5, nil --[[missing]])
+                            r2 = quest:CreateCreature(pCVar8, pCVar5, nil --[[missing]])
                             quest:EntityAttachToScript(r2, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
                             pCVar6 = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
                             __native_entity_state:SetStateThing("OtherSpawnPoint", pCVar6)
-                            iVar9 = iVar9 + 1
-                        until not (iVar9 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
+                            i_stk_70 = i_stk_70 + 1
+                        until not (i_stk_70 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                     end
                     -- LAB_00dcd9ed: (native jump target)
                     alive = not quest:IsActiveThreadTerminating()
@@ -162,9 +162,9 @@ function Main(quest, me)
                         r3 = quest:GetNearestWithScriptName(pCVar6, "GuardTeamMember")
                         iVar4 = (r3 ~= nil and r3:IsAlive())
                         if iVar4 then
-                            fVar8 = 15.0
+                            fVar9 = 15.0
                             pCVar6 = quest:GetHero()
-                            bVar3 = quest:IsDistanceBetweenThingsUnder(r3, pCVar6, fVar8)
+                            bVar3 = quest:IsDistanceBetweenThingsUnder(r3, pCVar6, fVar9)
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -198,7 +198,7 @@ function Main(quest, me)
                         return
                     end
                     iVar4 = quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"))
-                    iVar9 = 0
+                    iVar7 = 0
                     if __native_entity_state:GetStateInt("TeamMemberLimit") ~= iVar4 and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4 then
                         repeat
                             alive = not quest:IsActiveThreadTerminating()
@@ -207,31 +207,31 @@ function Main(quest, me)
                                 return
                             end
                             r3 = resources:StartMovie("")
-                            if (iVar9 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
+                            if (iVar7 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
                                     return
                                 end
                                 bVar3 = false
-                                pCVar7 = __native_entity_state:GetStateString("TeamMemberName")
+                                pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
-                                pCVar6 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", pCVar5, "NEXT_WAVE")
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);
+                                pCVar6 = quest:CreateCreature(pCVar8, pCVar5, "CREATURE_BANDIT_ARCHER_LEVEL1")
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then return end
                                 bVar3 = false
-                                pCVar7 = __native_entity_state:GetStateString("TeamMemberName")
+                                pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
-                                pCVar6 = quest:CreateCreature("GuardTeamMember", pCVar5, nil --[[missing]])
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_5c,(int)pCVar6);
+                                pCVar6 = quest:CreateCreature(pCVar8, pCVar5, "NEXT_WAVE")
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
                             end
                             quest:EntityAttachToScript(pCVar6, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
-                            iVar9 = iVar9 + 1
-                        until not (iVar9 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
+                            iVar7 = iVar7 + 1
+                        until not (iVar7 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                     end
                     -- TODO(native): goto LAB_00dcd9ed
                 end

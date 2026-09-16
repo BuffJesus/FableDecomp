@@ -1799,7 +1799,8 @@ class Lifter:
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At')
-                                      else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool') else 'number')
+                                      else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
+                                      else 'string' if name in ('ENGINE_Concat',) or name.endswith('STATE_GetString') else 'number')
             else:
                 self.emit(call)
             self.calls.append(name)

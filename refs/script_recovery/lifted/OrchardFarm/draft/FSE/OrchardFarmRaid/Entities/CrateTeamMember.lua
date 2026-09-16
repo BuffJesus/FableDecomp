@@ -559,7 +559,7 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
                 if cVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar1 = not alive
-                    return CONCAT31(extraout_var_01,'\x01' - bVar1)
+                    return not bVar1
                 end
             end
             uVar7 = uVar7 + 1
@@ -569,7 +569,7 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
     alive = not quest:IsActiveThreadTerminating()
     uVar4 = extraout_var_00
     ::LAB_00dcedc1::
-    return uVar4 << 8
+    return false
 end
 
 function GetNearestCrateToMe(quest, me)

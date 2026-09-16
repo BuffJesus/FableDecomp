@@ -54,13 +54,13 @@ function Main(quest)
 end
 
 function Init(quest)
-    -- TODO(native): CStack_20._3_1_ = GSI->IsQuestActive(&local_1c);
-    if CStack_20._3_1_ == 0 then
-        quest:AddQuestRegion("Q_OrchardFarmRaidEvil", "OrchardFarm")
-        -- TODO(native): this_00 = &local_1c;
-    else
+    local bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidGood")
+    if bVar2 then
         quest:AddQuestRegion("Q_OrchardFarmRaidGood", "OrchardFarm")
         -- TODO(native): this_00 = &CStack_18;
+    else
+        quest:AddQuestRegion("Q_OrchardFarmRaidEvil", "OrchardFarm")
+        -- TODO(native): this_00 = &local_1c;
     end
     quest:SetMasterGameState("OrchardFarmGuardKilled", false)
     quest:SetMasterGameState("OrchardFarmBanditKilled", false)
@@ -80,17 +80,17 @@ function Init(quest)
     quest:SetStateBool("ShownCombatFlourishTutorial", false)
     quest:SetStateBool("WhisperInCutscene", false)
     quest:SetStateInt("Teams_1_EnemyTeam", 0)
-    local ppuStack_14 = nil
+    local ppuStack_c = nil
     quest:SetStateThing("Teams_0_TeamCrateCarrier", nil)
-    ppuStack_14 = nil
-    ppuStack_14 = nil
+    ppuStack_c = nil
+    ppuStack_c = nil
     quest:SetStateThing("Teams_1_TeamCrateCarrier", nil)
-    ppuStack_14 = nil
+    ppuStack_c = nil
     -- TODO(native): CCharString__AssignFromWide(this + 0x68,0x12db0c8);
     -- TODO(native): CCharString__AssignFromWide(this + 0x6c,0x12db088);
     -- TODO(native): CCharString__AssignFromWide(this + 0x70,0x12db040);
     -- TODO(native): CCharString__AssignFromWide(this + 0x74,0x12db000);
-    local bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidEvil")
+    bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidEvil")
     if bVar2 then
         quest:SetStateInt("HeroTeam", 1)
         quest:SetStateString("TextSystemScriptCode", "TEXT_QST_051_")
@@ -316,7 +316,7 @@ function ProcessGameRulesEvil(quest)
                     pMessage = quest:GetStateString(("FailReasons_" .. quest:GetStateInt("MissionFailed")))
                     bVar4 = true
                     pCVar8 = quest:GetActiveQuestName()
-                    quest:SetQuestAsFailed(pCVar8, bVar4, "CS_ORCHARD_EVIL_WHISPER_BACK", (pMessage ~= 0))
+                    quest:SetQuestAsFailed(pCVar8, bVar4, pMessage, bVar10)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidEvil", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
                 end
@@ -585,7 +585,7 @@ function ProcessGameRulesGood(quest)
                     pMessage = quest:GetStateString(("FailReasons_" .. quest:GetStateInt("MissionFailed")))
                     bVar3 = true
                     pCVar8 = quest:GetActiveQuestName()
-                    quest:SetQuestAsFailed(pCVar8, bVar3, "CS_ORCHARD_GOOD_WHISPER_FRONT", (pMessage ~= 0))
+                    quest:SetQuestAsFailed(pCVar8, bVar3, pMessage, bVar12)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidGood", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
                 end
@@ -815,26 +815,24 @@ function WatchForExternalScriptDeactivation(quest)
 end
 
 function MakeTeamMemberComment(quest, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)
-    local pCVar3
     local alive = true
-    -- TODO(native): uStack_14 = *(undefined4 *)(this + 0x4c);
-    local iVar2 = quest:GetTimer(nil --[[missing]])
-    if 0 < iVar2 then
+    local iVar1 = quest:GetTimer(quest:GetStateInt("CommentTimer"))
+    local pSpeaker = native_arg_speaker
+    if 0 < iVar1 then
         alive = not quest:IsActiveThreadTerminating()
-        return extraout_var << 8
+        return false
     end
-    local conversationID = quest:AddNewConversation(nil --[[missing]], (native_arg_comment_to_make ~= 0), false)
-    pCVar3 = quest:GetHero()
-    quest:AddPersonToConversation(conversationID, pCVar3)
-    local r1 = quest:GetHero()
-    pCVar3 = 0x0
-    local p2 = native_arg_comment_to_make:GetDataString()
-    local pvVar4 = CCharString__AppendData(&stack0xfffffff0,this + 0x84,p2)
-    pvVar4 = CCharString__AppendCString(&uStack_14,pvVar4,p2_00)
-    local pLine = CCharString__AppendData(&stack0x00000000,pvVar4,"_")
-    quest:AddLineToConversation(conversationID, pLine, r1, nil --[[missing]], unaff_retaddr)
-    local uVar5 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
-    return CONCAT31((int3)(uVar5 >> 8),1)
+    local conversationID = quest:AddNewConversation(native_arg_speaker, false, false)
+    local pCVar2 = quest:GetHero()
+    quest:AddPersonToConversation(conversationID, pCVar2)
+    pCVar2 = quest:GetHero()
+    local pCVar3 = pSpeaker:GetDataString()
+    pCVar3 = (quest:GetStateString("TextSystemScriptCode") .. pCVar3)
+    pCVar3 = (pCVar3 .. "_")
+    pCVar3 = (pCVar3 .. native_arg_comment_to_make)
+    quest:AddLineToConversation(conversationID, pCVar3, pSpeaker, pCVar2, false)
+    local uVar4 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
+    return true
 end
 
 function DoMultiplierCutscene(quest)

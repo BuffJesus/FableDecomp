@@ -115,9 +115,40 @@ def size_type(size):
     return {1: 'bool', 4: 'int', 12: 'CScriptThing', 8: 'ulonglong'}.get(size, 'int')
 
 
+SIGNATURE = re.compile(r'/\*\s*\[bsim[^\]]*\]\s*(?:public|private|protected):\s*(?:virtual\s+)?[\w:<>,]+\s+__thiscall\s+[\w:<>~]+\((.*?)\)\s*(?:const)?\s*\*/', re.S)
+
+
+def signature_types(unit_dir):
+    """address -> parameter type names from the ego_r signature Ghidra's bsim match recorded in the
+    decompile header (`class CScriptThing &`, `class CCharString const &`, ...). The PDB locals
+    export only gives sizes for pointer/reference parameters; the signature gives the class."""
+    tu = Path(unit_dir) / 'translation_unit.json'
+    if not tu.exists():
+        return {}
+    out = {}
+    for f in json.loads(tu.read_text(encoding='utf-8-sig'))['functions']:
+        m = SIGNATURE.search(f.get('decompile') or '')
+        if not m:
+            continue
+        types = []
+        for raw in [t.strip() for t in m.group(1).split(',') if t.strip()] if m.group(1).strip() != 'void' else []:
+            base = re.sub(r'\b(class|struct|enum|const)\b', '', raw).strip()
+            ref = base.endswith('&') or base.endswith('*')
+            base = base.rstrip('&* ').split('::')[-1]
+            if base in ('CScriptThing', 'CCharString', 'CWideString', 'C3DVector', 'CRGBColour'):
+                types.append(f'{base} *' if ref else base)
+            elif base in ('float', 'bool', 'int', 'long', 'unsigned long', 'unsigned int'):
+                types.append({'float': 'float', 'bool': 'bool'}.get(base, 'int'))
+            else:
+                types.append(None)
+        out[f['address'].lower()] = types
+    return out
+
+
 def unit_functions(unit_dir):
     """Prototypes for a unit's own functions (quest members, entity members, helpers) from the PDB."""
     params = pdb_parameters(Path(unit_dir) / 'pdb' / 'Ego_r-pdb-locals.tsv')
+    signatures = signature_types(unit_dir)
     out = {}
     for path in sorted((Path(unit_dir) / 'units').glob('*.json')):
         unit = json.loads(path.read_text(encoding='utf-8'))
@@ -136,10 +167,27 @@ def unit_functions(unit_dir):
             if qname not in params:
                 continue
             plist = [{'name': n, 'type': size_type(sz), 'ctype': f'pdb size {sz}'} for n, sz, _ in params[qname]]
+            sig = signatures.get(address.lower())
+            if sig and len(sig) == len(plist):
+                for entry, stype in zip(plist, sig):
+                    if stype and (entry['type'] == 'int' and stype.endswith('*') or entry['type'] == 'CScriptThing' and stype == 'CScriptThing'):
+                        entry['type'], entry['ctype'] = stype, 'ego_r signature'
             out.setdefault(address.lower(), {'name': qname.split('::', 1)[1].replace('::', '__'), 'cc': '__thiscall',
                                              'ret': 'void' if qname.split('::')[-1] in void_names else 'int',
                                              'params': plist, 'source': 'PDB stack parameters'})
     return out
+
+
+# Engine helpers proven by disassembly (not FSE-exposed): CCharString operator+ returning through a
+# hidden pointer in ECX; EDX = left operand, one stack operand; ret 4.
+EXTRA_HELPERS = {
+    '0x99f570': {'name': 'CCharString_ConcatString', 'cc': '__fastcall', 'ret': 'CCharString *',
+                 'params': [{'name': 'dest', 'type': 'CCharString *'}, {'name': 'a', 'type': 'CCharString *'}, {'name': 'b', 'type': 'CCharString *'}],
+                 'source': 'disassembly 2026-09-16'},
+    '0x99f600': {'name': 'CCharString_ConcatCString', 'cc': '__fastcall', 'ret': 'CCharString *',
+                 'params': [{'name': 'dest', 'type': 'CCharString *'}, {'name': 'a', 'type': 'CCharString *'}, {'name': 'b', 'type': 'char *'}],
+                 'source': 'disassembly 2026-09-16'},
+}
 
 
 def main():
@@ -179,6 +227,8 @@ def main():
         from tools.script_recovery.script_units import unit as script_unit
         unit_fns = unit_functions(script_unit(args.unit)['evidence'])
         helpers.update(unit_fns)
+    for address, spec in EXTRA_HELPERS.items():
+        helpers.setdefault(address, spec)
         args.out = script_unit(args.unit)['evidence'] / 'typing_spec.json'
     args.out.parent.mkdir(parents=True, exist_ok=True)
     spec = {'schema': 'ghidra-typing-spec/1', 'source': str(args.fse), 'byValue': BY_VALUE,
