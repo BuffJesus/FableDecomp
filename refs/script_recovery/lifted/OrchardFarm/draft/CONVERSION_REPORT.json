@@ -1149,20 +1149,16 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: local_c = *(int **)(p0 + 8);",
-            "unlifted: local_c = *(int **)(p0 + 4);",
-            "unlifted: *local_c = *local_c + 1;",
-            "GetFurthestWithScriptName: missing scriptName (1 args for 2 params)",
-            "unlifted: std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);"
+            "IsEqualTo: CScriptThing method not in FSE manifest"
           ],
           "calls": [
-            "QUESTLIST_BeginValue",
+            "QUESTLIST_At_CrateList",
+            "IsEqualTo",
             "QUESTTHING_Empty",
-            "GetFurthestWithScriptName",
-            "QUESTTHING_Empty",
+            "QUESTLIST_Erase",
             "QUESTTHING_Empty"
           ],
-          "lines": 21,
+          "lines": 17,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2121,7 +2117,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 130
+        "todo": 126
       }
     },
     {
@@ -2322,6 +2318,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 130
+    "todo": 126
   }
 }

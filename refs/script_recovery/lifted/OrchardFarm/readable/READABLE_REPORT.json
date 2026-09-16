@@ -62,15 +62,15 @@
       "flags": 0,
       "termination": 0,
       "listArithmetic": 0,
-      "byteIndices": 0,
+      "byteIndices": 1,
       "voidReturns": 0,
       "nilReleases": 0,
       "emptyIfs": 0,
-      "deadStores": 0,
+      "deadStores": 1,
       "unusedAlive": 0,
       "flagTests": 0,
       "declarations": 0,
-      "decimalLiterals": 1
+      "decimalLiterals": 0
      }
     }
    ],
@@ -173,51 +173,17 @@
      "function": "OnPredicateFail",
      "sourceLine": 72,
      "locals": {
-      "bVar1_1": {
-       "name": "getFurthestWithScriptName",
+      "bVar1": {
+       "name": "getStateListAt",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "getFurthestWithScriptName"
+        "getStateListAt"
        ]
       }
      },
-     "splitLocals": {
-      "bVar1": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar1, local_c\n",
-       "versions": {
-        "bVar1_1": [
-         12
-        ],
-        "bVar1_2": [
-         14,
-         21
-        ]
-       }
-      }
-     },
-     "removedLiteralLocals": {
-      "bVar1_2": {
-       "2": "    local bVar1_1, bVar1_2, local_c\n",
-       "14": "            bVar1_2 = nil\n",
-       "21": "        bVar1_2 = nil\n"
-      }
-     },
-     "inlinedLiteralLocals": {
-      "local_c": {
-       "literal": "nil",
-       "definitionLine": 8,
-       "readLines": [
-        9
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "2": "    local bVar1_1, local_c\n",
-        "8": "            local_c = nil\n",
-        "9": "            if local_c ~= nil then\n"
-       }
-      }
-     },
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
     }
    ],

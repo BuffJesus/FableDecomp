@@ -69,26 +69,19 @@ function OnPersist(quest, context)
 end
 
 function OnPredicateFail(quest, me)
-    local getFurthestWithScriptName
-    local p0 = quest:GetStateListRef("CrateList")
-    if p0 ~= quest:GetStateListEnd("CrateList") then
+    local getStateListAt, p0
+    p0 = 0
+    if p0 ~= quest:GetStateListCount("CrateList") then
         while true do
-            -- TODO(native): local_c = *(int **)(p0 + 8);
-            -- TODO(native): local_c = *(int **)(p0 + 4);
-
-            if (nil) ~= nil then
-                -- TODO(native): *local_c = *local_c + 1;
-            end
-            getFurthestWithScriptName = quest:GetFurthestWithScriptName(me, nil --[[missing]])
-            if getFurthestWithScriptName then break end
-
-            p0 = p0 + 12
-            if p0 == quest:GetStateListEnd("CrateList") then
+            -- TODO(native): IsEqualTo is not a ForgeFSE binding
+            getStateListAt = quest:GetStateListAt("CrateList", p0):IsEqualTo(me)
+            if getStateListAt then break end
+            p0 = p0 + 1
+            if p0 == quest:GetStateListCount("CrateList") then
                 return
             end
         end
-        -- TODO(native): std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);
-
+        quest:StateListErase("CrateList", p0)
     end
 end
 

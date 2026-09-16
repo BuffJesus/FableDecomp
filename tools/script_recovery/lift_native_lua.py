@@ -1686,7 +1686,7 @@ class Lifter:
         self.mutable_scalars.update(sequence_assignments)
         if self.native_gotos:
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
-        definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+)\s*=(?!=)', text))
+        definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
         if self.lua_labels:
             self.mutable_scalars.update(definitions)
         for line in statements:

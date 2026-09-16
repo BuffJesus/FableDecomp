@@ -130,19 +130,22 @@ def fold_flags(chunk):
 
 
 def fold_byte_indices(chunk):
-    """A loop index stepped by 0xc and divided by 0xc at every use is an element index."""
+    """A loop index stepped by 0xc, divided by 0xc at element uses and compared against `count * 0xc`
+    is an element index."""
     count = 0
     for var in sorted(set(re.findall(r'\(\s*(\w+)\s*\) / 0xc', chunk))):
-        uses = re.findall(r'\b' + re.escape(var) + r'\b[^\n]*', chunk)
-        forms = re.findall(r'(?:\(\s*' + re.escape(var) + r'\s*\) / 0xc|' + re.escape(var) + r' = ' + re.escape(var) + r' \+ 0xc|' + re.escape(var) + r' = 0|' + re.escape(var) + r'\b)', chunk)
-        plain = [f for f in forms if f == var]
-        if len(plain) > 2 * len([f for f in forms if '0xc' in f]) or not any(f.endswith('+ 0xc') for f in forms):
+        v = re.escape(var)
+        index_forms = [r'\(\s*' + v + r'\s*\) / 0xc', v + r' = ' + v + r' \+ 0xc', v + r' (?:==|~=|<|>=) \(' + LIST_COUNT + r' \* 0xc\)']
+        if not re.search(v + r' = ' + v + r' \+ 0xc', chunk):
             continue
-        others = re.sub(r'\(\s*' + re.escape(var) + r'\s*\) / 0xc|' + re.escape(var) + r' = ' + re.escape(var) + r' \+ 0xc|' + re.escape(var) + r' = 0\b|local [^\n]*\b' + re.escape(var) + r'\b', '', chunk)
-        if re.search(r'\b' + re.escape(var) + r'\b', others):
+        others = chunk
+        for f in index_forms + [v + r' = 0\b', r'local [^\n]*\b' + v + r'\b']:
+            others = re.sub(f, '', others)
+        if re.search(r'\b' + v + r'\b', others):
             continue
-        chunk = re.sub(r'\(\s*' + re.escape(var) + r'\s*\) / 0xc', var, chunk)
-        chunk = re.sub(re.escape(var) + r' = ' + re.escape(var) + r' \+ 0xc', f'{var} = {var} + 1', chunk)
+        chunk = re.sub(index_forms[0], var, chunk)
+        chunk = re.sub(index_forms[1], f'{var} = {var} + 1', chunk)
+        chunk = re.sub(v + r' (==|~=|<|>=) \(' + LIST_COUNT + r' \* 0xc\)', var + r' \1 \2', chunk)
         count += 1
     return chunk, count
 

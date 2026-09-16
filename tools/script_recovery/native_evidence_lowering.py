@@ -840,6 +840,28 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(r'\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\)', f'{tag}LIST_Ref("{name}")', text)
             text = re.sub(r'Vector_PushBack_ScriptThing\(\(void \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*([^;]+)\);',
                           lambda m, name=name, tag=tag: f'{tag}LIST_Push("{name}", {m.group(1).strip()});', text)
+            # erase(iterator): std::vector<CScriptThing>::erase at 0xCD3152 (any label)
+            for label, target in getattr(spec, 'call_labels', {}).items():
+                if target == 0xCD3152:
+                    text = re.sub(re.escape(label) + r'\(\(void \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*(\w+)\);',
+                                  lambda m, name=name, tag=tag: f'{tag}LIST_Erase("{name}", ({m.group(1)}) / 0xc);', text)
+            # iterator variables: P = begin; ... P = P + 0xc; P != end  -> byte offsets from 0
+            for m in list(re.finditer(r'^[ \t]*(\w+) = ' + re.escape(bv) + r';', text, re.M)):
+                it = m.group(1)
+                if not re.search(r'\b' + it + r' = ' + it + r' \+ 0xc;|\b' + it + r' [!=]= ' + re.escape(ev), text):
+                    continue          # a plain begin-pointer temporary, handled by the element rules
+                text = text.replace(m.group(0), m.group(0).replace(bv, '0'), 1)
+                # element copy-construction from the iterator: Info (+8), Data (+4), vtable, addref
+                copy = re.compile(r'^([ \t]*)(\w+) = \*\(int \*\*\)\(' + it + r' \+ 8\);[ \t]*\r?\n[ \t]*(\w+) = \*\(int \*\*\)\(' + it + r' \+ 4\);[ \t]*\r?\n'
+                                  r'[ \t]*(\w+) = (?:&PTR_[A-Za-z_]*_01238c8c|QUESTTHING_Empty\(\));[ \t]*\r?\n[ \t]*if \(\2 != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\2 = \*\2 \+ 1;\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+                for cm in list(copy.finditer(text)):
+                    elem = f'{tag}LIST_At_{name}(({it}) / 0xc)'
+                    data = cm.group(3)
+                    text = text.replace(cm.group(0), f'{cm.group(1)}{cm.group(4)} = {elem};\n', 1)
+                    # vcalls through the copied Data pointer are thing calls on the element
+                    text = re.sub(r'\(\*\*\(code \*\*\)\(\*' + data + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(' + data + r'(?:,\s*)?',
+                                  lambda h, elem=elem: thing_call(elem, h.group(1), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
+            text = text.replace(ev, f'({tag}LIST_Count("{name}") * 0xc)')
 
     # 3b'. CCharString members: construct / assign / read / destroy
     string_families = [(r'this', spec.self_fields, 'ENTITY' if spec.entity else 'QUEST')]
@@ -1022,6 +1044,8 @@ LUA_PSEUDO = [
     (re.compile(r'QUESTLIST_Count\('), 'quest:GetStateListCount('),
     (re.compile(r'QUESTLIST_At\('), 'quest:GetStateListAt('),
     (re.compile(r'QUESTLIST_Push\('), 'quest:StateListPush('),
+    (re.compile(r'QUESTLIST_Erase\('), 'quest:StateListErase('),
+    (re.compile(r'ENTITYLIST_Erase\('), '__native_entity_state:StateListErase('),
     (re.compile(r'QUESTLIST_(?:BeginValue|Ref)\('), 'quest:GetStateListRef('),
     (re.compile(r'QUESTLIST_EndValue\('), 'quest:GetStateListEnd('),
     (re.compile(r'ENTITYLIST_(?:BeginValue|Ref)\('), '__native_entity_state:GetStateListRef('),
