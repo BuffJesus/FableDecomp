@@ -47,7 +47,8 @@
           "evidence": "cluster lifecycle slot",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -97,7 +98,8 @@
           "evidence": "cluster lifecycle slot",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -144,7 +146,7 @@
             "MiniMapAllowRouteBetweenRegions",
             "MiniMapAllowRouteBetweenRegions"
           ],
-          "lines": 55,
+          "lines": 58,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -170,7 +172,8 @@
                 "type": "int"
               }
             ],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -191,7 +194,8 @@
           "evidence": "inventory thread registration",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [
             "goto LAB_00dd0b11",
@@ -340,7 +344,8 @@
           "evidence": "inventory thread registration",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [
             "goto LAB_00dd1728",
@@ -502,7 +507,8 @@
           "evidence": "inventory thread registration",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [
             "label LAB_00dd03b8",
@@ -606,7 +612,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 178,
+          "lines": 180,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -626,7 +632,8 @@
           "evidence": "inventory thread registration",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [
             "label LAB_00dccfa3"
@@ -682,7 +689,8 @@
                 "type": "int"
               }
             ],
-            "returnKind": "number"
+            "returnKind": "number",
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -718,7 +726,8 @@
           "evidence": "PDB-name via string-set match (jaccard 0.70)",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": "number"
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [
             "label LAB_00dd1d98_c1",
@@ -793,7 +802,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 212,
+          "lines": 211,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -829,14 +838,15 @@
           "evidence": "PDB-name via string-set match (jaccard 1.00)",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": "number"
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
             "AddQuestCard",
             "AddQuestCard"
           ],
-          "lines": 3,
+          "lines": 2,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -856,7 +866,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [
             "label LAB_00dcda68"
@@ -934,7 +945,7 @@
             "IsActiveThreadTerminating",
             "RemoveQuestInfoElement"
           ],
-          "lines": 240,
+          "lines": 239,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -960,7 +971,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [
             "label LAB_00dcd306"
@@ -1011,7 +1023,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1032,7 +1045,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1056,7 +1070,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [
             "label LAB_00dcddfe",
@@ -1101,7 +1116,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -1129,7 +1145,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1150,7 +1167,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -1180,7 +1198,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -1238,7 +1257,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -1269,7 +1289,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1290,7 +1311,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1314,7 +1336,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [
             "label LAB_00dce594",
@@ -1441,7 +1464,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [
             "label LAB_00dce00a"
@@ -1499,7 +1523,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1520,7 +1545,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -1550,7 +1576,8 @@
           "evidence": "bsim label agrees with a PDB nested member",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": "number"
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -1566,7 +1593,7 @@
             "SetStateInt",
             "QUESTSTATE_SetInt"
           ],
-          "lines": 33,
+          "lines": 32,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1592,7 +1619,8 @@
                 "type": "int"
               }
             ],
-            "returnKind": "number"
+            "returnKind": "number",
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -1627,7 +1655,8 @@
           "evidence": "WEAK: size-rank pairing (retail 350 B vs debug 315 B)",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": "number"
+            "returnKind": "number",
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -1663,7 +1692,8 @@
                 "type": "long"
               }
             ],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -1691,7 +1721,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -1720,7 +1751,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [
@@ -1746,7 +1778,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1767,7 +1800,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1791,7 +1825,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -1818,7 +1853,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1842,7 +1878,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1863,7 +1900,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1887,7 +1925,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -1914,7 +1953,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1938,7 +1978,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -1959,7 +2000,8 @@
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -2073,7 +2115,8 @@
           "evidence": "cluster lifecycle slot",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -2097,7 +2140,8 @@
           "evidence": "cluster lifecycle slot",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [
@@ -2168,7 +2212,8 @@
           "evidence": "cluster lifecycle slot",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": false
           },
           "todo": [],
           "calls": [],
@@ -2192,7 +2237,8 @@
           "evidence": "cluster lifecycle slot",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null
+            "returnKind": null,
+            "bsimVoid": true
           },
           "todo": [],
           "calls": [

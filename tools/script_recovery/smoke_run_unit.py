@@ -126,6 +126,34 @@ def registered_methods():
     return set(re.findall(r'(?:_type|quest|thing|type)\["(\w+)"\]', text))
 
 
+LUA_KEYWORDS = {'and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function', 'goto', 'if', 'in',
+                'local', 'nil', 'not', 'or', 'repeat', 'return', 'then', 'true', 'until', 'while'}
+KNOWN_GLOBALS = {'quest', 'me', 'resources', 'require', 'tostring', 'tonumber', 'math', 'string', 'table', 'pairs',
+                 'ipairs', 'print', 'error', 'assert', 'type', 'select', 'pcall', 'Quest', 'Quests', '_G', 'os'}
+
+
+def free_globals(source):
+    """Identifiers read as globals that no `local`, parameter, function name or known host global declares —
+    the static form of "attempt to compare nil with number" (a Ghidra `_DAT_x` / `extraout_ST0` leak)."""
+    body = re.sub(r'--\[\[.*?\]\]|--[^\n]*', '', source, flags=re.S)
+    body = re.sub(r'"(?:[^"\\]|\\.)*"', '""', body)
+    declared = set(KNOWN_GLOBALS) | set(re.findall(r'^function (\w+)\(', body, re.M))
+    for m in re.finditer(r'\blocal\s+(?:function\s+(\w+)|([\w\s,]+?))(?=\s*(?:=|\n|$))', body):
+        declared.update(re.findall(r'\w+', m.group(1) or m.group(2)))
+    for m in re.finditer(r'\bfunction\s*\w*\s*\(([^)]*)\)', body):
+        declared.update(re.findall(r'\w+', m.group(1)))
+    for m in re.finditer(r'\bfor\s+([\w\s,]+?)\s*(?:=|\bin\b)', body):
+        declared.update(re.findall(r'\w+', m.group(1)))
+    declared.update(re.findall(r'::(\w+)::', body))                       # labels
+    declared.update(re.findall(r'goto\s+(\w+)', body))
+    for m in re.finditer(r'\{[^{}]*\}', body):                             # table constructor keys {R = .., G = ..}
+        declared.update(re.findall(r'(\w+)\s*=', m.group(0)))
+    used = set()
+    for m in re.finditer(r'(?<![\w.:])([A-Za-z_]\w*)\b(?!\s*[:(])', body):
+        used.add(m.group(1))
+    return sorted(n for n in used - declared - LUA_KEYWORDS if not re.fullmatch(r'\d+', n))
+
+
 def main():
     a = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     a.add_argument('--unit', default='orchard_farm')
@@ -156,6 +184,9 @@ def main():
         result = runner(source, path.name, lua.table(*functions), args.frames, args.instructions, lua.table(**kinds), '__native_entity_state' in source)
         rel = path.relative_to(base).as_posix()
         entry = {}
+        leaks = free_globals(source)
+        if leaks:
+            entry['freeGlobals'] = leaks; problems += 1
         if 'load_error' in result:
             entry['load_error'] = result['load_error']; problems += 1
         else:
@@ -172,6 +203,9 @@ def main():
         report[rel] = entry
     for rel, entry in report.items():
         for fname, r in entry.items():
+            if fname == 'freeGlobals':
+                print(f'FREE GLOBALS {rel}: {", ".join(r)}')
+                continue
             if fname == 'load_error':
                 print(f'LOAD ERROR {rel}: {r}')
             elif not r['ok'] or r['unknownMethods']:

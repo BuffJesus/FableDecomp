@@ -1,32 +1,32 @@
 -- Generated from the same native helper bodies as the quest draft.
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
-    local scratchValue, scratchValue2, predicateResult, predicateResult2, scratchValue3
-    local scratchValue4, predicateResult3, isDistanceBetweenThingsUnder, predicateResult4
-    local predicateResult5, predicateResult6, predicateResult7, scratchValue5, scratchValue6
-    local predicateResult8, predicateResult9, scratchValue7, scratchValue8, dist, ePriority
-    local scratchValue9, hero, sequence12, sequence21, sequence23, sequence24, hero2, gwl
-    local pScriptObject, string, scratchValue10
+    local scratchValue, predicateResult, predicateResult2, scratchValue2, scratchValue3
+    local predicateResult3, isDistanceBetweenThingsUnder, predicateResult4, predicateResult5
+    local predicateResult6, predicateResult7, scratchValue4, scratchValue5, predicateResult8
+    local predicateResult9, scratchValue6, scratchValue7, dist, ePriority, hero, sequence12
+    local sequence21, sequence23, sequence24, hero2, gwl, pScriptObject, string, scratchValue8
+    local scratchValue9, scratchValue10
     local alive = true
     ePriority = 4
-    scratchValue9 = resources:NewResource()
+    scratchValue8 = resources:NewResource()
     hero2 = quest:GetHero()
     resources:TryAcquire(pScriptObject, hero2, ePriority)
     scratchValue10 = resources:NewActorMap()
-    resources:SetActor(scratchValue10, "HERO", scratchValue9)
-    scratchValue = resources:StartMovie("")
+    resources:SetActor(scratchValue10, "HERO", scratchValue8)
+    scratchValue9 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
-    scratchValue2 = quest:IsRegionLoaded("GreatwoodLake")
+    scratchValue = quest:IsRegionLoaded("GreatwoodLake")
 
-    if not scratchValue2 then
+    if not scratchValue then
         sequence12 = true
     else
         sequence12 = false
     end
     if not sequence12 then
-        scratchValue2 = true
+        scratchValue = true
         if quest:GetStateInt("HeroTeam") ~= 0 then
             sequence12 = true
         else
@@ -34,9 +34,9 @@ function DoMultiplierCutscene(quest, me)
         end
     end
     if sequence12 then
-        scratchValue2 = false
+        scratchValue = false
     end
-    if scratchValue2 then
+    if scratchValue then
         alive = not quest:IsActiveThreadTerminating()
         predicateResult = not alive
         if not predicateResult then
@@ -58,14 +58,14 @@ function DoMultiplierCutscene(quest, me)
                 end
             end
             if sequence21 then goto LAB_00dd1e70_c1 end
-            scratchValue3 = quest:DisplayTutorial(9)
-            if scratchValue3 then
+            scratchValue2 = quest:DisplayTutorial(9)
+            if scratchValue2 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
-                scratchValue4 = quest:MsgIsTutorialClickedPast()
-                while not scratchValue4 do
+                scratchValue3 = quest:MsgIsTutorialClickedPast()
+                while not scratchValue3 do
                     alive = quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
-                    scratchValue4 = quest:MsgIsTutorialClickedPast()
+                    scratchValue3 = quest:MsgIsTutorialClickedPast()
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
             end
@@ -100,7 +100,7 @@ function DoMultiplierCutscene(quest, me)
                     end
                     -- LAB_00dd1e3d: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_3c)
+                    resources:DestroyMovie(scratchValue9)
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -108,7 +108,7 @@ function DoMultiplierCutscene(quest, me)
                 if predicateResult6 then
                     -- LAB_00dd1e53: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_3c)
+                    resources:DestroyMovie(scratchValue9)
                     goto LAB_00dd1e95
                 end
                 string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL"
@@ -131,14 +131,14 @@ function DoMultiplierCutscene(quest, me)
                     end
                 end
                 if sequence23 then goto LAB_00dd1e70 end
-                scratchValue5 = quest:DisplayTutorial(9)
-                if scratchValue5 then
+                scratchValue4 = quest:DisplayTutorial(9)
+                if scratchValue4 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                    scratchValue6 = quest:MsgIsTutorialClickedPast()
-                    while not scratchValue6 do
+                    scratchValue5 = quest:MsgIsTutorialClickedPast()
+                    while not scratchValue5 do
                         alive = quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        scratchValue6 = quest:MsgIsTutorialClickedPast()
+                        scratchValue5 = quest:MsgIsTutorialClickedPast()
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
                 end
@@ -170,14 +170,14 @@ function DoMultiplierCutscene(quest, me)
                         end
                     end
                     if sequence24 then goto LAB_00dd1e70 end
-                    scratchValue7 = quest:DisplayTutorial(9)
-                    if scratchValue7 then
+                    scratchValue6 = quest:DisplayTutorial(9)
+                    if scratchValue6 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        scratchValue8 = quest:MsgIsTutorialClickedPast()
-                        while not scratchValue8 do
+                        scratchValue7 = quest:MsgIsTutorialClickedPast()
+                        while not scratchValue7 do
                             alive = quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                            scratchValue8 = quest:MsgIsTutorialClickedPast()
+                            scratchValue7 = quest:MsgIsTutorialClickedPast()
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
                     end
@@ -191,11 +191,10 @@ function DoMultiplierCutscene(quest, me)
         quest:PauseAllNonScriptedEntities(false)
     end
     ::FLOW_after_lab_00dd1d98::
-    resources:DestroyMovie(xStack_3c)
+    resources:DestroyMovie(scratchValue9)
     ::LAB_00dd1e95::
     resources:DestroyActorMap(scratchValue10)
-    resources:ReleaseResource(xStack_2c)
-    return
+    resources:ReleaseResource(scratchValue8)
 end
 
 function MakeTeamMemberComment(quest, me, commentToMake, speaker, commentType)

@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar4, iVar5, pCVar6, r1, r2
+    local bVar4, fret_0, iVar5, pCVar6, r1
     local alive = true
     local cVar1 = quest:GetStateBool("WhisperInCutscene")
     while cVar1 do
@@ -61,8 +61,8 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             while not bVar4 do
-                r2 = quest:GetHealth(me)
-                if extraout_ST0 < _DAT_0122ded8 ~= (extraout_ST0 == _DAT_0122ded8) then
+                fret_0 = quest:GetHealth(me)
+                if fret_0 <= 1.0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then

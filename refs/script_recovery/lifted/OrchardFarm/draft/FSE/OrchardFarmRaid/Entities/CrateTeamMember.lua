@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, xStack_24
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, xStack_20, xStack_28
     local alive = true
     bVar6 = false
     alive = quest:NewScriptFrame(me)
@@ -177,7 +177,7 @@ function Main(quest, me)
                                 -- LAB_00dcebab: (native jump target)
                                 return
                             end
-                            bVar3 = quest:IsDistanceBetweenThingsUnder(me, xStack_38, 10.0)
+                            bVar3 = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                             if (quest:GetStateInt("HeroTeam") == 0) and (__native_entity_state:GetStateInt("TeamID") == 1) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -186,7 +186,7 @@ function Main(quest, me)
                                 end
                                 bVar3 = true
                             end
-                            bVar5 = quest:IsDistanceBetweenThingsOver(xStack_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")), 5.0)
+                            bVar5 = quest:IsDistanceBetweenThingsOver(thing_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")), 5.0)
                             if (bVar5) and (bVar3 ~= false) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
@@ -362,8 +362,8 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    xStack_24 = nil
-                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), xStack_24)
+                    xStack_28 = nil
+                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), thing_38)
                     helper_DCEC50(quest, me, 0)
                 end
                 cVar4 = quest:GetStateBool("WhisperSpawned")
@@ -373,17 +373,17 @@ function Main(quest, me)
             if not bVar6 then
                 quest:EntityStopFollowing(me)
                 r1 = quest:GetNearestWithScriptName(me, "TeamExitMarker")
-                xStack_24 = resources:NewResource()
+                xStack_20 = resources:NewResource()
                 bVar6 = false
                 if bVar6 ~= 0 then
                 end
-                bVar6 = resources:TryAcquire(xStack_24, me, 4)
+                bVar6 = resources:TryAcquire(xStack_20, me, 4)
                 while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00dcec33 end
-                    bVar6 = resources:TryAcquire(xStack_24, me, 4)
+                    bVar6 = resources:TryAcquire(xStack_20, me, 4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -422,7 +422,7 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00dcec33::
-                resources:ReleaseResource(xStack_24)
+                resources:ReleaseResource(xStack_20)
             end
         end
     end
@@ -503,13 +503,13 @@ function GoOnPatrol(quest, me)
     if __native_entity_state:GetStateInt("MemberState") ~= 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
-        return bVar3
+        return
     end
     if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            return bVar3
+            return
         end
         bVar3 = true
         fVar5 = 3.0
@@ -519,7 +519,7 @@ function GoOnPatrol(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            return bVar3
+            return
         end
         bVar3 = true
         fVar5 = 1.0
@@ -530,7 +530,6 @@ function GoOnPatrol(quest, me)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
     __native_entity_state:SetStateInt("MemberState", 1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_1"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_1")) + 1)
-    return piVar1
 end
 
 function IsThingCarryingCrate(quest, me, native_arg_thing)
@@ -594,6 +593,6 @@ function helper_DCEC50(quest, me, native_arg_param_1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
     __native_entity_state:SetStateInt("MemberState", native_arg_param_1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. native_arg_param_1), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. native_arg_param_1)) + 1)
-    return piVar1
+    return
 end
 

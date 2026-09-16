@@ -160,14 +160,14 @@ function Main(quest, me)
                                 -- LAB_00dcebab: (native jump target)
                                 return
                             end
-                            scratchValue8 = quest:IsDistanceBetweenThingsUnder(me, xStack_38, 10.0)
+                            scratchValue8 = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                             if (quest:GetStateInt("HeroTeam") == 0) and (__native_entity_state:GetStateInt("TeamID") == 1) then
                                 if quest:IsActiveThreadTerminating() then
                                     return
                                 end
                                 scratchValue8 = true
                             end
-                            isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(xStack_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")), 5.0)
+                            isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(thing_38, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_CrateDropPos")), 5.0)
                             if (isDistanceBetweenThingsOver) and (scratchValue8 ~= false) then
                                 if quest:IsActiveThreadTerminating() then
                                     return
@@ -322,7 +322,7 @@ function Main(quest, me)
                         return
                     end
 
-                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), (nil))
+                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), thing_38)
                     helper_DCEC50(quest, me, 0)
                 end
                 whisperSpawned = quest:GetStateBool("WhisperSpawned")
@@ -445,26 +445,24 @@ function OnPredicateFail(quest, me)
 end
 
 function GoOnPatrol(quest, me)
-    local predicateResult, isActiveThreadTerminating, isActiveThreadTerminating2, hero, hero2
+    local predicateResult, hero, hero2
     local alive = true
     if __native_entity_state:GetStateInt("MemberState") ~= 0 then
         alive = not quest:IsActiveThreadTerminating()
         predicateResult = not alive
-        return predicateResult
+        return
     end
     if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
-        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
-        if isActiveThreadTerminating then
-            return isActiveThreadTerminating
+        if quest:IsActiveThreadTerminating() then
+            return
         end
 
 
         hero = quest:GetHero()
         quest:EntityFollowThing(me, hero, (3.0), (true))
     else
-        isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
-        if isActiveThreadTerminating2 then
-            return isActiveThreadTerminating2
+        if quest:IsActiveThreadTerminating() then
+            return
         end
 
 
@@ -475,7 +473,6 @@ function GoOnPatrol(quest, me)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
     __native_entity_state:SetStateInt("MemberState", 1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_1"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_1")) + 1)
-    return piVar1
 end
 
 function IsThingCarryingCrate(quest, me, thing)
@@ -526,6 +523,6 @@ function helper_DCEC50(quest, me, param1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState")), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. __native_entity_state:GetStateInt("MemberState"))) + -1)
     __native_entity_state:SetStateInt("MemberState", param1)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. param1), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_" .. param1)) + 1)
-    return piVar1
+    return
 end
 

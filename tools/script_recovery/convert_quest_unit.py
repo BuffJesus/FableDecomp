@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import struct
 import os
 import sys
 from pathlib import Path
@@ -306,16 +307,30 @@ def restore_stack_operands(decompile, fn):
             edits.append((start, end, ','.join(out)))
     for start, end, repl in sorted(edits, reverse=True):
         text = text[:start] + repl + text[end:]
-    # remaining (non-call) spellings of a name with one true slot follow the object at its first use
+    # remaining (non-call) spellings: a name with one true slot follows that object; a name Ghidra spread
+    # over several slots follows the object of its nearest call-site use (field reads `N._4_4_`, `&N`,
+    # inlined constructor stores all sit next to the call that produced or consumed the object)
     for name, lst in by_name.items():
         offs = {o for _, o in lst}
         if len(offs) == 1:
             off = next(iter(offs))
             text = re.sub(r'\b' + re.escape(name) + r'\b', name_at(off, name, min(p for p, _ in lst)), text)
+        else:
+            def nearest(m, lst=lst, name=name):
+                pos, off = min(lst, key=lambda u: abs(u[0] - m.start()))
+                return name_at(off, name, pos)
+            text = re.sub(r'\b' + re.escape(name) + r'\b', nearest, text)
     return text
 
 
 class UnitConverter:
+    def float_at(self, va):
+        raw = self.rdata.bytes_at(va, 4)
+        if not raw or len(raw) != 4:
+            return None
+        value = struct.unpack('<f', raw)[0]
+        return value if value == value and abs(value) < 1e12 else None   # NaN / absurd = not a float constant
+
     def __init__(self, tu_path, *, flat_control=False):
         self.manifest, self.slots, self.rdata = load_manifest(), load_slots(), RData()
         for name, spec in {**host_bindings(), **sidecar_bindings()}.items():
@@ -439,6 +454,7 @@ class UnitConverter:
                 spec_l = LoweringSpec(unit, representative, entity=entity, thing_slots=self.thing_slots)
                 spec_l.resolve_string = self.rdata.string_at
                 spec_l.resolve_wide = self.rdata.wide_string_at
+                spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
                 decompile, renamed = disambiguate_call_labels(restore_stack_operands(fn['decompile'], fn), fn.get('calls', []))
@@ -447,6 +463,8 @@ class UnitConverter:
                 spec_l.call_labels.update({k.replace('::', '__'): v for k, v in list(spec_l.call_labels.items()) if '::' in k})
                 spec_l.hidden_thing_returns = self.hidden_thing_returns
                 spec_l.code_range = self.code_range
+                if signature.get('bsimVoid'):
+                    decompile = re.sub(r'\breturn [^;]+;', 'return;', decompile)   # void per ego_r: Ghidra's int result is a stale register
                 lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)
                 source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)))
                 if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):

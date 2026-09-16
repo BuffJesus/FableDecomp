@@ -2014,7 +2014,13 @@ class Lifter:
             return
         returned = re.fullmatch(r'return\s+(.+);', stripped)
         if returned:
-            self.emit('return ' + self.expr(returned[1]))
+            value = self.expr(returned[1])
+            if (self.accessor_kinds and re.fullmatch(r'[A-Za-z_]\w*', value)
+                    and value not in self.locals and value not in self.temps and value not in self.parameters
+                    and not re.fullmatch(r'true|false|nil|me|quest', value)):
+                self.emit('return')      # a register Ghidra guessed as the result but the function never assigned
+                return
+            self.emit('return ' + value)
             return
         if stripped == "break;":
             self.emit("break")

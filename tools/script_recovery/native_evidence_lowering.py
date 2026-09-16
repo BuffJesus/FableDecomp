@@ -278,6 +278,32 @@ def fold_by_value_things(text: str, code_range=None) -> str:
     return text
 
 
+def bind_st0_results(text: str) -> str:
+    """Ghidra drops the float (ST0) result of an overridden vtable call and reads it back as
+    `extraout_ST0[_NN]`; each such name belongs to the nearest preceding call statement whose result
+    was not assigned. Bind it: `fret_NN = <call>;` and use `fret_NN` where the extraout name was read."""
+    names = sorted(set(re.findall(r'\bextraout_ST0(?:_\d+)?\b', text)), key=lambda n: (len(n), n))
+    if not names:
+        return text
+    lines = text.split('\n')
+    for name in names:
+        first = next((k for k, l in enumerate(lines) if re.search(r'\b' + re.escape(name) + r'\b', l)
+                      and not re.match(r'^\s*float10 ' + re.escape(name) + r';', l)), None)
+        if first is None:
+            continue
+        fret = 'fret_' + (name.split('_', 2)[2] if name.count('_') == 2 else '0')
+        for k in range(first - 1, -1, -1):
+            l = lines[k]
+            if re.match(r'^\s*(?:\(\*\*\(code \*\*\)|GSI->|[\w:]+::[\w~]+\s*\(|\w+\()', l) and l.rstrip().endswith(');') and ' = ' not in l.split('(')[0]:
+                lines[k] = re.sub(r'^(\s*)', r'\1' + fret + ' = ', l, count=1)
+                break
+        else:
+            continue
+        lines = [re.sub(r'\b' + re.escape(name) + r'\b', fret, l) for l in lines]
+        lines = [l for l in lines if not re.match(r'^\s*float10 ' + re.escape(fret) + r';', l)]
+    return '\n'.join(lines)
+
+
 def normalise_typed_decompile(text: str) -> str:
     """Typed exports (ExportTypedTranslationUnit) print a few shapes the untyped pipeline never saw."""
     text = re.sub(r'return CONCAT31\([^;]*?,\s*(0|1)\);', lambda m: f'return {"true" if m.group(1) == "1" else "false"};', text)
@@ -302,6 +328,10 @@ def normalise_typed_decompile(text: str) -> str:
     # a byte slice of a stack slot used as a scalar (`CStack_cc._3_1_ = call(); if (CStack_cc._3_1_ != 0)`)
     text = re.sub(r'\b(\w+)\._(\d+)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
+    text = bind_st0_results(text)
+    text = re.sub(r'return extraout_\w+;', 'return;', text)   # a void function whose EAX Ghidra guessed as a result
+    # x87 compare idiom: `(a < b) != (a == b)` is `a <= b` (Ghidra's rendering of fcomp/fnstsw/test 0x41)
+    text = re.sub(r'(\(?[\w.]+\)?) < ((?:\(float10\))?[\w.]+) != \(\1 == \2\)', r'\1 <= \2', text)
     # a float staged in a slot Ghidra typed as a CCharString array: `aCStack_1c[0] = (CCharString)(expr);`
     # read back as `(float)aCStack_1c[0]` -> a plain scalar local
     for m in list(re.finditer(r'^[ \t]*(\w+)\[0\] = \(CCharString(?:_bv)?\)', text, re.M)):
@@ -422,6 +452,13 @@ MOVIE_DTOR = {0x6E7B80}               # MovieResource_Destroy_API
 COUNTED_RELEASE = {0x6E7AB0, 0xCE1000}   # CCountedPointer release: decref [this+4], zero [this], [this+4] (disasm 2026-09-16)
 BASE_OBJECT_DTOR = {0x99A430}         # CBaseIntelligentPointer::~ (bsim: CPhysicsMeshInfo::~CPhysicsMeshInfo)
 RESOURCE_ACQUIRED = {0xCD23B9}        # bool __thiscall (this): [this+8] != 0, the resource's counted handle (disasm 2026-09-16)
+
+
+def _thing_source(arg):
+    """The source operand of a CScriptThing assignment: `(int)&local_20` / `(CScriptThing *)&X` is the stack
+    thing X itself (the copy takes the object, not its address); `(int)pCVar6` is the handle."""
+    arg = re.sub(r'^\((?:int|CScriptThing \*)\)', '', arg.strip()).strip()
+    return arg[1:] if arg.startswith('&') else arg
 
 
 def _strip_addr(arg):
@@ -737,6 +774,13 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = canonicalise_stack_objects(text)
     text = fold_offset_string_temporaries(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))
+    float_at = getattr(spec, 'float_at', None)
+    if float_at:
+        def dat_float(m):
+            value = float_at(int(m.group(2), 16))
+            return (m.group(1) or '') + (repr(value) if value is not None else m.group(0))
+        text = re.sub(r'(\(float(?:10)?(?: \*)?\))?_?DAT_([0-9a-f]{6,8})\b(?![\w(])', lambda m: dat_float(m) if m.group(1) else m.group(0), text)
+        text = re.sub(r'^([ \t]*f\w+ = )_?DAT_([0-9a-f]{6,8});', lambda m: m.group(1) + (repr(float_at(int(m.group(2), 16))) if float_at(int(m.group(2), 16)) is not None else '_DAT_' + m.group(2)) + ';', text, flags=re.M)
     resolve = getattr(spec, 'resolve_string', None)
     if resolve:
         # `&DAT_xxxxxxxx` string addresses (the empty string and other pooled literals) -> literals
@@ -907,7 +951,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         for off, name in things.items():
             recv = f'{tag}THING_Get("{name}")'
             text = re.sub(r'CScriptThing::operator=\(\(CScriptThing \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*([^;]+)\);',
-                          lambda m, name=name, tag=tag: f'{tag}THING_Set("{name}", {"nil" if m.group(1).strip() == "(CScriptThing *)0x0" else m.group(1).strip()});', text)
+                          lambda m, name=name, tag=tag: f'{tag}THING_Set("{name}", {"nil" if m.group(1).strip() == "(CScriptThing *)0x0" else _thing_source(m.group(1))});', text)
             text = re.sub(r'CScriptThing::~CScriptThing\(\(CScriptThing \*\)\(' + base + r' \+ ' + off_re(off) + r'\)\);', '', text)
             # vcall on the thing: (**(code **)(*(int *)(BASE + OFF) + SLOT))(
             def vcall(m, recv=recv):
@@ -1134,7 +1178,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'(?<![\w*(])' + ptr + r' \+ ' + off_re(member_off) + r'(?![\w])', recv, text)
                 text = re.sub(r'\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', recv, text)
                 text = re.sub(r'CScriptThing::operator=\(' + re.escape(recv) + r',\s*([^;]+)\);',
-                              lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_" .. {idx} .. "_{tname}"), {m.group(1).strip()});', text)
+                              lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_" .. {idx} .. "_{tname}"), {_thing_source(m.group(1))});', text)
     text = re.sub(r'\b(\d+(?:\.\d+)?)e\+?(-?\d+)\b', lambda m: repr(float(m.group(0))), text)
     # a remaining CScriptThing::operator= on a plain local is a handle copy (members were lowered above)
     text = re.sub(r'^([ \t]*)CScriptThing::operator=\(\(CScriptThing \*\)&?(\w+),\s*\((?:int|CScriptThing \*)\)(\w+)\);', r'\1\2 = \3;', text, flags=re.M)

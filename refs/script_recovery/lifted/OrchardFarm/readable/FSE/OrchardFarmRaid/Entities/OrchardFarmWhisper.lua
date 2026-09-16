@@ -11,8 +11,8 @@ do
 end
 
 function Main(quest, me)
-    local predicateResult, scratchValue, predicateResult2, predicateResult3, conversationId
-    local conversationId2, hero, hero2, hero3, hero4, scratchValue2, health
+    local predicateResult, scratchValue, predicateResult2, predicateResult3, fret_0, conversationId
+    local conversationId2, hero, hero2, hero3, hero4, scratchValue2
     local alive = true
     local whisperInCutscene = quest:GetStateBool("WhisperInCutscene")
     while whisperInCutscene do
@@ -58,8 +58,8 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             predicateResult3 = not alive
             while not predicateResult3 do
-                health = quest:GetHealth(me)
-                if extraout_ST0 < _DAT_0122ded8 ~= (extraout_ST0 == _DAT_0122ded8) then
+                fret_0 = quest:GetHealth(me)
+                if fret_0 <= 1.0 then
                     if quest:IsActiveThreadTerminating() then
                         return
                     end

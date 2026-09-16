@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, x_stk_4c
+    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54
     local alive = true
     cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
@@ -159,7 +159,7 @@ function Main(quest, me)
                         end
                         pCVar6 = quest:GetHero()
                         r3 = quest:GetNearestWithScriptName(pCVar6, "GuardTeamMember")
-                        iVar4 = x_stk_4c:IsAlive()
+                        iVar4 = (r3 ~= nil and r3:IsAlive())
                         if iVar4 then
                             fVar9 = 15.0
                             pCVar6 = quest:GetHero()
@@ -170,7 +170,7 @@ function Main(quest, me)
                                 if bVar3 then
                                     return
                                 end
-                                require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "NEXT_WAVE", x_stk_4c, 0)
+                                require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "NEXT_WAVE", r3, 0)
                             end
                         end
                     end
@@ -205,7 +205,7 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
-                            x_stk_4c = nil
+                            xStack_54 = nil
                             if (iVar7 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -217,7 +217,6 @@ function Main(quest, me)
                                 pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", pCVar5, pCVar8)
-                                x_stk_4c = pCVar6
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive

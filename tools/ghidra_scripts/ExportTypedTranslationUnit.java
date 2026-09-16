@@ -165,6 +165,31 @@ public class ExportTypedTranslationUnit extends GhidraScript {
     private static final String MEMPTR = "MEMPTR", MEMPTRVT = "MEMPTRVT";
     private int dataSites = 0, paramThings = 0;
 
+    private Map<Long, Long> retPurgeCache = new HashMap<>();
+    /** Immediate of the first RET reached by a linear scan from the callee entry (0 for a plain ret, -1 if none within 4 KB). */
+    private long retPurge(long target) {
+        if (retPurgeCache.containsKey(target)) return retPurgeCache.get(target);
+        long result = -1;
+        Instruction x = getInstructionAt(toAddr(target));
+        for (int n = 0; x != null && n < 2000; n++) {
+            if (x.getMnemonicString().equalsIgnoreCase("RET")) {
+                result = 0;
+                if (x.getNumOperands() == 1 && x.getOpObjects(0).length == 1 && x.getOpObjects(0)[0] instanceof Scalar)
+                    result = ((Scalar) x.getOpObjects(0)[0]).getUnsignedValue();
+                break;
+            }
+            if (x.getMnemonicString().equalsIgnoreCase("JMP") && x.getNumOperands() == 1 && x.getOpObjects(0).length == 1) {
+                if (!(x.getOpObjects(0)[0] instanceof Address)) break;                 // indirect jump: unknown
+                x = getInstructionAt((Address) x.getOpObjects(0)[0]);                  // tail-call thunk: the target's ret decides
+                continue;
+            }
+            if (x.getMnemonicString().equalsIgnoreCase("INT3")) break;                  // padding: the body ended without a ret
+            x = x.getNext();
+        }
+        retPurgeCache.put(target, result);
+        return result;
+    }
+
     private boolean isRegOperand(Instruction i, int k) {
         int t = i.getOperandType(k);
         // the type is a flag set (a register written by LEA carries REGISTER|ADDRESS); memory operands are DYNAMIC
@@ -214,11 +239,26 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         Instruction prev = null;
         InstructionIterator ins = currentProgram.getListing().getInstructions(f.getBody(), true);
         long bodyDelta = 0;   // depth before a (possibly mid-function) epilogue: restored after its RET
+        // depth at the source of every forward jump: a block entered only by a jump (the fallthrough after
+        // an unconditional JMP or a RET) starts at the depth its jumper had, not at the previous block's
+        Map<Long, Long> jumpDepth = new HashMap<>();
+        boolean blockBoundary = false;
         while (ins.hasNext()) {
             Instruction i = ins.next();
             String mn = i.getMnemonicString().toUpperCase();
             int n = i.getNumOperands();
-            if (mn.equals("RET")) { espDelta = bodyDelta; pushing = false; argStart = -1; continue; }
+            if (blockBoundary) {
+                Long known = jumpDepth.get(i.getAddress().getOffset());
+                if (known != null) { espDelta = known; pushing = false; argStart = -1; }
+                blockBoundary = false;
+            }
+            if (mn.startsWith("J") && n == 1 && i.getOpObjects(0).length == 1 && i.getOpObjects(0)[0] instanceof Address) {
+                long to = ((Address) i.getOpObjects(0)[0]).getOffset();
+                if (to > i.getAddress().getOffset()) jumpDepth.putIfAbsent(to, espDelta);
+                if (mn.equals("JMP")) { if (pushing) espDelta = espBeforePushes; pushing = false; argStart = -1; blockBoundary = true; }   // pending pushes travel with the jump, not into the fallthrough
+                continue;
+            }
+            if (mn.equals("RET")) { espDelta = bodyDelta; pushing = false; argStart = -1; blockBoundary = true; continue; }
             boolean epilogueOp = mn.equals("POP") || ((mn.equals("ADD")) && n == 2 && i.getOpObjects(0).length >= 1 && "ESP".equals(regName(i.getOpObjects(0)[0])));
             if (!epilogueOp) bodyDelta = espDelta;
             if (mn.equals("PUSH")) {
@@ -261,9 +301,14 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     target = ((Address) i.getOpObjects(0)[0]).getOffset();
                 long purge = -1;   // bytes the callee pops (exact when known; -1 = fall back to the push heuristic)
                 boolean siteReturnsThing = false;
-                if (target >= 0) {
-                    Function callee = getFunctionAt(toAddr(target));
-                    if (callee != null && callee.getStackPurgeSize() >= 0 && callee.getStackPurgeSize() <= 0x40 && !cdeclTargets.contains(target)) purge = callee.getStackPurgeSize();
+                if (target >= 0 && !cdeclTargets.contains(target)) {
+                    // the callee's own `ret N` is the ground truth (Ghidra's purge size can be 0 when two bodies were merged)
+                    long ret = retPurge(target);
+                    if (ret >= 0) purge = ret;
+                    else {
+                        Function callee = getFunctionAt(toAddr(target));
+                        if (callee != null && callee.getStackPurgeSize() >= 0 && callee.getStackPurgeSize() <= 0x40) purge = callee.getStackPurgeSize();
+                    }
                 }
                 if (n == 1) {
                     Object[] ops = i.getOpObjects(0);

@@ -22,7 +22,13 @@ def function_parameters(source, *, member=False):
         params.append({'native': name[1], 'lua': 'native_arg_' + name[1],
                        'type': operand[:name.start()].strip()})
     kind = re.match(r'\s*(bool|char|long|int|uint|float|double)\b', header)
-    return {'parameters': params, 'returnKind': ('bool' if kind[1] in ('bool', 'char') else 'number') if kind else None}
+    # the ego_r bsim signature in the leading comment is the reviewed prototype: when it says void, Ghidra's
+    # guessed int is a leftover register (a pointer temporary), not a result
+    comment = re.search(r'/\*\s*\[bsim[^\]]*\]\s*([\s\S]*?)\*/', source)
+    bsim_void = bool(comment and re.search(r'\bvoid\s+__thiscall\b', comment.group(1)))
+    return {'parameters': params,
+            'returnKind': None if bsim_void else (('bool' if kind[1] in ('bool', 'char') else 'number') if kind else None),
+            'bsimVoid': bsim_void}
 
 
 def rename_parameters(source, signature):
