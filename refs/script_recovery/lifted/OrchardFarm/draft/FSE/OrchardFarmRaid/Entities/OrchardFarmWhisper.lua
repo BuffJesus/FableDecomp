@@ -95,8 +95,8 @@ function Init(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     -- TODO(native): this_00 = *(int **)(this + 4);
     local iVar1 = *this_00
-    local pThing2 = (**(*this_00 + 0x118))(this_00)
-    quest:EntitySetAsAwareOfThing(me, nil --[[missing]])
+    local pThing2 = quest:GetHero()
+    quest:EntitySetAsAwareOfThing(me, pThing2)
     quest:EntitySetAsDamageable(me, false)
     quest:EntitySetAllowBossPhaseChanges(me, false)
 end

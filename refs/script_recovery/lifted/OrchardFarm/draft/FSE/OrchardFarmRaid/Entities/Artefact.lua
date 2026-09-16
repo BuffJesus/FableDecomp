@@ -13,15 +13,6 @@ end
 function Main(quest, me)
     local bVar3, bVar4
     local alive = true
-    -- TODO(native): int (*(int *)(this + 0x14));
-    -- TODO(native): bool bVar2;
-    -- TODO(native): bool bVar3;
-    -- TODO(native): bool bVar4;
-    -- TODO(native): CCharString CStack_20;
-    -- TODO(native): undefined1 auStack_1c [8];
-    -- TODO(native): undefined4 uStack_14;
-    -- TODO(native): undefined **local_10;
-    -- TODO(native): CScriptThing local_c [12];
     bVar4 = false
     local r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     alive = not quest:IsActiveThreadTerminating()
@@ -47,8 +38,8 @@ function Main(quest, me)
             bVar3 = not alive
             if not bVar2 then
                 if not bVar3 then
-                    -- TODO(native): *(int *)((*(int *)(this + 0x14)) + 0x48) = *(int *)((*(int *)(this + 0x14)) + 0x48) + -1;
-                    -- TODO(native): *(undefined1 *)(*(int *)((*(int *)(this + 0x14)) + 0x44) + 0x109) = 1;
+                    quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + -1)
+                    quest:SetMasterGameState("OFBRCratesStolen", true)
                     quest:RemoveThing(me, false, true)
                 end
                 -- LAB_00dcddbf: (native jump target)
@@ -76,7 +67,7 @@ end
 function Init(quest, me)
     quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + 1)
     -- TODO(native): CStack_4 = (CCharString)this;
-    -- TODO(native): Vector_PushBack_ScriptThing((void *)(*(int *)(this + 0x14) + 0x54),this + 8);
+    quest:StateListPush("CrateList", me)
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
 end
 
@@ -93,7 +84,7 @@ function OnPredicateFail(quest, me)
             if local_4 ~= nil then
                 -- TODO(native): *local_4 = *local_4 + 1;
             end
-            cVar1 = (**(*local_8 + 0x138))(__native_entity_state:GetStateInt("self_0xc"))
+            cVar1 = quest:GetFurthestWithScriptName(nil --[[missing]], nil --[[missing]])
             if cVar1 ~= 0 then break end
             p0 = p0 + 0xc
             if p0 == QUESTLIST_End("CrateList") then

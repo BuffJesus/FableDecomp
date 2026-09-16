@@ -1799,7 +1799,8 @@ class Lifter:
             return
         if stripped.startswith("@@BIND "):
             name = stripped.split(" ", 1)[1]
-            self.emit(f'{self.receiver}:AddEntityBinding("{name}", "{self.package}/Entities/{name}")')
+            target = getattr(self, 'binding_files', {}).get(name, f'{self.package}/Entities/{name}')
+            self.emit(f'{self.receiver}:AddEntityBinding("{name}", "{target}")')
             self.calls.append("AddEntityBinding")
             return
         if stripped.startswith("@@THREAD "):

@@ -147,16 +147,20 @@ def normalise_typed_decompile(text: str) -> str:
 
 def fold_outgoing_stack_slots(text: str) -> str:
     """With prototype overrides the decompiler sometimes models the outgoing argument area as
-    `in_stack_XXXXXXXX` variables: a return-address materialisation (`= (undefined **)0xADDR`, dropped)
-    and value staging (`in_stack_X = (T *)local;` then `(int)in_stack_X` as an argument, inlined)."""
-    text = re.sub(r'^[ \t]*in_stack_[0-9a-f]+ = \(undefined \*\*\)0x[0-9a-f]+;[ \t]*\r?\n', '', text, flags=re.M)
-    for m in list(re.finditer(r'^[ \t]*(in_stack_[0-9a-f]+) = (?:\([\w ]+\*+\))?([^;\n]+);[ \t]*\r?\n', text, re.M)):
-        var, value = m.group(1), m.group(2).strip()
-        if len(re.findall(r'^[ \t]*' + var + r' = ', text, re.M)) != 1:
+    `in_stack_XXXXXXXX` variables: return-address materialisations (`= (T *)0xADDR`, dropped) and
+    value staging (`in_stack_X = value;` then `(int)in_stack_X` as an argument). Each staging
+    assignment is inlined into the uses that follow it, up to the next assignment of that slot."""
+    text = re.sub(r'^[ \t]*in_stack_[0-9a-f]+ = \([\w ]+\*+\)0x[0-9a-f]{6,7};[ \t]*\r?\n', '', text, flags=re.M)
+    out, live = [], {}
+    for line in text.split('\n'):
+        m = re.match(r'^[ \t]*(in_stack_[0-9a-f]+) = (?:\([\w ]+\*+\))?([^;]+);[ \t]*\r?$', line)
+        if m:
+            live[m.group(1)] = m.group(2).strip()
             continue
-        text = text.replace(m.group(0), '')
-        text = re.sub(r'(?:\((?:int|\w+ \*+)\))?\b' + var + r'\b', lambda _: value, text)
-    return text
+        for var, value in live.items():
+            line = re.sub(r'(?:\((?:int|\w+ \*+)\))?\b' + var + r'\b', lambda _: value, line)
+        out.append(line)
+    return '\n'.join(out)
 
 
 # ---- cutscene actor maps -----------------------------------------------------------------------
@@ -301,8 +305,13 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             if re.search(r'^[ \t]*' + re.escape(var) + r' = (?!(?:\([\w ]+\*\))?' + base_pattern + ';)', text, re.M):
                 diag.append(f'alias {var} of {kinds} is reassigned; left as is')
                 continue
-            text = text.replace(m.group(0), '')
-            text = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: '(' + m.group(0).split('= ', 1)[1].rstrip(';').strip() + ')', text)
+            raw = m.group(0).split('= ', 1)[1].rstrip().rstrip(';').strip()
+            value = raw if raw.startswith('*(') else '(' + raw + ')'
+            start = text.index(m.group(0))
+            head, tail = text[:start], text[start:].replace(m.group(0), '', 1)
+            # substitute only after the assignment: the declaration block must keep `int iVarN;`
+            tail = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: value, tail)
+            text = head + tail
         return text
     if spec.entity:
         text = inline_alias(text, parent, 'parent')
@@ -350,7 +359,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             stride = a['stride']
             for member_off, (mname, kind) in a['members'].items():
                 absolute = a['base'] + member_off
-                key = f'__key("{a["name"]}_", {{idx}}, "_{mname}")'
+                key = f'__key("{a["name"]}_" .. {{idx}} .. "_{mname}")'
                 idx_form = r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|\w+) \* ' + off_re(stride)
                 pat_store = re.compile(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\) =\s*([^;]+);', re.M)
                 text = pat_store.sub(lambda m, k=key, kind=kind, tag=tag: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
@@ -362,7 +371,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 if not sub or sub.group(2) != '0':
                     continue
                 absolute = a['base'] + member_off
-                key = f'__key("{a["name"]}_0_{sub.group(1)}_", {{idx}}, "")'
+                key = f'__key("{a["name"]}_0_{sub.group(1)}_" .. {{idx}})'
                 pat_store = re.compile(r'^([ 	]*)\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\) =\s*([^;]+);', re.M)
                 text = pat_store.sub(lambda m, k=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
                 pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\)')
@@ -418,6 +427,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(begin + r' \+ (\w+)\b', lambda m, name=name, tag=tag: f'{tag}LIST_At("{name}", ({m.group(1)}) / 0xc)', text)
             text = re.sub(begin, f'{tag}LIST_Begin("{name}")', text)
             text = re.sub(end, f'{tag}LIST_End("{name}")', text)
+            text = re.sub(r'Vector_PushBack_ScriptThing\(\(void \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*([^;]+)\);',
+                          lambda m, name=name, tag=tag: f'{tag}LIST_Push("{name}", {m.group(1).strip()});', text)
 
     # 4. entity pointer-into-parent-array fields (MyTeam): store index, keyed access through it
     if spec.entity:
@@ -430,7 +441,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                           lambda m, pname=pname: f'{m.group(1)}ENTITYSTATE_SetInt("{pname}", {m.group(2).strip()});', text, flags=re.M)
             idx = f'ENTITYSTATE_GetInt("{pname}")'
             for member_off, (mname, kind) in a['members'].items():
-                key = f'__key("{a["name"]}_", {idx}, "_{mname}")'
+                key = f'__key("{a["name"]}_" .. {idx} .. "_{mname}")'
                 if member_off == 0:
                     text = re.sub(r'^([ \t]*)\*\*\(int \*\*\)\(this \+ ' + off_re(off) + r'\) =\s*([^;]+);',
                                   lambda m, key=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
@@ -440,22 +451,22 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
             for pmember, pname in a.get('pointers', {}).items():
                 # *(T *)(*(int *)(MyTeam + EnemyTeam) + M) -> member M of Teams[Teams_<MyTeam>_EnemyTeam]
-                chained_idx = f'QUESTSTATE_GetInt(__key("{a["name"]}_", {idx}, "_{pname}"))'
+                chained_idx = f'QUESTSTATE_GetInt(__key("{a["name"]}_" .. {idx} .. "_{pname}"))'
                 chained = r'\*\(int \*\)\(' + ptr + r' \+ ' + off_re(pmember) + r'\)'
                 for member_off, (mname, kind) in a['members'].items():
-                    key = f'__key("{a["name"]}_", {chained_idx}, "_{mname}")'
+                    key = f'__key("{a["name"]}_" .. {chained_idx} .. "_{mname}")'
                     text = re.sub(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\) =\s*([^;]+);',
                                   lambda m, key=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
                     text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
                 for member_off, tname in a['things'].items():
-                    recv = f'QUESTTHING_Get(__key("{a["name"]}_", {chained_idx}, "_{tname}"))'
+                    recv = f'QUESTTHING_Get(__key("{a["name"]}_" .. {chained_idx} .. "_{tname}"))'
                     def vcall(m, recv=recv):
                         out = thing_call(recv, m.group(1), m.end(), text[m.end():m.end() + 1])
                         return out if out else m.group(0)
                     text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
                     text = re.sub(r'\(CScriptThing \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\)', recv, text)
             for member_off, tname in a['things'].items():
-                recv = f'QUESTTHING_Get(__key("{a["name"]}_", {idx}, "_{tname}"))'
+                recv = f'QUESTTHING_Get(__key("{a["name"]}_" .. {idx} .. "_{tname}"))'
                 def vcall(m, recv=recv):
                     out = thing_call(recv, m.group(1), m.end(), text[m.end():m.end() + 1])
                     return out if out else m.group(0)
@@ -463,7 +474,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'\*\(int \*\)\(' + ptr + r' \+ ' + off_re(member_off + 4) + r'\)', f'__thing_valid({recv})', text)
                 text = re.sub(r'\(CScriptThing \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', recv, text)
                 text = re.sub(r'CScriptThing::operator=\(' + re.escape(recv) + r',\s*([^;]+)\);',
-                              lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_", {idx}, "_{tname}"), {m.group(1).strip()});', text)
+                              lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_" .. {idx} .. "_{tname}"), {m.group(1).strip()});', text)
     return text, diag
 
 
@@ -475,6 +486,9 @@ def strip_receiver_arguments(text: str) -> str:
     """Typed exports show the __thiscall receiver as an explicit first argument of overridden
     calls; the lifter's `GSI->Name(` / `CScriptThing::Name(me, ` forms carry it implicitly."""
     text = re.sub(r'(GSI->\w+\()' + GSI_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
+    # aliases of the interface pointer (`this_00 = *(int **)(this + 0x40);`) as explicit receivers
+    for alias in set(re.findall(r'^[ \t]*(\w+) = \*\((?:int|void|undefined4) \*\*\)\(this \+ (?:4|0x40)\);', text, re.M)):
+        text = re.sub(r'(GSI->\w+\()' + re.escape(alias) + r'(?:,\s*|(?=\)))', r'\1', text)
     text = re.sub(r'(CScriptThing::\w+\(me, ?)' + ME_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
     text = re.sub(r'(CScriptThing::\w+\((\w+), ?)\2(?:,\s*|(?=\)))', r'\1', text)
     # typed by-value placeholders read as their real classes
@@ -491,6 +505,8 @@ LUA_PSEUDO = [
     (re.compile(r'ENTITYSTATE_SetInt\('), '__native_entity_state:SetStateInt('),
     (re.compile(r'QUESTLIST_Count\('), 'quest:GetStateListCount('),
     (re.compile(r'QUESTLIST_At\('), 'quest:GetStateListAt('),
+    (re.compile(r'QUESTLIST_Push\('), 'quest:StateListPush('),
+    (re.compile(r'ENTITYLIST_Push\('), '__native_entity_state:StateListPush('),
     (re.compile(r'ENTITYLIST_Count\('), '__native_entity_state:GetStateListCount('),
     (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
     (re.compile(r'__thing_valid\('), 'IsThingValid('),
@@ -503,15 +519,12 @@ LUA_PSEUDO = [
     (re.compile(r'GSI->(Get|Set)State(Int|Bool|Float|String|Thing)\('), r'quest:\1State\2('),
     (re.compile(r'GSI->(Get|Set)MasterGameState\('), r'quest:\1MasterGameState('),
 ]
-KEY = re.compile(r'__key\(("[^"]*"), (.+?), ("[^"]*")\)')
+KEY = re.compile(r'__key\(')
 
 
 def finish_lua(text: str) -> str:
     """Turn lowering pseudo-calls into Lua after the lifter has run."""
     for pattern, repl in LUA_PSEUDO:
         text = pattern.sub(repl, text)
-    previous = None
-    while previous != text:
-        previous = text
-        text = KEY.sub(lambda m: f'{m.group(1)} .. tostring({m.group(2)}) .. {m.group(3)}', text)
+    text = KEY.sub('(', text)
     return text

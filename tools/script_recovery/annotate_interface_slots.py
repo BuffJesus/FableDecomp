@@ -249,6 +249,12 @@ def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str,
         return f"GSI->{name}" if name else match.group(0)
     for pattern in PATTERNS:
         text = pattern.sub(sub, text)
+    # interface-pointer / vtable aliases under any local name (typed exports name them `this_00`, ...)
+    aliases = {m.group("var") for m in RE_GSI_ALIAS.finditer(text)
+               if not re.match(r"(?:[a-z]{1,3}Var\d+|\w*Stack_[0-9a-f]+|this)$", m.group("var"))}
+    if aliases:
+        names = "|".join(sorted(re.escape(a) for a in aliases))
+        text = re.sub(r"\(\*\*\(code \*\*\)\(\*?(?:" + names + r") \+ (" + OFFSET + r")\)\)", sub, text)
     return text
 
 

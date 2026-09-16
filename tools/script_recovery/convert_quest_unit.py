@@ -78,10 +78,26 @@ class UnitConverter:
         all_sources, shared_names, shared_inputs = {}, set(), {}
         shared_module = f'{package}.native_quest_helpers'
         owners = [('quest', unit['script'], quest_functions, quest_state, {})]
+        # Several bindings can share one native class (GuardTeamMember/BanditTeamMember -> CCrateTeamMember):
+        # emit that class once and register every binding name against the shared file.
+        by_class = {}
         for name, ent in unit['entities'].items():
+            by_class.setdefault(ent['nativeClass'], []).append(name)
+        binding_files, class_owner = {}, {}
+        for klass, names in by_class.items():
+            owner = names[0] if len(names) == 1 else klass.split('::')[-1][1:]
+            for name in names:
+                binding_files[name] = f'{package}/Entities/{owner}'
+                class_owner[name] = owner
+        report['bindingFiles'] = binding_files
+        seen_classes = set()
+        for name, ent in unit['entities'].items():
+            if ent['nativeClass'] in seen_classes:
+                continue
+            seen_classes.add(ent['nativeClass'])
             ent_functions = {n: f for n, f in ent['functions'].items() if n not in SKIP_ROLES}
             ent_functions.update(ent.get('helpers', {}))   # entity-class members, lifted into the same file
-            owners.append(('entity', name, ent_functions, state_map(ent['fields']), quest_state))
+            owners.append(('entity', class_owner[name], ent_functions, state_map(ent['fields']), quest_state))
         for kind, owner, functions, state, parent_state in owners:
             entity = kind == 'entity'
             lifter = Lifter(self.manifest, state, 'quest', entity, package, self.rdata,
@@ -92,6 +108,7 @@ class UnitConverter:
             local_names = {f['address'].lower(): n for n, f in functions.items()
                            if re.fullmatch(r'[A-Za-z_]\w*', n) and n not in ('Main', 'Init', 'OnPersist', 'OnPredicateFail')}
             lifter.helper_names = set(local_names.values())
+            lifter.binding_files = binding_files
             signatures = {}
             for address, helper in local_names.items():
                 fn = self.native(address)
@@ -141,7 +158,8 @@ class UnitConverter:
                         candidates.setdefault(call['currentName'], set()).add(local_names[call['target'].lower()])
                 lifter.callee_names.update({label: next(iter(names)) for label, names in candidates.items() if len(names) == 1})
                 signature = signatures.get(name) or function_parameters(fn['decompile'], member=True)
-                spec_l = LoweringSpec(unit, owner, entity=entity, thing_slots=self.thing_slots)
+                representative = next((n for n, o in class_owner.items() if o == owner), owner) if entity else owner
+                spec_l = LoweringSpec(unit, representative, entity=entity, thing_slots=self.thing_slots)
                 spec_l.resolve_string = self.rdata.string_at
                 lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature), spec_l)
                 source = strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity))

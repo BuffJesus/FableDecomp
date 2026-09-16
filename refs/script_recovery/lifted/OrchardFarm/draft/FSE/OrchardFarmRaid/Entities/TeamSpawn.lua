@@ -1,4 +1,4 @@
--- Generated native draft: BanditTeamSpawn. Review coverage report before use.
+-- Generated native draft: TeamSpawn. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
 local __native_entity_state = {}
@@ -26,7 +26,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if not bVar3 then
-        quest:SetTimer(quest:GetStateInt("Teams_" .. tostring(__native_entity_state:GetStateInt("TeamID")) .. "_TeamReinforcementsTimer"), __native_entity_state:GetStateInt("TeamRespawnTime"))
+        quest:SetTimer(quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_TeamReinforcementsTimer")), __native_entity_state:GetStateInt("TeamRespawnTime"))
         if (__native_entity_state:GetStateInt("TeamID") == 1) and (quest:GetStateInt("HeroTeam") == 1) then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -53,7 +53,7 @@ function Main(quest, me)
                     return
                 end
                 iVar4 = quest:GetTimer(* (__native_entity_state:GetStateInt("TeamID") * 0x40 + 0xa8 + __native_entity_state:GetStateInt("self_0x14")))
-                if (iVar4 == 0) and (quest:GetStateInt("Teams_" .. tostring(__native_entity_state:GetStateInt("TeamID")) .. "_MemberCount") < __native_entity_state:GetStateInt("TeamMemberLimit")) then
+                if (iVar4 == 0) and (quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) < __native_entity_state:GetStateInt("TeamMemberLimit")) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -64,8 +64,8 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    quest:SetTimer(quest:GetStateInt("Teams_" .. tostring(__native_entity_state:GetStateInt("TeamID")) .. "_TeamReinforcementsTimer"), __native_entity_state:GetStateInt("TeamRespawnTime"))
-                    iVar4 = quest:GetStateInt("Teams_" .. tostring(__native_entity_state:GetStateInt("TeamID")) .. "_MemberCount")
+                    quest:SetTimer(quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_TeamReinforcementsTimer")), __native_entity_state:GetStateInt("TeamRespawnTime"))
+                    iVar4 = quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"))
                     fVar8 = 15.0
                     thing1 = quest:GetHero()
                     bVar3 = IsDistanceBetweenThingsOver(thing1,me,fVar8)
@@ -141,9 +141,9 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    quest:UpdateQuestInfoCounterList(__native_entity_state:GetStateInt("BanditsLeftID"), (2 - quest:GetStateInt("BanditWavesSpawned")) * __native_entity_state:GetStateInt("TeamMemberLimit") + quest:GetStateInt("Teams_" .. tostring(__native_entity_state:GetStateInt("TeamID")) .. "_MemberCount"), -1)
+                    quest:UpdateQuestInfoCounterList(__native_entity_state:GetStateInt("BanditsLeftID"), (2 - quest:GetStateInt("BanditWavesSpawned")) * __native_entity_state:GetStateInt("TeamMemberLimit") + quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")), -1)
                 end
-                if quest:GetStateInt("Teams_" .. tostring(__native_entity_state:GetStateInt("TeamID")) .. "_MemberCount") == 0 then
+                if quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) == 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -196,7 +196,7 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    iVar4 = quest:GetStateInt("Teams_" .. tostring(__native_entity_state:GetStateInt("TeamID")) .. "_MemberCount")
+                    iVar4 = quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"))
                     iVar9 = 0
                     if __native_entity_state:GetStateInt("TeamMemberLimit") ~= iVar4 and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4 then
                         repeat

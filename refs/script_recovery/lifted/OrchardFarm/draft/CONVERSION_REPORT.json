@@ -10,12 +10,8 @@
           "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua"
         },
         {
-          "owner": "GuardTeamSpawn",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua"
-        },
-        {
-          "owner": "BanditTeamSpawn",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua"
+          "owner": "TeamSpawn",
+          "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua"
         },
         {
           "owner": "Artefact",
@@ -26,12 +22,8 @@
           "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua"
         },
         {
-          "owner": "GuardTeamMember",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua"
-        },
-        {
-          "owner": "BanditTeamMember",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua"
+          "owner": "CrateTeamMember",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua"
         },
         {
           "owner": "FarmRearEntrance",
@@ -221,10 +213,8 @@
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pppuVar9);",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_24,&DAT_0122d70e,-1);",
             "unlifted: this_00 = *(int **)(this + 0x40);",
-            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
             "unlifted: GetSquaredDistanceBetweenThings(auStack_78);",
             "unlifted: fStack_14 = (float)extraout_ST0;",
-            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
             "unlifted: GetSquaredDistanceBetweenThings(&uStack_90);",
             "unlifted: RunCutsceneMacro_Func(aCStack_30,&CStack_8c.field_0x8,(void *)0x0,(void *)0x0,false,true);",
             "goto LAB_00dd0b1f",
@@ -273,6 +263,8 @@
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
+            "GetHero",
+            "GetHero",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
@@ -377,10 +369,8 @@
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);",
             "unlifted: CCharString::CCharString((CCharString *)&CStack_60,&DAT_0122d70e,-1);",
             "unlifted: this_00 = *(int **)(this + 0x40);",
-            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
             "unlifted: GetSquaredDistanceBetweenThings(&uStack_b8);",
             "unlifted: aCStack_1c[0] = (CCharString)(float)extraout_ST0;",
-            "unlifted: (**(code **)(*this_00 + 0x118))(this_00);",
             "unlifted: GetSquaredDistanceBetweenThings(auStack_ac);",
             "unlifted: RunCutsceneMacro_Func(aCStack_34,&uStack_90,(void *)0x0,(void *)0x0,false,true);",
             "goto LAB_00dd1736",
@@ -439,6 +429,8 @@
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
+            "GetHero",
+            "GetHero",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
@@ -885,10 +877,10 @@
           "nativeLabels": []
         },
         {
-          "owner": "GuardTeamSpawn",
+          "owner": "TeamSpawn",
           "function": "Main",
           "address": "0x00dcd350",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
@@ -982,9 +974,9 @@
             "passed": 0,
             "errors": [
               {
-                "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:Main",
+                "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Main",
                 "line": 25,
-                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:Main:25: unexpected symbol near '&'"
+                "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Main:25: unexpected symbol near '&'"
               }
             ]
           },
@@ -993,10 +985,10 @@
           "nativeLabels": []
         },
         {
-          "owner": "GuardTeamSpawn",
+          "owner": "TeamSpawn",
           "function": "Init",
           "address": "0x00dcd1d0",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
@@ -1038,9 +1030,9 @@
             "passed": 0,
             "errors": [
               {
-                "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:Init",
+                "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Init",
                 "line": 7,
-                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:Init:7: unexpected symbol near '*'"
+                "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:Init:7: unexpected symbol near '*'"
               }
             ]
           },
@@ -1053,10 +1045,10 @@
           ]
         },
         {
-          "owner": "GuardTeamSpawn",
+          "owner": "TeamSpawn",
           "function": "OnPersist",
           "address": "0x00cdebc0",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
@@ -1074,223 +1066,10 @@
           }
         },
         {
-          "owner": "GuardTeamSpawn",
+          "owner": "TeamSpawn",
           "function": "OnPredicateFail",
           "address": "0x00cdebd0",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [],
-          "calls": [],
-          "lines": 0,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "BanditTeamSpawn",
-          "function": "Main",
-          "address": "0x00dcd350",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [
-            "unnamed field 0x14",
-            "CreateCreature: missing defName, scriptName (1 args for 3 params)",
-            "goto LAB_00dcd9ed",
-            "CreateCreature: missing defName, scriptName (1 args for 3 params)",
-            "label LAB_00dcd9ed",
-            "unlifted: *(undefined4 *)(*(int *)(this + 0x14) + 100) = 3;",
-            "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&CStack_5c);",
-            "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
-            "verify cleanup at LAB_00dcda68 (lifted as early return)",
-            "CreateCreature: missing scriptName (2 args for 3 params)",
-            "unlifted: CScriptThing::operator=((CScriptThing *)&CStack_5c,(int)pCVar6);",
-            "goto LAB_00dcd9ed"
-          ],
-          "calls": [
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "SetTimer",
-            "IsActiveThreadTerminating",
-            "DisplayQuestInfo",
-            "AddQuestInfoCounterList",
-            "SetStateInt",
-            "UpdateQuestInfoCounterList",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "GetTimer",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "SetTimer",
-            "QUESTSTATE_GetInt",
-            "GetHero",
-            "GetPos",
-            "IsCameraPosOnScreen",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "GetPos",
-            "CreateCreature",
-            "EntityAttachToScript",
-            "Pause",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "GetPos",
-            "CreateCreature",
-            "EntityAttachToScript",
-            "Pause",
-            "GetRandomThingWithScriptName",
-            "ENTITYTHING_Set",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "UpdateQuestInfoCounterList",
-            "IsActiveThreadTerminating",
-            "Pause",
-            "SetStateInt",
-            "IsActiveThreadTerminating",
-            "GetHero",
-            "GetNearestWithScriptName",
-            "IsAlive",
-            "GetHero",
-            "IsDistanceBetweenThingsUnder",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "QUESTSTATE_GetInt",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "GetPos",
-            "CreateCreature",
-            "IsActiveThreadTerminating",
-            "GetPos",
-            "CreateCreature",
-            "EntityAttachToScript",
-            "Pause",
-            "IsActiveThreadTerminating",
-            "RemoveQuestInfoElement"
-          ],
-          "lines": 233,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:Main",
-                "line": 25,
-                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:Main:25: unexpected symbol near '&'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "BanditTeamSpawn",
-          "function": "Init",
-          "address": "0x00dcd1d0",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [
-            "unlifted: *uStack_4 = *uStack_4 + -1;",
-            "unlifted: local_c._4_4_ = 0;",
-            "GetName: CScriptThing method not in FSE manifest",
-            "label LAB_00dcd306",
-            "unnamed field 0x34 written in Init",
-            "unlifted: iVar5 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar4);",
-            "verify cleanup at LAB_00dcd306 (lifted as early return)",
-            "unnamed field 0x34 written in Init",
-            "unlifted: CCharString::operator=((CCharString *)(this + 0x38),pcVar8);",
-            "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd6c);",
-            "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd70);"
-          ],
-          "calls": [
-            "GetRandomThingWithScriptName",
-            "ENTITYTHING_Set",
-            "GetName",
-            "SetStateInt",
-            "SetStateString",
-            "SetStateInt",
-            "SetStateString",
-            "SetStateInt",
-            "SetStateInt",
-            "SetStateInt",
-            "SetStateInt",
-            "SetStateInt",
-            "SetStateInt"
-          ],
-          "lines": 43,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:Init",
-                "line": 7,
-                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:Init:7: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "goto LAB_00dcd2bb;"
-          ],
-          "nativeLabels": [
-            "LAB_00dcd2bb"
-          ]
-        },
-        {
-          "owner": "BanditTeamSpawn",
-          "function": "OnPersist",
-          "address": "0x00cdebc0",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [],
-          "calls": [],
-          "lines": 0,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          }
-        },
-        {
-          "owner": "BanditTeamSpawn",
-          "function": "OnPredicateFail",
-          "address": "0x00cdebd0",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
@@ -1321,23 +1100,12 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: int (*(int *)(this + 0x14));",
-            "unlifted: bool bVar2;",
-            "unlifted: bool bVar3;",
-            "unlifted: bool bVar4;",
-            "unlifted: CCharString CStack_20;",
-            "unlifted: undefined1 auStack_1c [8];",
-            "unlifted: undefined4 uStack_14;",
-            "unlifted: undefined **local_10;",
-            "unlifted: CScriptThing local_c [12];",
             "label LAB_00dcddfe",
             "unlifted: auStack_1c._4_4_ = 0;",
             "label LAB_00dcddcf",
             "verify cleanup at LAB_00dcddfe (lifted as early return)",
             "goto LAB_00dcddf6",
             "IsBeingCarriedBy: CScriptThing method not in FSE manifest",
-            "unlifted: *(int *)((*(int *)(this + 0x14)) + 0x48) = *(int *)((*(int *)(this + 0x14)) + 0x48) + -1;",
-            "unlifted: *(undefined1 *)(*(int *)((*(int *)(this + 0x14)) + 0x44) + 0x109) = 1;",
             "label LAB_00dcddbf",
             "verify cleanup at LAB_00dcddbf (lifted as early return)",
             "verify cleanup at LAB_00dcddbf (lifted as early return)",
@@ -1350,13 +1118,15 @@
             "IsActiveThreadTerminating",
             "IsBeingCarriedBy",
             "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetMasterGameState",
             "RemoveThing",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 60,
+          "lines": 51,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1379,11 +1149,11 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: CStack_4 = (CCharString)this;",
-            "unlifted: Vector_PushBack_ScriptThing((void *)(*(int *)(this + 0x14) + 0x54),this + 8);"
+            "unlifted: CStack_4 = (CCharString)this;"
           ],
           "calls": [
             "SetStateInt",
+            "QUESTLIST_Push",
             "MiniMapAddMarker"
           ],
           "lines": 4,
@@ -1434,9 +1204,12 @@
             "unlifted: local_8 = *(int **)(p0 + 4);",
             "unlifted: *local_4 = *local_4 + 1;",
             "unnamed field 0xc",
+            "GetFurthestWithScriptName: missing spRelativeTo, scriptName (0 args for 2 params)",
             "unlifted: std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);"
           ],
-          "calls": [],
+          "calls": [
+            "GetFurthestWithScriptName"
+          ],
           "lines": 18,
           "syntax": {
             "runtime": "Lua 5.4",
@@ -1536,12 +1309,12 @@
           },
           "todo": [
             "unlifted: CStack_4 = (CCharString)this;",
-            "unlifted: this_00 = *(int **)(this + 4);",
-            "EntitySetAsAwareOfThing: missing spThing2 (1 args for 2 params)"
+            "unlifted: this_00 = *(int **)(this + 4);"
           ],
           "calls": [
             "EntitySetInFaction",
             "EntitySetAsKillable",
+            "GetHero",
             "EntitySetAsAwareOfThing",
             "EntitySetAsDamageable",
             "EntitySetAllowBossPhaseChanges"
@@ -1610,27 +1383,21 @@
           "nativeLabels": []
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "Main",
           "address": "0x00dce230",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
             "returnKind": null
           },
           "todo": [
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
             "GetCurrentStateGroupType: CScriptThing method not in FSE manifest",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
             "unlifted: this_00 = auStack_58;",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_54;",
             "unlifted: this_00 = auStack_54;",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_50;",
             "unlifted: this_00 = auStack_50;",
-            "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
             "label LAB_00dce594",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)0xdce572;",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),&DAT_0122d70e,-1);",
             "verify cleanup at LAB_00dce594 (lifted as early return)",
             "label LAB_00dcebab",
@@ -1643,41 +1410,24 @@
             "SetStealStealableItems: missing spThing (1 args for 2 params)",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
             "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0x0;",
-            "unlifted: in_stack_ffffff6c = (CScriptThing *)0xdce6ce;",
             "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
             "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_48;",
             "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdce74c;",
             "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
-            "unlifted: in_stack_ffffff6c = (CScriptThing *)0xdce766;",
             "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
             "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
-            "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
             "unnamed field 0x2c",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unlifted: in_stack_ffffff7c = p0;",
             "EntityFollowThing: missing spFollower, spTarget, bUnknown (1 args for 4 params)",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)&piStack_44;",
-            "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
             "unnamed field 0x2c",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unlifted: in_stack_ffffff7c = p0;",
             "EntityFollowThing: missing spFollower, spTarget, distance, bUnknown (0 args for 4 params)",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_40;",
-            "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
             "unnamed field 0x2c",
             "unlifted: CCharString::CCharString((CCharString *)(auStack_40 + 4),\"REQUEST_PROTECTION\",-1);",
-            "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdcea0a;",
             "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
-            "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdceaa0;",
             "SetCombatNearbyBreakOffRange: missing spThing (1 args for 2 params)",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
             "GetNearestWithScriptName: missing spRelativeTo (1 args for 2 params)",
@@ -1773,7 +1523,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 435,
+          "lines": 417,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1781,9 +1531,9 @@
             "passed": 0,
             "errors": [
               {
-                "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Main",
-                "line": 126,
-                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Main:126: ')' expected near ':'"
+                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Main",
+                "line": 137,
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Main:137: unexpected symbol near '*'"
               }
             ]
           },
@@ -1798,10 +1548,10 @@
           ]
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "Init",
           "address": "0x00dcdf60",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
@@ -1852,9 +1602,9 @@
             "passed": 0,
             "errors": [
               {
-                "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Init",
+                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init",
                 "line": 5,
-                "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:Init:5: unexpected symbol near '*'"
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init:5: unexpected symbol near '*'"
               }
             ]
           },
@@ -1867,10 +1617,10 @@
           ]
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "OnPersist",
           "address": "0x00cdebc0",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
@@ -1888,10 +1638,10 @@
           }
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "OnPredicateFail",
           "address": "0x00dcded0",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": null,
           "nativeSignature": {
             "parameters": [],
@@ -1923,10 +1673,10 @@
           "nativeLabels": []
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "GoOnPatrol",
           "address": "0x00dcec70",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": "bsim label agrees with a PDB nested member",
           "nativeSignature": {
             "parameters": [],
@@ -1963,10 +1713,10 @@
           "nativeLabels": []
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "IsThingCarryingCrate",
           "address": "0x00dced10",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": "bsim label agrees with a PDB nested member",
           "nativeSignature": {
             "parameters": [
@@ -1995,9 +1745,9 @@
             "passed": 0,
             "errors": [
               {
-                "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:IsThingCarryingCrate",
+                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:IsThingCarryingCrate",
                 "line": 14,
-                "message": "...rmRaid/Entities/GuardTeamMember.lua:IsThingCarryingCrate:14: unexpected symbol near '*'"
+                "message": "...rmRaid/Entities/CrateTeamMember.lua:IsThingCarryingCrate:14: unexpected symbol near '*'"
               }
             ]
           },
@@ -2010,10 +1760,10 @@
           ]
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "GetNearestCrateToMe",
           "address": "0x00dcedf0",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": "WEAK: size-rank pairing (retail 350 B vs debug 315 B)",
           "nativeSignature": {
             "parameters": [],
@@ -2038,9 +1788,9 @@
             "passed": 0,
             "errors": [
               {
-                "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:GetNearestCrateToMe",
+                "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:GetNearestCrateToMe",
                 "line": 12,
-                "message": "...armRaid/Entities/GuardTeamMember.lua:GetNearestCrateToMe:12: unexpected symbol near '*'"
+                "message": "...armRaid/Entities/CrateTeamMember.lua:GetNearestCrateToMe:12: unexpected symbol near '*'"
               }
             ]
           },
@@ -2049,486 +1799,10 @@
           "nativeLabels": []
         },
         {
-          "owner": "GuardTeamMember",
+          "owner": "CrateTeamMember",
           "function": "helper_DCEC50",
           "address": "0x00dcec50",
-          "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "long"
-              }
-            ],
-            "returnKind": null
-          },
-          "todo": [
-            "unnamed field 0x2c",
-            "unlifted: *piVar1 = *piVar1 + -1;",
-            "unnamed field 0x2c",
-            "unlifted: *piVar1 = *piVar1 + 1;"
-          ],
-          "calls": [
-            "SetStateInt"
-          ],
-          "lines": 6,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "Main",
-          "address": "0x00dce230",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
-            "GetCurrentStateGroupType: CScriptThing method not in FSE manifest",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_58;",
-            "unlifted: this_00 = auStack_58;",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_54;",
-            "unlifted: this_00 = auStack_54;",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_50;",
-            "unlifted: this_00 = auStack_50;",
-            "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
-            "label LAB_00dce594",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)0xdce572;",
-            "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),&DAT_0122d70e,-1);",
-            "verify cleanup at LAB_00dce594 (lifted as early return)",
-            "label LAB_00dcebab",
-            "IsDistanceBetweenThingsUnder: missing spThing2 (2 args for 3 params)",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "SetCombatNearbyBreakOffRange: missing spThing (1 args for 2 params)",
-            "SetStealStealableItems: missing spThing (1 args for 2 params)",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0x0;",
-            "unlifted: in_stack_ffffff6c = (CScriptThing *)0xdce6ce;",
-            "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
-            "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_48;",
-            "verify cleanup at LAB_00dcebab (lifted as early return)",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdce74c;",
-            "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
-            "unlifted: in_stack_ffffff6c = (CScriptThing *)0xdce766;",
-            "SetStealStealableItems: missing spThing, bSteal (0 args for 2 params)",
-            "SetRecoverStealableItems: missing spThing, bRecover (0 args for 2 params)",
-            "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
-            "unnamed field 0x2c",
-            "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unlifted: in_stack_ffffff7c = p0;",
-            "EntityFollowThing: missing spFollower, spTarget, bUnknown (1 args for 4 params)",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)&piStack_44;",
-            "unparsed call operands (unbalanced call operand delimiters):  ENTITYSTATE_GetInt(\"MyTeam\"), \"_TeamCrateCarrier\"))",
-            "unnamed field 0x2c",
-            "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
-            "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "unlifted: in_stack_ffffff7c = p0;",
-            "EntityFollowThing: missing spFollower, spTarget, distance, bUnknown (0 args for 4 params)",
-            "unlifted: in_stack_ffffff84 = (CScriptThing *)auStack_40;",
-            "unparsed call operands (unbalanced call operand delimiters):  QUESTSTATE_GetInt(__key(\"Teams_\", ENTITYSTATE_GetInt(\"MyTeam\"), \"_EnemyTeam\")), \"_TeamCrateCarrier\"))",
-            "unnamed field 0x2c",
-            "unlifted: CCharString::CCharString((CCharString *)(auStack_40 + 4),\"REQUEST_PROTECTION\",-1);",
-            "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdcea0a;",
-            "SetCombatNearbyBreakOffRange: missing spThing, range (0 args for 2 params)",
-            "unlifted: in_stack_ffffff84 = *(CScriptThing **)(this + 0xc);",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: in_stack_ffffff7c = (CScriptThing *)0xdceaa0;",
-            "SetCombatNearbyBreakOffRange: missing spThing (1 args for 2 params)",
-            "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "GetNearestWithScriptName: missing spRelativeTo (1 args for 2 params)",
-            "unlifted: CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&local_20);",
-            "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&local_20);",
-            "collapse the StartScriptingEntity retry loop around AcquireControl",
-            "collapse the StartScriptingEntity retry loop around AcquireControl",
-            "MoveToPosition: missing position (4 args for 5 params)"
-          ],
-          "calls": [
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "RemoveThing",
-            "IsActiveThreadTerminating",
-            "QUESTSTATE_SetInt",
-            "QUESTSTATE_SetInt",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsInCutscene",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "IsInCutscene",
-            "IsActiveThreadTerminating",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "GetCurrentStateGroupType",
-            "SetStateInt",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "SetStateInt",
-            "IsDead",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsDistanceBetweenThingsUnder",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "EntityStopFollowing",
-            "SetCombatNearbyBreakOffRange",
-            "SetStealStealableItems",
-            "IsActiveThreadTerminating",
-            "SetCombatNearbyBreakOffRange",
-            "SetStealStealableItems",
-            "SetRecoverStealableItems",
-            "IsActiveThreadTerminating",
-            "ResetCombatNearbyBreakOffRange",
-            "SetStealStealableItems",
-            "SetRecoverStealableItems",
-            "IsAlive",
-            "IsActiveThreadTerminating",
-            "EntityStopFollowing",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "EntityFollowThing",
-            "IsDead",
-            "IsActiveThreadTerminating",
-            "EntityStopFollowing",
-            "IsAlive",
-            "IsActiveThreadTerminating",
-            "EntityStopFollowing",
-            "EntityFollowThing",
-            "IsDead",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "QUESTTHING_Set",
-            "SetCombatNearbyBreakOffRange",
-            "IsActiveThreadTerminating",
-            "QUESTTHING_Set",
-            "SetCombatNearbyBreakOffRange",
-            "IsActiveThreadTerminating",
-            "EntityStopFollowing",
-            "GetNearestWithScriptName",
-            "AcquireControl",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "AcquireControl",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsPerformingScriptTask",
-            "IsActiveThreadTerminating",
-            "MoveToPosition",
-            "IsDistanceBetweenThingsUnder",
-            "IsActiveThreadTerminating",
-            "FadeOutAndKillEntity",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating"
-          ],
-          "lines": 435,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Main",
-                "line": 126,
-                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Main:126: ')' expected near ':'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "if (*(int *)(this + 0x1c) != 1) goto LAB_00dce500;",
-            "if (bVar6) goto LAB_00dcec33;"
-          ],
-          "nativeLabels": [
-            "LAB_00dce500",
-            "LAB_00dcec33"
-          ]
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "Init",
-          "address": "0x00dcdf60",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [
-            "GetName: CScriptThing method not in FSE manifest",
-            "label LAB_00dce00a",
-            "unlifted: iVar3 = CBasicString<char>::Compare(*(CBasicString<char> **)*piVar1);",
-            "unlifted: cStack_11 = '\\x01' - (iVar3 != 0);",
-            "verify cleanup at LAB_00dce00a (lifted as early return)",
-            "SetDataString: CScriptThing method not in FSE manifest",
-            "SetDataString: CScriptThing method not in FSE manifest",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: *piStack_8 = *piStack_8 + -1;"
-          ],
-          "calls": [
-            "GetName",
-            "SetStateInt",
-            "SetStateInt",
-            "EntitySetInFaction",
-            "GetHero",
-            "EntitySetThingAsAllyOfThing",
-            "EntitySetInFaction",
-            "MiniMapAddMarker",
-            "SetIsThingTurncoatable",
-            "EntitySetAsDisplayingEmoteIcon",
-            "SetDataString",
-            "EntitySetInFaction",
-            "GetHero",
-            "EntitySetThingAsAllyOfThing",
-            "EntitySetInFaction",
-            "MiniMapAddMarker",
-            "EntitySetAsDisplayingEmoteIcon",
-            "SetDataString",
-            "ENTITYSTATE_SetInt",
-            "SetStateInt",
-            "SetStateInt",
-            "SetStateInt",
-            "QUESTSTATE_SetInt",
-            "ENTITYTHING_Set"
-          ],
-          "lines": 57,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Init",
-                "line": 5,
-                "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:Init:5: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "goto LAB_00dcdf96;"
-          ],
-          "nativeLabels": [
-            "LAB_00dcdf96"
-          ]
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "OnPersist",
-          "address": "0x00cdebc0",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [],
-          "calls": [],
-          "lines": 0,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          }
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "OnPredicateFail",
-          "address": "0x00dcded0",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-          "evidence": null,
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null
-          },
-          "todo": [
-            "unnamed field 0x14",
-            "unlifted: *piVar1 = *piVar1 + -1;",
-            "unlifted: pvStack_4 = this;",
-            "unlifted: CCharString::CCharString((CCharString *)&pvStack_4,&DAT_0122d70e,-1);",
-            "MsgIsKilledBy: 0 operands for 1 params"
-          ],
-          "calls": [
-            "QUESTSTATE_SetInt",
-            "MsgIsKilledBy",
-            "SetMasterGameState",
-            "SetMasterGameState"
-          ],
-          "lines": 14,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "GoOnPatrol",
-          "address": "0x00dcec70",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-          "evidence": "bsim label agrees with a PDB nested member",
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": "number"
-          },
-          "todo": [
-            "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
-            "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
-            "unnamed field 0x2c",
-            "unlifted: *piVar1 = *piVar1 + -1;"
-          ],
-          "calls": [
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "GetHero",
-            "EntityFollowThing",
-            "IsActiveThreadTerminating",
-            "GetHero",
-            "EntityFollowThing",
-            "EntitySetAsMirroringHeroEnemyRelationsWhileFollowing",
-            "SetStateInt",
-            "QUESTSTATE_SetInt"
-          ],
-          "lines": 30,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "IsThingCarryingCrate",
-          "address": "0x00dced10",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-          "evidence": "bsim label agrees with a PDB nested member",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "thing",
-                "lua": "native_arg_thing",
-                "type": "int"
-              }
-            ],
-            "returnKind": "number"
-          },
-          "todo": [
-            "IsHeroAllowedHenchmenInRegion: missing regionName (0 args for 1 params)"
-          ],
-          "calls": [
-            "IsActiveThreadTerminating",
-            "IsHeroAllowedHenchmenInRegion",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating"
-          ],
-          "lines": 31,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:IsThingCarryingCrate",
-                "line": 14,
-                "message": "...mRaid/Entities/BanditTeamMember.lua:IsThingCarryingCrate:14: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "if (bVar1) goto LAB_00dcedc1;"
-          ],
-          "nativeLabels": [
-            "LAB_00dcedc1"
-          ]
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "GetNearestCrateToMe",
-          "address": "0x00dcedf0",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-          "evidence": "WEAK: size-rank pairing (retail 350 B vs debug 315 B)",
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": "number"
-          },
-          "todo": [
-            "unlifted: local_18 = 1e+07;",
-            "unlifted: GetSquaredDistanceBetweenThings((void *)(this + 8));",
-            "unlifted: local_18 = (float)extraout_ST0;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: local_14 = local_14 + 1;",
-            "unlifted: in_stack_00000004[1] = local_8;",
-            "unlifted: in_stack_00000004[2] = local_4;",
-            "unlifted: *local_4 = *local_4 + 1;"
-          ],
-          "calls": [],
-          "lines": 29,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:GetNearestCrateToMe",
-                "line": 12,
-                "message": "...rmRaid/Entities/BanditTeamMember.lua:GetNearestCrateToMe:12: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "BanditTeamMember",
-          "function": "helper_DCEC50",
-          "address": "0x00dcec50",
-          "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
+          "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
           "evidence": "unnamed entity helper",
           "nativeSignature": {
             "parameters": [
@@ -2858,38 +2132,28 @@
       "syntax": {
         "runtime": "Lua 5.4",
         "ok": false,
-        "checked": 11,
+        "checked": 9,
         "passed": 3,
         "errors": [
           {
             "path": "FSE/OrchardFarmRaid/Entities/Artefact.lua",
-            "line": 88,
-            "message": "FSE/OrchardFarmRaid/Entities/Artefact.lua:88: unexpected symbol near '*'"
+            "line": 79,
+            "message": "FSE/OrchardFarmRaid/Entities/Artefact.lua:79: unexpected symbol near '*'"
           },
           {
-            "path": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua",
-            "line": 138,
-            "message": "FSE/OrchardFarmRaid/Entities/BanditTeamMember.lua:138: ')' expected near ':'"
-          },
-          {
-            "path": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua",
-            "line": 37,
-            "message": "FSE/OrchardFarmRaid/Entities/BanditTeamSpawn.lua:37: unexpected symbol near '&'"
-          },
-          {
-            "path": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua",
-            "line": 138,
-            "message": "FSE/OrchardFarmRaid/Entities/GuardTeamMember.lua:138: ')' expected near ':'"
-          },
-          {
-            "path": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua",
-            "line": 37,
-            "message": "FSE/OrchardFarmRaid/Entities/GuardTeamSpawn.lua:37: unexpected symbol near '&'"
+            "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua",
+            "line": 149,
+            "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:149: unexpected symbol near '*'"
           },
           {
             "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua",
             "line": 33,
             "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:33: unexpected symbol near '*'"
+          },
+          {
+            "path": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua",
+            "line": 37,
+            "message": "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua:37: unexpected symbol near '&'"
           },
           {
             "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua",
@@ -2904,6 +2168,17 @@
         ]
       },
       "controlMode": "structured draft",
+      "bindingFiles": {
+        "GuardTeamSpawn": "OrchardFarmRaid/Entities/TeamSpawn",
+        "BanditTeamSpawn": "OrchardFarmRaid/Entities/TeamSpawn",
+        "Artefact": "OrchardFarmRaid/Entities/Artefact",
+        "OrchardFarmWhisper": "OrchardFarmRaid/Entities/OrchardFarmWhisper",
+        "GuardTeamMember": "OrchardFarmRaid/Entities/CrateTeamMember",
+        "BanditTeamMember": "OrchardFarmRaid/Entities/CrateTeamMember",
+        "FarmRearEntrance": "OrchardFarmRaid/Entities/FarmRearEntrance",
+        "M_WhisperFarmRaidIntro": "OrchardFarmRaid/Entities/M_WhisperFarmRaidIntro",
+        "MK_OFI_GWLL_WHIS2": "OrchardFarmRaid/Entities/MK_OFI_GWLL_WHIS2"
+      },
       "sharedHelpers": {
         "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
         "functions": [
@@ -2956,13 +2231,13 @@
         }
       },
       "summary": {
-        "owners": 10,
-        "functions": 54,
+        "owners": 8,
+        "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 34,
+        "functionSyntaxPassed": 28,
         "fileSyntaxPassed": 3,
-        "fileSyntaxChecked": 11,
-        "todo": 449
+        "fileSyntaxChecked": 9,
+        "todo": 289
       }
     },
     {
@@ -3072,6 +2347,7 @@
         ]
       },
       "controlMode": "structured draft",
+      "bindingFiles": {},
       "summary": {
         "owners": 1,
         "functions": 2,
@@ -3189,6 +2465,7 @@
         ]
       },
       "controlMode": "structured draft",
+      "bindingFiles": {},
       "summary": {
         "owners": 1,
         "functions": 2,
@@ -3201,12 +2478,12 @@
     }
   ],
   "summary": {
-    "owners": 12,
-    "functions": 58,
+    "owners": 10,
+    "functions": 46,
     "missing": 2,
-    "functionSyntaxPassed": 36,
+    "functionSyntaxPassed": 30,
     "fileSyntaxPassed": 3,
-    "fileSyntaxChecked": 13,
-    "todo": 469
+    "fileSyntaxChecked": 11,
+    "todo": 309
   }
 }

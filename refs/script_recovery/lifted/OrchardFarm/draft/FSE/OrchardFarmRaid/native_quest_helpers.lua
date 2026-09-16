@@ -9,7 +9,7 @@ function DoMultiplierCutscene(quest, me)
     resources:SetActor(puStack_38, "HERO", &local_c)
     -- TODO(native): CCharString::CCharString((CCharString *)&CStack_40,&DAT_0122d70e,-1);
     quest:StartMovieSequence()
-    quest:PauseAllNonScriptedEntities(piVar2)
+    quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     bVar4 = quest:IsRegionLoaded("GreatwoodLake")
     native_arg_sequence_1 = false
@@ -36,7 +36,7 @@ function DoMultiplierCutscene(quest, me)
             -- TODO(native): goto LAB_00dd1d98
         end
         -- LAB_00dd1d15: (native jump target)
-        quest:PauseAllNonScriptedEntities(piVar2)
+        quest:PauseAllNonScriptedEntities(false)
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
@@ -56,14 +56,14 @@ function DoMultiplierCutscene(quest, me)
                         -- TODO(native): goto LAB_00dd1d98
                     end
                     -- LAB_00dd1e3d: (native jump target)
-                    quest:PauseAllNonScriptedEntities(piVar2)
+                    quest:PauseAllNonScriptedEntities(false)
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
                     -- LAB_00dd1e53: (native jump target)
-                    quest:PauseAllNonScriptedEntities(piVar2)
+                    quest:PauseAllNonScriptedEntities(false)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
@@ -121,7 +121,7 @@ function DoMultiplierCutscene(quest, me)
             end
         end
         ::LAB_00dd1e70::
-        quest:PauseAllNonScriptedEntities(piVar2)
+        quest:PauseAllNonScriptedEntities(false)
     end
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&uStack_18);
     ::LAB_00dd1e95::
