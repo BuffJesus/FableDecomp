@@ -12,7 +12,6 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __gsivt_1, __gsivt_2, __gsivt_3, __gsivt_4, __gsivt_5, __gsivt_6, __gsivt_7
     local predicateResult, scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5
     local scratchValue6, scratchValue7, scratchValue8, predicateResult2, predicateResult3
     local isInCutscene, isInCutscene2, predicateResult4, predicateResult5, predicateResult6
@@ -89,11 +88,11 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then
                         return
                     end
-                    if __native_entity_state:GetStateInt("CurrentAIState") == 2 ~= 0 then
+                    if __native_entity_state:GetStateInt("CurrentAIState") == 2 then
                         if quest:IsActiveThreadTerminating() then
                             return
                         end
-                        if __native_entity_state:GetStateInt("MemberState") == 3 ~= 0 then
+                        if __native_entity_state:GetStateInt("MemberState") == 3 then
                             if quest:IsActiveThreadTerminating() then
                                 return
                             end
@@ -117,7 +116,7 @@ function Main(quest, me)
                 end
                 ::LAB_00dce500::
                 __native_entity_state:SetStateInt("PreviousAIState", __native_entity_state:GetStateInt("CurrentAIState"))
-                if __native_entity_state:GetStateInt("MemberState") == 1 ~= 0 then
+                if __native_entity_state:GetStateInt("MemberState") == 1 then
                     getStateThing2 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
                     if (getStateThing2) and (quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_2")) == 0) then
                         if quest:IsActiveThreadTerminating() then
@@ -168,39 +167,32 @@ function Main(quest, me)
                             isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(thing_38, (__native_entity_state:GetStateInt("self_0x2c") + 36), 5.0)
                             if (isDistanceBetweenThingsOver) and (scratchValue9 ~= false) then
                                 if quest:IsActiveThreadTerminating() then return end
-                                if __native_entity_state:GetStateInt("TeamID") == 1 ~= 0 then
+                                if __native_entity_state:GetStateInt("TeamID") == 1 then
                                     if quest:IsActiveThreadTerminating() then return end
                                     quest:EntityStopFollowing(me)
-                                    __gsivt_1 = **(this + 4)
 
                                     quest:SetCombatNearbyBreakOffRange(me, (4.0))
-                                    __gsivt_2 = **(this + 4)
 
                                     quest:SetStealStealableItems(me, (true))
                                     predicateResult5 = false
                                 else
                                     if quest:IsActiveThreadTerminating() then return end
-                                    __gsivt_3 = **(this + 4)
 
                                     quest:SetCombatNearbyBreakOffRange(me, (4.0))
-                                    __gsivt_4 = **(this + 4)
 
                                     quest:SetStealStealableItems(me, (false))
                                     predicateResult5 = true
                                 end
-                                __gsivt_5 = **(this + 4)
                                 quest:SetRecoverStealableItems(me, predicateResult5)
                                 predicateResult4 = true
                                 helper_DCEC50(quest, me, 2)
                                 require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
                             elseif predicateResult4 then
                                 if quest:IsActiveThreadTerminating() then return end
-                                __gsivt_6 = **(this + 4)
                                 -- TODO(native): pThing_06._4_4_ = uVar8;
                                 -- TODO(native): pThing_06._0_4_ = auStack_48;
                                 -- TODO(native): pThing_06._8_4_ = uVar10;
                                 quest:ResetCombatNearbyBreakOffRange(nil --[[missing]])
-                                __gsivt_7 = **(this + 4)
 
                                 quest:SetStealStealableItems(me, (false))
 
@@ -210,7 +202,7 @@ function Main(quest, me)
                             end
                         end
                     end
-                    scratchValue2 = __native_entity_state:GetStateInt("MemberState") == 1 ~= 0
+                    scratchValue2 = __native_entity_state:GetStateInt("MemberState") == 1
                     if scratchValue2 then
                         getStateThing3 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsAlive()
                         scratchValue2 = getStateThing3
@@ -235,7 +227,7 @@ function Main(quest, me)
                         require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "DEFENDING", me, 0)
                     end
                 end
-                scratchValue3 = __native_entity_state:GetStateInt("MemberState") == 3 ~= 0
+                scratchValue3 = __native_entity_state:GetStateInt("MemberState") == 3
                 if scratchValue3 then
                     getStateThing4 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
                     scratchValue4 = getStateThing4
@@ -263,10 +255,10 @@ function Main(quest, me)
                     end
                     helper_DCEC50(quest, me, 4)
                     quest:EntityStopFollowing(me)
-                    quest:EntityFollowThing(me, quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0, true)
+                    quest:EntityFollowThing(me, nil --[[missing]], quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0)
                     require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
                 end
-                scratchValue6 = __native_entity_state:GetStateInt("MemberState") == 4 ~= 0
+                scratchValue6 = __native_entity_state:GetStateInt("MemberState") == 4
                 if scratchValue6 then
                     getStateThing6 = quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")):IsDead()
                     scratchValue7 = getStateThing6
@@ -283,7 +275,7 @@ function Main(quest, me)
                     helper_DCEC50(quest, me, 0)
                 end
 
-                if __native_entity_state:GetStateInt("MemberState") == 2 ~= 0 then
+                if __native_entity_state:GetStateInt("MemberState") == 2 then
                     sequence22 = true
                 else
                     sequence22 = false
@@ -305,7 +297,7 @@ function Main(quest, me)
                     require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "REQUEST_PROTECTION", me, 0)
                 end
 
-                if __native_entity_state:GetStateInt("MemberState") == 5 ~= 0 then
+                if __native_entity_state:GetStateInt("MemberState") == 5 then
                     sequence32 = true
                 else
                     sequence32 = false
@@ -384,7 +376,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local __gsivt_1, __gsivt_2, scratchValue, scratchValue2, hero, scratchValue3
+    local scratchValue, scratchValue2, hero, scratchValue3
     -- TODO(native): GetName is not a ForgeFSE binding
     local function __region_LAB_00dce00a()
         __native_entity_state:SetStateInt("TeamID", 1)
@@ -398,10 +390,9 @@ function Init(quest, me)
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     ::LAB_00dcdf96::
-    if __native_entity_state:GetStateInt("TeamID") == 1 ~= 0 then
-        if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+    if __native_entity_state:GetStateInt("TeamID") == 1 then
+        if quest:GetStateInt("HeroTeam") == 1 then
             quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
-            __gsivt_1 = **(this + 4)
             hero = quest:GetHero()
             quest:EntitySetThingAsAllyOfThing(me, hero)
         else
@@ -413,9 +404,8 @@ function Init(quest, me)
         -- TODO(native): SetDataString is not a ForgeFSE binding
         me:SetDataString("BANDIT")
     else
-        if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") ~= 0 then
+        if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
             quest:EntitySetInFaction(me, "FACTION_VILLAGERS")
-            __gsivt_2 = **(this + 4)
             hero = quest:GetHero()
             quest:EntitySetThingAsAllyOfThing(me, hero)
         else
@@ -447,7 +437,7 @@ function OnPredicateFail(quest, me)
     -- TODO(native): pvStack_4 = this;
     local scratchValue2 = me:MsgIsKilledBy("")
     if scratchValue2 then
-        if __native_entity_state:GetStateInt("TeamID") == 1 ~= 0 then
+        if __native_entity_state:GetStateInt("TeamID") == 1 then
             quest:SetMasterGameState("OrchardFarmBanditKilled", true)
             return
         end
@@ -456,20 +446,18 @@ function OnPredicateFail(quest, me)
 end
 
 function GoOnPatrol(quest, me)
-    local __gsivt_1, __gsivt_2, predicateResult, isActiveThreadTerminating
-    local isActiveThreadTerminating2, hero, hero2
+    local predicateResult, isActiveThreadTerminating, isActiveThreadTerminating2, hero, hero2
     local alive = true
-    if __native_entity_state:GetStateInt("MemberState") ~= 0 ~= 0 then
+    if __native_entity_state:GetStateInt("MemberState") ~= 0 then
         alive = not quest:IsActiveThreadTerminating()
         predicateResult = not alive
         return CONCAT31(extraout_var,predicateResult)
     end
-    if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") ~= 0 then
+    if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         if isActiveThreadTerminating then
             return CONCAT31(extraout_var_00,isActiveThreadTerminating)
         end
-        __gsivt_1 = **(this + 4)
 
 
         hero = quest:GetHero()
@@ -479,7 +467,6 @@ function GoOnPatrol(quest, me)
         if isActiveThreadTerminating2 then
             return CONCAT31(extraout_var_01,isActiveThreadTerminating2)
         end
-        __gsivt_2 = **(this + 4)
 
 
         hero2 = quest:GetHero()

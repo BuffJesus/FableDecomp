@@ -28,7 +28,7 @@ function Main(quest)
                 quest:SetStateThing("Teams_1_CrateDropPos", pCVar5)
                 pCVar5 = quest:GetThingWithScriptName("GuardTeamCrateDrop")
                 quest:SetStateThing("Teams_0_CrateDropPos", pCVar5)
-                if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+                if quest:GetStateInt("HeroTeam") == 1 then
                     quest:CreateThread("ProcessGameRulesEvil")  -- native thread body 0x00DD03D0: lift it as function ProcessGameRulesEvil(quest)
                 else
                     quest:CreateThread("ProcessGameRulesGood")  -- native thread body 0x00DD0F60: lift it as function ProcessGameRulesGood(quest)
@@ -306,7 +306,7 @@ function ProcessGameRulesEvil(quest)
                     resources:ReleaseResource(appuStack_ac)
                     return
                 end
-                if quest:GetStateInt("MissionFailed") ~= 0 ~= 0 then
+                if quest:GetStateInt("MissionFailed") ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
@@ -487,7 +487,7 @@ function ProcessGameRulesGood(quest)
                     iVar4 = i_stk_14
                 end
                 native_arg_sequence_1 = false
-                if quest:GetStateInt("CrateCount") == 0 ~= 0 then
+                if quest:GetStateInt("CrateCount") == 0 then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
@@ -576,7 +576,7 @@ function ProcessGameRulesGood(quest)
                     resources:ReleaseResource(auStack_c4)
                     return
                 end
-                if quest:GetStateInt("MissionFailed") ~= 0 ~= 0 then
+                if quest:GetStateInt("MissionFailed") ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -608,7 +608,7 @@ function DoCutsceneIfRequired(quest)
     local aC_stk_10, aC_stk_20, aC_stk_30, aC_stk_40, am_stk_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, r1, r2
     local alive = true
     local au_stk_90 = nil
-    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+    if quest:GetStateInt("HeroTeam") == 1 then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
@@ -651,7 +651,7 @@ function DoCutsceneIfRequired(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then return end
-            if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+            if quest:GetStateInt("HeroTeam") == 1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then return end
@@ -861,7 +861,7 @@ function DoMultiplierCutscene(quest)
     end
     if not native_arg_sequence_1 then
         bVar4 = true
-        if quest:GetStateInt("HeroTeam") ~= 0 ~= 0 then
+        if quest:GetStateInt("HeroTeam") ~= 0 then
             native_arg_sequence_1 = true
         else
             native_arg_sequence_1 = false
@@ -890,7 +890,7 @@ function DoMultiplierCutscene(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then return end  -- TODO(native): goto LAB_00dd1d15
-                if quest:GetStateInt("HeroTeam") ~= 1 ~= 0 then
+                if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
@@ -946,7 +946,7 @@ function DoMultiplierCutscene(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if not bVar4 then
-                    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+                    if quest:GetStateInt("HeroTeam") == 1 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then __region_LAB_00dd1e3d(); goto LAB_00dd1e95 end

@@ -28,7 +28,7 @@ function Main(quest)
                 quest:SetStateThing("Teams_1_CrateDropPos", banditTeamCrateDrop)
                 guardTeamCrateDrop = quest:GetThingWithScriptName("GuardTeamCrateDrop")
                 quest:SetStateThing("Teams_0_CrateDropPos", guardTeamCrateDrop)
-                if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+                if quest:GetStateInt("HeroTeam") == 1 then
                     quest:CreateThread("ProcessGameRulesEvil")  -- native thread body 0x00DD03D0: lift it as function ProcessGameRulesEvil(quest)
                 else
                     quest:CreateThread("ProcessGameRulesGood")  -- native thread body 0x00DD0F60: lift it as function ProcessGameRulesGood(quest)
@@ -289,7 +289,7 @@ function ProcessGameRulesEvil(quest)
                     resources:ReleaseResource(scratchValue2)
                     return
                 end
-                if quest:GetStateInt("MissionFailed") ~= 0 ~= 0 then
+                if quest:GetStateInt("MissionFailed") ~= 0 then
                     scratchValue4 = quest:IsActiveThreadTerminating()
                     if scratchValue4 then
                         return
@@ -466,7 +466,7 @@ function ProcessGameRulesGood(quest)
                     scratchValue9 = i_stk_14
                 end
                 sequence1 = false
-                if quest:GetStateInt("CrateCount") == 0 ~= 0 then
+                if quest:GetStateInt("CrateCount") == 0 then
                     sequence1 = true
                 else
                     sequence1 = false
@@ -551,7 +551,7 @@ function ProcessGameRulesGood(quest)
                     resources:ReleaseResource(scratchValue3)
                     return
                 end
-                if quest:GetStateInt("MissionFailed") ~= 0 ~= 0 then
+                if quest:GetStateInt("MissionFailed") ~= 0 then
                     scratchValue5 = quest:IsActiveThreadTerminating()
                     if scratchValue5 then
                         return
@@ -586,7 +586,7 @@ function DoCutsceneIfRequired(quest)
     local getNearestWithScriptName
     local alive = true
     local scratchValue7 = nil
-    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+    if quest:GetStateInt("HeroTeam") == 1 then
         if quest:IsActiveThreadTerminating() then
             return
         end
@@ -615,7 +615,7 @@ function DoCutsceneIfRequired(quest)
         isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(scratchValue7, hero, 10.0)
         if isDistanceBetweenThingsUnder then
             if quest:IsActiveThreadTerminating() then return end
-            if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+            if quest:GetStateInt("HeroTeam") == 1 then
                 if quest:IsActiveThreadTerminating() then return end
                 getAllThingsWithScriptName = quest:GetAllThingsWithScriptName("BanditTeamMember")
                 getNearestWithScriptName = quest:GetNearestWithScriptName(hero, "GuardTeamMember")
@@ -803,7 +803,7 @@ function DoMultiplierCutscene(quest)
     end
     if not sequence1 then
         scratchValue2 = true
-        if quest:GetStateInt("HeroTeam") ~= 0 ~= 0 then
+        if quest:GetStateInt("HeroTeam") ~= 0 then
             sequence1 = true
         else
             sequence1 = false
@@ -832,7 +832,7 @@ function DoMultiplierCutscene(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 scratchValue2 = not alive
                 if scratchValue2 then return end  -- TODO(native): goto LAB_00dd1d15
-                if quest:GetStateInt("HeroTeam") ~= 1 ~= 0 then
+                if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     scratchValue2 = not alive
                     if not scratchValue2 then
@@ -885,7 +885,7 @@ function DoMultiplierCutscene(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 scratchValue2 = not alive
                 if not scratchValue2 then
-                    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+                    if quest:GetStateInt("HeroTeam") == 1 then
                         scratchValue2 = quest:IsActiveThreadTerminating()
                         if scratchValue2 then __region_LAB_00dd1e3d(); goto LAB_00dd1e95 end
                     else

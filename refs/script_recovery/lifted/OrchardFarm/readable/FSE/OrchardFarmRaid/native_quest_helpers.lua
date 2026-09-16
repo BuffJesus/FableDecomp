@@ -27,7 +27,7 @@ function DoMultiplierCutscene(quest, me)
     end
     if not sequence12 then
         scratchValue2 = true
-        if quest:GetStateInt("HeroTeam") ~= 0 ~= 0 then
+        if quest:GetStateInt("HeroTeam") ~= 0 then
             sequence12 = true
         else
             sequence12 = false
@@ -56,7 +56,7 @@ function DoMultiplierCutscene(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 predicateResult3 = not alive
                 if predicateResult3 then return end  -- TODO(native): goto LAB_00dd1d15
-                if quest:GetStateInt("HeroTeam") ~= 1 ~= 0 then
+                if quest:GetStateInt("HeroTeam") ~= 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     predicateResult4 = not alive
                     if not predicateResult4 then
@@ -116,7 +116,7 @@ function DoMultiplierCutscene(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 predicateResult10 = not alive
                 if not predicateResult10 then
-                    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+                    if quest:GetStateInt("HeroTeam") == 1 then
                         alive = not quest:IsActiveThreadTerminating()
                         predicateResult11 = not alive
                         if predicateResult11 then return end  -- TODO(native): goto LAB_00dd1e3d

@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local __gsivt_1, __gsivt_2, __gsivt_3, __gsivt_4, bVar4, iVar5, pCVar6, r1, r2
+    local bVar4, iVar5, pCVar6, r1, r2
     local alive = true
     local cVar1 = quest:GetStateBool("WhisperInCutscene")
     while cVar1 do
@@ -30,10 +30,8 @@ function Main(quest, me)
         quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
         quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE_ORCHARD_FARM_BLOCK")
         iVar5 = quest:AddNewConversation(me, false, false)
-        __gsivt_1 = **(this + 4)
         pCVar6 = quest:GetHero()
         quest:AddPersonToConversation(iVar5, pCVar6)
-        __gsivt_2 = **(this + 4)
         pCVar6 = quest:GetHero()
         quest:AddLineToConversation(iVar5, "TEXT_QST_051_WHISPER_ATTACK_WITH_FLOURISH_10", me, pCVar6, false)
         bVar4 = me:MsgIsHitByHeroWithFlourish()
@@ -50,10 +48,8 @@ function Main(quest, me)
         bVar4 = not alive
         if not bVar4 then
             iVar5 = quest:AddNewConversation(me, false, false)
-            __gsivt_3 = **(this + 4)
             pCVar6 = quest:GetHero()
             quest:AddPersonToConversation(iVar5, pCVar6)
-            __gsivt_4 = **(this + 4)
             pCVar6 = quest:GetHero()
             quest:AddLineToConversation(iVar5, "TEXT_QST_051_WHISPER_HAS_BEEN_HIT_WITH_FLOURISH_10", me, pCVar6, false)
             quest:EntitySetAsToAddToComboMultiplierWhenHit(me, true)
@@ -83,14 +79,13 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+    if quest:GetStateInt("HeroTeam") == 1 then
     else
     end
     -- TODO(native): CStack_4 = (CCharString)this;
     quest:EntitySetInFaction(me, "FACTION_BANDITS")
     quest:EntitySetAsKillable(me, false, true)
     -- TODO(native): this_00 = *(int **)(this + 4);
-    local __gsivt_1 = **(this + 4)
     local pThing2 = quest:GetHero()
     quest:EntitySetAsAwareOfThing(me, pThing2)
     quest:EntitySetAsDamageable(me, false)

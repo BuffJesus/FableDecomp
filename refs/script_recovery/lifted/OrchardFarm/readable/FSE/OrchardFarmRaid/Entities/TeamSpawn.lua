@@ -12,13 +12,12 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __gsivt_1, __gsivt_2, __gsivt_3, __gsivt_4, __gsivt_5, __gsivt_6, predicateResult
-    local isDistanceBetweenThingsOver, isCameraPosOnScreen, isDistanceBetweenThingsUnder
-    local predicateResult2, scratchValue, timeRemaining, getStateInt, scratchValue2, getStateInt2
-    local scratchValue3, i_stk_70_1, i_stk_70_2, position, position2, getStateThing, position3
-    local position4, getRandomThingWithScriptName, hero, hero2, scratchValue4, teamMemberName
-    local teamMemberName2, teamMemberName3, teamMemberName4, scratchValue5, scratchValue6, r3_1
-    local r3_2, thing1
+    local predicateResult, isDistanceBetweenThingsOver, isCameraPosOnScreen
+    local isDistanceBetweenThingsUnder, predicateResult2, scratchValue, timeRemaining, getStateInt
+    local scratchValue2, getStateInt2, scratchValue3, i_stk_70_1, i_stk_70_2, position, position2
+    local getStateThing, position3, position4, getRandomThingWithScriptName, hero, hero2
+    local scratchValue4, teamMemberName, teamMemberName2, teamMemberName3, teamMemberName4
+    local scratchValue5, scratchValue6, r3_1, r3_2, thing1
     local alive = true
     local scratchValue7 = quest:GetStateBool("DoneIntroduction")
     while not scratchValue7 do
@@ -47,7 +46,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then
                 return
             end
-            if __native_entity_state:GetStateInt("TeamID") == 0 ~= 0 then
+            if __native_entity_state:GetStateInt("TeamID") == 0 then
                 if quest:IsActiveThreadTerminating() then
                     return
                 end
@@ -65,7 +64,6 @@ function Main(quest, me)
                     thing1 = quest:GetHero()
                     isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(thing1, me, (15.0))
                     if isDistanceBetweenThingsOver then
-                        __gsivt_1 = **(this + 4)
                         position = me:GetPos()
                         isCameraPosOnScreen = quest:IsCameraPosOnScreen(position)
                         if not isCameraPosOnScreen then
@@ -73,12 +71,11 @@ function Main(quest, me)
                                 return
                             end
                             i_stk_70_1 = 0
-                            if __native_entity_state:GetStateInt("TeamMemberLimit") ~= getStateInt and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt ~= 0 then
+                            if __native_entity_state:GetStateInt("TeamMemberLimit") ~= getStateInt and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt then
                                 repeat
                                     if quest:IsActiveThreadTerminating() then
                                         return
                                     end
-                                    __gsivt_2 = **(this + 4)
 
                                     teamMemberName = __native_entity_state:GetStateString("TeamMemberName")
                                     position2 = me:GetPos()
@@ -95,12 +92,11 @@ function Main(quest, me)
                         return
                     end
                     i_stk_70_2 = 0
-                    if __native_entity_state:GetStateInt("TeamMemberLimit") ~= getStateInt and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt ~= 0 then
+                    if __native_entity_state:GetStateInt("TeamMemberLimit") ~= getStateInt and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt then
                         repeat
                             if quest:IsActiveThreadTerminating() then
                                 return
                             end
-                            __gsivt_3 = **(this + 4)
 
                             teamMemberName2 = __native_entity_state:GetStateString("TeamMemberName")
                             getStateThing = __native_entity_state:GetStateThing("OtherSpawnPoint"):GetPos()
@@ -121,23 +117,22 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then
                     return
                 end
-                if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") ~= 0 then
+                if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
                     if quest:IsActiveThreadTerminating() then
                         return
                     end
                     quest:UpdateQuestInfoCounterList(__native_entity_state:GetStateInt("BanditsLeftID"), (2 - quest:GetStateInt("BanditWavesSpawned")) * __native_entity_state:GetStateInt("TeamMemberLimit") + quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")), -1)
                 end
-                if quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) == 0 ~= 0 then
+                if quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount")) == 0 then
                     if quest:IsActiveThreadTerminating() then
                         return
                     end
                     quest:Pause(quest:ReadGlobalGameData(3444))
                     quest:SetStateInt("BanditWavesSpawned", quest:GetStateInt("BanditWavesSpawned") + 1)
-                    if __native_entity_state:GetStateInt("TeamID") ~= quest:GetStateInt("HeroTeam") ~= 0 then
+                    if __native_entity_state:GetStateInt("TeamID") ~= quest:GetStateInt("HeroTeam") then
                         if quest:IsActiveThreadTerminating() then
                             return
                         end
-                        __gsivt_4 = **(this + 4)
                         hero = quest:GetHero()
                         r3_1 = quest:GetNearestWithScriptName(hero, "GuardTeamMember")
                         scratchValue2 = (r3_1 ~= nil and r3_1:IsAlive())
@@ -153,11 +148,11 @@ function Main(quest, me)
                             end
                         end
                     end
-                    if quest:GetStateInt("BanditWavesSpawned") == 3 ~= 0 then
+                    if quest:GetStateInt("BanditWavesSpawned") == 3 then
                         if quest:IsActiveThreadTerminating() then
                             return
                         end
-                        if __native_entity_state:GetStateInt("TeamID") ~= quest:GetStateInt("HeroTeam") ~= 0 then
+                        if __native_entity_state:GetStateInt("TeamID") ~= quest:GetStateInt("HeroTeam") then
                             return
                         end
                         if quest:IsActiveThreadTerminating() then
@@ -171,7 +166,7 @@ function Main(quest, me)
                     end
                     getStateInt2 = quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"))
                     scratchValue3 = 0
-                    if __native_entity_state:GetStateInt("TeamMemberLimit") ~= getStateInt2 and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt2 ~= 0 then
+                    if __native_entity_state:GetStateInt("TeamMemberLimit") ~= getStateInt2 and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt2 then
                         repeat
                             if quest:IsActiveThreadTerminating() then
                                 return
@@ -181,7 +176,6 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then
                                     return
                                 end
-                                __gsivt_5 = **(this + 4)
 
                                 teamMemberName3 = __native_entity_state:GetStateString("TeamMemberName")
                                 position3 = me:GetPos()
@@ -189,7 +183,6 @@ function Main(quest, me)
                                 -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
                             else
                                 if quest:IsActiveThreadTerminating() then return end
-                                __gsivt_6 = **(this + 4)
 
                                 teamMemberName4 = __native_entity_state:GetStateString("TeamMemberName")
                                 position4 = me:GetPos()
@@ -235,7 +228,7 @@ function Init(quest, me)
     scratchValue2 = "CREATURE_ORCHARD_FARM_GUARD"
     ::LAB_00dcd2bb::
     __native_entity_state:SetStateString("TeamMemberDefName", scratchValue2)
-    if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") ~= 0 then
+    if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         __native_entity_state:SetStateInt("TeamMemberLimit", 2)
         scratchValue3 = quest:ReadGlobalGameData(3436)
         __native_entity_state:SetStateInt("BanditsLeftID", 0)

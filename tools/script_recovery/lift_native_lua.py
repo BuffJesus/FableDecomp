@@ -237,7 +237,7 @@ RE_REFCOUNT_IF = re.compile(
 RE_NUMERIC_EXPR = re.compile(r'-?(?:\d+(?:\.\d+)?|0x[0-9a-f]+)|[\w\s()]+[|&^+\-*/%<>]+[\w\s()|&^+\-*/%<>]+')
 RE_NOISE = (
     re.compile(r'^\s*\(\*\(code \*\)\w+(?:\[\d+\])+\)\(\);\s*$'),                       # refcount release call
-    re.compile(r'^\s*(?:iVar\d+|piVar\d+|iStack_[0-9a-f]+|ppuVar\d+) = \*{1,2}\(int \*\*\)\((?:this|param_\d+) \+ (?:4|0x40)\);\s*$'),
+    re.compile(r'^\s*(?:iVar\d+|piVar\d+|iStack_[0-9a-f]+|ppuVar\d+|gsivt\d+) = \*{1,2}\(int \*\*\)\((?:this|param_\d+) \+ (?:4|0x40)\);\s*$'),
 )
 NOISE = ("extraout_EDX", "unaff_EDI", "uStack_4 = 0;", "CTCVillage::OnInitialActivate", "PTR_LAB_",
          "CTriangleStripifier", "operator_new(", "operator_delete(", "CCharString::~CCharString", "FUN_0",
@@ -979,7 +979,8 @@ class Lifter:
         if arg.startswith('"'):
             return "string"
         # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
-        accessor = re.match(r'(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)\(|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)\(|(?:QUEST|ENTITY)(?:THING_Get|LIST_At)', arg)
+        accessor = re.fullmatch(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*))'
+                                r'\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)', arg.strip())
         if accessor and self.accessor_kinds:
             kind = accessor.group(1) or accessor.group(2) or 'Thing'
             return {'String': 'string', 'Int': 'number', 'Float': 'number', 'Bool': 'bool', 'Thing': 'thing'}[kind]

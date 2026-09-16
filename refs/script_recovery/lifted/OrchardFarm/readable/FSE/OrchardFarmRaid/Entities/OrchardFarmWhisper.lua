@@ -11,9 +11,8 @@ do
 end
 
 function Main(quest, me)
-    local __gsivt_1, __gsivt_2, __gsivt_3, __gsivt_4, predicateResult, scratchValue
-    local predicateResult2, predicateResult3, conversationId, conversationId2, hero, hero2, hero3
-    local hero4, scratchValue2, health
+    local predicateResult, scratchValue, predicateResult2, predicateResult3, conversationId
+    local conversationId2, hero, hero2, hero3, hero4, scratchValue2, health
     local alive = true
     local whisperInCutscene = quest:GetStateBool("WhisperInCutscene")
     while whisperInCutscene do
@@ -30,10 +29,8 @@ function Main(quest, me)
         quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
         quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE_ORCHARD_FARM_BLOCK")
         conversationId = quest:AddNewConversation(me, false, false)
-        __gsivt_1 = **(this + 4)
         hero = quest:GetHero()
         quest:AddPersonToConversation(conversationId, hero)
-        __gsivt_2 = **(this + 4)
         hero2 = quest:GetHero()
         quest:AddLineToConversation(conversationId, "TEXT_QST_051_WHISPER_ATTACK_WITH_FLOURISH_10", me, hero2, false)
         scratchValue = me:MsgIsHitByHeroWithFlourish()
@@ -48,10 +45,8 @@ function Main(quest, me)
         predicateResult2 = not alive
         if not predicateResult2 then
             conversationId2 = quest:AddNewConversation(me, false, false)
-            __gsivt_3 = **(this + 4)
             hero3 = quest:GetHero()
             quest:AddPersonToConversation(conversationId2, hero3)
-            __gsivt_4 = **(this + 4)
             hero4 = quest:GetHero()
             quest:AddLineToConversation(conversationId2, "TEXT_QST_051_WHISPER_HAS_BEEN_HIT_WITH_FLOURISH_10", me, hero4, false)
             quest:EntitySetAsToAddToComboMultiplierWhenHit(me, true)
@@ -79,14 +74,13 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+    if quest:GetStateInt("HeroTeam") == 1 then
     else
     end
     -- TODO(native): CStack_4 = (CCharString)this;
     quest:EntitySetInFaction(me, "FACTION_BANDITS")
     quest:EntitySetAsKillable(me, false, true)
     -- TODO(native): this_00 = *(int **)(this + 4);
-    local __gsivt_1 = **(this + 4)
     local pThing2 = quest:GetHero()
     quest:EntitySetAsAwareOfThing(me, pThing2)
     quest:EntitySetAsDamageable(me, false)

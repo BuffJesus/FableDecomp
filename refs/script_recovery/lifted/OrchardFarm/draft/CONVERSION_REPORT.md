@@ -14,7 +14,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_OrchardFarmRaid | Q_OrchardFarmRaid | MakeTeamMemberComment | 0x00dcda80 | True | 0 |
 | Q_OrchardFarmRaid | Q_OrchardFarmRaid | DoMultiplierCutscene | 0x00dd1af0 | True | 14 |
 | Q_OrchardFarmRaid | Q_OrchardFarmRaid | ReplaceQuestCards | 0x00dd0eb0 | True | 0 |
-| Q_OrchardFarmRaid | TeamSpawn | Main | 0x00dcd350 | False | 7 |
+| Q_OrchardFarmRaid | TeamSpawn | Main | 0x00dcd350 | True | 7 |
 | Q_OrchardFarmRaid | TeamSpawn | Init | 0x00dcd1d0 | True | 3 |
 | Q_OrchardFarmRaid | TeamSpawn | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_OrchardFarmRaid | TeamSpawn | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -22,15 +22,15 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_OrchardFarmRaid | Artefact | Init | 0x00dcfa10 | True | 1 |
 | Q_OrchardFarmRaid | Artefact | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_OrchardFarmRaid | Artefact | OnPredicateFail | 0x00dcf920 | True | 5 |
-| Q_OrchardFarmRaid | OrchardFarmWhisper | Main | 0x00dcf0b0 | False | 0 |
-| Q_OrchardFarmRaid | OrchardFarmWhisper | Init | 0x00dcf000 | False | 2 |
+| Q_OrchardFarmRaid | OrchardFarmWhisper | Main | 0x00dcf0b0 | True | 0 |
+| Q_OrchardFarmRaid | OrchardFarmWhisper | Init | 0x00dcf000 | True | 2 |
 | Q_OrchardFarmRaid | OrchardFarmWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_OrchardFarmRaid | OrchardFarmWhisper | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_OrchardFarmRaid | CrateTeamMember | Main | 0x00dce230 | False | 22 |
-| Q_OrchardFarmRaid | CrateTeamMember | Init | 0x00dcdf60 | False | 6 |
+| Q_OrchardFarmRaid | CrateTeamMember | Main | 0x00dce230 | True | 23 |
+| Q_OrchardFarmRaid | CrateTeamMember | Init | 0x00dcdf60 | True | 6 |
 | Q_OrchardFarmRaid | CrateTeamMember | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_OrchardFarmRaid | CrateTeamMember | OnPredicateFail | 0x00dcded0 | True | 3 |
-| Q_OrchardFarmRaid | CrateTeamMember | GoOnPatrol | 0x00dcec70 | False | 0 |
+| Q_OrchardFarmRaid | CrateTeamMember | GoOnPatrol | 0x00dcec70 | True | 0 |
 | Q_OrchardFarmRaid | CrateTeamMember | IsThingCarryingCrate | 0x00dced10 | True | 2 |
 | Q_OrchardFarmRaid | CrateTeamMember | GetNearestCrateToMe | 0x00dcedf0 | True | 0 |
 | Q_OrchardFarmRaid | CrateTeamMember | helper_DCEC50 | 0x00dcec50 | True | 0 |
@@ -51,4 +51,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_OrchardFarmRaidGood | Q_OrchardFarmRaidGood | Main | 0x00dd2390 | True | 0 |
 | Q_OrchardFarmRaidGood | Q_OrchardFarmRaidGood | Init | 0x00dd23a0 | True | 0 |
 
-Summary: `{"owners": 10, "functions": 46, "missing": 2, "functionSyntaxPassed": 40, "fileSyntaxPassed": 8, "fileSyntaxChecked": 11, "todo": 128}`
+Summary: `{"owners": 10, "functions": 46, "missing": 2, "functionSyntaxPassed": 46, "fileSyntaxPassed": 11, "fileSyntaxChecked": 11, "todo": 129}`

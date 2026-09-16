@@ -214,7 +214,7 @@ def isolate_gsi_vtable_temps(text: str) -> str:
     while (m := RE_GSIVT_LOAD.search(text, pos)):
         var = m.group(2)
         n += 1
-        alias = f'__gsivt_{n}'
+        alias = f'gsivt{n}'   # a plain identifier: the annotate pass collects GSI aliases by assignment shape
         head, tail = text[:m.end()], text[m.end():]
         nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
         scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')

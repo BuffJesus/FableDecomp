@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __gsivt_1, __gsivt_2, __gsivt_3, __gsivt_4, __gsivt_5, __gsivt_6, __gsivt_7, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, v_stk_20
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, v_stk_20
     local alive = true
     bVar6 = false
     alive = quest:NewScriptFrame(me)
@@ -95,13 +95,13 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    if __native_entity_state:GetStateInt("CurrentAIState") == 2 ~= 0 then
+                    if __native_entity_state:GetStateInt("CurrentAIState") == 2 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then
                             return
                         end
-                        if __native_entity_state:GetStateInt("MemberState") == 3 ~= 0 then
+                        if __native_entity_state:GetStateInt("MemberState") == 3 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
@@ -131,7 +131,7 @@ function Main(quest, me)
                 end
                 ::LAB_00dce500::
                 __native_entity_state:SetStateInt("PreviousAIState", __native_entity_state:GetStateInt("CurrentAIState"))
-                if __native_entity_state:GetStateInt("MemberState") == 1 ~= 0 then
+                if __native_entity_state:GetStateInt("MemberState") == 1 then
                     cVar4 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
                     if (cVar4) and (quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_2")) == 0) then
                         alive = not quest:IsActiveThreadTerminating()
@@ -190,15 +190,13 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if bVar2 then return end
-                                if __native_entity_state:GetStateInt("TeamID") == 1 ~= 0 then
+                                if __native_entity_state:GetStateInt("TeamID") == 1 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if bVar2 then return end
                                     quest:EntityStopFollowing(me)
-                                    __gsivt_1 = **(this + 4)
                                     fVar9 = 4.0
                                     quest:SetCombatNearbyBreakOffRange(me, fVar9)
-                                    __gsivt_2 = **(this + 4)
                                     bVar2 = true
                                     quest:SetStealStealableItems(me, bVar2)
                                     bVar2 = false
@@ -206,15 +204,12 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if bVar2 then return end
-                                    __gsivt_3 = **(this + 4)
                                     fVar9 = 4.0
                                     quest:SetCombatNearbyBreakOffRange(me, fVar9)
-                                    __gsivt_4 = **(this + 4)
                                     bVar2 = false
                                     quest:SetStealStealableItems(me, bVar2)
                                     bVar2 = true
                                 end
-                                __gsivt_5 = **(this + 4)
                                 quest:SetRecoverStealableItems(me, bVar2)
                                 bVar2 = true
                                 helper_DCEC50(quest, me, 2)
@@ -223,12 +218,10 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if bVar2 then return end
-                                __gsivt_6 = **(this + 4)
                                 -- TODO(native): pThing_06._4_4_ = uVar8;
                                 -- TODO(native): pThing_06._0_4_ = auStack_48;
                                 -- TODO(native): pThing_06._8_4_ = uVar10;
                                 quest:ResetCombatNearbyBreakOffRange(nil --[[missing]])
-                                __gsivt_7 = **(this + 4)
                                 bVar2 = false
                                 quest:SetStealStealableItems(me, bVar2)
                                 bVar2 = false
@@ -238,7 +231,7 @@ function Main(quest, me)
                             end
                         end
                     end
-                    __native_condition_3 = __native_entity_state:GetStateInt("MemberState") == 1 ~= 0
+                    __native_condition_3 = __native_entity_state:GetStateInt("MemberState") == 1
                     if __native_condition_3 then
                         cVar4 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsAlive()
                         __native_condition_3 = cVar4
@@ -267,7 +260,7 @@ function Main(quest, me)
                         require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "DEFENDING", me, 0)
                     end
                 end
-                __native_condition_4 = __native_entity_state:GetStateInt("MemberState") == 3 ~= 0
+                __native_condition_4 = __native_entity_state:GetStateInt("MemberState") == 3
                 if __native_condition_4 then
                     cVar4 = quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")):IsDead()
                     __native_condition_5 = cVar4
@@ -299,10 +292,10 @@ function Main(quest, me)
                     end
                     helper_DCEC50(quest, me, 4)
                     quest:EntityStopFollowing(me)
-                    quest:EntityFollowThing(me, quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0, true)
+                    quest:EntityFollowThing(me, nil --[[missing]], quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")), 1.0)
                     require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
                 end
-                __native_condition_7 = __native_entity_state:GetStateInt("MemberState") == 4 ~= 0
+                __native_condition_7 = __native_entity_state:GetStateInt("MemberState") == 4
                 if __native_condition_7 then
                     cVar4 = quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")):IsDead()
                     __native_condition_8 = cVar4
@@ -321,7 +314,7 @@ function Main(quest, me)
                     helper_DCEC50(quest, me, 0)
                 end
                 native_arg_sequence_2 = false
-                if __native_entity_state:GetStateInt("MemberState") == 2 ~= 0 then
+                if __native_entity_state:GetStateInt("MemberState") == 2 then
                     native_arg_sequence_2 = true
                 else
                     native_arg_sequence_2 = false
@@ -345,7 +338,7 @@ function Main(quest, me)
                     require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "REQUEST_PROTECTION", me, 0)
                 end
                 native_arg_sequence_3 = false
-                if __native_entity_state:GetStateInt("MemberState") == 5 ~= 0 then
+                if __native_entity_state:GetStateInt("MemberState") == 5 then
                     native_arg_sequence_3 = true
                 else
                     native_arg_sequence_3 = false
@@ -432,7 +425,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local __gsivt_1, __gsivt_2, bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1, u_stk_c
+    local bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1, u_stk_c
     -- TODO(native): GetName is not a ForgeFSE binding
     local function __region_LAB_00dce00a()
         __native_entity_state:SetStateInt("TeamID", 1)
@@ -451,10 +444,9 @@ function Init(quest, me)
     end
     __native_entity_state:SetStateInt("TeamID", 0)
     ::LAB_00dcdf96::
-    if __native_entity_state:GetStateInt("TeamID") == 1 ~= 0 then
-        if quest:GetStateInt("HeroTeam") == 1 ~= 0 then
+    if __native_entity_state:GetStateInt("TeamID") == 1 then
+        if quest:GetStateInt("HeroTeam") == 1 then
             quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
-            __gsivt_1 = **(this + 4)
             pCVar2 = quest:GetHero()
             quest:EntitySetThingAsAllyOfThing(me, pCVar2)
         else
@@ -466,9 +458,8 @@ function Init(quest, me)
         -- TODO(native): SetDataString is not a ForgeFSE binding
         me:SetDataString("BANDIT")
     else
-        if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") ~= 0 then
+        if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
             quest:EntitySetInFaction(me, "FACTION_VILLAGERS")
-            __gsivt_2 = **(this + 4)
             pCVar2 = quest:GetHero()
             quest:EntitySetThingAsAllyOfThing(me, pCVar2)
         else
@@ -502,7 +493,7 @@ function OnPredicateFail(quest, me)
     -- TODO(native): pvStack_4 = this;
     local cVar2 = me:MsgIsKilledBy("")
     if cVar2 then
-        if __native_entity_state:GetStateInt("TeamID") == 1 ~= 0 then
+        if __native_entity_state:GetStateInt("TeamID") == 1 then
             quest:SetMasterGameState("OrchardFarmBanditKilled", true)
             return
         end
@@ -511,20 +502,19 @@ function OnPredicateFail(quest, me)
 end
 
 function GoOnPatrol(quest, me)
-    local __gsivt_1, __gsivt_2, bVar3, fVar5, pCVar4
+    local bVar3, fVar5, pCVar4
     local alive = true
-    if __native_entity_state:GetStateInt("MemberState") ~= 0 ~= 0 then
+    if __native_entity_state:GetStateInt("MemberState") ~= 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         return CONCAT31(extraout_var,bVar3)
     end
-    if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") ~= 0 then
+    if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
             return CONCAT31(extraout_var_00,bVar3)
         end
-        __gsivt_1 = **(this + 4)
         bVar3 = true
         fVar5 = 3.0
         pCVar4 = quest:GetHero()
@@ -535,7 +525,6 @@ function GoOnPatrol(quest, me)
         if bVar3 then
             return CONCAT31(extraout_var_01,bVar3)
         end
-        __gsivt_2 = **(this + 4)
         bVar3 = true
         fVar5 = 1.0
         pCVar4 = quest:GetHero()
