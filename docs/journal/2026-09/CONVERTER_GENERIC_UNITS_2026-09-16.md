@@ -172,3 +172,22 @@ Converter: CTimer members are now listed in the unit evidence (`timers`) and Ini
 `quest:SetStateInt("<Timer>", quest:RegisterTimer())` — the native class constructor does exactly that (GSI slot 0x15c,
 seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesTimer/Teams[i].TeamReinforcementsTimer).
 `build_unit_playtest_package.py` stages Oakvale + Orchard under one retail_override profile → local-candidate-v5.
+
+## Night 2 — smoke harness, stack-depth export, drifted-name restoration (commits d3444b3, 2f3e957, ca781cd)
+- `smoke_run_unit.py` (lupa mock runtime) runs all 11 Orchard files on both stages; caught `CStack_cc._3_1_` byte slices and a
+  harness receiver bug; now 0 problems.
+- Regression found and fixed: `duplicate_sibling_tails` dropped the `if (c)` around `if (c) goto L;` and copied past a top-level
+  `return` → TeamSpawn's else branch returned unconditionally and spawned twice. Tail copies now stop at `return;` and stay
+  under the condition.
+- Same printed label, different targets (bsim): 0x6E7B40 is `CScriptThing::CScriptThing` (vtable 01238c8c), not a movie ctor;
+  `disambiguate_call_labels` renames per site order. Objects constructed at `slot + N` get `<slot>_pN`; stack-object
+  canonicalisation is scoped per object lifetime; actor map extent 12 bytes.
+- Real semantics recovered: FailReasons_0..3 (UTF-16 AssignFromWide), `AddLogbookStoryEntry(85/80)` (0xCBE87F, same address FSE
+  binds), `Teams[MyTeam].MemberCount += 1` in CrateTeamMember.Init (element-address temporaries), `ResetCombatNearbyBreakOffRange(me)`
+  (by-value copy after staged slots), `CloseDoor` + 950 host bindings parsed from ForgeFSE sources into the manifest.
+- Ghidra stack-name drift (see GOTCHAS): the export tracks exact depth and emits per-site slots; `restore_stack_operands` renames
+  by (slot, lifetime). Verified on the whisper cutscene: `lea ecx,[esp+0x2c]`/`[esp+0x38]` at true depth 0xdc are the MK_OFWF /
+  MK_OFWB hidden slots (-0xb0 / -0xa4), so the compare is `dist(MK_OFWF) <= dist(MK_OFWB)` → WHISPER_BACK.
+- Remaining draft residue (52): dtor-selection `this_00` aliases, `_Dest_val` movie release, `HasPhysicsMesh` mislabel (0xCD23B9),
+  DoMultiplierCutscene actor-map residue (`local_3c`), TeamSpawn `&xStack_3c` handle copy.
+

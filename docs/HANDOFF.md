@@ -31,6 +31,11 @@ entity ids 216–224); preflight passes; static API coverage check = no missing 
 FIXED: Bully intimidation line (was BULLY_BADGERING; retail formats BULLY_SCRMSG_INTIMIDATING_%d, bully_proximity.py) —
 readable rebuilt, staged at work/oakvale_readable_stage_20260916b, **v5 rebuilt from it** (Oakvale + Orchard, preflight ok).
 Aeon cross-reference: work/aeon_new_oakvale/CROSSREF.md. Pre-existing: test_bully_proximity.py mock lacks RetailRandModulo (fails before the fix too).
+2f3e957/ca781cd: TeamSpawn sibling-goto regression fixed (d3444b3 had spawned twice + returned early); typed export now tracks
+exact stack depth (callee purge sizes, lazy saves, lea esp padding) and records per-site `ecxStack/edxStack/pushedStack` +
+`indirectCalls`; `restore_stack_operands` (convert_quest_unit.py) renames drifted Ghidra stack names by (slot, lifetime) →
+whisper cutscene distance compare and CrateTeamMember MemberCount += 1 are now retail-correct; FailReasons_0..3 initialised
+(AssignFromWide from UTF-16 .rdata); 0xCBE87F = quest:AddLogbookStoryEntry(n). Draft todo 52. v5 rebuilt + preflight ok.
 SMOKE HARNESS: `python tools/script_recovery/smoke_run_unit.py --unit orchard_farm [--stage readable]` (lupa mock runtime, frame
 budget, unknown-method check vs DLL sources) — Orchard 11/11 files run, 0 problems (commit d3444b3); v5 rebuilt + preflight ok.
 Converter residue (all cosmetic to the draft, readable runs): DoCutsceneIfRequired/DoMultiplierCutscene actor-map std::map
