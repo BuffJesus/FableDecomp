@@ -104,3 +104,47 @@ GSI slots from FSE's native typedefs (`GameInterface.h`), real signatures for en
 - Orchard draft: 46 fns (deduped), 33 compile, 191 diagnostics; quest Main / Evil+Good Init /
   Artefact / CrateTeamMember.Init read as retail logic. `refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md`
   lists the bindings the DLL needs. Oakvale gate identical throughout; converter tests OK.
+
+## Night rounds 31–53 (all 11 Orchard files compile; 193 → 133 diagnostics; Oakvale gate identical throughout)
+
+Ghidra typed export (`ExportTypedTranslationUnit.java`):
+- **By-value `CScriptThing` arguments**: `sub esp,0xc; mov ecx,esp; push src; call 0x4ABE90` (copy ctor) before a
+  GSI/thing call ⇒ that site's `CScriptThing *` params become 12-byte structs. Recovers the pushed immediates the
+  decompiler was misattributing (`SetCombatNearbyBreakOffRange(me, 4.0)`, `SetStealStealableItems(me, true)`).
+  Evidence: FSE typedefs for slots 0xcc4/0xcd0 say `CScriptThing *`; the native ABI is by value.
+- **Stack keys are entry-relative** (`disp - espDelta`; the old `disp + espDelta` was inconsistent across depths);
+  **mid-function epilogues** (`pop/add esp/ret` in early-return blocks) no longer corrupt the depth for later blocks
+  (that bug shifted every parameter read after an early return: `speaker` decoded as `comment_to_make`).
+- **GSI singleton** `mov ecx,[0x143e8f8]` tagged GSI (GetTimer/SetTimer through the global were untyped).
+- **Data-pointer thing calls**: `mov ecx,[obj+off]; mov eax,[ecx]; call [eax+SLOT]` with SLOT ≥ 0x40 in the thing
+  table ⇒ thing override (the Data object shares CScriptThing's slot layout — `IsAlive` at 0x12c via Data, verified
+  in disassembly of CrateTeamMember::Main / IsThingCarryingCrate).
+- **Parameter types from the ego_r signature** in the bsim comment (`class CScriptThing &` → `CScriptThing *`;
+  the PDB locals export has no types for references). Thing params are tagged at their entry stack slot.
+- Fixed helpers proven by disassembly: `0x99F570` / `0x99F600` = `CCharString operator+` (`__fastcall` dest, a; stack b).
+
+Lowering (`native_evidence_lowering.py`):
+- `LIST_At_<name>(idx)` mangled pseudo-call (no comma inside receivers); balanced-paren finishers
+  (`_expand_calls`) for `ENGINE_SquaredDistance/StrCmp/Concat/Colour`; `ENGINE_IsDistanceBetweenThingsUnder/Over` by address.
+- Saved-vtable temporaries, `X._4_4_` Data-pointer vcalls/validity, `**(int **)(E+off+4)` Data vcalls (GSI bases excluded),
+  parameter (and alias) thing vcalls with explicit receiver / hidden result pointer stripped.
+- Stack-thing copies out of list elements, tangled inline `CScriptThing::operator=` split across labels/branches,
+  hidden-pointer thing returns (`ret_thing`), inline `strncmp` of two literals (constant), counted addref/release
+  no-ops (comma and non-comma forms, tangled with labels), trivial vtable-only base ctor/dtor calls dropped,
+  `CScriptThing::~CScriptThing` (0x4AA840) dropped for any cast spelling.
+- Members: CCharString/CWideString fields and arrays (`SetStateString`, `"FailReasons_" .. idx`), anonymous/named
+  enums as Int, pointer-into-array scalar sub-arrays (`Teams[MyTeam].StateCounter[state] += 1`), bare thing-member
+  addresses as by-ref arguments, array index forms that are already lowered state loads.
+- Stack colours built byte-wise (retail BGRA) → `{R, G, B, A}` tables (scoped to the slot's live range).
+- Ghidra print shapes: `*(T *) (`, decimal member offsets, `(undefined1 [4])` casts, `1e+07`, AL-based bool returns.
+- Scalar stack locals renamed (`v_stk_14`) so the lifter accepts them; stack CScriptThing handles likewise.
+
+Lifter: nested/mixed short-circuit conditions with several call assignments lowered through a condition tree
+(`native_condition_tree.py`, comma < `||` < `&&` precedence) — only when the single-operator recogniser cannot
+express the condition (gate-safe). Goto-only regions (constant-false guard + label entered by `goto`) hoisted as
+`__region_LAB_x()` + `goto LAB_y` (`native_cleanup_regions.py`); bare-`return` labels resolve to `return`.
+`CONVERT_DUMP=<fn>` env prints the lowered C for one function.
+
+Remaining 133 diagnostics: 68 informational (label/goto/cleanup-verify), the rest single shapes (`CCharString__AssignFromWide`
+members, `std::map` cutscene actor maps in the cutscene helpers, `CreateCreature`/`EntityFollowThing` missing operands,
+`GetName/IsBeingCarriedBy/SetDataString` not FSE bindings — already in the API appendix).

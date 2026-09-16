@@ -1,14 +1,26 @@
-# CURRENT (later 2026-09-16): converter generalised; target = Orchard Farm (Aeon does Guild)
+# CURRENT (night 2026-09-16): Orchard Farm converter — all 11 files compile; next = readable pass + DLL bindings
 
-Aeon is hand-porting Guild training; Oakvale intro is complete (1 class, 51/51 converter fns, incl. post-raid).
-New generic pipeline: `script_units.py` → `export_guild_training.py --unit` → `guild_training_inventory.py --unit`
-→ `quest_unit_evidence.py --unit` → `convert_quest_unit.py --unit` (+ `native_evidence_lowering.py`).
-Typed TU export works (`ghidra_typing_spec.py` + `ExportTypedTranslationUnit.java`, 218 call-site overrides on Orchard).
-Orchard Farm draft: `refs/script_recovery/lifted/OrchardFarm/draft` (46 fns after class dedup, 33 compile, 191 diags; resources/cutscenes/cleanup lowered; API gaps in refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md). Oakvale draft
-regenerates byte-identical (gate: scratch `gate.sh` = convert_new_oakvale + diff). Next lever = by-value CScriptThing args in
-the typed export, then the cutscene/actor-map lowering (`StdMap_*` → `resources:NewActorMap/SetActor/RunMacro`).
-GOTCHA: never patch Python via bash heredoc/python -c (backslashes → \x01 bytes); use script files.
-Aeon-port audit tool: `audit_port_against_pdb.py`. Journal: journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md
+Pipeline (quest-agnostic): `script_units.py` → `export_guild_training.py --unit` → `guild_training_inventory.py --unit`
+→ `quest_unit_evidence.py --unit` → `ghidra_typing_spec.py --unit` + `infer_helper_prototypes.py --unit` → typed export (below)
+→ `convert_quest_unit.py --unit` (`native_evidence_lowering.py` + `Lifter` + `native_cleanup_regions.py`). Aeon hand-ports Guild;
+Oakvale intro complete (51/51 fns); Aeon-port audit tool `audit_port_against_pdb.py`; API appendix for Aeon `docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md`.
+Orchard Farm draft `refs/script_recovery/lifted/OrchardFarm/draft`: **46 fns, 11/11 files compile, 133 diags**
+(68 of them informational label/goto/cleanup notes). Regenerate: `python tools/script_recovery/convert_quest_unit.py --unit orchard_farm`;
+gate: scratch `gate.sh` (convert_new_oakvale + diff vs baseline) must print `OAKVALE GATE: identical`.
+Typed export re-run (needed after `ghidra_typing_spec.py --unit orchard_farm` + `infer_helper_prototypes.py --unit orchard_farm`):
+`analyzeHeadless ghidra_proj FableTLC -process Fable.exe -readOnly -noanalysis -scriptPath tools/ghidra_scripts -postScript
+ExportTypedTranslationUnit.java 0x00DCC040 0x00DD2700 refs/.../translation_unit_typed.json refs/.../define_addresses.txt refs/.../typing_spec.json`
+(337 overrides; by-value CScriptThing sites 8, Data-pointer thing sites 2, thing params 2).
+Debug: `CONVERT_DUMP=<FnName>[,..] convert_quest_unit.py --unit orchard_farm` prints the lowered C per function.
+Tonight's converter levers (all generic, journal has the list): by-value CScriptThing args (Ghidra export + fold),
+hidden-pointer thing returns, Data-pointer thing vcalls, entry-relative stack keys + epilogue depth + GSI singleton in the
+provenance tracker, ego_r signature param types, CCharString concat/members/arrays, enum fields, nested short-circuit
+condition trees (`native_condition_tree.py`), goto-only regions (`native_cleanup_regions.py`), stack colours (BGRA→{R,G,B,A}),
+bool return idioms. FSE typedef evidence: GSI slots 0xcc4 SetCombatNearbyBreakOffRange / 0xcd0 SetStealStealableItems take
+CScriptThing BY VALUE (FSE declares `CScriptThing *`) — tell Aeon.
+Next: readable pass for Orchard (like `build_readable_new_oakvale.py`), NoviCompatibility bindings per
+`refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md` / `docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md`, in-game test, ship with the Oakvale zip.
+Known: `test_watch_barrels_loop.py` pre-existing failure. Journal: journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md (night section).
 
 # CURRENT: Party Mode removed; sidecar v4 played clean through childhood; Discord zip rebuilt — 2026-09-16
 

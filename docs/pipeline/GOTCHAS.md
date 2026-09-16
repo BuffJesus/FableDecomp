@@ -110,3 +110,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Git Bash heredoc / `python -c` patches mangle backslashes: a regex replacement `\1` lands as a literal 0x01 byte. Write patch scripts to a file and run them (2026-09-16).
 - Debug-PDB (Ego_r) class offsets → retail: quest classes −0x14, entities 0, and −4 per STL container member preceding the field (debug iterator pointer); CScriptThing is 12 bytes in both (2026-09-16).
 - Ghidra `__thiscall` FunctionDefinitions need `this` as an explicit first parameter or every argument shifts one slot (2026-09-16).
+- Ghidra provenance/stack tracking: stack keys must be entry-relative (`disp - espDelta`), and a mid-function `pop/add esp/ret` epilogue must not carry its depth into the next block — otherwise every parameter read after an early return is shifted by one (Orchard `MakeTeamMemberComment`).
+- Retail passes `CScriptThing` BY VALUE to many GSI slots (`sub esp,0xc; mov ecx,esp; push src; call 0x4ABE90`) even where FSE's typedef says `CScriptThing *`; type those sites as 12-byte structs or the decompiler misattributes every pushed immediate.
+- A CScriptThing's Data pointer (+4) shares the CScriptThing slot layout; `(**(**(int **)(obj+off+4) + 0x12c))()` is `thing:IsAlive()` on the member at `off`.
+- Ghidra prints some namespaced call labels as `Ns__Fn` in C output while the call list says `Ns::Fn`; match both.
