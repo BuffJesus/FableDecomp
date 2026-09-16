@@ -157,7 +157,7 @@ function Main(quest, me)
                             -- LAB_00dce594: (native jump target)
                             bVar2 = false
                         else
-                            -- TODO(native): CCharString::CCharString((CCharString *)(auStack_50 + 4),&DAT_0122d70e,-1);
+                            -- TODO(native): CCharString::CCharString((CCharString *)(auStack_50 + 4),"",-1);
                             -- TODO(native): local_5c = local_5c | 1;
                             native_arg_sequence_2 = false
                             if auStack_38._4_4_ ~= nil then
@@ -442,7 +442,7 @@ function Init(quest, me)
     local bVar6, iVar3, pCVar2, pThing, piVar1
     -- TODO(native): GetName is not a ForgeFSE binding
     piVar1 = me:GetName()
-    if *piVar1 == nil then
+    if piVar1 == nil then
         iVar3 = 16
         bVar6 = false
         if bVar6 then
@@ -451,7 +451,7 @@ function Init(quest, me)
             goto LAB_00dcdf96
         end
     else
-        -- TODO(native): iVar3 = CBasicString<char>::Compare(*(void **)*piVar1,"BanditTeamMember");
+        iVar3 = ((piVar1 == "BanditTeamMember") and 0 or 1)
         -- TODO(native): cStack_11 = '\x01' - (iVar3 != 0);
         if cStack_11 ~= 0 then return end  -- TODO(native): goto LAB_00dce00a
     end
@@ -507,8 +507,7 @@ function OnPredicateFail(quest, me)
     local iVar3 = __native_entity_state:GetStateInt("MemberState") + __native_entity_state:GetStateInt("TeamID") * 0x10
     quest:SetStateInt(("Teams_0_StateCounter_" .. iVar3), quest:GetStateInt(("Teams_0_StateCounter_" .. iVar3)) + -1)
     -- TODO(native): pvStack_4 = this;
-    -- TODO(native): CCharString::CCharString((CCharString *)&pvStack_4,&DAT_0122d70e,-1);
-    local cVar2 = me:MsgIsKilledBy(nil --[[missing]])
+    local cVar2 = me:MsgIsKilledBy("")
     if cVar2 then
         if __native_entity_state:GetStateInt("TeamID") == 1 then
             quest:SetMasterGameState("OrchardFarmBanditKilled", true)

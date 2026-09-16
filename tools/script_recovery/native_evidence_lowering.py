@@ -306,7 +306,15 @@ def fold_engine_helpers(text, call_labels):
     return text
 
 
+def fold_name_compare(text):
+    """`p = me->GetName(); if (*p == 0) ...; CBasicString<char>::Compare(**p, "S")` -> Lua string ops."""
+    text = re.sub(r'\(undefined4 \*\)\*(\w+) == \(undefined4 \*\)0x0', r'\1 == (CCharString *)0x0', text)
+    text = re.sub(r'CBasicString<char>::Compare\(\*\(void \*\*\)\*(\w+),("[^"]*")\)', r'ENGINE_StrCmp(\1, \2)', text)
+    return text
+
+
 def lower_after_annotate(text):
+    text = fold_name_compare(text)
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
     text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
                   lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
@@ -369,6 +377,17 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
     text = fold_inline_constructors(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))
+    resolve = getattr(spec, 'resolve_string', None)
+    if resolve:
+        # `&DAT_xxxxxxxx` string addresses (the empty string and other pooled literals) -> literals
+        def dat_literal(m):
+            literal = resolve(int(m.group(1), 16))
+            if literal is None and getattr(spec, 'byte_at', None) and spec.byte_at(int(m.group(1), 16)) == 0:
+                literal = ''   # the pooled empty string (a lone NUL) is not a "string" to the resolver
+            return '"' + literal.replace('\\', '\\\\').replace('"', '\\"') + '"' if literal is not None else m.group(0)
+        text = re.sub(r'&DAT_([0-9a-f]{8})\b', dat_literal, text)
+    # reads from the global game-data table (runtime pointer at DAT_0143e90c): keep the offset
+    text = re.sub(r'\*\((?:int|float|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
 
     parent = r'\*\(int \*\)\(this \+ 0x14\)'
     # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
@@ -464,6 +483,21 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                     absolute = a['base'] + index * stride + pmember
                     text = re.sub(r'^([ \t]*)\*\(\w+ \*\*?\)\(' + base + r' \+ ' + off_re(absolute) + r'\) =\s*__element\("' + a['name'] + r'", (\d+)\);',
                                   lambda m, k=f'{a["name"]}_{index}_{pname}': f'{m.group(1)}QUESTSTATE_SetInt("{k}", {m.group(2)});', text, flags=re.M)
+            # pointer-to-member temporaries: P = (int *)(__element("A", I) + OFF); *P = *P + N / *P
+            for member_off, (mname, kind) in a['members'].items():
+                pat = re.compile(r'^[ \t]*(\w+) = \(int \*\)\(__element\("' + a['name'] + r'", ([^;]+?)\) \+ ' + off_re(member_off) + r'\);[ \t]*\r?\n', re.M)
+                for m in list(pat.finditer(text)):
+                    var, idx = m.group(1), m.group(2)
+                    key = f'__key("{a["name"]}_" .. {idx} .. "_{mname}")'
+                    tail = text[m.end():]
+                    if re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M):
+                        tail_end = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M).start()
+                    else:
+                        tail_end = len(tail)
+                    scope = tail[:tail_end]
+                    scope = re.sub(r'^([ \t]*)\*' + re.escape(var) + r' = ([^;]+);', lambda mm: f'{mm.group(1)}QUESTSTATE_Set{kind}({key}, {mm.group(2).strip()});', scope, flags=re.M)
+                    scope = re.sub(r'\*' + re.escape(var) + r'\b', f'QUESTSTATE_Get{kind}({key})', scope)
+                    text = text[:m.start()] + scope + tail[tail_end:]
             # temporaries holding an element address: substitute and drop the assignment
             for m in list(re.finditer(r'^[ \t]*(\w+) = (?:\(int \*\))?(__element\("' + a['name'] + r'", [^;]+\));\s*$', text, re.M)):
                 var, value = m.group(1), m.group(2)
@@ -586,6 +620,8 @@ LUA_PSEUDO = [
     (re.compile(r'__thing_valid\('), 'IsThingValid('),
     (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
+    (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
+    (re.compile(r'ENGINE_StrCmp\(([^,]+), ([^)]+)\)'), r'((\1 == \2) and 0 or 1)'),
     (re.compile(r'ENGINE_SquaredDistance\(([^,]+), ([^)]+)\)'), r'(quest:GetDistanceBetweenThings(\1, \2) ^ 2)'),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),

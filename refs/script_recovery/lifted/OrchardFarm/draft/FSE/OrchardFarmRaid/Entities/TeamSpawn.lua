@@ -150,7 +150,7 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    quest:Pause(*(DAT_0143e90c + 0xd74))
+                    quest:Pause(quest:ReadGlobalGameData(0xd74))
                     quest:SetStateInt("BanditWavesSpawned", quest:GetStateInt("BanditWavesSpawned") + 1)
                     if __native_entity_state:GetStateInt("TeamID") ~= quest:GetStateInt("HeroTeam") then
                         alive = not quest:IsActiveThreadTerminating()
@@ -248,7 +248,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local bVar7, iVar5, pCVar3, pcVar8, piVar4
+    local bVar7, iVar5, pCVar3, pcVar8, piVar4, uVar1
     pCVar3 = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
     __native_entity_state:SetStateThing("OtherSpawnPoint", pCVar3)
     if uStack_4 ~= nil then
@@ -259,7 +259,7 @@ function Init(quest, me)
     -- TODO(native): local_c._4_4_ = 0;
     -- TODO(native): GetName is not a ForgeFSE binding
     piVar4 = me:GetName()
-    if *piVar4 == nil then
+    if piVar4 == nil then
         iVar5 = 15
         bVar7 = false
         if bVar7 then
@@ -271,7 +271,7 @@ function Init(quest, me)
             goto LAB_00dcd2bb
         end
     else
-        -- TODO(native): iVar5 = CBasicString<char>::Compare(*(void **)*piVar4,"BanditTeamSpawn");
+        iVar5 = ((piVar4 == "BanditTeamSpawn") and 0 or 1)
         if iVar5 == 0 then return end  -- TODO(native): goto LAB_00dcd306
     end
     __native_entity_state:SetStateInt("TeamID", 0)
@@ -282,13 +282,13 @@ function Init(quest, me)
     -- TODO(native): CCharString::operator=((CCharString *)(this + 0x38),pcVar8);
     if __native_entity_state:GetStateInt("TeamID") == quest:GetStateInt("HeroTeam") then
         __native_entity_state:SetStateInt("TeamMemberLimit", 2)
-        -- TODO(native): uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd6c);
+        uVar1 = quest:ReadGlobalGameData(0xd6c)
         __native_entity_state:SetStateInt("BanditsLeftID", 0)
         __native_entity_state:SetStateInt("TeamRespawnTime", uVar1)
         return
     end
     __native_entity_state:SetStateInt("TeamMemberLimit", 3)
-    -- TODO(native): uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd70);
+    uVar1 = quest:ReadGlobalGameData(0xd70)
     __native_entity_state:SetStateInt("BanditsLeftID", 0)
     __native_entity_state:SetStateInt("TeamRespawnTime", uVar1)
 end

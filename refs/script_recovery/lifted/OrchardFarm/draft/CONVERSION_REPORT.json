@@ -109,10 +109,7 @@
             "unlifted: CCharString__AssignFromWide(this + 0x70,0x12db040);",
             "unlifted: CCharString__AssignFromWide(this + 0x74,0x12db000);",
             "unnamed field 0x84 written in Init",
-            "unlifted: CCharString::CCharString((CCharString *)&local_1c,&DAT_0122d70e,-1);",
-            "SetQuestCardObjective: missing region2 (3 args for 4 params)",
-            "unnamed field 0x84 written in Init",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_20,&DAT_0122d70e,-1);"
+            "unnamed field 0x84 written in Init"
           ],
           "calls": [
             "AddQuestRegion",
@@ -152,7 +149,7 @@
             "MiniMapAllowRouteBetweenRegions",
             "MiniMapAllowRouteBetweenRegions"
           ],
-          "lines": 57,
+          "lines": 55,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -202,10 +199,7 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_54,&DAT_0122d70e,-1);",
-            "SetQuestCardObjective: missing region2 (3 args for 4 params)",
             "unlifted: pppuVar9 = appuStack_bc;",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_24,&DAT_0122d70e,-1);",
             "unlifted: this_00 = *(int **)(this + 0x40);",
             "goto LAB_00dd0b1f",
             "label LAB_00dd0b11",
@@ -215,13 +209,10 @@
             "verify cleanup at LAB_00dd0b11 (lifted as early return)",
             "label LAB_00dd0b1f",
             "goto LAB_00dd0b2b",
-            "unlifted: CCharString::CCharString(aCStack_3c,&DAT_0122d70e,-1);",
             "unlifted: *(undefined4 *)(this + 100) = 1;",
             "unlifted: pppuVar9 = appuStack_ac;",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_c8,&DAT_0122d70e,-1);",
             "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
-            "unlifted: CSubtitleRenderer::SetText(0x55);",
-            "SetQuestAsFailed: missing wideMessage (3 args for 4 params)"
+            "unlifted: CSubtitleRenderer::SetText(0x55);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -328,7 +319,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 212,
+          "lines": 208,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -337,8 +328,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil",
-                "line": 53,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:53: unexpected symbol near '&'"
+                "line": 52,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesEvil:52: unexpected symbol near '&'"
               }
             ]
           },
@@ -364,12 +355,9 @@
           },
           "todo": [
             "unlifted: *(undefined4 *)(this + 100) = 2;",
-            "unlifted: CCharString::CCharString((CCharString *)auStack_c4,&DAT_0122d70e,-1);",
             "unlifted: CStack_cc._3_1_ = CScriptThing::MsgIsKilledBy(pCVar5);",
             "unlifted: *(undefined4 *)(this + 100) = 1;",
-            "unlifted: CCharString::CCharString((CCharString *)aCStack_4c,&DAT_0122d70e,-1);",
             "unlifted: auStack_74[0] = 0;",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_60,&DAT_0122d70e,-1);",
             "unlifted: this_00 = *(int **)(this + 0x40);",
             "unlifted: aCStack_1c[0] = (CCharString)ENGINE_SquaredDistance(uStack_b8, pCVar5);",
             "goto LAB_00dd1736",
@@ -379,16 +367,13 @@
             "verify cleanup at LAB_00dd1728 (lifted as early return)",
             "label LAB_00dd1736",
             "goto LAB_00dd1742",
-            "unlifted: CCharString::CCharString(aCStack_40,&DAT_0122d70e,-1);",
             "unlifted: *(undefined4 *)(this + 100) = 1;",
             "unlifted: (auStack_c4 + 4) = RESOURCE_StartMovie(\"\");",
             "unlifted: StdMap_Construct_API(auStack_a8 + 4);",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_cc,&DAT_01255174,-1);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_cc,&DAT_0122d70e,-1);",
             "unlifted: RunCutsceneMacro_Func(&CStack_cc,auStack_a8 + 4,(void *)0x0,(void *)0x0,false,true);",
             "unlifted: StdMap_Destroy_API(auStack_a8 + 4);",
             "unlifted: CSubtitleRenderer::SetText(0x50);"
@@ -499,7 +484,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 261,
+          "lines": 256,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -508,8 +493,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood",
-                "line": 71,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood:71: unexpected symbol near '&'"
+                "line": 70,
+                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:ProcessGameRulesGood:70: unexpected symbol near '&'"
               }
             ]
           },
@@ -550,9 +535,7 @@
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
             "GetNearestWithScriptName: missing spRelativeTo (1 args for 2 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_94,&DAT_0122d70e,-1);",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_94,&DAT_0122d70e,-1);",
             "goto LAB_00dd03b8",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
             "CloseDoor: not in FSE manifest",
@@ -655,7 +638,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 171,
+          "lines": 169,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -785,7 +768,6 @@
             "returnKind": "number"
           },
           "todo": [
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_40,&DAT_0122d70e,-1);",
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
             "unlifted: local_3c = (CScriptThing *)piVar3;",
@@ -844,7 +826,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 131,
+          "lines": 130,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1019,12 +1001,9 @@
             "GetName: CScriptThing method not in FSE manifest",
             "label LAB_00dcd306",
             "unnamed field 0x34 written in Init",
-            "unlifted: iVar5 = CBasicString<char>::Compare(*(void **)*piVar4,\"BanditTeamSpawn\");",
             "verify cleanup at LAB_00dcd306 (lifted as early return)",
             "unnamed field 0x34 written in Init",
-            "unlifted: CCharString::operator=((CCharString *)(this + 0x38),pcVar8);",
-            "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd6c);",
-            "unlifted: uVar1 = *(undefined4 *)(DAT_0143e90c + 0xd70);"
+            "unlifted: CCharString::operator=((CCharString *)(this + 0x38),pcVar8);"
           ],
           "calls": [
             "GetRandomThingWithScriptName",
@@ -1032,12 +1011,15 @@
             "GetName",
             "SetStateInt",
             "SetStateString",
+            "ENGINE_StrCmp",
             "SetStateInt",
             "SetStateString",
             "SetStateInt",
+            "ENGINE_GlobalGameData",
             "SetStateInt",
             "SetStateInt",
             "SetStateInt",
+            "ENGINE_GlobalGameData",
             "SetStateInt",
             "SetStateInt"
           ],
@@ -1421,7 +1403,7 @@
             "unlifted: this_00 = auStack_54;",
             "unlifted: this_00 = auStack_50;",
             "label LAB_00dce594",
-            "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),&DAT_0122d70e,-1);",
+            "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),\"\",-1);",
             "unlifted: local_5c = local_5c | 1;",
             "verify cleanup at LAB_00dce594 (lifted as early return)",
             "unlifted: local_5c = local_5c & 0xfffffffe;",
@@ -1576,7 +1558,6 @@
           "todo": [
             "GetName: CScriptThing method not in FSE manifest",
             "label LAB_00dce00a",
-            "unlifted: iVar3 = CBasicString<char>::Compare(*(void **)*piVar1,\"BanditTeamMember\");",
             "unlifted: cStack_11 = '\\x01' - (iVar3 != 0);",
             "verify cleanup at LAB_00dce00a (lifted as early return)",
             "SetDataString: CScriptThing method not in FSE manifest",
@@ -1587,6 +1568,7 @@
           "calls": [
             "GetName",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "SetStateInt",
             "EntitySetInFaction",
             "GetHero",
@@ -1619,8 +1601,8 @@
             "errors": [
               {
                 "path": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init",
-                "line": 5,
-                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init:5: unexpected symbol near '*'"
+                "line": 56,
+                "message": "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua:Init:56: unexpected symbol near '*'"
               }
             ]
           },
@@ -1666,9 +1648,7 @@
           "todo": [
             "unnamed field 0x14",
             "unlifted: *piVar1 = *piVar1 + -1;",
-            "unlifted: pvStack_4 = this;",
-            "unlifted: CCharString::CCharString((CCharString *)&pvStack_4,&DAT_0122d70e,-1);",
-            "MsgIsKilledBy: 0 operands for 1 params"
+            "unlifted: pvStack_4 = this;"
           ],
           "calls": [
             "QUESTSTATE_SetInt",
@@ -1676,7 +1656,7 @@
             "SetMasterGameState",
             "SetMasterGameState"
           ],
-          "lines": 14,
+          "lines": 13,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2175,8 +2155,8 @@
           },
           {
             "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua",
-            "line": 171,
-            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:171: unexpected symbol near '&'"
+            "line": 168,
+            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:168: unexpected symbol near '&'"
           },
           {
             "path": "FSE/OrchardFarmRaid/native_quest_helpers.lua",
@@ -2205,7 +2185,6 @@
         ],
         "todo": {
           "DoMultiplierCutscene": [
-            "unlifted: CCharString::CCharString((CCharString *)&CStack_40,&DAT_0122d70e,-1);",
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
             "unlifted: local_3c = (CScriptThing *)piVar3;",
@@ -2250,7 +2229,7 @@
         "functionSyntaxPassed": 28,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 9,
-        "todo": 217
+        "todo": 193
       }
     },
     {
@@ -2298,18 +2277,7 @@
             "parameters": [],
             "returnKind": null
           },
-          "todo": [
-            "unlifted: CCharString::CCharString((CCharString *)&local_4,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)"
-          ],
+          "todo": [],
           "calls": [
             "AddBoast",
             "AddBoast",
@@ -2318,19 +2286,13 @@
             "AddBoast",
             "ActivateQuest"
           ],
-          "lines": 11,
+          "lines": 6,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaidEvil/OrchardFarmRaidEvil.lua:Init",
-                "line": 3,
-                "message": "FSE/OrchardFarmRaidEvil/OrchardFarmRaidEvil.lua:Init:3: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -2348,16 +2310,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 1,
-        "passed": 0,
-        "errors": [
-          {
-            "path": "FSE/OrchardFarmRaidEvil/OrchardFarmRaidEvil.lua",
-            "line": 9,
-            "message": "FSE/OrchardFarmRaidEvil/OrchardFarmRaidEvil.lua:9: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 1,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
@@ -2365,10 +2321,10 @@
         "owners": 1,
         "functions": 2,
         "missing": 1,
-        "functionSyntaxPassed": 1,
-        "fileSyntaxPassed": 0,
+        "functionSyntaxPassed": 2,
+        "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 10
+        "todo": 0
       }
     },
     {
@@ -2416,18 +2372,7 @@
             "parameters": [],
             "returnKind": null
           },
-          "todo": [
-            "unlifted: CCharString::CCharString((CCharString *)&local_4,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)",
-            "unlifted: CCharString::CCharString((CCharString *)&local_8,&DAT_0122d70e,-1);",
-            "AddBoast: missing boastText (6 args for 7 params)"
-          ],
+          "todo": [],
           "calls": [
             "AddBoast",
             "AddBoast",
@@ -2436,19 +2381,13 @@
             "AddBoast",
             "ActivateQuest"
           ],
-          "lines": 11,
+          "lines": 6,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaidGood/OrchardFarmRaidGood.lua:Init",
-                "line": 3,
-                "message": "FSE/OrchardFarmRaidGood/OrchardFarmRaidGood.lua:Init:3: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -2466,16 +2405,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 1,
-        "passed": 0,
-        "errors": [
-          {
-            "path": "FSE/OrchardFarmRaidGood/OrchardFarmRaidGood.lua",
-            "line": 9,
-            "message": "FSE/OrchardFarmRaidGood/OrchardFarmRaidGood.lua:9: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 1,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
@@ -2483,10 +2416,10 @@
         "owners": 1,
         "functions": 2,
         "missing": 1,
-        "functionSyntaxPassed": 1,
-        "fileSyntaxPassed": 0,
+        "functionSyntaxPassed": 2,
+        "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 10
+        "todo": 0
       }
     }
   ],
@@ -2494,9 +2427,9 @@
     "owners": 10,
     "functions": 46,
     "missing": 2,
-    "functionSyntaxPassed": 30,
-    "fileSyntaxPassed": 3,
+    "functionSyntaxPassed": 32,
+    "fileSyntaxPassed": 5,
     "fileSyntaxChecked": 11,
-    "todo": 237
+    "todo": 193
   }
 }

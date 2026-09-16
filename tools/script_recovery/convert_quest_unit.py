@@ -161,6 +161,7 @@ class UnitConverter:
                 representative = next((n for n, o in class_owner.items() if o == owner), owner) if entity else owner
                 spec_l = LoweringSpec(unit, representative, entity=entity, thing_slots=self.thing_slots)
                 spec_l.resolve_string = self.rdata.string_at
+                spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
                 lowered, lowering_diag = lower(rename_parameters(fn['decompile'], signature), spec_l)
                 source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)))
