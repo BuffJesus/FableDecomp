@@ -74,7 +74,7 @@ function Init(quest)
     quest:SetStateBool("HeroAtWrongEntrance", false)
     quest:SetStateBool("WhisperSpawned", false)
     quest:SetStateBool("MissionSucceeded", false)
-    -- TODO(native): *(undefined4 *)(this + 100) = 0;
+    quest:SetStateInt("MissionFailed", 0)
     quest:SetStateInt("BanditWavesSpawned", 0)
     quest:SetStateBool("ShownCombatMultiplierTutorial", false)
     quest:SetStateBool("ShownCombatFlourishTutorial", false)
@@ -93,8 +93,7 @@ function Init(quest)
     local bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidEvil")
     if bVar2 then
         quest:SetStateInt("HeroTeam", 1)
-        -- TODO(native): name field 0x84 (CCharString)
-        quest:SetStateString("self_0x84", "TEXT_QST_051_")
+        quest:SetStateString("TextSystemScriptCode", "TEXT_QST_051_")
         quest:SetQuestCardObjective("Q_OrchardFarmRaidEvil", "TEXT_QUEST_PROTECT_FARM_EVIL_OBJECTIVE_01", "", "HeroGuildComplexInside")
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", false)
     else
@@ -103,8 +102,7 @@ function Init(quest)
             return
         end
         quest:SetStateInt("HeroTeam", 0)
-        -- TODO(native): name field 0x84 (CCharString)
-        quest:SetStateString("self_0x84", "TEXT_QST_052_")
+        quest:SetStateString("TextSystemScriptCode", "TEXT_QST_052_")
         quest:SetQuestCardObjective("Q_OrchardFarmRaidGood", "TEXT_QUEST_PROTECT_FARM_OBJECTIVE_01", "", "Greatwood")
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodEntrance", false)
     end
@@ -256,7 +254,7 @@ function ProcessGameRulesEvil(quest)
                     if bVar4 then
                         return
                     end
-                    -- TODO(native): *(undefined4 *)(this + 100) = 1;
+                    quest:SetStateInt("MissionFailed", 1)
                 end
                 if quest:GetStateBool("MissionSucceeded") then
                     alive = not quest:IsActiveThreadTerminating()
@@ -306,7 +304,7 @@ function ProcessGameRulesEvil(quest)
                     resources:ReleaseResource(appuStack_ac)
                     return
                 end
-                if *(this + 100) ~= 0 then
+                if quest:GetStateInt("MissionFailed") ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
@@ -315,7 +313,7 @@ function ProcessGameRulesEvil(quest)
                     ReplaceQuestCards(quest)
                     quest:RemoveQuestInfoElement(fVar5)
                     bVar10 = true
-                    pMessage = (this + *(this + 100) * 4 + 0x68)
+                    pMessage = quest:GetStateString(("FailReasons_" .. quest:GetStateInt("MissionFailed")))
                     bVar4 = true
                     pCVar8 = quest:GetActiveQuestName()
                     quest:SetQuestAsFailed(pCVar8, bVar4, "CS_ORCHARD_EVIL_WHISPER_BACK", (pMessage ~= 0))
@@ -335,7 +333,7 @@ end
 
 function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
-    local aCStack_98, amStack_8c, bVar12, bVar3, cVar1, c_stk_c5, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4, u_stk_b8
+    local aCStack_98, amStack_8c, auStack_c4, bVar12, bVar3, cVar1, c_stk_c5, fVar9, iVar11, iVar4, native_arg_sequence_1, pCVar5, pCVar7, pCVar8, pMessage, pOther_00, pPosition, ppuStack_80, ppuStack_9c, puVar10, r1, r2, r3, r4
     local alive = true
     local function __cleanup_LAB_00dd1728()
         pCVar7 = 0x0
@@ -377,7 +375,7 @@ function ProcessGameRulesGood(quest)
                     if bVar3 then
                         return
                     end
-                    -- TODO(native): *(undefined4 *)(this + 100) = 2;
+                    quest:SetStateInt("MissionFailed", 2)
                 end
                 pCVar5 = quest:GetHero()
                 pCVar7 = ""
@@ -388,7 +386,7 @@ function ProcessGameRulesGood(quest)
                     if bVar3 then
                         return
                     end
-                    -- TODO(native): *(undefined4 *)(this + 100) = 1;
+                    quest:SetStateInt("MissionFailed", 1)
                 end
                 if (2 < quest:GetStateInt("BanditWavesSpawned")) and (not quest:GetStateBool("WhisperSpawned")) then
                     alive = not quest:IsActiveThreadTerminating()
@@ -408,16 +406,16 @@ function ProcessGameRulesGood(quest)
                     quest:MiniMapAddMarker(pCVar5, "HUD_ORB_RED_SMALL")
                     r2 = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
                     r3 = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
-                    u_stk_b8 = 0
+                    auStack_c4 = resources:NewResource()
                     amStack_8c = resources:NewResource()
                     -- TODO(native): ppuStack_80[0] = 0;
                     resources:TryAcquire(amStack_8c, r1, 4)
                     iVar11 = 4
-                    puVar10 = ""
+                    puVar10 = auStack_c4
                     pCVar5 = quest:GetHero()
                     resources:TryAcquire(puVar10, pCVar5, iVar11)
                     aCStack_98 = resources:NewActorMap()
-                    resources:SetActor(aCStack_98, "HERO", "")
+                    resources:SetActor(aCStack_98, "HERO", auStack_c4)
                     resources:SetActor(aCStack_98, "WHISPER", amStack_8c)
                     ppuStack_9c = resources:StartMovie("")
                     quest:StartMovieSequence()
@@ -425,7 +423,7 @@ function ProcessGameRulesGood(quest)
                     quest:FixMovieSequenceCamera(true)
                     -- TODO(native): this_00 = *(int **)(this + 0x40);
                     pCVar5 = quest:GetHero()
-                    -- TODO(native): aCStack_1c[0] = (CCharString)(quest:GetDistanceBetweenThings(u_stk_b8, pCVar5) ^ 2);
+                    -- TODO(native): aCStack_1c[0] = (CCharString)(quest:GetDistanceBetweenThings(auStack_c4, pCVar5) ^ 2);
                     pCVar5 = quest:GetHero()
                     fVar9 = (quest:GetDistanceBetweenThings(auStack_b0 + 4, pCVar5) ^ 2)
                     if aCStack_1c[0] <= fVar9 then
@@ -482,7 +480,7 @@ function ProcessGameRulesGood(quest)
                     resources:ReleaseResource(ppuStack_9c)
                     resources:DestroyActorMap(aCStack_98)
                     resources:ReleaseResource(amStack_8c)
-                    resources:ReleaseResource("")
+                    resources:ReleaseResource(auStack_c4)
                     iVar4 = i_stk_14
                 end
                 native_arg_sequence_1 = false
@@ -511,7 +509,7 @@ function ProcessGameRulesGood(quest)
                     if bVar3 then
                         return
                     end
-                    -- TODO(native): *(undefined4 *)(this + 100) = 1;
+                    quest:SetStateInt("MissionFailed", 1)
                 end
                 if quest:GetStateBool("MissionSucceeded") then
                     alive = not quest:IsActiveThreadTerminating()
@@ -521,14 +519,14 @@ function ProcessGameRulesGood(quest)
                     end
                     quest:GiveHeroExperience(quest:ReadGlobalGameData(0xd68))
                     r4 = quest:GetThingWithScriptName("OrchardFarmWhisper")
-                    -- TODO(native): (auStack_c4 + 4) = resources:StartMovie("");
+                    auStack_c4 = resources:StartMovie("")
                     ppuStack_9c = resources:StartMovie("")
-                    puVar10 = "" + 4
+                    puVar10 = auStack_c4 + 4
                     pCVar7 = quest:GetHero()
                     resources:TryAcquire(puVar10, pCVar7, 4)
                     resources:TryAcquire(ppuStack_9c, r4, 4)
                     -- TODO(native): StdMap_Construct_API(auStack_a8 + 4);
-                    puVar10 = "" + 4
+                    puVar10 = auStack_c4 + 4
                     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(auStack_a8 + 4),&CStack_cc);
                     -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);
                     pOther_00 = ppuStack_9c
@@ -572,19 +570,19 @@ function ProcessGameRulesGood(quest)
                     until not (not bVar3)
                     ::LAB_00dd1a93::
                     resources:ReleaseResource(ppuStack_9c)
-                    resources:ReleaseResource(("" + 4))
+                    resources:ReleaseResource(auStack_c4)
                     return
                 end
-                if *(this + 100) ~= 0 then
+                if quest:GetStateInt("MissionFailed") ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
                         return
                     end
                     ReplaceQuestCards(quest)
-                    quest:RemoveQuestInfoElement(u_stk_b8)
+                    quest:RemoveQuestInfoElement(nil --[[missing]])
                     bVar12 = true
-                    pMessage = (this + *(this + 100) * 4 + 0x68)
+                    pMessage = quest:GetStateString(("FailReasons_" .. quest:GetStateInt("MissionFailed")))
                     bVar3 = true
                     pCVar8 = quest:GetActiveQuestName()
                     quest:SetQuestAsFailed(pCVar8, bVar3, "CS_ORCHARD_GOOD_WHISPER_FRONT", (pMessage ~= 0))
@@ -604,28 +602,27 @@ end
 
 function DoCutsceneIfRequired(quest)
     local resources = quest:RetailResources()
-    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, amStack_5c, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, piVar6, r1, r2, uVar5
+    local aCStack_10, aCStack_20, aCStack_30, aCStack_40, amStack_5c, auStack_90, bVar2, iVar8, pCStack_70, pCVar3, pCVar7, piVar6, r1, r2, uVar5
     local alive = true
-    -- TODO(native): auStack_90._4_4_ = 0;
+    auStack_90 = nil
     if quest:GetStateInt("HeroTeam") == 1 then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
-            -- LAB_00dd03b8: (native jump target)
             return
         end
         pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
         piVar6 = *(pCVar3 + 0x8)
         uVar5 = *(pCVar3 + 0x4)
-        if 0x0 == piVar6 then goto LAB_00dcfb65 end
+        if auStack_90 == piVar6 then goto LAB_00dcfb65 end
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+        if bVar2 then return end
         pCVar3 = quest:GetThingWithScriptName("GuardTeamSpawn")
         piVar6 = *(pCVar3 + 0x8)
         uVar5 = *(pCVar3 + 0x4)
-        if 0x0 == piVar6 then goto LAB_00dcfb65 end
+        if auStack_90 == piVar6 then goto LAB_00dcfb65 end
     end
     -- TODO(native): auStack_90._4_4_ = uVar5;
     if piVar6 ~= nil then
@@ -636,8 +633,7 @@ function DoCutsceneIfRequired(quest)
     bVar2 = not alive
     repeat
         if bVar2 then
-            -- LAB_00dcfe47: (native jump target)
-            -- TODO(native): auStack_90._4_4_ = 0;
+            auStack_90 = nil
             return
         end
         bVar2 = quest:IsRegionLoaded("OrchardFarm")
@@ -646,26 +642,26 @@ function DoCutsceneIfRequired(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                if true then return end  -- TODO(native): goto LAB_00dcfe47
-                -- TODO(native): goto LAB_00dcfe3f
+                auStack_90 = nil
+                return
             end
             bVar2 = quest:IsRegionLoaded("OrchardFarm")
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+        if bVar2 then return end
         pCVar3 = quest:GetHero()
-        bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar3, nil --[[missing]], auStack_90)
+        bVar2 = quest:IsDistanceBetweenThingsUnder(auStack_90, pCVar3, 10.0)
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
-            if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+            if bVar2 then return end
             if quest:GetStateInt("HeroTeam") == 1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+                if bVar2 then return end
                 r1 = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                r2 = quest:GetNearestWithScriptName(nil --[[missing]], "GuardTeamMember")
+                r2 = quest:GetNearestWithScriptName(pCVar3, "GuardTeamMember")
                 amStack_5c = resources:StartMovie("")
                 aCStack_30 = resources:StartMovie("")
                 aCStack_20 = resources:StartMovie("")
@@ -702,7 +698,7 @@ function DoCutsceneIfRequired(quest)
             else
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+                if bVar2 then return end
                 pCVar3 = quest:GetThingWithScriptName("OF_MainGates")
                 quest:OpenDoor(pCVar3)
                 amStack_5c = resources:StartMovie("")
@@ -730,11 +726,11 @@ function DoCutsceneIfRequired(quest)
             bVar2 = false
             pCVar3 = quest:GetThingWithScriptName("OFFarmhouseDoor")
             quest:SetThingAsUsable(pCVar3, bVar2)
-            -- TODO(native): goto LAB_00dd03b8
+            return
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+        if bVar2 then return end
         quest:SetStateBool("HeroAtWrongEntrance", true)
         pCVar3 = quest:GetThingWithScriptName("OF_MainGates")
         -- TODO(native): CloseDoor is not a ForgeFSE binding
@@ -749,25 +745,25 @@ function DoCutsceneIfRequired(quest)
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
-            if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+            if bVar2 then return end
             bVar2 = quest:MsgIsGameInfoClickedPast()
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+        if bVar2 then return end
         bVar2 = quest:IsRegionLoaded("OrchardFarm")
         if bVar2 then
             repeat
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+                if bVar2 then return end
                 bVar2 = quest:IsRegionLoaded("OrchardFarm")
             until not (bVar2)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
-        if bVar2 then return end  -- TODO(native): goto LAB_00dd03b8
+        if bVar2 then return end
         quest:SetStateBool("HeroAtWrongEntrance", false)
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -845,6 +841,14 @@ function DoMultiplierCutscene(quest)
     local resources = quest:RetailResources()
     local appuStack_20, bVar4, local_10, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, puStack_38
     local alive = true
+    local function __region_LAB_00dd1e3d()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:ReleaseResource(appuStack_20)
+    end
+    local function __region_LAB_00dd1e53()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:ReleaseResource(appuStack_20)
+    end
     local_10 = resources:NewResource()
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
@@ -898,17 +902,13 @@ function DoMultiplierCutscene(quest)
                     if not bVar4 then
                         -- TODO(native): goto LAB_00dd1d98
                     end
-                    -- LAB_00dd1e3d: (native jump target)
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(appuStack_20)
+                    __region_LAB_00dd1e3d()
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
-                    -- LAB_00dd1e53: (native jump target)
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(appuStack_20)
+                    __region_LAB_00dd1e53()
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
@@ -934,18 +934,18 @@ function DoMultiplierCutscene(quest)
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    if bVar4 then return end  -- TODO(native): goto LAB_00dd1e53
+                    if bVar4 then __region_LAB_00dd1e53(); goto LAB_00dd1e95 end
                     bVar4 = quest:MsgIsTutorialClickedPast()
                     while not bVar4 do
                         alive = quest:NewScriptFrame()
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
-                        if bVar4 then return end  -- TODO(native): goto LAB_00dd1e53
+                        if bVar4 then __region_LAB_00dd1e53(); goto LAB_00dd1e95 end
                         bVar4 = quest:MsgIsTutorialClickedPast()
                     end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    if bVar4 then return end  -- TODO(native): goto LAB_00dd1e3d
+                    if bVar4 then __region_LAB_00dd1e3d(); goto LAB_00dd1e95 end
                 end
                 quest:SetStateBool("ShownCombatMultiplierTutorial", true)
             else
@@ -955,11 +955,11 @@ function DoMultiplierCutscene(quest)
                     if quest:GetStateInt("HeroTeam") == 1 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
-                        if bVar4 then return end  -- TODO(native): goto LAB_00dd1e3d
+                        if bVar4 then __region_LAB_00dd1e3d(); goto LAB_00dd1e95 end
                     else
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
-                        if bVar4 then return end  -- TODO(native): goto LAB_00dd1e53
+                        if bVar4 then __region_LAB_00dd1e53(); goto LAB_00dd1e95 end
                     end
                     -- TODO(native): goto LAB_00dd1d98
                 end

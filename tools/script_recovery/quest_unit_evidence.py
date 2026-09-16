@@ -32,7 +32,7 @@ LAYOUTS = ROOT / 'ghidra_out/struct_layouts_egor.tsv'
 EGO_R = ROOT / 'debug_build/ego_r.exe'
 KIND = {'bool': 'Bool', 'long': 'Int', 'int': 'Int', 'unsigned long': 'Int', 'unsigned int': 'Int',
         'short': 'Int', 'unsigned short': 'Int', 'char': 'Int', 'unsigned char': 'Int', 'float': 'Float',
-        'CTimer': 'Int'}
+        'CTimer': 'Int', 'CCharString': 'String', 'CWideString': 'String'}
 LIFECYCLE = {'RegisterMain', 'Main', 'Init', 'OnPersist', 'destructor'}
 
 
@@ -75,6 +75,8 @@ def retail_size(layouts, name):
 def expand_member(layouts, prefix, offset, ftype, fields, skipped, things, pdb_offset):
     """Map one member (scalar, thing, array or nested struct) onto retail offsets."""
     kind = KIND.get(ftype)
+    if kind is None and (ftype.startswith('<unnamed-type-') or re.fullmatch(r'E[A-Z]\w+', ftype)):
+        kind = 'Int'   # anonymous / named enums are 4-byte ints
     if kind is not None:
         fields[hex(offset)] = [prefix, kind]
         return
@@ -84,9 +86,9 @@ def expand_member(layouts, prefix, offset, ftype, fields, skipped, things, pdb_o
     array = ARRAY.match(ftype)
     if array:
         element, count = array.group(1), int(array.group(2))
-        element_size = 4 if KIND.get(element) or element in ('CCharString', 'CWideString') else (
+        element_size = 4 if KIND.get(element) else (
             12 if element in THING_TYPES else retail_size(layouts, element))
-        if element_size is None or element in ('CCharString', 'CWideString'):
+        if element_size is None:
             skipped.append({'offset': hex(offset), 'pdbOffset': hex(pdb_offset), 'type': ftype, 'name': prefix})
             return
         for index in range(count):

@@ -23,12 +23,23 @@ COMMENT_GOTO = re.compile(r'^(?P<ind>[ \t]*)-- TODO\(native\): goto (?P<label>LA
 INLINE_GOTO = re.compile(r'^(?P<ind>[ \t]*)if true then return end  -- TODO\(native\): goto (?P<label>LAB_[0-9a-f]+)\s*$')
 
 
+GOTO_LINE = re.compile(r'^\s*goto (LAB_[0-9a-f]+)\s*$')
+
+
+def _terminal(s):
+    """`return` or a plain `goto LAB_y` ends a straight-line region."""
+    if s == 'return':
+        return 'return'
+    m = GOTO_LINE.match(s)
+    return ('goto', m.group(1)) if m else None
+
+
 def _region_end(lines, start):
-    """Index of the `return` that ends the straight-line region starting at label line `start`."""
+    """Index of the `return`/`goto` that ends the straight-line region starting at label line `start`."""
     j = start + 1
     while j < len(lines):
         s = lines[j].strip()
-        if s == 'return':
+        if _terminal(s):
             return j
         if LABEL_LINE.match(lines[j]):
             return _region_end(lines, j)
@@ -45,11 +56,11 @@ def _regions(lines):
         m = LABEL_LINE.match(line)
         if not m:
             continue
-        body, j, ok = [], i + 1, False
+        body, j, ok, terminal = [], i + 1, False, None
         while j < len(lines):
             s = lines[j].strip()
-            if s == 'return':
-                ok = True
+            if _terminal(s):
+                ok, terminal = True, _terminal(s)
                 break
             if not s or s.startswith('-- TODO(native): goto'):
                 pass
@@ -59,7 +70,7 @@ def _regions(lines):
                 inner = _region_end(lines, j)
                 if inner is None:
                     break
-                j, ok = inner, True
+                j, ok, terminal = inner, True, _terminal(lines[inner].strip())
                 break
             elif CONTROL.match(lines[j]) or s.startswith('--'):
                 if s.startswith('-- TODO(native)') or s.startswith('-- LAB_'):
@@ -69,9 +80,24 @@ def _regions(lines):
             else:
                 body.append(('stmt', s))
             j += 1
-        if ok and body:
-            regions[m.group('label')] = (i, j, body)
+        if ok and (body or terminal == 'return'):
+            regions[m.group('label')] = (i, j, body, terminal)
     return regions
+
+
+def _call(label, regions):
+    """Call of the hoisted region, or nothing when the region is a bare `return`."""
+    return '' if not regions[label][2] else f'{_name(label, regions)}(); '
+
+
+def _exit(label, regions):
+    """Lua statement that reproduces the region's terminal at a call site."""
+    terminal = regions[label][3]
+    return 'return' if terminal == 'return' else f'goto {terminal[1]}'
+
+
+def _name(label, regions):
+    return f'__cleanup_{label}' if regions[label][3] == 'return' else f'__region_{label}'
 
 
 def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
@@ -106,18 +132,20 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
             lm = LABEL_LINE.match(line)
             if lm and lm.group('label') in wanted:
                 ind = lm.group('ind'); label = lm.group('label')
-                new_lines.append(f'{ind}__cleanup_{label}()')
-                new_lines.append(f'{ind}return')
-                i = regions[label][1] + 1          # skip through the `return`
+                if regions[label][2]:
+                    new_lines.append(f'{ind}{_name(label, regions)}()')
+                new_lines.append(f'{ind}{_exit(label, regions)}')
+                i = regions[label][1] + 1          # skip through the terminal
                 continue
             m = EARLY_RETURN.match(line)
             if m and m.group('label') in wanted:
-                cond = m.group('cond') or ''
-                new_lines.append(f"{m.group('ind')}{cond}__cleanup_{m.group('label')}(); return{' end' if cond else ''}")
+                cond = m.group('cond') or ''; label = m.group('label')
+                new_lines.append(f"{m.group('ind')}{cond}{_call(label, regions)}{_exit(label, regions)}{' end' if cond else ''}")
                 i += 1; continue
             m = INLINE_GOTO.match(line) or COMMENT_GOTO.match(line)
             if m and m.group('label') in wanted:
-                new_lines.append(f"{m.group('ind')}__cleanup_{m.group('label')}(); return")
+                label = m.group('label')
+                new_lines.append(f"{m.group('ind')}{_call(label, regions)}{_exit(label, regions)}")
                 i += 1; continue
             new_lines.append(line)
             i += 1
@@ -128,7 +156,9 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
         defs = []
         for label in sorted(wanted):
             body = expand(label)
-            defs.append(f'    local function __cleanup_{label}()')
+            if not body:
+                continue
+            defs.append(f'    local function {_name(label, regions)}()')
             defs.extend('        ' + s for s in body)
             defs.append('    end')
             report[label] = body

@@ -159,6 +159,8 @@ public class ExportTypedTranslationUnit extends GhidraScript {
 
     // register/stack provenance tags
     private static final String THIS = "THIS", GSI = "GSI", GSIVT = "GSIVT", PARENT = "PARENT", ME = "ME", MEVT = "MEVT";
+    private static final String MEMPTR = "MEMPTR", MEMPTRVT = "MEMPTRVT";
+    private int dataSites = 0;
 
     private String regName(Object o) { return (o instanceof Register) ? ((Register) o).getName() : null; }
 
@@ -226,6 +228,9 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         FunctionDefinitionDataType def = null;
                         if (GSIVT.equals(tag)) def = slotDefs.get(key);
                         else if (MEVT.equals(tag)) def = thingDefs.get(key);
+                        // a vtable fetched through an untagged pointer loaded from an object member: the Data
+                        // pointer of a CScriptThing (same slot layout); only the large thing-only slot numbers
+                        else if (MEMPTRVT.equals(tag) && disp >= 0x40 && thingDefs.containsKey(key)) { def = thingDefs.get(key); dataSites++; }
                         if (def != null && byValuePending > 0) {
                             FunctionDefinitionDataType bv = withByValueThings(def, byValuePending);
                             if (bv != null) { def = bv; byValueSites++; }
@@ -275,6 +280,8 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         else if (PARENT.equals(st) && disp == 0x40) tag = GSI;
                         else if (GSI.equals(st) && !hasDisp) tag = GSIVT;
                         else if (ME.equals(st) && !hasDisp) tag = MEVT;
+                        else if (MEMPTR.equals(st) && !hasDisp) tag = MEMPTRVT;
+                        else if (st == null && hasDisp && disp >= 4 && !sName.equals("ESP") && !sName.equals("EBP")) tag = MEMPTR;
                     } else if (mn.equals("LEA") && sName != null && THIS.equals(tags.get(sName)) && disp == 8) tag = ME;
                     if (tag != null) tags.put(d, tag); else tags.remove(d);
                     if (d.equals("ESP")) espDelta = 0;
@@ -336,7 +343,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             try { f.setCallingConvention("__thiscall"); } catch (Exception e) { }
             overrideCalls(f);
         }
-        println("Call-site overrides written: " + overrides + " (by-value CScriptThing sites: " + byValueSites + ")");
+        println("Call-site overrides written: " + overrides + " (by-value CScriptThing sites: " + byValueSites + ", Data-pointer thing sites: " + dataSites + ")");
         DecompInterface decompiler = new DecompInterface();
         decompiler.setSimplificationStyle("decompile");
         decompiler.openProgram(currentProgram);

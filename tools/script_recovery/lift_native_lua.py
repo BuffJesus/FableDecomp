@@ -39,6 +39,7 @@ from native_goto_scopes import supported_jumps  # noqa: E402
 from native_subregisters import fold_literal_slices, fold_unsigned_three_byte_casts  # noqa: E402
 from native_constant_conditions import fold_decisive_condition  # noqa: E402
 from native_conditions import conditional_call_assignment  # noqa: E402
+from native_condition_tree import parse as parse_condition_tree, has_call_assignment, needs_tree  # noqa: E402
 from native_termination_expressions import fold_inline_termination  # noqa: E402
 from native_presented_items import recover_presented_item_comparison  # noqa: E402
 from native_teddy_distance import recover_teddy_distance, recover_theresa_distance, recover_barrel_distance  # noqa: E402
@@ -1738,6 +1739,55 @@ class Lifter:
             self.out = new.split("\n")
             self.todo = [t for t in self.todo if not t.startswith("collapse the StartScriptingEntity")]
 
+    prelude_only = False
+    last_condition = None
+
+    def conditional_prelude(self, role, parts):
+        """Emit a conditional call assignment as a value (its condition variable) without opening
+        the `if` block; used for nested short-circuit operands."""
+        control, left, op, target, owner, name, args, right = parts
+        saved, self.prelude_only = self.prelude_only, True
+        try:
+            self.statement(role, self._conditional_line(parts))
+        finally:
+            self.prelude_only = saved
+
+    @staticmethod
+    def _conditional_line(parts):
+        control, left, op, target, owner, name, args, right = parts
+        return f'{control} (({left}) {op} ({target} = {owner}{name}({args}), {right})) {{'
+
+    def new_condition_name(self):
+        while True:
+            self.conditions += 1
+            name = f"__native_condition_{self.conditions}"
+            if name not in self.source_names and name not in self.locals:
+                return name
+
+    def lower_condition_tree(self, role, node):
+        """Render a parsed condition tree (native_condition_tree.parse) to a Lua expression, emitting
+        the guarded statements that C's short-circuit evaluation implies."""
+        kind = node[0]
+        if kind == 'leaf':
+            condition = self.expr(node[1])
+            if self.kind_of(condition) == 'number' or re.fullmatch(r'-?\d+(?:\.\d+)?', condition):
+                condition = f'{condition} ~= 0'
+            return condition
+        if kind == 'seq':
+            for stmt in node[1]:
+                self.statement(role, stmt + ';')
+            return self.lower_condition_tree(role, node[2])
+        name = self.new_condition_name()
+        self.emit(f"{self.declare(name)} = {self.lower_condition_tree(role, node[1][0])}")
+        for operand in node[1][1:]:
+            self.emit(f"if {name} then" if kind == 'and' else f"if not {name} then")
+            self.indent += 1
+            self.emit(f"{name} = {self.lower_condition_tree(role, operand)}")
+            self.indent -= 1
+            self.emit("end")
+        self.kinds[name] = 'bool'
+        return name
+
     def statement(self, role: str, line: str) -> None:
         pseudo = RE_PSEUDO_CALL.match(line)
         if pseudo:
@@ -1748,7 +1798,8 @@ class Lifter:
             call = f'{name}({", ".join(lifted)})'
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
-                self.kinds[target] = 'thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') else 'number'
+                self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At')
+                                      else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool') else 'number')
             else:
                 self.emit(call)
             self.calls.append(name)
@@ -1954,6 +2005,12 @@ class Lifter:
             self.emit("if alive then")
             self.indent += 1
             return
+        m = RE_IF.match(line)
+        if m and has_call_assignment(m.group(1)) and needs_tree(m.group(1)):
+            condition = self.lower_condition_tree(role, parse_condition_tree(m.group(1)))
+            self.emit(f"if {condition} then")
+            self.indent += 1
+            return
         m = conditional_call_assignment(line)
         if m:
             control, left, op, target, owner, name, args, right = m
@@ -1977,6 +2034,12 @@ class Lifter:
                         self.emit(declaration)
                 self.emit("while true do")
                 self.indent += 1
+            # `(L && (c = f(), c != 0)) && (c = g(), c == 0)`: the left operand is itself a conditional
+            # call assignment; lower it first into its own condition variable (if-statements only).
+            inner = conditional_call_assignment(f'if ({left}) {{') if control == "if" else None
+            if inner:
+                self.conditional_prelude(role, inner)
+                left = self.last_condition
             self.emit(f"{self.declare(condition)} = {self.expr(left)}")
             if target not in self.locals:
                 previous = self.temps.get(target)
@@ -2011,13 +2074,22 @@ class Lifter:
             self.emit(f"{condition} = {self.expr(right)}")
             self.indent -= 1
             self.emit("end")
+            self.last_condition = condition
             if control == "while":
                 self.emit(f"if not {condition} then break end")
+            elif self.prelude_only:
+                pass
             else:
                 self.emit(f"if {condition} then")
                 self.indent += 1
             return
         m = RE_IF.match(line)
+        if m and has_call_assignment(m.group(1)):
+            # nested / mixed short-circuit conditions with embedded call assignments
+            condition = self.lower_condition_tree(role, parse_condition_tree(m.group(1)))
+            self.emit(f"if {condition} then")
+            self.indent += 1
+            return
         if m:
             condition = self.expr(m.group(1))
             if self.kind_of(condition) == 'number' or re.fullmatch(r'-?\d+(?:\.\d+)?', condition):

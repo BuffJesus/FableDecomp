@@ -135,8 +135,80 @@ RE_LOCAL_COUNTED_RELEASE = re.compile(
     r'[ \t]*\(\*\(code \*\)\1\[1\]\)\(\);\s*\r?\n[ \t]*operator_delete\(\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 
 
+RE_LOCAL_COUNTED_RELEASE2 = re.compile(
+    r'^[ \t]*if \((\w+) != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\1 = \*\1 \+ -1;\s*\r?\n[ \t]*if \(\*\1 == 0\) \{\s*\r?\n'
+    r'[ \t]*\(\*\(code \*\)\1\[1\]\)\(\);\s*\r?\n[ \t]*operator_delete\(\1\);\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+RE_SLOT_ZERO = re.compile(r'^[ \t]*(?:\w+\._\d+_4_ = 0;|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+ = \(int \*\)0x0;)[ \t]*\r?\n', re.M)
+
+
+RE_TANGLED_RELEASE_A = re.compile(
+    r'^([ \t]*)if \(\((\w+) == \(int \*\)0x0\) \|\| \(\*\2 = \*\2 \+ -1, \*\2 != 0\)\)\s*\r?\n[ \t]*goto (LAB_\w+);\s*\r?\n'
+    r'[ \t]*\(\*\(code \*\)\2\[1\]\)\(\);\s*\r?\n[ \t]*goto (LAB_\w+);[ \t]*\r?\n', re.M)
+RE_TANGLED_RELEASE_B = re.compile(
+    r'^[ \t]*if \(\((\w+) != \(int \*\)0x0\) && \(\*\1 = \*\1 \+ -1, \*\1 == 0\)\) \{\s*\r?\n[ \t]*\(\*\(code \*\)\1\[1\]\)\(\);\s*\r?\n'
+    r'(LAB_\w+):\s*\r?\n[ \t]*operator_delete\(\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+
+
+RE_THING_PARTS = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<i>\w+) = \*\(int \*\*\)\((?P<src>\w+) \+ (?:8|0x8)\);[ \t]*\r?\n'
+    r'[ \t]*(?P<d>\w+) = \*\(undefined4 \*\)\((?P=src) \+ (?:4|0x4)\);[ \t]*\r?\n'
+    r'[ \t]*if \((?P<dst>\w+) == (?P=i)\) goto (?P<label>LAB_[0-9a-f]+);[ \t]*\r?\n', re.M)
+
+
+def fold_tangled_thing_assign(text: str) -> str:
+    """`dst = src` (CScriptThing::operator=) inlined and then split by the decompiler across labels:
+    parts of src are loaded, `if (dst.Info == src.Info) goto DONE`, the old Info is released (with a
+    label inside the delete block), the parts are stored, `DONE:`. Everything up to DONE is the
+    assignment."""
+    while (m := RE_THING_PARTS.search(text)):
+        label = m.group('label')
+        done = re.search(r'^[ \t]*' + label + r':[ \t]*\r?\n', text[m.end():], re.M)
+        if not done:
+            break
+        between = text[m.end():m.end() + done.start()]
+        names = {m.group('i'), m.group('d'), m.group('dst')}
+        ok = True
+        for line in between.split('\n'):
+            st = line.strip()
+            if not st or st in ('}', '{') or re.fullmatch(r'LAB_[0-9a-f]+:', st):
+                continue
+            if not any(re.search(r'\b' + re.escape(n) + r'\b', st) for n in names):
+                ok = False
+                break
+        if not ok:
+            break
+        inner_labels = re.findall(r'^[ \t]*(LAB_[0-9a-f]+):', between, re.M)
+        text = text[:m.start()] + f'{m.group("ind")}{m.group("dst")} = {m.group("src")};\n' + text[m.end() + done.end():]
+        for lab in inner_labels + [label]:
+            if len(re.findall(r'\b' + lab + r'\b', text)) == 0:
+                continue
+            # jumps that targeted a label inside the assignment now land after it
+            text = re.sub(r'\bgoto ' + lab + r';', f'goto {label};', text)
+        if re.search(r'\bgoto ' + label + r';', text):
+            text = text.replace(f'{m.group("ind")}{m.group("dst")} = {m.group("src")};\n',
+                                f'{m.group("ind")}{m.group("dst")} = {m.group("src")};\n{label}:\n', 1)
+    return text
+
+
+def drop_tangled_releases(text):
+    text = RE_TANGLED_RELEASE_A.sub(lambda m: f'{m.group(1)}goto {m.group(3)};\n', text)
+    for m in list(RE_TANGLED_RELEASE_B.finditer(text)):
+        label = m.group(2)
+        if len(re.findall(r'\b' + label + r'\b', text)) == 1:
+            text = text.replace(m.group(0), '', 1)
+    return text
+
+
+RE_COUNTED_ADDREF = re.compile(
+    r'^[ \t]*(\w+) = \*\(int \*\*\)\([^;]+\);[ \t]*\r?\n[ \t]*if \(\1 != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\1 = \*\1 \+ 1;\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+
+
 def drop_local_counted_releases(text):
-    return RE_LOCAL_COUNTED_RELEASE.sub('', text)
+    text = drop_tangled_releases(text)
+    text = RE_COUNTED_ADDREF.sub('', text)
+    text = RE_LOCAL_COUNTED_RELEASE.sub('', text)
+    text = RE_LOCAL_COUNTED_RELEASE2.sub('', text)
+    return RE_SLOT_ZERO.sub('', text)
 
 
 RE_BV_THING_CTOR = re.compile(
@@ -175,6 +247,8 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
     text = re.sub(r'\b(CScriptThing|CCharString|C3DVector|CRGBColour|CWideString|CRGBFloatColour)_bv\b', r'\1', text)
     text = fold_outgoing_stack_slots(text)
+    text = re.sub(r'\*\) \(', '*)(', text)
+    text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     return text
 
 
@@ -296,7 +370,7 @@ def _strip_addr(arg):
 # vtable pointers stored by inlined constructors (FSE: g_pCScriptGameResourceObjectScriptedThingBaseVTable,
 # g_pMovieObjectVTable, g_pCScriptThingVTable)
 RE_INLINE_CTOR = re.compile(
-    r'^(?P<ind>[ \t]*)(?:\*\(undefined \*\*\*\))?(?P<obj>&?\w+)(?:\[0\])? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|01238c8c);[ \t]*\r?\n'
+    r'^(?P<ind>[ \t]*)(?:\*\(undefined \*\*\*\))?(?P<obj>&?\w+)(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|01238c8c);[ \t]*\r?\n'
     r'(?:[ \t]*(?:\w+ = 0;|\w+ = \(\w+ \*\)0x0;|\w+\[\d\] = (?:\(\w+ \*\))?0x0;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
 
 
@@ -345,6 +419,7 @@ def fold_resource_objects(text, call_labels):
 
 
 SQUARED_DISTANCE = {0xCBE512}   # float __fastcall GetSquaredDistanceBetweenThings(a, b)
+DISTANCE_PREDICATES = {0xCBE2FF: 'IsDistanceBetweenThingsUnder', 0xCBE3EA: 'IsDistanceBetweenThingsOver'}   # bool __fastcall (a, b, float)
 
 
 def fold_engine_helpers(text, call_labels):
@@ -354,7 +429,25 @@ def fold_engine_helpers(text, call_labels):
         if target in SQUARED_DISTANCE:
             text = re.sub(re.escape(label) + r'\s*\(([^,;]+),([^;)]+)\)',
                           lambda m: f'ENGINE_SquaredDistance({_strip_addr(m.group(1))}, {m.group(2).strip()})', text)
+        elif target in DISTANCE_PREDICATES:
+            name = DISTANCE_PREDICATES[target]
+            text = re.sub(re.escape(label) + r'\s*\(([^,;]+),\s*([^,;]+),\s*([^;)]+)\)',
+                          lambda m, name=name: f'ENGINE_{name}({_strip_addr(m.group(1))}, {_strip_addr(m.group(2))}, {m.group(3).strip()})', text)
     return text
+
+
+RE_INLINE_STRNCMP = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<n>\w+) = (?:0x[0-9a-f]+|\d+);\s*\r?\n[ \t]*(?P<b>\w+) = true;\s*\r?\n'
+    r'[ \t]*(?P<p1>\w+) = (?P<l1>"[^"]*");\s*\r?\n[ \t]*(?P<p2>\w+) = (?P<l2>"[^"]*");\s*\r?\n'
+    r'[ \t]*do \{\s*\r?\n[ \t]*if \((?P=n) == 0\) break;\s*\r?\n[ \t]*(?P=n) = (?P=n) \+ -1;\s*\r?\n'
+    r'[ \t]*(?P=b) = \*(?P=p1) == \*(?P=p2);\s*\r?\n[ \t]*(?P=p1) = (?P=p1) \+ 1;\s*\r?\n[ \t]*(?P=p2) = (?P=p2) \+ 1;\s*\r?\n'
+    r'[ \t]*\} while \((?P=b)\);[ \t]*\r?\n', re.M)
+
+
+def fold_inline_strncmp(text: str) -> str:
+    """The compiler inlines `memcmp` of two string literals (a CCharString compare whose buffer is
+    null falls back to comparing "" against the literal): the result is a constant."""
+    return RE_INLINE_STRNCMP.sub(lambda m: f'{m.group("ind")}{m.group("b")} = {str(m.group("l1") == m.group("l2")).lower()};\n', text)
 
 
 def fold_name_compare(text):
@@ -425,6 +518,7 @@ def rename_scalar_stack_locals(text):
 
 def lower_after_annotate(text):
     text = fold_name_compare(text)
+    text = fold_inline_strncmp(text)
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
     text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
                   lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
@@ -484,6 +578,14 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     for m in set(re.findall(r'^[ \t]*(\w+) = \*\(int \*\*\)\(this \+ (4|0x40)\);', text, re.M)):
         text = re.sub(r'^([ \t]*)(\w+) = \*' + re.escape(m[0]) + r';', lambda mm, off=m[1]: f'{mm.group(1)}{mm.group(2)} = **(int **)(this + {off});', text, flags=re.M)
     text = fold_by_value_things(text, getattr(spec, 'code_range', None))
+    text = fold_tangled_thing_assign(text)
+    if spec.entity:
+        # the entity's own CScriptThing lives at this+8: its Data pointer (this+0xc) passed as an argument is `me`
+        text = re.sub(r'\*\(int \*\)\(this \+ (?:0xc|12)\)', '(CScriptThing *)(this + 8)', text)
+    # vcall through a thing's Data pointer: (**(code **)(**(int **)(E + OFF+4) + SLOT))( == vcall on the thing at E + OFF
+    text = re.sub(r'\(\*\*\(code \*\*\)\(\*\*\(int \*\*\)\(([^;()]*?(?:\([^;()]*\)[^;()]*?)*) \+ (0x[0-9a-f]+|\d+)\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\((?:\*\(int \*\*\)\(\1 \+ \2\)(?:,\s*)?)?',
+                  lambda m: m.group(0) if (m.group(1).endswith('this') and int(m.group(2), 0) in (4, 0x40)) or (m.group(1).endswith('0x14)') and int(m.group(2), 0) == 0x40)
+                  else f'(**(code **)(*(int *)({m.group(1)} + {hex(int(m.group(2), 0) - 4)}) + {m.group(3)}))(', text)
     text = fold_counted_pointer_assign(text)
     text = fold_counted_pointer_release(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
@@ -568,12 +670,16 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             stride = a['stride']
             for member_off, (mname, kind) in a['members'].items():
                 absolute = a['base'] + member_off
-                key = f'__key("{a["name"]}_" .. {{idx}} .. "_{mname}")'
-                idx_form = r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|\w+) \* ' + off_re(stride)
+                key = f'__key("{a["name"]}_" .. {{idx}} .. "_{mname}")' if mname else f'__key("{a["name"]}_" .. {{idx}})'
+                idx_form = r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* ' + off_re(stride)
                 pat_store = re.compile(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\) =\s*([^;]+);', re.M)
                 text = pat_store.sub(lambda m, k=key, kind=kind, tag=tag: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
                 pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\)')
                 text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
+                if kind == 'String':
+                    for pat in (r'\((?:CWideString|CCharString) \*\)\(' + base + r' \+ ' + idx_form + r' \+ ' + off_re(absolute) + r'\)',
+                                r'\((?:CWideString|CCharString) \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\)'):
+                        text = re.sub(pat, lambda m, k=key, tag=tag: f'{tag}STATE_GetString({k.format(idx=m.group("idx"))})', text)
             # scalar sub-arrays with a trailing byte index: *(T *)(BASE + ABS + IDX * 4)  (Teams[0].StateCounter[i])
             for member_off, (mname, kind) in a['members'].items():
                 sub = re.match(r'(.+)_(\d+)$', mname)
@@ -581,12 +687,12 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                     continue
                 absolute = a['base'] + member_off
                 key = f'__key("{a["name"]}_0_{sub.group(1)}_" .. {{idx}})'
-                pat_store = re.compile(r'^([ 	]*)\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\) =\s*([^;]+);', re.M)
+                pat_store = re.compile(r'^([ 	]*)\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* 4\) =\s*([^;]+);', re.M)
                 text = pat_store.sub(lambda m, k=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
-                pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>\w+) \* 4\)')
+                pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ (?P<idx>(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* 4\)')
                 text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
             # element address taken: IDX * STRIDE + BASE + PARENT  -> array pointer value (index)
-            text = re.sub(r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|\w+) \* ' + off_re(stride) + r' \+ ' + off_re(a['base']) + r' \+ ' + base,
+            text = re.sub(r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* ' + off_re(stride) + r' \+ ' + off_re(a['base']) + r' \+ ' + base,
                           lambda m, a=a: f'__element("{a["name"]}", {m.group("idx")})', text)
             for index in range(a['count']):
                 text = re.sub(r'(?:\(int\))?\(' + base + r' \+ ' + off_re(a['base'] + index * stride) + r'\)',
@@ -672,6 +778,19 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(r'Vector_PushBack_ScriptThing\(\(void \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*([^;]+)\);',
                           lambda m, name=name, tag=tag: f'{tag}LIST_Push("{name}", {m.group(1).strip()});', text)
 
+    # 3b'. CCharString members: construct / assign / read / destroy
+    string_families = [(r'this', spec.self_fields, 'ENTITY' if spec.entity else 'QUEST')]
+    if spec.entity:
+        string_families.append((parent, spec.parent_fields, 'QUEST'))
+    for base, fields, tag in string_families:
+        for off, (name, kind) in fields.items():
+            if kind != 'String':
+                continue
+            member = r'\(CCharString \*\)\(' + base + r' \+ ' + off_re(off) + r'\)'
+            text = re.sub(r'^([ \t]*)CCharString::(?:operator=|CCharString)\(' + member + r',\s*([^;]+?)(?:,\s*-1)?\);',
+                          lambda m, name=name, tag=tag: f'{m.group(1)}{tag}STATE_SetString("{name}", {m.group(2).strip()});', text, flags=re.M)
+            text = re.sub(r'^[ \t]*CCharString::~CCharString\(' + member + r'\);[ \t]*\r?\n', '', text, flags=re.M)
+            text = re.sub(member, f'{tag}STATE_GetString("{name}")', text)
     # 3c'. helpers returning a CScriptThing through a hidden pointer: Ghidra drops the pointer push, so the
     # call reads `Helper(this);` and the result is the stack object whose Data (`X._4_4_`) is used next.
     hidden = {label for label, target in getattr(spec, 'call_labels', {}).items() if target in getattr(spec, 'hidden_thing_returns', set())}
@@ -757,6 +876,23 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\) =\s*([^;]+);',
                               lambda m, key=key, kind=kind: f'{m.group(1)}QUESTSTATE_Set{kind}({key}, {_lit(m.group(2), kind)});', text, flags=re.M)
                 text = re.sub(r'\*\(' + TYPE + r' \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', f'QUESTSTATE_Get{kind}({key})', text)
+            for member_off, (mname, kind) in a['members'].items():
+                sub = re.match(r'(.+)_0$', mname)
+                if not sub or member_off != 0:
+                    continue
+                skey = f'__key("{a["name"]}_" .. {idx} .. "_{sub.group(1)}_" .. {{sidx}})'
+                pat = re.compile(r'^([ \t]*)(\w+) = \(int \*\)\(' + ptr + r' \+ (?P<sidx>[^;]+?) \* 4\);[ \t]*\r?\n', re.M)
+                pos = 0
+                while (m := pat.search(text, pos)):
+                    var, key = m.group(2), skey.format(sidx=m.group('sidx').strip())
+                    head, tail = text[:m.start()], text[m.end():]
+                    nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
+                    scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+                    scope = re.sub(r'^([ \t]*)\*' + re.escape(var) + r' = \*' + re.escape(var) + r' \+ (-?(?:0x[0-9a-f]+|\d+));',
+                                   lambda mm, key=key: f'{mm.group(1)}QUESTSTATE_SetInt({key}, QUESTSTATE_GetInt({key}) + {mm.group(2)});', scope, flags=re.M)
+                    scope = re.sub(r'\*' + re.escape(var) + r'\b', f'QUESTSTATE_GetInt({key})', scope)
+                    text = head + scope + rest
+                    pos = m.start()
             for pmember, pname in a.get('pointers', {}).items():
                 # *(T *)(*(int *)(MyTeam + EnemyTeam) + M) -> member M of Teams[Teams_<MyTeam>_EnemyTeam]
                 chained_idx = f'QUESTSTATE_GetInt(__key("{a["name"]}_" .. {idx} .. "_{pname}"))'
@@ -773,6 +909,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                         return out if out else m.group(0)
                     text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
                     text = re.sub(r'\(CScriptThing \*\)\(' + chained + r' \+ ' + off_re(member_off) + r'\)', recv, text)
+                    text = re.sub(r'(?<![\w*(])' + chained + r' \+ ' + off_re(member_off) + r'(?![\w])', recv, text)
             for member_off, tname in a['things'].items():
                 recv = f'QUESTTHING_Get(__key("{a["name"]}_" .. {idx} .. "_{tname}"))'
                 def vcall(m, recv=recv):
@@ -781,6 +918,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
                 text = re.sub(r'\*\(int \*\)\(' + ptr + r' \+ ' + off_re(member_off + 4) + r'\)', f'__thing_valid({recv})', text)
                 text = re.sub(r'\(CScriptThing \*\)\(' + ptr + r' \+ ' + off_re(member_off) + r'\)', recv, text)
+                # bare member address as a by-reference argument
+                text = re.sub(r'(?<![\w*(])' + ptr + r' \+ ' + off_re(member_off) + r'(?![\w])', recv, text)
                 text = re.sub(r'CScriptThing::operator=\(' + re.escape(recv) + r',\s*([^;]+)\);',
                               lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_" .. {idx} .. "_{tname}"), {m.group(1).strip()});', text)
     text = re.sub(r'\b(\d+(?:\.\d+)?)e\+?(-?\d+)\b', lambda m: repr(float(m.group(0))), text)
@@ -878,6 +1017,7 @@ def _expand_calls(text, name, render):
 
 def finish_lua(text: str) -> str:
     """Turn lowering pseudo-calls into Lua after the lifter has run."""
+    text = re.sub(r'ENGINE_(IsDistanceBetweenThings(?:Under|Over))\(', r'quest:\1(', text)
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)

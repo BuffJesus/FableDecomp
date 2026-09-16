@@ -7,6 +7,10 @@
   "vtable": "0x012DAF78",
   "master": {
     "fields": {
+      "0x4": [
+        "PostSavePosition",
+        "Int"
+      ],
       "0x8": [
         "HenchmanCommentaryState",
         "Int"
@@ -111,6 +115,10 @@
         "CondemnedManMeetsBodyGuardCutSceneFinished",
         "Bool"
       ],
+      "0x54": [
+        "TeddySolution",
+        "String"
+      ],
       "0x58": [
         "OrchardFarmRaidLastCompleted",
         "Int"
@@ -157,6 +165,10 @@
       ],
       "0x6c": [
         "DeliveredSoul",
+        "Int"
+      ],
+      "0x70": [
+        "CurrentHeroSoulsPosition",
         "Int"
       ],
       "0x74": [
@@ -407,6 +419,10 @@
         "MaxChickenKickingScore",
         "Int"
       ],
+      "0x104": [
+        "GHeroName",
+        "Int"
+      ],
       "0x108": [
         "TimeAdvancePointTriggered",
         "Bool"
@@ -546,12 +562,6 @@
     },
     "unmapped": [
       {
-        "offset": "0x4",
-        "pdbOffset": "0x4",
-        "type": "EGameflowPosition",
-        "name": "PostSavePosition"
-      },
-      {
         "offset": "0x3c",
         "pdbOffset": "0x3c",
         "type": "ArcheryOpenState",
@@ -562,12 +572,6 @@
         "pdbOffset": "0x40",
         "type": "ArcheryOpenState",
         "name": "ArcheryStateRequired"
-      },
-      {
-        "offset": "0x70",
-        "pdbOffset": "0x70",
-        "type": "EPlaceInHeroSouls",
-        "name": "CurrentHeroSoulsPosition"
       },
       {
         "offset": "0xdc",
@@ -586,12 +590,6 @@
         "pdbOffset": "0x100",
         "type": "ulong",
         "name": "StoryTellerToldSpecialStories"
-      },
-      {
-        "offset": "0x104",
-        "pdbOffset": "0x104",
-        "type": "EHeroNames",
-        "name": "GHeroName"
       },
       {
         "offset": "0x134",
@@ -698,6 +696,26 @@
         "MissionSucceeded",
         "Bool"
       ],
+      "0x64": [
+        "MissionFailed",
+        "Int"
+      ],
+      "0x68": [
+        "FailReasons_0",
+        "String"
+      ],
+      "0x6c": [
+        "FailReasons_1",
+        "String"
+      ],
+      "0x70": [
+        "FailReasons_2",
+        "String"
+      ],
+      "0x74": [
+        "FailReasons_3",
+        "String"
+      ],
       "0x78": [
         "HeroTeam",
         "Int"
@@ -709,6 +727,10 @@
       "0x80": [
         "RemindHeroOfObjectivesTimer",
         "Int"
+      ],
+      "0x84": [
+        "TextSystemScriptCode",
+        "String"
       ],
       "0x88": [
         "HeroMetWhisperBeforeFarm",
@@ -811,18 +833,6 @@
         "pdbOffset": "0x68",
         "type": "vector<CScriptThing,std::allocator<CScriptThing>_>",
         "name": "CrateList"
-      },
-      {
-        "offset": "0x64",
-        "pdbOffset": "0x7c",
-        "type": "<unnamed-type-MissionFailed>",
-        "name": "MissionFailed"
-      },
-      {
-        "offset": "0x68",
-        "pdbOffset": "0x80",
-        "type": "CWideString[4]",
-        "name": "FailReasons"
       }
     ],
     "arrays": [
@@ -832,9 +842,13 @@
         "base": "0x68",
         "stride": 4,
         "count": 4,
-        "members": {},
-        "things": {},
-        "pointers": {}
+        "members": {
+          "0x0": [
+            "",
+            "String"
+          ]
+        },
+        "things": {}
       },
       {
         "name": "Teams",
@@ -941,6 +955,14 @@
           "TeamRespawnTime",
           "Int"
         ],
+        "0x34": [
+          "TeamMemberName",
+          "String"
+        ],
+        "0x38": [
+          "TeamMemberDefName",
+          "String"
+        ],
         "0x3c": [
           "BanditsLeftID",
           "Int"
@@ -992,6 +1014,14 @@
         "0x30": [
           "TeamRespawnTime",
           "Int"
+        ],
+        "0x34": [
+          "TeamMemberName",
+          "String"
+        ],
+        "0x38": [
+          "TeamMemberDefName",
+          "String"
         ],
         "0x3c": [
           "BanditsLeftID",

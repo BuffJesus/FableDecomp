@@ -19,8 +19,7 @@ function Main(quest, me)
     local bVar2 = not alive
     repeat
         if bVar2 then
-            -- LAB_00dcddfe: (native jump target)
-            -- TODO(native): auStack_1c._4_4_ = 0;
+            r1 = nil
             return
         end
         bVar2 = quest:IsDistanceBetweenThingsUnder(me, r1, 3.0)
@@ -29,8 +28,8 @@ function Main(quest, me)
             bVar2 = not alive
             if bVar2 then
                 -- LAB_00dcddcf: (native jump target)
-                if true then return end  -- TODO(native): goto LAB_00dcddfe
-                -- TODO(native): goto LAB_00dcddf6
+                r1 = nil
+                return
             end
             -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding
             bVar2 = me:IsBeingCarriedBy("SCRIPT_NAME_HERO")
@@ -42,14 +41,13 @@ function Main(quest, me)
                     quest:SetMasterGameState("OFBRCratesStolen", true)
                     quest:RemoveThing(me, false, true)
                 end
-                -- LAB_00dcddbf: (native jump target)
                 return
             end
-            if bVar3 then return end  -- TODO(native): goto LAB_00dcddbf
+            if bVar3 then return end
             if not bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end  -- TODO(native): goto LAB_00dcddbf
+                if bVar4 then return end
                 bVar4 = true
             end
         else
@@ -75,7 +73,7 @@ function OnPersist(quest, context)
 end
 
 function OnPredicateFail(quest, me)
-    local cVar1, local_c
+    local bVar1, local_c
     local p0 = quest:GetStateListRef("CrateList")
     if p0 ~= quest:GetStateListEnd("CrateList") then
         while true do
@@ -85,16 +83,16 @@ function OnPredicateFail(quest, me)
             if local_c ~= nil then
                 -- TODO(native): *local_c = *local_c + 1;
             end
-            cVar1 = quest:GetFurthestWithScriptName(nil --[[missing]], nil --[[missing]])
-            if cVar1 ~= 0 then break end
-            local_c = nil
+            bVar1 = quest:GetFurthestWithScriptName(me, nil --[[missing]])
+            if bVar1 then break end
+            bVar1 = nil
             p0 = p0 + 0xc
             if p0 == quest:GetStateListEnd("CrateList") then
                 return
             end
         end
         -- TODO(native): std__vector__pop_back((void *)(*(int *)(this + 0x14) + 0x54),p0);
-        local_c = nil
+        bVar1 = nil
     end
 end
 
