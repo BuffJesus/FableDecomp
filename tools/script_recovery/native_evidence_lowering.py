@@ -265,7 +265,13 @@ def fold_by_value_things(text: str, code_range=None) -> str:
         text = text[:m.start()] + text[m.end():]
         use = re.search(r'^[ \t]*(\w+)\._0_4_ = in_stack_' + slot + r';[ \t]*\r?\n', text, re.M)
         if not use:
-            continue
+            # the slot staging may already have been substituted by an older `in_stack_X = value;` line
+            # (fold_outgoing_stack_slots): the first `_0_4_` reassembly after the constructor is this copy
+            window = text[m.start():]
+            near = re.search(r'^[ \t]*(\w+)\._0_4_ = [^;]+;[ \t]*\r?\n', window, re.M)
+            if not near or window[:near.start()].count('\n') > 8:
+                continue
+            use = near
         var = use.group(1)
         text = re.sub(r'^[ \t]*' + re.escape(var) + r'\._\d+_4_ = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
         text = re.sub(r'\b' + re.escape(var) + r'\b', src, text)
@@ -296,6 +302,12 @@ def normalise_typed_decompile(text: str) -> str:
     # a byte slice of a stack slot used as a scalar (`CStack_cc._3_1_ = call(); if (CStack_cc._3_1_ != 0)`)
     text = re.sub(r'\b(\w+)\._(\d+)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
+    # a float staged in a slot Ghidra typed as a CCharString array: `aCStack_1c[0] = (CCharString)(expr);`
+    # read back as `(float)aCStack_1c[0]` -> a plain scalar local
+    for m in list(re.finditer(r'^[ \t]*(\w+)\[0\] = \(CCharString(?:_bv)?\)', text, re.M)):
+        var = m.group(1)
+        text = re.sub(r'\b' + re.escape(var) + r'\[0\] = \(CCharString(?:_bv)?\)([^;]+);', r'f_' + var + r' = \1;', text)
+        text = re.sub(r'\(float\)' + re.escape(var) + r'\[0\]', 'f_' + var, text)
     return text
 
 
@@ -848,6 +860,18 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                     absolute = a['base'] + index * stride + pmember
                     text = re.sub(r'^([ \t]*)\*\(\w+ \*\*?\)\(' + base + r' \+ ' + off_re(absolute) + r'\) =\s*__element\("' + a['name'] + r'", (\d+)\);',
                                   lambda m, k=f'{a["name"]}_{index}_{pname}': f'{m.group(1)}QUESTSTATE_SetInt("{k}", {m.group(2)});', text, flags=re.M)
+            # temporaries holding an element address: substitute and drop the assignment
+            pat = re.compile(r'^[ \t]*(\w+) = (?:\(int \*\))?(__element\("' + a['name'] + r'", [^;]+\));[ \t]*\r?\n', re.M)
+            pos = 0
+            while (m := pat.search(text, pos)):
+                var, value = m.group(1), m.group(2)
+                head, tail = text[:m.start()], text[m.end():]
+                # the temporary holds the element address until it is reassigned (scalar reuse of the register)
+                nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
+                scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+                scope = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: value, scope)
+                text = head + scope + rest
+                pos = m.start()
             # pointer-to-member temporaries: P = (int *)(__element("A", I) + OFF); *P = *P + N / *P
             for member_off, (mname, kind) in a['members'].items():
                 pat = re.compile(r'^[ \t]*(\w+) = \(int \*\)\(__element\("' + a['name'] + r'", ([^;]+?)\) \+ ' + off_re(member_off) + r'\);[ \t]*\r?\n', re.M)
@@ -863,12 +887,6 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                     scope = re.sub(r'^([ \t]*)\*' + re.escape(var) + r' = ([^;]+);', lambda mm: f'{mm.group(1)}QUESTSTATE_Set{kind}({key}, {mm.group(2).strip()});', scope, flags=re.M)
                     scope = re.sub(r'\*' + re.escape(var) + r'\b', f'QUESTSTATE_Get{kind}({key})', scope)
                     text = text[:m.start()] + scope + tail[tail_end:]
-            # temporaries holding an element address: substitute and drop the assignment
-            for m in list(re.finditer(r'^[ \t]*(\w+) = (?:\(int \*\))?(__element\("' + a['name'] + r'", [^;]+\));\s*$', text, re.M)):
-                var, value = m.group(1), m.group(2)
-                if len(re.findall(r'^[ \t]*' + re.escape(var) + r' = ', text, re.M)) == 1:
-                    text = text.replace(m.group(0), '')
-                    text = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: value, text)
             # static index forms already expanded in evidence as scalar fields (Teams_0_MemberCount): lifter state map
         # 3b. Thing members
         for off, name in things.items():
@@ -1102,9 +1120,37 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'CScriptThing::operator=\(' + re.escape(recv) + r',\s*([^;]+)\);',
                               lambda m, a=a, idx=idx, tname=tname: f'QUESTTHING_Set(__key("{a["name"]}_" .. {idx} .. "_{tname}"), {m.group(1).strip()});', text)
     text = re.sub(r'\b(\d+(?:\.\d+)?)e\+?(-?\d+)\b', lambda m: repr(float(m.group(0))), text)
+    # a remaining CScriptThing::operator= on a plain local is a handle copy (members were lowered above)
+    text = re.sub(r'^([ \t]*)CScriptThing::operator=\(\(CScriptThing \*\)(\w+),\s*\((?:int|CScriptThing \*)\)(\w+)\);', r'\1\2 = \3;', text, flags=re.M)
     text = drop_local_counted_releases(text)
+    text = drop_dead_local_stores(text)
     text = rename_scalar_stack_locals(text)
     return text, diag
+
+
+RE_DEAD_STORE = re.compile(r'^[ \t]*(this_\d+|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+|[a-z]{1,5}Var\d+(?:_\d+)?)(?:\[0\])? = ([^;]+);[ \t]*\r?\n', re.M)
+
+
+def drop_dead_local_stores(text: str) -> str:
+    '''Destructor-selection aliases (`this_00 = &CStack_18;`), by-value staging of `this`
+    (`CStack_4 = (CCharString)this;`) and inlined-constructor residue (`ppuStack_80[0] = 0;`) survive the
+    folds when their object was lowered away. A store to a local never read elsewhere, whose value is a
+    call-free expression, has no effect and is dropped (declarations are not references).'''
+    stores = {}
+    for m in RE_DEAD_STORE.finditer(text):
+        stores.setdefault(m.group(1), []).append(m)
+    for var, ms in stores.items():
+        if any(re.search(r'\w\s*\(', re.sub(r'\((?:\w+ \*+|\w+)\)', '', m.group(2))) or '=' in m.group(2) for m in ms):
+            continue      # a call or nested assignment: keep
+        store = re.compile(r'^[ \t]*' + re.escape(var) + r'(?:\[0\])? = [^;]+;[ \t]*\r?\n', re.M)
+        rest = store.sub('', text)
+        rest = re.sub(r'^[ \t]*[\w :*]+\b' + re.escape(var) + r'(?:\s*\[\d+\])?;[ \t]*\r?\n', '', rest, flags=re.M)   # declaration
+        # a CCharString destructor on the alias is the only "use" of a destructor-selection temporary
+        dtor = re.compile(r'^[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(' + re.escape(var) + r'\);[ \t]*\r?\n', re.M)
+        rest = dtor.sub('', rest)
+        if not re.search(r'\b' + re.escape(var) + r'\b', rest):
+            text = dtor.sub('', store.sub('', text))
+    return text
 
 
 GSI_RECEIVER = r'(?:(?:\(\w+ \*\*?\))?\*\((?:int|void|undefined4|CScriptThing_bv|CCharString_bv|C3DVector_bv) \*\*\)\(this \+ (?:4|0x40)\)|DAT_0143e8f8)'

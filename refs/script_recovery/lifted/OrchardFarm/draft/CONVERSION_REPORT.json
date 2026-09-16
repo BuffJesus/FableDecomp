@@ -99,10 +99,7 @@
             "parameters": [],
             "returnKind": null
           },
-          "todo": [
-            "unlifted: this_00 = &CStack_18;",
-            "unlifted: this_00 = &local_1c;"
-          ],
+          "todo": [],
           "calls": [
             "IsQuestActive",
             "AddQuestRegion",
@@ -147,7 +144,7 @@
             "MiniMapAllowRouteBetweenRegions",
             "MiniMapAllowRouteBetweenRegions"
           ],
-          "lines": 60,
+          "lines": 55,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -197,7 +194,6 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: pppuVar9 = appuStack_bc;",
             "unlifted: this_00 = *(int **)(this + 0x40);",
             "goto LAB_00dd0b1f",
             "label LAB_00dd0b11",
@@ -205,7 +201,6 @@
             "verify cleanup at LAB_00dd0b11 (lifted as early return)",
             "verify cleanup at LAB_00dd0b11 (lifted as early return)",
             "label LAB_00dd0b1f",
-            "unlifted: pppuVar9 = appuStack_ac;",
             "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti"
           ],
           "calls": [
@@ -349,9 +344,7 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: ppuStack_80[0] = 0;",
             "unlifted: this_00 = *(int **)(this + 0x40);",
-            "unlifted: aCStack_1c[0] = (CCharString)ENGINE_SquaredDistance(auStack_c4_p4, pCVar5);",
             "goto LAB_00dd1736",
             "label LAB_00dd1728",
             "label LAB_00dd1742",
@@ -398,6 +391,7 @@
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
+            "ENGINE_SquaredDistance",
             "GetHero",
             "ENGINE_SquaredDistance",
             "IsActiveThreadTerminating",
@@ -482,7 +476,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 258,
+          "lines": 257,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -614,7 +608,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 180,
+          "lines": 178,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -704,10 +698,9 @@
             "ENGINE_Concat",
             "ENGINE_Concat",
             "ENGINE_Concat",
-            "AddLineToConversation",
-            "SetTimer"
+            "AddLineToConversation"
           ],
-          "lines": 18,
+          "lines": 17,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -847,8 +840,7 @@
           },
           "todo": [
             "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
-            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);"
+            "unlifted: CScriptThing::operator=((CScriptThing *)&xStack_3c,(int)pCVar6);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1092,7 +1084,7 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: CStack_4 = (CCharString)this;"
+            "unlifted: xStack_4 = (CCharString)this;"
           ],
           "calls": [
             "SetStateInt",
@@ -1231,7 +1223,7 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: CStack_4 = (CCharString)this;",
+            "unlifted: xStack_8 = (CCharString)this;",
             "unlifted: this_00 = *(int **)(this + 4);"
           ],
           "calls": [
@@ -1310,19 +1302,11 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: this_00 = auStack_58;",
-            "unlifted: this_00 = auStack_54;",
-            "unlifted: this_00 = auStack_50;",
             "label LAB_00dce594",
-            "unlifted: CCharString::CCharString((CCharString *)(auStack_50 + 4),\"\",-1);",
             "label LAB_00dcebab",
             "unnamed field 0x2c",
-            "unlifted: pThing_06._4_4_ = uVar8;",
-            "unlifted: pThing_06._0_4_ = auStack_48;",
-            "unlifted: pThing_06._8_4_ = uVar10;",
-            "ResetCombatNearbyBreakOffRange: missing spThing (0 args for 1 params)",
             "EntityFollowThing: missing spTarget (3 args for 4 params)",
-            "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);"
+            "unlifted: bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)xStack_24);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1416,7 +1400,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 421,
+          "lines": 414,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1448,8 +1432,7 @@
           },
           "todo": [
             "label LAB_00dce00a",
-            "verify cleanup at LAB_00dce00a (lifted as early return)",
-            "unlifted: *piVar1 = *piVar1 + 1;"
+            "verify cleanup at LAB_00dce00a (lifted as early return)"
           ],
           "calls": [
             "GetName",
@@ -1472,13 +1455,14 @@
             "EntitySetAsDisplayingEmoteIcon",
             "SetDataString",
             "ENTITYSTATE_SetInt",
+            "QUESTSTATE_SetInt",
             "SetStateInt",
             "SetStateInt",
             "SetStateInt",
             "QUESTSTATE_SetInt",
             "ENTITYTHING_Set"
           ],
-          "lines": 50,
+          "lines": 47,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1526,7 +1510,7 @@
             "returnKind": null
           },
           "todo": [
-            "unlifted: pvStack_4 = this;"
+            "unlifted: xStack_4 = this;"
           ],
           "calls": [
             "QUESTSTATE_SetInt",
@@ -1535,7 +1519,7 @@
             "SetMasterGameState",
             "SetMasterGameState"
           ],
-          "lines": 12,
+          "lines": 11,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1608,7 +1592,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 30,
+          "lines": 28,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2006,42 +1990,42 @@
           "LAB_00dd0b11": [
             "pCVar6 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))",
-            "resources:DestroyMovie(appuStack_ac)",
+            "resources:DestroyMovie(xStack_9c)",
             "resources:DestroyActorMap(r2)",
-            "resources:ReleaseResource(appuStack_bc)",
-            "resources:ReleaseResource(aCStack_c4)"
+            "resources:ReleaseResource(xStack_ac)",
+            "resources:ReleaseResource(xStack_bc)"
           ],
           "LAB_00dd0b1f": [
             "pCVar6 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))",
-            "resources:DestroyMovie(appuStack_ac)",
+            "resources:DestroyMovie(xStack_9c)",
             "resources:DestroyActorMap(r2)",
-            "resources:ReleaseResource(appuStack_bc)",
-            "resources:ReleaseResource(aCStack_c4)"
+            "resources:ReleaseResource(xStack_ac)",
+            "resources:ReleaseResource(xStack_bc)"
           ],
           "LAB_00dd1728": [
-            "pCVar7 = 0x0",
-            "quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))",
-            "resources:DestroyMovie((r2 + 4))",
-            "resources:DestroyActorMap(ppuStack_9c)",
-            "resources:ReleaseResource(amStack_8c)",
-            "resources:ReleaseResource(CStack_cc)"
+            "pCVar5 = 0x0",
+            "quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))",
+            "resources:DestroyMovie(xStack_98)",
+            "resources:DestroyActorMap(xStack_88)",
+            "resources:ReleaseResource(xStack_7c)",
+            "resources:ReleaseResource(xStack_c0)"
           ],
           "LAB_00dd1736": [
-            "pCVar7 = 0x0",
-            "quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))",
-            "resources:DestroyMovie((r2 + 4))",
-            "resources:DestroyActorMap(ppuStack_9c)",
-            "resources:ReleaseResource(amStack_8c)",
-            "resources:ReleaseResource(CStack_cc)"
+            "pCVar5 = 0x0",
+            "quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))",
+            "resources:DestroyMovie(xStack_98)",
+            "resources:DestroyActorMap(xStack_88)",
+            "resources:ReleaseResource(xStack_7c)",
+            "resources:ReleaseResource(xStack_c0)"
           ],
           "LAB_00dd1e3d": [
             "quest:PauseAllNonScriptedEntities(false)",
-            "resources:DestroyMovie(appuStack_20)"
+            "resources:DestroyMovie(xStack_3c)"
           ],
           "LAB_00dd1e53": [
             "quest:PauseAllNonScriptedEntities(false)",
-            "resources:DestroyMovie(appuStack_20)"
+            "resources:DestroyMovie(xStack_3c)"
           ]
         },
         "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua": {
@@ -2102,7 +2086,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 68
+        "todo": 52
       }
     },
     {
@@ -2303,6 +2287,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 68
+    "todo": 52
   }
 }

@@ -13,11 +13,11 @@ end
 function Main(quest, me)
     local predicateResult, isDistanceBetweenThingsOver, isCameraPosOnScreen
     local isDistanceBetweenThingsUnder, predicateResult2, predicateResult3, doneIntroduction
-    local whisperSpawned, scratchValue, timeRemaining, getStateInt, scratchValue2, getStateInt2
-    local scratchValue3, i_stk_70_1, i_stk_70_2, position, position2, getStateThing, position3
-    local position4, getRandomThingWithScriptName, hero, hero2, scratchValue4, teamMemberName
-    local teamMemberName2, teamMemberName3, teamMemberName4, scratchValue5, scratchValue6
-    local getNearestWithScriptName, thing1
+    local whisperSpawned, scratchValue, timeRemaining, getStateInt, isAlive, getStateInt2
+    local scratchValue2, i_stk_70_1, i_stk_70_2, position, position2, getStateThing, position3
+    local position4, getRandomThingWithScriptName, hero, hero2, scratchValue3, teamMemberName
+    local teamMemberName2, teamMemberName3, teamMemberName4, scratchValue4, scratchValue5
+    local getNearestWithScriptName, thing1, scratchValue6
     local alive = true
     doneIntroduction = quest:GetStateBool("DoneIntroduction")
     while not doneIntroduction do
@@ -79,8 +79,8 @@ function Main(quest, me)
 
                                     teamMemberName = __native_entity_state:GetStateString("TeamMemberName")
                                     position2 = me:GetPos()
-                                    scratchValue5 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), position2, teamMemberName)
-                                    quest:EntityAttachToScript(scratchValue5, "Q_OrchardFarmRaid")
+                                    scratchValue4 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), position2, teamMemberName)
+                                    quest:EntityAttachToScript(scratchValue4, "Q_OrchardFarmRaid")
                                     quest:Pause(2.0)
                                     i_stk_70_1 = i_stk_70_1 + 1
                                 until not (i_stk_70_1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt)
@@ -100,8 +100,8 @@ function Main(quest, me)
 
                             teamMemberName2 = __native_entity_state:GetStateString("TeamMemberName")
                             getStateThing = __native_entity_state:GetStateThing("OtherSpawnPoint"):GetPos()
-                            scratchValue6 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), getStateThing, teamMemberName2)
-                            quest:EntityAttachToScript(scratchValue6, "Q_OrchardFarmRaid")
+                            scratchValue5 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), getStateThing, teamMemberName2)
+                            quest:EntityAttachToScript(scratchValue5, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
                             getRandomThingWithScriptName = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
                             __native_entity_state:SetStateThing("OtherSpawnPoint", getRandomThingWithScriptName)
@@ -135,8 +135,8 @@ function Main(quest, me)
                         end
                         hero = quest:GetHero()
                         getNearestWithScriptName = quest:GetNearestWithScriptName(hero, "GuardTeamMember")
-                        scratchValue2 = (getNearestWithScriptName ~= nil and getNearestWithScriptName:IsAlive())
-                        if scratchValue2 then
+                        isAlive = scratchValue6:IsAlive()
+                        if isAlive then
 
                             hero2 = quest:GetHero()
                             isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(getNearestWithScriptName, hero2, (15.0))
@@ -144,7 +144,7 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then
                                     return
                                 end
-                                require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "NEXT_WAVE", getNearestWithScriptName, 0)
+                                require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "NEXT_WAVE", scratchValue6, 0)
                             end
                         end
                     end
@@ -165,14 +165,14 @@ function Main(quest, me)
                         return
                     end
                     getStateInt2 = quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("TeamID") .. "_MemberCount"))
-                    scratchValue3 = 0
+                    scratchValue2 = 0
                     if __native_entity_state:GetStateInt("TeamMemberLimit") ~= getStateInt2 and -1 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt2 then
                         repeat
                             if quest:IsActiveThreadTerminating() then
                                 return
                             end
-
-                            if (scratchValue3 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
+                            scratchValue6 = nil
+                            if (scratchValue2 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 predicateResult2 = not alive
                                 if predicateResult2 then
@@ -182,8 +182,8 @@ function Main(quest, me)
 
                                 teamMemberName3 = __native_entity_state:GetStateString("TeamMemberName")
                                 position3 = me:GetPos()
-                                scratchValue4 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", position3, teamMemberName3)
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
+                                scratchValue3 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", position3, teamMemberName3)
+                                scratchValue6 = scratchValue3
                             else
                                 if quest:IsActiveThreadTerminating() then
                                     return
@@ -191,13 +191,13 @@ function Main(quest, me)
 
                                 teamMemberName4 = __native_entity_state:GetStateString("TeamMemberName")
                                 position4 = me:GetPos()
-                                scratchValue4 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), position4, teamMemberName4)
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
+                                scratchValue3 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), position4, teamMemberName4)
+                                -- TODO(native): CScriptThing::operator=((CScriptThing *)&xStack_3c,(int)pCVar6);
                             end
-                            quest:EntityAttachToScript(scratchValue4, "Q_OrchardFarmRaid")
+                            quest:EntityAttachToScript(scratchValue3, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
-                            scratchValue3 = scratchValue3 + 1
-                        until not (scratchValue3 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt2)
+                            scratchValue2 = scratchValue2 + 1
+                        until not (scratchValue2 < __native_entity_state:GetStateInt("TeamMemberLimit") - getStateInt2)
                     end
                     if quest:IsActiveThreadTerminating() then
                         return

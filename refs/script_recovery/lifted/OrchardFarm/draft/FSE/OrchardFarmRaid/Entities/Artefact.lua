@@ -71,7 +71,7 @@ end
 
 function Init(quest, me)
     quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + 1)
-    -- TODO(native): CStack_4 = (CCharString)this;
+    -- TODO(native): xStack_4 = (CCharString)this;
     quest:StateListPush("CrateList", me)
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
 end
@@ -80,21 +80,21 @@ function OnPersist(quest, context)
 end
 
 function OnPredicateFail(quest, me)
-    local bVar1, p0, v_stk_c
+    local bVar1, p0, x_stk_c
     p0 = 0
     if p0 ~= (quest:GetStateListCount("CrateList") * 0xc) then
         while true do
-            v_stk_c = quest:GetStateListAt("CrateList", (p0) / 0xc)
+            x_stk_c = quest:GetStateListAt("CrateList", (p0) / 0xc)
             bVar1 = quest:GetStateListAt("CrateList", (p0) / 0xc):IsEqualTo(me)
             if bVar1 then break end
-            v_stk_c = nil
+            x_stk_c = nil
             p0 = p0 + 0xc
             if p0 == (quest:GetStateListCount("CrateList") * 0xc) then
                 return
             end
         end
         quest:StateListErase("CrateList", (p0) / 0xc)
-        v_stk_c = nil
+        x_stk_c = nil
     end
 end
 

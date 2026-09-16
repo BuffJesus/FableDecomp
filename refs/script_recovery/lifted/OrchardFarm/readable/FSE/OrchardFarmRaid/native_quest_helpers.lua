@@ -65,7 +65,7 @@ function DoMultiplierCutscene(quest, me)
                     end
                     -- LAB_00dd1e3d: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue)
+                    resources:DestroyMovie(xStack_3c)
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -73,7 +73,7 @@ function DoMultiplierCutscene(quest, me)
                 if predicateResult5 then
                     -- LAB_00dd1e53: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue)
+                    resources:DestroyMovie(xStack_3c)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
@@ -134,10 +134,10 @@ function DoMultiplierCutscene(quest, me)
         quest:PauseAllNonScriptedEntities(false)
     end
     ::FLOW_after_lab_00dd1d15::
-    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
+    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&xStack_34);
     ::LAB_00dd1e95::
     resources:DestroyActorMap(scratchValue6)
-    resources:ReleaseResource(scratchValue5)
+    resources:ReleaseResource(xStack_2c)
     return
 end
 
@@ -156,7 +156,6 @@ function MakeTeamMemberComment(quest, me, commentToMake, speaker, commentType)
     scratchValue = (scratchValue .. "_")
     scratchValue = (scratchValue .. commentToMake)
     quest:AddLineToConversation(conversationID, scratchValue, pSpeaker, hero, false)
-    local scratchValue2 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
     return true
 end
 

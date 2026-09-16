@@ -29,7 +29,7 @@ from tools.script_recovery.lift_native_lua import (  # noqa: E402
 )
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters  # noqa: E402
-from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate  # noqa: E402
+from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate, _split_top  # noqa: E402
 from tools.script_recovery.annotate_interface_slots import load_thing_slots  # noqa: E402
 from tools.script_recovery.native_cleanup_regions import hoist_cleanup_regions  # noqa: E402
 
@@ -163,6 +163,158 @@ def disambiguate_call_labels(decompile, calls):
     return decompile, renamed
 
 
+RE_STACK_OPERAND = re.compile(r'^(?P<cast>\((?:[\w :]+\*+)\))?(?P<amp>&?)\(?(?P<name>[A-Za-z]+Stack_[0-9a-f]+|local_[0-9a-f]+)(?: \+ (?P<plus>4|8|0xc|12))?\)?$')
+
+
+def _call_spans(text, label):
+    """(start, args_start, end) of every `label(<balanced>)` occurrence, in text order. Ghidra wraps long
+    labels (`std::` newline `_Cons_val<...>` newline `(`), so whitespace is allowed at `::` and before `(`."""
+    head = re.compile(r'(?<![\w:])' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(')
+    spans = []
+    for m in head.finditer(text):
+        j, depth = m.end(), 1
+        while j < len(text) and depth:
+            depth += {'(': 1, ')': -1}.get(text[j], 0)
+            j += 1
+        spans.append((m.start(), m.end(), j))
+    return spans
+
+
+def _align(site, args):
+    '''Entry-relative slots aligned with the printed arguments of one call, or None when the printed count
+    cannot be reconciled with the recorded register/push operands (a by-value slot, a hidden return pointer
+    push the decompiler folded away, ...). Printed order is (ecx, edx, pushes right-to-left).'''
+    pushed = list(reversed(site.get('pushedStack', [])))
+    ecx, edx = site.get('ecxStack'), site.get('edxStack')
+    lead = len(args) - len(pushed)          # printed register arguments (this / __fastcall ecx, edx)
+    if lead < 0 or lead > 2 or (ecx is not None and lead < 1) or (edx is not None and lead < 2):
+        return None                         # a stack-loaded register that is not printed: an unprinted push is hiding
+    return [ecx, edx][:lead] + pushed
+
+
+CTOR_LABELS = {'StdMap_Construct_API'}
+RE_THING_SLOT_CAST = re.compile(r'^\((?:CScriptThing(?:_bv)?|C3DVector(?:_bv)?|CCharString(?:_bv)?) \*\)')
+
+
+def _is_ctor_label(label):
+    if label in CTOR_LABELS:
+        return True
+    parts = label.split('::')
+    return len(parts) >= 2 and parts[-1].split('<')[0] == parts[-2].split('<')[0]   # X::X
+
+
+def restore_stack_operands(decompile, fn):
+    """Ghidra's stack-variable naming drifts after callee-cleaned vtable calls (it lost the argument pops),
+    so one slot appears under several names (`auStack_a8`, `&uStack_b8`, `auStack_b0 + 4`). The typed export
+    records, per call site, the entry-relative slot each `lea`-loaded ECX/EDX/pushed argument points at
+    (ExportTypedTranslationUnit: ecxStack/edxStack/pushedStack, exact callee stack purges). The k-th printed
+    call of a vtable slot or label is the k-th site in address order.
+
+    Identity is (true slot, lifetime): a Ghidra name constructed at a slot (constructor receiver or hidden
+    return of a thing lookup) owns `xStack_<slot>` (a second constructed name at the same slot is a later
+    object: `xStack_<slot>_2`, ...); a name Ghidra split off the same slot (distance argument, `+ 4`
+    spelling) takes the name of the object constructed nearest before it."""
+    if not fn.get('indirectCalls') and not any('pushedStack' in c or 'ecxStack' in c for c in fn.get('calls', [])):
+        return decompile
+    text = decompile
+    uses = []       # (text position, arg index within site, ghidra name, true slot of the name, plus, constructed?)
+    sites = []      # (start, end, args, slots or None, label)
+
+    def collect(pos, end, args, slots, label, vtable):
+        sites.append((pos, end, args, slots, label))
+        if slots is None:
+            return
+        for k, (arg, off) in enumerate(zip(args, slots)):
+            m = RE_STACK_OPERAND.match(arg.strip())
+            if m and off is not None and off < 0:
+                plus = int(m.group('plus'), 0) if m.group('plus') else 0
+                ctor = (not vtable and k == 0 and _is_ctor_label(label)) or (vtable and k >= 1 and bool(RE_THING_SLOT_CAST.match(arg.strip())))
+                # the argument's address is the object; the bare name only stands for it when no offset is added
+                uses.append((pos, k, m.group('name') if not plus else None, off, plus, ctor))
+
+    by_slot = {}
+    for c in fn.get('indirectCalls', []):
+        if c.get('slot'):
+            by_slot.setdefault(c['slot'].lower(), []).append(c)
+    for slot, group in by_slot.items():
+        pat = re.compile(r'\(\*\*\(code \*\*\)\([^;\n]*?\+ ' + slot + r'\)\)\s*\(')
+        heads = [(m.start(), m.end()) for m in pat.finditer(text)]
+        if len(heads) != len(group):
+            continue
+        for (hs, he), site in zip(heads, sorted(group, key=lambda c: int(c['site'], 16))):
+            j, depth = he, 1
+            while j < len(text) and depth:
+                depth += {'(': 1, ')': -1}.get(text[j], 0)
+                j += 1
+            args = _split_top(text[he:j - 1])
+            collect(he, j - 1, args, _align(site, args), slot, True)
+    by_label = {}
+    for c in fn.get('calls', []):
+        if c.get('currentName') and ('pushedStack' in c or 'ecxStack' in c or 'edxStack' in c):
+            by_label.setdefault(c['currentName'], []).append(c)
+    for label, group in by_label.items():
+        spans = _call_spans(text, label)
+        if len(spans) != len(group):
+            continue
+        for (i, a, e), site in zip(spans, sorted(group, key=lambda c: int(c['site'], 16))):
+            args = _split_top(text[a:e - 1])
+            collect(a, e - 1, args, _align(site, args), label, False)
+    if not uses:
+        return text
+
+    # objects: constructed names per true slot, in order of first construction
+    ctor_names = {}   # slot -> [(first pos, ghidra name or None for an offset spelling)]
+    for pos, k, name, off, plus, ctor in sorted(uses, key=lambda u: u[0]):
+        if ctor and (name is None or all(n != name for _, n in ctor_names.get(off, []))):
+            ctor_names.setdefault(off, []).append((pos, name))
+    object_name = {}  # (slot, ghidra name) -> xStack name
+    for off, lst in ctor_names.items():
+        for n, (pos, name) in enumerate(lst):
+            object_name[(off, name)] = f'xStack_{-off:x}' + (f'_{n + 1}' if n else '')
+
+    def name_at(off, name, pos):
+        if (off, name) in object_name:
+            return object_name[(off, name)]
+        lst = ctor_names.get(off, [])
+        before = [(p, n) for p, n in lst if p <= pos]
+        if before:
+            return object_name[(off, before[-1][1])]
+        return object_name[(off, lst[0][1])] if lst else f'xStack_{-off:x}'
+
+    by_name = {}
+    for pos, k, name, off, plus, ctor in uses:
+        if name:
+            by_name.setdefault(name, []).append((pos, off))
+    edits = []
+    for start, end, args, slots, label in sites:
+        out = list(args)
+        for k, arg in enumerate(args):
+            m = RE_STACK_OPERAND.match(arg.strip())
+            if not m:
+                continue
+            name = m.group('name')
+            plus = int(m.group('plus'), 0) if m.group('plus') else 0
+            addr = slots[k] if slots is not None and k < len(slots) and slots[k] is not None and slots[k] < 0 else None
+            if addr is None:
+                near = sorted((abs(p - start), p, o) for p, o in by_name.get(name, []))
+                if not near:
+                    continue
+                addr = near[0][2] + plus
+            new = name_at(addr, name if not plus else None, start)
+            out[k] = (m.group('cast') or '') + m.group('amp') + new
+        if out != args:
+            edits.append((start, end, ','.join(out)))
+    for start, end, repl in sorted(edits, reverse=True):
+        text = text[:start] + repl + text[end:]
+    # remaining (non-call) spellings of a name with one true slot follow the object at its first use
+    for name, lst in by_name.items():
+        offs = {o for _, o in lst}
+        if len(offs) == 1:
+            off = next(iter(offs))
+            text = re.sub(r'\b' + re.escape(name) + r'\b', name_at(off, name, min(p for p, _ in lst)), text)
+    return text
+
+
 class UnitConverter:
     def __init__(self, tu_path, *, flat_control=False):
         self.manifest, self.slots, self.rdata = load_manifest(), load_slots(), RData()
@@ -289,7 +441,7 @@ class UnitConverter:
                 spec_l.resolve_wide = self.rdata.wide_string_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(fn['decompile'], fn.get('calls', []))
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(fn['decompile'], fn), fn.get('calls', []))
                 spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output
                 spec_l.call_labels.update({k.replace('::', '__'): v for k, v in list(spec_l.call_labels.items()) if '::' in k})

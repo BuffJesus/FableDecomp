@@ -235,6 +235,8 @@ RE_REFCOUNT_IF = re.compile(
     r'\(\*(?P=v) = \*(?P=v) \+ -1, \*(?P=v) == (?:\(.+?\))?(?:0|0x0)\)\) \{\s*$')
 # A numeric literal or an arithmetic/bitwise expression over locals and literals (`uVar4 | 1`).
 RE_NUMERIC_EXPR = re.compile(r'-?(?:\d+(?:\.\d+)?|0x[0-9a-f]+)|[\w\s()]+[|&^+\-*/%<>]+[\w\s()|&^+\-*/%<>]+')
+# unit converter (accessor_kinds): Ghidra prefixes run to `pppu` (pointer depth); the Oakvale draft keeps {1,3}
+RE_LOCAL_ASSIGN_DEEP = re.compile(RE_LOCAL_ASSIGN.pattern.replace('[A-Za-z]{1,3}Var', '[A-Za-z]{1,5}Var', 1))
 RE_NOISE = (
     re.compile(r'^\s*\(\*\(code \*\)\w+(?:\[\d+\])+\)\(\);\s*$'),                       # refcount release call
     re.compile(r'^\s*(?:iVar\d+|piVar\d+|iStack_[0-9a-f]+|ppuVar\d+|gsivt\d+) = \*{1,2}\(int \*\*\)\((?:this|param_\d+) \+ (?:4|0x40)\);\s*$'),
@@ -2334,7 +2336,7 @@ class Lifter:
             if value in self.temps or value in self.locals:
                 self.push_temp(m.group(1), self.temps.get(value, value))
                 return
-        m = RE_LOCAL_ASSIGN.match(line)
+        m = (RE_LOCAL_ASSIGN_DEEP if self.accessor_kinds else RE_LOCAL_ASSIGN).match(line)
         if m:
             value = m.group(2).strip()
             if self.entity and (value in self.parent_aliases or re.fullmatch(

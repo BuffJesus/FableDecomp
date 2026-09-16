@@ -1,13 +1,13 @@
 -- Generated from the same native helper bodies as the quest draft.
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
-    local appuStack_20, bVar4, local_10, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, puStack_38
+    local appuStack_20, bVar4, local_10, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, xStack_54
     local alive = true
     local_10 = resources:NewResource()
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
-    puStack_38 = resources:NewActorMap()
-    resources:SetActor(puStack_38, "HERO", local_10)
+    xStack_54 = resources:NewActorMap()
+    resources:SetActor(xStack_54, "HERO", local_10)
     appuStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -61,7 +61,7 @@ function DoMultiplierCutscene(quest, me)
                     end
                     -- LAB_00dd1e3d: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(appuStack_20)
+                    resources:DestroyMovie(xStack_3c)
                     goto LAB_00dd1e95
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -69,11 +69,11 @@ function DoMultiplierCutscene(quest, me)
                 if bVar4 then
                     -- LAB_00dd1e53: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(appuStack_20)
+                    resources:DestroyMovie(xStack_3c)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
-                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", puStack_38, false, true)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", xStack_54, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -130,10 +130,10 @@ function DoMultiplierCutscene(quest, me)
         quest:PauseAllNonScriptedEntities(false)
     end
     ::FLOW_after_lab_00dd1d15::
-    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
+    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (&xStack_34);
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(puStack_38)
-    resources:ReleaseResource(local_10)
+    resources:DestroyActorMap(xStack_54)
+    resources:ReleaseResource(xStack_2c)
     return extraout_EAX
 end
 
@@ -154,7 +154,6 @@ function MakeTeamMemberComment(quest, me, native_arg_comment_to_make, native_arg
     pCVar3 = (pCVar3 .. "_")
     pCVar3 = (pCVar3 .. native_arg_comment_to_make)
     quest:AddLineToConversation(conversationID, pCVar3, pSpeaker, pCVar2, false)
-    local uVar4 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
     return true
 end
 
