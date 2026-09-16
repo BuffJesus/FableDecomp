@@ -56,11 +56,7 @@ function Main(quest, me)
             quest:EntitySetAsKillable(me, false, true)
             quest:EntitySetAsDamageable(me, true)
             quest:DisplayQuestInfo(true)
-            -- TODO(native): CStack_18._1_1_ = 0xff;
-            -- TODO(native): CStack_18._3_1_ = 0xff;
-            -- TODO(native): CStack_18._2_1_ = 0;
-            -- TODO(native): CStack_18._0_1_ = 0;
-            r1 = quest:AddQuestInfoBarHealth(me, &CStack_18, "HUD_WHISPER_ICON", 1.0)
+            r1 = quest:AddQuestInfoBarHealth(me, {R = 0, G = 255, B = 0, A = 255}, "HUD_WHISPER_ICON", 1.0)
             quest:EntitySetCombatType(me, "HERO_WHISPER_ATTACK_STYLE_OFARM")
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive

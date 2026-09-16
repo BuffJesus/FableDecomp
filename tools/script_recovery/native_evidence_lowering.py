@@ -158,35 +158,47 @@ RE_THING_PARTS = re.compile(
 def fold_tangled_thing_assign(text: str) -> str:
     """`dst = src` (CScriptThing::operator=) inlined and then split by the decompiler across labels:
     parts of src are loaded, `if (dst.Info == src.Info) goto DONE`, the old Info is released (with a
-    label inside the delete block), the parts are stored, `DONE:`. Everything up to DONE is the
-    assignment."""
+    label inside the delete block), the parts are stored (possibly in shared code after an if/else),
+    `DONE:`. The parts load + compare + release become `dst = src`; the stores are dropped."""
+    parts_seen = []
     while (m := RE_THING_PARTS.search(text)):
-        label = m.group('label')
-        done = re.search(r'^[ \t]*' + label + r':[ \t]*\r?\n', text[m.end():], re.M)
-        if not done:
-            break
-        between = text[m.end():m.end() + done.start()]
-        names = {m.group('i'), m.group('d'), m.group('dst')}
-        ok = True
-        for line in between.split('\n'):
-            st = line.strip()
-            if not st or st in ('}', '{') or re.fullmatch(r'LAB_[0-9a-f]+:', st):
-                continue
-            if not any(re.search(r'\b' + re.escape(n) + r'\b', st) for n in names):
-                ok = False
-                break
-        if not ok:
-            break
-        inner_labels = re.findall(r'^[ \t]*(LAB_[0-9a-f]+):', between, re.M)
-        text = text[:m.start()] + f'{m.group("ind")}{m.group("dst")} = {m.group("src")};\n' + text[m.end() + done.end():]
-        for lab in inner_labels + [label]:
-            if len(re.findall(r'\b' + lab + r'\b', text)) == 0:
-                continue
-            # jumps that targeted a label inside the assignment now land after it
-            text = re.sub(r'\bgoto ' + lab + r';', f'goto {label};', text)
-        if re.search(r'\bgoto ' + label + r';', text):
-            text = text.replace(f'{m.group("ind")}{m.group("dst")} = {m.group("src")};\n',
-                                f'{m.group("ind")}{m.group("dst")} = {m.group("src")};\n{label}:\n', 1)
+        i, src, d, dst, label = m.group('i'), m.group('src'), m.group('d'), m.group('dst'), m.group('label')
+        release = re.compile(
+            r'[ \t]*if \(\(' + dst + r' != \(int \*\)0x0\) && \(\*' + dst + r' = \*' + dst + r' \+ -1, \*' + dst + r' == 0\)\) \{\s*\r?\n'
+            r'[ \t]*\(\*\(code \*\)' + dst + r'\[1\]\)\(\);\s*\r?\n(?:(?:LAB_[0-9a-f]+:\s*\r?\n)?[ \t]*operator_delete\(' + dst + r'\);|[ \t]*goto LAB_[0-9a-f]+;)\s*\r?\n[ \t]*\}[ \t]*\r?\n')
+        rm = release.match(text, m.end())
+        cut_end = rm.end() if rm else m.end()
+        text = text[:m.start()] + f'{m.group("ind")}{dst} = {src};\n' + text[cut_end:]
+        parts_seen.append((i, d, dst, label))
+    for i, d, dst, label in parts_seen:
+        # stores of the loaded parts (either slice or canonicalised spelling) and the source addref
+        text = re.sub(r'^[ \t]*\w+(?:\._\d+_4_)? = ' + d + r';[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*\w+(?:\._\d+_4_)? = ' + i + r';[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*if \(' + i + r' != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*' + i + r' = \*' + i + r' \+ 1;\s*\r?\n[ \t]*\}[ \t]*\r?\n', '', text, flags=re.M)
+    return text
+
+
+RE_COLOUR_BYTE = re.compile(r'^[ \t]*(\w+)\._([0-3])_1_ = (0x[0-9a-f]+|\d+);[ \t]*\r?\n', re.M)
+
+
+def fold_stack_colours(text: str) -> str:
+    """A CRGBColour built on the stack byte by byte (`c._0_1_ = B; c._1_1_ = G; c._2_1_ = R; c._3_1_ = A`,
+    retail ABI is BGRA) and passed by address becomes an FSE colour table."""
+    groups = {}
+    for m in RE_COLOUR_BYTE.finditer(text):
+        groups.setdefault(m.group(1), {})[int(m.group(2))] = int(m.group(3), 0)
+    for var, bytes_ in groups.items():
+        if set(bytes_) != {0, 1, 2, 3}:
+            continue
+        b, g, r, a = (bytes_[i] for i in range(4))
+        stores = [m for m in RE_COLOUR_BYTE.finditer(text) if m.group(1) == var]
+        start, end = stores[0].start(), stores[-1].end()
+        head, scope = text[:start], text[end:]
+        # the stack slot may be reused (a CCharString later on): only the uses up to the next redefinition
+        nxt = re.search(r'^[ \t]*(?:\w+::\w+\(\(\w+ \*\)&' + re.escape(var) + r'\b|' + re.escape(var) + r' = )', scope, re.M)
+        use, rest = (scope[:nxt.start()], scope[nxt.start():]) if nxt else (scope, '')
+        use = re.sub(r'(?:\(\w+ \*\))?&?' + re.escape(var) + r'\b', f'ENGINE_Colour({r}, {g}, {b}, {a})', use)
+        text = head + use + rest
     return text
 
 
@@ -252,6 +264,7 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\b(CScriptThing|CCharString|C3DVector|CRGBColour|CWideString|CRGBFloatColour)_bv\b', r'\1', text)
     text = fold_outgoing_stack_slots(text)
     text = re.sub(r'\*\) \(', '*)(', text)
+    text = re.sub(r'\((?:undefined\d?|uchar|char|byte)\s+\[\d+\]\)', '', text)   # array-typed value casts
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     return text
 
@@ -412,7 +425,7 @@ def fold_resource_objects(text, call_labels):
         if target in RESOURCE_CTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = RESOURCE_NewResource();', text, flags=re.M)
         elif target in THING_DTOR:
-            text = re.sub(r'^[ \t]*' + re.escape(label) + r'\s*\(\(CScriptThing \*\)(\w+)[^;]*\);[ \t]*\r?\n', '', text, flags=re.M)
+            text = re.sub(r'^[ \t]*' + re.escape(label) + r'\s*\((?:\(\w+ \*\))?&?(\w+)[^;]*\);[ \t]*\r?\n', '', text, flags=re.M)
         elif target in RESOURCE_DTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}RESOURCE_ReleaseResource({_strip_addr(m.group(2))});', text, flags=re.M)
         elif target in MOVIE_CTOR:
@@ -516,8 +529,11 @@ def fold_offset_string_temporaries(text: str) -> str:
 def rename_scalar_stack_locals(text):
     """Ghidra stack names (`local_14`, `uStack_8`) are refused by the lifter's assignment rule (they
     are usually object slots). Ones that only ever appear as plain scalars get lifter-visible names."""
-    for name in sorted(set(re.findall(r'\b(?:[A-Za-z]+Stack_|local_)[0-9a-f]+\b', text))):
-        if re.search(r'[&*]' + re.escape(name) + r'\b|\b' + re.escape(name) + r'\s*[\[.]|\(\w+ \*+\)' + re.escape(name) + r'\b', text):
+    # a stack CScriptThing that only ever holds lowered values is a plain handle: drop its casts
+    text = re.sub(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', r'\1', text)
+    body = re.sub(r'^[ \t]*(?:[\w:<>,]+ )+\**\w+(?: \[\d+\])?;[ \t]*\r?$', '', text, flags=re.M)   # declarations
+    for name in sorted(set(re.findall(r'\b(?:[A-Za-z]+Stack_|local_)[0-9a-f]+\b', body))):
+        if re.search(r'[&*]' + re.escape(name) + r'\b|\b' + re.escape(name) + r'\s*[\[.]|\(\w+ \*+\)' + re.escape(name) + r'\b', body):
             continue
         m = re.fullmatch(r'([A-Za-z]*)(?:Stack_|local_)([0-9a-f]+)', name)
         text = re.sub(r'\b' + re.escape(name) + r'\b', f'{m.group(1) or "v"}_stk_{m.group(2)}', text)
@@ -587,6 +603,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = re.sub(r'^([ \t]*)(\w+) = \*' + re.escape(m[0]) + r';', lambda mm, off=m[1]: f'{mm.group(1)}{mm.group(2)} = **(int **)(this + {off});', text, flags=re.M)
     text = fold_by_value_things(text, getattr(spec, 'code_range', None))
     text = fold_tangled_thing_assign(text)
+    text = fold_stack_colours(text)
     if spec.entity:
         # the entity's own CScriptThing lives at this+8: its Data pointer (this+0xc) passed as an argument is `me`
         text = re.sub(r'\*\(int \*\)\(this \+ (?:0xc|12)\)', '(CScriptThing *)(this + 8)', text)
@@ -1029,6 +1046,7 @@ def _expand_calls(text, name, render):
 def finish_lua(text: str) -> str:
     """Turn lowering pseudo-calls into Lua after the lifter has run."""
     text = re.sub(r'ENGINE_(IsDistanceBetweenThings(?:Under|Over))\(', r'quest:\1(', text)
+    text = _expand_calls(text, 'ENGINE_Colour', lambda a: '{R = %s, G = %s, B = %s, A = %s}' % tuple(a))
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')

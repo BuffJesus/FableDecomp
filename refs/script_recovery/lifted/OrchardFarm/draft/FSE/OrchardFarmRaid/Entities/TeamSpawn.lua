@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1
+    local C_stk_54, bVar3, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1
     local alive = true
     local cVar1 = quest:GetStateBool("DoneIntroduction")
     while not cVar1 do
@@ -160,18 +160,18 @@ function Main(quest, me)
                         end
                         pCVar6 = quest:GetHero()
                         r3 = quest:GetNearestWithScriptName(pCVar6, "GuardTeamMember")
-                        iVar4 = (r3 ~= nil and r3:IsAlive())
+                        iVar4 = C_stk_54:IsAlive()
                         if iVar4 then
                             fVar9 = 15.0
                             pCVar6 = quest:GetHero()
-                            bVar3 = quest:IsDistanceBetweenThingsUnder(r3, pCVar6, fVar9)
+                            bVar3 = quest:IsDistanceBetweenThingsUnder(C_stk_54, pCVar6, fVar9)
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
                                     return
                                 end
-                                require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "NEXT_WAVE", r3, 0)
+                                require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "NEXT_WAVE", C_stk_54, 0)
                             end
                         end
                     end
@@ -206,7 +206,7 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
-                            r3 = resources:StartMovie("")
+                            C_stk_54 = resources:StartMovie("")
                             if (iVar7 == 1) and (quest:GetStateInt("HeroTeam") == 0) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -217,7 +217,7 @@ function Main(quest, me)
                                 pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature(pCVar8, pCVar5, "CREATURE_BANDIT_ARCHER_LEVEL1")
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
+                                -- TODO(native): CScriptThing::operator=(C_stk_54,(int)pCVar6);
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -226,7 +226,7 @@ function Main(quest, me)
                                 pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature(pCVar8, pCVar5, "NEXT_WAVE")
-                                -- TODO(native): CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);
+                                -- TODO(native): CScriptThing::operator=(C_stk_54,(int)pCVar6);
                             end
                             quest:EntityAttachToScript(pCVar6, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
@@ -247,7 +247,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local bVar7, iVar5, pCVar3, pcVar8, piVar4, uVar1
+    local bVar7, iVar5, pCVar3, pcVar8, piVar4, uVar1, v_stk_c
     local function __region_LAB_00dcd306()
         __native_entity_state:SetStateInt("TeamID", 1)
         __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
@@ -255,7 +255,7 @@ function Init(quest, me)
     end
     pCVar3 = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
     __native_entity_state:SetStateThing("OtherSpawnPoint", pCVar3)
-    pCVar3 = nil
+    v_stk_c = nil
     -- TODO(native): GetName is not a ForgeFSE binding
     piVar4 = me:GetName()
     if piVar4 == nil then

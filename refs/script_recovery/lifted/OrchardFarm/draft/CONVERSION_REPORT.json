@@ -147,7 +147,7 @@
             "MiniMapAllowRouteBetweenRegions",
             "MiniMapAllowRouteBetweenRegions"
           ],
-          "lines": 53,
+          "lines": 56,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -357,13 +357,13 @@
             "verify cleanup at LAB_00dd1728 (lifted as early return)",
             "label LAB_00dd1736",
             "goto LAB_00dd1742",
-            "unlifted: StdMap_Construct_API(auStack_a8 + 4);",
+            "unlifted: StdMap_Construct_API(au_stk_a8 + 4);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,puVar10);",
             "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar6,pOther_00);",
-            "unlifted: RunCutsceneMacro_Func(&CStack_cc,auStack_a8 + 4,(void *)0x0,(void *)0x0,false,true);",
-            "unlifted: StdMap_Destroy_API(auStack_a8 + 4);",
+            "unlifted: RunCutsceneMacro_Func(&CStack_cc,au_stk_a8 + 4,(void *)0x0,(void *)0x0,false,true);",
+            "unlifted: StdMap_Destroy_API(au_stk_a8 + 4);",
             "unlifted: CSubtitleRenderer::SetText(0x50);",
             "RemoveQuestInfoElement: missing id (0 args for 1 params)"
           ],
@@ -479,7 +479,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 258,
+          "lines": 259,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -512,8 +512,7 @@
           "todo": [
             "label LAB_00dd03b8",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
-            "unlifted: auStack_90._4_4_ = uVar5;",
-            "unlifted: *piVar6 = *piVar6 + 1;",
+            "label LAB_00dcfb65",
             "label LAB_00dcfe47",
             "goto LAB_00dcfe47",
             "verify cleanup at LAB_00dd03b8 (lifted as early return)",
@@ -625,27 +624,17 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 169,
+          "lines": 161,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:DoCutsceneIfRequired",
-                "line": 14,
-                "message": "...OrchardFarmRaid/OrchardFarmRaid.lua:DoCutsceneIfRequired:14: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
-          "nativeJumps": [
-            "if (auStack_90 == piVar6) goto LAB_00dcfb65;"
-          ],
-          "nativeLabels": [
-            "LAB_00dcfb65"
-          ]
+          "nativeJumps": [],
+          "nativeLabels": []
         },
         {
           "owner": "Q_OrchardFarmRaid",
@@ -750,7 +739,6 @@
           "todo": [
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
-            "unlifted: local_3c = (CScriptThing *)piVar3;",
             "verify cleanup at LAB_00dd1d15 (lifted as early return)",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
@@ -806,7 +794,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 130,
+          "lines": 131,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -867,9 +855,9 @@
             "CreateCreature: missing scriptName (2 args for 3 params)",
             "label LAB_00dcd9ed",
             "label LAB_00dcda68",
-            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=(C_stk_54,(int)pCVar6);",
             "verify cleanup at LAB_00dcda68 (lifted as early return)",
-            "unlifted: CScriptThing::operator=((CScriptThing *)CStack_54,(int)pCVar6);",
+            "unlifted: CScriptThing::operator=(C_stk_54,(int)pCVar6);",
             "goto LAB_00dcd9ed"
           ],
           "calls": [
@@ -1198,12 +1186,7 @@
             "parameters": [],
             "returnKind": null
           },
-          "todo": [
-            "unlifted: CStack_18._1_1_ = 0xff;",
-            "unlifted: CStack_18._3_1_ = 0xff;",
-            "unlifted: CStack_18._2_1_ = 0;",
-            "unlifted: CStack_18._0_1_ = 0;"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1239,19 +1222,13 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 69,
+          "lines": 65,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main",
-                "line": 51,
-                "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:Main:51: unexpected symbol near '&'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -1695,7 +1672,7 @@
             "QUESTLIST_At_CrateList",
             "QUESTTHING_Empty"
           ],
-          "lines": 22,
+          "lines": 23,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2037,21 +2014,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 9,
-        "passed": 7,
-        "errors": [
-          {
-            "path": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua",
-            "line": 63,
-            "message": "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua:63: unexpected symbol near '&'"
-          },
-          {
-            "path": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua",
-            "line": 615,
-            "message": "FSE/OrchardFarmRaid/OrchardFarmRaid.lua:615: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 9,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -2071,26 +2037,26 @@
             "pCVar6 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))",
             "resources:ReleaseResource(appuStack_ac)",
-            "resources:DestroyActorMap(r2)",
+            "resources:DestroyActorMap(C_stk_8c)",
             "resources:ReleaseResource(appuStack_bc)",
-            "resources:ReleaseResource(aCStack_c4)"
+            "resources:ReleaseResource(aC_stk_c4)"
           ],
           "LAB_00dd0b2b": [
             "resources:ReleaseResource(appuStack_ac)",
-            "resources:DestroyActorMap(r2)",
+            "resources:DestroyActorMap(C_stk_8c)",
             "resources:ReleaseResource(appuStack_bc)",
-            "resources:ReleaseResource(aCStack_c4)"
+            "resources:ReleaseResource(aC_stk_c4)"
           ],
           "LAB_00dd1728": [
             "pCVar7 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar7 ~= 0))",
-            "resources:ReleaseResource((r2 + 4))",
+            "resources:ReleaseResource((au_stk_a8 + 4))",
             "resources:DestroyActorMap(ppuStack_9c)",
             "resources:ReleaseResource(amStack_8c)",
             "resources:ReleaseResource(CStack_cc)"
           ],
           "LAB_00dd1742": [
-            "resources:ReleaseResource((r2 + 4))",
+            "resources:ReleaseResource((au_stk_a8 + 4))",
             "resources:DestroyActorMap(ppuStack_9c)",
             "resources:ReleaseResource(amStack_8c)",
             "resources:ReleaseResource(CStack_cc)"
@@ -2127,7 +2093,6 @@
           "DoMultiplierCutscene": [
             "goto LAB_00dd1d98",
             "label LAB_00dd1d15",
-            "unlifted: local_3c = (CScriptThing *)piVar3;",
             "verify cleanup at LAB_00dd1d15 (lifted as early return)",
             "goto LAB_00dd1d98",
             "label LAB_00dd1e3d",
@@ -2155,10 +2120,10 @@
         "owners": 8,
         "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 40,
-        "fileSyntaxPassed": 7,
+        "functionSyntaxPassed": 42,
+        "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 139
+        "todo": 133
       }
     },
     {
@@ -2356,9 +2321,9 @@
     "owners": 10,
     "functions": 46,
     "missing": 2,
-    "functionSyntaxPassed": 44,
-    "fileSyntaxPassed": 9,
+    "functionSyntaxPassed": 46,
+    "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 139
+    "todo": 133
   }
 }

@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, bVar4
+    local au_stk_1c, bVar3, bVar4
     local alive = true
     bVar4 = false
     local r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
@@ -19,16 +19,16 @@ function Main(quest, me)
     local bVar2 = not alive
     repeat
         if bVar2 then
-            r1 = nil
+            au_stk_1c = nil
             return
         end
-        bVar2 = quest:IsDistanceBetweenThingsUnder(me, r1, 3.0)
+        bVar2 = quest:IsDistanceBetweenThingsUnder(me, au_stk_1c, 3.0)
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
                 -- LAB_00dcddcf: (native jump target)
-                r1 = nil
+                au_stk_1c = nil
                 return
             end
             -- TODO(native): IsBeingCarriedBy is not a ForgeFSE binding

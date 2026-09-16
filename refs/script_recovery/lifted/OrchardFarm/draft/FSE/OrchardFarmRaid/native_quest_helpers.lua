@@ -1,13 +1,14 @@
 -- Generated from the same native helper bodies as the quest draft.
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
-    local appuStack_20, bVar4, local_10, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, puStack_38
+    local appuStack_20, bVar4, local_10, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, pu_stk_38, v_stk_3c
     local alive = true
+    v_stk_3c = 0x0
     local_10 = resources:NewResource()
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, 4)
-    puStack_38 = resources:NewActorMap()
-    resources:SetActor(puStack_38, "HERO", local_10)
+    pu_stk_38 = resources:NewActorMap()
+    resources:SetActor(pu_stk_38, "HERO", local_10)
     appuStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -42,10 +43,10 @@ function DoMultiplierCutscene(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
-            -- TODO(native): local_3c = (CScriptThing *)piVar3;
-            local_3c = quest:GetHero()
+            v_stk_3c = piVar3
+            v_stk_3c = quest:GetHero()
             pCVar5 = quest:GetThingWithScriptName("MK_OFI_GWL")
-            bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar5, local_3c, 20.0)
+            bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar5, v_stk_3c, 20.0)
             if bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -70,7 +71,7 @@ function DoMultiplierCutscene(quest, me)
                     goto LAB_00dd1e95
                 end
                 -- LAB_00dd1d98: (native jump target)
-                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", pCVar5, false, true)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", pu_stk_38, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -128,7 +129,7 @@ function DoMultiplierCutscene(quest, me)
     end
     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (appuStack_20);
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(pCVar5)
+    resources:DestroyActorMap(pu_stk_38)
     resources:ReleaseResource(local_10)
     return extraout_EAX
 end

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, local_20, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, aCStack_10, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, v_stk_20
     local alive = true
     bVar6 = false
     alive = quest:NewScriptFrame(me)
@@ -357,8 +357,8 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    local_20 = nil
-                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), local_20)
+                    v_stk_20 = nil
+                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), v_stk_20)
                     helper_DCEC50(quest, me, 0)
                 end
                 cVar4 = quest:GetStateBool("WhisperSpawned")
@@ -368,7 +368,7 @@ function Main(quest, me)
             if not bVar6 then
                 quest:EntityStopFollowing(me)
                 -- TODO(native): CCharString::CCharString("REQUEST_PROTECTION","TeamExitMarker",-1);
-                r1 = quest:GetNearestWithScriptName(me, "REQUEST_PROTECTION")
+                r1 = quest:GetNearestWithScriptName(me, "FETCHING")
                 aCStack_10 = resources:NewResource()
                 -- TODO(native): bVar6 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_10);
                 if bVar6 then
@@ -392,13 +392,13 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then break end
-                            if not IsThingValid(r1) then
+                            if not IsThingValid(au_stk_2c) then
                             else
-                                p0_00 = r1:GetPos()
+                                p0_00 = au_stk_2c:GetPos()
                             end
                             me:MoveToPosition(p0_00, 0x3f000000, 1, false, true)
                         end
-                        bVar6 = quest:IsDistanceBetweenThingsUnder(me, r1, 2.0)
+                        bVar6 = quest:IsDistanceBetweenThingsUnder(me, au_stk_2c, 2.0)
                         if bVar6 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
@@ -573,9 +573,9 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
 end
 
 function GetNearestCrateToMe(quest, me)
-    local fVar5, iVar4, v_stk_14, v_stk_18
+    local fVar5, iVar4, v_stk_14, v_stk_18, v_stk_c
     v_stk_18 = 10000000.0
-    local local_c = nil
+    v_stk_c = nil
     local iVar3 = (quest:GetStateListCount("CrateList") * 0xc)
     iVar4 = iVar3 >> 0x1f
     v_stk_14 = 0
@@ -586,14 +586,15 @@ function GetNearestCrateToMe(quest, me)
             if fVar5 < v_stk_18 then
                 iVar3 = quest:GetStateListRef("CrateList")
                 v_stk_18 = fVar5
-                local_c = quest:GetStateListAt("CrateList", (iVar4) / 0xc)
+                v_stk_c = quest:GetStateListAt("CrateList", (iVar4) / 0xc)
             end
             v_stk_14 = v_stk_14 + 1
             iVar4 = iVar4 + 0xc
         until not (v_stk_14 < (((quest:GetStateListCount("CrateList") * 0xc)) / 0xc))
     end
-    local ret_thing = local_c
-    local_c = nil
+    local ret_thing = v_stk_c
+    v_stk_c = nil
+    v_stk_c = 0
     return ret_thing
 end
 
