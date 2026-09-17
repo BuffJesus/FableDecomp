@@ -155,6 +155,8 @@ THING_PATTERNS = [
     re.compile(r"\(\*\*\(code \*\*\)\(\*(?P<recv>[A-Za-z_]\w*) \+ (?P<off>" + OFFSET + r")\)\)\("),
 ]
 ME_RECEIVER = "(CScriptThing *)(this + 8)"
+# lowering pseudo-calls / interface calls whose value is a CScriptThing (a stack slot filled by one is a thing receiver)
+RE_PSEUDO_THING = re.compile(r"^[ 	]*(?P<var>[A-Za-z_]\w*) = (?:\((?:int|CScriptThing) \*\))?\s*(?:QUESTTHING_Empty|ENTITYTHING_Empty|QUESTTHING_Get|ENTITYTHING_Get|LOCALLIST_At|RESOURCE_ScriptThing|GSI->(?:GetHero|GetThingWithScriptName|GetNearestWithScriptName|CreateCreature|GetRandomThingWithScriptName|GetNearestWithDefName))\(", re.M)
 RE_THING_RETURN = re.compile(r"@CScriptThing@@[UM][AB]E\?AV1@")
 
 
@@ -169,7 +171,7 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     classified by the aliases in force at that point (a redefinition ends the previous alias)."""
     events: list[tuple[int, int, str, re.Match[str]]] = []
     for kind, pattern in (("gsi", RE_GSI_ALIAS), ("me", RE_ME_ALIAS), ("copy", RE_COPY_ALIAS),
-                          ("thing", RE_THING_ALIAS), ("any", RE_ANY_DEF)):
+                          ("thing", RE_THING_ALIAS), ("pseudo", RE_PSEUDO_THING), ("any", RE_ANY_DEF)):
         for m in pattern.finditer(text):
             # a definition takes effect after its statement (its own rhs sees the old aliases);
             # the generic reset runs before the specific classification of the same statement
@@ -181,6 +183,9 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     me: set[str] = set()
     things: set[str] = set()
     gsi: set[str] = set()
+    # a slot filled by a thing-valued pseudo-call anywhere in the function is a thing receiver even before
+    # that statement in text order (loop-carried values: the store sits at the loop tail)
+    pseudo_things = {m.group("var") for m in RE_PSEUDO_THING.finditer(text)}
     edits: list[tuple[int, int, str]] = []
     for _pos, _rank, kind, m in events:
         if kind == "any":
@@ -203,6 +208,9 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
             elif src in gsi:
                 gsi.add(var)
             continue
+        if kind == "pseudo":
+            things.add(m.group("var"))
+            continue
         if kind == "thing":
             var, off, via = m.group("var"), int(m.group("off"), 0), m.group("via")
             if via:
@@ -220,7 +228,7 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
             receiver = ME_RECEIVER
         elif recv in me:
             receiver = ME_RECEIVER
-        elif recv in things:
+        elif recv in things or recv in pseudo_things:
             receiver = recv
         else:
             continue          # unknown receiver: leave the dispatch as it is (the GSI pass may name it)

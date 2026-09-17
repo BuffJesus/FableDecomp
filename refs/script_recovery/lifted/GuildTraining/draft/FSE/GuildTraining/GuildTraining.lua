@@ -1142,7 +1142,7 @@ end
 
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local aCStack_10, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_a0
+    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_a0
     local alive = true
     bVar4 = false
     bVar3 = false
@@ -1364,9 +1364,8 @@ function CheckFriendlyAttacks(quest)
                     native_arg_sequence_1 = false
                 end
                 if native_arg_sequence_1 then
-                    -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
-                    cVar11 = nil --[[unresolved native value]]
-                    if cVar11 ~= 0 then
+                    cVar11 = xStack_a0:MsgIsHitByHero()
+                    if cVar11 then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
@@ -1376,42 +1375,31 @@ function CheckFriendlyAttacks(quest)
                     bVar10 = false
                     goto FLOW_after_lab_00d45782
                 end
-                native_arg_sequence_2 = false
-                if xStack_a0 ~= nil then
-                    native_arg_sequence_2 = true
-                else
-                    native_arg_sequence_2 = false
+                __native_condition_1 = xStack_a0 ~= nil
+                if __native_condition_1 then
+                    cVar11 = xStack_a0:MsgIsHitByAnySpecialAbilityFromHero()
+                    __native_condition_1 = cVar11
                 end
-                if native_arg_sequence_2 then
-                    -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
-                    cVar11 = nil --[[unresolved native value]]
-                    if cVar11 ~= 0 then
-                        native_arg_sequence_2 = true
-                    else
-                        native_arg_sequence_2 = false
-                    end
-                end
-                if native_arg_sequence_2 then
+                if __native_condition_1 then
                     bVar6 = true
                     bVar5 = true
                     bVar9 = true
                     bVar4 = true
-                    native_arg_sequence_3 = false
+                    native_arg_sequence_2 = false
                     if xStack_a0 == nil then
-                        native_arg_sequence_3 = true
+                        native_arg_sequence_2 = true
                     else
-                        native_arg_sequence_3 = false
+                        native_arg_sequence_2 = false
                     end
-                    if not native_arg_sequence_3 then
-                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-                        cVar11 = nil --[[unresolved native value]]
-                        if cVar11 == 0 then
-                            native_arg_sequence_3 = true
+                    if not native_arg_sequence_2 then
+                        cVar11 = xStack_a0:MsgIsHitByHeroSpecialAbility(0xe)
+                        if not cVar11 then
+                            native_arg_sequence_2 = true
                         else
-                            native_arg_sequence_3 = false
+                            native_arg_sequence_2 = false
                         end
                     end
-                    if native_arg_sequence_3 then
+                    if native_arg_sequence_2 then
                         bVar10 = false
                         goto FLOW_after_lab_00d45782
                     end
@@ -1435,49 +1423,39 @@ function CheckFriendlyAttacks(quest)
                         native_arg_sequence_1 = true
                     end
                     if native_arg_sequence_1 then
-                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
-                        cVar11 = nil --[[unresolved native value]]
-                        if cVar11 ~= 0 then
+                        cVar11 = xStack_a0:MsgIsHitByHero()
+                        if cVar11 then
                             native_arg_sequence_1 = true
                         else
                             native_arg_sequence_1 = false
                         end
                     end
                     if native_arg_sequence_1 then goto LAB_00d45782 end
-                    native_arg_sequence_2 = false
-                    if xStack_a0 ~= nil then
-                        native_arg_sequence_2 = true
+                    __native_condition_2 = xStack_a0 ~= nil
+                    if __native_condition_2 then
+                        cVar11 = xStack_a0:MsgIsHitByAnySpecialAbilityFromHero()
+                        __native_condition_2 = cVar11
                     end
-                    if native_arg_sequence_2 then
-                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
-                        cVar11 = nil --[[unresolved native value]]
-                        if cVar11 ~= 0 then
-                            native_arg_sequence_2 = true
-                        else
-                            native_arg_sequence_2 = false
-                        end
-                    end
-                    if native_arg_sequence_2 then
+                    if __native_condition_2 then
                         bVar6 = true
                         bVar5 = true
                         bVar9 = true
                         bVar4 = true
-                        native_arg_sequence_3 = false
+                        native_arg_sequence_2 = false
                         if xStack_a0 == nil then
-                            native_arg_sequence_3 = true
+                            native_arg_sequence_2 = true
                         else
-                            native_arg_sequence_3 = false
+                            native_arg_sequence_2 = false
                         end
-                        if not native_arg_sequence_3 then
-                            -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-                            cVar11 = nil --[[unresolved native value]]
-                            if cVar11 == 0 then
-                                native_arg_sequence_3 = true
+                        if not native_arg_sequence_2 then
+                            cVar11 = xStack_a0:MsgIsHitByHeroSpecialAbility(0xe)
+                            if not cVar11 then
+                                native_arg_sequence_2 = true
                             else
-                                native_arg_sequence_3 = false
+                                native_arg_sequence_2 = false
                             end
                         end
-                        if native_arg_sequence_3 then goto LAB_00d45782 end
+                        if native_arg_sequence_2 then goto LAB_00d45782 end
                     end
                     bVar6 = true
                     bVar5 = true
@@ -1499,49 +1477,39 @@ function CheckFriendlyAttacks(quest)
                         native_arg_sequence_1 = true
                     end
                     if native_arg_sequence_1 then
-                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
-                        cVar11 = nil --[[unresolved native value]]
-                        if cVar11 ~= 0 then
+                        cVar11 = xStack_a0:MsgIsHitByHero()
+                        if cVar11 then
                             native_arg_sequence_1 = true
                         else
                             native_arg_sequence_1 = false
                         end
                     end
                     if native_arg_sequence_1 then goto LAB_00d45782 end
-                    native_arg_sequence_2 = false
-                    if xStack_a0 ~= nil then
-                        native_arg_sequence_2 = true
+                    __native_condition_3 = xStack_a0 ~= nil
+                    if __native_condition_3 then
+                        cVar11 = xStack_a0:MsgIsHitByAnySpecialAbilityFromHero()
+                        __native_condition_3 = cVar11
                     end
-                    if native_arg_sequence_2 then
-                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
-                        cVar11 = nil --[[unresolved native value]]
-                        if cVar11 ~= 0 then
-                            native_arg_sequence_2 = true
-                        else
-                            native_arg_sequence_2 = false
-                        end
-                    end
-                    if native_arg_sequence_2 then
+                    if __native_condition_3 then
                         bVar6 = true
                         bVar5 = true
                         bVar9 = true
                         bVar4 = true
-                        native_arg_sequence_3 = false
+                        native_arg_sequence_2 = false
                         if xStack_a0 == nil then
-                            native_arg_sequence_3 = true
+                            native_arg_sequence_2 = true
                         else
-                            native_arg_sequence_3 = false
+                            native_arg_sequence_2 = false
                         end
-                        if not native_arg_sequence_3 then
-                            -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-                            cVar11 = nil --[[unresolved native value]]
-                            if cVar11 == 0 then
-                                native_arg_sequence_3 = true
+                        if not native_arg_sequence_2 then
+                            cVar11 = xStack_a0:MsgIsHitByHeroSpecialAbility(0xe)
+                            if not cVar11 then
+                                native_arg_sequence_2 = true
                             else
-                                native_arg_sequence_3 = false
+                                native_arg_sequence_2 = false
                             end
                         end
-                        if native_arg_sequence_3 then goto LAB_00d45782 end
+                        if native_arg_sequence_2 then goto LAB_00d45782 end
                     end
                     bVar6 = true
                     bVar5 = true

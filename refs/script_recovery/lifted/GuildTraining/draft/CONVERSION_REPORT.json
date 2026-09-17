@@ -811,15 +811,6 @@
             "unlifted: pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_30)",
             "unlifted: pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)",
             "unlifted: pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0x54))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0xa8))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0x54))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0xa8))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0x54))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0xa8))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*xStack_a0 + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")",
             "unlifted: ACTORMAP_Set(amStack_1c, \"HERO\", &xStack_20)"
           ],
           "calls": [
@@ -848,12 +839,21 @@
             "GetHero",
             "MsgHitFriendWithBareHands",
             "IsLevelLoaded",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "GetHero",
             "MsgHitFriendWithMeleeWeapon",
             "IsLevelLoaded",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "GetHero",
             "MsgHitFriendWithRangedWeapon",
             "IsLevelLoaded",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
@@ -924,7 +924,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 583,
+          "lines": 551,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -948,7 +948,7 @@
             "if (bVar10) goto LAB_00d45db2;",
             "if (bVar9) goto LAB_00d452d1;",
             "if (native_arg_sequence_1) goto LAB_00d45782;",
-            "if (native_arg_sequence_3) goto LAB_00d45782;"
+            "if (native_arg_sequence_2) goto LAB_00d45782;"
           ],
           "nativeLabels": [
             "FLOW_after_lab_00d45184",
@@ -5947,7 +5947,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 254
+        "todo": 245
       }
     },
     {
@@ -14870,6 +14870,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 800
+    "todo": 791
   }
 }
