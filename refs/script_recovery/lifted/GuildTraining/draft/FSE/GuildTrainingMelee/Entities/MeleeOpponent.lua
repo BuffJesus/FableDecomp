@@ -106,7 +106,7 @@ function Main(quest, me)
                         if bVar4 then
                             -- LAB_00d56eb7: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_c0)
+                            resources:DestroyMovie(xStack_bc)
                             resources:ReleaseResource("")
                             return
                         end
@@ -141,7 +141,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_c0)
+                                resources:DestroyMovie(xStack_bc)
                                 resources:ReleaseResource("")
                                 return
                             end

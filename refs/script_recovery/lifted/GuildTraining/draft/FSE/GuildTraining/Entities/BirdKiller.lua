@@ -560,7 +560,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d4ef87::
-    quest:DeregisterTimer(xStack_90)
+    quest:DeregisterTimer(timerId)
     ::LAB_00d4ef90::
     resources:DestroyMovie(xStack_8c)
 end

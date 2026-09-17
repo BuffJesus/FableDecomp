@@ -1636,7 +1636,7 @@ function CheckFriendlyAttacks(quest)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(aCStack_10)
-                            resources:DestroyActorMap(amStack_1c)
+                            resources:DestroyActorMap(xStack_20)
                             resources:ReleaseResource(amStack_1c)
                             resources:ReleaseResource(xStack_30)
                             goto LAB_00d45c9d

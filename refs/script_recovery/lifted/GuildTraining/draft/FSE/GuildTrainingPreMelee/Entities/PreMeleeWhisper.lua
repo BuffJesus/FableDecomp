@@ -97,7 +97,7 @@ function Main(quest, me)
                         if bVar3 then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_1c)
-                            quest:DeregisterTimer(xStack_a4)
+                            quest:DeregisterTimer(timerId)
                             resources:ReleaseResource(xStack_a0)
                             return
                         end
@@ -110,7 +110,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         -- LAB_00d52dc0: (native jump target)
                         resources:DestroyMovie(xStack_1c)
-                        quest:DeregisterTimer(xStack_a4)
+                        quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(xStack_a0)
                         return
                     end
@@ -161,7 +161,7 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then
                     -- LAB_00d52df2: (native jump target)
-                    quest:DeregisterTimer(xStack_a4)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(xStack_a0)
                     return
                 end
@@ -177,7 +177,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then
-                            quest:DeregisterTimer(xStack_a4)
+                            quest:DeregisterTimer(timerId)
                             resources:ReleaseResource(xStack_a0)
                             return
                         end
@@ -188,7 +188,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
-                                quest:DeregisterTimer(xStack_a4)
+                                quest:DeregisterTimer(timerId)
                                 resources:ReleaseResource(xStack_a0)
                                 return
                             end
@@ -202,7 +202,7 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then
                     -- LAB_00d52de9: (native jump target)
-                    quest:DeregisterTimer(xStack_a4)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(xStack_a0)
                     return
                 end

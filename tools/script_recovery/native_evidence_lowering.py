@@ -870,6 +870,20 @@ def lower_after_annotate(text, thing_slots=None):
     timers = re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', text, re.M)
     if len(set(timers)) == 1:
         text = re.sub(r'GSI->DeregisterTimer\(unaff_E[A-Z]{2}\)', f'GSI->DeregisterTimer({timers[0]})', text)
+    # the same for every create/destroy pair: a destroy operand that is never assigned in the function
+    # (a drifted slot name) when the function creates exactly one object of that kind
+    for creator, destroyer in (('GSI->RegisterTimer', 'GSI->DeregisterTimer'), ('RESOURCE_StartMovie', 'RESOURCE_DestroyMovie'),
+                               ('RESOURCE_NewResource', 'RESOURCE_ReleaseResource'), ('ACTORMAP_New', 'ACTORMAP_Destroy'),
+                               ('STRINGMAP_New', 'STRINGMAP_Destroy')):
+        created = sorted(set(re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?' + re.escape(creator) + r'\(', text, re.M)))
+        if len(created) != 1:
+            continue
+        def fix(m, created=created[0]):
+            name = m.group(1)
+            if name == created or re.search(r'^[ \t]*' + re.escape(name) + r' = ', text, re.M):
+                return m.group(0)
+            return m.group(0).replace(name, created, 1)
+        text = re.sub(re.escape(destroyer) + r'\((\w+)\)', fix, text)
     # receiver aliases (`this_00 = *(int **)(this + 0x40);`) are dead once their vcalls read `GSI->`
     text = drop_dead_local_stores(text)
     return text
