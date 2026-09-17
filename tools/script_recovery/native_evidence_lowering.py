@@ -884,6 +884,11 @@ def lower_after_annotate(text, thing_slots=None):
                 return m.group(0)
             return m.group(0).replace(name, created, 1)
         text = re.sub(re.escape(destroyer) + r'\((\w+)\)', fix, text)
+    # a by-value CScriptThing copy stores its GSI pointer field as four byte stores of the receiver alias
+    # (`thing_b8 = (char)piVar1; thing_b9 = (char)((uint)piVar1 >> 8); ...`): construction, not script logic
+    for alias in set(re.findall(r'^[ \t]*(\w+) = \*\(int \*\*\)\(this \+ (?:4|0x40)\);', text, re.M)):
+        a = re.escape(alias)
+        text = re.sub(r'^[ \t]*[\w.]+ = \((?:char|undefined1)\)' + a + r';[ \t]*\r?\n(?:[ \t]*[\w.]+ = \((?:char|undefined1)\)\(\(uint\)' + a + r' >> (?:0x)?[0-9a-f]+\);[ \t]*\r?\n){3}', '', text, flags=re.M)
     # receiver aliases (`this_00 = *(int **)(this + 0x40);`) are dead once their vcalls read `GSI->`
     text = drop_dead_local_stores(text)
     return text

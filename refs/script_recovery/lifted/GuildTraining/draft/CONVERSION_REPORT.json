@@ -11589,7 +11589,6 @@
             "label LAB_00d60aee",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_134);",
             "label LAB_00d60aff",
-            "unlifted: piVar1 = DAT_0143e8f8;",
             "label LAB_00d61342_c8",
             "label LAB_00d61578_c9",
             "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
@@ -12390,7 +12389,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1589,
+          "lines": 1584,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12564,7 +12563,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 77
+        "todo": 76
       }
     },
     {
@@ -14915,6 +14914,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 861
+    "todo": 860
   }
 }

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, u_stk_17c, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_240, xStack_244, xStack_38, xStack_48, xStack_54, xStack_60_2
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, u_stk_17c, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_240, xStack_244, xStack_38, xStack_48, xStack_54, xStack_60_2
     local alive = true
     local function __region_LAB_00d61ad8_c22()
         quest:PauseAllNonScriptedEntities(false)
@@ -53,10 +53,6 @@ function Main(quest, me)
     quest:EntitySetAlwaysBlockAttacksFromThing(me, pCVar9, bVar6)
     quest:SetThingHasInformation(me, false, false, false)
     quest:SetPlayerUsingWillDummies(true)
-    thing_b8 = piVar1
-    thing_b9 = (piVar1 >> 8)
-    thing_b10 = (piVar1 >> 0x10)
-    thing_b11 = (piVar1 >> 0x18)
     quest:SetIsPushableByHero(me, false)
     iVar10 = quest:RegisterTimer()
     xStack_240 = iVar10
@@ -475,7 +471,6 @@ function Main(quest, me)
                 bVar6 = not alive
                 if bVar6 then goto LAB_00d6138b end
                 xStack_234 = quest:RegisterTimer()
-                -- TODO(native): piVar1 = DAT_0143e8f8;
                 iVar11 = (math.modf(quest:ReadGlobalGameDataFloat(0xf08)))
                 quest:SetTimer(xStack_234, iVar11)
                 quest:SetStateInt("TutorialState", 3)
