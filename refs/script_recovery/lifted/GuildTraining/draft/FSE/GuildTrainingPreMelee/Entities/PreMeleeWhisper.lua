@@ -150,7 +150,7 @@ function Main(quest, me)
                     end
                 end
                 if not native_arg_sequence_1 then
-                    if ABS(xStack_a0) < _DAT_0122ded8 == (ABS(xStack_a0) == _DAT_0122ded8) then
+                    if ABS(xStack_a0) < 1.0 == (ABS(xStack_a0) == 1.0) then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
@@ -166,7 +166,7 @@ function Main(quest, me)
                     return
                 end
                 pvVar7 = r2:GetDataString()
-                -- TODO(native): xStack_a0 = (float)GFCharStringToInt(pvVar7);
+                -- TODO(native): xStack_a0 = (float)tonumber(pvVar7);
                 uVar9 = 0
                 i_stk_8c = 0
                 xStack_8c = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
@@ -183,7 +183,7 @@ function Main(quest, me)
                         end
                         -- TODO(native): pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
                         pvVar7 = nil --[[unresolved native value]]
-                        f_stk_28 = GFCharStringToInt(pvVar7)
+                        f_stk_28 = tonumber(pvVar7)
                         if f_stk_28 == xStack_a0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive

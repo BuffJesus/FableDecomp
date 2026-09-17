@@ -1045,6 +1045,29 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             return (m.group(1) or '') + (repr(value) if value is not None else m.group(0))
         text = re.sub(r'(\(float(?:10)?(?: \*)?\))?_?DAT_([0-9a-f]{6,8})\b(?![\w(])', lambda m: dat_float(m) if m.group(1) else m.group(0), text)
         text = re.sub(r'^([ \t]*f\w+ = )_?DAT_([0-9a-f]{6,8});', lambda m: m.group(1) + (repr(float_at(int(m.group(2), 16))) if float_at(int(m.group(2), 16)) is not None else '_DAT_' + m.group(2)) + ';', text, flags=re.M)
+        # `_DAT_x` (an unnamed data item read as a value) beside a float comparison is that float constant
+        def dat_value(m):
+            value = float_at(int(m.group(1), 16))
+            return repr(value) if value is not None and abs(value) < 1e6 else m.group(0)
+        text = re.sub(r'\b_DAT_([0-9a-f]{8})\b(?=\s*(?:[<>=!]=?|\)|,|;))', dat_value, text)
+    byte_at = getattr(spec, 'byte_at', None)
+    if byte_at:
+        # `DAT_x` passed as a call argument where the bytes are a 0/1 fill: a bool constant
+        def dat_bool(m):
+            raw = bytes(byte_at(int(m.group(2), 16) + k) for k in range(4))
+            return m.group(1) + ('true' if raw == b'\x01\x01\x01\x01' else 'false' if raw == b'\x00\x00\x00\x00' else m.group(0)[len(m.group(1)):])
+        text = re.sub(r'([,(]\s*)(?:\((?:u?int|byte|bool|char|undefined\d?)\))?DAT_([0-9a-f]{8})\b(?=\s*[,)])', dat_bool, text)
+    resolve_wide = getattr(spec, 'resolve_wide', None)
+    if resolve_wide:
+        # CCharString::AssignFromWide(&local, L"...") on a stack string: the same as constructing it from
+        # the UTF-16 .rdata literal (the fail-reason messages of SetQuestAsFailed)
+        def assign_wide_local(m):
+            literal = resolve_wide(int(m.group(3), 16))
+            if literal is None:
+                return m.group(0)
+            literal = literal.replace('\\', '\\\\').replace('"', '\\"')
+            return f'{m.group(1)}CCharString::CCharString((CCharString *)&{m.group(2)},"{literal}",-1);'
+        text = re.sub(r'^([ \t]*)CCharString(?:::|__)AssignFromWide\((?:\(CCharString \*\))?&(\w+),\s*(0x[0-9a-f]+)\);', assign_wide_local, text, flags=re.M)
     resolve = getattr(spec, 'resolve_string', None)
     if resolve:
         # `&DAT_xxxxxxxx` string addresses (the empty string and other pooled literals) -> literals
@@ -1598,7 +1621,8 @@ LUA_PSEUDO = [
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
     (re.compile(r'RESOURCE_IsAcquired\(\w+\)'), 'false'),   # a freshly constructed stack resource has no handle yet ([this+8] == 0)
-    (re.compile(r'LOCALLIST_Count\((\w+)\)'), r'#\1'),
+    (re.compile(r'LOCALLIST_Count\((\w+)(?:\[0 \+ 1\])?\)'), r'#\1'),   # `vec[0 + 1]` is the vector's begin field, not an element
+    (re.compile(r'\bGFCharStringToInt\('), 'tonumber('),               # ?GFCharStringToInt@@YIJABVCCharString@@@Z (0x99E7F0)
     (re.compile(r'STRINGMAP_New\('), 'resources:NewStringMap('),
     (re.compile(r'STRINGMAP_Set\('), 'resources:SetString('),
     (re.compile(r'STRINGMAP_Destroy\('), 'resources:DestroyStringMap('),

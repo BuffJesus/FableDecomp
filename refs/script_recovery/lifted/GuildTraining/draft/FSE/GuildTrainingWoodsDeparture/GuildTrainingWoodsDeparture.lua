@@ -76,11 +76,10 @@ function WatchForTermination(quest)
             if bVar4 then
                 return
             end
-            -- TODO(native): CCharString__AssignFromWide(&xStack_8,0x122d70c);
             bVar6 = true
             bVar4 = true
             pCVar5 = quest:GetActiveQuestName()
-            quest:SetQuestAsFailed(pCVar5, bVar4, nil --[[missing]], pMessage)
+            quest:SetQuestAsFailed(pCVar5, bVar4, "", bVar6)
         end
         quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", "Q_GuildTrainingWoodsDeparture")
     end

@@ -92,11 +92,10 @@ function WatchForTermination(quest)
             if bVar4 then
                 return
             end
-            -- TODO(native): CCharString__AssignFromWide(&xStack_10,0x122d70c);
             bVar7 = true
             bVar4 = true
             pCVar5 = quest:GetActiveQuestName()
-            quest:SetQuestAsFailed(pCVar5, bVar4, nil --[[missing]], pMessage)
+            quest:SetQuestAsFailed(pCVar5, bVar4, "", bVar7)
         end
         quest:SetQuestCardObjective("TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02", "HeroGuildComplexInside", "", "Q_GuildTraining")
         alive = quest:NewScriptFrame()

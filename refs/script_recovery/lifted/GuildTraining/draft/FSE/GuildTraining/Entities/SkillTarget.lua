@@ -599,7 +599,7 @@ end
 
 function Init(quest, me)
     local this_00 = me:GetDataString()
-    local iVar1 = GFCharStringToInt(this_00)
+    local iVar1 = tonumber(this_00)
     __native_entity_state:SetStateInt("DummyNumber", iVar1)
 end
 

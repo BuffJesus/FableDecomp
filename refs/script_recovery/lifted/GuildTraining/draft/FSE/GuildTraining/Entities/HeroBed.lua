@@ -17,7 +17,7 @@ function Main(quest, me)
     quest:SetThingAsUsable(me, false)
     quest:SetThingPersistent(me, true)
     xStack_c = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
-    iVar4 = LOCALLIST_Count(xStack_c[0 + 1])
+    iVar4 = #xStack_c
     if 0 < iVar4 then
         iVar7 = 0
         repeat
@@ -47,7 +47,7 @@ function Main(quest, me)
         end
     else
         xStack_24 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
-        iVar5 = LOCALLIST_Count(xStack_24[0 + 1])
+        iVar5 = #xStack_24
         if 0 < iVar5 then
             iVar7 = 0
             repeat
@@ -77,7 +77,7 @@ function Main(quest, me)
             end
         else
             xStack_18 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
-            iVar5 = LOCALLIST_Count(xStack_18[0 + 1])
+            iVar5 = #xStack_18
             if 0 < iVar5 then
                 iVar7 = 0
                 repeat

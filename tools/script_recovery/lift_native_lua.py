@@ -361,7 +361,7 @@ def _wide_string_at(self, va: int) -> str | None:
             if end + 1 >= limit:
                 return None
             chunk = self.data[off:end]
-            if chunk and all(32 <= b < 127 for b in chunk[0::2]) and not any(chunk[1::2]):
+            if all(32 <= b < 127 for b in chunk[0::2]) and not any(chunk[1::2]):     # the empty literal L"" is a string too
                 return chunk.decode("utf-16-le")
             return None
     return None

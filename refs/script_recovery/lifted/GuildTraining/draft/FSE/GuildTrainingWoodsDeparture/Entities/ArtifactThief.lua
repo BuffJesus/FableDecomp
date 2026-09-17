@@ -86,7 +86,7 @@ function Main(quest, me)
                     bVar2 = false
                     pCVar4 = quest:GetHero()
                     quest:EntitySetFacingAngleTowardsThing(me, pCVar4, bVar2)
-                    me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, DAT_01375748, false, false)
+                    me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
                     pCVar4 = quest:GetHero()
                     quest:AddLineToConversation(iVar6, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_COMMENT_FIRST", me, pCVar4, false)
                 else

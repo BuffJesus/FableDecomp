@@ -12662,10 +12662,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: CCharString__AssignFromWide(&xStack_8,0x122d70c);",
-            "SetQuestAsFailed: missing wideMessage (3 args for 4 params)"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -12679,7 +12676,7 @@
             "SetQuestAsFailed",
             "DeactivateQuestLater"
           ],
-          "lines": 40,
+          "lines": 39,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13969,7 +13966,7 @@
         "functionSyntaxPassed": 17,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 76
+        "todo": 74
       }
     },
     {
@@ -14046,10 +14043,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CCharString__AssignFromWide(&xStack_10,0x122d70c);",
-            "SetQuestAsFailed: missing wideMessage (3 args for 4 params)"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -14085,7 +14079,7 @@
             "IsActiveThreadTerminating",
             "DeactivateQuestLater"
           ],
-          "lines": 94,
+          "lines": 93,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14424,7 +14418,7 @@
         "functionSyntaxPassed": 10,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 11
+        "todo": 9
       }
     },
     {
@@ -14636,10 +14630,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: CCharString__AssignFromWide(&xStack_8,0x122d70c);",
-            "SetQuestAsFailed: missing wideMessage (3 args for 4 params)"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -14652,7 +14643,7 @@
             "SetQuestAsFailed",
             "DeactivateQuestLater"
           ],
-          "lines": 39,
+          "lines": 38,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14931,7 +14922,7 @@
         "functionSyntaxPassed": 9,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 21
+        "todo": 19
       }
     }
   ],
@@ -14942,6 +14933,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 884
+    "todo": 878
   }
 }

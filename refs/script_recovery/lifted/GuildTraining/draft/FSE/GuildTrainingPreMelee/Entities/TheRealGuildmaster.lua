@@ -139,7 +139,7 @@ function Main(quest, me)
                 quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar3)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FIRST", me, pCVar6, false)
-                me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, DAT_01375748, false, false)
+                me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
                 uVar14 = 1
                 break
             else

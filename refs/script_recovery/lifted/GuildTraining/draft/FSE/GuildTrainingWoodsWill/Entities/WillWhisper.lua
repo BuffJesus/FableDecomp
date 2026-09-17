@@ -82,7 +82,7 @@ function Main(quest, me)
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d68acf end
                     quest:SetStateBool("WhisperAnimate", false)
-                    me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, DAT_01375748, false, false)
+                    me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, true, false, false)
                 end
                 cVar1 = quest:GetStateBool("BanditsAlive")
             end
