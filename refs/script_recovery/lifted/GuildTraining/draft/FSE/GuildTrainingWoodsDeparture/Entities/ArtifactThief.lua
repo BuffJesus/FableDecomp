@@ -186,7 +186,6 @@ function Main(quest, me)
                     quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_138);
                     -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_138;
                 else
                     alive = not quest:IsActiveThreadTerminating()
@@ -232,7 +231,6 @@ function Main(quest, me)
                     quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_bc);
                     -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_bc;
                 end
                 quest:EntitySetAsKillable(me, true, true)

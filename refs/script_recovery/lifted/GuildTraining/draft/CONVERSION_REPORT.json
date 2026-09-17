@@ -5134,17 +5134,11 @@
           "todo": [
             "label LAB_00d4e0f2",
             "verify cleanup at LAB_00d4e91f (lifted as early return)",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "label LAB_00d4e91f_c2",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "goto LAB_00d4e853_c2",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "label LAB_00d4e853_c2",
             "label LAB_00d4e5e3",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "label LAB_00d4e91f",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "label LAB_00d4e853"
           ],
           "calls": [
@@ -5397,7 +5391,7 @@
             "DeregisterTimer",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 548,
+          "lines": 542,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5961,7 +5955,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 268
+        "todo": 262
       }
     },
     {
@@ -10612,13 +10606,7 @@
             "goto LAB_00d5dac4",
             "verify cleanup at LAB_00d5db05 (lifted as early return)",
             "verify cleanup at LAB_00d5dab8 (lifted as early return)",
-            "AddQuestInfoTick: not in FSE manifest",
-            "AddQuestInfoTick: not in FSE manifest",
-            "AddQuestInfoTick: not in FSE manifest",
             "label LAB_00d5db99",
-            "AddQuestInfoTick: not in FSE manifest",
-            "AddQuestInfoTick: not in FSE manifest",
-            "AddQuestInfoTick: not in FSE manifest",
             "IsPlayerHoldingLockTargetButton: not in FSE manifest",
             "IsPlayerHoldingFireRangedWeaponButton: not in FSE manifest",
             "IsPlayerHoldingLockTargetButton: not in FSE manifest",
@@ -10638,14 +10626,6 @@
             "goto LAB_00d5db1f",
             "verify cleanup at LAB_00d5db45 (lifted as early return)",
             "verify cleanup at LAB_00d5db13 (lifted as early return)",
-            "AddQuestInfoTick: not in FSE manifest",
-            "unlifted: xStack_1e4 = CVar10;",
-            "AddQuestInfoTick: not in FSE manifest",
-            "AddQuestInfoTick: not in FSE manifest",
-            "AddQuestInfoTick: not in FSE manifest",
-            "unlifted: xStack_1e4 = CVar10;",
-            "AddQuestInfoTick: not in FSE manifest",
-            "AddQuestInfoTick: not in FSE manifest",
             "label LAB_00d5c757",
             "IsHeroInProjectileWeaponMode: not in FSE manifest",
             "IsPlayerHoldingFireRangedWeaponButton: not in FSE manifest",
@@ -10834,9 +10814,9 @@
             "EntitySetTargetable",
             "IsXbox",
             "IsActiveThreadTerminating",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
             "DeregisterTimer",
             "DeregisterTimer",
             "RESOURCE_DestroyMovie",
@@ -10844,9 +10824,9 @@
             "DeregisterTimer",
             "DeregisterTimer",
             "RESOURCE_DestroyMovie",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
             "DisplayQuestInfo",
             "SetTimer",
             "GetMasterGameState",
@@ -11045,9 +11025,9 @@
             "RESOURCE_ReleaseResource",
             "IsXbox",
             "IsActiveThreadTerminating",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
             "DeregisterTimer",
             "DeregisterTimer",
             "RESOURCE_DestroyMovie",
@@ -11055,9 +11035,9 @@
             "DeregisterTimer",
             "DeregisterTimer",
             "RESOURCE_DestroyMovie",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
-            "AddQuestInfoTick",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
+            "AddQuestInfoTickByText",
             "DisplayQuestInfo",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -11291,7 +11271,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1308,
+          "lines": 1297,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -11465,7 +11445,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 93
+        "todo": 79
       }
     },
     {
@@ -12804,10 +12784,8 @@
           "todo": [
             "label LAB_00d6280c",
             "goto LAB_00d63aab",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "unlifted: this_01 = (CPhysicsMeshInfo *)xStack_138;",
             "goto LAB_00d63aab",
-            "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
             "unlifted: this_01 = (CPhysicsMeshInfo *)xStack_bc;",
             "label LAB_00d63aa6_c2",
             "label LAB_00d63aab_c2",
@@ -13171,7 +13149,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 889,
+          "lines": 887,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13940,7 +13918,7 @@
         "functionSyntaxPassed": 17,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 49
+        "todo": 47
       }
     },
     {
@@ -14906,6 +14884,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 836
+    "todo": 814
   }
 }

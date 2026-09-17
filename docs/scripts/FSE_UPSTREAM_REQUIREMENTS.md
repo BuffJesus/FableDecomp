@@ -77,6 +77,9 @@ works but forces every generated function to be wrapped.
 | `me:GetName()` | `CScriptThing` vtable slot 4 | entities derive their team from their own script name |
 | `me:SetDataString(s)` / `me:GetCurrentStateGroupType()` / `me:IsBeingCarriedBy(scriptName)` | `CScriptThing` slots / GSI | |
 | `quest:PersistTransfer{Bool,Int,Float,String}(context, name, default)` | `CPersistContext::Transfer<T>` | explicit default; current value as default differs on first load |
+| `quest:IsPlayerHoldingFireRangedWeaponButton()` | GSI slot 67 (0x10C) `?IsPlayerHoldingFireRangedWeaponButton@CGameScriptInterface@@UBE_NXZ` | GuildTraining skill tutorial polls it (5 sites, 2026-09-17) |
+| `me:MsgIsHitBy(scriptName)` | `?MsgIsHitBy@CScriptThing@@UBE_NABVCCharString@@@Z` | the DLL only exposes `MsgIsHitByHero`; guild dummies test a named attacker (6 sites) |
+| `quest:AddQuestInfoTickByText(text, state, scale)` | GSI slot 331 (0x52C) | already bound (`AddQuestInfoTickByAction` = slot 330); the converter now emits the `ByText` name for CCharString operands |
 
 ## 5. Already upstream (thanks) — for reference
 

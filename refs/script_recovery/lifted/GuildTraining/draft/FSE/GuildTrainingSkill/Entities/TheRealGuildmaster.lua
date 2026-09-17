@@ -311,12 +311,9 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if not bVar4 then
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_LOCK_TARGET", false, 1.0)
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
+                    xStack_1e4 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
+                    xStack_1ec = quest:AddQuestInfoTickByText("GAME_ACTION_LOCK_TARGET", false, 1.0)
+                    xStack_1e8 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5ba3e
                 end
                 -- LAB_00d5db99: (native jump target)
@@ -333,12 +330,9 @@ function Main(quest, me)
                 resources:DestroyMovie(xStack_1c)
                 return
             end
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_BLACK_BUTTON", false, 1.0)
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_X", false, 1.0)
+            xStack_1e4 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
+            xStack_1ec = quest:AddQuestInfoTickByText("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
+            xStack_1e8 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5ba3e::
             c_stk_215 = 0
             quest:DisplayQuestInfo(true)
@@ -387,7 +381,7 @@ function Main(quest, me)
                         return
                     end
                     c_stk_215 = 1
-                    quest:RemoveQuestInfoElement(iVar16)
+                    quest:RemoveQuestInfoElement(xStack_1e4)
                     quest:RemoveQuestInfoElement(xStack_1ec)
                     quest:RemoveQuestInfoElement(xStack_1e8)
                 else
@@ -401,7 +395,7 @@ function Main(quest, me)
                             return
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                        quest:UpdateQuestInfoTick(bVar4, (fVar20 ~= 0))
+                        quest:UpdateQuestInfoTick(xStack_1e4, bVar4)
                         -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                         quest:IsPlayerHoldingLockTargetButton()
                         quest:UpdateQuestInfoTick(xStack_1ec, bVar4)
@@ -637,7 +631,7 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_1c)
                     return
                 end
-                quest:RemoveQuestInfoElement(fVar20)
+                quest:RemoveQuestInfoElement(xStack_1e4)
                 quest:RemoveQuestInfoElement(xStack_1ec)
                 quest:RemoveQuestInfoElement(xStack_1e8)
             end
@@ -738,13 +732,10 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if not bVar4 then
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    -- TODO(native): xStack_1e4 = CVar10;
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
+                    CVar10 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
+                    xStack_1e4 = CVar10
+                    xStack_1ec = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
+                    xStack_1e8 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5c6b1
                 end
                 quest:DeregisterTimer(xStack_220)
@@ -760,13 +751,10 @@ function Main(quest, me)
                 resources:DestroyMovie(xStack_1c)
                 return
             end
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_BLACK_BUTTON", false, 1.0)
-            -- TODO(native): xStack_1e4 = CVar10;
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_X", false, 1.0)
+            CVar10 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
+            xStack_1e4 = CVar10
+            xStack_1ec = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
+            xStack_1e8 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5c6b1::
             c_stk_215 = 0
             quest:DisplayQuestInfo(true)
@@ -875,6 +863,7 @@ function Main(quest, me)
                         return
                     end
                     quest:SetTimer(xStack_21c, 0xf)
+                    CVar10 = xStack_1e4
                 end
                 bVar4 = quest:MsgOnHeroFiredRangedWeapon()
                 if bVar4 then
@@ -919,7 +908,7 @@ function Main(quest, me)
                         return
                     end
                     c_stk_215 = 1
-                    quest:RemoveQuestInfoElement(1)
+                    quest:RemoveQuestInfoElement(CVar10)
                     quest:RemoveQuestInfoElement(xStack_1ec)
                     quest:RemoveQuestInfoElement(xStack_1e8)
                 else
@@ -933,7 +922,7 @@ function Main(quest, me)
                             return
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                        quest:UpdateQuestInfoTick(bVar4, (fVar20 ~= 0))
+                        quest:UpdateQuestInfoTick(CVar10, bVar4)
                         -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
                         quest:IsHeroInProjectileWeaponMode()
                         quest:UpdateQuestInfoTick(xStack_1ec, bVar4)
@@ -942,7 +931,7 @@ function Main(quest, me)
                         quest:UpdateQuestInfoTick(xStack_1e8, bVar4)
                     end
                 end
-            until not (xStack_1d4_b3 == 0)
+            until not (1 == 0)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
@@ -960,7 +949,7 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_1c)
                     return
                 end
-                quest:RemoveQuestInfoElement(fVar3)
+                quest:RemoveQuestInfoElement(CVar10)
                 quest:RemoveQuestInfoElement(xStack_1ec)
                 quest:RemoveQuestInfoElement(xStack_1e8)
             end

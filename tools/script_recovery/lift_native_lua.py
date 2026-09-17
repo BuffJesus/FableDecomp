@@ -173,7 +173,7 @@ RE_BINDING = re.compile(
     r'(?P<var>\w+) = (?:::)?operator_new\(0x1c\);.*?'
     r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>[^"]+)",-1\);.*?'
     r'CScriptBase::AddEntityScriptBinding\([^,]+,(?P=var)\);\s*if \([^{]*\) \{[^}]*?_Cons_val[^}]*?\}', re.S)
-RE_CONS_VAL = re.compile(r'std::\s*_Cons_val<[^;]*?;', re.S)
+RE_CONS_VAL = re.compile(r'std::\s*_(?:Cons|Dest)_val<[^;]*?;', re.S)    # bsim-named CCharString ctor/dtor of a temporary
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
 # Evidence-lowering pseudo statements (native_evidence_lowering.py) are emitted as-is with lifted operands.
@@ -1297,6 +1297,12 @@ class Lifter:
             self.kinds[target] = 'vector'
             self.calls.append(name)
             return True
+        if name == 'AddQuestInfoTick' and name not in self.manifest:
+            # GSI slots 330/331 overload on EGameAction vs CCharString; ForgeFSE binds them as two names
+            first = self.arguments(argtext)[:1]
+            raw = first[0].strip() if first else ''
+            text_arg = raw.startswith('"') or bool(re.match(r'(?:\(CCharString[\w ]*\*\))?&?\(?\w*(?:Stack_|_stk_)', raw)) or self.kind_of(self.expr(raw)) == 'string'
+            name = 'AddQuestInfoTickByText' if text_arg else 'AddQuestInfoTickByAction'
         spec = self.manifest.get(name)
         if (not self.execution_entity
                 and (name == 'StartScriptingEntity' or spec and spec.get('scope') == 'Entity')):

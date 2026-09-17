@@ -158,7 +158,6 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -187,7 +186,6 @@ function Main(quest, me)
                                             resources:ReleaseResource(0)
                                             -- LAB_00d4e91f_c2: (native jump target)
                                             quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(xStack_8c)
                                             return
@@ -233,7 +231,6 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(xStack_8c)
                                             return
@@ -270,7 +267,6 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -345,7 +341,6 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(xStack_8c)
                                             return
