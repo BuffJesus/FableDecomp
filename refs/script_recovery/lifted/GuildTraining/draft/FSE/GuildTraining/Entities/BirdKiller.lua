@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, fVar14, fVar2, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar10, xStack_38, xStack_68, xStack_78, xStack_8c, xStack_c, x_stk_8
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar10, xStack_38, xStack_68, xStack_78, xStack_8c, xStack_c, x_stk_8
     local alive = true
     local function __region_LAB_00d4e853_c2()
         quest:PauseAllNonScriptedEntities(false)
@@ -52,9 +52,9 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d4ef90 end
-        r1 = quest:GetAllThingsWithScriptName("BirdMarker")
-        iVar6 = 0 - 0 >> 0x1f
-        if (0 - 0) / 0xc + iVar6 ~= iVar6 then
+        xStack_68 = quest:GetAllThingsWithScriptName("BirdMarker")
+        if #xStack_68 ~= 0 then
+            ctr_90 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -63,12 +63,13 @@ function Main(quest, me)
                     return
                 end
                 bVar3 = false
-                pPosition = (**(*(0 + 0x0) + 0x18))()
-                r2 = quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", nil --[[missing]], "KillBird")
-                quest:SetThingPersistent(r2, true)
-                -- TODO(native): xStack_90 = (CCharString)((int)xStack_90 + 0xc);
+                elem_1 = xStack_68[(ctr_90) / 0xc + 1]
+                pPosition = elem_1:GetPos()
+                r1 = quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", pPosition, "KillBird")
+                quest:SetThingPersistent(r1, true)
+                ctr_90 = ctr_90 + 0xc
                 uVar10 = uVar10 + 1
-            until not (uVar10 < ((0 - 0) / 0xc))
+            until not (uVar10 < ((#xStack_68 * 0xc) / 0xc))
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -81,6 +82,7 @@ function Main(quest, me)
         __native_entity_state:SetStateInt("BirdMode", 2)
     end
     timerId = quest:RegisterTimer()
+    ctr_90 = timerId
     quest:SetTimer(timerId, 0xf)
     iVar6 = __native_entity_state:GetStateInt("BirdMode")
     while iVar6 == 2 do
@@ -105,7 +107,7 @@ function Main(quest, me)
             quest:AddPersonToConversation(iVar7, pCVar5)
             pCVar5 = quest:GetHero()
             quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_HELP", me, pCVar5, false)
-            quest:SetTimer(timerId, 0xf)
+            quest:SetTimer(ctr_90, 0xf)
         end
         bVar3 = me:IsTalkedToByHero()
         if bVar3 then
@@ -123,7 +125,7 @@ function Main(quest, me)
                         __native_entity_state:SetStateBool("HaveChatted", true)
                         xStack_68 = resources:ScriptThing(xStack_8c)
                         pCVar15 = xStack_68
-                        r3 = quest:GetHealth(pCVar15)
+                        r2 = quest:GetHealth(pCVar15)
                         fVar2 = 0.0
                         xStack_68 = nil
                         if fVar2 < fret_0 then
@@ -133,7 +135,7 @@ function Main(quest, me)
                             iVar6 = 0
                             pcVar11 = "TEXT_QST_028_BIRD_KILLER_GREET"
                             pCVar15 = quest:GetHero()
-                            r4 = me:Speak(pCVar15, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            r3 = me:Speak(pCVar15, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -200,11 +202,11 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if not bVar3 then
-                                        r2 = resources:NewActorMap()
-                                        resources:SetActor(r2, "HERO", 0)
-                                        resources:SetActor(r2, "ME", xStack_8c)
-                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r2, false, true)
-                                        resources:DestroyActorMap(r2)
+                                        r1 = resources:NewActorMap()
+                                        resources:SetActor(r1, "HERO", 0)
+                                        resources:SetActor(r1, "ME", xStack_8c)
+                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
+                                        resources:DestroyActorMap(r1)
                                         resources:ReleaseResource(0)
                                         __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
                                     end
@@ -215,7 +217,7 @@ function Main(quest, me)
                             if not bVar3 then
                                 x_stk_8 = resources:ScriptThing(xStack_8c)
                                 pCVar15 = x_stk_8
-                                r5 = quest:GetHealth(pCVar15)
+                                r4 = quest:GetHealth(pCVar15)
                                 fVar2 = 0.0
                                 if fVar2 < fret_00 then
                                     iVar13 = 0
@@ -224,7 +226,7 @@ function Main(quest, me)
                                     iVar6 = 0
                                     pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
                                     pCVar5 = quest:GetHero()
-                                    r6 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    r5 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                                     iVar6 = me:IsPerformingScriptTask()
                                     cVar4 = iVar6
                                     while cVar4 do
@@ -310,11 +312,11 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if not bVar3 then
-                                        r2 = resources:NewActorMap()
-                                        resources:SetActor(r2, "HERO", 0)
-                                        resources:SetActor(r2, "ME", xStack_8c)
-                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r2, false, true)
-                                        resources:DestroyActorMap(r2)
+                                        r1 = resources:NewActorMap()
+                                        resources:SetActor(r1, "HERO", 0)
+                                        resources:SetActor(r1, "ME", xStack_8c)
+                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
+                                        resources:DestroyActorMap(r1)
                                         resources:ReleaseResource(0)
                                         quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyMovie(xStack_78)
@@ -329,7 +331,7 @@ function Main(quest, me)
                             if not bVar3 then
                                 x_stk_8 = resources:ScriptThing(xStack_8c)
                                 pCVar15 = x_stk_8
-                                r7 = quest:GetHealth(pCVar15)
+                                r6 = quest:GetHealth(pCVar15)
                                 fVar2 = 0.0
                                 if fVar2 < fret_00 then
                                     iVar13 = 0
@@ -338,7 +340,7 @@ function Main(quest, me)
                                     iVar6 = 0
                                     pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
                                     pCVar5 = quest:GetHero()
-                                    r8 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    r7 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                                     iVar6 = me:IsPerformingScriptTask()
                                     cVar4 = iVar6
                                     while cVar4 do
@@ -392,7 +394,7 @@ function Main(quest, me)
             bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar14)
             __native_condition_2 = bVar3
             if __native_condition_2 then
-                iVar6 = quest:GetTimer(timerId)
+                iVar6 = quest:GetTimer(ctr_90)
                 __native_condition_2 = iVar6 < 1
             end
             if __native_condition_2 then
@@ -418,7 +420,7 @@ function Main(quest, me)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_ANY_MORE", me, pCVar5, false)
                 end
-                quest:SetTimer(timerId, 0xf)
+                quest:SetTimer(ctr_90, 0xf)
             end
             bVar3 = me:IsTalkedToByHero()
             if bVar3 then
@@ -478,7 +480,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities((pCVar15 ~= 0))
                         xStack_c = resources:ScriptThing(xStack_8c)
                         pCVar5 = xStack_c
-                        r9 = quest:GetHealth(pCVar5)
+                        r8 = quest:GetHealth(pCVar5)
                         fVar2 = 0.0
                         if fVar2 < fret_01 then
                             iVar13 = 0
@@ -487,7 +489,7 @@ function Main(quest, me)
                             iVar6 = 0
                             pcVar11 = "TEXT_QST_028_BIRD_KILLER_DONE"
                             pCVar5 = quest:GetHero()
-                            r10 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            r9 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -541,7 +543,7 @@ function Main(quest, me)
                 bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar14)
                 __native_condition_3 = bVar3
                 if __native_condition_3 then
-                    iVar6 = quest:GetTimer(timerId)
+                    iVar6 = quest:GetTimer(ctr_90)
                     __native_condition_3 = iVar6 < 1
                 end
                 if __native_condition_3 then
@@ -553,7 +555,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(iVar7, pCVar5)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_FINISHED", me, pCVar5, false)
-                    quest:SetTimer(timerId, 0xf)
+                    quest:SetTimer(ctr_90, 0xf)
                 end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -562,7 +564,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d4ef87::
-    quest:DeregisterTimer(timerId)
+    quest:DeregisterTimer(xStack_90)
     ::LAB_00d4ef90::
     resources:DestroyMovie(xStack_8c)
 end

@@ -133,12 +133,12 @@ def join_wrapped_statements(text: str) -> str:
 
 RE_LOCAL_COUNTED_RELEASE = re.compile(
     r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != \(int \*\)0x0\) && \(\*\1 = \*\1 \+ -1, \*\1 == 0\)\) \{\s*\r?\n'
-    r'[ \t]*\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+    r'[ \t]*(?:\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)|\(\*\*\(code \*\*\)\(\1 \+ 4\)\))\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 
 
 RE_LOCAL_COUNTED_RELEASE2 = re.compile(
     r'^[ \t]*if \((\w+(?:\._\d_4_|\[\d\])?) != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\1 = \*\1 \+ -1;\s*\r?\n[ \t]*if \(\*\1 == 0\) \{\s*\r?\n'
-    r'[ \t]*\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+    r'[ \t]*(?:\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)|\(\*\*\(code \*\*\)\(\1 \+ 4\)\))\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 # the same release on a slot Ghidra typed as something else (`(CCharString)0x0`, `*(int *)X`, `(int)X + 4`)
 RE_LOCAL_COUNTED_RELEASE3 = re.compile(
     r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != \((?:int \*|\w+)\)0x0\) && \(\*\(int \*\)\1 = \*\(int \*\)\1 \+ -1, \*\(int \*\)\1 == 0\)\) \{\s*\r?\n'
@@ -387,6 +387,16 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\*(\w+) == \(undefined \*\)0x0', r'*\1 == 0', text)
     text = re.sub(r'\(undefined \*\*\)0x0', '(int *)0x0', text)
     text = re.sub(r'return extraout_\w+;', 'return;', text)   # a void function whose EAX Ghidra guessed as a result
+    # an integer counter kept in a slot Ghidra typed CCharString (a byte offset stepping through a vector):
+    # `X = (CCharString)((int)X + 0xc);` with its `X = (CCharString)0x0;` start
+    counters = set(re.findall(r'^[ \t]*(\w+) = \(CCharString\)\(\(int\)\1 \+ (?:0x[0-9a-f]+|\d+)\);', text, re.M))
+    for var in counters:
+        v = re.escape(var)
+        text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString\)\(\(int\)' + v + r' \+ (0x[0-9a-f]+|\d+)\);', r'\1' + var + r' = ' + var + r' + \2;', text, flags=re.M)
+        text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString\)0x0;', r'\1' + var + ' = 0;', text, flags=re.M)
+        text = re.sub(r'\(int\)' + v + r'\b', var, text)
+        # the slot doubles as a string temporary elsewhere (`&X`): the counter gets its own name
+        text = re.sub(r'(?<![&\w])' + v + r'\b', 'ctr_' + var.split('_', 1)[1], text)
     # x87 compare idiom: `(a < b) != (a == b)` is `a <= b` (Ghidra's rendering of fcomp/fnstsw/test 0x41)
     text = re.sub(r'(\(?[\w.]+\)?) < ((?:\(float10\))?[\w.]+) != \(\1 == \2\)', r'\1 <= \2', text)
     # a float staged in a slot Ghidra typed as a CCharString array: `aCStack_1c[0] = (CCharString)(expr);`
@@ -843,7 +853,7 @@ def rename_scalar_stack_locals(text):
     return text
 
 
-def lower_after_annotate(text):
+def lower_after_annotate(text, thing_slots=None):
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
@@ -852,7 +862,7 @@ def lower_after_annotate(text):
     # a thing returned straight into an outgoing by-value slot (`F((CScriptThing *)&stack0xNN, ...)` with no
     # result) that the decompiler then "reassembles" from unrelated registers: the temporary is the result
     text = RE_BV_THING_RESULT.sub(lambda m: f'{m.group(1)}{m.group(4)} = {m.group(2)}({m.group(3)});\n', text)
-    text = fold_local_thing_vectors(text)
+    text = fold_local_thing_vectors(text, thing_slots)
     # `GSI->DeregisterTimer(unaff_REG)`: Ghidra lost the register holding the id across the block; when the
     # function registers exactly one timer that is the id
     timers = re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', text, re.M)
@@ -870,7 +880,7 @@ RE_VEC_FREE = re.compile(
     r'^[ \t]*if \((\w+) != \(undefined4 \*\)0x0\) \{\s*\r?\n[ \t]*free\(\1\);[ \t]*\r?\n(?:[ \t]*\w+ = \w+;[ \t]*\r?\n)*[ \t]*\}[ \t]*\r?\n', re.M)
 
 
-def fold_local_thing_vectors(text):
+def fold_local_thing_vectors(text, thing_slots=None):
     '''A local std::vector<CScriptThing> filled by a GSI `GetAllThings*` slot: the Lua binding returns a table.
     `n = GSI->GetAllThingsWithDefName(&name,&vec);` -> `vec = GSI->...(&name); n = LOCALLIST_Count(vec);`,
     `(CScriptThing *)((int)vec + byteOffset)` -> `LOCALLIST_At(vec, byteOffset / 0xc)`; the element destructor
@@ -880,12 +890,39 @@ def fold_local_thing_vectors(text):
     def call(m):
         vectors.append(m.group(5))
         return f'{m.group(1)}{m.group(5)} = GSI->{m.group(3)}({m.group(4)});\n{m.group(1)}{m.group(2)} = LOCALLIST_Count({m.group(5)});'
-    text = re.sub(r'^([ \t]*)(\w+) = GSI->(GetAllThings\w+)\(([^;]*?),&(\w+)\);', call, text, flags=re.M)
+    text = re.sub(r'^([ \t]*)(\w+) = GSI->(GetAllThings\w+)\(([^;]*?),&?(\w+)\);', call, text, flags=re.M)
+    # the void spelling (the count is computed from the begin/end slots afterwards)
+    def call_void(m):
+        vectors.append(m.group(4))
+        return f'{m.group(1)}{m.group(4)} = GSI->{m.group(2)}({m.group(3)});'
+    text = re.sub(r'^([ \t]*)GSI->(GetAllThings\w+)\(([^;]*?),&?(\w+)\);', call_void, text, flags=re.M)
     if not vectors:
         return text
+    elems = 0
     for vec in vectors:
-        text = re.sub(r'\(CScriptThing \*\)\(\(int\)' + re.escape(vec) + r' \+ (\w+)\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
-        text = re.sub(r'\(CScriptThing \*\)' + re.escape(vec) + r'\b', f'LOCALLIST_At({vec}, 0)', text)
+        v = re.escape(vec)
+        # the zero-initialised begin/end/capacity slots before the call are the vector's construction
+        text = re.sub(r'^[ \t]*' + v + r' = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'\(CScriptThing \*\)\(\(int\)' + v + r' \+ (\w+)\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
+        text = re.sub(r'\(CScriptThing \*\)' + v + r'\b', f'LOCALLIST_At({vec}, 0)', text)
+        # element count from the begin/end slots (both canonicalised to the vector's name):
+        # `iVar = (int)V - V >> 0x1f;` (sign fix) then `((int)V - V) / 0xc + iVar != iVar` (count != 0)
+        text = re.sub(r'^[ \t]*(\w+) = \(int\)' + v + r' - ' + v + r' >> 0x1f;[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'\(\(int\)' + v + r' - ' + v + r'\) / 0xc \+ (\w+) (!=|==) \1\b', lambda m, vec=vec: f'LOCALLIST_Count({vec}) {m.group(2)} 0', text)
+        text = re.sub(r'\(int\)' + v + r' - ' + v + r'\b', f'LOCALLIST_Count({vec}) * 0xc', text)
+        # a thing vcall on an element addressed by byte offset: name the element first
+        pat = re.compile(r'^([ \t]*)([^\n]*?)\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + v + r' \+ (?:\(int\))?(\w+)\) \+ (0x[0-9a-f]+|\d+)\)\)\(', re.M)
+        def elem(m):
+            nonlocal elems
+            elems += 1
+            name = f'elem_{elems}'
+            slot = int(m.group(4), 0)
+            method = (thing_slots or {}).get(slot)
+            head = f'{m.group(1)}{name} = LOCALLIST_At({vec}, ({m.group(3)}) / 0xc);\n'
+            if method:
+                return head + f'{m.group(1)}{m.group(2)}CScriptThing::{method[0]}({name}, '
+            return head + f'{m.group(1)}{m.group(2)}(**(code **)(*(int *){name} + {m.group(4)}))('
+        text = pat.sub(elem, text)
     # element destructor calls through vtable slot 0 (`(**(code **)*p)(0)`), the storage free, the zeroed
     # begin/end/capacity slots; then loops / guards left with only pointer bookkeeping
     text = re.sub(r'^[ \t]*\(\*\*\(code \*\*\)\*\w+\)\(0\);[ \t]*\r?\n', '', text, flags=re.M)

@@ -125,7 +125,7 @@ end
 
 function RunTutorials(quest)
     local resources = quest:RetailResources()
-    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, i_stk_44, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r16, r17, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_88
+    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, i_stk_44, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -133,9 +133,9 @@ function RunTutorials(quest)
     quest:SetExperienceSpendingAsEnabled(false)
     quest:SetHeroSleepingAsEnabled(false)
     r3 = quest:GetThingWithScriptName("GuildDoors")
-    pCVar3 = quest:GetThingWithScriptName("TheRealGuildmaster")
-    quest:MiniMapAddMarker(pCVar3, "HUD_ORB_QUEST_CORE")
-    pCVar3 = nil
+    pCVar3 = quest:GetThingWithScriptName("HUD_ORB_QUEST_CORE")
+    quest:MiniMapAddMarker(pCVar3, "TheRealGuildmaster")
+    xStack_54 = nil
     bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
     if bVar2 then
         alive = not quest:IsActiveThreadTerminating()
@@ -245,14 +245,14 @@ function RunTutorials(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
-            pCVar3 = quest:GetThingWithScriptName("PreMeleeDummyMarker")
+            pCVar3 = quest:GetThingWithScriptName("OBJECT_STRAW_DUMMY_01")
             pCVar4 = pCVar3:GetPos()
-            r4 = quest:CreateObject("PreMeleeDummy", nil --[[missing]], "OBJECT_STRAW_DUMMY_01")
-            pCVar3 = quest:GetThingWithScriptName("PreMeleeDummyMarker")
+            r4 = quest:CreateObject("PreMeleeDummy", nil --[[missing]], "PreMeleeDummyMarker")
+            pCVar3 = quest:GetThingWithScriptName("PreMeleeDummy")
             uVar15 = 1
             fret_0 = pCVar3:GetAngleXY()
             angle = fret_0
-            pCVar3 = quest:GetThingWithScriptName("PreMeleeDummy")
+            pCVar3 = quest:GetThingWithScriptName("PreMeleeDummyMarker")
             quest:EntitySetFacingAngle(pCVar3, angle, (uVar15 ~= 0))
         end
         pCVar3 = quest:GetThingWithScriptName("MeleeApprentice")
@@ -331,9 +331,9 @@ function RunTutorials(quest)
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
             -- TODO(native): xStack_54._0_4_ = (int *)0x0;
-            r5 = quest:GetAllThingsWithScriptName("AppleMarker")
-            iVar9 = (pCVar3._4_4_ - pCVar3._0_4_) >> 0x1f
-            if (pCVar3._4_4_ - pCVar3._0_4_) / 0xc + iVar9 ~= iVar9 then
+            xStack_54 = quest:GetAllThingsWithScriptName("AppleMarker")
+            iVar9 = (xStack_54._4_4_ - xStack_54._0_4_) >> 0x1f
+            if (xStack_54._4_4_ - xStack_54._0_4_) / 0xc + iVar9 ~= iVar9 then
                 iVar9 = 0
                 uVar8 = 0
                 repeat
@@ -342,14 +342,14 @@ function RunTutorials(quest)
                     if bVar2 then
                         goto LAB_00d496bc
                     end
-                    pCVar4 = (**(*(pCVar3._0_4_ + iVar9) + 0x18))()
-                    r6 = quest:CreateObject(pCVar4, uVar8, "")
-                    quest:SetThingPersistent(r6, true)
-                    quest:SetThingPersistent(r4, (pCVar3._0_4_ + iVar9))
-                    quest:RemoveThing(nil --[[missing]], (pCVar3._0_4_ + iVar9), false)
+                    pCVar4 = (**(*(xStack_54._0_4_ + iVar9) + 0x18))()
+                    r5 = quest:CreateObject(pCVar4, uVar8, "")
+                    quest:SetThingPersistent(r5, true)
+                    quest:SetThingPersistent(r4, (xStack_54._0_4_ + iVar9))
+                    quest:RemoveThing(nil --[[missing]], (xStack_54._0_4_ + iVar9), false)
                     uVar8 = uVar8 + 1
                     iVar9 = iVar9 + 0xc
-                until not (uVar8 < ((pCVar3._4_4_ - pCVar3._0_4_) / 0xc))
+                until not (uVar8 < ((xStack_54._4_4_ - xStack_54._0_4_) / 0xc))
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -488,7 +488,7 @@ function RunTutorials(quest)
         quest:SetCategoryActivity("Young Apprentice", true)
         quest:SetCategoryActivity("Young Annoyance", true)
         pCVar3 = quest:GetHero()
-        r7 = quest:TurnCreatureInto(pCVar3, "CREATURE_HERO")
+        r6 = quest:TurnCreatureInto(pCVar3, "CREATURE_HERO")
         quest:GiveHeroExpression("EXPRESSION_FART", -1, true)
         quest:GiveHeroExpression("EXPRESSION_BELCH", -1, true)
         quest:GiveHeroExpression("EXPRESSION_GIGGLE", -1, true)
@@ -549,10 +549,10 @@ function RunTutorials(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
-            pCVar3 = quest:GetThingWithScriptName("CombatApprenticeMarker")
+            pCVar3 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r8 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "CombatApprentice")
+            r7 = quest:CreateCreature("CombatApprentice", pCVar4, "CombatApprenticeMarker")
             pCVar3 = quest:GetThingWithScriptName("CombatApprentice")
             pCVar3:SetToKillOnLevelUnload(false)
         end
@@ -590,10 +590,10 @@ function RunTutorials(quest)
             pCVar3 = quest:GetThingWithScriptName("MeleeApprentice")
             quest:RemoveThing(pCVar3, bVar2, bVar14)
         end
-        pCVar3 = quest:GetThingWithScriptName("M_MeleeOpponentStand")
+        pCVar3 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE")
         bVar2 = false
         pCVar4 = pCVar3:GetPos()
-        r9 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar4, "MeleeApprentice")
+        r8 = quest:CreateCreature("MeleeApprentice", pCVar4, "M_MeleeOpponentStand")
         pCVar3 = quest:GetThingWithScriptName("SkillApprentice")
         bVar2 = (pCVar3 ~= nil and pCVar3:IsAlive())
         if bVar2 then
@@ -666,10 +666,10 @@ function RunTutorials(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
-            pCVar3 = quest:GetThingWithScriptName("SkillApprenticeMarker")
+            pCVar3 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r10 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "SkillApprentice")
+            r9 = quest:CreateCreature("SkillApprentice", pCVar4, "SkillApprenticeMarker")
             pCVar3 = quest:GetThingWithScriptName("SkillApprentice")
             pCVar3:SetToKillOnLevelUnload(false)
         end
@@ -679,10 +679,10 @@ function RunTutorials(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
-            pCVar3 = quest:GetThingWithScriptName("BirdKillerMarker")
+            pCVar3 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r11 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "BirdKiller")
+            r10 = quest:CreateCreature("BirdKiller", pCVar4, "BirdKillerMarker")
         end
     end
     if quest:GetStateInt("GameState") == 7 then
@@ -701,10 +701,10 @@ function RunTutorials(quest)
             pCVar3 = quest:GetThingWithScriptName("MeleeApprentice")
             quest:RemoveThing(pCVar3, bVar2, bVar14)
         end
-        pCVar3 = quest:GetThingWithScriptName("M_MeleeOpponentStand")
+        pCVar3 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE")
         bVar2 = false
         pCVar4 = pCVar3:GetPos()
-        r12 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar4, "MeleeApprentice")
+        r11 = quest:CreateCreature("MeleeApprentice", pCVar4, "M_MeleeOpponentStand")
         bVar2 = quest:IsQuestActive("Q_GuildTrainingWill")
         if not bVar2 then
             alive = not quest:IsActiveThreadTerminating()
@@ -741,10 +741,10 @@ function RunTutorials(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
-            pCVar3 = quest:GetThingWithScriptName("WillApprenticeMarker")
+            pCVar3 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r13 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "WillApprentice")
+            r12 = quest:CreateCreature("WillApprentice", pCVar4, "WillApprenticeMarker")
             pCVar3 = quest:GetThingWithScriptName("WillApprentice")
             pCVar3:SetToKillOnLevelUnload(false)
         end
@@ -760,10 +760,10 @@ function RunTutorials(quest)
         pCVar3 = quest:GetThingWithScriptName("MeleeApprentice")
         quest:RemoveThing(pCVar3, bVar2, bVar14)
     end
-    pCVar3 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
+    pCVar3 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE")
     bVar2 = false
     pCVar4 = pCVar3:GetPos()
-    r14 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar4, "MeleeApprentice")
+    r13 = quest:CreateCreature("MeleeApprentice", pCVar4, "MeleeApprenticeMarker")
     bVar2 = quest:IsQuestActive("Q_GuildTrainingDeparture")
     if not bVar2 then
         alive = not quest:IsActiveThreadTerminating()
@@ -801,18 +801,18 @@ function RunTutorials(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then goto LAB_00d496bc end
-    r15 = quest:GetThingWithScriptName("TheRealGuildmaster")
+    r14 = quest:GetThingWithScriptName("TheRealGuildmaster")
     xStack_30 = resources:NewResource()
     bVar2 = false
     if bVar2 ~= 0 then
     end
-    bVar2 = resources:TryAcquire(xStack_30, r15, 4)
+    bVar2 = resources:TryAcquire(xStack_30, xStack_54[0 + 1], 4)
     while not bVar2 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00d48800 end
-        bVar2 = resources:TryAcquire(xStack_30, r15, 4)
+        bVar2 = resources:TryAcquire(xStack_30, xStack_54[0 + 1], 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -838,18 +838,18 @@ function RunTutorials(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
-            r14 = resources:NewActorMap()
-            resources:SetActor(r14, "HERO", xStack_20)
-            resources:SetActor(r14, "GM", xStack_30)
+            r13 = resources:NewActorMap()
+            resources:SetActor(r13, "HERO", xStack_20)
+            resources:SetActor(r13, "GM", xStack_30)
             xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", r14, false, true)
+            resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", r13, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
             resources:ReleaseResource(xStack_10)
-            resources:DestroyActorMap(r14)
+            resources:DestroyActorMap(r13)
             resources:ReleaseResource(xStack_20)
             resources:DestroyMovie(xStack_30)
             uVar15 = 0
@@ -876,9 +876,9 @@ function RunTutorials(quest)
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
             quest:FadeScreenOut(0.5, 0.0)
-            quest:OpenDoor(r15)
-            quest:SetThingPersistent(r13, true)
-            quest:SetRegionExitAsActive(r12, true)
+            quest:OpenDoor(r14)
+            quest:SetThingPersistent(r12, true)
+            quest:SetRegionExitAsActive(r11, true)
             iVar16 = (math.modf(quest:ReadGlobalGameData(0xf1c)))
             quest:GiveHeroExperience(iVar16)
             quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
@@ -952,8 +952,8 @@ function RunTutorials(quest)
                     pCVar3 = quest:GetHero()
                     quest:AddPersonToConversation(iVar16, pCVar3)
                     pCVar3 = quest:GetHero()
-                    pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
-                    quest:AddLineToConversation(iVar16, "TEXT_CS_028_LEAVING_TOUR_45", pCVar6, pCVar3, false)
+                    pCVar6 = quest:GetThingWithScriptName("TEXT_CS_028_LEAVING_TOUR_45")
+                    quest:AddLineToConversation(iVar16, "TheRealGuildmaster", pCVar6, pCVar3, false)
                     quest:SetTimer(xStack_88, 10)
                 end
                 bVar2 = quest:MsgOnLeavingExperienceSpendingScreen()
@@ -964,8 +964,8 @@ function RunTutorials(quest)
                 -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);
                 quest:FadeScreenOut(0.0, 0.5)
                 uVar15 = 0
-                pCVar3 = quest:GetThingWithScriptName("M_GuildmasterMarker")
-                pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                pCVar3 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                pCVar6 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                 quest:EntityTeleportToThing(pCVar6, pCVar3, (uVar15 ~= 0))
                 bVar2 = quest:IsHeroControlledByPlayer()
                 while not bVar2 do
@@ -984,7 +984,7 @@ function RunTutorials(quest)
                     quest:SetHeroAsApprentice(false)
                     quest:GiveHeroExpression("EXPRESSION_FOLLOW", -1, true)
                     quest:GiveHeroExpression("EXPRESSION_WAIT", -1, true)
-                    quest:SetThingAsUsable(r11, true)
+                    quest:SetThingAsUsable(r10, true)
                     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
                     bVar14 = true
                     bVar2 = false
@@ -1019,8 +1019,8 @@ function RunTutorials(quest)
                                         quest:SetWeaponOutCrimeEnabled(true)
                                         quest:SetGuardsIgnoreCrimes(false)
                                         pCVar3 = quest:GetHero()
-                                        r16 = quest:GetNearestWithDefName(pCVar3, "VILLAGE_GUILD_COMPLEX_INSIDE")
-                                        quest:EnableGuards(r16, true)
+                                        r15 = quest:GetNearestWithDefName(pCVar3, "VILLAGE_GUILD_COMPLEX_INSIDE")
+                                        quest:EnableGuards(r15, true)
                                         quest:SetHeroSleepingAsEnabled(true)
                                         pCVar3 = quest:GetHero()
                                         bVar2 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", pCVar3)
@@ -1039,19 +1039,19 @@ function RunTutorials(quest)
                                         bVar2 = not alive
                                         if not bVar2 then
                                             i_stk_44 = 0
-                                            r17 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
-                                            iVar9 = i_stk_44 - 0 >> 0x1f
+                                            xStack_48 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
+                                            iVar9 = i_stk_44 - xStack_48 >> 0x1f
                                             uVar8 = 0
-                                            if (i_stk_44 - 0) / 0xc + iVar9 ~= iVar9 then
+                                            if (i_stk_44 - xStack_48) / 0xc + iVar9 ~= iVar9 then
                                                 iVar9 = 0
                                                 repeat
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar2 = not alive
                                                     if bVar2 then goto LAB_00d496a1 end
-                                                    quest:RemoveThing(r10, (0 + iVar9), false)
+                                                    quest:RemoveThing(r9, (xStack_48 + iVar9), false)
                                                     uVar8 = uVar8 + 1
                                                     iVar9 = iVar9 + 0xc
-                                                until not (uVar8 < ((i_stk_44 - 0) / 0xc))
+                                                until not (uVar8 < ((i_stk_44 - xStack_48) / 0xc))
                                             end
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive

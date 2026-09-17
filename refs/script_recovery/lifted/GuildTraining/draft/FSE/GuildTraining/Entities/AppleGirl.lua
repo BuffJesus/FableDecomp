@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, fVar1, fVar13, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, r5, r6, r7, u_stk_74, xStack_18, xStack_60, xStack_70_2, xStack_84, xStack_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, r5, r6, r7, u_stk_74, xStack_18, xStack_60, xStack_70_2, xStack_84, xStack_c
     local alive = true
     u_stk_74 = 0
     xStack_84 = resources:NewResource()
@@ -128,9 +128,6 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_60)
                     quest:DeregisterTimer(iVar4)
                     xStack_70_2 = nil
-                    if (r1._0_4_ ~= nil) and (*r1._0_4_ = *r1._0_4_ + -1, *r1._0_4_ == 0) then
-                        -- TODO(native): (**(code **)(xStack_70._0_4_ + 4))();
-                    end
                     u_stk_74 = 0
                     return
                 end
@@ -254,11 +251,12 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
+            ctr_64 = 0
             while true do
                 u_stk_74 = u_stk_74 | 2
                 pCVar6 = quest:GetHero()
                 bVar2 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", pCVar6)
-                if (bVar2) and (__native_entity_state:GetStateInt("CurrentApples") + 0x0 < 4) then
+                if (bVar2) and (__native_entity_state:GetStateInt("CurrentApples") + ctr_64 < 4) then
                     bVar2 = true
                 else
                     bVar2 = false
@@ -271,13 +269,13 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00d3e1b6 end
-                -- TODO(native): xStack_64 = (CCharString)((int)xStack_64 + 1);
+                ctr_64 = ctr_64 + 1
                 quest:TakeObjectFromHero("OBJECT_APPLE_RED_01")
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
-            if xStack_64 == 0x1 then
+            if ctr_64 == 0x1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00d3e1b6 end
@@ -287,7 +285,7 @@ function Main(quest, me)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_ONE_MORE_APPLE", me, pCVar6, false)
             else
-                if xStack_64 == nil then
+                if ctr_64 == nil then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00d3e1b6 end
@@ -308,8 +306,8 @@ function Main(quest, me)
                 end
             end
             quest:Pause(1.0)
-            __native_entity_state:SetStateInt("CurrentApples", __native_entity_state:GetStateInt("CurrentApples") + xStack_64)
-            if xStack_64 == nil then goto FLOW_native_label_1 end
+            __native_entity_state:SetStateInt("CurrentApples", __native_entity_state:GetStateInt("CurrentApples") + ctr_64)
+            if ctr_64 == nil then goto FLOW_native_label_1 end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
@@ -454,7 +452,7 @@ function Main(quest, me)
     goto LAB_00d3e1b6
     ::LAB_00d3e087::
     quest:PauseAllNonScriptedEntities(false)
-    resources:ReleaseResource(xStack_64)
+    resources:ReleaseResource(ctr_64)
     goto LAB_00d3e1b6
 end
 

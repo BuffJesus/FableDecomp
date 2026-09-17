@@ -1471,9 +1471,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: (**(code **)(xStack_70._0_4_ + 4))();",
             "label LAB_00d3d987",
-            "unlifted: xStack_64 = (CCharString)((int)xStack_64 + 1);",
             "label LAB_00d3e0a0"
           ],
           "calls": [
@@ -1662,19 +1660,13 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 444,
+          "lines": 442,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/Entities/AppleGirl.lua:Main",
-                "line": 119,
-                "message": "FSE/GuildTraining/Entities/AppleGirl.lua:Main:119: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -1688,7 +1680,7 @@
             "if (bVar2) goto LAB_00d3e06c;",
             "if (bVar2) goto LAB_00d3e087;",
             "if (bVar2) goto LAB_00d3e1b6;",
-            "if (xStack_64 == (CCharString)0x0) goto FLOW_native_label_1;"
+            "if (ctr_64 == (CCharString)0x0) goto FLOW_native_label_1;"
           ],
           "nativeLabels": [
             "FLOW_after_lab_00d3d987",
@@ -5157,8 +5149,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "CreateCreature: missing position (2 args for 3 params)",
-            "unlifted: xStack_90 = (CCharString)((int)xStack_90 + 0xc);",
             "label LAB_00d4e0f2",
             "verify cleanup at LAB_00d4e91f (lifted as early return)",
             "unlifted: std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimiti",
@@ -5191,6 +5181,8 @@
             "GetAllThingsWithScriptName",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
+            "LOCALLIST_At",
+            "GetPos",
             "CreateCreature",
             "SetThingPersistent",
             "IsActiveThreadTerminating",
@@ -5422,7 +5414,7 @@
             "DeregisterTimer",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 550,
+          "lines": 552,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -5431,8 +5423,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTraining/Entities/BirdKiller.lua:Main",
-                "line": 45,
-                "message": "FSE/GuildTraining/Entities/BirdKiller.lua:Main:45: unexpected symbol near '*'"
+                "line": 142,
+                "message": "FSE/GuildTraining/Entities/BirdKiller.lua:Main:142: unexpected symbol near '*'"
               }
             ]
           },
@@ -5894,17 +5886,12 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 15,
-        "passed": 8,
+        "passed": 9,
         "errors": [
           {
-            "path": "FSE/GuildTraining/Entities/AppleGirl.lua",
-            "line": 131,
-            "message": "FSE/GuildTraining/Entities/AppleGirl.lua:131: unexpected symbol near '*'"
-          },
-          {
             "path": "FSE/GuildTraining/Entities/BirdKiller.lua",
-            "line": 66,
-            "message": "FSE/GuildTraining/Entities/BirdKiller.lua:66: unexpected symbol near '*'"
+            "line": 163,
+            "message": "FSE/GuildTraining/Entities/BirdKiller.lua:163: unexpected symbol near '*'"
           },
           {
             "path": "FSE/GuildTraining/Entities/CombatApprentice.lua",
@@ -6025,10 +6012,10 @@
         "owners": 15,
         "functions": 69,
         "missing": 0,
-        "functionSyntaxPassed": 61,
-        "fileSyntaxPassed": 8,
+        "functionSyntaxPassed": 62,
+        "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 15,
-        "todo": 257
+        "todo": 253
       }
     },
     {
@@ -13897,9 +13884,7 @@
           },
           "todo": [
             "label LAB_00d647d1",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,(",
-            "unlifted: (**(code **)*puVar3)(0);",
-            "unlifted: free(xStack_24);"
+            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,("
           ],
           "calls": [
             "NewScriptFrame",
@@ -13931,19 +13916,13 @@
             "RemoveQuestInfoElement",
             "DisplayQuestInfo"
           ],
-          "lines": 105,
+          "lines": 90,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingWoodsDeparture/Entities/ScorpionHome.lua:Main",
-                "line": 87,
-                "message": "...ildTrainingWoodsDeparture/Entities/ScorpionHome.lua:Main:87: 'do' expected near '='"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -14046,7 +14025,7 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 4,
-        "passed": 1,
+        "passed": 2,
         "errors": [
           {
             "path": "FSE/GuildTrainingWoodsDeparture/Entities/ArtifactThief.lua",
@@ -14057,11 +14036,6 @@
             "path": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua",
             "line": 487,
             "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:487: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/GuildTrainingWoodsDeparture/Entities/ScorpionHome.lua",
-            "line": 99,
-            "message": "FSE/GuildTrainingWoodsDeparture/Entities/ScorpionHome.lua:99: 'do' expected near '='"
           }
         ]
       },
@@ -14092,10 +14066,10 @@
         "owners": 4,
         "functions": 17,
         "missing": 2,
-        "functionSyntaxPassed": 14,
-        "fileSyntaxPassed": 1,
+        "functionSyntaxPassed": 15,
+        "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 4,
-        "todo": 69
+        "todo": 67
       }
     },
     {
@@ -14380,9 +14354,7 @@
           "todo": [
             "label LAB_00d676fb",
             "label LAB_00d67728",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,(",
-            "unlifted: (**(code **)*puVar3)(0);",
-            "unlifted: free(xStack_24);"
+            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,("
           ],
           "calls": [
             "ENGINE_Trunc",
@@ -14428,19 +14400,13 @@
             "SetStateInt",
             "QUESTTHING_Empty"
           ],
-          "lines": 137,
+          "lines": 122,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingWoodsMelee/Entities/ScorpionHome.lua:Main",
-                "line": 125,
-                "message": "FSE/GuildTrainingWoodsMelee/Entities/ScorpionHome.lua:Main:125: 'do' expected near '='"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -14541,16 +14507,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 2,
-        "passed": 1,
-        "errors": [
-          {
-            "path": "FSE/GuildTrainingWoodsMelee/Entities/ScorpionHome.lua",
-            "line": 137,
-            "message": "FSE/GuildTrainingWoodsMelee/Entities/ScorpionHome.lua:137: 'do' expected near '='"
-          }
-        ]
+        "passed": 2,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -14560,10 +14520,10 @@
         "owners": 2,
         "functions": 10,
         "missing": 2,
-        "functionSyntaxPassed": 9,
-        "fileSyntaxPassed": 1,
+        "functionSyntaxPassed": 10,
+        "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 13
+        "todo": 11
       }
     },
     {
@@ -14595,7 +14555,6 @@
           "todo": [
             "unlifted: iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);",
             "unlifted: CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)&xStack_2c,iVar8",
-            "unlifted: xStack_84 = (CCharString)((int)xStack_84 + 0xc);",
             "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);",
             "label LAB_00d67db1",
             "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);",
@@ -14607,9 +14566,7 @@
             "GetHealth: missing pThing (0 args for 1 params)",
             "ModifyThingHealth: missing spThing (2 args for 3 params)",
             "unlifted: (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);",
-            "unlifted: xStack_88 = (CCharString)((int)xStack_88 + 1);",
             "unlifted: puStack_78 = puStack_78 + -3;",
-            "unlifted: (**(code **)*puStack_78)(0);",
             "AddNewConversation: missing pThing (2 args for 3 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00d6849b"
@@ -14744,7 +14701,7 @@
             "SetStateBool",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 292,
+          "lines": 293,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -14753,8 +14710,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:Main",
-                "line": 98,
-                "message": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:Main:98: unexpected symbol near '&'"
+                "line": 99,
+                "message": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:Main:99: unexpected symbol near '&'"
               }
             ]
           },
@@ -15068,8 +15025,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua",
-            "line": 101,
-            "message": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:101: unexpected symbol near '&'"
+            "line": 102,
+            "message": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:102: unexpected symbol near '&'"
           }
         ]
       },
@@ -15084,7 +15041,7 @@
         "functionSyntaxPassed": 8,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 23
+        "todo": 20
       }
     }
   ],
@@ -15092,9 +15049,9 @@
     "owners": 37,
     "functions": 152,
     "missing": 10,
-    "functionSyntaxPassed": 134,
-    "fileSyntaxPassed": 20,
+    "functionSyntaxPassed": 137,
+    "fileSyntaxPassed": 23,
     "fileSyntaxChecked": 37,
-    "todo": 861
+    "todo": 850
   }
 }

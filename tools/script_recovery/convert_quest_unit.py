@@ -554,7 +554,7 @@ class UnitConverter:
                 if signature.get('bsimVoid'):
                     decompile = re.sub(r'\breturn [^;]+;', 'return;', decompile)   # void per ego_r: Ghidra's int result is a stale register
                 lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)
-                source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)))
+                source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)), self.things)
                 if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):
                     print(f'===== LOWERED {owner}.{name}', source, sep='\n', file=sys.stderr)
                 if name == 'OnPersist':

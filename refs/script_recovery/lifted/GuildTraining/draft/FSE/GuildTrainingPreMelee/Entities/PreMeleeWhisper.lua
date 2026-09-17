@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, dist, fVar2, f_stk_28, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, r3, r4, timerId, uVar9, xStack_1c, xStack_a0, xStack_c
+    local bVar3, cVar4, dist, fVar2, f_stk_28, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, r3, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, xStack_c
     local alive = true
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(1)
@@ -169,9 +169,9 @@ function Main(quest, me)
                 -- TODO(native): xStack_a0 = (float)GFCharStringToInt(pvVar7);
                 uVar9 = 0
                 i_stk_8c = 0
-                r4 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
-                iVar10 = i_stk_8c - 0 >> 0x1f
-                if (i_stk_8c - 0) / 0xc + iVar10 ~= iVar10 then
+                xStack_8c = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
+                iVar10 = i_stk_8c - xStack_8c >> 0x1f
+                if (i_stk_8c - xStack_8c) / 0xc + iVar10 ~= iVar10 then
                     iVar10 = 0
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
@@ -181,7 +181,7 @@ function Main(quest, me)
                             resources:ReleaseResource(xStack_a0)
                             return
                         end
-                        pvVar7 = (**(*(iVar10 + 0) + 0xc))(xStack_20)
+                        pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
                         f_stk_28 = GFCharStringToInt(pvVar7)
                         if f_stk_28 == xStack_a0 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -191,11 +191,11 @@ function Main(quest, me)
                                 resources:ReleaseResource(xStack_a0)
                                 return
                             end
-                            quest:RemoveThing(pCVar5, (0 + iVar10), false)
+                            quest:RemoveThing(pCVar5, (xStack_8c + iVar10), false)
                         end
                         uVar9 = uVar9 + 1
                         iVar10 = iVar10 + 0xc
-                    until not (uVar9 < ((i_stk_8c - 0) / 0xc))
+                    until not (uVar9 < ((i_stk_8c - xStack_8c) / 0xc))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive

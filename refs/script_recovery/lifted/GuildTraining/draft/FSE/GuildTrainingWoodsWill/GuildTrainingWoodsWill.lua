@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local CVar10, bVar3, cVar1, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, pvVar9, r1, r2, r3, uVar11, xStack_20, xStack_38, xStack_48, xStack_60
+    local CVar10, bVar3, cVar1, ctr_84, ctr_88, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, pvVar9, r1, uVar11, xStack_20, xStack_38, xStack_48, xStack_60, xStack_7c
     local alive = true
     iVar12 = 0
     quest:SetStateBool("MissionSucceeded", false)
@@ -51,20 +51,21 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
-            r2 = quest:GetAllThingsWithScriptName("WillBandit")
-            iVar8 = 0x0 - 0x0
+            xStack_7c = quest:GetAllThingsWithScriptName("WillBandit")
+            iVar8 = puStack_78 - xStack_7c
             -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);
             -- TODO(native): CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)&xStack_2c,iVar8 / 0xc,iVar5);
             resources:ReleaseResource(xStack_10)
-            iVar5 = 0x0 - 0x0 >> 0x1f
+            iVar5 = puStack_78 - xStack_7c >> 0x1f
             uVar11 = 0
-            if (0x0 - 0x0) / 0xc + iVar5 ~= iVar5 then
+            if (puStack_78 - xStack_7c) / 0xc + iVar5 ~= iVar5 then
+                ctr_84 = 0
                 repeat
-                    resources:TryAcquire((0x0 + iVar12), (0x0 + 0x0), 4)
-                    -- TODO(native): xStack_84 = (CCharString)((int)xStack_84 + 0xc);
+                    resources:TryAcquire((0x0 + iVar12), (ctr_84 + xStack_7c), 4)
+                    ctr_84 = ctr_84 + 0xc
                     uVar11 = uVar11 + 1
                     iVar12 = iVar12 + 0x10
-                until not (uVar11 < ((0x0 - 0x0) / 0xc))
+                until not (uVar11 < ((puStack_78 - xStack_7c) / 0xc))
             end
             iVar12 = 0
             xStack_48 = resources:NewResource()
@@ -117,23 +118,24 @@ function Main(quest)
                 resources:DestroyActorMap(xStack_38)
                 resources:ReleaseResource(xStack_48)
                 -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
-                iVar5 = 0x0 - 0x0 >> 0x1f
-                if (0x0 - 0x0) / 0xc + iVar5 ~= iVar5 then
+                iVar5 = puStack_78 - xStack_7c >> 0x1f
+                ctr_88 = 0
+                if (puStack_78 - xStack_7c) / 0xc + iVar5 ~= iVar5 then
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d685cc end
-                        pCVar6 = (iVar12 + 0x0)
+                        pCVar6 = (iVar12 + xStack_7c)
                         pTarget = quest:GetHero()
                         quest:GiveThingBestEnemyTarget(pTarget, r1)
-                        pCVar6 = (iVar12 + 0x0)
+                        pCVar6 = (iVar12 + xStack_7c)
                         bVar3 = false
                         fret_0 = quest:GetHealth(nil --[[missing]])
                         quest:ModifyThingHealth(nil --[[missing]], pCVar6, (15.0 - fret_0))
                         -- TODO(native): (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);
-                        -- TODO(native): xStack_88 = (CCharString)((int)xStack_88 + 1);
+                        ctr_88 = ctr_88 + 1
                         iVar12 = iVar12 + 0xc
-                    until not (xStack_88 < ((0x0 - 0x0) / 0xc))
+                    until not (ctr_88 < ((puStack_78 - xStack_7c) / 0xc))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -164,15 +166,14 @@ function Main(quest)
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d685cc end
                         end
-                        if nil ~= nil then
+                        if xStack_7c ~= puStack_78 then
                             repeat
                                 -- TODO(native): puStack_78 = puStack_78 + -3;
-                                -- TODO(native): (**(code **)*puStack_78)(0);
-                            until not (0x0 ~= puStack_78)
+                            until not (xStack_7c ~= puStack_78)
                         end
-                        r3 = quest:GetAllThingsWithScriptName("WillBandit")
-                        iVar12 = puStack_78 - 0x0 >> 0x1f
-                        if (puStack_78 - 0x0) / 0xc + iVar12 == iVar12 then
+                        xStack_7c = quest:GetAllThingsWithScriptName("WillBandit")
+                        iVar12 = puStack_78 - xStack_7c >> 0x1f
+                        if (puStack_78 - xStack_7c) / 0xc + iVar12 == iVar12 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d685cc end

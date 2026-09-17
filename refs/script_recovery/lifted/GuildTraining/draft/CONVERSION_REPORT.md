@@ -17,7 +17,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | Q_GuildTraining | RunCeremonyCutscene | 0x00d49d50 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | RunSaveXPCutscene | 0x00d496f0 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | RunSaveXPCutscene2 | 0x00d49a20 | True | 0 |
-| Q_GuildTraining | AppleGirl | Main | 0x00d3d150 | False | 4 |
+| Q_GuildTraining | AppleGirl | Main | 0x00d3d150 | True | 2 |
 | Q_GuildTraining | AppleGirl | Init | 0x00d3d110 | True | 0 |
 | Q_GuildTraining | AppleGirl | OnPersist | 0x00d44650 | True | 0 |
 | Q_GuildTraining | AppleGirl | OnPredicateFail | 0x00d3d120 | True | 0 |
@@ -61,7 +61,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | WillDummy | Init | 0x00d43410 | True | 0 |
 | Q_GuildTraining | WillDummy | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | WillDummy | OnPredicateFail | 0x00d43420 | True | 0 |
-| Q_GuildTraining | BirdKiller | Main | 0x00d4dea0 | False | 16 |
+| Q_GuildTraining | BirdKiller | Main | 0x00d4dea0 | False | 14 |
 | Q_GuildTraining | BirdKiller | Init | 0x00d42ff0 | True | 0 |
 | Q_GuildTraining | BirdKiller | OnPersist | 0x00d44c60 | True | 0 |
 | Q_GuildTraining | BirdKiller | OnPredicateFail | 0x00d43010 | True | 0 |
@@ -133,7 +133,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsDeparture | FinalMaze | Init | 0x00d62320 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | OnPredicateFail | 0x00d62330 | True | 0 |
-| Q_GuildTrainingWoodsDeparture | ScorpionHome | Main | 0x00d643a0 | False | 4 |
+| Q_GuildTrainingWoodsDeparture | ScorpionHome | Main | 0x00d643a0 | True | 2 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | Init | 0x00d63d80 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | OnPredicateFail | 0x00d63d70 | True | 0 |
@@ -143,11 +143,11 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | WatchForLeaving | 0x00d66e90 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | TeleportOutHero | 0x00d66f50 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | helper_D66EE0 | 0x00d66ee0 | True | 0 |
-| Q_GuildTrainingWoodsMelee | ScorpionHome | Main | 0x00d67270 | False | 5 |
+| Q_GuildTrainingWoodsMelee | ScorpionHome | Main | 0x00d67270 | True | 3 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | Init | 0x00d66c60 | True | 0 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | OnPredicateFail | 0x00d66c50 | True | 0 |
-| Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | Main | 0x00d67890 | False | 20 |
+| Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | Main | 0x00d67890 | False | 17 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | WatchForTermination | 0x00d68600 | True | 2 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | DoMission | 0x00d68ae0 | True | 0 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | WatchForLeaving | 0x00d68c50 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 134, "fileSyntaxPassed": 20, "fileSyntaxChecked": 37, "todo": 861}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 137, "fileSyntaxPassed": 23, "fileSyntaxChecked": 37, "todo": 850}`

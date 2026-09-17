@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, puVar3, puVar4, pu_stk_20, r1, r2, v_stk_4c
+    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, puVar4, pu_stk_20, r1, v_stk_4c, xStack_24
     local alive = true
     v_stk_4c = 0
     iVar7 = (math.modf(quest:ReadGlobalGameData(0xf10)))
@@ -69,9 +69,8 @@ function Main(quest, me)
             quest:AddLineToConversation(iVar7, "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", pSpeaker, pCVar9, false)
             quest:SetTimer(timerId, 8)
         end
-        pu_stk_20 = 0x0
-        r1 = quest:GetAllThingsWithScriptName("GuildScorpions")
-        i_stk_28 = (pu_stk_20 - 0x0) / 0xc
+        xStack_24 = quest:GetAllThingsWithScriptName("GuildScorpions")
+        i_stk_28 = (pu_stk_20 - xStack_24) / 0xc
         iVar7 = -1
         fVar10 = i_stk_28
         if i_stk_28 < 0 then
@@ -79,9 +78,8 @@ function Main(quest, me)
         end
         count = (math.modf((quest:ReadGlobalGameData(0xf10) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar10))
         quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
-        puVar3 = 0x0
         puVar4 = pu_stk_20
-        if ((pu_stk_20 - 0x0) / 0xc) < 3 then
+        if ((pu_stk_20 - xStack_24) / 0xc) < 3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
             if bVar6 then
@@ -90,8 +88,8 @@ function Main(quest, me)
                 quest:DeregisterTimer(timerId)
                 return
             end
-            iVar8 = pu_stk_20 - 0x0 >> 0x1f
-            if ((pu_stk_20 - 0x0) / 0xc + iVar8 == iVar8) and (__native_entity_state:GetStateInt("ScorpionsLeft") == 0) then
+            iVar8 = pu_stk_20 - xStack_24 >> 0x1f
+            if ((pu_stk_20 - xStack_24) / 0xc + iVar8 == iVar8) and (__native_entity_state:GetStateInt("ScorpionsLeft") == 0) then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
                 if bVar6 then
@@ -101,10 +99,8 @@ function Main(quest, me)
                 end
                 quest:SetStateBool("ScorpionsAlive", false)
                 quest:SetMasterGameState("ScorpionsDestroyed", true)
-                puVar3 = 0x0
                 puVar4 = pu_stk_20
             else
-                puVar3 = 0x0
                 puVar4 = pu_stk_20
                 if 0 < __native_entity_state:GetStateInt("ScorpionsLeft") then
                     alive = not quest:IsActiveThreadTerminating()
@@ -115,36 +111,25 @@ function Main(quest, me)
                         return
                     end
                     pCVar9 = quest:GetHero()
-                    r2 = quest:GetFurthestWithScriptName(pCVar9, "ScorpionSpawn")
-                    if not (r2 ~= nil and not r2:IsNull()) then
+                    r1 = quest:GetFurthestWithScriptName(pCVar9, "ScorpionSpawn")
+                    if not (r1 ~= nil and not r1:IsNull()) then
                     else
-                        pPosition = r2:GetPos()
+                        pPosition = r1:GetPos()
                     end
                     pCVar9 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,(int)&*(int *)(pCVar9 + 0x4));
                     pCVar9 = nil
-                    if (r2 ~= nil and not r2:IsNull()) then
-                        r2:SetToKillOnLevelUnload(0)
+                    if (r1 ~= nil and not r1:IsNull()) then
+                        r1:SetToKillOnLevelUnload(0)
                     end
-                    quest:EntityAttachToScript(r2, "Q_GuildTrainingWoodsMelee")
+                    quest:EntityAttachToScript(r1, "Q_GuildTrainingWoodsMelee")
                     __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)
-                    r2 = nil
-                    puVar3 = 0x0
+                    r1 = nil
                     puVar4 = pu_stk_20
                 end
             end
         end
-        while puVar5 = pu_stk_20, puVar3 ~= pu_stk_20 do
-            pu_stk_20 = puVar4
-            -- TODO(native): (**(code **)*puVar3)(0);
-            puVar4 = pu_stk_20
-            pu_stk_20 = puVar5
-            puVar3 = puVar3 + 3
-        end
         pu_stk_20 = puVar4
-        if nil ~= nil then
-            -- TODO(native): free(xStack_24);
-        end
         cVar1 = quest:GetStateBool("ScorpionsAlive")
         timerId = timerId
     until false
