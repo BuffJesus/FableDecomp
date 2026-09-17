@@ -1119,7 +1119,8 @@ class Lifter:
         result: list[str | None] = [None] * len(params)
         # The timer handle is positional evidence: it goes into `timerId` before anything else.
         timer_slot = next((i for i, p in enumerate(params) if p["name"] == "timerId"), None)
-        if timer_slot is not None and self.last_timer:
+        # (unit mode: the typed export prints every operand, so the handle only fills a real shortfall)
+        if timer_slot is not None and self.last_timer and (not self.accessor_kinds or len(parsed) < len(params)):
             result[timer_slot] = self.last_timer
             others = [a for a in others if a != self.last_timer]
         for slot, a in zip(thing_slots, things):

@@ -95,6 +95,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             case "double": return DoubleDataType.dataType;
             case "ulonglong": return UnsignedLongLongDataType.dataType;
             case "void *": return new PointerDataType(VoidDataType.dataType);
+            case "float10": return Float10DataType.dataType;
         }
         if (name.endsWith(" *")) return new PointerDataType(type(name.substring(0, name.length() - 2)));
         DataType bv = byValue.get(name);
@@ -148,11 +149,27 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             String cc = ho.get("cc").getAsString();
             FunctionDefinitionDataType def = definition(ho.get("name").getAsString(), ho, cc);
             try {
+                // a parameter with an explicit `storage` register (the x87 operand of __ftol2 in ST0) needs
+                // custom storage for the whole signature; the result then stays in EAX by hand
+                boolean custom = false;
+                for (JsonElement pe : ho.getAsJsonArray("params")) if (pe.getAsJsonObject().has("storage")) custom = true;
                 List<ParameterImpl> params = new ArrayList<>();
-                for (ParameterDefinition pd : def.getArguments())
-                    params.add(new ParameterImpl(pd.getName(), pd.getDataType(), currentProgram));
-                f.updateFunction(cc, new ReturnParameterImpl(def.getReturnType(), currentProgram), params,
-                    Function.FunctionUpdateType.DYNAMIC_STORAGE_ALL_PARAMS, true, SourceType.USER_DEFINED);
+                int k = 0;
+                for (ParameterDefinition pd : def.getArguments()) {
+                    JsonObject po = cc.equals("__thiscall") && k == 0 ? null : ho.getAsJsonArray("params").get(cc.equals("__thiscall") ? k - 1 : k).getAsJsonObject();
+                    if (custom && po != null && po.has("storage"))
+                        params.add(new ParameterImpl(pd.getName(), pd.getDataType(), new VariableStorage(currentProgram, currentProgram.getRegister(po.get("storage").getAsString())), currentProgram));
+                    else if (custom)
+                        params.add(new ParameterImpl(pd.getName(), pd.getDataType(), new VariableStorage(currentProgram, currentProgram.getRegister("ECX")), currentProgram));
+                    else
+                        params.add(new ParameterImpl(pd.getName(), pd.getDataType(), currentProgram));
+                    k++;
+                }
+                ReturnParameterImpl ret = custom && def.getReturnType().getLength() > 0
+                    ? new ReturnParameterImpl(def.getReturnType(), new VariableStorage(currentProgram, currentProgram.getRegister("EAX")), currentProgram)
+                    : new ReturnParameterImpl(def.getReturnType(), currentProgram);
+                f.updateFunction(cc, ret, params,
+                    custom ? Function.FunctionUpdateType.CUSTOM_STORAGE : Function.FunctionUpdateType.DYNAMIC_STORAGE_ALL_PARAMS, true, SourceType.USER_DEFINED);
                 helpersTyped++;
             } catch (Exception ex) { println("HELPER " + a + " signature rejected: " + ex); }
         }

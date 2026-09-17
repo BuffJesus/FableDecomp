@@ -37,9 +37,10 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then
+            resources:ReleaseResource(xStack_30)
             return
         end
-        bVar4 = resources:TryAcquire(0, me, 4)
+        bVar4 = resources:TryAcquire(xStack_30, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
@@ -63,7 +64,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then
                     resources:ReleaseResource(xStack_20)
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_30)
                     return
                 end
                 iVar10 = 4
@@ -76,11 +77,11 @@ function Main(quest, me)
             if bVar4 then
                 -- LAB_00d50ebd: (native jump target)
                 resources:ReleaseResource(xStack_20)
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_30)
                 return
             end
             pCVar6 = resources:NewActorMap()
-            resources:SetActor(pCVar6, "GM", 0)
+            resources:SetActor(pCVar6, "GM", xStack_30)
             resources:SetActor(pCVar6, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
@@ -112,7 +113,7 @@ function Main(quest, me)
                     xStack_20 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    pCVar6 = resources:ScriptThing(0)
+                    pCVar6 = resources:ScriptThing(xStack_30)
                     pCVar6 = pCVar6
                     r1 = quest:GetHealth(pCVar6)
                     fVar3 = 0.0
@@ -134,7 +135,7 @@ function Main(quest, me)
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_20)
-                                resources:ReleaseResource(0)
+                                resources:ReleaseResource(xStack_30)
                                 return
                             end
                             iVar8 = me:IsPerformingScriptTask()
@@ -144,7 +145,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:ReleaseResource(0)
+                            resources:ReleaseResource(xStack_30)
                             resources:DestroyMovie(xStack_20)
                             return
                         end
@@ -162,7 +163,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d5134c::
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_30)
 end
 
 function Init(quest, me)

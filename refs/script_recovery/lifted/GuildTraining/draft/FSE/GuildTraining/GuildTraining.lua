@@ -125,7 +125,7 @@ end
 
 function RunTutorials(quest)
     local resources = quest:RetailResources()
-    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, i_stk_44, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, pcVar13, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r2, r3, r4, r5, r6, r7, r8, r9, uVar15, uVar8, xStack_10, xStack_20, xStack_30
+    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, i_stk_44, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, pcVar13, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r2, r3, r4, r5, r6, r7, r8, r9, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_88
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -879,8 +879,8 @@ function RunTutorials(quest)
             quest:OpenDoor(r15)
             quest:SetThingPersistent(r13, true)
             quest:SetRegionExitAsActive(r12, true)
-            iVar16 = __ftol2()
-            quest:GiveHeroExperience(uVar15)
+            iVar16 = (math.modf(quest:ReadGlobalGameData(0xf1c)))
+            quest:GiveHeroExperience(iVar16)
             quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
             quest:GiveHeroObject("OBJECT_HERO_TROUSERS", -1)
             quest:GiveHeroObject("OBJECT_HERO_SHIRT", -1)
@@ -936,7 +936,7 @@ function RunTutorials(quest)
             -- TODO(native): thing._8_4_ = pcVar13;
             quest:SetIsPushableByHero(r16, thing)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_14", "HeroGuildComplexInside", "")
-            -- TODO(native): CTimer::CTimer((CTimer *)&xStack_88);
+            xStack_88 = quest:RegisterTimer()
             quest:SetTimer(xStack_88, 10)
             bVar2 = quest:MsgOnLeavingExperienceSpendingScreen()
             while not bVar2 do
@@ -1132,6 +1132,7 @@ function RunTutorials(quest)
                 end
             end
             ::LAB_00d496b3::
+            quest:DeregisterTimer(xStack_88)
             goto LAB_00d496bc
         end
         ::LAB_00d487f4::

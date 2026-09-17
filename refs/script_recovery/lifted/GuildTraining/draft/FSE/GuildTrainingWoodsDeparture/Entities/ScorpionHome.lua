@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, iVar7, pCVar8, pPosition, puVar3, puVar4, pu_stk_20, r1, r2, xStack_2c
+    local bVar6, count, fVar9, iVar7, i_stk_28, pCVar8, pPosition, puVar3, puVar4, pu_stk_20, r1, r2, xStack_2c
     local alive = true
     local iVar1 = quest:GetStateInt("DepartureMissionPoint")
     while iVar1 ~= 1 do
@@ -26,8 +26,8 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
     if not bVar6 then
-        iVar7 = __ftol2()
-        xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", 1.0, nil --[[missing]])
+        iVar7 = (math.modf(quest:ReadGlobalGameData(0xf0c)))
+        xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
         quest:DisplayQuestInfo(true)
         iVar1 = quest:GetStateInt("DepartureMissionPoint")
         while iVar1 == 1 do
@@ -39,8 +39,14 @@ function Main(quest, me)
             end
             pu_stk_20 = 0x0
             r1 = quest:GetAllThingsWithScriptName("GuildScorpions")
-            iVar7 = __ftol2()
-            quest:UpdateQuestInfoCounter(xStack_2c, -1, pu_stk_20)
+            i_stk_28 = (pu_stk_20 - 0x0) / 0xc
+            iVar7 = -1
+            fVar9 = i_stk_28
+            if i_stk_28 < 0 then
+                fVar9 = fVar9 + 4294967296.0
+            end
+            count = (math.modf((quest:ReadGlobalGameData(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
+            quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
             puVar3 = 0x0
             puVar4 = pu_stk_20
             if ((pu_stk_20 - 0x0) / 0xc) < 3 then
@@ -113,8 +119,8 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local uVar1 = __ftol2()
-    __native_entity_state:SetStateInt("ScorpionsLeft", uVar1)
+    local iVar1 = (math.modf(quest:ReadGlobalGameData(0xf0c)))
+    __native_entity_state:SetStateInt("ScorpionsLeft", iVar1)
     __native_entity_state:SetStateBool("FlourishHint", false)
 end
 

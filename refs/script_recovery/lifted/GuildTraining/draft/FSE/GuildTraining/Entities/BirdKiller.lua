@@ -34,9 +34,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            if false then
-                -- TODO(native): (**(code **)((int)xStack_78 + 4))();
-            end
+            resources:ReleaseResource(xStack_8c)
             return
         end
         bVar3 = resources:TryAcquire(xStack_8c, me, 4)
@@ -394,7 +392,7 @@ function Main(quest, me)
             bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar14)
             __native_condition_2 = bVar3
             if __native_condition_2 then
-                iVar6 = quest:GetTimer(timerId)
+                iVar6 = quest:GetTimer(fVar14)
                 __native_condition_2 = iVar6 < 1
             end
             if __native_condition_2 then
@@ -420,7 +418,7 @@ function Main(quest, me)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_ANY_MORE", me, pCVar5, false)
                 end
-                quest:SetTimer(timerId, 0xf)
+                quest:SetTimer(0xf, fVar2)
             end
             bVar3 = me:IsTalkedToByHero()
             if bVar3 then
@@ -438,8 +436,8 @@ function Main(quest, me)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_ONE", me, pCVar5, false)
                     quest:Pause(1.0)
-                    iVar7 = __ftol2()
-                    quest:GiveHeroGold(fVar14)
+                    iVar7 = (math.modf(quest:ReadGlobalGameData(0xefc)))
+                    quest:GiveHeroGold(iVar7)
                 elseif iVar6 == 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -460,8 +458,8 @@ function Main(quest, me)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_MORE", me, pCVar5, false)
                     quest:Pause(1.0)
-                    iVar7 = __ftol2()
-                    quest:GiveHeroGold(fVar2)
+                    iVar7 = (math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameData(0xefc)))
+                    quest:GiveHeroGold(iVar7)
                 end
                 __native_entity_state:SetStateInt("CurrentBirds", __native_entity_state:GetStateInt("CurrentBirds") + quest:GetStateInt("CurrentBirdsKilled"))
                 if quest:GetStateInt("CurrentBirdsKilled") ~= 0 then
@@ -512,8 +510,8 @@ function Main(quest, me)
                                 goto LAB_00d4ef87
                             end
                         end
-                        iVar7 = __ftol2()
-                        quest:GiveHeroGold(fVar2)
+                        iVar7 = (math.modf(quest:ReadGlobalGameData(0xf00)))
+                        quest:GiveHeroGold(iVar7)
                         __native_entity_state:SetStateInt("BirdMode", 3)
                         quest:ClearThingHasInformation(me)
                         quest:PauseAllNonScriptedEntities(false)
@@ -523,7 +521,7 @@ function Main(quest, me)
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d4ef87 end
                         pCVar5 = quest:GetHero()
-                        quest:AddPersonToConversation(0, pCVar5)
+                        quest:AddPersonToConversation(fVar2, pCVar5)
                         pCVar5 = quest:GetHero()
                         quest:AddLineToConversation(false, iVar6, me, pCVar5)
                         quest:Pause(1.0)
@@ -543,7 +541,7 @@ function Main(quest, me)
                 bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar14)
                 __native_condition_3 = bVar3
                 if __native_condition_3 then
-                    iVar6 = quest:GetTimer(timerId)
+                    iVar6 = quest:GetTimer(fVar14)
                     __native_condition_3 = iVar6 < 1
                 end
                 if __native_condition_3 then
@@ -555,7 +553,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(iVar7, pCVar5)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_FINISHED", me, pCVar5, false)
-                    quest:SetTimer(timerId, 0xf)
+                    quest:SetTimer(0xf, 0)
                 end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -564,6 +562,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d4ef87::
+    quest:DeregisterTimer(nil --[[missing]])
     ::LAB_00d4ef90::
     resources:DestroyMovie(xStack_38)
 end

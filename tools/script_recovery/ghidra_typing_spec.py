@@ -181,6 +181,11 @@ def unit_functions(unit_dir):
 # Engine helpers proven by disassembly (not FSE-exposed): CCharString operator+ returning through a
 # hidden pointer in ECX; EDX = left operand, one stack operand; ret 4.
 EXTRA_HELPERS = {
+    # CRT float->int truncation: the operand arrives in ST0 (fld before the call), the result in EAX;
+    # without the ST0 parameter Ghidra drops the operand (`uVar = __ftol2();`).
+    '0xbfea70': {'name': '__ftol2', 'cc': '__cdecl', 'ret': 'int',
+                 'params': [{'name': 'value', 'type': 'float10', 'storage': 'ST0'}],
+                 'source': 'disassembly 2026-09-17'},
     '0x99f570': {'name': 'CCharString_ConcatString', 'cc': '__fastcall', 'ret': 'CCharString *',
                  'params': [{'name': 'dest', 'type': 'CCharString *'}, {'name': 'a', 'type': 'CCharString *'}, {'name': 'b', 'type': 'CCharString *'}],
                  'source': 'disassembly 2026-09-16'},

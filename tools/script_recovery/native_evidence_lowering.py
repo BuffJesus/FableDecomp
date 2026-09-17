@@ -139,6 +139,10 @@ RE_LOCAL_COUNTED_RELEASE = re.compile(
 RE_LOCAL_COUNTED_RELEASE2 = re.compile(
     r'^[ \t]*if \((\w+(?:\._\d_4_|\[\d\])?) != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\1 = \*\1 \+ -1;\s*\r?\n[ \t]*if \(\*\1 == 0\) \{\s*\r?\n'
     r'[ \t]*\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+# the same release on a slot Ghidra typed as something else (`(CCharString)0x0`, `*(int *)X`, `(int)X + 4`)
+RE_LOCAL_COUNTED_RELEASE3 = re.compile(
+    r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != \((?:int \*|\w+)\)0x0\) && \(\*\(int \*\)\1 = \*\(int \*\)\1 \+ -1, \*\(int \*\)\1 == 0\)\) \{\s*\r?\n'
+    r'[ \t]*\(\*\*\(code \*\*\)\(\(int\)\1 \+ 4\)\)\(\);\s*\r?\n[ \t]*operator_delete\(\(void \*\)\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 RE_SLOT_ZERO = re.compile(r'^[ \t]*(?:\w+\._\d+_4_ = 0;|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+ = \(int \*\)0x0;)[ \t]*\r?\n', re.M)
 
 
@@ -246,6 +250,7 @@ def drop_local_counted_releases(text):
     text = RE_COUNTED_ADDREF.sub('', text)
     text = RE_LOCAL_COUNTED_RELEASE.sub('', text)
     text = RE_LOCAL_COUNTED_RELEASE2.sub('', text)
+    text = RE_LOCAL_COUNTED_RELEASE3.sub('', text)
     return RE_SLOT_ZERO.sub('', text)
 
 
@@ -407,8 +412,8 @@ RE_MAP_NEW2 = re.compile(r'^([ \t]*)StdMap_Construct_API\(&?(\w+)\);', re.M)
 RE_MAP_SET2 = re.compile(
     r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&?(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
     r'(?:(?P<alias>\w+) = (?P<thing>&?[\w.]+);\s*)?(?:\w+ = 0x[0-9a-f]{6,7};\s*)?'
-    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&?(?P=key)\);\s*'
-    r'CScriptGameResourceObjectScriptedThingBase::operator=\((?P=node),(?P<src>&?\w+)\);\s*'
+    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(\s*map<[^;]*?\*\))?\(?&?(?P<map>\w+)(?: \+ 4)?\)?,(?:\(CCharString \*\))?&?(?P=key)\);\s*'
+    r'CScriptGameResourceObjectScriptedThingBase::operator=\s*\((?P=node),(?P<src>&?\w+)\);\s*'
     r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
 
 
@@ -426,6 +431,27 @@ def _resolve_local_thing(body, data, info):
     if a and b and int(a.group(1), 16) == int(b.group(1), 16) + 4:
         return f'&local_{int(a.group(1), 16) + 4:x}'
     return None
+
+
+RE_BYTE_SPLIT = re.compile(
+    r'^[ \t]*(\w+) = SUB41\((&?[\w.]+),0\);[ \t]*\r?\n'
+    r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 8\);[ \t]*\r?\n'
+    r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x10\);[ \t]*\r?\n'
+    r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x18\);[ \t]*\r?\n', re.M)
+
+
+def fold_byte_split_pointers(text):
+    '''A pointer pushed byte-wise (Ghidra: `u0 = SUB41(X,0); u1 = (undefined1)((uint)X >> 8); ...` then
+    `CONCAT13(u3,CONCAT12(u2,CONCAT11(u1,u0)))`) is X at its one use.'''
+    while (m := RE_BYTE_SPLIT.search(text)):
+        u0, x, u1, u2, u3 = m.groups()
+        concat = f'CONCAT13({u3},CONCAT12({u2},CONCAT11({u1},{u0})))'
+        head, tail = text[:m.start()], text[m.end():]
+        if concat not in tail:
+            break
+        tail = tail.replace(f'(void *){concat}', x, 1) if f'(void *){concat}' in tail else tail.replace(concat, x, 1)
+        text = head + tail
+    return text
 
 
 def fold_actor_maps(text, resolve_string=None):
@@ -473,6 +499,10 @@ RESOURCE_SCRIPT_THING = {0x7E7490}    # CScriptThing __thiscall GetScriptThing(t
 # std::map<CCharString,CCharString> (cutscene string inputs): ctor 0x9AC2D0 (bsim: Std_Deque_Construct, allocates the
 # 0x18-byte head node), dtor 0x9AC310 (bsim: LTextTreeWalkThrough::Dtor), operator[] 0x9AC700 (disasm 2026-09-17)
 STRINGMAP_CTOR = {0x9AC2D0}
+# CTimer on the stack: ctor 0xCD4450 stores GSI->RegisterTimer() (slot 0x15c) in [this]; dtor 0xCD4470 calls
+# GSI->DeregisterTimer([this]) (slot 0x160) (disasm 2026-09-17). The object is its 4-byte timer id.
+TIMER_CTOR = {0xCD4450}
+TIMER_DTOR = {0xCD4470}
 STRINGMAP_DTOR = {0x9AC310}
 STRINGMAP_INDEX = {0x9AC700}
 
@@ -499,7 +529,7 @@ RE_INLINE_CTOR = re.compile(
 
 RE_INLINE_DTOR = re.compile(
     r'^(?P<ind>[ \t]*)(?P<obj>\w+)(?:\[0\]|\._0_4_)? = 0;[ \t]*\r?\n'
-    r'(?:[ \t]*\w+(?:\[\d\]|\._\d+_4_)? = (?:\(int \*\))?0(?:x0)?;[ \t]*\r?\n){0,2}'
+    r'(?:[ \t]*\w+(?:\[\d\]|\._\d+_4_)? = (?:\([\w ]+\**\))?0(?:x0)?;[ \t]*\r?\n){0,2}'
     r'[ \t]*(?P=obj)(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|0126008c);[ \t]*\r?\n'
     r'[ \t]*[\w:~]+\s*\(\(\w+ \*\)(?P=obj)\);[ \t]*\r?\n', re.M)
 
@@ -508,7 +538,12 @@ def fold_inline_destructors(text):
     """The inlined resource / movie destructor after the counted release: the handle field is zeroed,
     the vtable reset to the base and the base destructor called. That is `ReleaseResource` (resource
     vtable 0127094c) or `DestroyMovie` (movie vtables) on the object."""
-    return RE_INLINE_DTOR.sub(lambda m: f'{m.group("ind")}{"RESOURCE_ReleaseResource" if m.group("vt") == "0127094c" else "RESOURCE_DestroyMovie"}({m.group("obj")});\n', text)
+    # the base vtable (0126008c) is shared by resources and movies: the object's own construction decides
+    resources = set(re.findall(r'\b(\w+) = RESOURCE_NewResource\(\)', text)) | set(re.findall(r'RESOURCE_TryAcquire\((\w+),', text))
+    def repl(m):
+        release = m.group('vt') == '0127094c' or (m.group('vt') == '0126008c' and m.group('obj') in resources)
+        return f'{m.group("ind")}{"RESOURCE_ReleaseResource" if release else "RESOURCE_DestroyMovie"}({m.group("obj")});\n'
+    return RE_INLINE_DTOR.sub(repl, text)
 
 
 def fold_inline_constructors(text):
@@ -584,9 +619,11 @@ def fold_resource_objects(text, call_labels):
             # `release(X); X[0] = &PTR_<movie vtable>; base_dtor(X);` is the inlined movie destructor
             # Ghidra may spell the three member accesses (+8, +0, +0) under different slot names: the base
             # destructor's operand (a call operand the export restored) names the object
+            # (the released counted pointer may be zeroed between the release and the vtable store)
             text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'::\s*') + r'\s*\(([^;,]+?)\);[ \t]*\r?\n'
+                          r'(?:[ \t]*\w+(?:\[\d\]|\._\d_4_)? = (?:\(undefined \*\*\))?0(?:x0)?;[ \t]*\r?\n)?'
                           r'[ \t]*\w+(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_0126008c;[ \t]*\r?\n'
-                          r'[ \t]*[\w:~]+\s*\(\(\w+ \*\)(\w+)\);[ \t]*\r?\n',
+                          r'[ \t]*[\w:~]+\s*\(\(\w+ \*\)&?(\w+)\);[ \t]*\r?\n',
                           lambda m: f'{m.group(1)}RESOURCE_DestroyMovie({m.group(3)});\n', text, flags=re.M)
         elif target in RESOURCE_SCRIPT_THING:
             # `X = (CScriptThing *)Res::GetScriptThing((Res *)&RES,(int)&HIDDEN);` -> the hidden slot is the thing
@@ -598,6 +635,10 @@ def fold_resource_objects(text, call_labels):
                 return out
             text = re.sub(r'^([ \t]*)(?:(\w+) = (?:\(CScriptThing \*\)\s*)?)?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;,]+?),\s*([^;]+?)\);',
                           script_thing, text, flags=re.M)
+        elif target in TIMER_CTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = GSI->RegisterTimer();', text, flags=re.M)
+        elif target in TIMER_DTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}GSI->DeregisterTimer({_strip_addr(m.group(2))});', text, flags=re.M)
         elif target in STRINGMAP_CTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = STRINGMAP_New();', text, flags=re.M)
         elif target in STRINGMAP_DTOR:
@@ -753,6 +794,11 @@ def lower_after_annotate(text):
     text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
                   lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
     text = fold_local_thing_vectors(text)
+    # `GSI->DeregisterTimer(unaff_REG)`: Ghidra lost the register holding the id across the block; when the
+    # function registers exactly one timer that is the id
+    timers = re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', text, re.M)
+    if len(set(timers)) == 1:
+        text = re.sub(r'GSI->DeregisterTimer\(unaff_E[A-Z]{2}\)', f'GSI->DeregisterTimer({timers[0]})', text)
     # receiver aliases (`this_00 = *(int **)(this + 0x40);`) are dead once their vcalls read `GSI->`
     text = drop_dead_local_stores(text)
     return text
@@ -860,12 +906,14 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_counted_pointer_assign(text)
     text = fold_counted_pointer_release(text)
     text = name_offset_objects(text, getattr(spec, 'call_labels', {}))
+    text = fold_byte_split_pointers(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
     text = drop_trivial_base_calls(text, getattr(spec, 'call_labels', {}), getattr(spec, 'byte_at', None))
     text = fold_inline_constructors(text)
     text = fold_inline_destructors(text)
     text = canonicalise_stack_objects(text)
+    text = fold_inline_destructors(text)    # again: the canonical names may only now agree across the three lines
     text = fold_offset_string_temporaries(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))
     float_at = getattr(spec, 'float_at', None)
@@ -896,6 +944,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = head + scope + rest
         pos = len(head)
     text = re.sub(r'\*\((?:int|float|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
+    # CRT truncation of an x87 value (`__ftol2((float10)x)`, typed with its ST0 operand by the export)
+    text = re.sub(r'\b__ftol2\(\s*(?:\(float10\))?', 'ENGINE_Trunc(', text)
 
     parent = r'\*\(int \*\)\(this \+ 0x14\)'
     # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
@@ -1447,6 +1497,7 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'LOCALLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
+    text = _expand_calls(text, 'ENGINE_Trunc', lambda a: f'(math.modf({a[0]}))')   # first result of modf = integral part (truncated)
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)
     for pattern, repl in LUA_PSEUDO:

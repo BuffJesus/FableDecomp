@@ -14913,6 +14913,19 @@
    "params": [],
    "source": "PDB stack parameters"
   },
+  "0xbfea70": {
+   "name": "__ftol2",
+   "cc": "__cdecl",
+   "ret": "int",
+   "params": [
+    {
+     "name": "value",
+     "type": "float10",
+     "storage": "ST0"
+    }
+   ],
+   "source": "disassembly 2026-09-17"
+  },
   "0x99f570": {
    "name": "CCharString_ConcatString",
    "cc": "__fastcall",

@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local bVar6, cVar1, delay, iVar5, iVar8, pCVar3, pCVar7, pQuestName, r1, r2, r3, xStack_10, xStack_20, xStack_2c, xStack_3c, xStack_4c, xStack_5c
+    local bVar6, cVar1, delay, iVar5, iVar8, pCVar3, pCVar7, pQuestName, r1, r2, r3, xStack_10, xStack_20, xStack_2c, xStack_3c, xStack_4c, xStack_5c, xStack_88
     local alive = true
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster")
     quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy")
@@ -25,12 +25,13 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if bVar6 then
+            resources:ReleaseResource(xStack_5c)
             r3 = nil
             r2 = nil
             r1 = nil
             return
         end
-        bVar6 = resources:TryAcquire(0, r1, 4)
+        bVar6 = resources:TryAcquire(xStack_5c, r1, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
@@ -88,7 +89,7 @@ function Main(quest)
                 if not bVar6 then
                     xStack_2c = resources:NewActorMap()
                     resources:SetActor(xStack_2c, "HERO", xStack_20)
-                    resources:SetActor(xStack_2c, "MAZE", 0)
+                    resources:SetActor(xStack_2c, "MAZE", xStack_5c)
                     resources:SetActor(xStack_2c, "WHISPER", xStack_4c)
                     resources:SetActor(xStack_2c, "MASTER", xStack_3c)
                     xStack_10 = resources:StartMovie("")
@@ -106,20 +107,20 @@ function Main(quest)
                     resources:DestroyActorMap(xStack_2c)
                     resources:ReleaseResource(xStack_3c)
                     resources:ReleaseResource(xStack_4c)
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_5c)
                     resources:DestroyMovie(xStack_10)
                     quest:SetStateBool("WhisperCutsceneFinished", true)
                     quest:SetStateBool("GuildmasterTeleport", true)
                     quest:SetMasterGameState("GuildWarningOccuring", false)
-                    -- TODO(native): CTimer::CTimer((CTimer *)&xStack_88);
-                    quest:SetTimer(5, iVar8)
-                    iVar5 = quest:GetTimer(0)
+                    xStack_88 = quest:RegisterTimer()
+                    quest:SetTimer(xStack_88, 5)
+                    iVar5 = quest:GetTimer(xStack_88)
                     while 0 < iVar5 do
                         alive = quest:NewScriptFrame()
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00d51dd9 end
-                        iVar5 = quest:GetTimer(0x0)
+                        iVar5 = quest:GetTimer(xStack_88)
                     end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
@@ -144,6 +145,7 @@ function Main(quest)
                         end
                     end
                     ::LAB_00d51dd9::
+                    quest:DeregisterTimer(xStack_88)
                     goto LAB_00d51de2
                 end
                 ::LAB_00d5193f::

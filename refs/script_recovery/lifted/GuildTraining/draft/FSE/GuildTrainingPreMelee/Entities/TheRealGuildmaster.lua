@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_10, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar21, pCVar5, pCVar6, pcVar15, pppuVar22, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_2, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_188, xStack_24, xStack_30, xStack_c, xStack_f8, x_stk_58
+    local CVar10, __native_condition_1, __native_condition_10, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_2, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_24, xStack_30, xStack_c, xStack_f8, x_stk_58
     local alive = true
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
@@ -187,12 +187,8 @@ function Main(quest, me)
         if bVar3 ~= 0 then
         end
         iVar8 = 4
-        uVar16 = SUB41(xStack_14c,0)
-        uVar17 = (xStack_14c >> 8)
-        uVar18 = (xStack_14c >> 0x10)
-        uVar19 = (xStack_14c >> 0x18)
         pCVar6 = quest:GetHero()
-        bVar3 = me:AcquireControl(4)
+        bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
         while not bVar3 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -202,12 +198,8 @@ function Main(quest, me)
                 goto FLOW_after_lab_00d533bb
             end
             iVar8 = 4
-            uVar16 = SUB41(xStack_14c,0)
-            uVar17 = (xStack_14c >> 8)
-            uVar18 = (xStack_14c >> 0x10)
-            uVar19 = (xStack_14c >> 0x18)
             pCVar6 = quest:GetHero()
-            bVar3 = me:AcquireControl(4)
+            bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -250,8 +242,9 @@ function Main(quest, me)
                     bVar3 = not alive
                     if not bVar3 then
                         -- LAB_00d536c0: (native jump target)
-                        -- TODO(native): CTimer::CTimer((CTimer *)&xStack_184);
-                        quest:SetTimer(xStack_188, xStack_184)
+                        xStack_184 = quest:RegisterTimer()
+                        timerId = xStack_184
+                        quest:SetTimer(xStack_184, 10)
                         quest:SetStateInt("PreMeleeMode", 1)
                         quest:SetStateInt("DummyHits", 0)
                         CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
@@ -268,9 +261,9 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d55c3d end
                                 -- TODO(native): xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);
-                                quest:SetTimer(xStack_188, 10)
+                                quest:SetTimer(timerId, 10)
                             end
-                            iVar7 = quest:GetTimer(xStack_188)
+                            iVar7 = quest:GetTimer(timerId)
                             if iVar7 < 1 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -311,7 +304,8 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d55c3d end
-                                quest:SetTimer(xStack_188, xStack_184)
+                                quest:SetTimer(xStack_184, 10)
+                                timerId = xStack_184
                                 CVar10 = CVar10
                             end
                             iVar7 = quest:GetStateInt("DummyHits")
@@ -326,12 +320,8 @@ function Main(quest, me)
                             if bVar3 ~= 0 then
                             end
                             iVar8 = 4
-                            uVar16 = SUB41(xStack_14c,0)
-                            uVar17 = (xStack_14c >> 8)
-                            uVar18 = (xStack_14c >> 0x10)
-                            uVar19 = (xStack_14c >> 0x18)
                             pCVar6 = quest:GetHero()
-                            bVar3 = me:AcquireControl(4)
+                            bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             while not bVar3 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
@@ -341,12 +331,8 @@ function Main(quest, me)
                                     goto FLOW_after_lab_00d53a0b
                                 end
                                 iVar8 = 4
-                                uVar16 = SUB41(xStack_14c,0)
-                                uVar17 = (xStack_14c >> 8)
-                                uVar18 = (xStack_14c >> 0x10)
-                                uVar19 = (xStack_14c >> 0x18)
                                 pCVar6 = quest:GetHero()
-                                bVar3 = me:AcquireControl(4)
+                                bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -387,7 +373,7 @@ function Main(quest, me)
                                             -- LAB_00d53c7e: (native jump target)
                                             quest:SetStateInt("PreMeleeMode", 2)
                                             quest:SetStateInt("DummyHits", 0)
-                                            quest:SetTimer(xStack_188, 10)
+                                            quest:SetTimer(timerId, 10)
                                             CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
                                             quest:DisplayQuestInfo(true)
                                             iVar7 = quest:GetStateInt("DummyHits")
@@ -402,9 +388,9 @@ function Main(quest, me)
                                                     bVar3 = not alive
                                                     if bVar3 then goto LAB_00d55c3d end
                                                     -- TODO(native): xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);
-                                                    quest:SetTimer(xStack_188, 10)
+                                                    quest:SetTimer(timerId, 10)
                                                 end
-                                                iVar7 = quest:GetTimer(xStack_188)
+                                                iVar7 = quest:GetTimer(timerId)
                                                 if iVar7 < 1 then
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
@@ -445,7 +431,8 @@ function Main(quest, me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
                                                     if bVar3 then goto LAB_00d55c3d end
-                                                    quest:SetTimer(xStack_188, xStack_184)
+                                                    quest:SetTimer(xStack_184, 10)
+                                                    timerId = xStack_184
                                                     CVar10 = CVar10
                                                 end
                                                 iVar7 = quest:GetStateInt("DummyHits")
@@ -537,8 +524,8 @@ function Main(quest, me)
                                                             bVar3 = not alive
                                                             if not bVar3 then
                                                                 -- LAB_00d5439e: (native jump target)
-                                                                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
-                                                                quest:SetTimer(xStack_188, xStack_180)
+                                                                xStack_180 = quest:RegisterTimer()
+                                                                quest:SetTimer(xStack_180, 10)
                                                                 iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
@@ -546,7 +533,7 @@ function Main(quest, me)
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
                                                                     if bVar3 then goto LAB_00d55c2b end
-                                                                    iVar7 = quest:GetTimer(xStack_188)
+                                                                    iVar7 = quest:GetTimer(xStack_180)
                                                                     if iVar7 < 1 then
                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                         bVar3 = not alive
@@ -556,7 +543,7 @@ function Main(quest, me)
                                                                         quest:AddPersonToConversation(iVar8, pCVar6)
                                                                         pCVar6 = quest:GetHero()
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
-                                                                        quest:SetTimer(xStack_188, xStack_180)
+                                                                        quest:SetTimer(xStack_180, 10)
                                                                     end
                                                                     iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
@@ -597,12 +584,8 @@ function Main(quest, me)
                                                                         -- LAB_00d54dfa: (native jump target)
                                                                     else
                                                                         xStack_114_2 = resources:NewActorMap()
-                                                                        pCVar21 = xStack_124
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pCVar21);
-                                                                        pppuVar22 = xStack_17c
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pppuVar22);
+                                                                        resources:SetActor(xStack_114_2, "HERO", xStack_124)
+                                                                        resources:SetActor(xStack_114_2, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
                                                                         quest:PauseAllNonScriptedEntities(true)
@@ -1520,11 +1503,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_822
+                                                                                                                goto FLOW_after_lab_00d54f9c_800
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_822::
+                                                                                                        ::FLOW_after_lab_00d54f9c_800::
                                                                                                         if (u_stk_128 & 1) ~= 0 then
                                                                                                             u_stk_128 = u_stk_128 & 0xfffffffe
                                                                                                         end
@@ -2020,6 +2003,7 @@ function Main(quest, me)
                                                                     ::FLOW_after_lab_00d54dfa::
                                                                 end
                                                                 ::LAB_00d55c2b::
+                                                                quest:DeregisterTimer(xStack_180)
                                                             end
                                                         end
                                                     else
@@ -2039,8 +2023,8 @@ function Main(quest, me)
                                                             bVar3 = not alive
                                                             if not bVar3 then
                                                                 -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
-                                                                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
-                                                                quest:SetTimer(xStack_188, xStack_180)
+                                                                xStack_180 = quest:RegisterTimer()
+                                                                quest:SetTimer(xStack_180, 10)
                                                                 iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
@@ -2048,7 +2032,7 @@ function Main(quest, me)
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
                                                                     if bVar3 then goto LAB_00d55c2b_c27 end
-                                                                    iVar7 = quest:GetTimer(xStack_188)
+                                                                    iVar7 = quest:GetTimer(xStack_180)
                                                                     if iVar7 < 1 then
                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                         bVar3 = not alive
@@ -2058,7 +2042,7 @@ function Main(quest, me)
                                                                         quest:AddPersonToConversation(iVar8, pCVar6)
                                                                         pCVar6 = quest:GetHero()
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
-                                                                        quest:SetTimer(xStack_188, xStack_180)
+                                                                        quest:SetTimer(xStack_180, 10)
                                                                     end
                                                                     iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
@@ -2097,12 +2081,8 @@ function Main(quest, me)
                                                                         -- LAB_00d54dfa_c27: (native jump target)
                                                                     else
                                                                         pCVar5 = resources:NewActorMap()
-                                                                        pCVar21 = xStack_124
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pCVar21);
-                                                                        pppuVar22 = xStack_17c
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pppuVar22);
+                                                                        resources:SetActor(pCVar5, "HERO", xStack_124)
+                                                                        resources:SetActor(pCVar5, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
                                                                         quest:PauseAllNonScriptedEntities(true)
@@ -2699,6 +2679,7 @@ function Main(quest, me)
                                                                     end
                                                                 end
                                                                 ::LAB_00d55c2b_c27::
+                                                                quest:DeregisterTimer(xStack_180)
                                                                 goto FLOW_after_lab_00d5439e
                                                             end
                                                         end
@@ -2729,7 +2710,7 @@ function Main(quest, me)
                                             -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                                             quest:SetStateInt("PreMeleeMode", 2)
                                             quest:SetStateInt("DummyHits", 0)
-                                            quest:SetTimer(xStack_188, 10)
+                                            quest:SetTimer(timerId, 10)
                                             CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
                                             quest:DisplayQuestInfo(true)
                                             iVar7 = quest:GetStateInt("DummyHits")
@@ -2744,9 +2725,9 @@ function Main(quest, me)
                                                     bVar3 = not alive
                                                     if bVar3 then goto LAB_00d55c3d end
                                                     -- TODO(native): xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);
-                                                    quest:SetTimer(xStack_188, 10)
+                                                    quest:SetTimer(timerId, 10)
                                                 end
-                                                iVar7 = quest:GetTimer(xStack_188)
+                                                iVar7 = quest:GetTimer(timerId)
                                                 if iVar7 < 1 then
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
@@ -2787,7 +2768,8 @@ function Main(quest, me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
                                                     if bVar3 then goto LAB_00d55c3d end
-                                                    quest:SetTimer(xStack_188, xStack_184)
+                                                    quest:SetTimer(xStack_184, 10)
+                                                    timerId = xStack_184
                                                     CVar10 = CVar10
                                                 end
                                                 iVar7 = quest:GetStateInt("DummyHits")
@@ -2875,8 +2857,8 @@ function Main(quest, me)
                                                             bVar3 = not alive
                                                             if not bVar3 then
                                                                 -- LAB_00d5439e_c28: (native jump target)
-                                                                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
-                                                                quest:SetTimer(xStack_188, xStack_180)
+                                                                xStack_180 = quest:RegisterTimer()
+                                                                quest:SetTimer(xStack_180, 10)
                                                                 iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
@@ -2884,7 +2866,7 @@ function Main(quest, me)
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
                                                                     if bVar3 then goto LAB_00d55c2b_c28 end
-                                                                    iVar7 = quest:GetTimer(xStack_188)
+                                                                    iVar7 = quest:GetTimer(xStack_180)
                                                                     if iVar7 < 1 then
                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                         bVar3 = not alive
@@ -2894,7 +2876,7 @@ function Main(quest, me)
                                                                         quest:AddPersonToConversation(iVar8, pCVar6)
                                                                         pCVar6 = quest:GetHero()
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
-                                                                        quest:SetTimer(xStack_188, xStack_180)
+                                                                        quest:SetTimer(xStack_180, 10)
                                                                     end
                                                                     iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
@@ -2933,12 +2915,8 @@ function Main(quest, me)
                                                                         -- LAB_00d54dfa_c28: (native jump target)
                                                                     else
                                                                         pCVar5 = resources:NewActorMap()
-                                                                        pCVar21 = xStack_124
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pCVar21);
-                                                                        pppuVar22 = xStack_17c
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pppuVar22);
+                                                                        resources:SetActor(pCVar5, "HERO", xStack_124)
+                                                                        resources:SetActor(pCVar5, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
                                                                         quest:PauseAllNonScriptedEntities(true)
@@ -3535,6 +3513,7 @@ function Main(quest, me)
                                                                     end
                                                                 end
                                                                 ::LAB_00d55c2b_c28::
+                                                                quest:DeregisterTimer(xStack_180)
                                                             end
                                                         end
                                                     else
@@ -3570,6 +3549,7 @@ function Main(quest, me)
                             ::FLOW_after_lab_00d53a0b::
                         end
                         ::LAB_00d55c3d::
+                        quest:DeregisterTimer(xStack_184)
                     end
                 end
             else
@@ -3590,8 +3570,9 @@ function Main(quest, me)
                     if not bVar3 then
                         -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
                         -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
-                        -- TODO(native): CTimer::CTimer((CTimer *)&xStack_184);
-                        quest:SetTimer(xStack_188, xStack_184)
+                        xStack_184 = quest:RegisterTimer()
+                        timerId = xStack_184
+                        quest:SetTimer(xStack_184, 10)
                         quest:SetStateInt("PreMeleeMode", 1)
                         quest:SetStateInt("DummyHits", 0)
                         CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
@@ -3608,9 +3589,9 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d55c3d_c29 end
                                 -- TODO(native): xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);
-                                quest:SetTimer(xStack_188, 10)
+                                quest:SetTimer(timerId, 10)
                             end
-                            iVar7 = quest:GetTimer(xStack_188)
+                            iVar7 = quest:GetTimer(timerId)
                             if iVar7 < 1 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -3651,7 +3632,8 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d55c3d_c29 end
-                                quest:SetTimer(xStack_188, xStack_184)
+                                quest:SetTimer(xStack_184, 10)
+                                timerId = xStack_184
                                 CVar10 = CVar10
                             end
                             iVar7 = quest:GetStateInt("DummyHits")
@@ -3666,24 +3648,16 @@ function Main(quest, me)
                             if bVar3 ~= 0 then
                             end
                             iVar8 = 4
-                            uVar16 = SUB41(xStack_14c,0)
-                            uVar17 = (xStack_14c >> 8)
-                            uVar18 = (xStack_14c >> 0x10)
-                            uVar19 = (xStack_14c >> 0x18)
                             pCVar6 = quest:GetHero()
-                            bVar3 = me:AcquireControl(4)
+                            bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             while not bVar3 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then return end  -- TODO(native): goto LAB_00d53a0b_c29
                                 iVar8 = 4
-                                uVar16 = SUB41(xStack_14c,0)
-                                uVar17 = (xStack_14c >> 8)
-                                uVar18 = (xStack_14c >> 0x10)
-                                uVar19 = (xStack_14c >> 0x18)
                                 pCVar6 = quest:GetHero()
-                                bVar3 = me:AcquireControl(4)
+                                bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -3724,7 +3698,7 @@ function Main(quest, me)
                                             -- LAB_00d53c7e_c29: (native jump target)
                                             quest:SetStateInt("PreMeleeMode", 2)
                                             quest:SetStateInt("DummyHits", 0)
-                                            quest:SetTimer(xStack_188, 10)
+                                            quest:SetTimer(timerId, 10)
                                             CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
                                             quest:DisplayQuestInfo(true)
                                             iVar7 = quest:GetStateInt("DummyHits")
@@ -3739,9 +3713,9 @@ function Main(quest, me)
                                                     bVar3 = not alive
                                                     if bVar3 then goto LAB_00d55c3d_c29 end
                                                     -- TODO(native): xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);
-                                                    quest:SetTimer(xStack_188, 10)
+                                                    quest:SetTimer(timerId, 10)
                                                 end
-                                                iVar7 = quest:GetTimer(xStack_188)
+                                                iVar7 = quest:GetTimer(timerId)
                                                 if iVar7 < 1 then
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
@@ -3782,7 +3756,8 @@ function Main(quest, me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
                                                     if bVar3 then goto LAB_00d55c3d_c29 end
-                                                    quest:SetTimer(xStack_188, xStack_184)
+                                                    quest:SetTimer(xStack_184, 10)
+                                                    timerId = xStack_184
                                                     CVar10 = CVar10
                                                 end
                                                 iVar7 = quest:GetStateInt("DummyHits")
@@ -3870,8 +3845,8 @@ function Main(quest, me)
                                                             bVar3 = not alive
                                                             if not bVar3 then
                                                                 -- LAB_00d5439e_c29: (native jump target)
-                                                                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
-                                                                quest:SetTimer(xStack_188, xStack_180)
+                                                                xStack_180 = quest:RegisterTimer()
+                                                                quest:SetTimer(xStack_180, 10)
                                                                 iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
@@ -3879,7 +3854,7 @@ function Main(quest, me)
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
                                                                     if bVar3 then goto LAB_00d55c2b_c29 end
-                                                                    iVar7 = quest:GetTimer(xStack_188)
+                                                                    iVar7 = quest:GetTimer(xStack_180)
                                                                     if iVar7 < 1 then
                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                         bVar3 = not alive
@@ -3889,7 +3864,7 @@ function Main(quest, me)
                                                                         quest:AddPersonToConversation(iVar8, pCVar6)
                                                                         pCVar6 = quest:GetHero()
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
-                                                                        quest:SetTimer(xStack_188, xStack_180)
+                                                                        quest:SetTimer(xStack_180, 10)
                                                                     end
                                                                     iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
@@ -3928,12 +3903,8 @@ function Main(quest, me)
                                                                         -- LAB_00d54dfa_c29: (native jump target)
                                                                     else
                                                                         pCVar5 = resources:NewActorMap()
-                                                                        pCVar21 = xStack_124
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pCVar21);
-                                                                        pppuVar22 = xStack_17c
-                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](( map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)(xStack_114_2 + 4),&xStack_18c);
-                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar9,pppuVar22);
+                                                                        resources:SetActor(pCVar5, "HERO", xStack_124)
+                                                                        resources:SetActor(pCVar5, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
                                                                         quest:PauseAllNonScriptedEntities(true)
@@ -4530,6 +4501,7 @@ function Main(quest, me)
                                                                     end
                                                                 end
                                                                 ::LAB_00d55c2b_c29::
+                                                                quest:DeregisterTimer(xStack_180)
                                                             end
                                                         end
                                                     else
@@ -4582,6 +4554,7 @@ function Main(quest, me)
                             end
                         end
                         ::LAB_00d55c3d_c29::
+                        quest:DeregisterTimer(xStack_184)
                         goto FLOW_after_lab_00d536c0
                     end
                 end
@@ -4591,6 +4564,7 @@ function Main(quest, me)
         ::FLOW_after_lab_00d533bb::
     end
     ::LAB_00d55c46::
+    quest:DeregisterTimer(xStack_188)
     ::LAB_00d55c4f::
     resources:DestroyMovie(xStack_f8)
 end

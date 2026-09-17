@@ -29,22 +29,24 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then
+            resources:ReleaseResource(xStack_30)
             r1 = nil
             -- TODO(native): xStack_3c[0] = (int *)0x0;
             return
         end
-        bVar4 = resources:TryAcquire(0, me, 4)
+        bVar4 = resources:TryAcquire(xStack_30, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if bVar4 then
-        resources:ReleaseResource(0)
+        resources:ReleaseResource(xStack_30)
         return
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     while true do
         if bVar4 then
+            resources:ReleaseResource(xStack_30)
             r1 = nil
             -- TODO(native): xStack_3c[0] = (int *)0x0;
             return
@@ -70,13 +72,13 @@ function Main(quest, me)
             bVar4 = false
             if bVar4 ~= 0 then
             end
-            bVar4 = resources:TryAcquire(0, me, 4)
+            bVar4 = resources:TryAcquire(xStack_30, me, 4)
             while not bVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then goto LAB_00d444a1 end
-                bVar4 = resources:TryAcquire(0, me, 4)
+                bVar4 = resources:TryAcquire(xStack_30, me, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
@@ -135,7 +137,7 @@ function Main(quest, me)
             quest:StartMovieSequence()
             pCVar13 = 0x1
             quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
-            xStack_48 = resources:ScriptThing(0)
+            xStack_48 = resources:ScriptThing(xStack_30)
             pCVar8 = xStack_48
             r2 = quest:GetHealth(pCVar8)
             fVar2 = 0.0
@@ -187,7 +189,7 @@ function Main(quest, me)
     quest:StartMovieSequence()
     pCVar13 = 0x1
     quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
-    xStack_3c = resources:ScriptThing(0)
+    xStack_3c = resources:ScriptThing(xStack_30)
     pCVar8 = xStack_3c
     r4 = quest:GetHealth(pCVar8)
     fVar2 = 0.0
@@ -215,7 +217,7 @@ function Main(quest, me)
             quest:StartMovieSequence()
             pCVar13 = 0x1
             quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
-            xStack_48 = resources:ScriptThing(0)
+            xStack_48 = resources:ScriptThing(xStack_30)
             pCVar8 = xStack_48
             r5 = quest:GetHealth(pCVar8)
             fVar2 = 0.0
@@ -287,7 +289,7 @@ function Main(quest, me)
     ::LAB_00d44498::
     resources:DestroyMovie(this_00)
     ::LAB_00d444a1::
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_30)
 end
 
 function Init(quest, me)

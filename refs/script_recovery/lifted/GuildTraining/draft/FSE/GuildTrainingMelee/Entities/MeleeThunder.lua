@@ -21,6 +21,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
+            resources:ReleaseResource(xStack_10)
             return
         end
         iVar1 = quest:GetStateInt("TutorialState")
@@ -31,13 +32,13 @@ function Main(quest, me)
         bVar2 = false
         if bVar2 ~= 0 then
         end
-        bVar2 = resources:TryAcquire(0, me, 4)
+        bVar2 = resources:TryAcquire(xStack_10, me, 4)
         while not bVar2 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d582ed end
-            bVar2 = resources:TryAcquire(0, me, 4)
+            bVar2 = resources:TryAcquire(xStack_10, me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -70,13 +71,13 @@ function Main(quest, me)
                     bVar2 = false
                     if bVar2 ~= 0 then
                     end
-                    bVar2 = resources:TryAcquire(0, me, 4)
+                    bVar2 = resources:TryAcquire(xStack_10, me, 4)
                     while not bVar2 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if bVar2 then goto LAB_00d58297 end
-                        bVar2 = resources:TryAcquire(0, me, 4)
+                        bVar2 = resources:TryAcquire(xStack_10, me, 4)
                     end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
@@ -104,13 +105,13 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00d58297::
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_10)
                 return
             end
         end
     end
     ::LAB_00d582ed::
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_10)
 end
 
 function Init(quest, me)

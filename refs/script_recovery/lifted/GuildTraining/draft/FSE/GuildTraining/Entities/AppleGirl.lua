@@ -25,6 +25,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
+            resources:ReleaseResource(xStack_84)
             return
         end
         bVar2 = resources:TryAcquire(xStack_84, me, 4)
@@ -124,7 +125,7 @@ function Main(quest, me)
                 bVar2 = not alive
                 if bVar2 then
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_60);
+                    resources:DestroyMovie(xStack_60)
                     quest:DeregisterTimer(iVar4)
                     xStack_70_2 = nil
                     if (r1._0_4_ ~= nil) and (*r1._0_4_ = *r1._0_4_ + -1, *r1._0_4_ == 0) then
@@ -220,7 +221,7 @@ function Main(quest, me)
             bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar13)
             __native_condition_2 = bVar2
             if __native_condition_2 then
-                iVar7 = quest:GetTimer(iVar4)
+                iVar7 = quest:GetTimer(xStack_88)
                 __native_condition_2 = iVar7 < 1
             end
             if __native_condition_2 then
@@ -246,7 +247,7 @@ function Main(quest, me)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_MORE_APPLES", me, pCVar6, false)
                 end
-                quest:SetTimer(iVar4, xStack_88)
+                quest:SetTimer(xStack_88, 0xf)
             end
             bVar2 = me:IsTalkedToByHero()
             if not bVar2 then goto FLOW_native_label_1 end
@@ -417,7 +418,7 @@ function Main(quest, me)
                 bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar13)
                 __native_condition_3 = bVar2
                 if __native_condition_3 then
-                    iVar7 = quest:GetTimer(iVar4)
+                    iVar7 = quest:GetTimer(xStack_88)
                     __native_condition_3 = iVar7 < 1
                 end
                 if __native_condition_3 then
@@ -429,7 +430,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(iVar4, pCVar6)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_THANKS_AGAIN", me, pCVar6, false)
-                    quest:SetTimer(iVar4, xStack_88)
+                    quest:SetTimer(xStack_88, 0xf)
                 end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -438,13 +439,14 @@ function Main(quest, me)
         end
     end
     ::LAB_00d3e1b6::
+    quest:DeregisterTimer(xStack_88)
     ::LAB_00d3e1bf::
     resources:DestroyMovie(xStack_60)
     do return end
     ::LAB_00d3d948::
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(xStack_60)
-    quest:DeregisterTimer(iVar4)
+    quest:DeregisterTimer(xStack_88)
     goto LAB_00d3e1bf
     ::LAB_00d3e06c::
     quest:PauseAllNonScriptedEntities(false)

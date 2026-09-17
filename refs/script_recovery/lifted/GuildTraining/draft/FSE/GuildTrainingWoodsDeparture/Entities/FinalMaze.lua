@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, iVar14, iVar18, iVar19, iVar21, iVar22, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, r6, r7, uVar12, uVar13, u_stk_78, xStack_10, xStack_1c, xStack_38, xStack_5c, xStack_70
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, iVar14, iVar18, iVar19, iVar21, iVar22, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, r6, r7, uVar12, uVar13, u_stk_78, xStack_10, xStack_1c, xStack_38, xStack_5c, xStack_70, xStack_80
     local alive = true
     uVar12 = 0
     u_stk_78 = 0
@@ -97,7 +97,7 @@ function Main(quest, me)
     pCVar6 = quest:GetHero()
     quest:EntitySetAsDamageable(pCVar6, bVar3)
     quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
-    -- TODO(native): CTimer::CTimer((CTimer *)&xStack_80);
+    xStack_80 = quest:RegisterTimer()
     quest:SetTimer(xStack_80, 0)
     fVar20 = 20.0
     fVar17 = 5.0
@@ -866,6 +866,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d664b0::
+    quest:DeregisterTimer(xStack_80)
     ::LAB_00d664b9::
     resources:ReleaseResource(xStack_70)
 end
