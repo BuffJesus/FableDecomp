@@ -81,6 +81,12 @@ works but forces every generated function to be wrapped.
 | `quest:IsPlayerHoldingFireRangedWeaponButton()` | GSI slot 67 (0x10C) `?IsPlayerHoldingFireRangedWeaponButton@CGameScriptInterface@@UBE_NXZ` | GuildTraining skill tutorial polls it (5 sites, 2026-09-17) |
 | `me:MsgIsHitBy(scriptName)` | `?MsgIsHitBy@CScriptThing@@UBE_NABVCCharString@@@Z` | the DLL only exposes `MsgIsHitByHero`; guild dummies test a named attacker (6 sites) |
 | `quest:AddQuestInfoTickByText(text, state, scale)` | GSI slot 331 (0x52C) | already bound (`AddQuestInfoTickByAction` = slot 330); the converter now emits the `ByText` name for CCharString operands |
+| `me:MsgIsHitByAnySpecialAbilityFrom(scriptName)` | `?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z` (slot 0xA8) | TraderConflict polls it per creature with `"TC_BanditFighter"` (4 sites); only the `...FromHero` form is bound |
+| `me:MsgIsHitByHeroSpecialAbility(ability)` (int `EHeroAbility`) | slot 0xA4 `?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z` with `SCRIPT_NAME_HERO` | TraderConflict passes ability 14 (the recovered immediate); the binding must take the enum value |
+| `quest:IsPlayerHoldingLockTargetButton()` | GSI slot 66 (0x108) | TraderConflict Good/Evil poll it in the intro (3 sites) |
+| `quest:TextEntryExists(key)` | GSI slot 0x598 | TraderToRescue builds `"TEXT_QST_B11_" .. name .. "_ONTALK_" .. n` and probes it (2 sites) |
+| `me:MsgExpressionPerformedTo(scriptName)` | slot 0x74 `?MsgExpressionPerformedTo@CScriptThing@@UBE_NAAVCCharString@@@Z` | TraderToRescue (EXPRESSION_FOLLOW / EXPRESSION_WAIT checks) |
+| `quest:EntitySetAsOpinionSource(thing, ...)` | GSI slots 0x9B4 / 0x9B8 | TraderConflict Evil Main (1 site) |
 
 ## 5. Already upstream (thanks) — for reference
 
