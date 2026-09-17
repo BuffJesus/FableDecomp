@@ -331,6 +331,13 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     text = bind_st0_results(text)
     text = re.sub(r'::\s+(?=\w)', '::', text)   # `CScriptThing:: _Method_...(` after line joining
+    # Ghidra's `joined_r0x<addr>` block labels are ordinary labels to the goto passes
+    def joined(m):
+        name = f'LAB_{m.group(1)}'
+        return name if not re.search(r'^\s*' + name + r':', text, re.M) else name + '0'
+    text = re.sub(r'\bjoined_r0x([0-9a-f]+)\b', joined, text)
+    # a switch on a slot Ghidra typed float prints its integer cases as denormals (k * 1.4013e-45)
+    text = re.sub(r'\bcase (\d+(?:\.\d+)?e-4[45]):', lambda m: f'case {int(round(float(m.group(1)) / 1.4013e-45))}:', text)
     text = re.sub(r'\(int \*\)(\w+\._\d_4_)\b', r'\1', text)   # casts on a field slice of a stack object
     # counted pointers Ghidra typed `undefined **`: the same refcount idiom as the `int *` spelling
     text = re.sub(r'\(undefined \*\)\(\(int\)\*(\w+) \+ -1\)', r'*\1 + -1', text)
@@ -728,8 +735,45 @@ def lower_after_annotate(text):
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
     text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
                   lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
+    text = fold_local_thing_vectors(text)
     # receiver aliases (`this_00 = *(int **)(this + 0x40);`) are dead once their vcalls read `GSI->`
     text = drop_dead_local_stores(text)
+    return text
+
+
+RE_VEC_DTOR_LOOP = re.compile(
+    r'^[ \t]*for \(; (?:\w+ = \w+, )?(\w+) != (\w+); \1 = \1 \+ 3\) \{\s*\r?\n(?:[ \t]*\w+ = \w+;[ \t]*\r?\n)?'
+    r'[ \t]*\(\*\*\(code \*\*\)\*\1\)\(0\);[ \t]*\r?\n(?:[ \t]*\w+ = \w+;[ \t]*\r?\n){0,2}[ \t]*\}[ \t]*\r?\n', re.M)
+RE_VEC_FREE = re.compile(
+    r'^[ \t]*if \((\w+) != \(undefined4 \*\)0x0\) \{\s*\r?\n[ \t]*free\(\1\);[ \t]*\r?\n(?:[ \t]*\w+ = \w+;[ \t]*\r?\n)*[ \t]*\}[ \t]*\r?\n', re.M)
+
+
+def fold_local_thing_vectors(text):
+    '''A local std::vector<CScriptThing> filled by a GSI `GetAllThings*` slot: the Lua binding returns a table.
+    `n = GSI->GetAllThingsWithDefName(&name,&vec);` -> `vec = GSI->...(&name); n = LOCALLIST_Count(vec);`,
+    `(CScriptThing *)((int)vec + byteOffset)` -> `LOCALLIST_At(vec, byteOffset / 0xc)`; the element destructor
+    loops (`for (; p != end; p += 3) (**(code **)*p)(0);`), `free(begin)` and the zeroed begin/end/capacity
+    slots are the vector's own lifetime and vanish.'''
+    vectors = []
+    def call(m):
+        vectors.append(m.group(5))
+        return f'{m.group(1)}{m.group(5)} = GSI->{m.group(3)}({m.group(4)});\n{m.group(1)}{m.group(2)} = LOCALLIST_Count({m.group(5)});'
+    text = re.sub(r'^([ \t]*)(\w+) = GSI->(GetAllThings\w+)\(([^;]*?),&(\w+)\);', call, text, flags=re.M)
+    if not vectors:
+        return text
+    for vec in vectors:
+        text = re.sub(r'\(CScriptThing \*\)\(\(int\)' + re.escape(vec) + r' \+ (\w+)\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
+        text = re.sub(r'\(CScriptThing \*\)' + re.escape(vec) + r'\b', f'LOCALLIST_At({vec}, 0)', text)
+    # element destructor calls through vtable slot 0 (`(**(code **)*p)(0)`), the storage free, the zeroed
+    # begin/end/capacity slots; then loops / guards left with only pointer bookkeeping
+    text = re.sub(r'^[ \t]*\(\*\*\(code \*\*\)\*\w+\)\(0\);[ \t]*\r?\n', '', text, flags=re.M)
+    text = re.sub(r'^[ \t]*free\(\w+\);[ \t]*\r?\n', '', text, flags=re.M)
+    text = re.sub(r'^[ \t]*\w+ = \(undefined4 \*\)0x0;[ \t]*\r?\n', '', text, flags=re.M)
+    junk = r'(?:[ \t]*\w+ = (?:\w+|\w+ \+ \d+|\(undefined4 \*\)0x0);[ \t]*\r?\n)*'
+    for _ in range(3):
+        text = re.sub(r'^[ \t]*for \(;[^\n]*\) \{[ \t]*\r?\n' + junk + r'[ \t]*\}[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*do \{[ \t]*\r?\n' + junk + r'[ \t]*\} while \(\w+ != \w+\);[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*if \(\w+ != (?:\(undefined4 \*\)0x0|\w+)\) \{[ \t]*\r?\n' + junk + r'[ \t]*\}[ \t]*\r?\n', '', text, flags=re.M)
     return text
 
 
@@ -1328,6 +1372,7 @@ LUA_PSEUDO = [
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
     (re.compile(r'RESOURCE_IsAcquired\(\w+\)'), 'false'),   # a freshly constructed stack resource has no handle yet ([this+8] == 0)
+    (re.compile(r'LOCALLIST_Count\((\w+)\)'), r'#\1'),
     (re.compile(r'RESOURCE_(\w+)\('), r'resources:\1('),
     (re.compile(r'QUESTSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'quest:\1State\2('),
     (re.compile(r'ENTITYSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'__native_entity_state:\1State\2('),
@@ -1381,6 +1426,7 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_Colour', lambda a: '{R = %s, G = %s, B = %s, A = %s}' % tuple(a))
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
+    text = _expand_calls(text, 'LOCALLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)
     for pattern, repl in LUA_PSEUDO:

@@ -11,25 +11,22 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, iVar4, iVar5, iVar7, puVar1, puVar2, puVar6, pu_stk_14, pu_stk_20, pu_stk_8
+    local bVar3, iVar4, iVar5, iVar7, puStack_18, puStack_24, puStack_c, puVar6, pu_stk_14
     local alive = true
     iVar5 = 0
     quest:SetThingAsUsable(me, false)
     quest:SetThingPersistent(me, true)
-    pu_stk_8 = 0x0
-    pu_stk_14 = 0x0
-    pu_stk_20 = 0x0
-    iVar4 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
+    puStack_c = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
+    iVar4 = #puStack_c
     if 0 < iVar4 then
         iVar7 = 0
         repeat
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             puVar6 = pu_stk_20
-            puVar1 = 0x0
-            -- TODO(native): if (bVar3) goto joined_r0x00d4482d;
-            quest:SetThingAsUsable(nil --[[missing]], (0x0 + iVar7))
-            quest:SetThingPersistent(nil --[[missing]], (0x0 + iVar7))
+            if bVar3 then goto LAB_00d4482d end
+            quest:SetThingAsUsable(puStack_c[(iVar7) / 0xc + 1], false)
+            quest:SetThingPersistent(puStack_c[(iVar7) / 0xc + 1], true)
             iVar5 = iVar5 + 1
             iVar7 = iVar7 + 0xc
         until not (iVar5 < iVar4)
@@ -38,52 +35,21 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     puVar6 = pu_stk_20
-    puVar1 = 0x0
     if bVar3 then
-        while puVar1 ~= puVar6 do
-            -- TODO(native): (**(code **)*puVar1)(0);
-            puVar1 = puVar1 + 3
-        end
-        puVar1 = 0x0
         puVar6 = pu_stk_14
-        if nil ~= nil then
-            -- TODO(native): free(puStack_24);
-            puVar1 = 0x0
-            puVar6 = pu_stk_14
-        end
-        while puVar2 = pu_stk_14, puVar1 ~= pu_stk_14 do
-            pu_stk_14 = puVar6
-            -- TODO(native): (**(code **)*puVar1)(0);
-            puVar6 = pu_stk_14
-            pu_stk_14 = puVar2
-            puVar1 = puVar1 + 3
-        end
         pu_stk_14 = puVar6
-        puVar1 = 0x0
-        puVar2 = pu_stk_8
-        if nil ~= nil then
-            -- TODO(native): free(puStack_18);
-            puVar1 = 0x0
-            puVar2 = pu_stk_8
-        end
-        while puVar6 = pu_stk_8, bVar3 = puVar1 ~= pu_stk_8, pu_stk_8 = puVar2, bVar3 do
-            -- TODO(native): (**(code **)*puVar1)(0);
-            puVar2 = pu_stk_8
-            pu_stk_8 = puVar6
-            puVar1 = puVar1 + 3
-        end
     else
-        iVar5 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
+        puStack_24 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
+        iVar5 = #puStack_24
         if 0 < iVar5 then
             iVar7 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 puVar6 = pu_stk_20
-                puVar1 = 0x0
-                -- TODO(native): if (bVar3) goto joined_r0x00d449bd;
-                quest:SetThingAsUsable(nil --[[missing]], (0x0 + iVar7))
-                quest:SetThingPersistent(nil --[[missing]], (0x0 + iVar7))
+                if bVar3 then goto LAB_00d449bd end
+                quest:SetThingAsUsable(puStack_24[(iVar7) / 0xc + 1], false)
+                quest:SetThingPersistent(puStack_24[(iVar7) / 0xc + 1], true)
                 iVar4 = iVar4 + 1
                 iVar7 = iVar7 + 0xc
             until not (iVar4 < iVar5)
@@ -92,52 +58,21 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         puVar6 = pu_stk_20
-        puVar1 = 0x0
         if bVar3 then
-            while puVar1 ~= puVar6 do
-                -- TODO(native): (**(code **)*puVar1)(0);
-                puVar1 = puVar1 + 3
-            end
-            puVar1 = 0x0
             puVar6 = pu_stk_14
-            if nil ~= nil then
-                -- TODO(native): free(puStack_24);
-                puVar1 = 0x0
-                puVar6 = pu_stk_14
-            end
-            while puVar2 = pu_stk_14, puVar1 ~= pu_stk_14 do
-                pu_stk_14 = puVar6
-                -- TODO(native): (**(code **)*puVar1)(0);
-                puVar6 = pu_stk_14
-                pu_stk_14 = puVar2
-                puVar1 = puVar1 + 3
-            end
             pu_stk_14 = puVar6
-            puVar1 = 0x0
-            puVar2 = pu_stk_8
-            if nil ~= nil then
-                -- TODO(native): free(puStack_18);
-                puVar1 = 0x0
-                puVar2 = pu_stk_8
-            end
-            while puVar6 = pu_stk_8, bVar3 = puVar1 ~= pu_stk_8, pu_stk_8 = puVar2, bVar3 do
-                -- TODO(native): (**(code **)*puVar1)(0);
-                puVar2 = pu_stk_8
-                pu_stk_8 = puVar6
-                puVar1 = puVar1 + 3
-            end
         else
-            iVar5 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
+            puStack_18 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
+            iVar5 = #puStack_18
             if 0 < iVar5 then
                 iVar7 = 0
                 repeat
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     puVar6 = pu_stk_20
-                    puVar1 = 0x0
-                    -- TODO(native): if (bVar3) goto joined_r0x00d44b4d;
-                    quest:SetThingAsUsable(nil --[[missing]], (0x0 + iVar7))
-                    quest:SetThingPersistent(nil --[[missing]], (0x0 + iVar7))
+                    if bVar3 then goto LAB_00d44b4d end
+                    quest:SetThingAsUsable(puStack_18[(iVar7) / 0xc + 1], false)
+                    quest:SetThingPersistent(puStack_18[(iVar7) / 0xc + 1], true)
                     iVar4 = iVar4 + 1
                     iVar7 = iVar7 + 0xc
                 until not (iVar4 < iVar5)
@@ -145,184 +80,42 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             puVar6 = pu_stk_20
-            puVar1 = 0x0
             if bVar3 then
-                while puVar1 ~= puVar6 do
-                    -- TODO(native): (**(code **)*puVar1)(0);
-                    puVar1 = puVar1 + 3
-                end
-                puVar1 = 0x0
                 puVar6 = pu_stk_14
-                if nil ~= nil then
-                    -- TODO(native): free(puStack_24);
-                    puVar1 = 0x0
-                    puVar6 = pu_stk_14
-                end
-                while puVar2 = pu_stk_14, puVar1 ~= pu_stk_14 do
-                    pu_stk_14 = puVar6
-                    -- TODO(native): (**(code **)*puVar1)(0);
-                    puVar6 = pu_stk_14
-                    pu_stk_14 = puVar2
-                    puVar1 = puVar1 + 3
-                end
                 pu_stk_14 = puVar6
-                puVar1 = 0x0
-                puVar2 = pu_stk_8
-                if nil ~= nil then
-                    -- TODO(native): free(puStack_18);
-                    puVar1 = 0x0
-                    puVar2 = pu_stk_8
-                end
-                while puVar6 = pu_stk_8, bVar3 = puVar1 ~= pu_stk_8, pu_stk_8 = puVar2, bVar3 do
-                    -- TODO(native): (**(code **)*puVar1)(0);
-                    puVar2 = pu_stk_8
-                    pu_stk_8 = puVar6
-                    puVar1 = puVar1 + 3
-                end
             else
-                while puVar1 ~= puVar6 do
-                    -- TODO(native): (**(code **)*puVar1)(0);
-                    puVar1 = puVar1 + 3
-                end
-                puVar1 = 0x0
                 puVar6 = pu_stk_14
-                if nil ~= nil then
-                    -- TODO(native): free(puStack_24);
-                    puVar1 = 0x0
-                    puVar6 = pu_stk_14
-                end
-                while puVar2 = pu_stk_14, puVar1 ~= pu_stk_14 do
-                    pu_stk_14 = puVar6
-                    -- TODO(native): (**(code **)*puVar1)(0);
-                    puVar6 = pu_stk_14
-                    pu_stk_14 = puVar2
-                    puVar1 = puVar1 + 3
-                end
                 pu_stk_14 = puVar6
-                puVar1 = 0x0
-                puVar2 = pu_stk_8
-                if nil ~= nil then
-                    -- TODO(native): free(puStack_18);
-                    puVar1 = 0x0
-                    puVar2 = pu_stk_8
-                end
-                while puVar6 = pu_stk_8, bVar3 = puVar1 ~= pu_stk_8, pu_stk_8 = puVar2, bVar3 do
-                    -- TODO(native): (**(code **)*puVar1)(0);
-                    puVar2 = pu_stk_8
-                    pu_stk_8 = puVar6
-                    puVar1 = puVar1 + 3
-                end
             end
         end
     end
-    bVar3 = nil == nil
+    bVar3 = puStack_c == nil
     goto LAB_00d44c44
-    -- TODO(native): joined_r0x00d449bd:
-    while puVar1 ~= puVar6 do
-        -- TODO(native): (**(code **)*puVar1)(0);
-        puVar1 = puVar1 + 3
-    end
-    puVar1 = 0x0
+    ::LAB_00d449bd::
     puVar6 = pu_stk_14
-    if nil ~= nil then
-        -- TODO(native): free(puStack_24);
-        puVar1 = 0x0
-        puVar6 = pu_stk_14
-    end
-    while puVar2 = pu_stk_14, puVar1 ~= pu_stk_14 do
-        pu_stk_14 = puVar6
-        -- TODO(native): (**(code **)*puVar1)(0);
-        puVar6 = pu_stk_14
-        pu_stk_14 = puVar2
-        puVar1 = puVar1 + 3
-    end
     pu_stk_14 = puVar6
-    if nil ~= nil then
-        -- TODO(native): free(puStack_18);
-    end
-    puVar1 = pu_stk_8
-    puVar6 = 0x0
-    if 0x0 ~= pu_stk_8 then
-        repeat
-            -- TODO(native): (**(code **)*puVar6)(0);
-            puVar6 = puVar6 + 3
-        until not (puVar6 ~= puVar1)
-        bVar3 = nil == nil
+    puVar6 = puStack_c
+    if puStack_c ~= pu_stk_8 then
+        bVar3 = puStack_c == nil
         goto LAB_00d44c44
     end
     goto LAB_00d44bc3
-    -- TODO(native): joined_r0x00d44b4d:
-    while puVar1 ~= puVar6 do
-        -- TODO(native): (**(code **)*puVar1)(0);
-        puVar1 = puVar1 + 3
-    end
-    puVar1 = 0x0
+    ::LAB_00d44b4d::
     puVar6 = pu_stk_14
-    if nil ~= nil then
-        -- TODO(native): free(puStack_24);
-        puVar1 = 0x0
-        puVar6 = pu_stk_14
-    end
-    while puVar2 = pu_stk_14, puVar1 ~= pu_stk_14 do
-        pu_stk_14 = puVar6
-        -- TODO(native): (**(code **)*puVar1)(0);
-        puVar6 = pu_stk_14
-        pu_stk_14 = puVar2
-        puVar1 = puVar1 + 3
-    end
     pu_stk_14 = puVar6
-    puVar1 = 0x0
-    puVar2 = pu_stk_8
-    if nil ~= nil then
-        -- TODO(native): free(puStack_18);
-        puVar1 = 0x0
-        puVar2 = pu_stk_8
-    end
-    while puVar6 = pu_stk_8, bVar3 = puVar1 ~= pu_stk_8, pu_stk_8 = puVar2, bVar3 do
-        -- TODO(native): (**(code **)*puVar1)(0);
-        puVar2 = pu_stk_8
-        pu_stk_8 = puVar6
-        puVar1 = puVar1 + 3
-    end
     goto LAB_00d44bc3
-    -- TODO(native): joined_r0x00d4482d:
-    while puVar1 ~= puVar6 do
-        -- TODO(native): (**(code **)*puVar1)(0);
-        puVar1 = puVar1 + 3
-    end
-    puVar1 = 0x0
+    ::LAB_00d4482d::
     puVar6 = pu_stk_14
-    if nil ~= nil then
-        -- TODO(native): free(puStack_24);
-        puVar1 = 0x0
-        puVar6 = pu_stk_14
-    end
-    while puVar2 = pu_stk_14, puVar1 ~= pu_stk_14 do
-        pu_stk_14 = puVar6
-        -- TODO(native): (**(code **)*puVar1)(0);
-        puVar6 = pu_stk_14
-        pu_stk_14 = puVar2
-        puVar1 = puVar1 + 3
-    end
     pu_stk_14 = puVar6
-    if nil ~= nil then
-        -- TODO(native): free(puStack_18);
-    end
-    puVar1 = pu_stk_8
-    puVar6 = 0x0
-    if 0x0 ~= pu_stk_8 then
-        repeat
-            -- TODO(native): (**(code **)*puVar6)(0);
-            puVar6 = puVar6 + 3
-        until not (puVar6 ~= puVar1)
-        bVar3 = nil == nil
+    puVar6 = puStack_c
+    if puStack_c ~= pu_stk_8 then
+        bVar3 = puStack_c == nil
         goto LAB_00d44c44
     end
     ::LAB_00d44bc3::
-    bVar3 = nil == nil
+    bVar3 = puStack_c == nil
     ::LAB_00d44c44::
     if not bVar3 then
-        -- TODO(native): free(puStack_c);
     end
 end
 

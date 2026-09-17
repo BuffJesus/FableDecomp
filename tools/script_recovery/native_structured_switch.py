@@ -17,7 +17,7 @@ def free_continue(nodes):
     return False
 
 
-def lower_nonfallthrough_switches(statements):
+def lower_nonfallthrough_switches(statements, allow_fallthrough=False):
     if not any(re.match(r'\s*switch\s*\(', s) for s in statements):
         return statements, []
     try:
@@ -48,12 +48,21 @@ def lower_nonfallthrough_switches(statements):
                 all_labels = [label for labels, _ in groups for label in labels]
                 if len(set(all_labels)) != len(all_labels):
                     raise ValueError('duplicate switch case')
-                for labels, body in groups:
+                for index, (labels, body) in enumerate(groups):
                     if any(label and not re.fullmatch(r'-?(?:0x[0-9a-fA-F]+|\d+|[A-Z_]\w*)', label) for label in labels):
                         raise ValueError('unreviewed switch case expression')
                     if not body or not (body[-1].kind in ('break', 'goto') or
                             body[-1].kind == 'atom' and re.match(r'return(?:\s|;)', body[-1].text)):
-                        raise ValueError('switch has fall-through or a conditional exit')
+                        # fall-through into the textually next group: an explicit jump to a label at the start of
+                        # that group's body (a sibling block; the goto-scope pass copies the tail at the jump)
+                        if not allow_fallthrough:
+                            raise ValueError('switch has fall-through or a conditional exit')
+                        if index + 1 >= len(groups):
+                            continue                # the last group simply leaves the switch
+                        target = f'FLOW_case_{len(names.native_labels)}_{index + 1}'
+                        names.native_labels[target] = target
+                        body.append(Node('goto', target, [], []))
+                        groups[index + 1] = (groups[index + 1][0], [Node('label', target, [], [])] + groups[index + 1][1])
                 value = names.new_name('native_arg_switch_')
                 alternate = []
                 defaults = [(labels, body) for labels, body in groups if '' in labels]

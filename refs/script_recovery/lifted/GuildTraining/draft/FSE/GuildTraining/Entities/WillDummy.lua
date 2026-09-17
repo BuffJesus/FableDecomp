@@ -40,7 +40,7 @@ function Main(quest, me)
             if not bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                -- TODO(native): joined_r0x00d434fc:
+                -- LAB_00d434fc: (native jump target)
                 if not bVar4 then
                     repeat
                         bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
@@ -72,6 +72,7 @@ function Main(quest, me)
             end
         end
     end
+    ::FLOW_after_lab_00d434fc::
     do return end
     ::LAB_00d435c1::
     alive = not quest:IsActiveThreadTerminating()
@@ -215,7 +216,31 @@ function Main(quest, me)
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
-    -- TODO(native): goto joined_r0x00d434fc;
+    if not bVar4 then
+        repeat
+            bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+            if bVar4 then
+                -- LAB_00d43568_c2: (native jump target)
+                bVar4 = false
+            else
+                bVar3 = true
+                bVar5 = me:MsgIsHitByHero()
+                bVar4 = true
+                if bVar5 then return end  -- TODO(native): goto LAB_00d43568_c2
+            end
+            if bVar3 then
+                bVar3 = false
+            end
+            if not bVar4 then goto LAB_00d435c1 end
+            alive = quest:NewScriptFrame(me)
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then
+                return
+            end
+        until false
+    end
+    goto FLOW_after_lab_00d434fc
 end
 
 function Init(quest, me)

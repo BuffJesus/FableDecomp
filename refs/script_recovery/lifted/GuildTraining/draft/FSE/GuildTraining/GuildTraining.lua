@@ -1160,7 +1160,7 @@ function CheckFriendlyAttacks(quest)
             bVar9 = not alive
             puVar8 = r1
             puVar7 = 0x0
-            -- TODO(native): if (bVar9) goto joined_r0x00d452d1;
+            if bVar9 then goto LAB_00d452d1 end
             pcVar21 = "CREATURE_BIRD_GUILD_SPARROW"
             pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_4c)
             iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
@@ -1699,7 +1699,7 @@ function CheckFriendlyAttacks(quest)
     r1 = nil
     ::LAB_00d45322::
     do return end
-    -- TODO(native): joined_r0x00d452d1:
+    ::LAB_00d452d1::
     while puVar7 ~= puVar8 do
         -- TODO(native): (**(code **)*puVar7)(0);
         puVar7 = puVar7 + 3

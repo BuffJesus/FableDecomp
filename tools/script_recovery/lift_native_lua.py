@@ -177,7 +177,7 @@ RE_CONS_VAL = re.compile(r'std::\s*_Cons_val<[^;]*?;', re.S)
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
 # Evidence-lowering pseudo statements (native_evidence_lowering.py) are emitted as-is with lifted operands.
-RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+)\s*\((.*)\);\s*$')
+RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+)\s*\((.*)\);\s*$')
 RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (' + LABEL_TOKEN + r');\s*$')
 RE_IF_BREAK = re.compile(r'^\s*if\s*\((.*)\)\s*break;\s*$')
 RE_THING_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?CScriptThing::(\w+)\s*\(\s*([^,]+?)\s*(?:,(.*))?\);\s*$')
@@ -1025,7 +1025,7 @@ class Lifter:
         if arg.startswith('"'):
             return "string"
         # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
-        accessor = re.match(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*)|RESOURCE_ScriptThing|resources:ScriptThing)\(', arg.strip())
+        accessor = re.match(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*)|RESOURCE_ScriptThing|resources:ScriptThing|LOCALLIST_At)\(', arg.strip())
         if accessor and not _balanced_call(arg.strip(), accessor.end() - 1):
             accessor = None     # the accessor is only a prefix of a larger expression
         if accessor and self.accessor_kinds:
@@ -1727,7 +1727,7 @@ class Lifter:
             self.todo.extend('unresolved flat control condition: ' + item['expression'][:120]
                              for item in self.flat_control_evidence['unresolvedConditions'])
         else:
-            statements, self.structured_switch_evidence = lower_nonfallthrough_switches(statements)
+            statements, self.structured_switch_evidence = lower_nonfallthrough_switches(statements, allow_fallthrough=self.accessor_kinds)
             self.todo.extend('switch lowering rejected: ' + item['reason']
                              for item in self.structured_switch_evidence if item['status'] == 'rejected')
         self.sequence_temporaries = sequence_assignments - self.source_names
@@ -1873,7 +1873,7 @@ class Lifter:
             call = f'{name}({", ".join(lifted)})'
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
-                self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty')
+                self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
                                       else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
                                       else 'string' if name in ('ENGINE_Concat',) or name.endswith('STATE_GetString') else 'number')
             else:

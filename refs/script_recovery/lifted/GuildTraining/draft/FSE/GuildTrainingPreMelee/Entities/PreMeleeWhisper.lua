@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, dist, fVar2, f_stk_28, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, r3, r4, timerId, uVar9, xStack_1c, xStack_a0, xStack_c
+    local bVar3, cVar4, dist, fVar2, f_stk_28, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, r3, r4, timerId, uVar9, xStack_1c, xStack_a0, xStack_c
     local alive = true
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(1)
@@ -203,85 +203,115 @@ function Main(quest, me)
                 pCVar5 = quest:GetHero()
                 quest:AddPersonToConversation(iVar11, pCVar5)
                 quest:SetTimer(timerId, 10)
-                -- TODO(native): switch(xStack_a0) {
-                -- TODO(native): case 2.8026e-45:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_LIBRARY", me, pCVar5, false)
-                break
-                -- TODO(native): default:
-                -- TODO(native): goto switchD_00d529d7_caseD_3;
-                -- TODO(native): case 5.60519e-45:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SHOP", me, pCVar5, false)
-                break
-                -- TODO(native): case 7.00649e-45:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CLOISTERS", me, pCVar5, false)
-                break
-                -- TODO(native): case 8.40779e-45:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE1", me, pCVar5, false)
-                break
-                -- TODO(native): case 9.80909e-45:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE2", me, pCVar5, false)
-                break
-                -- TODO(native): case 1.12104e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE3", me, pCVar5, false)
-                break
-                -- TODO(native): case 1.26117e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE4", me, pCVar5, false)
-                break
-                -- TODO(native): case 1.4013e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAZE", me, pCVar5, false)
-                break
-                -- TODO(native): case 1.54143e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WILL", me, pCVar5, false)
-                break
-                -- TODO(native): case 1.82169e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WOODS", me, pCVar5, false)
-                break
-                -- TODO(native): case 1.96182e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SKILL", me, pCVar5, false)
-                break
-                -- TODO(native): case 2.10195e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SERVANTS", me, pCVar5, false)
-                break
-                -- TODO(native): case 2.24208e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAIN_DORM", me, pCVar5, false)
-                break
-                -- TODO(native): case 2.66247e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DOOR", me, pCVar5, false)
-                break
-                -- TODO(native): case 2.8026e-44:
-                pCVar5 = quest:GetHero()
-                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DINING_ROOM", me, pCVar5, false)
+                native_arg_switch_2 = xStack_a0
+                repeat
+                    if native_arg_switch_2 == 2 then
+                        pCVar5 = quest:GetHero()
+                        quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_LIBRARY", me, pCVar5, false)
+                        break
+                    else
+                        if native_arg_switch_2 == 4 then
+                            pCVar5 = quest:GetHero()
+                            quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SHOP", me, pCVar5, false)
+                            break
+                        else
+                            if native_arg_switch_2 == 5 then
+                                pCVar5 = quest:GetHero()
+                                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CLOISTERS", me, pCVar5, false)
+                                break
+                            else
+                                if native_arg_switch_2 == 6 then
+                                    pCVar5 = quest:GetHero()
+                                    quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE1", me, pCVar5, false)
+                                    break
+                                else
+                                    if native_arg_switch_2 == 7 then
+                                        pCVar5 = quest:GetHero()
+                                        quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE2", me, pCVar5, false)
+                                        break
+                                    else
+                                        if native_arg_switch_2 == 8 then
+                                            pCVar5 = quest:GetHero()
+                                            quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE3", me, pCVar5, false)
+                                            break
+                                        else
+                                            if native_arg_switch_2 == 9 then
+                                                pCVar5 = quest:GetHero()
+                                                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE4", me, pCVar5, false)
+                                                break
+                                            else
+                                                if native_arg_switch_2 == 10 then
+                                                    pCVar5 = quest:GetHero()
+                                                    quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAZE", me, pCVar5, false)
+                                                    break
+                                                else
+                                                    if native_arg_switch_2 == 11 then
+                                                        pCVar5 = quest:GetHero()
+                                                        quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WILL", me, pCVar5, false)
+                                                        break
+                                                    else
+                                                        if native_arg_switch_2 == 13 then
+                                                            pCVar5 = quest:GetHero()
+                                                            quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WOODS", me, pCVar5, false)
+                                                            break
+                                                        else
+                                                            if native_arg_switch_2 == 14 then
+                                                                pCVar5 = quest:GetHero()
+                                                                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SKILL", me, pCVar5, false)
+                                                                break
+                                                            else
+                                                                if native_arg_switch_2 == 15 then
+                                                                    pCVar5 = quest:GetHero()
+                                                                    quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SERVANTS", me, pCVar5, false)
+                                                                    break
+                                                                else
+                                                                    if native_arg_switch_2 == 16 then
+                                                                        pCVar5 = quest:GetHero()
+                                                                        quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAIN_DORM", me, pCVar5, false)
+                                                                        break
+                                                                    else
+                                                                        if native_arg_switch_2 == 19 then
+                                                                            pCVar5 = quest:GetHero()
+                                                                            quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DOOR", me, pCVar5, false)
+                                                                            break
+                                                                        else
+                                                                            if native_arg_switch_2 == 20 then
+                                                                                pCVar5 = quest:GetHero()
+                                                                                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DINING_ROOM", me, pCVar5, false)
+                                                                            else
+                                                                                goto FLOW_native_label_1
+                                                                            end
+                                                                        end
+                                                                    end
+                                                                end
+                                                            end
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                until not (false)
+                ::FLOW_native_label_1::
             end
-            -- TODO(native): switchD_00d529d7_caseD_3:
+            ::LAB_00d52d56::
+            cVar4 = quest:GetStateBool("WhisperStopFollowing")
         end
-        ::LAB_00d52d56::
-        cVar4 = quest:GetStateBool("WhisperStopFollowing")
-    end
-    alive = not quest:IsActiveThreadTerminating()
-    bVar3 = not alive
-    if bVar3 then
-        -- LAB_00d52d83: (native jump target)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar3 = not alive
+        if bVar3 then
+            -- LAB_00d52d83: (native jump target)
+            quest:DeregisterTimer(timerId)
+            resources:ReleaseResource(xStack_a0)
+            return
+        end
+        ::LAB_00d52e1b::
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(xStack_a0)
-        return
-    end
-    ::LAB_00d52e1b::
-    quest:DeregisterTimer(timerId)
-    resources:ReleaseResource(xStack_a0)
     end
 end
 

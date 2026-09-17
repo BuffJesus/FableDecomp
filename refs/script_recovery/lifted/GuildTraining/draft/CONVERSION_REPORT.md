@@ -8,7 +8,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | Q_GuildTraining | Init | 0x00d3b3d0 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | OnPersist | 0x00d3bc10 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | RunTutorials | 0x00d45dd0 | False | 13 |
-| Q_GuildTraining | Q_GuildTraining | CheckFriendlyAttacks | 0x00d45060 | False | 23 |
+| Q_GuildTraining | Q_GuildTraining | CheckFriendlyAttacks | 0x00d45060 | False | 21 |
 | Q_GuildTraining | Q_GuildTraining | KeepTabsOnWhisper | 0x00d3cbd0 | True | 1 |
 | Q_GuildTraining | Q_GuildTraining | WatchForSparrowKilled | 0x00d3c840 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | KeepBookcaseExitRemoved | 0x00d3c8f0 | True | 1 |
@@ -49,7 +49,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | WillApprentice | Init | 0x00d43330 | True | 0 |
 | Q_GuildTraining | WillApprentice | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | WillApprentice | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_GuildTraining | HeroBed | Main | 0x00d446d0 | False | 48 |
+| Q_GuildTraining | HeroBed | Main | 0x00d446d0 | True | 0 |
 | Q_GuildTraining | HeroBed | Init | 0x00d40be0 | True | 0 |
 | Q_GuildTraining | HeroBed | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | HeroBed | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -57,7 +57,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | SkillTarget | Init | 0x00d41ca0 | True | 0 |
 | Q_GuildTraining | SkillTarget | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | SkillTarget | OnPredicateFail | 0x00d41cd0 | True | 0 |
-| Q_GuildTraining | WillDummy | Main | 0x00d43450 | True | 6 |
+| Q_GuildTraining | WillDummy | Main | 0x00d43450 | True | 7 |
 | Q_GuildTraining | WillDummy | Init | 0x00d43410 | True | 0 |
 | Q_GuildTraining | WillDummy | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | WillDummy | OnPredicateFail | 0x00d43420 | True | 0 |
@@ -95,7 +95,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingMelee | MeleeThunder | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_GuildTrainingPreMelee | Q_GuildTrainingPreMelee | Main | 0x00d51520 | True | 1 |
 | Q_GuildTrainingPreMelee | Q_GuildTrainingPreMelee | Init | 0x00d51450 | True | 0 |
-| Q_GuildTrainingPreMelee | TheRealGuildmaster | Main | 0x00d52e90 | False | 295 |
+| Q_GuildTrainingPreMelee | TheRealGuildmaster | Main | 0x00d52e90 | False | 288 |
 | Q_GuildTrainingPreMelee | TheRealGuildmaster | Init | 0x00d51ed0 | True | 0 |
 | Q_GuildTrainingPreMelee | TheRealGuildmaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingPreMelee | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -103,7 +103,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingPreMelee | PreMeleeDummy | Init | 0x00d51fb0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeDummy | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeDummy | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_GuildTrainingPreMelee | PreMeleeWhisper | Main | 0x00d524a0 | False | 27 |
+| Q_GuildTrainingPreMelee | PreMeleeWhisper | Main | 0x00d524a0 | False | 7 |
 | Q_GuildTrainingPreMelee | PreMeleeWhisper | Init | 0x00d522e0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeWhisper | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 133, "fileSyntaxPassed": 19, "fileSyntaxChecked": 37, "todo": 1135}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 134, "fileSyntaxPassed": 20, "fileSyntaxChecked": 37, "todo": 1059}`
