@@ -5641,7 +5641,7 @@
        "gotoReturn": 1,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 5,
-       "parentheses": 110,
+       "parentheses": 108,
        "cosmetics": 1,
        "firstAssignments": 0,
        "hoistedState": 0

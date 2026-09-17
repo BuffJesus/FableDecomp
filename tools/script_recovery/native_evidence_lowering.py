@@ -945,7 +945,7 @@ def fold_sibling_slot_offsets(text: str) -> str:
         if re.search(r'CCharString::(?:CCharString|operator=)\(\(CCharString \*\)&?' + re.escape(target) + r'\b', text):
             return f'(CCharString *){target}'
         return m.group(0)
-    return re.sub(r'\(CCharString \*\)\((\w*Stack_)([0-9a-f]+) \+ (4|8|0xc|12)\)', sibling, text)
+    return re.sub(r'\(CCharString \*\)\((\w*Stack_)([0-9a-f]+)(?:_\d+)? \+ (4|8|0xc|12)\)', sibling, text)   # (`xStack_70_2`: a later object at the slot)
 
 
 def fold_offset_string_temporaries(text: str) -> str:

@@ -94,7 +94,7 @@ function Main(quest)
                         c_stk_7d_1 = getStateListAt13 == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER"
                     end
                     if c_stk_7d_1 then
-                        scratchValue11 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER" + 4
+                        scratchValue11 = "TC_Villager"
                         scratchValue12 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", scratchValue5 / 12):GetPos(), scratchValue11)
                         ctr_74 = ctr_74 + 1
                         quest:SetCombatNearbyBreakOffRange(scratchValue12, 10.0)
@@ -115,7 +115,7 @@ function Main(quest)
                         c_stk_7d_1 = false
                     end
                     if c_stk_7d_1 then
-                        scratchValue11 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER" + 4
+                        scratchValue11 = "TC_Villager"
                         scratchValue13 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", scratchValue5 / 12):GetPos(), scratchValue11)
                         ctr_74 = ctr_74 + 1
                         quest:SetCombatNearbyBreakOffRange(scratchValue13, 10.0)

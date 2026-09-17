@@ -131,7 +131,7 @@ function Main(quest)
                                 bVar13 = not alive
                                 if bVar13 then goto LAB_00df75ec end
                                 CVar15 = 0x0
-                                pCVar6 = ("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER" + 4)
+                                pCVar6 = "TC_Villager"
                                 pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
                                 pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
                                 r2 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
@@ -165,7 +165,7 @@ function Main(quest)
                                 bVar13 = not alive
                                 if bVar13 then goto LAB_00df75ec end
                                 CVar15 = 0x0
-                                pCVar6 = ("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER" + 4)
+                                pCVar6 = "TC_Villager"
                                 pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
                                 pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
                                 r3 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
