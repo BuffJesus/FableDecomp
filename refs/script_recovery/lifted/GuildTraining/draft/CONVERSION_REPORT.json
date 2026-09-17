@@ -229,9 +229,6 @@
             "label LAB_00d46c49",
             "EntitySetAsOpinionSource: not in FSE manifest",
             "unlifted: NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd496f0(this);",
-            "unlifted: thing._4_4_ = uVar11;",
-            "unlifted: thing._0_4_ = uVar10;",
-            "unlifted: thing._8_4_ = pcVar13;",
             "unlifted: NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);",
             "label LAB_00d4967d"
           ],
@@ -744,7 +741,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1016,
+          "lines": 1012,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1794,9 +1791,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar12;",
             "unlifted: piStack_218 = piVar12;",
             "label LAB_00d3ee93",
             "unlifted: (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);",
@@ -1849,7 +1843,6 @@
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "GetThingWithScriptName",
             "GetNearestWithDefName",
@@ -2298,7 +2291,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1290,
+          "lines": 1283,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2444,11 +2437,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar2;"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -2459,13 +2448,12 @@
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 35,
+          "lines": 31,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2977,9 +2965,6 @@
           "todo": [
             "verify cleanup at LAB_00d4c4a5 (lifted as early return)",
             "label LAB_00d4c6ec",
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar12;",
             "label LAB_00d4c4a5",
             "label LAB_00d4a717",
             "label LAB_00d4c4f5",
@@ -3014,7 +2999,6 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "SetThingHasInformation",
             "EntitySetInFaction",
@@ -3447,7 +3431,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 1072,
+          "lines": 1068,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -3456,8 +3440,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTraining/Entities/CombatApprentice.lua:Main",
-                "line": 905,
-                "message": "FSE/GuildTraining/Entities/CombatApprentice.lua:Main:905: unexpected symbol near '*'"
+                "line": 901,
+                "message": "FSE/GuildTraining/Entities/CombatApprentice.lua:Main:901: unexpected symbol near '*'"
               }
             ]
           },
@@ -3594,9 +3578,6 @@
           "todo": [
             "verify cleanup at LAB_00d4dcdb (lifted as early return)",
             "label LAB_00d4de61",
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar2;",
             "label LAB_00d4dcdb",
             "label LAB_00d4dd41",
             "label LAB_00d4de58",
@@ -3626,7 +3607,6 @@
             "verify cleanup at LAB_00d4de46 (lifted as early return)",
             "verify cleanup at LAB_00d4de46 (lifted as early return)",
             "verify cleanup at LAB_00d4de46 (lifted as early return)",
-            "unlifted: piVar2 = DAT_0143e8f8;",
             "label LAB_00d4dc16",
             "unlifted: pfVar12 = *(float **)(DAT_0143e90c + 0xec0);",
             "label LAB_00d4d979",
@@ -3645,7 +3625,6 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "SetThingHasInformation",
             "EntitySetAsKillable",
@@ -3945,7 +3924,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 775,
+          "lines": 770,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -3954,8 +3933,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTraining/Entities/SkillApprentice.lua:Main",
-                "line": 518,
-                "message": "FSE/GuildTraining/Entities/SkillApprentice.lua:Main:518: unexpected symbol near '*'"
+                "line": 513,
+                "message": "FSE/GuildTraining/Entities/SkillApprentice.lua:Main:513: unexpected symbol near '*'"
               }
             ]
           },
@@ -4080,9 +4059,6 @@
           "todo": [
             "verify cleanup at LAB_00d50495 (lifted as early return)",
             "label LAB_00d505c1",
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar2;",
             "label LAB_00d50495",
             "label LAB_00d504b9",
             "label LAB_00d505af",
@@ -4116,7 +4092,6 @@
             "verify cleanup at LAB_00d505a6 (lifted as early return)",
             "verify cleanup at LAB_00d505a6 (lifted as early return)",
             "verify cleanup at LAB_00d505a6 (lifted as early return)",
-            "unlifted: piVar2 = DAT_0143e8f8;",
             "unlifted: pfVar11 = *(float **)(DAT_0143e90c + 0xecc);",
             "label LAB_00d50588",
             "label LAB_00d50573_c13",
@@ -4135,7 +4110,6 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "SetThingHasInformation",
             "EntitySetAsKillable",
@@ -4404,7 +4378,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 682,
+          "lines": 677,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -4413,8 +4387,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTraining/Entities/WillApprentice.lua:Main",
-                "line": 490,
-                "message": "FSE/GuildTraining/Entities/WillApprentice.lua:Main:490: unexpected symbol near '*'"
+                "line": 485,
+                "message": "FSE/GuildTraining/Entities/WillApprentice.lua:Main:485: unexpected symbol near '*'"
               }
             ]
           },
@@ -5939,13 +5913,13 @@
           },
           {
             "path": "FSE/GuildTraining/Entities/CombatApprentice.lua",
-            "line": 919,
-            "message": "FSE/GuildTraining/Entities/CombatApprentice.lua:919: unexpected symbol near '*'"
+            "line": 915,
+            "message": "FSE/GuildTraining/Entities/CombatApprentice.lua:915: unexpected symbol near '*'"
           },
           {
             "path": "FSE/GuildTraining/Entities/SkillApprentice.lua",
-            "line": 537,
-            "message": "FSE/GuildTraining/Entities/SkillApprentice.lua:537: unexpected symbol near '*'"
+            "line": 532,
+            "message": "FSE/GuildTraining/Entities/SkillApprentice.lua:532: unexpected symbol near '*'"
           },
           {
             "path": "FSE/GuildTraining/Entities/SkillTarget.lua",
@@ -5954,8 +5928,8 @@
           },
           {
             "path": "FSE/GuildTraining/Entities/WillApprentice.lua",
-            "line": 509,
-            "message": "FSE/GuildTraining/Entities/WillApprentice.lua:509: unexpected symbol near '*'"
+            "line": 504,
+            "message": "FSE/GuildTraining/Entities/WillApprentice.lua:504: unexpected symbol near '*'"
           },
           {
             "path": "FSE/GuildTraining/GuildTraining.lua",
@@ -6059,7 +6033,7 @@
         "functionSyntaxPassed": 61,
         "fileSyntaxPassed": 8,
         "fileSyntaxChecked": 15,
-        "todo": 295
+        "todo": 275
       }
     },
     {
@@ -6166,16 +6140,12 @@
             "bsimVoid": true
           },
           "todo": [
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar2;",
             "label LAB_00d50ebd"
           ],
           "calls": [
             "FadeScreenOut",
             "SetThingHasInformation",
             "EntitySetAsKillable",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "SetHeroGuideToShowQuestCardsWhenSpokenTo",
             "GetThingWithScriptName",
@@ -6252,7 +6222,7 @@
             "ClearThingHasInformation",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 152,
+          "lines": 148,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -6371,7 +6341,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 5
+        "todo": 2
       }
     },
     {
@@ -6531,9 +6501,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar12;",
             "unlifted: xStack_23c = (int *)((uint)xStack_23c | 1);",
             "label LAB_00d586db",
             "unlifted: xStack_23c = (int *)((uint)xStack_23c & 0xfffffffe);",
@@ -6616,7 +6583,6 @@
             "EntitySetAsKillable",
             "GetHero",
             "EntitySetAlwaysBlockAttacksFromThing",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "GetThingWithScriptName",
             "SetThingHasInformation",
@@ -7008,7 +6974,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 833,
+          "lines": 829,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -7017,8 +6983,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main",
-                "line": 588,
-                "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main:588: unexpected symbol near '*'"
+                "line": 584,
+                "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main:584: unexpected symbol near '*'"
               }
             ]
           },
@@ -7794,8 +7760,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua",
-            "line": 600,
-            "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:600: unexpected symbol near '*'"
+            "line": 596,
+            "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:596: unexpected symbol near '*'"
           }
         ]
       },
@@ -7812,7 +7778,7 @@
         "functionSyntaxPassed": 13,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 4,
-        "todo": 98
+        "todo": 95
       }
     },
     {
@@ -8007,9 +7973,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: thing._4_4_ = pCVar5;",
-            "unlifted: thing._0_4_ = p1;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "label LAB_00d53316",
             "label LAB_00d533bb",
             "label LAB_00d536c0",
@@ -8034,7 +7997,6 @@
             "goto LAB_00d55c91_c6",
             "label LAB_00d55c63_c6",
             "goto LAB_00d55c7f_c6",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c72_c6 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c6 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c6 (lifted as early return)",
@@ -8045,7 +8007,6 @@
             "label LAB_00d551d4_c6",
             "verify cleanup at LAB_00d55c9f_c6 (lifted as early return)",
             "label LAB_00d55c9f_c6",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c9f_c6 (lifted as early return)",
             "unlifted: xStack_150_2._3_1_ = 0;",
             "verify cleanup at LAB_00d55c9f_c6 (lifted as early return)",
@@ -8053,7 +8014,6 @@
             "verify cleanup at LAB_00d555f3_c6 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c6 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c6 (lifted as early return)",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "goto LAB_00d555f3_c6",
             "verify cleanup at LAB_00d555f3_c6 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c6 (lifted as early return)",
@@ -8072,7 +8032,6 @@
             "label LAB_00d551d4_c7",
             "verify cleanup at LAB_00d55c9f_c7 (lifted as early return)",
             "label LAB_00d55c9f_c7",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c9f_c7 (lifted as early return)",
             "unlifted: xStack_150_2._3_1_ = 0;",
             "verify cleanup at LAB_00d55c9f_c7 (lifted as early return)",
@@ -8082,7 +8041,6 @@
             "label LAB_00d55c72",
             "label LAB_00d55c7f",
             "label LAB_00d55c63",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "label LAB_00d55c7f_c12",
             "label LAB_00d55c7f_c13",
             "label LAB_00d55c7f_c14",
@@ -8092,15 +8050,12 @@
             "label LAB_00d551d4",
             "label LAB_00d55c9f_c16",
             "label LAB_00d55c9f",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "unlifted: xStack_150_2._3_1_ = 0;",
             "label LAB_00d55c9f_c18",
             "verify cleanup at LAB_00d55c9f_c19 (lifted as early return)",
             "label LAB_00d55c9f_c19",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c9f_c19 (lifted as early return)",
             "unlifted: xStack_150_2._3_1_ = 0;",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "unlifted: xStack_150_2._3_1_ = 0;",
             "label LAB_00d555f3",
             "unresolved native control operand: if (((bVar3) && (iVar7 = (**(code **)(*DAT_0143e8f8 + 0x168) )(DAT_0143e8f8,xStack_188), iVar7 < 1)) && (iVar7 = CScript",
@@ -8120,7 +8075,6 @@
             "goto LAB_00d55c91_c27",
             "label LAB_00d55c63_c27",
             "goto LAB_00d55c7f_c27",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c72_c27 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c27 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c27 (lifted as early return)",
@@ -8131,7 +8085,6 @@
             "label LAB_00d551d4_c27",
             "verify cleanup at LAB_00d55c9f_c27 (lifted as early return)",
             "label LAB_00d55c9f_c27",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c9f_c27 (lifted as early return)",
             "unlifted: xStack_150_2._3_1_ = 0;",
             "verify cleanup at LAB_00d55c9f_c27 (lifted as early return)",
@@ -8139,7 +8092,6 @@
             "verify cleanup at LAB_00d555f3_c27 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c27 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c27 (lifted as early return)",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "goto LAB_00d555f3_c27",
             "verify cleanup at LAB_00d555f3_c27 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c27 (lifted as early return)",
@@ -8175,7 +8127,6 @@
             "goto LAB_00d55c91_c28",
             "label LAB_00d55c63_c28",
             "goto LAB_00d55c7f_c28",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c72_c28 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c28 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c28 (lifted as early return)",
@@ -8186,7 +8137,6 @@
             "label LAB_00d551d4_c28",
             "verify cleanup at LAB_00d55c9f_c28 (lifted as early return)",
             "label LAB_00d55c9f_c28",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c9f_c28 (lifted as early return)",
             "unlifted: xStack_150_2._3_1_ = 0;",
             "verify cleanup at LAB_00d55c9f_c28 (lifted as early return)",
@@ -8194,7 +8144,6 @@
             "verify cleanup at LAB_00d555f3_c28 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c28 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c28 (lifted as early return)",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "goto LAB_00d555f3_c28",
             "verify cleanup at LAB_00d555f3_c28 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c28 (lifted as early return)",
@@ -8237,7 +8186,6 @@
             "goto LAB_00d55c91_c29",
             "label LAB_00d55c63_c29",
             "goto LAB_00d55c7f_c29",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c72_c29 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c29 (lifted as early return)",
             "verify cleanup at LAB_00d55c72_c29 (lifted as early return)",
@@ -8248,7 +8196,6 @@
             "label LAB_00d551d4_c29",
             "verify cleanup at LAB_00d55c9f_c29 (lifted as early return)",
             "label LAB_00d55c9f_c29",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "verify cleanup at LAB_00d55c9f_c29 (lifted as early return)",
             "unlifted: xStack_150_2._3_1_ = 0;",
             "verify cleanup at LAB_00d55c9f_c29 (lifted as early return)",
@@ -8256,7 +8203,6 @@
             "verify cleanup at LAB_00d555f3_c29 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c29 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c29 (lifted as early return)",
-            "unlifted: xStack_17c = xStack_17c & 0xffffff;",
             "goto LAB_00d555f3_c29",
             "verify cleanup at LAB_00d555f3_c29 (lifted as early return)",
             "verify cleanup at LAB_00d55cd5_c29 (lifted as early return)",
@@ -8466,7 +8412,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie",
@@ -8521,11 +8467,11 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -8576,7 +8522,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -8820,7 +8766,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -9065,11 +9011,11 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -9120,7 +9066,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -9345,7 +9291,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -9398,11 +9344,11 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -9453,7 +9399,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -9753,7 +9699,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -9806,11 +9752,11 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -9861,7 +9807,7 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -10056,7 +10002,7 @@
             "DeregisterTimer",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 4527,
+          "lines": 4504,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -10065,8 +10011,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua:Main",
-                "line": 73,
-                "message": "...ildTrainingPreMelee/Entities/TheRealGuildmaster.lua:Main:73: ')' expected near '='"
+                "line": 67,
+                "message": "...ildTrainingPreMelee/Entities/TheRealGuildmaster.lua:Main:67: ')' expected near '='"
               }
             ]
           },
@@ -10082,7 +10028,7 @@
             "goto FLOW_after_lab_00d54846;",
             "goto FLOW_after_lab_00d54dfa;",
             "goto FLOW_after_lab_00d54f9c;",
-            "goto FLOW_after_lab_00d54f9c_800;",
+            "goto FLOW_after_lab_00d54f9c_793;",
             "goto FLOW_after_lab_00d551d4;",
             "goto FLOW_after_lab_00d55b4e;",
             "goto LAB_00d55480;",
@@ -10130,7 +10076,7 @@
             "FLOW_after_lab_00d54846",
             "FLOW_after_lab_00d54dfa",
             "FLOW_after_lab_00d54f9c",
-            "FLOW_after_lab_00d54f9c_800",
+            "FLOW_after_lab_00d54f9c_793",
             "FLOW_after_lab_00d551d4",
             "FLOW_after_lab_00d55b4e",
             "FLOW_native_label_1",
@@ -10620,8 +10566,8 @@
           },
           {
             "path": "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua",
-            "line": 127,
-            "message": "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua:127: ')' expected near '='"
+            "line": 121,
+            "message": "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua:121: ')' expected near '='"
           }
         ]
       },
@@ -10684,7 +10630,7 @@
         "functionSyntaxPassed": 12,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 4,
-        "todo": 274
+        "todo": 254
       }
     },
     {
@@ -10772,9 +10718,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar2;",
             "label LAB_00d5b380",
             "unlifted: xStack_1ec = 1 - xStack_1ec;",
             "label LAB_00d5dbab",
@@ -10822,12 +10765,10 @@
             "AddQuestInfoTick: not in FSE manifest",
             "AddQuestInfoTick: not in FSE manifest",
             "label LAB_00d5c757",
-            "unlifted: xStack_1d4 = CONCAT13(1,(undefined3)xStack_1d4);",
             "IsHeroInProjectileWeaponMode: not in FSE manifest",
             "IsPlayerHoldingFireRangedWeaponButton: not in FSE manifest",
             "IsHeroInProjectileWeaponMode: not in FSE manifest",
             "IsPlayerHoldingFireRangedWeaponButton: not in FSE manifest",
-            "RemoveQuestInfoElement: missing id (0 args for 1 params)",
             "unlifted: piVar2 = DAT_0143e8f8;",
             "verify cleanup at LAB_00d5db90 (lifted as early return)",
             "verify cleanup at LAB_00d5db90 (lifted as early return)",
@@ -10881,7 +10822,6 @@
             "EntitySetAsKillable",
             "GetHero",
             "EntitySetAlwaysBlockAttacksFromThing",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "SetThingHasInformation",
             "GetThingWithScriptName",
@@ -11467,7 +11407,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1307,
+          "lines": 1302,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -11476,8 +11416,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main",
-                "line": 1042,
-                "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main:1042: unexpected symbol near '*'"
+                "line": 1037,
+                "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main:1037: unexpected symbol near '*'"
               }
             ]
           },
@@ -11606,8 +11546,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua",
-            "line": 1069,
-            "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:1069: unexpected symbol near '*'"
+            "line": 1064,
+            "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:1064: unexpected symbol near '*'"
           }
         ]
       },
@@ -11653,7 +11593,7 @@
         "functionSyntaxPassed": 5,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 96
+        "todo": 91
       }
     },
     {
@@ -11771,8 +11711,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0xc",
-            "unlifted: thing._4_4_ = uVar2;",
             "goto LAB_00d61b0a",
             "label LAB_00d5e63f",
             "unlifted: xStack_22c = 1 - xStack_22c;",
@@ -11849,7 +11787,8 @@
             "unlifted: (**(code **)(*xStack_60._0_4_ + 0x118))(0);",
             "label LAB_00d60b19",
             "label LAB_00d60b31",
-            "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238_12,(CCharString *)pC"
+            "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238_12,(CCharString *)pC",
+            "DeregisterTimer: missing timerId (0 args for 1 params)"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -11865,7 +11804,6 @@
             "EntitySetAlwaysBlockAttacksFromThing",
             "SetThingHasInformation",
             "SetPlayerUsingWillDummies",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
             "RegisterTimer",
             "RegisterTimer",
@@ -12125,11 +12063,11 @@
             "RESOURCE_NewResource",
             "RESOURCE_IsAcquired",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "RESOURCE_StartMovie",
@@ -12581,7 +12519,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1644,
+          "lines": 1589,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -12590,8 +12528,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main",
-                "line": 617,
-                "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main:617: unexpected symbol near '*'"
+                "line": 598,
+                "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main:598: unexpected symbol near '*'"
               }
             ]
           },
@@ -12733,8 +12671,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua",
-            "line": 643,
-            "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:643: unexpected symbol near '*'"
+            "line": 624,
+            "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:624: unexpected symbol near '*'"
           }
         ]
       },
@@ -12767,7 +12705,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 79
+        "todo": 78
       }
     },
     {
@@ -15199,6 +15137,6 @@
     "functionSyntaxPassed": 134,
     "fileSyntaxPassed": 20,
     "fileSyntaxChecked": 37,
-    "todo": 962
+    "todo": 910
   }
 }

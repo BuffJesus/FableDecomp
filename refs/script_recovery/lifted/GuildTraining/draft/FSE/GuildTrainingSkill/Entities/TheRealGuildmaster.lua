@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, iVar15, iVar16, iVar17, iVar19, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, pfVar13, piVar2, r1, r2, r3, r4, r5, thing, uVar1, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_210, xStack_214_2, xStack_21c, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, iVar15, iVar16, iVar17, iVar19, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, pfVar13, piVar2, r1, r2, r3, r4, r5, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_210, xStack_214_2, xStack_21c, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(xStack_180)
@@ -64,11 +64,7 @@ function Main(quest, me)
         bVar4 = true
         pCVar6 = quest:GetHero()
         quest:EntitySetAlwaysBlockAttacksFromThing(me, pCVar6, bVar4)
-        uVar1 = __native_entity_state:GetStateInt("self_0xc")
-        -- TODO(native): thing._4_4_ = uVar1;
-        thing = nil
-        -- TODO(native): thing._8_4_ = piVar2;
-        quest:SetIsPushableByHero(thing, false)
+        quest:SetIsPushableByHero(me, false)
         quest:SetThingHasInformation(me, false, false, false)
         pCVar7 = quest:GetThingWithScriptName("M_SkillTeacherStand")
         iVar19 = 1
@@ -889,7 +885,6 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_1c)
                         return
                     end
-                    -- TODO(native): xStack_1d4 = CONCAT13(1,(undefined3)xStack_1d4);
                 end
                 u_stk_200 = u_stk_200 | 4
                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
@@ -923,7 +918,7 @@ function Main(quest, me)
                         return
                     end
                     c_stk_215 = '\x01'
-                    quest:RemoveQuestInfoElement(fVar20)
+                    quest:RemoveQuestInfoElement(1)
                     quest:RemoveQuestInfoElement(xStack_1ec)
                     quest:RemoveQuestInfoElement(xStack_1e8)
                 else
@@ -937,7 +932,7 @@ function Main(quest, me)
                             return
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                        quest:UpdateQuestInfoTick(bVar4, (fVar3 ~= 0))
+                        quest:UpdateQuestInfoTick(bVar4, (fVar20 ~= 0))
                         -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
                         quest:IsHeroInProjectileWeaponMode()
                         quest:UpdateQuestInfoTick(xStack_1ec, bVar4)
@@ -964,7 +959,7 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_1c)
                     return
                 end
-                quest:RemoveQuestInfoElement(nil --[[missing]])
+                quest:RemoveQuestInfoElement(fVar3)
                 quest:RemoveQuestInfoElement(xStack_1ec)
                 quest:RemoveQuestInfoElement(xStack_1e8)
             end

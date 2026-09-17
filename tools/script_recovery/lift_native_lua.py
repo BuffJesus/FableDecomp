@@ -1150,11 +1150,17 @@ class Lifter:
             counts = f"{len([a for a in result if a])} args for {len(params)} params"
             missing = ', '.join(params[i].get('name', str(i)) for i, value in enumerate(result) if value is None)
             self.todo.append(f'{call_name}: missing {missing} ({counts})' if call_name else counts)
+        return self._coerce_args(params, result)
+
+    def _coerce_args(self, params: list[dict], result: list[str | None]) -> list[str]:
         for i, value in enumerate(result):
             if (params[i].get('type', '').strip() in ('int', 'long', 'signed int')
                     and value and re.fullmatch(r'0x[0-9a-fA-F]{8}', value)
                     and int(value, 16) >= 0x80000000):
                 result[i] = str(int(value, 16) - 0x100000000)
+            if (self.accessor_kinds and params[i].get('type', '').strip() in ('float', 'double') and value
+                    and re.fullmatch(r'0x[0-9a-fA-F]{8}', value)):    # (Oakvale: the readable pass does this)
+                result[i] = repr(struct.unpack('<f', struct.pack('<I', int(value, 16)))[0])
             if re.fullmatch(r'bool|sol::optional<\s*bool\s*>', params[i].get("type", "").strip()):
                 if value in ("0", "0x0", "'\\0'"):
                     result[i] = "false"

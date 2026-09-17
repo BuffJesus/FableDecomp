@@ -125,7 +125,7 @@ end
 
 function RunTutorials(quest)
     local resources = quest:RetailResources()
-    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, i_stk_44, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, pcVar13, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r2, r3, r4, r5, r6, r7, r8, r9, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_88
+    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, i_stk_44, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r16, r17, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_88
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -928,13 +928,9 @@ function RunTutorials(quest)
             pCVar3 = quest:GetThingWithScriptName("BirdKiller")
             quest:RemoveThing(pCVar3, bVar2, bVar14)
             -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd496f0(this);
-            pcVar13 = "TheRealGuildmaster"
             bVar2 = false
-            r16 = quest:GetThingWithScriptName("TheRealGuildmaster")
-            -- TODO(native): thing._4_4_ = uVar11;
-            -- TODO(native): thing._0_4_ = uVar10;
-            -- TODO(native): thing._8_4_ = pcVar13;
-            quest:SetIsPushableByHero(r16, thing)
+            thing = quest:GetThingWithScriptName("TheRealGuildmaster")
+            quest:SetIsPushableByHero(thing, bVar2)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_14", "HeroGuildComplexInside", "")
             xStack_88 = quest:RegisterTimer()
             quest:SetTimer(xStack_88, 10)
@@ -1023,8 +1019,8 @@ function RunTutorials(quest)
                                         quest:SetWeaponOutCrimeEnabled(true)
                                         quest:SetGuardsIgnoreCrimes(false)
                                         pCVar3 = quest:GetHero()
-                                        r17 = quest:GetNearestWithDefName(pCVar3, "VILLAGE_GUILD_COMPLEX_INSIDE")
-                                        quest:EnableGuards(r17, true)
+                                        r16 = quest:GetNearestWithDefName(pCVar3, "VILLAGE_GUILD_COMPLEX_INSIDE")
+                                        quest:EnableGuards(r16, true)
                                         quest:SetHeroSleepingAsEnabled(true)
                                         pCVar3 = quest:GetHero()
                                         bVar2 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", pCVar3)
@@ -1043,7 +1039,7 @@ function RunTutorials(quest)
                                         bVar2 = not alive
                                         if not bVar2 then
                                             i_stk_44 = 0
-                                            r18 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
+                                            r17 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
                                             iVar9 = i_stk_44 - 0 >> 0x1f
                                             uVar8 = 0
                                             if (i_stk_44 - 0) / 0xc + iVar9 ~= iVar9 then

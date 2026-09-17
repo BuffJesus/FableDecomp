@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_03, fret_04, fret_05, fret_06, fret_07, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, pfVar11, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar1, uVar16, u_stk_228, xStack_18, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_254, xStack_258, xStack_78, xStack_84, xStack_ac, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_214, x_stk_24, x_stk_30, x_stk_60, x_stk_c
+    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_03, fret_04, fret_05, fret_06, fret_07, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, pfVar11, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, u_stk_228, xStack_18, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_254, xStack_258, xStack_78, xStack_84, xStack_ac, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_214, x_stk_24, x_stk_30, x_stk_60, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d4c4a5()
         resources:ReleaseResource(xStack_254)
@@ -37,11 +37,7 @@ function Main(quest, me)
         resources:DestroyMovie(xStack_ec)
         return
     end
-    uVar1 = __native_entity_state:GetStateInt("self_0xc")
-    -- TODO(native): thing._4_4_ = uVar1;
-    thing = nil
-    -- TODO(native): thing._8_4_ = piVar12;
-    quest:SetIsPushableByHero(thing, false)
+    quest:SetIsPushableByHero(me, false)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, true)
@@ -191,7 +187,7 @@ function Main(quest, me)
         else
             p0 = r1:GetPos()
         end
-        me:MoveToPosition(p0, 0x40400000, 1, false, true)
+        me:MoveToPosition(p0, 3.0, 1, false, true)
         ::LAB_00d4a71c::
         if not __native_entity_state:GetStateBool("WaitingForFight") then
             -- LAB_00d4a758: (native jump target)

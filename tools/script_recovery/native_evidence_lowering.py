@@ -255,7 +255,7 @@ def drop_local_counted_releases(text):
 
 
 RE_BV_THING_CTOR = re.compile(
-    r'^[ \t]*CScriptThing::CScriptThing\s*\(\s*\(CScriptThing \*\)&stack0x([0-9a-f]+),\s*(?:\(CScriptThing \*\))?(\w+)(?:,[^;]*)?\);[ \t]*\r?\n', re.M)
+    r'^[ \t]*CScriptThing::CScriptThing\s*\(\s*\(CScriptThing \*\)&(stack0x[0-9a-f]+|xStack_[0-9a-f]+(?:_\d+)?),\s*(?:\(CScriptThing \*\))?(\w+)(?:,[^;]*)?\);[ \t]*\r?\n', re.M)
 
 
 def fold_by_value_things(text: str, code_range=None) -> str:
@@ -266,22 +266,50 @@ def fold_by_value_things(text: str, code_range=None) -> str:
         lo, hi = code_range
         text = re.sub(r'^[ \t]*\w+ = (?:\([\w ]+\*+\))?0x([0-9a-f]{6,7});[ \t]*\r?\n',
                       lambda m: '' if lo <= int(m.group(1), 16) < hi else m.group(0), text, flags=re.M)
-    while (m := RE_BV_THING_CTOR.search(text)):
+    pos = 0
+    while (m := RE_BV_THING_CTOR.search(text, pos)):
         slot, src = m.group(1), m.group(2)
-        text = text[:m.start()] + text[m.end():]
-        use = re.search(r'^[ \t]*(\w+)\._0_4_ = in_stack_' + slot + r';[ \t]*\r?\n', text, re.M)
+        outgoing = slot.startswith('stack0x')     # (a restored `xStack_` name may also be a real local copy)
+        window = text[m.end():]
+        use = re.search(r'^[ \t]*(\w+)\._0_4_ = in_stack_' + slot + r';[ \t]*\r?\n', window, re.M) if outgoing else None
         if not use:
             # the slot staging may already have been substituted by an older `in_stack_X = value;` line
             # (fold_outgoing_stack_slots): the first `_0_4_` reassembly after the constructor is this copy
-            window = text[m.start():]
             near = re.search(r'^[ \t]*(\w+)\._0_4_ = [^;]+;[ \t]*\r?\n', window, re.M)
             if not near or window[:near.start()].count('\n') > 8:
+                if outgoing:
+                    text = text[:m.start()] + text[m.end():]
+                else:
+                    pos = m.end()
                 continue
             use = near
         var = use.group(1)
-        text = re.sub(r'^[ \t]*' + re.escape(var) + r'\._\d+_4_ = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
+        text = text[:m.start()] + text[m.end():]
+        text = re.sub(r'^[ \t]*' + re.escape(var) + r'(?:\._\d+_[14]_|_b\d+) = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
         text = re.sub(r'\b' + re.escape(var) + r'\b', src, text)
+    # the copy constructor inlined: Data / Info of a thing at `E + off` are loaded, Info addref'd, then
+    # stored slice-wise with the CScriptThing vtable into the by-value temporary. The temporary is
+    # reused for later copies: the substitution stops at its next slice store.
+    while (m := RE_BV_THING_INLINE.search(text)):
+        base, off, var = m.group('base'), m.group('off'), m.group('var')
+        src = f'(CScriptThing *)({base} + {int(off, 0) - 4})' if int(off, 0) != 4 else f'(CScriptThing *){base}'
+        head, tail = text[:m.start()], text[m.end():]
+        tail = re.sub(r'^[ \t]*' + re.escape(var) + r'\._\d_4_ = [^;]+;[ \t]*\r?\n', '', tail, count=3, flags=re.M)
+        nxt = re.search(r'^[ \t]*' + re.escape(var) + r'\._\d_4_ = ', tail, re.M)
+        scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+        scope = re.sub(r'\b' + re.escape(var) + r'\b(?!\.)', src, scope)
+        text = head + scope + rest
     return text
+
+
+RE_BV_THING_RESULT = re.compile(
+    r'^([ \t]*)(GSI->\w+|[\w:]+)\(\(CScriptThing \*\)&stack0x[0-9a-f]+,\s*([^;]*?)\);[ \t]*\r?\n'
+    r'(?=[ \t]*(\w+)\._\d_4_ = )(?:[ \t]*\4\._\d_4_ = [^;]+;[ \t]*\r?\n){1,3}', re.M)
+RE_BV_THING_INLINE = re.compile(
+    r'^[ \t]*(?P<data>\w+) = \*\(undefined4 \*\)\((?P<base>\w+) \+ (?P<off>0x[0-9a-f]+|\d+)\);[ \t]*\r?\n'
+    r'[ \t]*(?P<info>\w+) = \*\(int \*\*\)\((?P=base) \+ (?P<off2>0x[0-9a-f]+|\d+)\);[ \t]*\r?\n'
+    r'[ \t]*if \((?P=info) != \(int \*\)0x0\) \{[ \t]*\r?\n[ \t]*\*(?P=info) = \*(?P=info) \+ 1;[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n'
+    r'(?=(?:[ \t]*\w+\._\d_4_ = [^;]+;[ \t]*\r?\n){0,2}[ \t]*(?P<var>\w+)\._0_4_ = &PTR_[A-Za-z_]*_01238c8c;)', re.M)
 
 
 def bind_st0_results(text: str) -> str:
@@ -336,6 +364,9 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     text = bind_st0_results(text)
     text = re.sub(r'::\s+(?=\w)', '::', text)   # `CScriptThing:: _Method_...(` after line joining
+    # a byte flag Ghidra merged into the dword slot below it: clearing / setting the top byte
+    text = re.sub(r'^([ \t]*)(\w+) = \2 & 0xffffff;', r'\1\2_b3 = 0;', text, flags=re.M)
+    text = re.sub(r'^([ \t]*)(\w+) = CONCAT13\((0x[0-9a-f]+|\d+),\s*(?:\(undefined3\))?\2\);', r'\1\2_b3 = \3;', text, flags=re.M)
     # Ghidra's `joined_r0x<addr>` block labels are ordinary labels to the goto passes
     def joined(m):
         name = f'LAB_{m.group(1)}'
@@ -438,6 +469,22 @@ RE_BYTE_SPLIT = re.compile(
     r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 8\);[ \t]*\r?\n'
     r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x10\);[ \t]*\r?\n'
     r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x18\);[ \t]*\r?\n', re.M)
+
+
+def fold_byte_literal_words(text):
+    '''A dword argument Ghidra assembled from four byte locals each holding a literal
+    (`u0 = 1; u1 = 0; u2 = 0; u3 = 0; ... CONCAT13(u3,CONCAT12(u2,CONCAT11(u1,u0)))`) is that literal.'''
+    def repl(m):
+        u3, u2, u1, u0 = m.groups()
+        start = m.start()
+        value = 0
+        for k, name in enumerate((u0, u1, u2, u3)):
+            hits = list(re.finditer(r'^[ \t]*' + re.escape(name) + r' = (0x[0-9a-f]+|\d+);[ \t]*\r?\n', text[:start], re.M))
+            if not hits:
+                return m.group(0)
+            value |= (int(hits[-1].group(1), 0) & 0xff) << (8 * k)
+        return hex(value) if value > 9 else str(value)
+    return re.sub(r'CONCAT13\((\w+),\s*CONCAT12\((\w+),\s*CONCAT11\((\w+),\s*(\w+)\)\)\)', repl, text)
 
 
 def fold_byte_split_pointers(text):
@@ -793,6 +840,9 @@ def lower_after_annotate(text):
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
     text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
                   lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
+    # a thing returned straight into an outgoing by-value slot (`F((CScriptThing *)&stack0xNN, ...)` with no
+    # result) that the decompiler then "reassembles" from unrelated registers: the temporary is the result
+    text = RE_BV_THING_RESULT.sub(lambda m: f'{m.group(1)}{m.group(4)} = {m.group(2)}({m.group(3)});\n', text)
     text = fold_local_thing_vectors(text)
     # `GSI->DeregisterTimer(unaff_REG)`: Ghidra lost the register holding the id across the block; when the
     # function registers exactly one timer that is the id
@@ -907,6 +957,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_counted_pointer_release(text)
     text = name_offset_objects(text, getattr(spec, 'call_labels', {}))
     text = fold_byte_split_pointers(text)
+    text = fold_byte_literal_words(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
     text = drop_trivial_base_calls(text, getattr(spec, 'call_labels', {}), getattr(spec, 'byte_at', None))

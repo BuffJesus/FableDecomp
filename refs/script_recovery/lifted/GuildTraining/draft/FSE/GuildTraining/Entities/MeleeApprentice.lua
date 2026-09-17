@@ -468,7 +468,7 @@ function Main(quest, me)
                 else
                     puVar8 = r1:GetPos()
                 end
-                me:MoveToPosition(puVar8, 0x40400000, 1, false, true)
+                me:MoveToPosition(puVar8, 3.0, 1, false, true)
             end
             bVar3 = quest:IsDistanceBetweenThingsOver(me, r1, 4.0)
             __native_condition_1 = bVar3
@@ -488,7 +488,7 @@ function Main(quest, me)
                 else
                     puVar8 = r1:GetPos()
                 end
-                me:MoveToPosition(puVar8, 0x40400000, 1, false, true)
+                me:MoveToPosition(puVar8, 3.0, 1, false, true)
             end
         end
         alive = quest:NewScriptFrame(me)

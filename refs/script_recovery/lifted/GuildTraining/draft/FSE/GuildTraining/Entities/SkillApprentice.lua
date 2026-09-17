@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, iVar14, iVar15, iVar17, iVar6, iVar7, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, pfVar12, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar1, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_24, xStack_64, xStack_74, xStack_84, xStack_c, x_stk_12c, x_stk_18, x_stk_30, x_stk_54
+    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, iVar14, iVar15, iVar17, iVar6, iVar7, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, pfVar12, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_24, xStack_64, xStack_74, xStack_84, xStack_c, x_stk_12c, x_stk_18, x_stk_30, x_stk_54
     local alive = true
     local function __cleanup_LAB_00d4dcdb()
         resources:ReleaseResource(xStack_170)
@@ -44,11 +44,7 @@ function Main(quest, me)
         resources:DestroyMovie(xStack_64)
         return
     end
-    uVar1 = __native_entity_state:GetStateInt("self_0xc")
-    -- TODO(native): thing._4_4_ = uVar1;
-    thing = nil
-    -- TODO(native): thing._8_4_ = piVar2;
-    quest:SetIsPushableByHero(thing, false)
+    quest:SetIsPushableByHero(me, false)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetAsKillable(me, false, true)
     r1 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
@@ -181,7 +177,7 @@ function Main(quest, me)
         else
             p0 = r2:GetPos()
         end
-        me:MoveToPosition(p0, 0x40400000, 0, false, true)
+        me:MoveToPosition(p0, 3.0, 0, false, true)
         ::LAB_00d4cbac::
         bVar4 = me:IsTalkedToByHero()
         if bVar4 then
@@ -446,7 +442,6 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d4de46(); return end
                 xStack_160 = quest:RegisterTimer()
-                -- TODO(native): piVar2 = DAT_0143e8f8;
                 iVar7 = (math.modf(quest:ReadGlobalGameData(0xf04)))
                 quest:SetTimer(xStack_160, iVar7)
                 quest:SetMasterGameState("SkillScore", 0)

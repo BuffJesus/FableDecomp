@@ -400,7 +400,7 @@ function Main(quest, me)
                             else
                                 p0_00 = r1:GetPos()
                             end
-                            me:MoveToPosition(p0_00, 0x3f000000, 1, false, true)
+                            me:MoveToPosition(p0_00, 0.5, 1, false, true)
                         end
                         bVar6 = quest:IsDistanceBetweenThingsUnder(me, r1, 2.0)
                         if bVar6 then

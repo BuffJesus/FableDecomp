@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_10, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_2, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_24, xStack_30, xStack_c, xStack_f8, x_stk_58
+    local CVar10, __native_condition_1, __native_condition_10, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_2, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_24, xStack_30, xStack_c, xStack_f8, x_stk_58
     local alive = true
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
@@ -95,13 +95,7 @@ function Main(quest, me)
     uVar19 = 0
     quest:EntitySetAsKillable(me, false, true)
     bVar3 = false
-    -- TODO(native): thing._4_4_ = pCVar5;
-    -- TODO(native): thing._0_4_ = p1;
-    thing_b8 = uVar16
-    thing_b9 = uVar17
-    thing_b10 = uVar18
-    thing_b11 = uVar19
-    quest:SetIsPushableByHero(nil --[[missing]], thing)
+    quest:SetIsPushableByHero(me, bVar3)
     quest:SetThingHasInformation(me, false, false, false)
     bVar3 = false
     pCVar5 = quest:GetThingWithScriptName("M_MeleeTeacherStand")
@@ -455,7 +449,7 @@ function Main(quest, me)
                                                 uVar18 = (xStack_14c >> 0x10)
                                                 uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
-                                                bVar3 = me:AcquireControl(4)
+                                                bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
@@ -562,7 +556,7 @@ function Main(quest, me)
                                                                     uVar18 = (xStack_14c >> 0x10)
                                                                     uVar19 = (xStack_14c >> 0x18)
                                                                     pCVar6 = quest:GetHero()
-                                                                    bVar3 = me:AcquireControl(4)
+                                                                    bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     while not bVar3 do
                                                                         alive = quest:NewScriptFrame(me)
                                                                         alive = not quest:IsActiveThreadTerminating()
@@ -576,7 +570,7 @@ function Main(quest, me)
                                                                         uVar18 = (xStack_14c >> 0x10)
                                                                         uVar19 = (xStack_14c >> 0x18)
                                                                         pCVar6 = quest:GetHero()
-                                                                        bVar3 = me:AcquireControl(4)
+                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     end
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
@@ -646,7 +640,7 @@ function Main(quest, me)
                                                                                                         iVar8 = 0
                                                                                                         iVar7 = 0x3f800000
                                                                                                         pCVar12 = pCVar6:GetPos()
-                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))), (iVar23 ~= 0))
+                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                         c_stk_169 = '\x01'
                                                                                                         quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                         c_stk_161 = 0
@@ -675,7 +669,7 @@ function Main(quest, me)
                                                                                                                 uVar18 = (xStack_108 >> 0x10)
                                                                                                                 uVar19 = (xStack_108 >> 0x18)
                                                                                                                 pCVar6 = quest:GetHero()
-                                                                                                                bVar3 = me:AcquireControl(4)
+                                                                                                                bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                                                                 while not bVar3 do
                                                                                                                     alive = quest:NewScriptFrame(me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
@@ -733,7 +727,6 @@ function Main(quest, me)
                                                                                                                     quest:FadeScreenOut(0.5, 0.5)
                                                                                                                     quest:Pause(1.0)
                                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                    -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                 else
                                                                                                                     if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c6
                                                                                                                     r1 = resources:ScriptThing(xStack_17c)
@@ -774,7 +767,7 @@ function Main(quest, me)
                                                                                                                     iVar8 = 0
                                                                                                                     iVar7 = 0x3f800000
                                                                                                                     pCVar12 = pCVar5:GetPos()
-                                                                                                                    me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                    me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                     -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                 end
                                                                                                                 quest:FixMovieSequenceCamera(false)
@@ -859,7 +852,6 @@ function Main(quest, me)
                                                                                                                                 quest:FadeScreenOut(0.5, 0.5)
                                                                                                                                 quest:Pause(1.0)
                                                                                                                                 quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                                -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                             else
                                                                                                                                 if bVar3 then goto LAB_00d55cba_c6 end
                                                                                                                                 x_stk_58 = resources:ScriptThing(xStack_17c)
@@ -900,7 +892,7 @@ function Main(quest, me)
                                                                                                                                 iVar8 = 0
                                                                                                                                 iVar7 = 0x3f800000
                                                                                                                                 pCVar12 = pCVar5:GetPos()
-                                                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                                 -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                             end
                                                                                                                             quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -999,7 +991,6 @@ function Main(quest, me)
                                                                                                                                     quest:FadeScreenOut(*(this + 4), 0.5)
                                                                                                                                     quest:Pause(*(this + 4))
                                                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                                    -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                                     goto LAB_00d5595a_c6
                                                                                                                                 end
                                                                                                                                 __region_LAB_00d555f3_c6(); goto LAB_00d55c2b
@@ -1043,7 +1034,7 @@ function Main(quest, me)
                                                                                                                                 iVar8 = 0
                                                                                                                                 iVar7 = 0x3f800000
                                                                                                                                 pCVar12 = pCVar5:GetPos()
-                                                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                                 -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                                 goto LAB_00d5595a_c6
                                                                                                                             end
@@ -1188,7 +1179,7 @@ function Main(quest, me)
                                                                                                 iVar8 = 0
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
-                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))), (iVar23 ~= 0))
+                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = '\x01'
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
@@ -1269,7 +1260,6 @@ function Main(quest, me)
                                                                                                                         quest:FadeScreenOut(0.5, 0.5)
                                                                                                                         quest:Pause(1.0)
                                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                        -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                     else
                                                                                                                         if bVar3 then goto LAB_00d55cba_c7 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
@@ -1310,7 +1300,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
                                                                                                                     quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -1366,7 +1356,7 @@ function Main(quest, me)
                                                                                                         uVar18 = (xStack_108 >> 0x10)
                                                                                                         uVar19 = (xStack_108 >> 0x18)
                                                                                                         pCVar6 = quest:GetHero()
-                                                                                                        bVar3 = me:AcquireControl(4)
+                                                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                                                         while not bVar3 do
                                                                                                             alive = quest:NewScriptFrame(me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -1432,10 +1422,9 @@ function Main(quest, me)
                                                                                                             quest:FadeScreenOut(0.5, 0.5)
                                                                                                             quest:Pause(1.0)
                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                         else
                                                                                                             if bVar3 then
-                                                                                                                quest:PauseAllNonScriptedEntities((fVar20 ~= 0))
+                                                                                                                quest:PauseAllNonScriptedEntities(false)
                                                                                                                 -- LAB_00d55c7f_c12: (native jump target)
                                                                                                                 resources:DestroyActorMap(xStack_13c)
                                                                                                                 goto LAB_00d55c2b
@@ -1488,7 +1477,7 @@ function Main(quest, me)
                                                                                                             iVar8 = 0
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
-                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                             -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
@@ -1503,11 +1492,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_800
+                                                                                                                goto FLOW_after_lab_00d54f9c_793
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_800::
+                                                                                                        ::FLOW_after_lab_00d54f9c_793::
                                                                                                         if (u_stk_128 & 1) ~= 0 then
                                                                                                             u_stk_128 = u_stk_128 & 0xfffffffe
                                                                                                         end
@@ -1582,7 +1571,6 @@ function Main(quest, me)
                                                                                                                         quest:FadeScreenOut(0.5, 0.5)
                                                                                                                         quest:Pause(1.0)
                                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                        -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                     else
                                                                                                                         if bVar3 then goto LAB_00d55cba end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
@@ -1626,7 +1614,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
                                                                                                                     quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -1682,7 +1670,6 @@ function Main(quest, me)
                                                                                                                             quest:FadeScreenOut(0.5, 0.5)
                                                                                                                             quest:Pause(1.0)
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                         else
                                                                                                                             if bVar3 then goto LAB_00d55cba end
                                                                                                                             x_stk_58 = resources:ScriptThing(xStack_17c)
@@ -1723,7 +1710,7 @@ function Main(quest, me)
                                                                                                                             iVar8 = 0
                                                                                                                             iVar7 = 0x3f800000
                                                                                                                             pCVar12 = pCVar5:GetPos()
-                                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                             -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         end
                                                                                                                         quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -1808,10 +1795,9 @@ function Main(quest, me)
                                                                                                                             quest:FadeScreenOut(*(this + 4), 0.5)
                                                                                                                             quest:Pause(*(this + 4))
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                             goto LAB_00d5595a
                                                                                                                         end
-                                                                                                                        quest:PauseAllNonScriptedEntities((uVar17 ~= 0))
+                                                                                                                        quest:PauseAllNonScriptedEntities(false)
                                                                                                                         goto LAB_00d55c2b
                                                                                                                     end
                                                                                                                     if not bVar3 then
@@ -1856,7 +1842,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a
                                                                                                                     end
@@ -1936,7 +1922,7 @@ function Main(quest, me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive
                                                                                                                 if bVar3 then goto LAB_00d55c2b end
-                                                                                                                if xStack_18c_3 == 0x1 then
+                                                                                                                if 0x0 == 0x1 then
                                                                                                                     bVar3 = false
                                                                                                                     pCVar5 = quest:GetHero()
                                                                                                                     quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -1944,7 +1930,7 @@ function Main(quest, me)
                                                                                                                     quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                                     -- LAB_00d55b4e: (native jump target)
                                                                                                                 else
-                                                                                                                    if xStack_18c_3 == 0x2 then
+                                                                                                                    if 0x0 == 0x2 then
                                                                                                                         bVar3 = false
                                                                                                                         pCVar5 = quest:GetHero()
                                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -2061,7 +2047,7 @@ function Main(quest, me)
                                                                     uVar18 = (xStack_14c >> 0x10)
                                                                     uVar19 = (xStack_14c >> 0x18)
                                                                     pCVar6 = quest:GetHero()
-                                                                    bVar3 = me:AcquireControl(4)
+                                                                    bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     while not bVar3 do
                                                                         alive = quest:NewScriptFrame(me)
                                                                         alive = not quest:IsActiveThreadTerminating()
@@ -2073,7 +2059,7 @@ function Main(quest, me)
                                                                         uVar18 = (xStack_14c >> 0x10)
                                                                         uVar19 = (xStack_14c >> 0x18)
                                                                         pCVar6 = quest:GetHero()
-                                                                        bVar3 = me:AcquireControl(4)
+                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     end
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
@@ -2146,7 +2132,7 @@ function Main(quest, me)
                                                                                                 iVar8 = 0
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
-                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))), (iVar23 ~= 0))
+                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = '\x01'
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
@@ -2175,7 +2161,7 @@ function Main(quest, me)
                                                                                                         uVar18 = (xStack_108 >> 0x10)
                                                                                                         uVar19 = (xStack_108 >> 0x18)
                                                                                                         pCVar6 = quest:GetHero()
-                                                                                                        bVar3 = me:AcquireControl(4)
+                                                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                                                         while not bVar3 do
                                                                                                             alive = quest:NewScriptFrame(me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -2233,7 +2219,6 @@ function Main(quest, me)
                                                                                                             quest:FadeScreenOut(0.5, 0.5)
                                                                                                             quest:Pause(1.0)
                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                         else
                                                                                                             if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c27
                                                                                                             r1 = resources:ScriptThing(xStack_17c)
@@ -2274,7 +2259,7 @@ function Main(quest, me)
                                                                                                             iVar8 = 0
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
-                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                             -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
@@ -2359,7 +2344,6 @@ function Main(quest, me)
                                                                                                                         quest:FadeScreenOut(0.5, 0.5)
                                                                                                                         quest:Pause(1.0)
                                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                        -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                     else
                                                                                                                         if bVar3 then goto LAB_00d55cba_c27 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
@@ -2400,7 +2384,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
                                                                                                                     quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -2499,7 +2483,6 @@ function Main(quest, me)
                                                                                                                             quest:FadeScreenOut(*(this + 4), 0.5)
                                                                                                                             quest:Pause(*(this + 4))
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                             goto LAB_00d5595a_c27
                                                                                                                         end
                                                                                                                         __region_LAB_00d555f3_c27(); goto LAB_00d55c2b_c27
@@ -2543,7 +2526,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a_c27
                                                                                                                     end
@@ -2792,7 +2775,7 @@ function Main(quest, me)
                                                 uVar18 = (xStack_14c >> 0x10)
                                                 uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
-                                                bVar3 = me:AcquireControl(4)
+                                                bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
@@ -2895,7 +2878,7 @@ function Main(quest, me)
                                                                     uVar18 = (xStack_14c >> 0x10)
                                                                     uVar19 = (xStack_14c >> 0x18)
                                                                     pCVar6 = quest:GetHero()
-                                                                    bVar3 = me:AcquireControl(4)
+                                                                    bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     while not bVar3 do
                                                                         alive = quest:NewScriptFrame(me)
                                                                         alive = not quest:IsActiveThreadTerminating()
@@ -2907,7 +2890,7 @@ function Main(quest, me)
                                                                         uVar18 = (xStack_14c >> 0x10)
                                                                         uVar19 = (xStack_14c >> 0x18)
                                                                         pCVar6 = quest:GetHero()
-                                                                        bVar3 = me:AcquireControl(4)
+                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     end
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
@@ -2980,7 +2963,7 @@ function Main(quest, me)
                                                                                                 iVar8 = 0
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
-                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))), (iVar23 ~= 0))
+                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = '\x01'
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
@@ -3009,7 +2992,7 @@ function Main(quest, me)
                                                                                                         uVar18 = (xStack_108 >> 0x10)
                                                                                                         uVar19 = (xStack_108 >> 0x18)
                                                                                                         pCVar6 = quest:GetHero()
-                                                                                                        bVar3 = me:AcquireControl(4)
+                                                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                                                         while not bVar3 do
                                                                                                             alive = quest:NewScriptFrame(me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -3067,7 +3050,6 @@ function Main(quest, me)
                                                                                                             quest:FadeScreenOut(0.5, 0.5)
                                                                                                             quest:Pause(1.0)
                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                         else
                                                                                                             if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c28
                                                                                                             r44 = resources:ScriptThing(xStack_17c)
@@ -3108,7 +3090,7 @@ function Main(quest, me)
                                                                                                             iVar8 = 0
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
-                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                             -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
@@ -3193,7 +3175,6 @@ function Main(quest, me)
                                                                                                                         quest:FadeScreenOut(0.5, 0.5)
                                                                                                                         quest:Pause(1.0)
                                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                        -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                     else
                                                                                                                         if bVar3 then goto LAB_00d55cba_c28 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
@@ -3234,7 +3215,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
                                                                                                                     quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -3333,7 +3314,6 @@ function Main(quest, me)
                                                                                                                             quest:FadeScreenOut(*(this + 4), 0.5)
                                                                                                                             quest:Pause(*(this + 4))
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                             goto LAB_00d5595a_c28
                                                                                                                         end
                                                                                                                         __region_LAB_00d555f3_c28(); goto LAB_00d55c2b_c28
@@ -3377,7 +3357,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a_c28
                                                                                                                     end
@@ -3780,7 +3760,7 @@ function Main(quest, me)
                                                 uVar18 = (xStack_14c >> 0x10)
                                                 uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
-                                                bVar3 = me:AcquireControl(4)
+                                                bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
@@ -3883,7 +3863,7 @@ function Main(quest, me)
                                                                     uVar18 = (xStack_14c >> 0x10)
                                                                     uVar19 = (xStack_14c >> 0x18)
                                                                     pCVar6 = quest:GetHero()
-                                                                    bVar3 = me:AcquireControl(4)
+                                                                    bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     while not bVar3 do
                                                                         alive = quest:NewScriptFrame(me)
                                                                         alive = not quest:IsActiveThreadTerminating()
@@ -3895,7 +3875,7 @@ function Main(quest, me)
                                                                         uVar18 = (xStack_14c >> 0x10)
                                                                         uVar19 = (xStack_14c >> 0x18)
                                                                         pCVar6 = quest:GetHero()
-                                                                        bVar3 = me:AcquireControl(4)
+                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                     end
                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                     bVar3 = not alive
@@ -3968,7 +3948,7 @@ function Main(quest, me)
                                                                                                 iVar8 = 0
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
-                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))), (iVar23 ~= 0))
+                                                                                                me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = '\x01'
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
@@ -3997,7 +3977,7 @@ function Main(quest, me)
                                                                                                         uVar18 = (xStack_108 >> 0x10)
                                                                                                         uVar19 = (xStack_108 >> 0x18)
                                                                                                         pCVar6 = quest:GetHero()
-                                                                                                        bVar3 = me:AcquireControl(4)
+                                                                                                        bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                                                                         while not bVar3 do
                                                                                                             alive = quest:NewScriptFrame(me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -4055,7 +4035,6 @@ function Main(quest, me)
                                                                                                             quest:FadeScreenOut(0.5, 0.5)
                                                                                                             quest:Pause(1.0)
                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                         else
                                                                                                             if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c29
                                                                                                             r57 = resources:ScriptThing(xStack_17c)
@@ -4096,7 +4075,7 @@ function Main(quest, me)
                                                                                                             iVar8 = 0
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
-                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                            me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                             -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
@@ -4181,7 +4160,6 @@ function Main(quest, me)
                                                                                                                         quest:FadeScreenOut(0.5, 0.5)
                                                                                                                         quest:Pause(1.0)
                                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                        -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                     else
                                                                                                                         if bVar3 then goto LAB_00d55cba_c29 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
@@ -4222,7 +4200,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
                                                                                                                     quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -4321,7 +4299,6 @@ function Main(quest, me)
                                                                                                                             quest:FadeScreenOut(*(this + 4), 0.5)
                                                                                                                             quest:Pause(*(this + 4))
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
-                                                                                                                            -- TODO(native): xStack_17c = xStack_17c & 0xffffff;
                                                                                                                             goto LAB_00d5595a_c29
                                                                                                                         end
                                                                                                                         __region_LAB_00d555f3_c29(); goto LAB_00d55c2b_c29
@@ -4365,7 +4342,7 @@ function Main(quest, me)
                                                                                                                         iVar8 = 0
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
-                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11(uVar17, uVar16))))
+                                                                                                                        me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a_c29
                                                                                                                     end

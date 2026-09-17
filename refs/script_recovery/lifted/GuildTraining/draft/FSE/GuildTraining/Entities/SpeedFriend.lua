@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, p0, thing, uVar1, xStack_20
+    local bVar3, p0, xStack_20
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -33,11 +33,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
-            uVar1 = __native_entity_state:GetStateInt("self_0xc")
-            -- TODO(native): thing._4_4_ = uVar1;
-            thing = nil
-            -- TODO(native): thing._8_4_ = piVar2;
-            quest:SetIsPushableByHero(thing, false)
+            quest:SetIsPushableByHero(me, false)
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()

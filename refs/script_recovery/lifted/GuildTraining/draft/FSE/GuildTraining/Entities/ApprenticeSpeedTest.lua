@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_03, fret_08, fret_09, iVar14, iVar16, iVar5, iVar7, i_stk_210, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar17, pCVar6, pcVar13, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r3, r4, r5, r6, r7, r8, r9, thing, uVar1, uVar8, uVar9, u_stk_21c, u_stk_220, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_24, xStack_250, xStack_254, xStack_30, xStack_54, xStack_78, xStack_90, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_3c, x_stk_6c, x_stk_9c, x_stk_b4
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_03, fret_08, fret_09, iVar14, iVar16, iVar5, iVar7, i_stk_210, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar17, pCVar6, pcVar13, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_24, xStack_250, xStack_254, xStack_30, xStack_54, xStack_78, xStack_90, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_3c, x_stk_6c, x_stk_9c, x_stk_b4
     local alive = true
     local function __region_LAB_00d40379_c32()
         pCVar6 = quest:GetThingWithScriptName("RaceMarker")
@@ -39,11 +39,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
-            uVar1 = __native_entity_state:GetStateInt("self_0xc")
-            -- TODO(native): thing._4_4_ = uVar1;
-            thing = nil
-            -- TODO(native): thing._8_4_ = piVar12;
-            quest:SetIsPushableByHero(thing, false)
+            quest:SetIsPushableByHero(me, false)
             r1 = quest:GetThingWithScriptName("SpeedFriend")
             r2 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
             quest:EntityAttachToVillage(me, r2)
@@ -72,12 +68,11 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d405fc end
-                        if (quest:GetStateInt("GameState") == 3) and (uStack_220_b3 == 0) then
+                        if (quest:GetStateInt("GameState") == 3) and (0 == 0) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d405fc end
                             quest:SetThingHasInformation(me, false, true, false)
-                            u_stk_220 = CONCAT13(1,u_stk_220)
                         end
                         fVar15 = 10.0
                         pCVar6 = quest:GetHero()
@@ -277,7 +272,7 @@ function Main(quest, me)
                                 quest:SetTimer(xStack_250, iVar7)
                                 xStack_214 = quest:AddQuestInfoTimer(xStack_250, "HUD_CLOCK_ICON", 1.0)
                                 quest:DisplayQuestInfo(true)
-                                if uStack_220_b3 == 0 then
+                                if 1 == 0 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then
@@ -287,7 +282,6 @@ function Main(quest, me)
                                         goto LAB_00d405fc
                                     end
                                     quest:SetThingHasInformation(me, false, true, false)
-                                    u_stk_220 = CONCAT13(1,u_stk_220)
                                 end
                             else
                                 if bVar3 then
@@ -588,7 +582,6 @@ function Main(quest, me)
                                 iVar7 = (math.modf(quest:ReadGlobalGameData(0xee0)))
                                 quest:GiveHeroGold(iVar7)
                                 quest:ClearThingHasInformation(me)
-                                u_stk_220 = 0
                                 quest:PauseAllNonScriptedEntities(false)
                                 pCVar11 = xStack_d4
                             end

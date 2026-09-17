@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_00, fret_01, fret_02, fret_03, fret_04, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pfVar13, piVar12, pppuVar15, r1, r2, r3, r4, r5, r6, r7, r8, thing, uVar1, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
+    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_00, fret_01, fret_02, fret_03, fret_04, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pfVar13, piVar12, pppuVar15, r1, r2, r3, r4, r5, r6, r7, r8, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
     xStack_250 = resources:NewResource()
     bVar3 = false
@@ -36,11 +36,7 @@ function Main(quest, me)
     bVar3 = true
     pCVar5 = quest:GetHero()
     quest:EntitySetAlwaysBlockAttacksFromThing(me, pCVar5, bVar3)
-    uVar1 = __native_entity_state:GetStateInt("self_0xc")
-    -- TODO(native): thing._4_4_ = uVar1;
-    thing = nil
-    -- TODO(native): thing._8_4_ = piVar12;
-    quest:SetIsPushableByHero(thing, false)
+    quest:SetIsPushableByHero(me, false)
     r1 = quest:GetThingWithScriptName("MeleeOpponent")
     quest:SetThingHasInformation(me, false, false, false)
     iVar6 = quest:RegisterTimer()

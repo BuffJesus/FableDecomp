@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_00, fret_01, iVar10, iVar11, iVar22, i_stk_24, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, pfVar16, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r3, r4, r5, r6, r7, r8, r9, thing, thing_b10, thing_b11, thing_b8, thing_b9, uVar18, uVar19, uVar2, uVar20, uVar21, u_stk_17c, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_38, xStack_48, xStack_54, xStack_60_2
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_00, fret_01, iVar10, iVar11, iVar22, i_stk_24, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, pfVar16, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r3, r4, r5, r6, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, u_stk_17c, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_38, xStack_48, xStack_54, xStack_60_2
     local alive = true
     local function __region_LAB_00d61ad8_c22()
         quest:PauseAllNonScriptedEntities(false)
@@ -53,14 +53,11 @@ function Main(quest, me)
     quest:EntitySetAlwaysBlockAttacksFromThing(me, pCVar9, bVar6)
     quest:SetThingHasInformation(me, false, false, false)
     quest:SetPlayerUsingWillDummies(true)
-    uVar2 = __native_entity_state:GetStateInt("self_0xc")
-    -- TODO(native): thing._4_4_ = uVar2;
-    thing = nil
     thing_b8 = piVar1
     thing_b9 = (piVar1 >> 8)
     thing_b10 = (piVar1 >> 0x10)
     thing_b11 = (piVar1 >> 0x18)
-    quest:SetIsPushableByHero(thing, false)
+    quest:SetIsPushableByHero(me, false)
     iVar10 = quest:RegisterTimer()
     iVar11 = quest:RegisterTimer()
     quest:SetTimer(iVar11, 0)
@@ -76,14 +73,10 @@ function Main(quest, me)
         end
         pCVar12 = quest:GetThingWithScriptName("M_WillTeacherStand")
         iVar22 = 1
-        uVar18 = 0
-        uVar19 = 0
-        uVar20 = 0
-        uVar21 = 0
         iVar11 = 0
         iVar10 = 0x40400000
         pCVar13 = pCVar12:GetPos()
-        me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+        me:MoveToPosition(pCVar13, iVar10, iVar11, false, (iVar22 ~= 0))
         iVar10 = quest:GetStateInt("TutorialState")
         while iVar10 == 1 do
             alive = quest:NewScriptFrame(me)
@@ -114,15 +107,11 @@ function Main(quest, me)
                     fVar4 = 0.0
                     if fVar4 < fret_0 then
                         iVar22 = 0
-                        uVar18 = 1
-                        uVar19 = 0
-                        uVar20 = 0
-                        uVar21 = 0
                         iVar11 = 0
                         iVar10 = 0
                         pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_NOT_START"
                         pCVar12 = quest:GetHero()
-                        r2 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                        r2 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
                         iVar10 = me:IsPerformingScriptTask()
                         cVar7 = iVar10
                         while cVar7 do
@@ -605,24 +594,16 @@ function Main(quest, me)
                 if bVar6 ~= 0 then
                 end
                 iVar11 = 4
-                uVar18 = 0
-                uVar19 = (xStack_200 >> 8)
-                uVar20 = (xStack_200 >> 0x10)
-                uVar21 = (xStack_200 >> 0x18)
                 pCVar12 = quest:GetHero()
-                bVar6 = me:AcquireControl(4)
+                bVar6 = resources:TryAcquire(0, pCVar12, iVar11)
                 while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00d61370 end
                     iVar11 = 4
-                    uVar18 = 0
-                    uVar19 = (xStack_200 >> 8)
-                    uVar20 = (xStack_200 >> 0x10)
-                    uVar21 = (xStack_200 >> 0x18)
                     pCVar12 = quest:GetHero()
-                    bVar6 = me:AcquireControl(4)
+                    bVar6 = resources:TryAcquire(0, pCVar12, iVar11)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -989,12 +970,8 @@ function Main(quest, me)
                                 quest:SetMasterGameState("HeroTakingGuildTest", false)
                                 quest:SetStateInt("TutorialState", 4)
                                 quest:SetStateBool("TestFinished", true)
-                                uVar18 = 0
-                                uVar19 = 0
-                                uVar20 = 0
-                                uVar21 = 0
                                 pCVar15 = quest:GetActiveQuestName()
-                                quest:DeactivateQuestLater(pCVar15, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))))
+                                quest:DeactivateQuestLater(pCVar15, 0)
                                 repeat
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
@@ -1062,8 +1039,8 @@ function Main(quest, me)
                 resources:DestroyActorMap(xStack_210)
                 resources:ReleaseResource(xStack_48)
                 quest:DeregisterTimer(bVar6)
-                quest:DeregisterTimer(uVar21)
-                quest:DeregisterTimer(uVar20)
+                quest:DeregisterTimer(fVar4)
+                quest:DeregisterTimer(dist)
             until not (bVar6)
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
@@ -1074,14 +1051,10 @@ function Main(quest, me)
                 quest:SetStateBool("TestFinished", true)
                 pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                 iVar22 = 1
-                uVar18 = 0
-                uVar19 = 0
-                uVar20 = 0
-                uVar21 = 0
                 iVar11 = 0
                 iVar10 = 0x3f800000
                 pCVar13 = pCVar12:GetPos()
-                me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                me:MoveToPosition(pCVar13, iVar10, iVar11, false, (iVar22 ~= 0))
                 pCVar12 = quest:GetThingWithScriptName("WillApprentice")
                 bVar6 = (pCVar12 ~= nil and pCVar12:IsAlive())
                 if not bVar6 then
@@ -1190,15 +1163,11 @@ function Main(quest, me)
                                         fVar4 = 0.0
                                         if fVar4 < fret_04 then
                                             iVar22 = 0
-                                            uVar18 = 1
-                                            uVar19 = 0
-                                            uVar20 = 0
-                                            uVar21 = 0
                                             iVar11 = 0
                                             iVar10 = 0
                                             pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO"
                                             pCVar12 = quest:GetHero()
-                                            r16 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                            r16 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
                                             iVar10 = me:IsPerformingScriptTask()
                                             cVar7 = iVar10
                                             while cVar7 do
@@ -1215,14 +1184,10 @@ function Main(quest, me)
                                         end
                                         pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                                         iVar22 = 1
-                                        uVar18 = 0
-                                        uVar19 = 0
-                                        uVar20 = 0
-                                        uVar21 = 0
                                         iVar11 = 0
                                         iVar10 = 0x3f800000
                                         pCVar13 = pCVar12:GetPos()
-                                        me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                        me:MoveToPosition(pCVar13, iVar10, iVar11, false, (iVar22 ~= 0))
                                         __region_LAB_00d61ad8_c22(); goto LAB_00d61af3
                                     end
                                 end
@@ -1256,14 +1221,10 @@ function Main(quest, me)
         quest:SetStateBool("TestFinished", true)
         pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
         iVar22 = 1
-        uVar18 = 0
-        uVar19 = 0
-        uVar20 = 0
-        uVar21 = 0
         iVar11 = 0
         iVar10 = 0x3f800000
         pCVar13 = pCVar12:GetPos()
-        me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+        me:MoveToPosition(pCVar13, iVar10, iVar11, false, (iVar22 ~= 0))
         pCVar12 = quest:GetThingWithScriptName("WillApprentice")
         bVar6 = (pCVar12 ~= nil and pCVar12:IsAlive())
         if not bVar6 then
@@ -1390,15 +1351,11 @@ function Main(quest, me)
                                 fVar4 = 0.0
                                 if fVar4 < fret_04 then
                                     iVar22 = 0
-                                    uVar18 = 1
-                                    uVar19 = 0
-                                    uVar20 = 0
-                                    uVar21 = 0
                                     iVar11 = 0
                                     iVar10 = 0
                                     pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO"
                                     pCVar12 = quest:GetHero()
-                                    r20 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                    r20 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
                                     iVar10 = me:IsPerformingScriptTask()
                                     cVar7 = iVar10
                                     while cVar7 do
@@ -1418,14 +1375,10 @@ function Main(quest, me)
                                 end
                                 pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                                 iVar22 = 1
-                                uVar18 = 0
-                                uVar19 = 0
-                                uVar20 = 0
-                                uVar21 = 0
                                 iVar11 = 0
                                 iVar10 = 0x3f800000
                                 pCVar13 = pCVar12:GetPos()
-                                me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                me:MoveToPosition(pCVar13, iVar10, iVar11, false, (iVar22 ~= 0))
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:ReleaseResource(xStack_158)
                                 goto LAB_00d61af3
@@ -1519,12 +1472,8 @@ function Main(quest, me)
             quest:SetMasterGameState("HeroTakingGuildTest", false)
             quest:SetStateInt("TutorialState", 4)
             quest:SetStateBool("TestFinished", true)
-            uVar18 = 0
-            uVar19 = 0
-            uVar20 = 0
-            uVar21 = 0
             pCVar15 = quest:GetActiveQuestName()
-            quest:DeactivateQuestLater(pCVar15, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))))
+            quest:DeactivateQuestLater(pCVar15, 0)
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -1630,12 +1579,8 @@ function Main(quest, me)
         quest:SetMasterGameState("HeroTakingGuildTest", false)
         quest:SetStateInt("TutorialState", 4)
         quest:SetStateBool("TestFinished", true)
-        uVar18 = 0
-        uVar19 = 0
-        uVar20 = 0
-        uVar21 = 0
         pCVar15 = quest:GetActiveQuestName()
-        quest:DeactivateQuestLater(pCVar15, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))))
+        quest:DeactivateQuestLater(pCVar15, 0)
         repeat
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -1654,9 +1599,9 @@ function Main(quest, me)
     resources:DestroyMovie(xStack_1f0)
     ::LAB_00d61379::
     quest:DeregisterTimer(xStack_22c)
-    quest:DeregisterTimer(uVar21)
+    quest:DeregisterTimer(fVar4)
     ::LAB_00d6138b::
-    quest:DeregisterTimer(uVar20)
+    quest:DeregisterTimer(nil --[[missing]])
     ::LAB_00d61b69::
     quest:DeregisterTimer(xStack_244)
     quest:DeregisterTimer(xStack_240)

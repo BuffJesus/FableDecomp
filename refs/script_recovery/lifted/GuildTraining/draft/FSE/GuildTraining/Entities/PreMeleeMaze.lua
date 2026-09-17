@@ -98,7 +98,7 @@ function Main(quest, me)
             else
                 p0 = r1:GetPos()
             end
-            me:MoveToPosition(p0, 0x40400000, 0, false, true)
+            me:MoveToPosition(p0, 3.0, 0, false, true)
         end
         bVar4 = me:IsTalkedToByHero()
         if bVar4 then break end

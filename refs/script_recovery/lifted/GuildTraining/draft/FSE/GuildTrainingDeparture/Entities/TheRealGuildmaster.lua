@@ -12,16 +12,12 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, cVar5, fVar3, iVar10, iVar8, p1, p4, p5, pCVar6, pThing, pppuVar9, r1, r2, thing, uVar1, xStack_10, xStack_20, xStack_30
+    local bVar4, cVar5, fVar3, iVar10, iVar8, p1, p4, p5, pCVar6, pThing, pppuVar9, r1, r2, xStack_10, xStack_20, xStack_30
     local alive = true
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
-    uVar1 = __native_entity_state:GetStateInt("self_0xc")
-    -- TODO(native): thing._4_4_ = uVar1;
-    thing = nil
-    -- TODO(native): thing._8_4_ = piVar2;
-    quest:SetIsPushableByHero(thing, false)
+    quest:SetIsPushableByHero(me, false)
     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
     bVar4 = false
     pCVar6 = quest:GetThingWithScriptName("M_DepartureTeacherStand")
