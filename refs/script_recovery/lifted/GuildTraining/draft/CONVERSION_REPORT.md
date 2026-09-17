@@ -33,7 +33,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | RaceMarker | Init | 0x00d40a90 | True | 0 |
 | Q_GuildTraining | RaceMarker | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | RaceMarker | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_GuildTraining | MeleeApprentice | Main | 0x00d40cf0 | True | 15 |
+| Q_GuildTraining | MeleeApprentice | Main | 0x00d40cf0 | True | 14 |
 | Q_GuildTraining | MeleeApprentice | Init | 0x00d40cc0 | True | 0 |
 | Q_GuildTraining | MeleeApprentice | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | MeleeApprentice | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -68,7 +68,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | KillBird | Main | 0x00d43190 | True | 0 |
 | Q_GuildTraining | KillBird | Init | 0x00d430f0 | True | 0 |
 | Q_GuildTraining | KillBird | OnPersist | 0x00cdebc0 | True | 0 |
-| Q_GuildTraining | KillBird | OnPredicateFail | 0x00d43120 | True | 2 |
+| Q_GuildTraining | KillBird | OnPredicateFail | 0x00d43120 | True | 0 |
 | Q_GuildTraining | PreMeleeMaze | Main | 0x00d43db0 | True | 15 |
 | Q_GuildTraining | PreMeleeMaze | Init | 0x00d43d80 | True | 0 |
 | Q_GuildTraining | PreMeleeMaze | OnPersist | 0x00cdebc0 | True | 0 |
@@ -85,7 +85,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingMelee | TheRealGuildmaster | Init | 0x00d56670 | True | 0 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_GuildTrainingMelee | MeleeOpponent | Main | 0x00d56790 | True | 24 |
+| Q_GuildTrainingMelee | MeleeOpponent | Main | 0x00d56790 | True | 22 |
 | Q_GuildTrainingMelee | MeleeOpponent | Init | 0x00d56750 | True | 0 |
 | Q_GuildTrainingMelee | MeleeOpponent | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingMelee | MeleeOpponent | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 783}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 778}`

@@ -399,6 +399,9 @@ def drop_eh_state_flags(text: str) -> str:
         text = re.sub(r'\(' + v + r' & (?:0x[0-9a-f]+|\d+)\) == 0', 'true', text)
         text = re.sub(r"\(char\)" + v + r" < '\\0'", 'false', text)
         text = re.sub(r"-1 < \(char\)" + v + r"\b", 'true', text)
+    # the guarded destructor blocks are dead once their test is `false` (no label inside: nothing jumps in)
+    text = re.sub(r'^[ \t]*if \(false\) \{[ \t]*\r?\n((?:(?![ \t]*(?:\}|LAB_|\w+:(?!:)))[^\n]*\n)*?)[ \t]*\}[ \t]*\r?\n',
+                  lambda m: '' if not re.search(r'\{', m.group(1)) else m.group(0), text, flags=re.M)
     return text
 
 
@@ -431,7 +434,7 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     text = re.sub(r'\bthis\[(\d{2,})\]', lambda m: f'this[{int(m.group(1)):#x}]', text)   # `this[100]`: a byte field printed with a decimal index
     # an int member updated through a pointer temporary (`P = (int *)(parent + 0x54); *P = *P + 1;`): the member itself
-    text = re.sub(r'^([ \t]*)(\w+) = \(int \*\)\(([^;\n]+)\);[ \t]*\r?\n[ \t]*\*\2 = \*\2 \+ (-?(?:0x[0-9a-f]+|\d+));[ \t]*\r?\n(?![ \t]*[^\n]*\b\2\b)',
+    text = re.sub(r'^([ \t]*)(\w+) = \(int \*\)\(((?:this|\*\(int \*\)\(this \+ 0x14\)) \+ (?:0x[0-9a-f]+|\d+))\);[ \t]*\r?\n[ \t]*\*\2 = \*\2 \+ (-?(?:0x[0-9a-f]+|\d+));[ \t]*\r?\n(?![ \t]*[^\n]*\b\2\b)',   # (an array element's member has its own rule)
                   lambda m: f'{m.group(1)}*(int *)({m.group(3)}) = *(int *)({m.group(3)}) + {m.group(4)};\n', text, flags=re.M)
     text = bind_st0_results(text)
     text = re.sub(r'::\s+(?=\w)', '::', text)   # `CScriptThing:: _Method_...(` after line joining
@@ -804,6 +807,7 @@ SQUARED_DISTANCE = {0xCBE512}   # float __fastcall GetSquaredDistanceBetweenThin
 STRING_CONCAT = {0x99F570, 0x99F600, 0x99F690}   # CCharString operator+ (dest, a, b) -> dest; disassembly 2026-09-16; 0x99F690 = FSE CCharString_OperatorPlus_API (const char* left)
 INT_TO_STRING = {0x99F830}      # CCharString* __fastcall GFIntToCharString(CCharString* result, int value) (FSE FableAPI.h)
 STRING_C_STR = {0x99E4C0}       # const char* __thiscall CCharString::operator const char*() (FSE CCharString_ToConstChar_API)
+STRING_NOT_EQUAL = {0x99E960}   # bool CCharString::NotEqual(const CCharString&, const char*) (bsim label; callers test the result against 0)
 DISTANCE_PREDICATES = {0xCBE2FF: 'IsDistanceBetweenThingsUnder', 0xCBE3EA: 'IsDistanceBetweenThingsOver'}   # bool __fastcall (a, b, float)
 # void __fastcall AddLogbookStoryEntry(int n) (bsim label: CSubtitleRenderer::SetText): builds
 # "TEXT_QST_LOG_STORY_<n>_NAME"/"_DESC" and calls GSI slot 0x4d0 AddLogBookEntry (disassembly 0xCBE87F,
@@ -813,7 +817,7 @@ STORY_LOGBOOK = {0xCBE87F}
 
 def _strip_ptr_cast(operand):
     """`(int *)pcVar17` / `&CStack_128` operands of the string helpers: the register / slot itself."""
-    return re.sub(r'^\((?:int|char|void|CCharString|undefined4?) \*\)', '', operand.strip()).lstrip('&')
+    return re.sub(r'^\((?:int|char|void|CCharString|undefined4?)(?: \*)?\)(?=&?\w+$)', '', operand.strip()).lstrip('&')   # a cast on a member expression stays
 
 
 def fold_engine_helpers(text, call_labels):
@@ -824,13 +828,16 @@ def fold_engine_helpers(text, call_labels):
             text = re.sub(re.escape(label) + r'\s*\(([^,;]+),([^;)]+)\)',
                           lambda m: f'ENGINE_SquaredDistance({_strip_addr(m.group(1))}, {m.group(2).strip()})', text)
         elif target in STRING_CONCAT:
-            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*((?:\([\w ]+\*\))?[^,;()]+),\s*((?:\([\w ]+\*\))?[^;()]+)\)',
+            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*((?:\([\w ]+\*\))?(?:[^,;()]|\([^()]*\))+),\s*((?:\([\w ]+\*\))?(?:[^;()]|\([^()]*\))+)\)',
                           lambda m: f'ENGINE_Concat({_strip_ptr_cast(m.group(1))}, {_strip_ptr_cast(m.group(2))})', text)
         elif target in INT_TO_STRING:
             text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*([^;)]+)\)',
                           lambda m: f'ENGINE_IntToString({m.group(1).strip()})', text)
         elif target in STRING_C_STR:
             text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?([\w.]+)\)', lambda m: m.group(1), text)
+        elif target in STRING_NOT_EQUAL:
+            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\(((?:\([\w ]+\*?\))?[^,;()]+),\s*((?:\([\w ]+\*?\))?[^;()]+)\)',
+                          lambda m: f'ENGINE_StrNotEqual({_strip_ptr_cast(m.group(1))}, {_strip_ptr_cast(m.group(2))})', text)
         elif target in STORY_LOGBOOK:
             text = re.sub(re.escape(label) + r'\s*\((0x[0-9a-f]+|\d+)\)', lambda m: f'GSI->AddLogbookStoryEntry({int(m.group(1), 0)})', text)
         elif target in DISTANCE_PREDICATES:
@@ -929,6 +936,18 @@ RE_OFFSET_STRING_CTOR = re.compile(
     r'^[ \t]*CCharString::CCharString\(\(CCharString \*\)\((?P<expr>\w+ \+ (?:\d+|0x[0-9a-f]+))\),(?P<lit>"[^"]*"),-1\);[ \t]*\r?\n', re.M)
 
 
+def fold_sibling_slot_offsets(text: str) -> str:
+    """`(CCharString *)(xStack_1c + 4)` names the object Ghidra itself constructed as `xStack_18` (the next
+    stack slot up); spell it by that name so the temporary tracking sees one object."""
+    def sibling(m):
+        prefix, slot, off = m.group(1), int(m.group(2), 16), int(m.group(3), 0)
+        target = f'{prefix}{slot - off:x}'
+        if re.search(r'CCharString::(?:CCharString|operator=)\(\(CCharString \*\)&?' + re.escape(target) + r'\b', text):
+            return f'(CCharString *){target}'
+        return m.group(0)
+    return re.sub(r'\(CCharString \*\)\((\w*Stack_)([0-9a-f]+) \+ (4|8|0xc|12)\)', sibling, text)
+
+
 def fold_offset_string_temporaries(text: str) -> str:
     """A CCharString literal constructed at an offset inside a stack struct (`(auStack_64 + 8)`) is a
     temporary the lifter cannot track by name; substitute the literal for its uses and drop the
@@ -991,6 +1010,12 @@ def lower_after_annotate(text, thing_slots=None):
     timers = re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', text, re.M)
     if len(set(timers)) == 1:
         text = re.sub(r'GSI->DeregisterTimer\(unaff_E[A-Z]{2}\)', f'GSI->DeregisterTimer({timers[0]})', text)
+        # the register holding the id is reused for the (meaningless) DeregisterTimer result and later values
+        # (`iVar4 = GSI->DeregisterTimer(iVar4)`); a stack copy made right after registration is the stable id
+        copy = re.search(r'^[ \t]*' + re.escape(timers[0]) + r' = (?:\(\w+\))?GSI->RegisterTimer\(\);[ \t]*\r?\n[ \t]*(\w+) = ' + re.escape(timers[0]) + r';', text, re.M)
+        if copy and len(re.findall(r'^[ 	]*' + re.escape(copy.group(1)) + r' = ', text, re.M)) == 1:   # (a slot reused for other values is no stable id)
+            text = re.sub(r'^([ \t]*)(?:' + re.escape(timers[0]) + r' = )?GSI->DeregisterTimer\((?:' + re.escape(timers[0]) + '|' + re.escape(copy.group(1)) + r')\);',
+                          lambda m: f'{m.group(1)}GSI->DeregisterTimer({copy.group(1)});', text, flags=re.M)
     # the same for every create/destroy pair: a destroy operand that is never assigned in the function
     # (a drifted slot name) when the function creates exactly one object of that kind
     for creator, destroyer in (('GSI->RegisterTimer', 'GSI->DeregisterTimer'), ('RESOURCE_StartMovie', 'RESOURCE_DestroyMovie'),
@@ -1015,6 +1040,8 @@ def lower_after_annotate(text, thing_slots=None):
     text = re.sub(r'^([ \t]*)if \((\w+) != (?:\([\w ]+\*\))?0(?:x0)?\) \{[ \t]*\r?\n[ \t]*StdMap_DestroyNode\(&?\2,[^;\n]*\);[ \t]*\r?\n(?:[ \t]*[^\n]*;[ \t]*\r?\n){0,4}?[ \t]*\}[ \t]*\r?\n'
                   r'(?:[ \t]*if \(\2 != (?:\([\w ]+\*\))?0(?:x0)?\) \{[ \t]*\r?\n[ \t]*free\(\2\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n)?',
                   lambda m: f'{m.group(1)}ACTORMAP_Destroy({m.group(2)});\n', text, flags=re.M)
+    # an element receiver named by the vector folds repeated as the explicit `this` operand
+    text = re.sub(r'(CScriptThing::\w+\(((?:LOCAL|QUEST|ENTITY)LIST_At\w*\([^()]*\)), ?)(?:\(int \*\))?\2(?:,\s*|(?=\)))', r'\1', text)
     # receiver aliases (`this_00 = *(int **)(this + 0x40);`) are dead once their vcalls read `GSI->`
     text = drop_dead_local_stores(text)
     return text
@@ -1033,20 +1060,27 @@ def fold_local_thing_vectors(text, thing_slots=None):
     `(CScriptThing *)((int)vec + byteOffset)` -> `LOCALLIST_At(vec, byteOffset / 0xc)`; the element destructor
     loops (`for (; p != end; p += 3) (**(code **)*p)(0);`), `free(begin)` and the zeroed begin/end/capacity
     slots are the vector's own lifetime and vanish.'''
-    # a once-assigned pointer temporary to the out-slot (`pOutFollowers = &xStack_c;`) is the slot itself
-    for m in list(re.finditer(r'^[ \t]*(\w+) = &(\w+);[ \t]*\r?\n', text, re.M)):
+    # a pointer temporary to the out-slot (`pOutFollowers = &xStack_c;`) is the slot itself, up to the
+    # register's next definition
+    for m in reversed(list(re.finditer(r'^[ \t]*(\w+) = &(\w+);[ \t]*\r?\n', text, re.M))):
         var = m.group(1)
-        if len(re.findall(r'^[ \t]*' + re.escape(var) + r' = ', text, re.M)) != 1:
-            continue
-        rest = re.sub(r'(GSI->\w+\([^;]*?,)' + re.escape(var) + r'\)', lambda mm, s=m.group(2): f'{mm.group(1)}&{s})', text.replace(m.group(0), '', 1))
-        if not re.search(r'\b' + re.escape(var) + r'\b', re.sub(r'^[ \t]*[\w ]+ \**' + re.escape(var) + r';[ \t]*\r?\n', '', rest, flags=re.M)):
-            text = rest
+        tail = text[m.end():]
+        nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
+        scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+        scope2 = re.sub(r'(GSI->\w+\([^;]*?,)' + re.escape(var) + r'\)', lambda mm, s=m.group(2): f'{mm.group(1)}&{s})', scope)
+        if scope2 != scope and not re.search(r'\b' + re.escape(var) + r'\b', scope2):
+            text = text[:m.start()] + scope2 + rest
     # an interface call filling a member list through its out-argument returns the table
     text = re.sub(r'^([ \t]*)GSI->(\w+)\(((?:[^;()]*?),\s*)?(QUEST|ENTITY)LIST_Ref\("(\w+)"\)\);',
                   lambda m: f'{m.group(1)}lst_{m.group(5)} = GSI->{m.group(2)}({(m.group(3) or "").rstrip().rstrip(",")});\n{m.group(1)}{m.group(4)}LIST_Set("{m.group(5)}", lst_{m.group(5)});', text, flags=re.M)
     vectors = []
     # any other interface call whose last operand is a zero-constructed local vector (`V = (undefined4 *)0x0;`)
     constructed = set(re.findall(r'^[ \t]*(\w+) = \(undefined4 \*\)0x0;', text, re.M))
+    # an `int`-typed begin slot (`iStack_c = 0;`) whose end slot 4 bytes above is zeroed too
+    for m in re.finditer(r'^[ \t]*(\w*[Ss]tack_|\w+_stk_)([0-9a-f]+) = 0;', text, re.M):
+        slot = int(m.group(2), 16)
+        if re.search(r'^[ \t]*\w+_(?:stk_)?%x = 0;' % (slot - 4), text, re.M):
+            constructed.add(m.group(1) + m.group(2))
     def call(m):
         if not m.group(3).startswith('GetAllThings') and m.group(5) not in constructed:
             return m.group(0)
@@ -1098,6 +1132,26 @@ def fold_local_thing_vectors(text, thing_slots=None):
             text = re.sub(r'(?<![\w)])(?:\(int\))?\w+_(?:stk_)?%x - (?:\(int\))?%s\b' % (end_slot, vec), f'(int){vec} - {vec}', text)   # uncast spelling `(i_stk_c0 - iStack_c4) / 0xc`
             # the zeroed end slot before the by-value call is the vector's construction too
             text = re.sub(r'^[ \t]*\w+_(?:stk_)?%x = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n' % end_slot, '', text, flags=re.M)
+            # an element-pointer walk (`p = V; while (p = p + 3, p != END) { ... p[1] ... erase(&V, p) }`): an index
+            end_names = r'(?:\w+_(?:stk_)?%x|\(int\)%s|%s)' % (end_slot, vec, vec)
+            for it in set(re.findall(r'^[ \t]*(\w+) = ' + v + r';', text, re.M)):
+                if not re.search(r'\b' + it + r' = ' + it + r' \+ 3\b', text):
+                    continue
+                text = re.sub(r'^([ \t]*)' + it + r' = ' + v + r';', r'\1' + it + ' = 0;', text, flags=re.M)
+                text = re.sub(r'\b' + it + r' = ' + it + r' \+ 3\b', f'{it} = {it} + 1', text)
+                text = re.sub(r'\b' + it + r' ([!=]=) (?:\(int \*\))?' + end_names, lambda m, it=it: f'{it} {m.group(1)} LOCALLIST_Count({vec})', text)
+                text = re.sub(r'\b' + it + r'\[1\]', f'LOCALLIST_At({vec}, {it})', text)
+                # the begin pointer itself against the end: the vector is not empty
+                text = re.sub(r'(?<![\w)])' + v + r' ([!=]=) (?:\(int \*\))?' + end_names, lambda m, vec=vec: f'LOCALLIST_Count({vec}) {m.group(1)} 0', text)
+        # erase(iterator) on the local vector: `std::vector::erase(&V, it)` (label 0xCD3152 under any name)
+        text = re.sub(r'^([ \t]*)\w+\(&' + v + r',\s*(?:\(int\))?(\w+)\);', lambda m, vec=vec: f'{m.group(1)}LOCALLIST_Erase({vec}, {m.group(2)});', text, flags=re.M)
+        # an element's Data pointer by index (`V[(int)i * 3 + 1]`) is the element; a vcall through it a thing call
+        text = re.sub(r'\(int \*\)' + v + r'\[\(int\)(\w+) \* 3 \+ 1\]|' + v + r'\[\(int\)(\w+) \* 3 \+ 1\]',
+                      lambda m, vec=vec: f'LOCALLIST_At({vec}, {m.group(1) or m.group(2)})', text)
+        def at_vcall_local(m, vec=vec):
+            out = thing_call_local(f'LOCALLIST_At({vec}, {m.group(1)})', m.group(2), text[m.end():m.end() + 1])
+            return out or m.group(0)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?LOCALLIST_At\(' + v + r', (\w+)\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', at_vcall_local, text)
         # element count from the begin/end slots (both canonicalised to the vector's name):
         # `iVar = (int)V - V >> 0x1f;` (sign fix) then `((int)V - V) / 0xc + iVar != iVar` (count != 0)
         text = re.sub(r'^[ \t]*(\w+) = \(int\)' + v + r' - ' + v + r' >> 0x1f;[ \t]*\r?\n', '', text, flags=re.M)
@@ -1111,6 +1165,7 @@ def fold_local_thing_vectors(text, thing_slots=None):
             return out or m.group(0)
         text = re.sub(r'\(\*\*\(code \*\*\)\(\*\*\(int \*\*\)\((\w+) \+ \(int\)' + v + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', data_vcall, text)
         # a thing vcall on an element addressed by byte offset: name the element first
+        text = re.sub(r'\*\(int \*\)\((\w+) \+ \(int\)' + v + r'\)', lambda m, vec=vec: f'*(int *)({vec} + {m.group(1)})', text)   # `(i + (int)V)` -> `(V + i)`
         pat = re.compile(r'^([ \t]*)([^\n]*?)\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + v + r' \+ (?:\(int\))?(\w+)\) \+ (0x[0-9a-f]+|\d+)\)\)\(', re.M)
         def elem(m):
             nonlocal elems
@@ -1192,6 +1247,16 @@ class LoweringSpec:
         return out
 
 
+def _next_use_is_redefinition(text, pos, var):
+    """Whether the next mention of `var` after `pos` is an assignment to it at a line start (or there is none):
+    a definition before `pos` is then dead."""
+    nxt = re.search(r'\b' + re.escape(var) + r'\b', text[pos:])
+    if not nxt:
+        return True
+    at_line_start = text[pos:pos + nxt.start()].rsplit('\n', 1)[-1].strip() == ''
+    return bool(at_line_start and re.match(r'\s*=(?!=)', text[pos + nxt.end():]))
+
+
 def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     diag = []
     text = source
@@ -1241,6 +1306,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_inline_destructors(text)
     text = canonicalise_stack_objects(text)
     text = fold_inline_destructors(text)    # again: the canonical names may only now agree across the three lines
+    text = fold_sibling_slot_offsets(text)
     text = fold_offset_string_temporaries(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))
     float_at = getattr(spec, 'float_at', None)
@@ -1347,6 +1413,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             pos = m.start()
         return text
     if spec.entity:
+        # the parent pointer re-loaded in a loop condition (`while (iVar7 = *(int *)(this + 0x14), COND)`): the pointer
+        # never changes, so the load hoists in front of the loop
+        text = re.sub(r'^([ \t]*)while \((\w+) = (' + parent + r'), ', r'\1\2 = \3;\n\1while (', text, flags=re.M)
         text = inline_alias(text, parent, 'parent')
     text = inline_alias(text, r'\*\(int \*\)\(this \+ ' + off_re(spec.master_off) + r'\)', 'master')
     if spec.entity:
@@ -1539,6 +1608,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(r'\*' + re.escape(bv), f'{tag}LIST_At_{name}(0)', text)
             text = re.sub(re.escape(bv) + r' \+ ' + idx + r'\b', lambda m, name=name, tag=tag: f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', text)
             text = re.sub(r'(?<![\w)])' + idx + r' \+ ' + re.escape(bv), lambda m, name=name, tag=tag: f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', text)
+            text = re.sub(r'\*\(int \*\*\)\(' + idx + r' \+ 4 \+ ' + re.escape(bv) + r'\)', lambda m, name=name, tag=tag: f'{tag}LIST_At_{name}(({m.group(1)}) / 0xc)', text)
             # vcalls on a named element (`(**(code **)(ELEM + OFF))(` / `(**(code **)(*(int *)(ELEM) + OFF))(`); a cast around it
             at = re.escape(f'{tag}LIST_At_{name}(') + r'([^;\n]*?\) / 0xc)\)'
             def at_vcall(m, name=name, tag=tag):
@@ -1555,7 +1625,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             # erase(iterator): std::vector<CScriptThing>::erase at 0xCD3152 (any label)
             for label, target in getattr(spec, 'call_labels', {}).items():
                 if target == 0xCD3152:
-                    text = re.sub(re.escape(label) + r'\(\(void \*\)\(' + base + r' \+ ' + off_re(off) + r'\),\s*(?:\(int\))?(\w+)\);',
+                    text = re.sub(re.escape(label) + r'\((?:\(void \*\)\(' + base + r' \+ ' + off_re(off) + r'\)|' + re.escape(f'{tag}LIST_Ref("{name}")') + r'),\s*(?:\(int\))?(\w+)\);',
                                   lambda m, name=name, tag=tag: f'{tag}LIST_Erase("{name}", ({m.group(1)}) / 0xc);', text)
             ref = f'{tag}LIST_Ref("{name}")'
             # erase(begin, end) is a clear
@@ -1581,8 +1651,11 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 cut = after + nxt.start() if nxt else len(text)
                 scope = re.sub(r'\(\*\*\(code \*\*\)\(\*' + it + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
                                lambda h, elem=elem: thing_call(elem, h.group(1), h.end(), text[start:cut][h.end():h.end() + 1]) or h.group(0), text[start:cut])
-                scope = re.sub(r'\*\(undefined4 \*\)\(' + it + r' \+ 4\)', elem, scope)
+                scope = re.sub(r'\*\((?:undefined4|int) \*\)\(' + it + r' \+ 4\)', elem, scope)
                 text = text[:start] + scope + text[cut:]
+                # the same operand anywhere the register still steps by 0xc (a rotated loop prints its body after
+                # an unrelated reuse of the register, e.g. an inline strncmp counter)
+                text = re.sub(r'\*\((?:undefined4|int) \*\)\(' + it + r' \+ 4\)', elem, text)
                 # element copy-construction from the iterator: Info (+8), Data (+4), vtable, addref
                 copy = re.compile(r'^([ \t]*)(\w+) = \*\(int \*\*\)\(' + it + r' \+ 8\);[ \t]*\r?\n[ \t]*(\w+) = \*\(int \*\*\)\(' + it + r' \+ 4\);[ \t]*\r?\n'
                                   r'[ \t]*(\w+) = (?:&PTR_[A-Za-z_]*_01238c8c|QUESTTHING_Empty\(\));[ \t]*\r?\n[ \t]*if \(\2 != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\2 = \*\2 \+ 1;\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
@@ -1601,10 +1674,45 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 head, tail = text[:cm.start()], text[cm.end():]
                 nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
                 scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
-                scope, n = re.subn(r'\((?:CScriptThing(?:_bv)?|int) \*\)&PTR_[A-Za-z_]*_01238c8c,\s*' + re.escape(var) + r'\b', elem, scope)
+                # the by-value thing is three pushes (vtable, Data, Info) Ghidra read as two operands: whatever the
+                # call took after it (a float range) is not in the decompile — an explicit lost operand, not a stale temporary
+                scope, n = re.subn(r'\((?:CScriptThing(?:_bv)?|int) \*\)&PTR_[A-Za-z_]*_01238c8c,\s*' + re.escape(var) + r'\b(?=\))', elem + ', ENGINE_LostOperand()', scope)
                 if n and not re.search(r'\b' + re.escape(var) + r'\b', scope):
                     text = head + scope + rest
             text = text.replace(ev, f'({tag}LIST_Count("{name}") * 0xc)')
+            # the signed element count (`n = COUNT * 0xc; s = n >> 0x1f; if (n / 0xc + s != s)`, `(uint)(n / 0xc)`)
+            count = f'{tag}LIST_Count("{name}")'
+            for m in list(re.finditer(r'^[ \t]*(\w+) = \(' + re.escape(count) + r' \* 0xc\);[ \t]*\r?\n[ \t]*(\w+) = \1 >> 0x1f;[ \t]*\r?\n', text, re.M)):
+                n, sgn = m.group(1), m.group(2)
+                text = re.sub(r'\b' + n + r' / 0xc \+ ' + sgn + r' (!=|==) ' + sgn + r'\b', lambda mm: f'{count} {mm.group(1)} 0', text)
+                text = re.sub(r'\(uint\)\(' + n + r' / 0xc\)|\b' + n + r' / 0xc\b', count, text)
+                # each definition is dead when its register is next redefined (or never read again)
+                pos = text.find(m.group(0))
+                if pos < 0:
+                    continue
+                first, second = m.group(0).split('\n', 1)[0] + '\n', m.group(0).split('\n', 1)[1]
+                if _next_use_is_redefinition(text, pos + len(m.group(0)), sgn):
+                    text = text[:pos] + first + text[pos + len(m.group(0)):]
+                    if _next_use_is_redefinition(text, pos + len(first), n):
+                        text = text[:pos] + text[pos + len(first):]
+            # the same with the count propagated into the test (`s = (COUNT * 0xc) >> 0x1f; if (((COUNT * 0xc)) / 0xc + s != s)`,
+            # also as a comma expression inside a condition)
+            c = re.escape(count)
+            text = re.sub(r'\(\(' + c + r' \* 0xc\)\) / 0xc \+ (\w+) (!=|==) \1\b', lambda mm: f'{count} {mm.group(2)} 0', text)
+            text = re.sub(r'\(uint\)\(\(' + c + r' \* 0xc\) / 0xc\)|\(' + c + r' \* 0xc\) / 0xc\b', count, text)
+            # a sign definition whose register is next redefined (or never read again) is dead
+            for m in reversed(list(re.finditer(r'^[ \t]*(\w+) = \(' + c + r' \* 0xc\) >> 0x1f;[ \t]*\r?\n|\((\w+) = \(' + c + r' \* 0xc\) >> 0x1f, ', text, re.M))):
+                sgn = m.group(1) or m.group(2)
+                nxt = re.search(r'\b' + sgn + r'\b', text[m.end():])
+                if nxt:
+                    at_line_start = text[m.end():m.end() + nxt.start()].rsplit('\n', 1)[-1].strip() == ''
+                    redefined = at_line_start and re.match(r'\s*=(?!=)', text[m.end() + nxt.end():])
+                    if not redefined:
+                        continue
+                if m.group(1):
+                    text = text[:m.start()] + text[m.end():]
+                else:
+                    text = text[:m.start()] + '(' + text[m.end():]     # `(s = ..., COND)` -> `(COND)`
 
     # 3b'. CCharString members: construct / assign / read / destroy
     string_families = [(r'this', spec.self_fields, 'ENTITY' if spec.entity else 'QUEST')]
@@ -1843,6 +1951,7 @@ def strip_receiver_arguments(text: str) -> str:
         text = re.sub(r'^[ \t]*' + re.escape(alias) + r' = \w+;[ \t]*\r?\n', '', text, flags=re.M) if 'Stack_' in alias else text
     text = re.sub(r'(CScriptThing::\w+\(me, ?)' + ME_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
     text = re.sub(r'(CScriptThing::\w+\((\w+), ?)\2(?:,\s*|(?=\)))', r'\1', text)
+    text = re.sub(r'(CScriptThing::\w+\((LOCALLIST_At\([^()]*\)), ?)(?:\(int \*\))?\2(?:,\s*|(?=\)))', r'\1', text)   # an element receiver repeated as the explicit `this`
     # typed by-value placeholders read as their real classes
     text = text.replace('_bv *', ' *').replace('_bv)', ')')
     return text
@@ -1875,6 +1984,7 @@ LUA_PSEUDO = [
     (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
     (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
+    (re.compile(r'ENGINE_LostOperand\(\)'), 'nil --[[operand lost by the decompiler]]'),
     (re.compile(r'ENGINE_ZeroVector\(\)'), '{x = 0, y = 0, z = 0}'),
     (re.compile(r'ENGINE_GlobalGameDataFloatAt\('), 'quest:ReadGlobalGameDataFloatAt('),
     (re.compile(r'ENGINE_GlobalGameDataFloat\('), 'quest:ReadGlobalGameDataFloat('),
@@ -1940,8 +2050,10 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_Colour', lambda a: '{R = %s, G = %s, B = %s, A = %s}' % tuple(a))
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_IntToString', lambda a: f'tostring({a[0]})')
+    text = _expand_calls(text, 'ENGINE_StrNotEqual', lambda a: f'(({a[0]} ~= {a[1]}) and 1 or 0)')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'LOCALLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
+    text = _expand_calls(text, 'LOCALLIST_Erase', lambda a: f'table.remove({a[0]}, {a[1]} + 1)')
     text = _expand_calls(text, 'ENGINE_Trunc', lambda a: f'(math.modf({a[0]}))')   # first result of modf = integral part (truncated)
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)

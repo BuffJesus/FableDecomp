@@ -50,8 +50,6 @@ function Main(quest, me)
         else
             bVar6 = true
         end
-        if false then
-        end
         if bVar6 then
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive

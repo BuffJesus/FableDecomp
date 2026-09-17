@@ -1,4 +1,21 @@
-# CURRENT (night 6, 2026-09-17): TraderConflict unit through the pipeline (15/15 compile, todo 431 -> 292)
+# CURRENT (night 6, 2026-09-17): TraderConflict unit through the pipeline (15/15 compile, todo 431 -> 176)
+
+**Later the same night — dropped operands recovered from the machine code** (`recover_dropped_operands` in
+`convert_quest_unit.py`): calls the decompiler printed with no operands (TraderToRescue's whole Main) are rebuilt from a
+linear capstone decode — immediates / .rdata literals, `lea esp` slots (entry-relative via the site depth), call results
+(`__pushN = GSI->GetHero()` naming, `mov esi, eax` copies), register values traced to their last write (`this + 8` = me);
+signature-typed exact matching guards every rewrite. `nil --[[missing]]` 81 -> 29 across the unit; local-vector
+iterator walks with `erase` (`table.remove`), `CCharString::NotEqual`, sibling stack-slot spellings (`xStack_1c + 4` = `xStack_18`),
+per-branch string literals copied into a slot become real string variables (`xStack_1c = pOther` / `= "CREATURE_BS_SHERIFF"`),
+the parent pointer re-loaded in a loop condition hoisted; Guild's swapped
+`MiniMapAddMarker` operands and a drifted `DeregisterTimer(xStack_260)` fixed by the same machinery. Also: FSE string
+helpers (OperatorPlus/IntToString/c_str), AppendCString literals behind hidden-result pushes, EH-state flags, member
+counters through pointer temporaries, the signed count idiom, `this[100]`, typed null-string compares, the DeregisterTimer
+register reuse. Oakvale draft baseline regenerated (16th binding lifts by itself; `readable_new_oakvale_main_bindings.py`
+accepts both forms); `test_source_hygiene.py` fails the suite on any control byte in `tools/script_recovery/*.py`.
+Readable: Evil 4069 lines / Good 2523; smoke 0 errors draft + readable. TraderToRescue.Main is still the rough one
+(5.5 KB function, `unaff_EBP` EH seeds, `MsgExpressionPerformedTo()` operands, `"" == nil` null-branch residue).
+
 
 **New unit `trader_conflict`** (Q_TraderConflictEvil + Q_TraderConflictGood, 0xDF5CD0..0xE00610; evidence in
 `refs/script_recovery/trader_conflict/`, draft + readable in `refs/script_recovery/lifted/TraderConflict/`). Draft: 63/63 fns,

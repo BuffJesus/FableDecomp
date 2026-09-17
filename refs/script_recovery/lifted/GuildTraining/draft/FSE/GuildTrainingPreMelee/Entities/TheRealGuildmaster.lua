@@ -783,8 +783,6 @@ function Main(quest, me)
                                                                                                                     if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c6
                                                                                                                     bVar3 = true
                                                                                                                 end
-                                                                                                                if false then
-                                                                                                                end
                                                                                                                 if bVar3 then
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
@@ -1189,8 +1187,6 @@ function Main(quest, me)
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         -- LAB_00d54f9c_c7: (native jump target)
                                                                                                         bVar3 = false
-                                                                                                        if false then
-                                                                                                        end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
@@ -1486,13 +1482,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_783
+                                                                                                                goto FLOW_after_lab_00d54f9c_782
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_783::
-                                                                                                        if false then
-                                                                                                        end
+                                                                                                        ::FLOW_after_lab_00d54f9c_782::
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
@@ -2263,8 +2257,6 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c27
                                                                                                             bVar3 = true
-                                                                                                        end
-                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -3087,8 +3079,6 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c28
                                                                                                             bVar3 = true
-                                                                                                        end
-                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -4066,8 +4056,6 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c29
                                                                                                             bVar3 = true
-                                                                                                        end
-                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()

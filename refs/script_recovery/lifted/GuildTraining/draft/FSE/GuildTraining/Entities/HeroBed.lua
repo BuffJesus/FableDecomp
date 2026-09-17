@@ -78,7 +78,7 @@ function Main(quest, me)
     bVar3 = xStack_c == nil
     goto LAB_00d44c44
     ::LAB_00d449bd::
-    if xStack_c ~= pu_stk_8 then
+    if #xStack_c ~= 0 then
         bVar3 = xStack_c == nil
         goto LAB_00d44c44
     end
@@ -86,7 +86,7 @@ function Main(quest, me)
     ::LAB_00d44b4d::
     goto LAB_00d44bc3
     ::LAB_00d4482d::
-    if xStack_c ~= pu_stk_8 then
+    if #xStack_c ~= 0 then
         bVar3 = xStack_c == nil
         goto LAB_00d44c44
     end

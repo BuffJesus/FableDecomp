@@ -51,27 +51,22 @@
             "helper_DF9E00: 0 helper operands for 1 parameters",
             "label LAB_00df6794",
             "label LAB_00df6aa2",
-            "unlifted: std__vector__pop_back(QUESTLIST_Ref(\"AllCreatures\"),iVar8);",
             "label LAB_00df6bdb",
             "label LAB_00df74f2",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
             "label LAB_00df6e53",
             "label LAB_00df6f5f",
             "MsgIsHitBy: CScriptThing method not in FSE manifest",
             "MsgIsHitByAnySpecialAbilityFrom: CScriptThing method not in FSE manifest",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
             "label LAB_00df706d",
             "label LAB_00df71ab",
             "label LAB_00df77e2",
             "label LAB_00df75e3",
             "label LAB_00df6b83",
-            "unlifted: std__vector__pop_back(QUESTLIST_Ref(\"AllCreatures\"),iVar8);",
             "label LAB_00df77e2_c15",
             "goto LAB_00df7957_c15",
             "unlifted: xStack_48 = (CCharString)((int)CVar5 + 0xc);",
             "label LAB_00df74f2_c16",
             "goto LAB_00df74f2_c16",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
             "verify cleanup at LAB_00df6e53_c16 (lifted as early return)",
             "verify cleanup at LAB_00df6e53_c16 (lifted as early return)",
             "label LAB_00df6e53_c16",
@@ -79,10 +74,10 @@
             "verify cleanup at LAB_00df75e3_c16 (lifted as early return)",
             "label LAB_00df6f5f_c16",
             "verify cleanup at LAB_00df75e3_c16 (lifted as early return)",
+            "GiveThingBestEnemyTarget: missing spTarget (1 args for 2 params)",
             "verify cleanup at LAB_00df6f5f_c16 (lifted as early return)",
             "MsgIsHitBy: CScriptThing method not in FSE manifest",
             "MsgIsHitByAnySpecialAbilityFrom: CScriptThing method not in FSE manifest",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
             "verify cleanup at LAB_00df706d_c16 (lifted as early return)",
             "label LAB_00df706d_c16",
             "label LAB_00df71ab_c16",
@@ -92,11 +87,7 @@
             "label LAB_00df77e2_c16",
             "goto LAB_00df77e2_c16",
             "label LAB_00df75e3_c16",
-            "goto LAB_00df6aa2",
-            "unlifted: piVar7 = *(CVar5 + 4 + QUESTLIST_BeginValue(\"AllCreatures\"))",
-            "unlifted: bVar13 = (**(*piVar7 + 0x138))(piVar7,*(iVar8 + 4))",
-            "unlifted: piVar7 = *(CVar5 + 4 + QUESTLIST_BeginValue(\"AllCreatures\"))",
-            "unlifted: bVar13 = (**(*piVar7 + 0x138))(piVar7,*(iVar8 + 4))"
+            "goto LAB_00df6aa2"
           ],
           "calls": [
             "AddEntityBinding",
@@ -179,6 +170,9 @@
             "GetDefName",
             "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
+            "QUESTLIST_At_AllCreatures",
+            "IsEqualTo",
+            "QUESTLIST_Erase",
             "IsActiveThreadTerminating",
             "SetStateInt",
             "DisplayQuestInfo",
@@ -252,6 +246,9 @@
             "DeactivateQuestLater",
             "QUESTTHING_Empty",
             "QUESTTHING_Empty",
+            "QUESTLIST_At_AllCreatures",
+            "IsEqualTo",
+            "QUESTLIST_Erase",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
@@ -322,7 +319,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 828,
+          "lines": 782,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -345,9 +342,9 @@
             "goto LAB_00df75ec;",
             "goto LAB_00df7957;",
             "goto LAB_00df7957_c16;",
+            "if (LOCALLIST_Count(xStack_18) != 0) goto LAB_00df6d70;",
             "if (bVar13) goto LAB_00df75ec;",
-            "if (bVar13) goto LAB_00df75f5;",
-            "if (xStack_18 != pu_stk_14) goto LAB_00df6d70;"
+            "if (bVar13) goto LAB_00df75f5;"
           ],
           "nativeLabels": [
             "FLOW_after_lab_00df6794",
@@ -582,13 +579,7 @@
             "bsimVoid": true
           },
           "todo": [
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "label LAB_00df7f78",
-            "unlifted: CCharString::operator=((CCharString *)xStack_1c,\"CREATURE_BS_SHERIFF\");",
-            "unlifted: if ((((*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x4c) - *(__native_entity_state:"
+            "label LAB_00df7f78"
           ],
           "calls": [
             "NewScriptFrame",
@@ -620,7 +611,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 126,
+          "lines": 129,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1412,7 +1403,7 @@
         "functionSyntaxPassed": 25,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
-        "todo": 74
+        "todo": 59
       }
     },
     {
@@ -1523,7 +1514,7 @@
             "GetActiveQuestName",
             "DeactivateQuestLater"
           ],
-          "lines": 150,
+          "lines": 133,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1658,7 +1649,7 @@
             "SetStateBool",
             "IsActiveThreadTerminating"
           ],
-          "lines": 38,
+          "lines": 37,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1723,7 +1714,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 133,
+          "lines": 131,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1895,7 +1886,7 @@
           },
           "todo": [
             "label LAB_00dfc3b5",
-            "unlifted: cVar8 = (**(**(iVar3 + 0) + 0x138))(QUESTLIST_At_AllCreatures((p0) / 0xc))"
+            "unlifted: cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(QUESTLIST_At_AllCreatures((p0) / 0xc))"
           ],
           "calls": [
             "QUESTLIST_Clear",
@@ -1934,7 +1925,7 @@
             "QUESTLIST_Erase",
             "IsActiveThreadTerminating"
           ],
-          "lines": 125,
+          "lines": 123,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1975,32 +1966,22 @@
           },
           "todo": [
             "label LAB_00dfd643",
-            "verify cleanup at LAB_00dfdc54 (lifted as early return)",
+            "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "unlifted: *xStack_18 = *xStack_18 + -1;",
             "label LAB_00dfd841",
             "label LAB_00dfdc54",
+            "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "verify cleanup at LAB_00dfdc8a (lifted as early return)",
+            "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "label LAB_00dfdc8a",
             "label LAB_00dfda32",
-            "unlifted: std__vector__pop_back(&xStack_24,(int)puVar6);",
             "verify cleanup at LAB_00dfd841 (lifted as early return)",
-            "unlifted: this_00 = (void *)(**(code **)(*(int *)(iVar7 + (int)xStack_24) + 4))();",
             "verify cleanup at LAB_00dfd841 (lifted as early return)",
             "unlifted: xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
             "label LAB_00dfda90",
-            "unlifted: std__vector__pop_back(&xStack_24,(int)puVar6);",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
             "label LAB_00dfdd34",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
             "goto LAB_00dfd643",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
-            "unlifted: if *r1 == 0 then",
-            "unlifted: bVar2 = (**(*xStack_24[pCVar1 * 3 + 1] + 0x138))(xStack_24[pCVar1 * 3 + 1],puVar6[1])",
-            "unlifted: bVar2 = (**(*xStack_24[pCVar1 * 3 + 1] + 0x138))(xStack_24[pCVar1 * 3 + 1],puVar6[1])"
+            "unlifted: if *r1 == 0 then"
           ],
           "calls": [
             "QUESTLIST_Copy",
@@ -2024,7 +2005,6 @@
             "IsThingAwareOfOtherThingInAnyWay",
             "IsAlive",
             "IsActiveThreadTerminating",
-            "DeregisterTimer",
             "GiveThingBestEnemyTarget",
             "GetTimer",
             "IsActiveThreadTerminating",
@@ -2036,7 +2016,6 @@
             "AddLineToConversation",
             "SetTimer",
             "IsActiveThreadTerminating",
-            "DeregisterTimer",
             "LOCALLIST_At",
             "GetHero",
             "GiveThingBestEnemyTarget",
@@ -2051,16 +2030,23 @@
             "AddLineToConversation",
             "SetTimer",
             "MiniMapAddMarker",
+            "IsEqualTo",
+            "LOCALLIST_Erase",
             "LOCALLIST_At",
             "GetHero",
             "IsThingAwareOfOtherThingInAnyWay",
             "IsThingAwareOfOtherThingInAnyWay",
+            "LOCALLIST_At",
+            "GetName",
+            "ENGINE_StrNotEqual",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "SetStateBool",
             "DeregisterTimer",
+            "IsEqualTo",
+            "LOCALLIST_Erase",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
@@ -2079,7 +2065,7 @@
             "DeregisterTimer",
             "DeregisterTimer"
           ],
-          "lines": 256,
+          "lines": 249,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2165,112 +2151,70 @@
           },
           "todo": [
             "unlifted: xStack_148[0] = 0;",
-            "GetNearestWithScriptName: missing spRelativeTo (1 args for 2 params)",
             "label LAB_00dfe2e9",
             "verify cleanup at LAB_00dfe2e9 (lifted as early return)",
             "unlifted: iVar11 = CBasicString<char>::Compare(*(void **)xStack_168,\"EXPRESSION_FOLLOW\");",
             "label LAB_00dfe32c",
             "label LAB_00dfe4df",
             "verify cleanup at LAB_00dfebc5 (lifted as early return)",
-            "AddNewConversation: missing pThing, b2 (1 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
             "IsPlayerHoldingLockTargetButton: not in FSE manifest",
             "label LAB_00dfe63d",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
-            "SetTimer: missing timeValue (1 args for 2 params)",
             "label LAB_00dfe8b5",
             "unlifted: unaff_EBP = uVar12 | 0x38;",
             "unlifted: unaff_EBP = unaff_EBP & 0xffffffdf;",
             "unlifted: unaff_EBP = unaff_EBP & 0xffffffef;",
             "unlifted: unaff_EBP = unaff_EBP & 0xfffffff7;",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "label LAB_00dfebc5",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "DeactivateQuest: missing delay (1 args for 2 params)",
-            "SetIsPushableByHero: missing spThing, bIsPushable (0 args for 2 params)",
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
-            "SetEntityAsRegionFollowing: missing spTarget, bFollow (1 args for 3 params)",
             "label LAB_00dfee05",
-            "AddQuestInfoBarHealth: missing spThing, color, scale (1 args for 4 params)",
+            "AddQuestInfoBarHealth: missing spThing (3 args for 4 params)",
             "verify cleanup at LAB_00dfee05 (lifted as early return)",
             "label LAB_00dfee1b",
-            "AddQuestInfoBarHealth: missing spThing, color, scale (1 args for 4 params)",
+            "AddQuestInfoBarHealth: missing spThing (3 args for 4 params)",
             "IsEntityFollowingHero: missing spThing (0 args for 1 params)",
             "IsEntityFollowingHero: missing spThing (0 args for 1 params)",
             "TextEntryExists: not in FSE manifest",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "IsPlayerHoldingLockTargetButton: not in FSE manifest",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
+            "AddNewConversation: missing pThing (2 args for 3 params)",
+            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "MsgIsHitBy: CScriptThing method not in FSE manifest",
             "MsgIsHitByAnySpecialAbilityFrom: CScriptThing method not in FSE manifest",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
             "label LAB_00dff3b5",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
             "GetHealth: missing pThing (0 args for 1 params)",
             "label LAB_00dff54a",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
             "PlaySoundOnThing: missing pThing (1 args for 2 params)",
             "PlaySoundOnThing: missing pThing (1 args for 2 params)",
             "PlaySoundOnThing: missing pThing (1 args for 2 params)",
             "unlifted: xStack_148 = (CCharString)((int)CVar13 + 1);",
             "GetHealth: missing pThing (0 args for 1 params)",
             "label LAB_00dff887",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
+            "AddNewConversation: missing pThing (2 args for 3 params)",
+            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00dffa46",
             "label LAB_00dffb06",
             "unlifted: iVar21 = CBasicString<char>::Compare(*(void **)xStack_15c,\"EXPRESSION_WAIT\");",
             "unlifted: CCharString::CCharString(ENGINE_Colour(255, 0, 0, 255),\"BanditCampEntrance\",-1);",
             "TextEntryExists: not in FSE manifest",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "IsPlayerHoldingLockTargetButton: not in FSE manifest",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
-            "MsgIsHitByHeroSpecialAbility: 0 operands for 2 params",
+            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00e0006b",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
+            "AddNewConversation: missing pThing (2 args for 3 params)",
+            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00e001c0",
             "unlifted: iVar21 = CBasicString<char>::Compare(*(void **)xStack_164,\"EXPRESSION_WAIT\");",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "SetEntityAsRegionFollowing: missing spTarget, bFollow (1 args for 3 params)",
-            "EntitySetAsScared: missing spThing, bIsScared (0 args for 2 params)",
+            "SetEntityAsRegionFollowing: missing spTarget (2 args for 3 params)",
+            "EntitySetAsScared: missing spThing (1 args for 2 params)",
             "Main_InitializeFourierAnalysis_4: unproven parent helper receiver or arity",
-            "RemoveThing: missing pThing (0 args for 3 params)",
+            "RemoveThing: missing pThing (2 args for 3 params)",
             "unlifted: bVar2 = C3DMeshInfo::HasPhysicsMesh(ENGINE_Colour(255, 0, 0, 255));",
-            "AddNewConversation: missing pThing, b1, b2 (0 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
-            "AddLineToConversation: missing spListener (3 args for 5 params)",
+            "AddNewConversation: missing pThing (2 args for 3 params)",
+            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "MoveToThing: missing spTargetThing (2 args for 3 params)",
-            "RemoveQuestInfoElement: missing id (0 args for 1 params)",
             "label LAB_00e00595",
-            "RemoveThing: missing pThing (0 args for 3 params)",
-            "DeregisterTimer: missing timerId (0 args for 1 params)",
+            "RemoveThing: missing pThing (2 args for 3 params)",
             "unlifted: cVar3 = (**(xStack_124 + 0x12c))()",
             "unlifted: cVar3 = (**(xStack_124 + 0x12c))()",
             "unlifted: bVar2 = (**(*(iVar11 + 0x0) + 0x138))((me))"
@@ -2647,7 +2591,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1063,
+          "lines": 1068,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3556,10 +3500,10 @@
       },
       "cleanupRegions": {
         "FSE/TraderConflictGood/TraderConflictGood.lua": {
-          "LAB_00dfdc54": [
+          "LAB_00dfdc8a": [
             "quest:DeregisterTimer(xStack_3c)"
           ],
-          "LAB_00dfdc8a": [
+          "LAB_00dfdd34": [
             "quest:DeregisterTimer(xStack_3c)"
           ]
         }
@@ -3573,7 +3517,7 @@
         "todo": {
           "UpdateLiveEnemies": [
             "label LAB_00dfc3b5",
-            "unlifted: cVar8 = (**(**(iVar3 + 0) + 0x138))(QUESTLIST_At_AllCreatures((p0) / 0xc))"
+            "unlifted: cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(QUESTLIST_At_AllCreatures((p0) / 0xc))"
           ],
           "helper_DFDED0": []
         },
@@ -3592,7 +3536,7 @@
         "functionSyntaxPassed": 38,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 163
+        "todo": 111
       }
     }
   ],
@@ -3603,6 +3547,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 237
+    "todo": 170
   }
 }

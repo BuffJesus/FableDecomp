@@ -3,7 +3,7 @@ import hashlib
 import re
 from tools.script_recovery.prepare_oakvale_main_registration import prove as prove_registration
 
-RAW_SHA='38dc86ea7a766768d58d301d4e32070a39762d7374f50d1489a9c74956251b95'
+RAW_SHA='6a89d6b21ec7a9994913d4872a7bf171e600b984f6713369ebb76a7249c15aae'   # 2026-09-17: the sixteenth binding lifts in the draft itself
 
 
 def lower(source):

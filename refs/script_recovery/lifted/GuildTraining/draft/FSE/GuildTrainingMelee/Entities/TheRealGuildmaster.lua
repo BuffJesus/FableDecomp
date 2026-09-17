@@ -176,7 +176,7 @@ function Main(quest, me)
     bVar3 = not alive
     if bVar3 then
         -- LAB_00d5a9be: (native jump target)
-        quest:DeregisterTimer(xStack_260)
+        quest:DeregisterTimer(xStack_264)
     else
         quest:SetMasterGameState("HeroTakingGuildTest", true)
         quest:SetStateBool("WhisperStopWalking", true)
@@ -331,7 +331,7 @@ function Main(quest, me)
                 resources:DestroyMovie(xStack_d0)
                 -- LAB_00d5a9b5: (native jump target)
                 quest:DeregisterTimer(xStack_260)
-                quest:DeregisterTimer(xStack_260)
+                quest:DeregisterTimer(xStack_264)
                 goto FLOW_after_lab_00d5a8cb
             end
             xStack_84 = resources:NewResource()
@@ -386,7 +386,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if not bVar3 then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_10c);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_f4);
                         goto LAB_00d5941c
                     end
                 end
@@ -587,14 +587,14 @@ function Main(quest, me)
             quest:ClearAllRumbles()
             pCVar5 = quest:GetHero()
             fret_06 = quest:GetHealth(pCVar5)
-            -- TODO(native): CStack_1d4 = (CCharString)(float)fret_06;
+            -- TODO(native): xStack_1d4 = (CCharString)(float)fret_06;
             fret_07 = quest:GetHealth(r1)
             ixVar13 = 0
-            -- TODO(native): CStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)CStack_1d4));
+            -- TODO(native): xStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)xStack_1d4));
             iVar7 = 0
             repeat
                 iVar6 = iVar7
-                if quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) < CStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) == CStack_1d4) then
+                if quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) == xStack_1d4) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
@@ -797,7 +797,7 @@ function Main(quest, me)
             bVar3 = not alive
             if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
             resources:ReleaseResource(xStack_214)
-            quest:DeregisterTimer(xStack_264)
+            quest:DeregisterTimer(xStack_260)
             iVar6 = xStack_264
             cVar4 = quest:GetStateBool("MeleeRepeating")
         end

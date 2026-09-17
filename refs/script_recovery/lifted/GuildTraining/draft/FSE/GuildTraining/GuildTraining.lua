@@ -133,8 +133,8 @@ function RunTutorials(quest)
     quest:SetExperienceSpendingAsEnabled(false)
     quest:SetHeroSleepingAsEnabled(false)
     r3 = quest:GetThingWithScriptName("GuildDoors")
-    pCVar3 = quest:GetThingWithScriptName("HUD_ORB_QUEST_CORE")
-    quest:MiniMapAddMarker(pCVar3, "TheRealGuildmaster")
+    pCVar3 = quest:GetThingWithScriptName("TheRealGuildmaster")
+    quest:MiniMapAddMarker(pCVar3, "HUD_ORB_QUEST_CORE")
     xStack_54 = nil
     bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
     if bVar2 then
@@ -1158,18 +1158,18 @@ function CheckFriendlyAttacks(quest)
             puVar7 = 0x0
             if bVar9 then goto LAB_00d452d1 end
             pcVar21 = "CREATURE_BIRD_GUILD_SPARROW"
-            -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_4c)
+            -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_70)
             pvVar12 = nil --[[unresolved native value]]
-            iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
+            iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
             if iVar13 == 0 then
                 -- LAB_00d45184: (native jump target)
                 bVar9 = false
             else
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                 bVar4 = true
-                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_38)
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_74)
                 pvVar12 = nil --[[unresolved native value]]
-                iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
+                iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
                 if iVar13 == 0 then
                     bVar9 = false
                     goto FLOW_after_lab_00d45184
@@ -1177,9 +1177,9 @@ function CheckFriendlyAttacks(quest)
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                 bVar4 = true
                 bVar3 = true
-                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_48)
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_68)
                 pvVar12 = nil --[[unresolved native value]]
-                iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
+                iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
                 if iVar13 == 0 then
                     bVar9 = false
                     goto FLOW_after_lab_00d45184
@@ -1188,9 +1188,9 @@ function CheckFriendlyAttacks(quest)
                 bVar4 = true
                 bVar3 = true
                 bVar2 = true
-                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_60)
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_6c)
                 pvVar12 = nil --[[unresolved native value]]
-                iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
+                iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
                 bVar9 = true
                 if iVar13 == 0 then
                     bVar9 = false
@@ -1280,16 +1280,16 @@ function CheckFriendlyAttacks(quest)
                         pcVar21 = "CREATURE_BIRD_GUILD_SPARROW"
                         -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)
                         pvVar12 = nil --[[unresolved native value]]
-                        iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
+                        iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                         if iVar18 == 0 then
                             -- LAB_00d4557d: (native jump target)
                             bVar10 = false
                         else
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                             bVar3 = true
-                            -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_30)
+                            -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(aCStack_10)
                             pvVar12 = nil --[[unresolved native value]]
-                            iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
+                            iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                             if iVar18 == 0 then
                                 bVar10 = false
                                 goto FLOW_after_lab_00d4557d
@@ -1297,9 +1297,9 @@ function CheckFriendlyAttacks(quest)
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                             bVar3 = true
                             bVar2 = true
-                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(aCStack_10)
                             pvVar12 = nil --[[unresolved native value]]
-                            iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
+                            iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                             if iVar18 == 0 then
                                 bVar10 = false
                                 goto FLOW_after_lab_00d4557d
@@ -1309,7 +1309,7 @@ function CheckFriendlyAttacks(quest)
                             bVar2 = true
                             -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
                             pvVar12 = nil --[[unresolved native value]]
-                            iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
+                            iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                             bVar10 = true
                             if iVar18 == 0 then
                                 bVar10 = false
@@ -1535,7 +1535,7 @@ function CheckFriendlyAttacks(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar10 = not alive
             if bVar10 then
-                xStack_a0 = nil
+                xStack_80 = nil
                 return
             end
             if 2 < quest:GetStateInt("HeroWarnings") then
@@ -1598,7 +1598,7 @@ function CheckFriendlyAttacks(quest)
                             quest:AddLineToConversation(xStack_30, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", pCVar15, pCVar14, false)
                             quest:Pause(2.0)
                             quest:FixMovieSequenceCamera(true)
-                            resources:RunMacro(xStack_58, amStack_1c, false, true)
+                            resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(aCStack_10)
@@ -1674,8 +1674,8 @@ function CheckFriendlyAttacks(quest)
         -- TODO(native): (**(code **)*puVar7)(0);
         puVar7 = puVar7 + 3
     end
-    if xStack_94 ~= nil then
-        -- TODO(native): free(xStack_94);
+    if nil ~= nil then
+        -- TODO(native): free(xStack_84);
     end
     r1 = nil
     ::LAB_00d45322::
@@ -1685,10 +1685,10 @@ function CheckFriendlyAttacks(quest)
         -- TODO(native): (**(code **)*puVar7)(0);
         puVar7 = puVar7 + 3
     end
-    if nil ~= nil then
-        -- TODO(native): free(xStack_84);
+    if xStack_94 ~= nil then
+        -- TODO(native): free(xStack_94);
     end
-    xStack_80 = nil
+    xStack_a0 = nil
     goto LAB_00d45322
 end
 

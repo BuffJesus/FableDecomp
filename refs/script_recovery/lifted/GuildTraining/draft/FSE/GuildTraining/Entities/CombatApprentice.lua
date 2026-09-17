@@ -201,8 +201,6 @@ function Main(quest, me)
             bVar3 = true
         end
         ::FLOW_after_lab_00d4a758::
-        if false then
-        end
         if bVar3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -772,8 +770,6 @@ function Main(quest, me)
                                 bVar3 = false
                             end
                             ::FLOW_after_lab_00d4b8c5::
-                            if false then
-                            end
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive

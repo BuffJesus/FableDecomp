@@ -12,34 +12,34 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214_2, xStack_21c, xStack_220, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214, xStack_21c, xStack_220, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dac4()
-        resources:ReleaseResource(xStack_180)
+        resources:ReleaseResource(xStack_1c)
         resources:DestroyActorMap(xStack_170)
-        resources:DestroyMovie(xStack_2c)
-        quest:DeregisterTimer(xStack_21c)
-        resources:ReleaseResource(xStack_190)
+        resources:DestroyMovie(xStack_180)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db05()
         quest:PauseAllNonScriptedEntities(false)
-        resources:ReleaseResource(xStack_180)
+        resources:ReleaseResource(xStack_1c)
         resources:DestroyActorMap(xStack_170)
-        resources:DestroyMovie(xStack_2c)
-        quest:DeregisterTimer(xStack_21c)
-        resources:ReleaseResource(xStack_190)
+        resources:DestroyMovie(xStack_180)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db37()
-        resources:ReleaseResource(xStack_210)
+        resources:ReleaseResource(xStack_190)
+        quest:DeregisterTimer(xStack_21c)
         quest:DeregisterTimer(xStack_220)
-        quest:DeregisterTimer(xStack_214)
-        resources:DestroyMovie(xStack_1c)
+        resources:DestroyMovie(xStack_210)
     end
     local function __cleanup_LAB_00d5db90()
-        quest:DeregisterTimer(xStack_214_2)
-        quest:DeregisterTimer(xStack_220)
         quest:DeregisterTimer(xStack_214)
-        resources:DestroyMovie(xStack_1c)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:DestroyMovie(xStack_210)
     end
     xStack_210 = resources:NewResource()
     bVar4 = false
@@ -189,8 +189,8 @@ function Main(quest, me)
         bVar4 = not alive
         if bVar4 then
             -- LAB_00d5dbab: (native jump target)
-            quest:DeregisterTimer(xStack_214)
-            resources:DestroyMovie(xStack_1c)
+            quest:DeregisterTimer(xStack_220)
+            resources:DestroyMovie(xStack_210)
             return
         end
         quest:SetMasterGameState("SkillTrainingStarted", true)
@@ -217,9 +217,9 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
-                    resources:DestroyMovie(xStack_2c)
-                    quest:DeregisterTimer(xStack_21c)
-                    resources:ReleaseResource(xStack_190)
+                    resources:DestroyMovie(xStack_180)
+                    quest:DeregisterTimer(xStack_220)
+                    resources:ReleaseResource(xStack_210)
                     return
                 end
                 iVar16 = 4
@@ -230,14 +230,14 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
-                resources:DestroyMovie(xStack_2c)
-                quest:DeregisterTimer(xStack_21c)
-                resources:ReleaseResource(xStack_190)
+                resources:DestroyMovie(xStack_180)
+                quest:DeregisterTimer(xStack_220)
+                resources:ReleaseResource(xStack_210)
                 return
             end
             xStack_170 = resources:NewActorMap()
             resources:SetActor(xStack_170, "HERO", xStack_180)
-            resources:SetActor(xStack_170, "TEACHER", xStack_1c)
+            resources:SetActor(xStack_170, "TEACHER", xStack_210)
             quest:SetStateInt("TutorialState", 2)
             xStack_1c = resources:StartMovie("")
             quest:StartMovieSequence()
@@ -266,7 +266,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_9c);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_8c);
                         goto LAB_00d5b7c0
                     end
                 end
@@ -294,9 +294,9 @@ function Main(quest, me)
             if bVar4 then return end  -- TODO(native): goto LAB_00d5dab8
             ::LAB_00d5b7c0::
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(xStack_1c0)
-            resources:DestroyActorMap(xStack_164)
-            resources:ReleaseResource(xStack_1a0)
+            resources:DestroyMovie(xStack_1c)
+            resources:DestroyActorMap(xStack_170)
+            resources:ReleaseResource(xStack_180)
             xStack_1d4 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 3, 1.0)
             xStack_21c = quest:RegisterTimer()
             iVar15 = xStack_21c
@@ -316,17 +316,17 @@ function Main(quest, me)
                     goto LAB_00d5ba3e
                 end
                 -- LAB_00d5db99: (native jump target)
+                quest:DeregisterTimer(xStack_21c)
                 quest:DeregisterTimer(xStack_220)
-                quest:DeregisterTimer(xStack_214)
-                resources:DestroyMovie(xStack_1c)
+                resources:DestroyMovie(xStack_210)
                 return
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
+                quest:DeregisterTimer(xStack_21c)
                 quest:DeregisterTimer(xStack_220)
-                quest:DeregisterTimer(xStack_214)
-                resources:DestroyMovie(xStack_1c)
+                resources:DestroyMovie(xStack_210)
                 return
             end
             xStack_1e4 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
@@ -343,9 +343,9 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
+                    quest:DeregisterTimer(xStack_21c)
                     quest:DeregisterTimer(xStack_220)
-                    quest:DeregisterTimer(xStack_214)
-                    resources:DestroyMovie(xStack_1c)
+                    resources:DestroyMovie(xStack_210)
                     return
                 end
                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
@@ -366,15 +366,13 @@ function Main(quest, me)
                 else
                     bVar4 = false
                 end
-                if false then
-                end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
+                        quest:DeregisterTimer(xStack_21c)
                         quest:DeregisterTimer(xStack_220)
-                        quest:DeregisterTimer(xStack_214)
-                        resources:DestroyMovie(xStack_1c)
+                        resources:DestroyMovie(xStack_210)
                         return
                     end
                     c_stk_215 = 1
@@ -386,9 +384,9 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
+                            quest:DeregisterTimer(xStack_21c)
                             quest:DeregisterTimer(xStack_220)
-                            quest:DeregisterTimer(xStack_214)
-                            resources:DestroyMovie(xStack_1c)
+                            resources:DestroyMovie(xStack_210)
                             return
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
@@ -403,7 +401,7 @@ function Main(quest, me)
                         if iVar15 < 1 then
                             fVar20 = 6.0
                             pCVar7 = quest:GetHero()
-                            bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar7, xStack_38, fVar20)
+                            bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar7, r2, fVar20)
                             __native_condition_5 = bVar4
                             if __native_condition_5 then
                                 bVar4 = quest:IsConversationActive(iVar16)
@@ -413,9 +411,9 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
                                 if bVar4 then
+                                    quest:DeregisterTimer(xStack_21c)
                                     quest:DeregisterTimer(xStack_220)
-                                    quest:DeregisterTimer(xStack_214)
-                                    resources:DestroyMovie(xStack_1c)
+                                    resources:DestroyMovie(xStack_210)
                                     return
                                 end
                                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
@@ -429,9 +427,9 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
                                         if bVar4 then
+                                            quest:DeregisterTimer(xStack_21c)
                                             quest:DeregisterTimer(xStack_220)
-                                            quest:DeregisterTimer(xStack_214)
-                                            resources:DestroyMovie(xStack_1c)
+                                            resources:DestroyMovie(xStack_210)
                                             return
                                         end
                                         iVar16 = quest:AddNewConversation(me, false, false)
@@ -442,9 +440,9 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar4 = not alive
                                             if bVar4 then
+                                                quest:DeregisterTimer(xStack_21c)
                                                 quest:DeregisterTimer(xStack_220)
-                                                quest:DeregisterTimer(xStack_214)
-                                                resources:DestroyMovie(xStack_1c)
+                                                resources:DestroyMovie(xStack_210)
                                                 return
                                             end
                                             pCVar6 = quest:GetHero()
@@ -453,9 +451,9 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar4 = not alive
                                             if bVar4 then
+                                                quest:DeregisterTimer(xStack_21c)
                                                 quest:DeregisterTimer(xStack_220)
-                                                quest:DeregisterTimer(xStack_214)
-                                                resources:DestroyMovie(xStack_1c)
+                                                resources:DestroyMovie(xStack_210)
                                                 return
                                             end
                                             pCVar6 = quest:GetHero()
@@ -465,9 +463,9 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
                                         if bVar4 then
+                                            quest:DeregisterTimer(xStack_21c)
                                             quest:DeregisterTimer(xStack_220)
-                                            quest:DeregisterTimer(xStack_214)
-                                            resources:DestroyMovie(xStack_1c)
+                                            resources:DestroyMovie(xStack_210)
                                             return
                                         end
                                         iVar16 = quest:AddNewConversation(me, false, false)
@@ -478,9 +476,9 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar4 = not alive
                                             if bVar4 then
+                                                quest:DeregisterTimer(xStack_21c)
                                                 quest:DeregisterTimer(xStack_220)
-                                                quest:DeregisterTimer(xStack_214)
-                                                resources:DestroyMovie(xStack_1c)
+                                                resources:DestroyMovie(xStack_210)
                                                 return
                                             end
                                             pCVar6 = quest:GetHero()
@@ -489,9 +487,9 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar4 = not alive
                                             if bVar4 then
+                                                quest:DeregisterTimer(xStack_21c)
                                                 quest:DeregisterTimer(xStack_220)
-                                                quest:DeregisterTimer(xStack_214)
-                                                resources:DestroyMovie(xStack_1c)
+                                                resources:DestroyMovie(xStack_210)
                                                 return
                                             end
                                             pCVar6 = quest:GetHero()
@@ -502,9 +500,9 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar4 = not alive
                                     if bVar4 then
+                                        quest:DeregisterTimer(xStack_21c)
                                         quest:DeregisterTimer(xStack_220)
-                                        quest:DeregisterTimer(xStack_214)
-                                        resources:DestroyMovie(xStack_1c)
+                                        resources:DestroyMovie(xStack_210)
                                         return
                                     end
                                     iVar16 = quest:AddNewConversation(me, false, false)
@@ -515,9 +513,9 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
                                         if bVar4 then
+                                            quest:DeregisterTimer(xStack_21c)
                                             quest:DeregisterTimer(xStack_220)
-                                            quest:DeregisterTimer(xStack_214)
-                                            resources:DestroyMovie(xStack_1c)
+                                            resources:DestroyMovie(xStack_210)
                                             return
                                         end
                                         pCVar6 = quest:GetHero()
@@ -526,9 +524,9 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
                                         if bVar4 then
+                                            quest:DeregisterTimer(xStack_21c)
                                             quest:DeregisterTimer(xStack_220)
-                                            quest:DeregisterTimer(xStack_214)
-                                            resources:DestroyMovie(xStack_1c)
+                                            resources:DestroyMovie(xStack_210)
                                             return
                                         end
                                         pCVar6 = quest:GetHero()
@@ -546,9 +544,9 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
+                        quest:DeregisterTimer(xStack_21c)
                         quest:DeregisterTimer(xStack_220)
-                        quest:DeregisterTimer(xStack_214)
-                        resources:DestroyMovie(xStack_1c)
+                        resources:DestroyMovie(xStack_210)
                         return
                     end
                     xStack_1d0 = quest:GetMasterGameState("SkillScore")
@@ -557,9 +555,9 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
+                            quest:DeregisterTimer(xStack_21c)
                             quest:DeregisterTimer(xStack_220)
-                            quest:DeregisterTimer(xStack_214)
-                            resources:DestroyMovie(xStack_1c)
+                            resources:DestroyMovie(xStack_210)
                             return
                         end
                         piVar2 = (__native_entity_state:GetStateInt("self_0x18") + 0xa4)
@@ -569,9 +567,9 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then
+                                quest:DeregisterTimer(xStack_21c)
                                 quest:DeregisterTimer(xStack_220)
-                                quest:DeregisterTimer(xStack_214)
-                                resources:DestroyMovie(xStack_1c)
+                                resources:DestroyMovie(xStack_210)
                                 return
                             end
                             iVar16 = quest:AddNewConversation(me, false, false)
@@ -586,7 +584,7 @@ function Main(quest, me)
                 if __native_entity_state:GetStateBool("PlayerNotWarned") then
                     fVar20 = 6.0
                     pCVar7 = quest:GetHero()
-                    bVar4 = quest:IsDistanceBetweenThingsOver(pCVar7, xStack_38, fVar20)
+                    bVar4 = quest:IsDistanceBetweenThingsOver(pCVar7, r2, fVar20)
                     __native_condition_6 = bVar4
                     if __native_condition_6 then
                         bVar4 = quest:IsConversationActive(iVar16)
@@ -596,9 +594,9 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
+                            quest:DeregisterTimer(xStack_21c)
                             quest:DeregisterTimer(xStack_220)
-                            quest:DeregisterTimer(xStack_214)
-                            resources:DestroyMovie(xStack_1c)
+                            resources:DestroyMovie(xStack_210)
                             return
                         end
                         __native_entity_state:SetStateBool("PlayerNotWarned", false)
@@ -614,18 +612,18 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
+                quest:DeregisterTimer(xStack_21c)
                 quest:DeregisterTimer(xStack_220)
-                quest:DeregisterTimer(xStack_214)
-                resources:DestroyMovie(xStack_1c)
+                resources:DestroyMovie(xStack_210)
                 return
             end
             if c_stk_215 == 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
+                    quest:DeregisterTimer(xStack_21c)
                     quest:DeregisterTimer(xStack_220)
-                    quest:DeregisterTimer(xStack_214)
-                    resources:DestroyMovie(xStack_1c)
+                    resources:DestroyMovie(xStack_210)
                     return
                 end
                 quest:RemoveQuestInfoElement(xStack_1e4)
@@ -657,8 +655,8 @@ function Main(quest, me)
                 return
             end
             xStack_164 = resources:NewActorMap()
-            resources:SetActor(xStack_164, "HERO", xStack_210)
-            resources:SetActor(xStack_164, "TEACHER", xStack_190)
+            resources:SetActor(xStack_164, "HERO", xStack_190)
+            resources:SetActor(xStack_164, "TEACHER", xStack_210)
             xStack_2c = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
@@ -689,15 +687,15 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_64);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_98);
                         goto LAB_00d5c4eb
                     end
                 end
                 -- LAB_00d5db45: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
                 -- LAB_00d5db1f: (native jump target)
-                resources:DestroyMovie(xStack_1c)
-                resources:DestroyActorMap(xStack_1ac)
+                resources:DestroyMovie(xStack_2c)
+                resources:DestroyActorMap(xStack_164)
                 __cleanup_LAB_00d5db37(); return
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -721,9 +719,9 @@ function Main(quest, me)
             if bVar4 then return end  -- TODO(native): goto LAB_00d5db13
             ::LAB_00d5c4eb::
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(xStack_180)
-            resources:DestroyActorMap(xStack_170)
-            resources:ReleaseResource(xStack_210)
+            resources:ReleaseResource(xStack_2c)
+            resources:DestroyActorMap(xStack_164)
+            resources:ReleaseResource(xStack_190)
             bVar4 = quest:IsXbox()
             if not bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -735,17 +733,17 @@ function Main(quest, me)
                     xStack_1e8 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5c6b1
                 end
+                quest:DeregisterTimer(xStack_21c)
                 quest:DeregisterTimer(xStack_220)
-                quest:DeregisterTimer(xStack_214)
-                resources:DestroyMovie(xStack_1c)
+                resources:DestroyMovie(xStack_210)
                 return
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
+                quest:DeregisterTimer(xStack_21c)
                 quest:DeregisterTimer(xStack_220)
-                quest:DeregisterTimer(xStack_214)
-                resources:DestroyMovie(xStack_1c)
+                resources:DestroyMovie(xStack_210)
                 return
             end
             CVar10 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
@@ -760,9 +758,9 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
+                    quest:DeregisterTimer(xStack_21c)
                     quest:DeregisterTimer(xStack_220)
-                    quest:DeregisterTimer(xStack_214)
-                    resources:DestroyMovie(xStack_1c)
+                    resources:DestroyMovie(xStack_210)
                     return
                 end
                 iVar15 = quest:GetTimer(xStack_21c)
@@ -774,7 +772,7 @@ function Main(quest, me)
                     end
                     fVar20 = 6.0
                     pCVar7 = quest:GetHero()
-                    bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar7, xStack_38, fVar20)
+                    bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar7, r2, fVar20)
                     if not bVar4 then
                         bVar4 = false
                         goto FLOW_after_lab_00d5c757
@@ -785,15 +783,13 @@ function Main(quest, me)
                     bVar4 = false
                 end
                 ::FLOW_after_lab_00d5c757::
-                if false then
-                end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
+                        quest:DeregisterTimer(xStack_21c)
                         quest:DeregisterTimer(xStack_220)
-                        quest:DeregisterTimer(xStack_214)
-                        resources:DestroyMovie(xStack_1c)
+                        resources:DestroyMovie(xStack_210)
                         return
                     end
                     iVar16 = quest:AddNewConversation(me, false, false)
@@ -806,9 +802,9 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
+                            quest:DeregisterTimer(xStack_21c)
                             quest:DeregisterTimer(xStack_220)
-                            quest:DeregisterTimer(xStack_214)
-                            resources:DestroyMovie(xStack_1c)
+                            resources:DestroyMovie(xStack_210)
                             return
                         end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP")
@@ -818,9 +814,9 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then
+                                quest:DeregisterTimer(xStack_21c)
                                 quest:DeregisterTimer(xStack_220)
-                                quest:DeregisterTimer(xStack_214)
-                                resources:DestroyMovie(xStack_1c)
+                                resources:DestroyMovie(xStack_210)
                                 return
                             end
                             bVar4 = quest:MsgIsGameInfoClickedPast()
@@ -829,9 +825,9 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
+                            quest:DeregisterTimer(xStack_21c)
                             quest:DeregisterTimer(xStack_220)
-                            quest:DeregisterTimer(xStack_214)
-                            resources:DestroyMovie(xStack_1c)
+                            resources:DestroyMovie(xStack_210)
                             return
                         end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP_PC")
@@ -841,9 +837,9 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then
+                                quest:DeregisterTimer(xStack_21c)
                                 quest:DeregisterTimer(xStack_220)
-                                quest:DeregisterTimer(xStack_214)
-                                resources:DestroyMovie(xStack_1c)
+                                resources:DestroyMovie(xStack_210)
                                 return
                             end
                             bVar4 = quest:MsgIsGameInfoClickedPast()
@@ -852,9 +848,9 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
+                        quest:DeregisterTimer(xStack_21c)
                         quest:DeregisterTimer(xStack_220)
-                        quest:DeregisterTimer(xStack_214)
-                        resources:DestroyMovie(xStack_1c)
+                        resources:DestroyMovie(xStack_210)
                         return
                     end
                     quest:SetTimer(xStack_21c, 0xf)
@@ -865,9 +861,9 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
+                        quest:DeregisterTimer(xStack_21c)
                         quest:DeregisterTimer(xStack_220)
-                        quest:DeregisterTimer(xStack_214)
-                        resources:DestroyMovie(xStack_1c)
+                        resources:DestroyMovie(xStack_210)
                         return
                     end
                 end
@@ -889,15 +885,13 @@ function Main(quest, me)
                 else
                     bVar4 = false
                 end
-                if false then
-                end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
+                        quest:DeregisterTimer(xStack_21c)
                         quest:DeregisterTimer(xStack_220)
-                        quest:DeregisterTimer(xStack_214)
-                        resources:DestroyMovie(xStack_1c)
+                        resources:DestroyMovie(xStack_210)
                         return
                     end
                     c_stk_215 = 1
@@ -909,9 +903,9 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
+                            quest:DeregisterTimer(xStack_21c)
                             quest:DeregisterTimer(xStack_220)
-                            quest:DeregisterTimer(xStack_214)
-                            resources:DestroyMovie(xStack_1c)
+                            resources:DestroyMovie(xStack_210)
                             return
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
@@ -928,39 +922,39 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
+                quest:DeregisterTimer(xStack_21c)
                 quest:DeregisterTimer(xStack_220)
-                quest:DeregisterTimer(xStack_214)
-                resources:DestroyMovie(xStack_1c)
+                resources:DestroyMovie(xStack_210)
                 return
             end
             if c_stk_215 == 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
+                    quest:DeregisterTimer(xStack_21c)
                     quest:DeregisterTimer(xStack_220)
-                    quest:DeregisterTimer(xStack_214)
-                    resources:DestroyMovie(xStack_1c)
+                    resources:DestroyMovie(xStack_210)
                     return
                 end
                 quest:RemoveQuestInfoElement(CVar10)
                 quest:RemoveQuestInfoElement(xStack_1ec)
                 quest:RemoveQuestInfoElement(xStack_1e8)
             end
-            xStack_214_2 = quest:RegisterTimer()
+            xStack_214 = quest:RegisterTimer()
             -- TODO(native): piVar2 = DAT_0143e8f8;
             iVar16 = (math.modf(quest:ReadGlobalGameDataFloat(0xf04)))
-            quest:SetTimer(xStack_214_2, iVar16)
+            quest:SetTimer(xStack_214, iVar16)
             quest:SetMasterGameState("SkillScore", 0)
             c_stk_215 = 0
             iVar15 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
             xStack_1ec = iVar15
             xStack_1d0 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-            xStack_1e4 = quest:AddQuestInfoTimer(xStack_214_2, "HUD_CLOCK_ICON", 1.0)
+            xStack_1e4 = quest:AddQuestInfoTimer(xStack_214, "HUD_CLOCK_ICON", 1.0)
             quest:DisplayQuestInfo(true)
             quest:UpdateQuestInfoCounter(iVar15, quest:GetMasterGameState("HighestSkillScore"), -1)
             quest:SetMasterGameState("SkillTestOccuring", true)
             quest:SetTimer(xStack_21c, 0xf)
-            iVar15 = quest:GetTimer(xStack_214_2)
+            iVar15 = quest:GetTimer(xStack_214)
             while (0 < iVar15 and (c_stk_215 == 0)) do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -994,8 +988,6 @@ function Main(quest, me)
                     bVar4 = false
                 end
                 ::FLOW_after_lab_00d5cd47::
-                if false then
-                end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -1058,10 +1050,6 @@ function Main(quest, me)
                     bVar4 = true
                 end
                 ::FLOW_after_lab_00d5cf7a::
-                if false then
-                end
-                if false then
-                end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -1073,7 +1061,7 @@ function Main(quest, me)
                     pCVar7 = quest:GetHero()
                     quest:AddLineToConversation(iVar16, "TEXT_QST_028_MAZE_RING_OUT", me, pCVar7, false)
                 end
-                iVar15 = quest:GetTimer(xStack_214_2)
+                iVar15 = quest:GetTimer(xStack_214)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
@@ -1121,11 +1109,11 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then
                 -- LAB_00d5db84: (native jump target)
-                resources:DestroyMovie(xStack_2c)
+                resources:DestroyMovie(xStack_1a0)
                 __cleanup_LAB_00d5db90(); return
             end
             xStack_1ac = resources:NewActorMap()
-            resources:SetActor(xStack_1ac, "HERO", xStack_2c)
+            resources:SetActor(xStack_1ac, "HERO", xStack_1a0)
             resources:SetActor(xStack_1ac, "TEACHER", xStack_210)
             xStack_1c0 = resources:StartMovie("")
             quest:StartMovieSequence()
@@ -1154,37 +1142,37 @@ function Main(quest, me)
                     repeat
                         if native_arg_switch_2 == 0 then
                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_APLUS"
-                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_11c);
+                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_114);
                             break
                         else
                             if native_arg_switch_2 == 1 then
                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_A"
-                                -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_114);
+                                -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_10c);
                                 break
                             else
                                 if native_arg_switch_2 == 2 then
                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_B"
-                                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_10c);
+                                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_104);
                                     break
                                 else
                                     if native_arg_switch_2 == 3 then
                                         pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_C"
-                                        -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_104);
+                                        -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_fc);
                                         break
                                     else
                                         if native_arg_switch_2 == 4 then
                                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_D"
-                                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_fc);
+                                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_f4);
                                             break
                                         else
                                             if native_arg_switch_2 == 5 then
                                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_E"
-                                                -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_f4);
+                                                -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_ec);
                                                 break
                                             else
                                                 if native_arg_switch_2 == 6 then
                                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_F"
-                                                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_ec);
+                                                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_e4);
                                                     break
                                                 else
                                                     goto FLOW_native_label_1
@@ -1197,7 +1185,7 @@ function Main(quest, me)
                         end
                     until not (false)
                     ::FLOW_native_label_1::
-                    resources:RunMacroWithStrings("$GRADE", xStack_1ac, pCVar7, false, false)
+                    resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", xStack_1ac, pCVar7, false, false)
                     resources:DestroyStringMap(pCVar7)
                     goto LAB_00d5d526
                 end
@@ -1209,8 +1197,8 @@ function Main(quest, me)
                 -- LAB_00d5db53: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
                 -- LAB_00d5db6f: (native jump target)
-                resources:ReleaseResource(xStack_190)
-                resources:DestroyActorMap(xStack_164)
+                resources:ReleaseResource(xStack_1c0)
+                resources:DestroyActorMap(xStack_1ac)
                 -- TODO(native): goto LAB_00d5db84
             end
             resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", xStack_1ac, false, true)
@@ -1272,9 +1260,9 @@ function Main(quest, me)
             resources:DestroyMovie(xStack_1c0)
             resources:DestroyActorMap(xStack_1ac)
             resources:ReleaseResource(xStack_1a0)
+            quest:DeregisterTimer(xStack_214)
             quest:DeregisterTimer(xStack_21c)
-            quest:DeregisterTimer(xStack_220)
-            iVar16 = xStack_21c
+            iVar16 = xStack_220
             cVar5 = quest:GetMasterGameState("SkillRepeating")
         end
         alive = not quest:IsActiveThreadTerminating()

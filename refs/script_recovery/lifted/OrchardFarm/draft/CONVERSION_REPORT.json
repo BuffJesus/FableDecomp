@@ -1632,7 +1632,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 28,
+          "lines": 26,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1667,7 +1667,7 @@
             "QUESTLIST_At_CrateList",
             "QUESTTHING_Empty"
           ],
-          "lines": 23,
+          "lines": 21,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

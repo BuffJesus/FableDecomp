@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_24, xStack_24_2, xStack_24_3, xStack_30_2, xStack_30_3, xStack_34, xStack_38, xStack_c_3
+    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_34, xStack_38
     local alive = true
     iVar8 = 0
     quest:AddEntityBinding("TC_GuardSpawnPoint", "TraderConflictEvil/Entities/TC_GuardSpawnPoint")
@@ -58,10 +58,10 @@ function Main(quest)
     pCVar6 = "TC_IntroCSHeroPos"
     pCVar4 = quest:GetHero()
     r1 = quest:GetNearestWithScriptName(pCVar4, pCVar6)
-    if not (xStack_30 ~= nil and not xStack_30:IsNull()) then
+    if not (r1 ~= nil and not r1:IsNull()) then
         -- TODO(native): CCharString::CCharString((CCharString *)&xStack_74,(CCharString *)&DAT_0143e8ec);
     else
-        xStack_30:GetDataString()
+        r1:GetDataString()
     end
     if ctr_74 == nil then
         c_stk_7d = false
@@ -96,20 +96,16 @@ function Main(quest)
             quest:FadeScreenIn()
             quest:OverrideMusic(0x17, false, false)
             quest:CreateThread("WatchTimeLimit")  -- native thread body NScript::CQ_TraderConflictEvilScript::WatchTimeLimit: lift it as function WatchTimeLimit(quest)
-            if false then
-            end
-            iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-            iVar8 = iVar9 >> 0x1f
             ctr_74 = 0
             ctr_40 = 0
-            if iVar9 / 0xc + iVar8 ~= iVar8 then
+            if quest:GetStateListCount("AllCreatures") ~= 0 then
                 ctr_78 = 0
                 repeat
                     CVar5 = ctr_78
                     alive = not quest:IsActiveThreadTerminating()
                     bVar13 = not alive
                     if bVar13 then goto LAB_00df75ec end
-                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), ctr_78)
+                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), nil --[[operand lost by the decompiler]])
                     quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "FACTION_MONSTERS")
                     quest:MiniMapAddMarker(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "HUD_ORB_RED_SMALL")
                     quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), false)
@@ -135,7 +131,7 @@ function Main(quest)
                                 bVar13 = not alive
                                 if bVar13 then goto LAB_00df75ec end
                                 CVar15 = 0x0
-                                pCVar6 = "TC_Villager"
+                                pCVar6 = ("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER" + 4)
                                 pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
                                 pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
                                 r2 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
@@ -169,7 +165,7 @@ function Main(quest)
                                 bVar13 = not alive
                                 if bVar13 then goto LAB_00df75ec end
                                 CVar15 = 0x0
-                                pCVar6 = "TC_Villager"
+                                pCVar6 = ("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER" + 4)
                                 pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
                                 pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
                                 r3 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
@@ -204,10 +200,8 @@ function Main(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar13 = not alive
                     if not bVar13 then
-                        iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-                        iVar8 = iVar9 >> 0x1f
                         ctr_40 = 0
-                        if iVar9 / 0xc + iVar8 ~= iVar8 then
+                        if quest:GetStateListCount("AllCreatures") ~= 0 then
                             repeat
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar13 = not alive
@@ -221,12 +215,10 @@ function Main(quest)
                                     if bVar13 then goto LAB_00df75ec end
                                     iVar8 = 0
                                     if iVar8 ~= (quest:GetStateListCount("AllCreatures") * 0xc) then
-                                        -- TODO(native): piVar7 = *(CVar5 + 4 + quest:GetStateListRef("AllCreatures"))
-                                        piVar7 = nil --[[unresolved native value]]
-                                        -- TODO(native): bVar13 = (**(*piVar7 + 0x138))(piVar7,*(iVar8 + 4))
-                                        bVar13 = nil --[[unresolved native value]]
+                                        piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)
+                                        bVar13 = piVar7:IsEqualTo(quest:GetStateListAt("AllCreatures", (iVar8) / 0xc))
                                         if bVar13 then
-                                            -- TODO(native): std__vector__pop_back(quest:GetStateListRef("AllCreatures"),iVar8);
+                                            quest:StateListErase("AllCreatures", (iVar8) / 0xc)
                                             break
                                         end
                                         goto FLOW_after_lab_00df6b83
@@ -260,7 +252,7 @@ function Main(quest)
                             if bVar13 then
                                 r4 = nil
                                 r1 = nil
-                                if xStack_18 == pu_stk_14 then
+                                if #xStack_18 == 0 then
                                     -- LAB_00df74f2: (native jump target)
                                     bVar13 = xStack_18 == nil
                                 else
@@ -268,18 +260,16 @@ function Main(quest)
                                 end
                                 goto LAB_00df7957
                             end
-                            iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-                            iVar8 = iVar9 >> 0x1f
                             ctr_5c = 0
-                            if iVar9 / 0xc + iVar8 ~= iVar8 then
+                            if quest:GetStateListCount("AllCreatures") ~= 0 then
                                 ctr_78 = 0
                                 repeat
                                     CVar5 = ctr_78
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar13 = not alive
                                     if bVar13 then
-                                        xStack_24 = nil
-                                        xStack_30_2 = nil
+                                        r4 = nil
+                                        r1 = nil
                                         bVar13 = xStack_18 == nil
                                         goto LAB_00df7957
                                     end
@@ -287,13 +277,13 @@ function Main(quest)
                                     if not cVar1 then
                                         cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFromHero()
                                         if cVar1 then
-                                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(nil --[[missing]])
+                                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
                                             if not cVar1 then
                                                 bVar13 = true
                                                 goto FLOW_after_lab_00df6e53
                                             end
                                         end
-                                        bVar2 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), xStack_24, 10.0)
+                                        bVar2 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), r4, 10.0)
                                         bVar13 = false
                                         if bVar2 then
                                             bVar13 = true
@@ -304,22 +294,14 @@ function Main(quest)
                                         bVar13 = true
                                     end
                                     ::FLOW_after_lab_00df6e53::
-                                    if false then
-                                    end
-                                    if false then
-                                    end
-                                    if false then
-                                    end
                                     if bVar13 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar13 = not alive
                                         if bVar13 then
                                             goto LAB_00df75ec
                                         end
-                                        iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-                                        iVar8 = iVar9 >> 0x1f
                                         f_stk_70 = 0x0
-                                        if iVar9 / 0xc + iVar8 ~= iVar8 then
+                                        if quest:GetStateListCount("AllCreatures") ~= 0 then
                                             ctr_74 = 0
                                             repeat
                                                 CVar10 = ctr_74
@@ -377,7 +359,7 @@ function Main(quest)
                                         -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
                                         cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter")
                                         if cVar1 then
-                                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(nil --[[missing]])
+                                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
                                             if not cVar1 then
                                                 bVar13 = true
                                                 goto FLOW_after_lab_00df706d
@@ -389,28 +371,20 @@ function Main(quest)
                                         bVar13 = true
                                     end
                                     ::FLOW_after_lab_00df706d::
-                                    if false then
-                                    end
-                                    if false then
-                                    end
-                                    if false then
-                                    end
                                     if bVar13 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar13 = not alive
                                         if not bVar13 then
                                             r5 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "TC_BanditFighter")
-                                            iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-                                            iVar8 = iVar9 >> 0x1f
                                             ctr_74 = 0
-                                            if iVar9 / 0xc + iVar8 ~= iVar8 then
+                                            if quest:GetStateListCount("AllCreatures") ~= 0 then
                                                 f_stk_70 = 0x0
                                                 repeat
                                                     CVar10 = f_stk_70
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar13 = not alive
                                                     if bVar13 then
-                                                        xStack_24_2 = nil
+                                                        r5 = nil
                                                         r4 = nil
                                                         return
                                                     end
@@ -452,7 +426,7 @@ function Main(quest)
                                                     f_stk_70 = (CVar10 + 0xc)
                                                 until not (ctr_74 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
                                             end
-                                            xStack_30_3 = nil
+                                            r5 = nil
                                             goto LAB_00df7264
                                         end
                                         goto LAB_00df75ec
@@ -470,9 +444,9 @@ function Main(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar13 = not alive
                     if bVar13 then
-                        xStack_c_3 = nil
-                        xStack_24_3 = nil
-                        if xStack_18 == pu_stk_14 then
+                        r4 = nil
+                        r1 = nil
+                        if #xStack_18 == 0 then
                             -- LAB_00df77e2: (native jump target)
                             bVar13 = xStack_18 == nil
                         else
@@ -497,7 +471,7 @@ function Main(quest)
                             bVar13 = not alive
                             if bVar13 then
                                 r4 = nil
-                                xStack_24_3 = nil
+                                r1 = nil
                                 bVar13 = xStack_18 == nil
                                 goto LAB_00df7957
                             end
@@ -510,7 +484,7 @@ function Main(quest)
                     bVar13 = not alive
                     if bVar13 then
                         r4 = nil
-                        xStack_24_3 = nil
+                        r1 = nil
                     else
                         CVar15 = 0x0
                         bVar2 = true
@@ -531,7 +505,7 @@ function Main(quest)
                         pCVar6 = quest:GetActiveQuestName()
                         quest:DeactivateQuestLater(pCVar6, uVar17)
                         r4 = nil
-                        xStack_24_3 = nil
+                        r1 = nil
                     end
                     bVar13 = xStack_18 == nil
                     ::LAB_00df7957::
@@ -548,12 +522,10 @@ function Main(quest)
         iVar8 = iVar8 + 0xc
         if not (iVar8 ~= (quest:GetStateListCount("AllCreatures") * 0xc)) then break end
         -- LAB_00df6b83: (native jump target)
-        -- TODO(native): piVar7 = *(CVar5 + 4 + quest:GetStateListRef("AllCreatures"))
-        piVar7 = nil --[[unresolved native value]]
-        -- TODO(native): bVar13 = (**(*piVar7 + 0x138))(piVar7,*(iVar8 + 4))
-        bVar13 = nil --[[unresolved native value]]
+        piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)
+        bVar13 = piVar7:IsEqualTo(quest:GetStateListAt("AllCreatures", (iVar8) / 0xc))
         if bVar13 then
-            -- TODO(native): std__vector__pop_back(quest:GetStateListRef("AllCreatures"),iVar8);
+            quest:StateListErase("AllCreatures", (iVar8) / 0xc)
             break
         end
     end
@@ -562,8 +534,8 @@ function Main(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar13 = not alive
     if bVar13 then
-        xStack_30_2 = nil
-        if xStack_18 ~= pu_stk_14 then goto LAB_00df6d70 end
+        r1 = nil
+        if #xStack_18 ~= 0 then goto LAB_00df6d70 end
         -- LAB_00df77e2_c15: (native jump target)
         bVar13 = xStack_18 == nil
         -- TODO(native): goto LAB_00df7957_c15
@@ -590,7 +562,7 @@ function Main(quest)
                     if bVar13 then
                         r6 = nil
                         r1 = nil
-                        if xStack_18 == pu_stk_14 then
+                        if #xStack_18 == 0 then
                             -- LAB_00df74f2_c16: (native jump target)
                             bVar13 = xStack_18 == nil
                         else
@@ -598,48 +570,38 @@ function Main(quest)
                         end
                         goto LAB_00df7957_c16
                     end
-                    iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-                    iVar8 = iVar9 >> 0x1f
                     ctr_5c = 0
-                    if iVar9 / 0xc + iVar8 ~= iVar8 then
+                    if quest:GetStateListCount("AllCreatures") ~= 0 then
                         ctr_78 = 0
                         repeat
                             CVar5 = ctr_78
                             alive = not quest:IsActiveThreadTerminating()
                             bVar13 = not alive
                             if bVar13 then
-                                xStack_24 = nil
-                                xStack_30_2 = nil
+                                r6 = nil
+                                r1 = nil
                                 -- TODO(native): goto LAB_00df74f2_c16
                             end
                             cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHero()
                             if not cVar1 then
                                 cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFromHero()
                                 if cVar1 then
-                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(nil --[[missing]])
+                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
                                     if not cVar1 then return end  -- TODO(native): goto LAB_00df6e53_c16
                                 end
-                                bVar2 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), xStack_24, 10.0)
+                                bVar2 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), r6, 10.0)
                                 bVar13 = false
                                 if bVar2 then return end  -- TODO(native): goto LAB_00df6e53_c16
                             else
                                 -- LAB_00df6e53_c16: (native jump target)
                                 bVar13 = true
                             end
-                            if false then
-                            end
-                            if false then
-                            end
-                            if false then
-                            end
                             if bVar13 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar13 = not alive
                                 if bVar13 then return end  -- TODO(native): goto LAB_00df75e3_c16
-                                iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-                                iVar8 = iVar9 >> 0x1f
                                 f_stk_70 = 0x0
-                                if iVar9 / 0xc + iVar8 ~= iVar8 then
+                                if quest:GetStateListCount("AllCreatures") ~= 0 then
                                     ctr_74 = 0
                                     repeat
                                         CVar10 = ctr_74
@@ -661,7 +623,7 @@ function Main(quest)
                                                     xStack_38 = quest:GetStateListRef("AllCreatures")
                                                     pCVar4 = quest:GetHero()
                                                     CVar10 = ctr_74
-                                                    quest:GiveThingBestEnemyTarget(pCVar4, r5)
+                                                    quest:GiveThingBestEnemyTarget(pCVar4, nil --[[missing]])
                                                     CVar5 = ctr_78
                                                 end
                                             else
@@ -680,7 +642,7 @@ function Main(quest)
                                 -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
                                 cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter")
                                 if cVar1 then
-                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(nil --[[missing]])
+                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
                                     if not cVar1 then return end  -- TODO(native): goto LAB_00df706d_c16
                                 end
                                 bVar13 = false
@@ -688,28 +650,20 @@ function Main(quest)
                                 -- LAB_00df706d_c16: (native jump target)
                                 bVar13 = true
                             end
-                            if false then
-                            end
-                            if false then
-                            end
-                            if false then
-                            end
                             if bVar13 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar13 = not alive
                                 if not bVar13 then
                                     r7 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "TC_BanditFighter")
-                                    iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc)
-                                    iVar8 = iVar9 >> 0x1f
                                     ctr_74 = 0
-                                    if iVar9 / 0xc + iVar8 ~= iVar8 then
+                                    if quest:GetStateListCount("AllCreatures") ~= 0 then
                                         f_stk_70 = 0x0
                                         repeat
                                             CVar10 = f_stk_70
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar13 = not alive
                                             if bVar13 then
-                                                xStack_24_2 = nil
+                                                r7 = nil
                                                 r6 = nil
                                                 return
                                             end
@@ -740,7 +694,7 @@ function Main(quest)
                                             f_stk_70 = (CVar10 + 0xc)
                                         until not (ctr_74 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
                                     end
-                                    xStack_30_3 = nil
+                                    r7 = nil
                                     goto LAB_00df7264_c16
                                 end
                                 -- TODO(native): goto LAB_00df75e3_c16
@@ -758,9 +712,9 @@ function Main(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar13 = not alive
             if bVar13 then
-                xStack_c_3 = nil
-                xStack_24_3 = nil
-                if xStack_18 == pu_stk_14 then
+                r6 = nil
+                r1 = nil
+                if #xStack_18 == 0 then
                     -- LAB_00df77e2_c16: (native jump target)
                     bVar13 = xStack_18 == nil
                 else
@@ -785,7 +739,7 @@ function Main(quest)
                     bVar13 = not alive
                     if bVar13 then
                         r6 = nil
-                        xStack_24_3 = nil
+                        r1 = nil
                         -- TODO(native): goto LAB_00df77e2_c16
                     end
                     quest:SetThingAsUsable(xStack_18[(iVar9) / 0xc + 1], true)
@@ -797,7 +751,7 @@ function Main(quest)
             bVar13 = not alive
             if bVar13 then
                 r6 = nil
-                xStack_24_3 = nil
+                r1 = nil
             else
                 CVar15 = 0x0
                 bVar2 = true
@@ -818,7 +772,7 @@ function Main(quest)
                 pCVar6 = quest:GetActiveQuestName()
                 quest:DeactivateQuestLater(pCVar6, uVar17)
                 r6 = nil
-                xStack_24_3 = nil
+                r1 = nil
             end
             bVar13 = xStack_18 == nil
             ::LAB_00df7957_c16::

@@ -337,3 +337,37 @@ What the unit taught (all generic lowering, `native_evidence_lowering.py` unless
   eats `(CVar5)`; `RE_THING_CALL` receivers may carry nested calls (4 levels) — the first version (2 levels) regressed
   Orchard's `Teams_.._TeamCrateCarrier:IsDead()` to `me:IsDead()`, caught by regenerating Orchard.
 - Sidecar: `StateListSet(name, table)`, `GetStateListCopy(name)` added to `novi-unit-bindings.patch` (DLL not rebuilt).
+
+### Night 6, later — operands the decompiler dropped are read back from the machine code
+
+TraderConflict todo 292 -> 187, `nil --[[missing]]` 81 -> 29 (TraderToRescue 67 -> 25), Orchard 29 (regenerated: count idiom
+folded, `xStack_260` timer drift fixed to `xStack_264` in Guild, `MiniMapAddMarker` operands that were SWAPPED in Guild's
+draft are now in the right order), Guild 783 -> 778, Oakvale draft baseline regenerated (the sixteenth entity binding
+lifts on its own now; `readable_new_oakvale_main_bindings.py` accepts both draft forms; TeddyGirl witness re-pinned to the
+baseline accepted last night).
+- `convert_quest_unit.recover_dropped_operands`: a vtable call the decompiler printed with no operands (TraderToRescue's
+  Main: `(**(code **)(iVar11 + 0x5b4))();` everywhere — broken stack analysis) is rebuilt from a linear capstone decode of
+  the function: the last N pushes before the site (N from the binding manifest for interface calls / the decorated
+  CScriptThing vtable name for thing calls, +1 for a by-value string/vector result slot; nested calls skip their own
+  pushes), each an immediate (a .rdata address = its literal), a `lea esp` slot (entry-relative through the site depth,
+  +1 for the push itself), a call result (`push eax` after `call`, also through `mov esi, eax`; the void statement of
+  that call gets a `__pushN =` name, an assigned one keeps its name), or a register traced to its last write (`this`,
+  `this + 8` = me, a member load, an immediate). A recovered set must type-match the signature (a small exact matching;
+  a literal never feeds a CCharString operand) or the site is left alone; a partly printed call is rebuilt only when
+  every printed operand is found again. `_text_order_sites` learned the `CCharString__AppendCString` /
+  `operator_char_const_` label spellings so restructured functions pair exactly again.
+- FSE string helpers: `CCharString_OperatorPlus_API` (0x99F690) = concat, `GFIntToCharString_API` (0x99F830) =
+  `tostring`, `CCharString::operator const char*` (0x99E4C0) = the string; `AppendCString` literals Ghidra lost behind a
+  hidden-result push are recovered from the `push <.rdata>` at the site (exact callOrder pairing).
+- Lifter: `CCharString::operator=(&slot, pCVar4)` from a run-time string is a plain copy; `SetCombatNearbyBreakOffRange`'s
+  float behind a by-value thing is an explicit `ENGINE_LostOperand()` (`nil --[[operand lost by the decompiler]]`)
+  instead of a stale temporary.
+- Lowering: member counters through a pointer temporary (`P = (int *)(parent + 0x54); *P += 1`, `this`/parent-rooted
+  only), the signed member-list count idiom (both the two-line and the propagated/comma forms; dead sign definitions
+  removed by "next use is a redefinition"), `this[100]` decimal byte fields, `*p == (CCharString)0x0` typed null
+  compares, the timer register reused for the DeregisterTimer result (`iVar4 = DeregisterTimer(iVar4)` -> the stack
+  copy made at registration, only when that copy is never reassigned), `if (false) {dtors}` blocks dropped, empty
+  `for (p = V; ...)` loops, argument-less element destructor calls, `int`-typed zero-initialised vector begin slots.
+- Rejected: an early version of the pointer-temp rule swallowed Orchard's `Teams[i].MemberCount += 1` (indexed array
+  elements have their own rule); an early `(?:[^,()]|\(...\))` receiver regex (2 levels) turned Orchard's
+  `Teams_.._TeamCrateCarrier:IsDead()` into `me:IsDead()` — always regenerate Orchard/Guild before committing.

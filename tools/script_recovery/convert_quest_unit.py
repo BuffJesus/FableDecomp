@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.script_recovery.lift_native_lua import (  # noqa: E402
     Lifter, RData, annotate, known_callee_aliases, load_manifest, load_slots, load_thing_tables,
-    thing_signatures, lift_persist,
+    thing_signatures, lift_persist, parse_thing_signature,
 )
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters  # noqa: E402
@@ -534,9 +534,10 @@ class UnitConverter:
                 labels = {c['currentName'] for c in caller.get('calls', []) if c.get('currentName') and int(c.get('target', '0'), 16) == target}
                 for label in labels:
                     for spelling in (label, label.removeprefix('NScript::'), label.split('::')[-1]):
-                        pat = re.compile(r'^([ \t]*)CCharString::CCharString\(\(CCharString \*\)&stack0xffffff[0-9a-f]{2},("[^"]*"),-1\);[ \t]*\r?\n'
-                                         r'[ \t]*' + re.escape(spelling).replace('::', r'\s*::\s*') + r'\s*\(this\);', re.M)
-                        caller['decompile'], n = pat.subn(lambda m: f'{m.group(1)}{spelling}(this,{m.group(2)});', caller.get('decompile') or '')
+                        pat = re.compile(r'^([ \t]*CCharString::CCharString\(\(CCharString \*\)&stack0xffffff[0-9a-f]{2},("[^"]*"),-1\);[ \t]*\r?\n)'
+                                         r'([ \t]*)' + re.escape(spelling).replace('::', r'\s*::\s*') + r'\s*\(this\);', re.M)
+                        # the temporary's constructor stays: every printed call keeps its place in the callOrder pairing
+                        caller['decompile'], n = pat.subn(lambda m: f'{m.group(1)}{m.group(3)}{spelling}(this,{m.group(2)});', caller.get('decompile') or '')
                         if n:
                             break
 
@@ -582,6 +583,218 @@ class UnitConverter:
                 edits.append((a, e, f'{args[0]},{args[1]},"{literal}"'))
         for a, e, replacement in sorted(edits, reverse=True):
             decompile = decompile[:a] + replacement + decompile[e:]
+        return decompile
+
+    def recover_dropped_operands(self, decompile, fn):
+        """A vtable call the decompiler printed with no operands at all (`(**(code **)(iVar11 + 0x5b4))();` in a
+        function whose stack analysis broke) is rebuilt from the machine code: the last N pushes before the site,
+        N = the binding's parameter count (+1 for a by-value result slot), nested calls skipping their own pushes.
+        An immediate is the literal (a .rdata address is its string), a `lea`-loaded push is the stack slot
+        (entry-relative through the site's recorded depth), `push eax` right after a call is that call's result
+        (the printed void statement of the call gets a name), a register is traced to its last write (`this`,
+        `this + 8`, a member load, an immediate); anything else stays unknown."""
+        entries = _text_order_sites(decompile, fn)
+        if not entries:
+            return decompile
+        try:
+            from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+            from capstone.x86 import X86_OP_IMM, X86_OP_REG, X86_OP_MEM
+        except ImportError:
+            return decompile
+        cs = Cs(CS_ARCH_X86, CS_MODE_32)
+        cs.detail = True
+        by_value_results = ('std::string', 'CCharString', 'C3DVector')     # a CScriptThing result travels in eax (0x118 GetHero: no slot)
+
+        def expected_kinds(site):
+            """Operand kinds of a vtable call from its signature ('string' / 'thing' / 'scalar' per push, a
+            leading 'slot' for a by-value result): an interface call (ecx = this+4 / this+0x40) through the
+            binding manifest, a CScriptThing call (ecx = a thing) through the decorated vtable name; None
+            when the site is neither. The native push order is unknown (the binding may reorder), so the
+            kinds are a multiset."""
+            if site.get('kind') != 'vtable' or not site.get('slot'):
+                return None
+            slot = int(site['slot'], 16)
+            if site.get('ecxValue') in (4, 0x40):
+                name = self.slots.get(slot)
+                spec = self.manifest.get(name) if name else None
+                if not spec:
+                    return None
+                kinds = []
+                for prm in spec.get('parameters', []):
+                    t = str(prm.get('type', ''))
+                    kinds.append('string' if 'string' in t or 'CCharString' in t else 'thing' if 'CScriptThing' in t else 'scalar')
+                if any(t in str(spec.get('returnType', '')) for t in by_value_results):
+                    kinds.append('slot')
+                return kinds
+            entry = self.thing_slots.get(slot)
+            sig = parse_thing_signature(entry[1]) if entry else None
+            if sig is None:
+                return None
+            result, kinds, by_value = sig
+            return [('string' if k == 'string' else 'thing' if k == 'thing' else 'scalar') for k in kinds] + (['slot'] if by_value else [])
+
+        def expected_pushes(site):
+            kinds = expected_kinds(site)
+            return None if kinds is None else len(kinds)
+
+        def compatible(kinds, found):
+            """Every recovered push must fit a distinct expected operand: a string / by-value slot takes a stack
+            address or a string-returning call result, a thing a pointer (call result, register expression,
+            stack address), a scalar an immediate, register value or call result; a `.rdata` literal push
+            never feeds a CCharString operand. A small exact matching (the binding may reorder operands)."""
+            def fits(k, kind):
+                return (kind == 'unknown' or
+                        (k in ('string', 'slot') and kind in ('slot', 'result')) or
+                        (k == 'thing' and kind in ('result', 'slot', 'expr')) or
+                        (k == 'scalar' and kind in ('imm', 'expr', 'result')))
+
+            def match(i, pool):
+                if i == len(found):
+                    return True
+                kind = found[i][0]
+                for j, k in enumerate(pool):
+                    if fits(k, kind) and match(i + 1, pool[:j] + pool[j + 1:]):
+                        return True
+                return False
+            return len(found) == len(kinds) and match(0, list(kinds))
+
+        pushes_at = {}
+        for c in list(fn.get('calls', [])) + list(fn.get('indirectCalls', [])):
+            try:
+                addr = int(c['site'], 16)
+            except (KeyError, ValueError):
+                continue
+            pushes_at[addr] = expected_pushes(c) if expected_pushes(c) is not None else len(c.get('pushedStack') or [])
+        by_site = {int(site['site'], 16): (a, e, args) for a, e, args, site, key, vtable in entries}
+        entry = int(fn['address'], 16)
+        body = None
+
+        def window(site):
+            nonlocal body
+            if body is None:
+                size = int(fn['bodyEndExclusive'], 16) - entry if fn.get('bodyEndExclusive') else 0
+                raw = self.rdata.bytes_at(entry, max(size, site - entry + 16)) or b''
+                body = list(cs.disasm(raw, entry))
+            insns = [ins for ins in body if ins.address < site]
+            return insns if insns and insns[-1].address + insns[-1].size == site else None
+
+        CALLEE_SAVED = {'ebx', 'esi', 'edi', 'ebp'}
+
+        def register_value(insns, i, reg, depth):
+            if depth > 4:
+                return None
+            while i >= 0:
+                ins = insns[i]
+                if ins.mnemonic == 'call' and reg not in CALLEE_SAVED:
+                    return ('result', ins.address) if reg == 'eax' else None      # the call's result
+                if ins.mnemonic in ('mov', 'lea', 'xor') and ins.operands and ins.operands[0].type == X86_OP_REG and ins.reg_name(ins.operands[0].reg) == reg:
+                    src = ins.operands[1]
+                    if ins.mnemonic == 'xor' and src.type == X86_OP_REG and ins.reg_name(src.reg) == reg:
+                        return '0'
+                    if ins.mnemonic == 'mov' and src.type == X86_OP_IMM:
+                        return hex(src.imm) if src.imm > 9 else str(src.imm)
+                    if ins.mnemonic == 'mov' and src.type == X86_OP_REG:
+                        return register_value(insns, i - 1, ins.reg_name(src.reg), depth + 1)     # (a copied call result stays a tuple)
+                    if ins.mnemonic == 'lea' and src.type == X86_OP_MEM and src.mem.base and not src.mem.index and ins.reg_name(src.mem.base) == 'esp':
+                        return ('lea_esp', src.mem.disp, i)                # a stack slot address (resolved at the push)
+                    if src.type == X86_OP_MEM and src.mem.base and not src.mem.index and ins.reg_name(src.mem.base) != 'esp':
+                        base = register_value(insns, i - 1, ins.reg_name(src.mem.base), depth + 1)
+                        if base is None or isinstance(base, tuple):
+                            return None
+                        disp = src.mem.disp
+                        addr = f'{base} + {disp if disp < 10 else hex(disp)}' if disp else base
+                        return f'({addr})' if ins.mnemonic == 'lea' else f'*(int *)({addr})'
+                    return None
+                if ins.mnemonic == 'pop' and ins.operands and ins.reg_name(ins.operands[0].reg) == reg:
+                    return None
+                i -= 1
+            return 'this' if reg == 'ecx' else None       # __thiscall: ecx at entry is the receiver
+
+        def collect(insns, i, need, k=0):
+            """Walk back from insns[i] gathering `need` pushes (last push first); `k` counts the pushes of the
+            outer call already passed (the stack displacement for `lea esp` slots)."""
+            out = []
+            while need > 0 and i >= 0:
+                ins = insns[i]
+                if ins.mnemonic == 'call':
+                    n = pushes_at.get(ins.address)
+                    if n is None:
+                        return None
+                    skipped = collect(insns, i - 1, n, 0)
+                    if skipped is None:
+                        return None
+                    i = skipped[1]
+                    continue
+                if ins.mnemonic == 'push':
+                    op = ins.operands[0]
+                    prev = insns[i - 1] if i > 0 else None
+                    if op.type == X86_OP_IMM:
+                        out.append(('imm', op.imm))
+                    elif (op.type == X86_OP_REG and prev is not None and prev.mnemonic == 'lea' and ins.reg_name(prev.operands[0].reg) == ins.op_str
+                          and prev.operands[1].type == X86_OP_MEM and ins.reg_name(prev.operands[1].mem.base) == 'esp' and not prev.operands[1].mem.index):
+                        out.append(('slot', (prev.operands[1].mem.disp, k + len(out) + 1)))
+                    elif op.type == X86_OP_REG:
+                        traced = register_value(insns, i - 1, ins.op_str, 0)
+                        if isinstance(traced, tuple) and traced[0] == 'lea_esp':
+                            # pushes between the lea and this push moved esp down by 4 each
+                            between = sum(1 for x in insns[traced[2] + 1:i] if x.mnemonic == 'push')
+                            out.append(('slot', (traced[1], k + len(out) + between + 1)))   # +1: the site depth includes this push
+                        else:
+                            out.append(traced if isinstance(traced, tuple) else ('expr', traced))
+                    else:
+                        out.append(('unknown', None))
+                    need -= 1
+                i -= 1
+            return (out, i) if need == 0 else None
+
+        edits = []
+        named = {}
+        counter = [0]
+        for a, e, args, site, key, vtable in entries:
+            need = expected_pushes(site)
+            printed = [x for x in args if x.strip()]
+            if not need or len(printed) >= need:
+                continue
+            insns = window(int(site['site'], 16))
+            if not insns:
+                continue
+            got = collect(insns, len(insns) - 1, need)
+            if got is None or not compatible(expected_kinds(site), got[0]):
+                continue
+            rendered = []
+            for kind, value in got[0]:
+                if kind == 'imm':
+                    literal = self.rdata.string_at(value) if value >= 0x400000 else None
+                    rendered.append(f'"{literal}"' if literal is not None else (hex(value) if value > 9 else str(value)))
+                elif kind == 'slot' and site.get('depth') is not None:
+                    disp, after = value
+                    off = -int(site['depth']) + 4 * after + disp      # entry-relative address of the slot
+                    rendered.append(f'&xStack_{-off:x}' if off < 0 else f'&stack0x{off:08x}')
+                elif kind == 'result' and value in by_site:
+                    name = named.get(value)
+                    if name is None:
+                        ra, _re, _rargs = by_site[value]
+                        # the statement holding that call (Ghidra wraps long labels over several lines)
+                        head = max(decompile.rfind(';', 0, ra), decompile.rfind('{', 0, ra), decompile.rfind('}', 0, ra)) + 1
+                        line = decompile[head:ra]
+                        assigned = re.match(r'^\s*(\w+) = (?:\([\w *]+\))?\s*(?:\(\*\*\(code \*\*\)|(?:[\w:]+\s*)+\($)', line)
+                        if assigned:
+                            name = named[value] = assigned.group(1)
+                        elif re.match(r'^\s*\(\*\*\(code \*\*\)|^\s*(?:[\w:]+\s*)+\($', line):
+                            counter[0] += 1
+                            name = named[value] = f'__push{counter[0]}'
+                            indent = len(line) - len(line.lstrip())
+                            edits.append((head + indent, head + indent, f'{name} = '))
+                    rendered.append(name or '__unknown_push')
+                elif kind == 'expr' and value is not None:
+                    rendered.append(value)
+                else:
+                    rendered.append('__unknown_push')
+            if printed and not all(any(x.strip() == r for r in rendered) for x in printed):
+                continue          # a partly printed call is only rebuilt when every printed operand was found again
+            edits.append((a, e, ','.join(rendered)))
+        for start, end, replacement in sorted(edits, key=lambda x: (x[0], x[1]), reverse=True):
+            decompile = decompile[:start] + replacement + decompile[end:]
         return decompile
 
     def native(self, address):
@@ -709,7 +922,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(unwrap_statements(fn['decompile']), fn), fn), fn), fn.get('calls', []))
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(unwrap_statements(fn['decompile']), fn), fn), fn), fn), fn.get('calls', []))
                 spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output, and mangled names
                 # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`

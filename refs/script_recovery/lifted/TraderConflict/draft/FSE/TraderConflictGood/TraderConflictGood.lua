@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar1, CVar11, bVar10, iVar9, native_arg_sequence_1, pCVar4, pCVar5, pQuestName, uVar8
+    local CVar1, CVar11, bVar10, iVar9, pCVar4, pCVar5, pQuestName, uVar8
     local alive = true
     uVar8 = 0
     quest:AddEntityBinding("TraderToRescue", "TraderConflictGood/Entities/TraderToRescue")
@@ -38,13 +38,10 @@ function Main(quest)
         quest:KickOffQuestStartScreen(pCVar5, bVar10, (CVar11 ~= 0))
         quest:FadeScreenIn()
         quest:CreateThread("WatchTimeLimit")  -- native thread body CQ_TraderConflictEvilScript::WatchTimeLimit: lift it as function WatchTimeLimit(quest)
-        if false then
-        end
         UpdateLiveEnemies(quest)
         pQuestName = quest:GetActiveQuestName()
         quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_TRADER_CONFLICT_GOOD_OBJECTIVE_01", "BanditCampCentre", "BanditCampMain")
-        iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc) >> 0x1f
-        if ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc + iVar9 ~= iVar9 then
+        if quest:GetStateListCount("AllCreatures") ~= 0 then
             iVar9 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
@@ -52,7 +49,7 @@ function Main(quest)
                 if bVar10 then
                     return
                 end
-                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), iVar9)
+                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), nil --[[operand lost by the decompiler]])
                 quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), false)
                 quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), "FACTION_BANDITS")
                 uVar8 = uVar8 + 1
@@ -82,21 +79,7 @@ function Main(quest)
                 if bVar10 then
                     return
                 end
-                native_arg_sequence_1 = false
-                if not quest:GetStateBool("FirstRegionDead") then
-                    native_arg_sequence_1 = true
-                else
-                    native_arg_sequence_1 = false
-                end
-                if native_arg_sequence_1 then
-                    iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc) >> 0x1f
-                    if ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc + iVar9 == iVar9 then
-                        native_arg_sequence_1 = true
-                    else
-                        native_arg_sequence_1 = false
-                    end
-                end
-                if native_arg_sequence_1 then
+                if (not quest:GetStateBool("FirstRegionDead")) and (quest:GetStateListCount("AllCreatures") == 0) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar10 = not alive
                     if bVar10 then
@@ -109,7 +92,7 @@ function Main(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar10 = not alive
             if not bVar10 then
-                pCVar4 = quest:GetThingWithScriptName("BanditCampMain")
+                pCVar4 = quest:GetThingWithScriptName("Gate2Inner")
                 quest:OpenDoor(pCVar4)
                 CVar1 = quest:GetStateBool("OutroDone")
                 while not CVar1 do
@@ -244,15 +227,14 @@ function WatchForRegionTransitions(quest)
             bVar3 = not alive
             if bVar3 then goto LAB_00dfca72 end
             UpdateLiveEnemies(quest)
-            iVar5 = (quest:GetStateListCount("AllCreatures") * 0xc) >> 0x1f
             uVar4 = 0
-            if ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc + iVar5 ~= iVar5 then
+            if quest:GetStateListCount("AllCreatures") ~= 0 then
                 iVar5 = 0
                 repeat
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00dfca72 end
-                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), iVar5)
+                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), nil --[[operand lost by the decompiler]])
                     quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), false)
                     quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), "FACTION_BANDITS")
                     uVar4 = uVar4 + 1
@@ -302,9 +284,8 @@ function WatchForHittingEnemies(quest)
         if bVar4 then
             return
         end
-        iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc) >> 0x1f
         u_stk_8 = 0
-        if ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc + iVar9 ~= iVar9 then
+        if quest:GetStateListCount("AllCreatures") ~= 0 then
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -344,9 +325,8 @@ function WatchForHittingEnemies(quest)
                     if bVar4 then
                         return
                     end
-                    iVar9 = (quest:GetStateListCount("AllCreatures") * 0xc) >> 0x1f
                     uVar8 = 0
-                    if ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc + iVar9 ~= iVar9 then
+                    if quest:GetStateListCount("AllCreatures") ~= 0 then
                         iVar9 = 0
                         repeat
                             alive = not quest:IsActiveThreadTerminating()
@@ -634,7 +614,7 @@ function WatchForKilledPeople(quest)
 end
 
 function UpdateLiveEnemies(quest)
-    local bVar1, cVar8, iVar3, i_stk_8, lst_AllCreatures, p0, pTarget, piVar2, piVar4, r1, uVar5
+    local bVar1, cVar8, iStack_c, iVar3, lst_AllCreatures, p0, pTarget, piVar2, piVar4, uVar5
     local alive = true
     quest:StateListClear("AllCreatures")
     lst_AllCreatures = quest:GetAllCreaturesExcludingHero()
@@ -729,11 +709,9 @@ function UpdateLiveEnemies(quest)
     iVar3 = bVar1
     if not bVar1 then
         uVar5 = 0
-        i_stk_8 = 0
         pTarget = quest:GetHero()
-        r1 = quest:GetFollowingEntityList(pTarget)
-        iVar3 = i_stk_8 - 0 >> 0x1f
-        if (i_stk_8 - 0) / 0xc + iVar3 ~= iVar3 then
+        iStack_c = quest:GetFollowingEntityList(pTarget)
+        if #iStack_c ~= 0 then
             iVar3 = 4
             repeat
                 alive = not quest:IsActiveThreadTerminating()
@@ -742,7 +720,7 @@ function UpdateLiveEnemies(quest)
                 p0 = 0
                 if p0 ~= (quest:GetStateListCount("AllCreatures") * 0xc) then
                     repeat
-                        -- TODO(native): cVar8 = (**(**(iVar3 + 0) + 0x138))(quest:GetStateListAt("AllCreatures", (p0) / 0xc))
+                        -- TODO(native): cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(quest:GetStateListAt("AllCreatures", (p0) / 0xc))
                         cVar8 = nil --[[unresolved native value]]
                         if cVar8 ~= 0 then
                             quest:StateListErase("AllCreatures", (p0) / 0xc)
@@ -753,7 +731,7 @@ function UpdateLiveEnemies(quest)
                 end
                 uVar5 = uVar5 + 1
                 iVar3 = iVar3 + 0xc
-            until not (uVar5 < ((i_stk_8 - 0) / 0xc))
+            until not (uVar5 < (#iStack_c))
         end
         alive = not quest:IsActiveThreadTerminating()
         ::LAB_00dfc618::
@@ -762,12 +740,12 @@ function UpdateLiveEnemies(quest)
 end
 
 function AttackPeople(quest)
-    local bVar2, cVar3, dist, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, xStack_24, xStack_38, xStack_3c, x_stk_c
+    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c, x_stk_c
     local alive = true
-    local function __cleanup_LAB_00dfdc54()
+    local function __cleanup_LAB_00dfdc8a()
         quest:DeregisterTimer(xStack_3c)
     end
-    local function __cleanup_LAB_00dfdc8a()
+    local function __cleanup_LAB_00dfdd34()
         quest:DeregisterTimer(xStack_3c)
     end
     UpdateLiveEnemies(quest)
@@ -781,7 +759,7 @@ function AttackPeople(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                iVar4 = quest:DeregisterTimer(iVar4)
+                quest:DeregisterTimer(xStack_3c)
                 goto LAB_00dfde13
             end
             if #xStack_24 ~= 0 then
@@ -790,7 +768,7 @@ function AttackPeople(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then
-                        iVar4 = quest:DeregisterTimer(xStack_3c)
+                        quest:DeregisterTimer(xStack_3c)
                         goto LAB_00dfde13
                     end
                     r1 = quest:GetNearestWithScriptName(xStack_24[(iVar7) / 0xc + 1], "TraderToRescue")
@@ -798,7 +776,7 @@ function AttackPeople(quest)
                     if not bVar2 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
-                        if bVar2 then __cleanup_LAB_00dfdc54(); return end
+                        if bVar2 then __cleanup_LAB_00dfdd34(); return end
                         x_stk_c = nil
                         if r1 ~= nil then
                             -- TODO(native): *xStack_18 = *xStack_18 + -1;
@@ -831,7 +809,8 @@ function AttackPeople(quest)
                         bVar2 = not alive
                         pCVar1 = 0x0
                         if bVar2 then
-                            __cleanup_LAB_00dfdc54()
+                            -- LAB_00dfdc54: (native jump target)
+                            quest:DeregisterTimer(xStack_3c)
                             return
                         end
                         bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[0x0 + 1], r1, 15.0)
@@ -867,10 +846,7 @@ function AttackPeople(quest)
                         if native_arg_sequence_2 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
-                            if bVar2 then
-                                quest:DeregisterTimer(xStack_3c)
-                                return
-                            end
+                            if bVar2 then __cleanup_LAB_00dfdd34(); return end
                             quest:GiveThingBestEnemyTarget(xStack_24[pCVar1 + 1], r1)
                             iVar4 = quest:GetTimer(xStack_3c)
                             if iVar4 == 0 then
@@ -889,10 +865,7 @@ function AttackPeople(quest)
                         else
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
-                            if bVar2 then
-                                quest:DeregisterTimer(xStack_3c)
-                                return
-                            end
+                            if bVar2 then __cleanup_LAB_00dfdd34(); return end
                             pCVar5 = xStack_24[pCVar1 + 1]
                             pTarget = quest:GetHero()
                             quest:GiveThingBestEnemyTarget(pCVar5, pTarget)
@@ -916,12 +889,11 @@ function AttackPeople(quest)
                         end
                         ::FLOW_after_lab_00dfda32::
                         quest:MiniMapAddMarker(xStack_24[pCVar1 + 1], "HUD_ORB_RED_SMALL")
-                        puVar6 = xStack_24
-                        if xStack_24 ~= pu_stk_20 then
-                            -- TODO(native): bVar2 = (**(*xStack_24[pCVar1 * 3 + 1] + 0x138))(xStack_24[pCVar1 * 3 + 1],puVar6[1])
-                            bVar2 = nil --[[unresolved native value]]
+                        puVar6 = 0
+                        if #xStack_24 ~= 0 then
+                            bVar2 = xStack_24[pCVar1 + 1]:IsEqualTo(xStack_24[puVar6 + 1])
                             if bVar2 then
-                                -- TODO(native): std__vector__pop_back(&xStack_24,(int)puVar6);
+                                table.remove(xStack_24, puVar6 + 1)
                                 break
                             end
                             goto FLOW_after_lab_00dfda90
@@ -935,8 +907,9 @@ function AttackPeople(quest)
                     bVar2 = quest:IsThingAwareOfOtherThingInAnyWay(xStack_24[(iVar7) / 0xc + 1], r1)
                     if bVar2 then
                         p0 = "TC_BanditGuard"
-                        -- TODO(native): this_00 = (void *)(**(code **)(*(int *)(iVar7 + (int)xStack_24) + 4))();
-                        iVar4 = CCharString__NotEqual(this_00,p0)
+                        elem_1 = xStack_24[(iVar7) / 0xc + 1]
+                        this_00 = elem_1:GetName()
+                        iVar4 = ((this_00 ~= p0) and 1 or 0)
                         if iVar4 ~= 0 then return end  -- TODO(native): goto LAB_00dfd841
                     end
                     -- TODO(native): xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);
@@ -950,29 +923,28 @@ function AttackPeople(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then
-        iVar4 = quest:DeregisterTimer(dist)
+        quest:DeregisterTimer(xStack_3c)
     else
         if quest:GetStateBool("EnteredNewRegion") then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                iVar4 = quest:DeregisterTimer(nil --[[missing]])
+                quest:DeregisterTimer(xStack_3c)
                 goto LAB_00dfde13
             end
             quest:SetStateBool("EnteredNewRegion", false)
         end
-        iVar4 = quest:DeregisterTimer(nil --[[missing]])
+        quest:DeregisterTimer(xStack_3c)
     end
     ::LAB_00dfde13::
     do return end
     while true do
-        puVar6 = puVar6 + 3
-        if not (puVar6 ~= pu_stk_20) then break end
+        puVar6 = puVar6 + 1
+        if not (puVar6 ~= #xStack_24) then break end
         -- LAB_00dfda90: (native jump target)
-        -- TODO(native): bVar2 = (**(*xStack_24[pCVar1 * 3 + 1] + 0x138))(xStack_24[pCVar1 * 3 + 1],puVar6[1])
-        bVar2 = nil --[[unresolved native value]]
+        bVar2 = xStack_24[pCVar1 + 1]:IsEqualTo(xStack_24[puVar6 + 1])
         if bVar2 then
-            -- TODO(native): std__vector__pop_back(&xStack_24,(int)puVar6);
+            table.remove(xStack_24, puVar6 + 1)
             break
         end
     end
@@ -983,7 +955,7 @@ function AttackPeople(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then
-        iVar4 = quest:DeregisterTimer(nil --[[missing]])
+        quest:DeregisterTimer(xStack_3c)
     else
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -993,8 +965,7 @@ function AttackPeople(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                -- LAB_00dfdd34: (native jump target)
-                quest:DeregisterTimer(nil --[[missing]])
+                __cleanup_LAB_00dfdd34()
                 return
             end
             alive = quest:NewScriptFrame()
@@ -1005,7 +976,7 @@ function AttackPeople(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then
-                    quest:DeregisterTimer(nil --[[missing]])
+                    quest:DeregisterTimer(xStack_3c)
                     return
                 end
                 alive = quest:NewScriptFrame()
@@ -1016,10 +987,10 @@ function AttackPeople(quest)
                     -- TODO(native): goto LAB_00dfd643
                 end
             end
-            quest:DeregisterTimer(nil --[[missing]])
+            quest:DeregisterTimer(xStack_3c)
             return
         end
-        iVar4 = quest:DeregisterTimer(nil --[[missing]])
+        quest:DeregisterTimer(xStack_3c)
     end
     goto LAB_00dfde13
 end

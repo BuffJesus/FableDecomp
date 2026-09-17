@@ -157,7 +157,7 @@ THING_PATTERNS = [
 ]
 ME_RECEIVER = "(CScriptThing *)(this + 8)"
 # lowering pseudo-calls / interface calls whose value is a CScriptThing (a stack slot filled by one is a thing receiver)
-RE_PSEUDO_THING = re.compile(r"^[ 	]*(?P<var>[A-Za-z_]\w*) = (?:\((?:int|CScriptThing) \*\))?\s*(?:QUESTTHING_Empty|ENTITYTHING_Empty|QUESTTHING_Get|ENTITYTHING_Get|LOCALLIST_At|RESOURCE_ScriptThing|GSI->(?:GetHero|GetThingWithScriptName|GetNearestWithScriptName|CreateCreature|GetRandomThingWithScriptName|GetNearestWithDefName))\(", re.M)
+RE_PSEUDO_THING = re.compile(r"^[ 	]*(?P<var>[A-Za-z_]\w*) = (?:\((?:int|CScriptThing) \*\))?\s*(?:QUESTTHING_Empty|ENTITYTHING_Empty|QUESTTHING_Get|ENTITYTHING_Get|LOCALLIST_At|(?:QUEST|ENTITY)LIST_At_\w+|RESOURCE_ScriptThing|GSI->(?:GetHero|GetThingWithScriptName|GetNearestWithScriptName|CreateCreature|GetRandomThingWithScriptName|GetNearestWithDefName))\(", re.M)
 RE_THING_RETURN = re.compile(r"@CScriptThing@@[UM][AB]E\?AV1@")
 
 

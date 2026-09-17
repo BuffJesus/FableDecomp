@@ -19,7 +19,7 @@ function RegisterMain(quest)
 end
 
 function Main(quest)
-    local bVar5, pCVar2
+    local bVar5
     local alive = true
     quest:AddEntityBinding("NOVI_LiveFather", "NewOakValeIntro/Entities/NOVI_LiveFather")
     local bVar4 = not bVar5 and bVar5
@@ -37,15 +37,7 @@ function Main(quest)
     quest:AddEntityBinding("NOVI_BarrelThug", "NewOakValeIntro/Entities/NOVI_BarrelThug")
     quest:AddEntityBinding("NOVI_Barrel", "NewOakValeIntro/Entities/NOVI_Barrel")
     quest:AddEntityBinding("NOVI_CreatedBeetle", "NewOakValeIntro/Entities/NOVI_CreatedBeetle")
-    if pCVar2 == nil then
-        pCVar2 = 0x0
-    else
-        -- TODO(native): CCharString::CCharString((CCharString *)(pCVar2 + 4),local_10);
-        -- TODO(native): *(CPersonalScript_GlobalThingsScript **)(pCVar2 + 8) = this;
-        -- TODO(native): pCVar2[0x14] = (CEntityScriptBindingBase)0x1;
-        -- TODO(native): *(undefined4 *)(pCVar2 + 0x18) = 0;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,pCVar2);
+    quest:AddEntityBinding("OVI_DeadFather", "NewOakValeIntro/Entities/OVI_DeadFather")
     quest:FinalizeEntityBindings()
     if quest:GetStateBool("AttackOver") then
         alive = not quest:IsActiveThreadTerminating()
@@ -53,7 +45,7 @@ function Main(quest)
         if bVar5 then
             return
         end
-        quest:DeactivateQuest("Q__OakValeIntro_PostAttack", pCVar2)
+        quest:DeactivateQuest("Q__OakValeIntro_PostAttack", nil --[[missing]])
     end
     -- TODO(native): p_Var6 = (_func_void *)&local_4;
     local ppVar3 = quest:GetActiveQuestName()

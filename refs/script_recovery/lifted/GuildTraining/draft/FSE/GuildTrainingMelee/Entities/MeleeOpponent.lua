@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar3, bVar4, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar8, iVar9, p0, p1, pCVar6, pThing, pThing_00, piVar1, r1, r2, r3, r4, r5, uVar7, xStack_bc, xStack_d8, xStack_dc
+    local CVar3, bVar4, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar8, iVar9, p0, p1, pCVar6, pThing, pThing_00, r1, r2, r3, r4, r5, uVar7, xStack_bc, xStack_d8, xStack_dc
     local alive = true
     xStack_d8 = resources:NewResource()
     bVar4 = false
@@ -389,8 +389,7 @@ function Main(quest, me)
                                     resources:ReleaseResource(xStack_d8)
                                     return
                                 end
-                                piVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x48)
-                                -- TODO(native): *piVar1 = *piVar1 + 1;
+                                quest:SetStateInt("GenericTutorialCounter", quest:GetStateInt("GenericTutorialCounter") + 1)
                                 iVar8 = quest:GetTimer(xStack_dc)
                                 if iVar8 < 9 then
                                     alive = not quest:IsActiveThreadTerminating()

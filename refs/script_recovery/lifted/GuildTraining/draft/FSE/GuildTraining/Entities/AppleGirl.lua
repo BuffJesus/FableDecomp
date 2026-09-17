@@ -126,7 +126,7 @@ function Main(quest, me)
                 if bVar2 then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_60)
-                    quest:DeregisterTimer(iVar4)
+                    quest:DeregisterTimer(xStack_88)
                     xStack_70_2 = nil
                     return
                 end
@@ -202,8 +202,6 @@ function Main(quest, me)
                 bVar2 = false
             end
             ::FLOW_after_lab_00d3d987::
-            if false then
-            end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -256,8 +254,6 @@ function Main(quest, me)
                     bVar2 = true
                 else
                     bVar2 = false
-                end
-                if false then
                 end
                 if not bVar2 then break end
                 alive = quest:NewScriptFrame(me)
@@ -396,8 +392,6 @@ function Main(quest, me)
                     bVar2 = false
                 end
                 ::FLOW_after_lab_00d3e0a0::
-                if false then
-                end
                 if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive

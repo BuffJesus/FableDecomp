@@ -1,7 +1,7 @@
 -- Generated from the same native helper bodies as the quest draft.
 local UpdateLiveEnemies, helper_DFDED0
 function UpdateLiveEnemies(quest, me)
-    local bVar1, cVar8, iVar3, i_stk_8, lst_AllCreatures, p0, pTarget, piVar2, piVar4, r1, uVar5
+    local bVar1, cVar8, iStack_c, iVar3, lst_AllCreatures, p0, pTarget, piVar2, piVar4, uVar5
     local alive = true
     quest:StateListClear("AllCreatures")
     lst_AllCreatures = quest:GetAllCreaturesExcludingHero()
@@ -96,11 +96,9 @@ function UpdateLiveEnemies(quest, me)
     iVar3 = bVar1
     if not bVar1 then
         uVar5 = 0
-        i_stk_8 = 0
         pTarget = quest:GetHero()
-        r1 = quest:GetFollowingEntityList(pTarget)
-        iVar3 = i_stk_8 - 0 >> 0x1f
-        if (i_stk_8 - 0) / 0xc + iVar3 ~= iVar3 then
+        iStack_c = quest:GetFollowingEntityList(pTarget)
+        if #iStack_c ~= 0 then
             iVar3 = 4
             repeat
                 alive = not quest:IsActiveThreadTerminating()
@@ -109,7 +107,7 @@ function UpdateLiveEnemies(quest, me)
                 p0 = 0
                 if p0 ~= (quest:GetStateListCount("AllCreatures") * 0xc) then
                     repeat
-                        -- TODO(native): cVar8 = (**(**(iVar3 + 0) + 0x138))(quest:GetStateListAt("AllCreatures", (p0) / 0xc))
+                        -- TODO(native): cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(quest:GetStateListAt("AllCreatures", (p0) / 0xc))
                         cVar8 = nil --[[unresolved native value]]
                         if cVar8 ~= 0 then
                             quest:StateListErase("AllCreatures", (p0) / 0xc)
@@ -120,7 +118,7 @@ function UpdateLiveEnemies(quest, me)
                 end
                 uVar5 = uVar5 + 1
                 iVar3 = iVar3 + 0xc
-            until not (uVar5 < ((i_stk_8 - 0) / 0xc))
+            until not (uVar5 < (#iStack_c))
         end
         alive = not quest:IsActiveThreadTerminating()
         ::LAB_00dfc618::

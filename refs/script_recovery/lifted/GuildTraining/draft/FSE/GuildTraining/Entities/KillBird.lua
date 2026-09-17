@@ -50,12 +50,10 @@ function OnPersist(quest, context)
 end
 
 function OnPredicateFail(quest, me)
-    local piVar1
     local cVar2 = me:MsgIsKilledBy("")
     if cVar2 then
         quest:SetStateBool("DisplayBirdKilledMessage", true)
-        piVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x54)
-        -- TODO(native): *piVar1 = *piVar1 + 1;
+        quest:SetStateInt("CurrentBirdsKilled", quest:GetStateInt("CurrentBirdsKilled") + 1)
     end
 end
 

@@ -3,8 +3,8 @@ local UpdateLiveEnemies, helper_DFDED0
 function UpdateLiveEnemies(quest, me)
     local isActiveThreadTerminating, isActiveThreadTerminating2, isActiveThreadTerminating3
     local isActiveThreadTerminating4, isActiveThreadTerminating5, isActiveThreadTerminating6
-    local isActiveThreadTerminating7, isActiveThreadTerminating8, predicateResult, scratchValue7, p0
-    local scratchValue8, scratchValue9
+    local isActiveThreadTerminating7, isActiveThreadTerminating8, predicateResult
+    local getFollowingEntityList, scratchValue7, p0, scratchValue8, scratchValue9
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
     scratchValue8 = 0
@@ -72,14 +72,14 @@ function UpdateLiveEnemies(quest, me)
     scratchValue7 = predicateResult
     if not predicateResult then
         scratchValue9 = 0
-        scratchValue7 = 0 - 0 >> 31
-        if (0 - 0) / 12 + scratchValue7 ~= scratchValue7 then
+        getFollowingEntityList = quest:GetFollowingEntityList(quest:GetHero())
+        if #getFollowingEntityList ~= 0 then
             scratchValue7 = 4
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00dfc618 end
                 p0 = 0
                 while p0 ~= quest:GetStateListCount("AllCreatures") do
-                    -- TODO(native): cVar8 = (**(**(iVar3 + 0) + 0x138))(quest:GetStateListAt("AllCreatures", p0))
+                    -- TODO(native): cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(quest:GetStateListAt("AllCreatures", p0))
     --[[unresolved native value]]
                     if nil ~= 0 then
                         quest:StateListErase("AllCreatures", p0)
@@ -89,7 +89,7 @@ function UpdateLiveEnemies(quest, me)
                 end
                 scratchValue9 = scratchValue9 + 1
                 scratchValue7 = scratchValue7 + 12
-            until scratchValue9 >= ((0 - 0) / 12)
+            until scratchValue9 >= #getFollowingEntityList
         end
         ::LAB_00dfc618::
     end

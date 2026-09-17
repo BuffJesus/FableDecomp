@@ -172,7 +172,7 @@ RE_TRANSFER = re.compile(
 RE_BINDING = re.compile(
     r'(?P<var>\w+) = (?:::)?operator_new\(0x1c\);.*?'
     r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>[^"]+)",-1\);.*?'
-    r'CScriptBase::AddEntityScriptBinding\([^,]+,(?P=var)\);\s*(?:\w+ = \w+;\s*)?if \([^{]*\) \{[^}]*?_Cons_val[^}]*?\}', re.S)
+    r'CScriptBase::AddEntityScriptBinding\([^,]+,(?P=var)\);\s*(?:\w+ = \w+;\s*)?(?:if \([^{]*\) \{[^}]*?_Cons_val[^}]*?\}|std::\s*_Cons_val<[^;]*?;)?', re.S)   # the EH-guarded dtor of the name temporary may be gone
 RE_CONS_VAL = re.compile(r'std::\s*_(?:Cons|Dest)_val<[^;]*?;', re.S)    # bsim-named CCharString ctor/dtor of a temporary
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
@@ -773,6 +773,7 @@ class Lifter:
         self.sequence_temporaries = set()
         self.source_names: set[str] = set()
         self.mutable_scalars: set[str] = set()
+        self.literal_assigned_slots: set[str] = set()   # string slots a later `operator=(slot, "LIT")` overwrites
         self.hoisted_scalars: set[str] = set()
         self.staged_scalars: set[str] = set()
         self.literal_comparisons = 0
@@ -1830,6 +1831,7 @@ class Lifter:
                     Path(_os.environ['GOTO_DUMP_FILE']).write_text('\n'.join(statements), encoding='utf-8')
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
         definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
+        self.literal_assigned_slots = set(re.findall(r'CCharString::operator=\s*\(\s*(?:\(CCharString \*\)\s*)?&?(\w+)\s*,\s*"', text))
         if self.accessor_kinds:
             # typed exports name staged locals after callee parameters (`string`, `pMessage`): a value staged
             # in several branches before a shared jump target is a real mutable local, not a temporary
@@ -1842,6 +1844,10 @@ class Lifter:
             if assignment and definitions[assignment[1]] > 1:
                 value = self.literal(RE_CAST.sub("", assignment[2]).strip())
                 if value is not None and not value.startswith('"'):
+                    self.mutable_scalars.add(assignment[1])
+                elif value is not None and re.search(r'CCharString::operator=\([^;]*,\s*' + re.escape(assignment[1]) + r'\);', text):
+                    # a literal chosen per branch and copied into a string slot (`pOther = "GUARD_RED"; ... operator=(slot, pOther)`):
+                    # a real variable, not one temporary literal
                     self.mutable_scalars.add(assignment[1])
         for index, line in enumerate(statements):
             overwritten = re.fullmatch(r'\s*(local_\w+) = (?:this|param_1);\s*', line)
@@ -2098,10 +2104,21 @@ class Lifter:
             self.push_temp(m.group(1), '""')
             return
         m = RE_CSTR_COPY.match(line) or RE_CSTR_FROM_VALUE.match(line) or RE_CSTR_LOCAL_ASSIGN.match(line)
+        if m and m.group(2) in self.temps and self.temps[m.group(2)] in self.mutable_scalars and RE_CSTR_LOCAL_ASSIGN.match(line) and m.group(1) in self.literal_assigned_slots:
+            # the source is a per-branch literal variable (`pOther = "GUARD_RED"` / `"GUARD_BLACK"`): the slot is a
+            # real string variable from here on (a later `operator=(slot, "LIT")` assigns it)
+            self.emit(f"{self.declare(m.group(1))} = {self.temps[m.group(2)]}")
+            self.forget_value(m.group(1))
+            self.kinds[m.group(1)] = 'string'
+            return
         if m and m.group(2) in self.temps:
             # Copy construction/assignment preserves the exact recovered string operand. Do not
             # emit executable Lua until the copy is consumed by a script-interface call.
             self.push_temp(m.group(1), self.temps[m.group(2)])
+            return
+        literal_assign = re.match(r'^\s*CCharString::operator=\s*\(\s*(?:\(CCharString \*\)\s*)?&?(\w+)\s*,\s*"((?:[^"\\]|\\.)*)"\s*\);\s*$', line)
+        if literal_assign and literal_assign.group(1) in self.locals and self.kinds.get(literal_assign.group(1)) == 'string':
+            self.emit(f'{literal_assign.group(1)} = "{literal_assign.group(2)}"')
             return
         if m and m.group(2) in self.locals and self.kinds.get(m.group(2)) in ('string', None) and RE_CSTR_LOCAL_ASSIGN.match(line):
             # the source is a string built at run time (`pCVar4 = ("TEXT_QST_B11_" .. name)`): a plain Lua copy

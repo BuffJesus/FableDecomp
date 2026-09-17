@@ -533,12 +533,10 @@ function GoOnPatrol(quest, me)
 end
 
 function IsThingCarryingCrate(quest, me, native_arg_thing)
-    local bVar1, cVar2, iVar5, iVar6, uVar3, uVar7
+    local bVar1, cVar2, iVar6, uVar3, uVar7
     local alive = true
-    iVar5 = (quest:GetStateListCount("CrateList") * 0xc)
-    iVar6 = iVar5 >> 0x1f
     uVar7 = 0
-    if iVar5 / 0xc + iVar6 ~= iVar6 then
+    if quest:GetStateListCount("CrateList") ~= 0 then
         iVar6 = 0
         repeat
             alive = not quest:IsActiveThreadTerminating()
@@ -564,13 +562,11 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
 end
 
 function GetNearestCrateToMe(quest, me)
-    local fVar5, iVar4, v_stk_14, v_stk_18, x_stk_c
+    local fVar5, iVar3, iVar4, v_stk_14, v_stk_18, x_stk_c
     v_stk_18 = 10000000.0
     x_stk_c = nil
-    local iVar3 = (quest:GetStateListCount("CrateList") * 0xc)
-    iVar4 = iVar3 >> 0x1f
     v_stk_14 = 0
-    if iVar3 / 0xc + iVar4 ~= iVar4 then
+    if quest:GetStateListCount("CrateList") ~= 0 then
         iVar4 = 0
         repeat
             fVar5 = (quest:GetDistanceBetweenThings(me, (quest:GetStateListAt("CrateList", (iVar4) / 0xc))) ^ 2)

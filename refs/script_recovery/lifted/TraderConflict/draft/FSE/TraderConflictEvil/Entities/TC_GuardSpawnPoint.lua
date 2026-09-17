@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar2, iVar4, iVar6, iVar7, native_arg_sequence_1, pCVar3, pCVar5, pScriptName, r1
+    local bVar2, iVar4, iVar6, iVar7, native_arg_sequence_1, pCVar3, pCVar5, pOther, pScriptName, r1, xStack_1c
     local alive = true
     local cVar1 = quest:GetStateBool("QuestStartScreened")
     while not cVar1 do
@@ -41,10 +41,8 @@ function Main(quest, me)
         end
     end
     if native_arg_sequence_1 then
-        while true do
-            if not (0x19 - quest:GetStateInt("InitialNumberInRegion") ~= quest:GetStateInt("NumberSpawned")) then break end
-            -- TODO(native): if ((((*(__native_entity_state:GetStateInt("self_0x14") + 0x4c) - *(__native_entity_state:GetStateInt("self_0x14") + 0x48)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19 < quest:GetStateInt("NextTimeToSpawnGuards")) or (((*(__native_entity_state:GetStateInt("self_0x14") + 0x4c) - *(__native_entity_state:GetStateInt("self_0x14") + 0x48)) / 0xc) < 7) then
-            if false then
+        while 0x19 - quest:GetStateInt("InitialNumberInRegion") ~= quest:GetStateInt("NumberSpawned") do
+            if (((((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19 < quest:GetStateInt("NextTimeToSpawnGuards")) or (quest:GetStateListCount("AllCreatures") < 7) then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then
@@ -74,25 +72,30 @@ function Main(quest, me)
                             if bVar2 then
                                 return
                             end
+                            pOther = "CREATURE_BS_GUARD_BLUE"
                         elseif quest:ReadGlobalGameData(0xf8c) < (0x19 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then
                                 return
                             end
+                            pOther = "CREATURE_BS_GUARD_BLUE_CROSSBOW"
                         elseif quest:ReadGlobalGameData(0xf90) < (0x19 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then
                                 return
                             end
+                            pOther = "CREATURE_BS_GUARD_RED"
                         else
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then
                                 return
                             end
+                            pOther = "CREATURE_BS_GUARD_BLACK"
                         end
+                        xStack_1c = pOther
                         if iVar4 % 500 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
@@ -100,12 +103,12 @@ function Main(quest, me)
                                 -- LAB_00df7f78: (native jump target)
                                 return
                             end
-                            -- TODO(native): CCharString::operator=((CCharString *)xStack_1c,"CREATURE_BS_SHERIFF");
+                            xStack_1c = "CREATURE_BS_SHERIFF"
                         end
                         bVar2 = false
-                        pScriptName = ("CREATURE_BS_GUARD_BLACK" + 4)
+                        pScriptName = "IsAGuard"
                         pCVar3 = me:GetPos()
-                        pCVar5 = "CREATURE_BS_GUARD_BLACK"
+                        pCVar5 = xStack_1c
                         r1 = quest:CreateCreature(pCVar5, pCVar3, pScriptName)
                         quest:SetCombatNearbyBreakOffRange(r1, pThing)
                         quest:EntitySetInFaction(r1, "FACTION_MONSTERS")
