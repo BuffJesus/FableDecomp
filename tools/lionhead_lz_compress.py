@@ -130,7 +130,7 @@ def compress(src):
     return bytes(out)
 
 
-def compress_fable_block(src):
+def compress_fable_block(src, escape=None):
     r"""Fable chunk framing (inverse of fable_core._lzo_fable / EgoCore DecompressLZO):
     LZO-compress the first len-3 bytes into one chunk, then append the 3 trailing
     plain bytes. Emits `[u16 clen][clen LZO bytes][3 raw bytes]` (u32 escape if
@@ -144,8 +144,14 @@ def compress_fable_block(src):
     body = src[:-3]
     tail = src[-3:]
     comp = compress(body)
-    if len(comp) < 0xFFFF:
-        hdr = struct.pack('<H', len(comp))
-    else:
+    # Retail writes the [0xFFFF][u32 clen] escape header whenever the chunk's RAW
+    # length is >= 64 KiB (3082 of 3542 such GBANK_MAIN_PC mip-0 chunks; the short
+    # u16 header otherwise), not only when clen itself overflows a u16: a 256x256
+    # DXT3 minimap written with the short header never drew in-game.
+    if escape is None:
+        escape = len(src) >= 0x10000
+    if escape or len(comp) >= 0xFFFF:
         hdr = struct.pack('<HI', 0xFFFF, len(comp))
+    else:
+        hdr = struct.pack('<H', len(comp))
     return hdr + comp + tail
