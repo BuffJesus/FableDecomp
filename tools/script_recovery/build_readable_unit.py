@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.script_recovery import readable_lua  # noqa: E402
 from tools.script_recovery.readable_lua import readable_source, wrap_local_declarations  # noqa: E402
-from tools.script_recovery.readable_style import style_source  # noqa: E402
+from tools.script_recovery.readable_style import style_source, state_writers  # noqa: E402
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.script_units import unit as script_unit  # noqa: E402
 
@@ -281,7 +281,7 @@ def fold_functions(source, functions, *, literals=False):
     return ''.join(out)
 
 
-def readable_file(source, *, style=True, frame_returns_alive=True):
+def readable_file(source, *, style=True, frame_returns_alive=True, rel=None, writers=None):
     """Apply every pass per function chunk; return (text, report). The folds run before and after the
     local-name pass: splitting reused temporaries exposes more dead stores and single-use flags; the
     quest-script style pass (readable_style) runs last on the renamed text."""
@@ -293,9 +293,9 @@ def readable_file(source, *, style=True, frame_returns_alive=True):
     if style:
         # two rounds: the style folds expose more dead stores / nil releases / unused declarations to the
         # older passes, and those in turn expose loop / guard shapes to the style folds
-        text, style_report = style_source(text, frame_returns_alive=frame_returns_alive)
+        text, style_report = style_source(text, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
         text = fold_functions(text, functions)
-        text, second = style_source(text, frame_returns_alive=frame_returns_alive)
+        text, second = style_source(text, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
         text = fold_functions(text, functions)
         for name, entry in second['functions'].items():
             first = style_report['functions'].setdefault(name, {'rewrites': {}, 'before': entry['before'], 'after': entry['after']})
@@ -305,6 +305,21 @@ def readable_file(source, *, style=True, frame_returns_alive=True):
     text, wrapped = wrap_local_declarations(text)
     return text, {'functions': [{'function': n, 'rewrites': st} for n, st in functions.items()],
                   'locals': mappings, 'wrappedDeclarations': len(wrapped), 'style': style_report}
+
+
+def function_headers(text, rel, conversion):
+    """One comment line per function: the native owner and retail address from the draft report."""
+    rows = {}
+    for unit in conversion.get('units', []):
+        for row in unit.get('functions', []):
+            if row.get('path') == rel and row.get('address'):
+                rows[row['function']] = row
+    def repl(m):
+        row = rows.get(m.group(1))
+        if not row:
+            return m.group(0)
+        return f"-- {row['owner']}.{row['function']} (retail {row['address']})\n{m.group(0)}"
+    return re.sub(r'^function (\w+)\(', repl, text, flags=re.M)
 
 
 def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=True):
@@ -317,10 +332,15 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
     checker = LuaSyntaxChecker()
     report = {'schema': 'readable-unit/1', 'unit': unit_name, 'draft': str(draft.relative_to(ROOT)), 'files': {}}
     sources = {}
+    drafts = {p.relative_to(draft).as_posix(): p.read_text(encoding='utf-8') for p in sorted(draft.rglob('*.lua'))}
+    conversion = json.loads((draft / 'CONVERSION_REPORT.json').read_text(encoding='utf-8')) if (draft / 'CONVERSION_REPORT.json').exists() else {}
+    writers = state_writers(drafts)
     for path in sorted(draft.rglob('*.lua')):
         rel = path.relative_to(draft).as_posix()
-        text, file_report = readable_file(path.read_text(encoding='utf-8'), style=style, frame_returns_alive=frame_returns_alive)
+        text, file_report = readable_file(drafts[rel], style=style, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
         text = text.replace('-- Generated native draft:', '-- Readable native conversion:', 1)
+        if style:
+            text = function_headers(text, rel, conversion)
         target = out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding='utf-8')

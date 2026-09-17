@@ -1,9 +1,15 @@
 # Readable output: from "decompiled program" to "quest script"
 
-Status: steps 1, 2, 6 LANDED 2026-09-17 (`tools/script_recovery/readable_style.py`, run by `build_readable_unit.py`; night-5
-section of `docs/journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md`). Orchard readable 2109 -> 1287 lines, temporaries
-270 -> 87, termination checks 177 -> 106, 26 `if not quest:NewScriptFrame(me) then return end`, zero per-call `require(`.
-Steps 3, 4, 5 remain. Owner stage: `tools/script_recovery/build_readable_unit.py` (readable stage ONLY — the draft stays the
+Status: steps 1, 2, 6 LANDED 2026-09-17, steps 3/4/5 PARTLY landed the same night (`tools/script_recovery/readable_style.py`,
+run by `build_readable_unit.py`; night-5 section of `docs/journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md`). Orchard
+readable 2109 -> 1236 lines, temporaries 270 -> 81, labels 26 -> 14, termination checks 177 -> 103, 26 frame checks, zero
+per-call `require(`. Landed from 3/4/5: `state:GetInt("TeamID")` entity-state alias, init-only state reads hoisted to
+`local teamId = ...` (unit-wide writer analysis), `helper_DCEC50` -> `SetMemberState` (named from the state it writes),
+per-function `-- Owner.Function (retail 0x...)` headers, goto idioms: skip-the-rest -> if/else (one and two levels),
+`goto` to a tail `return` -> the return, `else` + single `if` -> `elseif`, `if C then A else EXIT end` -> guard.
+Still open: per-unit accessor tables for `Teams_<n>_<Field>` (needs a runtime accessor with Get/Set kinds), enum names
+for MemberState values (no PDB enum — do not guess), the DoMultiplierCutscene label tangle (native_quest_helpers), the
+`if X then goto L end` whose fall-through would duplicate the skipped code. Owner stage: `tools/script_recovery/build_readable_unit.py` (readable stage ONLY — the draft stays the
 faithful, reversible audit trail; `smoke_run_unit.py` keeps running both stages).
 
 ## After the first increment (CrateTeamMember.Main, 350 -> 154 lines, 50 -> 9 temporaries)

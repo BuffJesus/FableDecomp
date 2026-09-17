@@ -1,8 +1,9 @@
 -- Generated from the same native helper bodies as the quest draft.
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
-    local scratchValue, sequence12, sequence21, sequence24, pScriptObject, string, scratchValue8
-    local scratchValue9, scratchValue10
+    local scratchValue, sequence12, pScriptObject, string, scratchValue8, scratchValue9
+    local scratchValue10
+    local heroTeam = quest:GetStateInt("HeroTeam")
     scratchValue8 = resources:NewResource()
     resources:TryAcquire(pScriptObject, quest:GetHero(), 4)
     scratchValue10 = resources:NewActorMap()
@@ -15,7 +16,7 @@ function DoMultiplierCutscene(quest, me)
     sequence12 = not scratchValue
     if not sequence12 then
         scratchValue = true
-        sequence12 = quest:GetStateInt("HeroTeam") ~= 0
+        sequence12 = heroTeam ~= 0
     end
     if sequence12 then
         scratchValue = false
@@ -24,11 +25,7 @@ function DoMultiplierCutscene(quest, me)
         if not quest:IsActiveThreadTerminating() then
             resources:RunMacro("CS_ORCHARD_GOOD_WHISPERINTRO_GWLL", scratchValue10, false, true)
             quest:FixMovieSequenceCamera(false)
-            sequence21 = false
-            if quest:GetStateBool("ShownCombatMultiplierTutorial") then
-                sequence21 = true
-            end
-            if sequence21 or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
+            if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
             if quest:DisplayTutorial(9) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
                 while not quest:MsgIsTutorialClickedPast() do
@@ -48,7 +45,7 @@ function DoMultiplierCutscene(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     goto FLOW_after_lab_00dd1d98
                 end
-                if quest:GetStateInt("HeroTeam") ~= 1 then
+                if heroTeam ~= 1 then
                     if not quest:IsActiveThreadTerminating() then
                         string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"
                         goto LAB_00dd1d98
@@ -74,33 +71,25 @@ function DoMultiplierCutscene(quest, me)
                     end
                 end
                 quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-            else
-                if not quest:IsActiveThreadTerminating() then
-                    if quest:GetStateInt("HeroTeam") == 1 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        string = "CS_ORCHARD_EVIL_WHISPERINTRO_LOP"
-                    else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
-                    end
-                    resources:RunMacro(string, scratchValue10, false, true)
-                    quest:FixMovieSequenceCamera(false)
-                    sequence24 = false
-                    if quest:GetStateBool("ShownCombatMultiplierTutorial") then
-                        sequence24 = true
-                    end
-                    if sequence24 or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                    if quest:DisplayTutorial(9) then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        while not quest:MsgIsTutorialClickedPast() do
-                            if not quest:NewScriptFrame(me) then goto LAB_00dd1e70 end
-                        end
-                    end
-                    quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-                    goto FLOW_after_lab_00dd1d98_125
+            elseif not quest:IsActiveThreadTerminating() then
+                if heroTeam == 1 then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    string = "CS_ORCHARD_EVIL_WHISPERINTRO_LOP"
+                else
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
                 end
+                resources:RunMacro(string, scratchValue10, false, true)
+                quest:FixMovieSequenceCamera(false)
+                if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                if quest:DisplayTutorial(9) then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    while not quest:MsgIsTutorialClickedPast() do
+                        if not quest:NewScriptFrame(me) then goto LAB_00dd1e70 end
+                    end
+                end
+                quest:SetStateBool("ShownCombatMultiplierTutorial", true)
             end
-            ::FLOW_after_lab_00dd1d98_125::
         end
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)
@@ -113,7 +102,8 @@ function DoMultiplierCutscene(quest, me)
 end
 
 function MakeTeamMemberComment(quest, me, commentToMake, speaker, commentType)
-    local timeRemaining = quest:GetTimer(quest:GetStateInt("CommentTimer"))
+    local commentTimer = quest:GetStateInt("CommentTimer")
+    local timeRemaining = quest:GetTimer(commentTimer)
     local pSpeaker = speaker
     if 0 < timeRemaining then
         return false
@@ -127,7 +117,7 @@ function MakeTeamMemberComment(quest, me, commentToMake, speaker, commentType)
     scratchValue = scratchValue .. "_"
     scratchValue = scratchValue .. commentToMake
     quest:AddLineToConversation(conversationID, scratchValue, pSpeaker, hero, false)
-    local scratchValue2 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
+    local scratchValue2 = quest:SetTimer(commentTimer, 5)
     return true
 end
 

@@ -1,15 +1,16 @@
 -- Readable native conversion: OrchardFarmWhisper. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local __native_entity_state = {}
+local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
     for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        __native_entity_state["GetState" .. kind] = function(_, name) return fields[name] end
-        __native_entity_state["SetState" .. kind] = function(_, name, value) fields[name] = value end
+        state["Get" .. kind] = function(_, name) return fields[name] end
+        state["Set" .. kind] = function(_, name, value) fields[name] = value end
     end
 end
 
+-- OrchardFarmWhisper.Main (retail 0x00dcf0b0)
 function Main(quest, me)
     local conversationId, conversationId2
     while quest:GetStateBool("WhisperInCutscene") do
@@ -37,13 +38,13 @@ function Main(quest, me)
     quest:EntitySetCombatType(me, "HERO_WHISPER_ATTACK_STYLE_OFARM")
     while not quest:IsActiveThreadTerminating() do
         if quest:GetHealth(me) <= 1.0 then
-            if quest:IsActiveThreadTerminating() then return end
             quest:SetStateBool("MissionSucceeded", true)
         end
         quest:NewScriptFrame(me)
     end
 end
 
+-- OrchardFarmWhisper.Init (retail 0x00dcf000)
 function Init(quest, me)
     quest:EntitySetInFaction(me, "FACTION_BANDITS")
     quest:EntitySetAsKillable(me, false, true)
@@ -52,9 +53,11 @@ function Init(quest, me)
     quest:EntitySetAllowBossPhaseChanges(me, false)
 end
 
+-- OrchardFarmWhisper.OnPersist (retail 0x00cdebc0)
 function OnPersist(quest, context)
 end
 
+-- OrchardFarmWhisper.OnPredicateFail (retail 0x00cdebd0)
 function OnPredicateFail(quest, me)
 end
 

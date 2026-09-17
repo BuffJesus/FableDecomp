@@ -7,7 +7,8 @@ one `local helpers = require(...)`) runs inside `build_readable_unit.py` (two ro
 `--frame-keeps-checks` for NewOakValeIntro-lifetime units). Orchard readable 2109 -> 1287 lines, temporaries 270 -> 87,
 termination checks 177 -> 106; READABLE_REPORT.json carries per-function before/after style metrics. Smoke harness 0 problems
 (draft + readable), Oakvale gate identical, script_recovery tests green. Steps 3-5 (named state/things, structure, constants)
-are next; the plan doc has the CrateTeamMember after-shot.
+are partly landed too (state alias, init-only hoists, helper naming from written state, function headers, goto→if/else,
+elseif, guard folds; 1236 lines / 81 temporaries / 14 labels); the plan doc lists what is still open.
 
 **Draft fixes (would have broken the v5 Orchard run — v5 must be REBUILT before the in-game run)**: boolean-vs-0 compares
 (`if c_stk_11 ~= 0` on a Lua boolean = always true: every CrateTeamMember was TeamID 1; `IsThingCarryingCrate() ~= 0` likewise —

@@ -268,3 +268,13 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
   real string is `"REQUEST_PROTECTION"`. The now-exact pairing renamed TeamSpawn's created-creature slot, exposing a lifter
   bug: `xStack_54 = pCVar6` in both branches of an if/else was recorded as a per-branch alias (forgotten at the join) although
   `xStack_54` was already an emitted local (`= nil`) — now a real store. Oakvale gate identical throughout.
+- Later the same night (steps 3/4/5 partial): `state` alias with `GetInt`/`SetInt`... (shim rewritten; the smoke harness
+  still keys entity files on the `__native_entity_state` marker comment), init-only state reads hoisted per function
+  (`state_writers()` over the unit's drafts: a key whose only literal writers are `Init` functions and which the function
+  itself does not write, read >= 2 times), `helper_XXXX(quest, me, p)` renamed `Set<Key>` when its body stores p into one
+  key, `-- Owner.Function (retail 0x...)` headers from CONVERSION_REPORT.json, goto folds (skip-the-rest -> else, incl. the
+  two-level shape where the branch remainder ends in an exit; goto to a tail return -> return), `elseif`, `if C then A else
+  EXIT end` -> guard + A, `if C then while C do` -> the while, `v = false; if C then v = true end` -> `v = C`, the four
+  `if C then v = literal else v = bool end` shapes, `x and true`/`or false`, De Morgan `not (not a or not b)`,
+  `while not T() do` bodies are clean for the dead-check dataflow, `return not T()` -> `return true` when clean.
+  Orchard: 1236 lines, 81 temporaries, 14 labels, 37 gotos, 103 checks. Smoke both stages clean, gate identical, v5 rebuilt.

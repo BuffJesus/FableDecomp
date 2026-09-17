@@ -3,15 +3,16 @@
 
 local helpers = require("OrchardFarmRaid.native_quest_helpers")
 
-local __native_entity_state = {}
+local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
     for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        __native_entity_state["GetState" .. kind] = function(_, name) return fields[name] end
-        __native_entity_state["SetState" .. kind] = function(_, name, value) fields[name] = value end
+        state["Get" .. kind] = function(_, name) return fields[name] end
+        state["Set" .. kind] = function(_, name, value) fields[name] = value end
     end
 end
 
+-- M_WhisperFarmRaidIntro.Main (retail 0x00dd1ac0)
 function Main(quest, me)
     if not quest:GetStateBool("HeroMetWhisperBeforeFarm") then
         if quest:IsActiveThreadTerminating() then return end
@@ -21,12 +22,15 @@ function Main(quest, me)
     end
 end
 
+-- M_WhisperFarmRaidIntro.Init (retail 0x00cdebb0)
 function Init(quest, me)
 end
 
+-- M_WhisperFarmRaidIntro.OnPersist (retail 0x00cdebc0)
 function OnPersist(quest, context)
 end
 
+-- M_WhisperFarmRaidIntro.OnPredicateFail (retail 0x00cdebd0)
 function OnPredicateFail(quest, me)
 end
 

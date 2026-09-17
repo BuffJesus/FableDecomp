@@ -180,10 +180,17 @@
        "constantConditions": 3,
        "emptyElse": 1,
        "unusedClosures": 1,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 4,
        "parentheses": 1,
        "cosmetics": 1,
-       "firstAssignments": 3
+       "firstAssignments": 3,
+       "hoistedState": 0
       },
       "before": {
        "lines": 56,
@@ -222,10 +229,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 5,
@@ -264,10 +278,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -306,10 +327,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 2
+       "firstAssignments": 2,
+       "hoistedState": 0
       },
       "before": {
        "lines": 15,
@@ -332,6 +360,8 @@
      }
     },
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist"
     ]
@@ -473,6 +503,22 @@
       "flagTests": 0,
       "declarations": 0,
       "decimalLiterals": 0
+     }
+    },
+    {
+     "function": "SetMemberState",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 0
      }
     }
    ],
@@ -1844,26 +1890,33 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 4,
        "staleLabelComments": 2,
        "aliveStaging": 18,
        "exitChecksInlined": 26,
        "frameChecks": 6,
-       "inlinedTemporaries": 35,
+       "inlinedTemporaries": 36,
        "deadDefinitions": 3,
        "guardWrappers": 3,
        "retryLoops": 5,
        "booleanMaterialisation": 30,
        "booleanCompares": 1,
-       "conditions": 1,
+       "conditions": 2,
        "literals": 0,
-       "constantConditions": 0,
+       "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "deadTerminationChecks": 14,
+       "gotoElse": 2,
+       "booleanBranches": 2,
+       "elseif": 1,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 1,
+       "deadTerminationChecks": 15,
        "parentheses": 46,
        "cosmetics": 2,
-       "firstAssignments": 0
+       "firstAssignments": 3,
+       "hoistedState": 3
       },
       "before": {
        "lines": 350,
@@ -1875,11 +1928,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 154,
-       "temporaries": 9,
-       "labels": 3,
-       "gotos": 3,
-       "terminationChecks": 15,
+       "lines": 142,
+       "temporaries": 8,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 13,
        "frameChecks": 6,
        "requires": 0
       }
@@ -1902,10 +1955,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 1,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 6,
        "cosmetics": 0,
-       "firstAssignments": 2
+       "firstAssignments": 2,
+       "hoistedState": 0
       },
       "before": {
        "lines": 46,
@@ -1917,10 +1977,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 40,
+       "lines": 37,
        "temporaries": 0,
-       "labels": 1,
-       "gotos": 1,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 0,
        "frameChecks": 0,
        "requires": 0
@@ -1944,10 +2004,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -1970,7 +2037,7 @@
      },
      "OnPredicateFail": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "staleLabelComments": 0,
        "aliveStaging": 0,
        "exitChecksInlined": 0,
@@ -1986,10 +2053,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 4,
        "cosmetics": 2,
-       "firstAssignments": 0
+       "firstAssignments": 1,
+       "hoistedState": 1
       },
       "before": {
        "lines": 12,
@@ -2001,7 +2075,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 11,
+       "lines": 12,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -2012,7 +2086,7 @@
      },
      "GoOnPatrol": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "staleLabelComments": 0,
        "aliveStaging": 2,
        "exitChecksInlined": 2,
@@ -2028,10 +2102,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 8,
        "cosmetics": 1,
-       "firstAssignments": 0
+       "firstAssignments": 1,
+       "hoistedState": 1
       },
       "before": {
        "lines": 26,
@@ -2043,7 +2124,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 16,
+       "lines": 17,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -2070,10 +2151,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 1,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 22,
@@ -2085,10 +2173,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 19,
+       "lines": 18,
        "temporaries": 2,
-       "labels": 1,
-       "gotos": 1,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 2,
        "frameChecks": 0,
        "requires": 0
@@ -2112,13 +2200,20 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 3,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
-       "lines": 20,
+       "lines": 21,
        "temporaries": 5,
        "labels": 0,
        "gotos": 0,
@@ -2127,7 +2222,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 19,
+       "lines": 20,
        "temporaries": 5,
        "labels": 0,
        "gotos": 0,
@@ -2136,9 +2231,9 @@
        "requires": 0
       }
      },
-     "helper_DCEC50": {
+     "SetMemberState": {
       "rewrites": {
-       "splitLocals": 0,
+       "splitLocals": 1,
        "staleLabelComments": 0,
        "aliveStaging": 0,
        "exitChecksInlined": 0,
@@ -2154,10 +2249,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 4,
        "cosmetics": 2,
-       "firstAssignments": 0
+       "firstAssignments": 1,
+       "hoistedState": 1
       },
       "before": {
        "lines": 6,
@@ -2169,7 +2271,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 5,
+       "lines": 6,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -2180,12 +2282,13 @@
      }
     },
     "hoistedRequires": 8,
+    "entityStateAliased": 77,
+    "namedHelpers": 1,
     "pureLocalFunctions": [
      "GetNearestCrateToMe",
      "IsThingCarryingCrate",
      "OnPersist",
-     "OnPredicateFail",
-     "helper_DCEC50"
+     "OnPredicateFail"
     ]
    }
   },
@@ -2328,10 +2431,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 4,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 13,
@@ -2370,10 +2480,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 3,
@@ -2412,10 +2529,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -2454,10 +2578,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -2480,6 +2611,8 @@
      }
     },
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
@@ -2624,10 +2757,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 13,
@@ -2666,10 +2806,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -2708,10 +2855,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -2750,10 +2904,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -2776,6 +2937,8 @@
      }
     },
     "hoistedRequires": 1,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "Init",
      "OnPersist",
@@ -2921,10 +3084,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 2,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 13,
@@ -2963,10 +3133,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -3005,10 +3182,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -3047,10 +3231,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -3073,6 +3264,8 @@
      }
     },
     "hoistedRequires": 1,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "Init",
      "OnPersist",
@@ -3379,10 +3572,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "deadTerminationChecks": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 1,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 61,
@@ -3394,11 +3594,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 33,
+       "lines": 32,
        "temporaries": 2,
        "labels": 0,
        "gotos": 0,
-       "terminationChecks": 4,
+       "terminationChecks": 3,
        "frameChecks": 2,
        "requires": 0
       }
@@ -3421,10 +3621,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 11,
@@ -3463,10 +3670,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -3505,10 +3719,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -3531,6 +3752,8 @@
      }
     },
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
@@ -4371,7 +4594,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 7,
        "staleLabelComments": 1,
        "aliveStaging": 6,
        "exitChecksInlined": 23,
@@ -4387,10 +4610,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 2,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 9,
        "parentheses": 17,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 6,
+       "hoistedState": 6
       },
       "before": {
        "lines": 192,
@@ -4402,10 +4632,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 98,
+       "lines": 99,
        "temporaries": 7,
-       "labels": 2,
-       "gotos": 2,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 14,
        "frameChecks": 2,
        "requires": 0
@@ -4429,10 +4659,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 1,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 31,
@@ -4444,10 +4681,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 29,
+       "lines": 26,
        "temporaries": 4,
-       "labels": 1,
-       "gotos": 1,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 0,
        "frameChecks": 0,
        "requires": 0
@@ -4471,10 +4708,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -4513,10 +4757,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -4539,8 +4790,9 @@
      }
     },
     "hoistedRequires": 1,
+    "entityStateAliased": 54,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
-     "Init",
      "OnPersist",
      "OnPredicateFail"
     ]
@@ -5099,7 +5351,7 @@
     "functions": {
      "DoMultiplierCutscene": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "staleLabelComments": 4,
        "aliveStaging": 13,
        "exitChecksInlined": 0,
@@ -5108,17 +5360,24 @@
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 3,
-       "booleanMaterialisation": 10,
+       "booleanMaterialisation": 14,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 1,
+       "booleanBranches": 0,
+       "elseif": 1,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 3,
        "parentheses": 3,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 1,
+       "hoistedState": 1
       },
       "before": {
        "lines": 189,
@@ -5130,10 +5389,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 110,
-       "temporaries": 9,
-       "labels": 6,
-       "gotos": 17,
+       "lines": 99,
+       "temporaries": 7,
+       "labels": 5,
+       "gotos": 16,
        "terminationChecks": 14,
        "frameChecks": 3,
        "requires": 0
@@ -5141,7 +5400,7 @@
      },
      "MakeTeamMemberComment": {
       "rewrites": {
-       "splitLocals": 12,
+       "splitLocals": 13,
        "staleLabelComments": 0,
        "aliveStaging": 0,
        "exitChecksInlined": 0,
@@ -5157,10 +5416,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 3,
        "cosmetics": 0,
-       "firstAssignments": 12
+       "firstAssignments": 13,
+       "hoistedState": 1
       },
       "before": {
        "lines": 19,
@@ -5172,7 +5438,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 19,
+       "lines": 20,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -5183,6 +5449,8 @@
      }
     },
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": []
    }
   },
@@ -6965,10 +7233,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 43,
@@ -7007,10 +7282,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 53,
@@ -7049,10 +7331,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -7091,10 +7380,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 1,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 1,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 6,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 207,
@@ -7106,10 +7402,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 139,
+       "lines": 136,
        "temporaries": 11,
-       "labels": 2,
-       "gotos": 2,
+       "labels": 1,
+       "gotos": 1,
        "terminationChecks": 13,
        "frameChecks": 2,
        "requires": 0
@@ -7133,10 +7429,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 1,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 1,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 9,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 248,
@@ -7148,10 +7451,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 156,
+       "lines": 153,
        "temporaries": 13,
-       "labels": 3,
-       "gotos": 4,
+       "labels": 2,
+       "gotos": 3,
        "terminationChecks": 17,
        "frameChecks": 3,
        "requires": 0
@@ -7159,7 +7462,7 @@
      },
      "DoCutsceneIfRequired": {
       "rewrites": {
-       "splitLocals": 2,
+       "splitLocals": 3,
        "staleLabelComments": 3,
        "aliveStaging": 8,
        "exitChecksInlined": 12,
@@ -7175,10 +7478,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 6,
        "parentheses": 4,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 1,
+       "hoistedState": 1
       },
       "before": {
        "lines": 154,
@@ -7190,7 +7500,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 89,
+       "lines": 90,
        "temporaries": 12,
        "labels": 0,
        "gotos": 0,
@@ -7206,21 +7516,28 @@
        "aliveStaging": 0,
        "exitChecksInlined": 3,
        "frameChecks": 1,
-       "inlinedTemporaries": 2,
+       "inlinedTemporaries": 3,
        "deadDefinitions": 2,
        "guardWrappers": 0,
        "retryLoops": 0,
-       "booleanMaterialisation": 1,
+       "booleanMaterialisation": 2,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 1,
+       "booleanBranches": 1,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
-       "parentheses": 0,
+       "parentheses": 1,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 39,
@@ -7232,10 +7549,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 23,
-       "temporaries": 1,
-       "labels": 1,
-       "gotos": 1,
+       "lines": 12,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 1,
        "frameChecks": 1,
        "requires": 0
@@ -7243,7 +7560,7 @@
      },
      "MakeTeamMemberComment": {
       "rewrites": {
-       "splitLocals": 8,
+       "splitLocals": 9,
        "staleLabelComments": 0,
        "aliveStaging": 0,
        "exitChecksInlined": 0,
@@ -7259,10 +7576,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 1,
        "cosmetics": 0,
-       "firstAssignments": 4
+       "firstAssignments": 5,
+       "hoistedState": 1
       },
       "before": {
        "lines": 18,
@@ -7274,7 +7598,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 11,
+       "lines": 12,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -7285,7 +7609,7 @@
      },
      "DoMultiplierCutscene": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "staleLabelComments": 4,
        "aliveStaging": 13,
        "exitChecksInlined": 0,
@@ -7294,17 +7618,24 @@
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 3,
-       "booleanMaterialisation": 10,
+       "booleanMaterialisation": 14,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 1,
+       "booleanBranches": 0,
+       "elseif": 1,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 3,
        "parentheses": 3,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 1,
+       "hoistedState": 1
       },
       "before": {
        "lines": 190,
@@ -7316,10 +7647,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 111,
-       "temporaries": 9,
-       "labels": 6,
-       "gotos": 17,
+       "lines": 100,
+       "temporaries": 7,
+       "labels": 5,
+       "gotos": 16,
        "terminationChecks": 14,
        "frameChecks": 3,
        "requires": 0
@@ -7343,10 +7674,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 4,
@@ -7369,6 +7707,8 @@
      }
     },
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist"
     ]
@@ -7452,10 +7792,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -7494,10 +7841,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 8,
@@ -7520,6 +7874,8 @@
      }
     },
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "Main"
     ]
@@ -7603,10 +7959,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 2,
@@ -7645,10 +8008,17 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0
+       "firstAssignments": 0,
+       "hoistedState": 0
       },
       "before": {
        "lines": 8,
@@ -7671,6 +8041,8 @@
      }
     },
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "Main"
     ]
@@ -7683,6 +8055,8 @@
    "style": {
     "functions": {},
     "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
     "pureLocalFunctions": []
    }
   }

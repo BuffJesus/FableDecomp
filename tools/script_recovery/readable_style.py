@@ -311,6 +311,11 @@ def fold_constant_conditions(lines):
     count = 0
     for i, line in enumerate(lines):
         new = re.sub(r'\bnot true\b', 'false', re.sub(r'\bnot false\b', 'true', line))
+        if not new.lstrip().startswith('--'):
+            new = re.sub(r' and true\b', '', new)
+            new = re.sub(r'\btrue and ', '', new)
+            new = re.sub(r' or false\b', '', new)
+            new = re.sub(r'\bfalse or ', '', new)
         if new != line:
             lines[i] = new
             count += 1
@@ -556,6 +561,245 @@ def prune_dead_defs(lines):
     return lines, count
 
 
+def fold_goto_else(lines):
+    """`if C then X; goto L end; Y; ::L::` -> `if C then X else Y end` (the goto skips the rest of the
+    enclosing branch); `if X then goto L end; Y; ::L::` -> `if not X then Y end`; an enclosing if whose
+    whole body is that if merges its condition with `and`."""
+    count = 0
+    changed = True
+    while changed:
+        changed = False
+        lines = [l for l in lines if l != '']
+        text = ''.join(lines)
+        for g, line in enumerate(lines):
+            m = re.fullmatch(r'(\s*)goto (\w+)\n', line)
+            inline = re.fullmatch(r'(\s*)if (.+) then goto (\w+) end\n', line)
+            if not m and not inline:
+                continue
+            label = inline.group(3) if inline else m.group(2)
+            if len(re.findall(r'\bgoto ' + label + r'\b', text)) != 1:
+                continue
+            if inline:
+                indent, cond, if_line, then_body, end = inline.group(1), inline.group(2), g, [], g
+            else:
+                indent = m.group(1)[:-4] if len(m.group(1)) >= 4 else None
+                if indent is None or g + 1 >= len(lines) or lines[g + 1] != indent + 'end\n':
+                    continue
+                if_line = next((j for j in range(g - 1, -1, -1) if lines[j].startswith(indent) and not lines[j].startswith(indent + ' ') and lines[j].strip()), None)
+                head = re.fullmatch(re.escape(indent) + r'if (.+) then\n', lines[if_line]) if if_line is not None else None
+                if not head:
+                    continue
+                cond, then_body, end = head.group(1), lines[if_line + 1:g], g + 1
+            # enclosing ifs whose whole body is this if: merge conditions
+            while len(indent) >= 4:
+                outer_indent = indent[:-4]
+                nxt = next((j for j in range(end + 1, len(lines)) if lines[j].strip()), None)
+                if nxt is None or lines[nxt] != outer_indent + 'end\n':
+                    break
+                outer = next((j for j in range(if_line - 1, -1, -1) if lines[j].strip()), None)
+                head = re.fullmatch(re.escape(outer_indent) + r'if (.+) then\n', lines[outer]) if outer is not None else None
+                if not head:
+                    break
+                a, b = head.group(1), cond
+                a = f'({a})' if 'or' in _top_level_operators(a) else a
+                b = f'({b})' if 'or' in _top_level_operators(b) else b
+                cond, if_line, indent, end = f'{a} and {b}', outer, outer_indent, nxt
+            # the rest of the branch (same block level) up to where the block closes or the label sits
+            j = end + 1
+            rest_end = None
+            while j < len(lines):
+                l = lines[j]
+                if not l.strip() or l.startswith(indent + ' '):
+                    j += 1
+                    continue
+                if not l.startswith(indent):
+                    rest_end = j
+                    break
+                st = l.strip()
+                if st in ('end', 'else') or st.startswith(('elseif ', 'until ')) or st == f'::{label}::':
+                    rest_end = j
+                    break
+                j += 1
+            if rest_end is None:
+                continue
+            def shift(block, delta):
+                out = []
+                for b in block:
+                    if not b.strip():
+                        out.append(b)
+                    elif delta >= 0:
+                        out.append(' ' * delta + b)
+                    else:
+                        out.append(b[-delta:] if b.startswith(' ' * -delta) else b.lstrip())
+                return out
+            k = rest_end
+            while k < len(lines) and lines[k].strip() == 'end':
+                k += 1
+            body2 = lines[end + 1:rest_end]
+            outer_else = None
+            if k >= len(lines) or lines[k].strip() != f'::{label}::':
+                # the rest of the branch ends in an exit and the enclosing if's remainder up to the label
+                # is only reached when its condition fails: that remainder is the enclosing if's else
+                last = next((l.strip() for l in reversed(body2) if l.strip()), '')
+                outer_indent = indent[:-4] if len(indent) >= 4 else None
+                if not body2 or outer_indent is None or not re.fullmatch(r'(?:\w+\(\); )?(?:return\b.*|goto \w+|break)', last) \
+                        or rest_end >= len(lines) or lines[rest_end] != outer_indent + 'end\n':
+                    continue
+                outer = next((j for j in range(if_line - 1, -1, -1) if lines[j].startswith(outer_indent) and not lines[j].startswith(outer_indent + ' ') and lines[j].strip()), None)
+                if outer is None or not re.fullmatch(re.escape(outer_indent) + r'if (.+) then\n', lines[outer]):
+                    continue
+                j2 = rest_end + 1
+                d_end = None
+                while j2 < len(lines):
+                    l = lines[j2]
+                    if not l.strip() or l.startswith(outer_indent + ' '):
+                        j2 += 1
+                        continue
+                    if not l.startswith(outer_indent):
+                        d_end = j2
+                        break
+                    st = l.strip()
+                    if st in ('end', 'else') or st.startswith(('elseif ', 'until ')) or st == f'::{label}::':
+                        d_end = j2
+                        break
+                    j2 += 1
+                if d_end is None:
+                    continue
+                k2 = d_end
+                while k2 < len(lines) and lines[k2].strip() == 'end':
+                    k2 += 1
+                if k2 >= len(lines) or lines[k2].strip() != f'::{label}::':
+                    continue
+                d_body = lines[rest_end + 1:d_end]
+                if not d_body or any(l.strip().startswith('::') for l in d_body):
+                    continue
+                outer_else = (outer, outer_indent, rest_end, d_end, d_body)
+            if any(l.strip().startswith('::') for l in body2):
+                continue                                  # a label would move into a nested block
+                out = []
+                for b in block:
+                    if not b.strip():
+                        out.append(b)
+                    elif delta >= 0:
+                        out.append(' ' * delta + b)
+                    else:
+                        out.append(b[-delta:] if b.startswith(' ' * -delta) else b.lstrip())
+                return out
+            body2 = shift(body2, 4)
+            if inline:
+                new = [f'{indent}if {_negate(cond)} then\n'] + body2 + [f'{indent}end\n']
+            else:
+                then_indent = len(then_body[0]) - len(then_body[0].lstrip()) if then_body else len(indent) + 4
+                then_body = shift(then_body, len(indent) + 4 - then_indent)
+                new = [f'{indent}if {cond} then\n'] + then_body + ([f'{indent}else\n'] + body2 if body2 else []) + [f'{indent}end\n']
+            if outer_else:
+                outer, outer_indent, o_end, d_end, d_body = outer_else
+                lines[o_end:d_end] = [f'{outer_indent}else\n'] + shift(d_body, 4) + [f'{outer_indent}end\n']
+            lines[if_line:rest_end] = new
+            text2 = ''.join(lines)
+            if not re.search(r'\bgoto ' + label + r'\b', text2):
+                for k2, l in enumerate(lines):
+                    if l.strip() == f'::{label}::':
+                        lines[k2] = ''
+                        break
+            count += 1
+            changed = True
+            break
+    return lines, count
+
+
+BOOL_VALUE = re.compile(r'(?:not |true$|false$|[\w.:]+:(?:Is|Has|GetStateBool)\w*\()')
+
+
+def _boolean_valued(expr):
+    expr = expr.strip()
+    return bool(BOOL_VALUE.match(expr)) or bool({'==', '~=', '<', '>', '<=', '>=', 'and', 'or'} & set(_top_level_operators(expr)))
+
+
+def fold_boolean_branches(lines):
+    """`if C then v = false else v = Y end` -> `v = not C and Y` (and the three sibling shapes) when Y is
+    boolean-valued."""
+    count = 0
+    changed = True
+    while changed:
+        changed = False
+        lines = [l for l in lines if l != '']
+        for i in range(len(lines) - 4):
+            m = re.fullmatch(r'(\s*)if (.+) then\n', lines[i])
+            if not m or lines[i + 2] != m.group(1) + 'else\n' or lines[i + 4] != m.group(1) + 'end\n':
+                continue
+            indent, cond = m.group(1), m.group(2)
+            a = re.fullmatch(re.escape(indent) + r'    (\w+) = ([^\n]+)\n', lines[i + 1])
+            b = re.fullmatch(re.escape(indent) + r'    (\w+) = ([^\n]+)\n', lines[i + 3])
+            if not a or not b or a.group(1) != b.group(1):
+                continue
+            if any(t.lastgroup == 'comment' for t in tokens(lines[i + 1] + lines[i + 3])):
+                continue
+            x, y = a.group(2).strip(), b.group(2).strip()
+            def wrap_or(e):
+                return f'({e})' if 'or' in _top_level_operators(e) else e
+            nc = _negate(cond)
+            if x == 'false' and _boolean_valued(y):
+                value = f'{nc} and {wrap_or(y)}'
+            elif x == 'true' and _boolean_valued(y):
+                value = f'{cond} or {y}'
+            elif y == 'false' and _boolean_valued(x):
+                value = f'{wrap_or(cond)} and {wrap_or(x)}'
+            elif y == 'true' and _boolean_valued(x):
+                value = f'{nc} or {x}'
+            else:
+                continue
+            lines[i] = f'{indent}{a.group(1)} = {value}\n'
+            for j in range(i + 1, i + 5):
+                lines[j] = ''
+            count += 1
+            changed = True
+            break
+    return lines, count
+
+
+def fold_elseif(lines):
+    """`else` whose branch is exactly one `if` block -> `elseif`."""
+    count = 0
+    changed = True
+    while changed:
+        changed = False
+        lines = [l for l in lines if l != '']
+        for i in range(len(lines) - 2):
+            m = re.fullmatch(r'(\s*)else\n', lines[i])
+            if not m:
+                continue
+            indent = m.group(1)
+            head = re.fullmatch(re.escape(indent) + r'    if (.+) then\n', lines[i + 1])
+            if not head:
+                continue
+            # the inner block ends right before this block's `end`
+            j = i + 2
+            inner_end = None
+            while j < len(lines):
+                if lines[j] == indent + '    end\n':
+                    inner_end = j
+                    break
+                if lines[j].startswith(indent + '    ') or not lines[j].strip():
+                    j += 1
+                    continue
+                break
+            if inner_end is None or inner_end + 1 >= len(lines) or lines[inner_end + 1] != indent + 'end\n':
+                continue
+            lines[i] = f'{indent}elseif {head.group(1)} then\n'
+            lines[i + 1] = ''
+            for j in range(i + 2, inner_end):
+                if lines[j].startswith(indent + '        '):
+                    lines[j] = lines[j][4:]
+                elif lines[j].startswith(indent + '    ') and re.match(r'\s*(?:else\n|elseif )', lines[j]):
+                    lines[j] = lines[j][4:]
+            lines[inner_end] = ''
+            count += 1
+            changed = True
+            break
+    return lines, count
+
+
 def prune_unused_closures(lines):
     """A hoisted cleanup closure nothing calls any more."""
     count = 0
@@ -697,6 +941,8 @@ def prune_dead_termination_checks(lines, pure_functions):
             return True
         if until_term.match(s):
             return succ < i         # back edge: the loop continues only while not terminating
+        if re.fullmatch(r'\s*while not ' + TERMINATING + r' do', s):
+            return succ == min(flow.graph[i])   # the body runs only while not terminating
         if not _pure_line(structure[i], lines[i], pure_functions):
             return False
         return state_in[i]
@@ -722,6 +968,9 @@ def prune_dead_termination_checks(lines, pure_functions):
         elif (q := query.match(s)) and state_in[i]:
             lines[i] = f'{q.group(1)}{q.group(2)} = false\n'
             count += 1
+        elif (q := re.fullmatch(r'(\s*)return not ' + TERMINATING, s)) and state_in[i]:
+            lines[i] = f'{q.group(1)}return true\n'
+            count += 1
     return lines, count
 
 
@@ -733,6 +982,19 @@ def fold_boolean_materialisation(lines):
         lines = [l for l in lines if l != '']
         structure = _structure(lines)
         for i in range(len(lines)):
+            # v = false ; if C then v = true end   ->  v = C
+            pre = re.fullmatch(r'(\s*)(\w+) = (true|false)\n', lines[i])
+            if pre and i + 3 < len(lines):
+                head = re.fullmatch(re.escape(pre.group(1)) + r'if ([^\n]+) then\n', lines[i + 1])
+                store = re.fullmatch(re.escape(pre.group(1)) + r'    ' + pre.group(2) + r' = (true|false)\n', lines[i + 2])
+                if head and store and lines[i + 3] == pre.group(1) + 'end\n' and store.group(1) != pre.group(3) \
+                        and not any(t.lastgroup == 'comment' for t in tokens(lines[i] + lines[i + 2])):
+                    value = head.group(1) if store.group(1) == 'true' else _negate(head.group(1))
+                    lines[i] = f'{pre.group(1)}{pre.group(2)} = {value}\n'
+                    lines[i + 1] = lines[i + 2] = lines[i + 3] = ''
+                    count += 1
+                    changed = True
+                    break
             m = re.fullmatch(r'(\s*)if ([^\n]+) then\n', lines[i])
             if not m:
                 continue
@@ -932,6 +1194,12 @@ def simplify_conditions(lines):
                 continue
             new = new[:m.start()] + neg + new[end:]
             pos = m.start()
+        for _ in range(4):
+            before = new
+            new = re.sub(r'\bnot \(not (\([^()]*(?:\([^()]*\)[^()]*)*\)|[\w.:]+(?:\([^()]*\))?) or not (\([^()]*(?:\([^()]*\)[^()]*)*\)|[\w.:]+(?:\([^()]*\))?)\)', r'\1 and \2', new)
+            new = re.sub(r'\bnot \(not (\([^()]*(?:\([^()]*\)[^()]*)*\)|[\w.:]+(?:\([^()]*\))?) and not (\([^()]*(?:\([^()]*\)[^()]*)*\)|[\w.:]+(?:\([^()]*\))?)\)', r'(\1 or \2)', new)
+            if new == before:
+                break
         if new != line:
             lines[i] = new
             count += 1
@@ -1073,6 +1341,12 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         total += run('constantConditions', fold_constant_conditions)
         total += run('emptyElse', prune_empty_else)
         total += run('unusedClosures', prune_unused_closures)
+        total += run('gotoElse', fold_goto_else)
+        total += run('booleanBranches', fold_boolean_branches)
+        total += run('elseif', fold_elseif)
+        total += run('elseExit', fold_else_exit)
+        total += run('gotoReturn', fold_goto_return)
+        total += run('ifAroundWhile', fold_if_around_while)
         return total
 
     for _ in range(3):
@@ -1122,8 +1396,116 @@ def style_metrics(chunk):
             'requires': body.count('require(')}
 
 
-def style_source(source, *, frame_returns_alive=True):
+# ---------------------------------------------------------------- step 3: named state, step 5: helper names
+
+STATE_SHIM = re.compile(
+    r'local __native_entity_state = \{\}\ndo\n    local fields = \{\}\n'
+    r'    for _, kind in ipairs\(\{"Bool", "Int", "Float", "String", "Thing"\}\) do\n'
+    r'        __native_entity_state\["GetState" \.\. kind\] = function\(_, name\) return fields\[name\] end\n'
+    r'        __native_entity_state\["SetState" \.\. kind\] = function\(_, name, value\) fields\[name\] = value end\n'
+    r'    end\nend\n')
+
+
+def alias_entity_state(source):
+    """The per-entity state shim becomes `state` with `GetInt`/`SetInt`... methods
+    (`__native_entity_state:GetStateInt("TeamID")` -> `state:GetInt("TeamID")`)."""
+    if not STATE_SHIM.search(source) or re.search(r'\bstate\b', rename_identifiers(source, {'__native_entity_state': 'x'})):
+        return source, 0
+    shim = ('local state = {}  -- per-entity script state (__native_entity_state)\n'
+            'do\n    local fields = {}\n'
+            '    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do\n'
+            '        state["Get" .. kind] = function(_, name) return fields[name] end\n'
+            '        state["Set" .. kind] = function(_, name, value) fields[name] = value end\n'
+            '    end\nend\n')
+    source = STATE_SHIM.sub(lambda m: shim, source, count=1)
+    source, k = re.subn(r'\b__native_entity_state:(Get|Set)State(Bool|Int|Float|String|Thing)\(', r'state:\1\2(', source)
+    return source, k
+
+
+def state_writers(sources):
+    """{(receiver kind, key): {function names}} for every literal SetState*("Key") in the unit
+    (receiver kind: 'entity' per file — keyed by file — or 'quest' unit-wide)."""
+    writers = {}
+    for rel, text in sources.items():
+        for chunk in _function_chunks(text):
+            fm = re.match(r'(?:local )?function (\w+)', chunk)
+            if not fm:
+                continue
+            for recv, key in re.findall(r'\b(__native_entity_state|state|quest):SetState\w+\("(\w+)"', chunk):
+                scope = ('quest', None) if recv == 'quest' else ('entity', rel)
+                writers.setdefault((scope, key), set()).add(fm.group(1))
+    return writers
+
+
+def hoist_invariant_state(chunk, rel, writers, *, min_uses=2):
+    """State keys written only by Init: a function reading one ≥ min_uses times gets
+    `local <key> = <read>` after its declarations."""
+    fm = re.match(r'(?:local )?function (\w+)\(([^)]*)\)', chunk)
+    if not fm or fm.group(1) == 'OnPersist':
+        return chunk, 0
+    fname = fm.group(1)
+    reads = re.findall(r'\b((?:__native_entity_state|state|quest):(?:Get|GetState)(?:Bool|Int|Float|String|Thing)\("(\w+)"\))', chunk)
+    counts = {}
+    for expr, key in reads:
+        counts.setdefault(expr, [key, 0])[1] += 1
+    occupied = {t[0] for t in tokens(chunk) if t.lastgroup == 'identifier'}
+    hoists = []
+    for expr, (key, n) in counts.items():
+        if n < min_uses:
+            continue
+        scope = ('quest', None) if expr.startswith('quest:') else ('entity', rel)
+        owners = writers.get((scope, key), set())
+        if any(w != 'Init' for w in owners) or fname in owners:
+            continue
+        if re.search(r'\b(?:__native_entity_state|state|quest):SetState\w+\("' + key + r'"', chunk):
+            continue
+        name = key[0].lower() + key[1:]
+        if name == 'iD':
+            name = 'id'
+        name = re.sub(r'ID$', 'Id', name)
+        if name in occupied or name in KEYWORDS:
+            continue
+        occupied.add(name)
+        hoists.append((expr, name))
+    if not hoists:
+        return chunk, 0
+    lines = chunk.splitlines(keepends=True)
+    # insertion point: after the header, declaration-only locals, the resources local and the shim closures
+    at = 1
+    while at < len(lines) and (re.fullmatch(r'    local [\w, ]+\n', lines[at]) or re.fullmatch(r'    local (?:resources|helpers) = [^\n]+\n', lines[at])):
+        at += 1
+    body = ''.join(lines[at:])
+    for expr, name in hoists:
+        body = body.replace(expr, name)
+    decls = ''.join(f'    local {name} = {expr}\n' for expr, name in hoists)
+    return ''.join(lines[:at]) + decls + body, len(hoists)
+
+
+def name_helpers_by_state(source):
+    """`helper_XXXX(quest, me, p)` whose body stores p into one state key -> `Set<Key>` (same file)."""
+    count = 0
+    for m in re.finditer(r'^function (helper_[0-9A-Fa-f]+)\(([^)]*)\)\n([\s\S]*?)^end\n', source, re.M):
+        old, params, body = m.group(1), m.group(2), m.group(3)
+        plist = [x.strip() for x in params.split(',')]
+        if len(plist) != 3:
+            continue
+        p = plist[2]
+        stores = re.findall(r'\b(?:state|__native_entity_state|quest):(?:SetState|Set)\w+\("(\w+)", ' + re.escape(p) + r'\)', body)
+        if len(stores) != 1:
+            continue
+        new = 'Set' + stores[0]
+        if re.search(r'\b' + new + r'\b', source):
+            continue
+        source = rename_identifiers(source, {old: new})
+        source = source.replace(f'function {new}(', f'-- helper 0x{old[7:].upper()} (named after the state it writes)\nfunction {new}(', 1)
+        count += 1
+    return source, count
+
+
+def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
     source, hoisted = hoist_requires(source)
+    source, aliased = alias_entity_state(source)
+    source, named = name_helpers_by_state(source)
     pure = pure_local_functions(source)
     out, report = [], {}
     for part in _function_chunks(source):
@@ -1133,7 +1515,104 @@ def style_source(source, *, frame_returns_alive=True):
         name = re.match(r'(?:local )?function (\w+)', part).group(1)
         before = style_metrics(part)
         styled, stats = style_function(part, pure, frame_returns_alive=frame_returns_alive)
+        if writers is not None:
+            styled, k = hoist_invariant_state(styled, rel, writers)
+            stats['hoistedState'] = k
         report[name] = {'rewrites': stats, 'before': before, 'after': style_metrics(styled)}
         out.append(styled)
     text = tidy_blank_lines(''.join(out))
-    return text, {'functions': report, 'hoistedRequires': hoisted, 'pureLocalFunctions': sorted(pure)}
+    return text, {'functions': report, 'hoistedRequires': hoisted, 'entityStateAliased': aliased, 'namedHelpers': named,
+                  'pureLocalFunctions': sorted(pure)}
+
+
+def fold_else_exit(lines):
+    """`if C then A else EXIT end` (a one-statement exit branch) -> `if not C then EXIT end` + A."""
+    count = 0
+    changed = True
+    while changed:
+        changed = False
+        lines = [l for l in lines if l != '']
+        for i, line in enumerate(lines):
+            m = re.fullmatch(r'(\s*)if (.+) then\n', line)
+            if not m:
+                continue
+            indent, cond = m.group(1), m.group(2)
+            j = i + 1
+            else_at = None
+            while j < len(lines):
+                l = lines[j]
+                if l == indent + 'else\n':
+                    else_at = j
+                    break
+                if l == indent + 'end\n' or l.startswith(indent + 'elseif ') or (l.strip() and not l.startswith(indent + ' ')):
+                    break
+                j += 1
+            if else_at is None or else_at == i + 1 or else_at + 2 >= len(lines) or lines[else_at + 2] != indent + 'end\n':
+                continue
+            exit_line = lines[else_at + 1]
+            if not re.fullmatch(re.escape(indent) + r'    (?:\w+\(\); )?(?:return(?: [^\n]*)?|goto \w+|break)\n', exit_line):
+                continue
+            body = lines[i + 1:else_at]
+            if any(l.strip().startswith('::') for l in body):
+                continue
+            new = [f'{indent}if {_negate(cond)} then {exit_line.strip()} end\n'] + [b[4:] if b.startswith(indent + '    ') else b for b in body]
+            lines[i:else_at + 3] = new
+            count += 1
+            changed = True
+            break
+    return lines, count
+
+
+def fold_goto_return(lines):
+    """`goto L` when `::L::` is followed only by a `return ...` at the function's tail -> that return."""
+    count = 0
+    lines = [l for l in lines if l != '']
+    for i, line in enumerate(lines):
+        m = re.fullmatch(r'    ::(\w+)::\n', line)
+        if not m:
+            continue
+        rest = [l for l in lines[i + 1:] if l.strip()]
+        if len(rest) != 2 or not re.fullmatch(r'    return(?: [^\n]*)?\n', rest[0]) or rest[1] != 'end\n':
+            continue
+        ret = rest[0].strip()
+        label = m.group(1)
+        for j, l in enumerate(lines):
+            g = re.fullmatch(r'(\s*)goto ' + label + r'\n', l)
+            if g:
+                lines[j] = f'{g.group(1)}{ret}\n'
+                count += 1
+            else:
+                new = re.sub(r'\bthen goto ' + label + r' end$', f'then {ret} end', l.rstrip('\n'))
+                if new != l.rstrip('\n'):
+                    lines[j] = new + '\n'
+                    count += 1
+        if not re.search(r'\bgoto ' + label + r'\b', ''.join(lines)):
+            lines[i] = ''
+    return lines, count
+
+
+def fold_if_around_while(lines):
+    """`if C then while C do BODY end end` -> `while C do BODY end` (the loop tests C first anyway)."""
+    count = 0
+    changed = True
+    while changed:
+        changed = False
+        lines = [l for l in lines if l != '']
+        for i in range(len(lines) - 2):
+            m = re.fullmatch(r'(\s*)if (.+) then\n', lines[i])
+            if not m or lines[i + 1] != f'{m.group(1)}    while {m.group(2)} do\n':
+                continue
+            indent = m.group(1)
+            inner_end = next((j for j in range(i + 2, len(lines)) if lines[j] == indent + '    end\n'), None)
+            if inner_end is None or inner_end + 1 >= len(lines) or lines[inner_end + 1] != indent + 'end\n':
+                continue
+            if any(lines[j].strip() and not lines[j].startswith(indent + '    ') for j in range(i + 2, inner_end)):
+                continue
+            lines[i] = ''
+            for j in range(i + 1, inner_end + 1):
+                lines[j] = lines[j][4:]
+            lines[inner_end + 1] = ''
+            count += 1
+            changed = True
+            break
+    return lines, count

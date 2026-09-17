@@ -1,15 +1,16 @@
 -- Readable native conversion: Artefact. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local __native_entity_state = {}
+local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
     for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        __native_entity_state["GetState" .. kind] = function(_, name) return fields[name] end
-        __native_entity_state["SetState" .. kind] = function(_, name, value) fields[name] = value end
+        state["Get" .. kind] = function(_, name) return fields[name] end
+        state["Set" .. kind] = function(_, name, value) fields[name] = value end
     end
 end
 
+-- Artefact.Main (retail 0x00dcdc50)
 function Main(quest, me)
     local scratchValue2 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     repeat
@@ -26,15 +27,18 @@ function Main(quest, me)
     until false
 end
 
+-- Artefact.Init (retail 0x00dcfa10)
 function Init(quest, me)
     quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") + 1)
     quest:StateListPush("CrateList", me)
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
 end
 
+-- Artefact.OnPersist (retail 0x00cdebc0)
 function OnPersist(quest, context)
 end
 
+-- Artefact.OnPredicateFail (retail 0x00dcf920)
 function OnPredicateFail(quest, me)
     local p0 = 0
     if 0 ~= quest:GetStateListCount("CrateList") then

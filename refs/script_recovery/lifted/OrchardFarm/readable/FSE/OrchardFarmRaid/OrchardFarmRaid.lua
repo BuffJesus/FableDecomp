@@ -1,6 +1,7 @@
 -- Readable native conversion: Q_OrchardFarmRaid. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- Q_OrchardFarmRaid.Main (retail 0x00dcc770)
 function Main(quest)
     quest:AddEntityBinding("GuardTeamSpawn", "OrchardFarmRaid/Entities/TeamSpawn")
     quest:AddEntityBinding("BanditTeamSpawn", "OrchardFarmRaid/Entities/TeamSpawn")
@@ -36,6 +37,7 @@ function Main(quest)
     end
 end
 
+-- Q_OrchardFarmRaid.Init (retail 0x00dcc140)
 function Init(quest)
     quest:SetStateInt("CommentTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:SetStateInt("RemindHeroOfObjectivesTimer", quest:RegisterTimer())  -- native constructor: CTimer member
@@ -87,9 +89,11 @@ function Init(quest)
     quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", true)
 end
 
+-- Q_OrchardFarmRaid.OnPersist (retail 0x00dcc720)
 function OnPersist(quest, context)
 end
 
+-- Q_OrchardFarmRaid.ProcessGameRulesEvil (retail 0x00dd03d0)
 function ProcessGameRulesEvil(quest)
     local resources = quest:RetailResources()
     local scratchValue3, scratchValue4, scratchValue6, scratchValue8, scratchValue9, whisper
@@ -139,15 +143,12 @@ function ProcessGameRulesEvil(quest)
             scratchValue4 = quest:GetDistanceBetweenThings(whisper, scratchValue6) ^ 2
             scratchValue6 = quest:GetHero()
             if scratchValue4 <= (quest:GetDistanceBetweenThings(scratchValue9, scratchValue6) ^ 2) then
-                if not quest:IsActiveThreadTerminating() then
-                    resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", scratchValue9, false, true)
-                    goto LAB_00dd08eb
-                end
-                __cleanup_LAB_00dd0b11(); return
+                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", scratchValue9, false, true)
+            else
+                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", scratchValue9, false, true)
             end
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
-            resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", scratchValue9, false, true)
-            ::LAB_00dd08eb::
             quest:FixMovieSequenceCamera(false)
             if not quest:GetStateBool("ShownCombatFlourishTutorial") then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
@@ -231,6 +232,7 @@ function ProcessGameRulesEvil(quest)
     until false
 end
 
+-- Q_OrchardFarmRaid.ProcessGameRulesGood (retail 0x00dd0f60)
 function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
     local ePriority, f_xStack_18, scratchValue5, scratchValue6, scratchValue7, scratchValue8
@@ -291,15 +293,12 @@ function ProcessGameRulesGood(quest)
             f_xStack_18 = quest:GetDistanceBetweenThings(whisper, scratchValue7) ^ 2
             scratchValue7 = quest:GetHero()
             if f_xStack_18 <= (quest:GetDistanceBetweenThings(scratchValue9, scratchValue7) ^ 2) then
-                if not quest:IsActiveThreadTerminating() then
-                    resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", scratchValue11, false, true)
-                    goto LAB_00dd14ee
-                end
-                __cleanup_LAB_00dd1728(); return
+                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
+                resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", scratchValue11, false, true)
+            else
+                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
+                resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", scratchValue11, false, true)
             end
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
-            resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", scratchValue11, false, true)
-            ::LAB_00dd14ee::
             quest:FixMovieSequenceCamera(false)
             if not quest:GetStateBool("ShownCombatFlourishTutorial") then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
@@ -390,13 +389,15 @@ function ProcessGameRulesGood(quest)
     until false
 end
 
+-- Q_OrchardFarmRaid.DoCutsceneIfRequired (retail 0x00dcfa60)
 function DoCutsceneIfRequired(quest)
     local resources = quest:RetailResources()
     local getNearestWithScriptName, scratchValue3, scratchValue4, scratchValue5, scratchValue6
     local scratchValue7, scratchValue8, scratchValue9, scratchValue10, getAllThingsWithScriptName
     local scratchValue11
     local scratchValue12
-    if quest:GetStateInt("HeroTeam") == 1 then
+    local heroTeam = quest:GetStateInt("HeroTeam")
+    if heroTeam == 1 then
         if quest:IsActiveThreadTerminating() then return end
         scratchValue12 = quest:GetThingWithScriptName("BanditTeamSpawn")
     else
@@ -409,7 +410,7 @@ function DoCutsceneIfRequired(quest)
             if not quest:NewScriptFrame() then return end
         end
         if quest:IsDistanceBetweenThingsUnder(scratchValue12, quest:GetHero(), 10.0) then
-            if quest:GetStateInt("HeroTeam") == 1 then
+            if heroTeam == 1 then
                 getAllThingsWithScriptName = quest:GetAllThingsWithScriptName("BanditTeamMember")
                 getNearestWithScriptName = quest:GetNearestWithScriptName(scratchValue12, "GuardTeamMember")
                 scratchValue8 = resources:NewResource()
@@ -482,21 +483,11 @@ function DoCutsceneIfRequired(quest)
     until false
 end
 
+-- Q_OrchardFarmRaid.WatchForExternalScriptDeactivation (retail 0x00dccf30)
 function WatchForExternalScriptDeactivation(quest)
-    local predicateResult2
     if quest:IsActiveThreadTerminating() then return end
     repeat
-        if quest:IsQuestActive("Q_OrchardFarmRaidGood") then
-            predicateResult2 = false
-        else
-            predicateResult2 = true
-            if quest:IsQuestActive("Q_OrchardFarmRaidEvil") then
-                predicateResult2 = false
-                goto FLOW_after_lab_00dccfa3
-            end
-        end
-        ::FLOW_after_lab_00dccfa3::
-        if predicateResult2 then
+        if not quest:IsQuestActive("Q_OrchardFarmRaidGood") and not quest:IsQuestActive("Q_OrchardFarmRaidEvil") then
             quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM", "Q_OrchardFarmRaidGood", false, false)
             quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM_EVIL", "Q_OrchardFarmRaidEvil", false, false)
             quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
@@ -506,22 +497,26 @@ function WatchForExternalScriptDeactivation(quest)
     until false
 end
 
+-- Q_OrchardFarmRaid.MakeTeamMemberComment (retail 0x00dcda80)
 function MakeTeamMemberComment(quest, commentToMake, speaker, commentType)
+    local commentTimer = quest:GetStateInt("CommentTimer")
     local pSpeaker = speaker
-    if 0 < quest:GetTimer(quest:GetStateInt("CommentTimer")) then
+    if 0 < quest:GetTimer(commentTimer) then
         return false
     end
     local conversationID = quest:AddNewConversation(speaker, false, false)
     quest:AddPersonToConversation(conversationID, quest:GetHero())
     quest:AddLineToConversation(conversationID, ((quest:GetStateString("TextSystemScriptCode") .. pSpeaker:GetDataString()) .. "_") .. commentToMake, pSpeaker, quest:GetHero(), false)
-    quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
+    quest:SetTimer(commentTimer, 5)
     return true
 end
 
+-- Q_OrchardFarmRaid.DoMultiplierCutscene (retail 0x00dd1af0)
 function DoMultiplierCutscene(quest)
     local resources = quest:RetailResources()
-    local scratchValue, sequence12, sequence21, sequence24, pScriptObject, string, scratchValue8
-    local scratchValue9, scratchValue10
+    local scratchValue, sequence12, pScriptObject, string, scratchValue8, scratchValue9
+    local scratchValue10
+    local heroTeam = quest:GetStateInt("HeroTeam")
     scratchValue8 = resources:NewResource()
     resources:TryAcquire(pScriptObject, quest:GetHero(), 4)
     scratchValue10 = resources:NewActorMap()
@@ -534,7 +529,7 @@ function DoMultiplierCutscene(quest)
     sequence12 = not scratchValue
     if not sequence12 then
         scratchValue = true
-        sequence12 = quest:GetStateInt("HeroTeam") ~= 0
+        sequence12 = heroTeam ~= 0
     end
     if sequence12 then
         scratchValue = false
@@ -543,11 +538,7 @@ function DoMultiplierCutscene(quest)
         if not quest:IsActiveThreadTerminating() then
             resources:RunMacro("CS_ORCHARD_GOOD_WHISPERINTRO_GWLL", scratchValue10, false, true)
             quest:FixMovieSequenceCamera(false)
-            sequence21 = false
-            if quest:GetStateBool("ShownCombatMultiplierTutorial") then
-                sequence21 = true
-            end
-            if sequence21 or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
+            if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
             if quest:DisplayTutorial(9) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
                 while not quest:MsgIsTutorialClickedPast() do
@@ -567,7 +558,7 @@ function DoMultiplierCutscene(quest)
                     quest:PauseAllNonScriptedEntities(false)
                     goto FLOW_after_lab_00dd1d98
                 end
-                if quest:GetStateInt("HeroTeam") ~= 1 then
+                if heroTeam ~= 1 then
                     if not quest:IsActiveThreadTerminating() then
                         string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"
                         goto LAB_00dd1d98
@@ -593,33 +584,25 @@ function DoMultiplierCutscene(quest)
                     end
                 end
                 quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-            else
-                if not quest:IsActiveThreadTerminating() then
-                    if quest:GetStateInt("HeroTeam") == 1 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        string = "CS_ORCHARD_EVIL_WHISPERINTRO_LOP"
-                    else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
-                    end
-                    resources:RunMacro(string, scratchValue10, false, true)
-                    quest:FixMovieSequenceCamera(false)
-                    sequence24 = false
-                    if quest:GetStateBool("ShownCombatMultiplierTutorial") then
-                        sequence24 = true
-                    end
-                    if sequence24 or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                    if quest:DisplayTutorial(9) then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                        while not quest:MsgIsTutorialClickedPast() do
-                            if not quest:NewScriptFrame() then goto LAB_00dd1e70 end
-                        end
-                    end
-                    quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-                    goto FLOW_after_lab_00dd1d98_125
+            elseif not quest:IsActiveThreadTerminating() then
+                if heroTeam == 1 then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    string = "CS_ORCHARD_EVIL_WHISPERINTRO_LOP"
+                else
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
                 end
+                resources:RunMacro(string, scratchValue10, false, true)
+                quest:FixMovieSequenceCamera(false)
+                if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                if quest:DisplayTutorial(9) then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    while not quest:MsgIsTutorialClickedPast() do
+                        if not quest:NewScriptFrame() then goto LAB_00dd1e70 end
+                    end
+                end
+                quest:SetStateBool("ShownCombatMultiplierTutorial", true)
             end
-            ::FLOW_after_lab_00dd1d98_125::
         end
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)
@@ -631,6 +614,7 @@ function DoMultiplierCutscene(quest)
     resources:ReleaseResource(scratchValue8)
 end
 
+-- Q_OrchardFarmRaid.ReplaceQuestCards (retail 0x00dd0eb0)
 function ReplaceQuestCards(quest)
     quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM", "Q_OrchardFarmRaidGood", false, false)
     quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM_EVIL", "Q_OrchardFarmRaidEvil", false, false)
