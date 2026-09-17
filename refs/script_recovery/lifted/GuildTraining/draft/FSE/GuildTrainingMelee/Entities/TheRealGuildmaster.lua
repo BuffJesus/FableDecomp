@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_00, fret_01, fret_02, fret_03, fret_04, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pfVar13, piVar12, pppuVar15, r1, r2, r3, r4, r5, r6, r7, r8, thing, uVar1, xStack_1c0, xStack_1d0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
+    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_00, fret_01, fret_02, fret_03, fret_04, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pfVar13, piVar12, pppuVar15, r1, r2, r3, r4, r5, r6, r7, r8, thing, uVar1, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
     xStack_250 = resources:NewResource()
     bVar3 = false
@@ -651,42 +651,42 @@ function Main(quest, me)
             resources:SetActor(xStack_220, "TEACHER", xStack_214)
             resources:SetActor(xStack_220, "THUNDER", xStack_1d0)
             resources:SetActor(xStack_220, "WHISPER", xStack_84)
-            -- TODO(native): Std_Deque_Construct(xStack_1e0);
+            xStack_1e0 = resources:NewStringMap()
             native_arg_switch_2 = iVar6
             repeat
                 if native_arg_switch_2 == 0 then
                     pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_APLUS"
-                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1e0,&xStack_158);
+                    resources:SetString(xStack_1e0, "$GRADE", pcVar14)
                     break
                 else
                     if native_arg_switch_2 == 1 then
                         pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_A"
-                        -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1e0,&xStack_118);
+                        resources:SetString(xStack_1e0, "$GRADE", pcVar14)
                         break
                     else
                         if native_arg_switch_2 == 2 then
                             pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_B"
-                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1e0,&xStack_150);
+                            resources:SetString(xStack_1e0, "$GRADE", pcVar14)
                             break
                         else
                             if native_arg_switch_2 == 3 then
                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_C"
-                                -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1e0,&xStack_1a4);
+                                resources:SetString(xStack_1e0, "$GRADE", pcVar14)
                                 break
                             else
                                 if native_arg_switch_2 == 4 then
                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_D"
-                                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1e0,&xStack_148);
+                                    resources:SetString(xStack_1e0, "$GRADE", pcVar14)
                                     break
                                 else
                                     if native_arg_switch_2 == 5 then
                                         pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_E"
-                                        -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1e0,&xStack_110);
+                                        resources:SetString(xStack_1e0, "$GRADE", pcVar14)
                                         break
                                     else
                                         if native_arg_switch_2 == 6 then
                                             pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_F"
-                                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1e0,&xStack_140);
+                                            resources:SetString(xStack_1e0, "$GRADE", pcVar14)
                                             break
                                         else
                                             goto FLOW_native_label_1
@@ -708,14 +708,14 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if not bVar3 then
-                    -- TODO(native): RunCutsceneMacro_Func(&xStack_138,xStack_220,(void *)0x0,xStack_1e0,false,true);
+                    resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_WON", xStack_220, xStack_1e0, false, true)
                     goto LAB_00d5a28a
                 end
                 -- LAB_00d5a948: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
                 -- LAB_00d5a96a: (native jump target)
                 resources:ReleaseResource(xStack_d0)
-                -- TODO(native): LTextTreeWalkThrough__Dtor(xStack_1e0);
+                resources:DestroyStringMap(xStack_1e0)
                 resources:DestroyActorMap(xStack_220)
                 -- TODO(native): goto LAB_00d5a98b
             end
@@ -727,7 +727,7 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 -- TODO(native): goto LAB_00d5a96a
             end
-            -- TODO(native): RunCutsceneMacro_Func(&xStack_108,xStack_220,(void *)0x0,xStack_1e0,false,true);
+            resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_LOST", xStack_220, xStack_1e0, false, true)
             ::LAB_00d5a28a::
             quest:ChangeHeroHealthBy(1000.0, true, false)
             quest:EntitySetInFaction(pCVar5, "FACTION_HERO")
@@ -779,7 +779,7 @@ function Main(quest, me)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
             resources:ReleaseResource(xStack_a4)
-            -- TODO(native): LTextTreeWalkThrough__Dtor(xStack_1e0);
+            resources:DestroyStringMap(xStack_1e0)
             resources:DestroyActorMap(xStack_220)
             resources:DestroyMovie(xStack_c0)
             resources:ReleaseResource(xStack_1c0)

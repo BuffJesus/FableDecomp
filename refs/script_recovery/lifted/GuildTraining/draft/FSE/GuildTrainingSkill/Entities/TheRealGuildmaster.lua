@@ -1089,7 +1089,7 @@ function Main(quest, me)
                         iVar15 = iVar16 + 1
                         pfVar13 = pfVar13 + 1
                     until not (iVar15 < 7)
-                    -- TODO(native): Std_Deque_Construct(xStack_1cc);
+                    pCVar7 = resources:NewStringMap()
                     native_arg_switch_2 = iVar16
                     repeat
                         if native_arg_switch_2 == 0 then
@@ -1137,8 +1137,8 @@ function Main(quest, me)
                         end
                     until not (false)
                     ::FLOW_native_label_1::
-                    -- TODO(native): RunCutsceneMacro_Func(xStack_11c,xStack_1ac,(void *)0x0,xStack_1cc,false,false);
-                    -- TODO(native): LTextTreeWalkThrough__Dtor(xStack_1cc);
+                    resources:RunMacroWithStrings("$GRADE", xStack_1ac, pCVar7, false, false)
+                    resources:DestroyStringMap(pCVar7)
                     goto LAB_00d5d526
                 end
                 -- TODO(native): goto LAB_00d5db62

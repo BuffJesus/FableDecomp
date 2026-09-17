@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_00, fret_01, iVar10, iVar11, iVar22, i_stk_24, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, pfVar16, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r3, r4, r5, r6, r7, r8, r9, thing, thing_b10, thing_b11, thing_b8, thing_b9, uVar18, uVar19, uVar2, uVar20, uVar21, u_stk_17c, xStack_10, xStack_158, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_38, xStack_48, xStack_54, xStack_60_2
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_00, fret_01, iVar10, iVar11, iVar22, i_stk_24, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, pfVar16, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r3, r4, r5, r6, r7, r8, r9, thing, thing_b10, thing_b11, thing_b8, thing_b9, uVar18, uVar19, uVar2, uVar20, uVar21, u_stk_17c, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_38, xStack_48, xStack_54, xStack_60_2
     local alive = true
     local function __region_LAB_00d61ad8_c22()
         quest:PauseAllNonScriptedEntities(false)
@@ -664,42 +664,42 @@ function Main(quest, me)
                         iVar10 = iVar11 + 1
                         pfVar16 = pfVar16 + 1
                     until not (iVar10 < 7)
-                    -- TODO(native): Std_Deque_Construct(xStack_1c0);
+                    xStack_1c0 = resources:NewStringMap()
                     native_arg_switch_2 = iVar11
                     repeat
                         if native_arg_switch_2 == 0 then
                             pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_APLUS"
-                            -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_c0);
+                            resources:SetString(xStack_1c0, "$GRADE", pcVar17)
                             break
                         else
                             if native_arg_switch_2 == 1 then
                                 pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_A"
-                                -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_138);
+                                resources:SetString(xStack_1c0, "$GRADE", pcVar17)
                                 break
                             else
                                 if native_arg_switch_2 == 2 then
                                     pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_B"
-                                    -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_8c);
+                                    resources:SetString(xStack_1c0, "$GRADE", pcVar17)
                                     break
                                 else
                                     if native_arg_switch_2 == 3 then
                                         pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_C"
-                                        -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_68);
+                                        resources:SetString(xStack_1c0, "$GRADE", pcVar17)
                                         break
                                     else
                                         if native_arg_switch_2 == 4 then
                                             pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_D"
-                                            -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_128);
+                                            resources:SetString(xStack_1c0, "$GRADE", pcVar17)
                                             break
                                         else
                                             if native_arg_switch_2 == 5 then
                                                 pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_E"
-                                                -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_b8);
+                                                resources:SetString(xStack_1c0, "$GRADE", pcVar17)
                                                 break
                                             else
                                                 if native_arg_switch_2 == 6 then
                                                     pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_F"
-                                                    -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_130);
+                                                    resources:SetString(xStack_1c0, "$GRADE", pcVar17)
                                                     break
                                                 else
                                                     goto FLOW_native_label_1
@@ -717,7 +717,7 @@ function Main(quest, me)
                     resources:RunMacro("$GRADE", xStack_210, false, false)
                     pCVar12 = 0x1
                     quest:PauseAllNonScriptedEntities((pCVar12 ~= 0))
-                    -- TODO(native): RunCutsceneMacro_Func(xStack_110,xStack_210,(void *)0x0,xStack_1d0,false,false);
+                    resources:RunMacroWithStrings(xStack_110, xStack_210, xStack_1d0, false, false)
                     quest:Pause(2.0)
                     quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
                     iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -891,7 +891,7 @@ function Main(quest, me)
                         bVar6 = true
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): LTextTreeWalkThrough__Dtor(xStack_1c0);
+                    resources:DestroyStringMap(xStack_1c0)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
@@ -1629,7 +1629,7 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
     end
     ::FLOW_after_lab_00d61578::
-    -- TODO(native): LTextTreeWalkThrough__Dtor(xStack_1c0);
+    resources:DestroyStringMap(xStack_1c0)
     goto LAB_00d6135b
     ::LAB_00d60bad::
     if not cVar7 then goto LAB_00d60bd4 end

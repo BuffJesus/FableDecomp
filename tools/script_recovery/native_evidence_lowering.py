@@ -397,6 +397,8 @@ RE_MAP_RUN = re.compile(
     r'RunCutsceneMacro_Func\((?:\(CCharString \*\))?&?(?P=key),&?(?P<map>\w+),\(void \*\)0x0,\(void \*\)0x0,(?P<setup>true|false),(?P<skip>true|false)\);[ \t]*\r?\n'
     r'(?:[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(&?(?P=key)\);[ \t]*\r?\n)?', re.M)
 RE_MAP_DESTROY = re.compile(r'^([ \t]*)StdMap_Destroy_API\(&?(\w+)(?:\.field_0x4)?\);', re.M)
+RE_MAP_RUN_STRINGS = re.compile(
+    r'^(?P<ind>[ \t]*)RunCutsceneMacro_Func\((?P<key>(?:\(CCharString \*\))?&?\(?[\w. +]+\)?),&?(?P<map>[\w.]+),\(void \*\)0x0,&?(?P<strings>\w+),(?P<setup>true|false),(?P<skip>true|false)\);', re.M)
 RE_MAP_RUN_VAR = re.compile(
     r'^(?P<ind>[ \t]*)RunCutsceneMacro_Func\((?P<key>(?:\(CCharString \*\))?&?\(?[\w. +]+\)?),&?(?P<map>[\w.]+),\(void \*\)0x0,\(void \*\)0x0 ?,(?P<setup>true|false),(?P<skip>true|false)\);', re.M)
 RE_MAP_NEW2 = re.compile(r'^([ \t]*)StdMap_Construct_API\(&?(\w+)\);', re.M)
@@ -451,6 +453,7 @@ def fold_actor_maps(text, resolve_string=None):
     text = RE_MAP_SET2.sub(set2_repl, text)
     text = RE_MAP_RUN.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacro({keyval(m.group("keyval"))}, {m.group("map")}, {m.group("setup")}, {m.group("skip")});\n', text)
     text = RE_MAP_DESTROY.sub(r'\1ACTORMAP_Destroy(\2);', text)
+    text = RE_MAP_RUN_STRINGS.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacroWithStrings({_strip_addr(m.group("key"))}, {m.group("map").split(".field")[0]}, {m.group("strings")}, {m.group("setup")}, {m.group("skip")});', text)
     text = RE_MAP_RUN_VAR.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacro({_strip_addr(m.group("key"))}, {m.group("map").split(".field")[0]}, {m.group("setup")}, {m.group("skip")});', text)
     return text
 
@@ -467,6 +470,11 @@ COUNTED_RELEASE = {0x6E7AB0, 0xCE1000}   # CCountedPointer release: decref [this
 BASE_OBJECT_DTOR = {0x99A430}         # CBaseIntelligentPointer::~ (bsim: CPhysicsMeshInfo::~CPhysicsMeshInfo)
 RESOURCE_ACQUIRED = {0xCD23B9}        # bool __thiscall (this): [this+8] != 0, the resource's counted handle (disasm 2026-09-16)
 RESOURCE_SCRIPT_THING = {0x7E7490}    # CScriptThing __thiscall GetScriptThing(this) via hidden pointer (empty when unacquired)
+# std::map<CCharString,CCharString> (cutscene string inputs): ctor 0x9AC2D0 (bsim: Std_Deque_Construct, allocates the
+# 0x18-byte head node), dtor 0x9AC310 (bsim: LTextTreeWalkThrough::Dtor), operator[] 0x9AC700 (disasm 2026-09-17)
+STRINGMAP_CTOR = {0x9AC2D0}
+STRINGMAP_DTOR = {0x9AC310}
+STRINGMAP_INDEX = {0x9AC700}
 
 
 def _thing_source(arg):
@@ -590,6 +598,15 @@ def fold_resource_objects(text, call_labels):
                 return out
             text = re.sub(r'^([ \t]*)(?:(\w+) = (?:\(CScriptThing \*\)\s*)?)?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;,]+?),\s*([^;]+?)\);',
                           script_thing, text, flags=re.M)
+        elif target in STRINGMAP_CTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label) + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = STRINGMAP_New();', text, flags=re.M)
+        elif target in STRINGMAP_DTOR:
+            text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}STRINGMAP_Destroy({_strip_addr(m.group(2))});', text, flags=re.M)
+        elif target in STRINGMAP_INDEX:
+            # `N = map::operator[](M,&key); CCharString::operator=((CCharString *)N,value);` -> STRINGMAP_Set(M, key, value)
+            pat = re.compile(r'^([ \t]*)(\w+) = ' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(&?(\w+),\s*(?:\(CCharString \*\))?&?(\w+)\);[ \t]*\r?\n'
+                             r'[ \t]*CCharString::operator=\(\(CCharString \*\)\2,\s*([^;]+?)(?:,\s*-1)?\);', re.M)
+            text = pat.sub(lambda m: f'{m.group(1)}STRINGMAP_Set({m.group(3)}, {m.group(4)}, {m.group(5).strip()});', text)
         elif target in RESOURCE_ACQUIRED:
             text = re.sub(re.escape(label) + r'\s*\(([^;,]+?)\)', lambda m: f'RESOURCE_IsAcquired({_strip_addr(m.group(1))})', text)
     return text
@@ -644,7 +661,7 @@ def fold_name_compare(text):
     return text
 
 
-STACK_OBJECT_SIZES = {'RESOURCE_NewResource': 16, 'RESOURCE_StartMovie': 16, 'ACTORMAP_New': 12, 'QUESTTHING_Empty': 12}   # std::_Tree: comp/pad, _Myhead, _Mysize
+STACK_OBJECT_SIZES = {'RESOURCE_NewResource': 16, 'RESOURCE_StartMovie': 16, 'ACTORMAP_New': 12, 'STRINGMAP_New': 12, 'QUESTTHING_Empty': 12}   # std::_Tree: comp/pad, _Myhead, _Mysize
 RE_STACK_NAME = re.compile(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)\b')
 
 
@@ -653,7 +670,7 @@ def canonicalise_stack_objects(text: str) -> str:
     stack object (a 16-byte resource/movie/map) appear under several names. Objects created by the
     pseudo API give their base slot and size; every slot name inside that extent becomes the base."""
     bases = []
-    for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)(?:_p([48c]))? = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|QUESTTHING_Empty)\(', text):
+    for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)(?:_p([48c]))? = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|STRINGMAP_New|QUESTTHING_Empty)\(', text):
         shift = int(m.group(3), 16) if m.group(3) else 0
         bases.append((m.start(), m.group(1), int(m.group(2), 16) - shift, STACK_OBJECT_SIZES[m.group(4)], m.group(0)[:m.group(0).index(' =')]))
     if not bases:
@@ -1373,6 +1390,9 @@ LUA_PSEUDO = [
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
     (re.compile(r'RESOURCE_IsAcquired\(\w+\)'), 'false'),   # a freshly constructed stack resource has no handle yet ([this+8] == 0)
     (re.compile(r'LOCALLIST_Count\((\w+)\)'), r'#\1'),
+    (re.compile(r'STRINGMAP_New\('), 'resources:NewStringMap('),
+    (re.compile(r'STRINGMAP_Set\('), 'resources:SetString('),
+    (re.compile(r'STRINGMAP_Destroy\('), 'resources:DestroyStringMap('),
     (re.compile(r'RESOURCE_(\w+)\('), r'resources:\1('),
     (re.compile(r'QUESTSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'quest:\1State\2('),
     (re.compile(r'ENTITYSTATE_(Get|Set)(Int|Bool|Float|String)\('), r'__native_entity_state:\1State\2('),

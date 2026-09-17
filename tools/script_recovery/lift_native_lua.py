@@ -177,7 +177,7 @@ RE_CONS_VAL = re.compile(r'std::\s*_Cons_val<[^;]*?;', re.S)
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
 # Evidence-lowering pseudo statements (native_evidence_lowering.py) are emitted as-is with lifted operands.
-RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+)\s*\((.*)\);\s*$')
+RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+|STRINGMAP_\w+)\s*\((.*)\);\s*$')
 RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (' + LABEL_TOKEN + r');\s*$')
 RE_IF_BREAK = re.compile(r'^\s*if\s*\((.*)\)\s*break;\s*$')
 RE_THING_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?CScriptThing::(\w+)\s*\(\s*([^,]+?)\s*(?:,(.*))?\);\s*$')
