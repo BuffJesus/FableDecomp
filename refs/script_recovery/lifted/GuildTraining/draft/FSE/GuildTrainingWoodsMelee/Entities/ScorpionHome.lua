@@ -14,7 +14,7 @@ function Main(quest, me)
     local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, puVar4, pu_stk_20, r1, v_stk_4c, xStack_24
     local alive = true
     v_stk_4c = 0
-    iVar7 = (math.modf(quest:ReadGlobalGameData(0xf10)))
+    iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf10)))
     local xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
     quest:DisplayQuestInfo(true)
     local timerId = quest:RegisterTimer()
@@ -76,7 +76,7 @@ function Main(quest, me)
         if i_stk_28 < 0 then
             fVar10 = fVar10 + 4294967296.0
         end
-        count = (math.modf((quest:ReadGlobalGameData(0xf10) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar10))
+        count = (math.modf((quest:ReadGlobalGameDataFloat(0xf10) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar10))
         quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
         puVar4 = pu_stk_20
         if ((pu_stk_20 - xStack_24) / 0xc) < 3 then
@@ -113,11 +113,11 @@ function Main(quest, me)
                     pCVar9 = quest:GetHero()
                     r1 = quest:GetFurthestWithScriptName(pCVar9, "ScorpionSpawn")
                     if not (r1 ~= nil and not r1:IsNull()) then
+                        pPosition = {x = 0, y = 0, z = 0}
                     else
                         pPosition = r1:GetPos()
                     end
                     pCVar9 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                    -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,(int)&*(int *)(pCVar9 + 0x4));
                     pCVar9 = nil
                     if (r1 ~= nil and not r1:IsNull()) then
                         r1:SetToKillOnLevelUnload(0)
@@ -130,13 +130,16 @@ function Main(quest, me)
             end
         end
         pu_stk_20 = puVar4
+        if xStack_24 ~= nil then
+            -- TODO(native): free(xStack_24[0 + 1]);
+        end
         cVar1 = quest:GetStateBool("ScorpionsAlive")
         timerId = timerId
     until false
 end
 
 function Init(quest, me)
-    local iVar1 = (math.modf(quest:ReadGlobalGameData(0xf10)))
+    local iVar1 = (math.modf(quest:ReadGlobalGameDataFloat(0xf10)))
     __native_entity_state:SetStateInt("ScorpionsLeft", iVar1)
     __native_entity_state:SetStateBool("FlourishHint", false)
 end

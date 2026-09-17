@@ -563,7 +563,7 @@ function Main(quest, me)
                             end
                             pCVar6 = quest:GetHero()
                             fret_00 = quest:GetHealth(pCVar6)
-                            if fret_00 < quest:ReadGlobalGameData(0xed8) then
+                            if fret_00 < quest:ReadGlobalGameDataFloat(0xed8) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
                                 if bVar4 then

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_00, fret_01, fret_02, fret_03, fret_04, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pfVar13, pppuVar15, r1, r2, r3, r4, r5, r6, r7, r8, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
+    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_00, fret_01, fret_02, fret_03, fret_04, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, r7, r8, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
     xStack_250 = resources:NewResource()
     bVar3 = false
@@ -286,7 +286,7 @@ function Main(quest, me)
                 quest:UpdateQuestInfoCounter(xStack_23c, quest:GetStateInt("GenericTutorialCounter"), -1)
                 pCVar5 = quest:GetHero()
                 fret_00 = quest:GetHealth(pCVar5)
-                if fret_00 < quest:ReadGlobalGameData(0xed8) then
+                if fret_00 < quest:ReadGlobalGameDataFloat(0xed8) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
@@ -419,7 +419,7 @@ function Main(quest, me)
                 quest:UpdateQuestInfoCounter(xStack_23c, quest:GetStateInt("GenericTutorialCounter"), -1)
                 pCVar5 = quest:GetHero()
                 fret_01 = quest:GetHealth(pCVar5)
-                if fret_01 < quest:ReadGlobalGameData(0xed8) then
+                if fret_01 < quest:ReadGlobalGameDataFloat(0xed8) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
@@ -547,10 +547,10 @@ function Main(quest, me)
                 if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
                 pCVar5 = quest:GetHero()
                 fret_04 = quest:GetHealth(pCVar5)
-                if quest:ReadGlobalGameData(0xed8) <= fret_04 then
+                if quest:ReadGlobalGameDataFloat(0xed8) <= fret_04 then
                     pCVar5 = quest:GetThingWithScriptName("MeleeOpponent")
                     r6 = quest:GetHealth(pCVar5)
-                    fVar19 = quest:ReadGlobalGameData(0xed8)
+                    fVar19 = quest:ReadGlobalGameDataFloat(0xed8)
                     if fret_05 < fVar19 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -588,19 +588,19 @@ function Main(quest, me)
             fret_06 = quest:GetHealth(pCVar5)
             -- TODO(native): CStack_1d4 = (CCharString)(float)fret_06;
             fret_07 = quest:GetHealth(nil --[[missing]])
-            -- TODO(native): pfVar13 = *(float **)(DAT_0143e90c + 0xeb4);
+            ixVar13 = 0
             -- TODO(native): CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)CStack_1d4));
             iVar7 = 0
             repeat
                 iVar6 = iVar7
-                if *pfVar13 < CStack_1d4 ~= (*pfVar13 == CStack_1d4) then
+                if quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) < CStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) == CStack_1d4) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
                     break
                 end
                 iVar7 = iVar6 + 1
-                pfVar13 = pfVar13 + 1
+                ixVar13 = ixVar13 + 1
             until not (iVar7 < 7)
             quest:ResetPlayerCreatureOnlyTarget()
             quest:SetStateInt("TutorialState", 7)

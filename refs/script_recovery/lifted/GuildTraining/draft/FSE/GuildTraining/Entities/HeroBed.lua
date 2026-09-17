@@ -17,7 +17,7 @@ function Main(quest, me)
     quest:SetThingAsUsable(me, false)
     quest:SetThingPersistent(me, true)
     xStack_c = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
-    iVar4 = #xStack_c
+    iVar4 = LOCALLIST_Count(xStack_c[0 + 1])
     if 0 < iVar4 then
         iVar7 = 0
         repeat
@@ -25,8 +25,8 @@ function Main(quest, me)
             bVar3 = not alive
             puVar6 = pu_stk_20
             if bVar3 then goto LAB_00d4482d end
-            quest:SetThingAsUsable(xStack_c[(iVar7) / 0xc + 1], false)
-            quest:SetThingPersistent(xStack_c[(iVar7) / 0xc + 1], true)
+            quest:SetThingAsUsable(xStack_c[0 + 1][(iVar7) / 0xc + 1], false)
+            quest:SetThingPersistent(xStack_c[0 + 1][(iVar7) / 0xc + 1], true)
             iVar5 = iVar5 + 1
             iVar7 = iVar7 + 0xc
         until not (iVar5 < iVar4)
@@ -37,10 +37,17 @@ function Main(quest, me)
     puVar6 = pu_stk_20
     if bVar3 then
         puVar6 = pu_stk_14
+        if xStack_24 ~= nil then
+            -- TODO(native): free(xStack_24[0 + 1]);
+            puVar6 = pu_stk_14
+        end
         pu_stk_14 = puVar6
+        if xStack_18 ~= nil then
+            -- TODO(native): free(xStack_18[0 + 1]);
+        end
     else
         xStack_24 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
-        iVar5 = #xStack_24
+        iVar5 = LOCALLIST_Count(xStack_24[0 + 1])
         if 0 < iVar5 then
             iVar7 = 0
             repeat
@@ -48,8 +55,8 @@ function Main(quest, me)
                 bVar3 = not alive
                 puVar6 = pu_stk_20
                 if bVar3 then goto LAB_00d449bd end
-                quest:SetThingAsUsable(xStack_24[(iVar7) / 0xc + 1], false)
-                quest:SetThingPersistent(xStack_24[(iVar7) / 0xc + 1], true)
+                quest:SetThingAsUsable(xStack_24[0 + 1][(iVar7) / 0xc + 1], false)
+                quest:SetThingPersistent(xStack_24[0 + 1][(iVar7) / 0xc + 1], true)
                 iVar4 = iVar4 + 1
                 iVar7 = iVar7 + 0xc
             until not (iVar4 < iVar5)
@@ -60,10 +67,17 @@ function Main(quest, me)
         puVar6 = pu_stk_20
         if bVar3 then
             puVar6 = pu_stk_14
+            if xStack_24 ~= nil then
+                -- TODO(native): free(xStack_24[0 + 1]);
+                puVar6 = pu_stk_14
+            end
             pu_stk_14 = puVar6
+            if xStack_18 ~= nil then
+                -- TODO(native): free(xStack_18[0 + 1]);
+            end
         else
             xStack_18 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
-            iVar5 = #xStack_18
+            iVar5 = LOCALLIST_Count(xStack_18[0 + 1])
             if 0 < iVar5 then
                 iVar7 = 0
                 repeat
@@ -71,8 +85,8 @@ function Main(quest, me)
                     bVar3 = not alive
                     puVar6 = pu_stk_20
                     if bVar3 then goto LAB_00d44b4d end
-                    quest:SetThingAsUsable(xStack_18[(iVar7) / 0xc + 1], false)
-                    quest:SetThingPersistent(xStack_18[(iVar7) / 0xc + 1], true)
+                    quest:SetThingAsUsable(xStack_18[0 + 1][(iVar7) / 0xc + 1], false)
+                    quest:SetThingPersistent(xStack_18[0 + 1][(iVar7) / 0xc + 1], true)
                     iVar4 = iVar4 + 1
                     iVar7 = iVar7 + 0xc
                 until not (iVar4 < iVar5)
@@ -82,10 +96,24 @@ function Main(quest, me)
             puVar6 = pu_stk_20
             if bVar3 then
                 puVar6 = pu_stk_14
+                if xStack_24 ~= nil then
+                    -- TODO(native): free(xStack_24[0 + 1]);
+                    puVar6 = pu_stk_14
+                end
                 pu_stk_14 = puVar6
+                if xStack_18 ~= nil then
+                    -- TODO(native): free(xStack_18[0 + 1]);
+                end
             else
                 puVar6 = pu_stk_14
+                if xStack_24 ~= nil then
+                    -- TODO(native): free(xStack_24[0 + 1]);
+                    puVar6 = pu_stk_14
+                end
                 pu_stk_14 = puVar6
+                if xStack_18 ~= nil then
+                    -- TODO(native): free(xStack_18[0 + 1]);
+                end
             end
         end
     end
@@ -93,7 +121,14 @@ function Main(quest, me)
     goto LAB_00d44c44
     ::LAB_00d449bd::
     puVar6 = pu_stk_14
+    if xStack_24 ~= nil then
+        -- TODO(native): free(xStack_24[0 + 1]);
+        puVar6 = pu_stk_14
+    end
     pu_stk_14 = puVar6
+    if xStack_18 ~= nil then
+        -- TODO(native): free(xStack_18[0 + 1]);
+    end
     puVar6 = xStack_c
     if xStack_c ~= pu_stk_8 then
         bVar3 = xStack_c == nil
@@ -102,11 +137,25 @@ function Main(quest, me)
     goto LAB_00d44bc3
     ::LAB_00d44b4d::
     puVar6 = pu_stk_14
+    if xStack_24 ~= nil then
+        -- TODO(native): free(xStack_24[0 + 1]);
+        puVar6 = pu_stk_14
+    end
     pu_stk_14 = puVar6
+    if xStack_18 ~= nil then
+        -- TODO(native): free(xStack_18[0 + 1]);
+    end
     goto LAB_00d44bc3
     ::LAB_00d4482d::
     puVar6 = pu_stk_14
+    if xStack_24 ~= nil then
+        -- TODO(native): free(xStack_24[0 + 1]);
+        puVar6 = pu_stk_14
+    end
     pu_stk_14 = puVar6
+    if xStack_18 ~= nil then
+        -- TODO(native): free(xStack_18[0 + 1]);
+    end
     puVar6 = xStack_c
     if xStack_c ~= pu_stk_8 then
         bVar3 = xStack_c == nil
@@ -116,6 +165,7 @@ function Main(quest, me)
     bVar3 = xStack_c == nil
     ::LAB_00d44c44::
     if not bVar3 then
+        -- TODO(native): free(xStack_c[0 + 1]);
     end
 end
 

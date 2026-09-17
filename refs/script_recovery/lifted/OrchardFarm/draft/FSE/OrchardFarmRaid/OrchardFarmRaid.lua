@@ -282,7 +282,7 @@ function ProcessGameRulesEvil(quest)
                     resources:DestroyMovie(xStack_9c)
                     resources:DestroyActorMap(r2)
                     quest:AddLogbookStoryEntry(85)
-                    quest:GiveHeroMorality(quest:ReadGlobalGameData(0xd98))
+                    quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(0xd98))
                     quest:SetMasterGameState("OrchardFarmRaidLastCompleted", 1)
                     quest:RemoveQuestInfoElement(fVar5)
                     bVar4 = true
@@ -532,7 +532,7 @@ function ProcessGameRulesGood(quest)
                     resources:DestroyMovie(xStack_7c)
                     resources:DestroyActorMap(r2)
                     quest:AddLogbookStoryEntry(80)
-                    quest:GiveHeroMorality(quest:ReadGlobalGameData(0xd9c))
+                    quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(0xd9c))
                     if quest:GetMasterGameState("OFBRCratesStolen") == 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -595,9 +595,9 @@ end
 
 function DoCutsceneIfRequired(quest)
     local resources = quest:RetailResources()
-    local bVar2, iVar8, pCVar3, pCVar7, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70
+    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70
     local alive = true
-    local x_stk_90 = nil
+    local xStack_90 = nil
     if quest:GetStateInt("HeroTeam") == 1 then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -606,7 +606,6 @@ function DoCutsceneIfRequired(quest)
             return
         end
         pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
-        x_stk_90 = pCVar3
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -614,14 +613,13 @@ function DoCutsceneIfRequired(quest)
             return
         end
         pCVar3 = quest:GetThingWithScriptName("GuardTeamSpawn")
-        x_stk_90 = pCVar3
     end
     -- LAB_00dcfb65: (native jump target)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     repeat
         if bVar2 then
-            x_stk_90 = nil
+            xStack_90 = nil
             -- LAB_00dcfe47: (native jump target)
             return
         end
@@ -631,7 +629,7 @@ function DoCutsceneIfRequired(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                x_stk_90 = nil
+                xStack_90 = nil
                 return
             end
             bVar2 = quest:IsRegionLoaded("OrchardFarm")
@@ -642,7 +640,7 @@ function DoCutsceneIfRequired(quest)
             return
         end
         pCVar3 = quest:GetHero()
-        bVar2 = quest:IsDistanceBetweenThingsUnder(x_stk_90, pCVar3, 10.0)
+        bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_90, pCVar3, 10.0)
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -655,15 +653,15 @@ function DoCutsceneIfRequired(quest)
                 if bVar2 then
                     return
                 end
-                r1 = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                r2 = quest:GetNearestWithScriptName(x_stk_90, "GuardTeamMember")
+                xStack_70 = quest:GetAllThingsWithScriptName("BanditTeamMember")
+                r1 = quest:GetNearestWithScriptName(xStack_90, "GuardTeamMember")
                 xStack_50 = resources:NewResource()
                 xStack_30 = resources:NewResource()
                 xStack_20 = resources:NewResource()
                 xStack_10 = resources:NewResource()
-                resources:TryAcquire(xStack_10, r2, 4)
-                resources:TryAcquire(xStack_50, 0, 4)
-                resources:TryAcquire(xStack_30, 0 + 1, 4)
+                resources:TryAcquire(xStack_10, r1, 4)
+                resources:TryAcquire(xStack_50, xStack_70[0 + 1], 4)
+                resources:TryAcquire(xStack_30, xStack_70[1 + 1], 4)
                 iVar8 = 4
                 pCVar7 = xStack_20
                 pCVar3 = quest:GetHero()
@@ -704,16 +702,16 @@ function DoCutsceneIfRequired(quest)
                 pCVar3 = quest:GetHero()
                 resources:TryAcquire(pCVar7, pCVar3, iVar8)
                 xStack_70 = resources:NewActorMap()
-                resources:SetActor(xStack_70, "HERO", xStack_50)
+                resources:SetActor(xStack_70[0 + 1], "HERO", xStack_50)
                 xStack_40 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
-                resources:RunMacro("CS_ORCHARD_GOOD_INTRO", xStack_70, false, true)
+                resources:RunMacro("CS_ORCHARD_GOOD_INTRO", xStack_70[0 + 1], false, true)
                 quest:FixMovieSequenceCamera(false)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_40)
-                resources:DestroyActorMap(xStack_70)
+                resources:DestroyActorMap(xStack_70[0 + 1])
                 resources:ReleaseResource(xStack_50)
                 quest:KickOffQuestStartScreen("Q_OrchardFarmRaidGood", true, false)
             end

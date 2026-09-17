@@ -146,7 +146,7 @@ function Main(quest, me)
             quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 7)
         end
         quest:EntitySetTargetable(me, false)
-        quest:Pause(quest:ReadGlobalGameData(0xf18))
+        quest:Pause(quest:ReadGlobalGameDataFloat(0xf18))
         quest:EntitySetFacingAngle(me, xStack_94, true)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()

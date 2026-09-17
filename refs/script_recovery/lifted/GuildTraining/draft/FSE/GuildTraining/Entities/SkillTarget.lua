@@ -27,29 +27,26 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d41f6f end
-        iVar5 = (math.modf(quest:ReadGlobalGameData(0xeec)))
+        iVar5 = (math.modf(quest:ReadGlobalGameDataFloat(0xeec)))
         __native_entity_state:SetStateInt("Speed", iVar5)
         pCVar6 = quest:GetNearestWithScriptName(me, "StaticDummyMarker3")
-        -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)&piStack_190,(int)&*(int *)(pCVar6 + 0x4));
-        fVar11 = quest:ReadGlobalGameData(0xef8)
+        fVar11 = quest:ReadGlobalGameDataFloat(0xef8)
     elseif __native_entity_state:GetStateInt("DummyNumber") == 2 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d41f6f end
-        iVar5 = (math.modf(quest:ReadGlobalGameData(0xee8)))
+        iVar5 = (math.modf(quest:ReadGlobalGameDataFloat(0xee8)))
         __native_entity_state:SetStateInt("Speed", iVar5)
         pCVar6 = quest:GetNearestWithScriptName(pCVar6, "StaticDummyMarker2")
-        -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)&piStack_190,(int)&*(int *)(pCVar6 + 0x4));
-        fVar11 = quest:ReadGlobalGameData(0xef4)
+        fVar11 = quest:ReadGlobalGameDataFloat(0xef4)
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d41f6f end
-        iVar5 = (math.modf(quest:ReadGlobalGameData(0xee4)))
+        iVar5 = (math.modf(quest:ReadGlobalGameDataFloat(0xee4)))
         __native_entity_state:SetStateInt("Speed", iVar5)
         pCVar6 = quest:GetNearestWithScriptName(pCVar6, "StaticDummyMarker1")
-        -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)&piStack_190,(int)&*(int *)(pCVar6 + 0x4));
-        fVar11 = quest:ReadGlobalGameData(0xef0)
+        fVar11 = quest:ReadGlobalGameDataFloat(0xef0)
     end
     iVar5 = (math.modf(fVar11))
     __native_entity_state:SetStateInt("DummyWorth", iVar5)
@@ -87,6 +84,7 @@ function Main(quest, me)
                     f_stk_b8 = pfVar7.y
                     f_stk_b4 = pfVar7.z
                     if not (r2 ~= nil and not r2:IsNull()) then
+                        pfVar7 = {x = 0, y = 0, z = 0}
                     else
                         pfVar7 = r2:GetPos()
                     end
@@ -94,20 +92,22 @@ function Main(quest, me)
                     f_stk_15c = pfVar7.y
                     f_stk_158 = pfVar7.z
                     if not (r1 ~= nil and not r1:IsNull()) then
+                        pfVar7 = {x = 0, y = 0, z = 0}
                     else
                         pfVar7 = r1:GetPos()
                     end
                     f_stk_124 = pfVar7.x
                     f_stk_120 = pfVar7.y
                     f_stk_11c = pfVar7.z
-                    if piStack_190 == nil then
+                    if not (pCVar6 ~= nil and not pCVar6:IsNull()) then
+                        pfVar7 = {x = 0, y = 0, z = 0}
                     else
-                        pfVar7 = (**(*piStack_190 + 0x18))()
+                        pfVar7 = pCVar6:GetPos()
                     end
                     f_stk_84 = __native_entity_state:GetStateInt("Speed")
-                    f_stk_13c = *pfVar7
-                    f_stk_138 = pfVar7[1]
-                    f_stk_134 = pfVar7[2]
+                    f_stk_13c = pfVar7.x
+                    f_stk_138 = pfVar7.y
+                    f_stk_134 = pfVar7.z
                     f_stk_ac = (f_stk_124 - f_stk_160) / f_stk_84
                     c_stk_16d = 0
                     quest:SetMasterGameState("SkillDummyReset", false)

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar4, cVar5, c_stk_115, c_stk_131, fVar18, fVar3, iVar13, iVar14, iVar16, iVar17, iVar6, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar12, pfVar11, r1, r10, r11, r12, r2, r3, r4, r5, r6, r7, r8, r9, timerId, xStack_104, xStack_114, xStack_138, xStack_148, xStack_14c, xStack_150, xStack_18, xStack_24, xStack_30, xStack_3c, xStack_4c, xStack_5c, xStack_6c, xStack_c, xStack_d8, x_stk_108
+    local __native_condition_1, __native_condition_2, bVar4, cVar5, c_stk_115, c_stk_131, fVar18, fVar3, iVar13, iVar14, iVar16, iVar17, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar12, r1, r10, r11, r12, r2, r3, r4, r5, r6, r7, r8, r9, timerId, xStack_104, xStack_114, xStack_138, xStack_148, xStack_14c, xStack_150, xStack_18, xStack_24, xStack_30, xStack_3c, xStack_4c, xStack_5c, xStack_6c, xStack_c, xStack_d8, x_stk_108
     local alive = true
     local function __cleanup_LAB_00d50495()
         resources:ReleaseResource(xStack_148)
@@ -407,7 +407,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d505a6(); return end
                 xStack_138 = quest:RegisterTimer()
-                iVar13 = (math.modf(quest:ReadGlobalGameData(0xf08)))
+                iVar13 = (math.modf(quest:ReadGlobalGameDataFloat(0xf08)))
                 quest:SetTimer(xStack_138, iVar13)
                 quest:SetMasterGameState("WillScore", 0)
                 quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 0)
@@ -497,17 +497,17 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d50594 end
                         x_stk_108 = quest:GetMasterGameState("WillScore")
-                        -- TODO(native): pfVar11 = *(float **)(DAT_0143e90c + 0xecc);
+                        ixVar11 = 0
                         iVar6 = 0
                         repeat
                             iVar13 = iVar6
-                            if *pfVar11 < x_stk_108 ~= (*pfVar11 == x_stk_108) then
+                            if quest:ReadGlobalGameDataFloatAt(0xecc, ixVar11) <= x_stk_108 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
                                 if bVar4 then goto LAB_00d50594 end
                                 break
                             end
-                            pfVar11 = pfVar11 + 1
+                            ixVar11 = ixVar11 + 1
                             iVar6 = iVar13 + 1
                         until not (iVar13 + 1 < 7)
                         xStack_d8 = resources:StartMovie("")

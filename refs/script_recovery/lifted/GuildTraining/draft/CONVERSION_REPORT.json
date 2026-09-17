@@ -2973,7 +2973,6 @@
             "MsgIsHitBy: CScriptThing method not in FSE manifest",
             "label LAB_00d4b857",
             "label LAB_00d4c3f3",
-            "unlifted: pfVar11 = *(float **)(DAT_0143e90c + 0xeb4);",
             "label LAB_00d4c69e_c24",
             "label LAB_00d4c692",
             "label LAB_00d4c69e"
@@ -3420,16 +3419,10 @@
           "lines": 1059,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/Entities/CombatApprentice.lua:Main",
-                "line": 892,
-                "message": "FSE/GuildTraining/Entities/CombatApprentice.lua:Main:892: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -3596,7 +3589,6 @@
             "verify cleanup at LAB_00d4de46 (lifted as early return)",
             "verify cleanup at LAB_00d4de46 (lifted as early return)",
             "label LAB_00d4dc16",
-            "unlifted: pfVar12 = *(float **)(DAT_0143e90c + 0xec0);",
             "label LAB_00d4d979",
             "label LAB_00d4de13",
             "label LAB_00d4de13_c16",
@@ -3915,16 +3907,10 @@
           "lines": 771,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/Entities/SkillApprentice.lua:Main",
-                "line": 513,
-                "message": "FSE/GuildTraining/Entities/SkillApprentice.lua:Main:513: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -4080,7 +4066,6 @@
             "verify cleanup at LAB_00d505a6 (lifted as early return)",
             "verify cleanup at LAB_00d505a6 (lifted as early return)",
             "verify cleanup at LAB_00d505a6 (lifted as early return)",
-            "unlifted: pfVar11 = *(float **)(DAT_0143e90c + 0xecc);",
             "label LAB_00d50588",
             "label LAB_00d50573_c13",
             "label LAB_00d50567",
@@ -4369,16 +4354,10 @@
           "lines": 678,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/Entities/WillApprentice.lua:Main",
-                "line": 485,
-                "message": "FSE/GuildTraining/Entities/WillApprentice.lua:Main:485: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -4488,7 +4467,23 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [],
+          "todo": [
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
+            "unlifted: free(LOCALLIST_At(xStack_c, 0));"
+          ],
           "calls": [
             "SetThingAsUsable",
             "SetThingPersistent",
@@ -4511,7 +4506,7 @@
             "SetThingPersistent",
             "IsActiveThreadTerminating"
           ],
-          "lines": 106,
+          "lines": 156,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4619,9 +4614,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)&piStack_19",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)&piStack_19",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)&piStack_19",
             "label LAB_00d42f10",
             "unlifted: xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;",
             "unnamed field 0x18",
@@ -4663,17 +4655,17 @@
             "ENGINE_Trunc",
             "SetStateInt",
             "GetNearestWithScriptName",
-            "ENGINE_GlobalGameData",
+            "ENGINE_GlobalGameDataFloat",
             "IsActiveThreadTerminating",
             "ENGINE_Trunc",
             "SetStateInt",
             "GetNearestWithScriptName",
-            "ENGINE_GlobalGameData",
+            "ENGINE_GlobalGameDataFloat",
             "IsActiveThreadTerminating",
             "ENGINE_Trunc",
             "SetStateInt",
             "GetNearestWithScriptName",
-            "ENGINE_GlobalGameData",
+            "ENGINE_GlobalGameDataFloat",
             "ENGINE_Trunc",
             "SetStateInt",
             "NewScriptFrame",
@@ -4687,7 +4679,11 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetPos",
+            "ENGINE_ZeroVector",
             "GetPos",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "ENGINE_ZeroVector",
             "GetPos",
             "SetMasterGameState",
             "NewScriptFrame",
@@ -4849,8 +4845,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTraining/Entities/SkillTarget.lua:Main",
-                "line": 87,
-                "message": "FSE/GuildTraining/Entities/SkillTarget.lua:Main:87: unexpected symbol near '*'"
+                "line": 112,
+                "message": "FSE/GuildTraining/Entities/SkillTarget.lua:Main:112: unexpected symbol near '&'"
               }
             ]
           },
@@ -5886,7 +5882,7 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 15,
-        "passed": 9,
+        "passed": 12,
         "errors": [
           {
             "path": "FSE/GuildTraining/Entities/BirdKiller.lua",
@@ -5894,24 +5890,9 @@
             "message": "FSE/GuildTraining/Entities/BirdKiller.lua:163: unexpected symbol near '*'"
           },
           {
-            "path": "FSE/GuildTraining/Entities/CombatApprentice.lua",
-            "line": 906,
-            "message": "FSE/GuildTraining/Entities/CombatApprentice.lua:906: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/GuildTraining/Entities/SkillApprentice.lua",
-            "line": 532,
-            "message": "FSE/GuildTraining/Entities/SkillApprentice.lua:532: unexpected symbol near '*'"
-          },
-          {
             "path": "FSE/GuildTraining/Entities/SkillTarget.lua",
-            "line": 105,
-            "message": "FSE/GuildTraining/Entities/SkillTarget.lua:105: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/GuildTraining/Entities/WillApprentice.lua",
-            "line": 504,
-            "message": "FSE/GuildTraining/Entities/WillApprentice.lua:504: unexpected symbol near '*'"
+            "line": 130,
+            "message": "FSE/GuildTraining/Entities/SkillTarget.lua:130: unexpected symbol near '&'"
           },
           {
             "path": "FSE/GuildTraining/GuildTraining.lua",
@@ -6012,10 +5993,10 @@
         "owners": 15,
         "functions": 69,
         "missing": 0,
-        "functionSyntaxPassed": 62,
-        "fileSyntaxPassed": 9,
+        "functionSyntaxPassed": 65,
+        "fileSyntaxPassed": 12,
         "fileSyntaxChecked": 15,
-        "todo": 253
+        "todo": 262
       }
     },
     {
@@ -6528,7 +6509,6 @@
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "unlifted: CStack_1d4 = (CCharString)(float)fret_06;",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: pfVar13 = *(float **)(DAT_0143e90c + 0xeb4);",
             "unlifted: CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (f",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "verify cleanup at LAB_00d5a997 (lifted as early return)",
@@ -6833,7 +6813,7 @@
             "GetHealth",
             "GetThingWithScriptName",
             "GetHealth",
-            "ENGINE_GlobalGameData",
+            "ENGINE_GlobalGameDataFloat",
             "IsActiveThreadTerminating",
             "SetStateBool",
             "AddNewConversation",
@@ -6965,8 +6945,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main",
-                "line": 584,
-                "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main:584: unexpected symbol near '*'"
+                "line": 761,
+                "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main:761: unexpected symbol near '*'"
               }
             ]
           },
@@ -7742,8 +7722,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua",
-            "line": 596,
-            "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:596: unexpected symbol near '*'"
+            "line": 773,
+            "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:773: unexpected symbol near '*'"
           }
         ]
       },
@@ -7760,7 +7740,7 @@
         "functionSyntaxPassed": 13,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 4,
-        "todo": 94
+        "todo": 93
       }
     },
     {
@@ -10753,7 +10733,6 @@
             "verify cleanup at LAB_00d5db84 (lifted as early return)",
             "label LAB_00d5db84",
             "goto LAB_00d5db90",
-            "unlifted: pfVar13 = *(float **)(DAT_0143e90c + 0xec0);",
             "verify cleanup at LAB_00d5db53 (lifted as early return)",
             "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
@@ -11558,7 +11537,7 @@
         "functionSyntaxPassed": 5,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 91
+        "todo": 90
       }
     },
     {
@@ -11683,7 +11662,6 @@
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_134);",
             "label LAB_00d60aff",
             "unlifted: piVar1 = DAT_0143e8f8;",
-            "unlifted: pfVar16 = *(float **)(DAT_0143e90c + 0xecc);",
             "label LAB_00d61342_c8",
             "label LAB_00d61578_c9",
             "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
@@ -12490,8 +12468,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main",
-                "line": 598,
-                "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main:598: unexpected symbol near '*'"
+                "line": 714,
+                "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main:714: unexpected symbol near '&'"
               }
             ]
           },
@@ -12633,8 +12611,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua",
-            "line": 624,
-            "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:624: unexpected symbol near '*'"
+            "line": 740,
+            "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:740: unexpected symbol near '&'"
           }
         ]
       },
@@ -12667,7 +12645,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 75
+        "todo": 74
       }
     },
     {
@@ -13884,7 +13862,7 @@
           },
           "todo": [
             "label LAB_00d647d1",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,("
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));"
           ],
           "calls": [
             "NewScriptFrame",
@@ -13905,6 +13883,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "GetFurthestWithScriptName",
+            "ENGINE_ZeroVector",
             "GetPos",
             "CreateCreature",
             "QUESTTHING_Empty",
@@ -13916,7 +13895,7 @@
             "RemoveQuestInfoElement",
             "DisplayQuestInfo"
           ],
-          "lines": 90,
+          "lines": 93,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14354,7 +14333,7 @@
           "todo": [
             "label LAB_00d676fb",
             "label LAB_00d67728",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,("
+            "unlifted: free(LOCALLIST_At(xStack_24, 0));"
           ],
           "calls": [
             "ENGINE_Trunc",
@@ -14392,6 +14371,7 @@
             "DeregisterTimer",
             "GetHero",
             "GetFurthestWithScriptName",
+            "ENGINE_ZeroVector",
             "GetPos",
             "CreateCreature",
             "QUESTTHING_Empty",
@@ -14400,7 +14380,7 @@
             "SetStateInt",
             "QUESTTHING_Empty"
           ],
-          "lines": 122,
+          "lines": 125,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -15049,9 +15029,9 @@
     "owners": 37,
     "functions": 152,
     "missing": 10,
-    "functionSyntaxPassed": 137,
-    "fileSyntaxPassed": 23,
+    "functionSyntaxPassed": 140,
+    "fileSyntaxPassed": 26,
     "fileSyntaxChecked": 37,
-    "todo": 850
+    "todo": 856
   }
 }

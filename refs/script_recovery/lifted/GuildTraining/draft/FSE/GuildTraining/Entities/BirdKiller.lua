@@ -438,7 +438,7 @@ function Main(quest, me)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_ONE", me, pCVar5, false)
                     quest:Pause(1.0)
-                    iVar7 = (math.modf(quest:ReadGlobalGameData(0xefc)))
+                    iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xefc)))
                     quest:GiveHeroGold(iVar7)
                 elseif iVar6 == 0 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -460,7 +460,7 @@ function Main(quest, me)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_MORE", me, pCVar5, false)
                     quest:Pause(1.0)
-                    iVar7 = (math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameData(0xefc)))
+                    iVar7 = (math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(0xefc)))
                     quest:GiveHeroGold(iVar7)
                 end
                 __native_entity_state:SetStateInt("CurrentBirds", __native_entity_state:GetStateInt("CurrentBirds") + quest:GetStateInt("CurrentBirdsKilled"))
@@ -512,7 +512,7 @@ function Main(quest, me)
                                 goto LAB_00d4ef87
                             end
                         end
-                        iVar7 = (math.modf(quest:ReadGlobalGameData(0xf00)))
+                        iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf00)))
                         quest:GiveHeroGold(iVar7)
                         __native_entity_state:SetStateInt("BirdMode", 3)
                         quest:ClearThingHasInformation(me)

@@ -398,7 +398,7 @@ def normalise_typed_decompile(text: str) -> str:
         # the slot doubles as a string temporary elsewhere (`&X`): the counter gets its own name
         text = re.sub(r'(?<![&\w])' + v + r'\b', 'ctr_' + var.split('_', 1)[1], text)
     # x87 compare idiom: `(a < b) != (a == b)` is `a <= b` (Ghidra's rendering of fcomp/fnstsw/test 0x41)
-    text = re.sub(r'(\(?[\w.]+\)?) < ((?:\(float10\))?[\w.]+) != \(\1 == \2\)', r'\1 <= \2', text)
+    text = re.sub(r'(\*?\(?[\w.]+\)?(?:\([^()]*\))?) < ((?:\(float10\))?\*?[\w.]+(?:\([^()]*\))?) != \(\1 == \2\)', r'\1 <= \2', text)
     # a float staged in a slot Ghidra typed as a CCharString array: `aCStack_1c[0] = (CCharString)(expr);`
     # read back as `(float)aCStack_1c[0]` -> a plain scalar local
     for m in list(re.finditer(r'^[ \t]*(\w+)\[0\] = \(CCharString(?:_bv)?\)', text, re.M)):
@@ -839,7 +839,9 @@ def rename_scalar_stack_locals(text):
     # address the lifter resolves through its slot table
     hidden = set(re.findall(r'[(,]\s*(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]', text))
     # a slot that receives a lowered value by plain assignment is a handle, not a hidden result
-    hidden -= set(re.findall(r'^[ \t]*' + STK + r' = (?:p[A-Z]\w*|thing_\w+|r\d+|native_arg_\w+);', text, re.M))   # pointer-typed values only
+    # (unless it is also an explicitly cast hidden-return argument: a thing object later overwritten by a copy)
+    cast_args = set(re.findall(r'[(,]\s*\(CScriptThing \*\)' + STK + r'\s*[,)]', text))
+    hidden -= set(re.findall(r'^[ \t]*' + STK + r' = (?:p[A-Z]\w*|thing_\w+|r\d+|native_arg_\w+);', text, re.M)) - cast_args   # pointer-typed values only
     # a stack CScriptThing that only ever holds lowered values is a plain handle: drop its casts
     text = re.sub(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', lambda m: m.group(0) if m.group(1) in hidden else m.group(1), text)
     body = re.sub(r'^[ \t]*(?:[\w:<>,]+ )+\**\w+(?: \[\d+\])?;[ \t]*\r?$', '', text, flags=re.M)   # declarations
@@ -905,6 +907,13 @@ def fold_local_thing_vectors(text, thing_slots=None):
         text = re.sub(r'^[ \t]*' + v + r' = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n', '', text, flags=re.M)
         text = re.sub(r'\(CScriptThing \*\)\(\(int\)' + v + r' \+ (\w+)\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
         text = re.sub(r'\(CScriptThing \*\)' + v + r'\b', f'LOCALLIST_At({vec}, 0)', text)
+        # the begin pointer itself (Ghidra typed it `CScriptThing *`) as a call operand is element 0, `V + k` element k
+        def element(m):
+            before = text[max(0, m.start() - 16):m.start()]
+            if re.search(r'(?:LOCALLIST_(?:Count|At)|free)\($', before):
+                return m.group(0)
+            return f'{m.group(1)}LOCALLIST_At({vec}, {m.group(2) or 0})'
+        text = re.sub(r'([(,]\s*)' + v + r'(?: \+ (\d+))?(?=\s*[,)])', element, text)
         # element count from the begin/end slots (both canonicalised to the vector's name):
         # `iVar = (int)V - V >> 0x1f;` (sign fix) then `((int)V - V) / 0xc + iVar != iVar` (count != 0)
         text = re.sub(r'^[ \t]*(\w+) = \(int\)' + v + r' - ' + v + r' >> 0x1f;[ \t]*\r?\n', '', text, flags=re.M)
@@ -1003,6 +1012,20 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                   else f'(**(code **)(*(int *)({m.group(1)} + {hex(int(m.group(2), 0) - 4)}) + {m.group(3)}))(', text)
     text = fold_counted_pointer_assign(text)
     text = fold_counted_pointer_release(text)
+    # `CCountedPointer<..>::operator=(&P, &thing.Data)` keeps a handle on the thing: P is the thing; the
+    # Data-pointer vcalls / null tests on P are thing vcalls / validity tests
+    handles = set()
+    def handle(m):
+        if re.search(r'\(CScriptThing(?:_bv)? \*\)&?' + re.escape(m.group(2)) + r'\b', text):
+            # the slot is a CScriptThing object (hidden-return target): assigning its Data is the thing copy
+            return f'{m.group(1)}CScriptThing::operator=((CScriptThing *)&{m.group(2)},(int){m.group(3)});'
+        handles.add(m.group(2))
+        return f'{m.group(1)}{m.group(2)} = {m.group(3)};'
+    text = re.sub(r'^([ \t]*)CCountedPointer<\w+>::operator=\s*\(\(CCountedPointer<\w+> \*\)&(\w+),\s*\(int\)&\*\(int \*\)\((\w+) \+ (?:4|0x4)\)\);', handle, text, flags=re.M)
+    for h in handles:
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*' + re.escape(h) + r' \+ (0x[0-9a-f]+|\d+)\)\)\(', r'(**(code **)(*(int *)' + h + r' + \1))(', text)
+        text = re.sub(r'\b' + re.escape(h) + r' == \(int \*\)0x0\b', f'!__thing_valid({h})', text)
+        text = re.sub(r'\b' + re.escape(h) + r' != \(int \*\)0x0\b', f'__thing_valid({h})', text)
     text = name_offset_objects(text, getattr(spec, 'call_labels', {}))
     text = fold_byte_split_pointers(text)
     text = fold_byte_literal_words(text)
@@ -1042,7 +1065,33 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         scope = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', 'DAT_0143e90c', scope)
         text = head + scope + rest
         pos = len(head)
-    text = re.sub(r'\*\((?:int|float|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
+    # a float array the table points at (`pf = *(float **)(table + N); ... *pf ...; pf = pf + 1;`): the
+    # pointer becomes (offset, running index)
+    pos = 0
+    while (m := re.search(r'^([ \t]*)(\w+) = \*\(float \*\*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\);[ \t]*\r?\n', text[pos:], re.M)):
+        var, off = m.group(2), m.group(3)
+        idx = 'ix' + var[2:] if var.startswith('pf') else var + '_i'      # (a `<prefix>VarN` name the lifter treats as a local)
+        head = text[:pos + m.start()] + f'{m.group(1)}{idx} = 0;\n'
+        tail = text[pos + m.end():]
+        nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = (?!' + re.escape(var) + r' \+ )', tail, re.M)
+        scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+        scope = re.sub(r'^([ \t]*)' + re.escape(var) + r' = ' + re.escape(var) + r' \+ (\d+);', r'\1' + idx + ' = ' + idx + r' + \2;', scope, flags=re.M)
+        scope = re.sub(r'\*' + re.escape(var) + r'\b', f'ENGINE_GlobalGameDataFloatAt({off}, {idx})', scope)
+        scope = re.sub(r'\b' + re.escape(var) + r'\[(\w+)\]', lambda mm: f'ENGINE_GlobalGameDataFloatAt({off}, {idx} + {mm.group(1)})', scope)
+        text = head + scope + rest
+        pos = len(head)
+    text = re.sub(r'\*\(float \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameDataFloat(\1)', text)
+    text = re.sub(r'\*\((?:int|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
+    # the engine's static zero vector (DAT_0143e8e0, zero-initialised .data) as the position of an invalid thing
+    text = re.sub(r'\((?:float|C3DVector) \*\)&DAT_0143e8e0\b', 'ENGINE_ZeroVector()', text)
+    # a position read through a float pointer (`pf = (float *)GetPos(X); f = *pf; g = pf[1]; h = pf[2]`)
+    vecs = set(re.findall(r'^[ \t]*(\w+) = (?:\(float \*\))?(?:CScriptThing::GetPos\(|ENGINE_ZeroVector\(\))', text, re.M))
+    for v in vecs:
+        text = re.sub(r'^([ \t]*)' + re.escape(v) + r' = \(float \*\)(?=CScriptThing::GetPos\()', r'\1' + v + ' = ', text, flags=re.M)
+        text = re.sub(r'^[ \t]*[\w:]+ \*' + re.escape(v) + r';[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'\*' + re.escape(v) + r'\b', v + '.x', text)
+        text = re.sub(r'\b' + re.escape(v) + r'\[1\]', v + '.y', text)
+        text = re.sub(r'\b' + re.escape(v) + r'\[2\]', v + '.z', text)
     # CRT truncation of an x87 value (`__ftol2((float10)x)`, typed with its ST0 operand by the export)
     text = re.sub(r'\b__ftol2\(\s*(?:\(float10\))?', 'ENGINE_Trunc(', text)
 
@@ -1328,7 +1377,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         # the counted-pointer release idiom on the same name (`(X != 0) && (*X = *X + -1, ...)`) belongs to the release rules
         text = re.sub(r'\b' + n + r' == \(int \*\)0x0(?!\) \|\| \(\*' + n + r' = )', f'!__thing_valid({name})', text)
         text = re.sub(r'\b' + n + r' != \(int \*\)0x0(?!\) && \(\*' + n + r' = |\) \{[ \t]*\r?\n[ \t]*\*' + n + r' = )', f'__thing_valid({name})', text)
-        text = re.sub(r'\(\*\*\(code \*\*\)\(\*' + re.escape(name) + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?' + re.escape(name) + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
                       lambda h, name=name: thing_call(name, h.group(1), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
     # 3d. vcalls through a saved vtable temporary of a lowered thing: V = *(int *)(THING); (**(code **)(V + SLOT))(
     RE_VT_TEMP = re.compile(r'^[ \t]*(\w+) = \*\(int \*\)\(((?:QUEST|ENTITY)(?:THING_Get|LIST_At_\w+)\([^;\n]*\))\);[ \t]*\r?\n', re.M)
@@ -1537,6 +1586,9 @@ LUA_PSEUDO = [
     (re.compile(r'ENTITYLIST_At\('), '__native_entity_state:GetStateListAt('),
     (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
+    (re.compile(r'ENGINE_ZeroVector\(\)'), '{x = 0, y = 0, z = 0}'),
+    (re.compile(r'ENGINE_GlobalGameDataFloatAt\('), 'quest:ReadGlobalGameDataFloatAt('),
+    (re.compile(r'ENGINE_GlobalGameDataFloat\('), 'quest:ReadGlobalGameDataFloat('),
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),

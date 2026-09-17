@@ -316,7 +316,7 @@ function Main(quest, me)
                                 if iVar5 == 1 then
                                     if not bVar2 then
                                         xStack_170 = quest:GetHeroGold()
-                                        if xStack_170 < quest:ReadGlobalGameData(0xf14) then
+                                        if xStack_170 < quest:ReadGlobalGameDataFloat(0xf14) then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive
                                             if not bVar2 then
@@ -379,9 +379,9 @@ function Main(quest, me)
                                             end
                                             quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                                             quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
-                                            iVar6 = (math.modf(-quest:ReadGlobalGameData(0xf14)))
+                                            iVar6 = (math.modf(-quest:ReadGlobalGameDataFloat(0xf14)))
                                             quest:GiveHeroGold(iVar6)
-                                            iVar6 = (math.modf(quest:ReadGlobalGameData(0xf14)))
+                                            iVar6 = (math.modf(quest:ReadGlobalGameDataFloat(0xf14)))
                                             quest:EntityGiveGold(me, iVar6)
                                             __native_entity_state:SetStateBool("HoldingArtifact", false)
                                             pCVar4 = quest:GetThingWithScriptName("ArtifactThiefRunMarker")
@@ -459,7 +459,7 @@ function Main(quest, me)
                             if iVar5 == 1 then
                                 if not bVar2 then
                                     xStack_170 = quest:GetHeroGold()
-                                    if xStack_170 < quest:ReadGlobalGameData(0xf14) then
+                                    if xStack_170 < quest:ReadGlobalGameDataFloat(0xf14) then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar2 = not alive
                                         if not bVar2 then
@@ -530,9 +530,9 @@ function Main(quest, me)
                                         end
                                         quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                                         quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
-                                        iVar6 = (math.modf(-quest:ReadGlobalGameData(0xf14)))
+                                        iVar6 = (math.modf(-quest:ReadGlobalGameDataFloat(0xf14)))
                                         quest:GiveHeroGold(iVar6)
-                                        iVar6 = (math.modf(quest:ReadGlobalGameData(0xf14)))
+                                        iVar6 = (math.modf(quest:ReadGlobalGameDataFloat(0xf14)))
                                         quest:EntityGiveGold(me, iVar6)
                                         __native_entity_state:SetStateBool("HoldingArtifact", false)
                                         pCVar4 = quest:GetThingWithScriptName("ArtifactThiefRunMarker")
@@ -756,9 +756,9 @@ function Main(quest, me)
                         end
                         quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                         quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
-                        iVar6 = (math.modf(-quest:ReadGlobalGameData(0xf14)))
+                        iVar6 = (math.modf(-quest:ReadGlobalGameDataFloat(0xf14)))
                         quest:GiveHeroGold(iVar6)
-                        iVar6 = (math.modf(quest:ReadGlobalGameData(0xf14)))
+                        iVar6 = (math.modf(quest:ReadGlobalGameDataFloat(0xf14)))
                         quest:EntityGiveGold(me, iVar6)
                         __native_entity_state:SetStateBool("HoldingArtifact", false)
                         pCVar4 = quest:GetThingWithScriptName("ArtifactThiefRunMarker")

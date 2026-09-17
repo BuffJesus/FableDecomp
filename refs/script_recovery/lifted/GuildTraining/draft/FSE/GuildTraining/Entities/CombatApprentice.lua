@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_03, fret_04, fret_05, fret_06, fret_07, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, pfVar11, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, u_stk_228, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_24, xStack_254, xStack_258, xStack_30, xStack_60, xStack_78, xStack_90, xStack_ac, xStack_bc, xStack_c, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_18, x_stk_214, x_stk_6c, x_stk_84
+    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_03, fret_04, fret_05, fret_06, fret_07, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, u_stk_228, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_24, xStack_254, xStack_258, xStack_30, xStack_60, xStack_78, xStack_90, xStack_ac, xStack_bc, xStack_c, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_18, x_stk_214, x_stk_6c, x_stk_84
     local alive = true
     local function __cleanup_LAB_00d4c4a5()
         resources:ReleaseResource(xStack_254)
@@ -739,9 +739,9 @@ function Main(quest, me)
                         ::FLOW_after_lab_00d4b6f6::
                         pCVar7 = quest:GetHero()
                         fret_10 = quest:GetHealth(pCVar7)
-                        if quest:ReadGlobalGameData(0xed8) <= fret_10 then
+                        if quest:ReadGlobalGameDataFloat(0xed8) <= fret_10 then
                             fret_11 = quest:GetHealth(r6)
-                            if fret_11 < quest:ReadGlobalGameData(0xed8) then
+                            if fret_11 < quest:ReadGlobalGameDataFloat(0xed8) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d4c6c8 end
@@ -898,18 +898,18 @@ function Main(quest, me)
                         fret_12 = quest:GetHealth(pCVar7)
                         x_stk_214 = fret_12
                         fret_13 = quest:GetHealth(r6)
-                        -- TODO(native): pfVar11 = *(float **)(DAT_0143e90c + 0xeb4);
+                        ixVar11 = 0
                         f_stk_210 = ((f_stk_100 - fret_13) - (f_stk_210 - x_stk_214))
                         iVar5 = 0
                         repeat
                             iVar6 = iVar5
-                            if *pfVar11 < f_stk_210 ~= (*pfVar11 == f_stk_210) then
+                            if quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar11) <= f_stk_210 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d4c6c8 end
                                 break
                             end
-                            pfVar11 = pfVar11 + 1
+                            ixVar11 = ixVar11 + 1
                             iVar5 = iVar6 + 1
                         until not (iVar6 + 1 < 7)
                         xStack_1fc = resources:NewResource()

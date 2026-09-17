@@ -26,7 +26,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
     if not bVar6 then
-        iVar7 = (math.modf(quest:ReadGlobalGameData(0xf0c)))
+        iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf0c)))
         xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
         quest:DisplayQuestInfo(true)
         iVar1 = quest:GetStateInt("DepartureMissionPoint")
@@ -44,7 +44,7 @@ function Main(quest, me)
             if i_stk_28 < 0 then
                 fVar9 = fVar9 + 4294967296.0
             end
-            count = (math.modf((quest:ReadGlobalGameData(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
+            count = (math.modf((quest:ReadGlobalGameDataFloat(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
             quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
             puVar4 = pu_stk_20
             if ((pu_stk_20 - xStack_24) / 0xc) < 3 then
@@ -75,11 +75,11 @@ function Main(quest, me)
                         pCVar8 = quest:GetHero()
                         r1 = quest:GetFurthestWithScriptName(pCVar8, "ScorpionSpawn")
                         if not (r1 ~= nil and not r1:IsNull()) then
+                            pPosition = {x = 0, y = 0, z = 0}
                         else
                             pPosition = r1:GetPos()
                         end
                         pCVar8 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                        -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,(int)&*(int *)(pCVar8 + 0x4));
                         pCVar8 = nil
                         if (r1 ~= nil and not r1:IsNull()) then
                             r1:SetToKillOnLevelUnload(0)
@@ -92,6 +92,9 @@ function Main(quest, me)
                 end
             end
             pu_stk_20 = puVar4
+            if xStack_24 ~= nil then
+                -- TODO(native): free(xStack_24[0 + 1]);
+            end
             iVar1 = quest:GetStateInt("DepartureMissionPoint")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -104,7 +107,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local iVar1 = (math.modf(quest:ReadGlobalGameData(0xf0c)))
+    local iVar1 = (math.modf(quest:ReadGlobalGameDataFloat(0xf0c)))
     __native_entity_state:SetStateInt("ScorpionsLeft", iVar1)
     __native_entity_state:SetStateBool("FlourishHint", false)
 end

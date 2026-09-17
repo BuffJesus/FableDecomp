@@ -806,13 +806,13 @@ function RunTutorials(quest)
     bVar2 = false
     if bVar2 ~= 0 then
     end
-    bVar2 = resources:TryAcquire(xStack_30, xStack_54[0 + 1], 4)
+    bVar2 = resources:TryAcquire(xStack_30, xStack_54[0 + 1][0 + 1], 4)
     while not bVar2 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00d48800 end
-        bVar2 = resources:TryAcquire(xStack_30, xStack_54[0 + 1], 4)
+        bVar2 = resources:TryAcquire(xStack_30, xStack_54[0 + 1][0 + 1], 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -879,7 +879,7 @@ function RunTutorials(quest)
             quest:OpenDoor(r14)
             quest:SetThingPersistent(r12, true)
             quest:SetRegionExitAsActive(r11, true)
-            iVar16 = (math.modf(quest:ReadGlobalGameData(0xf1c)))
+            iVar16 = (math.modf(quest:ReadGlobalGameDataFloat(0xf1c)))
             quest:GiveHeroExperience(iVar16)
             quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
             quest:GiveHeroObject("OBJECT_HERO_TROUSERS", -1)
