@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar9, iVar7, i_stk_28, pCVar8, pPosition, puVar4, pu_stk_20, r1, xStack_18, xStack_24, xStack_2c
+    local bVar6, count, fVar9, iVar7, i_stk_28, pCVar8, pPosition, r1, xStack_18, xStack_24, xStack_2c
     local alive = true
     local iVar1 = quest:GetStateInt("DepartureMissionPoint")
     while iVar1 ~= 1 do
@@ -46,7 +46,6 @@ function Main(quest, me)
             end
             count = (math.modf((quest:ReadGlobalGameDataFloat(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
             quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
-            puVar4 = pu_stk_20
             if ((pu_stk_20 - xStack_24) / 0xc) < 3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -63,9 +62,7 @@ function Main(quest, me)
                     end
                     quest:SetStateInt("DepartureMissionPoint", 2)
                     quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
-                    puVar4 = pu_stk_20
                 else
-                    puVar4 = pu_stk_20
                     if 0 < __native_entity_state:GetStateInt("ScorpionsLeft") then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
@@ -88,13 +85,8 @@ function Main(quest, me)
                         quest:EntityAttachToScript(r1, "Q_GuildTrainingWoodsDeparture")
                         __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)
                         r1 = nil
-                        puVar4 = pu_stk_20
                     end
                 end
-            end
-            pu_stk_20 = puVar4
-            if xStack_24 ~= nil then
-                -- TODO(native): free(xStack_24[0 + 1]);
             end
             iVar1 = quest:GetStateInt("DepartureMissionPoint")
         end

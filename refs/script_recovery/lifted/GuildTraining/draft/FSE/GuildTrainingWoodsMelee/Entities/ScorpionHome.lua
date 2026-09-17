@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, puVar4, pu_stk_20, r1, v_stk_4c, xStack_18, xStack_24
+    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, r1, v_stk_4c, xStack_18, xStack_24
     local alive = true
     v_stk_4c = 0
     iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf10)))
@@ -79,7 +79,6 @@ function Main(quest, me)
         end
         count = (math.modf((quest:ReadGlobalGameDataFloat(0xf10) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar10))
         quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
-        puVar4 = pu_stk_20
         if ((pu_stk_20 - xStack_24) / 0xc) < 3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
@@ -100,9 +99,7 @@ function Main(quest, me)
                 end
                 quest:SetStateBool("ScorpionsAlive", false)
                 quest:SetMasterGameState("ScorpionsDestroyed", true)
-                puVar4 = pu_stk_20
             else
-                puVar4 = pu_stk_20
                 if 0 < __native_entity_state:GetStateInt("ScorpionsLeft") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
@@ -127,13 +124,8 @@ function Main(quest, me)
                     quest:EntityAttachToScript(r1, "Q_GuildTrainingWoodsMelee")
                     __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)
                     r1 = nil
-                    puVar4 = pu_stk_20
                 end
             end
-        end
-        pu_stk_20 = puVar4
-        if xStack_24 ~= nil then
-            -- TODO(native): free(xStack_24[0 + 1]);
         end
         cVar1 = quest:GetStateBool("ScorpionsAlive")
         timerId = xStack_50

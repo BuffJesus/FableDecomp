@@ -4474,23 +4474,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_18, 0));",
-            "unlifted: free(LOCALLIST_At(xStack_c, 0));"
-          ],
+          "todo": [],
           "calls": [
             "SetThingAsUsable",
             "SetThingPersistent",
@@ -4513,7 +4497,7 @@
             "SetThingPersistent",
             "IsActiveThreadTerminating"
           ],
-          "lines": 156,
+          "lines": 84,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5977,7 +5961,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 283
+        "todo": 268
       }
     },
     {
@@ -13790,8 +13774,7 @@
             "bsimVoid": true
           },
           "todo": [
-            "label LAB_00d647d1",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));"
+            "label LAB_00d647d1"
           ],
           "calls": [
             "NewScriptFrame",
@@ -13824,7 +13807,7 @@
             "RemoveQuestInfoElement",
             "DisplayQuestInfo"
           ],
-          "lines": 94,
+          "lines": 86,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13966,7 +13949,7 @@
         "functionSyntaxPassed": 17,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 74
+        "todo": 73
       }
     },
     {
@@ -14247,8 +14230,7 @@
           },
           "todo": [
             "label LAB_00d676fb",
-            "label LAB_00d67728",
-            "unlifted: free(LOCALLIST_At(xStack_24, 0));"
+            "label LAB_00d67728"
           ],
           "calls": [
             "ENGINE_Trunc",
@@ -14295,7 +14277,7 @@
             "SetStateInt",
             "QUESTTHING_Empty"
           ],
-          "lines": 127,
+          "lines": 119,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14418,7 +14400,7 @@
         "functionSyntaxPassed": 10,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 9
+        "todo": 8
       }
     },
     {
@@ -14933,6 +14915,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 878
+    "todo": 861
   }
 }

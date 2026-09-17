@@ -898,6 +898,9 @@ def fold_local_thing_vectors(text, thing_slots=None):
         vectors.append(m.group(4))
         return f'{m.group(1)}{m.group(4)} = GSI->{m.group(2)}({m.group(3)});'
     text = re.sub(r'^([ \t]*)GSI->(GetAllThings\w+)\(([^;]*?),&?(\w+)\);', call_void, text, flags=re.M)
+    # the by-value spelling (Ghidra recognised the hidden return slot): `vec = GSI->GetAllThings...(&name);`
+    for m in re.finditer(r'^[ \t]*(\w+) = GSI->GetAllThings\w+\([^;,]*\);', text, flags=re.M):
+        vectors.append(m.group(1))
     if not vectors:
         return text
     elems = 0
@@ -905,11 +908,11 @@ def fold_local_thing_vectors(text, thing_slots=None):
         v = re.escape(vec)
         # the zero-initialised begin/end/capacity slots before the call are the vector's construction
         text = re.sub(r'^[ \t]*' + v + r' = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n', '', text, flags=re.M)
-        text = re.sub(r'\(CScriptThing \*\)\(\(int\)' + v + r' \+ (\w+)\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
-        text = re.sub(r'\(CScriptThing \*\)' + v + r'\b', f'LOCALLIST_At({vec}, 0)', text)
+        text = re.sub(r'\(CScriptThing(?:_bv)? \*\)\(\(int\)' + v + r' \+ (\w+)\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
+        text = re.sub(r'\(CScriptThing(?:_bv)? \*\)' + v + r'\b', f'LOCALLIST_At({vec}, 0)', text)
         # the begin pointer itself (Ghidra typed it `CScriptThing *`) as a call operand is element 0, `V + k` element k
         def element(m):
-            before = text[max(0, m.start() - 16):m.start()]
+            before = text[max(0, m.end(1) - 16):m.end(1)]     # up to and including the `(` / `,` before the name
             if re.search(r'(?:LOCALLIST_(?:Count|At)|free)\($', before):
                 return m.group(0)
             return f'{m.group(1)}LOCALLIST_At({vec}, {m.group(2) or 0})'
@@ -936,6 +939,12 @@ def fold_local_thing_vectors(text, thing_slots=None):
     # begin/end/capacity slots; then loops / guards left with only pointer bookkeeping
     text = re.sub(r'^[ \t]*\(\*\*\(code \*\*\)\*\w+\)\(0\);[ \t]*\r?\n', '', text, flags=re.M)
     text = re.sub(r'^[ \t]*free\(\w+\);[ \t]*\r?\n', '', text, flags=re.M)
+    # the begin pointer used as the base of a count / an index is the vector, not element 0
+    text = re.sub(r'LOCALLIST_Count\(LOCALLIST_At\((\w+), 0\)\)', r'LOCALLIST_Count(\1)', text)
+    text = re.sub(r'LOCALLIST_At\(LOCALLIST_At\((\w+), 0\), ', r'LOCALLIST_At(\1, ', text)
+    text = re.sub(r'^[ \t]*free\(LOCALLIST_At\(\w+, 0\)\);[ \t]*\r?\n', '', text, flags=re.M)
+    # storage-pointer bookkeeping around the frees (`puVar6 = pu_stk_20;` / `pu_stk_14 = puVar6;`)
+    text = re.sub(r'^[ \t]*(?:\w+ = pu_stk_\w+|pu_stk_\w+ = \w+);[ \t]*\r?\n', '', text, flags=re.M)
     text = re.sub(r'^[ \t]*\w+ = \(undefined4 \*\)0x0;[ \t]*\r?\n', '', text, flags=re.M)
     junk = r'(?:[ \t]*\w+ = (?:\w+|\w+ \+ \d+|\(undefined4 \*\)0x0);[ \t]*\r?\n)*'
     for _ in range(3):
