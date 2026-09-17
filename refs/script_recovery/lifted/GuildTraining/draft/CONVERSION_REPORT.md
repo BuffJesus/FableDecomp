@@ -129,7 +129,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsDeparture | ArtifactThief | Init | 0x00d62410 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ArtifactThief | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ArtifactThief | OnPredicateFail | 0x00d62450 | True | 0 |
-| Q_GuildTrainingWoodsDeparture | FinalMaze | Main | 0x00d647f0 | True | 45 |
+| Q_GuildTrainingWoodsDeparture | FinalMaze | Main | 0x00d647f0 | True | 21 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | Init | 0x00d62320 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | OnPredicateFail | 0x00d62330 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 860}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 836}`

@@ -13306,14 +13306,6 @@
             "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);",
             "label LAB_00d654d1",
             "label LAB_00d65670",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_44,false,pCVar10",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10",
             "unlifted: xStack_7c = *(CCharString *)(this + 4);",
             "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);",
             "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);",
@@ -13323,23 +13315,7 @@
             "label LAB_00d65d51",
             "label LAB_00d65e4c",
             "label LAB_00d65ef7",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);",
-            "unlifted: xStack_7c = **(CCharString **)(this + 4);",
-            "unlifted: (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_28,false,pCVar10",
-            "label LAB_00d6632b",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
-            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))"
+            "label LAB_00d6632b"
           ],
           "calls": [
             "NewScriptFrame",
@@ -13510,8 +13486,16 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
             "IsActiveThreadTerminating",
             "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
             "SetTimer",
             "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
@@ -13600,8 +13584,16 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
             "IsActiveThreadTerminating",
             "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
             "SetTimer",
             "IsActiveThreadTerminating",
             "RemoveQuestInfoElement",
@@ -13646,7 +13638,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 867,
+          "lines": 851,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13948,7 +13940,7 @@
         "functionSyntaxPassed": 17,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 73
+        "todo": 49
       }
     },
     {
@@ -14914,6 +14906,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 860
+    "todo": 836
   }
 }

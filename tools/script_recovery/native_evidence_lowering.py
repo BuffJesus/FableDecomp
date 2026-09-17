@@ -214,7 +214,7 @@ def fold_stack_colours(text: str) -> str:
     return text
 
 
-RE_GSIVT_LOAD = re.compile(r'^([ \t]*)(\w+) = \*\*\(int \*\*\)\(this \+ (?:0x40|4)\);[ \t]*\r?\n', re.M)
+RE_GSIVT_LOAD = re.compile(r'^([ \t]*)(\w+) = \*\*\(\w+ \*\*\)\(this \+ (0x40|4)\);[ \t]*\r?\n', re.M)   # the typing spec may have typed the spill slot (`**(CCharString **)`)
 
 
 def isolate_gsi_vtable_temps(text: str) -> str:
@@ -231,10 +231,13 @@ def isolate_gsi_vtable_temps(text: str) -> str:
         nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
         scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
         scope = re.sub(r'\(\*\*\(code \*\*\)\(' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)
+        scope = re.sub(r'\(\*\*\(code \*\*\)\(\(int\)' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)
+        scope = re.sub(r'\(\*\*\(' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)     # the untyped vcall spelling `(**(X + 0x118))(`
         if re.search(r'\b' + re.escape(var) + r'\b', scope):
             pos = m.end()          # other uses of the same temporary: leave this load alone
             continue
-        text = head[:m.start()] + m.group(0).replace(f'{var} = ', f'{alias} = ', 1) + scope + rest
+        scope = re.sub(r'\(\*\(this \+ ' + m.group(3) + r'\)', '(*(int **)(this + ' + m.group(3) + ')', scope)   # the receiver operand without its cast
+        text = head[:m.start()] + f'{m.group(1)}{alias} = **(int **)(this + {m.group(3)});\n' + scope + rest
         pos = m.start() + 1
     return text
 

@@ -484,27 +484,19 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d664b0 end
                                 iVar14 = quest:AddNewConversation(me, false, false)
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                pCVar6 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                pCVar6 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_44,false,pCVar10,pCVar6);
+                                pCVar6 = quest:GetHero()
+                                quest:AddPersonToConversation(iVar14, pCVar6)
+                                pCVar6 = quest:GetHero()
+                                quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_ON_HIT", me, pCVar6, false)
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00d664b0 end
                                 iVar14 = quest:AddNewConversation(me, false, false)
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                pCVar6 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                pCVar6 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
+                                pCVar6 = quest:GetHero()
+                                quest:AddPersonToConversation(iVar14, pCVar6)
+                                pCVar6 = quest:GetHero()
+                                quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, pCVar6, false)
                             end
                             quest:SetTimer(xStack_80, 5)
                         end
@@ -770,27 +762,19 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then goto LAB_00d664b0 end
                                         iVar14 = quest:AddNewConversation(me, false, false)
-                                        -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                        pCVar6 = nil --[[unresolved native value]]
-                                        -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                        -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                        pCVar6 = nil --[[unresolved native value]]
-                                        -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
+                                        pCVar6 = quest:GetHero()
+                                        quest:AddPersonToConversation(iVar14, pCVar6)
+                                        pCVar6 = quest:GetHero()
+                                        quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_ON_HIT", me, pCVar6, false)
                                     else
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
                                         if bVar3 then goto LAB_00d664b0 end
                                         iVar14 = quest:AddNewConversation(me, false, false)
-                                        -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                        pCVar6 = nil --[[unresolved native value]]
-                                        -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                        -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                        pCVar6 = nil --[[unresolved native value]]
-                                        -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_28,false,pCVar10,pCVar6);
+                                        pCVar6 = quest:GetHero()
+                                        quest:AddPersonToConversation(iVar14, pCVar6)
+                                        pCVar6 = quest:GetHero()
+                                        quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, pCVar6, false)
                                     end
                                     quest:SetTimer(xStack_80, 5)
                                 end
