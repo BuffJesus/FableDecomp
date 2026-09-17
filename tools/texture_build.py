@@ -609,7 +609,10 @@ def cmd_add(argv):
     else:
         aw, ah = _pow2_up(real_w), _pow2_up(real_h)
     rgba = fit_to_alloc(rgba, aw, ah)
-    payload, info = build_entry(rgba, fmt, real_w=real_w, real_h=real_h)
+    # --raw-mip0: the engine's asm LZO decoder misreads some streams this
+    # module's compressor emits (an appended minimap never drew until stored raw)
+    payload, info = build_entry(rgba, fmt, real_w=real_w, real_h=real_h,
+                                compress_mip0="--raw-mip0" not in argv)
 
     buf, parsed = load_big(src)
     subnames = {s["name"] for s, _ in parsed}
