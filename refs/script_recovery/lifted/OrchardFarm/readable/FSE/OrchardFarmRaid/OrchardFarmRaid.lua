@@ -155,8 +155,7 @@ function ProcessGameRulesEvil(quest)
                 if quest:DisplayTutorial(18) then
                     if not quest:IsActiveThreadTerminating() then
                         while not quest:MsgIsTutorialClickedPast() do
-                            quest:NewScriptFrame()
-                            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
+                            if not quest:NewScriptFrame() then __cleanup_LAB_00dd0b11(); return end
                         end
                         if not quest:IsActiveThreadTerminating() then goto LAB_00dd0977 end
                     end
@@ -305,8 +304,7 @@ function ProcessGameRulesGood(quest)
                 if quest:DisplayTutorial(18) then
                     if not quest:IsActiveThreadTerminating() then
                         while not quest:MsgIsTutorialClickedPast() do
-                            quest:NewScriptFrame()
-                            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
+                            if not quest:NewScriptFrame() then __cleanup_LAB_00dd1728(); return end
                         end
                         if not quest:IsActiveThreadTerminating() then goto LAB_00dd157a end
                     end
@@ -554,15 +552,9 @@ function DoMultiplierCutscene(quest)
     else
         if not quest:IsActiveThreadTerminating() then
             if quest:IsDistanceBetweenThingsUnder(quest:GetThingWithScriptName("MK_OFI_GWL"), quest:GetHero(), 20.0) then
-                if quest:IsActiveThreadTerminating() then
-                    quest:PauseAllNonScriptedEntities(false)
-                    goto FLOW_after_lab_00dd1d98
-                end
+                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00dd1d98 end
                 if heroTeam ~= 1 then
-                    if not quest:IsActiveThreadTerminating() then
-                        string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"
-                        goto LAB_00dd1d98
-                    end
+                    if not quest:IsActiveThreadTerminating() then string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"; goto LAB_00dd1d98 end
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(scratchValue9)
                     goto LAB_00dd1e95

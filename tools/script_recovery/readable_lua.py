@@ -25,7 +25,12 @@ FUNCTION = re.compile(r'^(?:local )?function ([A-Za-z_]\w*)\([^\n]*\)\n', re.M)
 
 def camel(value):
     words = re.findall(r'[A-Z]+(?=[A-Z][a-z]|$)|[A-Z]?[a-z]+|\d+', value.replace('_', ' '))
-    return words[0].lower() + ''.join(w[:1].upper() + w[1:] for w in words[1:]) if words else 'value'
+    name = words[0].lower() + ''.join(w[:1].upper() + w[1:] for w in words[1:]) if words else ''
+    if not re.match(r'[A-Za-z_]', name):
+        # all-caps marker names ("MK_GTA_MAZE1" would be "1"): keep every word
+        words = re.findall(r'[A-Z]+(?=[A-Z][a-z]|$)|[A-Z]?[a-z]+|[A-Z]+|\d+', value.replace('_', ' '))
+        name = words[0].lower() + ''.join(w.capitalize() if w.isupper() else w[:1].upper() + w[1:] for w in words[1:]) if words else 'value'
+    return name if re.match(r'[A-Za-z_]', name) else 'v' + name
 
 
 def tokens(source):

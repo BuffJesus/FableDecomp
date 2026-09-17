@@ -278,3 +278,11 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
   `if C then v = literal else v = bool end` shapes, `x and true`/`or false`, De Morgan `not (not a or not b)`,
   `while not T() do` bodies are clean for the dead-check dataflow, `return not T()` -> `return true` when clean.
   Orchard: 1236 lines, 81 temporaries, 14 labels, 37 gotos, 103 checks. Smoke both stages clean, gate identical, v5 rebuilt.
+- Guild through the style pass: `build_readable_unit.py --unit guild_training --out refs/.../GuildTraining/readable_converter`
+  (the default `readable/` dir is the hand-reviewed six-slice artifact the `test_guild_*` tests read — the builder now refuses
+  to overwrite a directory without READABLE_REPORT.json). 20648 -> 12933 lines, temporaries 1995 -> 592, checks 1645 -> 1105,
+  336 frame checks; 29/37 files compile (draft 26/37; the 8 failures are the known draft residue), smoke problems identical to
+  the draft (35). Performance: per-line lru-cached structure/read sets, batched inlining per flow graph, goto counts per sweep
+  — the 4266-line PreMelee guildmaster went from >500 s to 11 s (whole unit 58 s). `camel()` no longer yields `1` for
+  MK_GTA_MAZE1 (the rename pass raised "not reversible" and aborted the file). Generalised: one-statement cleanups before an
+  exit (`if T() then quest:DeregisterTimer(t); return end`), `while <cond reading v> do` retry loops, literal `1 ~= 0`.

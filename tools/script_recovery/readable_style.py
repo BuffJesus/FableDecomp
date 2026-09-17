@@ -21,7 +21,9 @@ the readable copy:
 """
 from __future__ import annotations
 
+import functools
 import re
+from collections import Counter
 
 from tools.script_recovery.lua_local_versions import flow_graph
 from tools.script_recovery.readable_lua import rename_identifiers, tokens
@@ -36,11 +38,50 @@ STATE_READ = re.compile(r'^(?:\w+:GetState(?:Bool|Int|Float|String|Thing)\(|__na
 
 # ----------------------------------------------------------------------------------------- helpers
 
+@functools.lru_cache(maxsize=None)
+def _structure_line(line):
+    """One line with comments and strings blanked (the emitter never spans strings across lines)."""
+    return ''.join(re.sub(r'[^\n]', ' ', t[0]) if t.lastgroup in ('comment', 'longcomment', 'string', 'longstring')
+                   else t[0] for t in tokens(line)).rstrip('\n')
+
+
 def _structure(lines):
     """Lines with comments and strings blanked (same shape, safe for regexes on syntax)."""
-    text = ''.join(lines)
-    return ''.join(re.sub(r'[^\n]', ' ', t[0]) if t.lastgroup in ('comment', 'longcomment', 'string', 'longstring')
-                   else t[0] for t in tokens(text)).splitlines()
+    return [_structure_line(l) for l in lines]
+
+
+@functools.lru_cache(maxsize=None)
+def _line_reads(structure_line):
+    """Identifiers a (blanked) line reads as variables: not member names after `.`/`:`, not the
+    assignment target of `x = ...` / `local x = ...`."""
+    stream = [t for t in tokens(structure_line) if t.lastgroup not in ('space', 'comment', 'longcomment')]
+    reads, target = set(), None
+    m = re.match(r'\s*(?:local )?(\w+)\s*=(?!=)', structure_line)
+    if m and not re.fullmatch(r'\s*local [\w, ]+\s*', structure_line):
+        target = m.group(1)
+    seen_eq = False
+    for k, t in enumerate(stream):
+        if t[0] == '=':
+            seen_eq = True
+        if t.lastgroup != 'identifier' or t[0] in KEYWORDS_ALL:
+            continue
+        if k and stream[k - 1][0] in ('.', ':'):
+            continue
+        if target and not seen_eq and t[0] == target and k <= 1:
+            continue
+        reads.add(t[0])
+    return frozenset(reads)
+
+
+def _line_target(structure_line):
+    if re.fullmatch(r'\s*local [\w, ]+\s*', structure_line):
+        return None
+    m = re.match(r'\s*(?:local )?(\w+)\s*=(?!=)', structure_line)
+    return m.group(1) if m else None
+
+
+KEYWORDS_ALL = {'and', 'or', 'not', 'if', 'elseif', 'while', 'until', 'return', 'then', 'do', 'in', 'end', 'else',
+                'repeat', 'local', 'function', 'goto', 'break', 'true', 'false', 'nil', 'for'}
 
 
 def _closure_ranges(structure):
@@ -79,7 +120,7 @@ class Flow:
                 blanked[i] = ''
         # `__cleanup_X(); return` (hoisted cleanup regions) is straight-line code before the exit
         for i, line in enumerate(blanked):
-            blanked[i] = re.sub(r'^(\s*(?:if .+ then )?)\w+\(\); (return|goto \w+|break)((?: end)?)$', r'\1\2\3', line)
+            blanked[i] = re.sub(r'^(\s*(?:if .+ then )?)[^\n;]+; (return|goto \w+|break)((?: end)?)$', r'\1\2\3', line)
         self.graph = flow_graph(blanked)
         if self.graph is None:
             return
@@ -104,18 +145,16 @@ class Flow:
 
 
 def _reads_and_defs(structure, name):
-    pattern = re.compile(r'^\s*(?:local )?' + re.escape(name) + r'\s*=(?!=)')
     defs, reads = [], []
-    marker = '__style_marker__'
     for i, line in enumerate(structure):
+        if name not in line:
+            continue
         if re.fullmatch(r'\s*local [\w, ]+\s*', line):
             continue
-        is_def = bool(pattern.match(line))
-        rest = pattern.sub('', line, count=1) if is_def else line
-        if rename_identifiers(rest, {name: marker}) != rest:
-            reads.append(i)
-        if is_def:
+        if _line_target(line) == name:
             defs.append(i)
+        if name in _line_reads(line):
+            reads.append(i)
     return defs, reads
 
 
@@ -257,7 +296,9 @@ def inline_exit_checks(lines):
             count += 1
             continue
         # `if T() then / __cleanup_X() / return / end`
-        cleanup = re.fullmatch(re.escape(m.group(1)) + r'    (\w+\(\))\n', lines[i + 1])
+        cleanup = re.fullmatch(re.escape(m.group(1)) + r'    ([^\n;]+)\n', lines[i + 1])
+        if cleanup and re.match(r'(?:if |while |repeat|for |local |return|goto |break|::|--)', cleanup.group(1)):
+            cleanup = None
         body = re.fullmatch(re.escape(m.group(1)) + r'    (' + EXIT + r')\n', lines[i + 2]) if cleanup and i + 3 < len(lines) else None
         if body and lines[i + 3] == m.group(1) + 'end\n':
             lines[i] = f'{m.group(1)}if {m.group(2)} then {cleanup.group(1)}; {body.group(1)} end\n'
@@ -312,6 +353,9 @@ def fold_constant_conditions(lines):
     for i, line in enumerate(lines):
         new = re.sub(r'\bnot true\b', 'false', re.sub(r'\bnot false\b', 'true', line))
         if not new.lstrip().startswith('--'):
+            new = re.sub(r'(?<![\w.])(\d+) ~= 0\b', lambda mm: 'true' if int(mm.group(1)) else 'false', new)
+            new = re.sub(r'(?<![\w.])(\d+) == 0\b', lambda mm: 'false' if int(mm.group(1)) else 'true', new)
+        if not new.lstrip().startswith('--'):
             new = re.sub(r' and true\b', '', new)
             new = re.sub(r'\btrue and ', '', new)
             new = re.sub(r' or false\b', '', new)
@@ -364,7 +408,7 @@ def fold_frame_checks(lines):
         a = re.fullmatch(r'(\s*)(\w+):NewScriptFrame\(([^\n]*)\)\n', lines[i])
         if not a:
             continue
-        b = re.fullmatch(re.escape(a.group(1)) + r'if ' + a.group(2) + r':IsActiveThreadTerminating\(\) then (' + EXIT + r') end\n', lines[i + 1])
+        b = re.fullmatch(re.escape(a.group(1)) + r'if ' + a.group(2) + r':IsActiveThreadTerminating\(\) then ((?:[^\n;]+; )?' + EXIT + r') end\n', lines[i + 1])
         if b:
             lines[i] = ''
             lines[i + 1] = f'{a.group(1)}if not {a.group(2)}:NewScriptFrame({a.group(3)}) then {b.group(1)} end\n'
@@ -414,13 +458,10 @@ def _read_reachable(flow, name, start_lines, defs):
             continue
         seen.add(j)
         line = flow.structure[j]
+        if name in line and name in _line_reads(line):
+            return True                           # (`v = v or E` reads the value before redefining it)
         if j in defs:
-            rhs = re.sub(r'^\s*(?:local )?' + re.escape(name) + r'\s*=(?!=)', '', line, count=1)
-            if rename_identifiers(rhs, {name: '__reach_marker__'}) != rhs:
-                return True                       # `v = v or E` reads the value before redefining it
             continue
-        if rename_identifiers(line, {name: '__reach_marker__'}) != line:
-            return True
         queue.extend(flow.graph.get(j, ()))
     return False
 
@@ -428,7 +469,7 @@ def _read_reachable(flow, name, start_lines, defs):
 QUERY_METHOD = re.compile(r'^(?:Get|Is|Has|Can|Msg)')
 
 
-def _sink_target(flow, name, d, expr, reads, def_set):
+def _sink_target(flow, name, d, expr, reads, def_set, touched=frozenset()):
     """The read line a definition may be moved to: the next statement, or a later one when every
     statement in between is straight-line, neither reads nor writes `name`, does not write an
     identifier the value depends on, and (for a value computed by a call) only queries state."""
@@ -440,7 +481,7 @@ def _sink_target(flow, name, d, expr, reads, def_set):
         if not succ or len(succ) != 1:
             return None
         s = next(iter(succ))
-        if s == d or flow.preds.get(s) != {prev}:
+        if s == d or flow.preds.get(s) != {prev} or s in touched:
             return None
         if s in reads:
             return s
@@ -471,6 +512,7 @@ def inline_single_use(lines):
             return lines, count
         structure = flow.structure
         done = False
+        touched = set()
         for name in _declared_temporaries(structure):
             if name in flow.pinned:
                 continue
@@ -483,8 +525,10 @@ def inline_single_use(lines):
                 if not m or any(t.lastgroup in ('comment', 'longcomment') for t in tokens(lines[d])):
                     continue
                 expr = m.group(2)
-                r = _sink_target(flow, name, d, expr, reads, def_set)
-                if r is None:
+                if d in touched:
+                    continue
+                r = _sink_target(flow, name, d, expr, reads, def_set, touched)
+                if r is None or r in touched:
                     continue
                 read_line = lines[r]
                 if re.match(r'\s*local\b', read_line):
@@ -523,9 +567,9 @@ def inline_single_use(lines):
                     _remove_declaration(lines, name)
                 count += 1
                 done = True
-                break
-            if done:
-                break
+                touched.update((d, r))
+                if len(defs) == 1 and len(reads) == 1:
+                    break                          # the variable is gone; other definitions no longer exist
         if not done:
             return lines, count
 
@@ -571,15 +615,23 @@ def fold_goto_else(lines):
         changed = False
         lines = [l for l in lines if l != '']
         text = ''.join(lines)
+        goto_counts = Counter(re.findall(r'\bgoto (\w+)', text))
         for g, line in enumerate(lines):
+            if 'goto ' not in line:
+                continue
             m = re.fullmatch(r'(\s*)goto (\w+)\n', line)
-            inline = re.fullmatch(r'(\s*)if (.+) then goto (\w+) end\n', line)
+            inline = re.fullmatch(r'(\s*)if (.+?) then (?:([^\n;]+); )?goto (\w+) end\n', line)
             if not m and not inline:
                 continue
-            label = inline.group(3) if inline else m.group(2)
-            if len(re.findall(r'\bgoto ' + label + r'\b', text)) != 1:
+            label = inline.group(4) if inline else m.group(2)
+            if goto_counts[label] != 1:
                 continue
-            if inline:
+            if inline and inline.group(3):
+                # `if C then STMT; goto L end`: a then-branch of one statement
+                indent, cond, if_line, end = inline.group(1), inline.group(2), g, g
+                then_body = [f'{indent}    {inline.group(3)}\n']
+                inline = None
+            elif inline:
                 indent, cond, if_line, then_body, end = inline.group(1), inline.group(2), g, [], g
             else:
                 indent = m.group(1)[:-4] if len(m.group(1)) >= 4 else None
@@ -642,7 +694,7 @@ def fold_goto_else(lines):
                 # is only reached when its condition fails: that remainder is the enclosing if's else
                 last = next((l.strip() for l in reversed(body2) if l.strip()), '')
                 outer_indent = indent[:-4] if len(indent) >= 4 else None
-                if not body2 or outer_indent is None or not re.fullmatch(r'(?:\w+\(\); )?(?:return\b.*|goto \w+|break)', last) \
+                if not body2 or outer_indent is None or not re.fullmatch(r'(?:[^\n;]+; )?(?:return\b.*|goto \w+|break)', last) \
                         or rest_end >= len(lines) or lines[rest_end] != outer_indent + 'end\n':
                     continue
                 outer = next((j for j in range(if_line - 1, -1, -1) if lines[j].startswith(outer_indent) and not lines[j].startswith(outer_indent + ' ') and lines[j].strip()), None)
@@ -867,8 +919,9 @@ def fold_retry_loops(lines):
             continue
         for i in range(len(lines) - 2):
             m = re.fullmatch(r'(\s*)(\w+) = ([^\n]+)\n', lines[i])
-            w = re.fullmatch(r'(\s*)while (not )?(\w+) do\n', lines[i + 1]) if m else None
-            if m and w and m.group(1) == w.group(1) and m.group(2) == w.group(3):
+            w = re.fullmatch(r'(\s*)while (.+) do\n', lines[i + 1]) if m else None
+            if m and w and m.group(1) == w.group(1) and m.group(2) in _line_reads(_structure_line(lines[i + 1])) \
+                    and len(re.findall(r'\b' + m.group(2) + r'\b', _structure_line(lines[i + 1]))) == 1:
                 indent, name, expr = m.group(1), m.group(2), m.group(3)
                 end = next((j for j in range(i + 2, len(lines)) if lines[j] == indent + 'end\n'), None)
                 if end is None:
@@ -879,8 +932,9 @@ def fold_retry_loops(lines):
                 defs, reads = _reads_and_defs(structure, name)
                 if set(defs) != {i, last} or reads != [i + 1]:
                     continue
-                cond = expr if _atomic(expr) or not w.group(2) else f'({expr})'
-                lines[i + 1] = f'{indent}while {w.group(2) or ""}{cond} do\n'
+                whole = w.group(2).strip() == name or w.group(2).strip() == 'not ' + name
+                cond = expr if _atomic(expr) or (whole and not w.group(2).startswith('not ')) else f'({expr})'
+                lines[i + 1] = f'{indent}while {rename_identifiers(w.group(2), {name: cond})} do\n'
                 lines[i] = lines[last] = ''
                 _remove_declaration(lines, name)
                 count += 1
@@ -920,8 +974,8 @@ def prune_dead_termination_checks(lines, pure_functions):
     if not flow.ok:
         return lines, 0
     structure = flow.structure
-    check = re.compile(r'^(\s*)if ' + TERMINATING + r' then (?:\w+\(\); )?' + EXIT + r' end$')
-    frame = re.compile(r'^(\s*)if not \w+:NewScriptFrame\([^\n]*\) then (?:\w+\(\); )?' + EXIT + r' end$')
+    check = re.compile(r'^(\s*)if ' + TERMINATING + r' then (?:[^\n;]+; )?' + EXIT + r' end$')
+    frame = re.compile(r'^(\s*)if not \w+:NewScriptFrame\([^\n]*\) then (?:[^\n;]+; )?' + EXIT + r' end$')
     until_term = re.compile(r'^(\s*)until ' + TERMINATING + r'$')
     query = re.compile(r'^(\s*)(\w+) = ' + TERMINATING + r'$')
     n = len(lines)
@@ -1550,7 +1604,7 @@ def fold_else_exit(lines):
             if else_at is None or else_at == i + 1 or else_at + 2 >= len(lines) or lines[else_at + 2] != indent + 'end\n':
                 continue
             exit_line = lines[else_at + 1]
-            if not re.fullmatch(re.escape(indent) + r'    (?:\w+\(\); )?(?:return(?: [^\n]*)?|goto \w+|break)\n', exit_line):
+            if not re.fullmatch(re.escape(indent) + r'    (?:[^\n;]+; )?(?:return(?: [^\n]*)?|goto \w+|break)\n', exit_line):
                 continue
             body = lines[i + 1:else_at]
             if any(l.strip().startswith('::') for l in body):

@@ -2307,7 +2307,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 1,
+      "declarations": 2,
       "decimalLiterals": 0
      }
     },
@@ -5354,7 +5354,7 @@
        "splitLocals": 2,
        "staleLabelComments": 4,
        "aliveStaging": 13,
-       "exitChecksInlined": 0,
+       "exitChecksInlined": 2,
        "frameChecks": 3,
        "inlinedTemporaries": 22,
        "deadDefinitions": 0,
@@ -5389,7 +5389,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 99,
+       "lines": 93,
        "temporaries": 7,
        "labels": 5,
        "gotos": 16,
@@ -5486,7 +5486,7 @@
       "deadStores": 1,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 1,
       "decimalLiterals": 0
      }
     },
@@ -5520,7 +5520,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 2,
+      "declarations": 4,
       "decimalLiterals": 5
      }
     },
@@ -5537,7 +5537,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 1,
+      "declarations": 3,
       "decimalLiterals": 5
      }
     },
@@ -5588,7 +5588,7 @@
       "deadStores": 0,
       "unusedAlive": 2,
       "flagTests": 0,
-      "declarations": 1,
+      "declarations": 2,
       "decimalLiterals": 0
      }
     },
@@ -7367,8 +7367,8 @@
        "splitLocals": 1,
        "staleLabelComments": 1,
        "aliveStaging": 12,
-       "exitChecksInlined": 7,
-       "frameChecks": 2,
+       "exitChecksInlined": 8,
+       "frameChecks": 3,
        "inlinedTemporaries": 33,
        "deadDefinitions": 3,
        "guardWrappers": 2,
@@ -7402,12 +7402,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 136,
+       "lines": 135,
        "temporaries": 11,
        "labels": 1,
        "gotos": 1,
-       "terminationChecks": 13,
-       "frameChecks": 2,
+       "terminationChecks": 12,
+       "frameChecks": 3,
        "requires": 0
       }
      },
@@ -7416,8 +7416,8 @@
        "splitLocals": 1,
        "staleLabelComments": 1,
        "aliveStaging": 14,
-       "exitChecksInlined": 10,
-       "frameChecks": 3,
+       "exitChecksInlined": 11,
+       "frameChecks": 4,
        "inlinedTemporaries": 39,
        "deadDefinitions": 2,
        "guardWrappers": 2,
@@ -7451,12 +7451,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 153,
+       "lines": 152,
        "temporaries": 13,
        "labels": 2,
        "gotos": 3,
-       "terminationChecks": 17,
-       "frameChecks": 3,
+       "terminationChecks": 16,
+       "frameChecks": 4,
        "requires": 0
       }
      },
@@ -7612,7 +7612,7 @@
        "splitLocals": 2,
        "staleLabelComments": 4,
        "aliveStaging": 13,
-       "exitChecksInlined": 0,
+       "exitChecksInlined": 2,
        "frameChecks": 3,
        "inlinedTemporaries": 22,
        "deadDefinitions": 0,
@@ -7647,7 +7647,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 100,
+       "lines": 94,
        "temporaries": 7,
        "labels": 5,
        "gotos": 16,

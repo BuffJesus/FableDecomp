@@ -41,15 +41,9 @@ function DoMultiplierCutscene(quest, me)
     else
         if not quest:IsActiveThreadTerminating() then
             if quest:IsDistanceBetweenThingsUnder(quest:GetThingWithScriptName("MK_OFI_GWL"), quest:GetHero(), 20.0) then
-                if quest:IsActiveThreadTerminating() then
-                    quest:PauseAllNonScriptedEntities(false)
-                    goto FLOW_after_lab_00dd1d98
-                end
+                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00dd1d98 end
                 if heroTeam ~= 1 then
-                    if not quest:IsActiveThreadTerminating() then
-                        string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"
-                        goto LAB_00dd1d98
-                    end
+                    if not quest:IsActiveThreadTerminating() then string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"; goto LAB_00dd1d98 end
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(scratchValue9)
                     goto LAB_00dd1e95

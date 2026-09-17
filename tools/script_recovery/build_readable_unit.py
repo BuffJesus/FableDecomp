@@ -327,6 +327,9 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
     lifted = ROOT / 'refs/script_recovery/lifted' / u['package']
     draft = draft or lifted / 'draft'
     out = out or lifted / 'readable'
+    if out.exists() and not (out / 'READABLE_REPORT.json').exists() and any(out.iterdir()):
+        raise SystemExit(f'{out} is not a generated readable stage (no READABLE_REPORT.json) — a hand-reviewed artifact? '
+                         f'pass --out to write elsewhere')
     if out.exists():
         shutil.rmtree(out)
     checker = LuaSyntaxChecker()
@@ -337,7 +340,11 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
     writers = state_writers(drafts)
     for path in sorted(draft.rglob('*.lua')):
         rel = path.relative_to(draft).as_posix()
-        text, file_report = readable_file(drafts[rel], style=style, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
+        try:
+            text, file_report = readable_file(drafts[rel], style=style, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
+        except ValueError as exc:            # a pass refused (irreversible rename, ...): ship the draft text for this file
+            text, file_report = drafts[rel], {'functions': [], 'locals': [], 'wrappedDeclarations': 0, 'style': {}, 'error': str(exc)}
+            print(f'{rel}: readable pass skipped: {exc}', file=sys.stderr)
         text = text.replace('-- Generated native draft:', '-- Readable native conversion:', 1)
         if style:
             text = function_headers(text, rel, conversion)
@@ -367,12 +374,13 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('--unit', default='orchard_farm')
+    a.add_argument('--out', type=Path, help='output directory (default refs/script_recovery/lifted/<Package>/readable)')
     a.add_argument('--no-style', action='store_true', help='skip the quest-script style pass (readable_style.py)')
     a.add_argument('--frame-keeps-checks', action='store_true',
                    help='do not fold NewScriptFrame + termination check (units run under the NewOakValeIntro lifetime, '
                         'where the DLL always returns true from NewScriptFrame)')
     args = a.parse_args()
-    build(args.unit, style=not args.no_style, frame_returns_alive=not args.frame_keeps_checks)
+    build(args.unit, out=args.out, style=not args.no_style, frame_returns_alive=not args.frame_keeps_checks)
 
 
 if __name__ == '__main__':

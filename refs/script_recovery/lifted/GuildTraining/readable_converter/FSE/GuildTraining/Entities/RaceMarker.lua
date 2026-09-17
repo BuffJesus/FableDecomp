@@ -1,0 +1,35 @@
+-- Readable native conversion: RaceMarker. Review coverage report before use.
+-- Registration remains disabled until the package is verified.
+
+local state = {}  -- per-entity script state (__native_entity_state)
+do
+    local fields = {}
+    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
+        state["Get" .. kind] = function(_, name) return fields[name] end
+        state["Set" .. kind] = function(_, name, value) fields[name] = value end
+    end
+end
+
+-- RaceMarker.Main (retail 0x00d40aa0)
+function Main(quest, me)
+    while not quest:IsActiveThreadTerminating() do
+        if quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 3.0) then
+            quest:SetStateBool("ReachedPlatform", true)
+            quest:MiniMapRemoveMarker(me)
+        end
+        quest:NewScriptFrame(me)
+    end
+end
+
+-- RaceMarker.Init (retail 0x00d40a90)
+function Init(quest, me)
+end
+
+-- RaceMarker.OnPersist (retail 0x00cdebc0)
+function OnPersist(quest, context)
+end
+
+-- RaceMarker.OnPredicateFail (retail 0x00cdebd0)
+function OnPredicateFail(quest, me)
+end
+
