@@ -230,3 +230,41 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
   literals in float slots (unit mode only — Oakvale's readable pass already does it; gate stays identical).
 - Regressions caught by the gate/tests along the way: `_bN` renaming before colour folding (moved after), positional argument
   placement (FSE parameter order ≠ native order for AddLineToConversation/EntityAttachToScript — reverted), `X = X & 0xffffff`.
+
+## Night 5 (2026-09-17) — readable output reads like a quest script (READABLE_STYLE_PLAN steps 1, 2, 6)
+- New stage `tools/script_recovery/readable_style.py`, run by `build_readable_unit.py` after the older folds (two rounds, the
+  older folds expose loop/guard shapes and vice versa). Every rewrite is checked against the function's flow graph
+  (`lua_local_versions.flow_graph`; cleanup closures blanked + their upvalues pinned; `__cleanup_X(); return` normalised to
+  `return` for the graph). Orchard readable: 2109 -> 1287 lines, temporaries 270 -> 87, termination checks 177 -> 106,
+  `if not quest:NewScriptFrame(me) then return end` 0 -> 26, `require(` per call 11 -> 0. CrateTeamMember.Main 350 -> 154 lines,
+  50 -> 9 temporaries, 36 -> 15 checks. Smoke harness 0 problems (draft + readable), Oakvale gate identical, 89 tests pass.
+- Step 1 (termination boilerplate): `alive = not T(); p = not alive` -> `p = T()`; 3-line exit checks inlined (also
+  `__cleanup(); return`); `NewScriptFrame(..)` + `if T() then X end` -> `if not NewScriptFrame(..) then X end` (DLL: for
+  lifetime-None units NewScriptFrame returns `!IsActiveThreadTerminating` of the same host the `quest:` query uses — verified
+  in LuaQuestState.cpp/LuaManager.cpp; NOT for NewOakValeIntro, which always returns true — `--frame-keeps-checks`); the
+  wrapping `if not T() then BODY end` whose end only reaches `end`/`return` lines -> `if T() then return end` + BODY;
+  retry loops `v = E; while not v do BODY; v = E end` -> `while not E do BODY end`, `if E then repeat .. until not E end` ->
+  `while E do .. end`, rotated `v = E; repeat if v then X end .. v = E until false`; a dataflow (clean after a check or frame
+  check, unknown after any non-query call, meet = unknown) deletes checks that a dominating check already answered and turns
+  `p = T()` into `p = false` there (terminating can only flip across a scheduler advance).
+- Step 2 (temporaries): a definition is substituted at its read when the read is the next statement or reachable through
+  straight-line statements that neither touch the variable nor (for call values) do anything but query; single-use *per
+  definition* (multi-def flags too); evaluation order kept (a completed call before the read blocks the move unless both sides
+  are queries); dead definitions pruned (bare call kept when the value had effects); reaching-definition literal propagation;
+  `if C then v = true else v = false end` -> `v = C`, `if v then v = E end` -> `v = v and E`, `v = A; v = v and B` merged,
+  `((C) and 0 or 1) ~= 0` -> `not (C)`, `not (a == b)` -> `a ~= b`, `not (not X)` -> X, `if true/false` folded, empty
+  then/else pruned, unused cleanup closures dropped.
+- Step 6 (cosmetics): redundant parentheses (whole argument / condition / rhs, atomic operands, and/or operands of
+  comparisons — iterated per line), `x + -1` -> `x - 1`, `v ~= false` -> `v` for boolean-valued v, `local x` + `x = E` ->
+  `local x = E`, blank lines inside bodies dropped, `local helpers = require(...)` once per file, stale `-- LAB_x` comments.
+- READABLE_REPORT.json: per-function `style.rewrites` + `before`/`after` metrics (lines, temporaries, labels, gotos,
+  terminationChecks, frameChecks, requires) and a file-level `styleMetrics` total.
+- Draft bugs found while reading the output (all three would have broken the v5 Orchard run): (1) `c_stk_11 = !(iVar3 != 0);
+  if (c_stk_11 != '\0')` lifted to `if c_stk_11 ~= 0` — a Lua boolean compared with 0 is always true, so every CrateTeamMember
+  became TeamID 1 (`is_boolean_expression` now types `not`/comparison values as bool); (2) `IsThingCarryingCrate` returns bool
+  per the ego_r signature but Ghidra says int, so `iVar7 ~= 0` was always true (`bsim bool __thiscall` outranks Ghidra's int);
+  (3) `MakeTeamMemberComment(.., "FETCHING" + 4, ..)` (a Lua runtime error): the retyped member prints bare
+  (`MakeTeamMemberComment(`) so its sites never paired — bare-member-name fallback in `_text_order_sites`/by-label; the
+  real string is `"REQUEST_PROTECTION"`. The now-exact pairing renamed TeamSpawn's created-creature slot, exposing a lifter
+  bug: `xStack_54 = pCVar6` in both branches of an if/else was recorded as a per-branch alias (forgotten at the join) although
+  `xStack_54` was already an emitted local (`= nil`) — now a real store. Oakvale gate identical throughout.

@@ -1,3 +1,26 @@
+# CURRENT (night 5, 2026-09-17): readable output reads like a quest script; three Orchard draft bugs fixed
+
+**Readable style (READABLE_STYLE_PLAN steps 1, 2, 6) LANDED**: `tools/script_recovery/readable_style.py` (flow-graph-checked
+folds: termination boilerplate, frame idiom, guard wrappers, retry loops, dead-check dataflow, single-use-per-definition
+temporary inlining with straight-line sinking, dead defs, literal propagation, boolean materialisation, parens/cosmetics,
+one `local helpers = require(...)`) runs inside `build_readable_unit.py` (two rounds with the older folds; `--no-style`,
+`--frame-keeps-checks` for NewOakValeIntro-lifetime units). Orchard readable 2109 -> 1287 lines, temporaries 270 -> 87,
+termination checks 177 -> 106; READABLE_REPORT.json carries per-function before/after style metrics. Smoke harness 0 problems
+(draft + readable), Oakvale gate identical, script_recovery tests green. Steps 3-5 (named state/things, structure, constants)
+are next; the plan doc has the CrateTeamMember after-shot.
+
+**Draft fixes (would have broken the v5 Orchard run — v5 must be REBUILT before the in-game run)**: boolean-vs-0 compares
+(`if c_stk_11 ~= 0` on a Lua boolean = always true: every CrateTeamMember was TeamID 1; `IsThingCarryingCrate() ~= 0` likewise —
+lifter types `not`/comparison values as bool, bsim `bool __thiscall` outranks Ghidra's int), `MakeTeamMemberComment(..,
+"FETCHING" + 4, ..)` (bare-printed retyped member never paired → stack operand unrestored; real string "REQUEST_PROTECTION"),
+and the exposed lifter alias bug (`xStack_54 = pCVar6` in both if/else branches is a store, not a per-branch alias — TeamSpawn's
+`EntityAttachToScript` got nil). Rebuild: `convert_quest_unit.py --unit orchard_farm` → `build_readable_unit.py --unit orchard_farm`
+→ `build_unit_playtest_package.py` → local_test.py preflight, then the user-driven in-game run.
+
+Gate script (scratch, recreate if missing): convert_new_oakvale.py --out <tmp> and `diff -r` against
+refs/script_recovery/lifted/NewOakValeIntro (ignore CONVERSION_REPORT.json and baseline-only extras) → must print identical.
+Heredoc-python patches mangle regex backslashes (GOTCHAS) — patch tools through Write/Edit or a script file.
+
 # CURRENT (night 2026-09-17): Orchard Farm ready for the v5 in-game run; GuildTraining through the typed pipeline (26/37 files)
 
 **Orchard Farm**: draft 46/46 fns, 11/11 files, 0 TODO(native); readable 12/12; smoke harness 0 problems (draft + readable);

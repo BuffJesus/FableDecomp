@@ -1,6 +1,8 @@
 -- Readable native conversion: M_WhisperFarmRaidIntro. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local helpers = require("OrchardFarmRaid.native_quest_helpers")
+
 local __native_entity_state = {}
 do
     local fields = {}
@@ -11,16 +13,11 @@ do
 end
 
 function Main(quest, me)
-    local predicateResult
-    local alive = true
     if not quest:GetStateBool("HeroMetWhisperBeforeFarm") then
-        alive = not quest:IsActiveThreadTerminating()
-        predicateResult = not alive
-        if not predicateResult then
-            quest:SetStateBool("HeroMetWhisperBeforeFarm", true)
-            require("OrchardFarmRaid.native_quest_helpers").DoMultiplierCutscene(quest, me)
-            return
-        end
+        if quest:IsActiveThreadTerminating() then return end
+        quest:SetStateBool("HeroMetWhisperBeforeFarm", true)
+        helpers.DoMultiplierCutscene(quest, me)
+        return
     end
 end
 

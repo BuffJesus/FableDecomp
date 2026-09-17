@@ -233,6 +233,39 @@ RE_HIDDEN_SLOT = re.compile(r'^(?:\([^)]*\))?\s*&?(?:stack0x[0-9a-f]+|local_\w+|
 RE_REFCOUNT_IF = re.compile(
     r'^\s*if \(\(?(?P<v>\w+) != \(.+?\)0x0\) &&\s*'
     r'\(\*(?P=v) = \*(?P=v) \+ -1, \*(?P=v) == (?:\(.+?\))?(?:0|0x0)\)\) \{\s*$')
+def is_boolean_expression(text):
+    """`not X`, or a top-level comparison: the lifted value is a Lua boolean, so a later
+    `!= '\\0'` test on it must not become `~= 0` (`true ~= 0` is always true in Lua)."""
+    text = text.strip()
+    while text.startswith('(') and text.endswith(')'):
+        depth = 0
+        for i, ch in enumerate(text):
+            depth += (ch == '(') - (ch == ')')
+            if depth == 0 and i < len(text) - 1:
+                break
+        else:
+            text = text[1:-1].strip()
+            continue
+        break
+    if text.startswith('not ') or text in ('true', 'false'):
+        return True
+    depth, i = 0, 0
+    while i < len(text):
+        ch = text[i]
+        if ch in '"\'':
+            j = text.find(ch, i + 1)
+            i = (j if j >= 0 else len(text)) + 1
+            continue
+        depth += (ch == '(') - (ch == ')')
+        if depth == 0:
+            m = re.match(r' (==|~=|<=|>=|<|>) ', text[i:])
+            if m:
+                rest = text[i + len(m.group(0)):]
+                return not re.search(r'\s(?:and|or)\s+-?(?:\d|0x)', rest)   # `a == 1 and 0 or 1` is a number
+        i += 1
+    return False
+
+
 # A numeric literal or an arithmetic/bitwise expression over locals and literals (`uVar4 | 1`).
 RE_NUMERIC_EXPR = re.compile(r'-?(?:\d+(?:\.\d+)?|0x[0-9a-f]+)|[\w\s()]+[|&^+\-*/%<>]+[\w\s()|&^+\-*/%<>]+')
 # unit converter (accessor_kinds): Ghidra prefixes run to `pppu` (pointer depth); the Oakvale draft keeps {1,3}
@@ -2377,6 +2410,13 @@ class Lifter:
                 self.forget_value(m[1])
                 return
             if value in self.temps or value in self.locals:
+                if m.group(1) in self.locals and m.group(1) not in self.temps:
+                    # the slot is already an emitted local (`xStack_54 = nil` then `xStack_54 = pCVar6` in
+                    # both branches of an if/else): a real store, not a per-branch alias that the join forgets
+                    self.emit(f"{self.declare(m.group(1))} = {self.temps.get(value, value)}")
+                    if value in self.kinds:
+                        self.kinds[m.group(1)] = self.kinds[value]
+                    return
                 self.push_temp(m.group(1), self.temps.get(value, value))
                 return
         m = (RE_LOCAL_ASSIGN_DEEP if self.accessor_kinds else RE_LOCAL_ASSIGN).match(line)
@@ -2440,6 +2480,8 @@ class Lifter:
             state_getter = re.fullmatch(r'\w+:GetState(Bool|Int|Float)\("\w+"\)', lifted)
             if state_getter:
                 kind = "bool" if state_getter[1] == "Bool" else "number"
+            elif kind is None and is_boolean_expression(lifted):
+                kind = "bool"                    # `c_stk_11 = !(iVar3 != 0)` is a Lua boolean
             self.emit(f"{self.declare(var)} = {lifted}")
             if kind:
                 self.kinds[var] = kind           # `a = b;` copies b's kind; `uVar15 = uVar4 | 1;` is a number

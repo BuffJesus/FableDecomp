@@ -11,76 +11,43 @@ do
 end
 
 function Main(quest, me)
-    local predicateResult, scratchValue, predicateResult2, predicateResult3, fret_0, conversationId
-    local conversationId2, hero, hero2, hero3, hero4, scratchValue2
-    local alive = true
-    local whisperInCutscene = quest:GetStateBool("WhisperInCutscene")
-    while whisperInCutscene do
-        alive = quest:NewScriptFrame(me)
-        if quest:IsActiveThreadTerminating() then
-            return
-        end
-        whisperInCutscene = quest:GetStateBool("WhisperInCutscene")
+    local conversationId, conversationId2
+    while quest:GetStateBool("WhisperInCutscene") do
+        if not quest:NewScriptFrame(me) then return end
     end
-    alive = not quest:IsActiveThreadTerminating()
-    predicateResult = not alive
-    if not predicateResult then
-        quest:EntitySetAsKillable(me, false, false)
-        quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-        quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE_ORCHARD_FARM_BLOCK")
-        conversationId = quest:AddNewConversation(me, false, false)
-        hero = quest:GetHero()
-        quest:AddPersonToConversation(conversationId, hero)
-        hero2 = quest:GetHero()
-        quest:AddLineToConversation(conversationId, "TEXT_QST_051_WHISPER_ATTACK_WITH_FLOURISH_10", me, hero2, false)
-        scratchValue = me:MsgIsHitByHeroWithFlourish()
-        while not scratchValue do
-            alive = quest:NewScriptFrame(me)
-            if quest:IsActiveThreadTerminating() then
-                return
-            end
-            scratchValue = me:MsgIsHitByHeroWithFlourish()
+    if quest:IsActiveThreadTerminating() then return end
+    quest:EntitySetAsKillable(me, false, false)
+    quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
+    quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE_ORCHARD_FARM_BLOCK")
+    conversationId = quest:AddNewConversation(me, false, false)
+    quest:AddPersonToConversation(conversationId, quest:GetHero())
+    quest:AddLineToConversation(conversationId, "TEXT_QST_051_WHISPER_ATTACK_WITH_FLOURISH_10", me, quest:GetHero(), false)
+    while not me:MsgIsHitByHeroWithFlourish() do
+        if not quest:NewScriptFrame(me) then return end
+    end
+    if quest:IsActiveThreadTerminating() then return end
+    conversationId2 = quest:AddNewConversation(me, false, false)
+    quest:AddPersonToConversation(conversationId2, quest:GetHero())
+    quest:AddLineToConversation(conversationId2, "TEXT_QST_051_WHISPER_HAS_BEEN_HIT_WITH_FLOURISH_10", me, quest:GetHero(), false)
+    quest:EntitySetAsToAddToComboMultiplierWhenHit(me, true)
+    quest:EntitySetAsKillable(me, false, true)
+    quest:EntitySetAsDamageable(me, true)
+    quest:DisplayQuestInfo(true)
+    quest:AddQuestInfoBarHealth(me, {R = 0, G = 255, B = 0, A = 255}, "HUD_WHISPER_ICON", 1.0)
+    quest:EntitySetCombatType(me, "HERO_WHISPER_ATTACK_STYLE_OFARM")
+    while not quest:IsActiveThreadTerminating() do
+        if quest:GetHealth(me) <= 1.0 then
+            if quest:IsActiveThreadTerminating() then return end
+            quest:SetStateBool("MissionSucceeded", true)
         end
-        alive = not quest:IsActiveThreadTerminating()
-        predicateResult2 = not alive
-        if not predicateResult2 then
-            conversationId2 = quest:AddNewConversation(me, false, false)
-            hero3 = quest:GetHero()
-            quest:AddPersonToConversation(conversationId2, hero3)
-            hero4 = quest:GetHero()
-            quest:AddLineToConversation(conversationId2, "TEXT_QST_051_WHISPER_HAS_BEEN_HIT_WITH_FLOURISH_10", me, hero4, false)
-            quest:EntitySetAsToAddToComboMultiplierWhenHit(me, true)
-            quest:EntitySetAsKillable(me, false, true)
-            quest:EntitySetAsDamageable(me, true)
-            quest:DisplayQuestInfo(true)
-            scratchValue2 = quest:AddQuestInfoBarHealth(me, {R = 0, G = 255, B = 0, A = 255}, "HUD_WHISPER_ICON", 1.0)
-            quest:EntitySetCombatType(me, "HERO_WHISPER_ATTACK_STYLE_OFARM")
-            alive = not quest:IsActiveThreadTerminating()
-            predicateResult3 = not alive
-            while not predicateResult3 do
-                fret_0 = quest:GetHealth(me)
-                if fret_0 <= 1.0 then
-                    if quest:IsActiveThreadTerminating() then
-                        return
-                    end
-                    quest:SetStateBool("MissionSucceeded", true)
-                end
-                alive = quest:NewScriptFrame(me)
-                alive = not quest:IsActiveThreadTerminating()
-                predicateResult3 = not alive
-            end
-        end
+        quest:NewScriptFrame(me)
     end
 end
 
 function Init(quest, me)
-    if quest:GetStateInt("HeroTeam") == 1 then
-    else
-    end
     quest:EntitySetInFaction(me, "FACTION_BANDITS")
     quest:EntitySetAsKillable(me, false, true)
-    local pThing2 = quest:GetHero()
-    quest:EntitySetAsAwareOfThing(me, pThing2)
+    quest:EntitySetAsAwareOfThing(me, quest:GetHero())
     quest:EntitySetAsDamageable(me, false)
     quest:EntitySetAllowBossPhaseChanges(me, false)
 end

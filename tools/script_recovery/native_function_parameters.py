@@ -26,8 +26,11 @@ def function_parameters(source, *, member=False):
     # guessed int is a leftover register (a pointer temporary), not a result
     comment = re.search(r'/\*\s*\[bsim[^\]]*\]\s*([\s\S]*?)\*/', source)
     bsim_void = bool(comment and re.search(r'\bvoid\s+__thiscall\b', comment.group(1)))
+    # likewise a reviewed `bool __thiscall` outranks Ghidra's `int` (IsThingCarryingCrate: a Lua boolean
+    # result must not be tested with `~= 0`)
+    bsim_bool = bool(comment and re.search(r'\bbool\s+__thiscall\b', comment.group(1)))
     return {'parameters': params,
-            'returnKind': None if bsim_void else (('bool' if kind[1] in ('bool', 'char') else 'number') if kind else None),
+            'returnKind': None if bsim_void else 'bool' if bsim_bool else (('bool' if kind[1] in ('bool', 'char') else 'number') if kind else None),
             'bsimVoid': bsim_void}
 
 

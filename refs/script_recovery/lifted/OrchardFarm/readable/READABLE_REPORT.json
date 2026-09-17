@@ -13,12 +13,12 @@
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
-      "nilReleases": 0,
+      "nilReleases": 1,
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 3,
       "decimalLiterals": 0
      }
     },
@@ -159,7 +159,183 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 5,
+       "staleLabelComments": 2,
+       "aliveStaging": 0,
+       "exitChecksInlined": 3,
+       "frameChecks": 0,
+       "inlinedTemporaries": 9,
+       "deadDefinitions": 6,
+       "guardWrappers": 0,
+       "retryLoops": 1,
+       "booleanMaterialisation": 1,
+       "booleanCompares": 0,
+       "conditions": 4,
+       "literals": 2,
+       "constantConditions": 3,
+       "emptyElse": 1,
+       "unusedClosures": 1,
+       "deadTerminationChecks": 4,
+       "parentheses": 1,
+       "cosmetics": 1,
+       "firstAssignments": 3
+      },
+      "before": {
+       "lines": 56,
+       "temporaries": 2,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 6,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 16,
+       "temporaries": 2,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 1,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 5,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 5,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 1,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 1,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 2
+      },
+      "before": {
+       "lines": 15,
+       "temporaries": 2,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 13,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "pureLocalFunctions": [
+     "OnPersist"
+    ]
+   }
   },
   "FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua": {
    "functions": [
@@ -176,7 +352,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 27,
-      "declarations": 28,
+      "declarations": 31,
       "decimalLiterals": 1
      }
     },
@@ -244,7 +420,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 2,
-      "declarations": 2,
+      "declarations": 4,
       "decimalLiterals": 0
      }
     },
@@ -342,7 +518,7 @@
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
-        null
+        "predicateResult"
        ]
       },
       "__native_condition_6": {
@@ -366,7 +542,7 @@
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
-        null
+        "predicateResult"
        ]
       },
       "bVar2_1": {
@@ -1663,7 +1839,355 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1
+   "wrappedDeclarations": 1,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 2,
+       "aliveStaging": 18,
+       "exitChecksInlined": 26,
+       "frameChecks": 6,
+       "inlinedTemporaries": 35,
+       "deadDefinitions": 3,
+       "guardWrappers": 3,
+       "retryLoops": 5,
+       "booleanMaterialisation": 30,
+       "booleanCompares": 1,
+       "conditions": 1,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 14,
+       "parentheses": 46,
+       "cosmetics": 2,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 350,
+       "temporaries": 50,
+       "labels": 3,
+       "gotos": 3,
+       "terminationChecks": 36,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 154,
+       "temporaries": 9,
+       "labels": 3,
+       "gotos": 3,
+       "terminationChecks": 15,
+       "frameChecks": 6,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 4,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 1,
+       "booleanCompares": 0,
+       "conditions": 1,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 6,
+       "cosmetics": 0,
+       "firstAssignments": 2
+      },
+      "before": {
+       "lines": 46,
+       "temporaries": 5,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 40,
+       "temporaries": 0,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 1,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 4,
+       "cosmetics": 2,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 12,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 11,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "GoOnPatrol": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 2,
+       "exitChecksInlined": 2,
+       "frameChecks": 0,
+       "inlinedTemporaries": 2,
+       "deadDefinitions": 1,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 8,
+       "cosmetics": 1,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 26,
+       "temporaries": 3,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 3,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 16,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 2,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "IsThingCarryingCrate": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 3,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 1,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 22,
+       "temporaries": 5,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 2,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 19,
+       "temporaries": 2,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 2,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "GetNearestCrateToMe": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 1,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 1,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 3,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 20,
+       "temporaries": 5,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 19,
+       "temporaries": 5,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "helper_DCEC50": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 4,
+       "cosmetics": 2,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 6,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 5,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 8,
+    "pureLocalFunctions": [
+     "GetNearestCrateToMe",
+     "IsThingCarryingCrate",
+     "OnPersist",
+     "OnPredicateFail",
+     "helper_DCEC50"
+    ]
+   }
   },
   "FSE/OrchardFarmRaid/Entities/FarmRearEntrance.lua": {
    "functions": [
@@ -1680,7 +2204,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 1,
       "decimalLiterals": 0
      }
     },
@@ -1783,7 +2307,184 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 2,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 4,
+       "deadDefinitions": 2,
+       "guardWrappers": 1,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 2,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 4,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 13,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 2,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 7,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 2,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 3,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 3,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "pureLocalFunctions": [
+     "OnPersist",
+     "OnPredicateFail"
+    ]
+   }
   },
   "FSE/OrchardFarmRaid/Entities/M_WhisperFarmRaidIntro.lua": {
    "functions": [
@@ -1800,7 +2501,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 1,
       "decimalLiterals": 0
      }
     },
@@ -1902,7 +2603,185 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 2,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 1,
+       "deadDefinitions": 0,
+       "guardWrappers": 1,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 13,
+       "temporaries": 1,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 1,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 8,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 1,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 1,
+    "pureLocalFunctions": [
+     "Init",
+     "OnPersist",
+     "OnPredicateFail"
+    ]
+   }
   },
   "FSE/OrchardFarmRaid/Entities/MK_OFI_GWLL_WHIS2.lua": {
    "functions": [
@@ -1919,7 +2798,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 1,
       "decimalLiterals": 0
      }
     },
@@ -2021,7 +2900,185 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 2,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 1,
+       "deadDefinitions": 0,
+       "guardWrappers": 1,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 2,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 13,
+       "temporaries": 1,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 1,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 8,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 1,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 1,
+    "pureLocalFunctions": [
+     "Init",
+     "OnPersist",
+     "OnPredicateFail"
+    ]
+   }
   },
   "FSE/OrchardFarmRaid/Entities/OrchardFarmWhisper.lua": {
    "functions": [
@@ -2038,7 +3095,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 3,
-      "declarations": 3,
+      "declarations": 5,
       "decimalLiterals": 0
      }
     },
@@ -2051,7 +3108,7 @@
       "byteIndices": 0,
       "voidReturns": 0,
       "nilReleases": 0,
-      "emptyIfs": 0,
+      "emptyIfs": 1,
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
@@ -2301,7 +3358,184 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 2,
+       "staleLabelComments": 0,
+       "aliveStaging": 8,
+       "exitChecksInlined": 3,
+       "frameChecks": 2,
+       "inlinedTemporaries": 7,
+       "deadDefinitions": 1,
+       "guardWrappers": 2,
+       "retryLoops": 3,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 61,
+       "temporaries": 12,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 7,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 33,
+       "temporaries": 2,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 4,
+       "frameChecks": 2,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 1,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 1,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 11,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 7,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "pureLocalFunctions": [
+     "OnPersist",
+     "OnPredicateFail"
+    ]
+   }
   },
   "FSE/OrchardFarmRaid/Entities/TeamSpawn.lua": {
    "functions": [
@@ -2318,7 +3552,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 22,
-      "declarations": 22,
+      "declarations": 23,
       "decimalLiterals": 1
      }
     },
@@ -2694,7 +3928,13 @@
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
+        null
+       ]
+      },
+      "pCVar6_5": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         null
        ]
       },
@@ -2727,14 +3967,14 @@
        ]
       },
       "r1": {
-       "name": "scratchValue5",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r2": {
-       "name": "scratchValue6",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -2745,6 +3985,14 @@
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "getNearestWithScriptName"
+       ]
+      },
+      "xStack_54_2": {
+       "name": "scratchValue8",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
        ]
       }
      },
@@ -2790,7 +4038,7 @@
          69,
          92,
          184,
-         193
+         194
         ],
         "bVar3_13": [
          81
@@ -2835,13 +4083,13 @@
          179
         ],
         "bVar3_27": [
-         189
+         190
         ],
         "bVar3_28": [
-         203
+         205
         ],
         "bVar3_29": [
-         214
+         216
         ]
        }
       },
@@ -2855,7 +4103,7 @@
         ],
         "cVar1_2": [
          27,
-         211
+         213
         ]
        }
       },
@@ -2923,7 +4171,7 @@
          186
         ],
         "pCVar5_5": [
-         195
+         196
         ]
        }
       },
@@ -2941,8 +4189,10 @@
          138
         ],
         "pCVar6_4": [
-         187,
-         196
+         187
+        ],
+        "pCVar6_5": [
+         197
         ]
        }
       },
@@ -2960,22 +4210,35 @@
          185
         ],
         "pCVar8_4": [
-         194
+         195
+        ]
+       }
+      },
+      "xStack_54": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
+       "versions": {
+        "xStack_54_1": [
+         176
+        ],
+        "xStack_54_2": [
+         188,
+         198
         ]
        }
       }
      },
      "removedLiteralLocals": {
       "bVar3_12": {
-       "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1, xStack_54\n",
+       "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1, xStack_54_1, xStack_54_2\n",
        "69": "                                    bVar3_12 = false\n",
        "92": "                            bVar3_12 = false\n",
        "184": "                                bVar3_12 = false\n",
-       "193": "                                bVar3_12 = false\n"
+       "194": "                                bVar3_12 = false\n"
       },
-      "xStack_54": {
-       "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1, xStack_54\n",
-       "176": "                            xStack_54 = nil\n"
+      "xStack_54_1": {
+       "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1, xStack_54_1, xStack_54_2\n",
+       "176": "                            xStack_54_1 = nil\n"
       }
      },
      "inlinedLiteralLocals": {
@@ -2987,7 +4250,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1\n",
+        "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_1, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1, xStack_54_2\n",
         "51": "                    fVar9_1 = 15.0\n",
         "53": "                    bVar3_8 = quest:IsDistanceBetweenThingsOver(thing1, me, fVar9_1)\n"
        }
@@ -3000,7 +4263,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1\n",
+        "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar1_1, cVar1_2, fVar9_2, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar7, i_stk_70_1, i_stk_70_2, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, r2, r3, thing1, xStack_54_2\n",
         "137": "                            fVar9_2 = 15.0\n",
         "139": "                            bVar3_20 = quest:IsDistanceBetweenThingsUnder(r3, pCVar6_3, fVar9_2)\n"
        }
@@ -3010,7 +4273,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 233,
+     "sourceLine": 235,
      "locals": {
       "pCVar3_1": {
        "name": "getRandomThingWithScriptName",
@@ -3086,7 +4349,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 266,
+     "sourceLine": 268,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3095,7 +4358,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 269,
+     "sourceLine": 271,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3103,7 +4366,185 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1
+   "wrappedDeclarations": 1,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 1,
+       "aliveStaging": 6,
+       "exitChecksInlined": 23,
+       "frameChecks": 2,
+       "inlinedTemporaries": 26,
+       "deadDefinitions": 0,
+       "guardWrappers": 2,
+       "retryLoops": 2,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 9,
+       "parentheses": 17,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 192,
+       "temporaries": 35,
+       "labels": 2,
+       "gotos": 2,
+       "terminationChecks": 25,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 98,
+       "temporaries": 7,
+       "labels": 2,
+       "gotos": 2,
+       "terminationChecks": 14,
+       "frameChecks": 2,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 1,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 1,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 31,
+       "temporaries": 5,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 29,
+       "temporaries": 4,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 1,
+    "pureLocalFunctions": [
+     "Init",
+     "OnPersist",
+     "OnPredicateFail"
+    ]
+   }
   },
   "FSE/OrchardFarmRaid/native_quest_helpers.lua": {
    "functions": [
@@ -3120,7 +4561,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 11,
-      "declarations": 11,
+      "declarations": 12,
       "decimalLiterals": 0
      }
     },
@@ -3653,7 +5094,97 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1
+   "wrappedDeclarations": 1,
+   "style": {
+    "functions": {
+     "DoMultiplierCutscene": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 4,
+       "aliveStaging": 13,
+       "exitChecksInlined": 0,
+       "frameChecks": 3,
+       "inlinedTemporaries": 22,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 3,
+       "booleanMaterialisation": 10,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 3,
+       "parentheses": 3,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 189,
+       "temporaries": 31,
+       "labels": 6,
+       "gotos": 20,
+       "terminationChecks": 20,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 110,
+       "temporaries": 9,
+       "labels": 6,
+       "gotos": 17,
+       "terminationChecks": 14,
+       "frameChecks": 3,
+       "requires": 0
+      }
+     },
+     "MakeTeamMemberComment": {
+      "rewrites": {
+       "splitLocals": 12,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 3,
+       "cosmetics": 0,
+       "firstAssignments": 12
+      },
+      "before": {
+       "lines": 19,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 19,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "pureLocalFunctions": []
+   }
   },
   "FSE/OrchardFarmRaid/OrchardFarmRaid.lua": {
    "functions": [
@@ -3670,7 +5201,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 1,
       "decimalLiterals": 0
      }
     },
@@ -3721,7 +5252,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 2,
       "decimalLiterals": 5
      }
     },
@@ -3738,7 +5269,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 1,
       "decimalLiterals": 5
      }
     },
@@ -3755,7 +5286,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 10,
-      "declarations": 11,
+      "declarations": 12,
       "decimalLiterals": 0
      }
     },
@@ -3772,7 +5303,7 @@
       "deadStores": 0,
       "unusedAlive": 2,
       "flagTests": 3,
-      "declarations": 3,
+      "declarations": 4,
       "decimalLiterals": 0
      }
     },
@@ -3789,7 +5320,7 @@
       "deadStores": 0,
       "unusedAlive": 2,
       "flagTests": 0,
-      "declarations": 0,
+      "declarations": 1,
       "decimalLiterals": 0
      }
     },
@@ -3806,7 +5337,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 11,
-      "declarations": 11,
+      "declarations": 12,
       "decimalLiterals": 0
      }
     },
@@ -4401,63 +5932,69 @@
        ]
       },
       "pCVar3_1": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
+       "name": "banditTeamSpawn",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "banditTeamSpawn",
-        "guardTeamSpawn"
+        "banditTeamSpawn"
        ]
       },
       "pCVar3_2": {
+       "name": "guardTeamSpawn",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "guardTeamSpawn"
+       ]
+      },
+      "pCVar3_3": {
        "name": "hero",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar3_3": {
+      "pCVar3_4": {
        "name": "hero2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar3_4": {
+      "pCVar3_5": {
        "name": "mainGates",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mainGates"
        ]
       },
-      "pCVar3_5": {
+      "pCVar3_6": {
        "name": "mainGates2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mainGates"
        ]
       },
-      "pCVar3_6": {
+      "pCVar3_7": {
        "name": "hero3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar3_7": {
+      "pCVar3_8": {
        "name": "ofFarmhouseDoor",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "ofFarmhouseDoor"
        ]
       },
-      "pCVar3_8": {
+      "pCVar3_9": {
        "name": "mainGates3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mainGates"
        ]
       },
-      "pCVar3_9": {
+      "pCVar3_10": {
        "name": "mainGates4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -4465,14 +6002,14 @@
        ]
       },
       "pCVar7_1": {
-       "name": "scratchValue2",
+       "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar7_2": {
-       "name": "scratchValue3",
+       "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4486,56 +6023,56 @@
        ]
       },
       "xStack_10": {
-       "name": "scratchValue4",
+       "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_20": {
-       "name": "scratchValue5",
+       "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_30": {
-       "name": "scratchValue6",
+       "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_40_1": {
-       "name": "scratchValue7",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_40_2": {
-       "name": "scratchValue8",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_50_1": {
-       "name": "scratchValue9",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_50_2": {
-       "name": "scratchValue10",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_5c": {
-       "name": "scratchValue11",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4549,16 +6086,18 @@
        ]
       },
       "xStack_70_2": {
-       "name": "scratchValue12",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_90": {
-       "name": "scratchValue13",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        null,
+        null,
         null,
         null
        ]
@@ -4573,64 +6112,64 @@
          8
         ],
         "bVar2_2": [
-         15
+         16
         ],
         "bVar2_3": [
-         23,
-         168
+         25,
+         170
         ],
         "bVar2_4": [
-         30,
-         38
-        ],
-        "bVar2_5": [
-         34
-        ],
-        "bVar2_6": [
+         32,
          40
         ],
-        "bVar2_7": [
-         45
+        "bVar2_5": [
+         36
         ],
-        "bVar2_8": [
+        "bVar2_6": [
+         42
+        ],
+        "bVar2_7": [
          47
         ],
+        "bVar2_8": [
+         49
+        ],
         "bVar2_9": [
-         52
+         54
         ],
         "bVar2_10": [
-         92
+         94
         ],
         "bVar2_11": [
-         120
+         122
         ],
         "bVar2_12": [
-         125
+         127
         ],
         "bVar2_13": [
-         132
+         134
         ],
         "bVar2_14": [
-         137,
-         144
-        ],
-        "bVar2_15": [
-         140
-        ],
-        "bVar2_16": [
+         139,
          146
         ],
+        "bVar2_15": [
+         142
+        ],
+        "bVar2_16": [
+         148
+        ],
         "bVar2_17": [
-         150
+         152
         ],
         "bVar2_18": [
-         154
+         156
         ],
         "bVar2_19": [
-         158
+         160
         ],
         "bVar2_20": [
-         161
+         163
         ]
        }
       },
@@ -4639,10 +6178,10 @@
        "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "iVar8_1": [
-         65
+         67
         ],
         "iVar8_2": [
-         99
+         101
         ]
        }
       },
@@ -4651,32 +6190,34 @@
        "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "pCVar3_1": [
-         13,
-         19
+         13
         ],
         "pCVar3_2": [
-         44
+         20
         ],
         "pCVar3_3": [
-         67
+         46
         ],
         "pCVar3_4": [
-         89
+         69
         ],
         "pCVar3_5": [
-         96
+         91
         ],
         "pCVar3_6": [
-         101
+         98
         ],
         "pCVar3_7": [
-         121
+         103
         ],
         "pCVar3_8": [
-         130
+         123
         ],
         "pCVar3_9": [
-         133
+         132
+        ],
+        "pCVar3_10": [
+         135
         ]
        }
       },
@@ -4685,10 +6226,10 @@
        "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "pCVar7_1": [
-         66
+         68
         ],
         "pCVar7_2": [
-         100
+         102
         ]
        }
       },
@@ -4697,10 +6238,10 @@
        "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "xStack_40_1": [
-         75
+         77
         ],
         "xStack_40_2": [
-         105
+         107
         ]
        }
       },
@@ -4709,10 +6250,10 @@
        "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "xStack_50_1": [
-         58
+         60
         ],
         "xStack_50_2": [
-         98
+         100
         ]
        }
       },
@@ -4721,10 +6262,10 @@
        "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "xStack_70_1": [
-         56
+         58
         ],
         "xStack_70_2": [
-         103
+         105
         ]
        }
       }
@@ -4733,54 +6274,54 @@
      "inlinedLiteralLocals": {
       "bVar2_11": {
        "literal": "false",
-       "definitionLine": 120,
+       "definitionLine": 122,
        "readLines": [
-        122
+        124
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
-        "120": "            bVar2_11 = false\n",
-        "122": "            quest:SetThingAsUsable(pCVar3_7, bVar2_11)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "122": "            bVar2_11 = false\n",
+        "124": "            quest:SetThingAsUsable(pCVar3_8, bVar2_11)\n"
        }
       },
       "bVar2_13": {
        "literal": "false",
-       "definitionLine": 132,
+       "definitionLine": 134,
        "readLines": [
-        134
+        136
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
-        "132": "        bVar2_13 = false\n",
-        "134": "        quest:SetThingAsUsable(pCVar3_9, bVar2_13)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "134": "        bVar2_13 = false\n",
+        "136": "        quest:SetThingAsUsable(pCVar3_10, bVar2_13)\n"
        }
       },
       "iVar8_1": {
        "literal": "4",
-       "definitionLine": 65,
+       "definitionLine": 67,
        "readLines": [
-        68
+        70
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
-        "65": "                iVar8_1 = 4\n",
-        "68": "                resources:TryAcquire(pCVar7_1, pCVar3_3, iVar8_1)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "67": "                iVar8_1 = 4\n",
+        "70": "                resources:TryAcquire(pCVar7_1, pCVar3_4, iVar8_1)\n"
        }
       },
       "iVar8_2": {
        "literal": "4",
-       "definitionLine": 99,
+       "definitionLine": 101,
        "readLines": [
-        102
+        104
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
-        "99": "                iVar8_2 = 4\n",
-        "102": "                resources:TryAcquire(pCVar7_2, pCVar3_6, iVar8_2)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "101": "                iVar8_2 = 4\n",
+        "104": "                resources:TryAcquire(pCVar7_2, pCVar3_7, iVar8_2)\n"
        }
       }
      },
@@ -4788,7 +6329,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 733,
+     "sourceLine": 735,
      "locals": {
       "bVar1_1": {
        "name": "isActiveThreadTerminating",
@@ -4886,7 +6427,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 776,
+     "sourceLine": 778,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -4943,7 +6484,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 795,
+     "sourceLine": 797,
      "locals": {
       "bVar4_1": {
        "name": "scratchValue",
@@ -5395,7 +6936,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 999,
+     "sourceLine": 1001,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -5403,7 +6944,435 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 4
+   "wrappedDeclarations": 4,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 2,
+       "staleLabelComments": 0,
+       "aliveStaging": 3,
+       "exitChecksInlined": 0,
+       "frameChecks": 1,
+       "inlinedTemporaries": 5,
+       "deadDefinitions": 0,
+       "guardWrappers": 1,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 43,
+       "temporaries": 2,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 2,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 34,
+       "temporaries": 1,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 1,
+       "frameChecks": 1,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 3,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 53,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 50,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "ProcessGameRulesEvil": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 1,
+       "aliveStaging": 12,
+       "exitChecksInlined": 7,
+       "frameChecks": 2,
+       "inlinedTemporaries": 33,
+       "deadDefinitions": 3,
+       "guardWrappers": 2,
+       "retryLoops": 2,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 1,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 6,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 207,
+       "temporaries": 21,
+       "labels": 2,
+       "gotos": 2,
+       "terminationChecks": 15,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 139,
+       "temporaries": 11,
+       "labels": 2,
+       "gotos": 2,
+       "terminationChecks": 13,
+       "frameChecks": 2,
+       "requires": 0
+      }
+     },
+     "ProcessGameRulesGood": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 1,
+       "aliveStaging": 14,
+       "exitChecksInlined": 10,
+       "frameChecks": 3,
+       "inlinedTemporaries": 39,
+       "deadDefinitions": 2,
+       "guardWrappers": 2,
+       "retryLoops": 2,
+       "booleanMaterialisation": 4,
+       "booleanCompares": 0,
+       "conditions": 1,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 9,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 248,
+       "temporaries": 25,
+       "labels": 3,
+       "gotos": 4,
+       "terminationChecks": 20,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 156,
+       "temporaries": 13,
+       "labels": 3,
+       "gotos": 4,
+       "terminationChecks": 17,
+       "frameChecks": 3,
+       "requires": 0
+      }
+     },
+     "DoCutsceneIfRequired": {
+      "rewrites": {
+       "splitLocals": 2,
+       "staleLabelComments": 3,
+       "aliveStaging": 8,
+       "exitChecksInlined": 12,
+       "frameChecks": 3,
+       "inlinedTemporaries": 16,
+       "deadDefinitions": 2,
+       "guardWrappers": 0,
+       "retryLoops": 4,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 6,
+       "parentheses": 4,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 154,
+       "temporaries": 30,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 14,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 89,
+       "temporaries": 12,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 4,
+       "frameChecks": 3,
+       "requires": 0
+      }
+     },
+     "WatchForExternalScriptDeactivation": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 1,
+       "aliveStaging": 0,
+       "exitChecksInlined": 3,
+       "frameChecks": 1,
+       "inlinedTemporaries": 2,
+       "deadDefinitions": 2,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 1,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 1,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 39,
+       "temporaries": 4,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 3,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 23,
+       "temporaries": 1,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 1,
+       "frameChecks": 1,
+       "requires": 0
+      }
+     },
+     "MakeTeamMemberComment": {
+      "rewrites": {
+       "splitLocals": 8,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 7,
+       "deadDefinitions": 1,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 1,
+       "cosmetics": 0,
+       "firstAssignments": 4
+      },
+      "before": {
+       "lines": 18,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 11,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "DoMultiplierCutscene": {
+      "rewrites": {
+       "splitLocals": 1,
+       "staleLabelComments": 4,
+       "aliveStaging": 13,
+       "exitChecksInlined": 0,
+       "frameChecks": 3,
+       "inlinedTemporaries": 22,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 3,
+       "booleanMaterialisation": 10,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 3,
+       "parentheses": 3,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 190,
+       "temporaries": 31,
+       "labels": 6,
+       "gotos": 20,
+       "terminationChecks": 20,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 111,
+       "temporaries": 9,
+       "labels": 6,
+       "gotos": 17,
+       "terminationChecks": 14,
+       "frameChecks": 3,
+       "requires": 0
+      }
+     },
+     "ReplaceQuestCards": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 4,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 4,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "pureLocalFunctions": [
+     "OnPersist"
+    ]
+   }
   },
   "FSE/OrchardFarmRaidEvil/OrchardFarmRaidEvil.lua": {
    "functions": [
@@ -5462,7 +7431,99 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 8,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 8,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "pureLocalFunctions": [
+     "Main"
+    ]
+   }
   },
   "FSE/OrchardFarmRaidGood/OrchardFarmRaidGood.lua": {
    "functions": [
@@ -5521,12 +7582,109 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "deadTerminationChecks": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0
+      },
+      "before": {
+       "lines": 8,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 8,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "pureLocalFunctions": [
+     "Main"
+    ]
+   }
   },
   "FSE/quests.lua": {
    "functions": [],
    "locals": [],
-   "wrappedDeclarations": 0
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {},
+    "hoistedRequires": 0,
+    "pureLocalFunctions": []
+   }
   }
  },
  "syntax": {

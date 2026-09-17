@@ -606,6 +606,7 @@ function DoCutsceneIfRequired(quest)
             return
         end
         pCVar3 = quest:GetThingWithScriptName("BanditTeamSpawn")
+        xStack_90 = pCVar3
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -613,6 +614,7 @@ function DoCutsceneIfRequired(quest)
             return
         end
         pCVar3 = quest:GetThingWithScriptName("GuardTeamSpawn")
+        xStack_90 = pCVar3
     end
     -- LAB_00dcfb65: (native jump target)
     alive = not quest:IsActiveThreadTerminating()

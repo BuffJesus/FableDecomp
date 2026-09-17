@@ -612,7 +612,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 178,
+          "lines": 180,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -689,7 +689,7 @@
                 "type": "int"
               }
             ],
-            "returnKind": "number",
+            "returnKind": "bool",
             "bsimVoid": false
           },
           "todo": [],
@@ -946,7 +946,7 @@
             "IsActiveThreadTerminating",
             "RemoveQuestInfoElement"
           ],
-          "lines": 239,
+          "lines": 241,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1620,7 +1620,7 @@
                 "type": "int"
               }
             ],
-            "returnKind": "number",
+            "returnKind": "bool",
             "bsimVoid": false
           },
           "todo": [],

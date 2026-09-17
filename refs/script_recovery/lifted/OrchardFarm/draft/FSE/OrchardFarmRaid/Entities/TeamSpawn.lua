@@ -217,6 +217,7 @@ function Main(quest, me)
                                 pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", pCVar5, pCVar8)
+                                xStack_54 = pCVar6
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -227,8 +228,9 @@ function Main(quest, me)
                                 pCVar8 = __native_entity_state:GetStateString("TeamMemberName")
                                 pCVar5 = me:GetPos()
                                 pCVar6 = quest:CreateCreature(__native_entity_state:GetStateString("TeamMemberDefName"), pCVar5, pCVar8)
+                                xStack_54 = pCVar6
                             end
-                            quest:EntityAttachToScript(pCVar6, "Q_OrchardFarmRaid")
+                            quest:EntityAttachToScript(xStack_54, "Q_OrchardFarmRaid")
                             quest:Pause(2.0)
                             iVar7 = iVar7 + 1
                         until not (iVar7 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)

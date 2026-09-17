@@ -1,8 +1,31 @@
 # Readable output: from "decompiled program" to "quest script"
 
-Status: PLANNED 2026-09-17 (user: "Sounds like a plan"). First increment = steps 1, 2, 6 on Orchard Farm, shown as a
-CrateTeamMember before/after. Owner stage: `tools/script_recovery/build_readable_unit.py` (readable stage ONLY — the
-draft stays the faithful, reversible audit trail; `smoke_run_unit.py` keeps running both stages).
+Status: steps 1, 2, 6 LANDED 2026-09-17 (`tools/script_recovery/readable_style.py`, run by `build_readable_unit.py`; night-5
+section of `docs/journal/2026-09/CONVERTER_GENERIC_UNITS_2026-09-16.md`). Orchard readable 2109 -> 1287 lines, temporaries
+270 -> 87, termination checks 177 -> 106, 26 `if not quest:NewScriptFrame(me) then return end`, zero per-call `require(`.
+Steps 3, 4, 5 remain. Owner stage: `tools/script_recovery/build_readable_unit.py` (readable stage ONLY — the draft stays the
+faithful, reversible audit trail; `smoke_run_unit.py` keeps running both stages).
+
+## After the first increment (CrateTeamMember.Main, 350 -> 154 lines, 50 -> 9 temporaries)
+```lua
+function Main(quest, me)
+    local predicateResult4, predicateResult5, predicateResult6, scratchValue8, getStateInt
+    local getCurrentStateGroupType, p0_00, getNearestWithScriptName, thing_38, scratchValue14
+    if not quest:NewScriptFrame(me) then return end
+    while not quest:GetStateBool("DoneIntroduction") do
+        if not quest:NewScriptFrame(me) then return end
+        if quest:GetStateBool("HeroAtWrongEntrance") then
+            quest:RemoveThing(me, false, false)
+            ...
+    if __native_entity_state:GetStateInt("TeamID") == 1 and quest:GetStateInt("HeroTeam") == 1 then
+        while quest:IsInCutscene() do
+            if not quest:NewScriptFrame(me) then return end
+        end
+        helpers.MakeTeamMemberComment(quest, me, "FETCHING_03", me, 0)
+    end
+```
+Still to come (steps 3-5): `teams[myTeam].crateCarrier` accessors instead of `quest:GetStateThing("Teams_" .. .. "_TeamCrateCarrier")`,
+`local self = __native_entity_state`, `helper_DCEC50(quest, me, 2)` -> `SetMemberState(MEMBER_FETCHING)`, the three goto idioms.
 
 ## The gap (same API, different presentation)
 

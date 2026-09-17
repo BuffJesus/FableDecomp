@@ -246,6 +246,8 @@ def _text_order_sites(text, fn):
             spans = _call_spans(text, re.sub(r'[^\w:]', '_', label))
         if not spans and re.match(r'\w+\.DLL::', label):
             spans = _call_spans(text, label.split('::', 1)[1]) + _call_spans(text, '::' + label.split('::', 1)[1])   # imports print bare (`operator_new(` / `::operator_new(`)
+        if not spans and '::' in label:
+            spans = _call_spans(text, label.rsplit('::', 1)[1])    # a retyped member prints without its class (`MakeTeamMemberComment(`)
         for i, a, e in spans:
             heads.append((i, a, e - 1, label, False))
     heads.sort()
@@ -339,6 +341,8 @@ def restore_stack_operands(decompile, fn):
         spans = _call_spans(text, label)
         if len(spans) != len(group) and re.search(r'[?@]', label):
             spans = _call_spans(text, re.sub(r'[^\w:]', '_', label))     # Ghidra's C spelling of a mangled name
+        if not spans and '::' in label:
+            spans = _call_spans(text, label.rsplit('::', 1)[1])
         if len(spans) != len(group):
             continue
         for (i, a, e), site in zip(spans, sorted(group, key=lambda c: int(c['site'], 16))):

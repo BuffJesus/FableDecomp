@@ -29,6 +29,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.script_recovery import readable_lua  # noqa: E402
 from tools.script_recovery.readable_lua import readable_source, wrap_local_declarations  # noqa: E402
+from tools.script_recovery.readable_style import style_source  # noqa: E402
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.script_units import unit as script_unit  # noqa: E402
 
@@ -280,19 +281,33 @@ def fold_functions(source, functions, *, literals=False):
     return ''.join(out)
 
 
-def readable_file(source):
+def readable_file(source, *, style=True, frame_returns_alive=True):
     """Apply every pass per function chunk; return (text, report). The folds run before and after the
-    local-name pass: splitting reused temporaries exposes more dead stores and single-use flags."""
+    local-name pass: splitting reused temporaries exposes more dead stores and single-use flags; the
+    quest-script style pass (readable_style) runs last on the renamed text."""
     functions = {}
     text = fold_functions(source, functions)
     text, mappings = readable_source(text, split_reused=True, inline_literals=True)
     text = fold_functions(text, functions, literals=True)
+    style_report = {}
+    if style:
+        # two rounds: the style folds expose more dead stores / nil releases / unused declarations to the
+        # older passes, and those in turn expose loop / guard shapes to the style folds
+        text, style_report = style_source(text, frame_returns_alive=frame_returns_alive)
+        text = fold_functions(text, functions)
+        text, second = style_source(text, frame_returns_alive=frame_returns_alive)
+        text = fold_functions(text, functions)
+        for name, entry in second['functions'].items():
+            first = style_report['functions'].setdefault(name, {'rewrites': {}, 'before': entry['before'], 'after': entry['after']})
+            for key, value in entry['rewrites'].items():
+                first['rewrites'][key] = first['rewrites'].get(key, 0) + value
+            first['after'] = entry['after']
     text, wrapped = wrap_local_declarations(text)
     return text, {'functions': [{'function': n, 'rewrites': st} for n, st in functions.items()],
-                  'locals': mappings, 'wrappedDeclarations': len(wrapped)}
+                  'locals': mappings, 'wrappedDeclarations': len(wrapped), 'style': style_report}
 
 
-def build(unit_name, *, draft=None, out=None):
+def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=True):
     u = script_unit(unit_name)
     lifted = ROOT / 'refs/script_recovery/lifted' / u['package']
     draft = draft or lifted / 'draft'
@@ -304,7 +319,7 @@ def build(unit_name, *, draft=None, out=None):
     sources = {}
     for path in sorted(draft.rglob('*.lua')):
         rel = path.relative_to(draft).as_posix()
-        text, file_report = readable_file(path.read_text(encoding='utf-8'))
+        text, file_report = readable_file(path.read_text(encoding='utf-8'), style=style, frame_returns_alive=frame_returns_alive)
         text = text.replace('-- Generated native draft:', '-- Readable native conversion:', 1)
         target = out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -313,10 +328,18 @@ def build(unit_name, *, draft=None, out=None):
         report['files'][rel] = file_report
     report['syntax'] = checker.check(sources)
     (out / 'READABLE_REPORT.json').write_text(json.dumps(report, indent=1) + '\n', encoding='utf-8')
+    metrics = {}
+    for f in report['files'].values():
+        for fn in f.get('style', {}).get('functions', {}).values():
+            for stage in ('before', 'after'):
+                for key, value in fn[stage].items():
+                    metrics.setdefault(stage, {})[key] = metrics.setdefault(stage, {}).get(key, 0) + value
+    report['styleMetrics'] = metrics
     summary = {'files': len(sources), 'syntaxOk': report['syntax']['ok'],
                'errors': [e['path'] for e in report['syntax'].get('errors', [])],
                'rewrites': sum(v for f in report['files'].values() for fn in f['functions'] for v in fn['rewrites'].values()),
-               'renamedLocals': sum(len(m['locals']) for f in report['files'].values() for m in f['locals'])}
+               'renamedLocals': sum(len(m['locals']) for f in report['files'].values() for m in f['locals']),
+               'styleMetrics': metrics}
     print(json.dumps(summary, indent=2))
     return report
 
@@ -324,8 +347,12 @@ def build(unit_name, *, draft=None, out=None):
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('--unit', default='orchard_farm')
+    a.add_argument('--no-style', action='store_true', help='skip the quest-script style pass (readable_style.py)')
+    a.add_argument('--frame-keeps-checks', action='store_true',
+                   help='do not fold NewScriptFrame + termination check (units run under the NewOakValeIntro lifetime, '
+                        'where the DLL always returns true from NewScriptFrame)')
     args = a.parse_args()
-    build(args.unit)
+    build(args.unit, style=not args.no_style, frame_returns_alive=not args.frame_keeps_checks)
 
 
 if __name__ == '__main__':

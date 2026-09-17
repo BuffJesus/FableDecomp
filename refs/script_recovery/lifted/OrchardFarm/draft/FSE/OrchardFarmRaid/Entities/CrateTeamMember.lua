@@ -271,7 +271,7 @@ function Main(quest, me)
                     __native_condition_5 = cVar4
                     if not __native_condition_5 then
                         iVar7 = IsThingCarryingCrate(quest, me, quest:GetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier")))
-                        __native_condition_5 = iVar7 == 0
+                        __native_condition_5 = not iVar7
                     end
                     __native_condition_4 = __native_condition_5
                 end
@@ -306,7 +306,7 @@ function Main(quest, me)
                     __native_condition_8 = cVar4
                     if not __native_condition_8 then
                         iVar7 = IsThingCarryingCrate(quest, me, quest:GetStateThing(("Teams_" .. quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_EnemyTeam")) .. "_TeamCrateCarrier")))
-                        __native_condition_8 = iVar7 == 0
+                        __native_condition_8 = not iVar7
                     end
                     __native_condition_7 = __native_condition_8
                 end
@@ -326,7 +326,7 @@ function Main(quest, me)
                 end
                 if native_arg_sequence_2 then
                     iVar7 = IsThingCarryingCrate(quest, me, me)
-                    if iVar7 ~= 0 then
+                    if iVar7 then
                         native_arg_sequence_2 = true
                     else
                         native_arg_sequence_2 = false
@@ -340,7 +340,7 @@ function Main(quest, me)
                     end
                     helper_DCEC50(quest, me, 5)
                     quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), me)
-                    require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, ("FETCHING" + 4), me, 0)
+                    require("OrchardFarmRaid.native_quest_helpers").MakeTeamMemberComment(quest, me, "REQUEST_PROTECTION", me, 0)
                 end
                 native_arg_sequence_3 = false
                 if __native_entity_state:GetStateInt("MemberState") == 5 then
@@ -350,7 +350,7 @@ function Main(quest, me)
                 end
                 if native_arg_sequence_3 then
                     iVar7 = IsThingCarryingCrate(quest, me, me)
-                    if iVar7 == 0 then
+                    if not iVar7 then
                         native_arg_sequence_3 = true
                     else
                         native_arg_sequence_3 = false
@@ -441,7 +441,7 @@ function Init(quest, me)
     else
         iVar3 = ((piVar1 == "BanditTeamMember") and 0 or 1)
         c_stk_11 = not (iVar3 ~= 0)
-        if c_stk_11 ~= 0 then
+        if c_stk_11 then
             __native_entity_state:SetStateInt("TeamID", 1)
             goto LAB_00dcdf96
         end

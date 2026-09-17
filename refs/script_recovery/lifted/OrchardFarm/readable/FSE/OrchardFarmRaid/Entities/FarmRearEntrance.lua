@@ -11,16 +11,10 @@ do
 end
 
 function Main(quest, me)
-    local alive = true
-    alive = quest:NewScriptFrame(me)
-    alive = not quest:IsActiveThreadTerminating()
-    local predicateResult = not alive
-    if (not predicateResult) and (quest:GetStateBool("DoneIntroduction")) then
-        alive = not quest:IsActiveThreadTerminating()
-        predicateResult = not alive
-        if not predicateResult then
-            quest:RemoveThing(me, true, true)
-        end
+    quest:NewScriptFrame(me)
+    if not quest:IsActiveThreadTerminating() and quest:GetStateBool("DoneIntroduction") then
+        if quest:IsActiveThreadTerminating() then return end
+        quest:RemoveThing(me, true, true)
     end
 end
 
