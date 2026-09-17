@@ -13,10 +13,10 @@ end
 -- WillApprentice.Main (retail 0x00d4efe0)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue9
-    local scratchValue13, scratchValue14, switch2, p0, scratchValue19, timerId, scratchValue20
-    local scratchValue21, timerId2, scratchValue22, timerId3, timerId4, scratchValue27
-    local scratchValue28, scratchValue29, scratchValue31, scratchValue32
+    local scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue9, scratchValue13
+    local scratchValue14, switch2, p0, scratchValue19, timerId, scratchValue20, scratchValue21
+    local timerId2, scratchValue22, timerId3, timerId4, scratchValue23, scratchValue24
+    local scratchValue25, scratchValue26, scratchValue27, scratchValue28
     local willHelpTimer = quest:GetStateInt("WillHelpTimer")
     local function __cleanup_LAB_00d50495()
         resources:ReleaseResource(scratchValue22)
@@ -66,7 +66,7 @@ function Main(quest, me)
         end
         if scratchValue6 == 0 then
             quest:SetThingHasInformation(me, false, true, false)
-            scratchValue6 = '\x01'
+            scratchValue6 = 1
         end
         ::LAB_00d4f285::
         if not quest:IsDistanceBetweenThingsOver(me, scratchValue19, 4.0) or me:IsPerformingScriptTask() then
@@ -100,30 +100,29 @@ function Main(quest, me)
             if not me:IsPerformingScriptTask() then
                 if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
                     if not quest:IsActiveThreadTerminating() then
-                        scratchValue28 = resources:StartMovie("")
+                        scratchValue24 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        quest:GetHealth(resources:ScriptThing(scratchValue22))
-                        if 0.0 < fret_00 then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue22)) then
                             me:Speak(quest:GetHero(), "TEXT_QST_028_APPRENTICE_WILL_MULTI_GRADE", 0, false, true, false)
                             scratchValue4 = me:IsPerformingScriptTask()
                             while scratchValue4 do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(scratchValue28)
+                                    resources:DestroyMovie(scratchValue24)
                                     __cleanup_LAB_00d505a6(); return
                                 end
                                 scratchValue4 = me:IsPerformingScriptTask()
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue28)
+                                resources:DestroyMovie(scratchValue24)
                                 __cleanup_LAB_00d505a6(); return
                             end
                         end
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(scratchValue28)
+                        resources:DestroyMovie(scratchValue24)
                         goto LAB_00d503cb
                     end
                     __cleanup_LAB_00d505a6(); return
@@ -150,8 +149,7 @@ function Main(quest, me)
                 scratchValue3 = quest:IsActiveThreadTerminating()
                 if scratchValue13 ~= 1 then
                     if not scratchValue3 then
-                        quest:GetHealth(resources:ScriptThing(scratchValue22))
-                        if 0.0 < fret_03 then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue22)) then
                             me:Speak(quest:GetHero(), "TEXT_QST_028_APPRENTICE_WILL_RETURN", 0, false, true, false)
                             scratchValue4 = me:IsPerformingScriptTask()
                             while scratchValue4 do
@@ -177,8 +175,7 @@ function Main(quest, me)
                     resources:DestroyMovie(scratchValue20)
                     __cleanup_LAB_00d505a6(); return
                 end
-                quest:GetHealth(resources:ScriptThing(scratchValue22))
-                if 0.0 < fret_01 then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue22)) then
                     me:Speak(quest:GetHero(), "TEXT_QST_028_APPRENTICE_WILL_INTRO", 0, false, true, false)
                     scratchValue4 = me:IsPerformingScriptTask()
                     while scratchValue4 do
@@ -202,8 +199,7 @@ function Main(quest, me)
                         resources:ReleaseResource(scratchValue20)
                         __cleanup_LAB_00d505a6(); return
                     end
-                    quest:GetHealth(resources:ScriptThing(scratchValue22))
-                    if 0.0 < fret_02 then
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue22)) then
                         me:Speak(quest:GetHero(), "TEXT_QST_028_APPRENTICE_WILL_INTRO_APLUS", 0, false, true, false)
                         scratchValue4 = me:IsPerformingScriptTask()
                         while scratchValue4 do
@@ -240,7 +236,8 @@ function Main(quest, me)
                 quest:SetMasterGameState("WillScore", 0)
                 quest:SetTimer(willHelpTimer, 0)
                 scratchValue13 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-                scratchValue32 = quest:AddQuestInfoTimer(timerId2, "HUD_CLOCK_ICON", 1.0)
+                scratchValue26 = scratchValue13
+                scratchValue28 = quest:AddQuestInfoTimer(timerId2, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 scratchValue4 = 0
                 scratchValue5 = 0
@@ -256,16 +253,10 @@ function Main(quest, me)
                     end
                     if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                        scratchValue4 = '\x01'
-                        scratchValue5 = '\x01'
+                        scratchValue4 = 1
+                        scratchValue5 = 1
                     end
-                    scratchValue13 = quest:GetHeroWillEnergy()
-                    scratchValue2 = scratchValue13 == 0
-                    if scratchValue2 then
-                        scratchValue13 = quest:GetTimer(willHelpTimer)
-                        scratchValue2 = scratchValue13 < 1
-                    end
-                    if scratchValue2 then
+                    if quest:GetHeroWillEnergy() == 0 and quest:GetTimer(willHelpTimer) < 1 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                         scratchValue9 = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(scratchValue9, quest:GetHero())
@@ -276,11 +267,11 @@ function Main(quest, me)
                     end
                     if quest:IsDistanceBetweenThingsOver(quest:GetHero(), me, 30.0) then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                        scratchValue4 = '\x01'
-                        scratchValue5 = '\x01'
+                        scratchValue4 = 1
+                        scratchValue5 = 1
                     end
-                    scratchValue13 = scratchValue13
-                    quest:UpdateQuestInfoCounter(scratchValue13, quest:GetMasterGameState("WillScore"), -1)
+                    scratchValue13 = scratchValue26
+                    quest:UpdateQuestInfoCounter(scratchValue26, quest:GetMasterGameState("WillScore"), -1)
                     scratchValue9 = quest:GetTimer(timerId2)
                 end
                 if not quest:IsActiveThreadTerminating() then
@@ -292,32 +283,32 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                     quest:DisplayQuestInfo(false)
                     quest:RemoveQuestInfoElement(scratchValue13)
-                    quest:RemoveQuestInfoElement(scratchValue32)
+                    quest:RemoveQuestInfoElement(scratchValue28)
                     if scratchValue4 == 0 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                        scratchValue32 = quest:GetMasterGameState("WillScore")
+                        scratchValue28 = quest:GetMasterGameState("WillScore")
                         scratchValue14 = 0
                         scratchValue13 = 0
                         repeat
                             scratchValue9 = scratchValue13
-                            if quest:ReadGlobalGameDataFloatAt(3788, scratchValue14) <= scratchValue32 then
+                            if quest:ReadGlobalGameDataFloatAt(3788, scratchValue14) <= scratchValue28 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                                 break
                             end
                             scratchValue14 = scratchValue14 + 1
                             scratchValue13 = scratchValue9 + 1
                         until not (scratchValue9 + 1 < 7)
-                        scratchValue31 = resources:StartMovie("")
-                        scratchValue3 = resources:TryAcquire(scratchValue31, quest:GetHero(), 4)
+                        scratchValue27 = resources:StartMovie("")
+                        scratchValue3 = resources:TryAcquire(scratchValue27, quest:GetHero(), 4)
                         while not scratchValue3 do
-                            if not quest:NewScriptFrame(me) then resources:DestroyMovie(scratchValue31); goto LAB_00d50594 end
-                            scratchValue3 = resources:TryAcquire(scratchValue31, quest:GetHero(), 4)
+                            if not quest:NewScriptFrame(me) then resources:DestroyMovie(scratchValue27); goto LAB_00d50594 end
+                            scratchValue3 = resources:TryAcquire(scratchValue27, quest:GetHero(), 4)
                         end
-                        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(scratchValue31); goto LAB_00d50594 end
+                        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(scratchValue27); goto LAB_00d50594 end
                         scratchValue21 = resources:NewActorMap()
                         resources:SetActor(scratchValue21, "ME", scratchValue22)
-                        resources:SetActor(scratchValue21, "HERO", scratchValue31)
-                        scratchValue29 = resources:NewResource()
+                        resources:SetActor(scratchValue21, "HERO", scratchValue27)
+                        scratchValue25 = resources:NewResource()
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         quest:FixMovieSequenceCamera(true)
@@ -333,16 +324,16 @@ function Main(quest, me)
                                         goto FLOW_native_label_1
                                     end
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(scratchValue29)
+                                    resources:DestroyMovie(scratchValue25)
                                     resources:DestroyActorMap(scratchValue21)
-                                    resources:DestroyMovie(scratchValue31)
+                                    resources:DestroyMovie(scratchValue27)
                                     goto LAB_00d50594
                                 end
                                 if not quest:IsActiveThreadTerminating() then resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_APLUS", scratchValue21, false, true); break end
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue29)
+                                resources:DestroyMovie(scratchValue25)
                                 resources:DestroyActorMap(scratchValue21)
-                                resources:DestroyMovie(scratchValue31)
+                                resources:DestroyMovie(scratchValue27)
                                 goto LAB_00d50594
                             elseif switch2 == 1 then
                                 resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_A", scratchValue21, false, true)
@@ -370,18 +361,18 @@ function Main(quest, me)
                         if quest:GetMasterGameState("GlobalWillGrade") < 7 - scratchValue9 then
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue29)
+                                resources:DestroyMovie(scratchValue25)
                                 resources:DestroyActorMap(scratchValue21)
-                                resources:DestroyMovie(scratchValue31)
+                                resources:DestroyMovie(scratchValue27)
                                 goto LAB_00d50594
                             end
                             quest:SetMasterGameState("GlobalWillGrade", 7 - scratchValue9)
                         end
                         quest:FixMovieSequenceCamera(false)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(scratchValue29)
+                        resources:DestroyMovie(scratchValue25)
                         resources:DestroyActorMap(scratchValue21)
-                        resources:DestroyMovie(scratchValue31)
+                        resources:DestroyMovie(scratchValue27)
                     end
                     quest:SetMasterGameState("HeroTakingGuildTest", false)
                     quest:SetPlayerUsingWillDummies(false)
@@ -394,30 +385,29 @@ function Main(quest, me)
                 quest:DeregisterTimer(timerId2)
             elseif not quest:IsActiveThreadTerminating() then
                 me:ClearCommands()
-                scratchValue27 = resources:StartMovie("")
+                scratchValue23 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                quest:GetHealth(resources:ScriptThing(scratchValue22))
-                if 0.0 < fret_0 then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue22)) then
                     me:Speak(quest:GetHero(), "TEXT_QST_028_APPRENTICE_WILL_EARLY", 0, false, true, false)
                     scratchValue4 = me:IsPerformingScriptTask()
                     while scratchValue4 do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(scratchValue27)
+                            resources:DestroyMovie(scratchValue23)
                             __cleanup_LAB_00d505a6(); return
                         end
                         scratchValue4 = me:IsPerformingScriptTask()
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:ReleaseResource(scratchValue27)
+                        resources:ReleaseResource(scratchValue23)
                         __cleanup_LAB_00d505a6(); return
                     end
                 end
                 quest:PauseAllNonScriptedEntities(false)
-                resources:ReleaseResource(scratchValue27)
+                resources:ReleaseResource(scratchValue23)
                 goto LAB_00d503cb
             end
             __cleanup_LAB_00d505a6()

@@ -18,11 +18,12 @@ function Main(quest, me)
     local scratchValue16, scratchValue19, switch2, scratchValue21, scratchValue22, scratchValue25
     local scratchValue27, scratchValue28, scratchValue29, scratchValue30, scratchValue31
     local scratchValue32, scratchValue33, scratchValue34, scratchValue35, scratchValue36
-    local scratchValue37, scratchValue38, scratchValue39, timerId, timerId2, scratchValue40
+    local scratchValue37, scratchValue38, scratchValue39, scratchValue40, scratchValue41, timerId
+    local timerId2, scratchValue42, scratchValue43
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(scratchValue30)
         resources:DestroyActorMap(scratchValue29)
-        resources:DestroyMovie(scratchValue40)
+        resources:DestroyMovie(scratchValue43)
         quest:DeregisterTimer(timerId2)
         resources:ReleaseResource(scratchValue31)
     end
@@ -30,28 +31,28 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
         resources:ReleaseResource(scratchValue30)
         resources:DestroyActorMap(scratchValue29)
-        resources:DestroyMovie(scratchValue40)
+        resources:DestroyMovie(scratchValue43)
         quest:DeregisterTimer(timerId2)
         resources:ReleaseResource(scratchValue31)
     end
     local function __cleanup_LAB_00d5db37()
-        resources:ReleaseResource(scratchValue39)
-        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(scratchValue41)
+        quest:DeregisterTimer(scratchValue42)
         quest:DeregisterTimer(xStack_214)
         resources:DestroyMovie(scratchValue34)
     end
     local function __cleanup_LAB_00d5db90()
         quest:DeregisterTimer(timerId)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(scratchValue42)
         quest:DeregisterTimer(xStack_214)
         resources:DestroyMovie(scratchValue34)
     end
     scratchValue27 = 0
-    scratchValue39 = resources:NewResource()
-    scratchValue10 = resources:TryAcquire(scratchValue39, me, 4)
+    scratchValue41 = resources:NewResource()
+    scratchValue10 = resources:TryAcquire(scratchValue41, me, 4)
     while not scratchValue10 do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue39); return end
-        scratchValue10 = resources:TryAcquire(scratchValue39, me, 4)
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue41); return end
+        scratchValue10 = resources:TryAcquire(scratchValue41, me, 4)
     end
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, true)
@@ -61,6 +62,7 @@ function Main(quest, me)
         me:MoveToPosition(quest:GetThingWithScriptName("M_SkillTeacherStand"):GetPos(), 0x40400000, 0, false, true)
         quest:SetPlayerUsingRangedDummies(true)
         scratchValue16 = quest:RegisterTimer()
+        scratchValue42 = scratchValue16
         quest:SetTimer(scratchValue16, 0)
         scratchValue15 = quest:GetStateInt("TutorialState")
         while scratchValue15 == 1 do
@@ -74,9 +76,8 @@ function Main(quest, me)
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     me:ClearCommands()
-                    quest:GetHealth(resources:ScriptThing(scratchValue39))
                     scratchValue14 = 0.0
-                    if 0.0 < fret_0 then
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                         scratchValue16 = 0
                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START", 0, false, true, false)
                         scratchValue11 = me:IsPerformingScriptTask()
@@ -85,8 +86,8 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(scratchValue35)
-                                quest:DeregisterTimer(0)
-                                resources:ReleaseResource(scratchValue39)
+                                quest:DeregisterTimer(scratchValue42)
+                                resources:ReleaseResource(scratchValue41)
                                 return
                             end
                             scratchValue11 = me:IsPerformingScriptTask()
@@ -102,11 +103,11 @@ function Main(quest, me)
                 end
             end
             scratchValue13 = 5.5
-            if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(xStack_220) < 1) and not me:IsPerformingScriptTask() then
+            if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(scratchValue42) < 1) and not me:IsPerformingScriptTask() then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d5da96 end
                 scratchValue16 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(scratchValue16, quest:GetHero())
-                quest:SetTimer(xStack_220, 10)
+                quest:SetTimer(scratchValue42, 10)
                 if true then
                     quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                     quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_FIRST", me, quest:GetHero(), false)
@@ -136,7 +137,7 @@ function Main(quest, me)
             while not scratchValue10 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    resources:DestroyMovie(scratchValue40)
+                    resources:DestroyMovie(scratchValue43)
                     quest:DeregisterTimer(timerId2)
                     resources:ReleaseResource(scratchValue31)
                     return
@@ -144,7 +145,7 @@ function Main(quest, me)
                 scratchValue10 = resources:TryAcquire(scratchValue30, quest:GetHero(), 4)
             end
             if quest:IsActiveThreadTerminating() then
-                resources:DestroyMovie(scratchValue40)
+                resources:DestroyMovie(scratchValue43)
                 quest:DeregisterTimer(timerId2)
                 resources:ReleaseResource(scratchValue31)
                 return
@@ -214,13 +215,13 @@ function Main(quest, me)
                     quest:AddQuestInfoTick("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5ba3e
                 end
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(scratchValue42)
                 quest:DeregisterTimer(xStack_214)
                 resources:DestroyMovie(scratchValue34)
                 return
             end
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(scratchValue42)
                 quest:DeregisterTimer(xStack_214)
                 resources:DestroyMovie(scratchValue34)
                 return
@@ -240,7 +241,7 @@ function Main(quest, me)
             while scratchValue15 < 3 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(scratchValue42)
                     quest:DeregisterTimer(xStack_214)
                     resources:DestroyMovie(scratchValue34)
                     return
@@ -265,18 +266,18 @@ function Main(quest, me)
                 end
                 if scratchValue10 then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
                     end
-                    scratchValue12 = '\x01'
+                    scratchValue12 = 1
                     quest:RemoveQuestInfoElement(scratchValue16)
-                    quest:RemoveQuestInfoElement(xStack_1ec)
-                    quest:RemoveQuestInfoElement(xStack_1e8)
+                    quest:RemoveQuestInfoElement(scratchValue40)
+                    quest:RemoveQuestInfoElement(scratchValue39)
                 elseif scratchValue12 == 0 then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
@@ -285,15 +286,15 @@ function Main(quest, me)
                     quest:UpdateQuestInfoTick(scratchValue10, scratchValue13 ~= 0)
                     -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingLockTargetButton()
-                    quest:UpdateQuestInfoTick(xStack_1ec, scratchValue10)
+                    quest:UpdateQuestInfoTick(scratchValue40, scratchValue10)
                     -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingFireRangedWeaponButton()
-                    quest:UpdateQuestInfoTick(xStack_1e8, scratchValue10)
+                    quest:UpdateQuestInfoTick(scratchValue39, scratchValue10)
                     if quest:GetTimer(timerId2) < 1 then
                         scratchValue13 = 6.0
                         if quest:IsDistanceBetweenThingsUnder(quest:GetHero(), xStack_38, 6.0) and not quest:IsConversationActive(scratchValue16) then
                             if quest:IsActiveThreadTerminating() then
-                                quest:DeregisterTimer(xStack_220)
+                                quest:DeregisterTimer(scratchValue42)
                                 quest:DeregisterTimer(xStack_214)
                                 resources:DestroyMovie(scratchValue34)
                                 return
@@ -307,7 +308,7 @@ function Main(quest, me)
                                     quest:IsPlayerHoldingFireRangedWeaponButton()
                                     if scratchValue10 then goto LAB_00d5bf6c end
                                     if quest:IsActiveThreadTerminating() then
-                                        quest:DeregisterTimer(xStack_220)
+                                        quest:DeregisterTimer(scratchValue42)
                                         quest:DeregisterTimer(xStack_214)
                                         resources:DestroyMovie(scratchValue34)
                                         return
@@ -316,7 +317,7 @@ function Main(quest, me)
                                     quest:AddPersonToConversation(scratchValue16, quest:GetHero())
                                     if quest:IsXbox() then
                                         if quest:IsActiveThreadTerminating() then
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(scratchValue42)
                                             quest:DeregisterTimer(xStack_214)
                                             resources:DestroyMovie(scratchValue34)
                                             return
@@ -324,7 +325,7 @@ function Main(quest, me)
                                         quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_30", me, quest:GetHero(), false)
                                     else
                                         if quest:IsActiveThreadTerminating() then
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(scratchValue42)
                                             quest:DeregisterTimer(xStack_214)
                                             resources:DestroyMovie(scratchValue34)
                                             return
@@ -333,7 +334,7 @@ function Main(quest, me)
                                     end
                                 else
                                     if quest:IsActiveThreadTerminating() then
-                                        quest:DeregisterTimer(xStack_220)
+                                        quest:DeregisterTimer(scratchValue42)
                                         quest:DeregisterTimer(xStack_214)
                                         resources:DestroyMovie(scratchValue34)
                                         return
@@ -342,7 +343,7 @@ function Main(quest, me)
                                     quest:AddPersonToConversation(scratchValue16, quest:GetHero())
                                     if quest:IsXbox() then
                                         if quest:IsActiveThreadTerminating() then
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(scratchValue42)
                                             quest:DeregisterTimer(xStack_214)
                                             resources:DestroyMovie(scratchValue34)
                                             return
@@ -350,7 +351,7 @@ function Main(quest, me)
                                         quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_20", me, quest:GetHero(), false)
                                     else
                                         if quest:IsActiveThreadTerminating() then
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(scratchValue42)
                                             quest:DeregisterTimer(xStack_214)
                                             resources:DestroyMovie(scratchValue34)
                                             return
@@ -360,7 +361,7 @@ function Main(quest, me)
                                 end
                             else
                                 if quest:IsActiveThreadTerminating() then
-                                    quest:DeregisterTimer(xStack_220)
+                                    quest:DeregisterTimer(scratchValue42)
                                     quest:DeregisterTimer(xStack_214)
                                     resources:DestroyMovie(scratchValue34)
                                     return
@@ -369,7 +370,7 @@ function Main(quest, me)
                                 quest:AddPersonToConversation(scratchValue16, quest:GetHero())
                                 if quest:IsXbox() then
                                     if quest:IsActiveThreadTerminating() then
-                                        quest:DeregisterTimer(xStack_220)
+                                        quest:DeregisterTimer(scratchValue42)
                                         quest:DeregisterTimer(xStack_214)
                                         resources:DestroyMovie(scratchValue34)
                                         return
@@ -377,7 +378,7 @@ function Main(quest, me)
                                     quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_10", me, quest:GetHero(), false)
                                 else
                                     if quest:IsActiveThreadTerminating() then
-                                        quest:DeregisterTimer(xStack_220)
+                                        quest:DeregisterTimer(scratchValue42)
                                         quest:DeregisterTimer(xStack_214)
                                         resources:DestroyMovie(scratchValue34)
                                         return
@@ -393,7 +394,7 @@ function Main(quest, me)
                 scratchValue15 = quest:GetMasterGameState("SkillScore")
                 if scratchValue36 < scratchValue15 then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
@@ -401,7 +402,7 @@ function Main(quest, me)
                     scratchValue36 = quest:GetMasterGameState("SkillScore")
                 elseif scratchValue15 < scratchValue36 then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
@@ -409,7 +410,7 @@ function Main(quest, me)
                     -- TODO(native): *piVar2 = *piVar2 + 1;
                     if not quest:IsConversationActive(scratchValue16) then
                         if quest:IsActiveThreadTerminating() then
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(scratchValue42)
                             quest:DeregisterTimer(xStack_214)
                             resources:DestroyMovie(scratchValue34)
                             return
@@ -424,7 +425,7 @@ function Main(quest, me)
                     scratchValue13 = 6.0
                     if quest:IsDistanceBetweenThingsOver(quest:GetHero(), xStack_38, 6.0) and not quest:IsConversationActive(scratchValue16) then
                         if quest:IsActiveThreadTerminating() then
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(scratchValue42)
                             quest:DeregisterTimer(xStack_214)
                             resources:DestroyMovie(scratchValue34)
                             return
@@ -438,21 +439,21 @@ function Main(quest, me)
                 scratchValue15 = quest:GetMasterGameState("SkillScore")
             end
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(scratchValue42)
                 quest:DeregisterTimer(xStack_214)
                 resources:DestroyMovie(scratchValue34)
                 return
             end
             if scratchValue12 == 0 then
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(scratchValue42)
                     quest:DeregisterTimer(xStack_214)
                     resources:DestroyMovie(scratchValue34)
                     return
                 end
                 quest:RemoveQuestInfoElement(scratchValue13)
-                quest:RemoveQuestInfoElement(xStack_1ec)
-                quest:RemoveQuestInfoElement(xStack_1e8)
+                quest:RemoveQuestInfoElement(scratchValue40)
+                quest:RemoveQuestInfoElement(scratchValue39)
             end
             scratchValue31 = resources:NewResource()
             scratchValue10 = resources:TryAcquire(scratchValue31, quest:GetHero(), 4)
@@ -462,9 +463,9 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db37(); return end
             scratchValue28 = resources:NewActorMap()
-            resources:SetActor(scratchValue28, "HERO", scratchValue39)
+            resources:SetActor(scratchValue28, "HERO", scratchValue41)
             resources:SetActor(scratchValue28, "TEACHER", scratchValue31)
-            scratchValue40 = resources:StartMovie("")
+            scratchValue43 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
@@ -515,7 +516,7 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:ReleaseResource(scratchValue30)
             resources:DestroyActorMap(scratchValue29)
-            resources:ReleaseResource(scratchValue39)
+            resources:ReleaseResource(scratchValue41)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
                     -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
@@ -527,13 +528,13 @@ function Main(quest, me)
                     quest:AddQuestInfoTick("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5c6b1
                 end
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(scratchValue42)
                 quest:DeregisterTimer(xStack_214)
                 resources:DestroyMovie(scratchValue34)
                 return
             end
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(scratchValue42)
                 quest:DeregisterTimer(xStack_214)
                 resources:DestroyMovie(scratchValue34)
                 return
@@ -551,7 +552,7 @@ function Main(quest, me)
             repeat
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(scratchValue42)
                     quest:DeregisterTimer(xStack_214)
                     resources:DestroyMovie(scratchValue34)
                     return
@@ -577,7 +578,7 @@ function Main(quest, me)
                 end
                 if scratchValue10 then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
@@ -587,7 +588,7 @@ function Main(quest, me)
                     quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_MAZE_BOW_UNSHEATH", me, quest:GetHero(), false)
                     if quest:IsXbox() then
                         if quest:IsActiveThreadTerminating() then
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(scratchValue42)
                             quest:DeregisterTimer(xStack_214)
                             resources:DestroyMovie(scratchValue34)
                             return
@@ -597,7 +598,7 @@ function Main(quest, me)
                         while not scratchValue10 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
-                                quest:DeregisterTimer(xStack_220)
+                                quest:DeregisterTimer(scratchValue42)
                                 quest:DeregisterTimer(xStack_214)
                                 resources:DestroyMovie(scratchValue34)
                                 return
@@ -606,7 +607,7 @@ function Main(quest, me)
                         end
                     else
                         if quest:IsActiveThreadTerminating() then
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(scratchValue42)
                             quest:DeregisterTimer(xStack_214)
                             resources:DestroyMovie(scratchValue34)
                             return
@@ -616,7 +617,7 @@ function Main(quest, me)
                         while not scratchValue10 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
-                                quest:DeregisterTimer(xStack_220)
+                                quest:DeregisterTimer(scratchValue42)
                                 quest:DeregisterTimer(xStack_214)
                                 resources:DestroyMovie(scratchValue34)
                                 return
@@ -625,7 +626,7 @@ function Main(quest, me)
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
@@ -634,7 +635,7 @@ function Main(quest, me)
                 end
                 if quest:MsgOnHeroFiredRangedWeapon() then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
@@ -660,18 +661,18 @@ function Main(quest, me)
                 end
                 if scratchValue10 then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
                     end
-                    scratchValue12 = '\x01'
+                    scratchValue12 = 1
                     quest:RemoveQuestInfoElement(1)
-                    quest:RemoveQuestInfoElement(xStack_1ec)
-                    quest:RemoveQuestInfoElement(xStack_1e8)
+                    quest:RemoveQuestInfoElement(scratchValue40)
+                    quest:RemoveQuestInfoElement(scratchValue39)
                 elseif scratchValue12 == 0 then
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(scratchValue42)
                         quest:DeregisterTimer(xStack_214)
                         resources:DestroyMovie(scratchValue34)
                         return
@@ -680,28 +681,28 @@ function Main(quest, me)
                     quest:UpdateQuestInfoTick(scratchValue10, scratchValue13 ~= 0)
                     -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
                     quest:IsHeroInProjectileWeaponMode()
-                    quest:UpdateQuestInfoTick(xStack_1ec, scratchValue10)
+                    quest:UpdateQuestInfoTick(scratchValue40, scratchValue10)
                     -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingFireRangedWeaponButton()
-                    quest:UpdateQuestInfoTick(xStack_1e8, scratchValue10)
+                    quest:UpdateQuestInfoTick(scratchValue39, scratchValue10)
                 end
             until xStack_1d4_b3 ~= 0
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(scratchValue42)
                 quest:DeregisterTimer(xStack_214)
                 resources:DestroyMovie(scratchValue34)
                 return
             end
             if scratchValue12 == 0 then
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(scratchValue42)
                     quest:DeregisterTimer(xStack_214)
                     resources:DestroyMovie(scratchValue34)
                     return
                 end
                 quest:RemoveQuestInfoElement(scratchValue14)
-                quest:RemoveQuestInfoElement(xStack_1ec)
-                quest:RemoveQuestInfoElement(xStack_1e8)
+                quest:RemoveQuestInfoElement(scratchValue40)
+                quest:RemoveQuestInfoElement(scratchValue39)
             end
             timerId = quest:RegisterTimer()
             -- TODO(native): piVar2 = DAT_0143e8f8;
@@ -709,6 +710,7 @@ function Main(quest, me)
             quest:SetMasterGameState("SkillScore", 0)
             scratchValue12 = 0
             scratchValue15 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
+            scratchValue40 = scratchValue15
             scratchValue36 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
             scratchValue38 = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
             quest:DisplayQuestInfo(true)
@@ -719,7 +721,7 @@ function Main(quest, me)
             while 0 < scratchValue15 and scratchValue12 == 0 do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
                 if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
-                    scratchValue12 = '\x01'
+                    scratchValue12 = 1
                 end
                 scratchValue15 = scratchValue36
                 quest:UpdateQuestInfoCounter(scratchValue36, quest:GetMasterGameState("SkillScore"), -1)
@@ -774,6 +776,7 @@ function Main(quest, me)
                     -- TODO(native): CVar10 = *(this + 4)
                     scratchValue = nil --[[unresolved native value]]
                     scratchValue13 = 6.0
+                    scratchValue39 = scratchValue
                     -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
                     scratchValue22 = nil --[[unresolved native value]]
                     -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
@@ -804,7 +807,7 @@ function Main(quest, me)
                 scratchValue10 = quest:IsHeroControlledByPlayer()
             end
             quest:DisplayQuestInfo(false)
-            quest:RemoveQuestInfoElement(scratchValue15)
+            quest:RemoveQuestInfoElement(scratchValue40)
             quest:RemoveQuestInfoElement(scratchValue36)
             quest:RemoveQuestInfoElement(scratchValue38)
             quest:EntitySetTargetable(me, true)
@@ -817,12 +820,12 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5db84: (native jump target)
-                resources:DestroyMovie(scratchValue40)
+                resources:DestroyMovie(scratchValue43)
                 __cleanup_LAB_00d5db90(); return
             end
             scratchValue33 = resources:NewActorMap()
-            resources:SetActor(scratchValue33, "HERO", scratchValue40)
-            resources:SetActor(scratchValue33, "TEACHER", scratchValue39)
+            resources:SetActor(scratchValue33, "HERO", scratchValue43)
+            resources:SetActor(scratchValue33, "TEACHER", scratchValue41)
             scratchValue35 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
@@ -915,7 +918,7 @@ function Main(quest, me)
                 quest:TakeObjectFromHero("OBJECT_YEW_LONGBOW")
             end
             scratchValue11 = quest:GetMasterGameState("SkillDummyReset")
-            while scratchValue11 ~= '\x01' do
+            while scratchValue11 ~= 1 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
                 scratchValue11 = quest:GetMasterGameState("SkillDummyReset")
@@ -928,7 +931,7 @@ function Main(quest, me)
             resources:DestroyActorMap(scratchValue33)
             resources:ReleaseResource(scratchValue32)
             quest:DeregisterTimer(timerId2)
-            quest:DeregisterTimer(xStack_220)
+            quest:DeregisterTimer(scratchValue42)
             scratchValue16 = timerId2
             scratchValue11 = quest:GetMasterGameState("SkillRepeating")
         end
@@ -946,7 +949,7 @@ function Main(quest, me)
         ::LAB_00d5da96::
         quest:DeregisterTimer(scratchValue16)
     end
-    resources:ReleaseResource(scratchValue39)
+    resources:ReleaseResource(scratchValue41)
 end
 
 -- TheRealGuildmaster.Init (retail 0x00d5ac90)

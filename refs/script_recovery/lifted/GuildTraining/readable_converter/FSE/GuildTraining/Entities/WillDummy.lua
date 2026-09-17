@@ -21,7 +21,7 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         if not quest:IsActiveThreadTerminating() then
             quest:SetTimer(willHelpTimer, 15)
-            while quest:GetMasterGameState("WillTrainingStarted") ~= '\x01' do
+            while quest:GetMasterGameState("WillTrainingStarted") ~= 1 do
                 if not quest:NewScriptFrame(me) then return end
             end
             if not quest:IsActiveThreadTerminating() then

@@ -15,19 +15,20 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult6, predicateResult7, predicateResult10, ctr_64, scratchValue7
     local conversationId, conversationId2, conversationId3, conversationId4, conversationId5
-    local conversationId6, questionAnswer, conversationId7, switch2, u_stk_74_1, scratchValue12
-    local scratchValue13
+    local conversationId6, questionAnswer, conversationId7, switch2, u_stk_74_1, scratchValue11
+    local scratchValue12, scratchValue13
     u_stk_74_1 = 0
-    scratchValue13 = resources:NewResource()
-    while not resources:TryAcquire(scratchValue13, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue13); return end
+    scratchValue12 = resources:NewResource()
+    while not resources:TryAcquire(scratchValue12, me, 4) do
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue12); return end
     end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(scratchValue13); return end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(scratchValue12); return end
     me:SetFriendsWithEverythingFlag(me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
     state:SetInt("AppleMode", 0)
     scratchValue7 = quest:RegisterTimer()
+    scratchValue13 = scratchValue7
     quest:SetTimer(scratchValue7, 15)
     state:SetInt("CurrentApples", 0)
     state:SetBool("ChildAppleMode", false)
@@ -38,18 +39,17 @@ function Main(quest, me)
             scratchValue7 = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(scratchValue7, quest:GetHero())
             quest:AddLineToConversation(scratchValue7, "TEXT_QST_028_APPLEGIRL_HELP", me, quest:GetHero(), false)
-            quest:SetTimer(scratchValue7, 15)
+            quest:SetTimer(scratchValue13, 15)
         end
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
-            scratchValue12 = resources:StartMovie("")
+            scratchValue11 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             if not state:GetBool("HaveChatted") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
                 state:SetBool("HaveChatted", true)
-                quest:GetHealth(resources:ScriptThing(scratchValue13))
-                if 0.0 < fret_0 then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue12)) then
                     scratchValue7 = 0
                     me:Speak(quest:GetHero(), "TEXT_QST_028_APPLEGIRL_CHAT", 0, false, true, false)
                     while me:IsPerformingScriptTask() do
@@ -67,7 +67,7 @@ function Main(quest, me)
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue12)
+                    resources:DestroyMovie(scratchValue11)
                     quest:DeregisterTimer(scratchValue7)
                     return
                 end
@@ -80,25 +80,22 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
                     state:SetBool("ChildAppleMode", true)
                 end
-            else
-                quest:GetHealth(resources:ScriptThing(scratchValue13))
-                if 0.0 < fret_00 then
-                    scratchValue7 = 0
-                    me:Speak(quest:GetHero(), "TEXT_QST_028_APPLEGIRL_IMPLORE", 0, false, true, false)
-                    while me:IsPerformingScriptTask() do
-                        if not quest:NewScriptFrame(me) then goto LAB_00d3d948 end
-                    end
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
+            elseif 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue12)) then
+                scratchValue7 = 0
+                me:Speak(quest:GetHero(), "TEXT_QST_028_APPLEGIRL_IMPLORE", 0, false, true, false)
+                while me:IsPerformingScriptTask() do
+                    if not quest:NewScriptFrame(me) then goto LAB_00d3d948 end
                 end
+                if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
             end
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(scratchValue12)
+            resources:DestroyMovie(scratchValue11)
         end
     end
     if not quest:IsActiveThreadTerminating() then
         while state:GetInt("AppleMode") == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
-            if state:GetBool("ChildAppleMode") == '\x01' then
+            if state:GetBool("ChildAppleMode") then
                 u_stk_74_1 = u_stk_74_1 | 1
                 if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
                     predicateResult6 = false
@@ -115,7 +112,7 @@ function Main(quest, me)
             if predicateResult6 then
                 quest:RemoveThing(me, false, true)
             end
-            if quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(xStack_88) < 1 then
+            if quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(scratchValue13) < 1 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
                 if state:GetInt("CurrentApples") == 0 then
                     conversationId = quest:AddNewConversation(me, false, false)
@@ -126,7 +123,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(conversationId2, quest:GetHero())
                     quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPLEGIRL_MORE_APPLES", me, quest:GetHero(), false)
                 end
-                quest:SetTimer(xStack_88, 15)
+                quest:SetTimer(scratchValue13, 15)
             end
             if not me:IsTalkedToByHero() then goto FLOW_native_label_1 end
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
@@ -176,11 +173,10 @@ function Main(quest, me)
                     quest:AddLineToConversation(conversationId7, "TEXT_QST_028_APPLEGIRL_ONE_NEEDED", me, quest:GetHero(), false)
                     break
                 elseif switch2 == 4 then
-                    scratchValue12 = resources:StartMovie("")
+                    scratchValue11 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    quest:GetHealth(resources:ScriptThing(scratchValue13))
-                    if 0.0 < fret_01 then
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue12)) then
                         me:Speak(quest:GetHero(), "TEXT_QST_028_APPLEGIRL_THANKS", 0, false, true, false)
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00d3e06c end
@@ -191,7 +187,7 @@ function Main(quest, me)
                     state:SetInt("AppleMode", 2)
                     quest:ClearThingHasInformation(me)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue12)
+                    resources:DestroyMovie(scratchValue11)
                     goto FLOW_native_label_1
                 else
                     goto FLOW_native_label_1
@@ -201,7 +197,7 @@ function Main(quest, me)
             ::FLOW_native_label_1::
         end
         while not quest:IsActiveThreadTerminating() do
-            if state:GetBool("ChildAppleMode") == '\x01' then
+            if state:GetBool("ChildAppleMode") then
                 u_stk_74_1 = u_stk_74_1 | 4
                 if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
                     predicateResult10 = false
@@ -218,29 +214,29 @@ function Main(quest, me)
             if predicateResult10 then
                 quest:RemoveThing(me, false, true)
             end
-            if quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(xStack_88) < 1 then
+            if quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(scratchValue13) < 1 then
                 if quest:IsActiveThreadTerminating() then break end
                 conversationId6 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId6, quest:GetHero())
                 quest:AddLineToConversation(conversationId6, "TEXT_QST_028_APPLEGIRL_THANKS_AGAIN", me, quest:GetHero(), false)
-                quest:SetTimer(xStack_88, 15)
+                quest:SetTimer(scratchValue13, 15)
             end
             quest:NewScriptFrame(me)
         end
     end
     ::LAB_00d3e1b6::
-    quest:DeregisterTimer(xStack_88)
+    quest:DeregisterTimer(scratchValue13)
     ::LAB_00d3e1bf::
-    resources:DestroyMovie(scratchValue13)
+    resources:DestroyMovie(scratchValue12)
     do return end
     ::LAB_00d3d948::
     quest:PauseAllNonScriptedEntities(false)
-    resources:DestroyMovie(scratchValue12)
-    quest:DeregisterTimer(xStack_88)
+    resources:DestroyMovie(scratchValue11)
+    quest:DeregisterTimer(scratchValue13)
     goto LAB_00d3e1bf
     ::LAB_00d3e06c::
     quest:PauseAllNonScriptedEntities(false)
-    resources:DestroyMovie(scratchValue12)
+    resources:DestroyMovie(scratchValue11)
     goto LAB_00d3e1b6
     ::LAB_00d3e087::
     quest:PauseAllNonScriptedEntities(false)

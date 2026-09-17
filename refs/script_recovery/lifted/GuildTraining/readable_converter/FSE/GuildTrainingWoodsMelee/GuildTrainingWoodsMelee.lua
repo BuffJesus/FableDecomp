@@ -39,8 +39,7 @@ function WatchForTermination(quest)
     if not quest:GetStateBool("MissionFailed") then
         quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
     else
-        -- TODO(native): CCharString__AssignFromWide(&xStack_10,0x122d70c);
-        quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, nil --[[missing]], pMessage)
+        quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
     end
     quest:SetQuestCardObjective("TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02", "HeroGuildComplexInside", "", "Q_GuildTraining")
     if not quest:NewScriptFrame() then return end

@@ -30,10 +30,10 @@ function Main(quest, me)
                 quest:EntitySetInFaction(me, "FACTION_HERO")
                 me:SetFriendsWithEverythingFlag(me)
             end
-            if quest:GetStateBool("WhisperAnimate") == '\x01' then
+            if quest:GetStateBool("WhisperAnimate") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end
                 quest:SetStateBool("WhisperAnimate", false)
-                me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, DAT_01375748, false, false)
+                me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, true, false, false)
             end
         end
     end

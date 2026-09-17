@@ -29,7 +29,7 @@ function Main(quest, me)
         end
         if not quest:IsActiveThreadTerminating() then
             me:MoveToPosition(quest:GetThingWithScriptName("M_MeleeOpponentStand"):GetPos(), 0x40400000, 1, false, true)
-            while me:IsPerformingScriptTask() and quest:GetStateBool("WhisperStopWalking") ~= '\x01' do
+            while me:IsPerformingScriptTask() and not quest:GetStateBool("WhisperStopWalking") do
                 if not quest:NewScriptFrame(me) then goto LAB_00d5685e end
             end
             if not quest:IsActiveThreadTerminating() then
@@ -53,12 +53,11 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_c0)
+                            resources:DestroyMovie(scratchValue12)
                             resources:ReleaseResource("")
                             return
                         end
-                        quest:GetHealth(resources:ScriptThing(scratchValue13))
-                        if 0.0 < fret_0 then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue13)) then
                             me:Speak(quest:GetHero(), "TEXT_QST_028_WHISPER_MEET", 0, false, true, false)
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
@@ -71,7 +70,7 @@ function Main(quest, me)
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_c0)
+                                resources:DestroyMovie(scratchValue12)
                                 resources:ReleaseResource("")
                                 return
                             end

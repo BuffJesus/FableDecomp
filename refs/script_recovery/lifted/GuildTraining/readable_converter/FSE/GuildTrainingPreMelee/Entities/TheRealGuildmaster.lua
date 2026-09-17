@@ -17,8 +17,8 @@ function Main(quest, me)
     local scratchValue17, scratchValue20, scratchValue21, switch2, scratchValue22, scratchValue23
     local scratchValue25, scratchValue26, scratchValue27, timerId, scratchValue28, scratchValue30
     local scratchValue31, scratchValue32, scratchValue33, scratchValue34, scratchValue35
-    local scratchValue36, scratchValue37, scratchValue38, scratchValue39, scratchValue40, timerId2
-    local timerId3, timerId4
+    local scratchValue36, scratchValue37, scratchValue38, scratchValue39, scratchValue40
+    local scratchValue41, timerId2, timerId3, timerId4
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities(scratchValue32 ~= 0)
     end
@@ -70,11 +70,11 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_01", "", "")
-    scratchValue40 = resources:NewResource()
-    scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+    scratchValue41 = resources:NewResource()
+    scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
     while not scratchValue13 do
         if not quest:NewScriptFrame(me) then goto LAB_00d55c4f end
-        scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+        scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d55c4f end
     scratchValue31 = 0
@@ -86,7 +86,7 @@ function Main(quest, me)
     quest:EntityTeleportToThing(me, scratchValue22, false)
     timerId4 = quest:RegisterTimer()
     quest:SetTimer(timerId4, 0)
-    scratchValue16 = '\x01'
+    scratchValue16 = 1
     repeat
         if not quest:NewScriptFrame(me) then goto LAB_00d55c46 end
         if me:IsTalkedToByHero() then
@@ -101,7 +101,7 @@ function Main(quest, me)
             if switch2 == 0 then
                 quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                 quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FIRST", me, quest:GetHero(), false)
-                me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, DAT_01375748, false, false)
+                me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
                 scratchValue28 = 1
                 break
             else
@@ -127,29 +127,29 @@ function Main(quest, me)
     until scratchValue16 == 0
     if not quest:IsActiveThreadTerminating() then
         quest:SetStateBool("WhisperStopFollowing", true)
-        scratchValue38 = resources:NewResource()
-        scratchValue13 = resources:TryAcquire(scratchValue38, quest:GetHero(), 4)
+        scratchValue39 = resources:NewResource()
+        scratchValue13 = resources:TryAcquire(scratchValue39, quest:GetHero(), 4)
         while not scratchValue13 do
-            if not quest:NewScriptFrame(me) then resources:DestroyMovie(scratchValue38); goto FLOW_after_lab_00d533bb end
-            scratchValue13 = resources:TryAcquire(scratchValue38, quest:GetHero(), 4)
+            if not quest:NewScriptFrame(me) then resources:DestroyMovie(scratchValue39); goto FLOW_after_lab_00d533bb end
+            scratchValue13 = resources:TryAcquire(scratchValue39, quest:GetHero(), 4)
         end
         if quest:IsActiveThreadTerminating() then
-            resources:DestroyMovie(scratchValue38)
+            resources:DestroyMovie(scratchValue39)
         else
-            scratchValue37 = resources:NewActorMap()
-            resources:SetActor(scratchValue37, "HERO", scratchValue38)
-            resources:SetActor(scratchValue37, "TEACHER", scratchValue40)
+            scratchValue38 = resources:NewActorMap()
+            resources:SetActor(scratchValue38, "HERO", scratchValue39)
+            resources:SetActor(scratchValue38, "TEACHER", scratchValue41)
             scratchValue36 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_PREMELEE_PUNCH", scratchValue37, false, true)
+            resources:RunMacro("CS_GUILD_PREMELEE_PUNCH", scratchValue38, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:RemoveThing(quest:GetThingWithScriptName("PreMeleeWhisper"), false, true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(scratchValue36)
-            resources:DestroyActorMap(scratchValue37)
-            resources:DestroyMovie(scratchValue38)
+            resources:DestroyActorMap(scratchValue38)
+            resources:DestroyMovie(scratchValue39)
             if quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_PUNCH")
@@ -165,6 +165,7 @@ function Main(quest, me)
                         quest:SetStateInt("PreMeleeMode", 1)
                         quest:SetStateInt("DummyHits", 0)
                         scratchValue = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                        scratchValue37 = scratchValue
                         quest:DisplayQuestInfo(true)
                         scratchValue20 = quest:GetStateInt("DummyHits")
                         while scratchValue20 < 7 do
@@ -200,36 +201,36 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d55c3d end
                                 quest:SetTimer(timerId3, 10)
                                 timerId = timerId3
-                                scratchValue = scratchValue
+                                scratchValue = scratchValue37
                             end
                             scratchValue20 = quest:GetStateInt("DummyHits")
                         end
                         if not quest:IsActiveThreadTerminating() then
                             quest:RemoveQuestInfoElement(scratchValue)
                             quest:DisplayQuestInfo(false)
-                            scratchValue38 = resources:NewResource()
-                            scratchValue13 = resources:TryAcquire(scratchValue38, quest:GetHero(), 4)
+                            scratchValue39 = resources:NewResource()
+                            scratchValue13 = resources:TryAcquire(scratchValue39, quest:GetHero(), 4)
                             while not scratchValue13 do
-                                if not quest:NewScriptFrame(me) then resources:DestroyMovie(scratchValue38); goto FLOW_after_lab_00d53a0b end
-                                scratchValue13 = resources:TryAcquire(scratchValue38, quest:GetHero(), 4)
+                                if not quest:NewScriptFrame(me) then resources:DestroyMovie(scratchValue39); goto FLOW_after_lab_00d53a0b end
+                                scratchValue13 = resources:TryAcquire(scratchValue39, quest:GetHero(), 4)
                             end
                             if quest:IsActiveThreadTerminating() then
                                 -- LAB_00d53a0b: (native jump target)
-                                resources:DestroyMovie(scratchValue38)
+                                resources:DestroyMovie(scratchValue39)
                             else
-                                scratchValue37 = resources:NewActorMap()
-                                resources:SetActor(scratchValue37, "HERO", scratchValue38)
-                                resources:SetActor(scratchValue37, "TEACHER", scratchValue40)
+                                scratchValue38 = resources:NewActorMap()
+                                resources:SetActor(scratchValue38, "HERO", scratchValue39)
+                                resources:SetActor(scratchValue38, "TEACHER", scratchValue41)
                                 scratchValue36 = resources:StartMovie("")
                                 quest:StartMovieSequence()
                                 quest:PauseAllNonScriptedEntities(true)
                                 quest:FixMovieSequenceCamera(true)
-                                resources:RunMacro("CS_GUILD_PREMELEE_STICK", scratchValue37, false, true)
+                                resources:RunMacro("CS_GUILD_PREMELEE_STICK", scratchValue38, false, true)
                                 quest:FixMovieSequenceCamera(false)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(scratchValue36)
-                                resources:DestroyActorMap(scratchValue37)
-                                resources:DestroyMovie(scratchValue38)
+                                resources:DestroyActorMap(scratchValue38)
+                                resources:DestroyMovie(scratchValue39)
                                 if quest:IsXbox() then
                                     if not quest:IsActiveThreadTerminating() then
                                         quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_STICK")
@@ -244,6 +245,7 @@ function Main(quest, me)
                                             quest:SetStateInt("DummyHits", 0)
                                             quest:SetTimer(timerId, 10)
                                             scratchValue = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                                            scratchValue37 = scratchValue
                                             quest:DisplayQuestInfo(true)
                                             scratchValue20 = quest:GetStateInt("DummyHits")
                                             while scratchValue20 < 7 do
@@ -279,33 +281,33 @@ function Main(quest, me)
                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c3d end
                                                     quest:SetTimer(timerId3, 10)
                                                     timerId = timerId3
-                                                    scratchValue = scratchValue
+                                                    scratchValue = scratchValue37
                                                 end
                                                 scratchValue20 = quest:GetStateInt("DummyHits")
                                             end
                                             if not quest:IsActiveThreadTerminating() then
                                                 quest:RemoveQuestInfoElement(scratchValue)
                                                 quest:DisplayQuestInfo(false)
-                                                scratchValue39 = nil
+                                                scratchValue40 = nil
                                                 scratchValue36 = resources:StartMovie("")
                                                 quest:StartMovieSequence()
-                                                scratchValue38 = resources:NewResource()
+                                                scratchValue39 = resources:NewResource()
                                                 scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                 while not scratchValue13 do
                                                     quest:NewScriptFrame(me)
                                                     if quest:IsActiveThreadTerminating() then
-                                                        resources:DestroyMovie(scratchValue38)
+                                                        resources:DestroyMovie(scratchValue39)
                                                         resources:DestroyMovie(scratchValue36)
                                                         goto FLOW_after_lab_00d53ff2
                                                     end
-                                                    SUB41(scratchValue38,0)
-                                                    scratchValue31 = scratchValue38 >> 16
-                                                    scratchValue32 = scratchValue38 >> 24
-                                                    scratchValue13 = resources:TryAcquire(scratchValue38, quest:GetHero(), 4)
+                                                    SUB41(scratchValue39,0)
+                                                    scratchValue31 = scratchValue39 >> 16
+                                                    scratchValue32 = scratchValue39 >> 24
+                                                    scratchValue13 = resources:TryAcquire(scratchValue39, quest:GetHero(), 4)
                                                 end
                                                 if quest:IsActiveThreadTerminating() then
                                                     -- LAB_00d53ff2: (native jump target)
-                                                    resources:DestroyMovie(scratchValue38)
+                                                    resources:DestroyMovie(scratchValue39)
                                                     resources:DestroyMovie(scratchValue36)
                                                 else
                                                     scratchValue25 = quest:GetThingWithScriptName("PreMeleeDummy")
@@ -315,20 +317,20 @@ function Main(quest, me)
                                                     -- TODO(native): CreateEffect is not a ForgeFSE binding
                                                     quest:CreateEffect(xStack_dc, "SMASH_DUMMY_01", scratchValue35, "", 0.0, false, false)
                                                     quest:FadeOutAndKillEntity(scratchValue25, true, 1.0, true)
-                                                    scratchValue37 = resources:NewActorMap()
-                                                    resources:SetActor(scratchValue37, "HERO", scratchValue38)
-                                                    resources:SetActor(scratchValue37, "TEACHER", scratchValue40)
+                                                    scratchValue38 = resources:NewActorMap()
+                                                    resources:SetActor(scratchValue38, "HERO", scratchValue39)
+                                                    resources:SetActor(scratchValue38, "TEACHER", scratchValue41)
                                                     quest:FixMovieSequenceCamera(true)
-                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", scratchValue37, false, false)
+                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", scratchValue38, false, false)
                                                     quest:PauseAllNonScriptedEntities(true)
                                                     quest:CreateExperienceOrb(scratchValue35, 1)
                                                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                                                     quest:EntitySetCutsceneBehaviour(nil, 2)
-                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED", scratchValue37, false, true)
+                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED", scratchValue38, false, true)
                                                     quest:FixMovieSequenceCamera(false)
                                                     quest:PauseAllNonScriptedEntities(false)
-                                                    resources:DestroyActorMap(scratchValue37)
-                                                    resources:DestroyMovie(scratchValue38)
+                                                    resources:DestroyActorMap(scratchValue38)
+                                                    resources:DestroyMovie(scratchValue39)
                                                     resources:DestroyMovie(scratchValue36)
                                                     if quest:IsXbox() then
                                                         if not quest:IsActiveThreadTerminating() then
@@ -342,7 +344,7 @@ function Main(quest, me)
                                                                 -- LAB_00d5439e: (native jump target)
                                                                 timerId2 = quest:RegisterTimer()
                                                                 quest:SetTimer(timerId2, 10)
-                                                                scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                                scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                                 while scratchValue14 do
                                                                     if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                                                     if quest:GetTimer(timerId2) < 1 then
@@ -351,28 +353,28 @@ function Main(quest, me)
                                                                         quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, quest:GetHero(), false)
                                                                         quest:SetTimer(timerId2, 10)
                                                                     end
-                                                                    scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                                    scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                                 end
                                                                 if not quest:IsActiveThreadTerminating() then
                                                                     quest:Pause(0.5)
-                                                                    scratchValue38 = resources:NewResource()
-                                                                    SUB41(scratchValue38,0)
-                                                                    scratchValue31 = scratchValue38 >> 16
-                                                                    scratchValue32 = scratchValue38 >> 24
+                                                                    scratchValue39 = resources:NewResource()
+                                                                    SUB41(scratchValue39,0)
+                                                                    scratchValue31 = scratchValue39 >> 16
+                                                                    scratchValue32 = scratchValue39 >> 24
                                                                     scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                     while not scratchValue13 do
                                                                         if not quest:NewScriptFrame(me) then goto FLOW_after_lab_00d54dfa end
-                                                                        SUB41(scratchValue38,0)
-                                                                        scratchValue31 = scratchValue38 >> 16
-                                                                        scratchValue32 = scratchValue38 >> 24
+                                                                        SUB41(scratchValue39,0)
+                                                                        scratchValue31 = scratchValue39 >> 16
+                                                                        scratchValue32 = scratchValue39 >> 24
                                                                         scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                     end
                                                                     if quest:IsActiveThreadTerminating() then
                                                                         -- LAB_00d54dfa: (native jump target)
                                                                     else
                                                                         scratchValue35 = resources:NewActorMap()
-                                                                        resources:SetActor(scratchValue35, "HERO", scratchValue38)
-                                                                        resources:SetActor(scratchValue35, "TEACHER", scratchValue40)
+                                                                        resources:SetActor(scratchValue35, "HERO", scratchValue39)
+                                                                        resources:SetActor(scratchValue35, "TEACHER", scratchValue41)
                                                                         resources:StartMovie("")
                                                                         quest:StartMovieSequence()
                                                                         quest:PauseAllNonScriptedEntities(true)
@@ -407,7 +409,6 @@ function Main(quest, me)
                                                                                                         scratchValue31 = 0
                                                                                                         scratchValue32 = 0
                                                                                                         me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 0x3f800000, 0, false, true)
-                                                                                                        scratchValue16 = '\x01'
                                                                                                         quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                         scratchValue15 = 0
                                                                                                         repeat
@@ -437,14 +438,14 @@ function Main(quest, me)
                                                                                                                     -- LAB_00d55c91_c6: (native jump target)
                                                                                                                     goto LAB_00d55c2b
                                                                                                                 end
-                                                                                                                scratchValue37 = resources:NewActorMap()
-                                                                                                                resources:SetActor(scratchValue37, "HERO", scratchValue34)
-                                                                                                                resources:SetActor(scratchValue37, "GUARD", scratchValue40)
+                                                                                                                scratchValue38 = resources:NewActorMap()
+                                                                                                                resources:SetActor(scratchValue38, "HERO", scratchValue34)
+                                                                                                                resources:SetActor(scratchValue38, "GUARD", scratchValue41)
                                                                                                                 resources:StartMovie("")
                                                                                                                 quest:StartMovieSequence()
                                                                                                                 quest:PauseAllNonScriptedEntities(true)
                                                                                                                 quest:FixMovieSequenceCamera(true)
-                                                                                                                resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue37, false, true)
+                                                                                                                resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue38, false, true)
                                                                                                                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                                 while scratchValue20 < 0 do
@@ -456,7 +457,7 @@ function Main(quest, me)
                                                                                                                     -- LAB_00d55c72_c6: (native jump target)
                                                                                                                     quest:PauseAllNonScriptedEntities(scratchValue21 ~= 0)
                                                                                                                     -- LAB_00d55c7f_c6: (native jump target)
-                                                                                                                    resources:DestroyActorMap(scratchValue37)
+                                                                                                                    resources:DestroyActorMap(scratchValue38)
                                                                                                                     -- TODO(native): goto LAB_00d55c91_c6
                                                                                                                 end
                                                                                                                 scratchValue13 = quest:IsActiveThreadTerminating()
@@ -470,9 +471,8 @@ function Main(quest, me)
                                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                 else
                                                                                                                     if scratchValue13 then return end  -- TODO(native): goto LAB_00d55c72_c6
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if scratchValue17 < fret_0 then
+                                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                         scratchValue31 = 0
                                                                                                                         scratchValue32 = 0
                                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -490,7 +490,7 @@ function Main(quest, me)
                                                                                                                 end
                                                                                                                 quest:FixMovieSequenceCamera(false)
                                                                                                                 quest:PauseAllNonScriptedEntities(false)
-                                                                                                                resources:DestroyActorMap(scratchValue37)
+                                                                                                                resources:DestroyActorMap(scratchValue38)
                                                                                                             else
                                                                                                                 if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                                     -- LAB_00d54f9c_c6: (native jump target)
@@ -508,17 +508,16 @@ function Main(quest, me)
                                                                                                                     while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                                                         if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                                                                                                     end
-                                                                                                                    scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                                    scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                                     while not scratchValue13 do
                                                                                                                         if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
-                                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                                     end
                                                                                                                     resources:StartMovie("")
                                                                                                                     quest:StartMovieSequence()
                                                                                                                     quest:PauseAllNonScriptedEntities(true)
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if fret_00 <= scratchValue17 then
+                                                                                                                    if quest:GetHealth(resources:ScriptThing(scratchValue41)) <= scratchValue17 then
                                                                                                                         -- LAB_00d551d4_c6: (native jump target)
                                                                                                                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                         scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -538,9 +537,8 @@ function Main(quest, me)
                                                                                                                                 quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                             else
                                                                                                                                 if scratchValue13 then goto LAB_00d55cba_c6 end
-                                                                                                                                quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                                 scratchValue17 = 0.0
-                                                                                                                                if scratchValue17 < fret_01 then
+                                                                                                                                if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                                     scratchValue31 = 0
                                                                                                                                     scratchValue32 = 0
                                                                                                                                     me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -583,9 +581,8 @@ function Main(quest, me)
                                                                                                                 me:ClearCommands()
                                                                                                                 if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") ~= 0 then
                                                                                                                     if not quest:IsActiveThreadTerminating() then
-                                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                         scratchValue17 = 0.0
-                                                                                                                        if scratchValue17 < fret_03 then
+                                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                             scratchValue31 = 0
                                                                                                                             scratchValue32 = 0
                                                                                                                             me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -614,9 +611,8 @@ function Main(quest, me)
                                                                                                                                 __region_LAB_00d555f3_c6(); goto LAB_00d55c2b
                                                                                                                             end
                                                                                                                             if not scratchValue13 then
-                                                                                                                                quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                                 scratchValue17 = 0.0
-                                                                                                                                if scratchValue17 < fret_04 then
+                                                                                                                                if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                                     scratchValue31 = 0
                                                                                                                                     scratchValue32 = 0
                                                                                                                                     me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -638,9 +634,8 @@ function Main(quest, me)
                                                                                                                     goto LAB_00d55c2b
                                                                                                                 end
                                                                                                                 if quest:IsActiveThreadTerminating() then __region_LAB_00d555f3_c6(); goto LAB_00d55c2b end
-                                                                                                                quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                 scratchValue17 = 0.0
-                                                                                                                if scratchValue17 < fret_02 then
+                                                                                                                if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                     scratchValue31 = 0
                                                                                                                     scratchValue32 = 0
                                                                                                                     me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -654,39 +649,37 @@ function Main(quest, me)
                                                                                                                 ::LAB_00d5595a_c6::
                                                                                                                 quest:PauseAllNonScriptedEntities(scratchValue32 ~= 0)
                                                                                                             end
-                                                                                                            if scratchValue16 ~= 0 then
-                                                                                                                if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                            if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                                if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
+                                                                                                                scratchValue21 = quest:AddNewConversation(me, false, false)
+                                                                                                                quest:AddPersonToConversation(scratchValue21, quest:GetHero())
+                                                                                                                quest:SetTimer(timerId4, 10)
+                                                                                                                if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
-                                                                                                                    scratchValue21 = quest:AddNewConversation(me, false, false)
-                                                                                                                    quest:AddPersonToConversation(scratchValue21, quest:GetHero())
-                                                                                                                    quest:SetTimer(timerId4, 10)
-                                                                                                                    if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
-                                                                                                                        if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
-                                                                                                                        if xStack_154 == 1 then
-                                                                                                                            quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
-                                                                                                                            -- LAB_00d55b4e_c6: (native jump target)
-                                                                                                                        elseif xStack_154 == 2 then
-                                                                                                                            quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
-                                                                                                                            -- TODO(native): goto LAB_00d55b4e_c6
-                                                                                                                        end
-                                                                                                                        -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
-                                                                                                                    else
-                                                                                                                        if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
+                                                                                                                    if xStack_154 == 1 then
                                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                        quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                                        quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                                        -- LAB_00d55b4e_c6: (native jump target)
+                                                                                                                    elseif xStack_154 == 2 then
+                                                                                                                        quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                                        quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
+                                                                                                                        -- TODO(native): goto LAB_00d55b4e_c6
                                                                                                                     end
+                                                                                                                    -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
+                                                                                                                else
+                                                                                                                    if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
+                                                                                                                    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                                    quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
                                                                                                                 end
                                                                                                             end
                                                                                                             if scratchValue15 == 0 then
                                                                                                                 if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
                                                                                                                 if not me:IsPerformingScriptTask() then
-                                                                                                                    scratchValue15 = '\x01'
+                                                                                                                    scratchValue15 = 1
                                                                                                                     quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                                                                                                                 end
                                                                                                             end
-                                                                                                        until scratchValue16 == 0
+                                                                                                        until false
                                                                                                         if not quest:IsActiveThreadTerminating() then
                                                                                                             quest:SetStateBool("HeroSleeps", true)
                                                                                                             quest:FadeScreenOut(0.5, 0.5)
@@ -705,7 +698,6 @@ function Main(quest, me)
                                                                                                 scratchValue31 = 0
                                                                                                 scratchValue32 = 0
                                                                                                 me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 0x3f800000, 0, false, true)
-                                                                                                scratchValue16 = '\x01'
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 scratchValue15 = 0
                                                                                                 repeat
@@ -718,17 +710,16 @@ function Main(quest, me)
                                                                                                             while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                                                                                             end
-                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                             while not scratchValue13 do
                                                                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
-                                                                                                                scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                                scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                             end
                                                                                                             resources:StartMovie("")
                                                                                                             quest:StartMovieSequence()
                                                                                                             quest:PauseAllNonScriptedEntities(true)
-                                                                                                            quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                             scratchValue17 = 0.0
-                                                                                                            if fret_00 <= scratchValue17 then
+                                                                                                            if quest:GetHealth(resources:ScriptThing(scratchValue41)) <= scratchValue17 then
                                                                                                                 -- LAB_00d551d4_c7: (native jump target)
                                                                                                                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -748,9 +739,8 @@ function Main(quest, me)
                                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                     else
                                                                                                                         if scratchValue13 then goto LAB_00d55cba_c7 end
-                                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                         scratchValue17 = 0.0
-                                                                                                                        if scratchValue17 < fret_01 then
+                                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                             scratchValue31 = 0
                                                                                                                             scratchValue32 = 0
                                                                                                                             me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -810,21 +800,21 @@ function Main(quest, me)
                                                                                                             -- LAB_00d55c91: (native jump target)
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
-                                                                                                        scratchValue37 = resources:NewActorMap()
-                                                                                                        resources:SetActor(scratchValue37, "HERO", scratchValue34)
-                                                                                                        resources:SetActor(scratchValue37, "GUARD", scratchValue40)
+                                                                                                        scratchValue38 = resources:NewActorMap()
+                                                                                                        resources:SetActor(scratchValue38, "HERO", scratchValue34)
+                                                                                                        resources:SetActor(scratchValue38, "GUARD", scratchValue41)
                                                                                                         resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         quest:PauseAllNonScriptedEntities(true)
                                                                                                         quest:FixMovieSequenceCamera(true)
-                                                                                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue37, false, true)
+                                                                                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue38, false, true)
                                                                                                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                         scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                         while scratchValue20 < 0 do
                                                                                                             quest:NewScriptFrame(me)
                                                                                                             if quest:IsActiveThreadTerminating() then
                                                                                                                 quest:PauseAllNonScriptedEntities(scratchValue21 ~= 0)
-                                                                                                                resources:DestroyActorMap(scratchValue37)
+                                                                                                                resources:DestroyActorMap(scratchValue38)
                                                                                                                 goto LAB_00d55c2b
                                                                                                             end
                                                                                                             scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -833,14 +823,14 @@ function Main(quest, me)
                                                                                                             -- LAB_00d55c72: (native jump target)
                                                                                                             quest:PauseAllNonScriptedEntities(scratchValue17 ~= 0)
                                                                                                             -- LAB_00d55c7f: (native jump target)
-                                                                                                            resources:DestroyActorMap(scratchValue37)
+                                                                                                            resources:DestroyActorMap(scratchValue38)
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
                                                                                                         scratchValue13 = quest:IsActiveThreadTerminating()
                                                                                                         if scratchValue20 == 1 then
                                                                                                             if scratchValue13 then
                                                                                                                 quest:PauseAllNonScriptedEntities(false)
-                                                                                                                resources:DestroyActorMap(scratchValue37)
+                                                                                                                resources:DestroyActorMap(scratchValue38)
                                                                                                                 goto LAB_00d55c2b
                                                                                                             end
                                                                                                             quest:FadeScreenOut(0.5, 0.5)
@@ -849,12 +839,11 @@ function Main(quest, me)
                                                                                                         else
                                                                                                             if scratchValue13 then
                                                                                                                 quest:PauseAllNonScriptedEntities(false)
-                                                                                                                resources:DestroyActorMap(scratchValue37)
+                                                                                                                resources:DestroyActorMap(scratchValue38)
                                                                                                                 goto LAB_00d55c2b
                                                                                                             end
-                                                                                                            quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                             scratchValue17 = 0.0
-                                                                                                            if scratchValue17 < fret_0 then
+                                                                                                            if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                 scratchValue31 = 0
                                                                                                                 scratchValue32 = 0
                                                                                                                 me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -863,14 +852,14 @@ function Main(quest, me)
                                                                                                                     quest:NewScriptFrame(me)
                                                                                                                     if quest:IsActiveThreadTerminating() then
                                                                                                                         quest:PauseAllNonScriptedEntities(scratchValue32 ~= 0)
-                                                                                                                        resources:DestroyActorMap(scratchValue37)
+                                                                                                                        resources:DestroyActorMap(scratchValue38)
                                                                                                                         goto LAB_00d55c2b
                                                                                                                     end
                                                                                                                     scratchValue14 = me:IsPerformingScriptTask()
                                                                                                                 end
                                                                                                                 if quest:IsActiveThreadTerminating() then
                                                                                                                     quest:PauseAllNonScriptedEntities(scratchValue31 ~= 0)
-                                                                                                                    resources:DestroyActorMap(scratchValue37)
+                                                                                                                    resources:DestroyActorMap(scratchValue38)
                                                                                                                     goto LAB_00d55c2b
                                                                                                                 end
                                                                                                             end
@@ -881,7 +870,7 @@ function Main(quest, me)
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
                                                                                                         quest:PauseAllNonScriptedEntities(false)
-                                                                                                        resources:DestroyActorMap(scratchValue37)
+                                                                                                        resources:DestroyActorMap(scratchValue38)
                                                                                                     else
                                                                                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                             -- LAB_00d54f9c: (native jump target)
@@ -898,17 +887,16 @@ function Main(quest, me)
                                                                                                             while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                                                                                             end
-                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                             while not scratchValue13 do
                                                                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
-                                                                                                                scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                                scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                             end
                                                                                                             resources:StartMovie("")
                                                                                                             quest:StartMovieSequence()
                                                                                                             quest:PauseAllNonScriptedEntities(true)
-                                                                                                            quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                             scratchValue17 = 0.0
-                                                                                                            if fret_00 <= scratchValue17 then
+                                                                                                            if quest:GetHealth(resources:ScriptThing(scratchValue41)) <= scratchValue17 then
                                                                                                                 -- LAB_00d551d4: (native jump target)
                                                                                                                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -928,9 +916,8 @@ function Main(quest, me)
                                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                     else
                                                                                                                         if scratchValue13 then goto LAB_00d55cba end
-                                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                         scratchValue17 = 0.0
-                                                                                                                        if scratchValue17 < fret_01 then
+                                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                             scratchValue31 = 0
                                                                                                                             scratchValue32 = 0
                                                                                                                             me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -978,9 +965,8 @@ function Main(quest, me)
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                         else
                                                                                                                             if scratchValue13 then goto LAB_00d55cba end
-                                                                                                                            quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                             scratchValue17 = 0.0
-                                                                                                                            if scratchValue17 < fret_01 then
+                                                                                                                            if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                                 scratchValue31 = 0
                                                                                                                                 scratchValue32 = 0
                                                                                                                                 me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1016,9 +1002,8 @@ function Main(quest, me)
                                                                                                         me:ClearCommands()
                                                                                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") ~= 0 then
                                                                                                             if not quest:IsActiveThreadTerminating() then
-                                                                                                                quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                 scratchValue17 = 0.0
-                                                                                                                if scratchValue17 < fret_03 then
+                                                                                                                if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                     scratchValue30 = 0
                                                                                                                     scratchValue31 = 0
                                                                                                                     scratchValue32 = 0
@@ -1049,9 +1034,8 @@ function Main(quest, me)
                                                                                                                         goto LAB_00d55c2b
                                                                                                                     end
                                                                                                                     if not scratchValue13 then
-                                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                         scratchValue17 = 0.0
-                                                                                                                        if scratchValue17 < fret_04 then
+                                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                             scratchValue31 = 0
                                                                                                                             scratchValue32 = 0
                                                                                                                             me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1075,9 +1059,8 @@ function Main(quest, me)
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
                                                                                                         if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(scratchValue32 ~= 0); goto LAB_00d55c2b end
-                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                         scratchValue17 = 0.0
-                                                                                                        if scratchValue17 < fret_02 then
+                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                             scratchValue30 = 0
                                                                                                             scratchValue31 = 0
                                                                                                             scratchValue32 = 0
@@ -1092,38 +1075,36 @@ function Main(quest, me)
                                                                                                         ::LAB_00d5595a::
                                                                                                         quest:PauseAllNonScriptedEntities(scratchValue30 ~= 0)
                                                                                                     end
-                                                                                                    if scratchValue16 ~= 0 then
-                                                                                                        if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                    if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                        if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
+                                                                                                        scratchValue21 = quest:AddNewConversation(me, false, false)
+                                                                                                        quest:AddPersonToConversation(scratchValue21, quest:GetHero())
+                                                                                                        quest:SetTimer(timerId4, 10)
+                                                                                                        if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                             if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
-                                                                                                            scratchValue21 = quest:AddNewConversation(me, false, false)
-                                                                                                            quest:AddPersonToConversation(scratchValue21, quest:GetHero())
-                                                                                                            quest:SetTimer(timerId4, 10)
-                                                                                                            if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
-                                                                                                                if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
-                                                                                                                if 0 == 1 then
-                                                                                                                    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                    quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
-                                                                                                                    -- LAB_00d55b4e: (native jump target)
-                                                                                                                elseif 0 == 2 then
-                                                                                                                    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                    quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
-                                                                                                                end
-                                                                                                                -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
-                                                                                                            else
-                                                                                                                if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
+                                                                                                            if 0 == 1 then
                                                                                                                 quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                                -- LAB_00d55b4e: (native jump target)
+                                                                                                            elseif 0 == 2 then
+                                                                                                                quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
                                                                                                             end
+                                                                                                            -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
+                                                                                                        else
+                                                                                                            if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
+                                                                                                            quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
                                                                                                         end
                                                                                                     end
                                                                                                     if scratchValue15 == 0 then
                                                                                                         if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
                                                                                                         if not me:IsPerformingScriptTask() then
-                                                                                                            scratchValue15 = '\x01'
+                                                                                                            scratchValue15 = 1
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                                                                                                         end
                                                                                                     end
-                                                                                                until scratchValue16 == 0
+                                                                                                until false
                                                                                                 if not quest:IsActiveThreadTerminating() then
                                                                                                     quest:SetStateBool("HeroSleeps", true)
                                                                                                     quest:FadeScreenOut(0.5, 0.5)
@@ -1156,7 +1137,7 @@ function Main(quest, me)
                                                             -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
                                                             timerId2 = quest:RegisterTimer()
                                                             quest:SetTimer(timerId2, 10)
-                                                            scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                            scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                             while scratchValue14 do
                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c27 end
                                                                 if quest:GetTimer(timerId2) < 1 then
@@ -1165,29 +1146,29 @@ function Main(quest, me)
                                                                     quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, quest:GetHero(), false)
                                                                     quest:SetTimer(timerId2, 10)
                                                                 end
-                                                                scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                                scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                             end
                                                             if not quest:IsActiveThreadTerminating() then
                                                                 quest:Pause(0.5)
-                                                                scratchValue38 = resources:NewResource()
-                                                                SUB41(scratchValue38,0)
-                                                                scratchValue31 = scratchValue38 >> 16
-                                                                scratchValue32 = scratchValue38 >> 24
+                                                                scratchValue39 = resources:NewResource()
+                                                                SUB41(scratchValue39,0)
+                                                                scratchValue31 = scratchValue39 >> 16
+                                                                scratchValue32 = scratchValue39 >> 24
                                                                 scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                 while not scratchValue13 do
                                                                     quest:NewScriptFrame(me)
                                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c27
-                                                                    SUB41(scratchValue38,0)
-                                                                    scratchValue31 = scratchValue38 >> 16
-                                                                    scratchValue32 = scratchValue38 >> 24
+                                                                    SUB41(scratchValue39,0)
+                                                                    scratchValue31 = scratchValue39 >> 16
+                                                                    scratchValue32 = scratchValue39 >> 24
                                                                     scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                 end
                                                                 if quest:IsActiveThreadTerminating() then
                                                                     -- LAB_00d54dfa_c27: (native jump target)
                                                                 else
                                                                     scratchValue22 = resources:NewActorMap()
-                                                                    resources:SetActor(scratchValue22, "HERO", scratchValue38)
-                                                                    resources:SetActor(scratchValue22, "TEACHER", scratchValue40)
+                                                                    resources:SetActor(scratchValue22, "HERO", scratchValue39)
+                                                                    resources:SetActor(scratchValue22, "TEACHER", scratchValue41)
                                                                     resources:StartMovie("")
                                                                     quest:StartMovieSequence()
                                                                     quest:PauseAllNonScriptedEntities(true)
@@ -1225,7 +1206,6 @@ function Main(quest, me)
                                                                                             scratchValue31 = 0
                                                                                             scratchValue32 = 0
                                                                                             me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 0x3f800000, 0, false, true)
-                                                                                            scratchValue16 = '\x01'
                                                                                             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                             scratchValue15 = 0
                                                                                             repeat
@@ -1255,14 +1235,14 @@ function Main(quest, me)
                                                                                                         -- LAB_00d55c91_c27: (native jump target)
                                                                                                         goto LAB_00d55c2b_c27
                                                                                                     end
-                                                                                                    scratchValue37 = resources:NewActorMap()
-                                                                                                    resources:SetActor(scratchValue37, "HERO", scratchValue34)
-                                                                                                    resources:SetActor(scratchValue37, "GUARD", scratchValue40)
+                                                                                                    scratchValue38 = resources:NewActorMap()
+                                                                                                    resources:SetActor(scratchValue38, "HERO", scratchValue34)
+                                                                                                    resources:SetActor(scratchValue38, "GUARD", scratchValue41)
                                                                                                     resources:StartMovie("")
                                                                                                     quest:StartMovieSequence()
                                                                                                     quest:PauseAllNonScriptedEntities(true)
                                                                                                     quest:FixMovieSequenceCamera(true)
-                                                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue37, false, true)
+                                                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue38, false, true)
                                                                                                     quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                     scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                     while scratchValue20 < 0 do
@@ -1274,7 +1254,7 @@ function Main(quest, me)
                                                                                                         -- LAB_00d55c72_c27: (native jump target)
                                                                                                         quest:PauseAllNonScriptedEntities(scratchValue21 ~= 0)
                                                                                                         -- LAB_00d55c7f_c27: (native jump target)
-                                                                                                        resources:DestroyActorMap(scratchValue37)
+                                                                                                        resources:DestroyActorMap(scratchValue38)
                                                                                                         -- TODO(native): goto LAB_00d55c91_c27
                                                                                                     end
                                                                                                     scratchValue13 = quest:IsActiveThreadTerminating()
@@ -1288,9 +1268,8 @@ function Main(quest, me)
                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                     else
                                                                                                         if scratchValue13 then return end  -- TODO(native): goto LAB_00d55c72_c27
-                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                         scratchValue17 = 0.0
-                                                                                                        if scratchValue17 < fret_0 then
+                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                             scratchValue31 = 0
                                                                                                             scratchValue32 = 0
                                                                                                             me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1308,7 +1287,7 @@ function Main(quest, me)
                                                                                                     end
                                                                                                     quest:FixMovieSequenceCamera(false)
                                                                                                     quest:PauseAllNonScriptedEntities(false)
-                                                                                                    resources:DestroyActorMap(scratchValue37)
+                                                                                                    resources:DestroyActorMap(scratchValue38)
                                                                                                 else
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         -- LAB_00d54f9c_c27: (native jump target)
@@ -1326,17 +1305,16 @@ function Main(quest, me)
                                                                                                         while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c27 end
                                                                                                         end
-                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                         while not scratchValue13 do
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c27 end
-                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                         end
                                                                                                         resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         quest:PauseAllNonScriptedEntities(true)
-                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                         scratchValue17 = 0.0
-                                                                                                        if fret_00 <= scratchValue17 then
+                                                                                                        if quest:GetHealth(resources:ScriptThing(scratchValue41)) <= scratchValue17 then
                                                                                                             -- LAB_00d551d4_c27: (native jump target)
                                                                                                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                             scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -1356,9 +1334,8 @@ function Main(quest, me)
                                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                 else
                                                                                                                     if scratchValue13 then goto LAB_00d55cba_c27 end
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if scratchValue17 < fret_01 then
+                                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                         scratchValue31 = 0
                                                                                                                         scratchValue32 = 0
                                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1401,9 +1378,8 @@ function Main(quest, me)
                                                                                                     me:ClearCommands()
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") ~= 0 then
                                                                                                         if not quest:IsActiveThreadTerminating() then
-                                                                                                            quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                             scratchValue17 = 0.0
-                                                                                                            if scratchValue17 < fret_03 then
+                                                                                                            if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                 scratchValue31 = 0
                                                                                                                 scratchValue32 = 0
                                                                                                                 me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1432,9 +1408,8 @@ function Main(quest, me)
                                                                                                                     __region_LAB_00d555f3_c27(); goto LAB_00d55c2b_c27
                                                                                                                 end
                                                                                                                 if not scratchValue13 then
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if scratchValue17 < fret_04 then
+                                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                         scratchValue31 = 0
                                                                                                                         scratchValue32 = 0
                                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1456,9 +1431,8 @@ function Main(quest, me)
                                                                                                         goto LAB_00d55c2b_c27
                                                                                                     end
                                                                                                     if quest:IsActiveThreadTerminating() then __region_LAB_00d555f3_c27(); goto LAB_00d55c2b_c27 end
-                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                     scratchValue17 = 0.0
-                                                                                                    if scratchValue17 < fret_02 then
+                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                         scratchValue31 = 0
                                                                                                         scratchValue32 = 0
                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1472,39 +1446,37 @@ function Main(quest, me)
                                                                                                     ::LAB_00d5595a_c27::
                                                                                                     quest:PauseAllNonScriptedEntities(scratchValue32 ~= 0)
                                                                                                 end
-                                                                                                if scratchValue16 ~= 0 then
-                                                                                                    if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                    if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
+                                                                                                    scratchValue21 = quest:AddNewConversation(me, false, false)
+                                                                                                    quest:AddPersonToConversation(scratchValue21, quest:GetHero())
+                                                                                                    quest:SetTimer(timerId4, 10)
+                                                                                                    if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
-                                                                                                        scratchValue21 = quest:AddNewConversation(me, false, false)
-                                                                                                        quest:AddPersonToConversation(scratchValue21, quest:GetHero())
-                                                                                                        quest:SetTimer(timerId4, 10)
-                                                                                                        if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
-                                                                                                            if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
-                                                                                                            if xStack_154 == 1 then
-                                                                                                                quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
-                                                                                                                -- LAB_00d55b4e_c27: (native jump target)
-                                                                                                            elseif xStack_154 == 2 then
-                                                                                                                quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
-                                                                                                                -- TODO(native): goto LAB_00d55b4e_c27
-                                                                                                            end
-                                                                                                            -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
-                                                                                                        else
-                                                                                                            if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
+                                                                                                        if xStack_154 == 1 then
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                            -- LAB_00d55b4e_c27: (native jump target)
+                                                                                                        elseif xStack_154 == 2 then
+                                                                                                            quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
+                                                                                                            -- TODO(native): goto LAB_00d55b4e_c27
                                                                                                         end
+                                                                                                        -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
+                                                                                                    else
+                                                                                                        if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
+                                                                                                        quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                        quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
                                                                                                     end
                                                                                                 end
                                                                                                 if scratchValue15 == 0 then
                                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
                                                                                                     if not me:IsPerformingScriptTask() then
-                                                                                                        scratchValue15 = '\x01'
+                                                                                                        scratchValue15 = 1
                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                                                                                                     end
                                                                                                 end
-                                                                                            until scratchValue16 == 0
+                                                                                            until false
                                                                                             if not quest:IsActiveThreadTerminating() then
                                                                                                 quest:SetStateBool("HeroSleeps", true)
                                                                                                 quest:FadeScreenOut(0.5, 0.5)
@@ -1543,6 +1515,7 @@ function Main(quest, me)
                                         quest:SetStateInt("DummyHits", 0)
                                         quest:SetTimer(timerId, 10)
                                         scratchValue = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                                        scratchValue37 = scratchValue
                                         quest:DisplayQuestInfo(true)
                                         scratchValue20 = quest:GetStateInt("DummyHits")
                                         while scratchValue20 < 7 do
@@ -1578,31 +1551,31 @@ function Main(quest, me)
                                                 if quest:IsActiveThreadTerminating() then goto LAB_00d55c3d end
                                                 quest:SetTimer(timerId3, 10)
                                                 timerId = timerId3
-                                                scratchValue = scratchValue
+                                                scratchValue = scratchValue37
                                             end
                                             scratchValue20 = quest:GetStateInt("DummyHits")
                                         end
                                         if not quest:IsActiveThreadTerminating() then
                                             quest:RemoveQuestInfoElement(scratchValue)
                                             quest:DisplayQuestInfo(false)
-                                            scratchValue39 = nil
+                                            scratchValue40 = nil
                                             scratchValue36 = resources:StartMovie("")
                                             quest:StartMovieSequence()
-                                            scratchValue38 = resources:NewResource()
+                                            scratchValue39 = resources:NewResource()
                                             scratchValue23 = quest:GetHero()
                                             scratchValue13 = resources:TryAcquire(0, scratchValue23, 4)
                                             while not scratchValue13 do
                                                 quest:NewScriptFrame(me)
                                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53ff2_c28
-                                                SUB41(scratchValue38,0)
-                                                scratchValue31 = scratchValue38 >> 16
-                                                scratchValue32 = scratchValue38 >> 24
+                                                SUB41(scratchValue39,0)
+                                                scratchValue31 = scratchValue39 >> 16
+                                                scratchValue32 = scratchValue39 >> 24
                                                 scratchValue23 = quest:GetHero()
-                                                scratchValue13 = resources:TryAcquire(scratchValue38, scratchValue23, 4)
+                                                scratchValue13 = resources:TryAcquire(scratchValue39, scratchValue23, 4)
                                             end
                                             if quest:IsActiveThreadTerminating() then
                                                 -- LAB_00d53ff2_c28: (native jump target)
-                                                resources:DestroyMovie(scratchValue38)
+                                                resources:DestroyMovie(scratchValue39)
                                                 resources:DestroyMovie(scratchValue36)
                                             else
                                                 scratchValue26 = quest:GetThingWithScriptName("PreMeleeDummy")
@@ -1612,20 +1585,20 @@ function Main(quest, me)
                                                 -- TODO(native): CreateEffect is not a ForgeFSE binding
                                                 quest:CreateEffect(scratchValue23, "SMASH_DUMMY_01", scratchValue22, "", 0.0, false, false)
                                                 quest:FadeOutAndKillEntity(scratchValue26, true, 1.0, true)
-                                                scratchValue37 = resources:NewActorMap()
-                                                resources:SetActor(scratchValue37, "HERO", scratchValue38)
-                                                resources:SetActor(scratchValue37, "TEACHER", scratchValue40)
+                                                scratchValue38 = resources:NewActorMap()
+                                                resources:SetActor(scratchValue38, "HERO", scratchValue39)
+                                                resources:SetActor(scratchValue38, "TEACHER", scratchValue41)
                                                 quest:FixMovieSequenceCamera(true)
-                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", scratchValue37, false, false)
+                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", scratchValue38, false, false)
                                                 quest:PauseAllNonScriptedEntities(true)
                                                 quest:CreateExperienceOrb(1, scratchValue22)
                                                 -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                                                 quest:EntitySetCutsceneBehaviour(nil, 2)
-                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED", scratchValue37, false, true)
+                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED", scratchValue38, false, true)
                                                 quest:FixMovieSequenceCamera(false)
                                                 quest:PauseAllNonScriptedEntities(false)
-                                                resources:DestroyActorMap(scratchValue37)
-                                                resources:DestroyMovie(scratchValue38)
+                                                resources:DestroyActorMap(scratchValue38)
+                                                resources:DestroyMovie(scratchValue39)
                                                 resources:DestroyMovie(scratchValue36)
                                                 if quest:IsXbox() then
                                                     if not quest:IsActiveThreadTerminating() then
@@ -1639,7 +1612,7 @@ function Main(quest, me)
                                                             -- LAB_00d5439e_c28: (native jump target)
                                                             timerId2 = quest:RegisterTimer()
                                                             quest:SetTimer(timerId2, 10)
-                                                            scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                            scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                             while scratchValue14 do
                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c28 end
                                                                 if quest:GetTimer(timerId2) < 1 then
@@ -1648,29 +1621,29 @@ function Main(quest, me)
                                                                     quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, quest:GetHero(), false)
                                                                     quest:SetTimer(timerId2, 10)
                                                                 end
-                                                                scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                                scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                             end
                                                             if not quest:IsActiveThreadTerminating() then
                                                                 quest:Pause(0.5)
-                                                                scratchValue38 = resources:NewResource()
-                                                                SUB41(scratchValue38,0)
-                                                                scratchValue31 = scratchValue38 >> 16
-                                                                scratchValue32 = scratchValue38 >> 24
+                                                                scratchValue39 = resources:NewResource()
+                                                                SUB41(scratchValue39,0)
+                                                                scratchValue31 = scratchValue39 >> 16
+                                                                scratchValue32 = scratchValue39 >> 24
                                                                 scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                 while not scratchValue13 do
                                                                     quest:NewScriptFrame(me)
                                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c28
-                                                                    SUB41(scratchValue38,0)
-                                                                    scratchValue31 = scratchValue38 >> 16
-                                                                    scratchValue32 = scratchValue38 >> 24
+                                                                    SUB41(scratchValue39,0)
+                                                                    scratchValue31 = scratchValue39 >> 16
+                                                                    scratchValue32 = scratchValue39 >> 24
                                                                     scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                 end
                                                                 if quest:IsActiveThreadTerminating() then
                                                                     -- LAB_00d54dfa_c28: (native jump target)
                                                                 else
                                                                     scratchValue22 = resources:NewActorMap()
-                                                                    resources:SetActor(scratchValue22, "HERO", scratchValue38)
-                                                                    resources:SetActor(scratchValue22, "TEACHER", scratchValue40)
+                                                                    resources:SetActor(scratchValue22, "HERO", scratchValue39)
+                                                                    resources:SetActor(scratchValue22, "TEACHER", scratchValue41)
                                                                     resources:StartMovie("")
                                                                     quest:StartMovieSequence()
                                                                     quest:PauseAllNonScriptedEntities(true)
@@ -1708,7 +1681,6 @@ function Main(quest, me)
                                                                                             scratchValue31 = 0
                                                                                             scratchValue32 = 0
                                                                                             me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 0x3f800000, 0, false, true)
-                                                                                            scratchValue16 = '\x01'
                                                                                             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                             scratchValue15 = 0
                                                                                             repeat
@@ -1738,14 +1710,14 @@ function Main(quest, me)
                                                                                                         -- LAB_00d55c91_c28: (native jump target)
                                                                                                         goto LAB_00d55c2b_c28
                                                                                                     end
-                                                                                                    scratchValue37 = resources:NewActorMap()
-                                                                                                    resources:SetActor(scratchValue37, "HERO", scratchValue34)
-                                                                                                    resources:SetActor(scratchValue37, "GUARD", scratchValue40)
+                                                                                                    scratchValue38 = resources:NewActorMap()
+                                                                                                    resources:SetActor(scratchValue38, "HERO", scratchValue34)
+                                                                                                    resources:SetActor(scratchValue38, "GUARD", scratchValue41)
                                                                                                     resources:StartMovie("")
                                                                                                     quest:StartMovieSequence()
                                                                                                     quest:PauseAllNonScriptedEntities(true)
                                                                                                     quest:FixMovieSequenceCamera(true)
-                                                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue37, false, true)
+                                                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue38, false, true)
                                                                                                     quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                     scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                     while scratchValue20 < 0 do
@@ -1757,7 +1729,7 @@ function Main(quest, me)
                                                                                                         -- LAB_00d55c72_c28: (native jump target)
                                                                                                         quest:PauseAllNonScriptedEntities(scratchValue21 ~= 0)
                                                                                                         -- LAB_00d55c7f_c28: (native jump target)
-                                                                                                        resources:DestroyActorMap(scratchValue37)
+                                                                                                        resources:DestroyActorMap(scratchValue38)
                                                                                                         -- TODO(native): goto LAB_00d55c91_c28
                                                                                                     end
                                                                                                     scratchValue13 = quest:IsActiveThreadTerminating()
@@ -1771,9 +1743,8 @@ function Main(quest, me)
                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                     else
                                                                                                         if scratchValue13 then return end  -- TODO(native): goto LAB_00d55c72_c28
-                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                         scratchValue17 = 0.0
-                                                                                                        if scratchValue17 < fret_0 then
+                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                             scratchValue31 = 0
                                                                                                             scratchValue32 = 0
                                                                                                             me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1791,7 +1762,7 @@ function Main(quest, me)
                                                                                                     end
                                                                                                     quest:FixMovieSequenceCamera(false)
                                                                                                     quest:PauseAllNonScriptedEntities(false)
-                                                                                                    resources:DestroyActorMap(scratchValue37)
+                                                                                                    resources:DestroyActorMap(scratchValue38)
                                                                                                 else
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         -- LAB_00d54f9c_c28: (native jump target)
@@ -1809,17 +1780,16 @@ function Main(quest, me)
                                                                                                         while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c28 end
                                                                                                         end
-                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                         while not scratchValue13 do
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c28 end
-                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                         end
                                                                                                         resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         quest:PauseAllNonScriptedEntities(true)
-                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                         scratchValue17 = 0.0
-                                                                                                        if fret_00 <= scratchValue17 then
+                                                                                                        if quest:GetHealth(resources:ScriptThing(scratchValue41)) <= scratchValue17 then
                                                                                                             -- LAB_00d551d4_c28: (native jump target)
                                                                                                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                             scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -1839,9 +1809,8 @@ function Main(quest, me)
                                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                 else
                                                                                                                     if scratchValue13 then goto LAB_00d55cba_c28 end
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if scratchValue17 < fret_01 then
+                                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                         scratchValue31 = 0
                                                                                                                         scratchValue32 = 0
                                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1884,9 +1853,8 @@ function Main(quest, me)
                                                                                                     me:ClearCommands()
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") ~= 0 then
                                                                                                         if not quest:IsActiveThreadTerminating() then
-                                                                                                            quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                             scratchValue17 = 0.0
-                                                                                                            if scratchValue17 < fret_03 then
+                                                                                                            if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                 scratchValue31 = 0
                                                                                                                 scratchValue32 = 0
                                                                                                                 me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1915,9 +1883,8 @@ function Main(quest, me)
                                                                                                                     __region_LAB_00d555f3_c28(); goto LAB_00d55c2b_c28
                                                                                                                 end
                                                                                                                 if not scratchValue13 then
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if scratchValue17 < fret_04 then
+                                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                         scratchValue31 = 0
                                                                                                                         scratchValue32 = 0
                                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1939,9 +1906,8 @@ function Main(quest, me)
                                                                                                         goto LAB_00d55c2b_c28
                                                                                                     end
                                                                                                     if quest:IsActiveThreadTerminating() then __region_LAB_00d555f3_c28(); goto LAB_00d55c2b_c28 end
-                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                     scratchValue17 = 0.0
-                                                                                                    if scratchValue17 < fret_02 then
+                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                         scratchValue31 = 0
                                                                                                         scratchValue32 = 0
                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -1955,39 +1921,37 @@ function Main(quest, me)
                                                                                                     ::LAB_00d5595a_c28::
                                                                                                     quest:PauseAllNonScriptedEntities(scratchValue32 ~= 0)
                                                                                                 end
-                                                                                                if scratchValue16 ~= 0 then
-                                                                                                    if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                    if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
+                                                                                                    scratchValue21 = quest:AddNewConversation(me, false, false)
+                                                                                                    quest:AddPersonToConversation(scratchValue21, quest:GetHero())
+                                                                                                    quest:SetTimer(timerId4, 10)
+                                                                                                    if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
-                                                                                                        scratchValue21 = quest:AddNewConversation(me, false, false)
-                                                                                                        quest:AddPersonToConversation(scratchValue21, quest:GetHero())
-                                                                                                        quest:SetTimer(timerId4, 10)
-                                                                                                        if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
-                                                                                                            if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
-                                                                                                            if xStack_154 == 1 then
-                                                                                                                quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
-                                                                                                                -- LAB_00d55b4e_c28: (native jump target)
-                                                                                                            elseif xStack_154 == 2 then
-                                                                                                                quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
-                                                                                                                -- TODO(native): goto LAB_00d55b4e_c28
-                                                                                                            end
-                                                                                                            -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
-                                                                                                        else
-                                                                                                            if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
+                                                                                                        if xStack_154 == 1 then
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                            -- LAB_00d55b4e_c28: (native jump target)
+                                                                                                        elseif xStack_154 == 2 then
+                                                                                                            quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
+                                                                                                            -- TODO(native): goto LAB_00d55b4e_c28
                                                                                                         end
+                                                                                                        -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
+                                                                                                    else
+                                                                                                        if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
+                                                                                                        quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                        quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
                                                                                                     end
                                                                                                 end
                                                                                                 if scratchValue15 == 0 then
                                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
                                                                                                     if not me:IsPerformingScriptTask() then
-                                                                                                        scratchValue15 = '\x01'
+                                                                                                        scratchValue15 = 1
                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                                                                                                     end
                                                                                                 end
-                                                                                            until scratchValue16 == 0
+                                                                                            until false
                                                                                             if not quest:IsActiveThreadTerminating() then
                                                                                                 quest:SetStateBool("HeroSleeps", true)
                                                                                                 quest:FadeScreenOut(0.5, 0.5)
@@ -2047,6 +2011,7 @@ function Main(quest, me)
                     quest:SetStateInt("PreMeleeMode", 1)
                     quest:SetStateInt("DummyHits", 0)
                     scratchValue = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                    scratchValue37 = scratchValue
                     quest:DisplayQuestInfo(true)
                     scratchValue20 = quest:GetStateInt("DummyHits")
                     while scratchValue20 < 7 do
@@ -2082,37 +2047,37 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then goto LAB_00d55c3d_c29 end
                             quest:SetTimer(timerId3, 10)
                             timerId = timerId3
-                            scratchValue = scratchValue
+                            scratchValue = scratchValue37
                         end
                         scratchValue20 = quest:GetStateInt("DummyHits")
                     end
                     if not quest:IsActiveThreadTerminating() then
                         quest:RemoveQuestInfoElement(scratchValue)
                         quest:DisplayQuestInfo(false)
-                        scratchValue38 = resources:NewResource()
-                        scratchValue13 = resources:TryAcquire(scratchValue38, quest:GetHero(), 4)
+                        scratchValue39 = resources:NewResource()
+                        scratchValue13 = resources:TryAcquire(scratchValue39, quest:GetHero(), 4)
                         while not scratchValue13 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53a0b_c29
-                            scratchValue13 = resources:TryAcquire(scratchValue38, quest:GetHero(), 4)
+                            scratchValue13 = resources:TryAcquire(scratchValue39, quest:GetHero(), 4)
                         end
                         if quest:IsActiveThreadTerminating() then
                             -- LAB_00d53a0b_c29: (native jump target)
-                            resources:DestroyMovie(scratchValue38)
+                            resources:DestroyMovie(scratchValue39)
                         else
-                            scratchValue37 = resources:NewActorMap()
-                            resources:SetActor(scratchValue37, "HERO", scratchValue38)
-                            resources:SetActor(scratchValue37, "TEACHER", scratchValue40)
+                            scratchValue38 = resources:NewActorMap()
+                            resources:SetActor(scratchValue38, "HERO", scratchValue39)
+                            resources:SetActor(scratchValue38, "TEACHER", scratchValue41)
                             scratchValue36 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             quest:FixMovieSequenceCamera(true)
-                            resources:RunMacro("CS_GUILD_PREMELEE_STICK", scratchValue37, false, true)
+                            resources:RunMacro("CS_GUILD_PREMELEE_STICK", scratchValue38, false, true)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(scratchValue36)
-                            resources:DestroyActorMap(scratchValue37)
-                            resources:DestroyMovie(scratchValue38)
+                            resources:DestroyActorMap(scratchValue38)
+                            resources:DestroyMovie(scratchValue39)
                             if quest:IsXbox() then
                                 if not quest:IsActiveThreadTerminating() then
                                     quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_STICK")
@@ -2127,6 +2092,7 @@ function Main(quest, me)
                                         quest:SetStateInt("DummyHits", 0)
                                         quest:SetTimer(timerId, 10)
                                         scratchValue = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                                        scratchValue37 = scratchValue
                                         quest:DisplayQuestInfo(true)
                                         scratchValue20 = quest:GetStateInt("DummyHits")
                                         while scratchValue20 < 7 do
@@ -2162,31 +2128,31 @@ function Main(quest, me)
                                                 if quest:IsActiveThreadTerminating() then goto LAB_00d55c3d_c29 end
                                                 quest:SetTimer(timerId3, 10)
                                                 timerId = timerId3
-                                                scratchValue = scratchValue
+                                                scratchValue = scratchValue37
                                             end
                                             scratchValue20 = quest:GetStateInt("DummyHits")
                                         end
                                         if not quest:IsActiveThreadTerminating() then
                                             quest:RemoveQuestInfoElement(scratchValue)
                                             quest:DisplayQuestInfo(false)
-                                            scratchValue39 = nil
+                                            scratchValue40 = nil
                                             scratchValue36 = resources:StartMovie("")
                                             quest:StartMovieSequence()
-                                            scratchValue38 = resources:NewResource()
+                                            scratchValue39 = resources:NewResource()
                                             scratchValue23 = quest:GetHero()
                                             scratchValue13 = resources:TryAcquire(0, scratchValue23, 4)
                                             while not scratchValue13 do
                                                 quest:NewScriptFrame(me)
                                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53ff2_c29
-                                                SUB41(scratchValue38,0)
-                                                scratchValue31 = scratchValue38 >> 16
-                                                scratchValue32 = scratchValue38 >> 24
+                                                SUB41(scratchValue39,0)
+                                                scratchValue31 = scratchValue39 >> 16
+                                                scratchValue32 = scratchValue39 >> 24
                                                 scratchValue23 = quest:GetHero()
-                                                scratchValue13 = resources:TryAcquire(scratchValue38, scratchValue23, 4)
+                                                scratchValue13 = resources:TryAcquire(scratchValue39, scratchValue23, 4)
                                             end
                                             if quest:IsActiveThreadTerminating() then
                                                 -- LAB_00d53ff2_c29: (native jump target)
-                                                resources:DestroyMovie(scratchValue38)
+                                                resources:DestroyMovie(scratchValue39)
                                                 resources:DestroyMovie(scratchValue36)
                                             else
                                                 scratchValue27 = quest:GetThingWithScriptName("PreMeleeDummy")
@@ -2196,20 +2162,20 @@ function Main(quest, me)
                                                 -- TODO(native): CreateEffect is not a ForgeFSE binding
                                                 quest:CreateEffect(scratchValue23, "SMASH_DUMMY_01", scratchValue22, "", 0.0, false, false)
                                                 quest:FadeOutAndKillEntity(scratchValue27, true, 1.0, true)
-                                                scratchValue37 = resources:NewActorMap()
-                                                resources:SetActor(scratchValue37, "HERO", scratchValue38)
-                                                resources:SetActor(scratchValue37, "TEACHER", scratchValue40)
+                                                scratchValue38 = resources:NewActorMap()
+                                                resources:SetActor(scratchValue38, "HERO", scratchValue39)
+                                                resources:SetActor(scratchValue38, "TEACHER", scratchValue41)
                                                 quest:FixMovieSequenceCamera(true)
-                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", scratchValue37, false, false)
+                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", scratchValue38, false, false)
                                                 quest:PauseAllNonScriptedEntities(true)
                                                 quest:CreateExperienceOrb(1, scratchValue22)
                                                 -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                                                 quest:EntitySetCutsceneBehaviour(nil, 2)
-                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED", scratchValue37, false, true)
+                                                resources:RunMacro("CS_GUILD_PREMELEE_PASSED", scratchValue38, false, true)
                                                 quest:FixMovieSequenceCamera(false)
                                                 quest:PauseAllNonScriptedEntities(false)
-                                                resources:DestroyActorMap(scratchValue37)
-                                                resources:DestroyMovie(scratchValue38)
+                                                resources:DestroyActorMap(scratchValue38)
+                                                resources:DestroyMovie(scratchValue39)
                                                 resources:DestroyMovie(scratchValue36)
                                                 if quest:IsXbox() then
                                                     if not quest:IsActiveThreadTerminating() then
@@ -2223,7 +2189,7 @@ function Main(quest, me)
                                                             -- LAB_00d5439e_c29: (native jump target)
                                                             timerId2 = quest:RegisterTimer()
                                                             quest:SetTimer(timerId2, 10)
-                                                            scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                            scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                             while scratchValue14 do
                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c29 end
                                                                 if quest:GetTimer(timerId2) < 1 then
@@ -2232,29 +2198,29 @@ function Main(quest, me)
                                                                     quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, quest:GetHero(), false)
                                                                     quest:SetTimer(timerId2, 10)
                                                                 end
-                                                                scratchValue14 = scratchValue39 ~= nil and scratchValue39:IsAlive()
+                                                                scratchValue14 = scratchValue40 ~= nil and scratchValue40:IsAlive()
                                                             end
                                                             if not quest:IsActiveThreadTerminating() then
                                                                 quest:Pause(0.5)
-                                                                scratchValue38 = resources:NewResource()
-                                                                SUB41(scratchValue38,0)
-                                                                scratchValue31 = scratchValue38 >> 16
-                                                                scratchValue32 = scratchValue38 >> 24
+                                                                scratchValue39 = resources:NewResource()
+                                                                SUB41(scratchValue39,0)
+                                                                scratchValue31 = scratchValue39 >> 16
+                                                                scratchValue32 = scratchValue39 >> 24
                                                                 scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                 while not scratchValue13 do
                                                                     quest:NewScriptFrame(me)
                                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c29
-                                                                    SUB41(scratchValue38,0)
-                                                                    scratchValue31 = scratchValue38 >> 16
-                                                                    scratchValue32 = scratchValue38 >> 24
+                                                                    SUB41(scratchValue39,0)
+                                                                    scratchValue31 = scratchValue39 >> 16
+                                                                    scratchValue32 = scratchValue39 >> 24
                                                                     scratchValue13 = resources:TryAcquire(0, quest:GetHero(), 4)
                                                                 end
                                                                 if quest:IsActiveThreadTerminating() then
                                                                     -- LAB_00d54dfa_c29: (native jump target)
                                                                 else
                                                                     scratchValue22 = resources:NewActorMap()
-                                                                    resources:SetActor(scratchValue22, "HERO", scratchValue38)
-                                                                    resources:SetActor(scratchValue22, "TEACHER", scratchValue40)
+                                                                    resources:SetActor(scratchValue22, "HERO", scratchValue39)
+                                                                    resources:SetActor(scratchValue22, "TEACHER", scratchValue41)
                                                                     resources:StartMovie("")
                                                                     quest:StartMovieSequence()
                                                                     quest:PauseAllNonScriptedEntities(true)
@@ -2292,7 +2258,6 @@ function Main(quest, me)
                                                                                             scratchValue31 = 0
                                                                                             scratchValue32 = 0
                                                                                             me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 0x3f800000, 0, false, true)
-                                                                                            scratchValue16 = '\x01'
                                                                                             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                             scratchValue15 = 0
                                                                                             repeat
@@ -2322,14 +2287,14 @@ function Main(quest, me)
                                                                                                         -- LAB_00d55c91_c29: (native jump target)
                                                                                                         goto LAB_00d55c2b_c29
                                                                                                     end
-                                                                                                    scratchValue37 = resources:NewActorMap()
-                                                                                                    resources:SetActor(scratchValue37, "HERO", scratchValue34)
-                                                                                                    resources:SetActor(scratchValue37, "GUARD", scratchValue40)
+                                                                                                    scratchValue38 = resources:NewActorMap()
+                                                                                                    resources:SetActor(scratchValue38, "HERO", scratchValue34)
+                                                                                                    resources:SetActor(scratchValue38, "GUARD", scratchValue41)
                                                                                                     resources:StartMovie("")
                                                                                                     quest:StartMovieSequence()
                                                                                                     quest:PauseAllNonScriptedEntities(true)
                                                                                                     quest:FixMovieSequenceCamera(true)
-                                                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue37, false, true)
+                                                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", scratchValue38, false, true)
                                                                                                     quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                     scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                     while scratchValue20 < 0 do
@@ -2341,7 +2306,7 @@ function Main(quest, me)
                                                                                                         -- LAB_00d55c72_c29: (native jump target)
                                                                                                         quest:PauseAllNonScriptedEntities(scratchValue21 ~= 0)
                                                                                                         -- LAB_00d55c7f_c29: (native jump target)
-                                                                                                        resources:DestroyActorMap(scratchValue37)
+                                                                                                        resources:DestroyActorMap(scratchValue38)
                                                                                                         -- TODO(native): goto LAB_00d55c91_c29
                                                                                                     end
                                                                                                     scratchValue13 = quest:IsActiveThreadTerminating()
@@ -2355,9 +2320,8 @@ function Main(quest, me)
                                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                     else
                                                                                                         if scratchValue13 then return end  -- TODO(native): goto LAB_00d55c72_c29
-                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                         scratchValue17 = 0.0
-                                                                                                        if scratchValue17 < fret_0 then
+                                                                                                        if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                             scratchValue31 = 0
                                                                                                             scratchValue32 = 0
                                                                                                             me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -2375,7 +2339,7 @@ function Main(quest, me)
                                                                                                     end
                                                                                                     quest:FixMovieSequenceCamera(false)
                                                                                                     quest:PauseAllNonScriptedEntities(false)
-                                                                                                    resources:DestroyActorMap(scratchValue37)
+                                                                                                    resources:DestroyActorMap(scratchValue38)
                                                                                                 else
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         -- LAB_00d54f9c_c29: (native jump target)
@@ -2393,17 +2357,16 @@ function Main(quest, me)
                                                                                                         while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c29 end
                                                                                                         end
-                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                        scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                         while not scratchValue13 do
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c29 end
-                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue40, me, 4)
+                                                                                                            scratchValue13 = resources:TryAcquire(scratchValue41, me, 4)
                                                                                                         end
                                                                                                         resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         quest:PauseAllNonScriptedEntities(true)
-                                                                                                        quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                         scratchValue17 = 0.0
-                                                                                                        if fret_00 <= scratchValue17 then
+                                                                                                        if quest:GetHealth(resources:ScriptThing(scratchValue41)) <= scratchValue17 then
                                                                                                             -- LAB_00d551d4_c29: (native jump target)
                                                                                                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                             scratchValue20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -2423,9 +2386,8 @@ function Main(quest, me)
                                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                 else
                                                                                                                     if scratchValue13 then goto LAB_00d55cba_c29 end
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if scratchValue17 < fret_01 then
+                                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                         scratchValue31 = 0
                                                                                                                         scratchValue32 = 0
                                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -2468,9 +2430,8 @@ function Main(quest, me)
                                                                                                     me:ClearCommands()
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") ~= 0 then
                                                                                                         if not quest:IsActiveThreadTerminating() then
-                                                                                                            quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                             scratchValue17 = 0.0
-                                                                                                            if scratchValue17 < fret_03 then
+                                                                                                            if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                 scratchValue31 = 0
                                                                                                                 scratchValue32 = 0
                                                                                                                 me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -2499,9 +2460,8 @@ function Main(quest, me)
                                                                                                                     __region_LAB_00d555f3_c29(); goto LAB_00d55c2b_c29
                                                                                                                 end
                                                                                                                 if not scratchValue13 then
-                                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                                     scratchValue17 = 0.0
-                                                                                                                    if scratchValue17 < fret_04 then
+                                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                                         scratchValue31 = 0
                                                                                                                         scratchValue32 = 0
                                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -2523,9 +2483,8 @@ function Main(quest, me)
                                                                                                         goto LAB_00d55c2b_c29
                                                                                                     end
                                                                                                     if quest:IsActiveThreadTerminating() then __region_LAB_00d555f3_c29(); goto LAB_00d55c2b_c29 end
-                                                                                                    quest:GetHealth(resources:ScriptThing(scratchValue40))
                                                                                                     scratchValue17 = 0.0
-                                                                                                    if scratchValue17 < fret_02 then
+                                                                                                    if scratchValue17 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                                                                                                         scratchValue31 = 0
                                                                                                         scratchValue32 = 0
                                                                                                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD", 0, false, true, CONCAT13(scratchValue32,CONCAT12(scratchValue31,CONCAT11( 0,0))))
@@ -2539,39 +2498,37 @@ function Main(quest, me)
                                                                                                     ::LAB_00d5595a_c29::
                                                                                                     quest:PauseAllNonScriptedEntities(scratchValue32 ~= 0)
                                                                                                 end
-                                                                                                if scratchValue16 ~= 0 then
-                                                                                                    if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(timerId4) < 1) and not me:IsPerformingScriptTask() then
+                                                                                                    if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
+                                                                                                    scratchValue21 = quest:AddNewConversation(me, false, false)
+                                                                                                    quest:AddPersonToConversation(scratchValue21, quest:GetHero())
+                                                                                                    quest:SetTimer(timerId4, 10)
+                                                                                                    if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
-                                                                                                        scratchValue21 = quest:AddNewConversation(me, false, false)
-                                                                                                        quest:AddPersonToConversation(scratchValue21, quest:GetHero())
-                                                                                                        quest:SetTimer(timerId4, 10)
-                                                                                                        if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
-                                                                                                            if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
-                                                                                                            if xStack_154 == 1 then
-                                                                                                                quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
-                                                                                                                -- LAB_00d55b4e_c29: (native jump target)
-                                                                                                            elseif xStack_154 == 2 then
-                                                                                                                quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                                quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
-                                                                                                                -- TODO(native): goto LAB_00d55b4e_c29
-                                                                                                            end
-                                                                                                            -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
-                                                                                                        else
-                                                                                                            if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
+                                                                                                        if xStack_154 == 1 then
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
+                                                                                                            -- LAB_00d55b4e_c29: (native jump target)
+                                                                                                        elseif xStack_154 == 2 then
+                                                                                                            quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                            quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, quest:GetHero(), false)
+                                                                                                            -- TODO(native): goto LAB_00d55b4e_c29
                                                                                                         end
+                                                                                                        -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
+                                                                                                    else
+                                                                                                        if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
+                                                                                                        quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
+                                                                                                        quest:AddLineToConversation(scratchValue21, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, quest:GetHero(), false)
                                                                                                     end
                                                                                                 end
                                                                                                 if scratchValue15 == 0 then
                                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
                                                                                                     if not me:IsPerformingScriptTask() then
-                                                                                                        scratchValue15 = '\x01'
+                                                                                                        scratchValue15 = 1
                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                                                                                                     end
                                                                                                 end
-                                                                                            until scratchValue16 == 0
+                                                                                            until false
                                                                                             if not quest:IsActiveThreadTerminating() then
                                                                                                 quest:SetStateBool("HeroSleeps", true)
                                                                                                 quest:FadeScreenOut(0.5, 0.5)
@@ -2632,7 +2589,7 @@ function Main(quest, me)
     ::LAB_00d55c46::
     quest:DeregisterTimer(timerId4)
     ::LAB_00d55c4f::
-    resources:DestroyMovie(scratchValue40)
+    resources:DestroyMovie(scratchValue41)
 end
 
 -- TheRealGuildmaster.Init (retail 0x00d51ed0)

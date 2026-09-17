@@ -413,10 +413,10 @@ function RunTutorials(quest)
     if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
     theRealGuildmaster4 = quest:GetThingWithScriptName("TheRealGuildmaster")
     scratchValue21 = resources:NewResource()
-    scratchValue = resources:TryAcquire(scratchValue21, scratchValue22[0 + 1][0 + 1], 4)
+    scratchValue = resources:TryAcquire(scratchValue21, scratchValue22[0 + 1], 4)
     while not scratchValue do
         if not quest:NewScriptFrame() then goto LAB_00d48800 end
-        scratchValue = resources:TryAcquire(scratchValue21, scratchValue22[0 + 1][0 + 1], 4)
+        scratchValue = resources:TryAcquire(scratchValue21, scratchValue22[0 + 1], 4)
     end
     if not quest:IsActiveThreadTerminating() then
         scratchValue20 = resources:NewResource()
@@ -607,8 +607,8 @@ function CheckFriendlyAttacks(quest)
     local conversationId, scratchValue10, scratchValue11, scratchValue12, heroWarnings, sequence12
     local sequence13, sequence14, sequence22, sequence23, sequence24, sequence32, sequence33
     local sequence34, hero, hero2, hero3, scratchValue19, scratchValue20, scratchValue21
-    local scratchValue22, r1_1, scratchValue23, scratchValue24, scratchValue25, scratchValue27
-    local conversationId2, scratchValue28, scratchValue29
+    local scratchValue22, r1_1, scratchValue23, scratchValue24, scratchValue25, scratchValue26
+    local scratchValue27, conversationId2, scratchValue28, scratchValue29
     r1_1 = quest:GetThingWithScriptName(nil --[[missing]])
     scratchValue10 = r1_1 - 0 >> 31
     scratchValue23 = 0
@@ -826,7 +826,7 @@ function CheckFriendlyAttacks(quest)
                             if not quest:NewScriptFrame() then goto LAB_00d45da9 end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            resources:NewActorMap()
+                            scratchValue26 = resources:NewActorMap()
                             -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
                             resources:SetActor(amStack_1c, "MAZE", scratchValue27)
                             scratchValue = resources:StartMovie("")
@@ -840,7 +840,7 @@ function CheckFriendlyAttacks(quest)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(scratchValue)
-                            resources:DestroyActorMap(amStack_1c)
+                            resources:DestroyActorMap(scratchValue26)
                             resources:ReleaseResource(amStack_1c)
                             resources:ReleaseResource(conversationId2)
                             goto LAB_00d45c9d
@@ -900,13 +900,15 @@ end
 
 -- Q_GuildTraining.KeepTabsOnWhisper (retail 0x00d3cbd0)
 function KeepTabsOnWhisper(quest)
-    local scratchValue, scratchValue2, predicateResult, meleeApprentice
+    local scratchValue, scratchValue2, predicateResult, meleeApprentice, scratchValue6
     if quest:IsActiveThreadTerminating() then return end
     scratchValue = 0
     repeat
         scratchValue2 = scratchValue | 1
+        scratchValue6 = scratchValue2
         if quest:IsLevelLoaded("GuildWoods") then
             scratchValue2 = scratchValue | 3
+            scratchValue6 = scratchValue2
             predicateResult = true
             if not quest:IsQuestActive("Q_GuildTrainingWoodsWill") then
                 predicateResult = false
@@ -918,19 +920,21 @@ function KeepTabsOnWhisper(quest)
         ::FLOW_after_lab_00d3cc48::
         if scratchValue2 & 2 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffffd
+            scratchValue6 = scratchValue2
         end
         if scratchValue2 & 1 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffffe
+            scratchValue6 = scratchValue2
         end
         scratchValue = scratchValue2
         if predicateResult then
             while not quest:IsLevelLoaded("HeroGuildComplex") do
                 if not quest:NewScriptFrame() then return end
             end
-            scratchValue = scratchValue2
+            scratchValue = scratchValue6
             if quest:IsQuestActive("Q_GuildTrainingWoodsWill") then
                 meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
-                scratchValue = scratchValue2
+                scratchValue = scratchValue6
                 if meleeApprentice ~= nil and meleeApprentice:IsAlive() then
                     quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
                     while quest:IsQuestActive("Q_GuildTrainingWoodsWill") do

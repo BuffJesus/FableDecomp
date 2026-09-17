@@ -293,3 +293,13 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
   after prune_dispatch_loads: `*x`, `&x`, `(**(`, C casts -> `-- TODO(native)` + `v = nil` / `if false then`). Readable
   style fixes from the guild run: literals never become prefix expressions (`nil:IsAlive()`, `1._0_4_`), `1 ~= 0` folds
   only as a whole operand (not inside `x & 1 ~= 0`). Guild readable_converter 37/37 compile, smoke 29 problems (draft 30).
+- Guild smoke 35 -> 13 (commits c7d6ad8 .. c7094cc): bind_st0_results skips temp ctor/dtor/`operator_delete`/`(*(code *)`
+  lines when looking for the unassigned float call; `'' - (cond)` -> `not (cond)` (Oakvale baseline TeddyGirl:291 fixed
+  — it was a Lua runtime error), `''` -> 1; `CCharString__AssignFromWide(&local, 0xADDR)` -> a constructed string
+  (wide_string_at returns "" for L""); `_DAT_x` next to a float compare -> the float, `(uint)DAT_x` bool args from a 0/1
+  fill; GFCharStringToInt -> tonumber; `LOCALLIST_Count(vec[0 + 1])`; by-value `vec = GSI->GetAllThings...(&name)`,
+  `(CScriptThing_bv *)((int)vec + off)` elements, `LOCALLIST_At(LOCALLIST_At(V, 0), k)` collapse (the element() guard read
+  the text before the `(`), end-pointer slot 4 bytes above the begin slot (`pu_stk_20` for `xStack_24`), `puVar = pu_stk_N`
+  bookkeeping; drifted destroy operands (DestroyMovie/ReleaseResource/DestroyActorMap/DestroyStringMap/DeregisterTimer)
+  take the function's single created object; unit mode: `xStack_88 = iVar4` stack copies of a register are stores;
+  four byte stores of the GSI alias into a by-value thing are construction noise.

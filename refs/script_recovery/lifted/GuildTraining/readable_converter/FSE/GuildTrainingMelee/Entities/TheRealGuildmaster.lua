@@ -13,28 +13,30 @@ end
 -- TheRealGuildmaster.Main (retail 0x00d58490)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local predicateResult3, predicateResult54, fret_03, fret_04, fret_06, fret_07, scratchValue7
-    local conversationId, conversationId2, conversationId3, conversationId4, conversationId5
-    local scratchValue8, tutorialState, scratchValue9, questionAnswer, scratchValue10, switch2
-    local getActiveQuestName, scratchValue12, meleeOpponent2, scratchValue14, scratchValue18
-    local scratchValue19, scratchValue20, scratchValue21, scratchValue22, scratchValue23
-    local scratchValue24, scratchValue25, timerId, scratchValue26, scratchValue27, scratchValue28
-    local scratchValue29, scratchValue30, scratchValue31, scratchValue32, scratchValue33
-    local scratchValue34, scratchValue35, scratchValue36, scratchValue37, scratchValue38
-    scratchValue25 = resources:NewResource()
-    while not resources:TryAcquire(scratchValue25, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue25); return end
+    local predicateResult3, fret_03, fret_04, fret_06, fret_07, scratchValue7, conversationId
+    local conversationId2, conversationId3, conversationId4, conversationId5, scratchValue8
+    local tutorialState, scratchValue9, questionAnswer, scratchValue10, switch2, getActiveQuestName
+    local scratchValue13, meleeOpponent, scratchValue15, scratchValue19, scratchValue20
+    local scratchValue21, scratchValue22, scratchValue23, scratchValue24, scratchValue25
+    local scratchValue26, scratchValue27, timerId, scratchValue28, scratchValue29, scratchValue30
+    local scratchValue31, scratchValue32, scratchValue33, scratchValue34, scratchValue35
+    local scratchValue36, scratchValue37, scratchValue38, scratchValue39, scratchValue40
+    local scratchValue41
+    scratchValue27 = resources:NewResource()
+    while not resources:TryAcquire(scratchValue27, me, 4) do
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue27); return end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d5a8e2 end
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAlwaysBlockAttacksFromThing(me, quest:GetHero(), true)
     quest:SetIsPushableByHero(me, false)
-    meleeOpponent2 = quest:GetThingWithScriptName("MeleeOpponent")
+    meleeOpponent = quest:GetThingWithScriptName("MeleeOpponent")
     quest:SetThingHasInformation(me, false, false, false)
     scratchValue7 = quest:RegisterTimer()
+    scratchValue28 = scratchValue7
     quest:SetTimer(scratchValue7, 0)
     tutorialState = quest:GetStateInt("TutorialState")
-    scratchValue38 = 0
+    scratchValue41 = 0
     while tutorialState == 1 do
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(scratchValue7); goto FLOW_after_lab_00d5a8cb end
         if not me:IsTalkedToByHero() then
@@ -49,50 +51,49 @@ function Main(quest, me)
                 predicateResult3 = true
             end
             ::FLOW_after_lab_00d586db::
-            if scratchValue24 & 1 ~= 0 then
+            if scratchValue26 & 1 ~= 0 then
                 -- TODO(native): xStack_23c = (int *)((uint)xStack_23c & 0xfffffffe);
             end
             if predicateResult3 then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue7); goto FLOW_after_lab_00d5a8cb end
-                scratchValue21 = resources:StartMovie("")
+                scratchValue22 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                quest:GetHealth(resources:ScriptThing(scratchValue25))
-                if 0.0 < fret_0 then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue27)) then
                     scratchValue7 = 0
                     me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_MELEE_HIT_WHISPER", 0, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(scratchValue21)
+                            resources:DestroyMovie(scratchValue22)
                             goto LAB_00d5933c
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(scratchValue21)
+                        resources:DestroyMovie(scratchValue22)
                         quest:DeregisterTimer(0)
                         goto FLOW_after_lab_00d5a8cb
                     end
                 end
                 quest:SetStateInt("TutorialState", 2)
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(scratchValue21)
+                resources:DestroyMovie(scratchValue22)
             end
         else
             quest:SetStateInt("TutorialState", 2)
         end
-        if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(scratchValue7) < 1) and not me:IsPerformingScriptTask() then
+        if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(scratchValue28) < 1) and not me:IsPerformingScriptTask() then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue7); goto FLOW_after_lab_00d5a8cb end
             scratchValue7 = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(scratchValue7, quest:GetHero())
-            quest:SetTimer(xStack_264, 10)
-            if scratchValue38 == nil then
+            quest:SetTimer(scratchValue28, 10)
+            if scratchValue41 == nil then
                 quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                 quest:AddLineToConversation(scratchValue7, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_FIRST", me, quest:GetHero(), false)
-                scratchValue38 = 1
-            elseif scratchValue38 == 1 then
+                scratchValue41 = 1
+            elseif scratchValue41 == 1 then
                 quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
                 quest:AddLineToConversation(scratchValue7, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_SECOND", me, quest:GetHero(), false)
             end
@@ -104,59 +105,59 @@ function Main(quest, me)
     else
         quest:SetMasterGameState("HeroTakingGuildTest", true)
         quest:SetStateBool("WhisperStopWalking", true)
-        quest:SetPlayerCreatureOnlyTarget(meleeOpponent2)
-        while quest:GetStateBool("MeleeRepeating") == '\x01' do
+        quest:SetPlayerCreatureOnlyTarget(meleeOpponent)
+        while quest:GetStateBool("MeleeRepeating") do
             if not quest:NewScriptFrame(me) then goto LAB_00d5933c end
             quest:SetStateInt("TutorialState", 2)
             quest:SetStateBool("MeleeRepeatKnown", false)
-            scratchValue21 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue21, quest:GetHero(), 4) do
+            scratchValue23 = resources:NewResource()
+            while not resources:TryAcquire(scratchValue23, quest:GetHero(), 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    resources:ReleaseResource(scratchValue21)
-                    quest:DeregisterTimer(xStack_264)
+                    resources:ReleaseResource(scratchValue23)
+                    quest:DeregisterTimer(scratchValue28)
                     goto LAB_00d5a8d9
                 end
             end
             if quest:IsActiveThreadTerminating() then
-                resources:ReleaseResource(scratchValue21)
-                quest:DeregisterTimer(xStack_264)
+                resources:ReleaseResource(scratchValue23)
+                quest:DeregisterTimer(scratchValue28)
                 goto LAB_00d5a8d9
             end
-            scratchValue32 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue32, meleeOpponent2, 4) do
+            scratchValue35 = resources:NewResource()
+            while not resources:TryAcquire(scratchValue35, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    resources:ReleaseResource(scratchValue32)
-                    resources:ReleaseResource(scratchValue21)
-                    quest:DeregisterTimer(xStack_264)
+                    resources:ReleaseResource(scratchValue35)
+                    resources:ReleaseResource(scratchValue23)
+                    quest:DeregisterTimer(scratchValue28)
                     goto LAB_00d5a8d9
                 end
             end
             if quest:IsActiveThreadTerminating() then
-                resources:ReleaseResource(scratchValue32)
-                resources:ReleaseResource(scratchValue21)
-                quest:DeregisterTimer(xStack_264)
+                resources:ReleaseResource(scratchValue35)
+                resources:ReleaseResource(scratchValue23)
+                quest:DeregisterTimer(scratchValue28)
                 goto LAB_00d5a8d9
             end
-            scratchValue29 = resources:NewActorMap()
-            resources:SetActor(scratchValue29, "HERO", scratchValue21)
-            resources:SetActor(scratchValue29, "TEACHER", scratchValue25)
-            resources:SetActor(scratchValue29, "WHISPER", scratchValue32)
-            scratchValue27 = resources:StartMovie("")
+            scratchValue32 = resources:NewActorMap()
+            resources:SetActor(scratchValue32, "HERO", scratchValue23)
+            resources:SetActor(scratchValue32, "TEACHER", scratchValue27)
+            resources:SetActor(scratchValue32, "WHISPER", scratchValue35)
+            scratchValue30 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_MELEE_ATTACK", scratchValue29, false, true)
+            resources:RunMacro("CS_GUILD_MELEE_ATTACK", scratchValue32, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(scratchValue27)
-            resources:DestroyActorMap(scratchValue29)
-            resources:ReleaseResource(scratchValue32)
-            resources:ReleaseResource(scratchValue21)
+            resources:DestroyMovie(scratchValue30)
+            resources:DestroyActorMap(scratchValue32)
+            resources:ReleaseResource(scratchValue35)
+            resources:ReleaseResource(scratchValue23)
             quest:SetStateInt("GenericTutorialCounter", 0)
             quest:DisplayQuestInfo(true)
-            scratchValue24 = quest:AddQuestInfoCounter("HUD_WHISPER_ICON", 7, 1.0)
+            scratchValue26 = quest:AddQuestInfoCounter("HUD_WHISPER_ICON", 7, 1.0)
             quest:SetStateInt("TutorialState", 3)
             timerId = quest:RegisterTimer()
             quest:SetTimer(timerId, 15)
@@ -169,7 +170,7 @@ function Main(quest, me)
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_MAZE_HELP_ATTACK", me, quest:GetHero(), false)
                     quest:SetTimer(timerId, 15)
                 end
-                quest:UpdateQuestInfoCounter(scratchValue24, quest:GetStateInt("GenericTutorialCounter"), -1)
+                quest:UpdateQuestInfoCounter(scratchValue26, quest:GetStateInt("GenericTutorialCounter"), -1)
                 if quest:GetHealth(quest:GetHero()) < quest:ReadGlobalGameDataFloat(3800) then
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
                     conversationId2 = quest:AddNewConversation(me, false, false)
@@ -181,45 +182,45 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
             quest:ClearAllRumbles()
             quest:DisplayQuestInfo(false)
-            quest:RemoveQuestInfoElement(scratchValue24)
-            scratchValue36 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue36, quest:GetHero(), 4) do
+            quest:RemoveQuestInfoElement(scratchValue26)
+            scratchValue39 = resources:NewResource()
+            while not resources:TryAcquire(scratchValue39, quest:GetHero(), 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a922
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a922: (native jump target)
-                resources:DestroyMovie(scratchValue36)
+                resources:DestroyMovie(scratchValue39)
                 -- LAB_00d5a9b5: (native jump target)
                 quest:DeregisterTimer(timerId)
                 quest:DeregisterTimer(timerId)
                 goto FLOW_after_lab_00d5a8cb
             end
-            scratchValue31 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue31, meleeOpponent2, 4) do
+            scratchValue34 = resources:NewResource()
+            while not resources:TryAcquire(scratchValue34, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a916
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a916: (native jump target)
-                resources:DestroyMovie(scratchValue31)
+                resources:DestroyMovie(scratchValue34)
                 -- TODO(native): goto LAB_00d5a922
             end
-            scratchValue30 = resources:NewActorMap()
-            resources:SetActor(scratchValue30, "HERO", scratchValue36)
-            resources:SetActor(scratchValue30, "TEACHER", scratchValue25)
-            resources:SetActor(scratchValue30, "WHISPER", scratchValue31)
-            scratchValue26 = resources:StartMovie("")
+            scratchValue33 = resources:NewActorMap()
+            resources:SetActor(scratchValue33, "HERO", scratchValue39)
+            resources:SetActor(scratchValue33, "TEACHER", scratchValue27)
+            resources:SetActor(scratchValue33, "WHISPER", scratchValue34)
+            scratchValue29 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_MELEE_BLOCK", scratchValue30, false, true)
+            resources:RunMacro("CS_GUILD_MELEE_BLOCK", scratchValue33, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(scratchValue26)
-            resources:DestroyActorMap(scratchValue30)
-            resources:ReleaseResource(scratchValue31)
-            resources:DestroyMovie(scratchValue36)
+            resources:ReleaseResource(scratchValue29)
+            resources:DestroyActorMap(scratchValue33)
+            resources:ReleaseResource(scratchValue34)
+            resources:DestroyMovie(scratchValue39)
             quest:SetStateInt("GenericTutorialCounter", 0)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
@@ -244,12 +245,12 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
             ::LAB_00d5941c::
             quest:SetStateInt("TutorialState", 4)
-            scratchValue24 = quest:AddQuestInfoCounter("HUD_WHISPER_ICON", 5, 1.0)
+            scratchValue26 = quest:AddQuestInfoCounter("HUD_WHISPER_ICON", 5, 1.0)
             quest:DisplayQuestInfo(true)
             while quest:GetStateInt("GenericTutorialCounter") < 5 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
-                quest:UpdateQuestInfoCounter(scratchValue24, quest:GetStateInt("GenericTutorialCounter"), -1)
+                quest:UpdateQuestInfoCounter(scratchValue26, quest:GetStateInt("GenericTutorialCounter"), -1)
                 if quest:GetHealth(quest:GetHero()) < quest:ReadGlobalGameDataFloat(3800) then
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
                     conversationId3 = quest:AddNewConversation(me, false, false)
@@ -261,24 +262,24 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
             quest:ClearAllRumbles()
             quest:SetStateInt("TutorialState", 5)
-            scratchValue14 = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", quest:GetThingWithScriptName("SkillApprenticeMarker"):GetPos(), "MeleeThunder")
-            quest:EntitySetAppearanceMorphSeed(scratchValue14, 1)
-            scratchValue22 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue22, scratchValue14, 4) do
+            scratchValue15 = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", quest:GetThingWithScriptName("SkillApprenticeMarker"):GetPos(), "MeleeThunder")
+            quest:EntitySetAppearanceMorphSeed(scratchValue15, 1)
+            scratchValue24 = resources:NewResource()
+            while not resources:TryAcquire(scratchValue24, scratchValue15, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a9a7: (native jump target)
-                resources:ReleaseResource(scratchValue22)
+                resources:ReleaseResource(scratchValue24)
                 -- TODO(native): goto LAB_00d5a9b5
             end
-            scratchValue37 = resources:NewResource()
-            scratchValue12 = quest:GetHero()
-            while not resources:TryAcquire(scratchValue37, scratchValue12, 4) do
+            scratchValue40 = resources:NewResource()
+            scratchValue13 = quest:GetHero()
+            while not resources:TryAcquire(scratchValue40, scratchValue13, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a93f
-                scratchValue12 = quest:GetHero()
+                scratchValue13 = quest:GetHero()
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a93f: (native jump target)
@@ -287,39 +288,39 @@ function Main(quest, me)
                 resources:ReleaseResource(this_01)
                 -- TODO(native): goto LAB_00d5a9a7
             end
-            scratchValue33 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue33, meleeOpponent2, 4) do
+            scratchValue36 = resources:NewResource()
+            while not resources:TryAcquire(scratchValue36, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a933
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a933: (native jump target)
-                resources:ReleaseResource(scratchValue33)
+                resources:ReleaseResource(scratchValue36)
                 -- TODO(native): goto LAB_00d5a93f
             end
-            scratchValue34 = resources:NewActorMap()
-            resources:SetActor(scratchValue34, "HERO", scratchValue37)
-            resources:SetActor(scratchValue34, "TEACHER", scratchValue25)
-            resources:SetActor(scratchValue34, "THUNDER", scratchValue22)
-            resources:SetActor(scratchValue34, "WHISPER", scratchValue33)
-            scratchValue28 = resources:StartMovie("")
+            scratchValue37 = resources:NewActorMap()
+            resources:SetActor(scratchValue37, "HERO", scratchValue40)
+            resources:SetActor(scratchValue37, "TEACHER", scratchValue27)
+            resources:SetActor(scratchValue37, "THUNDER", scratchValue24)
+            resources:SetActor(scratchValue37, "WHISPER", scratchValue36)
+            scratchValue31 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_MELEE_BATTLE", scratchValue34, false, true)
+            resources:RunMacro("CS_GUILD_MELEE_BATTLE", scratchValue37, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:ChangeHeroHealthBy(1000.0, true, false)
-            quest:ModifyThingHealth(scratchValue12, 1000.0, false)
+            quest:ModifyThingHealth(scratchValue13, 1000.0, false)
             quest:SetStateInt("TutorialState", 6)
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(scratchValue28)
-            resources:DestroyActorMap(scratchValue34)
-            resources:ReleaseResource(scratchValue33)
-            resources:ReleaseResource(scratchValue37)
+            resources:ReleaseResource(scratchValue31)
+            resources:DestroyActorMap(scratchValue37)
+            resources:ReleaseResource(scratchValue36)
+            resources:ReleaseResource(scratchValue40)
             state:SetBool("HeroStanding", true)
             state:SetBool("WhisperStanding", true)
             quest:DisplayQuestInfo(false)
-            quest:RemoveQuestInfoElement(scratchValue24)
+            quest:RemoveQuestInfoElement(scratchValue26)
             quest:DisplayQuestInfo(true)
             quest:AddQuestInfoBarHealth(quest:GetThingWithScriptName("MeleeOpponent"), getActiveQuestName, "HUD_WHISPER_ICON", 1.0)
             fret_03 = quest:GetHealth(nil --[[missing]])
@@ -328,7 +329,7 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
                 fret_04 = quest:GetHealth(quest:GetHero())
                 if quest:ReadGlobalGameDataFloat(3800) <= fret_04 then
-                    if fret_05 < quest:ReadGlobalGameDataFloat(3800) then
+                    if quest:GetHealth(quest:GetThingWithScriptName("MeleeOpponent")) < quest:ReadGlobalGameDataFloat(3800) then
                         if not quest:IsActiveThreadTerminating() then
                             state:SetBool("WhisperStanding", false)
                             conversationId4 = quest:AddNewConversation(me, false, false)
@@ -365,75 +366,75 @@ function Main(quest, me)
             quest:ResetPlayerCreatureOnlyTarget()
             quest:SetStateInt("TutorialState", 7)
             quest:DisplayQuestInfo(false)
-            scratchValue19 = resources:NewResource()
-            scratchValue12 = quest:GetHero()
-            while not resources:TryAcquire(scratchValue19, scratchValue12, 4) do
+            scratchValue20 = resources:NewResource()
+            scratchValue13 = quest:GetHero()
+            while not resources:TryAcquire(scratchValue20, scratchValue13, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a997
-                scratchValue12 = quest:GetHero()
+                scratchValue13 = quest:GetHero()
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a997: (native jump target)
                 -- TODO(native): this_01 = (CScriptGameResourceObjectMovieBase *)xStack_1d0;
                 -- TODO(native): goto LAB_00d5a99e
             end
-            scratchValue18 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue18, meleeOpponent2, 4) do
+            scratchValue19 = resources:NewResource()
+            while not resources:TryAcquire(scratchValue19, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a98b
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a98b: (native jump target)
-                resources:ReleaseResource(scratchValue18)
+                resources:ReleaseResource(scratchValue19)
                 -- TODO(native): goto LAB_00d5a997
             end
-            quest:RemoveQuestInfoElement(scratchValue24)
-            scratchValue23 = resources:NewActorMap()
-            resources:SetActor(scratchValue23, "HERO", scratchValue19)
-            resources:SetActor(scratchValue23, "TEACHER", scratchValue25)
-            resources:SetActor(scratchValue23, "THUNDER", scratchValue22)
-            resources:SetActor(scratchValue23, "WHISPER", scratchValue18)
-            scratchValue20 = resources:NewStringMap()
+            quest:RemoveQuestInfoElement(scratchValue26)
+            scratchValue25 = resources:NewActorMap()
+            resources:SetActor(scratchValue25, "HERO", scratchValue20)
+            resources:SetActor(scratchValue25, "TEACHER", scratchValue27)
+            resources:SetActor(scratchValue25, "THUNDER", scratchValue24)
+            resources:SetActor(scratchValue25, "WHISPER", scratchValue19)
+            scratchValue21 = resources:NewStringMap()
             switch2 = scratchValue8
             repeat
                 if switch2 == 0 then
-                    resources:SetString(scratchValue20, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_APLUS")
+                    resources:SetString(scratchValue21, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_APLUS")
                     break
                 elseif switch2 == 1 then
-                    resources:SetString(scratchValue20, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_A")
+                    resources:SetString(scratchValue21, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_A")
                     break
                 elseif switch2 == 2 then
-                    resources:SetString(scratchValue20, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_B")
+                    resources:SetString(scratchValue21, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_B")
                     break
                 elseif switch2 == 3 then
-                    resources:SetString(scratchValue20, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_C")
+                    resources:SetString(scratchValue21, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_C")
                     break
                 elseif switch2 == 4 then
-                    resources:SetString(scratchValue20, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_D")
+                    resources:SetString(scratchValue21, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_D")
                     break
                 elseif switch2 == 5 then
-                    resources:SetString(scratchValue20, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_E")
+                    resources:SetString(scratchValue21, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_E")
                     break
                 elseif switch2 == 6 then
-                    resources:SetString(scratchValue20, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_F")
+                    resources:SetString(scratchValue21, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_F")
                     break
                 else
                     goto FLOW_native_label_1
                 end
             until true
             ::FLOW_native_label_1::
-            scratchValue35 = resources:StartMovie("")
+            scratchValue38 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             if not state:GetBool("WhisperStanding") then
-                if not quest:IsActiveThreadTerminating() then resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_WON", scratchValue23, scratchValue20, false, true); goto LAB_00d5a28a end
+                if not quest:IsActiveThreadTerminating() then resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_WON", scratchValue25, scratchValue21, false, true); goto LAB_00d5a28a end
                 -- LAB_00d5a948: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
                 -- LAB_00d5a96a: (native jump target)
-                resources:ReleaseResource(scratchValue35)
-                resources:DestroyStringMap(scratchValue20)
-                resources:DestroyActorMap(scratchValue23)
+                resources:ReleaseResource(scratchValue38)
+                resources:DestroyStringMap(scratchValue21)
+                resources:DestroyActorMap(scratchValue25)
                 -- TODO(native): goto LAB_00d5a98b
             end
             if quest:IsActiveThreadTerminating() then
@@ -442,10 +443,10 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 -- TODO(native): goto LAB_00d5a96a
             end
-            resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_LOST", scratchValue23, scratchValue20, false, true)
+            resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_LOST", scratchValue25, scratchValue21, false, true)
             ::LAB_00d5a28a::
             quest:ChangeHeroHealthBy(1000.0, true, false)
-            quest:EntitySetInFaction(scratchValue12, "FACTION_HERO")
+            quest:EntitySetInFaction(scratchValue13, "FACTION_HERO")
             me:SetFriendsWithEverythingFlag(1)
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeThunder"), false, true)
             quest:Pause(2.0)
@@ -459,12 +460,12 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a948
             if questionAnswer == 1 then
                 if false then return end  -- TODO(native): goto LAB_00d5a956
-                resources:RunMacro("CS_GUILD_MELEE_CONTINUE", scratchValue23, false, true)
+                resources:RunMacro("CS_GUILD_MELEE_CONTINUE", scratchValue25, false, true)
                 quest:SetStateBool("MeleeRepeating", false)
                 quest:SetStateBool("MeleeRepeatKnown", true)
             else
                 if false then return end  -- TODO(native): goto LAB_00d5a948
-                resources:RunMacro("CS_GUILD_MELEE_REPEAT", scratchValue23, false, false)
+                resources:RunMacro("CS_GUILD_MELEE_REPEAT", scratchValue25, false, false)
                 quest:SetStateBool("MeleeRepeating", true)
                 quest:SetStateBool("MeleeRepeatKnown", true)
                 if quest:IsObjectInThingsPossession("OBJECT_IRON_LONGSWORD", quest:GetHero()) then
@@ -478,39 +479,38 @@ function Main(quest, me)
             end
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(scratchValue35)
-            resources:DestroyStringMap(scratchValue20)
-            resources:DestroyActorMap(scratchValue23)
-            resources:DestroyMovie(scratchValue18)
-            resources:ReleaseResource(scratchValue19)
-            while quest:GetStateBool("MeleeOpponentReset") ~= '\x01' do
+            resources:ReleaseResource(scratchValue38)
+            resources:DestroyStringMap(scratchValue21)
+            resources:DestroyActorMap(scratchValue25)
+            resources:DestroyMovie(scratchValue19)
+            resources:ReleaseResource(scratchValue20)
+            while not quest:GetStateBool("MeleeOpponentReset") do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
-            resources:ReleaseResource(scratchValue22)
-            quest:DeregisterTimer(xStack_264)
+            resources:ReleaseResource(scratchValue24)
+            quest:DeregisterTimer(scratchValue28)
+            scratchValue7 = scratchValue28
         end
-        predicateResult54 = quest:IsActiveThreadTerminating()
-        if not predicateResult54 then
+        if not quest:IsActiveThreadTerminating() then
             quest:SetMasterGameState("HeroTakingGuildTest", false)
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeOpponent"), false, true)
             me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 0x40400000, 0, false, true)
             quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("MeleeApprenticeMarker"):GetPos(), "MeleeApprentice")
-            predicateResult54 = false
             quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("CombatApprenticeMarker"):GetPos(), "CombatApprentice")
             quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_04", "", "")
         end
-        quest:DeregisterTimer(predicateResult54)
+        quest:DeregisterTimer(scratchValue7)
     end
     ::FLOW_after_lab_00d5a8cb::
     ::LAB_00d5a8d9::
     ::LAB_00d5a8e2::
-    resources:ReleaseResource(scratchValue25)
+    resources:ReleaseResource(scratchValue27)
     do return end
     ::LAB_00d5933c::
-    quest:DeregisterTimer(xStack_264)
+    quest:DeregisterTimer(scratchValue28)
     goto LAB_00d5a8d9
 end
 

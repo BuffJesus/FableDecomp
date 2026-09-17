@@ -65,8 +65,7 @@ function Main(quest, me)
                 scratchValue7 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                quest:GetHealth(resources:ScriptThing(scratchValue8))
-                if 0.0 < fret_0 then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue8)) then
                     me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", 0, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)

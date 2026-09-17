@@ -194,8 +194,7 @@ function Main(quest, me)
             quest:Pause(0.5)
             quest:EntitySetAsDrawable(quest:GetHero(), false)
             quest:CameraUseCameraPoint(quest:GetThingWithScriptName("CAM_RC_MAZE"), me, -1.0, 0, -1)
-            quest:GetHealth(resources:ScriptThing(scratchValue43))
-            if 0.0 < fret_0 then
+            if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue43)) then
                 me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SKILL_FIRST", 0, false, true, false)
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
@@ -360,8 +359,7 @@ function Main(quest, me)
                     quest:Pause(0.5)
                     quest:EntitySetAsDrawable(quest:GetHero(), false)
                     quest:CameraUseCameraPoint(quest:GetThingWithScriptName("CAM_RC_MAZE"), me, -1.0, 0, -1)
-                    quest:GetHealth(resources:ScriptThing(scratchValue43))
-                    if 0.0 < fret_00 then
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue43)) then
                         me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_DEPARTURE_LIGHTNING_FIRST", 0, false, true, false)
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)

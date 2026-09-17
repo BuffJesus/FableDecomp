@@ -39,8 +39,7 @@ function WatchForTermination(quest)
         quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, true, false)
     else
         if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): CCharString__AssignFromWide(&xStack_8,0x122d70c);
-        quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, nil --[[missing]], pMessage)
+        quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
     end
     quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", "Q_GuildTrainingWoodsDeparture")
 end
