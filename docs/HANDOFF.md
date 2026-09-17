@@ -38,6 +38,10 @@ ByText/ByAction, hidden-result slots reused as operands, pseudo-call thing recei
 gaps recorded in FSE_UPSTREAM_REQUIREMENTS.md: `IsPlayerHoldingFireRangedWeaponButton`, `me:MsgIsHitBy(name)`.
 v5 rebuilt from the current Orchard readable (preflight ok).
 
+**Aeon share zip**: `python tools/script_recovery/build_aeon_share_zip.py` -> `work/AeonShare-<date>.zip` (Oakvale + Orchard +
+Guild readable/draft + reports, docs incl. split proposal / upstream requirements / journal, and the v5 playtest bundle).
+Built 2026-09-17 (3.1 MiB); hand it to Aeon with the collab reply.
+
 Gate script (scratch, recreate if missing): convert_new_oakvale.py --out <tmp> and `diff -r` against
 refs/script_recovery/lifted/NewOakValeIntro (ignore CONVERSION_REPORT.json and baseline-only extras) → must print identical.
 Heredoc-python patches mangle regex backslashes (GOTCHAS) — patch tools through Write/Edit or a script file.
