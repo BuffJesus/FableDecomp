@@ -242,8 +242,10 @@ def _text_order_sites(text, fn):
     labels = {c['currentName'] for c in fn.get('calls', []) if c.get('currentName')}
     for label in labels:
         spans = _call_spans(text, label)
-        if not spans and re.search(r'[?@]', label):
-            spans = _call_spans(text, re.sub(r'[^\w:]', '_', label))
+        if not spans and re.search(r'[^\w:]', label):
+            spans = _call_spans(text, re.sub(r'[^\w:]', '_', label))     # `operator_char_const*` prints as `operator_char_const_`
+        if not spans and '::' in label:
+            spans = _call_spans(text, label.replace('::', '__'))           # `CCharString__AppendCString`
         if not spans and re.match(r'\w+\.DLL::', label):
             spans = _call_spans(text, label.split('::', 1)[1]) + _call_spans(text, '::' + label.split('::', 1)[1])   # imports print bare (`operator_new(` / `::operator_new(`)
         if not spans and '::' in label:
@@ -538,6 +540,50 @@ class UnitConverter:
                         if n:
                             break
 
+    APPEND_CSTRING = 0x99F600    # CCharString::AppendCString(dest, src, const char*) — __fastcall + one stack operand
+
+    def name_append_literals(self, decompile, fn):
+        """`AppendCString(dest, src, piVar9)` with `piVar9 = &iStack_70;`: Ghidra lost the pushed literal behind the
+        earlier hidden-result push of `GetDataString`. The nearest `push <.rdata string>` before the call site is
+        the operand."""
+        sites = [int(c['site'], 16) for c in fn.get('calls', []) if int(c.get('target', '0'), 16) == self.APPEND_CSTRING]
+        if not sites:
+            return decompile
+        try:
+            from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+            from capstone.x86 import X86_OP_IMM
+        except ImportError:
+            return decompile
+        cs = Cs(CS_ARCH_X86, CS_MODE_32)
+        cs.detail = True
+        literals = []
+        for site in sites:
+            raw = self.rdata.bytes_at(site - 96, 96) or b''
+            pushed = None
+            for start in range(0, 16):      # find a decode alignment that reaches the call site exactly
+                insns = list(cs.disasm(raw[start:], site - 96 + start))
+                if insns and insns[-1].address + insns[-1].size == site:
+                    for ins in insns:
+                        if ins.mnemonic == 'push' and ins.operands and ins.operands[0].type == X86_OP_IMM:
+                            literal = self.rdata.string_at(ins.operands[0].imm)
+                            if literal is not None:
+                                pushed = literal
+                    break
+            literals.append(pushed)
+        by_site = dict(zip(sites, literals))
+        # exact pairing through the decompiler's token stream (text order != address order in restructured code)
+        entries = _text_order_sites(decompile, fn) or []
+        edits = []
+        for a, e, args, site, key, vtable in entries:
+            literal = by_site.get(int(site['site'], 16))
+            if vtable or literal is None or len(args) != 3:
+                continue
+            if re.fullmatch(r'(?:\(int \*\))?(?:&\w+|piVar\d+)', args[2].strip()):
+                edits.append((a, e, f'{args[0]},{args[1]},"{literal}"'))
+        for a, e, replacement in sorted(edits, reverse=True):
+            decompile = decompile[:a] + replacement + decompile[e:]
+        return decompile
+
     def native(self, address):
         fn = self.by_address.get(address.lower())
         return fn if fn and fn.get('decompile') else None
@@ -663,12 +709,12 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(unwrap_statements(fn['decompile']), fn), fn), fn.get('calls', []))
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(unwrap_statements(fn['decompile']), fn), fn), fn), fn.get('calls', []))
                 spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output, and mangled names
                 # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`
                 spec_l.call_labels.update({k.replace('::', '__'): v for k, v in list(spec_l.call_labels.items()) if '::' in k})
-                spec_l.call_labels.update({re.sub(r'[^\w:]', '_', k): v for k, v in list(spec_l.call_labels.items()) if re.search(r'[?@]', k)})
+                spec_l.call_labels.update({re.sub(r'[^\w:]', '_', k): v for k, v in list(spec_l.call_labels.items()) if re.search(r'[^\w:]', k)})   # also `operator_char_const*` -> `operator_char_const_`
                 spec_l.hidden_thing_returns = self.hidden_thing_returns
                 spec_l.code_range = self.code_range
                 if signature.get('bsimVoid'):

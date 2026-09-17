@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, puVar12, puVar3, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_24, xStack_24_2, xStack_24_3, xStack_30_2, xStack_30_3, xStack_34, xStack_38, xStack_c_3
+    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_24, xStack_24_2, xStack_24_3, xStack_30_2, xStack_30_3, xStack_34, xStack_38, xStack_c_3
     local alive = true
     iVar8 = 0
     quest:AddEntityBinding("TC_GuardSpawnPoint", "TraderConflictEvil/Entities/TC_GuardSpawnPoint")
@@ -260,15 +260,10 @@ function Main(quest)
                             if bVar13 then
                                 r4 = nil
                                 r1 = nil
-                                puVar12 = xStack_18
                                 if xStack_18 == pu_stk_14 then
                                     -- LAB_00df74f2: (native jump target)
                                     bVar13 = xStack_18 == nil
                                 else
-                                    repeat
-                                        -- TODO(native): (**(code **)*puVar12)();
-                                        puVar12 = puVar12 + 3
-                                    until not (puVar12 ~= puVar3)
                                     bVar13 = xStack_18 == nil
                                 end
                                 goto LAB_00df7957
@@ -285,11 +280,6 @@ function Main(quest)
                                     if bVar13 then
                                         xStack_24 = nil
                                         xStack_30_2 = nil
-                                        puVar3 = xStack_18
-                                        while puVar3 ~= puVar12 do
-                                            -- TODO(native): (**(code **)*puVar3)();
-                                            puVar3 = puVar3 + 3
-                                        end
                                         bVar13 = xStack_18 == nil
                                         goto LAB_00df7957
                                     end
@@ -482,15 +472,10 @@ function Main(quest)
                     if bVar13 then
                         xStack_c_3 = nil
                         xStack_24_3 = nil
-                        puVar12 = xStack_18
                         if xStack_18 == pu_stk_14 then
                             -- LAB_00df77e2: (native jump target)
                             bVar13 = xStack_18 == nil
                         else
-                            repeat
-                                -- TODO(native): (**(code **)*puVar12)();
-                                puVar12 = puVar12 + 3
-                            until not (puVar12 ~= puVar3)
                             bVar13 = xStack_18 == nil
                         end
                         goto LAB_00df7957
@@ -513,11 +498,6 @@ function Main(quest)
                             if bVar13 then
                                 r4 = nil
                                 xStack_24_3 = nil
-                                puVar3 = xStack_18
-                                while puVar3 ~= puVar12 do
-                                    -- TODO(native): (**(code **)*puVar3)();
-                                    puVar3 = puVar3 + 3
-                                end
                                 bVar13 = xStack_18 == nil
                                 goto LAB_00df7957
                             end
@@ -531,11 +511,6 @@ function Main(quest)
                     if bVar13 then
                         r4 = nil
                         xStack_24_3 = nil
-                        puVar3 = xStack_18
-                        while puVar3 ~= puVar12 do
-                            -- TODO(native): (**(code **)*puVar3)();
-                            puVar3 = puVar3 + 3
-                        end
                     else
                         CVar15 = 0x0
                         bVar2 = true
@@ -557,11 +532,6 @@ function Main(quest)
                         quest:DeactivateQuestLater(pCVar6, uVar17)
                         r4 = nil
                         xStack_24_3 = nil
-                        puVar3 = xStack_18
-                        while puVar3 ~= puVar12 do
-                            -- TODO(native): (**(code **)*puVar3)();
-                            puVar3 = puVar3 + 3
-                        end
                     end
                     bVar13 = xStack_18 == nil
                     ::LAB_00df7957::
@@ -593,7 +563,6 @@ function Main(quest)
     bVar13 = not alive
     if bVar13 then
         xStack_30_2 = nil
-        puVar12 = xStack_18
         if xStack_18 ~= pu_stk_14 then goto LAB_00df6d70 end
         -- LAB_00df77e2_c15: (native jump target)
         bVar13 = xStack_18 == nil
@@ -621,15 +590,10 @@ function Main(quest)
                     if bVar13 then
                         r6 = nil
                         r1 = nil
-                        puVar12 = xStack_18
                         if xStack_18 == pu_stk_14 then
                             -- LAB_00df74f2_c16: (native jump target)
                             bVar13 = xStack_18 == nil
                         else
-                            repeat
-                                -- TODO(native): (**(code **)*puVar12)();
-                                puVar12 = puVar12 + 3
-                            until not (puVar12 ~= puVar3)
                             bVar13 = xStack_18 == nil
                         end
                         goto LAB_00df7957_c16
@@ -646,11 +610,6 @@ function Main(quest)
                             if bVar13 then
                                 xStack_24 = nil
                                 xStack_30_2 = nil
-                                puVar3 = xStack_18
-                                while puVar3 ~= puVar12 do
-                                    -- TODO(native): (**(code **)*puVar3)();
-                                    puVar3 = puVar3 + 3
-                                end
                                 -- TODO(native): goto LAB_00df74f2_c16
                             end
                             cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHero()
@@ -801,15 +760,10 @@ function Main(quest)
             if bVar13 then
                 xStack_c_3 = nil
                 xStack_24_3 = nil
-                puVar12 = xStack_18
                 if xStack_18 == pu_stk_14 then
                     -- LAB_00df77e2_c16: (native jump target)
                     bVar13 = xStack_18 == nil
                 else
-                    repeat
-                        -- TODO(native): (**(code **)*puVar12)();
-                        puVar12 = puVar12 + 3
-                    until not (puVar12 ~= puVar3)
                     bVar13 = xStack_18 == nil
                 end
                 goto LAB_00df7957_c16
@@ -832,11 +786,6 @@ function Main(quest)
                     if bVar13 then
                         r6 = nil
                         xStack_24_3 = nil
-                        puVar3 = xStack_18
-                        while puVar3 ~= puVar12 do
-                            -- TODO(native): (**(code **)*puVar3)();
-                            puVar3 = puVar3 + 3
-                        end
                         -- TODO(native): goto LAB_00df77e2_c16
                     end
                     quest:SetThingAsUsable(xStack_18[(iVar9) / 0xc + 1], true)
@@ -849,11 +798,6 @@ function Main(quest)
             if bVar13 then
                 r6 = nil
                 xStack_24_3 = nil
-                puVar3 = xStack_18
-                while puVar3 ~= puVar12 do
-                    -- TODO(native): (**(code **)*puVar3)();
-                    puVar3 = puVar3 + 3
-                end
             else
                 CVar15 = 0x0
                 bVar2 = true
@@ -875,11 +819,6 @@ function Main(quest)
                 quest:DeactivateQuestLater(pCVar6, uVar17)
                 r6 = nil
                 xStack_24_3 = nil
-                puVar3 = xStack_18
-                while puVar3 ~= puVar12 do
-                    -- TODO(native): (**(code **)*puVar3)();
-                    puVar3 = puVar3 + 3
-                end
             end
             bVar13 = xStack_18 == nil
             ::LAB_00df7957_c16::
@@ -889,10 +828,6 @@ function Main(quest)
     end
     -- TODO(native): goto LAB_00df6aa2
     ::LAB_00df6d70::
-    repeat
-        -- TODO(native): (**(code **)*puVar12)();
-        puVar12 = puVar12 + 3
-    until not (puVar12 ~= puVar3)
     bVar13 = xStack_18 == nil
     return
 end

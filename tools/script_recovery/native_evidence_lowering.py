@@ -430,6 +430,9 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\b(\w+)\._(\d+)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     text = re.sub(r'\bthis\[(\d{2,})\]', lambda m: f'this[{int(m.group(1)):#x}]', text)   # `this[100]`: a byte field printed with a decimal index
+    # an int member updated through a pointer temporary (`P = (int *)(parent + 0x54); *P = *P + 1;`): the member itself
+    text = re.sub(r'^([ \t]*)(\w+) = \(int \*\)\(([^;\n]+)\);[ \t]*\r?\n[ \t]*\*\2 = \*\2 \+ (-?(?:0x[0-9a-f]+|\d+));[ \t]*\r?\n(?![ \t]*[^\n]*\b\2\b)',
+                  lambda m: f'{m.group(1)}*(int *)({m.group(3)}) = *(int *)({m.group(3)}) + {m.group(4)};\n', text, flags=re.M)
     text = bind_st0_results(text)
     text = re.sub(r'::\s+(?=\w)', '::', text)   # `CScriptThing:: _Method_...(` after line joining
     # a byte flag Ghidra merged into the dword slot below it: clearing / setting the top byte
@@ -798,12 +801,19 @@ def fold_resource_objects(text, call_labels):
 
 
 SQUARED_DISTANCE = {0xCBE512}   # float __fastcall GetSquaredDistanceBetweenThings(a, b)
-STRING_CONCAT = {0x99F570, 0x99F600}   # CCharString operator+ (dest, a, b) -> dest; disassembly 2026-09-16
+STRING_CONCAT = {0x99F570, 0x99F600, 0x99F690}   # CCharString operator+ (dest, a, b) -> dest; disassembly 2026-09-16; 0x99F690 = FSE CCharString_OperatorPlus_API (const char* left)
+INT_TO_STRING = {0x99F830}      # CCharString* __fastcall GFIntToCharString(CCharString* result, int value) (FSE FableAPI.h)
+STRING_C_STR = {0x99E4C0}       # const char* __thiscall CCharString::operator const char*() (FSE CCharString_ToConstChar_API)
 DISTANCE_PREDICATES = {0xCBE2FF: 'IsDistanceBetweenThingsUnder', 0xCBE3EA: 'IsDistanceBetweenThingsOver'}   # bool __fastcall (a, b, float)
 # void __fastcall AddLogbookStoryEntry(int n) (bsim label: CSubtitleRenderer::SetText): builds
 # "TEXT_QST_LOG_STORY_<n>_NAME"/"_DESC" and calls GSI slot 0x4d0 AddLogBookEntry (disassembly 0xCBE87F,
 # 2026-09-16). ForgeFSE binds the same address as quest:AddLogbookStoryEntry(int) (FableAPI.cpp).
 STORY_LOGBOOK = {0xCBE87F}
+
+
+def _strip_ptr_cast(operand):
+    """`(int *)pcVar17` / `&CStack_128` operands of the string helpers: the register / slot itself."""
+    return re.sub(r'^\((?:int|char|void|CCharString|undefined4?) \*\)', '', operand.strip()).lstrip('&')
 
 
 def fold_engine_helpers(text, call_labels):
@@ -814,8 +824,13 @@ def fold_engine_helpers(text, call_labels):
             text = re.sub(re.escape(label) + r'\s*\(([^,;]+),([^;)]+)\)',
                           lambda m: f'ENGINE_SquaredDistance({_strip_addr(m.group(1))}, {m.group(2).strip()})', text)
         elif target in STRING_CONCAT:
-            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*([^,;]+),\s*([^;)]+)\)',
-                          lambda m: f'ENGINE_Concat({m.group(1).strip().lstrip("&")}, {m.group(2).strip().lstrip("&")})', text)
+            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*((?:\([\w ]+\*\))?[^,;()]+),\s*((?:\([\w ]+\*\))?[^;()]+)\)',
+                          lambda m: f'ENGINE_Concat({_strip_ptr_cast(m.group(1))}, {_strip_ptr_cast(m.group(2))})', text)
+        elif target in INT_TO_STRING:
+            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?[\w.]+,\s*([^;)]+)\)',
+                          lambda m: f'ENGINE_IntToString({m.group(1).strip()})', text)
+        elif target in STRING_C_STR:
+            text = re.sub(r'(?:\(\w+ \*\))?' + re.escape(label) + r'\s*\((?:\([\w ]+\*\))?&?([\w.]+)\)', lambda m: m.group(1), text)
         elif target in STORY_LOGBOOK:
             text = re.sub(re.escape(label) + r'\s*\((0x[0-9a-f]+|\d+)\)', lambda m: f'GSI->AddLogbookStoryEntry({int(m.group(1), 0)})', text)
         elif target in DISTANCE_PREDICATES:
@@ -845,6 +860,7 @@ def fold_inline_strncmp(text: str) -> str:
 def fold_name_compare(text):
     """`p = me->GetName(); if (*p == 0) ...; CBasicString<char>::Compare(**p, "S")` -> Lua string ops."""
     text = re.sub(r'\(undefined4 \*\)\*(\w+) (==|!=) \(undefined4 \*\)0x0', r'\1 \2 (CCharString *)0x0', text)
+    text = re.sub(r'\*(\w+) (==|!=) \(CCharString(?:_bv)?\)0x0', r'\1 \2 (CCharString *)0x0', text)   # the typed spelling `*pCVar4 == (CCharString)0x0`
     text = re.sub(r'CBasicString<char>::Compare\(\*\(void \*\*\)\*(\w+),("[^"]*")\)', r'ENGINE_StrCmp(\1, \2)', text)
     return text
 
@@ -1109,7 +1125,7 @@ def fold_local_thing_vectors(text, thing_slots=None):
         text = pat.sub(elem, text)
     # element destructor calls through vtable slot 0 (`(**(code **)*p)(0)`), the storage free, the zeroed
     # begin/end/capacity slots; then loops / guards left with only pointer bookkeeping
-    text = re.sub(r'^[ \t]*(?:\w+ = )?\(\*\*\(code \*\*\)\*\w+\)\(0\);[ \t]*\r?\n', '', text, flags=re.M)
+    text = re.sub(r'^[ \t]*(?:\w+ = )?\(\*\*\(code \*\*\)\*\w+\)\(0?\);[ \t]*\r?\n', '', text, flags=re.M)
     text = re.sub(r'^[ \t]*free\(\w+\);[ \t]*\r?\n', '', text, flags=re.M)
     # the begin pointer used as the base of a count / an index is the vector, not element 0
     text = re.sub(r'LOCALLIST_Count\(LOCALLIST_At\((\w+), 0\)\)', r'LOCALLIST_Count(\1)', text)
@@ -1923,6 +1939,7 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, '__thing_valid', lambda a: f'({a[0]} ~= nil and not {a[0]}:IsNull())')
     text = _expand_calls(text, 'ENGINE_Colour', lambda a: '{R = %s, G = %s, B = %s, A = %s}' % tuple(a))
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
+    text = _expand_calls(text, 'ENGINE_IntToString', lambda a: f'tostring({a[0]})')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'LOCALLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
     text = _expand_calls(text, 'ENGINE_Trunc', lambda a: f'(math.modf({a[0]}))')   # first result of modf = integral part (truncated)

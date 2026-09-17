@@ -2103,6 +2103,11 @@ class Lifter:
             # emit executable Lua until the copy is consumed by a script-interface call.
             self.push_temp(m.group(1), self.temps[m.group(2)])
             return
+        if m and m.group(2) in self.locals and self.kinds.get(m.group(2)) in ('string', None) and RE_CSTR_LOCAL_ASSIGN.match(line):
+            # the source is a string built at run time (`pCVar4 = ("TEXT_QST_B11_" .. name)`): a plain Lua copy
+            self.emit(f"{self.declare(m.group(1))} = {m.group(2)}")
+            self.kinds[m.group(1)] = 'string'
+            return
         if any(n in stripped for n in NOISE) and not structural:
             return
         if stripped == "return;":
