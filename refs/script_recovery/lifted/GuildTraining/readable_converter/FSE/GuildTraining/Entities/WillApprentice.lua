@@ -232,7 +232,7 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d505a6(); return end
                 timerId2 = quest:RegisterTimer()
-                quest:SetTimer(timerId2, math.modf(quest:ReadGlobalGameDataFloat(3848)))
+                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3848))))
                 quest:SetMasterGameState("WillScore", 0)
                 quest:SetTimer(willHelpTimer, 0)
                 scratchValue13 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)

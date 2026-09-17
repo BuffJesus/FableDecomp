@@ -942,7 +942,7 @@ function Main(quest, me)
             end
             xStack_214 = quest:RegisterTimer()
             -- TODO(native): piVar2 = DAT_0143e8f8;
-            iVar16 = (math.modf(quest:ReadGlobalGameDataFloat(0xf04)))
+            iVar16 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf04)))
             quest:SetTimer(xStack_214, iVar16)
             quest:SetMasterGameState("SkillScore", 0)
             c_stk_215 = 0

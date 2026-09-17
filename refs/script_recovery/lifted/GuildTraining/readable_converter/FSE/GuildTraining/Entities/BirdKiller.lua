@@ -256,7 +256,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(scratchValue11, quest:GetHero())
                     quest:AddLineToConversation(scratchValue11, "TEXT_QST_028_BIRD_KILLER_ONE", me, quest:GetHero(), false)
                     quest:Pause(1.0)
-                    quest:GiveHeroGold(math.modf(quest:ReadGlobalGameDataFloat(3836)))
+                    quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3836))))
                 elseif scratchValue10 == 0 then
                     scratchValue11 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(scratchValue11, quest:GetHero())
@@ -267,7 +267,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(scratchValue11, quest:GetHero())
                     quest:AddLineToConversation(scratchValue11, "TEXT_QST_028_BIRD_KILLER_MORE", me, quest:GetHero(), false)
                     quest:Pause(1.0)
-                    quest:GiveHeroGold(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(3836)))
+                    quest:GiveHeroGold(math.tointeger(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(3836))))
                 end
                 state:SetInt("CurrentBirds", state:GetInt("CurrentBirds") + quest:GetStateInt("CurrentBirdsKilled"))
                 if quest:GetStateInt("CurrentBirdsKilled") ~= 0 then
@@ -298,7 +298,7 @@ function Main(quest, me)
                                 goto LAB_00d4ef87
                             end
                         end
-                        quest:GiveHeroGold(math.modf(quest:ReadGlobalGameDataFloat(3840)))
+                        quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3840))))
                         state:SetInt("BirdMode", 3)
                         quest:ClearThingHasInformation(me)
                         quest:PauseAllNonScriptedEntities(false)

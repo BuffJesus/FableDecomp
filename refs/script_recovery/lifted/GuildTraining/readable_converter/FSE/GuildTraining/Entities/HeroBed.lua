@@ -62,14 +62,14 @@ function Main(quest, me)
     end
     goto LAB_00d44c44
     ::LAB_00d449bd::
-    if getAllThingsWithDefName3 ~= pu_stk_8 then
+    if #getAllThingsWithDefName3 ~= 0 then
         goto LAB_00d44c44
     end
     goto LAB_00d44bc3
     ::LAB_00d44b4d::
     goto LAB_00d44bc3
     ::LAB_00d4482d::
-    if getAllThingsWithDefName3 ~= pu_stk_8 then
+    if #getAllThingsWithDefName3 ~= 0 then
         goto LAB_00d44c44
     end
     ::LAB_00d44bc3::

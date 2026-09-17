@@ -459,7 +459,7 @@
      "rewrites": {
       "flags": 1,
       "termination": 1,
-      "listArithmetic": 1,
+      "listArithmetic": 0,
       "byteIndices": 1,
       "voidReturns": 0,
       "nilReleases": 0,
@@ -467,7 +467,7 @@
       "deadStores": 0,
       "unusedAlive": 2,
       "flagTests": 1,
-      "declarations": 3,
+      "declarations": 2,
       "decimalLiterals": 0
      }
     },
@@ -476,7 +476,7 @@
      "rewrites": {
       "flags": 0,
       "termination": 0,
-      "listArithmetic": 2,
+      "listArithmetic": 1,
       "byteIndices": 1,
       "voidReturns": 0,
       "nilReleases": 0,
@@ -5943,15 +5943,22 @@
         null
        ]
       },
-      "iVar11": {
+      "f_stk_18": {
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar4": {
+      "iVar11": {
        "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar4": {
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -5959,7 +5966,7 @@
        ]
       },
       "i_stk_10": {
-       "name": "scratchValue6",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -5977,7 +5984,7 @@
        ]
       },
       "pCVar5": {
-       "name": "scratchValue7",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -6001,14 +6008,14 @@
        ]
       },
       "r1": {
-       "name": "scratchValue8",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r2": {
-       "name": "scratchValue9",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "whisper",
@@ -6030,7 +6037,7 @@
        ]
       },
       "xStack_7c": {
-       "name": "scratchValue10",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -6038,14 +6045,14 @@
        ]
       },
       "xStack_88": {
-       "name": "scratchValue11",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_98": {
-       "name": "scratchValue12",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -6053,7 +6060,7 @@
        ]
       },
       "xStack_c0": {
-       "name": "scratchValue13",
+       "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,

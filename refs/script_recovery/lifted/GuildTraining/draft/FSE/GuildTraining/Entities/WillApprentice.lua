@@ -407,7 +407,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d505a6(); return end
                 xStack_138 = quest:RegisterTimer()
-                iVar13 = (math.modf(quest:ReadGlobalGameDataFloat(0xf08)))
+                iVar13 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf08)))
                 quest:SetTimer(xStack_138, iVar13)
                 quest:SetMasterGameState("WillScore", 0)
                 quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 0)

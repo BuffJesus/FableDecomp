@@ -36,7 +36,7 @@ function Main(quest, me)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAllowBossPhaseChanges(me, false)
-    me:SetFriendsWithEverythingFlag(nil --[[missing]])
+    me:SetFriendsWithEverythingFlag(1)
     meleeApprenticeMarker = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     scratchValue2 = quest:IsActiveThreadTerminating()
     repeat

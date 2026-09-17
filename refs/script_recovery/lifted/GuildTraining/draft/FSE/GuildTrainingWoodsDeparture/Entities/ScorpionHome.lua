@@ -26,7 +26,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
     if not bVar6 then
-        iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf0c)))
+        iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf0c)))
         xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
         quest:DisplayQuestInfo(true)
         iVar1 = quest:GetStateInt("DepartureMissionPoint")
@@ -44,7 +44,7 @@ function Main(quest, me)
             if i_stk_28 < 0 then
                 fVar9 = fVar9 + 4294967296.0
             end
-            count = (math.modf((quest:ReadGlobalGameDataFloat(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
+            count = math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
             quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
             if (#xStack_24) < 3 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -99,7 +99,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local iVar1 = (math.modf(quest:ReadGlobalGameDataFloat(0xf0c)))
+    local iVar1 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf0c)))
     __native_entity_state:SetStateInt("ScorpionsLeft", iVar1)
     __native_entity_state:SetStateBool("FlourishHint", false)
 end

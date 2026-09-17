@@ -443,7 +443,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d4de46(); return end
                 xStack_160 = quest:RegisterTimer()
-                iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf04)))
+                iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf04)))
                 quest:SetTimer(xStack_160, iVar7)
                 quest:SetMasterGameState("SkillScore", 0)
                 c_stk_14d = 0

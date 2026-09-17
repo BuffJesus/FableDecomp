@@ -12,36 +12,30 @@ end
 
 -- ScorpionHome.Main (retail 0x00d67270)
 function Main(quest, me)
-    local predicateResult3, scratchValue, scratchValue3, hero2, pPosition, pSpeaker, r1_1, r1_2
-    local scratchValue5, getAllThingsWithScriptName
-    scratchValue5 = 0
-    local scratchValue6 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.modf(quest:ReadGlobalGameDataFloat(3856)), 1.0)
+    local scratchValue, scratchValue3, hero2, pPosition, pSpeaker, r1_1, r1_2
+    local getAllThingsWithScriptName
+    local scratchValue5 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3856))), 1.0)
     quest:DisplayQuestInfo(true)
     local timerId = quest:RegisterTimer()
-    local scratchValue7 = timerId
+    local scratchValue6 = timerId
     quest:SetTimer(timerId, 5)
     local scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
     repeat
         if not scorpionsAlive then
             if not quest:IsActiveThreadTerminating() then
-                quest:RemoveQuestInfoElement(scratchValue6)
+                quest:RemoveQuestInfoElement(scratchValue5)
                 quest:DisplayQuestInfo(false)
             end
             quest:DeregisterTimer(timerId)
             return
         end
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); return end
-        scratchValue5 = scratchValue5 | 1
-        local scratchValue8 = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
-        predicateResult3 = not scratchValue8
-        if scratchValue5 & 1 ~= 0 then
-            scratchValue5 = scratchValue5 & 0xfffffffe
-        end
-        if predicateResult3 then
+        local scratchValue7 = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
+        if not scratchValue7 then
             hero2 = quest:GetHero()
             pSpeaker = quest:GetHero()
             quest:AddLineToConversation(quest:AddNewConversation(quest:GetHero(), false, false), "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", pSpeaker, hero2, false)
-            quest:SetTimer(scratchValue7, 8)
+            quest:SetTimer(scratchValue6, 8)
         end
         getAllThingsWithScriptName = quest:GetAllThingsWithScriptName("GuildScorpions")
         scratchValue3 = #getAllThingsWithScriptName
@@ -49,9 +43,9 @@ function Main(quest, me)
         if scratchValue3 < 0 then
             scratchValue = scratchValue + 4294967296.0
         end
-        quest:UpdateQuestInfoCounter(scratchValue6, math.modf((quest:ReadGlobalGameDataFloat(3856) - state:GetInt("ScorpionsLeft")) - scratchValue), -1)
+        quest:UpdateQuestInfoCounter(scratchValue5, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(3856) - state:GetInt("ScorpionsLeft")) - scratchValue)), -1)
         if #getAllThingsWithScriptName < 3 then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue7); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue6); return end
             if #getAllThingsWithScriptName == 0 and state:GetInt("ScorpionsLeft") == 0 then
                 quest:SetStateBool("ScorpionsAlive", false)
                 quest:SetMasterGameState("ScorpionsDestroyed", true)
@@ -71,13 +65,13 @@ function Main(quest, me)
             end
         end
         scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
-        timerId = scratchValue7
+        timerId = scratchValue6
     until false
 end
 
 -- ScorpionHome.Init (retail 0x00d66c60)
 function Init(quest, me)
-    state:SetInt("ScorpionsLeft", math.modf(quest:ReadGlobalGameDataFloat(3856)))
+    state:SetInt("ScorpionsLeft", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3856))))
     state:SetBool("FlourishHint", false)
 end
 

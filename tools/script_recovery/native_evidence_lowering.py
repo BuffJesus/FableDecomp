@@ -2054,7 +2054,7 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'LOCALLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
     text = _expand_calls(text, 'LOCALLIST_Erase', lambda a: f'table.remove({a[0]}, {a[1]} + 1)')
-    text = _expand_calls(text, 'ENGINE_Trunc', lambda a: f'(math.modf({a[0]}))')   # first result of modf = integral part (truncated)
+    text = _expand_calls(text, 'ENGINE_Trunc', lambda a: f'math.tointeger(math.modf({a[0]}))')   # integral part (truncated toward zero), one value in every operand position
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)
     for pattern, repl in LUA_PSEUDO:

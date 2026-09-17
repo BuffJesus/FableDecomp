@@ -40,7 +40,7 @@ end
 function OnPredicateFail(quest, me)
     if me:MsgIsKilledBy("") then
         quest:SetStateBool("DisplayBirdKilledMessage", true)
-        -- TODO(native): *piVar1 = *piVar1 + 1;
+        quest:SetStateInt("CurrentBirdsKilled", quest:GetStateInt("CurrentBirdsKilled") + 1)
     end
 end
 

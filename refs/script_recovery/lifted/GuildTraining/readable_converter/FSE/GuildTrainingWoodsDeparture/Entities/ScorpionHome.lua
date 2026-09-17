@@ -20,7 +20,7 @@ function Main(quest, me)
         departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     end
     if quest:IsActiveThreadTerminating() then return end
-    scratchValue5 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.modf(quest:ReadGlobalGameDataFloat(3852)), 1.0)
+    scratchValue5 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3852))), 1.0)
     quest:DisplayQuestInfo(true)
     departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     while departureMissionPoint == 1 do
@@ -31,7 +31,7 @@ function Main(quest, me)
         if scratchValue3 < 0 then
             scratchValue = scratchValue + 4294967296.0
         end
-        quest:UpdateQuestInfoCounter(scratchValue5, math.modf((quest:ReadGlobalGameDataFloat(3852) - state:GetInt("ScorpionsLeft")) - scratchValue), -1)
+        quest:UpdateQuestInfoCounter(scratchValue5, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(3852) - state:GetInt("ScorpionsLeft")) - scratchValue)), -1)
         if #getAllThingsWithScriptName < 3 then
             if quest:IsActiveThreadTerminating() then return end
             if #getAllThingsWithScriptName == 0 and state:GetInt("ScorpionsLeft") == 0 then
@@ -61,7 +61,7 @@ end
 
 -- ScorpionHome.Init (retail 0x00d63d80)
 function Init(quest, me)
-    state:SetInt("ScorpionsLeft", math.modf(quest:ReadGlobalGameDataFloat(3852)))
+    state:SetInt("ScorpionsLeft", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3852))))
     state:SetBool("FlourishHint", false)
 end
 

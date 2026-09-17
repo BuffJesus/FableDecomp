@@ -4,7 +4,7 @@
 -- Q_GuildTrainingWoodsWill.Main (retail 0x00d67890)
 function Main(quest)
     local resources = quest:RetailResources()
-    local scratchValue, ctr_84, ctr_88, fret_0, scratchValue2, scratchValue3, conversationId
+    local scratchValue, ctr_84, ctr_88, scratchValue2, scratchValue3, conversationId, scratchValue6
     local willWhisper, scratchValue8, scratchValue9, scratchValue10, scratchValue11, scratchValue12
     local scratchValue13, scratchValue14, scratchValue15, getAllThingsWithScriptName
     scratchValue2 = 0
@@ -40,8 +40,8 @@ function Main(quest)
         if #getAllThingsWithScriptName ~= 0 then
             ctr_84 = 0
             repeat
-                resources:TryAcquire(0 + scratchValue2, ctr_84 + getAllThingsWithScriptName, 4)
-                ctr_84 = ctr_84 + 12
+                resources:TryAcquire(0 + scratchValue2, getAllThingsWithScriptName[ctr_84 + 1], 4)
+                ctr_84 = ctr_84 + 1
                 scratchValue8 = scratchValue8 + 1
                 scratchValue2 = scratchValue2 + 16
             until scratchValue8 >= #getAllThingsWithScriptName
@@ -83,12 +83,12 @@ function Main(quest)
             if #getAllThingsWithScriptName ~= 0 then
                 repeat
                     if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-                    quest:GiveThingBestEnemyTarget(quest:GetHero(), willWhisper)
-                    fret_0 = quest:GetHealth(nil --[[missing]])
-                    quest:ModifyThingHealth(nil --[[missing]], scratchValue3 + getAllThingsWithScriptName, 15.0 - fret_0)
-                    -- TODO(native): (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);
+                    quest:GiveThingBestEnemyTarget(getAllThingsWithScriptName[scratchValue3 + 1], quest:GetHero())
+                    scratchValue6 = getAllThingsWithScriptName[scratchValue3 + 1]
+                    quest:ModifyThingHealth(scratchValue6, 15.0 - quest:GetHealth(scratchValue6), false)
+                    -- TODO(native): (**(code **)(*(int *)xStack_7c[(iVar12) / 0xc + 1] + 0x118))(0);
                     ctr_88 = ctr_88 + 1
-                    scratchValue3 = scratchValue3 + 12
+                    scratchValue3 = scratchValue3 + 1
                 until ctr_88 >= #getAllThingsWithScriptName
             end
             if not quest:IsActiveThreadTerminating() then

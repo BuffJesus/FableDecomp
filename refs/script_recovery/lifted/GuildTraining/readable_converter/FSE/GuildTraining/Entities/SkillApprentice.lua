@@ -265,7 +265,7 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d4de46(); return end
                 timerId = quest:RegisterTimer()
-                quest:SetTimer(timerId, math.modf(quest:ReadGlobalGameDataFloat(3844)))
+                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3844))))
                 quest:SetMasterGameState("SkillScore", 0)
                 scratchValue5 = 0
                 scratchValue12 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)

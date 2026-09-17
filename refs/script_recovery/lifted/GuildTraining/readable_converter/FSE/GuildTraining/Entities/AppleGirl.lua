@@ -13,11 +13,9 @@ end
 -- AppleGirl.Main (retail 0x00d3d150)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local predicateResult6, predicateResult7, predicateResult10, ctr_64, scratchValue7
-    local conversationId, conversationId2, conversationId3, conversationId4, conversationId5
-    local conversationId6, questionAnswer, conversationId7, switch2, u_stk_74_1, scratchValue11
-    local scratchValue12, scratchValue13
-    u_stk_74_1 = 0
+    local predicateResult6, predicateResult10, ctr_64, scratchValue7, conversationId
+    local conversationId2, conversationId3, conversationId4, conversationId5, conversationId6
+    local questionAnswer, conversationId7, switch2, scratchValue11, scratchValue12, scratchValue13
     scratchValue12 = resources:NewResource()
     while not resources:TryAcquire(scratchValue12, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue12); return end
@@ -68,7 +66,7 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(scratchValue11)
-                    quest:DeregisterTimer(scratchValue7)
+                    quest:DeregisterTimer(scratchValue13)
                     return
                 end
                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -96,7 +94,6 @@ function Main(quest, me)
         while state:GetInt("AppleMode") == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
             if state:GetBool("ChildAppleMode") then
-                u_stk_74_1 = u_stk_74_1 | 1
                 if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
                     predicateResult6 = false
                     goto FLOW_after_lab_00d3d987
@@ -106,9 +103,6 @@ function Main(quest, me)
                 predicateResult6 = false
             end
             ::FLOW_after_lab_00d3d987::
-            if u_stk_74_1 & 1 ~= 0 then
-                u_stk_74_1 = u_stk_74_1 & 0xfffffffe
-            end
             if predicateResult6 then
                 quest:RemoveThing(me, false, true)
             end
@@ -129,12 +123,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
             ctr_64 = 0
             while true do
-                u_stk_74_1 = u_stk_74_1 | 2
-                predicateResult7 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", quest:GetHero()) and (state:GetInt("CurrentApples") + ctr_64 < 4)
-                if u_stk_74_1 & 2 ~= 0 then
-                    u_stk_74_1 = u_stk_74_1 & 0xfffffffd
-                end
-                if not predicateResult7 then break end
+                if not (quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", quest:GetHero()) and (state:GetInt("CurrentApples") + ctr_64 < 4)) then break end
                 if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
                 ctr_64 = ctr_64 + 1
                 quest:TakeObjectFromHero("OBJECT_APPLE_RED_01")
@@ -198,7 +187,6 @@ function Main(quest, me)
         end
         while not quest:IsActiveThreadTerminating() do
             if state:GetBool("ChildAppleMode") then
-                u_stk_74_1 = u_stk_74_1 | 4
                 if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
                     predicateResult10 = false
                     goto FLOW_after_lab_00d3e0a0
@@ -208,9 +196,6 @@ function Main(quest, me)
                 predicateResult10 = false
             end
             ::FLOW_after_lab_00d3e0a0::
-            if u_stk_74_1 & 4 ~= 0 then
-                u_stk_74_1 = u_stk_74_1 & 0xfffffffb
-            end
             if predicateResult10 then
                 quest:RemoveThing(me, false, true)
             end

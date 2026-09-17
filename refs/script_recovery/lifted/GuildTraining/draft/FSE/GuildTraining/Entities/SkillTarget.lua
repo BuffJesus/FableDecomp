@@ -28,7 +28,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d41f6f end
-        iVar5 = (math.modf(quest:ReadGlobalGameDataFloat(0xeec)))
+        iVar5 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xeec)))
         __native_entity_state:SetStateInt("Speed", iVar5)
         pCVar6 = quest:GetNearestWithScriptName(me, "StaticDummyMarker3")
         piStack_190 = pCVar6
@@ -37,7 +37,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d41f6f end
-        iVar5 = (math.modf(quest:ReadGlobalGameDataFloat(0xee8)))
+        iVar5 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xee8)))
         __native_entity_state:SetStateInt("Speed", iVar5)
         pCVar6 = quest:GetNearestWithScriptName(pCVar6, "StaticDummyMarker2")
         piStack_190 = pCVar6
@@ -46,13 +46,13 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d41f6f end
-        iVar5 = (math.modf(quest:ReadGlobalGameDataFloat(0xee4)))
+        iVar5 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xee4)))
         __native_entity_state:SetStateInt("Speed", iVar5)
         pCVar6 = quest:GetNearestWithScriptName(pCVar6, "StaticDummyMarker1")
         piStack_190 = pCVar6
         fVar11 = quest:ReadGlobalGameDataFloat(0xef0)
     end
-    iVar5 = (math.modf(fVar11))
+    iVar5 = math.tointeger(math.modf(fVar11))
     __native_entity_state:SetStateInt("DummyWorth", iVar5)
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()

@@ -26,18 +26,18 @@ function Main(quest, me)
     scratchValue39 = me:GetAngleXY()
     if dummyNumber == 1 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.modf(quest:ReadGlobalGameDataFloat(3820)))
+        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3820))))
         scratchValue4 = quest:ReadGlobalGameDataFloat(3832)
     elseif dummyNumber == 2 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.modf(quest:ReadGlobalGameDataFloat(3816)))
+        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3816))))
         scratchValue4 = quest:ReadGlobalGameDataFloat(3828)
     else
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.modf(quest:ReadGlobalGameDataFloat(3812)))
+        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3812))))
         scratchValue4 = quest:ReadGlobalGameDataFloat(3824)
     end
-    state:SetInt("DummyWorth", math.modf(scratchValue4))
+    state:SetInt("DummyWorth", math.tointeger(math.modf(scratchValue4)))
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
         quest:NewScriptFrame(me)

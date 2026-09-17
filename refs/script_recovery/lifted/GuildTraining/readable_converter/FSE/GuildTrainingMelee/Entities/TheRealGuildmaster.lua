@@ -100,7 +100,7 @@ function Main(quest, me)
         tutorialState = quest:GetStateInt("TutorialState")
     end
     if quest:IsActiveThreadTerminating() then
-        quest:DeregisterTimer(timerId)
+        quest:DeregisterTimer(scratchValue28)
     else
         quest:SetMasterGameState("HeroTakingGuildTest", true)
         quest:SetStateBool("WhisperStopWalking", true)
@@ -192,7 +192,7 @@ function Main(quest, me)
                 resources:DestroyMovie(scratchValue39)
                 -- LAB_00d5a9b5: (native jump target)
                 quest:DeregisterTimer(timerId)
-                quest:DeregisterTimer(timerId)
+                quest:DeregisterTimer(scratchValue28)
                 goto FLOW_after_lab_00d5a8cb
             end
             scratchValue34 = resources:NewResource()
@@ -229,7 +229,7 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_10c);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_f4);
                         goto LAB_00d5941c
                     end
                 end
@@ -345,13 +345,13 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
             quest:ClearAllRumbles()
-            -- TODO(native): CStack_1d4 = (CCharString)(float)fret_06;
+            -- TODO(native): xStack_1d4 = (CCharString)(float)fret_06;
             scratchValue10 = 0
-            -- TODO(native): CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)CStack_1d4));
+            -- TODO(native): xStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)xStack_1d4));
             scratchValue9 = 0
             repeat
                 scratchValue8 = scratchValue9
-                if quest:ReadGlobalGameDataFloatAt(3764, scratchValue10) < CStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(3764, scratchValue10) == CStack_1d4) then
+                if quest:ReadGlobalGameDataFloatAt(3764, scratchValue10) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(3764, scratchValue10) == xStack_1d4) then
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
                     break
                 end
@@ -483,7 +483,7 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
             resources:ReleaseResource(scratchValue24)
-            quest:DeregisterTimer(scratchValue28)
+            quest:DeregisterTimer(timerId)
             scratchValue7 = scratchValue28
         end
         if not quest:IsActiveThreadTerminating() then

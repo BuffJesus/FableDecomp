@@ -17,10 +17,10 @@ function Main(quest, me)
     local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
     local conversationId8, conversationId9, conversationId10, conversationId11, conversationId12
     local conversationId13, scratchValue9, theRealGuildmaster, meleeThunder, meleeThunder2
-    local meleeThunder3, scratchValue11, scratchValue12, scratchValue13, timerId
-    scratchValue13 = resources:NewResource()
-    while not resources:TryAcquire(scratchValue13, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue13); return end
+    local meleeThunder3, scratchValue10, scratchValue11, scratchValue12, timerId
+    scratchValue12 = resources:NewResource()
+    while not resources:TryAcquire(scratchValue12, me, 4) do
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue12); return end
     end
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, true)
@@ -39,44 +39,44 @@ function Main(quest, me)
                 while quest:GetStateInt("TutorialState") == 1 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d57f5d end
                     if me:IsTalkedToByHero() then
-                        scratchValue12 = resources:StartMovie("")
+                        scratchValue11 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        while not resources:TryAcquire(scratchValue13, me, 4) do
+                        while not resources:TryAcquire(scratchValue12, me, 4) do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue12)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:DestroyMovie(scratchValue11)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(scratchValue12)
+                            resources:DestroyMovie(scratchValue11)
                             resources:ReleaseResource("")
                             return
                         end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue13)) then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue12)) then
                             me:Speak(quest:GetHero(), "TEXT_QST_028_WHISPER_MEET", 0, false, true, false)
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(scratchValue12)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:DestroyMovie(scratchValue11)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue12)
+                                resources:DestroyMovie(scratchValue11)
                                 resources:ReleaseResource("")
                                 return
                             end
                         end
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(scratchValue12)
+                        resources:DestroyMovie(scratchValue11)
                     elseif me:MsgIsHitByHero() then
                         quest:SetStateBool("EarlyHitWhisper", true)
                     end
@@ -98,20 +98,20 @@ function Main(quest, me)
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                             if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
                                 quest:SetStateInt("GenericTutorialCounter", quest:GetStateInt("GenericTutorialCounter") + 1)
                                 if quest:GetTimer(timerId) < 9 then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                     conversationId = quest:AddNewConversation(me, false, false)
@@ -122,20 +122,20 @@ function Main(quest, me)
                             elseif me:MsgIsHitByHero() then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
                                 quest:ModifyThingHealth(me, 1000.0, false)
                                 if nil == nil then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                     if quest:IsXbox() then
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_SWORD_WIELD_HELP")
@@ -143,14 +143,14 @@ function Main(quest, me)
                                             quest:NewScriptFrame(me)
                                             if quest:IsActiveThreadTerminating() then
                                                 quest:DeregisterTimer(timerId)
-                                                resources:ReleaseResource(scratchValue13)
+                                                resources:ReleaseResource(scratchValue12)
                                                 return
                                             end
                                         end
                                     else
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_SWORD_WIELD_HELP_PC")
@@ -158,14 +158,14 @@ function Main(quest, me)
                                             quest:NewScriptFrame(me)
                                             if quest:IsActiveThreadTerminating() then
                                                 quest:DeregisterTimer(timerId)
-                                                resources:ReleaseResource(scratchValue13)
+                                                resources:ReleaseResource(scratchValue12)
                                                 return
                                             end
                                         end
                                     end
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                 end
@@ -174,7 +174,7 @@ function Main(quest, me)
                             if quest:GetTimer(timerId) < 1 then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
                                 conversationId2 = quest:AddNewConversation(me, false, false)
@@ -185,20 +185,20 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         while quest:GetStateInt("TutorialState") ~= 4 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_VS_BLOCK_ATTACK_STYLE")
@@ -210,7 +210,7 @@ function Main(quest, me)
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                             if quest:IsPlayerCreatureBlocking() then
@@ -226,20 +226,20 @@ function Main(quest, me)
                                 predicateResult25 = false
                             end
                             ::FLOW_after_lab_00d57276::
-                            if scratchValue12 & 1 ~= 0 then
+                            if scratchValue11 & 1 ~= 0 then
                                 -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffe);
                             end
                             if predicateResult25 then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
-                                -- TODO(native): *piVar1 = *piVar1 + 1;
+                                quest:SetStateInt("GenericTutorialCounter", quest:GetStateInt("GenericTutorialCounter") + 1)
                                 if quest:GetTimer(timerId) < 9 then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                     conversationId3 = quest:AddNewConversation(me, false, false)
@@ -253,7 +253,7 @@ function Main(quest, me)
                                 if scratchValue9:MsgIsHitBy("MeleeOpponent") then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                     if nil == nil then
@@ -288,23 +288,23 @@ function Main(quest, me)
                                             ::LAB_00d57f71::
                                         end
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
-                                    scratchValue11 = scratchValue11 & 0x80000001
-                                    if scratchValue11 < 0 then
-                                        scratchValue11 = (scratchValue11 - 1 | 0xfffffffe) + 1
+                                    scratchValue10 = scratchValue10 & 0x80000001
+                                    if scratchValue10 < 0 then
+                                        scratchValue10 = (scratchValue10 - 1 | 0xfffffffe) + 1
                                     end
-                                    if scratchValue11 == 1 then
+                                    if scratchValue10 == 1 then
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                         if quest:GetTimer(timerId) < 9 then
                                             if quest:IsActiveThreadTerminating() then
                                                 quest:DeregisterTimer(timerId)
-                                                resources:ReleaseResource(scratchValue13)
+                                                resources:ReleaseResource(scratchValue12)
                                                 return
                                             end
                                             conversationId5 = quest:AddNewConversation(me, false, false)
@@ -317,7 +317,7 @@ function Main(quest, me)
                                 elseif me:MsgIsHitByHero() then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                     if quest:GetTimer(timerId) < 9 then
@@ -328,7 +328,7 @@ function Main(quest, me)
                                             quest:SetTimer(timerId, 15)
                                         else
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                     end
@@ -338,7 +338,7 @@ function Main(quest, me)
                             if quest:GetTimer(timerId) < 1 then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
                                 conversationId7 = quest:AddNewConversation(me, false, false)
@@ -349,7 +349,7 @@ function Main(quest, me)
                             if quest:GetHealth(quest:GetHero()) < quest:ReadGlobalGameDataFloat(3800) then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
                                 quest:ClearThingBestEnemyTarget(me)
@@ -357,20 +357,20 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         while quest:GetStateInt("TutorialState") ~= 6 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE")
@@ -380,29 +380,29 @@ function Main(quest, me)
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                             if me:MsgIsHitByHero() then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(scratchValue13)
+                                    resources:ReleaseResource(scratchValue12)
                                     return
                                 end
                                 if quest:GetTimer(scratchValue) < 9 then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
-                                    scratchValue11 = scratchValue11 & 0x80000001
-                                    if scratchValue11 < 0 then
-                                        scratchValue11 = (scratchValue11 - 1 | 0xfffffffe) + 1
+                                    scratchValue10 = scratchValue10 & 0x80000001
+                                    if scratchValue10 < 0 then
+                                        scratchValue10 = (scratchValue10 - 1 | 0xfffffffe) + 1
                                     end
-                                    if scratchValue11 == 1 then
+                                    if scratchValue10 == 1 then
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                         conversationId8 = quest:AddNewConversation(me, false, false)
@@ -411,7 +411,7 @@ function Main(quest, me)
                                     else
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                         meleeThunder = quest:GetThingWithScriptName("MeleeThunder")
@@ -435,22 +435,22 @@ function Main(quest, me)
                                     predicateResult48 = false
                                 end
                                 ::FLOW_after_lab_00d57af8::
-                                if scratchValue12 & 2 ~= 0 then
+                                if scratchValue11 & 2 ~= 0 then
                                     -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffd);
                                 end
                                 if predicateResult48 then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                     if quest:GetTimer(scratchValue) < 9 then
                                         if not quest:IsActiveThreadTerminating() then
-                                            scratchValue11 = scratchValue11 & 0x80000001
-                                            if scratchValue11 < 0 then
-                                                scratchValue11 = (scratchValue11 - 1 | 0xfffffffe) + 1
+                                            scratchValue10 = scratchValue10 & 0x80000001
+                                            if scratchValue10 < 0 then
+                                                scratchValue10 = (scratchValue10 - 1 | 0xfffffffe) + 1
                                             end
-                                            if scratchValue11 == 1 then
+                                            if scratchValue10 == 1 then
                                                 if not quest:IsActiveThreadTerminating() then
                                                     conversationId10 = quest:AddNewConversation(me, false, false)
                                                     quest:AddPersonToConversation(conversationId10, quest:GetHero())
@@ -468,7 +468,7 @@ function Main(quest, me)
                                             end
                                         end
                                         quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(scratchValue13)
+                                        resources:ReleaseResource(scratchValue12)
                                         return
                                     end
                                 else
@@ -477,16 +477,16 @@ function Main(quest, me)
                                     if scratchValue9:MsgIsHitBy("MeleeOpponent") then
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                         if quest:GetTimer(scratchValue) < 9 then
                                             if not quest:IsActiveThreadTerminating() then
-                                                scratchValue11 = scratchValue11 & 0x80000001
-                                                if scratchValue11 < 0 then
-                                                    scratchValue11 = (scratchValue11 - 1 | 0xfffffffe) + 1
+                                                scratchValue10 = scratchValue10 & 0x80000001
+                                                if scratchValue10 < 0 then
+                                                    scratchValue10 = (scratchValue10 - 1 | 0xfffffffe) + 1
                                                 end
-                                                if scratchValue11 == 1 then
+                                                if scratchValue10 == 1 then
                                                     if not quest:IsActiveThreadTerminating() then
                                                         conversationId12 = quest:AddNewConversation(me, false, false)
                                                         quest:AddPersonToConversation(conversationId12, quest:GetHero())
@@ -504,7 +504,7 @@ function Main(quest, me)
                                                 end
                                             end
                                             quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(scratchValue13)
+                                            resources:ReleaseResource(scratchValue12)
                                             return
                                         end
                                     end
@@ -515,45 +515,45 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         while quest:GetStateInt("TutorialState") ~= 7 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         while not quest:GetStateBool("MeleeRepeatKnown") do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         if not quest:GetStateBool("MeleeRepeating") then
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(scratchValue13)
+                                resources:ReleaseResource(scratchValue12)
                                 return
                             end
                             state:SetBool("RepeatMelee", false)
                         elseif quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId)
-                            resources:ReleaseResource(scratchValue13)
+                            resources:ReleaseResource(scratchValue12)
                             return
                         end
                         quest:SetStateBool("MeleeOpponentReset", true)
@@ -561,13 +561,13 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00d57f5d::
-                resources:ReleaseResource(scratchValue13)
+                resources:ReleaseResource(scratchValue12)
                 return
             end
         end
     end
     ::LAB_00d5685e::
-    resources:ReleaseResource(scratchValue13)
+    resources:ReleaseResource(scratchValue12)
 end
 
 -- MeleeOpponent.Init (retail 0x00d56750)

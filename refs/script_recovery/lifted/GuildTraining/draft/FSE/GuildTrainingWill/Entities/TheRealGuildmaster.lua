@@ -470,7 +470,7 @@ function Main(quest, me)
                 bVar6 = not alive
                 if bVar6 then goto LAB_00d6138b end
                 xStack_234 = quest:RegisterTimer()
-                iVar11 = (math.modf(quest:ReadGlobalGameDataFloat(0xf08)))
+                iVar11 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf08)))
                 quest:SetTimer(xStack_234, iVar11)
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
