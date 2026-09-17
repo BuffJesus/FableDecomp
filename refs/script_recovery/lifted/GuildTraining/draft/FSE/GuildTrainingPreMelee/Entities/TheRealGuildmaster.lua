@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_10, __native_condition_11, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r4, r5, r6, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_3, xStack_124, xStack_130, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
+    local CVar10, __native_condition_1, __native_condition_10, __native_condition_11, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r4, r5, r6, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, xStack_108, xStack_114_3, xStack_124, xStack_130, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
     local alive = true
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -58,7 +58,6 @@ function Main(quest, me)
     end
     cVar4 = quest:GetStateBool("GuildmasterTeleport")
     uVar14 = 0
-    u_stk_128 = 0
     while not cVar4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
@@ -780,13 +779,11 @@ function Main(quest, me)
                                                                                                                     -- LAB_00d54f9c_c6: (native jump target)
                                                                                                                     bVar3 = false
                                                                                                                 else
-                                                                                                                    u_stk_128 = u_stk_128 | 1
                                                                                                                     bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                                     if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c6
                                                                                                                     bVar3 = true
                                                                                                                 end
-                                                                                                                if (u_stk_128 & 1) ~= 0 then
-                                                                                                                    u_stk_128 = u_stk_128 & 0xfffffffe
+                                                                                                                if false then
                                                                                                                 end
                                                                                                                 if bVar3 then
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
@@ -1192,8 +1189,7 @@ function Main(quest, me)
                                                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                         -- LAB_00d54f9c_c7: (native jump target)
                                                                                                         bVar3 = false
-                                                                                                        if (u_stk_128 & 1) ~= 0 then
-                                                                                                            u_stk_128 = u_stk_128 & 0xfffffffe
+                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -1487,17 +1483,15 @@ function Main(quest, me)
                                                                                                             -- LAB_00d54f9c: (native jump target)
                                                                                                             bVar3 = false
                                                                                                         else
-                                                                                                            u_stk_128 = u_stk_128 | 1
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_785
+                                                                                                                goto FLOW_after_lab_00d54f9c_783
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_785::
-                                                                                                        if (u_stk_128 & 1) ~= 0 then
-                                                                                                            u_stk_128 = u_stk_128 & 0xfffffffe
+                                                                                                        ::FLOW_after_lab_00d54f9c_783::
+                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -2266,13 +2260,11 @@ function Main(quest, me)
                                                                                                             -- LAB_00d54f9c_c27: (native jump target)
                                                                                                             bVar3 = false
                                                                                                         else
-                                                                                                            u_stk_128 = u_stk_128 | 1
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c27
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        if (u_stk_128 & 1) ~= 0 then
-                                                                                                            u_stk_128 = u_stk_128 & 0xfffffffe
+                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -3092,13 +3084,11 @@ function Main(quest, me)
                                                                                                             -- LAB_00d54f9c_c28: (native jump target)
                                                                                                             bVar3 = false
                                                                                                         else
-                                                                                                            u_stk_128 = u_stk_128 | 1
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c28
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        if (u_stk_128 & 1) ~= 0 then
-                                                                                                            u_stk_128 = u_stk_128 & 0xfffffffe
+                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
@@ -4073,13 +4063,11 @@ function Main(quest, me)
                                                                                                             -- LAB_00d54f9c_c29: (native jump target)
                                                                                                             bVar3 = false
                                                                                                         else
-                                                                                                            u_stk_128 = u_stk_128 | 1
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then return end  -- TODO(native): goto LAB_00d54f9c_c29
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        if (u_stk_128 & 1) ~= 0 then
-                                                                                                            u_stk_128 = u_stk_128 & 0xfffffffe
+                                                                                                        if false then
                                                                                                         end
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()

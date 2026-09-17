@@ -125,7 +125,7 @@ end
 
 function RunTutorials(quest)
     local resources = quest:RetailResources()
-    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, i_stk_44, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88
+    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -1039,11 +1039,9 @@ function RunTutorials(quest)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar2 = not alive
                                         if not bVar2 then
-                                            i_stk_44 = 0
                                             xStack_48 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
-                                            iVar9 = i_stk_44 - xStack_48 >> 0x1f
                                             uVar8 = 0
-                                            if (i_stk_44 - xStack_48) / 0xc + iVar9 ~= iVar9 then
+                                            if #xStack_48 ~= 0 then
                                                 iVar9 = 0
                                                 repeat
                                                     alive = not quest:IsActiveThreadTerminating()
@@ -1052,7 +1050,7 @@ function RunTutorials(quest)
                                                     quest:RemoveThing(r14, (xStack_48 + iVar9), false)
                                                     uVar8 = uVar8 + 1
                                                     iVar9 = iVar9 + 0xc
-                                                until not (uVar8 < ((i_stk_44 - xStack_48) / 0xc))
+                                                until not (uVar8 < (#xStack_48))
                                             end
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive
@@ -2036,7 +2034,7 @@ end
 
 function RunCeremonyCutscene(quest)
     local resources = quest:RetailResources()
-    local bVar2, iVar3, iVar9, pCVar4, pCVar5, pCVar8, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_58
+    local bVar2, iVar9, pCVar4, pCVar5, pCVar8, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_58
     local alive = true
     bVar2 = quest:IsLevelLoaded("FrescoDome")
     while not bVar2 do
@@ -2050,7 +2048,6 @@ function RunCeremonyCutscene(quest)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
-    iVar3 = CONCAT31(extraout_var_00,bVar2)
     if not bVar2 then
         pCVar4 = quest:GetThingWithScriptName("MK_GTC_WHISSTART")
         bVar2 = false
@@ -2136,7 +2133,6 @@ function RunCeremonyCutscene(quest)
         end
         ::LAB_00d4a246::
         resources:ReleaseResource(xStack_40)
-        iVar3 = extraout_EAX
     end
 end
 

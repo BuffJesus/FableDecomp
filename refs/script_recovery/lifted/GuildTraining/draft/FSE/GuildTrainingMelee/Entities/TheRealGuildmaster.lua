@@ -590,7 +590,7 @@ function Main(quest, me)
             -- TODO(native): CStack_1d4 = (CCharString)(float)fret_06;
             fret_07 = quest:GetHealth(r1)
             ixVar13 = 0
-            -- TODO(native): CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)CStack_1d4));
+            -- TODO(native): CStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)CStack_1d4));
             iVar7 = 0
             repeat
                 iVar6 = iVar7

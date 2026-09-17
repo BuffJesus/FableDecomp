@@ -1,3 +1,39 @@
+# CURRENT (night 6, 2026-09-17): TraderConflict unit through the pipeline (15/15 compile, todo 431 -> 292)
+
+**New unit `trader_conflict`** (Q_TraderConflictEvil + Q_TraderConflictGood, 0xDF5CD0..0xE00610; evidence in
+`refs/script_recovery/trader_conflict/`, draft + readable in `refs/script_recovery/lifted/TraderConflict/`). Draft: 63/63 fns,
+**15/15 files compile**, todo 292 (was 431 on the first pass), smoke harness **0 errors** (draft + readable), Oakvale gate
+identical, Orchard/Guild drafts regenerated (Orchard byte-identical apart from `f_xStack_18` -> `f_stk_18`; Guild 783, cleaner
+vector counts), script_recovery tests green. Converter work this unit taught (all generic):
+member-vector idioms (`erase(begin,end)` = `StateListClear`, GSI out-arg fill = `StateListSet(name, GSI->F())`, iterator walks
+with `erase(it)`, vcalls/operands through the iterator, byte-indexed element copies with the inline vtable literal, a stale
+`(int)CVar5` cast on the byte index), inline `operator==(CCharString, literal)` null branches folded into the general
+`Compare` (also the goto-fused forms), the EH-state flag byte (`bVar7 |= 2; if ((bVar7 & 2) != 0) {dtor}` incl. copies
+through a reused register), `CONCAT13(1,(int3)Y)` top-byte flags (both write-back forms), a CCharString-typed stack
+array reused as an int counter (`f_stk_NN`), by-value CCharString parameters passed on the stack
+(`&stack0x00000004` -> `strParam_1`; callers pass the literal), a local actor map's inlined destructor, the resource-valued
+map store with the refcount dance inlined (bsim label `CFourierAnalysis::CFourierAnalysis`), library bodies inside the
+unit range (vector copy ctor / initialiser) no longer emitted as helpers, pointer temporaries to a local vector
+(`pOut = &vec`), any GSI call whose last operand is a zero-constructed local vector returns a table.
+Two REAL bugs fixed: literal BACKSPACE bytes (0x08) where `\b` was meant in `native_goto_scopes.py`, `smoke_run_unit.py`
+and the end-slot rule (patterns silently never matched — see GOTCHAS), and the annotate blanket rule that made any
+`(**(code **)(*piVarN + OFF))(` a GSI vcall (element `GetDefName` became `GSI->Error`): a register is the interface only
+while its latest definition is an interface load. Sidecar bindings added: `StateListSet`, `GetStateListCopy`
+(`novi-unit-bindings.patch`, FSE_UPSTREAM_REQUIREMENTS row) — DLL NOT rebuilt yet.
+
+**Open on TraderConflict** (top todo shapes): `goto LAB` residue (21), `me:MsgIsHitBy(name)` / `MsgIsHitByAnySpecialAbilityFrom`
+/ `IsPlayerHoldingLockTargetButton` (no FSE binding), `(**(code **)*puVar3)()` element dtor calls in the 2-D loops of
+AttackPeople, `CCharString::operator=(&xStack, pCVar4)` string copies, `*piVar9 = *piVar9 + -1` refcount residue,
+`SetCombatNearbyBreakOffRange(elem, <range lost by Ghidra>)` (by-value thing arg hides the float). Readable stage built
+(Evil 4191 lines / Good 2690) but not yet reviewed line by line.
+
+**Aeon (2026-09-17 chat)**: he tests every port by a mid-quest save + load (OnPersist) and by quitting the game mid-quest
+(entity control not released = crash on quit). He found our drafts "a Lua version of the disassembly" — point him at
+`readable/` (draft is the oracle), and ask for his crash log + Lua to diff against our WoodsMelee.
+
+Resume: `python tools/script_recovery/convert_quest_unit.py --unit trader_conflict` → `build_readable_unit.py --unit trader_conflict`
+→ `smoke_run_unit.py --unit trader_conflict --stage draft|readable`; gate script + tests as below.
+
 # CURRENT (night 5, 2026-09-17): readable output reads like a quest script; three Orchard draft bugs fixed
 
 **Readable style (READABLE_STYLE_PLAN steps 1, 2, 6) LANDED**: `tools/script_recovery/readable_style.py` (flow-graph-checked

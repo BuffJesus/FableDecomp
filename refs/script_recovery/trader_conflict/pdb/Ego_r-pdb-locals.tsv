@@ -1,0 +1,299 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBanditExtra::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::Alloc	10706592	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCGameMaster::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::WatchForRegionTransitions	10735552	421
+0	7	this		0	4	4	5	18	0	0
+0	7	RegionLoaded	CCharString	0	4	1	3	30006	-24	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Alloc	10707936	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderConflictGoodScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::Main	10718256	7073
+0	7	this		0	4	4	5	18	0	0
+0	7	BrownBeds	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-92	0
+0	7	StartMarker	CScriptThing	0	12	1	3	30006	-132	0
+0	7	ShopkeeperToKill		13	4	1	3	30006	-100	0
+0	7	RegionName	CCharString	0	4	1	3	30006	-28	0
+0	7	NumBrownBeds		13	4	1	3	30006	-140	0
+0	7	BanditFollower	CScriptThing	0	12	1	3	30006	-116	0
+0	7	i		13	4	1	3	30006	-120	0
+0	7	NewTrader	CScriptThing	0	12	1	3	30006	-76	0
+0	7	i		13	4	1	3	30006	-120	0
+0	7	i		13	4	1	3	30006	-56	0
+0	7	j		13	4	1	3	30006	-60	0
+0	7	Bandit	CScriptThing	0	12	1	3	30006	-76	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>::CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>	10716384	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderConflictGoodScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::AttackPeople	10736656	1794
+0	7	this		0	4	4	5	18	0	0
+0	7	AttackCryDelay	CTimer	0	4	1	3	30006	-80	0
+0	7	NewRegionLoaded	CCharString	0	4	1	3	30006	-84	0
+0	7	CurrentCreatures	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-28	0
+0	7	i		13	4	1	3	30006	-76	0
+0	7	Trader	CScriptThing	0	12	1	3	30006	-52	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCGameMaster::Main	10731088	24
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::Init	10710528	5
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CCampHostageDoor::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::Main	10706768	1027
+0	7	this		0	4	4	5	18	0	0
+0	7	CreatedCreature	CScriptThing	0	12	1	3	30006	-24	0
+0	7	GuardType	CCharString	0	4	1	3	30006	-44	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::Main	10754320	3792
+0	7	this		0	4	4	5	18	0	0
+0	7	i		13	4	1	3	30006	-44	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper::Main	10730240	837
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Main	10735984	450
+0	7	this		0	4	4	5	18	0	0
+0	7	Bandit	CScriptThing	0	12	1	3	30006	-52	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderConflictGoodScript>::CActiveEntityScript<NScript::CQ_TraderConflictGoodScript>	10732208	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::`scalar deleting destructor'	10725504	124
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::Main	10727856	2204
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::`scalar deleting destructor'	10758256	96
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_Villager::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCMTrader::Alloc	10731120	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCMTrader::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CIsAGuard::Main	10715152	1061
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CIsAGuard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_Villager::Alloc	10713168	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CCampHostageDoor::Main	10731648	214
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::Init	10725632	854
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::Main	10710720	2440
+0	7	this		0	4	4	5	18	0	0
+0	7	Bandit	CScriptThing	0	12	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::Alloc	10727680	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper::Alloc	10730064	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::Init	10705216	798
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::RegisterMain	10716576	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::WatchForHittingEnemies	10734768	779
+0	7	this		0	4	4	5	18	0	0
+0	7	i		13	4	1	3	30006	-36	0
+0	7	j		13	4	1	3	30006	-20	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCMTrader::Main	10731088	24
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::UpdateLiveEnemies	10717376	874
+0	7	this		0	4	4	5	18	0	0
+0	7	AllFollowers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::WatchTimeLimit	10706016	573
+0	7	this		0	4	4	5	18	0	0
+0	7	MissionTimer	CTimer	0	4	1	3	30006	-20	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBanditExtra::Alloc	10731472	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::WatchForKilledPeople	10733280	174
+0	7	this		0	4	4	5	18	0	0
+0	7	KilledCreatures	std::vector<unsigned long,std::allocator<unsigned long> >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCGameMaster::Alloc	10731296	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::RegisterMain	10732400	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_TraderConflictEvilScript>::CreateActiveEntityScript	10716880	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CCampHostageDoor::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::UpdateLiveEnemies	10733456	1297
+0	7	this		0	4	4	5	18	0	0
+0	7	AllFollowers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Init	9286032	7
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::WatchTimeLimit	10726496	567
+0	7	this		0	4	4	5	18	0	0
+0	7	MissionTimer	CTimer	0	4	1	3	30006	-20	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::Main	10741872	12435
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-352	0
+0	7	expression	CCharString	0	4	1	3	30006	-384	0
+0	7	RandomChatTimer	CTimer	0	4	1	3	30006	-360	0
+0	7	MentionedBanditsDeath		10	1	1	3	30006	-317	0
+0	7	DialogueLineNumber		13	4	1	3	30006	-292	0
+0	7	BasicTextString	CCharString	0	4	1	3	30006	-368	0
+0	7	CompleteTextString	CCharString	0	4	1	3	30006	-372	0
+0	7	ScreamTimer	CTimer	0	4	1	3	30006	-364	0
+0	7	ScreamNumber		13	4	1	3	30006	-356	0
+0	7	ThreateningDelay	CTimer	0	4	1	3	30006	-388	0
+0	7	FacingDelay	CTimer	0	4	1	3	30006	-380	0
+0	7	BanditGuardingHostage	CScriptThing	0	12	1	3	30006	-332	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-276	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-284	0
+0	7	TeleporterPosition	CScriptThing	0	12	1	3	30006	-308	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-40	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-296	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-56	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-296	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::Alloc	10727280	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CCampHostageDoor::Alloc	10731872	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_Villager::Main	10713344	1628
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBanditExtra::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCGameMaster::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::WatchForTradersFreed	10738464	3388
+0	7	this		0	4	4	5	18	0	0
+0	7	SetObjectiveFlag		10	1	1	3	30006	-217	0
+0	7	TradersInArea	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-212	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::OnPredicateFail	10707808	116
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CIsAGuard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Main	10708112	2409
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-76	0
+0	7	Bandit	CScriptThing	0	12	1	3	30006	-72	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_TraderConflictGoodScript>::CreateActiveEntityScript	10732704	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::PlayCutscene	10064592	736
+0	7	this		0	4	4	5	18	0	0
+0	7	CutsceneDef	CCharString	0	4	3	3	30006	4	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::Alloc	10710544	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::OnPredicateFail	10727072	203
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>	10716224	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>::CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>	10732048	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::PlayCutscene	10064592	736
+0	7	this		0	4	4	5	18	0	0
+0	7	CutsceneDef	CCharString	0	4	3	3	30006	4	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CTraderToRescue::Init	10727456	219
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::CBCMTrader::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_Villager::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CIsAGuard::Alloc	10714976	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderConflictGoodScript::Alloc	10758112	129
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_TraderConflictEvilScript::Alloc	10725344	156
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+MATCHES	90

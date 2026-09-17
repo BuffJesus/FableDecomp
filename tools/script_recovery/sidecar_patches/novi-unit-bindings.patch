@@ -23,7 +23,7 @@ new file mode 100644
 index 0000000..d49e930
 --- /dev/null
 +++ b/FableScriptExtender/NoviUnitBindings.h
-@@ -0,0 +1,182 @@
+@@ -0,0 +1,209 @@
 +#pragma once
 +// Bindings the converter-generated quest units (Orchard Farm, ...) need beyond the New Oakvale set.
 +// Evidence: docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md and refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md
@@ -32,6 +32,7 @@ index 0000000..d49e930
 +//   quest:GetStateThing / SetStateThing        CScriptThing quest members (Teams[i].TeamCrateCarrier, ...)
 +//   quest:GetStateListCount / GetStateListAt   std::vector<CScriptThing> members (CrateList), stride-12 iteration
 +//   quest:StateListPush / StateListErase       Vector_PushBack_ScriptThing 0x8ADF90 / vector::erase 0xCD3152
++//   quest:StateListClear / StateListSet        erase(begin,end) / a GSI out-argument fill; GetStateListCopy = the copy ctor
 +//   quest:RetailResources()                    one long-lived LuaRetailResources per quest state
 +//   quest:ReadGlobalGameData(offset)           *(int *)(*(DAT_0143e90c) + offset)
 +//   thing:GetName / SetDataString / IsBeingCarriedBy / GetCurrentStateGroupType / IsEqualTo
@@ -133,6 +134,32 @@ index 0000000..d49e930
 +        it->second.erase(it->second.begin() + index);
 +    };
 +    quest["StateListClear"] = [](LuaQuestState& self, const std::string& name) { NoviUnitData(self).lists[name].clear(); };
++    // a member vector filled through an interface out-argument (`GSI->GetAllCreaturesExcludingHero(&m_AllCreatures)`)
++    // takes the table the binding returned; a by-value copy (`std::vector<CScriptThing> local(m_AllCreatures)`) is a table copy
++    quest["StateListSet"] = [](LuaQuestState& self, const std::string& name, sol::table values) {
++        auto& list = NoviUnitData(self).lists[name];
++        list.clear();
++        for (std::size_t i = 1; i <= values.size(); ++i) {
++            sol::object value = values[i];
++            if (value.is<std::shared_ptr<CScriptThing>>()) {
++                auto sp = value.as<std::shared_ptr<CScriptThing>>();
++                list.push_back(sp ? NoviCopyThing(sp.get()) : nullptr);
++            } else if (value.is<CScriptThing*>()) {
++                list.push_back(NoviCopyThing(value.as<CScriptThing*>()));
++            }
++        }
++    };
++    quest["GetStateListCopy"] = [](LuaQuestState& self, const std::string& name, sol::this_state ts) -> sol::table {
++        sol::state_view lua(ts);
++        sol::table out = lua.create_table();
++        auto& lists = NoviUnitData(self).lists;
++        auto it = lists.find(name);
++        if (it != lists.end()) {
++            int n = 0;
++            for (auto& sp : it->second) out[++n] = sp ? NoviCopyThing(sp.get()) : nullptr;
++        }
++        return out;
++    };
 +    // ---- long-lived retail resources ------------------------------------------------------------
 +    quest["RetailResources"] = [](LuaQuestState& self) {
 +        auto& data = NoviUnitData(self);

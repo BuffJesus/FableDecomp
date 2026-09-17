@@ -303,3 +303,37 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
   bookkeeping; drifted destroy operands (DestroyMovie/ReleaseResource/DestroyActorMap/DestroyStringMap/DeregisterTimer)
   take the function's single created object; unit mode: `xStack_88 = iVar4` stack copies of a register are stores;
   four byte stores of the GSI alias into a by-value thing are construction noise.
+
+## Night 6 (2026-09-17) — TraderConflict unit (Evil + Good) through the generic pipeline
+
+New unit `trader_conflict` in `script_units.py` (0xDF5CD0..0xE00610). Pipeline: export → evidence → typing spec / helper
+prototypes → typed export → convert → readable → smoke. First conversion: 11/15 files compile, todo 431. After the night:
+**15/15 compile, todo 292, smoke 0 errors (draft + readable)**, Oakvale gate identical throughout, Orchard/Guild regenerated
+without regressions (Orchard identical apart from `f_stk_18`), tests green.
+
+What the unit taught (all generic lowering, `native_evidence_lowering.py` unless noted):
+- Two real bugs: literal 0x08 bytes where `\b` was meant (heredoc damage) in `native_goto_scopes.py`, `smoke_run_unit.py`
+  and the end-slot rule of `fold_local_thing_vectors` — the patterns never matched; and `annotate_interface_slots.PATTERNS`
+  treating every `(**(code **)(*piVarN + OFF))(` as a GSI vcall (element `GetDefName` became `GSI->Error`) — now a register
+  is the interface only while its latest text-order definition (copies followed) is an interface load (`_is_gsi_alias_at`).
+- Member vectors: `Std_Vector_Erase_Range(begin,end)` -> `LIST_Clear`; `GSI->F(..., LIST_Ref)` -> `lst_X = GSI->F(); LIST_Set`;
+  `P = (int *)(this+OFF); ... P = *P` iterator (scope includes the redefining RHS; `P + 3` stride; `(int **)` end cast);
+  `erase(it)` with a cast operand; vcalls straight through the iterator scoped to its live range; `*(undefined4 *)(it + 4)`
+  operand = the element; byte-index copies `f = *(float *)(idx + 4 + begin); F(&PTR_vtable, f)` = the element by value;
+  `(int)CVar5` stale casts on the byte index and the `idx + begin` order; element vcalls on named elements.
+- Local vectors: any GSI call whose last operand is a zero-constructed `(undefined4 *)0x0` local returns a table;
+  `pOut = &vec` pointer temporaries; `**(int **)(i + (int)V) + 0x138` (Data-pointer vcall, `iVar5 = 4` start) ->
+  `IsEqualTo` on `LOCALLIST_At(V, (i - 4)/0xc)`; dtor loops with a kept result, empty `for (p = V; ...)` loops, `X = V` copies.
+- Strings: inline `operator==` null branches (`if (*p == 0) { "" vs literal } else { Compare }`, `while ((bool)c)`, a hoisted
+  assignment inside the memcmp loop, the goto-fused `if (*p != 0) {Compare; goto} fallback` form) -> the Compare form only.
+- Flags: EH-state byte (`b = !x && x; b |= N; if ((b & N) != 0) { b &= ~N; dtor }`, `(char)b < '\0'`, copies through a reused
+  register) -> constants; `X = CONCAT13(1,(int3)Y); if (C) X = Y & 0xffffff; [Y = X;]` -> `Y_b3 = !(C)`.
+- Misc: a cast alone on a line before a wrapped vcall (`CVar5 = (CCharString_bv)\n (**(code**)...)`) re-joined;
+  `this[100]` decimal byte-field index; CCharString-typed stack arrays reused as int counters (`f_stk_NN`, no `Stack_` so the
+  lifter sees a local); by-value CCharString parameters (`&stack0x00000004` -> `strParam_1`, callers construct on
+  `&stack0xffffffNN` -> pass the literal) in `convert_quest_unit.name_by_value_string_parameters`; a local actor map's inlined
+  destructor; RE_MAP_SET3 (resource-valued map store with the refcount dance inlined; bsim label CFourierAnalysis);
+  vector copy ctor / initialiser bodies inside the unit range dropped from the helper set; the lifter's `RE_CAST` no longer
+  eats `(CVar5)`; `RE_THING_CALL` receivers may carry nested calls (4 levels) — the first version (2 levels) regressed
+  Orchard's `Teams_.._TeamCrateCarrier:IsDead()` to `me:IsDead()`, caught by regenerating Orchard.
+- Sidecar: `StateListSet(name, table)`, `GetStateListCopy(name)` added to `novi-unit-bindings.patch` (DLL not rebuilt).

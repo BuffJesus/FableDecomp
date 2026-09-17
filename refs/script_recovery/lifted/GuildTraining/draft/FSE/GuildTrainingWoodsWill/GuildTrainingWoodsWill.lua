@@ -60,11 +60,11 @@ function Main(quest)
             if #xStack_7c ~= 0 then
                 ctr_84 = 0
                 repeat
-                    resources:TryAcquire((0x0 + iVar12), (ctr_84 + xStack_7c), 4)
+                    resources:TryAcquire((0x0 + iVar12), xStack_7c[(ctr_84) / 0xc + 1], 4)
                     ctr_84 = ctr_84 + 0xc
                     uVar11 = uVar11 + 1
                     iVar12 = iVar12 + 0x10
-                until not (uVar11 < ((#xStack_7c * 0xc) / 0xc))
+                until not (uVar11 < (#xStack_7c))
             end
             iVar12 = 0
             xStack_48 = resources:NewResource()
@@ -123,17 +123,17 @@ function Main(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d685cc end
-                        pCVar6 = (iVar12 + xStack_7c)
+                        pCVar6 = xStack_7c[(iVar12) / 0xc + 1]
                         pTarget = quest:GetHero()
-                        quest:GiveThingBestEnemyTarget(pTarget, r1)
-                        pCVar6 = (iVar12 + xStack_7c)
+                        quest:GiveThingBestEnemyTarget(pCVar6, pTarget)
+                        pCVar6 = xStack_7c[(iVar12) / 0xc + 1]
                         bVar3 = false
-                        fret_0 = quest:GetHealth(nil --[[missing]])
-                        quest:ModifyThingHealth(nil --[[missing]], pCVar6, (15.0 - fret_0))
-                        -- TODO(native): (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);
+                        fret_0 = quest:GetHealth(pCVar6)
+                        quest:ModifyThingHealth(pCVar6, (15.0 - fret_0), bVar3)
+                        -- TODO(native): (**(code **)(*(int *)xStack_7c[(iVar12) / 0xc + 1] + 0x118))(0);
                         ctr_88 = ctr_88 + 1
                         iVar12 = iVar12 + 0xc
-                    until not (ctr_88 < ((#xStack_7c * 0xc) / 0xc))
+                    until not (ctr_88 < (#xStack_7c))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive

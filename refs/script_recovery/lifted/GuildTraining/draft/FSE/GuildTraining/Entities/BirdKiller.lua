@@ -69,7 +69,7 @@ function Main(quest, me)
                 quest:SetThingPersistent(r1, true)
                 ctr_90 = ctr_90 + 0xc
                 uVar10 = uVar10 + 1
-            until not (uVar10 < ((#x_stk_68 * 0xc) / 0xc))
+            until not (uVar10 < (#x_stk_68))
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive

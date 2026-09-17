@@ -115,10 +115,11 @@ def load_thing_slots(path: Path = THING_SLOTS) -> dict[int, tuple[str, str]]:
 
 
 OFFSET = r"(?:0x[0-9a-f]+|\d+)"  # Ghidra renders some offsets (notably 0x12c) as decimal.
+REGISTER_PATTERN = re.compile(r"\(\*\*\(code \*\*\)\((?:iVar\d+|piVar\d+|\*piVar\d+) \+ (" + OFFSET + r")\)\)")
 PATTERNS = [
     re.compile(r"\(\*\*\(code \*\*\)\(\*\*\(int \*\*\)\((?:this|param_1|\*\(int \*\*\)\([^()]+\)|[a-zA-Z_0-9]+) \+ 0x40\) \+ (" + OFFSET + r")\)\)"),
     re.compile(r"\(\*\*\(code \*\*\)\(\*DAT_0143e8f8 \+ (" + OFFSET + r")\)\)"),
-    re.compile(r"\(\*\*\(code \*\*\)\((?:iVar\d+|piVar\d+|\*piVar\d+) \+ (" + OFFSET + r")\)\)"),
+    REGISTER_PATTERN,
     # entity scripts reach the interface through their own +4 field
     re.compile(r"\(\*\*\(code \*\*\)\(\*\*\(int \*\*\)\((?:this|param_1) \+ 4\) \+ (" + OFFSET + r")\)\)"),
     # pre-normalized spelling of the same entity interface field
@@ -242,6 +243,27 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     return text
 
 
+RE_GSI_VALUE = re.compile(r"(?:\(int \*+\))?\*{1,2}\(int \*\*\)\((?:this|param_\d+|\w+) \+ (?:4|0x40)\)$|\*?DAT_0143e8f8$")
+
+
+def _is_gsi_alias_at(text: str, var: str, pos: int, depth: int = 0) -> bool:
+    """Whether `var`'s latest definition before `pos` (text order) is an interface pointer / vtable
+    load, or a copy of a register that is one there. With no definition in sight the register is
+    taken as the interface (the decompiler hoists some loads out of the printed body)."""
+    prev = None
+    for m in re.finditer(r"^[ \t]*" + re.escape(var) + r" = ([^;\n]*);", text[:pos], re.M):
+        prev = m
+    if prev is None:
+        return True
+    value = prev.group(1).strip()
+    if RE_GSI_VALUE.match(value):
+        return True
+    if depth < 3 and re.fullmatch(r"(?:\(int \*+\))?\*?(\w+)", value):
+        src = re.fullmatch(r"(?:\(int \*+\))?\*?(\w+)", value).group(1)
+        return _is_gsi_alias_at(text, src, prev.start(), depth + 1)
+    return False
+
+
 def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str, str]] | None = None,
              thing_returning: frozenset[int] | set[int] = frozenset(), entity: bool = True) -> str:
     """Name interface slots (`GSI->Name(`) and, when `thing_slots` is given, CScriptThing slots
@@ -255,8 +277,15 @@ def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str,
         offset = int(match.group(1), 0)
         name = slots.get(offset)
         return f"GSI->{name}" if name else match.group(0)
+    def sub_register(match: re.Match[str]) -> str:
+        # a register temporary (`piVar6`) is the interface only while its latest definition is an
+        # interface load (or a copy of one); the same register later walks a vector of things
+        var = re.match(r"\(\*\*\(code \*\*\)\(\*?(\w+)", match.group(0)).group(1)
+        if _is_gsi_alias_at(text, var, match.start()):
+            return sub(match)
+        return match.group(0)
     for pattern in PATTERNS:
-        text = pattern.sub(sub, text)
+        text = pattern.sub(sub_register if pattern is REGISTER_PATTERN else sub, text)
     # interface-pointer / vtable aliases under any local name (typed exports name them `this_00`, ...)
     aliases = {m.group("var") for m in RE_GSI_ALIAS.finditer(text)
                if not re.match(r"(?:[a-z]{1,3}Var\d+|\w*Stack_[0-9a-f]+|this)$", m.group("var"))}

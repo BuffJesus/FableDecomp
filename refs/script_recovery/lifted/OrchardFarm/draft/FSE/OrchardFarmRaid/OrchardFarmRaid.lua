@@ -334,7 +334,7 @@ end
 
 function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
-    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_xStack_18, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0
+    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_18, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0
     local alive = true
     local function __cleanup_LAB_00dd1728()
         pCVar5 = 0x0
@@ -416,10 +416,10 @@ function ProcessGameRulesGood(quest)
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     pCVar5 = quest:GetHero()
-                    f_xStack_18 = (quest:GetDistanceBetweenThings(r3, pCVar5) ^ 2)
+                    f_stk_18 = (quest:GetDistanceBetweenThings(r3, pCVar5) ^ 2)
                     pCVar5 = quest:GetHero()
                     fVar8 = (quest:GetDistanceBetweenThings(r2, pCVar5) ^ 2)
-                    if f_xStack_18 <= fVar8 then
+                    if f_stk_18 <= fVar8 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if not bVar3 then

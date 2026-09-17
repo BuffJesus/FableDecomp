@@ -11,9 +11,8 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, r1, v_stk_4c, xStack_24
+    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, r1, xStack_24
     local alive = true
-    v_stk_4c = 0
     iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf10)))
     local xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
     quest:DisplayQuestInfo(true)
@@ -40,7 +39,6 @@ function Main(quest, me)
             quest:DeregisterTimer(timerId)
             return
         end
-        v_stk_4c = v_stk_4c | 1
         bVar6 = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK")
         local __native_condition_1 = bVar6
         if not __native_condition_1 then
@@ -52,8 +50,7 @@ function Main(quest, me)
         else
             bVar6 = true
         end
-        if (v_stk_4c & 1) ~= 0 then
-            v_stk_4c = v_stk_4c & 0xfffffffe
+        if false then
         end
         if bVar6 then
             alive = not quest:IsActiveThreadTerminating()
@@ -71,7 +68,7 @@ function Main(quest, me)
             quest:SetTimer(xStack_50, 8)
         end
         xStack_24 = quest:GetAllThingsWithScriptName("GuildScorpions")
-        i_stk_28 = (#xStack_24 * 0xc) / 0xc
+        i_stk_28 = #xStack_24
         iVar7 = -1
         fVar10 = i_stk_28
         if i_stk_28 < 0 then
@@ -79,7 +76,7 @@ function Main(quest, me)
         end
         count = (math.modf((quest:ReadGlobalGameDataFloat(0xf10) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar10))
         quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
-        if ((#xStack_24 * 0xc) / 0xc) < 3 then
+        if (#xStack_24) < 3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
             if bVar6 then

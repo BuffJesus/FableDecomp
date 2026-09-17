@@ -30,6 +30,16 @@ UNITS = {
         'schema': 'orchard-farm-native-inventory/0.1',
         'package': 'OrchardFarm',
     },
+    'trader_conflict': {
+        # Q_TraderConflictEvil ctor 0x00DF5CD0 .. Q_TraderConflictGood tail 0x00E00610 (CQ_GuildTrainingWill noise label = next family)
+        'evidence': ROOT / 'refs/script_recovery/trader_conflict',
+        'lo': 0xDF5CD0, 'hi': 0xE00610,
+        'ir_glob': 'Q_TraderConflict*.json',
+        'scripts': ['Q_TraderConflictEvil', 'Q_TraderConflictGood'],
+        'pdb_pattern': '*CQ_TraderConflict*',
+        'schema': 'trader-conflict-native-inventory/0.1',
+        'package': 'TraderConflict',
+    },
 }
 
 

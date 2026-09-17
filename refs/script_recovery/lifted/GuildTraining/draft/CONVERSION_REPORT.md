@@ -147,7 +147,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsMelee | ScorpionHome | Init | 0x00d66c60 | True | 0 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | OnPredicateFail | 0x00d66c50 | True | 0 |
-| Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | Main | 0x00d67890 | True | 16 |
+| Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | Main | 0x00d67890 | True | 14 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | WatchForTermination | 0x00d68600 | True | 0 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | DoMission | 0x00d68ae0 | True | 0 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | WatchForLeaving | 0x00d68c50 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 785}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 783}`

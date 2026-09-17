@@ -12,10 +12,9 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, fret_0, fret_00, iVar14, iVar18, iVar19, iVar21, iVar22, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, uVar12, uVar13, u_stk_78, xStack_10, xStack_1c, xStack_38, xStack_5c, xStack_70, xStack_80
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, fret_0, fret_00, iVar14, iVar18, iVar19, iVar21, iVar22, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, uVar12, uVar13, xStack_10, xStack_1c, xStack_38, xStack_5c, xStack_70, xStack_80
     local alive = true
     uVar12 = 0
-    u_stk_78 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
@@ -112,14 +111,12 @@ function Main(quest, me)
         bVar3 = not alive
         if bVar3 then goto LAB_00d664b0 end
         uVar13 = uVar12 | 3
-        u_stk_78 = uVar13
         bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
         if bVar3 then
             -- LAB_00d64cba: (native jump target)
             bVar3 = true
         else
             uVar13 = uVar12 | 0xf
-            u_stk_78 = uVar13
             bVar4 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
             bVar3 = false
             if bVar4 then
@@ -130,19 +127,15 @@ function Main(quest, me)
         ::FLOW_after_lab_00d64cba::
         if (uVar13 & 8) ~= 0 then
             uVar13 = uVar13 & 0xfffffff7
-            u_stk_78 = uVar13
         end
         if (uVar13 & 4) ~= 0 then
             uVar13 = uVar13 & 0xfffffffb
-            u_stk_78 = uVar13
         end
         if (uVar13 & 2) ~= 0 then
             uVar13 = uVar13 & 0xfffffffd
-            u_stk_78 = uVar13
         end
         if (uVar13 & 1) ~= 0 then
             uVar13 = uVar13 & 0xfffffffe
-            u_stk_78 = uVar13
         end
         if bVar3 then
             alive = not quest:IsActiveThreadTerminating()
@@ -159,7 +152,6 @@ function Main(quest, me)
             end
             quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
             iVar19 = quest:GetTimer(xStack_80)
-            uVar12 = uVar13
             __native_condition_1 = iVar19 < 1
             if __native_condition_1 then
                 bVar3 = quest:IsConversationActive(iVar14)
@@ -196,8 +188,6 @@ function Main(quest, me)
                 quest:SetTimer(xStack_80, 5)
             end
         else
-            uVar12 = uVar13 | 0x30
-            u_stk_78 = uVar12
             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
             if bVar3 then
                 -- LAB_00d64f41: (native jump target)
@@ -209,7 +199,6 @@ function Main(quest, me)
                 end
             else
                 uVar12 = uVar13 | 0xf0
-                u_stk_78 = uVar12
                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
                 if bVar3 then
                     bVar4 = quest:IsConversationActive(iVar14)
@@ -223,19 +212,15 @@ function Main(quest, me)
             ::FLOW_after_lab_00d64f56::
             if uVar12 < 0 then
                 uVar12 = uVar12 & 0xffffff7f
-                u_stk_78 = uVar12
             end
             if (uVar12 & 0x40) ~= 0 then
                 uVar12 = uVar12 & 0xffffffbf
-                u_stk_78 = uVar12
             end
             if (uVar12 & 0x20) ~= 0 then
                 uVar12 = uVar12 & 0xffffffdf
-                u_stk_78 = uVar12
             end
             if (uVar12 & 0x10) ~= 0 then
                 uVar12 = uVar12 & 0xffffffef
-                u_stk_78 = uVar12
             end
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -359,14 +344,12 @@ function Main(quest, me)
             pCVar8 = me:GetPos()
             r3 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
             cVar5 = __native_entity_state:GetStateBool("NotBeaten")
-            uVar12 = u_stk_78
             while cVar5 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d664b0 end
                 uVar13 = uVar12 | 0x300
-                u_stk_78 = uVar13
                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
                 if bVar3 then
                     -- LAB_00d654d1: (native jump target)
@@ -378,7 +361,6 @@ function Main(quest, me)
                     end
                 else
                     uVar13 = uVar12 | 0xf00
-                    u_stk_78 = uVar13
                     bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
                     if bVar3 then
                         bVar4 = quest:IsConversationActive(iVar14)
@@ -392,19 +374,15 @@ function Main(quest, me)
                 ::FLOW_after_lab_00d654e6::
                 if (uVar13 & 0x800) ~= 0 then
                     uVar13 = uVar13 & 0xfffff7ff
-                    u_stk_78 = uVar13
                 end
                 if (uVar13 & 0x400) ~= 0 then
                     uVar13 = uVar13 & 0xfffffbff
-                    u_stk_78 = uVar13
                 end
                 if (uVar13 & 0x200) ~= 0 then
                     uVar13 = uVar13 & 0xfffffdff
-                    u_stk_78 = uVar13
                 end
                 if (uVar13 & 0x100) ~= 0 then
                     uVar13 = uVar13 & 0xfffffeff
-                    u_stk_78 = uVar13
                 end
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -417,15 +395,12 @@ function Main(quest, me)
                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_MELEE", me, pCVar6, false)
                     quest:ModifyThingHealth(me, 1000.0, false)
                 else
-                    uVar12 = uVar13 | 0x3000
-                    u_stk_78 = uVar12
                     bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
                     if bVar3 then
                         -- LAB_00d65670: (native jump target)
                         bVar3 = true
                     else
                         uVar12 = uVar13 | 0xf000
-                        u_stk_78 = uVar12
                         bVar4 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
                         bVar3 = false
                         if bVar4 then
@@ -436,19 +411,15 @@ function Main(quest, me)
                     ::FLOW_after_lab_00d65670::
                     if (uVar12 >> 8) < 0 then
                         uVar12 = uVar12 & 0xffff7fff
-                        u_stk_78 = uVar12
                     end
                     if (uVar12 & 0x4000) ~= 0 then
                         uVar12 = uVar12 & 0xffffbfff
-                        u_stk_78 = uVar12
                     end
                     if (uVar12 & 0x2000) ~= 0 then
                         uVar12 = uVar12 & 0xffffdfff
-                        u_stk_78 = uVar12
                     end
                     if (uVar12 & 0x1000) ~= 0 then
                         uVar12 = uVar12 & 0xffffefff
-                        u_stk_78 = uVar12
                     end
                     if bVar3 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -613,14 +584,12 @@ function Main(quest, me)
                     pCVar8 = me:GetPos()
                     r5 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
                     cVar5 = __native_entity_state:GetStateBool("NotBeaten")
-                    uVar12 = u_stk_78
                     while cVar5 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d664b0 end
                         uVar13 = uVar12 | 0x30000
-                        u_stk_78 = uVar13
                         bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
                         if bVar3 then
                             -- LAB_00d65d51: (native jump target)
@@ -632,7 +601,6 @@ function Main(quest, me)
                             end
                         else
                             uVar13 = uVar12 | 0xf0000
-                            u_stk_78 = uVar13
                             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
                             if bVar3 then
                                 bVar4 = quest:IsConversationActive(iVar14)
@@ -646,19 +614,15 @@ function Main(quest, me)
                         ::FLOW_after_lab_00d65d66::
                         if (uVar13 & 0x80000) ~= 0 then
                             uVar13 = uVar13 & 0xfff7ffff
-                            u_stk_78 = uVar13
                         end
                         if (uVar13 & 0x40000) ~= 0 then
                             uVar13 = uVar13 & 0xfffbffff
-                            u_stk_78 = uVar13
                         end
                         if (uVar13 & 0x20000) ~= 0 then
                             uVar13 = uVar13 & 0xfffdffff
-                            u_stk_78 = uVar13
                         end
                         if (uVar13 & 0x10000) ~= 0 then
                             uVar13 = uVar13 & 0xfffeffff
-                            u_stk_78 = uVar13
                         end
                         if bVar3 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -672,8 +636,6 @@ function Main(quest, me)
                             -- LAB_00d65e4c: (native jump target)
                             quest:ModifyThingHealth(me, 1000.0, false)
                         else
-                            uVar12 = uVar13 | 0x300000
-                            u_stk_78 = uVar12
                             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
                             if bVar3 then
                                 -- LAB_00d65ef7: (native jump target)
@@ -685,7 +647,6 @@ function Main(quest, me)
                                 end
                             else
                                 uVar12 = uVar13 | 0xf00000
-                                u_stk_78 = uVar12
                                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
                                 if bVar3 then
                                     bVar4 = quest:IsConversationActive(iVar14)
@@ -699,19 +660,15 @@ function Main(quest, me)
                             ::FLOW_after_lab_00d65f0c::
                             if (uVar12 & 0x800000) ~= 0 then
                                 uVar12 = uVar12 & 0xff7fffff
-                                u_stk_78 = uVar12
                             end
                             if (uVar12 & 0x400000) ~= 0 then
                                 uVar12 = uVar12 & 0xffbfffff
-                                u_stk_78 = uVar12
                             end
                             if (uVar12 & 0x200000) ~= 0 then
                                 uVar12 = uVar12 & 0xffdfffff
-                                u_stk_78 = uVar12
                             end
                             if (uVar12 & 0x100000) ~= 0 then
                                 uVar12 = uVar12 & 0xffefffff
-                                u_stk_78 = uVar12
                             end
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()

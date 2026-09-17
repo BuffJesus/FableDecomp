@@ -38,7 +38,7 @@ function Main(quest, me)
                 return
             end
             xStack_24 = quest:GetAllThingsWithScriptName("GuildScorpions")
-            i_stk_28 = (#xStack_24 * 0xc) / 0xc
+            i_stk_28 = #xStack_24
             iVar7 = -1
             fVar9 = i_stk_28
             if i_stk_28 < 0 then
@@ -46,7 +46,7 @@ function Main(quest, me)
             end
             count = (math.modf((quest:ReadGlobalGameDataFloat(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
             quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
-            if ((#xStack_24 * 0xc) / 0xc) < 3 then
+            if (#xStack_24) < 3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
                 if bVar6 then

@@ -253,7 +253,7 @@ def duplicate_sibling_tails(statements):
                             region.extend(inlined)
                             if depth == 0:
                                 later = {m[1] for u in lines[n + 1:] for m in [re.match(r'^(' + LABEL_TOKEN + r'):', u)] if m}
-                                earlier_targets = {m[1] for u in lines[:n] for m in re.finditer(r'goto (' + LABEL_TOKEN + r');', u)}
+                                earlier_targets = {m[1] for u in lines[:n] for m in re.finditer(r'\bgoto (' + LABEL_TOKEN + r');', u)}
                                 if not (later & earlier_targets):
                                     terminated = True
                                     break

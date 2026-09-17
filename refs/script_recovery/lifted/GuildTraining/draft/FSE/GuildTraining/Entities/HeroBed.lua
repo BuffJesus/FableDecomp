@@ -93,8 +93,6 @@ function Main(quest, me)
     ::LAB_00d44bc3::
     bVar3 = xStack_c == nil
     ::LAB_00d44c44::
-    if not bVar3 then
-    end
 end
 
 function Init(quest, me)

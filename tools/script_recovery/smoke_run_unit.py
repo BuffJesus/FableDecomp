@@ -58,6 +58,7 @@ local quest = setmetatable({}, { __index = function(_, k)
             return true
         end
         if k == "IsActiveThreadTerminating" then return terminating end
+        if k:match("^GetAll") or k == "GetFollowingEntityList" or k == "GetStateListCopy" then return {} end
         if k == "GetHero" or (k:match("^Get") and (k:match("Thing") or k:match("With"))) or k == "CreateCreature" or k == "GetStateThing" or k == "GetStateListAt" then
             return make_thing(k)
         end
@@ -145,7 +146,7 @@ def free_globals(source):
     for m in re.finditer(r'\bfor\s+([\w\s,]+?)\s*(?:=|\bin\b)', body):
         declared.update(re.findall(r'\w+', m.group(1)))
     declared.update(re.findall(r'::(\w+)::', body))                       # labels
-    declared.update(re.findall(r'goto\s+(\w+)', body))
+    declared.update(re.findall(r'\bgoto\s+(\w+)', body))
     for m in re.finditer(r'\{[^{}]*\}', body):                             # table constructor keys {R = .., G = ..}
         declared.update(re.findall(r'(\w+)\s*=', m.group(0)))
     used = set()

@@ -741,7 +741,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1013,
+          "lines": 1011,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1319,7 +1319,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 102,
+          "lines": 100,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1666,7 +1666,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 443,
+          "lines": 435,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3422,7 +3422,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 1060,
+          "lines": 1055,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4496,7 +4496,7 @@
             "SetThingPersistent",
             "IsActiveThreadTerminating"
           ],
-          "lines": 84,
+          "lines": 82,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -6458,7 +6458,7 @@
             "label LAB_00d59cc6",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "unlifted: CStack_1d4 = (CCharString)(float)fret_06;",
-            "unlifted: CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (f",
+            "unlifted: CStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (fl",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "verify cleanup at LAB_00d5a997 (lifted as early return)",
             "label LAB_00d5a997",
@@ -9888,7 +9888,7 @@
             "DeregisterTimer",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 4490,
+          "lines": 4478,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -9908,7 +9908,7 @@
             "goto FLOW_after_lab_00d54846;",
             "goto FLOW_after_lab_00d54dfa;",
             "goto FLOW_after_lab_00d54f9c;",
-            "goto FLOW_after_lab_00d54f9c_785;",
+            "goto FLOW_after_lab_00d54f9c_783;",
             "goto FLOW_after_lab_00d551d4;",
             "goto FLOW_after_lab_00d55b4e;",
             "goto LAB_00d55480;",
@@ -9956,7 +9956,7 @@
             "FLOW_after_lab_00d54846",
             "FLOW_after_lab_00d54dfa",
             "FLOW_after_lab_00d54f9c",
-            "FLOW_after_lab_00d54f9c_785",
+            "FLOW_after_lab_00d54f9c_783",
             "FLOW_after_lab_00d551d4",
             "FLOW_after_lab_00d55b4e",
             "FLOW_native_label_1",
@@ -11259,7 +11259,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1297,
+          "lines": 1285,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12357,7 +12357,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1584,
+          "lines": 1579,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13604,7 +13604,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 851,
+          "lines": 808,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13743,6 +13743,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetAllThingsWithScriptName",
+            "LOCALLIST_Count",
             "ENGINE_Trunc",
             "UpdateQuestInfoCounter",
             "IsActiveThreadTerminating",
@@ -14206,6 +14207,7 @@
             "AddLineToConversation",
             "SetTimer",
             "GetAllThingsWithScriptName",
+            "LOCALLIST_Count",
             "ENGINE_Trunc",
             "UpdateQuestInfoCounter",
             "IsActiveThreadTerminating",
@@ -14227,7 +14229,7 @@
             "SetStateInt",
             "QUESTTHING_Empty"
           ],
-          "lines": 118,
+          "lines": 115,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14390,9 +14392,7 @@
             "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);",
             "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "ModifyThingHealth: missing spThing (2 args for 3 params)",
-            "unlifted: (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);",
+            "unlifted: (**(code **)(*(int *)LOCALLIST_At(xStack_7c, (iVar12) / 0xc) + 0x118))(0);",
             "unlifted: puStack_78 = puStack_78 + -3;",
             "label LAB_00d6849b",
             "unlifted: ACTORMAP_Set(xStack_38, \"BAN1\", &0x0)"
@@ -14451,8 +14451,10 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
             "IsActiveThreadTerminating",
+            "LOCALLIST_At",
             "GetHero",
             "GiveThingBestEnemyTarget",
+            "LOCALLIST_At",
             "GetHealth",
             "ModifyThingHealth",
             "IsActiveThreadTerminating",
@@ -14852,7 +14854,7 @@
         "functionSyntaxPassed": 9,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 17
+        "todo": 15
       }
     }
   ],
@@ -14863,6 +14865,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 785
+    "todo": 783
   }
 }

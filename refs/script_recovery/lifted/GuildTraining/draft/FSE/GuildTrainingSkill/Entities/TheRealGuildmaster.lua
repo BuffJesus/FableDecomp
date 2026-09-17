@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214_2, xStack_21c, xStack_220, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214_2, xStack_21c, xStack_220, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(xStack_180)
@@ -41,7 +41,6 @@ function Main(quest, me)
         quest:DeregisterTimer(xStack_214)
         resources:DestroyMovie(xStack_1c)
     end
-    u_stk_200 = 0
     xStack_210 = resources:NewResource()
     bVar4 = false
     if bVar4 ~= 0 then
@@ -349,7 +348,6 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_1c)
                     return
                 end
-                u_stk_200 = u_stk_200 | 1
                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                 __native_condition_4 = bVar4
                 if __native_condition_4 then
@@ -368,8 +366,7 @@ function Main(quest, me)
                 else
                     bVar4 = false
                 end
-                if (u_stk_200 & 1) ~= 0 then
-                    u_stk_200 = u_stk_200 & 0xfffffffe
+                if false then
                 end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -770,7 +767,6 @@ function Main(quest, me)
                 end
                 iVar15 = quest:GetTimer(xStack_21c)
                 if iVar15 < 1 then
-                    u_stk_200 = u_stk_200 | 2
                     bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                     if bVar4 then
                         bVar4 = false
@@ -789,8 +785,7 @@ function Main(quest, me)
                     bVar4 = false
                 end
                 ::FLOW_after_lab_00d5c757::
-                if (u_stk_200 & 2) ~= 0 then
-                    u_stk_200 = u_stk_200 & 0xfffffffd
+                if false then
                 end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -876,7 +871,6 @@ function Main(quest, me)
                         return
                     end
                 end
-                u_stk_200 = u_stk_200 | 4
                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                 __native_condition_8 = bVar4
                 if __native_condition_8 then
@@ -895,8 +889,7 @@ function Main(quest, me)
                 else
                     bVar4 = false
                 end
-                if (u_stk_200 & 4) ~= 0 then
-                    u_stk_200 = u_stk_200 & 0xfffffffb
+                if false then
                 end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -990,7 +983,6 @@ function Main(quest, me)
                 end
                 iVar15 = quest:GetTimer(xStack_21c)
                 if iVar15 < 1 then
-                    u_stk_200 = u_stk_200 | 8
                     bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                     if bVar4 then
                         bVar4 = false
@@ -1002,8 +994,7 @@ function Main(quest, me)
                     bVar4 = false
                 end
                 ::FLOW_after_lab_00d5cd47::
-                if (u_stk_200 & 8) ~= 0 then
-                    u_stk_200 = u_stk_200 & 0xfffffff7
+                if false then
                 end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -1051,7 +1042,6 @@ function Main(quest, me)
                     -- LAB_00d5cf7a: (native jump target)
                     bVar4 = false
                 else
-                    u_stk_200 = u_stk_200 | 0x30
                     -- TODO(native): CVar10 = *(this + 4)
                     CVar10 = nil --[[unresolved native value]]
                     fVar20 = 6.0
@@ -1068,11 +1058,9 @@ function Main(quest, me)
                     bVar4 = true
                 end
                 ::FLOW_after_lab_00d5cf7a::
-                if (u_stk_200 & 0x20) ~= 0 then
-                    u_stk_200 = u_stk_200 & 0xffffffdf
+                if false then
                 end
-                if (u_stk_200 & 0x10) ~= 0 then
-                    u_stk_200 = u_stk_200 & 0xffffffef
+                if false then
                 end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()

@@ -458,11 +458,85 @@ class UnitConverter:
         self.things, self.returning = load_thing_tables(self.manifest, self.slots)
         tu = json.loads(Path(tu_path).read_text(encoding='utf-8-sig'))
         self.by_address = {f['address'].lower(): f for f in tu['functions']}
+        self.name_by_value_string_parameters()
         self.code_range = tuple(int(a, 16) for a in tu['range']) if tu.get('range') else None
         self.hidden_thing_returns = {int(f['address'], 16) for f in tu['functions']
                                      if re.search(r'\*in_stack_\w+ = &PTR_\w*_01238c8c;', f.get('decompile') or '')}
         self.checker = LuaSyntaxChecker()
         self.flat_control = flat_control
+
+    def vector_copy_targets(self):
+        """Addresses of `std::vector<CScriptThing>` copy constructors in the unit (bsim mislabels them: a body that
+        calls the vector initialiser and copy-constructs each element with the CScriptThing allocator)."""
+        if not hasattr(self, '_vector_copy_targets'):
+            self._vector_copy_targets = {int(a, 16) for a, f in self.by_address.items()
+                                         if 'Std_Vector_Initialize(' in (f.get('decompile') or '')
+                                         and '_Cons_val<std::allocator<CScriptThing>,CScriptThing,CScriptThing>' in f['decompile']}
+        return self._vector_copy_targets
+
+    def name_vector_copies(self, decompile, fn):
+        """`Label((T *)&local);` where Label's target is a vector copy constructor and the source operand
+        (a `lea reg, [this + OFF]; push reg` Ghidra dropped) is a member vector: `Vector_CopyFrom(&local, this + OFF)`."""
+        targets = self.vector_copy_targets()
+        if not targets:
+            return decompile
+        try:
+            from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+            from capstone.x86 import X86_OP_MEM, X86_OP_REG
+        except ImportError:
+            return decompile
+        cs = Cs(CS_ARCH_X86, CS_MODE_32)
+        cs.detail = True
+        for call in fn.get('calls', []):
+            try:
+                target = int(call.get('target', '0'), 16)
+                site = int(call['site'], 16)
+            except (TypeError, ValueError):
+                continue
+            if target not in targets or not call.get('currentName'):
+                continue
+            raw = self.rdata.bytes_at(site - 24, 24) or b''
+            pushed = None
+            insns = list(cs.disasm(raw, site - 24))
+            for k, ins in enumerate(insns):
+                if ins.mnemonic == 'push' and ins.operands and ins.operands[0].type == X86_OP_REG and k:
+                    prev = insns[k - 1]
+                    if prev.mnemonic == 'lea' and prev.operands[0].reg == ins.operands[0].reg and prev.operands[1].type == X86_OP_MEM:
+                        pushed = prev.operands[1].mem.disp
+            if pushed is None:
+                continue
+            label = call['currentName']
+            for spelling in (label, label.removeprefix('NScript::'), label.split('::')[-1]):
+                pat = re.compile(r'^([ \t]*)' + re.escape(spelling).replace('::', r'\s*::\s*') + r'\s*\(\(\w+ \*\)&(\w+)\);', re.M)
+                decompile, n = pat.subn(lambda m: f'{m.group(1)}Vector_CopyFrom((void *)&{m.group(2)},(void *)(this + {pushed:#x}));', decompile, count=1)
+                if n:
+                    break
+        return decompile
+
+    def name_by_value_string_parameters(self):
+        """A helper taking a CCharString by value on the stack: Ghidra shows no parameter, the body reads
+        `&stack0x00000004` and each caller constructs the string on its outgoing stack
+        (`CCharString::CCharString((CCharString *)&stack0xffffffcc,"LIT",-1); Helper(this);`). The parameter
+        gets a name in the prototype and the body; the callers pass the literal."""
+        for address, fn in self.by_address.items():
+            text = fn.get('decompile') or ''
+            if '&stack0x00000004' not in text:
+                continue
+            header = re.search(r'^(\w[\w :<>,*]*?\b\w+)\((\w[\w *]*?\*?\s*\w+)\)\s*\r?\n\s*\{', text, re.M)
+            if not header:
+                continue
+            fn['decompile'] = (text[:header.start(2)] + header.group(2) + ',CCharString *strParam_1' + text[header.end(2):]
+                               ).replace('(CCharString_bv *)&stack0x00000004', 'strParam_1').replace('&stack0x00000004', 'strParam_1')
+            target = int(address, 16)
+            for caller in self.by_address.values():
+                labels = {c['currentName'] for c in caller.get('calls', []) if c.get('currentName') and int(c.get('target', '0'), 16) == target}
+                for label in labels:
+                    for spelling in (label, label.removeprefix('NScript::'), label.split('::')[-1]):
+                        pat = re.compile(r'^([ \t]*)CCharString::CCharString\(\(CCharString \*\)&stack0xffffff[0-9a-f]{2},("[^"]*"),-1\);[ \t]*\r?\n'
+                                         r'[ \t]*' + re.escape(spelling).replace('::', r'\s*::\s*') + r'\s*\(this\);', re.M)
+                        caller['decompile'], n = pat.subn(lambda m: f'{m.group(1)}{spelling}(this,{m.group(2)});', caller.get('decompile') or '')
+                        if n:
+                            break
 
     def native(self, address):
         fn = self.by_address.get(address.lower())
@@ -471,6 +545,13 @@ class UnitConverter:
     def convert(self, unit, out):
         package = unit['package']
         quest_functions = {n: f for n, f in unit['quest']['functions'].items() if n not in SKIP_ROLES}
+        # std::vector<CScriptThing> copy constructors / initialisers the evidence pass took for helpers
+        # (bsim-named library bodies inside the unit range): the lowering folds their call sites instead
+        library = {f'0x{a:08x}' for a in self.vector_copy_targets()}
+        library |= {f['address'].lower() for n, f in quest_functions.items()
+                    if f['address'].lower() not in library and (nf := self.native(f['address']))
+                    and nf.get('callers') and all(str(c.get('functionAddress', '')).lower() in library for c in nf['callers'])}
+        quest_functions = {n: f for n, f in quest_functions.items() if f['address'].lower() not in library}
         quest_state = state_map(unit['quest']['fields'])
         helpers = {f['address'].lower(): n for n, f in quest_functions.items()
                    if n not in ('Main', 'Init', 'OnPersist')}
@@ -582,7 +663,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(unwrap_statements(fn['decompile']), fn), fn.get('calls', []))
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(unwrap_statements(fn['decompile']), fn), fn), fn.get('calls', []))
                 spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output, and mangled names
                 # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`

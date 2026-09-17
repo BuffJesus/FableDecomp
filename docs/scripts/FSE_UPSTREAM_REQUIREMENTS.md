@@ -62,6 +62,7 @@ works but forces every generated function to be wrapped.
 | `quest:GetStateFloat/SetStateFloat` | float members exist (positions, timers); missing upstream |
 | `quest:GetStateThing/SetStateThing(name, thing)` | `CScriptThing` quest members (Orchard: `Teams[i].CrateDropPos`, `Teams[i].TeamCrateCarrier`) shared between the quest and its entities |
 | `quest:GetStateListCount/GetStateListAt/StateListPush(name, …)` | `std::vector<CScriptThing>` members (Orchard `CrateList`; Guild `DummyWizardsVector`) |
+| `quest:StateListClear(name)` / `StateListSet(name, table)` / `GetStateListCopy(name)` | member vector `erase(begin,end)`; a GSI out-argument fill (`GetAllCreaturesExcludingHero(&m_AllCreatures)`, TraderConflict); the by-value copy constructor (`std::vector<CScriptThing> local(m_AllCreatures)`, TraderConflict `AttackPeople`) — sidecar patch `novi-unit-bindings.patch` |
 | entity-state `Thing` kind | entity `CScriptThing` members (`ThingToPatrolTo`, `OtherSpawnPoint`) |
 
 ## 4. Small bindings (required for the quests we have lifted)

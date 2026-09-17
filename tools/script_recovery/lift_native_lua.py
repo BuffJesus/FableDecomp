@@ -180,7 +180,16 @@ RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.
 RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+|STRINGMAP_\w+)\s*\((.*)\);\s*$')
 RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (' + LABEL_TOKEN + r');\s*$')
 RE_IF_BREAK = re.compile(r'^\s*if\s*\((.*)\)\s*break;\s*$')
-RE_THING_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?CScriptThing::(\w+)\s*\(\s*([^,]+?)\s*(?:,(.*))?\);\s*$')
+def _balanced(depth):
+    """A parenthesised group nested up to `depth` levels (commas allowed inside)."""
+    inner = r'[^()]*'
+    for _ in range(depth):
+        inner = r'(?:[^()]|\(' + inner + r'\))*'
+    return r'\(' + inner + r'\)'
+
+
+# the receiver may be a call with its own operands (`LOCALLIST_At(v, (i - 4) / 0xc)`, nested state keys)
+RE_THING_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?CScriptThing::(\w+)\s*\(\s*((?:[^,()]|' + _balanced(4) + r')+?)\s*(?:,(.*))?\);\s*$')
 RE_THREAD = re.compile(
     r'(\w+) = (?:::)?operator_new\(0x3c\);.*?CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"([^"]+)",-1\);'
     r'.*?CSpawnedFunc<[^>]*>::\s*CSpawnedFunc<[^>]*>\s*\([^;]*;.*?\+ 0x34\) = &?([\w:]+);.*?\}'
@@ -202,7 +211,7 @@ RE_WHILE = re.compile(r'^\s*while\s*\((.*)\)\s*\{\s*$')
 RE_DO_WHILE_END = re.compile(r'^\s*\}\s*while\s*\(\s*(.*?)\s*\)\s*;\s*$')
 RE_LABEL = re.compile(r'^\s*(' + LABEL_TOKEN + r'):\s*(.*)$')
 RE_GOTO = re.compile(r'^\s*goto (' + LABEL_TOKEN + r');\s*$')
-RE_CAST = re.compile(r'\((?:undefined\d?|byte|uint|int|float(?:10)?|bool|char|long|short|ushort|code|[A-Za-z_]\w*(?:::\w+)* \*+|[A-Z]\w+)\)')
+RE_CAST = re.compile(r'\((?:undefined\d?|byte|uint|int|float(?:10)?|bool|char|long|short|ushort|code|[A-Za-z_]\w*(?:::\w+)* \*+|(?!\w*Var\d+\))[A-Z]\w+)\)')   # `(CVar5)` is a parenthesised register, not a cast
 RE_DECL = re.compile(r'^\s*[\w:<>,\*\s]+\s+\*{0,3}\w+(\s*\[\d+\])?;\s*$')
 RE_EXTRAOUT = re.compile(r"extraout_AL(?:_\d+)?\s*(==|!=)\s*'\\0'")
 RE_PAIRED_TERMINATION_ALIAS = re.compile(

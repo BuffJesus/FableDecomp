@@ -12,9 +12,8 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, u_stk_74, xStack_60, xStack_70_2, xStack_84, xStack_88, x_stk_18, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, xStack_60, xStack_70_2, xStack_84, xStack_88, x_stk_18, x_stk_c
     local alive = true
-    u_stk_74 = 0
     xStack_84 = resources:NewResource()
     bVar2 = false
     if bVar2 ~= 0 then
@@ -129,7 +128,6 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_60)
                     quest:DeregisterTimer(iVar4)
                     xStack_70_2 = nil
-                    u_stk_74 = 0
                     return
                 end
                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -193,7 +191,6 @@ function Main(quest, me)
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
             if __native_entity_state:GetStateBool("ChildAppleMode") then
-                u_stk_74 = u_stk_74 | 1
                 bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
                 if bVar2 then
                     bVar2 = false
@@ -205,8 +202,7 @@ function Main(quest, me)
                 bVar2 = false
             end
             ::FLOW_after_lab_00d3d987::
-            if (u_stk_74 & 1) ~= 0 then
-                u_stk_74 = u_stk_74 & 0xfffffffe
+            if false then
             end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -254,7 +250,6 @@ function Main(quest, me)
             if bVar2 then goto LAB_00d3e1b6 end
             ctr_64 = 0
             while true do
-                u_stk_74 = u_stk_74 | 2
                 pCVar6 = quest:GetHero()
                 bVar2 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", pCVar6)
                 if (bVar2) and (__native_entity_state:GetStateInt("CurrentApples") + ctr_64 < 4) then
@@ -262,8 +257,7 @@ function Main(quest, me)
                 else
                     bVar2 = false
                 end
-                if (u_stk_74 & 2) ~= 0 then
-                    u_stk_74 = u_stk_74 & 0xfffffffd
+                if false then
                 end
                 if not bVar2 then break end
                 alive = quest:NewScriptFrame(me)
@@ -391,7 +385,6 @@ function Main(quest, me)
             bVar2 = not alive
             while not bVar2 do
                 if __native_entity_state:GetStateBool("ChildAppleMode") then
-                    u_stk_74 = u_stk_74 | 4
                     bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
                     if bVar2 then
                         bVar2 = false
@@ -403,8 +396,7 @@ function Main(quest, me)
                     bVar2 = false
                 end
                 ::FLOW_after_lab_00d3e0a0::
-                if (u_stk_74 & 4) ~= 0 then
-                    u_stk_74 = u_stk_74 & 0xfffffffb
+                if false then
                 end
                 if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
