@@ -26,7 +26,7 @@ function Main(quest, me)
         if not bVar4 then
             quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 0xf)
             cVar2 = quest:GetMasterGameState("WillTrainingStarted")
-            while cVar2 ~= '\x01' do
+            while cVar2 ~= 1 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive

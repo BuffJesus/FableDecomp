@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar3, bVar4, cVar5, fVar2, fret_00, iVar10, iVar11, iVar8, iVar9, p0, p1, pCVar6, pThing, pThing_00, piVar1, r1, r2, r3, r4, r5, r6, uVar7, xStack_bc, xStack_d8, xStack_dc
+    local CVar3, bVar4, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar8, iVar9, p0, p1, pCVar6, pThing, pThing_00, piVar1, r1, r2, r3, r4, r5, uVar7, xStack_bc, xStack_d8, xStack_dc
     local alive = true
     xStack_d8 = resources:NewResource()
     bVar4 = false
@@ -53,7 +53,7 @@ function Main(quest, me)
             me:MoveToPosition(p0, iVar8, iVar9, (iVar10 ~= 0), (iVar11 ~= 0))
             iVar8 = me:IsPerformingScriptTask()
             cVar5 = iVar8
-            while (cVar5 and (quest:GetStateBool("WhisperStopWalking") ~= '\x01')) do
+            while (cVar5 and (not quest:GetStateBool("WhisperStopWalking"))) do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -112,7 +112,7 @@ function Main(quest, me)
                         end
                         pCVar6 = resources:ScriptThing(xStack_d8)
                         pThing_00 = pCVar6
-                        r1 = quest:GetHealth(pThing_00)
+                        fret_0 = quest:GetHealth(pThing_00)
                         fVar2 = 0.0
                         if fVar2 < fret_0 then
                             iVar11 = 0
@@ -121,7 +121,7 @@ function Main(quest, me)
                             iVar8 = 0
                             p1 = "TEXT_QST_028_WHISPER_MEET"
                             pCVar6 = quest:GetHero()
-                            r2 = me:Speak(pCVar6, p1, iVar8, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                            r1 = me:Speak(pCVar6, p1, iVar8, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
                             iVar8 = me:IsPerformingScriptTask()
                             cVar5 = iVar8
                             while cVar5 do
@@ -424,8 +424,8 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
                                         if not bVar4 then
-                                            r3 = quest:GetThingWithScriptName("TheRealGuildmaster")
-                                            iVar9 = quest:AddNewConversation(r3, false, false)
+                                            r2 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                            iVar9 = quest:AddNewConversation(r2, false, false)
                                             pCVar6 = quest:GetHero()
                                             quest:AddPersonToConversation(iVar9, pCVar6)
                                             pCVar6 = quest:GetHero()
@@ -657,8 +657,8 @@ function Main(quest, me)
                                             resources:ReleaseResource(xStack_d8)
                                             return
                                         end
-                                        r4 = quest:GetThingWithScriptName("MeleeThunder")
-                                        iVar9 = quest:AddNewConversation(r4, false, false)
+                                        r3 = quest:GetThingWithScriptName("MeleeThunder")
+                                        iVar9 = quest:AddNewConversation(r3, false, false)
                                         pCVar6 = quest:GetHero()
                                         quest:AddPersonToConversation(iVar9, pCVar6)
                                         pCVar6 = quest:GetHero()
@@ -721,12 +721,12 @@ function Main(quest, me)
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar4 = not alive
                                                 if not bVar4 then
-                                                    r5 = quest:GetThingWithScriptName("MeleeThunder")
-                                                    iVar9 = quest:AddNewConversation(r5, false, false)
+                                                    r4 = quest:GetThingWithScriptName("MeleeThunder")
+                                                    iVar9 = quest:AddNewConversation(r4, false, false)
                                                     pCVar6 = quest:GetHero()
                                                     quest:AddPersonToConversation(iVar9, pCVar6)
                                                     pCVar6 = quest:GetHero()
-                                                    quest:AddLineToConversation(iVar9, "TEXT_QST_028_THUNDER_MELEE_ATTACK", r5, pCVar6, false)
+                                                    quest:AddLineToConversation(iVar9, "TEXT_QST_028_THUNDER_MELEE_ATTACK", r4, pCVar6, false)
                                                     -- LAB_00d57e76_c40: (native jump target)
                                                     quest:SetTimer(xStack_dc, 0xf)
                                                     goto FLOW_after_lab_00d57e76
@@ -774,12 +774,12 @@ function Main(quest, me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar4 = not alive
                                                     if not bVar4 then
-                                                        r6 = quest:GetThingWithScriptName("MeleeThunder")
-                                                        iVar9 = quest:AddNewConversation(r6, false, false)
+                                                        r5 = quest:GetThingWithScriptName("MeleeThunder")
+                                                        iVar9 = quest:AddNewConversation(r5, false, false)
                                                         pCVar6 = quest:GetHero()
                                                         quest:AddPersonToConversation(iVar9, pCVar6)
                                                         pCVar6 = quest:GetHero()
-                                                        quest:AddLineToConversation(iVar9, "TEXT_QST_028_THUNDER_MELEE_FINISH", pCVar6, r5, false)
+                                                        quest:AddLineToConversation(iVar9, "TEXT_QST_028_THUNDER_MELEE_FINISH", pCVar6, r4, false)
                                                         -- LAB_00d57e76_c44: (native jump target)
                                                         quest:SetTimer(xStack_dc, 0xf)
                                                         goto FLOW_after_lab_00d57e76

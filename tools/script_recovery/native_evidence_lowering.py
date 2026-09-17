@@ -335,7 +335,7 @@ def bind_st0_results(text: str) -> str:
         fret = 'fret_' + (name.split('_', 2)[2] if name.count('_') == 2 else '0')
         for k in range(first - 1, -1, -1):
             l = lines[k]
-            if re.match(r'^\s*(?:\(\*\*\(code \*\*\)|GSI->|[\w:]+::[\w~]+\s*\(|\w+\()', l) and l.rstrip().endswith(');') and ' = ' not in l.split('(')[0]:
+            if re.match(r'^\s*(?:\(\*\*\(code \*\*\)|GSI->|[\w:]+::[\w~]+\s*\(|\w+\()', l) and l.rstrip().endswith(');') and ' = ' not in l.split('(')[0]                     and not re.match(r'^\s*(?:std::|NHeroInformationScreens::|C\w+::(?:~?C\w+|_\w+)\s*\(|operator_(?:delete|new)\(|\(\*\(code \*\))', l):    # not a ctor/dtor/release of a temp
                 lines[k] = re.sub(r'^(\s*)', r'\1' + fret + ' = ', l, count=1)
                 break
         else:

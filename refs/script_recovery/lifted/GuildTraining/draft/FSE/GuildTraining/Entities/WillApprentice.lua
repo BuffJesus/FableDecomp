@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar4, cVar5, c_stk_115, c_stk_131, fVar18, fVar3, iVar13, iVar14, iVar16, iVar17, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar12, r1, r10, r11, r12, r2, r3, r4, r5, r6, r7, r8, r9, timerId, xStack_104, xStack_114, xStack_138, xStack_148, xStack_14c, xStack_150, xStack_18, xStack_24, xStack_30, xStack_3c, xStack_4c, xStack_5c, xStack_6c, xStack_c, xStack_d8, x_stk_108
+    local __native_condition_1, __native_condition_2, bVar4, cVar5, c_stk_115, c_stk_131, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar13, iVar14, iVar16, iVar17, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar12, r1, r2, r3, r4, r5, r6, r7, timerId, xStack_104, xStack_114, xStack_138, xStack_148, xStack_14c, xStack_150, xStack_4c, xStack_5c, xStack_6c, xStack_d8, x_stk_108, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d50495()
         resources:ReleaseResource(xStack_148)
@@ -95,7 +95,7 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then __cleanup_LAB_00d505a6(); return end
             quest:SetThingHasInformation(me, false, true, false)
-            c_stk_131 = '\x01'
+            c_stk_131 = 1
         end
         ::LAB_00d4f285::
         bVar4 = quest:IsDistanceBetweenThingsOver(me, r2, 4.0)
@@ -193,9 +193,9 @@ function Main(quest, me)
                         xStack_5c = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        xStack_18 = resources:ScriptThing(xStack_148)
-                        pCVar8 = xStack_18
-                        r3 = quest:GetHealth(pCVar8)
+                        x_stk_18 = resources:ScriptThing(xStack_148)
+                        pCVar8 = x_stk_18
+                        fret_00 = quest:GetHealth(pCVar8)
                         fVar3 = 0.0
                         if fVar3 < fret_00 then
                             iVar16 = 0
@@ -204,7 +204,7 @@ function Main(quest, me)
                             iVar6 = 0
                             pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_MULTI_GRADE"
                             pCVar8 = quest:GetHero()
-                            r4 = me:Speak(pCVar8, pcVar12, iVar6, (iVar13 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                            r3 = me:Speak(pCVar8, pcVar12, iVar6, (iVar13 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
                             iVar6 = me:IsPerformingScriptTask()
                             cVar5 = iVar6
                             while cVar5 do
@@ -264,9 +264,9 @@ function Main(quest, me)
                 bVar4 = not alive
                 if iVar6 ~= 1 then
                     if not bVar4 then
-                        xStack_30 = resources:ScriptThing(xStack_148)
-                        pCVar8 = xStack_30
-                        r5 = quest:GetHealth(pCVar8)
+                        x_stk_30 = resources:ScriptThing(xStack_148)
+                        pCVar8 = x_stk_30
+                        fret_03 = quest:GetHealth(pCVar8)
                         fVar3 = 0.0
                         if fVar3 < fret_03 then
                             iVar17 = 0
@@ -275,7 +275,7 @@ function Main(quest, me)
                             iVar13 = 0
                             pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_RETURN"
                             pCVar8 = quest:GetHero()
-                            r6 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                            r4 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
                             iVar13 = me:IsPerformingScriptTask()
                             cVar5 = iVar13
                             while cVar5 do
@@ -307,9 +307,9 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_104)
                     __cleanup_LAB_00d505a6(); return
                 end
-                xStack_c = resources:ScriptThing(xStack_148)
-                pCVar8 = xStack_c
-                r7 = quest:GetHealth(pCVar8)
+                x_stk_c = resources:ScriptThing(xStack_148)
+                pCVar8 = x_stk_c
+                fret_01 = quest:GetHealth(pCVar8)
                 fVar3 = 0.0
                 if fVar3 < fret_01 then
                     iVar17 = 0
@@ -318,7 +318,7 @@ function Main(quest, me)
                     iVar13 = 0
                     pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_INTRO"
                     pCVar8 = quest:GetHero()
-                    r8 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                    r5 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
                     iVar13 = me:IsPerformingScriptTask()
                     cVar5 = iVar13
                     while cVar5 do
@@ -351,9 +351,9 @@ function Main(quest, me)
                         resources:ReleaseResource(xStack_104)
                         __cleanup_LAB_00d505a6(); return
                     end
-                    xStack_24 = resources:ScriptThing(xStack_148)
-                    pCVar8 = xStack_24
-                    r9 = quest:GetHealth(pCVar8)
+                    x_stk_24 = resources:ScriptThing(xStack_148)
+                    pCVar8 = x_stk_24
+                    fret_02 = quest:GetHealth(pCVar8)
                     fVar3 = 0.0
                     if fVar3 < fret_02 then
                         iVar17 = 0
@@ -362,7 +362,7 @@ function Main(quest, me)
                         iVar13 = 0
                         pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_INTRO_APLUS"
                         pCVar8 = quest:GetHero()
-                        r10 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                        r6 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
                         iVar13 = me:IsPerformingScriptTask()
                         cVar5 = iVar13
                         while cVar5 do
@@ -439,8 +439,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d50594 end
-                        cVar5 = '\x01'
-                        c_stk_115 = '\x01'
+                        cVar5 = 1
+                        c_stk_115 = 1
                     end
                     iVar6 = quest:GetHeroWillEnergy()
                     __native_condition_2 = iVar6 == 0
@@ -468,8 +468,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d50594 end
-                        cVar5 = '\x01'
-                        c_stk_115 = '\x01'
+                        cVar5 = 1
+                        c_stk_115 = 1
                     end
                     iVar6 = iVar6
                     quest:UpdateQuestInfoCounter(iVar6, quest:GetMasterGameState("WillScore"), -1)
@@ -648,9 +648,9 @@ function Main(quest, me)
                     xStack_4c = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    xStack_3c = resources:ScriptThing(xStack_148)
-                    pCVar8 = xStack_3c
-                    r11 = quest:GetHealth(pCVar8)
+                    x_stk_3c = resources:ScriptThing(xStack_148)
+                    pCVar8 = x_stk_3c
+                    fret_0 = quest:GetHealth(pCVar8)
                     fVar3 = 0.0
                     if fVar3 < fret_0 then
                         iVar16 = 0
@@ -659,7 +659,7 @@ function Main(quest, me)
                         iVar6 = 0
                         pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_EARLY"
                         pCVar8 = quest:GetHero()
-                        r12 = me:Speak(pCVar8, pcVar12, iVar6, (iVar13 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                        r7 = me:Speak(pCVar8, pcVar12, iVar6, (iVar13 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
                         iVar6 = me:IsPerformingScriptTask()
                         cVar5 = iVar6
                         while cVar5 do

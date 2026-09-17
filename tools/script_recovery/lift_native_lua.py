@@ -1040,7 +1040,9 @@ class Lifter:
         text = re.sub(r'CScriptThing::(\w+)\((\w+)(?:, ?([^()]*))?\)', self.inline_thing_call, text)
         text = text.replace("&&", " and ").replace("||", " or ").replace("!=", " ~= ")
         text = re.sub(r'(?<![=~<>!])!\s*', "not ", text)
-        text = text.replace("'\\0'", "0")
+        # C char literals in bool/byte compares; `'\x01' - (cond)` is the compiler's `!cond`
+        text = re.sub(r"'\\x01' - \(([^;()]+(?:\([^;()]*\)[^;()]*)*)\)", r'not (\1)', text)
+        text = text.replace("'\\0'", "0").replace("'\\x01'", "1")
         bool_atoms = [var for var, kind in self.kinds.items() if kind == "bool"]
         bool_atoms += array_bools
         bool_atoms += re.findall(r'\b\w+:GetStateBool\("\w+"\)', text)

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, dist, fVar2, f_stk_28, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, r3, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, xStack_c
+    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c
     local alive = true
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(1)
@@ -76,9 +76,9 @@ function Main(quest, me)
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 me:ClearCommands()
-                xStack_c = resources:ScriptThing(xStack_a0)
-                pCVar5 = xStack_c
-                r1 = quest:GetHealth(pCVar5)
+                x_stk_c = resources:ScriptThing(xStack_a0)
+                pCVar5 = x_stk_c
+                fret_0 = quest:GetHealth(pCVar5)
                 fVar2 = 0.0
                 if fVar2 < fret_0 then
                     p5 = 0
@@ -87,7 +87,7 @@ function Main(quest, me)
                     iVar10 = 0
                     p1 = "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CHAT"
                     pCVar5 = quest:GetHero()
-                    r2 = me:Speak(pCVar5, p1, iVar10, (iVar11 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                    r1 = me:Speak(pCVar5, p1, iVar10, (iVar11 ~= 0), (p4 ~= 0), (p5 ~= 0))
                     iVar10 = me:IsPerformingScriptTask()
                     cVar4 = iVar10
                     while cVar4 do
@@ -122,15 +122,15 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_1c)
             end
-            r3 = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
+            r2 = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
             pCVar5 = quest:GetHero()
-            if not (r3 ~= nil and not r3:IsNull()) then
+            if not (r2 ~= nil and not r2:IsNull()) then
             else
-                puVar8 = r3:GetPos()
+                puVar8 = r2:GetPos()
             end
             pCVar6 = pCVar5:GetPos()
             -- TODO(native): xStack_a0 = (float)puVar8[2] - *(float *)(pCVar6 + 0x8);
-            bVar3 = quest:IsDistanceBetweenThingsUnder(me, r3, 7.0)
+            bVar3 = quest:IsDistanceBetweenThingsUnder(me, r2, 7.0)
             if bVar3 then
                 dist = 7.0
                 pCVar5 = quest:GetHero()
@@ -165,7 +165,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_a0)
                     return
                 end
-                pvVar7 = r3:GetDataString()
+                pvVar7 = r2:GetDataString()
                 -- TODO(native): xStack_a0 = (float)GFCharStringToInt(pvVar7);
                 uVar9 = 0
                 i_stk_8c = 0

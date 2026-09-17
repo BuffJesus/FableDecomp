@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, bVar4, cVar5, fVar2, iVar11, iVar12, iVar13, iVar14, p0, pCVar6, pCVar7, pCVar9, pThing, pcVar10, puVar8, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, xStack_18, xStack_24, xStack_3c, xStack_48, xStack_64, xStack_74, xStack_84, xStack_94, xStack_a4, xStack_c, xStack_f8
+    local __native_condition_1, bVar3, bVar4, cVar5, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, iVar11, iVar12, iVar13, iVar14, p0, pCVar6, pCVar7, pCVar9, pThing, pcVar10, puVar8, r1, r2, r3, r4, r5, r6, xStack_64, xStack_74, xStack_84, xStack_94, xStack_a4, xStack_f8, x_stk_18, x_stk_24, x_stk_3c, x_stk_48, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d419fe()
         pCVar9 = xStack_a4
@@ -194,9 +194,9 @@ function Main(quest, me)
                     xStack_74 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    xStack_18 = resources:ScriptThing(0)
-                    pCVar6 = xStack_18
-                    r2 = quest:GetHealth(pCVar6)
+                    x_stk_18 = resources:ScriptThing(0)
+                    pCVar6 = x_stk_18
+                    fret_0 = quest:GetHealth(pCVar6)
                     fVar2 = 0.0
                     if fVar2 < fret_0 then
                         iVar14 = 0
@@ -205,7 +205,7 @@ function Main(quest, me)
                         iVar11 = 0
                         pcVar10 = "TEXT_QST_028_WHISPER_SCORPION_WOODS"
                         pCVar6 = quest:GetHero()
-                        r3 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                        r2 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
                         iVar11 = me:IsPerformingScriptTask()
                         cVar5 = iVar11
                         while cVar5 do
@@ -268,9 +268,9 @@ function Main(quest, me)
                     xStack_94 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    xStack_48 = resources:ScriptThing(0)
-                    pCVar6 = xStack_48
-                    r4 = quest:GetHealth(pCVar6)
+                    x_stk_48 = resources:ScriptThing(0)
+                    pCVar6 = x_stk_48
+                    fret_00 = quest:GetHealth(pCVar6)
                     fVar2 = 0.0
                     if fVar2 < fret_00 then
                         iVar14 = 0
@@ -279,7 +279,7 @@ function Main(quest, me)
                         iVar11 = 0
                         pcVar10 = "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN"
                         pCVar6 = quest:GetHero()
-                        r5 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                        r3 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
                         iVar11 = me:IsPerformingScriptTask()
                         cVar5 = iVar11
                         while cVar5 do
@@ -318,9 +318,9 @@ function Main(quest, me)
                         xStack_84 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        xStack_3c = resources:ScriptThing(0)
-                        pCVar6 = xStack_3c
-                        r6 = quest:GetHealth(pCVar6)
+                        x_stk_3c = resources:ScriptThing(0)
+                        pCVar6 = x_stk_3c
+                        fret_01 = quest:GetHealth(pCVar6)
                         fVar2 = 0.0
                         if fVar2 < fret_01 then
                             iVar14 = 0
@@ -329,7 +329,7 @@ function Main(quest, me)
                             iVar11 = 0
                             pcVar10 = "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN"
                             pCVar6 = quest:GetHero()
-                            r7 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                            r4 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
                             iVar11 = me:IsPerformingScriptTask()
                             cVar5 = iVar11
                             while cVar5 do
@@ -376,9 +376,9 @@ function Main(quest, me)
                             xStack_64 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
-                            xStack_24 = resources:ScriptThing(0)
-                            pCVar6 = xStack_24
-                            r8 = quest:GetHealth(pCVar6)
+                            x_stk_24 = resources:ScriptThing(0)
+                            pCVar6 = x_stk_24
+                            fret_02 = quest:GetHealth(pCVar6)
                             fVar2 = 0.0
                             if fVar2 < fret_02 then
                                 iVar14 = 0
@@ -387,7 +387,7 @@ function Main(quest, me)
                                 iVar11 = 0
                                 pcVar10 = "TEXT_QST_028_WHISPER_END_MOAN"
                                 pCVar6 = quest:GetHero()
-                                r9 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                r5 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar5 = iVar11
                                 while cVar5 do
@@ -423,9 +423,9 @@ function Main(quest, me)
                             xStack_a4 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
-                            xStack_c = resources:ScriptThing(0)
-                            pCVar6 = xStack_c
-                            r10 = quest:GetHealth(pCVar6)
+                            x_stk_c = resources:ScriptThing(0)
+                            pCVar6 = x_stk_c
+                            fret_03 = quest:GetHealth(pCVar6)
                             fVar2 = 0.0
                             if fVar2 < fret_03 then
                                 iVar14 = 0
@@ -434,7 +434,7 @@ function Main(quest, me)
                                 iVar11 = 0
                                 pcVar10 = "TEXT_QST_028_WHISPER_MELEE_MOAN"
                                 pCVar6 = quest:GetHero()
-                                r11 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                r6 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar5 = iVar11
                                 while cVar5 do

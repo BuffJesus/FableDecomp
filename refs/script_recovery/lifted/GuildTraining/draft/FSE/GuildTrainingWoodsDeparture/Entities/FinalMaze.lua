@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, iVar14, iVar18, iVar19, iVar21, iVar22, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, r6, r7, uVar12, uVar13, u_stk_78, xStack_10, xStack_1c, xStack_38, xStack_5c, xStack_70, xStack_80
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, fret_0, fret_00, iVar14, iVar18, iVar19, iVar21, iVar22, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, uVar12, uVar13, u_stk_78, xStack_10, xStack_1c, xStack_38, xStack_5c, xStack_70, xStack_80
     local alive = true
     uVar12 = 0
     u_stk_78 = 0
@@ -307,7 +307,7 @@ function Main(quest, me)
             quest:CameraUseCameraPoint(pCVar9, me, fVar17, iVar18, iVar21)
             pCVar9 = resources:ScriptThing(xStack_70)
             pCVar6 = pCVar9
-            r2 = quest:GetHealth(pCVar6)
+            fret_0 = quest:GetHealth(pCVar6)
             fVar2 = 0.0
             if fVar2 < fret_0 then
                 iVar22 = 0
@@ -316,7 +316,7 @@ function Main(quest, me)
                 iVar19 = 0
                 pcVar15 = "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SKILL_FIRST"
                 pCVar6 = quest:GetHero()
-                r3 = me:Speak(pCVar6, pcVar15, iVar19, (iVar18 ~= 0), (iVar21 ~= 0), (iVar22 ~= 0))
+                r2 = me:Speak(pCVar6, pcVar15, iVar19, (iVar18 ~= 0), (iVar21 ~= 0), (iVar22 ~= 0))
                 iVar19 = me:IsPerformingScriptTask()
                 cVar5 = iVar19
                 while cVar5 do
@@ -357,7 +357,7 @@ function Main(quest, me)
             fVar20 = 20.0
             fVar17 = 5.0
             pCVar8 = me:GetPos()
-            r4 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
+            r3 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
             cVar5 = __native_entity_state:GetStateBool("NotBeaten")
             uVar12 = u_stk_78
             while cVar5 do
@@ -569,7 +569,7 @@ function Main(quest, me)
                     quest:CameraUseCameraPoint(pCVar9, me, fVar17, iVar18, iVar21)
                     pCVar9 = resources:ScriptThing(xStack_70)
                     pCVar6 = pCVar9
-                    r5 = quest:GetHealth(pCVar6)
+                    fret_00 = quest:GetHealth(pCVar6)
                     fVar2 = 0.0
                     if fVar2 < fret_00 then
                         iVar22 = 0
@@ -578,7 +578,7 @@ function Main(quest, me)
                         iVar19 = 0
                         pcVar15 = "TEXT_QST_028_MAZE_WOODS_DEPARTURE_LIGHTNING_FIRST"
                         pCVar6 = quest:GetHero()
-                        r6 = me:Speak(pCVar6, pcVar15, iVar19, (iVar18 ~= 0), (iVar21 ~= 0), (iVar22 ~= 0))
+                        r4 = me:Speak(pCVar6, pcVar15, iVar19, (iVar18 ~= 0), (iVar21 ~= 0), (iVar22 ~= 0))
                         iVar19 = me:IsPerformingScriptTask()
                         cVar5 = iVar19
                         while cVar5 do
@@ -619,7 +619,7 @@ function Main(quest, me)
                     fVar20 = 20.0
                     fVar17 = 5.0
                     pCVar8 = me:GetPos()
-                    r7 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
+                    r5 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
                     cVar5 = __native_entity_state:GetStateBool("NotBeaten")
                     uVar12 = u_stk_78
                     while cVar5 do

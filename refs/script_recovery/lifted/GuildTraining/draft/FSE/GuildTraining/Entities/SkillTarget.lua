@@ -60,7 +60,7 @@ function Main(quest, me)
         if not bVar3 then
             cVar2 = quest:GetMasterGameState("SkillTrainingStarted")
             i_stk_16c = 0
-            while cVar2 ~= '\x01' do
+            while cVar2 ~= 1 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -240,7 +240,7 @@ function Main(quest, me)
                             return
                         end
                         cVar2 = quest:GetMasterGameState("MovingDummiesNeeded")
-                        while cVar2 ~= '\x01' do
+                        while cVar2 ~= 1 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -296,7 +296,7 @@ function Main(quest, me)
                                 quest:DeregisterTimer(xStack_190)
                                 return
                             end
-                            if quest:GetMasterGameState("MovingDummiesNeeded") == '\x01' then
+                            if quest:GetMasterGameState("MovingDummiesNeeded") == 1 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
@@ -543,14 +543,14 @@ function Main(quest, me)
                                 quest:DeregisterTimer(xStack_190)
                                 return
                             end
-                            if quest:GetMasterGameState("SkillRepeating") == '\x01' then
+                            if quest:GetMasterGameState("SkillRepeating") == 1 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
                                     quest:DeregisterTimer(xStack_190)
                                     return
                                 end
-                                c_stk_165 = '\x01'
+                                c_stk_165 = 1
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive

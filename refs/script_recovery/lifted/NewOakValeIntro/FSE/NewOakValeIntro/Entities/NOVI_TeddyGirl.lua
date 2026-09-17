@@ -288,9 +288,9 @@ function Main(quest, me)
             end
         else
             if unaff_EDI ~= nil then
-                cVar5 = '\x01' - (lVar11 ~= 0)
+                cVar5 = not (lVar11 ~= 0)
                 -- TODO(native): uStack_150 = (int *)CONCAT13(cVar5,(undefined3)uStack_150);
-                if cVar5 ~= 0 then goto LAB_00daf87a end
+                if cVar5 then goto LAB_00daf87a end
                 -- TODO(native): goto LAB_00daf720
             end
             iVar9 = 28

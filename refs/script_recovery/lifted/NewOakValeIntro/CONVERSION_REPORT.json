@@ -80,7 +80,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -218,7 +219,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "native speech 0x00db0d5a: me:Speak adds a blocking wait; explicit resource speech/lifetime required",
@@ -5761,7 +5763,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -5898,7 +5901,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "label LAB_00db33f3",
@@ -10945,7 +10949,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -11077,7 +11082,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: bVar5 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_ac);",
@@ -11386,7 +11392,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [],
       "calls": [],
@@ -11512,7 +11519,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -11664,7 +11672,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -11797,7 +11806,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -12145,7 +12155,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "SetCreatureBrain: missing spCreature (1 args for 2 params)",
@@ -13980,7 +13991,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -14112,7 +14124,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "label LAB_00db6f4e",
@@ -14543,7 +14556,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -14678,7 +14692,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_124);",
@@ -20148,7 +20163,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -20291,7 +20307,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_13c);",
@@ -21178,7 +21195,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -21309,7 +21327,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [],
       "calls": [],
@@ -21435,7 +21454,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -21576,7 +21596,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -21712,7 +21733,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "Guard exit cleanup: native ownership callback and control-resource destruction unresolved",
@@ -22282,7 +22304,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -22416,7 +22439,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocat",
@@ -22892,7 +22916,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -23027,7 +23052,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: auStack_13c[0] = auStack_13c[0] | 1;",
@@ -23680,7 +23706,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -23811,7 +23838,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -23946,7 +23974,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocat",
@@ -24630,7 +24659,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -24766,7 +24796,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocat",
@@ -25198,7 +25229,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -25333,7 +25365,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [
         "unlifted: bVar5 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_20);",
@@ -25629,7 +25662,8 @@
             "type": "long"
           }
         ],
-        "returnKind": "number"
+        "returnKind": "number",
+        "bsimVoid": false
       },
       "todo": [],
       "calls": [
@@ -25770,7 +25804,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: iStack_4 = param_1;",
@@ -25903,7 +25938,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [
         "unlifted: bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_10);",
@@ -26058,7 +26094,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [],
       "calls": [],
@@ -26184,7 +26221,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -26312,7 +26350,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [
         "unlifted: CCharString::CCharString((CCharString *)(pCVar2 + 4),local_10);",
@@ -26467,7 +26506,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [],
       "calls": [
@@ -26694,7 +26734,8 @@
             "type": "CPersistContext *"
           }
         ],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [],
       "calls": [
@@ -26719,7 +26760,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -27285,7 +27327,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -27581,7 +27624,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [
         "post-attack wrapper cleanup: Forge shared_ptr/GC lifetime does not prove retail zero-reference destructor callback parity",
@@ -29189,7 +29233,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [
         "marker wrapper cleanup: Forge shared_ptr/GC lifetime does not prove retail zero-reference destructor callback parity"
@@ -30011,7 +30056,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [],
       "calls": [
@@ -30604,7 +30650,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: (**(code **)*puVar1)(0);",
@@ -30766,7 +30813,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -30900,7 +30948,8 @@
       "source": "translation_unit.json",
       "nativeSignature": {
         "parameters": [],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -31063,7 +31112,8 @@
             "type": "EBadDeeds"
           }
         ],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": true
       },
       "todo": [],
       "calls": [
@@ -31224,7 +31274,8 @@
             "type": "uint"
           }
         ],
-        "returnKind": null
+        "returnKind": null,
+        "bsimVoid": false
       },
       "todo": [
         "unlifted: CParticleEmitter_Dtor_7();"

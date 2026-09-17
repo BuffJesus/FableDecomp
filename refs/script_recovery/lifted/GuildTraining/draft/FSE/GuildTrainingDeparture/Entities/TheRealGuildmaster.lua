@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, cVar5, fVar3, iVar10, iVar8, p1, p4, p5, pCVar6, pThing, pppuVar9, r1, r2, xStack_10, xStack_20, xStack_30
+    local bVar4, cVar5, fVar3, fret_0, iVar10, iVar8, p1, p4, p5, pCVar6, pThing, pppuVar9, r1, xStack_10, xStack_20, xStack_30
     local alive = true
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetThingHasInformation(me, false, false, false)
@@ -111,7 +111,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(true)
                     pCVar6 = resources:ScriptThing(xStack_30)
                     pCVar6 = pCVar6
-                    r1 = quest:GetHealth(pCVar6)
+                    fret_0 = quest:GetHealth(pCVar6)
                     fVar3 = 0.0
                     pCVar6 = nil
                     if fVar3 < fret_0 then
@@ -121,7 +121,7 @@ function Main(quest, me)
                         iVar8 = 0
                         p1 = "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN"
                         pCVar6 = quest:GetHero()
-                        r2 = me:Speak(pCVar6, p1, iVar8, (iVar10 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                        r1 = me:Speak(pCVar6, p1, iVar8, (iVar10 ~= 0), (p4 ~= 0), (p5 ~= 0))
                         iVar8 = me:IsPerformingScriptTask()
                         cVar5 = iVar8
                         while cVar5 do

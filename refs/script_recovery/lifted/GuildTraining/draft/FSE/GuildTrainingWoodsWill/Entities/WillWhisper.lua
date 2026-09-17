@@ -77,7 +77,7 @@ function Main(quest, me)
                     quest:EntitySetInFaction(me, "FACTION_HERO")
                     me:SetFriendsWithEverythingFlag(me)
                 end
-                if quest:GetStateBool("WhisperAnimate") == '\x01' then
+                if quest:GetStateBool("WhisperAnimate") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d68acf end

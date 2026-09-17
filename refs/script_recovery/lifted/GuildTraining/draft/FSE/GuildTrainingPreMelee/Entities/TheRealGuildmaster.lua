@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_10, __native_condition_11, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_3, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_24, xStack_30, xStack_48, xStack_c, xStack_f8, x_stk_58
+    local CVar10, __native_condition_1, __native_condition_10, __native_condition_11, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r4, r5, r6, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_3, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
     local alive = true
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -102,7 +102,7 @@ function Main(quest, me)
     quest:EntityTeleportToThing(me, pCVar5, bVar3)
     xStack_188 = quest:RegisterTimer()
     quest:SetTimer(xStack_188, 0)
-    c_stk_169 = '\x01'
+    c_stk_169 = 1
     repeat
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
@@ -642,7 +642,7 @@ function Main(quest, me)
                                                                                                         iVar7 = 0x3f800000
                                                                                                         pCVar12 = pCVar6:GetPos()
                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
-                                                                                                        c_stk_169 = '\x01'
+                                                                                                        c_stk_169 = 1
                                                                                                         quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                         c_stk_161 = 0
                                                                                                         repeat
@@ -732,7 +732,7 @@ function Main(quest, me)
                                                                                                                     if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c6
                                                                                                                     r1 = resources:ScriptThing(xStack_17c)
                                                                                                                     pCVar5 = r1
-                                                                                                                    r2 = quest:GetHealth(pCVar5)
+                                                                                                                    fret_0 = quest:GetHealth(pCVar5)
                                                                                                                     fVar2 = 0.0
                                                                                                                     if fVar2 < fret_0 then
                                                                                                                         uVar16 = 0
@@ -744,7 +744,7 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0
                                                                                                                         pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                         pCVar5 = quest:GetHero()
-                                                                                                                        r3 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                        r2 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                         iVar7 = me:IsPerformingScriptTask()
                                                                                                                         cVar4 = iVar7
                                                                                                                         while cVar4 do
@@ -824,9 +824,9 @@ function Main(quest, me)
                                                                                                                     quest:StartMovieSequence()
                                                                                                                     pCVar6 = 0x1
                                                                                                                     quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                                                                                                                    xStack_30 = resources:ScriptThing(xStack_17c)
-                                                                                                                    pCVar5 = xStack_30
-                                                                                                                    r4 = quest:GetHealth(pCVar5)
+                                                                                                                    x_stk_30 = resources:ScriptThing(xStack_17c)
+                                                                                                                    pCVar5 = x_stk_30
+                                                                                                                    fret_00 = quest:GetHealth(pCVar5)
                                                                                                                     fVar2 = 0.0
                                                                                                                     if fret_00 <= fVar2 then
                                                                                                                         -- LAB_00d551d4_c6: (native jump target)
@@ -856,7 +856,7 @@ function Main(quest, me)
                                                                                                                                 if bVar3 then goto LAB_00d55cba_c6 end
                                                                                                                                 x_stk_58 = resources:ScriptThing(xStack_17c)
                                                                                                                                 pCVar5 = x_stk_58
-                                                                                                                                r5 = quest:GetHealth(pCVar5)
+                                                                                                                                fret_01 = quest:GetHealth(pCVar5)
                                                                                                                                 fVar2 = 0.0
                                                                                                                                 if fVar2 < fret_01 then
                                                                                                                                     uVar16 = 0
@@ -868,7 +868,7 @@ function Main(quest, me)
                                                                                                                                     iVar7 = 0
                                                                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                                     pCVar5 = quest:GetHero()
-                                                                                                                                    r6 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                                    r3 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                                                                     cVar4 = iVar7
                                                                                                                                     while cVar4 do
@@ -907,7 +907,7 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0
                                                                                                                         pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                         pCVar5 = quest:GetHero()
-                                                                                                                        r7 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                        r4 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                         iVar7 = me:IsPerformingScriptTask()
                                                                                                                         cVar4 = iVar7
                                                                                                                         while cVar4 do
@@ -942,9 +942,9 @@ function Main(quest, me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_c
-                                                                                                                        r8 = quest:GetHealth(pCVar5)
+                                                                                                                        x_stk_c = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = x_stk_c
+                                                                                                                        fret_03 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_03 then
                                                                                                                             uVar16 = 0
@@ -956,7 +956,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r9 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r5 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -995,9 +995,9 @@ function Main(quest, me)
                                                                                                                                 __region_LAB_00d555f3_c6(); goto LAB_00d55c2b
                                                                                                                             end
                                                                                                                             if not bVar3 then
-                                                                                                                                xStack_48 = resources:ScriptThing(xStack_17c)
-                                                                                                                                pCVar5 = xStack_48
-                                                                                                                                r10 = quest:GetHealth(pCVar5)
+                                                                                                                                x_stk_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                                pCVar5 = x_stk_48
+                                                                                                                                fret_04 = quest:GetHealth(pCVar5)
                                                                                                                                 fVar2 = 0.0
                                                                                                                                 if fVar2 < fret_04 then
                                                                                                                                     uVar16 = 0
@@ -1009,7 +1009,7 @@ function Main(quest, me)
                                                                                                                                     iVar7 = 0
                                                                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                                     pCVar5 = quest:GetHero()
-                                                                                                                                    r11 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                                    r6 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                                                                     cVar4 = iVar7
                                                                                                                                     while cVar4 do
@@ -1047,9 +1047,9 @@ function Main(quest, me)
                                                                                                                     __region_LAB_00d555f3_c6()
                                                                                                                     goto LAB_00d55c2b
                                                                                                                 end
-                                                                                                                xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_24
-                                                                                                                r12 = quest:GetHealth(pCVar5)
+                                                                                                                x_stk_24 = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = x_stk_24
+                                                                                                                fret_02 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_02 then
                                                                                                                     uVar16 = 0
@@ -1061,7 +1061,7 @@ function Main(quest, me)
                                                                                                                     iVar7 = 0
                                                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD"
                                                                                                                     pCVar6 = quest:GetHero()
-                                                                                                                    r13 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                    r7 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                                                     cVar4 = iVar7
                                                                                                                     while cVar4 do
@@ -1145,7 +1145,7 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55c2b end
                                                                                                                     bVar3 = false
-                                                                                                                    c_stk_161 = '\x01'
+                                                                                                                    c_stk_161 = 1
                                                                                                                     pCVar6 = quest:GetHero()
                                                                                                                     quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar3)
                                                                                                                 end
@@ -1179,7 +1179,7 @@ function Main(quest, me)
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
-                                                                                                c_stk_169 = '\x01'
+                                                                                                c_stk_169 = 1
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
                                                                                                 repeat
@@ -1231,9 +1231,9 @@ function Main(quest, me)
                                                                                                             quest:StartMovieSequence()
                                                                                                             pCVar6 = 0x1
                                                                                                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                                                                                                            xStack_30 = resources:ScriptThing(xStack_17c)
-                                                                                                            pCVar5 = xStack_30
-                                                                                                            r14 = quest:GetHealth(pCVar5)
+                                                                                                            x_stk_30 = resources:ScriptThing(xStack_17c)
+                                                                                                            pCVar5 = x_stk_30
+                                                                                                            fret_00 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fret_00 <= fVar2 then
                                                                                                                 -- LAB_00d551d4_c7: (native jump target)
@@ -1263,7 +1263,7 @@ function Main(quest, me)
                                                                                                                         if bVar3 then goto LAB_00d55cba_c7 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
                                                                                                                         pCVar5 = x_stk_58
-                                                                                                                        r15 = quest:GetHealth(pCVar5)
+                                                                                                                        fret_01 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_01 then
                                                                                                                             uVar16 = 0
@@ -1275,7 +1275,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r16 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r8 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -1314,7 +1314,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r17 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r9 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -1429,7 +1429,7 @@ function Main(quest, me)
                                                                                                             end
                                                                                                             r1 = resources:ScriptThing(xStack_17c)
                                                                                                             pCVar5 = r1
-                                                                                                            r18 = quest:GetHealth(pCVar5)
+                                                                                                            fret_0 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fVar2 < fret_0 then
                                                                                                                 uVar16 = 0
@@ -1441,7 +1441,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r19 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r10 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -1489,11 +1489,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_786
+                                                                                                                goto FLOW_after_lab_00d54f9c_785
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_786::
+                                                                                                        ::FLOW_after_lab_00d54f9c_785::
                                                                                                         if (u_stk_128 & 1) ~= 0 then
                                                                                                             u_stk_128 = u_stk_128 & 0xfffffffe
                                                                                                         end
@@ -1535,9 +1535,9 @@ function Main(quest, me)
                                                                                                             quest:StartMovieSequence()
                                                                                                             pCVar6 = 0x1
                                                                                                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                                                                                                            xStack_30 = resources:ScriptThing(xStack_17c)
-                                                                                                            pCVar5 = xStack_30
-                                                                                                            r20 = quest:GetHealth(pCVar5)
+                                                                                                            x_stk_30 = resources:ScriptThing(xStack_17c)
+                                                                                                            pCVar5 = x_stk_30
+                                                                                                            fret_00 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fret_00 <= fVar2 then
                                                                                                                 -- LAB_00d551d4: (native jump target)
@@ -1572,7 +1572,7 @@ function Main(quest, me)
                                                                                                                         if bVar3 then goto LAB_00d55cba end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
                                                                                                                         pCVar5 = x_stk_58
-                                                                                                                        r21 = quest:GetHealth(pCVar5)
+                                                                                                                        fret_01 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_01 then
                                                                                                                             uVar16 = 0
@@ -1584,7 +1584,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r22 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r11 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -1626,7 +1626,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r23 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r12 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -1670,7 +1670,7 @@ function Main(quest, me)
                                                                                                                             if bVar3 then goto LAB_00d55cba end
                                                                                                                             x_stk_58 = resources:ScriptThing(xStack_17c)
                                                                                                                             pCVar5 = x_stk_58
-                                                                                                                            r24 = quest:GetHealth(pCVar5)
+                                                                                                                            fret_01 = quest:GetHealth(pCVar5)
                                                                                                                             fVar2 = 0.0
                                                                                                                             if fVar2 < fret_01 then
                                                                                                                                 uVar16 = 0
@@ -1682,7 +1682,7 @@ function Main(quest, me)
                                                                                                                                 iVar7 = 0
                                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                                r25 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                                r13 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                                 cVar4 = iVar7
                                                                                                                                 while cVar4 do
@@ -1736,9 +1736,9 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_c
-                                                                                                                r26 = quest:GetHealth(pCVar5)
+                                                                                                                x_stk_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = x_stk_c
+                                                                                                                fret_03 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
                                                                                                                     uVar16 = 0
@@ -1750,7 +1750,7 @@ function Main(quest, me)
                                                                                                                     iVar7 = 0
                                                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                     pCVar5 = quest:GetHero()
-                                                                                                                    r27 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                    r14 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                                                     cVar4 = iVar7
                                                                                                                     while cVar4 do
@@ -1796,9 +1796,9 @@ function Main(quest, me)
                                                                                                                         goto LAB_00d55c2b
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_48
-                                                                                                                        r28 = quest:GetHealth(pCVar5)
+                                                                                                                        x_stk_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = x_stk_48
+                                                                                                                        fret_04 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
                                                                                                                             uVar16 = 0
@@ -1810,7 +1810,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r29 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r15 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -1853,9 +1853,9 @@ function Main(quest, me)
                                                                                                             quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
-                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = xStack_24
-                                                                                                        r30 = quest:GetHealth(pCVar5)
+                                                                                                        x_stk_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = x_stk_24
+                                                                                                        fret_02 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
                                                                                                             uVar16 = 0
@@ -1867,7 +1867,7 @@ function Main(quest, me)
                                                                                                             iVar7 = 0
                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD"
                                                                                                             pCVar6 = quest:GetHero()
-                                                                                                            r31 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                            r16 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                             cVar4 = iVar7
                                                                                                             while cVar4 do
@@ -1958,7 +1958,7 @@ function Main(quest, me)
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b end
                                                                                                             bVar3 = false
-                                                                                                            c_stk_161 = '\x01'
+                                                                                                            c_stk_161 = 1
                                                                                                             pCVar6 = quest:GetHero()
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar3)
                                                                                                         end
@@ -2128,7 +2128,7 @@ function Main(quest, me)
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
-                                                                                                c_stk_169 = '\x01'
+                                                                                                c_stk_169 = 1
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
                                                                                                 repeat
@@ -2218,7 +2218,7 @@ function Main(quest, me)
                                                                                                             if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c27
                                                                                                             r1 = resources:ScriptThing(xStack_17c)
                                                                                                             pCVar5 = r1
-                                                                                                            r32 = quest:GetHealth(pCVar5)
+                                                                                                            fret_0 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fVar2 < fret_0 then
                                                                                                                 uVar16 = 0
@@ -2230,7 +2230,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r33 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r17 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -2310,9 +2310,9 @@ function Main(quest, me)
                                                                                                             quest:StartMovieSequence()
                                                                                                             pCVar6 = 0x1
                                                                                                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                                                                                                            xStack_30 = resources:ScriptThing(xStack_17c)
-                                                                                                            pCVar5 = xStack_30
-                                                                                                            r34 = quest:GetHealth(pCVar5)
+                                                                                                            x_stk_30 = resources:ScriptThing(xStack_17c)
+                                                                                                            pCVar5 = x_stk_30
+                                                                                                            fret_00 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fret_00 <= fVar2 then
                                                                                                                 -- LAB_00d551d4_c27: (native jump target)
@@ -2342,7 +2342,7 @@ function Main(quest, me)
                                                                                                                         if bVar3 then goto LAB_00d55cba_c27 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
                                                                                                                         pCVar5 = x_stk_58
-                                                                                                                        r35 = quest:GetHealth(pCVar5)
+                                                                                                                        fret_01 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_01 then
                                                                                                                             uVar16 = 0
@@ -2354,7 +2354,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r36 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r18 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -2393,7 +2393,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r37 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r19 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -2428,9 +2428,9 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_c
-                                                                                                                r38 = quest:GetHealth(pCVar5)
+                                                                                                                x_stk_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = x_stk_c
+                                                                                                                fret_03 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
                                                                                                                     uVar16 = 0
@@ -2442,7 +2442,7 @@ function Main(quest, me)
                                                                                                                     iVar7 = 0
                                                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                     pCVar5 = quest:GetHero()
-                                                                                                                    r39 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                    r20 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                                                     cVar4 = iVar7
                                                                                                                     while cVar4 do
@@ -2481,9 +2481,9 @@ function Main(quest, me)
                                                                                                                         __region_LAB_00d555f3_c27(); goto LAB_00d55c2b_c27
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_48
-                                                                                                                        r40 = quest:GetHealth(pCVar5)
+                                                                                                                        x_stk_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = x_stk_48
+                                                                                                                        fret_04 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
                                                                                                                             uVar16 = 0
@@ -2495,7 +2495,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r41 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r21 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -2533,9 +2533,9 @@ function Main(quest, me)
                                                                                                             __region_LAB_00d555f3_c27()
                                                                                                             goto LAB_00d55c2b_c27
                                                                                                         end
-                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = xStack_24
-                                                                                                        r42 = quest:GetHealth(pCVar5)
+                                                                                                        x_stk_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = x_stk_24
+                                                                                                        fret_02 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
                                                                                                             uVar16 = 0
@@ -2547,7 +2547,7 @@ function Main(quest, me)
                                                                                                             iVar7 = 0
                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD"
                                                                                                             pCVar6 = quest:GetHero()
-                                                                                                            r43 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                            r22 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                             cVar4 = iVar7
                                                                                                             while cVar4 do
@@ -2631,7 +2631,7 @@ function Main(quest, me)
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b_c27 end
                                                                                                             bVar3 = false
-                                                                                                            c_stk_161 = '\x01'
+                                                                                                            c_stk_161 = 1
                                                                                                             pCVar6 = quest:GetHero()
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar3)
                                                                                                         end
@@ -2785,17 +2785,17 @@ function Main(quest, me)
                                                     resources:DestroyMovie(xStack_14c)
                                                     resources:DestroyMovie(xStack_124)
                                                 else
-                                                    r44 = quest:GetThingWithScriptName("PreMeleeDummy")
-                                                    if not (r44 ~= nil and not r44:IsNull()) then
+                                                    r23 = quest:GetThingWithScriptName("PreMeleeDummy")
+                                                    if not (r23 ~= nil and not r23:IsNull()) then
                                                     else
-                                                        puVar11 = r44:GetPos()
+                                                        puVar11 = r23:GetPos()
                                                     end
                                                     -- TODO(native): CStack_114._0_4_ = *puVar11;
                                                     -- TODO(native): CStack_114._4_4_ = puVar11[1];
                                                     -- TODO(native): CStack_114._8_4_ = puVar11[2];
                                                     -- TODO(native): CreateEffect is not a ForgeFSE binding
                                                     quest:CreateEffect(pCVar6, "SMASH_DUMMY_01", pCVar5, "", 0.0, false, false)
-                                                    quest:FadeOutAndKillEntity(r44, true, 1.0, true)
+                                                    quest:FadeOutAndKillEntity(r23, true, 1.0, true)
                                                     xStack_13c = resources:NewActorMap()
                                                     resources:SetActor(xStack_13c, "HERO", xStack_14c)
                                                     resources:SetActor(xStack_13c, "TEACHER", xStack_17c)
@@ -2953,7 +2953,7 @@ function Main(quest, me)
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
-                                                                                                c_stk_169 = '\x01'
+                                                                                                c_stk_169 = 1
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
                                                                                                 repeat
@@ -3041,9 +3041,9 @@ function Main(quest, me)
                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                         else
                                                                                                             if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c28
-                                                                                                            r44 = resources:ScriptThing(xStack_17c)
-                                                                                                            pCVar5 = r44
-                                                                                                            r45 = quest:GetHealth(pCVar5)
+                                                                                                            r23 = resources:ScriptThing(xStack_17c)
+                                                                                                            pCVar5 = r23
+                                                                                                            fret_0 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fVar2 < fret_0 then
                                                                                                                 uVar16 = 0
@@ -3055,7 +3055,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r46 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r24 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -3135,9 +3135,9 @@ function Main(quest, me)
                                                                                                             quest:StartMovieSequence()
                                                                                                             pCVar6 = 0x1
                                                                                                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                                                                                                            xStack_30 = resources:ScriptThing(xStack_17c)
-                                                                                                            pCVar5 = xStack_30
-                                                                                                            r47 = quest:GetHealth(pCVar5)
+                                                                                                            x_stk_30 = resources:ScriptThing(xStack_17c)
+                                                                                                            pCVar5 = x_stk_30
+                                                                                                            fret_00 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fret_00 <= fVar2 then
                                                                                                                 -- LAB_00d551d4_c28: (native jump target)
@@ -3167,7 +3167,7 @@ function Main(quest, me)
                                                                                                                         if bVar3 then goto LAB_00d55cba_c28 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
                                                                                                                         pCVar5 = x_stk_58
-                                                                                                                        r48 = quest:GetHealth(pCVar5)
+                                                                                                                        fret_01 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_01 then
                                                                                                                             uVar16 = 0
@@ -3179,7 +3179,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r49 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r25 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -3218,7 +3218,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r50 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r26 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -3253,9 +3253,9 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_c
-                                                                                                                r51 = quest:GetHealth(pCVar5)
+                                                                                                                x_stk_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = x_stk_c
+                                                                                                                fret_03 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
                                                                                                                     uVar16 = 0
@@ -3267,7 +3267,7 @@ function Main(quest, me)
                                                                                                                     iVar7 = 0
                                                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                     pCVar5 = quest:GetHero()
-                                                                                                                    r52 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                    r27 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                                                     cVar4 = iVar7
                                                                                                                     while cVar4 do
@@ -3306,9 +3306,9 @@ function Main(quest, me)
                                                                                                                         __region_LAB_00d555f3_c28(); goto LAB_00d55c2b_c28
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_48
-                                                                                                                        r53 = quest:GetHealth(pCVar5)
+                                                                                                                        x_stk_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = x_stk_48
+                                                                                                                        fret_04 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
                                                                                                                             uVar16 = 0
@@ -3320,7 +3320,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r54 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r28 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -3358,9 +3358,9 @@ function Main(quest, me)
                                                                                                             __region_LAB_00d555f3_c28()
                                                                                                             goto LAB_00d55c2b_c28
                                                                                                         end
-                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = xStack_24
-                                                                                                        r55 = quest:GetHealth(pCVar5)
+                                                                                                        x_stk_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = x_stk_24
+                                                                                                        fret_02 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
                                                                                                             uVar16 = 0
@@ -3372,7 +3372,7 @@ function Main(quest, me)
                                                                                                             iVar7 = 0
                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD"
                                                                                                             pCVar6 = quest:GetHero()
-                                                                                                            r56 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                            r29 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                             cVar4 = iVar7
                                                                                                             while cVar4 do
@@ -3456,7 +3456,7 @@ function Main(quest, me)
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b_c28 end
                                                                                                             bVar3 = false
-                                                                                                            c_stk_161 = '\x01'
+                                                                                                            c_stk_161 = 1
                                                                                                             pCVar6 = quest:GetHero()
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar3)
                                                                                                         end
@@ -3764,17 +3764,17 @@ function Main(quest, me)
                                                     resources:DestroyMovie(xStack_14c)
                                                     resources:DestroyMovie(xStack_124)
                                                 else
-                                                    r57 = quest:GetThingWithScriptName("PreMeleeDummy")
-                                                    if not (r57 ~= nil and not r57:IsNull()) then
+                                                    r30 = quest:GetThingWithScriptName("PreMeleeDummy")
+                                                    if not (r30 ~= nil and not r30:IsNull()) then
                                                     else
-                                                        puVar11 = r57:GetPos()
+                                                        puVar11 = r30:GetPos()
                                                     end
                                                     -- TODO(native): CStack_114._0_4_ = *puVar11;
                                                     -- TODO(native): CStack_114._4_4_ = puVar11[1];
                                                     -- TODO(native): CStack_114._8_4_ = puVar11[2];
                                                     -- TODO(native): CreateEffect is not a ForgeFSE binding
                                                     quest:CreateEffect(pCVar6, "SMASH_DUMMY_01", pCVar5, "", 0.0, false, false)
-                                                    quest:FadeOutAndKillEntity(r57, true, 1.0, true)
+                                                    quest:FadeOutAndKillEntity(r30, true, 1.0, true)
                                                     xStack_13c = resources:NewActorMap()
                                                     resources:SetActor(xStack_13c, "HERO", xStack_14c)
                                                     resources:SetActor(xStack_13c, "TEACHER", xStack_17c)
@@ -3932,7 +3932,7 @@ function Main(quest, me)
                                                                                                 iVar7 = 0x3f800000
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
-                                                                                                c_stk_169 = '\x01'
+                                                                                                c_stk_169 = 1
                                                                                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                                 c_stk_161 = 0
                                                                                                 repeat
@@ -4020,9 +4020,9 @@ function Main(quest, me)
                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                         else
                                                                                                             if bVar3 then return end  -- TODO(native): goto LAB_00d55c72_c29
-                                                                                                            r57 = resources:ScriptThing(xStack_17c)
-                                                                                                            pCVar5 = r57
-                                                                                                            r58 = quest:GetHealth(pCVar5)
+                                                                                                            r30 = resources:ScriptThing(xStack_17c)
+                                                                                                            pCVar5 = r30
+                                                                                                            fret_0 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fVar2 < fret_0 then
                                                                                                                 uVar16 = 0
@@ -4034,7 +4034,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r59 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r31 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -4114,9 +4114,9 @@ function Main(quest, me)
                                                                                                             quest:StartMovieSequence()
                                                                                                             pCVar6 = 0x1
                                                                                                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                                                                                                            xStack_30 = resources:ScriptThing(xStack_17c)
-                                                                                                            pCVar5 = xStack_30
-                                                                                                            r60 = quest:GetHealth(pCVar5)
+                                                                                                            x_stk_30 = resources:ScriptThing(xStack_17c)
+                                                                                                            pCVar5 = x_stk_30
+                                                                                                            fret_00 = quest:GetHealth(pCVar5)
                                                                                                             fVar2 = 0.0
                                                                                                             if fret_00 <= fVar2 then
                                                                                                                 -- LAB_00d551d4_c29: (native jump target)
@@ -4146,7 +4146,7 @@ function Main(quest, me)
                                                                                                                         if bVar3 then goto LAB_00d55cba_c29 end
                                                                                                                         x_stk_58 = resources:ScriptThing(xStack_17c)
                                                                                                                         pCVar5 = x_stk_58
-                                                                                                                        r61 = quest:GetHealth(pCVar5)
+                                                                                                                        fret_01 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_01 then
                                                                                                                             uVar16 = 0
@@ -4158,7 +4158,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r62 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r32 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -4197,7 +4197,7 @@ function Main(quest, me)
                                                                                                                 iVar7 = 0
                                                                                                                 pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                r63 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                r33 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                 iVar7 = me:IsPerformingScriptTask()
                                                                                                                 cVar4 = iVar7
                                                                                                                 while cVar4 do
@@ -4232,9 +4232,9 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_c
-                                                                                                                r64 = quest:GetHealth(pCVar5)
+                                                                                                                x_stk_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = x_stk_c
+                                                                                                                fret_03 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
                                                                                                                     uVar16 = 0
@@ -4246,7 +4246,7 @@ function Main(quest, me)
                                                                                                                     iVar7 = 0
                                                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                                                                     pCVar5 = quest:GetHero()
-                                                                                                                    r65 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                    r34 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                                                     cVar4 = iVar7
                                                                                                                     while cVar4 do
@@ -4285,9 +4285,9 @@ function Main(quest, me)
                                                                                                                         __region_LAB_00d555f3_c29(); goto LAB_00d55c2b_c29
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_48
-                                                                                                                        r66 = quest:GetHealth(pCVar5)
+                                                                                                                        x_stk_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = x_stk_48
+                                                                                                                        fret_04 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
                                                                                                                             uVar16 = 0
@@ -4299,7 +4299,7 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0
                                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                                                             pCVar5 = quest:GetHero()
-                                                                                                                            r67 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                                            r35 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                                             cVar4 = iVar7
                                                                                                                             while cVar4 do
@@ -4337,9 +4337,9 @@ function Main(quest, me)
                                                                                                             __region_LAB_00d555f3_c29()
                                                                                                             goto LAB_00d55c2b_c29
                                                                                                         end
-                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = xStack_24
-                                                                                                        r68 = quest:GetHealth(pCVar5)
+                                                                                                        x_stk_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = x_stk_24
+                                                                                                        fret_02 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
                                                                                                             uVar16 = 0
@@ -4351,7 +4351,7 @@ function Main(quest, me)
                                                                                                             iVar7 = 0
                                                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD"
                                                                                                             pCVar6 = quest:GetHero()
-                                                                                                            r69 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
+                                                                                                            r36 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), CONCAT13(uVar19,CONCAT12(uVar18,CONCAT11( uVar17,uVar16))))
                                                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                                                             cVar4 = iVar7
                                                                                                             while cVar4 do
@@ -4435,7 +4435,7 @@ function Main(quest, me)
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b_c29 end
                                                                                                             bVar3 = false
-                                                                                                            c_stk_161 = '\x01'
+                                                                                                            c_stk_161 = 1
                                                                                                             pCVar6 = quest:GetHero()
                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar3)
                                                                                                         end

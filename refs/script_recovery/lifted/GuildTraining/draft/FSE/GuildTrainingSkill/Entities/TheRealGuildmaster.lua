@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, r5, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_210, xStack_214_2, xStack_21c, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_210, xStack_214_2, xStack_21c, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(xStack_180)
@@ -103,7 +103,7 @@ function Main(quest, me)
                     me:ClearCommands()
                     pCVar7 = resources:ScriptThing(xStack_210)
                     pCVar7 = pCVar7
-                    r1 = quest:GetHealth(pCVar7)
+                    fret_0 = quest:GetHealth(pCVar7)
                     fVar3 = 0.0
                     pCVar7 = nil
                     if fVar3 < fret_0 then
@@ -113,7 +113,7 @@ function Main(quest, me)
                         iVar15 = 0
                         pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START"
                         pCVar7 = quest:GetHero()
-                        r2 = me:Speak(pCVar7, pcVar14, iVar15, (iVar16 ~= 0), (iVar17 ~= 0), (iVar19 ~= 0))
+                        r1 = me:Speak(pCVar7, pcVar14, iVar15, (iVar16 ~= 0), (iVar17 ~= 0), (iVar19 ~= 0))
                         iVar15 = me:IsPerformingScriptTask()
                         cVar5 = iVar15
                         while cVar5 do
@@ -302,7 +302,7 @@ function Main(quest, me)
             iVar15 = xStack_21c
             quest:SetTimer(xStack_21c, 0xf)
             quest:SetMasterGameState("SkillScore", 0)
-            r3 = quest:GetThingWithScriptName("ArcheryRing")
+            r2 = quest:GetThingWithScriptName("ArcheryRing")
             xStack_1d0 = quest:GetMasterGameState("SkillScore")
             quest:EntitySetTargetable(me, false)
             bVar4 = quest:IsXbox()
@@ -385,7 +385,7 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_1c)
                         return
                     end
-                    c_stk_215 = '\x01'
+                    c_stk_215 = 1
                     quest:RemoveQuestInfoElement(iVar16)
                     quest:RemoveQuestInfoElement(xStack_1ec)
                     quest:RemoveQuestInfoElement(xStack_1e8)
@@ -917,7 +917,7 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_1c)
                         return
                     end
-                    c_stk_215 = '\x01'
+                    c_stk_215 = 1
                     quest:RemoveQuestInfoElement(1)
                     quest:RemoveQuestInfoElement(xStack_1ec)
                     quest:RemoveQuestInfoElement(xStack_1e8)
@@ -986,7 +986,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then __cleanup_LAB_00d5db90(); return end
-                    c_stk_215 = '\x01'
+                    c_stk_215 = 1
                 end
                 iVar15 = xStack_1d0
                 quest:UpdateQuestInfoCounter(xStack_1d0, quest:GetMasterGameState("SkillScore"), -1)
@@ -1276,7 +1276,7 @@ function Main(quest, me)
                 quest:TakeObjectFromHero("OBJECT_YEW_LONGBOW")
             end
             cVar5 = quest:GetMasterGameState("SkillDummyReset")
-            while cVar5 ~= '\x01' do
+            while cVar5 ~= 1 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -1310,14 +1310,14 @@ function Main(quest, me)
             pCVar7 = quest:GetThingWithScriptName("SkillApprenticeMarker")
             bVar4 = false
             pCVar8 = pCVar7:GetPos()
-            r4 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "SkillApprentice")
-            if (r4 ~= nil and not r4:IsNull()) then
-                r4:SetToKillOnLevelUnload(0)
+            r3 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "SkillApprentice")
+            if (r3 ~= nil and not r3:IsNull()) then
+                r3:SetToKillOnLevelUnload(0)
             end
             pCVar7 = quest:GetThingWithScriptName("BirdKillerMarker")
             bVar4 = false
             pCVar8 = pCVar7:GetPos()
-            r5 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "BirdKiller")
+            r4 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "BirdKiller")
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_05", "", "")
             delay = 0
             pCVar11 = quest:GetActiveQuestName()

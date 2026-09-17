@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, r5, r6, r7, u_stk_74, xStack_18, xStack_60, xStack_70_2, xStack_84, xStack_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, u_stk_74, xStack_60, xStack_70_2, xStack_84, x_stk_18, x_stk_c
     local alive = true
     u_stk_74 = 0
     xStack_84 = resources:NewResource()
@@ -85,9 +85,9 @@ function Main(quest, me)
                 bVar2 = not alive
                 if bVar2 then goto LAB_00d3e06c end
                 __native_entity_state:SetStateBool("HaveChatted", true)
-                xStack_18 = resources:ScriptThing(xStack_84)
-                pCVar5 = xStack_18
-                r2 = quest:GetHealth(pCVar5)
+                x_stk_18 = resources:ScriptThing(xStack_84)
+                pCVar5 = x_stk_18
+                fret_0 = quest:GetHealth(pCVar5)
                 fVar1 = 0.0
                 if fVar1 < fret_0 then
                     iVar12 = 0
@@ -96,7 +96,7 @@ function Main(quest, me)
                     iVar7 = 0
                     pcVar10 = "TEXT_QST_028_APPLEGIRL_CHAT"
                     pCVar5 = quest:GetHero()
-                    r3 = me:Speak(pCVar5, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                    r2 = me:Speak(pCVar5, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
                     iVar7 = me:IsPerformingScriptTask()
                     cVar3 = iVar7
                     while cVar3 do
@@ -150,9 +150,9 @@ function Main(quest, me)
                 end
             else
                 if bVar2 then goto LAB_00d3e06c end
-                xStack_c = resources:ScriptThing(xStack_84)
-                pCVar5 = xStack_c
-                r4 = quest:GetHealth(pCVar5)
+                x_stk_c = resources:ScriptThing(xStack_84)
+                pCVar5 = x_stk_c
+                fret_00 = quest:GetHealth(pCVar5)
                 fVar1 = 0.0
                 if fVar1 < fret_00 then
                     iVar12 = 0
@@ -161,7 +161,7 @@ function Main(quest, me)
                     iVar7 = 0
                     pcVar10 = "TEXT_QST_028_APPLEGIRL_IMPLORE"
                     pCVar6 = quest:GetHero()
-                    r5 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                    r3 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
                     iVar7 = me:IsPerformingScriptTask()
                     cVar3 = iVar7
                     while cVar3 do
@@ -191,7 +191,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
-            if __native_entity_state:GetStateBool("ChildAppleMode") == '\x01' then
+            if __native_entity_state:GetStateBool("ChildAppleMode") then
                 u_stk_74 = u_stk_74 | 1
                 bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
                 if bVar2 then
@@ -340,9 +340,9 @@ function Main(quest, me)
                                 quest:StartMovieSequence()
                                 pCVar5 = 0x1
                                 quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
-                                xStack_c = resources:ScriptThing(xStack_84)
-                                pCVar6 = xStack_c
-                                r6 = quest:GetHealth(pCVar6)
+                                x_stk_c = resources:ScriptThing(xStack_84)
+                                pCVar6 = x_stk_c
+                                fret_01 = quest:GetHealth(pCVar6)
                                 fVar1 = 0.0
                                 if fVar1 < fret_01 then
                                     iVar12 = 0
@@ -351,7 +351,7 @@ function Main(quest, me)
                                     iVar7 = 0
                                     pcVar10 = "TEXT_QST_028_APPLEGIRL_THANKS"
                                     pCVar6 = quest:GetHero()
-                                    r7 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                                    r4 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
                                     iVar7 = me:IsPerformingScriptTask()
                                     cVar3 = iVar7
                                     while cVar3 do
@@ -389,7 +389,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             while not bVar2 do
-                if __native_entity_state:GetStateBool("ChildAppleMode") == '\x01' then
+                if __native_entity_state:GetStateBool("ChildAppleMode") then
                     u_stk_74 = u_stk_74 | 4
                     bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
                     if bVar2 then

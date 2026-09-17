@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, bVar4, bVar6, cVar5, fVar2, iVar10, iVar11, iVar12, iVar7, p0, pCVar13, pCVar8, pThing, pcVar9, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c, xStack_48
+    local __native_condition_1, bVar3, bVar4, bVar6, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar12, iVar7, p0, pCVar8, pThing, pcVar9, r1, r2, r3, r4, xStack_10, xStack_20, xStack_30, xStack_48, x_stk_3c
     local alive = true
     bVar6 = false
     bVar3 = false
@@ -135,11 +135,10 @@ function Main(quest, me)
             me:ClearCommands()
             xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
-            pCVar13 = 0x1
-            quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
-            xStack_3c = resources:ScriptThing(xStack_30)
-            pCVar8 = xStack_3c
-            r2 = quest:GetHealth(pCVar8)
+            quest:PauseAllNonScriptedEntities(bVar6)
+            x_stk_3c = resources:ScriptThing(xStack_30)
+            pCVar8 = x_stk_3c
+            fret_00 = quest:GetHealth(pCVar8)
             fVar2 = 0.0
             if fVar2 < fret_00 then
                 iVar12 = 0
@@ -148,7 +147,7 @@ function Main(quest, me)
                 iVar7 = 0
                 pcVar9 = "TEXT_QST_028_MAZE_HIT"
                 pCVar8 = quest:GetHero()
-                r3 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                r2 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
                 iVar7 = me:IsPerformingScriptTask()
                 cVar5 = iVar7
                 while cVar5 do
@@ -187,11 +186,10 @@ function Main(quest, me)
     me:ClearCommands()
     xStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
-    pCVar13 = 0x1
-    quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
+    quest:PauseAllNonScriptedEntities((fVar2 ~= 0))
     xStack_48 = resources:ScriptThing(xStack_30)
     pCVar8 = xStack_48
-    r4 = quest:GetHealth(pCVar8)
+    fret_0 = quest:GetHealth(pCVar8)
     fVar2 = 0.0
     if fret_0 <= fVar2 then
         -- LAB_00d441a3: (native jump target)
@@ -215,11 +213,10 @@ function Main(quest, me)
             me:ClearCommands()
             xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
-            pCVar13 = 0x1
-            quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
-            xStack_3c = resources:ScriptThing(xStack_30)
-            pCVar8 = xStack_3c
-            r5 = quest:GetHealth(pCVar8)
+            quest:PauseAllNonScriptedEntities(bVar6)
+            x_stk_3c = resources:ScriptThing(xStack_30)
+            pCVar8 = x_stk_3c
+            fret_00 = quest:GetHealth(pCVar8)
             fVar2 = 0.0
             if fVar2 < fret_00 then
                 iVar12 = 0
@@ -228,7 +225,7 @@ function Main(quest, me)
                 iVar7 = 0
                 pcVar9 = "TEXT_QST_028_MAZE_HIT"
                 pCVar8 = quest:GetHero()
-                r6 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                r3 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
                 iVar7 = me:IsPerformingScriptTask()
                 cVar5 = iVar7
                 while cVar5 do
@@ -266,7 +263,7 @@ function Main(quest, me)
     iVar7 = 0
     pcVar9 = "TEXT_QST_028_MAZE_LEAVE_ME"
     pCVar8 = quest:GetHero()
-    r7 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+    r4 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
     iVar7 = me:IsPerformingScriptTask()
     cVar5 = iVar7
     while cVar5 do

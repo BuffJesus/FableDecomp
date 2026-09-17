@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_00, fret_01, fret_02, fret_03, fret_04, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, r7, r8, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
+    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
     xStack_250 = resources:NewResource()
     bVar3 = false
@@ -81,7 +81,7 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(true)
                 xStack_220 = resources:ScriptThing(xStack_250)
                 pCVar5 = xStack_220
-                r2 = quest:GetHealth(pCVar5)
+                fret_0 = quest:GetHealth(pCVar5)
                 fVar2 = 0.0
                 xStack_220 = nil
                 if fVar2 < fret_0 then
@@ -91,7 +91,7 @@ function Main(quest, me)
                     iVar7 = 0
                     pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_HIT_WHISPER"
                     pCVar5 = quest:GetHero()
-                    r3 = me:Speak(pCVar5, pcVar14, iVar7, (iVar6 ~= 0), (iVar20 ~= 0), (iVar17 ~= 0))
+                    r2 = me:Speak(pCVar5, pcVar14, iVar7, (iVar6 ~= 0), (iVar20 ~= 0), (iVar17 ~= 0))
                     iVar7 = me:IsPerformingScriptTask()
                     cVar4 = iVar7
                     while cVar4 do
@@ -181,7 +181,7 @@ function Main(quest, me)
         quest:SetStateBool("WhisperStopWalking", true)
         quest:SetPlayerCreatureOnlyTarget(r1)
         cVar4 = quest:GetStateBool("MeleeRepeating")
-        while cVar4 == '\x01' do
+        while cVar4 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -440,19 +440,19 @@ function Main(quest, me)
             pCVar5 = quest:GetThingWithScriptName("SkillApprenticeMarker")
             bVar3 = false
             pCVar9 = pCVar5:GetPos()
-            r4 = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", pCVar9, "MeleeThunder")
-            quest:EntitySetAppearanceMorphSeed(r4, 1)
+            r3 = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", pCVar9, "MeleeThunder")
+            quest:EntitySetAppearanceMorphSeed(r3, 1)
             xStack_214 = resources:NewResource()
             bVar3 = false
             if bVar3 ~= 0 then
             end
-            bVar3 = resources:TryAcquire(xStack_214, r4, 4)
+            bVar3 = resources:TryAcquire(xStack_214, r3, 4)
             while not bVar3 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
-                bVar3 = resources:TryAcquire(xStack_214, r4, 4)
+                bVar3 = resources:TryAcquire(xStack_214, r3, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -533,7 +533,7 @@ function Main(quest, me)
             quest:DisplayQuestInfo(true)
             fVar19 = 1.0
             pCVar5 = quest:GetThingWithScriptName("MeleeOpponent")
-            r5 = quest:AddQuestInfoBarHealth(pCVar5, pCVar11, "HUD_WHISPER_ICON", fVar19)
+            r4 = quest:AddQuestInfoBarHealth(pCVar5, pCVar11, "HUD_WHISPER_ICON", fVar19)
             pCVar5 = quest:GetHero()
             fret_02 = quest:GetHealth(pCVar5)
             f_stk_70 = fret_02
@@ -549,7 +549,7 @@ function Main(quest, me)
                 fret_04 = quest:GetHealth(pCVar5)
                 if quest:ReadGlobalGameDataFloat(0xed8) <= fret_04 then
                     pCVar5 = quest:GetThingWithScriptName("MeleeOpponent")
-                    r6 = quest:GetHealth(pCVar5)
+                    fret_05 = quest:GetHealth(pCVar5)
                     fVar19 = quest:ReadGlobalGameDataFloat(0xed8)
                     if fret_05 < fVar19 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -785,7 +785,7 @@ function Main(quest, me)
             resources:DestroyMovie(xStack_1c0)
             resources:ReleaseResource(xStack_1d0)
             cVar4 = quest:GetStateBool("MeleeOpponentReset")
-            while cVar4 ~= '\x01' do
+            while not cVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -817,11 +817,11 @@ function Main(quest, me)
             pCVar10 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
             bVar3 = false
             pCVar9 = pCVar10:GetPos()
-            r7 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar9, "MeleeApprentice")
+            r5 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar9, "MeleeApprentice")
             pCVar10 = quest:GetThingWithScriptName("CombatApprenticeMarker")
             bVar3 = false
             pCVar9 = pCVar10:GetPos()
-            r8 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar9, "CombatApprentice")
+            r6 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar9, "CombatApprentice")
             delay = 0
             pCVar11 = quest:GetActiveQuestName()
             quest:DeactivateQuestLater(pCVar11, delay)
