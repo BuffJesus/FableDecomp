@@ -13,15 +13,14 @@ end
 -- TheRealGuildmaster.Main (retail 0x00d58490)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local predicateResult3, fret_03, fret_04, fret_06, fret_07, scratchValue7, conversationId
+    local predicateResult3, fret_04, fret_06, fret_07, scratchValue7, conversationId
     local conversationId2, conversationId3, conversationId4, conversationId5, scratchValue8
     local tutorialState, scratchValue9, questionAnswer, scratchValue10, switch2, getActiveQuestName
-    local scratchValue13, meleeOpponent, scratchValue15, scratchValue19, scratchValue20
-    local scratchValue21, scratchValue22, scratchValue23, scratchValue24, scratchValue25
-    local scratchValue26, scratchValue27, timerId, scratchValue28, scratchValue29, scratchValue30
-    local scratchValue31, scratchValue32, scratchValue33, scratchValue34, scratchValue35
-    local scratchValue36, scratchValue37, scratchValue38, scratchValue39, scratchValue40
-    local scratchValue41
+    local meleeOpponent, scratchValue15, scratchValue19, scratchValue20, scratchValue21
+    local scratchValue22, scratchValue23, scratchValue24, scratchValue25, scratchValue26
+    local scratchValue27, timerId, scratchValue28, scratchValue29, scratchValue30, scratchValue31
+    local scratchValue32, scratchValue33, scratchValue34, scratchValue35, scratchValue36
+    local scratchValue37, scratchValue38, scratchValue39, scratchValue40, scratchValue41
     scratchValue27 = resources:NewResource()
     while not resources:TryAcquire(scratchValue27, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue27); return end
@@ -275,11 +274,9 @@ function Main(quest, me)
                 -- TODO(native): goto LAB_00d5a9b5
             end
             scratchValue40 = resources:NewResource()
-            scratchValue13 = quest:GetHero()
-            while not resources:TryAcquire(scratchValue40, scratchValue13, 4) do
+            while not resources:TryAcquire(scratchValue40, quest:GetHero(), 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a93f
-                scratchValue13 = quest:GetHero()
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a93f: (native jump target)
@@ -310,7 +307,7 @@ function Main(quest, me)
             resources:RunMacro("CS_GUILD_MELEE_BATTLE", scratchValue37, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:ChangeHeroHealthBy(1000.0, true, false)
-            quest:ModifyThingHealth(scratchValue13, 1000.0, false)
+            quest:ModifyThingHealth(meleeOpponent, 1000.0, false)
             quest:SetStateInt("TutorialState", 6)
             quest:PauseAllNonScriptedEntities(false)
             resources:ReleaseResource(scratchValue31)
@@ -323,7 +320,6 @@ function Main(quest, me)
             quest:RemoveQuestInfoElement(scratchValue26)
             quest:DisplayQuestInfo(true)
             quest:AddQuestInfoBarHealth(quest:GetThingWithScriptName("MeleeOpponent"), getActiveQuestName, "HUD_WHISPER_ICON", 1.0)
-            fret_03 = quest:GetHealth(nil --[[missing]])
             while state:GetBool("HeroStanding") and state:GetBool("WhisperStanding") do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
@@ -350,7 +346,6 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
             quest:ClearAllRumbles()
             -- TODO(native): CStack_1d4 = (CCharString)(float)fret_06;
-            fret_07 = quest:GetHealth(nil --[[missing]])
             scratchValue10 = 0
             -- TODO(native): CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)CStack_1d4));
             scratchValue9 = 0
@@ -367,11 +362,9 @@ function Main(quest, me)
             quest:SetStateInt("TutorialState", 7)
             quest:DisplayQuestInfo(false)
             scratchValue20 = resources:NewResource()
-            scratchValue13 = quest:GetHero()
-            while not resources:TryAcquire(scratchValue20, scratchValue13, 4) do
+            while not resources:TryAcquire(scratchValue20, quest:GetHero(), 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a997
-                scratchValue13 = quest:GetHero()
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a997: (native jump target)
@@ -446,7 +439,7 @@ function Main(quest, me)
             resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_LOST", scratchValue25, scratchValue21, false, true)
             ::LAB_00d5a28a::
             quest:ChangeHeroHealthBy(1000.0, true, false)
-            quest:EntitySetInFaction(scratchValue13, "FACTION_HERO")
+            quest:EntitySetInFaction(meleeOpponent, "FACTION_HERO")
             me:SetFriendsWithEverythingFlag(1)
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeThunder"), false, true)
             quest:Pause(2.0)

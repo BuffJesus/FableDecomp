@@ -16,9 +16,9 @@ function Main(quest, me)
     local predicateResult3, scratchValue5, predicateResult4, predicateResult9, predicateResult10
     local scratchValue12, predicateResult15, predicateResult16, scratchValue19, notBeaten2
     local notBeaten3, scratchValue24, getStateInt, scratchValue25, getStateInt2, scratchValue26
-    local getStateInt3, scratchValue27, scratchValue30, scratchValue34, scratchValue35
-    local scratchValue36, scratchValue37, u_stk_78_1, scratchValue38, scratchValue39, scratchValue40
-    local scratchValue41, scratchValue42, scratchValue43, timerId
+    local getStateInt3, scratchValue30, scratchValue34, scratchValue35, scratchValue36
+    local scratchValue37, u_stk_78_1, scratchValue38, scratchValue39, scratchValue40, scratchValue41
+    local scratchValue42, scratchValue43, timerId
     scratchValue34 = 0
     u_stk_78_1 = 0
     if not quest:NewScriptFrame(me) then return end
@@ -309,24 +309,12 @@ function Main(quest, me)
                             end
                             if scratchValue12 then
                                 scratchValue24 = quest:AddNewConversation(me, false, false)
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                scratchValue27 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                scratchValue27 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_44,false,pCVar10,pCVar6);
+                                quest:AddPersonToConversation(scratchValue24, quest:GetHero())
+                                quest:AddLineToConversation(scratchValue24, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_ON_HIT", me, quest:GetHero(), false)
                             else
                                 scratchValue24 = quest:AddNewConversation(me, false, false)
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                scratchValue27 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                scratchValue27 = nil --[[unresolved native value]]
-                                -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
+                                quest:AddPersonToConversation(scratchValue24, quest:GetHero())
+                                quest:AddLineToConversation(scratchValue24, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, quest:GetHero(), false)
                             end
                             quest:SetTimer(timerId, 5)
                         end
@@ -479,24 +467,12 @@ function Main(quest, me)
                                         end
                                         if scratchValue19 then
                                             scratchValue24 = quest:AddNewConversation(me, false, false)
-                                            -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                            scratchValue27 = nil --[[unresolved native value]]
-                                            -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                            -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                            scratchValue27 = nil --[[unresolved native value]]
-                                            -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
+                                            quest:AddPersonToConversation(scratchValue24, quest:GetHero())
+                                            quest:AddLineToConversation(scratchValue24, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_ON_HIT", me, quest:GetHero(), false)
                                         else
                                             scratchValue24 = quest:AddNewConversation(me, false, false)
-                                            -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                            scratchValue27 = nil --[[unresolved native value]]
-                                            -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
-                                            -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
-                                            scratchValue27 = nil --[[unresolved native value]]
-                                            -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_28,false,pCVar10,pCVar6);
+                                            quest:AddPersonToConversation(scratchValue24, quest:GetHero())
+                                            quest:AddLineToConversation(scratchValue24, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, quest:GetHero(), false)
                                         end
                                         quest:SetTimer(timerId, 5)
                                     end

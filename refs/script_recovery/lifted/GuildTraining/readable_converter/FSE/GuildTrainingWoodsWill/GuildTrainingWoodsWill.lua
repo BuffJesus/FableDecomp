@@ -107,9 +107,9 @@ function Main(quest)
                     end
                     if quest:GetHealth(quest:GetHero()) < quest:ReadGlobalGameDataFloat(3800) then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-                        conversationId = quest:AddNewConversation(nil --[[missing]], false, false)
+                        conversationId = quest:AddNewConversation(willWhisper, false, false)
                         quest:AddPersonToConversation(conversationId, quest:GetHero())
-                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_SKILL_WOODS_HEALTH", quest:GetHero(), nil --[[missing]], false)
+                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_SKILL_WOODS_HEALTH", willWhisper, quest:GetHero(), false)
                         if quest:IsXbox() then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
                             quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_STRAFE_HELP")

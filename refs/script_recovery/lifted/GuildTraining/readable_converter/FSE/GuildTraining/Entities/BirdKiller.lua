@@ -88,7 +88,6 @@ function Main(quest, me)
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -105,7 +104,6 @@ function Main(quest, me)
                                         if quest:IsActiveThreadTerminating() then
                                             resources:ReleaseResource(0)
                                             quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(scratchValue20)
                                             return
@@ -134,7 +132,6 @@ function Main(quest, me)
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(scratchValue20)
                                             return
@@ -163,7 +160,6 @@ function Main(quest, me)
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -210,7 +206,6 @@ function Main(quest, me)
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(scratchValue20)
                                             return

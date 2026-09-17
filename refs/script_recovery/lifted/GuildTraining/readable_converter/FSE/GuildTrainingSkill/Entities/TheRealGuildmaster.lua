@@ -14,12 +14,12 @@ end
 function Main(quest, me)
     local resources = quest:RetailResources()
     local scratchValue, scratchValue4, scratchValue5, scratchValue8, scratchValue9, scratchValue10
-    local scratchValue11, scratchValue12, scratchValue13, scratchValue14, scratchValue15
-    local scratchValue16, scratchValue19, switch2, scratchValue21, scratchValue22, scratchValue25
-    local scratchValue27, scratchValue28, scratchValue29, scratchValue30, scratchValue31
-    local scratchValue32, scratchValue33, scratchValue34, scratchValue35, scratchValue36
-    local scratchValue37, scratchValue38, scratchValue39, scratchValue40, scratchValue41, timerId
-    local timerId2, scratchValue42, scratchValue43
+    local scratchValue11, scratchValue12, scratchValue13, scratchValue15, scratchValue16
+    local scratchValue19, switch2, scratchValue21, scratchValue22, scratchValue25, scratchValue27
+    local scratchValue28, scratchValue29, scratchValue30, scratchValue31, scratchValue32
+    local scratchValue33, scratchValue34, scratchValue35, scratchValue36, scratchValue37
+    local scratchValue38, scratchValue39, scratchValue40, scratchValue41, timerId, timerId2
+    local scratchValue42, scratchValue43
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(scratchValue30)
         resources:DestroyActorMap(scratchValue29)
@@ -76,7 +76,6 @@ function Main(quest, me)
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     me:ClearCommands()
-                    scratchValue14 = 0.0
                     if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue41)) then
                         scratchValue16 = 0
                         me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START", 0, false, true, false)
@@ -207,12 +206,9 @@ function Main(quest, me)
             quest:EntitySetTargetable(me, false)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_LOCK_TARGET", false, 1.0)
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
+                    scratchValue38 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
+                    scratchValue40 = quest:AddQuestInfoTickByText("GAME_ACTION_LOCK_TARGET", false, 1.0)
+                    scratchValue39 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5ba3e
                 end
                 quest:DeregisterTimer(scratchValue42)
@@ -226,12 +222,9 @@ function Main(quest, me)
                 resources:DestroyMovie(scratchValue34)
                 return
             end
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_BLACK_BUTTON", false, 1.0)
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_X", false, 1.0)
+            scratchValue38 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
+            scratchValue40 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
+            scratchValue39 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5ba3e::
             scratchValue12 = 0
             quest:DisplayQuestInfo(true)
@@ -272,7 +265,7 @@ function Main(quest, me)
                         return
                     end
                     scratchValue12 = 1
-                    quest:RemoveQuestInfoElement(scratchValue16)
+                    quest:RemoveQuestInfoElement(scratchValue38)
                     quest:RemoveQuestInfoElement(scratchValue40)
                     quest:RemoveQuestInfoElement(scratchValue39)
                 elseif scratchValue12 == 0 then
@@ -283,7 +276,7 @@ function Main(quest, me)
                         return
                     end
                     scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                    quest:UpdateQuestInfoTick(scratchValue10, scratchValue13 ~= 0)
+                    quest:UpdateQuestInfoTick(scratchValue38, scratchValue10)
                     -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingLockTargetButton()
                     quest:UpdateQuestInfoTick(scratchValue40, scratchValue10)
@@ -451,7 +444,7 @@ function Main(quest, me)
                     resources:DestroyMovie(scratchValue34)
                     return
                 end
-                quest:RemoveQuestInfoElement(scratchValue13)
+                quest:RemoveQuestInfoElement(scratchValue38)
                 quest:RemoveQuestInfoElement(scratchValue40)
                 quest:RemoveQuestInfoElement(scratchValue39)
             end
@@ -519,13 +512,10 @@ function Main(quest, me)
             resources:ReleaseResource(scratchValue41)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    -- TODO(native): xStack_1e4 = CVar10;
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
-                    -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-                    quest:AddQuestInfoTick("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
+                    scratchValue = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
+                    scratchValue38 = scratchValue
+                    scratchValue40 = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
+                    scratchValue39 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5c6b1
                 end
                 quest:DeregisterTimer(scratchValue42)
@@ -539,13 +529,10 @@ function Main(quest, me)
                 resources:DestroyMovie(scratchValue34)
                 return
             end
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_BLACK_BUTTON", false, 1.0)
-            -- TODO(native): xStack_1e4 = CVar10;
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
-            -- TODO(native): AddQuestInfoTick is not a ForgeFSE binding
-            quest:AddQuestInfoTick("HUD_CONTROLLER_X", false, 1.0)
+            scratchValue = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
+            scratchValue38 = scratchValue
+            scratchValue40 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
+            scratchValue39 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5c6b1::
             scratchValue12 = 0
             quest:DisplayQuestInfo(true)
@@ -632,6 +619,7 @@ function Main(quest, me)
                         return
                     end
                     quest:SetTimer(timerId2, 15)
+                    scratchValue = scratchValue38
                 end
                 if quest:MsgOnHeroFiredRangedWeapon() then
                     if quest:IsActiveThreadTerminating() then
@@ -667,7 +655,7 @@ function Main(quest, me)
                         return
                     end
                     scratchValue12 = 1
-                    quest:RemoveQuestInfoElement(1)
+                    quest:RemoveQuestInfoElement(scratchValue)
                     quest:RemoveQuestInfoElement(scratchValue40)
                     quest:RemoveQuestInfoElement(scratchValue39)
                 elseif scratchValue12 == 0 then
@@ -678,7 +666,7 @@ function Main(quest, me)
                         return
                     end
                     scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                    quest:UpdateQuestInfoTick(scratchValue10, scratchValue13 ~= 0)
+                    quest:UpdateQuestInfoTick(scratchValue, scratchValue10)
                     -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
                     quest:IsHeroInProjectileWeaponMode()
                     quest:UpdateQuestInfoTick(scratchValue40, scratchValue10)
@@ -686,7 +674,7 @@ function Main(quest, me)
                     quest:IsPlayerHoldingFireRangedWeaponButton()
                     quest:UpdateQuestInfoTick(scratchValue39, scratchValue10)
                 end
-            until xStack_1d4_b3 ~= 0
+            until true
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(scratchValue42)
                 quest:DeregisterTimer(xStack_214)
@@ -700,7 +688,7 @@ function Main(quest, me)
                     resources:DestroyMovie(scratchValue34)
                     return
                 end
-                quest:RemoveQuestInfoElement(scratchValue14)
+                quest:RemoveQuestInfoElement(scratchValue)
                 quest:RemoveQuestInfoElement(scratchValue40)
                 quest:RemoveQuestInfoElement(scratchValue39)
             end
@@ -776,7 +764,6 @@ function Main(quest, me)
                     -- TODO(native): CVar10 = *(this + 4)
                     scratchValue = nil --[[unresolved native value]]
                     scratchValue13 = 6.0
-                    scratchValue39 = scratchValue
                     -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
                     scratchValue22 = nil --[[unresolved native value]]
                     -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)

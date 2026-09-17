@@ -14,7 +14,7 @@ end
 function Main(quest, me)
     local scratchValue, predicateResult, getMasterGameState, scratchValue2, scratchValue3
     local scratchValue4, scratchValue5, scratchValue30, conversationId, scratchValue31
-    local getNearestWithScriptName, getNearestWithScriptName2, thing1, scratchValue38
+    local theGuildmaster, skillApprentice, theRealGuildmaster, skillApprentice2, scratchValue38
     local scratchValue39, timerId
     local dummyNumber = state:GetInt("DummyNumber")
     local function __cleanup_LAB_00d42ef8()
@@ -24,8 +24,6 @@ function Main(quest, me)
         quest:DeregisterTimer(timerId)
     end
     scratchValue39 = me:GetAngleXY()
-    getNearestWithScriptName = quest:GetNearestWithScriptName(me, "DummyEndMarker")
-    getNearestWithScriptName2 = quest:GetNearestWithScriptName(me, "DummyStartMarker")
     if dummyNumber == 1 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         state:SetInt("Speed", math.modf(quest:ReadGlobalGameDataFloat(3820)))
@@ -110,16 +108,17 @@ function Main(quest, me)
                         if me:MsgIsHitByHeroWithProjectileWeapon() then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                             if quest:GetMasterGameState("MovingDummiesNeeded") == 1 then
-                                thing1 = quest:GetHero()
-                                if quest:IsDistanceBetweenThingsOver(thing1, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
+                                if quest:IsDistanceBetweenThingsOver(quest:GetHero(), quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
                                     if quest:IsQuestActive("Q_GuildTrainingSkill") then
-                                        conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("TheGuildmaster"), false, false)
+                                        theGuildmaster = quest:GetThingWithScriptName("TheGuildmaster")
+                                        conversationId = quest:AddNewConversation(theGuildmaster, false, false)
                                         quest:AddPersonToConversation(conversationId, quest:GetHero())
-                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_MAZE_HIT_OUT", quest:GetHero(), thing1, false)
+                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_MAZE_HIT_OUT", theGuildmaster, quest:GetHero(), false)
                                     else
-                                        conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("SkillApprentice"), false, false)
+                                        skillApprentice = quest:GetThingWithScriptName("SkillApprentice")
+                                        conversationId = quest:AddNewConversation(skillApprentice, false, false)
                                         quest:AddPersonToConversation(conversationId, quest:GetHero())
-                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_HIT_OUT", quest:GetHero(), getNearestWithScriptName2, false)
+                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_HIT_OUT", skillApprentice, quest:GetHero(), false)
                                     end
                                 else
                                     quest:PlaySoundOnThing(quest:GetHero(), "SND_ARROWIMPACT_02")
@@ -157,51 +156,53 @@ function Main(quest, me)
                                                     quest:DeregisterTimer(timerId)
                                                     return
                                                 end
-                                                conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
+                                                theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                                conversationId = quest:AddNewConversation(theRealGuildmaster, false, false)
                                                 quest:AddPersonToConversation(conversationId, quest:GetHero())
                                                 if 0.0 <= xStack_18c then
                                                     if 0.0 <= xStack_18c then
                                                         if 0.0 <= xStack_18c then
                                                             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", quest:GetHero(), getNearestWithScriptName, false)
+                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", theRealGuildmaster, quest:GetHero(), false)
                                                         else
                                                             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", quest:GetHero(), nil --[[missing]], false)
+                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", theRealGuildmaster, quest:GetHero(), false)
                                                         end
                                                     else
                                                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", quest:GetHero(), nil --[[missing]], false)
+                                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", theRealGuildmaster, quest:GetHero(), false)
                                                     end
                                                 else
                                                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", quest:GetHero(), nil --[[missing]], false)
+                                                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", theRealGuildmaster, quest:GetHero(), false)
                                                 end
                                             else
                                                 if predicateResult then
                                                     quest:DeregisterTimer(timerId)
                                                     return
                                                 end
-                                                conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("SkillApprentice"), false, false)
+                                                skillApprentice2 = quest:GetThingWithScriptName("SkillApprentice")
+                                                conversationId = quest:AddNewConversation(skillApprentice2, false, false)
                                                 quest:AddPersonToConversation(conversationId, quest:GetHero())
                                                 if 0.0 <= xStack_18c then
                                                     if 0.0 <= xStack_18c then
                                                         if 0.0 <= xStack_18c then
                                                             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
-                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", quest:GetHero(), nil --[[missing]], false)
+                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", skillApprentice2, quest:GetHero(), false)
                                                         else
                                                             if quest:IsActiveThreadTerminating() then
                                                                 -- LAB_00d42efe: (native jump target)
                                                                 __cleanup_LAB_00d42f02(); return
                                                             end
-                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", quest:GetHero(), nil --[[missing]], false)
+                                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", skillApprentice2, quest:GetHero(), false)
                                                         end
                                                     else
                                                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
-                                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", quest:GetHero(), nil --[[missing]], false)
+                                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", skillApprentice2, quest:GetHero(), false)
                                                     end
                                                 else
                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
-                                                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", quest:GetHero(), nil --[[missing]], false)
+                                                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", skillApprentice2, quest:GetHero(), false)
                                                 end
                                             end
                                         end

@@ -27,13 +27,16 @@ post-lift residue guard (any line still carrying C syntax becomes `-- TODO(nativ
 **37/37 files compile** (was 26), todo 884 (residue is now counted). Readable stage for guild lives in
 `refs/script_recovery/lifted/GuildTraining/readable_converter/` (20648 -> 12740 lines; the old `readable/` dir is the
 hand-reviewed six-slice artifact the `test_guild_*` tests read — the builder refuses to overwrite it). Smoke
-(`smoke_run_unit.py --unit guild_training --stage draft|readable_converter`): **13 / 13 problems** (was 35), todo 860.
+(`smoke_run_unit.py --unit guild_training --stage draft|readable_converter`): **13 / 13 problems** (was 35), todo 791 (202 non-structural).
 Fixed the same evening: ST0 results bound to the real float call (`fret_N` gone), `''` char literals, AssignFromWide
 on stack strings (L"" too), DAT bool/float constants, GFCharStringToInt -> tonumber, by-value GetAllThings vectors +
 `_bv` element casts + end-pointer slot under its own name, drifted destroy operands -> the single created object, stack
 copies of a reused register are stores, GSI-pointer byte stores of by-value things dropped. Remaining 13 are slot
 collisions the restore cannot yet split (CheckFriendlyAttacks: xStack_90 = string temp + thing result + vector end)
-and `this_00`/`CStack`/`xStack_NN_b3` residue.
+and `this_00`/`CStack`/`xStack_NN_b3` residue. Later: gsivt spills typed by the spec, AddQuestInfoTick ->
+ByText/ByAction, hidden-result slots reused as operands, pseudo-call thing receivers (MsgIsHitByHero). Upstream binding
+gaps recorded in FSE_UPSTREAM_REQUIREMENTS.md: `IsPlayerHoldingFireRangedWeaponButton`, `me:MsgIsHitBy(name)`.
+v5 rebuilt from the current Orchard readable (preflight ok).
 
 Gate script (scratch, recreate if missing): convert_new_oakvale.py --out <tmp> and `diff -r` against
 refs/script_recovery/lifted/NewOakValeIntro (ignore CONVERSION_REPORT.json and baseline-only extras) → must print identical.

@@ -16,8 +16,8 @@ function Main(quest, me)
     local scratchValue, predicateResult25, predicateResult48, conversationId, conversationId2
     local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
     local conversationId8, conversationId9, conversationId10, conversationId11, conversationId12
-    local conversationId13, scratchValue9, meleeThunder2, scratchValue11, scratchValue12
-    local scratchValue13, timerId
+    local conversationId13, scratchValue9, theRealGuildmaster, meleeThunder, meleeThunder2
+    local meleeThunder3, scratchValue11, scratchValue12, scratchValue13, timerId
     scratchValue13 = resources:NewResource()
     while not resources:TryAcquire(scratchValue13, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue13); return end
@@ -258,9 +258,10 @@ function Main(quest, me)
                                     end
                                     if nil == nil then
                                         if not quest:IsActiveThreadTerminating() then
-                                            conversationId4 = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
+                                            theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                            conversationId4 = quest:AddNewConversation(theRealGuildmaster, false, false)
                                             quest:AddPersonToConversation(conversationId4, quest:GetHero())
-                                            quest:AddLineToConversation(conversationId4, "TEXT_QST_028_MAZE_BLOCK", quest:GetHero(), nil --[[missing]], false)
+                                            quest:AddLineToConversation(conversationId4, "TEXT_QST_028_MAZE_BLOCK", theRealGuildmaster, quest:GetHero(), false)
                                             if quest:IsXbox() then
                                                 if not quest:IsActiveThreadTerminating() then
                                                     quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BLOCK_HELP")
@@ -413,9 +414,10 @@ function Main(quest, me)
                                             resources:ReleaseResource(scratchValue13)
                                             return
                                         end
-                                        conversationId9 = quest:AddNewConversation(quest:GetThingWithScriptName("MeleeThunder"), false, false)
+                                        meleeThunder = quest:GetThingWithScriptName("MeleeThunder")
+                                        conversationId9 = quest:AddNewConversation(meleeThunder, false, false)
                                         quest:AddPersonToConversation(conversationId9, quest:GetHero())
-                                        quest:AddLineToConversation(conversationId9, "TEXT_QST_028_THUNDER_MELEE_DEFEND", quest:GetHero(), nil --[[missing]], false)
+                                        quest:AddLineToConversation(conversationId9, "TEXT_QST_028_THUNDER_MELEE_DEFEND", meleeThunder, quest:GetHero(), false)
                                     end
                                     quest:SetTimer(timerId, 15)
                                 end
@@ -493,9 +495,10 @@ function Main(quest, me)
                                                         goto FLOW_after_lab_00d57e76
                                                     end
                                                 elseif not quest:IsActiveThreadTerminating() then
-                                                    conversationId13 = quest:AddNewConversation(quest:GetThingWithScriptName("MeleeThunder"), false, false)
+                                                    meleeThunder3 = quest:GetThingWithScriptName("MeleeThunder")
+                                                    conversationId13 = quest:AddNewConversation(meleeThunder3, false, false)
                                                     quest:AddPersonToConversation(conversationId13, quest:GetHero())
-                                                    quest:AddLineToConversation(conversationId13, "TEXT_QST_028_THUNDER_MELEE_FINISH", quest:GetHero(), meleeThunder2, false)
+                                                    quest:AddLineToConversation(conversationId13, "TEXT_QST_028_THUNDER_MELEE_FINISH", meleeThunder3, quest:GetHero(), false)
                                                     quest:SetTimer(timerId, 15)
                                                     goto FLOW_after_lab_00d57e76
                                                 end
