@@ -60,8 +60,8 @@ function Main(quest, me)
             quest:EntitySetAsKillable(r1, false, true)
             quest:SetThingHasInformation(me, false, true, false)
             me:SetFriendsWithEverythingFlag(me)
-            if r1 ~= nil then
-                -- TODO(native): (**(code **)(*xStack_248 + 0x10c))(1);
+            if (r1 ~= nil and not r1:IsNull()) then
+                r1:SetFriendsWithEverythingFlag(1)
             end
             __native_entity_state:SetStateInt("RaceMode", 0)
             u_stk_21c = 0

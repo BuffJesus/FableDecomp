@@ -12,13 +12,9 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar2, cVar3, dist, fVar1, iVar14, iVar15, iVar5, iVar6, p0, pCVar16, pCVar4, pCVar7, pCVar9, pcVar13, piStack_128, piStack_170, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r4, r5, r6, r7, r8, r9, uVar10, uVar11, uVar8, u_stk_174, xStack_138, xStack_148, xStack_158, xStack_18, xStack_184, xStack_188, xStack_24, xStack_3c, xStack_48, xStack_54, xStack_60, xStack_78, xStack_94, xStack_a0, xStack_bc, xStack_c, x_stk_7c
+    local __native_condition_1, bVar2, cVar3, dist, fVar1, iVar14, iVar15, iVar5, iVar6, p0, pCVar16, pCVar4, pCVar7, pCVar9, pcVar13, piStack_128, piStack_170, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r3, r4, r5, r6, r7, r8, r9, uVar10, uVar11, uVar8, u_stk_174, xStack_138, xStack_148, xStack_158, xStack_18, xStack_184, xStack_188, xStack_24, xStack_3c, xStack_48, xStack_54, xStack_60, xStack_78, xStack_94, xStack_a0, xStack_bc, xStack_c, x_stk_7c
     local alive = true
     local function __region_LAB_00d632c3_c3()
-        quest:PauseAllNonScriptedEntities(false)
-        pCVar9 = xStack_148
-    end
-    local function __region_LAB_00d632c3_c8()
         quest:PauseAllNonScriptedEntities(false)
         pCVar9 = xStack_148
     end
@@ -26,9 +22,10 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_138)
     end
-    local function __region_LAB_00d63a62_c8()
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_138)
+    local function __cleanup_LAB_00d63aa6()
+        resources:DestroyMovie(pCVar9)
+        quest:DeregisterTimer(xStack_188)
+        resources:DestroyMovie(xStack_bc)
     end
     local function __cleanup_LAB_00d63aab()
         quest:DeregisterTimer(xStack_188)
@@ -326,11 +323,10 @@ function Main(quest, me)
                             if not bVar2 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
-                                -- TODO(native): iVar6 = DAT_0143e90c;
                                 if iVar5 == 1 then
                                     if not bVar2 then
                                         piStack_170 = quest:GetHeroGold()
-                                        if piStack_170 < *(iVar6 + 0xf14) then
+                                        if piStack_170 < quest:ReadGlobalGameData(0xf14) then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive
                                             if not bVar2 then
@@ -458,9 +454,7 @@ function Main(quest, me)
                             if bVar2 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 pCVar9 = xStack_148
-                                -- LAB_00d63aa6: (native jump target)
-                                resources:DestroyMovie(pCVar9)
-                                __cleanup_LAB_00d63aab()
+                                __cleanup_LAB_00d63aa6()
                                 return
                             end
                             iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -470,11 +464,10 @@ function Main(quest, me)
                         if not bVar2 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
-                            -- TODO(native): iVar6 = DAT_0143e90c;
                             if iVar5 == 1 then
                                 if not bVar2 then
                                     piStack_170 = quest:GetHeroGold()
-                                    if piStack_170 < *(iVar6 + 0xf14) then
+                                    if piStack_170 < quest:ReadGlobalGameData(0xf14) then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar2 = not alive
                                         if not bVar2 then
@@ -663,140 +656,7 @@ function Main(quest, me)
                     if bVar2 then
                         quest:PauseAllNonScriptedEntities(false)
                         pCVar9 = xStack_148
-                        resources:DestroyMovie(pCVar9)
-                        -- LAB_00d63aab_c8: (native jump target)
-                        quest:DeregisterTimer(xStack_188)
-                        resources:DestroyMovie(xStack_bc)
-                        do return end
-                        iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if not bVar2 then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            -- TODO(native): iVar6 = DAT_0143e90c;
-                            if iVar5 == 1 then
-                                if not bVar2 then
-                                    piStack_170 = quest:GetHeroGold()
-                                    if piStack_170 < *(iVar6 + 0xf14) then
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar2 = not alive
-                                        if not bVar2 then
-                                            xStack_3c = resources:ScriptThing(xStack_bc)
-                                            pCVar4 = xStack_3c
-                                            r21 = quest:GetHealth(pCVar4)
-                                            fVar1 = 0.0
-                                            if fVar1 < fret_02 then
-                                                iVar15 = 0
-                                                iVar14 = 1
-                                                iVar6 = 0
-                                                iVar5 = 0
-                                                pcVar13 = "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD"
-                                                pCVar4 = quest:GetHero()
-                                                r22 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
-                                                iVar5 = me:IsPerformingScriptTask()
-                                                cVar3 = iVar5
-                                                while cVar3 do
-                                                    alive = quest:NewScriptFrame(me)
-                                                    alive = not quest:IsActiveThreadTerminating()
-                                                    bVar2 = not alive
-                                                    if bVar2 then __region_LAB_00d63a62_c8(); goto LAB_00d63c96 end
-                                                    iVar5 = me:IsPerformingScriptTask()
-                                                    cVar3 = iVar5
-                                                end
-                                                -- TODO(native): goto LAB_00d632b4_c8
-                                            end
-                                            __region_LAB_00d632c3_c8(); goto LAB_00d638d8
-                                        end
-                                        goto LAB_00d63a7c_c8
-                                    end
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar2 = not alive
-                                    if not bVar2 then
-                                        xStack_24 = resources:ScriptThing(xStack_184)
-                                        pCVar4 = xStack_24
-                                        r23 = quest:GetHealth(pCVar4)
-                                        fVar1 = 0.0
-                                        if fVar1 < fret_03 then
-                                            iVar15 = 0
-                                            iVar14 = 1
-                                            iVar6 = 0
-                                            iVar5 = 0
-                                            pcVar13 = "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_YES"
-                                            pCVar4 = quest:GetHero()
-                                            r24 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
-                                            iVar5 = me:IsPerformingScriptTask()
-                                            cVar3 = iVar5
-                                            while cVar3 do
-                                                alive = quest:NewScriptFrame(me)
-                                                alive = not quest:IsActiveThreadTerminating()
-                                                bVar2 = not alive
-                                                if bVar2 then goto LAB_00d63a7c_c8 end
-                                                iVar5 = me:IsPerformingScriptTask()
-                                                cVar3 = iVar5
-                                            end
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            bVar2 = not alive
-                                            if bVar2 then __region_LAB_00d63a62_c8(); goto LAB_00d63c96 end
-                                        end
-                                        quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
-                                        quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
-                                        uVar8 = __ftol2()
-                                        quest:GiveHeroGold(fVar1)
-                                        iVar6 = __ftol2()
-                                        quest:EntityGiveGold(me, nil --[[missing]])
-                                        __native_entity_state:SetStateBool("HoldingArtifact", false)
-                                        pCVar4 = quest:GetThingWithScriptName("ArtifactThiefRunMarker")
-                                        iVar15 = 1
-                                        iVar14 = 0
-                                        iVar6 = 0
-                                        iVar5 = 0x3f800000
-                                        pCVar7 = pCVar4:GetPos()
-                                        me:MoveToPosition(pCVar7, iVar5, iVar6, (iVar14 ~= 0), (iVar15 ~= 0))
-                                        -- TODO(native): (**(code **)(*piStack_128 + 0x5ec))(piStack_128,false);
-                                        pCVar9 = xStack_138
-                                        goto LAB_00d638d8
-                                    end
-                                end
-                                __region_LAB_00d63a62_c8()
-                                goto LAB_00d63c96
-                            end
-                            if not bVar2 then
-                                xStack_48 = resources:ScriptThing(xStack_184)
-                                pCVar4 = xStack_48
-                                r25 = quest:GetHealth(pCVar4)
-                                fVar1 = 0.0
-                                if fVar1 < fret_04 then
-                                    iVar15 = 0
-                                    iVar14 = 1
-                                    iVar6 = 0
-                                    iVar5 = 0
-                                    pcVar13 = "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO"
-                                    pCVar4 = quest:GetHero()
-                                    r26 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
-                                    iVar5 = me:IsPerformingScriptTask()
-                                    cVar3 = iVar5
-                                    while cVar3 do
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar2 = not alive
-                                        if bVar2 then __region_LAB_00d63a62_c8(); goto LAB_00d63c96 end
-                                        iVar5 = me:IsPerformingScriptTask()
-                                        cVar3 = iVar5
-                                    end
-                                    -- LAB_00d632b4_c8: (native jump target)
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar2 = not alive
-                                    if bVar2 then goto LAB_00d63a7c_c8 end
-                                end
-                                __region_LAB_00d632c3_c8()
-                                goto LAB_00d638d8
-                            end
-                        end
-                        ::LAB_00d63a7c_c8::
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_148)
-                        goto LAB_00d63c96
+                        __cleanup_LAB_00d63aa6(); return
                     end
                     iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
                 end
@@ -809,7 +669,6 @@ function Main(quest, me)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                -- TODO(native): iVar6 = DAT_0143e90c;
                 if iVar5 ~= 1 then
                     if bVar2 then
                         quest:PauseAllNonScriptedEntities(false)
@@ -822,7 +681,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities((pCVar16 ~= 0))
                     xStack_18 = resources:ScriptThing(xStack_184)
                     pCVar4 = xStack_18
-                    r27 = quest:GetHealth(pCVar4)
+                    r21 = quest:GetHealth(pCVar4)
                     fVar1 = 0.0
                     if fVar1 < fret_08 then
                         iVar15 = 0
@@ -831,7 +690,7 @@ function Main(quest, me)
                         iVar5 = 0
                         pcVar13 = "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_RETURN_QUESTION_NO"
                         pCVar4 = quest:GetHero()
-                        r28 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                        r22 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
                         iVar5 = me:IsPerformingScriptTask()
                         cVar3 = iVar5
                         while cVar3 do
@@ -877,7 +736,7 @@ function Main(quest, me)
                     if not bVar2 then
                         xStack_60 = resources:ScriptThing(xStack_184)
                         pCVar4 = xStack_60
-                        r29 = quest:GetHealth(pCVar4)
+                        r23 = quest:GetHealth(pCVar4)
                         fVar1 = 0.0
                         if fVar1 < fret_07 then
                             iVar15 = 0
@@ -886,7 +745,7 @@ function Main(quest, me)
                             iVar5 = 0
                             pcVar13 = "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_YES"
                             pCVar4 = quest:GetHero()
-                            r30 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                            r24 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
                             iVar5 = me:IsPerformingScriptTask()
                             cVar3 = iVar5
                             while cVar3 do
@@ -939,7 +798,7 @@ function Main(quest, me)
                 end
                 xStack_a0 = resources:ScriptThing(xStack_184)
                 pCVar4 = xStack_a0
-                r31 = quest:GetHealth(pCVar4)
+                r25 = quest:GetHealth(pCVar4)
                 fVar1 = 0.0
                 if fVar1 < fret_06 then
                     iVar15 = 0
@@ -948,7 +807,7 @@ function Main(quest, me)
                     iVar5 = 0
                     pcVar13 = "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD"
                     pCVar4 = quest:GetHero()
-                    r32 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                    r26 = me:Speak(pCVar4, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
                     iVar5 = me:IsPerformingScriptTask()
                     cVar3 = iVar5
                     while cVar3 do

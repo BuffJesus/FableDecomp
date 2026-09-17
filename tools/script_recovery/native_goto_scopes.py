@@ -283,9 +283,13 @@ def duplicate_sibling_tails(statements):
                 if t.endswith('{'):
                     depth += 1
                 region.append(t)
-                if depth == 0 and t == 'return;' and not internal:
-                    terminated = True   # nothing after a top-level return in the tail runs
-                    break
+                if depth == 0 and t == 'return;':
+                    # nothing after a top-level return runs unless an earlier jump lands beyond it
+                    later = {m[1] for u in lines[n + 1:] for m in [re.match(r'^(' + LABEL_TOKEN + r'):', u)] if m}
+                    earlier_targets = {m[1] for u in lines[:n] for m in re.finditer(r'\bgoto (' + LABEL_TOKEN + r');', u)}
+                    if not (later & earlier_targets):
+                        terminated = True
+                        break
             if ok and internal and region and region[-1] == 'return;':
                 ok = False
             if ok and depth == 0:

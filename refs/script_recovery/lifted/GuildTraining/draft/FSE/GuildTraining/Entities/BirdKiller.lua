@@ -12,15 +12,16 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, fVar14, fVar2, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r10, r11, r12, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar10, xStack_38, xStack_68, xStack_78, xStack_8c, xStack_c, x_stk_8
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, fVar14, fVar2, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar10, xStack_38, xStack_68, xStack_78, xStack_8c, xStack_c, x_stk_8
     local alive = true
     local function __region_LAB_00d4e853_c2()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_78)
     end
-    local function __region_LAB_00d4e853_c3()
+    local function __cleanup_LAB_00d4e91f()
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_78)
+        quest:DeregisterTimer(timerId)
+        resources:ReleaseResource(xStack_8c)
     end
     uVar10 = 0
     xStack_8c = resources:NewResource()
@@ -141,69 +142,7 @@ function Main(quest, me)
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
-                                if bVar3 then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
-                                    quest:DeregisterTimer(timerId)
-                                    resources:ReleaseResource(xStack_8c)
-                                    do return end
-                                    iVar7 = 4
-                                    pCVar5 = quest:GetHero()
-                                    bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar3 = not alive
-                                    if not bVar3 then
-                                        r2 = resources:NewActorMap()
-                                        resources:SetActor(r2, "HERO", xStack_38)
-                                        resources:SetActor(r2, "ME", xStack_8c)
-                                        resources:RunMacro(xStack_7c, r2, false, true)
-                                        resources:DestroyActorMap(r2)
-                                        resources:ReleaseResource(xStack_38)
-                                        __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
-                                    end
-                                    resources:DestroyMovie(xStack_78)
-                                    goto LAB_00d4e978
-                                    if not bVar3 then
-                                        x_stk_8 = resources:ScriptThing(xStack_8c)
-                                        pCVar15 = x_stk_8
-                                        r5 = quest:GetHealth(pCVar15)
-                                        fVar2 = 0.0
-                                        if fVar2 < fret_00 then
-                                            iVar13 = 0
-                                            iVar12 = 1
-                                            iVar7 = 0
-                                            iVar6 = 0
-                                            pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
-                                            pCVar5 = quest:GetHero()
-                                            r6 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-                                            iVar6 = me:IsPerformingScriptTask()
-                                            cVar4 = iVar6
-                                            while cVar4 do
-                                                alive = quest:NewScriptFrame(me)
-                                                alive = not quest:IsActiveThreadTerminating()
-                                                bVar3 = not alive
-                                                if bVar3 then
-                                                    quest:PauseAllNonScriptedEntities(false)
-                                                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
-                                                    quest:DeregisterTimer(timerId)
-                                                    resources:ReleaseResource(xStack_8c)
-                                                    return
-                                                end
-                                                iVar6 = me:IsPerformingScriptTask()
-                                                cVar4 = iVar6
-                                            end
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            bVar3 = not alive
-                                            if bVar3 then goto LAB_00d4e9e1_c2 end
-                                        end
-                                        __region_LAB_00d4e853_c2()
-                                        goto LAB_00d4e87a
-                                    end
-                                    ::LAB_00d4e9e1_c2::
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_7c)
-                                    goto FLOW_after_lab_00d4e91f
-                                end
+                                if bVar3 then __cleanup_LAB_00d4e91f(); return end
                                 iVar6 = me:IsPerformingScriptTask()
                                 cVar4 = iVar6
                             end
@@ -248,7 +187,7 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then
                                             resources:ReleaseResource(0)
-                                            -- LAB_00d4e91f_c3: (native jump target)
+                                            -- LAB_00d4e91f_c2: (native jump target)
                                             quest:PauseAllNonScriptedEntities(false)
                                             -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                             quest:DeregisterTimer(timerId)
@@ -269,7 +208,7 @@ function Main(quest, me)
                                         resources:RunMacro(xStack_7c, r2, false, true)
                                         resources:DestroyActorMap(r2)
                                         resources:ReleaseResource(0)
-                                        __region_LAB_00d4e853_c3(); goto LAB_00d4e87a
+                                        __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
                                     end
                                     resources:DestroyMovie(xStack_78)
                                 end
@@ -278,7 +217,7 @@ function Main(quest, me)
                             if not bVar3 then
                                 x_stk_8 = resources:ScriptThing(xStack_8c)
                                 pCVar15 = x_stk_8
-                                r7 = quest:GetHealth(pCVar15)
+                                r5 = quest:GetHealth(pCVar15)
                                 fVar2 = 0.0
                                 if fVar2 < fret_00 then
                                     iVar13 = 0
@@ -287,7 +226,7 @@ function Main(quest, me)
                                     iVar6 = 0
                                     pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
                                     pCVar5 = quest:GetHero()
-                                    r8 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    r6 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                                     iVar6 = me:IsPerformingScriptTask()
                                     cVar4 = iVar6
                                     while cVar4 do
@@ -306,16 +245,16 @@ function Main(quest, me)
                                     end
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
-                                    if bVar3 then goto LAB_00d4e9e1_c3 end
+                                    if bVar3 then goto LAB_00d4e9e1_c2 end
                                 end
-                                __region_LAB_00d4e853_c3()
+                                __region_LAB_00d4e853_c2()
                                 goto LAB_00d4e87a
                             end
                         end
-                        ::LAB_00d4e9e1_c3::
+                        ::LAB_00d4e9e1_c2::
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_7c)
-                        goto FLOW_after_lab_00d4e91f
+                        goto FLOW_after_lab_00d4e5e3
                     end
                     ::LAB_00d4e978::
                     quest:PauseAllNonScriptedEntities(false)
@@ -362,11 +301,7 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then
                                             resources:ReleaseResource(0)
-                                            -- LAB_00d4e91f: (native jump target)
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
-                                            quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(xStack_8c)
+                                            __cleanup_LAB_00d4e91f()
                                             return
                                         end
                                         iVar7 = 4
@@ -391,12 +326,12 @@ function Main(quest, me)
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:ReleaseResource(0)
-                                goto FLOW_after_lab_00d4e91f
+                                goto FLOW_after_lab_00d4e5e3
                             end
                             if not bVar3 then
                                 x_stk_8 = resources:ScriptThing(xStack_8c)
                                 pCVar15 = x_stk_8
-                                r9 = quest:GetHealth(pCVar15)
+                                r7 = quest:GetHealth(pCVar15)
                                 fVar2 = 0.0
                                 if fVar2 < fret_00 then
                                     iVar13 = 0
@@ -405,7 +340,7 @@ function Main(quest, me)
                                     iVar6 = 0
                                     pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
                                     pCVar5 = quest:GetHero()
-                                    r10 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    r8 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                                     iVar6 = me:IsPerformingScriptTask()
                                     cVar4 = iVar6
                                     while cVar4 do
@@ -437,7 +372,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_7c)
                 end
-                ::FLOW_after_lab_00d4e91f::
+                ::FLOW_after_lab_00d4e5e3::
             end
             goto LAB_00d4ef87
         end
@@ -545,7 +480,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities((pCVar15 ~= 0))
                         xStack_c = resources:ScriptThing(xStack_8c)
                         pCVar5 = xStack_c
-                        r11 = quest:GetHealth(pCVar5)
+                        r9 = quest:GetHealth(pCVar5)
                         fVar2 = 0.0
                         if fVar2 < fret_01 then
                             iVar13 = 0
@@ -554,7 +489,7 @@ function Main(quest, me)
                             iVar6 = 0
                             pcVar11 = "TEXT_QST_028_BIRD_KILLER_DONE"
                             pCVar5 = quest:GetHero()
-                            r12 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            r10 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do

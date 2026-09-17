@@ -131,13 +131,13 @@ def join_wrapped_statements(text: str) -> str:
 
 
 RE_LOCAL_COUNTED_RELEASE = re.compile(
-    r'^[ \t]*if \(\((\w+) != \(int \*\)0x0\) && \(\*\1 = \*\1 \+ -1, \*\1 == 0\)\) \{\s*\r?\n'
-    r'[ \t]*\(\*\(code \*\)\1\[1\]\)\(\);\s*\r?\n[ \t]*operator_delete\(\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+    r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != \(int \*\)0x0\) && \(\*\1 = \*\1 \+ -1, \*\1 == 0\)\) \{\s*\r?\n'
+    r'[ \t]*\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 
 
 RE_LOCAL_COUNTED_RELEASE2 = re.compile(
-    r'^[ \t]*if \((\w+) != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\1 = \*\1 \+ -1;\s*\r?\n[ \t]*if \(\*\1 == 0\) \{\s*\r?\n'
-    r'[ \t]*\(\*\(code \*\)\1\[1\]\)\(\);\s*\r?\n[ \t]*operator_delete\(\1\);\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+    r'^[ \t]*if \((\w+(?:\._\d_4_|\[\d\])?) != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\1 = \*\1 \+ -1;\s*\r?\n[ \t]*if \(\*\1 == 0\) \{\s*\r?\n'
+    r'[ \t]*\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 RE_SLOT_ZERO = re.compile(r'^[ \t]*(?:\w+\._\d+_4_ = 0;|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+ = \(int \*\)0x0;)[ \t]*\r?\n', re.M)
 
 
@@ -329,6 +329,8 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\b(\w+)\._(\d+)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     text = bind_st0_results(text)
+    text = re.sub(r'::\s+(?=\w)', '::', text)   # `CScriptThing:: _Method_...(` after line joining
+    text = re.sub(r'\(int \*\)(\w+\._\d_4_)\b', r'\1', text)   # casts on a field slice of a stack object
     # counted pointers Ghidra typed `undefined **`: the same refcount idiom as the `int *` spelling
     text = re.sub(r'\(undefined \*\)\(\(int\)\*(\w+) \+ -1\)', r'*\1 + -1', text)
     text = re.sub(r'\*(\w+) == \(undefined \*\)0x0', r'*\1 == 0', text)
@@ -820,25 +822,36 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 literal = ''   # the pooled empty string (a lone NUL) is not a "string" to the resolver
             return '"' + literal.replace('\\', '\\\\').replace('"', '\\"') + '"' if literal is not None else m.group(0)
         text = re.sub(r'&DAT_([0-9a-f]{8})\b', dat_literal, text)
-    # reads from the global game-data table (runtime pointer at DAT_0143e90c): keep the offset
+    # reads from the global game-data table (runtime pointer at DAT_0143e90c): keep the offset; a local
+    # holding the pointer (`iVar14 = DAT_0143e90c;`) stands for it until the register is reused
+    pos = 0
+    while (m := re.search(r'^[ \t]*(\w+) = (?:\(\w+ \*+\))?DAT_0143e90c;[ \t]*\r?\n', text[pos:], re.M)):
+        var = m.group(1)
+        head, tail = text[:pos + m.start()], text[pos + m.end():]
+        nxt = re.search(r'(?<![\w.>])' + re.escape(var) + r' = (?!=)', tail)
+        scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+        scope = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', 'DAT_0143e90c', scope)
+        text = head + scope + rest
+        pos = len(head)
     text = re.sub(r'\*\((?:int|float|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
 
     parent = r'\*\(int \*\)\(this \+ 0x14\)'
     # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
     def inline_alias(text, base_pattern, kinds):
-        alias_re = re.compile(r'^[ \t]*(\w+) = (?:\([\w ]+\*\))?' + base_pattern + r';\s*$', re.M)
-        for m in list(alias_re.finditer(text)):
+        alias_re = re.compile(r'^[ \t]*(\w+) = (?:\([\w ]+\*\))?' + base_pattern + r';[ \t]*\r?\n', re.M)
+        pos = 0
+        while (m := alias_re.search(text, pos)):
             var = m.group(1)
-            if re.search(r'^[ \t]*' + re.escape(var) + r' = (?!(?:\([\w ]+\*\))?' + base_pattern + ';)', text, re.M):
-                diag.append(f'alias {var} of {kinds} is reassigned; left as is')
-                continue
             raw = m.group(0).split('= ', 1)[1].rstrip().rstrip(';').strip()
             value = raw if raw.startswith('*(') else '(' + raw + ')'
-            start = text.index(m.group(0))
-            head, tail = text[:start], text[start:].replace(m.group(0), '', 1)
-            # substitute only after the assignment: the declaration block must keep `int iVarN;`
-            tail = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: value, tail)
-            text = head + tail
+            head, tail = text[:m.start()], text[m.end():]
+            # the alias holds the pointer until the register is reused for something else: substitute only
+            # after the assignment (the declaration block keeps `int iVarN;`) and only up to that reuse
+            nxt = re.search(r'(?<![\w.>])' + re.escape(var) + r' = (?!=)', tail)   # also inside a comma expression
+            scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+            scope = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: value, scope)
+            text = head + scope + rest
+            pos = m.start()
         return text
     if spec.entity:
         text = inline_alias(text, parent, 'parent')
@@ -1092,10 +1105,20 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(r'\b' + re.escape(obj) + r'\b', name, text)
             pos = m.start() + 1
     # Data-pointer idioms on a stack thing: `(int *)X._4_4_ == (int *)0x0` is validity, `(**(code **)(*(int *)X._4_4_ + SLOT))(` a thing call
-    text = re.sub(r'\(int \*\)(\w+)\._4_4_ == \(int \*\)0x0', r'!__thing_valid(\1)', text)
-    text = re.sub(r'\(int \*\)(\w+)\._4_4_ != \(int \*\)0x0', r'__thing_valid(\1)', text)
-    text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)(\w+)\._4_4_ \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
+    text = re.sub(r'(?:\(int \*\))?(\w+)\._4_4_ == \(int \*\)0x0', r'!__thing_valid(\1)', text)
+    text = re.sub(r'(?:\(int \*\))?(\w+)\._4_4_ != \(int \*\)0x0', r'__thing_valid(\1)', text)
+    text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?(\w+)\._4_4_ \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
                   lambda h: thing_call(h.group(1), h.group(2), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
+    # the same idioms when the export named the thing's Data field with the object's own slot name
+    # (`if (X != (int *)0x0) { (**(code **)(*X + SLOT))(...); }` on a stack thing X)
+    stack_things = set(re.findall(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', text))
+    for name in stack_things:
+        n = re.escape(name)
+        # the counted-pointer release idiom on the same name (`(X != 0) && (*X = *X + -1, ...)`) belongs to the release rules
+        text = re.sub(r'\b' + n + r' == \(int \*\)0x0(?!\) \|\| \(\*' + n + r' = )', f'!__thing_valid({name})', text)
+        text = re.sub(r'\b' + n + r' != \(int \*\)0x0(?!\) && \(\*' + n + r' = |\) \{[ \t]*\r?\n[ \t]*\*' + n + r' = )', f'__thing_valid({name})', text)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*' + re.escape(name) + r' \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
+                      lambda h, name=name: thing_call(name, h.group(1), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
     # 3d. vcalls through a saved vtable temporary of a lowered thing: V = *(int *)(THING); (**(code **)(V + SLOT))(
     RE_VT_TEMP = re.compile(r'^[ \t]*(\w+) = \*\(int \*\)\(((?:QUEST|ENTITY)(?:THING_Get|LIST_At_\w+)\([^;\n]*\))\);[ \t]*\r?\n', re.M)
     for m in list(RE_VT_TEMP.finditer(text)):

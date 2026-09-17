@@ -706,9 +706,7 @@ function Main(quest, me)
                                                                                                                 pCVar21 = xStack_108
                                                                                                                 -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
                                                                                                                 -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
-                                                                                                                pppuVar22 = xStack_17c
-                                                                                                                -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,&xStack_150_3);
-                                                                                                                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pppuVar22);
+                                                                                                                resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                                 xStack_124 = resources:StartMovie("")
                                                                                                                 quest:StartMovieSequence()
                                                                                                                 pCVar6 = 0x1
@@ -1401,9 +1399,7 @@ function Main(quest, me)
                                                                                                         pCVar21 = xStack_108
                                                                                                         -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
                                                                                                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
-                                                                                                        pppuVar22 = xStack_17c
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,&xStack_150_3);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pppuVar22);
+                                                                                                        resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         pCVar6 = 0x1
@@ -1516,11 +1512,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_821
+                                                                                                                goto FLOW_after_lab_00d54f9c_818
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_821::
+                                                                                                        ::FLOW_after_lab_00d54f9c_818::
                                                                                                         if (u_stk_128 & 1) ~= 0 then
                                                                                                             u_stk_128 = u_stk_128 & 0xfffffffe
                                                                                                         end
@@ -2213,9 +2209,7 @@ function Main(quest, me)
                                                                                                         pCVar21 = xStack_108
                                                                                                         -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
                                                                                                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
-                                                                                                        pppuVar22 = xStack_17c
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,&xStack_150_3);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pppuVar22);
+                                                                                                        resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         pCVar6 = 0x1
@@ -3051,9 +3045,7 @@ function Main(quest, me)
                                                                                                         pCVar21 = xStack_108
                                                                                                         -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
                                                                                                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
-                                                                                                        pppuVar22 = xStack_17c
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,&xStack_150_3);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pppuVar22);
+                                                                                                        resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         pCVar6 = 0x1
@@ -4048,9 +4040,7 @@ function Main(quest, me)
                                                                                                         pCVar21 = xStack_108
                                                                                                         -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
                                                                                                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
-                                                                                                        pppuVar22 = xStack_17c
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,&xStack_150_3);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pppuVar22);
+                                                                                                        resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
                                                                                                         pCVar6 = 0x1

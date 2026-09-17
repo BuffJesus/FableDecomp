@@ -72,15 +72,15 @@ function Main(quest, me)
                         end
                         pCVar8 = quest:GetHero()
                         r2 = quest:GetFurthestWithScriptName(pCVar8, "ScorpionSpawn")
-                        if r2 == nil then
+                        if not (r2 ~= nil and not r2:IsNull()) then
                         else
-                            pPosition = (**(*r2 + 0x18))()
+                            pPosition = r2:GetPos()
                         end
-                        pCVar8 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", nil --[[missing]], "GuildScorpions")
+                        pCVar8 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
                         -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,(int)&*(int *)(pCVar8 + 0x4));
                         pCVar8 = nil
-                        if r2 ~= nil then
-                            -- TODO(native): (**(code **)(*xStack_18 + 0x118))(0);
+                        if (r2 ~= nil and not r2:IsNull()) then
+                            r2:SetToKillOnLevelUnload(0)
                         end
                         quest:EntityAttachToScript(r2, "Q_GuildTrainingWoodsDeparture")
                         __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)

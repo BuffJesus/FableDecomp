@@ -30,8 +30,6 @@ function Main(quest, me)
         bVar4 = not alive
         if bVar4 then
             r1 = nil
-            if (xStack_3c[0] ~= nil) and (*xStack_3c[0] = *xStack_3c[0] + -1, *xStack_3c[0] == 0) then
-            end
             -- TODO(native): xStack_3c[0] = (int *)0x0;
             return
         end
@@ -48,8 +46,6 @@ function Main(quest, me)
     while true do
         if bVar4 then
             r1 = nil
-            if (xStack_3c[0] ~= nil) and (*xStack_3c[0] = *xStack_3c[0] + -1, *xStack_3c[0] == 0) then
-            end
             -- TODO(native): xStack_3c[0] = (int *)0x0;
             return
         end
@@ -96,11 +92,11 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00d444a1 end
-            if r1 == nil then
+            if not (r1 ~= nil and not r1:IsNull()) then
             else
-                p0 = (**(*r1 + 0x18))()
+                p0 = r1:GetPos()
             end
-            me:MoveToPosition(nil --[[missing]], p0, 0x40400000, false, false)
+            me:MoveToPosition(p0, 0x40400000, 0, false, true)
         end
         bVar4 = me:IsTalkedToByHero()
         if bVar4 then break end

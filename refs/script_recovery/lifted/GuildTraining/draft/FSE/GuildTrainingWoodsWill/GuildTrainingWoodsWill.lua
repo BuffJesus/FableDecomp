@@ -178,10 +178,9 @@ function Main(quest)
                             if bVar3 then goto LAB_00d685cc end
                             quest:SetStateBool("BanditsAlive", false)
                         end
-                        -- TODO(native): iVar5 = DAT_0143e90c;
                         pCVar6 = quest:GetHero()
                         fret_00 = quest:GetHealth(pCVar6)
-                        if fret_00 < *(iVar5 + 0xed8) then
+                        if fret_00 < quest:ReadGlobalGameData(0xed8) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d685cc end

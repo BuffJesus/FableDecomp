@@ -464,11 +464,11 @@ function Main(quest, me)
                     end
                 end
                 ::FLOW_after_lab_00d41813::
-                if r1 == nil then
+                if not (r1 ~= nil and not r1:IsNull()) then
                 else
-                    puVar8 = (**(*r1 + 0x18))()
+                    puVar8 = r1:GetPos()
                 end
-                me:MoveToPosition(pCVar7, puVar8, 0x40400000, true, false)
+                me:MoveToPosition(puVar8, 0x40400000, 1, false, true)
             end
             bVar3 = quest:IsDistanceBetweenThingsOver(me, r1, 4.0)
             __native_condition_1 = bVar3
@@ -484,11 +484,11 @@ function Main(quest, me)
                     resources:ReleaseResource(0)
                     return
                 end
-                if r1 == nil then
+                if not (r1 ~= nil and not r1:IsNull()) then
                 else
-                    puVar8 = (**(*r1 + 0x18))()
+                    puVar8 = r1:GetPos()
                 end
-                me:MoveToPosition(nil --[[missing]], puVar8, 0x40400000, true, false)
+                me:MoveToPosition(puVar8, 0x40400000, 1, false, true)
             end
         end
         alive = quest:NewScriptFrame(me)

@@ -286,10 +286,9 @@ function Main(quest, me)
                     quest:SetTimer(iVar6, xStack_260)
                 end
                 quest:UpdateQuestInfoCounter(xStack_23c, quest:GetStateInt("GenericTutorialCounter"), -1)
-                -- TODO(native): iVar6 = DAT_0143e90c;
                 pCVar5 = quest:GetHero()
                 fret_00 = quest:GetHealth(pCVar5)
-                if fret_00 < *(iVar6 + 0xed8) then
+                if fret_00 < quest:ReadGlobalGameData(0xed8) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
@@ -418,10 +417,9 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
                 quest:UpdateQuestInfoCounter(xStack_23c, quest:GetStateInt("GenericTutorialCounter"), -1)
-                -- TODO(native): iVar6 = DAT_0143e90c;
                 pCVar5 = quest:GetHero()
                 fret_01 = quest:GetHealth(pCVar5)
-                if fret_01 < *(iVar6 + 0xed8) then
+                if fret_01 < quest:ReadGlobalGameData(0xed8) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
@@ -546,15 +544,13 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                -- TODO(native): iVar7 = DAT_0143e90c;
                 if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
                 pCVar5 = quest:GetHero()
                 fret_04 = quest:GetHealth(pCVar5)
-                if *(iVar7 + 0xed8) <= fret_04 then
-                    -- TODO(native): iVar6 = DAT_0143e90c;
+                if quest:ReadGlobalGameData(0xed8) <= fret_04 then
                     pCVar5 = quest:GetThingWithScriptName("MeleeOpponent")
                     r6 = quest:GetHealth(pCVar5)
-                    fVar19 = *(iVar6 + 0xed8)
+                    fVar19 = quest:ReadGlobalGameData(0xed8)
                     if fret_05 < fVar19 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive

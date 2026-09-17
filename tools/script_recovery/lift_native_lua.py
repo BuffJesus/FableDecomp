@@ -1274,7 +1274,8 @@ class Lifter:
             if target:
                 self.kinds[target] = 'bool'
             self.calls.append("AcquireControl")
-            self.todo.append("collapse the StartScriptingEntity retry loop around AcquireControl")
+            if not self.accessor_kinds:
+                self.todo.append("collapse the StartScriptingEntity retry loop around AcquireControl")
             return True
         spec = self.manifest.get(name)
         operands = self.arguments(argtext)

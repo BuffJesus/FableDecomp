@@ -535,10 +535,9 @@ function Main(quest, me)
                                 quest:AddLineToConversation(iVar9, "TEXT_QST_028_WHISPER_BLOCK_WAIT_INSULT", me, pCVar6, false)
                                 quest:SetTimer(0xf, nil --[[missing]])
                             end
-                            -- TODO(native): iVar9 = DAT_0143e90c;
                             pCVar6 = quest:GetHero()
                             fret_00 = quest:GetHealth(pCVar6)
-                            if fret_00 < *(iVar9 + 0xed8) then
+                            if fret_00 < quest:ReadGlobalGameData(0xed8) then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
                                 if bVar4 then

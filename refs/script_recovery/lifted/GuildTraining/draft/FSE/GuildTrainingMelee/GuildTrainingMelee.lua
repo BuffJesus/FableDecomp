@@ -21,8 +21,8 @@ function Main(quest)
     r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pPosition, "MeleeOpponent")
     pCVar4 = nil
     quest:EntitySetInFaction(r1, "FACTION_HERO")
-    if r1 ~= nil then
-        -- TODO(native): (**(code **)(*xStack_48 + 0x10c))(1);
+    if (r1 ~= nil and not r1:IsNull()) then
+        r1:SetFriendsWithEverythingFlag(1)
     end
     xStack_20 = resources:NewResource()
     bVar6 = false
