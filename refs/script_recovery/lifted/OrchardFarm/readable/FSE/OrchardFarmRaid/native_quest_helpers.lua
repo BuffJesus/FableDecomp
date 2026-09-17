@@ -212,6 +212,7 @@ function MakeTeamMemberComment(quest, me, commentToMake, speaker, commentType)
     scratchValue = (scratchValue .. "_")
     scratchValue = (scratchValue .. commentToMake)
     quest:AddLineToConversation(conversationID, scratchValue, pSpeaker, hero, false)
+    local scratchValue2 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
     return true
 end
 

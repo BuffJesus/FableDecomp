@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_00, fret_01, iVar10, iVar11, iVar22, i_stk_24, native_arg_switch_5, pCVar12, pCVar13, pCVar15, pCVar23, pCVar9, pcVar17, pfVar16, pppuVar24, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r3, r4, r5, r6, r7, r8, r9, thing, thing_b10, thing_b11, thing_b8, thing_b9, uVar18, uVar19, uVar2, uVar20, uVar21, u_stk_17c, xStack_10, xStack_158, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_38, xStack_48, xStack_54, xStack_60_2
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_00, fret_01, iVar10, iVar11, iVar22, i_stk_24, native_arg_switch_5, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, pfVar16, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r3, r4, r5, r6, r7, r8, r9, thing, thing_b10, thing_b11, thing_b8, thing_b9, uVar18, uVar19, uVar2, uVar20, uVar21, u_stk_17c, xStack_10, xStack_158, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_38, xStack_48, xStack_54, xStack_60_2
     local alive = true
     local function __region_LAB_00d61ad8_c22()
         quest:PauseAllNonScriptedEntities(false)
@@ -62,7 +62,7 @@ function Main(quest, me)
     thing_b9 = (piVar1 >> 8)
     thing_b10 = (piVar1 >> 0x10)
     thing_b11 = (piVar1 >> 0x18)
-    quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+    quest:SetIsPushableByHero(thing, false)
     iVar10 = quest:RegisterTimer()
     iVar11 = quest:RegisterTimer()
     quest:SetTimer(iVar11, 0)
@@ -287,7 +287,6 @@ function Main(quest, me)
                     bVar6 = not alive
                     if bVar6 then goto LAB_00d61b69 end
                     -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_134);
-                    pCVar15 = "TEXT_QST_LOG_COMBAT_USINGSPELLS"
                 end
                 quest:SetMasterGameState("WillScore", 0)
                 -- TODO(native): CTimer::CTimer((CTimer *)&xStack_23c);
@@ -366,12 +365,8 @@ function Main(quest, me)
                             goto LAB_00d61b69
                         end
                         pCVar12 = resources:NewActorMap()
-                        pCVar23 = xStack_48
-                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1b4,xStack_124);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pCVar23);
-                        pppuVar24 = 0
-                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1b4,xStack_11c);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pppuVar24);
+                        resources:SetActor(pCVar12, "HERO", xStack_48)
+                        resources:SetActor(pCVar12, "TEACHER", 0)
                         xStack_10 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:FixMovieSequenceCamera(true)
@@ -717,9 +712,7 @@ function Main(quest, me)
                         end
                     until not (false)
                     ::FLOW_native_label_1::
-                    pCVar23 = xStack_200
-                    -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_210,xStack_120);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pCVar23);
+                    resources:SetActor(xStack_210, "HERO", xStack_200)
                     resources:SetActor(xStack_210, "TEACHER", xStack_158)
                     resources:RunMacro("$GRADE", xStack_210, false, false)
                     pCVar12 = 0x1
@@ -752,7 +745,7 @@ function Main(quest, me)
                             goto FLOW_after_lab_00d61578
                         end
                         quest:SetMasterGameState("MeleeApprenticeNeededForCutscene", true)
-                        r3 = quest:GetThingWithScriptName("HERO")
+                        r3 = quest:GetThingWithScriptName("MeleeApprentice")
                         xStack_158 = resources:NewResource()
                         bVar6 = false
                         if bVar6 ~= 0 then

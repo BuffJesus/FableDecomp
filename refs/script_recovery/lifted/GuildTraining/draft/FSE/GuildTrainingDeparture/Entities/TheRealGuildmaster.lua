@@ -21,7 +21,7 @@ function Main(quest, me)
     -- TODO(native): thing._4_4_ = uVar1;
     thing = nil
     -- TODO(native): thing._8_4_ = piVar2;
-    quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+    quest:SetIsPushableByHero(thing, false)
     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
     bVar4 = false
     pCVar6 = quest:GetThingWithScriptName("M_DepartureTeacherStand")

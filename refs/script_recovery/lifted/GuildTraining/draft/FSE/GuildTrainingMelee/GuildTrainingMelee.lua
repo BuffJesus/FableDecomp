@@ -42,7 +42,7 @@ function Main(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
     if not bVar6 then
-        quest:EntitySetAllowBossPhaseChanges(nil --[[missing]], (r1 ~= 0))
+        quest:EntitySetAllowBossPhaseChanges(r1, false)
         xStack_10 = resources:NewResource()
         bVar6 = false
         if bVar6 ~= 0 then

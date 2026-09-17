@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, iVar14, iVar15, iVar17, iVar6, iVar7, native_arg_sequence_1, native_arg_switch_2, p0, pCVar11, pCVar16, pCVar8, pCVar9, pcVar13, pfVar12, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar1, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_170, xStack_24, xStack_64, xStack_74, xStack_84, xStack_c, x_stk_12c, x_stk_18, x_stk_30, x_stk_54
+    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, iVar14, iVar15, iVar17, iVar6, iVar7, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, pfVar12, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar1, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_170, xStack_24, xStack_64, xStack_74, xStack_84, xStack_c, x_stk_12c, x_stk_18, x_stk_30, x_stk_54
     local alive = true
     local function __cleanup_LAB_00d4dd41()
         quest:DeregisterTimer(iVar6)
@@ -44,7 +44,7 @@ function Main(quest, me)
     -- TODO(native): thing._4_4_ = uVar1;
     thing = nil
     -- TODO(native): thing._8_4_ = piVar2;
-    quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+    quest:SetIsPushableByHero(thing, false)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetAsKillable(me, false, true)
     r1 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
@@ -559,8 +559,7 @@ function Main(quest, me)
                     if not bVar4 then
                         xStack_138 = resources:NewActorMap()
                         resources:SetActor(xStack_138, "ME", 0)
-                        -- TODO(native): pCVar10 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_138,xStack_a0);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar10,pCVar16);
+                        resources:SetActor(xStack_138, "HERO", xStack_118)
                         xStack_118 = resources:NewResource()
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
@@ -602,12 +601,10 @@ function Main(quest, me)
                                             else
                                                 if native_arg_switch_2 == 4 then
                                                     resources:RunMacro(xStack_104, xStack_138, false, true)
-                                                    pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_D"
                                                     break
                                                 else
                                                     if native_arg_switch_2 == 5 then
                                                         resources:RunMacro(xStack_100, xStack_138, false, true)
-                                                        pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_E"
                                                         break
                                                     else
                                                         if native_arg_switch_2 == 6 then
@@ -682,12 +679,10 @@ function Main(quest, me)
                                             else
                                                 if native_arg_switch_2 == 4 then
                                                     resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", xStack_138, false, true)
-                                                    pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_D"
                                                     break
                                                 else
                                                     if native_arg_switch_2 == 5 then
                                                         resources:RunMacro(xStack_100, xStack_138, false, true)
-                                                        pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_E"
                                                         break
                                                     else
                                                         if native_arg_switch_2 == 6 then

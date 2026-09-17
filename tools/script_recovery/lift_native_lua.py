@@ -1873,7 +1873,7 @@ class Lifter:
             call = f'{name}({", ".join(lifted)})'
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
-                self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name == 'RESOURCE_ScriptThing'
+                self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty')
                                       else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
                                       else 'string' if name in ('ENGINE_Concat',) or name.endswith('STATE_GetString') else 'number')
             else:

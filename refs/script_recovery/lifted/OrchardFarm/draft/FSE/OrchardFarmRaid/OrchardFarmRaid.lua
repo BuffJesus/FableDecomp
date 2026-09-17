@@ -191,7 +191,6 @@ function ProcessGameRulesEvil(quest)
                         bVar4 = not alive
                         if not bVar4 then
                             resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", r2, false, true)
-                            pCVar8 = "CS_ORCHARD_EVIL_WHISPER_BACK"
                             goto LAB_00dd08eb
                         end
                         __cleanup_LAB_00dd0b11(); return
@@ -425,7 +424,6 @@ function ProcessGameRulesGood(quest)
                         bVar3 = not alive
                         if not bVar3 then
                             resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", xStack_88, false, true)
-                            pCVar7 = "CS_ORCHARD_GOOD_WHISPER_BACK"
                             goto LAB_00dd14ee
                         end
                         __cleanup_LAB_00dd1728(); return
@@ -437,7 +435,6 @@ function ProcessGameRulesGood(quest)
                         return
                     end
                     resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", xStack_88, false, true)
-                    pCVar7 = "CS_ORCHARD_GOOD_WHISPER_FRONT"
                     ::LAB_00dd14ee::
                     quest:FixMovieSequenceCamera(false)
                     if not quest:GetStateBool("ShownCombatFlourishTutorial") then
@@ -659,7 +656,7 @@ function DoCutsceneIfRequired(quest)
                     return
                 end
                 r1 = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                r2 = quest:GetNearestWithScriptName(pCVar3, "GuardTeamMember")
+                r2 = quest:GetNearestWithScriptName(x_stk_90, "GuardTeamMember")
                 xStack_50 = resources:NewResource()
                 xStack_30 = resources:NewResource()
                 xStack_20 = resources:NewResource()
@@ -844,6 +841,7 @@ function MakeTeamMemberComment(quest, native_arg_comment_to_make, native_arg_spe
     pCVar3 = (pCVar3 .. "_")
     pCVar3 = (pCVar3 .. native_arg_comment_to_make)
     quest:AddLineToConversation(conversationID, pCVar3, pSpeaker, pCVar2, false)
+    local uVar4 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
     return true
 end
 

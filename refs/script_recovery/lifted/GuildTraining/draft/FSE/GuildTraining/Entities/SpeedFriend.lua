@@ -37,7 +37,7 @@ function Main(quest, me)
             -- TODO(native): thing._4_4_ = uVar1;
             thing = nil
             -- TODO(native): thing._8_4_ = piVar2;
-            quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+            quest:SetIsPushableByHero(thing, false)
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()

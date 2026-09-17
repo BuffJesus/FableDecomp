@@ -39,7 +39,7 @@ function Main(quest, me)
     -- TODO(native): thing._4_4_ = uVar1;
     thing = nil
     -- TODO(native): thing._8_4_ = piVar12;
-    quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+    quest:SetIsPushableByHero(thing, false)
     r1 = quest:GetThingWithScriptName("MeleeOpponent")
     quest:SetThingHasInformation(me, false, false, false)
     iVar6 = quest:RegisterTimer()
@@ -50,7 +50,6 @@ function Main(quest, me)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
-        iVar6 = iVar6
         if bVar3 then
             quest:DeregisterTimer(iVar6)
             goto FLOW_after_lab_00d5a8cb
@@ -76,7 +75,6 @@ function Main(quest, me)
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                iVar6 = iVar6
                 if bVar3 then
                     quest:DeregisterTimer(iVar6)
                     goto FLOW_after_lab_00d5a8cb
@@ -116,7 +114,6 @@ function Main(quest, me)
                     if bVar3 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_38)
-                        iVar6 = iVar6
                         quest:DeregisterTimer(iVar6)
                         goto FLOW_after_lab_00d5a8cb
                     end
@@ -128,7 +125,6 @@ function Main(quest, me)
         else
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            iVar6 = iVar6
             if bVar3 then
                 quest:DeregisterTimer(iVar6)
                 goto FLOW_after_lab_00d5a8cb

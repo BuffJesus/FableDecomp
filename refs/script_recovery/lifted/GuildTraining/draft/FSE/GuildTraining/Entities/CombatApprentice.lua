@@ -38,7 +38,7 @@ function Main(quest, me)
     -- TODO(native): thing._4_4_ = uVar1;
     thing = nil
     -- TODO(native): thing._8_4_ = piVar12;
-    quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+    quest:SetIsPushableByHero(thing, false)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, true)

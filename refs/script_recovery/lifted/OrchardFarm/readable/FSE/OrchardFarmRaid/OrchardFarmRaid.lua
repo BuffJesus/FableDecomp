@@ -178,7 +178,6 @@ function ProcessGameRulesEvil(quest)
                         scratchValue = not alive
                         if not scratchValue then
                             resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", scratchValue9, false, true)
-                            scratchValue7 = "CS_ORCHARD_EVIL_WHISPER_BACK"
                             goto LAB_00dd08eb
                         end
                         __cleanup_LAB_00dd0b11(); return
@@ -318,17 +317,17 @@ function ProcessGameRulesGood(quest)
     local resources = quest:RetailResources()
     local b3, predicateResult, scratchValue, doneIntroduction, scratchValue2, ePriority
     local scratchValue3, f_xStack_18, scratchValue4, scratchValue5, scratchValue6, sequence1
-    local scratchValue7, scratchValue8, pMessage, pPosition, pppuVar9, scratchValue9, scratchValue10
-    local whisper, orchardFarmWhisper, scratchValue11, scratchValue12, scratchValue13
-    local scratchValue14
+    local scratchValue7, getActiveQuestName, pMessage, pPosition, pppuVar9, scratchValue8
+    local scratchValue9, whisper, orchardFarmWhisper, scratchValue10, scratchValue11, scratchValue12
+    local scratchValue13
     local alive = true
     local function __cleanup_LAB_00dd1728()
         scratchValue7 = 0
         quest:PauseAllNonScriptedEntities((scratchValue7 ~= 0))
-        resources:DestroyMovie(scratchValue13)
-        resources:DestroyActorMap(scratchValue12)
-        resources:ReleaseResource(scratchValue11)
-        resources:ReleaseResource(scratchValue14)
+        resources:DestroyMovie(scratchValue12)
+        resources:DestroyActorMap(scratchValue11)
+        resources:ReleaseResource(scratchValue10)
+        resources:ReleaseResource(scratchValue13)
     end
     doneIntroduction = quest:GetStateBool("DoneIntroduction")
     while not doneIntroduction do
@@ -378,35 +377,34 @@ function ProcessGameRulesGood(quest)
                     scratchValue7 = quest:GetThingWithScriptName("BanditTeamSpawn")
                     scratchValue = false
                     pPosition = scratchValue7:GetPos()
-                    scratchValue9 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", pPosition, "OrchardFarmWhisper")
-                    quest:EntityAttachToScript(scratchValue9, "Q_OrchardFarmRaid")
+                    scratchValue8 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", pPosition, "OrchardFarmWhisper")
+                    quest:EntityAttachToScript(scratchValue8, "Q_OrchardFarmRaid")
                     quest:MiniMapAddMarker(scratchValue7, "HUD_ORB_RED_SMALL")
-                    scratchValue10 = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
+                    scratchValue9 = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
                     whisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
-                    scratchValue14 = resources:NewResource()
-                    scratchValue11 = resources:NewResource()
-                    resources:TryAcquire(scratchValue11, scratchValue9, 4)
+                    scratchValue13 = resources:NewResource()
+                    scratchValue10 = resources:NewResource()
+                    resources:TryAcquire(scratchValue10, scratchValue8, 4)
                     scratchValue4 = 4
-                    pppuVar9 = scratchValue14
+                    pppuVar9 = scratchValue13
                     scratchValue7 = quest:GetHero()
                     resources:TryAcquire(pppuVar9, scratchValue7, scratchValue4)
-                    scratchValue12 = resources:NewActorMap()
-                    resources:SetActor(scratchValue12, "HERO", scratchValue14)
-                    resources:SetActor(scratchValue12, "WHISPER", scratchValue11)
-                    scratchValue13 = resources:StartMovie("")
+                    scratchValue11 = resources:NewActorMap()
+                    resources:SetActor(scratchValue11, "HERO", scratchValue13)
+                    resources:SetActor(scratchValue11, "WHISPER", scratchValue10)
+                    scratchValue12 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     scratchValue7 = quest:GetHero()
                     f_xStack_18 = (quest:GetDistanceBetweenThings(whisper, scratchValue7) ^ 2)
                     scratchValue7 = quest:GetHero()
-                    scratchValue3 = (quest:GetDistanceBetweenThings(scratchValue10, scratchValue7) ^ 2)
+                    scratchValue3 = (quest:GetDistanceBetweenThings(scratchValue9, scratchValue7) ^ 2)
                     if f_xStack_18 <= scratchValue3 then
                         alive = not quest:IsActiveThreadTerminating()
                         scratchValue = not alive
                         if not scratchValue then
-                            resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", scratchValue12, false, true)
-                            scratchValue8 = "CS_ORCHARD_GOOD_WHISPER_BACK"
+                            resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", scratchValue11, false, true)
                             goto LAB_00dd14ee
                         end
                         __cleanup_LAB_00dd1728(); return
@@ -417,8 +415,7 @@ function ProcessGameRulesGood(quest)
                         __cleanup_LAB_00dd1728()
                         return
                     end
-                    resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", scratchValue12, false, true)
-                    scratchValue8 = "CS_ORCHARD_GOOD_WHISPER_FRONT"
+                    resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", scratchValue11, false, true)
                     ::LAB_00dd14ee::
                     quest:FixMovieSequenceCamera(false)
                     if not quest:GetStateBool("ShownCombatFlourishTutorial") then
@@ -443,10 +440,10 @@ function ProcessGameRulesGood(quest)
                             -- LAB_00dd1736: (native jump target)
                             scratchValue7 = 0
                             quest:PauseAllNonScriptedEntities((scratchValue7 ~= 0))
-                            resources:DestroyMovie(scratchValue13)
-                            resources:DestroyActorMap(scratchValue12)
-                            resources:ReleaseResource(scratchValue11)
-                            resources:ReleaseResource(scratchValue14)
+                            resources:DestroyMovie(scratchValue12)
+                            resources:DestroyActorMap(scratchValue11)
+                            resources:ReleaseResource(scratchValue10)
+                            resources:ReleaseResource(scratchValue13)
                             return
                         end
                         ::LAB_00dd157a::
@@ -454,10 +451,10 @@ function ProcessGameRulesGood(quest)
                     end
                     quest:SetStateBool("WhisperInCutscene", false)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue13)
-                    resources:DestroyActorMap(scratchValue12)
-                    resources:ReleaseResource(scratchValue11)
-                    resources:ReleaseResource(scratchValue14)
+                    resources:DestroyMovie(scratchValue12)
+                    resources:DestroyActorMap(scratchValue11)
+                    resources:ReleaseResource(scratchValue10)
+                    resources:ReleaseResource(scratchValue13)
                     scratchValue5 = scratchValue6
                 end
                 sequence1 = false
@@ -494,23 +491,23 @@ function ProcessGameRulesGood(quest)
                     end
                     quest:GiveHeroExperience(quest:ReadGlobalGameData(3432))
                     orchardFarmWhisper = quest:GetThingWithScriptName("OrchardFarmWhisper")
-                    scratchValue14 = resources:NewResource()
                     scratchValue13 = resources:NewResource()
+                    scratchValue12 = resources:NewResource()
                     ePriority = 4
-                    pppuVar9 = scratchValue14
+                    pppuVar9 = scratchValue13
                     scratchValue7 = quest:GetHero()
                     resources:TryAcquire(pppuVar9, scratchValue7, ePriority)
-                    resources:TryAcquire(scratchValue13, orchardFarmWhisper, 4)
-                    scratchValue10 = resources:NewActorMap()
-                    resources:SetActor(scratchValue10, "HERO", scratchValue14)
-                    resources:SetActor(scratchValue10, "WHISPER", scratchValue13)
-                    scratchValue11 = resources:StartMovie("")
+                    resources:TryAcquire(scratchValue12, orchardFarmWhisper, 4)
+                    scratchValue9 = resources:NewActorMap()
+                    resources:SetActor(scratchValue9, "HERO", scratchValue13)
+                    resources:SetActor(scratchValue9, "WHISPER", scratchValue12)
+                    scratchValue10 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    resources:RunMacro("CS_ORCHARD_GOOD_OUTRO", scratchValue10, false, true)
+                    resources:RunMacro("CS_ORCHARD_GOOD_OUTRO", scratchValue9, false, true)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue11)
-                    resources:DestroyActorMap(scratchValue10)
+                    resources:DestroyMovie(scratchValue10)
+                    resources:DestroyActorMap(scratchValue9)
                     quest:AddLogbookStoryEntry(80)
                     quest:GiveHeroMorality(quest:ReadGlobalGameData(3484))
                     if quest:GetMasterGameState("OFBRCratesStolen") == 0 then
@@ -529,8 +526,8 @@ function ProcessGameRulesGood(quest)
                     b3 = false
                     predicateResult = false
                     scratchValue = false
-                    scratchValue8 = quest:GetActiveQuestName()
-                    quest:SetQuestAsCompleted(scratchValue8, scratchValue, predicateResult, b3)
+                    getActiveQuestName = quest:GetActiveQuestName()
+                    quest:SetQuestAsCompleted(getActiveQuestName, scratchValue, predicateResult, b3)
                     quest:SetQuestAsCompleted("Q_OrchardFarmRaidGood", true, false, false)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidGood", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
@@ -540,8 +537,8 @@ function ProcessGameRulesGood(quest)
                         scratchValue = not alive
                     until not (not scratchValue)
                     ::LAB_00dd1a93::
+                    resources:ReleaseResource(scratchValue12)
                     resources:ReleaseResource(scratchValue13)
-                    resources:ReleaseResource(scratchValue14)
                     return
                 end
                 if quest:GetStateInt("MissionFailed") ~= 0 then
@@ -554,8 +551,8 @@ function ProcessGameRulesGood(quest)
                     predicateResult = true
                     pMessage = quest:GetStateString(("FailReasons_" .. quest:GetStateInt("MissionFailed")))
                     scratchValue = true
-                    scratchValue8 = quest:GetActiveQuestName()
-                    quest:SetQuestAsFailed(scratchValue8, scratchValue, pMessage, predicateResult)
+                    getActiveQuestName = quest:GetActiveQuestName()
+                    quest:SetQuestAsFailed(getActiveQuestName, scratchValue, pMessage, predicateResult)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaidGood", 0)
                     quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
                 end
@@ -624,7 +621,7 @@ function DoCutsceneIfRequired(quest)
                     return
                 end
                 getAllThingsWithScriptName = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                getNearestWithScriptName = quest:GetNearestWithScriptName(hero, "GuardTeamMember")
+                getNearestWithScriptName = quest:GetNearestWithScriptName(scratchValue12, "GuardTeamMember")
                 scratchValue8 = resources:NewResource()
                 scratchValue5 = resources:NewResource()
                 scratchValue4 = resources:NewResource()
@@ -788,6 +785,7 @@ function MakeTeamMemberComment(quest, commentToMake, speaker, commentType)
     scratchValue = (scratchValue .. "_")
     scratchValue = (scratchValue .. commentToMake)
     quest:AddLineToConversation(conversationID, scratchValue, pSpeaker, hero, false)
+    local scratchValue2 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
     return true
 end
 

@@ -51,7 +51,7 @@ function Main(quest, me)
             -- TODO(native): thing._4_4_ = uVar7;
             thing = nil
             -- TODO(native): thing._8_4_ = piVar12;
-            quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+            quest:SetIsPushableByHero(thing, false)
             r1 = quest:GetThingWithScriptName("SpeedFriend")
             r2 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
             quest:EntityAttachToVillage(me, r2)
@@ -69,7 +69,6 @@ function Main(quest, me)
             iVar4 = quest:RegisterTimer()
             xStack_250 = quest:RegisterTimer()
             quest:SetTimer(xStack_250, iVar4)
-            u_stk_220 = u_stk_220 & 0xffffff
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             while not bVar2 do
@@ -368,7 +367,7 @@ function Main(quest, me)
                             goto LAB_00d40749
                         end
                         iVar4 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(iVar4, pCVar5)
+                        quest:AddPersonToConversation(iVar4, r1)
                         if uVar9 < 6 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
@@ -378,23 +377,23 @@ function Main(quest, me)
                             native_arg_switch_6 = uVar9
                             repeat
                                 if native_arg_switch_6 == 1 then
-                                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, nil --[[missing]], false)
+                                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, r1, false)
                                     break
                                 else
                                     if native_arg_switch_6 == 2 then
-                                        quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", me, nil --[[missing]], false)
+                                        quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", r1, me, false)
                                         break
                                     else
                                         if native_arg_switch_6 == 3 then
-                                            quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, nil --[[missing]], false)
+                                            quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, r1, false)
                                             break
                                         else
                                             if native_arg_switch_6 == 4 then
-                                                quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", me, nil --[[missing]], false)
+                                                quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", r1, me, false)
                                                 break
                                             else
                                                 if native_arg_switch_6 == 5 then
-                                                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, nil --[[missing]], false)
+                                                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, r1, false)
                                                     break
                                                 else
                                                     goto FLOW_native_label_2
@@ -414,7 +413,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if not bVar2 then
-                                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, nil --[[missing]], false)
+                                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, r1, false)
                                     goto LAB_00d3f069
                                 end
                                 goto LAB_00d40749
@@ -424,7 +423,7 @@ function Main(quest, me)
                             if bVar2 then
                                 goto LAB_00d40749
                             end
-                            quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", me, nil --[[missing]], false)
+                            quest:AddLineToConversation(iVar4, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", r1, me, false)
                         end
                         ::LAB_00d3f069::
                         ::FLOW_native_label_2::
@@ -653,7 +652,7 @@ function Main(quest, me)
                                 goto LAB_00d40749
                             end
                             iVar6 = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(iVar6, pCVar5)
+                            quest:AddPersonToConversation(iVar6, r1)
                             iVar4 = i_stk_210
                             if i_stk_210 < 5 then
                                 alive = not quest:IsActiveThreadTerminating()
@@ -664,23 +663,23 @@ function Main(quest, me)
                                 native_arg_switch_7 = iVar4
                                 repeat
                                     if native_arg_switch_7 == 0 then
-                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, nil --[[missing]], false)
+                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, r1, false)
                                         break
                                     else
                                         if native_arg_switch_7 == 1 then
-                                            quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", me, nil --[[missing]], false)
+                                            quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", r1, me, false)
                                             break
                                         else
                                             if native_arg_switch_7 == 2 then
-                                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, nil --[[missing]], false)
+                                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, r1, false)
                                                 break
                                             else
                                                 if native_arg_switch_7 == 3 then
-                                                    quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", me, nil --[[missing]], false)
+                                                    quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", r1, me, false)
                                                     break
                                                 else
                                                     if native_arg_switch_7 == 4 then
-                                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, nil --[[missing]], false)
+                                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, r1, false)
                                                         break
                                                     else
                                                         goto FLOW_native_label_3
@@ -700,7 +699,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if not bVar2 then
-                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, nil --[[missing]], false)
+                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, r1, false)
                                         goto LAB_00d3f894
                                     end
                                     goto LAB_00d40749
@@ -710,7 +709,7 @@ function Main(quest, me)
                                 if bVar2 then
                                     goto LAB_00d40749
                                 end
-                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", me, nil --[[missing]], false)
+                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", r1, me, false)
                             end
                             ::LAB_00d3f894::
                             ::FLOW_native_label_3::
@@ -886,7 +885,7 @@ function Main(quest, me)
                                 goto LAB_00d40749
                             end
                             iVar6 = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(iVar6, pCVar5)
+                            quest:AddPersonToConversation(iVar6, r1)
                             if iVar4 < 5 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
@@ -896,23 +895,23 @@ function Main(quest, me)
                                 native_arg_switch_8 = iVar4
                                 repeat
                                     if native_arg_switch_8 == 0 then
-                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", me, nil --[[missing]], false)
+                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", r1, me, false)
                                         break
                                     else
                                         if native_arg_switch_8 == 1 then
-                                            quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SECOND_LINE", me, nil --[[missing]], false)
+                                            quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SECOND_LINE", me, r1, false)
                                             break
                                         else
                                             if native_arg_switch_8 == 2 then
-                                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_THIRD_LINE", me, nil --[[missing]], false)
+                                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_THIRD_LINE", r1, me, false)
                                                 break
                                             else
                                                 if native_arg_switch_8 == 3 then
-                                                    quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_FOURTH_LINE", me, nil --[[missing]], false)
+                                                    quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_FOURTH_LINE", me, r1, false)
                                                     break
                                                 else
                                                     if native_arg_switch_8 == 4 then
-                                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIFTH_LINE", me, nil --[[missing]], false)
+                                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIFTH_LINE", r1, me, false)
                                                         break
                                                     else
                                                         goto FLOW_native_label_4
@@ -932,7 +931,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if not bVar2 then
-                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_SEVENTH_LINE", me, nil --[[missing]], false)
+                                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_SEVENTH_LINE", r1, me, false)
                                         goto LAB_00d40030
                                     end
                                     goto LAB_00d40749
@@ -942,7 +941,7 @@ function Main(quest, me)
                                 if bVar2 then
                                     goto LAB_00d40749
                                 end
-                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SIXTH_LINE", me, nil --[[missing]], false)
+                                quest:AddLineToConversation(iVar6, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SIXTH_LINE", me, r1, false)
                             end
                             ::LAB_00d40030::
                             ::FLOW_native_label_4::

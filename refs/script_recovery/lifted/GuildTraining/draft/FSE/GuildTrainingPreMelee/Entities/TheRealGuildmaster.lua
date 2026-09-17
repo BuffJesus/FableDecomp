@@ -502,8 +502,8 @@ function Main(quest, me)
                                                     quest:PauseAllNonScriptedEntities(true)
                                                     pCVar6 = quest:CreateExperienceOrb(xStack_114_2, 1)
                                                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
-                                                    quest:EntitySetCutsceneBehaviour(pCVar6, xStack_160)
-                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", xStack_13c, false, true)
+                                                    quest:EntitySetCutsceneBehaviour(xStack_160, 2)
+                                                    resources:RunMacro(xStack_18c, xStack_13c, false, true)
                                                     quest:FixMovieSequenceCamera(false)
                                                     quest:PauseAllNonScriptedEntities(false)
                                                     resources:DestroyActorMap(xStack_13c)
@@ -529,7 +529,7 @@ function Main(quest, me)
                                                                 -- LAB_00d5439e: (native jump target)
                                                                 -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
                                                                 quest:SetTimer(xStack_188, xStack_180)
-                                                                iVar7 = xStack_160:IsAlive()
+                                                                iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
                                                                     alive = quest:NewScriptFrame(me)
@@ -548,7 +548,7 @@ function Main(quest, me)
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
                                                                         quest:SetTimer(xStack_188, xStack_180)
                                                                     end
-                                                                    iVar7 = xStack_160:IsAlive()
+                                                                    iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
                                                                 end
                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -703,9 +703,7 @@ function Main(quest, me)
                                                                                                                     goto LAB_00d55c2b
                                                                                                                 end
                                                                                                                 xStack_13c = resources:NewActorMap()
-                                                                                                                pCVar21 = xStack_108
-                                                                                                                -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
-                                                                                                                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
+                                                                                                                resources:SetActor(xStack_13c, "HERO", xStack_108)
                                                                                                                 resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                                 xStack_124 = resources:StartMovie("")
                                                                                                                 quest:StartMovieSequence()
@@ -1396,9 +1394,7 @@ function Main(quest, me)
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
                                                                                                         xStack_13c = resources:NewActorMap()
-                                                                                                        pCVar21 = xStack_108
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
+                                                                                                        resources:SetActor(xStack_13c, "HERO", xStack_108)
                                                                                                         resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
@@ -1512,11 +1508,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_818
+                                                                                                                goto FLOW_after_lab_00d54f9c_811
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_818::
+                                                                                                        ::FLOW_after_lab_00d54f9c_811::
                                                                                                         if (u_stk_128 & 1) ~= 0 then
                                                                                                             u_stk_128 = u_stk_128 & 0xfffffffe
                                                                                                         end
@@ -2031,7 +2027,7 @@ function Main(quest, me)
                                                                 -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
                                                                 -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
                                                                 quest:SetTimer(xStack_188, xStack_180)
-                                                                iVar7 = xStack_160:IsAlive()
+                                                                iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
                                                                     alive = quest:NewScriptFrame(me)
@@ -2050,7 +2046,7 @@ function Main(quest, me)
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
                                                                         quest:SetTimer(xStack_188, xStack_180)
                                                                     end
-                                                                    iVar7 = xStack_160:IsAlive()
+                                                                    iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
                                                                 end
                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -2206,9 +2202,7 @@ function Main(quest, me)
                                                                                                             goto LAB_00d55c2b_c26
                                                                                                         end
                                                                                                         xStack_13c = resources:NewActorMap()
-                                                                                                        pCVar21 = xStack_108
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
+                                                                                                        resources:SetActor(xStack_13c, "HERO", xStack_108)
                                                                                                         resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
@@ -2840,8 +2834,8 @@ function Main(quest, me)
                                                     quest:PauseAllNonScriptedEntities(true)
                                                     pCVar6 = quest:CreateExperienceOrb(1, pCVar5)
                                                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
-                                                    quest:EntitySetCutsceneBehaviour(pCVar6, xStack_160)
-                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", xStack_13c, false, true)
+                                                    quest:EntitySetCutsceneBehaviour(xStack_160, 2)
+                                                    resources:RunMacro(xStack_18c, xStack_13c, false, true)
                                                     quest:FixMovieSequenceCamera(false)
                                                     quest:PauseAllNonScriptedEntities(false)
                                                     resources:DestroyActorMap(xStack_13c)
@@ -2867,7 +2861,7 @@ function Main(quest, me)
                                                                 -- LAB_00d5439e_c27: (native jump target)
                                                                 -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
                                                                 quest:SetTimer(xStack_188, xStack_180)
-                                                                iVar7 = xStack_160:IsAlive()
+                                                                iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
                                                                     alive = quest:NewScriptFrame(me)
@@ -2886,7 +2880,7 @@ function Main(quest, me)
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
                                                                         quest:SetTimer(xStack_188, xStack_180)
                                                                     end
-                                                                    iVar7 = xStack_160:IsAlive()
+                                                                    iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
                                                                 end
                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -3042,9 +3036,7 @@ function Main(quest, me)
                                                                                                             goto LAB_00d55c2b_c27
                                                                                                         end
                                                                                                         xStack_13c = resources:NewActorMap()
-                                                                                                        pCVar21 = xStack_108
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
+                                                                                                        resources:SetActor(xStack_13c, "HERO", xStack_108)
                                                                                                         resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()
@@ -3835,8 +3827,8 @@ function Main(quest, me)
                                                     quest:PauseAllNonScriptedEntities(true)
                                                     pCVar6 = quest:CreateExperienceOrb(1, pCVar5)
                                                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
-                                                    quest:EntitySetCutsceneBehaviour(pCVar6, xStack_160)
-                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", xStack_13c, false, true)
+                                                    quest:EntitySetCutsceneBehaviour(xStack_160, 2)
+                                                    resources:RunMacro(xStack_18c, xStack_13c, false, true)
                                                     quest:FixMovieSequenceCamera(false)
                                                     quest:PauseAllNonScriptedEntities(false)
                                                     resources:DestroyActorMap(xStack_13c)
@@ -3862,7 +3854,7 @@ function Main(quest, me)
                                                                 -- LAB_00d5439e_c28: (native jump target)
                                                                 -- TODO(native): CTimer::CTimer((CTimer *)&xStack_180);
                                                                 quest:SetTimer(xStack_188, xStack_180)
-                                                                iVar7 = xStack_160:IsAlive()
+                                                                iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                 cVar4 = iVar7
                                                                 while cVar4 do
                                                                     alive = quest:NewScriptFrame(me)
@@ -3881,7 +3873,7 @@ function Main(quest, me)
                                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_PREMELEE_INSTRUCTIONS_XP_REPEAT_10", me, pCVar6, false)
                                                                         quest:SetTimer(xStack_188, xStack_180)
                                                                     end
-                                                                    iVar7 = xStack_160:IsAlive()
+                                                                    iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
                                                                     cVar4 = iVar7
                                                                 end
                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -4037,9 +4029,7 @@ function Main(quest, me)
                                                                                                             goto LAB_00d55c2b_c28
                                                                                                         end
                                                                                                         xStack_13c = resources:NewActorMap()
-                                                                                                        pCVar21 = xStack_108
-                                                                                                        -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_13c,xStack_12c);
-                                                                                                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);
+                                                                                                        resources:SetActor(xStack_13c, "HERO", xStack_108)
                                                                                                         resources:SetActor(xStack_13c, "GUARD", xStack_17c)
                                                                                                         xStack_124 = resources:StartMovie("")
                                                                                                         quest:StartMovieSequence()

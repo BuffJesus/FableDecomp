@@ -3638,6 +3638,13 @@
         null,
         null
        ]
+      },
+      "uVar4": {
+       "name": "scratchValue2",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
       }
      },
      "splitLocals": {},
@@ -3999,7 +4006,6 @@
        "assignmentRoles": [
         null,
         null,
-        null,
         "getActiveQuestName",
         "getActiveQuestName"
        ]
@@ -4072,7 +4078,7 @@
     },
     {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 314,
+     "sourceLine": 313,
      "locals": {
       "bVar10": {
        "name": "predicateResult",
@@ -4188,24 +4194,22 @@
        ]
       },
       "pCVar7": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
+       "name": "getActiveQuestName",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null,
         "getActiveQuestName",
         "getActiveQuestName"
        ]
       },
       "r1": {
-       "name": "scratchValue9",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r2": {
-       "name": "scratchValue10",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "whisper",
@@ -4227,7 +4231,7 @@
        ]
       },
       "xStack_7c": {
-       "name": "scratchValue11",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -4235,14 +4239,14 @@
        ]
       },
       "xStack_88": {
-       "name": "scratchValue12",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_98": {
-       "name": "scratchValue13",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -4250,7 +4254,7 @@
        ]
       },
       "xStack_c0": {
-       "name": "scratchValue14",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -4265,7 +4269,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 565,
+     "sourceLine": 562,
      "locals": {
       "bVar2_1": {
        "name": "predicateResult",
@@ -4782,7 +4786,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 738,
+     "sourceLine": 735,
      "locals": {
       "bVar1_1": {
        "name": "isActiveThreadTerminating",
@@ -4880,7 +4884,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 781,
+     "sourceLine": 778,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -4921,6 +4925,13 @@
         null,
         null
        ]
+      },
+      "uVar4": {
+       "name": "scratchValue2",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
       }
      },
      "splitLocals": {},
@@ -4930,7 +4941,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 799,
+     "sourceLine": 797,
      "locals": {
       "bVar4_1": {
        "name": "scratchValue",
@@ -5382,7 +5393,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 1003,
+     "sourceLine": 1001,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},

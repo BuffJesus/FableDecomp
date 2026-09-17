@@ -194,7 +194,6 @@ function Main(quest, me)
                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, pCVar6, false)
                 end
                 quest:SetTimer(xStack_80, 5)
-                uVar12 = u_stk_78
             end
         else
             uVar12 = uVar13 | 0x30
@@ -248,7 +247,6 @@ function Main(quest, me)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_BOW", me, pCVar6, false)
                 quest:ModifyThingHealth(me, 1000.0, false)
-                uVar12 = u_stk_78
             else
                 bVar3 = me:MsgIsHitByHeroSpecialAbility(me)
                 if bVar3 then
@@ -265,7 +263,6 @@ function Main(quest, me)
                         quest:AddPersonToConversation(iVar14, pCVar6)
                         pCVar6 = quest:GetHero()
                         quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_LIGHTNING", me, pCVar6, false)
-                        uVar12 = u_stk_78
                     end
                     quest:ModifyThingHealth(me, 1000.0, false)
                 end
@@ -418,7 +415,6 @@ function Main(quest, me)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_MELEE", me, pCVar6, false)
                     quest:ModifyThingHealth(me, 1000.0, false)
-                    uVar12 = u_stk_78
                 else
                     uVar12 = uVar13 | 0x3000
                     u_stk_78 = uVar12
@@ -523,7 +519,6 @@ function Main(quest, me)
                                 quest:AddPersonToConversation(iVar14, pCVar6)
                                 pCVar6 = quest:GetHero()
                                 quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_LIGHTNING", me, pCVar6, false)
-                                uVar12 = u_stk_78
                             end
                             quest:ModifyThingHealth(me, 1000.0, false)
                         end
@@ -678,7 +673,6 @@ function Main(quest, me)
                             quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_LIGHTNING_MELEE", me, pCVar6, false)
                             -- LAB_00d65e4c: (native jump target)
                             quest:ModifyThingHealth(me, 1000.0, false)
-                            uVar12 = u_stk_78
                         else
                             uVar12 = uVar13 | 0x300000
                             u_stk_78 = uVar12
@@ -731,7 +725,6 @@ function Main(quest, me)
                                     pCVar6 = quest:GetHero()
                                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_LIGHTNING_BOW", me, pCVar6, false)
                                     quest:ModifyThingHealth(me, 1000.0, false)
-                                    uVar12 = u_stk_78
                                     goto FLOW_after_lab_00d65e4c
                                 end
                                 goto LAB_00d664b0

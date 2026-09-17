@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, iVar15, iVar16, iVar17, iVar19, native_arg_switch_2, p4, pCVar11, pCVar12, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, pfVar13, piVar2, pppuVar21, r1, r2, r3, r4, r5, thing, uVar1, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_210, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, iVar15, iVar16, iVar17, iVar19, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, pfVar13, piVar2, r1, r2, r3, r4, r5, thing, uVar1, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_210, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(xStack_180)
@@ -60,7 +60,7 @@ function Main(quest, me)
         -- TODO(native): thing._4_4_ = uVar1;
         thing = nil
         -- TODO(native): thing._8_4_ = piVar2;
-        quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+        quest:SetIsPushableByHero(thing, false)
         quest:SetThingHasInformation(me, false, false, false)
         pCVar7 = quest:GetThingWithScriptName("M_SkillTeacherStand")
         iVar19 = 1
@@ -77,25 +77,21 @@ function Main(quest, me)
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
-            iVar16 = iVar16
             if bVar4 then goto LAB_00d5da96 end
             cVar5 = me:IsTalkedToByHero()
             if cVar5 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                iVar16 = iVar16
                 if bVar4 then goto LAB_00d5da96 end
                 if quest:GetMasterGameState("HeroTakingGuildTest") == 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    iVar16 = iVar16
                     if bVar4 then goto LAB_00d5da96 end
                     me:ClearCommands()
                     quest:SetStateInt("TutorialState", 3)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    iVar16 = iVar16
                     if bVar4 then goto LAB_00d5da96 end
                     xStack_1c0 = resources:StartMovie("")
                     quest:StartMovieSequence()
@@ -234,8 +230,7 @@ function Main(quest, me)
             end
             xStack_170 = resources:NewActorMap()
             resources:SetActor(xStack_170, "HERO", xStack_180)
-            -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_170,xStack_f0);
-            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pppuVar21);
+            resources:SetActor(xStack_170, "TEACHER", xStack_1c)
             quest:SetStateInt("TutorialState", 2)
             xStack_1c = resources:StartMovie("")
             quest:StartMovieSequence()
@@ -265,7 +260,6 @@ function Main(quest, me)
                     bVar4 = not alive
                     if not bVar4 then
                         -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_9c);
-                        pCVar12 = "TEXT_QST_LOG_COMBAT_RANGED"
                         goto LAB_00d5b7c0
                     end
                 end
@@ -291,7 +285,6 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then return end  -- TODO(native): goto LAB_00d5dab8
-            pCVar12 = "TEXT_QST_LOG_COMBAT_RANGED"
             ::LAB_00d5b7c0::
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_1c0)
@@ -622,9 +615,7 @@ function Main(quest, me)
                 return
             end
             xStack_164 = resources:NewActorMap()
-            pCVar18 = 0
-            -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_164,xStack_120);
-            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar18);
+            resources:SetActor(xStack_164, "HERO", 0)
             resources:SetActor(xStack_164, "TEACHER", xStack_190)
             xStack_2c = resources:StartMovie("")
             quest:StartMovieSequence()
@@ -657,7 +648,6 @@ function Main(quest, me)
                     bVar4 = not alive
                     if not bVar4 then
                         -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_64);
-                        pCVar12 = "TEXT_QST_LOG_COMBAT_RANGED_FIRSTPERSON"
                         goto LAB_00d5c4eb
                     end
                 end
@@ -687,7 +677,6 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then return end  -- TODO(native): goto LAB_00d5db13
-            pCVar12 = "TEXT_QST_LOG_COMBAT_RANGED_FIRSTPERSON"
             ::LAB_00d5c4eb::
             quest:PauseAllNonScriptedEntities(false)
             resources:ReleaseResource(xStack_180)
@@ -726,7 +715,6 @@ function Main(quest, me)
             ::LAB_00d5c6b1::
             c_stk_215 = 0
             quest:DisplayQuestInfo(true)
-            -- TODO(native): xStack_1d4 = xStack_1d4 & 0xffffff;
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -1107,43 +1095,36 @@ function Main(quest, me)
                         if native_arg_switch_2 == 0 then
                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_APLUS"
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_11c);
-                            pCVar11 = "$GRADE"
                             break
                         else
                             if native_arg_switch_2 == 1 then
                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_A"
                                 -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_114);
-                                pCVar11 = "$GRADE"
                                 break
                             else
                                 if native_arg_switch_2 == 2 then
                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_B"
                                     -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_10c);
-                                    pCVar11 = "$GRADE"
                                     break
                                 else
                                     if native_arg_switch_2 == 3 then
                                         pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_C"
                                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_104);
-                                        pCVar11 = "$GRADE"
                                         break
                                     else
                                         if native_arg_switch_2 == 4 then
                                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_D"
                                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_fc);
-                                            pCVar11 = "$GRADE"
                                             break
                                         else
                                             if native_arg_switch_2 == 5 then
                                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_E"
                                                 -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_f4);
-                                                pCVar11 = "$GRADE"
                                                 break
                                             else
                                                 if native_arg_switch_2 == 6 then
                                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_F"
                                                     -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_ec);
-                                                    pCVar11 = "$GRADE"
                                                     break
                                                 else
                                                     goto FLOW_native_label_1

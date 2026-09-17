@@ -1930,7 +1930,7 @@ function KeepBookcaseExitRemoved(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00d3cac6 end
-        quest:SetRegionExitAsActive(nil --[[missing]], (r2 ~= 0))
+        quest:SetRegionExitAsActive(r2, false)
         iVar1 = quest:GetStateInt("GameState")
     end
     alive = not quest:IsActiveThreadTerminating()

@@ -16,6 +16,7 @@ untouched for the lifter's own diagnostics.
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 SELF = r'(?:this|param_1)'
 TYPE = r'(?:undefined1|undefined4|undefined2|int|uint|char|byte|bool|float|short|ushort|long|ulong|CScriptThing|undefined)'
@@ -374,8 +375,8 @@ RE_MAP_NEW = re.compile(
     r'(?:\w+ = 0;\s*)?\*(?P=map) = 0;\s*\*\(undefined4 \*\)\((?P=map) \+ 4\) = 0;\s*'
     r'\*\(undefined1 \*\*\)\((?P=map) \+ 8\) = (?P=map);\s*\*\(undefined1 \*\*\)\((?P=map) \+ 0xc\) = (?P=map);[ \t]*\r?\n', re.M)
 RE_MAP_SET = re.compile(
-    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
-    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
+    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&?(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
+    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&?(?P=key)\);\s*'
     r'(?:[\w:]+::\w+\(\(?[\w ]*\*?\)?(?P=node)\);\s*)?'
     r'(?P<body>(?:[^;{}]*;\s*){0,4})'
     r'if \(\w+ != \w+\) \{\s*if \(\w+ != \(int \*\)0x0\) \{\s*\*\w+ = \*\w+ \+ -1;\s*if \(\*\*\(int \*\*\)\((?P=node) \+ 0xc\) == 0\) \{\s*'
@@ -385,9 +386,9 @@ RE_MAP_SET = re.compile(
     r'if \((?P=info) != \((?:int|undefined) \*\*?\)0x0\) \{\s*\*(?P=info) = \*(?P=info) \+ 1;\s*\}\s*\}\s*'
     r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
 RE_MAP_RUN = re.compile(
-    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
-    r'RunCutsceneMacro_Func\(&(?P=key),&(?P<map>\w+),\(void \*\)0x0,\(void \*\)0x0,(?P<setup>true|false),(?P<skip>true|false)\);\s*'
-    r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
+    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&?(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
+    r'RunCutsceneMacro_Func\((?:\(CCharString \*\))?&?(?P=key),&?(?P<map>\w+),\(void \*\)0x0,\(void \*\)0x0,(?P<setup>true|false),(?P<skip>true|false)\);[ \t]*\r?\n'
+    r'(?:[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(&?(?P=key)\);[ \t]*\r?\n)?', re.M)
 RE_MAP_DESTROY = re.compile(r'^([ \t]*)StdMap_Destroy_API\(&?(\w+)(?:\.field_0x4)?\);', re.M)
 RE_MAP_RUN_VAR = re.compile(
     r'^(?P<ind>[ \t]*)RunCutsceneMacro_Func\((?P<key>(?:\(CCharString \*\))?&?\(?[\w. +]+\)?),&?(?P<map>[\w.]+),\(void \*\)0x0,\(void \*\)0x0 ?,(?P<setup>true|false),(?P<skip>true|false)\);', re.M)
@@ -395,9 +396,9 @@ RE_MAP_NEW2 = re.compile(r'^([ \t]*)StdMap_Construct_API\(&?(\w+)\);', re.M)
 # resource-valued maps (std::map<CCharString, CScriptGameResourceObjectScriptedThingBase>): the value is a
 # controlled-entity resource handle assigned with the resource operator=.
 RE_MAP_SET2 = re.compile(
-    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
+    r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&?(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
     r'(?:(?P<alias>\w+) = (?P<thing>&?[\w.]+);\s*)?(?:\w+ = 0x[0-9a-f]{6,7};\s*)?'
-    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&(?P=key)\);\s*'
+    r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&?(?P=key)\);\s*'
     r'CScriptGameResourceObjectScriptedThingBase::operator=\((?P=node),(?P<src>&?\w+)\);\s*'
     r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
 
@@ -1243,7 +1244,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     return text, diag
 
 
-RE_DEAD_STORE = re.compile(r'^[ \t]*(this_\d+|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+|[a-z]{1,5}Var\d+(?:_\d+)?)(?:\[0\])? = ([^;]+);[ \t]*\r?\n', re.M)
+RE_DEAD_STORE = re.compile(r'^[ \t]*(this_\d+|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+|[A-Za-z]{1,5}Var\d+(?:_\d+)?)(?:\[0\])? = ([^;]+);[ \t]*\r?\n', re.M)
 
 
 def drop_dead_local_stores(text: str) -> str:
@@ -1251,20 +1252,36 @@ def drop_dead_local_stores(text: str) -> str:
     (`CStack_4 = (CCharString)this;`) and inlined-constructor residue (`ppuStack_80[0] = 0;`) survive the
     folds when their object was lowered away. A store to a local never read elsewhere, whose value is a
     call-free expression, has no effect and is dropped (declarations are not references).'''
-    stores = {}
+    names = []
     for m in RE_DEAD_STORE.finditer(text):
-        stores.setdefault(m.group(1), []).append(m)
-    for var, ms in stores.items():
-        if any(re.search(r'\w\s*\(', re.sub(r'\((?:\w+ \*+|\w+)\)', '', m.group(2))) or '=' in m.group(2) for m in ms):
-            continue      # a call or nested assignment: keep
-        store = re.compile(r'^[ \t]*' + re.escape(var) + r'(?:\[0\])? = [^;]+;[ \t]*\r?\n', re.M)
-        rest = store.sub('', text)
-        rest = re.sub(r'^[ \t]*[\w :*]+\b' + re.escape(var) + r'(?:\s*\[\d+\])?;[ \t]*\r?\n', '', rest, flags=re.M)   # declaration
-        # a CCharString destructor on the alias is the only "use" of a destructor-selection temporary
-        dtor = re.compile(r'^[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(' + re.escape(var) + r'\);[ \t]*\r?\n', re.M)
-        rest = dtor.sub('', rest)
-        if not re.search(r'\b' + re.escape(var) + r'\b', rest):
-            text = dtor.sub('', store.sub('', text))
+        if m.group(1) not in names:
+            names.append(m.group(1))
+    for var in names:
+        # positions are recomputed per name: earlier names may have removed lines
+        ms = [m for m in RE_DEAD_STORE.finditer(text) if m.group(1) == var]
+        dead = [m for m in ms if not (re.search(r'\w\s*\(|\)\s*\(|->', re.sub(r'\((?:\w+ \*+|\w+)\)', '', m.group(2))) or '=' in m.group(2))]
+        if not dead:
+            continue      # every store carries a call or nested assignment: keep
+        v = re.escape(var)
+        dtor = re.compile(r'^[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(' + v + r'\);[ \t]*\r?\n', re.M)
+        decl = re.compile(r'^[ \t]*[\w :*]+\b' + v + r'(?:\s*\[\d+\])?;[ \t]*\r?\n', re.M)
+        any_store = re.compile(r'(?<![\w.>])' + v + r'(?:\[0\])? = (?!=)')
+        if len(dead) == len(ms):
+            rest = dtor.sub('', decl.sub('', re.sub(r'^[ \t]*' + v + r'(?:\[0\])? = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)))
+            if not re.search(r'\b' + v + r'\b', rest):
+                text = dtor.sub('', re.sub(r'^[ \t]*' + v + r'(?:\[0\])? = [^;]+;[ \t]*\r?\n', '', text, flags=re.M))
+            continue
+        # some stores carry calls: a call-free *pointer* store (`pCVar7 = &xStack_44;`, a destructor-selection
+        # alias) is dead when nothing reads the local before its next store; scalar stores stay — a later
+        # store inside a loop body may not run before the read after the loop
+        for m in reversed(dead):
+            if not re.match(r'^(?:\(\w+ \*+\))?&?(?:[A-Za-z]+Stack_|local_|this\b)', m.group(2).strip()):
+                continue
+            tail = text[m.end():]
+            nxt = any_store.search(tail)
+            region = tail[:nxt.start()] if nxt else tail
+            if not re.search(r'\b' + v + r'\b', dtor.sub('', region)):
+                text = text[:m.start()] + dtor.sub('', region) + (tail[nxt.start():] if nxt else '')
     return text
 
 

@@ -1077,8 +1077,7 @@
             "bsimVoid": true
           },
           "todo": [
-            "label LAB_00d3cb49",
-            "SetRegionExitAsActive: missing pThing (1 args for 2 params)"
+            "label LAB_00d3cb49"
           ],
           "calls": [
             "GetThingWithScriptName",
@@ -1660,7 +1659,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 443,
+          "lines": 442,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1794,7 +1793,6 @@
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar7;",
             "unlifted: thing._8_4_ = piVar12;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "unlifted: piStack_218 = piVar12;",
             "label LAB_00d3ee93",
             "verify cleanup at LAB_00d3ee93 (lifted as early return)",
@@ -1802,22 +1800,8 @@
             "verify cleanup at LAB_00d3ee93 (lifted as early return)",
             "verify cleanup at LAB_00d3ee93 (lifted as early return)",
             "label LAB_00d4072e",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d40684 (lifted as early return)",
             "label LAB_00d40684",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d40702 (lifted as early return)",
             "label LAB_00d40702",
             "unlifted: (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);",
@@ -1830,13 +1814,6 @@
             "verify cleanup at LAB_00d40702 (lifted as early return)",
             "unlifted: (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);",
             "label LAB_00d3fdc0",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00d40716",
             "label LAB_00d40379",
             "label LAB_00d40729",
@@ -2214,7 +2191,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1083,
+          "lines": 1082,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2351,8 +2328,7 @@
           "todo": [
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar1;",
-            "unlifted: thing._8_4_ = piVar2;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)"
+            "unlifted: thing._8_4_ = piVar2;"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2885,7 +2861,6 @@
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar1;",
             "unlifted: thing._8_4_ = piVar12;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "label LAB_00d4c4a5",
             "label LAB_00d4a717",
             "label LAB_00d4c4f5",
@@ -3494,7 +3469,6 @@
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar1;",
             "unlifted: thing._8_4_ = piVar2;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "label LAB_00d4dcdb",
             "label LAB_00d4dd41",
             "label LAB_00d4de58",
@@ -3528,8 +3502,6 @@
             "unlifted: piVar2 = DAT_0143e8f8;",
             "label LAB_00d4dc16",
             "unlifted: pfVar12 = *(float **)(DAT_0143e90c + 0xec0);",
-            "unlifted: pCVar10 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar10,pCVar16);",
             "label LAB_00d4d979",
             "label LAB_00d4de13",
             "label LAB_00d4de13_c16",
@@ -3757,6 +3729,7 @@
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_NewResource",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
@@ -3837,7 +3810,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 774,
+          "lines": 769,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -3975,7 +3948,6 @@
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar1;",
             "unlifted: thing._8_4_ = piVar2;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "label LAB_00d50495",
             "label LAB_00d504b9",
             "label LAB_00d505af",
@@ -4774,7 +4746,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 549,
+          "lines": 548,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -5933,7 +5905,7 @@
         "functionSyntaxPassed": 60,
         "fileSyntaxPassed": 7,
         "fileSyntaxChecked": 15,
-        "todo": 369
+        "todo": 340
       }
     },
     {
@@ -6043,7 +6015,6 @@
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar1;",
             "unlifted: thing._8_4_ = piVar2;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "label LAB_00d50ebd"
           ],
           "calls": [
@@ -6245,7 +6216,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 6
+        "todo": 5
       }
     },
     {
@@ -6282,9 +6253,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "EntitySetAllowBossPhaseChanges: missing spThing (1 args for 2 params)"
-          ],
+          "todo": [],
           "calls": [
             "AddEntityBinding",
             "AddEntityBinding",
@@ -6410,7 +6379,6 @@
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar1;",
             "unlifted: thing._8_4_ = piVar12;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "unlifted: xStack_23c = (int *)((uint)xStack_23c | 1);",
             "label LAB_00d586db",
             "unlifted: xStack_23c = (int *)((uint)xStack_23c & 0xfffffffe);",
@@ -6876,7 +6844,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 828,
+          "lines": 824,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -6885,8 +6853,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main",
-                "line": 584,
-                "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main:584: unexpected symbol near '*'"
+                "line": 580,
+                "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main:580: unexpected symbol near '*'"
               }
             ]
           },
@@ -7375,7 +7343,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 816,
+          "lines": 815,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -7636,8 +7604,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua",
-            "line": 596,
-            "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:596: unexpected symbol near '*'"
+            "line": 592,
+            "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:592: unexpected symbol near '*'"
           }
         ]
       },
@@ -7654,7 +7622,7 @@
         "functionSyntaxPassed": 13,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 4,
-        "todo": 136
+        "todo": 134
       }
     },
     {
@@ -7882,8 +7850,6 @@
             "verify cleanup at LAB_00d54f9c_c5 (lifted as early return)",
             "verify cleanup at LAB_00d55c91_c5 (lifted as early return)",
             "label LAB_00d55c91_c5",
-            "unlifted: pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);",
             "verify cleanup at LAB_00d55c72_c5 (lifted as early return)",
             "label LAB_00d55c72_c5",
             "label LAB_00d55c7f_c5",
@@ -7934,8 +7900,6 @@
             "verify cleanup at LAB_00d55c9f_c6 (lifted as early return)",
             "verify cleanup at LAB_00d551d4_c6 (lifted as early return)",
             "label LAB_00d55c91",
-            "unlifted: pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);",
             "label LAB_00d55c7f_c8",
             "label LAB_00d55c72",
             "label LAB_00d55c7f",
@@ -7977,8 +7941,6 @@
             "verify cleanup at LAB_00d54f9c_c26 (lifted as early return)",
             "verify cleanup at LAB_00d55c91_c26 (lifted as early return)",
             "label LAB_00d55c91_c26",
-            "unlifted: pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);",
             "verify cleanup at LAB_00d55c72_c26 (lifted as early return)",
             "label LAB_00d55c72_c26",
             "label LAB_00d55c7f_c26",
@@ -8039,8 +8001,6 @@
             "verify cleanup at LAB_00d54f9c_c27 (lifted as early return)",
             "verify cleanup at LAB_00d55c91_c27 (lifted as early return)",
             "label LAB_00d55c91_c27",
-            "unlifted: pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);",
             "verify cleanup at LAB_00d55c72_c27 (lifted as early return)",
             "label LAB_00d55c72_c27",
             "label LAB_00d55c7f_c27",
@@ -8109,8 +8069,6 @@
             "verify cleanup at LAB_00d54f9c_c28 (lifted as early return)",
             "verify cleanup at LAB_00d55c91_c28 (lifted as early return)",
             "label LAB_00d55c91_c28",
-            "unlifted: pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar21);",
             "verify cleanup at LAB_00d55c72_c28 (lifted as early return)",
             "label LAB_00d55c72_c28",
             "label LAB_00d55c7f_c28",
@@ -8460,6 +8418,7 @@
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
@@ -8702,6 +8661,7 @@
             "AcquireControl",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
+            "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -8997,6 +8957,7 @@
             "AcquireControl",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
+            "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -9326,6 +9287,7 @@
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
@@ -9726,6 +9688,7 @@
             "AcquireControl",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
+            "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -9910,7 +9873,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 4543,
+          "lines": 4533,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -9935,7 +9898,7 @@
             "goto FLOW_after_lab_00d54846;",
             "goto FLOW_after_lab_00d54dfa;",
             "goto FLOW_after_lab_00d54f9c;",
-            "goto FLOW_after_lab_00d54f9c_818;",
+            "goto FLOW_after_lab_00d54f9c_811;",
             "goto FLOW_after_lab_00d551d4;",
             "goto FLOW_after_lab_00d55b4e;",
             "goto LAB_00d53316;",
@@ -9982,7 +9945,7 @@
             "FLOW_after_lab_00d54846",
             "FLOW_after_lab_00d54dfa",
             "FLOW_after_lab_00d54f9c",
-            "FLOW_after_lab_00d54f9c_818",
+            "FLOW_after_lab_00d54f9c_811",
             "FLOW_after_lab_00d551d4",
             "FLOW_after_lab_00d55b4e",
             "LAB_00d53316",
@@ -10548,7 +10511,7 @@
         "functionSyntaxPassed": 12,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 4,
-        "todo": 334
+        "todo": 324
       }
     },
     {
@@ -10639,12 +10602,9 @@
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar1;",
             "unlifted: thing._8_4_ = piVar2;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "label LAB_00d5b380",
             "unlifted: xStack_1ec = 1 - xStack_1ec;",
             "label LAB_00d5dbab",
-            "unlifted: pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pppuVar21);",
             "goto LAB_00d5dac4",
             "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_9c);",
             "label LAB_00d5db05",
@@ -10672,8 +10632,6 @@
             "unlifted: *piVar2 = *piVar2 + 1;",
             "verify cleanup at LAB_00d5db37 (lifted as early return)",
             "label LAB_00d5db37",
-            "unlifted: pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar9,pCVar18);",
             "goto LAB_00d5db1f",
             "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_64);",
             "label LAB_00d5db45",
@@ -10691,7 +10649,6 @@
             "unlifted: xStack_1e4 = CVar10;",
             "AddQuestInfoTick: not in FSE manifest",
             "AddQuestInfoTick: not in FSE manifest",
-            "unlifted: xStack_1d4 = xStack_1d4 & 0xffffff;",
             "label LAB_00d5c757",
             "unlifted: xStack_1d4 = CONCAT13(1,(undefined3)xStack_1d4);",
             "IsHeroInProjectileWeaponMode: not in FSE manifest",
@@ -10834,6 +10791,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource",
             "ACTORMAP_New",
+            "ACTORMAP_Set",
             "ACTORMAP_Set",
             "SetStateInt",
             "RESOURCE_StartMovie",
@@ -11006,6 +10964,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_DestroyMovie",
             "ACTORMAP_New",
+            "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -11251,7 +11210,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1242,
+          "lines": 1223,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -11260,8 +11219,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main",
-                "line": 976,
-                "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main:976: unexpected symbol near '*'"
+                "line": 964,
+                "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main:964: unexpected symbol near '*'"
               }
             ]
           },
@@ -11390,8 +11349,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua",
-            "line": 999,
-            "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:999: unexpected symbol near '*'"
+            "line": 987,
+            "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:987: unexpected symbol near '*'"
           }
         ]
       },
@@ -11430,7 +11389,7 @@
         "functionSyntaxPassed": 5,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 106
+        "todo": 100
       }
     },
     {
@@ -11551,7 +11510,6 @@
             "unlifted: (**(code **)((int)xStack_cc + 4))();",
             "unnamed field 0xc",
             "unlifted: thing._4_4_ = uVar2;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "goto LAB_00d61b0a",
             "label LAB_00d5e63f",
             "unlifted: xStack_22c = 1 - xStack_22c;",
@@ -11559,10 +11517,6 @@
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_134);",
             "unlifted: CTimer::CTimer((CTimer *)&xStack_23c);",
             "label LAB_00d60aff",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pCVar23);",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pppuVar24);",
             "unlifted: CTimer::CTimer((CTimer *)&xStack_234);",
             "unlifted: piVar1 = DAT_0143e8f8;",
             "unlifted: CTimer::CTimer((CTimer *)&xStack_22c);",
@@ -11575,8 +11529,6 @@
             "unlifted: pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pCVar23);",
             "unlifted: RunCutsceneMacro_Func(xStack_110,xStack_210,(void *)0x0,xStack_1d0,false,false);",
             "label LAB_00d61342_c8",
             "label LAB_00d61578_c9",
@@ -11811,6 +11763,8 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
             "FixMovieSequenceCamera",
@@ -11946,6 +11900,7 @@
             "IsActiveThreadTerminating",
             "GetMasterGameState",
             "IsActiveThreadTerminating",
+            "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_RunMacro",
             "PauseAllNonScriptedEntities",
@@ -12360,7 +12315,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1722,
+          "lines": 1715,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -12369,8 +12324,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main",
-                "line": 637,
-                "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main:637: unexpected symbol near '*'"
+                "line": 632,
+                "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main:632: unexpected symbol near '*'"
               }
             ]
           },
@@ -12512,8 +12467,8 @@
         "errors": [
           {
             "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua",
-            "line": 663,
-            "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:663: unexpected symbol near '*'"
+            "line": 658,
+            "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:658: unexpected symbol near '*'"
           }
         ]
       },
@@ -12546,7 +12501,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 2,
-        "todo": 119
+        "todo": 112
       }
     },
     {
@@ -13636,7 +13591,7 @@
             "EntitySetAsDamageable",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 863,
+          "lines": 856,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -13645,8 +13600,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main",
-                "line": 479,
-                "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main:479: unexpected symbol near '*'"
+                "line": 475,
+                "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main:475: unexpected symbol near '*'"
               }
             ]
           },
@@ -13926,8 +13881,8 @@
           },
           {
             "path": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua",
-            "line": 491,
-            "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:491: unexpected symbol near '*'"
+            "line": 487,
+            "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:487: unexpected symbol near '*'"
           },
           {
             "path": "FSE/GuildTrainingWoodsDeparture/Entities/ScorpionHome.lua",
@@ -14967,6 +14922,6 @@
     "functionSyntaxPassed": 133,
     "fileSyntaxPassed": 19,
     "fileSyntaxChecked": 37,
-    "todo": 1190
+    "todo": 1135
   }
 }

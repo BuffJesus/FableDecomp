@@ -553,7 +553,6 @@ function Main(quest, me)
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
-                    iVar11 = i_stk_16c
                 until false
             end
         end

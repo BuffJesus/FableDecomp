@@ -231,6 +231,7 @@ function MakeTeamMemberComment(quest, me, native_arg_comment_to_make, native_arg
     pCVar3 = (pCVar3 .. "_")
     pCVar3 = (pCVar3 .. native_arg_comment_to_make)
     quest:AddLineToConversation(conversationID, pCVar3, pSpeaker, pCVar2, false)
+    local uVar4 = quest:SetTimer(quest:GetStateInt("CommentTimer"), 5)
     return true
 end
 

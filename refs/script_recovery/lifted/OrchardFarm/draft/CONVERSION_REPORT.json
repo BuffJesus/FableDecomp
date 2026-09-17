@@ -318,7 +318,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 212,
+          "lines": 211,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -479,7 +479,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 258,
+          "lines": 256,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -704,9 +704,10 @@
             "ENGINE_Concat",
             "ENGINE_Concat",
             "ENGINE_Concat",
-            "AddLineToConversation"
+            "AddLineToConversation",
+            "SetTimer"
           ],
-          "lines": 17,
+          "lines": 18,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
