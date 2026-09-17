@@ -11,567 +11,865 @@ do
 end
 
 function Main(quest, me)
-    local CVar29, CVar3, CVar32, __native_condition_1, __native_condition_2, aVar25, bVar1, bVar4, cVar2, fStack_1e0, fVar14, fVar15, fVar34, iVar10, iVar7, native_arg_switch_5, pCVar17, pCVar19, pCVar21, pCVar26, pCVar27, pCVar33, pCVar35, pCVar36, pCVar6, paVar11, paVar20, paVar23, pcVar30, pfVar12, piVar5, piVar9, ppVar24, ppVar31, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r4, r5, r6, r7, r8, r9, uVar16, uVar22, uVar28
+    local resources = quest:RetailResources()
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_00, fret_01, iVar10, iVar11, iVar22, i_stk_24, native_arg_switch_5, pCVar12, pCVar13, pCVar15, pCVar23, pCVar9, pcVar17, pfVar16, pppuVar24, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r3, r4, r5, r6, r7, r8, r9, thing, thing_b10, thing_b11, thing_b8, thing_b9, uVar18, uVar19, uVar2, uVar20, uVar21, u_stk_17c, xStack_10, xStack_158, xStack_1d0, xStack_1d4, xStack_1e0_2, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_38, xStack_48, xStack_54, xStack_60_2
     local alive = true
-    -- TODO(native): bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_228);
-    if bVar1 then
+    local function __region_LAB_00d61ad8_c1()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:ReleaseResource(xStack_158)
     end
-    cVar2 = me:AcquireControl(4)
-    while not cVar2 do
+    local function __region_LAB_00d61ad8_c23()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:ReleaseResource(xStack_158)
+    end
+    local function __cleanup_LAB_00d61b0a_c23()
+        quest:DeregisterTimer(iVar11)
+        quest:DeregisterTimer(iVar11)
+        resources:ReleaseResource(xStack_158)
+    end
+    u_stk_17c = 0
+    xStack_228 = resources:NewResource()
+    bVar6 = false
+    if bVar6 ~= 0 then
+    end
+    bVar6 = resources:TryAcquire(xStack_228, me, 4)
+    while not bVar6 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar6 = not alive
+        if bVar6 then
+            if false then
+                -- TODO(native): (**(code **)((int)xStack_cc + 4))();
+            end
             return
         end
-        cVar2 = me:AcquireControl(4)
+        bVar6 = resources:TryAcquire(0, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then goto LAB_00d61b7b end
-    quest:EntitySetAsKillable(nil --[[missing]], false)
-    r1 = quest:GetHero()
-    quest:EntitySetAlwaysBlockAttacksFromThing(r1, nil --[[missing]], false)
-    quest:SetThingHasInformation(nil --[[missing]])
-    quest:SetPlayerUsingWillDummies(false)
-    piVar5 = *(this + 0x10)
-    if piVar5 ~= nil then
-        -- TODO(native): *piVar5 = *piVar5 + 1;
-    end
-    quest:SetIsPushableByHero(nil --[[missing]], false)
-    r2 = quest:RegisterTimer()
-    r3 = quest:RegisterTimer()
-    quest:SetTimer(0, nil --[[missing]])
-    quest:EntitySetTargetingType(nil --[[missing]], nil --[[missing]])
+    bVar6 = not alive
+    if bVar6 then goto LAB_00d61b7b end
+    quest:EntitySetAsKillable(me, false, true)
+    bVar6 = true
+    pCVar9 = quest:GetHero()
+    quest:EntitySetAlwaysBlockAttacksFromThing(me, pCVar9, bVar6)
+    quest:SetThingHasInformation(me, false, false, false)
+    quest:SetPlayerUsingWillDummies(true)
+    uVar2 = __native_entity_state:GetStateInt("self_0xc")
+    -- TODO(native): thing._4_4_ = uVar2;
+    thing = nil
+    thing_b8 = piVar1
+    thing_b9 = (piVar1 >> 8)
+    thing_b10 = (piVar1 >> 0x10)
+    thing_b11 = (piVar1 >> 0x18)
+    quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+    iVar10 = quest:RegisterTimer()
+    iVar11 = quest:RegisterTimer()
+    quest:SetTimer(iVar11, 0)
+    quest:EntitySetTargetingType(me, 0x1a)
     if not quest:GetStateBool("TestFinished") then
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            quest:DeregisterTimer(nil --[[missing]])
-            quest:DeregisterTimer(nil --[[missing]])
+        bVar6 = not alive
+        if bVar6 then
+            quest:DeregisterTimer(iVar11)
+            quest:DeregisterTimer(iVar11)
+            resources:ReleaseResource(0)
             return
         end
-        piVar5 = quest:GetThingWithScriptName("M_WillTeacherStand")
-        pCVar33 = 0x1
-        pcVar30 = 0x0
-        pCVar6 = piVar5:GetPos()
-        me:MoveToPosition(pCVar6, pCVar26, SUB41(me,0), SUB41(pCVar18,0))
-        iVar7 = quest:GetStateInt("TutorialState")
-        while iVar7 == 1 do
+        pCVar12 = quest:GetThingWithScriptName("M_WillTeacherStand")
+        iVar22 = 1
+        uVar18 = 0
+        uVar19 = 0
+        uVar20 = 0
+        uVar21 = 0
+        iVar11 = 0
+        iVar10 = 0x40400000
+        pCVar13 = pCVar12:GetPos()
+        me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+        iVar10 = quest:GetStateInt("TutorialState")
+        while iVar10 == 1 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d61b69 end
-            cVar2 = me:IsTalkedToByHero()
-            if cVar2 then
+            bVar6 = not alive
+            if bVar6 then goto LAB_00d61b69 end
+            cVar7 = me:IsTalkedToByHero()
+            if cVar7 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d61b69 end
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d61b69 end
                 if quest:GetMasterGameState("HeroTakingGuildTest") == 0 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61b69 end
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61b69 end
                     quest:SetStateInt("TutorialState", 2)
                 else
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61b69 end
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61b69 end
+                    xStack_1f0 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    pCVar6 = 0x1
-                    quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
-                    -- TODO(native): CVar3 = (CScriptGameResourceObjectScriptedThingBase) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffdc0);
-                    fVar14 = quest:GetHealth(nil --[[missing]])
-                    fVar15 = _DAT_0122dedc
-                    if fVar15 < fVar14 then
-                        CVar29 = 0x0
-                        pCVar33 = 0x1
-                        pCVar27 = 0x0
-                        pCVar26 = 0x0
-                        pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_NOT_START"
-                        pCVar6 = quest:GetHero()
-                        r4 = me:Speak(pCVar6, pcVar30, pCVar26, (pCVar27 ~= 0), (pCVar33 ~= 0), (CVar29 ~= 0))
-                        bVar1 = me:IsPerformingScriptTask()
-                        if bVar1 then
-                            repeat
-                                alive = quest:NewScriptFrame(me)
-                                alive = not quest:IsActiveThreadTerminating()
-                                if not alive then
-                                    quest:PauseAllNonScriptedEntities((CVar29 ~= 0))
-                                    -- TODO(native): goto LAB_00d61b0a
+                    quest:PauseAllNonScriptedEntities(true)
+                    me:ClearCommands()
+                    pCVar12 = resources:ScriptThing(0)
+                    pCVar12 = pCVar12
+                    r1 = quest:GetHealth(pCVar12)
+                    fVar4 = 0.0
+                    if fVar4 < fret_0 then
+                        iVar22 = 0
+                        uVar18 = 1
+                        uVar19 = 0
+                        uVar20 = 0
+                        uVar21 = 0
+                        iVar11 = 0
+                        iVar10 = 0
+                        pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_NOT_START"
+                        pCVar12 = quest:GetHero()
+                        r2 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                        iVar10 = me:IsPerformingScriptTask()
+                        cVar7 = iVar10
+                        while cVar7 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar6 = not alive
+                            if bVar6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_20)
+                                ::LAB_00d61b0a_c1::
+                                quest:DeregisterTimer(iVar11)
+                                quest:DeregisterTimer(iVar11)
+                                resources:ReleaseResource(xStack_158)
+                                do return end
+                                pCVar12 = quest:GetThingWithScriptName("WillApprenticeMarker")
+                                bVar6 = false
+                                uVar18 = SUB41("WillApprentice",0)
+                                uVar19 = ("WillApprentice" >> 8)
+                                uVar20 = ("WillApprentice" >> 0x10)
+                                uVar21 = ("WillApprentice" >> 0x18)
+                                pCVar13 = pCVar12:GetPos()
+                                r3 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
+                                if (r3 ~= nil and not r3:IsNull()) then
+                                    r3:SetToKillOnLevelUnload(0)
                                 end
-                                bVar1 = me:IsPerformingScriptTask()
-                            until not (bVar1)
+                                if quest:GetStateBool("BanditsDefeated") then
+                                    -- LAB_00d609de_c1: (native jump target)
+                                    quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "")
+                                    quest:SetPlayerUsingWillDummies(false)
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar6 = not alive
+                                    -- FLOW_native_label_2_c1: (native jump target)
+                                    if not bVar6 then
+                                        if not quest:GetStateBool("BanditsDefeated") then
+                                            u_stk_17c = u_stk_17c | 1
+                                            bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+                                            if bVar6 then return end  -- TODO(native): goto LAB_00d6158a_c1
+                                            bVar6 = true
+                                        else
+                                            -- LAB_00d6158a_c1: (native jump target)
+                                            bVar6 = false
+                                        end
+                                        if (u_stk_17c & 1) ~= 0 then
+                                            u_stk_17c = u_stk_17c & 0xfffffffe
+                                        end
+                                        if bVar6 then
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar6 = not alive
+                                            if bVar6 then goto LAB_00d61b0a_c1 end
+                                            quest:SetStateBool("BanditsDefeated", true)
+                                        end
+                                        cVar7 = me:IsTalkedToByHero()
+                                        if not cVar7 then goto LAB_00d61af3 end
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar6 = not alive
+                                        if not bVar6 then
+                                            me:ClearCommands()
+                                            xStack_1f0 = resources:StartMovie("")
+                                            quest:StartMovieSequence()
+                                            quest:PauseAllNonScriptedEntities(true)
+                                            quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "", "TEXT_OBJECT_HERO_ANSWER_NO", "TEXT_OBJECT_HERO_ANSWER_NO")
+                                            iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                            while iVar10 < 0 do
+                                                alive = quest:NewScriptFrame(me)
+                                                alive = not quest:IsActiveThreadTerminating()
+                                                bVar6 = not alive
+                                                if bVar6 then return end  -- TODO(native): goto LAB_00d61b53_c1
+                                                iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                            end
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar6 = not alive
+                                            if bVar6 then
+                                                -- LAB_00d61b44_c1: (native jump target)
+                                                quest:PauseAllNonScriptedEntities(false)
+                                            else
+                                                alive = not quest:IsActiveThreadTerminating()
+                                                bVar6 = not alive
+                                                if iVar10 == 1 then
+                                                    if not bVar6 then
+                                                        quest:FadeScreenOut(0.5, 0.5)
+                                                        quest:Pause(1.0)
+                                                        quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_2_comp.xmv")
+                                                        quest:ConfiscateAllHeroWeapons()
+                                                        bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+                                                        if bVar6 then
+                                                            alive = not quest:IsActiveThreadTerminating()
+                                                            bVar6 = not alive
+                                                            if bVar6 then return end  -- TODO(native): goto LAB_00d61b44_c1
+                                                            quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
+                                                        end
+                                                        delay = 0
+                                                        pCVar15 = quest:GetActiveQuestName()
+                                                        quest:DeactivateQuestLater(pCVar15, delay)
+                                                        quest:SetTimeOfDay(11.0)
+                                                        quest:ResetPlayerCreatureCombatMultiplier()
+                                                        quest:SetHeroAsTeenager(false)
+                                                        quest:ChangeHeroHealthBy(1000.0, true, false)
+                                                        bVar8 = true
+                                                        bVar6 = false
+                                                        pCVar12 = quest:GetThingWithScriptName("MeleeApprentice")
+                                                        quest:RemoveThing(pCVar12, bVar6, bVar8)
+                                                        pCVar12 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE")
+                                                        bVar6 = false
+                                                        uVar18 = SUB41("MeleeApprentice",0)
+                                                        uVar19 = ("MeleeApprentice" >> 8)
+                                                        uVar20 = ("MeleeApprentice" >> 0x10)
+                                                        uVar21 = ("MeleeApprentice" >> 0x18)
+                                                        pCVar13 = pCVar12:GetPos()
+                                                        r4 = quest:CreateCreature("MeleeApprenticeMarker", pCVar13, "MeleeApprentice")
+                                                        __region_LAB_00d61ad8_c1()
+                                                        goto LAB_00d61af3
+                                                    end
+                                                else
+                                                    if not bVar6 then
+                                                        xStack_54 = resources:ScriptThing(0)
+                                                        pCVar12 = xStack_54
+                                                        r5 = quest:GetHealth(pCVar12)
+                                                        fVar4 = 0.0
+                                                        if fVar4 < fret_04 then
+                                                            iVar22 = 0
+                                                            uVar18 = 1
+                                                            uVar19 = 0
+                                                            uVar20 = 0
+                                                            uVar21 = 0
+                                                            iVar11 = 0
+                                                            iVar10 = 0
+                                                            pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO"
+                                                            pCVar12 = quest:GetHero()
+                                                            r6 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                                            iVar10 = me:IsPerformingScriptTask()
+                                                            cVar7 = iVar10
+                                                            while cVar7 do
+                                                                alive = quest:NewScriptFrame(me)
+                                                                alive = not quest:IsActiveThreadTerminating()
+                                                                bVar6 = not alive
+                                                                if bVar6 then return end  -- TODO(native): goto LAB_00d61b44_c1
+                                                                iVar10 = me:IsPerformingScriptTask()
+                                                                cVar7 = iVar10
+                                                            end
+                                                            alive = not quest:IsActiveThreadTerminating()
+                                                            bVar6 = not alive
+                                                            if bVar6 then return end  -- TODO(native): goto LAB_00d61b53_c1
+                                                        end
+                                                        pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
+                                                        iVar22 = 1
+                                                        uVar18 = 0
+                                                        uVar19 = 0
+                                                        uVar20 = 0
+                                                        uVar21 = 0
+                                                        iVar11 = 0
+                                                        iVar10 = 0x3f800000
+                                                        pCVar13 = pCVar12:GetPos()
+                                                        me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                                        __region_LAB_00d61ad8_c1(); goto LAB_00d61af3
+                                                    end
+                                                end
+                                                -- LAB_00d61b53_c1: (native jump target)
+                                                -- LAB_00d61b5a_c1: (native jump target)
+                                                quest:PauseAllNonScriptedEntities(false)
+                                            end
+                                            resources:ReleaseResource(xStack_1f0)
+                                            goto LAB_00d61b69
+                                        end
+                                    end
+                                    goto LAB_00d61b0a_c1
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar6 = not alive
+                                if not bVar6 then
+                                    quest:ActivateQuest("Q_GuildTrainingWoodsWill")
+                                    quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
+                                    quest:SetQuestAsPersistent("Q_GuildTrainingWoodsWill", false)
+                                    quest:SetQuestCardObjective("GuildWoods", "Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_01", "")
+                                    -- TODO(native): goto LAB_00d609de_c1
+                                end
+                                goto FLOW_after_lab_00d61b0a
+                            end
+                            iVar10 = me:IsPerformingScriptTask()
+                            cVar7 = iVar10
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
-                            iVar7 = *piVar5
-                            -- TODO(native): goto LAB_00d61b5a
+                        bVar6 = not alive
+                        if bVar6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:ReleaseResource(xStack_1f0)
+                            goto LAB_00d61b69
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_1f0)
                 end
             end
-            fVar34 = 5.5
-            pCVar6 = quest:GetHero()
-            bVar1 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar34)
-            __native_condition_1 = (bVar1) and (iVar7 = GSI->GetTimer(), iVar7 < 1)
+            dist = 5.5
+            pCVar9 = quest:GetHero()
+            bVar6 = quest:IsDistanceBetweenThingsUnder(pCVar9, me, dist)
+            __native_condition_2 = bVar6
+            if __native_condition_2 then
+                iVar10 = quest:GetTimer(iVar11)
+                __native_condition_2 = iVar10 < 1
+            end
+            __native_condition_1 = __native_condition_2
             if __native_condition_1 then
-                bVar1 = me:IsPerformingScriptTask()
-                __native_condition_1 = not bVar1
+                iVar10 = me:IsPerformingScriptTask()
+                __native_condition_1 = not iVar10
             end
             if __native_condition_1 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d61b69 end
-                r5 = quest:AddNewConversation(nil --[[missing]], false, nil --[[missing]])
-                r6 = quest:GetHero()
-                quest:AddPersonToConversation(nil --[[missing]], r6)
-                quest:SetTimer(nil --[[missing]], nil --[[missing]])
-                if iStack_238 == 0 then
-                    r7 = quest:GetHero()
-                    quest:EntitySetFacingAngleTowardsThing(r7, nil --[[missing]])
-                    r8 = quest:GetHero()
-                    quest:AddLineToConversation(nil --[[missing]], "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_FIRST", r8, nil --[[missing]])
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d61b69 end
+                iVar11 = quest:AddNewConversation(me, false, false)
+                pCVar9 = quest:GetHero()
+                quest:AddPersonToConversation(iVar11, pCVar9)
+                quest:SetTimer(iVar11, xStack_244)
+                if 0 == 0 then
+                    bVar6 = false
+                    pCVar9 = quest:GetHero()
+                    quest:EntitySetFacingAngleTowardsThing(me, pCVar9, bVar6)
+                    pCVar9 = quest:GetHero()
+                    quest:AddLineToConversation(iVar11, "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_FIRST", me, pCVar9, false)
                     -- LAB_00d5e63f: (native jump target)
                 else
-                    if iStack_238 == 1 then
-                        r9 = quest:GetHero()
-                        quest:EntitySetFacingAngleTowardsThing(r9, nil --[[missing]])
-                        r10 = quest:GetHero()
-                        quest:AddLineToConversation(nil --[[missing]], "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_SECOND", r10, nil --[[missing]])
-                        -- TODO(native): goto LAB_00d5e63f
+                    if 0 == 1 then
+                        bVar6 = false
+                        pCVar9 = quest:GetHero()
+                        quest:EntitySetFacingAngleTowardsThing(me, pCVar9, bVar6)
+                        pCVar9 = quest:GetHero()
+                        quest:AddLineToConversation(iVar11, "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_SECOND", me, pCVar9, false)
+                        goto FLOW_after_lab_00d5e63f
                     end
                 end
-                -- TODO(native): iStack_238 = 1 - iStack_238;
+                ::FLOW_after_lab_00d5e63f::
+                -- TODO(native): xStack_22c = 1 - xStack_22c;
             end
-            iVar7 = quest:GetStateInt("TutorialState")
+            iVar10 = quest:GetStateInt("TutorialState")
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
+        bVar6 = not alive
+        if not bVar6 then
             quest:SetMasterGameState("HeroTakingGuildTest", true)
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d61b69 end
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d61b69 end
                 quest:SetStateInt("TutorialState", 2)
-                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_44);
-                -- TODO(native): bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_44);
-                if bVar1 then
+                xStack_38 = resources:NewResource()
+                bVar6 = false
+                if bVar6 ~= 0 then
                 end
-                r11 = quest:GetHero()
-                cVar2 = me:AcquireControl(4)
-                while not cVar2 do
+                iVar11 = 4
+                uVar18 = SUB41(xStack_38,0)
+                uVar19 = (xStack_38 >> 8)
+                uVar20 = (xStack_38 >> 0x10)
+                uVar21 = (xStack_38 >> 0x18)
+                pCVar12 = quest:GetHero()
+                bVar6 = me:AcquireControl(4)
+                while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d60aee
-                    r12 = quest:GetHero()
-                    cVar2 = me:AcquireControl(4)
+                    bVar6 = not alive
+                    if bVar6 then
+                        resources:ReleaseResource(xStack_38)
+                        goto LAB_00d61b69
+                    end
+                    iVar11 = 4
+                    uVar18 = SUB41(xStack_38,0)
+                    uVar19 = (xStack_38 >> 8)
+                    uVar20 = (xStack_38 >> 0x10)
+                    uVar21 = (xStack_38 >> 0x18)
+                    pCVar12 = quest:GetHero()
+                    bVar6 = me:AcquireControl(4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar6 = not alive
+                if bVar6 then
                     -- LAB_00d60aee: (native jump target)
+                    resources:ReleaseResource(xStack_38)
                     goto LAB_00d61b69
                 end
-                -- TODO(native): StdMap_Construct_API();
-                -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_60,(CCharString *)aaStack_19c);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8, (CScriptGameResourceObjectScriptedThingBase *)pCVar35);
-                -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_60,(CCharString *)aaStack_184);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                quest:GiveHeroAbility(nil --[[missing]], nil --[[missing]])
+                xStack_54 = resources:NewActorMap()
+                resources:SetActor(xStack_54, "HERO", xStack_38)
+                resources:SetActor(xStack_54, "TEACHER", 0)
+                quest:GiveHeroAbility(0xb, true)
                 quest:SetMasterGameState("WillTrainingStarted", true)
-                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_34);
-                pCVar26 = ""
+                xStack_20 = resources:StartMovie("")
                 quest:StartMovieSequence()
-                quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                quest:FixMovieSequenceCamera(nil --[[missing]])
-                ppVar24 = 0x0
-                -- TODO(native): RunCutsceneMacro_Func();
-                quest:FixMovieSequenceCamera((ppVar24 ~= 0))
-                quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                -- TODO(native): StdMap_Destroy_API();
-                cVar2 = quest:IsXbox()
-                if not cVar2 then
+                quest:PauseAllNonScriptedEntities(true)
+                quest:FixMovieSequenceCamera(true)
+                resources:RunMacro("CS_GUILD_WILL_LIGHTNING", xStack_54, false, true)
+                quest:FixMovieSequenceCamera(false)
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(xStack_1f0)
+                resources:DestroyActorMap(xStack_54)
+                resources:DestroyMovie(xStack_10)
+                bVar6 = quest:IsXbox()
+                if bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61b69 end
-                    pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC"
-                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
-                    cVar2 = quest:MsgIsGameInfoClickedPast()
-                    while not cVar2 do
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61b69 end
+                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
+                    bVar6 = quest:MsgIsGameInfoClickedPast()
+                    while not bVar6 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61b69 end
-                        cVar2 = quest:MsgIsGameInfoClickedPast()
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61b69 end
+                        bVar6 = quest:MsgIsGameInfoClickedPast()
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61b69 end
-                    -- TODO(native): paVar11 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_140;
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61b69 end
                 else
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61b69 end
-                    pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP"
-                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
-                    cVar2 = quest:MsgIsGameInfoClickedPast()
-                    while not cVar2 do
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61b69 end
+                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
+                    bVar6 = quest:MsgIsGameInfoClickedPast()
+                    while not bVar6 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61b69 end
-                        cVar2 = quest:MsgIsGameInfoClickedPast()
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61b69 end
+                        bVar6 = quest:MsgIsGameInfoClickedPast()
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61b69 end
-                    -- TODO(native): paVar11 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_150;
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61b69 end
+                    -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_134);
+                    pCVar15 = "TEXT_QST_LOG_COMBAT_USINGSPELLS"
                 end
                 quest:SetMasterGameState("WillScore", 0)
-                -- TODO(native): CTimer::CTimer((CTimer *)&stack0xfffffdb8);
-                quest:SetTimer(nil --[[missing]], nil --[[missing]])
-                iVar7 = quest:GetStateInt("TutorialState")
-                -- TODO(native): cStack_239 = '\0';
-                while iVar7 == 2 do
+                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_23c);
+                quest:SetTimer(iVar11, 0)
+                iVar10 = quest:GetStateInt("TutorialState")
+                c_stk_22d = 0
+                while iVar10 == 2 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d6138b end
-                    while (cStack_239 == 0 and (quest:GetMasterGameState("WillScore") == 0)) do
+                    bVar6 = not alive
+                    CVar5 = ""
+                    if bVar6 then goto LAB_00d6138b end
+                    while (c_stk_22d == 0 and (quest:GetMasterGameState("WillScore") == 0)) do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
-                        cVar2 = me:IsTalkedToByHero()
-                        if cVar2 then
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
+                        cVar7 = me:IsTalkedToByHero()
+                        if cVar7 then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d6138b end
-                            -- TODO(native): cStack_239 = '\x01';
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d6138b end
+                            c_stk_22d = '\x01'
                         end
-                        iVar7 = quest:GetTimer(nil --[[missing]])
-                        if iVar7 < 1 then
+                        iVar10 = quest:GetTimer(iVar11)
+                        if iVar10 < 1 then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d6138b end
-                            r13 = quest:GetHero()
-                            quest:EntitySetFacingAngleTowardsThing(r13, r12)
-                            quest:SetTimer(nil --[[missing]], nil --[[missing]])
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d6138b end
+                            bVar6 = false
+                            pCVar12 = quest:GetHero()
+                            quest:EntitySetFacingAngleTowardsThing(me, pCVar12, bVar6)
+                            quest:SetTimer(iVar11, 2)
                         end
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d6138b end
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d6138b end
                     if quest:GetMasterGameState("WillScore") ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
                         quest:SetStateInt("TutorialState", 3)
-                        -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_54);
-                        -- TODO(native): bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_54);
-                        if bVar1 then
+                        xStack_48 = resources:NewResource()
+                        bVar6 = false
+                        if bVar6 ~= 0 then
                         end
-                        r14 = quest:GetHero()
-                        cVar2 = me:AcquireControl(4)
-                        while not cVar2 do
+                        iVar11 = 4
+                        uVar18 = SUB41(xStack_48,0)
+                        uVar19 = (xStack_48 >> 8)
+                        uVar20 = (xStack_48 >> 0x10)
+                        uVar21 = (xStack_48 >> 0x18)
+                        pCVar12 = quest:GetHero()
+                        bVar6 = me:AcquireControl(4)
+                        while not bVar6 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d60aff
-                            r15 = quest:GetHero()
-                            cVar2 = me:AcquireControl(4)
+                            bVar6 = not alive
+                            if bVar6 then
+                                resources:ReleaseResource(xStack_48)
+                                goto LAB_00d61b69
+                            end
+                            iVar11 = 4
+                            uVar18 = SUB41(xStack_48,0)
+                            uVar19 = (xStack_48 >> 8)
+                            uVar20 = (xStack_48 >> 0x10)
+                            uVar21 = (xStack_48 >> 0x18)
+                            pCVar12 = quest:GetHero()
+                            bVar6 = me:AcquireControl(4)
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
+                        bVar6 = not alive
+                        if bVar6 then
                             -- LAB_00d60aff: (native jump target)
+                            resources:ReleaseResource(xStack_48)
                             goto LAB_00d61b69
                         end
-                        -- TODO(native): StdMap_Construct_API();
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)aCStack_1c0,aCStack_130);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8, (CScriptGameResourceObjectScriptedThingBase *)pCVar35);
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)aCStack_1c0,aCStack_128);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_1c);
-                        pCVar26 = ""
+                        pCVar12 = resources:NewActorMap()
+                        pCVar23 = xStack_48
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1b4,xStack_124);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pCVar23);
+                        pppuVar24 = 0
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1b4,xStack_11c);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pppuVar24);
+                        xStack_10 = resources:StartMovie("")
                         quest:StartMovieSequence()
-                        quest:FixMovieSequenceCamera(nil --[[missing]])
-                        ppVar24 = 0x0
-                        -- TODO(native): RunCutsceneMacro_Func();
-                        quest:FixMovieSequenceCamera((ppVar24 ~= 0))
-                        -- TODO(native): StdMap_Destroy_API();
+                        quest:FixMovieSequenceCamera(true)
+                        resources:RunMacro("CS_GUILD_WILL_TEST", pCVar12, false, true)
+                        quest:FixMovieSequenceCamera(false)
+                        resources:ReleaseResource(xStack_158)
+                        resources:DestroyActorMap(pCVar12)
+                        resources:ReleaseResource(xStack_1f0)
                     end
-                    if cStack_239 ~= 0 then
+                    if c_stk_22d ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
-                        -- TODO(native): cStack_239 = extraout_AL_27;
-                        cVar2 = quest:IsXbox()
-                        if not cVar2 then
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
+                        c_stk_22d = bVar6
+                        bVar6 = quest:IsXbox()
+                        if bVar6 then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d6138b end
-                            pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
-                            cVar2 = quest:MsgIsGameInfoClickedPast()
-                            while not cVar2 do
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d6138b end
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
+                            bVar6 = quest:MsgIsGameInfoClickedPast()
+                            while not bVar6 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                if not alive then goto LAB_00d6138b end
-                                cVar2 = quest:MsgIsGameInfoClickedPast()
+                                bVar6 = not alive
+                                if bVar6 then goto LAB_00d6138b end
+                                bVar6 = quest:MsgIsGameInfoClickedPast()
                             end
                         else
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d6138b end
-                            pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
-                            cVar2 = quest:MsgIsGameInfoClickedPast()
-                            while not cVar2 do
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d6138b end
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
+                            bVar6 = quest:MsgIsGameInfoClickedPast()
+                            while not bVar6 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                if not alive then goto LAB_00d6138b end
-                                cVar2 = quest:MsgIsGameInfoClickedPast()
+                                bVar6 = not alive
+                                if bVar6 then goto LAB_00d6138b end
+                                bVar6 = quest:MsgIsGameInfoClickedPast()
                             end
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
                     end
-                    iVar7 = quest:GetStateInt("TutorialState")
+                    iVar10 = quest:GetStateInt("TutorialState")
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d6138b end
-                cVar2 = quest:IsXbox()
-                if not cVar2 then
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d6138b end
+                bVar6 = quest:IsXbox()
+                if bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d6138b end
-                    pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC"
-                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC")
-                    cVar2 = quest:MsgIsGameInfoClickedPast()
-                    while not cVar2 do
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d6138b end
+                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST")
+                    bVar6 = quest:MsgIsGameInfoClickedPast()
+                    while not bVar6 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
-                        cVar2 = quest:MsgIsGameInfoClickedPast()
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
+                        bVar6 = quest:MsgIsGameInfoClickedPast()
                     end
                 else
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d6138b end
-                    pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST"
-                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST")
-                    cVar2 = quest:MsgIsGameInfoClickedPast()
-                    while not cVar2 do
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d6138b end
+                    quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC")
+                    bVar6 = quest:MsgIsGameInfoClickedPast()
+                    while not bVar6 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
-                        cVar2 = quest:MsgIsGameInfoClickedPast()
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
+                        bVar6 = quest:MsgIsGameInfoClickedPast()
                     end
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d6138b end
-                cVar2 = quest:MsgOnHeroCastSpell()
-                while cVar2 == 0 do
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d6138b end
+                bVar6 = quest:MsgOnHeroCastSpell()
+                while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d6138b end
-                    cVar2 = me:IsTalkedToByHero()
-                    if cVar2 then
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d6138b end
+                    cVar7 = me:IsTalkedToByHero()
+                    if cVar7 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
-                        cVar2 = quest:IsXbox()
-                        if not cVar2 then
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
+                        bVar6 = quest:IsXbox()
+                        if bVar6 then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d6138b end
-                            pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
-                            pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC")
-                            cVar2 = quest:MsgIsGameInfoClickedPast()
-                            while not cVar2 do
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d6138b end
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST")
+                            bVar6 = quest:MsgIsGameInfoClickedPast()
+                            while not bVar6 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                if not alive then goto LAB_00d6138b end
-                                cVar2 = quest:MsgIsGameInfoClickedPast()
+                                bVar6 = not alive
+                                if bVar6 then goto LAB_00d6138b end
+                                bVar6 = quest:MsgIsGameInfoClickedPast()
                             end
                         else
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d6138b end
-                            pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
-                            paVar11 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST")
-                            cVar2 = quest:MsgIsGameInfoClickedPast()
-                            while not cVar2 do
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d6138b end
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC")
+                            bVar6 = quest:MsgIsGameInfoClickedPast()
+                            while not bVar6 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                if not alive then goto LAB_00d6138b end
-                                cVar2 = quest:MsgIsGameInfoClickedPast()
+                                bVar6 = not alive
+                                if bVar6 then goto LAB_00d6138b end
+                                bVar6 = quest:MsgIsGameInfoClickedPast()
                             end
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6138b end
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6138b end
                     end
-                    cVar2 = quest:MsgOnHeroCastSpell()
+                    bVar6 = quest:MsgOnHeroCastSpell()
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d6138b end
-                -- TODO(native): CTimer::CTimer((CTimer *)&stack0xfffffdc0);
-                -- TODO(native): __ftol2();
-                quest:SetTimer(nil --[[missing]], nil --[[missing]])
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d6138b end
+                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_234);
+                -- TODO(native): piVar1 = DAT_0143e8f8;
+                iVar11 = __ftol2()
+                quest:SetTimer(iVar11, xStack_234)
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
-                -- TODO(native): CTimer::CTimer((CTimer *)&stack0xfffffdc0);
-                quest:SetTimer(nil --[[missing]], nil --[[missing]])
-                pCVar26 = "HUD_ICON_ARROW"
-                uVar16 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", nil --[[missing]], nil --[[missing]])
-                uVar16 = quest:AddQuestInfoTimer(nil --[[missing]], "HUD_CLOCK_ICON", nil --[[missing]])
-                quest:DisplayQuestInfo(nil --[[missing]])
-                quest:SetTimer(nil --[[missing]], nil --[[missing]])
-                iVar7 = quest:GetTimer(nil --[[missing]])
-                while (0 < iVar7 and (cStack_239 == 0)) do
+                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_22c);
+                quest:SetTimer(iVar11, xStack_22c)
+                iVar10 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+                i_stk_24 = iVar10
+                xStack_1d4 = quest:AddQuestInfoTimer(iVar11, "HUD_CLOCK_ICON", 1.0)
+                quest:DisplayQuestInfo(true)
+                c_stk_22d = 0
+                quest:SetTimer(iVar11, 0)
+                iVar22 = quest:GetTimer(iVar11)
+                while (0 < iVar22 and (c_stk_22d == 0)) do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61379 end
-                    iVar7 = quest:GetTimer(nil --[[missing]])
-                    if iVar7 < 1 then
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61379 end
+                    iVar22 = quest:GetTimer(iVar11)
+                    if iVar22 < 1 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61379 end
-                        r16 = quest:GetHero()
-                        quest:EntitySetFacingAngleTowardsThing(r16, r15)
-                        quest:SetTimer(nil --[[missing]], nil --[[missing]])
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61379 end
+                        bVar6 = false
+                        pCVar12 = quest:GetHero()
+                        quest:EntitySetFacingAngleTowardsThing(me, pCVar12, bVar6)
+                        quest:SetTimer(iVar11, 2)
                     end
                     quest:SetMasterGameState("WillTestOccuring", true)
                     if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61379 end
-                        -- TODO(native): cStack_239 = '\x01';
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61379 end
+                        c_stk_22d = '\x01'
                     end
-                    iVar7 = quest:GetHeroWillEnergy()
-                    __native_condition_2 = iVar7 == 0
-                    if __native_condition_2 then
-                        iVar7 = quest:GetTimer(nil --[[missing]])
-                        __native_condition_2 = iVar7 < 1
+                    iVar22 = quest:GetHeroWillEnergy()
+                    __native_condition_3 = iVar22 == 0
+                    if __native_condition_3 then
+                        iVar22 = quest:GetTimer(iVar11)
+                        __native_condition_3 = iVar22 < 1
                     end
-                    if __native_condition_2 then
+                    if __native_condition_3 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61379 end
-                        ppVar24 = quest:AddNewConversation(r14, nil --[[missing]], nil --[[missing]])
-                        r17 = quest:GetHero()
-                        quest:AddPersonToConversation(nil --[[missing]], r17)
-                        r18 = quest:GetHero()
-                        quest:AddLineToConversation(nil --[[missing]], "TEXT_QST_028_GUILDMASTER_WILL_NO_WILL", r18, r11)
-                        quest:SetTimer(nil --[[missing]], nil --[[missing]])
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61379 end
+                        iVar11 = quest:AddNewConversation(me, false, false)
+                        pCVar12 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar11, pCVar12)
+                        pCVar12 = quest:GetHero()
+                        quest:AddLineToConversation(iVar11, "TEXT_QST_028_GUILDMASTER_WILL_NO_WILL", me, pCVar12, false)
+                        quest:SetTimer(iVar11, xStack_22c)
+                        iVar10 = i_stk_24
                     end
-                    cVar2 = me:IsTalkedToByHero()
-                    if cVar2 then
+                    cVar7 = me:IsTalkedToByHero()
+                    if cVar7 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61379 end
-                        cVar2 = quest:IsXbox()
-                        if not cVar2 then
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61379 end
+                        bVar6 = quest:IsXbox()
+                        if bVar6 then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d61379 end
-                            paVar11 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
-                            paVar11 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC")
-                            cVar2 = quest:MsgIsGameInfoClickedPast()
-                            while not cVar2 do
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d61379 end
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST")
+                            bVar6 = quest:MsgIsGameInfoClickedPast()
+                            while not bVar6 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                if not alive then goto LAB_00d61379 end
-                                cVar2 = quest:MsgIsGameInfoClickedPast()
+                                bVar6 = not alive
+                                if bVar6 then goto LAB_00d61379 end
+                                bVar6 = quest:MsgIsGameInfoClickedPast()
                             end
                         else
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d61379 end
-                            pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAP"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP")
-                            pCVar26 = "TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST"
-                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST")
-                            cVar2 = quest:MsgIsGameInfoClickedPast()
-                            while not cVar2 do
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d61379 end
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAP_PC")
+                            quest:DisplayGameInfo("TEXT_QST_028_WILL_INSTRUCTIONS_ZAPTEST_PC")
+                            bVar6 = quest:MsgIsGameInfoClickedPast()
+                            while not bVar6 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                if not alive then goto LAB_00d61379 end
-                                cVar2 = quest:MsgIsGameInfoClickedPast()
+                                bVar6 = not alive
+                                if bVar6 then goto LAB_00d61379 end
+                                bVar6 = quest:MsgIsGameInfoClickedPast()
                             end
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61379 end
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61379 end
                     end
-                    quest:UpdateQuestInfoCounter(nil --[[missing]], nil --[[missing]], nil --[[missing]])
-                    iVar7 = quest:GetTimer(nil --[[missing]])
+                    quest:UpdateQuestInfoCounter(iVar10, quest:GetMasterGameState("WillScore"), -1)
+                    iVar22 = quest:GetTimer(iVar11)
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d61379 end
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d61379 end
                 quest:SetMasterGameState("WillTestOccuring", false)
-                cVar2 = quest:IsHeroControlledByPlayer()
-                while not cVar2 do
+                bVar6 = quest:IsHeroControlledByPlayer()
+                while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61379 end
-                    cVar2 = quest:IsHeroControlledByPlayer()
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61379 end
+                    bVar6 = quest:IsHeroControlledByPlayer()
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d61379 end
-                quest:DisplayQuestInfo(nil --[[missing]])
-                quest:RemoveQuestInfoElement(nil --[[missing]])
-                quest:RemoveQuestInfoElement(nil --[[missing]])
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d61379 end
+                quest:DisplayQuestInfo(false)
+                quest:RemoveQuestInfoElement(iVar10)
+                quest:RemoveQuestInfoElement(xStack_1d4)
                 quest:SetStateInt("TutorialState", 0)
-                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_218);
-                -- TODO(native): bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_218);
-                if bVar1 then
+                xStack_200 = resources:NewResource()
+                bVar6 = false
+                if bVar6 ~= 0 then
                 end
-                r19 = quest:GetHero()
-                cVar2 = me:AcquireControl(4)
-                while not cVar2 do
+                iVar11 = 4
+                uVar18 = 0
+                uVar19 = (xStack_200 >> 8)
+                uVar20 = (xStack_200 >> 0x10)
+                uVar21 = (xStack_200 >> 0x18)
+                pCVar12 = quest:GetHero()
+                bVar6 = me:AcquireControl(4)
+                while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d61370 end
-                    r20 = quest:GetHero()
-                    cVar2 = me:AcquireControl(4)
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d61370 end
+                    iVar11 = 4
+                    uVar18 = 0
+                    uVar19 = (xStack_200 >> 8)
+                    uVar20 = (xStack_200 >> 0x10)
+                    uVar21 = (xStack_200 >> 0x18)
+                    pCVar12 = quest:GetHero()
+                    bVar6 = me:AcquireControl(4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d61370 end
-                -- TODO(native): StdMap_Construct_API();
-                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_1dc);
-                paVar11 = ""
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d61370 end
+                xStack_210 = resources:NewActorMap()
+                xStack_1d0 = resources:StartMovie("")
                 quest:StartMovieSequence()
-                quest:FixMovieSequenceCamera(nil --[[missing]])
-                if cStack_239 == 0 then
+                quest:FixMovieSequenceCamera(true)
+                if c_stk_22d == 0 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d6135b end
-                    fStack_1e0 = quest:GetMasterGameState("WillScore")
-                    -- TODO(native): pfVar12 = *(float **)(DAT_0143e90c + 0xecc);
-                    iVar7 = 0
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d6135b end
+                    xStack_1d4 = quest:GetMasterGameState("WillScore")
+                    -- TODO(native): pfVar16 = *(float **)(DAT_0143e90c + 0xecc);
+                    iVar10 = 0
                     repeat
-                        iVar10 = iVar7
-                        if *pfVar12 < fStack_1e0 ~= (*pfVar12 == fStack_1e0) then
+                        iVar11 = iVar10
+                        if *pfVar16 < xStack_1d4 ~= (*pfVar16 == xStack_1d4) then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d6135b end
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d6135b end
                             break
                         end
-                        iVar7 = iVar10 + 1
-                        pfVar12 = pfVar12 + 1
-                    until not (iVar7 < 7)
-                    -- TODO(native): Std_Deque_Construct();
-                    native_arg_switch_5 = iVar10
+                        iVar10 = iVar11 + 1
+                        pfVar16 = pfVar16 + 1
+                    until not (iVar10 < 7)
+                    -- TODO(native): Std_Deque_Construct(xStack_1c0);
+                    native_arg_switch_5 = iVar11
                     repeat
                         if native_arg_switch_5 == 0 then
-                            pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_APLUS"
-                            -- TODO(native): pCVar26 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](amStack_1cc,(CCharString *)aaStack_88);
-                            paVar11 = "$GRADE"
+                            pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_APLUS"
+                            -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_c0);
                             break
                         else
                             if native_arg_switch_5 == 1 then
-                                pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_A"
-                                -- TODO(native): pCVar26 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](amStack_1cc,(CCharString *)aaStack_fc);
-                                paVar11 = "$GRADE"
+                                pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_A"
+                                -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_138);
                                 break
                             else
                                 if native_arg_switch_5 == 2 then
-                                    pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_B"
-                                    -- TODO(native): pCVar26 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](amStack_1cc,aCStack_e4);
-                                    -- TODO(native): paVar11 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_e4;
+                                    pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_B"
+                                    -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_8c);
                                     break
                                 else
                                     if native_arg_switch_5 == 3 then
-                                        pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_C"
-                                        -- TODO(native): pCVar26 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](amStack_1cc,aCStack_f4);
-                                        -- TODO(native): paVar11 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_f4;
+                                        pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_C"
+                                        -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_68);
                                         break
                                     else
                                         if native_arg_switch_5 == 4 then
-                                            pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_D"
-                                            -- TODO(native): pCVar26 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](amStack_1cc,aCStack_e8);
-                                            -- TODO(native): paVar11 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_e8;
+                                            pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_D"
+                                            -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_128);
                                             break
                                         else
                                             if native_arg_switch_5 == 5 then
-                                                pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_E"
-                                                -- TODO(native): pCVar26 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](amStack_1cc,aCStack_ec);
-                                                -- TODO(native): paVar11 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_ec;
+                                                pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_E"
+                                                -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_b8);
                                                 break
                                             else
                                                 if native_arg_switch_5 == 6 then
-                                                    pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_F"
-                                                    -- TODO(native): pCVar26 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](amStack_1cc,aCStack_d8);
-                                                    -- TODO(native): paVar11 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_d8;
+                                                    pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_GRADE_F"
+                                                    -- TODO(native): pCVar15 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](xStack_1c0,&xStack_130);
                                                     break
                                                 else
                                                     goto FLOW_native_label_1
@@ -584,552 +882,1032 @@ function Main(quest, me)
                         end
                     until not (false)
                     ::FLOW_native_label_1::
-                    -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&uStack_21c,aCStack_d0);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                    -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&uStack_21c,aCStack_e0);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                    ppVar24 = 0x0
-                    -- TODO(native): RunCutsceneMacro_Func();
-                    quest:PauseAllNonScriptedEntities((ppVar24 ~= 0))
-                    ppVar24 = 0x0
-                    -- TODO(native): RunCutsceneMacro_Func();
-                    quest:Pause(ppVar24)
-                    uVar28 = 1
-                    pCVar26 = ""
-                    pCVar27 = "TEXT_OBJECT_HERO_ANSWER_RETAKE"
-                    pCVar33 = "TEXT_OBJECT_HERO_ANSWER_CONTINUE"
-                    pCVar19 = "TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION"
-                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "")
-                    iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while iVar7 < 0 do
+                    pCVar23 = xStack_200
+                    -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_210,xStack_120);
+                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar14,pCVar23);
+                    resources:SetActor(xStack_210, "TEACHER", xStack_158)
+                    resources:RunMacro("$GRADE", xStack_210, false, false)
+                    pCVar12 = 0x1
+                    quest:PauseAllNonScriptedEntities((pCVar12 ~= 0))
+                    -- TODO(native): RunCutsceneMacro_Func(xStack_110,xStack_210,(void *)0x0,xStack_1d0,false,false);
+                    quest:Pause(2.0)
+                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
+                    iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while iVar10 < 0 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then return end  -- TODO(native): goto LAB_00d61578
-                        iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        bVar6 = not alive
+                        if bVar6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto FLOW_after_lab_00d61578
+                        end
+                        iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d61342
+                    bVar6 = not alive
+                    if bVar6 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        goto FLOW_after_lab_00d61578
+                    end
                     alive = not quest:IsActiveThreadTerminating()
-                    if iVar7 == 1 then
-                        if not alive then return end  -- TODO(native): goto LAB_00d61578
+                    bVar6 = not alive
+                    if iVar10 == 1 then
+                        if bVar6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto FLOW_after_lab_00d61578
+                        end
                         quest:SetMasterGameState("MeleeApprenticeNeededForCutscene", true)
-                        r21 = quest:GetThingWithScriptName("MeleeApprentice")
-                        -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&stack0xfffffdc0);
-                        -- TODO(native): bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xfffffdc0);
-                        if bVar1 then
+                        r7 = quest:GetThingWithScriptName("HERO")
+                        xStack_158 = resources:NewResource()
+                        bVar6 = false
+                        if bVar6 ~= 0 then
                         end
-                        cVar2 = me:AcquireControl(4)
-                        while not cVar2 do
+                        bVar6 = resources:TryAcquire(xStack_158, r7, 4)
+                        while not bVar6 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d6132d
-                            cVar2 = me:AcquireControl(4)
+                            bVar6 = not alive
+                            if bVar6 then
+                                resources:ReleaseResource(xStack_200)
+                                -- LAB_00d61342_c9: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto FLOW_after_lab_00d61578
+                            end
+                            bVar6 = resources:TryAcquire(xStack_158, r7, 4)
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then return end  -- TODO(native): goto LAB_00d61563
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffda8,(CCharString *)aCStack_1d0);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffda8,aCStack_1c8);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffda8,aCStack_1e4);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        ppVar24 = 0x0
-                        -- TODO(native): RunCutsceneMacro_Func();
-                        bVar1 = false
-                        -- TODO(native): in_stack_fffffd44 = aCStack_1ec;
-                        -- TODO(native): in_stack_fffffd40 = aCStack_1c0;
-                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_PLAY", "")
-                        -- TODO(native): in_stack_fffffd3c = (CCharString *)0xd604f2;
-                        iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while iVar7 < 0 do
+                        bVar6 = not alive
+                        if bVar6 then
+                            resources:DestroyMovie(xStack_1d0)
+                            -- LAB_00d61578_c10: (native jump target)
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto FLOW_after_lab_00d61578
+                        end
+                        uVar18 = SUB41(&xStack_238_3,0)
+                        uVar19 = (&xStack_238_3 >> 8)
+                        uVar20 = (&xStack_238_3 >> 0x10)
+                        uVar21 = (&xStack_238_3 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,&xStack_a0);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        uVar18 = SUB41(0,0)
+                        uVar19 = (0 >> 8)
+                        uVar20 = (0 >> 0x10)
+                        uVar21 = (0 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,&xStack_f8);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        uVar18 = SUB41(xStack_158,0)
+                        uVar19 = (xStack_158 >> 8)
+                        uVar20 = (xStack_158 >> 0x10)
+                        uVar21 = (xStack_158 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,(CCharString *)xStack_1d8);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        resources:RunMacro("TEACHER", xStack_210, false, true)
+                        bVar6 = false
+                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_PLAY", "", true)
+                        iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while iVar10 < 0 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d6132d
-                            iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            bVar8 = not alive
+                            if bVar8 then
+                                resources:ReleaseResource(xStack_200)
+                                -- LAB_00d61342_c11: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto FLOW_after_lab_00d61578
+                            end
+                            iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then return end  -- TODO(native): goto LAB_00d61563
+                        bVar8 = not alive
+                        if bVar8 then
+                            resources:DestroyMovie(xStack_1d0)
+                            -- LAB_00d61578_c12: (native jump target)
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto FLOW_after_lab_00d61578
+                        end
                         alive = not quest:IsActiveThreadTerminating()
-                        if iVar7 == 1 then
-                            if not alive then return end  -- TODO(native): goto LAB_00d61563
-                            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffd90);
-                            fVar14 = quest:GetHealth(r21)
-                            fVar15 = _DAT_0122dedc
-                            uVar22 = uVar28
-                            aVar25 = SUB41(pCVar26,0)
-                            if fVar14 <= fVar15 then return end  -- TODO(native): goto LAB_00d610d3
-                            r22 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_NO", 0x0, false, true, false)
-                            bVar1 = me:IsPerformingScriptTask()
-                            uVar22 = uVar28
-                            aVar25 = SUB41(pCVar26,0)
+                        bVar8 = not alive
+                        if iVar10 == 1 then
+                            if bVar8 then
+                                resources:DestroyMovie(xStack_1d0)
+                                -- LAB_00d61578_c13: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto FLOW_after_lab_00d61578
+                            end
+                            xStack_60_2 = resources:ScriptThing(0)
+                            pCVar9 = xStack_60_2
+                            r8 = quest:GetHealth(pCVar9)
+                            fVar4 = 0.0
+                            if fret_03 <= fVar4 then return end  -- TODO(native): goto LAB_00d610d3
+                            r9 = me:Speak(me, "CS_GUILD_WILL_CONTINUE", 0x12d1148, false, false, true)
+                            iVar10 = me:IsPerformingScriptTask()
+                            cVar7 = iVar10
                             goto FLOW_native_label_3
                         end
-                        if not alive then return end  -- TODO(native): goto LAB_00d6132d
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffd90);
-                        uVar22 = SUB41(pCVar19,0)
-                        fVar15 = quest:GetHealth(r20)
-                        cVar2 = _DAT_0122dedc < fVar15
-                        if cVar2 ~= 0 then
-                            r23 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_YES", 0x0, false, true, false)
-                            bVar4 = me:IsPerformingScriptTask()
-                            if bVar4 then
-                                repeat
-                                    alive = quest:NewScriptFrame(me)
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    if not alive then return end  -- TODO(native): goto LAB_00d61563
-                                    bVar4 = me:IsPerformingScriptTask()
-                                until not (bVar4)
+                        if bVar8 then
+                            resources:ReleaseResource(xStack_200)
+                            -- LAB_00d61342_c14: (native jump target)
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto FLOW_after_lab_00d61578
+                        end
+                        r7 = resources:ScriptThing(0)
+                        pCVar9 = r7
+                        fret_01 = quest:GetHealth(pCVar9)
+                        -- TODO(native): xStack_234._3_1_ = 1;
+                        if fret_01 <= 0.0 then
+                            -- TODO(native): xStack_234 = (CCharString)((uint)CVar5 & 0xffffff);
+                        end
+                        if xStack_234_b3 ~= 0 then
+                            r10 = me:Speak(me, "WHISPER", 0x12d1368, false, false, true)
+                            iVar10 = me:IsPerformingScriptTask()
+                            cVar7 = iVar10
+                            while cVar7 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar8 = not alive
+                                if bVar8 then
+                                    resources:DestroyMovie(xStack_1d0)
+                                    -- LAB_00d61578_c15: (native jump target)
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    goto FLOW_after_lab_00d61578
+                                end
+                                iVar10 = me:IsPerformingScriptTask()
+                                cVar7 = iVar10
                             end
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d6132d
+                            bVar8 = not alive
+                            if bVar8 then
+                                resources:ReleaseResource(xStack_200)
+                                -- LAB_00d61342_c16: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto FLOW_after_lab_00d61578
+                            end
                         end
-                        -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&iStack_238);
-                        if bVar4 then
+                        bVar8 = false
+                        if bVar8 ~= 0 then
                         end
+                        resources:DestroyMovie(xStack_1d0)
                     else
-                        if not alive then return end  -- TODO(native): goto LAB_00d61342
-                        quest:SetHeroWillEnergyLevel(uVar28)
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffda4,(CCharString *)&stack0xfffffd9c);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        -- TODO(native): RunCutsceneMacro_Func();
-                        bVar1 = true
+                        if bVar6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto FLOW_after_lab_00d61578
+                        end
+                        quest:SetHeroWillEnergyLevel(1.0)
+                        uVar18 = SUB41(0,0)
+                        uVar19 = (0 >> 8)
+                        uVar20 = (0 >> 0x10)
+                        uVar21 = (0 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,&xStack_cc);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        resources:RunMacro(xStack_d0, xStack_210, false, false)
+                        bVar6 = true
                     end
-                    quest:PauseAllNonScriptedEntities(bVar1)
-                    -- TODO(native): LTextTreeWalkThrough__Dtor();
+                    quest:PauseAllNonScriptedEntities(false)
+                    -- TODO(native): LTextTreeWalkThrough__Dtor(xStack_1c0);
                 else
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d6135b end
-                    ppVar24 = 0x1
-                    quest:PauseAllNonScriptedEntities((ppVar24 ~= 0))
-                    -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&uStack_220,aCStack_d0);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                    -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&uStack_220,aCStack_148);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                    ppVar24 = 0x0
-                    -- TODO(native): RunCutsceneMacro_Func();
-                    quest:Pause(ppVar24)
-                    uVar28 = 1
-                    pCVar26 = ""
-                    paVar11 = "TEXT_OBJECT_HERO_ANSWER_RETAKE"
-                    pCVar27 = "TEXT_OBJECT_HERO_ANSWER_CONTINUE"
-                    paVar23 = "TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION"
-                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "")
-                    iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while iVar7 < 0 do
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d6135b end
+                    pCVar12 = 0x1
+                    quest:PauseAllNonScriptedEntities((pCVar12 ~= 0))
+                    uVar18 = SUB41(&xStack_238_3,0)
+                    uVar19 = (&xStack_238_3 >> 8)
+                    uVar20 = (&xStack_238_3 >> 0x10)
+                    uVar21 = (&xStack_238_3 >> 0x18)
+                    -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,xStack_d4);
+                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                    uVar18 = SUB41(0,0)
+                    uVar19 = (0 >> 8)
+                    uVar20 = (0 >> 0x10)
+                    uVar21 = (0 >> 0x18)
+                    -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,xStack_d0);
+                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                    resources:RunMacro("CS_GUILD_WILL_DISQUALIFIED", xStack_210, false, true)
+                    quest:Pause(2.0)
+                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
+                    iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while iVar10 < 0 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d6101c end
-                        iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d6101c end
+                        iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d60b31
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d6101c end
                     alive = not quest:IsActiveThreadTerminating()
-                    if iVar7 == 1 then
-                        if not alive then goto LAB_00d6101c end
+                    bVar6 = not alive
+                    if iVar10 == 1 then
+                        if bVar6 then goto LAB_00d6101c end
                         quest:SetMasterGameState("MeleeApprenticeNeededForCutscene", true)
-                        paVar20 = "HERO"
-                        r24 = quest:GetThingWithScriptName("MeleeApprentice")
-                        -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_198);
-                        -- TODO(native): bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_198);
-                        if bVar1 then
+                        r11 = quest:GetThingWithScriptName("MeleeApprentice")
+                        xStack_1f0 = resources:NewResource()
+                        bVar6 = false
+                        if bVar6 ~= 0 then
                         end
-                        cVar2 = me:AcquireControl(4)
-                        while not cVar2 do
+                        bVar6 = resources:TryAcquire(xStack_1f0, r11, 4)
+                        while not bVar6 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d60b19
-                            cVar2 = me:AcquireControl(4)
+                            bVar6 = not alive
+                            if bVar6 then
+                                resources:ReleaseResource(xStack_1f0)
+                                -- LAB_00d60b31_c18: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00d6135b
+                            end
+                            bVar6 = resources:TryAcquire(xStack_1f0, r11, 4)
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61004 end
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffdb8,aCStack_e8);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffdb8,aCStack_150);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffdb8,aCStack_bc);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8, (CScriptGameResourceObjectScriptedThingBase *)pCVar33);
-                        ppVar24 = 0x0
-                        -- TODO(native): RunCutsceneMacro_Func();
-                        bVar1 = false
-                        pCVar33 = "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION"
-                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_PLAY", "")
-                        iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while iVar7 < 0 do
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d61004 end
+                        uVar18 = SUB41(&xStack_238_3,0)
+                        uVar19 = (&xStack_238_3 >> 8)
+                        uVar20 = (&xStack_238_3 >> 0x10)
+                        uVar21 = (&xStack_238_3 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,xStack_188);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        uVar18 = SUB41(0,0)
+                        uVar19 = (0 >> 8)
+                        uVar20 = (0 >> 0x10)
+                        uVar21 = (0 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,xStack_180);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        uVar18 = SUB41(xStack_1f0,0)
+                        uVar19 = (xStack_1f0 >> 8)
+                        uVar20 = (xStack_1f0 >> 0x10)
+                        uVar21 = (xStack_1f0 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,&xStack_19c);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        resources:RunMacro("CS_GUILD_WILL_CONTINUE", xStack_210, false, true)
+                        bVar6 = false
+                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_PLAY", "", true)
+                        iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while iVar10 < 0 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d60b19
-                            iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            bVar8 = not alive
+                            if bVar8 then
+                                resources:ReleaseResource(xStack_1f0)
+                                -- LAB_00d60b31_c19: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00d6135b
+                            end
+                            iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d61004 end
+                        bVar8 = not alive
+                        if bVar8 then goto LAB_00d61004 end
                         alive = not quest:IsActiveThreadTerminating()
-                        if iVar7 == 1 then
-                            if not alive then goto LAB_00d61004 end
-                            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffda0);
-                            fVar14 = quest:GetHealth(r24)
-                            fVar15 = _DAT_0122dedc
-                            uVar22 = uVar28
-                            aVar25 = SUB41(pCVar26,0)
-                            if fVar14 <= fVar15 then return end  -- TODO(native): goto LAB_00d60be3
-                            r25 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_NO", 0x0, false, true, false)
-                            bVar1 = me:IsPerformingScriptTask()
-                            uVar22 = uVar28
-                            aVar25 = SUB41(pCVar26,0)
-                            goto FLOW_native_label_4
-                        end
-                        if not alive then return end  -- TODO(native): goto LAB_00d60b19
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffda0);
-                        uVar22 = SUB41(paVar23,0)
-                        fVar15 = quest:GetHealth(r19)
-                        cVar2 = _DAT_0122dedc < fVar15
-                        if cVar2 ~= 0 then
-                            r26 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_YES", 0x0, false, true, false)
-                            bVar4 = me:IsPerformingScriptTask()
-                            if bVar4 then
+                        bVar8 = not alive
+                        if iVar10 == 1 then
+                            if bVar8 then goto LAB_00d61004 end
+                            xStack_1e0_2 = resources:ScriptThing(0)
+                            pCVar9 = xStack_1e0_2
+                            r12 = quest:GetHealth(pCVar9)
+                            fVar4 = 0.0
+                            if fret_02 <= fVar4 then
+                                quest:FadeScreenOut(0.5, 0.5)
+                                quest:Pause(1.0)
+                                quest:PlayAVIMovie("WHISPER")
+                                quest:ConfiscateAllHeroWeapons()
+                                bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+                                if bVar6 then
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar6 = not alive
+                                    if bVar6 then goto LAB_00d61004 end
+                                    quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
+                                end
+                                quest:SetTimeOfDay(11.0)
+                                quest:ResetPlayerCreatureCombatMultiplier()
+                                quest:SetHeroAsTeenager(false)
+                                quest:ChangeHeroHealthBy(1000.0, true, false)
+                                bVar8 = true
+                                bVar6 = false
+                                pCVar9 = quest:GetThingWithScriptName("MeleeApprentice")
+                                quest:RemoveThing(pCVar9, bVar6, bVar8)
+                                pCVar9 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
+                                bVar6 = false
+                                pCVar13 = pCVar9:GetPos()
+                                r13 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice")
+                                pCVar9 = quest:GetThingWithScriptName("WillApprentice")
+                                bVar6 = (pCVar9 ~= nil and pCVar9:IsAlive())
+                                if not bVar6 then
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar6 = not alive
+                                    if not bVar6 then
+                                        pCVar9 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
+                                        bVar6 = false
+                                        pCVar13 = pCVar9:GetPos()
+                                        r14 = quest:CreateCreature("MeleeApprentice", pCVar13, "WillApprentice")
+                                        if pCVar12._0_4_ ~= nil then
+                                            -- TODO(native): (**(code **)(*(int *)xStack_60._0_4_ + 0x118))(0);
+                                        end
+                                        goto LAB_00d60ef5_c20
+                                    end
+                                    -- LAB_00d60b19_c20: (native jump target)
+                                    resources:ReleaseResource(xStack_1f0)
+                                    -- LAB_00d60b31_c20: (native jump target)
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    goto LAB_00d6135b
+                                end
+                                ::LAB_00d60ef5_c20::
+                                quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "")
+                                -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238_12,(CCharString *)pCVar12);
+                                quest:SetPlayerUsingWillDummies(false)
+                                quest:SetMasterGameState("HeroTakingGuildTest", false)
+                                quest:SetStateInt("TutorialState", 4)
+                                quest:SetStateBool("TestFinished", true)
+                                uVar18 = 0
+                                uVar19 = 0
+                                uVar20 = 0
+                                uVar21 = 0
+                                pCVar15 = quest:GetActiveQuestName()
+                                quest:DeactivateQuestLater(pCVar15, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))))
                                 repeat
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
-                                    if not alive then goto LAB_00d61004 end
-                                    bVar4 = me:IsPerformingScriptTask()
-                                until not (bVar4)
+                                    bVar6 = not alive
+                                until not (not bVar6)
+                                goto FLOW_after_lab_00d60be3
+                            end
+                            r15 = me:Speak(me, "TEXT_QST_LOG_HERO_ATTRIBUTES", 0x12d1148, false, false, true)
+                            iVar10 = me:IsPerformingScriptTask()
+                            cVar7 = iVar10
+                            goto FLOW_native_label_4
+                        end
+                        if bVar8 then
+                            resources:ReleaseResource(xStack_1f0)
+                            -- LAB_00d60b31_c21: (native jump target)
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto LAB_00d6135b
+                        end
+                        pCVar12 = resources:ScriptThing(0)
+                        pCVar9 = pCVar12
+                        fret_00 = quest:GetHealth(pCVar9)
+                        CVar5 = ""
+                        -- TODO(native): xStack_23c._3_1_ = 1;
+                        if fret_00 <= 0.0 then
+                            -- TODO(native): xStack_23c = (CCharString)((uint)CVar5 & 0xffffff);
+                        end
+                        if xStack_23c_b3 ~= 0 then
+                            r16 = me:Speak(me, "WillApprenticeMarker", 0x12d1368, false, false, true)
+                            iVar10 = me:IsPerformingScriptTask()
+                            cVar7 = iVar10
+                            while cVar7 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar8 = not alive
+                                if bVar8 then goto LAB_00d61004 end
+                                iVar10 = me:IsPerformingScriptTask()
+                                cVar7 = iVar10
                             end
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d60b19
+                            bVar8 = not alive
+                            if bVar8 then
+                                resources:ReleaseResource(xStack_1f0)
+                                -- LAB_00d60b31_c22: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00d6135b
+                            end
                         end
-                        -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_190);
-                        if bVar4 then
+                        bVar8 = false
+                        if bVar8 ~= 0 then
                         end
-                        quest:PauseAllNonScriptedEntities((ppVar24 ~= 0))
+                        resources:ReleaseResource(xStack_200)
+                        quest:PauseAllNonScriptedEntities(false)
                     else
-                        if not alive then return end  -- TODO(native): goto LAB_00d60b31
-                        quest:SetHeroWillEnergyLevel(uVar28)
-                        -- TODO(native): pCVar8 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&stack0xfffffdb4,aCStack_dc);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar8,pCVar17);
-                        ppVar24 = 0x0
-                        -- TODO(native): RunCutsceneMacro_Func();
-                        bVar1 = true
-                        quest:PauseAllNonScriptedEntities(bVar1)
+                        if bVar6 then goto LAB_00d6101c end
+                        quest:SetHeroWillEnergyLevel(1.0)
+                        uVar18 = SUB41(0,0)
+                        uVar19 = (0 >> 8)
+                        uVar20 = (0 >> 0x10)
+                        uVar21 = (0 >> 0x18)
+                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,xStack_218);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,(void *)CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))));
+                        resources:RunMacro("CS_GUILD_MELEE_REPEAT", xStack_210, false, false)
+                        bVar6 = true
+                        quest:PauseAllNonScriptedEntities(false)
                     end
                 end
-                quest:FixMovieSequenceCamera((ppVar24 ~= 0))
+                quest:FixMovieSequenceCamera(false)
                 quest:SetMasterGameState("MeleeApprenticeNeededForCutscene", false)
-                -- TODO(native): StdMap_Destroy_API();
-            until not (bVar1)
+                resources:ReleaseResource(xStack_38)
+                resources:DestroyActorMap(xStack_210)
+                resources:ReleaseResource(xStack_48)
+            until not (bVar6)
             alive = not quest:IsActiveThreadTerminating()
-            if alive then return end  -- TODO(native): goto LAB_00d6070e
+            bVar6 = not alive
+            if not bVar6 then
+                quest:EntitySetTargetingType(me, 0x3a)
+                quest:SetMasterGameState("HeroTakingGuildTest", false)
+                quest:SetStateInt("TutorialState", 4)
+                quest:SetStateBool("TestFinished", true)
+                pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
+                iVar22 = 1
+                uVar18 = 0
+                uVar19 = 0
+                uVar20 = 0
+                uVar21 = 0
+                iVar11 = 0
+                iVar10 = 0x3f800000
+                pCVar13 = pCVar12:GetPos()
+                me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                pCVar12 = quest:GetThingWithScriptName("WillApprentice")
+                bVar6 = (pCVar12 ~= nil and pCVar12:IsAlive())
+                if not bVar6 then
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar6 = not alive
+                    if bVar6 then
+                        __cleanup_LAB_00d61b0a_c23()
+                        return
+                    end
+                    pCVar12 = quest:GetThingWithScriptName("WillApprenticeMarker")
+                    bVar6 = false
+                    uVar18 = SUB41("WillApprentice",0)
+                    uVar19 = ("WillApprentice" >> 8)
+                    uVar20 = ("WillApprentice" >> 0x10)
+                    uVar21 = ("WillApprentice" >> 0x18)
+                    pCVar13 = pCVar12:GetPos()
+                    r17 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
+                    if (r17 ~= nil and not r17:IsNull()) then
+                        r17:SetToKillOnLevelUnload(0)
+                    end
+                end
+                if quest:GetStateBool("BanditsDefeated") then
+                    -- LAB_00d609de_c23: (native jump target)
+                    quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "")
+                    quest:SetPlayerUsingWillDummies(false)
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar6 = not alive
+                    -- FLOW_native_label_2_c23: (native jump target)
+                    if not bVar6 then
+                        if not quest:GetStateBool("BanditsDefeated") then
+                            u_stk_17c = u_stk_17c | 1
+                            bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+                            if bVar6 then return end  -- TODO(native): goto LAB_00d6158a_c23
+                            bVar6 = true
+                        else
+                            -- LAB_00d6158a_c23: (native jump target)
+                            bVar6 = false
+                        end
+                        if (u_stk_17c & 1) ~= 0 then
+                            u_stk_17c = u_stk_17c & 0xfffffffe
+                        end
+                        if bVar6 then
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar6 = not alive
+                            if bVar6 then __cleanup_LAB_00d61b0a_c23(); return end
+                            quest:SetStateBool("BanditsDefeated", true)
+                        end
+                        cVar7 = me:IsTalkedToByHero()
+                        if not cVar7 then goto LAB_00d61af3 end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar6 = not alive
+                        if not bVar6 then
+                            me:ClearCommands()
+                            xStack_1f0 = resources:StartMovie("")
+                            quest:StartMovieSequence()
+                            quest:PauseAllNonScriptedEntities(true)
+                            quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "", "TEXT_OBJECT_HERO_ANSWER_NO", "TEXT_OBJECT_HERO_ANSWER_NO")
+                            iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            while iVar10 < 0 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar6 = not alive
+                                if bVar6 then return end  -- TODO(native): goto LAB_00d61b53_c23
+                                iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            end
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar6 = not alive
+                            if bVar6 then
+                                -- LAB_00d61b44_c23: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                            else
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar6 = not alive
+                                if iVar10 == 1 then
+                                    if not bVar6 then
+                                        quest:FadeScreenOut(0.5, 0.5)
+                                        quest:Pause(1.0)
+                                        quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_2_comp.xmv")
+                                        quest:ConfiscateAllHeroWeapons()
+                                        bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+                                        if bVar6 then
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar6 = not alive
+                                            if bVar6 then return end  -- TODO(native): goto LAB_00d61b44_c23
+                                            quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
+                                        end
+                                        delay = 0
+                                        pCVar15 = quest:GetActiveQuestName()
+                                        quest:DeactivateQuestLater(pCVar15, delay)
+                                        quest:SetTimeOfDay(11.0)
+                                        quest:ResetPlayerCreatureCombatMultiplier()
+                                        quest:SetHeroAsTeenager(false)
+                                        quest:ChangeHeroHealthBy(1000.0, true, false)
+                                        bVar8 = true
+                                        bVar6 = false
+                                        pCVar12 = quest:GetThingWithScriptName("MeleeApprentice")
+                                        quest:RemoveThing(pCVar12, bVar6, bVar8)
+                                        pCVar12 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE")
+                                        bVar6 = false
+                                        uVar18 = SUB41("MeleeApprentice",0)
+                                        uVar19 = ("MeleeApprentice" >> 8)
+                                        uVar20 = ("MeleeApprentice" >> 0x10)
+                                        uVar21 = ("MeleeApprentice" >> 0x18)
+                                        pCVar13 = pCVar12:GetPos()
+                                        r18 = quest:CreateCreature("MeleeApprenticeMarker", pCVar13, "MeleeApprentice")
+                                        __region_LAB_00d61ad8_c23()
+                                        goto LAB_00d61af3
+                                    end
+                                else
+                                    if not bVar6 then
+                                        xStack_54 = resources:ScriptThing(0)
+                                        pCVar12 = xStack_54
+                                        r19 = quest:GetHealth(pCVar12)
+                                        fVar4 = 0.0
+                                        if fVar4 < fret_04 then
+                                            iVar22 = 0
+                                            uVar18 = 1
+                                            uVar19 = 0
+                                            uVar20 = 0
+                                            uVar21 = 0
+                                            iVar11 = 0
+                                            iVar10 = 0
+                                            pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO"
+                                            pCVar12 = quest:GetHero()
+                                            r20 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                            iVar10 = me:IsPerformingScriptTask()
+                                            cVar7 = iVar10
+                                            while cVar7 do
+                                                alive = quest:NewScriptFrame(me)
+                                                alive = not quest:IsActiveThreadTerminating()
+                                                bVar6 = not alive
+                                                if bVar6 then return end  -- TODO(native): goto LAB_00d61b44_c23
+                                                iVar10 = me:IsPerformingScriptTask()
+                                                cVar7 = iVar10
+                                            end
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar6 = not alive
+                                            if bVar6 then return end  -- TODO(native): goto LAB_00d61b53_c23
+                                        end
+                                        pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
+                                        iVar22 = 1
+                                        uVar18 = 0
+                                        uVar19 = 0
+                                        uVar20 = 0
+                                        uVar21 = 0
+                                        iVar11 = 0
+                                        iVar10 = 0x3f800000
+                                        pCVar13 = pCVar12:GetPos()
+                                        me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                        __region_LAB_00d61ad8_c23(); goto LAB_00d61af3
+                                    end
+                                end
+                                -- LAB_00d61b53_c23: (native jump target)
+                                -- LAB_00d61b5a_c23: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                            end
+                            resources:ReleaseResource(xStack_1f0)
+                            goto LAB_00d61b69
+                        end
+                    end
+                    __cleanup_LAB_00d61b0a_c23(); return
+                end
+                alive = not quest:IsActiveThreadTerminating()
+                bVar6 = not alive
+                if not bVar6 then
+                    quest:ActivateQuest("Q_GuildTrainingWoodsWill")
+                    quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
+                    quest:SetQuestAsPersistent("Q_GuildTrainingWoodsWill", false)
+                    quest:SetQuestCardObjective("GuildWoods", "Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_01", "")
+                    -- TODO(native): goto LAB_00d609de_c23
+                end
+                goto FLOW_after_lab_00d61b0a
+            end
         end
     else
         -- LAB_00d6070e: (native jump target)
-        quest:EntitySetTargetingType(nil --[[missing]], nil --[[missing]])
+        quest:EntitySetTargetingType(me, 0x3a)
         quest:SetMasterGameState("HeroTakingGuildTest", false)
         quest:SetStateInt("TutorialState", 4)
         quest:SetStateBool("TestFinished", true)
-        CVar32 = SUB41(&"M_GuildmasterMarker",0)
-        piVar5 = quest:GetThingWithScriptName("M_GuildmasterMarker")
-        pCVar33 = 0x1
-        pCVar27 = 0x0
-        pCVar26 = 0x0
-        pCVar6 = piVar5:GetPos()
-        me:MoveToPosition(pCVar6, SUB41(ppVar24,0))
-        piVar5 = quest:GetThingWithScriptName("WillApprentice")
-        cVar2 = (piVar5 ~= nil and piVar5:IsAlive())
-        if not cVar2 then
+        pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
+        iVar22 = 1
+        uVar18 = 0
+        uVar19 = 0
+        uVar20 = 0
+        uVar21 = 0
+        iVar11 = 0
+        iVar10 = 0x3f800000
+        pCVar13 = pCVar12:GetPos()
+        me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+        pCVar12 = quest:GetThingWithScriptName("WillApprentice")
+        bVar6 = (pCVar12 ~= nil and pCVar12:IsAlive())
+        if not bVar6 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then
+            bVar6 = not alive
+            if bVar6 then
                 -- LAB_00d61b0a: (native jump target)
-                quest:DeregisterTimer(pCVar26)
-                quest:DeregisterTimer(pCVar27)
+                quest:DeregisterTimer(iVar11)
+                quest:DeregisterTimer(iVar11)
+                resources:ReleaseResource(xStack_158)
                 return
             end
-            piVar5 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
-            piVar5:GetPos()
-            r27 = quest:CreateCreature("WillApprenticeMarker", nil --[[missing]], "WillApprentice")
-            if piStack_1bc ~= nil then
-                -- TODO(native): (**(code **)(*piStack_1bc + 0x118))();
+            pCVar12 = quest:GetThingWithScriptName("WillApprenticeMarker")
+            bVar6 = false
+            uVar18 = SUB41("WillApprentice",0)
+            uVar19 = ("WillApprentice" >> 8)
+            uVar20 = ("WillApprentice" >> 0x10)
+            uVar21 = ("WillApprentice" >> 0x18)
+            pCVar13 = pCVar12:GetPos()
+            r21 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
+            if (r21 ~= nil and not r21:IsNull()) then
+                r21:SetToKillOnLevelUnload(0)
             end
         end
         if quest:GetStateBool("BanditsDefeated") then
             -- LAB_00d609de: (native jump target)
-            pCVar17 = ""
-            pCVar27 = "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06"
-            quest:SetQuestCardObjective("Q_GuildTraining", "", "Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06")
-            quest:SetPlayerUsingWillDummies((pCVar33 ~= 0))
+            quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "")
+            quest:SetPlayerUsingWillDummies(false)
             alive = not quest:IsActiveThreadTerminating()
-            cVar2 = extraout_AL_88
+            bVar6 = not alive
             -- FLOW_native_label_2: (native jump target)
-            if cVar2 == 0 then
+            if not bVar6 then
                 if not quest:GetStateBool("BanditsDefeated") then
-                    -- TODO(native): uStack_188 = uStack_188 | 1;
-                    cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
-                    if cVar2 then return end  -- TODO(native): goto LAB_00d6158a
-                    bVar1 = true
+                    u_stk_17c = u_stk_17c | 1
+                    bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+                    if bVar6 then
+                        bVar6 = false
+                        goto FLOW_after_lab_00d6158a
+                    end
+                    bVar6 = true
                 else
                     -- LAB_00d6158a: (native jump target)
-                    bVar1 = false
+                    bVar6 = false
                 end
-                if (uStack_188 & 1) ~= 0 then
-                    -- TODO(native): uStack_188 = uStack_188 & 0xfffffffe;
+                ::FLOW_after_lab_00d6158a::
+                if (u_stk_17c & 1) ~= 0 then
+                    u_stk_17c = u_stk_17c & 0xfffffffe
                 end
-                if bVar1 then
+                if bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d61b0a
+                    bVar6 = not alive
+                    if bVar6 then
+                        quest:DeregisterTimer(iVar11)
+                        quest:DeregisterTimer(iVar11)
+                        resources:ReleaseResource(xStack_158)
+                        return
+                    end
                     quest:SetStateBool("BanditsDefeated", true)
                 end
-                cVar2 = me:IsTalkedToByHero()
-                if not cVar2 then goto LAB_00d61af3 end
+                cVar7 = me:IsTalkedToByHero()
+                if not cVar7 then goto LAB_00d61af3 end
                 alive = not quest:IsActiveThreadTerminating()
-                if extraout_AL_x00100 == 0 then
-                    -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&ppuStack_1fc);
+                bVar6 = not alive
+                if not bVar6 then
+                    me:ClearCommands()
+                    xStack_1f0 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(bVar1)
-                    ppVar31 = 0x1
-                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO")
-                    iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while iVar7 < 0 do
+                    quest:PauseAllNonScriptedEntities(true)
+                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "", "TEXT_OBJECT_HERO_ANSWER_NO", "TEXT_OBJECT_HERO_ANSWER_NO")
+                    iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while iVar10 < 0 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if extraout_AL_x00101 ~= 0 then return end  -- TODO(native): goto LAB_00d61b53
-                        iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        bVar6 = not alive
+                        if bVar6 then
+                            -- LAB_00d61b5a_c26: (native jump target)
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto FLOW_after_lab_00d61b53
+                        end
+                        iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if extraout_AL_x00102 == 0 then
+                    bVar6 = not alive
+                    if bVar6 then
+                        -- LAB_00d61b44: (native jump target)
+                        quest:PauseAllNonScriptedEntities(false)
+                    else
                         alive = not quest:IsActiveThreadTerminating()
-                        if iVar7 == 1 then
-                            if extraout_AL_x00103 == 0 then
-                                quest:FadeScreenOut(ppVar31, nil --[[missing]])
-                                quest:Pause(nil --[[missing]])
-                                pCVar26 = "Data\\Video\\2_guild_split_2_comp.xmv"
+                        bVar6 = not alive
+                        if iVar10 == 1 then
+                            if not bVar6 then
+                                quest:FadeScreenOut(0.5, 0.5)
+                                quest:Pause(1.0)
                                 quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_2_comp.xmv")
                                 quest:ConfiscateAllHeroWeapons()
-                                cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
-                                if cVar2 then
+                                bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+                                if bVar6 then
                                     alive = not quest:IsActiveThreadTerminating()
-                                    if extraout_AL_x00104 ~= 0 then return end  -- TODO(native): goto LAB_00d61b44
-                                    quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", nil --[[missing]])
+                                    bVar6 = not alive
+                                    if bVar6 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        goto FLOW_after_lab_00d61b53
+                                    end
+                                    quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
                                 end
-                                ppVar24 = quest:GetActiveQuestName()
-                                quest:DeactivateQuestLater(ppVar24, nil --[[missing]])
-                                quest:SetTimeOfDay(nil --[[missing]])
+                                delay = 0
+                                pCVar15 = quest:GetActiveQuestName()
+                                quest:DeactivateQuestLater(pCVar15, delay)
+                                quest:SetTimeOfDay(11.0)
                                 quest:ResetPlayerCreatureCombatMultiplier()
-                                quest:SetHeroAsTeenager(nil --[[missing]])
-                                quest:ChangeHeroHealthBy(nil --[[missing]], nil --[[missing]], nil --[[missing]])
-                                ppVar24 = quest:GetThingWithScriptName("MeleeApprentice")
-                                quest:RemoveThing(ppVar24)
-                                piVar9 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE")
-                                piVar9:GetPos()
-                                -- TODO(native): in_stack_fffffd44 = (CCharString *)amStack_1cc;
-                                -- TODO(native): in_stack_fffffd40 = aCStack_b8;
-                                r28 = quest:CreateCreature("MeleeApprenticeMarker", nil --[[missing]], "MeleeApprentice")
+                                quest:SetHeroAsTeenager(false)
+                                quest:ChangeHeroHealthBy(1000.0, true, false)
+                                bVar8 = true
+                                bVar6 = false
+                                pCVar12 = quest:GetThingWithScriptName("MeleeApprentice")
+                                quest:RemoveThing(pCVar12, bVar6, bVar8)
+                                pCVar12 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE")
+                                bVar6 = false
+                                uVar18 = SUB41("MeleeApprentice",0)
+                                uVar19 = ("MeleeApprentice" >> 8)
+                                uVar20 = ("MeleeApprentice" >> 0x10)
+                                uVar21 = ("MeleeApprentice" >> 0x18)
+                                pCVar13 = pCVar12:GetPos()
+                                r22 = quest:CreateCreature("MeleeApprenticeMarker", pCVar13, "MeleeApprentice")
                                 -- LAB_00d61ad8: (native jump target)
-                                -- TODO(native): in_stack_fffffd3c = (CCharString *)0x0;
-                                quest:PauseAllNonScriptedEntities(nil --[[missing]])
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:ReleaseResource(xStack_158)
                                 goto LAB_00d61af3
                             end
                         else
-                            if extraout_AL_x00103 == 0 then
-                                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffdbc);
-                                CVar3 = SUB41(ppVar31,0)
-                                fVar14 = quest:GetHealth(r28)
-                                fVar15 = _DAT_0122dedc
-                                if fVar15 < fVar14 then
-                                    CVar29 = 0x0
-                                    pCVar33 = 0x1
-                                    pCVar27 = 0x0
-                                    pCVar26 = 0x0
-                                    pcVar30 = "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO"
-                                    pCVar6 = quest:GetHero()
-                                    r29 = me:Speak(pCVar6, pcVar30, pCVar26, (pCVar27 ~= 0), (pCVar33 ~= 0), (CVar29 ~= 0))
-                                    bVar1 = me:IsPerformingScriptTask()
-                                    if bVar1 then
-                                        repeat
-                                            alive = quest:NewScriptFrame(me)
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            if extraout_AL_x00105 ~= 0 then return end  -- TODO(native): goto LAB_00d61b44
-                                            bVar1 = me:IsPerformingScriptTask()
-                                        until not (bVar1)
+                            if not bVar6 then
+                                xStack_54 = resources:ScriptThing(0)
+                                pCVar12 = xStack_54
+                                r23 = quest:GetHealth(pCVar12)
+                                fVar4 = 0.0
+                                if fVar4 < fret_04 then
+                                    iVar22 = 0
+                                    uVar18 = 1
+                                    uVar19 = 0
+                                    uVar20 = 0
+                                    uVar21 = 0
+                                    iVar11 = 0
+                                    iVar10 = 0
+                                    pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO"
+                                    pCVar12 = quest:GetHero()
+                                    r24 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                    iVar10 = me:IsPerformingScriptTask()
+                                    cVar7 = iVar10
+                                    while cVar7 do
+                                        alive = quest:NewScriptFrame(me)
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar6 = not alive
+                                        if bVar6 then
+                                            quest:PauseAllNonScriptedEntities(false)
+                                            goto FLOW_after_lab_00d61b53
+                                        end
+                                        iVar10 = me:IsPerformingScriptTask()
+                                        cVar7 = iVar10
                                     end
                                     alive = not quest:IsActiveThreadTerminating()
-                                    if extraout_AL_x00106 ~= 0 then goto LAB_00d61b53 end
+                                    bVar6 = not alive
+                                    if bVar6 then goto LAB_00d61b53 end
                                 end
-                                piVar9 = quest:GetThingWithScriptName("M_GuildmasterMarker")
-                                pCVar6 = piVar9:GetPos()
-                                me:MoveToPosition(pCVar6, in_stack_fffffd30, in_stack_fffffd34, 0xd61aea, in_stack_fffffd3c)
-                                -- TODO(native): goto LAB_00d61ad8
+                                pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
+                                iVar22 = 1
+                                uVar18 = 0
+                                uVar19 = 0
+                                uVar20 = 0
+                                uVar21 = 0
+                                iVar11 = 0
+                                iVar10 = 0x3f800000
+                                pCVar13 = pCVar12:GetPos()
+                                me:MoveToPosition(pCVar13, iVar10, iVar11, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))), (iVar22 ~= 0))
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:ReleaseResource(xStack_158)
+                                goto LAB_00d61af3
                             end
                         end
                         ::LAB_00d61b53::
-                        iVar7 = *piVar5
                         -- LAB_00d61b5a: (native jump target)
-                        quest:PauseAllNonScriptedEntities((CVar29 ~= 0))
-                    else
-                        -- LAB_00d61b44: (native jump target)
-                        quest:PauseAllNonScriptedEntities(nil --[[missing]])
+                        quest:PauseAllNonScriptedEntities(false)
                     end
+                    ::FLOW_after_lab_00d61b53::
+                    resources:ReleaseResource(xStack_1f0)
                     goto LAB_00d61b69
                 end
             end
-            -- TODO(native): goto LAB_00d61b0a
+            quest:DeregisterTimer(iVar11)
+            quest:DeregisterTimer(iVar11)
+            resources:ReleaseResource(xStack_158)
+            return
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
+        bVar6 = not alive
+        if not bVar6 then
             quest:ActivateQuest("Q_GuildTrainingWoodsWill")
-            quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", nil --[[missing]])
-            quest:SetQuestAsPersistent("Q_GuildTrainingWoodsWill", nil --[[missing]])
-            quest:SetQuestCardObjective("Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_01", "GuildWoods", "")
+            quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
+            quest:SetQuestAsPersistent("Q_GuildTrainingWoodsWill", false)
+            quest:SetQuestCardObjective("GuildWoods", "Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_01", "")
             -- TODO(native): goto LAB_00d609de
         end
     end
+    ::FLOW_after_lab_00d61b0a::
     goto LAB_00d61b69
     ::FLOW_native_label_3::
-    if not bVar1 then goto LAB_00d610c4 end
+    if not cVar7 then goto LAB_00d610c4 end
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then return end  -- TODO(native): goto LAB_00d6132d
-    bVar1 = me:IsPerformingScriptTask()
-    uVar22 = uVar28
-    aVar25 = SUB41(pCVar26,0)
+    bVar6 = not alive
+    if bVar6 then
+        resources:ReleaseResource(xStack_200)
+        -- LAB_00d61342_c31: (native jump target)
+        quest:PauseAllNonScriptedEntities(false)
+        goto FLOW_after_lab_00d61578
+    end
+    iVar10 = me:IsPerformingScriptTask()
+    cVar7 = iVar10
     goto FLOW_native_label_3
     ::LAB_00d610c4::
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
+    bVar6 = not alive
+    if bVar6 then
+        -- LAB_00d61563: (native jump target)
+        resources:DestroyMovie(xStack_1d0)
+        -- LAB_00d61578: (native jump target)
+        quest:PauseAllNonScriptedEntities(false)
+    else
         -- LAB_00d610d3: (native jump target)
-        quest:FadeScreenOut(nil --[[missing]], nil --[[missing]])
-        quest:Pause(nil --[[missing]])
+        quest:FadeScreenOut(0.5, 0.5)
+        quest:Pause(1.0)
         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_2_comp.xmv")
         quest:ConfiscateAllHeroWeapons()
-        cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
-        if cVar2 then
+        bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+        if bVar6 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d61563
-            quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", nil --[[missing]])
+            bVar6 = not alive
+            if bVar6 then
+                resources:DestroyMovie(xStack_1d0)
+                -- LAB_00d61578_c32: (native jump target)
+                quest:PauseAllNonScriptedEntities(false)
+                goto FLOW_after_lab_00d61578
+            end
+            quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
         end
-        quest:SetTimeOfDay(nil --[[missing]])
+        quest:SetTimeOfDay(11.0)
         quest:ResetPlayerCreatureCombatMultiplier()
-        quest:SetHeroAsTeenager(nil --[[missing]])
-        quest:ChangeHeroHealthBy(nil --[[missing]], nil --[[missing]], nil --[[missing]])
-        ppVar24 = quest:GetThingWithScriptName("MeleeApprentice")
-        quest:RemoveThing(ppVar24)
-        piVar9 = quest:GetThingWithScriptName("HERO")
-        uVar28 = piVar9:GetPos()
-        r30 = quest:CreateCreature(ppVar24, uVar28, "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE")
-        piVar9 = quest:GetThingWithScriptName("WillApprentice")
-        cVar2 = (piVar9 ~= nil and piVar9:IsAlive())
-        if cVar2 then
+        quest:SetHeroAsTeenager(false)
+        quest:ChangeHeroHealthBy(1000.0, true, false)
+        bVar8 = true
+        bVar6 = false
+        pCVar9 = quest:GetThingWithScriptName("MeleeApprentice")
+        quest:RemoveThing(pCVar9, bVar6, bVar8)
+        pCVar9 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
+        bVar6 = false
+        pCVar13 = pCVar9:GetPos()
+        r25 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice")
+        pCVar9 = quest:GetThingWithScriptName("WillApprentice")
+        bVar6 = (pCVar9 ~= nil and pCVar9:IsAlive())
+        if bVar6 then
             -- LAB_00d6144d: (native jump target)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "")
-            -- TODO(native): CSubtitleRenderer::SetText((CSubtitleRenderer *)&stack0xfffffd70,(CFontBank *)ppVar24,pCVar26,pCVar37,pCVar18, pCVar19,(ulong)pCVar33,(float)pCVar27,(bool)aVar25,(bool)uVar22);
-            quest:SetPlayerUsingWillDummies(nil --[[missing]])
+            -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238_12,(CCharString *)pCVar12);
+            quest:SetPlayerUsingWillDummies(false)
             quest:SetMasterGameState("HeroTakingGuildTest", false)
             quest:SetStateInt("TutorialState", 4)
             quest:SetStateBool("TestFinished", true)
-            r31 = quest:GetActiveQuestName()
-            quest:DeactivateQuestLater(r31, nil --[[missing]])
+            uVar18 = 0
+            uVar19 = 0
+            uVar20 = 0
+            uVar21 = 0
+            pCVar15 = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pCVar15, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))))
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-            until not (alive)
-            -- TODO(native): goto LAB_00d61563
+                bVar6 = not alive
+            until not (not bVar6)
+            resources:DestroyMovie(xStack_1d0)
+            -- LAB_00d61578_c33: (native jump target)
+            quest:PauseAllNonScriptedEntities(false)
+            goto FLOW_after_lab_00d61578
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            piVar9 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
-            piVar9:GetPos()
-            r32 = quest:CreateCreature("WillApprenticeMarker", nil --[[missing]], "WillApprentice")
-            if piStack_1f8 ~= nil then
-                -- TODO(native): (**(code **)(*piStack_1f8 + 0x118))();
+        bVar6 = not alive
+        if not bVar6 then
+            pCVar9 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
+            bVar6 = false
+            pCVar13 = pCVar9:GetPos()
+            r26 = quest:CreateCreature("WillApprentice", pCVar13, "WillApprenticeMarker")
+            if pCVar12._0_4_ ~= nil then
+                -- TODO(native): (**(code **)(*(int *)xStack_60._0_4_ + 0x118))(0);
             end
             -- TODO(native): goto LAB_00d6144d
         end
         -- LAB_00d6132d: (native jump target)
+        resources:ReleaseResource(xStack_200)
         -- LAB_00d61342: (native jump target)
-        quest:PauseAllNonScriptedEntities(nil --[[missing]])
-    else
-        -- LAB_00d61563: (native jump target)
-        -- LAB_00d61578: (native jump target)
-        quest:PauseAllNonScriptedEntities(nil --[[missing]])
+        quest:PauseAllNonScriptedEntities(false)
     end
-    -- TODO(native): LTextTreeWalkThrough__Dtor();
+    ::FLOW_after_lab_00d61578::
+    -- TODO(native): LTextTreeWalkThrough__Dtor(xStack_1c0);
     goto LAB_00d6135b
     ::FLOW_native_label_4::
-    if not bVar1 then goto LAB_00d60bd4 end
+    if not cVar7 then goto LAB_00d60bd4 end
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then return end  -- TODO(native): goto LAB_00d60b19
-    bVar1 = me:IsPerformingScriptTask()
-    uVar22 = uVar28
-    aVar25 = SUB41(pCVar26,0)
+    bVar6 = not alive
+    if bVar6 then
+        resources:ReleaseResource(xStack_1f0)
+        -- LAB_00d60b31_c34: (native jump target)
+        quest:PauseAllNonScriptedEntities(false)
+        goto LAB_00d6135b
+    end
+    iVar10 = me:IsPerformingScriptTask()
+    cVar7 = iVar10
     goto FLOW_native_label_4
     ::LAB_00d61af3::
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    cVar2 = extraout_AL_x00107
+    bVar6 = not alive
     -- TODO(native): goto FLOW_native_label_2
     ::LAB_00d60bd4::
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
+    bVar6 = not alive
+    if not bVar6 then
         -- LAB_00d60be3: (native jump target)
-        quest:FadeScreenOut(nil --[[missing]], nil --[[missing]])
-        quest:Pause(nil --[[missing]])
+        quest:FadeScreenOut(0.5, 0.5)
+        quest:Pause(1.0)
         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_2_comp.xmv")
         quest:ConfiscateAllHeroWeapons()
-        cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
-        if cVar2 then
+        bVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+        if bVar6 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d61004 end
-            quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", nil --[[missing]])
+            bVar6 = not alive
+            if bVar6 then goto LAB_00d61004 end
+            quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
         end
-        quest:SetTimeOfDay(nil --[[missing]])
+        quest:SetTimeOfDay(11.0)
         quest:ResetPlayerCreatureCombatMultiplier()
-        quest:SetHeroAsTeenager(nil --[[missing]])
-        quest:ChangeHeroHealthBy(nil --[[missing]], nil --[[missing]], nil --[[missing]])
-        ppVar24 = quest:GetThingWithScriptName("MeleeApprentice")
-        quest:RemoveThing(ppVar24)
-        piVar9 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE")
-        uVar28 = piVar9:GetPos()
-        r33 = quest:CreateCreature(ppVar24, uVar28, "MeleeApprenticeMarker")
-        piVar9 = quest:GetThingWithScriptName("WillApprentice")
-        cVar2 = (piVar9 ~= nil and piVar9:IsAlive())
-        if not cVar2 then
+        quest:SetHeroAsTeenager(false)
+        quest:ChangeHeroHealthBy(1000.0, true, false)
+        bVar8 = true
+        bVar6 = false
+        pCVar9 = quest:GetThingWithScriptName("MeleeApprentice")
+        quest:RemoveThing(pCVar9, bVar6, bVar8)
+        pCVar9 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
+        bVar6 = false
+        pCVar13 = pCVar9:GetPos()
+        r27 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice")
+        pCVar9 = quest:GetThingWithScriptName("WillApprentice")
+        bVar6 = (pCVar9 ~= nil and pCVar9:IsAlive())
+        if not bVar6 then
             alive = not quest:IsActiveThreadTerminating()
-            if alive then
-                piVar9 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
-                piVar9:GetPos()
-                r34 = quest:CreateCreature("WillApprenticeMarker", nil --[[missing]], "WillApprentice")
-                if piStack_1e8 ~= nil then
-                    -- TODO(native): (**(code **)(*piStack_1e8 + 0x118))();
+            bVar6 = not alive
+            if not bVar6 then
+                pCVar9 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
+                bVar6 = false
+                pCVar13 = pCVar9:GetPos()
+                r28 = quest:CreateCreature("MeleeApprentice", pCVar13, "WillApprentice")
+                if pCVar12._0_4_ ~= nil then
+                    -- TODO(native): (**(code **)(*(int *)xStack_60._0_4_ + 0x118))(0);
                 end
                 goto LAB_00d60ef5
             end
             -- LAB_00d60b19: (native jump target)
+            resources:ReleaseResource(xStack_1f0)
             -- LAB_00d60b31: (native jump target)
-            quest:PauseAllNonScriptedEntities(nil --[[missing]])
+            quest:PauseAllNonScriptedEntities(false)
             goto LAB_00d6135b
         end
         ::LAB_00d60ef5::
-        pCVar21 = ""
-        quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "Q_GuildTraining")
-        -- TODO(native): CSubtitleRenderer::SetText((CSubtitleRenderer *)&stack0xfffffd80,(CFontBank *)ppVar24,pCVar37,pCVar18, (CCharString *)pCVar21,(CCharString *)paVar23,(ulong)pCVar27,(float)paVar11, (bool)aVar25,(bool)uVar22);
-        quest:SetPlayerUsingWillDummies(nil --[[missing]])
+        quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "")
+        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238_12,(CCharString *)pCVar12);
+        quest:SetPlayerUsingWillDummies(false)
         quest:SetMasterGameState("HeroTakingGuildTest", false)
         quest:SetStateInt("TutorialState", 4)
         quest:SetStateBool("TestFinished", true)
-        r35 = quest:GetActiveQuestName()
-        quest:DeactivateQuestLater(r35, nil --[[missing]])
+        uVar18 = 0
+        uVar19 = 0
+        uVar20 = 0
+        uVar21 = 0
+        pCVar15 = quest:GetActiveQuestName()
+        quest:DeactivateQuestLater(pCVar15, CONCAT13(uVar21,CONCAT12(uVar20,CONCAT11(uVar19,uVar18))))
         repeat
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-        until not (alive)
+            bVar6 = not alive
+        until not (not bVar6)
     end
+    ::FLOW_after_lab_00d60be3::
     ::LAB_00d61004::
+    resources:DestroyMovie(xStack_1f0)
     ::LAB_00d6101c::
-    quest:PauseAllNonScriptedEntities(nil --[[missing]])
+    quest:PauseAllNonScriptedEntities(false)
     ::LAB_00d6135b::
-    -- TODO(native): StdMap_Destroy_API();
+    resources:ReleaseResource(0)
+    resources:DestroyActorMap(xStack_210)
     ::LAB_00d61370::
+    resources:DestroyMovie(xStack_1f0)
     ::LAB_00d61379::
     ::LAB_00d6138b::
     ::LAB_00d61b69::
     ::LAB_00d61b7b::
+    resources:ReleaseResource(0)
 end
 
 function Init(quest, me)

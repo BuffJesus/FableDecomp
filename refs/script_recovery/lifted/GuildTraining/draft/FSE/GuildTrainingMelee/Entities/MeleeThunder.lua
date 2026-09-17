@@ -11,89 +11,106 @@ do
 end
 
 function Main(quest, me)
-    local cVar4, iVar2, pCVar1
+    local resources = quest:RetailResources()
+    local bVar2, iVar1, pThing, xStack_10
     local alive = true
-    iVar2 = quest:GetStateInt("TutorialState")
-    while iVar2 ~= 4 do
+    xStack_10 = resources:NewResource()
+    iVar1 = quest:GetStateInt("TutorialState")
+    while iVar1 ~= 4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar2 = not alive
+        if bVar2 then
             return
         end
-        iVar2 = quest:GetStateInt("TutorialState")
+        iVar1 = quest:GetStateInt("TutorialState")
     end
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
-        -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)local_10);
-        if bVar3 then
+    bVar2 = not alive
+    if not bVar2 then
+        bVar2 = false
+        if bVar2 ~= 0 then
         end
-        cVar4 = me:AcquireControl(4)
-        while not cVar4 do
+        bVar2 = resources:TryAcquire(0, me, 4)
+        while not bVar2 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d582ed end
-            cVar4 = me:AcquireControl(4)
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d582ed end
+            bVar2 = resources:TryAcquire(0, me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            iVar2 = quest:GetStateInt("TutorialState")
-            while iVar2 == 4 do
+        bVar2 = not alive
+        if not bVar2 then
+            iVar1 = quest:GetStateInt("TutorialState")
+            while iVar1 == 4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d582ed end
-                iVar2 = quest:GetStateInt("TutorialState")
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d582ed end
+                iVar1 = quest:GetStateInt("TutorialState")
             end
             alive = not quest:IsActiveThreadTerminating()
-            if alive then
-                -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)local_10);
-                if bVar3 then
+            bVar2 = not alive
+            if not bVar2 then
+                bVar2 = false
+                if bVar2 ~= 0 then
                 end
-                iVar2 = quest:GetStateInt("TutorialState")
-                while iVar2 ~= 6 do
+                iVar1 = quest:GetStateInt("TutorialState")
+                while iVar1 ~= 6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d58297 end
-                    iVar2 = quest:GetStateInt("TutorialState")
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d58297 end
+                    iVar1 = quest:GetStateInt("TutorialState")
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if alive then
-                    -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)local_10);
-                    if bVar3 then
+                bVar2 = not alive
+                if not bVar2 then
+                    bVar2 = false
+                    if bVar2 ~= 0 then
                     end
-                    cVar4 = me:AcquireControl(4)
-                    while not cVar4 do
+                    bVar2 = resources:TryAcquire(0, me, 4)
+                    while not bVar2 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d58297 end
-                        cVar4 = me:AcquireControl(4)
+                        bVar2 = not alive
+                        if bVar2 then goto LAB_00d58297 end
+                        bVar2 = resources:TryAcquire(0, me, 4)
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if alive then
-                        iVar2 = quest:GetStateInt("TutorialState")
-                        while iVar2 == 6 do
+                    bVar2 = not alive
+                    if not bVar2 then
+                        iVar1 = quest:GetStateInt("TutorialState")
+                        while iVar1 == 6 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d58297 end
-                            iVar2 = quest:GetStateInt("TutorialState")
+                            bVar2 = not alive
+                            if bVar2 then goto LAB_00d58297 end
+                            iVar1 = quest:GetStateInt("TutorialState")
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if alive then
-                            -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)local_10);
-                            if bVar3 then
+                        bVar2 = not alive
+                        if not bVar2 then
+                            bVar2 = false
+                            if bVar2 ~= 0 then
                             end
                             repeat
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                            until not (alive)
+                                bVar2 = not alive
+                            until not (not bVar2)
                         end
                     end
                 end
                 ::LAB_00d58297::
+                resources:ReleaseResource(0)
                 return
             end
         end
     end
     ::LAB_00d582ed::
+    resources:ReleaseResource(0)
 end
 
 function Init(quest, me)

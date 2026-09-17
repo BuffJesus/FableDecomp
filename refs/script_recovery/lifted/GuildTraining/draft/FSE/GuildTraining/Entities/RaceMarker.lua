@@ -11,16 +11,18 @@ do
 end
 
 function Main(quest, me)
-    local bVar1, pCVar2
+    local thing1
     local alive = true
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
+    local bVar1 = not alive
+    if not bVar1 then
         repeat
-            pCVar2 = quest:GetHero()
-            bVar1 = quest:IsDistanceBetweenThingsUnder(pCVar2, me, 3.0)
+            thing1 = quest:GetHero()
+            bVar1 = quest:IsDistanceBetweenThingsUnder(thing1, me, 3.0)
             if bVar1 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar1 = not alive
+                if bVar1 then
                     return
                 end
                 quest:SetStateBool("ReachedPlatform", true)
@@ -28,7 +30,8 @@ function Main(quest, me)
             end
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-        until not (alive)
+            bVar1 = not alive
+        until not (not bVar1)
     end
 end
 

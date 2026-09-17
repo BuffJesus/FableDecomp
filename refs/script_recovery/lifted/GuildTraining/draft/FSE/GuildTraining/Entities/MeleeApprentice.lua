@@ -11,353 +11,489 @@ do
 end
 
 function Main(quest, me)
-    local bVar4, fVar10, fVar3, iRam00000001, pCVar12, pCVar15, pCVar16, pCVar18, pCVar8, pCVar9, pcVar14, piVar7, r2, r3, r4, r5, r6
+    local resources = quest:RetailResources()
+    local __native_condition_1, bVar3, bVar4, cVar5, fVar2, iVar11, iVar12, iVar13, iVar14, p0, pCVar6, pCVar7, pCVar9, pThing, pcVar10, puVar8, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, xStack_18, xStack_24, xStack_3c, xStack_48, xStack_64, xStack_74, xStack_84, xStack_94, xStack_a4, xStack_c, xStack_f8
     local alive = true
-    -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_f8);
-    if bVar4 then
+    local function __cleanup_LAB_00d419fe()
+        pCVar9 = xStack_a4
+        resources:DestroyMovie(pCVar9)
+        resources:ReleaseResource(0)
     end
-    local cVar5 = me:AcquireControl(4)
-    while not cVar5 do
+    local function __cleanup_LAB_00d41a02()
+        resources:DestroyMovie(pCVar9)
+        resources:ReleaseResource(0)
+    end
+    xStack_f8 = resources:NewResource()
+    bVar3 = false
+    if bVar3 ~= 0 then
+    end
+    bVar3 = resources:TryAcquire(xStack_f8, me, 4)
+    while not bVar3 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar3 = not alive
+        if bVar3 then
+            if false then
+                -- TODO(native): (**(code **)((int)xStack_e8 + 4))();
+            end
             return
         end
-        cVar5 = me:AcquireControl(4)
+        bVar3 = resources:TryAcquire(xStack_f8, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then
+    bVar3 = not alive
+    if bVar3 then
+        resources:ReleaseResource(xStack_f8)
         return
     end
-    quest:EntitySheatheWeapons(me)
+    quest:EntitySheatheWeapons(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
-    quest:EntitySetAsKillable(nil --[[missing]], false)
-    quest:EntitySetAllowBossPhaseChanges(nil --[[missing]], false)
+    quest:EntitySetAsKillable(me, false, true)
+    quest:EntitySetAllowBossPhaseChanges(me, false)
+    p0 = 0x1
     me:SetFriendsWithEverythingFlag(nil --[[missing]])
-    local r1 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
+    r1 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     alive = not quest:IsActiveThreadTerminating()
-    cVar5 = not alive
+    bVar3 = not alive
     repeat
-        if cVar5 then
-            if (pCStack_11c ~= nil) and (*pCStack_11c = *pCStack_11c + -1, *pCStack_11c == 0) then
-                -- TODO(native): (**(code **)(pCStack_11c + 4))();
-            end
-            iRam00000001 = iRam00000001 + -1
-            if iRam00000001 == 0 then
-                -- TODO(native): (*_DAT_00000005)();
-            end
+        if bVar3 then
+            r1 = nil
             return
         end
         if quest:GetMasterGameState("MeleeApprenticeNeededForCutscene") ~= 0 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
-            -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xfffffecc);
-            if bVar4 then
+            bVar3 = not alive
+            if bVar3 then
+                resources:ReleaseResource(0)
+                return
+            end
+            bVar3 = false
+            if bVar3 ~= 0 then
             end
             cVar5 = quest:GetMasterGameState("MeleeApprenticeNeededForCutscene")
             while cVar5 ~= 0 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d41a07
+                bVar3 = not alive
+                if bVar3 then
+                    resources:ReleaseResource(0)
+                    return
+                end
                 cVar5 = quest:GetMasterGameState("MeleeApprenticeNeededForCutscene")
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
-            -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xfffffecc);
-            if bVar4 then
+            bVar3 = not alive
+            if bVar3 then
+                resources:ReleaseResource(0)
+                return
             end
-            cVar5 = me:AcquireControl(4)
-            while not cVar5 do
+            bVar3 = false
+            if bVar3 ~= 0 then
+            end
+            bVar3 = resources:TryAcquire(0, me, 4)
+            while not bVar3 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                cVar5 = me:AcquireControl(4)
+                bVar3 = not alive
+                if bVar3 then
+                    resources:ReleaseResource(0)
+                    return
+                end
+                bVar3 = resources:TryAcquire(0, me, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
+            bVar3 = not alive
+            if bVar3 then
+                resources:ReleaseResource(0)
+                return
+            end
         end
         if quest:GetStateBool("StartedMeleeTesting") then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
-            -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xfffffecc);
-            if bVar4 then
+            bVar3 = not alive
+            if bVar3 then
+                resources:ReleaseResource(0)
+                return
+            end
+            bVar3 = false
+            if bVar3 ~= 0 then
             end
             cVar5 = quest:GetStateBool("StartedMeleeTesting")
             while cVar5 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d41a07
+                bVar3 = not alive
+                if bVar3 then
+                    resources:ReleaseResource(0)
+                    return
+                end
                 cVar5 = quest:GetStateBool("StartedMeleeTesting")
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
-            -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xfffffecc);
-            if bVar4 then
+            bVar3 = not alive
+            if bVar3 then
+                resources:ReleaseResource(0)
+                return
             end
-            cVar5 = me:AcquireControl(4)
-            while not cVar5 do
+            bVar3 = false
+            if bVar3 ~= 0 then
+            end
+            bVar3 = resources:TryAcquire(0, me, 4)
+            while not bVar3 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                cVar5 = me:AcquireControl(4)
+                bVar3 = not alive
+                if bVar3 then
+                    resources:ReleaseResource(0)
+                    return
+                end
+                bVar3 = resources:TryAcquire(0, me, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
+            bVar3 = not alive
+            if bVar3 then
+                resources:ReleaseResource(0)
+                return
+            end
             me:ClearCommands()
             quest:EntitySheatheWeapons(me, false)
         end
-        cVar5 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
+        bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
         alive = not quest:IsActiveThreadTerminating()
-        if not cVar5 then
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
-            cVar5 = me:IsTalkedToByHero()
-            if cVar5 then
-                alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                me:ClearCommands()
-                cVar5 = quest:IsQuestActive("Q_GuildTrainingSkill")
-                if not cVar5 then
-                    cVar5 = quest:IsQuestActive("Q_GuildTrainingWill")
-                    if cVar5 then
-                        alive = not quest:IsActiveThreadTerminating()
-                        if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                        -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_c0);
-                        quest:StartMovieSequence()
-                        quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): uVar6 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec0);
-                        fVar10 = quest:GetHealth(r1)
-                        fVar3 = _DAT_0122dedc
-                        if fVar3 < fVar10 then
-                            bVar4 = false
-                            pCVar15 = 0x1
-                            pCVar12 = 0x0
-                            pCVar16 = 0x0
-                            pcVar14 = "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN"
-                            pCVar8 = quest:GetHero()
-                            r2 = me:Speak(pCVar8, pcVar14, pCVar16, (pCVar12 ~= 0), (pCVar15 ~= 0), bVar4)
-                            bVar4 = me:IsPerformingScriptTask()
-                            if bVar4 then
-                                repeat
-                                    alive = quest:NewScriptFrame(me)
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    if not alive then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        -- TODO(native): goto LAB_00d41a02
-                                    end
-                                    bVar4 = me:IsPerformingScriptTask()
-                                until not (bVar4)
-                            end
-                            alive = not quest:IsActiveThreadTerminating()
-                            if not alive then
-                                quest:PauseAllNonScriptedEntities(false)
-                                -- TODO(native): goto LAB_00d41a02
-                            end
-                        end
-                        quest:PauseAllNonScriptedEntities(false)
-                        -- TODO(native): goto LAB_00d41813
-                    end
-                    cVar5 = quest:IsQuestActive("Q_GuildTrainingDeparture")
-                    if cVar5 then
-                        alive = not quest:IsActiveThreadTerminating()
-                        if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                        cVar5 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
-                        alive = not quest:IsActiveThreadTerminating()
-                        if not cVar5 then
-                            if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                            -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_e0);
-                            quest:StartMovieSequence()
-                            quest:PauseAllNonScriptedEntities(true)
-                            -- TODO(native): uVar6 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec0);
-                            fVar10 = quest:GetHealth(nil --[[missing]])
-                            fVar3 = _DAT_0122dedc
-                            if fVar3 < fVar10 then
-                                bVar4 = false
-                                pCVar15 = 0x1
-                                pCVar12 = 0x0
-                                pCVar16 = 0x0
-                                pcVar14 = "TEXT_QST_028_WHISPER_MELEE_MOAN"
-                                pCVar8 = quest:GetHero()
-                                r3 = me:Speak(pCVar8, pcVar14, pCVar16, (pCVar12 ~= 0), (pCVar15 ~= 0), bVar4)
-                                bVar4 = me:IsPerformingScriptTask()
-                                if bVar4 then
-                                    repeat
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        if not alive then
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): goto LAB_00d419fe
-                                        end
-                                        bVar4 = me:IsPerformingScriptTask()
-                                    until not (bVar4)
-                                end
-                                alive = not quest:IsActiveThreadTerminating()
-                                if not alive then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    -- LAB_00d419fe: (native jump target)
-                                    -- TODO(native): goto LAB_00d41a02
-                                end
-                            end
-                            quest:PauseAllNonScriptedEntities(false)
-                        else
-                            if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                            -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_a0);
-                            quest:StartMovieSequence()
-                            quest:PauseAllNonScriptedEntities(true)
-                            -- TODO(native): uVar6 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec0);
-                            fVar10 = quest:GetHealth(nil --[[missing]])
-                            fVar3 = _DAT_0122dedc
-                            if fVar3 < fVar10 then
-                                bVar4 = false
-                                pCVar15 = 0x1
-                                pCVar12 = 0x0
-                                pCVar16 = 0x0
-                                pcVar14 = "TEXT_QST_028_WHISPER_END_MOAN"
-                                pCVar8 = quest:GetHero()
-                                r4 = me:Speak(pCVar8, pcVar14, pCVar16, (pCVar12 ~= 0), (pCVar15 ~= 0), bVar4)
-                                bVar4 = me:IsPerformingScriptTask()
-                                if bVar4 then
-                                    repeat
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        if not alive then
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            -- TODO(native): goto LAB_00d41a02
-                                        end
-                                        bVar4 = me:IsPerformingScriptTask()
-                                    until not (bVar4)
-                                end
-                                alive = not quest:IsActiveThreadTerminating()
-                                if not alive then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    -- LAB_00d41a02: (native jump target)
-                                    -- TODO(native): goto LAB_00d41a07
-                                end
-                            end
-                            quest:PauseAllNonScriptedEntities(false)
-                        end
-                        -- TODO(native): goto LAB_00d41813
-                    end
-                else
-                    alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                    -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_d0);
-                    quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(true)
-                    -- TODO(native): uVar6 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffec0);
-                    fVar10 = quest:GetHealth(nil --[[missing]])
-                    fVar3 = _DAT_0122dedc
-                    if fVar3 < fVar10 then
-                        bVar4 = false
-                        pCVar15 = 0x1
-                        pCVar12 = 0x0
-                        pCVar16 = 0x0
-                        pcVar14 = "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN"
-                        pCVar8 = quest:GetHero()
-                        r5 = me:Speak(pCVar8, pcVar14, pCVar16, (pCVar12 ~= 0), (pCVar15 ~= 0), bVar4)
-                        bVar4 = me:IsPerformingScriptTask()
-                        if bVar4 then
-                            repeat
-                                alive = quest:NewScriptFrame(me)
-                                alive = not quest:IsActiveThreadTerminating()
-                                if not alive then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    -- TODO(native): goto LAB_00d41a02
-                                end
-                                bVar4 = me:IsPerformingScriptTask()
-                            until not (bVar4)
-                        end
-                        alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
-                            quest:PauseAllNonScriptedEntities(false)
-                            -- TODO(native): goto LAB_00d41a02
-                        end
-                    end
-                    quest:PauseAllNonScriptedEntities(false)
-                    -- LAB_00d41813: (native jump target)
-                end
-                if piVar26 == nil then
-                else
-                    pCVar8 = quest:IsXbox()
-                end
-                me:MoveToPosition(nil --[[missing]], 0x40400000, 0x1, false, true)
+        bVar4 = not alive
+        if bVar3 then
+            if bVar4 then
+                resources:ReleaseResource(0)
+                return
             end
-            bVar4 = IsDistanceBetweenThingsOver(me,&stack0xfffffedc,4.0)
-            local __native_condition_1 = bVar4
-            if __native_condition_1 then
-                bVar4 = me:IsPerformingScriptTask()
-                __native_condition_1 = not bVar4
-            end
-            if __native_condition_1 then
-                alive = not quest:IsActiveThreadTerminating()
-                if not alive then
-                    -- LAB_00d41a07: (native jump target)
-                    return
-                end
-                if piVar26 == nil then
-                else
-                    pCVar8 = quest:IsXbox()
-                end
-                me:MoveToPosition(nil --[[missing]], 0x40400000, 0x1, false, true)
-            end
-        else
-            if not alive then return end  -- TODO(native): goto LAB_00d41a07
             if not __native_entity_state:GetStateBool("WillWoodsChatDone") then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d41a07
-                pCVar16 = "MK_GTM_WD_HEROWALK"
-                piVar7 = quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK")
-                pCVar15 = 0x1
-                pcVar14 = 0x0
-                pCVar8 = piVar7:GetPos()
-                me:MoveToPosition(pCVar8, SUB41(ppVar19,0), SUB41(ppCVar20,0))
+                bVar3 = not alive
+                if bVar3 then
+                    resources:ReleaseResource(0)
+                    return
+                end
+                pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK")
+                iVar14 = 1
+                iVar13 = 0
+                iVar12 = 1
+                iVar11 = 0x40400000
+                pCVar7 = pCVar6:GetPos()
+                me:MoveToPosition(pCVar7, iVar11, iVar12, (iVar13 ~= 0), (iVar14 ~= 0))
                 __native_entity_state:SetStateBool("WillWoodsChatDone", true)
             else
                 cVar5 = me:IsTalkedToByHero()
                 if cVar5 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d41a07
+                    bVar3 = not alive
+                    if bVar3 then
+                        resources:ReleaseResource(0)
+                        return
+                    end
                     me:ClearCommands()
-                    -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_b0);
+                    xStack_74 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    pCVar16 = 0x1
-                    quest:PauseAllNonScriptedEntities((pCVar16 ~= 0))
-                    -- TODO(native): pcVar14 = (char *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *) &stack0xfffffec0);
-                    fVar10 = quest:GetHealth(nil --[[missing]])
-                    fVar3 = _DAT_0122dedc
-                    if fVar3 < fVar10 then
-                        bVar4 = false
-                        pCVar15 = 0x0
-                        pCVar12 = 0x0
-                        pCVar8 = quest:GetHero()
-                        r6 = me:Speak(pCVar8, "TEXT_QST_028_WHISPER_SCORPION_WOODS", pCVar12, (pCVar15 ~= 0), true, bVar4)
-                        bVar4 = me:IsPerformingScriptTask()
-                        if bVar4 then
-                            repeat
-                                alive = quest:NewScriptFrame(me)
-                                alive = not quest:IsActiveThreadTerminating()
-                                if not alive then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    -- TODO(native): goto LAB_00d41a02
-                                end
-                                bVar4 = me:IsPerformingScriptTask()
-                            until not (bVar4)
+                    quest:PauseAllNonScriptedEntities(true)
+                    xStack_18 = resources:ScriptThing(0)
+                    pCVar6 = xStack_18
+                    r2 = quest:GetHealth(pCVar6)
+                    fVar2 = 0.0
+                    if fVar2 < fret_0 then
+                        iVar14 = 0
+                        iVar13 = 1
+                        iVar12 = 0
+                        iVar11 = 0
+                        pcVar10 = "TEXT_QST_028_WHISPER_SCORPION_WOODS"
+                        pCVar6 = quest:GetHero()
+                        r3 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                        iVar11 = me:IsPerformingScriptTask()
+                        cVar5 = iVar11
+                        while cVar5 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar3 = not alive
+                            if bVar3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                pCVar9 = xStack_74
+                                -- LAB_00d41a02_c14: (native jump target)
+                                resources:DestroyMovie(pCVar9)
+                                -- TODO(native): goto LAB_00d41a07_c14
+                            end
+                            iVar11 = me:IsPerformingScriptTask()
+                            cVar5 = iVar11
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
+                        bVar3 = not alive
+                        if bVar3 then
                             quest:PauseAllNonScriptedEntities(false)
-                            -- TODO(native): goto LAB_00d41a02
+                            pCVar9 = xStack_74
+                            -- LAB_00d41a02_c15: (native jump target)
+                            resources:DestroyMovie(pCVar9)
+                            -- TODO(native): goto LAB_00d41a07_c15
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    piVar7 = quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK")
-                    pCVar8 = piVar7:GetPos()
-                    me:MoveToPosition(pCVar8, pCVar16, SUB41(ppVar19,0))
+                    resources:DestroyMovie(xStack_74)
+                    pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK")
+                    iVar14 = 1
+                    iVar13 = 0
+                    iVar12 = 1
+                    iVar11 = 0x40400000
+                    pCVar7 = pCVar6:GetPos()
+                    me:MoveToPosition(pCVar7, iVar11, iVar12, (iVar13 ~= 0), (iVar14 ~= 0))
                 end
+            end
+        else
+            if bVar4 then
+                resources:ReleaseResource(0)
+                return
+            end
+            cVar5 = me:IsTalkedToByHero()
+            if cVar5 then
+                alive = not quest:IsActiveThreadTerminating()
+                bVar3 = not alive
+                if bVar3 then
+                    resources:ReleaseResource(0)
+                    return
+                end
+                me:ClearCommands()
+                bVar3 = quest:IsQuestActive("Q_GuildTrainingSkill")
+                if bVar3 then
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar3 = not alive
+                    if bVar3 then
+                        resources:ReleaseResource(0)
+                        return
+                    end
+                    xStack_94 = resources:StartMovie("")
+                    quest:StartMovieSequence()
+                    quest:PauseAllNonScriptedEntities(true)
+                    xStack_48 = resources:ScriptThing(0)
+                    pCVar6 = xStack_48
+                    r4 = quest:GetHealth(pCVar6)
+                    fVar2 = 0.0
+                    if fVar2 < fret_00 then
+                        iVar14 = 0
+                        iVar13 = 1
+                        iVar12 = 0
+                        iVar11 = 0
+                        pcVar10 = "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN"
+                        pCVar6 = quest:GetHero()
+                        r5 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                        iVar11 = me:IsPerformingScriptTask()
+                        cVar5 = iVar11
+                        while cVar5 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar3 = not alive
+                            if bVar3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                pCVar9 = xStack_94
+                                __cleanup_LAB_00d41a02(); return
+                            end
+                            iVar11 = me:IsPerformingScriptTask()
+                            cVar5 = iVar11
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar3 = not alive
+                        if bVar3 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            pCVar9 = xStack_94
+                            __cleanup_LAB_00d41a02(); return
+                        end
+                    end
+                    quest:PauseAllNonScriptedEntities(false)
+                    pCVar9 = xStack_94
+                    -- LAB_00d41813: (native jump target)
+                    resources:DestroyMovie(pCVar9)
+                else
+                    bVar3 = quest:IsQuestActive("Q_GuildTrainingWill")
+                    if bVar3 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar3 = not alive
+                        if bVar3 then
+                            resources:ReleaseResource(0)
+                            return
+                        end
+                        xStack_84 = resources:StartMovie("")
+                        quest:StartMovieSequence()
+                        quest:PauseAllNonScriptedEntities(true)
+                        xStack_3c = resources:ScriptThing(0)
+                        pCVar6 = xStack_3c
+                        r6 = quest:GetHealth(pCVar6)
+                        fVar2 = 0.0
+                        if fVar2 < fret_01 then
+                            iVar14 = 0
+                            iVar13 = 1
+                            iVar12 = 0
+                            iVar11 = 0
+                            pcVar10 = "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN"
+                            pCVar6 = quest:GetHero()
+                            r7 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                            iVar11 = me:IsPerformingScriptTask()
+                            cVar5 = iVar11
+                            while cVar5 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar3 = not alive
+                                if bVar3 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    pCVar9 = xStack_84
+                                    __cleanup_LAB_00d41a02(); return
+                                end
+                                iVar11 = me:IsPerformingScriptTask()
+                                cVar5 = iVar11
+                            end
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar3 = not alive
+                            if bVar3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                pCVar9 = xStack_84
+                                __cleanup_LAB_00d41a02(); return
+                            end
+                        end
+                        quest:PauseAllNonScriptedEntities(false)
+                        pCVar9 = xStack_84
+                        resources:DestroyMovie(pCVar9)
+                        goto FLOW_after_lab_00d41813
+                    end
+                    bVar3 = quest:IsQuestActive("Q_GuildTrainingDeparture")
+                    if bVar3 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar3 = not alive
+                        if bVar3 then
+                            resources:ReleaseResource(0)
+                            return
+                        end
+                        bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar3 then
+                            if bVar4 then
+                                resources:ReleaseResource(0)
+                                return
+                            end
+                            xStack_64 = resources:StartMovie("")
+                            quest:StartMovieSequence()
+                            quest:PauseAllNonScriptedEntities(true)
+                            xStack_24 = resources:ScriptThing(0)
+                            pCVar6 = xStack_24
+                            r8 = quest:GetHealth(pCVar6)
+                            fVar2 = 0.0
+                            if fVar2 < fret_02 then
+                                iVar14 = 0
+                                iVar13 = 1
+                                iVar12 = 0
+                                iVar11 = 0
+                                pcVar10 = "TEXT_QST_028_WHISPER_END_MOAN"
+                                pCVar6 = quest:GetHero()
+                                r9 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                iVar11 = me:IsPerformingScriptTask()
+                                cVar5 = iVar11
+                                while cVar5 do
+                                    alive = quest:NewScriptFrame(me)
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar3 = not alive
+                                    if bVar3 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        pCVar9 = xStack_64
+                                        resources:DestroyMovie(pCVar9)
+                                        resources:ReleaseResource(0)
+                                        return
+                                    end
+                                    iVar11 = me:IsPerformingScriptTask()
+                                    cVar5 = iVar11
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar3 = not alive
+                                if bVar3 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    pCVar9 = xStack_64
+                                    __cleanup_LAB_00d41a02()
+                                    return
+                                end
+                            end
+                            quest:PauseAllNonScriptedEntities(false)
+                            pCVar9 = xStack_64
+                        else
+                            if bVar4 then
+                                resources:ReleaseResource(0)
+                                return
+                            end
+                            xStack_a4 = resources:StartMovie("")
+                            quest:StartMovieSequence()
+                            quest:PauseAllNonScriptedEntities(true)
+                            xStack_c = resources:ScriptThing(0)
+                            pCVar6 = xStack_c
+                            r10 = quest:GetHealth(pCVar6)
+                            fVar2 = 0.0
+                            if fVar2 < fret_03 then
+                                iVar14 = 0
+                                iVar13 = 1
+                                iVar12 = 0
+                                iVar11 = 0
+                                pcVar10 = "TEXT_QST_028_WHISPER_MELEE_MOAN"
+                                pCVar6 = quest:GetHero()
+                                r11 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                iVar11 = me:IsPerformingScriptTask()
+                                cVar5 = iVar11
+                                while cVar5 do
+                                    alive = quest:NewScriptFrame(me)
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar3 = not alive
+                                    if bVar3 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        __cleanup_LAB_00d419fe(); return
+                                    end
+                                    iVar11 = me:IsPerformingScriptTask()
+                                    cVar5 = iVar11
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar3 = not alive
+                                if bVar3 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    __cleanup_LAB_00d419fe()
+                                    return
+                                end
+                            end
+                            quest:PauseAllNonScriptedEntities(false)
+                            pCVar9 = xStack_a4
+                        end
+                        resources:DestroyMovie(pCVar9)
+                        goto FLOW_after_lab_00d41813
+                    end
+                end
+                ::FLOW_after_lab_00d41813::
+                if r1 == nil then
+                else
+                    puVar8 = (**(*r1 + 0x18))()
+                end
+                me:MoveToPosition(pCVar7, puVar8, 0x40400000, true, false)
+            end
+            bVar3 = quest:IsDistanceBetweenThingsOver(me, r1, 4.0)
+            __native_condition_1 = bVar3
+            if __native_condition_1 then
+                iVar11 = me:IsPerformingScriptTask()
+                __native_condition_1 = not iVar11
+            end
+            if __native_condition_1 then
+                alive = not quest:IsActiveThreadTerminating()
+                bVar3 = not alive
+                if bVar3 then
+                    -- LAB_00d41a07: (native jump target)
+                    resources:ReleaseResource(0)
+                    return
+                end
+                if r1 == nil then
+                else
+                    puVar8 = (**(*r1 + 0x18))()
+                end
+                me:MoveToPosition(nil --[[missing]], puVar8, 0x40400000, true, false)
             end
         end
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        cVar5 = not alive
+        bVar3 = not alive
     until false
 end
 

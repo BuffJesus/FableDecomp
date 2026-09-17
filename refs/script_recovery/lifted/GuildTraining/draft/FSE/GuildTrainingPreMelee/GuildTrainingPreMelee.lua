@@ -2,9 +2,9 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar1, bVar8, cVar4, iVar7, pCVar10, pCVar11, ppVar9, r1, r2, r3, r4, r5, r6, uVar3
+    local resources = quest:RetailResources()
+    local bVar6, cVar1, delay, iVar5, iVar8, pCVar3, pCVar7, pQuestName, r1, r2, r3, xStack_10, xStack_20, xStack_2c, xStack_3c, xStack_4c, xStack_5c
     local alive = true
-    -- TODO(native): appuStack_84[0] = (undefined **)0x0;
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster")
     quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy")
     quest:AddEntityBinding("PreMeleeWhisper", "GuildTrainingPreMelee/Entities/PreMeleeWhisper")
@@ -12,150 +12,150 @@ function Main(quest)
     quest:SetMasterGameState("GuildWarningOccuring", true)
     r1 = quest:GetThingWithScriptName("PreMeleeMaze")
     r2 = quest:GetThingWithScriptName("PreMeleeWhisper")
-    -- TODO(native): ppVar12 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)appuStack_84;
     r3 = quest:GetThingWithScriptName("TheRealGuildmaster")
     quest:GiveHeroTitle("OBJECT_HERO_TITLE_CHICKEN_CHASER")
     quest:SetStateInt("PreMeleeMode", 0)
-    -- TODO(native): bVar8 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_78);
-    if bVar8 then
+    xStack_5c = resources:NewResource()
+    bVar6 = false
+    if bVar6 ~= 0 then
     end
-    -- TODO(native): ppVar12 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)appuStack_84;
-    -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-    cVar4 = nil --[[unresolved native result]]
-    while cVar4 == 0 do
+    bVar6 = resources:TryAcquire(xStack_5c, r1, 4)
+    while not bVar6 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
-        bVar8 = not alive
-        if bVar8 then
-            if (ppVar9 ~= nil) and (*ppVar9 = *ppVar9 + -1, *ppVar9 == 0) then
-                -- TODO(native): (**(code **)(ppVar9 + 4))();
-            end
+        bVar6 = not alive
+        if bVar6 then
+            r3 = nil
+            r2 = nil
+            r1 = nil
             return
         end
-        -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-        cVar4 = nil --[[unresolved native result]]
+        bVar6 = resources:TryAcquire(0, r1, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    bVar8 = not alive
-    if not bVar8 then
-        -- TODO(native): bVar8 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_74);
-        if bVar8 then
+    bVar6 = not alive
+    if not bVar6 then
+        xStack_4c = resources:NewResource()
+        bVar6 = false
+        if bVar6 ~= 0 then
         end
-        -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-        cVar4 = nil --[[unresolved native result]]
-        while cVar4 == 0 do
+        bVar6 = resources:TryAcquire(xStack_4c, r2, 4)
+        while not bVar6 do
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
-            bVar8 = not alive
-            if bVar8 then goto LAB_00d51951 end
-            -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-            cVar4 = nil --[[unresolved native result]]
+            bVar6 = not alive
+            if bVar6 then goto LAB_00d51951 end
+            bVar6 = resources:TryAcquire(xStack_4c, r2, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
-        bVar8 = not alive
-        if not bVar8 then
-            -- TODO(native): bVar8 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_64);
-            if bVar8 then
+        bVar6 = not alive
+        if not bVar6 then
+            xStack_3c = resources:NewResource()
+            bVar6 = false
+            if bVar6 ~= 0 then
             end
-            -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-            cVar4 = nil --[[unresolved native result]]
-            while cVar4 == 0 do
+            bVar6 = resources:TryAcquire(xStack_3c, r3, 4)
+            while not bVar6 do
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
-                bVar8 = not alive
-                if bVar8 then goto LAB_00d51948 end
-                -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-                cVar4 = nil --[[unresolved native result]]
+                bVar6 = not alive
+                if bVar6 then goto LAB_00d51948 end
+                bVar6 = resources:TryAcquire(xStack_3c, r3, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
-            bVar8 = not alive
-            if not bVar8 then
-                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_48);
-                -- TODO(native): bVar8 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aCStack_48);
-                if bVar8 then
+            bVar6 = not alive
+            if not bVar6 then
+                xStack_20 = resources:NewResource()
+                bVar6 = false
+                if bVar6 ~= 0 then
                 end
-                r4 = quest:GetHero()
-                -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-                cVar4 = nil --[[unresolved native result]]
-                while cVar4 == 0 do
+                iVar8 = 4
+                pCVar7 = xStack_20
+                pCVar3 = quest:GetHero()
+                bVar6 = resources:TryAcquire(pCVar7, pCVar3, iVar8)
+                while not bVar6 do
                     alive = quest:NewScriptFrame()
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar8 = not alive
-                    if bVar8 then goto LAB_00d5193f end
-                    r5 = quest:GetHero()
-                    -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-                    cVar4 = nil --[[unresolved native result]]
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00d5193f end
+                    iVar8 = 4
+                    pCVar7 = xStack_20
+                    pCVar3 = quest:GetHero()
+                    bVar6 = resources:TryAcquire(pCVar7, pCVar3, iVar8)
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                bVar8 = not alive
-                if not bVar8 then
-                    -- TODO(native): StdMap_Construct_API();
-                    -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_54,(CCharString *)&stack0xffffff50);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar6, (CScriptGameResourceObjectScriptedThingBase *)pCVar10);
-                    -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_54,(CCharString *)&stack0xffffff50);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar6,pCVar11);
-                    -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_54,(CCharString *)&stack0xffffff50);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar6,pCVar11);
-                    -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_54,(CCharString *)&stack0xffffff50);
-                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar6,pCVar11);
-                    -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_38);
+                bVar6 = not alive
+                if not bVar6 then
+                    xStack_2c = resources:NewActorMap()
+                    resources:SetActor(xStack_2c, "HERO", xStack_20)
+                    resources:SetActor(xStack_2c, "MAZE", 0)
+                    resources:SetActor(xStack_2c, "WHISPER", xStack_4c)
+                    resources:SetActor(xStack_2c, "MASTER", xStack_3c)
+                    xStack_10 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(false)
+                    quest:PauseAllNonScriptedEntities(true)
+                    quest:FixMovieSequenceCamera(true)
+                    resources:RunMacro("CS_GUILD_PREMELEE_INTRO", xStack_2c, false, true)
+                    resources:RunMacro("CS_GUILD_PREMELEE_BOOHOO", xStack_2c, false, true)
+                    resources:RunMacro("CS_GUILD_PREMELEE_WAKEUP", xStack_2c, false, true)
                     quest:FixMovieSequenceCamera(false)
-                    ppVar9 = 0x0
-                    -- TODO(native): RunCutsceneMacro_Func();
-                    ppVar9 = 0x0
-                    -- TODO(native): RunCutsceneMacro_Func();
-                    ppVar9 = 0x0
-                    -- TODO(native): RunCutsceneMacro_Func();
-                    quest:FixMovieSequenceCamera(false)
-                    quest:ChangeHeroHealthBy(0x447a0000, true, false)
+                    quest:ChangeHeroHealthBy(1000.0, true, false)
                     quest:ResetPlayerCreatureCombatMultiplier()
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): StdMap_Destroy_API();
+                    resources:ReleaseResource(xStack_20)
+                    resources:DestroyActorMap(xStack_2c)
+                    resources:ReleaseResource(xStack_3c)
+                    resources:ReleaseResource(xStack_4c)
+                    resources:ReleaseResource(0)
+                    resources:DestroyMovie(xStack_10)
                     quest:SetStateBool("WhisperCutsceneFinished", true)
                     quest:SetStateBool("GuildmasterTeleport", true)
                     quest:SetMasterGameState("GuildWarningOccuring", false)
-                    -- TODO(native): CTimer::CTimer((CTimer *)&uStack_104);
-                    quest:SetTimer(uStack_104, 5)
-                    iVar7 = quest:GetTimer(ppVar9)
-                    while 0 < iVar7 do
+                    -- TODO(native): CTimer::CTimer((CTimer *)&xStack_88);
+                    quest:SetTimer(5, iVar8)
+                    iVar5 = quest:GetTimer(0)
+                    while 0 < iVar5 do
                         alive = quest:NewScriptFrame()
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar8 = not alive
-                        if bVar8 then goto LAB_00d51dd9 end
-                        iVar7 = quest:GetTimer(0)
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00d51dd9 end
+                        iVar5 = quest:GetTimer(0x0)
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar8 = not alive
-                    if not bVar8 then
-                        quest:GiveHeroExpression("EXPRESSION_FART", 0)
-                        quest:GiveHeroExpression("EXPRESSION_BELCH", 0x0)
-                        quest:GiveHeroExpression("EXPRESSION_GIGGLE", 0x0)
-                        CVar1 = quest:GetStateBool("HeroSleeps")
-                        while not CVar1 do
+                    bVar6 = not alive
+                    if not bVar6 then
+                        quest:GiveHeroExpression("EXPRESSION_FART", -1, true)
+                        quest:GiveHeroExpression("EXPRESSION_BELCH", -1, true)
+                        quest:GiveHeroExpression("EXPRESSION_GIGGLE", -1, true)
+                        cVar1 = quest:GetStateBool("HeroSleeps")
+                        while not cVar1 do
                             alive = quest:NewScriptFrame()
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar8 = not alive
-                            if bVar8 then goto LAB_00d51dd9 end
-                            CVar1 = quest:GetStateBool("HeroSleeps")
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00d51dd9 end
+                            cVar1 = quest:GetStateBool("HeroSleeps")
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar8 = not alive
-                        if not bVar8 then
-                            r6 = quest:GetActiveQuestName()
-                            quest:DeactivateQuestLater(r6, 0)
+                        bVar6 = not alive
+                        if not bVar6 then
+                            delay = 0
+                            pQuestName = quest:GetActiveQuestName()
+                            quest:DeactivateQuestLater(pQuestName, delay)
                         end
                     end
                     ::LAB_00d51dd9::
                     goto LAB_00d51de2
                 end
                 ::LAB_00d5193f::
+                resources:ReleaseResource(xStack_20)
             end
             ::LAB_00d51948::
+            resources:ReleaseResource(xStack_3c)
         end
         ::LAB_00d51951::
+        resources:ReleaseResource(xStack_4c)
     end
+    resources:ReleaseResource(xStack_5c)
     ::LAB_00d51de2::
 end
 

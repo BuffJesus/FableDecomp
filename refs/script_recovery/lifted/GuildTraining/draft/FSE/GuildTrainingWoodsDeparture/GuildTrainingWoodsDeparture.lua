@@ -2,128 +2,134 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local bVar3, piVar6, r1, uVar7, uVar8
+    local CVar5, bVar2, pPosition, r1, this_00
     local alive = true
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
     quest:SetStateBool("MissionOver", false)
-    local cVar2 = quest:IsLevelLoaded("GuildWoods")
-    uVar8 = 0
+    bVar2 = quest:IsLevelLoaded("GuildWoods")
+    CVar5 = 0x0
     while true do
-        if cVar2 then
+        if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if not bVar3 then
+            bVar2 = not alive
+            if not bVar2 then
                 quest:AddEntityBinding("ArtifactThief", "GuildTrainingWoodsDeparture/Entities/ArtifactThief")
                 quest:AddEntityBinding("FinalMaze", "GuildTrainingWoodsDeparture/Entities/FinalMaze")
                 quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsDeparture/Entities/ScorpionHome")
                 quest:FinalizeEntityBindings()
                 quest:CreateThread("WatchForTermination")  -- native thread body Quest_GuildTrainingWoods_Departure_Init: lift it as function WatchForTermination(quest)
-                if (uVar8 & 8) ~= 0 then
-                    uVar8 = uVar8 & 0xfffffff7
+                if (CVar5 & 8) ~= 0 then
+                    CVar5 = (CVar5 & 0xfffffff7)
                 end
                 quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
-                if (uVar8 & 0x10) ~= 0 then
+                if (CVar5 & 0x10) ~= 0 then
                 end
                 quest:SetStateInt("DepartureMissionPoint", 0)
-                quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12")
-                piVar6 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_MAZE_TUTORIAL")
-                uVar7 = piVar6:GetPos()
-                r1 = quest:CreateCreature("MazeCreationMarker", uVar7, "FinalMaze")
+                quest:SetQuestCardObjective("TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "Q_GuildTraining", nil --[[missing]])
+                this_00 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_MAZE_TUTORIAL")
+                bVar2 = false
+                pPosition = this_00:GetPos()
+                r1 = quest:CreateCreature("FinalMaze", pPosition, "MazeCreationMarker")
             end
             return
         end
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then break end
-        cVar2 = quest:IsLevelLoaded("GuildWoods")
+        bVar2 = not alive
+        if bVar2 then break end
+        bVar2 = quest:IsLevelLoaded("GuildWoods")
     end
 end
 
 function WatchForTermination(quest)
-    local bVar3, ppVar4
+    local bVar4, bVar6, pCVar5
     local alive = true
-    local CVar1 = quest:GetStateBool("MissionFailed")
-    while (not CVar1 and (not quest:GetStateBool("MissionSucceeded"))) do
-        alive = quest:NewScriptFrame()
-        alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then
-            return
-        end
-        CVar1 = quest:GetStateBool("MissionFailed")
-    end
-    alive = not quest:IsActiveThreadTerminating()
-    bVar3 = not alive
-    if not bVar3 then
-        quest:SetExperienceSpendingAsEnabled(true)
-        if not quest:GetStateBool("MissionFailed") then
-            alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then
-                return
-            end
-            ppVar4 = quest:GetActiveQuestName()
-            quest:SetQuestAsCompleted(ppVar4, false, true, false)
-        else
-            alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then
-                return
-            end
-            -- TODO(native): CCharString__AssignFromWide();
-            ppVar4 = quest:GetActiveQuestName()
-            quest:SetQuestAsFailed(ppVar4, true, nil --[[missing]], true)
-        end
-        quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", 0)
-    end
-end
-
-function DoMission(quest)
-    local CVar1, bVar4, ppVar6
-    local alive = true
-    local pCVar7 = "first objective"
-    quest:GiveHeroNewQuestObjective("first objective", 0)
-    local cVar3 = quest:IsLevelLoaded("GuildWoods")
-    while not cVar3 do
+    local cVar1 = quest:GetStateBool("MissionFailed")
+    while (not cVar1 and (not quest:GetStateBool("MissionSucceeded"))) do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then
             return
         end
-        cVar3 = quest:IsLevelLoaded("GuildWoods")
+        cVar1 = quest:GetStateBool("MissionFailed")
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
+        quest:SetExperienceSpendingAsEnabled(true)
+        if not quest:GetStateBool("MissionFailed") then
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then
+                return
+            end
+            bVar6 = true
+            bVar4 = false
+            pCVar5 = quest:GetActiveQuestName()
+            quest:SetQuestAsCompleted(pCVar5, bVar4, bVar6, false)
+        else
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then
+                return
+            end
+            -- TODO(native): CCharString__AssignFromWide(&xStack_8,0x122d70c);
+            bVar6 = true
+            bVar4 = true
+            pCVar5 = quest:GetActiveQuestName()
+            quest:SetQuestAsFailed(pCVar5, bVar4, nil --[[missing]], pMessage)
+        end
+        quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", "Q_GuildTrainingWoodsDeparture")
+    end
+end
+
+function DoMission(quest)
+    local CVar1, CVar5, bVar3, pQuestName
+    local alive = true
+    quest:GiveHeroNewQuestObjective("first objective", 1)
+    bVar3 = quest:IsLevelLoaded("GuildWoods")
+    while not bVar3 do
+        alive = quest:NewScriptFrame()
+        alive = not quest:IsActiveThreadTerminating()
+        bVar3 = not alive
+        if bVar3 then
+            return
+        end
+        bVar3 = quest:IsLevelLoaded("GuildWoods")
+    end
+    alive = not quest:IsActiveThreadTerminating()
+    bVar3 = not alive
+    if not bVar3 then
         quest:CreateThread("WatchForLeaving")  -- native thread body CGlobal_WatchForHeroDeathScript::WatchForHeroDeath: lift it as function WatchForLeaving(quest)
-        if (unaff_ESI & 1) ~= 0 then
-            -- TODO(native): unaff_ESI = unaff_ESI & 0xfffffffe;
+        CVar5 = 0x0
+        if (0x0 & 1) ~= 0 then
+            CVar5 = (0x0 & 0xfffffffe)
         end
         quest:CreateThread("TeleportOutHero")  -- native thread body Quest_GuildWoods_Teleport_Exit_First: lift it as function TeleportOutHero(quest)
-        if (unaff_ESI & 2) ~= 0 then
+        if (CVar5 & 2) ~= 0 then
         end
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
-        bVar4 = not alive
-        if (not bVar4) and (not quest:GetStateBool("MissionFailed")) then
+        bVar3 = not alive
+        if (not bVar3) and (not quest:GetStateBool("MissionFailed")) then
             CVar1 = quest:GetStateBool("MissionOver")
             while not CVar1 do
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
-                bVar4 = not alive
-                if bVar4 then
+                bVar3 = not alive
+                if bVar3 then
                     return
                 end
                 CVar1 = quest:GetStateBool("MissionOver")
             end
             alive = not quest:IsActiveThreadTerminating()
-            bVar4 = not alive
-            if not bVar4 then
-                ppVar6 = quest:GetActiveQuestName()
-                quest:SetQuestAsCompleted(ppVar6, nil --[[missing]], nil --[[missing]], nil --[[missing]])
+            bVar3 = not alive
+            if not bVar3 then
+                bVar3 = true
+                pQuestName = quest:GetActiveQuestName()
+                quest:SetQuestAsCompleted(pQuestName, bVar3, true, false)
                 quest:SetStateBool("MissionSucceeded", true)
             end
         end
@@ -131,61 +137,62 @@ function DoMission(quest)
 end
 
 function WatchForLeaving(quest)
-    local bVar2
     local alive = true
-    local piVar3 = quest:GetHero()
-    local cVar1 = (piVar3 ~= nil and piVar3:IsAlive())
-    while ((cVar1 and (not quest:GetStateBool("MissionFailed"))) and (not quest:GetStateBool("MissionSucceeded"))) do
-        alive = quest:NewScriptFrame()
-        alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
-        if bVar2 then
-            return
-        end
-        piVar3 = quest:GetHero()
-        cVar1 = (piVar3 ~= nil and piVar3:IsAlive())
+    local pCVar2 = quest:GetHero()
+    local bVar1 = (pCVar2 ~= nil and pCVar2:IsAlive())
+    if bVar1 then
+        repeat
+            if (quest:GetStateBool("MissionFailed")) or (quest:GetStateBool("MissionSucceeded")) then break end
+            alive = quest:NewScriptFrame()
+            alive = not quest:IsActiveThreadTerminating()
+            bVar1 = not alive
+            if bVar1 then
+                return
+            end
+            pCVar2 = quest:GetHero()
+            bVar1 = (pCVar2 ~= nil and pCVar2:IsAlive())
+        until not (bVar1)
     end
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if (not bVar2) and (not quest:GetStateBool("MissionSucceeded")) then
+    bVar1 = not alive
+    if (not bVar1) and (not quest:GetStateBool("MissionSucceeded")) then
         quest:SetStateBool("MissionFailed", true)
     end
 end
 
 function TeleportOutHero(quest)
-    local fVar6, iVar1, ppVar4, r1, r2, r3, r4, uVar5
+    local bVar2, fret_0, iVar5, pCVar3, pCVar4
     local alive = true
     alive = not quest:IsActiveThreadTerminating()
-    local bVar3 = not alive
+    bVar2 = not alive
     repeat
-        if bVar3 then
+        if bVar2 then
             return
         end
-        r1 = quest:GetHero()
-        fVar6 = quest:GetHealth(r1)
-        if fVar6 < _DAT_0125a2a0 then
+        pCVar3 = quest:GetHero()
+        fret_0 = quest:GetHealth(pCVar3)
+        if fret_0 < 6.0 then
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then
+            bVar2 = not alive
+            if bVar2 then
                 return
             end
-            iVar1 = *piVar2
-            r2 = quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP")
-            ppVar4 = quest:GetHero()
-            quest:EntityTeleportToThing(ppVar4, r2)
-            -- TODO(native): unaff_ESI = (int *)0x0;
-            quest:Pause(nil --[[missing]])
-            r3 = quest:GetHero()
-            ppVar4 = quest:AddNewConversation(r3, nil --[[missing]], nil --[[missing]])
-            iVar1 = *piVar2
-            r4 = quest:GetHero()
-            uVar5 = quest:GetHero()
-            quest:AddLineToConversation(ppVar4, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", uVar5, r4, false)
-            quest:ChangeHeroHealthBy(0x447a0000, true, false)
+            pCVar3 = quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP")
+            pCVar4 = quest:GetHero()
+            quest:EntityTeleportToThing(pCVar4, pCVar3, false)
+            pCVar3 = nil
+            quest:Pause(2.0)
+            bVar2 = false
+            pCVar3 = quest:GetHero()
+            iVar5 = quest:AddNewConversation(pCVar3, bVar2, false)
+            pCVar3 = quest:GetHero()
+            pCVar4 = quest:GetHero()
+            quest:AddLineToConversation(iVar5, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", pCVar4, pCVar3, false)
+            quest:ChangeHeroHealthBy(1000.0, true, false)
         end
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
+        bVar2 = not alive
     until false
 end
 

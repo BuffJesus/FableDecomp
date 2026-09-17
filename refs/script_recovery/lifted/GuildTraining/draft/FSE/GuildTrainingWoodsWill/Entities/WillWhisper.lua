@@ -11,72 +11,85 @@ do
 end
 
 function Main(quest, me)
-    local bVar2, bVar3, bVar4, cVar5, pCVar1, pCVar7, pCVar8
+    local resources = quest:RetailResources()
+    local bVar2, bVar3, bVar4, cVar1, p0, xStack_20
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
-        -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_20);
-        if bVar4 then
+    bVar2 = not alive
+    if not bVar2 then
+        xStack_20 = resources:NewResource()
+        bVar2 = false
+        if bVar2 ~= 0 then
         end
-        cVar5 = me:AcquireControl(4)
-        while not cVar5 do
+        bVar2 = resources:TryAcquire(xStack_20, me, 4)
+        while not bVar2 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d68acf end
-            cVar5 = me:AcquireControl(4)
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d68acf end
+            bVar2 = resources:TryAcquire(xStack_20, me, 4)
         end
-        bVar2 = false
         bVar4 = false
+        bVar2 = false
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            quest:EntitySetAsKillable(nil --[[missing]], bVar4)
+        bVar3 = not alive
+        if not bVar3 then
+            quest:EntitySetAsKillable(me, false, false)
             quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
             quest:EntitySetInFaction(me, "FACTION_HERO")
             quest:EntitySetAllowBossPhaseChanges(me, false)
-            cVar5 = quest:GetStateBool("BanditsAlive")
-            while cVar5 do
+            cVar1 = quest:GetStateBool("BanditsAlive")
+            while cVar1 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d68acf end
-                cVar5 = me:MsgIsHitByHero()
-                if not cVar5 then
-                    cVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                    if cVar5 then
-                        bVar2 = true
-                        bVar4 = true
-                        cVar5 = me:MsgIsHitByHeroSpecialAbility(nil --[[missing]])
-                        if not cVar5 then return end  -- TODO(native): goto LAB_00d689df
-                    end
-                    bVar2 = true
-                    bVar3 = false
-                else
+                bVar3 = not alive
+                if bVar3 then goto LAB_00d68acf end
+                bVar3 = me:MsgIsHitByHero()
+                if bVar3 then
                     -- LAB_00d689df: (native jump target)
                     bVar3 = true
+                else
+                    bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                    if bVar4 then
+                        bVar4 = true
+                        bVar2 = true
+                        bVar3 = me:MsgIsHitByHeroSpecialAbility(me)
+                        if not bVar3 then
+                            bVar3 = true
+                            goto FLOW_after_lab_00d689df
+                        end
+                    end
+                    bVar4 = true
+                    bVar3 = false
+                end
+                ::FLOW_after_lab_00d689df::
+                if bVar2 then
+                    bVar2 = false
                 end
                 if bVar4 then
                     bVar4 = false
                 end
-                if bVar2 then
-                    bVar2 = false
-                end
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d68acf end
-                    quest:EntitySetInFaction(nil --[[missing]], "FACTION_HERO")
-                    me:SetFriendsWithEverythingFlag(nil --[[missing]])
+                    bVar3 = not alive
+                    if bVar3 then goto LAB_00d68acf end
+                    quest:EntitySetInFaction(me, "FACTION_HERO")
+                    me:SetFriendsWithEverythingFlag(me)
                 end
                 if quest:GetStateBool("WhisperAnimate") == '\x01' then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d68acf end
+                    bVar3 = not alive
+                    if bVar3 then goto LAB_00d68acf end
                     quest:SetStateBool("WhisperAnimate", false)
-                    me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, DAT_01375748, false)
+                    me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, DAT_01375748, false, false)
                 end
-                cVar5 = quest:GetStateBool("BanditsAlive")
+                cVar1 = quest:GetStateBool("BanditsAlive")
             end
             alive = not quest:IsActiveThreadTerminating()
         end
         ::LAB_00d68acf::
+        resources:ReleaseResource(xStack_20)
     end
 end
 

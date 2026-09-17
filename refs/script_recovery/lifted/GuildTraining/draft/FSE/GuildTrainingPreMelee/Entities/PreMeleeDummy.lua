@@ -11,70 +11,79 @@ do
 end
 
 function Main(quest, me)
-    local cVar3, pCVar7
+    local bVar2, iVar1, pThing
     local alive = true
-    quest:EntitySetAsKillable(me, false)
+    quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetTargetable(me, false)
-    local iVar2 = quest:GetStateInt("PreMeleeMode")
-    while iVar2 ~= 1 do
+    iVar1 = quest:GetStateInt("PreMeleeMode")
+    while iVar1 ~= 1 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar2 = not alive
+        if bVar2 then
             return
         end
-        iVar2 = quest:GetStateInt("PreMeleeMode")
+        iVar1 = quest:GetStateInt("PreMeleeMode")
     end
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
+    bVar2 = not alive
+    if not bVar2 then
         quest:EntitySetTargetable(me, true)
-        iVar2 = quest:GetStateInt("PreMeleeMode")
-        while iVar2 == 1 do
+        iVar1 = quest:GetStateInt("PreMeleeMode")
+        while iVar1 == 1 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then
+            bVar2 = not alive
+            if bVar2 then
                 return
             end
-            cVar3 = me:MsgIsHitByHero()
-            if cVar3 then
+            bVar2 = me:MsgIsHitByHero()
+            if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar2 = not alive
+                if bVar2 then
                     return
                 end
                 quest:EntityPlayObjectAnimation(me, "WOBBLE", false)
                 quest:SetStateInt("DummyHits", quest:GetStateInt("DummyHits") + 1)
             end
-            iVar2 = quest:GetStateInt("PreMeleeMode")
+            iVar1 = quest:GetStateInt("PreMeleeMode")
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            iVar2 = quest:GetStateInt("PreMeleeMode")
-            while iVar2 == 2 do
+        bVar2 = not alive
+        if not bVar2 then
+            iVar1 = quest:GetStateInt("PreMeleeMode")
+            while iVar1 == 2 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar2 = not alive
+                if bVar2 then
                     return
                 end
-                cVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_HERO_STICK")
-                if not cVar3 then
-                    cVar3 = me:MsgIsHitByHero()
-                    if cVar3 then
-                        alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
-                            return
-                        end
-                        quest:EntityPlayObjectAnimation(me, "WOBBLE", false)
-                        -- TODO(native): goto LAB_00d521f0
-                    end
-                else
+                bVar2 = me:MsgIsHitByHeroWithWeapon("OBJECT_HERO_STICK")
+                if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then
+                    bVar2 = not alive
+                    if bVar2 then
                         return
                     end
                     quest:SetStateInt("DummyHits", quest:GetStateInt("DummyHits") + 1)
                     quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
                     -- LAB_00d521f0: (native jump target)
+                else
+                    bVar2 = me:MsgIsHitByHero()
+                    if bVar2 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar2 = not alive
+                        if bVar2 then
+                            return
+                        end
+                        quest:EntityPlayObjectAnimation(me, "WOBBLE", false)
+                        goto FLOW_after_lab_00d521f0
+                    end
                 end
-                iVar2 = quest:GetStateInt("PreMeleeMode")
+                ::FLOW_after_lab_00d521f0::
+                iVar1 = quest:GetStateInt("PreMeleeMode")
             end
             alive = not quest:IsActiveThreadTerminating()
         end

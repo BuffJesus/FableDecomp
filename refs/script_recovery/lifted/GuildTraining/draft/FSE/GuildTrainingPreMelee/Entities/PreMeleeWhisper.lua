@@ -11,110 +11,128 @@ do
 end
 
 function Main(quest, me)
-    local CVar23, bVar3, cVar4, fVar15, fVar2, fVar26, iVar9, native_arg_sequence_1, pCVar1, pCVar16, pCVar17, pCVar18, pCVar19, pCVar24, pCVar25, pCVar28, pCVar29, pCVar5, pCVar6, paVar12, pcVar22, piVar8, ppVar20, puVar14, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r2, r3, r4, r5, r6, r7, r8, r9, uVar10, uVar11, uVar21, uVar27
+    local resources = quest:RetailResources()
+    local bVar3, cVar4, dist, fVar2, f_stk_28, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, r3, r4, timerId, uVar9, xStack_1c, xStack_a0, xStack_c
     local alive = true
-    -- TODO(native): fStack_b4 = 1.4013e-45;
-    quest:EntitySetAsKillable(me, false)
-    me:SetFriendsWithEverythingFlag(nil --[[missing]])
+    quest:EntitySetAsKillable(me, false, true)
+    me:SetFriendsWithEverythingFlag(1)
     cVar4 = quest:GetStateBool("WhisperCutsceneFinished")
     while not cVar4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar3 = not alive
+        if bVar3 then
             return
         end
         cVar4 = quest:GetStateBool("WhisperCutsceneFinished")
     end
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
-        -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&stack0xffffff50);
-        if bVar3 then
+    bVar3 = not alive
+    if not bVar3 then
+        xStack_a0 = resources:NewResource()
+        bVar3 = false
+        if bVar3 ~= 0 then
         end
-        cVar4 = me:AcquireControl(4)
-        while not cVar4 do
+        bVar3 = resources:TryAcquire(xStack_a0, me, 4)
+        while not bVar3 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d52582
-            cVar4 = me:AcquireControl(4)
+            bVar3 = not alive
+            if bVar3 then
+                resources:ReleaseResource(xStack_a0)
+                return
+            end
+            bVar3 = resources:TryAcquire(xStack_a0, me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar3 = not alive
+        if bVar3 then
             -- LAB_00d52582: (native jump target)
+            resources:ReleaseResource(xStack_a0)
             return
         end
-        pCVar5 = quest:RegisterTimer()
-        pCVar28 = 0x0
-        quest:SetTimer(pCVar5, pCVar28)
-        pCVar24 = 0x1
-        pCVar6 = quest:GetHero()
+        timerId = quest:RegisterTimer()
+        quest:SetTimer(timerId, 0)
+        iVar11 = 1
+        iVar10 = 0x3f800000
+        pCVar5 = quest:GetHero()
+        me:FollowThing(pCVar5, iVar10, (iVar11 ~= 0))
         cVar4 = quest:GetStateBool("WhisperStopFollowing")
         while not cVar4 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d52d83
+            bVar3 = not alive
+            if bVar3 then
+                quest:DeregisterTimer(timerId)
+                resources:ReleaseResource(xStack_a0)
+                return
+            end
             cVar4 = me:IsTalkedToByHero()
             if cVar4 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d52e1b end
-                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_40);
-                pCVar24 = ""
+                bVar3 = not alive
+                if bVar3 then goto LAB_00d52e1b end
+                xStack_1c = resources:StartMovie("")
                 quest:StartMovieSequence()
-                pCVar19 = 0x1
-                quest:PauseAllNonScriptedEntities((pCVar19 ~= 0))
-                -- TODO(native): pCVar7 = (CCharString *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xffffff30);
-                fVar15 = quest:GetHealth(pCVar6)
-                fVar2 = _DAT_0122dedc
-                CVar23 = SUB41(pCVar25,0)
-                uVar21 = SUB41(pCVar24,0)
-                if fVar2 < fVar15 then
-                    bVar3 = false
-                    pCVar18 = 0x1
-                    pCVar17 = 0x0
-                    pCVar16 = 0x0
-                    pcVar22 = "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CHAT"
-                    pCVar6 = quest:GetHero()
-                    r1 = me:Speak(pCVar6, pcVar22, pCVar16, (pCVar17 ~= 0), (pCVar18 ~= 0), bVar3)
-                    bVar3 = me:IsPerformingScriptTask()
-                    CVar23 = SUB41(pCVar25,0)
-                    uVar21 = SUB41(pCVar24,0)
-                    if bVar3 then
-                        repeat
-                            alive = quest:NewScriptFrame(me)
-                            alive = not quest:IsActiveThreadTerminating()
-                            if not alive then
-                                quest:PauseAllNonScriptedEntities(false)
-                                -- TODO(native): goto LAB_00d52dc0
-                            end
-                            bVar3 = me:IsPerformingScriptTask()
-                            CVar23 = SUB41(pCVar25,0)
-                            uVar21 = SUB41(pCVar24,0)
-                        until not (bVar3)
+                quest:PauseAllNonScriptedEntities(true)
+                me:ClearCommands()
+                xStack_c = resources:ScriptThing(xStack_a0)
+                pCVar5 = xStack_c
+                r1 = quest:GetHealth(pCVar5)
+                fVar2 = 0.0
+                if fVar2 < fret_0 then
+                    p5 = 0
+                    p4 = 1
+                    iVar11 = 0
+                    iVar10 = 0
+                    p1 = "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CHAT"
+                    pCVar5 = quest:GetHero()
+                    r2 = me:Speak(pCVar5, p1, iVar10, (iVar11 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                    iVar10 = me:IsPerformingScriptTask()
+                    cVar4 = iVar10
+                    while cVar4 do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar3 = not alive
+                        if bVar3 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_1c)
+                            resources:ReleaseResource(xStack_a0)
+                            return
+                        end
+                        iVar10 = me:IsPerformingScriptTask()
+                        cVar4 = iVar10
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then
+                    bVar3 = not alive
+                    if bVar3 then
                         quest:PauseAllNonScriptedEntities(false)
                         -- LAB_00d52dc0: (native jump target)
+                        resources:DestroyMovie(xStack_1c)
+                        resources:ReleaseResource(xStack_a0)
                         return
                     end
                 end
-                pCVar24 = 0x1
-                pCVar6 = quest:GetHero()
-                me:FollowThing(pCVar6, pCVar7, (pCVar19 ~= 0))
+                iVar11 = 1
+                iVar10 = 0x3f800000
+                pCVar5 = quest:GetHero()
+                me:FollowThing(pCVar5, iVar10, (iVar11 ~= 0))
                 quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(xStack_1c)
             end
-            r2 = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
-            piVar8 = quest:GetHero()
-            if piStack_60 == nil then
+            r3 = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
+            pCVar5 = quest:GetHero()
+            if not (r3 ~= nil and not r3:IsNull()) then
             else
-                puVar14 = (**(*piStack_60 + 0x18))()
+                puVar8 = r3:GetPos()
             end
-            iVar9 = piVar8:GetPos()
-            -- TODO(native): fStack_b4 = (float)puVar14[2] - *(float *)(iVar9 + 8);
-            bVar3 = quest:IsDistanceBetweenThingsUnder(me, r2, 7.0)
+            pCVar6 = pCVar5:GetPos()
+            -- TODO(native): xStack_a0 = (float)puVar8[2] - *(float *)(pCVar6 + 0x8);
+            bVar3 = quest:IsDistanceBetweenThingsUnder(me, r3, 7.0)
             if bVar3 then
-                fVar26 = 7.0
-                pCVar6 = quest:GetHero()
-                bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar6, fVar26)
+                dist = 7.0
+                pCVar5 = quest:GetHero()
+                bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar5, dist)
                 native_arg_sequence_1 = false
                 if not bVar3 then
                     native_arg_sequence_1 = true
@@ -122,15 +140,15 @@ function Main(quest, me)
                     native_arg_sequence_1 = false
                 end
                 if not native_arg_sequence_1 then
-                    iVar9 = quest:GetTimer(pCVar5)
-                    if 5 < iVar9 then
+                    iVar10 = quest:GetTimer(timerId)
+                    if 5 < iVar10 then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
                     end
                 end
                 if not native_arg_sequence_1 then
-                    if ABS(fStack_b4) < _DAT_0122ded8 == (ABS(fStack_b4) == _DAT_0122ded8) then
+                    if ABS(xStack_a0) < _DAT_0122ded8 == (ABS(xStack_a0) == _DAT_0122ded8) then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
@@ -138,96 +156,115 @@ function Main(quest, me)
                 end
                 if native_arg_sequence_1 then goto LAB_00d52d56 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar3 = not alive
+                if bVar3 then
                     -- LAB_00d52df2: (native jump target)
+                    resources:ReleaseResource(xStack_a0)
                     return
                 end
-                pCVar24 = r2:GetDataString()
-                -- TODO(native): fStack_b4 = (float)GFCharStringToInt(pCVar24);
-                r3 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
-                alive = not quest:IsActiveThreadTerminating()
-                if not alive then
-                    -- TODO(native): goto LAB_00d52df2
+                pvVar7 = r3:GetDataString()
+                -- TODO(native): xStack_a0 = (float)GFCharStringToInt(pvVar7);
+                uVar9 = 0
+                i_stk_8c = 0
+                r4 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
+                iVar10 = i_stk_8c - 0 >> 0x1f
+                if (i_stk_8c - 0) / 0xc + iVar10 ~= iVar10 then
+                    iVar10 = 0
+                    repeat
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar3 = not alive
+                        if bVar3 then
+                            resources:ReleaseResource(xStack_a0)
+                            return
+                        end
+                        pvVar7 = (**(*(iVar10 + 0) + 0xc))(xStack_20)
+                        f_stk_28 = GFCharStringToInt(pvVar7)
+                        if f_stk_28 == xStack_a0 then
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar3 = not alive
+                            if bVar3 then
+                                resources:ReleaseResource(xStack_a0)
+                                return
+                            end
+                            quest:RemoveThing(pCVar5, (0 + iVar10), false)
+                        end
+                        uVar9 = uVar9 + 1
+                        iVar10 = iVar10 + 0xc
+                    until not (uVar9 < ((i_stk_8c - 0) / 0xc))
                 end
-                uVar27 = 0
-                uVar10 = quest:AddNewConversation(me, false, (uVar27 ~= 0))
-                uVar11 = quest:GetHero()
-                quest:AddPersonToConversation(uVar10, uVar11)
-                quest:SetTimer(pCVar5, uVar27)
-                -- TODO(native): switch(fStack_b4) {
+                alive = not quest:IsActiveThreadTerminating()
+                bVar3 = not alive
+                if bVar3 then
+                    -- LAB_00d52de9: (native jump target)
+                    resources:ReleaseResource(xStack_a0)
+                    return
+                end
+                iVar11 = quest:AddNewConversation(me, false, false)
+                pCVar5 = quest:GetHero()
+                quest:AddPersonToConversation(iVar11, pCVar5)
+                quest:SetTimer(timerId, 10)
+                -- TODO(native): switch(xStack_a0) {
                 -- TODO(native): case 2.8026e-45:
-                r4 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_LIBRARY", me, r4, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_98;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_LIBRARY", me, pCVar5, false)
                 break
                 -- TODO(native): default:
                 -- TODO(native): goto switchD_00d529d7_caseD_3;
                 -- TODO(native): case 5.60519e-45:
-                r5 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SHOP", me, r5, false)
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SHOP", me, pCVar5, false)
                 break
                 -- TODO(native): case 7.00649e-45:
-                r6 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CLOISTERS", me, r6, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_90;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CLOISTERS", me, pCVar5, false)
                 break
                 -- TODO(native): case 8.40779e-45:
-                r7 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE1", me, r7, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_7c;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE1", me, pCVar5, false)
                 break
                 -- TODO(native): case 9.80909e-45:
-                r8 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE2", me, r8, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_88;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE2", me, pCVar5, false)
                 break
                 -- TODO(native): case 1.12104e-44:
-                r9 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE3", me, r9, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_78;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE3", me, pCVar5, false)
                 break
                 -- TODO(native): case 1.26117e-44:
-                r10 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE4", me, r10, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_80;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE4", me, pCVar5, false)
                 break
                 -- TODO(native): case 1.4013e-44:
-                r11 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAZE", me, r11, false)
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAZE", me, pCVar5, false)
                 break
                 -- TODO(native): case 1.54143e-44:
-                r12 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WILL", me, r12, false)
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WILL", me, pCVar5, false)
                 break
                 -- TODO(native): case 1.82169e-44:
-                r13 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WOODS", me, r13, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_74;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WOODS", me, pCVar5, false)
                 break
                 -- TODO(native): case 1.96182e-44:
-                r14 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SKILL", me, r14, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_a0;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SKILL", me, pCVar5, false)
                 break
                 -- TODO(native): case 2.10195e-44:
-                r15 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SERVANTS", me, r15, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_9c;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SERVANTS", me, pCVar5, false)
                 break
                 -- TODO(native): case 2.24208e-44:
-                r16 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAIN_DORM", me, r16, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_94;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAIN_DORM", me, pCVar5, false)
                 break
                 -- TODO(native): case 2.66247e-44:
-                r17 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DOOR", me, r17, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_8c;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DOOR", me, pCVar5, false)
                 break
                 -- TODO(native): case 2.8026e-44:
-                r18 = quest:GetHero()
-                quest:AddLineToConversation(uVar10, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DINING_ROOM", me, r18, false)
-                -- TODO(native): paVar12 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_84;
+                pCVar5 = quest:GetHero()
+                quest:AddLineToConversation(iVar11, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DINING_ROOM", me, pCVar5, false)
             end
             -- TODO(native): switchD_00d529d7_caseD_3:
         end
@@ -235,13 +272,16 @@ function Main(quest, me)
         cVar4 = quest:GetStateBool("WhisperStopFollowing")
     end
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then
+    bVar3 = not alive
+    if bVar3 then
         -- LAB_00d52d83: (native jump target)
-        quest:DeregisterTimer(pCVar5)
+        quest:DeregisterTimer(timerId)
+        resources:ReleaseResource(xStack_a0)
         return
     end
     ::LAB_00d52e1b::
-    quest:DeregisterTimer(pCVar5)
+    quest:DeregisterTimer(timerId)
+    resources:ReleaseResource(xStack_a0)
     end
 end
 

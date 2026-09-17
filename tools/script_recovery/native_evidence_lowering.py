@@ -329,6 +329,10 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\b(\w+)\._(\d+)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     text = bind_st0_results(text)
+    # counted pointers Ghidra typed `undefined **`: the same refcount idiom as the `int *` spelling
+    text = re.sub(r'\(undefined \*\)\(\(int\)\*(\w+) \+ -1\)', r'*\1 + -1', text)
+    text = re.sub(r'\*(\w+) == \(undefined \*\)0x0', r'*\1 == 0', text)
+    text = re.sub(r'\(undefined \*\*\)0x0', '(int *)0x0', text)
     text = re.sub(r'return extraout_\w+;', 'return;', text)   # a void function whose EAX Ghidra guessed as a result
     # x87 compare idiom: `(a < b) != (a == b)` is `a <= b` (Ghidra's rendering of fcomp/fnstsw/test 0x41)
     text = re.sub(r'(\(?[\w.]+\)?) < ((?:\(float10\))?[\w.]+) != \(\1 == \2\)', r'\1 <= \2', text)
@@ -452,6 +456,7 @@ MOVIE_DTOR = {0x6E7B80}               # MovieResource_Destroy_API
 COUNTED_RELEASE = {0x6E7AB0, 0xCE1000}   # CCountedPointer release: decref [this+4], zero [this], [this+4] (disasm 2026-09-16)
 BASE_OBJECT_DTOR = {0x99A430}         # CBaseIntelligentPointer::~ (bsim: CPhysicsMeshInfo::~CPhysicsMeshInfo)
 RESOURCE_ACQUIRED = {0xCD23B9}        # bool __thiscall (this): [this+8] != 0, the resource's counted handle (disasm 2026-09-16)
+RESOURCE_SCRIPT_THING = {0x7E7490}    # CScriptThing __thiscall GetScriptThing(this) via hidden pointer (empty when unacquired)
 
 
 def _thing_source(arg):
@@ -463,7 +468,7 @@ def _thing_source(arg):
 
 def _strip_addr(arg):
     arg = arg.strip()
-    arg = re.sub(r'^\([\w :*]+\*\)', '', arg).strip()
+    arg = re.sub(r'^\((?:[\w :*]+\*|int|uint|undefined4)\)', '', arg).strip()
     return arg[1:] if arg.startswith('&') else arg
 
 
@@ -472,6 +477,20 @@ def _strip_addr(arg):
 RE_INLINE_CTOR = re.compile(
     r'^(?P<ind>[ \t]*)(?:\*\(undefined \*\*\*\))?(?P<obj>&?\w+)(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|01238c8c);[ \t]*\r?\n'
     r'(?:[ \t]*(?:\w+ = 0;|\w+ = \(\w+ \*\)0x0;|\w+\[\d\] = (?:\(\w+ \*\))?0x0;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
+
+
+RE_INLINE_DTOR = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<obj>\w+)(?:\[0\]|\._0_4_)? = 0;[ \t]*\r?\n'
+    r'(?:[ \t]*\w+(?:\[\d\]|\._\d+_4_)? = (?:\(int \*\))?0(?:x0)?;[ \t]*\r?\n){0,2}'
+    r'[ \t]*(?P=obj)(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|0126008c);[ \t]*\r?\n'
+    r'[ \t]*[\w:~]+\s*\(\(\w+ \*\)(?P=obj)\);[ \t]*\r?\n', re.M)
+
+
+def fold_inline_destructors(text):
+    """The inlined resource / movie destructor after the counted release: the handle field is zeroed,
+    the vtable reset to the base and the base destructor called. That is `ReleaseResource` (resource
+    vtable 0127094c) or `DestroyMovie` (movie vtables) on the object."""
+    return RE_INLINE_DTOR.sub(lambda m: f'{m.group("ind")}{"RESOURCE_ReleaseResource" if m.group("vt") == "0127094c" else "RESOURCE_DestroyMovie"}({m.group("obj")});\n', text)
 
 
 def fold_inline_constructors(text):
@@ -551,6 +570,16 @@ def fold_resource_objects(text, call_labels):
                           r'[ \t]*\w+(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_0126008c;[ \t]*\r?\n'
                           r'[ \t]*[\w:~]+\s*\(\(\w+ \*\)(\w+)\);[ \t]*\r?\n',
                           lambda m: f'{m.group(1)}RESOURCE_DestroyMovie({m.group(3)});\n', text, flags=re.M)
+        elif target in RESOURCE_SCRIPT_THING:
+            # `X = (CScriptThing *)Res::GetScriptThing((Res *)&RES,(int)&HIDDEN);` -> the hidden slot is the thing
+            def script_thing(m):
+                res, hidden = _strip_addr(m.group(3)), _strip_addr(m.group(4))
+                out = f'{m.group(1)}{hidden} = RESOURCE_ScriptThing({res});'
+                if m.group(2):
+                    out += f'\n{m.group(1)}{m.group(2)} = {hidden};'
+                return out
+            text = re.sub(r'^([ \t]*)(?:(\w+) = (?:\(CScriptThing \*\)\s*)?)?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;,]+?),\s*([^;]+?)\);',
+                          script_thing, text, flags=re.M)
         elif target in RESOURCE_ACQUIRED:
             text = re.sub(re.escape(label) + r'\s*\(([^;,]+?)\)', lambda m: f'RESOURCE_IsAcquired({_strip_addr(m.group(1))})', text)
     return text
@@ -771,6 +800,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
     text = drop_trivial_base_calls(text, getattr(spec, 'call_labels', {}), getattr(spec, 'byte_at', None))
     text = fold_inline_constructors(text)
+    text = fold_inline_destructors(text)
     text = canonicalise_stack_objects(text)
     text = fold_offset_string_temporaries(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))

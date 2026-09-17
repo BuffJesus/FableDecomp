@@ -11,30 +11,41 @@ do
 end
 
 function Main(quest, me)
-    local cVar5, pCVar1
+    local resources = quest:RetailResources()
+    local bVar3, p0, thing, uVar1, xStack_20
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
-        -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_20);
-        if bVar4 then
+    bVar3 = not alive
+    if not bVar3 then
+        xStack_20 = resources:NewResource()
+        bVar3 = false
+        if bVar3 ~= 0 then
         end
-        cVar5 = me:AcquireControl(4)
-        while not cVar5 do
+        bVar3 = resources:TryAcquire(xStack_20, me, 4)
+        while not bVar3 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d409c5 end
-            cVar5 = me:AcquireControl(4)
+            bVar3 = not alive
+            if bVar3 then goto LAB_00d409c5 end
+            bVar3 = resources:TryAcquire(xStack_20, me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            quest:SetIsPushableByHero(me, false)
+        bVar3 = not alive
+        if not bVar3 then
+            uVar1 = __native_entity_state:GetStateInt("self_0xc")
+            -- TODO(native): thing._4_4_ = uVar1;
+            thing = nil
+            -- TODO(native): thing._8_4_ = piVar2;
+            quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-            until not (alive)
+                bVar3 = not alive
+            until not (not bVar3)
         end
         ::LAB_00d409c5::
+        resources:ReleaseResource(xStack_20)
     end
 end
 

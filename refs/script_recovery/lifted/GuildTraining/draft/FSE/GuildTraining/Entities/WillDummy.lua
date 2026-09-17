@@ -11,57 +11,60 @@ do
 end
 
 function Main(quest, me)
-    local cVar2, fVar11, iVar3, pCStack_14c, pCVar1, pCVar12, pCVar13, piVar4, ppVar14, ppVar5, r1, r2, r3, r4, uVar10, uVar6, uVar9
+    local angle, bVar3, bVar4, bVar5, cVar2, fVar11, iVar6, iVar8, pCVar7, pCVar9, pThing, piVar1
     local alive = true
+    bVar3 = false
     fVar11 = me:GetAngleXY()
+    angle = fVar11
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
+    bVar4 = not alive
+    if not bVar4 then
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            quest:SetTimer(0, nil --[[missing]])
+        bVar4 = not alive
+        if not bVar4 then
+            quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 0xf)
             cVar2 = quest:GetMasterGameState("WillTrainingStarted")
             while cVar2 ~= '\x01' do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar4 = not alive
+                if bVar4 then
                     return
                 end
                 cVar2 = quest:GetMasterGameState("WillTrainingStarted")
             end
             alive = not quest:IsActiveThreadTerminating()
-            if alive then
+            bVar4 = not alive
+            if not bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
-                uVar10 = 0
-                cVar2 = extraout_AL_03
+                bVar4 = not alive
                 -- TODO(native): joined_r0x00d434fc:
-                if cVar2 == 0 then
+                if not bVar4 then
                     repeat
-                        uVar9 = uVar10 | 1
-                        ppVar14 = 0xb
-                        cVar2 = me:MsgIsHitByHeroSpecialAbility(nil --[[missing]])
-                        if not cVar2 then
-                            uVar9 = uVar10 | 3
-                            cVar2 = me:MsgIsHitByHero()
-                            -- TODO(native): uStack_ec = (undefined4 *)CONCAT13(1,(undefined3)uStack_ec);
-                            uVar10 = uVar9
-                            if cVar2 then return end  -- TODO(native): goto LAB_00d43568
-                        else
+                        bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+                        if bVar4 then
                             -- LAB_00d43568: (native jump target)
-                            -- TODO(native): uStack_ec = (undefined4 *)((uint)uStack_ec & 0xffffff);
-                            uVar10 = uVar9
+                            bVar4 = false
+                        else
+                            bVar3 = true
+                            bVar5 = me:MsgIsHitByHero()
+                            bVar4 = true
+                            if bVar5 then
+                                bVar4 = false
+                                goto FLOW_after_lab_00d43568
+                            end
                         end
-                        if (uVar10 & 2) ~= 0 then
-                            uVar10 = uVar10 & 0xfffffffd
+                        ::FLOW_after_lab_00d43568::
+                        if bVar3 then
+                            bVar3 = false
                         end
-                        if (uVar10 & 1) ~= 0 then
-                            uVar10 = uVar10 & 0xfffffffe
-                        end
-                        if uStack_ec._3_1_ == 0 then goto LAB_00d435c1 end
+                        if not bVar4 then goto LAB_00d435c1 end
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
+                        bVar4 = not alive
+                        if bVar4 then
                             return
                         end
                     until false
@@ -72,140 +75,146 @@ function Main(quest, me)
     do return end
     ::LAB_00d435c1::
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then
+    bVar4 = not alive
+    if bVar4 then
         return
     end
-    pCVar13 = "SCRIPT_NAME_HERO"
-    ppVar14 = 0xb
-    cVar2 = me:MsgIsHitByHeroSpecialAbility(nil --[[missing]])
-    if not cVar2 then
-        cVar2 = me:MsgIsHitByHero()
-        if cVar2 then
+    bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+    if bVar4 then
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        if bVar4 then
+            return
+        end
+        quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
+        -- TODO(native): xStack_94 = angle + (float)0.0;
+        quest:EntitySetFacingAngle(me, xStack_94, true)
+        alive = quest:NewScriptFrame(me)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        if bVar4 then
+            return
+        end
+        alive = quest:NewScriptFrame(me)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        if bVar4 then
+            return
+        end
+        quest:EntitySetFacingAngle(me, angle + 0.0, true)
+        piVar1 = (__native_entity_state:GetStateInt("self_0x18") + 0xac)
+        -- TODO(native): *piVar1 = *piVar1 + 1;
+        iVar6 = quest:GetTimer(quest:GetStateInt("WillHelpTimer"))
+        if iVar6 < 1 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then
+            bVar4 = not alive
+            if bVar4 then
                 return
             end
-            quest:EntityPlayObjectAnimation(nil --[[missing]], "GET_HIT")
-            iVar3 = quest:GetTimer(ppVar14)
-            if iVar3 < 1 then
-                alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+            pCVar7 = quest:GetThingWithScriptName("WillApprentice")
+            bVar4 = (pCVar7 ~= nil and pCVar7:IsAlive())
+            alive = not quest:IsActiveThreadTerminating()
+            bVar5 = not alive
+            if bVar4 then
+                if bVar5 then
                     return
                 end
-                piVar4 = quest:GetThingWithScriptName("WillApprentice")
-                cVar2 = (piVar4 ~= nil and piVar4:IsAlive())
+                bVar5 = false
+                bVar4 = false
+                pCVar7 = quest:GetThingWithScriptName("WillApprentice")
+                iVar8 = quest:AddNewConversation(pCVar7, bVar4, bVar5)
+                pCVar7 = quest:GetHero()
+                quest:AddPersonToConversation(iVar8, pCVar7)
+                pCVar7 = quest:GetHero()
+                pCVar9 = quest:GetThingWithScriptName("WillApprentice")
+                quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_WILL_GOOD_HIT", pCVar9, pCVar7, false)
+            else
+                if bVar5 then
+                    return
+                end
+                bVar5 = false
+                bVar4 = false
+                pCVar7 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                iVar8 = quest:AddNewConversation(pCVar7, bVar4, bVar5)
+                pCVar7 = quest:GetHero()
+                quest:AddPersonToConversation(iVar8, pCVar7)
+                pCVar7 = quest:GetHero()
+                pCVar9 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_WILL_GOOD_HIT", pCVar9, pCVar7, false)
+            end
+            quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 7)
+        end
+        quest:EntitySetTargetable(me, false)
+        quest:Pause(quest:ReadGlobalGameData(0xf18))
+        quest:EntitySetFacingAngle(me, xStack_94, true)
+        alive = quest:NewScriptFrame(me)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        if bVar4 then
+            return
+        end
+        alive = quest:NewScriptFrame(me)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        if bVar4 then
+            return
+        end
+        quest:EntitySetFacingAngle(me, angle, true)
+        quest:EntitySetTargetable(me, true)
+    else
+        bVar4 = me:MsgIsHitByHero()
+        if bVar4 then
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then
+                return
+            end
+            quest:EntityPlayObjectAnimation(me, "GET_HIT", false)
+            iVar6 = quest:GetTimer(quest:GetStateInt("WillHelpTimer"))
+            if iVar6 < 1 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not cVar2 then
-                    if not alive then
+                bVar4 = not alive
+                if bVar4 then
+                    return
+                end
+                pCVar7 = quest:GetThingWithScriptName("WillApprentice")
+                bVar4 = (pCVar7 ~= nil and pCVar7:IsAlive())
+                alive = not quest:IsActiveThreadTerminating()
+                bVar5 = not alive
+                if bVar4 then
+                    if bVar5 then
                         return
                     end
-                    -- TODO(native): pCStack_170 = aCStack_98;
-                    ppVar5 = quest:GetThingWithScriptName("TheRealGuildmaster")
-                    ppVar14 = quest:AddNewConversation(ppVar5, nil --[[missing]], nil --[[missing]])
-                    uVar6 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar14, uVar6)
-                    iVar3 = *piVar4
-                    uVar6 = quest:GetHero()
-                    uVar6 = quest:GetThingWithScriptName("TEXT_QST_028_GUILDMASTER_WILL_TROUBLE")
-                    quest:AddLineToConversation(ppVar14, "TheRealGuildmaster", uVar6, nil --[[missing]], false)
+                    bVar5 = false
+                    bVar4 = false
+                    pCVar7 = quest:GetThingWithScriptName("WillApprentice")
+                    iVar8 = quest:AddNewConversation(pCVar7, bVar4, bVar5)
+                    pCVar7 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar8, pCVar7)
+                    pCVar7 = quest:GetHero()
+                    pCVar9 = quest:GetThingWithScriptName("WillApprentice")
+                    quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_WILL_TROUBLE", pCVar9, pCVar7, false)
                 else
-                    if not alive then
+                    if bVar5 then
                         return
                     end
-                    -- TODO(native): pCStack_170 = aCStack_c8;
-                    ppVar5 = quest:GetThingWithScriptName("WillApprentice")
-                    ppVar14 = quest:AddNewConversation(ppVar5, nil --[[missing]], nil --[[missing]])
-                    uVar6 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar14, uVar6)
-                    iVar3 = *piVar4
-                    uVar6 = quest:GetHero()
-                    uVar6 = quest:GetThingWithScriptName("TEXT_QST_028_APPRENTICE_WILL_TROUBLE")
-                    quest:AddLineToConversation(ppVar14, "WillApprentice", uVar6, nil --[[missing]], false)
+                    bVar5 = false
+                    bVar4 = false
+                    pCVar7 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                    iVar8 = quest:AddNewConversation(pCVar7, bVar4, bVar5)
+                    pCVar7 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar8, pCVar7)
+                    pCVar7 = quest:GetHero()
+                    pCVar9 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                    quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_WILL_TROUBLE", pCVar9, pCVar7, false)
                 end
                 quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 7)
             end
         end
-    else
-        alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            return
-        end
-        quest:EntityPlayObjectAnimation(nil --[[missing]], "GET_HIT_SPIN")
-        -- TODO(native): fStack_118 = unaff_EBP + (float)_DAT_01238010;
-        -- TODO(native): fStack_c4 = fStack_118;
-        quest:EntitySetFacingAngle(me, 1)
-        alive = quest:NewScriptFrame(me)
-        alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            return
-        end
-        alive = quest:NewScriptFrame(me)
-        alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            return
-        end
-        -- TODO(native): fStack_124 = (float)pCVar13 + (float)_DAT_012316f0;
-        quest:EntitySetFacingAngle(me, 1)
-        quest:SetMasterGameState("WillScore", quest:GetMasterGameState("WillScore") + 1)
-        iVar3 = quest:GetTimer(nil --[[missing]])
-        if iVar3 < 1 then
-            alive = not quest:IsActiveThreadTerminating()
-            if not alive then
-                return
-            end
-            piVar4 = quest:GetThingWithScriptName("WillApprentice")
-            cVar2 = (piVar4 ~= nil and piVar4:IsAlive())
-            alive = not quest:IsActiveThreadTerminating()
-            if not cVar2 then
-                if not alive then
-                    return
-                end
-                -- TODO(native): pCStack_144 = (CCreatureAction_TrollWhackGroundBase *)aCStack_90;
-                ppVar5 = quest:GetThingWithScriptName("TheRealGuildmaster")
-                ppVar14 = quest:AddNewConversation(ppVar5, nil --[[missing]], nil --[[missing]])
-                pCStack_14c = quest:GetHero()
-                quest:AddPersonToConversation(nil --[[missing]], pCStack_14c)
-                iVar3 = *piVar4
-                r1 = quest:GetHero()
-                r2 = quest:GetThingWithScriptName("TEXT_QST_028_GUILDMASTER_WILL_GOOD_HIT")
-                quest:AddLineToConversation(nil --[[missing]], "TheRealGuildmaster", r2, r1)
-            else
-                if not alive then
-                    return
-                end
-                -- TODO(native): pCStack_144 = aCStack_a8;
-                ppVar5 = quest:GetThingWithScriptName("WillApprentice")
-                ppVar14 = quest:AddNewConversation(ppVar5, nil --[[missing]], nil --[[missing]])
-                pCStack_14c = quest:GetHero()
-                quest:AddPersonToConversation(nil --[[missing]], pCStack_14c)
-                iVar3 = *piVar4
-                r3 = quest:GetHero()
-                r4 = quest:GetThingWithScriptName("TEXT_QST_028_APPRENTICE_WILL_GOOD_HIT")
-                quest:AddLineToConversation(nil --[[missing]], "WillApprentice", r4, r3)
-            end
-            quest:SetTimer(nil --[[missing]], nil --[[missing]])
-        end
-        quest:EntitySetTargetable(nil --[[missing]], nil --[[missing]])
-        quest:Pause(nil --[[missing]])
-        -- TODO(native): puStack_140 = uStack_ec;
-        quest:EntitySetFacingAngle(me, nil --[[missing]])
-        alive = quest:NewScriptFrame(me)
-        alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            return
-        end
-        alive = quest:NewScriptFrame(me)
-        alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            return
-        end
-        -- TODO(native): pCStack_14c = pCStack_128;
-        quest:EntitySetFacingAngle(nil --[[missing]], nil --[[missing]])
-        quest:EntitySetTargetable(nil --[[missing]], nil --[[missing]])
     end
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    cVar2 = extraout_AL_16
+    bVar4 = not alive
     -- TODO(native): goto joined_r0x00d434fc;
 end
 

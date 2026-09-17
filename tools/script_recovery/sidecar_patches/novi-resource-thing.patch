@@ -1,0 +1,38 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index b7e3a91..7498910 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1755,6 +1755,25 @@ void InitializeVictimActor(CScriptThing* actor) {
+         }
+     }
+ 
++    // The acquired thing of a resource as a quest-side handle (retail CScriptGameResourceObjectScriptedThingBase::
++    // GetScriptThing, 0x7E7490: an empty CScriptThing when nothing is acquired). Converter units pass it to
++    // quest:* / thing methods, unlike NewThingFromResource whose id only feeds this table's Thing* helpers.
++    std::shared_ptr<CScriptThing> ScriptThing(unsigned id) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!Game_malloc || !Game_free || !RetailThing_Destroy_API || !g_pCScriptThingVTable)
++            throw std::runtime_error("Retail Thing APIs are unavailable");
++        auto* buffer = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
++        if (!buffer) throw std::runtime_error("Retail allocation failed");
++        memset(buffer, 0, sizeof(CScriptThing));
++        buffer->pVTable = g_pCScriptThingVTable;
++        std::shared_ptr<CScriptThing> handle(buffer, [](CScriptThing* p) { if (p) { RetailThing_Destroy_API(p); Game_free(p); } });
++        if (expert) {
++            auto* table = reinterpret_cast<CScriptGameResourceObjectScriptedThingBaseVTable*>(expert->pVTable);
++            if (!table || !table->GetScriptThing) throw std::runtime_error("Retail resource Thing getter is unavailable");
++            table->GetScriptThing(expert, buffer);
++        }
++        return handle;
++    }
+     unsigned NewThingFromResource(unsigned id) {
+         auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
+         if (!RetailThing_Destroy_API || !g_pCScriptThingVTable)
+@@ -2080,6 +2099,7 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["ShouldBarrelOverhear"] = &LuaRetailResources::ShouldBarrelOverhear;
+     type["ResetBarrelWatchTimer"] = &LuaRetailResources::ResetBarrelWatchTimer;
+     type["NewThingFromResource"] = &LuaRetailResources::NewThingFromResource;
++    type["ScriptThing"] = &LuaRetailResources::ScriptThing;
+     type["NewThingFromScriptName"] = &LuaRetailResources::NewThingFromScriptName;
+     type["ThingHealth"] = &LuaRetailResources::ThingHealth;
+     type["ThingAlive"] = &LuaRetailResources::ThingAlive;

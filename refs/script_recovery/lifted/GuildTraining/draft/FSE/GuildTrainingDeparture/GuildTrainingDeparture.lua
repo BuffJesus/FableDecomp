@@ -2,52 +2,49 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local bVar5, ppVar4
+    local pQuestName
     local alive = true
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingDeparture/Entities/TheRealGuildmaster")
     quest:FinalizeEntityBindings()
-    local cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
-    while not cVar2 do
+    local bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+    while not bVar2 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
-        bVar5 = not alive
-        if bVar5 then
+        bVar2 = not alive
+        if bVar2 then
             return
         end
-        cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+        bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
     end
     alive = not quest:IsActiveThreadTerminating()
-    bVar5 = not alive
-    if not bVar5 then
-        cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
-        while cVar2 do
-            alive = quest:NewScriptFrame()
-            alive = not quest:IsActiveThreadTerminating()
-            bVar5 = not alive
-            if bVar5 then
-                return
-            end
-            cVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+    bVar2 = not alive
+    if not bVar2 then
+        bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+        if bVar2 then
+            repeat
+                alive = quest:NewScriptFrame()
+                alive = not quest:IsActiveThreadTerminating()
+                bVar2 = not alive
+                if bVar2 then
+                    return
+                end
+                bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+            until not (bVar2)
         end
         alive = not quest:IsActiveThreadTerminating()
-        bVar5 = not alive
-        if not bVar5 then
-            ppVar4 = quest:GetActiveQuestName()
-            quest:DeactivateQuestLater(ppVar4, nil --[[missing]])
+        bVar2 = not alive
+        if not bVar2 then
+            pQuestName = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pQuestName, 0)
         end
     end
 end
 
 function Init(quest)
-    local iVar2 = *piVar1
-    local uVar3 = quest:GetThingWithScriptName("HeroDepartureStartMarker")
-    local ppVar4 = quest:GetHero()
-    quest:EntityTeleportToThing(ppVar4, uVar3)
-    if unaff_EBP ~= nil then
-        -- TODO(native): *unaff_EBP = *unaff_EBP + -1;
-        if *unaff_EBP == 0 then
-        end
-    end
+    local pTargetThing = quest:GetThingWithScriptName(nil --[[missing]])
+    local pThingToMove = quest:GetHero()
+    quest:EntityTeleportToThing(pThingToMove, pTargetThing, false)
+    pTargetThing = nil
     quest:FadeScreenIn()
     quest:SetStateBool("Finished", false)
     quest:SetStateInt("MeleeGrade", 0)

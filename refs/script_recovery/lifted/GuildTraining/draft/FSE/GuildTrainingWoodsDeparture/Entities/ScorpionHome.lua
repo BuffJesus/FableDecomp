@@ -11,84 +11,102 @@ do
 end
 
 function Main(quest, me)
-    local pCVar10, piVar1, piVar2, puVar5, r1, r2, uVar4, uVar7
+    local bVar6, iVar7, pCVar8, pPosition, puVar3, puVar4, pu_stk_20, r1, r2, xStack_2c
     local alive = true
-    local iVar6 = quest:GetStateInt("DepartureMissionPoint")
-    while iVar6 ~= 1 do
+    local iVar1 = quest:GetStateInt("DepartureMissionPoint")
+    while iVar1 ~= 1 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar6 = not alive
+        if bVar6 then
             return
         end
-        iVar6 = quest:GetStateInt("DepartureMissionPoint")
+        iVar1 = quest:GetStateInt("DepartureMissionPoint")
     end
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
-        -- TODO(native): __ftol2();
-        pCVar10 = "HUD_BEETLE_ICON"
-        uVar7 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", nil --[[missing]], nil --[[missing]])
+    bVar6 = not alive
+    if not bVar6 then
+        iVar7 = __ftol2()
+        xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", 1.0, nil --[[missing]])
         quest:DisplayQuestInfo(true)
-        iVar6 = quest:GetStateInt("DepartureMissionPoint")
-        while iVar6 == 1 do
+        iVar1 = quest:GetStateInt("DepartureMissionPoint")
+        while iVar1 == 1 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then
+            bVar6 = not alive
+            if bVar6 then
                 return
             end
+            pu_stk_20 = 0x0
             r1 = quest:GetAllThingsWithScriptName("GuildScorpions")
-            -- TODO(native): iStack_40 = (iStack_38 - (int)ppuStack_3c) / 0xc;
-            uVar4 = __ftol2(0xffffffff)
-            quest:UpdateQuestInfoCounter(piStack_44, 0, 0x0)
-            piVar1 = 0x0
-            if ((piStack_30 - 0x0) / 0xc) < 3 then
+            iVar7 = __ftol2()
+            quest:UpdateQuestInfoCounter(xStack_2c, -1, pu_stk_20)
+            puVar3 = 0x0
+            puVar4 = pu_stk_20
+            if ((pu_stk_20 - 0x0) / 0xc) < 3 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar6 = not alive
+                if bVar6 then
                     -- LAB_00d647d1: (native jump target)
                     return
                 end
-                iVar6 = piStack_30 - 0x0 >> 0x1f
-                if ((piStack_30 - 0x0) / 0xc + iVar6 == iVar6) and (__native_entity_state:GetStateInt("ScorpionsLeft") == 0) then
+                iVar1 = pu_stk_20 - 0x0 >> 0x1f
+                if ((pu_stk_20 - 0x0) / 0xc + iVar1 == iVar1) and (__native_entity_state:GetStateInt("ScorpionsLeft") == 0) then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d647d1
+                    bVar6 = not alive
+                    if bVar6 then
+                        return
+                    end
                     quest:SetStateInt("DepartureMissionPoint", 2)
-                    quest:SetQuestCardObjective("", "Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", r1)
-                    piVar1 = 0x0
+                    quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
+                    puVar3 = 0x0
+                    puVar4 = pu_stk_20
                 else
-                    piVar1 = 0x0
+                    puVar3 = 0x0
+                    puVar4 = pu_stk_20
                     if 0 < __native_entity_state:GetStateInt("ScorpionsLeft") then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then return end  -- TODO(native): goto LAB_00d647d1
-                        uVar4 = quest:GetHero()
-                        r2 = quest:GetFurthestWithScriptName(uVar4, "ScorpionSpawn")
-                        if piStack_30 == nil then
+                        bVar6 = not alive
+                        if bVar6 then
+                            return
+                        end
+                        pCVar8 = quest:GetHero()
+                        r2 = quest:GetFurthestWithScriptName(pCVar8, "ScorpionSpawn")
+                        if r2 == nil then
                         else
-                            puVar5 = (**(*piStack_30 + 0x18))()
+                            pPosition = (**(*r2 + 0x18))()
                         end
-                        iVar6 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", nil --[[missing]], "GuildScorpions")
-                        -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)&piStack_44, (CCountedPointer<class_CDiskFileWin32> *)(iVar6 + 4));
-                        if piStack_44 ~= nil then
-                            -- TODO(native): (**(code **)(*piStack_44 + 0x118))(0);
+                        pCVar8 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", nil --[[missing]], "GuildScorpions")
+                        -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_18,(int)&*(int *)(pCVar8 + 0x4));
+                        pCVar8 = nil
+                        if r2 ~= nil then
+                            -- TODO(native): (**(code **)(*xStack_18 + 0x118))(0);
                         end
-                        quest:EntityAttachToScript(iVar6, "Q_GuildTrainingWoodsDeparture")
+                        quest:EntityAttachToScript(r2, "Q_GuildTrainingWoodsDeparture")
                         __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)
-                        piVar1 = 0x0
+                        r2 = nil
+                        puVar3 = 0x0
+                        puVar4 = pu_stk_20
                     end
                 end
             end
-            while piVar3 = piStack_30, piVar1 ~= piStack_30 do
-                -- TODO(native): (**(code **)*piVar1)(0);
-                piVar2 = piVar2
-                -- TODO(native): piStack_30 = piVar3;
-                piVar1 = piVar1 + 3
+            while puVar5 = pu_stk_20, puVar3 ~= pu_stk_20 do
+                pu_stk_20 = puVar4
+                -- TODO(native): (**(code **)*puVar3)(0);
+                puVar4 = pu_stk_20
+                pu_stk_20 = puVar5
+                puVar3 = puVar3 + 3
             end
+            pu_stk_20 = puVar4
             if nil ~= nil then
-                -- TODO(native): free(piStack_34);
+                -- TODO(native): free(puStack_24);
             end
-            iVar6 = quest:GetStateInt("DepartureMissionPoint")
+            iVar1 = quest:GetStateInt("DepartureMissionPoint")
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            quest:RemoveQuestInfoElement(ppuStack_3c)
+        bVar6 = not alive
+        if not bVar6 then
+            quest:RemoveQuestInfoElement(xStack_2c)
             quest:DisplayQuestInfo(false)
         end
     end

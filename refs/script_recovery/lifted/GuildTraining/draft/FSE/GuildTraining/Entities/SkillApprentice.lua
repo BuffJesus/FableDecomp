@@ -11,97 +11,730 @@ do
 end
 
 function Main(quest, me)
-    local __native_condition_1, bVar4, cVar5, fStack_138, fVar16, fVar26, fVar3, iVar10, iVar12, native_arg_sequence_1, native_arg_switch_2, pCVar1, pCVar22, pCVar24, pCVar25, pCVar27, pCVar29, pCVar8, pCVar9, paVar13, pcVar20, pfVar14, piVar2, ppVar23, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r2, r3, r4, r5, r6, r7, r8, r9, uVar17, uVar18, uVar19, uVar6, uVar7
+    local resources = quest:RetailResources()
+    local __native_condition_1, __native_condition_2, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, iVar14, iVar15, iVar17, iVar6, iVar7, native_arg_sequence_1, native_arg_switch_2, p0, pCVar11, pCVar16, pCVar8, pCVar9, pcVar13, pfVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r3, r4, r5, r6, r7, r8, r9, thing, uVar1, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_15c, xStack_170, xStack_24, xStack_64, xStack_74, xStack_84, xStack_c, x_stk_12c, x_stk_18, x_stk_30, x_stk_54
     local alive = true
-    -- TODO(native): apiStack_164[0] = (int *)0x0;
-    -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_170);
-    if bVar4 then
+    local function __region_LAB_00d4dc16_c1()
+        quest:SetMasterGameState("HeroTakingGuildTest", false)
+        quest:SetPlayerUsingRangedDummies(false)
     end
-    -- TODO(native): pppuVar28 = &ppuStack_170;
-    cVar5 = me:AcquireControl(4)
-    while not cVar5 do
+    local function __cleanup_LAB_00d4dd41()
+        quest:DeregisterTimer(iVar6)
+        resources:DestroyMovie(xStack_64)
+    end
+    local function __cleanup_LAB_00d4dd41_c1()
+        quest:DeregisterTimer(iVar6)
+        resources:DestroyMovie(xStack_64)
+    end
+    local function __cleanup_LAB_00d4de46()
+        resources:DestroyMovie(xStack_64)
+    end
+    local function __cleanup_LAB_00d4de58_c1()
+        resources:DestroyMovie(xStack_64)
+    end
+    xStack_170 = resources:NewResource()
+    bVar4 = false
+    if bVar4 ~= 0 then
+    end
+    bVar4 = resources:TryAcquire(xStack_170, me, 4)
+    while not bVar4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then return end  -- TODO(native): goto LAB_00d4dcdb
-        cVar5 = me:AcquireControl(4)
+        bVar4 = not alive
+        if bVar4 then
+            do return end
+            bVar4 = quest:IsQuestActive("Q_GuildTrainingDeparture")
+            if not bVar4 then goto LAB_00d4c9a2_c1 end
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then
+                __cleanup_LAB_00d4dd41_c1()
+                return
+            end
+            iVar7 = __native_entity_state:GetStateInt("self_0x18")
+            if ((3 < *(iVar7 + 0xb4)) or (3 < *(iVar7 + 0xb8))) or (3 < *(iVar7 + 0xbc)) then
+                alive = not quest:IsActiveThreadTerminating()
+                bVar4 = not alive
+                if not bVar4 then
+                    if c_stk_14e ~= 0 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+                        quest:ClearThingHasInformation(me)
+                        c_stk_14e = 0
+                    end
+                    goto LAB_00d4c9a2_c1
+                end
+                quest:DeregisterTimer(iVar6)
+                __cleanup_LAB_00d4de58_c1(); return
+            end
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+            if c_stk_14e == 0 then
+                alive = not quest:IsActiveThreadTerminating()
+                bVar4 = not alive
+                if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+                quest:SetThingHasInformation(me, false, true, false)
+                c_stk_14e = '\x01'
+            end
+            ::LAB_00d4c9a2_c1::
+            bVar4 = quest:IsDistanceBetweenThingsOver(me, xStack_48, 4.0)
+            __native_condition_1 = not bVar4
+            if not __native_condition_1 then
+                iVar7 = me:IsPerformingScriptTask()
+                __native_condition_1 = iVar7
+            end
+            if __native_condition_1 then
+                iVar6 = me:IsPerformingScriptTask()
+                if iVar6 then goto LAB_00d4cbac_c1 end
+                fVar18 = 10.0
+                pCVar9 = quest:GetHero()
+                bVar4 = quest:IsDistanceBetweenThingsUnder(me, pCVar9, fVar18)
+                native_arg_sequence_1 = false
+                if not bVar4 then
+                    native_arg_sequence_1 = true
+                else
+                    native_arg_sequence_1 = false
+                end
+                if not native_arg_sequence_1 then
+                    iVar6 = quest:GetTimer(xStack_174)
+                    if 0 < iVar6 then
+                        native_arg_sequence_1 = true
+                    else
+                        native_arg_sequence_1 = false
+                    end
+                end
+                if native_arg_sequence_1 then goto LAB_00d4cbac_c1 end
+                alive = not quest:IsActiveThreadTerminating()
+                bVar4 = not alive
+                if not bVar4 then
+                    bVar4 = false
+                    pCVar9 = quest:GetHero()
+                    quest:EntitySetFacingAngleTowardsThing(me, pCVar9, bVar4)
+                    quest:SetTimer(xStack_174, 0x14)
+                    iVar7 = quest:AddNewConversation(me, false, false)
+                    pCVar9 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar7, pCVar9)
+                    iVar6 = quest:GetMasterGameState("GlobalSkillGrade")
+                    if iVar6 == 0 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if not bVar4 then
+                            pCVar9 = quest:GetHero()
+                            quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_EARLY_COMMENT", me, pCVar9, false)
+                            -- TODO(native): goto LAB_00d4cba7_c1
+                        end
+                    else
+                        if iVar6 == 7 then
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if not bVar4 then
+                                pCVar9 = quest:GetHero()
+                                quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_APLUS_COMMENT", me, pCVar9, false)
+                                -- TODO(native): goto LAB_00d4cba7_c1
+                            end
+                        else
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if not bVar4 then
+                                pCVar9 = quest:GetHero()
+                                quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_NOT_APLUS_COMMENT", me, pCVar9, false)
+                                -- LAB_00d4cba7_c1: (native jump target)
+                                goto LAB_00d4cbac_c1
+                            end
+                        end
+                    end
+                end
+                -- TODO(native): goto LAB_00d4de46_c1
+            end
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then __cleanup_LAB_00d4dd41_c1(); return end
+            if xStack_15c == nil then
+            end
+            me:MoveToPosition(nil --[[missing]], p0, 0x40400000, false, false)
+            ::LAB_00d4cbac_c1::
+            bVar4 = me:IsTalkedToByHero()
+            if bVar4 then
+                alive = not quest:IsActiveThreadTerminating()
+                bVar4 = not alive
+                if bVar4 then
+                    quest:DeregisterTimer(xStack_174)
+                    __cleanup_LAB_00d4de58_c1(); return
+                end
+                iVar6 = me:IsPerformingScriptTask()
+                if not iVar6 then
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+                    if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if not bVar4 then
+                            xStack_64 = resources:StartMovie("")
+                            quest:StartMovieSequence()
+                            quest:PauseAllNonScriptedEntities(true)
+                            x_stk_54 = resources:ScriptThing(0)
+                            pCVar8 = x_stk_54
+                            r1 = quest:GetHealth(pCVar8)
+                            fVar3 = 0.0
+                            if fVar3 < fret_00 then
+                                iVar17 = 0
+                                iVar14 = 1
+                                iVar7 = 0
+                                iVar6 = 0
+                                pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TEST_ALREADY"
+                                pCVar8 = quest:GetHero()
+                                r2 = me:Speak(pCVar8, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                                iVar6 = me:IsPerformingScriptTask()
+                                cVar5 = iVar6
+                                while cVar5 do
+                                    alive = quest:NewScriptFrame(me)
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar4 = not alive
+                                    if bVar4 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(xStack_74)
+                                        -- TODO(native): goto LAB_00d4de46_c1
+                                    end
+                                    iVar6 = me:IsPerformingScriptTask()
+                                    cVar5 = iVar6
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_128)
+                                    -- TODO(native): goto LAB_00d4de46_c1
+                                end
+                            end
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_128)
+                            goto LAB_00d4dc36_c1
+                        end
+                        -- TODO(native): goto LAB_00d4de46_c1
+                    end
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+                    xStack_74 = resources:StartMovie("")
+                    quest:StartMovieSequence()
+                    pCVar8 = 0x1
+                    quest:PauseAllNonScriptedEntities((pCVar8 ~= 0))
+                    x_stk_30 = resources:ScriptThing(0)
+                    pCVar9 = x_stk_30
+                    r3 = quest:GetHealth(pCVar9)
+                    fVar3 = 0.0
+                    if fVar3 < fret_01 then
+                        iVar17 = 0
+                        iVar14 = 1
+                        iVar7 = 0
+                        iVar6 = 0
+                        pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_HELLO"
+                        pCVar9 = quest:GetHero()
+                        r4 = me:Speak(pCVar9, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                        iVar6 = me:IsPerformingScriptTask()
+                        cVar5 = iVar6
+                        while cVar5 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then return end  -- TODO(native): goto LAB_00d4dded_c1
+                            iVar6 = me:IsPerformingScriptTask()
+                            cVar5 = iVar6
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if not bVar4 then goto LAB_00d4cf79_c1 end
+                        -- LAB_00d4d1f3_c1: (native jump target)
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_84)
+                        -- TODO(native): goto LAB_00d4de46_c1
+                    end
+                    ::LAB_00d4cf79_c1::
+                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPRENTICE_SKILL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+                    iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while iVar6 < 0 do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then return end  -- TODO(native): goto LAB_00d4dded_c1
+                        iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    end
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then return end  -- TODO(native): goto LAB_00d4d1f3_c1
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if iVar6 == 1 then
+                        if not bVar4 then
+                            if quest:GetMasterGameState("GlobalSkillGrade") ~= 7 then
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then return end  -- TODO(native): goto LAB_00d4d1f3_c1
+                                xStack_c = resources:ScriptThing(0)
+                                pCVar9 = xStack_c
+                                r5 = quest:GetHealth(pCVar9)
+                                fVar3 = 0.0
+                                if fVar3 < fret_02 then
+                                    iVar15 = 0
+                                    iVar17 = 1
+                                    iVar14 = 0
+                                    iVar7 = 0
+                                    pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT_APLUS"
+                                    pCVar9 = quest:GetHero()
+                                    r6 = me:Speak(pCVar9, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                                    iVar7 = me:IsPerformingScriptTask()
+                                    cVar5 = iVar7
+                                    while cVar5 do
+                                        alive = quest:NewScriptFrame(me)
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar4 = not alive
+                                        if bVar4 then return end  -- TODO(native): goto LAB_00d4dded_c1
+                                        iVar7 = me:IsPerformingScriptTask()
+                                        cVar5 = iVar7
+                                    end
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar4 = not alive
+                                    if bVar4 then return end  -- TODO(native): goto LAB_00d4d1f3_c1
+                                end
+                            end
+                            x_stk_18 = resources:ScriptThing(0)
+                            pCVar9 = x_stk_18
+                            r7 = quest:GetHealth(pCVar9)
+                            fVar3 = 0.0
+                            if fVar3 < fret_03 then
+                                iVar15 = 0
+                                iVar17 = 1
+                                iVar14 = 0
+                                iVar7 = 0
+                                pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT"
+                                pCVar8 = quest:GetHero()
+                                r8 = me:Speak(pCVar8, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                                iVar7 = me:IsPerformingScriptTask()
+                                cVar5 = iVar7
+                                while cVar5 do
+                                    alive = quest:NewScriptFrame(me)
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar4 = not alive
+                                    if bVar4 then return end  -- TODO(native): goto LAB_00d4dded_c1
+                                    iVar7 = me:IsPerformingScriptTask()
+                                    cVar5 = iVar7
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then return end  -- TODO(native): goto LAB_00d4d1f3_c1
+                            end
+                            goto LAB_00d4d2bb_c1
+                        end
+                        -- LAB_00d4dded_c1: (native jump target)
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:ReleaseResource(xStack_118)
+                        -- TODO(native): goto LAB_00d4de46_c1
+                    end
+                    if bVar4 then return end  -- TODO(native): goto LAB_00d4dded_c1
+                    xStack_15c = resources:ScriptThing(0)
+                    pCVar9 = xStack_15c
+                    r9 = quest:GetHealth(pCVar9)
+                    fVar3 = 0.0
+                    if fVar3 < fret_04 then
+                        iVar15 = 0
+                        iVar17 = 1
+                        iVar14 = 0
+                        iVar7 = 0
+                        pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_RETURN"
+                        pCVar8 = quest:GetHero()
+                        r10 = me:Speak(pCVar8, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                        iVar7 = me:IsPerformingScriptTask()
+                        cVar5 = iVar7
+                        while cVar5 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then return end  -- TODO(native): goto LAB_00d4d1f3_c1
+                            iVar7 = me:IsPerformingScriptTask()
+                            cVar5 = iVar7
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then return end  -- TODO(native): goto LAB_00d4dded_c1
+                    end
+                    ::LAB_00d4d2bb_c1::
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_64)
+                    if iVar6 ~= 1 then goto LAB_00d4dc36_c1 end
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+                    quest:SetPlayerUsingRangedDummies(true)
+                    quest:SetMasterGameState("HeroTakingGuildTest", true)
+                    bVar4 = quest:MsgOnHeroFiredRangedWeapon()
+                    while not bVar4 do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+                        bVar4 = quest:MsgOnHeroFiredRangedWeapon()
+                    end
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then return end  -- TODO(native): goto LAB_00d4de46_c1
+                    -- TODO(native): CTimer::CTimer((CTimer *)&xStack_160);
+                    -- TODO(native): piVar2 = DAT_0143e8f8;
+                    iVar7 = __ftol2()
+                    quest:SetTimer(xStack_160, fVar3)
+                    quest:SetMasterGameState("SkillScore", 0)
+                    c_stk_14d = 0
+                    iVar6 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
+                    xStack_13c = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+                    x_stk_12c = quest:AddQuestInfoTimer(1.0, "HUD_CLOCK_ICON", fVar18)
+                    quest:DisplayQuestInfo(true)
+                    quest:UpdateQuestInfoCounter(iVar6, quest:GetMasterGameState("HighestSkillScore"), -1)
+                    c_stk_13d = 0
+                    iVar6 = quest:GetTimer(xStack_160)
+                    while (0 < iVar6 and (c_stk_14d == 0)) do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de3d_c1 end
+                        if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then goto LAB_00d4de3d_c1 end
+                            c_stk_14d = '\x01'
+                        end
+                        if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then goto LAB_00d4de3d_c1 end
+                            quest:SetMasterGameState("HighestSkillScore", quest:GetMasterGameState("SkillScore"))
+                            c_stk_13d = '\x01'
+                            quest:UpdateQuestInfoCounter(xStack_13c, quest:GetMasterGameState("HighestSkillScore"), -1)
+                        end
+                        quest:UpdateQuestInfoCounter(xStack_13c, quest:GetMasterGameState("SkillScore"), -1)
+                        fVar18 = 6.0
+                        pCVar8 = quest:GetThingWithScriptName("ArcheryRing")
+                        pCVar9 = quest:GetHero()
+                        bVar4 = quest:IsDistanceBetweenThingsOver(pCVar9, pCVar8, fVar18)
+                        if bVar4 then
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then goto LAB_00d4de3d_c1 end
+                            if __native_entity_state:GetStateBool("PlayerNotWarned") then
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then goto LAB_00d4de3d_c1 end
+                                __native_entity_state:SetStateBool("PlayerNotWarned", false)
+                                iVar7 = quest:AddNewConversation(me, false, false)
+                                pCVar8 = quest:GetHero()
+                                quest:AddPersonToConversation(iVar7, pCVar8)
+                                pCVar8 = quest:GetHero()
+                                quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_RING_OUT", me, pCVar8, xStack_e0)
+                            end
+                            c_stk_14d = '\x01'
+                        end
+                        iVar6 = quest:GetTimer(xStack_160)
+                    end
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if not bVar4 then
+                        bVar4 = quest:IsHeroControlledByPlayer()
+                        while not bVar4 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then goto LAB_00d4de3d_c1 end
+                            bVar4 = quest:IsHeroControlledByPlayer()
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de3d_c1 end
+                        quest:DisplayQuestInfo(false)
+                        quest:RemoveQuestInfoElement(iVar6)
+                        quest:RemoveQuestInfoElement(xStack_13c)
+                        quest:RemoveQuestInfoElement(x_stk_12c)
+                        if c_stk_14d ~= 0 then
+                            __region_LAB_00d4dc16_c1()
+                            goto LAB_00d4dc36_c1
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de3d_c1 end
+                        x_stk_12c = quest:GetMasterGameState("SkillScore")
+                        -- TODO(native): pfVar12 = *(float **)(DAT_0143e90c + 0xec0);
+                        iVar6 = 0
+                        repeat
+                            iVar7 = iVar6
+                            if *pfVar12 < x_stk_12c ~= (*pfVar12 == x_stk_12c) then
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then goto LAB_00d4de3d_c1 end
+                                break
+                            end
+                            pfVar12 = pfVar12 + 1
+                            iVar6 = iVar7 + 1
+                        until not (iVar7 + 1 < 7)
+                        xStack_128 = resources:StartMovie("")
+                        bVar4 = false
+                        if bVar4 ~= 0 then
+                        end
+                        iVar14 = 4
+                        pCVar16 = xStack_128
+                        pCVar8 = quest:GetHero()
+                        bVar4 = resources:TryAcquire(pCVar16, pCVar8, iVar14)
+                        while not bVar4 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then goto LAB_00d4de34_c1 end
+                            iVar14 = 4
+                            pCVar8 = quest:GetHero()
+                            bVar4 = resources:TryAcquire(pCVar16, pCVar8, iVar14)
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if not bVar4 then
+                            xStack_138 = resources:NewActorMap()
+                            resources:SetActor(xStack_138, "ME", 0)
+                            -- TODO(native): pCVar10 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_138,xStack_a0);
+                            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar10,pCVar16);
+                            xStack_118 = resources:NewResource()
+                            quest:StartMovieSequence()
+                            quest:PauseAllNonScriptedEntities(true)
+                            quest:FixMovieSequenceCamera(true)
+                            resources:RunMacro(xStack_d0, xStack_138, false, true)
+                            if c_stk_13d == 0 then
+                                -- LAB_00d4d979_c1: (native jump target)
+                                resources:SetActor(xStack_138, "ME", 0)
+                                native_arg_switch_2 = iVar7
+                                repeat
+                                    if native_arg_switch_2 == 0 then
+                                        if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar4 = not alive
+                                            if bVar4 then goto LAB_00d4de05_c1 end
+                                            resources:RunMacro(xStack_c8, xStack_138, false, true)
+                                            break
+                                        end
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar4 = not alive
+                                        if not bVar4 then
+                                            resources:RunMacro(xStack_c0, xStack_138, false, true)
+                                            quest:ClearThingHasInformation(me)
+                                            goto FLOW_native_label_1_c1
+                                        end
+                                        goto LAB_00d4de05_c1
+                                    else
+                                        if native_arg_switch_2 == 1 then
+                                            resources:RunMacro(xStack_98, xStack_138, false, true)
+                                            break
+                                        else
+                                            if native_arg_switch_2 == 2 then
+                                                resources:RunMacro(xStack_e8, xStack_138, false, true)
+                                                break
+                                            else
+                                                if native_arg_switch_2 == 3 then
+                                                    resources:RunMacro(xStack_e4, xStack_138, false, true)
+                                                    break
+                                                else
+                                                    if native_arg_switch_2 == 4 then
+                                                        resources:RunMacro(xStack_104, xStack_138, false, true)
+                                                        pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_D"
+                                                        break
+                                                    else
+                                                        if native_arg_switch_2 == 5 then
+                                                            resources:RunMacro(xStack_100, xStack_138, false, true)
+                                                            pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_E"
+                                                            break
+                                                        else
+                                                            if native_arg_switch_2 == 6 then
+                                                                resources:RunMacro(xStack_f8, xStack_138, false, true)
+                                                                break
+                                                            else
+                                                                goto FLOW_native_label_1_c1
+                                                            end
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                until not (false)
+                                ::FLOW_native_label_1_c1::
+                                if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar7 then
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar4 = not alive
+                                    if bVar4 then
+                                        -- LAB_00d4de13_c1: (native jump target)
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        goto LAB_00d4de1f_c1
+                                    end
+                                    quest:SetMasterGameState("GlobalSkillGrade", 7 - iVar7)
+                                end
+                                quest:FixMovieSequenceCamera(false)
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_64)
+                                resources:DestroyActorMap(xStack_138)
+                                resources:DestroyMovie(xStack_74)
+                                __region_LAB_00d4dc16_c1(); goto LAB_00d4dc36_c1
+                            end
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if not bVar4 then
+                                resources:SetActor(xStack_138, "ME", 0)
+                                resources:RunMacro(xStack_f0, xStack_138, false, true)
+                                -- TODO(native): goto LAB_00d4d979_c1
+                            end
+                            ::LAB_00d4de05_c1::
+                            quest:PauseAllNonScriptedEntities(false)
+                            ::LAB_00d4de1f_c1::
+                            resources:DestroyMovie(xStack_74)
+                            resources:DestroyActorMap(xStack_138)
+                        end
+                        ::LAB_00d4de34_c1::
+                        resources:DestroyMovie(xStack_128)
+                    end
+                    ::LAB_00d4de3d_c1::
+                else
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if not bVar4 then
+                        me:ClearCommands()
+                        xStack_84 = resources:StartMovie("")
+                        quest:StartMovieSequence()
+                        quest:PauseAllNonScriptedEntities(true)
+                        xStack_24 = resources:ScriptThing(0)
+                        pCVar8 = xStack_24
+                        r11 = quest:GetHealth(pCVar8)
+                        fVar3 = 0.0
+                        if fVar3 < fret_0 then
+                            iVar17 = 0
+                            iVar14 = 1
+                            iVar7 = 0
+                            iVar6 = 0
+                            pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_EARLY"
+                            pCVar8 = quest:GetHero()
+                            r12 = me:Speak(pCVar8, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                            iVar6 = me:IsPerformingScriptTask()
+                            cVar5 = iVar6
+                            while cVar5 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_84)
+                                    -- TODO(native): goto LAB_00d4de46_c1
+                                end
+                                iVar6 = me:IsPerformingScriptTask()
+                                cVar5 = iVar6
+                            end
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:ReleaseResource(xStack_118)
+                                -- TODO(native): goto LAB_00d4de46_c1
+                            end
+                        end
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:ReleaseResource(0)
+                        goto LAB_00d4dc36_c1
+                    end
+                end
+                -- LAB_00d4de46_c1: (native jump target)
+                __cleanup_LAB_00d4de58_c1(); return
+            end
+            ::LAB_00d4dc36_c1::
+            alive = quest:NewScriptFrame(me)
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            goto FLOW_after_lab_00d4dcdb
+        end
+        bVar4 = resources:TryAcquire(0, pCVar8, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then
+    bVar4 = not alive
+    if bVar4 then
         -- LAB_00d4de61: (native jump target)
+        resources:DestroyMovie(xStack_64)
         return
     end
-    piVar2 = *(this + 0x10)
-    if piVar2 ~= nil then
-        -- TODO(native): *piVar2 = *piVar2 + 1;
-    end
-    quest:SetIsPushableByHero(nil --[[missing]], false)
-    quest:SetThingHasInformation(nil --[[missing]])
-    pcVar20 = 0x1
-    quest:EntitySetAsKillable(nil --[[missing]], (pcVar20 ~= 0))
-    r1 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
-    quest:EntityAttachToVillage(me, r1)
-    uVar19 = 1
-    me:SetFriendsWithEverythingFlag(1)
+    uVar1 = __native_entity_state:GetStateInt("self_0xc")
+    -- TODO(native): thing._4_4_ = uVar1;
+    thing = nil
+    -- TODO(native): thing._8_4_ = piVar2;
+    quest:SetIsPushableByHero(pCVar8, (thing ~= 0))
+    quest:SetThingHasInformation(pCVar8, false, true, false)
+    quest:EntitySetAsKillable(pCVar8, false, true)
+    r13 = quest:GetNearestWithDefName(pCVar8, "VILLAGE_GUILD_COMPLEX_INSIDE")
+    quest:EntityAttachToVillage(pCVar8, r13)
+    me:SetFriendsWithEverythingFlag(pCVar8)
     __native_entity_state:SetStateBool("PlayerNotWarned", true)
-    uVar7 = quest:RegisterTimer()
-    quest:SetTimer(uVar7, 10)
-    r2 = quest:GetThingWithScriptName("SkillApprenticeTargetMarker")
+    c_stk_14e = 0
+    iVar6 = quest:RegisterTimer()
+    quest:SetTimer(iVar6, 10)
+    r14 = quest:GetThingWithScriptName("SkillApprenticeTargetMarker")
     alive = not quest:IsActiveThreadTerminating()
-    cVar5 = not alive
+    bVar4 = not alive
     repeat
-        if cVar5 then
-            if (pcVar20 ~= nil) and (*pcVar20 = *pcVar20 + -1, *pcVar20 == 0) then
-                -- TODO(native): (**(code **)(pcVar20 + 4))();
-            end
-            quest:DeregisterTimer(uVar7)
+        if bVar4 then
+            r14 = nil
+            quest:DeregisterTimer(iVar6)
+            r13 = nil
             -- LAB_00d4dcdb: (native jump target)
             return
         end
-        cVar5 = quest:IsQuestActive("Q_GuildTrainingDeparture")
-        if not cVar5 then goto LAB_00d4c9a2 end
+        bVar4 = quest:IsQuestActive("Q_GuildTrainingDeparture")
+        if not bVar4 then goto LAB_00d4c9a2 end
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            -- LAB_00d4dd41: (native jump target)
-            quest:DeregisterTimer(uVar7)
-            -- LAB_00d4de58: (native jump target)
-            -- TODO(native): goto LAB_00d4de61
+        bVar4 = not alive
+        if bVar4 then
+            __cleanup_LAB_00d4dd41()
+            return
         end
-        iVar10 = __native_entity_state:GetStateInt("self_0x18")
-        if ((3 < *(iVar10 + 0xb4)) or (3 < *(iVar10 + 0xb8))) or (3 < *(iVar10 + 0xbc)) then
+        iVar7 = __native_entity_state:GetStateInt("self_0x18")
+        if ((3 < *(iVar7 + 0xb4)) or (3 < *(iVar7 + 0xb8))) or (3 < *(iVar7 + 0xbc)) then
             alive = not quest:IsActiveThreadTerminating()
-            if alive then
-                if cStack_15a ~= 0 then
+            bVar4 = not alive
+            if not bVar4 then
+                if c_stk_14e ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d4de46
-                    quest:ClearThingHasInformation(r2)
-                    -- TODO(native): cStack_15a = '\0';
+                    bVar4 = not alive
+                    if bVar4 then __cleanup_LAB_00d4de46(); return end
+                    quest:ClearThingHasInformation(me)
+                    c_stk_14e = 0
                 end
                 goto LAB_00d4c9a2
             end
-            quest:DeregisterTimer(uVar7)
-            -- TODO(native): goto LAB_00d4de58
+            quest:DeregisterTimer(iVar6)
+            resources:DestroyMovie(xStack_64)
+            return
         end
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then return end  -- TODO(native): goto LAB_00d4de46
-        if cStack_15a == 0 then
+        bVar4 = not alive
+        if bVar4 then __cleanup_LAB_00d4de46(); return end
+        if c_stk_14e == 0 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then return end  -- TODO(native): goto LAB_00d4de46
-            quest:SetThingHasInformation(nil --[[missing]])
-            -- TODO(native): cStack_15a = '\x01';
+            bVar4 = not alive
+            if bVar4 then __cleanup_LAB_00d4de46(); return end
+            quest:SetThingHasInformation(me, false, true, false)
+            c_stk_14e = '\x01'
         end
         ::LAB_00d4c9a2::
-        bVar4 = IsDistanceBetweenThingsOver(me,&uStack_168,4.0)
-        __native_condition_1 = not bVar4
-        if not __native_condition_1 then
-            bVar4 = me:IsPerformingScriptTask()
-            __native_condition_1 = bVar4
+        bVar4 = quest:IsDistanceBetweenThingsOver(me, xStack_48, 4.0)
+        __native_condition_2 = not bVar4
+        if not __native_condition_2 then
+            iVar7 = me:IsPerformingScriptTask()
+            __native_condition_2 = iVar7
         end
-        if __native_condition_1 then
-            bVar4 = me:IsPerformingScriptTask()
-            if bVar4 then goto LAB_00d4cbac end
-            fVar26 = 10.0
-            pCVar8 = quest:GetHero()
-            bVar4 = quest:IsDistanceBetweenThingsUnder(me, pCVar8, fVar26)
+        if __native_condition_2 then
+            iVar6 = me:IsPerformingScriptTask()
+            if iVar6 then goto LAB_00d4cbac end
+            fVar18 = 10.0
+            pCVar9 = quest:GetHero()
+            bVar4 = quest:IsDistanceBetweenThingsUnder(me, pCVar9, fVar18)
             native_arg_sequence_1 = false
             if not bVar4 then
                 native_arg_sequence_1 = true
@@ -109,8 +742,8 @@ function Main(quest, me)
                 native_arg_sequence_1 = false
             end
             if not native_arg_sequence_1 then
-                iVar10 = quest:GetTimer(uVar7)
-                if 0 < iVar10 then
+                iVar6 = quest:GetTimer(iVar6)
+                if 0 < iVar6 then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
@@ -118,460 +751,492 @@ function Main(quest, me)
             end
             if native_arg_sequence_1 then goto LAB_00d4cbac end
             alive = not quest:IsActiveThreadTerminating()
-            if alive then
-                r3 = quest:GetHero()
-                quest:EntitySetFacingAngleTowardsThing(r3, nil --[[missing]])
-                quest:SetTimer(uVar7, 0x0)
-                r4 = quest:AddNewConversation(nil --[[missing]], false, false)
-                pcVar20 = quest:GetHero()
-                quest:AddPersonToConversation(0, pcVar20)
-                if quest:GetMasterGameState("GlobalSkillGrade") == 0 then
+            bVar4 = not alive
+            if not bVar4 then
+                bVar4 = false
+                pCVar9 = quest:GetHero()
+                quest:EntitySetFacingAngleTowardsThing(me, pCVar9, bVar4)
+                quest:SetTimer(iVar6, xStack_174)
+                iVar7 = quest:AddNewConversation(me, false, false)
+                pCVar9 = quest:GetHero()
+                quest:AddPersonToConversation(iVar7, pCVar9)
+                iVar6 = quest:GetMasterGameState("GlobalSkillGrade")
+                if iVar6 == 0 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if alive then
-                        r5 = quest:GetHero()
-                        quest:AddLineToConversation(uVar19, "TEXT_QST_028_APPRENTICE_SKILL_EARLY_COMMENT", r5, nil --[[missing]])
-                        -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_c0;
-                        -- TODO(native): goto LAB_00d4cba7
+                    bVar4 = not alive
+                    if not bVar4 then
+                        pCVar9 = quest:GetHero()
+                        quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_EARLY_COMMENT", me, pCVar9, false)
+                        goto LAB_00d4cbac
                     end
                 else
-                    if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
+                    if iVar6 == 7 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if alive then
-                            r6 = quest:GetHero()
-                            quest:AddLineToConversation(nil --[[missing]], "TEXT_QST_028_APPRENTICE_SKILL_APLUS_COMMENT", r6, nil --[[missing]])
-                            -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_b0;
-                            -- TODO(native): goto LAB_00d4cba7
+                        bVar4 = not alive
+                        if not bVar4 then
+                            pCVar9 = quest:GetHero()
+                            quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_APLUS_COMMENT", me, pCVar9, false)
+                            goto LAB_00d4cbac
                         end
                     else
                         alive = not quest:IsActiveThreadTerminating()
-                        if alive then
-                            r7 = quest:GetHero()
-                            quest:AddLineToConversation(nil --[[missing]], "TEXT_QST_028_APPRENTICE_SKILL_NOT_APLUS_COMMENT", r7, nil --[[missing]])
-                            -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_b8;
+                        bVar4 = not alive
+                        if not bVar4 then
+                            pCVar9 = quest:GetHero()
+                            quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_NOT_APLUS_COMMENT", me, pCVar9, false)
                             -- LAB_00d4cba7: (native jump target)
                             goto LAB_00d4cbac
                         end
                     end
                 end
             end
-            -- TODO(native): goto LAB_00d4de46
+            __cleanup_LAB_00d4de46(); return
         end
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then return end  -- TODO(native): goto LAB_00d4dd41
-        if apiStack_164[0] == nil then
+        bVar4 = not alive
+        if bVar4 then __cleanup_LAB_00d4dd41(); return end
+        if r14 == nil then
         else
-            pCVar8 = (**(*apiStack_164[0] + 0x18))()
+            p0 = (**(*r14 + 0x18))()
         end
-        me:MoveToPosition(nil --[[missing]], 0x40400000, 0x0, false, true)
+        me:MoveToPosition(nil --[[missing]], p0, 0x40400000, false, false)
         ::LAB_00d4cbac::
-        cVar5 = me:IsTalkedToByHero()
-        if cVar5 then
+        bVar4 = me:IsTalkedToByHero()
+        if bVar4 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then
-                quest:DeregisterTimer(uVar7)
-                -- TODO(native): goto LAB_00d4de58
-            end
-            bVar4 = me:IsPerformingScriptTask()
+            bVar4 = not alive
             if bVar4 then
+                quest:DeregisterTimer(iVar6)
+                resources:DestroyMovie(xStack_64)
+                return
+            end
+            iVar6 = me:IsPerformingScriptTask()
+            if not iVar6 then
                 alive = not quest:IsActiveThreadTerminating()
-                if alive then
-                    -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_70);
-                    pCVar22 = ""
-                    quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                    -- TODO(native): uVar6 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe78);
-                    fVar16 = quest:GetHealth(nil --[[missing]])
-                    fVar3 = _DAT_0122dedc
-                    if fVar3 < fVar16 then
-                        bVar4 = false
-                        pCVar25 = 0x1
-                        pCVar24 = 0x0
-                        pCVar22 = 0x0
-                        pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_EARLY"
-                        pCVar9 = quest:GetHero()
-                        r8 = me:Speak(pCVar9, pcVar20, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), bVar4)
-                        bVar4 = me:IsPerformingScriptTask()
-                        if bVar4 then
-                            repeat
-                                alive = quest:NewScriptFrame(me)
-                                alive = not quest:IsActiveThreadTerminating()
-                                if not alive then
-                                    quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                                    -- TODO(native): goto LAB_00d4de46
-                                end
-                                bVar4 = me:IsPerformingScriptTask()
-                            until not (bVar4)
-                        end
-                        alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
-                            quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                            -- TODO(native): goto LAB_00d4de46
-                        end
-                    end
-                    quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                    goto LAB_00d4dc36
-                end
-            else
-                alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d4de46 end
+                bVar4 = not alive
+                if bVar4 then __cleanup_LAB_00d4de46(); return end
                 if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if alive then
-                        -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_80);
-                        pCVar22 = ""
+                    bVar4 = not alive
+                    if not bVar4 then
+                        xStack_64 = resources:StartMovie("")
                         quest:StartMovieSequence()
-                        quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                        -- TODO(native): uVar6 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe78);
-                        fVar16 = quest:GetHealth(nil --[[missing]])
-                        fVar3 = _DAT_0122dedc
-                        if fVar3 < fVar16 then
-                            bVar4 = false
-                            pCVar25 = 0x1
-                            pCVar24 = 0x0
-                            pCVar22 = 0x0
-                            pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_TEST_ALREADY"
-                            pCVar9 = quest:GetHero()
-                            r9 = me:Speak(pCVar9, pcVar20, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), bVar4)
-                            bVar4 = me:IsPerformingScriptTask()
-                            if bVar4 then
-                                repeat
-                                    alive = quest:NewScriptFrame(me)
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    if not alive then
-                                        quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                                        -- TODO(native): goto LAB_00d4de46
-                                    end
-                                    bVar4 = me:IsPerformingScriptTask()
-                                until not (bVar4)
+                        quest:PauseAllNonScriptedEntities(true)
+                        x_stk_54 = resources:ScriptThing(0)
+                        pCVar8 = x_stk_54
+                        r15 = quest:GetHealth(pCVar8)
+                        fVar3 = 0.0
+                        if fVar3 < fret_00 then
+                            iVar17 = 0
+                            iVar14 = 1
+                            iVar7 = 0
+                            iVar6 = 0
+                            pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TEST_ALREADY"
+                            pCVar8 = quest:GetHero()
+                            r16 = me:Speak(pCVar8, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                            iVar6 = me:IsPerformingScriptTask()
+                            cVar5 = iVar6
+                            while cVar5 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_74)
+                                    __cleanup_LAB_00d4de46(); return
+                                end
+                                iVar6 = me:IsPerformingScriptTask()
+                                cVar5 = iVar6
                             end
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then
-                                quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                                -- TODO(native): goto LAB_00d4de46
+                            bVar4 = not alive
+                            if bVar4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_128)
+                                __cleanup_LAB_00d4de46(); return
                             end
                         end
-                        quest:PauseAllNonScriptedEntities(nil --[[missing]])
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_128)
                         goto LAB_00d4dc36
                     end
-                    -- TODO(native): goto LAB_00d4de46
+                    __cleanup_LAB_00d4de46(); return
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d4de46 end
-                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_134);
-                pCVar22 = ""
+                bVar4 = not alive
+                if bVar4 then __cleanup_LAB_00d4de46(); return end
+                xStack_74 = resources:StartMovie("")
                 quest:StartMovieSequence()
-                quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                -- TODO(native): uVar7 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe78);
-                fVar16 = quest:GetHealth(nil --[[missing]])
-                fVar3 = _DAT_0122dedc
-                if fVar3 < fVar16 then
-                    bVar4 = false
-                    pCVar25 = 0x1
-                    pCVar24 = 0x0
-                    pCVar22 = 0x0
-                    pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_HELLO"
+                pCVar8 = 0x1
+                quest:PauseAllNonScriptedEntities((pCVar8 ~= 0))
+                x_stk_30 = resources:ScriptThing(0)
+                pCVar9 = x_stk_30
+                r17 = quest:GetHealth(pCVar9)
+                fVar3 = 0.0
+                if fVar3 < fret_01 then
+                    iVar17 = 0
+                    iVar14 = 1
+                    iVar7 = 0
+                    iVar6 = 0
+                    pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_HELLO"
                     pCVar9 = quest:GetHero()
-                    r10 = me:Speak(pCVar9, pcVar20, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), bVar4)
-                    bVar4 = me:IsPerformingScriptTask()
-                    if bVar4 then
-                        repeat
-                            alive = quest:NewScriptFrame(me)
-                            alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d4dded
-                            bVar4 = me:IsPerformingScriptTask()
-                        until not (bVar4)
+                    r18 = me:Speak(pCVar9, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                    iVar6 = me:IsPerformingScriptTask()
+                    cVar5 = iVar6
+                    while cVar5 do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:ReleaseResource(xStack_118)
+                            __cleanup_LAB_00d4de46(); return
+                        end
+                        iVar6 = me:IsPerformingScriptTask()
+                        cVar5 = iVar6
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if alive then goto LAB_00d4cf79 end
+                    bVar4 = not alive
+                    if not bVar4 then goto LAB_00d4cf79 end
                     -- LAB_00d4d1f3: (native jump target)
-                    quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                    -- TODO(native): goto LAB_00d4de46
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_84)
+                    __cleanup_LAB_00d4de46(); return
                 end
                 ::LAB_00d4cf79::
-                pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_QUESTION"
-                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPRENTICE_SKILL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "")
-                iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
-                while iVar10 < 0 do
+                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPRENTICE_SKILL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+                iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                while iVar6 < 0 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d4dded
-                    iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    bVar4 = not alive
+                    if bVar4 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:ReleaseResource(xStack_118)
+                        __cleanup_LAB_00d4de46(); return
+                    end
+                    iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d4d1f3
+                bVar4 = not alive
+                if bVar4 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_84)
+                    __cleanup_LAB_00d4de46(); return
+                end
                 alive = not quest:IsActiveThreadTerminating()
-                uVar6 = uVar7
-                if iVar10 == 1 then
-                    if alive then
+                bVar4 = not alive
+                if iVar6 == 1 then
+                    if not bVar4 then
                         if quest:GetMasterGameState("GlobalSkillGrade") ~= 7 then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d4d1f3
-                            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe74);
-                            fVar16 = quest:GetHealth(nil --[[missing]])
-                            fVar3 = _DAT_0122dedc
-                            uVar6 = uVar7
-                            if fVar3 < fVar16 then
-                                bVar4 = false
-                                pCVar25 = 0x1
-                                pCVar24 = 0x0
-                                pCVar22 = 0x0
-                                pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT_APLUS"
-                                pCVar9 = quest:GetHero()
-                                r11 = me:Speak(pCVar9, pcVar20, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), bVar4)
-                                bVar4 = me:IsPerformingScriptTask()
-                                uVar6 = uVar7
-                                if bVar4 then
-                                    repeat
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        if not alive then goto LAB_00d4dded end
-                                        bVar4 = me:IsPerformingScriptTask()
-                                        uVar6 = uVar7
-                                    until not (bVar4)
-                                end
-                                alive = not quest:IsActiveThreadTerminating()
-                                if not alive then return end  -- TODO(native): goto LAB_00d4d1f3
-                            end
-                        end
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe74);
-                        fVar16 = quest:GetHealth(nil --[[missing]])
-                        fVar3 = _DAT_0122dedc
-                        if fVar3 < fVar16 then
-                            bVar4 = false
-                            pCVar25 = 0x1
-                            pCVar24 = 0x0
-                            pCVar22 = 0x0
-                            pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT"
-                            pCVar9 = quest:GetHero()
-                            r12 = me:Speak(pCVar9, pcVar20, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), bVar4)
-                            bVar4 = me:IsPerformingScriptTask()
+                            bVar4 = not alive
                             if bVar4 then
-                                repeat
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_84)
+                                __cleanup_LAB_00d4de46(); return
+                            end
+                            xStack_c = resources:ScriptThing(0)
+                            pCVar9 = xStack_c
+                            r19 = quest:GetHealth(pCVar9)
+                            fVar3 = 0.0
+                            if fVar3 < fret_02 then
+                                iVar15 = 0
+                                iVar17 = 1
+                                iVar14 = 0
+                                iVar7 = 0
+                                pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT_APLUS"
+                                pCVar9 = quest:GetHero()
+                                r20 = me:Speak(pCVar9, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                                iVar7 = me:IsPerformingScriptTask()
+                                cVar5 = iVar7
+                                while cVar5 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
-                                    if not alive then goto LAB_00d4dded end
-                                    bVar4 = me:IsPerformingScriptTask()
-                                until not (bVar4)
+                                    bVar4 = not alive
+                                    if bVar4 then goto LAB_00d4dded end
+                                    iVar7 = me:IsPerformingScriptTask()
+                                    cVar5 = iVar7
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_84)
+                                    __cleanup_LAB_00d4de46(); return
+                                end
+                            end
+                        end
+                        x_stk_18 = resources:ScriptThing(0)
+                        pCVar9 = x_stk_18
+                        r21 = quest:GetHealth(pCVar9)
+                        fVar3 = 0.0
+                        if fVar3 < fret_03 then
+                            iVar15 = 0
+                            iVar17 = 1
+                            iVar14 = 0
+                            iVar7 = 0
+                            pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT"
+                            pCVar8 = quest:GetHero()
+                            r22 = me:Speak(pCVar8, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                            iVar7 = me:IsPerformingScriptTask()
+                            cVar5 = iVar7
+                            while cVar5 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then goto LAB_00d4dded end
+                                iVar7 = me:IsPerformingScriptTask()
+                                cVar5 = iVar7
                             end
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d4d1f3
+                            bVar4 = not alive
+                            if bVar4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_84)
+                                __cleanup_LAB_00d4de46(); return
+                            end
                         end
                         goto LAB_00d4d2bb
                     end
                     ::LAB_00d4dded::
-                    quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                    -- TODO(native): goto LAB_00d4de46
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:ReleaseResource(xStack_118)
+                    __cleanup_LAB_00d4de46(); return
                 end
-                if not alive then return end  -- TODO(native): goto LAB_00d4dded
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&stack0xfffffe74);
-                fVar16 = quest:GetHealth(nil --[[missing]])
-                fVar3 = _DAT_0122dedc
-                if fVar3 < fVar16 then
-                    bVar4 = false
-                    pCVar25 = 0x1
-                    pCVar24 = 0x0
-                    pCVar22 = 0x0
-                    pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_RETURN"
-                    pCVar9 = quest:GetHero()
-                    r13 = me:Speak(pCVar9, pcVar20, pCVar22, (pCVar24 ~= 0), (pCVar25 ~= 0), bVar4)
-                    bVar4 = me:IsPerformingScriptTask()
-                    if bVar4 then
-                        repeat
-                            alive = quest:NewScriptFrame(me)
-                            alive = not quest:IsActiveThreadTerminating()
-                            if not alive then return end  -- TODO(native): goto LAB_00d4d1f3
-                            bVar4 = me:IsPerformingScriptTask()
-                        until not (bVar4)
+                if bVar4 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:ReleaseResource(xStack_118)
+                    __cleanup_LAB_00d4de46(); return
+                end
+                r14 = resources:ScriptThing(0)
+                pCVar9 = r14
+                r23 = quest:GetHealth(pCVar9)
+                fVar3 = 0.0
+                if fVar3 < fret_04 then
+                    iVar15 = 0
+                    iVar17 = 1
+                    iVar14 = 0
+                    iVar7 = 0
+                    pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_RETURN"
+                    pCVar8 = quest:GetHero()
+                    r24 = me:Speak(pCVar8, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                    iVar7 = me:IsPerformingScriptTask()
+                    cVar5 = iVar7
+                    while cVar5 do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_84)
+                            __cleanup_LAB_00d4de46(); return
+                        end
+                        iVar7 = me:IsPerformingScriptTask()
+                        cVar5 = iVar7
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then return end  -- TODO(native): goto LAB_00d4dded
+                    bVar4 = not alive
+                    if bVar4 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:ReleaseResource(xStack_118)
+                        __cleanup_LAB_00d4de46(); return
+                    end
                 end
                 ::LAB_00d4d2bb::
-                quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                if iVar10 ~= 1 then goto LAB_00d4dc36 end
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(xStack_64)
+                if iVar6 ~= 1 then goto LAB_00d4dc36 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d4de46 end
-                quest:SetPlayerUsingRangedDummies(nil --[[missing]])
+                bVar4 = not alive
+                if bVar4 then __cleanup_LAB_00d4de46(); return end
+                quest:SetPlayerUsingRangedDummies(true)
                 quest:SetMasterGameState("HeroTakingGuildTest", true)
-                cVar5 = quest:MsgOnHeroFiredRangedWeapon()
-                while not cVar5 do
+                bVar4 = quest:MsgOnHeroFiredRangedWeapon()
+                while not bVar4 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d4de46 end
-                    cVar5 = quest:MsgOnHeroFiredRangedWeapon()
+                    bVar4 = not alive
+                    if bVar4 then __cleanup_LAB_00d4de46(); return end
+                    bVar4 = quest:MsgOnHeroFiredRangedWeapon()
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d4de46 end
-                -- TODO(native): CTimer::CTimer((CTimer *)&uStack_16c);
-                -- TODO(native): __ftol2();
-                quest:SetTimer(uVar7, nil --[[missing]])
+                bVar4 = not alive
+                if bVar4 then __cleanup_LAB_00d4de46(); return end
+                -- TODO(native): CTimer::CTimer((CTimer *)&xStack_160);
+                -- TODO(native): piVar2 = DAT_0143e8f8;
+                iVar7 = __ftol2()
+                quest:SetTimer(iVar6, xStack_160)
                 quest:SetMasterGameState("SkillScore", 0)
-                -- TODO(native): apiStack_164[0] = (int *)((uint)apiStack_164[0] & 0xffffff);
-                pCVar22 = "HUD_ICON_MULTI_ARROW"
-                uVar17 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", nil --[[missing]], nil --[[missing]])
-                -- TODO(native): auStack_a8[0] = (int)uVar17;
-                uVar7 = 0x3f800000
-                paVar13 = "HUD_ICON_ARROW"
-                uVar18 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", uVar7, nil --[[missing]])
-                uVar18 = quest:AddQuestInfoTimer(uVar7, "HUD_CLOCK_ICON", nil --[[missing]])
-                -- TODO(native): apiStack_164[0] = (int *)uVar18;
+                c_stk_14d = 0
+                iVar6 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
+                xStack_13c = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+                x_stk_12c = quest:AddQuestInfoTimer(iVar6, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
-                quest:UpdateQuestInfoCounter(uVar17, quest:GetMasterGameState("HighestSkillScore"), -1)
-                pCVar29 = (pCVar29 & 0xffffff)
-                uVar19 = 0xd4d482
-                iVar10 = quest:GetTimer(uVar7)
-                while (0 < iVar10 and (cStack_159 == 0)) do
+                quest:UpdateQuestInfoCounter(iVar6, quest:GetMasterGameState("HighestSkillScore"), -1)
+                c_stk_13d = 0
+                iVar6 = quest:GetTimer(iVar6)
+                while (0 < iVar6 and (c_stk_14d == 0)) do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d4de3d end
+                    bVar4 = not alive
+                    if bVar4 then goto LAB_00d4de3d end
                     if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d4de3d end
-                        -- TODO(native): cStack_159 = '\x01';
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de3d end
+                        c_stk_14d = '\x01'
                     end
                     if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d4de3d end
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de3d end
                         quest:SetMasterGameState("HighestSkillScore", quest:GetMasterGameState("SkillScore"))
-                        quest:UpdateQuestInfoCounter(1, nil --[[missing]], nil --[[missing]])
+                        c_stk_13d = '\x01'
+                        quest:UpdateQuestInfoCounter(xStack_13c, quest:GetMasterGameState("HighestSkillScore"), -1)
                     end
-                    fVar26 = -NAN
-                    quest:UpdateQuestInfoCounter(nil --[[missing]], nil --[[missing]], nil --[[missing]])
-                    pCVar9 = quest:GetThingWithScriptName("ArcheryRing")
-                    pCVar8 = quest:GetHero()
-                    bVar4 = IsDistanceBetweenThingsOver(pCVar8,pCVar9,fVar26)
+                    quest:UpdateQuestInfoCounter(xStack_13c, quest:GetMasterGameState("SkillScore"), -1)
+                    fVar18 = 6.0
+                    pCVar8 = quest:GetThingWithScriptName("ArcheryRing")
+                    pCVar9 = quest:GetHero()
+                    bVar4 = quest:IsDistanceBetweenThingsOver(pCVar9, pCVar8, fVar18)
                     if bVar4 then
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d4de3d end
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de3d end
                         if __native_entity_state:GetStateBool("PlayerNotWarned") then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d4de3d end
+                            bVar4 = not alive
+                            if bVar4 then goto LAB_00d4de3d end
                             __native_entity_state:SetStateBool("PlayerNotWarned", false)
-                            r14 = quest:AddNewConversation(pCVar8, nil --[[missing]], nil --[[missing]])
-                            r15 = quest:GetHero()
-                            quest:AddPersonToConversation(nil --[[missing]], r15)
-                            r16 = quest:GetHero()
-                            pcVar20 = "TEXT_QST_028_APPRENTICE_SKILL_RING_OUT"
-                            quest:AddLineToConversation(nil --[[missing]], "TEXT_QST_028_APPRENTICE_SKILL_RING_OUT", r16, pCVar9)
+                            iVar7 = quest:AddNewConversation(me, false, false)
+                            pCVar8 = quest:GetHero()
+                            quest:AddPersonToConversation(iVar7, pCVar8)
+                            pCVar8 = quest:GetHero()
+                            quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_RING_OUT", me, pCVar8, xStack_e0)
                         end
-                        -- TODO(native): cStack_159 = '\x01';
+                        c_stk_14d = '\x01'
                     end
-                    iVar10 = quest:GetTimer(uVar7)
+                    iVar6 = quest:GetTimer(iVar6)
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if alive then
-                    cVar5 = quest:IsHeroControlledByPlayer()
-                    while not cVar5 do
+                bVar4 = not alive
+                if not bVar4 then
+                    bVar4 = quest:IsHeroControlledByPlayer()
+                    while not bVar4 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d4de3d end
-                        cVar5 = quest:IsHeroControlledByPlayer()
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de3d end
+                        bVar4 = quest:IsHeroControlledByPlayer()
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d4de3d end
-                    quest:DisplayQuestInfo(nil --[[missing]])
-                    quest:RemoveQuestInfoElement(nil --[[missing]])
-                    quest:RemoveQuestInfoElement(nil --[[missing]])
-                    quest:RemoveQuestInfoElement(nil --[[missing]])
-                    if cStack_159 ~= 0 then
+                    bVar4 = not alive
+                    if bVar4 then goto LAB_00d4de3d end
+                    quest:DisplayQuestInfo(false)
+                    quest:RemoveQuestInfoElement(iVar6)
+                    quest:RemoveQuestInfoElement(xStack_13c)
+                    quest:RemoveQuestInfoElement(x_stk_12c)
+                    if c_stk_14d ~= 0 then
                         -- LAB_00d4dc16: (native jump target)
                         quest:SetMasterGameState("HeroTakingGuildTest", false)
-                        quest:SetPlayerUsingRangedDummies(nil --[[missing]])
+                        quest:SetPlayerUsingRangedDummies(false)
                         goto LAB_00d4dc36
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d4de3d end
-                    fStack_138 = quest:GetMasterGameState("SkillScore")
-                    -- TODO(native): pfVar14 = *(float **)(DAT_0143e90c + 0xec0);
-                    iVar10 = 0
+                    bVar4 = not alive
+                    if bVar4 then goto LAB_00d4de3d end
+                    x_stk_12c = quest:GetMasterGameState("SkillScore")
+                    -- TODO(native): pfVar12 = *(float **)(DAT_0143e90c + 0xec0);
+                    iVar6 = 0
                     repeat
-                        iVar12 = iVar10
-                        if *pfVar14 < fStack_138 ~= (*pfVar14 == fStack_138) then
+                        iVar7 = iVar6
+                        if *pfVar12 < x_stk_12c ~= (*pfVar12 == x_stk_12c) then
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d4de3d end
+                            bVar4 = not alive
+                            if bVar4 then goto LAB_00d4de3d end
                             break
                         end
-                        pfVar14 = pfVar14 + 1
-                        iVar10 = iVar12 + 1
-                    until not (iVar12 + 1 < 7)
-                    -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)aaStack_124);
-                    -- TODO(native): bVar4 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)aaStack_124);
-                    if bVar4 then
+                        pfVar12 = pfVar12 + 1
+                        iVar6 = iVar7 + 1
+                    until not (iVar7 + 1 < 7)
+                    xStack_128 = resources:StartMovie("")
+                    bVar4 = false
+                    if bVar4 ~= 0 then
                     end
-                    r17 = quest:GetHero()
-                    cVar5 = me:AcquireControl(4)
-                    while not cVar5 do
+                    iVar14 = 4
+                    pCVar16 = xStack_128
+                    pCVar8 = quest:GetHero()
+                    bVar4 = resources:TryAcquire(pCVar16, pCVar8, iVar14)
+                    while not bVar4 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        if not alive then goto LAB_00d4de34 end
-                        r18 = quest:GetHero()
-                        cVar5 = me:AcquireControl(4)
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00d4de34 end
+                        iVar14 = 4
+                        pCVar16 = xStack_118
+                        pCVar8 = quest:GetHero()
+                        bVar4 = resources:TryAcquire(pCVar16, pCVar8, iVar14)
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if alive then
-                        -- TODO(native): StdMap_Construct_API();
-                        -- TODO(native): pCVar11 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_144,aCStack_ac);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar11,pCVar21);
-                        -- TODO(native): pCVar11 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](amStack_144,aCStack_e4);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar11, (CScriptGameResourceObjectScriptedThingBase *)paVar13);
-                        -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_90);
-                        pCVar22 = ""
+                    bVar4 = not alive
+                    if not bVar4 then
+                        xStack_138 = resources:NewActorMap()
+                        resources:SetActor(xStack_138, "ME", 0)
+                        pCVar16 = xStack_118
+                        -- TODO(native): pCVar10 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_138,xStack_a0);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar10,pCVar16);
+                        xStack_118 = resources:NewResource()
                         quest:StartMovieSequence()
-                        quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                        quest:FixMovieSequenceCamera(nil --[[missing]])
-                        ppVar23 = 0x0
-                        -- TODO(native): RunCutsceneMacro_Func();
-                        if uStack_16c._3_1_ == 0 then
+                        quest:PauseAllNonScriptedEntities(true)
+                        quest:FixMovieSequenceCamera(true)
+                        resources:RunMacro(xStack_d0, xStack_138, false, true)
+                        if c_stk_13d == 0 then
                             -- LAB_00d4d979: (native jump target)
-                            -- TODO(native): pCVar11 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)apiStack_164,aCStack_d4);
-                            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar11,pCVar21);
-                            native_arg_switch_2 = iVar12
+                            resources:SetActor(xStack_138, "ME", 0)
+                            native_arg_switch_2 = iVar7
                             repeat
                                 if native_arg_switch_2 == 0 then
                                     if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
                                         alive = not quest:IsActiveThreadTerminating()
-                                        if not alive then goto LAB_00d4de05 end
-                                        -- TODO(native): RunCutsceneMacro_Func(0);
-                                        -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *) aCStack_c4;
+                                        bVar4 = not alive
+                                        if bVar4 then goto LAB_00d4de05 end
+                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", xStack_138, false, true)
                                         break
                                     end
                                     alive = not quest:IsActiveThreadTerminating()
-                                    if alive then
-                                        ppVar23 = 0x0
-                                        -- TODO(native): RunCutsceneMacro_Func();
+                                    bVar4 = not alive
+                                    if not bVar4 then
+                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_B", xStack_138, false, true)
                                         quest:ClearThingHasInformation(me)
                                         goto FLOW_native_label_1
                                     end
-                                    -- TODO(native): goto LAB_00d4de13
+                                    goto LAB_00d4de05
                                 else
                                     if native_arg_switch_2 == 1 then
-                                        -- TODO(native): RunCutsceneMacro_Func(0);
-                                        -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *) aCStack_114;
+                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_C", xStack_138, false, true)
                                         break
                                     else
                                         if native_arg_switch_2 == 2 then
-                                            -- TODO(native): RunCutsceneMacro_Func(0);
-                                            -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *) aCStack_110;
+                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_D", xStack_138, false, true)
                                             break
                                         else
                                             if native_arg_switch_2 == 3 then
-                                                -- TODO(native): RunCutsceneMacro_Func(0);
-                                                -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *) aCStack_130;
+                                                resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_E", xStack_138, false, true)
                                                 break
                                             else
                                                 if native_arg_switch_2 == 4 then
-                                                    -- TODO(native): RunCutsceneMacro_Func(0);
-                                                    paVar13 = "CS_GUILD_DEPARTURE_SKILL_TEST_D"
+                                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", xStack_138, false, true)
+                                                    pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_D"
                                                     break
                                                 else
                                                     if native_arg_switch_2 == 5 then
-                                                        -- TODO(native): RunCutsceneMacro_Func(0);
-                                                        paVar13 = "CS_GUILD_DEPARTURE_SKILL_TEST_E"
+                                                        resources:RunMacro(xStack_100, xStack_138, false, true)
+                                                        pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_E"
                                                         break
                                                     else
                                                         if native_arg_switch_2 == 6 then
-                                                            -- TODO(native): RunCutsceneMacro_Func(0);
-                                                            -- TODO(native): paVar13 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *) aCStack_11c;
+                                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_HIGH", xStack_138, false, true)
                                                             break
                                                         else
                                                             goto FLOW_native_label_1
@@ -584,46 +1249,171 @@ function Main(quest, me)
                                 end
                             until not (false)
                             ::FLOW_native_label_1::
-                            if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar12 then
+                            if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar7 then
                                 alive = not quest:IsActiveThreadTerminating()
-                                if not alive then
+                                bVar4 = not alive
+                                if bVar4 then
                                     -- LAB_00d4de13: (native jump target)
-                                    quest:PauseAllNonScriptedEntities((ppVar23 ~= 0))
+                                    quest:PauseAllNonScriptedEntities(false)
                                     goto LAB_00d4de1f
                                 end
-                                quest:SetMasterGameState("GlobalSkillGrade", 7 - iVar12)
+                                quest:SetMasterGameState("GlobalSkillGrade", 7 - iVar7)
                             end
-                            pcVar20 = 0x0
-                            quest:FixMovieSequenceCamera((pcVar20 ~= 0))
-                            quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                            -- TODO(native): StdMap_Destroy_API();
-                            -- TODO(native): goto LAB_00d4dc16
+                            quest:FixMovieSequenceCamera(false)
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_64)
+                            resources:DestroyActorMap(xStack_138)
+                            resources:DestroyMovie(xStack_74)
+                            quest:SetMasterGameState("HeroTakingGuildTest", false)
+                            quest:SetPlayerUsingRangedDummies(false)
+                            goto LAB_00d4dc36
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        if alive then
-                            -- TODO(native): pCVar11 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)apiStack_164,(CCharString *)aCStack_134);
-                            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar11,pCVar21);
-                            -- TODO(native): RunCutsceneMacro_Func(0);
-                            -- TODO(native): goto LAB_00d4d979
+                        bVar4 = not alive
+                        if not bVar4 then
+                            resources:SetActor(xStack_138, "ME", 0)
+                            resources:RunMacro("", xStack_138, false, true)
+                            resources:SetActor(xStack_138, "ME", 0)
+                            native_arg_switch_2 = iVar7
+                            repeat
+                                if native_arg_switch_2 == 0 then
+                                    if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar4 = not alive
+                                        if bVar4 then goto LAB_00d4de05 end
+                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", xStack_138, false, true)
+                                        break
+                                    end
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar4 = not alive
+                                    if not bVar4 then
+                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_B", xStack_138, false, true)
+                                        quest:ClearThingHasInformation(me)
+                                        goto FLOW_native_label_1_c17
+                                    end
+                                    goto LAB_00d4de05
+                                else
+                                    if native_arg_switch_2 == 1 then
+                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_C", xStack_138, false, true)
+                                        break
+                                    else
+                                        if native_arg_switch_2 == 2 then
+                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_D", xStack_138, false, true)
+                                            break
+                                        else
+                                            if native_arg_switch_2 == 3 then
+                                                resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_E", xStack_138, false, true)
+                                                break
+                                            else
+                                                if native_arg_switch_2 == 4 then
+                                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", xStack_138, false, true)
+                                                    pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_D"
+                                                    break
+                                                else
+                                                    if native_arg_switch_2 == 5 then
+                                                        resources:RunMacro(xStack_100, xStack_138, false, true)
+                                                        pCVar11 = "CS_GUILD_DEPARTURE_SKILL_TEST_E"
+                                                        break
+                                                    else
+                                                        if native_arg_switch_2 == 6 then
+                                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_HIGH", xStack_138, false, true)
+                                                            break
+                                                        else
+                                                            goto FLOW_native_label_1_c17
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            until not (false)
+                            ::FLOW_native_label_1_c17::
+                            if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar7 then
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if bVar4 then
+                                    -- LAB_00d4de13_c17: (native jump target)
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    goto LAB_00d4de1f
+                                end
+                                quest:SetMasterGameState("GlobalSkillGrade", 7 - iVar7)
+                            end
+                            quest:FixMovieSequenceCamera(false)
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_64)
+                            resources:DestroyActorMap(xStack_138)
+                            resources:DestroyMovie(xStack_74)
+                            quest:SetMasterGameState("HeroTakingGuildTest", false)
+                            quest:SetPlayerUsingRangedDummies(false)
+                            goto LAB_00d4dc36
                         end
                         ::LAB_00d4de05::
-                        quest:PauseAllNonScriptedEntities(nil --[[missing]])
+                        quest:PauseAllNonScriptedEntities(false)
                         ::LAB_00d4de1f::
-                        -- TODO(native): StdMap_Destroy_API();
+                        resources:DestroyMovie(xStack_74)
+                        resources:DestroyActorMap(xStack_138)
                     end
                     ::LAB_00d4de34::
+                    resources:DestroyMovie(xStack_128)
                 end
                 ::LAB_00d4de3d::
+            else
+                alive = not quest:IsActiveThreadTerminating()
+                bVar4 = not alive
+                if not bVar4 then
+                    me:ClearCommands()
+                    xStack_84 = resources:StartMovie("")
+                    quest:StartMovieSequence()
+                    quest:PauseAllNonScriptedEntities(true)
+                    xStack_24 = resources:ScriptThing(0)
+                    pCVar8 = xStack_24
+                    r25 = quest:GetHealth(pCVar8)
+                    fVar3 = 0.0
+                    if fVar3 < fret_0 then
+                        iVar17 = 0
+                        iVar14 = 1
+                        iVar7 = 0
+                        iVar6 = 0
+                        pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_EARLY"
+                        pCVar8 = quest:GetHero()
+                        r26 = me:Speak(pCVar8, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                        iVar6 = me:IsPerformingScriptTask()
+                        cVar5 = iVar6
+                        while cVar5 do
+                            alive = quest:NewScriptFrame(me)
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_84)
+                                __cleanup_LAB_00d4de46(); return
+                            end
+                            iVar6 = me:IsPerformingScriptTask()
+                            cVar5 = iVar6
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:ReleaseResource(xStack_118)
+                            __cleanup_LAB_00d4de46(); return
+                        end
+                    end
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:ReleaseResource(0)
+                    goto LAB_00d4dc36
+                end
             end
-            ::LAB_00d4de46::
-            -- TODO(native): goto LAB_00d4de58
+            __cleanup_LAB_00d4de46()
+            return
         end
         ::LAB_00d4dc36::
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        uVar7 = uVar19
-        cVar5 = extraout_AL_52
+        bVar4 = not alive
     until false
+    ::FLOW_after_lab_00d4dcdb::
 end
 
 function Init(quest, me)

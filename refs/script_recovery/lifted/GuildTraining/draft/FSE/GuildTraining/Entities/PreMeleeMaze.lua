@@ -11,201 +11,287 @@ do
 end
 
 function Main(quest, me)
-    local __native_condition_1, bVar5, cVar6, fVar12, fVar4, pCVar1, pCVar14, pCVar15, pCVar16, pCVar18, pCVar8, pcVar13, ppVar21, puVar10, puVar11, puVar22, r1, r2, r3, uVar23
+    local resources = quest:RetailResources()
+    local __native_condition_1, bVar3, bVar4, bVar6, cVar5, fVar2, iVar10, iVar11, iVar12, iVar7, p0, pCVar13, pCVar8, pThing, pcVar9, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c, xStack_48
     local alive = true
-    -- TODO(native): local_70[0] = (int *)0x0;
-    quest:EntitySetAsKillable(me, false)
-    uVar23 = 1
-    me:SetFriendsWithEverythingFlag(nil --[[missing]])
+    bVar6 = false
+    bVar3 = false
+    quest:EntitySetAsKillable(me, false, true)
+    me:SetFriendsWithEverythingFlag(me)
     r1 = quest:GetThingWithScriptName("PreMeleeMazeTargetMarker")
-    -- TODO(native): bVar5 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_48);
-    if bVar5 then
+    xStack_30 = resources:NewResource()
+    bVar4 = false
+    if bVar4 ~= 0 then
     end
-    cVar6 = me:AcquireControl(4)
-    while not cVar6 do
+    bVar4 = resources:TryAcquire(xStack_30, me, 4)
+    while not bVar4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
-            if (local_70[0] ~= nil) and (*local_70[0] = *local_70[0] + -1, *local_70[0] == 0) then
+        bVar4 = not alive
+        if bVar4 then
+            r1 = nil
+            if (xStack_3c[0] ~= nil) and (*xStack_3c[0] = *xStack_3c[0] + -1, *xStack_3c[0] == 0) then
             end
-            -- TODO(native): local_70[0] = (int *)0x0;
+            -- TODO(native): xStack_3c[0] = (int *)0x0;
             return
         end
-        cVar6 = me:AcquireControl(4)
+        bVar4 = resources:TryAcquire(0, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then
+    bVar4 = not alive
+    if bVar4 then
+        resources:ReleaseResource(0)
         return
     end
     alive = not quest:IsActiveThreadTerminating()
-    cVar6 = not alive
+    bVar4 = not alive
     while true do
-        if cVar6 then
-            if (local_70[0] ~= nil) and (*local_70[0] = *local_70[0] + -1, *local_70[0] == 0) then
+        if bVar4 then
+            r1 = nil
+            if (xStack_3c[0] ~= nil) and (*xStack_3c[0] = *xStack_3c[0] + -1, *xStack_3c[0] == 0) then
             end
-            -- TODO(native): local_70[0] = (int *)0x0;
+            -- TODO(native): xStack_3c[0] = (int *)0x0;
             return
         end
         if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d444a1 end
-            -- TODO(native): bVar5 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_54);
-            if bVar5 then
+            bVar4 = not alive
+            if bVar4 then goto LAB_00d444a1 end
+            bVar4 = false
+            if bVar4 ~= 0 then
             end
-            cVar6 = quest:GetMasterGameState("GuildWarningOccuring")
-            while cVar6 ~= 0 do
+            cVar5 = quest:GetMasterGameState("GuildWarningOccuring")
+            while cVar5 ~= 0 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d444a1 end
-                cVar6 = quest:GetMasterGameState("GuildWarningOccuring")
+                bVar4 = not alive
+                if bVar4 then goto LAB_00d444a1 end
+                cVar5 = quest:GetMasterGameState("GuildWarningOccuring")
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d444a1 end
-            -- TODO(native): bVar5 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_54);
-            if bVar5 then
+            bVar4 = not alive
+            if bVar4 then goto LAB_00d444a1 end
+            bVar4 = false
+            if bVar4 ~= 0 then
             end
-            cVar6 = me:AcquireControl(4)
-            while not cVar6 do
+            bVar4 = resources:TryAcquire(0, me, 4)
+            while not bVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d444a1 end
-                cVar6 = me:AcquireControl(4)
+                bVar4 = not alive
+                if bVar4 then goto LAB_00d444a1 end
+                bVar4 = resources:TryAcquire(0, me, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d444a1 end
+            bVar4 = not alive
+            if bVar4 then goto LAB_00d444a1 end
         end
-        bVar5 = IsDistanceBetweenThingsOver(me,&stack0xffffff88,4.0)
-        __native_condition_1 = bVar5
+        bVar4 = quest:IsDistanceBetweenThingsOver(me, r1, 4.0)
+        __native_condition_1 = bVar4
         if __native_condition_1 then
-            bVar5 = me:IsPerformingScriptTask()
-            __native_condition_1 = not bVar5
+            iVar7 = me:IsPerformingScriptTask()
+            __native_condition_1 = not iVar7
         end
         if __native_condition_1 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d444a1 end
-            if piStack_74 == nil then
+            bVar4 = not alive
+            if bVar4 then goto LAB_00d444a1 end
+            if r1 == nil then
             else
-                pCVar8 = (**(*piStack_74 + 0x18))()
+                p0 = (**(*r1 + 0x18))()
             end
-            me:MoveToPosition(nil --[[missing]], pCVar8, 0x40400000, false, false)
+            me:MoveToPosition(nil --[[missing]], p0, 0x40400000, false, false)
         end
-        cVar6 = me:IsTalkedToByHero()
-        if cVar6 then break end
+        bVar4 = me:IsTalkedToByHero()
+        if bVar4 then break end
         -- LAB_00d441bb: (native jump target)
-        puVar10 = (puVar22 | 1)
-        puVar11 = puVar10
-        cVar6 = me:MsgIsHitByHero()
-        if not cVar6 then
-            puVar10 = (puVar22 | 3)
-            puVar11 = puVar10
-            cVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
-            if cVar6 then
-                puVar10 = (puVar22 | 7)
-                puVar11 = puVar10
-                cVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                if not cVar6 then return end  -- TODO(native): goto LAB_00d44243
-            end
-            -- TODO(native): ppVar21 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) ((uint)ppVar21 & 0xffffff);
-        else
+        bVar4 = me:MsgIsHitByHero()
+        if bVar4 then
             -- LAB_00d44243: (native jump target)
-            -- TODO(native): ppVar21 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)CONCAT13(1,(int3)ppVar21);
+            bVar4 = true
+        else
+            bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
+            if bVar6 then
+                bVar6 = true
+                bVar3 = true
+                bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+                if not bVar4 then
+                    bVar4 = true
+                    goto FLOW_after_lab_00d44243
+                end
+            end
+            bVar6 = true
+            bVar4 = false
         end
-        if (puVar10 & 4) ~= 0 then
-            puVar10 = (puVar10 & 0xfffffffb)
-            puVar11 = puVar10
+        ::FLOW_after_lab_00d44243::
+        if bVar3 then
+            bVar3 = false
         end
-        if (puVar10 & 2) ~= 0 then
-            puVar10 = (puVar10 & 0xfffffffd)
-            puVar11 = puVar10
+        if bVar6 then
+            bVar6 = false
         end
-        if (puVar10 & 1) ~= 0 then
-            puVar11 = (puVar10 & 0xfffffffe)
-        end
-        if (ppVar21 >> 0x18) ~= 0 then
+        if bVar4 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d444a1 end
+            bVar4 = not alive
+            if bVar4 then goto LAB_00d444a1 end
             me:ClearCommands()
-            -- TODO(native): CCarriedReadableDef::CCarriedReadableDef(aCStack_34);
+            xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            -- TODO(native): uVar7 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ(aCStack_60);
-            fVar12 = quest:GetHealth(r1)
-            fVar4 = _DAT_0122dedc
-            if fVar4 < fVar12 then
-                bVar5 = false
-                pCVar16 = 0x1
-                pCVar15 = 0x0
-                pCVar14 = 0x0
-                pcVar13 = "TEXT_QST_028_MAZE_HIT"
+            pCVar13 = 0x1
+            quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
+            xStack_48 = resources:ScriptThing(0)
+            pCVar8 = xStack_48
+            r2 = quest:GetHealth(pCVar8)
+            fVar2 = 0.0
+            if fVar2 < fret_00 then
+                iVar12 = 0
+                iVar11 = 1
+                iVar10 = 0
+                iVar7 = 0
+                pcVar9 = "TEXT_QST_028_MAZE_HIT"
                 pCVar8 = quest:GetHero()
-                r2 = me:Speak(pCVar8, pcVar13, pCVar14, (pCVar15 ~= 0), (pCVar16 ~= 0), bVar5)
-                bVar5 = me:IsPerformingScriptTask()
-                if bVar5 then
-                    repeat
-                        alive = quest:NewScriptFrame(me)
-                        alive = not quest:IsActiveThreadTerminating()
-                        if not alive then
-                            quest:PauseAllNonScriptedEntities(false)
-                            -- TODO(native): goto LAB_00d44494
-                        end
-                        bVar5 = me:IsPerformingScriptTask()
-                    until not (bVar5)
+                r3 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                iVar7 = me:IsPerformingScriptTask()
+                cVar5 = iVar7
+                while cVar5 do
+                    alive = quest:NewScriptFrame(me)
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
+                        goto LAB_00d44498
+                    end
+                    iVar7 = me:IsPerformingScriptTask()
+                    cVar5 = iVar7
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar4 = not alive
+                if bVar4 then
                     quest:PauseAllNonScriptedEntities(false)
                     -- LAB_00d44494: (native jump target)
-                    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)aCStack_34;
+                    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
                     goto LAB_00d44498
                 end
             end
-            me:SetFriendsWithEverythingFlag(1)
+            me:SetFriendsWithEverythingFlag(me)
             quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(xStack_20)
         end
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        puVar22 = puVar11
-        cVar6 = extraout_AL_14
+        bVar4 = not alive
     end
+    ::FLOW_after_lab_00d441bb::
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then goto LAB_00d444a1 end
+    bVar4 = not alive
+    if bVar4 then goto LAB_00d444a1 end
     me:ClearCommands()
+    xStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
-    quest:PauseAllNonScriptedEntities(true)
-    -- TODO(native): uVar7 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ(aCStack_60);
-    fVar12 = quest:GetHealth(nil --[[missing]])
-    fVar4 = _DAT_0122dedc
-    if fVar12 <= fVar4 then
+    pCVar13 = 0x1
+    quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
+    xStack_3c = resources:ScriptThing(0)
+    pCVar8 = xStack_3c
+    r4 = quest:GetHealth(pCVar8)
+    fVar2 = 0.0
+    if fret_0 <= fVar2 then
         -- LAB_00d441a3: (native jump target)
         quest:PauseAllNonScriptedEntities(false)
-        -- TODO(native): goto LAB_00d441bb
-    end
-    bVar5 = false
-    pCVar16 = 0x1
-    pCVar15 = 0x0
-    pCVar14 = 0x0
-    pcVar13 = "TEXT_QST_028_MAZE_LEAVE_ME"
-    pCVar8 = quest:GetHero()
-    r3 = me:Speak(pCVar8, pcVar13, pCVar14, (pCVar15 ~= 0), (pCVar16 ~= 0), bVar5)
-    bVar5 = me:IsPerformingScriptTask()
-    if bVar5 then
-        repeat
-            alive = quest:NewScriptFrame(me)
+        resources:DestroyMovie(xStack_10)
+        bVar4 = me:MsgIsHitByHero()
+        if bVar4 then
+            -- LAB_00d44243_c3: (native jump target)
+            bVar4 = true
+        end
+        if bVar3 then
+            bVar3 = false
+        end
+        if bVar6 then
+            bVar6 = false
+        end
+        if bVar4 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then
-                quest:PauseAllNonScriptedEntities(false)
-                -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)&ppuStack_44;
-                goto LAB_00d44498
+            bVar4 = not alive
+            if bVar4 then goto LAB_00d444a1 end
+            me:ClearCommands()
+            xStack_10 = resources:StartMovie("")
+            quest:StartMovieSequence()
+            pCVar13 = 0x1
+            quest:PauseAllNonScriptedEntities((pCVar13 ~= 0))
+            xStack_48 = resources:ScriptThing(0)
+            pCVar8 = xStack_48
+            r5 = quest:GetHealth(pCVar8)
+            fVar2 = 0.0
+            if fVar2 < fret_00 then
+                iVar12 = 0
+                iVar11 = 1
+                iVar10 = 0
+                iVar7 = 0
+                pcVar9 = "TEXT_QST_028_MAZE_HIT"
+                pCVar8 = quest:GetHero()
+                r6 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                iVar7 = me:IsPerformingScriptTask()
+                cVar5 = iVar7
+                while cVar5 do
+                    alive = quest:NewScriptFrame(me)
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        -- TODO(native): goto LAB_00d44494_c3
+                    end
+                    iVar7 = me:IsPerformingScriptTask()
+                    cVar5 = iVar7
+                end
+                alive = not quest:IsActiveThreadTerminating()
+                bVar4 = not alive
+                if bVar4 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    -- LAB_00d44494_c3: (native jump target)
+                    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
+                    goto LAB_00d44498
+                end
             end
-            bVar5 = me:IsPerformingScriptTask()
-        until not (bVar5)
+            me:SetFriendsWithEverythingFlag(me)
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(xStack_20)
+        end
+        alive = quest:NewScriptFrame(me)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        goto FLOW_after_lab_00d441bb
+    end
+    iVar12 = 0
+    iVar11 = 1
+    iVar10 = 0
+    iVar7 = 0
+    pcVar9 = "TEXT_QST_028_MAZE_LEAVE_ME"
+    pCVar8 = quest:GetHero()
+    r7 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+    iVar7 = me:IsPerformingScriptTask()
+    cVar5 = iVar7
+    while cVar5 do
+        alive = quest:NewScriptFrame(me)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        if bVar4 then
+            quest:PauseAllNonScriptedEntities(false)
+            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
+            goto LAB_00d44498
+        end
+        iVar7 = me:IsPerformingScriptTask()
+        cVar5 = iVar7
     end
     alive = not quest:IsActiveThreadTerminating()
-    if alive then return end  -- TODO(native): goto LAB_00d441a3
+    bVar4 = not alive
+    if not bVar4 then return end  -- TODO(native): goto LAB_00d441a3
     quest:PauseAllNonScriptedEntities(false)
-    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)&ppuStack_44;
+    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
     ::LAB_00d44498::
+    resources:DestroyMovie(this_00)
     ::LAB_00d444a1::
+    resources:ReleaseResource(0)
 end
 
 function Init(quest, me)

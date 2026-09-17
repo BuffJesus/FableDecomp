@@ -1,14 +1,14 @@
 -- Generated from the same native helper bodies as the quest draft.
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
-    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_34
+    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38
     local alive = true
     ePriority = 4
     xStack_10 = resources:NewResource()
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, ePriority)
-    xStack_34 = resources:NewActorMap()
-    resources:SetActor(xStack_34, "HERO", xStack_10)
+    xStack_38 = resources:NewActorMap()
+    resources:SetActor(xStack_38, "HERO", xStack_10)
     xStack_20 = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
@@ -37,7 +37,7 @@ function DoMultiplierCutscene(quest, me)
         if not bVar4 then
             string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWLL"
             -- LAB_00dd1d98_c1: (native jump target)
-            resources:RunMacro(string, xStack_34, false, true)
+            resources:RunMacro(string, xStack_38, false, true)
             quest:FixMovieSequenceCamera(false)
             native_arg_sequence_2 = false
             if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -114,7 +114,7 @@ function DoMultiplierCutscene(quest, me)
                 end
                 string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL"
                 ::LAB_00dd1d98::
-                resources:RunMacro(string, xStack_34, false, true)
+                resources:RunMacro(string, xStack_38, false, true)
                 quest:FixMovieSequenceCamera(false)
                 native_arg_sequence_2 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -165,7 +165,7 @@ function DoMultiplierCutscene(quest, me)
                         if bVar4 then goto LAB_00dd1e70 end
                         string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
                     end
-                    resources:RunMacro(string, xStack_34, false, true)
+                    resources:RunMacro(string, xStack_38, false, true)
                     quest:FixMovieSequenceCamera(false)
                     native_arg_sequence_2 = false
                     if quest:GetStateBool("ShownCombatMultiplierTutorial") then
@@ -210,7 +210,7 @@ function DoMultiplierCutscene(quest, me)
     ::FLOW_after_lab_00dd1d98::
     resources:DestroyMovie(xStack_20)
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(xStack_34)
+    resources:DestroyActorMap(xStack_38)
     resources:ReleaseResource(xStack_10)
 end
 

@@ -11,130 +11,158 @@ do
 end
 
 function Main(quest, me)
-    local bVar5, cVar6, fVar11, fVar4, pCVar1, pCVar10, pCVar13, pCVar14, pCVar15, pCVar18, pcVar12, piVar19, ppVar8, ppuStack_a8, r1, r2
+    local resources = quest:RetailResources()
+    local bVar4, cVar5, fVar3, iVar10, iVar8, p1, p4, p5, pCVar6, pThing, pppuVar9, r1, r2, thing, uVar1, xStack_10, xStack_20, xStack_30
     local alive = true
-    quest:FadeScreenOut(0x3f000000, 0)
-    quest:SetThingHasInformation(me)
-    quest:EntitySetAsKillable(me, false)
-    -- TODO(native): ppuStack_90 = *(undefined ***)(this + 0xc);
-    -- TODO(native): ppuStack_8c = *(undefined ***)(this + 0x10);
-    if ppuStack_8c ~= nil then
-        -- TODO(native): *ppuStack_8c = (undefined *)((int)*ppuStack_8c + 1);
+    quest:FadeScreenOut(0.5, 0.0)
+    quest:SetThingHasInformation(me, false, false, false)
+    quest:EntitySetAsKillable(me, false, true)
+    uVar1 = __native_entity_state:GetStateInt("self_0xc")
+    -- TODO(native): thing._4_4_ = uVar1;
+    thing = nil
+    -- TODO(native): thing._8_4_ = piVar2;
+    quest:SetIsPushableByHero(nil --[[missing]], (thing ~= 0))
+    quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
+    bVar4 = false
+    pCVar6 = quest:GetThingWithScriptName("M_DepartureTeacherStand")
+    quest:EntityTeleportToThing(me, pCVar6, bVar4)
+    pCVar6 = nil
+    xStack_30 = resources:NewResource()
+    bVar4 = false
+    if bVar4 ~= 0 then
     end
-    quest:SetIsPushableByHero(nil --[[missing]], false)
-    -- TODO(native): SetHeroGuideToShowQuestCardsWhenSpokenTo is not a ForgeFSE binding
-    quest:SetHeroGuideToShowQuestCardsWhenSpokenTo()
-    ppuStack_a8 = quest:GetThingWithScriptName("M_DepartureTeacherStand")
-    quest:EntityTeleportToThing(ppuStack_a8, nil --[[missing]])
-    if (pCStack_84 ~= nil) and (*pCStack_84 = *pCStack_84 + -1, *pCStack_84 == 0) then
-        -- TODO(native): (**(code **)(pCStack_84 + 4))();
-    end
-    -- TODO(native): bVar5 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_80);
-    if bVar5 then
-    end
-    -- TODO(native): ppVar17 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar1;
-    cVar6 = me:AcquireControl(4)
-    while not cVar6 do
+    bVar4 = resources:TryAcquire(xStack_30, me, 4)
+    while not bVar4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar4 = not alive
+        if bVar4 then
             return
         end
-        cVar6 = me:AcquireControl(4)
+        bVar4 = resources:TryAcquire(0, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
-        cVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
-        if not cVar6 then
+    bVar4 = not alive
+    if not bVar4 then
+        bVar4 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+        if not bVar4 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d5134c end
-            -- TODO(native): bVar5 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_7c);
-            if bVar5 then
+            bVar4 = not alive
+            if bVar4 then goto LAB_00d5134c end
+            xStack_20 = resources:NewResource()
+            bVar4 = false
+            if bVar4 ~= 0 then
             end
-            ppVar8 = quest:GetHero()
-            cVar6 = me:AcquireControl(4)
-            while not cVar6 do
+            iVar10 = 4
+            pppuVar9 = xStack_20
+            pCVar6 = quest:GetHero()
+            bVar4 = resources:TryAcquire(pppuVar9, pCVar6, iVar10)
+            while not bVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then return end  -- TODO(native): goto LAB_00d50ebd
-                r1 = quest:GetHero()
-                cVar6 = me:AcquireControl(4)
+                bVar4 = not alive
+                if bVar4 then
+                    resources:ReleaseResource(xStack_20)
+                    resources:ReleaseResource(0)
+                    return
+                end
+                iVar10 = 4
+                pppuVar9 = xStack_20
+                pCVar6 = quest:GetHero()
+                bVar4 = resources:TryAcquire(pppuVar9, pCVar6, iVar10)
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then
+            bVar4 = not alive
+            if bVar4 then
                 -- LAB_00d50ebd: (native jump target)
+                resources:ReleaseResource(xStack_20)
+                resources:ReleaseResource(0)
                 return
             end
-            -- TODO(native): StdMap_Construct_API();
-            -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&ppCStack_a4,(CCharString *)&pppuStack_b4);
-            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar9,pCVar16);
-            -- TODO(native): pCVar9 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&ppCStack_a4,(CCharString *)&pppuStack_b4);
-            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)pCVar9,pCVar16);
-            -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&pCStack_78);
+            pCVar6 = resources:NewActorMap()
+            resources:SetActor(pCVar6, "GM", 0)
+            resources:SetActor(pCVar6, "HERO", xStack_20)
+            xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(false)
+            quest:PauseAllNonScriptedEntities(true)
+            quest:FixMovieSequenceCamera(true)
+            resources:RunMacro("CS_GUILD_DEPARTURE_GM_DONE", pCVar6, false, true)
             quest:FixMovieSequenceCamera(false)
-            ppVar8 = 0x0
-            -- TODO(native): RunCutsceneMacro_Func();
-            quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            -- TODO(native): StdMap_Destroy_API();
+            resources:DestroyMovie(xStack_10)
+            resources:DestroyActorMap(pCVar6)
+            resources:ReleaseResource(xStack_20)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_09", "GuildWoods", "")
             quest:ActivateQuest("Q_GuildTrainingWoodsDeparture")
             quest:SetQuestAsPersistent("Q_GuildTrainingWoodsDeparture", false)
             quest:SetMasterGameState("HeroTakingGuildTest", true)
         end
-        cVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
-        while cVar6 do
-            alive = quest:NewScriptFrame(me)
-            alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d5134c end
-            cVar6 = me:IsTalkedToByHero()
-            if cVar6 then
+        bVar4 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+        if bVar4 then
+            repeat
+                alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d5134c end
-                quest:StartMovieSequence()
-                quest:PauseAllNonScriptedEntities(false)
-                -- TODO(native): uVar7 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&uStack_98);
-                fVar11 = quest:GetHealth(r1)
-                fVar4 = _DAT_0122dedc
-                piVar19 = 0x0
-                if fVar4 < fVar11 then
-                    bVar5 = false
-                    pCVar15 = 0x1
-                    pCVar14 = 0x0
-                    pCVar13 = 0x0
-                    pcVar12 = "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN"
-                    pCVar10 = quest:GetHero()
-                    r2 = me:Speak(pCVar10, pcVar12, pCVar13, (pCVar14 ~= 0), (pCVar15 ~= 0), bVar5)
-                    bVar5 = me:IsPerformingScriptTask()
-                    if bVar5 then
-                        repeat
+                bVar4 = not alive
+                if bVar4 then goto LAB_00d5134c end
+                cVar5 = me:IsTalkedToByHero()
+                if cVar5 then
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar4 = not alive
+                    if bVar4 then goto LAB_00d5134c end
+                    xStack_20 = resources:StartMovie("")
+                    quest:StartMovieSequence()
+                    quest:PauseAllNonScriptedEntities(true)
+                    pCVar6 = resources:ScriptThing(0)
+                    pCVar6 = pCVar6
+                    r1 = quest:GetHealth(pCVar6)
+                    fVar3 = 0.0
+                    pCVar6 = nil
+                    if fVar3 < fret_0 then
+                        p5 = 0
+                        p4 = 1
+                        iVar10 = 0
+                        iVar8 = 0
+                        p1 = "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN"
+                        pCVar6 = quest:GetHero()
+                        r2 = me:Speak(pCVar6, p1, iVar8, (iVar10 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                        iVar8 = me:IsPerformingScriptTask()
+                        cVar5 = iVar8
+                        while cVar5 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            if not alive then
-                                quest:PauseAllNonScriptedEntities((piVar19 ~= 0))
+                            bVar4 = not alive
+                            if bVar4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_20)
+                                resources:ReleaseResource(0)
                                 return
                             end
-                            bVar5 = me:IsPerformingScriptTask()
-                        until not (bVar5)
+                            iVar8 = me:IsPerformingScriptTask()
+                            cVar5 = iVar8
+                        end
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar4 = not alive
+                        if bVar4 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:ReleaseResource(0)
+                            resources:DestroyMovie(xStack_20)
+                            return
+                        end
                     end
-                    alive = not quest:IsActiveThreadTerminating()
-                    if not alive then
-                        quest:PauseAllNonScriptedEntities(false)
-                        return
-                    end
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_20)
                 end
-                quest:PauseAllNonScriptedEntities(false)
-            end
-            cVar6 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+                bVar4 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
+            until not (bVar4)
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
-            quest:ClearThingHasInformation(nil --[[missing]])
+        bVar4 = not alive
+        if not bVar4 then
+            quest:ClearThingHasInformation(me)
         end
     end
     ::LAB_00d5134c::
+    resources:ReleaseResource(0)
 end
 
 function Init(quest, me)

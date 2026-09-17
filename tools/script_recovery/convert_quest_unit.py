@@ -164,7 +164,7 @@ def disambiguate_call_labels(decompile, calls):
     return decompile, renamed
 
 
-RE_STACK_OPERAND = re.compile(r'^(?P<cast>\((?:[\w :]+\*+)\))?(?P<amp>&?)\(?(?P<name>[A-Za-z]+Stack_[0-9a-f]+|local_[0-9a-f]+)(?: \+ (?P<plus>4|8|0xc|12))?\)?$')
+RE_STACK_OPERAND = re.compile(r'^(?P<cast>\((?:[\w :]+\*+|int|uint|undefined4)\))?(?P<amp>&?)\(?(?P<name>[A-Za-z]+Stack_[0-9a-f]+|local_[0-9a-f]+|stack0x[0-9a-f]+)(?: \+ (?P<plus>4|8|0xc|12))?\)?$')
 
 
 def _call_spans(text, label):
@@ -186,11 +186,14 @@ def _align(site, args):
     cannot be reconciled with the recorded register/push operands (a by-value slot, a hidden return pointer
     push the decompiler folded away, ...). Printed order is (ecx, edx, pushes right-to-left).'''
     pushed = list(reversed(site.get('pushedStack', [])))
+    values = list(reversed(site.get('pushedValue') or [None] * len(pushed)))
     ecx, edx = site.get('ecxStack'), site.get('edxStack')
     lead = len(args) - len(pushed)          # printed register arguments (this / __fastcall ecx, edx)
     if lead < 0 or lead > 2 or (ecx is not None and lead < 1) or (edx is not None and lead < 2):
         return None                         # a stack-loaded register that is not printed: an unprinted push is hiding
-    return [ecx, edx][:lead] + pushed
+    # (address slot, value slot) per printed argument: `&X` / pointer casts name the object at the address,
+    # a bare `X` names the slot whose value was loaded
+    return list(zip([ecx, edx][:lead] + pushed, [site.get('ecxValue'), site.get('edxValue')][:lead] + values))
 
 
 CTOR_LABELS = {'StdMap_Construct_API'}
@@ -225,11 +228,15 @@ def restore_stack_operands(decompile, fn):
         sites.append((pos, end, args, slots, label))
         if slots is None:
             return
-        for k, (arg, off) in enumerate(zip(args, slots)):
+        for k, (arg, (addr, value)) in enumerate(zip(args, slots)):
             m = RE_STACK_OPERAND.match(arg.strip())
-            if m and off is not None and off < 0:
+            if not m:
+                continue
+            by_value = not m.group('amp') and not (m.group('cast') and '*' in m.group('cast')) and not m.group('plus')
+            off = (value if value is not None else addr) if by_value else addr   # a bare array name is still passed by address
+            if off is not None and off < 0:
                 plus = int(m.group('plus'), 0) if m.group('plus') else 0
-                ctor = (not vtable and k == 0 and _is_ctor_label(label)) or (vtable and k >= 1 and bool(RE_THING_SLOT_CAST.match(arg.strip())))
+                ctor = not by_value and ((not vtable and k == 0 and _is_ctor_label(label)) or (vtable and k >= 1 and bool(RE_THING_SLOT_CAST.match(arg.strip()))))
                 # the argument's address is the object; the bare name only stands for it when no offset is added
                 uses.append((pos, k, m.group('name') if not plus else None, off, plus, ctor))
 
@@ -255,6 +262,8 @@ def restore_stack_operands(decompile, fn):
             by_label.setdefault(c['currentName'], []).append(c)
     for label, group in by_label.items():
         spans = _call_spans(text, label)
+        if len(spans) != len(group) and re.search(r'[?@]', label):
+            spans = _call_spans(text, re.sub(r'[^\w:]', '_', label))     # Ghidra's C spelling of a mangled name
         if len(spans) != len(group):
             continue
         for (i, a, e), site in zip(spans, sorted(group, key=lambda c: int(c['site'], 16))):
@@ -295,7 +304,9 @@ def restore_stack_operands(decompile, fn):
                 continue
             name = m.group('name')
             plus = int(m.group('plus'), 0) if m.group('plus') else 0
-            addr = slots[k] if slots is not None and k < len(slots) and slots[k] is not None and slots[k] < 0 else None
+            by_value = not m.group('amp') and not (m.group('cast') and '*' in m.group('cast')) and not m.group('plus')
+            slot = ((slots[k][1] if slots[k][1] is not None else slots[k][0]) if by_value else slots[k][0]) if slots is not None and k < len(slots) else None
+            addr = slot if slot is not None and slot < 0 else None
             if addr is None:
                 near = sorted((abs(p - start), p, o) for p, o in by_name.get(name, []))
                 if not near:
@@ -459,8 +470,10 @@ class UnitConverter:
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
                 decompile, renamed = disambiguate_call_labels(restore_stack_operands(fn['decompile'], fn), fn.get('calls', []))
                 spec_l.call_labels.update(renamed)
-                # Ghidra prints some namespaced labels with `__` in C output
+                # Ghidra prints some namespaced labels with `__` in C output, and mangled names
+                # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`
                 spec_l.call_labels.update({k.replace('::', '__'): v for k, v in list(spec_l.call_labels.items()) if '::' in k})
+                spec_l.call_labels.update({re.sub(r'[^\w:]', '_', k): v for k, v in list(spec_l.call_labels.items()) if re.search(r'[?@]', k)})
                 spec_l.hidden_thing_returns = self.hidden_thing_returns
                 spec_l.code_range = self.code_range
                 if signature.get('bsimVoid'):

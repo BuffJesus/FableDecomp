@@ -322,7 +322,7 @@ function Main(quest, me)
                         return
                     end
 
-                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), thing_38)
+                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), (nil))
                     helper_DCEC50(quest, me, 0)
                 end
                 whisperSpawned = quest:GetStateBool("WhisperSpawned")

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, xStack_20, xStack_28
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, r1, thing_38, xStack_10, xStack_28
     local alive = true
     bVar6 = false
     alive = quest:NewScriptFrame(me)
@@ -363,7 +363,7 @@ function Main(quest, me)
                         return
                     end
                     xStack_28 = nil
-                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), thing_38)
+                    quest:SetStateThing(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_TeamCrateCarrier"), xStack_28)
                     helper_DCEC50(quest, me, 0)
                 end
                 cVar4 = quest:GetStateBool("WhisperSpawned")
@@ -373,17 +373,17 @@ function Main(quest, me)
             if not bVar6 then
                 quest:EntityStopFollowing(me)
                 r1 = quest:GetNearestWithScriptName(me, "TeamExitMarker")
-                xStack_20 = resources:NewResource()
+                xStack_10 = resources:NewResource()
                 bVar6 = false
                 if bVar6 ~= 0 then
                 end
-                bVar6 = resources:TryAcquire(xStack_20, me, 4)
+                bVar6 = resources:TryAcquire(xStack_10, me, 4)
                 while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00dcec33 end
-                    bVar6 = resources:TryAcquire(xStack_20, me, 4)
+                    bVar6 = resources:TryAcquire(xStack_10, me, 4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -422,7 +422,7 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00dcec33::
-                resources:ReleaseResource(xStack_20)
+                resources:ReleaseResource(xStack_10)
             end
         end
     end

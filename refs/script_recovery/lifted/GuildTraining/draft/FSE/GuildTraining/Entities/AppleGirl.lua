@@ -11,336 +11,368 @@ do
 end
 
 function Main(quest, me)
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, fVar13, fVar2, fVar20, iVar7, native_arg_sequence_1, native_arg_switch_2, pCVar1, pCVar11, pCVar16, pCVar17, pCVar18, pCVar21, pCVar6, pcVar15, ppVar8, r1, r2, r3, r4, uVar19, uVar5
+    local resources = quest:RetailResources()
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, fVar1, fVar13, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, r5, r6, r7, u_stk_74, xStack_18, xStack_60, xStack_70_2, xStack_84, xStack_c
     local alive = true
-    -- TODO(native): bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)&ppuStack_84);
-    if bVar3 then
+    u_stk_74 = 0
+    xStack_84 = resources:NewResource()
+    bVar2 = false
+    if bVar2 ~= 0 then
     end
-    cVar4 = me:AcquireControl(4)
-    while not cVar4 do
+    bVar2 = resources:TryAcquire(xStack_84, me, 4)
+    while not bVar2 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then
+        bVar2 = not alive
+        if bVar2 then
             return
         end
-        cVar4 = me:AcquireControl(4)
+        bVar2 = resources:TryAcquire(xStack_84, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    if not alive then
+    bVar2 = not alive
+    if bVar2 then
+        resources:ReleaseResource(xStack_84)
         return
     end
-    me:SetFriendsWithEverythingFlag(nil --[[missing]])
-    quest:EntitySetAsKillable(me, false)
+    me:SetFriendsWithEverythingFlag(me)
+    quest:EntitySetAsKillable(me, false, true)
     r1 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
     quest:EntityAttachToVillage(me, r1)
     __native_entity_state:SetStateInt("AppleMode", 0)
-    uVar5 = quest:RegisterTimer()
-    quest:SetTimer(uVar5, 0xf)
+    iVar4 = quest:RegisterTimer()
+    quest:SetTimer(iVar4, 0xf)
     __native_entity_state:SetStateInt("CurrentApples", 0)
     __native_entity_state:SetStateBool("ChildAppleMode", false)
-    quest:SetThingHasInformation(nil --[[missing]])
+    quest:SetThingHasInformation(me, false, true, false)
     iVar7 = __native_entity_state:GetStateInt("AppleMode")
     while iVar7 == 0 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        if not alive then goto LAB_00d3e1b6 end
-        fVar20 = 5.5
+        bVar2 = not alive
+        if bVar2 then goto LAB_00d3e1b6 end
+        fVar13 = 5.5
         pCVar6 = quest:GetHero()
-        bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar20)
-        __native_condition_1 = bVar3
+        bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar13)
+        __native_condition_1 = bVar2
         if __native_condition_1 then
-            iVar7 = quest:GetTimer(uVar5)
+            iVar7 = quest:GetTimer(iVar4)
             __native_condition_1 = iVar7 < 1
         end
         if __native_condition_1 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d3e1b6 end
-            ppVar8 = quest:AddNewConversation(me, false, false)
-            uVar5 = quest:GetHero()
-            quest:AddPersonToConversation(ppVar8, uVar5)
-            uVar5 = quest:GetHero()
-            quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_HELP", me, uVar5, false)
-            quest:SetTimer(uVar5, 0xf)
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d3e1b6 end
+            iVar4 = quest:AddNewConversation(me, false, false)
+            pCVar6 = quest:GetHero()
+            quest:AddPersonToConversation(iVar4, pCVar6)
+            pCVar6 = quest:GetHero()
+            quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_HELP", me, pCVar6, false)
+            quest:SetTimer(iVar4, 0xf)
         end
-        cVar4 = me:IsTalkedToByHero()
-        if cVar4 then
+        bVar2 = me:IsTalkedToByHero()
+        if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d3e1b6 end
-            pCVar16 = ""
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d3e1b6 end
+            xStack_60 = resources:StartMovie("")
             quest:StartMovieSequence()
-            ppVar8 = 0x1
-            quest:PauseAllNonScriptedEntities((ppVar8 ~= 0))
+            pCVar6 = 0x1
+            quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
             if not __native_entity_state:GetStateBool("HaveChatted") then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d3e06c end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d3e06c end
                 __native_entity_state:SetStateBool("HaveChatted", true)
-                -- TODO(native): uVar5 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&uStack_d8);
-                fVar13 = quest:GetHealth(nil --[[missing]])
-                fVar2 = _DAT_0122dedc
-                if fVar2 < fVar13 then
-                    bVar3 = false
-                    pCVar18 = 0x1
-                    pCVar17 = 0x0
-                    pCVar16 = 0x0
-                    pcVar15 = "TEXT_QST_028_APPLEGIRL_CHAT"
-                    pCVar6 = quest:GetHero()
-                    r2 = me:Speak(pCVar6, pcVar15, pCVar16, (pCVar17 ~= 0), (pCVar18 ~= 0), bVar3)
-                    bVar3 = me:IsPerformingScriptTask()
-                    if bVar3 then
-                        repeat
-                            alive = quest:NewScriptFrame(me)
-                            alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d3d948 end
-                            bVar3 = me:IsPerformingScriptTask()
-                        until not (bVar3)
+                xStack_18 = resources:ScriptThing(xStack_84)
+                pCVar5 = xStack_18
+                r2 = quest:GetHealth(pCVar5)
+                fVar1 = 0.0
+                if fVar1 < fret_0 then
+                    iVar12 = 0
+                    iVar11 = 1
+                    iVar4 = 0
+                    iVar7 = 0
+                    pcVar10 = "TEXT_QST_028_APPLEGIRL_CHAT"
+                    pCVar5 = quest:GetHero()
+                    r3 = me:Speak(pCVar5, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                    iVar7 = me:IsPerformingScriptTask()
+                    cVar3 = iVar7
+                    while cVar3 do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar2 = not alive
+                        if bVar2 then goto LAB_00d3d948 end
+                        iVar7 = me:IsPerformingScriptTask()
+                        cVar3 = iVar7
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d3e06c end
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d3e06c end
                 end
-                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_NO", "TEXT_OBJECT_HERO_ANSWER_YES", "", true)
+                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
             else
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d3e087 end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d3e087 end
                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION_AGAIN", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
             end
             iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
             while iVar7 < 0 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then
+                bVar2 = not alive
+                if bVar2 then
                     quest:PauseAllNonScriptedEntities(false)
-                    quest:DeregisterTimer(uVar5)
+                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_60);
+                    quest:DeregisterTimer(iVar4)
+                    xStack_70_2 = nil
+                    if (r1._0_4_ ~= nil) and (*r1._0_4_ = *r1._0_4_ + -1, *r1._0_4_ == 0) then
+                        -- TODO(native): (**(code **)(xStack_70._0_4_ + 4))();
+                    end
+                    u_stk_74 = 0
                     return
                 end
                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d3e087 end
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d3e087 end
             alive = not quest:IsActiveThreadTerminating()
+            bVar2 = not alive
             if iVar7 == 1 then
-                if not alive then goto LAB_00d3e06c end
+                if bVar2 then goto LAB_00d3e06c end
                 __native_entity_state:SetStateInt("AppleMode", 1)
-                cVar4 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
-                if cVar4 then
+                bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
+                if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d3e087 end
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d3e087 end
                     __native_entity_state:SetStateBool("ChildAppleMode", true)
                 end
             else
-                if not alive then goto LAB_00d3e06c end
-                -- TODO(native): uVar5 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&uStack_d8);
-                uVar19 = SUB41(ppVar8,0)
-                fVar13 = quest:GetHealth(nil --[[missing]])
-                fVar2 = _DAT_0122dedc
-                if fVar2 < fVar13 then
-                    bVar3 = false
-                    pCVar18 = 0x1
-                    pCVar17 = 0x0
-                    pCVar16 = 0x0
-                    pcVar15 = "TEXT_QST_028_APPLEGIRL_IMPLORE"
+                if bVar2 then goto LAB_00d3e06c end
+                xStack_c = resources:ScriptThing(xStack_84)
+                pCVar5 = xStack_c
+                r4 = quest:GetHealth(pCVar5)
+                fVar1 = 0.0
+                if fVar1 < fret_00 then
+                    iVar12 = 0
+                    iVar11 = 1
+                    iVar4 = 0
+                    iVar7 = 0
+                    pcVar10 = "TEXT_QST_028_APPLEGIRL_IMPLORE"
                     pCVar6 = quest:GetHero()
-                    r3 = me:Speak(pCVar6, pcVar15, pCVar16, (pCVar17 ~= 0), (pCVar18 ~= 0), bVar3)
-                    bVar3 = me:IsPerformingScriptTask()
-                    if bVar3 then
-                        repeat
-                            alive = quest:NewScriptFrame(me)
-                            alive = not quest:IsActiveThreadTerminating()
-                            if not alive then goto LAB_00d3d948 end
-                            bVar3 = me:IsPerformingScriptTask()
-                        until not (bVar3)
+                    r5 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                    iVar7 = me:IsPerformingScriptTask()
+                    cVar3 = iVar7
+                    while cVar3 do
+                        alive = quest:NewScriptFrame(me)
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar2 = not alive
+                        if bVar2 then goto LAB_00d3d948 end
+                        iVar7 = me:IsPerformingScriptTask()
+                        cVar3 = iVar7
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d3e06c end
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d3e06c end
                 end
             end
             quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(xStack_84)
         end
-        uVar5 = uVar5
+        iVar4 = xStack_84
         iVar7 = __native_entity_state:GetStateInt("AppleMode")
     end
     alive = not quest:IsActiveThreadTerminating()
-    if alive then
+    bVar2 = not alive
+    if not bVar2 then
         iVar7 = __native_entity_state:GetStateInt("AppleMode")
         while iVar7 == 1 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d3e1b6 end
-            if __native_entity_state:GetStateBool("ChildAppleMode") then
-                pCVar11 = (me | 1)
-                cVar4 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
-                if cVar4 then return end  -- TODO(native): goto LAB_00d3d987
-                bVar3 = true
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d3e1b6 end
+            if __native_entity_state:GetStateBool("ChildAppleMode") == '\x01' then
+                u_stk_74 = u_stk_74 | 1
+                bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
+                if bVar2 then
+                    bVar2 = false
+                    goto FLOW_after_lab_00d3d987
+                end
+                bVar2 = true
             else
                 -- LAB_00d3d987: (native jump target)
-                bVar3 = false
+                bVar2 = false
             end
-            if (pCVar11 & 1) ~= 0 then
-                pCVar11 = (pCVar11 & 0xfffffffe)
+            ::FLOW_after_lab_00d3d987::
+            if (u_stk_74 & 1) ~= 0 then
+                u_stk_74 = u_stk_74 & 0xfffffffe
             end
-            if bVar3 then
+            if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d3e1b6 end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d3e1b6 end
                 quest:RemoveThing(me, false, true)
             end
-            fVar20 = 5.5
+            fVar13 = 5.5
             pCVar6 = quest:GetHero()
-            bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar20)
-            __native_condition_2 = bVar3
+            bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar13)
+            __native_condition_2 = bVar2
             if __native_condition_2 then
-                iVar7 = quest:GetTimer(uVar5)
+                iVar7 = quest:GetTimer(iVar4)
                 __native_condition_2 = iVar7 < 1
             end
             if __native_condition_2 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d3e1b6 end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d3e1b6 end
                 if __native_entity_state:GetStateInt("CurrentApples") == 0 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d3e1b6 end
-                    ppVar8 = quest:AddNewConversation(me, false, false)
-                    uVar5 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar8, uVar5)
-                    uVar5 = quest:GetHero()
-                    quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_ANY_APPLES", me, uVar5, false)
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d3e1b6 end
+                    iVar4 = quest:AddNewConversation(me, false, false)
+                    pCVar6 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar4, pCVar6)
+                    pCVar6 = quest:GetHero()
+                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_ANY_APPLES", me, pCVar6, false)
                 else
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d3e1b6 end
-                    ppVar8 = quest:AddNewConversation(me, false, false)
-                    uVar5 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar8, uVar5)
-                    uVar5 = quest:GetHero()
-                    quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_MORE_APPLES", me, uVar5, false)
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d3e1b6 end
+                    iVar4 = quest:AddNewConversation(me, false, false)
+                    pCVar6 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar4, pCVar6)
+                    pCVar6 = quest:GetHero()
+                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_MORE_APPLES", me, pCVar6, false)
                 end
-                quest:SetTimer(uVar5, 0xf)
+                quest:SetTimer(iVar4, xStack_88)
             end
-            cVar4 = me:IsTalkedToByHero()
-            if not cVar4 then goto FLOW_native_label_1 end
+            bVar2 = me:IsTalkedToByHero()
+            if not bVar2 then goto FLOW_native_label_1 end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d3e1b6 end
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d3e1b6 end
             while true do
-                pCVar11 = (pCVar11 | 2)
-                uVar5 = quest:GetHero()
-                cVar4 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", uVar5)
-                native_arg_sequence_1 = false
-                if not cVar4 then
-                    native_arg_sequence_1 = true
+                u_stk_74 = u_stk_74 | 2
+                pCVar6 = quest:GetHero()
+                bVar2 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", pCVar6)
+                if (bVar2) and (__native_entity_state:GetStateInt("CurrentApples") + 0x0 < 4) then
+                    bVar2 = true
                 else
-                    native_arg_sequence_1 = false
+                    bVar2 = false
                 end
-                if not native_arg_sequence_1 then
-                    -- TODO(native): ppVar10 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *) (*(int *)(this + 0x20) + (int)pCStack_ac);
-                    if 3 < ppVar10 then
-                        native_arg_sequence_1 = true
-                    else
-                        native_arg_sequence_1 = false
-                    end
+                if (u_stk_74 & 2) ~= 0 then
+                    u_stk_74 = u_stk_74 & 0xfffffffd
                 end
-                if native_arg_sequence_1 then
-                    bVar3 = false
-                else
-                    bVar3 = true
-                end
-                if (pCVar11 & 2) ~= 0 then
-                    pCVar11 = (pCVar11 & 0xfffffffd)
-                end
-                if not bVar3 then break end
+                if not bVar2 then break end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d3e1b6 end
-                -- TODO(native): pCStack_ac = (CScriptThing *)((int)pCStack_ac + 1);
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d3e1b6 end
+                -- TODO(native): xStack_64 = (CCharString)((int)xStack_64 + 1);
                 quest:TakeObjectFromHero("OBJECT_APPLE_RED_01")
             end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d3e1b6 end
-            if pCStack_ac == 0x1 then
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d3e1b6 end
+            if xStack_64 == 0x1 then
                 alive = not quest:IsActiveThreadTerminating()
-                if not alive then goto LAB_00d3e1b6 end
-                ppVar8 = quest:AddNewConversation(me, false, false)
-                uVar5 = quest:GetHero()
-                quest:AddPersonToConversation(ppVar8, uVar5)
-                uVar5 = quest:GetHero()
-                quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_ONE_MORE_APPLE", me, uVar5, false)
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d3e1b6 end
+                iVar4 = quest:AddNewConversation(me, false, false)
+                pCVar6 = quest:GetHero()
+                quest:AddPersonToConversation(iVar4, pCVar6)
+                pCVar6 = quest:GetHero()
+                quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_ONE_MORE_APPLE", me, pCVar6, false)
             else
-                if pCStack_ac == nil then
+                if xStack_64 == nil then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d3e1b6 end
-                    ppVar8 = quest:AddNewConversation(me, false, false)
-                    uVar5 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar8, uVar5)
-                    uVar5 = quest:GetHero()
-                    quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_NO_MORE_APPLES", me, uVar5, false)
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d3e1b6 end
+                    iVar4 = quest:AddNewConversation(me, false, false)
+                    pCVar6 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar4, pCVar6)
+                    pCVar6 = quest:GetHero()
+                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_NO_MORE_APPLES", me, pCVar6, false)
                 else
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then goto LAB_00d3e1b6 end
-                    ppVar8 = quest:AddNewConversation(me, false, false)
-                    uVar5 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar8, uVar5)
-                    uVar5 = quest:GetHero()
-                    quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_MANY_MORE_APPLES", me, uVar5, false)
+                    bVar2 = not alive
+                    if bVar2 then goto LAB_00d3e1b6 end
+                    iVar4 = quest:AddNewConversation(me, false, false)
+                    pCVar6 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar4, pCVar6)
+                    pCVar6 = quest:GetHero()
+                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_MANY_MORE_APPLES", me, pCVar6, false)
                 end
             end
-            quest:Pause(0x3f800000)
-            __native_entity_state:SetStateInt("CurrentApples", __native_entity_state:GetStateInt("CurrentApples") + pCStack_ac)
-            if pCStack_ac == nil then goto FLOW_native_label_1 end
+            quest:Pause(1.0)
+            __native_entity_state:SetStateInt("CurrentApples", __native_entity_state:GetStateInt("CurrentApples") + xStack_64)
+            if xStack_64 == nil then goto FLOW_native_label_1 end
             alive = not quest:IsActiveThreadTerminating()
-            if not alive then goto LAB_00d3e1b6 end
-            ppVar8 = quest:AddNewConversation(me, false, false)
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d3e1b6 end
+            iVar7 = quest:AddNewConversation(me, false, false)
             native_arg_switch_2 = __native_entity_state:GetStateInt("CurrentApples")
             repeat
                 if native_arg_switch_2 == 1 then
-                    uVar5 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar8, uVar5)
-                    uVar5 = quest:GetHero()
-                    quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_THREE_NEEDED", me, uVar5, false)
+                    pCVar6 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar7, pCVar6)
+                    pCVar6 = quest:GetHero()
+                    quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPLEGIRL_THREE_NEEDED", me, pCVar6, false)
                     break
                 else
                     if native_arg_switch_2 == 2 then
-                        uVar5 = quest:GetHero()
-                        quest:AddPersonToConversation(ppVar8, uVar5)
-                        uVar5 = quest:GetHero()
-                        quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_TWO_NEEDED", me, uVar5, false)
+                        pCVar6 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar7, pCVar6)
+                        pCVar6 = quest:GetHero()
+                        quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPLEGIRL_TWO_NEEDED", me, pCVar6, false)
                         break
                     else
                         if native_arg_switch_2 == 3 then
-                            uVar5 = quest:GetHero()
-                            quest:AddPersonToConversation(ppVar8, uVar5)
-                            uVar5 = quest:GetHero()
-                            quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_ONE_NEEDED", me, uVar5, false)
-                            -- TODO(native): paVar9 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)aCStack_80;
+                            pCVar6 = quest:GetHero()
+                            quest:AddPersonToConversation(iVar7, pCVar6)
+                            pCVar6 = quest:GetHero()
+                            quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPLEGIRL_ONE_NEEDED", me, pCVar6, false)
                             break
                         else
                             if native_arg_switch_2 == 4 then
-                                -- TODO(native): CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&ppuStack_a8);
-                                pCVar16 = ""
+                                xStack_60 = resources:StartMovie("")
                                 quest:StartMovieSequence()
-                                uVar19 = 1
-                                quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
-                                -- TODO(native): uVar5 = CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&uStack_d8);
-                                fVar13 = quest:GetHealth(nil --[[missing]])
-                                fVar2 = _DAT_0122dedc
-                                if fVar2 < fVar13 then
-                                    bVar3 = false
-                                    pCVar18 = 0x1
-                                    pCVar17 = 0x0
-                                    pCVar16 = 0x0
-                                    pcVar15 = "TEXT_QST_028_APPLEGIRL_THANKS"
+                                pCVar5 = 0x1
+                                quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
+                                xStack_c = resources:ScriptThing(xStack_84)
+                                pCVar6 = xStack_c
+                                r6 = quest:GetHealth(pCVar6)
+                                fVar1 = 0.0
+                                if fVar1 < fret_01 then
+                                    iVar12 = 0
+                                    iVar11 = 1
+                                    iVar4 = 0
+                                    iVar7 = 0
+                                    pcVar10 = "TEXT_QST_028_APPLEGIRL_THANKS"
                                     pCVar6 = quest:GetHero()
-                                    r4 = me:Speak(pCVar6, pcVar15, pCVar16, (pCVar17 ~= 0), (pCVar18 ~= 0), bVar3)
-                                    bVar3 = me:IsPerformingScriptTask()
-                                    if bVar3 then
-                                        repeat
-                                            alive = quest:NewScriptFrame(me)
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            if not alive then goto LAB_00d3e06c end
-                                            bVar3 = me:IsPerformingScriptTask()
-                                        until not (bVar3)
+                                    r7 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                                    iVar7 = me:IsPerformingScriptTask()
+                                    cVar3 = iVar7
+                                    while cVar3 do
+                                        alive = quest:NewScriptFrame(me)
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar2 = not alive
+                                        if bVar2 then goto LAB_00d3e06c end
+                                        iVar7 = me:IsPerformingScriptTask()
+                                        cVar3 = iVar7
                                     end
                                     alive = not quest:IsActiveThreadTerminating()
-                                    if not alive then goto LAB_00d3e087 end
+                                    bVar2 = not alive
+                                    if bVar2 then goto LAB_00d3e087 end
                                 end
                                 quest:GiveHeroObject("OBJECT_PIE_BLUEBERRY_01", -1)
                                 __native_entity_state:SetStateInt("AppleMode", 2)
                                 quest:ClearThingHasInformation(me)
                                 quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_60)
                                 goto FLOW_native_label_1
                             else
                                 goto FLOW_native_label_1
@@ -349,68 +381,79 @@ function Main(quest, me)
                     end
                 end
             until not (false)
-            quest:Pause(0x3f800000)
+            quest:Pause(1.0)
             ::FLOW_native_label_1::
             iVar7 = __native_entity_state:GetStateInt("AppleMode")
         end
         alive = not quest:IsActiveThreadTerminating()
-        if alive then
+        bVar2 = not alive
+        if not bVar2 then
             alive = not quest:IsActiveThreadTerminating()
-            cVar4 = extraout_AL_30
-            while cVar4 == 0 do
-                if __native_entity_state:GetStateBool("ChildAppleMode") then
-                    pCVar11 = (pCVar11 | 4)
-                    cVar4 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
-                    if cVar4 then return end  -- TODO(native): goto LAB_00d3e0a0
-                    bVar3 = true
+            bVar2 = not alive
+            while not bVar2 do
+                if __native_entity_state:GetStateBool("ChildAppleMode") == '\x01' then
+                    u_stk_74 = u_stk_74 | 4
+                    bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
+                    if bVar2 then
+                        bVar2 = false
+                        goto FLOW_after_lab_00d3e0a0
+                    end
+                    bVar2 = true
                 else
                     -- LAB_00d3e0a0: (native jump target)
-                    bVar3 = false
+                    bVar2 = false
                 end
-                if (pCVar11 & 4) ~= 0 then
-                    pCVar11 = 0x0
+                ::FLOW_after_lab_00d3e0a0::
+                if (u_stk_74 & 4) ~= 0 then
+                    u_stk_74 = u_stk_74 & 0xfffffffb
                 end
-                if bVar3 then
+                if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then break end
+                    bVar2 = not alive
+                    if bVar2 then break end
                     quest:RemoveThing(me, false, true)
                 end
-                fVar20 = 5.5
+                fVar13 = 5.5
                 pCVar6 = quest:GetHero()
-                bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar20)
-                __native_condition_3 = bVar3
+                bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar13)
+                __native_condition_3 = bVar2
                 if __native_condition_3 then
-                    iVar7 = quest:GetTimer(uVar5)
+                    iVar7 = quest:GetTimer(iVar4)
                     __native_condition_3 = iVar7 < 1
                 end
                 if __native_condition_3 then
                     alive = not quest:IsActiveThreadTerminating()
-                    if not alive then break end
-                    ppVar8 = quest:AddNewConversation(me, false, false)
-                    uVar5 = quest:GetHero()
-                    quest:AddPersonToConversation(ppVar8, uVar5)
-                    uVar5 = quest:GetHero()
-                    quest:AddLineToConversation(ppVar8, "TEXT_QST_028_APPLEGIRL_THANKS_AGAIN", me, uVar5, false)
-                    quest:SetTimer(uVar5, 0xf)
+                    bVar2 = not alive
+                    if bVar2 then break end
+                    iVar4 = quest:AddNewConversation(me, false, false)
+                    pCVar6 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar4, pCVar6)
+                    pCVar6 = quest:GetHero()
+                    quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_THANKS_AGAIN", me, pCVar6, false)
+                    quest:SetTimer(iVar4, xStack_88)
                 end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                cVar4 = extraout_AL_33
+                bVar2 = not alive
             end
         end
     end
     ::LAB_00d3e1b6::
     ::LAB_00d3e1bf::
+    resources:DestroyMovie(xStack_60)
     do return end
     ::LAB_00d3d948::
     quest:PauseAllNonScriptedEntities(false)
-    quest:DeregisterTimer(uVar5)
+    resources:DestroyMovie(xStack_60)
+    quest:DeregisterTimer(iVar4)
     goto LAB_00d3e1bf
     ::LAB_00d3e06c::
     quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(xStack_64_2)
     goto LAB_00d3e1b6
     ::LAB_00d3e087::
     quest:PauseAllNonScriptedEntities(false)
+    resources:ReleaseResource(xStack_84)
     goto LAB_00d3e1b6
 end
 
@@ -419,12 +462,6 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, context)
-    local appleMode = quest:GetStateBool("AppleMode") or false
-    appleMode = quest:PersistTransferBool(context, "AppleMode", appleMode)
-    quest:SetStateBool("AppleMode", appleMode)
-    local currentApples = quest:GetStateBool("CurrentApples") or false
-    currentApples = quest:PersistTransferBool(context, "CurrentApples", currentApples)
-    quest:SetStateBool("CurrentApples", currentApples)
 end
 
 function OnPredicateFail(quest, me)

@@ -1025,7 +1025,7 @@ class Lifter:
         if arg.startswith('"'):
             return "string"
         # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
-        accessor = re.match(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*))\(', arg.strip())
+        accessor = re.match(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*)|RESOURCE_ScriptThing|resources:ScriptThing)\(', arg.strip())
         if accessor and not _balanced_call(arg.strip(), accessor.end() - 1):
             accessor = None     # the accessor is only a prefix of a larger expression
         if accessor and self.accessor_kinds:
@@ -1872,7 +1872,7 @@ class Lifter:
             call = f'{name}({", ".join(lifted)})'
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
-                self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At')
+                self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name == 'RESOURCE_ScriptThing'
                                       else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
                                       else 'string' if name in ('ENGINE_Concat',) or name.endswith('STATE_GetString') else 'number')
             else:

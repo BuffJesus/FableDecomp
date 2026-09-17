@@ -206,7 +206,61 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         return base.equals("ESP") ? ("STK:" + (disp - espDelta)) : ("BP:" + disp);   // entry-relative: esp_now = esp_entry - espDelta
     }
 
-    private void overrideCalls(Function f) {
+    private Map<Long, Long> sitePurge = new HashMap<>();   // call site -> exact purge (-1 = unknown), from the linear pass
+
+    /** Flow-sensitive stack depth per instruction (CFG worklist over PUSH/POP/SUB/ADD ESP/CALL purge/RET/JMP/Jcc). */
+    private Map<Long, Long> flowDepths(Function f) {
+        Map<Long, Long> depthAt = new HashMap<>();
+        java.util.ArrayDeque<Object[]> work = new java.util.ArrayDeque<>();
+        work.add(new Object[]{f.getEntryPoint(), 0L});
+        int guard = 0;
+        while (!work.isEmpty() && guard++ < 200000) {
+            Object[] item = work.poll();
+            Address a = (Address) item[0];
+            long depth = (Long) item[1], before = depth;
+            boolean pushing = false;
+            Instruction x = getInstructionAt(a);
+            while (x != null && f.getBody().contains(x.getAddress())) {
+                long off = x.getAddress().getOffset();
+                if (depthAt.containsKey(off)) break;
+                depthAt.put(off, depth);
+                String mn = x.getMnemonicString().toUpperCase();
+                int n = x.getNumOperands();
+                if (mn.equals("PUSH")) { if (!pushing) { before = depth; pushing = true; } depth += 4; }
+                else if (mn.equals("POP")) depth -= 4;
+                else if ((mn.equals("SUB") || mn.equals("ADD")) && n == 2 && x.getOpObjects(0).length >= 1 && "ESP".equals(regName(x.getOpObjects(0)[0])) && x.getOpObjects(1).length >= 1 && x.getOpObjects(1)[0] instanceof Scalar) {
+                    long v = ((Scalar) x.getOpObjects(1)[0]).getSignedValue();
+                    depth += mn.equals("SUB") ? v : -v;
+                    if (mn.equals("ADD")) pushing = false;
+                }
+                else if (mn.equals("LEA") && n == 2 && isRegOperand(x, 0) && "ESP".equals(regName(x.getOpObjects(0)[0]))) {
+                    long d2 = 0; boolean esp = false;
+                    for (Object o : x.getOpObjects(1)) { if (o instanceof Scalar) d2 = ((Scalar) o).getSignedValue(); if (o instanceof Register && "ESP".equals(((Register) o).getName())) esp = true; }
+                    if (esp) depth -= d2;
+                }
+                else if (mn.equals("MOV") && n == 2 && isRegOperand(x, 0) && "ESP".equals(regName(x.getOpObjects(0)[0]))) { depth = 0; pushing = false; }
+                else if (mn.equals("CALL")) {
+                    long purge = sitePurge.getOrDefault(off, -1L);
+                    if (purge == -2) depth -= 4;                                   // thing copy constructor: its own push
+                    else if (purge >= 0) depth -= purge;
+                    else if (pushing) depth = before;
+                    if (purge != -2) pushing = false;
+                }
+                else if (mn.equals("RET")) break;
+                else if (mn.startsWith("J")) {
+                    // every resolved destination (direct target, or the switch-table cases Ghidra recovered)
+                    for (Address to : x.getFlows()) if (f.getBody().contains(to)) work.add(new Object[]{to, depth});
+                    if (mn.equals("JMP")) break;
+                }
+                x = x.getNext();
+            }
+        }
+        return depthAt;
+    }
+
+    private void overrideCalls(Function f) { overrideCalls(f, null); }
+
+    private void overrideCalls(Function f, Map<Long, Long> depthAt) {
         Map<String, String> tags = new HashMap<>();
         tags.put("ECX", THIS);
         // CScriptThing parameters (typed from the PDB / ego_r signature) live at entry-relative stack slots
@@ -220,6 +274,8 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         boolean pushing = false;
         int byValuePending = 0;
         Map<String, Long> regStack = new HashMap<>();      // register -> entry-relative stack slot it points at
+        Map<String, Long> regValue = new HashMap<>();      // register -> entry-relative stack slot it was loaded from (`mov reg,[esp+X]`)
+        List<Long> pushedValue = new ArrayList<>();        // per push: the slot whose value was pushed, or null
         java.util.Set<String> written = new java.util.HashSet<>();   // registers assigned so far (a callee-saved push before any write is a save)
         // callee-saved registers restored by the epilogue(s): VC7.1 pushes them lazily anywhere in the body
         java.util.Set<String> savedRegs = new java.util.HashSet<>(), savedSeen = new java.util.HashSet<>();
@@ -242,19 +298,35 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         // depth at the source of every forward jump: a block entered only by a jump (the fallthrough after
         // an unconditional JMP or a RET) starts at the depth its jumper had, not at the previous block's
         Map<Long, Long> jumpDepth = new HashMap<>();
+        // register state at the source of every forward jump: a block entered by a jump sees the jumper's
+        // registers, not those of the unrelated block that happens to precede it in memory
+        Map<Long, Object[]> jumpState = new HashMap<>();
         boolean blockBoundary = false;
         while (ins.hasNext()) {
             Instruction i = ins.next();
             String mn = i.getMnemonicString().toUpperCase();
             int n = i.getNumOperands();
+            if (depthAt != null) {
+                Long flow = depthAt.get(i.getAddress().getOffset());
+                if (flow != null && flow != espDelta) { espDelta = flow; if (!pushing) { argStart = -1; } }
+            }
             if (blockBoundary) {
                 Long known = jumpDepth.get(i.getAddress().getOffset());
                 if (known != null) { espDelta = known; pushing = false; argStart = -1; }
+                Object[] st = jumpState.get(i.getAddress().getOffset());
+                if (st != null) {
+                    tags.clear(); tags.putAll((Map<String, String>) st[0]);
+                    regStack.clear(); regStack.putAll((Map<String, Long>) st[1]);
+                    regValue.clear(); regValue.putAll((Map<String, Long>) st[2]);
+                }
                 blockBoundary = false;
             }
             if (mn.startsWith("J") && n == 1 && i.getOpObjects(0).length == 1 && i.getOpObjects(0)[0] instanceof Address) {
                 long to = ((Address) i.getOpObjects(0)[0]).getOffset();
-                if (to > i.getAddress().getOffset()) jumpDepth.putIfAbsent(to, espDelta);
+                if (to > i.getAddress().getOffset()) {
+                    jumpDepth.putIfAbsent(to, espDelta);
+                    if (!jumpState.containsKey(to)) jumpState.put(to, new Object[]{new HashMap<>(tags), new HashMap<>(regStack), new HashMap<>(regValue)});
+                }
                 if (mn.equals("JMP")) { if (pushing) espDelta = espBeforePushes; pushing = false; argStart = -1; blockBoundary = true; }   // pending pushes travel with the jump, not into the fallthrough
                 continue;
             }
@@ -266,8 +338,15 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 String pr = pops.length >= 1 && isRegOperand(i, 0) ? regName(pops[0]) : null;
                 boolean prologueSave = pr != null && savedRegs.contains(pr) && !savedSeen.contains(pr) && !written.contains(pr);
                 if (prologueSave) { savedSeen.add(pr); espDelta += 4; prev = i; continue; }   // callee-saved register, not an argument
-                if (!pushing) { espBeforePushes = espDelta; pushing = true; pushedStack.clear(); }
+                if (!pushing) { espBeforePushes = espDelta; pushing = true; pushedStack.clear(); pushedValue.clear(); }
                 pushedStack.add(pr != null && regStack.containsKey(pr) ? regStack.get(pr) : null);
+                // `push dword ptr [esp+X]` / `push reg` loaded from a slot: the slot's value travels
+                Long pv = pr != null && regValue.containsKey(pr) ? regValue.get(pr) : null;
+                if (pr == null && pops.length >= 1 && "ESP".equals(regName(pops[0]))) {
+                    long pd = 0; for (Object o : pops) if (o instanceof Scalar) pd = ((Scalar) o).getSignedValue();
+                    pv = pd - espDelta;
+                }
+                pushedValue.add(pv);
                 espDelta += 4;
                 prev = i;
                 continue;
@@ -301,6 +380,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     target = ((Address) i.getOpObjects(0)[0]).getOffset();
                 long purge = -1;   // bytes the callee pops (exact when known; -1 = fall back to the push heuristic)
                 boolean siteReturnsThing = false;
+                if (target >= 0 && cdeclTargets.contains(target)) purge = 0;          // the caller's `add esp, N` follows
                 if (target >= 0 && !cdeclTargets.contains(target)) {
                     // the callee's own `ret N` is the ground truth (Ghidra's purge size can be 0 when two bodies were merged)
                     long ret = retPurge(target);
@@ -349,6 +429,13 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.append("\"depth\":").append(espDelta).append(",");
+                    if (regValue.containsKey("ECX")) sb.append("\"ecxValue\":").append(regValue.get("ECX")).append(",");
+                    if (regValue.containsKey("EDX")) sb.append("\"edxValue\":").append(regValue.get("EDX")).append(",");
+                    if (!pushedValue.isEmpty() && pushedValue.stream().anyMatch(v -> v != null)) {
+                        sb.append("\"pushedValue\":[");
+                        for (int q = 0; q < pushedValue.size(); q++) { if (q > 0) sb.append(","); sb.append(pushedValue.get(q) == null ? "null" : String.valueOf(pushedValue.get(q))); }
+                        sb.append("],");
+                    }
                     if (regStack.containsKey("ECX")) sb.append("\"ecxStack\":").append(regStack.get("ECX")).append(",");
                     if (regStack.containsKey("EDX")) sb.append("\"edxStack\":").append(regStack.get("EDX")).append(",");
                     if (!pushedStack.isEmpty()) {
@@ -357,11 +444,13 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         sb.append("],");
                     }
                     if (sb.length() > 0) siteStackOperands.put(i.getAddress().getOffset(), sb.toString());
-                    pushedStack.clear();
+                    pushedStack.clear(); pushedValue.clear();
                 }
                 regStack.remove("EAX"); regStack.remove("ECX"); regStack.remove("EDX");
+                regValue.remove("EAX"); regValue.remove("ECX"); regValue.remove("EDX");
                 tags.remove("EAX"); tags.remove("ECX"); tags.remove("EDX");
                 if (siteReturnsThing) tags.put("EAX", ME);   // a CScriptThing result: its vtable calls resolve through thingDefs
+                sitePurge.put(i.getAddress().getOffset(), target == THING_COPY_CTOR ? -2L : purge);
                 if (target == THING_COPY_CTOR) {
                     // the copy constructor only pops its own `push src` (ret 4); the by-value slot and any earlier
                     // argument pushes stay reserved for the real call
@@ -415,6 +504,10 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         regStack.put(d, sName.equals("ESP") ? disp - espDelta : disp);
                     else if (mn.equals("MOV") && srcReg && sName != null && regStack.containsKey(sName)) regStack.put(d, regStack.get(sName));
                     else regStack.remove(d);
+                    if (mn.equals("MOV") && !srcReg && sName != null && (sName.equals("ESP") || sName.equals("EBP")) && srcRegs == 1)
+                        regValue.put(d, sName.equals("ESP") ? disp - espDelta : disp);
+                    else if (mn.equals("MOV") && srcReg && sName != null && regValue.containsKey(sName)) regValue.put(d, regValue.get(sName));
+                    else regValue.remove(d);
                     if (d.equals("ESP") && mn.equals("LEA") && "ESP".equals(sName)) espDelta -= disp;   // `lea esp,[esp+N]` (N = 0 is padding)
                     else if (d.equals("ESP")) { espDelta = 0; pushing = false; argStart = -1; }
                 } else if (mn.equals("MOV") && d != null && (d.equals("ESP") || d.equals("EBP")) && srcReg && sName != null) {
@@ -430,7 +523,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 if (isRegOperand(i, k) && k == 0
                         && !mn.equals("CMP") && !mn.equals("TEST")) {
                     Object[] ops = i.getOpObjects(k);
-                    if (ops.length >= 1 && regName(ops[0]) != null) { tags.remove(regName(ops[0])); regStack.remove(regName(ops[0])); written.add(regName(ops[0])); }
+                    if (ops.length >= 1 && regName(ops[0]) != null) { tags.remove(regName(ops[0])); regStack.remove(regName(ops[0])); regValue.remove(regName(ops[0])); written.add(regName(ops[0])); }
                 }
             }
         }
@@ -473,7 +566,10 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         }
         for (Function f : selected) {
             try { f.setCallingConvention("__thiscall"); } catch (Exception e) { }
-            overrideCalls(f);
+            overrideCalls(f);                           // pass 1: tags, prototypes, purges (linear)
+            int o1 = overrides, b1 = byValueSites, d1 = dataSites, p1 = paramThings;
+            overrideCalls(f, flowDepths(f));            // pass 2: the same, with flow-sensitive depths for every slot
+            overrides = o1; byValueSites = b1; dataSites = d1; paramThings = p1;   // counts are per function, not per pass
         }
         println("Call-site overrides written: " + overrides + " (by-value CScriptThing sites: " + byValueSites + ", Data-pointer thing sites: " + dataSites + ", thing params tagged: " + paramThings + ")");
         DecompInterface decompiler = new DecompInterface();

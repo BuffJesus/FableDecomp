@@ -7,6 +7,10 @@
   "vtable": "0x012CF788",
   "master": {
     "fields": {
+      "0x4": [
+        "PostSavePosition",
+        "Int"
+      ],
       "0x8": [
         "HenchmanCommentaryState",
         "Int"
@@ -111,6 +115,10 @@
         "CondemnedManMeetsBodyGuardCutSceneFinished",
         "Bool"
       ],
+      "0x54": [
+        "TeddySolution",
+        "String"
+      ],
       "0x58": [
         "OrchardFarmRaidLastCompleted",
         "Int"
@@ -157,6 +165,10 @@
       ],
       "0x6c": [
         "DeliveredSoul",
+        "Int"
+      ],
+      "0x70": [
+        "CurrentHeroSoulsPosition",
         "Int"
       ],
       "0x74": [
@@ -407,6 +419,10 @@
         "MaxChickenKickingScore",
         "Int"
       ],
+      "0x104": [
+        "GHeroName",
+        "Int"
+      ],
       "0x108": [
         "TimeAdvancePointTriggered",
         "Bool"
@@ -546,12 +562,6 @@
     },
     "unmapped": [
       {
-        "offset": "0x4",
-        "pdbOffset": "0x4",
-        "type": "EGameflowPosition",
-        "name": "PostSavePosition"
-      },
-      {
         "offset": "0x3c",
         "pdbOffset": "0x3c",
         "type": "ArcheryOpenState",
@@ -562,12 +572,6 @@
         "pdbOffset": "0x40",
         "type": "ArcheryOpenState",
         "name": "ArcheryStateRequired"
-      },
-      {
-        "offset": "0x70",
-        "pdbOffset": "0x70",
-        "type": "EPlaceInHeroSouls",
-        "name": "CurrentHeroSoulsPosition"
       },
       {
         "offset": "0xdc",
@@ -586,12 +590,6 @@
         "pdbOffset": "0x100",
         "type": "ulong",
         "name": "StoryTellerToldSpecialStories"
-      },
-      {
-        "offset": "0x104",
-        "pdbOffset": "0x104",
-        "type": "EHeroNames",
-        "name": "GHeroName"
       },
       {
         "offset": "0x134",
@@ -657,6 +655,7 @@
     },
     "thingFields": {},
     "unmappedFields": [],
+    "timers": [],
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
@@ -703,6 +702,7 @@
       },
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "PreMeleeDummy": {
@@ -736,6 +736,7 @@
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     },
     "PreMeleeWhisper": {
@@ -769,6 +770,7 @@
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],
+      "timers": [],
       "arrays": []
     }
   }
