@@ -12,19 +12,19 @@ end
 
 -- ScorpionHome.Main (retail 0x00d67270)
 function Main(quest, me)
-    local predicateResult3, scratchValue, scratchValue3, hero2, pPosition, pSpeaker, r1_1
+    local predicateResult3, scratchValue, scratchValue3, hero2, pPosition, pSpeaker, r1_1, r1_2
     local scratchValue5, getAllThingsWithScriptName
     scratchValue5 = 0
-    local scratchValue7 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.modf(quest:ReadGlobalGameDataFloat(3856)), 1.0)
+    local scratchValue6 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.modf(quest:ReadGlobalGameDataFloat(3856)), 1.0)
     quest:DisplayQuestInfo(true)
     local timerId = quest:RegisterTimer()
-    local scratchValue8 = timerId
+    local scratchValue7 = timerId
     quest:SetTimer(timerId, 5)
     local scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
     repeat
         if not scorpionsAlive then
             if not quest:IsActiveThreadTerminating() then
-                quest:RemoveQuestInfoElement(scratchValue7)
+                quest:RemoveQuestInfoElement(scratchValue6)
                 quest:DisplayQuestInfo(false)
             end
             quest:DeregisterTimer(timerId)
@@ -32,8 +32,8 @@ function Main(quest, me)
         end
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); return end
         scratchValue5 = scratchValue5 | 1
-        local scratchValue9 = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
-        predicateResult3 = not scratchValue9
+        local scratchValue8 = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
+        predicateResult3 = not scratchValue8
         if scratchValue5 & 1 ~= 0 then
             scratchValue5 = scratchValue5 & 0xfffffffe
         end
@@ -41,17 +41,17 @@ function Main(quest, me)
             hero2 = quest:GetHero()
             pSpeaker = quest:GetHero()
             quest:AddLineToConversation(quest:AddNewConversation(quest:GetHero(), false, false), "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", pSpeaker, hero2, false)
-            quest:SetTimer(scratchValue8, 8)
+            quest:SetTimer(scratchValue7, 8)
         end
         getAllThingsWithScriptName = quest:GetAllThingsWithScriptName("GuildScorpions")
-        scratchValue3 = (#getAllThingsWithScriptName * 12) / 12
+        scratchValue3 = #getAllThingsWithScriptName
         scratchValue = scratchValue3
         if scratchValue3 < 0 then
             scratchValue = scratchValue + 4294967296.0
         end
-        quest:UpdateQuestInfoCounter(scratchValue7, math.modf((quest:ReadGlobalGameDataFloat(3856) - state:GetInt("ScorpionsLeft")) - scratchValue), -1)
-        if ((#getAllThingsWithScriptName * 12) / 12) < 3 then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue8); return end
+        quest:UpdateQuestInfoCounter(scratchValue6, math.modf((quest:ReadGlobalGameDataFloat(3856) - state:GetInt("ScorpionsLeft")) - scratchValue), -1)
+        if #getAllThingsWithScriptName < 3 then
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue7); return end
             if #getAllThingsWithScriptName == 0 and state:GetInt("ScorpionsLeft") == 0 then
                 quest:SetStateBool("ScorpionsAlive", false)
                 quest:SetMasterGameState("ScorpionsDestroyed", true)
@@ -62,16 +62,16 @@ function Main(quest, me)
                 else
                     pPosition = r1_1:GetPos()
                 end
-                quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                if r1_1 ~= nil and not r1_1:IsNull() then
-                    r1_1:SetToKillOnLevelUnload(0)
+                r1_2 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+                if r1_2 ~= nil and not r1_2:IsNull() then
+                    r1_2:SetToKillOnLevelUnload(0)
                 end
-                quest:EntityAttachToScript(r1_1, "Q_GuildTrainingWoodsMelee")
+                quest:EntityAttachToScript(r1_2, "Q_GuildTrainingWoodsMelee")
                 state:SetInt("ScorpionsLeft", state:GetInt("ScorpionsLeft") - 1)
             end
         end
         scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
-        timerId = scratchValue8
+        timerId = scratchValue7
     until false
 end
 

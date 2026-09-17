@@ -46,7 +46,7 @@ function Main(quest, me)
                 quest:SetThingPersistent(quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", scratchValue21[ctr_90 / 12 + 1]:GetPos(), "KillBird"), true)
                 ctr_90 = ctr_90 + 12
                 scratchValue17 = scratchValue17 + 1
-            until scratchValue17 >= ((#scratchValue21 * 12) / 12)
+            until scratchValue17 >= #scratchValue21
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(scratchValue20); return end
         quest:SetStateInt("CurrentBirdsKilled", 0)

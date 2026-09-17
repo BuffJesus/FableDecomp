@@ -8061,6 +8061,9 @@
    }
   }
  },
+ "bsimHelperNames": {
+  "helper_DCEC50": "GetPointerFromHandle"
+ },
  "syntax": {
   "runtime": "Lua 5.4",
   "ok": true,

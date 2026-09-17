@@ -1310,6 +1310,7 @@ def cosmetics(lines, function_indent='    '):
     count = 0
     for i, line in enumerate(lines):
         new = re.sub(r' \+ -(\d+(?:\.\d+)?)\b', r' - \1', line)
+        new = re.sub(r'\(#(\w+) \* 12\) / 12', r'#\1', new)         # element count via the 12-byte stride
         if new != line:
             lines[i] = new
             count += 1

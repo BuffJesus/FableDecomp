@@ -137,7 +137,13 @@ def readme(stamp, summaries, bundle):
               '- Deeply indented Ghidra output wraps statements at arbitrary points (`+ 0x1d8\\n ))(`, `4)\\n ,0.5`); everything',
               '  that reads decompiles must re-join unbalanced-paren lines first.',
               '- The `Teams_<n>_<Field>` state keys are the flattened `CCrateTeamManager` members (MemberCount, StateCounter_k,',
-              '  TeamCrateCarrier, CrateDropPos, EnemyTeam, TeamReinforcementsTimer); `MemberState` values 0..5 have no PDB enum.', '']
+              '  TeamCrateCarrier, CrateDropPos, EnemyTeam, TeamReinforcementsTimer); `MemberState` values 0..5 have no PDB enum.',
+              '- Helpers with no PDB name keep the bsim label of the homologous body when it is a plain method name',
+              '  (`GuildTrainingWoodsMelee.EndMission` = retail 0x00D66EE0, bsim `CQ_CinemaTestScript::EndMission`) — marked in a',
+              '  comment on the definition; `helper_XXXXXX` means neither the PDB nor bsim named it.',
+              '- Known residue you will still see: `x | 1` / `x & 0xfffffffe` byte-flag bookkeeping of stack objects, unsigned',
+              '  conversions (`if n < 0 then n = n + 4294967296.0 end`), `math.modf(x)` for the compiler float-to-int truncation,',
+              '  `xStack_NN`/`r1_2` names where nothing named the value, and `-- TODO(native)` lines the lowering could not place.', '']
     if bundle:
         lines += ['## playtest-bundle/', '',
                   'The local-candidate bundle (`local-candidate-v5`): original FSE + our compatibility add-on, New Oakvale intro +',

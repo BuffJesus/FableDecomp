@@ -44,7 +44,7 @@ function Main(quest)
                 ctr_84 = ctr_84 + 12
                 scratchValue8 = scratchValue8 + 1
                 scratchValue2 = scratchValue2 + 16
-            until scratchValue8 >= ((#getAllThingsWithScriptName * 12) / 12)
+            until scratchValue8 >= #getAllThingsWithScriptName
         end
         scratchValue3 = 0
         scratchValue13 = resources:NewResource()
@@ -89,7 +89,7 @@ function Main(quest)
                     -- TODO(native): (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);
                     ctr_88 = ctr_88 + 1
                     scratchValue3 = scratchValue3 + 12
-                until ctr_88 >= ((#getAllThingsWithScriptName * 12) / 12)
+                until ctr_88 >= #getAllThingsWithScriptName
             end
             if not quest:IsActiveThreadTerminating() then
                 while quest:GetStateBool("BanditsAlive") do

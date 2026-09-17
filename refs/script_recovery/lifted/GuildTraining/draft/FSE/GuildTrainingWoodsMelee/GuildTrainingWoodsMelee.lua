@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar1, CVar4, pBinding
+    local CVar1, CVar4
     local alive = true
     quest:SetStateBool("ScorpionsAlive", true)
     quest:SetStateBool("MissionSucceeded", false)
@@ -21,19 +21,7 @@ function Main(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
-        if pBinding == nil then
-            pBinding = 0x0
-        else
-            -- TODO(native): CCharString::CCharString((CCharString *)(pBinding + 1),&xStack_8);
-            -- TODO(native): pBinding[2] = this;
-            -- TODO(native): *(undefined1 *)(pBinding + 5) = 1;
-            -- TODO(native): pBinding[6] = 1;
-        end
-        -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,pBinding);
-        CVar4 = 0x1
-        if (0x1 & 1) ~= 0 then
-            CVar4 = (0x1 & 0xfffffffe)
-        end
+        quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsMelee/Entities/ScorpionHome")
         quest:FinalizeEntityBindings()
         quest:CreateThread("WatchForTermination")  -- native thread body CQ_HobbeCaveScript::WatchForTermination: lift it as function WatchForTermination(quest)
         if (CVar4 & 2) ~= 0 then
@@ -178,7 +166,7 @@ function DoMission(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar1 = not alive
                 if (not bVar1) and (not quest:GetStateBool("MissionFailed")) then
-                    -- TODO(native): CQ_CinemaTestScript::EndMission((CQ_CinemaTestScript *)this);
+                    helper_D66EE0(quest)
                 end
             end
             return

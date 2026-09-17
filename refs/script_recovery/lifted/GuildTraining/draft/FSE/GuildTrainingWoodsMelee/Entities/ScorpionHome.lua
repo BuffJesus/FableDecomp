@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, r1, v_stk_4c, xStack_18, xStack_24
+    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, r1, v_stk_4c, xStack_24
     local alive = true
     v_stk_4c = 0
     iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf10)))
@@ -115,7 +115,7 @@ function Main(quest, me)
                         pPosition = r1:GetPos()
                     end
                     pCVar9 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                    xStack_18 = pCVar9
+                    r1 = pCVar9
                     pCVar9 = nil
                     if (r1 ~= nil and not r1:IsNull()) then
                         r1:SetToKillOnLevelUnload(0)

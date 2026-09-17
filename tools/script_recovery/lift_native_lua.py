@@ -172,7 +172,7 @@ RE_TRANSFER = re.compile(
 RE_BINDING = re.compile(
     r'(?P<var>\w+) = (?:::)?operator_new\(0x1c\);.*?'
     r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>[^"]+)",-1\);.*?'
-    r'CScriptBase::AddEntityScriptBinding\([^,]+,(?P=var)\);\s*if \([^{]*\) \{[^}]*?_Cons_val[^}]*?\}', re.S)
+    r'CScriptBase::AddEntityScriptBinding\([^,]+,(?P=var)\);\s*(?:\w+ = \w+;\s*)?if \([^{]*\) \{[^}]*?_Cons_val[^}]*?\}', re.S)
 RE_CONS_VAL = re.compile(r'std::\s*_(?:Cons|Dest)_val<[^;]*?;', re.S)    # bsim-named CCharString ctor/dtor of a temporary
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
@@ -2464,9 +2464,10 @@ class Lifter:
                     # both branches of an if/else), or (unit mode) a stack slot keeping a register value that
                     # the register later loses (`xStack_88 = iVar4` = the timer id, iVar4 reused): a real
                     # store, not a per-branch alias that the join forgets
-                    self.emit(f"{self.declare(m.group(1))} = {self.temps.get(value, value)}")
+                    lhs = self.slot_results.get(m.group(1), m.group(1))   # a hidden-result slot stores into its result var
+                    self.emit(f"{self.declare(lhs)} = {self.temps.get(value, value)}")
                     if value in self.kinds:
-                        self.kinds[m.group(1)] = self.kinds[value]
+                        self.kinds[lhs] = self.kinds[value]
                     return
                 self.push_temp(m.group(1), self.temps.get(value, value))
                 return

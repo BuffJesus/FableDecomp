@@ -307,6 +307,42 @@ def readable_file(source, *, style=True, frame_returns_alive=True, rel=None, wri
                   'locals': mappings, 'wrappedDeclarations': len(wrapped), 'style': style_report}
 
 
+def bsim_helper_names(sources, conversion, unit):
+    """`helper_XXXXXX` (no PDB name) takes the method name bsim gave the retail body when that name is a plain
+    identifier, unique across the unit and free in every file (`CQ_CinemaTestScript::EndMission` -> `EndMission`,
+    kept as a comment on the definition). Calls are renamed across files (`helpers.EndMission`)."""
+    tu_path = unit['evidence'] / 'translation_unit_typed.json'
+    if not tu_path.exists():
+        return sources, {}
+    tu = json.loads(tu_path.read_text(encoding='utf-8'))
+    by_address = {f['address'].lower(): f.get('currentName', '') for f in (tu['functions'] if isinstance(tu, dict) else tu)}
+    rows = [row for u in conversion.get('units', []) for row in u.get('functions', []) if row['function'].startswith('helper_')]
+    chosen, renamed = {}, {}
+    for row in rows:
+        label = by_address.get(row['address'].lower(), '')
+        tail = label.split('::')[-1]
+        if not re.fullmatch(r'[A-Z]\w+', tail) or tail.startswith(('FUN_', 'thunk')) or tail == label \
+                or (tail, ) in {(t,) for t, _ in chosen.values()}:
+            continue
+        # the name must be free in every file that mentions the helper (Lua names are per file)
+        users = [text for text in sources.values() if re.search(r'\b' + row['function'] + r'\b', text)]
+        if any(re.search(r'(?:\bfunction |[.:]|\b)' + tail + r'\(', text) for text in users):
+            continue
+        chosen[row['function']] = (tail, label)
+    for old, (new, label) in chosen.items():
+        for rel in sources:
+            text = sources[rel]
+            if not re.search(r'\b' + old + r'\b', text):
+                continue
+            text = re.sub(r'\b' + old + r'\b', new, text)
+            text = re.sub(r'^-- helper 0x[0-9A-F]+ \(named after the state it writes\)\n(?=function ' + new + r'\()', '', text, flags=re.M)
+            text = text.replace(f'function {new}(', f'-- {old[7:]}: bsim names this body {label} (a homologous script member); no PDB name\nfunction {new}(', 1) \
+                if f'function {new}(' in text else text
+            sources[rel] = text
+        renamed[old] = new
+    return sources, renamed
+
+
 def function_headers(text, rel, conversion):
     """One comment line per function: the native owner and retail address from the draft report."""
     rows = {}
@@ -348,11 +384,15 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
         text = text.replace('-- Generated native draft:', '-- Readable native conversion:', 1)
         if style:
             text = function_headers(text, rel, conversion)
+        sources[rel] = text
+        report['files'][rel] = file_report
+    if style:
+        sources, renamed = bsim_helper_names(sources, conversion, u)
+        report['bsimHelperNames'] = renamed
+    for rel, text in sources.items():
         target = out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding='utf-8')
-        sources[rel] = text
-        report['files'][rel] = file_report
     report['syntax'] = checker.check(sources)
     (out / 'READABLE_REPORT.json').write_text(json.dumps(report, indent=1) + '\n', encoding='utf-8')
     metrics = {}

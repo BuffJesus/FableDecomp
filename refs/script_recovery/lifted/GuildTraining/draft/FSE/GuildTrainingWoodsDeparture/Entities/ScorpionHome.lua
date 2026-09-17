@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar9, iVar7, i_stk_28, pCVar8, pPosition, r1, xStack_18, xStack_24, xStack_2c
+    local bVar6, count, fVar9, iVar7, i_stk_28, pCVar8, pPosition, r1, xStack_24, xStack_2c
     local alive = true
     local iVar1 = quest:GetStateInt("DepartureMissionPoint")
     while iVar1 ~= 1 do
@@ -76,7 +76,7 @@ function Main(quest, me)
                             pPosition = r1:GetPos()
                         end
                         pCVar8 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                        xStack_18 = pCVar8
+                        r1 = pCVar8
                         pCVar8 = nil
                         if (r1 ~= nil and not r1:IsNull()) then
                             r1:SetToKillOnLevelUnload(0)

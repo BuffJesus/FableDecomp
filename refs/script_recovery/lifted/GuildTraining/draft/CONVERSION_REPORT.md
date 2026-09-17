@@ -137,9 +137,9 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | Init | 0x00d63d80 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | OnPredicateFail | 0x00d63d70 | True | 0 |
-| Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | Main | 0x00d66620 | True | 5 |
+| Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | Main | 0x00d66620 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | WatchForTermination | 0x00d66880 | True | 0 |
-| Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | DoMission | 0x00d66ca0 | True | 1 |
+| Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | DoMission | 0x00d66ca0 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | WatchForLeaving | 0x00d66e90 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | TeleportOutHero | 0x00d66f50 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | helper_D66EE0 | 0x00d66ee0 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 791}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 785}`

@@ -12,26 +12,27 @@ end
 
 -- ScorpionHome.Main (retail 0x00d643a0)
 function Main(quest, me)
-    local scratchValue, scratchValue3, pPosition, r1_1, getAllThingsWithScriptName, scratchValue6
+    local scratchValue, scratchValue3, pPosition, r1_1, r1_2, getAllThingsWithScriptName
+    local scratchValue5
     local departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     while departureMissionPoint ~= 1 do
         if not quest:NewScriptFrame(me) then return end
         departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     end
     if quest:IsActiveThreadTerminating() then return end
-    scratchValue6 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.modf(quest:ReadGlobalGameDataFloat(3852)), 1.0)
+    scratchValue5 = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.modf(quest:ReadGlobalGameDataFloat(3852)), 1.0)
     quest:DisplayQuestInfo(true)
     departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     while departureMissionPoint == 1 do
         if not quest:NewScriptFrame(me) then return end
         getAllThingsWithScriptName = quest:GetAllThingsWithScriptName("GuildScorpions")
-        scratchValue3 = (#getAllThingsWithScriptName * 12) / 12
+        scratchValue3 = #getAllThingsWithScriptName
         scratchValue = scratchValue3
         if scratchValue3 < 0 then
             scratchValue = scratchValue + 4294967296.0
         end
-        quest:UpdateQuestInfoCounter(scratchValue6, math.modf((quest:ReadGlobalGameDataFloat(3852) - state:GetInt("ScorpionsLeft")) - scratchValue), -1)
-        if ((#getAllThingsWithScriptName * 12) / 12) < 3 then
+        quest:UpdateQuestInfoCounter(scratchValue5, math.modf((quest:ReadGlobalGameDataFloat(3852) - state:GetInt("ScorpionsLeft")) - scratchValue), -1)
+        if #getAllThingsWithScriptName < 3 then
             if quest:IsActiveThreadTerminating() then return end
             if #getAllThingsWithScriptName == 0 and state:GetInt("ScorpionsLeft") == 0 then
                 quest:SetStateInt("DepartureMissionPoint", 2)
@@ -43,18 +44,18 @@ function Main(quest, me)
                 else
                     pPosition = r1_1:GetPos()
                 end
-                quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                if r1_1 ~= nil and not r1_1:IsNull() then
-                    r1_1:SetToKillOnLevelUnload(0)
+                r1_2 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+                if r1_2 ~= nil and not r1_2:IsNull() then
+                    r1_2:SetToKillOnLevelUnload(0)
                 end
-                quest:EntityAttachToScript(r1_1, "Q_GuildTrainingWoodsDeparture")
+                quest:EntityAttachToScript(r1_2, "Q_GuildTrainingWoodsDeparture")
                 state:SetInt("ScorpionsLeft", state:GetInt("ScorpionsLeft") - 1)
             end
         end
         departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:RemoveQuestInfoElement(scratchValue6)
+    quest:RemoveQuestInfoElement(scratchValue5)
     quest:DisplayQuestInfo(false)
 end
 

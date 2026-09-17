@@ -538,6 +538,16 @@ class UnitConverter:
                     continue
                 lifter.callee_names = known_callee_aliases(fn)
                 lifter.parent_helpers = {}
+                # a call whose target is one of this owner's helpers takes the helper's local name whatever
+                # bsim called it (`CQ_CinemaTestScript::EndMission` = this quest's helper_D66EE0)
+                by_target = {}
+                for call in fn.get('calls', []):
+                    address = str(call.get('target', '')).lower()
+                    if call.get('currentName') and address in local_names:
+                        for label in (call['currentName'], call['currentName'].removeprefix('NScript::'), call['currentName'].split('::')[-1]):
+                            by_target.setdefault(label, set()).add(local_names[address])
+                lifter.callee_names.update({label: next(iter(names)) for label, names in by_target.items()
+                                            if len(names) == 1 and label not in lifter.callee_names})
                 if entity:
                     # Entity code calling quest helpers goes through the shared module.
                     candidates = {}

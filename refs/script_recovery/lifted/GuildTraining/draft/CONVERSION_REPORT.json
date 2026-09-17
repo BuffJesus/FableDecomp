@@ -13935,13 +13935,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CCharString::CCharString((CCharString *)(pBinding + 1),&xStack_8);",
-            "unlifted: pBinding[2] = this;",
-            "unlifted: *(undefined1 *)(pBinding + 5) = 1;",
-            "unlifted: pBinding[6] = 1;",
-            "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,pBinding);"
-          ],
+          "todo": [],
           "calls": [
             "SetStateBool",
             "SetStateBool",
@@ -13952,6 +13946,7 @@
             "IsActiveThreadTerminating",
             "IsLevelLoaded",
             "IsActiveThreadTerminating",
+            "AddEntityBinding",
             "FinalizeEntityBindings",
             "CreateThread",
             "CreateThread",
@@ -13960,7 +13955,7 @@
             "IsActiveThreadTerminating",
             "SetStateBool"
           ],
-          "lines": 56,
+          "lines": 44,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14042,9 +14037,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CQ_CinemaTestScript::EndMission((CQ_CinemaTestScript *)this);"
-          ],
+          "todo": [],
           "calls": [
             "GiveHeroNewQuestObjective",
             "IsLevelLoaded",
@@ -14357,7 +14350,7 @@
         "functionSyntaxPassed": 10,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 8
+        "todo": 2
       }
     },
     {
@@ -14870,6 +14863,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 791
+    "todo": 785
   }
 }

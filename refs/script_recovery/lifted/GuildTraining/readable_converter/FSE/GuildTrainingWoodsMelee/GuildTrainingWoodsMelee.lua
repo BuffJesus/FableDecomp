@@ -3,7 +3,7 @@
 
 -- Q_GuildTrainingWoodsMelee.Main (retail 0x00d66620)
 function Main(quest)
-    local pBinding
+    local scratchValue
     quest:SetStateBool("ScorpionsAlive", true)
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -12,15 +12,12 @@ function Main(quest)
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    if pBinding ~= nil then
-        -- TODO(native): CCharString::CCharString((CCharString *)(pBinding + 1),&xStack_8);
-        -- TODO(native): pBinding[2] = this;
-        -- TODO(native): *(undefined1 *)(pBinding + 5) = 1;
-        -- TODO(native): pBinding[6] = 1;
-    end
-    -- TODO(native): CScriptBase::AddEntityScriptBinding((CScriptBase *)this,pBinding);
+    quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsMelee/Entities/ScorpionHome")
     quest:FinalizeEntityBindings()
     quest:CreateThread("WatchForTermination")  -- native thread body CQ_HobbeCaveScript::WatchForTermination: lift it as function WatchForTermination(quest)
+    if scratchValue & 2 ~= 0 then
+        scratchValue = scratchValue & 0xfffffffd
+    end
     quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
     while quest:GetStateBool("ScorpionsAlive") do
         if not quest:NewScriptFrame() then return end
@@ -72,7 +69,7 @@ function DoMission(quest)
             quest:CreateThread("TeleportOutHero")  -- native thread body Quest_GuildWoods_Teleport_Exit_Additional: lift it as function TeleportOutHero(quest)
             quest:NewScriptFrame()
             if not quest:IsActiveThreadTerminating() and not quest:GetStateBool("MissionFailed") then
-                -- TODO(native): CQ_CinemaTestScript::EndMission((CQ_CinemaTestScript *)this);
+                EndMission(quest)
             end
             return
         end
@@ -108,8 +105,9 @@ function TeleportOutHero(quest)
     until false
 end
 
--- Q_GuildTrainingWoodsMelee.helper_D66EE0 (retail 0x00d66ee0)
-function helper_D66EE0(quest)
+-- Q_GuildTrainingWoodsMelee.EndMission (retail 0x00d66ee0)
+-- D66EE0: bsim names this body NScript::CQ_CinemaTestScript::EndMission (a homologous script member); no PDB name
+function EndMission(quest)
     local missionOver = quest:GetStateBool("MissionOver")
     while true do
         if missionOver then
