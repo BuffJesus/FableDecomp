@@ -353,7 +353,7 @@ function Main(quest, me)
                             else
                                 p0_00 = getNearestWithScriptName:GetPos()
                             end
-                            me:MoveToPosition(p0_00, 0x3f000000, 1, false, true)
+                            me:MoveToPosition(p0_00, 0.5, 1, false, true)
                         end
                         isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, getNearestWithScriptName, 2.0)
                         if isDistanceBetweenThingsUnder then

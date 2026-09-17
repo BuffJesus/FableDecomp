@@ -1,4 +1,40 @@
-# CURRENT (night 2026-09-16): Orchard Farm converter — all 11 files compile; next = readable pass + DLL bindings
+# CURRENT (night 2026-09-17): Orchard Farm ready for the v5 in-game run; GuildTraining through the typed pipeline (26/37 files)
+
+**Orchard Farm**: draft 46/46 fns, 11/11 files, 0 TODO(native); readable 12/12; smoke harness 0 problems (draft + readable);
+Oakvale gate identical. Tonight's guild work also fixed Orchard for real: `MoveToPosition(pos, 0.5, ...)` (hex float literal in a
+float slot) and `Q_OrchardFarmRaid.Init` acquires `BanditTeamMember[1]`/`[2]` (vector begin pointer elements; it acquired `0`
+before). **v5 rebuilt** (readable regenerated, DLL rebuilt with `ReadGlobalGameDataFloatAt`, preflight ok) — the in-game run is
+the next (user-driven) step: `python work/new-oakvale-original-fse-20260912/local-candidate-v5/local_test.py --game-dir <Fable>
+--launch --save-dir <saves>`, reach Orchard Farm, read NoviCompatibility/FableScriptExtender.log.
+
+**GuildTraining** (typed pipeline, `--unit guild_training`, range 0xD3B390..0xD68F00): 1033 -> **856 todos, 20 -> 26/37 files,
+140/152 fns** across rounds 113-125 (commits ad9d46a..d15c91a). Regenerate: `ghidra_typing_spec.py --unit guild_training` →
+`infer_helper_prototypes.py --unit guild_training` (MUST run, else 31 helpers vanish) → headless export → `convert_quest_unit.py --unit guild_training`.
+Export changes (ExportTypedTranslationUnit.java): helper params with explicit register storage (`__ftol2` takes ST0, so Ghidra
+prints its operand), register state merged at block joins (`mergeState`), and **`callOrder`** = CALL/CALLIND ops in C text order
+(the decompiler prints out-of-line cleanup blocks after the return, so "k-th printed call = k-th site by address" was wrong;
+`restore_stack_operands` pairs through `_text_order_sites` when every head agrees, 199/209 guild fns).
+Lowering levers added (all generic, journal night 4): stack CTimer ctor/dtor (0xCD4450/0xCD4470 = RegisterTimer/DeregisterTimer),
+cutscene string maps (0x9AC2D0/0x9AC310/0x9AC700 → resources:NewStringMap/SetString/DestroyStringMap + RunMacroWithStrings),
+byte-split pointer args (SUB41/CONCAT), byte-literal dwords, merged byte flags (`X & 0xffffff` → `X_b3 = 0`), by-value thing
+copies (inlined copy ctor, restored outgoing slots, hidden results into arg slots), resource-valued actor maps, inline dtor casts
+(base vtable 0126008c decides Release vs DestroyMovie by construction), local thing vectors filled by void GetAllThings*
+(count from begin/end, `elem_N = V[i]` for element vcalls, byte-offset counters `ctr_N`), global-game-data float arrays
+(`pf = *(float **)(GGD+N)` → `quest:ReadGlobalGameDataFloatAt(N, ixVarN)`, the grade-threshold loops), `ReadGlobalGameDataFloat`,
+zero-vector fallback (DAT_0143e8e0) + `pos.x/.y/.z`, Data-pointer handles (`CCountedPointer::operator=(&P, &thing.Data)`) as thing
+aliases, stack-slot copies of the GSI pointer, unaff_ESI DeregisterTimer (single-timer functions).
+Remaining guild file failures (11): `if (X ~= nil) and (*X = *X + -1, ...)` release residue on a `xStack` name (BirdKiller 163),
+`(**(*(X._0_4_ + iVar) + 0x18))()` element vcalls via a split slot (GuildTraining.lua 345), `iVar7 = *xStack_23c` (Melee TRG 773),
+`(**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)` (PreMeleeWhisper 184), `if (...) or (iVar7 = GSI->GetTimer(..), 0 < iVar7)`
+comma-condition (PreMelee TRG 121), `CVar10 = *(this + 4)` (Skill TRG 1064), `SetActor(map, "HERO", &xStack_238_3)` string-typed
+resource slot (Will TRG 740), `SetActor(xStack_38, "BAN1", &0x0)` (WoodsWill 102), `if *(iVar6 + 0xf14) <= gold` (ArtifactThief 719;
+`iVar6 = DAT_0143e90c` alias not substituted inside the compare), `(**(xStack_7c + 0x118))(*(this + 4))` (FinalMaze 487),
+SkillTarget 130 `EntityTeleportToPosition(me, &xStack_58, ...)` (a C3DVector built from floats). Top todo shapes: AddQuestInfoTick
+not in manifest (12), AddLineToConversation listener (10), `xStack_N_N._N_N_ = N` (17), `_Dest_val` (8), `CSubtitleRenderer::SetText`
+(7), `xStack_Nc = **(CCharString **)(this + N)` (8).
+Guild has no readable/package profile yet (build_unit_playtest_package.py is Orchard-only: entity ids, retail_override entries).
+
+# PREVIOUS (night 2026-09-16)
 
 Pipeline (quest-agnostic): `script_units.py` → `export_guild_training.py --unit` → `guild_training_inventory.py --unit`
 → `quest_unit_evidence.py --unit` → `ghidra_typing_spec.py --unit` + `infer_helper_prototypes.py --unit` → typed export (below)

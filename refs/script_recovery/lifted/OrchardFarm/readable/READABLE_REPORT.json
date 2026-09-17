@@ -4401,69 +4401,63 @@
        ]
       },
       "pCVar3_1": {
-       "name": "banditTeamSpawn",
-       "basis": "consistent call/state result",
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "banditTeamSpawn"
-       ]
-      },
-      "pCVar3_2": {
-       "name": "guardTeamSpawn",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
+        "banditTeamSpawn",
         "guardTeamSpawn"
        ]
       },
-      "pCVar3_3": {
+      "pCVar3_2": {
        "name": "hero",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar3_4": {
+      "pCVar3_3": {
        "name": "hero2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar3_5": {
+      "pCVar3_4": {
        "name": "mainGates",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mainGates"
        ]
       },
-      "pCVar3_6": {
+      "pCVar3_5": {
        "name": "mainGates2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mainGates"
        ]
       },
-      "pCVar3_7": {
+      "pCVar3_6": {
        "name": "hero3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar3_8": {
+      "pCVar3_7": {
        "name": "ofFarmhouseDoor",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "ofFarmhouseDoor"
        ]
       },
-      "pCVar3_9": {
+      "pCVar3_8": {
        "name": "mainGates3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mainGates"
        ]
       },
-      "pCVar3_10": {
+      "pCVar3_9": {
        "name": "mainGates4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -4471,27 +4465,20 @@
        ]
       },
       "pCVar7_1": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "pCVar7_2": {
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "r1": {
-       "name": "getAllThingsWithScriptName",
-       "basis": "consistent call/state result",
+      "pCVar7_2": {
+       "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "getAllThingsWithScriptName"
+        null
        ]
       },
-      "r2": {
+      "r1": {
        "name": "getNearestWithScriptName",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -4499,74 +4486,79 @@
        ]
       },
       "xStack_10": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "xStack_20": {
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "xStack_30": {
+      "xStack_20": {
        "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "xStack_40_1": {
+      "xStack_30": {
        "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "xStack_40_2": {
+      "xStack_40_1": {
        "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "xStack_50_1": {
+      "xStack_40_2": {
        "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "xStack_50_2": {
+      "xStack_50_1": {
        "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "xStack_5c": {
+      "xStack_50_2": {
        "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "xStack_70": {
+      "xStack_5c": {
        "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "x_stk_90": {
+      "xStack_70_1": {
+       "name": "getAllThingsWithScriptName",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getAllThingsWithScriptName"
+       ]
+      },
+      "xStack_70_2": {
        "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
-        null,
+        null
+       ]
+      },
+      "xStack_90": {
+       "name": "scratchValue13",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         null,
         null
        ]
@@ -4575,154 +4567,164 @@
      "splitLocals": {
       "bVar2": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "bVar2_1": [
          8
         ],
         "bVar2_2": [
-         16
+         15
         ],
         "bVar2_3": [
-         25,
-         170
+         23,
+         168
         ],
         "bVar2_4": [
-         32,
-         40
+         30,
+         38
         ],
         "bVar2_5": [
-         36
+         34
         ],
         "bVar2_6": [
-         42
+         40
         ],
         "bVar2_7": [
-         47
+         45
         ],
         "bVar2_8": [
-         49
+         47
         ],
         "bVar2_9": [
-         54
+         52
         ],
         "bVar2_10": [
-         94
+         92
         ],
         "bVar2_11": [
-         122
+         120
         ],
         "bVar2_12": [
-         127
+         125
         ],
         "bVar2_13": [
-         134
+         132
         ],
         "bVar2_14": [
-         139,
-         146
+         137,
+         144
         ],
         "bVar2_15": [
-         142
+         140
         ],
         "bVar2_16": [
-         148
+         146
         ],
         "bVar2_17": [
-         152
+         150
         ],
         "bVar2_18": [
-         156
+         154
         ],
         "bVar2_19": [
-         160
+         158
         ],
         "bVar2_20": [
-         163
+         161
         ]
        }
       },
       "iVar8": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "iVar8_1": [
-         67
+         65
         ],
         "iVar8_2": [
-         101
+         99
         ]
        }
       },
       "pCVar3": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "pCVar3_1": [
-         13
+         13,
+         19
         ],
         "pCVar3_2": [
-         20
+         44
         ],
         "pCVar3_3": [
-         46
+         67
         ],
         "pCVar3_4": [
-         69
+         89
         ],
         "pCVar3_5": [
-         91
+         96
         ],
         "pCVar3_6": [
-         98
+         101
         ],
         "pCVar3_7": [
-         103
+         121
         ],
         "pCVar3_8": [
-         123
+         130
         ],
         "pCVar3_9": [
-         132
-        ],
-        "pCVar3_10": [
-         135
+         133
         ]
        }
       },
       "pCVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "pCVar7_1": [
-         68
+         66
         ],
         "pCVar7_2": [
-         102
+         100
         ]
        }
       },
       "xStack_40": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "xStack_40_1": [
-         77
+         75
         ],
         "xStack_40_2": [
-         107
+         105
         ]
        }
       },
       "xStack_50": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
        "versions": {
         "xStack_50_1": [
-         60
+         58
         ],
         "xStack_50_2": [
-         100
+         98
+        ]
+       }
+      },
+      "xStack_70": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "versions": {
+        "xStack_70_1": [
+         56
+        ],
+        "xStack_70_2": [
+         103
         ]
        }
       }
@@ -4731,54 +4733,54 @@
      "inlinedLiteralLocals": {
       "bVar2_11": {
        "literal": "false",
-       "definitionLine": 122,
+       "definitionLine": 120,
        "readLines": [
-        124
+        122
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70\n",
-        "122": "            bVar2_11 = false\n",
-        "124": "            quest:SetThingAsUsable(pCVar3_8, bVar2_11)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "120": "            bVar2_11 = false\n",
+        "122": "            quest:SetThingAsUsable(pCVar3_7, bVar2_11)\n"
        }
       },
       "bVar2_13": {
        "literal": "false",
-       "definitionLine": 134,
+       "definitionLine": 132,
        "readLines": [
-        136
+        134
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70\n",
-        "134": "        bVar2_13 = false\n",
-        "136": "        quest:SetThingAsUsable(pCVar3_10, bVar2_13)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "132": "        bVar2_13 = false\n",
+        "134": "        quest:SetThingAsUsable(pCVar3_9, bVar2_13)\n"
        }
       },
       "iVar8_1": {
        "literal": "4",
-       "definitionLine": 67,
+       "definitionLine": 65,
        "readLines": [
-        70
+        68
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70\n",
-        "67": "                iVar8_1 = 4\n",
-        "70": "                resources:TryAcquire(pCVar7_1, pCVar3_4, iVar8_1)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_1, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "65": "                iVar8_1 = 4\n",
+        "68": "                resources:TryAcquire(pCVar7_1, pCVar3_3, iVar8_1)\n"
        }
       },
       "iVar8_2": {
        "literal": "4",
-       "definitionLine": 101,
+       "definitionLine": 99,
        "readLines": [
-        104
+        102
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar7_1, pCVar7_2, r1, r2, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70\n",
-        "101": "                iVar8_2 = 4\n",
-        "104": "                resources:TryAcquire(pCVar7_2, pCVar3_7, iVar8_2)\n"
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_12, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, iVar8_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar7_1, pCVar7_2, r1, xStack_10, xStack_20, xStack_30, xStack_40_1, xStack_40_2, xStack_50_1, xStack_50_2, xStack_5c, xStack_70_1, xStack_70_2\n",
+        "99": "                iVar8_2 = 4\n",
+        "102": "                resources:TryAcquire(pCVar7_2, pCVar3_6, iVar8_2)\n"
        }
       }
      },
@@ -4786,7 +4788,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 735,
+     "sourceLine": 733,
      "locals": {
       "bVar1_1": {
        "name": "isActiveThreadTerminating",
@@ -4884,7 +4886,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 778,
+     "sourceLine": 776,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -4941,7 +4943,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 797,
+     "sourceLine": 795,
      "locals": {
       "bVar4_1": {
        "name": "scratchValue",
@@ -5393,7 +5395,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 1001,
+     "sourceLine": 999,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},

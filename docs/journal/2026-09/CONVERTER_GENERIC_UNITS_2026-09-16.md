@@ -203,3 +203,30 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
 - Verification: readable 12/12, smoke harness 0 problems (draft + readable), Oakvale gate identical, 203 converter tests
   (test_watch_barrels_readable pre-existing failure), v5 preflight ok. In-game run of v5 is the next (user-driven) step.
 
+
+## Night 4 (2026-09-17) — GuildTraining residue through the typed pipeline (commits ad9d46a .. d15c91a)
+- Guild: 1033 -> 856 todos, 20 -> 26/37 files, 134 -> 140/152 fns. Orchard unchanged (11/11, 0 TODO, smoke clean) except two
+  real fixes: `MoveToPosition(pos, 0.5, ...)` and `Init` acquiring the two BanditTeamMember resources from the local vector
+  (`V`/`V + 1` were `0`/`0 + 1`). v5 rebuilt (readable + DLL + preflight).
+- Export: `__ftol2` typed with a `float10` parameter in ST0 (custom storage: `HELPER ... storage`), so Ghidra prints the x87
+  operand it dropped (`uVar = __ftol2();` → `__ftol2((float10)*(float *)(GGD + 0xedc))`); lowering → `(math.modf(x))`.
+- Export: block joins merge register state (`mergeState`): a register two paths load from different slots (a destructor
+  receiver selected per path) is unknown at the join, not the fall-through path's slot.
+- Export: `callOrder` (CALL/CALLIND ops in the order the ClangToken stream prints them). Ghidra prints out-of-line cleanup
+  blocks after the return, so pairing printed calls with sites by address order mismapped a `~CPhysicsMeshInfo` site and
+  dragged `pCVar11 = (Movie *)appuStack_20c` to the resource's slot. `_text_order_sites` pairs by token order when every head
+  (all vtable spellings incl. `(*(code *)X[N])(`, DLL imports printed bare / `::operator_new(`) agrees; falls back otherwise.
+- Lowering rounds: stack CTimer (0xCD4450 = `[this] = GSI->RegisterTimer()`, 0xCD4470 = `GSI->DeregisterTimer([this])`, disasm),
+  string maps (0x9AC2D0 ctor / 0x9AC310 dtor / 0x9AC700 operator[] → resources:NewStringMap/SetString/DestroyStringMap,
+  RunMacroWithStrings), byte-split pointers (`SUB41`/`>> 8`/CONCAT13 → the pointer), byte-literal dwords, merged byte flags,
+  inlined by-value copy ctor (`Data/Info loads + addref + slice stores` → the source thing), restored outgoing slots (`&xStack_N`
+  copy ctor), hidden thing results into arg slots, resource-valued actor maps (`(map + 4)` receiver, `operator= (`), inline
+  destructor casts + base-vtable disambiguation, `(**(code **)(X + 4))()` release spelling, void `GetAllThings*` vectors
+  (begin/end count idiom, element vcalls via `elem_N = LOCALLIST_At`, byte-offset loop counters `ctr_N`, begin-pointer elements),
+  global-game-data float arrays (`ReadGlobalGameDataFloatAt(offset, index)`, new sidecar binding), `ReadGlobalGameDataFloat`,
+  the static zero vector DAT_0143e8e0 (zero-initialised .data) + `.x/.y/.z` reads, Data-pointer handles, GSI pointer copies in
+  stack slots (`piStack_218 = piVar12`), `unaff_ESI` DeregisterTimer when the function registers one timer.
+- Lifter: the RegisterTimer handle only fills a real shortfall in unit mode (it was overriding printed timer ids); hex float
+  literals in float slots (unit mode only — Oakvale's readable pass already does it; gate stays identical).
+- Regressions caught by the gate/tests along the way: `_bN` renaming before colour folding (moved after), positional argument
+  placement (FSE parameter order ≠ native order for AddLineToConversation/EntityAttachToScript — reverted), `X = X & 0xffffff`.

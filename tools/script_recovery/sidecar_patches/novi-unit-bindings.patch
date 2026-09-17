@@ -20,10 +20,10 @@ index 8c1e959..bf57644 100644
      questState_type["RetainRetailThing"] = &LuaQuestState::RetainRetailThing;
 diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
 new file mode 100644
-index 0000000..563568f
+index 0000000..d49e930
 --- /dev/null
 +++ b/FableScriptExtender/NoviUnitBindings.h
-@@ -0,0 +1,174 @@
+@@ -0,0 +1,182 @@
 +#pragma once
 +// Bindings the converter-generated quest units (Orchard Farm, ...) need beyond the New Oakvale set.
 +// Evidence: docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md and refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md
@@ -153,6 +153,14 @@ index 0000000..563568f
 +        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
 +        if (!definitions || offset < 0) return 0.0f;
 +        return *reinterpret_cast<const volatile float*>(definitions + offset);
++    };
++    // a float array the table points at (`*(float **)(table + offset)`, e.g. the guild grade thresholds
++    // at +0xeb4): element `index` of it
++    quest["ReadGlobalGameDataFloatAt"] = [](LuaQuestState&, int offset, int index) -> float {
++        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        if (!definitions || offset < 0 || index < 0) return 0.0f;
++        auto* array = *reinterpret_cast<const float* const volatile*>(definitions + offset);
++        return array ? array[index] : 0.0f;
 +    };
 +    // ---- CScriptThing methods -------------------------------------------------------------------
 +    thing["GetName"] = [](CScriptThing* me) -> std::string {
