@@ -13807,7 +13807,7 @@
             "RemoveQuestInfoElement",
             "DisplayQuestInfo"
           ],
-          "lines": 86,
+          "lines": 85,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14277,7 +14277,7 @@
             "SetStateInt",
             "QUESTTHING_Empty"
           ],
-          "lines": 119,
+          "lines": 118,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14579,7 +14579,7 @@
             "SetStateBool",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 293,
+          "lines": 290,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

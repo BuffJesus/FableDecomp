@@ -52,20 +52,19 @@ function Main(quest)
         bVar3 = not alive
         if not bVar3 then
             xStack_7c = quest:GetAllThingsWithScriptName("WillBandit")
-            iVar8 = puStack_78 - xStack_7c
+            iVar8 = #xStack_7c * 0xc
             -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);
             -- TODO(native): CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)&xStack_2c,iVar8 / 0xc,iVar5);
             resources:ReleaseResource(xStack_10)
-            iVar5 = puStack_78 - xStack_7c >> 0x1f
             uVar11 = 0
-            if (puStack_78 - xStack_7c) / 0xc + iVar5 ~= iVar5 then
+            if #xStack_7c ~= 0 then
                 ctr_84 = 0
                 repeat
                     resources:TryAcquire((0x0 + iVar12), (ctr_84 + xStack_7c), 4)
                     ctr_84 = ctr_84 + 0xc
                     uVar11 = uVar11 + 1
                     iVar12 = iVar12 + 0x10
-                until not (uVar11 < ((puStack_78 - xStack_7c) / 0xc))
+                until not (uVar11 < ((#xStack_7c * 0xc) / 0xc))
             end
             iVar12 = 0
             xStack_48 = resources:NewResource()
@@ -118,9 +117,8 @@ function Main(quest)
                 resources:DestroyActorMap(xStack_38)
                 resources:ReleaseResource(xStack_48)
                 -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
-                iVar5 = puStack_78 - xStack_7c >> 0x1f
                 ctr_88 = 0
-                if (puStack_78 - xStack_7c) / 0xc + iVar5 ~= iVar5 then
+                if #xStack_7c ~= 0 then
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -135,7 +133,7 @@ function Main(quest)
                         -- TODO(native): (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);
                         ctr_88 = ctr_88 + 1
                         iVar12 = iVar12 + 0xc
-                    until not (ctr_88 < ((puStack_78 - xStack_7c) / 0xc))
+                    until not (ctr_88 < ((#xStack_7c * 0xc) / 0xc))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -172,8 +170,7 @@ function Main(quest)
                             until not (xStack_7c ~= puStack_78)
                         end
                         xStack_7c = quest:GetAllThingsWithScriptName("WillBandit")
-                        iVar12 = puStack_78 - xStack_7c >> 0x1f
-                        if (puStack_78 - xStack_7c) / 0xc + iVar12 == iVar12 then
+                        if #xStack_7c == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d685cc end

@@ -38,7 +38,7 @@ function Main(quest, me)
                 return
             end
             xStack_24 = quest:GetAllThingsWithScriptName("GuildScorpions")
-            i_stk_28 = (pu_stk_20 - xStack_24) / 0xc
+            i_stk_28 = (#xStack_24 * 0xc) / 0xc
             iVar7 = -1
             fVar9 = i_stk_28
             if i_stk_28 < 0 then
@@ -46,15 +46,14 @@ function Main(quest, me)
             end
             count = (math.modf((quest:ReadGlobalGameDataFloat(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
             quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
-            if ((pu_stk_20 - xStack_24) / 0xc) < 3 then
+            if ((#xStack_24 * 0xc) / 0xc) < 3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
                 if bVar6 then
                     -- LAB_00d647d1: (native jump target)
                     return
                 end
-                iVar1 = pu_stk_20 - xStack_24 >> 0x1f
-                if ((pu_stk_20 - xStack_24) / 0xc + iVar1 == iVar1) and (__native_entity_state:GetStateInt("ScorpionsLeft") == 0) then
+                if (#xStack_24 == 0) and (__native_entity_state:GetStateInt("ScorpionsLeft") == 0) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then

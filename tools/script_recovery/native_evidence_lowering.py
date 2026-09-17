@@ -917,6 +917,11 @@ def fold_local_thing_vectors(text, thing_slots=None):
                 return m.group(0)
             return f'{m.group(1)}LOCALLIST_At({vec}, {m.group(2) or 0})'
         text = re.sub(r'([(,]\s*)' + v + r'(?: \+ (\d+))?(?=\s*[,)])', element, text)
+        # the end-pointer slot 4 bytes above the begin slot under its own Ghidra name (`pu_stk_20` for `xStack_24`)
+        slot = re.search(r'_(?:stk_)?([0-9a-f]+)$', vec)
+        if slot:
+            end_slot = int(slot.group(1), 16) - 4
+            text = re.sub(r'\(int\)\w+_(?:stk_)?%x - \(int\)%s\b' % (end_slot, vec), f'(int){vec} - {vec}', text)
         # element count from the begin/end slots (both canonicalised to the vector's name):
         # `iVar = (int)V - V >> 0x1f;` (sign fix) then `((int)V - V) / 0xc + iVar != iVar` (count != 0)
         text = re.sub(r'^[ \t]*(\w+) = \(int\)' + v + r' - ' + v + r' >> 0x1f;[ \t]*\r?\n', '', text, flags=re.M)
