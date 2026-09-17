@@ -182,11 +182,11 @@ function Main(quest)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d685cc end
-                            iVar5 = quest:AddNewConversation(nil --[[missing]], false, false)
+                            iVar5 = quest:AddNewConversation(r1, false, false)
                             pCVar6 = quest:GetHero()
                             quest:AddPersonToConversation(iVar5, pCVar6)
                             pCVar6 = quest:GetHero()
-                            quest:AddLineToConversation(iVar5, "TEXT_QST_028_TEEN_WHISPER_SKILL_WOODS_HEALTH", pCVar6, nil --[[missing]], false)
+                            quest:AddLineToConversation(iVar5, "TEXT_QST_028_TEEN_WHISPER_SKILL_WOODS_HEALTH", r1, pCVar6, false)
                             bVar3 = quest:IsXbox()
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()

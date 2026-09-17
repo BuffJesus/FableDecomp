@@ -520,7 +520,7 @@ function Main(quest, me)
             resources:RunMacro("CS_GUILD_MELEE_BATTLE", xStack_b0, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:ChangeHeroHealthBy(1000.0, true, false)
-            quest:ModifyThingHealth(pCVar5, 1000.0, false)
+            quest:ModifyThingHealth(r1, 1000.0, false)
             quest:SetStateInt("TutorialState", 6)
             quest:PauseAllNonScriptedEntities(false)
             resources:ReleaseResource(xStack_48)
@@ -538,7 +538,7 @@ function Main(quest, me)
             pCVar5 = quest:GetHero()
             fret_02 = quest:GetHealth(pCVar5)
             f_stk_70 = fret_02
-            fret_03 = quest:GetHealth(nil --[[missing]])
+            fret_03 = quest:GetHealth(r1)
             f_stk_74 = fret_03
             cVar4 = __native_entity_state:GetStateBool("HeroStanding")
             while (cVar4 and (__native_entity_state:GetStateBool("WhisperStanding"))) do
@@ -588,7 +588,7 @@ function Main(quest, me)
             pCVar5 = quest:GetHero()
             fret_06 = quest:GetHealth(pCVar5)
             -- TODO(native): CStack_1d4 = (CCharString)(float)fret_06;
-            fret_07 = quest:GetHealth(nil --[[missing]])
+            fret_07 = quest:GetHealth(r1)
             ixVar13 = 0
             -- TODO(native): CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)CStack_1d4));
             iVar7 = 0
@@ -734,7 +734,7 @@ function Main(quest, me)
             resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_LOST", xStack_220, xStack_1e0, false, true)
             ::LAB_00d5a28a::
             quest:ChangeHeroHealthBy(1000.0, true, false)
-            quest:EntitySetInFaction(pCVar5, "FACTION_HERO")
+            quest:EntitySetInFaction(r1, "FACTION_HERO")
             me:SetFriendsWithEverythingFlag(1)
             bVar18 = true
             bVar3 = false

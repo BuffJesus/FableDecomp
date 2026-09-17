@@ -332,7 +332,7 @@ function Main(quest, me)
                                         pCVar6 = quest:GetHero()
                                         quest:AddPersonToConversation(iVar8, pCVar6)
                                         pCVar6 = quest:GetHero()
-                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_MAZE_HIT_OUT", pCVar6, thing1, false)
+                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_MAZE_HIT_OUT", r3, pCVar6, false)
                                     else
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_190)
@@ -343,7 +343,7 @@ function Main(quest, me)
                                         pCVar6 = quest:GetHero()
                                         quest:AddPersonToConversation(iVar8, pCVar6)
                                         pCVar6 = quest:GetHero()
-                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_HIT_OUT", pCVar6, r2, false)
+                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_HIT_OUT", r4, pCVar6, false)
                                     end
                                 else
                                     if bVar4 then
@@ -433,7 +433,7 @@ function Main(quest, me)
                                                             bVar3 = not alive
                                                             if bVar3 then __cleanup_LAB_00d42ef8(); return end
                                                             pCVar6 = quest:GetHero()
-                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", pCVar6, r1, false)
+                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", r6, pCVar6, false)
                                                         else
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
@@ -442,21 +442,21 @@ function Main(quest, me)
                                                                 return
                                                             end
                                                             pCVar6 = quest:GetHero()
-                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", pCVar6, nil --[[missing]], false)
+                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", r6, pCVar6, false)
                                                         end
                                                     else
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar3 = not alive
                                                         if bVar3 then __cleanup_LAB_00d42ef8(); return end
                                                         pCVar6 = quest:GetHero()
-                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", pCVar6, nil --[[missing]], false)
+                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", r6, pCVar6, false)
                                                     end
                                                 else
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
                                                     if bVar3 then __cleanup_LAB_00d42ef8(); return end
                                                     pCVar6 = quest:GetHero()
-                                                    quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", pCVar6, nil --[[missing]], false)
+                                                    quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", r6, pCVar6, false)
                                                 end
                                             else
                                                 if bVar4 then
@@ -474,7 +474,7 @@ function Main(quest, me)
                                                             bVar3 = not alive
                                                             if bVar3 then return end  -- TODO(native): goto LAB_00d42efe
                                                             pCVar6 = quest:GetHero()
-                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", pCVar6, nil --[[missing]], false)
+                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", r7, pCVar6, false)
                                                         else
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
@@ -483,21 +483,21 @@ function Main(quest, me)
                                                                 __cleanup_LAB_00d42f02(); return
                                                             end
                                                             pCVar6 = quest:GetHero()
-                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", pCVar6, nil --[[missing]], false)
+                                                            quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", r7, pCVar6, false)
                                                         end
                                                     else
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar3 = not alive
                                                         if bVar3 then return end  -- TODO(native): goto LAB_00d42efe
                                                         pCVar6 = quest:GetHero()
-                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", pCVar6, nil --[[missing]], false)
+                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", r7, pCVar6, false)
                                                     end
                                                 else
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
                                                     if bVar3 then return end  -- TODO(native): goto LAB_00d42efe
                                                     pCVar6 = quest:GetHero()
-                                                    quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", pCVar6, nil --[[missing]], false)
+                                                    quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", r7, pCVar6, false)
                                                 end
                                             end
                                         end

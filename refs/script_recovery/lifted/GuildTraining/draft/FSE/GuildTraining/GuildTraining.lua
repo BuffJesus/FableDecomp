@@ -207,7 +207,7 @@ function RunTutorials(quest)
         bVar2 = not alive
         if bVar2 then goto LAB_00d496bc end
         quest:SetThingAsUsable(r3, false)
-        quest:SetThingPersistent(nil --[[missing]], true)
+        quest:SetThingPersistent(r3, true)
         pCVar3 = quest:GetHero()
         bVar2 = quest:IsObjectInThingsPossession("OBJECT_GUILD_SEAL_1", pCVar3)
         if bVar2 then
@@ -877,9 +877,9 @@ function RunTutorials(quest)
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
             quest:FadeScreenOut(0.5, 0.0)
-            quest:OpenDoor(r14)
-            quest:SetThingPersistent(r12, true)
-            quest:SetRegionExitAsActive(r11, true)
+            quest:OpenDoor(r1)
+            quest:SetThingPersistent(r1, true)
+            quest:SetRegionExitAsActive(r2, true)
             iVar16 = (math.modf(quest:ReadGlobalGameDataFloat(0xf1c)))
             quest:GiveHeroExperience(iVar16)
             quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
@@ -985,7 +985,7 @@ function RunTutorials(quest)
                     quest:SetHeroAsApprentice(false)
                     quest:GiveHeroExpression("EXPRESSION_FOLLOW", -1, true)
                     quest:GiveHeroExpression("EXPRESSION_WAIT", -1, true)
-                    quest:SetThingAsUsable(r10, true)
+                    quest:SetThingAsUsable(r3, true)
                     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
                     bVar14 = true
                     bVar2 = false
@@ -1049,7 +1049,7 @@ function RunTutorials(quest)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar2 = not alive
                                                     if bVar2 then goto LAB_00d496a1 end
-                                                    quest:RemoveThing(r9, (xStack_48 + iVar9), false)
+                                                    quest:RemoveThing(r14, (xStack_48 + iVar9), false)
                                                     uVar8 = uVar8 + 1
                                                     iVar9 = iVar9 + 0xc
                                                 until not (uVar8 < ((i_stk_44 - xStack_48) / 0xc))
@@ -2107,7 +2107,7 @@ function RunCeremonyCutscene(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
-            quest:EntitySetInFaction(r2, "FACTION_HERO")
+            quest:EntitySetInFaction(r1, "FACTION_HERO")
             xStack_30 = resources:NewResource()
             bVar2 = false
             if bVar2 ~= 0 then
@@ -2154,7 +2154,7 @@ function RunCeremonyCutscene(quest)
                     quest:FixMovieSequenceCamera(true)
                     resources:RunMacro("CS_GUILD_CEREMONY", xStack_58, false, true)
                     quest:FixMovieSequenceCamera(false)
-                    quest:RemoveThing(pCVar4, false, true)
+                    quest:RemoveThing(r2, false, true)
                     quest:RemoveThing(r1, false, true)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_10)

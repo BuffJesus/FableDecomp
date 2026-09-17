@@ -1371,6 +1371,8 @@ class Lifter:
         if self.accessor_kinds:
             # a staged string temporary passed by address is a positional operand (unit converter only)
             operands = [a[1:] if a.startswith("&") and a[1:] in self.temps else a for a in operands]
+            # a hidden-result slot passed by address again is that result (`&xStack_ac` after GetThingWithScriptName)
+            operands = [self.slot_results[a[1:]] if a.startswith("&") and a[1:] in self.slot_results else a for a in operands]
         raw_args = [a for a in operands if not a.startswith("&") and a not in ("this", "param_1")]
         params = None
         if spec:

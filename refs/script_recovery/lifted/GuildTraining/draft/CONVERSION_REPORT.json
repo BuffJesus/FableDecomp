@@ -222,7 +222,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "SetThingPersistent: missing pThing (1 args for 2 params)",
             "CreateObject: missing position (2 args for 3 params)",
             "unlifted: xStack_54._0_4_ = (int *)0x0;",
             "RemoveThing: missing pThing (2 args for 3 params)",
@@ -4621,20 +4620,13 @@
             "verify cleanup at LAB_00d42ef8 (lifted as early return)",
             "label LAB_00d42ef8",
             "label LAB_00d42f02",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d42ef8 (lifted as early return)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d42ef8 (lifted as early return)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d42efe (lifted as early return)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00d42efe",
             "goto LAB_00d42f02",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d42efe (lifted as early return)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d42efe (lifted as early return)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00d42f0b",
             "unlifted: quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)",
             "unlifted: quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)"
@@ -5955,7 +5947,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 262
+        "todo": 254
       }
     },
     {
@@ -6460,14 +6452,12 @@
             "verify cleanup at LAB_00d5a933 (lifted as early return)",
             "label LAB_00d5a933",
             "goto LAB_00d5a93f",
-            "GetHealth: missing pThing (0 args for 1 params)",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "goto LAB_00d5a9a7",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "label LAB_00d59cc6",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "unlifted: CStack_1d4 = (CCharString)(float)fret_06;",
-            "GetHealth: missing pThing (0 args for 1 params)",
             "unlifted: CStack_1d4 = (CCharString) (float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (f",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "verify cleanup at LAB_00d5a997 (lifted as early return)",
@@ -7027,12 +7017,10 @@
             "unlifted: *piVar1 = *piVar1 + 1;",
             "label LAB_00d57742",
             "MsgIsHitBy: CScriptThing method not in FSE manifest",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00d5754c",
             "unlifted: xStack_c8 = (CCharString)(((int)xStack_c8 + 1) % 5);",
             "unlifted: xStack_c8 = (CCharString)(((int)xStack_c8 + 1) % 5);",
             "unlifted: xStack_c8 = (CCharString)(((int)xStack_c8 + 1) % 5);",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00d57e71",
             "label LAB_00d57e76",
             "unlifted: xStack_bc = (undefined **)((uint)xStack_bc | 2);",
@@ -7688,7 +7676,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 94
+        "todo": 90
       }
     },
     {
@@ -14413,8 +14401,6 @@
             "ModifyThingHealth: missing spThing (2 args for 3 params)",
             "unlifted: (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);",
             "unlifted: puStack_78 = puStack_78 + -3;",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00d6849b",
             "unlifted: ACTORMAP_Set(xStack_38, \"BAN1\", &0x0)"
           ],
@@ -14873,7 +14859,7 @@
         "functionSyntaxPassed": 9,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 19
+        "todo": 17
       }
     }
   ],
@@ -14884,6 +14870,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 814
+    "todo": 800
   }
 }
