@@ -7,6 +7,12 @@ before). **v5 rebuilt** (readable regenerated, DLL rebuilt with `ReadGlobalGameD
 the next (user-driven) step: `python work/new-oakvale-original-fse-20260912/local-candidate-v5/local_test.py --game-dir <Fable>
 --launch --save-dir <saves>`, reach Orchard Farm, read NoviCompatibility/FableScriptExtender.log.
 
+**NEXT SESSION (agreed 2026-09-17): readable output should read like a quest script, not a decompile** — plan in
+`docs/scripts/READABLE_STYLE_PLAN.md` (6 steps, payoff order). First increment = steps 1 (termination boilerplate), 2 (inline
+single-use temps), 6 (cosmetics) in `build_readable_unit.py` on Orchard Farm, shown as a CrateTeamMember before/after; add
+style metrics to READABLE_REPORT.json; readable stage only (draft stays faithful); smoke harness + Oakvale gate stay green.
+Style oracle: work/aeon_lua_ports/Fisherman/FSE/Fisherman/Entities/Fisherman.lua.
+
 **GuildTraining** (typed pipeline, `--unit guild_training`, range 0xD3B390..0xD68F00): 1033 -> **856 todos, 20 -> 26/37 files,
 140/152 fns** across rounds 113-125 (commits ad9d46a..d15c91a). Regenerate: `ghidra_typing_spec.py --unit guild_training` →
 `infer_helper_prototypes.py --unit guild_training` (MUST run, else 31 helpers vanish) → headless export → `convert_quest_unit.py --unit guild_training`.
