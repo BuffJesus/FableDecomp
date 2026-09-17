@@ -1690,8 +1690,8 @@ function CheckFriendlyAttacks(quest)
         -- TODO(native): (**(code **)*puVar7)(0);
         puVar7 = puVar7 + 3
     end
-    if nil ~= nil then
-        -- TODO(native): free(xStack_84);
+    if xStack_94 ~= nil then
+        -- TODO(native): free(xStack_94);
     end
     r1 = nil
     ::LAB_00d45322::

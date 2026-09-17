@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_10, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_2, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_24, xStack_30, xStack_c, xStack_f8, x_stk_58
+    local CVar10, __native_condition_1, __native_condition_10, __native_condition_11, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_3, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_24, xStack_30, xStack_48, xStack_c, xStack_f8, x_stk_58
     local alive = true
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -118,7 +118,12 @@ function Main(quest, me)
         fVar20 = 5.5
         pCVar6 = quest:GetHero()
         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar20)
-        if (not bVar3) or (iVar7 = GSI->GetTimer(xStack_188), 0 < iVar7) then goto FLOW_native_label_1 end
+        __native_condition_1 = not bVar3
+        if not __native_condition_1 then
+            iVar7 = quest:GetTimer(xStack_188)
+            __native_condition_1 = 0 < iVar7
+        end
+        if __native_condition_1 then goto FLOW_native_label_1 end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d55c46 end
@@ -352,7 +357,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if not bVar3 then
-                                        quest:DisplayGameInfo("")
+                                        quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_STICK")
                                         bVar3 = quest:MsgIsGameInfoClickedPast()
                                         while not bVar3 do
                                             alive = quest:NewScriptFrame(me)
@@ -444,10 +449,6 @@ function Main(quest, me)
                                                 if bVar3 ~= 0 then
                                                 end
                                                 iVar8 = 4
-                                                uVar16 = SUB41(xStack_14c,0)
-                                                uVar17 = (xStack_14c >> 8)
-                                                uVar18 = (xStack_14c >> 0x10)
-                                                uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
                                                 bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
@@ -465,7 +466,7 @@ function Main(quest, me)
                                                     uVar18 = (xStack_14c >> 0x10)
                                                     uVar19 = (xStack_14c >> 0x18)
                                                     pCVar6 = quest:GetHero()
-                                                    bVar3 = me:AcquireControl(4)
+                                                    bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar3 = not alive
@@ -483,7 +484,7 @@ function Main(quest, me)
                                                     -- TODO(native): CStack_114._4_4_ = puVar11[1];
                                                     -- TODO(native): CStack_114._8_4_ = puVar11[2];
                                                     -- TODO(native): CreateEffect is not a ForgeFSE binding
-                                                    quest:CreateEffect(xStack_dc, "SMASH_DUMMY_01", (xStack_114_2 + 4), "", 0.0, false, false)
+                                                    quest:CreateEffect(xStack_dc, "SMASH_DUMMY_01", xStack_114_3, "", 0.0, false, false)
                                                     quest:FadeOutAndKillEntity(r1, true, 1.0, true)
                                                     xStack_13c = resources:NewActorMap()
                                                     resources:SetActor(xStack_13c, "HERO", xStack_14c)
@@ -491,10 +492,10 @@ function Main(quest, me)
                                                     quest:FixMovieSequenceCamera(true)
                                                     resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", xStack_13c, false, false)
                                                     quest:PauseAllNonScriptedEntities(true)
-                                                    pCVar6 = quest:CreateExperienceOrb(xStack_114_2, 1)
+                                                    pCVar6 = quest:CreateExperienceOrb(xStack_114_3, 1)
                                                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                                                     quest:EntitySetCutsceneBehaviour(xStack_160, 2)
-                                                    resources:RunMacro(xStack_18c, xStack_13c, false, true)
+                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED", xStack_13c, false, true)
                                                     quest:FixMovieSequenceCamera(false)
                                                     quest:PauseAllNonScriptedEntities(false)
                                                     resources:DestroyActorMap(xStack_13c)
@@ -577,17 +578,17 @@ function Main(quest, me)
                                                                     if bVar3 then
                                                                         -- LAB_00d54dfa: (native jump target)
                                                                     else
-                                                                        xStack_114_2 = resources:NewActorMap()
-                                                                        resources:SetActor(xStack_114_2, "HERO", xStack_124)
-                                                                        resources:SetActor(xStack_114_2, "TEACHER", xStack_17c)
+                                                                        xStack_114_3 = resources:NewActorMap()
+                                                                        resources:SetActor(xStack_114_3, "HERO", xStack_14c)
+                                                                        resources:SetActor(xStack_114_3, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
                                                                         quest:PauseAllNonScriptedEntities(true)
                                                                         quest:FixMovieSequenceCamera(true)
-                                                                        resources:RunMacro("CS_GUILD_PREMELEE_ALARM", xStack_114_2, false, true)
+                                                                        resources:RunMacro("CS_GUILD_PREMELEE_ALARM", xStack_114_3, false, true)
                                                                         quest:FixMovieSequenceCamera(false)
                                                                         quest:PauseAllNonScriptedEntities(false)
-                                                                        resources:DestroyActorMap(xStack_114_2)
+                                                                        resources:DestroyActorMap(xStack_114_3)
                                                                         quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BEETLES", "Q_GuildTrainingWoodsMelee", false)
                                                                         quest:SetQuestCardObjective("Q_GuildTrainingWoodsMelee", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                         quest:KickOffQuestStartScreen("Q_GuildTrainingWoodsMelee", true, false)
@@ -611,7 +612,7 @@ function Main(quest, me)
                                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                                         bVar3 = not alive
                                                                                         if not bVar3 then
-                                                                                            bVar3 = (**(**(this + 4) + 0x1d8 ))(*(this + 4),0x1c)
+                                                                                            bVar3 = quest:DisplayTutorial(0x1c)
                                                                                             if bVar3 then
                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                 bVar3 = not alive
@@ -697,8 +698,8 @@ function Main(quest, me)
                                                                                                                 pCVar6 = 0x1
                                                                                                                 quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
                                                                                                                 quest:FixMovieSequenceCamera(true)
-                                                                                                                resources:RunMacro(xStack_c4, xStack_13c, false, true)
-                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", xStack_b4)
+                                                                                                                resources:RunMacro("CS_GUILD_MELEE_WOODSWON", xStack_13c, false, true)
+                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                                 while iVar7 < 0 do
                                                                                                                     alive = quest:NewScriptFrame(me)
@@ -795,7 +796,7 @@ function Main(quest, me)
                                                                                                                     bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                                     if bVar3 then
                                                                                                                         repeat
-                                                                                                                            -- TODO(native): (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));
+                                                                                                                            alive = quest:NewScriptFrame(me)
                                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                                             bVar3 = not alive
                                                                                                                             if bVar3 then goto LAB_00d55c2b end
@@ -808,7 +809,7 @@ function Main(quest, me)
                                                                                                                     bVar3 = false
                                                                                                                     if bVar3 ~= 0 then
                                                                                                                     end
-                                                                                                                    bVar3 = me:AcquireControl(4)
+                                                                                                                    bVar3 = resources:TryAcquire(xStack_17c, me, 4)
                                                                                                                     while not bVar3 do
                                                                                                                         alive = quest:NewScriptFrame(me)
                                                                                                                         alive = not quest:IsActiveThreadTerminating()
@@ -941,8 +942,8 @@ function Main(quest, me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_24
+                                                                                                                        xStack_c = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = xStack_c
                                                                                                                         r8 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_03 then
@@ -970,7 +971,7 @@ function Main(quest, me)
                                                                                                                             bVar3 = not alive
                                                                                                                             if bVar3 then __region_LAB_00d55cd5_c6(); goto LAB_00d55c2b end
                                                                                                                         end
-                                                                                                                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", xStack_8c)
+                                                                                                                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                         iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                                         while iVar7 < 0 do
                                                                                                                             alive = quest:NewScriptFrame(me)
@@ -986,16 +987,16 @@ function Main(quest, me)
                                                                                                                             bVar3 = not alive
                                                                                                                             if iVar7 == 1 then
                                                                                                                                 if not bVar3 then
-                                                                                                                                    quest:FadeScreenOut(*(this + 4), 0.5)
-                                                                                                                                    quest:Pause(*(this + 4))
+                                                                                                                                    quest:FadeScreenOut(0.5, 0.5)
+                                                                                                                                    quest:Pause(1.0)
                                                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                                     goto LAB_00d5595a_c6
                                                                                                                                 end
                                                                                                                                 __region_LAB_00d555f3_c6(); goto LAB_00d55c2b
                                                                                                                             end
                                                                                                                             if not bVar3 then
-                                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                                pCVar5 = xStack_c
+                                                                                                                                xStack_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                                pCVar5 = xStack_48
                                                                                                                                 r10 = quest:GetHealth(pCVar5)
                                                                                                                                 fVar2 = 0.0
                                                                                                                                 if fVar2 < fret_04 then
@@ -1046,8 +1047,8 @@ function Main(quest, me)
                                                                                                                     __region_LAB_00d555f3_c6()
                                                                                                                     goto LAB_00d55c2b
                                                                                                                 end
-                                                                                                                pCVar5 = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = pCVar5
+                                                                                                                xStack_24 = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = xStack_24
                                                                                                                 r12 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_02 then
@@ -1082,16 +1083,17 @@ function Main(quest, me)
                                                                                                                 fVar20 = 5.5
                                                                                                                 pCVar5 = quest:GetHero()
                                                                                                                 bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar20)
-                                                                                                                __native_condition_2 = bVar3
+                                                                                                                __native_condition_3 = bVar3
+                                                                                                                if __native_condition_3 then
+                                                                                                                    iVar7 = quest:GetTimer(xStack_188)
+                                                                                                                    __native_condition_3 = iVar7 < 1
+                                                                                                                end
+                                                                                                                __native_condition_2 = __native_condition_3
                                                                                                                 if __native_condition_2 then
-                                                                                                                    __native_condition_2 = iVar7 < 1
-                                                                                                                end
-                                                                                                                __native_condition_1 = __native_condition_2
-                                                                                                                if __native_condition_1 then
                                                                                                                     iVar7 = me:IsPerformingScriptTask()
-                                                                                                                    __native_condition_1 = not iVar7
+                                                                                                                    __native_condition_2 = not iVar7
                                                                                                                 end
-                                                                                                                if __native_condition_1 then
+                                                                                                                if __native_condition_2 then
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55c2b end
@@ -1129,7 +1131,7 @@ function Main(quest, me)
                                                                                                                         pCVar5 = quest:GetHero()
                                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
                                                                                                                         pCVar5 = quest:GetHero()
-                                                                                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, xStack_130)
+                                                                                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                                     end
                                                                                                                 end
                                                                                                             end
@@ -1201,7 +1203,7 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if bVar3 then
                                                                                                                 repeat
-                                                                                                                    -- TODO(native): (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));
+                                                                                                                    alive = quest:NewScriptFrame(me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55c2b end
@@ -1214,7 +1216,7 @@ function Main(quest, me)
                                                                                                             bVar3 = false
                                                                                                             if bVar3 ~= 0 then
                                                                                                             end
-                                                                                                            bVar3 = me:AcquireControl(4)
+                                                                                                            bVar3 = resources:TryAcquire(xStack_17c, me, 4)
                                                                                                             while not bVar3 do
                                                                                                                 alive = quest:NewScriptFrame(me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -1382,8 +1384,8 @@ function Main(quest, me)
                                                                                                         pCVar6 = 0x1
                                                                                                         quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
                                                                                                         quest:FixMovieSequenceCamera(true)
-                                                                                                        resources:RunMacro(xStack_c4, xStack_13c, false, true)
-                                                                                                        quest:GiveHeroYesNoQuestion("", "TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", xStack_7c)
+                                                                                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", xStack_13c, false, true)
+                                                                                                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                         iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                         while iVar7 < 0 do
                                                                                                             alive = quest:NewScriptFrame(me)
@@ -1487,11 +1489,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_792
+                                                                                                                goto FLOW_after_lab_00d54f9c_786
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_792::
+                                                                                                        ::FLOW_after_lab_00d54f9c_786::
                                                                                                         if (u_stk_128 & 1) ~= 0 then
                                                                                                             u_stk_128 = u_stk_128 & 0xfffffffe
                                                                                                         end
@@ -1505,7 +1507,7 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if bVar3 then
                                                                                                                 repeat
-                                                                                                                    -- TODO(native): (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));
+                                                                                                                    alive = quest:NewScriptFrame(me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55c2b end
@@ -1518,7 +1520,7 @@ function Main(quest, me)
                                                                                                             bVar3 = false
                                                                                                             if bVar3 ~= 0 then
                                                                                                             end
-                                                                                                            bVar3 = me:AcquireControl(4)
+                                                                                                            bVar3 = resources:TryAcquire(xStack_17c, me, 4)
                                                                                                             while not bVar3 do
                                                                                                                 alive = quest:NewScriptFrame(me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -1734,8 +1736,8 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_24
+                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = xStack_c
                                                                                                                 r26 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
@@ -1766,7 +1768,7 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55cd5 end
                                                                                                                 end
-                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", xStack_8c)
+                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                                 while iVar7 < 0 do
                                                                                                                     alive = quest:NewScriptFrame(me)
@@ -1785,8 +1787,8 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if iVar7 == 1 then
                                                                                                                         if not bVar3 then
-                                                                                                                            quest:FadeScreenOut(*(this + 4), 0.5)
-                                                                                                                            quest:Pause(*(this + 4))
+                                                                                                                            quest:FadeScreenOut(0.5, 0.5)
+                                                                                                                            quest:Pause(1.0)
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                             goto LAB_00d5595a
                                                                                                                         end
@@ -1794,8 +1796,8 @@ function Main(quest, me)
                                                                                                                         goto LAB_00d55c2b
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_c
+                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = xStack_48
                                                                                                                         r28 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
@@ -1851,8 +1853,8 @@ function Main(quest, me)
                                                                                                             quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
-                                                                                                        pCVar5 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = pCVar5
+                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = xStack_24
                                                                                                         r30 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
@@ -1893,16 +1895,17 @@ function Main(quest, me)
                                                                                                         fVar20 = 5.5
                                                                                                         pCVar5 = quest:GetHero()
                                                                                                         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar20)
-                                                                                                        __native_condition_4 = bVar3
+                                                                                                        __native_condition_5 = bVar3
+                                                                                                        if __native_condition_5 then
+                                                                                                            iVar7 = quest:GetTimer(xStack_188)
+                                                                                                            __native_condition_5 = iVar7 < 1
+                                                                                                        end
+                                                                                                        __native_condition_4 = __native_condition_5
                                                                                                         if __native_condition_4 then
-                                                                                                            __native_condition_4 = iVar7 < 1
-                                                                                                        end
-                                                                                                        __native_condition_3 = __native_condition_4
-                                                                                                        if __native_condition_3 then
                                                                                                             iVar7 = me:IsPerformingScriptTask()
-                                                                                                            __native_condition_3 = not iVar7
+                                                                                                            __native_condition_4 = not iVar7
                                                                                                         end
-                                                                                                        if __native_condition_3 then
+                                                                                                        if __native_condition_4 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b end
@@ -1941,7 +1944,7 @@ function Main(quest, me)
                                                                                                                 pCVar5 = quest:GetHero()
                                                                                                                 quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, xStack_130)
+                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                             end
                                                                                                         end
                                                                                                     end
@@ -2059,7 +2062,7 @@ function Main(quest, me)
                                                                         -- LAB_00d54dfa_c27: (native jump target)
                                                                     else
                                                                         pCVar5 = resources:NewActorMap()
-                                                                        resources:SetActor(pCVar5, "HERO", xStack_124)
+                                                                        resources:SetActor(pCVar5, "HERO", xStack_14c)
                                                                         resources:SetActor(pCVar5, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
@@ -2092,7 +2095,7 @@ function Main(quest, me)
                                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                                         bVar3 = not alive
                                                                                         if not bVar3 then
-                                                                                            bVar3 = (**(**(this + 4) + 0x1d8 ))(*(this + 4),0x1c)
+                                                                                            bVar3 = quest:DisplayTutorial(0x1c)
                                                                                             if bVar3 then
                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                 bVar3 = not alive
@@ -2181,8 +2184,8 @@ function Main(quest, me)
                                                                                                         pCVar6 = 0x1
                                                                                                         quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
                                                                                                         quest:FixMovieSequenceCamera(true)
-                                                                                                        resources:RunMacro(xStack_c4, xStack_13c, false, true)
-                                                                                                        quest:GiveHeroYesNoQuestion("", "TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", xStack_7c)
+                                                                                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", xStack_13c, false, true)
+                                                                                                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                         iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                         while iVar7 < 0 do
                                                                                                             alive = quest:NewScriptFrame(me)
@@ -2279,7 +2282,7 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if bVar3 then
                                                                                                                 repeat
-                                                                                                                    -- TODO(native): (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));
+                                                                                                                    alive = quest:NewScriptFrame(me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55c2b_c27 end
@@ -2292,7 +2295,7 @@ function Main(quest, me)
                                                                                                             bVar3 = false
                                                                                                             if bVar3 ~= 0 then
                                                                                                             end
-                                                                                                            bVar3 = me:AcquireControl(4)
+                                                                                                            bVar3 = resources:TryAcquire(xStack_17c, me, 4)
                                                                                                             while not bVar3 do
                                                                                                                 alive = quest:NewScriptFrame(me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -2425,8 +2428,8 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_24
+                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = xStack_c
                                                                                                                 r38 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
@@ -2454,7 +2457,7 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then __region_LAB_00d55cd5_c27(); goto LAB_00d55c2b_c27 end
                                                                                                                 end
-                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_LOG_HERO_EXPERIENCEORBS", "TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", xStack_68)
+                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                                 while iVar7 < 0 do
                                                                                                                     alive = quest:NewScriptFrame(me)
@@ -2470,16 +2473,16 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if iVar7 == 1 then
                                                                                                                         if not bVar3 then
-                                                                                                                            quest:FadeScreenOut(*(this + 4), 0.5)
-                                                                                                                            quest:Pause(*(this + 4))
+                                                                                                                            quest:FadeScreenOut(0.5, 0.5)
+                                                                                                                            quest:Pause(1.0)
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                             goto LAB_00d5595a_c27
                                                                                                                         end
                                                                                                                         __region_LAB_00d555f3_c27(); goto LAB_00d55c2b_c27
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_c
+                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = xStack_48
                                                                                                                         r40 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
@@ -2530,8 +2533,8 @@ function Main(quest, me)
                                                                                                             __region_LAB_00d555f3_c27()
                                                                                                             goto LAB_00d55c2b_c27
                                                                                                         end
-                                                                                                        pCVar5 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = pCVar5
+                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = xStack_24
                                                                                                         r42 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
@@ -2566,16 +2569,17 @@ function Main(quest, me)
                                                                                                         fVar20 = 5.5
                                                                                                         pCVar5 = quest:GetHero()
                                                                                                         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar20)
-                                                                                                        __native_condition_6 = bVar3
+                                                                                                        __native_condition_7 = bVar3
+                                                                                                        if __native_condition_7 then
+                                                                                                            iVar7 = quest:GetTimer(xStack_188)
+                                                                                                            __native_condition_7 = iVar7 < 1
+                                                                                                        end
+                                                                                                        __native_condition_6 = __native_condition_7
                                                                                                         if __native_condition_6 then
-                                                                                                            __native_condition_6 = iVar7 < 1
-                                                                                                        end
-                                                                                                        __native_condition_5 = __native_condition_6
-                                                                                                        if __native_condition_5 then
                                                                                                             iVar7 = me:IsPerformingScriptTask()
-                                                                                                            __native_condition_5 = not iVar7
+                                                                                                            __native_condition_6 = not iVar7
                                                                                                         end
-                                                                                                        if __native_condition_5 then
+                                                                                                        if __native_condition_6 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b_c27 end
@@ -2613,7 +2617,7 @@ function Main(quest, me)
                                                                                                                 pCVar5 = quest:GetHero()
                                                                                                                 quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, xStack_130)
+                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                             end
                                                                                                         end
                                                                                                     end
@@ -2759,10 +2763,6 @@ function Main(quest, me)
                                                 if bVar3 ~= 0 then
                                                 end
                                                 iVar8 = 4
-                                                uVar16 = SUB41(xStack_14c,0)
-                                                uVar17 = (xStack_14c >> 8)
-                                                uVar18 = (xStack_14c >> 0x10)
-                                                uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
                                                 bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
@@ -2776,7 +2776,7 @@ function Main(quest, me)
                                                     uVar18 = (xStack_14c >> 0x10)
                                                     uVar19 = (xStack_14c >> 0x18)
                                                     pCVar6 = quest:GetHero()
-                                                    bVar3 = me:AcquireControl(4)
+                                                    bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar3 = not alive
@@ -2794,7 +2794,7 @@ function Main(quest, me)
                                                     -- TODO(native): CStack_114._4_4_ = puVar11[1];
                                                     -- TODO(native): CStack_114._8_4_ = puVar11[2];
                                                     -- TODO(native): CreateEffect is not a ForgeFSE binding
-                                                    quest:CreateEffect(pCVar6, "SMASH_DUMMY_01", (pCVar5 + 4), "", 0.0, false, false)
+                                                    quest:CreateEffect(pCVar6, "SMASH_DUMMY_01", pCVar5, "", 0.0, false, false)
                                                     quest:FadeOutAndKillEntity(r44, true, 1.0, true)
                                                     xStack_13c = resources:NewActorMap()
                                                     resources:SetActor(xStack_13c, "HERO", xStack_14c)
@@ -2805,7 +2805,7 @@ function Main(quest, me)
                                                     pCVar6 = quest:CreateExperienceOrb(1, pCVar5)
                                                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                                                     quest:EntitySetCutsceneBehaviour(xStack_160, 2)
-                                                    resources:RunMacro(xStack_18c, xStack_13c, false, true)
+                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED", xStack_13c, false, true)
                                                     quest:FixMovieSequenceCamera(false)
                                                     quest:PauseAllNonScriptedEntities(false)
                                                     resources:DestroyActorMap(xStack_13c)
@@ -2887,7 +2887,7 @@ function Main(quest, me)
                                                                         -- LAB_00d54dfa_c28: (native jump target)
                                                                     else
                                                                         pCVar5 = resources:NewActorMap()
-                                                                        resources:SetActor(pCVar5, "HERO", xStack_124)
+                                                                        resources:SetActor(pCVar5, "HERO", xStack_14c)
                                                                         resources:SetActor(pCVar5, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
@@ -2920,7 +2920,7 @@ function Main(quest, me)
                                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                                         bVar3 = not alive
                                                                                         if not bVar3 then
-                                                                                            bVar3 = (**(**(this + 4) + 0x1d8 ))(*(this + 4),0x1c)
+                                                                                            bVar3 = quest:DisplayTutorial(0x1c)
                                                                                             if bVar3 then
                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                 bVar3 = not alive
@@ -3009,8 +3009,8 @@ function Main(quest, me)
                                                                                                         pCVar6 = 0x1
                                                                                                         quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
                                                                                                         quest:FixMovieSequenceCamera(true)
-                                                                                                        resources:RunMacro(xStack_c4, xStack_13c, false, true)
-                                                                                                        quest:GiveHeroYesNoQuestion("", "TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", xStack_7c)
+                                                                                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", xStack_13c, false, true)
+                                                                                                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                         iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                         while iVar7 < 0 do
                                                                                                             alive = quest:NewScriptFrame(me)
@@ -3107,7 +3107,7 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if bVar3 then
                                                                                                                 repeat
-                                                                                                                    -- TODO(native): (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));
+                                                                                                                    alive = quest:NewScriptFrame(me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55c2b_c28 end
@@ -3120,7 +3120,7 @@ function Main(quest, me)
                                                                                                             bVar3 = false
                                                                                                             if bVar3 ~= 0 then
                                                                                                             end
-                                                                                                            bVar3 = me:AcquireControl(4)
+                                                                                                            bVar3 = resources:TryAcquire(xStack_17c, me, 4)
                                                                                                             while not bVar3 do
                                                                                                                 alive = quest:NewScriptFrame(me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -3253,8 +3253,8 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_24
+                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = xStack_c
                                                                                                                 r51 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
@@ -3282,7 +3282,7 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then __region_LAB_00d55cd5_c28(); goto LAB_00d55c2b_c28 end
                                                                                                                 end
-                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", xStack_8c)
+                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                                 while iVar7 < 0 do
                                                                                                                     alive = quest:NewScriptFrame(me)
@@ -3298,16 +3298,16 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if iVar7 == 1 then
                                                                                                                         if not bVar3 then
-                                                                                                                            quest:FadeScreenOut(*(this + 4), 0.5)
-                                                                                                                            quest:Pause(*(this + 4))
+                                                                                                                            quest:FadeScreenOut(0.5, 0.5)
+                                                                                                                            quest:Pause(1.0)
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                             goto LAB_00d5595a_c28
                                                                                                                         end
                                                                                                                         __region_LAB_00d555f3_c28(); goto LAB_00d55c2b_c28
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_c
+                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = xStack_48
                                                                                                                         r53 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
@@ -3358,8 +3358,8 @@ function Main(quest, me)
                                                                                                             __region_LAB_00d555f3_c28()
                                                                                                             goto LAB_00d55c2b_c28
                                                                                                         end
-                                                                                                        pCVar5 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = pCVar5
+                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = xStack_24
                                                                                                         r55 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
@@ -3394,16 +3394,17 @@ function Main(quest, me)
                                                                                                         fVar20 = 5.5
                                                                                                         pCVar5 = quest:GetHero()
                                                                                                         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar20)
-                                                                                                        __native_condition_8 = bVar3
+                                                                                                        __native_condition_9 = bVar3
+                                                                                                        if __native_condition_9 then
+                                                                                                            iVar7 = quest:GetTimer(xStack_188)
+                                                                                                            __native_condition_9 = iVar7 < 1
+                                                                                                        end
+                                                                                                        __native_condition_8 = __native_condition_9
                                                                                                         if __native_condition_8 then
-                                                                                                            __native_condition_8 = iVar7 < 1
-                                                                                                        end
-                                                                                                        __native_condition_7 = __native_condition_8
-                                                                                                        if __native_condition_7 then
                                                                                                             iVar7 = me:IsPerformingScriptTask()
-                                                                                                            __native_condition_7 = not iVar7
+                                                                                                            __native_condition_8 = not iVar7
                                                                                                         end
-                                                                                                        if __native_condition_7 then
+                                                                                                        if __native_condition_8 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b_c28 end
@@ -3441,7 +3442,7 @@ function Main(quest, me)
                                                                                                                 pCVar5 = quest:GetHero()
                                                                                                                 quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, xStack_130)
+                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                             end
                                                                                                         end
                                                                                                     end
@@ -3649,7 +3650,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if not bVar3 then
-                                        quest:DisplayGameInfo("")
+                                        quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_STICK")
                                         bVar3 = quest:MsgIsGameInfoClickedPast()
                                         while not bVar3 do
                                             alive = quest:NewScriptFrame(me)
@@ -3741,10 +3742,6 @@ function Main(quest, me)
                                                 if bVar3 ~= 0 then
                                                 end
                                                 iVar8 = 4
-                                                uVar16 = SUB41(xStack_14c,0)
-                                                uVar17 = (xStack_14c >> 8)
-                                                uVar18 = (xStack_14c >> 0x10)
-                                                uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
                                                 bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
@@ -3758,7 +3755,7 @@ function Main(quest, me)
                                                     uVar18 = (xStack_14c >> 0x10)
                                                     uVar19 = (xStack_14c >> 0x18)
                                                     pCVar6 = quest:GetHero()
-                                                    bVar3 = me:AcquireControl(4)
+                                                    bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar3 = not alive
@@ -3776,7 +3773,7 @@ function Main(quest, me)
                                                     -- TODO(native): CStack_114._4_4_ = puVar11[1];
                                                     -- TODO(native): CStack_114._8_4_ = puVar11[2];
                                                     -- TODO(native): CreateEffect is not a ForgeFSE binding
-                                                    quest:CreateEffect(pCVar6, "SMASH_DUMMY_01", (pCVar5 + 4), "", 0.0, false, false)
+                                                    quest:CreateEffect(pCVar6, "SMASH_DUMMY_01", pCVar5, "", 0.0, false, false)
                                                     quest:FadeOutAndKillEntity(r57, true, 1.0, true)
                                                     xStack_13c = resources:NewActorMap()
                                                     resources:SetActor(xStack_13c, "HERO", xStack_14c)
@@ -3787,7 +3784,7 @@ function Main(quest, me)
                                                     pCVar6 = quest:CreateExperienceOrb(1, pCVar5)
                                                     -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                                                     quest:EntitySetCutsceneBehaviour(xStack_160, 2)
-                                                    resources:RunMacro(xStack_18c, xStack_13c, false, true)
+                                                    resources:RunMacro("CS_GUILD_PREMELEE_PASSED", xStack_13c, false, true)
                                                     quest:FixMovieSequenceCamera(false)
                                                     quest:PauseAllNonScriptedEntities(false)
                                                     resources:DestroyActorMap(xStack_13c)
@@ -3869,7 +3866,7 @@ function Main(quest, me)
                                                                         -- LAB_00d54dfa_c29: (native jump target)
                                                                     else
                                                                         pCVar5 = resources:NewActorMap()
-                                                                        resources:SetActor(pCVar5, "HERO", xStack_124)
+                                                                        resources:SetActor(pCVar5, "HERO", xStack_14c)
                                                                         resources:SetActor(pCVar5, "TEACHER", xStack_17c)
                                                                         xStack_124 = resources:StartMovie("")
                                                                         quest:StartMovieSequence()
@@ -3902,7 +3899,7 @@ function Main(quest, me)
                                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                                         bVar3 = not alive
                                                                                         if not bVar3 then
-                                                                                            bVar3 = (**(**(this + 4) + 0x1d8 ))(*(this + 4),0x1c)
+                                                                                            bVar3 = quest:DisplayTutorial(0x1c)
                                                                                             if bVar3 then
                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                 bVar3 = not alive
@@ -3991,8 +3988,8 @@ function Main(quest, me)
                                                                                                         pCVar6 = 0x1
                                                                                                         quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
                                                                                                         quest:FixMovieSequenceCamera(true)
-                                                                                                        resources:RunMacro(xStack_c4, xStack_13c, false, true)
-                                                                                                        quest:GiveHeroYesNoQuestion("", "TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", xStack_7c)
+                                                                                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", xStack_13c, false, true)
+                                                                                                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                         iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                         while iVar7 < 0 do
                                                                                                             alive = quest:NewScriptFrame(me)
@@ -4089,7 +4086,7 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if bVar3 then
                                                                                                                 repeat
-                                                                                                                    -- TODO(native): (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));
+                                                                                                                    alive = quest:NewScriptFrame(me)
                                                                                                                     alive = not quest:IsActiveThreadTerminating()
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then goto LAB_00d55c2b_c29 end
@@ -4102,7 +4099,7 @@ function Main(quest, me)
                                                                                                             bVar3 = false
                                                                                                             if bVar3 ~= 0 then
                                                                                                             end
-                                                                                                            bVar3 = me:AcquireControl(4)
+                                                                                                            bVar3 = resources:TryAcquire(xStack_17c, me, 4)
                                                                                                             while not bVar3 do
                                                                                                                 alive = quest:NewScriptFrame(me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
@@ -4235,8 +4232,8 @@ function Main(quest, me)
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if not bVar3 then
-                                                                                                                xStack_24 = resources:ScriptThing(xStack_17c)
-                                                                                                                pCVar5 = xStack_24
+                                                                                                                xStack_c = resources:ScriptThing(xStack_17c)
+                                                                                                                pCVar5 = xStack_c
                                                                                                                 r64 = quest:GetHealth(pCVar5)
                                                                                                                 fVar2 = 0.0
                                                                                                                 if fVar2 < fret_03 then
@@ -4264,7 +4261,7 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if bVar3 then __region_LAB_00d55cd5_c29(); goto LAB_00d55c2b_c29 end
                                                                                                                 end
-                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_LOG_HERO_EXPERIENCEORBS", "TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", xStack_68)
+                                                                                                                quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                                                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                                 while iVar7 < 0 do
                                                                                                                     alive = quest:NewScriptFrame(me)
@@ -4280,16 +4277,16 @@ function Main(quest, me)
                                                                                                                     bVar3 = not alive
                                                                                                                     if iVar7 == 1 then
                                                                                                                         if not bVar3 then
-                                                                                                                            quest:FadeScreenOut(*(this + 4), 0.5)
-                                                                                                                            quest:Pause(*(this + 4))
+                                                                                                                            quest:FadeScreenOut(0.5, 0.5)
+                                                                                                                            quest:Pause(1.0)
                                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                                             goto LAB_00d5595a_c29
                                                                                                                         end
                                                                                                                         __region_LAB_00d555f3_c29(); goto LAB_00d55c2b_c29
                                                                                                                     end
                                                                                                                     if not bVar3 then
-                                                                                                                        xStack_c = resources:ScriptThing(xStack_17c)
-                                                                                                                        pCVar5 = xStack_c
+                                                                                                                        xStack_48 = resources:ScriptThing(xStack_17c)
+                                                                                                                        pCVar5 = xStack_48
                                                                                                                         r66 = quest:GetHealth(pCVar5)
                                                                                                                         fVar2 = 0.0
                                                                                                                         if fVar2 < fret_04 then
@@ -4340,8 +4337,8 @@ function Main(quest, me)
                                                                                                             __region_LAB_00d555f3_c29()
                                                                                                             goto LAB_00d55c2b_c29
                                                                                                         end
-                                                                                                        pCVar5 = resources:ScriptThing(xStack_17c)
-                                                                                                        pCVar5 = pCVar5
+                                                                                                        xStack_24 = resources:ScriptThing(xStack_17c)
+                                                                                                        pCVar5 = xStack_24
                                                                                                         r68 = quest:GetHealth(pCVar5)
                                                                                                         fVar2 = 0.0
                                                                                                         if fVar2 < fret_02 then
@@ -4376,16 +4373,17 @@ function Main(quest, me)
                                                                                                         fVar20 = 5.5
                                                                                                         pCVar5 = quest:GetHero()
                                                                                                         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar20)
-                                                                                                        __native_condition_10 = bVar3
+                                                                                                        __native_condition_11 = bVar3
+                                                                                                        if __native_condition_11 then
+                                                                                                            iVar7 = quest:GetTimer(xStack_188)
+                                                                                                            __native_condition_11 = iVar7 < 1
+                                                                                                        end
+                                                                                                        __native_condition_10 = __native_condition_11
                                                                                                         if __native_condition_10 then
-                                                                                                            __native_condition_10 = iVar7 < 1
-                                                                                                        end
-                                                                                                        __native_condition_9 = __native_condition_10
-                                                                                                        if __native_condition_9 then
                                                                                                             iVar7 = me:IsPerformingScriptTask()
-                                                                                                            __native_condition_9 = not iVar7
+                                                                                                            __native_condition_10 = not iVar7
                                                                                                         end
-                                                                                                        if __native_condition_9 then
+                                                                                                        if __native_condition_10 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
                                                                                                             if bVar3 then goto LAB_00d55c2b_c29 end
@@ -4410,7 +4408,7 @@ function Main(quest, me)
                                                                                                                         pCVar5 = quest:GetHero()
                                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
                                                                                                                         pCVar5 = quest:GetHero()
-                                                                                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_LOG_COMBAT_LOCKINGON", me, pCVar5, false)
+                                                                                                                        quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_SECOND", me, pCVar5, false)
                                                                                                                         -- TODO(native): goto LAB_00d55b4e_c29
                                                                                                                     end
                                                                                                                 end
@@ -4423,7 +4421,7 @@ function Main(quest, me)
                                                                                                                 pCVar5 = quest:GetHero()
                                                                                                                 quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
                                                                                                                 pCVar5 = quest:GetHero()
-                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_LOG_COMBAT_PUNCHING", me, pCVar5, false)
+                                                                                                                quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                             end
                                                                                                         end
                                                                                                     end
@@ -4526,7 +4524,7 @@ function Main(quest, me)
     ::LAB_00d55c46::
     quest:DeregisterTimer(xStack_188)
     ::LAB_00d55c4f::
-    resources:DestroyMovie(xStack_f8)
+    resources:DestroyMovie(xStack_17c)
 end
 
 function Init(quest, me)

@@ -160,7 +160,7 @@ function Main(quest, me)
                             fret_0 = quest:GetHealth(pCVar6)
                             c_stk_249 = 0.0 < fret_0
                             xStack_e0 = nil
-                            if c_stk_249 ~= 0 then
+                            if c_stk_249 then
                                 iVar16 = 0
                                 iVar14 = 1
                                 iVar7 = 0
@@ -235,7 +235,7 @@ function Main(quest, me)
                                 pCVar6 = x_stk_9c
                                 fret_00 = quest:GetHealth(pCVar6)
                                 c_stk_249 = 0.0 < fret_00
-                                if c_stk_249 ~= 0 then
+                                if c_stk_249 then
                                     iVar16 = 0
                                     iVar14 = 1
                                     iVar7 = 0
@@ -295,7 +295,7 @@ function Main(quest, me)
                                 pCVar6 = x_stk_6c
                                 fret_01 = quest:GetHealth(pCVar6)
                                 c_stk_249 = 0.0 < fret_01
-                                if c_stk_249 ~= 0 then
+                                if c_stk_249 then
                                     iVar16 = 0
                                     iVar14 = 1
                                     iVar7 = 0
@@ -486,7 +486,7 @@ function Main(quest, me)
                                 pCVar6 = x_stk_3c
                                 fret_03 = quest:GetHealth(pCVar6)
                                 c_stk_249 = 0.0 < fret_03
-                                if c_stk_249 ~= 0 then
+                                if c_stk_249 then
                                     iVar16 = 0
                                     iVar14 = 1
                                     iVar7 = 0
@@ -980,7 +980,7 @@ function Main(quest, me)
                                         pCVar6 = x_stk_b4
                                         fret_09 = quest:GetHealth(pCVar6)
                                         c_stk_249 = 0.0 < fret_09
-                                        if c_stk_249 ~= 0 then
+                                        if c_stk_249 then
                                             iVar16 = 0
                                             iVar14 = 1
                                             iVar7 = 0
@@ -1019,7 +1019,7 @@ function Main(quest, me)
                                     pCVar6 = x_stk_18
                                     fret_08 = quest:GetHealth(pCVar6)
                                     c_stk_249 = 0.0 < fret_08
-                                    if c_stk_249 ~= 0 then
+                                    if c_stk_249 then
                                         iVar16 = 0
                                         iVar14 = 1
                                         iVar7 = 0
@@ -1217,7 +1217,7 @@ function Main(quest, me)
                         pCVar6 = x_stk_b4
                         fret_09 = quest:GetHealth(pCVar6)
                         c_stk_249 = 0.0 < fret_09
-                        if c_stk_249 ~= 0 then
+                        if c_stk_249 then
                             iVar16 = 0
                             iVar14 = 1
                             iVar7 = 0
@@ -1248,7 +1248,7 @@ function Main(quest, me)
                     pCVar6 = x_stk_18
                     fret_08 = quest:GetHealth(pCVar6)
                     c_stk_249 = 0.0 < fret_08
-                    if c_stk_249 ~= 0 then
+                    if c_stk_249 then
                         iVar16 = 0
                         iVar14 = 1
                         iVar7 = 0

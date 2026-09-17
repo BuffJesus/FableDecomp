@@ -160,8 +160,6 @@ function Main(quest, me)
                                 quest:PauseAllNonScriptedEntities(false)
                                 -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                 quest:DeregisterTimer(timerId)
-                                if (xStack_8c ~= nil) and (*xStack_8c = *xStack_8c + -1, *xStack_8c == 0) then
-                                end
                                 return
                             end
                             iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -274,8 +272,6 @@ function Main(quest, me)
                                 quest:PauseAllNonScriptedEntities(false)
                                 -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_78);
                                 quest:DeregisterTimer(timerId)
-                                if (xStack_8c ~= nil) and (*xStack_8c = *xStack_8c + -1, *xStack_8c == 0) then
-                                end
                                 return
                             end
                             iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -377,7 +373,7 @@ function Main(quest, me)
             goto LAB_00d4ef87
         end
         ::LAB_00d4e87a::
-        timerId = xStack_8c
+        timerId = ctr_90
         iVar6 = __native_entity_state:GetStateInt("BirdMode")
     end
     alive = not quest:IsActiveThreadTerminating()

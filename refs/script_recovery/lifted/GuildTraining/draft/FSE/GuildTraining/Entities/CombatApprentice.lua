@@ -524,7 +524,7 @@ function Main(quest, me)
                             pCVar7 = x_stk_6c
                             fret_05 = quest:GetHealth(pCVar7)
                             c_stk_259 = 0.0 < fret_05
-                            if c_stk_259 ~= 0 then
+                            if c_stk_259 then
                                 iVar18 = 0
                                 iVar17 = 1
                                 iVar14 = 0

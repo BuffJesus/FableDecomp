@@ -231,8 +231,8 @@ RE_SIG_TOKEN = re.compile(r'W4\w+?@@|A[AB]V\w+?@@|P[AB]V\w+?@@|A[AB]V\d@|A[AB][A
 RE_HIDDEN_SLOT = re.compile(r'^(?:\([^)]*\))?\s*&?(?:stack0x[0-9a-f]+|local_\w+|pos|\w*Stack_\w+)$')
 # CBaseIntelligentPointer release: `if ((p != 0x0) && (*p = *p + -1, *p == 0x0)) { (*(code *)p[1])(); operator_delete(p); }`
 RE_REFCOUNT_IF = re.compile(
-    r'^\s*if \(\(?(?P<v>\w+) != \(.+?\)0x0\) &&\s*'
-    r'\(\*(?P=v) = \*(?P=v) \+ -1, \*(?P=v) == (?:\(.+?\))?(?:0|0x0)\)\) \{\s*$')
+    r'^\s*if \(\(?(?:(?:\((?:u?int|long) \*\))?(?P<v>\w+(?:\._0_4_)?) != \(.+?\)0x0|__thing_valid\((?P<w>\w+)\))\) &&\s*'
+    r'\(\*(?P<c>(?:\((?:u?int|long) \*\))?)(?P<x>\w+(?:\._0_4_)?) = \*(?P=c)(?P=x) \+ -1,\s*\*(?P=c)(?P=x) == (?:\(.+?\))?(?:0|0x0)\)\) \{\s*$')
 def is_boolean_expression(text):
     """`not X`, or a top-level comparison: the lifted value is a Lua boolean, so a later
     `!= '\\0'` test on it must not become `~= 0` (`true ~= 0` is always true in Lua)."""
@@ -1930,7 +1930,8 @@ class Lifter:
         if self.skip_depth:
             self.skip_depth += stripped.count("{") - stripped.count("}")
             return
-        if RE_REFCOUNT_IF.match(line):
+        rc = RE_REFCOUNT_IF.match(line)
+        if rc and rc.group('x') == (rc.group('v') or rc.group('w')):
             self.skip_depth = 1           # CBaseIntelligentPointer release block: not script logic
             return
         if any(r.match(line) for r in RE_NOISE):
@@ -1982,7 +1983,11 @@ class Lifter:
             return
         m = RE_IF_GOTO.match(line)
         if m:
-            cond = self.expr(m.group(1))
+            if has_call_assignment(m.group(1)):
+                # `if (A || (v = call(), 0 < v)) goto L;` — the call only runs when A fails
+                cond = self.lower_condition_tree(role, parse_condition_tree(m.group(1)))
+            else:
+                cond = self.expr(m.group(1))
             if self.flat_control and (self.kind_of(cond) == 'number' or
                     re.fullmatch(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)', cond)):
                 cond = f'({cond} ~= 0)'

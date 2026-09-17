@@ -351,6 +351,7 @@ function Main(quest, me)
             end
             quest:EntitySetBossPhase(me, 1)
             iVar19 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+            xStack_5c = iVar19
             quest:DisplayQuestInfo(true)
             quest:UpdateQuestInfoCounter(iVar19, __native_entity_state:GetStateInt("BeenHit"), -1)
             fVar20 = 20.0
@@ -462,7 +463,7 @@ function Main(quest, me)
                             __native_entity_state:SetStateBool("NotBeaten", false)
                             quest:ModifyThingHealth(me, 1000.0, false)
                         end
-                        quest:UpdateQuestInfoCounter(__native_entity_state:GetStateInt("BeenHit"), -1, fVar2)
+                        quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
                         iVar19 = quest:GetTimer(xStack_80)
                         __native_condition_2 = iVar19 < 1
                         if __native_condition_2 then
@@ -608,6 +609,7 @@ function Main(quest, me)
                     end
                     quest:EntitySetBossPhase(me, 2)
                     iVar19 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+                    xStack_5c = iVar19
                     quest:DisplayQuestInfo(true)
                     quest:UpdateQuestInfoCounter(iVar19, __native_entity_state:GetStateInt("BeenHit"), -1)
                     fVar20 = 20.0
@@ -743,7 +745,7 @@ function Main(quest, me)
                                     __native_entity_state:SetStateBool("NotBeaten", false)
                                     quest:ModifyThingHealth(me, 1000.0, false)
                                 end
-                                quest:UpdateQuestInfoCounter(__native_entity_state:GetStateInt("BeenHit"), -1, fVar2)
+                                quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
                                 iVar19 = quest:GetTimer(xStack_80)
                                 __native_condition_3 = iVar19 < 1
                                 if __native_condition_3 then

@@ -413,6 +413,31 @@ def restore_stack_operands(decompile, fn):
     return text
 
 
+_MASK = re.compile(r'"(?:[^"\\\n]|\\.)*"|\'(?:[^\'\\\n]|\\.)*\'|/\*[\s\S]*?\*/|//[^\n]*')
+
+
+def unwrap_statements(text):
+    """Re-join statements Ghidra wrapped across lines (deeply indented code): while a line's
+    parentheses are unbalanced, the next line continues it (`+\n  0x5d4))(`, `4)\n  ,0.5`)."""
+    out, buf, depth = [], None, 0
+    for line in text.split('\n'):
+        if buf is None:
+            buf = line
+        else:
+            tail = line.lstrip()
+            head = buf.rstrip()
+            buf = head + (tail if tail[:1] in ',)' or (tail[:1] == '(' and head.endswith(')')) else ' ' + tail)
+        masked = _MASK.sub(lambda m: ' ' * len(m[0]), buf)
+        depth = masked.count('(') - masked.count(')')
+        if depth > 0 and not masked.rstrip().endswith('{'):
+            continue
+        out.append(buf)
+        buf = None
+    if buf is not None:
+        out.append(buf)
+    return '\n'.join(out)
+
+
 class UnitConverter:
     def float_at(self, va):
         raw = self.rdata.bytes_at(va, 4)
@@ -547,7 +572,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(fn['decompile'], fn), fn.get('calls', []))
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(unwrap_statements(fn['decompile']), fn), fn.get('calls', []))
                 spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output, and mangled names
                 # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`

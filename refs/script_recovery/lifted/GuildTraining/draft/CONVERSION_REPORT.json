@@ -806,7 +806,7 @@
             "label LAB_00d45dbb",
             "label LAB_00d45930",
             "unlifted: (**(code **)*puVar7)(0);",
-            "unlifted: free(xStack_84);",
+            "unlifted: free(xStack_94);",
             "unlifted: (**(code **)*puVar7)(0);",
             "unlifted: free(xStack_84);"
           ],
@@ -5410,19 +5410,13 @@
             "DeregisterTimer",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 552,
+          "lines": 548,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/Entities/BirdKiller.lua:Main",
-                "line": 142,
-                "message": "FSE/GuildTraining/Entities/BirdKiller.lua:Main:142: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -5882,13 +5876,8 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 15,
-        "passed": 12,
+        "passed": 13,
         "errors": [
-          {
-            "path": "FSE/GuildTraining/Entities/BirdKiller.lua",
-            "line": 163,
-            "message": "FSE/GuildTraining/Entities/BirdKiller.lua:163: unexpected symbol near '*'"
-          },
           {
             "path": "FSE/GuildTraining/Entities/SkillTarget.lua",
             "line": 130,
@@ -5993,8 +5982,8 @@
         "owners": 15,
         "functions": 69,
         "missing": 0,
-        "functionSyntaxPassed": 65,
-        "fileSyntaxPassed": 12,
+        "functionSyntaxPassed": 66,
+        "fileSyntaxPassed": 13,
         "fileSyntaxChecked": 15,
         "todo": 262
       }
@@ -7964,7 +7953,6 @@
             "verify cleanup at LAB_00d55c72_c6 (lifted as early return)",
             "label LAB_00d54f9c_c6",
             "verify cleanup at LAB_00d54f9c_c6 (lifted as early return)",
-            "unlifted: (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));",
             "label LAB_00d551d4_c6",
             "verify cleanup at LAB_00d55c9f_c6 (lifted as early return)",
             "label LAB_00d55c9f_c6",
@@ -7981,13 +7969,11 @@
             "label LAB_00d555f3_c6",
             "verify cleanup at LAB_00d55cd5_c6 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c6 (lifted as early return)",
-            "unresolved native control operand: if (((bVar3) && (iVar7 = (**(code **)(*DAT_0143e8f8 + 0x168) )(DAT_0143e8f8,xStack_188), iVar7 < 1)) && (iVar7 = CScript",
             "label LAB_00d55b4e_c6",
             "goto LAB_00d55b4e_c6",
             "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
             "label LAB_00d54846",
             "label LAB_00d54f9c_c7",
-            "unlifted: (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));",
             "label LAB_00d551d4_c7",
             "verify cleanup at LAB_00d55c9f_c7 (lifted as early return)",
             "label LAB_00d55c9f_c7",
@@ -8003,7 +7989,6 @@
             "label LAB_00d55c7f_c13",
             "label LAB_00d55c7f_c14",
             "label LAB_00d54f9c",
-            "unlifted: (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));",
             "label LAB_00d551d4",
             "label LAB_00d55c9f_c16",
             "label LAB_00d55c9f",
@@ -8012,7 +7997,6 @@
             "label LAB_00d55c9f_c19",
             "verify cleanup at LAB_00d55c9f_c19 (lifted as early return)",
             "label LAB_00d555f3",
-            "unresolved native control operand: if (((bVar3) && (iVar7 = (**(code **)(*DAT_0143e8f8 + 0x168) )(DAT_0143e8f8,xStack_188), iVar7 < 1)) && (iVar7 = CScript",
             "label LAB_00d55b4e",
             "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
             "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);",
@@ -8034,7 +8018,6 @@
             "verify cleanup at LAB_00d55c72_c27 (lifted as early return)",
             "label LAB_00d54f9c_c27",
             "verify cleanup at LAB_00d54f9c_c27 (lifted as early return)",
-            "unlifted: (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));",
             "label LAB_00d551d4_c27",
             "verify cleanup at LAB_00d55c9f_c27 (lifted as early return)",
             "label LAB_00d55c9f_c27",
@@ -8051,7 +8034,6 @@
             "label LAB_00d555f3_c27",
             "verify cleanup at LAB_00d55cd5_c27 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c27 (lifted as early return)",
-            "unresolved native control operand: if (((bVar3) && (iVar7 = (**(code **)(*DAT_0143e8f8 + 0x168) )(DAT_0143e8f8,xStack_188), iVar7 < 1)) && (iVar7 = CScript",
             "label LAB_00d55b4e_c27",
             "goto LAB_00d55b4e_c27",
             "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
@@ -8083,7 +8065,6 @@
             "verify cleanup at LAB_00d55c72_c28 (lifted as early return)",
             "label LAB_00d54f9c_c28",
             "verify cleanup at LAB_00d54f9c_c28 (lifted as early return)",
-            "unlifted: (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));",
             "label LAB_00d551d4_c28",
             "verify cleanup at LAB_00d55c9f_c28 (lifted as early return)",
             "label LAB_00d55c9f_c28",
@@ -8100,7 +8081,6 @@
             "label LAB_00d555f3_c28",
             "verify cleanup at LAB_00d55cd5_c28 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c28 (lifted as early return)",
-            "unresolved native control operand: if (((bVar3) && (iVar7 = (**(code **)(*DAT_0143e8f8 + 0x168) )(DAT_0143e8f8,xStack_188), iVar7 < 1)) && (iVar7 = CScript",
             "label LAB_00d55b4e_c28",
             "goto LAB_00d55b4e_c28",
             "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
@@ -8139,7 +8119,6 @@
             "verify cleanup at LAB_00d55c72_c29 (lifted as early return)",
             "label LAB_00d54f9c_c29",
             "verify cleanup at LAB_00d54f9c_c29 (lifted as early return)",
-            "unlifted: (**(code **)(**(int **)(this + 4) + 0x1c) )(*(int **)(this + 4));",
             "label LAB_00d551d4_c29",
             "verify cleanup at LAB_00d55c9f_c29 (lifted as early return)",
             "label LAB_00d55c9f_c29",
@@ -8156,7 +8135,6 @@
             "label LAB_00d555f3_c29",
             "verify cleanup at LAB_00d55cd5_c29 (lifted as early return)",
             "verify cleanup at LAB_00d555f3_c29 (lifted as early return)",
-            "unresolved native control operand: if (((bVar3) && (iVar7 = (**(code **)(*DAT_0143e8f8 + 0x168) )(DAT_0143e8f8,xStack_188), iVar7 < 1)) && (iVar7 = CScript",
             "label LAB_00d55b4e_c29",
             "goto LAB_00d55b4e_c29",
             "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
@@ -8190,6 +8168,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "GetTimer",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -8363,7 +8342,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_DestroyMovie",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie",
             "RESOURCE_DestroyMovie",
@@ -8442,6 +8421,7 @@
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "DisplayTutorial",
             "IsActiveThreadTerminating",
             "MsgIsTutorialClickedPast",
             "NewScriptFrame",
@@ -8513,11 +8493,12 @@
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
             "IsQuestActive",
+            "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsQuestActive",
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -8612,6 +8593,7 @@
             "PauseAllNonScriptedEntities",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "GetTimer",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "AddNewConversation",
@@ -8656,11 +8638,12 @@
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
             "IsQuestActive",
+            "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsQuestActive",
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -8766,11 +8749,12 @@
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
             "IsQuestActive",
+            "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsQuestActive",
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -8898,6 +8882,7 @@
             "PauseAllNonScriptedEntities",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "GetTimer",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "AddNewConversation",
@@ -8986,6 +8971,7 @@
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "DisplayTutorial",
             "IsActiveThreadTerminating",
             "MsgIsTutorialClickedPast",
             "NewScriptFrame",
@@ -9057,11 +9043,12 @@
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
             "IsQuestActive",
+            "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsQuestActive",
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -9156,6 +9143,7 @@
             "PauseAllNonScriptedEntities",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "GetTimer",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "AddNewConversation",
@@ -9240,7 +9228,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie",
             "RESOURCE_DestroyMovie",
@@ -9319,6 +9307,7 @@
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "DisplayTutorial",
             "IsActiveThreadTerminating",
             "MsgIsTutorialClickedPast",
             "NewScriptFrame",
@@ -9390,11 +9379,12 @@
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
             "IsQuestActive",
+            "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsQuestActive",
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -9489,6 +9479,7 @@
             "PauseAllNonScriptedEntities",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "GetTimer",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "AddNewConversation",
@@ -9648,7 +9639,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_DestroyMovie",
             "RESOURCE_DestroyMovie",
@@ -9727,6 +9718,7 @@
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "DisplayTutorial",
             "IsActiveThreadTerminating",
             "MsgIsTutorialClickedPast",
             "NewScriptFrame",
@@ -9798,11 +9790,12 @@
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
             "IsQuestActive",
+            "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsQuestActive",
             "IsActiveThreadTerminating",
             "RESOURCE_IsAcquired",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -9897,6 +9890,7 @@
             "PauseAllNonScriptedEntities",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "GetTimer",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "AddNewConversation",
@@ -9947,19 +9941,13 @@
             "DeregisterTimer",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 4487,
+          "lines": 4485,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua:Main",
-                "line": 67,
-                "message": "...ildTrainingPreMelee/Entities/TheRealGuildmaster.lua:Main:67: ')' expected near '='"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -9973,7 +9961,7 @@
             "goto FLOW_after_lab_00d54846;",
             "goto FLOW_after_lab_00d54dfa;",
             "goto FLOW_after_lab_00d54f9c;",
-            "goto FLOW_after_lab_00d54f9c_792;",
+            "goto FLOW_after_lab_00d54f9c_786;",
             "goto FLOW_after_lab_00d551d4;",
             "goto FLOW_after_lab_00d55b4e;",
             "goto LAB_00d55480;",
@@ -10021,7 +10009,7 @@
             "FLOW_after_lab_00d54846",
             "FLOW_after_lab_00d54dfa",
             "FLOW_after_lab_00d54f9c",
-            "FLOW_after_lab_00d54f9c_792",
+            "FLOW_after_lab_00d54f9c_786",
             "FLOW_after_lab_00d551d4",
             "FLOW_after_lab_00d55b4e",
             "FLOW_native_label_1",
@@ -10502,17 +10490,12 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 4,
-        "passed": 2,
+        "passed": 3,
         "errors": [
           {
             "path": "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua",
             "line": 184,
             "message": "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua:184: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua",
-            "line": 121,
-            "message": "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua:121: ')' expected near '='"
           }
         ]
       },
@@ -10572,10 +10555,10 @@
         "owners": 4,
         "functions": 14,
         "missing": 1,
-        "functionSyntaxPassed": 12,
-        "fileSyntaxPassed": 2,
+        "functionSyntaxPassed": 13,
+        "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 4,
-        "todo": 237
+        "todo": 226
       }
     },
     {
@@ -13728,7 +13711,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 857,
+          "lines": 859,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -13737,8 +13720,8 @@
             "errors": [
               {
                 "path": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main",
-                "line": 475,
-                "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main:475: unexpected symbol near '*'"
+                "line": 476,
+                "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main:476: unexpected symbol near '*'"
               }
             ]
           },
@@ -14013,8 +13996,8 @@
           },
           {
             "path": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua",
-            "line": 487,
-            "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:487: unexpected symbol near '*'"
+            "line": 488,
+            "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:488: unexpected symbol near '*'"
           }
         ]
       },
@@ -15029,9 +15012,9 @@
     "owners": 37,
     "functions": 152,
     "missing": 10,
-    "functionSyntaxPassed": 140,
-    "fileSyntaxPassed": 26,
+    "functionSyntaxPassed": 142,
+    "fileSyntaxPassed": 28,
     "fileSyntaxChecked": 37,
-    "todo": 856
+    "todo": 845
   }
 }
