@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_03, fret_08, fret_09, iVar14, iVar16, iVar5, iVar7, i_stk_210, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar17, pCVar6, pcVar13, piVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_24, xStack_250, xStack_254, xStack_30, xStack_54, xStack_78, xStack_90, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_3c, x_stk_6c, x_stk_9c, x_stk_b4
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_03, fret_08, fret_09, iVar14, iVar16, iVar5, iVar7, i_stk_210, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar17, pCVar6, pcVar13, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_24, xStack_250, xStack_254, xStack_30, xStack_54, xStack_78, xStack_90, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_3c, x_stk_6c, x_stk_9c, x_stk_b4
     local alive = true
     local function __region_LAB_00d40379_c32()
         pCVar6 = quest:GetThingWithScriptName("RaceMarker")
@@ -154,7 +154,6 @@ function Main(quest, me)
                             if bVar3 then goto LAB_00d405fc end
                             xStack_20c = resources:StartMovie("")
                             quest:StartMovieSequence()
-                            -- TODO(native): piStack_218 = piVar12;
                             quest:PauseAllNonScriptedEntities(true)
                             xStack_e0 = resources:ScriptThing(xStack_23c)
                             pCVar6 = xStack_e0
@@ -209,6 +208,7 @@ function Main(quest, me)
                                     quest:DeregisterTimer(xStack_254)
                                     r2 = nil
                                     r1 = nil
+                                    resources:ReleaseResource(xStack_23c)
                                     return
                                 end
                                 iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -231,7 +231,7 @@ function Main(quest, me)
                                     resources:DestroyMovie(pCVar11)
                                     goto LAB_00d405fc
                                 end
-                                x_stk_9c = resources:ScriptThing(xStack_20c)
+                                x_stk_9c = resources:ScriptThing(xStack_23c)
                                 pCVar6 = x_stk_9c
                                 fret_00 = quest:GetHealth(pCVar6)
                                 c_stk_249 = 0.0 < fret_00
@@ -276,8 +276,8 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then
-                                        -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
-                                        pCVar11 = 0
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        pCVar11 = xStack_20c
                                         resources:DestroyMovie(pCVar11)
                                         goto LAB_00d405fc
                                     end
@@ -291,7 +291,7 @@ function Main(quest, me)
                                     resources:DestroyMovie(pCVar11)
                                     goto LAB_00d405fc
                                 end
-                                x_stk_6c = resources:ScriptThing(0)
+                                x_stk_6c = resources:ScriptThing(xStack_23c)
                                 pCVar6 = x_stk_6c
                                 fret_01 = quest:GetHealth(pCVar6)
                                 c_stk_249 = 0.0 < fret_01
@@ -325,7 +325,7 @@ function Main(quest, me)
                                 end
                             end
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(0)
+                            resources:DestroyMovie(xStack_20c)
                         end
                     until not (__native_entity_state:GetStateInt("RaceMode") == 0)
                 end
@@ -434,7 +434,7 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             pCVar17 = 0x1
                             quest:PauseAllNonScriptedEntities((pCVar17 ~= 0))
-                            xStack_54 = resources:ScriptThing(0)
+                            xStack_54 = resources:ScriptThing(xStack_23c)
                             pCVar6 = xStack_54
                             r6 = quest:GetHealth(pCVar6)
                             fVar2 = 0.0
@@ -482,7 +482,7 @@ function Main(quest, me)
                                 xStack_100 = resources:StartMovie("")
                                 quest:StartMovieSequence()
                                 quest:PauseAllNonScriptedEntities(true)
-                                x_stk_3c = resources:ScriptThing(0)
+                                x_stk_3c = resources:ScriptThing(xStack_23c)
                                 pCVar6 = x_stk_3c
                                 fret_03 = quest:GetHealth(pCVar6)
                                 c_stk_249 = 0.0 < fret_03
@@ -542,7 +542,7 @@ function Main(quest, me)
                                 quest:StartMovieSequence()
                                 pCVar17 = 0x1
                                 quest:PauseAllNonScriptedEntities((pCVar17 ~= 0))
-                                xStack_24 = resources:ScriptThing(0)
+                                xStack_24 = resources:ScriptThing(xStack_23c)
                                 pCVar6 = xStack_24
                                 r9 = quest:GetHealth(pCVar6)
                                 fVar2 = 0.0
@@ -699,7 +699,7 @@ function Main(quest, me)
                             xStack_1fc = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
-                            xStack_30 = resources:ScriptThing(0)
+                            xStack_30 = resources:ScriptThing(xStack_23c)
                             pCVar6 = xStack_30
                             r11 = quest:GetHealth(pCVar6)
                             fVar2 = 0.0
@@ -742,7 +742,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
-                                    -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                    quest:PauseAllNonScriptedEntities(false)
                                     pCVar11 = xStack_1fc
                                     resources:DestroyMovie(pCVar11)
                                     goto LAB_00d405fc
@@ -753,7 +753,7 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 -- LAB_00d40702: (native jump target)
-                                -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                quest:PauseAllNonScriptedEntities(false)
                                 pCVar11 = xStack_1fc
                                 resources:DestroyMovie(pCVar11)
                                 goto LAB_00d405fc
@@ -763,12 +763,12 @@ function Main(quest, me)
                             if iVar5 == 1 then
                                 if bVar3 then
                                     -- LAB_00d406ee: (native jump target)
-                                    -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                    quest:PauseAllNonScriptedEntities(false)
                                     pCVar11 = xStack_1fc
                                     resources:DestroyMovie(pCVar11)
                                     goto LAB_00d405fc
                                 end
-                                xStack_90 = resources:ScriptThing(0)
+                                xStack_90 = resources:ScriptThing(xStack_23c)
                                 pCVar6 = xStack_90
                                 r13 = quest:GetHealth(pCVar6)
                                 fVar2 = 0.0
@@ -787,7 +787,7 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
                                         if bVar3 then
-                                            -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                            quest:PauseAllNonScriptedEntities(false)
                                             pCVar11 = xStack_1fc
                                             resources:DestroyMovie(pCVar11)
                                             goto LAB_00d405fc
@@ -798,7 +798,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then
-                                        -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                        quest:PauseAllNonScriptedEntities(false)
                                         pCVar11 = xStack_1fc
                                         resources:DestroyMovie(pCVar11)
                                         goto LAB_00d405fc
@@ -815,12 +815,12 @@ function Main(quest, me)
                                 quest:MiniMapAddMarker(pCVar6, "HUD_ORB_QUEST_VIGNETTE")
                             else
                                 if bVar3 then
-                                    -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                    quest:PauseAllNonScriptedEntities(false)
                                     pCVar11 = xStack_1fc
                                     resources:DestroyMovie(pCVar11)
                                     goto LAB_00d405fc
                                 end
-                                xStack_78 = resources:ScriptThing(0)
+                                xStack_78 = resources:ScriptThing(xStack_23c)
                                 pCVar6 = xStack_78
                                 r15 = quest:GetHealth(pCVar6)
                                 fVar2 = 0.0
@@ -839,7 +839,7 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
                                         if bVar3 then
-                                            -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                            quest:PauseAllNonScriptedEntities(false)
                                             pCVar11 = xStack_1fc
                                             resources:DestroyMovie(pCVar11)
                                             goto LAB_00d405fc
@@ -850,14 +850,14 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then
-                                        -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                                        quest:PauseAllNonScriptedEntities(false)
                                         pCVar11 = xStack_1fc
                                         resources:DestroyMovie(pCVar11)
                                         goto LAB_00d405fc
                                     end
                                 end
                             end
-                            -- TODO(native): (**(code **)(*piStack_218 + 0x5ec))(piStack_218,false);
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_1fc)
                         end
                     until not (__native_entity_state:GetStateInt("RaceMode") == 2)
@@ -976,8 +976,8 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if iVar5 ~= 1 then
                                     if not bVar3 then
-                                        x_stk_18 = resources:ScriptThing(0)
-                                        pCVar6 = x_stk_18
+                                        x_stk_b4 = resources:ScriptThing(xStack_23c)
+                                        pCVar6 = x_stk_b4
                                         fret_09 = quest:GetHealth(pCVar6)
                                         c_stk_249 = 0.0 < fret_09
                                         if c_stk_249 ~= 0 then
@@ -1015,8 +1015,8 @@ function Main(quest, me)
                                     goto FLOW_after_lab_00d402b3
                                 end
                                 if not bVar3 then
-                                    x_stk_b4 = resources:ScriptThing(0)
-                                    pCVar6 = x_stk_b4
+                                    x_stk_18 = resources:ScriptThing(xStack_23c)
+                                    pCVar6 = x_stk_18
                                     fret_08 = quest:GetHealth(pCVar6)
                                     c_stk_249 = 0.0 < fret_08
                                     if c_stk_249 ~= 0 then
@@ -1077,7 +1077,7 @@ function Main(quest, me)
             ::LAB_00d40749::
         end
         ::LAB_00d4075b::
-        resources:ReleaseResource(0)
+        resources:ReleaseResource(xStack_23c)
     end
     ::FLOW_after_lab_00d405fc::
     do return end
@@ -1089,7 +1089,7 @@ function Main(quest, me)
     quest:DeregisterTimer(xStack_254)
     -- LAB_00d40749_c30: (native jump target)
     -- LAB_00d4075b_c30: (native jump target)
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_23c)
     goto FLOW_after_lab_00d405fc
     ::LAB_00d403e1::
     if __native_entity_state:GetStateInt("RaceMode") ~= 3 then
@@ -1105,7 +1105,7 @@ function Main(quest, me)
         quest:DeregisterTimer(xStack_254)
         -- LAB_00d40749_c31: (native jump target)
         -- LAB_00d4075b_c31: (native jump target)
-        resources:ReleaseResource(0)
+        resources:ReleaseResource(xStack_23c)
         goto FLOW_after_lab_00d405fc
     end
     iVar5 = i_stk_210
@@ -1213,8 +1213,8 @@ function Main(quest, me)
                 bVar3 = not alive
                 if iVar5 ~= 1 then
                     if not bVar3 then
-                        x_stk_18 = resources:ScriptThing(0)
-                        pCVar6 = x_stk_18
+                        x_stk_b4 = resources:ScriptThing(xStack_23c)
+                        pCVar6 = x_stk_b4
                         fret_09 = quest:GetHealth(pCVar6)
                         c_stk_249 = 0.0 < fret_09
                         if c_stk_249 ~= 0 then
@@ -1244,8 +1244,8 @@ function Main(quest, me)
                     -- TODO(native): goto LAB_00d40716_c32
                 end
                 if not bVar3 then
-                    x_stk_b4 = resources:ScriptThing(0)
-                    pCVar6 = x_stk_b4
+                    x_stk_18 = resources:ScriptThing(xStack_23c)
+                    pCVar6 = x_stk_18
                     fret_08 = quest:GetHealth(pCVar6)
                     c_stk_249 = 0.0 < fret_08
                     if c_stk_249 ~= 0 then
@@ -1295,7 +1295,7 @@ function Main(quest, me)
     quest:DeregisterTimer(xStack_254)
     -- LAB_00d40749_c32: (native jump target)
     -- LAB_00d4075b_c32: (native jump target)
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_23c)
     goto FLOW_after_lab_00d405fc
 end
 

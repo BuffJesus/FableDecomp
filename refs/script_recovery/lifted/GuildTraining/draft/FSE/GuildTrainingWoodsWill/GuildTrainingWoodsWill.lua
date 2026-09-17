@@ -130,7 +130,7 @@ function Main(quest)
                         bVar3 = false
                         fret_0 = quest:GetHealth(nil --[[missing]])
                         quest:ModifyThingHealth(nil --[[missing]], pCVar6, (15.0 - fret_0))
-                        -- TODO(native): (**(code **)(*(int *)((int)puStack_7c + iVar12) + 0x118))(0);
+                        -- TODO(native): (**(code **)(*(int *)((int)xStack_7c + iVar12) + 0x118))(0);
                         -- TODO(native): xStack_88 = (CCharString)((int)xStack_88 + 1);
                         iVar12 = iVar12 + 0xc
                     until not (xStack_88 < ((0x0 - 0x0) / 0xc))
@@ -364,7 +364,7 @@ function DoMission(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive
         if bVar1 then break end
-        bVar1 = quest:IsLevelLoaded("")
+        bVar1 = quest:IsLevelLoaded("GuildWoods")
     end
 end
 

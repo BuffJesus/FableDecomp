@@ -203,12 +203,12 @@ function Main(quest, me)
                                         r2 = resources:NewActorMap()
                                         resources:SetActor(r2, "HERO", 0)
                                         resources:SetActor(r2, "ME", xStack_8c)
-                                        resources:RunMacro(xStack_7c, r2, false, true)
+                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r2, false, true)
                                         resources:DestroyActorMap(r2)
                                         resources:ReleaseResource(0)
                                         __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
                                     end
-                                    resources:DestroyMovie(xStack_78)
+                                    resources:DestroyMovie(0)
                                 end
                                 goto LAB_00d4e978
                             end
@@ -256,7 +256,7 @@ function Main(quest, me)
                     end
                     ::LAB_00d4e978::
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_78)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -313,17 +313,17 @@ function Main(quest, me)
                                         r2 = resources:NewActorMap()
                                         resources:SetActor(r2, "HERO", 0)
                                         resources:SetActor(r2, "ME", xStack_8c)
-                                        resources:RunMacro(xStack_7c, r2, false, true)
+                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r2, false, true)
                                         resources:DestroyActorMap(r2)
                                         resources:ReleaseResource(0)
                                         quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyMovie(xStack_78)
                                         goto LAB_00d4e87a
                                     end
-                                    resources:DestroyMovie(xStack_78)
+                                    resources:DestroyMovie(0)
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:ReleaseResource(0)
+                                resources:ReleaseResource(xStack_78)
                                 goto FLOW_after_lab_00d4e5e3
                             end
                             if not bVar3 then
@@ -392,7 +392,7 @@ function Main(quest, me)
             bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar14)
             __native_condition_2 = bVar3
             if __native_condition_2 then
-                iVar6 = quest:GetTimer(fVar14)
+                iVar6 = quest:GetTimer(timerId)
                 __native_condition_2 = iVar6 < 1
             end
             if __native_condition_2 then
@@ -418,7 +418,7 @@ function Main(quest, me)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_ANY_MORE", me, pCVar5, false)
                 end
-                quest:SetTimer(0xf, fVar2)
+                quest:SetTimer(timerId, 0xf)
             end
             bVar3 = me:IsTalkedToByHero()
             if bVar3 then
@@ -506,7 +506,7 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:ReleaseResource(xStack_8c)
+                                resources:ReleaseResource(xStack_38)
                                 goto LAB_00d4ef87
                             end
                         end
@@ -541,7 +541,7 @@ function Main(quest, me)
                 bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar14)
                 __native_condition_3 = bVar3
                 if __native_condition_3 then
-                    iVar6 = quest:GetTimer(fVar14)
+                    iVar6 = quest:GetTimer(timerId)
                     __native_condition_3 = iVar6 < 1
                 end
                 if __native_condition_3 then
@@ -553,7 +553,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(iVar7, pCVar5)
                     pCVar5 = quest:GetHero()
                     quest:AddLineToConversation(iVar7, "TEXT_QST_028_BIRD_KILLER_FINISHED", me, pCVar5, false)
-                    quest:SetTimer(0xf, 0)
+                    quest:SetTimer(timerId, 0xf)
                 end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -562,9 +562,9 @@ function Main(quest, me)
         end
     end
     ::LAB_00d4ef87::
-    quest:DeregisterTimer(nil --[[missing]])
+    quest:DeregisterTimer(timerId)
     ::LAB_00d4ef90::
-    resources:DestroyMovie(xStack_38)
+    resources:DestroyMovie(xStack_8c)
 end
 
 function Init(quest, me)

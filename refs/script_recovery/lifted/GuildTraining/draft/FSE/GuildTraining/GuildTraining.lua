@@ -840,7 +840,7 @@ function RunTutorials(quest)
         if not bVar2 then
             r14 = resources:NewActorMap()
             resources:SetActor(r14, "HERO", xStack_20)
-            resources:SetActor(r14, "GM", xStack_10)
+            resources:SetActor(r14, "GM", xStack_30)
             xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
@@ -848,10 +848,10 @@ function RunTutorials(quest)
             resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", r14, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(xStack_20)
+            resources:ReleaseResource(xStack_10)
             resources:DestroyActorMap(r14)
-            resources:ReleaseResource(xStack_30)
-            resources:DestroyMovie(xStack_10)
+            resources:ReleaseResource(xStack_20)
+            resources:DestroyMovie(xStack_30)
             uVar15 = 0
             pCVar3 = quest:GetThingWithScriptName("FrescoDomeHSP")
             pCVar6 = quest:GetHero()
@@ -1880,7 +1880,7 @@ function WatchForSparrowKilled(quest)
 end
 
 function KeepBookcaseExitRemoved(quest)
-    local bVar2, iVar1, r1, r2, x_stk_c
+    local bVar2, iVar1, r1, r2
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -1913,7 +1913,7 @@ function KeepBookcaseExitRemoved(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                x_stk_c = nil
+                r2 = nil
                 r1 = nil
                 -- LAB_00d3cb49: (native jump target)
                 return
@@ -1999,10 +1999,10 @@ function RunArrivalCutscene(quest)
             quest:SetAllowScreenFadingOnNextRegionChange(false)
             quest:SetRegionTextDisplayAsActive(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(xStack_20)
+            resources:ReleaseResource(xStack_10)
             resources:DestroyActorMap(pCVar4)
-            resources:ReleaseResource(xStack_30)
-            resources:DestroyMovie(xStack_10)
+            resources:ReleaseResource(xStack_20)
+            resources:DestroyMovie(xStack_30)
             quest:RemoveThing(r1, false, true)
             return
         end
@@ -2165,10 +2165,11 @@ function RunSaveXPCutscene(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
+            resources:ReleaseResource(xStack_30)
             r1 = nil
             return
         end
-        bVar2 = resources:TryAcquire(0, r1, 4)
+        bVar2 = resources:TryAcquire(xStack_30, r1, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -2195,7 +2196,7 @@ function RunSaveXPCutscene(quest)
         bVar2 = not alive
         if not bVar2 then
             xStack_3c = resources:NewActorMap()
-            resources:SetActor(xStack_3c, "GM", 0)
+            resources:SetActor(xStack_3c, "GM", xStack_30)
             resources:SetActor(xStack_3c, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
@@ -2204,13 +2205,13 @@ function RunSaveXPCutscene(quest)
             resources:RunMacro("CS_GUILD_SAVEXP", xStack_3c, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(0)
+            resources:DestroyMovie(xStack_10)
             resources:DestroyActorMap(xStack_3c)
         end
         ::LAB_00d4997a::
         resources:ReleaseResource(xStack_20)
     end
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_30)
 end
 
 function RunSaveXPCutscene2(quest)
@@ -2228,10 +2229,11 @@ function RunSaveXPCutscene2(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
+            resources:ReleaseResource(xStack_30)
             r1 = nil
             return
         end
-        bVar2 = resources:TryAcquire(0, r1, 4)
+        bVar2 = resources:TryAcquire(xStack_30, r1, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -2258,7 +2260,7 @@ function RunSaveXPCutscene2(quest)
         bVar2 = not alive
         if not bVar2 then
             xStack_3c = resources:NewActorMap()
-            resources:SetActor(xStack_3c, "GM", 0)
+            resources:SetActor(xStack_3c, "GM", xStack_30)
             resources:SetActor(xStack_3c, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
             quest:StartMovieSequence()
@@ -2267,12 +2269,12 @@ function RunSaveXPCutscene2(quest)
             resources:RunMacro("CS_GUILD_SAVEXP2", xStack_3c, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(0)
+            resources:DestroyMovie(xStack_10)
             resources:DestroyActorMap(xStack_3c)
         end
         ::LAB_00d49caa::
         resources:ReleaseResource(xStack_20)
     end
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_30)
 end
 

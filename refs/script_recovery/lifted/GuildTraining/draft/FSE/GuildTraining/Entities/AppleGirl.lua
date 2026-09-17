@@ -181,7 +181,7 @@ function Main(quest, me)
                 end
             end
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(xStack_84)
+            resources:DestroyMovie(xStack_60)
         end
         iVar7 = __native_entity_state:GetStateInt("AppleMode")
     end
@@ -441,7 +441,7 @@ function Main(quest, me)
     ::LAB_00d3e1b6::
     quest:DeregisterTimer(xStack_88)
     ::LAB_00d3e1bf::
-    resources:DestroyMovie(xStack_60)
+    resources:DestroyMovie(xStack_84)
     do return end
     ::LAB_00d3d948::
     quest:PauseAllNonScriptedEntities(false)
@@ -450,11 +450,11 @@ function Main(quest, me)
     goto LAB_00d3e1bf
     ::LAB_00d3e06c::
     quest:PauseAllNonScriptedEntities(false)
-    resources:DestroyMovie(xStack_64_2)
+    resources:DestroyMovie(xStack_60)
     goto LAB_00d3e1b6
     ::LAB_00d3e087::
     quest:PauseAllNonScriptedEntities(false)
-    resources:ReleaseResource(xStack_84)
+    resources:ReleaseResource(xStack_64)
     goto LAB_00d3e1b6
 end
 

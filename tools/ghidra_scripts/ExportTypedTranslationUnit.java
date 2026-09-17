@@ -12,6 +12,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ghidra.app.decompiler.DecompInterface;
 import ghidra.app.decompiler.DecompileResults;
+import ghidra.app.decompiler.ClangNode;
+import ghidra.app.decompiler.ClangToken;
+import ghidra.app.decompiler.ClangTokenGroup;
+import ghidra.program.model.pcode.PcodeOp;
 import ghidra.app.script.GhidraScript;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.address.AddressRange;
@@ -207,6 +211,11 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         return result;
     }
 
+    /** keep in `into` only the registers `other` holds with the same value */
+    private static void mergeState(Map<String, Long> into, Map<String, Long> other) {
+        into.keySet().removeIf(r -> !Objects.equals(other.get(r), into.get(r)));
+    }
+
     private boolean isRegOperand(Instruction i, int k) {
         int t = i.getOperandType(k);
         // the type is a flag set (a register written by LEA carries REGISTER|ADDRESS); memory operands are DYNAMIC
@@ -337,12 +346,20 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     regValue.clear(); regValue.putAll((Map<String, Long>) st[2]);
                 }
                 blockBoundary = false;
+            } else {
+                // a block entered both by fall-through and by a jump: a register the two paths load from
+                // different slots (a destructor receiver selected per path) is unknown here, not the
+                // fall-through path's slot
+                Object[] st = jumpState.get(i.getAddress().getOffset());
+                if (st != null) { mergeState(regStack, (Map<String, Long>) st[1]); mergeState(regValue, (Map<String, Long>) st[2]); }
             }
             if (mn.startsWith("J") && n == 1 && i.getOpObjects(0).length == 1 && i.getOpObjects(0)[0] instanceof Address) {
                 long to = ((Address) i.getOpObjects(0)[0]).getOffset();
                 if (to > i.getAddress().getOffset()) {
                     jumpDepth.putIfAbsent(to, espDelta);
-                    if (!jumpState.containsKey(to)) jumpState.put(to, new Object[]{new HashMap<>(tags), new HashMap<>(regStack), new HashMap<>(regValue)});
+                    Object[] st = jumpState.get(to);
+                    if (st == null) jumpState.put(to, new Object[]{new HashMap<>(tags), new HashMap<>(regStack), new HashMap<>(regValue)});
+                    else { mergeState((Map<String, Long>) st[1], regStack); mergeState((Map<String, Long>) st[2], regValue); }   // a second jumper: keep only what both agree on
                 }
                 if (mn.equals("JMP")) { if (pushing) espDelta = espBeforePushes; pushing = false; argStart = -1; blockBoundary = true; }   // pending pushes travel with the jump, not into the fallthrough
                 continue;
@@ -655,9 +672,26 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 }
             }
             String body;
+            List<String> callOrder = new ArrayList<>();   // call-site addresses in the order the C text prints the calls
             DecompileResults res = decompiler.decompileFunction(f, 120, monitor);
-            if (res != null && res.decompileCompleted() && res.getDecompiledFunction() != null)
+            if (res != null && res.decompileCompleted() && res.getDecompiledFunction() != null) {
                 body = res.getDecompiledFunction().getC();
+                // the decompiler prints out-of-line blocks (shared cleanups) after the return: the printed order
+                // of calls is not the address order, so pair printed calls with sites through the token stream
+                ClangTokenGroup markup = res.getCCodeMarkup();
+                if (markup != null) {
+                    List<ClangNode> flat = new ArrayList<>();
+                    markup.flatten(flat);
+                    Set<String> seen = new HashSet<>();
+                    for (ClangNode node : flat) {
+                        if (!(node instanceof ClangToken)) continue;
+                        PcodeOp op = ((ClangToken) node).getPcodeOp();
+                        if (op == null || (op.getOpcode() != PcodeOp.CALL && op.getOpcode() != PcodeOp.CALLIND)) continue;
+                        String site = hex(op.getSeqnum().getTarget());
+                        if (seen.add(site + "/" + op.getSeqnum().getTime())) callOrder.add(json(site));
+                    }
+                }
+            }
             else body = null;
             long bodyExtent = f.getBody().getMaxAddress().subtract(f.getBody().getMinAddress()) + 1;
             rows.add("{\"address\":" + json(hex(f.getEntryPoint())) +
@@ -674,6 +708,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 ",\"immediates\":[" + String.join(",", immediates) + "]" +
                 ",\"callers\":[" + String.join(",", callers) + "]" +
                 ",\"pointedFrom\":[" + String.join(",", pointedFrom) + "]" +
+                ",\"callOrder\":[" + String.join(",", callOrder) + "]" +
                 ",\"decompile\":" + json(body) + "}");
             println("TU " + hex(f.getEntryPoint()) + " " + f.getName(true));
         }

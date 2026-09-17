@@ -207,6 +207,76 @@ def _is_ctor_label(label):
     return len(parts) >= 2 and parts[-1].split('<')[0] == parts[-2].split('<')[0]   # X::X
 
 
+RE_VCALL_HEAD = re.compile(r'\(\*\*\(code \*\*\)\([^;\n]*?\+ (0x[0-9a-f]+|\d+)\)\)\s*\(')
+# every spelling of a vtable call head with its slot: `(**(code **)(X + SLOT))(`, `(*(code *)X[N])(`,
+# `(*(code *)X[N][M])(`, `(**(code **)*X)(` (slot 0)
+RE_VCALL_HEAD_ANY = re.compile(
+    r'\(\*\*\(code \*\*\)\([^;\n]*?\+ (?P<slot>0x[0-9a-f]+|\d+)\)\)\s*\('
+    r'|\(\*\(code \*\)\w+(?:\[\d+\])?\[(?P<index>\d+)\]\)\s*\('
+    r'|\(\*\*\(code \*\*\)\*\w+\)\s*\(')
+
+
+def _text_order_sites(text, fn):
+    '''Printed calls paired with export sites through `callOrder` (the call ops in the order the decompiler's
+    token stream prints them). Every printed call head (vtable head or labelled direct call) is located in
+    the text; when their number equals the exported order and every pair agrees on slot / label, the k-th
+    printed call is the k-th site. None when the text cannot be reconciled (the caller falls back to the
+    per-label address-order pairing).
+    Returns [(args_start, args_end, args, site, slot or label, vtable)] for sites with operand slots.'''
+    order = fn.get('callOrder')
+    if not order:
+        return None
+    by_site = {}
+    for c in fn.get('calls', []):
+        by_site[c['site'].lower()] = (c, False)
+    for c in fn.get('indirectCalls', []):
+        by_site[c['site'].lower()] = (c, True)
+    heads = []      # (start, args_start, args_end, key, vtable)
+    for m in RE_VCALL_HEAD_ANY.finditer(text):
+        j, depth = m.end(), 1
+        while j < len(text) and depth:
+            depth += {'(': 1, ')': -1}.get(text[j], 0)
+            j += 1
+        slot = int(m.group('slot'), 0) if m.group('slot') else 4 * int(m.group('index')) if m.group('index') else 0
+        heads.append((m.start(), m.end(), j - 1, hex(slot), True))
+    labels = {c['currentName'] for c in fn.get('calls', []) if c.get('currentName')}
+    for label in labels:
+        spans = _call_spans(text, label)
+        if not spans and re.search(r'[?@]', label):
+            spans = _call_spans(text, re.sub(r'[^\w:]', '_', label))
+        if not spans and re.match(r'\w+\.DLL::', label):
+            spans = _call_spans(text, label.split('::', 1)[1]) + _call_spans(text, '::' + label.split('::', 1)[1])   # imports print bare (`operator_new(` / `::operator_new(`)
+        for i, a, e in spans:
+            heads.append((i, a, e - 1, label, False))
+    heads.sort()
+    # a label that is a prefix of a longer label (`Foo::Bar` inside `Foo::Bar2`) is excluded by the head
+    # regex' lookbehind; overlapping spans (the same call found under two labels) collapse to one
+    dedup = []
+    for h in heads:
+        if dedup and h[1] == dedup[-1][1]:
+            continue
+        dedup.append(h)
+    heads = dedup
+    if len(heads) != len(order):
+        return None
+    out = []
+    for (start, a, e, key, vtable), site_addr in zip(heads, order):
+        entry = by_site.get(site_addr.lower())
+        if entry is None:
+            return None
+        site, is_vtable = entry
+        if is_vtable != vtable:
+            return None
+        if vtable:
+            if site.get('slot') is not None and hex(int(site['slot'], 16)) != key:
+                return None
+        elif site.get('currentName') != key:
+            return None
+        if vtable or 'pushedStack' in site or 'ecxStack' in site or 'edxStack' in site:
+            out.append((a, e, _split_top(text[a:e]), site, key, vtable))
+    return out
+
+
 def restore_stack_operands(decompile, fn):
     """Ghidra's stack-variable naming drifts after callee-cleaned vtable calls (it lost the argument pops),
     so one slot appears under several names (`auStack_a8`, `&uStack_b8`, `auStack_b0 + 4`). The typed export
@@ -240,8 +310,13 @@ def restore_stack_operands(decompile, fn):
                 # the argument's address is the object; the bare name only stands for it when no offset is added
                 uses.append((pos, k, m.group('name') if not plus else None, off, plus, ctor))
 
+    ordered = _text_order_sites(text, fn)
+    if ordered is not None:
+        # exact pairing through the decompiler's token stream (callOrder): printed calls in text order
+        for pos, end, args, site, key, vtable in ordered:
+            collect(pos, end, args, _align(site, args), key, vtable)
     by_slot = {}
-    for c in fn.get('indirectCalls', []):
+    for c in fn.get('indirectCalls', []) if ordered is None else []:
         if c.get('slot'):
             by_slot.setdefault(c['slot'].lower(), []).append(c)
     for slot, group in by_slot.items():
@@ -257,7 +332,7 @@ def restore_stack_operands(decompile, fn):
             args = _split_top(text[he:j - 1])
             collect(he, j - 1, args, _align(site, args), slot, True)
     by_label = {}
-    for c in fn.get('calls', []):
+    for c in fn.get('calls', []) if ordered is None else []:
         if c.get('currentName') and ('pushedStack' in c or 'ecxStack' in c or 'edxStack' in c):
             by_label.setdefault(c['currentName'], []).append(c)
     for label, group in by_label.items():

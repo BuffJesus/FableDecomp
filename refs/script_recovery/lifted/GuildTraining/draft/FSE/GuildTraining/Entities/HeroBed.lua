@@ -11,13 +11,13 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, iVar4, iVar5, iVar7, puStack_18, puStack_24, puStack_c, puVar6, pu_stk_14
+    local bVar3, iVar4, iVar5, iVar7, puVar6, pu_stk_14, xStack_18, xStack_24, xStack_c
     local alive = true
     iVar5 = 0
     quest:SetThingAsUsable(me, false)
     quest:SetThingPersistent(me, true)
-    puStack_c = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
-    iVar4 = #puStack_c
+    xStack_c = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
+    iVar4 = #xStack_c
     if 0 < iVar4 then
         iVar7 = 0
         repeat
@@ -25,8 +25,8 @@ function Main(quest, me)
             bVar3 = not alive
             puVar6 = pu_stk_20
             if bVar3 then goto LAB_00d4482d end
-            quest:SetThingAsUsable(puStack_c[(iVar7) / 0xc + 1], false)
-            quest:SetThingPersistent(puStack_c[(iVar7) / 0xc + 1], true)
+            quest:SetThingAsUsable(xStack_c[(iVar7) / 0xc + 1], false)
+            quest:SetThingPersistent(xStack_c[(iVar7) / 0xc + 1], true)
             iVar5 = iVar5 + 1
             iVar7 = iVar7 + 0xc
         until not (iVar5 < iVar4)
@@ -39,8 +39,8 @@ function Main(quest, me)
         puVar6 = pu_stk_14
         pu_stk_14 = puVar6
     else
-        puStack_24 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
-        iVar5 = #puStack_24
+        xStack_24 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
+        iVar5 = #xStack_24
         if 0 < iVar5 then
             iVar7 = 0
             repeat
@@ -48,8 +48,8 @@ function Main(quest, me)
                 bVar3 = not alive
                 puVar6 = pu_stk_20
                 if bVar3 then goto LAB_00d449bd end
-                quest:SetThingAsUsable(puStack_24[(iVar7) / 0xc + 1], false)
-                quest:SetThingPersistent(puStack_24[(iVar7) / 0xc + 1], true)
+                quest:SetThingAsUsable(xStack_24[(iVar7) / 0xc + 1], false)
+                quest:SetThingPersistent(xStack_24[(iVar7) / 0xc + 1], true)
                 iVar4 = iVar4 + 1
                 iVar7 = iVar7 + 0xc
             until not (iVar4 < iVar5)
@@ -62,8 +62,8 @@ function Main(quest, me)
             puVar6 = pu_stk_14
             pu_stk_14 = puVar6
         else
-            puStack_18 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
-            iVar5 = #puStack_18
+            xStack_18 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
+            iVar5 = #xStack_18
             if 0 < iVar5 then
                 iVar7 = 0
                 repeat
@@ -71,8 +71,8 @@ function Main(quest, me)
                     bVar3 = not alive
                     puVar6 = pu_stk_20
                     if bVar3 then goto LAB_00d44b4d end
-                    quest:SetThingAsUsable(puStack_18[(iVar7) / 0xc + 1], false)
-                    quest:SetThingPersistent(puStack_18[(iVar7) / 0xc + 1], true)
+                    quest:SetThingAsUsable(xStack_18[(iVar7) / 0xc + 1], false)
+                    quest:SetThingPersistent(xStack_18[(iVar7) / 0xc + 1], true)
                     iVar4 = iVar4 + 1
                     iVar7 = iVar7 + 0xc
                 until not (iVar4 < iVar5)
@@ -89,14 +89,14 @@ function Main(quest, me)
             end
         end
     end
-    bVar3 = puStack_c == nil
+    bVar3 = xStack_c == nil
     goto LAB_00d44c44
     ::LAB_00d449bd::
     puVar6 = pu_stk_14
     pu_stk_14 = puVar6
-    puVar6 = puStack_c
-    if puStack_c ~= pu_stk_8 then
-        bVar3 = puStack_c == nil
+    puVar6 = xStack_c
+    if xStack_c ~= pu_stk_8 then
+        bVar3 = xStack_c == nil
         goto LAB_00d44c44
     end
     goto LAB_00d44bc3
@@ -107,13 +107,13 @@ function Main(quest, me)
     ::LAB_00d4482d::
     puVar6 = pu_stk_14
     pu_stk_14 = puVar6
-    puVar6 = puStack_c
-    if puStack_c ~= pu_stk_8 then
-        bVar3 = puStack_c == nil
+    puVar6 = xStack_c
+    if xStack_c ~= pu_stk_8 then
+        bVar3 = xStack_c == nil
         goto LAB_00d44c44
     end
     ::LAB_00d44bc3::
-    bVar3 = puStack_c == nil
+    bVar3 = xStack_c == nil
     ::LAB_00d44c44::
     if not bVar3 then
     end

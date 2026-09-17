@@ -34,10 +34,11 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if bVar6 then
+            resources:ReleaseResource(xStack_20)
             r1 = nil
             return
         end
-        bVar6 = resources:TryAcquire(pThingToMove, r1, 4)
+        bVar6 = resources:TryAcquire(xStack_20, r1, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
@@ -66,7 +67,7 @@ function Main(quest)
         if not bVar6 then
             pCVar4 = resources:NewActorMap()
             resources:SetActor(pCVar4, "HERO", xStack_10)
-            resources:SetActor(pCVar4, "WHISPER", pThingToMove)
+            resources:SetActor(pCVar4, "WHISPER", xStack_20)
             pThingToMove = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
@@ -75,7 +76,7 @@ function Main(quest)
             quest:FixMovieSequenceCamera(false)
             quest:SetStateBool("TalkedToWhisper", true)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(0)
+            resources:DestroyMovie(pThingToMove)
             resources:DestroyActorMap(pCVar4)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_03", "", "")
             quest:AddLogbookStoryEntry(40)
@@ -110,7 +111,7 @@ function Main(quest)
         ::LAB_00d56509::
         resources:ReleaseResource(xStack_10)
     end
-    resources:ReleaseResource(0)
+    resources:ReleaseResource(xStack_20)
 end
 
 function Init(quest)

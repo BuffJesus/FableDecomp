@@ -252,6 +252,11 @@ def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str,
     # interface-pointer / vtable aliases under any local name (typed exports name them `this_00`, ...)
     aliases = {m.group("var") for m in RE_GSI_ALIAS.finditer(text)
                if not re.match(r"(?:[a-z]{1,3}Var\d+|\w*Stack_[0-9a-f]+|this)$", m.group("var"))}
+    # a copy of an interface alias into a stack slot (`piStack_218 = piVar12;`, the pointer kept across a
+    # loop) is the same receiver
+    sources = aliases | {m.group("var") for m in RE_GSI_ALIAS.finditer(text)}
+    aliases |= {m.group("var") for m in RE_COPY_ALIAS.finditer(text)
+                if m.group("src") in sources and re.match(r"\w*Stack_[0-9a-f]+$", m.group("var"))}
     if aliases:
         names = "|".join(sorted(re.escape(a) for a in aliases))
         text = re.sub(r"\(\*\*\(code \*\*\)\(\*?(?:" + names + r") \+ (" + OFFSET + r")\)\)", sub, text)

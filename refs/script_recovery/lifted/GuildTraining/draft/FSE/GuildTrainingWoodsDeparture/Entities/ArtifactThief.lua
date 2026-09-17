@@ -12,24 +12,20 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar2, cVar3, dist, fVar1, iVar13, iVar14, iVar5, iVar6, p0, pCVar15, pCVar4, pCVar7, pCVar8, pcVar12, piStack_128, piStack_170, piVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r3, r4, r5, r6, r7, r8, r9, uVar10, uVar9, u_stk_174, xStack_138, xStack_148, xStack_158, xStack_18, xStack_184, xStack_188, xStack_24, xStack_3c, xStack_48, xStack_54, xStack_60, xStack_78, xStack_94, xStack_a0, xStack_bc, xStack_c, x_stk_7c
+    local __native_condition_1, bVar2, cVar3, dist, fVar1, iVar13, iVar14, iVar5, iVar6, p0, pCVar15, pCVar4, pCVar7, pCVar8, pcVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r3, r4, r5, r6, r7, r8, r9, uVar10, uVar9, u_stk_174, xStack_128, xStack_138, xStack_148, xStack_158, xStack_170, xStack_18, xStack_184, xStack_188, xStack_24, xStack_3c, xStack_48, xStack_54, xStack_60, xStack_6c, xStack_78, xStack_94, xStack_a0, xStack_bc, xStack_c
     local alive = true
-    local function __region_LAB_00d632c3_c3()
+    local function __region_LAB_00d632c3_c2()
         quest:PauseAllNonScriptedEntities(false)
         pCVar8 = xStack_148
-    end
-    local function __region_LAB_00d63a62_c3()
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_138)
     end
     local function __cleanup_LAB_00d63aa6()
         resources:DestroyMovie(pCVar8)
         quest:DeregisterTimer(xStack_188)
-        resources:DestroyMovie(xStack_bc)
+        resources:DestroyMovie(xStack_184)
     end
     local function __cleanup_LAB_00d63aab()
         quest:DeregisterTimer(xStack_188)
-        resources:DestroyMovie(xStack_bc)
+        resources:DestroyMovie(xStack_184)
     end
     uVar9 = 0
     u_stk_174 = 0
@@ -150,12 +146,12 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00d63c96 end
-                    xStack_bc = resources:StartMovie("")
+                    xStack_138 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     pCVar15 = 0x1
                     quest:PauseAllNonScriptedEntities((pCVar15 ~= 0))
-                    xStack_78 = resources:ScriptThing(xStack_184)
-                    pCVar4 = xStack_78
+                    xStack_6c = resources:ScriptThing(xStack_184)
+                    pCVar4 = xStack_6c
                     r1 = quest:GetHealth(pCVar4)
                     fVar1 = 0.0
                     if fVar1 < fret_00 then
@@ -184,7 +180,7 @@ function Main(quest, me)
                         bVar2 = not alive
                         if bVar2 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_158)
+                            resources:DestroyMovie(xStack_138)
                             goto LAB_00d63c96
                         end
                     end
@@ -192,17 +188,17 @@ function Main(quest, me)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
                     -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_138);
-                    -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_158;
+                    -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_138;
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00d63c96 end
-                    xStack_138 = resources:StartMovie("")
+                    xStack_bc = resources:StartMovie("")
                     quest:StartMovieSequence()
                     pCVar15 = 0x1
                     quest:PauseAllNonScriptedEntities((pCVar15 ~= 0))
-                    x_stk_7c = resources:ScriptThing(xStack_184)
-                    pCVar4 = x_stk_7c
+                    xStack_78 = resources:ScriptThing(xStack_184)
+                    pCVar4 = xStack_78
                     r3 = quest:GetHealth(pCVar4)
                     fVar1 = 0.0
                     if fVar1 < fret_0 then
@@ -231,15 +227,15 @@ function Main(quest, me)
                         bVar2 = not alive
                         if bVar2 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_94)
+                            resources:DestroyMovie(xStack_bc)
                             goto LAB_00d63c96
                         end
                     end
                     quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_138);
-                    -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_94;
+                    -- TODO(native): std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> (xStack_bc);
+                    -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_bc;
                 end
                 quest:EntitySetAsKillable(me, true, true)
                 pCVar4 = quest:GetThingWithScriptName("ArtifactThiefRunMarker")
@@ -268,7 +264,6 @@ function Main(quest, me)
                     __native_entity_state:SetStateBool("AlreadyTalkedTo", true)
                     xStack_148 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    -- TODO(native): piStack_128 = piVar11;
                     quest:PauseAllNonScriptedEntities(true)
                     xStack_54 = resources:ScriptThing(xStack_184)
                     pCVar4 = xStack_54
@@ -288,12 +283,7 @@ function Main(quest, me)
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
-                            if bVar2 then
-                                -- LAB_00d63a62_c2: (native jump target)
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_138)
-                                goto LAB_00d63c96
-                            end
+                            if bVar2 then goto LAB_00d63a7c end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar3 = iVar5
                         end
@@ -309,11 +299,11 @@ function Main(quest, me)
                                 if bVar2 then
                                     quest:PauseAllNonScriptedEntities(false)
                                     pCVar8 = xStack_148
-                                    -- LAB_00d63aa6_c3: (native jump target)
+                                    -- LAB_00d63aa6_c2: (native jump target)
                                     resources:DestroyMovie(pCVar8)
-                                    -- LAB_00d63aab_c3: (native jump target)
+                                    -- LAB_00d63aab_c2: (native jump target)
                                     quest:DeregisterTimer(xStack_188)
-                                    resources:DestroyMovie(xStack_bc)
+                                    resources:DestroyMovie(xStack_184)
                                     return
                                 end
                                 iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -325,12 +315,12 @@ function Main(quest, me)
                                 bVar2 = not alive
                                 if iVar5 == 1 then
                                     if not bVar2 then
-                                        piStack_170 = quest:GetHeroGold()
-                                        if piStack_170 < quest:ReadGlobalGameData(0xf14) then
+                                        xStack_170 = quest:GetHeroGold()
+                                        if xStack_170 < quest:ReadGlobalGameData(0xf14) then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive
                                             if not bVar2 then
-                                                xStack_3c = resources:ScriptThing(xStack_bc)
+                                                xStack_3c = resources:ScriptThing(xStack_184)
                                                 pCVar4 = xStack_3c
                                                 r7 = quest:GetHealth(pCVar4)
                                                 fVar1 = 0.0
@@ -348,13 +338,13 @@ function Main(quest, me)
                                                         alive = quest:NewScriptFrame(me)
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar2 = not alive
-                                                        if bVar2 then __region_LAB_00d63a62_c3(); goto LAB_00d63c96 end
+                                                        if bVar2 then goto LAB_00d63a7c end
                                                         iVar5 = me:IsPerformingScriptTask()
                                                         cVar3 = iVar5
                                                     end
-                                                    -- TODO(native): goto LAB_00d632b4_c3
+                                                    -- TODO(native): goto LAB_00d632b4_c2
                                                 end
-                                                __region_LAB_00d632c3_c3(); goto LAB_00d638d8
+                                                __region_LAB_00d632c3_c2(); goto LAB_00d638d8
                                             end
                                             goto LAB_00d63a7c
                                         end
@@ -385,7 +375,7 @@ function Main(quest, me)
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar2 = not alive
-                                                if bVar2 then __region_LAB_00d63a62_c3(); goto LAB_00d63c96 end
+                                                if bVar2 then goto LAB_00d63a7c end
                                             end
                                             quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                                             quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
@@ -401,12 +391,14 @@ function Main(quest, me)
                                             iVar5 = 0x3f800000
                                             pCVar7 = pCVar4:GetPos()
                                             me:MoveToPosition(pCVar7, iVar5, iVar6, (iVar13 ~= 0), (iVar14 ~= 0))
-                                            -- TODO(native): (**(code **)(*piStack_128 + 0x5ec))(piStack_128,false);
-                                            pCVar8 = xStack_138
+                                            quest:PauseAllNonScriptedEntities(false)
+                                            pCVar8 = xStack_148
                                             goto LAB_00d638d8
                                         end
                                     end
-                                    __region_LAB_00d63a62_c3()
+                                    -- LAB_00d63a62_c2: (native jump target)
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_148)
                                     goto LAB_00d63c96
                                 end
                                 if not bVar2 then
@@ -428,16 +420,16 @@ function Main(quest, me)
                                             alive = quest:NewScriptFrame(me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive
-                                            if bVar2 then __region_LAB_00d63a62_c3(); goto LAB_00d63c96 end
+                                            if bVar2 then goto LAB_00d63a7c end
                                             iVar5 = me:IsPerformingScriptTask()
                                             cVar3 = iVar5
                                         end
-                                        -- LAB_00d632b4_c3: (native jump target)
+                                        -- LAB_00d632b4_c2: (native jump target)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar2 = not alive
                                         if bVar2 then goto LAB_00d63a7c end
                                     end
-                                    __region_LAB_00d632c3_c3()
+                                    __region_LAB_00d632c3_c2()
                                     goto LAB_00d638d8
                                 end
                             end
@@ -466,12 +458,12 @@ function Main(quest, me)
                             bVar2 = not alive
                             if iVar5 == 1 then
                                 if not bVar2 then
-                                    piStack_170 = quest:GetHeroGold()
-                                    if piStack_170 < quest:ReadGlobalGameData(0xf14) then
+                                    xStack_170 = quest:GetHeroGold()
+                                    if xStack_170 < quest:ReadGlobalGameData(0xf14) then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar2 = not alive
                                         if not bVar2 then
-                                            xStack_3c = resources:ScriptThing(xStack_bc)
+                                            xStack_3c = resources:ScriptThing(xStack_184)
                                             pCVar4 = xStack_3c
                                             r13 = quest:GetHealth(pCVar4)
                                             fVar1 = 0.0
@@ -489,14 +481,14 @@ function Main(quest, me)
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar2 = not alive
-                                                    if bVar2 then goto LAB_00d63a62 end
+                                                    if bVar2 then goto LAB_00d63a7c end
                                                     iVar5 = me:IsPerformingScriptTask()
                                                     cVar3 = iVar5
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar2 = not alive
                                                 if bVar2 then goto LAB_00d63a7c end
-                                                -- LAB_00d632c3_c4: (native jump target)
+                                                -- LAB_00d632c3_c3: (native jump target)
                                                 quest:PauseAllNonScriptedEntities(false)
                                                 pCVar8 = xStack_148
                                                 goto LAB_00d638d8
@@ -534,7 +526,7 @@ function Main(quest, me)
                                             end
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive
-                                            if bVar2 then goto LAB_00d63a62 end
+                                            if bVar2 then goto LAB_00d63a7c end
                                         end
                                         quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                                         quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
@@ -550,14 +542,14 @@ function Main(quest, me)
                                         iVar5 = 0x3f800000
                                         pCVar7 = pCVar4:GetPos()
                                         me:MoveToPosition(pCVar7, iVar5, iVar6, (iVar13 ~= 0), (iVar14 ~= 0))
-                                        -- TODO(native): (**(code **)(*piStack_128 + 0x5ec))(piStack_128,false);
-                                        pCVar8 = xStack_138
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        pCVar8 = xStack_148
                                         goto LAB_00d638d8
                                     end
                                 end
-                                ::LAB_00d63a62::
+                                -- LAB_00d63a62: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_138)
+                                resources:DestroyMovie(xStack_148)
                                 goto LAB_00d63c96
                             end
                             if not bVar2 then
@@ -579,11 +571,7 @@ function Main(quest, me)
                                         alive = quest:NewScriptFrame(me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar2 = not alive
-                                        if bVar2 then
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_138)
-                                            goto LAB_00d63c96
-                                        end
+                                        if bVar2 then goto LAB_00d63a7c end
                                         iVar5 = me:IsPerformingScriptTask()
                                         cVar3 = iVar5
                                     end
@@ -610,7 +598,6 @@ function Main(quest, me)
                 if bVar2 then goto LAB_00d63c96 end
                 xStack_158 = resources:StartMovie("")
                 quest:StartMovieSequence()
-                -- TODO(native): piStack_170 = piVar11;
                 quest:PauseAllNonScriptedEntities(true)
                 xStack_c = resources:ScriptThing(xStack_184)
                 pCVar4 = xStack_c
@@ -632,7 +619,7 @@ function Main(quest, me)
                         bVar2 = not alive
                         if bVar2 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_94)
+                            resources:DestroyMovie(xStack_158)
                             goto LAB_00d63c96
                         end
                         iVar5 = me:IsPerformingScriptTask()
@@ -643,7 +630,7 @@ function Main(quest, me)
                     if not bVar2 then goto LAB_00d633f7 end
                     -- LAB_00d635e3: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_148)
+                    resources:DestroyMovie(xStack_158)
                     goto LAB_00d63c96
                 end
                 ::LAB_00d633f7::
@@ -655,7 +642,7 @@ function Main(quest, me)
                     bVar2 = not alive
                     if bVar2 then
                         quest:PauseAllNonScriptedEntities(false)
-                        pCVar8 = xStack_148
+                        pCVar8 = xStack_158
                         __cleanup_LAB_00d63aa6(); return
                     end
                     iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -664,7 +651,7 @@ function Main(quest, me)
                 bVar2 = not alive
                 if bVar2 then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_148)
+                    resources:DestroyMovie(xStack_158)
                     goto LAB_00d63c96
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -672,15 +659,15 @@ function Main(quest, me)
                 if iVar5 ~= 1 then
                     if bVar2 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_148)
+                        resources:DestroyMovie(xStack_158)
                         goto LAB_00d63c96
                     end
                     xStack_94 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     pCVar15 = 0x1
                     quest:PauseAllNonScriptedEntities((pCVar15 ~= 0))
-                    xStack_18 = resources:ScriptThing(xStack_184)
-                    pCVar4 = xStack_18
+                    xStack_a0 = resources:ScriptThing(xStack_184)
+                    pCVar4 = xStack_a0
                     r21 = quest:GetHealth(pCVar4)
                     fVar1 = 0.0
                     if fVar1 < fret_08 then
@@ -699,9 +686,9 @@ function Main(quest, me)
                             bVar2 = not alive
                             if bVar2 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_158)
-                                -- TODO(native): (**(code **)(*piStack_170 + 0x5ec))(piStack_170,false);
-                                resources:ReleaseResource(xStack_184)
+                                resources:DestroyMovie(xStack_94)
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:ReleaseResource(xStack_158)
                                 goto LAB_00d63c96
                             end
                             iVar5 = me:IsPerformingScriptTask()
@@ -712,25 +699,24 @@ function Main(quest, me)
                         if bVar2 then
                             -- LAB_00d63aec: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_158)
-                            -- TODO(native): (**(code **)(*piStack_170 + 0x5ec))(piStack_170,false);
-                            resources:ReleaseResource(xStack_184)
+                            resources:DestroyMovie(xStack_94)
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:ReleaseResource(xStack_158)
                             goto LAB_00d63c96
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_158)
-                    piVar11 = piStack_170
+                    resources:DestroyMovie(xStack_94)
                     goto LAB_00d638c8
                 end
                 if bVar2 then
                     -- LAB_00d63ad2: (native jump target)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_94)
+                    resources:DestroyMovie(xStack_158)
                     goto LAB_00d63c96
                 end
-                piStack_128 = quest:GetHeroGold()
-                if *(iVar6 + 0xf14) <= piStack_128 then
+                xStack_128 = quest:GetHeroGold()
+                if *(iVar6 + 0xf14) <= xStack_128 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if not bVar2 then
@@ -754,7 +740,7 @@ function Main(quest, me)
                                 bVar2 = not alive
                                 if bVar2 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_148)
+                                    resources:DestroyMovie(xStack_158)
                                     goto LAB_00d63c96
                                 end
                                 iVar5 = me:IsPerformingScriptTask()
@@ -764,7 +750,7 @@ function Main(quest, me)
                             bVar2 = not alive
                             if bVar2 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_94)
+                                resources:DestroyMovie(xStack_158)
                                 goto LAB_00d63c96
                             end
                         end
@@ -782,22 +768,21 @@ function Main(quest, me)
                         iVar5 = 0x3f800000
                         pCVar7 = pCVar4:GetPos()
                         me:MoveToPosition(pCVar7, iVar5, iVar6, (iVar13 ~= 0), (iVar14 ~= 0))
-                        piVar11 = piStack_170
                         goto LAB_00d638c8
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_94)
+                    resources:DestroyMovie(xStack_158)
                     goto LAB_00d63c96
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_148)
+                    resources:DestroyMovie(xStack_158)
                     goto LAB_00d63c96
                 end
-                xStack_a0 = resources:ScriptThing(xStack_184)
-                pCVar4 = xStack_a0
+                xStack_18 = resources:ScriptThing(xStack_184)
+                pCVar4 = xStack_18
                 r25 = quest:GetHealth(pCVar4)
                 fVar1 = 0.0
                 if fVar1 < fret_06 then
@@ -816,7 +801,7 @@ function Main(quest, me)
                         bVar2 = not alive
                         if bVar2 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_94)
+                            resources:DestroyMovie(xStack_158)
                             goto LAB_00d63c96
                         end
                         iVar5 = me:IsPerformingScriptTask()
@@ -826,13 +811,13 @@ function Main(quest, me)
                     bVar2 = not alive
                     if bVar2 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_148)
+                        resources:DestroyMovie(xStack_158)
                         goto LAB_00d63c96
                     end
                 end
                 ::LAB_00d638c8::
                 quest:PauseAllNonScriptedEntities(false)
-                pCVar8 = xStack_94
+                pCVar8 = xStack_158
                 ::LAB_00d638d8::
                 resources:DestroyMovie(pCVar8)
                 uVar9 = u_stk_174

@@ -26,11 +26,11 @@ function Main(quest)
                 if (CVar5 & 0x10) ~= 0 then
                 end
                 quest:SetStateInt("DepartureMissionPoint", 0)
-                quest:SetQuestCardObjective("TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "Q_GuildTraining", nil --[[missing]])
-                this_00 = quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_MAZE_TUTORIAL")
+                quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
+                this_00 = quest:GetThingWithScriptName("MazeCreationMarker")
                 bVar2 = false
                 pPosition = this_00:GetPos()
-                r1 = quest:CreateCreature("FinalMaze", pPosition, "MazeCreationMarker")
+                r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_TUTORIAL", pPosition, "FinalMaze")
             end
             return
         end
@@ -39,6 +39,7 @@ function Main(quest)
         bVar2 = not alive
         if bVar2 then break end
         bVar2 = quest:IsLevelLoaded("GuildWoods")
+        CVar5 = "FinalMaze"
     end
 end
 

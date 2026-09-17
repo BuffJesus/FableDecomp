@@ -106,8 +106,8 @@ function Main(quest, me)
                         if bVar4 then
                             -- LAB_00d56eb7: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_bc)
-                            resources:ReleaseResource(xStack_d8)
+                            resources:DestroyMovie(xStack_c0)
+                            resources:ReleaseResource("")
                             return
                         end
                         pCVar6 = resources:ScriptThing(xStack_d8)
@@ -141,8 +141,8 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_bc)
-                                resources:ReleaseResource(xStack_d8)
+                                resources:DestroyMovie(xStack_c0)
+                                resources:ReleaseResource("")
                                 return
                             end
                         end
@@ -150,7 +150,7 @@ function Main(quest, me)
                         if bVar4 ~= 0 then
                         end
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_c0)
+                        resources:DestroyMovie(xStack_bc)
                     else
                         bVar4 = me:MsgIsHitByHero()
                         if bVar4 then
@@ -197,7 +197,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             bVar4 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
@@ -206,7 +206,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:DeregisterTimer(xStack_dc)
-                                    resources:ReleaseResource(xStack_dc)
+                                    resources:ReleaseResource(xStack_d8)
                                     return
                                 end
                                 quest:SetStateInt("GenericTutorialCounter", quest:GetStateInt("GenericTutorialCounter") + 1)
@@ -216,7 +216,7 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                     iVar9 = quest:AddNewConversation(me, false, false)
@@ -233,7 +233,7 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                     quest:ModifyThingHealth(me, 1000.0, false)
@@ -243,7 +243,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                         bVar4 = quest:IsXbox()
@@ -252,7 +252,7 @@ function Main(quest, me)
                                             bVar4 = not alive
                                             if bVar4 then
                                                 quest:DeregisterTimer(xStack_dc)
-                                                resources:ReleaseResource(xStack_dc)
+                                                resources:ReleaseResource(xStack_d8)
                                                 return
                                             end
                                             quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_SWORD_WIELD_HELP")
@@ -263,7 +263,7 @@ function Main(quest, me)
                                                 bVar4 = not alive
                                                 if bVar4 then
                                                     quest:DeregisterTimer(xStack_dc)
-                                                    resources:ReleaseResource(xStack_dc)
+                                                    resources:ReleaseResource(xStack_d8)
                                                     return
                                                 end
                                                 bVar4 = quest:MsgIsGameInfoClickedPast()
@@ -273,7 +273,7 @@ function Main(quest, me)
                                             bVar4 = not alive
                                             if bVar4 then
                                                 quest:DeregisterTimer(xStack_dc)
-                                                resources:ReleaseResource(xStack_dc)
+                                                resources:ReleaseResource(xStack_d8)
                                                 return
                                             end
                                             quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_SWORD_WIELD_HELP_PC")
@@ -284,7 +284,7 @@ function Main(quest, me)
                                                 bVar4 = not alive
                                                 if bVar4 then
                                                     quest:DeregisterTimer(xStack_dc)
-                                                    resources:ReleaseResource(xStack_dc)
+                                                    resources:ReleaseResource(xStack_d8)
                                                     return
                                                 end
                                                 bVar4 = quest:MsgIsGameInfoClickedPast()
@@ -294,7 +294,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                     end
@@ -307,7 +307,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:DeregisterTimer(xStack_dc)
-                                    resources:ReleaseResource(xStack_dc)
+                                    resources:ReleaseResource(xStack_d8)
                                     return
                                 end
                                 iVar9 = quest:AddNewConversation(me, false, false)
@@ -324,7 +324,7 @@ function Main(quest, me)
                         if bVar4 then
                             -- LAB_00d57f7a: (native jump target)
                             quest:DeregisterTimer(xStack_dc)
-                            resources:ReleaseResource(xStack_dc)
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         iVar8 = quest:GetStateInt("TutorialState")
@@ -334,7 +334,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             iVar8 = quest:GetStateInt("TutorialState")
@@ -343,7 +343,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_dc)
-                            resources:ReleaseResource(xStack_dc)
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_VS_BLOCK_ATTACK_STYLE")
@@ -359,7 +359,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             bVar4 = quest:IsPlayerCreatureBlocking()
@@ -386,7 +386,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:DeregisterTimer(xStack_dc)
-                                    resources:ReleaseResource(xStack_dc)
+                                    resources:ReleaseResource(xStack_d8)
                                     return
                                 end
                                 piVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x48)
@@ -397,7 +397,7 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                     iVar9 = quest:AddNewConversation(me, false, false)
@@ -417,7 +417,7 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                     if nil == nil then
@@ -480,7 +480,7 @@ function Main(quest, me)
                                             ::LAB_00d57f71::
                                         end
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                     uVar7 = uVar7 & 0x80000001
@@ -492,7 +492,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                         iVar8 = quest:GetTimer(xStack_dc)
@@ -501,7 +501,7 @@ function Main(quest, me)
                                             bVar4 = not alive
                                             if bVar4 then
                                                 quest:DeregisterTimer(xStack_dc)
-                                                resources:ReleaseResource(xStack_dc)
+                                                resources:ReleaseResource(xStack_d8)
                                                 return
                                             end
                                             iVar9 = quest:AddNewConversation(me, false, false)
@@ -520,7 +520,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                         iVar8 = quest:GetTimer(xStack_dc)
@@ -537,7 +537,7 @@ function Main(quest, me)
                                                 goto FLOW_after_lab_00d57742
                                             end
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                     end
@@ -551,7 +551,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:DeregisterTimer(xStack_dc)
-                                    resources:ReleaseResource(xStack_dc)
+                                    resources:ReleaseResource(xStack_d8)
                                     return
                                 end
                                 iVar9 = quest:AddNewConversation(me, false, false)
@@ -568,7 +568,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:DeregisterTimer(xStack_dc)
-                                    resources:ReleaseResource(xStack_dc)
+                                    resources:ReleaseResource(xStack_d8)
                                     return
                                 end
                                 quest:ClearThingBestEnemyTarget(me)
@@ -579,7 +579,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_dc)
-                            resources:ReleaseResource(xStack_dc)
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         iVar8 = quest:GetStateInt("TutorialState")
@@ -589,7 +589,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             iVar8 = quest:GetStateInt("TutorialState")
@@ -598,7 +598,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_dc)
-                            resources:ReleaseResource(xStack_dc)
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE")
@@ -611,7 +611,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             bVar4 = me:MsgIsHitByHero()
@@ -620,7 +620,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:DeregisterTimer(xStack_dc)
-                                    resources:ReleaseResource(xStack_dc)
+                                    resources:ReleaseResource(xStack_d8)
                                     return
                                 end
                                 iVar8 = quest:GetTimer(CVar3)
@@ -629,7 +629,7 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                     uVar7 = uVar7 & 0x80000001
@@ -641,7 +641,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                         iVar9 = quest:AddNewConversation(me, false, false)
@@ -654,7 +654,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                         r4 = quest:GetThingWithScriptName("MeleeThunder")
@@ -693,7 +693,7 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                     iVar8 = quest:GetTimer(CVar3)
@@ -734,7 +734,7 @@ function Main(quest, me)
                                             end
                                         end
                                         quest:DeregisterTimer(xStack_dc)
-                                        resources:ReleaseResource(xStack_dc)
+                                        resources:ReleaseResource(xStack_d8)
                                         return
                                     end
                                 else
@@ -746,7 +746,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                         iVar8 = quest:GetTimer(CVar3)
@@ -787,7 +787,7 @@ function Main(quest, me)
                                                 end
                                             end
                                             quest:DeregisterTimer(xStack_dc)
-                                            resources:ReleaseResource(xStack_dc)
+                                            resources:ReleaseResource(xStack_d8)
                                             return
                                         end
                                     end
@@ -801,7 +801,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_dc)
-                            resources:ReleaseResource(xStack_dc)
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         iVar8 = quest:GetStateInt("TutorialState")
@@ -811,7 +811,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             iVar8 = quest:GetStateInt("TutorialState")
@@ -820,7 +820,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_dc)
-                            resources:ReleaseResource(xStack_dc)
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         cVar5 = quest:GetStateBool("MeleeRepeatKnown")
@@ -830,7 +830,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             cVar5 = quest:GetStateBool("MeleeRepeatKnown")
@@ -839,7 +839,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_dc)
-                            resources:ReleaseResource(xStack_dc)
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         if not quest:GetStateBool("MeleeRepeating") then
@@ -847,7 +847,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                             __native_entity_state:SetStateBool("RepeatMelee", false)
@@ -856,7 +856,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_dc)
-                                resources:ReleaseResource(xStack_dc)
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                         end

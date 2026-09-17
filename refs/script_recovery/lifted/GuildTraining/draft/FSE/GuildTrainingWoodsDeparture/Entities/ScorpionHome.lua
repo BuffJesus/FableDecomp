@@ -105,7 +105,7 @@ function Main(quest, me)
             end
             pu_stk_20 = puVar4
             if nil ~= nil then
-                -- TODO(native): free(puStack_24);
+                -- TODO(native): free(xStack_24);
             end
             iVar1 = quest:GetStateInt("DepartureMissionPoint")
         end

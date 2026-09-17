@@ -199,10 +199,10 @@ function DoMultiplierCutscene(quest, me)
                         if bVar4 then goto LAB_00dd1e70 end
                     end
                     quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-                    goto FLOW_after_lab_00dd1d98_127
+                    goto FLOW_after_lab_00dd1d98_125
                 end
             end
-            ::FLOW_after_lab_00dd1d98_127::
+            ::FLOW_after_lab_00dd1d98_125::
         end
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)

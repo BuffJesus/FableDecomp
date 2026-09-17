@@ -794,11 +794,10 @@ function Main(quest, me)
                         pCVar9 = r3
                         fret_01 = quest:GetHealth(pCVar9)
                         CVar5 = xStack_234
-                        -- TODO(native): xStack_234._3_1_ = 1;
                         if fret_01 <= 0.0 then
                             -- TODO(native): xStack_234 = (CCharString)((uint)CVar5 & 0xffffff);
                         end
-                        if xStack_234_b3 ~= 0 then
+                        if 1 ~= 0 then
                             r6 = me:Speak(me, "WHISPER", 0x12d1368, false, false, true)
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
@@ -951,7 +950,7 @@ function Main(quest, me)
                                         pCVar9 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
                                         bVar6 = false
                                         pCVar13 = pCVar9:GetPos()
-                                        r10 = quest:CreateCreature("MeleeApprentice", pCVar13, "WillApprentice")
+                                        r10 = quest:CreateCreature("WillApprentice", pCVar13, "WillApprenticeMarker")
                                         if xStack_60._0_4_ ~= nil then
                                             -- TODO(native): (**(code **)(*xStack_60._0_4_ + 0x118))(0);
                                         end
@@ -994,12 +993,11 @@ function Main(quest, me)
                         pCVar9 = xStack_1e0
                         fret_00 = quest:GetHealth(pCVar9)
                         CVar5 = xStack_23c
-                        -- TODO(native): xStack_23c._3_1_ = 1;
                         if fret_00 <= 0.0 then
                             -- TODO(native): xStack_23c = (CCharString)((uint)CVar5 & 0xffffff);
                         end
-                        if xStack_23c_b3 ~= 0 then
-                            r12 = me:Speak(me, "WillApprenticeMarker", 0x12d1368, false, false, true)
+                        if 1 ~= 0 then
+                            r12 = me:Speak(me, "WillApprentice", 0x12d1368, false, false, true)
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -1039,8 +1037,8 @@ function Main(quest, me)
                 resources:DestroyActorMap(xStack_210)
                 resources:ReleaseResource(xStack_48)
                 quest:DeregisterTimer(bVar6)
+                quest:DeregisterTimer(1)
                 quest:DeregisterTimer(fVar4)
-                quest:DeregisterTimer(dist)
             until not (bVar6)
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
@@ -1560,7 +1558,7 @@ function Main(quest, me)
                 pCVar9 = quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE")
                 bVar6 = false
                 pCVar13 = pCVar9:GetPos()
-                r24 = quest:CreateCreature("MeleeApprentice", pCVar13, "WillApprentice")
+                r24 = quest:CreateCreature("WillApprentice", pCVar13, "WillApprenticeMarker")
                 if pCVar12._0_4_ ~= nil then
                     -- TODO(native): (**(code **)(*xStack_60._0_4_ + 0x118))(0);
                 end
@@ -1601,7 +1599,7 @@ function Main(quest, me)
     quest:DeregisterTimer(xStack_22c)
     quest:DeregisterTimer(fVar4)
     ::LAB_00d6138b::
-    quest:DeregisterTimer(nil --[[missing]])
+    quest:DeregisterTimer(1)
     ::LAB_00d61b69::
     quest:DeregisterTimer(xStack_244)
     quest:DeregisterTimer(xStack_240)

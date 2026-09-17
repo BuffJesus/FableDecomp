@@ -15,16 +15,16 @@ function Main(quest, me)
     local CVar10, __native_condition_1, __native_condition_10, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r5, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r6, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_2, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_24, xStack_30, xStack_c, xStack_f8, x_stk_58
     local alive = true
     local function __region_LAB_00d555f3_c27()
-        quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
+        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
     end
     local function __region_LAB_00d555f3_c28()
-        quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
+        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
     end
     local function __region_LAB_00d555f3_c29()
-        quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
+        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
     end
     local function __region_LAB_00d555f3_c6()
-        quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
+        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
     end
     local function __region_LAB_00d55c9f_c19()
         quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
@@ -45,16 +45,16 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities((fVar2 ~= 0))
     end
     local function __region_LAB_00d55cd5_c27()
-        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+        quest:PauseAllNonScriptedEntities(false)
     end
     local function __region_LAB_00d55cd5_c28()
-        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+        quest:PauseAllNonScriptedEntities(false)
     end
     local function __region_LAB_00d55cd5_c29()
-        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+        quest:PauseAllNonScriptedEntities(false)
     end
     local function __region_LAB_00d55cd5_c6()
-        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+        quest:PauseAllNonScriptedEntities(false)
     end
     cVar4 = quest:GetStateBool("GuildmasterTeleport")
     uVar14 = 0
@@ -629,8 +629,8 @@ function Main(quest, me)
                                                                                                     if not bVar3 then
                                                                                                         pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
                                                                                                         quest:MiniMapRemoveMarker(pCVar6)
-                                                                                                        pCVar6 = quest:GetThingWithScriptName("HUD_ORB_GREEN_SMALL")
-                                                                                                        quest:MiniMapAddMarker(pCVar6, "TheRealGuildmaster")
+                                                                                                        pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                                                                                        quest:MiniMapAddMarker(pCVar6, "HUD_ORB_GREEN_SMALL")
                                                                                                         pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_GUARD")
                                                                                                         iVar23 = 1
                                                                                                         uVar16 = 0
@@ -768,10 +768,9 @@ function Main(quest, me)
                                                                                                                     iVar7 = 0x3f800000
                                                                                                                     pCVar12 = pCVar5:GetPos()
                                                                                                                     me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                    -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                 end
                                                                                                                 quest:FixMovieSequenceCamera(false)
-                                                                                                                quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                quest:PauseAllNonScriptedEntities(false)
                                                                                                                 resources:DestroyActorMap(xStack_13c)
                                                                                                             else
                                                                                                                 if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
@@ -893,9 +892,8 @@ function Main(quest, me)
                                                                                                                                 iVar7 = 0x3f800000
                                                                                                                                 pCVar12 = pCVar5:GetPos()
                                                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                                -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                             end
-                                                                                                                            quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                            quest:PauseAllNonScriptedEntities(false)
                                                                                                                             goto LAB_00d55480_c6
                                                                                                                         end
                                                                                                                     else
@@ -1035,7 +1033,6 @@ function Main(quest, me)
                                                                                                                                 iVar7 = 0x3f800000
                                                                                                                                 pCVar12 = pCVar5:GetPos()
                                                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                                -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                                 goto LAB_00d5595a_c6
                                                                                                                             end
                                                                                                                         end
@@ -1106,7 +1103,7 @@ function Main(quest, me)
                                                                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                                                                         bVar3 = not alive
                                                                                                                         if bVar3 then goto LAB_00d55c2b end
-                                                                                                                        if xStack_18c_3 == 0x1 then
+                                                                                                                        if xStack_154 == 0x1 then
                                                                                                                             bVar3 = false
                                                                                                                             pCVar5 = quest:GetHero()
                                                                                                                             quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -1114,7 +1111,7 @@ function Main(quest, me)
                                                                                                                             quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                                             -- LAB_00d55b4e_c6: (native jump target)
                                                                                                                         else
-                                                                                                                            if xStack_18c_3 == 0x2 then
+                                                                                                                            if xStack_154 == 0x2 then
                                                                                                                                 bVar3 = false
                                                                                                                                 pCVar5 = quest:GetHero()
                                                                                                                                 quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -1123,7 +1120,7 @@ function Main(quest, me)
                                                                                                                                 -- TODO(native): goto LAB_00d55b4e_c6
                                                                                                                             end
                                                                                                                         end
-                                                                                                                        -- TODO(native): xStack_18c_3 = (CCharString)(1 - (int)xStack_18c_3);
+                                                                                                                        -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
                                                                                                                     else
                                                                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                                                                         bVar3 = not alive
@@ -1168,8 +1165,8 @@ function Main(quest, me)
                                                                                                 -- LAB_00d54846: (native jump target)
                                                                                                 pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
                                                                                                 quest:MiniMapRemoveMarker(pCVar6)
-                                                                                                pCVar6 = quest:GetThingWithScriptName("HUD_ORB_GREEN_SMALL")
-                                                                                                quest:MiniMapAddMarker(pCVar6, "TheRealGuildmaster")
+                                                                                                pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                                                                                quest:MiniMapAddMarker(pCVar6, "HUD_ORB_GREEN_SMALL")
                                                                                                 pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_GUARD")
                                                                                                 iVar23 = 1
                                                                                                 uVar16 = 0
@@ -1301,9 +1298,8 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
-                                                                                                                    quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                    quest:PauseAllNonScriptedEntities(false)
                                                                                                                     goto LAB_00d55480
                                                                                                                 end
                                                                                                             else
@@ -1478,10 +1474,9 @@ function Main(quest, me)
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                            -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
-                                                                                                        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                        quest:PauseAllNonScriptedEntities(false)
                                                                                                         resources:DestroyActorMap(xStack_13c)
                                                                                                     else
                                                                                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
@@ -1492,11 +1487,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_793
+                                                                                                                goto FLOW_after_lab_00d54f9c_792
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_793::
+                                                                                                        ::FLOW_after_lab_00d54f9c_792::
                                                                                                         if (u_stk_128 & 1) ~= 0 then
                                                                                                             u_stk_128 = u_stk_128 & 0xfffffffe
                                                                                                         end
@@ -1565,7 +1560,7 @@ function Main(quest, me)
                                                                                                                     if iVar7 == 1 then
                                                                                                                         if bVar3 then
                                                                                                                             -- LAB_00d55c9f: (native jump target)
-                                                                                                                            quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
+                                                                                                                            quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
                                                                                                                             goto LAB_00d55c2b
                                                                                                                         end
                                                                                                                         quest:FadeScreenOut(0.5, 0.5)
@@ -1615,9 +1610,8 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
-                                                                                                                    quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                    quest:PauseAllNonScriptedEntities(false)
                                                                                                                     goto LAB_00d55480
                                                                                                                 end
                                                                                                             else
@@ -1711,9 +1705,8 @@ function Main(quest, me)
                                                                                                                             iVar7 = 0x3f800000
                                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                            -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         end
-                                                                                                                        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                        quest:PauseAllNonScriptedEntities(false)
                                                                                                                         goto LAB_00d55480
                                                                                                                     end
                                                                                                                     goto FLOW_after_lab_00d551d4
@@ -1721,7 +1714,7 @@ function Main(quest, me)
                                                                                                             end
                                                                                                             ::FLOW_after_lab_00d551d4::
                                                                                                             ::LAB_00d55cba::
-                                                                                                            quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
+                                                                                                            quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
                                                                                                     end
@@ -1843,20 +1836,19 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a
                                                                                                                     end
                                                                                                                 end
                                                                                                             end
                                                                                                             ::LAB_00d55cd5::
-                                                                                                            quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                            quest:PauseAllNonScriptedEntities(false)
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
                                                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                                                         bVar3 = not alive
                                                                                                         if bVar3 then
                                                                                                             -- LAB_00d555f3: (native jump target)
-                                                                                                            quest:PauseAllNonScriptedEntities((uVar18 ~= 0))
+                                                                                                            quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
                                                                                                             goto LAB_00d55c2b
                                                                                                         end
                                                                                                         pCVar5 = resources:ScriptThing(xStack_17c)
@@ -1940,7 +1932,7 @@ function Main(quest, me)
                                                                                                                     end
                                                                                                                 end
                                                                                                                 ::FLOW_after_lab_00d55b4e::
-                                                                                                                -- TODO(native): xStack_18c_3 = (CCharString)(1 - (int)xStack_18c_3);
+                                                                                                                -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
                                                                                                             else
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive
@@ -2121,8 +2113,8 @@ function Main(quest, me)
                                                                                                 -- LAB_00d54846_c27: (native jump target)
                                                                                                 pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
                                                                                                 quest:MiniMapRemoveMarker(pCVar6)
-                                                                                                pCVar6 = quest:GetThingWithScriptName("HUD_ORB_GREEN_SMALL")
-                                                                                                quest:MiniMapAddMarker(pCVar6, "TheRealGuildmaster")
+                                                                                                pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                                                                                quest:MiniMapAddMarker(pCVar6, "HUD_ORB_GREEN_SMALL")
                                                                                                 pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_GUARD")
                                                                                                 iVar23 = 1
                                                                                                 uVar16 = 0
@@ -2260,10 +2252,9 @@ function Main(quest, me)
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                            -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
-                                                                                                        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                        quest:PauseAllNonScriptedEntities(false)
                                                                                                         resources:DestroyActorMap(xStack_13c)
                                                                                                     else
                                                                                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
@@ -2385,9 +2376,8 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
-                                                                                                                    quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                    quest:PauseAllNonScriptedEntities(false)
                                                                                                                     goto LAB_00d55480_c27
                                                                                                                 end
                                                                                                             else
@@ -2527,7 +2517,6 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a_c27
                                                                                                                     end
                                                                                                                 end
@@ -2598,7 +2587,7 @@ function Main(quest, me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive
                                                                                                                 if bVar3 then goto LAB_00d55c2b_c27 end
-                                                                                                                if xStack_18c_3 == 0x1 then
+                                                                                                                if xStack_154 == 0x1 then
                                                                                                                     bVar3 = false
                                                                                                                     pCVar5 = quest:GetHero()
                                                                                                                     quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -2606,7 +2595,7 @@ function Main(quest, me)
                                                                                                                     quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                                     -- LAB_00d55b4e_c27: (native jump target)
                                                                                                                 else
-                                                                                                                    if xStack_18c_3 == 0x2 then
+                                                                                                                    if xStack_154 == 0x2 then
                                                                                                                         bVar3 = false
                                                                                                                         pCVar5 = quest:GetHero()
                                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -2615,7 +2604,7 @@ function Main(quest, me)
                                                                                                                         -- TODO(native): goto LAB_00d55b4e_c27
                                                                                                                     end
                                                                                                                 end
-                                                                                                                -- TODO(native): xStack_18c_3 = (CCharString)(1 - (int)xStack_18c_3);
+                                                                                                                -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
                                                                                                             else
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive
@@ -2952,8 +2941,8 @@ function Main(quest, me)
                                                                                                 -- LAB_00d54846_c28: (native jump target)
                                                                                                 pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
                                                                                                 quest:MiniMapRemoveMarker(pCVar6)
-                                                                                                pCVar6 = quest:GetThingWithScriptName("HUD_ORB_GREEN_SMALL")
-                                                                                                quest:MiniMapAddMarker(pCVar6, "TheRealGuildmaster")
+                                                                                                pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                                                                                quest:MiniMapAddMarker(pCVar6, "HUD_ORB_GREEN_SMALL")
                                                                                                 pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_GUARD")
                                                                                                 iVar23 = 1
                                                                                                 uVar16 = 0
@@ -3091,10 +3080,9 @@ function Main(quest, me)
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                            -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
-                                                                                                        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                        quest:PauseAllNonScriptedEntities(false)
                                                                                                         resources:DestroyActorMap(xStack_13c)
                                                                                                     else
                                                                                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
@@ -3216,9 +3204,8 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
-                                                                                                                    quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                    quest:PauseAllNonScriptedEntities(false)
                                                                                                                     goto LAB_00d55480_c28
                                                                                                                 end
                                                                                                             else
@@ -3358,7 +3345,6 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a_c28
                                                                                                                     end
                                                                                                                 end
@@ -3429,7 +3415,7 @@ function Main(quest, me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive
                                                                                                                 if bVar3 then goto LAB_00d55c2b_c28 end
-                                                                                                                if xStack_18c_3 == 0x1 then
+                                                                                                                if xStack_154 == 0x1 then
                                                                                                                     bVar3 = false
                                                                                                                     pCVar5 = quest:GetHero()
                                                                                                                     quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -3437,7 +3423,7 @@ function Main(quest, me)
                                                                                                                     quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                                     -- LAB_00d55b4e_c28: (native jump target)
                                                                                                                 else
-                                                                                                                    if xStack_18c_3 == 0x2 then
+                                                                                                                    if xStack_154 == 0x2 then
                                                                                                                         bVar3 = false
                                                                                                                         pCVar5 = quest:GetHero()
                                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -3446,7 +3432,7 @@ function Main(quest, me)
                                                                                                                         -- TODO(native): goto LAB_00d55b4e_c28
                                                                                                                     end
                                                                                                                 end
-                                                                                                                -- TODO(native): xStack_18c_3 = (CCharString)(1 - (int)xStack_18c_3);
+                                                                                                                -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
                                                                                                             else
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive
@@ -3937,8 +3923,8 @@ function Main(quest, me)
                                                                                                 -- LAB_00d54846_c29: (native jump target)
                                                                                                 pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
                                                                                                 quest:MiniMapRemoveMarker(pCVar6)
-                                                                                                pCVar6 = quest:GetThingWithScriptName("HUD_ORB_GREEN_SMALL")
-                                                                                                quest:MiniMapAddMarker(pCVar6, "TheRealGuildmaster")
+                                                                                                pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                                                                                quest:MiniMapAddMarker(pCVar6, "HUD_ORB_GREEN_SMALL")
                                                                                                 pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_GUARD")
                                                                                                 iVar23 = 1
                                                                                                 uVar16 = 0
@@ -4076,10 +4062,9 @@ function Main(quest, me)
                                                                                                             iVar7 = 0x3f800000
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                            -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                         end
                                                                                                         quest:FixMovieSequenceCamera(false)
-                                                                                                        quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                        quest:PauseAllNonScriptedEntities(false)
                                                                                                         resources:DestroyActorMap(xStack_13c)
                                                                                                     else
                                                                                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
@@ -4201,9 +4186,8 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                     end
-                                                                                                                    quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
+                                                                                                                    quest:PauseAllNonScriptedEntities(false)
                                                                                                                     goto LAB_00d55480_c29
                                                                                                                 end
                                                                                                             else
@@ -4343,7 +4327,6 @@ function Main(quest, me)
                                                                                                                         iVar7 = 0x3f800000
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
-                                                                                                                        -- TODO(native): xStack_150_2._3_1_ = 0;
                                                                                                                         goto LAB_00d5595a_c29
                                                                                                                     end
                                                                                                                 end
@@ -4414,7 +4397,7 @@ function Main(quest, me)
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive
                                                                                                                 if bVar3 then goto LAB_00d55c2b_c29 end
-                                                                                                                if xStack_18c_3 == 0x1 then
+                                                                                                                if xStack_154 == 0x1 then
                                                                                                                     bVar3 = false
                                                                                                                     pCVar5 = quest:GetHero()
                                                                                                                     quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -4422,7 +4405,7 @@ function Main(quest, me)
                                                                                                                     quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO_BEETLES_COMMENT_FIRST", me, pCVar5, false)
                                                                                                                     -- LAB_00d55b4e_c29: (native jump target)
                                                                                                                 else
-                                                                                                                    if xStack_18c_3 == 0x2 then
+                                                                                                                    if xStack_154 == 0x2 then
                                                                                                                         bVar3 = false
                                                                                                                         pCVar5 = quest:GetHero()
                                                                                                                         quest:EntitySetFacingAngleTowardsThing(me, pCVar5, bVar3)
@@ -4431,7 +4414,7 @@ function Main(quest, me)
                                                                                                                         -- TODO(native): goto LAB_00d55b4e_c29
                                                                                                                     end
                                                                                                                 end
-                                                                                                                -- TODO(native): xStack_18c_3 = (CCharString)(1 - (int)xStack_18c_3);
+                                                                                                                -- TODO(native): xStack_154 = (CCharString)(1 - (int)xStack_154);
                                                                                                             else
                                                                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                                                                 bVar3 = not alive

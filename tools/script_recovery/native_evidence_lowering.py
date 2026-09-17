@@ -189,21 +189,28 @@ RE_COLOUR_BYTE = re.compile(r'^[ \t]*(\w+)\._([0-3])_1_ = (0x[0-9a-f]+|\d+);[ \t
 def fold_stack_colours(text: str) -> str:
     """A CRGBColour built on the stack byte by byte (`c._0_1_ = B; c._1_1_ = G; c._2_1_ = R; c._3_1_ = A`,
     retail ABI is BGRA) and passed by address becomes an FSE colour table."""
-    groups = {}
-    for m in RE_COLOUR_BYTE.finditer(text):
-        groups.setdefault(m.group(1), {})[int(m.group(2))] = int(m.group(3), 0)
-    for var, bytes_ in groups.items():
+    # one colour = one run of adjacent byte stores of the same slot name (the name may serve several
+    # colours, or a string, elsewhere in the function)
+    pos = 0
+    while (m := RE_COLOUR_BYTE.search(text, pos)):
+        var, bytes_ = m.group(1), {}
+        run_end = m.start()
+        for st in RE_COLOUR_BYTE.finditer(text, m.start()):
+            if st.start() != run_end or st.group(1) != var:
+                break
+            bytes_[int(st.group(2))] = int(st.group(3), 0)
+            run_end = st.end()
         if set(bytes_) != {0, 1, 2, 3}:
+            pos = m.end()
             continue
         b, g, r, a = (bytes_[i] for i in range(4))
-        stores = [m for m in RE_COLOUR_BYTE.finditer(text) if m.group(1) == var]
-        start, end = stores[0].start(), stores[-1].end()
-        head, scope = text[:start], text[end:]
+        head, scope = text[:m.start()], text[run_end:]
         # the stack slot may be reused (a CCharString later on): only the uses up to the next redefinition
-        nxt = re.search(r'^[ \t]*(?:\w+::\w+\(\(\w+ \*\)&' + re.escape(var) + r'\b|' + re.escape(var) + r' = )', scope, re.M)
+        nxt = re.search(r'^[ \t]*(?:\w+::\w+\(\(\w+ \*\)&' + re.escape(var) + r'\b|' + re.escape(var) + r'(?:\._\d_1_)? = )', scope, re.M)
         use, rest = (scope[:nxt.start()], scope[nxt.start():]) if nxt else (scope, '')
         use = re.sub(r'(?:\(\w+ \*\))?&?' + re.escape(var) + r'\b', f'ENGINE_Colour({r}, {g}, {b}, {a})', use)
         text = head + use + rest
+        pos = len(head)
     return text
 
 
@@ -609,7 +616,9 @@ def _vtable_only_body(byte_at, target):
     """`8B C1 C7 00 vt C3` / `C7 01 vt C3`: a ctor/dtor that only installs a vtable."""
     if byte_at is None:
         return False
-    b = bytes(byte_at(target + i) for i in range(9))
+    b = bytes(byte_at(target + i) for i in range(16))
+    if b[:4] == b'\x8b\xc1\xc7\x00' and b[8:15] == b'\xc7\x40\x04\x00\x00\x00\x00' and b[15] == 0xC3:
+        return True     # `mov [eax],vt; mov [eax+4],0; ret` (counted-pointer base of a resource)
     return b[:4] == b'\x8b\xc1\xc7\x00' and b[8] == 0xC3 or b[:2] == b'\xc7\x01' and b[6] == 0xC3
 
 
@@ -946,6 +955,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = isolate_gsi_vtable_temps(text)
     text = fold_tangled_thing_assign(text)
     text = fold_stack_colours(text)
+    # a literal byte store left after the colour folding is an ordinary flag byte of a merged slot
+    text = re.sub(r'\b([A-Za-z]+Stack_[0-9a-f]+(?:_\d+)?)\._(\d+)_1_(?= = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     if spec.entity:
         # the entity's own CScriptThing lives at this+8: its Data pointer (this+0xc) passed as an argument is `me`
         text = re.sub(r'\*\(int \*\)\(this \+ (?:0xc|12)\)', '(CScriptThing *)(this + 8)', text)
@@ -1456,8 +1467,11 @@ def strip_receiver_arguments(text: str) -> str:
     calls; the lifter's `GSI->Name(` / `CScriptThing::Name(me, ` forms carry it implicitly."""
     text = re.sub(r'(GSI->\w+\()' + GSI_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
     # aliases of the interface pointer (`this_00 = *(int **)(this + 0x40);`) as explicit receivers
-    for alias in set(re.findall(r'^[ \t]*(\w+) = \*\((?:int|void|undefined4) \*\*\)\(this \+ (?:4|0x40)\);', text, re.M)):
+    aliases = set(re.findall(r'^[ \t]*(\w+) = \*\((?:int|void|undefined4) \*\*\)\(this \+ (?:4|0x40)\);', text, re.M))
+    aliases |= {m.group(1) for m in re.finditer(r'^[ \t]*(\w*Stack_[0-9a-f]+) = (\w+);', text, re.M) if m.group(2) in aliases}
+    for alias in aliases:
         text = re.sub(r'(GSI->\w+\()' + re.escape(alias) + r'(?:,\s*|(?=\)))', r'\1', text)
+        text = re.sub(r'^[ \t]*' + re.escape(alias) + r' = \w+;[ \t]*\r?\n', '', text, flags=re.M) if 'Stack_' in alias else text
     text = re.sub(r'(CScriptThing::\w+\(me, ?)' + ME_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
     text = re.sub(r'(CScriptThing::\w+\((\w+), ?)\2(?:,\s*|(?=\)))', r'\1', text)
     # typed by-value placeholders read as their real classes
