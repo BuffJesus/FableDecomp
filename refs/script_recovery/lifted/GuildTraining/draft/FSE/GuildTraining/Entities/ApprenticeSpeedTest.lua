@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, iVar14, iVar16, iVar5, iVar7, i_stk_210, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar6, pcVar13, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_250, xStack_254, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_54, x_stk_6c, x_stk_78, x_stk_90, x_stk_9c, x_stk_b4
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, iVar14, iVar16, iVar5, iVar7, i_stk_210, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar6, pcVar13, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_250, xStack_254, xStack_258, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_54, x_stk_6c, x_stk_78, x_stk_90, x_stk_9c, x_stk_b4
     local alive = true
     local function __region_LAB_00d40379_c32()
         pCVar6 = quest:GetThingWithScriptName("RaceMarker")
@@ -55,6 +55,7 @@ function Main(quest, me)
             u_stk_21c = 0
             xStack_254 = quest:RegisterTimer()
             iVar5 = quest:RegisterTimer()
+            xStack_258 = iVar5
             xStack_250 = quest:RegisterTimer()
             quest:SetTimer(iVar5, 1)
             alive = not quest:IsActiveThreadTerminating()
@@ -79,7 +80,7 @@ function Main(quest, me)
                         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar15)
                         __native_condition_1 = bVar3
                         if __native_condition_1 then
-                            iVar7 = quest:GetTimer(iVar5)
+                            iVar7 = quest:GetTimer(xStack_258)
                             __native_condition_1 = iVar7 < 1
                         end
                         if __native_condition_1 then

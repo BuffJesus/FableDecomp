@@ -2448,9 +2448,14 @@ class Lifter:
                 self.forget_value(m[1])
                 return
             if value in self.temps or value in self.locals:
-                if m.group(1) in self.locals and m.group(1) not in self.temps:
+                store = (m.group(1) in self.locals and m.group(1) not in self.temps) or (
+                    self.accessor_kinds and re.match(r'(?:[a-zA-Z]*Stack_|\w+_stk_)', m.group(1)) and value in self.locals
+                    and self.temps.get(value, value) == value)
+                if store:
                     # the slot is already an emitted local (`xStack_54 = nil` then `xStack_54 = pCVar6` in
-                    # both branches of an if/else): a real store, not a per-branch alias that the join forgets
+                    # both branches of an if/else), or (unit mode) a stack slot keeping a register value that
+                    # the register later loses (`xStack_88 = iVar4` = the timer id, iVar4 reused): a real
+                    # store, not a per-branch alias that the join forgets
                     self.emit(f"{self.declare(m.group(1))} = {self.temps.get(value, value)}")
                     if value in self.kinds:
                         self.kinds[m.group(1)] = self.kinds[value]

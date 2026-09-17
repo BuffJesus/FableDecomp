@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar4, cVar5, c_stk_115, c_stk_131, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar13, iVar14, iVar16, iVar17, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar12, r1, r2, r3, r4, r5, r6, r7, timerId, xStack_104, xStack_114, xStack_138, xStack_148, xStack_14c, xStack_150, xStack_4c, xStack_5c, xStack_6c, xStack_d8, x_stk_108, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_c
+    local __native_condition_1, __native_condition_2, bVar4, cVar5, c_stk_115, c_stk_131, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar13, iVar14, iVar16, iVar17, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar12, r1, r2, r3, r4, r5, r6, r7, timerId, xStack_104, xStack_114, xStack_138, xStack_148, xStack_14c, xStack_150, xStack_4c, xStack_5c, xStack_6c, xStack_70, xStack_d8, x_stk_108, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d50495()
         resources:ReleaseResource(xStack_148)
@@ -412,6 +412,7 @@ function Main(quest, me)
                 quest:SetMasterGameState("WillScore", 0)
                 quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 0)
                 iVar6 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+                xStack_70 = iVar6
                 x_stk_108 = quest:AddQuestInfoTimer(xStack_138, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 cVar5 = 0
@@ -471,8 +472,8 @@ function Main(quest, me)
                         cVar5 = 1
                         c_stk_115 = 1
                     end
-                    iVar6 = iVar6
-                    quest:UpdateQuestInfoCounter(iVar6, quest:GetMasterGameState("WillScore"), -1)
+                    iVar6 = xStack_70
+                    quest:UpdateQuestInfoCounter(xStack_70, quest:GetMasterGameState("WillScore"), -1)
                     iVar13 = quest:GetTimer(xStack_138)
                 end
                 alive = not quest:IsActiveThreadTerminating()

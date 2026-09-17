@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
+    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_264, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
     xStack_250 = resources:NewResource()
     bVar3 = false
@@ -40,6 +40,7 @@ function Main(quest, me)
     r1 = quest:GetThingWithScriptName("MeleeOpponent")
     quest:SetThingHasInformation(me, false, false, false)
     iVar6 = quest:RegisterTimer()
+    xStack_264 = iVar6
     quest:SetTimer(iVar6, 0)
     iVar7 = quest:GetStateInt("TutorialState")
     x_stk_1ec = 0x0
@@ -133,7 +134,7 @@ function Main(quest, me)
         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar19)
         __native_condition_2 = bVar3
         if __native_condition_2 then
-            iVar7 = quest:GetTimer(iVar6)
+            iVar7 = quest:GetTimer(xStack_264)
             __native_condition_2 = iVar7 < 1
         end
         __native_condition_1 = __native_condition_2
@@ -797,6 +798,7 @@ function Main(quest, me)
             if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
             resources:ReleaseResource(xStack_214)
             quest:DeregisterTimer(xStack_264)
+            iVar6 = xStack_264
             cVar4 = quest:GetStateBool("MeleeRepeating")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -828,7 +830,7 @@ function Main(quest, me)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_04", "", "")
         end
         -- LAB_00d5a8cb: (native jump target)
-        quest:DeregisterTimer(bVar3)
+        quest:DeregisterTimer(iVar6)
     end
     ::FLOW_after_lab_00d5a8cb::
     ::LAB_00d5a8d9::

@@ -1020,7 +1020,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 137,
+          "lines": 141,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1667,7 +1667,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 442,
+          "lines": 443,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2292,7 +2292,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1281,
+          "lines": 1282,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3423,7 +3423,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 1059,
+          "lines": 1060,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3911,7 +3911,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 771,
+          "lines": 773,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4358,7 +4358,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 678,
+          "lines": 679,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4845,7 +4845,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 580,
+          "lines": 586,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -6918,7 +6918,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 826,
+          "lines": 828,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -9922,7 +9922,7 @@
             "DeregisterTimer",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 4485,
+          "lines": 4490,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -11307,7 +11307,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1305,
+          "lines": 1308,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12406,7 +12406,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1587,
+          "lines": 1589,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12568,7 +12568,7 @@
           ],
           "LAB_00d61b0a_c22": [
             "quest:DeregisterTimer(xStack_244)",
-            "quest:DeregisterTimer(iVar10)",
+            "quest:DeregisterTimer(xStack_240)",
             "resources:ReleaseResource(xStack_158)"
           ]
         }
@@ -13824,7 +13824,7 @@
             "RemoveQuestInfoElement",
             "DisplayQuestInfo"
           ],
-          "lines": 93,
+          "lines": 94,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -14295,7 +14295,7 @@
             "SetStateInt",
             "QUESTTHING_Empty"
           ],
-          "lines": 125,
+          "lines": 127,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_10, __native_condition_11, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r4, r5, r6, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_3, xStack_124, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
+    local CVar10, __native_condition_1, __native_condition_10, __native_condition_11, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, __native_condition_9, b2, bVar3, cVar4, c_stk_161, c_stk_169, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r4, r5, r6, r7, r8, r9, timerId, uVar14, uVar16, uVar17, uVar18, uVar19, u_stk_128, xStack_108, xStack_114_3, xStack_124, xStack_130, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
     local alive = true
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities((uVar19 ~= 0))
@@ -247,6 +247,7 @@ function Main(quest, me)
                         quest:SetStateInt("PreMeleeMode", 1)
                         quest:SetStateInt("DummyHits", 0)
                         CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                        xStack_130 = CVar10
                         quest:DisplayQuestInfo(true)
                         iVar7 = quest:GetStateInt("DummyHits")
                         while iVar7 < 7 do
@@ -305,7 +306,7 @@ function Main(quest, me)
                                 if bVar3 then goto LAB_00d55c3d end
                                 quest:SetTimer(xStack_184, 10)
                                 timerId = xStack_184
-                                CVar10 = CVar10
+                                CVar10 = xStack_130
                             end
                             iVar7 = quest:GetStateInt("DummyHits")
                         end
@@ -374,6 +375,7 @@ function Main(quest, me)
                                             quest:SetStateInt("DummyHits", 0)
                                             quest:SetTimer(timerId, 10)
                                             CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                                            xStack_130 = CVar10
                                             quest:DisplayQuestInfo(true)
                                             iVar7 = quest:GetStateInt("DummyHits")
                                             while iVar7 < 7 do
@@ -432,7 +434,7 @@ function Main(quest, me)
                                                     if bVar3 then goto LAB_00d55c3d end
                                                     quest:SetTimer(xStack_184, 10)
                                                     timerId = xStack_184
-                                                    CVar10 = CVar10
+                                                    CVar10 = xStack_130
                                                 end
                                                 iVar7 = quest:GetStateInt("DummyHits")
                                             end
@@ -2688,6 +2690,7 @@ function Main(quest, me)
                                             quest:SetStateInt("DummyHits", 0)
                                             quest:SetTimer(timerId, 10)
                                             CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                                            xStack_130 = CVar10
                                             quest:DisplayQuestInfo(true)
                                             iVar7 = quest:GetStateInt("DummyHits")
                                             while iVar7 < 7 do
@@ -2746,7 +2749,7 @@ function Main(quest, me)
                                                     if bVar3 then goto LAB_00d55c3d end
                                                     quest:SetTimer(xStack_184, 10)
                                                     timerId = xStack_184
-                                                    CVar10 = CVar10
+                                                    CVar10 = xStack_130
                                                 end
                                                 iVar7 = quest:GetStateInt("DummyHits")
                                             end
@@ -3543,6 +3546,7 @@ function Main(quest, me)
                         quest:SetStateInt("PreMeleeMode", 1)
                         quest:SetStateInt("DummyHits", 0)
                         CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                        xStack_130 = CVar10
                         quest:DisplayQuestInfo(true)
                         iVar7 = quest:GetStateInt("DummyHits")
                         while iVar7 < 7 do
@@ -3601,7 +3605,7 @@ function Main(quest, me)
                                 if bVar3 then goto LAB_00d55c3d_c29 end
                                 quest:SetTimer(xStack_184, 10)
                                 timerId = xStack_184
-                                CVar10 = CVar10
+                                CVar10 = xStack_130
                             end
                             iVar7 = quest:GetStateInt("DummyHits")
                         end
@@ -3667,6 +3671,7 @@ function Main(quest, me)
                                             quest:SetStateInt("DummyHits", 0)
                                             quest:SetTimer(timerId, 10)
                                             CVar10 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 7, 1.0)
+                                            xStack_130 = CVar10
                                             quest:DisplayQuestInfo(true)
                                             iVar7 = quest:GetStateInt("DummyHits")
                                             while iVar7 < 7 do
@@ -3725,7 +3730,7 @@ function Main(quest, me)
                                                     if bVar3 then goto LAB_00d55c3d_c29 end
                                                     quest:SetTimer(xStack_184, 10)
                                                     timerId = xStack_184
-                                                    CVar10 = CVar10
+                                                    CVar10 = xStack_130
                                                 end
                                                 iVar7 = quest:GetStateInt("DummyHits")
                                             end

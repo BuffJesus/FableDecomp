@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar14, iVar15, iVar17, iVar6, iVar7, ixVar12, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_64, xStack_74, xStack_84, x_stk_12c, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54
+    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar14, iVar15, iVar17, iVar6, iVar7, ixVar12, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_174, xStack_64, xStack_74, xStack_84, xStack_88, x_stk_12c, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54
     local alive = true
     local function __cleanup_LAB_00d4dcdb()
         resources:ReleaseResource(xStack_170)
@@ -53,6 +53,7 @@ function Main(quest, me)
     __native_entity_state:SetStateBool("PlayerNotWarned", true)
     c_stk_14e = 0
     iVar6 = quest:RegisterTimer()
+    xStack_174 = iVar6
     quest:SetTimer(iVar6, 10)
     r2 = quest:GetThingWithScriptName("SkillApprenticeTargetMarker")
     alive = not quest:IsActiveThreadTerminating()
@@ -120,7 +121,7 @@ function Main(quest, me)
                 native_arg_sequence_1 = false
             end
             if not native_arg_sequence_1 then
-                iVar6 = quest:GetTimer(iVar6)
+                iVar6 = quest:GetTimer(xStack_174)
                 if 0 < iVar6 then
                     native_arg_sequence_1 = true
                 else
@@ -447,6 +448,7 @@ function Main(quest, me)
                 quest:SetMasterGameState("SkillScore", 0)
                 c_stk_14d = 0
                 iVar6 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
+                xStack_88 = iVar6
                 xStack_13c = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
                 x_stk_12c = quest:AddQuestInfoTimer(xStack_160, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
@@ -511,7 +513,7 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d4de3d end
                     quest:DisplayQuestInfo(false)
-                    quest:RemoveQuestInfoElement(iVar6)
+                    quest:RemoveQuestInfoElement(xStack_88)
                     quest:RemoveQuestInfoElement(xStack_13c)
                     quest:RemoveQuestInfoElement(x_stk_12c)
                     if c_stk_14d ~= 0 then

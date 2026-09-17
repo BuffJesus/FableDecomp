@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, u_stk_74, xStack_60, xStack_70_2, xStack_84, x_stk_18, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, u_stk_74, xStack_60, xStack_70_2, xStack_84, xStack_88, x_stk_18, x_stk_c
     local alive = true
     u_stk_74 = 0
     xStack_84 = resources:NewResource()
@@ -42,6 +42,7 @@ function Main(quest, me)
     quest:EntityAttachToVillage(me, r1)
     __native_entity_state:SetStateInt("AppleMode", 0)
     iVar4 = quest:RegisterTimer()
+    xStack_88 = iVar4
     quest:SetTimer(iVar4, 0xf)
     __native_entity_state:SetStateInt("CurrentApples", 0)
     __native_entity_state:SetStateBool("ChildAppleMode", false)
@@ -69,7 +70,7 @@ function Main(quest, me)
             quest:AddPersonToConversation(iVar4, pCVar6)
             pCVar6 = quest:GetHero()
             quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_HELP", me, pCVar6, false)
-            quest:SetTimer(iVar4, 0xf)
+            quest:SetTimer(xStack_88, 0xf)
         end
         bVar2 = me:IsTalkedToByHero()
         if bVar2 then

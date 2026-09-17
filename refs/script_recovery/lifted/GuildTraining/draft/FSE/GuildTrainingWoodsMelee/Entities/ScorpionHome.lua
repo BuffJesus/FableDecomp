@@ -11,13 +11,14 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, puVar4, pu_stk_20, r1, v_stk_4c, xStack_24
+    local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, puVar4, pu_stk_20, r1, v_stk_4c, xStack_18, xStack_24
     local alive = true
     v_stk_4c = 0
     iVar7 = (math.modf(quest:ReadGlobalGameDataFloat(0xf10)))
     local xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
     quest:DisplayQuestInfo(true)
     local timerId = quest:RegisterTimer()
+    local xStack_50 = timerId
     quest:SetTimer(timerId, 5)
     local cVar1 = quest:GetStateBool("ScorpionsAlive")
     repeat
@@ -67,7 +68,7 @@ function Main(quest, me)
             pCVar9 = quest:GetHero()
             pSpeaker = quest:GetHero()
             quest:AddLineToConversation(iVar7, "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", pSpeaker, pCVar9, false)
-            quest:SetTimer(timerId, 8)
+            quest:SetTimer(xStack_50, 8)
         end
         xStack_24 = quest:GetAllThingsWithScriptName("GuildScorpions")
         i_stk_28 = (pu_stk_20 - xStack_24) / 0xc
@@ -84,7 +85,7 @@ function Main(quest, me)
             bVar6 = not alive
             if bVar6 then
                 -- LAB_00d67728: (native jump target)
-                timerId = timerId
+                timerId = xStack_50
                 quest:DeregisterTimer(timerId)
                 return
             end
@@ -93,7 +94,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
                 if bVar6 then
-                    timerId = timerId
+                    timerId = xStack_50
                     quest:DeregisterTimer(timerId)
                     return
                 end
@@ -106,7 +107,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then
-                        timerId = timerId
+                        timerId = xStack_50
                         quest:DeregisterTimer(timerId)
                         return
                     end
@@ -118,6 +119,7 @@ function Main(quest, me)
                         pPosition = r1:GetPos()
                     end
                     pCVar9 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+                    xStack_18 = pCVar9
                     pCVar9 = nil
                     if (r1 ~= nil and not r1:IsNull()) then
                         r1:SetToKillOnLevelUnload(0)
@@ -134,7 +136,7 @@ function Main(quest, me)
             -- TODO(native): free(xStack_24[0 + 1]);
         end
         cVar1 = quest:GetStateBool("ScorpionsAlive")
-        timerId = timerId
+        timerId = xStack_50
     until false
 end
 

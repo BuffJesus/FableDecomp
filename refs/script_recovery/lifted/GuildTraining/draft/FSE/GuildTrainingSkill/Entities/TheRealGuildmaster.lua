@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_210, xStack_214_2, xStack_21c, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, u_stk_200, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214_2, xStack_21c, xStack_220, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(xStack_180)
@@ -75,6 +75,7 @@ function Main(quest, me)
         me:MoveToPosition(pCVar8, iVar15, iVar16, (iVar17 ~= 0), (iVar19 ~= 0))
         quest:SetPlayerUsingRangedDummies(true)
         iVar16 = quest:RegisterTimer()
+        xStack_220 = iVar16
         quest:SetTimer(iVar16, 0)
         iVar15 = quest:GetStateInt("TutorialState")
         while iVar15 == 1 do
@@ -123,7 +124,7 @@ function Main(quest, me)
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_1c0)
-                                quest:DeregisterTimer(iVar16)
+                                quest:DeregisterTimer(xStack_220)
                                 resources:ReleaseResource(xStack_210)
                                 return
                             end
@@ -970,6 +971,7 @@ function Main(quest, me)
             quest:SetMasterGameState("SkillScore", 0)
             c_stk_215 = 0
             iVar15 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
+            xStack_1ec = iVar15
             xStack_1d0 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
             xStack_1e4 = quest:AddQuestInfoTimer(xStack_214_2, "HUD_CLOCK_ICON", 1.0)
             quest:DisplayQuestInfo(true)
@@ -1064,6 +1066,7 @@ function Main(quest, me)
                     -- TODO(native): CVar10 = *(this + 4)
                     CVar10 = nil --[[unresolved native value]]
                     fVar20 = 6.0
+                    xStack_1e8 = CVar10
                     -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
                     pCVar7 = nil --[[unresolved native value]]
                     -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
@@ -1115,7 +1118,7 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then __cleanup_LAB_00d5db90(); return end
             quest:DisplayQuestInfo(false)
-            quest:RemoveQuestInfoElement(iVar15)
+            quest:RemoveQuestInfoElement(xStack_1ec)
             quest:RemoveQuestInfoElement(xStack_1d0)
             quest:RemoveQuestInfoElement(xStack_1e4)
             quest:EntitySetTargetable(me, true)
