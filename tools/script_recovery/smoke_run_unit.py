@@ -157,7 +157,7 @@ def free_globals(source):
 def main():
     a = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     a.add_argument('--unit', default='orchard_farm')
-    a.add_argument('--stage', default='readable', choices=['draft', 'readable'])
+    a.add_argument('--stage', default='readable')
     a.add_argument('--frames', type=int, default=200)
     a.add_argument('--instructions', type=int, default=2_000_000)
     a.add_argument('--json', type=Path)

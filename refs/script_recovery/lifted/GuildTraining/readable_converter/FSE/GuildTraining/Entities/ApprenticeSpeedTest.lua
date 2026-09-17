@@ -114,7 +114,7 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             scratchValue18 = resources:ScriptThing(scratchValue29)
-                            if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                            if 0.0 < quest:GetHealth(scratchValue18) then
                                 scratchValue18 = quest:GetHero()
                                 me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_BOAST", 0, false, true, false)
                                 scratchValue7 = me:IsPerformingScriptTask()
@@ -164,7 +164,7 @@ function Main(quest, me)
                                     goto LAB_00d405fc
                                 end
                                 scratchValue18 = resources:ScriptThing(scratchValue29)
-                                if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                                if 0.0 < quest:GetHealth(scratchValue18) then
                                     scratchValue18 = quest:GetHero()
                                     me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_RUN", 0, false, true, false)
                                     scratchValue7 = me:IsPerformingScriptTask()
@@ -193,7 +193,7 @@ function Main(quest, me)
                                     goto LAB_00d405fc
                                 end
                                 scratchValue18 = resources:ScriptThing(scratchValue29)
-                                if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                                if 0.0 < quest:GetHealth(scratchValue18) then
                                     scratchValue18 = quest:GetHero()
                                     me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_REFUSE", 0, false, true, false)
                                     scratchValue7 = me:IsPerformingScriptTask()
@@ -308,7 +308,7 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             scratchValue18 = resources:ScriptThing(scratchValue29)
-                            if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                            if 0.0 < quest:GetHealth(scratchValue18) then
                                 scratchValue18 = quest:GetHero()
                                 me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_TOO_SLOW", 0, false, true, false)
                                 scratchValue7 = me:IsPerformingScriptTask()
@@ -617,7 +617,7 @@ function Main(quest, me)
                                 if scratchValue13 ~= 1 then
                                     if not scratchValue6 then
                                         scratchValue18 = resources:ScriptThing(scratchValue29)
-                                        if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                                        if 0.0 < quest:GetHealth(scratchValue18) then
                                             scratchValue18 = quest:GetHero()
                                             me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO", 0, false, true, false)
                                             scratchValue7 = me:IsPerformingScriptTask()
@@ -638,7 +638,7 @@ function Main(quest, me)
                                 end
                                 if not scratchValue6 then
                                     scratchValue18 = resources:ScriptThing(scratchValue29)
-                                    if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                                    if 0.0 < quest:GetHealth(scratchValue18) then
                                         scratchValue18 = quest:GetHero()
                                         me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_YES", 0, false, true, false)
                                         scratchValue7 = me:IsPerformingScriptTask()
@@ -766,7 +766,7 @@ function Main(quest, me)
                 if scratchValue13 ~= 1 then
                     if not scratchValue6 then
                         scratchValue18 = resources:ScriptThing(scratchValue29)
-                        if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                        if 0.0 < quest:GetHealth(scratchValue18) then
                             scratchValue18 = quest:GetHero()
                             me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO", 0, false, true, false)
                             scratchValue7 = me:IsPerformingScriptTask()
@@ -783,7 +783,7 @@ function Main(quest, me)
                 end
                 if not scratchValue6 then
                     scratchValue18 = resources:ScriptThing(scratchValue29)
-                    if (0.0 < quest:GetHealth(scratchValue18)) ~= 0 then
+                    if 0.0 < quest:GetHealth(scratchValue18) then
                         scratchValue18 = quest:GetHero()
                         me:Speak(scratchValue18, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_YES", 0, false, true, false)
                         scratchValue7 = me:IsPerformingScriptTask()

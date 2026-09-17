@@ -1061,10 +1061,13 @@ function Main(quest, me)
                     bVar4 = false
                 else
                     u_stk_200 = u_stk_200 | 0x30
-                    CVar10 = *(this + 4)
+                    -- TODO(native): CVar10 = *(this + 4)
+                    CVar10 = nil --[[unresolved native value]]
                     fVar20 = 6.0
-                    pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
-                    pCVar6 = (**(*CVar10 + 0x118))(CVar10)
+                    -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
+                    pCVar7 = nil --[[unresolved native value]]
+                    -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
+                    pCVar6 = nil --[[unresolved native value]]
                     bVar4 = quest:IsDistanceBetweenThingsOver(pCVar6, pCVar7, fVar20)
                     if not bVar4 then
                         bVar4 = false

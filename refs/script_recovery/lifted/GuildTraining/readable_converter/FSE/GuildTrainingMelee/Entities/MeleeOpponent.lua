@@ -227,7 +227,7 @@ function Main(quest, me)
                                 predicateResult25 = false
                             end
                             ::FLOW_after_lab_00d57276::
-                            if scratchValue12 & true then
+                            if scratchValue12 & 1 ~= 0 then
                                 -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffe);
                             end
                             if predicateResult25 then
@@ -434,7 +434,7 @@ function Main(quest, me)
                                     predicateResult48 = false
                                 end
                                 ::FLOW_after_lab_00d57af8::
-                                if scratchValue12 & true then
+                                if scratchValue12 & 2 ~= 0 then
                                     -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffd);
                                 end
                                 if predicateResult48 then

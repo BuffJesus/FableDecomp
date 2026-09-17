@@ -485,10 +485,12 @@ function Main(quest, me)
                                 if bVar3 then goto LAB_00d664b0 end
                                 iVar14 = quest:AddNewConversation(me, false, false)
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                pCVar6 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                pCVar6 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_44,false,pCVar10,pCVar6);
                             else
                                 alive = not quest:IsActiveThreadTerminating()
@@ -496,10 +498,12 @@ function Main(quest, me)
                                 if bVar3 then goto LAB_00d664b0 end
                                 iVar14 = quest:AddNewConversation(me, false, false)
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                pCVar6 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                pCVar6 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
                             end
                             quest:SetTimer(xStack_80, 5)
@@ -767,10 +771,12 @@ function Main(quest, me)
                                         if bVar3 then goto LAB_00d664b0 end
                                         iVar14 = quest:AddNewConversation(me, false, false)
                                         -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        pCVar6 = nil --[[unresolved native value]]
                                         -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                         -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        pCVar6 = nil --[[unresolved native value]]
                                         -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
                                     else
                                         alive = not quest:IsActiveThreadTerminating()
@@ -778,10 +784,12 @@ function Main(quest, me)
                                         if bVar3 then goto LAB_00d664b0 end
                                         iVar14 = quest:AddNewConversation(me, false, false)
                                         -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        pCVar6 = nil --[[unresolved native value]]
                                         -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                         -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
-                                        pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                        pCVar6 = nil --[[unresolved native value]]
                                         -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_28,false,pCVar10,pCVar6);
                                     end
                                     quest:SetTimer(xStack_80, 5)

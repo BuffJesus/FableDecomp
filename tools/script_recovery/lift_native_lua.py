@@ -229,6 +229,12 @@ RE_THING_SIG = re.compile(r'^\?\w+@CScriptThing@@[UM][AB]E(?P<ret>\?AV1@|\?A[VW]
 RE_SIG_TOKEN = re.compile(r'W4\w+?@@|A[AB]V\w+?@@|P[AB]V\w+?@@|A[AB]V\d@|A[AB][A-Z]|_[A-Z]|[A-Z]|\d')
 # The hidden return-slot operand Ghidra shows for by-value class returns (`&stack0x..`, `&pos`, `auStack_48`).
 RE_HIDDEN_SLOT = re.compile(r'^(?:\([^)]*\))?\s*&?(?:stack0x[0-9a-f]+|local_\w+|pos|\w*Stack_\w+)$')
+# C syntax that survived lowering (a pointer dereference / address-of operand, a vtable head, a Ghidra
+# field slice, a C cast): the emitted Lua line would not compile
+RE_LUA_STRING = re.compile(r'"(?:[^"\\]|\\.)*"')
+RE_C_RESIDUE = re.compile(
+    r'(?:^|[=(,]|\b(?:if|elseif|while|until|return|and|or|not)\s)\s*\*\s*[\w(]|(?:^|[=(,]\s*)&(?=[\w(])|\(\*\*\('
+    r'|\b(?:u?int|undefined\d?|char|float|double|code|CScriptThing|CCharString|C3DVector)\s*\*+\)')
 # CBaseIntelligentPointer release: `if ((p != 0x0) && (*p = *p + -1, *p == 0x0)) { (*(code *)p[1])(); operator_delete(p); }`
 RE_REFCOUNT_IF = re.compile(
     r'^\s*if \(\(?(?:(?:\((?:u?int|long) \*\))?(?P<v>\w+(?:\._0_4_)?) != \(.+?\)0x0|__thing_valid\((?P<w>\w+)\))\) &&\s*'
@@ -886,6 +892,30 @@ class Lifter:
         self.readable_local_names = {}
 
     # ---- helpers -------------------------------------------------------------------------------
+    def guard_c_residue(self, lines):
+        """A line that still carries C syntax would not compile: keep it as a TODO (an assignment
+        target gets nil so later reads stay bound) rather than breaking the whole file."""
+        out = []
+        for line in lines:
+            code = RE_LUA_STRING.sub('""', line.split('--', 1)[0]) if not line.lstrip().startswith('--') else ''
+            if not code or not RE_C_RESIDUE.search(code):
+                out.append(line)
+                continue
+            indent = line[:len(line) - len(line.lstrip())]
+            self.todo.append(f"unlifted: {line.strip()[:90]}")
+            out.append(f"{indent}-- TODO(native): {line.strip()}")
+            target = re.match(r'\s*(\w+(?:\.\w+)*)\s*=(?!=)', code)
+            head = code.lstrip()
+            if head.startswith(('if ', 'elseif ')):
+                out.append(re.sub(r'^(\s*(?:else)?if ).+?( then\b.*)$', r'\1false\2', line.split('--', 1)[0].rstrip()))
+            elif head.startswith('while '):
+                out.append(indent + 'while false do')
+            elif head.startswith('until '):
+                out.append(indent + 'until true')
+            elif target and not head.startswith(('return', 'local')):
+                out.append(f"{indent}{target.group(1)} = nil --[[unresolved native value]]")
+        return out
+
     def emit(self, line: str) -> None:
         self.out.append("    " * self.indent + line)
 
@@ -1805,6 +1835,7 @@ class Lifter:
         self.collapse_acquire_loops()
         self.legalize_nonterminal_returns()
         self.out, self.dispatch_scaffolding_evidence = prune_dispatch_loads(self.out, entity=self.entity)
+        self.out = self.guard_c_residue(self.out)
         self.hoisted_scalars.difference_update(e['local'] for e in self.dispatch_scaffolding_evidence)
         if self.used_alive:
             self.out.insert(0, "    local alive = true")

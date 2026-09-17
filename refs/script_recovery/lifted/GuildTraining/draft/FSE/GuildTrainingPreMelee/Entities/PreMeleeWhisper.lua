@@ -181,7 +181,8 @@ function Main(quest, me)
                             resources:ReleaseResource(xStack_a0)
                             return
                         end
-                        pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
+                        -- TODO(native): pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
+                        pvVar7 = nil --[[unresolved native value]]
                         f_stk_28 = GFCharStringToInt(pvVar7)
                         if f_stk_28 == xStack_a0 then
                             alive = not quest:IsActiveThreadTerminating()

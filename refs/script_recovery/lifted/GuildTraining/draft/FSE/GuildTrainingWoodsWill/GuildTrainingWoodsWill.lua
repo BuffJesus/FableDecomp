@@ -99,7 +99,7 @@ function Main(quest)
             else
                 xStack_38 = resources:NewActorMap()
                 resources:SetActor(xStack_38, "HERO", xStack_48)
-                resources:SetActor(xStack_38, "BAN1", &0x0)
+                -- TODO(native): resources:SetActor(xStack_38, "BAN1", &0x0)
                 pvVar9 = (0x0 + 0x10)
                 -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_38,&xStack_88);
                 -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);

@@ -84,16 +84,16 @@ function RunTutorials(quest)
     local combatApprentice3, skillApprentice3, willApprentice3, birdKiller3, hero6
     local combatApprentice5, meleeApprentice5, skillApprentice5, willApprentice5, birdKiller5
     local skillApprentice7, birdKiller7, meleeApprentice7, willApprentice7, meleeApprentice9
-    local skillApprentice9, willApprentice9, scratchValue10, scratchValue11, scratchValue12, r13_2
-    local theRealGuildmaster4, guildDoors, scratchValue13, scratchValue18, scratchValue19
-    local scratchValue20, scratchValue21, scratchValue22, getAllThingsWithDefName, scratchValue23
+    local skillApprentice9, willApprentice9, scratchValue9, scratchValue10, scratchValue11, r13_2
+    local theRealGuildmaster4, guildDoors, scratchValue12, scratchValue17, scratchValue18
+    local scratchValue19, scratchValue20, scratchValue21, getAllThingsWithDefName, scratchValue22
     local timerId
     quest:SetRegionExitAsActive(quest:GetNearestWithDefName(quest:GetThingWithScriptName("SecretBookcase"), "REGION_EXIT_POINT"), false)
     quest:SetExperienceSpendingAsEnabled(false)
     quest:SetHeroSleepingAsEnabled(false)
     guildDoors = quest:GetThingWithScriptName("GuildDoors")
     quest:MiniMapAddMarker(quest:GetThingWithScriptName("HUD_ORB_QUEST_CORE"), "TheRealGuildmaster")
-    scratchValue23 = nil
+    scratchValue22 = nil
     if quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
         if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", 0)
@@ -147,7 +147,7 @@ function RunTutorials(quest)
         quest:SetMasterGameState("SkillTrainingStarted", false)
         preMeleeDummy = quest:GetThingWithScriptName("PreMeleeDummy")
         if not (preMeleeDummy ~= nil and preMeleeDummy:IsAlive()) then
-            scratchValue13 = quest:CreateObject("PreMeleeDummy", nil --[[missing]], "PreMeleeDummyMarker")
+            scratchValue12 = quest:CreateObject("PreMeleeDummy", nil --[[missing]], "PreMeleeDummyMarker")
             quest:EntitySetFacingAngle(quest:GetThingWithScriptName("PreMeleeDummyMarker"), quest:GetThingWithScriptName("PreMeleeDummy"):GetAngleXY(), true)
         end
         meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
@@ -186,19 +186,21 @@ function RunTutorials(quest)
             quest:SetQuestAsPersistent("Q_GuildTrainingPreMelee", false)
             if not quest:NewScriptFrame() then goto LAB_00d496bc end
             -- TODO(native): xStack_54._0_4_ = (int *)0x0;
-            scratchValue23 = quest:GetAllThingsWithScriptName("AppleMarker")
-            scratchValue3 = (scratchValue23._4_4_ - scratchValue23._0_4_) >> 31
-            if (scratchValue23._4_4_ - scratchValue23._0_4_) / 12 + scratchValue3 ~= scratchValue3 then
+            scratchValue22 = quest:GetAllThingsWithScriptName("AppleMarker")
+            scratchValue3 = (scratchValue22._4_4_ - scratchValue22._0_4_) >> 31
+            if (scratchValue22._4_4_ - scratchValue22._0_4_) / 12 + scratchValue3 ~= scratchValue3 then
                 scratchValue4 = 0
-                scratchValue19 = 0
+                scratchValue18 = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
-                    quest:SetThingPersistent(quest:CreateObject((**(*(scratchValue23._0_4_ + scratchValue4) + 24))(), scratchValue19, ""), true)
-                    quest:SetThingPersistent(scratchValue13, scratchValue23._0_4_ + scratchValue4)
-                    quest:RemoveThing(nil --[[missing]], scratchValue23._0_4_ + scratchValue4, false)
-                    scratchValue19 = scratchValue19 + 1
+                    -- TODO(native): pCVar4 = (**(*(xStack_54._0_4_ + iVar9) + 0x18))()
+    --[[unresolved native value]]
+                    quest:SetThingPersistent(quest:CreateObject(nil, scratchValue18, ""), true)
+                    quest:SetThingPersistent(scratchValue12, scratchValue22._0_4_ + scratchValue4)
+                    quest:RemoveThing(nil --[[missing]], scratchValue22._0_4_ + scratchValue4, false)
+                    scratchValue18 = scratchValue18 + 1
                     scratchValue4 = scratchValue4 + 12
-                until scratchValue19 >= ((scratchValue23._4_4_ - scratchValue23._0_4_) / 12)
+                until scratchValue18 >= ((scratchValue22._4_4_ - scratchValue22._0_4_) / 12)
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         end
@@ -351,13 +353,13 @@ function RunTutorials(quest)
         quest:SetMasterGameState("MovingDummiesNeeded", true)
         skillApprentice7 = quest:GetThingWithScriptName("SkillApprentice")
         if not (skillApprentice7 ~= nil and skillApprentice7:IsAlive()) then
-            scratchValue18 = quest:CreateCreature("SkillApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "SkillApprenticeMarker")
+            scratchValue17 = quest:CreateCreature("SkillApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "SkillApprenticeMarker")
             quest:GetThingWithScriptName("SkillApprentice"):SetToKillOnLevelUnload(false)
         end
         birdKiller7 = quest:GetThingWithScriptName("BirdKiller")
         if not (birdKiller7 ~= nil and birdKiller7:IsAlive()) then
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
-            scratchValue10 = quest:CreateCreature("BirdKiller", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "BirdKillerMarker")
+            scratchValue9 = quest:CreateCreature("BirdKiller", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "BirdKillerMarker")
         end
     end
     if quest:GetStateInt("GameState") == 7 then
@@ -368,7 +370,7 @@ function RunTutorials(quest)
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
         end
-        scratchValue11 = quest:CreateCreature("MeleeApprentice", quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"):GetPos(), "M_MeleeOpponentStand")
+        scratchValue10 = quest:CreateCreature("MeleeApprentice", quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"):GetPos(), "M_MeleeOpponentStand")
         if not quest:IsQuestActive("Q_GuildTrainingWill") then
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
             quest:ActivateQuest("Q_GuildTrainingWill")
@@ -383,7 +385,7 @@ function RunTutorials(quest)
         if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         willApprentice7 = quest:GetThingWithScriptName("WillApprentice")
         if not (willApprentice7 ~= nil and willApprentice7:IsAlive()) then
-            scratchValue12 = quest:CreateCreature("WillApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "WillApprenticeMarker")
+            scratchValue11 = quest:CreateCreature("WillApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "WillApprenticeMarker")
             quest:GetThingWithScriptName("WillApprentice"):SetToKillOnLevelUnload(false)
         end
     end
@@ -410,34 +412,34 @@ function RunTutorials(quest)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
     theRealGuildmaster4 = quest:GetThingWithScriptName("TheRealGuildmaster")
-    scratchValue22 = resources:NewResource()
-    scratchValue = resources:TryAcquire(scratchValue22, scratchValue23[0 + 1][0 + 1], 4)
+    scratchValue21 = resources:NewResource()
+    scratchValue = resources:TryAcquire(scratchValue21, scratchValue22[0 + 1][0 + 1], 4)
     while not scratchValue do
         if not quest:NewScriptFrame() then goto LAB_00d48800 end
-        scratchValue = resources:TryAcquire(scratchValue22, scratchValue23[0 + 1][0 + 1], 4)
+        scratchValue = resources:TryAcquire(scratchValue21, scratchValue22[0 + 1][0 + 1], 4)
     end
     if not quest:IsActiveThreadTerminating() then
-        scratchValue21 = resources:NewResource()
-        scratchValue = resources:TryAcquire(scratchValue21, quest:GetHero(), 4)
+        scratchValue20 = resources:NewResource()
+        scratchValue = resources:TryAcquire(scratchValue20, quest:GetHero(), 4)
         while not scratchValue do
             if not quest:NewScriptFrame() then goto LAB_00d487f4 end
-            scratchValue = resources:TryAcquire(scratchValue21, quest:GetHero(), 4)
+            scratchValue = resources:TryAcquire(scratchValue20, quest:GetHero(), 4)
         end
         if not quest:IsActiveThreadTerminating() then
             r13_2 = resources:NewActorMap()
-            resources:SetActor(r13_2, "HERO", scratchValue21)
-            resources:SetActor(r13_2, "GM", scratchValue22)
-            scratchValue20 = resources:StartMovie("")
+            resources:SetActor(r13_2, "HERO", scratchValue20)
+            resources:SetActor(r13_2, "GM", scratchValue21)
+            scratchValue19 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", r13_2, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(scratchValue20)
+            resources:ReleaseResource(scratchValue19)
             resources:DestroyActorMap(r13_2)
-            resources:ReleaseResource(scratchValue21)
-            resources:DestroyMovie(scratchValue22)
+            resources:ReleaseResource(scratchValue20)
+            resources:DestroyMovie(scratchValue21)
             quest:EntityTeleportToThing(quest:GetHero(), quest:GetThingWithScriptName("FrescoDomeHSP"), false)
             quest:SetStateBool("DomeCutsceneStart", true)
             RunCeremonyCutscene(quest)
@@ -452,8 +454,8 @@ function RunTutorials(quest)
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
             quest:FadeScreenOut(0.5, 0.0)
             quest:OpenDoor(theRealGuildmaster4)
-            quest:SetThingPersistent(scratchValue12, true)
-            quest:SetRegionExitAsActive(scratchValue11, true)
+            quest:SetThingPersistent(scratchValue11, true)
+            quest:SetRegionExitAsActive(scratchValue10, true)
             quest:GiveHeroExperience(math.modf(quest:ReadGlobalGameDataFloat(3868)))
             quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
             quest:GiveHeroObject("OBJECT_HERO_TROUSERS", -1)
@@ -507,7 +509,7 @@ function RunTutorials(quest)
                     quest:SetHeroAsApprentice(false)
                     quest:GiveHeroExpression("EXPRESSION_FOLLOW", -1, true)
                     quest:GiveHeroExpression("EXPRESSION_WAIT", -1, true)
-                    quest:SetThingAsUsable(scratchValue10, true)
+                    quest:SetThingAsUsable(scratchValue9, true)
                     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
                     quest:RemoveThing(quest:GetThingWithScriptName("TheRealGuildmaster"), false, true)
                     quest:RemoveThing(quest:GetThingWithScriptName("PreMeleeMaze"), false, true)
@@ -534,15 +536,15 @@ function RunTutorials(quest)
                                         if not quest:IsActiveThreadTerminating() then
                                             getAllThingsWithDefName = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
                                             scratchValue5 = 0 - getAllThingsWithDefName >> 31
-                                            scratchValue19 = 0
+                                            scratchValue18 = 0
                                             if (0 - getAllThingsWithDefName) / 12 + scratchValue5 ~= scratchValue5 then
                                                 scratchValue6 = 0
                                                 repeat
                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d496a1 end
-                                                    quest:RemoveThing(scratchValue18, getAllThingsWithDefName + scratchValue6, false)
-                                                    scratchValue19 = scratchValue19 + 1
+                                                    quest:RemoveThing(scratchValue17, getAllThingsWithDefName + scratchValue6, false)
+                                                    scratchValue18 = scratchValue18 + 1
                                                     scratchValue6 = scratchValue6 + 12
-                                                until scratchValue19 >= ((0 - getAllThingsWithDefName) / 12)
+                                                until scratchValue18 >= ((0 - getAllThingsWithDefName) / 12)
                                             end
                                             if not quest:IsActiveThreadTerminating() then
                                                 quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
@@ -591,43 +593,52 @@ function RunTutorials(quest)
             goto LAB_00d496bc
         end
         ::LAB_00d487f4::
-        resources:ReleaseResource(scratchValue21)
+        resources:ReleaseResource(scratchValue20)
     end
     ::LAB_00d48800::
-    resources:ReleaseResource(scratchValue22)
+    resources:ReleaseResource(scratchValue21)
     ::LAB_00d496bc::
 end
 
 -- Q_GuildTraining.CheckFriendlyAttacks (retail 0x00d45060)
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult5, predicateResult6, predicateResult19, scratchValue18
-    local conversationId, scratchValue19, scratchValue20, scratchValue21, heroWarnings, hero, hero2
-    local hero3, scratchValue28, scratchValue29, scratchValue30, scratchValue31, r1_1
-    local scratchValue40, scratchValue41, scratchValue42, scratchValue43, conversationId2
-    local scratchValue44, scratchValue45, scratchValue46
+    local scratchValue, predicateResult5, predicateResult6, predicateResult19, scratchValue9
+    local conversationId, scratchValue10, scratchValue11, scratchValue12, heroWarnings, sequence12
+    local sequence13, sequence14, sequence22, sequence23, sequence24, sequence32, sequence33
+    local sequence34, hero, hero2, hero3, scratchValue19, scratchValue20, scratchValue21
+    local scratchValue22, r1_1, scratchValue23, scratchValue24, scratchValue25, scratchValue27
+    local conversationId2, scratchValue28, scratchValue29
     r1_1 = quest:GetThingWithScriptName(nil --[[missing]])
-    scratchValue19 = r1_1 - 0 >> 31
-    scratchValue40 = 0
-    if (r1_1 - 0) / 12 + scratchValue19 ~= scratchValue19 then
-        scratchValue20 = 0
+    scratchValue10 = r1_1 - 0 >> 31
+    scratchValue23 = 0
+    if (r1_1 - 0) / 12 + scratchValue10 ~= scratchValue10 then
+        scratchValue11 = 0
         repeat
-            scratchValue30 = r1_1
-            scratchValue28 = 0
+            scratchValue21 = r1_1
+            scratchValue19 = 0
             if quest:IsActiveThreadTerminating() then goto LAB_00d452d1 end
-            if CCharString__NotEqual((**(*(0 + scratchValue20) + 8))(&xStack_4c),"CREATURE_BIRD_GUILD_SPARROW") == 0 then
+            -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_4c)
+    --[[unresolved native value]]
+            if CCharString__NotEqual(nil,"CREATURE_BIRD_GUILD_SPARROW") == 0 then
                 predicateResult19 = false
             else
-                if CCharString__NotEqual((**(*(0 + scratchValue20) + 8))(&xStack_38),"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE") == 0 then
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_38)
+    --[[unresolved native value]]
+                if CCharString__NotEqual(nil,"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE") == 0 then
                     predicateResult19 = false
                     goto FLOW_after_lab_00d45184
                 end
-                if CCharString__NotEqual((**(*(0 + scratchValue20) + 8))(&xStack_48),"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE") == 0 then
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_48)
+    --[[unresolved native value]]
+                if CCharString__NotEqual(nil,"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE") == 0 then
                     predicateResult19 = false
                     goto FLOW_after_lab_00d45184
                 end
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_60)
+    --[[unresolved native value]]
                 predicateResult19 = true
-                if CCharString__NotEqual((**(*(0 + scratchValue20) + 8))(&xStack_60),"CREATURE_RIVAL_HERO_MAZE") == 0 then
+                if CCharString__NotEqual(nil,"CREATURE_RIVAL_HERO_MAZE") == 0 then
                     predicateResult19 = false
                     goto FLOW_after_lab_00d45184
                 end
@@ -636,18 +647,18 @@ function CheckFriendlyAttacks(quest)
             if predicateResult19 then
                 if quest:IsActiveThreadTerminating() then return end
                 -- TODO(native): (**(code **)(*(int *)((int)xStack_84 + iVar18) + 0x10c))(1);
-                quest:EntitySetAsKillable(r1_1, 0 + scratchValue20, false)
+                quest:EntitySetAsKillable(r1_1, 0 + scratchValue11, false)
             end
-            scratchValue40 = scratchValue40 + 1
-            scratchValue20 = scratchValue20 + 12
-        until scratchValue40 >= ((r1_1 - 0) / 12)
+            scratchValue23 = scratchValue23 + 1
+            scratchValue11 = scratchValue11 + 12
+        until scratchValue23 >= ((r1_1 - 0) / 12)
     end
-    scratchValue31 = r1_1
-    scratchValue29 = 0
+    scratchValue22 = r1_1
+    scratchValue20 = 0
     if not quest:IsActiveThreadTerminating() then
-        while scratchValue29 ~= scratchValue31 do
+        while scratchValue20 ~= scratchValue22 do
             -- TODO(native): (**(code **)*puVar7)(0);
-            scratchValue29 = scratchValue29 + 3
+            scratchValue20 = scratchValue20 + 3
         end
         if nil ~= nil then
             -- TODO(native): free(xStack_84);
@@ -658,25 +669,33 @@ function CheckFriendlyAttacks(quest)
                 while not quest:IsLevelLoaded("HeroGuildComplex") do
                     if not quest:NewScriptFrame() then goto LAB_00d45322 end
                 end
-                scratchValue18 = 0
-                scratchValue21 = r1_1 - 0 >> 31
-                scratchValue41 = 0
-                if (r1_1 - 0) / 12 + scratchValue21 ~= scratchValue21 then
+                scratchValue9 = 0
+                scratchValue12 = r1_1 - 0 >> 31
+                scratchValue24 = 0
+                if (r1_1 - 0) / 12 + scratchValue12 ~= scratchValue12 then
                     repeat
                         if quest:IsActiveThreadTerminating() then return end
-                        if CCharString__NotEqual((**(*(scratchValue18 + 0) + 8))(scratchValue42),"CREATURE_BIRD_GUILD_SPARROW") == 0 then
+                        -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)
+    --[[unresolved native value]]
+                        if CCharString__NotEqual(nil,"CREATURE_BIRD_GUILD_SPARROW") == 0 then
                             predicateResult5 = false
                         else
-                            if CCharString__NotEqual((**(*(scratchValue18 + 0) + 8))(conversationId2),"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE") == 0 then
+                            -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_30)
+    --[[unresolved native value]]
+                            if CCharString__NotEqual(nil,"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE") == 0 then
                                 predicateResult5 = false
                                 goto FLOW_after_lab_00d4557d
                             end
-                            if CCharString__NotEqual((**(*(0 + scratchValue18) + 8))(conversationId2),"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE") == 0 then
+                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+    --[[unresolved native value]]
+                            if CCharString__NotEqual(nil,"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE") == 0 then
                                 predicateResult5 = false
                                 goto FLOW_after_lab_00d4557d
                             end
+                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+    --[[unresolved native value]]
                             predicateResult5 = true
-                            if CCharString__NotEqual((**(*(0 + scratchValue18) + 8))(conversationId2),"CREATURE_RIVAL_HERO_MAZE") == 0 then
+                            if CCharString__NotEqual(nil,"CREATURE_RIVAL_HERO_MAZE") == 0 then
                                 predicateResult5 = false
                                 goto FLOW_after_lab_00d4557d
                             end
@@ -685,11 +704,11 @@ function CheckFriendlyAttacks(quest)
                         if predicateResult5 then
                             if quest:IsActiveThreadTerminating() then return end
                             -- TODO(native): (**(code **)(*(int *)((int)xStack_84 + iVar13) + 0x10c))(1);
-                            quest:EntitySetAsKillable(nil --[[missing]], 0 + scratchValue18, false)
+                            quest:EntitySetAsKillable(nil --[[missing]], 0 + scratchValue9, false)
                         end
-                        scratchValue41 = scratchValue41 + 1
-                        scratchValue18 = scratchValue18 + 12
-                    until scratchValue41 >= ((r1_1 - 0) / 12)
+                        scratchValue24 = scratchValue24 + 1
+                        scratchValue9 = scratchValue9 + 12
+                    until scratchValue24 >= ((r1_1 - 0) / 12)
                 end
                 if quest:IsActiveThreadTerminating() then return end
             end
@@ -700,12 +719,30 @@ function CheckFriendlyAttacks(quest)
                     predicateResult6 = false
                     goto FLOW_after_lab_00d45782
                 end
-                if scratchValue46 ~= nil and (**(*scratchValue46 + 84))("SCRIPT_NAME_HERO") ~= 0 then
+                sequence12 = scratchValue29 ~= nil
+                if sequence12 then
+                    -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                    sequence12 = nil ~= 0
+                end
+                if sequence12 then
                     predicateResult6 = false
                     goto FLOW_after_lab_00d45782
                 end
-                if scratchValue46 ~= nil and (**(*scratchValue46 + 168))("SCRIPT_NAME_HERO") ~= 0 then
-                    if scratchValue46 == nil or (**(*scratchValue46 + 164))(14,"SCRIPT_NAME_HERO") == 0 then
+                sequence22 = scratchValue29 ~= nil
+                if sequence22 then
+                    -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                    sequence22 = nil ~= 0
+                end
+                if sequence22 then
+                    sequence32 = scratchValue29 == nil
+                    if not sequence32 then
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                        sequence32 = nil == 0
+                    end
+                    if sequence32 then
                         predicateResult6 = false
                         goto FLOW_after_lab_00d45782
                     end
@@ -716,9 +753,27 @@ function CheckFriendlyAttacks(quest)
                 -- TODO(native): MsgHitFriendWithMeleeWeapon is not a ForgeFSE binding
                 if hero2:MsgHitFriendWithMeleeWeapon() then
                     if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue46 ~= nil and (**(*scratchValue46 + 84))("SCRIPT_NAME_HERO") ~= 0 then goto LAB_00d45782 end
-                    if scratchValue46 ~= nil and (**(*scratchValue46 + 168))("SCRIPT_NAME_HERO") ~= 0 then
-                        if scratchValue46 == nil or (**(*scratchValue46 + 164))(14,"SCRIPT_NAME_HERO") == 0 then goto LAB_00d45782 end
+                    sequence13 = scratchValue29 ~= nil
+                    if sequence13 then
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                        sequence13 = nil ~= 0
+                    end
+                    if sequence13 then goto LAB_00d45782 end
+                    sequence23 = scratchValue29 ~= nil
+                    if sequence23 then
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                        sequence23 = nil ~= 0
+                    end
+                    if sequence23 then
+                        sequence33 = scratchValue29 == nil
+                        if not sequence33 then
+                            -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                            sequence33 = nil == 0
+                        end
+                        if sequence33 then goto LAB_00d45782 end
                     end
                     predicateResult6 = true
                     goto FLOW_after_lab_00d45782
@@ -727,9 +782,27 @@ function CheckFriendlyAttacks(quest)
                 -- TODO(native): MsgHitFriendWithRangedWeapon is not a ForgeFSE binding
                 if hero3:MsgHitFriendWithRangedWeapon() then
                     if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue46 ~= nil and (**(*scratchValue46 + 84))("SCRIPT_NAME_HERO") ~= 0 then goto LAB_00d45782 end
-                    if scratchValue46 ~= nil and (**(*scratchValue46 + 168))("SCRIPT_NAME_HERO") ~= 0 then
-                        if scratchValue46 == nil or (**(*scratchValue46 + 164))(14,"SCRIPT_NAME_HERO") == 0 then goto LAB_00d45782 end
+                    sequence14 = scratchValue29 ~= nil
+                    if sequence14 then
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                        sequence14 = nil ~= 0
+                    end
+                    if sequence14 then goto LAB_00d45782 end
+                    sequence24 = scratchValue29 ~= nil
+                    if sequence24 then
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                        sequence24 = nil ~= 0
+                    end
+                    if sequence24 then
+                        sequence34 = scratchValue29 == nil
+                        if not sequence34 then
+                            -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                            sequence34 = nil == 0
+                        end
+                        if sequence34 then goto LAB_00d45782 end
                     end
                     predicateResult6 = true
                     goto FLOW_after_lab_00d45782
@@ -743,19 +816,19 @@ function CheckFriendlyAttacks(quest)
             if 2 < quest:GetStateInt("HeroWarnings") then
                 quest:SetMasterGameState("GuildWarningOccuring", true)
                 if quest:GetMasterGameState("SkillTestOccuring") == 0 and quest:GetMasterGameState("WillTestOccuring") == 0 then
-                    scratchValue44 = resources:NewResource()
-                    while not resources:TryAcquire(scratchValue44, scratchValue45, 4) do
+                    scratchValue27 = resources:NewResource()
+                    while not resources:TryAcquire(scratchValue27, scratchValue28, 4) do
                         if not quest:NewScriptFrame() then goto LAB_00d45db2 end
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        scratchValue43 = resources:NewResource()
-                        while not resources:TryAcquire(scratchValue43, quest:GetHero(), 4) do
+                        scratchValue25 = resources:NewResource()
+                        while not resources:TryAcquire(scratchValue25, quest:GetHero(), 4) do
                             if not quest:NewScriptFrame() then goto LAB_00d45da9 end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            scratchValue42 = resources:NewActorMap()
-                            resources:SetActor(amStack_1c, "HERO", &scratchValue42)
-                            resources:SetActor(amStack_1c, "MAZE", scratchValue44)
+                            resources:NewActorMap()
+                            -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
+                            resources:SetActor(amStack_1c, "MAZE", scratchValue27)
                             scratchValue = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
@@ -773,10 +846,10 @@ function CheckFriendlyAttacks(quest)
                             goto LAB_00d45c9d
                         end
                         ::LAB_00d45da9::
-                        resources:ReleaseResource(scratchValue43)
+                        resources:ReleaseResource(scratchValue25)
                     end
                     ::LAB_00d45db2::
-                    resources:ReleaseResource(scratchValue44)
+                    resources:ReleaseResource(scratchValue27)
                     return
                 end
                 while quest:GetMasterGameState("SkillTestOccuring") ~= 0 or quest:GetMasterGameState("WillTestOccuring") ~= 0 do
@@ -805,19 +878,19 @@ function CheckFriendlyAttacks(quest)
             quest:NewScriptFrame()
         until false
     end
-    while scratchValue29 ~= scratchValue31 do
+    while scratchValue20 ~= scratchValue22 do
         -- TODO(native): (**(code **)*puVar7)(0);
-        scratchValue29 = scratchValue29 + 3
+        scratchValue20 = scratchValue20 + 3
     end
-    if nil ~= nil then
-        -- TODO(native): free(xStack_84);
+    if xStack_94 ~= nil then
+        -- TODO(native): free(xStack_94);
     end
     ::LAB_00d45322::
     do return end
     ::LAB_00d452d1::
-    while scratchValue28 ~= scratchValue30 do
+    while scratchValue19 ~= scratchValue21 do
         -- TODO(native): (**(code **)*puVar7)(0);
-        scratchValue28 = scratchValue28 + 3
+        scratchValue19 = scratchValue19 + 3
     end
     if nil ~= nil then
         -- TODO(native): free(xStack_84);
@@ -843,10 +916,10 @@ function KeepTabsOnWhisper(quest)
             predicateResult = false
         end
         ::FLOW_after_lab_00d3cc48::
-        if scratchValue2 & true then
+        if scratchValue2 & 2 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffffd
         end
-        if scratchValue2 & true then
+        if scratchValue2 & 1 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffffe
         end
         scratchValue = scratchValue2

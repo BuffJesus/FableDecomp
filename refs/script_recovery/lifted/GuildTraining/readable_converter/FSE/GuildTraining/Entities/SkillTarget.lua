@@ -60,7 +60,7 @@ function Main(quest, me)
                     repeat
                         if not quest:NewScriptFrame(me) then return end
                         -- TODO(native): xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;
-                        quest:EntityTeleportToPosition(me, &xStack_58, scratchValue5, false, false)
+                        -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)
                         scratchValue30 = scratchValue30 + 1
                     until scratchValue30 == state:GetInt("Speed")
                     if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
@@ -80,7 +80,7 @@ function Main(quest, me)
                         repeat
                             if not quest:NewScriptFrame(me) then return end
                             -- TODO(native): xStack_40 = f_stk_88 * (float)i_stk_16c + f_stk_13c;
-                            quest:EntityTeleportToPosition(me, &xStack_40, scratchValue5, false, false)
+                            -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)
                             scratchValue30 = scratchValue30 + 1
                         until scratchValue30 == state:GetInt("Speed")
                         if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end

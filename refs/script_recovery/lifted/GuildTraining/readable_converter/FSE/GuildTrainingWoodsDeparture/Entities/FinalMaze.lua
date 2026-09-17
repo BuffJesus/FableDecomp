@@ -16,9 +16,9 @@ function Main(quest, me)
     local predicateResult3, scratchValue5, predicateResult4, predicateResult9, predicateResult10
     local scratchValue12, predicateResult15, predicateResult16, scratchValue19, notBeaten2
     local notBeaten3, scratchValue24, getStateInt, scratchValue25, getStateInt2, scratchValue26
-    local getStateInt3, scratchValue30, scratchValue34, scratchValue35, scratchValue36
-    local scratchValue37, u_stk_78_1, scratchValue38, scratchValue39, scratchValue40, scratchValue41
-    local scratchValue42, scratchValue43, timerId
+    local getStateInt3, scratchValue27, scratchValue30, scratchValue34, scratchValue35
+    local scratchValue36, scratchValue37, u_stk_78_1, scratchValue38, scratchValue39, scratchValue40
+    local scratchValue41, scratchValue42, scratchValue43, timerId
     scratchValue34 = 0
     u_stk_78_1 = 0
     if not quest:NewScriptFrame(me) then return end
@@ -81,19 +81,19 @@ function Main(quest, me)
             u_stk_78_1 = scratchValue37
             predicateResult3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
         end
-        if scratchValue37 & true then
+        if scratchValue37 & 8 ~= 0 then
             scratchValue37 = scratchValue37 & 0xfffffff7
             u_stk_78_1 = scratchValue37
         end
-        if scratchValue37 & true then
+        if scratchValue37 & 4 ~= 0 then
             scratchValue37 = scratchValue37 & 0xfffffffb
             u_stk_78_1 = scratchValue37
         end
-        if scratchValue37 & true then
+        if scratchValue37 & 2 ~= 0 then
             scratchValue37 = scratchValue37 & 0xfffffffd
             u_stk_78_1 = scratchValue37
         end
-        if scratchValue37 & true then
+        if scratchValue37 & 1 ~= 0 then
             scratchValue37 = scratchValue37 & 0xfffffffe
             u_stk_78_1 = scratchValue37
         end
@@ -150,15 +150,15 @@ function Main(quest, me)
                 scratchValue34 = scratchValue34 & 0xffffff7f
                 u_stk_78_1 = scratchValue34
             end
-            if scratchValue34 & true then
+            if scratchValue34 & 64 ~= 0 then
                 scratchValue34 = scratchValue34 & 0xffffffbf
                 u_stk_78_1 = scratchValue34
             end
-            if scratchValue34 & true then
+            if scratchValue34 & 32 ~= 0 then
                 scratchValue34 = scratchValue34 & 0xffffffdf
                 u_stk_78_1 = scratchValue34
             end
-            if scratchValue34 & true then
+            if scratchValue34 & 16 ~= 0 then
                 scratchValue34 = scratchValue34 & 0xffffffef
                 u_stk_78_1 = scratchValue34
             end
@@ -217,6 +217,7 @@ function Main(quest, me)
             resources:DestroyMovie(scratchValue41)
             quest:EntitySetBossPhase(me, 1)
             scratchValue25 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+            scratchValue42 = scratchValue25
             quest:DisplayQuestInfo(true)
             quest:UpdateQuestInfoCounter(scratchValue25, state:GetInt("BeenHit"), -1)
             quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
@@ -244,19 +245,19 @@ function Main(quest, me)
                     predicateResult9 = false
                 end
                 ::FLOW_after_lab_00d654e6::
-                if scratchValue37 & true then
+                if scratchValue37 & 2048 ~= 0 then
                     scratchValue37 = scratchValue37 & 0xfffff7ff
                     u_stk_78_1 = scratchValue37
                 end
-                if scratchValue37 & true then
+                if scratchValue37 & 1024 ~= 0 then
                     scratchValue37 = scratchValue37 & 0xfffffbff
                     u_stk_78_1 = scratchValue37
                 end
-                if scratchValue37 & true then
+                if scratchValue37 & 512 ~= 0 then
                     scratchValue37 = scratchValue37 & 0xfffffdff
                     u_stk_78_1 = scratchValue37
                 end
-                if scratchValue37 & true then
+                if scratchValue37 & 256 ~= 0 then
                     scratchValue37 = scratchValue37 & 0xfffffeff
                     u_stk_78_1 = scratchValue37
                 end
@@ -287,7 +288,7 @@ function Main(quest, me)
                         scratchValue35 = scratchValue35 & 0xffffdfff
                         u_stk_78_1 = scratchValue35
                     end
-                    if scratchValue35 & true then
+                    if scratchValue35 & 4096 ~= 0 then
                         scratchValue35 = scratchValue35 & 0xffffefff
                         u_stk_78_1 = scratchValue35
                     end
@@ -299,7 +300,7 @@ function Main(quest, me)
                             state:SetBool("NotBeaten", false)
                             quest:ModifyThingHealth(me, 1000.0, false)
                         end
-                        quest:UpdateQuestInfoCounter(state:GetInt("BeenHit"), -1, 0.0)
+                        quest:UpdateQuestInfoCounter(scratchValue42, state:GetInt("BeenHit"), -1)
                         if quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(scratchValue24) then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                             scratchValue37 = scratchValue37 & 0x80000001
@@ -310,14 +311,22 @@ function Main(quest, me)
                             if scratchValue12 then
                                 scratchValue24 = quest:AddNewConversation(me, false, false)
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                scratchValue27 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                scratchValue27 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_44,false,pCVar10,pCVar6);
                             else
                                 scratchValue24 = quest:AddNewConversation(me, false, false)
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                scratchValue27 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                 -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                scratchValue27 = nil --[[unresolved native value]]
                                 -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
                             end
                             quest:SetTimer(timerId, 5)
@@ -374,6 +383,7 @@ function Main(quest, me)
                     resources:DestroyMovie(scratchValue41)
                     quest:EntitySetBossPhase(me, 2)
                     scratchValue26 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+                    scratchValue42 = scratchValue26
                     quest:DisplayQuestInfo(true)
                     quest:UpdateQuestInfoCounter(scratchValue26, state:GetInt("BeenHit"), -1)
                     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
@@ -461,7 +471,7 @@ function Main(quest, me)
                                         state:SetBool("NotBeaten", false)
                                         quest:ModifyThingHealth(me, 1000.0, false)
                                     end
-                                    quest:UpdateQuestInfoCounter(state:GetInt("BeenHit"), -1, 0.0)
+                                    quest:UpdateQuestInfoCounter(scratchValue42, state:GetInt("BeenHit"), -1)
                                     if quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(scratchValue24) then
                                         if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                                         scratchValue37 = scratchValue37 & 0x80000001
@@ -472,14 +482,22 @@ function Main(quest, me)
                                         if scratchValue19 then
                                             scratchValue24 = quest:AddNewConversation(me, false, false)
                                             -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                            scratchValue27 = nil --[[unresolved native value]]
                                             -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                             -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                            scratchValue27 = nil --[[unresolved native value]]
                                             -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_4c,false,pCVar10,pCVar6);
                                         else
                                             scratchValue24 = quest:AddNewConversation(me, false, false)
                                             -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                            scratchValue27 = nil --[[unresolved native value]]
                                             -- TODO(native): (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);
                                             -- TODO(native): xStack_7c = **(CCharString **)(this + 4);
+                                            -- TODO(native): pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))
+                                            scratchValue27 = nil --[[unresolved native value]]
                                             -- TODO(native): (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_28,false,pCVar10,pCVar6);
                                         end
                                         quest:SetTimer(timerId, 5)

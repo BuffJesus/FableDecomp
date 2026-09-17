@@ -15,10 +15,10 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local scratchValue, scratchValue4, scratchValue5, scratchValue8, scratchValue9, scratchValue10
     local scratchValue11, scratchValue12, scratchValue13, scratchValue14, scratchValue15
-    local scratchValue16, scratchValue19, switch2, scratchValue22, scratchValue25, scratchValue27
-    local scratchValue28, scratchValue29, scratchValue30, scratchValue31, scratchValue32
-    local scratchValue33, scratchValue34, scratchValue35, scratchValue36, scratchValue37
-    local scratchValue38, scratchValue39, timerId, timerId2, scratchValue40
+    local scratchValue16, scratchValue19, switch2, scratchValue21, scratchValue22, scratchValue25
+    local scratchValue27, scratchValue28, scratchValue29, scratchValue30, scratchValue31
+    local scratchValue32, scratchValue33, scratchValue34, scratchValue35, scratchValue36
+    local scratchValue37, scratchValue38, scratchValue39, timerId, timerId2, scratchValue40
     local function __cleanup_LAB_00d5dac4()
         resources:ReleaseResource(scratchValue30)
         resources:DestroyActorMap(scratchValue29)
@@ -260,7 +260,7 @@ function Main(quest, me)
                     scratchValue4 = scratchValue10
                 end
                 scratchValue10 = scratchValue4
-                if scratchValue27 & true then
+                if scratchValue27 & 1 ~= 0 then
                     scratchValue27 = scratchValue27 & 0xfffffffe
                 end
                 if scratchValue10 then
@@ -572,7 +572,7 @@ function Main(quest, me)
                     scratchValue10 = false
                 end
                 ::FLOW_after_lab_00d5c757::
-                if scratchValue27 & true then
+                if scratchValue27 & 2 ~= 0 then
                     scratchValue27 = scratchValue27 & 0xfffffffd
                 end
                 if scratchValue10 then
@@ -655,7 +655,7 @@ function Main(quest, me)
                     scratchValue8 = scratchValue10
                 end
                 scratchValue10 = scratchValue8
-                if scratchValue27 & true then
+                if scratchValue27 & 4 ~= 0 then
                     scratchValue27 = scratchValue27 & 0xfffffffb
                 end
                 if scratchValue10 then
@@ -739,7 +739,7 @@ function Main(quest, me)
                     scratchValue10 = false
                 end
                 ::FLOW_after_lab_00d5cd47::
-                if scratchValue27 & true then
+                if scratchValue27 & 8 ~= 0 then
                     scratchValue27 = scratchValue27 & 0xfffffff7
                 end
                 if scratchValue10 then
@@ -771,15 +771,19 @@ function Main(quest, me)
                     scratchValue10 = false
                 else
                     scratchValue27 = scratchValue27 | 48
-                    scratchValue = *(this + 4)
+                    -- TODO(native): CVar10 = *(this + 4)
+                    scratchValue = nil --[[unresolved native value]]
                     scratchValue13 = 6.0
-                    scratchValue22 = (**(*scratchValue + 288))(scratchValue,"ArcheryRing","ArcheryRing")
-                    scratchValue10 = quest:IsDistanceBetweenThingsOver((**(*scratchValue + 280))(scratchValue), scratchValue22, 6.0)
+                    -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
+                    scratchValue22 = nil --[[unresolved native value]]
+                    -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
+                    scratchValue21 = nil --[[unresolved native value]]
+                    scratchValue10 = quest:IsDistanceBetweenThingsOver(scratchValue21, scratchValue22, 6.0)
                 end
-                if scratchValue27 & true then
+                if scratchValue27 & 32 ~= 0 then
                     scratchValue27 = scratchValue27 & 0xffffffdf
                 end
-                if scratchValue27 & true then
+                if scratchValue27 & 16 ~= 0 then
                     scratchValue27 = scratchValue27 & 0xffffffef
                 end
                 if scratchValue10 then

@@ -342,6 +342,8 @@ def propagate_literals(lines):
             m = literal.fullmatch(lines[d]) if d >= 0 else None
             if not m or re.match(r'\s*local\b', lines[r]):
                 continue
+            if re.search(r'(?<![\w.:])' + re.escape(name) + r'\s*[:.\[(]', _structure_line(lines[r])):
+                continue                                 # a literal cannot be a prefix expression (`nil:IsAlive()`)
             lines[r] = rename_identifiers(lines[r], {name: m.group(3)})
             count += 1
     return lines, count
@@ -353,8 +355,13 @@ def fold_constant_conditions(lines):
     for i, line in enumerate(lines):
         new = re.sub(r'\bnot true\b', 'false', re.sub(r'\bnot false\b', 'true', line))
         if not new.lstrip().startswith('--'):
-            new = re.sub(r'(?<![\w.])(\d+) ~= 0\b', lambda mm: 'true' if int(mm.group(1)) else 'false', new)
-            new = re.sub(r'(?<![\w.])(\d+) == 0\b', lambda mm: 'false' if int(mm.group(1)) else 'true', new)
+            def literal_compare(mm):
+                # only a literal that is a whole operand (`, 1 ~= 0`), not `x & 1 ~= 0` (binds as `(x & 1) ~= 0`)
+                if not re.search(r'(?:[(=,]|\b(?:if|elseif|while|until|return|and|or|not))\s*$', new[:mm.start()]):
+                    return mm.group(0)
+                truth = bool(int(mm.group(1))) if mm.group(2) == '~=' else not int(mm.group(1))
+                return 'true' if truth else 'false'
+            new = re.sub(r'(?<![\w.])(\d+) (~=|==) 0\b', literal_compare, new)
         if not new.lstrip().startswith('--'):
             new = re.sub(r' and true\b', '', new)
             new = re.sub(r'\btrue and ', '', new)
@@ -561,6 +568,8 @@ def inline_single_use(lines):
                         if not (queries and expr_query):
                             continue
                 replacement = expr if _atomic(expr) else f'({expr})'
+                if re.fullmatch(r'nil|true|false|-?\d[\w.]*|"[^"]*"', expr) and re.search(r'(?<![\w.:])' + re.escape(name) + r'\s*[:.\[(]', _structure_line(read_line)):
+                    replacement = f'({expr})'            # a literal prefix expression must be parenthesised
                 lines[r] = rename_identifiers(marked, {marker: replacement}).replace('__lhs__ =', name + ' =', 1)
                 lines[d] = ''
                 if len(defs) == 1 and len(reads) == 1:

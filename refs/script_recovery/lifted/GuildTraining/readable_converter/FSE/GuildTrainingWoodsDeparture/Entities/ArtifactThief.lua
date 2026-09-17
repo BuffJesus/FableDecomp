@@ -84,15 +84,15 @@ function Main(quest, me)
                 scratchValue2 = false
             end
             ::FLOW_after_lab_00d6280c::
-            if scratchValue13 & true then
+            if scratchValue13 & 4 ~= 0 then
                 scratchValue13 = scratchValue13 & 0xfffffffb
                 scratchValue15 = scratchValue13
             end
-            if scratchValue13 & true then
+            if scratchValue13 & 2 ~= 0 then
                 scratchValue13 = scratchValue13 & 0xfffffffd
                 scratchValue15 = scratchValue13
             end
-            if scratchValue13 & true then
+            if scratchValue13 & 1 ~= 0 then
                 scratchValue13 = scratchValue13 & 0xfffffffe
                 scratchValue15 = scratchValue13
             end
@@ -160,7 +160,6 @@ function Main(quest, me)
                     -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_bc;
                 end
                 quest:EntitySetAsKillable(me, true, true)
-                scratchValue8 = 1
                 me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 1, false, true)
                 scratchValue14 = scratchValue15
             end
@@ -174,7 +173,6 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(true)
                     quest:GetHealth(resources:ScriptThing(scratchValue20))
                     if 0.0 < fret_01 then
-                        scratchValue8 = 0
                         me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_CHAT", 0, false, true, false)
                         scratchValue3 = me:IsPerformingScriptTask()
                         while scratchValue3 do
@@ -204,7 +202,6 @@ function Main(quest, me)
                                             if not quest:IsActiveThreadTerminating() then
                                                 quest:GetHealth(resources:ScriptThing(scratchValue20))
                                                 if 0.0 < fret_02 then
-                                                    scratchValue8 = 0
                                                     me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD", 0, false, true, false)
                                                     scratchValue3 = me:IsPerformingScriptTask()
                                                     while scratchValue3 do
@@ -233,7 +230,6 @@ function Main(quest, me)
                                             quest:GiveHeroGold(math.modf(-quest:ReadGlobalGameDataFloat(3860)))
                                             quest:EntityGiveGold(me, math.modf(quest:ReadGlobalGameDataFloat(3860)))
                                             state:SetBool("HoldingArtifact", false)
-                                            scratchValue8 = 0
                                             me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 0, false, true)
                                             quest:PauseAllNonScriptedEntities(false)
                                             scratchValue11 = scratchValue17
@@ -247,7 +243,6 @@ function Main(quest, me)
                                 if not scratchValue2 then
                                     quest:GetHealth(resources:ScriptThing(scratchValue20))
                                     if 0.0 < fret_04 then
-                                        scratchValue8 = 0
                                         me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO", 0, false, true, false)
                                         scratchValue3 = me:IsPerformingScriptTask()
                                         while scratchValue3 do
@@ -284,7 +279,6 @@ function Main(quest, me)
                                         if not quest:IsActiveThreadTerminating() then
                                             quest:GetHealth(resources:ScriptThing(scratchValue20))
                                             if 0.0 < fret_02 then
-                                                scratchValue8 = 0
                                                 me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD", 0, false, true, false)
                                                 scratchValue3 = me:IsPerformingScriptTask()
                                                 while scratchValue3 do
@@ -318,7 +312,6 @@ function Main(quest, me)
                                         quest:GiveHeroGold(math.modf(-quest:ReadGlobalGameDataFloat(3860)))
                                         quest:EntityGiveGold(me, math.modf(quest:ReadGlobalGameDataFloat(3860)))
                                         state:SetBool("HoldingArtifact", false)
-                                        scratchValue8 = 0
                                         me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 0, false, true)
                                         quest:PauseAllNonScriptedEntities(false)
                                         scratchValue11 = scratchValue17
@@ -332,7 +325,6 @@ function Main(quest, me)
                             if not scratchValue2 then
                                 quest:GetHealth(resources:ScriptThing(scratchValue20))
                                 if 0.0 < fret_04 then
-                                    scratchValue8 = 0
                                     me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO", 0, false, true, false)
                                     scratchValue3 = me:IsPerformingScriptTask()
                                     while scratchValue3 do
@@ -359,7 +351,6 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(true)
                 quest:GetHealth(resources:ScriptThing(scratchValue20))
                 if 0.0 < fret_05 then
-                    scratchValue8 = 0
                     me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_RETURN", 0, false, true, false)
                     scratchValue3 = me:IsPerformingScriptTask()
                     while scratchValue3 do
@@ -405,7 +396,6 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(true)
                     quest:GetHealth(resources:ScriptThing(scratchValue20))
                     if 0.0 < fret_08 then
-                        scratchValue8 = 0
                         me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_RETURN_QUESTION_NO", 0, false, true, false)
                         scratchValue3 = me:IsPerformingScriptTask()
                         while scratchValue3 do
@@ -436,40 +426,7 @@ function Main(quest, me)
                     resources:DestroyMovie(scratchValue18)
                     goto LAB_00d63c96
                 end
-                if *(scratchValue8 + 3860) <= quest:GetHeroGold() then
-                    if not quest:IsActiveThreadTerminating() then
-                        quest:GetHealth(resources:ScriptThing(scratchValue20))
-                        if 0.0 < fret_07 then
-                            me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_YES", 0, false, true, false)
-                            scratchValue3 = me:IsPerformingScriptTask()
-                            while scratchValue3 do
-                                quest:NewScriptFrame(me)
-                                if quest:IsActiveThreadTerminating() then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(scratchValue18)
-                                    goto LAB_00d63c96
-                                end
-                                scratchValue3 = me:IsPerformingScriptTask()
-                            end
-                            if quest:IsActiveThreadTerminating() then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue18)
-                                goto LAB_00d63c96
-                            end
-                        end
-                        quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
-                        quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
-                        quest:GiveHeroGold(math.modf(-quest:ReadGlobalGameDataFloat(3860)))
-                        quest:EntityGiveGold(me, math.modf(quest:ReadGlobalGameDataFloat(3860)))
-                        state:SetBool("HoldingArtifact", false)
-                        scratchValue8 = 0
-                        me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 0, false, true)
-                        goto LAB_00d638c8
-                    end
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue18)
-                    goto LAB_00d63c96
-                end
+                -- TODO(native): if *(iVar6 + 0xf14) <= xStack_128 then
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(scratchValue18)
@@ -477,7 +434,6 @@ function Main(quest, me)
                 end
                 quest:GetHealth(resources:ScriptThing(scratchValue20))
                 if 0.0 < fret_06 then
-                    scratchValue8 = 0
                     me:Speak(quest:GetHero(), "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD", 0, false, true, false)
                     scratchValue3 = me:IsPerformingScriptTask()
                     while scratchValue3 do
@@ -529,15 +485,15 @@ function Main(quest, me)
                 scratchValue2 = false
             end
             ::FLOW_after_lab_00d63b21::
-            if scratchValue13 & true then
+            if scratchValue13 & 32 ~= 0 then
                 scratchValue13 = scratchValue13 & 0xffffffdf
                 scratchValue15 = scratchValue13
             end
-            if scratchValue13 & true then
+            if scratchValue13 & 16 ~= 0 then
                 scratchValue13 = scratchValue13 & 0xffffffef
                 scratchValue15 = scratchValue13
             end
-            if scratchValue13 & true then
+            if scratchValue13 & 8 ~= 0 then
                 scratchValue13 = scratchValue13 & 0xfffffff7
                 scratchValue15 = scratchValue13
             end

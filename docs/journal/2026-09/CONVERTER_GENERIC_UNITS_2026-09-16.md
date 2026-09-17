@@ -286,3 +286,10 @@ seen in CQ_OrchardFarmRaidScript's ctor for CommentTimer/RemindHeroOfObjectivesT
   — the 4266-line PreMelee guildmaster went from >500 s to 11 s (whole unit 58 s). `camel()` no longer yields `1` for
   MK_GTA_MAZE1 (the rename pass raised "not reversible" and aborted the file). Generalised: one-statement cleanups before an
   exit (`if T() then quest:DeregisterTimer(t); return end`), `while <cond reading v> do` retry loops, literal `1 ~= 0`.
+- Guild draft 26 -> 37/37 files compile: `unwrap_statements` (Ghidra wraps deeply indented statements at arbitrary
+  points; joined while parens are unbalanced, no space before `,`/`)` or a call's `(`), `if (A || (v = call(), pred)) goto L;`
+  through the condition tree, RE_REFCOUNT_IF with `(int *)` casts / `._0_4_` slices / `__thing_valid(v)` heads, a register
+  that held DAT_0143e90c dereferenced with a table offset after a sibling-branch reuse, and `Lifter.guard_c_residue` (runs
+  after prune_dispatch_loads: `*x`, `&x`, `(**(`, C casts -> `-- TODO(native)` + `v = nil` / `if false then`). Readable
+  style fixes from the guild run: literals never become prefix expressions (`nil:IsAlive()`, `1._0_4_`), `1 ~= 0` folds
+  only as a whole operand (not inside `x & 1 ~= 0`). Guild readable_converter 37/37 compile, smoke 29 problems (draft 30).

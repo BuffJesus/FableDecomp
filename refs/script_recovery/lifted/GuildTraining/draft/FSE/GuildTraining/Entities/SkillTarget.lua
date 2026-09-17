@@ -127,7 +127,7 @@ function Main(quest, me)
                         end
                         f_stk_2c = f_stk_78 * i_stk_16c
                         -- TODO(native): xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;
-                        quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)
+                        -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)
                         iVar5 = iVar5 + 1
                         i_stk_16c = iVar5
                     until not (iVar5 ~= __native_entity_state:GetStateInt("Speed"))
@@ -215,7 +215,7 @@ function Main(quest, me)
                             end
                             f_stk_14 = f_stk_84 * i_stk_16c
                             -- TODO(native): xStack_40 = f_stk_88 * (float)i_stk_16c + f_stk_13c;
-                            quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)
+                            -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)
                             iVar5 = iVar5 + 1
                             i_stk_16c = iVar5
                         until not (iVar5 ~= __native_entity_state:GetStateInt("Speed"))

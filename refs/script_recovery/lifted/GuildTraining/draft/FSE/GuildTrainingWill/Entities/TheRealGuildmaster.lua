@@ -737,7 +737,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             goto FLOW_after_lab_00d61578
                         end
-                        resources:SetActor(xStack_210, "HERO", &xStack_238_3)
+                        -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_238_3)
                         resources:SetActor(xStack_210, "TEACHER", xStack_228)
                         -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,(CCharString *)xStack_1d8);
                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_158);
@@ -845,7 +845,7 @@ function Main(quest, me)
                     if bVar6 then goto LAB_00d6135b end
                     pCVar12 = 0x1
                     quest:PauseAllNonScriptedEntities((pCVar12 ~= 0))
-                    resources:SetActor(xStack_210, "HERO", &xStack_238_3)
+                    -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_238_3)
                     resources:SetActor(xStack_210, "TEACHER", xStack_228)
                     resources:RunMacro("CS_GUILD_WILL_DISQUALIFIED", xStack_210, false, true)
                     quest:Pause(2.0)
@@ -887,7 +887,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00d61004 end
-                        resources:SetActor(xStack_210, "HERO", &xStack_238_3)
+                        -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_238_3)
                         resources:SetActor(xStack_210, "TEACHER", xStack_228)
                         resources:SetActor(xStack_210, "WHISPER", xStack_1f0)
                         resources:RunMacro("CS_GUILD_WILL_CONTINUE", xStack_210, false, true)

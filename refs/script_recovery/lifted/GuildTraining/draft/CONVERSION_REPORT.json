@@ -230,7 +230,8 @@
             "EntitySetAsOpinionSource: not in FSE manifest",
             "unlifted: NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd496f0(this);",
             "unlifted: NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);",
-            "label LAB_00d4967d"
+            "label LAB_00d4967d",
+            "unlifted: pCVar4 = (**(*(xStack_54._0_4_ + iVar9) + 0x18))()"
           ],
           "calls": [
             "GetThingWithScriptName",
@@ -741,19 +742,13 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1012,
+          "lines": 1013,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/GuildTraining.lua:RunTutorials",
-                "line": 220,
-                "message": "FSE/GuildTraining/GuildTraining.lua:RunTutorials:220: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -808,7 +803,25 @@
             "unlifted: (**(code **)*puVar7)(0);",
             "unlifted: free(xStack_94);",
             "unlifted: (**(code **)*puVar7)(0);",
-            "unlifted: free(xStack_84);"
+            "unlifted: free(xStack_84);",
+            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_4c)",
+            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_38)",
+            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_48)",
+            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_60)",
+            "unlifted: pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)",
+            "unlifted: pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_30)",
+            "unlifted: pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)",
+            "unlifted: pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0x54))(\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0xa8))(\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0x54))(\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0xa8))(\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0x54))(\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0xa8))(\"SCRIPT_NAME_HERO\")",
+            "unlifted: cVar11 = (**(*xStack_a0 + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")",
+            "unlifted: ACTORMAP_Set(amStack_1c, \"HERO\", &xStack_20)"
           ],
           "calls": [
             "GetThingWithScriptName",
@@ -912,19 +925,13 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 566,
+          "lines": 583,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/GuildTraining.lua:CheckFriendlyAttacks",
-                "line": 21,
-                "message": "FSE/GuildTraining/GuildTraining.lua:CheckFriendlyAttacks:21: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -4644,7 +4651,9 @@
             "AddLineToConversation: missing spListener (4 args for 5 params)",
             "verify cleanup at LAB_00d42efe (lifted as early return)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "label LAB_00d42f0b"
+            "label LAB_00d42f0b",
+            "unlifted: quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)",
+            "unlifted: quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)"
           ],
           "calls": [
             "GetAngleXY",
@@ -4839,16 +4848,10 @@
           "lines": 580,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTraining/Entities/SkillTarget.lua:Main",
-                "line": 112,
-                "message": "FSE/GuildTraining/Entities/SkillTarget.lua:Main:112: unexpected symbol near '&'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -5874,21 +5877,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 15,
-        "passed": 13,
-        "errors": [
-          {
-            "path": "FSE/GuildTraining/Entities/SkillTarget.lua",
-            "line": 130,
-            "message": "FSE/GuildTraining/Entities/SkillTarget.lua:130: unexpected symbol near '&'"
-          },
-          {
-            "path": "FSE/GuildTraining/GuildTraining.lua",
-            "line": 345,
-            "message": "FSE/GuildTraining/GuildTraining.lua:345: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 15,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -5982,10 +5974,10 @@
         "owners": 15,
         "functions": 69,
         "missing": 0,
-        "functionSyntaxPassed": 66,
-        "fileSyntaxPassed": 13,
+        "functionSyntaxPassed": 69,
+        "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 262
+        "todo": 283
       }
     },
     {
@@ -6520,7 +6512,8 @@
             "goto LAB_00d5a962",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
-            "label LAB_00d5a8cb"
+            "label LAB_00d5a8cb",
+            "unlifted: iVar7 = *xStack_23c"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -6925,19 +6918,13 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 825,
+          "lines": 826,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main",
-                "line": 761,
-                "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:Main:761: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -7705,16 +7692,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 4,
-        "passed": 3,
-        "errors": [
-          {
-            "path": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua",
-            "line": 773,
-            "message": "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua:773: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 4,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -7726,10 +7707,10 @@
         "owners": 4,
         "functions": 14,
         "missing": 1,
-        "functionSyntaxPassed": 13,
-        "fileSyntaxPassed": 3,
+        "functionSyntaxPassed": 14,
+        "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 93
+        "todo": 94
       }
     },
     {
@@ -10263,7 +10244,8 @@
             "label LAB_00d52df2",
             "unlifted: xStack_a0 = (float)GFCharStringToInt(pvVar7);",
             "label LAB_00d52de9",
-            "label LAB_00d52d83"
+            "label LAB_00d52d83",
+            "unlifted: pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)"
           ],
           "calls": [
             "EntitySetAsKillable",
@@ -10378,19 +10360,13 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 307,
+          "lines": 308,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua:Main",
-                "line": 172,
-                "message": "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua:Main:172: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -10488,16 +10464,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 4,
-        "passed": 3,
-        "errors": [
-          {
-            "path": "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua",
-            "line": 184,
-            "message": "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua:184: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 4,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -10555,10 +10525,10 @@
         "owners": 4,
         "functions": 14,
         "missing": 1,
-        "functionSyntaxPassed": 13,
-        "fileSyntaxPassed": 3,
+        "functionSyntaxPassed": 14,
+        "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 226
+        "todo": 227
       }
     },
     {
@@ -10735,7 +10705,10 @@
             "verify cleanup at LAB_00d5db53 (lifted as early return)",
             "verify cleanup at LAB_00d5db62 (lifted as early return)",
             "verify cleanup at LAB_00d5db53 (lifted as early return)",
-            "verify cleanup at LAB_00d5db62 (lifted as early return)"
+            "verify cleanup at LAB_00d5db62 (lifted as early return)",
+            "unlifted: CVar10 = *(this + 4)",
+            "unlifted: pCVar7 = (**(*CVar10 + 0x120))(CVar10,&\"ArcheryRing\",&\"ArcheryRing\")",
+            "unlifted: pCVar6 = (**(*CVar10 + 0x118))(CVar10)"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -11334,19 +11307,13 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1302,
+          "lines": 1305,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main",
-                "line": 1037,
-                "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:Main:1037: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -11467,16 +11434,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 2,
-        "passed": 1,
-        "errors": [
-          {
-            "path": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua",
-            "line": 1064,
-            "message": "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua:1064: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 2,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -11517,10 +11478,10 @@
         "owners": 2,
         "functions": 6,
         "missing": 1,
-        "functionSyntaxPassed": 5,
-        "fileSyntaxPassed": 1,
+        "functionSyntaxPassed": 6,
+        "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 90
+        "todo": 93
       }
     },
     {
@@ -11711,7 +11672,10 @@
             "unlifted: (**(code **)(*xStack_60._0_4_ + 0x118))(0);",
             "label LAB_00d60b19",
             "label LAB_00d60b31",
-            "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238_12,(CCharString *)pC"
+            "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238_12,(CCharString *)pC",
+            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_238_3)",
+            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_238_3)",
+            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_238_3)"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -12445,16 +12409,10 @@
           "lines": 1587,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main",
-                "line": 714,
-                "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:Main:714: unexpected symbol near '&'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -12588,16 +12546,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 2,
-        "passed": 1,
-        "errors": [
-          {
-            "path": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua",
-            "line": 740,
-            "message": "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua:740: unexpected symbol near '&'"
-          }
-        ]
+        "passed": 2,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -12625,10 +12577,10 @@
         "owners": 2,
         "functions": 7,
         "missing": 0,
-        "functionSyntaxPassed": 6,
-        "fileSyntaxPassed": 1,
+        "functionSyntaxPassed": 7,
+        "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 74
+        "todo": 77
       }
     },
     {
@@ -12895,7 +12847,8 @@
             "goto LAB_00d63aa6",
             "label LAB_00d63aec",
             "label LAB_00d63ad2",
-            "label LAB_00d63b21"
+            "label LAB_00d63b21",
+            "unlifted: if *(iVar6 + 0xf14) <= xStack_128 then"
           ],
           "calls": [
             "NewScriptFrame",
@@ -13238,19 +13191,13 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 891,
+          "lines": 892,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingWoodsDeparture/Entities/ArtifactThief.lua:Main",
-                "line": 700,
-                "message": "...ldTrainingWoodsDeparture/Entities/ArtifactThief.lua:Main:700: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -13404,7 +13351,15 @@
             "unlifted: (**(code **)((int)xStack_7c + 0x5b4))(*(void **)(this + 4),iVar14,pCVar6);",
             "unlifted: xStack_7c = **(CCharString **)(this + 4);",
             "unlifted: (**(code **)((int)xStack_7c + 0x5b8))(*(void **)(this + 4),iVar14,&xStack_28,false,pCVar10",
-            "label LAB_00d6632b"
+            "label LAB_00d6632b",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))",
+            "unlifted: pCVar6 = (**(xStack_7c + 0x118))(*(this + 4))"
           ],
           "calls": [
             "NewScriptFrame",
@@ -13711,19 +13666,13 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 859,
+          "lines": 867,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main",
-                "line": 476,
-                "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:Main:476: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -13985,21 +13934,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 4,
-        "passed": 2,
-        "errors": [
-          {
-            "path": "FSE/GuildTrainingWoodsDeparture/Entities/ArtifactThief.lua",
-            "line": 719,
-            "message": "FSE/GuildTrainingWoodsDeparture/Entities/ArtifactThief.lua:719: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua",
-            "line": 488,
-            "message": "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua:488: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 4,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -14028,10 +13966,10 @@
         "owners": 4,
         "functions": 17,
         "missing": 2,
-        "functionSyntaxPassed": 15,
-        "fileSyntaxPassed": 2,
+        "functionSyntaxPassed": 17,
+        "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 67
+        "todo": 76
       }
     },
     {
@@ -14532,7 +14470,8 @@
             "unlifted: puStack_78 = puStack_78 + -3;",
             "AddNewConversation: missing pThing (2 args for 3 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "label LAB_00d6849b"
+            "label LAB_00d6849b",
+            "unlifted: ACTORMAP_Set(xStack_38, \"BAN1\", &0x0)"
           ],
           "calls": [
             "SetStateBool",
@@ -14667,16 +14606,10 @@
           "lines": 293,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:Main",
-                "line": 99,
-                "message": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:Main:99: unexpected symbol near '&'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -14982,16 +14915,10 @@
       ],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 2,
-        "passed": 1,
-        "errors": [
-          {
-            "path": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua",
-            "line": 102,
-            "message": "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua:102: unexpected symbol near '&'"
-          }
-        ]
+        "passed": 2,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -15001,10 +14928,10 @@
         "owners": 2,
         "functions": 9,
         "missing": 2,
-        "functionSyntaxPassed": 8,
-        "fileSyntaxPassed": 1,
+        "functionSyntaxPassed": 9,
+        "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 20
+        "todo": 21
       }
     }
   ],
@@ -15012,9 +14939,9 @@
     "owners": 37,
     "functions": 152,
     "missing": 10,
-    "functionSyntaxPassed": 142,
-    "fileSyntaxPassed": 28,
+    "functionSyntaxPassed": 152,
+    "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 845
+    "todo": 884
   }
 }

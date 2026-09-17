@@ -342,7 +342,8 @@ function RunTutorials(quest)
                     if bVar2 then
                         goto LAB_00d496bc
                     end
-                    pCVar4 = (**(*(xStack_54._0_4_ + iVar9) + 0x18))()
+                    -- TODO(native): pCVar4 = (**(*(xStack_54._0_4_ + iVar9) + 0x18))()
+                    pCVar4 = nil --[[unresolved native value]]
                     r5 = quest:CreateObject(pCVar4, uVar8, "")
                     quest:SetThingPersistent(r5, true)
                     quest:SetThingPersistent(r4, (xStack_54._0_4_ + iVar9))
@@ -1159,7 +1160,8 @@ function CheckFriendlyAttacks(quest)
             puVar7 = 0x0
             if bVar9 then goto LAB_00d452d1 end
             pcVar21 = "CREATURE_BIRD_GUILD_SPARROW"
-            pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_4c)
+            -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_4c)
+            pvVar12 = nil --[[unresolved native value]]
             iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
             if iVar13 == 0 then
                 -- LAB_00d45184: (native jump target)
@@ -1167,7 +1169,8 @@ function CheckFriendlyAttacks(quest)
             else
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                 bVar4 = true
-                pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_38)
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_38)
+                pvVar12 = nil --[[unresolved native value]]
                 iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
                 if iVar13 == 0 then
                     bVar9 = false
@@ -1176,7 +1179,8 @@ function CheckFriendlyAttacks(quest)
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                 bVar4 = true
                 bVar3 = true
-                pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_48)
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_48)
+                pvVar12 = nil --[[unresolved native value]]
                 iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
                 if iVar13 == 0 then
                     bVar9 = false
@@ -1186,7 +1190,8 @@ function CheckFriendlyAttacks(quest)
                 bVar4 = true
                 bVar3 = true
                 bVar2 = true
-                pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_60)
+                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_60)
+                pvVar12 = nil --[[unresolved native value]]
                 iVar13 = CCharString__NotEqual(pvVar12,pcVar21)
                 bVar9 = true
                 if iVar13 == 0 then
@@ -1275,7 +1280,8 @@ function CheckFriendlyAttacks(quest)
                             return
                         end
                         pcVar21 = "CREATURE_BIRD_GUILD_SPARROW"
-                        pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)
+                        -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)
+                        pvVar12 = nil --[[unresolved native value]]
                         iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
                         if iVar18 == 0 then
                             -- LAB_00d4557d: (native jump target)
@@ -1283,7 +1289,8 @@ function CheckFriendlyAttacks(quest)
                         else
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                             bVar3 = true
-                            pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_30)
+                            -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_30)
+                            pvVar12 = nil --[[unresolved native value]]
                             iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
                             if iVar18 == 0 then
                                 bVar10 = false
@@ -1292,7 +1299,8 @@ function CheckFriendlyAttacks(quest)
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                             bVar3 = true
                             bVar2 = true
-                            pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+                            pvVar12 = nil --[[unresolved native value]]
                             iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
                             if iVar18 == 0 then
                                 bVar10 = false
@@ -1301,7 +1309,8 @@ function CheckFriendlyAttacks(quest)
                             pcVar21 = "CREATURE_RIVAL_HERO_MAZE"
                             bVar3 = true
                             bVar2 = true
-                            pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+                            pvVar12 = nil --[[unresolved native value]]
                             iVar18 = CCharString__NotEqual(pvVar12,pcVar21)
                             bVar10 = true
                             if iVar18 == 0 then
@@ -1355,7 +1364,8 @@ function CheckFriendlyAttacks(quest)
                     native_arg_sequence_1 = false
                 end
                 if native_arg_sequence_1 then
-                    cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+                    -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+                    cVar11 = nil --[[unresolved native value]]
                     if cVar11 ~= 0 then
                         native_arg_sequence_1 = true
                     else
@@ -1373,7 +1383,8 @@ function CheckFriendlyAttacks(quest)
                     native_arg_sequence_2 = false
                 end
                 if native_arg_sequence_2 then
-                    cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+                    -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+                    cVar11 = nil --[[unresolved native value]]
                     if cVar11 ~= 0 then
                         native_arg_sequence_2 = true
                     else
@@ -1392,7 +1403,8 @@ function CheckFriendlyAttacks(quest)
                         native_arg_sequence_3 = false
                     end
                     if not native_arg_sequence_3 then
-                        cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+                        cVar11 = nil --[[unresolved native value]]
                         if cVar11 == 0 then
                             native_arg_sequence_3 = true
                         else
@@ -1423,7 +1435,8 @@ function CheckFriendlyAttacks(quest)
                         native_arg_sequence_1 = true
                     end
                     if native_arg_sequence_1 then
-                        cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+                        cVar11 = nil --[[unresolved native value]]
                         if cVar11 ~= 0 then
                             native_arg_sequence_1 = true
                         else
@@ -1436,7 +1449,8 @@ function CheckFriendlyAttacks(quest)
                         native_arg_sequence_2 = true
                     end
                     if native_arg_sequence_2 then
-                        cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+                        cVar11 = nil --[[unresolved native value]]
                         if cVar11 ~= 0 then
                             native_arg_sequence_2 = true
                         else
@@ -1455,7 +1469,8 @@ function CheckFriendlyAttacks(quest)
                             native_arg_sequence_3 = false
                         end
                         if not native_arg_sequence_3 then
-                            cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+                            -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+                            cVar11 = nil --[[unresolved native value]]
                             if cVar11 == 0 then
                                 native_arg_sequence_3 = true
                             else
@@ -1484,7 +1499,8 @@ function CheckFriendlyAttacks(quest)
                         native_arg_sequence_1 = true
                     end
                     if native_arg_sequence_1 then
-                        cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0x54))("SCRIPT_NAME_HERO")
+                        cVar11 = nil --[[unresolved native value]]
                         if cVar11 ~= 0 then
                             native_arg_sequence_1 = true
                         else
@@ -1497,7 +1513,8 @@ function CheckFriendlyAttacks(quest)
                         native_arg_sequence_2 = true
                     end
                     if native_arg_sequence_2 then
-                        cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+                        -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa8))("SCRIPT_NAME_HERO")
+                        cVar11 = nil --[[unresolved native value]]
                         if cVar11 ~= 0 then
                             native_arg_sequence_2 = true
                         else
@@ -1516,7 +1533,8 @@ function CheckFriendlyAttacks(quest)
                             native_arg_sequence_3 = false
                         end
                         if not native_arg_sequence_3 then
-                            cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+                            -- TODO(native): cVar11 = (**(*xStack_a0 + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+                            cVar11 = nil --[[unresolved native value]]
                             if cVar11 == 0 then
                                 native_arg_sequence_3 = true
                             else
@@ -1600,7 +1618,7 @@ function CheckFriendlyAttacks(quest)
                         bVar10 = not alive
                         if not bVar10 then
                             xStack_20 = resources:NewActorMap()
-                            resources:SetActor(amStack_1c, "HERO", &xStack_20)
+                            -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
                             resources:SetActor(amStack_1c, "MAZE", xStack_30)
                             aCStack_10 = resources:StartMovie("")
                             quest:StartMovieSequence()

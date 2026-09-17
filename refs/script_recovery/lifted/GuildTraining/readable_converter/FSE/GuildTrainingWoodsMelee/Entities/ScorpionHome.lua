@@ -33,7 +33,7 @@ function Main(quest, me)
         scratchValue8 = scratchValue8 | 1
         local scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
         predicateResult3 = not scratchValue10
-        if scratchValue8 & true then
+        if scratchValue8 & 1 ~= 0 then
             scratchValue8 = scratchValue8 & 0xfffffffe
         end
         if predicateResult3 then

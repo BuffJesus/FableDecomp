@@ -414,6 +414,7 @@ function Main(quest, me)
                     resources:SetActor(scratchValue40, "HERO", scratchValue39)
                     resources:SetActor(scratchValue40, "TEACHER", scratchValue31)
                     resources:RunMacro("$GRADE", scratchValue40, false, false)
+                    scratchValue15 = 1
                     quest:PauseAllNonScriptedEntities(true)
                     resources:RunMacroWithStrings(xStack_110, scratchValue40, scratchValue33, false, false)
                     quest:Pause(2.0)
@@ -443,7 +444,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             goto FLOW_after_lab_00d61578
                         end
-                        resources:SetActor(scratchValue40, "HERO", &xStack_238_3)
+                        -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_238_3)
                         resources:SetActor(scratchValue40, "TEACHER", scratchValue41)
                         -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,(CCharString *)xStack_1d8);
                         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_158);
@@ -519,7 +520,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d6135b end
                     scratchValue15 = 1
                     quest:PauseAllNonScriptedEntities(true)
-                    resources:SetActor(scratchValue40, "HERO", &xStack_238_3)
+                    -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_238_3)
                     resources:SetActor(scratchValue40, "TEACHER", scratchValue41)
                     resources:RunMacro("CS_GUILD_WILL_DISQUALIFIED", scratchValue40, false, true)
                     quest:Pause(2.0)
@@ -545,7 +546,7 @@ function Main(quest, me)
                             scratchValue5 = resources:TryAcquire(scratchValue37, meleeApprentice, 4)
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d61004 end
-                        resources:SetActor(scratchValue40, "HERO", &xStack_238_3)
+                        -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_238_3)
                         resources:SetActor(scratchValue40, "TEACHER", scratchValue41)
                         resources:SetActor(scratchValue40, "WHISPER", scratchValue37)
                         resources:RunMacro("CS_GUILD_WILL_CONTINUE", scratchValue40, false, true)
@@ -674,7 +675,7 @@ function Main(quest, me)
                             -- LAB_00d6158a_c22: (native jump target)
                             scratchValue5 = false
                         end
-                        if scratchValue29 & true then
+                        if scratchValue29 & 1 ~= 0 then
                             scratchValue29 = scratchValue29 & 0xfffffffe
                         end
                         if scratchValue5 then
@@ -795,7 +796,7 @@ function Main(quest, me)
                     scratchValue5 = false
                 end
                 ::FLOW_after_lab_00d6158a::
-                if scratchValue29 & true then
+                if scratchValue29 & 1 ~= 0 then
                     scratchValue29 = scratchValue29 & 0xfffffffe
                 end
                 if scratchValue5 then
@@ -945,7 +946,7 @@ function Main(quest, me)
         end
         if not quest:IsActiveThreadTerminating() then
             quest:CreateCreature("WillApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "WillApprenticeMarker")
-            if 1._0_4_ ~= nil then
+            if scratchValue15._0_4_ ~= nil then
                 -- TODO(native): (**(code **)(*xStack_60._0_4_ + 0x118))(0);
             end
             -- TODO(native): goto LAB_00d6144d

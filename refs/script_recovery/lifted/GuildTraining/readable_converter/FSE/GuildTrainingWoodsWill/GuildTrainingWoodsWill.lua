@@ -22,7 +22,7 @@ function Main(quest)
     if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestCardObjective("Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_02", "", "")
     quest:CreateThread("WatchForTermination")  -- native thread body Quest_GuildTrainingWoods_Will_Init: lift it as function WatchForTermination(quest)
-    if scratchValue & true then
+    if scratchValue & 2 ~= 0 then
         scratchValue = scratchValue & 0xfffffffd
     end
     quest:CreateThread("DoMission")  -- native thread body 0x00D68AE0: lift it as function DoMission(quest)
@@ -64,7 +64,7 @@ function Main(quest)
         else
             scratchValue14 = resources:NewActorMap()
             resources:SetActor(scratchValue14, "HERO", scratchValue16)
-            resources:SetActor(scratchValue14, "BAN1", &0)
+            -- TODO(native): resources:SetActor(xStack_38, "BAN1", &0x0)
             -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_38,&xStack_88);
             -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);
             -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_38,&xStack_88);

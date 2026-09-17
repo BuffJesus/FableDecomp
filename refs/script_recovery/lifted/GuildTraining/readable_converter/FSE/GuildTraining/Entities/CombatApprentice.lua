@@ -129,7 +129,7 @@ function Main(quest, me)
             scratchValue22 = scratchValue22 | 1
             scratchValue2 = me:IsTalkedToByHero()
         end
-        if scratchValue22 & true then
+        if scratchValue22 & 1 ~= 0 then
             scratchValue22 = scratchValue22 & 0xfffffffe
         end
         if scratchValue2 then
@@ -335,7 +335,7 @@ function Main(quest, me)
                                 resources:DestroyMovie(scratchValue25)
                                 goto LAB_00d4c6d1
                             end
-                            if (0.0 < quest:GetHealth(resources:ScriptThing(scratchValue28))) ~= 0 then
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue28)) then
                                 me:Speak(quest:GetHero(), "TEXT_QST_028_APPRENTICE_MELEE_START_APLUS", 0, false, true, false)
                                 scratchValue3 = me:IsPerformingScriptTask()
                                 while scratchValue3 do
@@ -513,7 +513,7 @@ function Main(quest, me)
                                 scratchValue2 = false
                             end
                             ::FLOW_after_lab_00d4b8c5::
-                            if scratchValue22 & true then
+                            if scratchValue22 & 2 ~= 0 then
                                 scratchValue22 = scratchValue22 & 0xfffffffd
                             end
                             if scratchValue2 then

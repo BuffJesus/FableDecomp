@@ -237,7 +237,7 @@ function Main(quest, me)
             goto LAB_00d4ef87
         end
         ::LAB_00d4e87a::
-        timerId = scratchValue21
+        timerId = ctr_90
         scratchValue10 = state:GetInt("BirdMode")
     end
     if not quest:IsActiveThreadTerminating() then

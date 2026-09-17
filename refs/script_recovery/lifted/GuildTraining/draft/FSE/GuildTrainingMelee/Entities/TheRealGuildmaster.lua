@@ -770,7 +770,8 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
-                        iVar7 = *xStack_23c
+                        -- TODO(native): iVar7 = *xStack_23c
+                        iVar7 = nil --[[unresolved native value]]
                         -- TODO(native): goto LAB_00d5a962
                     end
                     quest:TakeObjectFromHero("OBJECT_IRON_LONGSWORD")

@@ -18,6 +18,18 @@ and the exposed lifter alias bug (`xStack_54 = pCVar6` in both if/else branches 
 `EntityAttachToScript` got nil). Rebuild: `convert_quest_unit.py --unit orchard_farm` → `build_readable_unit.py --unit orchard_farm`
 → `build_unit_playtest_package.py` → local_test.py preflight, then the user-driven in-game run.
 
+**GuildTraining**: converter fixes later the same night — Ghidra-wrapped statements re-joined (`unwrap_statements`, deeply
+indented code splits `+ 0x1d8
+ ))(` and `4)
+ ,0.5`), comma-conditions with call assignments in `if (...) goto L;`,
+the refcount release idiom with casts / `__thing_valid` heads, GGD-pointer registers reused across sibling branches, and a
+post-lift residue guard (any line still carrying C syntax becomes `-- TODO(native)` + `v = nil` so the file compiles):
+**37/37 files compile** (was 26), todo 884 (residue is now counted). Readable stage for guild lives in
+`refs/script_recovery/lifted/GuildTraining/readable_converter/` (20648 -> 12740 lines; the old `readable/` dir is the
+hand-reviewed six-slice artifact the `test_guild_*` tests read — the builder refuses to overwrite it). Smoke
+(`smoke_run_unit.py --unit guild_training --stage draft|readable_converter`): 30 / 29 problems, all draft residue
+(LOCALLIST_Count/GFCharStringToInt pseudo-calls, `fret_N` x87 results, split-slot arithmetic).
+
 Gate script (scratch, recreate if missing): convert_new_oakvale.py --out <tmp> and `diff -r` against
 refs/script_recovery/lifted/NewOakValeIntro (ignore CONVERSION_REPORT.json and baseline-only extras) → must print identical.
 Heredoc-python patches mangle regex backslashes (GOTCHAS) — patch tools through Write/Edit or a script file.

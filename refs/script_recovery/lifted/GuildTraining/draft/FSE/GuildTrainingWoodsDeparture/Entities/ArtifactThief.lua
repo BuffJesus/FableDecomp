@@ -716,7 +716,8 @@ function Main(quest, me)
                     goto LAB_00d63c96
                 end
                 xStack_128 = quest:GetHeroGold()
-                if *(iVar6 + 0xf14) <= xStack_128 then
+                -- TODO(native): if *(iVar6 + 0xf14) <= xStack_128 then
+                if false then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if not bVar2 then

@@ -1080,6 +1080,11 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         scope = re.sub(r'\b' + re.escape(var) + r'\[(\w+)\]', lambda mm: f'ENGINE_GlobalGameDataFloatAt({off}, {idx} + {mm.group(1)})', scope)
         text = head + scope + rest
         pos = len(head)
+    # a register that held the table pointer on another path and is dereferenced with a table offset
+    # after an intervening reuse (`iVar6 = ENGINE_Trunc(..)` in a sibling branch): the deref is a table read
+    for var in set(re.findall(r'^[ \t]*(\w+) = (?:\(\w+ \*+\))?DAT_0143e90c;', text, re.M)):
+        text = re.sub(r'\*\((float|int|undefined4|uint) \*\)\(' + re.escape(var) + r' \+ (0x[0-9a-f]{3,}|\d{3,})\)',
+                      r'*(\1 *)(DAT_0143e90c + \2)', text)
     text = re.sub(r'\*\(float \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameDataFloat(\1)', text)
     text = re.sub(r'\*\((?:int|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
     # the engine's static zero vector (DAT_0143e8e0, zero-initialised .data) as the position of an invalid thing

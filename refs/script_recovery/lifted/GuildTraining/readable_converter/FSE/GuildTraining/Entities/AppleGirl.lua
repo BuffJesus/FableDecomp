@@ -109,7 +109,7 @@ function Main(quest, me)
                 predicateResult6 = false
             end
             ::FLOW_after_lab_00d3d987::
-            if u_stk_74_1 & true then
+            if u_stk_74_1 & 1 ~= 0 then
                 u_stk_74_1 = u_stk_74_1 & 0xfffffffe
             end
             if predicateResult6 then
@@ -134,7 +134,7 @@ function Main(quest, me)
             while true do
                 u_stk_74_1 = u_stk_74_1 | 2
                 predicateResult7 = quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", quest:GetHero()) and (state:GetInt("CurrentApples") + ctr_64 < 4)
-                if u_stk_74_1 & true then
+                if u_stk_74_1 & 2 ~= 0 then
                     u_stk_74_1 = u_stk_74_1 & 0xfffffffd
                 end
                 if not predicateResult7 then break end
@@ -212,7 +212,7 @@ function Main(quest, me)
                 predicateResult10 = false
             end
             ::FLOW_after_lab_00d3e0a0::
-            if u_stk_74_1 & true then
+            if u_stk_74_1 & 4 ~= 0 then
                 u_stk_74_1 = u_stk_74_1 & 0xfffffffb
             end
             if predicateResult10 then
