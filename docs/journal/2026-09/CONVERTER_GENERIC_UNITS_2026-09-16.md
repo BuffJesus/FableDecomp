@@ -459,3 +459,25 @@ Aeon read the share zip's `readable_converter` output as "a Lua version of the d
   been constant-folded into `"" == "EXPRESSION_FOLLOW"`). FSE_UPSTREAM_REQUIREMENTS row corrected.
 - Aeon zip + v5 rebuilt again (preflight ok) after these; v5 packages the *readable* stage, so AcquireControl /
   StartCutscene / blocking Speak folds are what plays.
+
+## Night 6, close: per-entity fields, early exits, TheRealGuildmaster (2026-09-17, bedtime)
+
+- The per-entity `state` shim is gone from readable output: ForgeFSE creates one sol::state per entity instance
+  (LuaManager::RegisterEntityScriptData), so the native class members are file-level locals
+  (`local appleMode, currentApples, ...` under a `-- per-entity fields` comment; `state:GetInt("AppleMode")` -> `appleMode`).
+  A function-local snapshot under the field's own name is dropped when that function never writes either.
+- `flatten_tail_guards`: `if C then <rest> end` whose fall-through only runs exit tails (labels, cleanup, `return`),
+  falls out through enclosing if-blocks to the function end, or reaches a loop's next iteration -> `if not C then goto LAB
+  end` / `... return end` / `goto continue_N` (label inserted before the loop's `end`/`until`), body dedented; a body
+  that ends in `return` with code after it becomes `do return end`; short exit bodies stay. `if C then <comments> else
+  BODY end` inverts. TheRealGuildmaster (PreMelee) readable 2418 -> 2220 lines, top level flat; still 116 columns inside
+  the `while DummyHits < 7` / tutorial loops.
+- Register trace skips an earlier return path's epilogue (`pop ebp … ret`) — Orchard PauseAll pushes traced to
+  `xor ebp,ebp`. Pushed float immediates decode (`MoveToPosition(..., 1.0, ...)`), `iVar7 = 0x3f800000` too.
+- Cutscene fold accepts a lost movie name (`resources:StartMovie("")` bare) and the entity's own control handle as an
+  actor (its retry loop stays; fold_control_acquires takes it afterwards).
+- OPEN in TheRealGuildmaster: 16 `resources:TryAcquire(0, hero, 4)` — Ghidra byte-splits the resource pointer
+  (`SUB41(aCStack_14c,0)` … `CONCAT13(...)`) and `fold_byte_split_pointers` folds 5 of 9 splits (the remaining four
+  have their reassembly in a different spelling / separated by the retry loop); the `me:AcquireControl(4)` inside
+  the retry loops is the lifter's lost-operand fallback. Fix = make the split fold keyed on the object name across
+  the whole function (all `CONCAT13(uVar19,...)` of a block are the same pointer), then the cutscenes there fold too.

@@ -13,7 +13,12 @@ GROUP_SELECT_* names, timers routed per register (CombatApprentice `SetTimer` re
 GetDataString inlines, MsgExpressionPerformedTo returns name-or-nil (binding exists). Aeon zip + v5 rebuilt (preflight ok).
 Full `pytest tools/script_recovery` = green except `test_live_father_intro.py` / `test_watch_barrels_readable.py`
 (stale fixtures, failing since bf13d5d — not this night's work; run the suite ALONE, a concurrent unit rebuild fakes 400+ failures).
-Next: TheRealGuildmaster (2400-line readable, 130-column nesting from goto restructuring), remaining `scratchValue`
+Bedtime state: entity fields are file-level locals (no more `state` shim), early-exit flattening landed
+(TheRealGuildmaster 2418 -> 2220 lines, top level flat, loops still 116 cols). All units rebuilt, smoke Orchard 0 /
+TraderConflict 11 / Guild 11, gate identical, fast tests green. **Tomorrow first**: TheRealGuildmaster's 16
+`TryAcquire(0, hero, 4)` (byte-split resource pointer, `fold_byte_split_pointers` folds 5 of 9 — key it on the object
+name), then its cutscenes fold and the loops flatten; rebuild Aeon zip + v5 (last built before the fields/flatten
+commits — `build_aeon_share_zip.py`, `build_unit_playtest_package.py` command in the journal). Then: remaining `scratchValue`
 temps (1747 in Guild; mostly `= 0` flags and DeregisterTimer cleanups), goto residue, in-game run of v5.
 
 **Later the same night — dropped operands recovered from the machine code** (`recover_dropped_operands` in
