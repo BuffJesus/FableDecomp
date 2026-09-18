@@ -1877,8 +1877,8 @@
        ]
       },
       "iVar6": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
+       "name": "crateListIndex",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -1892,7 +1892,7 @@
        ]
       },
       "uVar7": {
-       "name": "scratchValue2",
+       "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -1942,6 +1942,14 @@
        ]
       },
       "iVar4": {
+       "name": "crateListIndex",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "v_stk_14": {
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -1949,16 +1957,8 @@
         null
        ]
       },
-      "v_stk_14": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
       "v_stk_18": {
-       "name": "scratchValue4",
+       "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -6241,7 +6241,7 @@
       "voidReturns": 0,
       "nilReleases": 0,
       "emptyIfs": 0,
-      "deadStores": 2,
+      "deadStores": 1,
       "unusedAlive": 0,
       "flagTests": 8,
       "declarations": 12,
@@ -6258,7 +6258,7 @@
       "voidReturns": 0,
       "nilReleases": 0,
       "emptyIfs": 0,
-      "deadStores": 2,
+      "deadStores": 1,
       "unusedAlive": 0,
       "flagTests": 12,
       "declarations": 16,
@@ -6639,8 +6639,8 @@
        ]
       },
       "pCVar6": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
+       "name": "thing",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         "guardTeamSpawn",
@@ -6654,14 +6654,14 @@
        ]
       },
       "pCVar8_1": {
-       "name": "scratchValue7",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar8_2": {
-       "name": "scratchValue8",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -7166,8 +7166,8 @@
        ]
       },
       "pCVar5": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
+       "name": "thing",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         "hero",
@@ -7231,8 +7231,8 @@
        ]
       },
       "xStack_7c": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
+       "name": "resource",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         "resource",
         "movie"
@@ -7246,15 +7246,15 @@
        ]
       },
       "xStack_98": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
+       "name": "resource2",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         "movie",
         "resource"
        ]
       },
       "xStack_c0": {
-       "name": "resource",
+       "name": "resource3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource",
@@ -8575,7 +8575,7 @@
     },
     {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 187,
+     "sourceLine": 188,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8584,7 +8584,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 287,
+     "sourceLine": 289,
      "locals": {
       "scratchValue": {
        "name": "thing",
@@ -8602,7 +8602,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 379,
+     "sourceLine": 381,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8611,7 +8611,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 392,
+     "sourceLine": 394,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8620,7 +8620,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 405,
+     "sourceLine": 407,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8629,7 +8629,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 475,
+     "sourceLine": 477,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8637,7 +8637,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 3,
    "style": {
     "functions": {
      "Main": {
@@ -8825,7 +8825,7 @@
      },
      "ProcessGameRulesEvil": {
       "rewrites": {
-       "splitLocals": 2,
+       "splitLocals": 3,
        "closures": 1,
        "hero": 1,
        "cutscenes": 2,
@@ -8861,8 +8861,8 @@
        "controlAcquires": 0,
        "parentheses": 4,
        "cosmetics": 0,
-       "firstAssignments": 1,
-       "freeSuffixes": 1,
+       "firstAssignments": 2,
+       "freeSuffixes": 0,
        "hoistedState": 0
       },
       "before": {
@@ -8875,8 +8875,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 86,
-       "temporaries": 5,
+       "lines": 87,
+       "temporaries": 6,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 11,
@@ -8886,7 +8886,7 @@
      },
      "ProcessGameRulesGood": {
       "rewrites": {
-       "splitLocals": 2,
+       "splitLocals": 3,
        "closures": 1,
        "hero": 1,
        "cutscenes": 2,
@@ -8922,8 +8922,8 @@
        "controlAcquires": 0,
        "parentheses": 6,
        "cosmetics": 0,
-       "firstAssignments": 1,
-       "freeSuffixes": 1,
+       "firstAssignments": 2,
+       "freeSuffixes": 0,
        "hoistedState": 0
       },
       "before": {
@@ -8936,8 +8936,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 99,
-       "temporaries": 5,
+       "lines": 100,
+       "temporaries": 6,
        "labels": 1,
        "gotos": 2,
        "terminationChecks": 15,

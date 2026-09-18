@@ -11,10 +11,9 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local addQuestInfoCounter, scratchValue12, guildmasterTeleport, scratchValue14, scratchValue15
-    local ctr_154, questionAnswer, addNewConversation, switch, actorMap, scratchValue106
-    local preMeleeDummy, preMeleeDummy2, preMeleeDummy3, timerId, scratchValue111, resource
-    local actorMap2, movie, infoCounter, actorMap3, resource3, scratchValue113, resource2, timerId2
-    local timerId3, timerId4
+    local ctr_154, questionAnswer, addNewConversation, switch, actorMap, thing, preMeleeDummy
+    local preMeleeDummy2, preMeleeDummy3, timerId, scratchValue109, resource, actorMap2, movie
+    local infoCounter, actorMap3, movie2, scratchValue110, resource2, timerId2, timerId3, timerId4
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities(false)
     end
@@ -58,7 +57,7 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
     end
     guildmasterTeleport = quest:GetStateBool("GuildmasterTeleport")
-    scratchValue111 = 0
+    scratchValue109 = 0
     while not guildmasterTeleport do
         if not quest:NewScriptFrame(me) then return end
         guildmasterTeleport = quest:GetStateBool("GuildmasterTeleport")
@@ -87,29 +86,29 @@ function Main(quest, me)
         addNewConversation = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(addNewConversation, hero)
         quest:SetTimer(timerId4, 5)
-        switch = scratchValue111
+        switch = scratchValue109
         repeat
             if switch == 0 then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FIRST", me, hero, false)
                 me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
-                scratchValue111 = 1
+                scratchValue109 = 1
                 break
             else
                 if switch == 1 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_SECOND", me, hero, false)
-                    scratchValue111 = 2
+                    scratchValue109 = 2
                     goto FLOW_after_lab_00d53316
                 elseif switch == 2 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_THIRD", me, hero, false)
-                    scratchValue111 = 3
+                    scratchValue109 = 3
                     break
                 elseif switch == 3 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FOURTH", me, hero, false)
-                    scratchValue111 = 2
+                    scratchValue109 = 2
                 end
                 ::FLOW_after_lab_00d53316::
             end
@@ -118,15 +117,15 @@ function Main(quest, me)
     until scratchValue15 == 0
     if quest:IsActiveThreadTerminating() then goto LAB_00d55c46 end
     quest:SetStateBool("WhisperStopFollowing", true)
-    resource3 = resources:NewResource()
-    while not resources:TryAcquire(resource3, hero, 4) do
-        if not quest:NewScriptFrame(me) then resources:DestroyMovie(resource3); goto FLOW_after_lab_00d533bb end
+    movie2 = resources:NewResource()
+    while not resources:TryAcquire(movie2, hero, 4) do
+        if not quest:NewScriptFrame(me) then resources:DestroyMovie(movie2); goto FLOW_after_lab_00d533bb end
     end
     if quest:IsActiveThreadTerminating() then
-        resources:DestroyMovie(resource3)
+        resources:DestroyMovie(movie2)
     else
         actorMap3 = resources:NewActorMap()
-        resources:SetActor(actorMap3, "HERO", resource3)
+        resources:SetActor(actorMap3, "HERO", movie2)
         resources:SetActor(actorMap3, "TEACHER", resource2)
         movie = resources:StartMovie("")
         quest:StartMovieSequence()
@@ -138,7 +137,7 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
         resources:DestroyActorMap(actorMap3)
-        resources:DestroyMovie(resource3)
+        resources:DestroyMovie(movie2)
         if quest:IsXbox() then
             if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d536c0 end
             quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_PUNCH")
@@ -189,16 +188,16 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then goto LAB_00d55c3d end
             quest:RemoveQuestInfoElement(addQuestInfoCounter)
             quest:DisplayQuestInfo(false)
-            resource3 = resources:NewResource()
-            while not resources:TryAcquire(resource3, hero, 4) do
-                if not quest:NewScriptFrame(me) then resources:DestroyMovie(resource3); goto FLOW_after_lab_00d53a0b end
+            movie2 = resources:NewResource()
+            while not resources:TryAcquire(movie2, hero, 4) do
+                if not quest:NewScriptFrame(me) then resources:DestroyMovie(movie2); goto FLOW_after_lab_00d53a0b end
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d53a0b: (native jump target)
-                resources:DestroyMovie(resource3)
+                resources:DestroyMovie(movie2)
             else
                 actorMap3 = resources:NewActorMap()
-                resources:SetActor(actorMap3, "HERO", resource3)
+                resources:SetActor(actorMap3, "HERO", movie2)
                 resources:SetActor(actorMap3, "TEACHER", resource2)
                 movie = resources:StartMovie("")
                 quest:StartMovieSequence()
@@ -209,7 +208,7 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
                 resources:DestroyActorMap(actorMap3)
-                resources:DestroyMovie(resource3)
+                resources:DestroyMovie(movie2)
                 if quest:IsXbox() then
                     if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d53c7e end
                     quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_STICK")
@@ -259,21 +258,21 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d53c7e end
                     quest:RemoveQuestInfoElement(addQuestInfoCounter)
                     quest:DisplayQuestInfo(false)
-                    scratchValue113 = nil
+                    scratchValue110 = nil
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    resource3 = resources:NewResource()
-                    while not resources:TryAcquire(resource3, hero, 4) do
+                    movie2 = resources:NewResource()
+                    while not resources:TryAcquire(movie2, hero, 4) do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
-                            resources:DestroyMovie(resource3)
+                            resources:DestroyMovie(movie2)
                             resources:DestroyMovie(movie)
                             goto FLOW_after_lab_00d53ff2
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         -- LAB_00d53ff2: (native jump target)
-                        resources:DestroyMovie(resource3)
+                        resources:DestroyMovie(movie2)
                         resources:DestroyMovie(movie)
                     else
                         preMeleeDummy = quest:GetThingWithScriptName("PreMeleeDummy")
@@ -284,7 +283,7 @@ function Main(quest, me)
                         quest:CreateEffect(xStack_dc, "SMASH_DUMMY_01", actorMap2, "", 0.0, false, false)
                         quest:FadeOutAndKillEntity(preMeleeDummy, true, 1.0, true)
                         actorMap3 = resources:NewActorMap()
-                        resources:SetActor(actorMap3, "HERO", resource3)
+                        resources:SetActor(actorMap3, "HERO", movie2)
                         resources:SetActor(actorMap3, "TEACHER", resource2)
                         quest:FixMovieSequenceCamera(true)
                         resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap3, false, false)
@@ -296,7 +295,7 @@ function Main(quest, me)
                         quest:FixMovieSequenceCamera(false)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyActorMap(actorMap3)
-                        resources:DestroyMovie(resource3)
+                        resources:DestroyMovie(movie2)
                         resources:DestroyMovie(movie)
                         if quest:IsXbox() then
                             if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d5439e end
@@ -308,7 +307,7 @@ function Main(quest, me)
                             -- LAB_00d5439e: (native jump target)
                             timerId2 = quest:RegisterTimer()
                             quest:SetTimer(timerId2, 10)
-                            while scratchValue113 ~= nil and scratchValue113:IsAlive() do
+                            while scratchValue110 ~= nil and scratchValue110:IsAlive() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                 if quest:GetTimer(timerId2) < 1 then
                                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -319,13 +318,13 @@ function Main(quest, me)
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
                             quest:Pause(0.5)
-                            resource3 = resources:NewResource()
-                            while not resources:TryAcquire(resource3, hero, 4) do
+                            movie2 = resources:NewResource()
+                            while not resources:TryAcquire(movie2, hero, 4) do
                                 if not quest:NewScriptFrame(me) then goto FLOW_after_lab_00d54dfa end
                             end
                             if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d54dfa end
                             actorMap2 = resources:NewActorMap()
-                            resources:SetActor(actorMap2, "HERO", resource3)
+                            resources:SetActor(actorMap2, "HERO", movie2)
                             resources:SetActor(actorMap2, "TEACHER", resource2)
                             resources:StartMovie("")
                             quest:StartMovieSequence()
@@ -350,7 +349,7 @@ function Main(quest, me)
                                 end
                                 quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                 quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_GREEN_SMALL")
-                                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, resource3 ~= 0, true)
+                                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, movie2 ~= 0, true)
                                 ctr_154 = 0
                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                 scratchValue14 = 0
@@ -583,7 +582,7 @@ function Main(quest, me)
                                 -- LAB_00d54846: (native jump target)
                                 quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                 quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_GREEN_SMALL")
-                                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, resource3 ~= 0, true)
+                                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, movie2 ~= 0, true)
                                 ctr_154 = 0
                                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                 scratchValue14 = 0
@@ -941,7 +940,7 @@ function Main(quest, me)
                             -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                             timerId2 = quest:RegisterTimer()
                             quest:SetTimer(timerId2, 10)
-                            while scratchValue113 ~= nil and scratchValue113:IsAlive() do
+                            while scratchValue110 ~= nil and scratchValue110:IsAlive() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c27 end
                                 if quest:GetTimer(timerId2) < 1 then
                                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -952,14 +951,14 @@ function Main(quest, me)
                             end
                             if not quest:IsActiveThreadTerminating() then
                                 quest:Pause(0.5)
-                                resource3 = resources:NewResource()
-                                while not resources:TryAcquire(resource3, hero, 4) do
+                                movie2 = resources:NewResource()
+                                while not resources:TryAcquire(movie2, hero, 4) do
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c27
                                 end
                                 if not quest:IsActiveThreadTerminating() then
                                     actorMap = resources:NewActorMap()
-                                    resources:SetActor(actorMap, "HERO", resource3)
+                                    resources:SetActor(actorMap, "HERO", movie2)
                                     resources:SetActor(actorMap, "TEACHER", resource2)
                                     resources:StartMovie("")
                                     quest:StartMovieSequence()
@@ -993,7 +992,7 @@ function Main(quest, me)
                                                             -- LAB_00d54846_c27: (native jump target)
                                                             quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                             quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_GREEN_SMALL")
-                                                            me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, resource3 ~= 0, true)
+                                                            me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, movie2 ~= 0, true)
                                                             ctr_154 = 0
                                                             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                             scratchValue14 = 0
@@ -1286,19 +1285,19 @@ function Main(quest, me)
                     if not quest:IsActiveThreadTerminating() then
                         quest:RemoveQuestInfoElement(addQuestInfoCounter)
                         quest:DisplayQuestInfo(false)
-                        scratchValue113 = nil
+                        scratchValue110 = nil
                         movie = resources:StartMovie("")
                         quest:StartMovieSequence()
-                        resource3 = resources:NewResource()
-                        scratchValue106 = hero
-                        while not resources:TryAcquire(resource3, scratchValue106, 4) do
+                        movie2 = resources:NewResource()
+                        thing = hero
+                        while not resources:TryAcquire(movie2, thing, 4) do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53ff2_c28
-                            scratchValue106 = hero
+                            thing = hero
                         end
                         if quest:IsActiveThreadTerminating() then
                             -- LAB_00d53ff2_c28: (native jump target)
-                            resources:DestroyMovie(resource3)
+                            resources:DestroyMovie(movie2)
                             resources:DestroyMovie(movie)
                         else
                             preMeleeDummy2 = quest:GetThingWithScriptName("PreMeleeDummy")
@@ -1306,10 +1305,10 @@ function Main(quest, me)
                             -- TODO(native): CStack_114._4_4_ = puVar11[1];
                             -- TODO(native): CStack_114._8_4_ = puVar11[2];
                             -- TODO(native): CreateEffect is not a ForgeFSE binding
-                            quest:CreateEffect(scratchValue106, "SMASH_DUMMY_01", actorMap, "", 0.0, false, false)
+                            quest:CreateEffect(thing, "SMASH_DUMMY_01", actorMap, "", 0.0, false, false)
                             quest:FadeOutAndKillEntity(preMeleeDummy2, true, 1.0, true)
                             actorMap3 = resources:NewActorMap()
-                            resources:SetActor(actorMap3, "HERO", resource3)
+                            resources:SetActor(actorMap3, "HERO", movie2)
                             resources:SetActor(actorMap3, "TEACHER", resource2)
                             quest:FixMovieSequenceCamera(true)
                             resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap3, false, false)
@@ -1321,7 +1320,7 @@ function Main(quest, me)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyActorMap(actorMap3)
-                            resources:DestroyMovie(resource3)
+                            resources:DestroyMovie(movie2)
                             resources:DestroyMovie(movie)
                             if quest:IsXbox() then
                                 if not quest:IsActiveThreadTerminating() then
@@ -1333,7 +1332,7 @@ function Main(quest, me)
                                         -- LAB_00d5439e_c28: (native jump target)
                                         timerId2 = quest:RegisterTimer()
                                         quest:SetTimer(timerId2, 10)
-                                        while scratchValue113 ~= nil and scratchValue113:IsAlive() do
+                                        while scratchValue110 ~= nil and scratchValue110:IsAlive() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c28 end
                                             if quest:GetTimer(timerId2) < 1 then
                                                 addNewConversation = quest:AddNewConversation(me, false, false)
@@ -1344,14 +1343,14 @@ function Main(quest, me)
                                         end
                                         if not quest:IsActiveThreadTerminating() then
                                             quest:Pause(0.5)
-                                            resource3 = resources:NewResource()
-                                            while not resources:TryAcquire(resource3, hero, 4) do
+                                            movie2 = resources:NewResource()
+                                            while not resources:TryAcquire(movie2, hero, 4) do
                                                 quest:NewScriptFrame(me)
                                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c28
                                             end
                                             if not quest:IsActiveThreadTerminating() then
                                                 actorMap = resources:NewActorMap()
-                                                resources:SetActor(actorMap, "HERO", resource3)
+                                                resources:SetActor(actorMap, "HERO", movie2)
                                                 resources:SetActor(actorMap, "TEACHER", resource2)
                                                 resources:StartMovie("")
                                                 quest:StartMovieSequence()
@@ -1385,7 +1384,7 @@ function Main(quest, me)
                                                                         -- LAB_00d54846_c28: (native jump target)
                                                                         quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                                         quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_GREEN_SMALL")
-                                                                        me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, resource3 ~= 0, true)
+                                                                        me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, movie2 ~= 0, true)
                                                                         ctr_154 = 0
                                                                         quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                         scratchValue14 = 0
@@ -1697,17 +1696,17 @@ function Main(quest, me)
             if not quest:IsActiveThreadTerminating() then
                 quest:RemoveQuestInfoElement(addQuestInfoCounter)
                 quest:DisplayQuestInfo(false)
-                resource3 = resources:NewResource()
-                while not resources:TryAcquire(resource3, hero, 4) do
+                movie2 = resources:NewResource()
+                while not resources:TryAcquire(movie2, hero, 4) do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53a0b_c29
                 end
                 if quest:IsActiveThreadTerminating() then
                     -- LAB_00d53a0b_c29: (native jump target)
-                    resources:DestroyMovie(resource3)
+                    resources:DestroyMovie(movie2)
                 else
                     actorMap3 = resources:NewActorMap()
-                    resources:SetActor(actorMap3, "HERO", resource3)
+                    resources:SetActor(actorMap3, "HERO", movie2)
                     resources:SetActor(actorMap3, "TEACHER", resource2)
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
@@ -1718,7 +1717,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     resources:DestroyActorMap(actorMap3)
-                    resources:DestroyMovie(resource3)
+                    resources:DestroyMovie(movie2)
                     if quest:IsXbox() then
                         if not quest:IsActiveThreadTerminating() then
                             quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_STICK")
@@ -1768,19 +1767,19 @@ function Main(quest, me)
                                 if not quest:IsActiveThreadTerminating() then
                                     quest:RemoveQuestInfoElement(addQuestInfoCounter)
                                     quest:DisplayQuestInfo(false)
-                                    scratchValue113 = nil
+                                    scratchValue110 = nil
                                     movie = resources:StartMovie("")
                                     quest:StartMovieSequence()
-                                    resource3 = resources:NewResource()
-                                    scratchValue106 = hero
-                                    while not resources:TryAcquire(resource3, scratchValue106, 4) do
+                                    movie2 = resources:NewResource()
+                                    thing = hero
+                                    while not resources:TryAcquire(movie2, thing, 4) do
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53ff2_c29
-                                        scratchValue106 = hero
+                                        thing = hero
                                     end
                                     if quest:IsActiveThreadTerminating() then
                                         -- LAB_00d53ff2_c29: (native jump target)
-                                        resources:DestroyMovie(resource3)
+                                        resources:DestroyMovie(movie2)
                                         resources:DestroyMovie(movie)
                                     else
                                         preMeleeDummy3 = quest:GetThingWithScriptName("PreMeleeDummy")
@@ -1788,10 +1787,10 @@ function Main(quest, me)
                                         -- TODO(native): CStack_114._4_4_ = puVar11[1];
                                         -- TODO(native): CStack_114._8_4_ = puVar11[2];
                                         -- TODO(native): CreateEffect is not a ForgeFSE binding
-                                        quest:CreateEffect(scratchValue106, "SMASH_DUMMY_01", actorMap, "", 0.0, false, false)
+                                        quest:CreateEffect(thing, "SMASH_DUMMY_01", actorMap, "", 0.0, false, false)
                                         quest:FadeOutAndKillEntity(preMeleeDummy3, true, 1.0, true)
                                         actorMap3 = resources:NewActorMap()
-                                        resources:SetActor(actorMap3, "HERO", resource3)
+                                        resources:SetActor(actorMap3, "HERO", movie2)
                                         resources:SetActor(actorMap3, "TEACHER", resource2)
                                         quest:FixMovieSequenceCamera(true)
                                         resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap3, false, false)
@@ -1803,7 +1802,7 @@ function Main(quest, me)
                                         quest:FixMovieSequenceCamera(false)
                                         quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyActorMap(actorMap3)
-                                        resources:DestroyMovie(resource3)
+                                        resources:DestroyMovie(movie2)
                                         resources:DestroyMovie(movie)
                                         if quest:IsXbox() then
                                             if not quest:IsActiveThreadTerminating() then
@@ -1815,7 +1814,7 @@ function Main(quest, me)
                                                     -- LAB_00d5439e_c29: (native jump target)
                                                     timerId2 = quest:RegisterTimer()
                                                     quest:SetTimer(timerId2, 10)
-                                                    while scratchValue113 ~= nil and scratchValue113:IsAlive() do
+                                                    while scratchValue110 ~= nil and scratchValue110:IsAlive() do
                                                         if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c29 end
                                                         if quest:GetTimer(timerId2) < 1 then
                                                             addNewConversation = quest:AddNewConversation(me, false, false)
@@ -1826,14 +1825,14 @@ function Main(quest, me)
                                                     end
                                                     if not quest:IsActiveThreadTerminating() then
                                                         quest:Pause(0.5)
-                                                        resource3 = resources:NewResource()
-                                                        while not resources:TryAcquire(resource3, hero, 4) do
+                                                        movie2 = resources:NewResource()
+                                                        while not resources:TryAcquire(movie2, hero, 4) do
                                                             quest:NewScriptFrame(me)
                                                             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c29
                                                         end
                                                         if not quest:IsActiveThreadTerminating() then
                                                             actorMap = resources:NewActorMap()
-                                                            resources:SetActor(actorMap, "HERO", resource3)
+                                                            resources:SetActor(actorMap, "HERO", movie2)
                                                             resources:SetActor(actorMap, "TEACHER", resource2)
                                                             resources:StartMovie("")
                                                             quest:StartMovieSequence()
@@ -1867,7 +1866,7 @@ function Main(quest, me)
                                                                                     -- LAB_00d54846_c29: (native jump target)
                                                                                     quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                                                     quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_GREEN_SMALL")
-                                                                                    me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, resource3 ~= 0, true)
+                                                                                    me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_GUARD"):GetPos(), 1.0, 0, movie2 ~= 0, true)
                                                                                     ctr_154 = 0
                                                                                     quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02_OPTION_01", "GuildWoods", "")
                                                                                     scratchValue14 = 0

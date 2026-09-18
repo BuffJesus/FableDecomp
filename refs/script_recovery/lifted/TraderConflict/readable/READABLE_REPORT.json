@@ -5937,15 +5937,15 @@
        ]
       },
       "piVar6": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
+       "name": "allCreaturesIndex",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
        ]
       },
       "uVar7": {
-       "name": "scratchValue8",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -6093,6 +6093,62 @@
      "function": "Main",
      "sourceLine": 19,
      "locals": {
+      "scratchValue": {
+       "name": "allCreaturesOffset",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null,
+        null
+       ]
+      },
+      "scratchValue2": {
+       "name": "allCreaturesOffset2",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null,
+        null
+       ]
+      },
+      "scratchValue3": {
+       "name": "allCreaturesOffset3",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "scratchValue4": {
+       "name": "allCreaturesOffset4",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "scratchValue12": {
+       "name": "allCreaturesOffset5",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        "bsSlumBedBrown01Count",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ]
+      },
       "scratchValue25": {
        "name": "oakvaleVillagerMaleFakeShopkeeper",
        "basis": "consistent call/state result",
@@ -6134,7 +6190,17 @@
     {
      "function": "UpdateLiveEnemies",
      "sourceLine": 523,
-     "locals": {},
+     "locals": {
+      "scratchValue6": {
+       "name": "allCreaturesIndex2",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null,
+        null
+       ]
+      }
+     },
      "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
@@ -10921,8 +10987,8 @@
        ]
       },
       "pvVar8": {
-       "name": "scratchValue16",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
@@ -10935,21 +11001,21 @@
        ]
       },
       "r10": {
-       "name": "scratchValue17",
+       "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r11": {
-       "name": "scratchValue18",
+       "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r12": {
-       "name": "scratchValue19",
+       "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -11054,7 +11120,7 @@
        ]
       },
       "uVar12": {
-       "name": "scratchValue20",
+       "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -11071,7 +11137,7 @@
        ]
       },
       "uVar14": {
-       "name": "scratchValue21",
+       "name": "scratchValue20",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -11190,8 +11256,8 @@
        ]
       },
       "xStack_148": {
-       "name": "resource",
-       "basis": "named by the API that consumes it",
+       "name": "scratchValue21",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "resource",
         null
@@ -12299,15 +12365,15 @@
        ]
       },
       "piVar4": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
+       "name": "allCreaturesIndex",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
        ]
       },
       "uVar5": {
-       "name": "scratchValue9",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -12933,8 +12999,8 @@
        ]
       },
       "iVar9": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
+       "name": "allCreaturesIndex",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -12983,7 +13049,7 @@
        ]
       },
       "uVar8_1": {
-       "name": "scratchValue2",
+       "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -13350,15 +13416,15 @@
        ]
       },
       "iVar5": {
-       "name": "scratchValue2",
-       "basis": "reused or unresolved native temporary",
+       "name": "allCreaturesIndex",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
        ]
       },
       "uVar4": {
-       "name": "scratchValue3",
+       "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -14443,15 +14509,15 @@
        ]
       },
       "piVar4": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
+       "name": "allCreaturesIndex",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
        ]
       },
       "uVar5": {
-       "name": "scratchValue9",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -15023,7 +15089,16 @@
     {
      "function": "WatchForHittingEnemies",
      "sourceLine": 156,
-     "locals": {},
+     "locals": {
+      "scratchValue": {
+       "name": "allCreaturesIndex",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      }
+     },
      "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},

@@ -17,13 +17,13 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local addQuestInfoTickByText, scratchValue, scratchValue4, scratchValue5, scratchValue8
-    local scratchValue9, scratchValue10, c_stk_215_1, c_stk_215_2, c_stk_215_3, infoElement
-    local getMasterGameState, infoCounter, scratchValue14, questionAnswer, conversationId
-    local addNewConversation, conversationId2, conversationId3, conversationId4, scratchValue25
-    local scratchValue32, scratchValue33, scratchValue37, scratchValue38, archeryRing
+    local scratchValue9, ticked, c_stk_215_1, c_stk_215_2, c_stk_215_3, infoElement
+    local getMasterGameState, infoCounter, scratchValue13, questionAnswer, conversationId
+    local addNewConversation, conversationId2, conversationId3, conversationId4, scratchValue24
+    local index, scratchValue31, scratchValue35, scratchValue36, archeryRing
     local guildEvilApprenticeMale, actorMap, actorMap2, resource7, resource8, resource9, actorMap3
     local movie, movie2, movie3, getMasterGameState5, infoCounter3, infoCounter4
-    local getMasterGameState6, addQuestInfoTickByText2, scratchValue42, infoElement2
+    local getMasterGameState6, addQuestInfoTickByText2, scratchValue39, infoElement2
     local addQuestInfoTickByText3, addQuestInfoTickByText4, addQuestInfoTickByText5
     local addQuestInfoTickByText6, resource, timerId, timerId4, timerId5, movie4
     local function __cleanup_LAB_00d5dac4()
@@ -230,18 +230,18 @@ function Main(quest, me)
                 resources:ReleaseResource(resource)
                 return
             end
-            scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-            scratchValue5 = scratchValue10
+            ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+            scratchValue5 = ticked
             if scratchValue5 then
                 -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                 quest:IsPlayerHoldingLockTargetButton()
-                scratchValue5 = scratchValue10
+                scratchValue5 = ticked
             end
             scratchValue4 = scratchValue5
             if scratchValue4 then
                 -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                 quest:IsPlayerHoldingFireRangedWeaponButton()
-                scratchValue4 = scratchValue10
+                scratchValue4 = ticked
             end
             if scratchValue4 then
                 if quest:IsActiveThreadTerminating() then
@@ -261,14 +261,14 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText2, scratchValue10)
+                ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText2, ticked)
                 -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                 quest:IsPlayerHoldingLockTargetButton()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText5, scratchValue10)
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText5, ticked)
                 -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                 quest:IsPlayerHoldingFireRangedWeaponButton()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText3, scratchValue10)
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText3, ticked)
                 if quest:GetTimer(timerId4) < 1 then
                     infoElement = 6.0
                     if quest:IsDistanceBetweenThingsUnder(hero, archeryRing, 6.0) and not quest:IsConversationActive(addNewConversation) then
@@ -278,14 +278,14 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                        if scratchValue10 then
+                        ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+                        if ticked then
                             -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                             quest:IsPlayerHoldingLockTargetButton()
-                            if scratchValue10 then
+                            if ticked then
                                 -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                                 quest:IsPlayerHoldingFireRangedWeaponButton()
-                                if scratchValue10 then goto LAB_00d5bf6c end
+                                if ticked then goto LAB_00d5bf6c end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId4)
                                     quest:DeregisterTimer(timerId5)
@@ -492,7 +492,7 @@ function Main(quest, me)
         if not quest:IsXbox() then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId4); quest:DeregisterTimer(timerId5); resources:ReleaseResource(resource); return end
             addQuestInfoTickByText = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-            scratchValue42 = addQuestInfoTickByText
+            scratchValue39 = addQuestInfoTickByText
             addQuestInfoTickByText6 = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
             addQuestInfoTickByText4 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
             goto LAB_00d5c6b1
@@ -508,7 +508,7 @@ function Main(quest, me)
             return
         end
         addQuestInfoTickByText = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
-        scratchValue42 = addQuestInfoTickByText
+        scratchValue39 = addQuestInfoTickByText
         addQuestInfoTickByText6 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
         addQuestInfoTickByText4 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
         ::LAB_00d5c6b1::
@@ -524,20 +524,20 @@ function Main(quest, me)
             end
             if quest:GetTimer(timerId4) < 1 then
                 if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then
-                    scratchValue10 = false
+                    ticked = false
                     goto FLOW_after_lab_00d5c757
                 end
                 infoElement = 6.0
                 if not quest:IsDistanceBetweenThingsUnder(hero, archeryRing, 6.0) then
-                    scratchValue10 = false
+                    ticked = false
                     goto FLOW_after_lab_00d5c757
                 end
-                scratchValue10 = true
+                ticked = true
             else
-                scratchValue10 = false
+                ticked = false
             end
             ::FLOW_after_lab_00d5c757::
-            if scratchValue10 then
+            if ticked then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId4)
                     quest:DeregisterTimer(timerId5)
@@ -589,7 +589,7 @@ function Main(quest, me)
                     return
                 end
                 quest:SetTimer(timerId4, 15)
-                addQuestInfoTickByText = scratchValue42
+                addQuestInfoTickByText = scratchValue39
             end
             if quest:MsgOnHeroFiredRangedWeapon() then
                 if quest:IsActiveThreadTerminating() then
@@ -599,18 +599,18 @@ function Main(quest, me)
                     return
                 end
             end
-            scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-            scratchValue9 = scratchValue10
+            ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+            scratchValue9 = ticked
             if scratchValue9 then
                 -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
                 quest:IsHeroInProjectileWeaponMode()
-                scratchValue9 = scratchValue10
+                scratchValue9 = ticked
             end
             scratchValue8 = scratchValue9
             if scratchValue8 then
                 -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                 quest:IsPlayerHoldingFireRangedWeaponButton()
-                scratchValue8 = scratchValue10
+                scratchValue8 = ticked
             end
             if scratchValue8 then
                 if quest:IsActiveThreadTerminating() then
@@ -631,14 +631,14 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText, scratchValue10)
+                ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText, ticked)
                 -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
                 quest:IsHeroInProjectileWeaponMode()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText6, scratchValue10)
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText6, ticked)
                 -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                 quest:IsPlayerHoldingFireRangedWeaponButton()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText4, scratchValue10)
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText4, ticked)
             end
             ::continue_9::
         until true
@@ -684,15 +684,15 @@ function Main(quest, me)
             end
             if quest:GetTimer(timerId4) < 1 then
                 if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then
-                    scratchValue10 = false
+                    ticked = false
                     goto FLOW_after_lab_00d5cd47
                 end
-                scratchValue10 = true
+                ticked = true
             else
-                scratchValue10 = false
+                ticked = false
             end
             ::FLOW_after_lab_00d5cd47::
-            if scratchValue10 then
+            if ticked then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                 conversationId3 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId3, hero)
@@ -714,18 +714,18 @@ function Main(quest, me)
                 quest:SetTimer(timerId4, 15)
             end
             if not playerNotWarned then
-                scratchValue10 = false
+                ticked = false
             else
                 -- TODO(native): CVar10 = *(this + 4)
                 scratchValue = nil --[[unresolved native value]]
                 infoElement = 6.0
                 -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
-                scratchValue37 = nil --[[unresolved native value]]
+                scratchValue35 = nil --[[unresolved native value]]
                 -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
-                scratchValue33 = nil --[[unresolved native value]]
-                scratchValue10 = quest:IsDistanceBetweenThingsOver(scratchValue33, scratchValue37, 6.0)
+                scratchValue31 = nil --[[unresolved native value]]
+                ticked = quest:IsDistanceBetweenThingsOver(scratchValue31, scratchValue35, 6.0)
             end
-            if scratchValue10 then
+            if ticked then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                 playerNotWarned = false
                 conversationId4 = quest:AddNewConversation(me, false, false)
@@ -764,38 +764,38 @@ function Main(quest, me)
         if xStack_21c_b3 == 0 then
             if not quest:IsActiveThreadTerminating() then
                 getMasterGameState6 = quest:GetMasterGameState("SkillScore")
-                scratchValue32 = 0
-                scratchValue14 = 0
+                index = 0
+                scratchValue13 = 0
                 repeat
-                    scratchValue25 = scratchValue14
-                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue32) < getMasterGameState6 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue32) == getMasterGameState6) then
+                    scratchValue24 = scratchValue13
+                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) < getMasterGameState6 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) == getMasterGameState6) then
                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
                         break
                     end
-                    scratchValue14 = scratchValue25 + 1
-                    scratchValue32 = scratchValue32 + 1
-                until scratchValue14 >= 7
-                scratchValue38 = resources:NewStringMap()
+                    scratchValue13 = scratchValue24 + 1
+                    index = index + 1
+                until scratchValue13 >= 7
+                scratchValue36 = resources:NewStringMap()
                 repeat
-                    if scratchValue25 == 0 then
+                    if scratchValue24 == 0 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_114);
                         break
-                    elseif scratchValue25 == 1 then
+                    elseif scratchValue24 == 1 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_10c);
                         break
-                    elseif scratchValue25 == 2 then
+                    elseif scratchValue24 == 2 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_104);
                         break
-                    elseif scratchValue25 == 3 then
+                    elseif scratchValue24 == 3 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_fc);
                         break
-                    elseif scratchValue25 == 4 then
+                    elseif scratchValue24 == 4 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_f4);
                         break
-                    elseif scratchValue25 == 5 then
+                    elseif scratchValue24 == 5 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_ec);
                         break
-                    elseif scratchValue25 == 6 then
+                    elseif scratchValue24 == 6 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_e4);
                         break
                     else
@@ -803,8 +803,8 @@ function Main(quest, me)
                     end
                 until true
                 ::FLOW_native_label_1::
-                resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", actorMap3, scratchValue38, false, false)
-                resources:DestroyStringMap(scratchValue38)
+                resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", actorMap3, scratchValue36, false, false)
+                resources:DestroyStringMap(scratchValue36)
                 goto LAB_00d5d526
             end
             -- TODO(native): goto LAB_00d5db62

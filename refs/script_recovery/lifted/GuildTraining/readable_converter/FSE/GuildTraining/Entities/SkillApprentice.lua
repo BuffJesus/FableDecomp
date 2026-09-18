@@ -18,7 +18,7 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult, isActiveThreadTerminating, scratchValue2, scratchValue3, scratchValue4
     local getMasterGameState, questionAnswer, infoCounter, scratchValue, conversationId
-    local conversationId2, scratchValue23, scratchValue25, p0, skillApprenticeTargetMarker, movie
+    local conversationId2, scratchValue23, index, p0, skillApprenticeTargetMarker, movie
     local infoCounter2, timerId, resource, timerId3, movie2, movie3, infoElement
     local function __cleanup_LAB_00d4dd41()
         quest:DeregisterTimer(timerId3)
@@ -284,15 +284,15 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                 infoElement = quest:GetMasterGameState("SkillScore")
-                scratchValue25 = 0
+                index = 0
                 scratchValue = 0
                 repeat
                     scratchValue23 = scratchValue
-                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue25) <= infoElement then
+                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) <= infoElement then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                         break
                     end
-                    scratchValue25 = scratchValue25 + 1
+                    index = index + 1
                     scratchValue = scratchValue23 + 1
                 until not (scratchValue23 + 1 < 7)
                 if not hero:AcquireControl(4) then goto LAB_00d4de34 end

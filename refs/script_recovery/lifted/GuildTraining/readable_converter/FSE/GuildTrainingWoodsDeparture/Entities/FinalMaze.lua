@@ -12,9 +12,9 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult3, scratchValue5, predicateResult4, predicateResult9, predicateResult
     local scratchValue, predicateResult15, predicateResult16, scratchValue19, addNewConversation
-    local getStateInt, infoCounter, getStateInt2, infoCounter2, getStateInt3, scratchValue32
-    local scratchValue33, resource, infoCounter3, timerId
-    scratchValue32 = 0
+    local getStateInt, infoCounter, getStateInt2, infoCounter2, getStateInt3, scratchValue31
+    local scratchValue32, resource, infoCounter3, timerId
+    scratchValue31 = 0
     if not quest:NewScriptFrame(me) then return end
     if not me:AcquireControl(4) then goto LAB_00d664b9 end
     notFighting = true
@@ -54,24 +54,24 @@ function Main(quest, me)
     addNewConversation = 0
     while notBeaten do
         if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
-        scratchValue33 = scratchValue32 | 3
+        scratchValue32 = scratchValue31 | 3
         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
             predicateResult3 = true
         else
-            scratchValue33 = scratchValue32 | 15
+            scratchValue32 = scratchValue31 | 15
             predicateResult3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
         end
-        if scratchValue33 & 8 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffff7
+        if scratchValue32 & 8 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffffff7
         end
-        if scratchValue33 & 4 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffffb
+        if scratchValue32 & 4 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffffffb
         end
-        if scratchValue33 & 2 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffffd
+        if scratchValue32 & 2 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffffffd
         end
-        if scratchValue33 & 1 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffffe
+        if scratchValue32 & 1 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffffffe
         end
         if predicateResult3 then
             getStateInt = beenHit + 1
@@ -83,10 +83,10 @@ function Main(quest, me)
             quest:UpdateQuestInfoCounter(infoCounter3, beenHit, -1)
             if not (quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation)) then goto continue_1 end
             if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-            scratchValue32 = math.random(0, 32767) & 0x80000001
-            scratchValue5 = scratchValue32 == 0
-            if scratchValue32 < 0 then
-                scratchValue5 = (scratchValue32 - 1 | 0xfffffffe) == 0xffffffff
+            scratchValue31 = math.random(0, 32767) & 0x80000001
+            scratchValue5 = scratchValue31 == 0
+            if scratchValue31 < 0 then
+                scratchValue5 = (scratchValue31 - 1 | 0xfffffffe) == 0xffffffff
             end
             if scratchValue5 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
@@ -108,7 +108,7 @@ function Main(quest, me)
                     goto FLOW_after_lab_00d64f56
                 end
             else
-                scratchValue32 = scratchValue33 | 240
+                scratchValue31 = scratchValue32 | 240
                 if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW") then
                     predicateResult4 = true
                     if not quest:IsConversationActive(addNewConversation) then
@@ -118,17 +118,17 @@ function Main(quest, me)
                 predicateResult4 = false
             end
             ::FLOW_after_lab_00d64f56::
-            if scratchValue32 < 0 then
-                scratchValue32 = scratchValue32 & 0xffffff7f
+            if scratchValue31 < 0 then
+                scratchValue31 = scratchValue31 & 0xffffff7f
             end
-            if scratchValue32 & 64 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffffbf
+            if scratchValue31 & 64 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffffffbf
             end
-            if scratchValue32 & 32 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffffdf
+            if scratchValue31 & 32 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffffffdf
             end
-            if scratchValue32 & 16 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffffef
+            if scratchValue31 & 16 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffffffef
             end
             if predicateResult4 then
                 addNewConversation = quest:AddNewConversation(me, false, false)
@@ -188,7 +188,7 @@ function Main(quest, me)
     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
     while notBeaten do
         if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
-        scratchValue33 = scratchValue32 | 768
+        scratchValue32 = scratchValue31 | 768
         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
             predicateResult9 = true
             if quest:IsConversationActive(addNewConversation) then
@@ -196,7 +196,7 @@ function Main(quest, me)
                 goto FLOW_after_lab_00d654e6
             end
         else
-            scratchValue33 = scratchValue32 | 3840
+            scratchValue32 = scratchValue31 | 3840
             if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA") then
                 predicateResult9 = true
                 if not quest:IsConversationActive(addNewConversation) then
@@ -206,17 +206,17 @@ function Main(quest, me)
             predicateResult9 = false
         end
         ::FLOW_after_lab_00d654e6::
-        if scratchValue33 & 2048 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffff7ff
+        if scratchValue32 & 2048 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffff7ff
         end
-        if scratchValue33 & 1024 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffbff
+        if scratchValue32 & 1024 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffffbff
         end
-        if scratchValue33 & 512 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffdff
+        if scratchValue32 & 512 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffffdff
         end
-        if scratchValue33 & 256 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffeff
+        if scratchValue32 & 256 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffffeff
         end
         if predicateResult9 then
             addNewConversation = quest:AddNewConversation(me, false, false)
@@ -227,20 +227,20 @@ function Main(quest, me)
             if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW") then
                 predicateResult = true
             else
-                scratchValue32 = scratchValue33 | 0xf000
+                scratchValue31 = scratchValue32 | 0xf000
                 predicateResult = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
             end
-            if scratchValue32 >> 8 < 0 then
-                scratchValue32 = scratchValue32 & 0xffff7fff
+            if scratchValue31 >> 8 < 0 then
+                scratchValue31 = scratchValue31 & 0xffff7fff
             end
-            if scratchValue32 & 0x4000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffbfff
+            if scratchValue31 & 0x4000 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffffbfff
             end
-            if scratchValue32 & 0x2000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffdfff
+            if scratchValue31 & 0x2000 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffffdfff
             end
-            if scratchValue32 & 4096 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffefff
+            if scratchValue31 & 4096 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffffefff
             end
             if predicateResult then
                 getStateInt2 = beenHit + 1
@@ -252,10 +252,10 @@ function Main(quest, me)
                 quest:UpdateQuestInfoCounter(infoCounter, beenHit, -1)
                 if not (quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation)) then goto continue_3 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-                scratchValue33 = math.random(0, 32767) & 0x80000001
-                scratchValue = scratchValue33 == 0
-                if scratchValue33 < 0 then
-                    scratchValue = (scratchValue33 - 1 | 0xfffffffe) == 0xffffffff
+                scratchValue32 = math.random(0, 32767) & 0x80000001
+                scratchValue = scratchValue32 == 0
+                if scratchValue32 < 0 then
+                    scratchValue = (scratchValue32 - 1 | 0xfffffffe) == 0xffffffff
                 end
                 if scratchValue then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
@@ -322,7 +322,7 @@ function Main(quest, me)
     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
     while notBeaten do
         if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
-        scratchValue33 = scratchValue32 | 0x30000
+        scratchValue32 = scratchValue31 | 0x30000
         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
             predicateResult15 = true
             if quest:IsConversationActive(addNewConversation) then
@@ -330,7 +330,7 @@ function Main(quest, me)
                 goto FLOW_after_lab_00d65d66
             end
         else
-            scratchValue33 = scratchValue32 | 0xf0000
+            scratchValue32 = scratchValue31 | 0xf0000
             if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA") then
                 predicateResult15 = true
                 if not quest:IsConversationActive(addNewConversation) then
@@ -340,17 +340,17 @@ function Main(quest, me)
             predicateResult15 = false
         end
         ::FLOW_after_lab_00d65d66::
-        if scratchValue33 & 0x80000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfff7ffff
+        if scratchValue32 & 0x80000 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfff7ffff
         end
-        if scratchValue33 & 0x40000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffbffff
+        if scratchValue32 & 0x40000 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffbffff
         end
-        if scratchValue33 & 0x20000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffdffff
+        if scratchValue32 & 0x20000 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffdffff
         end
-        if scratchValue33 & 0x10000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffeffff
+        if scratchValue32 & 0x10000 ~= 0 then
+            scratchValue32 = scratchValue32 & 0xfffeffff
         end
         if predicateResult15 then
             addNewConversation = quest:AddNewConversation(me, false, false)
@@ -365,7 +365,7 @@ function Main(quest, me)
                     goto FLOW_after_lab_00d65f0c
                 end
             else
-                scratchValue32 = scratchValue33 | 0xf00000
+                scratchValue31 = scratchValue32 | 0xf00000
                 if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW") then
                     predicateResult16 = true
                     if not quest:IsConversationActive(addNewConversation) then
@@ -375,17 +375,17 @@ function Main(quest, me)
                 predicateResult16 = false
             end
             ::FLOW_after_lab_00d65f0c::
-            if scratchValue32 & 0x800000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xff7fffff
+            if scratchValue31 & 0x800000 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xff7fffff
             end
-            if scratchValue32 & 0x400000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffbfffff
+            if scratchValue31 & 0x400000 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffbfffff
             end
-            if scratchValue32 & 0x200000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffdfffff
+            if scratchValue31 & 0x200000 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffdfffff
             end
-            if scratchValue32 & 0x100000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffefffff
+            if scratchValue31 & 0x100000 ~= 0 then
+                scratchValue31 = scratchValue31 & 0xffefffff
             end
             if predicateResult16 then
                 addNewConversation = quest:AddNewConversation(me, false, false)
@@ -403,10 +403,10 @@ function Main(quest, me)
                     quest:UpdateQuestInfoCounter(infoCounter2, beenHit, -1)
                     if quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation) then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-                        scratchValue33 = math.random(0, 32767) & 0x80000001
-                        scratchValue19 = scratchValue33 == 0
-                        if scratchValue33 < 0 then
-                            scratchValue19 = (scratchValue33 - 1 | 0xfffffffe) == 0xffffffff
+                        scratchValue32 = math.random(0, 32767) & 0x80000001
+                        scratchValue19 = scratchValue32 == 0
+                        if scratchValue32 < 0 then
+                            scratchValue19 = (scratchValue32 - 1 | 0xfffffffe) == 0xffffffff
                         end
                         if scratchValue19 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end

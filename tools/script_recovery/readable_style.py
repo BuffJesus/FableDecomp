@@ -728,6 +728,8 @@ def fold_guard_wrappers(lines):
             for j in range(i + 1, end):
                 if lines[j].startswith(indent + '    '):
                     lines[j] = lines[j][4:]
+                elif lines[j].lstrip().startswith('--'):
+                    pass                     # a comment an earlier fold orphaned at the guard's own indent
                 elif lines[j].strip():
                     raise ValueError('guard body indentation')
             lines[end] = ''

@@ -594,7 +594,7 @@ function CheckFriendlyAttacks(quest)
     local movie, predicateResult5, predicateResult6, predicateResult, scratchValue, conversationId
     local scratchValue15, scratchValue16, scratchValue17, heroWarnings, scratchValue22
     local scratchValue23, getThingWithScriptName, scratchValue24, scratchValue25, actorMap, resource
-    local conversationId2, scratchValue26, scratchValue27
+    local conversationId2, thing, scratchValue26
     getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
     scratchValue15 = getThingWithScriptName - 0 >> 31
     scratchValue24 = 0
@@ -702,12 +702,12 @@ function CheckFriendlyAttacks(quest)
                     predicateResult6 = false
                     goto FLOW_after_lab_00d45782
                 end
-                if scratchValue27 ~= nil and scratchValue27:MsgIsHitByHero() then
+                if scratchValue26 ~= nil and scratchValue26:MsgIsHitByHero() then
                     predicateResult6 = false
                     goto FLOW_after_lab_00d45782
                 end
-                if scratchValue27 ~= nil and scratchValue27:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if scratchValue27 == nil or not scratchValue27:MsgIsHitByHeroSpecialAbility(14) then
+                if scratchValue26 ~= nil and scratchValue26:MsgIsHitByAnySpecialAbilityFromHero() then
+                    if scratchValue26 == nil or not scratchValue26:MsgIsHitByHeroSpecialAbility(14) then
                         predicateResult6 = false
                         goto FLOW_after_lab_00d45782
                     end
@@ -717,9 +717,9 @@ function CheckFriendlyAttacks(quest)
                 -- TODO(native): MsgHitFriendWithMeleeWeapon is not a ForgeFSE binding
                 if hero:MsgHitFriendWithMeleeWeapon() then
                     if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue27 ~= nil and scratchValue27:MsgIsHitByHero() then goto LAB_00d45782 end
-                    if scratchValue27 ~= nil and scratchValue27:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if scratchValue27 == nil or not scratchValue27:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
+                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByHero() then goto LAB_00d45782 end
+                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByAnySpecialAbilityFromHero() then
+                        if scratchValue26 == nil or not scratchValue26:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
                     end
                     predicateResult6 = true
                     goto FLOW_after_lab_00d45782
@@ -727,9 +727,9 @@ function CheckFriendlyAttacks(quest)
                 -- TODO(native): MsgHitFriendWithRangedWeapon is not a ForgeFSE binding
                 if hero:MsgHitFriendWithRangedWeapon() then
                     if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue27 ~= nil and scratchValue27:MsgIsHitByHero() then goto LAB_00d45782 end
-                    if scratchValue27 ~= nil and scratchValue27:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if scratchValue27 == nil or not scratchValue27:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
+                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByHero() then goto LAB_00d45782 end
+                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByAnySpecialAbilityFromHero() then
+                        if scratchValue26 == nil or not scratchValue26:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
                     end
                     predicateResult6 = true
                     goto FLOW_after_lab_00d45782
@@ -744,7 +744,7 @@ function CheckFriendlyAttacks(quest)
                 quest:SetMasterGameState("GuildWarningOccuring", true)
                 if quest:GetMasterGameState("SkillTestOccuring") == 0 and quest:GetMasterGameState("WillTestOccuring") == 0 then
                     resource = resources:NewResource()
-                    while not resources:TryAcquire(resource, scratchValue26, 4) do
+                    while not resources:TryAcquire(resource, thing, 4) do
                         if not quest:NewScriptFrame() then goto LAB_00d45db2 end
                     end
                     if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d45db2 end

@@ -204,3 +204,41 @@ end
         self.assertIn('local pCVar1', source)
         self.assertIn('local hero', output)
         self.assertEqual(output.count('local uVar1 = quest:RegisterTimer()'), 2)
+
+
+class UseRoleTests(unittest.TestCase):
+    """A temporary whose assignments say nothing is named by the API that consumes it."""
+
+    def name_of(self, body, declared='uVar1'):
+        source = 'function Main(quest, me, resources, hero)\n    local %s\n%s\nend\n' % (declared, body)
+        output, maps = readable_source(source, split_reused=False)
+        return maps[0]['locals'].get(declared, {}).get('name')
+
+    def test_the_consuming_call_names_the_value(self):
+        self.assertEqual(self.name_of('    uVar1 = 0\n    quest:DeregisterTimer(uVar1)'), 'timerId')
+        self.assertEqual(self.name_of('    uVar1 = 0\n    quest:AddPersonToConversation(uVar1, hero)'), 'conversationId')
+        self.assertEqual(self.name_of('    uVar1 = 0\n    resources:TryAcquire(uVar1, hero, 4)'), 'heroControl')
+        self.assertEqual(self.name_of('    uVar1 = 0\n    quest:StateListErase("AllCreatures", uVar1)'), 'allCreaturesIndex')
+
+    def test_a_list_walked_by_byte_offset_is_an_offset_not_an_index(self):
+        self.assertEqual(self.name_of('    uVar1 = 0\n    quest:GetStateListAt("AllCreatures", uVar1 / 12)'),
+                         'allCreaturesOffset')
+
+    def test_consumers_of_one_kind_agree_and_the_first_rule_wins(self):
+        # acquired, released and destroyed are three views of the same resource
+        body = ('    uVar1 = 0\n    resources:TryAcquire(uVar1, hero, 4)\n'
+                '    resources:ReleaseResource(uVar1)\n    resources:DestroyMovie(uVar1)')
+        self.assertEqual(self.name_of(body), 'heroControl')
+
+    def test_consumers_of_different_kinds_decline(self):
+        # one slot, two values: naming it either way would be a lie
+        body = '    uVar1 = 0\n    resources:ReleaseResource(uVar1)\n    quest:DeregisterTimer(uVar1)'
+        self.assertEqual(self.name_of(body), 'scratchValue')
+
+    def test_a_bit_field_is_not_a_scratch_value(self):
+        body = '    uVar1 = 0\n    uVar1 = uVar1 | 1\n    uVar1 = uVar1 & 0xfffffffe\n    quest:F(uVar1)'
+        self.assertEqual(self.name_of(body), 'flags')
+
+    def test_plain_literals_are_not_a_bit_field(self):
+        body = '    uVar1 = 0\n    uVar1 = 1\n    quest:F(uVar1)'
+        self.assertEqual(self.name_of(body), 'scratchValue')

@@ -12,18 +12,17 @@ function Main(quest, me)
     local predicateResult2, predicateResult3, predicateResult4, predicateResult5, predicateResult
     local predicateResult14, scratchValue9, predicateResult18, predicateResult19, predicateResult23
     local scratchValue10, isRegionLoaded, dist, health, sequence1, sequence, sequence3, sequence4
-    local getDataString, scratchValue16, banditHostageKeeper, scratchValue17, scratchValue18
-    local scratchValue19, teleporterMarker, scratchValue20, scratchValue21, conversationId
-    local conversationId2, conversationId3, conversationId4, conversationId5, conversationId6
-    local conversationId7, conversationId8, conversationId9, conversationId10, resource, timerId
-    local timerId3, scratchValue22, scratchValue23, timerId4, scratchValue24, movie, movie2, movie3
-    local timerId5
+    local getDataString, line, banditHostageKeeper, scratchValue16, scratchValue17, scratchValue18
+    local teleporterMarker, scratchValue19, scratchValue20, conversationId, conversationId2
+    local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
+    local conversationId8, conversationId9, conversationId10, scratchValue21, timerId, timerId3
+    local scratchValue22, scratchValue23, timerId4, scratchValue24, movie, movie2, movie3, timerId5
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("IntroDone") do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    resource = resources:NewResource()
+    scratchValue21 = resources:NewResource()
     -- TODO(native): xStack_148[0] = 0;
     scratchValue10 = me:AcquireControl(4)
     while not scratchValue10 do
@@ -40,14 +39,14 @@ function Main(quest, me)
             if predicateResult2 then
                 quest:DeregisterTimer(timerId4)
                 quest:DeregisterTimer(unaff_EBX)
-                resources:ReleaseResource(resource)
+                resources:ReleaseResource(scratchValue21)
                 return
             end
             if me:IsTalkedToByHero() then
                 predicateResult3 = true
                 goto FLOW_after_lab_00dfe32c
             end
-            scratchValue20 = unaff_EBP | 3
+            scratchValue19 = unaff_EBP | 3
             getDataString = me:GetDataString()
             if getDataString ~= nil then
                 if getDataString == "TRADERB" then return end  -- TODO(native): goto LAB_00dfe2e9
@@ -66,21 +65,21 @@ function Main(quest, me)
                 predicateResult3 = false
             end
             ::FLOW_after_lab_00dfe32c::
-            if scratchValue20 & 2 ~= 0 then
-                scratchValue20 = scratchValue20 & 0xfffffffd
+            if scratchValue19 & 2 ~= 0 then
+                scratchValue19 = scratchValue19 & 0xfffffffd
             end
-            if scratchValue20 & 1 ~= 0 then
-                scratchValue20 = scratchValue20 & 0xfffffffe
+            if scratchValue19 & 1 ~= 0 then
+                scratchValue19 = scratchValue19 & 0xfffffffe
             end
             if predicateResult3 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
                 movie3 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                resource = resources:ScriptThing(xStack_14c_2)
-                if quest:GetHealth(resource) <= 0.0 then return end  -- TODO(native): goto LAB_00dfebc5
-                scratchValue16 = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_INTRO"
-                me:Speak(hero, scratchValue16, 0, false, true, false)
+                scratchValue21 = resources:ScriptThing(xStack_14c_2)
+                if quest:GetHealth(scratchValue21) <= 0.0 then return end  -- TODO(native): goto LAB_00dfebc5
+                line = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_INTRO"
+                me:Speak(hero, line, 0, false, true, false)
                 scratchValue10 = me:IsPerformingScriptTask()
                 goto LAB_00dfeb57
             end
@@ -121,7 +120,7 @@ function Main(quest, me)
                 end
             end
             if quest:GetTimer(unaff_EBX) == 0 then
-                scratchValue20 = scratchValue20 | 4
+                scratchValue19 = scratchValue19 | 4
                 -- TODO(native): bVar2 = (**(*(iVar11 + 0x0) + 0x138))((me))
     --[[unresolved native value]]
                 if not nil then
@@ -139,8 +138,8 @@ function Main(quest, me)
                 predicateResult4 = false
             end
             ::FLOW_after_lab_00dfe63d::
-            if scratchValue20 & 4 ~= 0 then
-                scratchValue20 = scratchValue20 & 0xfffffffb
+            if scratchValue19 & 4 ~= 0 then
+                scratchValue19 = scratchValue19 & 0xfffffffb
             end
             if predicateResult4 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
@@ -274,7 +273,7 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if quest:GetHealth(resources:ScriptThing(timerId3)) > 0.0 then
-                                me:Speak(hero, scratchValue16, 0, false, true, false)
+                                me:Speak(hero, line, 0, false, true, false)
                                 scratchValue10 = me:IsPerformingScriptTask()
                                 while scratchValue10 do
                                     quest:NewScriptFrame(me)
@@ -315,7 +314,7 @@ function Main(quest, me)
                         if not me:MsgIsHitBy("") then
                             -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
                             if me:MsgIsHitByAnySpecialAbilityFrom("") then
-                                scratchValue21 = scratchValue21 | 256
+                                scratchValue20 = scratchValue20 | 256
                                 predicateResult = true
                                 if not me:MsgIsHitByHeroSpecialAbility(14) then
                                     goto FLOW_after_lab_00dff3b5
@@ -323,7 +322,7 @@ function Main(quest, me)
                             end
                             predicateResult = false
                         else
-                            scratchValue21 = scratchValue21 | 256
+                            scratchValue20 = scratchValue20 | 256
                             predicateResult = true
                             if me:MsgIsHitByHeroSpecialAbility(14) then
                                 predicateResult = false
@@ -331,19 +330,19 @@ function Main(quest, me)
                             end
                         end
                         ::FLOW_after_lab_00dff3b5::
-                        if scratchValue21 & 256 ~= 0 then
-                            scratchValue21 = scratchValue21 & 0xfffffeff
+                        if scratchValue20 & 256 ~= 0 then
+                            scratchValue20 = scratchValue20 & 0xfffffeff
                         end
-                        if SUB41(scratchValue21,0) < 0 then
-                            scratchValue21 = scratchValue21 & 0xffffff7f
+                        if SUB41(scratchValue20,0) < 0 then
+                            scratchValue20 = scratchValue20 & 0xffffff7f
                         end
-                        if scratchValue21 & 64 ~= 0 then
-                            scratchValue21 = scratchValue21 & 0xffffffbf
+                        if scratchValue20 & 64 ~= 0 then
+                            scratchValue20 = scratchValue20 & 0xffffffbf
                         end
                         if predicateResult then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                             health = quest:GetHealth(nil --[[missing]])
-                            scratchValue4 = health <= 5.0 or quest:GetTimer(resource) ~= 0
+                            scratchValue4 = health <= 5.0 or quest:GetTimer(scratchValue21) ~= 0
                             if scratchValue4 then
                                 predicateResult14 = false
                             else
@@ -352,7 +351,7 @@ function Main(quest, me)
                                     goto FLOW_after_lab_00dff54a
                                 end
                                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                                    scratchValue20 = scratchValue21 | 3584
+                                    scratchValue19 = scratchValue20 | 3584
                                     if not me:MsgIsHitByHeroSpecialAbility(14) then
                                         predicateResult14 = false
                                         goto FLOW_after_lab_00dff54a
@@ -361,36 +360,36 @@ function Main(quest, me)
                                 predicateResult14 = true
                             end
                             ::FLOW_after_lab_00dff54a::
-                            if scratchValue20 & 2048 ~= 0 then
-                                scratchValue21 = scratchValue20 & 0xfffff7ff
+                            if scratchValue19 & 2048 ~= 0 then
+                                scratchValue20 = scratchValue19 & 0xfffff7ff
                             end
-                            if scratchValue21 & 1024 ~= 0 then
-                                scratchValue21 = scratchValue21 & 0xfffffbff
+                            if scratchValue20 & 1024 ~= 0 then
+                                scratchValue20 = scratchValue20 & 0xfffffbff
                             end
-                            if scratchValue21 & 512 ~= 0 then
-                                scratchValue21 = scratchValue21 & 0xfffffdff
+                            if scratchValue20 & 512 ~= 0 then
+                                scratchValue20 = scratchValue20 & 0xfffffdff
                             end
                             if predicateResult14 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                                 if me:GetDataString() ~= "TRADERA" then
                                     if me:GetDataString() ~= "TRADERB" then
-                                        scratchValue = resource
+                                        scratchValue = scratchValue21
                                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                                        getDataString = tostring(resource)
-                                        scratchValue17 = quest:PlaySoundOnThing(nil --[[missing]], "SND_MM_TRADER_C_SCREAM_0" .. getDataString)
+                                        getDataString = tostring(scratchValue21)
+                                        scratchValue16 = quest:PlaySoundOnThing(nil --[[missing]], "SND_MM_TRADER_C_SCREAM_0" .. getDataString)
                                         scratchValue9 = scratchValue == 4
                                     else
-                                        scratchValue = resource
+                                        scratchValue = scratchValue21
                                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                                        getDataString = tostring(resource)
-                                        scratchValue18 = quest:PlaySoundOnThing(nil --[[missing]], "SND_MM_TRADER_B_SCREAM_0" .. getDataString)
+                                        getDataString = tostring(scratchValue21)
+                                        scratchValue17 = quest:PlaySoundOnThing(nil --[[missing]], "SND_MM_TRADER_B_SCREAM_0" .. getDataString)
                                         scratchValue9 = scratchValue == 3
                                     end
                                 else
-                                    scratchValue = resource
+                                    scratchValue = scratchValue21
                                     if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                                    getDataString = tostring(resource)
-                                    scratchValue19 = quest:PlaySoundOnThing(nil --[[missing]], "SND_MM_TRADER_A_SCREAM_0" .. getDataString)
+                                    getDataString = tostring(scratchValue21)
+                                    scratchValue18 = quest:PlaySoundOnThing(nil --[[missing]], "SND_MM_TRADER_A_SCREAM_0" .. getDataString)
                                     scratchValue9 = scratchValue == 3
                                 end
                                 if scratchValue9 then
@@ -406,7 +405,7 @@ function Main(quest, me)
                                 else
                                     if not me:MsgIsHitByHero() then
                                         if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                                            scratchValue20 = scratchValue21 | 0x7000
+                                            scratchValue19 = scratchValue20 | 0x7000
                                             if not me:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00dff880 end
                                         end
                                         predicateResult18 = false
@@ -416,14 +415,14 @@ function Main(quest, me)
                                     predicateResult18 = true
                                 end
                                 ::FLOW_after_lab_00dff887::
-                                if scratchValue20 & 0x4000 ~= 0 then
-                                    scratchValue21 = scratchValue20 & 0xffffbfff
+                                if scratchValue19 & 0x4000 ~= 0 then
+                                    scratchValue20 = scratchValue19 & 0xffffbfff
                                 end
-                                if scratchValue21 & 0x2000 ~= 0 then
-                                    scratchValue21 = scratchValue21 & 0xffffdfff
+                                if scratchValue20 & 0x2000 ~= 0 then
+                                    scratchValue20 = scratchValue20 & 0xffffdfff
                                 end
-                                if scratchValue21 & 4096 ~= 0 then
-                                    scratchValue21 = scratchValue21 & 0xffffefff
+                                if scratchValue20 & 4096 ~= 0 then
+                                    scratchValue20 = scratchValue20 & 0xffffefff
                                 end
                                 if predicateResult18 then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
@@ -436,7 +435,7 @@ function Main(quest, me)
                         end
                         if not me:MsgIsHitByHero() then
                             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                                scratchValue20 = scratchValue21 | 0x38000
+                                scratchValue19 = scratchValue20 | 0x38000
                                 if not me:MsgIsHitByHeroSpecialAbility(14) then
                                     predicateResult19 = true
                                     goto FLOW_after_lab_00dffa46
@@ -447,14 +446,14 @@ function Main(quest, me)
                             predicateResult19 = true
                         end
                         ::FLOW_after_lab_00dffa46::
-                        if scratchValue20 & 0x20000 ~= 0 then
-                            scratchValue20 = scratchValue20 & 0xfffdffff
+                        if scratchValue19 & 0x20000 ~= 0 then
+                            scratchValue19 = scratchValue19 & 0xfffdffff
                         end
-                        if scratchValue20 & 0x10000 ~= 0 then
-                            scratchValue20 = scratchValue20 & 0xfffeffff
+                        if scratchValue19 & 0x10000 ~= 0 then
+                            scratchValue19 = scratchValue19 & 0xfffeffff
                         end
-                        if scratchValue20 & 0x8000 ~= 0 then
-                            scratchValue20 = scratchValue20 & 0xffff7fff
+                        if scratchValue19 & 0x8000 ~= 0 then
+                            scratchValue19 = scratchValue19 & 0xffff7fff
                         end
                         sequence4 = predicateResult19 and quest:IsActiveThreadTerminating()
                         if sequence4 then goto LAB_00e005b1 end
@@ -496,9 +495,9 @@ function Main(quest, me)
                             movie2 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
-                            movie3 = resources:ScriptThing(resource)
+                            movie3 = resources:ScriptThing(scratchValue21)
                             if quest:GetHealth(movie3) > 0.0 then
-                                me:Speak(hero, scratchValue16, 0, false, true, false)
+                                me:Speak(hero, line, 0, false, true, false)
                                 scratchValue10 = me:IsPerformingScriptTask()
                                 while scratchValue10 do
                                     quest:NewScriptFrame(me)
@@ -537,7 +536,7 @@ function Main(quest, me)
                         end
                         if not me:MsgIsHitByHero() then
                             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                                scratchValue21 = scratchValue20 | 0x1c0000
+                                scratchValue20 = scratchValue19 | 0x1c0000
                                 if not me:MsgIsHitByHeroSpecialAbility(14) then
                                     predicateResult23 = true
                                     goto FLOW_after_lab_00e0006b
@@ -548,14 +547,14 @@ function Main(quest, me)
                             predicateResult23 = true
                         end
                         ::FLOW_after_lab_00e0006b::
-                        if scratchValue21 & 0x100000 ~= 0 then
-                            scratchValue21 = scratchValue21 & 0xffefffff
+                        if scratchValue20 & 0x100000 ~= 0 then
+                            scratchValue20 = scratchValue20 & 0xffefffff
                         end
-                        if scratchValue21 & 0x80000 ~= 0 then
-                            scratchValue21 = scratchValue21 & 0xfff7ffff
+                        if scratchValue20 & 0x80000 ~= 0 then
+                            scratchValue20 = scratchValue20 & 0xfff7ffff
                         end
-                        if scratchValue21 & 0x40000 ~= 0 then
-                            scratchValue21 = scratchValue21 & 0xfffbffff
+                        if scratchValue20 & 0x40000 ~= 0 then
+                            scratchValue20 = scratchValue20 & 0xfffbffff
                         end
                         if predicateResult23 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
@@ -645,7 +644,7 @@ function Main(quest, me)
     quest:DeregisterTimer(1)
     quest:DeregisterTimer(10)
     ::LAB_00e005f9::
-    resources:ReleaseResource(resource)
+    resources:ReleaseResource(scratchValue21)
 end
 
 -- TraderToRescue.Init (retail 0x00dfb1b0)

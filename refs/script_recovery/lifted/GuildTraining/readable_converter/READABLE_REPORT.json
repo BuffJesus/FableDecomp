@@ -3131,8 +3131,8 @@
        ]
       },
       "pcVar13": {
-       "name": "scratchValue60",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -3255,14 +3255,14 @@
        ]
       },
       "uVar8": {
-       "name": "scratchValue61",
+       "name": "scratchValue60",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "uVar9": {
-       "name": "scratchValue62",
+       "name": "scratchValue61",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3274,7 +3274,7 @@
        ]
       },
       "u_stk_21c": {
-       "name": "scratchValue63",
+       "name": "scratchValue62",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3381,56 +3381,56 @@
        ]
       },
       "x_stk_24": {
-       "name": "scratchValue64",
+       "name": "scratchValue63",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_30": {
-       "name": "scratchValue65",
+       "name": "scratchValue64",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_3c": {
-       "name": "scratchValue66",
+       "name": "scratchValue65",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_54": {
-       "name": "scratchValue67",
+       "name": "scratchValue66",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_6c": {
-       "name": "scratchValue68",
+       "name": "scratchValue67",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_78": {
-       "name": "scratchValue69",
+       "name": "scratchValue68",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_90": {
-       "name": "scratchValue70",
+       "name": "scratchValue69",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_9c": {
-       "name": "scratchValue71",
+       "name": "scratchValue70",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -5334,29 +5334,29 @@
        ]
       },
       "pcVar11_1": {
-       "name": "scratchValue36",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar11_2": {
-       "name": "scratchValue37",
-       "basis": "reused or unresolved native temporary",
+       "name": "line2",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar11_3": {
-       "name": "scratchValue38",
-       "basis": "reused or unresolved native temporary",
+       "name": "line3",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar11_4": {
-       "name": "scratchValue39",
-       "basis": "reused or unresolved native temporary",
+       "name": "line4",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
@@ -5411,7 +5411,7 @@
        ]
       },
       "uVar10": {
-       "name": "scratchValue40",
+       "name": "scratchValue36",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -5462,7 +5462,7 @@
        ]
       },
       "x_stk_c": {
-       "name": "scratchValue41",
+       "name": "scratchValue37",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -7259,8 +7259,8 @@
        ]
       },
       "ixVar11": {
-       "name": "scratchValue15",
-       "basis": "reused or unresolved native temporary",
+       "name": "index",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -7293,8 +7293,8 @@
        ]
       },
       "pCVar7": {
-       "name": "scratchValue16",
-       "basis": "reused or unresolved native temporary",
+       "name": "thing",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         "hero",
@@ -7350,8 +7350,8 @@
        ]
       },
       "pcVar13": {
-       "name": "scratchValue17",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -7449,7 +7449,7 @@
        ]
       },
       "uVar16": {
-       "name": "scratchValue18",
+       "name": "scratchValue15",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -7548,7 +7548,7 @@
        ]
       },
       "x_stk_18": {
-       "name": "scratchValue19",
+       "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -7564,56 +7564,56 @@
        ]
       },
       "x_stk_24": {
-       "name": "scratchValue20",
+       "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_30": {
-       "name": "scratchValue21",
+       "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_60": {
-       "name": "scratchValue22",
+       "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_6c": {
-       "name": "scratchValue23",
+       "name": "scratchValue20",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_78": {
-       "name": "scratchValue24",
+       "name": "scratchValue21",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_84": {
-       "name": "scratchValue25",
+       "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_90": {
-       "name": "scratchValue26",
+       "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_c": {
-       "name": "scratchValue27",
+       "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -10437,36 +10437,36 @@
        ]
       },
       "pcVar10_1": {
-       "name": "scratchValue40",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar10_2": {
-       "name": "scratchValue41",
-       "basis": "reused or unresolved native temporary",
+       "name": "line2",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar10_3": {
-       "name": "scratchValue42",
-       "basis": "reused or unresolved native temporary",
+       "name": "line3",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar10_4": {
-       "name": "scratchValue43",
-       "basis": "reused or unresolved native temporary",
+       "name": "line4",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar10_5": {
-       "name": "scratchValue44",
-       "basis": "reused or unresolved native temporary",
+       "name": "line5",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
@@ -10487,7 +10487,7 @@
        ]
       },
       "r1_2": {
-       "name": "scratchValue45",
+       "name": "scratchValue40",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -10569,35 +10569,35 @@
        ]
       },
       "x_stk_18": {
-       "name": "scratchValue46",
+       "name": "scratchValue41",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_24": {
-       "name": "scratchValue47",
+       "name": "scratchValue42",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_3c": {
-       "name": "scratchValue48",
+       "name": "scratchValue43",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_48": {
-       "name": "scratchValue49",
+       "name": "scratchValue44",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_c": {
-       "name": "scratchValue50",
+       "name": "scratchValue45",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -14081,8 +14081,8 @@
        ]
       },
       "ixVar12": {
-       "name": "scratchValue25",
-       "basis": "reused or unresolved native temporary",
+       "name": "index",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -14116,7 +14116,7 @@
        ]
       },
       "pCVar8_1": {
-       "name": "scratchValue26",
+       "name": "scratchValue25",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -14130,7 +14130,7 @@
        ]
       },
       "pCVar8_3": {
-       "name": "scratchValue27",
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -14186,7 +14186,7 @@
        ]
       },
       "pCVar8_11": {
-       "name": "scratchValue28",
+       "name": "scratchValue27",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -14242,7 +14242,7 @@
        ]
       },
       "pCVar9_7": {
-       "name": "scratchValue29",
+       "name": "scratchValue28",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -14256,7 +14256,7 @@
        ]
       },
       "pCVar9_9": {
-       "name": "scratchValue30",
+       "name": "scratchValue29",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -14270,14 +14270,14 @@
        ]
       },
       "pCVar9_11": {
-       "name": "scratchValue31",
+       "name": "scratchValue30",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar9_12": {
-       "name": "scratchValue32",
+       "name": "scratchValue31",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -14291,8 +14291,8 @@
        ]
       },
       "pcVar13": {
-       "name": "scratchValue33",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -14444,42 +14444,42 @@
        ]
       },
       "x_stk_18": {
-       "name": "scratchValue34",
+       "name": "scratchValue32",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_24": {
-       "name": "scratchValue35",
+       "name": "scratchValue33",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_30": {
-       "name": "scratchValue36",
+       "name": "scratchValue34",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_3c": {
-       "name": "scratchValue37",
+       "name": "scratchValue35",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_48": {
-       "name": "scratchValue38",
+       "name": "scratchValue36",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_54": {
-       "name": "scratchValue39",
+       "name": "scratchValue37",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -18621,8 +18621,8 @@
        ]
       },
       "ixVar11": {
-       "name": "scratchValue31",
-       "basis": "reused or unresolved native temporary",
+       "name": "index",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -18697,7 +18697,7 @@
        ]
       },
       "pCVar8_1": {
-       "name": "scratchValue32",
+       "name": "scratchValue31",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -18711,7 +18711,7 @@
        ]
       },
       "pCVar8_3": {
-       "name": "scratchValue33",
+       "name": "scratchValue32",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -18725,7 +18725,7 @@
        ]
       },
       "pCVar8_5": {
-       "name": "scratchValue34",
+       "name": "scratchValue33",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -18739,7 +18739,7 @@
        ]
       },
       "pCVar8_7": {
-       "name": "scratchValue35",
+       "name": "scratchValue34",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -18795,7 +18795,7 @@
        ]
       },
       "pCVar8_15": {
-       "name": "scratchValue36",
+       "name": "scratchValue35",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -18809,8 +18809,8 @@
        ]
       },
       "pcVar12": {
-       "name": "scratchValue37",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -18954,35 +18954,35 @@
        ]
       },
       "x_stk_18": {
-       "name": "scratchValue38",
+       "name": "scratchValue36",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_24": {
-       "name": "scratchValue39",
+       "name": "scratchValue37",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_30": {
-       "name": "scratchValue40",
+       "name": "scratchValue38",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_3c": {
-       "name": "scratchValue41",
+       "name": "scratchValue39",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_c": {
-       "name": "scratchValue42",
+       "name": "scratchValue40",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -24443,12 +24443,12 @@
        ]
       },
       "xStack_80": {
-       "name": "scratchValue26",
-       "basis": "reused or unresolved native temporary",
+       "name": "thing",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": []
       },
       "xStack_a0": {
-       "name": "scratchValue27",
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       }
@@ -32560,8 +32560,8 @@
        ]
       },
       "ixVar13": {
-       "name": "scratchValue13",
-       "basis": "reused or unresolved native temporary",
+       "name": "index",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -32611,7 +32611,7 @@
        ]
       },
       "pCVar5_2": {
-       "name": "scratchValue14",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -32873,8 +32873,8 @@
        ]
       },
       "pcVar14": {
-       "name": "scratchValue15",
-       "basis": "reused or unresolved native temporary",
+       "name": "grade",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -33086,7 +33086,7 @@
        ]
       },
       "x_stk_1ec": {
-       "name": "scratchValue16",
+       "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -34869,11 +34869,1207 @@
    }
   },
   "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua": {
-   "functions": [],
-   "locals": [],
-   "wrappedDeclarations": 0,
-   "style": {},
-   "error": "guard body indentation"
+   "functions": [
+    {
+     "function": "Main",
+     "rewrites": {
+      "flags": 0,
+      "termination": 2,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 2,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 2,
+      "declarations": 8,
+      "decimalLiterals": 4
+     }
+    },
+    {
+     "function": "Init",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 0,
+      "decimalLiterals": 0
+     }
+    },
+    {
+     "function": "OnPersist",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 0,
+      "decimalLiterals": 0
+     }
+    },
+    {
+     "function": "OnPredicateFail",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 0,
+      "decimalLiterals": 0
+     }
+    }
+   ],
+   "locals": [
+    {
+     "function": "Main",
+     "sourceLine": 13,
+     "locals": {
+      "bVar3_1": {
+       "name": "isActiveThreadTerminating",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_2": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_4": {
+       "name": "controlAcquired",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "controlAcquired",
+        "controlAcquired"
+       ]
+      },
+      "bVar3_5": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_6": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_7": {
+       "name": "predicateResult4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_8": {
+       "name": "isActiveThreadTerminating2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_9": {
+       "name": "predicateResult5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_10": {
+       "name": "predicateResult6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_11": {
+       "name": "isDistanceBetweenThingsUnder",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isDistanceBetweenThingsUnder"
+       ]
+      },
+      "bVar3_12": {
+       "name": "isDistanceBetweenThingsUnder2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isDistanceBetweenThingsUnder"
+       ]
+      },
+      "bVar3_13": {
+       "name": "predicateResult7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_14": {
+       "name": "predicateResult8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_15": {
+       "name": "predicateResult9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_16": {
+       "name": "predicateResult10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_17": {
+       "name": "predicateResult11",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "cVar4_1": {
+       "name": "whisperCutsceneFinished",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "whisperCutsceneFinished",
+        "whisperCutsceneFinished"
+       ]
+      },
+      "cVar4_2": {
+       "name": "whisperStopFollowing",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "whisperStopFollowing",
+        "whisperStopFollowing"
+       ]
+      },
+      "cVar4_3": {
+       "name": "talkedToByHero",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "talkedToByHero"
+       ]
+      },
+      "cVar4_4": {
+       "name": "taskRunning",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "taskRunning",
+        "taskRunning"
+       ]
+      },
+      "f_stk_28": {
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar10_3": {
+       "name": "taskRunning2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "taskRunning"
+       ]
+      },
+      "iVar10_4": {
+       "name": "taskRunning3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "taskRunning"
+       ]
+      },
+      "iVar10_6": {
+       "name": "timeRemaining",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "timeRemaining"
+       ]
+      },
+      "iVar10_7": {
+       "name": "scratchValue2",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar10_8": {
+       "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "iVar11_4": {
+       "name": "conversationId",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "native_arg_sequence_1_2": {
+       "name": "sequence12",
+       "basis": "native argument role",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "native_arg_switch_2": {
+       "name": "switch2",
+       "basis": "native argument role",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "pCVar5_1": {
+       "name": "hero",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_2": {
+       "name": "scratchValue4",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "pCVar5_3": {
+       "name": "hero2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_4": {
+       "name": "hero3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_5": {
+       "name": "hero4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_6": {
+       "name": "hero5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_7": {
+       "name": "hero6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_8": {
+       "name": "hero7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_9": {
+       "name": "hero8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_10": {
+       "name": "hero9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_11": {
+       "name": "hero10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_12": {
+       "name": "hero11",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_13": {
+       "name": "hero12",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_14": {
+       "name": "hero13",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_15": {
+       "name": "hero14",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_16": {
+       "name": "hero15",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_17": {
+       "name": "hero16",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_18": {
+       "name": "hero17",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_19": {
+       "name": "hero18",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_20": {
+       "name": "hero19",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_21": {
+       "name": "hero20",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_22": {
+       "name": "hero21",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar6": {
+       "name": "position",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "position"
+       ]
+      },
+      "puVar8": {
+       "name": "position2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "position"
+       ]
+      },
+      "pvVar7_1": {
+       "name": "getDataString",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getDataString"
+       ]
+      },
+      "r1": {
+       "name": "speechResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "speechResult"
+       ]
+      },
+      "r2": {
+       "name": "preMeleeChatMarker",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "preMeleeChatMarker"
+       ]
+      },
+      "uVar9": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "xStack_1c": {
+       "name": "movie",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "movie"
+       ]
+      },
+      "xStack_8c": {
+       "name": "preMeleeChatMarker2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "preMeleeChatMarker"
+       ]
+      },
+      "xStack_a0": {
+       "name": "resource",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "x_stk_c": {
+       "name": "scratchValue6",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      }
+     },
+     "splitLocals": {
+      "pCVar5": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "versions": {
+        "pCVar5_1": [
+         43
+        ],
+        "pCVar5_2": [
+         64
+        ],
+        "pCVar5_3": [
+         73
+        ],
+        "pCVar5_4": [
+         104
+        ],
+        "pCVar5_5": [
+         110
+        ],
+        "pCVar5_6": [
+         120
+        ],
+        "pCVar5_7": [
+         194
+        ],
+        "pCVar5_8": [
+         200
+        ],
+        "pCVar5_9": [
+         205
+        ],
+        "pCVar5_10": [
+         210
+        ],
+        "pCVar5_11": [
+         215
+        ],
+        "pCVar5_12": [
+         220
+        ],
+        "pCVar5_13": [
+         225
+        ],
+        "pCVar5_14": [
+         230
+        ],
+        "pCVar5_15": [
+         235
+        ],
+        "pCVar5_16": [
+         240
+        ],
+        "pCVar5_17": [
+         245
+        ],
+        "pCVar5_18": [
+         250
+        ],
+        "pCVar5_19": [
+         255
+        ],
+        "pCVar5_20": [
+         260
+        ],
+        "pCVar5_21": [
+         265
+        ],
+        "pCVar5_22": [
+         270
+        ]
+       }
+      },
+      "bVar3": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "versions": {
+        "bVar3_1": [
+         10
+        ],
+        "bVar3_2": [
+         17
+        ],
+        "bVar3_3": [
+         20
+        ],
+        "bVar3_4": [
+         21,
+         30
+        ],
+        "bVar3_5": [
+         25
+        ],
+        "bVar3_6": [
+         33
+        ],
+        "bVar3_7": [
+         49
+        ],
+        "bVar3_8": [
+         57
+        ],
+        "bVar3_9": [
+         80
+        ],
+        "bVar3_10": [
+         92
+        ],
+        "bVar3_11": [
+         117
+        ],
+        "bVar3_12": [
+         121
+        ],
+        "bVar3_13": [
+         145
+        ],
+        "bVar3_14": [
+         162
+        ],
+        "bVar3_15": [
+         173
+        ],
+        "bVar3_16": [
+         186
+        ],
+        "bVar3_17": [
+         296
+        ]
+       }
+      },
+      "iVar10": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "versions": {
+        "iVar10_1": [
+         42
+        ],
+        "iVar10_2": [
+         71
+        ],
+        "iVar10_3": [
+         75
+        ],
+        "iVar10_4": [
+         88
+        ],
+        "iVar10_5": [
+         103
+        ],
+        "iVar10_6": [
+         129
+        ],
+        "iVar10_7": [
+         157
+        ],
+        "iVar10_8": [
+         159,
+         182
+        ]
+       }
+      },
+      "cVar4": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "versions": {
+        "cVar4_1": [
+         7,
+         14
+        ],
+        "cVar4_2": [
+         45,
+         293
+        ],
+        "cVar4_3": [
+         55
+        ],
+        "cVar4_4": [
+         76,
+         89
+        ]
+       }
+      },
+      "iVar11": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "versions": {
+        "iVar11_1": [
+         41
+        ],
+        "iVar11_2": [
+         70
+        ],
+        "iVar11_3": [
+         102
+        ],
+        "iVar11_4": [
+         193
+        ]
+       }
+      },
+      "native_arg_sequence_1": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "versions": {
+        "native_arg_sequence_1_1": [
+         122
+        ],
+        "native_arg_sequence_1_2": [
+         124,
+         126,
+         131,
+         133,
+         138,
+         140
+        ]
+       }
+      },
+      "pvVar7": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "versions": {
+        "pvVar7_1": [
+         152
+        ],
+        "pvVar7_2": [
+         169
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {
+      "bVar3_3": {
+       "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, fVar2, f_stk_28, fret_0, iVar10_1, iVar10_2, iVar10_3, iVar10_4, iVar10_5, iVar10_6, iVar10_7, iVar10_8, iVar11_1, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "20": "        bVar3_3 = false\n"
+      },
+      "native_arg_sequence_1_1": {
+       "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, fVar2, f_stk_28, fret_0, iVar10_1, iVar10_2, iVar10_3, iVar10_4, iVar10_5, iVar10_6, iVar10_7, iVar10_8, iVar11_1, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+       "122": "                native_arg_sequence_1_1 = false\n"
+      }
+     },
+     "inlinedLiteralLocals": {
+      "fVar2": {
+       "literal": "0.0",
+       "definitionLine": 66,
+       "readLines": [
+        67
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, fVar2, f_stk_28, fret_0, iVar10_1, iVar10_2, iVar10_3, iVar10_4, iVar10_5, iVar10_6, iVar10_7, iVar10_8, iVar11_1, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "66": "                fVar2 = 0.0\n",
+        "67": "                if fVar2 < fret_0 then\n"
+       }
+      },
+      "iVar10_1": {
+       "literal": "1.0",
+       "definitionLine": 42,
+       "readLines": [
+        44
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_1, iVar10_2, iVar10_3, iVar10_4, iVar10_5, iVar10_6, iVar10_7, iVar10_8, iVar11_1, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "42": "        iVar10_1 = 1.0\n",
+        "44": "        me:FollowThing(pCVar5_1, iVar10_1, (iVar11_1 ~= 0))\n"
+       }
+      },
+      "iVar10_2": {
+       "literal": "0",
+       "definitionLine": 71,
+       "readLines": [
+        74
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_2, iVar10_3, iVar10_4, iVar10_5, iVar10_6, iVar10_7, iVar10_8, iVar11_1, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "71": "                    iVar10_2 = 0\n",
+        "74": "                    r1 = me:Speak(pCVar5_3, p1, iVar10_2, (iVar11_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
+       }
+      },
+      "iVar10_5": {
+       "literal": "1.0",
+       "definitionLine": 103,
+       "readLines": [
+        105
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_3, iVar10_4, iVar10_5, iVar10_6, iVar10_7, iVar10_8, iVar11_1, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "103": "                iVar10_5 = 1.0\n",
+        "105": "                me:FollowThing(pCVar5_4, iVar10_5, (iVar11_3 ~= 0))\n"
+       }
+      },
+      "iVar11_1": {
+       "literal": "1",
+       "definitionLine": 41,
+       "readLines": [
+        44
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_3, iVar10_4, iVar10_6, iVar10_7, iVar10_8, iVar11_1, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "41": "        iVar11_1 = 1\n",
+        "44": "        me:FollowThing(pCVar5_1, (1.0), (iVar11_1 ~= 0))\n"
+       }
+      },
+      "iVar11_2": {
+       "literal": "0",
+       "definitionLine": 70,
+       "readLines": [
+        74
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_3, iVar10_4, iVar10_6, iVar10_7, iVar10_8, iVar11_2, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "70": "                    iVar11_2 = 0\n",
+        "74": "                    r1 = me:Speak(pCVar5_3, p1, (0), (iVar11_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
+       }
+      },
+      "iVar11_3": {
+       "literal": "1",
+       "definitionLine": 102,
+       "readLines": [
+        105
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_3, iVar10_4, iVar10_6, iVar10_7, iVar10_8, iVar11_3, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "102": "                iVar11_3 = 1\n",
+        "105": "                me:FollowThing(pCVar5_4, (1.0), (iVar11_3 ~= 0))\n"
+       }
+      },
+      "i_stk_8c": {
+       "literal": "0",
+       "definitionLine": 155,
+       "readLines": [
+        157,
+        158,
+        183
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_3, iVar10_4, iVar10_6, iVar10_7, iVar10_8, iVar11_4, i_stk_8c, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "155": "                i_stk_8c = 0\n",
+        "157": "                iVar10_7 = i_stk_8c - xStack_8c >> 0x1f\n",
+        "158": "                if (i_stk_8c - xStack_8c) / 0xc + iVar10_7 ~= iVar10_7 then\n",
+        "183": "                    until not (uVar9 < ((i_stk_8c - xStack_8c) / 0xc))\n"
+       }
+      },
+      "pvVar7_2": {
+       "literal": "nil",
+       "definitionLine": 169,
+       "readLines": [
+        170
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar3_1, bVar3_2, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, cVar4_1, cVar4_2, cVar4_3, cVar4_4, dist, f_stk_28, fret_0, iVar10_3, iVar10_4, iVar10_6, iVar10_7, iVar10_8, iVar11_4, native_arg_sequence_1_2, native_arg_switch_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar5_8, pCVar5_9, pCVar5_10, pCVar5_11, pCVar5_12, pCVar5_13, pCVar5_14, pCVar5_15, pCVar5_16, pCVar5_17, pCVar5_18, pCVar5_19, pCVar5_20, pCVar5_21, pCVar5_22, pCVar6, puVar8, pvVar7_1, pvVar7_2, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c\n",
+        "169": "                        pvVar7_2 = nil --[[unresolved native value]]\n",
+        "170": "                        f_stk_28 = tonumber(pvVar7_2)\n"
+       }
+      }
+     },
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 321,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 324,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 327,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 15,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 187,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 190,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 193,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    }
+   ],
+   "wrappedDeclarations": 1,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 2,
+       "closures": 0,
+       "hero": 1,
+       "cutscenes": 0,
+       "staleLabelComments": 5,
+       "aliveStaging": 16,
+       "exitChecksInlined": 2,
+       "frameChecks": 1,
+       "inlinedTemporaries": 39,
+       "deadDefinitions": 4,
+       "guardWrappers": 1,
+       "retryLoops": 4,
+       "booleanMaterialisation": 8,
+       "booleanCompares": 0,
+       "conditions": 1,
+       "literals": 2,
+       "copies": 17,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 82,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 2,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 80,
+       "booleanBranches": 0,
+       "elseif": 14,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "parentheses": 19,
+       "cosmetics": 0,
+       "firstAssignments": 1,
+       "freeSuffixes": 4,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 295,
+       "temporaries": 65,
+       "labels": 3,
+       "gotos": 3,
+       "terminationChecks": 13,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 171,
+       "temporaries": 17,
+       "labels": 4,
+       "gotos": 5,
+       "terminationChecks": 12,
+       "frameChecks": 1,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 0,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPredicateFail": {
+      "rewrites": {
+       "splitLocals": 0,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 2,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
+    "pureLocalFunctions": [
+     "Init",
+     "OnPersist",
+     "OnPredicateFail"
+    ]
+   }
   },
   "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua": {
    "functions": [
@@ -36846,8 +38042,8 @@
        ]
       },
       "pCVar6": {
-       "name": "scratchValue106",
-       "basis": "reused or unresolved native temporary",
+       "name": "thing",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         "hero",
         "hero",
@@ -36965,8 +38161,8 @@
        ]
       },
       "pcVar15": {
-       "name": "scratchValue107",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -37013,7 +38209,7 @@
        ]
       },
       "r1": {
-       "name": "scratchValue108",
+       "name": "scratchValue106",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "preMeleeDummy",
@@ -37121,7 +38317,7 @@
        ]
       },
       "r23": {
-       "name": "scratchValue109",
+       "name": "scratchValue107",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "preMeleeDummy",
@@ -37178,7 +38374,7 @@
        ]
       },
       "r30": {
-       "name": "scratchValue110",
+       "name": "scratchValue108",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "preMeleeDummy",
@@ -37270,7 +38466,7 @@
        ]
       },
       "uVar14": {
-       "name": "scratchValue111",
+       "name": "scratchValue109",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -37348,8 +38544,8 @@
        ]
       },
       "xStack_14c": {
-       "name": "scratchValue112",
-       "basis": "reused or unresolved native temporary",
+       "name": "movie2",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         "resource",
         "resource",
@@ -37370,7 +38566,7 @@
        ]
       },
       "xStack_160": {
-       "name": "scratchValue113",
+       "name": "scratchValue110",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -37407,7 +38603,7 @@
        ]
       },
       "xStack_f8": {
-       "name": "movie2",
+       "name": "movie3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "movie",
@@ -37840,41 +39036,25 @@
         "questionAnswer"
        ]
       },
-      "scratchValue108": {
+      "scratchValue106": {
        "name": "preMeleeDummy",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "preMeleeDummy"
        ]
       },
-      "scratchValue109": {
+      "scratchValue107": {
        "name": "preMeleeDummy2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "preMeleeDummy"
        ]
       },
-      "scratchValue110": {
+      "scratchValue108": {
        "name": "preMeleeDummy3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "preMeleeDummy"
-       ]
-      },
-      "scratchValue112": {
-       "name": "resource3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource",
-        "resource",
-        "resource",
-        "resource",
-        "resource",
-        "resource",
-        "resource",
-        "resource",
-        "resource",
-        "resource"
        ]
       }
      },
@@ -38931,8 +40111,8 @@
        ]
       },
       "bVar4": {
-       "name": "scratchValue10",
-       "basis": "reused or unresolved native temporary",
+       "name": "ticked",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         "predicateResult",
         "controlAcquired",
@@ -39141,14 +40321,14 @@
        ]
       },
       "fVar3": {
-       "name": "scratchValue11",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar15_1": {
-       "name": "scratchValue12",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39163,7 +40343,7 @@
        ]
       },
       "iVar15_3": {
-       "name": "scratchValue13",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39263,7 +40443,7 @@
        ]
       },
       "iVar15_17": {
-       "name": "scratchValue14",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -39279,14 +40459,14 @@
        ]
       },
       "iVar15_19": {
-       "name": "scratchValue15",
+       "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar16_1": {
-       "name": "scratchValue16",
+       "name": "scratchValue15",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39300,7 +40480,7 @@
        ]
       },
       "iVar16_3": {
-       "name": "scratchValue17",
+       "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39314,14 +40494,14 @@
        ]
       },
       "iVar16_5": {
-       "name": "scratchValue18",
+       "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar16_6": {
-       "name": "scratchValue19",
+       "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39340,14 +40520,14 @@
        ]
       },
       "iVar16_8": {
-       "name": "scratchValue20",
+       "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar16_9": {
-       "name": "scratchValue21",
+       "name": "scratchValue20",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39361,7 +40541,7 @@
        ]
       },
       "iVar16_11": {
-       "name": "scratchValue22",
+       "name": "scratchValue21",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39382,71 +40562,71 @@
        ]
       },
       "iVar16_14": {
-       "name": "scratchValue23",
+       "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar16_15": {
-       "name": "scratchValue24",
+       "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar16_16": {
-       "name": "scratchValue25",
+       "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar17_1": {
-       "name": "scratchValue26",
+       "name": "scratchValue25",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar17_2": {
-       "name": "scratchValue27",
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar17_3": {
-       "name": "scratchValue28",
+       "name": "scratchValue27",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar19_1": {
-       "name": "scratchValue29",
+       "name": "scratchValue28",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar19_2": {
-       "name": "scratchValue30",
+       "name": "scratchValue29",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar19_3": {
-       "name": "scratchValue31",
+       "name": "scratchValue30",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "ixVar13": {
-       "name": "scratchValue32",
-       "basis": "reused or unresolved native temporary",
+       "name": "index",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -39621,7 +40801,7 @@
        ]
       },
       "pCVar6_17": {
-       "name": "scratchValue33",
+       "name": "scratchValue31",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -39633,21 +40813,21 @@
        ]
       },
       "pCVar7_2": {
-       "name": "scratchValue34",
+       "name": "scratchValue32",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar7_3": {
-       "name": "scratchValue35",
+       "name": "scratchValue33",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar7_4": {
-       "name": "scratchValue36",
+       "name": "scratchValue34",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -39764,7 +40944,7 @@
        ]
       },
       "pCVar7_21": {
-       "name": "scratchValue37",
+       "name": "scratchValue35",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -39797,7 +40977,7 @@
        ]
       },
       "pCVar7_26": {
-       "name": "scratchValue38",
+       "name": "scratchValue36",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -39860,14 +41040,14 @@
        ]
       },
       "pcVar14_1": {
-       "name": "scratchValue39",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "pcVar14_2": {
-       "name": "scratchValue40",
+       "name": "scratchValue37",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -39880,7 +41060,7 @@
        ]
       },
       "piVar2": {
-       "name": "scratchValue41",
+       "name": "scratchValue38",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -40015,7 +41195,7 @@
        ]
       },
       "xStack_1e4_2": {
-       "name": "scratchValue42",
+       "name": "scratchValue39",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -40046,7 +41226,7 @@
        ]
       },
       "xStack_1e8_3": {
-       "name": "scratchValue43",
+       "name": "scratchValue40",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -41982,8 +43162,8 @@
        ]
       },
       "ixVar16": {
-       "name": "scratchValue33",
-       "basis": "reused or unresolved native temporary",
+       "name": "index",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
@@ -42004,14 +43184,14 @@
        ]
       },
       "pCVar12_2": {
-       "name": "scratchValue34",
+       "name": "scratchValue33",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar12_3": {
-       "name": "scratchValue35",
+       "name": "scratchValue34",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -42102,7 +43282,7 @@
        ]
       },
       "pCVar12_16": {
-       "name": "scratchValue36",
+       "name": "scratchValue35",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -42145,7 +43325,7 @@
        ]
       },
       "pCVar12_22": {
-       "name": "scratchValue37",
+       "name": "scratchValue36",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -42201,7 +43381,7 @@
        ]
       },
       "pCVar12_30": {
-       "name": "scratchValue38",
+       "name": "scratchValue37",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -42303,21 +43483,21 @@
        ]
       },
       "pCVar9_8": {
-       "name": "scratchValue39",
+       "name": "scratchValue38",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar9_9": {
-       "name": "scratchValue40",
+       "name": "scratchValue39",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar9_10": {
-       "name": "scratchValue41",
+       "name": "scratchValue40",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -42352,14 +43532,14 @@
        ]
       },
       "pCVar9_15": {
-       "name": "scratchValue42",
+       "name": "scratchValue41",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar9_16": {
-       "name": "scratchValue43",
+       "name": "scratchValue42",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -42422,8 +43602,8 @@
        ]
       },
       "pcVar17": {
-       "name": "scratchValue44",
-       "basis": "reused or unresolved native temporary",
+       "name": "grade",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -42616,8 +43796,8 @@
        ]
       },
       "xStack_1f0": {
-       "name": "scratchValue45",
-       "basis": "reused or unresolved native temporary",
+       "name": "resource2",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         "movie",
         "resource",
@@ -42633,7 +43813,7 @@
        ]
       },
       "xStack_200": {
-       "name": "resource2",
+       "name": "resource3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource"
@@ -42647,7 +43827,7 @@
        ]
       },
       "xStack_228": {
-       "name": "resource3",
+       "name": "resource4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource"
@@ -42689,14 +43869,14 @@
        ]
       },
       "xStack_38": {
-       "name": "resource4",
+       "name": "resource5",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource"
        ]
       },
       "xStack_48": {
-       "name": "resource5",
+       "name": "resource6",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource"
@@ -43133,18 +44313,7 @@
     {
      "function": "Main",
      "sourceLine": 21,
-     "locals": {
-      "scratchValue45": {
-       "name": "meleeApprenticeControl",
-       "basis": "named by the API that consumes it",
-       "assignmentRoles": [
-        "movie",
-        "resource",
-        "movie",
-        "movie"
-       ]
-      }
-     },
+     "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
@@ -44866,8 +46035,8 @@
        ]
       },
       "pcVar12": {
-       "name": "scratchValue22",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null,
@@ -44976,7 +46145,7 @@
        ]
       },
       "uVar10_1": {
-       "name": "scratchValue23",
+       "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -44988,7 +46157,7 @@
        ]
       },
       "uVar10_2": {
-       "name": "scratchValue24",
+       "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -45000,7 +46169,7 @@
        ]
       },
       "uVar9": {
-       "name": "scratchValue25",
+       "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -45076,7 +46245,7 @@
        ]
       },
       "xStack_a0": {
-       "name": "scratchValue26",
+       "name": "scratchValue25",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -45090,7 +46259,7 @@
        ]
       },
       "x_stk_18": {
-       "name": "scratchValue27",
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -45121,35 +46290,35 @@
        ]
       },
       "x_stk_54": {
-       "name": "scratchValue28",
+       "name": "scratchValue27",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_60": {
-       "name": "scratchValue29",
+       "name": "scratchValue28",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_6c": {
-       "name": "scratchValue30",
+       "name": "scratchValue29",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_78": {
-       "name": "scratchValue31",
+       "name": "scratchValue30",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_c": {
-       "name": "scratchValue32",
+       "name": "scratchValue31",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -47081,15 +48250,15 @@
        ]
       },
       "pcVar15": {
-       "name": "scratchValue28",
-       "basis": "reused or unresolved native temporary",
+       "name": "line",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null,
         null
        ]
       },
       "r1": {
-       "name": "scratchValue29",
+       "name": "scratchValue28",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -47103,7 +48272,7 @@
        ]
       },
       "r3": {
-       "name": "scratchValue30",
+       "name": "scratchValue29",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -47117,14 +48286,14 @@
        ]
       },
       "r5": {
-       "name": "scratchValue31",
+       "name": "scratchValue30",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "uVar12": {
-       "name": "scratchValue32",
+       "name": "scratchValue31",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -47148,7 +48317,7 @@
        ]
       },
       "uVar13": {
-       "name": "scratchValue33",
+       "name": "scratchValue32",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,

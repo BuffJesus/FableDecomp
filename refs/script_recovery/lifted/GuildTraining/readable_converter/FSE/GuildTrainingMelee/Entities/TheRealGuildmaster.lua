@@ -16,11 +16,11 @@ local heroStanding, whisperStanding, whisperEarly, whisperLate
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, fret_04, fret_06, fret_07, conversationId, scratchValue, scratchValue13
-    local switch, getActiveQuestName, meleeOpponent, rivalHeroThunder, resource2, resource3
-    local actorMap, resource4, resource5, actorMap2, infoCounter, resource6, timerId, timerId2
-    local movie, movie2, movie3, actorMap3, actorMap4, resource7, resource8, resource9, actorMap5
-    local movie4, resource, resource11, scratchValue16
+    local predicateResult, fret_04, fret_06, fret_07, conversationId, scratchValue, index, switch
+    local getActiveQuestName, meleeOpponent, rivalHeroThunder, resource2, resource3, actorMap
+    local resource4, resource5, actorMap2, infoCounter, resource6, timerId, timerId2, movie, movie2
+    local movie3, actorMap3, actorMap4, resource7, resource8, resource9, actorMap5, movie4, resource
+    local resource11, scratchValue14
     local function __cleanup_LAB_00d5a922()
         resources:ReleaseResource(resource)
         quest:DeregisterTimer(timerId)
@@ -49,7 +49,7 @@ function Main(quest, me)
     timerId2 = quest:RegisterTimer()
     quest:SetTimer(timerId2, 0)
     scratchValue = quest:GetStateInt("TutorialState")
-    scratchValue16 = 0
+    scratchValue14 = 0
     while scratchValue == 1 do
         if not quest:NewScriptFrame(me) then goto LAB_00d5933c end
         if not me:IsTalkedToByHero() then
@@ -100,11 +100,11 @@ function Main(quest, me)
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
         quest:SetTimer(timerId2, 10)
-        if scratchValue16 == nil then
+        if scratchValue14 == nil then
             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
             quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_FIRST", me, hero, false)
-            scratchValue16 = 1
-        elseif scratchValue16 == 1 then
+            scratchValue14 = 1
+        elseif scratchValue14 == 1 then
             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
             quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_SECOND", me, hero, false)
         end
@@ -346,17 +346,17 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
             quest:ClearAllRumbles()
             -- TODO(native): xStack_1d4 = (CCharString)(float)fret_06;
-            scratchValue13 = 0
+            index = 0
             -- TODO(native): xStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)xStack_1d4));
             scratchValue = 0
             repeat
                 conversationId = scratchValue
-                if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, scratchValue13) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, scratchValue13) == xStack_1d4) then
+                if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) == xStack_1d4) then
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
                     break
                 end
                 scratchValue = conversationId + 1
-                scratchValue13 = scratchValue13 + 1
+                index = index + 1
             until scratchValue >= 7
             quest:ResetPlayerCreatureOnlyTarget()
             quest:SetStateInt("TutorialState", 7)

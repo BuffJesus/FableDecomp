@@ -22,7 +22,7 @@ function Main(quest, me)
     local scratchValue35, questionAnswer3, scratchValue38, questionAnswer4, conversationId2
     local conversationId3, conversationId4, conversationId5, i_stk_210_1, i_stk_210_2, i_stk_210_3
     local switch, switch6, switch7, switch8, movie, scratchValue59, speedFriend
-    local getNearestWithDefName, scratchValue61, scratchValue62, scratchValue63, movie2, movie3
+    local getNearestWithDefName, scratchValue60, scratchValue61, scratchValue62, movie2, movie3
     local movie4, addQuestInfoTimer, timerId, timerId3, timerId4, movie5, movie6, movie7
     local function __region_LAB_00d402b3_c32()
         quest:PauseAllNonScriptedEntities(false)
@@ -57,7 +57,7 @@ function Main(quest, me)
                 speedFriend:SetFriendsWithEverythingFlag(1)
             end
             raceMode_ = 0
-            scratchValue63 = 0
+            scratchValue62 = 0
             timerId3 = quest:RegisterTimer()
             timerId4 = quest:RegisterTimer()
             timerId = quest:RegisterTimer()
@@ -65,7 +65,7 @@ function Main(quest, me)
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
             while not isActiveThreadTerminating do
                 if raceMode_ == 0 then
-                    i_stk_210_1 = scratchValue63 - 1
+                    i_stk_210_1 = scratchValue62 - 1
                     repeat
                         scratchValue24 = i_stk_210_1
                         if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
@@ -102,10 +102,10 @@ function Main(quest, me)
                                     end
                                 until true
                             else
-                                scratchValue62 = scratchValue63 & 0x80000001
-                                isActiveThreadTerminating = scratchValue62 == 0
-                                if scratchValue62 < 0 then
-                                    isActiveThreadTerminating = (scratchValue62 - 1 | 0xfffffffe) == 0xffffffff
+                                scratchValue61 = scratchValue62 & 0x80000001
+                                isActiveThreadTerminating = scratchValue61 == 0
+                                if scratchValue61 < 0 then
+                                    isActiveThreadTerminating = (scratchValue61 - 1 | 0xfffffffe) == 0xffffffff
                                 end
                                 if not isActiveThreadTerminating then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -117,7 +117,7 @@ function Main(quest, me)
                             end
                             ::FLOW_native_label_1::
                             quest:SetTimer(timerId4, 3)
-                            scratchValue63 = scratchValue63 + 1
+                            scratchValue62 = scratchValue62 + 1
                             i_stk_210_1 = scratchValue24 + 1
                         end
                         if not me:IsTalkedToByHero() then goto continue_1 end
@@ -215,9 +215,9 @@ function Main(quest, me)
                     goto LAB_00d40749
                 end
                 raceMode = raceMode_
-                scratchValue62 = scratchValue63
+                scratchValue61 = scratchValue62
                 while true do
-                    scratchValue63 = scratchValue62
+                    scratchValue62 = scratchValue61
                     if raceMode ~= 1 then break end
                     if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
                     isDistanceBetweenThingsUnder2 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(timerId4) < 1
@@ -225,9 +225,9 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                         conversationId = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(conversationId, speedFriend)
-                        if scratchValue62 < 6 then
+                        if scratchValue61 < 6 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            switch6 = scratchValue62
+                            switch6 = scratchValue61
                             repeat
                                 if switch6 == 1 then
                                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
@@ -249,10 +249,10 @@ function Main(quest, me)
                                 end
                             until true
                         else
-                            scratchValue61 = scratchValue62 & 0x80000001
-                            isActiveThreadTerminating = scratchValue61 == 0
-                            if scratchValue61 < 0 then
-                                isActiveThreadTerminating = (scratchValue61 - 1 | 0xfffffffe) == 0xffffffff
+                            scratchValue60 = scratchValue61 & 0x80000001
+                            isActiveThreadTerminating = scratchValue60 == 0
+                            if scratchValue60 < 0 then
+                                isActiveThreadTerminating = (scratchValue60 - 1 | 0xfffffffe) == 0xffffffff
                             end
                             if not isActiveThreadTerminating then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -264,7 +264,7 @@ function Main(quest, me)
                         end
                         ::FLOW_native_label_2::
                         quest:SetTimer(timerId4, 3)
-                        scratchValue63 = scratchValue62 + 1
+                        scratchValue62 = scratchValue61 + 1
                     end
                     if me:IsTalkedToByHero() then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -355,7 +355,7 @@ function Main(quest, me)
                         end
                         resources:DestroyMovie(movie)
                     end
-                    if quest:GetTimer(timerId) >= 1 then scratchValue62 = scratchValue63; raceMode = raceMode_; goto continue_7 end
+                    if quest:GetTimer(timerId) >= 1 then scratchValue61 = scratchValue62; raceMode = raceMode_; goto continue_7 end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                     quest:RemoveQuestInfoElement(addQuestInfoTimer)
                     quest:DisplayQuestInfo(false)
@@ -364,13 +364,13 @@ function Main(quest, me)
                         quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("RaceMarker"))
                     end
                     raceMode_ = 2
-                    scratchValue62 = scratchValue63
+                    scratchValue61 = scratchValue62
                     raceMode = raceMode_
                     ::continue_7::
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 if raceMode_ == 2 then
-                    i_stk_210_2 = scratchValue63 - 1
+                    i_stk_210_2 = scratchValue62 - 1
                     repeat
                         if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
                         isDistanceBetweenThingsUnder3 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(timerId4) < 1
@@ -403,10 +403,10 @@ function Main(quest, me)
                                     end
                                 until true
                             else
-                                scratchValue62 = scratchValue63 & 0x80000001
-                                isActiveThreadTerminating = scratchValue62 == 0
-                                if scratchValue62 < 0 then
-                                    isActiveThreadTerminating = (scratchValue62 - 1 | 0xfffffffe) == 0xffffffff
+                                scratchValue61 = scratchValue62 & 0x80000001
+                                isActiveThreadTerminating = scratchValue61 == 0
+                                if scratchValue61 < 0 then
+                                    isActiveThreadTerminating = (scratchValue61 - 1 | 0xfffffffe) == 0xffffffff
                                 end
                                 if not isActiveThreadTerminating then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -418,7 +418,7 @@ function Main(quest, me)
                             end
                             ::FLOW_native_label_3::
                             quest:SetTimer(timerId4, 3)
-                            scratchValue63 = scratchValue63 + 1
+                            scratchValue62 = scratchValue62 + 1
                             i_stk_210_2 = scratchValue31 + 1
                         end
                         if not me:IsTalkedToByHero() then goto continue_8 end
@@ -519,7 +519,7 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 if raceMode_ == 3 then
-                    i_stk_210_3 = scratchValue63 - 1
+                    i_stk_210_3 = scratchValue62 - 1
                     scratchValue35 = i_stk_210_3
                     quest:NewScriptFrame(me)
                     if not quest:IsActiveThreadTerminating() then
@@ -552,10 +552,10 @@ function Main(quest, me)
                                     end
                                 until true
                             else
-                                scratchValue62 = scratchValue63 & 0x80000001
-                                isActiveThreadTerminating = scratchValue62 == 0
-                                if scratchValue62 < 0 then
-                                    isActiveThreadTerminating = (scratchValue62 - 1 | 0xfffffffe) == 0xffffffff
+                                scratchValue61 = scratchValue62 & 0x80000001
+                                isActiveThreadTerminating = scratchValue61 == 0
+                                if scratchValue61 < 0 then
+                                    isActiveThreadTerminating = (scratchValue61 - 1 | 0xfffffffe) == 0xffffffff
                                 end
                                 if not isActiveThreadTerminating then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -567,7 +567,7 @@ function Main(quest, me)
                             end
                             ::FLOW_native_label_4::
                             quest:SetTimer(timerId4, 7)
-                            scratchValue63 = scratchValue63 + 1
+                            scratchValue62 = scratchValue62 + 1
                             i_stk_210_3 = scratchValue35 + 1
                         end
                         if not me:IsTalkedToByHero() then goto LAB_00d403e1 end
@@ -693,10 +693,10 @@ function Main(quest, me)
                     end
                 until true
             else
-                scratchValue62 = scratchValue63 & 0x80000001
-                isActiveThreadTerminating = scratchValue62 == 0
-                if scratchValue62 < 0 then
-                    isActiveThreadTerminating = (scratchValue62 - 1 | 0xfffffffe) == 0xffffffff
+                scratchValue61 = scratchValue62 & 0x80000001
+                isActiveThreadTerminating = scratchValue61 == 0
+                if scratchValue61 < 0 then
+                    isActiveThreadTerminating = (scratchValue61 - 1 | 0xfffffffe) == 0xffffffff
                 end
                 if not isActiveThreadTerminating then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c32 end
@@ -708,7 +708,7 @@ function Main(quest, me)
             end
             ::FLOW_native_label_4_c32::
             quest:SetTimer(timerId4, 7)
-            scratchValue63 = scratchValue63 + 1
+            scratchValue62 = scratchValue62 + 1
             i_stk_210_3 = scratchValue38 + 1
         end
         if not me:IsTalkedToByHero() then goto LAB_00d403e1 end

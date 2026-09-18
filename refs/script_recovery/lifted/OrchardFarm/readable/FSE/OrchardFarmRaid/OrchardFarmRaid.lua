@@ -103,8 +103,10 @@ end
 -- Q_OrchardFarmRaid.ProcessGameRulesEvil (retail 0x00dd03d0)
 function ProcessGameRulesEvil(quest)
     local hero = quest:GetHero()
-    local addQuestInfoCounter, f_stk_14_2, rivalHeroWhisperOrchardFarm, mkOfwbWhisper, mkOfwfWhisper
+    local addQuestInfoCounter, f_stk_14_2, thing, rivalHeroWhisperOrchardFarm, mkOfwbWhisper
+    local mkOfwfWhisper
     local function __cleanup_LAB_00dd0b11()
+        local thing = 0
         quest:EndCutscene()
     end
     while not quest:GetStateBool("DoneIntroduction") do
@@ -191,8 +193,10 @@ end
 -- Q_OrchardFarmRaid.ProcessGameRulesGood (retail 0x00dd0f60)
 function ProcessGameRulesGood(quest)
     local hero = quest:GetHero()
-    local ePriority, addQuestInfoCounter, rivalHeroWhisperOrchardFarm, mkOfwbWhisper, mkOfwfWhisper
+    local ePriority, addQuestInfoCounter, thing, rivalHeroWhisperOrchardFarm, mkOfwbWhisper
+    local mkOfwfWhisper
     local function __cleanup_LAB_00dd1728()
+        local thing = 0
         quest:EndCutscene()
     end
     while not quest:GetStateBool("DoneIntroduction") do

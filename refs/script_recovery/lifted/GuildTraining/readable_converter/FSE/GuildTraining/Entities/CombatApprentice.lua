@@ -18,7 +18,7 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult, predicateResult41, scratchValue4, scratchValue5, scratchValue6
     local scratchValue7, health, f_stk_210_1, f_stk_210_2, fret_10, scratchValue, conversationId
-    local addNewConversation, scratchValue14, scratchValue15, p0, combatApprenticeTargetMarker
+    local addNewConversation, scratchValue14, index, p0, combatApprenticeTargetMarker
     local meleeApprentice, resource, resource3, movie, actorMap, resource4, timerId, timerId2
     local movie2, movie3, movie4, movie5, movie6, movie7, addQuestInfoBarHealth
     resource4 = resources:NewResource()
@@ -513,16 +513,16 @@ function Main(quest, me)
                     goto LAB_00d4c416
                 else
                     if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
-                    scratchValue15 = 0
+                    index = 0
                     f_stk_210_2 = (health - quest:GetHealth(meleeApprentice)) - (f_stk_210_1 - quest:GetHealth(hero))
                     scratchValue = 0
                     repeat
                         scratchValue14 = scratchValue
-                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, scratchValue15) <= f_stk_210_2 then
+                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) <= f_stk_210_2 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
                             break
                         end
-                        scratchValue15 = scratchValue15 + 1
+                        index = index + 1
                         scratchValue = scratchValue14 + 1
                     until not (scratchValue14 + 1 < 7)
                     resource3 = resources:NewResource()

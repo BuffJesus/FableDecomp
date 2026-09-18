@@ -112,35 +112,77 @@ def assignment_role(expression):
 
 
 # When nothing about a temporary's assignments says what it is, the API that consumes it does: a value passed
-# to `DeregisterTimer` is a timer id, one passed to `AddPersonToConversation` a conversation id. Each entry is
-# (call pattern with `NAME` for the temporary, role); the first match in the function body wins.
+# to `DeregisterTimer` is a timer id, one passed to `AddPersonToConversation` a conversation id. A rule's role
+# may be a callable over the match, for the calls that name the value themselves (the list it indexes, the
+# actor-map key it fills); returning None from one declines and moves on.
+def _named_after(group, suffix=''):
+    def role(m):
+        value = m.group(group)
+        if GENERATED.fullmatch(value) or value.startswith('scratchValue'):
+            return None
+        return camel(value) + suffix
+    return role
+
+
+def _list_position(m):
+    """`GetStateListAt("AllCreatures", X)` indexes the list; `..., X / 12)` walks it by byte offset."""
+    return camel(m.group('of')) + ('Offset' if m.group('scale') else 'Index')
+
+
+# (pattern with NAME for the temporary, kind, role). `kind` groups the rules that describe the same value
+# from different sides - a resource is acquired, released and destroyed - so only a disagreement *between*
+# kinds means the slot really holds two values. Within a kind the first (most specific) rule wins.
 USE_ROLES = (
-    (r'resources:TryAcquire\(\s*NAME\s*,\s*(?P<of>\w+)\s*,', None),          # `<thing>Control`
-    (r'resources:ReleaseResource\(\s*NAME\s*\)', 'resource'),
-    (r'resources:(?:DestroyMovie|StopMovie)\(\s*NAME\s*\)', 'movie'),
-    (r'resources:(?:SetActor|SetString)\(\s*NAME\s*,', 'actorMap'),
-    (r'resources:(?:DestroyActorMap|RunMacro)\(\s*NAME\s*,?', 'actorMap'),
-    (r'quest:(?:DeregisterTimer|SetTimer|GetTimer)\(\s*NAME\b', 'timerId'),
-    (r'quest:(?:AddPersonToConversation|AddLineToConversation|EndConversation|IsConversationActive)\(\s*NAME\b', 'conversationId'),
-    (r'quest:(?:RemoveQuestInfoElement|SetQuestInfoElementActive)\(\s*NAME\b', 'infoElement'),
-    (r'quest:EntityAttachToScript\(\s*NAME\s*,', 'entity'),
+    (r'resources:TryAcquire\(\s*NAME\s*,\s*(?P<of>\w+)\s*,', 'resource', _named_after('of', 'Control')),
+    (r'resources:ReleaseResource\(\s*NAME\s*\)', 'resource', 'resource'),
+    (r'resources:(?:DestroyMovie|StopMovie)\(\s*NAME\s*\)', 'resource', 'movie'),
+    (r'resources:TryAcquire\([^,()]+,\s*NAME\s*,', 'thing', 'thing'),
+    (r'quest:EntityAttachToScript\(\s*NAME\s*,', 'thing', 'entity'),
+    (r'quest:CreateEffect\(\s*NAME\s*,', 'thing', 'thing'),
+    (r'resources:SetString\([^,()]+,\s*"(?P<of>[^"]+)"\s*,\s*NAME\b', 'text', _named_after('of')),
+    (r'\w+:Speak\([^,()]+,\s*NAME\b', 'text', 'line'),
+    (r'resources:(?:SetActor|SetString)\(\s*NAME\s*,', 'actormap', 'actorMap'),
+    (r'resources:(?:DestroyActorMap|RunMacro)\(\s*NAME\s*,?', 'actormap', 'actorMap'),
+    (r'quest:(?:DeregisterTimer|SetTimer|GetTimer)\(\s*NAME\b', 'timer', 'timerId'),
+    (r'quest:(?:AddPersonToConversation|AddLineToConversation|EndConversation|IsConversationActive)\(\s*NAME\b',
+     'conversation', 'conversationId'),
+    (r'quest:(?:RemoveQuestInfoElement|SetQuestInfoElementActive)\(\s*NAME\b', 'info', 'infoElement'),
+    (r'quest:UpdateQuestInfoTick\([^,()]+,\s*NAME\b', 'info', 'ticked'),
+    (r'quest:(?:GetStateListAt|StateListErase|StateListSet)\(\s*"(?P<of>[^"]+)"\s*,\s*NAME\s*(?P<scale>/)?',
+     'index', _list_position),
+    (r'quest:ReadGlobalGameData\w*At\([^,()]+,\s*NAME\b', 'index', 'index'),
 )
+
+# a register the compiler used as a bit field: every assignment is a literal or a bitwise step on itself
+FLAG_STEP = re.compile(r'(?:0x[0-9a-f]+|\d+)|NAME\s*[&|~]\s*(?:0x[0-9a-f]+|\d+)|\(?NAME\s*[&|~][^()]*\)?')
 
 
 def use_role(name, code):
-    """The role of a value whose assignments say nothing, taken from the API that consumes it."""
+    """The role of a value whose assignments say nothing, taken from the API that consumes it.
+
+    Only when the consumers agree about the *kind* of value: a register passed to both `DeregisterTimer`
+    and `ReleaseResource` is two values sharing a slot, and either name would be a lie.
+    """
     token = r'\b' + re.escape(name) + r'\b'
-    for pattern, role in USE_ROLES:
-        match = re.search(pattern.replace('NAME', token), code)
-        if match is None:
-            continue
-        if role is not None:
-            return role
-        of = match.group('of')
-        if GENERATED.fullmatch(of) or of.startswith('scratchValue'):
-            return None
-        return camel(of) + 'Control'
-    return None
+    found = []
+    for pattern, kind, role in USE_ROLES:
+        for match in re.finditer(pattern.replace('NAME', token), code):
+            chosen = role(match) if callable(role) else role
+            if chosen is not None:
+                found.append((kind, chosen))
+                break
+    if not found or len({kind for kind, _ in found}) > 1:
+        return None
+    return found[0][1]
+
+
+def flag_register(name, assignments):
+    """`X = 0; X = X | 1; X = X & 0xfffffffe` is a bit field, not a scratch value."""
+    step = re.compile(FLAG_STEP.pattern.replace('NAME', r'\b' + re.escape(name) + r'\b'))
+    real = [a.strip() for a in assignments if a.strip() not in ('nil', '')]
+    if len(real) < 2 or not any(re.search(r'[&|~]', a) for a in real):
+        return None
+    return 'flags' if all(step.fullmatch(a) for a in real) else None
 
 
 def rename_labels(source, names):
@@ -235,6 +277,10 @@ def readable_function(source):
                                 'GetNearestWithScriptName': 'nearest', 'GetFurthestWithScriptName': 'furthest'}.get(method, camel(method)), 'one method, several names'
             else:
                 base, reason = 'scratchValue', 'reused or unresolved native temporary'
+        if base == 'scratchValue':
+            flags = flag_register(name, assignments)
+            if flags is not None:
+                base, reason = flags, 'a bit field, not a value'
         if base == 'scratchValue':
             consumed = use_role(name, code)
             if consumed is not None:

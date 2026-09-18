@@ -223,41 +223,41 @@ end
 
 -- CrateTeamMember.IsThingCarryingCrate (retail 0x00dced10)
 function IsThingCarryingCrate(quest, me, thing)
-    local scratchValue, scratchValue2
-    scratchValue2 = 0
+    local crateListIndex, scratchValue
+    scratchValue = 0
     if quest:GetStateListCount("CrateList") ~= 0 then
-        scratchValue = 0
+        crateListIndex = 0
         repeat
             if quest:IsActiveThreadTerminating() then return false end
-            if quest:GetStateListAt("CrateList", scratchValue):IsAlive() then
-                if quest:GetStateListAt("CrateList", scratchValue):IsBeingCarriedBy(thing:GetName()) then
+            if quest:GetStateListAt("CrateList", crateListIndex):IsAlive() then
+                if quest:GetStateListAt("CrateList", crateListIndex):IsBeingCarriedBy(thing:GetName()) then
                     return not quest:IsActiveThreadTerminating()
                 end
             end
-            scratchValue2 = scratchValue2 + 1
             scratchValue = scratchValue + 1
-        until scratchValue2 >= quest:GetStateListCount("CrateList")
+            crateListIndex = crateListIndex + 1
+        until scratchValue >= quest:GetStateListCount("CrateList")
     end
     return false
 end
 
 -- CrateTeamMember.GetNearestCrateToMe (retail 0x00dcedf0)
 function GetNearestCrateToMe(quest, me)
-    local getDistanceBetweenThings, scratchValue2, scratchValue3, scratchValue4, x_stk_c_1
-    scratchValue4 = 10000000.0
+    local getDistanceBetweenThings, crateListIndex, scratchValue2, scratchValue3, x_stk_c_1
+    scratchValue3 = 10000000.0
     x_stk_c_1 = nil
-    scratchValue3 = 0
+    scratchValue2 = 0
     if quest:GetStateListCount("CrateList") ~= 0 then
-        scratchValue2 = 0
+        crateListIndex = 0
         repeat
-            getDistanceBetweenThings = quest:GetDistanceBetweenThings(me, quest:GetStateListAt("CrateList", scratchValue2)) ^ 2
-            if getDistanceBetweenThings < scratchValue4 then
-                scratchValue4 = getDistanceBetweenThings
-                x_stk_c_1 = quest:GetStateListAt("CrateList", scratchValue2)
+            getDistanceBetweenThings = quest:GetDistanceBetweenThings(me, quest:GetStateListAt("CrateList", crateListIndex)) ^ 2
+            if getDistanceBetweenThings < scratchValue3 then
+                scratchValue3 = getDistanceBetweenThings
+                x_stk_c_1 = quest:GetStateListAt("CrateList", crateListIndex)
             end
-            scratchValue3 = scratchValue3 + 1
             scratchValue2 = scratchValue2 + 1
-        until scratchValue3 >= quest:GetStateListCount("CrateList")
+            crateListIndex = crateListIndex + 1
+        until scratchValue2 >= quest:GetStateListCount("CrateList")
     end
     return x_stk_c_1
 end

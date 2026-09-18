@@ -17,6 +17,49 @@ restructuring project, sized by `tools/script_recovery/report_goto_residue.py`. 
 `test_live_father_intro.py`, `test_watch_barrels_readable.py`) -- ~26 min, 1566 passed / 0 failed as of this
 commit -- and never rebuild a unit while it runs.
 
+# CURRENT (night 7, fourth pass, 2026-09-18): the consuming API names the value, and it knows when not to
+
+`USE_ROLES` grew from 9 rules to 16 and each entry now carries a **kind**, plus two rules that read the name out
+of the call itself:
+
+* `GetStateListAt("AllCreatures", X)` -> `allCreaturesIndex`, and `..., X / 12)` -> `allCreaturesOffset`, because
+  a register the compiler walks by byte offset is not an index and should not be spelled like one.
+* `SetString(map, "$GRADE", X)` -> `grade`: the actor-map key is the value's name.
+* `Speak(listener, X, ..)` -> `line`, `ReadGlobalGameDataFloatAt(field, X)` -> `index`,
+  `UpdateQuestInfoTick(elem, X)` -> `ticked`, `TryAcquire(res, X, ..)` / `CreateEffect(X, ..)` -> `thing`.
+
+**The kind is what makes this safe.** A slot passed to both `ReleaseResource` and `DeregisterTimer` is two values
+sharing a register and either name would be a lie, so `use_role` declines; but acquired / released / destroyed
+are three views of one resource, so within the `resource` kind the first (most specific) rule wins and the name
+is `heroControl`. Measured: requiring plain agreement across all rules cost 94 occurrences for 5 conflicted
+names, of which only 1 was a real contradiction -- the kinds recover the other 4.
+
+Also `flag_register`: `X = 0; X = X | 1; X = X & 0xfffffffe` is a bit field, not a scratch value, so it is
+named `flags`.
+
+**One whole file was shipping as raw draft.** `build_readable_unit` catches a `ValueError` from any pass and
+falls back to the unnamed draft text for that file, printing one line to stderr -- which is easy to miss in a
+build that prints a JSON report. `READABLE_REPORT.json` records it as `files[rel].error`, and
+`FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua` had been failing on `guard body indentation` for who
+knows how long: `fold_guard_wrappers` dedents a guard's body and refused a line that was not indented, but an
+earlier fold had orphaned a `--[[unresolved native value]]` comment at the guard's own indent. A comment carries
+no semantics, so it is now skipped instead of aborting the file. That file went from 100% raw to named and
+styled (unit `xStack_NN` 211 -> 160). **Check `files[*].error` in the report after any style change.**
+
+`scratchValue` in the emitted `.lua`: **Guild 934 -> 844, TraderConflict 534 -> 399, Orchard 37 -> 25** (Guild's
+844 includes the 18 the recovered file contributes -- it had none before because it had no names at all). Across
+the whole night: Guild 1327 -> 844, TraderConflict 644 -> 399 (-38%), Orchard 54 -> 25 (-54%).
+
+New `UseRoleTests` in `test_readable_lua.py` cover each rule, the index/offset split, the agreeing kind, the
+declining kind and the bit field.
+
+Gates: Oakvale readable identical, smoke Orchard 0 / Guild 11 / TraderConflict 11.
+
+**What is left** (census with `grep -rhoE "scratchValue[0-9]* = .*" ... --include='*.lua'`): 111 temporaries whose
+only assignment is a plain number and that no `USE_ROLES` call consumes, 36 `X = X + 1` counters, and 22
+`X = X | 1` bit steps that `flag_register` refuses because the same slot also takes a call result. The next
+lever is still the use side -- add rules as new consuming calls show up -- or split those slots harder.
+
 # CURRENT (night 7, third pass, 2026-09-18): 27 early exits stopped leaking their cleanup
 
 `native_cleanup_regions.py` hoists a retail epilogue (release the controlled entities, deregister the timers,

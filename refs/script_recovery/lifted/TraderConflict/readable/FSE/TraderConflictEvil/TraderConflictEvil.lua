@@ -18,11 +18,11 @@ local SCRIPT_DEF = {
 
 -- Q_TraderConflictEvil.Main (retail 0x00df6010)
 function Main(quest)
-    local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue12, scratchValue13
-    local c_stk_7d_1, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, f_stk_70_1, f_stk_70_2, f_stk_70_3
-    local f_stk_70_4, addQuestInfoCounter, scratchValue16, scratchValue17, scratchValue18
-    local scratchValue21, getActiveQuestName, scratchValue23, creaturesItem
-    local getNearestWithScriptName, oakvaleVillagerMaleFakeShopkeeper
+    local allCreaturesOffset, allCreaturesOffset2, allCreaturesOffset3, allCreaturesOffset4
+    local allCreaturesOffset5, scratchValue13, c_stk_7d_1, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78
+    local f_stk_70_1, f_stk_70_2, f_stk_70_3, f_stk_70_4, addQuestInfoCounter, scratchValue16
+    local scratchValue17, scratchValue18, scratchValue21, getActiveQuestName, scratchValue23
+    local creaturesItem, getNearestWithScriptName, oakvaleVillagerMaleFakeShopkeeper
     local oakvaleVillagerMaleFakeShopkeeper2, banditFollower, getNearestWithScriptName2
     local banditFollower2, getNearestWithScriptName3, bsSlumBedBrown01, scratchValue33
     local getDataString
@@ -52,16 +52,16 @@ function Main(quest)
     quest:SetGuardsIgnoreCrimes(true)
     quest:EnableGuards(quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS"), false)
     bsSlumBedBrown01 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
-    scratchValue12 = #bsSlumBedBrown01
-    scratchValue33 = scratchValue12
+    allCreaturesOffset5 = #bsSlumBedBrown01
+    scratchValue33 = allCreaturesOffset5
     scratchValue16 = 0
-    if 0 < scratchValue12 then
+    if 0 < allCreaturesOffset5 then
         repeat
             if quest:IsActiveThreadTerminating() then goto LAB_00df75f5 end
             quest:SetThingAsUsable(bsSlumBedBrown01[addQuestInfoCounter / 12 + 1], false)
             scratchValue16 = scratchValue16 + 1
             addQuestInfoCounter = addQuestInfoCounter + 12
-        until scratchValue16 >= scratchValue12
+        until scratchValue16 >= allCreaturesOffset5
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00df75f5 end
     UpdateLiveEnemies(quest)
@@ -95,19 +95,19 @@ function Main(quest)
         if quest:GetStateListCount("AllCreatures") ~= 0 then
             ctr_78 = 0
             repeat
-                scratchValue12 = ctr_78
+                allCreaturesOffset5 = ctr_78
                 if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), nil --[[operand lost by the decompiler]])
-                quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "FACTION_MONSTERS")
-                quest:MiniMapAddMarker(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "HUD_ORB_RED_SMALL")
-                quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), false)
-                creaturesItem = quest:GetStateListAt("AllCreatures", scratchValue12 / 12):GetName()
+                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), nil --[[operand lost by the decompiler]])
+                quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "FACTION_MONSTERS")
+                quest:MiniMapAddMarker(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "HUD_ORB_RED_SMALL")
+                quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), false)
+                creaturesItem = quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):GetName()
                 if creaturesItem == nil then
-                    scratchValue12 = ctr_78
+                    allCreaturesOffset5 = ctr_78
                     if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-                    creaturesItem = quest:GetStateListAt("AllCreatures", scratchValue12 / 12):GetDefName()
+                    creaturesItem = quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):GetDefName()
                     if creaturesItem == nil then
-                        scratchValue12 = ctr_78
+                        allCreaturesOffset5 = ctr_78
                         c_stk_7d_1 = false
                     else
                         c_stk_7d_1 = creaturesItem == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER"
@@ -115,7 +115,7 @@ function Main(quest)
                     if c_stk_7d_1 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
                         getActiveQuestName = "TC_Villager"
-                        oakvaleVillagerMaleFakeShopkeeper = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", scratchValue12 / 12):GetPos(), getActiveQuestName)
+                        oakvaleVillagerMaleFakeShopkeeper = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):GetPos(), getActiveQuestName)
                         ctr_74 = ctr_74 + 1
                         quest:SetCombatNearbyBreakOffRange(oakvaleVillagerMaleFakeShopkeeper, 10.0)
                         quest:EntitySetInFaction(oakvaleVillagerMaleFakeShopkeeper, "FACTION_MONSTERS")
@@ -123,21 +123,21 @@ function Main(quest)
                         quest:EntitySetSleepEnabled(oakvaleVillagerMaleFakeShopkeeper, false)
                         quest:EntitySetStategroupEnabled(oakvaleVillagerMaleFakeShopkeeper, "SG_MINION_SLEEP", false)
                     end
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_MINION_HAWKING_FROM_STALL", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_SELL_TO_BUYER", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_OPEN_AND_CLOSE_SHOP", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_SETUP_WARES", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_MINION_SLEEP", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_MINION_HAWKING_FROM_STALL", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_SELL_TO_BUYER", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_OPEN_AND_CLOSE_SHOP", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_SETUP_WARES", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_MINION_SLEEP", false)
                 elseif creaturesItem ~= "IsAGuard" then
                     if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-                    if quest:GetStateListAt("AllCreatures", scratchValue12 / 12):GetDefName() == nil then
-                        scratchValue12 = ctr_78
+                    if quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):GetDefName() == nil then
+                        allCreaturesOffset5 = ctr_78
                         c_stk_7d_1 = false
                     end
                     if c_stk_7d_1 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
                         getActiveQuestName = "TC_Villager"
-                        oakvaleVillagerMaleFakeShopkeeper2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", scratchValue12 / 12):GetPos(), getActiveQuestName)
+                        oakvaleVillagerMaleFakeShopkeeper2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):GetPos(), getActiveQuestName)
                         ctr_74 = ctr_74 + 1
                         quest:SetCombatNearbyBreakOffRange(oakvaleVillagerMaleFakeShopkeeper2, 10.0)
                         quest:EntitySetInFaction(oakvaleVillagerMaleFakeShopkeeper2, "FACTION_MONSTERS")
@@ -145,11 +145,11 @@ function Main(quest)
                         quest:EntitySetSleepEnabled(oakvaleVillagerMaleFakeShopkeeper2, false)
                         quest:EntitySetStategroupEnabled(oakvaleVillagerMaleFakeShopkeeper2, "SG_MINION_SLEEP", false)
                     end
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_MINION_HAWKING_FROM_STALL", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_SELL_TO_BUYER", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_OPEN_AND_CLOSE_SHOP", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_SETUP_WARES", false)
-                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "SG_MINION_SLEEP", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_MINION_HAWKING_FROM_STALL", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_SELL_TO_BUYER", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_OPEN_AND_CLOSE_SHOP", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_SETUP_WARES", false)
+                    quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "SG_MINION_SLEEP", false)
                 end
                 ctr_40 = ctr_40 + 1
                 ctr_78 = ctr_78 + 12
@@ -159,7 +159,7 @@ function Main(quest)
             ctr_44 = 0
             if 0 < ctr_74 then
                 -- LAB_00df6aa2: (native jump target)
-                scratchValue12 = 0
+                allCreaturesOffset5 = 0
                 if not quest:IsActiveThreadTerminating() then
                     ctr_40 = 0
                     if quest:GetStateListCount("AllCreatures") ~= 0 then
@@ -198,17 +198,17 @@ function Main(quest)
                     if quest:GetStateListCount("AllCreatures") == 0 then UpdateLiveEnemies(quest); quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 25, -1); addQuestInfoCounter = (quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned"); goto continue_2 end
                     ctr_78 = 0
                     repeat
-                        scratchValue12 = ctr_78
+                        allCreaturesOffset5 = ctr_78
                         if quest:IsActiveThreadTerminating() then goto LAB_00df7957 end
-                        if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByHero() then
-                            if quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByAnySpecialAbilityFromHero() then
-                                if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByHeroSpecialAbility(14) then
+                        if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByHero() then
+                            if quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByAnySpecialAbilityFromHero() then
+                                if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByHeroSpecialAbility(14) then
                                     scratchValue13 = true
                                     goto FLOW_after_lab_00df6e53
                                 end
                             end
                             scratchValue13 = false
-                            if quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), banditFollower, 10.0) then
+                            if quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), banditFollower, 10.0) then
                                 scratchValue13 = true
                                 goto FLOW_after_lab_00df6e53
                             end
@@ -223,30 +223,30 @@ function Main(quest)
                             if quest:GetStateListCount("AllCreatures") ~= 0 then
                                 ctr_74 = 0
                                 repeat
-                                    scratchValue = ctr_74
+                                    allCreaturesOffset = ctr_74
                                     if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-                                    if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), quest:GetStateListAt("AllCreatures", scratchValue / 12), 10.0) then f_stk_70_1 = (f_stk_70_1 + 1); ctr_74 = (scratchValue + 12); goto continue_3 end
-                                    creaturesItem = quest:GetStateListAt("AllCreatures", scratchValue / 12):GetName()
+                                    if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), quest:GetStateListAt("AllCreatures", allCreaturesOffset / 12), 10.0) then f_stk_70_1 = (f_stk_70_1 + 1); ctr_74 = (allCreaturesOffset + 12); goto continue_3 end
+                                    creaturesItem = quest:GetStateListAt("AllCreatures", allCreaturesOffset / 12):GetName()
                                     if creaturesItem == nil then
-                                        scratchValue = ctr_74
-                                        scratchValue12 = ctr_78
+                                        allCreaturesOffset = ctr_74
+                                        allCreaturesOffset5 = ctr_78
                                     elseif creaturesItem == "IsAGuard" then
                                         if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-                                        scratchValue = ctr_74
+                                        allCreaturesOffset = ctr_74
                                         quest:GiveThingBestEnemyTarget(hero, oakvaleVillagerMaleFakeShopkeeper)
-                                        scratchValue12 = ctr_78
+                                        allCreaturesOffset5 = ctr_78
                                     end
                                     f_stk_70_1 = f_stk_70_1 + 1
-                                    ctr_74 = scratchValue + 12
+                                    ctr_74 = allCreaturesOffset + 12
                                     ::continue_3::
                                 until f_stk_70_1 >= quest:GetStateListCount("AllCreatures")
                             end
                         end
                         -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
-                        if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitBy("TC_BanditFighter") then
+                        if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitBy("TC_BanditFighter") then
                             -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
-                            if quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter") then
-                                if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByHeroSpecialAbility(14) then
+                            if quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter") then
+                                if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByHeroSpecialAbility(14) then
                                     scratchValue13 = true
                                     goto FLOW_after_lab_00df706d
                                 end
@@ -257,28 +257,28 @@ function Main(quest)
                             scratchValue13 = true
                         end
                         ::FLOW_after_lab_00df706d::
-                        if not scratchValue13 then ctr_5c = ctr_5c + 1; ctr_78 = (scratchValue12 + 12); goto continue_9 end
+                        if not scratchValue13 then ctr_5c = ctr_5c + 1; ctr_78 = (allCreaturesOffset5 + 12); goto continue_9 end
                         if not quest:IsActiveThreadTerminating() then
-                            getNearestWithScriptName2 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "TC_BanditFighter")
+                            getNearestWithScriptName2 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "TC_BanditFighter")
                             ctr_74 = 0
                             if quest:GetStateListCount("AllCreatures") ~= 0 then
                                 f_stk_70_2 = 0
                                 repeat
-                                    scratchValue2 = f_stk_70_2
+                                    allCreaturesOffset2 = f_stk_70_2
                                     if quest:IsActiveThreadTerminating() then return end
-                                    if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), quest:GetStateListAt("AllCreatures", scratchValue2 / 12), 10.0) then ctr_74 = ctr_74 + 1; f_stk_70_2 = (scratchValue2 + 12); goto continue_4 end
-                                    creaturesItem = quest:GetStateListAt("AllCreatures", scratchValue2 / 12):GetName()
+                                    if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), quest:GetStateListAt("AllCreatures", allCreaturesOffset2 / 12), 10.0) then ctr_74 = ctr_74 + 1; f_stk_70_2 = (allCreaturesOffset2 + 12); goto continue_4 end
+                                    creaturesItem = quest:GetStateListAt("AllCreatures", allCreaturesOffset2 / 12):GetName()
                                     if creaturesItem == nil then
-                                        scratchValue2 = f_stk_70_2
-                                        scratchValue12 = ctr_78
+                                        allCreaturesOffset2 = f_stk_70_2
+                                        allCreaturesOffset5 = ctr_78
                                     elseif creaturesItem == "IsAGuard" then
-                                        scratchValue2 = f_stk_70_2
+                                        allCreaturesOffset2 = f_stk_70_2
                                         if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
                                         quest:GiveThingBestEnemyTarget(quest:GetStateListAt("AllCreatures", f_stk_70_2 / 12), getNearestWithScriptName2)
-                                        scratchValue12 = ctr_78
+                                        allCreaturesOffset5 = ctr_78
                                     end
                                     ctr_74 = ctr_74 + 1
-                                    f_stk_70_2 = scratchValue2 + 12
+                                    f_stk_70_2 = allCreaturesOffset2 + 12
                                     ::continue_4::
                                 until ctr_74 >= quest:GetStateListCount("AllCreatures")
                             end
@@ -286,7 +286,7 @@ function Main(quest)
                             goto LAB_00df75ec
                         end
                         ctr_5c = ctr_5c + 1
-                        ctr_78 = scratchValue12 + 12
+                        ctr_78 = allCreaturesOffset5 + 12
                         ::continue_9::
                     until ctr_5c >= quest:GetStateListCount("AllCreatures")
                     UpdateLiveEnemies(quest)
@@ -302,7 +302,7 @@ function Main(quest)
                 PlayHeroCutscene(quest, "CS_TRADERCON_EVIL_OUTRO")
                 quest:EntityUnsetAsOpinionSource(hero, true)
                 quest:SetGuardsIgnoreCrimes(false)
-                scratchValue12 = scratchValue33
+                allCreaturesOffset5 = scratchValue33
                 addQuestInfoCounter = 0
                 if 0 < scratchValue33 then
                     repeat
@@ -333,7 +333,7 @@ function Main(quest)
     while true do
         addQuestInfoCounter = addQuestInfoCounter + 12
         if addQuestInfoCounter == (quest:GetStateListCount("AllCreatures") * 12) then break end
-        if quest:GetStateListAt("AllCreatures", scratchValue12 / 12):IsEqualTo(quest:GetStateListAt("AllCreatures", addQuestInfoCounter / 12)) then
+        if quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):IsEqualTo(quest:GetStateListAt("AllCreatures", addQuestInfoCounter / 12)) then
             quest:StateListErase("AllCreatures", addQuestInfoCounter / 12)
             break
         end
@@ -361,16 +361,16 @@ function Main(quest)
                 if quest:GetStateListCount("AllCreatures") == 0 then UpdateLiveEnemies(quest); quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 25, -1); addQuestInfoCounter = (quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned"); goto continue_6 end
                 ctr_78 = 0
                 repeat
-                    scratchValue12 = ctr_78
+                    allCreaturesOffset5 = ctr_78
                     if quest:IsActiveThreadTerminating() then
                         __region_LAB_00df74f2_c16(); goto LAB_00df7957_c16
                     end
-                    if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByHero() then
-                        if quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByAnySpecialAbilityFromHero() then
-                            if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByHeroSpecialAbility(14) then return end  -- TODO(native): goto LAB_00df6e53_c16
+                    if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByHero() then
+                        if quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByAnySpecialAbilityFromHero() then
+                            if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByHeroSpecialAbility(14) then return end  -- TODO(native): goto LAB_00df6e53_c16
                         end
                         scratchValue13 = false
-                        if quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), banditFollower2, 10.0) then return end  -- TODO(native): goto LAB_00df6e53_c16
+                        if quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), banditFollower2, 10.0) then return end  -- TODO(native): goto LAB_00df6e53_c16
                     else
                         -- LAB_00df6e53_c16: (native jump target)
                         scratchValue13 = true
@@ -381,52 +381,52 @@ function Main(quest)
                         if quest:GetStateListCount("AllCreatures") ~= 0 then
                             ctr_74 = 0
                             repeat
-                                scratchValue3 = ctr_74
+                                allCreaturesOffset3 = ctr_74
                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00df75e3_c16
-                                if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), quest:GetStateListAt("AllCreatures", scratchValue3 / 12), 10.0) then f_stk_70_3 = (f_stk_70_3 + 1); ctr_74 = (scratchValue3 + 12); goto continue_7 end
-                                creaturesItem = quest:GetStateListAt("AllCreatures", scratchValue3 / 12):GetName()
+                                if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12), 10.0) then f_stk_70_3 = (f_stk_70_3 + 1); ctr_74 = (allCreaturesOffset3 + 12); goto continue_7 end
+                                creaturesItem = quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):GetName()
                                 if creaturesItem == nil then
-                                    scratchValue3 = ctr_74
-                                    scratchValue12 = ctr_78
+                                    allCreaturesOffset3 = ctr_74
+                                    allCreaturesOffset5 = ctr_78
                                 else
                                     if creaturesItem == "IsAGuard" then return end  -- TODO(native): goto LAB_00df6f5f_c16
                                 end
                                 f_stk_70_3 = f_stk_70_3 + 1
-                                ctr_74 = scratchValue3 + 12
+                                ctr_74 = allCreaturesOffset3 + 12
                                 ::continue_7::
                             until f_stk_70_3 >= quest:GetStateListCount("AllCreatures")
                         end
                     end
                     -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
-                    if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitBy("TC_BanditFighter") then
+                    if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitBy("TC_BanditFighter") then
                         -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
-                        if quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter") then
-                            if not quest:GetStateListAt("AllCreatures", scratchValue12 / 12):MsgIsHitByHeroSpecialAbility(14) then return end  -- TODO(native): goto LAB_00df706d_c16
+                        if quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter") then
+                            if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByHeroSpecialAbility(14) then return end  -- TODO(native): goto LAB_00df706d_c16
                         end
                         scratchValue13 = false
                     else
                         -- LAB_00df706d_c16: (native jump target)
                         scratchValue13 = true
                     end
-                    if not scratchValue13 then ctr_5c = ctr_5c + 1; ctr_78 = (scratchValue12 + 12); goto continue_11 end
+                    if not scratchValue13 then ctr_5c = ctr_5c + 1; ctr_78 = (allCreaturesOffset5 + 12); goto continue_11 end
                     if not quest:IsActiveThreadTerminating() then
-                        getNearestWithScriptName3 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), "TC_BanditFighter")
+                        getNearestWithScriptName3 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "TC_BanditFighter")
                         ctr_74 = 0
                         if quest:GetStateListCount("AllCreatures") ~= 0 then
                             f_stk_70_4 = 0
                             repeat
-                                scratchValue4 = f_stk_70_4
+                                allCreaturesOffset4 = f_stk_70_4
                                 if quest:IsActiveThreadTerminating() then return end
-                                if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", scratchValue12 / 12), quest:GetStateListAt("AllCreatures", scratchValue4 / 12), 10.0) then ctr_74 = ctr_74 + 1; f_stk_70_4 = (scratchValue4 + 12); goto continue_8 end
-                                creaturesItem = quest:GetStateListAt("AllCreatures", scratchValue4 / 12):GetName()
+                                if not quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), quest:GetStateListAt("AllCreatures", allCreaturesOffset4 / 12), 10.0) then ctr_74 = ctr_74 + 1; f_stk_70_4 = (allCreaturesOffset4 + 12); goto continue_8 end
+                                creaturesItem = quest:GetStateListAt("AllCreatures", allCreaturesOffset4 / 12):GetName()
                                 if creaturesItem == nil then
-                                    scratchValue4 = f_stk_70_4
-                                    scratchValue12 = ctr_78
+                                    allCreaturesOffset4 = f_stk_70_4
+                                    allCreaturesOffset5 = ctr_78
                                 else
                                     if creaturesItem == "IsAGuard" then return end  -- TODO(native): goto LAB_00df71ab_c16
                                 end
                                 ctr_74 = ctr_74 + 1
-                                f_stk_70_4 = scratchValue4 + 12
+                                f_stk_70_4 = allCreaturesOffset4 + 12
                                 ::continue_8::
                             until ctr_74 >= quest:GetStateListCount("AllCreatures")
                         end
@@ -434,7 +434,7 @@ function Main(quest)
                         -- TODO(native): goto LAB_00df75e3_c16
                     end
                     ctr_5c = ctr_5c + 1
-                    ctr_78 = scratchValue12 + 12
+                    ctr_78 = allCreaturesOffset5 + 12
                     ::continue_11::
                 until ctr_5c >= quest:GetStateListCount("AllCreatures")
                 UpdateLiveEnemies(quest)
@@ -450,7 +450,7 @@ function Main(quest)
             PlayHeroCutscene(quest, "CS_TRADERCON_EVIL_OUTRO")
             quest:EntityUnsetAsOpinionSource(hero, true)
             quest:SetGuardsIgnoreCrimes(false)
-            scratchValue12 = getActiveQuestName
+            allCreaturesOffset5 = getActiveQuestName
             addQuestInfoCounter = 0
             if 0 < getActiveQuestName then
                 repeat
@@ -460,7 +460,7 @@ function Main(quest)
                     quest:SetThingAsUsable(bsSlumBedBrown01[scratchValue18 + 1], true)
                     addQuestInfoCounter = addQuestInfoCounter + 1
                     scratchValue18 = scratchValue18 + 1
-                until addQuestInfoCounter >= scratchValue12
+                until addQuestInfoCounter >= allCreaturesOffset5
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00df7957_c16 end
             quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, true, false)
@@ -534,47 +534,47 @@ end
 function UpdateLiveEnemies(quest)
     local isActiveThreadTerminating, isActiveThreadTerminating2, isActiveThreadTerminating3
     local isActiveThreadTerminating4, isActiveThreadTerminating5, predicateResult, scratchValue
-    local predicateResult4, scratchValue6, scratchValue7, scratchValue8, followers
+    local predicateResult4, allCreaturesIndex2, allCreaturesIndex, scratchValue7, followers
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
-    scratchValue7 = 0
-    while scratchValue7 ~= quest:GetStateListCount("AllCreatures") do
+    allCreaturesIndex = 0
+    while allCreaturesIndex ~= quest:GetStateListCount("AllCreatures") do
         isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         if isActiveThreadTerminating then
             return isActiveThreadTerminating
         end
-        if ((quest:GetStateListAt("AllCreatures", scratchValue7):GetDefName() == "CREATURE_DEMON_DOOR_FACE_01") and 0 or 1) ~= 0 then
-            if quest:GetStateListAt("AllCreatures", scratchValue7):GetName() ~= "TC_BanditFollower" then goto LAB_00df9c5a end
+        if ((quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() == "CREATURE_DEMON_DOOR_FACE_01") and 0 or 1) ~= 0 then
+            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "TC_BanditFollower" then goto LAB_00df9c5a end
             isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating2 then
                 return isActiveThreadTerminating2
             end
-            quest:StateListErase("AllCreatures", scratchValue7)
+            quest:StateListErase("AllCreatures", allCreaturesIndex)
             goto FLOW_after_lab_00df9cb3
             ::LAB_00df9c5a::
-            if quest:GetStateListAt("AllCreatures", scratchValue7):GetName() == "TC_BanditFighter" then
+            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "TC_BanditFighter" then
                 isActiveThreadTerminating3 = quest:IsActiveThreadTerminating()
                 if isActiveThreadTerminating3 then
                     return isActiveThreadTerminating3
                 end
-                quest:StateListErase("AllCreatures", scratchValue7)
+                quest:StateListErase("AllCreatures", allCreaturesIndex)
                 goto FLOW_after_lab_00df9cb3
             end
             isActiveThreadTerminating4 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating4 then
                 return isActiveThreadTerminating4
             end
-            scratchValue7 = scratchValue7 + 1
+            allCreaturesIndex = allCreaturesIndex + 1
         else
             isActiveThreadTerminating5 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating5 then
                 return isActiveThreadTerminating5
             end
-            quest:StateListErase("AllCreatures", scratchValue7)
+            quest:StateListErase("AllCreatures", allCreaturesIndex)
         end
         ::FLOW_after_lab_00df9cb3::
     end
-    scratchValue8 = 0
+    scratchValue7 = 0
     followers = quest:GetFollowingEntityList(quest:GetHero())
     if #followers ~= 0 then
         scratchValue = 4
@@ -582,19 +582,19 @@ function UpdateLiveEnemies(quest)
             predicateResult = quest:IsActiveThreadTerminating()
             predicateResult4 = predicateResult
             if predicateResult then goto LAB_00df9dc0 end
-            scratchValue6 = 0
-            while scratchValue6 ~= quest:GetStateListCount("AllCreatures") do
-                if not followers[(scratchValue - 4) / 12 + 1]:IsEqualTo(quest:GetStateListAt("AllCreatures", scratchValue6)) then
-                    scratchValue6 = scratchValue6 + 1
+            allCreaturesIndex2 = 0
+            while allCreaturesIndex2 ~= quest:GetStateListCount("AllCreatures") do
+                if not followers[(scratchValue - 4) / 12 + 1]:IsEqualTo(quest:GetStateListAt("AllCreatures", allCreaturesIndex2)) then
+                    allCreaturesIndex2 = allCreaturesIndex2 + 1
                 else
-                    quest:StateListErase("AllCreatures", scratchValue6)
+                    quest:StateListErase("AllCreatures", allCreaturesIndex2)
                     break
-                    scratchValue6 = scratchValue6 + 1
+                    allCreaturesIndex2 = allCreaturesIndex2 + 1
                 end
             end
-            scratchValue8 = scratchValue8 + 1
+            scratchValue7 = scratchValue7 + 1
             scratchValue = scratchValue + 12
-        until scratchValue8 >= #followers
+        until scratchValue7 >= #followers
     end
     predicateResult4 = quest:IsActiveThreadTerminating()
     ::LAB_00df9dea::

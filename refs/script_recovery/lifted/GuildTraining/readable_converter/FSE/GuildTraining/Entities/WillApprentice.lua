@@ -25,9 +25,9 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult, isActiveThreadTerminating, scratchValue3, scratchValue4, scratchValue5
     local conversationId, conversationId2, scratchValue, getMasterGameState, questionAnswer
-    local addQuestInfoCounter, scratchValue29, scratchValue31, p0, willApprenticeTargetMarker
-    local timerId, movie, actorMap, timerId2, resource, timerId3, timerId4, movie2, movie3, movie4
-    local resource3, infoElement
+    local addQuestInfoCounter, scratchValue29, index, p0, willApprenticeTargetMarker, timerId, movie
+    local actorMap, timerId2, resource, timerId3, timerId4, movie2, movie3, movie4, resource3
+    local infoElement
     local function __cleanup_LAB_00d504b9()
         quest:DeregisterTimer(timerId4)
         resources:ReleaseResource(resource)
@@ -275,15 +275,15 @@ function Main(quest, me)
                 if scratchValue3 == 0 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                     infoElement = quest:GetMasterGameState("WillScore")
-                    scratchValue31 = 0
+                    index = 0
                     scratchValue29 = 0
                     repeat
                         scratchValue = scratchValue29
-                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, scratchValue31) <= infoElement then
+                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, index) <= infoElement then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                             break
                         end
-                        scratchValue31 = scratchValue31 + 1
+                        index = index + 1
                         scratchValue29 = scratchValue + 1
                     until not (scratchValue + 1 < 7)
                     resource3 = resources:NewResource()
