@@ -44,6 +44,14 @@ function Main(quest, me)
         quest:DeregisterTimer(timerId9)
         resources:ReleaseResource(resource3)
     end
+    local function __region_LAB_00d61b44_c22()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(meleeApprenticeControl)
+    end
+    local function __region_LAB_00d61b53_c22()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(meleeApprenticeControl)
+    end
     resource3 = resources:NewResource()
     while not resources:TryAcquire(resource3, me, 4) do
         quest:NewScriptFrame(me)
@@ -634,12 +642,10 @@ function Main(quest, me)
                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                             questionAnswer5 = quest:MsgIsQuestionAnsweredYesOrNo()
                             while questionAnswer5 < 0 do
-                                quest:NewScriptFrame(me)
-                                if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d61b53_c22
+                                if not quest:NewScriptFrame(me) then __region_LAB_00d61b53_c22(); goto LAB_00d61b69 end
                                 questionAnswer5 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                             if quest:IsActiveThreadTerminating() then
-                                -- LAB_00d61b44_c22: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
                             else
                                 timerId3 = quest:IsActiveThreadTerminating()
@@ -650,7 +656,7 @@ function Main(quest, me)
                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_2_comp.xmv")
                                         quest:ConfiscateAllHeroWeapons()
                                         if quest:IsQuestActive("Q_GuildTrainingWoodsWill") then
-                                            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d61b44_c22
+                                            if quest:IsActiveThreadTerminating() then __region_LAB_00d61b44_c22(); goto LAB_00d61b69 end
                                             quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
                                         end
                                         quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
@@ -667,15 +673,13 @@ function Main(quest, me)
                                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO", GROUP_SELECT_FIRST, false, false, 0.0 ~= 0)
                                         while me:IsPerformingScriptTask() do
-                                            quest:NewScriptFrame(me)
-                                            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d61b44_c22
+                                            if not quest:NewScriptFrame(me) then __region_LAB_00d61b44_c22(); goto LAB_00d61b69 end
                                         end
-                                        if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d61b53_c22
+                                        if quest:IsActiveThreadTerminating() then __region_LAB_00d61b53_c22(); goto LAB_00d61b69 end
                                     end
                                     me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, 0, true)
                                     __region_LAB_00d61ad8_c22(); goto LAB_00d61af3
                                 end
-                                -- LAB_00d61b53_c22: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
                             end
                             resources:DestroyMovie(meleeApprenticeControl)
@@ -754,7 +758,6 @@ function Main(quest, me)
                 end
             end
             if quest:IsActiveThreadTerminating() then
-                -- LAB_00d61b44: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
             else
                 timerId3 = quest:IsActiveThreadTerminating()

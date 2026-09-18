@@ -5885,11 +5885,21 @@
       },
       "cleanupRegions": {
         "FSE/GuildTraining/Entities/ApprenticeSpeedTest.lua": {
+          "LAB_00d402b3_c32": [
+            "quest:PauseAllNonScriptedEntities(false)",
+            "pCVar11 = xStack_f0",
+            "resources:DestroyMovie(pCVar11)"
+          ],
           "LAB_00d40379_c32": [
             "pCVar6 = quest:GetThingWithScriptName(\"RaceMarker\")",
             "quest:MiniMapRemoveMarker(pCVar6)",
             "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_f0)"
+          ],
+          "LAB_00d40716_c32": [
+            "quest:PauseAllNonScriptedEntities(false)",
+            "pCVar11 = xStack_f0",
+            "resources:DestroyMovie(pCVar11)"
           ]
         },
         "FSE/GuildTraining/Entities/MeleeApprentice.lua": {
@@ -7670,6 +7680,21 @@
         "TheRealGuildmaster": "GuildTrainingMelee/Entities/TheRealGuildmaster",
         "MeleeOpponent": "GuildTrainingMelee/Entities/MeleeOpponent",
         "MeleeThunder": "GuildTrainingMelee/Entities/MeleeThunder"
+      },
+      "cleanupRegions": {
+        "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua": {
+          "LAB_00d5a922": [
+            "resources:ReleaseResource(xStack_d0)",
+            "quest:DeregisterTimer(xStack_260)",
+            "quest:DeregisterTimer(xStack_264)",
+            "resources:ReleaseResource(xStack_250)"
+          ],
+          "LAB_00d5a9b5": [
+            "quest:DeregisterTimer(xStack_260)",
+            "quest:DeregisterTimer(xStack_264)",
+            "resources:ReleaseResource(xStack_250)"
+          ]
+        }
       },
       "summary": {
         "owners": 4,
@@ -12517,6 +12542,14 @@
             "quest:DeregisterTimer(xStack_244)",
             "quest:DeregisterTimer(xStack_240)",
             "resources:ReleaseResource(xStack_228)"
+          ],
+          "LAB_00d61b44_c22": [
+            "quest:PauseAllNonScriptedEntities(false)",
+            "resources:DestroyMovie(xStack_1f0)"
+          ],
+          "LAB_00d61b53_c22": [
+            "quest:PauseAllNonScriptedEntities(false)",
+            "resources:DestroyMovie(xStack_1f0)"
           ]
         }
       },

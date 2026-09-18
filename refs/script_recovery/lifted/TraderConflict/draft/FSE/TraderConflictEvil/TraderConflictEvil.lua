@@ -4,6 +4,12 @@
 function Main(quest)
     local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_34, xStack_38, xStack_74
     local alive = true
+    local function __region_LAB_00df74f2_c16()
+        bVar13 = xStack_18 == nil
+    end
+    local function __region_LAB_00df77e2_c16()
+        bVar13 = xStack_18 == nil
+    end
     iVar8 = 0
     quest:AddEntityBinding("TC_GuardSpawnPoint", "TraderConflictEvil/Entities/TC_GuardSpawnPoint")
     quest:AddEntityBinding("TC_BanditFollower", "TraderConflictEvil/Entities/TC_BanditFollower")
@@ -576,7 +582,7 @@ function Main(quest)
                             if bVar13 then
                                 r6 = nil
                                 r1 = nil
-                                -- TODO(native): goto LAB_00df74f2_c16
+                                __region_LAB_00df74f2_c16(); goto LAB_00df7957_c16
                             end
                             cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHero()
                             if not cVar1 then
@@ -736,7 +742,7 @@ function Main(quest)
                     if bVar13 then
                         r6 = nil
                         r1 = nil
-                        -- TODO(native): goto LAB_00df77e2_c16
+                        __region_LAB_00df77e2_c16(); goto LAB_00df7957_c16
                     end
                     quest:SetThingAsUsable(xStack_18[(iVar9) / 0xc + 1], true)
                     iVar8 = iVar8 + 1

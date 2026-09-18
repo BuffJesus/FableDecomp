@@ -1,3 +1,42 @@
+# CURRENT (night 7, third pass, 2026-09-18): 27 early exits stopped leaking their cleanup
+
+`native_cleanup_regions.py` hoists a retail epilogue (release the controlled entities, deregister the timers,
+destroy the movie) into `local function __cleanup_LAB_x()` so the early exits the lifter could only render as a
+bare `return` run it first. It only recognised an epilogue that ran straight to a `return` at one indent level,
+which is not how most of them look. Two generalisations:
+
+1. **The epilogue may fall out of enclosing `if`/`do` blocks.** The native jump target usually sits inside a
+   block and the cleanup continues after that block's `end`; only a loop's `end` stops the walk, because that is
+   a back edge, not a path. `_blocks` classifies every opener/closer of the chunk and `_walk` follows the one
+   path. A region found this way is hoisted but its own lines stay put -- the `end`s it crosses belong to those
+   blocks, and deleting them (as the in-place rewrite did) unbalanced the function; two files failed the Lua
+   syntax check before that was caught, which is exactly what `fileSyntaxPassed` in CONVERSION_REPORT is for.
+2. **The epilogue may finish by jumping to a label the lifter really emitted** (`goto FLOW_after_lab_x`). When
+   that label's own block runs straight to a return, its statements join the region, so the call sites reproduce
+   the whole epilogue and the TODO marker goes away entirely. A region that delegates to another region takes
+   nothing (the delegate carries the tail) -- without that guard `__cleanup_LAB_00d5a922` released the same
+   resource twice.
+
+Effect across the three units: hoisted regions 40 -> 48, `-- TODO(native): goto` sites 158 -> 131. The 27 sites
+that changed were, for example, `if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5` in
+GuildTrainingMelee/TheRealGuildmaster, which dropped two `DeregisterTimer` calls and a `ReleaseResource` on every
+terminating exit. That is Aeon's crash class (quit mid-quest with control still held), so it is worth re-testing.
+
+New `test_native_cleanup_regions.py` (the module had no tests): block-crossing epilogue, emitted-label tail,
+the no-double-release guard, and a label inside a loop body that must NOT become a region.
+
+Gates: Oakvale draft gate identical, Oakvale readable identical (that converter does not use this pass), smoke
+Orchard 0 / Guild 11 / TraderConflict 11, every unit 100% file syntax.
+
+**What is left of the goto residue**: 131 sites, reported by the new
+`tools/script_recovery/report_goto_residue.py` -- 128 target a LAB comment whose region this pass will not
+accept, 3 target a label that is not in the function at all. Of the 128, 14 are jumps to an *empty* epilogue
+(nothing to clean up: only the jump is missing, so they are flow gaps, not leaks) and the rest are epilogues
+that open a block of their own -- a `while` / `repeat` / `if` inside the cleanup, which is no longer a single
+path and cannot be hoisted as one closure. Closing those means real control-flow restructuring; the readable
+stage tells the same story (only 83 of its 1139 `goto` target a straight-line return tail), so treat it as its
+own project rather than another converter pass.
+
 # CURRENT (night 7 continued, 2026-09-18): `scratchValue` down by a third
 
 Three naming changes, all generic, on top of the byte-split work below.

@@ -14,6 +14,17 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_264, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
+    local function __cleanup_LAB_00d5a922()
+        resources:ReleaseResource(xStack_d0)
+        quest:DeregisterTimer(xStack_260)
+        quest:DeregisterTimer(xStack_264)
+        resources:ReleaseResource(xStack_250)
+    end
+    local function __cleanup_LAB_00d5a9b5()
+        quest:DeregisterTimer(xStack_260)
+        quest:DeregisterTimer(xStack_264)
+        resources:ReleaseResource(xStack_250)
+    end
     xStack_250 = resources:NewResource()
     bVar3 = false
     if bVar3 ~= 0 then
@@ -258,12 +269,12 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+                if bVar3 then __cleanup_LAB_00d5a9b5(); return end
                 iVar7 = quest:GetTimer(xStack_260)
                 if iVar7 < 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
-                    if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+                    if bVar3 then __cleanup_LAB_00d5a9b5(); return end
                     iVar6 = quest:AddNewConversation(me, false, false)
                     pCVar5 = quest:GetHero()
                     quest:AddPersonToConversation(iVar6, pCVar5)
@@ -277,7 +288,7 @@ function Main(quest, me)
                 if fret_00 < quest:ReadGlobalGameDataFloat(0xed8) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
-                    if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+                    if bVar3 then __cleanup_LAB_00d5a9b5(); return end
                     iVar6 = quest:AddNewConversation(me, false, false)
                     pCVar5 = quest:GetHero()
                     quest:AddPersonToConversation(iVar6, pCVar5)
@@ -289,7 +300,7 @@ function Main(quest, me)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+            if bVar3 then __cleanup_LAB_00d5a9b5(); return end
             quest:ClearAllRumbles()
             quest:DisplayQuestInfo(false)
             quest:RemoveQuestInfoElement(xStack_23c)
@@ -305,7 +316,7 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                if bVar3 then return end  -- TODO(native): goto LAB_00d5a922
+                if bVar3 then __cleanup_LAB_00d5a922(); return end
                 iVar6 = 4
                 pCVar16 = xStack_d0
                 pCVar5 = quest:GetHero()
@@ -314,12 +325,8 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                -- LAB_00d5a922: (native jump target)
-                resources:ReleaseResource(xStack_d0)
-                -- LAB_00d5a9b5: (native jump target)
-                quest:DeregisterTimer(xStack_260)
-                quest:DeregisterTimer(xStack_264)
-                goto FLOW_after_lab_00d5a9be
+                __cleanup_LAB_00d5a922()
+                return
             end
             xStack_84 = resources:NewResource()
             bVar3 = false
@@ -338,7 +345,7 @@ function Main(quest, me)
             if bVar3 then
                 -- LAB_00d5a916: (native jump target)
                 resources:ReleaseResource(xStack_84)
-                -- TODO(native): goto LAB_00d5a922
+                __cleanup_LAB_00d5a922(); return
             end
             xStack_6c = resources:NewActorMap()
             resources:SetActor(xStack_6c, "HERO", xStack_d0)
@@ -367,7 +374,7 @@ function Main(quest, me)
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
-                        if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+                        if bVar3 then __cleanup_LAB_00d5a9b5(); return end
                         bVar3 = quest:MsgIsGameInfoClickedPast()
                     end
                     alive = not quest:IsActiveThreadTerminating()
@@ -377,23 +384,23 @@ function Main(quest, me)
                         goto LAB_00d5941c
                     end
                 end
-                -- TODO(native): goto LAB_00d5a9b5
+                __cleanup_LAB_00d5a9b5(); return
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+            if bVar3 then __cleanup_LAB_00d5a9b5(); return end
             quest:DisplayGameInfo("TEXT_QST_028_MELEE_INSTRUCTIONS_BLOCK")
             bVar3 = quest:MsgIsGameInfoClickedPast()
             while not bVar3 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+                if bVar3 then __cleanup_LAB_00d5a9b5(); return end
                 bVar3 = quest:MsgIsGameInfoClickedPast()
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+            if bVar3 then __cleanup_LAB_00d5a9b5(); return end
             ::LAB_00d5941c::
             quest:SetStateInt("TutorialState", 4)
             xStack_23c = quest:AddQuestInfoCounter("HUD_WHISPER_ICON", 5, 1.0)
@@ -403,14 +410,14 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+                if bVar3 then __cleanup_LAB_00d5a9b5(); return end
                 quest:UpdateQuestInfoCounter(xStack_23c, quest:GetStateInt("GenericTutorialCounter"), -1)
                 pCVar5 = quest:GetHero()
                 fret_01 = quest:GetHealth(pCVar5)
                 if fret_01 < quest:ReadGlobalGameDataFloat(0xed8) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
-                    if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+                    if bVar3 then __cleanup_LAB_00d5a9b5(); return end
                     iVar6 = quest:AddNewConversation(me, false, false)
                     pCVar5 = quest:GetHero()
                     quest:AddPersonToConversation(iVar6, pCVar5)
@@ -422,7 +429,7 @@ function Main(quest, me)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            if bVar3 then return end  -- TODO(native): goto LAB_00d5a9b5
+            if bVar3 then __cleanup_LAB_00d5a9b5(); return end
             quest:ClearAllRumbles()
             quest:SetStateInt("TutorialState", 5)
             pCVar5 = quest:GetThingWithScriptName("SkillApprenticeMarker")
@@ -447,7 +454,7 @@ function Main(quest, me)
             if bVar3 then
                 -- LAB_00d5a9a7: (native jump target)
                 resources:ReleaseResource(xStack_214)
-                -- TODO(native): goto LAB_00d5a9b5
+                __cleanup_LAB_00d5a9b5(); return
             end
             xStack_e0 = resources:NewResource()
             bVar3 = false

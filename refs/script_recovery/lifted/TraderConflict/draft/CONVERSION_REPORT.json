@@ -1398,6 +1398,16 @@
         "TC_Villager": "TraderConflictEvil/Entities/TC_Villager",
         "IsAGuard": "TraderConflictEvil/Entities/IsAGuard"
       },
+      "cleanupRegions": {
+        "FSE/TraderConflictEvil/TraderConflictEvil.lua": {
+          "LAB_00df74f2_c16": [
+            "bVar13 = xStack_18 == nil"
+          ],
+          "LAB_00df77e2_c16": [
+            "bVar13 = xStack_18 == nil"
+          ]
+        }
+      },
       "summary": {
         "owners": 6,
         "functions": 25,

@@ -28,6 +28,14 @@ function Main(quest, me)
         quest:DeregisterTimer(xStack_240)
         resources:ReleaseResource(xStack_228)
     end
+    local function __region_LAB_00d61b44_c22()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_1f0)
+    end
+    local function __region_LAB_00d61b53_c22()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_1f0)
+    end
     xStack_228 = resources:NewResource()
     bVar6 = false
     if bVar6 ~= 0 then
@@ -1105,7 +1113,7 @@ function Main(quest, me)
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
-                                if bVar6 then return end  -- TODO(native): goto LAB_00d61b53_c22
+                                if bVar6 then __region_LAB_00d61b53_c22(); goto LAB_00d61b69 end
                                 iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                             alive = not quest:IsActiveThreadTerminating()
@@ -1126,7 +1134,7 @@ function Main(quest, me)
                                         if bVar6 then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
-                                            if bVar6 then return end  -- TODO(native): goto LAB_00d61b44_c22
+                                            if bVar6 then __region_LAB_00d61b44_c22(); goto LAB_00d61b69 end
                                             quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
                                         end
                                         delay = 0
@@ -1166,13 +1174,13 @@ function Main(quest, me)
                                                 alive = quest:NewScriptFrame(me)
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
-                                                if bVar6 then return end  -- TODO(native): goto LAB_00d61b44_c22
+                                                if bVar6 then __region_LAB_00d61b44_c22(); goto LAB_00d61b69 end
                                                 iVar10 = me:IsPerformingScriptTask()
                                                 cVar7 = iVar10
                                             end
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
-                                            if bVar6 then return end  -- TODO(native): goto LAB_00d61b53_c22
+                                            if bVar6 then __region_LAB_00d61b53_c22(); goto LAB_00d61b69 end
                                         end
                                         pCVar12 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                                         iVar22 = 1
