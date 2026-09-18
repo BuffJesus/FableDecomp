@@ -41,7 +41,15 @@ fakes 400+ failures); the whole thing takes ~26 min.
 **Next**: the remaining `scratchValue` (2097 in Guild) — the splitter's 180-local budget stops after the first few
 names in TheRealGuildmaster (cVar4 alone wants 44 versions), so consider splitting fewest-versions-first, and fold
 `scratchValue = quest:IsActiveThreadTerminating()` / `= quest:MsgIsQuestionAnsweredYesOrNo()` at the style stage.
-Then goto residue, rebuild the Aeon zip + v5 (`build_aeon_share_zip.py`, `build_unit_playtest_package.py`), in-game run of v5.
+Then goto residue and the in-game run of v5 (user-driven).
+
+Rebuilt tonight: `work/AeonShare-2026-09-18.zip` (3320 KiB) and the v5 bundle
+(`build_unit_playtest_package.py --unit orchard_farm --oakvale work/new-oakvale-original-fse-20260912/local-candidate-v4/NoviCompatibility
+--dll work/new-oakvale-original-fse-20260912/sidecar-abi-v2/Release/FableScriptExtender.dll
+--bundle work/new-oakvale-original-fse-20260912/local-candidate-v5`); **preflight passed** against
+`C:\Programs\Steam\steamapps\common\Fable The Lost Chapters` (that is the install path — it was not written down before).
+Launch is the user's step: `python work/new-oakvale-original-fse-20260912/local-candidate-v5/local_test.py
+--game-dir "C:\Programs\Steam\steamapps\common\Fable The Lost Chapters" --launch --save-dir <saves>`.
 
 # CURRENT (night 6, 2026-09-17): TraderConflict unit through the pipeline (15/15 compile, todo 431 -> 176)
 
