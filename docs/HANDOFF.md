@@ -11,7 +11,9 @@ sidecar bindings StateListSet/GetStateListCopy — DLL not rebuilt — plus free
 identical; fast tests 97 green. Later still: `thing:Speak` is Speak_Blocking so the wait loop folds into its result,
 GROUP_SELECT_* names, timers routed per register (CombatApprentice `SetTimer` read a conversation id), `rand()`,
 GetDataString inlines, MsgExpressionPerformedTo returns name-or-nil (binding exists). Aeon zip + v5 rebuilt (preflight ok).
-Next: TheRealGuildmaster (Ghidra spilled the resource pointer as bytes: `SUB(resource,0)`), remaining `scratchValue`
+Full `pytest tools/script_recovery` = green except `test_live_father_intro.py` / `test_watch_barrels_readable.py`
+(stale fixtures, failing since bf13d5d — not this night's work; run the suite ALONE, a concurrent unit rebuild fakes 400+ failures).
+Next: TheRealGuildmaster (2400-line readable, 130-column nesting from goto restructuring), remaining `scratchValue`
 temps (1747 in Guild; mostly `= 0` flags and DeregisterTimer cleanups), goto residue, in-game run of v5.
 
 **Later the same night — dropped operands recovered from the machine code** (`recover_dropped_operands` in
