@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar2, conversationID, fVar5, p0, pCVar3, xStack_20
+    local bVar2, conversationID, fVar5, iVar4, p0, pCVar3, xStack_20
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -50,6 +50,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
+            iVar4 = math.random(0, 32767)
             if iVar4 % 5 == 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -65,7 +66,7 @@ function Main(quest, me)
                     quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, pCVar3, false)
                 else
                     pCVar3 = quest:GetHero()
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, pCVar3, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20")
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, pCVar3, false)
                 end
                 if quest:GetStateInt("BanditSecurityLinesSaid") < 1 then
                     quest:SetStateInt("BanditSecurityLinesSaid", quest:GetStateInt("BanditSecurityLinesSaid") + 1)

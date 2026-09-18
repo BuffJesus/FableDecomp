@@ -332,7 +332,7 @@ function WatchForTermination(quest)
             pCVar5 = quest:GetActiveQuestName()
             quest:SetQuestAsFailed(pCVar5, bVar4, "", bVar6)
         end
-        quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", "Q_GuildTrainingWoodsWill")
+        quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
     end
 end
 

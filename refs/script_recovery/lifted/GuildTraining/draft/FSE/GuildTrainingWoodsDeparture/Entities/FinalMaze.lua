@@ -161,6 +161,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d664b0 end
+                uVar12 = math.random(0, 32767)
                 uVar12 = uVar12 & 0x80000001
                 bVar3 = uVar12 == 0
                 if uVar12 < 0 then
@@ -445,6 +446,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d664b0 end
+                            uVar13 = math.random(0, 32767)
                             uVar13 = uVar13 & 0x80000001
                             bVar3 = uVar13 == 0
                             if uVar13 < 0 then
@@ -709,6 +711,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then goto LAB_00d664b0 end
+                                    uVar13 = math.random(0, 32767)
                                     uVar13 = uVar13 & 0x80000001
                                     bVar3 = uVar13 == 0
                                     if uVar13 < 0 then

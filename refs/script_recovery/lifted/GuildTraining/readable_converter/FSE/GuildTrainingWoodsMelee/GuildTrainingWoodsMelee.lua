@@ -38,7 +38,7 @@ function WatchForTermination(quest)
     else
         quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
     end
-    quest:SetQuestCardObjective("TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02", "HeroGuildComplexInside", "", "Q_GuildTraining")
+    quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02", "HeroGuildComplexInside", "")
     if not quest:NewScriptFrame() then return end
     if not quest:NewScriptFrame() then return end
     if not quest:NewScriptFrame() then return end

@@ -1453,6 +1453,10 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = re.sub(r'\b' + re.escape(v) + r'\[2\]', v + '.z', text)
     # CRT truncation of an x87 value (`__ftol2((float10)x)`, typed with its ST0 operand by the export)
     text = re.sub(r'\b__ftol2\(\s*(?:\(float10\))?', 'ENGINE_Trunc(', text)
+    # CRT `rand()` (MSVCR71; Ghidra prints the stale registers as operands): 0..RAND_MAX
+    text = re.sub(r'(?<![\w:])rand\((?:[^()]|\([^()]*\))*\)', 'ENGINE_Rand()', text)
+    # a by-value string operand cast on its stack slot (`(CCharString *)&xStack_2c`) is the slot
+    text = re.sub(r'\((?:CCharString(?:_bv)?) \*\)&(\w*Stack_\w+)\b', r'&\1', text)
 
     parent = r'\*\(int \*\)\(this \+ 0x14\)'
     # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
@@ -2045,6 +2049,7 @@ LUA_PSEUDO = [
     (re.compile(r'ACTORMAP_New\('), 'resources:NewActorMap('),
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
     (re.compile(r'ENGINE_LostOperand\(\)'), 'nil --[[operand lost by the decompiler]]'),
+    (re.compile(r'ENGINE_Rand\(\)'), 'math.random(0, 32767)'),
     (re.compile(r'ENGINE_ZeroVector\(\)'), '{x = 0, y = 0, z = 0}'),
     (re.compile(r'ENGINE_GlobalGameDataFloatAt\('), 'quest:ReadGlobalGameDataFloatAt('),
     (re.compile(r'ENGINE_GlobalGameDataFloat\('), 'quest:ReadGlobalGameDataFloat('),

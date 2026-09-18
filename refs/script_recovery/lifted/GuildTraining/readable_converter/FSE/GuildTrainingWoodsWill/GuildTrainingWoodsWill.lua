@@ -184,7 +184,7 @@ function WatchForTermination(quest)
     else
         quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
     end
-    quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", "Q_GuildTrainingWoodsWill")
+    quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
 end
 
 -- Q_GuildTrainingWoodsWill.DoMission (retail 0x00d68ae0)

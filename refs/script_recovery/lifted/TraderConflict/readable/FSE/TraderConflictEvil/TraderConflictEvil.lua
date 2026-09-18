@@ -59,7 +59,7 @@ function Main(quest)
     getActiveQuestName = "TC_IntroCSHeroPos"
     getNearestWithScriptName = quest:GetNearestWithScriptName(hero, getActiveQuestName)
     if getNearestWithScriptName == nil then
-        -- TODO(native): CCharString::CCharString((CCharString *)&xStack_74,(CCharString *)&DAT_0143e8ec);
+        -- TODO(native): CCharString::CCharString(&xStack_74,(CCharString *)&DAT_0143e8ec);
     else
         getNearestWithScriptName:GetDataString()
     end

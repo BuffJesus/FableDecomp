@@ -44,7 +44,7 @@
           },
           "todo": [
             "EntitySetAsOpinionSource: not in FSE manifest",
-            "unlifted: CCharString::CCharString((CCharString *)&xStack_74,(CCharString *)&DAT_0143e8ec);",
+            "unlifted: CCharString::CCharString(&xStack_74,(CCharString *)&DAT_0143e8ec);",
             "unlifted: iVar8 = CBasicString<char>::Compare(*(void **)ctr_74,\"SOUTH\");",
             "goto LAB_00df656e",
             "label LAB_00df656e",
@@ -594,6 +594,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "GetPos",
             "CreateCreature",
@@ -610,7 +611,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 129,
+          "lines": 130,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -973,6 +974,7 @@
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
+            "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -991,7 +993,7 @@
             "IsActiveThreadTerminating",
             "RemoveThing"
           ],
-          "lines": 274,
+          "lines": 275,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1145,11 +1147,12 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "AddLineToConversation",
+            "ENGINE_Rand",
             "SetTimer",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 173,
+          "lines": 174,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2269,6 +2272,7 @@
             "ENGINE_Concat",
             "ENGINE_Concat",
             "AddLineToConversation",
+            "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -2285,6 +2289,7 @@
             "GetHeroTargetedThing",
             "IsPlayerHoldingLockTargetButton",
             "IsActiveThreadTerminating",
+            "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -2590,7 +2595,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1068,
+          "lines": 1070,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2944,6 +2949,7 @@
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
+            "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -2961,7 +2967,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 73,
+          "lines": 74,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3272,11 +3278,12 @@
             "GetHero",
             "ENGINE_SquaredDistance",
             "IsActiveThreadTerminating",
+            "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "GetHero",
             "GiveThingBestEnemyTarget"
           ],
-          "lines": 41,
+          "lines": 42,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

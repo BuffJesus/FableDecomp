@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local CVar4, bVar1, fVar5, pCVar2, pPosition, r1, thing2
+    local CVar4, bVar1, fVar5, iVar3, pCVar2, pPosition, r1, thing2
     local alive = true
     quest:Pause(0.5)
     if 9 < quest:GetStateListCount("AllCreatures") then
@@ -43,6 +43,7 @@ function Main(quest, me)
         if bVar1 then goto LAB_00dfcbf7 end
         CVar4 = 0x3
     end
+    iVar3 = math.random(0, 32767)
     if iVar3 % CVar4 == 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive

@@ -12,7 +12,7 @@ end
 
 -- TC_Villager.Main (retail 0x00df9180)
 function Main(quest, me)
-    local predicateResult, conversationID, scratchValue
+    local predicateResult, conversationID
     local screamOutTimer = quest:GetStateInt("ScreamOutTimer")
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
@@ -60,15 +60,14 @@ function Main(quest, me)
             if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                 conversationID = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationID, hero)
-                scratchValue = quest:EntityGetSex(me)
-                if scratchValue == 2 then
+                if quest:EntityGetSex(me) == 2 then
                     if quest:IsActiveThreadTerminating() then return end
                     quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_FEMALE_PANIC", me, hero, false)
                 else
                     if quest:IsActiveThreadTerminating() then return end
                     quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, hero, false)
                 end
-                quest:SetTimer(screamOutTimer, scratchValue % 15 + 15)
+                quest:SetTimer(screamOutTimer, math.random(0, 32767) % 15 + 15)
             end
         end
         quest:NewScriptFrame(me)

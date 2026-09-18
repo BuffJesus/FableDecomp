@@ -607,7 +607,7 @@ function Main(quest, me)
                             scratchValue17 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
-                            quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "", "TEXT_OBJECT_HERO_ANSWER_NO", "TEXT_OBJECT_HERO_ANSWER_NO")
+                            quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                             scratchValue7 = quest:MsgIsQuestionAnsweredYesOrNo()
                             while scratchValue7 < 0 do
                                 quest:NewScriptFrame(me)
@@ -718,7 +718,7 @@ function Main(quest, me)
                     scratchValue17 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "", "TEXT_OBJECT_HERO_ANSWER_NO", "TEXT_OBJECT_HERO_ANSWER_NO")
+                    quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                     scratchValue7 = quest:MsgIsQuestionAnsweredYesOrNo()
                     while scratchValue7 < 0 do
                         if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d61b53 end

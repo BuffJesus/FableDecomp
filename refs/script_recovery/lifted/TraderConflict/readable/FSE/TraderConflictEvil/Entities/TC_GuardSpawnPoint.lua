@@ -19,7 +19,7 @@ end
 
 -- TC_GuardSpawnPoint.Main (retail 0x00df7bf0)
 function Main(quest, me)
-    local numberSpawned, scratchValue, scratchValue2, pOther, scratchValue4, scratchValue5
+    local numberSpawned, scratchValue, scratchValue3, pOther, scratchValue5, scratchValue6
     while not quest:GetStateBool("QuestStartScreened") do
         if not quest:NewScriptFrame(me) then return end
     end
@@ -28,7 +28,7 @@ function Main(quest, me)
             if (((quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 25 < quest:GetStateInt("NextTimeToSpawnGuards")) or quest:GetStateListCount("AllCreatures") < 7 then
                 if quest:IsActiveThreadTerminating() then return end
                 if not quest:IsCameraPosOnScreen(me:GetPos()) then
-                    scratchValue2 = 0
+                    scratchValue3 = 0
                     repeat
                         numberSpawned = quest:GetStateInt("NumberSpawned")
                         scratchValue = 25 - quest:GetStateInt("InitialNumberInRegion")
@@ -43,18 +43,19 @@ function Main(quest, me)
                         else
                             pOther = "CREATURE_BS_GUARD_BLACK"
                         end
-                        scratchValue5 = pOther
-                        if numberSpawned % 500 == 0 then
-                            scratchValue5 = "CREATURE_BS_SHERIFF"
+                        scratchValue6 = pOther
+                        if math.random(0, 32767) % 500 == 0 then
+                            if quest:IsActiveThreadTerminating() then return end
+                            scratchValue6 = "CREATURE_BS_SHERIFF"
                         end
-                        scratchValue4 = quest:CreateCreature(scratchValue5, me:GetPos(), "IsAGuard")
-                        quest:SetCombatNearbyBreakOffRange(scratchValue4, pThing)
-                        quest:EntitySetInFaction(scratchValue4, "FACTION_MONSTERS")
-                        quest:MiniMapAddMarker(scratchValue4, "HUD_ORB_RED_SMALL")
-                        quest:GiveThingBestEnemyTarget(scratchValue4, quest:GetHero())
+                        scratchValue5 = quest:CreateCreature(scratchValue6, me:GetPos(), "IsAGuard")
+                        quest:SetCombatNearbyBreakOffRange(scratchValue5, pThing)
+                        quest:EntitySetInFaction(scratchValue5, "FACTION_MONSTERS")
+                        quest:MiniMapAddMarker(scratchValue5, "HUD_ORB_RED_SMALL")
+                        quest:GiveThingBestEnemyTarget(scratchValue5, quest:GetHero())
                         quest:SetStateInt("NumberSpawned", quest:GetStateInt("NumberSpawned") + 1)
-                        scratchValue2 = scratchValue2 + 1
-                    until scratchValue2 >= 2
+                        scratchValue3 = scratchValue3 + 1
+                    until scratchValue3 >= 2
                     if quest:IsActiveThreadTerminating() then return end
                 end
                 quest:SetStateInt("NextTimeToSpawnGuards", ((quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 24)

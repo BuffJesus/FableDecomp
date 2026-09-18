@@ -203,6 +203,7 @@ function Main(quest, me)
                         quest:AddLineToConversation(uVar6, pCVar4, me, r3, false)
                         c_stk_161 = 1
                     else
+                        iVar11 = math.random(0, 32767)
                         if iVar11 % 5 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
@@ -260,6 +261,7 @@ function Main(quest, me)
                     native_arg_sequence_3 = false
                 end
                 if not native_arg_sequence_3 then
+                    iVar11 = math.random(0, 32767)
                     if iVar11 % 3 ~= 0 then
                         native_arg_sequence_3 = true
                     else

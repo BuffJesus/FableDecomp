@@ -41,7 +41,7 @@ function WatchForTermination(quest)
         if quest:IsActiveThreadTerminating() then return end
         quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
     end
-    quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", "Q_GuildTrainingWoodsDeparture")
+    quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", 0)
 end
 
 -- Q_GuildTrainingWoodsDeparture.DoMission (retail 0x00d63dc0)

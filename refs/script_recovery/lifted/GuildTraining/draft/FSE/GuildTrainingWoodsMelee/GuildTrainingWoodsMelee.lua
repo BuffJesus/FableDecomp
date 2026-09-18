@@ -85,7 +85,7 @@ function WatchForTermination(quest)
             pCVar5 = quest:GetActiveQuestName()
             quest:SetQuestAsFailed(pCVar5, bVar4, "", bVar7)
         end
-        quest:SetQuestCardObjective("TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02", "HeroGuildComplexInside", "", "Q_GuildTraining")
+        quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02", "HeroGuildComplexInside", "")
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive

@@ -147,12 +147,13 @@ function Main(quest, me)
                                     scratchValue29 = quest:GetTimer(timerId)
                                     if scratchValue29 < 1 then
                                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                                        scratchValue36 = scratchValue36 & 0x80000003
+                                        scratchValue36 = math.random(0, 32767) & 0x80000003
                                         scratchValue = scratchValue36 == 0
                                         if scratchValue36 < 0 then
                                             scratchValue = (scratchValue36 - 1 | 0xfffffffc) == 0xffffffff
                                         end
                                         if scratchValue then
+                                            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                                             quest:SetTimer(timerId, 8)
                                             predicateResult = quest:IsActiveThreadTerminating()
                                             if quest:IsQuestActive("Q_GuildTrainingSkill") then

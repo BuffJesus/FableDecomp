@@ -239,6 +239,7 @@ function Main(quest, me)
                             if bVar2 then
                                 return
                             end
+                            iVar5 = math.random(0, 32767)
                             if iVar5 % 5 == 0 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive

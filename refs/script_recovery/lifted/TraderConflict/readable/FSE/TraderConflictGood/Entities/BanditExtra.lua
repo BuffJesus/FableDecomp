@@ -34,7 +34,7 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
         scratchValue = 3
     end
-    if iVar3 % scratchValue == 0 then
+    if math.random(0, 32767) % scratchValue == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
         quest:GiveThingBestEnemyTarget(banditGruntLevel, hero)
     end

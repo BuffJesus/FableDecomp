@@ -174,6 +174,7 @@ function Main(quest, me)
                                 pCVar9 = quest:GetHero()
                                 quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, pCVar9, false)
                             end
+                            iVar10 = math.random(0, 32767)
                             quest:SetTimer(quest:GetStateInt("ScreamOutTimer"), iVar10 % 0xf + 0xf)
                         end
                     end

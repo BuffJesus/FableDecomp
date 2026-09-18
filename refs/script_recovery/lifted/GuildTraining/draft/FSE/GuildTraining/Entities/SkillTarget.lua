@@ -401,6 +401,7 @@ function Main(quest, me)
                                             quest:DeregisterTimer(xStack_190)
                                             return
                                         end
+                                        uVar9 = math.random(0, 32767)
                                         uVar9 = uVar9 & 0x80000003
                                         bVar3 = uVar9 == 0
                                         if uVar9 < 0 then

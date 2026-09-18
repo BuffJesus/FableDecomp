@@ -14,7 +14,7 @@ end
 function Main(quest, me)
     local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, predicateResult
     local predicateResult4, predicateResult6, playerEngaged, conversationID, conversationId
-    local scratchValue10
+    local scratchValue11
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
@@ -110,15 +110,15 @@ function Main(quest, me)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame(me) then return end
         scratchValue2 = scratchValue3 | 128
-        scratchValue10 = scratchValue2
+        scratchValue11 = scratchValue2
         if me:MsgIsHitByHero() then
             predicateResult6 = true
         else
             scratchValue2 = scratchValue3 | 384
-            scratchValue10 = scratchValue2
+            scratchValue11 = scratchValue2
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue2 = scratchValue3 | 896
-                scratchValue10 = scratchValue2
+                scratchValue11 = scratchValue2
                 if not me:MsgIsHitByHeroSpecialAbility(me) then
                     predicateResult6 = true
                     goto FLOW_after_lab_00df8dcb
@@ -129,15 +129,15 @@ function Main(quest, me)
         ::FLOW_after_lab_00df8dcb::
         if scratchValue2 & 512 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffdff
-            scratchValue10 = scratchValue2
+            scratchValue11 = scratchValue2
         end
         if scratchValue2 & 256 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffeff
-            scratchValue10 = scratchValue2
+            scratchValue11 = scratchValue2
         end
         if CVar6_b0 < 0 then
             scratchValue2 = scratchValue2 & 0xffffff7f
-            scratchValue10 = scratchValue2
+            scratchValue11 = scratchValue2
         end
         if predicateResult6 then
             if not state:GetBool("HitWarning") then
@@ -145,7 +145,7 @@ function Main(quest, me)
                 quest:AddPersonToConversation(conversationID, hero)
                 quest:AddLineToConversation(conversationID, "TEXT_QST_B12_BANDIT_ON_HIT_10", me, hero, false)
                 state:SetBool("HitWarning", true)
-                scratchValue2 = scratchValue10
+                scratchValue2 = scratchValue11
             elseif quest:IsDistanceBetweenThingsUnder(me, quest:GetNearestWithScriptName(me, "TC_BanditFighter"), 15.0) then
                 quest:SetStateBool("HeroAttackedBandit", true)
             end
@@ -153,7 +153,8 @@ function Main(quest, me)
         if quest:GetStateBool("HeroAttackedBandit") then
             if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                 if quest:IsActiveThreadTerminating() then return end
-                if conversationId % 5 == 0 then
+                if math.random(0, 32767) % 5 == 0 then
+                    if quest:IsActiveThreadTerminating() then return end
                     conversationId = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId, hero)
                     quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_SEEKING_REVENGE_10", me, hero, false)

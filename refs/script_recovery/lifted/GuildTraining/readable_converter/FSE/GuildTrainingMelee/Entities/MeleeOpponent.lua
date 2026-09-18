@@ -25,7 +25,7 @@ function Main(quest, me)
     local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
     local conversationId8, conversationId9, conversationId10, conversationId11, conversationId12
     local conversationId13, theRealGuildmaster, meleeThunder, meleeThunder2, meleeThunder3
-    local scratchValue, movie, resource, timerId2
+    local scratchValue8, scratchValue, scratchValue12, scratchValue14, movie, resource, timerId2
     resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
@@ -293,11 +293,11 @@ function Main(quest, me)
                                         resources:ReleaseResource(resource)
                                         return
                                     end
-                                    scratchValue = scratchValue & 0x80000001
-                                    if scratchValue < 0 then
-                                        scratchValue = (scratchValue - 1 | 0xfffffffe) + 1
+                                    scratchValue8 = math.random(0, 32767) & 0x80000001
+                                    if scratchValue8 < 0 then
+                                        scratchValue8 = (scratchValue8 - 1 | 0xfffffffe) + 1
                                     end
-                                    if scratchValue == 1 then
+                                    if scratchValue8 == 1 then
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId2)
                                             resources:ReleaseResource(resource)
@@ -397,7 +397,7 @@ function Main(quest, me)
                                         resources:ReleaseResource(resource)
                                         return
                                     end
-                                    scratchValue = scratchValue & 0x80000001
+                                    scratchValue = math.random(0, 32767) & 0x80000001
                                     if scratchValue < 0 then
                                         scratchValue = (scratchValue - 1 | 0xfffffffe) + 1
                                     end
@@ -447,11 +447,11 @@ function Main(quest, me)
                                     end
                                     if quest:GetTimer(timerId) < 9 then
                                         if not quest:IsActiveThreadTerminating() then
-                                            scratchValue = scratchValue & 0x80000001
-                                            if scratchValue < 0 then
-                                                scratchValue = (scratchValue - 1 | 0xfffffffe) + 1
+                                            scratchValue12 = math.random(0, 32767) & 0x80000001
+                                            if scratchValue12 < 0 then
+                                                scratchValue12 = (scratchValue12 - 1 | 0xfffffffe) + 1
                                             end
-                                            if scratchValue == 1 then
+                                            if scratchValue12 == 1 then
                                                 if not quest:IsActiveThreadTerminating() then
                                                     conversationId10 = quest:AddNewConversation(me, false, false)
                                                     quest:AddPersonToConversation(conversationId10, hero)
@@ -482,11 +482,11 @@ function Main(quest, me)
                                         end
                                         if quest:GetTimer(timerId) < 9 then
                                             if not quest:IsActiveThreadTerminating() then
-                                                scratchValue = scratchValue & 0x80000001
-                                                if scratchValue < 0 then
-                                                    scratchValue = (scratchValue - 1 | 0xfffffffe) + 1
+                                                scratchValue14 = math.random(0, 32767) & 0x80000001
+                                                if scratchValue14 < 0 then
+                                                    scratchValue14 = (scratchValue14 - 1 | 0xfffffffe) + 1
                                                 end
-                                                if scratchValue == 1 then
+                                                if scratchValue14 == 1 then
                                                     if not quest:IsActiveThreadTerminating() then
                                                         conversationId12 = quest:AddNewConversation(me, false, false)
                                                         quest:AddPersonToConversation(conversationId12, hero)

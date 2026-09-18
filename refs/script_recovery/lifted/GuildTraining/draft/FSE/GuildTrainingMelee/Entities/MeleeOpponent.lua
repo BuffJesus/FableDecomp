@@ -482,6 +482,7 @@ function Main(quest, me)
                                         resources:ReleaseResource(xStack_d8)
                                         return
                                     end
+                                    uVar7 = math.random(0, 32767)
                                     uVar7 = uVar7 & 0x80000001
                                     if uVar7 < 0 then
                                         uVar7 = (uVar7 - 1 | 0xfffffffe) + 1
@@ -631,6 +632,7 @@ function Main(quest, me)
                                         resources:ReleaseResource(xStack_d8)
                                         return
                                     end
+                                    uVar7 = math.random(0, 32767)
                                     uVar7 = uVar7 & 0x80000001
                                     if uVar7 < 0 then
                                         uVar7 = (uVar7 - 1 | 0xfffffffe) + 1
@@ -700,6 +702,7 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
                                         if not bVar4 then
+                                            uVar7 = math.random(0, 32767)
                                             uVar7 = uVar7 & 0x80000001
                                             if uVar7 < 0 then
                                                 uVar7 = (uVar7 - 1 | 0xfffffffe) + 1
@@ -753,6 +756,7 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar4 = not alive
                                             if not bVar4 then
+                                                uVar7 = math.random(0, 32767)
                                                 uVar7 = uVar7 & 0x80000001
                                                 if uVar7 < 0 then
                                                     uVar7 = (uVar7 - 1 | 0xfffffffe) + 1

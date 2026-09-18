@@ -59,7 +59,7 @@ function Main(quest)
     pCVar4 = quest:GetHero()
     r1 = quest:GetNearestWithScriptName(pCVar4, pCVar6)
     if not (r1 ~= nil and not r1:IsNull()) then
-        -- TODO(native): CCharString::CCharString((CCharString *)&xStack_74,(CCharString *)&DAT_0143e8ec);
+        -- TODO(native): CCharString::CCharString(&xStack_74,(CCharString *)&DAT_0143e8ec);
     else
         r1:GetDataString()
     end

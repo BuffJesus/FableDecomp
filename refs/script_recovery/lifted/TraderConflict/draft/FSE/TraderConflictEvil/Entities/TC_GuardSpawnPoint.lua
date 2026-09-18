@@ -96,6 +96,7 @@ function Main(quest, me)
                             pOther = "CREATURE_BS_GUARD_BLACK"
                         end
                         xStack_1c = pOther
+                        iVar4 = math.random(0, 32767)
                         if iVar4 % 500 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
