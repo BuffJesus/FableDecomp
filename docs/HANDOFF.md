@@ -1,21 +1,43 @@
 # RESUME HERE (after night 7, 2026-09-18)
 
-**Rebuilt on top of all three passes**: `work/AeonShare-2026-09-18.zip` (3318 KiB) and the v5 bundle;
-preflight passes against `C:\Programs\Steam\steamapps\common\Fable The Lost Chapters`. The in-game run is
-the user's step:
+Seven commits tonight, all generic converter work, suite **1577 passed / 0 failed** with the four stale fixture
+files ignored. Headline numbers across the three units:
+
+| | start of night | now |
+|---|---:|---:|
+| `scratchValue` in the emitted .lua (Guild / Trader / Orchard) | 1327 / 644 / 54 | 844 / 399 / 25 |
+| smoke problems (Guild / Trader / Orchard) | 11 / 11 / 0 | **1 / 8 / 0** |
+| free globals across the units | 26 | 4 (all deliberate) |
+| hoisted cleanup regions / `TODO(native): goto` sites | 40 / 158 | 48 / 131 |
+| `TryAcquire(0, ...)` / `ReleaseResource(0)` | 20+ | 0 |
+
+`work/AeonShare-2026-09-18.zip` (3324 KiB) and the v5 bundle are rebuilt on this output and **preflight passes**.
+The in-game run is the user's step:
 
     python work/new-oakvale-original-fse-20260912/local-candidate-v5/local_test.py \
         --game-dir "C:\Programs\Steam\steamapps\common\Fable The Lost Chapters" --launch --save-dir <saves>
 
-Worth re-testing specifically: quit mid-quest during Guild melee training. Those exits used to drop two
-`DeregisterTimer` calls and a `ReleaseResource`, which is the crash class Aeon reported.
+Worth re-testing specifically: **quit mid-quest during Guild melee training.** Those exits used to drop two
+`DeregisterTimer` calls and a `ReleaseResource` (night 7 third pass), which is the crash class Aeon reported.
 
-**Resume order**: (1) remaining `scratchValue` -- extend `USE_ROLES` in `readable_lua.py`, the use-side rule is
-the one that pays; (2) `ctr_NN` / `x_stk_NN` slot names that survive styling; (3) the goto residue as its own
-restructuring project, sized by `tools/script_recovery/report_goto_residue.py`. Run the suite ALONE with
-`--ignore` on the four stale fixture files (`test_watch_barrels_loop.py`, `test_bully_proximity.py`,
-`test_live_father_intro.py`, `test_watch_barrels_readable.py`) -- ~26 min, 1566 passed / 0 failed as of this
-commit -- and never rebuild a unit while it runs.
+**Resume order**
+
+1. `canonicalise_stack_objects` pre-range liveness -- the diagnosis is in the sixth-pass section below, and it
+   is the last runtime error in the units (`CheckFriendlyAttacks`). Do it first and do it carefully: every unit
+   goes through that pass.
+2. The rest of `scratchValue`: 111 temporaries whose only assignment is a plain number, 36 `X = X + 1`
+   counters, 22 `X = X | 1` bit steps that `flag_register` refuses because the slot also takes a call result.
+   Extend `USE_ROLES` in `readable_lua.py` -- the use side is the lever that pays.
+3. The goto residue as its own restructuring project, sized by `tools/script_recovery/report_goto_residue.py`
+   (131 sites: 14 empty epilogues, the rest epilogues that open their own blocks).
+4. TraderConflict's six `unknown=StateListSet` / `GetStateListCopy` / `EntitySetAsOpinionSource` need the DLL
+   rebuilt with the sidecar bindings (FSE_UPSTREAM_REQUIREMENTS.md).
+
+**Running the suite**: alone (a concurrent unit rebuild fakes 400+ failures), ~27 min,
+`--ignore` the four stale fixture files `test_watch_barrels_loop.py` (78), `test_bully_proximity.py` (44),
+`test_live_father_intro.py`, `test_watch_barrels_readable.py` -- they fail on a pristine tree too. After any
+style change, check `shippedAsDraft` in the `build_readable_unit` summary: a file whose passes raise silently
+ships as the raw draft.
 
 # CURRENT (night 7, sixth pass, 2026-09-18): one-operand vector calls, and the CheckFriendlyAttacks collision diagnosed
 
