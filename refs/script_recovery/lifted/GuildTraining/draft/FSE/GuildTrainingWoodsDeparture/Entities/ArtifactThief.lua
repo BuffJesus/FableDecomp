@@ -148,7 +148,7 @@ function Main(quest, me)
                     if bVar2 then goto LAB_00d63c96 end
                     xStack_138 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities((dist ~= 0))
+                    quest:PauseAllNonScriptedEntities(true)
                     x_stk_6c = resources:ScriptThing(xStack_184)
                     pCVar4 = x_stk_6c
                     fret_00 = quest:GetHealth(pCVar4)
@@ -193,7 +193,7 @@ function Main(quest, me)
                     if bVar2 then goto LAB_00d63c96 end
                     xStack_bc = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities((fVar1 ~= 0))
+                    quest:PauseAllNonScriptedEntities(true)
                     x_stk_78 = resources:ScriptThing(xStack_184)
                     pCVar4 = x_stk_78
                     fret_0 = quest:GetHealth(pCVar4)
@@ -660,7 +660,7 @@ function Main(quest, me)
                     end
                     xStack_94 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities((fVar1 ~= 0))
+                    quest:PauseAllNonScriptedEntities(true)
                     xStack_a0 = resources:ScriptThing(xStack_184)
                     pCVar4 = xStack_a0
                     fret_08 = quest:GetHealth(pCVar4)

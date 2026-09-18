@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, delay, dist, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_240, xStack_244, xStack_38, xStack_48, xStack_54
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, ctr_22c, delay, dist, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_240, xStack_244, xStack_38, xStack_48, xStack_54
     local alive = true
     local function __region_LAB_00d61ad8_c22()
         quest:PauseAllNonScriptedEntities(false)
@@ -58,6 +58,7 @@ function Main(quest, me)
     iVar11 = quest:RegisterTimer()
     xStack_244 = iVar11
     quest:SetTimer(xStack_244, 0)
+    ctr_22c = 0
     quest:EntitySetTargetingType(me, 0x1a)
     if not quest:GetStateBool("TestFinished") then
         alive = not quest:IsActiveThreadTerminating()
@@ -156,7 +157,7 @@ function Main(quest, me)
                 pCVar9 = quest:GetHero()
                 quest:AddPersonToConversation(iVar11, pCVar9)
                 quest:SetTimer(xStack_244, 10)
-                if 0 == 0 then
+                if ctr_22c == 0 then
                     bVar6 = false
                     pCVar9 = quest:GetHero()
                     quest:EntitySetFacingAngleTowardsThing(me, pCVar9, bVar6)
@@ -164,7 +165,7 @@ function Main(quest, me)
                     quest:AddLineToConversation(iVar11, "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_FIRST", me, pCVar9, false)
                     -- LAB_00d5e63f: (native jump target)
                 else
-                    if 0 == 1 then
+                    if ctr_22c == 1 then
                         bVar6 = false
                         pCVar9 = quest:GetHero()
                         quest:EntitySetFacingAngleTowardsThing(me, pCVar9, bVar6)
@@ -174,7 +175,7 @@ function Main(quest, me)
                     end
                 end
                 ::FLOW_after_lab_00d5e63f::
-                -- TODO(native): xStack_22c = 1 - xStack_22c;
+                ctr_22c = 1 - ctr_22c
             end
             iVar10 = quest:GetStateInt("TutorialState")
         end
@@ -475,7 +476,8 @@ function Main(quest, me)
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
                 xStack_22c = quest:RegisterTimer()
-                quest:SetTimer(xStack_22c, 0)
+                iVar11 = ctr_22c
+                quest:SetTimer(ctr_22c, 0)
                 iVar10 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
                 i_stk_24 = iVar10
                 xStack_1d4 = quest:AddQuestInfoTimer(xStack_22c, "HUD_CLOCK_ICON", 1.0)
@@ -520,7 +522,8 @@ function Main(quest, me)
                         quest:AddPersonToConversation(iVar11, pCVar12)
                         pCVar12 = quest:GetHero()
                         quest:AddLineToConversation(iVar11, "TEXT_QST_028_GUILDMASTER_WILL_NO_WILL", me, pCVar12, false)
-                        quest:SetTimer(xStack_22c, 8)
+                        iVar11 = ctr_22c
+                        quest:SetTimer(ctr_22c, 8)
                         iVar10 = i_stk_24
                     end
                     cVar7 = me:IsTalkedToByHero()
@@ -677,7 +680,7 @@ function Main(quest, me)
                     resources:SetActor(xStack_210, "TEACHER", xStack_228)
                     resources:RunMacro("CS_GUILD_WILL_WON_START", xStack_210, false, false)
                     pCVar12 = 0x1
-                    quest:PauseAllNonScriptedEntities((pCVar12 ~= 0))
+                    quest:PauseAllNonScriptedEntities(true)
                     resources:RunMacroWithStrings("CS_GUILD_WILL_WON", xStack_210, xStack_1c0, false, false)
                     quest:Pause(2.0)
                     quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
@@ -839,7 +842,7 @@ function Main(quest, me)
                     bVar6 = not alive
                     if bVar6 then goto LAB_00d6135b end
                     pCVar12 = 0x1
-                    quest:PauseAllNonScriptedEntities((pCVar12 ~= 0))
+                    quest:PauseAllNonScriptedEntities(true)
                     -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_204_2)
                     resources:SetActor(xStack_210, "TEACHER", xStack_228)
                     resources:RunMacro("CS_GUILD_WILL_DISQUALIFIED", xStack_210, false, true)

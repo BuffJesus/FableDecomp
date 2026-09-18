@@ -118,7 +118,7 @@ function Main(quest, me)
                 xStack_78 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 pCVar5 = 0x1
-                quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
+                quest:PauseAllNonScriptedEntities(true)
                 if not __native_entity_state:GetStateBool("HaveChatted") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -476,7 +476,7 @@ function Main(quest, me)
                         xStack_38 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         pCVar15 = 0x1
-                        quest:PauseAllNonScriptedEntities((pCVar15 ~= 0))
+                        quest:PauseAllNonScriptedEntities(true)
                         x_stk_c = resources:ScriptThing(xStack_8c)
                         pCVar5 = x_stk_c
                         fret_01 = quest:GetHealth(pCVar5)

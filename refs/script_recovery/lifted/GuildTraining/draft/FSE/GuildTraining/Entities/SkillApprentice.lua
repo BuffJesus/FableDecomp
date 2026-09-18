@@ -248,7 +248,7 @@ function Main(quest, me)
                 xStack_128 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 pCVar8 = 0x1
-                quest:PauseAllNonScriptedEntities((pCVar8 ~= 0))
+                quest:PauseAllNonScriptedEntities(true)
                 x_stk_48 = resources:ScriptThing(xStack_170)
                 pCVar9 = x_stk_48
                 fret_01 = quest:GetHealth(pCVar9)

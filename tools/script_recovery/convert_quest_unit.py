@@ -624,7 +624,9 @@ class UnitConverter:
             if site.get('kind') != 'vtable' or not site.get('slot'):
                 return None
             slot = int(site['slot'], 16)
-            if site.get('ecxValue') in (4, 0x40):
+            # (a site whose ecx the export could not value: an interface slot no CScriptThing vtable has is the interface)
+            iface = site.get('ecxValue') in (4, 0x40) or (site.get('ecxValue') is None and slot in self.slots and slot not in self.thing_slots)
+            if iface:
                 name = self.slots.get(slot)
                 spec = self.manifest.get(name) if name else None
                 if not spec:

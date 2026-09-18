@@ -7915,7 +7915,6 @@
             "verify cleanup at LAB_00d555f3_c6 (lifted as early return)",
             "label LAB_00d55b4e_c6",
             "goto LAB_00d55b4e_c6",
-            "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
             "label LAB_00d54846",
             "label LAB_00d54f9c_c7",
             "label LAB_00d551d4_c7",
@@ -7942,7 +7941,6 @@
             "verify cleanup at LAB_00d55c9f_c19 (lifted as early return)",
             "label LAB_00d555f3",
             "label LAB_00d55b4e",
-            "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);",
             "verify cleanup at LAB_00d54dfa_c27 (lifted as early return)",
             "label LAB_00d54dfa_c27",
@@ -7980,7 +7978,6 @@
             "verify cleanup at LAB_00d555f3_c27 (lifted as early return)",
             "label LAB_00d55b4e_c27",
             "goto LAB_00d55b4e_c27",
-            "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);",
             "unlifted: xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);",
             "verify cleanup at LAB_00d53ff2_c28 (lifted as early return)",
@@ -8027,7 +8024,6 @@
             "verify cleanup at LAB_00d555f3_c28 (lifted as early return)",
             "label LAB_00d55b4e_c28",
             "goto LAB_00d55b4e_c28",
-            "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);",
             "goto LAB_00d5439e_c28",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);",
@@ -8081,7 +8077,6 @@
             "verify cleanup at LAB_00d555f3_c29 (lifted as early return)",
             "label LAB_00d55b4e_c29",
             "goto LAB_00d55b4e_c29",
-            "unlifted: xStack_154 = (CCharString)(1 - (int)xStack_154);",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);",
             "goto LAB_00d5439e_c29",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);",
@@ -9885,7 +9880,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 4466,
+          "lines": 4471,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -10441,34 +10436,34 @@
       "cleanupRegions": {
         "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua": {
           "LAB_00d555f3_c27": [
-            "quest:PauseAllNonScriptedEntities((uVar19 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d555f3_c28": [
-            "quest:PauseAllNonScriptedEntities((uVar19 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d555f3_c29": [
-            "quest:PauseAllNonScriptedEntities((uVar19 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d555f3_c6": [
-            "quest:PauseAllNonScriptedEntities((uVar19 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d55c9f_c19": [
-            "quest:PauseAllNonScriptedEntities((uVar18 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d55c9f_c27": [
-            "quest:PauseAllNonScriptedEntities((fVar2 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d55c9f_c28": [
-            "quest:PauseAllNonScriptedEntities((fVar2 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d55c9f_c29": [
-            "quest:PauseAllNonScriptedEntities((fVar2 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d55c9f_c6": [
-            "quest:PauseAllNonScriptedEntities((fVar2 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d55c9f_c7": [
-            "quest:PauseAllNonScriptedEntities((fVar2 ~= 0))"
+            "quest:PauseAllNonScriptedEntities(false)"
           ],
           "LAB_00d55cd5_c27": [
             "quest:PauseAllNonScriptedEntities(false)"
@@ -10491,7 +10486,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 227
+        "todo": 222
       }
     },
     {
@@ -11550,7 +11545,6 @@
           "todo": [
             "goto LAB_00d61b0a",
             "label LAB_00d5e63f",
-            "unlifted: xStack_22c = 1 - xStack_22c;",
             "label LAB_00d60aee",
             "unlifted: CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_134);",
             "label LAB_00d60aff",
@@ -12354,7 +12348,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1574,
+          "lines": 1577,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12528,7 +12522,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 76
+        "todo": 75
       }
     },
     {
@@ -14865,6 +14859,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 771
+    "todo": 765
   }
 }

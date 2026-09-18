@@ -1765,7 +1765,7 @@
       "unusedAlive": 0,
       "flagTests": 9,
       "declarations": 19,
-      "decimalLiterals": 1
+      "decimalLiterals": 0
      }
     },
     {
@@ -2486,6 +2486,10 @@
       "bVar5_9": {
        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_1, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
        "62": "                    bVar5_9 = false\n"
+      },
+      "pCVar10_2": {
+       "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_1, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
+       "74": "                    pCVar10_2 = 0x1\n"
       }
      },
      "inlinedLiteralLocals": {
@@ -2497,7 +2501,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_1, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
+        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_1, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
         "33": "            bVar5_4 = true\n",
         "36": "            quest:EntityFollowThing(me, pCVar9_2, fVar13_1, bVar5_4)\n"
        }
@@ -2510,7 +2514,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_1, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
+        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_1, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
         "34": "            fVar13_1 = 1.0\n",
         "36": "            quest:EntityFollowThing(me, pCVar9_2, fVar13_1, (true))\n"
        }
@@ -2523,7 +2527,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
+        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar13_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
         "185": "                    fVar13_2 = 15.0\n",
         "187": "                    bVar5_23 = quest:IsDistanceBetweenThingsUnder(me, pCVar9_9, fVar13_2)\n"
        }
@@ -2536,7 +2540,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
+        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
         "79": "                    fVar2 = 0.0\n",
         "80": "                    if fVar2 < fret_0 then\n"
        }
@@ -2549,7 +2553,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
+        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
         "84": "                        iVar11_1 = 2\n",
         "87": "                        r2 = me:Speak(pCVar9_4, p1, iVar11_1, (iVar12_1 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
        }
@@ -2562,22 +2566,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fret_0, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
+        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fret_0, iVar11_2, iVar11_3, iVar12_1, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
         "83": "                        iVar12_1 = 0\n",
         "87": "                        r2 = me:Speak(pCVar9_4, p1, (2), (iVar12_1 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
-       }
-      },
-      "pCVar10_2": {
-       "literal": "0x1",
-       "definitionLine": 74,
-       "readLines": [
-        75
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "3": "    local bVar3, bVar4, bVar5_1, bVar5_2, bVar5_3, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, bVar5_12, bVar5_13, bVar5_14, bVar5_15, bVar5_16, bVar5_17, bVar5_18, bVar5_19, bVar5_20, bVar5_21, bVar5_22, bVar5_23, bVar5_24, bVar7_1, bVar7_2, bVar8_1, bVar8_2, cVar6_1, cVar6_2, cVar6_3, fret_0, iVar11_2, iVar11_3, iVar12_2, iVar12_3, p1, p4, p5, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30\n",
-        "74": "                    pCVar10_2 = 0x1\n",
-        "75": "                    quest:PauseAllNonScriptedEntities((pCVar10_2 ~= 0))\n"
        }
       }
      },
@@ -2657,7 +2648,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 4,
        "controlAcquires": 1,
-       "parentheses": 13,
+       "parentheses": 11,
        "cosmetics": 0,
        "firstAssignments": 1,
        "freeSuffixes": 1,

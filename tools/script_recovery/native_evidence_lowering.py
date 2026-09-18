@@ -462,7 +462,10 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'return extraout_\w+;', 'return;', text)   # a void function whose EAX Ghidra guessed as a result
     # an integer counter kept in a slot Ghidra typed CCharString (a byte offset stepping through a vector):
     # `X = (CCharString)((int)X + 0xc);` with its `X = (CCharString)0x0;` start
+    # an int flag toggled in a slot Ghidra typed CCharString: `X = (CCharString)(1 - (int)X);`
+    text = re.sub(r'^([ \t]*)(\w+) = \(CCharString\)\((\d+) - \(int\)\2\);', r'\1\2 = \3 - \2;', text, flags=re.M)
     counters = set(re.findall(r'^[ \t]*(\w+) = \(CCharString\)\(\(int\)\1 \+ (?:0x[0-9a-f]+|\d+)\);', text, re.M))
+    counters |= {v for v in re.findall(r'^[ \t]*(\w+) = \d+ - \1;', text, re.M) if re.search(r'&' + re.escape(v) + r'\b', text)}   # (the toggled flag sharing a string temp's slot)
     for var in counters:
         v = re.escape(var)
         text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString\)\(\(int\)' + v + r' \+ (0x[0-9a-f]+|\d+)\);', r'\1' + var + r' = ' + var + r' + \2;', text, flags=re.M)

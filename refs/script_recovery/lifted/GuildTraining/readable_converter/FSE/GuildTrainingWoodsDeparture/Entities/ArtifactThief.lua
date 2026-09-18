@@ -21,9 +21,8 @@ end
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, getStateBool, scratchValue3, scratchValue6, addNewConversation, movie
-    local scratchValue9, scratchValue, scratchValue11, movie2, movie3, movie4, timerId, movie5
-    local movie6
+    local scratchValue2, getStateBool, scratchValue6, addNewConversation, movie, scratchValue9
+    local scratchValue, scratchValue11, movie2, movie3, movie4, timerId, movie5, movie6
     local function __region_LAB_00d632c3_c2()
         quest:PauseAllNonScriptedEntities(false)
         movie = movie3
@@ -107,8 +106,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
                     movie2 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(5.5 ~= 0)
-                    scratchValue3 = 0.0
+                    quest:PauseAllNonScriptedEntities(true)
                     if 0.0 < quest:GetHealth(me) then
                         if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_PRE_HIT", GROUP_SELECT_FIRST, false, true, false) then
                             quest:PauseAllNonScriptedEntities(false)
@@ -129,8 +127,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
                     movie6 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(scratchValue3 ~= 0)
-                    scratchValue3 = 0.0
+                    quest:PauseAllNonScriptedEntities(true)
                     if 0.0 < quest:GetHealth(me) then
                         if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_HIT", GROUP_SELECT_FIRST, false, true, false) then
                             quest:PauseAllNonScriptedEntities(false)
@@ -183,7 +180,6 @@ function Main(quest, me)
                                     if not scratchValue2 then
                                         if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost) then
                                             if not quest:IsActiveThreadTerminating() then
-                                                scratchValue3 = 0.0
                                                 if 0.0 < quest:GetHealth(me) then
                                                     if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                                     -- TODO(native): goto LAB_00d632b4_c2
@@ -193,7 +189,6 @@ function Main(quest, me)
                                             goto LAB_00d63a7c
                                         end
                                         if not quest:IsActiveThreadTerminating() then
-                                            scratchValue3 = 0.0
                                             if 0.0 < quest:GetHealth(me) then
                                                 if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_YES", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                                 if quest:IsActiveThreadTerminating() then goto LAB_00d63a7c end
@@ -214,7 +209,6 @@ function Main(quest, me)
                                     goto LAB_00d63c96
                                 end
                                 if not scratchValue2 then
-                                    scratchValue3 = 0.0
                                     if 0.0 < quest:GetHealth(me) then
                                         if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                         -- LAB_00d632b4_c2: (native jump target)
@@ -245,7 +239,6 @@ function Main(quest, me)
                                 if not scratchValue2 then
                                     if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost) then
                                         if not quest:IsActiveThreadTerminating() then
-                                            scratchValue3 = 0.0
                                             if 0.0 < quest:GetHealth(me) then
                                                 if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                                 if quest:IsActiveThreadTerminating() then goto LAB_00d63a7c end
@@ -260,7 +253,6 @@ function Main(quest, me)
                                         goto LAB_00d63a7c
                                     end
                                     if not quest:IsActiveThreadTerminating() then
-                                        scratchValue3 = 0.0
                                         if 0.0 < quest:GetHealth(me) then
                                             if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_YES", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                             if quest:IsActiveThreadTerminating() then goto LAB_00d63a7c end
@@ -281,7 +273,6 @@ function Main(quest, me)
                                 goto LAB_00d63c96
                             end
                             if not scratchValue2 then
-                                scratchValue3 = 0.0
                                 if 0.0 < quest:GetHealth(me) then
                                     if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                     -- LAB_00d632b4: (native jump target)
@@ -339,8 +330,7 @@ function Main(quest, me)
                     end
                     movie5 = resources:StartMovie("")
                     quest:StartMovieSequence()
-                    quest:PauseAllNonScriptedEntities(0.0 ~= 0)
-                    scratchValue3 = 0.0
+                    quest:PauseAllNonScriptedEntities(true)
                     if 0.0 < quest:GetHealth(me) then
                         if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_RETURN_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then
                             quest:PauseAllNonScriptedEntities(false)
@@ -372,7 +362,6 @@ function Main(quest, me)
                     resources:DestroyMovie(movie4)
                     goto LAB_00d63c96
                 end
-                scratchValue3 = 0.0
                 if 0.0 < quest:GetHealth(me) then
                     if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO_GOLD", GROUP_SELECT_FIRST, false, true, false) then
                         quest:PauseAllNonScriptedEntities(false)

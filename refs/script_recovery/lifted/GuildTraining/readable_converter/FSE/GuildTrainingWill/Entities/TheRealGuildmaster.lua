@@ -22,12 +22,13 @@ end
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue4, isActiveThreadTerminating, isTalkedToByHero, scratchValue5, scratchValue6
-    local scratchValue7, scratchValue8, scratchValue, scratchValue11, switch, scratchValue12
-    local scratchValue13, scratchValue14, guildEvilApprenticeMale, guildEvilApprenticeMale2
-    local meleeApprentice, meleeApprentice2, movie, resource, scratchValue15, movie2, scratchValue16
-    local scratchValue17, movie3, resource2, actorMap, resource3, timerId, timerId3, timerId4
-    local scratchValue18, scratchValue19, resource4, resource5, scratchValue20
+    local scratchValue4, isActiveThreadTerminating, isTalkedToByHero, scratchValue5, ctr_22c
+    local scratchValue6, scratchValue7, scratchValue8, scratchValue, scratchValue11, switch
+    local scratchValue12, scratchValue13, scratchValue14, guildEvilApprenticeMale
+    local guildEvilApprenticeMale2, meleeApprentice, meleeApprentice2, movie, resource
+    local scratchValue15, movie2, scratchValue16, scratchValue17, movie3, resource2, actorMap
+    local resource3, timerId, timerId3, timerId4, scratchValue18, scratchValue19, resource4
+    local resource5, scratchValue20
     local function __region_LAB_00d61ad8_c22()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(scratchValue17)
@@ -55,6 +56,7 @@ function Main(quest, me)
     scratchValue18 = quest:RegisterTimer()
     scratchValue19 = quest:RegisterTimer()
     quest:SetTimer(scratchValue19, 0)
+    ctr_22c = 0
     quest:EntitySetTargetingType(me, 26)
     if not quest:GetStateBool("TestFinished") then
         if quest:IsActiveThreadTerminating() then
@@ -97,14 +99,14 @@ function Main(quest, me)
                 scratchValue8 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(scratchValue8, hero)
                 quest:SetTimer(scratchValue19, 10)
-                if true then
+                if ctr_22c == 0 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(scratchValue8, "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_FIRST", me, hero, false)
-                elseif 0 == 1 then
+                elseif ctr_22c == 1 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(scratchValue8, "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_SECOND", me, hero, false)
                 end
-                -- TODO(native): xStack_22c = 1 - xStack_22c;
+                ctr_22c = 1 - ctr_22c
             end
         end
         if not quest:IsActiveThreadTerminating() then
@@ -251,7 +253,7 @@ function Main(quest, me)
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
                 timerId = quest:RegisterTimer()
-                quest:SetTimer(timerId, 0)
+                quest:SetTimer(ctr_22c, 0)
                 scratchValue7 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
                 scratchValue = scratchValue7
                 scratchValue16 = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
@@ -274,7 +276,7 @@ function Main(quest, me)
                         scratchValue8 = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(scratchValue8, hero)
                         quest:AddLineToConversation(scratchValue8, "TEXT_QST_028_GUILDMASTER_WILL_NO_WILL", me, hero, false)
-                        quest:SetTimer(timerId, 8)
+                        quest:SetTimer(ctr_22c, 8)
                         scratchValue7 = scratchValue
                     end
                     if me:IsTalkedToByHero() then

@@ -106,6 +106,7 @@ function ProcessGameRulesEvil(quest)
     local addQuestInfoCounter, scratchValue, rivalHeroWhisperOrchardFarm, scratchValue6
     local mkOfwfWhisper
     local function __cleanup_LAB_00dd0b11()
+        quest:PauseAllNonScriptedEntities(__unknown_push)
         quest:EndCutscene()
     end
     while not quest:GetStateBool("DoneIntroduction") do
@@ -147,6 +148,7 @@ function ProcessGameRulesEvil(quest)
                         end
                         if not quest:IsActiveThreadTerminating() then goto LAB_00dd0977 end
                     end
+                    quest:PauseAllNonScriptedEntities(__unknown_push)
                     quest:EndCutscene()
                     return
                 end
@@ -199,6 +201,7 @@ function ProcessGameRulesGood(quest)
     local hero = quest:GetHero()
     local ePriority, addQuestInfoCounter, rivalHeroWhisperOrchardFarm, scratchValue, mkOfwfWhisper
     local function __cleanup_LAB_00dd1728()
+        quest:PauseAllNonScriptedEntities(__unknown_push)
         quest:EndCutscene()
     end
     while not quest:GetStateBool("DoneIntroduction") do
@@ -247,6 +250,7 @@ function ProcessGameRulesGood(quest)
                         end
                         if not quest:IsActiveThreadTerminating() then goto LAB_00dd157a end
                     end
+                    quest:PauseAllNonScriptedEntities(__unknown_push)
                     quest:EndCutscene()
                     return
                 end

@@ -84,7 +84,7 @@ function Main(quest, me)
                         xStack_bc = resources:StartMovie("")
                         quest:StartMovieSequence()
                         pCVar6 = 0x1
-                        quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
+                        quest:PauseAllNonScriptedEntities(true)
                         bVar4 = false
                         if bVar4 ~= 0 then
                         end
