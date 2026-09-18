@@ -14,7 +14,7 @@ end
 
 -- BanditExtra.Main (retail 0x00dfca90)
 function Main(quest, me)
-    local scratchValue, getDistanceBetweenThings, banditGruntLevel
+    local scratchValue, getDistanceBetweenThings, banditGruntLevel, scratchValue4
     local hero = quest:GetHero()
     quest:Pause(0.5)
     if 9 < quest:GetStateListCount("AllCreatures") then
@@ -27,10 +27,10 @@ function Main(quest, me)
     banditGruntLevel = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", me:GetPos(), "")
     getDistanceBetweenThings = quest:GetDistanceBetweenThings(banditGruntLevel, hero) ^ 2
     -- TODO(native): xStack_8 = (CCharString)(int)ROUND(fVar5 * _DAT_0126b7dc + 0.5);
-    if getDistanceBetweenThings * 0.06666667014360428 == xStack_8 - 1.0 then
+    if getDistanceBetweenThings * 0.06666667014360428 == scratchValue4 - 1.0 then
         -- TODO(native): xStack_8 = (CCharString)((int)xStack_8 - 1);
     end
-    if 3 < xStack_8 then
+    if 3 < scratchValue4 then
         if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
         scratchValue = 3
     end

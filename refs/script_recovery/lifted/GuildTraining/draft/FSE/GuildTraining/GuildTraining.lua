@@ -1140,7 +1140,7 @@ end
 
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_a0
+    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0
     local alive = true
     bVar4 = false
     bVar3 = false

@@ -6,9 +6,9 @@ local hitWarning
 
 -- TC_BanditFighter.Main (retail 0x00df8970)
 function Main(quest, me)
-    local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, predicateResult
-    local predicateResult4, predicateResult6, playerEngaged, conversationID, conversationId
-    local scratchValue11
+    local scratchValue, scratchValue2, CVar6_b0, scratchValue3, scratchValue4, scratchValue5
+    local predicateResult, predicateResult4, predicateResult6, playerEngaged, conversationID
+    local conversationId, scratchValue11
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")

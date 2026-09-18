@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local CVar4, bVar1, fVar5, iVar3, pCVar2, pPosition, r1, thing2
+    local CVar4, bVar1, fVar5, iVar3, pCVar2, pPosition, r1, thing2, xStack_8
     local alive = true
     quest:Pause(0.5)
     if 9 < quest:GetStateListCount("AllCreatures") then

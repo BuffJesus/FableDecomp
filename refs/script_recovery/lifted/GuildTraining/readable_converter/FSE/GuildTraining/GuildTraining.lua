@@ -591,17 +591,17 @@ end
 function CheckFriendlyAttacks(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local movie, predicateResult5, predicateResult6, predicateResult, scratchValue, conversationId
-    local scratchValue15, scratchValue16, scratchValue17, heroWarnings, scratchValue22
-    local scratchValue23, getThingWithScriptName, scratchValue24, scratchValue25, actorMap, resource
-    local conversationId2, thing, scratchValue26
+    local movie, scratchValue4, predicateResult5, predicateResult6, predicateResult, scratchValue
+    local conversationId, scratchValue16, scratchValue17, scratchValue18, heroWarnings
+    local scratchValue23, scratchValue24, getThingWithScriptName, scratchValue25, scratchValue26
+    local actorMap, resource, conversationId2, thing, scratchValue27, scratchValue28
     getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
-    scratchValue15 = getThingWithScriptName - 0 >> 31
-    scratchValue24 = 0
-    if (getThingWithScriptName - 0) / 12 + scratchValue15 ~= scratchValue15 then
-        scratchValue16 = 0
+    scratchValue16 = getThingWithScriptName - 0 >> 31
+    scratchValue25 = 0
+    if (getThingWithScriptName - 0) / 12 + scratchValue16 ~= scratchValue16 then
+        scratchValue17 = 0
         repeat
-            scratchValue22 = 0
+            scratchValue23 = 0
             if quest:IsActiveThreadTerminating() then goto LAB_00d452d1 end
             -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_70)
     --[[unresolved native value]]
@@ -632,17 +632,17 @@ function CheckFriendlyAttacks(quest)
             if predicateResult then
                 if quest:IsActiveThreadTerminating() then return end
                 -- TODO(native): (**(code **)(*(int *)((int)xStack_84 + iVar18) + 0x10c))(1);
-                quest:EntitySetAsKillable(getThingWithScriptName, 0 + scratchValue16, false)
+                quest:EntitySetAsKillable(getThingWithScriptName, 0 + scratchValue17, false)
             end
-            scratchValue24 = scratchValue24 + 1
-            scratchValue16 = scratchValue16 + 12
-        until scratchValue24 >= ((getThingWithScriptName - 0) / 12)
+            scratchValue25 = scratchValue25 + 1
+            scratchValue17 = scratchValue17 + 12
+        until scratchValue25 >= ((getThingWithScriptName - 0) / 12)
     end
-    scratchValue23 = 0
+    scratchValue24 = 0
     if not quest:IsActiveThreadTerminating() then
-        while scratchValue23 ~= getThingWithScriptName do
+        while scratchValue24 ~= getThingWithScriptName do
             -- TODO(native): (**(code **)*puVar7)(0);
-            scratchValue23 = scratchValue23 + 3
+            scratchValue24 = scratchValue24 + 3
         end
         if nil ~= nil then
             -- TODO(native): free(xStack_84);
@@ -654,9 +654,9 @@ function CheckFriendlyAttacks(quest)
                     if not quest:NewScriptFrame() then goto LAB_00d45322 end
                 end
                 scratchValue = 0
-                scratchValue17 = getThingWithScriptName - 0 >> 31
-                scratchValue25 = 0
-                if (getThingWithScriptName - 0) / 12 + scratchValue17 ~= scratchValue17 then
+                scratchValue18 = getThingWithScriptName - 0 >> 31
+                scratchValue26 = 0
+                if (getThingWithScriptName - 0) / 12 + scratchValue18 ~= scratchValue18 then
                     repeat
                         if quest:IsActiveThreadTerminating() then return end
                         -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)
@@ -690,9 +690,9 @@ function CheckFriendlyAttacks(quest)
                             -- TODO(native): (**(code **)(*(int *)((int)xStack_84 + iVar13) + 0x10c))(1);
                             quest:EntitySetAsKillable(nil --[[missing]], 0 + scratchValue, false)
                         end
-                        scratchValue25 = scratchValue25 + 1
+                        scratchValue26 = scratchValue26 + 1
                         scratchValue = scratchValue + 12
-                    until scratchValue25 >= ((getThingWithScriptName - 0) / 12)
+                    until scratchValue26 >= ((getThingWithScriptName - 0) / 12)
                 end
                 if quest:IsActiveThreadTerminating() then return end
             end
@@ -702,12 +702,12 @@ function CheckFriendlyAttacks(quest)
                     predicateResult6 = false
                     goto FLOW_after_lab_00d45782
                 end
-                if scratchValue26 ~= nil and scratchValue26:MsgIsHitByHero() then
+                if scratchValue28 ~= nil and scratchValue28:MsgIsHitByHero() then
                     predicateResult6 = false
                     goto FLOW_after_lab_00d45782
                 end
-                if scratchValue26 ~= nil and scratchValue26:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if scratchValue26 == nil or not scratchValue26:MsgIsHitByHeroSpecialAbility(14) then
+                if scratchValue28 ~= nil and scratchValue28:MsgIsHitByAnySpecialAbilityFromHero() then
+                    if scratchValue28 == nil or not scratchValue28:MsgIsHitByHeroSpecialAbility(14) then
                         predicateResult6 = false
                         goto FLOW_after_lab_00d45782
                     end
@@ -717,9 +717,9 @@ function CheckFriendlyAttacks(quest)
                 -- TODO(native): MsgHitFriendWithMeleeWeapon is not a ForgeFSE binding
                 if hero:MsgHitFriendWithMeleeWeapon() then
                     if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByHero() then goto LAB_00d45782 end
-                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if scratchValue26 == nil or not scratchValue26:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
+                    if scratchValue28 ~= nil and scratchValue28:MsgIsHitByHero() then goto LAB_00d45782 end
+                    if scratchValue28 ~= nil and scratchValue28:MsgIsHitByAnySpecialAbilityFromHero() then
+                        if scratchValue28 == nil or not scratchValue28:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
                     end
                     predicateResult6 = true
                     goto FLOW_after_lab_00d45782
@@ -727,9 +727,9 @@ function CheckFriendlyAttacks(quest)
                 -- TODO(native): MsgHitFriendWithRangedWeapon is not a ForgeFSE binding
                 if hero:MsgHitFriendWithRangedWeapon() then
                     if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByHero() then goto LAB_00d45782 end
-                    if scratchValue26 ~= nil and scratchValue26:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if scratchValue26 == nil or not scratchValue26:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
+                    if scratchValue28 ~= nil and scratchValue28:MsgIsHitByHero() then goto LAB_00d45782 end
+                    if scratchValue28 ~= nil and scratchValue28:MsgIsHitByAnySpecialAbilityFromHero() then
+                        if scratchValue28 == nil or not scratchValue28:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00d45782 end
                     end
                     predicateResult6 = true
                     goto FLOW_after_lab_00d45782
@@ -750,7 +750,7 @@ function CheckFriendlyAttacks(quest)
                     if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d45db2 end
                     actorMap = resources:NewActorMap()
                     -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
-                    resources:SetActor(amStack_1c, "MAZE", resource)
+                    resources:SetActor(scratchValue4, "MAZE", resource)
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
@@ -758,12 +758,12 @@ function CheckFriendlyAttacks(quest)
                     quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
                     quest:Pause(2.0)
                     quest:FixMovieSequenceCamera(true)
-                    resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
+                    resources:RunMacro("CS_GUILD_BADHERO", scratchValue4, false, true)
                     quest:FixMovieSequenceCamera(false)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     resources:DestroyActorMap(actorMap)
-                    resources:ReleaseResource(amStack_1c)
+                    resources:ReleaseResource(scratchValue4)
                     resources:ReleaseResource(conversationId2)
                     goto LAB_00d45c9d
                     hero:ReleaseControl()
@@ -797,9 +797,9 @@ function CheckFriendlyAttacks(quest)
             quest:NewScriptFrame()
         until false
     end
-    while scratchValue23 ~= getThingWithScriptName do
+    while scratchValue24 ~= getThingWithScriptName do
         -- TODO(native): (**(code **)*puVar7)(0);
-        scratchValue23 = scratchValue23 + 3
+        scratchValue24 = scratchValue24 + 3
     end
     if nil ~= nil then
         -- TODO(native): free(xStack_84);
@@ -807,11 +807,11 @@ function CheckFriendlyAttacks(quest)
     ::LAB_00d45322::
     do return end
     ::LAB_00d452d1::
-    while scratchValue22 ~= getThingWithScriptName do
+    while scratchValue23 ~= getThingWithScriptName do
         -- TODO(native): (**(code **)*puVar7)(0);
-        scratchValue22 = scratchValue22 + 3
+        scratchValue23 = scratchValue23 + 3
     end
-    if xStack_94 ~= nil then
+    if scratchValue27 ~= nil then
         -- TODO(native): free(xStack_94);
     end
     goto LAB_00d45322

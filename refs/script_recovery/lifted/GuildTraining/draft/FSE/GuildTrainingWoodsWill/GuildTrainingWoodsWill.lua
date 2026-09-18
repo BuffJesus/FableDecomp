@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local CVar10, bVar3, cVar1, ctr_84, ctr_88, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, pvVar9, r1, uVar11, xStack_20, xStack_38, xStack_48, xStack_60, xStack_7c
+    local CVar10, bVar3, cVar1, ctr_84, ctr_88, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, puStack_78, pvVar9, r1, uVar11, xStack_10, xStack_20, xStack_38, xStack_48, xStack_60, xStack_7c
     local alive = true
     iVar12 = 0
     quest:SetStateBool("MissionSucceeded", false)

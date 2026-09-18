@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, bVar4, cVar2, c_stk_165, c_stk_16d, fVar11, fVar12, f_stk_11c, f_stk_120, f_stk_124, f_stk_134, f_stk_138, f_stk_13c, f_stk_14, f_stk_158, f_stk_15c, f_stk_160, f_stk_20, f_stk_2c, f_stk_38, f_stk_6c, f_stk_70, f_stk_78, f_stk_7c, f_stk_84, f_stk_88, f_stk_a8, f_stk_ac, f_stk_b4, f_stk_b8, f_stk_bc, iVar5, iVar8, i_stk_16c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar6, pfVar7, piStack_190, piVar1, r1, r2, r3, r4, r5, r6, r7, r8, thing1, uVar9, xStack_158, xStack_190, x_stk_188
+    local bVar3, bVar4, cVar2, c_stk_165, c_stk_16d, fStack_b0, fVar11, fVar12, f_stk_11c, f_stk_120, f_stk_124, f_stk_134, f_stk_138, f_stk_13c, f_stk_14, f_stk_158, f_stk_15c, f_stk_160, f_stk_20, f_stk_2c, f_stk_38, f_stk_6c, f_stk_70, f_stk_78, f_stk_7c, f_stk_84, f_stk_88, f_stk_a8, f_stk_ac, f_stk_b4, f_stk_b8, f_stk_bc, iVar5, iVar8, i_stk_16c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar6, pPos, pfVar7, piStack_190, piVar1, r1, r2, r3, r4, r5, r6, r7, r8, thing1, uVar9, xStack_158, xStack_18c, xStack_190, x_stk_188
     local alive = true
     local function __cleanup_LAB_00d42ef8()
         quest:DeregisterTimer(xStack_190)

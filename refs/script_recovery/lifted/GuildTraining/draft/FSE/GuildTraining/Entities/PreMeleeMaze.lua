@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, bVar4, bVar6, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar12, iVar7, p0, pCVar8, pThing, pcVar9, r1, r2, r3, r4, xStack_10, xStack_20, xStack_30, xStack_48, x_stk_3c
+    local __native_condition_1, bVar3, bVar4, bVar6, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar12, iVar7, p0, pCVar8, pThing, pcVar9, r1, r2, r3, r4, this_00, xStack_10, xStack_20, xStack_30, xStack_48, x_stk_3c
     local alive = true
     bVar6 = false
     bVar3 = false

@@ -25,7 +25,7 @@ function Main(quest, me)
     local movie, movie2, movie3, getMasterGameState5, infoCounter3, infoCounter4
     local getMasterGameState6, addQuestInfoTickByText2, scratchValue39, infoElement2
     local addQuestInfoTickByText3, addQuestInfoTickByText4, addQuestInfoTickByText5
-    local addQuestInfoTickByText6, resource, timerId, timerId4, timerId5, movie4
+    local addQuestInfoTickByText6, resource, timerId, timerId4, scratchValue41, timerId5, movie4
     local function __cleanup_LAB_00d5dac4()
         resources:DestroyMovie(movie)
         resources:DestroyActorMap(actorMap2)
@@ -761,7 +761,7 @@ function Main(quest, me)
         quest:StartMovieSequence()
         quest:PauseAllNonScriptedEntities(true)
         quest:FixMovieSequenceCamera(true)
-        if xStack_21c_b3 == 0 then
+        if scratchValue41 == 0 then
             if not quest:IsActiveThreadTerminating() then
                 getMasterGameState6 = quest:GetMasterGameState("SkillScore")
                 index = 0

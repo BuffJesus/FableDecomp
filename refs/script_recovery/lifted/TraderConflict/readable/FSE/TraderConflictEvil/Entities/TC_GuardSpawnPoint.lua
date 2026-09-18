@@ -19,7 +19,7 @@ end
 
 -- TC_GuardSpawnPoint.Main (retail 0x00df7bf0)
 function Main(quest, me)
-    local numberSpawned, scratchValue, scratchValue3, pOther, scratchValue5, scratchValue6
+    local numberSpawned, scratchValue, scratchValue3, pOther, pThing, scratchValue5, scratchValue6
     while not quest:GetStateBool("QuestStartScreened") do
         if not quest:NewScriptFrame(me) then return end
     end

@@ -5883,6 +5883,41 @@
         "KillBird": "GuildTraining/Entities/KillBird",
         "PreMeleeMaze": "GuildTraining/Entities/PreMeleeMaze"
       },
+      "declaredFreeLocals": {
+        "FSE/GuildTraining/GuildTraining.lua": {
+          "CheckFriendlyAttacks": [
+            "amStack_1c",
+            "xStack_94"
+          ]
+        },
+        "FSE/GuildTraining/Entities/CombatApprentice.lua": {
+          "Main": [
+            "this_00"
+          ]
+        },
+        "FSE/GuildTraining/Entities/SkillTarget.lua": {
+          "Main": [
+            "fStack_b0",
+            "pPos",
+            "xStack_18c"
+          ]
+        },
+        "FSE/GuildTraining/Entities/WillDummy.lua": {
+          "Main": [
+            "xStack_94"
+          ]
+        },
+        "FSE/GuildTraining/Entities/BirdKiller.lua": {
+          "Main": [
+            "xStack_7c"
+          ]
+        },
+        "FSE/GuildTraining/Entities/PreMeleeMaze.lua": {
+          "Main": [
+            "this_00"
+          ]
+        }
+      },
       "cleanupRegions": {
         "FSE/GuildTraining/Entities/ApprenticeSpeedTest.lua": {
           "LAB_00d402b3_c32": [
@@ -7693,6 +7728,14 @@
             "quest:DeregisterTimer(xStack_260)",
             "quest:DeregisterTimer(xStack_264)",
             "resources:ReleaseResource(xStack_250)"
+          ]
+        }
+      },
+      "declaredFreeLocals": {
+        "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua": {
+          "Main": [
+            "this_01",
+            "xStack_1d4"
           ]
         }
       },
@@ -10509,6 +10552,13 @@
           ]
         }
       },
+      "declaredFreeLocals": {
+        "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua": {
+          "Main": [
+            "xStack_dc"
+          ]
+        }
+      },
       "summary": {
         "owners": 4,
         "functions": 14,
@@ -11445,6 +11495,13 @@
             "quest:DeregisterTimer(xStack_21c)",
             "quest:DeregisterTimer(xStack_220)",
             "resources:ReleaseResource(xStack_210)"
+          ]
+        }
+      },
+      "declaredFreeLocals": {
+        "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua": {
+          "Main": [
+            "xStack_21c_b3"
           ]
         }
       },
@@ -14878,6 +14935,14 @@
       "controlMode": "structured draft",
       "bindingFiles": {
         "WillWhisper": "GuildTrainingWoodsWill/Entities/WillWhisper"
+      },
+      "declaredFreeLocals": {
+        "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua": {
+          "Main": [
+            "puStack_78",
+            "xStack_10"
+          ]
+        }
       },
       "summary": {
         "owners": 2,

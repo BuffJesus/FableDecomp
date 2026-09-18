@@ -17,9 +17,9 @@ local dummyNumber, speed, dummyWorth
 -- SkillTarget.Main (retail 0x00d41d00)
 function Main(quest, me)
     local predicateResult4, scratchValue, predicateResult, scratchValue4, scratchValue5
-    local readGlobalGameDataFloat, getTimer, conversationId, conversationId2, conversationId3
-    local conversationId4, i_stk_16c_1, theGuildmaster, skillApprentice, theRealGuildmaster
-    local skillApprentice2, scratchValue41, getAngleXY, timerId
+    local scratchValue6, readGlobalGameDataFloat, getTimer, conversationId, conversationId2
+    local conversationId3, conversationId4, i_stk_16c_1, pPos, theGuildmaster, skillApprentice
+    local theRealGuildmaster, skillApprentice2, scratchValue42, getAngleXY, scratchValue44, timerId
     local hero = quest:GetHero()
     local function __cleanup_LAB_00d42ef8()
         quest:DeregisterTimer(timerId)
@@ -68,7 +68,7 @@ function Main(quest, me)
                 repeat
                     if not quest:NewScriptFrame(me) then return end
                 until me:MsgIsHitByHeroWithProjectileWeapon()
-                if 0.0 < fStack_b0 then break end
+                if 0.0 < scratchValue6 then break end
                 -- TODO(native): *piVar1 = *piVar1 - 1;
             end
             if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
@@ -115,9 +115,9 @@ function Main(quest, me)
                         end
                     else
                         quest:PlaySoundOnThing(hero, "SND_ARROWIMPACT_02")
-                        if 0.0 <= xStack_18c then
-                            if 0.0 <= xStack_18c then
-                                if xStack_18c < 0.0 then
+                        if 0.0 <= scratchValue44 then
+                            if 0.0 <= scratchValue44 then
+                                if scratchValue44 < 0.0 then
                                     if not quest:IsActiveThreadTerminating() then quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + dummyWorth * 3); goto LAB_00d42874 end
                                     quest:DeregisterTimer(timerId)
                                     return
@@ -136,10 +136,10 @@ function Main(quest, me)
                         getTimer = quest:GetTimer(timerId)
                         if getTimer < 1 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                            scratchValue41 = math.random(0, 32767) & 0x80000003
-                            scratchValue = scratchValue41 == 0
-                            if scratchValue41 < 0 then
-                                scratchValue = (scratchValue41 - 1 | 0xfffffffc) == 0xffffffff
+                            scratchValue42 = math.random(0, 32767) & 0x80000003
+                            scratchValue = scratchValue42 == 0
+                            if scratchValue42 < 0 then
+                                scratchValue = (scratchValue42 - 1 | 0xfffffffc) == 0xffffffff
                             end
                             if scratchValue then
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
@@ -153,9 +153,9 @@ function Main(quest, me)
                                     theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
                                     conversationId3 = quest:AddNewConversation(theRealGuildmaster, false, false)
                                     quest:AddPersonToConversation(conversationId3, hero)
-                                    if 0.0 <= xStack_18c then
-                                        if 0.0 <= xStack_18c then
-                                            if 0.0 <= xStack_18c then
+                                    if 0.0 <= scratchValue44 then
+                                        if 0.0 <= scratchValue44 then
+                                            if 0.0 <= scratchValue44 then
                                                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
                                                 quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", theRealGuildmaster, hero, false)
                                             else
@@ -178,9 +178,9 @@ function Main(quest, me)
                                     skillApprentice2 = quest:GetThingWithScriptName("SkillApprentice")
                                     conversationId4 = quest:AddNewConversation(skillApprentice2, false, false)
                                     quest:AddPersonToConversation(conversationId4, hero)
-                                    if 0.0 <= xStack_18c then
-                                        if 0.0 <= xStack_18c then
-                                            if 0.0 <= xStack_18c then
+                                    if 0.0 <= scratchValue44 then
+                                        if 0.0 <= scratchValue44 then
+                                            if 0.0 <= scratchValue44 then
                                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
                                                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", skillApprentice2, hero, false)
                                             else

@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local angle, bVar3, bVar4, bVar5, cVar2, fVar11, iVar6, iVar8, pCVar7, pCVar9, pThing, piVar1
+    local angle, bVar3, bVar4, bVar5, cVar2, fVar11, iVar6, iVar8, pCVar7, pCVar9, pThing, piVar1, xStack_94
     local alive = true
     bVar3 = false
     fVar11 = me:GetAngleXY()

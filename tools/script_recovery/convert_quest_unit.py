@@ -33,6 +33,7 @@ from tools.script_recovery.native_function_parameters import function_parameters
 from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate, _split_top  # noqa: E402
 from tools.script_recovery.annotate_interface_slots import load_thing_slots  # noqa: E402
 from tools.script_recovery.native_cleanup_regions import hoist_cleanup_regions  # noqa: E402
+from tools.script_recovery.declare_free_locals import declare_free_locals  # noqa: E402
 
 ENTITY_STATE = '''local __native_entity_state = {}
 do
@@ -997,6 +998,11 @@ class UnitConverter:
             source, hoisted = hoist_cleanup_regions('\n'.join(chunks))
             if hoisted:
                 report.setdefault('cleanupRegions', {})[relative] = hoisted
+            # a slot the decompiler only ever read is missing from the function's `local` line and would
+            # resolve to a global at runtime: nil on read, but a write escapes into the shared Lua state
+            source, declared = declare_free_locals(source)
+            if declared:
+                report.setdefault('declaredFreeLocals', {})[relative] = declared
             destination = out / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_text(source + '\n', encoding='utf-8')

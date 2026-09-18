@@ -10,10 +10,12 @@ local woodsEndPlayed, chatJumped
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local addQuestInfoCounter, scratchValue12, guildmasterTeleport, scratchValue14, scratchValue15
+    local addQuestInfoCounter, scratchValue, guildmasterTeleport, scratchValue14, scratchValue15
     local ctr_154, questionAnswer, addNewConversation, switch, actorMap, thing, preMeleeDummy
-    local preMeleeDummy2, preMeleeDummy3, timerId, scratchValue109, resource, actorMap2, movie
-    local infoCounter, actorMap3, movie2, scratchValue110, resource2, timerId2, timerId3, timerId4
+    local preMeleeDummy2, preMeleeDummy3, timerId, scratchValue77, resource, actorMap2, movie
+    local infoCounter, actorMap3, actorMap4, actorMap5, actorMap6, actorMap7, actorMap8, actorMap9
+    local actorMap10, actorMap11, actorMap12, actorMap13, movie2, scratchValue78, resource2
+    local timerId2, timerId3, timerId4, thing2
     local function __region_LAB_00d555f3_c27()
         quest:PauseAllNonScriptedEntities(false)
     end
@@ -57,7 +59,7 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
     end
     guildmasterTeleport = quest:GetStateBool("GuildmasterTeleport")
-    scratchValue109 = 0
+    scratchValue77 = 0
     while not guildmasterTeleport do
         if not quest:NewScriptFrame(me) then return end
         guildmasterTeleport = quest:GetStateBool("GuildmasterTeleport")
@@ -86,29 +88,29 @@ function Main(quest, me)
         addNewConversation = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(addNewConversation, hero)
         quest:SetTimer(timerId4, 5)
-        switch = scratchValue109
+        switch = scratchValue77
         repeat
             if switch == 0 then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FIRST", me, hero, false)
                 me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
-                scratchValue109 = 1
+                scratchValue77 = 1
                 break
             else
                 if switch == 1 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_SECOND", me, hero, false)
-                    scratchValue109 = 2
+                    scratchValue77 = 2
                     goto FLOW_after_lab_00d53316
                 elseif switch == 2 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_THIRD", me, hero, false)
-                    scratchValue109 = 3
+                    scratchValue77 = 3
                     break
                 elseif switch == 3 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FOURTH", me, hero, false)
-                    scratchValue109 = 2
+                    scratchValue77 = 2
                 end
                 ::FLOW_after_lab_00d53316::
             end
@@ -196,18 +198,18 @@ function Main(quest, me)
                 -- LAB_00d53a0b: (native jump target)
                 resources:DestroyMovie(movie2)
             else
-                actorMap3 = resources:NewActorMap()
-                resources:SetActor(actorMap3, "HERO", movie2)
-                resources:SetActor(actorMap3, "TEACHER", resource2)
+                actorMap4 = resources:NewActorMap()
+                resources:SetActor(actorMap4, "HERO", movie2)
+                resources:SetActor(actorMap4, "TEACHER", resource2)
                 movie = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
-                resources:RunMacro("CS_GUILD_PREMELEE_STICK", actorMap3, false, true)
+                resources:RunMacro("CS_GUILD_PREMELEE_STICK", actorMap4, false, true)
                 quest:FixMovieSequenceCamera(false)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
-                resources:DestroyActorMap(actorMap3)
+                resources:DestroyActorMap(actorMap4)
                 resources:DestroyMovie(movie2)
                 if quest:IsXbox() then
                     if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d53c7e end
@@ -258,7 +260,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d53c7e end
                     quest:RemoveQuestInfoElement(addQuestInfoCounter)
                     quest:DisplayQuestInfo(false)
-                    scratchValue110 = nil
+                    scratchValue78 = nil
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     movie2 = resources:NewResource()
@@ -280,21 +282,21 @@ function Main(quest, me)
                         -- TODO(native): CStack_114._4_4_ = puVar11[1];
                         -- TODO(native): CStack_114._8_4_ = puVar11[2];
                         -- TODO(native): CreateEffect is not a ForgeFSE binding
-                        quest:CreateEffect(xStack_dc, "SMASH_DUMMY_01", actorMap2, "", 0.0, false, false)
+                        quest:CreateEffect(thing2, "SMASH_DUMMY_01", actorMap2, "", 0.0, false, false)
                         quest:FadeOutAndKillEntity(preMeleeDummy, true, 1.0, true)
-                        actorMap3 = resources:NewActorMap()
-                        resources:SetActor(actorMap3, "HERO", movie2)
-                        resources:SetActor(actorMap3, "TEACHER", resource2)
+                        actorMap5 = resources:NewActorMap()
+                        resources:SetActor(actorMap5, "HERO", movie2)
+                        resources:SetActor(actorMap5, "TEACHER", resource2)
                         quest:FixMovieSequenceCamera(true)
-                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap3, false, false)
+                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap5, false, false)
                         quest:PauseAllNonScriptedEntities(true)
                         quest:CreateExperienceOrb(actorMap2, 1)
                         -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                         quest:EntitySetCutsceneBehaviour(nil, 2)
-                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED", actorMap3, false, true)
+                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED", actorMap5, false, true)
                         quest:FixMovieSequenceCamera(false)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyActorMap(actorMap3)
+                        resources:DestroyActorMap(actorMap5)
                         resources:DestroyMovie(movie2)
                         resources:DestroyMovie(movie)
                         if quest:IsXbox() then
@@ -307,7 +309,7 @@ function Main(quest, me)
                             -- LAB_00d5439e: (native jump target)
                             timerId2 = quest:RegisterTimer()
                             quest:SetTimer(timerId2, 10)
-                            while scratchValue110 ~= nil and scratchValue110:IsAlive() do
+                            while scratchValue78 ~= nil and scratchValue78:IsAlive() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                 if quest:GetTimer(timerId2) < 1 then
                                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -370,14 +372,14 @@ function Main(quest, me)
                                             -- LAB_00d55c91_c6: (native jump target)
                                             goto LAB_00d55c2b
                                         end
-                                        actorMap3 = resources:NewActorMap()
-                                        resources:SetActor(actorMap3, "HERO", resource)
-                                        resources:SetActor(actorMap3, "GUARD", resource2)
+                                        actorMap6 = resources:NewActorMap()
+                                        resources:SetActor(actorMap6, "HERO", resource)
+                                        resources:SetActor(actorMap6, "GUARD", resource2)
                                         resources:StartMovie("")
                                         quest:StartMovieSequence()
                                         quest:PauseAllNonScriptedEntities(true)
                                         quest:FixMovieSequenceCamera(true)
-                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap3, false, true)
+                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap6, false, true)
                                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                         while questionAnswer < 0 do
@@ -389,12 +391,12 @@ function Main(quest, me)
                                             -- LAB_00d55c72_c6: (native jump target)
                                             quest:PauseAllNonScriptedEntities(false)
                                             -- LAB_00d55c7f_c6: (native jump target)
-                                            resources:DestroyActorMap(actorMap3)
+                                            resources:DestroyActorMap(actorMap6)
                                             -- TODO(native): goto LAB_00d55c91_c6
                                         end
-                                        scratchValue12 = quest:IsActiveThreadTerminating()
+                                        scratchValue = quest:IsActiveThreadTerminating()
                                         if questionAnswer == 1 then
-                                            if scratchValue12 then
+                                            if scratchValue then
                                                 quest:PauseAllNonScriptedEntities(false)
                                                 -- TODO(native): goto LAB_00d55c7f_c6
                                             end
@@ -402,7 +404,7 @@ function Main(quest, me)
                                             quest:Pause(1.0)
                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                         else
-                                            if scratchValue12 then return end  -- TODO(native): goto LAB_00d55c72_c6
+                                            if scratchValue then return end  -- TODO(native): goto LAB_00d55c72_c6
                                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                 me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                 while me:IsPerformingScriptTask() do
@@ -415,16 +417,16 @@ function Main(quest, me)
                                         end
                                         quest:FixMovieSequenceCamera(false)
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyActorMap(actorMap3)
+                                        resources:DestroyActorMap(actorMap6)
                                     else
                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                             -- LAB_00d54f9c_c6: (native jump target)
-                                            scratchValue12 = false
+                                            scratchValue = false
                                         else
                                             if not quest:IsQuestActive("Q_GuildTrainingWoodsMelee") then return end  -- TODO(native): goto LAB_00d54f9c_c6
-                                            scratchValue12 = true
+                                            scratchValue = true
                                         end
-                                        if scratchValue12 then
+                                        if scratchValue then
                                             if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
                                             while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
@@ -444,9 +446,9 @@ function Main(quest, me)
                                                     questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                 end
                                                 if not quest:IsActiveThreadTerminating() then
-                                                    scratchValue12 = quest:IsActiveThreadTerminating()
+                                                    scratchValue = quest:IsActiveThreadTerminating()
                                                     if questionAnswer == 1 then
-                                                        if scratchValue12 then
+                                                        if scratchValue then
                                                             __region_LAB_00d55c9f_c6()
                                                             goto LAB_00d55c2b
                                                         end
@@ -454,7 +456,7 @@ function Main(quest, me)
                                                         quest:Pause(1.0)
                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                     else
-                                                        if scratchValue12 then goto LAB_00d55cba_c6 end
+                                                        if scratchValue then goto LAB_00d55cba_c6 end
                                                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                             me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                             while me:IsPerformingScriptTask() do
@@ -502,9 +504,9 @@ function Main(quest, me)
                                                     questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                 end
                                                 if not quest:IsActiveThreadTerminating() then
-                                                    scratchValue12 = quest:IsActiveThreadTerminating()
+                                                    scratchValue = quest:IsActiveThreadTerminating()
                                                     if questionAnswer == 1 then
-                                                        if not scratchValue12 then
+                                                        if not scratchValue then
                                                             quest:FadeScreenOut(0.5, 0.5)
                                                             quest:Pause(1.0)
                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
@@ -512,7 +514,7 @@ function Main(quest, me)
                                                         end
                                                         __region_LAB_00d555f3_c6(); goto LAB_00d55c2b
                                                     end
-                                                    if not scratchValue12 then
+                                                    if not scratchValue then
                                                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                             me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                             while me:IsPerformingScriptTask() do
@@ -608,9 +610,9 @@ function Main(quest, me)
                                                     questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                 end
                                                 if not quest:IsActiveThreadTerminating() then
-                                                    scratchValue12 = quest:IsActiveThreadTerminating()
+                                                    scratchValue = quest:IsActiveThreadTerminating()
                                                     if questionAnswer == 1 then
-                                                        if scratchValue12 then
+                                                        if scratchValue then
                                                             __region_LAB_00d55c9f_c7()
                                                             goto LAB_00d55c2b
                                                         end
@@ -618,7 +620,7 @@ function Main(quest, me)
                                                         quest:Pause(1.0)
                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                     else
-                                                        if scratchValue12 then goto LAB_00d55cba_c7 end
+                                                        if scratchValue then goto LAB_00d55cba_c7 end
                                                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                             me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                             while me:IsPerformingScriptTask() do
@@ -656,14 +658,14 @@ function Main(quest, me)
                                             -- LAB_00d55c91: (native jump target)
                                             goto LAB_00d55c2b
                                         end
-                                        actorMap3 = resources:NewActorMap()
-                                        resources:SetActor(actorMap3, "HERO", resource)
-                                        resources:SetActor(actorMap3, "GUARD", resource2)
+                                        actorMap7 = resources:NewActorMap()
+                                        resources:SetActor(actorMap7, "HERO", resource)
+                                        resources:SetActor(actorMap7, "GUARD", resource2)
                                         resources:StartMovie("")
                                         quest:StartMovieSequence()
                                         quest:PauseAllNonScriptedEntities(true)
                                         quest:FixMovieSequenceCamera(true)
-                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap3, false, true)
+                                        resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap7, false, true)
                                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                         while questionAnswer < 0 do
@@ -672,7 +674,7 @@ function Main(quest, me)
                                                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                             else
                                                 quest:PauseAllNonScriptedEntities(false)
-                                                resources:DestroyActorMap(actorMap3)
+                                                resources:DestroyActorMap(actorMap7)
                                                 goto LAB_00d55c2b
                                                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                             end
@@ -681,23 +683,23 @@ function Main(quest, me)
                                             -- LAB_00d55c72: (native jump target)
                                             quest:PauseAllNonScriptedEntities(false)
                                             -- LAB_00d55c7f: (native jump target)
-                                            resources:DestroyActorMap(actorMap3)
+                                            resources:DestroyActorMap(actorMap7)
                                             goto LAB_00d55c2b
                                         end
-                                        scratchValue12 = quest:IsActiveThreadTerminating()
+                                        scratchValue = quest:IsActiveThreadTerminating()
                                         if questionAnswer == 1 then
-                                            if scratchValue12 then
+                                            if scratchValue then
                                                 quest:PauseAllNonScriptedEntities(false)
-                                                resources:DestroyActorMap(actorMap3)
+                                                resources:DestroyActorMap(actorMap7)
                                                 goto LAB_00d55c2b
                                             end
                                             quest:FadeScreenOut(0.5, 0.5)
                                             quest:Pause(1.0)
                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                         else
-                                            if scratchValue12 then
+                                            if scratchValue then
                                                 quest:PauseAllNonScriptedEntities(false)
-                                                resources:DestroyActorMap(actorMap3)
+                                                resources:DestroyActorMap(actorMap7)
                                                 goto LAB_00d55c2b
                                             end
                                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
@@ -706,13 +708,13 @@ function Main(quest, me)
                                                     quest:NewScriptFrame(me)
                                                     if quest:IsActiveThreadTerminating() then
                                                         quest:PauseAllNonScriptedEntities(false)
-                                                        resources:DestroyActorMap(actorMap3)
+                                                        resources:DestroyActorMap(actorMap7)
                                                         goto LAB_00d55c2b
                                                     end
                                                 end
                                                 if quest:IsActiveThreadTerminating() then
                                                     quest:PauseAllNonScriptedEntities(false)
-                                                    resources:DestroyActorMap(actorMap3)
+                                                    resources:DestroyActorMap(actorMap7)
                                                     goto LAB_00d55c2b
                                                 end
                                             end
@@ -720,15 +722,15 @@ function Main(quest, me)
                                         end
                                         quest:FixMovieSequenceCamera(false)
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyActorMap(actorMap3)
+                                        resources:DestroyActorMap(actorMap7)
                                     else
                                         if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                             -- LAB_00d54f9c: (native jump target)
-                                            scratchValue12 = false
+                                            scratchValue = false
                                         else
-                                            scratchValue12 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
+                                            scratchValue = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                         end
-                                        if scratchValue12 then
+                                        if scratchValue then
                                             if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
                                             while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
@@ -754,9 +756,9 @@ function Main(quest, me)
                                                     end
                                                 end
                                                 if not quest:IsActiveThreadTerminating() then
-                                                    scratchValue12 = quest:IsActiveThreadTerminating()
+                                                    scratchValue = quest:IsActiveThreadTerminating()
                                                     if questionAnswer == 1 then
-                                                        if scratchValue12 then
+                                                        if scratchValue then
                                                             quest:PauseAllNonScriptedEntities(false)
                                                             goto LAB_00d55c2b
                                                         end
@@ -764,7 +766,7 @@ function Main(quest, me)
                                                         quest:Pause(1.0)
                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                     else
-                                                        if scratchValue12 then goto LAB_00d55cba end
+                                                        if scratchValue then goto LAB_00d55cba end
                                                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                             me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                             while me:IsPerformingScriptTask() do
@@ -790,9 +792,9 @@ function Main(quest, me)
                                                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                     end
                                                     if not quest:IsActiveThreadTerminating() then
-                                                        scratchValue12 = quest:IsActiveThreadTerminating()
+                                                        scratchValue = quest:IsActiveThreadTerminating()
                                                         if questionAnswer == 1 then
-                                                            if scratchValue12 then
+                                                            if scratchValue then
                                                                 __region_LAB_00d55c9f_c19()
                                                                 goto LAB_00d55c2b
                                                             end
@@ -800,7 +802,7 @@ function Main(quest, me)
                                                             quest:Pause(1.0)
                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                         else
-                                                            if scratchValue12 then goto LAB_00d55cba end
+                                                            if scratchValue then goto LAB_00d55cba end
                                                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                 me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                 while me:IsPerformingScriptTask() do
@@ -850,9 +852,9 @@ function Main(quest, me)
                                                     end
                                                 end
                                                 if not quest:IsActiveThreadTerminating() then
-                                                    scratchValue12 = quest:IsActiveThreadTerminating()
+                                                    scratchValue = quest:IsActiveThreadTerminating()
                                                     if questionAnswer == 1 then
-                                                        if not scratchValue12 then
+                                                        if not scratchValue then
                                                             quest:FadeScreenOut(0.5, 0.5)
                                                             quest:Pause(1.0)
                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
@@ -861,7 +863,7 @@ function Main(quest, me)
                                                         quest:PauseAllNonScriptedEntities(false)
                                                         goto LAB_00d55c2b
                                                     end
-                                                    if not scratchValue12 then
+                                                    if not scratchValue then
                                                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                             me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                             while me:IsPerformingScriptTask() do
@@ -940,7 +942,7 @@ function Main(quest, me)
                             -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                             timerId2 = quest:RegisterTimer()
                             quest:SetTimer(timerId2, 10)
-                            while scratchValue110 ~= nil and scratchValue110:IsAlive() do
+                            while scratchValue78 ~= nil and scratchValue78:IsAlive() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c27 end
                                 if quest:GetTimer(timerId2) < 1 then
                                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -1013,14 +1015,14 @@ function Main(quest, me)
                                                                         -- LAB_00d55c91_c27: (native jump target)
                                                                         goto LAB_00d55c2b_c27
                                                                     end
-                                                                    actorMap3 = resources:NewActorMap()
-                                                                    resources:SetActor(actorMap3, "HERO", resource)
-                                                                    resources:SetActor(actorMap3, "GUARD", resource2)
+                                                                    actorMap8 = resources:NewActorMap()
+                                                                    resources:SetActor(actorMap8, "HERO", resource)
+                                                                    resources:SetActor(actorMap8, "GUARD", resource2)
                                                                     resources:StartMovie("")
                                                                     quest:StartMovieSequence()
                                                                     quest:PauseAllNonScriptedEntities(true)
                                                                     quest:FixMovieSequenceCamera(true)
-                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap3, false, true)
+                                                                    resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap8, false, true)
                                                                     quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                     questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                     while questionAnswer < 0 do
@@ -1032,12 +1034,12 @@ function Main(quest, me)
                                                                         -- LAB_00d55c72_c27: (native jump target)
                                                                         quest:PauseAllNonScriptedEntities(false)
                                                                         -- LAB_00d55c7f_c27: (native jump target)
-                                                                        resources:DestroyActorMap(actorMap3)
+                                                                        resources:DestroyActorMap(actorMap8)
                                                                         -- TODO(native): goto LAB_00d55c91_c27
                                                                     end
-                                                                    scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                    scratchValue = quest:IsActiveThreadTerminating()
                                                                     if questionAnswer == 1 then
-                                                                        if scratchValue12 then
+                                                                        if scratchValue then
                                                                             quest:PauseAllNonScriptedEntities(false)
                                                                             -- TODO(native): goto LAB_00d55c7f_c27
                                                                         end
@@ -1045,7 +1047,7 @@ function Main(quest, me)
                                                                         quest:Pause(1.0)
                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                     else
-                                                                        if scratchValue12 then return end  -- TODO(native): goto LAB_00d55c72_c27
+                                                                        if scratchValue then return end  -- TODO(native): goto LAB_00d55c72_c27
                                                                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                             me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                             while me:IsPerformingScriptTask() do
@@ -1058,16 +1060,16 @@ function Main(quest, me)
                                                                     end
                                                                     quest:FixMovieSequenceCamera(false)
                                                                     quest:PauseAllNonScriptedEntities(false)
-                                                                    resources:DestroyActorMap(actorMap3)
+                                                                    resources:DestroyActorMap(actorMap8)
                                                                 else
                                                                     if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                         -- LAB_00d54f9c_c27: (native jump target)
-                                                                        scratchValue12 = false
+                                                                        scratchValue = false
                                                                     else
                                                                         if not quest:IsQuestActive("Q_GuildTrainingWoodsMelee") then return end  -- TODO(native): goto LAB_00d54f9c_c27
-                                                                        scratchValue12 = true
+                                                                        scratchValue = true
                                                                     end
-                                                                    if scratchValue12 then
+                                                                    if scratchValue then
                                                                         if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
                                                                         while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c27 end
@@ -1087,9 +1089,9 @@ function Main(quest, me)
                                                                                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                             end
                                                                             if not quest:IsActiveThreadTerminating() then
-                                                                                scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                scratchValue = quest:IsActiveThreadTerminating()
                                                                                 if questionAnswer == 1 then
-                                                                                    if scratchValue12 then
+                                                                                    if scratchValue then
                                                                                         __region_LAB_00d55c9f_c27()
                                                                                         goto LAB_00d55c2b_c27
                                                                                     end
@@ -1097,7 +1099,7 @@ function Main(quest, me)
                                                                                     quest:Pause(1.0)
                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                 else
-                                                                                    if scratchValue12 then goto LAB_00d55cba_c27 end
+                                                                                    if scratchValue then goto LAB_00d55cba_c27 end
                                                                                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                         me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                         while me:IsPerformingScriptTask() do
@@ -1145,9 +1147,9 @@ function Main(quest, me)
                                                                                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                             end
                                                                             if not quest:IsActiveThreadTerminating() then
-                                                                                scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                scratchValue = quest:IsActiveThreadTerminating()
                                                                                 if questionAnswer == 1 then
-                                                                                    if not scratchValue12 then
+                                                                                    if not scratchValue then
                                                                                         quest:FadeScreenOut(0.5, 0.5)
                                                                                         quest:Pause(1.0)
                                                                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
@@ -1155,7 +1157,7 @@ function Main(quest, me)
                                                                                     end
                                                                                     __region_LAB_00d555f3_c27(); goto LAB_00d55c2b_c27
                                                                                 end
-                                                                                if not scratchValue12 then
+                                                                                if not scratchValue then
                                                                                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                         me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                         while me:IsPerformingScriptTask() do
@@ -1285,7 +1287,7 @@ function Main(quest, me)
                     if not quest:IsActiveThreadTerminating() then
                         quest:RemoveQuestInfoElement(addQuestInfoCounter)
                         quest:DisplayQuestInfo(false)
-                        scratchValue110 = nil
+                        scratchValue78 = nil
                         movie = resources:StartMovie("")
                         quest:StartMovieSequence()
                         movie2 = resources:NewResource()
@@ -1307,19 +1309,19 @@ function Main(quest, me)
                             -- TODO(native): CreateEffect is not a ForgeFSE binding
                             quest:CreateEffect(thing, "SMASH_DUMMY_01", actorMap, "", 0.0, false, false)
                             quest:FadeOutAndKillEntity(preMeleeDummy2, true, 1.0, true)
-                            actorMap3 = resources:NewActorMap()
-                            resources:SetActor(actorMap3, "HERO", movie2)
-                            resources:SetActor(actorMap3, "TEACHER", resource2)
+                            actorMap9 = resources:NewActorMap()
+                            resources:SetActor(actorMap9, "HERO", movie2)
+                            resources:SetActor(actorMap9, "TEACHER", resource2)
                             quest:FixMovieSequenceCamera(true)
-                            resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap3, false, false)
+                            resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap9, false, false)
                             quest:PauseAllNonScriptedEntities(true)
                             quest:CreateExperienceOrb(1, actorMap)
                             -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                             quest:EntitySetCutsceneBehaviour(nil, 2)
-                            resources:RunMacro("CS_GUILD_PREMELEE_PASSED", actorMap3, false, true)
+                            resources:RunMacro("CS_GUILD_PREMELEE_PASSED", actorMap9, false, true)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyActorMap(actorMap3)
+                            resources:DestroyActorMap(actorMap9)
                             resources:DestroyMovie(movie2)
                             resources:DestroyMovie(movie)
                             if quest:IsXbox() then
@@ -1332,7 +1334,7 @@ function Main(quest, me)
                                         -- LAB_00d5439e_c28: (native jump target)
                                         timerId2 = quest:RegisterTimer()
                                         quest:SetTimer(timerId2, 10)
-                                        while scratchValue110 ~= nil and scratchValue110:IsAlive() do
+                                        while scratchValue78 ~= nil and scratchValue78:IsAlive() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c28 end
                                             if quest:GetTimer(timerId2) < 1 then
                                                 addNewConversation = quest:AddNewConversation(me, false, false)
@@ -1405,14 +1407,14 @@ function Main(quest, me)
                                                                                     -- LAB_00d55c91_c28: (native jump target)
                                                                                     goto LAB_00d55c2b_c28
                                                                                 end
-                                                                                actorMap3 = resources:NewActorMap()
-                                                                                resources:SetActor(actorMap3, "HERO", resource)
-                                                                                resources:SetActor(actorMap3, "GUARD", resource2)
+                                                                                actorMap10 = resources:NewActorMap()
+                                                                                resources:SetActor(actorMap10, "HERO", resource)
+                                                                                resources:SetActor(actorMap10, "GUARD", resource2)
                                                                                 resources:StartMovie("")
                                                                                 quest:StartMovieSequence()
                                                                                 quest:PauseAllNonScriptedEntities(true)
                                                                                 quest:FixMovieSequenceCamera(true)
-                                                                                resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap3, false, true)
+                                                                                resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap10, false, true)
                                                                                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                 while questionAnswer < 0 do
@@ -1424,12 +1426,12 @@ function Main(quest, me)
                                                                                     -- LAB_00d55c72_c28: (native jump target)
                                                                                     quest:PauseAllNonScriptedEntities(false)
                                                                                     -- LAB_00d55c7f_c28: (native jump target)
-                                                                                    resources:DestroyActorMap(actorMap3)
+                                                                                    resources:DestroyActorMap(actorMap10)
                                                                                     -- TODO(native): goto LAB_00d55c91_c28
                                                                                 end
-                                                                                scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                scratchValue = quest:IsActiveThreadTerminating()
                                                                                 if questionAnswer == 1 then
-                                                                                    if scratchValue12 then
+                                                                                    if scratchValue then
                                                                                         quest:PauseAllNonScriptedEntities(false)
                                                                                         -- TODO(native): goto LAB_00d55c7f_c28
                                                                                     end
@@ -1437,7 +1439,7 @@ function Main(quest, me)
                                                                                     quest:Pause(1.0)
                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                 else
-                                                                                    if scratchValue12 then return end  -- TODO(native): goto LAB_00d55c72_c28
+                                                                                    if scratchValue then return end  -- TODO(native): goto LAB_00d55c72_c28
                                                                                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                         me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                         while me:IsPerformingScriptTask() do
@@ -1450,16 +1452,16 @@ function Main(quest, me)
                                                                                 end
                                                                                 quest:FixMovieSequenceCamera(false)
                                                                                 quest:PauseAllNonScriptedEntities(false)
-                                                                                resources:DestroyActorMap(actorMap3)
+                                                                                resources:DestroyActorMap(actorMap10)
                                                                             else
                                                                                 if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                     -- LAB_00d54f9c_c28: (native jump target)
-                                                                                    scratchValue12 = false
+                                                                                    scratchValue = false
                                                                                 else
                                                                                     if not quest:IsQuestActive("Q_GuildTrainingWoodsMelee") then return end  -- TODO(native): goto LAB_00d54f9c_c28
-                                                                                    scratchValue12 = true
+                                                                                    scratchValue = true
                                                                                 end
-                                                                                if scratchValue12 then
+                                                                                if scratchValue then
                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
                                                                                     while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                         if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c28 end
@@ -1479,9 +1481,9 @@ function Main(quest, me)
                                                                                             questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                         end
                                                                                         if not quest:IsActiveThreadTerminating() then
-                                                                                            scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                            scratchValue = quest:IsActiveThreadTerminating()
                                                                                             if questionAnswer == 1 then
-                                                                                                if scratchValue12 then
+                                                                                                if scratchValue then
                                                                                                     __region_LAB_00d55c9f_c28()
                                                                                                     goto LAB_00d55c2b_c28
                                                                                                 end
@@ -1489,7 +1491,7 @@ function Main(quest, me)
                                                                                                 quest:Pause(1.0)
                                                                                                 quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                             else
-                                                                                                if scratchValue12 then goto LAB_00d55cba_c28 end
+                                                                                                if scratchValue then goto LAB_00d55cba_c28 end
                                                                                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                                     me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                                     while me:IsPerformingScriptTask() do
@@ -1537,9 +1539,9 @@ function Main(quest, me)
                                                                                             questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                         end
                                                                                         if not quest:IsActiveThreadTerminating() then
-                                                                                            scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                            scratchValue = quest:IsActiveThreadTerminating()
                                                                                             if questionAnswer == 1 then
-                                                                                                if not scratchValue12 then
+                                                                                                if not scratchValue then
                                                                                                     quest:FadeScreenOut(0.5, 0.5)
                                                                                                     quest:Pause(1.0)
                                                                                                     quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
@@ -1547,7 +1549,7 @@ function Main(quest, me)
                                                                                                 end
                                                                                                 __region_LAB_00d555f3_c28(); goto LAB_00d55c2b_c28
                                                                                             end
-                                                                                            if not scratchValue12 then
+                                                                                            if not scratchValue then
                                                                                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                                     me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                                     while me:IsPerformingScriptTask() do
@@ -1705,18 +1707,18 @@ function Main(quest, me)
                     -- LAB_00d53a0b_c29: (native jump target)
                     resources:DestroyMovie(movie2)
                 else
-                    actorMap3 = resources:NewActorMap()
-                    resources:SetActor(actorMap3, "HERO", movie2)
-                    resources:SetActor(actorMap3, "TEACHER", resource2)
+                    actorMap11 = resources:NewActorMap()
+                    resources:SetActor(actorMap11, "HERO", movie2)
+                    resources:SetActor(actorMap11, "TEACHER", resource2)
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
-                    resources:RunMacro("CS_GUILD_PREMELEE_STICK", actorMap3, false, true)
+                    resources:RunMacro("CS_GUILD_PREMELEE_STICK", actorMap11, false, true)
                     quest:FixMovieSequenceCamera(false)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    resources:DestroyActorMap(actorMap3)
+                    resources:DestroyActorMap(actorMap11)
                     resources:DestroyMovie(movie2)
                     if quest:IsXbox() then
                         if not quest:IsActiveThreadTerminating() then
@@ -1767,7 +1769,7 @@ function Main(quest, me)
                                 if not quest:IsActiveThreadTerminating() then
                                     quest:RemoveQuestInfoElement(addQuestInfoCounter)
                                     quest:DisplayQuestInfo(false)
-                                    scratchValue110 = nil
+                                    scratchValue78 = nil
                                     movie = resources:StartMovie("")
                                     quest:StartMovieSequence()
                                     movie2 = resources:NewResource()
@@ -1789,19 +1791,19 @@ function Main(quest, me)
                                         -- TODO(native): CreateEffect is not a ForgeFSE binding
                                         quest:CreateEffect(thing, "SMASH_DUMMY_01", actorMap, "", 0.0, false, false)
                                         quest:FadeOutAndKillEntity(preMeleeDummy3, true, 1.0, true)
-                                        actorMap3 = resources:NewActorMap()
-                                        resources:SetActor(actorMap3, "HERO", movie2)
-                                        resources:SetActor(actorMap3, "TEACHER", resource2)
+                                        actorMap12 = resources:NewActorMap()
+                                        resources:SetActor(actorMap12, "HERO", movie2)
+                                        resources:SetActor(actorMap12, "TEACHER", resource2)
                                         quest:FixMovieSequenceCamera(true)
-                                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap3, false, false)
+                                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap12, false, false)
                                         quest:PauseAllNonScriptedEntities(true)
                                         quest:CreateExperienceOrb(1, actorMap)
                                         -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
                                         quest:EntitySetCutsceneBehaviour(nil, 2)
-                                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED", actorMap3, false, true)
+                                        resources:RunMacro("CS_GUILD_PREMELEE_PASSED", actorMap12, false, true)
                                         quest:FixMovieSequenceCamera(false)
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyActorMap(actorMap3)
+                                        resources:DestroyActorMap(actorMap12)
                                         resources:DestroyMovie(movie2)
                                         resources:DestroyMovie(movie)
                                         if quest:IsXbox() then
@@ -1814,7 +1816,7 @@ function Main(quest, me)
                                                     -- LAB_00d5439e_c29: (native jump target)
                                                     timerId2 = quest:RegisterTimer()
                                                     quest:SetTimer(timerId2, 10)
-                                                    while scratchValue110 ~= nil and scratchValue110:IsAlive() do
+                                                    while scratchValue78 ~= nil and scratchValue78:IsAlive() do
                                                         if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c29 end
                                                         if quest:GetTimer(timerId2) < 1 then
                                                             addNewConversation = quest:AddNewConversation(me, false, false)
@@ -1887,14 +1889,14 @@ function Main(quest, me)
                                                                                                 -- LAB_00d55c91_c29: (native jump target)
                                                                                                 goto LAB_00d55c2b_c29
                                                                                             end
-                                                                                            actorMap3 = resources:NewActorMap()
-                                                                                            resources:SetActor(actorMap3, "HERO", resource)
-                                                                                            resources:SetActor(actorMap3, "GUARD", resource2)
+                                                                                            actorMap13 = resources:NewActorMap()
+                                                                                            resources:SetActor(actorMap13, "HERO", resource)
+                                                                                            resources:SetActor(actorMap13, "GUARD", resource2)
                                                                                             resources:StartMovie("")
                                                                                             quest:StartMovieSequence()
                                                                                             quest:PauseAllNonScriptedEntities(true)
                                                                                             quest:FixMovieSequenceCamera(true)
-                                                                                            resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap3, false, true)
+                                                                                            resources:RunMacro("CS_GUILD_MELEE_WOODSWON", actorMap13, false, true)
                                                                                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PREMELEE_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                                                                             questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                             while questionAnswer < 0 do
@@ -1906,12 +1908,12 @@ function Main(quest, me)
                                                                                                 -- LAB_00d55c72_c29: (native jump target)
                                                                                                 quest:PauseAllNonScriptedEntities(false)
                                                                                                 -- LAB_00d55c7f_c29: (native jump target)
-                                                                                                resources:DestroyActorMap(actorMap3)
+                                                                                                resources:DestroyActorMap(actorMap13)
                                                                                                 -- TODO(native): goto LAB_00d55c91_c29
                                                                                             end
-                                                                                            scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                            scratchValue = quest:IsActiveThreadTerminating()
                                                                                             if questionAnswer == 1 then
-                                                                                                if scratchValue12 then
+                                                                                                if scratchValue then
                                                                                                     quest:PauseAllNonScriptedEntities(false)
                                                                                                     -- TODO(native): goto LAB_00d55c7f_c29
                                                                                                 end
@@ -1919,7 +1921,7 @@ function Main(quest, me)
                                                                                                 quest:Pause(1.0)
                                                                                                 quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                             else
-                                                                                                if scratchValue12 then return end  -- TODO(native): goto LAB_00d55c72_c29
+                                                                                                if scratchValue then return end  -- TODO(native): goto LAB_00d55c72_c29
                                                                                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                                     me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                                     while me:IsPerformingScriptTask() do
@@ -1932,16 +1934,16 @@ function Main(quest, me)
                                                                                             end
                                                                                             quest:FixMovieSequenceCamera(false)
                                                                                             quest:PauseAllNonScriptedEntities(false)
-                                                                                            resources:DestroyActorMap(actorMap3)
+                                                                                            resources:DestroyActorMap(actorMap13)
                                                                                         else
                                                                                             if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then
                                                                                                 -- LAB_00d54f9c_c29: (native jump target)
-                                                                                                scratchValue12 = false
+                                                                                                scratchValue = false
                                                                                             else
                                                                                                 if not quest:IsQuestActive("Q_GuildTrainingWoodsMelee") then return end  -- TODO(native): goto LAB_00d54f9c_c29
-                                                                                                scratchValue12 = true
+                                                                                                scratchValue = true
                                                                                             end
-                                                                                            if scratchValue12 then
+                                                                                            if scratchValue then
                                                                                                 if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
                                                                                                 while quest:IsQuestActive("Q_GuildTrainingWoodsMelee") do
                                                                                                     if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c29 end
@@ -1961,9 +1963,9 @@ function Main(quest, me)
                                                                                                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                     end
                                                                                                     if not quest:IsActiveThreadTerminating() then
-                                                                                                        scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                                        scratchValue = quest:IsActiveThreadTerminating()
                                                                                                         if questionAnswer == 1 then
-                                                                                                            if scratchValue12 then
+                                                                                                            if scratchValue then
                                                                                                                 __region_LAB_00d55c9f_c29()
                                                                                                                 goto LAB_00d55c2b_c29
                                                                                                             end
@@ -1971,7 +1973,7 @@ function Main(quest, me)
                                                                                                             quest:Pause(1.0)
                                                                                                             quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
                                                                                                         else
-                                                                                                            if scratchValue12 then goto LAB_00d55cba_c29 end
+                                                                                                            if scratchValue then goto LAB_00d55cba_c29 end
                                                                                                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                                                 me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                                                 while me:IsPerformingScriptTask() do
@@ -2019,9 +2021,9 @@ function Main(quest, me)
                                                                                                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                                                                                                     end
                                                                                                     if not quest:IsActiveThreadTerminating() then
-                                                                                                        scratchValue12 = quest:IsActiveThreadTerminating()
+                                                                                                        scratchValue = quest:IsActiveThreadTerminating()
                                                                                                         if questionAnswer == 1 then
-                                                                                                            if not scratchValue12 then
+                                                                                                            if not scratchValue then
                                                                                                                 quest:FadeScreenOut(0.5, 0.5)
                                                                                                                 quest:Pause(1.0)
                                                                                                                 quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_1_comp.xmv")
@@ -2029,7 +2031,7 @@ function Main(quest, me)
                                                                                                             end
                                                                                                             __region_LAB_00d555f3_c29(); goto LAB_00d55c2b_c29
                                                                                                         end
-                                                                                                        if not scratchValue12 then
+                                                                                                        if not scratchValue then
                                                                                                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
                                                                                                                 me:Speak(hero, "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO", GROUP_SELECT_FIRST, false, true, resource ~= 0)
                                                                                                                 while me:IsPerformingScriptTask() do

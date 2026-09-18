@@ -11,7 +11,7 @@ function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, ctr_84, ctr_88, scratchValue2, scratchValue3, conversationId, scratchValue6
-    local willWhisper, scratchValue8, resource, willBandit
+    local scratchValue7, willWhisper, scratchValue9, resource, resource2, willBandit
     scratchValue2 = 0
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -37,29 +37,29 @@ function Main(quest)
     willBandit = quest:GetAllThingsWithScriptName("WillBandit")
     -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);
     -- TODO(native): CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)&xStack_2c,iVar8 / 0xc,iVar5);
-    resources:ReleaseResource(xStack_10)
-    scratchValue8 = 0
+    resources:ReleaseResource(resource)
+    scratchValue9 = 0
     if #willBandit ~= 0 then
         ctr_84 = 0
         repeat
             resources:TryAcquire(0 + scratchValue2, willBandit[ctr_84 + 1], 4)
             ctr_84 = ctr_84 + 1
-            scratchValue8 = scratchValue8 + 1
+            scratchValue9 = scratchValue9 + 1
             scratchValue2 = scratchValue2 + 16
-        until scratchValue8 >= #willBandit
+        until scratchValue9 >= #willBandit
     end
     scratchValue3 = 0
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, hero, 4) do
+    resource2 = resources:NewResource()
+    while not resources:TryAcquire(resource2, hero, 4) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource2)
             -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
             goto FLOW_after_lab_00d67db1
         end
     end
     if quest:IsActiveThreadTerminating() then
-        resources:ReleaseResource(resource)
+        resources:ReleaseResource(resource2)
         -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
     else
         -- TODO(native): resources:SetActor(xStack_38, "BAN1", &0x0)
@@ -70,7 +70,7 @@ function Main(quest)
         quest:StartCutscene({HERO = hero, WHISPER = willWhisper}, {}, true)
         quest:RunCutscene("CS_GUILD_WILL_WOODS_INTRO", true, false)
         quest:EndCutscene()
-        resources:ReleaseResource(resource)
+        resources:ReleaseResource(resource2)
         -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
         ctr_88 = 0
         if #willBandit ~= 0 then
@@ -90,7 +90,7 @@ function Main(quest)
             while not quest:IsLevelLoaded("GuildWoods") do
                 if not quest:NewScriptFrame() then goto LAB_00d685cc end
             end
-            while willBandit ~= puStack_78 do
+            while willBandit ~= scratchValue7 do
                 -- TODO(native): puStack_78 = puStack_78 - 3;
             end
             willBandit = quest:GetAllThingsWithScriptName("WillBandit")

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, r5, timerId, uVar10, xStack_38, xStack_78, xStack_8c, x_stk_68, x_stk_8, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, r5, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_68, x_stk_8, x_stk_c
     local alive = true
     local function __region_LAB_00d4e853_c2()
         quest:PauseAllNonScriptedEntities(false)

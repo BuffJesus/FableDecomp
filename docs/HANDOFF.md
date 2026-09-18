@@ -17,6 +17,34 @@ restructuring project, sized by `tools/script_recovery/report_goto_residue.py`. 
 `test_live_father_intro.py`, `test_watch_barrels_readable.py`) -- ~26 min, 1566 passed / 0 failed as of this
 commit -- and never rebuild a unit while it runs.
 
+# CURRENT (night 7, fifth pass, 2026-09-18): the free globals are gone; smoke Guild 11 -> 1, TraderConflict 11 -> 8
+
+The lifter builds a function's `local` line from the slots it *assigns*. A slot the decompiler only ever read --
+a value Ghidra lost, a residue name an earlier fold left behind -- was missing from that line, so at runtime it
+resolved to a **global**: nil on read (harmlessly the same value), but a write escapes the function and is
+visible to every other script sharing the Lua state. `smoke_run_unit` has reported these as `FREE GLOBALS` all
+along; 10 of Guild's 11 smoke problems and 2 of TraderConflict's were exactly that.
+
+`declare_free_locals.py` adds them to the function's own `local` line, running in `convert_quest_unit` right
+after the cleanup-region hoist and recorded as `declaredFreeLocals` in CONVERSION_REPORT.json. It only declares
+names that *look* like a lifted temporary (`xStack_7c`, `ctr_40`, `this_00`, `pPos`, `fret_0`, `scratchValue9`);
+`this`, `unaff_EBP` and `__unknown_push` are deliberately left free, because each is a decompiler or lifter gap
+and declaring it would hide the evidence behind a silent nil. Free globals across the three units: **26 -> 4**,
+and the four that remain are those gaps.
+
+`build_readable_unit` now prints `shippedAsDraft` in its summary, so the fallback that hid PreMeleeWhisper (see
+the pass below) cannot hide anything again without it being on screen.
+
+Smoke: Orchard 0, **Guild 11 -> 1**, **TraderConflict 11 -> 8**. What is left is honest:
+* Guild's one is `CheckFriendlyAttacks: attempt to perform arithmetic on a table value` -- the known slot
+  collision (`xStack_90` is a string temp, a thing result *and* a vector end pointer in one register), which
+  needs the lifter to split the slot, not a readable-stage fold.
+* TraderConflict's eight are two free-global files (the gaps above) and six `unknown=StateListSet` /
+  `GetStateListCopy` / `EntitySetAsOpinionSource` -- sidecar bindings the DLL has not been rebuilt with
+  (FSE_UPSTREAM_REQUIREMENTS.md).
+
+Gates: Oakvale draft gate identical, unit file syntax 100%, new `test_declare_free_locals.py`.
+
 # CURRENT (night 7, fourth pass, 2026-09-18): the consuming API names the value, and it knows when not to
 
 `USE_ROLES` grew from 9 rules to 16 and each entry now carries a **kind**, plus two rules that read the name out

@@ -19,7 +19,7 @@ function Main(quest, me)
     local predicateResult, predicateResult17, ctr_90, conversationId, questionAnswer
     local questionAnswer2, currentBirdsKilled, conversationId2, conversationId3, conversationId4
     local conversationId5, conversationId6, conversationId7, conversationId8, conversationId9
-    local timerId, scratchValue, resource, resource6, movie, resource7, x_stk_68_1
+    local timerId, scratchValue, resource, resource6, movie, movie3, resource7, birdMarker
     local function __region_LAB_00d4e853_c2()
         quest:EndCutscene()
         resources:DestroyMovie(movie)
@@ -45,15 +45,15 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(me)
     if birdMode == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef90 end
-        x_stk_68_1 = quest:GetAllThingsWithScriptName("BirdMarker")
-        if #x_stk_68_1 ~= 0 then
+        birdMarker = quest:GetAllThingsWithScriptName("BirdMarker")
+        if #birdMarker ~= 0 then
             ctr_90 = 0
             repeat
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource7); return end
-                quest:SetThingPersistent(quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", x_stk_68_1[ctr_90 / 12 + 1]:GetPos(), "KillBird"), true)
+                quest:SetThingPersistent(quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", birdMarker[ctr_90 / 12 + 1]:GetPos(), "KillBird"), true)
                 ctr_90 = ctr_90 + 12
                 scratchValue = scratchValue + 1
-            until scratchValue >= #x_stk_68_1
+            until scratchValue >= #birdMarker
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource7); return end
         quest:SetStateInt("CurrentBirdsKilled", 0)
@@ -77,7 +77,6 @@ function Main(quest, me)
                 if not haveChatted then
                     if not quest:IsActiveThreadTerminating() then
                         haveChatted = true
-                        conversationId = 0.0
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource7)) then
                             me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_GREET", GROUP_SELECT_FIRST, false, true, false)
                             while me:IsPerformingScriptTask() do
@@ -149,7 +148,7 @@ function Main(quest, me)
                         end
                         ::LAB_00d4e9e1_c2::
                         quest:EndCutscene()
-                        resources:DestroyMovie(xStack_7c)
+                        resources:DestroyMovie(movie3)
                         goto FLOW_after_lab_00d4e5e3
                     end
                     ::LAB_00d4e978::
@@ -224,7 +223,7 @@ function Main(quest, me)
                     end
                     ::LAB_00d4e9e1::
                     quest:EndCutscene()
-                    resources:DestroyMovie(xStack_7c)
+                    resources:DestroyMovie(movie3)
                 end
                 ::FLOW_after_lab_00d4e5e3::
             end

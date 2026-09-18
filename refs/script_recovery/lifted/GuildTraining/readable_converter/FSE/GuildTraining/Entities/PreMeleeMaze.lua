@@ -17,8 +17,8 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local isDistanceBetweenThingsOver, predicateResult, predicateResult5, predicateResult6
-    local msgIsHitByHero, predicateResult13, fret_0, fret_00, p0, preMeleeMazeTargetMarker, movie
-    local movie2, movie3, resource
+    local msgIsHitByHero, predicateResult13, fret_0, fret_00, p0, preMeleeMazeTargetMarker, this_00
+    local movie, movie2, movie3, resource
     predicateResult13 = false
     predicateResult = false
     quest:EntitySetAsKillable(me, false, true)

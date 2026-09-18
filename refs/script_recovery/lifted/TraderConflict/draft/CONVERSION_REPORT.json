@@ -1408,6 +1408,18 @@
           ]
         }
       },
+      "declaredFreeLocals": {
+        "FSE/TraderConflictEvil/Entities/TC_GuardSpawnPoint.lua": {
+          "Main": [
+            "pThing"
+          ]
+        },
+        "FSE/TraderConflictEvil/Entities/TC_BanditFighter.lua": {
+          "Main": [
+            "CVar6_b0"
+          ]
+        }
+      },
       "summary": {
         "owners": 6,
         "functions": 25,
@@ -3516,6 +3528,21 @@
           ],
           "LAB_00dfdd34": [
             "quest:DeregisterTimer(xStack_3c)"
+          ]
+        }
+      },
+      "declaredFreeLocals": {
+        "FSE/TraderConflictGood/Entities/TraderToRescue.lua": {
+          "Main": [
+            "xStack_110",
+            "xStack_114",
+            "xStack_14c_2",
+            "x_stk_170"
+          ]
+        },
+        "FSE/TraderConflictGood/Entities/BanditExtra.lua": {
+          "Main": [
+            "xStack_8"
           ]
         }
       },

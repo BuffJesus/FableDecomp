@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, piVar12, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_254, xStack_258, xStack_260, xStack_ac, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_18, x_stk_214, x_stk_24, x_stk_30, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_c
+    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, piVar12, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar16, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_254, xStack_258, xStack_260, xStack_ac, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_18, x_stk_214, x_stk_24, x_stk_30, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_c
     local alive = true
     xStack_254 = resources:NewResource()
     bVar3 = false

@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar2, iVar4, iVar6, iVar7, native_arg_sequence_1, pCVar3, pCVar5, pOther, pScriptName, r1, xStack_1c
+    local bVar2, iVar4, iVar6, iVar7, native_arg_sequence_1, pCVar3, pCVar5, pOther, pScriptName, pThing, r1, xStack_1c
     local alive = true
     local cVar1 = quest:GetStateBool("QuestStartScreened")
     while not cVar1 do

@@ -408,7 +408,10 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
                 for key, value in fn[stage].items():
                     metrics.setdefault(stage, {})[key] = metrics.setdefault(stage, {}).get(key, 0) + value
     report['styleMetrics'] = metrics
+    # a file whose passes raised shipped as the raw draft: that is a silent loss of the whole readable stage
+    # for it, so it belongs in the summary, not only in files[rel].error
     summary = {'files': len(sources), 'syntaxOk': report['syntax']['ok'],
+               'shippedAsDraft': {rel: f['error'] for rel, f in report['files'].items() if f.get('error')},
                'errors': [e['path'] for e in report['syntax'].get('errors', [])],
                'rewrites': sum(v for f in report['files'].values() for fn in f['functions'] for v in fn['rewrites'].values()),
                'renamedLocals': sum(len(m['locals']) for f in report['files'].values() for m in f['locals']),
