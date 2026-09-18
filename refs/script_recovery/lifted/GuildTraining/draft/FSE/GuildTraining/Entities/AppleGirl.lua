@@ -42,7 +42,7 @@ function Main(quest, me)
     __native_entity_state:SetStateInt("AppleMode", 0)
     iVar4 = quest:RegisterTimer()
     xStack_88 = iVar4
-    quest:SetTimer(iVar4, 0xf)
+    quest:SetTimer(xStack_88, 0xf)
     __native_entity_state:SetStateInt("CurrentApples", 0)
     __native_entity_state:SetStateBool("ChildAppleMode", false)
     quest:SetThingHasInformation(me, false, true, false)
@@ -57,7 +57,7 @@ function Main(quest, me)
         bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar13)
         __native_condition_1 = bVar2
         if __native_condition_1 then
-            iVar7 = quest:GetTimer(iVar4)
+            iVar7 = quest:GetTimer(xStack_88)
             __native_condition_1 = iVar7 < 1
         end
         if __native_condition_1 then

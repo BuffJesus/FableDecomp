@@ -1,5 +1,16 @@
 # CURRENT (night 6, 2026-09-17): TraderConflict unit through the pipeline (15/15 compile, todo 431 -> 176)
 
+**Latest (same night, later)** — Aeon zip rebuilt (`work/AeonShare-2026-09-17.zip`: NewOakValeIntro + Orchard + Guild +
+TraderConflict, findings README). Readable output now writes entity control as Aeon does (`if not me:AcquireControl(4) then
+return end` / `me:ReleaseControl()`; `fold_control_acquires`, DLL semantics verified in LuaEntityAPI::AcquireControl), Orchard
+`DoMultiplierCutscene` folds to `StartCutscene` (object aliases hoisted below the inlined construction; no-op comma
+assignments dropped; flag-clear + retest folded: `if quest:IsRegionLoaded("GreatwoodLake") and heroTeam == 0 then`). **Real bug
+fixed**: AppleGirl read `GetTimer(conversationId)` from the 2nd loop iteration (Ghidra merged the reloaded timer register
+with the conversation id) — timer calls now go through the stack copy. Smoke: Orchard 0, TraderConflict 12 notices (unknown
+sidecar bindings StateListSet/GetStateListCopy — DLL not rebuilt — plus free globals in TraderToRescue), Guild 11. Gate
+identical; fast tests 97 green. Next: same rename-by-role for temps with several roles (`scratchValue`, needs a live-range
+split), `quest:Log` breadcrumbs, TheRealGuildmaster (Ghidra spilled the resource pointer as bytes), v5 rebuild + in-game run.
+
 **Later the same night — dropped operands recovered from the machine code** (`recover_dropped_operands` in
 `convert_quest_unit.py`): calls the decompiler printed with no operands (TraderToRescue's whole Main) are rebuilt from a
 linear capstone decode — immediates / .rdata literals, `lea esp` slots (entry-relative via the site depth), call results

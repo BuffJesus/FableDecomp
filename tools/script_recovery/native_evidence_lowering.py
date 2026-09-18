@@ -1047,9 +1047,13 @@ def lower_after_annotate(text, thing_slots=None):
         # the register holding the id is reused for the (meaningless) DeregisterTimer result and later values
         # (`iVar4 = GSI->DeregisterTimer(iVar4)`); a stack copy made right after registration is the stable id
         copy = re.search(r'^[ \t]*' + re.escape(timers[0]) + r' = (?:\(\w+\))?GSI->RegisterTimer\(\);[ \t]*\r?\n[ \t]*(\w+) = ' + re.escape(timers[0]) + r';', text, re.M)
-        if copy and len(re.findall(r'^[ 	]*' + re.escape(copy.group(1)) + r' = ', text, re.M)) == 1:   # (a slot reused for other values is no stable id)
+        if copy and len(re.findall(r'^[ \t]*' + re.escape(copy.group(1)) + r' = ', text, re.M)) == 1:   # (a slot reused for other values is no stable id)
             text = re.sub(r'^([ \t]*)(?:' + re.escape(timers[0]) + r' = )?GSI->DeregisterTimer\((?:' + re.escape(timers[0]) + '|' + re.escape(copy.group(1)) + r')\);',
                           lambda m: f'{m.group(1)}GSI->DeregisterTimer({copy.group(1)});', text, flags=re.M)
+            # every other timer call through the register reads the id the compiler reloads from that slot at
+            # the loop head (AppleGirl: `mov ebx, [esp+0x10]` before GetTimer, which Ghidra folded into the
+            # register name it also gave the conversation id)
+            text = re.sub(r'GSI->(\w*Timer\w*)\(' + re.escape(timers[0]) + r'(?=[,)])', lambda m: f'GSI->{m.group(1)}({copy.group(1)}', text)
     # the same for every create/destroy pair: a destroy operand that is never assigned in the function
     # (a drifted slot name) when the function creates exactly one object of that kind
     for creator, destroyer in (('GSI->RegisterTimer', 'GSI->DeregisterTimer'), ('RESOURCE_StartMovie', 'RESOURCE_DestroyMovie'),

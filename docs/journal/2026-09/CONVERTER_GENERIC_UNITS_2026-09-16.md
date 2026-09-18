@@ -403,3 +403,31 @@ Aeon read the share zip's `readable_converter` output as "a Lua version of the d
 - Still open vs Aeon's style: named constants for `ReadGlobalGameDataFloat(offset)` (needs a GGD offset -> main.def
   field table — not on disk), `quest:Log` breadcrumbs, local helper functions for repeated blocks, `or 0` defaults on
   state reads, `x and not x:IsNull()` guards spelled `if x then`.
+
+## Night 6, later: entity control as Aeon writes it, alias hoisting, a timer bug (2026-09-17)
+
+- Aeon share zip rebuilt with TraderConflict + the night's findings (`build_aeon_share_zip.py`, `work/AeonShare-2026-09-17.zip`, 220 files).
+- `fold_control_acquires` (readable_style): `R = resources:NewResource(); while not resources:TryAcquire(R, T, P) do if not
+  NewScriptFrame() then ... end end` -> `if not T:AcquireControl(P) then ... end`; `ReleaseResource(R)` -> `T:ReleaseControl()`;
+  `resources:ScriptThing(R)` -> `T`. LuaEntityAPI::AcquireControl runs exactly that retry loop (returns false on termination,
+  nested / repeated acquires saturate — the v10/v11 findings). A resource folds only when every acquisition names one thing
+  and nothing else reads it (a cutscene actor stays with fold_cutscenes). `hero:AcquireControl(4)` is valid (the method is on
+  CScriptThing). Guild 108 faithful `TryAcquire` lines remain, nearly all in TheRealGuildmaster (Ghidra spilled the resource
+  pointer as bytes: `SUB(resource,0)`, `resource >> 16`).
+- Lowering: `hoist_object_aliases` — Ghidra hoists a call's register set-up above the inlined construction
+  (`pScriptObject = local_10; ePriority = 4; local_10[0] = &PTR_vtable`); once the vtable store is `local_10 = NewResource()`
+  the alias read the object before it existed and the lifter dropped the line, leaving `TryAcquire(pScriptObject, …)` with an
+  undefined name (Orchard DoMultiplierCutscene — the cutscene could not fold). `drop_noop_comma_assignments`:
+  `if ((!bVar4) || (bVar4 = true, COND))` — the comma assignment only runs when the flag already holds that value; dropping
+  it turns the argument-sequence into a plain condition. `RE_VCALL_HEAD_ANY` also pairs `(*(code *)(*(int **)(x + 0xc))[1])()`
+  heads (DoMultiplierCutscene had 17 printed vs 18 exported sites, so `_text_order_sites` bailed for the whole function).
+- Readable: `fold_flag_clears` (`if not X or C then X = false end; if X then` -> `if X and not C then`, De Morgan over
+  or-chains); a lone `FixMovieSequenceCamera(false)` before a tutorial (entities still paused) is no longer an EndCutscene;
+  `EndCutscene` chains through labels merge (idempotent in the DLL).
+- **Real bug**: AppleGirl's timer. Ghidra gave one register name to the timer id (ebx, reloaded from `[esp+0x10]` at the
+  loop head) and the conversation id; the draft read `GetTimer(conversationId)` from the second iteration on. The lowering
+  now routes every `*Timer(reg)` call through the stack copy made right after RegisterTimer (the DeregisterTimer rule,
+  generalised) — readable AppleGirl now says `timerId` / `conversationId`. Worth checking for the same shape in Oakvale's
+  entities (the gate is identical, so Oakvale never had the register form).
+- Test repointed: `test_binding_correspondence_changes_fail_closed` perturbed `pCVar2 = 0x0`, which the regenerated Oakvale
+  draft no longer contains (the 16th binding lifts); it now perturbs the deactivation operand.
