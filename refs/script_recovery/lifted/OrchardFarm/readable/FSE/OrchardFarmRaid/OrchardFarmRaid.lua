@@ -20,13 +20,13 @@ function Main(quest)
     quest:AddEntityBinding("M_WhisperFarmRaidIntro", "OrchardFarmRaid/Entities/M_WhisperFarmRaidIntro")
     quest:AddEntityBinding("MK_OFI_GWLL_WHIS2", "OrchardFarmRaid/Entities/MK_OFI_GWLL_WHIS2")
     quest:FinalizeEntityBindings()
-    local scratchValue
+    local isRegionLoaded
     if not quest:IsQuestActive("Q_OrchardFarm_Barricade") then
         quest:ActivateQuest("Q_OrchardFarm_Barricade")
     end
-    scratchValue = quest:IsRegionLoaded("OrchardFarm")
+    isRegionLoaded = quest:IsRegionLoaded("OrchardFarm")
     while true do
-        if scratchValue then
+        if isRegionLoaded then
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateThing("Teams_1_CrateDropPos", quest:GetThingWithScriptName("BanditTeamCrateDrop"))
             quest:SetStateThing("Teams_0_CrateDropPos", quest:GetThingWithScriptName("GuardTeamCrateDrop"))
@@ -40,7 +40,7 @@ function Main(quest)
             return
         end
         if not quest:NewScriptFrame() then break end
-        scratchValue = quest:IsRegionLoaded("OrchardFarm")
+        isRegionLoaded = quest:IsRegionLoaded("OrchardFarm")
     end
 end
 
@@ -296,23 +296,23 @@ function DoCutsceneIfRequired(quest)
     local resources = quest:RetailResources()
     local guardTeamMember, resource, resource4, resource5, movie, movie2, resource6, resource7
     local actorMap, banditTeamMember, actorMap2
-    local scratchValue
+    local thing
     if heroTeam == 1 then
         if quest:IsActiveThreadTerminating() then return end
-        scratchValue = quest:GetThingWithScriptName("BanditTeamSpawn")
+        thing = quest:GetThingWithScriptName("BanditTeamSpawn")
     else
         if quest:IsActiveThreadTerminating() then return end
-        scratchValue = quest:GetThingWithScriptName("GuardTeamSpawn")
+        thing = quest:GetThingWithScriptName("GuardTeamSpawn")
     end
     repeat
         if quest:IsActiveThreadTerminating() then return end
         while not quest:IsRegionLoaded("OrchardFarm") do
             if not quest:NewScriptFrame() then return end
         end
-        if quest:IsDistanceBetweenThingsUnder(scratchValue, hero, 10.0) then
+        if quest:IsDistanceBetweenThingsUnder(thing, hero, 10.0) then
             if heroTeam == 1 then
                 banditTeamMember = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                guardTeamMember = quest:GetNearestWithScriptName(scratchValue, "GuardTeamMember")
+                guardTeamMember = quest:GetNearestWithScriptName(thing, "GuardTeamMember")
                 resource6 = resources:NewResource()
                 resource5 = resources:NewResource()
                 resource4 = resources:NewResource()

@@ -28,8 +28,8 @@ function Main(quest, me)
             return
         end
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); return end
-        local scratchValue = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
-        if not scratchValue then
+        local isPlayerCarryingItemOfType = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
+        if not isPlayerCarryingItemOfType then
             quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", hero, hero, false)
             quest:SetTimer(timerId, 8)
         end

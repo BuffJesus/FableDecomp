@@ -10,8 +10,8 @@ local willWoodsChatDone, waitingForFight
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult4, predicateResult, predicateResult33, movie, position
-    local meleeApprenticeMarker, movie2, movie3, movie4, movie5, movie6, resource
+    local isDistanceBetweenThingsOver, predicateResult4, predicateResult, predicateResult33, movie
+    local position, meleeApprenticeMarker, movie2, movie3, movie4, movie5, movie6, resource
     local function __cleanup_LAB_00d419fe()
         local movie = movie6
         resources:DestroyMovie(movie)
@@ -248,8 +248,8 @@ function Main(quest, me)
                 end
                 me:MoveToPosition(position, 3.0, 1, false, true)
             end
-            scratchValue = quest:IsDistanceBetweenThingsOver(me, meleeApprenticeMarker, 4.0) and not me:IsPerformingScriptTask()
-            if scratchValue then
+            isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, meleeApprenticeMarker, 4.0) and not me:IsPerformingScriptTask()
+            if isDistanceBetweenThingsOver then
                 if quest:IsActiveThreadTerminating() then
                     -- LAB_00d41a07: (native jump target)
                     resources:ReleaseResource(resource)

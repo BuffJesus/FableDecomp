@@ -1,3 +1,34 @@
+# CURRENT (night 7 continued, 2026-09-18): `scratchValue` down by a third
+
+Three naming changes, all generic, on top of the byte-split work below.
+
+1. **The split budget goes to the widest splits first.** Lua 5.4 allows 200 locals, so `split_hoisted_locals`
+   reserves 180 and stops; it used to spend the budget in declaration order. A register Ghidra reused 44 ways is
+   exactly the one that reads as noise unsplit, and each version earns its own role name. Measured on
+   GuildTraining: widest-first **2467 semantic / 705 scratch** names, declaration order 2324 / 770, and
+   narrowest-first (the idea in last night's handoff) is much worse at 1927 / 786 -- the cheap splits are cheap
+   because they were nearly clean already.
+2. **The role renamer runs a second time, on the styled text.** The style folds drop assignments, so a slot the
+   first pass could only call `scratchValue` (five disagreeing assignments) often has one survivor afterwards.
+   `scratchValue\d*` is in `build_readable_unit`'s `GENERATED` patch so the second pass can pick those up, and
+   the fallback now refuses to renumber its own names (no more `scratchValue` -> `scratchValue3` churn).
+3. **`use_role`: the API that consumes a value names it** when its assignments say nothing --
+   `DeregisterTimer/SetTimer/GetTimer` -> `timerId`, `AddPersonToConversation/AddLineToConversation` ->
+   `conversationId`, `SetActor/RunMacro/DestroyActorMap` -> `actorMap`, `DestroyMovie` -> `movie`,
+   `RemoveQuestInfoElement` -> `infoElement`, `ReleaseResource` -> `resource`, and
+   `TryAcquire(X, <thing>, ..)` -> `<thing>Control`. Consulted only where the fallback would be `scratchValue`,
+   so it never renames something already named.
+
+`scratchValue` occurrences in the emitted `.lua` (the honest metric -- grep the report JSON too and the number
+doubles): **Guild 1327 -> 934, TraderConflict 644 -> 534, Orchard 54 -> 37.**
+
+Gates: Oakvale draft gate identical, Oakvale readable identical, smoke Orchard 0 / Guild 11 / TraderConflict 11,
+no control bytes in `tools/script_recovery/*.py`.
+
+**Next on naming**: what is left is mostly a temporary whose only assignment is a number (121 across Guild +
+TraderConflict), `ctr_NN` / `x_stk_NN` slot names that survive styling, and `scratchValueN | 1` bit-flag
+arithmetic. The use-side rule is the lever that worked -- extend `USE_ROLES`, not the RHS table.
+
 # CURRENT (night 7, 2026-09-18): the byte-split acquires fold, and the local splitter runs inside the big functions
 
 **TheRealGuildmaster's `TryAcquire(0, hero, 4)` is gone** (last night's first item). Three generic converter fixes:
@@ -155,7 +186,7 @@ post-lift residue guard (any line still carrying C syntax becomes `-- TODO(nativ
 `refs/script_recovery/lifted/GuildTraining/readable_converter/` (20648 -> 12740 lines; the old `readable/` dir is the
 hand-reviewed six-slice artifact the `test_guild_*` tests read — the builder refuses to overwrite it). Smoke
 (`smoke_run_unit.py --unit guild_training --stage draft|readable_converter`): **13 / 13 problems** (was 35), todo 791 (202 non-structural).
-Fixed the same evening: ST0 results bound to the real float call (`fret_N` gone), `''` char literals, AssignFromWide
+Fixed the same evening: ST0 results bound to the real float call (`fret_N` gone), `'\1'` char literals, AssignFromWide
 on stack strings (L"" too), DAT bool/float constants, GFCharStringToInt -> tonumber, by-value GetAllThings vectors +
 `_bv` element casts + end-pointer slot under its own name, drifted destroy operands -> the single created object, stack
 copies of a reused register are stores, GSI-pointer byte stores of by-value things dropped. Remaining 13 are slot

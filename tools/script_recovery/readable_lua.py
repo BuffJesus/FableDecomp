@@ -111,6 +111,38 @@ def assignment_role(expression):
     return None
 
 
+# When nothing about a temporary's assignments says what it is, the API that consumes it does: a value passed
+# to `DeregisterTimer` is a timer id, one passed to `AddPersonToConversation` a conversation id. Each entry is
+# (call pattern with `NAME` for the temporary, role); the first match in the function body wins.
+USE_ROLES = (
+    (r'resources:TryAcquire\(\s*NAME\s*,\s*(?P<of>\w+)\s*,', None),          # `<thing>Control`
+    (r'resources:ReleaseResource\(\s*NAME\s*\)', 'resource'),
+    (r'resources:(?:DestroyMovie|StopMovie)\(\s*NAME\s*\)', 'movie'),
+    (r'resources:(?:SetActor|SetString)\(\s*NAME\s*,', 'actorMap'),
+    (r'resources:(?:DestroyActorMap|RunMacro)\(\s*NAME\s*,?', 'actorMap'),
+    (r'quest:(?:DeregisterTimer|SetTimer|GetTimer)\(\s*NAME\b', 'timerId'),
+    (r'quest:(?:AddPersonToConversation|AddLineToConversation|EndConversation|IsConversationActive)\(\s*NAME\b', 'conversationId'),
+    (r'quest:(?:RemoveQuestInfoElement|SetQuestInfoElementActive)\(\s*NAME\b', 'infoElement'),
+    (r'quest:EntityAttachToScript\(\s*NAME\s*,', 'entity'),
+)
+
+
+def use_role(name, code):
+    """The role of a value whose assignments say nothing, taken from the API that consumes it."""
+    token = r'\b' + re.escape(name) + r'\b'
+    for pattern, role in USE_ROLES:
+        match = re.search(pattern.replace('NAME', token), code)
+        if match is None:
+            continue
+        if role is not None:
+            return role
+        of = match.group('of')
+        if GENERATED.fullmatch(of) or of.startswith('scratchValue'):
+            return None
+        return camel(of) + 'Control'
+    return None
+
+
 def rename_labels(source, names):
     """Rename only label definitions/references; preserve all other Lua tokens."""
     stream = tokens(source)
@@ -203,6 +235,12 @@ def readable_function(source):
                                 'GetNearestWithScriptName': 'nearest', 'GetFurthestWithScriptName': 'furthest'}.get(method, camel(method)), 'one method, several names'
             else:
                 base, reason = 'scratchValue', 'reused or unresolved native temporary'
+        if base == 'scratchValue':
+            consumed = use_role(name, code)
+            if consumed is not None:
+                base, reason = consumed, 'named by the API that consumes it'
+        if base == 'scratchValue' and re.fullmatch(r'scratchValue\d*', name):
+            continue        # a second pass over already-named text: the fallback never renumbers its own names
         chosen, suffix = base, 2
         while chosen in occupied:
             chosen, suffix = base + str(suffix), suffix + 1

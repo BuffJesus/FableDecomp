@@ -243,16 +243,16 @@ end
 
 -- CrateTeamMember.GetNearestCrateToMe (retail 0x00dcedf0)
 function GetNearestCrateToMe(quest, me)
-    local scratchValue, scratchValue2, scratchValue3, scratchValue4, x_stk_c_1
+    local getDistanceBetweenThings, scratchValue2, scratchValue3, scratchValue4, x_stk_c_1
     scratchValue4 = 10000000.0
     x_stk_c_1 = nil
     scratchValue3 = 0
     if quest:GetStateListCount("CrateList") ~= 0 then
         scratchValue2 = 0
         repeat
-            scratchValue = quest:GetDistanceBetweenThings(me, quest:GetStateListAt("CrateList", scratchValue2)) ^ 2
-            if scratchValue < scratchValue4 then
-                scratchValue4 = scratchValue
+            getDistanceBetweenThings = quest:GetDistanceBetweenThings(me, quest:GetStateListAt("CrateList", scratchValue2)) ^ 2
+            if getDistanceBetweenThings < scratchValue4 then
+                scratchValue4 = getDistanceBetweenThings
                 x_stk_c_1 = quest:GetStateListAt("CrateList", scratchValue2)
             end
             scratchValue3 = scratchValue3 + 1

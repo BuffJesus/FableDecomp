@@ -185,6 +185,42 @@
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 13,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 37,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 43,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 46,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
     }
    ],
    "wrappedDeclarations": 0,
@@ -1159,69 +1195,6 @@
       }
      },
      "splitLocals": {
-      "bVar2": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38, xStack_10, xStack_28\n",
-       "versions": {
-        "bVar2_1": [
-         8
-        ],
-        "bVar2_2": [
-         13
-        ],
-        "bVar2_3": [
-         37
-        ],
-        "bVar2_4": [
-         40
-        ],
-        "bVar2_5": [
-         44
-        ],
-        "bVar2_6": [
-         48
-        ],
-        "bVar2_7": [
-         52
-        ],
-        "bVar2_8": [
-         55
-        ],
-        "bVar2_9": [
-         61,
-         192,
-         206
-        ],
-        "bVar2_10": [
-         165
-        ],
-        "bVar2_11": [
-         170
-        ],
-        "bVar2_12": [
-         177
-        ],
-        "bVar2_13": [
-         179,
-         189
-        ],
-        "bVar2_14": [
-         181
-        ],
-        "bVar2_15": [
-         187
-        ],
-        "bVar2_16": [
-         196
-        ],
-        "bVar2_17": [
-         201
-        ],
-        "bVar2_18": [
-         203
-        ]
-       }
-      },
       "bVar3": {
        "declarationLine": 3,
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38, xStack_10, xStack_28\n",
@@ -1285,6 +1258,69 @@
         ],
         "bVar3_19": [
          324
+        ]
+       }
+      },
+      "bVar2": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38, xStack_10, xStack_28\n",
+       "versions": {
+        "bVar2_1": [
+         8
+        ],
+        "bVar2_2": [
+         13
+        ],
+        "bVar2_3": [
+         37
+        ],
+        "bVar2_4": [
+         40
+        ],
+        "bVar2_5": [
+         44
+        ],
+        "bVar2_6": [
+         48
+        ],
+        "bVar2_7": [
+         52
+        ],
+        "bVar2_8": [
+         55
+        ],
+        "bVar2_9": [
+         61,
+         192,
+         206
+        ],
+        "bVar2_10": [
+         165
+        ],
+        "bVar2_11": [
+         170
+        ],
+        "bVar2_12": [
+         177
+        ],
+        "bVar2_13": [
+         179,
+         189
+        ],
+        "bVar2_14": [
+         181
+        ],
+        "bVar2_15": [
+         187
+        ],
+        "bVar2_16": [
+         196
+        ],
+        "bVar2_17": [
+         201
+        ],
+        "bVar2_18": [
+         203
         ]
        }
       },
@@ -1372,18 +1408,6 @@
         ]
        }
       },
-      "fVar9": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38, xStack_10, xStack_28\n",
-       "versions": {
-        "fVar9_1": [
-         175
-        ],
-        "fVar9_2": [
-         185
-        ]
-       }
-      },
       "iVar7": {
        "declarationLine": 3,
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38, xStack_10, xStack_28\n",
@@ -1408,6 +1432,18 @@
         ],
         "iVar7_7": [
          354
+        ]
+       }
+      },
+      "fVar9": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar2, bVar3, bVar5, bVar6, cVar4, fVar9, iVar7, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0_00, r1, thing_38, xStack_10, xStack_28\n",
+       "versions": {
+        "fVar9_1": [
+         175
+        ],
+        "fVar9_2": [
+         185
         ]
        }
       },
@@ -1960,6 +1996,86 @@
        "assignmentRoles": []
       }
      },
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 9,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 147,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 186,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 189,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "GoOnPatrol",
+     "sourceLine": 200,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "IsThingCarryingCrate",
+     "sourceLine": 218,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "GetNearestCrateToMe",
+     "sourceLine": 237,
+     "locals": {
+      "scratchValue": {
+       "name": "getDistanceBetweenThings",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getDistanceBetweenThings"
+       ]
+      }
+     },
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "SetMemberState",
+     "sourceLine": 258,
+     "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
@@ -2585,6 +2701,42 @@
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 13,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 20,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 24,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 27,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
     }
    ],
    "wrappedDeclarations": 0,
@@ -2954,6 +3106,42 @@
     {
      "function": "OnPredicateFail",
      "sourceLine": 33,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 15,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 22,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 25,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 28,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3329,6 +3517,42 @@
     {
      "function": "OnPredicateFail",
      "sourceLine": 33,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 15,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 22,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 25,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 28,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3809,18 +4033,6 @@
         ]
        }
       },
-      "iVar5": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar4, fret_0, iVar5, pCVar6, r1\n",
-       "versions": {
-        "iVar5_1": [
-         19
-        ],
-        "iVar5_2": [
-         36
-        ]
-       }
-      },
       "pCVar6": {
        "declarationLine": 2,
        "originalDeclaration": "    local bVar4, fret_0, iVar5, pCVar6, r1\n",
@@ -3836,6 +4048,18 @@
         ],
         "pCVar6_4": [
          39
+        ]
+       }
+      },
+      "iVar5": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar4, fret_0, iVar5, pCVar6, r1\n",
+       "versions": {
+        "iVar5_1": [
+         19
+        ],
+        "iVar5_2": [
+         36
         ]
        }
       }
@@ -3865,6 +4089,42 @@
     {
      "function": "OnPredicateFail",
      "sourceLine": 93,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 13,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 49,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 57,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 60,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4559,15 +4819,15 @@
        ]
       },
       "r1": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
+       "name": "entity",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
       },
       "r2": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
+       "name": "entity2",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         null
        ]
@@ -4580,8 +4840,8 @@
        ]
       },
       "xStack_54_2": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
+       "name": "entity3",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
         "banditArcherLevel1",
         null
@@ -4685,32 +4945,6 @@
         ]
        }
       },
-      "cVar1": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
-       "versions": {
-        "cVar1_1": [
-         4,
-         11
-        ],
-        "cVar1_2": [
-         27,
-         213
-        ]
-       }
-      },
-      "fVar9": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
-       "versions": {
-        "fVar9_1": [
-         51
-        ],
-        "fVar9_2": [
-         137
-        ]
-       }
-      },
       "iVar4": {
        "declarationLine": 2,
        "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
@@ -4729,20 +4963,6 @@
         ],
         "iVar4_5": [
          168
-        ]
-       }
-      },
-      "i_stk_70": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
-       "versions": {
-        "i_stk_70_1": [
-         62,
-         75
-        ],
-        "i_stk_70_2": [
-         85,
-         100
         ]
        }
       },
@@ -4803,6 +5023,46 @@
         ],
         "pCVar8_4": [
          195
+        ]
+       }
+      },
+      "cVar1": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
+       "versions": {
+        "cVar1_1": [
+         4,
+         11
+        ],
+        "cVar1_2": [
+         27,
+         213
+        ]
+       }
+      },
+      "fVar9": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
+       "versions": {
+        "fVar9_1": [
+         51
+        ],
+        "fVar9_2": [
+         137
+        ]
+       }
+      },
+      "i_stk_70": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar3, cVar1, fVar9, iVar4, iVar7, i_stk_70, pCVar5, pCVar6, pCVar8, r1, r2, r3, thing1, xStack_54\n",
+       "versions": {
+        "i_stk_70_1": [
+         62,
+         75
+        ],
+        "i_stk_70_2": [
+         85,
+         100
         ]
        }
       },
@@ -4956,9 +5216,45 @@
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 16,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 112,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 136,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPredicateFail",
+     "sourceLine": 139,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 2,
+   "wrappedDeclarations": 1,
    "style": {
     "functions": {
      "Main": {
@@ -5000,7 +5296,7 @@
        "parentheses": 15,
        "cosmetics": 0,
        "firstAssignments": 2,
-       "freeSuffixes": 1,
+       "freeSuffixes": 2,
        "hoistedState": 6
       },
       "before": {
@@ -5730,6 +6026,24 @@
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "DoMultiplierCutscene",
+     "sourceLine": 3,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "MakeTeamMemberComment",
+     "sourceLine": 73,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
     }
    ],
    "wrappedDeclarations": 0,
@@ -6435,18 +6749,6 @@
       }
      },
      "splitLocals": {
-      "bVar10": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar4, cVar1, c_stk_c1, fVar5, f_stk_14, iVar11, pCVar6, pCVar8, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
-       "versions": {
-        "bVar10_1": [
-         168
-        ],
-        "bVar10_2": [
-         191
-        ]
-       }
-      },
       "bVar4": {
        "declarationLine": 3,
        "originalDeclaration": "    local b3, bVar10, bVar4, cVar1, c_stk_c1, fVar5, f_stk_14, iVar11, pCVar6, pCVar8, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
@@ -6517,6 +6819,36 @@
         ]
        }
       },
+      "pCVar8": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local b3, bVar10, bVar4, cVar1, c_stk_c1, fVar5, f_stk_14, iVar11, pCVar6, pCVar8, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
+       "versions": {
+        "pCVar8_1": [
+         43
+        ],
+        "pCVar8_2": [
+         85
+        ],
+        "pCVar8_3": [
+         170
+        ],
+        "pCVar8_4": [
+         194
+        ]
+       }
+      },
+      "bVar10": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local b3, bVar10, bVar4, cVar1, c_stk_c1, fVar5, f_stk_14, iVar11, pCVar6, pCVar8, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
+       "versions": {
+        "bVar10_1": [
+         168
+        ],
+        "bVar10_2": [
+         191
+        ]
+       }
+      },
       "fVar5": {
        "declarationLine": 3,
        "originalDeclaration": "    local b3, bVar10, bVar4, cVar1, c_stk_c1, fVar5, f_stk_14, iVar11, pCVar6, pCVar8, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
@@ -6551,24 +6883,6 @@
         ],
         "iVar11_2": [
          144
-        ]
-       }
-      },
-      "pCVar8": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar4, cVar1, c_stk_c1, fVar5, f_stk_14, iVar11, pCVar6, pCVar8, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
-       "versions": {
-        "pCVar8_1": [
-         43
-        ],
-        "pCVar8_2": [
-         85
-        ],
-        "pCVar8_3": [
-         170
-        ],
-        "pCVar8_4": [
-         194
         ]
        }
       },
@@ -6949,18 +7263,6 @@
       }
      },
      "splitLocals": {
-      "bVar10": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_18, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
-       "versions": {
-        "bVar10_1": [
-         208
-        ],
-        "bVar10_2": [
-         232
-        ]
-       }
-      },
       "bVar3": {
        "declarationLine": 3,
        "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_18, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
@@ -7043,6 +7345,18 @@
         ],
         "bVar3_26": [
          241
+        ]
+       }
+      },
+      "bVar10": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_18, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
+       "versions": {
+        "bVar10_1": [
+         208
+        ],
+        "bVar10_2": [
+         232
         ]
        }
       },
@@ -7475,18 +7789,6 @@
         ]
        }
       },
-      "iVar8": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
-       "versions": {
-        "iVar8_1": [
-         67
-        ],
-        "iVar8_2": [
-         101
-        ]
-       }
-      },
       "pCVar3": {
        "declarationLine": 3,
        "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
@@ -7520,6 +7822,18 @@
         ],
         "pCVar3_10": [
          135
+        ]
+       }
+      },
+      "iVar8": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar2, iVar8, pCVar3, pCVar7, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_50, xStack_5c, xStack_70\n",
+       "versions": {
+        "iVar8_1": [
+         67
+        ],
+        "iVar8_2": [
+         101
         ]
        }
       },
@@ -8213,6 +8527,114 @@
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 11,
+     "locals": {
+      "scratchValue": {
+       "name": "isRegionLoaded",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded",
+        "isRegionLoaded"
+       ]
+      }
+     },
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 46,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 97,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "ProcessGameRulesEvil",
+     "sourceLine": 100,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "ProcessGameRulesGood",
+     "sourceLine": 187,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "DoCutsceneIfRequired",
+     "sourceLine": 287,
+     "locals": {
+      "scratchValue": {
+       "name": "thing",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        "banditTeamSpawn",
+        "guardTeamSpawn"
+       ]
+      }
+     },
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "WatchForExternalScriptDeactivation",
+     "sourceLine": 379,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "MakeTeamMemberComment",
+     "sourceLine": 392,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "DoMultiplierCutscene",
+     "sourceLine": 405,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "ReplaceQuestCards",
+     "sourceLine": 475,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
     }
    ],
    "wrappedDeclarations": 1,
@@ -8892,6 +9314,24 @@
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 18,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 21,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
     }
    ],
    "wrappedDeclarations": 0,
@@ -9078,6 +9518,24 @@
     {
      "function": "Init",
      "sourceLine": 7,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 18,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 21,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},

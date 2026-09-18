@@ -59,9 +59,9 @@ end
 -- Q_GuildTrainingWoodsMelee.DoMission (retail 0x00d66ca0)
 function DoMission(quest)
     quest:GiveHeroNewQuestObjective("first objective", 1)
-    local scratchValue = quest:IsLevelLoaded("GuildWoods")
+    local isLevelLoaded = quest:IsLevelLoaded("GuildWoods")
     while true do
-        if scratchValue then
+        if isLevelLoaded then
             if quest:IsActiveThreadTerminating() then return end
             quest:CreateThread("WatchForLeaving")  -- native thread body CV_AmbushScamScript::WatchForQuestFinished: lift it as function WatchForLeaving(quest)
             quest:CreateThread("TeleportOutHero")  -- native thread body Quest_GuildWoods_Teleport_Exit_Additional: lift it as function TeleportOutHero(quest)
@@ -72,7 +72,7 @@ function DoMission(quest)
             return
         end
         if not quest:NewScriptFrame() then break end
-        scratchValue = quest:IsLevelLoaded("")
+        isLevelLoaded = quest:IsLevelLoaded("")
     end
 end
 

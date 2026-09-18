@@ -16,10 +16,10 @@ local playerNotWarned
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, isActiveThreadTerminating, scratchValue, scratchValue3, scratchValue4
-    local getMasterGameState, questionAnswer, infoCounter, scratchValue32, conversationId
-    local conversationId2, scratchValue40, scratchValue42, p0, skillApprenticeTargetMarker, movie
-    local infoCounter2, timerId, resource, timerId3, movie2, movie3, scratchValue45
+    local predicateResult, isActiveThreadTerminating, scratchValue2, scratchValue3, scratchValue4
+    local getMasterGameState, questionAnswer, infoCounter, scratchValue, conversationId
+    local conversationId2, scratchValue23, scratchValue25, p0, skillApprenticeTargetMarker, movie
+    local infoCounter2, timerId, resource, timerId3, movie2, movie3, infoElement
     local function __cleanup_LAB_00d4dd41()
         quest:DeregisterTimer(timerId3)
         resources:ReleaseResource(resource)
@@ -242,10 +242,10 @@ function Main(quest, me)
                 scratchValue3 = 0
                 infoCounter = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
                 infoCounter2 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-                scratchValue45 = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+                infoElement = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 quest:UpdateQuestInfoCounter(infoCounter, quest:GetMasterGameState("HighestSkillScore"), -1)
-                scratchValue = 0
+                scratchValue2 = 0
                 while 0 < quest:GetTimer(timerId) and scratchValue3 == 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d4de3d end
                     if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
@@ -253,7 +253,7 @@ function Main(quest, me)
                     end
                     if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
                         quest:SetMasterGameState("HighestSkillScore", quest:GetMasterGameState("SkillScore"))
-                        scratchValue = 1
+                        scratchValue2 = 1
                         quest:UpdateQuestInfoCounter(infoCounter2, quest:GetMasterGameState("HighestSkillScore"), -1)
                     end
                     quest:UpdateQuestInfoCounter(infoCounter2, quest:GetMasterGameState("SkillScore"), -1)
@@ -275,7 +275,7 @@ function Main(quest, me)
                 quest:DisplayQuestInfo(false)
                 quest:RemoveQuestInfoElement(infoCounter)
                 quest:RemoveQuestInfoElement(infoCounter2)
-                quest:RemoveQuestInfoElement(scratchValue45)
+                quest:RemoveQuestInfoElement(infoElement)
                 if scratchValue3 ~= 0 then
                     quest:SetMasterGameState("HeroTakingGuildTest", false)
                     quest:SetPlayerUsingRangedDummies(false)
@@ -283,25 +283,25 @@ function Main(quest, me)
                     goto LAB_00d4dc36
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
-                scratchValue45 = quest:GetMasterGameState("SkillScore")
-                scratchValue42 = 0
-                scratchValue32 = 0
+                infoElement = quest:GetMasterGameState("SkillScore")
+                scratchValue25 = 0
+                scratchValue = 0
                 repeat
-                    scratchValue40 = scratchValue32
-                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue42) <= scratchValue45 then
+                    scratchValue23 = scratchValue
+                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue25) <= infoElement then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                         break
                     end
-                    scratchValue42 = scratchValue42 + 1
-                    scratchValue32 = scratchValue40 + 1
-                until not (scratchValue40 + 1 < 7)
+                    scratchValue25 = scratchValue25 + 1
+                    scratchValue = scratchValue23 + 1
+                until not (scratchValue23 + 1 < 7)
                 if not hero:AcquireControl(4) then goto LAB_00d4de34 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de34 end
                 quest:StartCutscene({ME = me, HERO = hero, ME = me, ME = me, ME = me}, {}, true)
                 quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_END", true, false)
-                if scratchValue == 0 then
+                if scratchValue2 == 0 then
                     repeat
-                        if scratchValue40 == 0 then
+                        if scratchValue23 == 0 then
                             if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
                                 quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", true, false)
@@ -313,22 +313,22 @@ function Main(quest, me)
                                 goto FLOW_native_label_1
                             end
                             goto LAB_00d4de05
-                        elseif scratchValue40 == 1 then
+                        elseif scratchValue23 == 1 then
                             quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_A", true, false)
                             break
-                        elseif scratchValue40 == 2 then
+                        elseif scratchValue23 == 2 then
                             quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_B", true, false)
                             break
-                        elseif scratchValue40 == 3 then
+                        elseif scratchValue23 == 3 then
                             quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_C", true, false)
                             break
-                        elseif scratchValue40 == 4 then
+                        elseif scratchValue23 == 4 then
                             quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_D", true, false)
                             break
-                        elseif scratchValue40 == 5 then
+                        elseif scratchValue23 == 5 then
                             quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_E", true, false)
                             break
-                        elseif scratchValue40 == 6 then
+                        elseif scratchValue23 == 6 then
                             quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_F", true, false)
                             break
                         else
@@ -336,9 +336,9 @@ function Main(quest, me)
                         end
                     until true
                     ::FLOW_native_label_1::
-                    if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue40 then
+                    if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue23 then
                         if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d4de1f end
-                        quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue40)
+                        quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue23)
                     end
                     quest:EndCutscene()
                     hero:ReleaseControl()
@@ -350,7 +350,7 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
                 quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_HIGH", true, false)
                 repeat
-                    if scratchValue40 == 0 then
+                    if scratchValue23 == 0 then
                         if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
                             quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", true, false)
@@ -362,22 +362,22 @@ function Main(quest, me)
                             goto FLOW_native_label_1_c17
                         end
                         goto LAB_00d4de05
-                    elseif scratchValue40 == 1 then
+                    elseif scratchValue23 == 1 then
                         quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_A", true, false)
                         break
-                    elseif scratchValue40 == 2 then
+                    elseif scratchValue23 == 2 then
                         quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_B", true, false)
                         break
-                    elseif scratchValue40 == 3 then
+                    elseif scratchValue23 == 3 then
                         quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_C", true, false)
                         break
-                    elseif scratchValue40 == 4 then
+                    elseif scratchValue23 == 4 then
                         quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_D", true, false)
                         break
-                    elseif scratchValue40 == 5 then
+                    elseif scratchValue23 == 5 then
                         quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_E", true, false)
                         break
-                    elseif scratchValue40 == 6 then
+                    elseif scratchValue23 == 6 then
                         quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_F", true, false)
                         break
                     else
@@ -385,9 +385,9 @@ function Main(quest, me)
                     end
                 until true
                 ::FLOW_native_label_1_c17::
-                if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue40 then
+                if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue23 then
                     if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d4de1f end
-                    quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue40)
+                    quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue23)
                 end
                 quest:EndCutscene()
                 hero:ReleaseControl()

@@ -16,8 +16,7 @@ local otherSpawnPoint
 
 -- TeamSpawn.Main (retail 0x00dcd350)
 function Main(quest, me)
-    local getStateInt, getStateInt2, scratchValue, i_stk_70_1, i_stk_70_2, guardTeamMember
-    local scratchValue7
+    local getStateInt, getStateInt2, scratchValue, i_stk_70_1, i_stk_70_2, guardTeamMember, entity
     local heroTeam = quest:GetStateInt("HeroTeam")
     local hero = quest:GetHero()
     while not quest:GetStateBool("DoneIntroduction") do
@@ -94,11 +93,11 @@ function Main(quest, me)
                     repeat
                         if quest:IsActiveThreadTerminating() then return end
                         if scratchValue == 1 and heroTeam == 0 then
-                            scratchValue7 = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", me:GetPos(), teamMemberName)
+                            entity = quest:CreateCreature("CREATURE_BANDIT_ARCHER_LEVEL1", me:GetPos(), teamMemberName)
                         else
-                            scratchValue7 = quest:CreateCreature(teamMemberDefName, me:GetPos(), teamMemberName)
+                            entity = quest:CreateCreature(teamMemberDefName, me:GetPos(), teamMemberName)
                         end
-                        quest:EntityAttachToScript(scratchValue7, "Q_OrchardFarmRaid")
+                        quest:EntityAttachToScript(entity, "Q_OrchardFarmRaid")
                         quest:Pause(2.0)
                         scratchValue = scratchValue + 1
                     until not (scratchValue < teamMemberLimit - getStateInt2)

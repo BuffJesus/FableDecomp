@@ -16,9 +16,9 @@ end
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult, predicateResult5, predicateResult6, msgIsHitByHero
-    local predicateResult13, fret_0, fret_00, p0, preMeleeMazeTargetMarker, movie, movie2, movie3
-    local resource
+    local isDistanceBetweenThingsOver, predicateResult, predicateResult5, predicateResult6
+    local msgIsHitByHero, predicateResult13, fret_0, fret_00, p0, preMeleeMazeTargetMarker, movie
+    local movie2, movie3, resource
     predicateResult13 = false
     predicateResult = false
     quest:EntitySetAsKillable(me, false, true)
@@ -52,8 +52,8 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
         end
-        scratchValue = quest:IsDistanceBetweenThingsOver(me, preMeleeMazeTargetMarker, 4.0) and not me:IsPerformingScriptTask()
-        if scratchValue then
+        isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, preMeleeMazeTargetMarker, 4.0) and not me:IsPerformingScriptTask()
+        if isDistanceBetweenThingsOver then
             if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
             if preMeleeMazeTargetMarker ~= nil and not preMeleeMazeTargetMarker:IsNull() then
                 p0 = preMeleeMazeTargetMarker:GetPos()

@@ -176,7 +176,7 @@ def split_hoisted_locals(source):
     for i, targets in graph.items():
         for target in targets:
             parents[target].add(i)
-    output, info = list(original), {}
+    output, info, plans = list(original), {}, []
     for name, declaration in declarations.items():
         if declaration is None or name in pinned:
             continue
@@ -236,11 +236,19 @@ def split_hoisted_locals(source):
         # An uninitialized read without any reaching assignment keeps a nil local.
         if any(root(-1) == root(d) for i in reads for d in incoming[i]):
             groups.setdefault(root(-1), [])
-        # Lua 5.4 permits only 200 locals. Leave space for existing initialized
-        # locals and decline further splitting rather than breaking compilation.
-        if local_count + len(groups) - 1 > 180:
+        plans.append((len(groups), name, declaration, reads, definitions,
+                      {i: set(incoming[i]) for i in reads},
+                      {d: root(d) for d in set(definitions) | {-1}}, dict(groups)))
+
+    # Lua 5.4 permits only 200 locals. Leave space for the existing initialized locals, and when the budget
+    # cannot cover every name spend it on the *widest* splits first: a register Ghidra reused 44 ways is
+    # exactly the one that reads as noise unsplit, and each of its versions earns a role name of its own.
+    # (Measured on GuildTraining: widest-first 2467 semantic / 705 scratch names, declaration order
+    # 2324 / 770, narrowest-first 1927 / 786.)
+    for cost, name, declaration, reads, definitions, incoming, rootmap, groups in sorted(plans, key=lambda p: (-p[0], p[1])):
+        if local_count + cost - 1 > 180:
             continue
-        local_count += len(groups) - 1
+        local_count += cost - 1
         names = {}
         for index, group in enumerate(sorted(groups), 1):
             version = f'{name}_{index}'
@@ -253,12 +261,12 @@ def split_hoisted_locals(source):
                 output[i] = rename_identifiers(line, {name: ', '.join(names.values())})
                 continue
             if i in reads:
-                version = names[root(next(iter(incoming[i])))]
+                version = names[rootmap[next(iter(incoming[i]))]]
                 output[i] = rename_identifiers(line, {name: version})
             if i in definitions:
                 # Rewrite only the assignment target; RHS may require an older version.
                 output[i] = re.sub(r'^(\s*)\w+(\s*=)',
-                    lambda m: m[1] + names[root(i)] + m[2], output[i], count=1)
+                    lambda m: m[1] + names[rootmap[i]] + m[2], output[i], count=1)
         info[name] = {'declarationLine': declaration + 1, 'originalDeclaration': original[declaration],
                       'versions': {version: [i + 1 for i in sorted(groups[group])]
                                    for group, version in names.items()}}

@@ -17,13 +17,13 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local addQuestInfoTickByText, scratchValue, scratchValue4, scratchValue5, scratchValue8
-    local scratchValue9, scratchValue10, c_stk_215_1, c_stk_215_2, c_stk_215_3, scratchValue11
-    local getMasterGameState, infoCounter, scratchValue15, questionAnswer, conversationId
-    local addNewConversation, conversationId2, conversationId3, conversationId4, scratchValue26
-    local scratchValue33, scratchValue34, scratchValue38, scratchValue39, archeryRing
+    local scratchValue9, scratchValue10, c_stk_215_1, c_stk_215_2, c_stk_215_3, infoElement
+    local getMasterGameState, infoCounter, scratchValue14, questionAnswer, conversationId
+    local addNewConversation, conversationId2, conversationId3, conversationId4, scratchValue25
+    local scratchValue32, scratchValue33, scratchValue37, scratchValue38, archeryRing
     local guildEvilApprenticeMale, actorMap, actorMap2, resource7, resource8, resource9, actorMap3
     local movie, movie2, movie3, getMasterGameState5, infoCounter3, infoCounter4
-    local getMasterGameState6, addQuestInfoTickByText2, scratchValue43, scratchValue44
+    local getMasterGameState6, addQuestInfoTickByText2, scratchValue42, infoElement2
     local addQuestInfoTickByText3, addQuestInfoTickByText4, addQuestInfoTickByText5
     local addQuestInfoTickByText6, resource, timerId, timerId4, timerId5, movie4
     local function __cleanup_LAB_00d5dac4()
@@ -103,7 +103,7 @@ function Main(quest, me)
                 resources:DestroyMovie(movie2)
             end
         end
-        scratchValue11 = 5.5
+        infoElement = 5.5
         if not ((quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId5) < 1) and not me:IsPerformingScriptTask()) then goto continue_3 end
         if quest:IsActiveThreadTerminating() then goto LAB_00d5da96 end
         conversationId = quest:AddNewConversation(me, false, false)
@@ -270,7 +270,7 @@ function Main(quest, me)
                 quest:IsPlayerHoldingFireRangedWeaponButton()
                 quest:UpdateQuestInfoTick(addQuestInfoTickByText3, scratchValue10)
                 if quest:GetTimer(timerId4) < 1 then
-                    scratchValue11 = 6.0
+                    infoElement = 6.0
                     if quest:IsDistanceBetweenThingsUnder(hero, archeryRing, 6.0) and not quest:IsConversationActive(addNewConversation) then
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId4)
@@ -401,7 +401,7 @@ function Main(quest, me)
             end
             quest:UpdateQuestInfoCounter(infoCounter4, quest:GetMasterGameState("SkillScore"), -1)
             if playerNotWarned then
-                scratchValue11 = 6.0
+                infoElement = 6.0
                 if quest:IsDistanceBetweenThingsOver(hero, archeryRing, 6.0) and not quest:IsConversationActive(addNewConversation) then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId4)
@@ -492,7 +492,7 @@ function Main(quest, me)
         if not quest:IsXbox() then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId4); quest:DeregisterTimer(timerId5); resources:ReleaseResource(resource); return end
             addQuestInfoTickByText = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-            scratchValue43 = addQuestInfoTickByText
+            scratchValue42 = addQuestInfoTickByText
             addQuestInfoTickByText6 = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
             addQuestInfoTickByText4 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
             goto LAB_00d5c6b1
@@ -508,7 +508,7 @@ function Main(quest, me)
             return
         end
         addQuestInfoTickByText = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
-        scratchValue43 = addQuestInfoTickByText
+        scratchValue42 = addQuestInfoTickByText
         addQuestInfoTickByText6 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
         addQuestInfoTickByText4 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
         ::LAB_00d5c6b1::
@@ -527,7 +527,7 @@ function Main(quest, me)
                     scratchValue10 = false
                     goto FLOW_after_lab_00d5c757
                 end
-                scratchValue11 = 6.0
+                infoElement = 6.0
                 if not quest:IsDistanceBetweenThingsUnder(hero, archeryRing, 6.0) then
                     scratchValue10 = false
                     goto FLOW_after_lab_00d5c757
@@ -589,7 +589,7 @@ function Main(quest, me)
                     return
                 end
                 quest:SetTimer(timerId4, 15)
-                addQuestInfoTickByText = scratchValue43
+                addQuestInfoTickByText = scratchValue42
             end
             if quest:MsgOnHeroFiredRangedWeapon() then
                 if quest:IsActiveThreadTerminating() then
@@ -666,7 +666,7 @@ function Main(quest, me)
         c_stk_215_3 = 0
         infoCounter = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
         infoCounter3 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-        scratchValue44 = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+        infoElement2 = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
         quest:DisplayQuestInfo(true)
         quest:UpdateQuestInfoCounter(infoCounter, quest:GetMasterGameState("HighestSkillScore"), -1)
         quest:SetMasterGameState("SkillTestOccuring", true)
@@ -718,12 +718,12 @@ function Main(quest, me)
             else
                 -- TODO(native): CVar10 = *(this + 4)
                 scratchValue = nil --[[unresolved native value]]
-                scratchValue11 = 6.0
+                infoElement = 6.0
                 -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
-                scratchValue38 = nil --[[unresolved native value]]
+                scratchValue37 = nil --[[unresolved native value]]
                 -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
-                scratchValue34 = nil --[[unresolved native value]]
-                scratchValue10 = quest:IsDistanceBetweenThingsOver(scratchValue34, scratchValue38, 6.0)
+                scratchValue33 = nil --[[unresolved native value]]
+                scratchValue10 = quest:IsDistanceBetweenThingsOver(scratchValue33, scratchValue37, 6.0)
             end
             if scratchValue10 then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
@@ -742,7 +742,7 @@ function Main(quest, me)
         quest:DisplayQuestInfo(false)
         quest:RemoveQuestInfoElement(infoCounter)
         quest:RemoveQuestInfoElement(infoCounter3)
-        quest:RemoveQuestInfoElement(scratchValue44)
+        quest:RemoveQuestInfoElement(infoElement2)
         quest:EntitySetTargetable(me, true)
         resource9 = resources:NewResource()
         while not resources:TryAcquire(resource9, hero, 4) do
@@ -764,38 +764,38 @@ function Main(quest, me)
         if xStack_21c_b3 == 0 then
             if not quest:IsActiveThreadTerminating() then
                 getMasterGameState6 = quest:GetMasterGameState("SkillScore")
-                scratchValue33 = 0
-                scratchValue15 = 0
+                scratchValue32 = 0
+                scratchValue14 = 0
                 repeat
-                    scratchValue26 = scratchValue15
-                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue33) < getMasterGameState6 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue33) == getMasterGameState6) then
+                    scratchValue25 = scratchValue14
+                    if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue32) < getMasterGameState6 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue32) == getMasterGameState6) then
                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
                         break
                     end
-                    scratchValue15 = scratchValue26 + 1
-                    scratchValue33 = scratchValue33 + 1
-                until scratchValue15 >= 7
-                scratchValue39 = resources:NewStringMap()
+                    scratchValue14 = scratchValue25 + 1
+                    scratchValue32 = scratchValue32 + 1
+                until scratchValue14 >= 7
+                scratchValue38 = resources:NewStringMap()
                 repeat
-                    if scratchValue26 == 0 then
+                    if scratchValue25 == 0 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_114);
                         break
-                    elseif scratchValue26 == 1 then
+                    elseif scratchValue25 == 1 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_10c);
                         break
-                    elseif scratchValue26 == 2 then
+                    elseif scratchValue25 == 2 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_104);
                         break
-                    elseif scratchValue26 == 3 then
+                    elseif scratchValue25 == 3 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_fc);
                         break
-                    elseif scratchValue26 == 4 then
+                    elseif scratchValue25 == 4 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_f4);
                         break
-                    elseif scratchValue26 == 5 then
+                    elseif scratchValue25 == 5 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_ec);
                         break
-                    elseif scratchValue26 == 6 then
+                    elseif scratchValue25 == 6 then
                         -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_e4);
                         break
                     else
@@ -803,8 +803,8 @@ function Main(quest, me)
                     end
                 until true
                 ::FLOW_native_label_1::
-                resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", actorMap3, scratchValue39, false, false)
-                resources:DestroyStringMap(scratchValue39)
+                resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", actorMap3, scratchValue38, false, false)
+                resources:DestroyStringMap(scratchValue38)
                 goto LAB_00d5d526
             end
             -- TODO(native): goto LAB_00d5db62
@@ -820,7 +820,7 @@ function Main(quest, me)
         resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", actorMap3, false, true)
         ::LAB_00d5d526::
         quest:SetStateInt("TutorialState", 0)
-        quest:RemoveQuestInfoElement(scratchValue11)
+        quest:RemoveQuestInfoElement(infoElement)
         quest:Pause(2.0)
         quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_SKILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()

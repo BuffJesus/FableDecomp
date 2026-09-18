@@ -104,7 +104,7 @@ end
 
 -- Q_TraderConflictGood.WatchTimeLimit (retail 0x00dfaeb0)
 function WatchTimeLimit(quest)
-    local scratchValue, timerId
+    local infoElement, timerId
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 5)
     while quest:GetMasterGameState("TCGTimeLimitBoastTaken") == 0 do
@@ -115,13 +115,13 @@ function WatchTimeLimit(quest)
         end
     end
     quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.TCG_TimeLimit))
-    scratchValue = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+    infoElement = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
     quest:DisplayQuestInfo(true)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame() then goto LAB_00dfb033 end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00dfb033 end
-    quest:RemoveQuestInfoElement(scratchValue)
+    quest:RemoveQuestInfoElement(infoElement)
     if 0 >= quest:GetTimer(timerId) then goto LAB_00dfb033 end
     if not quest:IsActiveThreadTerminating() then quest:SetMasterGameState("TCGMadeTimeLimit", true); goto LAB_00dfb033 end
     quest:DeregisterTimer(timerId)

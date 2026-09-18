@@ -33,9 +33,11 @@ from tools.script_recovery.readable_style import style_source, state_writers  # 
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.script_units import unit as script_unit  # noqa: E402
 
-# converter-only spellings the role renamer should treat as generated temporaries
+# converter-only spellings the role renamer should treat as generated temporaries. `scratchValue\d*` is the
+# renamer's own fallback: it is listed so a second pass over the *styled* text can name what the style folds
+# left behind (a slot with five disagreeing assignments in the draft often has one survivor afterwards).
 assert readable_lua.GENERATED.pattern.endswith(r')\Z')
-readable_lua.GENERATED = re.compile(readable_lua.GENERATED.pattern[:-3] + r'|\w*_stk_[0-9a-f]+|local_[0-9a-f]+|__native_condition_\d+|native_arg_sequence_\d+)\Z')
+readable_lua.GENERATED = re.compile(readable_lua.GENERATED.pattern[:-3] + r'|\w*_stk_[0-9a-f]+|local_[0-9a-f]+|__native_condition_\d+|native_arg_sequence_\d+|scratchValue\d*)\Z')
 
 TERMINATION = re.compile(
     r'^(?P<ind>[ \t]*)alive = not (?P<recv>\w+):IsActiveThreadTerminating\(\)\n'
@@ -302,6 +304,10 @@ def readable_file(source, *, style=True, frame_returns_alive=True, rel=None, wri
             for key, value in entry['rewrites'].items():
                 first['rewrites'][key] = first['rewrites'].get(key, 0) + value
             first['after'] = entry['after']
+        # the style folds dropped assignments, so a temporary the first pass could only call `scratchValue`
+        # (its assignments disagreed) may now have one role left: name it from what survived
+        text, renamed = readable_source(text, split_reused=False)
+        mappings = mappings + renamed
     text, wrapped = wrap_local_declarations(text)
     return text, {'functions': [{'function': n, 'rewrites': st} for n, st in functions.items()],
                   'locals': mappings, 'wrappedDeclarations': len(wrapped), 'style': style_report}

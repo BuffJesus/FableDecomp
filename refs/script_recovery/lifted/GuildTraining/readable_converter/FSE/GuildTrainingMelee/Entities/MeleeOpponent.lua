@@ -15,11 +15,8 @@ local repeatMelee, badHit
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local timerId, predicateResult, predicateResult48, conversationId, conversationId2
-    local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
-    local conversationId8, conversationId9, conversationId10, conversationId11, conversationId12
-    local conversationId13, theRealGuildmaster, meleeThunder, meleeThunder2, meleeThunder3
-    local scratchValue8, scratchValue, scratchValue12, scratchValue14, movie, resource, timerId2
+    local timerId, predicateResult, predicateResult48, addNewConversation, theRealGuildmaster
+    local meleeThunder, meleeThunder2, meleeThunder3, scratchValue, movie, resource, timerId2
     resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
@@ -120,9 +117,9 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        conversationId = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(conversationId, hero)
-                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_WHISPER_MELEE_HIT_INSULT", me, hero, false)
+                        addNewConversation = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(addNewConversation, hero)
+                        quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_MELEE_HIT_INSULT", me, hero, false)
                         quest:SetTimer(timerId2, 15)
                     end
                 elseif me:MsgIsHitByHero() then
@@ -183,9 +180,9 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                conversationId2 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId2, hero)
-                quest:AddLineToConversation(conversationId2, "TEXT_QST_028_WHISPER_MELEE_WAIT_INSULT", me, hero, false)
+                addNewConversation = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(addNewConversation, hero)
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_MELEE_WAIT_INSULT", me, hero, false)
                 quest:SetTimer(timerId2, 15)
                 ::continue_7::
             end
@@ -247,9 +244,9 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        conversationId3 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(conversationId3, hero)
-                        quest:AddLineToConversation(conversationId3, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", me, hero, false)
+                        addNewConversation = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(addNewConversation, hero)
+                        quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", me, hero, false)
                         quest:SetTimer(timerId2, 15)
                     end
                 else
@@ -263,9 +260,9 @@ function Main(quest, me)
                         if nil == nil then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                             theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
-                            conversationId4 = quest:AddNewConversation(theRealGuildmaster, false, false)
-                            quest:AddPersonToConversation(conversationId4, hero)
-                            quest:AddLineToConversation(conversationId4, "TEXT_QST_028_MAZE_BLOCK", theRealGuildmaster, hero, false)
+                            addNewConversation = quest:AddNewConversation(theRealGuildmaster, false, false)
+                            quest:AddPersonToConversation(addNewConversation, hero)
+                            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_BLOCK", theRealGuildmaster, hero, false)
                             if quest:IsXbox() then
                                 if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d5754c end
                                 quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BLOCK_HELP")
@@ -295,11 +292,11 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        scratchValue8 = math.random(0, 32767) & 0x80000001
-                        if scratchValue8 < 0 then
-                            scratchValue8 = (scratchValue8 - 1 | 0xfffffffe) + 1
+                        scratchValue = math.random(0, 32767) & 0x80000001
+                        if scratchValue < 0 then
+                            scratchValue = (scratchValue - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue8 == 1 then
+                        if scratchValue == 1 then
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
                                 resources:ReleaseResource(resource)
@@ -311,9 +308,9 @@ function Main(quest, me)
                                     resources:ReleaseResource(resource)
                                     return
                                 end
-                                conversationId5 = quest:AddNewConversation(me, false, false)
-                                quest:AddPersonToConversation(conversationId5, hero)
-                                quest:AddLineToConversation(conversationId5, "TEXT_QST_028_WHISPER_BATTLE_HIT_INSULT", me, hero, false)
+                                addNewConversation = quest:AddNewConversation(me, false, false)
+                                quest:AddPersonToConversation(addNewConversation, hero)
+                                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BATTLE_HIT_INSULT", me, hero, false)
                                 quest:SetTimer(timerId2, 15)
                             end
                         end
@@ -326,9 +323,9 @@ function Main(quest, me)
                         end
                         if quest:GetTimer(timerId2) < 9 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                            conversationId6 = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(conversationId6, hero)
-                            quest:AddLineToConversation(conversationId6, "TEXT_QST_028_WHISPER_MELEE_NOT_BLOCK", me, hero, false)
+                            addNewConversation = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(addNewConversation, hero)
+                            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_MELEE_NOT_BLOCK", me, hero, false)
                             quest:SetTimer(timerId2, 15)
                             goto FLOW_after_lab_00d57742
                             quest:DeregisterTimer(timerId2)
@@ -345,9 +342,9 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    conversationId7 = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationId7, hero)
-                    quest:AddLineToConversation(conversationId7, "TEXT_QST_028_WHISPER_BLOCK_WAIT_INSULT", me, hero, false)
+                    addNewConversation = quest:AddNewConversation(me, false, false)
+                    quest:AddPersonToConversation(addNewConversation, hero)
+                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BLOCK_WAIT_INSULT", me, hero, false)
                     quest:SetTimer(timerId2, 15)
                 end
                 if quest:GetHealth(hero) >= quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then goto continue_9 end
@@ -409,9 +406,9 @@ function Main(quest, me)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            conversationId8 = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(conversationId8, hero)
-                            quest:AddLineToConversation(conversationId8, "TEXT_QST_028_WHISPER_MELEE_HIT_INSULT", me, hero, false)
+                            addNewConversation = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(addNewConversation, hero)
+                            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_MELEE_HIT_INSULT", me, hero, false)
                         else
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
@@ -419,9 +416,9 @@ function Main(quest, me)
                                 return
                             end
                             meleeThunder = quest:GetThingWithScriptName("MeleeThunder")
-                            conversationId9 = quest:AddNewConversation(meleeThunder, false, false)
-                            quest:AddPersonToConversation(conversationId9, hero)
-                            quest:AddLineToConversation(conversationId9, "TEXT_QST_028_THUNDER_MELEE_DEFEND", meleeThunder, hero, false)
+                            addNewConversation = quest:AddNewConversation(meleeThunder, false, false)
+                            quest:AddPersonToConversation(addNewConversation, hero)
+                            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_THUNDER_MELEE_DEFEND", meleeThunder, hero, false)
                         end
                         quest:SetTimer(timerId2, 15)
                     end
@@ -449,23 +446,23 @@ function Main(quest, me)
                         end
                         if quest:GetTimer(timerId) < 9 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                            scratchValue12 = math.random(0, 32767) & 0x80000001
-                            if scratchValue12 < 0 then
-                                scratchValue12 = (scratchValue12 - 1 | 0xfffffffe) + 1
+                            scratchValue = math.random(0, 32767) & 0x80000001
+                            if scratchValue < 0 then
+                                scratchValue = (scratchValue - 1 | 0xfffffffe) + 1
                             end
-                            if scratchValue12 == 1 then
+                            if scratchValue == 1 then
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                                conversationId10 = quest:AddNewConversation(me, false, false)
-                                quest:AddPersonToConversation(conversationId10, hero)
-                                quest:AddLineToConversation(conversationId10, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", me, hero, false)
+                                addNewConversation = quest:AddNewConversation(me, false, false)
+                                quest:AddPersonToConversation(addNewConversation, hero)
+                                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", me, hero, false)
                                 quest:SetTimer(timerId2, 15)
                                 goto FLOW_after_lab_00d57e76
                             else
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                                 meleeThunder2 = quest:GetThingWithScriptName("MeleeThunder")
-                                conversationId11 = quest:AddNewConversation(meleeThunder2, false, false)
-                                quest:AddPersonToConversation(conversationId11, hero)
-                                quest:AddLineToConversation(conversationId11, "TEXT_QST_028_THUNDER_MELEE_ATTACK", meleeThunder2, hero, false)
+                                addNewConversation = quest:AddNewConversation(meleeThunder2, false, false)
+                                quest:AddPersonToConversation(addNewConversation, hero)
+                                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_THUNDER_MELEE_ATTACK", meleeThunder2, hero, false)
                                 quest:SetTimer(timerId2, 15)
                                 goto FLOW_after_lab_00d57e76
                             end
@@ -483,23 +480,23 @@ function Main(quest, me)
                             end
                             if quest:GetTimer(timerId) < 9 then
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                                scratchValue14 = math.random(0, 32767) & 0x80000001
-                                if scratchValue14 < 0 then
-                                    scratchValue14 = (scratchValue14 - 1 | 0xfffffffe) + 1
+                                scratchValue = math.random(0, 32767) & 0x80000001
+                                if scratchValue < 0 then
+                                    scratchValue = (scratchValue - 1 | 0xfffffffe) + 1
                                 end
-                                if scratchValue14 == 1 then
+                                if scratchValue == 1 then
                                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                                    conversationId12 = quest:AddNewConversation(me, false, false)
-                                    quest:AddPersonToConversation(conversationId12, hero)
-                                    quest:AddLineToConversation(conversationId12, "TEXT_QST_028_WHISPER_BATTLE_HIT_INSULT", me, hero, false)
+                                    addNewConversation = quest:AddNewConversation(me, false, false)
+                                    quest:AddPersonToConversation(addNewConversation, hero)
+                                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BATTLE_HIT_INSULT", me, hero, false)
                                     quest:SetTimer(timerId2, 15)
                                     goto FLOW_after_lab_00d57e76
                                 else
                                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                                     meleeThunder3 = quest:GetThingWithScriptName("MeleeThunder")
-                                    conversationId13 = quest:AddNewConversation(meleeThunder3, false, false)
-                                    quest:AddPersonToConversation(conversationId13, hero)
-                                    quest:AddLineToConversation(conversationId13, "TEXT_QST_028_THUNDER_MELEE_FINISH", meleeThunder3, hero, false)
+                                    addNewConversation = quest:AddNewConversation(meleeThunder3, false, false)
+                                    quest:AddPersonToConversation(addNewConversation, hero)
+                                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_THUNDER_MELEE_FINISH", meleeThunder3, hero, false)
                                     quest:SetTimer(timerId2, 15)
                                     goto FLOW_after_lab_00d57e76
                                 end

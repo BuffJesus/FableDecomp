@@ -158,9 +158,9 @@ end
 -- Q_GuildTrainingWoodsWill.DoMission (retail 0x00d68ae0)
 function DoMission(quest)
     quest:GiveHeroNewQuestObjective("first objective", 1)
-    local scratchValue = quest:IsLevelLoaded("GuildWoods")
+    local isLevelLoaded = quest:IsLevelLoaded("GuildWoods")
     while true do
-        if scratchValue then
+        if isLevelLoaded then
             if quest:IsActiveThreadTerminating() then return end
             quest:CreateThread("WatchForLeaving")  -- native thread body NScript::CGlobal_WatchForHeroDeathScript::WatchForHeroDeath: lift it as function WatchForLeaving(quest)
             quest:NewScriptFrame()
@@ -170,7 +170,7 @@ function DoMission(quest)
             return
         end
         if not quest:NewScriptFrame() then break end
-        scratchValue = quest:IsLevelLoaded("GuildWoods")
+        isLevelLoaded = quest:IsLevelLoaded("GuildWoods")
     end
 end
 
