@@ -23,7 +23,7 @@ function Main(quest)
     local f_stk_70_4, addQuestInfoCounter, scratchValue7, scratchValue8, scratchValue9
     local getActiveQuestName, creaturesItem, getNearestWithScriptName, scratchValue10
     local scratchValue11, banditFollower, getNearestWithScriptName2, banditFollower2
-    local bsSlumBedBrown01, scratchValue12
+    local bsSlumBedBrown01, scratchValue12, getDataString
     local hero = quest:GetHero()
     addQuestInfoCounter = 0
     quest:AddEntityBinding("TC_GuardSpawnPoint", "TraderConflictEvil/Entities/TC_GuardSpawnPoint")
@@ -59,16 +59,11 @@ function Main(quest)
     getActiveQuestName = "TC_IntroCSHeroPos"
     getNearestWithScriptName = quest:GetNearestWithScriptName(hero, getActiveQuestName)
     if getNearestWithScriptName == nil then
-        -- TODO(native): CCharString::CCharString(&xStack_74,(CCharString *)&DAT_0143e8ec);
+        getDataString = ""
     else
-        getNearestWithScriptName:GetDataString()
+        getDataString = getNearestWithScriptName:GetDataString()
     end
-    if ctr_74 == nil then
-        c_stk_7d_1 = false
-    else
-        -- TODO(native): iVar8 = CBasicString<char>::Compare(*(void **)ctr_74,"SOUTH");
-        c_stk_7d_1 = addQuestInfoCounter == 0
-    end
+    c_stk_7d_1 = getDataString == "SOUTH"
     if not c_stk_7d_1 then
         if not quest:IsActiveThreadTerminating() then
             -- TODO(native): goto LAB_00df656e

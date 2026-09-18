@@ -85,7 +85,7 @@ works but forces every generated function to be wrapped.
 | `me:MsgIsHitByHeroSpecialAbility(ability)` (int `EHeroAbility`) | slot 0xA4 `?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z` with `SCRIPT_NAME_HERO` | TraderConflict passes ability 14 (the recovered immediate); the binding must take the enum value |
 | `quest:IsPlayerHoldingLockTargetButton()` | GSI slot 66 (0x108) | TraderConflict Good/Evil poll it in the intro (3 sites) |
 | `quest:TextEntryExists(key)` | GSI slot 0x598 | TraderToRescue builds `"TEXT_QST_B11_" .. name .. "_ONTALK_" .. n` and probes it (2 sites) |
-| `me:MsgExpressionPerformedTo(scriptName)` | slot 0x74 `?MsgExpressionPerformedTo@CScriptThing@@UBE_NAAVCCharString@@@Z` | TraderToRescue (EXPRESSION_FOLLOW / EXPRESSION_WAIT checks) |
+| ~~`me:MsgExpressionPerformedTo(scriptName)`~~ EXISTS: `me:MsgExpressionPerformedTo()` returns the expression name or nil (LuaEntityAPI.cpp; the native out-parameter is the result, the bool is its presence — the lifter emits `name = me:MsgExpressionPerformedTo(); fired = name ~= nil`) | slot 0x74 `?MsgExpressionPerformedTo@CScriptThing@@UBE_NAAVCCharString@@@Z` | TraderToRescue (EXPRESSION_FOLLOW / EXPRESSION_WAIT checks) |
 | `quest:EntitySetAsOpinionSource(thing, ...)` | GSI slots 0x9B4 / 0x9B8 | TraderConflict Evil Main (1 site) |
 
 ## 5. Already upstream (thanks) — for reference

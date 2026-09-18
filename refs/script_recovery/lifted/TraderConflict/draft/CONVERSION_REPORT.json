@@ -44,8 +44,6 @@
           },
           "todo": [
             "EntitySetAsOpinionSource: not in FSE manifest",
-            "unlifted: CCharString::CCharString(&xStack_74,(CCharString *)&DAT_0143e8ec);",
-            "unlifted: iVar8 = CBasicString<char>::Compare(*(void **)ctr_74,\"SOUTH\");",
             "goto LAB_00df656e",
             "label LAB_00df656e",
             "label LAB_00df6794",
@@ -115,7 +113,9 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "GetNearestWithScriptName",
+            "ENGINE_EmptyString",
             "GetDataString",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -318,7 +318,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 782,
+          "lines": 778,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1405,7 +1405,7 @@
         "functionSyntaxPassed": 25,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
-        "todo": 58
+        "todo": 56
       }
     },
     {
@@ -2155,7 +2155,6 @@
             "unlifted: xStack_148[0] = 0;",
             "label LAB_00dfe2e9",
             "verify cleanup at LAB_00dfe2e9 (lifted as early return)",
-            "unlifted: iVar11 = CBasicString<char>::Compare(*(void **)xStack_168,\"EXPRESSION_FOLLOW\");",
             "label LAB_00dfe32c",
             "label LAB_00dfe4df",
             "verify cleanup at LAB_00dfebc5 (lifted as early return)",
@@ -2195,7 +2194,6 @@
             "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00dffa46",
             "label LAB_00dffb06",
-            "unlifted: iVar21 = CBasicString<char>::Compare(*(void **)xStack_15c,\"EXPRESSION_WAIT\");",
             "unlifted: CCharString::CCharString(ENGINE_Colour(255, 0, 0, 255),\"BanditCampEntrance\",-1);",
             "TextEntryExists: not in FSE manifest",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
@@ -2205,7 +2203,6 @@
             "AddNewConversation: missing pThing (2 args for 3 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
             "label LAB_00e001c0",
-            "unlifted: iVar21 = CBasicString<char>::Compare(*(void **)xStack_164,\"EXPRESSION_WAIT\");",
             "EntityStopFollowing: missing spFollower (0 args for 1 params)",
             "SetEntityAsRegionFollowing: missing spTarget (2 args for 3 params)",
             "EntitySetAsScared: missing spThing (1 args for 2 params)",
@@ -2245,6 +2242,7 @@
             "GetDataString",
             "ENGINE_StrCmp",
             "MsgExpressionPerformedTo",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -2470,6 +2468,7 @@
             "MsgExpressionPerformedTo",
             "IsActiveThreadTerminating",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "SetStateInt",
             "IsRegionLoaded",
@@ -2539,6 +2538,7 @@
             "MsgExpressionPerformedTo",
             "IsActiveThreadTerminating",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "SetStateInt",
             "ENGINE_IsDistanceBetweenThingsUnder",
@@ -2595,7 +2595,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1070,
+          "lines": 1071,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3542,7 +3542,7 @@
         "functionSyntaxPassed": 38,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 111
+        "todo": 108
       }
     }
   ],
@@ -3553,6 +3553,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 169
+    "todo": 164
   }
 }

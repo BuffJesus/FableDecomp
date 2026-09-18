@@ -468,7 +468,10 @@ def normalise_typed_decompile(text: str) -> str:
         text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString\)0x0;', r'\1' + var + ' = 0;', text, flags=re.M)
         text = re.sub(r'\(int\)' + v + r'\b', var, text)
         # the slot doubles as a string temporary elsewhere (`&X`): the counter gets its own name
-        text = re.sub(r'(?<![&\w])' + v + r'\b', 'ctr_' + var.split('_', 1)[1], text)
+        # (when the slot is also read as a string buffer — `*(void **)X` — its typed null tests `X == (CCharString)0x0`
+        # belong to the string, not the counter; `X == (CCharString)0x1` is always the counter)
+        keep = r'(?! (?:==|!=) \(CCharString(?:_bv)?\)0x0)' if re.search(r'\*\(void \*\*\)' + v + r'\b', text) else ''
+        text = re.sub(r'(?<![&\w])(?<!\*)(?<!\*\))' + v + r'\b' + keep, 'ctr_' + var.split('_', 1)[1], text)
     # x87 compare idiom: `(a < b) != (a == b)` is `a <= b` (Ghidra's rendering of fcomp/fnstsw/test 0x41)
     text = re.sub(r'(\*?\(?[\w.]+\)?(?:\([^()]*\))?) < ((?:\(float10\))?\*?[\w.]+(?:\([^()]*\))?) != \(\1 == \2\)', r'\1 <= \2', text)
     # a float staged in a slot Ghidra typed as a CCharString array: `aCStack_1c[0] = (CCharString)(expr);`
@@ -903,6 +906,9 @@ def fold_name_compare(text):
     text = re.sub(r'\(undefined4 \*\)\*(\w+) (==|!=) \(undefined4 \*\)0x0', r'\1 \2 (CCharString *)0x0', text)
     text = re.sub(r'\*(\w+) (==|!=) \(CCharString(?:_bv)?\)0x0', r'\1 \2 (CCharString *)0x0', text)   # the typed spelling `*pCVar4 == (CCharString)0x0`
     text = re.sub(r'CBasicString<char>::Compare\(\*\(void \*\*\)\*(\w+),("[^"]*")\)', r'ENGINE_StrCmp(\1, \2)', text)
+    # the same on a string object living in a stack slot (`GetDataString` into `xStack_74`): no pointer to it
+    text = re.sub(r'\b(\w*Stack_\w+) (==|!=) \(CCharString(?:_bv)?\)0x0', r'\1 \2 (CCharString *)0x0', text)
+    text = re.sub(r'CBasicString<char>::Compare\(\*\(void \*\*\)(\w*Stack_\w+),("[^"]*")\)', r'ENGINE_StrCmp(\1, \2)', text)
     return text
 
 
@@ -1453,6 +1459,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = re.sub(r'\b' + re.escape(v) + r'\[2\]', v + '.z', text)
     # CRT truncation of an x87 value (`__ftol2((float10)x)`, typed with its ST0 operand by the export)
     text = re.sub(r'\b__ftol2\(\s*(?:\(float10\))?', 'ENGINE_Trunc(', text)
+    # inlined `CScriptThing::GetDataString()` into a hidden-result slot: the empty global string (DAT_0143e8ec)
+    # when the thing has no Data, else the Data vcall (whose result operand Ghidra dropped)
+    text = re.sub(r'CCharString::CCharString\((?:\(CCharString \*\))?&(\w+),\(CCharString(?:_bv)? \*\)&DAT_0143e8ec\);', r'\1 = ENGINE_EmptyString();', text)
     # CRT `rand()` (MSVCR71; Ghidra prints the stale registers as operands): 0..RAND_MAX
     text = re.sub(r'(?<![\w:])rand\((?:[^()]|\([^()]*\))*\)', 'ENGINE_Rand()', text)
     # a by-value string operand cast on its stack slot (`(CCharString *)&xStack_2c`) is the slot
@@ -2050,6 +2059,7 @@ LUA_PSEUDO = [
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
     (re.compile(r'ENGINE_LostOperand\(\)'), 'nil --[[operand lost by the decompiler]]'),
     (re.compile(r'ENGINE_Rand\(\)'), 'math.random(0, 32767)'),
+    (re.compile(r'ENGINE_EmptyString\(\)'), '""'),
     (re.compile(r'ENGINE_ZeroVector\(\)'), '{x = 0, y = 0, z = 0}'),
     (re.compile(r'ENGINE_GlobalGameDataFloatAt\('), 'quest:ReadGlobalGameDataFloatAt('),
     (re.compile(r'ENGINE_GlobalGameDataFloat\('), 'quest:ReadGlobalGameDataFloat('),

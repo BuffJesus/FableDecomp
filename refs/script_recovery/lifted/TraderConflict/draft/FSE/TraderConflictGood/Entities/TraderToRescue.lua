@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar13, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, bVar2, cVar3, c_stk_161, dist, fVar16, iVar11, iVar18, iVar19, iVar20, iVar21, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, p0, p0_00, p0_00_b3, p1, pCVar10, pCVar4, pCVar5, pCVar7, pcVar17, piVar9, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r2, r3, r4, r5, r6, r7, r8, r9, uVar12, uVar14, uVar6, xStack_148, xStack_150, xStack_154, xStack_158, xStack_15c, xStack_164, xStack_18, xStack_28, xStack_b8, x_stk_16c
+    local CVar13, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, bVar2, cVar3, c_stk_161, dist, fVar16, iVar11, iVar18, iVar19, iVar20, iVar21, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, p0, p0_00, p0_00_b3, p1, pCVar10, pCVar4, pCVar5, pCVar7, pcVar17, piVar9, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r2, r3, r4, r5, r6, r7, r8, r9, uVar12, uVar14, uVar6, xStack_148, xStack_150, xStack_154, xStack_158, xStack_15c, xStack_164, xStack_168, xStack_18, xStack_28, xStack_b8, x_stk_16c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -86,16 +86,17 @@ function Main(quest, me)
                 iVar11 = ((pCVar4 == "TRADERB") and 0 or 1)
                 if iVar11 == 0 then return end  -- TODO(native): goto LAB_00dfe2e9
             end
-            bVar2 = me:MsgExpressionPerformedTo()
+            xStack_168 = me:MsgExpressionPerformedTo()
+            bVar2 = xStack_168 ~= nil
             if bVar2 then
-                if "" == nil then
+                if xStack_168 == nil then
                     bVar2 = false
                     if not bVar2 then
                         bVar2 = false
                         goto FLOW_after_lab_00dfe32c
                     end
                 else
-                    -- TODO(native): iVar11 = CBasicString<char>::Compare(*(void **)xStack_168,"EXPRESSION_FOLLOW");
+                    iVar11 = ((xStack_168 == "EXPRESSION_FOLLOW") and 0 or 1)
                     if iVar11 ~= 0 then
                         bVar2 = false
                         goto FLOW_after_lab_00dfe32c
@@ -766,7 +767,7 @@ function Main(quest, me)
                                     quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + -1)
                                 end
                             else
-                                -- TODO(native): iVar21 = CBasicString<char>::Compare(*(void **)xStack_15c,"EXPRESSION_WAIT");
+                                iVar21 = ((xStack_15c == "EXPRESSION_WAIT") and 0 or 1)
                                 if iVar21 == 0 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
@@ -943,7 +944,7 @@ function Main(quest, me)
                                     quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + -1)
                                 end
                             else
-                                -- TODO(native): iVar21 = CBasicString<char>::Compare(*(void **)xStack_164,"EXPRESSION_WAIT");
+                                iVar21 = ((xStack_164 == "EXPRESSION_WAIT") and 0 or 1)
                                 if iVar21 == 0 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive

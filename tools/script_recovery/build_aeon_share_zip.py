@@ -128,7 +128,7 @@ def readme(stamp, summaries, bundle):
               '- `docs/FSE_UPSTREAM_REQUIREMENTS.md` — the generic runtime primitives stock FSE needs to run this output',
               '  (native-quest replacement by name, state/thing/list bindings, frame return values, ...). Newest rows:',
               '  `quest:IsPlayerHoldingFireRangedWeaponButton()`, `me:MsgIsHitBy(name)`, `me:MsgIsHitByAnySpecialAbilityFrom(name)`,',
-              '  `quest:IsPlayerHoldingLockTargetButton()`, `quest:TextEntryExists(key)`, `me:MsgExpressionPerformedTo(name)`.',
+              '  `quest:IsPlayerHoldingLockTargetButton()`, `quest:TextEntryExists(key)` (`me:MsgExpressionPerformedTo()` exists: name or nil).',
               '- `docs/READABLE_STYLE_PLAN.md` — what the readable stage does and what is still open.',
               '- `docs/AEON_LUA_PORTS.md` + `docs/NEW_OAKVALE_CROSSREF.md` — the audit of your 20 ports against the PDB and the',
               '  New Oakvale cross-reference (state names, lifetimes, RNG use).',

@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_34, xStack_38
+    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_34, xStack_38, xStack_74
     local alive = true
     iVar8 = 0
     quest:AddEntityBinding("TC_GuardSpawnPoint", "TraderConflictEvil/Entities/TC_GuardSpawnPoint")
@@ -59,16 +59,12 @@ function Main(quest)
     pCVar4 = quest:GetHero()
     r1 = quest:GetNearestWithScriptName(pCVar4, pCVar6)
     if not (r1 ~= nil and not r1:IsNull()) then
-        -- TODO(native): CCharString::CCharString(&xStack_74,(CCharString *)&DAT_0143e8ec);
+        xStack_74 = ""
     else
-        r1:GetDataString()
+        xStack_74 = r1:GetDataString()
     end
-    if ctr_74 == nil then
-        c_stk_7d = false
-    else
-        -- TODO(native): iVar8 = CBasicString<char>::Compare(*(void **)ctr_74,"SOUTH");
-        c_stk_7d = not (iVar8 ~= 0)
-    end
+    iVar8 = ((xStack_74 == "SOUTH") and 0 or 1)
+    c_stk_7d = not (iVar8 ~= 0)
     if not c_stk_7d then
         alive = not quest:IsActiveThreadTerminating()
         bVar13 = not alive

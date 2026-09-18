@@ -439,7 +439,7 @@ function Main(quest, me)
     goto LAB_00d3e1b6
     ::LAB_00d3e087::
     quest:PauseAllNonScriptedEntities(false)
-    resources:DestroyMovie(ctr_64)
+    resources:DestroyMovie(xStack_60)
     goto LAB_00d3e1b6
 end
 

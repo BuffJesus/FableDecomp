@@ -236,6 +236,10 @@ HERO_NAME = '"SCRIPT_NAME_HERO"'
 RE_THING_SIG = re.compile(r'^\?\w+@CScriptThing@@[UM][AB]E(?P<ret>\?AV1@|\?A[VW]4?[\w$?]*?@@|[AP][AB]V[\w$?]*?@@|_[A-Z]|[A-Z])'
                           r'(?P<params>.*?)@?Z$')
 RE_SIG_TOKEN = re.compile(r'W4\w+?@@|A[AB]V\w+?@@|P[AB]V\w+?@@|A[AB]V\d@|A[AB][A-Z]|_[A-Z]|[A-Z]|\d')
+# CScriptThing out-parameter messages whose Forge binding returns the out string (or nil when the message
+# did not fire) instead of the native bool (LuaEntityAPI.cpp; MsgIsPresentedWithItem keeps the bool and
+# publishes g_PresentedItemName instead)
+OUT_AS_RESULT = {'MsgExpressionPerformedTo'}
 # The hidden return-slot operand Ghidra shows for by-value class returns (`&stack0x..`, `&pos`, `auStack_48`).
 RE_HIDDEN_SLOT = re.compile(r'^(?:\([^)]*\))?\s*&?(?:stack0x[0-9a-f]+|local_\w+|pos|\w*Stack_\w+)$')
 # C syntax that survived lowering (a pointer dereference / address-of operand, a vtable head, a Ghidra
@@ -1467,6 +1471,7 @@ class Lifter:
         args: list[str | None]
         result = None
         vector_slot = None
+        out_slots: list[str] = []          # by-reference results Forge returns after the primary one
         if sig is None:
             args = [self.expr(a) for a in operands]
         else:
@@ -1476,6 +1481,12 @@ class Lifter:
                 if vector_slot and not target:
                     self.results += 1
                     target = f'r{self.results}'
+            if result == 'string' and by_value and operands and not target and len(operands) > len(kinds):
+                # a by-value string result into a stack slot the function reads back by name
+                # (`GetDataString(thing, &xStack_74)` ... `xStack_74 == "SOUTH"`): the slot is the result
+                slot = self.slot_name(operands[0])
+                if slot and re.fullmatch(r'\w*Stack_\w+', slot):
+                    target = slot
             if by_value and operands and RE_HIDDEN_SLOT.match(operands[0]) and len(operands) > len(kinds):
                 operands.pop(0)
             if not kinds:
@@ -1502,8 +1513,16 @@ class Lifter:
                         fill = self.take_args(1, want="string")
                         args.append(fill[0] if fill else None)
                 elif kind == "out":
-                    if others and others[0].startswith("&"):
-                        others.pop(0)
+                    # (a default-constructed slot sits among the string temporaries; the callee writes it, so
+                    # whatever the constructor staged there is gone)
+                    pool = next((p for p in (strings, others) if any(a.startswith("&") for a in p)), None)
+                    if pool is not None:
+                        by_ref = next(k for k, a in enumerate(pool) if a.startswith("&"))
+                        out_slot = self.slot_name(pool.pop(by_ref))
+                        if out_slot:
+                            self.forget_value(out_slot)
+                            self.kinds[out_slot] = 'string'
+                            out_slots.append(out_slot)
                 else:
                     args.append(self.expr(others.pop(0)) if others else None)
             if name in HERO_FORMS and "string" in kinds and args[kinds.index("string")] == HERO_NAME:
@@ -1523,15 +1542,24 @@ class Lifter:
         if name not in self.manifest:
             self.todo.append(f"{name}: CScriptThing method not in FSE manifest")
             self.emit(f"-- TODO(native): {name} is not a ForgeFSE binding")
-        if target:
+        if out_slots and name in OUT_AS_RESULT:
+            # `bool F(CCharString& out)` bound as `F() -> out or nil` (LuaEntityAPI::MsgExpressionPerformedTo):
+            # the string is the result and the native bool is its presence
+            out = out_slots[0]
+            self.emit(f"{self.declare(out)} = {call}")
+            self.kinds[out] = 'string'
+            if target:
+                self.emit(f"{self.declare(target)} = {out} ~= nil")
+                self.kinds[target] = 'bool'
+        elif target:
             self.emit(f"{self.declare(target)} = {call}")
-            if result:
-                self.kinds[target] = result
-                self.push_temp(target, target)
-                if vector_slot:
-                    self.slot_results[vector_slot] = target
         else:
             self.emit(call)
+        if target and result:
+            self.kinds[target] = result
+            self.push_temp(target, target)
+            if vector_slot:
+                self.slot_results[vector_slot] = target
         self.calls.append(name)
 
     # ---- main driver ---------------------------------------------------------------------------
