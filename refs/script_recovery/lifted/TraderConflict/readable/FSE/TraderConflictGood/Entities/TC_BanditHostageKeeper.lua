@@ -13,19 +13,16 @@ end
 -- TC_BanditHostageKeeper.Main (retail 0x00dfba60)
 function Main(quest, me)
     local hero = quest:GetHero()
-    local resources = quest:RetailResources()
-    local conversationID, resource
+    local conversationID
     if not quest:NewScriptFrame(me) then return end
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 2) do
-        if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
-    end
+    if not me:AcquireControl(2) then goto LAB_00dfbcd3 end
     if not quest:IsActiveThreadTerminating() then
         while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
             if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
         end
         if not quest:IsActiveThreadTerminating() then
             if iVar4 % 5 == 0 then
+                if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
                 conversationID = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationID, hero)
                 if quest:GetStateInt("BanditSecurityLinesSaid") == 0 then
@@ -47,7 +44,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00dfbcd3::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
 end
 
 -- TC_BanditHostageKeeper.Init (retail 0x00cdebb0)

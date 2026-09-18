@@ -3,28 +3,11 @@ local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
     local heroTeam = quest:GetStateInt("HeroTeam")
     local hero = quest:GetHero()
-    local resources = quest:RetailResources()
-    local isRegionLoaded, sequence, pScriptObject, string, resource, movie, actorMap
-    resource = resources:NewResource()
-    resources:TryAcquire(pScriptObject, hero, 4)
-    actorMap = resources:NewActorMap()
-    resources:SetActor(actorMap, "HERO", resource)
-    movie = resources:StartMovie("")
-    quest:StartMovieSequence()
-    quest:PauseAllNonScriptedEntities(true)
-    quest:FixMovieSequenceCamera(true)
-    isRegionLoaded = quest:IsRegionLoaded("GreatwoodLake")
-    sequence = not isRegionLoaded
-    if not sequence then
-        isRegionLoaded = true
-        sequence = heroTeam ~= 0
-    end
-    if sequence then
-        isRegionLoaded = false
-    end
-    if isRegionLoaded then
+    local string
+    quest:StartCutscene({HERO = hero}, {}, true)
+    if quest:IsRegionLoaded("GreatwoodLake") and heroTeam == 0 then
         if not quest:IsActiveThreadTerminating() then
-            resources:RunMacro("CS_ORCHARD_GOOD_WHISPERINTRO_GWLL", actorMap, false, true)
+            quest:RunCutscene("CS_ORCHARD_GOOD_WHISPERINTRO_GWLL", true, false)
             quest:FixMovieSequenceCamera(false)
             if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
             if quest:DisplayTutorial(9) then
@@ -35,28 +18,25 @@ function DoMultiplierCutscene(quest, me)
             end
             quest:SetStateBool("ShownCombatMultiplierTutorial", true)
             ::LAB_00dd1e70_c1::
-            quest:PauseAllNonScriptedEntities(false)
+            quest:EndCutscene()
             goto FLOW_after_lab_00dd1d98
         end
-        quest:PauseAllNonScriptedEntities(false)
+        quest:EndCutscene()
     else
         if not quest:IsActiveThreadTerminating() then
             if quest:IsDistanceBetweenThingsUnder(quest:GetThingWithScriptName("MK_OFI_GWL"), hero, 20.0) then
                 if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00dd1d98 end
                 if heroTeam ~= 1 then
-                    if not quest:IsActiveThreadTerminating() then string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"; goto LAB_00dd1d98 end
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie)
-                    goto LAB_00dd1e95
+                    if not quest:IsActiveThreadTerminating() then
+                        string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"
+                    else
+                        quest:EndCutscene()
+                        goto LAB_00dd1e95
+                    end
+                else
+                    string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL"
                 end
-                if quest:IsActiveThreadTerminating() then
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie)
-                    goto LAB_00dd1e95
-                end
-                string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL"
-                ::LAB_00dd1d98::
-                resources:RunMacro(string, actorMap, false, true)
+                quest:RunCutscene(string, true, false)
                 quest:FixMovieSequenceCamera(false)
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
                 if quest:DisplayTutorial(9) then
@@ -74,7 +54,7 @@ function DoMultiplierCutscene(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
                     string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
                 end
-                resources:RunMacro(string, actorMap, false, true)
+                quest:RunCutscene(string, true, false)
                 quest:FixMovieSequenceCamera(false)
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
                 if quest:DisplayTutorial(9) then
@@ -87,13 +67,11 @@ function DoMultiplierCutscene(quest, me)
             end
         end
         ::LAB_00dd1e70::
-        quest:PauseAllNonScriptedEntities(false)
+        quest:EndCutscene()
     end
     ::FLOW_after_lab_00dd1d98::
-    resources:DestroyMovie(movie)
     ::LAB_00dd1e95::
-    resources:DestroyActorMap(actorMap)
-    resources:ReleaseResource(resource)
+    quest:EndCutscene()
 end
 
 function MakeTeamMemberComment(quest, me, commentToMake, speaker, commentType)

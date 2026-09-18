@@ -2,10 +2,11 @@
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38
+    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38
     local alive = true
     ePriority = 4
     xStack_10 = resources:NewResource()
+    pScriptObject = xStack_10
     pCVar5 = quest:GetHero()
     resources:TryAcquire(pScriptObject, pCVar5, ePriority)
     xStack_38 = resources:NewActorMap()
@@ -15,21 +16,7 @@ function DoMultiplierCutscene(quest, me)
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     bVar4 = quest:IsRegionLoaded("GreatwoodLake")
-    native_arg_sequence_1 = false
-    if not bVar4 then
-        native_arg_sequence_1 = true
-    else
-        native_arg_sequence_1 = false
-    end
-    if not native_arg_sequence_1 then
-        bVar4 = true
-        if quest:GetStateInt("HeroTeam") ~= 0 then
-            native_arg_sequence_1 = true
-        else
-            native_arg_sequence_1 = false
-        end
-    end
-    if native_arg_sequence_1 then
+    if (not bVar4) or (quest:GetStateInt("HeroTeam") ~= 0) then
         bVar4 = false
     end
     if bVar4 then
@@ -40,20 +27,20 @@ function DoMultiplierCutscene(quest, me)
             -- LAB_00dd1d98_c1: (native jump target)
             resources:RunMacro(string, xStack_38, false, true)
             quest:FixMovieSequenceCamera(false)
-            native_arg_sequence_2 = false
+            native_arg_sequence_1 = false
             if quest:GetStateBool("ShownCombatMultiplierTutorial") then
-                native_arg_sequence_2 = true
+                native_arg_sequence_1 = true
             end
-            if not native_arg_sequence_2 then
+            if not native_arg_sequence_1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
-                    native_arg_sequence_2 = true
+                    native_arg_sequence_1 = true
                 else
-                    native_arg_sequence_2 = false
+                    native_arg_sequence_1 = false
                 end
             end
-            if native_arg_sequence_2 then goto LAB_00dd1e70_c1 end
+            if native_arg_sequence_1 then goto LAB_00dd1e70_c1 end
             bVar4 = quest:DisplayTutorial(9)
             if bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -117,22 +104,22 @@ function DoMultiplierCutscene(quest, me)
                 ::LAB_00dd1d98::
                 resources:RunMacro(string, xStack_38, false, true)
                 quest:FixMovieSequenceCamera(false)
-                native_arg_sequence_2 = false
+                native_arg_sequence_1 = false
                 if quest:GetStateBool("ShownCombatMultiplierTutorial") then
-                    native_arg_sequence_2 = true
+                    native_arg_sequence_1 = true
                 else
-                    native_arg_sequence_2 = false
+                    native_arg_sequence_1 = false
                 end
-                if not native_arg_sequence_2 then
+                if not native_arg_sequence_1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
-                        native_arg_sequence_2 = true
+                        native_arg_sequence_1 = true
                     else
-                        native_arg_sequence_2 = false
+                        native_arg_sequence_1 = false
                     end
                 end
-                if native_arg_sequence_2 then goto LAB_00dd1e70 end
+                if native_arg_sequence_1 then goto LAB_00dd1e70 end
                 bVar4 = quest:DisplayTutorial(9)
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -168,20 +155,20 @@ function DoMultiplierCutscene(quest, me)
                     end
                     resources:RunMacro(string, xStack_38, false, true)
                     quest:FixMovieSequenceCamera(false)
-                    native_arg_sequence_2 = false
+                    native_arg_sequence_1 = false
                     if quest:GetStateBool("ShownCombatMultiplierTutorial") then
-                        native_arg_sequence_2 = true
+                        native_arg_sequence_1 = true
                     end
-                    if not native_arg_sequence_2 then
+                    if not native_arg_sequence_1 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
-                            native_arg_sequence_2 = true
+                            native_arg_sequence_1 = true
                         else
-                            native_arg_sequence_2 = false
+                            native_arg_sequence_1 = false
                         end
                     end
-                    if native_arg_sequence_2 then goto LAB_00dd1e70 end
+                    if native_arg_sequence_1 then goto LAB_00dd1e70 end
                     bVar4 = quest:DisplayTutorial(9)
                     if bVar4 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -200,10 +187,10 @@ function DoMultiplierCutscene(quest, me)
                         if bVar4 then goto LAB_00dd1e70 end
                     end
                     quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-                    goto FLOW_after_lab_00dd1d98_125
+                    goto FLOW_after_lab_00dd1d98_109
                 end
             end
-            ::FLOW_after_lab_00dd1d98_125::
+            ::FLOW_after_lab_00dd1d98_109::
         end
         ::LAB_00dd1e70::
         quest:PauseAllNonScriptedEntities(false)

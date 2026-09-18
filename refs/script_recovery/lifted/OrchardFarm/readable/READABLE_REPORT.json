@@ -180,6 +180,7 @@
        "literals": 2,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 3,
@@ -192,6 +193,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 4,
+       "controlAcquires": 0,
        "parentheses": 1,
        "cosmetics": 1,
        "firstAssignments": 3,
@@ -237,6 +239,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -249,6 +252,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -294,6 +298,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -306,6 +311,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -351,6 +357,7 @@
        "literals": 1,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -363,6 +370,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 2,
@@ -1938,18 +1946,20 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "gotoElse": 2,
+       "gotoElse": 3,
        "booleanBranches": 2,
        "elseif": 1,
        "elseExit": 0,
        "gotoReturn": 0,
        "ifAroundWhile": 1,
        "deadTerminationChecks": 15,
+       "controlAcquires": 1,
        "parentheses": 46,
        "cosmetics": 2,
        "firstAssignments": 3,
@@ -1966,12 +1976,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 142,
-       "temporaries": 8,
-       "labels": 1,
-       "gotos": 1,
+       "lines": 138,
+       "temporaries": 7,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 13,
-       "frameChecks": 6,
+       "frameChecks": 5,
        "requires": 0
       }
      },
@@ -1995,6 +2005,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2007,6 +2018,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 6,
        "cosmetics": 0,
        "firstAssignments": 1,
@@ -2052,6 +2064,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2064,6 +2077,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2109,6 +2123,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2121,6 +2136,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 4,
        "cosmetics": 2,
        "firstAssignments": 1,
@@ -2166,6 +2182,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2178,6 +2195,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 8,
        "cosmetics": 1,
        "firstAssignments": 2,
@@ -2223,6 +2241,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2235,6 +2254,7 @@
        "gotoReturn": 1,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2280,6 +2300,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2292,6 +2313,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2337,6 +2359,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2349,6 +2372,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 4,
        "cosmetics": 2,
        "firstAssignments": 1,
@@ -2527,6 +2551,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2539,6 +2564,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 4,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2584,6 +2610,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2596,6 +2623,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2641,6 +2669,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2653,6 +2682,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2698,6 +2728,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2710,6 +2741,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2885,6 +2917,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2897,6 +2930,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2942,6 +2976,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -2954,6 +2989,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2999,6 +3035,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3011,6 +3048,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3056,6 +3094,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3068,6 +3107,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3244,6 +3284,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3256,6 +3297,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 2,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3301,6 +3343,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3313,6 +3356,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3358,6 +3402,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3370,6 +3415,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3415,6 +3461,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3427,6 +3474,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3764,6 +3812,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3776,6 +3825,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 1,
@@ -3821,6 +3871,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3833,6 +3884,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3878,6 +3930,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3890,6 +3943,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3935,6 +3989,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -3947,6 +4002,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -4834,6 +4890,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -4846,6 +4903,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 9,
+       "controlAcquires": 0,
        "parentheses": 17,
        "cosmetics": 0,
        "firstAssignments": 7,
@@ -4891,6 +4949,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -4903,6 +4962,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -4948,6 +5008,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -4960,6 +5021,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -5005,6 +5067,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -5017,6 +5080,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -5099,7 +5163,6 @@
        "basis": "one method, several names",
        "assignmentRoles": [
         "isRegionLoaded",
-        "predicateResult",
         "predicateResult"
        ]
       },
@@ -5302,8 +5365,8 @@
         "hero"
        ]
       },
-      "native_arg_sequence_1_2": {
-       "name": "sequence12",
+      "native_arg_sequence_1_1": {
+       "name": "sequence11",
        "basis": "native argument role",
        "assignmentRoles": [
         "predicateResult",
@@ -5312,8 +5375,8 @@
         "predicateResult"
        ]
       },
-      "native_arg_sequence_2_1": {
-       "name": "sequence21",
+      "native_arg_sequence_1_3": {
+       "name": "sequence13",
        "basis": "native argument role",
        "assignmentRoles": [
         "predicateResult",
@@ -5322,18 +5385,8 @@
         "predicateResult"
        ]
       },
-      "native_arg_sequence_2_3": {
-       "name": "sequence23",
-       "basis": "native argument role",
-       "assignmentRoles": [
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult"
-       ]
-      },
-      "native_arg_sequence_2_4": {
-       "name": "sequence24",
+      "native_arg_sequence_1_4": {
+       "name": "sequence14",
        "basis": "native argument role",
        "assignmentRoles": [
         "predicateResult",
@@ -5381,162 +5434,142 @@
      "splitLocals": {
       "bVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
        "versions": {
         "bVar4_1": [
-         15,
-         23,
-         31
+         16,
+         18
         ],
         "bVar4_2": [
-         35
+         22
         ],
         "bVar4_3": [
-         47
+         34
         ],
         "bVar4_4": [
-         55
+         42
         ],
         "bVar4_5": [
-         57
+         44
         ],
         "bVar4_6": [
-         59,
-         64
+         46,
+         51
         ],
         "bVar4_7": [
-         62
+         49
         ],
         "bVar4_8": [
-         66
+         53
         ],
         "bVar4_9": [
-         78
+         65
         ],
         "bVar4_10": [
-         83
+         70
         ],
         "bVar4_11": [
-         86
+         73
         ],
         "bVar4_12": [
-         93
+         80
         ],
         "bVar4_13": [
-         104
+         91
         ],
         "bVar4_14": [
-         123
+         110
         ],
         "bVar4_15": [
-         131
+         118
         ],
         "bVar4_16": [
-         133
+         120
         ],
         "bVar4_17": [
-         135,
-         140
+         122,
+         127
         ],
         "bVar4_18": [
-         138
+         125
         ],
         "bVar4_19": [
-         142
+         129
         ],
         "bVar4_20": [
-         148
+         135
         ],
         "bVar4_21": [
-         151
+         138
         ],
         "bVar4_22": [
-         155
+         142
         ],
         "bVar4_23": [
-         167
+         154
         ],
         "bVar4_24": [
-         175
+         162
         ],
         "bVar4_25": [
-         177
+         164
         ],
         "bVar4_26": [
-         179,
-         184
+         166,
+         171
         ],
         "bVar4_27": [
-         182
+         169
         ],
         "bVar4_28": [
-         186
+         173
         ]
        }
       },
       "native_arg_sequence_1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         16
+         28,
+         30,
+         36,
+         38
         ],
         "native_arg_sequence_1_2": [
-         18,
-         20,
-         25,
-         27
-        ]
-       }
-      },
-      "native_arg_sequence_2": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
-       "versions": {
-        "native_arg_sequence_2_1": [
-         41,
-         43,
-         49,
-         51
+         102
         ],
-        "native_arg_sequence_2_2": [
-         115
+        "native_arg_sequence_1_3": [
+         104,
+         106,
+         112,
+         114
         ],
-        "native_arg_sequence_2_3": [
-         117,
-         119,
-         125,
-         127
-        ],
-        "native_arg_sequence_2_4": [
-         161,
-         163,
-         169,
-         171
+        "native_arg_sequence_1_4": [
+         148,
+         150,
+         156,
+         158
         ]
        }
       },
       "pCVar5": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
        "versions": {
         "pCVar5_1": [
-         7
+         8
         ],
         "pCVar5_2": [
-         82
+         69
         ]
        }
       }
      },
      "removedLiteralLocals": {
-      "native_arg_sequence_1_1": {
-       "3": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, bVar4_27, bVar4_28, dist, ePriority, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar5_1, pCVar5_2, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
-       "16": "    native_arg_sequence_1_1 = false\n"
-      },
-      "native_arg_sequence_2_2": {
-       "3": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, bVar4_27, bVar4_28, dist, ePriority, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar5_1, pCVar5_2, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
-       "115": "                native_arg_sequence_2_2 = false\n"
+      "native_arg_sequence_1_2": {
+       "3": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, bVar4_27, bVar4_28, dist, ePriority, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, pCVar5_1, pCVar5_2, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "102": "                native_arg_sequence_1_2 = false\n"
       }
      },
      "inlinedLiteralLocals": {},
@@ -5544,7 +5577,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 207,
+     "sourceLine": 194,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -5608,42 +5641,44 @@
        "splitLocals": 3,
        "closures": 0,
        "hero": 1,
-       "cutscenes": 0,
+       "cutscenes": 1,
        "staleLabelComments": 4,
        "aliveStaging": 13,
-       "exitChecksInlined": 2,
+       "exitChecksInlined": 3,
        "frameChecks": 3,
-       "inlinedTemporaries": 21,
+       "inlinedTemporaries": 23,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 3,
-       "booleanMaterialisation": 14,
+       "booleanMaterialisation": 12,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 1,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "gotoElse": 1,
+       "gotoElse": 2,
        "booleanBranches": 0,
        "elseif": 1,
        "elseExit": 0,
        "gotoReturn": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 3,
-       "parentheses": 3,
+       "deadTerminationChecks": 4,
+       "controlAcquires": 0,
+       "parentheses": 5,
        "cosmetics": 0,
        "firstAssignments": 2,
-       "freeSuffixes": 1,
+       "freeSuffixes": 0,
        "hoistedState": 1
       },
       "before": {
-       "lines": 190,
-       "temporaries": 31,
+       "lines": 178,
+       "temporaries": 30,
        "labels": 6,
        "gotos": 20,
        "terminationChecks": 20,
@@ -5651,11 +5686,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 95,
-       "temporaries": 7,
-       "labels": 5,
-       "gotos": 16,
-       "terminationChecks": 14,
+       "lines": 73,
+       "temporaries": 1,
+       "labels": 4,
+       "gotos": 14,
+       "terminationChecks": 13,
        "frameChecks": 3,
        "requires": 0
       }
@@ -5680,6 +5715,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -5692,6 +5728,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 10,
@@ -7034,7 +7071,6 @@
        "basis": "one method, several names",
        "assignmentRoles": [
         "isRegionLoaded",
-        "predicateResult",
         "predicateResult"
        ]
       },
@@ -7237,8 +7273,8 @@
         "hero"
        ]
       },
-      "native_arg_sequence_1_2": {
-       "name": "sequence12",
+      "native_arg_sequence_1_1": {
+       "name": "sequence11",
        "basis": "native argument role",
        "assignmentRoles": [
         "predicateResult",
@@ -7247,8 +7283,8 @@
         "predicateResult"
        ]
       },
-      "native_arg_sequence_2_1": {
-       "name": "sequence21",
+      "native_arg_sequence_1_3": {
+       "name": "sequence13",
        "basis": "native argument role",
        "assignmentRoles": [
         "predicateResult",
@@ -7257,18 +7293,8 @@
         "predicateResult"
        ]
       },
-      "native_arg_sequence_2_3": {
-       "name": "sequence23",
-       "basis": "native argument role",
-       "assignmentRoles": [
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult"
-       ]
-      },
-      "native_arg_sequence_2_4": {
-       "name": "sequence24",
+      "native_arg_sequence_1_4": {
+       "name": "sequence14",
        "basis": "native argument role",
        "assignmentRoles": [
         "predicateResult",
@@ -7316,162 +7342,142 @@
      "splitLocals": {
       "bVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
        "versions": {
         "bVar4_1": [
-         15,
-         23,
-         31
+         16,
+         18
         ],
         "bVar4_2": [
-         35
+         22
         ],
         "bVar4_3": [
-         47
+         34
         ],
         "bVar4_4": [
-         55
+         42
         ],
         "bVar4_5": [
-         57
+         44
         ],
         "bVar4_6": [
-         59,
-         64
+         46,
+         51
         ],
         "bVar4_7": [
-         62
+         49
         ],
         "bVar4_8": [
-         66
+         53
         ],
         "bVar4_9": [
-         78
+         65
         ],
         "bVar4_10": [
-         83
+         70
         ],
         "bVar4_11": [
-         86
+         73
         ],
         "bVar4_12": [
-         93
+         80
         ],
         "bVar4_13": [
-         104
+         91
         ],
         "bVar4_14": [
-         123
+         110
         ],
         "bVar4_15": [
-         131
+         118
         ],
         "bVar4_16": [
-         133
+         120
         ],
         "bVar4_17": [
-         135,
-         140
+         122,
+         127
         ],
         "bVar4_18": [
-         138
+         125
         ],
         "bVar4_19": [
-         142
+         129
         ],
         "bVar4_20": [
-         148
+         135
         ],
         "bVar4_21": [
-         151
+         138
         ],
         "bVar4_22": [
-         155
+         142
         ],
         "bVar4_23": [
-         167
+         154
         ],
         "bVar4_24": [
-         175
+         162
         ],
         "bVar4_25": [
-         177
+         164
         ],
         "bVar4_26": [
-         179,
-         184
+         166,
+         171
         ],
         "bVar4_27": [
-         182
+         169
         ],
         "bVar4_28": [
-         186
+         173
         ]
        }
       },
       "native_arg_sequence_1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         16
+         28,
+         30,
+         36,
+         38
         ],
         "native_arg_sequence_1_2": [
-         18,
-         20,
-         25,
-         27
-        ]
-       }
-      },
-      "native_arg_sequence_2": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
-       "versions": {
-        "native_arg_sequence_2_1": [
-         41,
-         43,
-         49,
-         51
+         102
         ],
-        "native_arg_sequence_2_2": [
-         115
+        "native_arg_sequence_1_3": [
+         104,
+         106,
+         112,
+         114
         ],
-        "native_arg_sequence_2_3": [
-         117,
-         119,
-         125,
-         127
-        ],
-        "native_arg_sequence_2_4": [
-         161,
-         163,
-         169,
-         171
+        "native_arg_sequence_1_4": [
+         148,
+         150,
+         156,
+         158
         ]
        }
       },
       "pCVar5": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "originalDeclaration": "    local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
        "versions": {
         "pCVar5_1": [
-         7
+         8
         ],
         "pCVar5_2": [
-         82
+         69
         ]
        }
       }
      },
      "removedLiteralLocals": {
-      "native_arg_sequence_1_1": {
-       "3": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, bVar4_27, bVar4_28, dist, ePriority, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar5_1, pCVar5_2, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
-       "16": "    native_arg_sequence_1_1 = false\n"
-      },
-      "native_arg_sequence_2_2": {
-       "3": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, bVar4_27, bVar4_28, dist, ePriority, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar5_1, pCVar5_2, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
-       "115": "                native_arg_sequence_2_2 = false\n"
+      "native_arg_sequence_1_2": {
+       "3": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, bVar4_27, bVar4_28, dist, ePriority, local_3c, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, pCVar5_1, pCVar5_2, pScriptObject, string, xStack_10, xStack_20, xStack_38\n",
+       "102": "                native_arg_sequence_1_2 = false\n"
       }
      },
      "inlinedLiteralLocals": {},
@@ -7479,7 +7485,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 1001,
+     "sourceLine": 988,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7510,6 +7516,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -7522,6 +7529,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -7567,6 +7575,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -7579,6 +7588,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -7624,6 +7634,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -7636,6 +7647,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -7681,6 +7693,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 1,
@@ -7693,6 +7706,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 6,
        "cosmetics": 0,
        "firstAssignments": 1,
@@ -7738,6 +7752,7 @@
        "literals": 0,
        "copies": 1,
        "selfAssignments": 1,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 1,
@@ -7750,6 +7765,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 1,
@@ -7795,6 +7811,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -7807,6 +7824,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 6,
+       "controlAcquires": 0,
        "parentheses": 4,
        "cosmetics": 0,
        "firstAssignments": 2,
@@ -7852,6 +7870,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -7864,6 +7883,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
+       "controlAcquires": 0,
        "parentheses": 1,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -7909,6 +7929,7 @@
        "literals": 0,
        "copies": 1,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -7921,6 +7942,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 1,
        "cosmetics": 0,
        "firstAssignments": 4,
@@ -7951,42 +7973,44 @@
        "splitLocals": 3,
        "closures": 0,
        "hero": 1,
-       "cutscenes": 0,
+       "cutscenes": 1,
        "staleLabelComments": 4,
        "aliveStaging": 13,
-       "exitChecksInlined": 2,
+       "exitChecksInlined": 3,
        "frameChecks": 3,
-       "inlinedTemporaries": 21,
+       "inlinedTemporaries": 23,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 3,
-       "booleanMaterialisation": 14,
+       "booleanMaterialisation": 12,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 1,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "gotoElse": 1,
+       "gotoElse": 2,
        "booleanBranches": 0,
        "elseif": 1,
        "elseExit": 0,
        "gotoReturn": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 3,
-       "parentheses": 3,
+       "deadTerminationChecks": 4,
+       "controlAcquires": 0,
+       "parentheses": 5,
        "cosmetics": 0,
        "firstAssignments": 2,
-       "freeSuffixes": 1,
+       "freeSuffixes": 0,
        "hoistedState": 1
       },
       "before": {
-       "lines": 190,
-       "temporaries": 31,
+       "lines": 178,
+       "temporaries": 30,
        "labels": 6,
        "gotos": 20,
        "terminationChecks": 20,
@@ -7994,11 +8018,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 95,
-       "temporaries": 7,
-       "labels": 5,
-       "gotos": 16,
-       "terminationChecks": 14,
+       "lines": 73,
+       "temporaries": 1,
+       "labels": 4,
+       "gotos": 14,
+       "terminationChecks": 13,
        "frameChecks": 3,
        "requires": 0
       }
@@ -8023,6 +8047,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -8035,6 +8060,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -8149,6 +8175,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -8161,6 +8188,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -8206,6 +8234,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -8218,6 +8247,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -8332,6 +8362,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -8344,6 +8375,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -8389,6 +8421,7 @@
        "literals": 0,
        "copies": 0,
        "selfAssignments": 0,
+       "flagClears": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
@@ -8401,6 +8434,7 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
+       "controlAcquires": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,

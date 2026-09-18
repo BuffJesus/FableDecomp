@@ -14,9 +14,8 @@ end
 
 -- CrateTeamMember.Main (retail 0x00dce230)
 function Main(quest, me)
-    local resources = quest:RetailResources()
     local predicateResult, predicateResult5, isDistanceBetweenThingsUnder, getCurrentStateGroupType
-    local p0_00, teamExitMarker, thing_38, resource
+    local p0_00, teamExitMarker, thing_38
     local teamId = state:GetInt("TeamID")
     local heroTeam = quest:GetStateInt("HeroTeam")
     local myTeam = state:GetInt("MyTeam")
@@ -131,30 +130,27 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then return end
     quest:EntityStopFollowing(me)
     teamExitMarker = quest:GetNearestWithScriptName(me, "TeamExitMarker")
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00dcec33 end
-    end
-    while not quest:IsActiveThreadTerminating() do
-        if not me:IsPerformingScriptTask() then
-            if teamExitMarker ~= nil and not teamExitMarker:IsNull() then
-                p0_00 = teamExitMarker:GetPos()
+    if me:AcquireControl(4) then
+        while not quest:IsActiveThreadTerminating() do
+            if not me:IsPerformingScriptTask() then
+                if teamExitMarker ~= nil and not teamExitMarker:IsNull() then
+                    p0_00 = teamExitMarker:GetPos()
+                end
+                me:MoveToPosition(p0_00, 0.5, 1, false, true)
             end
-            me:MoveToPosition(p0_00, 0.5, 1, false, true)
-        end
-        if quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then
-            if not quest:IsActiveThreadTerminating() then
-                quest:FadeOutAndKillEntity(me, true, 3.0, true)
-                repeat
-                    quest:NewScriptFrame(me)
-                until quest:IsActiveThreadTerminating()
+            if quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then
+                if not quest:IsActiveThreadTerminating() then
+                    quest:FadeOutAndKillEntity(me, true, 3.0, true)
+                    repeat
+                        quest:NewScriptFrame(me)
+                    until quest:IsActiveThreadTerminating()
+                end
+                break
             end
-            break
-        end
-        quest:NewScriptFrame(me)
+            quest:NewScriptFrame(me)
     end
-    ::LAB_00dcec33::
-    resources:ReleaseResource(resource)
+    end
+    me:ReleaseControl()
 end
 
 -- CrateTeamMember.Init (retail 0x00dcdf60)

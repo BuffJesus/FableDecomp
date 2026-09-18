@@ -12,13 +12,8 @@ end
 
 -- WillWhisper.Main (retail 0x00d68810)
 function Main(quest, me)
-    local resources = quest:RetailResources()
-    local resource
     if not quest:NewScriptFrame(me) then return end
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
-    end
+    if not me:AcquireControl(4) then goto LAB_00d68acf end
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, false)
         quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
@@ -38,7 +33,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d68acf::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
 end
 
 -- WillWhisper.Init (retail 0x00d687d0)

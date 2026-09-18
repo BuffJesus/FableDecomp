@@ -291,7 +291,7 @@ function Main(quest, me)
                                                 movie = resources:StartMovie("")
                                                 quest:StartMovieSequence()
                                                 scratchValue31 = resources:NewResource()
-                                                scratchValue = resources:TryAcquire(0, hero, 4)
+                                                scratchValue = hero:AcquireControl(4)
                                                 while not scratchValue do
                                                     quest:NewScriptFrame(me)
                                                     if quest:IsActiveThreadTerminating() then
@@ -360,13 +360,13 @@ function Main(quest, me)
                                                                     SUB(scratchValue31,0)
                                                                     scratchValue29 = scratchValue31 >> 16
                                                                     scratchValue30 = scratchValue31 >> 24
-                                                                    scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                    scratchValue = hero:AcquireControl(4)
                                                                     while not scratchValue do
                                                                         if not quest:NewScriptFrame(me) then goto FLOW_after_lab_00d54dfa end
                                                                         SUB(scratchValue31,0)
                                                                         scratchValue29 = scratchValue31 >> 16
                                                                         scratchValue30 = scratchValue31 >> 24
-                                                                        scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                        scratchValue = hero:AcquireControl(4)
                                                                     end
                                                                     if quest:IsActiveThreadTerminating() then
                                                                         -- LAB_00d54dfa: (native jump target)
@@ -423,7 +423,7 @@ function Main(quest, me)
                                                                                                                 SUB(resource,0)
                                                                                                                 scratchValue29 = resource >> 16
                                                                                                                 scratchValue30 = resource >> 24
-                                                                                                                scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                                                                scratchValue = hero:AcquireControl(4)
                                                                                                                 while not scratchValue do
                                                                                                                     quest:NewScriptFrame(me)
                                                                                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d55c91_c6
@@ -778,7 +778,7 @@ function Main(quest, me)
                                                                                                         scratchValue28 = resource >> 8
                                                                                                         scratchValue29 = resource >> 16
                                                                                                         scratchValue30 = resource >> 24
-                                                                                                        scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                                                        scratchValue = hero:AcquireControl(4)
                                                                                                         while not scratchValue do
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                                                                                             addNewConversation = 4
@@ -1142,14 +1142,14 @@ function Main(quest, me)
                                                                 SUB(scratchValue31,0)
                                                                 scratchValue29 = scratchValue31 >> 16
                                                                 scratchValue30 = scratchValue31 >> 24
-                                                                scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                scratchValue = hero:AcquireControl(4)
                                                                 while not scratchValue do
                                                                     quest:NewScriptFrame(me)
                                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c27
                                                                     SUB(scratchValue31,0)
                                                                     scratchValue29 = scratchValue31 >> 16
                                                                     scratchValue30 = scratchValue31 >> 24
-                                                                    scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                    scratchValue = hero:AcquireControl(4)
                                                                 end
                                                                 if quest:IsActiveThreadTerminating() then
                                                                     -- LAB_00d54dfa_c27: (native jump target)
@@ -1209,7 +1209,7 @@ function Main(quest, me)
                                                                                                     SUB(resource,0)
                                                                                                     scratchValue29 = resource >> 16
                                                                                                     scratchValue30 = resource >> 24
-                                                                                                    scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                                                    scratchValue = hero:AcquireControl(4)
                                                                                                     while not scratchValue do
                                                                                                         quest:NewScriptFrame(me)
                                                                                                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d55c91_c27
@@ -1547,7 +1547,7 @@ function Main(quest, me)
                                             quest:StartMovieSequence()
                                             scratchValue31 = resources:NewResource()
                                             scratchValue21 = hero
-                                            scratchValue = resources:TryAcquire(0, hero, 4)
+                                            scratchValue = hero:AcquireControl(4)
                                             while not scratchValue do
                                                 quest:NewScriptFrame(me)
                                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53ff2_c28
@@ -1613,14 +1613,14 @@ function Main(quest, me)
                                                                 SUB(scratchValue31,0)
                                                                 scratchValue29 = scratchValue31 >> 16
                                                                 scratchValue30 = scratchValue31 >> 24
-                                                                scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                scratchValue = hero:AcquireControl(4)
                                                                 while not scratchValue do
                                                                     quest:NewScriptFrame(me)
                                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c28
                                                                     SUB(scratchValue31,0)
                                                                     scratchValue29 = scratchValue31 >> 16
                                                                     scratchValue30 = scratchValue31 >> 24
-                                                                    scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                    scratchValue = hero:AcquireControl(4)
                                                                 end
                                                                 if quest:IsActiveThreadTerminating() then
                                                                     -- LAB_00d54dfa_c28: (native jump target)
@@ -1680,7 +1680,7 @@ function Main(quest, me)
                                                                                                     SUB(resource,0)
                                                                                                     scratchValue29 = resource >> 16
                                                                                                     scratchValue30 = resource >> 24
-                                                                                                    scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                                                    scratchValue = hero:AcquireControl(4)
                                                                                                     while not scratchValue do
                                                                                                         quest:NewScriptFrame(me)
                                                                                                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d55c91_c28
@@ -2120,7 +2120,7 @@ function Main(quest, me)
                                             quest:StartMovieSequence()
                                             scratchValue31 = resources:NewResource()
                                             scratchValue21 = hero
-                                            scratchValue = resources:TryAcquire(0, hero, 4)
+                                            scratchValue = hero:AcquireControl(4)
                                             while not scratchValue do
                                                 quest:NewScriptFrame(me)
                                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d53ff2_c29
@@ -2186,14 +2186,14 @@ function Main(quest, me)
                                                                 SUB(scratchValue31,0)
                                                                 scratchValue29 = scratchValue31 >> 16
                                                                 scratchValue30 = scratchValue31 >> 24
-                                                                scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                scratchValue = hero:AcquireControl(4)
                                                                 while not scratchValue do
                                                                     quest:NewScriptFrame(me)
                                                                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d54dfa_c29
                                                                     SUB(scratchValue31,0)
                                                                     scratchValue29 = scratchValue31 >> 16
                                                                     scratchValue30 = scratchValue31 >> 24
-                                                                    scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                    scratchValue = hero:AcquireControl(4)
                                                                 end
                                                                 if quest:IsActiveThreadTerminating() then
                                                                     -- LAB_00d54dfa_c29: (native jump target)
@@ -2253,7 +2253,7 @@ function Main(quest, me)
                                                                                                     SUB(resource,0)
                                                                                                     scratchValue29 = resource >> 16
                                                                                                     scratchValue30 = resource >> 24
-                                                                                                    scratchValue = resources:TryAcquire(0, hero, 4)
+                                                                                                    scratchValue = hero:AcquireControl(4)
                                                                                                     while not scratchValue do
                                                                                                         quest:NewScriptFrame(me)
                                                                                                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d55c91_c29

@@ -16,12 +16,9 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult6, predicateResult, ctr_64, scratchValue, conversationId, conversationId2
     local conversationId3, conversationId4, conversationId5, conversationId6, questionAnswer
-    local conversationId7, switch, movie, resource, scratchValue8
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
-    end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    local conversationId7, switch, movie, scratchValue8
+    if not me:AcquireControl(4) then return end
+    if quest:IsActiveThreadTerminating() then me:ReleaseControl(); return end
     me:SetFriendsWithEverythingFlag(me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
@@ -48,7 +45,7 @@ function Main(quest, me)
             if not state:GetBool("HaveChatted") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
                 state:SetBool("HaveChatted", true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                if 0.0 < quest:GetHealth(me) then
                     scratchValue = 0
                     me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", 0, false, true, false)
                     while me:IsPerformingScriptTask() do
@@ -79,7 +76,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
                     state:SetBool("ChildAppleMode", true)
                 end
-            elseif 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+            elseif 0.0 < quest:GetHealth(me) then
                 scratchValue = 0
                 me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", 0, false, true, false)
                 while me:IsPerformingScriptTask() do
@@ -166,7 +163,7 @@ function Main(quest, me)
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    if 0.0 < quest:GetHealth(me) then
                         me:Speak(hero, "TEXT_QST_028_APPLEGIRL_THANKS", 0, false, true, false)
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00d3e06c end
@@ -213,7 +210,7 @@ function Main(quest, me)
     ::LAB_00d3e1b6::
     quest:DeregisterTimer(scratchValue8)
     ::LAB_00d3e1bf::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
     do return end
     ::LAB_00d3d948::
     quest:PauseAllNonScriptedEntities(false)

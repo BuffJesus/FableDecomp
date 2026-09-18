@@ -40,7 +40,8 @@ class MainBindingTests(unittest.TestCase):
     def test_binding_correspondence_changes_fail_closed(self):
         source = (RAW/'FSE/NewOakValeIntro/NewOakValeIntro.lua').read_text()
         with self.assertRaises(ValueError):lower(source.replace('NOVI_CreatedBeetle', 'MissingBeetle'))
-        with self.assertRaises(ValueError):lower(source.replace('pCVar2 = 0x0', 'pCVar2 = 0x1'))
+        # the binding block now lifts by itself; the deactivation operand is the remaining draft-shape witness
+        with self.assertRaises(ValueError):lower(source.replace('Q__OakValeIntro_PostAttack", nil', 'Q__OakValeIntro_PostAttack", 7'))
         class Changed(RData):
             def bytes_at(self, address, size):
                 raw = super().bytes_at(address, size)

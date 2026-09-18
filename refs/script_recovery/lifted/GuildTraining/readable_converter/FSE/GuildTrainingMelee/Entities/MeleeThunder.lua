@@ -12,15 +12,11 @@ end
 
 -- MeleeThunder.Main (retail 0x00d58080)
 function Main(quest, me)
-    local resources = quest:RetailResources()
-    local resource = resources:NewResource()
     while quest:GetStateInt("TutorialState") ~= 4 do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        if not quest:NewScriptFrame(me) then me:ReleaseControl(); return end
     end
     if not quest:IsActiveThreadTerminating() then
-        while not resources:TryAcquire(resource, me, 4) do
-            if not quest:NewScriptFrame(me) then goto LAB_00d582ed end
-        end
+        if not me:AcquireControl(4) then goto LAB_00d582ed end
         if not quest:IsActiveThreadTerminating() then
             while quest:GetStateInt("TutorialState") == 4 do
                 if not quest:NewScriptFrame(me) then goto LAB_00d582ed end
@@ -30,9 +26,7 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    while not resources:TryAcquire(resource, me, 4) do
-                        if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
-                    end
+                    if not me:AcquireControl(4) then goto LAB_00d58297 end
                     if not quest:IsActiveThreadTerminating() then
                         while quest:GetStateInt("TutorialState") == 6 do
                             if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
@@ -45,13 +39,13 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00d58297::
-                resources:ReleaseResource(resource)
+                me:ReleaseControl()
                 return
             end
         end
     end
     ::LAB_00d582ed::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
 end
 
 -- MeleeThunder.Init (retail 0x00d58050)

@@ -12,21 +12,16 @@ end
 
 -- SpeedFriend.Main (retail 0x00d408b0)
 function Main(quest, me)
-    local resources = quest:RetailResources()
-    local resource
     if not quest:NewScriptFrame(me) then return end
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d409c5 end
+    if me:AcquireControl(4) then
+        if not quest:IsActiveThreadTerminating() then
+            quest:SetIsPushableByHero(me, false)
+            repeat
+                quest:NewScriptFrame(me)
+            until quest:IsActiveThreadTerminating()
     end
-    if not quest:IsActiveThreadTerminating() then
-        quest:SetIsPushableByHero(me, false)
-        repeat
-            quest:NewScriptFrame(me)
-        until quest:IsActiveThreadTerminating()
     end
-    ::LAB_00d409c5::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
 end
 
 -- SpeedFriend.Init (retail 0x00d40870)

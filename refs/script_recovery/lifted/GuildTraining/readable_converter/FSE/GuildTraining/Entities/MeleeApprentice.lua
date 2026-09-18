@@ -15,7 +15,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, predicateResult, scratchValue3, movie, position, meleeApprenticeMarker
-    local movie2, movie3, movie4, movie5, movie6, resource
+    local movie2, movie3, movie4, movie5, movie6
     local function __cleanup_LAB_00d419fe()
         movie = movie6
         resources:DestroyMovie(movie)
@@ -25,13 +25,12 @@ function Main(quest, me)
         resources:DestroyMovie(movie)
         resources:ReleaseResource(0)
     end
-    resource = resources:NewResource()
-    scratchValue = resources:TryAcquire(resource, me, 4)
+    scratchValue = me:AcquireControl(4)
     while not scratchValue do
         if not quest:NewScriptFrame(me) then return end
-        scratchValue = resources:TryAcquire(resource, me, 4)
+        scratchValue = me:AcquireControl(4)
     end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    if quest:IsActiveThreadTerminating() then me:ReleaseControl(); return end
     quest:EntitySheatheWeapons(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, true)
@@ -50,10 +49,10 @@ function Main(quest, me)
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
                 scratchValue3 = quest:GetMasterGameState("MeleeApprenticeNeededForCutscene")
             end
-            scratchValue = resources:TryAcquire(0, me, 4)
+            scratchValue = me:AcquireControl(4)
             while not scratchValue do
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
-                scratchValue = resources:TryAcquire(0, me, 4)
+                scratchValue = me:AcquireControl(4)
             end
         end
         if quest:GetStateBool("StartedMeleeTesting") then
@@ -63,10 +62,10 @@ function Main(quest, me)
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
                 scratchValue3 = quest:GetStateBool("StartedMeleeTesting")
             end
-            scratchValue = resources:TryAcquire(0, me, 4)
+            scratchValue = me:AcquireControl(4)
             while not scratchValue do
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
-                scratchValue = resources:TryAcquire(0, me, 4)
+                scratchValue = me:AcquireControl(4)
             end
             me:ClearCommands()
             quest:EntitySheatheWeapons(me, false)

@@ -13,14 +13,10 @@ end
 -- TC_BanditGuard.Main (retail 0x00dfb320)
 function Main(quest, me)
     local hero = quest:GetHero()
-    local resources = quest:RetailResources()
     local predicateResult, predicateResult3, conversationId, conversationId2, conversationId3
-    local resource
     if not quest:NewScriptFrame(me) then return end
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 2) do
-        if not quest:NewScriptFrame(me) then goto LAB_00dfb974 end
-    end
+    if not me:AcquireControl(2) then goto LAB_00dfb974 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00dfb974 end
     while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
         if not quest:NewScriptFrame(me) then goto LAB_00dfb974 end
     end
@@ -101,7 +97,7 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
     until quest:IsActiveThreadTerminating()
     ::LAB_00dfb974::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
 end
 
 -- TC_BanditGuard.Init (retail 0x00cdebb0)

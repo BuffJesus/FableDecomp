@@ -12,19 +12,14 @@ end
 
 -- KillBird.Main (retail 0x00d43190)
 function Main(quest, me)
-    local resources = quest:RetailResources()
-    local resource
     if not quest:NewScriptFrame(me) then return end
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d43263 end
+    if me:AcquireControl(4) then
+        while true do
+            if quest:IsActiveThreadTerminating() then break end
+            quest:NewScriptFrame(me)
     end
-    while true do
-        if quest:IsActiveThreadTerminating() then break end
-        quest:NewScriptFrame(me)
     end
-    ::LAB_00d43263::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
 end
 
 -- KillBird.Init (retail 0x00d430f0)

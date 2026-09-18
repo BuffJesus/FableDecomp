@@ -803,7 +803,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 211,
+          "lines": 198,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -814,17 +814,17 @@
           "readableLocalNames": {},
           "nativeJumps": [
             "goto FLOW_after_lab_00dd1d98;",
-            "goto FLOW_after_lab_00dd1d98_125;",
+            "goto FLOW_after_lab_00dd1d98_109;",
             "goto LAB_00dd1d98;",
             "goto LAB_00dd1e95;",
             "if (bVar4) goto LAB_00dd1e70;",
             "if (bVar4) goto LAB_00dd1e70_c1;",
-            "if (native_arg_sequence_2) goto LAB_00dd1e70;",
-            "if (native_arg_sequence_2) goto LAB_00dd1e70_c1;"
+            "if (native_arg_sequence_1) goto LAB_00dd1e70;",
+            "if (native_arg_sequence_1) goto LAB_00dd1e70_c1;"
           ],
           "nativeLabels": [
             "FLOW_after_lab_00dd1d98",
-            "FLOW_after_lab_00dd1d98_125",
+            "FLOW_after_lab_00dd1d98_109",
             "LAB_00dd1d98",
             "LAB_00dd1e70",
             "LAB_00dd1e70_c1",

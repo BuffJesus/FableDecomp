@@ -506,7 +506,15 @@ def fold_cutscenes(lines):
     names = '|'.join(re.escape(x) for x in objects)
     teardown = (r'(?:[ \t]*quest:FixMovieSequenceCamera\(false\)\n|[ \t]*quest:PauseAllNonScriptedEntities\(false\)\n|'
                 r'[ \t]*resources:(?:DestroyMovie|DestroyActorMap|ReleaseResource)\((?:' + names + r')\)\n)')
-    new, n_end = re.subn(r'^((?:' + teardown + r')+)', lambda m: re.match(r'[ \t]*', m.group(1)).group(0) + 'quest:EndCutscene()\n', new, flags=re.M)
+    def end(m):
+        # a lone camera release mid-cutscene (before a tutorial shown with the entities still paused) is not the end
+        if 'PauseAllNonScriptedEntities' not in m.group(1) and 'resources:' not in m.group(1):
+            return m.group(1)
+        return re.match(r'[ \t]*', m.group(1)).group(0) + 'quest:EndCutscene()\n'
+    new, n_end = re.subn(r'^((?:' + teardown + r')+)', end, new, flags=re.M)
+    # EndCutscene is idempotent: an end that only falls through labels into another end is the same end
+    new = re.sub(r'^[ \t]*quest:EndCutscene\(\)\n(?=(?:[ \t]*::\w+::\n)*[ \t]*quest:EndCutscene\(\)\n)', '', new, flags=re.M)
+    n_end = new.count('quest:EndCutscene()')
     if not n_end:
         return lines, 0
     body = re.sub(r'^\s*local [\w, ]+\n', '', new, flags=re.M)
@@ -1557,6 +1565,48 @@ def merge_first_assignments(lines):
     return lines, count
 
 
+def _negate_all(cond):
+    """De Morgan over a top-level `or` / `and` chain of comparisons; falls back to `_negate`."""
+    ops = _top_level_operators(cond)
+    if 'or' in ops and 'and' not in ops:
+        parts = [p.strip() for p in re.split(r' or ', cond)]
+        if all(_atomic(p) or len(_top_level_operators(p)) == 1 for p in parts):
+            return ' and '.join(_negate(p) for p in parts)
+    return _negate(cond)
+
+
+def fold_flag_clears(lines):
+    """`if COND then X = false end; if X then` (the compiler's flag re-materialisation: a boolean cleared under a
+    condition and tested right after) -> `if X and not COND then` when the branch is X's last read."""
+    count = 0
+    structure = _structure(lines)
+    for i in range(len(lines) - 3):
+        m = re.fullmatch(r'(\s*)if (.+) then\n', lines[i])
+        if not m:
+            continue
+        indent, cond = m.group(1), m.group(2)
+        c = re.fullmatch(re.escape(indent) + r'    (\w+) = false\n', lines[i + 1])
+        if not c or lines[i + 2] != indent + 'end\n' or lines[i + 3] != f'{indent}if {c.group(1)} then\n':
+            continue
+        x = c.group(1)
+        defs, reads = _reads_and_defs(structure, x)
+        if reads not in ([i + 3], [i, i + 3]) or i + 1 not in defs:
+            continue
+        if re.search(r'\b' + x + r'\b', cond):
+            # `if not X or C then X = false end`: with X true the `not X` term is gone
+            ops = _top_level_operators(cond)
+            parts = [p.strip() for p in re.split(r' or ', cond)] if 'or' in ops and 'and' not in ops else [cond]
+            parts = [p for p in parts if p != f'not {x}']
+            if not parts or any(re.search(r'\b' + x + r'\b', p) for p in parts):
+                continue
+            cond = ' or '.join(parts)
+        lines[i] = lines[i + 1] = lines[i + 2] = ''
+        lines[i + 3] = f'{indent}if {x} and {_negate_all(cond)} then\n'
+        count += 1
+        break
+    return lines, count
+
+
 def prune_self_assignments(lines):
     count = 0
     for i, l in enumerate(lines):
@@ -1667,6 +1717,7 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         total += run('literals', propagate_literals)
         total += run('copies', propagate_copies)
         total += run('selfAssignments', prune_self_assignments)
+        total += run('flagClears', fold_flag_clears)
         total += run('uintFixups', fold_uint_fixups)
         total += run('freshGuards', simplify_fresh_guards)
         total += run('constantConditions', fold_constant_conditions)
@@ -1686,11 +1737,84 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
                 break
         if not run('deadTerminationChecks', prune_dead_termination_checks, pure_functions):
             break
+    if run('controlAcquires', fold_control_acquires):
+        for _ in range(20):
+            if not folds():
+                break
     run('parentheses', strip_redundant_parens)
     run('cosmetics', cosmetics)
     run('firstAssignments', merge_first_assignments)
     run('freeSuffixes', drop_free_suffixes)
     return ''.join(lines), stats
+
+
+RE_ACQUIRE_LOOP = re.compile(
+    r'^(?P<ind>[ \t]*)while not resources:TryAcquire\((?P<R>\w+), (?P<T>\w+), (?P<P>\d+)\) do\n'
+    r'(?P=ind)    if not quest:NewScriptFrame\((?:me)?\) then (?P<clean>[^\n]+?) end\n'
+    r'(?P=ind)end\n', re.M)
+RE_ACQUIRE_STMT = re.compile(r'^(?P<ind>[ \t]*)(?P<lhs>\w+ = )?resources:TryAcquire\((?P<R>\w+), (?P<T>\w+), (?P<P>\d+)\)\n', re.M)
+
+
+def fold_control_acquires(lines):
+    """`R = resources:NewResource(); while not resources:TryAcquire(R, T, P) do if not NewScriptFrame() then
+    ... end end` is ForgeFSE's `T:AcquireControl(P)` (LuaEntityAPI::AcquireControl runs exactly that retry loop
+    and returns false when the thread terminates meanwhile), and `resources:ReleaseResource(R)` is
+    `T:ReleaseControl()`. A resource folds only when every acquisition of it names the same thing and nothing
+    else reads it; a resource that is also an actor in a cutscene stays (fold_cutscenes owns those)."""
+    text = ''.join(lines)
+    if 'resources:TryAcquire(' not in text:
+        return lines, 0
+    targets = {}
+    for m in RE_ACQUIRE_STMT.finditer(text):
+        targets.setdefault(m.group('R'), set()).add(m.group('T'))
+    for m in RE_ACQUIRE_LOOP.finditer(text):
+        targets.setdefault(m.group('R'), set()).add(m.group('T'))
+    foldable = set()
+    for R, things in targets.items():
+        if len(things) != 1 or R == '0':
+            continue
+        rest = RE_ACQUIRE_LOOP.sub('', text)
+        rest = RE_ACQUIRE_STMT.sub('', rest)
+        rest = re.sub(r'^[ \t]*(?:local )?' + re.escape(R) + r' = resources:NewResource\(\)\n', '', rest, flags=re.M)
+        rest = re.sub(r'resources:ReleaseResource\(' + re.escape(R) + r'\)', '', rest)
+        rest = re.sub(r'resources:ScriptThing\(' + re.escape(R) + r'\)', '', rest)     # the resource's thing is the acquired one
+        rest = re.sub(r'^\s*local [\w, ]+\n', '', rest, flags=re.M)
+        if not re.search(r'\b' + re.escape(R) + r'\b', rest):
+            foldable.add(R)
+    foldable.add('0')                                   # the lifter lost the resource operand: the thing is what matters
+    if not foldable:
+        return lines, 0
+    count = 0
+
+    def loop(m):
+        nonlocal count
+        if m.group('R') not in foldable:
+            return m.group(0)
+        count += 1
+        clean = re.sub(r'resources:ReleaseResource\(' + re.escape(m.group('R')) + r'\); ?', '', m.group('clean')).strip()
+        return f"{m.group('ind')}if not {m.group('T')}:AcquireControl({m.group('P')}) then {clean} end\n"
+
+    def stmt(m):
+        nonlocal count
+        if m.group('R') not in foldable:
+            return m.group(0)
+        count += 1
+        return f"{m.group('ind')}{m.group('lhs') or ''}{m.group('T')}:AcquireControl({m.group('P')})\n"
+    new = RE_ACQUIRE_LOOP.sub(loop, text)
+    new = RE_ACQUIRE_STMT.sub(stmt, new)
+    gone = []
+    for R in foldable - {'0'}:
+        T = next(iter(targets[R]))
+        new = re.sub(r'^[ \t]*(?:local )?' + re.escape(R) + r' = resources:NewResource\(\)\n', '', new, flags=re.M)
+        new = re.sub(r'resources:ReleaseResource\(' + re.escape(R) + r'\)', f'{T}:ReleaseControl()', new)
+        new = re.sub(r'resources:ScriptThing\(' + re.escape(R) + r'\)', T, new)
+        gone.append(R)
+    if 'resources:' not in new:
+        new = re.sub(r'^\s*local resources = quest:RetailResources\(\)\n', '', new, flags=re.M)
+    lines = new.splitlines(keepends=True)
+    for R in gone:
+        _remove_declaration(lines, R)
+    return lines, count
 
 
 def hoist_requires(source):

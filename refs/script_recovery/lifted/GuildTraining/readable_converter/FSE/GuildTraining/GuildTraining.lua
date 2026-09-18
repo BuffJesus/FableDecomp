@@ -612,8 +612,8 @@ function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
     local movie, predicateResult5, predicateResult6, predicateResult, scratchValue, conversationId
     local scratchValue15, scratchValue16, scratchValue17, heroWarnings, scratchValue22
-    local scratchValue23, getThingWithScriptName, scratchValue24, scratchValue25, resource, actorMap
-    local resource4, conversationId2, scratchValue26, scratchValue27
+    local scratchValue23, getThingWithScriptName, scratchValue24, scratchValue25, actorMap, resource
+    local conversationId2, scratchValue26, scratchValue27
     getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
     scratchValue15 = getThingWithScriptName - 0 >> 31
     scratchValue24 = 0
@@ -762,40 +762,37 @@ function CheckFriendlyAttacks(quest)
             if 2 < quest:GetStateInt("HeroWarnings") then
                 quest:SetMasterGameState("GuildWarningOccuring", true)
                 if quest:GetMasterGameState("SkillTestOccuring") == 0 and quest:GetMasterGameState("WillTestOccuring") == 0 then
-                    resource4 = resources:NewResource()
-                    while not resources:TryAcquire(resource4, scratchValue26, 4) do
+                    resource = resources:NewResource()
+                    while not resources:TryAcquire(resource, scratchValue26, 4) do
                         if not quest:NewScriptFrame() then goto LAB_00d45db2 end
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        resource = resources:NewResource()
-                        while not resources:TryAcquire(resource, hero, 4) do
-                            if not quest:NewScriptFrame() then goto LAB_00d45da9 end
+                        if hero:AcquireControl(4) then
+                            if not quest:IsActiveThreadTerminating() then
+                                actorMap = resources:NewActorMap()
+                                -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
+                                resources:SetActor(amStack_1c, "MAZE", resource)
+                                movie = resources:StartMovie("")
+                                quest:StartMovieSequence()
+                                quest:PauseAllNonScriptedEntities(true)
+                                conversationId2 = quest:AddNewConversation(hero, false, false)
+                                quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
+                                quest:Pause(2.0)
+                                quest:FixMovieSequenceCamera(true)
+                                resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
+                                quest:FixMovieSequenceCamera(false)
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie)
+                                resources:DestroyActorMap(actorMap)
+                                resources:ReleaseResource(amStack_1c)
+                                resources:ReleaseResource(conversationId2)
+                                goto LAB_00d45c9d
                         end
-                        if not quest:IsActiveThreadTerminating() then
-                            actorMap = resources:NewActorMap()
-                            -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
-                            resources:SetActor(amStack_1c, "MAZE", resource4)
-                            movie = resources:StartMovie("")
-                            quest:StartMovieSequence()
-                            quest:PauseAllNonScriptedEntities(true)
-                            conversationId2 = quest:AddNewConversation(hero, false, false)
-                            quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
-                            quest:Pause(2.0)
-                            quest:FixMovieSequenceCamera(true)
-                            resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
-                            quest:FixMovieSequenceCamera(false)
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie)
-                            resources:DestroyActorMap(actorMap)
-                            resources:ReleaseResource(amStack_1c)
-                            resources:ReleaseResource(conversationId2)
-                            goto LAB_00d45c9d
                         end
-                        ::LAB_00d45da9::
-                        resources:ReleaseResource(resource)
+                        hero:ReleaseControl()
                     end
                     ::LAB_00d45db2::
-                    resources:ReleaseResource(resource4)
+                    resources:ReleaseResource(resource)
                     return
                 end
                 while quest:GetMasterGameState("SkillTestOccuring") ~= 0 or quest:GetMasterGameState("WillTestOccuring") ~= 0 do

@@ -103,7 +103,7 @@ function Main(quest, me)
                             if scratchValue == 1 then
                                 if not scratchValue4 then
                                     state:SetInt("BirdMode", 1)
-                                    scratchValue4 = resources:TryAcquire(0, hero, 4)
+                                    scratchValue4 = hero:AcquireControl(4)
                                     while not scratchValue4 do
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
@@ -113,7 +113,7 @@ function Main(quest, me)
                                             resources:ReleaseResource(resource)
                                             return
                                         end
-                                        scratchValue4 = resources:TryAcquire(0, hero, 4)
+                                        scratchValue4 = hero:AcquireControl(4)
                                     end
                                     if not quest:IsActiveThreadTerminating() then
                                         scratchValue13 = resources:NewActorMap()
@@ -175,7 +175,7 @@ function Main(quest, me)
                             if scratchValue == 1 then
                                 if not scratchValue4 then
                                     state:SetInt("BirdMode", 1)
-                                    scratchValue4 = resources:TryAcquire(0, hero, 4)
+                                    scratchValue4 = hero:AcquireControl(4)
                                     while not scratchValue4 do
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
@@ -183,7 +183,7 @@ function Main(quest, me)
                                             __cleanup_LAB_00d4e91f()
                                             return
                                         end
-                                        scratchValue4 = resources:TryAcquire(0, hero, 4)
+                                        scratchValue4 = hero:AcquireControl(4)
                                     end
                                     if not quest:IsActiveThreadTerminating() then
                                         scratchValue13 = resources:NewActorMap()

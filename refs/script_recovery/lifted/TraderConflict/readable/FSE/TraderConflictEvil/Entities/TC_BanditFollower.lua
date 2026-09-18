@@ -14,9 +14,8 @@ end
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult8, conversationId, conversationId2, movie, resource
+    local predicateResult, predicateResult8, conversationId, conversationId2, movie
     if not quest:NewScriptFrame(me) then return end
-    resource = resources:NewResource()
     quest:EntityAttachToScript(me, quest:GetActiveQuestName())
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
     quest:MiniMapAddMarker(me, "HUD_ORB_GREEN_SMALL")
@@ -42,27 +41,26 @@ function Main(quest, me)
             end
             ::FLOW_after_lab_00df82d0::
             if predicateResult then
-                while not resources:TryAcquire(resource, me, 4) do
-                    if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
-                end
+                if not me:AcquireControl(4) then goto LAB_00df87fe end
+                if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
                 movie = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                if 0.0 < quest:GetHealth(me) then
                     me:Speak(hero, "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", 2, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
-                            resources:ReleaseResource(resource)
+                            me:ReleaseControl()
                             return
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
-                        resources:ReleaseResource(resource)
+                        me:ReleaseControl()
                         return
                     end
                 end
@@ -118,7 +116,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00df87fe::
-    resources:ReleaseResource(resource)
+    me:ReleaseControl()
 end
 
 -- TC_BanditFollower.Init (retail 0x00df8040)

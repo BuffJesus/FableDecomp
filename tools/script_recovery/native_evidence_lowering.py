@@ -706,6 +706,40 @@ def fold_inline_constructors(text):
     return RE_INLINE_CTOR.sub(repl, text)
 
 
+RE_ALIAS_BEFORE_CTOR = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<p>\w+) = (?P<obj>\w+);[ \t]*\r?\n'
+    r'(?P<between>(?:[ \t]*\w+ = [^;\n]+;[ \t]*\r?\n){0,2}?)'
+    r'(?P<ctor>[ \t]*(?P=obj) = (?:RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|STRINGMAP_New|QUESTTHING_Empty)\([^;\n]*\);[ \t]*\r?\n)', re.M)
+
+
+RE_NOOP_COMMA_ASSIGN = re.compile(r'\((?P<neg>!?)(?P<x>\w+)\) (?P<op>\|\||&&) \((?P=x) = (?P<v>true|false), ')
+
+
+def drop_noop_comma_assignments(text):
+    """`if ((!bVar4) || (bVar4 = true, COND))`: the comma assignment runs only when the short-circuit left side
+    fell through, i.e. when the flag already holds that value (the compiler re-materialised a register). Dropping
+    it leaves an ordinary condition for the lifter instead of an argument sequence."""
+    def repl(m):
+        known = (m.group('op') == '||') == (m.group('neg') == '!')
+        if (m.group('v') == 'true') != known:
+            return m.group(0)
+        return f"({m.group('neg')}{m.group('x')}) {m.group('op')} ("
+    return RE_NOOP_COMMA_ASSIGN.sub(repl, text)
+
+
+def hoist_object_aliases(text):
+    """Ghidra hoists a call's register set-up above the object's inlined construction
+    (`pScriptObject = local_10; ePriority = 4; local_10[0] = &PTR_vtable`): once the vtable store became
+    `local_10 = RESOURCE_NewResource()`, the pointer alias reads the object before it exists. Move the alias
+    below the construction so the lifter sees a plain copy of a live object."""
+    def repl(m):
+        between = m.group('between')
+        if re.search(r'\b(?:' + re.escape(m.group('p')) + '|' + re.escape(m.group('obj')) + r')\b', between):
+            return m.group(0)
+        return f"{between}{m.group('ctor')}{m.group('ind')}{m.group('p')} = {m.group('obj')};\n"
+    return RE_ALIAS_BEFORE_CTOR.sub(repl, text)
+
+
 def _vtable_only_body(byte_at, target):
     """`8B C1 C7 00 vt C3` / `C7 01 vt C3`: a ctor/dtor that only installs a vtable."""
     if byte_at is None:
@@ -1302,7 +1336,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
     text = drop_trivial_base_calls(text, getattr(spec, 'call_labels', {}), getattr(spec, 'byte_at', None))
-    text = fold_inline_constructors(text)
+    text = hoist_object_aliases(fold_inline_constructors(text))
+    text = drop_noop_comma_assignments(text)
     text = fold_inline_destructors(text)
     text = canonicalise_stack_objects(text)
     text = fold_inline_destructors(text)    # again: the canonical names may only now agree across the three lines

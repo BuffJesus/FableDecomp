@@ -345,10 +345,10 @@ function Main(quest, me)
                 quest:RemoveQuestInfoElement(scratchValue16)
                 quest:SetStateInt("TutorialState", 0)
                 resource2 = resources:NewResource()
-                scratchValue4 = resources:TryAcquire(0, hero, 4)
+                scratchValue4 = hero:AcquireControl(4)
                 while not scratchValue4 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d61370 end
-                    scratchValue4 = resources:TryAcquire(0, hero, 4)
+                    scratchValue4 = hero:AcquireControl(4)
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d61370 end
                 actorMap = resources:NewActorMap()
