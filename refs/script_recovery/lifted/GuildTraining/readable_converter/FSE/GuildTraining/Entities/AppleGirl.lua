@@ -65,6 +65,7 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
                 quest:DeregisterTimer(timerId)
+                resources:ReleaseResource(resource)
                 do return end
                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
             end

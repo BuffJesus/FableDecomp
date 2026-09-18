@@ -17,11 +17,11 @@ function Main(quest, me)
     local function __cleanup_LAB_00d419fe()
         pCVar9 = xStack_a4
         resources:DestroyMovie(pCVar9)
-        resources:ReleaseResource(0)
+        resources:ReleaseResource(xStack_f8)
     end
     local function __cleanup_LAB_00d41a02()
         resources:DestroyMovie(pCVar9)
-        resources:ReleaseResource(0)
+        resources:ReleaseResource(xStack_f8)
     end
     xStack_f8 = resources:NewResource()
     bVar3 = false
@@ -36,6 +36,7 @@ function Main(quest, me)
             if false then
                 -- TODO(native): (**(code **)((int)xStack_e8 + 4))();
             end
+            resources:ReleaseResource(xStack_f8)
             return
         end
         bVar3 = resources:TryAcquire(xStack_f8, me, 4)
@@ -58,13 +59,14 @@ function Main(quest, me)
     repeat
         if bVar3 then
             r1 = nil
+            resources:ReleaseResource(xStack_f8)
             return
         end
         if quest:GetMasterGameState("MeleeApprenticeNeededForCutscene") ~= 0 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
             bVar3 = false
@@ -76,7 +78,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_f8)
                     return
                 end
                 cVar5 = quest:GetMasterGameState("MeleeApprenticeNeededForCutscene")
@@ -84,27 +86,27 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
             bVar3 = false
             if bVar3 ~= 0 then
             end
-            bVar3 = resources:TryAcquire(0, me, 4)
+            bVar3 = resources:TryAcquire(xStack_f8, me, 4)
             while not bVar3 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_f8)
                     return
                 end
-                bVar3 = resources:TryAcquire(0, me, 4)
+                bVar3 = resources:TryAcquire(xStack_f8, me, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
         end
@@ -112,7 +114,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
             bVar3 = false
@@ -124,7 +126,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_f8)
                     return
                 end
                 cVar5 = quest:GetStateBool("StartedMeleeTesting")
@@ -132,27 +134,27 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
             bVar3 = false
             if bVar3 ~= 0 then
             end
-            bVar3 = resources:TryAcquire(0, me, 4)
+            bVar3 = resources:TryAcquire(xStack_f8, me, 4)
             while not bVar3 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_f8)
                     return
                 end
-                bVar3 = resources:TryAcquire(0, me, 4)
+                bVar3 = resources:TryAcquire(xStack_f8, me, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
             me:ClearCommands()
@@ -163,14 +165,14 @@ function Main(quest, me)
         bVar4 = not alive
         if bVar3 then
             if bVar4 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
             if not __native_entity_state:GetStateBool("WillWoodsChatDone") then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_f8)
                     return
                 end
                 pCVar6 = quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK")
@@ -187,14 +189,14 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
-                        resources:ReleaseResource(0)
+                        resources:ReleaseResource(xStack_f8)
                         return
                     end
                     me:ClearCommands()
                     xStack_74 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    x_stk_18 = resources:ScriptThing(0)
+                    x_stk_18 = resources:ScriptThing(xStack_f8)
                     pCVar6 = x_stk_18
                     fret_0 = quest:GetHealth(pCVar6)
                     fVar2 = 0.0
@@ -245,7 +247,7 @@ function Main(quest, me)
             end
         else
             if bVar4 then
-                resources:ReleaseResource(0)
+                resources:ReleaseResource(xStack_f8)
                 return
             end
             cVar5 = me:IsTalkedToByHero()
@@ -253,7 +255,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_f8)
                     return
                 end
                 me:ClearCommands()
@@ -262,13 +264,13 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
-                        resources:ReleaseResource(0)
+                        resources:ReleaseResource(xStack_f8)
                         return
                     end
                     xStack_94 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    x_stk_48 = resources:ScriptThing(0)
+                    x_stk_48 = resources:ScriptThing(xStack_f8)
                     pCVar6 = x_stk_48
                     fret_00 = quest:GetHealth(pCVar6)
                     fVar2 = 0.0
@@ -312,13 +314,13 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then
-                            resources:ReleaseResource(0)
+                            resources:ReleaseResource(xStack_f8)
                             return
                         end
                         xStack_84 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        x_stk_3c = resources:ScriptThing(0)
+                        x_stk_3c = resources:ScriptThing(xStack_f8)
                         pCVar6 = x_stk_3c
                         fret_01 = quest:GetHealth(pCVar6)
                         fVar2 = 0.0
@@ -362,7 +364,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then
-                            resources:ReleaseResource(0)
+                            resources:ReleaseResource(xStack_f8)
                             return
                         end
                         bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
@@ -370,13 +372,13 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar3 then
                             if bVar4 then
-                                resources:ReleaseResource(0)
+                                resources:ReleaseResource(xStack_f8)
                                 return
                             end
                             xStack_64 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
-                            x_stk_24 = resources:ScriptThing(0)
+                            x_stk_24 = resources:ScriptThing(xStack_f8)
                             pCVar6 = x_stk_24
                             fret_02 = quest:GetHealth(pCVar6)
                             fVar2 = 0.0
@@ -398,7 +400,7 @@ function Main(quest, me)
                                         quest:PauseAllNonScriptedEntities(false)
                                         pCVar9 = xStack_64
                                         resources:DestroyMovie(pCVar9)
-                                        resources:ReleaseResource(0)
+                                        resources:ReleaseResource(xStack_f8)
                                         return
                                     end
                                     iVar11 = me:IsPerformingScriptTask()
@@ -417,13 +419,13 @@ function Main(quest, me)
                             pCVar9 = xStack_64
                         else
                             if bVar4 then
-                                resources:ReleaseResource(0)
+                                resources:ReleaseResource(xStack_f8)
                                 return
                             end
                             xStack_a4 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
-                            x_stk_c = resources:ScriptThing(0)
+                            x_stk_c = resources:ScriptThing(xStack_f8)
                             pCVar6 = x_stk_c
                             fret_03 = quest:GetHealth(pCVar6)
                             fVar2 = 0.0
@@ -481,7 +483,7 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then
                     -- LAB_00d41a07: (native jump target)
-                    resources:ReleaseResource(0)
+                    resources:ReleaseResource(xStack_f8)
                     return
                 end
                 if not (r1 ~= nil and not r1:IsNull()) then

@@ -12,39 +12,25 @@ end
 
 -- Artefact.Main (retail 0x00dcdc50)
 function Main(quest, me)
-    local predicateResult, isActiveThreadTerminating
-    local function __cleanup_LAB_00dcddcf()
-        banditTeamCrateDrop = nil
-    end
-    isActiveThreadTerminating = false
+    local predicateResult2
+    predicateResult2 = false
     local banditTeamCrateDrop = quest:GetThingWithScriptName("BanditTeamCrateDrop")
-    local scratchValue = quest:IsActiveThreadTerminating()
     repeat
-        if scratchValue then
-            return
-        end
+        if quest:IsActiveThreadTerminating() then return end
         if quest:IsDistanceBetweenThingsUnder(me, banditTeamCrateDrop, 3.0) then
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dcddcf(); return end
-            predicateResult = quest:IsActiveThreadTerminating()
             if not me:IsBeingCarriedBy("SCRIPT_NAME_HERO") then
-                if predicateResult then return end
                 quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") - 1)
                 quest:SetMasterGameState("OFBRCratesStolen", true)
                 quest:RemoveThing(me, false, true)
                 return
             end
-            if predicateResult then
-                return
-            end
-            if isActiveThreadTerminating then quest:NewScriptFrame(me); scratchValue = quest:IsActiveThreadTerminating(); goto continue_1 end
+            if predicateResult2 then quest:NewScriptFrame(me); goto continue_1 end
             if quest:IsActiveThreadTerminating() then return end
-            isActiveThreadTerminating = true
+            predicateResult2 = true
         else
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dcddcf(); return end
-            isActiveThreadTerminating = false
+            predicateResult2 = false
         end
         quest:NewScriptFrame(me)
-        scratchValue = quest:IsActiveThreadTerminating()
         ::continue_1::
     until false
 end

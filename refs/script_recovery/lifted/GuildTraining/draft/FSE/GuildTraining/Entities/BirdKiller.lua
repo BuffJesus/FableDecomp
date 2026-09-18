@@ -161,6 +161,7 @@ function Main(quest, me)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_78)
                                 quest:DeregisterTimer(timerId)
+                                resources:ReleaseResource(xStack_8c)
                                 return
                             end
                             iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -274,6 +275,7 @@ function Main(quest, me)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_78)
                                 quest:DeregisterTimer(timerId)
+                                resources:ReleaseResource(xStack_8c)
                                 return
                             end
                             iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()

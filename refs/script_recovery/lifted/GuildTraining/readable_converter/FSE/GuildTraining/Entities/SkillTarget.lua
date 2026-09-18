@@ -16,9 +16,10 @@ local dummyNumber, speed, dummyWorth
 
 -- SkillTarget.Main (retail 0x00d41d00)
 function Main(quest, me)
-    local scratchValue, predicateResult, scratchValue2, scratchValue3, scratchValue4, scratchValue29
-    local conversationId, scratchValue30, theGuildmaster, skillApprentice, theRealGuildmaster
-    local skillApprentice2, scratchValue36, scratchValue37, timerId
+    local predicateResult4, scratchValue, predicateResult, scratchValue4, scratchValue5
+    local readGlobalGameDataFloat, getTimer, conversationId, conversationId2, conversationId3
+    local conversationId4, i_stk_16c_1, theGuildmaster, skillApprentice, theRealGuildmaster
+    local skillApprentice2, scratchValue41, getAngleXY, timerId
     local hero = quest:GetHero()
     local function __cleanup_LAB_00d42ef8()
         quest:DeregisterTimer(timerId)
@@ -26,40 +27,40 @@ function Main(quest, me)
     local function __cleanup_LAB_00d42f02()
         quest:DeregisterTimer(timerId)
     end
-    scratchValue37 = me:GetAngleXY()
+    getAngleXY = me:GetAngleXY()
     if dummyNumber == 1 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummySegements)))
-        scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummyWorth)
+        readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummyWorth)
     elseif dummyNumber == 2 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummySegements)))
-        scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummyWorth)
+        readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummyWorth)
     else
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummySegements)))
-        scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummyWorth)
+        readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummyWorth)
     end
-    dummyWorth = math.tointeger(math.modf(scratchValue4))
+    dummyWorth = math.tointeger(math.modf(readGlobalGameDataFloat))
     if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
     if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
     while quest:GetMasterGameState("SkillTrainingStarted") ~= 1 do
         if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
     end
-    scratchValue = false
-    scratchValue29 = 0
+    predicateResult4 = false
+    getTimer = 0
     repeat
-        if scratchValue then
+        if predicateResult4 then
             return
         end
-        scratchValue3 = 0
+        scratchValue5 = 0
         quest:SetMasterGameState("SkillDummyReset", false)
         repeat
             if not quest:NewScriptFrame(me) then return end
             -- TODO(native): xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;
             -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)
-            scratchValue29 = scratchValue29 + 1
-        until scratchValue29 == speed
+            getTimer = getTimer + 1
+        until getTimer == speed
         if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
         if quest:GetMasterGameState("MovingDummiesNeeded") == 0 then
             if quest:IsActiveThreadTerminating() then return end
@@ -72,14 +73,14 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
             -- TODO(native): *piVar1 = *piVar1 + 1;
-            scratchValue29 = 0
+            getTimer = 0
             quest:EntitySetTargetable(me, false)
             repeat
                 if not quest:NewScriptFrame(me) then return end
                 -- TODO(native): xStack_40 = f_stk_88 * (float)i_stk_16c + f_stk_13c;
                 -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)
-                scratchValue29 = scratchValue29 + 1
-            until scratchValue29 == speed
+                getTimer = getTimer + 1
+            until getTimer == speed
             if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
             while quest:GetMasterGameState("MovingDummiesNeeded") ~= 1 do
                 if not quest:NewScriptFrame(me) then return end
@@ -87,16 +88,16 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end
             quest:EntitySetTargetable(me, true)
         end
-        scratchValue30 = 0
+        i_stk_16c_1 = 0
         timerId = quest:RegisterTimer()
         quest:SetTimer(timerId, 0)
-        scratchValue2 = 0
+        scratchValue4 = 0
         repeat
             if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); return end
-            if scratchValue3 ~= 0 then
+            if scratchValue5 ~= 0 then
                 -- TODO(native): fStack_58 = f_stk_70 * (float)i_stk_16c + f_stk_124;
             end
-            quest:EntityTeleportToPosition(me, pPos, scratchValue37, false, false)
+            quest:EntityTeleportToPosition(me, pPos, getAngleXY, false, false)
             if me:MsgIsHitByHeroWithProjectileWeapon() then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                 if quest:GetMasterGameState("MovingDummiesNeeded") == 1 then
@@ -108,9 +109,9 @@ function Main(quest, me)
                             quest:AddLineToConversation(conversationId, "TEXT_QST_028_MAZE_HIT_OUT", theGuildmaster, hero, false)
                         else
                             skillApprentice = quest:GetThingWithScriptName("SkillApprentice")
-                            conversationId = quest:AddNewConversation(skillApprentice, false, false)
-                            quest:AddPersonToConversation(conversationId, hero)
-                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_HIT_OUT", skillApprentice, hero, false)
+                            conversationId2 = quest:AddNewConversation(skillApprentice, false, false)
+                            quest:AddPersonToConversation(conversationId2, hero)
+                            quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPRENTICE_SKILL_HIT_OUT", skillApprentice, hero, false)
                         end
                     else
                         quest:PlaySoundOnThing(hero, "SND_ARROWIMPACT_02")
@@ -132,13 +133,13 @@ function Main(quest, me)
                             -- TODO(native): *piVar1 = *piVar1 + *(int *)(this + 0x24);
                         end
                         ::LAB_00d42874::
-                        scratchValue29 = quest:GetTimer(timerId)
-                        if scratchValue29 < 1 then
+                        getTimer = quest:GetTimer(timerId)
+                        if getTimer < 1 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                            scratchValue36 = math.random(0, 32767) & 0x80000003
-                            scratchValue = scratchValue36 == 0
-                            if scratchValue36 < 0 then
-                                scratchValue = (scratchValue36 - 1 | 0xfffffffc) == 0xffffffff
+                            scratchValue41 = math.random(0, 32767) & 0x80000003
+                            scratchValue = scratchValue41 == 0
+                            if scratchValue41 < 0 then
+                                scratchValue = (scratchValue41 - 1 | 0xfffffffc) == 0xffffffff
                             end
                             if scratchValue then
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
@@ -150,24 +151,24 @@ function Main(quest, me)
                                         return
                                     end
                                     theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
-                                    conversationId = quest:AddNewConversation(theRealGuildmaster, false, false)
-                                    quest:AddPersonToConversation(conversationId, hero)
+                                    conversationId3 = quest:AddNewConversation(theRealGuildmaster, false, false)
+                                    quest:AddPersonToConversation(conversationId3, hero)
                                     if 0.0 <= xStack_18c then
                                         if 0.0 <= xStack_18c then
                                             if 0.0 <= xStack_18c then
                                                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                                quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", theRealGuildmaster, hero, false)
+                                                quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", theRealGuildmaster, hero, false)
                                             else
                                                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                                quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", theRealGuildmaster, hero, false)
+                                                quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", theRealGuildmaster, hero, false)
                                             end
                                         else
                                             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", theRealGuildmaster, hero, false)
+                                            quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", theRealGuildmaster, hero, false)
                                         end
                                     else
                                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
-                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", theRealGuildmaster, hero, false)
+                                        quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", theRealGuildmaster, hero, false)
                                     end
                                 else
                                     if predicateResult then
@@ -175,27 +176,27 @@ function Main(quest, me)
                                         return
                                     end
                                     skillApprentice2 = quest:GetThingWithScriptName("SkillApprentice")
-                                    conversationId = quest:AddNewConversation(skillApprentice2, false, false)
-                                    quest:AddPersonToConversation(conversationId, hero)
+                                    conversationId4 = quest:AddNewConversation(skillApprentice2, false, false)
+                                    quest:AddPersonToConversation(conversationId4, hero)
                                     if 0.0 <= xStack_18c then
                                         if 0.0 <= xStack_18c then
                                             if 0.0 <= xStack_18c then
                                                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
-                                                quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", skillApprentice2, hero, false)
+                                                quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", skillApprentice2, hero, false)
                                             else
                                                 if quest:IsActiveThreadTerminating() then
                                                     -- LAB_00d42efe: (native jump target)
                                                     __cleanup_LAB_00d42f02(); return
                                                 end
-                                                quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", skillApprentice2, hero, false)
+                                                quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", skillApprentice2, hero, false)
                                             end
                                         else
                                             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
-                                            quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", skillApprentice2, hero, false)
+                                            quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", skillApprentice2, hero, false)
                                         end
                                     else
                                         if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
-                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", skillApprentice2, hero, false)
+                                        quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", skillApprentice2, hero, false)
                                     end
                                 end
                             end
@@ -209,16 +210,16 @@ function Main(quest, me)
                     quest:EntityPlayObjectAnimation(me, "GET_HIT", false)
                 end
             end
-            scratchValue30 = scratchValue30 + 1
-            if scratchValue30 == speed then
+            i_stk_16c_1 = i_stk_16c_1 + 1
+            if i_stk_16c_1 == speed then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                scratchValue3 = scratchValue3 == 0
-                scratchValue30 = 0
+                scratchValue5 = scratchValue5 == 0
+                i_stk_16c_1 = 0
             end
             if quest:GetMasterGameState("SkillRepeatKnown") == 0 then goto continue_1 end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
             if quest:GetMasterGameState("SkillRepeating") == 1 then
-                scratchValue2 = 1
+                scratchValue4 = 1
             elseif quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
                 return
@@ -233,11 +234,11 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
             ::continue_1::
-        until scratchValue2 ~= 0
+        until scratchValue4 ~= 0
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
         quest:DeregisterTimer(timerId)
         quest:NewScriptFrame(me)
-        scratchValue = quest:IsActiveThreadTerminating()
+        predicateResult4 = quest:IsActiveThreadTerminating()
     until false
     ::LAB_00d41f6f::
 end

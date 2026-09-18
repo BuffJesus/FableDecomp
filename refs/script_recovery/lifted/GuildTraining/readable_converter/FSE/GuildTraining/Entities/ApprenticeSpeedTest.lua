@@ -17,13 +17,15 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6
-    local scratchValue13, scratchValue14, scratchValue15, switch, switch6, switch7, switch8, movie
-    local scratchValue16, speedFriend, getNearestWithDefName, scratchValue18, scratchValue19
-    local scratchValue20, movie2, movie3, movie4, addQuestInfoTimer, timerId, timerId2
-    local scratchValue21, movie5, movie6, movie7
+    local scratchValue56, conversationId, conversationId2, conversationId3, conversationId4
+    local i_stk_210_1, i_stk_210_2, i_stk_210_3, switch, switch6, switch7, switch81, switch82, movie
+    local scratchValue75, speedFriend, getNearestWithDefName, scratchValue91, scratchValue92
+    local scratchValue93, scratchValue94, scratchValue95, scratchValue96, scratchValue97, movie2
+    local movie3, movie4, addQuestInfoTimer, timerId, timerId2, scratchValue98, movie5, movie6
+    local movie7
     local function __region_LAB_00d40379_c32()
-        local scratchValue16 = quest:GetThingWithScriptName("RaceMarker")
-        quest:MiniMapRemoveMarker(scratchValue16)
+        local scratchValue75 = quest:GetThingWithScriptName("RaceMarker")
+        quest:MiniMapRemoveMarker(scratchValue75)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie7)
     end
@@ -44,68 +46,68 @@ function Main(quest, me)
                 speedFriend:SetFriendsWithEverythingFlag(1)
             end
             raceMode = 0
-            scratchValue20 = 0
+            scratchValue97 = 0
             timerId2 = quest:RegisterTimer()
-            scratchValue21 = quest:RegisterTimer()
+            scratchValue98 = quest:RegisterTimer()
             timerId = quest:RegisterTimer()
-            quest:SetTimer(scratchValue21, 1)
+            quest:SetTimer(scratchValue98, 1)
             scratchValue6 = quest:IsActiveThreadTerminating()
             while not scratchValue6 do
                 if raceMode == 0 then
-                    scratchValue15 = scratchValue20 - 1
+                    i_stk_210_1 = scratchValue97 - 1
                     repeat
-                        scratchValue13 = scratchValue15
+                        scratchValue56 = i_stk_210_1
                         if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
                         if quest:GetStateInt("GameState") == 3 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                             quest:SetThingHasInformation(me, false, true, false)
                         end
-                        scratchValue = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                        scratchValue = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue98) < 1
                         if scratchValue then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            scratchValue14 = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(scratchValue14, speedFriend)
-                            if scratchValue13 < 5 then
+                            conversationId = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(conversationId, speedFriend)
+                            if scratchValue56 < 5 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                switch = scratchValue13
+                                switch = scratchValue56
                                 repeat
                                     if switch == 0 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
+                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
                                         break
                                     elseif switch == 1 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
+                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
                                         break
                                     elseif switch == 2 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
+                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
                                         break
                                     elseif switch == 3 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
+                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
                                         break
                                     elseif switch == 4 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
+                                        quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
                                         break
                                     else
                                         goto FLOW_native_label_1
                                     end
                                 until true
                             else
-                                scratchValue19 = scratchValue20 & 0x80000001
-                                scratchValue6 = scratchValue19 == 0
-                                if scratchValue19 < 0 then
-                                    scratchValue6 = (scratchValue19 - 1 | 0xfffffffe) == 0xffffffff
+                                scratchValue92 = scratchValue97 & 0x80000001
+                                scratchValue6 = scratchValue92 == 0
+                                if scratchValue92 < 0 then
+                                    scratchValue6 = (scratchValue92 - 1 | 0xfffffffe) == 0xffffffff
                                 end
                                 if not scratchValue6 then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
                                 else
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
+                                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
                                 end
                             end
                             ::FLOW_native_label_1::
-                            quest:SetTimer(scratchValue21, 3)
-                            scratchValue20 = scratchValue20 + 1
-                            scratchValue15 = scratchValue13 + 1
+                            quest:SetTimer(scratchValue98, 3)
+                            scratchValue97 = scratchValue97 + 1
+                            i_stk_210_1 = scratchValue56 + 1
                         end
                         if not me:IsTalkedToByHero() then goto continue_1 end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -120,7 +122,7 @@ function Main(quest, me)
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie4)
                                     quest:DeregisterTimer(timerId)
-                                    quest:DeregisterTimer(scratchValue21)
+                                    quest:DeregisterTimer(scratchValue98)
                                     quest:DeregisterTimer(timerId2)
                                     goto LAB_00d40749
                                 end
@@ -132,20 +134,20 @@ function Main(quest, me)
                             end
                         end
                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_BOAST_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while scratchValue13 < 0 do
+                        scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while scratchValue56 < 0 do
                             quest:NewScriptFrame(me)
                             if not quest:IsActiveThreadTerminating() then
-                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
                             else
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
                                 quest:DeregisterTimer(timerId)
-                                quest:DeregisterTimer(scratchValue21)
+                                quest:DeregisterTimer(scratchValue98)
                                 quest:DeregisterTimer(timerId2)
                                 me:ReleaseControl()
                                 do return end
-                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
@@ -154,7 +156,7 @@ function Main(quest, me)
                             goto LAB_00d405fc
                         end
                         scratchValue6 = quest:IsActiveThreadTerminating()
-                        if scratchValue13 == 1 then
+                        if scratchValue56 == 1 then
                             if scratchValue6 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
@@ -197,61 +199,61 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId)
-                    quest:DeregisterTimer(scratchValue21)
+                    quest:DeregisterTimer(scratchValue98)
                     quest:DeregisterTimer(timerId2)
                     goto LAB_00d40749
                 end
-                scratchValue13 = raceMode
-                scratchValue19 = scratchValue20
+                scratchValue56 = raceMode
+                scratchValue93 = scratchValue97
                 while true do
-                    scratchValue20 = scratchValue19
-                    if scratchValue13 ~= 1 then break end
+                    scratchValue97 = scratchValue93
+                    if scratchValue56 ~= 1 then break end
                     if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
-                    scratchValue2 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                    scratchValue2 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue98) < 1
                     if scratchValue2 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                        scratchValue13 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue13, speedFriend)
-                        if scratchValue19 < 6 then
+                        scratchValue56 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue56, speedFriend)
+                        if scratchValue93 < 6 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            switch6 = scratchValue19
+                            switch6 = scratchValue93
                             repeat
                                 if switch6 == 1 then
-                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(scratchValue56, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
                                     break
                                 elseif switch6 == 2 then
-                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
+                                    quest:AddLineToConversation(scratchValue56, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
                                     break
                                 elseif switch6 == 3 then
-                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(scratchValue56, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
                                     break
                                 elseif switch6 == 4 then
-                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
+                                    quest:AddLineToConversation(scratchValue56, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
                                     break
                                 elseif switch6 == 5 then
-                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(scratchValue56, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
                                     break
                                 else
                                     goto FLOW_native_label_2
                                 end
                             until true
                         else
-                            scratchValue18 = scratchValue19 & 0x80000001
-                            scratchValue6 = scratchValue18 == 0
-                            if scratchValue18 < 0 then
-                                scratchValue6 = (scratchValue18 - 1 | 0xfffffffe) == 0xffffffff
+                            scratchValue91 = scratchValue93 & 0x80000001
+                            scratchValue6 = scratchValue91 == 0
+                            if scratchValue91 < 0 then
+                                scratchValue6 = (scratchValue91 - 1 | 0xfffffffe) == 0xffffffff
                             end
                             if not scratchValue6 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
+                                quest:AddLineToConversation(scratchValue56, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
                             else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
+                                quest:AddLineToConversation(scratchValue56, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
                             end
                         end
                         ::FLOW_native_label_2::
-                        quest:SetTimer(scratchValue21, 3)
-                        scratchValue20 = scratchValue19 + 1
+                        quest:SetTimer(scratchValue98, 3)
+                        scratchValue97 = scratchValue93 + 1
                     end
                     if me:IsTalkedToByHero() then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -342,7 +344,7 @@ function Main(quest, me)
                         end
                         resources:DestroyMovie(movie)
                     end
-                    if quest:GetTimer(timerId) >= 1 then scratchValue19 = scratchValue20; scratchValue13 = raceMode; goto continue_7 end
+                    if quest:GetTimer(timerId) >= 1 then scratchValue93 = scratchValue97; scratchValue56 = raceMode; goto continue_7 end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                     quest:RemoveQuestInfoElement(addQuestInfoTimer)
                     quest:DisplayQuestInfo(false)
@@ -351,62 +353,62 @@ function Main(quest, me)
                         quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("RaceMarker"))
                     end
                     raceMode = 2
-                    scratchValue19 = scratchValue20
-                    scratchValue13 = raceMode
+                    scratchValue93 = scratchValue97
+                    scratchValue56 = raceMode
                     ::continue_7::
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 if raceMode == 2 then
-                    scratchValue15 = scratchValue20 - 1
+                    i_stk_210_2 = scratchValue97 - 1
                     repeat
                         if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
-                        scratchValue3 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                        scratchValue3 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue98) < 1
                         if scratchValue3 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            scratchValue14 = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(scratchValue14, speedFriend)
-                            scratchValue13 = scratchValue15
-                            if scratchValue15 < 5 then
+                            conversationId2 = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(conversationId2, speedFriend)
+                            scratchValue56 = i_stk_210_2
+                            if i_stk_210_2 < 5 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                switch7 = scratchValue13
+                                switch7 = scratchValue56
                                 repeat
                                     if switch7 == 0 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
+                                        quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
                                         break
                                     elseif switch7 == 1 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
+                                        quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
                                         break
                                     elseif switch7 == 2 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
+                                        quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
                                         break
                                     elseif switch7 == 3 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
+                                        quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
                                         break
                                     elseif switch7 == 4 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
+                                        quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
                                         break
                                     else
                                         goto FLOW_native_label_3
                                     end
                                 until true
                             else
-                                scratchValue19 = scratchValue20 & 0x80000001
-                                scratchValue6 = scratchValue19 == 0
-                                if scratchValue19 < 0 then
-                                    scratchValue6 = (scratchValue19 - 1 | 0xfffffffe) == 0xffffffff
+                                scratchValue94 = scratchValue97 & 0x80000001
+                                scratchValue6 = scratchValue94 == 0
+                                if scratchValue94 < 0 then
+                                    scratchValue6 = (scratchValue94 - 1 | 0xfffffffe) == 0xffffffff
                                 end
                                 if not scratchValue6 then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
                                 else
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
+                                    quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
                                 end
                             end
                             ::FLOW_native_label_3::
-                            quest:SetTimer(scratchValue21, 3)
-                            scratchValue20 = scratchValue20 + 1
-                            scratchValue15 = scratchValue13 + 1
+                            quest:SetTimer(scratchValue98, 3)
+                            scratchValue97 = scratchValue97 + 1
+                            i_stk_210_2 = scratchValue56 + 1
                         end
                         if not me:IsTalkedToByHero() then goto continue_8 end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
@@ -430,16 +432,16 @@ function Main(quest, me)
                             end
                         end
                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_RETURN_FAIL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while scratchValue13 < 0 do
+                        scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while scratchValue56 < 0 do
                             quest:NewScriptFrame(me)
                             if not quest:IsActiveThreadTerminating() then
-                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
                             else
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie3)
                                 goto LAB_00d405fc
-                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
@@ -448,7 +450,7 @@ function Main(quest, me)
                             goto LAB_00d405fc
                         end
                         scratchValue6 = quest:IsActiveThreadTerminating()
-                        if scratchValue13 == 1 then
+                        if scratchValue56 == 1 then
                             if scratchValue6 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie3)
@@ -506,56 +508,56 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 if raceMode == 3 then
-                    scratchValue15 = scratchValue20 - 1
-                    scratchValue13 = scratchValue15
+                    i_stk_210_3 = scratchValue97 - 1
+                    scratchValue56 = i_stk_210_3
                     quest:NewScriptFrame(me)
                     if not quest:IsActiveThreadTerminating() then
-                        scratchValue4 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                        scratchValue4 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue98) < 1
                         if scratchValue4 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            scratchValue14 = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(scratchValue14, speedFriend)
-                            if scratchValue13 < 5 then
+                            conversationId3 = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(conversationId3, speedFriend)
+                            if scratchValue56 < 5 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                switch8 = scratchValue13
+                                switch81 = scratchValue56
                                 repeat
-                                    if switch8 == 0 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", speedFriend, me, false)
+                                    if switch81 == 0 then
+                                        quest:AddLineToConversation(conversationId3, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", speedFriend, me, false)
                                         break
-                                    elseif switch8 == 1 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SECOND_LINE", me, speedFriend, false)
+                                    elseif switch81 == 1 then
+                                        quest:AddLineToConversation(conversationId3, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SECOND_LINE", me, speedFriend, false)
                                         break
-                                    elseif switch8 == 2 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_THIRD_LINE", speedFriend, me, false)
+                                    elseif switch81 == 2 then
+                                        quest:AddLineToConversation(conversationId3, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_THIRD_LINE", speedFriend, me, false)
                                         break
-                                    elseif switch8 == 3 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_FOURTH_LINE", me, speedFriend, false)
+                                    elseif switch81 == 3 then
+                                        quest:AddLineToConversation(conversationId3, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_FOURTH_LINE", me, speedFriend, false)
                                         break
-                                    elseif switch8 == 4 then
-                                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIFTH_LINE", speedFriend, me, false)
+                                    elseif switch81 == 4 then
+                                        quest:AddLineToConversation(conversationId3, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIFTH_LINE", speedFriend, me, false)
                                         break
                                     else
                                         goto FLOW_native_label_4
                                     end
                                 until true
                             else
-                                scratchValue19 = scratchValue20 & 0x80000001
-                                scratchValue6 = scratchValue19 == 0
-                                if scratchValue19 < 0 then
-                                    scratchValue6 = (scratchValue19 - 1 | 0xfffffffe) == 0xffffffff
+                                scratchValue95 = scratchValue97 & 0x80000001
+                                scratchValue6 = scratchValue95 == 0
+                                if scratchValue95 < 0 then
+                                    scratchValue6 = (scratchValue95 - 1 | 0xfffffffe) == 0xffffffff
                                 end
                                 if not scratchValue6 then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_SEVENTH_LINE", speedFriend, me, false)
+                                    quest:AddLineToConversation(conversationId3, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_SEVENTH_LINE", speedFriend, me, false)
                                 else
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SIXTH_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(conversationId3, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SIXTH_LINE", me, speedFriend, false)
                                 end
                             end
                             ::FLOW_native_label_4::
-                            quest:SetTimer(scratchValue21, 7)
-                            scratchValue20 = scratchValue20 + 1
-                            scratchValue15 = scratchValue13 + 1
+                            quest:SetTimer(scratchValue98, 7)
+                            scratchValue97 = scratchValue97 + 1
+                            i_stk_210_3 = scratchValue56 + 1
                         end
                         if not me:IsTalkedToByHero() then goto LAB_00d403e1 end
                         if not quest:IsActiveThreadTerminating() then
@@ -563,15 +565,15 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                            scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
-                            while scratchValue13 < 0 do
+                            scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            while scratchValue56 < 0 do
                                 quest:NewScriptFrame(me)
                                 if not quest:IsActiveThreadTerminating() then
-                                    scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                    scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
                                 else
                                     quest:PauseAllNonScriptedEntities(false)
                                     goto FLOW_after_lab_00d402b3
-                                    scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                    scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
                                 end
                             end
                             if quest:IsActiveThreadTerminating() then
@@ -579,7 +581,7 @@ function Main(quest, me)
                                 quest:PauseAllNonScriptedEntities(false)
                             else
                                 scratchValue6 = quest:IsActiveThreadTerminating()
-                                if scratchValue13 ~= 1 then
+                                if scratchValue56 ~= 1 then
                                     if not scratchValue6 then
                                         if 0.0 < quest:GetHealth(me) then
                                             if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d402b3 end
@@ -621,7 +623,7 @@ function Main(quest, me)
             end
             ::LAB_00d405fc::
             quest:DeregisterTimer(timerId)
-            quest:DeregisterTimer(scratchValue21)
+            quest:DeregisterTimer(scratchValue98)
             quest:DeregisterTimer(timerId2)
             ::LAB_00d40749::
         end
@@ -634,7 +636,7 @@ function Main(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie4)
     quest:DeregisterTimer(timerId)
-    quest:DeregisterTimer(scratchValue21)
+    quest:DeregisterTimer(scratchValue98)
     quest:DeregisterTimer(timerId2)
     me:ReleaseControl()
     goto FLOW_after_lab_00d405fc
@@ -644,60 +646,60 @@ function Main(quest, me)
             quest:NewScriptFrame(me)
         end
         quest:DeregisterTimer(timerId)
-        quest:DeregisterTimer(scratchValue21)
+        quest:DeregisterTimer(scratchValue98)
         quest:DeregisterTimer(timerId2)
         me:ReleaseControl()
         goto FLOW_after_lab_00d405fc
     end
-    scratchValue13 = scratchValue15
+    scratchValue56 = i_stk_210_3
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
-        scratchValue5 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+        scratchValue5 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue98) < 1
         if scratchValue5 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c32 end
-            scratchValue14 = quest:AddNewConversation(me, false, false)
-            quest:AddPersonToConversation(scratchValue14, speedFriend)
-            if scratchValue13 < 5 then
+            conversationId4 = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(conversationId4, speedFriend)
+            if scratchValue56 < 5 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c32 end
-                switch8 = scratchValue13
+                switch82 = scratchValue56
                 repeat
-                    if switch8 == 0 then
-                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", speedFriend, me, false)
+                    if switch82 == 0 then
+                        quest:AddLineToConversation(conversationId4, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", speedFriend, me, false)
                         break
-                    elseif switch8 == 1 then
-                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SECOND_LINE", me, speedFriend, false)
+                    elseif switch82 == 1 then
+                        quest:AddLineToConversation(conversationId4, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SECOND_LINE", me, speedFriend, false)
                         break
-                    elseif switch8 == 2 then
-                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_THIRD_LINE", speedFriend, me, false)
+                    elseif switch82 == 2 then
+                        quest:AddLineToConversation(conversationId4, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_THIRD_LINE", speedFriend, me, false)
                         break
-                    elseif switch8 == 3 then
-                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_FOURTH_LINE", me, speedFriend, false)
+                    elseif switch82 == 3 then
+                        quest:AddLineToConversation(conversationId4, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_FOURTH_LINE", me, speedFriend, false)
                         break
-                    elseif switch8 == 4 then
-                        quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIFTH_LINE", speedFriend, me, false)
+                    elseif switch82 == 4 then
+                        quest:AddLineToConversation(conversationId4, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIFTH_LINE", speedFriend, me, false)
                         break
                     else
                         goto FLOW_native_label_4_c32
                     end
                 until true
             else
-                scratchValue19 = scratchValue20 & 0x80000001
-                scratchValue6 = scratchValue19 == 0
-                if scratchValue19 < 0 then
-                    scratchValue6 = (scratchValue19 - 1 | 0xfffffffe) == 0xffffffff
+                scratchValue96 = scratchValue97 & 0x80000001
+                scratchValue6 = scratchValue96 == 0
+                if scratchValue96 < 0 then
+                    scratchValue6 = (scratchValue96 - 1 | 0xfffffffe) == 0xffffffff
                 end
                 if not scratchValue6 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c32 end
-                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_SEVENTH_LINE", speedFriend, me, false)
+                    quest:AddLineToConversation(conversationId4, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_SEVENTH_LINE", speedFriend, me, false)
                 else
                     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c32 end
-                    quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SIXTH_LINE", me, speedFriend, false)
+                    quest:AddLineToConversation(conversationId4, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SIXTH_LINE", me, speedFriend, false)
                 end
             end
             ::FLOW_native_label_4_c32::
-            quest:SetTimer(scratchValue21, 7)
-            scratchValue20 = scratchValue20 + 1
-            scratchValue15 = scratchValue13 + 1
+            quest:SetTimer(scratchValue98, 7)
+            scratchValue97 = scratchValue97 + 1
+            i_stk_210_3 = scratchValue56 + 1
         end
         if not me:IsTalkedToByHero() then goto LAB_00d403e1 end
         if not quest:IsActiveThreadTerminating() then
@@ -705,18 +707,18 @@ function Main(quest, me)
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-            scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
-            while scratchValue13 < 0 do
+            scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
+            while scratchValue56 < 0 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d402b3_c32
-                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                scratchValue56 = quest:MsgIsQuestionAnsweredYesOrNo()
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d40716_c32: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
             else
                 scratchValue6 = quest:IsActiveThreadTerminating()
-                if scratchValue13 ~= 1 then
+                if scratchValue56 ~= 1 then
                     if not scratchValue6 then
                         if 0.0 < quest:GetHealth(me) then
                             me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false)
@@ -753,7 +755,7 @@ function Main(quest, me)
     quest:NewScriptFrame(me)
     ::LAB_00d405fc_c32::
     quest:DeregisterTimer(timerId)
-    quest:DeregisterTimer(scratchValue21)
+    quest:DeregisterTimer(scratchValue98)
     quest:DeregisterTimer(timerId2)
     me:ReleaseControl()
     goto FLOW_after_lab_00d405fc

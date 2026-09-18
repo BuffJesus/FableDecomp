@@ -9,14 +9,15 @@ local SCRIPT_DEF = {
 }
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local holdingArtifact, alreadyTalkedTo, notAttacked
+local holdingArtifact_, alreadyTalkedTo, notAttacked
 
 -- ArtifactThief.Main (retail 0x00d62480)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, getStateBool, scratchValue6, addNewConversation, movie, scratchValue9
-    local scratchValue, scratchValue11, movie2, movie3, movie4, timerId, movie5, movie6
+    local predicateResult5, predicateResult, predicateResult18, predicateResult25, predicateResult35
+    local holdingArtifact, scratchValue, addNewConversation, movie, scratchValue53, scratchValue54
+    local scratchValue55, u_stk_174_1, u_stk_174_2, movie2, movie3, movie4, timerId, movie5, movie6
     local function __region_LAB_00d632c3_c2()
         quest:PauseAllNonScriptedEntities(false)
         movie = movie3
@@ -30,21 +31,21 @@ function Main(quest, me)
         quest:DeregisterTimer(timerId)
         me:ReleaseControl()
     end
-    scratchValue = 0
-    scratchValue11 = 0
+    scratchValue55 = 0
+    u_stk_174_1 = 0
     if not quest:NewScriptFrame(me) then return end
     if not me:AcquireControl(4) then goto LAB_00d63c9f end
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, true)
         quest:SetThingHasInformation(me, false, true, false)
-        holdingArtifact = true
+        holdingArtifact_ = true
         alreadyTalkedTo = false
         notAttacked = true
         timerId = quest:RegisterTimer()
         quest:SetTimer(timerId, 0)
-        getStateBool = holdingArtifact
+        holdingArtifact = holdingArtifact_
         repeat
-            if not getStateBool or not notAttacked then goto LAB_00d638ec end
+            if not holdingArtifact or not notAttacked then goto LAB_00d638ec end
             if not quest:NewScriptFrame(me) then goto LAB_00d63c96 end
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
                 addNewConversation = quest:AddNewConversation(me, false, false)
@@ -60,40 +61,40 @@ function Main(quest, me)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_COMMENT_SECOND", me, hero, false)
                 end
                 quest:SetTimer(timerId, 10)
-                scratchValue = scratchValue11
+                scratchValue55 = u_stk_174_1
             end
-            scratchValue9 = scratchValue | 1
-            scratchValue11 = scratchValue9
+            scratchValue53 = scratchValue55 | 1
+            u_stk_174_1 = scratchValue53
             if me:MsgIsHitByHero() then
-                scratchValue2 = true
+                predicateResult5 = true
             else
-                scratchValue9 = scratchValue | 3
-                scratchValue11 = scratchValue9
+                scratchValue53 = scratchValue55 | 3
+                u_stk_174_1 = scratchValue53
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue9 = scratchValue | 7
-                    scratchValue11 = scratchValue9
+                    scratchValue53 = scratchValue55 | 7
+                    u_stk_174_1 = scratchValue53
                     if not me:MsgIsHitByHeroSpecialAbility(me) then
-                        scratchValue2 = true
+                        predicateResult5 = true
                         goto FLOW_after_lab_00d6280c
                     end
                 end
-                scratchValue2 = false
+                predicateResult5 = false
             end
             ::FLOW_after_lab_00d6280c::
-            if scratchValue9 & 4 ~= 0 then
-                scratchValue9 = scratchValue9 & 0xfffffffb
-                scratchValue11 = scratchValue9
+            if scratchValue53 & 4 ~= 0 then
+                scratchValue53 = scratchValue53 & 0xfffffffb
+                u_stk_174_1 = scratchValue53
             end
-            if scratchValue9 & 2 ~= 0 then
-                scratchValue9 = scratchValue9 & 0xfffffffd
-                scratchValue11 = scratchValue9
+            if scratchValue53 & 2 ~= 0 then
+                scratchValue53 = scratchValue53 & 0xfffffffd
+                u_stk_174_1 = scratchValue53
             end
-            if scratchValue9 & 1 ~= 0 then
-                scratchValue9 = scratchValue9 & 0xfffffffe
-                scratchValue11 = scratchValue9
+            if scratchValue53 & 1 ~= 0 then
+                scratchValue53 = scratchValue53 & 0xfffffffe
+                u_stk_174_1 = scratchValue53
             end
-            scratchValue = scratchValue9
-            if scratchValue2 then
+            scratchValue55 = scratchValue53
+            if predicateResult5 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
                 notAttacked = false
                 if not alreadyTalkedTo then
@@ -147,11 +148,11 @@ function Main(quest, me)
                 end
                 quest:EntitySetAsKillable(me, true, true)
                 me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 1.0, 1, false, true)
-                scratchValue = scratchValue11
+                scratchValue55 = u_stk_174_1
             end
-            if not me:IsTalkedToByHero() then getStateBool = holdingArtifact; goto continue_3 end
+            if not me:IsTalkedToByHero() then holdingArtifact = holdingArtifact_; goto continue_3 end
             if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
-            if not holdingArtifact then goto LAB_00d638ec end
+            if not holdingArtifact_ then goto LAB_00d638ec end
             if not alreadyTalkedTo then
                 alreadyTalkedTo = true
                 movie3 = resources:StartMovie("")
@@ -161,11 +162,11 @@ function Main(quest, me)
                     if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                     if not quest:IsActiveThreadTerminating() then
                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while scratchValue6 < 0 do
+                        scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while scratchValue < 0 do
                             quest:NewScriptFrame(me)
                             if not quest:IsActiveThreadTerminating() then
-                                scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                             else
                                 quest:PauseAllNonScriptedEntities(false)
                                 movie = movie3
@@ -173,13 +174,13 @@ function Main(quest, me)
                                 quest:DeregisterTimer(timerId)
                                 me:ReleaseControl()
                                 do return end
-                                scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            scratchValue2 = quest:IsActiveThreadTerminating()
-                            if scratchValue6 == 1 then
-                                if not scratchValue2 then
+                            predicateResult = quest:IsActiveThreadTerminating()
+                            if scratchValue == 1 then
+                                if not predicateResult then
                                     if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost) then
                                         if not quest:IsActiveThreadTerminating() then
                                             if 0.0 < quest:GetHealth(me) then
@@ -199,7 +200,7 @@ function Main(quest, me)
                                         quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                                         quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
                                         quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
-                                        holdingArtifact = false
+                                        holdingArtifact_ = false
                                         me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 1.0, 0, false, true)
                                         quest:PauseAllNonScriptedEntities(false)
                                         movie = movie3
@@ -210,7 +211,7 @@ function Main(quest, me)
                                 resources:DestroyMovie(movie3)
                                 goto LAB_00d63c96
                             end
-                            if not scratchValue2 then
+                            if not predicateResult then
                                 if 0.0 < quest:GetHealth(me) then
                                     if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                     -- LAB_00d632b4_c2: (native jump target)
@@ -224,23 +225,23 @@ function Main(quest, me)
                     end
                 else
                     quest:GiveHeroYesNoQuestion("TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                    scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while scratchValue6 < 0 do
+                    scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while scratchValue < 0 do
                         quest:NewScriptFrame(me)
                         if not quest:IsActiveThreadTerminating() then
-                            scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                         else
                             quest:PauseAllNonScriptedEntities(false)
                             movie = movie3
                             __cleanup_LAB_00d63aa6()
                             do return end
-                            scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        scratchValue2 = quest:IsActiveThreadTerminating()
-                        if scratchValue6 == 1 then
-                            if not scratchValue2 then
+                        predicateResult18 = quest:IsActiveThreadTerminating()
+                        if scratchValue == 1 then
+                            if not predicateResult18 then
                                 if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost) then
                                     if not quest:IsActiveThreadTerminating() then
                                         if 0.0 < quest:GetHealth(me) then
@@ -265,7 +266,7 @@ function Main(quest, me)
                                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                                     quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
                                     quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
-                                    holdingArtifact = false
+                                    holdingArtifact_ = false
                                     me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 1.0, 0, false, true)
                                     quest:PauseAllNonScriptedEntities(false)
                                     movie = movie3
@@ -276,7 +277,7 @@ function Main(quest, me)
                             resources:DestroyMovie(movie3)
                             goto LAB_00d63c96
                         end
-                        if not scratchValue2 then
+                        if not predicateResult18 then
                             if 0.0 < quest:GetHealth(me) then
                                 if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d63a7c end
                                 -- LAB_00d632b4: (native jump target)
@@ -314,16 +315,16 @@ function Main(quest, me)
                 end
             end
             quest:GiveHeroYesNoQuestion("TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_RETURN_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-            scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
-            while scratchValue6 < 0 do
+            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+            while scratchValue < 0 do
                 quest:NewScriptFrame(me)
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                 else
                     quest:PauseAllNonScriptedEntities(false)
                     movie = movie4
                     __cleanup_LAB_00d63aa6(); do return end
-                    scratchValue6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                 end
             end
             if quest:IsActiveThreadTerminating() then
@@ -331,9 +332,9 @@ function Main(quest, me)
                 resources:DestroyMovie(movie4)
                 goto LAB_00d63c96
             end
-            scratchValue2 = quest:IsActiveThreadTerminating()
-            if scratchValue6 ~= 1 then
-                if scratchValue2 then
+            predicateResult25 = quest:IsActiveThreadTerminating()
+            if scratchValue ~= 1 then
+                if predicateResult25 then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
                     goto LAB_00d63c96
@@ -365,7 +366,7 @@ function Main(quest, me)
                 resources:DestroyMovie(movie5)
                 goto LAB_00d638c8
             end
-            if scratchValue2 then
+            if predicateResult25 then
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie4)
                 goto LAB_00d63c96
@@ -393,7 +394,7 @@ function Main(quest, me)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
                     quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
-                    holdingArtifact = false
+                    holdingArtifact_ = false
                     me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 1.0, 0, false, true)
                     goto LAB_00d638c8
                 end
@@ -427,8 +428,8 @@ function Main(quest, me)
             movie = movie4
             ::LAB_00d638d8::
             resources:DestroyMovie(movie)
-            scratchValue = scratchValue11
-            getStateBool = holdingArtifact
+            scratchValue55 = u_stk_174_1
+            holdingArtifact = holdingArtifact_
             ::continue_3::
         until false
     end
@@ -437,38 +438,38 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
     while me:IsPerformingScriptTask() do
         if not quest:NewScriptFrame(me) then goto LAB_00d63c96 end
-        scratchValue9 = scratchValue | 8
-        scratchValue11 = scratchValue9
+        scratchValue54 = scratchValue55 | 8
+        u_stk_174_2 = scratchValue54
         if me:MsgIsHitByHero() then
-            scratchValue2 = true
+            predicateResult35 = true
         else
-            scratchValue9 = scratchValue | 24
-            scratchValue11 = scratchValue9
+            scratchValue54 = scratchValue55 | 24
+            u_stk_174_2 = scratchValue54
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue9 = scratchValue | 56
-                scratchValue11 = scratchValue9
+                scratchValue54 = scratchValue55 | 56
+                u_stk_174_2 = scratchValue54
                 if not me:MsgIsHitByHeroSpecialAbility(me) then
-                    scratchValue2 = true
+                    predicateResult35 = true
                     goto FLOW_after_lab_00d63b21
                 end
             end
-            scratchValue2 = false
+            predicateResult35 = false
         end
         ::FLOW_after_lab_00d63b21::
-        if scratchValue9 & 32 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xffffffdf
-            scratchValue11 = scratchValue9
+        if scratchValue54 & 32 ~= 0 then
+            scratchValue54 = scratchValue54 & 0xffffffdf
+            u_stk_174_2 = scratchValue54
         end
-        if scratchValue9 & 16 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xffffffef
-            scratchValue11 = scratchValue9
+        if scratchValue54 & 16 ~= 0 then
+            scratchValue54 = scratchValue54 & 0xffffffef
+            u_stk_174_2 = scratchValue54
         end
-        if scratchValue9 & 8 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xfffffff7
-            scratchValue11 = scratchValue9
+        if scratchValue54 & 8 ~= 0 then
+            scratchValue54 = scratchValue54 & 0xfffffff7
+            u_stk_174_2 = scratchValue54
         end
-        scratchValue = scratchValue9
-        if scratchValue2 then
+        scratchValue55 = scratchValue54
+        if predicateResult35 then
             if notAttacked then
                 addNewConversation = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(addNewConversation, hero)
@@ -476,7 +477,7 @@ function Main(quest, me)
                 notAttacked = false
                 quest:EntitySetAsKillable(me, true, true)
                 me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 1.0, 1, false, true)
-                scratchValue = scratchValue11
+                scratchValue55 = u_stk_174_2
         end
         end
     end

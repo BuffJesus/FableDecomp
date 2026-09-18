@@ -1547,6 +1547,7 @@
             "RESOURCE_DestroyMovie",
             "DeregisterTimer",
             "QUESTTHING_Empty",
+            "RESOURCE_ReleaseResource",
             "MsgIsQuestionAnsweredYesOrNo",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -1675,7 +1676,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 431,
+          "lines": 432,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2689,6 +2690,7 @@
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
@@ -2700,6 +2702,7 @@
             "GetThingWithScriptName",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
+            "RESOURCE_ReleaseResource",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "RESOURCE_IsAcquired",
@@ -2868,7 +2871,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 479,
+          "lines": 481,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5199,6 +5202,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
             "MsgIsQuestionAnsweredYesOrNo",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -5251,6 +5255,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
             "MsgIsQuestionAnsweredYesOrNo",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -5394,7 +5399,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 550,
+          "lines": 552,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5891,11 +5896,11 @@
           "LAB_00d419fe": [
             "pCVar9 = xStack_a4",
             "resources:DestroyMovie(pCVar9)",
-            "resources:ReleaseResource(0)"
+            "resources:ReleaseResource(xStack_f8)"
           ],
           "LAB_00d41a02": [
             "resources:DestroyMovie(pCVar9)",
-            "resources:ReleaseResource(0)"
+            "resources:ReleaseResource(xStack_f8)"
           ]
         },
         "FSE/GuildTraining/Entities/SkillApprentice.lua": {
@@ -8390,7 +8395,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -8637,7 +8642,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -8940,7 +8945,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -9276,7 +9281,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -9687,7 +9692,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetHero",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -9880,7 +9885,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 4503,
+          "lines": 4163,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -9900,7 +9905,7 @@
             "goto FLOW_after_lab_00d54846;",
             "goto FLOW_after_lab_00d54dfa;",
             "goto FLOW_after_lab_00d54f9c;",
-            "goto FLOW_after_lab_00d54f9c_798;",
+            "goto FLOW_after_lab_00d54f9c_746;",
             "goto FLOW_after_lab_00d551d4;",
             "goto FLOW_after_lab_00d55b4e;",
             "goto LAB_00d55480;",
@@ -9948,7 +9953,7 @@
             "FLOW_after_lab_00d54846",
             "FLOW_after_lab_00d54dfa",
             "FLOW_after_lab_00d54f9c",
-            "FLOW_after_lab_00d54f9c_798",
+            "FLOW_after_lab_00d54f9c_746",
             "FLOW_after_lab_00d551d4",
             "FLOW_after_lab_00d55b4e",
             "FLOW_native_label_1",
@@ -11551,11 +11556,7 @@
             "label LAB_00d61342_c8",
             "label LAB_00d61578_c9",
             "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_1f0);",
             "label LAB_00d61342_c10",
             "label LAB_00d61578_c11",
             "label LAB_00d61578_c12",
@@ -11564,19 +11565,7 @@
             "unlifted: xStack_234 = (CCharString)((uint)CVar5 & 0xffffff);",
             "label LAB_00d61578_c14",
             "label LAB_00d61342_c15",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
             "label LAB_00d60b31_c17",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
             "label LAB_00d60b31_c18",
             "unlifted: (**(code **)(*xStack_1b4._0_4_ + 0x118))(0);",
             "label LAB_00d60b19_c19",
@@ -11585,8 +11574,6 @@
             "label LAB_00d60b31_c20",
             "unlifted: xStack_234 = (CCharString)((uint)CVar5 & 0xffffff);",
             "label LAB_00d60b31_c21",
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_38);",
             "label LAB_00d61b0a_c22",
             "label LAB_00d609de_c22",
             "label LAB_00d60a99_c22",
@@ -11633,9 +11620,9 @@
             "label LAB_00d60b19",
             "label LAB_00d60b31",
             "unlifted: CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_238,(CCharString *)pCVar",
-            "unlifted: uVar18 = SUB41(&xStack_204_2,0)",
-            "unlifted: uVar18 = SUB41(&xStack_204_2,0)",
-            "unlifted: uVar18 = SUB41(&xStack_204_2,0)"
+            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_204_2)",
+            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_204_2)",
+            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_204_2)"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -11960,6 +11947,8 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "PauseAllNonScriptedEntities",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_RunMacro",
             "GiveHeroYesNoQuestion",
             "MsgIsQuestionAnsweredYesOrNo",
@@ -11996,11 +11985,14 @@
             "RESOURCE_ReleaseResource",
             "PauseAllNonScriptedEntities",
             "SetHeroWillEnergyLevel",
+            "ACTORMAP_Set",
             "RESOURCE_RunMacro",
             "PauseAllNonScriptedEntities",
             "STRINGMAP_Destroy",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_RunMacro",
             "Pause",
             "GiveHeroYesNoQuestion",
@@ -12021,6 +12013,9 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_RunMacro",
             "GiveHeroYesNoQuestion",
             "MsgIsQuestionAnsweredYesOrNo",
@@ -12084,6 +12079,7 @@
             "RESOURCE_ReleaseResource",
             "PauseAllNonScriptedEntities",
             "SetHeroWillEnergyLevel",
+            "ACTORMAP_Set",
             "RESOURCE_RunMacro",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
@@ -12357,7 +12353,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1619,
+          "lines": 1577,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12531,7 +12527,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 93
+        "todo": 75
       }
     },
     {
@@ -14868,6 +14864,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 783
+    "todo": 765
   }
 }

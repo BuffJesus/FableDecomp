@@ -12411,15 +12411,15 @@
       "flags": 0,
       "termination": 4,
       "listArithmetic": 0,
-      "byteIndices": 0,
+      "byteIndices": 1,
       "voidReturns": 0,
       "nilReleases": 0,
       "emptyIfs": 1,
-      "deadStores": 1,
+      "deadStores": 2,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 3,
-      "decimalLiterals": 9
+      "declarations": 4,
+      "decimalLiterals": 2
      }
     },
     {
@@ -14266,42 +14266,84 @@
         null
        ]
       },
-      "iVar4": {
+      "iVar4_1": {
+       "name": "timerId",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "timerId"
+       ]
+      },
+      "iVar4_2": {
+       "name": "timeRemaining",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "timeRemaining"
+       ]
+      },
+      "iVar4_3": {
+       "name": "timeRemaining2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "timeRemaining"
+       ]
+      },
+      "iVar4_4": {
        "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "timerId",
-        "timeRemaining",
-        "timeRemaining",
         null
        ]
       },
-      "iVar7": {
-       "name": "addNewConversation",
-       "basis": "one method, several names",
+      "iVar7_1": {
+       "name": "scratchValue4",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
-        "conversationId",
-        "conversationId",
         null
        ]
       },
-      "native_arg_sequence_1": {
-       "name": "sequence1",
+      "iVar7_2": {
+       "name": "conversationId",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "iVar7_3": {
+       "name": "conversationId2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "native_arg_sequence_1_1": {
+       "name": "sequence11",
        "basis": "native argument role",
        "assignmentRoles": [
-        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "native_arg_sequence_1_2": {
+       "name": "sequence12",
+       "basis": "native argument role",
+       "assignmentRoles": [
         "predicateResult",
         "predicateResult",
         "predicateResult",
         "predicateResult"
        ]
       },
-      "native_arg_sequence_2": {
-       "name": "sequence2",
+      "native_arg_sequence_2_1": {
+       "name": "sequence21",
        "basis": "native argument role",
        "assignmentRoles": [
-        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "native_arg_sequence_2_2": {
+       "name": "sequence22",
+       "basis": "native argument role",
+       "assignmentRoles": [
         "predicateResult",
         "predicateResult",
         "predicateResult",
@@ -14313,41 +14355,82 @@
        ]
       },
       "pCVar1": {
-       "name": "scratchValue4",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null
-       ]
-      },
-      "pCVar5": {
-       "name": "getHero",
-       "basis": "one method, several names",
-       "assignmentRoles": [
-        "hero",
-        "hero",
-        "hero",
-        null,
-        "hero",
-        "hero",
-        "hero"
-       ]
-      },
-      "puVar6": {
        "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
+        null,
         null
        ]
       },
-      "r1": {
+      "pCVar5_1": {
+       "name": "hero",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_2": {
+       "name": "hero2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_3": {
+       "name": "hero3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_4": {
+       "name": "scratchValue6",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "pCVar5_5": {
+       "name": "hero4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_6": {
+       "name": "hero5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_7": {
+       "name": "hero6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "puVar6": {
+       "name": "scratchValue7",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "r1_1": {
        "name": "traderToRescue",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "traderToRescue"
        ]
+      },
+      "r1_2": {
+       "name": "scratchValue8",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": []
       },
       "xStack_24": {
        "name": "allCreatures",
@@ -14356,23 +14439,155 @@
         "allCreatures"
        ]
       },
-      "xStack_38": {
-       "name": "scratchValue6",
+      "xStack_38_1": {
+       "name": "scratchValue9",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": []
+      },
+      "xStack_38_2": {
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
+        null
+       ]
+      },
+      "xStack_38_3": {
+       "name": "scratchValue11",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         null
        ]
       },
       "xStack_3c": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
+       "name": "timerId2",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null
+        "timerId"
        ]
       }
      },
-     "splitLocals": {},
+     "splitLocals": {
+      "iVar4": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c\n",
+       "versions": {
+        "iVar4_1": [
+         12
+        ],
+        "iVar4_2": [
+         105
+        ],
+        "iVar4_3": [
+         124
+        ],
+        "iVar4_4": [
+         164
+        ]
+       }
+      },
+      "iVar7": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c\n",
+       "versions": {
+        "iVar7_1": [
+         25,
+         168
+        ],
+        "iVar7_2": [
+         109
+        ],
+        "iVar7_3": [
+         132
+        ]
+       }
+      },
+      "native_arg_sequence_1": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c\n",
+       "versions": {
+        "native_arg_sequence_1_1": [
+         47
+        ],
+        "native_arg_sequence_1_2": [
+         49,
+         51,
+         56,
+         58
+        ]
+       }
+      },
+      "native_arg_sequence_2": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c\n",
+       "versions": {
+        "native_arg_sequence_2_1": [
+         72
+        ],
+        "native_arg_sequence_2_2": [
+         74,
+         76,
+         81,
+         83,
+         87,
+         89,
+         95,
+         97
+        ]
+       }
+      },
+      "pCVar5": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c\n",
+       "versions": {
+        "pCVar5_1": [
+         45
+        ],
+        "pCVar5_2": [
+         110
+        ],
+        "pCVar5_3": [
+         113
+        ],
+        "pCVar5_4": [
+         121
+        ],
+        "pCVar5_5": [
+         133
+        ],
+        "pCVar5_6": [
+         136
+        ],
+        "pCVar5_7": [
+         156
+        ]
+       }
+      },
+      "r1": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c\n",
+       "versions": {
+        "r1_1": [
+         33
+        ],
+        "r1_2": [
+         205
+        ]
+       }
+      },
+      "xStack_38": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c\n",
+       "versions": {
+        "xStack_38_1": [],
+        "xStack_38_2": [
+         112
+        ],
+        "xStack_38_3": [
+         135
+        ]
+       }
+      }
+     },
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
@@ -14915,8 +15130,8 @@
        "aliveStaging": 19,
        "exitChecksInlined": 7,
        "frameChecks": 4,
-       "inlinedTemporaries": 48,
-       "deadDefinitions": 5,
+       "inlinedTemporaries": 47,
+       "deadDefinitions": 4,
        "guardWrappers": 0,
        "retryLoops": 0,
        "booleanMaterialisation": 14,
@@ -14941,15 +15156,15 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 3,
        "controlAcquires": 0,
-       "parentheses": 11,
+       "parentheses": 5,
        "cosmetics": 1,
        "firstAssignments": 1,
-       "freeSuffixes": 1,
+       "freeSuffixes": 2,
        "hoistedState": 0
       },
       "before": {
-       "lines": 248,
-       "temporaries": 18,
+       "lines": 247,
+       "temporaries": 33,
        "labels": 6,
        "gotos": 12,
        "terminationChecks": 16,
@@ -14958,7 +15173,7 @@
       },
       "after": {
        "lines": 115,
-       "temporaries": 7,
+       "temporaries": 9,
        "labels": 6,
        "gotos": 12,
        "terminationChecks": 9,

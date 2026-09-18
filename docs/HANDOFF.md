@@ -1,3 +1,48 @@
+# CURRENT (night 7, 2026-09-18): the byte-split acquires fold, and the local splitter runs inside the big functions
+
+**TheRealGuildmaster's `TryAcquire(0, hero, 4)` is gone** (last night's first item). Three generic converter fixes:
+
+1. `fold_byte_split_pointers` folded **one** split per function and then stopped. The reassembly was matched as an
+   exact string, but the unwrap pass leaves a space wherever Ghidra had wrapped the expression, so the second split's
+   `concat not in tail` broke the loop. It is now one ordered scan keyed on each split's own object (the four byte
+   registers are the same for every acquire in a function, so a reassembly belongs to the last split before it), with
+   a whitespace-tolerant `RE_BYTE_CONCAT_USE`; `RE_BYTE_SPLIT` separators became `\s*` because a deeply indented body
+   leaves `>> 0x10)\n    ;`. PreMelee TheRealGuildmaster: 10 splits / 20 reassemblies, all folded (was 1 / 5).
+   Dead splits are dropped by local liveness (the registers are reused for an unrelated zero-fill later in the body).
+2. **`&stack0xffffffXX` is a declared local** (`resolve_stack_offset_names`): Ghidra spells one slot both by its
+   declaration (`ppuStack_f8`) and as a raw frame offset where the slot is only ever taken by address. A local `X_f8`
+   sits at entry-SP - (0xf8 + 4) = -0xfc, so the two meet. Without this, MeleeApprentice's resource was two objects.
+3. **The destructor with no vtable line** (`RE_INLINE_DTOR_NO_VTABLE`): on the path where the object is already the
+   base, only the member zero-stores precede the base destructor call. `canonicalise_stack_objects` then spelled the
+   member store under the object's name, so `resource = 0` reached the lifter and every later use came out `nil` —
+   that is where `TryAcquire(0, me, 4)` / `ReleaseResource(0)` came from. Folded only for an object this function
+   acquired (the shape alone is not evidence). The leading zero-stores of the ordinary dtor are now matched
+   name-agnostically too (they may be spelled under a sibling slot).
+
+**The local splitter now runs in the functions that need it** (`lua_local_versions.py`): `flow_graph` bailed on the
+whole body for two emitter shapes. Hoisted cleanup/region closures (`local function __region_X() ... end`) are now
+blanked and every name they touch is pinned (a closure call could read or write it at any of its sites), and
+`if C then __region_X(); goto LAB end` is accepted as one inline-jump node — its goto edge was also being dropped,
+because the edge builder looked for `then goto L end`. Guard: the chunk's *own* header may read
+`local function __resource_main(...)` (the Oakvale husband candidate), and treating that as a closure blanked the
+entire body — the scan starts after the root header. TheRealGuildmaster PreMelee splits 6 hoisted temporaries (was 0);
+Guild `scratchValue` 2276 -> 2097, Will TheRealGuildmaster 250 -> 137, with real names landing instead
+(`timerId8/9`, `questionAnswer2..6`, `conversationId`, `preMeleeDummy`, `dist`, `tutorialState`). Orchard's readable
+lost a whole dead cleanup closure and two dead termination checks.
+
+Gates: **Oakvale draft gate identical**, Oakvale readable byte-identical (its READABILITY_REPORT summary unchanged),
+smoke Orchard 0 / Guild 11 / TraderConflict 11 (all unchanged), unit todo Guild 765 (was 791).
+Suite: **1563 passed**, 78 failed — all 78 in `test_watch_barrels_loop.py`, and **identical on a pristine tree**
+(stash the tool + refs changes and re-run it: 2.5s). The stale-fixture list is now four:
+`test_bully_proximity.py` (44, also pristine), `test_watch_barrels_loop.py` (78), `test_live_father_intro.py`,
+`test_watch_barrels_readable.py`. Run the suite with those four `--ignore`d, and ALONE (a concurrent unit rebuild
+fakes 400+ failures); the whole thing takes ~26 min.
+
+**Next**: the remaining `scratchValue` (2097 in Guild) — the splitter's 180-local budget stops after the first few
+names in TheRealGuildmaster (cVar4 alone wants 44 versions), so consider splitting fewest-versions-first, and fold
+`scratchValue = quest:IsActiveThreadTerminating()` / `= quest:MsgIsQuestionAnsweredYesOrNo()` at the style stage.
+Then goto residue, rebuild the Aeon zip + v5 (`build_aeon_share_zip.py`, `build_unit_playtest_package.py`), in-game run of v5.
+
 # CURRENT (night 6, 2026-09-17): TraderConflict unit through the pipeline (15/15 compile, todo 431 -> 176)
 
 **Latest (same night, later)** — Aeon zip rebuilt (`work/AeonShare-2026-09-17.zip`: NewOakValeIntro + Orchard + Guild +

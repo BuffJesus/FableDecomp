@@ -124,3 +124,26 @@ end
         output, mapping = split_hoisted_locals(source)
         LuaRuntime().execute(output)
         self.assertEqual(len(mapping), 1)
+
+    def test_hoisted_region_closure_is_blanked_and_its_names_pinned(self):
+        # The emitter hoists a cleanup region into a closure that runs at its call sites, and writes the
+        # `if C then __region(); goto L end` jump. Both used to make the whole body unanalysable.
+        source = '''function Main(sink, stop)
+    local cVar1, iVar2
+    local function __region_cleanup()
+        sink(iVar2)
+    end
+    iVar2 = 0
+    cVar1 = stop
+    if cVar1 then __region_cleanup(); goto DONE end
+    iVar2 = 1
+    cVar1 = iVar2 == 1
+    sink(cVar1)
+    ::DONE::
+    return iVar2
+end
+'''
+        output, mapping = self.assert_equivalent(source, [(lambda _v: None, s) for s in (True, False)])
+        self.assertIn('cVar1', mapping)                 # split: two unrelated definitions
+        self.assertNotIn('iVar2', mapping)              # pinned: the closure reads it
+        self.assertIn('if cVar1_', output)

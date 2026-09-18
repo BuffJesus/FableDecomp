@@ -15,12 +15,11 @@ local repeatMelee, badHit
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local timerId, predicateResult, predicateResult48, fret_0, conversationId, conversationId2
+    local timerId, predicateResult, predicateResult48, conversationId, conversationId2
     local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
     local conversationId8, conversationId9, conversationId10, conversationId11, conversationId12
-    local conversationId13, scratchValue6, theRealGuildmaster, meleeThunder, meleeThunder2
-    local meleeThunder3, scratchValue8, scratchValue, scratchValue12, scratchValue14, movie
-    local resource, timerId2
+    local conversationId13, theRealGuildmaster, meleeThunder, meleeThunder2, meleeThunder3
+    local scratchValue8, scratchValue, scratchValue12, scratchValue14, movie, resource, timerId2
     resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
@@ -35,8 +34,7 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then goto LAB_00d5685e end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d5685e end
-    scratchValue6 = quest:GetThingWithScriptName("M_MeleeOpponentStand")
-    me:MoveToPosition(scratchValue6:GetPos(), 3.0, 1, false, true)
+    me:MoveToPosition(quest:GetThingWithScriptName("M_MeleeOpponentStand"):GetPos(), 3.0, 1, false, true)
     while me:IsPerformingScriptTask() and not quest:GetStateBool("WhisperStopWalking") do
         if not quest:NewScriptFrame(me) then goto LAB_00d5685e end
     end
@@ -47,7 +45,6 @@ function Main(quest, me)
     while quest:GetStateInt("TutorialState") == 1 do
         if not quest:NewScriptFrame(me) then goto LAB_00d57f5d end
         if me:IsTalkedToByHero() then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d57f5d end
             movie = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
@@ -66,8 +63,7 @@ function Main(quest, me)
                 resources:ReleaseResource("")
                 return
             end
-            fret_0 = quest:GetHealth(resources:ScriptThing(resource))
-            if 0.0 >= fret_0 then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie); goto continue_12 end
+            if 0.0 >= quest:GetHealth(resources:ScriptThing(resource)) then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie); goto continue_12 end
             me:Speak(hero, "TEXT_QST_028_WHISPER_MEET", GROUP_SELECT_FIRST, false, true, false)
             while me:IsPerformingScriptTask() do
                 quest:NewScriptFrame(me)
@@ -87,7 +83,6 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         elseif me:MsgIsHitByHero() then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d57f5d end
             quest:SetStateBool("EarlyHitWhisper", true)
         end
         ::continue_12::
@@ -98,7 +93,6 @@ function Main(quest, me)
             while quest:GetStateInt("TutorialState") ~= 3 do
                 if not quest:NewScriptFrame(me) then goto LAB_00d57f5d end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d57f5d end
             quest:SetStateBool("MeleeOpponentReset", false)
             quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE_DONT_ATTACK")
             quest:GiveThingBestEnemyTarget(me, hero)
@@ -227,7 +221,6 @@ function Main(quest, me)
                 end
                 if quest:IsPlayerCreatureBlocking() then
                     -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc | 1);
-                    scratchValue6 = hero
                     -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                     if not hero:MsgIsHitBy("MeleeOpponent") then
                         predicateResult = false
@@ -260,7 +253,6 @@ function Main(quest, me)
                         quest:SetTimer(timerId2, 15)
                     end
                 else
-                    scratchValue6 = hero
                     -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                     if hero:MsgIsHitBy("MeleeOpponent") then
                         if quest:IsActiveThreadTerminating() then
@@ -436,7 +428,6 @@ function Main(quest, me)
                 else
                     if quest:IsPlayerCreatureBlocking() then
                         -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc | 2);
-                        scratchValue6 = hero
                         -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                         if not hero:MsgIsHitBy("MeleeOpponent") then
                             predicateResult48 = false
@@ -483,7 +474,6 @@ function Main(quest, me)
                             return
                         end
                     else
-                        scratchValue6 = hero
                         -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                         if hero:MsgIsHitBy("MeleeOpponent") then
                             if quest:IsActiveThreadTerminating() then

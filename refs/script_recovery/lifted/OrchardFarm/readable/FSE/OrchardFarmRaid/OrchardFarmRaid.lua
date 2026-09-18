@@ -103,8 +103,7 @@ end
 -- Q_OrchardFarmRaid.ProcessGameRulesEvil (retail 0x00dd03d0)
 function ProcessGameRulesEvil(quest)
     local hero = quest:GetHero()
-    local addQuestInfoCounter, scratchValue, rivalHeroWhisperOrchardFarm, scratchValue6
-    local mkOfwfWhisper
+    local addQuestInfoCounter, f_stk_14_2, rivalHeroWhisperOrchardFarm, mkOfwbWhisper, mkOfwfWhisper
     local function __cleanup_LAB_00dd0b11()
         quest:EndCutscene()
     end
@@ -126,11 +125,11 @@ function ProcessGameRulesEvil(quest)
             quest:RemoveQuestInfoElement(addQuestInfoCounter)
             quest:MiniMapAddMarker(rivalHeroWhisperOrchardFarm, "HUD_ORB_RED_SMALL")
             quest:EntityAttachToScript(rivalHeroWhisperOrchardFarm, "Q_OrchardFarmRaid")
-            scratchValue6 = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
+            mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
             mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
             quest:StartCutscene({HERO = hero, WHISPER = rivalHeroWhisperOrchardFarm}, {}, true)
-            scratchValue = quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2
-            if scratchValue <= (quest:GetDistanceBetweenThings(scratchValue6, hero) ^ 2) then
+            f_stk_14_2 = quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2
+            if f_stk_14_2 <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
                 quest:RunCutscene("CS_ORCHARD_EVIL_WHISPER_BACK", true, false)
             else
@@ -150,7 +149,7 @@ function ProcessGameRulesEvil(quest)
             end
             quest:SetStateBool("WhisperInCutscene", false)
             quest:EndCutscene()
-            addQuestInfoCounter = scratchValue
+            addQuestInfoCounter = f_stk_14_2
         end
         if hero:MsgIsKilledBy("") then
             if quest:IsActiveThreadTerminating() then return end
@@ -192,7 +191,7 @@ end
 -- Q_OrchardFarmRaid.ProcessGameRulesGood (retail 0x00dd0f60)
 function ProcessGameRulesGood(quest)
     local hero = quest:GetHero()
-    local ePriority, addQuestInfoCounter, rivalHeroWhisperOrchardFarm, scratchValue, mkOfwfWhisper
+    local ePriority, addQuestInfoCounter, rivalHeroWhisperOrchardFarm, mkOfwbWhisper, mkOfwfWhisper
     local function __cleanup_LAB_00dd1728()
         quest:EndCutscene()
     end
@@ -222,10 +221,10 @@ function ProcessGameRulesGood(quest)
             rivalHeroWhisperOrchardFarm = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", quest:GetThingWithScriptName("BanditTeamSpawn"):GetPos(), "OrchardFarmWhisper")
             quest:EntityAttachToScript(rivalHeroWhisperOrchardFarm, "Q_OrchardFarmRaid")
             quest:MiniMapAddMarker(rivalHeroWhisperOrchardFarm, "HUD_ORB_RED_SMALL")
-            scratchValue = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
+            mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
             mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
             quest:StartCutscene({HERO = hero, WHISPER = rivalHeroWhisperOrchardFarm}, {}, true)
-            if (quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2) <= (quest:GetDistanceBetweenThings(scratchValue, hero) ^ 2) then
+            if (quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2) <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
                 quest:RunCutscene("CS_ORCHARD_GOOD_WHISPER_BACK", true, false)
             else

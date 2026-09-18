@@ -130,6 +130,7 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_60)
                     quest:DeregisterTimer(xStack_88)
                     xStack_70_2 = nil
+                    resources:ReleaseResource(xStack_84)
                     return
                 end
                 iVar7 = quest:MsgIsQuestionAnsweredYesOrNo()

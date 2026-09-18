@@ -572,11 +572,18 @@ def _resolve_local_thing(body, data, info):
     return None
 
 
+# the statement separators are `\s*`, not a plain newline: a deeply indented body wraps mid-statement and the
+# unwrap pass can leave the `;` on its own line (`>> 0x10)\n    ;`)
 RE_BYTE_SPLIT = re.compile(
-    r'^[ \t]*(\w+) = SUB41\((&?[\w.]+),0\);[ \t]*\r?\n'
-    r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 8\);[ \t]*\r?\n'
-    r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x10\);[ \t]*\r?\n'
-    r'[ \t]*(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x18\);[ \t]*\r?\n', re.M)
+    r'^[ \t]*(\w+) = SUB41\(\s*(&?[\w.]+)\s*,\s*0\s*\)\s*;\s*'
+    r'(\w+) = \(undefined1\)\(\(uint\)\2 >> 8\)\s*;\s*'
+    r'(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x10\)\s*;\s*'
+    r'(\w+) = \(undefined1\)\(\(uint\)\2 >> 0x18\)\s*;[ \t]*\r?\n', re.M)
+
+# the reassembly, tolerant of the spaces the unwrap pass leaves where Ghidra wrapped the expression
+RE_BYTE_CONCAT_USE = re.compile(
+    r'(?:\(void \*\)\s*)?CONCAT13\(\s*(\w+)\s*,\s*CONCAT12\(\s*(\w+)\s*,'
+    r'\s*CONCAT11\(\s*(\w+)\s*,\s*(\w+)\s*\)\s*\)\s*\)')
 
 
 def fold_byte_literal_words(text):
@@ -597,21 +604,43 @@ def fold_byte_literal_words(text):
 
 def fold_byte_split_pointers(text):
     '''A pointer pushed byte-wise (Ghidra: `u0 = SUB41(X,0); u1 = (undefined1)((uint)X >> 8); ...` then
-    `CONCAT13(u3,CONCAT12(u2,CONCAT11(u1,u0)))`) is X at its one use.'''
-    while (m := RE_BYTE_SPLIT.search(text)):
-        u0, x, u1, u2, u3 = m.groups()
-        concat = f'CONCAT13({u3},CONCAT12({u2},CONCAT11({u1},{u0})))'
-        head, tail = text[:m.start()], text[m.end():]
-        if concat not in tail:
-            break
-        tail = tail.replace(f'(void *){concat}', x).replace(concat, x)    # (one split feeds every retry of the acquire)
-        text = head + tail
-    # the split whose reassembly an earlier rewrite already consumed (the acquire operand): the byte temporaries
-    # are dead when nothing else reads them
+    `CONCAT13(u3,CONCAT12(u2,CONCAT11(u1,u0)))`) is X at every use that split reaches.
+
+    One scan in text order, keyed on the split's own object: the byte temporaries are the same four registers for
+    every acquire in a function, so a reassembly belongs to the *last* split before it (one split feeds every retry
+    of its own loop; the next split re-keys the registers to its object).'''
+    events = [(m.start(), 0, m) for m in RE_BYTE_SPLIT.finditer(text)]
+    events += [(m.start(), 1, m) for m in RE_BYTE_CONCAT_USE.finditer(text)]
+    events.sort(key=lambda e: e[:2])
+    source, out, pos = {}, [], 0
+    for start, kind, m in events:
+        if start < pos:
+            continue
+        out.append(text[pos:start])
+        pos = m.end()
+        if kind == 0:
+            u0, x, u1, u2, u3 = m.groups()
+            source[(u3, u2, u1, u0)] = x
+            out.append(m.group(0))          # kept here; the dead-split pass below drops it once its uses are gone
+        else:
+            out.append(source.get(m.groups(), m.group(0)))
+    out.append(text[pos:])
+    text = ''.join(out)
+
+    # a split whose reassemblies were all rewritten is dead. The four byte registers are reused elsewhere in the
+    # function (Ghidra zero-fills a stack thing through them), so deadness is local: from the end of this block,
+    # each name must be re-defined before it is read again.
+    def redefined_before_read(name, rest):
+        nxt = re.search(r'\b' + re.escape(name) + r'\b', rest)
+        if nxt is None:
+            return True
+        line = rest[rest.rfind('\n', 0, nxt.start()) + 1:rest.find('\n', nxt.start())]
+        return re.match(r'^[ \t]*' + re.escape(name) + r'\s*=[^=]', line) is not None
+
     def dead_split(m):
-        u0, x, u1, u2, u3 = m.groups()
-        rest = text[:m.start()] + text[m.end():]
-        return '' if not any(re.search(r'\b' + u + r'\b', rest) for u in (u0, u1, u2, u3)) else m.group(0)
+        u0, _x, u1, u2, u3 = m.groups()
+        rest = text[m.end():]
+        return '' if all(redefined_before_read(u, rest) for u in (u0, u1, u2, u3)) else m.group(0)
     text = RE_BYTE_SPLIT.sub(dead_split, text)
     return text
 
@@ -701,11 +730,20 @@ RE_INLINE_CTOR = re.compile(
     r'(?:[ \t]*(?:\w+ = 0;|\w+ = \(\w+ \*\)0x0;|\w+\[\d\] = (?:\(\w+ \*\))?0x0;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
 
 
+# the member zero-stores in front of the vtable reset may be spelled under a sibling slot's name (Ghidra splits
+# the object) and with either `0` or `0x0`, so they are matched name-agnostically; the object is the vtable line's
 RE_INLINE_DTOR = re.compile(
-    r'^(?P<ind>[ \t]*)(?P<obj>\w+)(?:\[0\]|\._0_4_)? = 0;[ \t]*\r?\n'
-    r'(?:[ \t]*\w+(?:\[\d\]|\._\d+_4_)? = (?:\([\w ]+\**\))?0(?:x0)?;[ \t]*\r?\n){0,2}'
-    r'[ \t]*(?P=obj)(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|0126008c);[ \t]*\r?\n'
+    r'^(?P<ind>[ \t]*)(?:\w+(?:\[\d\]|\._\d+_4_)? = (?:\([\w ()\[\]]+\**\))?0(?:x0)?;[ \t]*\r?\n[ \t]*){0,3}'
+    r'(?P<obj>\w+)(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|0126008c);[ \t]*\r?\n'
     r'[ \t]*[\w:~]+\s*\(\(\w+ \*\)(?P=obj)\);[ \t]*\r?\n', re.M)
+
+
+# the same destructor on the path where the compiler had no vtable to reset (the object is already the base):
+# only the member zero-stores remain in front of the base destructor call
+RE_INLINE_DTOR_NO_VTABLE = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<obj>\w+)(?:\[\d\]|\._\d+_4_)? = (?:\([\w ]+\**\))?0(?:x0)?;[ \t]*\r?\n'
+    r'(?:[ \t]*(?P=obj)(?:\[\d\]|\._\d+_4_)? = (?:\([\w ]+\**\))?0(?:x0)?;[ \t]*\r?\n){0,2}'
+    r'[ \t]*[\w:]*~\w+\s*\(\([\w ]+\*\)(?P=obj)\);[ \t]*\r?\n', re.M)
 
 
 def fold_inline_destructors(text):
@@ -717,7 +755,12 @@ def fold_inline_destructors(text):
     def repl(m):
         release = m.group('vt') == '0127094c' or (m.group('vt') == '0126008c' and m.group('obj') in resources)
         return f'{m.group("ind")}{"RESOURCE_ReleaseResource" if release else "RESOURCE_DestroyMovie"}({m.group("obj")});\n'
-    return RE_INLINE_DTOR.sub(repl, text)
+    text = RE_INLINE_DTOR.sub(repl, text)
+    # without the vtable line the shape alone is not evidence: fold only an object this function acquired,
+    # otherwise the zero-stores would be read as `object = 0` and every later use of it lifts to nil
+    text = RE_INLINE_DTOR_NO_VTABLE.sub(
+        lambda m: f'{m.group("ind")}RESOURCE_ReleaseResource({m.group("obj")});\n' if m.group('obj') in resources else m.group(0), text)
+    return text
 
 
 def fold_inline_constructors(text):
@@ -960,6 +1003,30 @@ def fold_null_string_branches(text):
 
 STACK_OBJECT_SIZES = {'RESOURCE_NewResource': 16, 'RESOURCE_StartMovie': 16, 'ACTORMAP_New': 12, 'STRINGMAP_New': 12, 'QUESTTHING_Empty': 12}   # std::_Tree: comp/pad, _Myhead, _Mysize
 RE_STACK_NAME = re.compile(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)\b')
+
+
+RE_STACK_DECL = re.compile(
+    r'^[ \t]*[\w:<>,_ ]+?[ \t*]+(?P<name>(?:[A-Za-z]+Stack_|local_)(?P<off>[0-9a-f]+))[ \t]*(?P<arr>\[\s*\d+\s*\])?;', re.M)
+
+
+def resolve_stack_offset_names(text: str) -> str:
+    """Ghidra spells one stack slot two ways in the same body: by its declared local (`ppuStack_f8`) and, where
+    the slot is only ever taken by address, as a raw frame offset (`&stack0xffffff04`). A local declared
+    `X_f8` sits at entry-SP - (0xf8 + 4) = -0xfc, so the two names meet; spell the offset by the declaration so
+    the object folds (construction, acquire and destructor all land on one name)."""
+    slots = {}
+    for m in RE_STACK_DECL.finditer(text):
+        slots[-(int(m.group('off'), 16) + 4)] = (m.group('name'), bool(m.group('arr')))
+
+    def repl(m):
+        off = int(m.group('off'), 16)
+        off -= 1 << 32 if off >= 1 << 31 else 0
+        hit = slots.get(off)
+        if hit is None:
+            return m.group(0)
+        name, is_array = hit
+        return (m.group('cast') or '') + ('' if is_array else '&') + name
+    return re.sub(r'(?P<cast>\((?:[\w :]+\*+|int|uint|undefined4)\))?&stack0x(?P<off>[0-9a-f]{8})\b', repl, text)
 
 
 def canonicalise_stack_objects(text: str) -> str:
@@ -1353,6 +1420,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\*\((?:C\w+MasterData) \*\*\)\((' + SELF + r') \+ (0x18|0x44)\)', r'*(int *)(\1 + \2)', text)
     text = re.sub(r'\bparam_1\b', 'this', text)
     text = normalise_typed_decompile(text)
+    text = resolve_stack_offset_names(text)
     for m in set(re.findall(r'^[ \t]*(\w+) = \*\(int \*\*\)\(this \+ (4|0x40)\);', text, re.M)):
         text = re.sub(r'^([ \t]*)(\w+) = \*' + re.escape(m[0]) + r';', lambda mm, off=m[1]: f'{mm.group(1)}{mm.group(2)} = **(int **)(this + {off});', text, flags=re.M)
     text = fold_by_value_things(text, getattr(spec, 'code_range', None))

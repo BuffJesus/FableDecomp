@@ -7,6 +7,37 @@ import re
 from collections import defaultdict, deque
 
 
+# `if C then goto L end` and the emitter's hoisted-region form, `if C then __region_X(); goto L end`:
+# the leading statements are plain calls, so the line stays one node with the jump's two successors
+INLINE_JUMP = re.compile(r'if .+ then (?:\w+(?:[.:]\w+)*\([^;]*\); )*(?:goto \w+|return(?: [^;]*)?|break) end')
+
+
+def closure_ranges(lines):
+    """Line spans of the emitter's hoisted cleanup/region closures (`local function __x() ... end`), which run
+    at their call sites rather than in place. Returns None when a closure is not a plain top-of-body block."""
+    ranges, start, depth = [], None, 0
+    # `elseif` / `else` continue their own `if`, so they are not openers
+    opens = re.compile(r'(?:if .+ then|while .+ do|for .+ do|repeat|do|(?:local )?function .*)')
+    # the chunk's own header may itself read `local function __resource_main(...)`: that is the body, not a closure
+    root = next((i for i, raw in enumerate(lines) if re.match(r'(?:local )?function ', raw.strip())), -1)
+    for i, raw in enumerate(lines):
+        if i <= root:
+            continue
+        line = raw.strip()
+        if start is None:
+            if re.fullmatch(r'local function \w+\([^)]*\)', line):
+                start, depth = i, 1
+            continue
+        if line == 'end' or line.startswith('until '):
+            depth -= 1
+            if depth == 0:
+                ranges.append((start, i))
+                start = None
+        elif opens.fullmatch(line) and not INLINE_JUMP.fullmatch(line):
+            depth += 1
+    return None if start is not None else ranges
+
+
 def flow_graph(lines):
     """Return successors for the emitter's structured one-statement-per-line Lua."""
     stack, blocks, owners, labels, inline = [], {}, {}, {}, {}
@@ -19,9 +50,9 @@ def flow_graph(lines):
             if stack:
                 return None  # Capturing closures need lexical binding analysis.
             stack.append({'kind': 'function', 'start': i})
-        elif re.fullmatch(r'if .+ then (?:goto \w+|return(?: .*)?|break) end', line):
+        elif INLINE_JUMP.fullmatch(line):
             inline[i] = line
-            if line.endswith('then break end'):
+            if line.endswith('break end'):
                 loop = next((b for b in reversed(stack) if b['kind'] in ('while', 'repeat')), None)
                 if loop is None:
                     return None
@@ -78,12 +109,12 @@ def flow_graph(lines):
         line = raw.strip()
         targets = following(i)
         if i in inline:
-            jump = re.search(r'then goto (\w+) end$', line)
+            jump = re.search(r'goto (\w+) end$', line)   # the hoisted-region form puts calls before the jump
             if jump:
                 if jump[1] not in labels:
                     return None
                 targets += [labels[jump[1]]]
-            elif line.endswith('then break end'):
+            elif line.endswith('break end'):
                 targets += following(owners[i]['end'])
         elif line.startswith('goto '):
             name = line.removeprefix('goto ')
@@ -116,6 +147,16 @@ def split_hoisted_locals(source):
     code = ''.join(re.sub(r'[^\n]', ' ', t[0]) if t.lastgroup in
                    ('comment', 'longcomment', 'string', 'longstring') else t[0] for t in tokens(source))
     lines = code.splitlines()
+    # the hoisted cleanup/region closures do not run where they are written; blank them so the rest of the body
+    # has a graph, and pin every name they touch — a closure call could read or write it at any of its sites
+    ranges = closure_ranges(lines)
+    if ranges is None:
+        return source, {}
+    pinned = set()
+    for a, b in ranges:
+        for i in range(a, b + 1):
+            pinned.update(t[0] for t in tokens(lines[i]) if t.lastgroup == 'identifier')
+            lines[i] = ''
     graph = flow_graph(lines)
     if graph is None:
         return source, {}
@@ -137,7 +178,7 @@ def split_hoisted_locals(source):
             parents[target].add(i)
     output, info = list(original), {}
     for name, declaration in declarations.items():
-        if declaration is None:
+        if declaration is None or name in pinned:
             continue
         pattern = re.compile(r'^(\s*)(?:local\s+)?' + re.escape(name) + r'\s*=(?!=)')
         definitions = {i for i, line in enumerate(lines) if pattern.match(line)}
