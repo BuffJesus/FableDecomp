@@ -17,6 +17,31 @@ restructuring project, sized by `tools/script_recovery/report_goto_residue.py`. 
 `test_live_father_intro.py`, `test_watch_barrels_readable.py`) -- ~26 min, 1566 passed / 0 failed as of this
 commit -- and never rebuild a unit while it runs.
 
+# CURRENT (night 7, sixth pass, 2026-09-18): one-operand vector calls, and the CheckFriendlyAttacks collision diagnosed
+
+`fold_local_thing_vectors` recognises a GSI call that fills a local `vector<CScriptThing>` and turns it into a
+table. Both of its patterns required a comma before the out-vector, so a call whose **only** operand is the
+vector never matched: `GetAllCreaturesExcludingHero(&vec)` stayed as raw pointer arithmetic while
+`GetAllThingsWithDefName(&name, &vec)` folded. The leading operands are optional now; the guard that the slot
+must be a zero-constructed local vector is what keeps it safe. Guild todo 765 -> 756, and CheckFriendlyAttacks'
+element access became `creatures[i + 1]` instead of `*(*(0x0 + iVar18) + 8)`.
+
+**The remaining Guild smoke error is diagnosed, not fixed.** `CheckFriendlyAttacks: attempt to perform
+arithmetic on a table value` comes from `canonicalise_stack_objects`, not from the naming or the vector pass.
+The function builds a `CScriptThing` at stack base 0x90 (`QUESTTHING_Empty`, extent 0x84..0x90) *late*, and the
+same bytes earlier hold the "PreMeleeMaze" string (`CStack_88`), the creature vector's end pointer
+(`puStack_90`) and its capacity (`uStack_8c`). The pass rewrites every slot name inside an object's extent from
+the *previous overlapping construction* -- or from line 0 when there is none -- so the first object at an extent
+swallows every earlier, unrelated use of those bytes. Six declarations end up spelled `xStack_90`, and the
+count `(end - begin) / 12` reads as `thing - vector`.
+
+The comment in that pass explains why the region starts early (members can be read before the constructor line,
+e.g. an iterator element copy), so the fix is not simply "start at the constructor": within the range *before*
+the construction, a slot that is assigned there is live as something else and must keep its own name. That is
+the last runtime error in the three units and it is worth doing properly rather than late in a session.
+
+Gates: Oakvale draft gate identical, smoke Orchard 0 / Guild 1 / TraderConflict 8 (unchanged), file syntax 100%.
+
 # CURRENT (night 7, fifth pass, 2026-09-18): the free globals are gone; smoke Guild 11 -> 1, TraderConflict 11 -> 8
 
 The lifter builds a function's `local` line from the slots it *assigns*. A slot the decompiler only ever read --

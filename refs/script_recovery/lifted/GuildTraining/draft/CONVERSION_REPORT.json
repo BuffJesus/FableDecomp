@@ -785,13 +785,10 @@
             "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
             "label LAB_00d45184",
             "verify cleanup at LAB_00d45346 (lifted as early return)",
-            "unlifted: (**(code **)(*(int *)((int)xStack_84 + iVar18) + 0x10c))(1);",
-            "unlifted: (**(code **)*puVar7)(0);",
-            "unlifted: free(xStack_84);",
+            "unlifted: (**(code **)(*(int *)LOCALLIST_At(xStack_84, (iVar18) / 0xc) + 0x10c))(1);",
             "label LAB_00d45d42",
             "label LAB_00d4557d",
-            "unlifted: (**(code **)(*(int *)((int)xStack_84 + iVar13) + 0x10c))(1);",
-            "EntitySetAsKillable: missing pThing (2 args for 3 params)",
+            "unlifted: (**(code **)(*(int *)LOCALLIST_At(xStack_84, (iVar13) / 0xc) + 0x10c))(1);",
             "label LAB_00d45346",
             "MsgHitFriendWithBareHands: CScriptThing method not in FSE manifest",
             "label LAB_00d456af",
@@ -799,18 +796,12 @@
             "MsgHitFriendWithRangedWeapon: CScriptThing method not in FSE manifest",
             "label LAB_00d45dbb",
             "label LAB_00d45930",
-            "unlifted: (**(code **)*puVar7)(0);",
-            "unlifted: free(xStack_84);",
-            "unlifted: (**(code **)*puVar7)(0);",
-            "unlifted: free(xStack_94);",
-            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_70)",
-            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_74)",
-            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_68)",
-            "unlifted: pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_6c)",
-            "unlifted: pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)",
-            "unlifted: pvVar12 = (**(*(iVar13 + 0x0) + 8))(aCStack_10)",
-            "unlifted: pvVar12 = (**(*(0x0 + iVar13) + 8))(aCStack_10)",
-            "unlifted: pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)",
+            "unlifted: pvVar12 = (**(*LOCALLIST_At(xStack_84, (iVar18) / 0xc) + 8))(&xStack_70)",
+            "unlifted: pvVar12 = (**(*LOCALLIST_At(xStack_84, (iVar18) / 0xc) + 8))(&xStack_74)",
+            "unlifted: pvVar12 = (**(*LOCALLIST_At(xStack_84, (iVar18) / 0xc) + 8))(&xStack_68)",
+            "unlifted: pvVar12 = (**(*LOCALLIST_At(xStack_84, (iVar18) / 0xc) + 8))(&xStack_6c)",
+            "unlifted: pvVar12 = (**(*LOCALLIST_At(xStack_84, (iVar13) / 0xc) + 8))(aCStack_10)",
+            "unlifted: pvVar12 = (**(*LOCALLIST_At(xStack_84, (iVar13) / 0xc) + 8))(xStack_30)",
             "unlifted: ACTORMAP_Set(amStack_1c, \"HERO\", &xStack_20)"
           ],
           "calls": [
@@ -837,7 +828,11 @@
             "IsActiveThreadTerminating",
             "GetAllCreaturesExcludingHero",
             "IsActiveThreadTerminating",
+            "LOCALLIST_At",
+            "GetDefName",
             "ENGINE_StrNotEqual",
+            "LOCALLIST_At",
+            "GetDefName",
             "ENGINE_StrNotEqual",
             "ENGINE_StrNotEqual",
             "ENGINE_StrNotEqual",
@@ -932,7 +927,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 551,
+          "lines": 526,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5886,8 +5881,7 @@
       "declaredFreeLocals": {
         "FSE/GuildTraining/GuildTraining.lua": {
           "CheckFriendlyAttacks": [
-            "amStack_1c",
-            "xStack_94"
+            "amStack_1c"
           ]
         },
         "FSE/GuildTraining/Entities/CombatApprentice.lua": {
@@ -5996,7 +5990,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 235
+        "todo": 226
       }
     },
     {
@@ -14962,6 +14956,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 765
+    "todo": 756
   }
 }

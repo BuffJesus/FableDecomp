@@ -21042,17 +21042,17 @@
      "function": "CheckFriendlyAttacks",
      "rewrites": {
       "flags": 0,
-      "termination": 14,
+      "termination": 15,
       "listArithmetic": 0,
-      "byteIndices": 0,
+      "byteIndices": 2,
       "voidReturns": 0,
       "nilReleases": 1,
       "emptyIfs": 2,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 13,
-      "declarations": 30,
-      "decimalLiterals": 21
+      "flagTests": 14,
+      "declarations": 27,
+      "decimalLiterals": 9
      }
     },
     {
@@ -24016,14 +24016,14 @@
        ]
       },
       "bVar9_1": {
-       "name": "predicateResult18",
+       "name": "isActiveThreadTerminating13",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "predicateResult"
+        "isActiveThreadTerminating"
        ]
       },
       "bVar9_2": {
-       "name": "predicateResult19",
+       "name": "predicateResult18",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult",
@@ -24034,14 +24034,14 @@
        ]
       },
       "bVar9_3": {
-       "name": "isActiveThreadTerminating13",
+       "name": "isActiveThreadTerminating14",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
       "bVar9_4": {
-       "name": "predicateResult20",
+       "name": "predicateResult19",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult",
@@ -24396,7 +24396,28 @@
         "resource"
        ]
       },
-      "puVar7_1": {
+      "pvVar12_5": {
+       "name": "defName",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "defName"
+       ]
+      },
+      "pvVar12_6": {
+       "name": "defName2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "defName"
+       ]
+      },
+      "r1_1": {
+       "name": "getThingWithScriptName",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getThingWithScriptName"
+       ]
+      },
+      "uVar17_1": {
        "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -24404,60 +24425,8 @@
         null
        ]
       },
-      "puVar7_2": {
-       "name": "scratchValue24",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null
-       ]
-      },
-      "puVar8_1": {
-       "name": "getThingWithScriptName",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "getThingWithScriptName"
-       ]
-      },
-      "puVar8_2": {
-       "name": "getThingWithScriptName2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "getThingWithScriptName"
-       ]
-      },
-      "r1_1": {
-       "name": "getThingWithScriptName3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "getThingWithScriptName"
-       ]
-      },
-      "r2": {
-       "name": "creatures",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "creatures"
-       ]
-      },
-      "r3": {
-       "name": "creatures2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "creatures"
-       ]
-      },
-      "uVar17_1": {
-       "name": "scratchValue25",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
       "uVar17_2": {
-       "name": "scratchValue26",
+       "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -24497,13 +24466,22 @@
        "basis": "named by the API that consumes it",
        "assignmentRoles": []
       },
-      "xStack_94": {
-       "name": "scratchValue27",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+      "xStack_84_1": {
+       "name": "creatures",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "creatures"
+       ]
+      },
+      "xStack_84_2": {
+       "name": "creatures2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "creatures"
+       ]
       },
       "xStack_a0": {
-       "name": "scratchValue28",
+       "name": "scratchValue25",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       }
@@ -24511,894 +24489,853 @@
      "splitLocals": {
       "bVar10": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "bVar10_1": [
-         87
+         84
         ],
         "bVar10_2": [
-         99,
-         512
+         87,
+         500
         ],
         "bVar10_3": [
-         106
+         94
         ],
         "bVar10_4": [
-         109
+         97
         ],
         "bVar10_5": [
-         114,
-         123
+         102,
+         111
         ],
         "bVar10_6": [
-         118
+         106
         ],
         "bVar10_7": [
-         125
+         113
         ],
         "bVar10_8": [
-         133
+         121
         ],
         "bVar10_9": [
-         143,
-         151,
-         161,
-         170,
-         172
+         131,
+         139,
+         149,
+         158,
+         160
         ],
         "bVar10_10": [
-         184
+         172
         ],
         "bVar10_11": [
-         195
+         183
         ],
         "bVar10_12": [
-         202
+         190
         ],
         "bVar10_13": [
-         206
+         194
         ],
         "bVar10_14": [
-         208,
-         228,
-         256,
-         263,
-         316,
-         370,
-         374
+         196,
+         216,
+         244,
+         251,
+         304,
+         358,
+         362
         ],
         "bVar10_15": [
-         267
+         255
         ],
         "bVar10_16": [
-         270
+         258
         ],
         "bVar10_17": [
-         321
+         309
         ],
         "bVar10_18": [
-         324
+         312
         ],
         "bVar10_19": [
-         391
+         379
         ],
         "bVar10_20": [
-         396
+         384
         ],
         "bVar10_21": [
-         400
+         388
         ],
         "bVar10_22": [
-         403,
-         415
+         391,
+         403
         ],
         "bVar10_23": [
-         404,
-         409
+         392,
+         397
         ],
         "bVar10_24": [
-         407
+         395
         ],
         "bVar10_25": [
-         412
+         400
         ],
         "bVar10_26": [
-         419,
-         427
+         407,
+         415
         ],
         "bVar10_27": [
-         422
+         410
         ],
         "bVar10_28": [
-         430
+         418
         ],
         "bVar10_29": [
-         439
+         427
         ],
         "bVar10_30": [
-         464
+         452
         ],
         "bVar10_31": [
-         468
+         456
         ],
         "bVar10_32": [
-         473
+         461
         ],
         "bVar10_33": [
-         480
+         468
         ],
         "bVar10_34": [
-         483
+         471
         ]
        }
       },
       "pCVar14": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "pCVar14_1": [
-         200
+         188
         ],
         "pCVar14_2": [
-         265
+         253
         ],
         "pCVar14_3": [
-         319
+         307
         ],
         "pCVar14_4": [
-         418
+         406
         ],
         "pCVar14_5": [
-         426
+         414
         ],
         "pCVar14_6": [
-         440
+         428
         ],
         "pCVar14_7": [
-         442
+         430
         ],
         "pCVar14_8": [
-         484
+         472
         ],
         "pCVar14_9": [
-         488
+         476
         ],
         "pCVar14_10": [
-         494
+         482
         ],
         "pCVar14_11": [
-         503
+         491
         ]
        }
       },
       "cVar11": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "cVar11_1": [
-         220
+         208
         ],
         "cVar11_2": [
-         233
+         221
         ],
         "cVar11_3": [
-         248
+         236
         ],
         "cVar11_4": [
-         279
+         267
         ],
         "cVar11_5": [
-         289
+         277
         ],
         "cVar11_6": [
-         304
+         292
         ],
         "cVar11_7": [
-         333
+         321
         ],
         "cVar11_8": [
-         343
+         331
         ],
         "cVar11_9": [
-         358
+         346
         ]
        }
       },
       "iVar13": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "iVar13_1": [
-         23
+         20
         ],
         "iVar13_2": [
-         32
+         29
         ],
         "iVar13_3": [
-         42
+         39
         ],
         "iVar13_4": [
-         53
+         50
         ],
         "iVar13_5": [
-         127,
-         192
+         115,
+         180
         ],
         "iVar13_6": [
-         416
+         404
         ],
         "iVar13_7": [
-         424
+         412
         ],
         "iVar13_8": [
-         485
+         473
         ]
        }
       },
       "iVar18": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "iVar18_1": [
          10
         ],
         "iVar18_2": [
          13,
-         77
+         74
         ],
         "iVar18_3": [
-         129
+         117
         ],
         "iVar18_4": [
-         140
+         128
         ],
         "iVar18_5": [
-         149
+         137
         ],
         "iVar18_6": [
-         159
+         147
         ],
         "iVar18_7": [
-         169
+         157
         ],
         "iVar18_8": [
-         486
+         474
         ]
        }
       },
       "pcVar21": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "pcVar21_1": [
-         20
+         17
         ],
         "pcVar21_2": [
-         28
+         25
         ],
         "pcVar21_3": [
-         37
+         34
         ],
         "pcVar21_4": [
-         47
+         44
         ],
         "pcVar21_5": [
-         137
+         125
         ],
         "pcVar21_6": [
-         145
+         133
         ],
         "pcVar21_7": [
-         154
+         142
         ],
         "pcVar21_8": [
-         164
+         152
         ]
        }
       },
       "pvVar12": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "pvVar12_1": [
-         22
+         19
         ],
         "pvVar12_2": [
-         31
+         28
         ],
         "pvVar12_3": [
-         41
+         38
         ],
         "pvVar12_4": [
-         52
+         49
         ],
         "pvVar12_5": [
-         139
+         127
         ],
         "pvVar12_6": [
-         148
+         136
         ],
         "pvVar12_7": [
-         158
+         146
         ],
         "pvVar12_8": [
-         168
+         156
         ]
        }
       },
       "bVar9": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "bVar9_1": [
-         16
+         15
         ],
         "bVar9_2": [
-         26,
-         34,
-         44,
-         54,
-         56
+         23,
+         31,
+         41,
+         51,
+         53
         ],
         "bVar9_3": [
-         71
+         68
         ],
         "bVar9_4": [
-         82,
-         239,
-         262,
-         295,
-         315,
-         349,
-         369,
-         381
+         79,
+         227,
+         250,
+         283,
+         303,
+         337,
+         357,
+         369
         ]
        }
       },
       "native_arg_sequence_1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         213
+         201
         ],
         "native_arg_sequence_1_2": [
-         215,
-         217,
-         222,
-         224
+         203,
+         205,
+         210,
+         212
         ],
         "native_arg_sequence_1_3": [
-         274,
-         276,
-         281,
-         283
+         262,
+         264,
+         269,
+         271
         ],
         "native_arg_sequence_1_4": [
-         328,
-         330,
-         335,
-         337
+         316,
+         318,
+         323,
+         325
         ]
        }
       },
       "native_arg_sequence_2": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "native_arg_sequence_2_1": [
-         241,
-         297,
-         351
+         229,
+         285,
+         339
         ],
         "native_arg_sequence_2_2": [
-         243,
-         245,
-         250,
-         252
+         231,
+         233,
+         238,
+         240
         ],
         "native_arg_sequence_2_3": [
-         299,
-         301,
-         306,
-         308
+         287,
+         289,
+         294,
+         296
         ],
         "native_arg_sequence_2_4": [
-         353,
-         355,
-         360,
-         362
+         341,
+         343,
+         348,
+         350
         ]
        }
       },
       "pCVar15": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "pCVar15_1": [
-         443
+         431
         ],
         "pCVar15_2": [
-         489
+         477
         ],
         "pCVar15_3": [
-         495
+         483
         ],
         "pCVar15_4": [
-         504
+         492
         ]
        }
       },
       "bVar2": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "bVar2_1": [
          7,
-         50,
-         62
+         47,
+         59
         ],
         "bVar2_2": [
-         85,
-         156,
-         166,
-         178
+         82,
+         144,
+         154,
+         166
         ]
        }
       },
       "bVar20": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "bVar20_1": [
-         438
+         426
         ],
         "bVar20_2": [
-         482
+         470
         ]
        }
       },
       "bVar3": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "bVar3_1": [
          6,
-         39,
-         49,
-         65
+         36,
+         46,
+         62
         ],
         "bVar3_2": [
-         84,
-         146,
-         155,
-         165,
-         181
+         81,
+         134,
+         143,
+         153,
+         169
         ]
        }
       },
       "bVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "bVar4_1": [
          5,
-         29,
-         38,
-         48,
-         68
+         26,
+         35,
+         45,
+         65
         ],
         "bVar4_2": [
-         83,
-         240,
-         296,
-         350,
-         378
+         80,
+         228,
+         284,
+         338,
+         366
         ]
        }
       },
       "pCVar19": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "pCVar19_1": [
-         417
+         405
         ],
         "pCVar19_2": [
-         425
-        ]
-       }
-      },
-      "puVar7": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
-       "versions": {
-        "puVar7_1": [
-         18,
-         528
-        ],
-        "puVar7_2": [
-         89,
-         93,
-         517
-        ]
-       }
-      },
-      "puVar8": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
-       "versions": {
-        "puVar8_1": [
-         17
-        ],
-        "puVar8_2": [
-         88
+         413
         ]
        }
       },
       "r1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "r1_1": [
          8
         ],
         "r1_2": [
-         102,
-         111,
-         120,
-         522
+         90,
+         99,
+         108,
+         503
         ]
        }
       },
       "uVar17": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "uVar17_1": [
          11,
-         76
+         73
         ],
         "uVar17_2": [
-         130,
-         191
+         118,
+         179
         ]
        }
       },
       "xStack_20": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "xStack_20_1": [
-         414
+         402
         ],
         "xStack_20_2": [
-         432
+         420
         ]
        }
       },
       "xStack_30": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
        "versions": {
         "xStack_30_1": [
-         402
+         390
         ],
         "xStack_30_2": [
-         441
+         429
+        ]
+       }
+      },
+      "xStack_84": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0\n",
+       "versions": {
+        "xStack_84_1": [
+         9
+        ],
+        "xStack_84_2": [
+         116
         ]
        }
       }
      },
      "removedLiteralLocals": {
       "bVar10_22": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-       "403": "                    bVar10_22 = false\n",
-       "415": "                        bVar10_22 = false\n"
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+       "391": "                    bVar10_22 = false\n",
+       "403": "                        bVar10_22 = false\n"
       },
       "native_arg_sequence_1_1": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-       "213": "                native_arg_sequence_1_1 = false\n"
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+       "201": "                native_arg_sequence_1_1 = false\n"
       },
       "native_arg_sequence_2_1": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-       "241": "                    native_arg_sequence_2_1 = false\n",
-       "297": "                        native_arg_sequence_2_1 = false\n",
-       "351": "                        native_arg_sequence_2_1 = false\n"
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+       "229": "                    native_arg_sequence_2_1 = false\n",
+       "285": "                        native_arg_sequence_2_1 = false\n",
+       "339": "                        native_arg_sequence_2_1 = false\n"
       },
       "r1_2": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-       "102": "                r1_2 = nil\n",
-       "111": "                    r1_2 = nil\n",
-       "120": "                        r1_2 = nil\n",
-       "522": "    r1_2 = nil\n"
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_22, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_1, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r1_2, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+       "90": "                r1_2 = nil\n",
+       "99": "                    r1_2 = nil\n",
+       "108": "                        r1_2 = nil\n",
+       "503": "    r1_2 = nil\n"
       }
      },
      "inlinedLiteralLocals": {
       "bVar10_29": {
        "literal": "false",
-       "definitionLine": 439,
+       "definitionLine": 427,
        "readLines": [
-        441
+        429
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "439": "                            bVar10_29 = false\n",
-        "441": "                            xStack_30_2 = quest:AddNewConversation(pCVar14_6, bVar10_29, bVar20_1)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_29, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "427": "                            bVar10_29 = false\n",
+        "429": "                            xStack_30_2 = quest:AddNewConversation(pCVar14_6, bVar10_29, bVar20_1)\n"
        }
       },
       "bVar10_34": {
        "literal": "false",
-       "definitionLine": 483,
+       "definitionLine": 471,
        "readLines": [
-        485
+        473
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "483": "            bVar10_34 = false\n",
-        "485": "            iVar13_8 = quest:AddNewConversation(pCVar14_8, bVar10_34, bVar20_2)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar10_34, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "471": "            bVar10_34 = false\n",
+        "473": "            iVar13_8 = quest:AddNewConversation(pCVar14_8, bVar10_34, bVar20_2)\n"
        }
       },
       "bVar20_1": {
        "literal": "false",
-       "definitionLine": 438,
+       "definitionLine": 426,
        "readLines": [
-        441
+        429
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "438": "                            bVar20_1 = false\n",
-        "441": "                            xStack_30_2 = quest:AddNewConversation(pCVar14_6, (false), bVar20_1)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar20_1, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "426": "                            bVar20_1 = false\n",
+        "429": "                            xStack_30_2 = quest:AddNewConversation(pCVar14_6, (false), bVar20_1)\n"
        }
       },
       "bVar20_2": {
        "literal": "false",
-       "definitionLine": 482,
+       "definitionLine": 470,
        "readLines": [
-        485
+        473
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "482": "            bVar20_2 = false\n",
-        "485": "            iVar13_8 = quest:AddNewConversation(pCVar14_8, (false), bVar20_2)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar20_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "470": "            bVar20_2 = false\n",
+        "473": "            iVar13_8 = quest:AddNewConversation(pCVar14_8, (false), bVar20_2)\n"
        }
       },
       "iVar13_6": {
        "literal": "4",
-       "definitionLine": 416,
+       "definitionLine": 404,
        "readLines": [
-        419
+        407
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "416": "                        iVar13_6 = 4\n",
-        "419": "                        bVar10_26 = resources:TryAcquire(pCVar19_1, pCVar14_4, iVar13_6)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_6, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "404": "                        iVar13_6 = 4\n",
+        "407": "                        bVar10_26 = resources:TryAcquire(pCVar19_1, pCVar14_4, iVar13_6)\n"
        }
       },
       "iVar13_7": {
        "literal": "4",
-       "definitionLine": 424,
+       "definitionLine": 412,
        "readLines": [
-        427
+        415
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "424": "                            iVar13_7 = 4\n",
-        "427": "                            bVar10_26 = resources:TryAcquire(pCVar19_2, pCVar14_5, iVar13_7)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_7, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "412": "                            iVar13_7 = 4\n",
+        "415": "                            bVar10_26 = resources:TryAcquire(pCVar19_2, pCVar14_5, iVar13_7)\n"
        }
       },
       "pcVar21_1": {
        "literal": "\"CREATURE_BIRD_GUILD_SPARROW\"",
-       "definitionLine": 20,
+       "definitionLine": 17,
        "readLines": [
-        23
+        20
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "20": "            pcVar21_1 = \"CREATURE_BIRD_GUILD_SPARROW\"\n",
-        "23": "            iVar13_1 = ((pvVar12_1 ~= pcVar21_1) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "17": "            pcVar21_1 = \"CREATURE_BIRD_GUILD_SPARROW\"\n",
+        "20": "            iVar13_1 = ((pvVar12_1 ~= pcVar21_1) and 1 or 0)\n"
        }
       },
       "pcVar21_2": {
        "literal": "\"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\"",
-       "definitionLine": 28,
+       "definitionLine": 25,
        "readLines": [
-        32
+        29
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "28": "                pcVar21_2 = \"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\"\n",
-        "32": "                iVar13_2 = ((pvVar12_2 ~= pcVar21_2) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "25": "                pcVar21_2 = \"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\"\n",
+        "29": "                iVar13_2 = ((pvVar12_2 ~= pcVar21_2) and 1 or 0)\n"
        }
       },
       "pcVar21_3": {
        "literal": "\"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\"",
-       "definitionLine": 37,
+       "definitionLine": 34,
        "readLines": [
-        42
+        39
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "37": "                pcVar21_3 = \"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\"\n",
-        "42": "                iVar13_3 = ((pvVar12_3 ~= pcVar21_3) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "34": "                pcVar21_3 = \"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\"\n",
+        "39": "                iVar13_3 = ((pvVar12_3 ~= pcVar21_3) and 1 or 0)\n"
        }
       },
       "pcVar21_4": {
        "literal": "\"CREATURE_RIVAL_HERO_MAZE\"",
-       "definitionLine": 47,
+       "definitionLine": 44,
        "readLines": [
-        53
+        50
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "47": "                pcVar21_4 = \"CREATURE_RIVAL_HERO_MAZE\"\n",
-        "53": "                iVar13_4 = ((pvVar12_4 ~= pcVar21_4) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "44": "                pcVar21_4 = \"CREATURE_RIVAL_HERO_MAZE\"\n",
+        "50": "                iVar13_4 = ((pvVar12_4 ~= pcVar21_4) and 1 or 0)\n"
        }
       },
       "pcVar21_5": {
        "literal": "\"CREATURE_BIRD_GUILD_SPARROW\"",
-       "definitionLine": 137,
+       "definitionLine": 125,
        "readLines": [
-        140
+        128
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "137": "                        pcVar21_5 = \"CREATURE_BIRD_GUILD_SPARROW\"\n",
-        "140": "                        iVar18_4 = ((pvVar12_5 ~= pcVar21_5) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "125": "                        pcVar21_5 = \"CREATURE_BIRD_GUILD_SPARROW\"\n",
+        "128": "                        iVar18_4 = ((pvVar12_5 ~= pcVar21_5) and 1 or 0)\n"
        }
       },
       "pcVar21_6": {
        "literal": "\"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\"",
-       "definitionLine": 145,
+       "definitionLine": 133,
        "readLines": [
-        149
+        137
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_6, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "145": "                            pcVar21_6 = \"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\"\n",
-        "149": "                            iVar18_5 = ((pvVar12_6 ~= pcVar21_6) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_6, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "133": "                            pcVar21_6 = \"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\"\n",
+        "137": "                            iVar18_5 = ((pvVar12_6 ~= pcVar21_6) and 1 or 0)\n"
        }
       },
       "pcVar21_7": {
        "literal": "\"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\"",
-       "definitionLine": 154,
+       "definitionLine": 142,
        "readLines": [
-        159
+        147
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_7, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "154": "                            pcVar21_7 = \"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\"\n",
-        "159": "                            iVar18_6 = ((pvVar12_7 ~= pcVar21_7) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_7, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "142": "                            pcVar21_7 = \"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\"\n",
+        "147": "                            iVar18_6 = ((pvVar12_7 ~= pcVar21_7) and 1 or 0)\n"
        }
       },
       "pcVar21_8": {
        "literal": "\"CREATURE_RIVAL_HERO_MAZE\"",
-       "definitionLine": 164,
+       "definitionLine": 152,
        "readLines": [
-        169
+        157
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_8, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "164": "                            pcVar21_8 = \"CREATURE_RIVAL_HERO_MAZE\"\n",
-        "169": "                            iVar18_7 = ((pvVar12_8 ~= pcVar21_8) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pcVar21_8, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "152": "                            pcVar21_8 = \"CREATURE_RIVAL_HERO_MAZE\"\n",
+        "157": "                            iVar18_7 = ((pvVar12_8 ~= pcVar21_8) and 1 or 0)\n"
        }
       },
       "pvVar12_1": {
        "literal": "nil",
-       "definitionLine": 22,
+       "definitionLine": 19,
        "readLines": [
-        23
+        20
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "22": "            pvVar12_1 = nil --[[unresolved native value]]\n",
-        "23": "            iVar13_1 = ((pvVar12_1 ~= (\"CREATURE_BIRD_GUILD_SPARROW\")) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pvVar12_1, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "19": "            pvVar12_1 = nil --[[unresolved native value]]\n",
+        "20": "            iVar13_1 = ((pvVar12_1 ~= (\"CREATURE_BIRD_GUILD_SPARROW\")) and 1 or 0)\n"
        }
       },
       "pvVar12_2": {
        "literal": "nil",
-       "definitionLine": 31,
+       "definitionLine": 28,
        "readLines": [
-        32
+        29
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "31": "                pvVar12_2 = nil --[[unresolved native value]]\n",
-        "32": "                iVar13_2 = ((pvVar12_2 ~= (\"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\")) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pvVar12_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "28": "                pvVar12_2 = nil --[[unresolved native value]]\n",
+        "29": "                iVar13_2 = ((pvVar12_2 ~= (\"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\")) and 1 or 0)\n"
        }
       },
       "pvVar12_3": {
        "literal": "nil",
-       "definitionLine": 41,
+       "definitionLine": 38,
        "readLines": [
-        42
+        39
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "41": "                pvVar12_3 = nil --[[unresolved native value]]\n",
-        "42": "                iVar13_3 = ((pvVar12_3 ~= (\"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\")) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pvVar12_3, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "38": "                pvVar12_3 = nil --[[unresolved native value]]\n",
+        "39": "                iVar13_3 = ((pvVar12_3 ~= (\"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\")) and 1 or 0)\n"
        }
       },
       "pvVar12_4": {
        "literal": "nil",
-       "definitionLine": 52,
+       "definitionLine": 49,
        "readLines": [
-        53
+        50
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "52": "                pvVar12_4 = nil --[[unresolved native value]]\n",
-        "53": "                iVar13_4 = ((pvVar12_4 ~= (\"CREATURE_RIVAL_HERO_MAZE\")) and 1 or 0)\n"
-       }
-      },
-      "pvVar12_5": {
-       "literal": "nil",
-       "definitionLine": 139,
-       "readLines": [
-        140
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "139": "                        pvVar12_5 = nil --[[unresolved native value]]\n",
-        "140": "                        iVar18_4 = ((pvVar12_5 ~= (\"CREATURE_BIRD_GUILD_SPARROW\")) and 1 or 0)\n"
-       }
-      },
-      "pvVar12_6": {
-       "literal": "nil",
-       "definitionLine": 148,
-       "readLines": [
-        149
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "148": "                            pvVar12_6 = nil --[[unresolved native value]]\n",
-        "149": "                            iVar18_5 = ((pvVar12_6 ~= (\"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\")) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pvVar12_4, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "49": "                pvVar12_4 = nil --[[unresolved native value]]\n",
+        "50": "                iVar13_4 = ((pvVar12_4 ~= (\"CREATURE_RIVAL_HERO_MAZE\")) and 1 or 0)\n"
        }
       },
       "pvVar12_7": {
        "literal": "nil",
-       "definitionLine": 158,
+       "definitionLine": 146,
        "readLines": [
-        159
+        147
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_7, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "158": "                            pvVar12_7 = nil --[[unresolved native value]]\n",
-        "159": "                            iVar18_6 = ((pvVar12_7 ~= (\"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\")) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pvVar12_5, pvVar12_6, pvVar12_7, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "146": "                            pvVar12_7 = nil --[[unresolved native value]]\n",
+        "147": "                            iVar18_6 = ((pvVar12_7 ~= (\"CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE\")) and 1 or 0)\n"
        }
       },
       "pvVar12_8": {
        "literal": "nil",
-       "definitionLine": 168,
+       "definitionLine": 156,
        "readLines": [
-        169
+        157
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, puVar7_1, puVar7_2, puVar8_1, puVar8_2, pvVar12_8, r1_1, r2, r3, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_94, xStack_a0\n",
-        "168": "                            pvVar12_8 = nil --[[unresolved native value]]\n",
-        "169": "                            iVar18_7 = ((pvVar12_8 ~= (\"CREATURE_RIVAL_HERO_MAZE\")) and 1 or 0)\n"
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10_1, bVar10_2, bVar10_3, bVar10_4, bVar10_5, bVar10_6, bVar10_7, bVar10_8, bVar10_9, bVar10_10, bVar10_11, bVar10_12, bVar10_13, bVar10_14, bVar10_15, bVar10_16, bVar10_17, bVar10_18, bVar10_19, bVar10_20, bVar10_21, bVar10_23, bVar10_24, bVar10_25, bVar10_26, bVar10_27, bVar10_28, bVar10_30, bVar10_31, bVar10_32, bVar10_33, bVar2_1, bVar2_2, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar5, bVar6, bVar9_1, bVar9_2, bVar9_3, bVar9_4, cVar11_1, cVar11_2, cVar11_3, cVar11_4, cVar11_5, cVar11_6, cVar11_7, cVar11_8, cVar11_9, elem_1, elem_2, iVar13_1, iVar13_2, iVar13_3, iVar13_4, iVar13_5, iVar13_8, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, native_arg_sequence_1_2, native_arg_sequence_1_3, native_arg_sequence_1_4, native_arg_sequence_2_2, native_arg_sequence_2_3, native_arg_sequence_2_4, pCVar14_1, pCVar14_2, pCVar14_3, pCVar14_4, pCVar14_5, pCVar14_6, pCVar14_7, pCVar14_8, pCVar14_9, pCVar14_10, pCVar14_11, pCVar15_1, pCVar15_2, pCVar15_3, pCVar15_4, pCVar19_1, pCVar19_2, pvVar12_5, pvVar12_6, pvVar12_8, r1_1, uVar17_1, uVar17_2, xStack_20_1, xStack_20_2, xStack_30_1, xStack_30_2, xStack_80, xStack_84_1, xStack_84_2, xStack_a0\n",
+        "156": "                            pvVar12_8 = nil --[[unresolved native value]]\n",
+        "157": "                            iVar18_7 = ((pvVar12_8 ~= (\"CREATURE_RIVAL_HERO_MAZE\")) and 1 or 0)\n"
        }
       }
      },
@@ -25406,7 +25343,7 @@
     },
     {
      "function": "KeepTabsOnWhisper",
-     "sourceLine": 1570,
+     "sourceLine": 1544,
      "locals": {
       "CVar5": {
        "name": "scratchValue",
@@ -25785,7 +25722,7 @@
     },
     {
      "function": "WatchForSparrowKilled",
-     "sourceLine": 1705,
+     "sourceLine": 1679,
      "locals": {
       "bVar2_1": {
        "name": "isActiveThreadTerminating",
@@ -25852,7 +25789,7 @@
     },
     {
      "function": "KeepBookcaseExitRemoved",
-     "sourceLine": 1734,
+     "sourceLine": 1708,
      "locals": {
       "bVar2_1": {
        "name": "isActiveThreadTerminating",
@@ -26018,7 +25955,7 @@
     },
     {
      "function": "RunArrivalCutscene",
-     "sourceLine": 1784,
+     "sourceLine": 1758,
      "locals": {
       "bVar3_1": {
        "name": "isActiveThreadTerminating",
@@ -26241,7 +26178,7 @@
     },
     {
      "function": "GossipSetup",
-     "sourceLine": 1856,
+     "sourceLine": 1830,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26250,7 +26187,7 @@
     },
     {
      "function": "RunCeremonyCutscene",
-     "sourceLine": 1887,
+     "sourceLine": 1861,
      "locals": {
       "bVar2_1": {
        "name": "isLevelLoaded",
@@ -26597,7 +26534,7 @@
     },
     {
      "function": "RunSaveXPCutscene",
-     "sourceLine": 1981,
+     "sourceLine": 1955,
      "locals": {
       "bVar2_2": {
        "name": "controlAcquired",
@@ -26788,7 +26725,7 @@
     },
     {
      "function": "RunSaveXPCutscene2",
-     "sourceLine": 2039,
+     "sourceLine": 2013,
      "locals": {
       "bVar2_2": {
        "name": "controlAcquired",
@@ -27024,7 +26961,7 @@
     },
     {
      "function": "KeepTabsOnWhisper",
-     "sourceLine": 805,
+     "sourceLine": 780,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27033,7 +26970,7 @@
     },
     {
      "function": "WatchForSparrowKilled",
-     "sourceLine": 862,
+     "sourceLine": 837,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27042,7 +26979,7 @@
     },
     {
      "function": "KeepBookcaseExitRemoved",
-     "sourceLine": 873,
+     "sourceLine": 848,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27051,7 +26988,7 @@
     },
     {
      "function": "RunArrivalCutscene",
-     "sourceLine": 889,
+     "sourceLine": 864,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27060,7 +26997,7 @@
     },
     {
      "function": "GossipSetup",
-     "sourceLine": 914,
+     "sourceLine": 889,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27069,7 +27006,7 @@
     },
     {
      "function": "RunCeremonyCutscene",
-     "sourceLine": 945,
+     "sourceLine": 920,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27078,7 +27015,7 @@
     },
     {
      "function": "RunSaveXPCutscene",
-     "sourceLine": 973,
+     "sourceLine": 948,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27087,7 +27024,7 @@
     },
     {
      "function": "RunSaveXPCutscene2",
-     "sourceLine": 996,
+     "sourceLine": 971,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -27349,18 +27286,18 @@
        "hero": 1,
        "cutscenes": 0,
        "staleLabelComments": 6,
-       "aliveStaging": 14,
+       "aliveStaging": 13,
        "exitChecksInlined": 7,
        "frameChecks": 4,
-       "inlinedTemporaries": 53,
-       "deadDefinitions": 57,
+       "inlinedTemporaries": 56,
+       "deadDefinitions": 53,
        "guardWrappers": 0,
        "retryLoops": 4,
        "booleanMaterialisation": 39,
        "booleanCompares": 0,
        "conditions": 2,
        "literals": 0,
-       "copies": 5,
+       "copies": 2,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 3,
@@ -27378,15 +27315,15 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 9,
        "controlAcquires": 1,
-       "parentheses": 36,
+       "parentheses": 32,
        "cosmetics": 0,
        "firstAssignments": 1,
-       "freeSuffixes": 5,
+       "freeSuffixes": 4,
        "hoistedState": 0
       },
       "before": {
-       "lines": 494,
-       "temporaries": 96,
+       "lines": 467,
+       "temporaries": 94,
        "labels": 11,
        "gotos": 33,
        "terminationChecks": 22,
@@ -27394,8 +27331,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 225,
-       "temporaries": 22,
+       "lines": 200,
+       "temporaries": 21,
        "labels": 9,
        "gotos": 25,
        "terminationChecks": 8,

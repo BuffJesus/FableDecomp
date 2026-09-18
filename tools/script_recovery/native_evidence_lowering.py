@@ -1240,15 +1240,16 @@ def fold_local_thing_vectors(text, thing_slots=None):
         if not m.group(3).startswith('GetAllThings') and m.group(5) not in constructed:
             return m.group(0)
         vectors.append(m.group(5))
-        return f'{m.group(1)}{m.group(5)} = GSI->{m.group(3)}({m.group(4)});\n{m.group(1)}{m.group(2)} = LOCALLIST_Count({m.group(5)});'
-    text = re.sub(r'^([ \t]*)(\w+) = (?:\(\w+\))?GSI->(\w+)\(([^;]*?),&?(\w+)\);', call, text, flags=re.M)
+        return f'{m.group(1)}{m.group(5)} = GSI->{m.group(3)}({m.group(4) or ""});\n{m.group(1)}{m.group(2)} = LOCALLIST_Count({m.group(5)});'
+    # the leading operands are optional: `GetAllCreaturesExcludingHero(&vec)` has none
+    text = re.sub(r'^([ \t]*)(\w+) = (?:\(\w+\))?GSI->(\w+)\((?:([^;]*?),)?&?(\w+)\);', call, text, flags=re.M)
     # the void spelling (the count is computed from the begin/end slots afterwards)
     def call_void(m):
         if not m.group(2).startswith('GetAllThings') and m.group(4) not in constructed:
             return m.group(0)
         vectors.append(m.group(4))
-        return f'{m.group(1)}{m.group(4)} = GSI->{m.group(2)}({m.group(3)});'
-    text = re.sub(r'^([ \t]*)GSI->(\w+)\(([^;]*?),&?(\w+)\);', call_void, text, flags=re.M)
+        return f'{m.group(1)}{m.group(4)} = GSI->{m.group(2)}({m.group(3) or ""});'
+    text = re.sub(r'^([ \t]*)GSI->(\w+)\((?:([^;]*?),)?&?(\w+)\);', call_void, text, flags=re.M)
     # the by-value spelling (Ghidra recognised the hidden return slot): `vec = GSI->GetAllThings...(&name);`
     for m in re.finditer(r'^[ \t]*(\w+) = (?:GSI->GetAllThings\w+\([^;,]*\)|(?:QUEST|ENTITY)LIST_Copy\("\w+"\));', text, flags=re.M):
         vectors.append(m.group(1))

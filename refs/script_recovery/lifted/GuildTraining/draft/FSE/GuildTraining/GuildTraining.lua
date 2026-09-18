@@ -1140,25 +1140,23 @@ end
 
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, puVar7, puVar8, pvVar12, r1, r2, r3, uVar17, xStack_20, xStack_30, xStack_80, xStack_94, xStack_a0
+    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0
     local alive = true
     bVar4 = false
     bVar3 = false
     bVar2 = false
     r1 = quest:GetThingWithScriptName(nil --[[missing]])
-    r2 = quest:GetAllCreaturesExcludingHero()
-    iVar18 = r1 - 0x0 >> 0x1f
+    xStack_84 = quest:GetAllCreaturesExcludingHero()
+    iVar18 = r1 - xStack_84 >> 0x1f
     uVar17 = 0
-    if (r1 - 0x0) / 0xc + iVar18 ~= iVar18 then
+    if (r1 - xStack_84) / 0xc + iVar18 ~= iVar18 then
         iVar18 = 0
         repeat
             alive = not quest:IsActiveThreadTerminating()
             bVar9 = not alive
-            puVar8 = r1
-            puVar7 = 0x0
             if bVar9 then goto LAB_00d452d1 end
             pcVar21 = "CREATURE_BIRD_GUILD_SPARROW"
-            -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_70)
+            -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_70)
             pvVar12 = nil --[[unresolved native value]]
             iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
             if iVar13 == 0 then
@@ -1167,7 +1165,7 @@ function CheckFriendlyAttacks(quest)
             else
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                 bVar4 = true
-                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_74)
+                -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_74)
                 pvVar12 = nil --[[unresolved native value]]
                 iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
                 if iVar13 == 0 then
@@ -1177,7 +1175,7 @@ function CheckFriendlyAttacks(quest)
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                 bVar4 = true
                 bVar3 = true
-                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_68)
+                -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_68)
                 pvVar12 = nil --[[unresolved native value]]
                 iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
                 if iVar13 == 0 then
@@ -1188,7 +1186,7 @@ function CheckFriendlyAttacks(quest)
                 bVar4 = true
                 bVar3 = true
                 bVar2 = true
-                -- TODO(native): pvVar12 = (**(*(0x0 + iVar18) + 8))(&xStack_6c)
+                -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_6c)
                 pvVar12 = nil --[[unresolved native value]]
                 iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
                 bVar9 = true
@@ -1211,12 +1209,12 @@ function CheckFriendlyAttacks(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar9 = not alive
                 if bVar9 then return end
-                -- TODO(native): (**(code **)(*(int *)((int)xStack_84 + iVar18) + 0x10c))(1);
-                quest:EntitySetAsKillable(r1, (0x0 + iVar18), false)
+                -- TODO(native): (**(code **)(*(int *)xStack_84[(iVar18) / 0xc + 1] + 0x10c))(1);
+                quest:EntitySetAsKillable(xStack_84[(iVar18) / 0xc + 1], false, true)
             end
             uVar17 = uVar17 + 1
             iVar18 = iVar18 + 0xc
-        until not (uVar17 < ((r1 - 0x0) / 0xc))
+        until not (uVar17 < ((r1 - xStack_84) / 0xc))
     end
     bVar6 = false
     bVar5 = false
@@ -1226,16 +1224,7 @@ function CheckFriendlyAttacks(quest)
     bVar2 = false
     alive = not quest:IsActiveThreadTerminating()
     bVar10 = not alive
-    puVar8 = r1
-    puVar7 = 0x0
     if not bVar10 then
-        while puVar7 ~= puVar8 do
-            -- TODO(native): (**(code **)*puVar7)(0);
-            puVar7 = puVar7 + 3
-        end
-        if nil ~= nil then
-            -- TODO(native): free(xStack_84);
-        end
         alive = not quest:IsActiveThreadTerminating()
         bVar10 = not alive
         repeat
@@ -1267,10 +1256,10 @@ function CheckFriendlyAttacks(quest)
                 bVar10 = not alive
                 if bVar10 then goto LAB_00d45322 end
                 iVar13 = 0
-                r3 = quest:GetAllCreaturesExcludingHero()
-                iVar18 = r1 - 0x0 >> 0x1f
+                xStack_84 = quest:GetAllCreaturesExcludingHero()
+                iVar18 = r1 - xStack_84 >> 0x1f
                 uVar17 = 0
-                if (r1 - 0x0) / 0xc + iVar18 ~= iVar18 then
+                if (r1 - xStack_84) / 0xc + iVar18 ~= iVar18 then
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
                         bVar10 = not alive
@@ -1278,8 +1267,8 @@ function CheckFriendlyAttacks(quest)
                             return
                         end
                         pcVar21 = "CREATURE_BIRD_GUILD_SPARROW"
-                        -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(xStack_20)
-                        pvVar12 = nil --[[unresolved native value]]
+                        elem_1 = xStack_84[(iVar13) / 0xc + 1]
+                        pvVar12 = elem_1:GetDefName()
                         iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                         if iVar18 == 0 then
                             -- LAB_00d4557d: (native jump target)
@@ -1287,8 +1276,8 @@ function CheckFriendlyAttacks(quest)
                         else
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                             bVar3 = true
-                            -- TODO(native): pvVar12 = (**(*(iVar13 + 0x0) + 8))(aCStack_10)
-                            pvVar12 = nil --[[unresolved native value]]
+                            elem_2 = xStack_84[(iVar13) / 0xc + 1]
+                            pvVar12 = elem_2:GetDefName()
                             iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                             if iVar18 == 0 then
                                 bVar10 = false
@@ -1297,7 +1286,7 @@ function CheckFriendlyAttacks(quest)
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                             bVar3 = true
                             bVar2 = true
-                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(aCStack_10)
+                            -- TODO(native): pvVar12 = (**(*xStack_84[(iVar13) / 0xc + 1] + 8))(aCStack_10)
                             pvVar12 = nil --[[unresolved native value]]
                             iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                             if iVar18 == 0 then
@@ -1307,7 +1296,7 @@ function CheckFriendlyAttacks(quest)
                             pcVar21 = "CREATURE_RIVAL_HERO_MAZE"
                             bVar3 = true
                             bVar2 = true
-                            -- TODO(native): pvVar12 = (**(*(0x0 + iVar13) + 8))(xStack_30)
+                            -- TODO(native): pvVar12 = (**(*xStack_84[(iVar13) / 0xc + 1] + 8))(xStack_30)
                             pvVar12 = nil --[[unresolved native value]]
                             iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                             bVar10 = true
@@ -1329,12 +1318,12 @@ function CheckFriendlyAttacks(quest)
                             if bVar10 then
                                 return
                             end
-                            -- TODO(native): (**(code **)(*(int *)((int)xStack_84 + iVar13) + 0x10c))(1);
-                            quest:EntitySetAsKillable(nil --[[missing]], (0x0 + iVar13), false)
+                            -- TODO(native): (**(code **)(*(int *)xStack_84[(iVar13) / 0xc + 1] + 0x10c))(1);
+                            quest:EntitySetAsKillable(xStack_84[(iVar13) / 0xc + 1], false, true)
                         end
                         uVar17 = uVar17 + 1
                         iVar13 = iVar13 + 0xc
-                    until not (uVar17 < ((r1 - 0x0) / 0xc))
+                    until not (uVar17 < ((r1 - xStack_84) / 0xc))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar10 = not alive
@@ -1670,24 +1659,10 @@ function CheckFriendlyAttacks(quest)
             bVar10 = not alive
         until false
     end
-    while puVar7 ~= puVar8 do
-        -- TODO(native): (**(code **)*puVar7)(0);
-        puVar7 = puVar7 + 3
-    end
-    if nil ~= nil then
-        -- TODO(native): free(xStack_84);
-    end
     r1 = nil
     ::LAB_00d45322::
     do return end
     ::LAB_00d452d1::
-    while puVar7 ~= puVar8 do
-        -- TODO(native): (**(code **)*puVar7)(0);
-        puVar7 = puVar7 + 3
-    end
-    if xStack_94 ~= nil then
-        -- TODO(native): free(xStack_94);
-    end
     xStack_a0 = nil
     goto LAB_00d45322
 end
