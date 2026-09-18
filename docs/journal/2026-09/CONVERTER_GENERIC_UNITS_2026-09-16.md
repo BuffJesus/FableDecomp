@@ -431,3 +431,31 @@ Aeon read the share zip's `readable_converter` output as "a Lua version of the d
   entities (the gate is identical, so Oakvale never had the register form).
 - Test repointed: `test_binding_correspondence_changes_fail_closed` perturbed `pCVar2 = 0x0`, which the regenerated Oakvale
   draft no longer contains (the 16th binding lifts); it now perturbs the deactivation operand.
+
+## Night 6, latest: Speak is blocking, out-parameters, timers per register (2026-09-17)
+
+- ForgeFSE `thing:Speak(target, key, method, listen, sound2D, overFade)` is `Speak_Blocking`: it runs the retail wait
+  loop itself and returns false on termination — the draft's `while me:IsPerformingScriptTask() do <frame check> end`
+  after it is the call's result (`fold_blocking_speech`: `if not me:Speak(...) then <cleanup> end`). `SpeakAndWait` is NOT
+  the same thing (it starts its own movie sequence and pauses the world). Speak's third operand is
+  ETextGroupSelectionMethod — named `GROUP_SELECT_*` with one `local` line per file (Aeon's ports use the names; note his
+  BeardyBaldy/NOVI_BarrelThug define `GROUP_SELECT_NONE = 0`, which is GROUP_SELECT_FIRST — NONE is 4).
+- Retry loops fold for temporaries shared across several loops (`scratchValue7 = me:IsPerformingScriptTask()` before
+  every Speak) when the loop holds no other def/read and no read of its exit value is reachable; closure-local shadows
+  (`local x = ...` first thing in a hoisted cleanup closure) no longer pin the outer temporary, so `x = hero;
+  me:Speak(x, ...)` propagates. Int flag-clear form (`if C then X = 0 end; if X ~= 0 then`) folds with reachability
+  scoping. Guild `scratchValue` count 2480 -> 1747.
+- Lowering: every timer call through a register routes to the stack copy made right after its RegisterTimer, per
+  register in text order (CombatApprentice has two timers) — `SetTimer(iVar6, 10)` was the reloaded register that also
+  carried a conversation id. CRT `rand(<stale regs>)` -> `math.random(0, 32767)` (was a free `iVar4` in
+  TC_BanditHostageKeeper). `(CCharString *)&xStack_2c` on a by-value string operand is the slot (a literal had landed in
+  `AddLineToConversation`'s showSubtitle position). Inlined `CScriptThing::GetDataString` (empty global string
+  DAT_0143e8ec when Data is null, else the Data vcall) lifts as `s = thing:GetDataString()` / `s = ""`; by-value string
+  results into a stack slot are assigned to that slot (`xStack_74 = r1:GetDataString()` then `xStack_74 == "SOUTH"`); the
+  CCharString-typed counter rename keeps string-object uses (`*(void **)X` and the null tests next to it).
+- Out-parameter messages: `MsgExpressionPerformedTo` EXISTS in ForgeFSE and returns the expression name or nil
+  (`OUT_AS_RESULT`: `name = me:MsgExpressionPerformedTo(); fired = name ~= nil`); `MsgIsPresentedWithItem` keeps the
+  bool and publishes `g_PresentedItemName`. Any out slot forgets the literal its default constructor staged (a `""` had
+  been constant-folded into `"" == "EXPRESSION_FOLLOW"`). FSE_UPSTREAM_REQUIREMENTS row corrected.
+- Aeon zip + v5 rebuilt again (preflight ok) after these; v5 packages the *readable* stage, so AcquireControl /
+  StartCutscene / blocking Speak folds are what plays.

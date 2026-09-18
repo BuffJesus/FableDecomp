@@ -8,8 +8,11 @@ assignments dropped; flag-clear + retest folded: `if quest:IsRegionLoaded("Great
 fixed**: AppleGirl read `GetTimer(conversationId)` from the 2nd loop iteration (Ghidra merged the reloaded timer register
 with the conversation id) — timer calls now go through the stack copy. Smoke: Orchard 0, TraderConflict 12 notices (unknown
 sidecar bindings StateListSet/GetStateListCopy — DLL not rebuilt — plus free globals in TraderToRescue), Guild 11. Gate
-identical; fast tests 97 green. Next: same rename-by-role for temps with several roles (`scratchValue`, needs a live-range
-split), `quest:Log` breadcrumbs, TheRealGuildmaster (Ghidra spilled the resource pointer as bytes), v5 rebuild + in-game run.
+identical; fast tests 97 green. Later still: `thing:Speak` is Speak_Blocking so the wait loop folds into its result,
+GROUP_SELECT_* names, timers routed per register (CombatApprentice `SetTimer` read a conversation id), `rand()`,
+GetDataString inlines, MsgExpressionPerformedTo returns name-or-nil (binding exists). Aeon zip + v5 rebuilt (preflight ok).
+Next: TheRealGuildmaster (Ghidra spilled the resource pointer as bytes: `SUB(resource,0)`), remaining `scratchValue`
+temps (1747 in Guild; mostly `= 0` flags and DeregisterTimer cleanups), goto residue, in-game run of v5.
 
 **Later the same night — dropped operands recovered from the machine code** (`recover_dropped_operands` in
 `convert_quest_unit.py`): calls the decompiler printed with no operands (TraderToRescue's whole Main) are rebuilt from a
