@@ -1,3 +1,22 @@
+# RESUME HERE (after night 7, 2026-09-18)
+
+**Rebuilt on top of all three passes**: `work/AeonShare-2026-09-18.zip` (3318 KiB) and the v5 bundle;
+preflight passes against `C:\Programs\Steam\steamapps\common\Fable The Lost Chapters`. The in-game run is
+the user's step:
+
+    python work/new-oakvale-original-fse-20260912/local-candidate-v5/local_test.py \
+        --game-dir "C:\Programs\Steam\steamapps\common\Fable The Lost Chapters" --launch --save-dir <saves>
+
+Worth re-testing specifically: quit mid-quest during Guild melee training. Those exits used to drop two
+`DeregisterTimer` calls and a `ReleaseResource`, which is the crash class Aeon reported.
+
+**Resume order**: (1) remaining `scratchValue` -- extend `USE_ROLES` in `readable_lua.py`, the use-side rule is
+the one that pays; (2) `ctr_NN` / `x_stk_NN` slot names that survive styling; (3) the goto residue as its own
+restructuring project, sized by `tools/script_recovery/report_goto_residue.py`. Run the suite ALONE with
+`--ignore` on the four stale fixture files (`test_watch_barrels_loop.py`, `test_bully_proximity.py`,
+`test_live_father_intro.py`, `test_watch_barrels_readable.py`) -- ~26 min, 1566 passed / 0 failed as of this
+commit -- and never rebuild a unit while it runs.
+
 # CURRENT (night 7, third pass, 2026-09-18): 27 early exits stopped leaking their cleanup
 
 `native_cleanup_regions.py` hoists a retail epilogue (release the controlled entities, deregister the timers,
