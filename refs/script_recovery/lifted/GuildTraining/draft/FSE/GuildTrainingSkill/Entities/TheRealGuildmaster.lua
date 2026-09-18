@@ -75,7 +75,7 @@ function Main(quest, me)
         quest:SetPlayerUsingRangedDummies(true)
         iVar16 = quest:RegisterTimer()
         xStack_220 = iVar16
-        quest:SetTimer(iVar16, 0)
+        quest:SetTimer(xStack_220, 0)
         iVar15 = quest:GetStateInt("TutorialState")
         while iVar15 == 1 do
             alive = quest:NewScriptFrame(me)
@@ -1262,7 +1262,6 @@ function Main(quest, me)
             resources:ReleaseResource(xStack_1a0)
             quest:DeregisterTimer(xStack_214)
             quest:DeregisterTimer(xStack_21c)
-            iVar16 = xStack_220
             cVar5 = quest:GetMasterGameState("SkillRepeating")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -1293,7 +1292,7 @@ function Main(quest, me)
             quest:SetPlayerUsingRangedDummies(false)
         end
         ::LAB_00d5da96::
-        quest:DeregisterTimer(iVar16)
+        quest:DeregisterTimer(xStack_220)
     end
     resources:ReleaseResource(xStack_210)
 end

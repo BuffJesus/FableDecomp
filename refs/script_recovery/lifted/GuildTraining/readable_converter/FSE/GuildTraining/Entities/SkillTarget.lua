@@ -22,10 +22,9 @@ end
 
 -- SkillTarget.Main (retail 0x00d41d00)
 function Main(quest, me)
-    local scratchValue, predicateResult, getMasterGameState, scratchValue2, scratchValue3
-    local scratchValue4, scratchValue29, conversationId, scratchValue30, theGuildmaster
-    local skillApprentice, theRealGuildmaster, skillApprentice2, scratchValue36, scratchValue37
-    local timerId
+    local scratchValue, predicateResult, scratchValue2, scratchValue3, scratchValue4, scratchValue29
+    local conversationId, scratchValue30, theGuildmaster, skillApprentice, theRealGuildmaster
+    local skillApprentice2, scratchValue36, scratchValue37, timerId
     local dummyNumber = state:GetInt("DummyNumber")
     local hero = quest:GetHero()
     local function __cleanup_LAB_00d42ef8()
@@ -53,10 +52,8 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         quest:NewScriptFrame(me)
         if not quest:IsActiveThreadTerminating() then
-            getMasterGameState = quest:GetMasterGameState("SkillTrainingStarted")
-            while getMasterGameState ~= 1 do
+            while quest:GetMasterGameState("SkillTrainingStarted") ~= 1 do
                 if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
-                getMasterGameState = quest:GetMasterGameState("SkillTrainingStarted")
             end
             if not quest:IsActiveThreadTerminating() then
                 scratchValue = quest:IsActiveThreadTerminating()
@@ -94,10 +91,8 @@ function Main(quest, me)
                             scratchValue29 = scratchValue29 + 1
                         until scratchValue29 == state:GetInt("Speed")
                         if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
-                        getMasterGameState = quest:GetMasterGameState("MovingDummiesNeeded")
-                        while getMasterGameState ~= 1 do
+                        while quest:GetMasterGameState("MovingDummiesNeeded") ~= 1 do
                             if not quest:NewScriptFrame(me) then return end
-                            getMasterGameState = quest:GetMasterGameState("MovingDummiesNeeded")
                         end
                         if quest:IsActiveThreadTerminating() then return end
                         quest:EntitySetTargetable(me, true)
@@ -240,10 +235,8 @@ function Main(quest, me)
                                 return
                             end
                             quest:SetMasterGameState("SkillDummyReset", true)
-                            getMasterGameState = quest:GetMasterGameState("SkillRepeatKnown")
-                            while getMasterGameState ~= 0 do
+                            while quest:GetMasterGameState("SkillRepeatKnown") ~= 0 do
                                 if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); return end
-                                getMasterGameState = quest:GetMasterGameState("SkillRepeatKnown")
                             end
                         end
                     until scratchValue2 ~= 0

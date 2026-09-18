@@ -1,6 +1,8 @@
 -- Readable native conversion: AppleGirl. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -45,10 +47,7 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
                 state:SetBool("HaveChatted", true)
                 if 0.0 < quest:GetHealth(me) then
-                    me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", 0, false, true, false)
-                    while me:IsPerformingScriptTask() do
-                        if not quest:NewScriptFrame(me) then goto LAB_00d3d948 end
-                    end
+                    if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
                 end
                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
@@ -75,10 +74,7 @@ function Main(quest, me)
                     state:SetBool("ChildAppleMode", true)
                 end
             elseif 0.0 < quest:GetHealth(me) then
-                me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", 0, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then goto LAB_00d3d948 end
-                end
+                if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
             end
             quest:PauseAllNonScriptedEntities(false)
@@ -161,10 +157,7 @@ function Main(quest, me)
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     if 0.0 < quest:GetHealth(me) then
-                        me:Speak(hero, "TEXT_QST_028_APPLEGIRL_THANKS", 0, false, true, false)
-                        while me:IsPerformingScriptTask() do
-                            if not quest:NewScriptFrame(me) then goto LAB_00d3e06c end
-                        end
+                        if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_THANKS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3e06c end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
                     end
                     quest:GiveHeroObject("OBJECT_PIE_BLUEBERRY_01", -1)

@@ -32,10 +32,8 @@ function Main(quest)
     quest:AddEntityBinding("TC_Villager", "TraderConflictEvil/Entities/TC_Villager")
     quest:AddEntityBinding("IsAGuard", "TraderConflictEvil/Entities/IsAGuard")
     quest:FinalizeEntityBindings()
-    scratchValue6 = quest:IsRegionLoaded("BarrowFields")
-    while not scratchValue6 do
+    while not quest:IsRegionLoaded("BarrowFields") do
         if not quest:NewScriptFrame() then return end
-        scratchValue6 = quest:IsRegionLoaded("BarrowFields")
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:DeactivateQuest("V_SickChildBarrowFields", 0)

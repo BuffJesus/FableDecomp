@@ -1,6 +1,8 @@
 -- Readable native conversion: TheRealGuildmaster. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -67,15 +69,11 @@ function Main(quest, me)
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
-                    me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", 0, false, true, false)
-                    while me:IsPerformingScriptTask() do
-                        quest:NewScriptFrame(me)
-                        if quest:IsActiveThreadTerminating() then
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie2)
-                            resources:ReleaseResource(resource2)
-                            return
-                        end
+                    if not me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", GROUP_SELECT_FIRST, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie2)
+                        resources:ReleaseResource(resource2)
+                        return
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)

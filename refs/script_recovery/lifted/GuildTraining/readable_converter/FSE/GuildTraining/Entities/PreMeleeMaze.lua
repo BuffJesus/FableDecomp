@@ -1,6 +1,8 @@
 -- Readable native conversion: PreMeleeMaze. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -77,14 +79,10 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(predicateResult)
             scratchValue = 0.0
             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, "TEXT_QST_028_MAZE_HIT", 0, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    quest:NewScriptFrame(me)
-                    if quest:IsActiveThreadTerminating() then
-                        quest:PauseAllNonScriptedEntities(false)
-                        -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
-                        goto LAB_00d44498
-                    end
+                if not me:Speak(hero, "TEXT_QST_028_MAZE_HIT", GROUP_SELECT_FIRST, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
+                    goto LAB_00d44498
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
@@ -120,13 +118,9 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(predicateResult)
             scratchValue = 0.0
             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, "TEXT_QST_028_MAZE_HIT", 0, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    quest:NewScriptFrame(me)
-                    if quest:IsActiveThreadTerminating() then
-                        quest:PauseAllNonScriptedEntities(false)
-                        -- TODO(native): goto LAB_00d44494_c3
-                    end
+                if not me:Speak(hero, "TEXT_QST_028_MAZE_HIT", GROUP_SELECT_FIRST, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    -- TODO(native): goto LAB_00d44494_c3
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
@@ -142,14 +136,10 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         goto FLOW_after_lab_00d441bb
     end
-    me:Speak(hero, "TEXT_QST_028_MAZE_LEAVE_ME", 0, false, true, false)
-    while me:IsPerformingScriptTask() do
-        quest:NewScriptFrame(me)
-        if quest:IsActiveThreadTerminating() then
-            quest:PauseAllNonScriptedEntities(false)
-            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
-            goto LAB_00d44498
-        end
+    if not me:Speak(hero, "TEXT_QST_028_MAZE_LEAVE_ME", GROUP_SELECT_FIRST, false, true, false) then
+        quest:PauseAllNonScriptedEntities(false)
+        -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
+        goto LAB_00d44498
     end
     if not quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d441a3
     quest:PauseAllNonScriptedEntities(false)

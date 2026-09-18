@@ -43,7 +43,7 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(me)
     iVar5 = quest:RegisterTimer()
     xStack_260 = iVar5
-    quest:SetTimer(iVar5, 10)
+    quest:SetTimer(xStack_260, 10)
     r1 = quest:GetThingWithScriptName("CombatApprenticeTargetMarker")
     c_stk_22a = 0
     alive = not quest:IsActiveThreadTerminating()
@@ -51,7 +51,7 @@ function Main(quest, me)
     repeat
         if bVar3 then
             r1 = nil
-            quest:DeregisterTimer(iVar5)
+            quest:DeregisterTimer(xStack_260)
             __cleanup_LAB_00d4c4a5()
             return
         end
@@ -60,7 +60,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            quest:DeregisterTimer(iVar5)
+            quest:DeregisterTimer(xStack_260)
             resources:DestroyMovie(xStack_254)
             return
         end
@@ -88,7 +88,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            quest:DeregisterTimer(iVar5)
+            quest:DeregisterTimer(xStack_260)
             resources:DestroyMovie(xStack_254)
             return
         end
@@ -179,7 +179,7 @@ function Main(quest, me)
         bVar3 = not alive
         if bVar3 then
             -- LAB_00d4c4f5: (native jump target)
-            quest:DeregisterTimer(dist)
+            quest:DeregisterTimer(xStack_260)
             resources:DestroyMovie(xStack_254)
             return
         end

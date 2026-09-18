@@ -115,8 +115,14 @@ class Flow:
         self.pinned = set()
         blanked = list(self.structure)
         for a, b in ranges:
+            shadowed = set()          # a closure-local (`local x = ...`) is not the enclosing function's x
             for i in range(a, b + 1):
-                self.pinned.update(t[0] for t in tokens(lines[i]) if t.lastgroup == 'identifier')
+                local = re.match(r'\s*local (\w+) = ', self.structure[i])
+                names = {t[0] for t in tokens(lines[i]) if t.lastgroup == 'identifier'}
+                if local:
+                    names.discard(local.group(1))
+                    shadowed.add(local.group(1))
+                self.pinned.update(names - shadowed)
                 blanked[i] = ''
         # `__cleanup_X(); return` (hoisted cleanup regions) is straight-line code before the exit
         for i, line in enumerate(blanked):
@@ -360,8 +366,15 @@ def propagate_copies(lines):
     copy = re.compile(r'(\s*)(?:local )?(\w+) = (\w+)\n')
     declared = set(_declared_temporaries(structure))
     initialised = {m.group(1) for l in structure for m in [re.match(r'\s*local (\w+) = ', l)] if m}
+    # a name a cleanup closure only reads keeps its definitions; its reads outside the closure may still be renamed
+    closure_written = set()
+    for a, b in _closure_ranges(structure) or []:
+        for k in range(a, b + 1):
+            target = _line_target(structure[k])
+            if target and not re.match(r'\s*local ', structure[k]):      # (a closure-local shadow is not a write)
+                closure_written.add(target)
     for name in list(declared | initialised):
-        if name in flow.pinned:
+        if name in closure_written:
             continue
         defs, reads = _reads_and_defs(structure, name)
         if name in initialised:
@@ -450,6 +463,31 @@ def tidy_closures(lines):
         # (line count changed: recompute for the next range)
         structure = _structure(lines)
         ranges = _closure_ranges(structure) or []
+    # an outer temporary the closure assigns before reading (`scratchValue16 = quest:GetThingWithScriptName("RaceMarker");
+    # quest:MiniMapRemoveMarker(scratchValue16)`) is the closure's own when no read of that value can follow a call
+    flow = Flow(lines)
+    if flow.ok:
+        structure = flow.structure
+        for a, b in _closure_ranges(structure) or []:
+            name_m = re.match(r'\s*local function (\w+)\(', structure[a])
+            if not name_m:
+                continue
+            calls = [k for k, l in enumerate(structure) if not (a <= k <= b) and re.search(r'\b' + name_m.group(1) + r'\(\)', l)]
+            exits = [s for k in calls for s in flow.graph.get(k, ())]
+            seen = set()
+            for k in range(a + 1, b):
+                target = _line_target(structure[k])
+                reads = _line_reads(structure[k])
+                if target and target not in seen and target not in reads and target in flow.pinned \
+                        and not re.match(r'\s*local\b', structure[k]):
+                    outer_defs = {d for d in _reads_and_defs(structure, target)[0] if not (a <= d <= b)}
+                    if not _read_reachable(flow, target, exits, outer_defs) and \
+                            not any(target in _line_reads(structure[j]) for j in range(a + 1, k)):
+                        lines[k] = re.sub(r'^(\s*)' + re.escape(target) + r' =', r'\1local ' + target + ' =', lines[k], count=1)
+                        count += 1
+                seen.update(reads)
+                if target:
+                    seen.add(target)
     # a value the enclosing function only ever passes to `scratchValue ~= 0` style tests reads as the boolean
     for i, l in enumerate(lines):
         lines[i] = re.sub(r'([(,] ?)(\d+) ~= 0(?=[,)])', lambda m: m.group(1) + ('true' if int(m.group(2)) else 'false'), l)   # a whole operand only (`x & 2 ~= 0` stays)
@@ -1132,6 +1170,7 @@ def fold_retry_loops(lines):
         changed = False
         lines = [l for l in lines if l != '']
         structure = _structure(lines)
+        flow = None
         for i in range(len(lines) - 4):
             m = re.fullmatch(r'(\s*)(\w+) = ([^\n]+)\n', lines[i])
             if m and lines[i + 1] == m.group(1) + 'repeat\n':
@@ -1176,14 +1215,23 @@ def fold_retry_loops(lines):
                 last = next((j for j in range(end - 1, i + 1, -1) if lines[j].strip()), None)
                 if last is None or lines[last] != f'{indent}    {name} = {expr}\n':
                     continue
+                if flow is None:
+                    flow = Flow(lines)
                 defs, reads = _reads_and_defs(structure, name)
                 if set(defs) != {i, last} or reads != [i + 1]:
-                    continue
+                    # the temporary serves other loops too (`scratchValue7 = me:IsPerformingScriptTask()` before each
+                    # Speak): this loop folds on its own when it holds no other definition or read of the name and no
+                    # read of the loop's final value is reachable from its exit
+                    inside = [k for k in defs if i < k < end and k != last] + [k for k in reads if i < k < end and k != i + 1]
+                    exits = [s for s in (flow.graph.get(i + 1, ()) if flow.ok else ()) if not (i + 1 < s <= end)]
+                    if inside or not flow.ok or _read_reachable(flow, name, exits, set(defs)):
+                        continue
                 whole = w.group(2).strip() == name or w.group(2).strip() == 'not ' + name
                 cond = expr if _atomic(expr) or (whole and not w.group(2).startswith('not ')) else f'({expr})'
                 lines[i + 1] = f'{indent}while {rename_identifiers(w.group(2), {name: cond})} do\n'
                 lines[i] = lines[last] = ''
-                _remove_declaration(lines, name)
+                if set(defs) == {i, last}:
+                    _remove_declaration(lines, name)
                 count += 1
                 changed = True
                 break
@@ -1580,18 +1628,28 @@ def fold_flag_clears(lines):
     condition and tested right after) -> `if X and not COND then` when the branch is X's last read."""
     count = 0
     structure = _structure(lines)
+    flow = None
     for i in range(len(lines) - 3):
         m = re.fullmatch(r'(\s*)if (.+) then\n', lines[i])
         if not m:
             continue
         indent, cond = m.group(1), m.group(2)
-        c = re.fullmatch(re.escape(indent) + r'    (\w+) = false\n', lines[i + 1])
-        if not c or lines[i + 2] != indent + 'end\n' or lines[i + 3] != f'{indent}if {c.group(1)} then\n':
+        c = re.fullmatch(re.escape(indent) + r'    (\w+) = (false|0)\n', lines[i + 1])
+        if not c or lines[i + 2] != indent + 'end\n':
             continue
         x = c.group(1)
-        defs, reads = _reads_and_defs(structure, x)
-        if reads not in ([i + 3], [i, i + 3]) or i + 1 not in defs:
+        test = f'{indent}if {x} then\n' if c.group(2) == 'false' else f'{indent}if {x} ~= 0 then\n'
+        if lines[i + 3] != test:
             continue
+        defs, reads = _reads_and_defs(structure, x)
+        if i + 1 not in defs or any(i < r < i + 3 for r in reads) or i + 3 not in reads:
+            continue
+        if reads not in ([i + 3], [i, i + 3]):
+            # the flag serves elsewhere too: the test must be the only read the cleared value can reach
+            if flow is None:
+                flow = Flow(lines)
+            if not flow.ok or _read_reachable(flow, x, flow.graph.get(i + 3, ()), set(defs)):
+                continue
         if re.search(r'\b' + x + r'\b', cond):
             # `if not X or C then X = false end`: with X true the `not X` term is gone
             ops = _top_level_operators(cond)
@@ -1601,9 +1659,47 @@ def fold_flag_clears(lines):
                 continue
             cond = ' or '.join(parts)
         lines[i] = lines[i + 1] = lines[i + 2] = ''
-        lines[i + 3] = f'{indent}if {x} and {_negate_all(cond)} then\n'
+        lines[i + 3] = f'{indent}if {x}{"" if c.group(2) == "false" else " ~= 0"} and {_negate_all(cond)} then\n'
         count += 1
         break
+    return lines, count
+
+
+def fold_blocking_speech(lines):
+    """ForgeFSE's `thing:Speak(...)` is Speak_Blocking: it runs the retail wait loop itself (NewScriptFrame until
+    IsPerformingScriptTask clears) and returns false when the thread terminates meanwhile. The draft's own
+    `while R:IsPerformingScriptTask() do <frame check> end` after the call is therefore that call's result:
+    `if not R:Speak(...) then EXIT end`."""
+    count = 0
+    i = 0
+    while i < len(lines) - 2:
+        m = re.fullmatch(r'(\s*)(\w+):Speak\((.*)\)\n', lines[i])
+        w = re.fullmatch(r'(\s*)(\w+):IsPerformingScriptTask\(\) do\n', lines[i + 1].replace('while ', '', 1)) if m else None
+        if not m or not w or w.group(1) != m.group(1) or w.group(2) != m.group(2):
+            i += 1
+            continue
+        indent = m.group(1)
+        end = next((j for j in range(i + 2, len(lines)) if lines[j] == indent + 'end\n'), None)
+        if end is None:
+            i += 1
+            continue
+        body = lines[i + 2:end]
+        call = f'{m.group(2)}:Speak({m.group(3)})'
+        one = re.fullmatch(re.escape(indent) + r'    if not quest:NewScriptFrame\((?:me)?\) then (' + EXIT + r') end\n', body[0]) if len(body) == 1 else None
+        if one:
+            new = [f'{indent}if not {call} then {one.group(1)} end\n']
+        elif len(body) == 1 and re.fullmatch(re.escape(indent) + r'    quest:NewScriptFrame\((?:me)?\)\n', body[0]):
+            new = [f'{indent}{call}\n']
+        elif len(body) >= 3 and re.fullmatch(re.escape(indent) + r'    quest:NewScriptFrame\((?:me)?\)\n', body[0]) \
+                and body[1] == f'{indent}    if quest:IsActiveThreadTerminating() then\n' and body[-1] == f'{indent}    end\n' \
+                and all(l.startswith(indent + '        ') for l in body[2:-1]):
+            new = [f'{indent}if not {call} then\n'] + [l[4:] for l in body[2:-1]] + [f'{indent}end\n']
+        else:
+            i += 1
+            continue
+        lines[i:end + 1] = new
+        count += 1
+        i += len(new)
     return lines, count
 
 
@@ -1718,6 +1814,7 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         total += run('copies', propagate_copies)
         total += run('selfAssignments', prune_self_assignments)
         total += run('flagClears', fold_flag_clears)
+        total += run('blockingSpeech', fold_blocking_speech)
         total += run('uintFixups', fold_uint_fixups)
         total += run('freshGuards', simplify_fresh_guards)
         total += run('constantConditions', fold_constant_conditions)
@@ -2007,10 +2104,36 @@ def name_helpers_by_shape(source):
     return source, count
 
 
+GROUP_SELECT = ['GROUP_SELECT_FIRST', 'GROUP_SELECT_RANDOM', 'GROUP_SELECT_RANDOM_NO_REPEAT', 'GROUP_SELECT_SEQUENTIAL', 'GROUP_SELECT_NONE']
+
+
+def name_speak_methods(source):
+    """`thing:Speak(target, "KEY", 0, ...)`: the third operand is ETextGroupSelectionMethod (ForgeFSE
+    EntityScriptingAPI.h: FIRST 0, RANDOM 1, RANDOM_NO_REPEAT 2, SEQUENTIAL 3, NONE 4) — named as in Aeon's ports,
+    with the constants declared once at the top of the file."""
+    used = set()
+
+    def repl(m):
+        n = int(m.group(2))
+        if n >= len(GROUP_SELECT):
+            return m.group(0)
+        used.add(GROUP_SELECT[n])
+        return f'{m.group(1)}{GROUP_SELECT[n]}'
+    new = re.sub(r'(\b\w+:Speak\([^\n]*?, "[^"]*", )(\d)(?=,)', repl, source)
+    if not used:
+        return source, 0
+    names = [n for n in GROUP_SELECT if n in used]
+    block = 'local ' + ', '.join(names) + ' = ' + ', '.join(str(GROUP_SELECT.index(n)) for n in names) + '  -- ETextGroupSelectionMethod\n'
+    header_end = re.search(r'^(?!--)', new, re.M).start()
+    new = new[:header_end] + '\n' + block + new[header_end:] if new[:header_end].endswith('\n') else block + new
+    return new, len(used)
+
+
 def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
     source, hoisted = hoist_requires(source)
     source, aliased = alias_entity_state(source)
     source, script_def = name_script_def_reads(source)
+    source, speak_methods = name_speak_methods(source)
     source, named = name_helpers_by_state(source)
     source, named_shape = name_helpers_by_shape(source)
     named += named_shape

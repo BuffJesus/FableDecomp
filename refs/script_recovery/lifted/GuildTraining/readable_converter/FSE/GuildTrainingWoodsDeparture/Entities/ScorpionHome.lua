@@ -18,16 +18,13 @@ end
 -- ScorpionHome.Main (retail 0x00d643a0)
 function Main(quest, me)
     local count, pPosition, scorpionSpawn, guildStagBeetle, guildScorpions, infoCounter
-    local departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
-    while departureMissionPoint ~= 1 do
+    while quest:GetStateInt("DepartureMissionPoint") ~= 1 do
         if not quest:NewScriptFrame(me) then return end
-        departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     end
     if quest:IsActiveThreadTerminating() then return end
     infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles))), 1.0)
     quest:DisplayQuestInfo(true)
-    departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
-    while departureMissionPoint == 1 do
+    while quest:GetStateInt("DepartureMissionPoint") == 1 do
         if not quest:NewScriptFrame(me) then return end
         guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
         count = #guildScorpions
@@ -52,7 +49,6 @@ function Main(quest, me)
                 state:SetInt("ScorpionsLeft", state:GetInt("ScorpionsLeft") - 1)
             end
         end
-        departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:RemoveQuestInfoElement(infoCounter)

@@ -1,6 +1,8 @@
 -- Readable native conversion: MeleeApprentice. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -14,10 +16,10 @@ end
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult, scratchValue3, movie, position, meleeApprenticeMarker
-    local movie2, movie3, movie4, movie5, movie6
+    local predicateResult, movie, position, meleeApprenticeMarker, movie2, movie3, movie4, movie5
+    local movie6
     local function __cleanup_LAB_00d419fe()
-        movie = movie6
+        local movie = movie6
         resources:DestroyMovie(movie)
         resources:ReleaseResource(0)
     end
@@ -25,11 +27,7 @@ function Main(quest, me)
         resources:DestroyMovie(movie)
         resources:ReleaseResource(0)
     end
-    scratchValue = me:AcquireControl(4)
-    while not scratchValue do
-        if not quest:NewScriptFrame(me) then return end
-        scratchValue = me:AcquireControl(4)
-    end
+    if not me:AcquireControl(4) then return end
     if quest:IsActiveThreadTerminating() then me:ReleaseControl(); return end
     quest:EntitySheatheWeapons(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -37,36 +35,19 @@ function Main(quest, me)
     quest:EntitySetAllowBossPhaseChanges(me, false)
     me:SetFriendsWithEverythingFlag(1)
     meleeApprenticeMarker = quest:GetThingWithScriptName("MeleeApprenticeMarker")
-    scratchValue = quest:IsActiveThreadTerminating()
     repeat
-        if scratchValue then
-            return
-        end
+        if quest:IsActiveThreadTerminating() then return end
         if quest:GetMasterGameState("MeleeApprenticeNeededForCutscene") ~= 0 then
-            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(0); return end
-            scratchValue3 = quest:GetMasterGameState("MeleeApprenticeNeededForCutscene")
-            while scratchValue3 ~= 0 do
+            while quest:GetMasterGameState("MeleeApprenticeNeededForCutscene") ~= 0 do
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
-                scratchValue3 = quest:GetMasterGameState("MeleeApprenticeNeededForCutscene")
             end
-            scratchValue = me:AcquireControl(4)
-            while not scratchValue do
-                if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
-                scratchValue = me:AcquireControl(4)
-            end
+            if not me:AcquireControl(4) then return end
         end
         if quest:GetStateBool("StartedMeleeTesting") then
-            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(0); return end
-            scratchValue3 = quest:GetStateBool("StartedMeleeTesting")
-            while scratchValue3 do
+            while quest:GetStateBool("StartedMeleeTesting") do
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
-                scratchValue3 = quest:GetStateBool("StartedMeleeTesting")
             end
-            scratchValue = me:AcquireControl(4)
-            while not scratchValue do
-                if not quest:NewScriptFrame(me) then resources:ReleaseResource(0); return end
-                scratchValue = me:AcquireControl(4)
-            end
+            if not me:AcquireControl(4) then return end
             me:ClearCommands()
             quest:EntitySheatheWeapons(me, false)
         end
@@ -87,22 +68,16 @@ function Main(quest, me)
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                    me:Speak(hero, "TEXT_QST_028_WHISPER_SCORPION_WOODS", 0, false, true, false)
-                    scratchValue3 = me:IsPerformingScriptTask()
-                    while scratchValue3 do
-                        quest:NewScriptFrame(me)
-                        if quest:IsActiveThreadTerminating() then
-                            quest:PauseAllNonScriptedEntities(false)
-                            movie = movie3
-                            resources:DestroyMovie(movie)
-                            -- TODO(native): goto LAB_00d41a07_c14
-                        end
-                        scratchValue3 = me:IsPerformingScriptTask()
+                    if not me:Speak(hero, "TEXT_QST_028_WHISPER_SCORPION_WOODS", GROUP_SELECT_FIRST, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        movie = movie3
+                        resources:DestroyMovie(movie3)
+                        -- TODO(native): goto LAB_00d41a07_c14
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         movie = movie3
-                        resources:DestroyMovie(movie)
+                        resources:DestroyMovie(movie3)
                         -- TODO(native): goto LAB_00d41a07_c15
                     end
                 end
@@ -124,16 +99,10 @@ function Main(quest, me)
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                        me:Speak(hero, "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN", 0, false, true, false)
-                        scratchValue3 = me:IsPerformingScriptTask()
-                        while scratchValue3 do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                quest:PauseAllNonScriptedEntities(false)
-                                movie = movie5
-                                __cleanup_LAB_00d41a02(); return
-                            end
-                            scratchValue3 = me:IsPerformingScriptTask()
+                        if not me:Speak(hero, "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN", GROUP_SELECT_FIRST, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            movie = movie5
+                            __cleanup_LAB_00d41a02(); return
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
@@ -143,7 +112,7 @@ function Main(quest, me)
                     end
                     quest:PauseAllNonScriptedEntities(false)
                     movie = movie5
-                    resources:DestroyMovie(movie)
+                    resources:DestroyMovie(movie5)
                 else
                     if quest:IsQuestActive("Q_GuildTrainingWill") then
                         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(0); return end
@@ -151,16 +120,10 @@ function Main(quest, me)
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                            me:Speak(hero, "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN", 0, false, true, false)
-                            scratchValue3 = me:IsPerformingScriptTask()
-                            while scratchValue3 do
-                                quest:NewScriptFrame(me)
-                                if quest:IsActiveThreadTerminating() then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    movie = movie4
-                                    __cleanup_LAB_00d41a02(); return
-                                end
-                                scratchValue3 = me:IsPerformingScriptTask()
+                            if not me:Speak(hero, "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN", GROUP_SELECT_FIRST, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                movie = movie4
+                                __cleanup_LAB_00d41a02(); return
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
@@ -170,7 +133,7 @@ function Main(quest, me)
                         end
                         quest:PauseAllNonScriptedEntities(false)
                         movie = movie4
-                        resources:DestroyMovie(movie)
+                        resources:DestroyMovie(movie4)
                         goto FLOW_after_lab_00d41813
                     end
                     if quest:IsQuestActive("Q_GuildTrainingDeparture") then
@@ -180,18 +143,12 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                                me:Speak(hero, "TEXT_QST_028_WHISPER_END_MOAN", 0, false, true, false)
-                                scratchValue3 = me:IsPerformingScriptTask()
-                                while scratchValue3 do
-                                    quest:NewScriptFrame(me)
-                                    if quest:IsActiveThreadTerminating() then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        movie = movie2
-                                        resources:DestroyMovie(movie)
-                                        resources:ReleaseResource(0)
-                                        return
-                                    end
-                                    scratchValue3 = me:IsPerformingScriptTask()
+                                if not me:Speak(hero, "TEXT_QST_028_WHISPER_END_MOAN", GROUP_SELECT_FIRST, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    movie = movie2
+                                    resources:DestroyMovie(movie2)
+                                    resources:ReleaseResource(0)
+                                    return
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
@@ -207,15 +164,9 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                                me:Speak(hero, "TEXT_QST_028_WHISPER_MELEE_MOAN", 0, false, true, false)
-                                scratchValue3 = me:IsPerformingScriptTask()
-                                while scratchValue3 do
-                                    quest:NewScriptFrame(me)
-                                    if quest:IsActiveThreadTerminating() then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        __cleanup_LAB_00d419fe(); return
-                                    end
-                                    scratchValue3 = me:IsPerformingScriptTask()
+                                if not me:Speak(hero, "TEXT_QST_028_WHISPER_MELEE_MOAN", GROUP_SELECT_FIRST, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    __cleanup_LAB_00d419fe(); return
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
@@ -249,7 +200,6 @@ function Main(quest, me)
             end
         end
         quest:NewScriptFrame(me)
-        scratchValue = quest:IsActiveThreadTerminating()
     until false
 end
 

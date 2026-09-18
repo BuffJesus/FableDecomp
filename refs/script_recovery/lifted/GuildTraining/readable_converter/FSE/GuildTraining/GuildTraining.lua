@@ -85,15 +85,14 @@ end
 function RunTutorials(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, conversationId, scratchValue3, scratchValue4, scratchValue5, meleeOpponent
-    local preMeleeDummy, meleeApprentice, combatApprentice, skillApprentice, willApprentice
-    local birdKiller, preMeleeDummy3, preMeleeWhisper, meleeApprentice3, combatApprentice3
-    local skillApprentice3, willApprentice3, birdKiller3, combatApprentice5, meleeApprentice5
-    local skillApprentice5, willApprentice5, birdKiller5, skillApprentice7, birdKiller7
-    local meleeApprentice7, willApprentice7, meleeApprentice9, skillApprentice9, willApprentice9
-    local secretBookcase, actorMap, theRealGuildmaster, getNearestWithDefName, guildDoors
-    local scratchValue6, scratchValue9, scratchValue10, movie, resource, resource4, appleRed01
-    local appleMarker, timerId
+    local conversationId, scratchValue3, scratchValue4, scratchValue5, meleeOpponent, preMeleeDummy
+    local meleeApprentice, combatApprentice, skillApprentice, willApprentice, birdKiller
+    local preMeleeDummy3, preMeleeWhisper, meleeApprentice3, combatApprentice3, skillApprentice3
+    local willApprentice3, birdKiller3, combatApprentice5, meleeApprentice5, skillApprentice5
+    local willApprentice5, birdKiller5, skillApprentice7, birdKiller7, meleeApprentice7
+    local willApprentice7, meleeApprentice9, skillApprentice9, willApprentice9, secretBookcase
+    local actorMap, theRealGuildmaster, getNearestWithDefName, guildDoors, scratchValue6
+    local scratchValue9, scratchValue, movie, resource, resource4, appleRed01, appleMarker, timerId
     secretBookcase = quest:GetThingWithScriptName("SecretBookcase")
     getNearestWithDefName = quest:GetNearestWithDefName(secretBookcase, "REGION_EXIT_POINT")
     quest:SetRegionExitAsActive(getNearestWithDefName, false)
@@ -412,25 +411,19 @@ function RunTutorials(quest)
         if not quest:NewScriptFrame() then goto LAB_00d496bc end
     end
     quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_13", "HeroGuildComplexInside", "")
-    scratchValue = quest:IsLevelLoaded("HeroGuildComplex")
-    while not scratchValue do
+    while not quest:IsLevelLoaded("HeroGuildComplex") do
         if not quest:NewScriptFrame() then goto LAB_00d496bc end
-        scratchValue = quest:IsLevelLoaded("HeroGuildComplex")
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
     theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
     resource4 = resources:NewResource()
-    scratchValue = resources:TryAcquire(resource4, appleMarker[0 + 1], 4)
-    while not scratchValue do
+    while not resources:TryAcquire(resource4, appleMarker[0 + 1], 4) do
         if not quest:NewScriptFrame() then goto LAB_00d48800 end
-        scratchValue = resources:TryAcquire(resource4, appleMarker[0 + 1], 4)
     end
     if not quest:IsActiveThreadTerminating() then
         resource = resources:NewResource()
-        scratchValue = resources:TryAcquire(resource, hero, 4)
-        while not scratchValue do
+        while not resources:TryAcquire(resource, hero, 4) do
             if not quest:NewScriptFrame() then goto LAB_00d487f4 end
-            scratchValue = resources:TryAcquire(resource, hero, 4)
         end
         if not quest:IsActiveThreadTerminating() then
             actorMap = resources:NewActorMap()
@@ -453,10 +446,8 @@ function RunTutorials(quest)
             quest:GiveHeroObject("OBJECT_GUILD_SEAL_1", -1)
             quest:SetStateBool("DomeCutsceneStart", false)
             quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("HeroGuildComplexInsideHSP"), false)
-            scratchValue = quest:IsLevelLoaded("HeroGuildComplex")
-            while not scratchValue do
+            while not quest:IsLevelLoaded("HeroGuildComplex") do
                 if not quest:NewScriptFrame() then goto LAB_00d496bc end
-                scratchValue = quest:IsLevelLoaded("HeroGuildComplex")
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
             quest:FadeScreenOut(0.5, 0.0)
@@ -491,8 +482,7 @@ function RunTutorials(quest)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_14", "HeroGuildComplexInside", "")
             timerId = quest:RegisterTimer()
             quest:SetTimer(timerId, 10)
-            scratchValue = quest:MsgOnLeavingExperienceSpendingScreen()
-            while not scratchValue do
+            while not quest:MsgOnLeavingExperienceSpendingScreen() do
                 if not quest:NewScriptFrame() then goto LAB_00d496b3 end
                 if quest:GetTimer(timerId) == 0 then
                     conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
@@ -500,16 +490,13 @@ function RunTutorials(quest)
                     quest:AddLineToConversation(conversationId, "TheRealGuildmaster", quest:GetThingWithScriptName("TEXT_CS_028_LEAVING_TOUR_45"), hero, false)
                     quest:SetTimer(timerId, 10)
                 end
-                scratchValue = quest:MsgOnLeavingExperienceSpendingScreen()
             end
             if not quest:IsActiveThreadTerminating() then
                 -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);
                 quest:FadeScreenOut(0.0, 0.5)
                 quest:EntityTeleportToThing(quest:GetThingWithScriptName("M_GuildmasterMarker"), quest:GetThingWithScriptName("TheRealGuildmaster"), false)
-                scratchValue = quest:IsHeroControlledByPlayer()
-                while not scratchValue do
+                while not quest:IsHeroControlledByPlayer() do
                     if not quest:NewScriptFrame() then goto LAB_00d496b3 end
-                    scratchValue = quest:IsHeroControlledByPlayer()
                 end
                 if not quest:IsActiveThreadTerminating() then
                     quest:EntityUnsetAsOpinionSource(hero, false)
@@ -542,15 +529,15 @@ function RunTutorials(quest)
                                         end
                                         if not quest:IsActiveThreadTerminating() then
                                             appleRed01 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
-                                            scratchValue10 = 0
+                                            scratchValue = 0
                                             if #appleRed01 ~= 0 then
                                                 scratchValue5 = 0
                                                 repeat
                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d496a1 end
                                                     quest:RemoveThing(theRealGuildmaster, appleRed01 + scratchValue5, false)
-                                                    scratchValue10 = scratchValue10 + 1
+                                                    scratchValue = scratchValue + 1
                                                     scratchValue5 = scratchValue5 + 12
-                                                until scratchValue10 >= #appleRed01
+                                                until scratchValue >= #appleRed01
                                             end
                                             if not quest:IsActiveThreadTerminating() then
                                                 quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
@@ -567,10 +554,8 @@ function RunTutorials(quest)
                                                                     quest:AddLogbookTutorialEntry("TEXT_QST_LOG_GUILD_THEGUILD")
                                                                     if quest:DisplayTutorial(30) then
                                                                         if not quest:IsActiveThreadTerminating() then
-                                                                            scratchValue = quest:MsgIsTutorialClickedPast()
-                                                                            while not scratchValue do
+                                                                            while not quest:MsgIsTutorialClickedPast() do
                                                                                 if not quest:NewScriptFrame() then goto LAB_00d496a1 end
-                                                                                scratchValue = quest:MsgIsTutorialClickedPast()
                                                                             end
                                                                             if not quest:IsActiveThreadTerminating() then quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0); goto FLOW_after_lab_00d4967d end
                                                                         end

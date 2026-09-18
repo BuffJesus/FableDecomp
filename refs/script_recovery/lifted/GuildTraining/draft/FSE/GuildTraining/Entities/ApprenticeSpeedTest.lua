@@ -57,7 +57,7 @@ function Main(quest, me)
             iVar5 = quest:RegisterTimer()
             xStack_258 = iVar5
             xStack_250 = quest:RegisterTimer()
-            quest:SetTimer(iVar5, 1)
+            quest:SetTimer(xStack_258, 1)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             while not bVar3 do

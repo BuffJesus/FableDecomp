@@ -41,17 +41,14 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, false, false)
     iVar6 = quest:RegisterTimer()
     xStack_264 = iVar6
-    quest:SetTimer(iVar6, 0)
+    quest:SetTimer(xStack_264, 0)
     iVar7 = quest:GetStateInt("TutorialState")
     x_stk_1ec = 0x0
     while iVar7 == 1 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
-        if bVar3 then
-            quest:DeregisterTimer(iVar6)
-            goto FLOW_after_lab_00d5a8cb
-        end
+        if bVar3 then goto LAB_00d5933c end
         cVar4 = me:IsTalkedToByHero()
         if not cVar4 then
             if (not quest:GetStateBool("EarlyHitWhisper")) or (not quest:GetStateBool("WhisperArrived")) then
@@ -73,10 +70,7 @@ function Main(quest, me)
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                if bVar3 then
-                    quest:DeregisterTimer(iVar6)
-                    goto FLOW_after_lab_00d5a8cb
-                end
+                if bVar3 then goto LAB_00d5933c end
                 xStack_204 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
@@ -112,8 +106,7 @@ function Main(quest, me)
                     if bVar3 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_204)
-                        quest:DeregisterTimer(iVar6)
-                        goto FLOW_after_lab_00d5a8cb
+                        goto LAB_00d5933c
                     end
                 end
                 quest:SetStateInt("TutorialState", 2)
@@ -123,10 +116,7 @@ function Main(quest, me)
         else
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            if bVar3 then
-                quest:DeregisterTimer(iVar6)
-                goto FLOW_after_lab_00d5a8cb
-            end
+            if bVar3 then goto LAB_00d5933c end
             quest:SetStateInt("TutorialState", 2)
         end
         fVar19 = 5.5
@@ -145,10 +135,7 @@ function Main(quest, me)
         if __native_condition_1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            if bVar3 then
-                quest:DeregisterTimer(iVar6)
-                goto FLOW_after_lab_00d5a8cb
-            end
+            if bVar3 then goto LAB_00d5933c end
             iVar6 = quest:AddNewConversation(me, false, false)
             pCVar5 = quest:GetHero()
             quest:AddPersonToConversation(iVar6, pCVar5)
@@ -332,7 +319,7 @@ function Main(quest, me)
                 -- LAB_00d5a9b5: (native jump target)
                 quest:DeregisterTimer(xStack_260)
                 quest:DeregisterTimer(xStack_264)
-                goto FLOW_after_lab_00d5a8cb
+                goto FLOW_after_lab_00d5a9be
             end
             xStack_84 = resources:NewResource()
             bVar3 = false
@@ -798,7 +785,6 @@ function Main(quest, me)
             if bVar3 then return end  -- TODO(native): goto LAB_00d5a9a7
             resources:ReleaseResource(xStack_214)
             quest:DeregisterTimer(xStack_260)
-            iVar6 = xStack_264
             cVar4 = quest:GetStateBool("MeleeRepeating")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -830,9 +816,9 @@ function Main(quest, me)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_04", "", "")
         end
         -- LAB_00d5a8cb: (native jump target)
-        quest:DeregisterTimer(iVar6)
+        quest:DeregisterTimer(xStack_264)
     end
-    ::FLOW_after_lab_00d5a8cb::
+    ::FLOW_after_lab_00d5a9be::
     ::LAB_00d5a8d9::
     ::LAB_00d5a8e2::
     resources:ReleaseResource(xStack_250)

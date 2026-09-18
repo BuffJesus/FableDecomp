@@ -1,6 +1,8 @@
 -- Readable native conversion: TheRealGuildmaster. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_SkillGrades = 3776,  -- '07000000000016430000f0420000a042000048420000c8410000204100000000'
@@ -21,10 +23,10 @@ function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
     local addQuestInfoTickByText, scratchValue3, scratchValue4, scratchValue7, scratchValue8
-    local scratchValue9, scratchValue, scratchValue11, scratchValue12, scratchValue14
-    local scratchValue15, scratchValue18, switch, hero, scratchValue19, archeryRing
-    local guildEvilApprenticeMale, actorMap, actorMap2, resource, resource3, resource4, actorMap3
-    local movie, movie2, scratchValue22, scratchValue23, scratchValue24, addQuestInfoTickByText2
+    local scratchValue9, scratchValue, scratchValue12, scratchValue14, scratchValue15
+    local scratchValue18, switch, hero, scratchValue19, archeryRing, guildEvilApprenticeMale
+    local actorMap, actorMap2, resource, resource3, resource4, actorMap3, movie, movie2
+    local scratchValue22, scratchValue23, scratchValue24, addQuestInfoTickByText2
     local addQuestInfoTickByText3, resource5, timerId, timerId2, scratchValue25, movie3
     local function __cleanup_LAB_00d5dac4()
         resources:DestroyMovie(movie)
@@ -54,10 +56,8 @@ function Main(quest, me)
         resources:ReleaseResource(resource5)
     end
     resource5 = resources:NewResource()
-    scratchValue9 = resources:TryAcquire(resource5, me, 4)
-    while not scratchValue9 do
+    while not resources:TryAcquire(resource5, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource5); return end
-        scratchValue9 = resources:TryAcquire(resource5, me, 4)
     end
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, true)
@@ -66,11 +66,9 @@ function Main(quest, me)
         quest:SetThingHasInformation(me, false, false, false)
         me:MoveToPosition(quest:GetThingWithScriptName("M_SkillTeacherStand"):GetPos(), 0x40400000, 0, false, true)
         quest:SetPlayerUsingRangedDummies(true)
-        scratchValue15 = quest:RegisterTimer()
-        scratchValue25 = scratchValue15
-        quest:SetTimer(scratchValue15, 0)
-        scratchValue14 = quest:GetStateInt("TutorialState")
-        while scratchValue14 == 1 do
+        scratchValue25 = quest:RegisterTimer()
+        quest:SetTimer(scratchValue25, 0)
+        while quest:GetStateInt("TutorialState") == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d5da96 end
             if me:IsTalkedToByHero() then
                 if quest:GetMasterGameState("HeroTakingGuildTest") == 0 then
@@ -82,19 +80,12 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(true)
                     me:ClearCommands()
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource5)) then
-                        scratchValue15 = 0
-                        me:Speak(hero_, "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START", 0, false, true, false)
-                        scratchValue = me:IsPerformingScriptTask()
-                        while scratchValue do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie2)
-                                quest:DeregisterTimer(scratchValue25)
-                                resources:ReleaseResource(resource5)
-                                return
-                            end
-                            scratchValue = me:IsPerformingScriptTask()
+                        if not me:Speak(hero_, "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START", GROUP_SELECT_FIRST, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie2)
+                            quest:DeregisterTimer(scratchValue25)
+                            resources:ReleaseResource(resource5)
+                            return
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
@@ -121,7 +112,6 @@ function Main(quest, me)
                 end
                 -- TODO(native): xStack_1ec = 1 - xStack_1ec;
             end
-            scratchValue14 = quest:GetStateInt("TutorialState")
         end
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(scratchValue25)
@@ -131,14 +121,12 @@ function Main(quest, me)
         quest:SetMasterGameState("SkillTrainingStarted", true)
         quest:SetMasterGameState("SkillRepeating", true)
         quest:SetMasterGameState("HeroTakingGuildTest", true)
-        scratchValue = quest:GetMasterGameState("SkillRepeating")
-        while scratchValue ~= 0 do
+        while quest:GetMasterGameState("SkillRepeating") ~= 0 do
             if not quest:NewScriptFrame(me) then goto LAB_00d5da96 end
             quest:SetStateInt("TutorialState", 3)
             quest:SetMasterGameState("SkillRepeatKnown", false)
             resource = resources:NewResource()
-            scratchValue9 = resources:TryAcquire(resource, hero_, 4)
-            while not scratchValue9 do
+            while not resources:TryAcquire(resource, hero_, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     resources:ReleaseResource(resource)
@@ -146,7 +134,6 @@ function Main(quest, me)
                     resources:ReleaseResource(resource5)
                     return
                 end
-                scratchValue9 = resources:TryAcquire(resource, hero_, 4)
             end
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
@@ -168,14 +155,12 @@ function Main(quest, me)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_PC")
-                    scratchValue9 = quest:MsgIsGameInfoClickedPast()
-                    while not scratchValue9 do
+                    while not quest:MsgIsGameInfoClickedPast() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             __cleanup_LAB_00d5dac4(); return
                         end
-                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
                     end
                     if not quest:IsActiveThreadTerminating() then
                         -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_8c);
@@ -191,10 +176,8 @@ function Main(quest, me)
                 __cleanup_LAB_00d5dac4(); return
             end
             quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW")
-            scratchValue9 = quest:MsgIsGameInfoClickedPast()
-            while not scratchValue9 do
+            while not quest:MsgIsGameInfoClickedPast() do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db05(); return end
-                scratchValue9 = quest:MsgIsGameInfoClickedPast()
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5dab8
             ::LAB_00d5b7c0::
@@ -231,7 +214,7 @@ function Main(quest, me)
             addQuestInfoTickByText3 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
             addQuestInfoTickByText2 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5ba3e::
-            scratchValue11 = 0
+            scratchValue = 0
             quest:DisplayQuestInfo(true)
             quest:SetTimer(timerId2, 5)
             scratchValue15 = 0
@@ -264,11 +247,11 @@ function Main(quest, me)
                         resources:ReleaseResource(resource5)
                         return
                     end
-                    scratchValue11 = 1
+                    scratchValue = 1
                     quest:RemoveQuestInfoElement(scratchValue24)
                     quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
                     quest:RemoveQuestInfoElement(addQuestInfoTickByText2)
-                elseif scratchValue11 == 0 then
+                elseif scratchValue == 0 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
                         quest:DeregisterTimer(scratchValue25)
@@ -437,7 +420,7 @@ function Main(quest, me)
                 resources:ReleaseResource(resource5)
                 return
             end
-            if scratchValue11 == 0 then
+            if scratchValue == 0 then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId2)
                     quest:DeregisterTimer(scratchValue25)
@@ -449,10 +432,8 @@ function Main(quest, me)
                 quest:RemoveQuestInfoElement(addQuestInfoTickByText2)
             end
             resource3 = resources:NewResource()
-            scratchValue9 = resources:TryAcquire(resource3, hero_, 4)
-            while not scratchValue9 do
+            while not resources:TryAcquire(resource3, hero_, 4) do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db37(); return end
-                scratchValue9 = resources:TryAcquire(resource3, hero_, 4)
             end
             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db37(); return end
             actorMap = resources:NewActorMap()
@@ -471,14 +452,12 @@ function Main(quest, me)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE_PC")
-                    scratchValue9 = quest:MsgIsGameInfoClickedPast()
-                    while not scratchValue9 do
+                    while not quest:MsgIsGameInfoClickedPast() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             -- TODO(native): goto LAB_00d5db1f
                         end
-                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
                     end
                     if not quest:IsActiveThreadTerminating() then
                         -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_98);
@@ -498,11 +477,9 @@ function Main(quest, me)
                 -- TODO(native): goto LAB_00d5db1f
             end
             quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE")
-            scratchValue9 = quest:MsgIsGameInfoClickedPast()
-            while not scratchValue9 do
+            while not quest:MsgIsGameInfoClickedPast() do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db45
-                scratchValue9 = quest:MsgIsGameInfoClickedPast()
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db13
             ::LAB_00d5c4eb::
@@ -534,7 +511,7 @@ function Main(quest, me)
             addQuestInfoTickByText3 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
             addQuestInfoTickByText2 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5c6b1::
-            scratchValue11 = 0
+            scratchValue = 0
             quest:DisplayQuestInfo(true)
             repeat
                 quest:NewScriptFrame(me)
@@ -577,8 +554,7 @@ function Main(quest, me)
                             return
                         end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP")
-                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue9 do
+                        while not quest:MsgIsGameInfoClickedPast() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
@@ -586,7 +562,6 @@ function Main(quest, me)
                                 resources:ReleaseResource(resource5)
                                 return
                             end
-                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     else
                         if quest:IsActiveThreadTerminating() then
@@ -596,8 +571,7 @@ function Main(quest, me)
                             return
                         end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP_PC")
-                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue9 do
+                        while not quest:MsgIsGameInfoClickedPast() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
@@ -605,7 +579,6 @@ function Main(quest, me)
                                 resources:ReleaseResource(resource5)
                                 return
                             end
-                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
@@ -645,11 +618,11 @@ function Main(quest, me)
                         resources:ReleaseResource(resource5)
                         return
                     end
-                    scratchValue11 = 1
+                    scratchValue = 1
                     quest:RemoveQuestInfoElement(addQuestInfoTickByText)
                     quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
                     quest:RemoveQuestInfoElement(addQuestInfoTickByText2)
-                elseif scratchValue11 == 0 then
+                elseif scratchValue == 0 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
                         quest:DeregisterTimer(scratchValue25)
@@ -672,7 +645,7 @@ function Main(quest, me)
                 resources:ReleaseResource(resource5)
                 return
             end
-            if scratchValue11 == 0 then
+            if scratchValue == 0 then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId2)
                     quest:DeregisterTimer(scratchValue25)
@@ -687,7 +660,7 @@ function Main(quest, me)
             -- TODO(native): piVar2 = DAT_0143e8f8;
             quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_SkillTimer))))
             quest:SetMasterGameState("SkillScore", 0)
-            scratchValue11 = 0
+            scratchValue = 0
             scratchValue14 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
             addQuestInfoTickByText3 = scratchValue14
             scratchValue22 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
@@ -697,10 +670,10 @@ function Main(quest, me)
             quest:SetMasterGameState("SkillTestOccuring", true)
             quest:SetTimer(timerId2, 15)
             scratchValue14 = quest:GetTimer(timerId)
-            while 0 < scratchValue14 and scratchValue11 == 0 do
+            while 0 < scratchValue14 and scratchValue == 0 do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
                 if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
-                    scratchValue11 = 1
+                    scratchValue = 1
                 end
                 scratchValue14 = scratchValue22
                 quest:UpdateQuestInfoCounter(scratchValue22, quest:GetMasterGameState("SkillScore"), -1)
@@ -727,18 +700,14 @@ function Main(quest, me)
                     if quest:IsXbox() then
                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP")
-                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue9 do
+                        while not quest:MsgIsGameInfoClickedPast() do
                             if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
-                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     else
                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP_PC")
-                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue9 do
+                        while not quest:MsgIsGameInfoClickedPast() do
                             if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
-                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     end
                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
@@ -768,10 +737,8 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
             quest:SetMasterGameState("HeroTakingGuildTest", false)
             quest:SetMasterGameState("SkillTestOccuring", false)
-            scratchValue9 = quest:IsHeroControlledByPlayer()
-            while not scratchValue9 do
+            while not quest:IsHeroControlledByPlayer() do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
-                scratchValue9 = quest:IsHeroControlledByPlayer()
             end
             quest:DisplayQuestInfo(false)
             quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
@@ -779,11 +746,9 @@ function Main(quest, me)
             quest:RemoveQuestInfoElement(scratchValue24)
             quest:EntitySetTargetable(me, true)
             resource4 = resources:NewResource()
-            scratchValue9 = resources:TryAcquire(resource4, hero_, 4)
-            while not scratchValue9 do
+            while not resources:TryAcquire(resource4, hero_, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db84
-                scratchValue9 = resources:TryAcquire(resource4, hero_, 4)
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5db84: (native jump target)
@@ -884,11 +849,9 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
                 quest:TakeObjectFromHero("OBJECT_YEW_LONGBOW")
             end
-            scratchValue = quest:GetMasterGameState("SkillDummyReset")
-            while scratchValue ~= 1 do
+            while quest:GetMasterGameState("SkillDummyReset") ~= 1 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
-                scratchValue = quest:GetMasterGameState("SkillDummyReset")
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
             ::LAB_00d5d7a9::
@@ -899,8 +862,6 @@ function Main(quest, me)
             resources:ReleaseResource(resource4)
             quest:DeregisterTimer(timerId)
             quest:DeregisterTimer(timerId2)
-            scratchValue15 = scratchValue25
-            scratchValue = quest:GetMasterGameState("SkillRepeating")
         end
         if not quest:IsActiveThreadTerminating() then
             me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 0x40400000, 0, false, true)
@@ -914,7 +875,7 @@ function Main(quest, me)
             quest:SetPlayerUsingRangedDummies(false)
         end
         ::LAB_00d5da96::
-        quest:DeregisterTimer(scratchValue15)
+        quest:DeregisterTimer(scratchValue25)
     end
     resources:ReleaseResource(resource5)
 end

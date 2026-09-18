@@ -1,6 +1,8 @@
 -- Readable native conversion: MeleeOpponent. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_MinHealth = 3800,  -- 6.0
@@ -64,15 +66,11 @@ function Main(quest, me)
                             return
                         end
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_028_WHISPER_MEET", 0, false, true, false)
-                            while me:IsPerformingScriptTask() do
-                                quest:NewScriptFrame(me)
-                                if quest:IsActiveThreadTerminating() then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie)
-                                    resources:ReleaseResource(resource)
-                                    return
-                                end
+                            if not me:Speak(hero, "TEXT_QST_028_WHISPER_MEET", GROUP_SELECT_FIRST, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie)
+                                resources:ReleaseResource(resource)
+                                return
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)

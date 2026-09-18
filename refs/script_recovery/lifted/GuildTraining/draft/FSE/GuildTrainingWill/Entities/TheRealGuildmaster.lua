@@ -57,14 +57,14 @@ function Main(quest, me)
     xStack_240 = iVar10
     iVar11 = quest:RegisterTimer()
     xStack_244 = iVar11
-    quest:SetTimer(iVar11, 0)
+    quest:SetTimer(xStack_244, 0)
     quest:EntitySetTargetingType(me, 0x1a)
     if not quest:GetStateBool("TestFinished") then
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if bVar6 then
-            quest:DeregisterTimer(iVar11)
-            quest:DeregisterTimer(iVar10)
+            quest:DeregisterTimer(xStack_244)
+            quest:DeregisterTimer(xStack_240)
             resources:ReleaseResource(xStack_228)
             return
         end
@@ -475,7 +475,6 @@ function Main(quest, me)
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
                 xStack_22c = quest:RegisterTimer()
-                iVar11 = xStack_22c
                 quest:SetTimer(xStack_22c, 0)
                 iVar10 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
                 i_stk_24 = iVar10
@@ -509,7 +508,7 @@ function Main(quest, me)
                     iVar22 = quest:GetHeroWillEnergy()
                     __native_condition_3 = iVar22 == 0
                     if __native_condition_3 then
-                        iVar22 = quest:GetTimer(iVar11)
+                        iVar22 = quest:GetTimer(xStack_244)
                         __native_condition_3 = iVar22 < 1
                     end
                     if __native_condition_3 then

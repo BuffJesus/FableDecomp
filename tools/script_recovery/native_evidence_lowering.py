@@ -1054,6 +1054,27 @@ def lower_after_annotate(text, thing_slots=None):
             # the loop head (AppleGirl: `mov ebx, [esp+0x10]` before GetTimer, which Ghidra folded into the
             # register name it also gave the conversation id)
             text = re.sub(r'GSI->(\w*Timer\w*)\(' + re.escape(timers[0]) + r'(?=[,)])', lambda m: f'GSI->{m.group(1)}({copy.group(1)}', text)
+    elif timers:
+        # several timers: each `X = RegisterTimer(); C = X;` pair routes the timer calls through X that follow it
+        # in text order (until X registers the next one) to that stable slot C
+        current = {}
+        out = []
+        for line in text.splitlines(keepends=True):
+            reg = re.match(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', line)
+            if reg:
+                current.pop(reg.group(1), None)
+                out.append(line)
+                continue
+            cp = re.match(r'^[ \t]*(\w+) = (\w+);[ \t]*\r?$', line)
+            if cp and cp.group(2) in timers and out and re.match(r'^[ \t]*' + re.escape(cp.group(2)) + r' = (?:\(\w+\))?GSI->RegisterTimer\(\);', out[-1]) \
+                    and len(re.findall(r'^[ \t]*' + re.escape(cp.group(1)) + r' = ', text, re.M)) == 1:
+                current[cp.group(2)] = cp.group(1)
+                out.append(line)
+                continue
+            for X, C in current.items():
+                line = re.sub(r'GSI->(\w*Timer\w*)\(' + re.escape(X) + r'(?=[,)])', lambda m: f'GSI->{m.group(1)}({C}', line)
+            out.append(line)
+        text = ''.join(out)
     # the same for every create/destroy pair: a destroy operand that is never assigned in the function
     # (a drifted slot name) when the function creates exactly one object of that kind
     for creator, destroyer in (('GSI->RegisterTimer', 'GSI->DeregisterTimer'), ('RESOURCE_StartMovie', 'RESOURCE_DestroyMovie'),

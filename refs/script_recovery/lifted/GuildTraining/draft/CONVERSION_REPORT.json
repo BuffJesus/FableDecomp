@@ -5895,7 +5895,7 @@
         },
         "FSE/GuildTraining/Entities/SkillApprentice.lua": {
           "LAB_00d4dd41": [
-            "quest:DeregisterTimer(iVar6)",
+            "quest:DeregisterTimer(xStack_174)",
             "resources:ReleaseResource(xStack_170)"
           ],
           "LAB_00d4de46": [
@@ -6495,11 +6495,9 @@
             "SetTimer",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "DeregisterTimer",
             "IsTalkedToByHero",
             "MsgIsHitByHero",
             "IsActiveThreadTerminating",
-            "DeregisterTimer",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
@@ -6517,19 +6515,16 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
-            "DeregisterTimer",
             "SetStateInt",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
-            "DeregisterTimer",
             "SetStateInt",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "GetTimer",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "DeregisterTimer",
             "AddNewConversation",
             "GetHero",
             "AddPersonToConversation",
@@ -6879,7 +6874,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 828,
+          "lines": 814,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -6891,7 +6886,7 @@
           "nativeJumps": [
             "goto FLOW_after_lab_00d586db;",
             "goto FLOW_after_lab_00d59cc6;",
-            "goto FLOW_after_lab_00d5a8cb;",
+            "goto FLOW_after_lab_00d5a9be;",
             "goto FLOW_native_label_1;",
             "goto LAB_00d5933c;",
             "goto LAB_00d5941c;",
@@ -6903,7 +6898,7 @@
           "nativeLabels": [
             "FLOW_after_lab_00d586db",
             "FLOW_after_lab_00d59cc6",
-            "FLOW_after_lab_00d5a8cb",
+            "FLOW_after_lab_00d5a9be",
             "FLOW_native_label_1",
             "LAB_00d5933c",
             "LAB_00d5941c",
@@ -11251,7 +11246,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1273,
+          "lines": 1272,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12349,7 +12344,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1575,
+          "lines": 1574,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

@@ -15,7 +15,7 @@ function Main(quest, me)
     local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar14, iVar15, iVar17, iVar6, iVar7, ixVar12, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_174, xStack_64, xStack_74, xStack_84, xStack_88, x_stk_12c, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54
     local alive = true
     local function __cleanup_LAB_00d4dd41()
-        quest:DeregisterTimer(iVar6)
+        quest:DeregisterTimer(xStack_174)
         resources:ReleaseResource(xStack_170)
     end
     local function __cleanup_LAB_00d4de46()
@@ -54,14 +54,14 @@ function Main(quest, me)
     c_stk_14e = 0
     iVar6 = quest:RegisterTimer()
     xStack_174 = iVar6
-    quest:SetTimer(iVar6, 10)
+    quest:SetTimer(xStack_174, 10)
     r2 = quest:GetThingWithScriptName("SkillApprenticeTargetMarker")
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     repeat
         if bVar4 then
             r2 = nil
-            quest:DeregisterTimer(iVar6)
+            quest:DeregisterTimer(xStack_174)
             r1 = nil
             -- LAB_00d4dcdb: (native jump target)
             resources:ReleaseResource(xStack_170)
@@ -88,7 +88,7 @@ function Main(quest, me)
                 end
                 goto LAB_00d4c9a2
             end
-            quest:DeregisterTimer(iVar6)
+            quest:DeregisterTimer(xStack_174)
             resources:ReleaseResource(xStack_170)
             return
         end

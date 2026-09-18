@@ -1,6 +1,8 @@
 -- Readable native conversion: SkillApprentice. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_SkillGrades = 3776,  -- '07000000000016430000f0420000a042000048420000c8410000204100000000'
@@ -20,12 +22,12 @@ end
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue
-    local scratchValue13, scratchValue14, sequence1, switch, p0, skillApprenticeTargetMarker
-    local resource, movie, actorMap, infoCounter, timerId, resource3, scratchValue17, movie2, movie3
-    local movie4, scratchValue18, scratchValue19
+    local scratchValue2, scratchValue4, scratchValue5, scratchValue6, scratchValue, scratchValue13
+    local scratchValue14, switch, p0, skillApprenticeTargetMarker, resource, movie, actorMap
+    local infoCounter, timerId, resource3, scratchValue17, movie2, movie3, movie4, scratchValue18
+    local scratchValue19
     local function __cleanup_LAB_00d4dd41()
-        quest:DeregisterTimer(scratchValue)
+        quest:DeregisterTimer(scratchValue17)
         resources:ReleaseResource(resource3)
     end
     local function __cleanup_LAB_00d4de46()
@@ -33,10 +35,8 @@ function Main(quest, me)
         resources:ReleaseResource(resource3)
     end
     resource3 = resources:NewResource()
-    scratchValue2 = resources:TryAcquire(resource3, me, 4)
-    while not scratchValue2 do
+    while not resources:TryAcquire(resource3, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); return end
-        scratchValue2 = resources:TryAcquire(resource3, me, 4)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
     quest:SetIsPushableByHero(me, false)
@@ -46,14 +46,13 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(me)
     state:SetBool("PlayerNotWarned", true)
     scratchValue6 = 0
-    scratchValue = quest:RegisterTimer()
-    scratchValue17 = scratchValue
-    quest:SetTimer(scratchValue, 10)
+    scratchValue17 = quest:RegisterTimer()
+    quest:SetTimer(scratchValue17, 10)
     skillApprenticeTargetMarker = quest:GetThingWithScriptName("SkillApprenticeTargetMarker")
     scratchValue2 = quest:IsActiveThreadTerminating()
     repeat
         if scratchValue2 then
-            quest:DeregisterTimer(scratchValue)
+            quest:DeregisterTimer(scratchValue17)
             resources:ReleaseResource(resource3)
             return
         end
@@ -67,7 +66,7 @@ function Main(quest, me)
                 end
                 goto LAB_00d4c9a2
             end
-            quest:DeregisterTimer(scratchValue)
+            quest:DeregisterTimer(scratchValue17)
             resources:ReleaseResource(resource3)
             return
         end
@@ -77,14 +76,8 @@ function Main(quest, me)
         end
         ::LAB_00d4c9a2::
         if not quest:IsDistanceBetweenThingsOver(me, skillApprenticeTargetMarker, 4.0) or me:IsPerformingScriptTask() then
-            scratchValue = me:IsPerformingScriptTask()
-            if scratchValue then goto LAB_00d4cbac end
-            sequence1 = not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0)
-            if not sequence1 then
-                scratchValue = quest:GetTimer(scratchValue17)
-                sequence1 = 0 < scratchValue
-            end
-            if sequence1 then goto LAB_00d4cbac end
+            if me:IsPerformingScriptTask() then goto LAB_00d4cbac end
+            if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(scratchValue17) then goto LAB_00d4cbac end
             if not quest:IsActiveThreadTerminating() then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 quest:SetTimer(scratchValue17, 20)
@@ -114,8 +107,7 @@ function Main(quest, me)
                 resources:ReleaseResource(resource3)
                 return
             end
-            scratchValue = me:IsPerformingScriptTask()
-            if not scratchValue then
+            if not me:IsPerformingScriptTask() then
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d4de46(); return end
                 if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
                     if not quest:IsActiveThreadTerminating() then
@@ -123,19 +115,10 @@ function Main(quest, me)
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
-                            scratchValue = 0
-                            me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TEST_ALREADY", scratchValue, false, true, false)
-                            scratchValue = me:IsPerformingScriptTask()
-                            scratchValue3 = scratchValue
-                            while scratchValue3 do
-                                quest:NewScriptFrame(me)
-                                if quest:IsActiveThreadTerminating() then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie3)
-                                    __cleanup_LAB_00d4de46(); return
-                                end
-                                scratchValue = me:IsPerformingScriptTask()
-                                scratchValue3 = scratchValue
+                            if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TEST_ALREADY", GROUP_SELECT_FIRST, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie3)
+                                __cleanup_LAB_00d4de46(); return
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
@@ -153,19 +136,10 @@ function Main(quest, me)
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
-                    scratchValue = 0
-                    me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_HELLO", scratchValue, false, true, false)
-                    scratchValue = me:IsPerformingScriptTask()
-                    scratchValue3 = scratchValue
-                    while scratchValue3 do
-                        quest:NewScriptFrame(me)
-                        if quest:IsActiveThreadTerminating() then
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie)
-                            __cleanup_LAB_00d4de46(); return
-                        end
-                        scratchValue = me:IsPerformingScriptTask()
-                        scratchValue3 = scratchValue
+                    if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_HELLO", GROUP_SELECT_FIRST, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie)
+                        __cleanup_LAB_00d4de46(); return
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -199,12 +173,7 @@ function Main(quest, me)
                                 __cleanup_LAB_00d4de46(); return
                             end
                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
-                                me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT_APLUS", 0, false, true, false)
-                                scratchValue3 = me:IsPerformingScriptTask()
-                                while scratchValue3 do
-                                    if not quest:NewScriptFrame(me) then goto LAB_00d4dded end
-                                    scratchValue3 = me:IsPerformingScriptTask()
-                                end
+                                if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT_APLUS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d4dded end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie)
@@ -213,12 +182,7 @@ function Main(quest, me)
                             end
                         end
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
-                            me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT", 0, false, true, false)
-                            scratchValue3 = me:IsPerformingScriptTask()
-                            while scratchValue3 do
-                                if not quest:NewScriptFrame(me) then goto LAB_00d4dded end
-                                scratchValue3 = me:IsPerformingScriptTask()
-                            end
+                            if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d4dded end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
@@ -238,16 +202,10 @@ function Main(quest, me)
                     __cleanup_LAB_00d4de46(); return
                 end
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
-                    me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_RETURN", 0, false, true, false)
-                    scratchValue3 = me:IsPerformingScriptTask()
-                    while scratchValue3 do
-                        quest:NewScriptFrame(me)
-                        if quest:IsActiveThreadTerminating() then
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie)
-                            __cleanup_LAB_00d4de46(); return
-                        end
-                        scratchValue3 = me:IsPerformingScriptTask()
+                    if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_RETURN", GROUP_SELECT_FIRST, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie)
+                        __cleanup_LAB_00d4de46(); return
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -262,10 +220,8 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d4de46(); return end
                 quest:SetPlayerUsingRangedDummies(true)
                 quest:SetMasterGameState("HeroTakingGuildTest", true)
-                scratchValue2 = quest:MsgOnHeroFiredRangedWeapon()
-                while not scratchValue2 do
+                while not quest:MsgOnHeroFiredRangedWeapon() do
                     if not quest:NewScriptFrame(me) then __cleanup_LAB_00d4de46(); return end
-                    scratchValue2 = quest:MsgOnHeroFiredRangedWeapon()
                 end
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d4de46(); return end
                 timerId = quest:RegisterTimer()
@@ -279,8 +235,7 @@ function Main(quest, me)
                 quest:DisplayQuestInfo(true)
                 quest:UpdateQuestInfoCounter(scratchValue, quest:GetMasterGameState("HighestSkillScore"), -1)
                 scratchValue4 = 0
-                scratchValue = quest:GetTimer(timerId)
-                while 0 < scratchValue and scratchValue5 == 0 do
+                while 0 < quest:GetTimer(timerId) and scratchValue5 == 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d4de3d end
                     if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
                         scratchValue5 = 1
@@ -301,13 +256,10 @@ function Main(quest, me)
                         end
                         scratchValue5 = 1
                     end
-                    scratchValue = quest:GetTimer(timerId)
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue2 = quest:IsHeroControlledByPlayer()
-                    while not scratchValue2 do
+                    while not quest:IsHeroControlledByPlayer() do
                         if not quest:NewScriptFrame(me) then goto LAB_00d4de3d end
-                        scratchValue2 = quest:IsHeroControlledByPlayer()
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                     quest:DisplayQuestInfo(false)
@@ -334,10 +286,8 @@ function Main(quest, me)
                         scratchValue = scratchValue13 + 1
                     until not (scratchValue13 + 1 < 7)
                     resource = resources:NewResource()
-                    scratchValue2 = resources:TryAcquire(resource, hero, 4)
-                    while not scratchValue2 do
+                    while not resources:TryAcquire(resource, hero, 4) do
                         if not quest:NewScriptFrame(me) then goto LAB_00d4de34 end
-                        scratchValue2 = resources:TryAcquire(resource, hero, 4)
                     end
                     if not quest:IsActiveThreadTerminating() then
                         actorMap = resources:NewActorMap()
@@ -473,19 +423,10 @@ function Main(quest, me)
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
-                    scratchValue = 0
-                    me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_EARLY", scratchValue, false, true, false)
-                    scratchValue = me:IsPerformingScriptTask()
-                    scratchValue3 = scratchValue
-                    while scratchValue3 do
-                        quest:NewScriptFrame(me)
-                        if quest:IsActiveThreadTerminating() then
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie2)
-                            __cleanup_LAB_00d4de46(); return
-                        end
-                        scratchValue = me:IsPerformingScriptTask()
-                        scratchValue3 = scratchValue
+                    if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_EARLY", GROUP_SELECT_FIRST, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie2)
+                        __cleanup_LAB_00d4de46(); return
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)

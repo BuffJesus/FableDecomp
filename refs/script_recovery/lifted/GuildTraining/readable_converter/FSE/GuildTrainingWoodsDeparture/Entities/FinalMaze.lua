@@ -1,6 +1,8 @@
 -- Readable native conversion: FinalMaze. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -180,14 +182,10 @@ function Main(quest, me)
             quest:EntitySetAsDrawable(hero, false)
             quest:CameraUseCameraPoint(quest:GetThingWithScriptName("CAM_RC_MAZE"), me, -1.0, 0, -1)
             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SKILL_FIRST", 0, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    quest:NewScriptFrame(me)
-                    if quest:IsActiveThreadTerminating() then
-                        -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
-                        resources:DestroyMovie(scratchValue33)
-                        goto LAB_00d664b0
-                    end
+                if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SKILL_FIRST", GROUP_SELECT_FIRST, false, true, false) then
+                    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                    resources:DestroyMovie(scratchValue33)
+                    goto LAB_00d664b0
                 end
                 if quest:IsActiveThreadTerminating() then
                     -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
@@ -315,14 +313,10 @@ function Main(quest, me)
                     quest:EntitySetAsDrawable(hero, false)
                     quest:CameraUseCameraPoint(quest:GetThingWithScriptName("CAM_RC_MAZE"), me, -1.0, 0, -1)
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_LIGHTNING_FIRST", 0, false, true, false)
-                        while me:IsPerformingScriptTask() do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
-                                resources:DestroyMovie(scratchValue33)
-                                goto LAB_00d664b0
-                            end
+                        if not me:Speak(hero, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_LIGHTNING_FIRST", GROUP_SELECT_FIRST, false, true, false) then
+                            -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                            resources:DestroyMovie(scratchValue33)
+                            goto LAB_00d664b0
                         end
                         if quest:IsActiveThreadTerminating() then
                             -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);

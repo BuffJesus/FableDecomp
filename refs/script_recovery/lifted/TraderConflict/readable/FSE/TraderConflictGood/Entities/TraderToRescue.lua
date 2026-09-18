@@ -24,10 +24,8 @@ function Main(quest, me)
     local scratchValue26, scratchValue27, timerId, timerId2, scratchValue28, scratchValue29
     local timerId3, movie, scratchValue30, scratchValue31, timerId4
     if not quest:NewScriptFrame(me) then return end
-    scratchValue12 = quest:GetStateBool("IntroDone")
-    while not scratchValue12 do
+    while not quest:GetStateBool("IntroDone") do
         if not quest:NewScriptFrame(me) then return end
-        scratchValue12 = quest:GetStateBool("IntroDone")
     end
     scratchValue27 = resources:NewResource()
     -- TODO(native): xStack_148[0] = 0;
@@ -253,10 +251,8 @@ function Main(quest, me)
                 state:SetInt("BarIndex", scratchValue26)
             end
             ::FLOW_after_lab_00dfee1b::
-            scratchValue12 = quest:IsEntityFollowingHero(nil --[[missing]])
-            while not scratchValue12 do
+            while not quest:IsEntityFollowingHero(nil --[[missing]]) do
                 if not quest:NewScriptFrame(me) then goto LAB_00e005d5 end
-                scratchValue12 = quest:IsEntityFollowingHero(nil --[[missing]])
             end
             if not quest:IsActiveThreadTerminating() then
                 quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + 1)
@@ -653,10 +649,8 @@ function Main(quest, me)
                 end
             elseif not quest:IsActiveThreadTerminating() then
                 me:ClearCommands()
-                scratchValue12 = quest:GetStateBool("OutroDone")
-                while not scratchValue12 do
+                while not quest:GetStateBool("OutroDone") do
                     if not quest:NewScriptFrame(me) then goto LAB_00e005ac end
-                    scratchValue12 = quest:GetStateBool("OutroDone")
                 end
                 if not quest:IsActiveThreadTerminating() then
                     quest:RemoveThing(nil --[[missing]], __unknown_push, false)

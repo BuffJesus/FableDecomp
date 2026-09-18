@@ -1,6 +1,8 @@
 -- Readable native conversion: TC_BanditFollower. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_RANDOM_NO_REPEAT = 2  -- ETextGroupSelectionMethod
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -47,15 +49,11 @@ function Main(quest, me)
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(me) then
-                    me:Speak(hero, "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", 2, false, true, false)
-                    while me:IsPerformingScriptTask() do
-                        quest:NewScriptFrame(me)
-                        if quest:IsActiveThreadTerminating() then
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie)
-                            me:ReleaseControl()
-                            return
-                        end
+                    if not me:Speak(hero, "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie)
+                        me:ReleaseControl()
+                        return
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
