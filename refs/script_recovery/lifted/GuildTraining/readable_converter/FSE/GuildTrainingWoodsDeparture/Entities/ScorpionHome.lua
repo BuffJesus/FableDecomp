@@ -1,6 +1,11 @@
 -- Readable native conversion: ScorpionHome. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_DepartureBeetles = 3852,  -- 15.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -19,14 +24,14 @@ function Main(quest, me)
         departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     end
     if quest:IsActiveThreadTerminating() then return end
-    infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3852))), 1.0)
+    infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles))), 1.0)
     quest:DisplayQuestInfo(true)
     departureMissionPoint = quest:GetStateInt("DepartureMissionPoint")
     while departureMissionPoint == 1 do
         if not quest:NewScriptFrame(me) then return end
         guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
         count = #guildScorpions
-        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(3852) - state:GetInt("ScorpionsLeft")) - count)), -1)
+        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles) - state:GetInt("ScorpionsLeft")) - count)), -1)
         if #guildScorpions < 3 then
             if quest:IsActiveThreadTerminating() then return end
             if #guildScorpions == 0 and state:GetInt("ScorpionsLeft") == 0 then
@@ -56,7 +61,7 @@ end
 
 -- ScorpionHome.Init (retail 0x00d63d80)
 function Init(quest, me)
-    state:SetInt("ScorpionsLeft", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3852))))
+    state:SetInt("ScorpionsLeft", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles))))
     state:SetBool("FlourishHint", false)
 end
 

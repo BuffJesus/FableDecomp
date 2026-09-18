@@ -1,6 +1,11 @@
 -- Readable native conversion: Q_GuildTrainingWoodsWill. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_MinHealth = 3800,  -- 6.0
+}
+
 -- Q_GuildTrainingWoodsWill.Main (retail 0x00d67890)
 function Main(quest)
     local hero = quest:GetHero()
@@ -106,7 +111,7 @@ function Main(quest)
                         if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
                         quest:SetStateBool("BanditsAlive", false)
                     end
-                    if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(3800) then
+                    if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
                         conversationId = quest:AddNewConversation(willWhisper, false, false)
                         quest:AddPersonToConversation(conversationId, hero)

@@ -1,6 +1,11 @@
 -- Readable native conversion: Q_GuildTraining. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_EndGuildXP = 3868,  -- 600.0
+}
+
 -- Q_GuildTraining.Main (retail 0x00d3bc60)
 function Main(quest)
     local isLevelLoaded
@@ -458,7 +463,7 @@ function RunTutorials(quest)
             quest:OpenDoor(secretBookcase)
             quest:SetThingPersistent(secretBookcase, true)
             quest:SetRegionExitAsActive(getNearestWithDefName, true)
-            quest:GiveHeroExperience(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3868))))
+            quest:GiveHeroExperience(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_EndGuildXP))))
             quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
             quest:GiveHeroObject("OBJECT_HERO_TROUSERS", -1)
             quest:GiveHeroObject("OBJECT_HERO_SHIRT", -1)

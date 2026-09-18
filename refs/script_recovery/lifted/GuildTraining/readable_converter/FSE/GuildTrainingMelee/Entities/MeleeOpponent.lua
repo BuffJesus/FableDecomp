@@ -1,6 +1,11 @@
 -- Readable native conversion: MeleeOpponent. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_MinHealth = 3800,  -- 6.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -345,7 +350,7 @@ function Main(quest, me)
                                 quest:AddLineToConversation(conversationId7, "TEXT_QST_028_WHISPER_BLOCK_WAIT_INSULT", me, hero, false)
                                 quest:SetTimer(timerId2, 15)
                             end
-                            if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(3800) then
+                            if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId2)
                                     resources:ReleaseResource(resource)

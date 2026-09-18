@@ -1715,6 +1715,35 @@ def hoist_requires(source):
     return source, count
 
 
+def name_script_def_reads(source):
+    """`quest:ReadGlobalGameData*(0xf10)` reads a `CScriptDef` field (the global game data, script.bin SCRIPT_DEF):
+    the offsets become a `SCRIPT_DEF` table at the top of the file, each entry with the retail value as a comment
+    (Aeon's ports name these constants; the table is refs/script_recovery/script_def_offsets.json)."""
+    try:
+        from tools.script_recovery.script_def_offsets import load
+        table = load()
+    except Exception:
+        table = {}
+    if not table:
+        return source, 0
+    used = {}
+    def repl(m):
+        off = int(m.group(2), 0)
+        field = table.get(f'{off:#x}')
+        if not field:
+            return m.group(0)
+        used[field['name']] = (off, field.get('value'))
+        return f'{m.group(1)}(SCRIPT_DEF.{field["name"]}'
+    new = re.sub(r'(quest:ReadGlobalGameData(?:Float|FloatAt)?)\((0x[0-9a-f]+|\d+)', repl, source)
+    if not used:
+        return source, 0
+    rows = ''.join(f'    {name} = {off},{"  -- " + repr(value) if value is not None else ""}\n' for name, (off, value) in sorted(used.items(), key=lambda kv: kv[1][0]))
+    block = '-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)\nlocal SCRIPT_DEF = {\n' + rows + '}\n'
+    header_end = re.search(r'^(?!--)', new, re.M).start()
+    new = new[:header_end] + '\n' + block + new[header_end:] if new[:header_end].endswith('\n') else block + new
+    return new, len(used)
+
+
 def style_metrics(chunk):
     lines = [l for l in chunk.splitlines() if l.strip()]
     body = '\n'.join(lines[1:])
@@ -1857,6 +1886,7 @@ def name_helpers_by_shape(source):
 def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
     source, hoisted = hoist_requires(source)
     source, aliased = alias_entity_state(source)
+    source, script_def = name_script_def_reads(source)
     source, named = name_helpers_by_state(source)
     source, named_shape = name_helpers_by_shape(source)
     named += named_shape

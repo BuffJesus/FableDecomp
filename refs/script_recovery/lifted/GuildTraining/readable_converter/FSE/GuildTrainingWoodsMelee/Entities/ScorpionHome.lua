@@ -1,6 +1,11 @@
 -- Readable native conversion: ScorpionHome. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_MeleeBeetles = 3856,  -- 10.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -14,7 +19,7 @@ end
 function Main(quest, me)
     local count, pPosition, scorpionSpawn, guildStagBeetle, guildScorpions
     local hero = quest:GetHero()
-    local infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3856))), 1.0)
+    local infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles))), 1.0)
     quest:DisplayQuestInfo(true)
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 5)
@@ -36,7 +41,7 @@ function Main(quest, me)
         end
         guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
         count = #guildScorpions
-        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(3856) - state:GetInt("ScorpionsLeft")) - count)), -1)
+        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles) - state:GetInt("ScorpionsLeft")) - count)), -1)
         if #guildScorpions < 3 then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
             if #guildScorpions == 0 and state:GetInt("ScorpionsLeft") == 0 then
@@ -63,7 +68,7 @@ end
 
 -- ScorpionHome.Init (retail 0x00d66c60)
 function Init(quest, me)
-    state:SetInt("ScorpionsLeft", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3856))))
+    state:SetInt("ScorpionsLeft", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles))))
     state:SetBool("FlourishHint", false)
 end
 

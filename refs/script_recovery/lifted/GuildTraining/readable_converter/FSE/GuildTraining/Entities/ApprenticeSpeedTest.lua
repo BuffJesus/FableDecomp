@@ -1,6 +1,12 @@
 -- Readable native conversion: ApprenticeSpeedTest. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_RaceTime = 3804,  -- 50.0
+    GUI_RaceGold = 3808,  -- 25.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -184,8 +190,8 @@ function Main(quest, me)
                                 quest:SetStateBool("ReachedPlatform", false)
                                 scratchValue16 = quest:GetThingWithScriptName("RaceMarker")
                                 quest:MiniMapAddMarker(scratchValue16, "HUD_ORB_QUEST_VIGNETTE")
-                                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3804))))
-                                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3804) + 20.0)))
+                                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
+                                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
                                 addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
                                 quest:DisplayQuestInfo(true)
                             else
@@ -369,7 +375,7 @@ function Main(quest, me)
                                 end
                             end
                             state:SetInt("RaceMode", 3)
-                            quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3808))))
+                            quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceGold))))
                             quest:ClearThingHasInformation(me)
                             quest:PauseAllNonScriptedEntities(false)
                             movie = movie6
@@ -513,8 +519,8 @@ function Main(quest, me)
                                 end
                                 state:SetInt("RaceMode", 1)
                                 quest:SetStateBool("ReachedPlatform", false)
-                                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3804))))
-                                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3804) + 20.0)))
+                                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
+                                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
                                 addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
                                 scratchValue16 = quest:GetThingWithScriptName("RaceMarker")
                                 quest:MiniMapAddMarker(scratchValue16, "HUD_ORB_QUEST_VIGNETTE")

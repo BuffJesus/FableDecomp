@@ -1,6 +1,11 @@
 -- Readable native conversion: WillDummy. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_WillDummySpinTimer = 3864,  -- 3.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -68,7 +73,7 @@ function Main(quest, me)
             quest:SetTimer(willHelpTimer, 7)
         end
         quest:EntitySetTargetable(me, false)
-        quest:Pause(quest:ReadGlobalGameDataFloat(3864))
+        quest:Pause(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillDummySpinTimer))
         quest:EntitySetFacingAngle(me, xStack_94, true)
         if not quest:NewScriptFrame(me) then return end
         if not quest:NewScriptFrame(me) then return end

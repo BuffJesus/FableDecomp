@@ -1,6 +1,13 @@
 -- Readable native conversion: Q_OrchardFarmRaid. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    ExperienceForDefeatingWhisperInOrchardFarm = 3432,  -- 500
+    OFEvilCompletionMorality = 3480,  -- -0.05999999865889549
+    OFGoodCompletionMorality = 3484,  -- 0.05999999865889549
+}
+
 -- Q_OrchardFarmRaid.Main (retail 0x00dcc770)
 function Main(quest)
     quest:AddEntityBinding("GuardTeamSpawn", "OrchardFarmRaid/Entities/TeamSpawn")
@@ -156,12 +163,12 @@ function ProcessGameRulesEvil(quest)
         end
         if quest:GetStateBool("MissionSucceeded") then
             if quest:IsActiveThreadTerminating() then return end
-            quest:GiveHeroExperience(quest:ReadGlobalGameData(3432))
+            quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.ExperienceForDefeatingWhisperInOrchardFarm))
             quest:StartCutscene({HERO = hero, WHISPER = quest:GetThingWithScriptName("OrchardFarmWhisper")}, {}, false)
             quest:RunCutscene("CS_ORCHARD_EVIL_OUTRO", true, false)
             quest:EndCutscene()
             quest:AddLogbookStoryEntry(85)
-            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(3480))
+            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.OFEvilCompletionMorality))
             quest:SetMasterGameState("OrchardFarmRaidLastCompleted", 1)
             quest:RemoveQuestInfoElement(addQuestInfoCounter)
             quest:SetThingAsUsable(quest:GetThingWithScriptName("OFFarmhouseDoor"), true)
@@ -256,12 +263,12 @@ function ProcessGameRulesGood(quest)
         end
         if quest:GetStateBool("MissionSucceeded") then
             if quest:IsActiveThreadTerminating() then return end
-            quest:GiveHeroExperience(quest:ReadGlobalGameData(3432))
+            quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.ExperienceForDefeatingWhisperInOrchardFarm))
             quest:StartCutscene({HERO = hero, WHISPER = quest:GetThingWithScriptName("OrchardFarmWhisper")}, {}, false)
             quest:RunCutscene("CS_ORCHARD_GOOD_OUTRO", true, false)
             quest:EndCutscene()
             quest:AddLogbookStoryEntry(80)
-            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(3484))
+            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.OFGoodCompletionMorality))
             if quest:GetMasterGameState("OFBRCratesStolen") == 0 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1a93 end
                 quest:SetMasterGameState("OFBR_NoCratesWereStolen", true)

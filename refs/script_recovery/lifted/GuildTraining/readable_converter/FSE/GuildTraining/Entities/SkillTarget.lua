@@ -1,6 +1,16 @@
 -- Readable native conversion: SkillTarget. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_RearDummySegements = 3812,  -- 40.0
+    GUI_MiddleDummySegements = 3816,  -- 60.0
+    GUI_FrontDummySegements = 3820,  -- 80.0
+    GUI_RearDummyWorth = 3824,  -- 9.0
+    GUI_MiddleDummyWorth = 3828,  -- 3.0
+    GUI_FrontDummyWorth = 3832,  -- 1.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -27,16 +37,16 @@ function Main(quest, me)
     scratchValue37 = me:GetAngleXY()
     if dummyNumber == 1 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3820))))
-        scratchValue4 = quest:ReadGlobalGameDataFloat(3832)
+        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummySegements))))
+        scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummyWorth)
     elseif dummyNumber == 2 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3816))))
-        scratchValue4 = quest:ReadGlobalGameDataFloat(3828)
+        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummySegements))))
+        scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummyWorth)
     else
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3812))))
-        scratchValue4 = quest:ReadGlobalGameDataFloat(3824)
+        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummySegements))))
+        scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummyWorth)
     end
     state:SetInt("DummyWorth", math.tointeger(math.modf(scratchValue4)))
     quest:NewScriptFrame(me)

@@ -1,6 +1,12 @@
 -- Readable native conversion: BirdKiller. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_GoldPerBird = 3836,  -- 5.0
+    GUI_BirdGoldBonus = 3840,  -- 20.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -254,7 +260,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ONE", me, hero, false)
                     quest:Pause(1.0)
-                    quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3836))))
+                    quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
                 elseif scratchValue == 0 then
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
@@ -265,7 +271,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_MORE", me, hero, false)
                     quest:Pause(1.0)
-                    quest:GiveHeroGold(math.tointeger(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(3836))))
+                    quest:GiveHeroGold(math.tointeger(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
                 end
                 state:SetInt("CurrentBirds", state:GetInt("CurrentBirds") + quest:GetStateInt("CurrentBirdsKilled"))
                 if quest:GetStateInt("CurrentBirdsKilled") ~= 0 then
@@ -296,7 +302,7 @@ function Main(quest, me)
                                 goto LAB_00d4ef87
                             end
                         end
-                        quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3840))))
+                        quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_BirdGoldBonus))))
                         state:SetInt("BirdMode", 3)
                         quest:ClearThingHasInformation(me)
                         quest:PauseAllNonScriptedEntities(false)

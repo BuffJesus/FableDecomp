@@ -1,6 +1,11 @@
 -- Readable native conversion: ArtifactThief. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_LampCost = 3860,  -- 50.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -196,7 +201,7 @@ function Main(quest, me)
                                 scratchValue2 = quest:IsActiveThreadTerminating()
                                 if scratchValue6 == 1 then
                                     if not scratchValue2 then
-                                        if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(3860) then
+                                        if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost) then
                                             if not quest:IsActiveThreadTerminating() then
                                                 scratchValue3 = 0.0
                                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -225,8 +230,8 @@ function Main(quest, me)
                                             end
                                             quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                                             quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
-                                            quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(3860))))
-                                            quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3860))))
+                                            quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
+                                            quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
                                             state:SetBool("HoldingArtifact", false)
                                             me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 0, false, true)
                                             quest:PauseAllNonScriptedEntities(false)
@@ -273,7 +278,7 @@ function Main(quest, me)
                             scratchValue2 = quest:IsActiveThreadTerminating()
                             if scratchValue6 == 1 then
                                 if not scratchValue2 then
-                                    if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(3860) then
+                                    if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost) then
                                         if not quest:IsActiveThreadTerminating() then
                                             scratchValue3 = 0.0
                                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -307,8 +312,8 @@ function Main(quest, me)
                                         end
                                         quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
                                         quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
-                                        quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(3860))))
-                                        quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3860))))
+                                        quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
+                                        quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
                                         state:SetBool("HoldingArtifact", false)
                                         me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 0, false, true)
                                         quest:PauseAllNonScriptedEntities(false)

@@ -1,6 +1,12 @@
 -- Readable native conversion: TheRealGuildmaster. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_MeleeGrades = 3764,  -- '070000000000904100007041000020410000a040000000000000a0c0000030c1'
+    GUI_MinHealth = 3800,  -- 6.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -170,7 +176,7 @@ function Main(quest, me)
                     quest:SetTimer(timerId, 15)
                 end
                 quest:UpdateQuestInfoCounter(infoCounter, quest:GetStateInt("GenericTutorialCounter"), -1)
-                if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(3800) then
+                if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
                     conversationId2 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId2, hero)
@@ -250,7 +256,7 @@ function Main(quest, me)
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
                 quest:UpdateQuestInfoCounter(infoCounter, quest:GetStateInt("GenericTutorialCounter"), -1)
-                if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(3800) then
+                if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9b5
                     conversationId3 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId3, hero)
@@ -324,8 +330,8 @@ function Main(quest, me)
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
                 fret_04 = quest:GetHealth(hero)
-                if quest:ReadGlobalGameDataFloat(3800) <= fret_04 then
-                    if quest:GetHealth(quest:GetThingWithScriptName("MeleeOpponent")) < quest:ReadGlobalGameDataFloat(3800) then
+                if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) <= fret_04 then
+                    if quest:GetHealth(quest:GetThingWithScriptName("MeleeOpponent")) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                         if not quest:IsActiveThreadTerminating() then
                             state:SetBool("WhisperStanding", false)
                             conversationId4 = quest:AddNewConversation(me, false, false)
@@ -351,7 +357,7 @@ function Main(quest, me)
             scratchValue8 = 0
             repeat
                 scratchValue7 = scratchValue8
-                if quest:ReadGlobalGameDataFloatAt(3764, scratchValue9) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(3764, scratchValue9) == xStack_1d4) then
+                if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, scratchValue9) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, scratchValue9) == xStack_1d4) then
                     if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
                     break
                 end

@@ -1,6 +1,12 @@
 -- Readable native conversion: TheRealGuildmaster. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_WillGrades = 3788,  -- '070000000000304100002041000000410000c040000040400000803f00000000'
+    GUI_WillTimer = 3848,  -- 30.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -273,7 +279,7 @@ function Main(quest, me)
                     scratchValue4 = quest:MsgOnHeroCastSpell()
                 end
                 timerId3 = quest:RegisterTimer()
-                quest:SetTimer(timerId3, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3848))))
+                quest:SetTimer(timerId3, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillTimer))))
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
                 timerId = quest:RegisterTimer()
@@ -356,7 +362,7 @@ function Main(quest, me)
                     scratchValue7 = 0
                     repeat
                         scratchValue8 = scratchValue7
-                        if quest:ReadGlobalGameDataFloatAt(3788, scratchValue11) < scratchValue16 ~= (quest:ReadGlobalGameDataFloatAt(3788, scratchValue11) == scratchValue16) then
+                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, scratchValue11) < scratchValue16 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, scratchValue11) == scratchValue16) then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d6135b end
                             break
                         end

@@ -1,6 +1,13 @@
 -- Readable native conversion: TeamSpawn. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GuardReinforcementsYourTeam = 3436,  -- 90
+    GuardReinforcementsEnemyTeam = 3440,  -- 75
+    BanditReinforcementDelay = 3444,  -- 10
+}
+
 local helpers = require("OrchardFarmRaid.native_quest_helpers")
 
 local state = {}  -- per-entity script state (__native_entity_state)
@@ -72,7 +79,7 @@ function Main(quest, me)
             end
             if quest:GetStateInt("Teams_" .. teamId .. "_MemberCount") == 0 then
                 if quest:IsActiveThreadTerminating() then return end
-                quest:Pause(quest:ReadGlobalGameData(3444))
+                quest:Pause(quest:ReadGlobalGameData(SCRIPT_DEF.BanditReinforcementDelay))
                 quest:SetStateInt("BanditWavesSpawned", quest:GetStateInt("BanditWavesSpawned") + 1)
                 if teamId ~= heroTeam then
                     if quest:IsActiveThreadTerminating() then return end
@@ -132,13 +139,13 @@ function Init(quest, me)
     state:SetString("TeamMemberDefName", scratchValue)
     if state:GetInt("TeamID") == quest:GetStateInt("HeroTeam") then
         state:SetInt("TeamMemberLimit", 2)
-        scratchValue2 = quest:ReadGlobalGameData(3436)
+        scratchValue2 = quest:ReadGlobalGameData(SCRIPT_DEF.GuardReinforcementsYourTeam)
         state:SetInt("BanditsLeftID", 0)
         state:SetInt("TeamRespawnTime", scratchValue2)
         return
     end
     state:SetInt("TeamMemberLimit", 3)
-    scratchValue3 = quest:ReadGlobalGameData(3440)
+    scratchValue3 = quest:ReadGlobalGameData(SCRIPT_DEF.GuardReinforcementsEnemyTeam)
     state:SetInt("BanditsLeftID", 0)
     state:SetInt("TeamRespawnTime", scratchValue3)
 end

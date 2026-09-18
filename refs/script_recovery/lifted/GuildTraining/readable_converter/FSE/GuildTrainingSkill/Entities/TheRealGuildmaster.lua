@@ -1,6 +1,12 @@
 -- Readable native conversion: TheRealGuildmaster. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_SkillGrades = 3776,  -- '07000000000016430000f0420000a042000048420000c8410000204100000000'
+    GUI_SkillTimer = 3844,  -- 60.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -679,7 +685,7 @@ function Main(quest, me)
             end
             timerId = quest:RegisterTimer()
             -- TODO(native): piVar2 = DAT_0143e8f8;
-            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3844))))
+            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_SkillTimer))))
             quest:SetMasterGameState("SkillScore", 0)
             scratchValue11 = 0
             scratchValue14 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
@@ -798,7 +804,7 @@ function Main(quest, me)
                     scratchValue14 = 0
                     repeat
                         scratchValue15 = scratchValue14
-                        if quest:ReadGlobalGameDataFloatAt(3776, scratchValue18) < scratchValue23 ~= (quest:ReadGlobalGameDataFloatAt(3776, scratchValue18) == scratchValue23) then
+                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue18) < scratchValue23 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue18) == scratchValue23) then
                             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
                             break
                         end

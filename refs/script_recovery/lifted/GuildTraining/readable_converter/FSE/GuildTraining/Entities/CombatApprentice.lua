@@ -1,6 +1,12 @@
 -- Readable native conversion: CombatApprentice. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_MeleeGrades = 3764,  -- '070000000000904100007041000020410000a040000000000000a0c0000030c1'
+    GUI_MinHealth = 3800,  -- 6.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -468,8 +474,8 @@ function Main(quest, me)
                         end
                         ::FLOW_after_lab_00d4b6f6::
                         fret_10 = quest:GetHealth(hero)
-                        if quest:ReadGlobalGameDataFloat(3800) <= fret_10 then
-                            if quest:GetHealth(meleeApprentice) < quest:ReadGlobalGameDataFloat(3800) then
+                        if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) <= fret_10 then
+                            if quest:GetHealth(meleeApprentice) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
                                 quest:SetStateBool("FightFinished", true)
                             end
@@ -573,7 +579,7 @@ function Main(quest, me)
                         scratchValue = 0
                         repeat
                             scratchValue14 = scratchValue
-                            if quest:ReadGlobalGameDataFloatAt(3764, scratchValue15) <= scratchValue9 then
+                            if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, scratchValue15) <= scratchValue9 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
                                 break
                             end

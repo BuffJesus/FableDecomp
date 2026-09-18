@@ -1,6 +1,12 @@
 -- Readable native conversion: SkillApprentice. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_SkillGrades = 3776,  -- '07000000000016430000f0420000a042000048420000c8410000204100000000'
+    GUI_SkillTimer = 3844,  -- 60.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -263,7 +269,7 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d4de46(); return end
                 timerId = quest:RegisterTimer()
-                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3844))))
+                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_SkillTimer))))
                 quest:SetMasterGameState("SkillScore", 0)
                 scratchValue5 = 0
                 scratchValue = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
@@ -320,7 +326,7 @@ function Main(quest, me)
                     scratchValue = 0
                     repeat
                         scratchValue13 = scratchValue
-                        if quest:ReadGlobalGameDataFloatAt(3776, scratchValue14) <= scratchValue19 then
+                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, scratchValue14) <= scratchValue19 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                             break
                         end

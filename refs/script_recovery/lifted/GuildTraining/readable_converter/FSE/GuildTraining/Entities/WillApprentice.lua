@@ -1,6 +1,12 @@
 -- Readable native conversion: WillApprentice. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GUI_WillGrades = 3788,  -- '070000000000304100002041000000410000c040000040400000803f00000000'
+    GUI_WillTimer = 3848,  -- 30.0
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -225,7 +231,7 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d505a6(); return end
                 timerId2 = quest:RegisterTimer()
-                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3848))))
+                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillTimer))))
                 quest:SetMasterGameState("WillScore", 0)
                 quest:SetTimer(willHelpTimer, 0)
                 scratchValue = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
@@ -284,7 +290,7 @@ function Main(quest, me)
                         scratchValue = 0
                         repeat
                             scratchValue9 = scratchValue
-                            if quest:ReadGlobalGameDataFloatAt(3788, scratchValue14) <= scratchValue17 then
+                            if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, scratchValue14) <= scratchValue17 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                                 break
                             end

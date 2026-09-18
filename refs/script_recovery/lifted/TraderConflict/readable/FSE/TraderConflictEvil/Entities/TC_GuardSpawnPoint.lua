@@ -1,6 +1,13 @@
 -- Readable native conversion: TC_GuardSpawnPoint. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    TCE_GuardRangeHighest = 3976,  -- 14
+    TCE_GuardRangeHigh = 3980,  -- 11
+    TCE_GuardRangeLow = 3984,  -- 5
+}
+
 local state = {}  -- per-entity script state (__native_entity_state)
 do
     local fields = {}
@@ -27,11 +34,11 @@ function Main(quest, me)
                         scratchValue = 25 - quest:GetStateInt("InitialNumberInRegion")
                         if scratchValue == numberSpawned or scratchValue - numberSpawned < 0 then break end
                         if quest:IsActiveThreadTerminating() then return end
-                        if quest:ReadGlobalGameData(3976) < (25 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
+                        if quest:ReadGlobalGameData(SCRIPT_DEF.TCE_GuardRangeHighest) < (25 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
                             pOther = "CREATURE_BS_GUARD_BLUE"
-                        elseif quest:ReadGlobalGameData(3980) < (25 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
+                        elseif quest:ReadGlobalGameData(SCRIPT_DEF.TCE_GuardRangeHigh) < (25 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
                             pOther = "CREATURE_BS_GUARD_BLUE_CROSSBOW"
-                        elseif quest:ReadGlobalGameData(3984) < (25 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
+                        elseif quest:ReadGlobalGameData(SCRIPT_DEF.TCE_GuardRangeLow) < (25 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
                             pOther = "CREATURE_BS_GUARD_RED"
                         else
                             pOther = "CREATURE_BS_GUARD_BLACK"
