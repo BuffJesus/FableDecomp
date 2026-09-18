@@ -1717,7 +1717,7 @@
        "elseExit": 0,
        "gotoReturn": 0,
        "ifAroundWhile": 1,
-       "deadTerminationChecks": 9,
+       "deadTerminationChecks": 10,
        "controlAcquires": 1,
        "parentheses": 35,
        "cosmetics": 0,
@@ -1735,11 +1735,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 201,
+       "lines": 200,
        "temporaries": 15,
        "labels": 8,
-       "gotos": 27,
-       "terminationChecks": 17,
+       "gotos": 26,
+       "terminationChecks": 16,
        "frameChecks": 3,
        "requires": 0
       }
@@ -10739,7 +10739,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -10772,9 +10772,9 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 10,
        "controlAcquires": 0,
-       "parentheses": 6,
+       "parentheses": 10,
        "cosmetics": 1,
-       "firstAssignments": 2,
+       "firstAssignments": 1,
        "freeSuffixes": 0,
        "hoistedState": 1
       },
@@ -10788,7 +10788,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 228,
+       "lines": 227,
        "temporaries": 19,
        "labels": 2,
        "gotos": 8,
@@ -10832,7 +10832,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "parentheses": 0,
+       "parentheses": 1,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -33878,7 +33878,7 @@
        "elseExit": 0,
        "gotoReturn": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 6,
+       "deadTerminationChecks": 8,
        "controlAcquires": 1,
        "parentheses": 53,
        "cosmetics": 0,
@@ -33896,11 +33896,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 422,
+       "lines": 420,
        "temporaries": 14,
        "labels": 9,
-       "gotos": 53,
-       "terminationChecks": 34,
+       "gotos": 51,
+       "terminationChecks": 32,
        "frameChecks": 3,
        "requires": 0
       }
@@ -36409,7 +36409,7 @@
        "elseExit": 1,
        "gotoReturn": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 12,
+       "deadTerminationChecks": 15,
        "controlAcquires": 0,
        "parentheses": 64,
        "cosmetics": 0,
@@ -36427,11 +36427,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 472,
+       "lines": 469,
        "temporaries": 28,
        "labels": 7,
-       "gotos": 32,
-       "terminationChecks": 23,
+       "gotos": 29,
+       "terminationChecks": 20,
        "frameChecks": 9,
        "requires": 0
       }
@@ -37059,7 +37059,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "parentheses": 0,
+       "parentheses": 1,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -38661,7 +38661,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "parentheses": 0,
+       "parentheses": 1,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,

@@ -11,21 +11,14 @@ local SCRIPT_DEF = {
     GUI_FrontDummyWorth = 3832,  -- 1.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local dummyNumber, speed, dummyWorth
 
 -- SkillTarget.Main (retail 0x00d41d00)
 function Main(quest, me)
     local scratchValue, predicateResult, scratchValue2, scratchValue3, scratchValue4, scratchValue29
     local conversationId, scratchValue30, theGuildmaster, skillApprentice, theRealGuildmaster
     local skillApprentice2, scratchValue36, scratchValue37, timerId
-    local dummyNumber = state:GetInt("DummyNumber")
     local hero = quest:GetHero()
     local function __cleanup_LAB_00d42ef8()
         quest:DeregisterTimer(timerId)
@@ -36,18 +29,18 @@ function Main(quest, me)
     scratchValue37 = me:GetAngleXY()
     if dummyNumber == 1 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummySegements))))
+        speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummySegements)))
         scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummyWorth)
     elseif dummyNumber == 2 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummySegements))))
+        speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummySegements)))
         scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummyWorth)
     else
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
-        state:SetInt("Speed", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummySegements))))
+        speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummySegements)))
         scratchValue4 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummyWorth)
     end
-    state:SetInt("DummyWorth", math.tointeger(math.modf(scratchValue4)))
+    dummyWorth = math.tointeger(math.modf(scratchValue4))
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
         quest:NewScriptFrame(me)
@@ -69,7 +62,7 @@ function Main(quest, me)
                         -- TODO(native): xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;
                         -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)
                         scratchValue29 = scratchValue29 + 1
-                    until scratchValue29 == state:GetInt("Speed")
+                    until scratchValue29 == speed
                     if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
                     if quest:GetMasterGameState("MovingDummiesNeeded") == 0 then
                         if quest:IsActiveThreadTerminating() then return end
@@ -89,7 +82,7 @@ function Main(quest, me)
                             -- TODO(native): xStack_40 = f_stk_88 * (float)i_stk_16c + f_stk_13c;
                             -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)
                             scratchValue29 = scratchValue29 + 1
-                        until scratchValue29 == state:GetInt("Speed")
+                        until scratchValue29 == speed
                         if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
                         while quest:GetMasterGameState("MovingDummiesNeeded") ~= 1 do
                             if not quest:NewScriptFrame(me) then return end
@@ -129,7 +122,7 @@ function Main(quest, me)
                                     if 0.0 <= xStack_18c then
                                         if 0.0 <= xStack_18c then
                                             if xStack_18c < 0.0 then
-                                                if not quest:IsActiveThreadTerminating() then quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + state:GetInt("DummyWorth") * 3); goto LAB_00d42874 end
+                                                if not quest:IsActiveThreadTerminating() then quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + dummyWorth * 3); goto LAB_00d42874 end
                                                 quest:DeregisterTimer(timerId)
                                                 return
                                             end
@@ -222,7 +215,7 @@ function Main(quest, me)
                             end
                         end
                         scratchValue30 = scratchValue30 + 1
-                        if scratchValue30 == state:GetInt("Speed") then
+                        if scratchValue30 == speed then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                             scratchValue3 = scratchValue3 == 0
                             scratchValue30 = 0
@@ -254,7 +247,7 @@ end
 
 -- SkillTarget.Init (retail 0x00d41ca0)
 function Init(quest, me)
-    state:SetInt("DummyNumber", tonumber(me:GetDataString()))
+    dummyNumber = tonumber(me:GetDataString())
 end
 
 -- SkillTarget.OnPersist (retail 0x00cdebc0)

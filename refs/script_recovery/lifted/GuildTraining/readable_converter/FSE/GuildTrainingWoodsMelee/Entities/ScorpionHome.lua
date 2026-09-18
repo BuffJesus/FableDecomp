@@ -6,14 +6,8 @@ local SCRIPT_DEF = {
     GUI_MeleeBeetles = 3856,  -- 10.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local scorpionsLeft, flourishHint
 
 -- ScorpionHome.Main (retail 0x00d67270)
 function Main(quest, me)
@@ -41,13 +35,13 @@ function Main(quest, me)
         end
         guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
         count = #guildScorpions
-        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles) - state:GetInt("ScorpionsLeft")) - count)), -1)
+        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles) - scorpionsLeft) - count)), -1)
         if #guildScorpions < 3 then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-            if #guildScorpions == 0 and state:GetInt("ScorpionsLeft") == 0 then
+            if #guildScorpions == 0 and scorpionsLeft == 0 then
                 quest:SetStateBool("ScorpionsAlive", false)
                 quest:SetMasterGameState("ScorpionsDestroyed", true)
-            elseif 0 < state:GetInt("ScorpionsLeft") then
+            elseif 0 < scorpionsLeft then
                 scorpionSpawn = quest:GetFurthestWithScriptName(hero, "ScorpionSpawn")
                 if scorpionSpawn == nil then
                     pPosition = {x = 0, y = 0, z = 0}
@@ -59,7 +53,7 @@ function Main(quest, me)
                     guildStagBeetle:SetToKillOnLevelUnload(0)
                 end
                 quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsMelee")
-                state:SetInt("ScorpionsLeft", state:GetInt("ScorpionsLeft") - 1)
+                scorpionsLeft = scorpionsLeft - 1
             end
         end
         scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
@@ -68,8 +62,8 @@ end
 
 -- ScorpionHome.Init (retail 0x00d66c60)
 function Init(quest, me)
-    state:SetInt("ScorpionsLeft", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles))))
-    state:SetBool("FlourishHint", false)
+    scorpionsLeft = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles)))
+    flourishHint = false
 end
 
 -- ScorpionHome.OnPersist (retail 0x00cdebc0)

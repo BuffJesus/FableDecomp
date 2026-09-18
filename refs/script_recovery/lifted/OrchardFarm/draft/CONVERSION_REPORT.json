@@ -2045,7 +2045,7 @@
         "FSE/OrchardFarmRaid/OrchardFarmRaid.lua": {
           "LAB_00dd0b11": [
             "pCVar6 = 0x0",
-            "quest:PauseAllNonScriptedEntities(__unknown_push)",
+            "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_9c)",
             "resources:DestroyActorMap(xStack_80)",
             "resources:ReleaseResource(xStack_ac)",
@@ -2053,7 +2053,7 @@
           ],
           "LAB_00dd1728": [
             "pCVar5 = 0x0",
-            "quest:PauseAllNonScriptedEntities(__unknown_push)",
+            "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_98)",
             "resources:DestroyActorMap(xStack_88)",
             "resources:ReleaseResource(xStack_7c)",

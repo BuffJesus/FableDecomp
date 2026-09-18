@@ -8,14 +8,8 @@ local SCRIPT_DEF = {
     GUI_LampCost = 3860,  -- 50.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local holdingArtifact, alreadyTalkedTo, notAttacked
 
 -- ArtifactThief.Main (retail 0x00d62480)
 function Main(quest, me)
@@ -43,19 +37,19 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, true)
         quest:SetThingHasInformation(me, false, true, false)
-        state:SetBool("HoldingArtifact", true)
-        state:SetBool("AlreadyTalkedTo", false)
-        state:SetBool("NotAttacked", true)
+        holdingArtifact = true
+        alreadyTalkedTo = false
+        notAttacked = true
         timerId = quest:RegisterTimer()
         quest:SetTimer(timerId, 0)
-        getStateBool = state:GetBool("HoldingArtifact")
+        getStateBool = holdingArtifact
         repeat
-            if not getStateBool or not state:GetBool("NotAttacked") then goto LAB_00d638ec end
+            if not getStateBool or not notAttacked then goto LAB_00d638ec end
             if not quest:NewScriptFrame(me) then goto LAB_00d63c96 end
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
                 addNewConversation = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(addNewConversation, hero)
-                if not state:GetBool("AlreadyTalkedTo") then
+                if not alreadyTalkedTo then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
@@ -101,9 +95,8 @@ function Main(quest, me)
             scratchValue = scratchValue9
             if scratchValue2 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
-                state:SetBool("NotAttacked", false)
-                if not state:GetBool("AlreadyTalkedTo") then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
+                notAttacked = false
+                if not alreadyTalkedTo then
                     movie2 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
@@ -124,7 +117,6 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_138;
                 else
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
                     movie6 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
@@ -151,9 +143,9 @@ function Main(quest, me)
             end
             if me:IsTalkedToByHero() then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d63c96 end
-                if not state:GetBool("HoldingArtifact") then goto LAB_00d638ec end
-                if not state:GetBool("AlreadyTalkedTo") then
-                    state:SetBool("AlreadyTalkedTo", true)
+                if not holdingArtifact then goto LAB_00d638ec end
+                if not alreadyTalkedTo then
+                    alreadyTalkedTo = true
                     movie3 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
@@ -197,7 +189,7 @@ function Main(quest, me)
                                             quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                                             quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
                                             quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
-                                            state:SetBool("HoldingArtifact", false)
+                                            holdingArtifact = false
                                             me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 0, false, true)
                                             quest:PauseAllNonScriptedEntities(false)
                                             movie = movie3
@@ -261,7 +253,7 @@ function Main(quest, me)
                                         quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                                         quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
                                         quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_LampCost))))
-                                        state:SetBool("HoldingArtifact", false)
+                                        holdingArtifact = false
                                         me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 0, false, true)
                                         quest:PauseAllNonScriptedEntities(false)
                                         movie = movie3
@@ -381,7 +373,7 @@ function Main(quest, me)
                 resources:DestroyMovie(movie)
                 scratchValue = scratchValue11
             end
-            getStateBool = state:GetBool("HoldingArtifact")
+            getStateBool = holdingArtifact
         until false
     end
     goto LAB_00d63c9f
@@ -421,11 +413,11 @@ function Main(quest, me)
             end
             scratchValue = scratchValue9
             if scratchValue2 then
-                if state:GetBool("NotAttacked") then
+                if notAttacked then
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_ATTACK", me, hero, false)
-                    state:SetBool("NotAttacked", false)
+                    notAttacked = false
                     quest:EntitySetAsKillable(me, true, true)
                     me:MoveToPosition(quest:GetThingWithScriptName("ArtifactThiefRunMarker"):GetPos(), 0x3f800000, 1, false, true)
                     scratchValue = scratchValue11

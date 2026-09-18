@@ -9,14 +9,8 @@ local SCRIPT_DEF = {
     GUI_SkillTimer = 3844,  -- 60.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local playerNotWarned
 
 -- TheRealGuildmaster.Main (retail 0x00d5ae70)
 function Main(quest, me)
@@ -397,7 +391,7 @@ function Main(quest, me)
                     end
                 end
                 quest:UpdateQuestInfoCounter(scratchValue23, quest:GetMasterGameState("SkillScore"), -1)
-                if state:GetBool("PlayerNotWarned") then
+                if playerNotWarned then
                     scratchValue12 = 6.0
                     if quest:IsDistanceBetweenThingsOver(hero_, archeryRing, 6.0) and not quest:IsConversationActive(scratchValue15) then
                         if quest:IsActiveThreadTerminating() then
@@ -406,7 +400,7 @@ function Main(quest, me)
                             resources:ReleaseResource(resource5)
                             return
                         end
-                        state:SetBool("PlayerNotWarned", false)
+                        playerNotWarned = false
                         scratchValue15 = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(scratchValue15, hero_)
                         quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_MAZE_RING_OUT", me, hero_, false)
@@ -713,7 +707,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                     quest:SetTimer(timerId2, 15)
                 end
-                if not state:GetBool("PlayerNotWarned") then
+                if not playerNotWarned then
                     scratchValue9 = false
                 else
                     -- TODO(native): CVar10 = *(this + 4)
@@ -727,7 +721,7 @@ function Main(quest, me)
                 end
                 if scratchValue9 then
                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
-                    state:SetBool("PlayerNotWarned", false)
+                    playerNotWarned = false
                     scratchValue15 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(scratchValue15, hero_)
                     quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_MAZE_RING_OUT", me, hero_, false)
@@ -882,7 +876,7 @@ end
 
 -- TheRealGuildmaster.Init (retail 0x00d5ac90)
 function Init(quest, me)
-    state:SetBool("PlayerNotWarned", true)
+    playerNotWarned = true
 end
 
 -- TheRealGuildmaster.OnPersist (retail 0x00cdebc0)

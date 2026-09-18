@@ -3,14 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local woodsEndPlayed, chatJumped
 
 -- TheRealGuildmaster.Main (retail 0x00d52e90)
 function Main(quest, me)
@@ -376,9 +370,9 @@ function Main(quest, me)
                                                                                                         repeat
                                                                                                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                                                                                                             if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then return end  -- TODO(native): goto LAB_00d54f9c_c6
-                                                                                                            if not state:GetBool("WoodsEndPlayed") then
+                                                                                                            if not woodsEndPlayed then
                                                                                                                 if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b end
-                                                                                                                state:SetBool("WoodsEndPlayed", true)
+                                                                                                                woodsEndPlayed = true
                                                                                                                 quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                                                                                 quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_QUEST_CORE")
                                                                                                                 resource = resources:NewResource()
@@ -670,8 +664,8 @@ function Main(quest, me)
                                                                                                         end
                                                                                                         goto FLOW_after_lab_00d54f9c
                                                                                                     end
-                                                                                                    if not state:GetBool("WoodsEndPlayed") then
-                                                                                                        state:SetBool("WoodsEndPlayed", true)
+                                                                                                    if not woodsEndPlayed then
+                                                                                                        woodsEndPlayed = true
                                                                                                         quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                                                                         quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_QUEST_CORE")
                                                                                                         resource = resources:NewResource()
@@ -1024,9 +1018,9 @@ function Main(quest, me)
                                                                                             repeat
                                                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c27 end
                                                                                                 if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then return end  -- TODO(native): goto LAB_00d54f9c_c27
-                                                                                                if not state:GetBool("WoodsEndPlayed") then
+                                                                                                if not woodsEndPlayed then
                                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c27 end
-                                                                                                    state:SetBool("WoodsEndPlayed", true)
+                                                                                                    woodsEndPlayed = true
                                                                                                     quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                                                                     quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_QUEST_CORE")
                                                                                                     resource = resources:NewResource()
@@ -1428,9 +1422,9 @@ function Main(quest, me)
                                                                                             repeat
                                                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c28 end
                                                                                                 if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then return end  -- TODO(native): goto LAB_00d54f9c_c28
-                                                                                                if not state:GetBool("WoodsEndPlayed") then
+                                                                                                if not woodsEndPlayed then
                                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c28 end
-                                                                                                    state:SetBool("WoodsEndPlayed", true)
+                                                                                                    woodsEndPlayed = true
                                                                                                     quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                                                                     quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_QUEST_CORE")
                                                                                                     resource = resources:NewResource()
@@ -1922,9 +1916,9 @@ function Main(quest, me)
                                                                                             repeat
                                                                                                 if not quest:NewScriptFrame(me) then goto LAB_00d55c2b_c29 end
                                                                                                 if quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") == 0 then return end  -- TODO(native): goto LAB_00d54f9c_c29
-                                                                                                if not state:GetBool("WoodsEndPlayed") then
+                                                                                                if not woodsEndPlayed then
                                                                                                     if quest:IsActiveThreadTerminating() then goto LAB_00d55c2b_c29 end
-                                                                                                    state:SetBool("WoodsEndPlayed", true)
+                                                                                                    woodsEndPlayed = true
                                                                                                     quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("TheRealGuildmaster"))
                                                                                                     quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_QUEST_CORE")
                                                                                                     resource = resources:NewResource()
@@ -2201,8 +2195,8 @@ end
 
 -- TheRealGuildmaster.Init (retail 0x00d51ed0)
 function Init(quest, me)
-    state:SetBool("ChatJumped", false)
-    state:SetBool("WoodsEndPlayed", false)
+    chatJumped = false
+    woodsEndPlayed = false
 end
 
 -- TheRealGuildmaster.OnPersist (retail 0x00cdebc0)

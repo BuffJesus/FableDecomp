@@ -8,14 +8,8 @@ local SCRIPT_DEF = {
     GUI_MinHealth = 3800,  -- 6.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local repeatMelee, badHit
 
 -- MeleeOpponent.Main (retail 0x00d56790)
 function Main(quest, me)
@@ -86,7 +80,7 @@ function Main(quest, me)
                     end
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    while state:GetBool("RepeatMelee") do
+                    while repeatMelee do
                         if not quest:NewScriptFrame(me) then goto LAB_00d57f5d end
                         while quest:GetStateInt("TutorialState") ~= 3 do
                             if not quest:NewScriptFrame(me) then goto LAB_00d57f5d end
@@ -550,7 +544,7 @@ function Main(quest, me)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            state:SetBool("RepeatMelee", false)
+                            repeatMelee = false
                         elseif quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)
                             resources:ReleaseResource(resource)
@@ -573,8 +567,8 @@ end
 -- MeleeOpponent.Init (retail 0x00d56750)
 function Init(quest, me)
     quest:SetStateInt("TutorialState", 1)
-    state:SetInt("BadHit", 0)
-    state:SetBool("RepeatMelee", true)
+    badHit = 0
+    repeatMelee = true
 end
 
 -- MeleeOpponent.OnPersist (retail 0x00cdebc0)

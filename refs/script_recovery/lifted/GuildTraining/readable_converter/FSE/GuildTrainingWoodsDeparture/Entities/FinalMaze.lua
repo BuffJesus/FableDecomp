@@ -3,14 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local notFighting, notBeaten, beenHit
 
 -- FinalMaze.Main (retail 0x00d647f0)
 function Main(quest, me)
@@ -27,9 +21,9 @@ function Main(quest, me)
     while not resources:TryAcquire(resource3, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00d664b9 end
     end
-    state:SetBool("NotFighting", true)
-    state:SetBool("NotBeaten", true)
-    state:SetInt("BeenHit", 0)
+    notFighting = true
+    notBeaten = true
+    beenHit = 0
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAllowBossPhaseChanges(me, false)
@@ -65,13 +59,13 @@ function Main(quest, me)
     quest:DisplayQuestInfo(true)
     quest:EntitySetBossPhase(me, 0)
     quest:EntitySetAsDamageable(hero, false)
-    quest:UpdateQuestInfoCounter(infoCounter3, state:GetInt("BeenHit"), -1)
+    quest:UpdateQuestInfoCounter(infoCounter3, beenHit, -1)
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
     quest:CacheMusicSet(47)
     addNewConversation = 0
-    while state:GetBool("NotBeaten") do
+    while notBeaten do
         if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
         scratchValue29 = scratchValue27 | 3
         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
@@ -93,14 +87,13 @@ function Main(quest, me)
             scratchValue29 = scratchValue29 & 0xfffffffe
         end
         if predicateResult3 then
-            getStateInt = state:GetInt("BeenHit") + 1
-            state:SetInt("BeenHit", getStateInt)
+            getStateInt = beenHit + 1
+            beenHit = getStateInt
             if getStateInt == 7 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-                state:SetBool("NotBeaten", false)
+                notBeaten = false
                 quest:ModifyThingHealth(me, 1000.0, false)
             end
-            quest:UpdateQuestInfoCounter(infoCounter3, state:GetInt("BeenHit"), -1)
+            quest:UpdateQuestInfoCounter(infoCounter3, beenHit, -1)
             if quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                 scratchValue27 = math.random(0, 32767) & 0x80000001
@@ -169,8 +162,8 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         quest:RemoveQuestInfoElement(infoCounter3)
         quest:DisplayQuestInfo(false)
-        state:SetInt("BeenHit", 0)
-        state:SetBool("NotBeaten", true)
+        beenHit = 0
+        notBeaten = true
         while not resources:TryAcquire(resource3, me, 4) do
             if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
         end
@@ -202,9 +195,9 @@ function Main(quest, me)
             quest:EntitySetBossPhase(me, 1)
             infoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
             quest:DisplayQuestInfo(true)
-            quest:UpdateQuestInfoCounter(infoCounter, state:GetInt("BeenHit"), -1)
+            quest:UpdateQuestInfoCounter(infoCounter, beenHit, -1)
             quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
-            while state:GetBool("NotBeaten") do
+            while notBeaten do
                 if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
                 scratchValue29 = scratchValue27 | 768
                 if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
@@ -261,14 +254,13 @@ function Main(quest, me)
                         scratchValue27 = scratchValue27 & 0xffffefff
                     end
                     if predicateResult then
-                        getStateInt2 = state:GetInt("BeenHit") + 1
-                        state:SetInt("BeenHit", getStateInt2)
+                        getStateInt2 = beenHit + 1
+                        beenHit = getStateInt2
                         if getStateInt2 == 7 then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-                            state:SetBool("NotBeaten", false)
+                            notBeaten = false
                             quest:ModifyThingHealth(me, 1000.0, false)
                         end
-                        quest:UpdateQuestInfoCounter(infoCounter, state:GetInt("BeenHit"), -1)
+                        quest:UpdateQuestInfoCounter(infoCounter, beenHit, -1)
                         if quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation) then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                             scratchValue29 = math.random(0, 32767) & 0x80000001
@@ -302,8 +294,8 @@ function Main(quest, me)
             if not quest:IsActiveThreadTerminating() then
                 quest:RemoveQuestInfoElement(infoCounter)
                 quest:DisplayQuestInfo(false)
-                state:SetInt("BeenHit", 0)
-                state:SetBool("NotBeaten", true)
+                beenHit = 0
+                notBeaten = true
                 while not resources:TryAcquire(resource3, me, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
                 end
@@ -335,9 +327,9 @@ function Main(quest, me)
                     quest:EntitySetBossPhase(me, 2)
                     infoCounter2 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
                     quest:DisplayQuestInfo(true)
-                    quest:UpdateQuestInfoCounter(infoCounter2, state:GetInt("BeenHit"), -1)
+                    quest:UpdateQuestInfoCounter(infoCounter2, beenHit, -1)
                     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
-                    while state:GetBool("NotBeaten") do
+                    while notBeaten do
                         if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
                         scratchValue29 = scratchValue27 | 0x30000
                         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
@@ -411,14 +403,13 @@ function Main(quest, me)
                                 quest:ModifyThingHealth(me, 1000.0, false)
                             else
                                 if me:MsgIsHitByHeroSpecialAbility(me) then
-                                    getStateInt3 = state:GetInt("BeenHit") + 1
-                                    state:SetInt("BeenHit", getStateInt3)
+                                    getStateInt3 = beenHit + 1
+                                    beenHit = getStateInt3
                                     if getStateInt3 == 7 then
-                                        if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-                                        state:SetBool("NotBeaten", false)
+                                        notBeaten = false
                                         quest:ModifyThingHealth(me, 1000.0, false)
                                     end
-                                    quest:UpdateQuestInfoCounter(infoCounter2, state:GetInt("BeenHit"), -1)
+                                    quest:UpdateQuestInfoCounter(infoCounter2, beenHit, -1)
                                     if quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation) then
                                         if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                                         scratchValue29 = math.random(0, 32767) & 0x80000001

@@ -380,7 +380,7 @@ function Main(quest, me)
             uVar6 = quest:GetHero()
             quest:EntityFollowThing(me, uVar6, nil --[[missing]], nil --[[missing]])
             uVar6 = quest:GetHero()
-            quest:SetEntityAsRegionFollowing(uVar6, r1, __unknown_push)
+            quest:SetEntityAsRegionFollowing(uVar6, me, true)
             quest:EntitySetOpinionReactionsEnabled(me, false)
             quest:EntitySetDeedReactionsEnabled(me, false)
             quest:EntitySetCombatEnabled(me, false)
@@ -399,7 +399,7 @@ function Main(quest, me)
                     bVar2 = not alive
                     if bVar2 then goto LAB_00e005d5 end
                     pcVar17 = "HUD_QUEST_ICON_TRADER_HAT_02"
-                    uVar6 = quest:AddQuestInfoBarHealth(nil --[[missing]], __unknown_push, pcVar17, {R = 255, G = 0, B = 0, A = 255})
+                    uVar6 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, pcVar17, 1.0)
                     __native_entity_state:SetStateInt("BarIndex", uVar6)
                     goto FLOW_after_lab_00dfee1b
                 end
@@ -413,20 +413,20 @@ function Main(quest, me)
                 if bVar2 then goto LAB_00e005d5 end
                 pcVar17 = "HUD_QUEST_ICON_TRADER"
                 -- LAB_00dfee1b: (native jump target)
-                uVar6 = quest:AddQuestInfoBarHealth(nil --[[missing]], __unknown_push, pcVar17, {R = 255, G = 0, B = 0, A = 255})
+                uVar6 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, pcVar17, 1.0)
                 __native_entity_state:SetStateInt("BarIndex", uVar6)
             end
             ::FLOW_after_lab_00dfee1b::
             bVar2 = false
             if bVar2 ~= 0 then
             end
-            cVar3 = quest:IsEntityFollowingHero(nil --[[missing]])
+            cVar3 = quest:IsEntityFollowingHero(me)
             while not cVar3 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00e005d5 end
-                cVar3 = quest:IsEntityFollowingHero(nil --[[missing]])
+                cVar3 = quest:IsEntityFollowingHero(me)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -536,7 +536,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then goto LAB_00e005b1 end
-                            uVar6 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+                            uVar6 = quest:AddNewConversation(r1, ((me)), false)
                             __push7 = quest:GetHero()
                             quest:AddPersonToConversation(uVar6, __push7)
                             r9 = quest:GetHero()
@@ -702,7 +702,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if bVar2 then goto LAB_00e005b1 end
-                                    uVar6 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+                                    uVar6 = quest:AddNewConversation(nil --[[missing]], ((me)), false)
                                     __push11 = quest:GetHero()
                                     quest:AddPersonToConversation(uVar6, __push11)
                                     r13 = quest:GetHero()
@@ -883,7 +883,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then goto LAB_00e005ac end
-                            uVar6 = quest:AddNewConversation(r14, __unknown_push, false)
+                            uVar6 = quest:AddNewConversation(r14, ((me)), false)
                             __push12 = quest:GetHero()
                             quest:AddPersonToConversation(uVar6, __push12)
                             r16 = quest:GetHero()
@@ -923,7 +923,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then goto LAB_00e005ac end
-                            uVar6 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+                            uVar6 = quest:AddNewConversation(nil --[[missing]], ((me)), false)
                             __push13 = quest:GetHero()
                             quest:AddPersonToConversation(uVar6, __push13)
                             r17 = quest:GetHero()
@@ -963,8 +963,8 @@ function Main(quest, me)
                             quest:SetStateInt("TradersReachedTeleporter", quest:GetStateInt("TradersReachedTeleporter") + 1)
                             quest:EntityStopFollowing(nil --[[missing]])
                             __push14 = quest:GetHero()
-                            quest:SetEntityAsRegionFollowing(__push14, nil --[[missing]], __unknown_push)
-                            quest:EntitySetAsScared(nil --[[missing]], __unknown_push)
+                            quest:SetEntityAsRegionFollowing(__push14, nil --[[missing]], ((me)))
+                            quest:EntitySetAsScared(nil --[[missing]], ((me)))
                             if 2 < quest:GetStateInt("TradersReachedTeleporter") then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
@@ -974,7 +974,7 @@ function Main(quest, me)
                                 alive = quest:NewScriptFrame(me)
                                 -- TODO(native): Main_InitializeFourierAnalysis_4(*(undefined4 *)(this + 0x14));
                                 quest:SetStateBool("OutroDone", true)
-                                quest:RemoveThing(nil --[[missing]], __unknown_push, false)
+                                quest:RemoveThing(nil --[[missing]], (((me))), false)
                                 goto FLOW_after_lab_00e00595
                             end
                             alive = not quest:IsActiveThreadTerminating()
@@ -1013,7 +1013,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
-        uVar6 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+        uVar6 = quest:AddNewConversation(nil --[[missing]], ((me)), false)
         __push15 = quest:GetHero()
         quest:AddPersonToConversation(uVar6, __push15)
         r18 = quest:GetHero()
@@ -1047,7 +1047,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if not bVar2 then
-                    quest:RemoveQuestInfoElement(__unknown_push)
+                    quest:RemoveQuestInfoElement(__native_entity_state:GetStateInt("BarIndex"))
                     quest:FadeOutAndKillEntity(me, true, 1.0, true)
                 end
             else
@@ -1067,7 +1067,7 @@ function Main(quest, me)
                     bVar2 = not alive
                     if not bVar2 then
                         -- LAB_00e00595: (native jump target)
-                        quest:RemoveThing(nil --[[missing]], __unknown_push, false)
+                        quest:RemoveThing(nil --[[missing]], (((me))), false)
                     end
                 end
             end

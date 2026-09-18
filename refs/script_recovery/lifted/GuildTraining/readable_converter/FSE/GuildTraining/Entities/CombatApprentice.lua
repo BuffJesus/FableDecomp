@@ -9,14 +9,8 @@ local SCRIPT_DEF = {
     GUI_MinHealth = 3800,  -- 6.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local waitingForFight
 
 -- CombatApprentice.Main (retail 0x00d4a270)
 function Main(quest, me)
@@ -119,7 +113,7 @@ function Main(quest, me)
         end
         me:MoveToPosition(p0, 3.0, 1, false, true)
         ::LAB_00d4a71c::
-        if state:GetBool("WaitingForFight") and me:IsTalkedToByHero() then
+        if waitingForFight and me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(scratchValue26)
                 resources:ReleaseResource(resource4)
@@ -299,7 +293,7 @@ function Main(quest, me)
                     quest:SetPlayerCreatureOnlyTarget(meleeApprentice)
                     quest:SetMasterGameState("HeroTakingGuildTest", true)
                     quest:SetStateBool("StartedMeleeTesting", true)
-                    state:SetBool("WaitingForFight", false)
+                    waitingForFight = false
                     quest:ChangeHeroHealthBy(1000.0, true, false)
                     quest:ModifyThingHealth(meleeApprentice, 1000.0, false)
                     quest:EntitySetAsKillable(meleeApprentice, false, true)
@@ -482,7 +476,7 @@ function Main(quest, me)
                             quest:EntityTeleportToThing(meleeApprentice, quest:GetThingWithScriptName("M_MeleeOpponentStand"), false)
                             quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
                             quest:FadeScreenIn()
-                            state:SetBool("WaitingForFight", true)
+                            waitingForFight = true
                             quest:SetStateBool("StartedMeleeTesting", false)
                             quest:SetMasterGameState("HeroTakingGuildTest", false)
                             quest:DeregisterTimer(timerId)
@@ -578,7 +572,7 @@ function Main(quest, me)
                                 resources:SetActor(actorMap, "WHISPER", resource3)
                                 resources:RunMacro("CS_GUILD_DEPARTURE_MELEE_TEST_OVER", actorMap, false, true)
                                 quest:FixMovieSequenceCamera(false)
-                                state:SetBool("WaitingForFight", true)
+                                waitingForFight = true
                                 quest:ChangeHeroHealthBy(1000.0, true, false)
                                 quest:ModifyThingHealth(meleeApprentice, 1000.0, false)
                                 quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
@@ -616,7 +610,7 @@ end
 
 -- CombatApprentice.Init (retail 0x00d41ae0)
 function Init(quest, me)
-    state:SetBool("WaitingForFight", true)
+    waitingForFight = true
 end
 
 -- CombatApprentice.OnPersist (retail 0x00cdebc0)

@@ -1,14 +1,8 @@
 -- Readable native conversion: TraderToRescue. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local barIndex
 
 -- TraderToRescue.Main (retail 0x00dfe0f0)
 function Main(quest, me)
@@ -218,7 +212,7 @@ function Main(quest, me)
             quest:ActivateQuest("Q_TraderConflictGood_Extras")
             quest:SetIsPushableByHero(hero, __unknown_push)
             quest:EntityFollowThing(me, hero, nil --[[missing]], nil --[[missing]])
-            quest:SetEntityAsRegionFollowing(hero, banditHostageKeeper, __unknown_push)
+            quest:SetEntityAsRegionFollowing(hero, me, true)
             quest:EntitySetOpinionReactionsEnabled(me, false)
             quest:EntitySetDeedReactionsEnabled(me, false)
             quest:EntitySetCombatEnabled(me, false)
@@ -230,19 +224,17 @@ function Main(quest, me)
                 if getDataString == "TRADERB" then
                     -- LAB_00dfee05: (native jump target)
                     if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
-                    scratchValue23 = quest:AddQuestInfoBarHealth(nil --[[missing]], __unknown_push, "HUD_QUEST_ICON_TRADER_HAT_02", {R = 255, G = 0, B = 0, A = 255})
-                    state:SetInt("BarIndex", scratchValue23)
+                    barIndex = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TRADER_HAT_02", 1.0)
                     goto FLOW_after_lab_00dfee1b
                 end
                 getDataString = me:GetDataString()
                 if getDataString == "TRADERC" then return end  -- TODO(native): goto LAB_00dfee05
             else
                 if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
-                scratchValue23 = quest:AddQuestInfoBarHealth(nil --[[missing]], __unknown_push, "HUD_QUEST_ICON_TRADER", {R = 255, G = 0, B = 0, A = 255})
-                state:SetInt("BarIndex", scratchValue23)
+                barIndex = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TRADER", 1.0)
             end
             ::FLOW_after_lab_00dfee1b::
-            while not quest:IsEntityFollowingHero(nil --[[missing]]) do
+            while not quest:IsEntityFollowingHero(me) do
                 if not quest:NewScriptFrame(me) then goto LAB_00e005d5 end
             end
             if not quest:IsActiveThreadTerminating() then
@@ -306,7 +298,7 @@ function Main(quest, me)
                         end
                         if scratchValue4 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                            scratchValue23 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+                            scratchValue23 = quest:AddNewConversation(banditHostageKeeper, me, false)
                             quest:AddPersonToConversation(scratchValue23, hero)
                             getDataString = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_THREATEN"
                             quest:AddLineToConversation(scratchValue23, getDataString, hero, nil --[[missing]], false)
@@ -422,7 +414,7 @@ function Main(quest, me)
                                     scratchValue22 = scratchValue22 & 0xffffefff
                                 end
                                 if predicateResult18 then
-                                    scratchValue23 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+                                    scratchValue23 = quest:AddNewConversation(nil --[[missing]], me, false)
                                     quest:AddPersonToConversation(scratchValue23, hero)
                                     getDataString = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_ONHIT"
                                     quest:AddLineToConversation(scratchValue23, getDataString, hero, nil --[[missing]], false)
@@ -520,7 +512,7 @@ function Main(quest, me)
                         end
                         if scratchValue7 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
-                            scratchValue23 = quest:AddNewConversation(teleporterMarker, __unknown_push, false)
+                            scratchValue23 = quest:AddNewConversation(teleporterMarker, me, false)
                             quest:AddPersonToConversation(scratchValue23, hero)
                             getDataString = ("TEXT_QST_B11_" .. me:GetDataString()) .. getDataString
                             quest:AddLineToConversation(scratchValue23, getDataString, hero, nil --[[missing]], false)
@@ -550,7 +542,7 @@ function Main(quest, me)
                         end
                         if predicateResult23 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
-                            scratchValue23 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+                            scratchValue23 = quest:AddNewConversation(nil --[[missing]], me, false)
                             quest:AddPersonToConversation(scratchValue23, hero)
                             getDataString = ("TEXT_QST_B11_" .. me:GetDataString()) .. getDataString
                             quest:AddLineToConversation(scratchValue23, getDataString, hero, nil --[[missing]], false)
@@ -566,8 +558,8 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                             quest:SetStateInt("TradersReachedTeleporter", quest:GetStateInt("TradersReachedTeleporter") + 1)
                             quest:EntityStopFollowing(nil --[[missing]])
-                            quest:SetEntityAsRegionFollowing(hero, nil --[[missing]], __unknown_push)
-                            quest:EntitySetAsScared(nil --[[missing]], __unknown_push)
+                            quest:SetEntityAsRegionFollowing(hero, nil --[[missing]], me)
+                            quest:EntitySetAsScared(nil --[[missing]], me)
                             if 2 < quest:GetStateInt("TradersReachedTeleporter") then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                                 quest:SetStateBool("OutroStart", true)
@@ -575,7 +567,7 @@ function Main(quest, me)
                                 quest:NewScriptFrame(me)
                                 -- TODO(native): Main_InitializeFourierAnalysis_4(*(undefined4 *)(this + 0x14));
                                 quest:SetStateBool("OutroDone", true)
-                                quest:RemoveThing(nil --[[missing]], __unknown_push, false)
+                                quest:RemoveThing(nil --[[missing]], me, false)
                                 goto FLOW_after_lab_00e00595
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
@@ -601,7 +593,7 @@ function Main(quest, me)
         goto LAB_00e0035a
     end
     if not quest:IsActiveThreadTerminating() then
-        scratchValue23 = quest:AddNewConversation(nil --[[missing]], __unknown_push, false)
+        scratchValue23 = quest:AddNewConversation(nil --[[missing]], me, false)
         quest:AddPersonToConversation(scratchValue23, hero)
         quest:AddLineToConversation(scratchValue23, ("TEXT_QST_B11_" .. me:GetDataString()) .. scratchValue29, hero, nil --[[missing]], false)
         while quest:IsDistanceBetweenThingsOver(me, xStack_110, 2.0) do
@@ -614,7 +606,7 @@ function Main(quest, me)
         if not quest:IsActiveThreadTerminating() then
             if not quest:GetStateBool("OutroStart") then
                 if not quest:IsActiveThreadTerminating() then
-                    quest:RemoveQuestInfoElement(__unknown_push)
+                    quest:RemoveQuestInfoElement(barIndex)
                     quest:FadeOutAndKillEntity(me, true, 1.0, true)
                 end
             elseif not quest:IsActiveThreadTerminating() then
@@ -623,7 +615,7 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then goto LAB_00e005ac end
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    quest:RemoveThing(nil --[[missing]], __unknown_push, false)
+                    quest:RemoveThing(nil --[[missing]], me, false)
                 end
             end
         end
@@ -647,7 +639,7 @@ function Init(quest, me)
     quest:EntitySetAsScared(me, true)
     quest:EntitySetInFaction(me, "FACTION_NEUTRAL")
     quest:EntitySetAsAllowedToFollowHero(me, true)
-    state:SetInt("BarIndex", 0)
+    barIndex = 0
 end
 
 -- TraderToRescue.OnPersist (retail 0x00cdebc0)

@@ -9,14 +9,8 @@ local SCRIPT_DEF = {
     GUI_BirdGoldBonus = 3840,  -- 20.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local birdMode, haveChatted, currentBirds
 
 -- BirdKiller.Main (retail 0x00d4dea0)
 function Main(quest, me)
@@ -43,7 +37,7 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     quest:SetThingHasInformation(me, false, true, false)
     me:SetFriendsWithEverythingFlag(me)
-    if state:GetInt("BirdMode") == 0 then
+    if birdMode == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef90 end
         scratchValue16 = quest:GetAllThingsWithScriptName("BirdMarker")
         if #scratchValue16 ~= 0 then
@@ -57,11 +51,11 @@ function Main(quest, me)
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         quest:SetStateInt("CurrentBirdsKilled", 0)
-        state:SetInt("BirdMode", 2)
+        birdMode = 2
     end
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 15)
-    scratchValue = state:GetInt("BirdMode")
+    scratchValue = birdMode
     while scratchValue == 2 do
         if not quest:NewScriptFrame(me) then goto LAB_00d4ef87 end
         if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
@@ -75,9 +69,9 @@ function Main(quest, me)
                 movie = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                if not state:GetBool("HaveChatted") then
+                if not haveChatted then
                     if not quest:IsActiveThreadTerminating() then
-                        state:SetBool("HaveChatted", true)
+                        haveChatted = true
                         scratchValue7 = 0.0
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                             me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_GREET", GROUP_SELECT_FIRST, false, true, false)
@@ -102,7 +96,7 @@ function Main(quest, me)
                             scratchValue4 = quest:IsActiveThreadTerminating()
                             if scratchValue == 1 then
                                 if not scratchValue4 then
-                                    state:SetInt("BirdMode", 1)
+                                    birdMode = 1
                                     scratchValue15 = resources:NewResource()
                                     while not resources:TryAcquire(scratchValue15, hero, 4) do
                                         quest:NewScriptFrame(me)
@@ -170,7 +164,7 @@ function Main(quest, me)
                             scratchValue4 = quest:IsActiveThreadTerminating()
                             if scratchValue == 1 then
                                 if not scratchValue4 then
-                                    state:SetInt("BirdMode", 1)
+                                    birdMode = 1
                                     scratchValue15 = resources:NewResource()
                                     while not resources:TryAcquire(scratchValue15, hero, 4) do
                                         quest:NewScriptFrame(me)
@@ -224,14 +218,14 @@ function Main(quest, me)
             goto LAB_00d4ef87
         end
         ::LAB_00d4e87a::
-        scratchValue = state:GetInt("BirdMode")
+        scratchValue = birdMode
     end
     if not quest:IsActiveThreadTerminating() then
-        scratchValue = state:GetInt("BirdMode")
+        scratchValue = birdMode
         while scratchValue == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d4ef87 end
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
-                if state:GetInt("CurrentBirds") == 0 then
+                if currentBirds == 0 then
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ANY", me, hero, false)
@@ -263,12 +257,12 @@ function Main(quest, me)
                     quest:Pause(1.0)
                     quest:GiveHeroGold(math.tointeger(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
                 end
-                state:SetInt("CurrentBirds", state:GetInt("CurrentBirds") + quest:GetStateInt("CurrentBirdsKilled"))
+                currentBirds = currentBirds + quest:GetStateInt("CurrentBirdsKilled")
                 if quest:GetStateInt("CurrentBirdsKilled") ~= 0 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
                     quest:SetStateInt("CurrentBirdsKilled", 0)
                     scratchValue = quest:AddNewConversation(me, false, false)
-                    if state:GetInt("CurrentBirds") == 7 then
+                    if currentBirds == 7 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
                         scratchValue15 = resources:StartMovie("")
                         quest:StartMovieSequence()
@@ -287,7 +281,7 @@ function Main(quest, me)
                             end
                         end
                         quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_BirdGoldBonus))))
-                        state:SetInt("BirdMode", 3)
+                        birdMode = 3
                         quest:ClearThingHasInformation(me)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(scratchValue15)
@@ -299,7 +293,7 @@ function Main(quest, me)
                     end
                 end
             end
-            scratchValue = state:GetInt("BirdMode")
+            scratchValue = birdMode
         end
         while not quest:IsActiveThreadTerminating() do
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
@@ -319,9 +313,9 @@ end
 
 -- BirdKiller.Init (retail 0x00d42ff0)
 function Init(quest, me)
-    state:SetBool("HaveChatted", false)
-    state:SetInt("BirdMode", 0)
-    state:SetInt("CurrentBirds", 0)
+    haveChatted = false
+    birdMode = 0
+    currentBirds = 0
     quest:SetThingPersistent(me, true)
 end
 

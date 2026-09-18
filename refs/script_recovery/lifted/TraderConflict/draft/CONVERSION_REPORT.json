@@ -2168,16 +2168,11 @@
             "label LAB_00dfebc5",
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "label LAB_00dfee05",
-            "AddQuestInfoBarHealth: missing spThing (3 args for 4 params)",
             "verify cleanup at LAB_00dfee05 (lifted as early return)",
             "label LAB_00dfee1b",
-            "AddQuestInfoBarHealth: missing spThing (3 args for 4 params)",
-            "IsEntityFollowingHero: missing spThing (0 args for 1 params)",
-            "IsEntityFollowingHero: missing spThing (0 args for 1 params)",
             "TextEntryExists: not in FSE manifest",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
             "IsPlayerHoldingLockTargetButton: not in FSE manifest",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
             "MsgIsHitBy: CScriptThing method not in FSE manifest",
             "MsgIsHitByAnySpecialAbilityFrom: CScriptThing method not in FSE manifest",
@@ -3542,7 +3537,7 @@
         "functionSyntaxPassed": 38,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 108
+        "todo": 103
       }
     }
   ],
@@ -3553,6 +3548,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 164
+    "todo": 159
   }
 }

@@ -718,6 +718,13 @@ class UnitConverter:
                         return f'({addr})' if ins.mnemonic == 'lea' else f'*(int *)({addr})'
                     return None
                 if ins.mnemonic == 'pop' and ins.operands and ins.reg_name(ins.operands[0].reg) == reg:
+                    # an epilogue of an earlier return path (`pop ebp ... ret`) is not on the way to this site
+                    j = i + 1
+                    while j < len(insns) and insns[j].mnemonic in ('pop', 'add', 'mov', 'lea') and j - i < 8:
+                        j += 1
+                    if j < len(insns) and insns[j].mnemonic == 'ret':
+                        i -= 1
+                        continue
                     return None
                 i -= 1
             return 'this' if reg == 'ecx' else None       # __thiscall: ecx at entry is the receiver

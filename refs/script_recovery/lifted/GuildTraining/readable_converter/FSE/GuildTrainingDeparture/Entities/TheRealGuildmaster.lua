@@ -3,14 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local heroSpokenToMe, teleportToWoods
 
 -- TheRealGuildmaster.Main (retail 0x00d50c60)
 function Main(quest, me)
@@ -96,8 +90,8 @@ end
 
 -- TheRealGuildmaster.Init (retail 0x00d50a80)
 function Init(quest, me)
-    state:SetBool("HeroSpokenToMe", false)
-    state:SetBool("TeleportToWoods", false)
+    heroSpokenToMe = false
+    teleportToWoods = false
 end
 
 -- TheRealGuildmaster.OnPersist (retail 0x00cdebc0)

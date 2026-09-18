@@ -9,14 +9,8 @@ local SCRIPT_DEF = {
     GUI_RaceGold = 3808,  -- 25.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local raceMode
 
 -- ApprenticeSpeedTest.Main (retail 0x00d3e2e0)
 function Main(quest, me)
@@ -48,7 +42,7 @@ function Main(quest, me)
             if speedFriend ~= nil and not speedFriend:IsNull() then
                 speedFriend:SetFriendsWithEverythingFlag(1)
             end
-            state:SetInt("RaceMode", 0)
+            raceMode = 0
             scratchValue20 = 0
             timerId2 = quest:RegisterTimer()
             scratchValue21 = quest:RegisterTimer()
@@ -56,7 +50,7 @@ function Main(quest, me)
             quest:SetTimer(scratchValue21, 1)
             scratchValue6 = quest:IsActiveThreadTerminating()
             while not scratchValue6 do
-                if state:GetInt("RaceMode") == 0 then
+                if raceMode == 0 then
                     scratchValue15 = scratchValue20 - 1
                     repeat
                         scratchValue = scratchValue15
@@ -165,7 +159,7 @@ function Main(quest, me)
                                         goto LAB_00d405fc
                                     end
                                 end
-                                state:SetInt("RaceMode", 1)
+                                raceMode = 1
                                 quest:SetStateBool("ReachedPlatform", false)
                                 quest:MiniMapAddMarker(quest:GetThingWithScriptName("RaceMarker"), "HUD_ORB_QUEST_VIGNETTE")
                                 quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
@@ -190,7 +184,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie4)
                         end
-                    until state:GetInt("RaceMode") ~= 0
+                    until raceMode ~= 0
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId)
@@ -198,7 +192,7 @@ function Main(quest, me)
                     quest:DeregisterTimer(timerId2)
                     goto LAB_00d40749
                 end
-                scratchValue = state:GetInt("RaceMode")
+                scratchValue = raceMode
                 scratchValue19 = scratchValue20
                 while true do
                     scratchValue20 = scratchValue19
@@ -269,7 +263,7 @@ function Main(quest, me)
                                     goto LAB_00d405fc
                                 end
                             end
-                            state:SetInt("RaceMode", 2)
+                            raceMode = 2
                             quest:PauseAllNonScriptedEntities(false)
                             movie = movie5
                         elseif quest:GetTimer(timerId2) < 1 then
@@ -289,7 +283,7 @@ function Main(quest, me)
                                     goto LAB_00d405fc
                                 end
                             end
-                            state:SetInt("RaceMode", 2)
+                            raceMode = 2
                             if not quest:GetStateBool("ReachedPlatform") then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
@@ -317,7 +311,7 @@ function Main(quest, me)
                                     goto LAB_00d405fc
                                 end
                             end
-                            state:SetInt("RaceMode", 3)
+                            raceMode = 3
                             quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceGold))))
                             quest:ClearThingHasInformation(me)
                             quest:PauseAllNonScriptedEntities(false)
@@ -333,13 +327,13 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                             quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("RaceMarker"))
                         end
-                        state:SetInt("RaceMode", 2)
+                        raceMode = 2
                     end
                     scratchValue19 = scratchValue20
-                    scratchValue = state:GetInt("RaceMode")
+                    scratchValue = raceMode
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                if state:GetInt("RaceMode") == 2 then
+                if raceMode == 2 then
                     scratchValue15 = scratchValue20 - 1
                     repeat
                         if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
@@ -441,7 +435,7 @@ function Main(quest, me)
                                         goto LAB_00d405fc
                                     end
                                 end
-                                state:SetInt("RaceMode", 1)
+                                raceMode = 1
                                 quest:SetStateBool("ReachedPlatform", false)
                                 quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
                                 quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
@@ -469,10 +463,10 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie3)
                         end
-                    until state:GetInt("RaceMode") ~= 2
+                    until raceMode ~= 2
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                if state:GetInt("RaceMode") == 3 then
+                if raceMode == 3 then
                     scratchValue15 = scratchValue20 - 1
                     scratchValue = scratchValue15
                     quest:NewScriptFrame(me)
@@ -598,7 +592,7 @@ function Main(quest, me)
     me:ReleaseControl()
     goto FLOW_after_lab_00d405fc
     ::LAB_00d403e1::
-    if state:GetInt("RaceMode") ~= 3 then
+    if raceMode ~= 3 then
         if not quest:IsActiveThreadTerminating() then
             quest:NewScriptFrame(me)
         end

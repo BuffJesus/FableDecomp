@@ -3,14 +3,8 @@
 
 local GROUP_SELECT_RANDOM_NO_REPEAT = 2  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local setAgainstHero, hitWarning
 
 -- TC_BanditFollower.Main (retail 0x00df80b0)
 function Main(quest, me)
@@ -32,7 +26,7 @@ function Main(quest, me)
         quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_BANDIT", 1.0)
         while not quest:GetStateBool("MissionSucceeded") do
             if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
-            if not state:GetBool("SetAgainstHero") then
+            if not setAgainstHero then
                 if not me:IsTalkedToByHero() then
                     predicateResult = false
                     goto FLOW_after_lab_00df82d0
@@ -65,7 +59,7 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
             end
-            if not state:GetBool("SetAgainstHero") then
+            if not setAgainstHero then
                 if not me:MsgIsHitByHero() then
                     if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me)) then
                         predicateResult8 = false
@@ -79,11 +73,11 @@ function Main(quest, me)
             ::FLOW_after_lab_00df851c::
             if predicateResult8 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
-                if not state:GetBool("HitWarning") then
+                if not hitWarning then
                     conversationId = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId, hero)
                     quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_FOLLOWER_ON_HIT_10", me, hero, false)
-                    state:SetBool("HitWarning", true)
+                    hitWarning = true
                 elseif not quest:GetStateBool("HeroAttackedBandit") then
                     if quest:IsDistanceBetweenThingsUnder(me, quest:GetNearestWithScriptName(me, "TC_BanditFighter"), 15.0) then
                         quest:SetStateBool("HeroAttackedBandit", true)
@@ -92,10 +86,10 @@ function Main(quest, me)
                     quest:GiveThingBestEnemyTarget(me, hero)
                     quest:EntityUnsetThingAsAllyOfThing(me, hero)
                     quest:EntityUnsetThingAsAllyOfThing(hero, me)
-                    state:SetBool("SetAgainstHero", true)
+                    setAgainstHero = true
                 end
             end
-            if not state:GetBool("SetAgainstHero") and quest:GetStateBool("HeroAttackedBandit") then
+            if not setAgainstHero and quest:GetStateBool("HeroAttackedBandit") then
                 if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                     if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
                     conversationId2 = quest:AddNewConversation(me, false, false)
@@ -105,7 +99,7 @@ function Main(quest, me)
                     quest:GiveThingBestEnemyTarget(me, hero)
                     quest:EntityUnsetThingAsAllyOfThing(me, hero)
                     quest:EntityUnsetThingAsAllyOfThing(hero, me)
-                    state:SetBool("SetAgainstHero", true)
+                    setAgainstHero = true
                 end
             end
         end
@@ -119,8 +113,8 @@ end
 
 -- TC_BanditFollower.Init (retail 0x00df8040)
 function Init(quest, me)
-    state:SetBool("HitWarning", false)
-    state:SetBool("SetAgainstHero", false)
+    hitWarning = false
+    setAgainstHero = false
 end
 
 -- TC_BanditFollower.OnPersist (retail 0x00cdebc0)

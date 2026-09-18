@@ -2004,6 +2004,47 @@ def alias_entity_state(source):
     return source, k
 
 
+def inline_entity_fields(source):
+    """The per-entity state shim (`state:GetInt("AppleMode")`) holds the native class's member variables. ForgeFSE
+    creates one sol::state per entity instance (LuaManager::RegisterEntityScriptData), so file-level locals ARE
+    per-entity fields: `local appleMode` at the top, `appleMode` / `appleMode = v` in the functions. The shim goes."""
+    from tools.script_recovery.readable_lua import camel
+    shim = re.search(r'^local state = \{\}  -- per-entity script state \(__native_entity_state\)\n(?:.*\n)*?^end\n', source, re.M)
+    if not shim:
+        return source, 0
+    keys = []
+    for k in re.findall(r'\bstate:(?:Get|Set)(?:Bool|Int|Float|String|Thing)\("(\w+)"', source):
+        if k not in keys:
+            keys.append(k)
+    if not keys or re.search(r'\bstate:\w+\((?!")', source):     # a non-literal key: keep the shim
+        return source, 0
+    # a function-local snapshot of a field under the field's own name (`local dummyNumber = state:GetInt("DummyNumber")`)
+    # is dropped when that function never writes the field or the local: its reads read the field itself
+    freed = set()
+    for k in keys:
+        n = camel(k)
+        for chunk in _function_chunks(source):
+            snap = re.search(r'^[ \t]*local ' + n + r' = state:Get\w+\("' + k + r'"\)\n', chunk, re.M)
+            if snap and not re.search(r'^[ \t]*' + n + r'\s*=(?!=)', chunk, re.M) and f'"{k}", ' not in chunk \
+                    and len(re.findall(r'\blocal ' + n + r'\b', chunk)) == 1:
+                source = source.replace(chunk, chunk.replace(snap.group(0), '', 1), 1)
+                freed.add(n)
+    taken = {t[0] for t in tokens(source) if t.lastgroup == 'identifier'} - freed
+    names = {}
+    for k in keys:
+        n = camel(k)
+        while n in taken or n in names.values() or n in KEYWORDS_ALL:
+            n += '_'
+        names[k] = n
+    new = re.sub(r'\bstate:Set(?:Bool|Int|Float|String|Thing)\("(\w+)", ', lambda m: names[m.group(1)] + ' = (', source)
+    new = re.sub(r'\bstate:Get(?:Bool|Int|Float|String|Thing)\("(\w+)"\)', lambda m: names[m.group(1)], new)
+    # `x = (value)` -> `x = value` for a plain operand
+    new = re.sub(r'^(\s*\w+ = )\(([^()\n]*(?:\([^()\n]*\)[^()\n]*)*)\)$', r'\1\2', new, flags=re.M)
+    block = '-- per-entity fields (native class members; one Lua state per entity instance)\nlocal ' + ', '.join(names[k] for k in keys) + '\n'
+    new = new.replace(shim.group(0), block, 1)
+    return new, len(keys)
+
+
 def state_writers(sources):
     """{(receiver kind, key): {function names}} for every literal SetState*("Key") in the unit
     (receiver kind: 'entity' per file — keyed by file — or 'quest' unit-wide)."""
@@ -2153,6 +2194,7 @@ def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
         out.append(styled)
     text = tidy_blank_lines(''.join(out))
     text, late = name_helpers_by_shape(text)      # shapes appear once the bodies are styled (the cutscene fold)
+    text, fields = inline_entity_fields(text)     # after styling: the copies of the fields are gone, their names free
     named += late
     return text, {'functions': report, 'hoistedRequires': hoisted, 'entityStateAliased': aliased, 'namedHelpers': named,
                   'pureLocalFunctions': sorted(pure)}

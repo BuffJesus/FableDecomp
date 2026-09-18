@@ -1,14 +1,8 @@
 -- Readable native conversion: TC_BanditFighter. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local hitWarning
 
 -- TC_BanditFighter.Main (retail 0x00df8970)
 function Main(quest, me)
@@ -140,11 +134,11 @@ function Main(quest, me)
             scratchValue11 = scratchValue2
         end
         if predicateResult6 then
-            if not state:GetBool("HitWarning") then
+            if not hitWarning then
                 conversationID = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationID, hero)
                 quest:AddLineToConversation(conversationID, "TEXT_QST_B12_BANDIT_ON_HIT_10", me, hero, false)
-                state:SetBool("HitWarning", true)
+                hitWarning = true
                 scratchValue2 = scratchValue11
             elseif quest:IsDistanceBetweenThingsUnder(me, quest:GetNearestWithScriptName(me, "TC_BanditFighter"), 15.0) then
                 quest:SetStateBool("HeroAttackedBandit", true)
@@ -176,7 +170,7 @@ end
 
 -- TC_BanditFighter.Init (retail 0x00df8940)
 function Init(quest, me)
-    state:SetBool("HitWarning", false)
+    hitWarning = false
 end
 
 -- TC_BanditFighter.OnPersist (retail 0x00cdebc0)

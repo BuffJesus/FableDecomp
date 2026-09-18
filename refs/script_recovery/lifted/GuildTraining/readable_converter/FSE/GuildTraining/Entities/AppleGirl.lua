@@ -3,14 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local appleMode, currentApples, childAppleMode, haveChatted
 
 -- AppleGirl.Main (retail 0x00d3d150)
 function Main(quest, me)
@@ -24,13 +18,13 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
-    state:SetInt("AppleMode", 0)
+    appleMode = 0
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 15)
-    state:SetInt("CurrentApples", 0)
-    state:SetBool("ChildAppleMode", false)
+    currentApples = 0
+    childAppleMode = false
     quest:SetThingHasInformation(me, false, true, false)
-    while state:GetInt("AppleMode") == 0 do
+    while appleMode == 0 do
         if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
         if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
             conversationId = quest:AddNewConversation(me, false, false)
@@ -43,9 +37,9 @@ function Main(quest, me)
             movie = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
-            if not state:GetBool("HaveChatted") then
+            if not haveChatted then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
-                state:SetBool("HaveChatted", true)
+                haveChatted = true
                 if 0.0 < quest:GetHealth(me) then
                     if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
@@ -68,10 +62,9 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
             if questionAnswer == 1 then
-                state:SetInt("AppleMode", 1)
+                appleMode = 1
                 if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
-                    state:SetBool("ChildAppleMode", true)
+                    childAppleMode = true
                 end
             elseif 0.0 < quest:GetHealth(me) then
                 if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
@@ -82,9 +75,9 @@ function Main(quest, me)
         end
     end
     if not quest:IsActiveThreadTerminating() then
-        while state:GetInt("AppleMode") == 1 do
+        while appleMode == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
-            if state:GetBool("ChildAppleMode") then
+            if childAppleMode then
                 if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
                     predicateResult6 = false
                     goto FLOW_after_lab_00d3d987
@@ -99,7 +92,7 @@ function Main(quest, me)
             end
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
-                if state:GetInt("CurrentApples") == 0 then
+                if currentApples == 0 then
                     conversationId2 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId2, hero)
                     quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPLEGIRL_ANY_APPLES", me, hero, false)
@@ -114,7 +107,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
             ctr_64 = 0
             while true do
-                if not (quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", hero) and (state:GetInt("CurrentApples") + ctr_64 < 4)) then break end
+                if not (quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", hero) and (currentApples + ctr_64 < 4)) then break end
                 if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
                 ctr_64 = ctr_64 + 1
                 quest:TakeObjectFromHero("OBJECT_APPLE_RED_01")
@@ -134,11 +127,11 @@ function Main(quest, me)
                 quest:AddLineToConversation(conversationId6, "TEXT_QST_028_APPLEGIRL_MANY_MORE_APPLES", me, hero, false)
             end
             quest:Pause(1.0)
-            state:SetInt("CurrentApples", state:GetInt("CurrentApples") + ctr_64)
+            currentApples = currentApples + ctr_64
             if ctr_64 == nil then goto FLOW_native_label_1 end
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
             conversationId8 = quest:AddNewConversation(me, false, false)
-            switch = state:GetInt("CurrentApples")
+            switch = currentApples
             repeat
                 if switch == 1 then
                     quest:AddPersonToConversation(conversationId8, hero)
@@ -161,7 +154,7 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
                     end
                     quest:GiveHeroObject("OBJECT_PIE_BLUEBERRY_01", -1)
-                    state:SetInt("AppleMode", 2)
+                    appleMode = 2
                     quest:ClearThingHasInformation(me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
@@ -174,7 +167,7 @@ function Main(quest, me)
             ::FLOW_native_label_1::
         end
         while not quest:IsActiveThreadTerminating() do
-            if state:GetBool("ChildAppleMode") then
+            if childAppleMode then
                 if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
                     predicateResult = false
                     goto FLOW_after_lab_00d3e0a0
@@ -219,7 +212,7 @@ end
 
 -- AppleGirl.Init (retail 0x00d3d110)
 function Init(quest, me)
-    state:SetBool("HaveChatted", false)
+    haveChatted = false
 end
 
 -- AppleGirl.OnPersist (retail 0x00d44650)

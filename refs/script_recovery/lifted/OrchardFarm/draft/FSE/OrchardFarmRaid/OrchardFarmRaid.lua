@@ -122,7 +122,7 @@ function ProcessGameRulesEvil(quest)
     local alive = true
     local function __cleanup_LAB_00dd0b11()
         pCVar6 = 0x0
-        quest:PauseAllNonScriptedEntities(__unknown_push)
+        quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_9c)
         resources:DestroyActorMap(xStack_80)
         resources:ReleaseResource(xStack_ac)
@@ -228,7 +228,7 @@ function ProcessGameRulesEvil(quest)
                             end
                             -- LAB_00dd0b1f: (native jump target)
                             pCVar6 = 0x0
-                            quest:PauseAllNonScriptedEntities(__unknown_push)
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_9c)
                             resources:DestroyActorMap(xStack_80)
                             resources:ReleaseResource(xStack_ac)
@@ -338,7 +338,7 @@ function ProcessGameRulesGood(quest)
     local alive = true
     local function __cleanup_LAB_00dd1728()
         pCVar5 = 0x0
-        quest:PauseAllNonScriptedEntities(__unknown_push)
+        quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_98)
         resources:DestroyActorMap(xStack_88)
         resources:ReleaseResource(xStack_7c)
@@ -460,7 +460,7 @@ function ProcessGameRulesGood(quest)
                             end
                             -- LAB_00dd1736: (native jump target)
                             pCVar5 = 0x0
-                            quest:PauseAllNonScriptedEntities(__unknown_push)
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_98)
                             resources:DestroyActorMap(xStack_88)
                             resources:ReleaseResource(xStack_7c)

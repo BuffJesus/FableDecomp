@@ -3,14 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local willWoodsChatDone, waitingForFight
 
 -- MeleeApprentice.Main (retail 0x00d40cf0)
 function Main(quest, me)
@@ -57,10 +51,10 @@ function Main(quest, me)
                 resources:ReleaseResource(0)
                 return
             end
-            if not state:GetBool("WillWoodsChatDone") then
+            if not willWoodsChatDone then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(0); return end
                 me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos(), 0x40400000, 1, false, true)
-                state:SetBool("WillWoodsChatDone", true)
+                willWoodsChatDone = true
             elseif me:IsTalkedToByHero() then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(0); return end
                 me:ClearCommands()
@@ -205,8 +199,8 @@ end
 
 -- MeleeApprentice.Init (retail 0x00d40cc0)
 function Init(quest, me)
-    state:SetBool("WaitingForFight", true)
-    state:SetBool("WillWoodsChatDone", false)
+    waitingForFight = true
+    willWoodsChatDone = false
 end
 
 -- MeleeApprentice.OnPersist (retail 0x00cdebc0)

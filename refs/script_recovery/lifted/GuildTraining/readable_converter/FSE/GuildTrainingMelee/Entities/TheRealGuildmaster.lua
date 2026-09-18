@@ -9,14 +9,8 @@ local SCRIPT_DEF = {
     GUI_MinHealth = 3800,  -- 6.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local heroStanding, whisperStanding, whisperEarly, whisperLate
 
 -- TheRealGuildmaster.Main (retail 0x00d58490)
 function Main(quest, me)
@@ -315,20 +309,20 @@ function Main(quest, me)
             resources:DestroyActorMap(actorMap3)
             resources:ReleaseResource(resource8)
             resources:ReleaseResource(resource)
-            state:SetBool("HeroStanding", true)
-            state:SetBool("WhisperStanding", true)
+            heroStanding = true
+            whisperStanding = true
             quest:DisplayQuestInfo(false)
             quest:RemoveQuestInfoElement(infoCounter)
             quest:DisplayQuestInfo(true)
             quest:AddQuestInfoBarHealth(quest:GetThingWithScriptName("MeleeOpponent"), getActiveQuestName, "HUD_WHISPER_ICON", 1.0)
-            while state:GetBool("HeroStanding") and state:GetBool("WhisperStanding") do
+            while heroStanding and whisperStanding do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
                 fret_04 = quest:GetHealth(hero)
                 if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) <= fret_04 then
                     if quest:GetHealth(quest:GetThingWithScriptName("MeleeOpponent")) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                         if not quest:IsActiveThreadTerminating() then
-                            state:SetBool("WhisperStanding", false)
+                            whisperStanding = false
                             conversationId5 = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(conversationId5, hero)
                             quest:AddLineToConversation(conversationId5, "TEXT_QST_028_MAZE_FIGHT_OVER", me, hero, false)
@@ -337,7 +331,7 @@ function Main(quest, me)
                         -- TODO(native): goto LAB_00d5a9a7
                     end
                 else
-                    state:SetBool("HeroStanding", false)
+                    heroStanding = false
                     conversationId6 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId6, hero)
                     quest:AddLineToConversation(conversationId6, "TEXT_QST_028_MAZE_FIGHT_OVER", me, hero, false)
@@ -420,7 +414,7 @@ function Main(quest, me)
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            if not state:GetBool("WhisperStanding") then
+            if not whisperStanding then
                 if not quest:IsActiveThreadTerminating() then resources:RunMacroWithStrings("CS_GUILD_MELEE_BATTLE_WON", scratchValue13, scratchValue, false, true); goto LAB_00d5a28a end
                 -- LAB_00d5a948: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
@@ -508,8 +502,8 @@ end
 
 -- TheRealGuildmaster.Init (retail 0x00d56670)
 function Init(quest, me)
-    state:SetBool("WhisperEarly", false)
-    state:SetBool("WhisperLate", false)
+    whisperEarly = false
+    whisperLate = false
 end
 
 -- TheRealGuildmaster.OnPersist (retail 0x00cdebc0)

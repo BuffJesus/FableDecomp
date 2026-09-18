@@ -9,14 +9,8 @@ local SCRIPT_DEF = {
     GUI_SkillTimer = 3844,  -- 60.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+-- per-entity fields (native class members; one Lua state per entity instance)
+local playerNotWarned
 
 -- SkillApprentice.Main (retail 0x00d4c720)
 function Main(quest, me)
@@ -44,7 +38,7 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
     me:SetFriendsWithEverythingFlag(me)
-    state:SetBool("PlayerNotWarned", true)
+    playerNotWarned = true
     scratchValue6 = 0
     scratchValue17 = quest:RegisterTimer()
     quest:SetTimer(scratchValue17, 10)
@@ -248,8 +242,8 @@ function Main(quest, me)
                     quest:UpdateQuestInfoCounter(infoCounter, quest:GetMasterGameState("SkillScore"), -1)
                     if quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
-                        if state:GetBool("PlayerNotWarned") then
-                            state:SetBool("PlayerNotWarned", false)
+                        if playerNotWarned then
+                            playerNotWarned = false
                             scratchValue13 = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(scratchValue13, hero)
                             quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_APPRENTICE_SKILL_RING_OUT", me, hero, false)
