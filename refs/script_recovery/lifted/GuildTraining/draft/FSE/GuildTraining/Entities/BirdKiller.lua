@@ -206,7 +206,7 @@ function Main(quest, me)
                                         resources:ReleaseResource(0)
                                         __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
                                     end
-                                    resources:DestroyMovie(0)
+                                    resources:ReleaseResource(0)
                                 end
                                 goto LAB_00d4e978
                             end
@@ -253,7 +253,7 @@ function Main(quest, me)
                     end
                     ::LAB_00d4e978::
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(xStack_78)
+                    resources:DestroyMovie(xStack_78)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -314,10 +314,10 @@ function Main(quest, me)
                                         resources:DestroyMovie(xStack_78)
                                         goto LAB_00d4e87a
                                     end
-                                    resources:DestroyMovie(0)
+                                    resources:ReleaseResource(0)
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:ReleaseResource(xStack_78)
+                                resources:DestroyMovie(xStack_78)
                                 goto FLOW_after_lab_00d4e5e3
                             end
                             if not bVar3 then
@@ -499,7 +499,7 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:ReleaseResource(xStack_38)
+                                resources:DestroyMovie(xStack_38)
                                 goto LAB_00d4ef87
                             end
                         end
@@ -557,7 +557,7 @@ function Main(quest, me)
     ::LAB_00d4ef87::
     quest:DeregisterTimer(timerId)
     ::LAB_00d4ef90::
-    resources:DestroyMovie(xStack_8c)
+    resources:ReleaseResource(xStack_8c)
 end
 
 function Init(quest, me)

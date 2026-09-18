@@ -371,3 +371,35 @@ baseline accepted last night).
 - Rejected: an early version of the pointer-temp rule swallowed Orchard's `Teams[i].MemberCount += 1` (indexed array
   elements have their own rule); an early `(?:[^,()]|\(...\))` receiver regex (2 levels) turned Orchard's
   `Teams_.._TeamCrateCarrier:IsDead()` into `me:IsDead()` — always regenerate Orchard/Guild before committing.
+
+### Night 6, readable passes (Aeon's Fisherman / NewOakValeIntro ports as the style oracle)
+
+Aeon read the share zip's `readable_converter` output as "a Lua version of the disassembly" — fair for WoodsMelee's
+`ScorpionHome` at the time (EH-flag bit fiddling, `+ 4294967296.0` uint fixups, `math.modf`, duplicate `GetHero` temps,
+`scratchValue6 = timerId` aliases). New `readable_style` passes, all three units rebuilt:
+- `hoist_hero`: one `local hero = quest:GetHero()` at the top when the function asks twice (an existing `hero` local that
+  only ever held GetHero is reused); `propagate_copies` (`a = b` with an invariant `b`, also `timerId = scratchValue4`
+  reload pairs at loop ends; `local x = y` sources count); `prune_self_assignments`; `fold_uint_fixups`;
+  `tidy_closures` (a literal stored into an outer temporary inside a hoisted cleanup closure is inlined there, so the
+  closure stops pinning the temporary); `drop_free_suffixes` (`guildStagBeetle2` -> `guildStagBeetle` once the base is
+  free; slot-suffixed `thing_38` keeps its name).
+- `fold_cutscenes`: the retail cutscene boilerplate (NewResource / TryAcquire(…, 4) per actor, NewActorMap + SetActor,
+  StartMovie + StartMovieSequence + PauseAll(true) [+ FixMovieSequenceCamera(true)], RunMacro, teardown) becomes
+  ForgeFSE's `quest:StartCutscene({HERO = hero, WHISPER = whisper}, {}, fixCamera)` / `quest:RunCutscene(name, skippable,
+  setup)` / `quest:EndCutscene()` — LuaQuestState::StartCutscene does exactly those native calls (priority 4, movie object,
+  pause, camera fix). All cutscenes of a function fold or none; an entity's `while not TryAcquire` retry loop keeps the
+  faithful form. Orchard's `ProcessGameRulesEvil` / `helper_DFDED0` now read like Aeon's Fisherman.
+- Naming (`readable_lua.assignment_role`): things looked up / created by name take the name (`guildScorpions`,
+  `scorpionSpawn`, `guildStagBeetle`), `#list` -> `count`, `GetStateListAt("AllCreatures", i)` -> `creaturesItem`,
+  `AddQuestInfoCounter` -> `infoCounter`, `NewResource` -> `resource`, …; a copy's role is its source's role; `x = nil`
+  releases say nothing; one method with several names (`CreateCreature("A")` / `("B")`) -> `creature`; `camel()` handles
+  all-caps names (`GUILD_STAG_BEETLE` was `beetle`).
+- Draft bugs found on the way (all v5-relevant): `RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", <marker thing>)` — Ghidra's
+  `&CStack_8c.field_0x8` spelling never reached the slot restoration (now `&CStack_8c + 8`; the actor map at -0x80 is
+  the operand); the resource / movie destructors share one bsim label (0x7E74D0 vs 0x6E7B80) and
+  `disambiguate_call_labels` paired them in address order — exact `callOrder` pairing now (Guild's
+  `ReleaseResource(movie)` / `DestroyMovie(resource)` and TraderConflict's were swapped); `math.modf(x)` as a last
+  argument leaked its second result. **v5 rebuilt** (preflight ok; the DLL carries StartCutscene).
+- Still open vs Aeon's style: named constants for `ReadGlobalGameDataFloat(offset)` (needs a GGD offset -> main.def
+  field table — not on disk), `quest:Log` breadcrumbs, local helper functions for repeated blocks, `or 0` defaults on
+  state reads, `x and not x:IsNull()` guards spelled `if x then`.

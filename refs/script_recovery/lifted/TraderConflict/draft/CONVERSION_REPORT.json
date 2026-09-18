@@ -48,7 +48,6 @@
             "unlifted: iVar8 = CBasicString<char>::Compare(*(void **)ctr_74,\"SOUTH\");",
             "goto LAB_00df656e",
             "label LAB_00df656e",
-            "helper_DF9E00: 0 helper operands for 1 parameters",
             "label LAB_00df6794",
             "label LAB_00df6aa2",
             "label LAB_00df6bdb",
@@ -755,8 +754,8 @@
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
-            "RESOURCE_ReleaseResource",
             "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "MsgIsHitByHero",
@@ -1403,7 +1402,7 @@
         "functionSyntaxPassed": 25,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
-        "todo": 59
+        "todo": 58
       }
     },
     {
@@ -3547,6 +3546,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 170
+    "todo": 169
   }
 }

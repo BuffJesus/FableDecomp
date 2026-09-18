@@ -136,23 +136,29 @@ def host_bindings():
 LABEL_TEXT_RULES = {'CCharString::CCharString', 'CCharString::operator='}
 
 
-def disambiguate_call_labels(decompile, calls):
+def disambiguate_call_labels(decompile, calls, fn=None):
     """bsim propagates one label over byte-similar bodies, so a function may call e.g. the scripted-thing
-    resource ctor (0x7E72A0) and the movie ctor (0x6E7B60) under the same printed name. The lowering keys
+    resource dtor (0x7E74D0) and the movie dtor (0x6E7B80) under the same printed name. The lowering keys
     on {label: target}, so the last site would win for all. Rename the k-th printed occurrence to
-    `<label>__at<target>` following the site order (the decompiler prints straight-line calls in address
-    order); when the printed count differs from the site count the text is left alone."""
+    `<label>__at<target>`: through the decompiler's token order (`callOrder`, exact even in restructured
+    code) when the function export carries it, else following the site (address) order; when the printed
+    count differs from the site count the text is left alone."""
     by_label = {}
     for c in calls:
         if c.get('currentName'):
             by_label.setdefault(c['currentName'], []).append(int(c['target'], 16))
     renamed = {}
+    ordered = _text_order_sites(decompile, fn) if fn is not None and any(len(set(v)) > 1 for v in by_label.values()) else None
     for label, targets in by_label.items():
         if len(set(targets)) < 2 or label in LABEL_TEXT_RULES:
             continue
         pattern = re.compile(r'(?<![\w:])' + re.escape(label) + r'(?=\s*\()')
         if len(pattern.findall(decompile)) != len(targets):
             continue
+        if ordered is not None:
+            in_text = [int(site['target'], 16) for a, e, args, site, key, vtable in ordered if not vtable and key == label]
+            if len(in_text) == len(targets):
+                targets = in_text
         it = iter(targets)
 
         def repl(m, it=it, label=label):
@@ -437,7 +443,11 @@ def unwrap_statements(text):
         buf = None
     if buf is not None:
         out.append(buf)
-    return '\n'.join(out)
+    text = '\n'.join(out)
+    # `&CStack_8c.field_0x8`: an address inside a drifted stack object, spelled as the offset form the
+    # slot restoration understands (`&CStack_8c + 8`)
+    text = re.sub(r'&(\w+Stack_[0-9a-f]+)\.field_0x([0-9a-f]+)\b', lambda m: f'&{m.group(1)} + {int(m.group(2), 16) if int(m.group(2), 16) != 12 else "0xc"}', text)
+    return text
 
 
 class UnitConverter:
@@ -534,7 +544,7 @@ class UnitConverter:
                 labels = {c['currentName'] for c in caller.get('calls', []) if c.get('currentName') and int(c.get('target', '0'), 16) == target}
                 for label in labels:
                     for spelling in (label, label.removeprefix('NScript::'), label.split('::')[-1]):
-                        pat = re.compile(r'^([ \t]*CCharString::CCharString\(\(CCharString \*\)&stack0xffffff[0-9a-f]{2},("[^"]*"),-1\);[ \t]*\r?\n)'
+                        pat = re.compile(r'^([ \t]*CCharString::CCharString\(\(CCharString \*\)&stack0xffffff[0-9a-f]{2},("[^"]*"|\w+),-1\);[ \t]*\r?\n)'
                                          r'([ \t]*)' + re.escape(spelling).replace('::', r'\s*::\s*') + r'\s*\(this\);', re.M)
                         # the temporary's constructor stays: every printed call keeps its place in the callOrder pairing
                         caller['decompile'], n = pat.subn(lambda m: f'{m.group(1)}{m.group(3)}{spelling}(this,{m.group(2)});', caller.get('decompile') or '')
@@ -922,7 +932,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(unwrap_statements(fn['decompile']), fn), fn), fn), fn), fn.get('calls', []))
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(unwrap_statements(fn['decompile']), fn), fn), fn), fn), fn.get('calls', []), fn)
                 spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output, and mangled names
                 # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`
@@ -1019,6 +1029,8 @@ class UnitConverter:
                 body = shared_lifter.lift(name, source, native_function=fn, parameters=kinds)
                 params = 'quest, me' + ''.join(', ' + p['lua'] for p in signature['parameters'])
                 shared_sources[name] = finish_lua('\n'.join([f'function {name}({params})'] + body + ['end', '']))
+                if 'resources:' in shared_sources[name]:      # the same retail-resource handle the quest copy gets
+                    shared_sources[name] = shared_sources[name].replace('\n', '\n    local resources = quest:RetailResources()\n', 1)
                 shared_diagnostics[name] = list(shared_lifter.todo)
             names = sorted(shared_sources)
             shared = '\n'.join(['-- Generated from the same native helper bodies as the quest draft.',

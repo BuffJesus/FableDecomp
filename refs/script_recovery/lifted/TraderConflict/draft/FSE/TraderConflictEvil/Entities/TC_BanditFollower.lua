@@ -123,8 +123,8 @@ function Main(quest, me)
                         bVar5 = not alive
                         if bVar5 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:ReleaseResource(xStack_10)
-                            resources:DestroyMovie(xStack_20)
+                            resources:DestroyMovie(xStack_10)
+                            resources:ReleaseResource(xStack_20)
                             return
                         end
                     end

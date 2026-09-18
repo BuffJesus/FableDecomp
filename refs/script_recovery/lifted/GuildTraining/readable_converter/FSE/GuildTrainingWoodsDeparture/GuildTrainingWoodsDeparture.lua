@@ -70,7 +70,6 @@ function WatchForLeaving(quest)
     while hero ~= nil and hero:IsAlive() do
         if quest:GetStateBool("MissionFailed") or quest:GetStateBool("MissionSucceeded") then break end
         if not quest:NewScriptFrame() then return end
-        hero = quest:GetHero()
     end
     if not quest:IsActiveThreadTerminating() and not quest:GetStateBool("MissionSucceeded") then
         quest:SetStateBool("MissionFailed", true)
@@ -79,15 +78,13 @@ end
 
 -- Q_GuildTrainingWoodsDeparture.TeleportOutHero (retail 0x00d64080)
 function TeleportOutHero(quest)
-    local hero3, hero5
+    local hero = quest:GetHero()
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        if quest:GetHealth(quest:GetHero()) < 6.0 then
-            quest:EntityTeleportToThing(quest:GetHero(), quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP"), false)
+        if quest:GetHealth(hero) < 6.0 then
+            quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP"), false)
             quest:Pause(2.0)
-            hero3 = quest:GetHero()
-            hero5 = quest:GetHero()
-            quest:AddLineToConversation(quest:AddNewConversation(quest:GetHero(), false, false), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", hero5, hero3, false)
+            quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", hero, hero, false)
             quest:ChangeHeroHealthBy(1000.0, true, false)
         end
         quest:NewScriptFrame()

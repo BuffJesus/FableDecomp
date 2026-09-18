@@ -12,48 +12,49 @@ end
 
 -- TheRealGuildmaster.Main (retail 0x00d50c60)
 function Main(quest, me)
+    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, scratchValue5, scratchValue6, scratchValue7, scratchValue8
+    local actorMap, movie, resource, movie2, resource2
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
     quest:SetIsPushableByHero(me, false)
     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
     quest:EntityTeleportToThing(me, quest:GetThingWithScriptName("M_DepartureTeacherStand"), false)
-    scratchValue8 = resources:NewResource()
-    while not resources:TryAcquire(scratchValue8, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue8); return end
+    resource2 = resources:NewResource()
+    while not resources:TryAcquire(resource2, me, 4) do
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
     end
     if not quest:IsActiveThreadTerminating() then
         if not quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
             if quest:IsActiveThreadTerminating() then goto LAB_00d5134c end
-            scratchValue6 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue6, quest:GetHero(), 4) do
+            resource = resources:NewResource()
+            while not resources:TryAcquire(resource, hero, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    resources:ReleaseResource(scratchValue6)
-                    resources:ReleaseResource(scratchValue8)
+                    resources:ReleaseResource(resource)
+                    resources:ReleaseResource(resource2)
                     return
                 end
             end
             if quest:IsActiveThreadTerminating() then
-                resources:ReleaseResource(scratchValue6)
-                resources:ReleaseResource(scratchValue8)
+                resources:ReleaseResource(resource)
+                resources:ReleaseResource(resource2)
                 return
             end
-            scratchValue2 = resources:NewActorMap()
-            resources:SetActor(scratchValue2, "GM", scratchValue8)
-            resources:SetActor(scratchValue2, "HERO", scratchValue6)
-            scratchValue5 = resources:StartMovie("")
+            actorMap = resources:NewActorMap()
+            resources:SetActor(actorMap, "GM", resource2)
+            resources:SetActor(actorMap, "HERO", resource)
+            movie = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_DEPARTURE_GM_DONE", scratchValue2, false, true)
+            resources:RunMacro("CS_GUILD_DEPARTURE_GM_DONE", actorMap, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(scratchValue5)
-            resources:DestroyActorMap(scratchValue2)
-            resources:ReleaseResource(scratchValue6)
+            resources:DestroyMovie(movie)
+            resources:DestroyActorMap(actorMap)
+            resources:ReleaseResource(resource)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_09", "GuildWoods", "")
             quest:ActivateQuest("Q_GuildTrainingWoodsDeparture")
             quest:SetQuestAsPersistent("Q_GuildTrainingWoodsDeparture", false)
@@ -62,29 +63,29 @@ function Main(quest, me)
         while quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") do
             if not quest:NewScriptFrame(me) then goto LAB_00d5134c end
             if me:IsTalkedToByHero() then
-                scratchValue7 = resources:StartMovie("")
+                movie2 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue8)) then
-                    me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", 0, false, true, false)
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
+                    me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", 0, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(scratchValue7)
-                            resources:ReleaseResource(scratchValue8)
+                            resources:DestroyMovie(movie2)
+                            resources:ReleaseResource(resource2)
                             return
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:ReleaseResource(scratchValue7)
-                        resources:DestroyMovie(scratchValue8)
+                        resources:DestroyMovie(movie2)
+                        resources:ReleaseResource(resource2)
                         return
                     end
                 end
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(scratchValue7)
+                resources:DestroyMovie(movie2)
             end
         end
         if not quest:IsActiveThreadTerminating() then
@@ -92,7 +93,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d5134c::
-    resources:ReleaseResource(scratchValue8)
+    resources:ReleaseResource(resource2)
 end
 
 -- TheRealGuildmaster.Init (retail 0x00d50a80)

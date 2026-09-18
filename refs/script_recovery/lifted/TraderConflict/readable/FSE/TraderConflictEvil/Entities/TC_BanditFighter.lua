@@ -12,14 +12,15 @@ end
 
 -- TC_BanditFighter.Main (retail 0x00df8970)
 function Main(quest, me)
-    local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, predicateResult3
+    local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, predicateResult
     local predicateResult4, predicateResult6, playerEngaged, conversationID, conversationId
     local scratchValue10
+    local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
     quest:MiniMapAddMarker(me, "HUD_ORB_GREEN_SMALL")
-    quest:EntitySetThingAsAllyOfThing(me, quest:GetHero())
-    quest:EntitySetThingAsAllyOfThing(quest:GetHero(), me)
+    quest:EntitySetThingAsAllyOfThing(me, hero)
+    quest:EntitySetThingAsAllyOfThing(hero, me)
     while not quest:GetStateBool("QuestStartScreened") do
         if not quest:NewScriptFrame(me) then return end
     end
@@ -34,20 +35,20 @@ function Main(quest, me)
         if me:MsgIsHitBy("") then
             scratchValue = scratchValue3 | 3
             if me:MsgIsHitByHero() then
-                predicateResult3 = false
+                predicateResult = false
                 goto FLOW_after_lab_00df8b83
             end
             scratchValue = scratchValue3 | 7
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue = scratchValue3 | 15
                 if not me:MsgIsHitByHeroSpecialAbility(me) then
-                    predicateResult3 = false
+                    predicateResult = false
                     goto FLOW_after_lab_00df8b83
                 end
             end
-            predicateResult3 = true
+            predicateResult = true
         else
-            predicateResult3 = false
+            predicateResult = false
         end
         ::FLOW_after_lab_00df8b83::
         if scratchValue & 8 ~= 0 then
@@ -62,7 +63,7 @@ function Main(quest, me)
         if scratchValue & 1 ~= 0 then
             scratchValue = scratchValue & 0xfffffffe
         end
-        if predicateResult3 then
+        if predicateResult then
             if quest:IsActiveThreadTerminating() then return end
             quest:ModifyThingHealth(me, 100.0, false)
         else
@@ -98,7 +99,7 @@ function Main(quest, me)
                 quest:SetStateBool("PlayerEngaged", true)
             end
         end
-        if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 15.0) then
+        if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateBool("PlayerEngaged", true)
         end
@@ -141,8 +142,8 @@ function Main(quest, me)
         if predicateResult6 then
             if not state:GetBool("HitWarning") then
                 conversationID = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationID, quest:GetHero())
-                quest:AddLineToConversation(conversationID, "TEXT_QST_B12_BANDIT_ON_HIT_10", me, quest:GetHero(), false)
+                quest:AddPersonToConversation(conversationID, hero)
+                quest:AddLineToConversation(conversationID, "TEXT_QST_B12_BANDIT_ON_HIT_10", me, hero, false)
                 state:SetBool("HitWarning", true)
                 scratchValue2 = scratchValue10
             elseif quest:IsDistanceBetweenThingsUnder(me, quest:GetNearestWithScriptName(me, "TC_BanditFighter"), 15.0) then
@@ -150,16 +151,16 @@ function Main(quest, me)
             end
         end
         if quest:GetStateBool("HeroAttackedBandit") then
-            if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 15.0) then
+            if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                 if quest:IsActiveThreadTerminating() then return end
                 if conversationId % 5 == 0 then
                     conversationId = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationId, quest:GetHero())
-                    quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_SEEKING_REVENGE_10", me, quest:GetHero(), false)
+                    quest:AddPersonToConversation(conversationId, hero)
+                    quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_SEEKING_REVENGE_10", me, hero, false)
                 end
-                quest:GiveThingBestEnemyTarget(me, quest:GetHero())
-                quest:EntityUnsetThingAsAllyOfThing(me, quest:GetHero())
-                quest:EntityUnsetThingAsAllyOfThing(quest:GetHero(), me)
+                quest:GiveThingBestEnemyTarget(me, hero)
+                quest:EntityUnsetThingAsAllyOfThing(me, hero)
+                quest:EntityUnsetThingAsAllyOfThing(hero, me)
                 while not quest:GetStateBool("MissionSucceeded") do
                     if not quest:NewScriptFrame(me) then return end
                 end

@@ -3,61 +3,62 @@
 
 -- Q_GuildTrainingPreMelee.Main (retail 0x00d51520)
 function Main(quest)
+    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local preMeleeMaze, r2_1, r3_1, scratchValue3, scratchValue4, scratchValue5, scratchValue6
-    local scratchValue7, scratchValue8, timerId
+    local preMeleeMaze, preMeleeWhisper, theRealGuildmaster, movie, resource, actorMap, resource4
+    local resource5, resource6, timerId
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster")
     quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy")
     quest:AddEntityBinding("PreMeleeWhisper", "GuildTrainingPreMelee/Entities/PreMeleeWhisper")
     quest:FinalizeEntityBindings()
     quest:SetMasterGameState("GuildWarningOccuring", true)
     preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
-    r2_1 = quest:GetThingWithScriptName("PreMeleeWhisper")
-    r3_1 = quest:GetThingWithScriptName("TheRealGuildmaster")
+    preMeleeWhisper = quest:GetThingWithScriptName("PreMeleeWhisper")
+    theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
     quest:GiveHeroTitle("OBJECT_HERO_TITLE_CHICKEN_CHASER")
     quest:SetStateInt("PreMeleeMode", 0)
-    scratchValue8 = resources:NewResource()
-    while not resources:TryAcquire(scratchValue8, preMeleeMaze, 4) do
-        if not quest:NewScriptFrame() then resources:ReleaseResource(scratchValue8); return end
+    resource6 = resources:NewResource()
+    while not resources:TryAcquire(resource6, preMeleeMaze, 4) do
+        if not quest:NewScriptFrame() then resources:ReleaseResource(resource6); return end
     end
     if not quest:IsActiveThreadTerminating() then
-        scratchValue7 = resources:NewResource()
-        while not resources:TryAcquire(scratchValue7, r2_1, 4) do
+        resource5 = resources:NewResource()
+        while not resources:TryAcquire(resource5, preMeleeWhisper, 4) do
             if not quest:NewScriptFrame() then goto LAB_00d51951 end
         end
         if not quest:IsActiveThreadTerminating() then
-            scratchValue6 = resources:NewResource()
-            while not resources:TryAcquire(scratchValue6, r3_1, 4) do
+            resource4 = resources:NewResource()
+            while not resources:TryAcquire(resource4, theRealGuildmaster, 4) do
                 if not quest:NewScriptFrame() then goto LAB_00d51948 end
             end
             if not quest:IsActiveThreadTerminating() then
-                scratchValue4 = resources:NewResource()
-                while not resources:TryAcquire(scratchValue4, quest:GetHero(), 4) do
+                resource = resources:NewResource()
+                while not resources:TryAcquire(resource, hero, 4) do
                     if not quest:NewScriptFrame() then goto LAB_00d5193f end
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue5 = resources:NewActorMap()
-                    resources:SetActor(scratchValue5, "HERO", scratchValue4)
-                    resources:SetActor(scratchValue5, "MAZE", scratchValue8)
-                    resources:SetActor(scratchValue5, "WHISPER", scratchValue7)
-                    resources:SetActor(scratchValue5, "MASTER", scratchValue6)
-                    scratchValue3 = resources:StartMovie("")
+                    actorMap = resources:NewActorMap()
+                    resources:SetActor(actorMap, "HERO", resource)
+                    resources:SetActor(actorMap, "MAZE", resource6)
+                    resources:SetActor(actorMap, "WHISPER", resource5)
+                    resources:SetActor(actorMap, "MASTER", resource4)
+                    movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
-                    resources:RunMacro("CS_GUILD_PREMELEE_INTRO", scratchValue5, false, true)
-                    resources:RunMacro("CS_GUILD_PREMELEE_BOOHOO", scratchValue5, false, true)
-                    resources:RunMacro("CS_GUILD_PREMELEE_WAKEUP", scratchValue5, false, true)
+                    resources:RunMacro("CS_GUILD_PREMELEE_INTRO", actorMap, false, true)
+                    resources:RunMacro("CS_GUILD_PREMELEE_BOOHOO", actorMap, false, true)
+                    resources:RunMacro("CS_GUILD_PREMELEE_WAKEUP", actorMap, false, true)
                     quest:FixMovieSequenceCamera(false)
                     quest:ChangeHeroHealthBy(1000.0, true, false)
                     quest:ResetPlayerCreatureCombatMultiplier()
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(scratchValue3)
-                    resources:DestroyActorMap(scratchValue5)
-                    resources:ReleaseResource(scratchValue4)
-                    resources:ReleaseResource(scratchValue6)
-                    resources:ReleaseResource(scratchValue7)
-                    resources:DestroyMovie(scratchValue8)
+                    resources:DestroyMovie(movie)
+                    resources:DestroyActorMap(actorMap)
+                    resources:ReleaseResource(resource)
+                    resources:ReleaseResource(resource4)
+                    resources:ReleaseResource(resource5)
+                    resources:ReleaseResource(resource6)
                     quest:SetStateBool("WhisperCutsceneFinished", true)
                     quest:SetStateBool("GuildmasterTeleport", true)
                     quest:SetMasterGameState("GuildWarningOccuring", false)
@@ -82,15 +83,15 @@ function Main(quest)
                     goto LAB_00d51de2
                 end
                 ::LAB_00d5193f::
-                resources:ReleaseResource(scratchValue4)
+                resources:ReleaseResource(resource)
             end
             ::LAB_00d51948::
-            resources:ReleaseResource(scratchValue6)
+            resources:ReleaseResource(resource4)
         end
         ::LAB_00d51951::
-        resources:ReleaseResource(scratchValue7)
+        resources:ReleaseResource(resource5)
     end
-    resources:ReleaseResource(scratchValue8)
+    resources:ReleaseResource(resource6)
     ::LAB_00d51de2::
 end
 

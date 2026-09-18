@@ -1845,9 +1845,10 @@ class Lifter:
                 value = self.literal(RE_CAST.sub("", assignment[2]).strip())
                 if value is not None and not value.startswith('"'):
                     self.mutable_scalars.add(assignment[1])
-                elif value is not None and re.search(r'CCharString::operator=\([^;]*,\s*' + re.escape(assignment[1]) + r'\);', text):
-                    # a literal chosen per branch and copied into a string slot (`pOther = "GUARD_RED"; ... operator=(slot, pOther)`):
-                    # a real variable, not one temporary literal
+                elif value is not None and (re.search(r'CCharString::operator=\([^;]*,\s*' + re.escape(assignment[1]) + r'\);', text)
+                                            or re.search(r'(?<![\w:])(?!CCharString)[A-Za-z_][\w:]*\((?:[^;()]*,)?\s*' + re.escape(assignment[1]) + r'\s*\)', text)):
+                    # a literal chosen per branch and copied into a string slot (`pOther = "GUARD_RED"; ... operator=(slot, pOther)`)
+                    # or handed to a helper (`pcVar14 = "CS_INTRO_NORTH"; ... PlayCutscene(this, pcVar14)`): a real variable
                     self.mutable_scalars.add(assignment[1])
         for index, line in enumerate(statements):
             overwritten = re.fullmatch(r'\s*(local_\w+) = (?:this|param_1);\s*', line)

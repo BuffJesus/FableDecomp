@@ -426,7 +426,7 @@ function Main(quest, me)
     ::LAB_00d3e1b6::
     quest:DeregisterTimer(xStack_88)
     ::LAB_00d3e1bf::
-    resources:DestroyMovie(xStack_84)
+    resources:ReleaseResource(xStack_84)
     do return end
     ::LAB_00d3d948::
     quest:PauseAllNonScriptedEntities(false)
@@ -439,7 +439,7 @@ function Main(quest, me)
     goto LAB_00d3e1b6
     ::LAB_00d3e087::
     quest:PauseAllNonScriptedEntities(false)
-    resources:ReleaseResource(ctr_64)
+    resources:DestroyMovie(ctr_64)
     goto LAB_00d3e1b6
 end
 

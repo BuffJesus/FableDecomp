@@ -13,10 +13,10 @@ end
 -- SpeedFriend.Main (retail 0x00d408b0)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local scratchValue
+    local resource
     if not quest:NewScriptFrame(me) then return end
-    scratchValue = resources:NewResource()
-    while not resources:TryAcquire(scratchValue, me, 4) do
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00d409c5 end
     end
     if not quest:IsActiveThreadTerminating() then
@@ -26,7 +26,7 @@ function Main(quest, me)
         until quest:IsActiveThreadTerminating()
     end
     ::LAB_00d409c5::
-    resources:ReleaseResource(scratchValue)
+    resources:ReleaseResource(resource)
 end
 
 -- SpeedFriend.Init (retail 0x00d40870)

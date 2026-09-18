@@ -14,16 +14,13 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar14, iVar15, iVar17, iVar6, iVar7, ixVar12, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_174, xStack_64, xStack_74, xStack_84, xStack_88, x_stk_12c, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54
     local alive = true
-    local function __cleanup_LAB_00d4dcdb()
-        resources:ReleaseResource(xStack_170)
-    end
     local function __cleanup_LAB_00d4dd41()
         quest:DeregisterTimer(iVar6)
-        resources:DestroyMovie(xStack_170)
+        resources:ReleaseResource(xStack_170)
     end
     local function __cleanup_LAB_00d4de46()
         quest:DeregisterTimer(xStack_174)
-        resources:DestroyMovie(xStack_170)
+        resources:ReleaseResource(xStack_170)
     end
     xStack_170 = resources:NewResource()
     bVar4 = false
@@ -34,14 +31,17 @@ function Main(quest, me)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
-        if bVar4 then __cleanup_LAB_00d4dcdb(); return end
+        if bVar4 then
+            resources:ReleaseResource(xStack_170)
+            return
+        end
         bVar4 = resources:TryAcquire(xStack_170, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if bVar4 then
         -- LAB_00d4de61: (native jump target)
-        resources:DestroyMovie(xStack_170)
+        resources:ReleaseResource(xStack_170)
         return
     end
     quest:SetIsPushableByHero(me, false)
@@ -63,7 +63,8 @@ function Main(quest, me)
             r2 = nil
             quest:DeregisterTimer(iVar6)
             r1 = nil
-            __cleanup_LAB_00d4dcdb()
+            -- LAB_00d4dcdb: (native jump target)
+            resources:ReleaseResource(xStack_170)
             return
         end
         bVar4 = quest:IsQuestActive("Q_GuildTrainingDeparture")
@@ -88,7 +89,7 @@ function Main(quest, me)
                 goto LAB_00d4c9a2
             end
             quest:DeregisterTimer(iVar6)
-            resources:DestroyMovie(xStack_170)
+            resources:ReleaseResource(xStack_170)
             return
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -186,7 +187,7 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then
                 quest:DeregisterTimer(xStack_174)
-                resources:DestroyMovie(xStack_170)
+                resources:ReleaseResource(xStack_170)
                 return
             end
             iVar6 = me:IsPerformingScriptTask()
@@ -268,7 +269,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:ReleaseResource(xStack_128)
+                            resources:DestroyMovie(xStack_128)
                             __cleanup_LAB_00d4de46(); return
                         end
                         iVar6 = me:IsPerformingScriptTask()
@@ -291,7 +292,7 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:ReleaseResource(xStack_128)
+                        resources:DestroyMovie(xStack_128)
                         __cleanup_LAB_00d4de46(); return
                     end
                     iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -380,12 +381,12 @@ function Main(quest, me)
                     end
                     ::LAB_00d4dded::
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(xStack_128)
+                    resources:DestroyMovie(xStack_128)
                     __cleanup_LAB_00d4de46(); return
                 end
                 if bVar4 then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(xStack_128)
+                    resources:DestroyMovie(xStack_128)
                     __cleanup_LAB_00d4de46(); return
                 end
                 x_stk_24 = resources:ScriptThing(xStack_170)
@@ -418,7 +419,7 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:ReleaseResource(xStack_128)
+                        resources:DestroyMovie(xStack_128)
                         __cleanup_LAB_00d4de46(); return
                     end
                 end
@@ -540,7 +541,7 @@ function Main(quest, me)
                         ixVar12 = ixVar12 + 1
                         iVar6 = iVar7 + 1
                     until not (iVar7 + 1 < 7)
-                    xStack_118 = resources:StartMovie("")
+                    xStack_118 = resources:NewResource()
                     bVar4 = false
                     if bVar4 ~= 0 then
                     end
@@ -564,7 +565,7 @@ function Main(quest, me)
                         xStack_138 = resources:NewActorMap()
                         resources:SetActor(xStack_138, "ME", xStack_170)
                         resources:SetActor(xStack_138, "HERO", xStack_118)
-                        xStack_84 = resources:NewResource()
+                        xStack_84 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         quest:FixMovieSequenceCamera(true)
@@ -639,7 +640,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_84)
                             resources:DestroyActorMap(xStack_138)
-                            resources:DestroyMovie(xStack_118)
+                            resources:ReleaseResource(xStack_118)
                             quest:SetMasterGameState("HeroTakingGuildTest", false)
                             quest:SetPlayerUsingRangedDummies(false)
                             quest:DeregisterTimer(xStack_160)
@@ -666,7 +667,7 @@ function Main(quest, me)
                                     if not bVar4 then
                                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", xStack_138, false, true)
                                         quest:ClearThingHasInformation(me)
-                                        goto FLOW_native_label_1_c16
+                                        goto FLOW_native_label_1_c17
                                     end
                                     goto LAB_00d4de05
                                 else
@@ -694,7 +695,7 @@ function Main(quest, me)
                                                             resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", xStack_138, false, true)
                                                             break
                                                         else
-                                                            goto FLOW_native_label_1_c16
+                                                            goto FLOW_native_label_1_c17
                                                         end
                                                     end
                                                 end
@@ -703,12 +704,12 @@ function Main(quest, me)
                                     end
                                 end
                             until not (false)
-                            ::FLOW_native_label_1_c16::
+                            ::FLOW_native_label_1_c17::
                             if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar7 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
                                 if bVar4 then
-                                    -- LAB_00d4de13_c16: (native jump target)
+                                    -- LAB_00d4de13_c17: (native jump target)
                                     quest:PauseAllNonScriptedEntities(false)
                                     goto LAB_00d4de1f
                                 end
@@ -718,7 +719,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_84)
                             resources:DestroyActorMap(xStack_138)
-                            resources:DestroyMovie(xStack_118)
+                            resources:ReleaseResource(xStack_118)
                             quest:SetMasterGameState("HeroTakingGuildTest", false)
                             quest:SetPlayerUsingRangedDummies(false)
                             quest:DeregisterTimer(xStack_160)
@@ -731,7 +732,7 @@ function Main(quest, me)
                         resources:DestroyActorMap(xStack_138)
                     end
                     ::LAB_00d4de34::
-                    resources:DestroyMovie(xStack_118)
+                    resources:ReleaseResource(xStack_118)
                 end
                 ::LAB_00d4de3d::
                 quest:DeregisterTimer(xStack_160)
@@ -773,12 +774,12 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:ReleaseResource(xStack_64)
+                            resources:DestroyMovie(xStack_64)
                             __cleanup_LAB_00d4de46(); return
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:ReleaseResource(xStack_64)
+                    resources:DestroyMovie(xStack_64)
                     goto LAB_00d4dc36
                 end
             end

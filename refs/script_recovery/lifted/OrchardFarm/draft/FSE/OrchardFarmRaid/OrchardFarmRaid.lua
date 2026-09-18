@@ -124,7 +124,7 @@ function ProcessGameRulesEvil(quest)
         pCVar6 = 0x0
         quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
         resources:DestroyMovie(xStack_9c)
-        resources:DestroyActorMap(r2)
+        resources:DestroyActorMap(xStack_80)
         resources:ReleaseResource(xStack_ac)
         resources:ReleaseResource(xStack_bc)
     end
@@ -190,7 +190,7 @@ function ProcessGameRulesEvil(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if not bVar4 then
-                            resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", r2, false, true)
+                            resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", xStack_80, false, true)
                             goto LAB_00dd08eb
                         end
                         __cleanup_LAB_00dd0b11(); return
@@ -201,7 +201,7 @@ function ProcessGameRulesEvil(quest)
                         __cleanup_LAB_00dd0b11()
                         return
                     end
-                    resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", r2, false, true)
+                    resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", xStack_80, false, true)
                     pCVar8 = (r1 + 8)
                     ::LAB_00dd08eb::
                     quest:FixMovieSequenceCamera(false)
@@ -230,7 +230,7 @@ function ProcessGameRulesEvil(quest)
                             pCVar6 = 0x0
                             quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))
                             resources:DestroyMovie(xStack_9c)
-                            resources:DestroyActorMap(r2)
+                            resources:DestroyActorMap(xStack_80)
                             resources:ReleaseResource(xStack_ac)
                             resources:ReleaseResource(xStack_bc)
                             return

@@ -82,7 +82,7 @@ function Main(quest)
         if not bVar13 then
             pcVar14 = "CS_TRADERCON_EVIL_INTRO_SOUTH"
             -- LAB_00df656e: (native jump target)
-            helper_DF9E00(quest)
+            helper_DF9E00(quest, pcVar14)
             if not quest:GetStateBool("QuestStartScreened") then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar13 = not alive

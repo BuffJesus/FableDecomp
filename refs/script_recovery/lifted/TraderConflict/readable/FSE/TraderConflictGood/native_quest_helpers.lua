@@ -3,8 +3,8 @@ local UpdateLiveEnemies, helper_DFDED0
 function UpdateLiveEnemies(quest, me)
     local isActiveThreadTerminating, isActiveThreadTerminating2, isActiveThreadTerminating3
     local isActiveThreadTerminating4, isActiveThreadTerminating5, isActiveThreadTerminating6
-    local isActiveThreadTerminating7, isActiveThreadTerminating8, predicateResult
-    local getFollowingEntityList, scratchValue7, p0, scratchValue8, scratchValue9
+    local isActiveThreadTerminating7, isActiveThreadTerminating8, predicateResult, followers
+    local scratchValue, p0, scratchValue8, scratchValue9
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
     scratchValue8 = 0
@@ -69,12 +69,12 @@ function UpdateLiveEnemies(quest, me)
         ::FLOW_after_lab_00dfc3b5::
     end
     predicateResult = quest:IsActiveThreadTerminating()
-    scratchValue7 = predicateResult
+    scratchValue = predicateResult
     if not predicateResult then
         scratchValue9 = 0
-        getFollowingEntityList = quest:GetFollowingEntityList(quest:GetHero())
-        if #getFollowingEntityList ~= 0 then
-            scratchValue7 = 4
+        followers = quest:GetFollowingEntityList(quest:GetHero())
+        if #followers ~= 0 then
+            scratchValue = 4
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00dfc618 end
                 p0 = 0
@@ -88,31 +88,32 @@ function UpdateLiveEnemies(quest, me)
                     p0 = p0 + 1
                 end
                 scratchValue9 = scratchValue9 + 1
-                scratchValue7 = scratchValue7 + 12
-            until scratchValue9 >= #getFollowingEntityList
+                scratchValue = scratchValue + 12
+            until scratchValue9 >= #followers
         end
         ::LAB_00dfc618::
     end
-    return scratchValue7
+    return scratchValue
 end
 
 function helper_DFDED0(quest, me, strParam1)
-    local scratchValue = resources:NewResource()
-    local pScriptObject = scratchValue
+    local resources = quest:RetailResources()
+    local resource = resources:NewResource()
+    local pScriptObject = resource
     local pThing = quest:GetHero()
     resources:TryAcquire(pScriptObject, pThing, 4)
-    local scratchValue2 = resources:NewActorMap()
-    resources:SetActor(scratchValue2, "HERO", scratchValue)
-    local scratchValue3 = resources:StartMovie("")
+    local actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    local movie = resources:StartMovie("")
     quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
-    resources:RunMacro(strParam1, scratchValue2, false, true)
+    resources:RunMacro(strParam1, actorMap, false, true)
     quest:FixMovieSequenceCamera(false)
     quest:PauseAllNonScriptedEntities(false)
-    resources:DestroyMovie(scratchValue3)
-    resources:DestroyActorMap(scratchValue2)
-    resources:ReleaseResource(scratchValue)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
+    resources:ReleaseResource(resource)
 end
 
 return {UpdateLiveEnemies = UpdateLiveEnemies, helper_DFDED0 = helper_DFDED0}

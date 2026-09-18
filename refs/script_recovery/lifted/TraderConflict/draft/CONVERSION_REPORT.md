@@ -4,7 +4,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 
 | Script | Owner | Function | Address | Compiles | TODO |
 |---|---|---|---|---|---:|
-| Q_TraderConflictEvil | Q_TraderConflictEvil | Main | 0x00df6010 | True | 45 |
+| Q_TraderConflictEvil | Q_TraderConflictEvil | Main | 0x00df6010 | True | 44 |
 | Q_TraderConflictEvil | Q_TraderConflictEvil | Init | 0x00df5cd0 | True | 0 |
 | Q_TraderConflictEvil | Q_TraderConflictEvil | WatchTimeLimit | 0x00df7980 | True | 0 |
 | Q_TraderConflictEvil | Q_TraderConflictEvil | UpdateLiveEnemies | 0x00df9b80 | True | 1 |
@@ -68,4 +68,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderConflictGood | CampHostageDoor | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderConflictGood | CampHostageDoor | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 14, "functions": 63, "missing": 2, "functionSyntaxPassed": 63, "fileSyntaxPassed": 15, "fileSyntaxChecked": 15, "todo": 170}`
+Summary: `{"owners": 14, "functions": 63, "missing": 2, "functionSyntaxPassed": 63, "fileSyntaxPassed": 15, "fileSyntaxChecked": 15, "todo": 169}`

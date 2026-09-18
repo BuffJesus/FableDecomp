@@ -12,8 +12,9 @@ end
 
 -- TC_Villager.Main (retail 0x00df9180)
 function Main(quest, me)
-    local predicateResult5, conversationID, scratchValue4
+    local predicateResult, conversationID, scratchValue
     local screamOutTimer = quest:GetStateInt("ScreamOutTimer")
+    local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     if not quest:IsRegionLoaded("BarrowFields") then
         return
@@ -24,28 +25,28 @@ function Main(quest, me)
     quest:EntitySetAsScared(me, true)
     quest:ClearThingHasInformation(me)
     quest:EntitySetCombatEnabled(me, false)
-    quest:EntityUnsetThingAsAllyOfThing(me, quest:GetHero())
-    quest:EntityUnsetThingAsAllyOfThing(quest:GetHero(), me)
+    quest:EntityUnsetThingAsAllyOfThing(me, hero)
+    quest:EntityUnsetThingAsAllyOfThing(hero, me)
     while not quest:GetStateBool("PlayerEngaged") do
         if not quest:NewScriptFrame(me) then return end
         -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
         if me:MsgIsHitBy("") then
             if me:MsgIsHitByHero() then
-                predicateResult5 = false
+                predicateResult = false
                 goto FLOW_after_lab_00df9372
             end
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 if not me:MsgIsHitByHeroSpecialAbility(me) then
-                    predicateResult5 = false
+                    predicateResult = false
                     goto FLOW_after_lab_00df9372
                 end
             end
-            predicateResult5 = true
+            predicateResult = true
         else
-            predicateResult5 = false
+            predicateResult = false
         end
         ::FLOW_after_lab_00df9372::
-        if predicateResult5 then
+        if predicateResult then
             if quest:IsActiveThreadTerminating() then return end
             quest:ModifyThingHealth(me, 100.0, false)
         elseif me:MsgIsHitByHero() or me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me) then
@@ -56,18 +57,18 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then return end
     while not quest:IsActiveThreadTerminating() do
         if quest:GetTimer(screamOutTimer) == 0 then
-            if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 15.0) then
+            if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                 conversationID = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationID, quest:GetHero())
-                scratchValue4 = quest:EntityGetSex(me)
-                if scratchValue4 == 2 then
+                quest:AddPersonToConversation(conversationID, hero)
+                scratchValue = quest:EntityGetSex(me)
+                if scratchValue == 2 then
                     if quest:IsActiveThreadTerminating() then return end
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_FEMALE_PANIC", me, quest:GetHero(), false)
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_FEMALE_PANIC", me, hero, false)
                 else
                     if quest:IsActiveThreadTerminating() then return end
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, quest:GetHero(), false)
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, hero, false)
                 end
-                quest:SetTimer(screamOutTimer, scratchValue4 % 15 + 15)
+                quest:SetTimer(screamOutTimer, scratchValue % 15 + 15)
             end
         end
         quest:NewScriptFrame(me)

@@ -13,10 +13,10 @@ end
 -- KillBird.Main (retail 0x00d43190)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local scratchValue
+    local resource
     if not quest:NewScriptFrame(me) then return end
-    scratchValue = resources:NewResource()
-    while not resources:TryAcquire(scratchValue, me, 4) do
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00d43263 end
     end
     while true do
@@ -24,7 +24,7 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
     end
     ::LAB_00d43263::
-    resources:ReleaseResource(scratchValue)
+    resources:ReleaseResource(resource)
 end
 
 -- KillBird.Init (retail 0x00d430f0)

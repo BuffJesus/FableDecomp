@@ -13,12 +13,12 @@ end
 -- MeleeThunder.Main (retail 0x00d58080)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local scratchValue = resources:NewResource()
+    local resource = resources:NewResource()
     while quest:GetStateInt("TutorialState") ~= 4 do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue); return end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if not quest:IsActiveThreadTerminating() then
-        while not resources:TryAcquire(scratchValue, me, 4) do
+        while not resources:TryAcquire(resource, me, 4) do
             if not quest:NewScriptFrame(me) then goto LAB_00d582ed end
         end
         if not quest:IsActiveThreadTerminating() then
@@ -30,7 +30,7 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    while not resources:TryAcquire(scratchValue, me, 4) do
+                    while not resources:TryAcquire(resource, me, 4) do
                         if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
                     end
                     if not quest:IsActiveThreadTerminating() then
@@ -45,13 +45,13 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00d58297::
-                resources:ReleaseResource(scratchValue)
+                resources:ReleaseResource(resource)
                 return
             end
         end
     end
     ::LAB_00d582ed::
-    resources:ReleaseResource(scratchValue)
+    resources:ReleaseResource(resource)
 end
 
 -- MeleeThunder.Init (retail 0x00d58050)

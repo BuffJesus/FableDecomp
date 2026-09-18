@@ -1993,7 +1993,7 @@ function Main(quest, me)
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
                                                             if not bVar3 then
-                                                                -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
+                                                                -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                                                                 xStack_180 = quest:RegisterTimer()
                                                                 quest:SetTimer(xStack_180, 10)
                                                                 iVar7 = (xStack_160 ~= nil and xStack_160:IsAlive())
@@ -3482,7 +3482,7 @@ function Main(quest, me)
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
                                                             if not bVar3 then
-                                                                -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
+                                                                -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                                                                 -- TODO(native): goto LAB_00d5439e_c28
                                                             end
                                                         end
@@ -3518,7 +3518,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if not bVar3 then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                         -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                         xStack_184 = quest:RegisterTimer()
                         timerId = xStack_184
@@ -4459,7 +4459,7 @@ function Main(quest, me)
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
                                                             if not bVar3 then
-                                                                -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)&xStack_18c);
+                                                                -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)&xStack_18c);
                                                                 -- TODO(native): goto LAB_00d5439e_c29
                                                             end
                                                         end

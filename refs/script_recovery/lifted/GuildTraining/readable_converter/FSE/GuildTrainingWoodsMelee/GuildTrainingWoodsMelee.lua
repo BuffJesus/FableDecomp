@@ -28,7 +28,7 @@ end
 
 -- Q_GuildTrainingWoodsMelee.WatchForTermination (retail 0x00d66880)
 function WatchForTermination(quest)
-    local hero2, pSpeaker
+    local hero = quest:GetHero()
     while not quest:GetStateBool("MissionFailed") and not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame() then return end
     end
@@ -44,9 +44,7 @@ function WatchForTermination(quest)
     if not quest:NewScriptFrame() then return end
     if not quest:NewScriptFrame() then return end
     if not quest:NewScriptFrame() then return end
-    hero2 = quest:GetHero()
-    pSpeaker = quest:GetHero()
-    quest:AddLineToConversation(quest:AddNewConversation(quest:GetHero(), false, false), "TEXT_QST_028_GUILDSEAL_COME_BACK", pSpeaker, hero2, false)
+    quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDSEAL_COME_BACK", hero, hero, false)
     if quest:GetStateBool("MissionSucceeded") then
         if quest:IsActiveThreadTerminating() then return end
         quest:SetMasterGameState("ScorpionsDestroyedCutscenePlayed", true)
@@ -61,9 +59,9 @@ end
 -- Q_GuildTrainingWoodsMelee.DoMission (retail 0x00d66ca0)
 function DoMission(quest)
     quest:GiveHeroNewQuestObjective("first objective", 1)
-    local scratchValue2 = quest:IsLevelLoaded("GuildWoods")
+    local scratchValue = quest:IsLevelLoaded("GuildWoods")
     while true do
-        if scratchValue2 then
+        if scratchValue then
             if quest:IsActiveThreadTerminating() then return end
             quest:CreateThread("WatchForLeaving")  -- native thread body CV_AmbushScamScript::WatchForQuestFinished: lift it as function WatchForLeaving(quest)
             quest:CreateThread("TeleportOutHero")  -- native thread body Quest_GuildWoods_Teleport_Exit_Additional: lift it as function TeleportOutHero(quest)
@@ -74,7 +72,7 @@ function DoMission(quest)
             return
         end
         if not quest:NewScriptFrame() then break end
-        scratchValue2 = quest:IsLevelLoaded("")
+        scratchValue = quest:IsLevelLoaded("")
     end
 end
 
@@ -90,15 +88,13 @@ end
 
 -- Q_GuildTrainingWoodsMelee.TeleportOutHero (retail 0x00d66f50)
 function TeleportOutHero(quest)
-    local hero3, hero5
+    local hero = quest:GetHero()
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        if quest:GetHealth(quest:GetHero()) < 6.0 then
-            quest:EntityTeleportToThing(quest:GetHero(), quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP"), false)
+        if quest:GetHealth(hero) < 6.0 then
+            quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP"), false)
             quest:Pause(2.0)
-            hero3 = quest:GetHero()
-            hero5 = quest:GetHero()
-            quest:AddLineToConversation(quest:AddNewConversation(quest:GetHero(), false, false), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", hero5, hero3, false)
+            quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", hero, hero, false)
             quest:ChangeHeroHealthBy(1000.0, true, false)
         end
         quest:NewScriptFrame()

@@ -127,6 +127,7 @@ function UpdateLiveEnemies(quest, me)
 end
 
 function helper_DFDED0(quest, me, native_arg_strParam_1)
+    local resources = quest:RetailResources()
     local xStack_20 = resources:NewResource()
     local pScriptObject = xStack_20
     local pThing = quest:GetHero()

@@ -12,9 +12,10 @@ end
 
 -- WillDummy.Main (retail 0x00d43450)
 function Main(quest, me)
-    local angle, predicateResult6, predicateResult8, conversationId, conversationId2
-    local conversationId3, conversationId4, willApprentice, willApprentice3
+    local angle, predicateResult, predicateResult8, conversationId, conversationId2, conversationId3
+    local conversationId4, willApprentice, willApprentice3
     local willHelpTimer = quest:GetStateInt("WillHelpTimer")
+    local hero = quest:GetHero()
     angle = me:GetAngleXY()
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
@@ -29,11 +30,11 @@ function Main(quest, me)
                     repeat
                         if me:MsgIsHitByHeroSpecialAbility(me) then
                             -- LAB_00d43568: (native jump target)
-                            predicateResult6 = false
+                            predicateResult = false
                         else
-                            predicateResult6 = not me:MsgIsHitByHero()
+                            predicateResult = not me:MsgIsHitByHero()
                         end
-                        if not predicateResult6 then goto LAB_00d435c1 end
+                        if not predicateResult then goto LAB_00d435c1 end
                         if not quest:NewScriptFrame(me) then return end
                     until false
                 end
@@ -57,12 +58,12 @@ function Main(quest, me)
             willApprentice = quest:GetThingWithScriptName("WillApprentice")
             if willApprentice ~= nil and willApprentice:IsAlive() then
                 conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("WillApprentice"), false, false)
-                quest:AddPersonToConversation(conversationId, quest:GetHero())
-                quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_GOOD_HIT", quest:GetThingWithScriptName("WillApprentice"), quest:GetHero(), false)
+                quest:AddPersonToConversation(conversationId, hero)
+                quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_GOOD_HIT", quest:GetThingWithScriptName("WillApprentice"), hero, false)
             else
                 conversationId2 = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
-                quest:AddPersonToConversation(conversationId2, quest:GetHero())
-                quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILDMASTER_WILL_GOOD_HIT", quest:GetThingWithScriptName("TheRealGuildmaster"), quest:GetHero(), false)
+                quest:AddPersonToConversation(conversationId2, hero)
+                quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILDMASTER_WILL_GOOD_HIT", quest:GetThingWithScriptName("TheRealGuildmaster"), hero, false)
             end
             quest:SetTimer(willHelpTimer, 7)
         end
@@ -80,12 +81,12 @@ function Main(quest, me)
             willApprentice3 = quest:GetThingWithScriptName("WillApprentice")
             if willApprentice3 ~= nil and willApprentice3:IsAlive() then
                 conversationId3 = quest:AddNewConversation(quest:GetThingWithScriptName("WillApprentice"), false, false)
-                quest:AddPersonToConversation(conversationId3, quest:GetHero())
-                quest:AddLineToConversation(conversationId3, "TEXT_QST_028_APPRENTICE_WILL_TROUBLE", quest:GetThingWithScriptName("WillApprentice"), quest:GetHero(), false)
+                quest:AddPersonToConversation(conversationId3, hero)
+                quest:AddLineToConversation(conversationId3, "TEXT_QST_028_APPRENTICE_WILL_TROUBLE", quest:GetThingWithScriptName("WillApprentice"), hero, false)
             else
                 conversationId4 = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
-                quest:AddPersonToConversation(conversationId4, quest:GetHero())
-                quest:AddLineToConversation(conversationId4, "TEXT_QST_028_GUILDMASTER_WILL_TROUBLE", quest:GetThingWithScriptName("TheRealGuildmaster"), quest:GetHero(), false)
+                quest:AddPersonToConversation(conversationId4, hero)
+                quest:AddLineToConversation(conversationId4, "TEXT_QST_028_GUILDMASTER_WILL_TROUBLE", quest:GetThingWithScriptName("TheRealGuildmaster"), hero, false)
             end
             quest:SetTimer(willHelpTimer, 7)
         end

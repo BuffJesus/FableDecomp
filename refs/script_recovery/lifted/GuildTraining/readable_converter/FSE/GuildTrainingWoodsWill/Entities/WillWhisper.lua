@@ -13,10 +13,10 @@ end
 -- WillWhisper.Main (retail 0x00d68810)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local scratchValue2
+    local resource
     if not quest:NewScriptFrame(me) then return end
-    scratchValue2 = resources:NewResource()
-    while not resources:TryAcquire(scratchValue2, me, 4) do
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
     end
     if not quest:IsActiveThreadTerminating() then
@@ -38,7 +38,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d68acf::
-    resources:ReleaseResource(scratchValue2)
+    resources:ReleaseResource(resource)
 end
 
 -- WillWhisper.Init (retail 0x00d687d0)

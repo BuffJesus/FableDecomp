@@ -13,7 +13,7 @@ helpers (OperatorPlus/IntToString/c_str), AppendCString literals behind hidden-r
 counters through pointer temporaries, the signed count idiom, `this[100]`, typed null-string compares, the DeregisterTimer
 register reuse. Oakvale draft baseline regenerated (16th binding lifts by itself; `readable_new_oakvale_main_bindings.py`
 accepts both forms); `test_source_hygiene.py` fails the suite on any control byte in `tools/script_recovery/*.py`.
-Readable: Evil 4069 lines / Good 2523; smoke 0 errors draft + readable. TraderToRescue.Main is still the rough one
+Readable passes landed the same night (hoisted `hero`, copy propagation, cutscene boilerplate -> `quest:StartCutscene/RunCutscene/EndCutscene`, role names from script names; Aeon's Fisherman/NewOakValeIntro ports are the style oracle) — Orchard readable 1140 lines / 69 temps, Guild 12300, TraderConflict Evil 4043 / Good 2523; smoke 0 errors draft + readable. **v5 REBUILT** after two real draft bugs (Orchard `RunMacro` got the marker thing instead of the actor map; movie/resource destructors swapped) — preflight ok, in-game run still user-driven. TraderToRescue.Main is still the rough one
 (5.5 KB function, `unaff_EBP` EH seeds, `MsgExpressionPerformedTo()` operands, `"" == nil` null-branch residue).
 
 

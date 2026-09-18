@@ -12,64 +12,64 @@ end
 
 -- HeroBed.Main (retail 0x00d446d0)
 function Main(quest, me)
-    local scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue7
-    local scratchValue8, scratchValue9, scratchValue10, getAllThingsWithDefName
-    local getAllThingsWithDefName2, getAllThingsWithDefName3
-    scratchValue5 = 0
+    local count, scratchValue, scratchValue3, scratchValue4, count2, count3, scratchValue5
+    local scratchValue6, scratchValue7, bsSlumBedBrown01, guildBedApprentice01
+    local guildBedFloorPallet01
+    scratchValue4 = 0
     quest:SetThingAsUsable(me, false)
     quest:SetThingPersistent(me, true)
-    getAllThingsWithDefName3 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
-    scratchValue2 = #getAllThingsWithDefName3
-    if 0 < scratchValue2 then
-        scratchValue8 = 0
+    guildBedFloorPallet01 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
+    count = #guildBedFloorPallet01
+    if 0 < count then
+        scratchValue5 = 0
         repeat
             if quest:IsActiveThreadTerminating() then goto LAB_00d4482d end
-            quest:SetThingAsUsable(getAllThingsWithDefName3[scratchValue8 + 1], false)
-            quest:SetThingPersistent(getAllThingsWithDefName3[scratchValue8 + 1], true)
+            quest:SetThingAsUsable(guildBedFloorPallet01[scratchValue5 + 1], false)
+            quest:SetThingPersistent(guildBedFloorPallet01[scratchValue5 + 1], true)
+            scratchValue4 = scratchValue4 + 1
             scratchValue5 = scratchValue5 + 1
-            scratchValue8 = scratchValue8 + 1
-        until scratchValue5 >= scratchValue2
+        until scratchValue4 >= count
     end
-    scratchValue3 = 0
+    scratchValue = 0
     if not quest:IsActiveThreadTerminating() then
-        getAllThingsWithDefName2 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
-        scratchValue6 = #getAllThingsWithDefName2
-        if 0 < scratchValue6 then
-            scratchValue9 = 0
+        guildBedApprentice01 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
+        count2 = #guildBedApprentice01
+        if 0 < count2 then
+            scratchValue6 = 0
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00d449bd end
-                quest:SetThingAsUsable(getAllThingsWithDefName2[scratchValue9 + 1], false)
-                quest:SetThingPersistent(getAllThingsWithDefName2[scratchValue9 + 1], true)
-                scratchValue3 = scratchValue3 + 1
-                scratchValue9 = scratchValue9 + 1
-            until scratchValue3 >= scratchValue6
+                quest:SetThingAsUsable(guildBedApprentice01[scratchValue6 + 1], false)
+                quest:SetThingPersistent(guildBedApprentice01[scratchValue6 + 1], true)
+                scratchValue = scratchValue + 1
+                scratchValue6 = scratchValue6 + 1
+            until scratchValue >= count2
         end
-        scratchValue4 = 0
+        scratchValue3 = 0
         if not quest:IsActiveThreadTerminating() then
-            getAllThingsWithDefName = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
-            scratchValue7 = #getAllThingsWithDefName
-            if 0 < scratchValue7 then
-                scratchValue10 = 0
+            bsSlumBedBrown01 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
+            count3 = #bsSlumBedBrown01
+            if 0 < count3 then
+                scratchValue7 = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then goto LAB_00d44b4d end
-                    quest:SetThingAsUsable(getAllThingsWithDefName[scratchValue10 + 1], false)
-                    quest:SetThingPersistent(getAllThingsWithDefName[scratchValue10 + 1], true)
-                    scratchValue4 = scratchValue4 + 1
-                    scratchValue10 = scratchValue10 + 1
-                until scratchValue4 >= scratchValue7
+                    quest:SetThingAsUsable(bsSlumBedBrown01[scratchValue7 + 1], false)
+                    quest:SetThingPersistent(bsSlumBedBrown01[scratchValue7 + 1], true)
+                    scratchValue3 = scratchValue3 + 1
+                    scratchValue7 = scratchValue7 + 1
+                until scratchValue3 >= count3
             end
         end
     end
     goto LAB_00d44c44
     ::LAB_00d449bd::
-    if #getAllThingsWithDefName3 ~= 0 then
+    if #guildBedFloorPallet01 ~= 0 then
         goto LAB_00d44c44
     end
     goto LAB_00d44bc3
     ::LAB_00d44b4d::
     goto LAB_00d44bc3
     ::LAB_00d4482d::
-    if #getAllThingsWithDefName3 ~= 0 then
+    if #guildBedFloorPallet01 ~= 0 then
         goto LAB_00d44c44
     end
     ::LAB_00d44bc3::

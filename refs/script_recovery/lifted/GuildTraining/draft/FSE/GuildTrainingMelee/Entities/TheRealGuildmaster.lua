@@ -386,7 +386,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if not bVar3 then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_f4);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_f4);
                         goto LAB_00d5941c
                     end
                 end

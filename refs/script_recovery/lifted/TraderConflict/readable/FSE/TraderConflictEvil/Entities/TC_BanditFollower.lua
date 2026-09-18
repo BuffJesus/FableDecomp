@@ -12,62 +12,62 @@ end
 
 -- TC_BanditFollower.Main (retail 0x00df80b0)
 function Main(quest, me)
+    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult5, predicateResult8, conversationId, conversationId2, scratchValue5
-    local scratchValue6
+    local predicateResult, predicateResult8, conversationId, conversationId2, movie, resource
     if not quest:NewScriptFrame(me) then return end
-    scratchValue6 = resources:NewResource()
+    resource = resources:NewResource()
     quest:EntityAttachToScript(me, quest:GetActiveQuestName())
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
     quest:MiniMapAddMarker(me, "HUD_ORB_GREEN_SMALL")
-    quest:EntitySetThingAsAllyOfThing(me, quest:GetHero())
-    quest:EntitySetThingAsAllyOfThing(quest:GetHero(), me)
+    quest:EntitySetThingAsAllyOfThing(me, hero)
+    quest:EntitySetThingAsAllyOfThing(hero, me)
     quest:EntitySetAsMirroringHeroEnemyRelationsWhileFollowing(me, false)
     while not quest:GetStateBool("QuestStartScreened") do
         if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
     end
     if not quest:IsActiveThreadTerminating() then
-        quest:EntityFollowThing(me, quest:GetHero(), 1.0, true)
+        quest:EntityFollowThing(me, hero, 1.0, true)
         quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_BANDIT", 1.0)
         while not quest:GetStateBool("MissionSucceeded") do
             if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
             if not state:GetBool("SetAgainstHero") then
                 if not me:IsTalkedToByHero() then
-                    predicateResult5 = false
+                    predicateResult = false
                     goto FLOW_after_lab_00df82d0
                 end
-                predicateResult5 = true
+                predicateResult = true
             else
-                predicateResult5 = false
+                predicateResult = false
             end
             ::FLOW_after_lab_00df82d0::
-            if predicateResult5 then
-                while not resources:TryAcquire(scratchValue6, me, 4) do
+            if predicateResult then
+                while not resources:TryAcquire(resource, me, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
                 end
-                scratchValue5 = resources:StartMovie("")
+                movie = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue6)) then
-                    me:Speak(quest:GetHero(), "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", 2, false, true, false)
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    me:Speak(hero, "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", 2, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(scratchValue5)
-                            resources:ReleaseResource(scratchValue6)
+                            resources:DestroyMovie(movie)
+                            resources:ReleaseResource(resource)
                             return
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:ReleaseResource(scratchValue5)
-                        resources:DestroyMovie(scratchValue6)
+                        resources:DestroyMovie(movie)
+                        resources:ReleaseResource(resource)
                         return
                     end
                 end
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(scratchValue5)
+                resources:DestroyMovie(movie)
             end
             if not state:GetBool("SetAgainstHero") then
                 if not me:MsgIsHitByHero() then
@@ -85,30 +85,30 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
                 if not state:GetBool("HitWarning") then
                     conversationId = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationId, quest:GetHero())
-                    quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_FOLLOWER_ON_HIT_10", me, quest:GetHero(), false)
+                    quest:AddPersonToConversation(conversationId, hero)
+                    quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_FOLLOWER_ON_HIT_10", me, hero, false)
                     state:SetBool("HitWarning", true)
                 elseif not quest:GetStateBool("HeroAttackedBandit") then
                     if quest:IsDistanceBetweenThingsUnder(me, quest:GetNearestWithScriptName(me, "TC_BanditFighter"), 15.0) then
                         quest:SetStateBool("HeroAttackedBandit", true)
                     end
                     quest:EntityStopFollowing(me)
-                    quest:GiveThingBestEnemyTarget(me, quest:GetHero())
-                    quest:EntityUnsetThingAsAllyOfThing(me, quest:GetHero())
-                    quest:EntityUnsetThingAsAllyOfThing(quest:GetHero(), me)
+                    quest:GiveThingBestEnemyTarget(me, hero)
+                    quest:EntityUnsetThingAsAllyOfThing(me, hero)
+                    quest:EntityUnsetThingAsAllyOfThing(hero, me)
                     state:SetBool("SetAgainstHero", true)
                 end
             end
             if not state:GetBool("SetAgainstHero") and quest:GetStateBool("HeroAttackedBandit") then
-                if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 15.0) then
+                if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                     if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
                     conversationId2 = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationId2, quest:GetHero())
-                    quest:AddLineToConversation(conversationId2, "TEXT_QST_B12_BANDIT_FOLLOWER_SEEKING_REVENGE_10", me, quest:GetHero(), false)
+                    quest:AddPersonToConversation(conversationId2, hero)
+                    quest:AddLineToConversation(conversationId2, "TEXT_QST_B12_BANDIT_FOLLOWER_SEEKING_REVENGE_10", me, hero, false)
                     quest:EntityStopFollowing(me)
-                    quest:GiveThingBestEnemyTarget(me, quest:GetHero())
-                    quest:EntityUnsetThingAsAllyOfThing(me, quest:GetHero())
-                    quest:EntityUnsetThingAsAllyOfThing(quest:GetHero(), me)
+                    quest:GiveThingBestEnemyTarget(me, hero)
+                    quest:EntityUnsetThingAsAllyOfThing(me, hero)
+                    quest:EntityUnsetThingAsAllyOfThing(hero, me)
                     state:SetBool("SetAgainstHero", true)
                 end
             end
@@ -118,7 +118,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00df87fe::
-    resources:ReleaseResource(scratchValue6)
+    resources:ReleaseResource(resource)
 end
 
 -- TC_BanditFollower.Init (retail 0x00df8040)

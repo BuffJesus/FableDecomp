@@ -349,6 +349,236 @@ def propagate_literals(lines):
     return lines, count
 
 
+def propagate_copies(lines):
+    """`a = b` where `b` is defined exactly once (or is a parameter / never assigned): every read of `a`
+    reached only by that copy reads `b` itself; the copy then dies."""
+    count = 0
+    flow = Flow(lines)
+    if not flow.ok:
+        return lines, 0
+    structure = flow.structure
+    copy = re.compile(r'(\s*)(?:local )?(\w+) = (\w+)\n')
+    declared = set(_declared_temporaries(structure))
+    initialised = {m.group(1) for l in structure for m in [re.match(r'\s*local (\w+) = ', l)] if m}
+    for name in list(declared | initialised):
+        if name in flow.pinned:
+            continue
+        defs, reads = _reads_and_defs(structure, name)
+        if name in initialised:
+            defs = sorted(set(defs) | {i for i, l in enumerate(structure) if re.match(r'\s*local ' + re.escape(name) + r' = ', l)})
+        if not defs or not reads:
+            continue
+        candidates = {}
+        for d in defs:
+            m = copy.fullmatch(lines[d])
+            if not m or m.group(3) in ('true', 'false', 'nil') or m.group(3) == name:
+                continue
+            src = m.group(3)
+            src_defs = _reads_and_defs(structure, src)[0]
+            # a source reloaded from the alias (`timerId = scratchValue4` at a loop end) still never moves
+            src_defs = [x for x in src_defs if not re.fullmatch(r'\s*' + re.escape(src) + r' = ' + re.escape(name) + r'\n', lines[x])]
+            if (src in declared or src in initialised) and len(src_defs) > 1:
+                continue                          # the source moves: not an alias
+            if src not in declared and src not in initialised and src_defs:
+                continue                          # an unknown (upvalue / global) written somewhere
+            candidates[d] = src
+        if not candidates:
+            continue
+        def_set = set(defs)
+        reach_in = {i: set() for i in flow.graph}
+        reach_in[0] = {-1}
+        changed = True
+        while changed:
+            changed = False
+            for i in sorted(flow.graph):
+                value = {-1} if i == 0 else set()
+                for p in flow.preds.get(i, ()):
+                    value |= {p} if p in def_set else reach_in[p]
+                if value != reach_in[i]:
+                    reach_in[i] = value
+                    changed = True
+        for r in reads:
+            if r in def_set or len(reach_in.get(r, ())) != 1:
+                continue
+            d = next(iter(reach_in[r]))
+            if d not in candidates or re.match(r'\s*local\b', lines[r]):
+                continue
+            lines[r] = rename_identifiers(lines[r], {name: candidates[d]})
+            count += 1
+    return lines, count
+
+
+def fold_uint_fixups(lines):
+    """`f = n; if n < 0 then f = f + 4294967296.0 end` is the compiler's unsigned-to-float conversion of a
+    count that is never negative: the copy alone."""
+    count = 0
+    i = 0
+    while i + 3 < len(lines):
+        m = re.fullmatch(r'(\s*)(?:local )?(\w+) = (\w+)\n', lines[i])
+        if m and re.fullmatch(m.group(1) + r'if ' + re.escape(m.group(3)) + r' < 0 then\n', lines[i + 1]) \
+                and re.fullmatch(r'\s*' + re.escape(m.group(2)) + r' = ' + re.escape(m.group(2)) + r' \+ 4294967296(?:\.0)?\n', lines[i + 2]) \
+                and re.fullmatch(m.group(1) + r'end\n', lines[i + 3]):
+            del lines[i + 1:i + 4]
+            count += 1
+        i += 1
+    return lines, count
+
+
+def tidy_closures(lines):
+    """A hoisted cleanup closure is straight-line code: a literal stored into an outer temporary and read
+    right away (`scratchValue5 = 0; quest:Pause(scratchValue5 ~= 0)`) becomes the literal, so the closure
+    stops pinning that temporary for the enclosing function."""
+    count = 0
+    structure = _structure(lines)
+    ranges = _closure_ranges(structure) or []
+    for a, b in ranges:
+        body = lines[a + 1:b]
+        literal = re.compile(r'(\s*)(\w+) = (true|false|nil|-?\d+(?:\.\d+)?)\n')
+        i = 0
+        while i < len(body):
+            m = literal.fullmatch(body[i])
+            if m:
+                name = m.group(2)
+                later = ''.join(body[i + 1:])
+                # the temporary is read only in this closure after the store, and never stored again here
+                if not re.search(r'^\s*' + re.escape(name) + r' = ', later, re.M) and re.search(r'\b' + re.escape(name) + r'\b', later):
+                    body = body[:i] + [rename_identifiers(l, {name: m.group(3)}) if not l.lstrip().startswith(name + ' =') else l for l in body[i + 1:]]
+                    count += 1
+                    continue
+            i += 1
+        lines[a + 1:b] = body
+        # (line count changed: recompute for the next range)
+        structure = _structure(lines)
+        ranges = _closure_ranges(structure) or []
+    # a value the enclosing function only ever passes to `scratchValue ~= 0` style tests reads as the boolean
+    for i, l in enumerate(lines):
+        lines[i] = re.sub(r'([(,] ?)(\d+) ~= 0(?=[,)])', lambda m: m.group(1) + ('true' if int(m.group(2)) else 'false'), l)   # a whole operand only (`x & 2 ~= 0` stays)
+    return lines, count
+
+
+def fold_cutscenes(lines):
+    """The retail cutscene boilerplate (a control resource per actor, an actor map, a movie object, the
+    pause / camera fix, the macro, then the teardown) is ForgeFSE's `quest:StartCutscene({NAME = thing, ...},
+    {}, fixCamera)` / `quest:RunCutscene(name, skippable, setup)` / `quest:EndCutscene()` (the DLL does exactly
+    those native calls: LuaQuestState::StartCutscene). All the cutscenes of a function fold together or not at
+    all, and only when every piece is a plain statement (an entity's `while not TryAcquire` retry loop stays)."""
+    text = ''.join(lines)
+    maps = re.findall(r'^\s*(?:local )?(\w+) = resources:NewActorMap\(\)\n', text, re.M)
+    if not maps:
+        return lines, 0
+    objects, pieces, replacements = set(), [], []
+    for M in maps:
+        actors = re.findall(r'^\s*resources:SetActor\(' + re.escape(M) + r', "(\w+)", (\w+)\)\n', text, re.M)
+        if not actors:
+            return lines, 0
+        pieces += [re.compile(r'^\s*(?:local )?' + re.escape(M) + r' = resources:NewActorMap\(\)\n', re.M),
+                   re.compile(r'^\s*resources:SetActor\(' + re.escape(M) + r', "\w+", \w+\)\n', re.M)]
+        table = []
+        setup = text.index(f'{M} = resources:NewActorMap()')
+        for name, R in actors:
+            # the handle's last acquisition before this map (a handle is re-acquired per cutscene)
+            acquires = list(re.finditer(r'^\s*resources:TryAcquire\(' + re.escape(R) + r', ([^\n]+?), 4\)\n', text[:setup], re.M))
+            acquire = acquires[-1] if acquires else None
+            if not acquire:
+                return lines, 0
+            table.append((name, acquire.group(1)))
+            objects.add(R)
+            pieces += [re.compile(r'^\s*(?:local )?' + re.escape(R) + r' = resources:NewResource\(\)\n', re.M),
+                       re.compile(r'^\s*resources:TryAcquire\(' + re.escape(R) + r', [^\n]+?, 4\)\n', re.M)]
+        movie = re.search(r'^\s*(?:local )?(\w+) = resources:StartMovie\(""\)\n(\s*)quest:StartMovieSequence\(\)\n\s*quest:PauseAllNonScriptedEntities\(true\)\n(\s*quest:FixMovieSequenceCamera\(true\)\n)?',
+                          text[text.index(f'{M} = resources:NewActorMap()'):], re.M)
+        if not movie:
+            return lines, 0
+        MV, indent, fix = movie.group(1), movie.group(2), bool(movie.group(3))
+        objects |= {M, MV}
+        macros = list(re.finditer(r'^(\s*)resources:RunMacro\(("[^"]*"|\w+), ' + re.escape(M) + r', (true|false), (true|false)\)\n', text, re.M))
+        if not macros:
+            return lines, 0
+        for m in macros:
+            replacements.append((m.group(0), f'{m.group(1)}quest:RunCutscene({m.group(2)}, {m.group(4)}, {m.group(3)})\n'))
+        replacements.append((movie.group(0), f'{indent}quest:StartCutscene({{' + ', '.join(f'{n} = {th}' for n, th in table) + f'}}, {{}}, {"true" if fix else "false"})\n'))
+    new = text
+    for old_text, repl in replacements:
+        new = new.replace(old_text, repl, 1)
+    for pat in pieces:
+        new = pat.sub('', new)
+    # teardown lines (also inside cleanup closures), in any order, become one EndCutscene per group
+    names = '|'.join(re.escape(x) for x in objects)
+    teardown = (r'(?:[ \t]*quest:FixMovieSequenceCamera\(false\)\n|[ \t]*quest:PauseAllNonScriptedEntities\(false\)\n|'
+                r'[ \t]*resources:(?:DestroyMovie|DestroyActorMap|ReleaseResource)\((?:' + names + r')\)\n)')
+    new, n_end = re.subn(r'^((?:' + teardown + r')+)', lambda m: re.match(r'[ \t]*', m.group(1)).group(0) + 'quest:EndCutscene()\n', new, flags=re.M)
+    if not n_end:
+        return lines, 0
+    body = re.sub(r'^\s*local [\w, ]+\n', '', new, flags=re.M)
+    gone = {x for x in objects if not re.search(r'\b' + re.escape(x) + r'\b', body)}
+
+    def undeclare(line):
+        m = re.fullmatch(r'(\s*)local ([\w, ]+)\n', line)
+        if not m:
+            return line
+        kept = [n for n in m.group(2).split(', ') if n not in gone]
+        return f'{m.group(1)}local {", ".join(kept)}\n' if kept else ''
+    new = ''.join(undeclare(l) for l in new.splitlines(keepends=True))
+    strict = objects - set(maps)          # a map's register may be reused for an unrelated value once the map is gone
+    if any(re.search(r'\b' + re.escape(x) + r'\b', new) for x in strict) or \
+            any(re.search(r'\b' + re.escape(M) + r'\b', l) and 'resources:' in l for M in maps for l in new.splitlines()):
+        return lines, 0                               # something still reads the objects: keep the faithful form
+    if 'resources:' not in new:
+        new = re.sub(r'^\s*local resources = quest:RetailResources\(\)\n', '', new, flags=re.M)
+    return new.splitlines(keepends=True), len(maps)
+
+
+def simplify_fresh_guards(lines):
+    """`x ~= nil and not x:IsNull()` on the line right after `x = quest:Get...(...)` / `CreateCreature(...)`: ForgeFSE's
+    thing wrappers already return nil for a null thing (WrapScriptThingOutput), so a fresh lookup only needs the nil
+    test. Things held across frames keep the IsNull (they can die meanwhile)."""
+    count = 0
+    for i in range(1, len(lines)):
+        m = re.match(r'\s*(?:local )?(\w+) = (?:quest|resources):(?:Get\w+|Create\w+|New\w+)\(', lines[i - 1])
+        if not m:
+            continue
+        x = re.escape(m.group(1))
+        new = re.sub(x + r' ~= nil and not ' + x + r':IsNull\(\)', m.group(1) + ' ~= nil', lines[i])   # (parens stay: `not (...)`)
+        new = re.sub(r'not \(' + x + r' ~= nil\)', m.group(1) + ' == nil', new)
+        if new != lines[i]:
+            lines[i] = new
+            count += 1
+    return lines, count
+
+
+def hoist_hero(lines):
+    """`quest:GetHero()` asked twice or more in one function: one `hero` local at the top (the hero never
+    changes), every call reads it."""
+    calls = [i for i, l in enumerate(lines) if 'quest:GetHero()' in _structure_line(l)]
+    if len(calls) < 2:
+        return lines, 0
+    declared = set(_declared_temporaries(_structure(lines)))
+    head = re.match(r'function \w+\(([^)]*)\)', lines[0]) if lines else None
+    params = {x.strip() for x in head.group(1).split(',')} if head else set()
+    name = 'hero'
+    if name in declared:
+        # an existing `hero` local that only ever holds `quest:GetHero()` is the hoisted one
+        structure = _structure(lines)
+        defs = [i for i, l in enumerate(structure) if _line_target(l) == name]
+        if defs and all(re.fullmatch(r'\s*hero = quest:GetHero\(\)\n', lines[i]) for i in defs):
+            for i in defs:
+                lines[i] = ''
+            _remove_declaration(lines, name)
+            declared.discard(name)
+            calls = [i for i in calls if lines[i]]
+    while name in declared or name in params:
+        name += '_'
+    for i in calls:
+        lines[i] = lines[i].replace('quest:GetHero()', name)
+    # after the parameter line and any leading `local` declarations
+    at = 1
+    while at < len(lines) and re.match(r'\s*local [\w, ]+\n', lines[at]):
+        at += 1
+    indent = re.match(r'\s*', lines[at] if at < len(lines) else '    ').group(0) or '    '
+    lines.insert(at, f'{indent}local {name} = quest:GetHero()\n')
+    return lines, 1
+
+
 def fold_constant_conditions(lines):
     """`not true` / `not false`, `if true then BODY end` -> BODY, `if false then ... end` -> nothing."""
     count = 0
@@ -1294,6 +1524,27 @@ def split_initialised_locals(lines):
     return out, count
 
 
+def drop_free_suffixes(lines):
+    """`guildStagBeetle2` whose base name `guildStagBeetle` no longer occurs in the function (the earlier
+    holder was inlined away): the base name."""
+    count = 0
+    text = ''.join(lines)
+    idents = {t.group(0) for t in re.finditer(r'[A-Za-z_]\w*', text)}
+    renames = {}
+    for name in sorted(idents):
+        m = re.fullmatch(r'([A-Za-z]\w*?[A-Za-z])(\d+)', name)   # `thing_38` keeps its slot suffix
+        if not m or int(m.group(2)) < 2 or m.group(1) in idents or m.group(1) in renames.values():
+            continue
+        if not any(re.match(r'\s*(?:local )?' + re.escape(name) + r'\b', l) for l in lines):
+            continue                                   # not a local of this function
+        renames[name] = m.group(1)
+    if renames:
+        for i, l in enumerate(lines):
+            lines[i] = rename_identifiers(l, renames)
+        count = len(renames)
+    return lines, count
+
+
 def merge_first_assignments(lines):
     """`local x` directly followed by `x = E` -> `local x = E` (Aeon declares at first use)."""
     count = 0
@@ -1302,6 +1553,15 @@ def merge_first_assignments(lines):
         if m and re.fullmatch(re.escape(m.group(1)) + m.group(2) + r' = [^\n]+\n', lines[i + 1]):
             lines[i] = ''
             lines[i + 1] = m.group(1) + 'local ' + lines[i + 1].lstrip()
+            count += 1
+    return lines, count
+
+
+def prune_self_assignments(lines):
+    count = 0
+    for i, l in enumerate(lines):
+        if re.fullmatch(r'\s*(\w+) = \1\n', l):
+            lines[i] = ''
             count += 1
     return lines, count
 
@@ -1386,6 +1646,9 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         return k
 
     run('splitLocals', split_initialised_locals)
+    run('closures', tidy_closures)
+    run('hero', hoist_hero)
+    run('cutscenes', fold_cutscenes)
 
     def folds():
         total = 0
@@ -1402,6 +1665,10 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         total += run('booleanCompares', strip_boolean_compares)
         total += run('conditions', simplify_conditions)
         total += run('literals', propagate_literals)
+        total += run('copies', propagate_copies)
+        total += run('selfAssignments', prune_self_assignments)
+        total += run('uintFixups', fold_uint_fixups)
+        total += run('freshGuards', simplify_fresh_guards)
         total += run('constantConditions', fold_constant_conditions)
         total += run('emptyElse', prune_empty_else)
         total += run('unusedClosures', prune_unused_closures)
@@ -1422,6 +1689,7 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
     run('parentheses', strip_redundant_parens)
     run('cosmetics', cosmetics)
     run('firstAssignments', merge_first_assignments)
+    run('freeSuffixes', drop_free_suffixes)
     return ''.join(lines), stats
 
 
@@ -1566,10 +1834,32 @@ def name_helpers_by_state(source):
     return source, count
 
 
+def name_helpers_by_shape(source):
+    """`helper_XXXX` whose body is one recognisable idiom gets the idiom's name: a cutscene wrapper
+    (`StartCutscene / RunCutscene / EndCutscene`) is `PlayCutscene`, `PlayHeroCutscene` when the hero is its
+    only actor."""
+    count = 0
+    for m in re.finditer(r'^function (helper_[0-9A-Fa-f]+)\(([^)]*)\)\n([\s\S]*?)^end\n', source, re.M):
+        old, body = m.group(1), m.group(3)
+        stmts = [l.strip() for l in body.splitlines() if l.strip()]
+        if len(stmts) == 3 and stmts[0].startswith('quest:StartCutscene(') and stmts[1].startswith('quest:RunCutscene(') and stmts[2] == 'quest:EndCutscene()':
+            new = 'PlayHeroCutscene' if re.match(r'quest:StartCutscene\(\{HERO = (?:hero|quest:GetHero\(\))\}', stmts[0]) else 'PlayCutscene'
+        else:
+            continue
+        if re.search(r'\b' + new + r'\b', source):
+            continue
+        source = rename_identifiers(source, {old: new})
+        source = source.replace(f'function {new}(', f'-- helper 0x{old[7:].upper()} (named after its shape)\nfunction {new}(', 1)
+        count += 1
+    return source, count
+
+
 def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
     source, hoisted = hoist_requires(source)
     source, aliased = alias_entity_state(source)
     source, named = name_helpers_by_state(source)
+    source, named_shape = name_helpers_by_shape(source)
+    named += named_shape
     pure = pure_local_functions(source)
     out, report = [], {}
     for part in _function_chunks(source):
@@ -1585,6 +1875,8 @@ def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
         report[name] = {'rewrites': stats, 'before': before, 'after': style_metrics(styled)}
         out.append(styled)
     text = tidy_blank_lines(''.join(out))
+    text, late = name_helpers_by_shape(text)      # shapes appear once the bodies are styled (the cutscene fold)
+    named += late
     return text, {'functions': report, 'hoistedRequires': hoisted, 'entityStateAliased': aliased, 'namedHelpers': named,
                   'pureLocalFunctions': sorted(pure)}
 

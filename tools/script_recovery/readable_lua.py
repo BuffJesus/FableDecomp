@@ -11,7 +11,7 @@ import re
 from collections import Counter
 
 
-GENERATED = re.compile(r'(?:[A-Za-z]{1,3}Var\d+(?:_\d+)*|r\d+|native_arg_\w+|[A-Za-z]*Stack_\w+)\Z')
+GENERATED = re.compile(r'(?:[A-Za-z]{1,3}Var\d+(?:_\d+)*|r\d+(?:_\d+)*|native_arg_\w+|[A-Za-z]*Stack_\w+)\Z')
 TOKEN = re.compile(
     r'(?P<longcomment>--\[(?P<ceq>=*)\[[\s\S]*?\](?P=ceq)\])'
     r'|(?P<comment>--[^\n]*)'
@@ -26,7 +26,7 @@ FUNCTION = re.compile(r'^(?:local )?function ([A-Za-z_]\w*)\([^\n]*\)\n', re.M)
 def camel(value):
     words = re.findall(r'[A-Z]+(?=[A-Z][a-z]|$)|[A-Z]?[a-z]+|\d+', value.replace('_', ' '))
     name = words[0].lower() + ''.join(w[:1].upper() + w[1:] for w in words[1:]) if words else ''
-    if not re.match(r'[A-Za-z_]', name):
+    if not re.match(r'[A-Za-z_]', name) or not re.search(r'[a-z]', value):
         # all-caps marker names ("MK_GTA_MAZE1" would be "1"): keep every word
         words = re.findall(r'[A-Z]+(?=[A-Z][a-z]|$)|[A-Z]?[a-z]+|[A-Z]+|\d+', value.replace('_', ' '))
         name = words[0].lower() + ''.join(w.capitalize() if w.isupper() else w[:1].upper() + w[1:] for w in words[1:]) if words else 'value'
@@ -73,6 +73,18 @@ def assignment_role(expression):
     thing = re.fullmatch(r'(?:quest:GetThingWithScriptName|resources:NewThingFromScriptName)\("([^"]+)"\)', expression)
     if thing:
         return camel(re.sub(r'^(?:NOVI_|OVI_|M_)', '', thing[1]))
+    # things looked up / created by a name: the name is the role
+    named = re.fullmatch(r'quest:(?:GetAllThingsWith(?:ScriptName|DefName)|GetStateListCopy)\("([^"]+)"\)', expression)
+    if named:
+        return camel(re.sub(r'^(?:CREATURE_|OBJECT_)', '', named[1]))
+    named = re.fullmatch(r'quest:(?:Get(?:Nearest|Furthest|Random)WithScriptName|GetRandomThingWithScriptName)\([^,]+, "([^"]+)"\)|quest:CreateCreature\("([^"]+)",.*', expression)
+    if named:
+        return camel(re.sub(r'^(?:CREATURE_|OBJECT_)', '', named[1] or named[2]))
+    element = re.fullmatch(r'quest:GetStateListAt\("([^"]+)", .*\)', expression)
+    if element:
+        return camel(re.sub(r'^All', '', element[1])) + 'Item'
+    if re.fullmatch(r'#\w+', expression):
+        return camel(expression[1:]) + 'Count' if not GENERATED.fullmatch(expression[1:]) else 'count'
     method = re.match(r'\w+:(\w+)\(', expression)
     if method:
         name = method[1]
@@ -88,7 +100,8 @@ def assignment_role(expression):
                  'MsgIsGameInfoClickedPast': 'instructionDismissed', 'IsXbox': 'isXbox',
                  'IsTalkedToByHero': 'talkedToByHero', 'MsgIsHitByHero': 'hitByHero',
                  'MsgIsHitByAnySpecialAbilityFromHero': 'hitByHeroAbility',
-                 'Speak': 'speechResult', 'GetNumItemsOfType': 'itemCount'}
+                 'Speak': 'speechResult', 'GetNumItemsOfType': 'itemCount', 'AddQuestInfoCounter': 'infoCounter', 'NewResource': 'resource', 'NewActorMap': 'actorMap', 'StartMovie': 'movie', 'GetName': 'name', 'GetDefName': 'defName',
+                 'AddQuestInfoBarHealth': 'healthBar', 'GetAllCreaturesExcludingHero': 'creatures', 'GetFollowingEntityList': 'followers'}
         if name in known:
             return known[name]
         if name.startswith(('Get', 'Is', 'Has', 'Can')):
@@ -157,17 +170,39 @@ def readable_function(source):
             declarations.update(n.strip() for n in match[1].split(','))
     occupied = {t[0] for t in tokens(source) if t.lastgroup == 'identifier'}
     names, evidence = {}, {}
+    # the role of a copy (`r1_2 = pCVar9_4`) is the role of what it copies: direct roles first, copies after
+    direct = {}
+    for name, count in declarations.items():
+        if count == 1 and GENERATED.fullmatch(name):
+            rhs_list = [rhs.strip() for rhs in re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=\s*([^\n]*)', code, re.M)]
+            direct[name] = [assignment_role(r) for r in rhs_list if r != 'nil' and not re.fullmatch(r'[A-Za-z_]\w*', r)]
     for name, count in declarations.items():
         if count != 1 or not GENERATED.fullmatch(name):
             continue
         assignments = re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=\s*([^\n]*)', code, re.M)
-        roles = [assignment_role(rhs) for rhs in assignments]
+        roles = []
+        for rhs in assignments:
+            rhs = rhs.strip()
+            if rhs == 'nil':
+                continue                                     # a release says nothing about the role
+            if re.fullmatch(r'[A-Za-z_]\w*', rhs) and rhs in direct:
+                copied = direct[rhs]
+                roles.append(copied[0] if copied and all(r is not None and r == copied[0] for r in copied) else None)
+            else:
+                roles.append(assignment_role(rhs))
         if name.startswith('native_arg_'):
             base, reason = camel(name.removeprefix('native_arg_')), 'native argument role'
         elif roles and all(role is not None and role == roles[0] for role in roles):
             base, reason = roles[0], 'consistent call/state result'
         else:
-            base, reason = 'scratchValue', 'reused or unresolved native temporary'
+            # different names from one method (`CreateCreature("CREATURE_A", ...)` / `("CREATURE_B", ...)`): the method's role
+            methods = {m.group(1) for rhs in assignments if rhs.strip() != 'nil' for m in [re.match(r'\w+:(\w+)\(', rhs.strip())] if m}
+            if len(methods) == 1 and len(assignments) > 1:
+                method = next(iter(methods))
+                base, reason = {'CreateCreature': 'creature', 'GetThingWithScriptName': 'thing', 'GetAllThingsWithScriptName': 'things',
+                                'GetNearestWithScriptName': 'nearest', 'GetFurthestWithScriptName': 'furthest'}.get(method, camel(method)), 'one method, several names'
+            else:
+                base, reason = 'scratchValue', 'reused or unresolved native temporary'
         chosen, suffix = base, 2
         while chosen in occupied:
             chosen, suffix = base + str(suffix), suffix + 1

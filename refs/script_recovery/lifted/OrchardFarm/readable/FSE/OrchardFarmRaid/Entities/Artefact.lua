@@ -12,10 +12,10 @@ end
 
 -- Artefact.Main (retail 0x00dcdc50)
 function Main(quest, me)
-    local scratchValue2 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
+    local banditTeamCrateDrop = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        if quest:IsDistanceBetweenThingsUnder(me, scratchValue2, 3.0) then
+        if quest:IsDistanceBetweenThingsUnder(me, banditTeamCrateDrop, 3.0) then
             if not me:IsBeingCarriedBy("SCRIPT_NAME_HERO") then
                 quest:SetStateInt("CrateCount", quest:GetStateInt("CrateCount") - 1)
                 quest:SetMasterGameState("OFBRCratesStolen", true)

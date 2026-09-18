@@ -12,167 +12,167 @@ end
 
 -- TheRealGuildmaster.Main (retail 0x00d5ae70)
 function Main(quest, me)
+    local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, scratchValue4, scratchValue5, scratchValue8, scratchValue9, scratchValue10
-    local scratchValue11, scratchValue12, scratchValue13, scratchValue15, scratchValue16
-    local scratchValue19, switch2, scratchValue21, scratchValue22, archeryRing, scratchValue25
-    local scratchValue27, scratchValue28, scratchValue29, scratchValue30, scratchValue31
-    local scratchValue32, scratchValue33, scratchValue34, scratchValue35, scratchValue36
-    local scratchValue37, scratchValue38, scratchValue39, scratchValue40, timerId, timerId2
-    local scratchValue41, scratchValue42
+    local addQuestInfoTickByText, scratchValue3, scratchValue4, scratchValue7, scratchValue8
+    local scratchValue9, scratchValue, scratchValue11, scratchValue12, scratchValue14
+    local scratchValue15, scratchValue18, switch, hero, scratchValue19, archeryRing
+    local guildEvilApprenticeMale, actorMap, actorMap2, resource, resource3, resource4, actorMap3
+    local movie, movie2, scratchValue22, scratchValue23, scratchValue24, addQuestInfoTickByText2
+    local addQuestInfoTickByText3, resource5, timerId, timerId2, scratchValue25, movie3
     local function __cleanup_LAB_00d5dac4()
-        resources:ReleaseResource(scratchValue33)
-        resources:DestroyActorMap(scratchValue28)
-        resources:DestroyMovie(scratchValue29)
-        quest:DeregisterTimer(scratchValue41)
-        resources:ReleaseResource(scratchValue40)
+        resources:DestroyMovie(movie)
+        resources:DestroyActorMap(actorMap2)
+        resources:ReleaseResource(resource)
+        quest:DeregisterTimer(scratchValue25)
+        resources:ReleaseResource(resource5)
     end
     local function __cleanup_LAB_00d5db05()
         quest:PauseAllNonScriptedEntities(false)
-        resources:ReleaseResource(scratchValue33)
-        resources:DestroyActorMap(scratchValue28)
-        resources:DestroyMovie(scratchValue29)
-        quest:DeregisterTimer(scratchValue41)
-        resources:ReleaseResource(scratchValue40)
+        resources:DestroyMovie(movie)
+        resources:DestroyActorMap(actorMap2)
+        resources:ReleaseResource(resource)
+        quest:DeregisterTimer(scratchValue25)
+        resources:ReleaseResource(resource5)
     end
     local function __cleanup_LAB_00d5db37()
-        resources:ReleaseResource(scratchValue30)
+        resources:ReleaseResource(resource3)
         quest:DeregisterTimer(timerId2)
-        quest:DeregisterTimer(scratchValue41)
-        resources:DestroyMovie(scratchValue40)
+        quest:DeregisterTimer(scratchValue25)
+        resources:ReleaseResource(resource5)
     end
     local function __cleanup_LAB_00d5db90()
         quest:DeregisterTimer(timerId)
         quest:DeregisterTimer(timerId2)
-        quest:DeregisterTimer(scratchValue41)
-        resources:DestroyMovie(scratchValue40)
+        quest:DeregisterTimer(scratchValue25)
+        resources:ReleaseResource(resource5)
     end
-    scratchValue40 = resources:NewResource()
-    scratchValue10 = resources:TryAcquire(scratchValue40, me, 4)
-    while not scratchValue10 do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(scratchValue40); return end
-        scratchValue10 = resources:TryAcquire(scratchValue40, me, 4)
+    resource5 = resources:NewResource()
+    scratchValue9 = resources:TryAcquire(resource5, me, 4)
+    while not scratchValue9 do
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource5); return end
+        scratchValue9 = resources:TryAcquire(resource5, me, 4)
     end
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, true)
-        quest:EntitySetAlwaysBlockAttacksFromThing(me, quest:GetHero(), true)
+        quest:EntitySetAlwaysBlockAttacksFromThing(me, hero_, true)
         quest:SetIsPushableByHero(me, false)
         quest:SetThingHasInformation(me, false, false, false)
         me:MoveToPosition(quest:GetThingWithScriptName("M_SkillTeacherStand"):GetPos(), 0x40400000, 0, false, true)
         quest:SetPlayerUsingRangedDummies(true)
-        scratchValue16 = quest:RegisterTimer()
-        scratchValue41 = scratchValue16
-        quest:SetTimer(scratchValue16, 0)
-        scratchValue15 = quest:GetStateInt("TutorialState")
-        while scratchValue15 == 1 do
+        scratchValue15 = quest:RegisterTimer()
+        scratchValue25 = scratchValue15
+        quest:SetTimer(scratchValue15, 0)
+        scratchValue14 = quest:GetStateInt("TutorialState")
+        while scratchValue14 == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d5da96 end
             if me:IsTalkedToByHero() then
                 if quest:GetMasterGameState("HeroTakingGuildTest") == 0 then
                     me:ClearCommands()
                     quest:SetStateInt("TutorialState", 3)
                 else
-                    scratchValue34 = resources:StartMovie("")
+                    movie2 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     me:ClearCommands()
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(scratchValue40)) then
-                        scratchValue16 = 0
-                        me:Speak(quest:GetHero(), "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START", 0, false, true, false)
-                        scratchValue11 = me:IsPerformingScriptTask()
-                        while scratchValue11 do
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource5)) then
+                        scratchValue15 = 0
+                        me:Speak(hero_, "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START", 0, false, true, false)
+                        scratchValue = me:IsPerformingScriptTask()
+                        while scratchValue do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue34)
-                                quest:DeregisterTimer(scratchValue41)
-                                resources:ReleaseResource(scratchValue40)
+                                resources:DestroyMovie(movie2)
+                                quest:DeregisterTimer(scratchValue25)
+                                resources:ReleaseResource(resource5)
                                 return
                             end
-                            scratchValue11 = me:IsPerformingScriptTask()
+                            scratchValue = me:IsPerformingScriptTask()
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(scratchValue34)
+                            resources:DestroyMovie(movie2)
                             goto LAB_00d5da96
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(scratchValue34)
+                    resources:DestroyMovie(movie2)
                 end
             end
-            scratchValue13 = 5.5
-            if (quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 5.5) and quest:GetTimer(scratchValue41) < 1) and not me:IsPerformingScriptTask() then
+            scratchValue12 = 5.5
+            if (quest:IsDistanceBetweenThingsUnder(hero_, me, 5.5) and quest:GetTimer(scratchValue25) < 1) and not me:IsPerformingScriptTask() then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d5da96 end
-                scratchValue16 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(scratchValue16, quest:GetHero())
-                quest:SetTimer(scratchValue41, 10)
+                scratchValue15 = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(scratchValue15, hero_)
+                quest:SetTimer(scratchValue25, 10)
                 if true then
-                    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                    quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_FIRST", me, quest:GetHero(), false)
+                    quest:EntitySetFacingAngleTowardsThing(me, hero_, false)
+                    quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_FIRST", me, hero_, false)
                 elseif 0 == 1 then
-                    quest:EntitySetFacingAngleTowardsThing(me, quest:GetHero(), false)
-                    quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_SECOND", me, quest:GetHero(), false)
+                    quest:EntitySetFacingAngleTowardsThing(me, hero_, false)
+                    quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_SECOND", me, hero_, false)
                 end
                 -- TODO(native): xStack_1ec = 1 - xStack_1ec;
             end
-            scratchValue15 = quest:GetStateInt("TutorialState")
+            scratchValue14 = quest:GetStateInt("TutorialState")
         end
         if quest:IsActiveThreadTerminating() then
-            quest:DeregisterTimer(scratchValue41)
-            resources:DestroyMovie(scratchValue40)
+            quest:DeregisterTimer(scratchValue25)
+            resources:ReleaseResource(resource5)
             return
         end
         quest:SetMasterGameState("SkillTrainingStarted", true)
         quest:SetMasterGameState("SkillRepeating", true)
         quest:SetMasterGameState("HeroTakingGuildTest", true)
-        scratchValue11 = quest:GetMasterGameState("SkillRepeating")
-        while scratchValue11 ~= 0 do
+        scratchValue = quest:GetMasterGameState("SkillRepeating")
+        while scratchValue ~= 0 do
             if not quest:NewScriptFrame(me) then goto LAB_00d5da96 end
             quest:SetStateInt("TutorialState", 3)
             quest:SetMasterGameState("SkillRepeatKnown", false)
-            scratchValue29 = resources:NewResource()
-            scratchValue10 = resources:TryAcquire(scratchValue29, quest:GetHero(), 4)
-            while not scratchValue10 do
+            resource = resources:NewResource()
+            scratchValue9 = resources:TryAcquire(resource, hero_, 4)
+            while not scratchValue9 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    resources:DestroyMovie(scratchValue29)
-                    quest:DeregisterTimer(scratchValue41)
-                    resources:ReleaseResource(scratchValue40)
+                    resources:ReleaseResource(resource)
+                    quest:DeregisterTimer(scratchValue25)
+                    resources:ReleaseResource(resource5)
                     return
                 end
-                scratchValue10 = resources:TryAcquire(scratchValue29, quest:GetHero(), 4)
+                scratchValue9 = resources:TryAcquire(resource, hero_, 4)
             end
             if quest:IsActiveThreadTerminating() then
-                resources:DestroyMovie(scratchValue29)
-                quest:DeregisterTimer(scratchValue41)
-                resources:ReleaseResource(scratchValue40)
+                resources:ReleaseResource(resource)
+                quest:DeregisterTimer(scratchValue25)
+                resources:ReleaseResource(resource5)
                 return
             end
-            scratchValue28 = resources:NewActorMap()
-            resources:SetActor(scratchValue28, "HERO", scratchValue29)
-            resources:SetActor(scratchValue28, "TEACHER", scratchValue40)
+            actorMap2 = resources:NewActorMap()
+            resources:SetActor(actorMap2, "HERO", resource)
+            resources:SetActor(actorMap2, "TEACHER", resource5)
             quest:SetStateInt("TutorialState", 2)
-            scratchValue33 = resources:StartMovie("")
+            movie = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_SKILL_START", scratchValue28, false, true)
+            resources:RunMacro("CS_GUILD_SKILL_START", actorMap2, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:SetMasterGameState("SkillTrainingStarted", true)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_PC")
-                    scratchValue10 = quest:MsgIsGameInfoClickedPast()
-                    while not scratchValue10 do
+                    scratchValue9 = quest:MsgIsGameInfoClickedPast()
+                    while not scratchValue9 do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             __cleanup_LAB_00d5dac4(); return
                         end
-                        scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_8c);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_8c);
                         goto LAB_00d5b7c0
                     end
                 end
@@ -185,193 +185,192 @@ function Main(quest, me)
                 __cleanup_LAB_00d5dac4(); return
             end
             quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW")
-            scratchValue10 = quest:MsgIsGameInfoClickedPast()
-            while not scratchValue10 do
+            scratchValue9 = quest:MsgIsGameInfoClickedPast()
+            while not scratchValue9 do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db05(); return end
-                scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                scratchValue9 = quest:MsgIsGameInfoClickedPast()
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5dab8
             ::LAB_00d5b7c0::
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(scratchValue33)
-            resources:DestroyActorMap(scratchValue28)
-            resources:ReleaseResource(scratchValue29)
-            scratchValue36 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 3, 1.0)
+            resources:DestroyMovie(movie)
+            resources:DestroyActorMap(actorMap2)
+            resources:ReleaseResource(resource)
+            scratchValue23 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_TARGET_DUMMY", 3, 1.0)
             timerId2 = quest:RegisterTimer()
-            scratchValue15 = timerId2
             quest:SetTimer(timerId2, 15)
             quest:SetMasterGameState("SkillScore", 0)
             archeryRing = quest:GetThingWithScriptName("ArcheryRing")
-            scratchValue35 = quest:GetMasterGameState("SkillScore")
+            scratchValue22 = quest:GetMasterGameState("SkillScore")
             quest:EntitySetTargetable(me, false)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue37 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    scratchValue39 = quest:AddQuestInfoTickByText("GAME_ACTION_LOCK_TARGET", false, 1.0)
-                    scratchValue38 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
+                    scratchValue24 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
+                    addQuestInfoTickByText3 = quest:AddQuestInfoTickByText("GAME_ACTION_LOCK_TARGET", false, 1.0)
+                    addQuestInfoTickByText2 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5ba3e
                 end
                 quest:DeregisterTimer(timerId2)
-                quest:DeregisterTimer(scratchValue41)
-                resources:DestroyMovie(scratchValue40)
+                quest:DeregisterTimer(scratchValue25)
+                resources:ReleaseResource(resource5)
                 return
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId2)
-                quest:DeregisterTimer(scratchValue41)
-                resources:DestroyMovie(scratchValue40)
+                quest:DeregisterTimer(scratchValue25)
+                resources:ReleaseResource(resource5)
                 return
             end
-            scratchValue37 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
-            scratchValue39 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
-            scratchValue38 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
+            scratchValue24 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
+            addQuestInfoTickByText3 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
+            addQuestInfoTickByText2 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5ba3e::
-            scratchValue12 = 0
+            scratchValue11 = 0
             quest:DisplayQuestInfo(true)
-            quest:SetTimer(scratchValue15, 5)
-            scratchValue16 = 0
-            scratchValue15 = quest:GetMasterGameState("SkillScore")
-            while scratchValue15 < 3 do
+            quest:SetTimer(timerId2, 5)
+            scratchValue15 = 0
+            scratchValue14 = quest:GetMasterGameState("SkillScore")
+            while scratchValue14 < 3 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId2)
-                    quest:DeregisterTimer(scratchValue41)
-                    resources:DestroyMovie(scratchValue40)
+                    quest:DeregisterTimer(scratchValue25)
+                    resources:ReleaseResource(resource5)
                     return
                 end
-                scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                scratchValue5 = scratchValue10
-                if scratchValue5 then
+                scratchValue9 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+                scratchValue4 = scratchValue9
+                if scratchValue4 then
                     -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingLockTargetButton()
-                    scratchValue5 = scratchValue10
+                    scratchValue4 = scratchValue9
                 end
-                scratchValue4 = scratchValue5
-                if scratchValue4 then
+                scratchValue3 = scratchValue4
+                if scratchValue3 then
                     -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingFireRangedWeaponButton()
-                    scratchValue4 = scratchValue10
+                    scratchValue3 = scratchValue9
                 end
-                if scratchValue4 then
+                if scratchValue3 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
                         return
                     end
-                    scratchValue12 = 1
-                    quest:RemoveQuestInfoElement(scratchValue37)
-                    quest:RemoveQuestInfoElement(scratchValue39)
-                    quest:RemoveQuestInfoElement(scratchValue38)
-                elseif scratchValue12 == 0 then
+                    scratchValue11 = 1
+                    quest:RemoveQuestInfoElement(scratchValue24)
+                    quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
+                    quest:RemoveQuestInfoElement(addQuestInfoTickByText2)
+                elseif scratchValue11 == 0 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
                         return
                     end
-                    scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                    quest:UpdateQuestInfoTick(scratchValue37, scratchValue10)
+                    scratchValue9 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+                    quest:UpdateQuestInfoTick(scratchValue24, scratchValue9)
                     -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingLockTargetButton()
-                    quest:UpdateQuestInfoTick(scratchValue39, scratchValue10)
+                    quest:UpdateQuestInfoTick(addQuestInfoTickByText3, scratchValue9)
                     -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingFireRangedWeaponButton()
-                    quest:UpdateQuestInfoTick(scratchValue38, scratchValue10)
+                    quest:UpdateQuestInfoTick(addQuestInfoTickByText2, scratchValue9)
                     if quest:GetTimer(timerId2) < 1 then
-                        scratchValue13 = 6.0
-                        if quest:IsDistanceBetweenThingsUnder(quest:GetHero(), archeryRing, 6.0) and not quest:IsConversationActive(scratchValue16) then
+                        scratchValue12 = 6.0
+                        if quest:IsDistanceBetweenThingsUnder(hero_, archeryRing, 6.0) and not quest:IsConversationActive(scratchValue15) then
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
-                                quest:DeregisterTimer(scratchValue41)
-                                resources:DestroyMovie(scratchValue40)
+                                quest:DeregisterTimer(scratchValue25)
+                                resources:ReleaseResource(resource5)
                                 return
                             end
-                            scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                            if scratchValue10 then
+                            scratchValue9 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+                            if scratchValue9 then
                                 -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
                                 quest:IsPlayerHoldingLockTargetButton()
-                                if scratchValue10 then
+                                if scratchValue9 then
                                     -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                                     quest:IsPlayerHoldingFireRangedWeaponButton()
-                                    if scratchValue10 then goto LAB_00d5bf6c end
+                                    if scratchValue9 then goto LAB_00d5bf6c end
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId2)
-                                        quest:DeregisterTimer(scratchValue41)
-                                        resources:DestroyMovie(scratchValue40)
+                                        quest:DeregisterTimer(scratchValue25)
+                                        resources:ReleaseResource(resource5)
                                         return
                                     end
-                                    scratchValue16 = quest:AddNewConversation(me, false, false)
-                                    quest:AddPersonToConversation(scratchValue16, quest:GetHero())
+                                    scratchValue15 = quest:AddNewConversation(me, false, false)
+                                    quest:AddPersonToConversation(scratchValue15, hero_)
                                     if quest:IsXbox() then
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId2)
-                                            quest:DeregisterTimer(scratchValue41)
-                                            resources:DestroyMovie(scratchValue40)
+                                            quest:DeregisterTimer(scratchValue25)
+                                            resources:ReleaseResource(resource5)
                                             return
                                         end
-                                        quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_30", me, quest:GetHero(), false)
+                                        quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_30", me, hero_, false)
                                     else
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId2)
-                                            quest:DeregisterTimer(scratchValue41)
-                                            resources:DestroyMovie(scratchValue40)
+                                            quest:DeregisterTimer(scratchValue25)
+                                            resources:ReleaseResource(resource5)
                                             return
                                         end
-                                        quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_PC_30", me, quest:GetHero(), false)
+                                        quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_PC_30", me, hero_, false)
                                     end
                                 else
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId2)
-                                        quest:DeregisterTimer(scratchValue41)
-                                        resources:DestroyMovie(scratchValue40)
+                                        quest:DeregisterTimer(scratchValue25)
+                                        resources:ReleaseResource(resource5)
                                         return
                                     end
-                                    scratchValue16 = quest:AddNewConversation(me, false, false)
-                                    quest:AddPersonToConversation(scratchValue16, quest:GetHero())
+                                    scratchValue15 = quest:AddNewConversation(me, false, false)
+                                    quest:AddPersonToConversation(scratchValue15, hero_)
                                     if quest:IsXbox() then
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId2)
-                                            quest:DeregisterTimer(scratchValue41)
-                                            resources:DestroyMovie(scratchValue40)
+                                            quest:DeregisterTimer(scratchValue25)
+                                            resources:ReleaseResource(resource5)
                                             return
                                         end
-                                        quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_20", me, quest:GetHero(), false)
+                                        quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_20", me, hero_, false)
                                     else
                                         if quest:IsActiveThreadTerminating() then
                                             quest:DeregisterTimer(timerId2)
-                                            quest:DeregisterTimer(scratchValue41)
-                                            resources:DestroyMovie(scratchValue40)
+                                            quest:DeregisterTimer(scratchValue25)
+                                            resources:ReleaseResource(resource5)
                                             return
                                         end
-                                        quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_PC_20", me, quest:GetHero(), false)
+                                        quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_PC_20", me, hero_, false)
                                     end
                                 end
                             else
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId2)
-                                    quest:DeregisterTimer(scratchValue41)
-                                    resources:DestroyMovie(scratchValue40)
+                                    quest:DeregisterTimer(scratchValue25)
+                                    resources:ReleaseResource(resource5)
                                     return
                                 end
-                                scratchValue16 = quest:AddNewConversation(me, false, false)
-                                quest:AddPersonToConversation(scratchValue16, quest:GetHero())
+                                scratchValue15 = quest:AddNewConversation(me, false, false)
+                                quest:AddPersonToConversation(scratchValue15, hero_)
                                 if quest:IsXbox() then
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId2)
-                                        quest:DeregisterTimer(scratchValue41)
-                                        resources:DestroyMovie(scratchValue40)
+                                        quest:DeregisterTimer(scratchValue25)
+                                        resources:ReleaseResource(resource5)
                                         return
                                     end
-                                    quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_10", me, quest:GetHero(), false)
+                                    quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_10", me, hero_, false)
                                 else
                                     if quest:IsActiveThreadTerminating() then
                                         quest:DeregisterTimer(timerId2)
-                                        quest:DeregisterTimer(scratchValue41)
-                                        resources:DestroyMovie(scratchValue40)
+                                        quest:DeregisterTimer(scratchValue25)
+                                        resources:ReleaseResource(resource5)
                                         return
                                     end
-                                    quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_PC_10", me, quest:GetHero(), false)
+                                    quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_BOW1_INSTRUCTIONS_PC_10", me, hero_, false)
                                 end
                             end
                             quest:SetTimer(timerId2, 10)
@@ -379,112 +378,112 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00d5bf6c::
-                scratchValue15 = quest:GetMasterGameState("SkillScore")
-                if scratchValue35 < scratchValue15 then
+                scratchValue14 = quest:GetMasterGameState("SkillScore")
+                if scratchValue22 < scratchValue14 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
                         return
                     end
-                    scratchValue35 = quest:GetMasterGameState("SkillScore")
-                elseif scratchValue15 < scratchValue35 then
+                    scratchValue22 = quest:GetMasterGameState("SkillScore")
+                elseif scratchValue14 < scratchValue22 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
                         return
                     end
                     -- TODO(native): *piVar2 = *piVar2 + 1;
-                    if not quest:IsConversationActive(scratchValue16) then
+                    if not quest:IsConversationActive(scratchValue15) then
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)
-                            quest:DeregisterTimer(scratchValue41)
-                            resources:DestroyMovie(scratchValue40)
+                            quest:DeregisterTimer(scratchValue25)
+                            resources:ReleaseResource(resource5)
                             return
                         end
-                        scratchValue16 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue16, quest:GetHero())
-                        quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", me, quest:GetHero(), false)
+                        scratchValue15 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue15, hero_)
+                        quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", me, hero_, false)
                     end
                 end
-                quest:UpdateQuestInfoCounter(scratchValue36, quest:GetMasterGameState("SkillScore"), -1)
+                quest:UpdateQuestInfoCounter(scratchValue23, quest:GetMasterGameState("SkillScore"), -1)
                 if state:GetBool("PlayerNotWarned") then
-                    scratchValue13 = 6.0
-                    if quest:IsDistanceBetweenThingsOver(quest:GetHero(), archeryRing, 6.0) and not quest:IsConversationActive(scratchValue16) then
+                    scratchValue12 = 6.0
+                    if quest:IsDistanceBetweenThingsOver(hero_, archeryRing, 6.0) and not quest:IsConversationActive(scratchValue15) then
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)
-                            quest:DeregisterTimer(scratchValue41)
-                            resources:DestroyMovie(scratchValue40)
+                            quest:DeregisterTimer(scratchValue25)
+                            resources:ReleaseResource(resource5)
                             return
                         end
                         state:SetBool("PlayerNotWarned", false)
-                        scratchValue16 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue16, quest:GetHero())
-                        quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_MAZE_RING_OUT", me, quest:GetHero(), false)
+                        scratchValue15 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue15, hero_)
+                        quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_MAZE_RING_OUT", me, hero_, false)
                     end
                 end
-                scratchValue15 = quest:GetMasterGameState("SkillScore")
+                scratchValue14 = quest:GetMasterGameState("SkillScore")
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId2)
-                quest:DeregisterTimer(scratchValue41)
-                resources:DestroyMovie(scratchValue40)
+                quest:DeregisterTimer(scratchValue25)
+                resources:ReleaseResource(resource5)
                 return
             end
-            if scratchValue12 == 0 then
+            if scratchValue11 == 0 then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId2)
-                    quest:DeregisterTimer(scratchValue41)
-                    resources:DestroyMovie(scratchValue40)
+                    quest:DeregisterTimer(scratchValue25)
+                    resources:ReleaseResource(resource5)
                     return
                 end
-                quest:RemoveQuestInfoElement(scratchValue37)
-                quest:RemoveQuestInfoElement(scratchValue39)
-                quest:RemoveQuestInfoElement(scratchValue38)
+                quest:RemoveQuestInfoElement(scratchValue24)
+                quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
+                quest:RemoveQuestInfoElement(addQuestInfoTickByText2)
             end
-            scratchValue30 = resources:NewResource()
-            scratchValue10 = resources:TryAcquire(scratchValue30, quest:GetHero(), 4)
-            while not scratchValue10 do
+            resource3 = resources:NewResource()
+            scratchValue9 = resources:TryAcquire(resource3, hero_, 4)
+            while not scratchValue9 do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db37(); return end
-                scratchValue10 = resources:TryAcquire(scratchValue30, quest:GetHero(), 4)
+                scratchValue9 = resources:TryAcquire(resource3, hero_, 4)
             end
             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db37(); return end
-            scratchValue27 = resources:NewActorMap()
-            resources:SetActor(scratchValue27, "HERO", scratchValue30)
-            resources:SetActor(scratchValue27, "TEACHER", scratchValue40)
-            scratchValue42 = resources:StartMovie("")
+            actorMap = resources:NewActorMap()
+            resources:SetActor(actorMap, "HERO", resource3)
+            resources:SetActor(actorMap, "TEACHER", resource5)
+            movie3 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_SKILL_MOVE", scratchValue27, false, true)
+            resources:RunMacro("CS_GUILD_SKILL_MOVE", actorMap, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:SetStateInt("TutorialState", 4)
             quest:SetMasterGameState("MovingDummiesNeeded", true)
             quest:CameraDefault()
-            quest:RemoveQuestInfoElement(scratchValue36)
+            quest:RemoveQuestInfoElement(scratchValue23)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE_PC")
-                    scratchValue10 = quest:MsgIsGameInfoClickedPast()
-                    while not scratchValue10 do
+                    scratchValue9 = quest:MsgIsGameInfoClickedPast()
+                    while not scratchValue9 do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             -- TODO(native): goto LAB_00d5db1f
                         end
-                        scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbe9ee((CSubtitleRenderer *)xStack_98);
+                        -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_98);
                         goto LAB_00d5c4eb
                     end
                 end
                 -- LAB_00d5db45: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
                 -- LAB_00d5db1f: (native jump target)
-                resources:DestroyMovie(scratchValue42)
-                resources:DestroyActorMap(scratchValue27)
+                resources:DestroyMovie(movie3)
+                resources:DestroyActorMap(actorMap)
                 __cleanup_LAB_00d5db37(); return
             end
             if quest:IsActiveThreadTerminating() then
@@ -493,341 +492,341 @@ function Main(quest, me)
                 -- TODO(native): goto LAB_00d5db1f
             end
             quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE")
-            scratchValue10 = quest:MsgIsGameInfoClickedPast()
-            while not scratchValue10 do
+            scratchValue9 = quest:MsgIsGameInfoClickedPast()
+            while not scratchValue9 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db45
-                scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                scratchValue9 = quest:MsgIsGameInfoClickedPast()
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db13
             ::LAB_00d5c4eb::
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(scratchValue42)
-            resources:DestroyActorMap(scratchValue27)
-            resources:ReleaseResource(scratchValue30)
+            resources:DestroyMovie(movie3)
+            resources:DestroyActorMap(actorMap)
+            resources:ReleaseResource(resource3)
             if not quest:IsXbox() then
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    scratchValue37 = scratchValue
-                    scratchValue39 = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
-                    scratchValue38 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
+                    addQuestInfoTickByText = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
+                    scratchValue24 = addQuestInfoTickByText
+                    addQuestInfoTickByText3 = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
+                    addQuestInfoTickByText2 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5c6b1
                 end
                 quest:DeregisterTimer(timerId2)
-                quest:DeregisterTimer(scratchValue41)
-                resources:DestroyMovie(scratchValue40)
+                quest:DeregisterTimer(scratchValue25)
+                resources:ReleaseResource(resource5)
                 return
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId2)
-                quest:DeregisterTimer(scratchValue41)
-                resources:DestroyMovie(scratchValue40)
+                quest:DeregisterTimer(scratchValue25)
+                resources:ReleaseResource(resource5)
                 return
             end
-            scratchValue = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
-            scratchValue37 = scratchValue
-            scratchValue39 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
-            scratchValue38 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
+            addQuestInfoTickByText = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
+            scratchValue24 = addQuestInfoTickByText
+            addQuestInfoTickByText3 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
+            addQuestInfoTickByText2 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5c6b1::
-            scratchValue12 = 0
+            scratchValue11 = 0
             quest:DisplayQuestInfo(true)
             repeat
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId2)
-                    quest:DeregisterTimer(scratchValue41)
-                    resources:DestroyMovie(scratchValue40)
+                    quest:DeregisterTimer(scratchValue25)
+                    resources:ReleaseResource(resource5)
                     return
                 end
                 if quest:GetTimer(timerId2) < 1 then
                     if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then
-                        scratchValue10 = false
+                        scratchValue9 = false
                         goto FLOW_after_lab_00d5c757
                     end
-                    scratchValue13 = 6.0
-                    if not quest:IsDistanceBetweenThingsUnder(quest:GetHero(), archeryRing, 6.0) then
-                        scratchValue10 = false
+                    scratchValue12 = 6.0
+                    if not quest:IsDistanceBetweenThingsUnder(hero_, archeryRing, 6.0) then
+                        scratchValue9 = false
                         goto FLOW_after_lab_00d5c757
                     end
-                    scratchValue10 = true
+                    scratchValue9 = true
                 else
-                    scratchValue10 = false
+                    scratchValue9 = false
                 end
                 ::FLOW_after_lab_00d5c757::
-                if scratchValue10 then
+                if scratchValue9 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
                         return
                     end
-                    scratchValue16 = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(scratchValue16, quest:GetHero())
-                    quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_MAZE_BOW_UNSHEATH", me, quest:GetHero(), false)
+                    scratchValue15 = quest:AddNewConversation(me, false, false)
+                    quest:AddPersonToConversation(scratchValue15, hero_)
+                    quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_MAZE_BOW_UNSHEATH", me, hero_, false)
                     if quest:IsXbox() then
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)
-                            quest:DeregisterTimer(scratchValue41)
-                            resources:DestroyMovie(scratchValue40)
+                            quest:DeregisterTimer(scratchValue25)
+                            resources:ReleaseResource(resource5)
                             return
                         end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP")
-                        scratchValue10 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue10 do
+                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
+                        while not scratchValue9 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
-                                quest:DeregisterTimer(scratchValue41)
-                                resources:DestroyMovie(scratchValue40)
+                                quest:DeregisterTimer(scratchValue25)
+                                resources:ReleaseResource(resource5)
                                 return
                             end
-                            scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     else
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)
-                            quest:DeregisterTimer(scratchValue41)
-                            resources:DestroyMovie(scratchValue40)
+                            quest:DeregisterTimer(scratchValue25)
+                            resources:ReleaseResource(resource5)
                             return
                         end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP_PC")
-                        scratchValue10 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue10 do
+                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
+                        while not scratchValue9 do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
-                                quest:DeregisterTimer(scratchValue41)
-                                resources:DestroyMovie(scratchValue40)
+                                quest:DeregisterTimer(scratchValue25)
+                                resources:ReleaseResource(resource5)
                                 return
                             end
-                            scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
                         return
                     end
                     quest:SetTimer(timerId2, 15)
-                    scratchValue = scratchValue37
+                    addQuestInfoTickByText = scratchValue24
                 end
                 if quest:MsgOnHeroFiredRangedWeapon() then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
                         return
                     end
                 end
-                scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                scratchValue9 = scratchValue10
-                if scratchValue9 then
-                    -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
-                    quest:IsHeroInProjectileWeaponMode()
-                    scratchValue9 = scratchValue10
-                end
+                scratchValue9 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                 scratchValue8 = scratchValue9
                 if scratchValue8 then
-                    -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                    quest:IsPlayerHoldingFireRangedWeaponButton()
-                    scratchValue8 = scratchValue10
-                end
-                if scratchValue8 then
-                    if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
-                        return
-                    end
-                    scratchValue12 = 1
-                    quest:RemoveQuestInfoElement(scratchValue)
-                    quest:RemoveQuestInfoElement(scratchValue39)
-                    quest:RemoveQuestInfoElement(scratchValue38)
-                elseif scratchValue12 == 0 then
-                    if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(timerId2)
-                        quest:DeregisterTimer(scratchValue41)
-                        resources:DestroyMovie(scratchValue40)
-                        return
-                    end
-                    scratchValue10 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                    quest:UpdateQuestInfoTick(scratchValue, scratchValue10)
                     -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
                     quest:IsHeroInProjectileWeaponMode()
-                    quest:UpdateQuestInfoTick(scratchValue39, scratchValue10)
+                    scratchValue8 = scratchValue9
+                end
+                scratchValue7 = scratchValue8
+                if scratchValue7 then
                     -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
                     quest:IsPlayerHoldingFireRangedWeaponButton()
-                    quest:UpdateQuestInfoTick(scratchValue38, scratchValue10)
+                    scratchValue7 = scratchValue9
+                end
+                if scratchValue7 then
+                    if quest:IsActiveThreadTerminating() then
+                        quest:DeregisterTimer(timerId2)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
+                        return
+                    end
+                    scratchValue11 = 1
+                    quest:RemoveQuestInfoElement(addQuestInfoTickByText)
+                    quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
+                    quest:RemoveQuestInfoElement(addQuestInfoTickByText2)
+                elseif scratchValue11 == 0 then
+                    if quest:IsActiveThreadTerminating() then
+                        quest:DeregisterTimer(timerId2)
+                        quest:DeregisterTimer(scratchValue25)
+                        resources:ReleaseResource(resource5)
+                        return
+                    end
+                    scratchValue9 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
+                    quest:UpdateQuestInfoTick(addQuestInfoTickByText, scratchValue9)
+                    -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
+                    quest:IsHeroInProjectileWeaponMode()
+                    quest:UpdateQuestInfoTick(addQuestInfoTickByText3, scratchValue9)
+                    -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
+                    quest:IsPlayerHoldingFireRangedWeaponButton()
+                    quest:UpdateQuestInfoTick(addQuestInfoTickByText2, scratchValue9)
                 end
             until true
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId2)
-                quest:DeregisterTimer(scratchValue41)
-                resources:DestroyMovie(scratchValue40)
+                quest:DeregisterTimer(scratchValue25)
+                resources:ReleaseResource(resource5)
                 return
             end
-            if scratchValue12 == 0 then
+            if scratchValue11 == 0 then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId2)
-                    quest:DeregisterTimer(scratchValue41)
-                    resources:DestroyMovie(scratchValue40)
+                    quest:DeregisterTimer(scratchValue25)
+                    resources:ReleaseResource(resource5)
                     return
                 end
-                quest:RemoveQuestInfoElement(scratchValue)
-                quest:RemoveQuestInfoElement(scratchValue39)
-                quest:RemoveQuestInfoElement(scratchValue38)
+                quest:RemoveQuestInfoElement(addQuestInfoTickByText)
+                quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
+                quest:RemoveQuestInfoElement(addQuestInfoTickByText2)
             end
             timerId = quest:RegisterTimer()
             -- TODO(native): piVar2 = DAT_0143e8f8;
             quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(3844))))
             quest:SetMasterGameState("SkillScore", 0)
-            scratchValue12 = 0
-            scratchValue15 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
-            scratchValue39 = scratchValue15
-            scratchValue35 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-            scratchValue37 = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+            scratchValue11 = 0
+            scratchValue14 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
+            addQuestInfoTickByText3 = scratchValue14
+            scratchValue22 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+            scratchValue24 = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
             quest:DisplayQuestInfo(true)
-            quest:UpdateQuestInfoCounter(scratchValue15, quest:GetMasterGameState("HighestSkillScore"), -1)
+            quest:UpdateQuestInfoCounter(scratchValue14, quest:GetMasterGameState("HighestSkillScore"), -1)
             quest:SetMasterGameState("SkillTestOccuring", true)
             quest:SetTimer(timerId2, 15)
-            scratchValue15 = quest:GetTimer(timerId)
-            while 0 < scratchValue15 and scratchValue12 == 0 do
+            scratchValue14 = quest:GetTimer(timerId)
+            while 0 < scratchValue14 and scratchValue11 == 0 do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
                 if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
-                    scratchValue12 = 1
+                    scratchValue11 = 1
                 end
-                scratchValue15 = scratchValue35
-                quest:UpdateQuestInfoCounter(scratchValue35, quest:GetMasterGameState("SkillScore"), -1)
+                scratchValue14 = scratchValue22
+                quest:UpdateQuestInfoCounter(scratchValue22, quest:GetMasterGameState("SkillScore"), -1)
                 if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                     quest:SetMasterGameState("HighestSkillScore", quest:GetMasterGameState("SkillScore"))
-                    quest:UpdateQuestInfoCounter(scratchValue15, quest:GetMasterGameState("HighestSkillScore"), -1)
+                    quest:UpdateQuestInfoCounter(scratchValue14, quest:GetMasterGameState("HighestSkillScore"), -1)
                 end
                 if quest:GetTimer(timerId2) < 1 then
                     if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then
-                        scratchValue10 = false
+                        scratchValue9 = false
                         goto FLOW_after_lab_00d5cd47
                     end
-                    scratchValue10 = true
+                    scratchValue9 = true
                 else
-                    scratchValue10 = false
+                    scratchValue9 = false
                 end
                 ::FLOW_after_lab_00d5cd47::
-                if scratchValue10 then
+                if scratchValue9 then
                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
-                    scratchValue16 = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(scratchValue16, quest:GetHero())
-                    quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_MAZE_BOW_UNSHEATH", me, quest:GetHero(), false)
+                    scratchValue15 = quest:AddNewConversation(me, false, false)
+                    quest:AddPersonToConversation(scratchValue15, hero_)
+                    quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_MAZE_BOW_UNSHEATH", me, hero_, false)
                     if quest:IsXbox() then
                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP")
-                        scratchValue10 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue10 do
+                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
+                        while not scratchValue9 do
                             if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
-                            scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     else
                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP_PC")
-                        scratchValue10 = quest:MsgIsGameInfoClickedPast()
-                        while not scratchValue10 do
+                        scratchValue9 = quest:MsgIsGameInfoClickedPast()
+                        while not scratchValue9 do
                             if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
-                            scratchValue10 = quest:MsgIsGameInfoClickedPast()
+                            scratchValue9 = quest:MsgIsGameInfoClickedPast()
                         end
                     end
                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                     quest:SetTimer(timerId2, 15)
                 end
                 if not state:GetBool("PlayerNotWarned") then
-                    scratchValue10 = false
+                    scratchValue9 = false
                 else
                     -- TODO(native): CVar10 = *(this + 4)
-                    scratchValue = nil --[[unresolved native value]]
-                    scratchValue13 = 6.0
+                    addQuestInfoTickByText = nil --[[unresolved native value]]
+                    scratchValue12 = 6.0
                     -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
-                    scratchValue22 = nil --[[unresolved native value]]
+                    scratchValue19 = nil --[[unresolved native value]]
                     -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
-                    scratchValue21 = nil --[[unresolved native value]]
-                    scratchValue10 = quest:IsDistanceBetweenThingsOver(scratchValue21, scratchValue22, 6.0)
+                    hero = nil --[[unresolved native value]]
+                    scratchValue9 = quest:IsDistanceBetweenThingsOver(hero, scratchValue19, 6.0)
                 end
-                if scratchValue10 then
+                if scratchValue9 then
                     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
                     state:SetBool("PlayerNotWarned", false)
-                    scratchValue16 = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(scratchValue16, quest:GetHero())
-                    quest:AddLineToConversation(scratchValue16, "TEXT_QST_028_MAZE_RING_OUT", me, quest:GetHero(), false)
+                    scratchValue15 = quest:AddNewConversation(me, false, false)
+                    quest:AddPersonToConversation(scratchValue15, hero_)
+                    quest:AddLineToConversation(scratchValue15, "TEXT_QST_028_MAZE_RING_OUT", me, hero_, false)
                 end
-                scratchValue15 = quest:GetTimer(timerId)
+                scratchValue14 = quest:GetTimer(timerId)
             end
             if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5db90(); return end
             quest:SetMasterGameState("HeroTakingGuildTest", false)
             quest:SetMasterGameState("SkillTestOccuring", false)
-            scratchValue10 = quest:IsHeroControlledByPlayer()
-            while not scratchValue10 do
+            scratchValue9 = quest:IsHeroControlledByPlayer()
+            while not scratchValue9 do
                 if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5db90(); return end
-                scratchValue10 = quest:IsHeroControlledByPlayer()
+                scratchValue9 = quest:IsHeroControlledByPlayer()
             end
             quest:DisplayQuestInfo(false)
-            quest:RemoveQuestInfoElement(scratchValue39)
-            quest:RemoveQuestInfoElement(scratchValue35)
-            quest:RemoveQuestInfoElement(scratchValue37)
+            quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
+            quest:RemoveQuestInfoElement(scratchValue22)
+            quest:RemoveQuestInfoElement(scratchValue24)
             quest:EntitySetTargetable(me, true)
-            scratchValue31 = resources:NewResource()
-            scratchValue10 = resources:TryAcquire(scratchValue31, quest:GetHero(), 4)
-            while not scratchValue10 do
+            resource4 = resources:NewResource()
+            scratchValue9 = resources:TryAcquire(resource4, hero_, 4)
+            while not scratchValue9 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db84
-                scratchValue10 = resources:TryAcquire(scratchValue31, quest:GetHero(), 4)
+                scratchValue9 = resources:TryAcquire(resource4, hero_, 4)
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5db84: (native jump target)
-                resources:DestroyMovie(scratchValue31)
+                resources:ReleaseResource(resource4)
                 __cleanup_LAB_00d5db90(); return
             end
-            scratchValue32 = resources:NewActorMap()
-            resources:SetActor(scratchValue32, "HERO", scratchValue31)
-            resources:SetActor(scratchValue32, "TEACHER", scratchValue40)
-            scratchValue34 = resources:StartMovie("")
+            actorMap3 = resources:NewActorMap()
+            resources:SetActor(actorMap3, "HERO", resource4)
+            resources:SetActor(actorMap3, "TEACHER", resource5)
+            movie2 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             if xStack_21c_b3 == 0 then
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue36 = quest:GetMasterGameState("SkillScore")
-                    scratchValue19 = 0
-                    scratchValue15 = 0
+                    scratchValue23 = quest:GetMasterGameState("SkillScore")
+                    scratchValue18 = 0
+                    scratchValue14 = 0
                     repeat
-                        scratchValue16 = scratchValue15
-                        if quest:ReadGlobalGameDataFloatAt(3776, scratchValue19) < scratchValue36 ~= (quest:ReadGlobalGameDataFloatAt(3776, scratchValue19) == scratchValue36) then
+                        scratchValue15 = scratchValue14
+                        if quest:ReadGlobalGameDataFloatAt(3776, scratchValue18) < scratchValue23 ~= (quest:ReadGlobalGameDataFloatAt(3776, scratchValue18) == scratchValue23) then
                             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
                             break
                         end
-                        scratchValue15 = scratchValue16 + 1
-                        scratchValue19 = scratchValue19 + 1
-                    until scratchValue15 >= 7
-                    scratchValue22 = resources:NewStringMap()
-                    switch2 = scratchValue16
+                        scratchValue14 = scratchValue15 + 1
+                        scratchValue18 = scratchValue18 + 1
+                    until scratchValue14 >= 7
+                    scratchValue19 = resources:NewStringMap()
+                    switch = scratchValue15
                     repeat
-                        if switch2 == 0 then
+                        if switch == 0 then
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_114);
                             break
-                        elseif switch2 == 1 then
+                        elseif switch == 1 then
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_10c);
                             break
-                        elseif switch2 == 2 then
+                        elseif switch == 2 then
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_104);
                             break
-                        elseif switch2 == 3 then
+                        elseif switch == 3 then
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_fc);
                             break
-                        elseif switch2 == 4 then
+                        elseif switch == 4 then
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_f4);
                             break
-                        elseif switch2 == 5 then
+                        elseif switch == 5 then
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_ec);
                             break
-                        elseif switch2 == 6 then
+                        elseif switch == 6 then
                             -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_e4);
                             break
                         else
@@ -835,8 +834,8 @@ function Main(quest, me)
                         end
                     until true
                     ::FLOW_native_label_1::
-                    resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", scratchValue32, scratchValue22, false, false)
-                    resources:DestroyStringMap(scratchValue22)
+                    resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", actorMap3, scratchValue19, false, false)
+                    resources:DestroyStringMap(scratchValue19)
                     goto LAB_00d5d526
                 end
                 -- TODO(native): goto LAB_00d5db62
@@ -845,25 +844,25 @@ function Main(quest, me)
                 -- LAB_00d5db53: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
                 -- LAB_00d5db6f: (native jump target)
-                resources:ReleaseResource(scratchValue34)
-                resources:DestroyActorMap(scratchValue32)
+                resources:DestroyMovie(movie2)
+                resources:DestroyActorMap(actorMap3)
                 -- TODO(native): goto LAB_00d5db84
             end
-            resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", scratchValue32, false, true)
+            resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", actorMap3, false, true)
             ::LAB_00d5d526::
             quest:SetStateInt("TutorialState", 0)
-            quest:RemoveQuestInfoElement(scratchValue13)
+            quest:RemoveQuestInfoElement(scratchValue12)
             quest:Pause(2.0)
             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_SKILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
-            scratchValue15 = quest:MsgIsQuestionAnsweredYesOrNo()
-            while scratchValue15 < 0 do
+            scratchValue14 = quest:MsgIsQuestionAnsweredYesOrNo()
+            while scratchValue14 < 0 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
-                scratchValue15 = quest:MsgIsQuestionAnsweredYesOrNo()
+                scratchValue14 = quest:MsgIsQuestionAnsweredYesOrNo()
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
-            if scratchValue15 == 1 then
-                resources:RunMacro("CS_GUILD_SKILL_CONTINUE", scratchValue32, false, true)
+            if scratchValue14 == 1 then
+                resources:RunMacro("CS_GUILD_SKILL_CONTINUE", actorMap3, false, true)
                 quest:SetMasterGameState("SkillRepeating", false)
                 goto LAB_00d5d7a9
                 -- LAB_00d5db62: (native jump target)
@@ -871,37 +870,37 @@ function Main(quest, me)
                 -- TODO(native): goto LAB_00d5db6f
             end
             if false then return end  -- TODO(native): goto LAB_00d5db53
-            resources:RunMacro("CS_GUILD_MELEE_REPEAT", scratchValue32, false, false)
+            resources:RunMacro("CS_GUILD_MELEE_REPEAT", actorMap3, false, false)
             quest:SetMasterGameState("MovingDummiesNeeded", false)
             quest:SetMasterGameState("SkillRepeating", true)
             quest:SetMasterGameState("SkillRepeatKnown", true)
-            if quest:IsObjectInThingsPossession("OBJECT_YEW_LONGBOW", quest:GetHero()) then
+            if quest:IsObjectInThingsPossession("OBJECT_YEW_LONGBOW", hero_) then
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
                 quest:TakeObjectFromHero("OBJECT_YEW_LONGBOW")
             end
-            scratchValue11 = quest:GetMasterGameState("SkillDummyReset")
-            while scratchValue11 ~= 1 do
+            scratchValue = quest:GetMasterGameState("SkillDummyReset")
+            while scratchValue ~= 1 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
-                scratchValue11 = quest:GetMasterGameState("SkillDummyReset")
+                scratchValue = quest:GetMasterGameState("SkillDummyReset")
             end
             if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
             ::LAB_00d5d7a9::
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(scratchValue34)
-            resources:DestroyActorMap(scratchValue32)
-            resources:ReleaseResource(scratchValue31)
+            resources:DestroyMovie(movie2)
+            resources:DestroyActorMap(actorMap3)
+            resources:ReleaseResource(resource4)
             quest:DeregisterTimer(timerId)
             quest:DeregisterTimer(timerId2)
-            scratchValue16 = scratchValue41
-            scratchValue11 = quest:GetMasterGameState("SkillRepeating")
+            scratchValue15 = scratchValue25
+            scratchValue = quest:GetMasterGameState("SkillRepeating")
         end
         if not quest:IsActiveThreadTerminating() then
             me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 0x40400000, 0, false, true)
-            scratchValue25 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("SkillApprenticeMarker"):GetPos(), "SkillApprentice")
-            if scratchValue25 ~= nil and not scratchValue25:IsNull() then
-                scratchValue25:SetToKillOnLevelUnload(0)
+            guildEvilApprenticeMale = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("SkillApprenticeMarker"):GetPos(), "SkillApprentice")
+            if guildEvilApprenticeMale ~= nil then
+                guildEvilApprenticeMale:SetToKillOnLevelUnload(0)
             end
             quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("BirdKillerMarker"):GetPos(), "BirdKiller")
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_05", "", "")
@@ -909,9 +908,9 @@ function Main(quest, me)
             quest:SetPlayerUsingRangedDummies(false)
         end
         ::LAB_00d5da96::
-        quest:DeregisterTimer(scratchValue16)
+        quest:DeregisterTimer(scratchValue15)
     end
-    resources:ReleaseResource(scratchValue40)
+    resources:ReleaseResource(resource5)
 end
 
 -- TheRealGuildmaster.Init (retail 0x00d5ac90)

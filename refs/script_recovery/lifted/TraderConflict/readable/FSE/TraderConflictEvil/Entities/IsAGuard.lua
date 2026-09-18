@@ -12,7 +12,7 @@ end
 
 -- IsAGuard.Main (retail 0x00df9710)
 function Main(quest, me)
-    local predicateResult6
+    local predicateResult
     if not quest:NewScriptFrame(me) then return end
     while not quest:IsActiveThreadTerminating() do
         while not quest:GetStateBool("PlayerEngaged") do
@@ -20,21 +20,21 @@ function Main(quest, me)
             -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
             if me:MsgIsHitBy("") then
                 if me:MsgIsHitByHero() then
-                    predicateResult6 = false
+                    predicateResult = false
                     goto FLOW_after_lab_00df983a
                 end
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     if not me:MsgIsHitByHeroSpecialAbility(me) then
-                        predicateResult6 = false
+                        predicateResult = false
                         goto FLOW_after_lab_00df983a
                     end
                 end
-                predicateResult6 = true
+                predicateResult = true
             else
-                predicateResult6 = false
+                predicateResult = false
             end
             ::FLOW_after_lab_00df983a::
-            if predicateResult6 then
+            if predicateResult then
                 if quest:IsActiveThreadTerminating() then return end
                 quest:ModifyThingHealth(me, 40.0, false)
             elseif me:MsgIsHitByHero() or me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me) then

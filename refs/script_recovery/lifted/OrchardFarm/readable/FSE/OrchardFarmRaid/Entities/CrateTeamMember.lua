@@ -15,8 +15,8 @@ end
 -- CrateTeamMember.Main (retail 0x00dce230)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local predicateResult4, predicateResult5, scratchValue8, getCurrentStateGroupType, p0_00
-    local getNearestWithScriptName, thing_38, scratchValue14
+    local predicateResult, predicateResult5, isDistanceBetweenThingsUnder, getCurrentStateGroupType
+    local p0_00, teamExitMarker, thing_38, resource
     local teamId = state:GetInt("TeamID")
     local heroTeam = quest:GetStateInt("HeroTeam")
     local myTeam = state:GetInt("MyTeam")
@@ -39,7 +39,7 @@ function Main(quest, me)
         end
         helpers.MakeTeamMemberComment(quest, me, "FETCHING_03", me, 0)
     end
-    predicateResult4 = false
+    predicateResult = false
     while not quest:GetStateBool("WhisperSpawned") do
         if not quest:NewScriptFrame(me) then return end
         GoOnPatrol(quest, me)
@@ -63,11 +63,11 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then return end
                 thing_38 = GetNearestCrateToMe(quest, me)
                 if (thing_38 ~= nil and not thing_38:IsNull()) and (thing_38 ~= nil and thing_38:IsAlive()) and not ((thing_38 ~= nil and not thing_38:IsNull()) and thing_38:IsBeingCarriedBy("")) then
-                    scratchValue8 = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
+                    isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                     if heroTeam == 0 and teamId == 1 then
-                        scratchValue8 = true
+                        isDistanceBetweenThingsUnder = true
                     end
-                    if quest:IsDistanceBetweenThingsOver(thing_38, quest:GetStateThing("Teams_" .. myTeam .. "_CrateDropPos"), 5.0) and scratchValue8 then
+                    if quest:IsDistanceBetweenThingsOver(thing_38, quest:GetStateThing("Teams_" .. myTeam .. "_CrateDropPos"), 5.0) and isDistanceBetweenThingsUnder then
                         if teamId == 1 then
                             quest:EntityStopFollowing(me)
                             quest:SetCombatNearbyBreakOffRange(me, 4.0)
@@ -79,15 +79,15 @@ function Main(quest, me)
                             predicateResult5 = true
                         end
                         quest:SetRecoverStealableItems(me, predicateResult5)
-                        predicateResult4 = true
+                        predicateResult = true
                         SetMemberState(quest, me, 2)
                         helpers.MakeTeamMemberComment(quest, me, "FETCHING", me, 0)
-                    elseif predicateResult4 then
+                    elseif predicateResult then
                         quest:ResetCombatNearbyBreakOffRange(me)
                         quest:SetStealStealableItems(me, false)
                         quest:SetRecoverStealableItems(me, false)
                         SetMemberState(quest, me, 0)
-                        predicateResult4 = false
+                        predicateResult = false
                     end
                 end
             end
@@ -130,19 +130,19 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:EntityStopFollowing(me)
-    getNearestWithScriptName = quest:GetNearestWithScriptName(me, "TeamExitMarker")
-    scratchValue14 = resources:NewResource()
-    while not resources:TryAcquire(scratchValue14, me, 4) do
+    teamExitMarker = quest:GetNearestWithScriptName(me, "TeamExitMarker")
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00dcec33 end
     end
     while not quest:IsActiveThreadTerminating() do
         if not me:IsPerformingScriptTask() then
-            if getNearestWithScriptName ~= nil and not getNearestWithScriptName:IsNull() then
-                p0_00 = getNearestWithScriptName:GetPos()
+            if teamExitMarker ~= nil and not teamExitMarker:IsNull() then
+                p0_00 = teamExitMarker:GetPos()
             end
             me:MoveToPosition(p0_00, 0.5, 1, false, true)
         end
-        if quest:IsDistanceBetweenThingsUnder(me, getNearestWithScriptName, 2.0) then
+        if quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then
             if not quest:IsActiveThreadTerminating() then
                 quest:FadeOutAndKillEntity(me, true, 3.0, true)
                 repeat
@@ -154,13 +154,15 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
     end
     ::LAB_00dcec33::
-    resources:ReleaseResource(scratchValue14)
+    resources:ReleaseResource(resource)
 end
 
 -- CrateTeamMember.Init (retail 0x00dcdf60)
 function Init(quest, me)
-    local getName = me:GetName()
-    if getName ~= nil and getName == "BanditTeamMember" then
+    local name
+    local hero = quest:GetHero()
+    name = me:GetName()
+    if name ~= nil and name == "BanditTeamMember" then
         state:SetInt("TeamID", 1)
     else
         state:SetInt("TeamID", 0)
@@ -168,7 +170,7 @@ function Init(quest, me)
     if state:GetInt("TeamID") == 1 then
         if quest:GetStateInt("HeroTeam") == 1 then
             quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
-            quest:EntitySetThingAsAllyOfThing(me, quest:GetHero())
+            quest:EntitySetThingAsAllyOfThing(me, hero)
         else
             quest:EntitySetInFaction(me, "FACTION_BANDITS")
             quest:MiniMapAddMarker(me, "HUD_ORB_RED_SMALL")
@@ -179,7 +181,7 @@ function Init(quest, me)
     else
         if state:GetInt("TeamID") == quest:GetStateInt("HeroTeam") then
             quest:EntitySetInFaction(me, "FACTION_VILLAGERS")
-            quest:EntitySetThingAsAllyOfThing(me, quest:GetHero())
+            quest:EntitySetThingAsAllyOfThing(me, hero)
         else
             quest:EntitySetInFaction(me, "FACTION_GUARDS_ENEMY")
             quest:MiniMapAddMarker(me, "HUD_ORB_RED_SMALL")
@@ -217,15 +219,16 @@ end
 -- CrateTeamMember.GoOnPatrol (retail 0x00dcec70)
 function GoOnPatrol(quest, me)
     local myTeam = state:GetInt("MyTeam")
+    local hero = quest:GetHero()
     if state:GetInt("MemberState") ~= 0 then
         return
     end
     if state:GetInt("TeamID") == quest:GetStateInt("HeroTeam") then
         if quest:IsActiveThreadTerminating() then return end
-        quest:EntityFollowThing(me, quest:GetHero(), 3.0, true)
+        quest:EntityFollowThing(me, hero, 3.0, true)
     else
         if quest:IsActiveThreadTerminating() then return end
-        quest:EntityFollowThing(me, quest:GetHero(), 1.0, true)
+        quest:EntityFollowThing(me, hero, 1.0, true)
         quest:EntitySetAsMirroringHeroEnemyRelationsWhileFollowing(me, false)
     end
     quest:SetStateInt("Teams_" .. myTeam .. "_StateCounter_" .. state:GetInt("MemberState"), quest:GetStateInt("Teams_" .. myTeam .. "_StateCounter_" .. state:GetInt("MemberState")) - 1)

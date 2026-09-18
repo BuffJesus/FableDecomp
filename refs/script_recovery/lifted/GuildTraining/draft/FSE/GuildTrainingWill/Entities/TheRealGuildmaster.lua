@@ -16,7 +16,7 @@ function Main(quest, me)
     local alive = true
     local function __region_LAB_00d61ad8_c22()
         quest:PauseAllNonScriptedEntities(false)
-        resources:ReleaseResource(xStack_1f0)
+        resources:DestroyMovie(xStack_1f0)
     end
     local function __cleanup_LAB_00d61b0a()
         quest:DeregisterTimer(xStack_244)
@@ -127,7 +127,7 @@ function Main(quest, me)
                         bVar6 = not alive
                         if bVar6 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:ReleaseResource(xStack_1f0)
+                            resources:DestroyMovie(xStack_1f0)
                             goto LAB_00d61b69
                         end
                     end
@@ -228,7 +228,7 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_20)
                 resources:DestroyActorMap(xStack_54)
-                resources:DestroyMovie(xStack_38)
+                resources:ReleaseResource(xStack_38)
                 bVar6 = quest:IsXbox()
                 if bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -342,7 +342,7 @@ function Main(quest, me)
                         quest:FixMovieSequenceCamera(true)
                         resources:RunMacro("CS_GUILD_WILL_TEST", pCVar12, false, true)
                         quest:FixMovieSequenceCamera(false)
-                        resources:ReleaseResource(xStack_10)
+                        resources:DestroyMovie(xStack_10)
                         resources:DestroyActorMap(pCVar12)
                         resources:ReleaseResource(xStack_48)
                     end
@@ -728,7 +728,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then
-                            resources:DestroyMovie(xStack_1f0)
+                            resources:ReleaseResource(xStack_1f0)
                             -- LAB_00d61578_c9: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
                             goto FLOW_after_lab_00d61578
@@ -756,7 +756,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar8 = not alive
                         if bVar8 then
-                            resources:DestroyMovie(xStack_1f0)
+                            resources:ReleaseResource(xStack_1f0)
                             -- LAB_00d61578_c11: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
                             goto FLOW_after_lab_00d61578
@@ -765,7 +765,7 @@ function Main(quest, me)
                         bVar8 = not alive
                         if iVar10 == 1 then
                             if bVar8 then
-                                resources:DestroyMovie(xStack_1f0)
+                                resources:ReleaseResource(xStack_1f0)
                                 -- LAB_00d61578_c12: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
                                 goto FLOW_after_lab_00d61578
@@ -802,7 +802,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar8 = not alive
                                 if bVar8 then
-                                    resources:DestroyMovie(xStack_1f0)
+                                    resources:ReleaseResource(xStack_1f0)
                                     -- LAB_00d61578_c14: (native jump target)
                                     quest:PauseAllNonScriptedEntities(false)
                                     goto FLOW_after_lab_00d61578
@@ -822,7 +822,7 @@ function Main(quest, me)
                         bVar8 = false
                         if bVar8 ~= 0 then
                         end
-                        resources:DestroyMovie(xStack_1f0)
+                        resources:ReleaseResource(xStack_1f0)
                     else
                         if bVar6 then
                             quest:PauseAllNonScriptedEntities(false)
@@ -1029,7 +1029,7 @@ function Main(quest, me)
                 end
                 quest:FixMovieSequenceCamera(false)
                 quest:SetMasterGameState("MeleeApprenticeNeededForCutscene", false)
-                resources:ReleaseResource(xStack_1d0)
+                resources:DestroyMovie(xStack_1d0)
                 resources:DestroyActorMap(xStack_210)
                 resources:ReleaseResource(xStack_200)
                 quest:DeregisterTimer(xStack_22c)
@@ -1185,7 +1185,7 @@ function Main(quest, me)
                                 -- LAB_00d61b5a_c22: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
                             end
-                            resources:ReleaseResource(xStack_1f0)
+                            resources:DestroyMovie(xStack_1f0)
                             goto LAB_00d61b69
                         end
                     end
@@ -1326,7 +1326,7 @@ function Main(quest, me)
                                 r14 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice")
                                 -- LAB_00d61ad8: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:ReleaseResource(xStack_1f0)
+                                resources:DestroyMovie(xStack_1f0)
                                 goto LAB_00d61af3
                             end
                         else
@@ -1366,7 +1366,7 @@ function Main(quest, me)
                                 pCVar13 = pCVar12:GetPos()
                                 me:MoveToPosition(pCVar13, iVar10, iVar11, false, (iVar22 ~= 0))
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:ReleaseResource(xStack_1f0)
+                                resources:DestroyMovie(xStack_1f0)
                                 goto LAB_00d61af3
                             end
                         end
@@ -1375,7 +1375,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                     end
                     ::FLOW_after_lab_00d61b53::
-                    resources:ReleaseResource(xStack_1f0)
+                    resources:DestroyMovie(xStack_1f0)
                     goto LAB_00d61b69
                 end
             end
@@ -1415,7 +1415,7 @@ function Main(quest, me)
     bVar6 = not alive
     if bVar6 then
         -- LAB_00d61563: (native jump target)
-        resources:DestroyMovie(xStack_1f0)
+        resources:ReleaseResource(xStack_1f0)
         -- LAB_00d61578: (native jump target)
         quest:PauseAllNonScriptedEntities(false)
     else
@@ -1429,7 +1429,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
             if bVar6 then
-                resources:DestroyMovie(xStack_1f0)
+                resources:ReleaseResource(xStack_1f0)
                 -- LAB_00d61578_c31: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
                 goto FLOW_after_lab_00d61578
@@ -1465,7 +1465,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
             until not (not bVar6)
-            resources:DestroyMovie(xStack_1f0)
+            resources:ReleaseResource(xStack_1f0)
             -- LAB_00d61578_c32: (native jump target)
             quest:PauseAllNonScriptedEntities(false)
             goto FLOW_after_lab_00d61578
@@ -1575,14 +1575,14 @@ function Main(quest, me)
     end
     ::FLOW_after_lab_00d60be3::
     ::LAB_00d61004::
-    resources:DestroyMovie(xStack_158)
+    resources:ReleaseResource(xStack_158)
     ::LAB_00d6101c::
     quest:PauseAllNonScriptedEntities(false)
     ::LAB_00d6135b::
-    resources:ReleaseResource(xStack_1d0)
+    resources:DestroyMovie(xStack_1d0)
     resources:DestroyActorMap(xStack_210)
     ::LAB_00d61370::
-    resources:DestroyMovie(xStack_200)
+    resources:ReleaseResource(xStack_200)
     ::LAB_00d61379::
     quest:DeregisterTimer(xStack_22c)
     quest:DeregisterTimer(fVar4)

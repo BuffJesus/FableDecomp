@@ -12,27 +12,28 @@ end
 
 -- TC_BanditHostageKeeper.Main (retail 0x00dfba60)
 function Main(quest, me)
+    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local conversationID, scratchValue
+    local conversationID, resource
     if not quest:NewScriptFrame(me) then return end
-    scratchValue = resources:NewResource()
-    while not resources:TryAcquire(scratchValue, me, 2) do
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, me, 2) do
         if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
     end
     if not quest:IsActiveThreadTerminating() then
-        while not quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 15.0) do
+        while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
             if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
         end
         if not quest:IsActiveThreadTerminating() then
             if iVar4 % 5 == 0 then
                 conversationID = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationID, quest:GetHero())
+                quest:AddPersonToConversation(conversationID, hero)
                 if quest:GetStateInt("BanditSecurityLinesSaid") == 0 then
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_10", me, quest:GetHero(), false)
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_10", me, hero, false)
                 elseif quest:GetStateInt("BanditSecurityLinesSaid") == 1 then
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, quest:GetHero(), false)
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, hero, false)
                 else
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, quest:GetHero(), "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20")
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, hero, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20")
                 end
                 if quest:GetStateInt("BanditSecurityLinesSaid") < 1 then
                     quest:SetStateInt("BanditSecurityLinesSaid", quest:GetStateInt("BanditSecurityLinesSaid") + 1)
@@ -46,7 +47,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00dfbcd3::
-    resources:ReleaseResource(scratchValue)
+    resources:ReleaseResource(resource)
 end
 
 -- TC_BanditHostageKeeper.Init (retail 0x00cdebb0)

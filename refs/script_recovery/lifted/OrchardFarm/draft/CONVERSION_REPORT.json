@@ -2045,7 +2045,7 @@
             "pCVar6 = 0x0",
             "quest:PauseAllNonScriptedEntities((pCVar6 ~= 0))",
             "resources:DestroyMovie(xStack_9c)",
-            "resources:DestroyActorMap(r2)",
+            "resources:DestroyActorMap(xStack_80)",
             "resources:ReleaseResource(xStack_ac)",
             "resources:ReleaseResource(xStack_bc)"
           ],

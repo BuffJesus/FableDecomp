@@ -1,6 +1,7 @@
 -- Generated from the same native helper bodies as the quest draft.
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
+    local resources = quest:RetailResources()
     local bVar4, dist, ePriority, local_3c, native_arg_sequence_1, native_arg_sequence_2, pCVar5, pScriptObject, string, xStack_10, xStack_20, xStack_38
     local alive = true
     ePriority = 4

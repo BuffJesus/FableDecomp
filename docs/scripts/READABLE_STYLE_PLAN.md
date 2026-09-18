@@ -80,6 +80,24 @@ me:MoveToThing(fleeMarker, 3.0, 1) -- 1 = ENTITY_MOVE_RUN (Non-blocking)
    header per function from the PDB name/role (Main, per-frame thread, helper).
 6. **Cosmetics.** Strip `(4.0)`, `(true)`, `(x ~= false)`; single blank lines; `local helpers = require(...)` once per file.
 
+## Status 2026-09-17 (night) — measured against Aeon's Fisherman / NewOakValeIntro ports
+
+Landed in `readable_style.py` / `readable_lua.py`: `local hero = quest:GetHero()` hoisted once per function; copy
+propagation (aliases, loop-end reloads); uint fixups; cleanup closures tidied; free `name2` suffixes dropped; the
+cutscene boilerplate folded to `quest:StartCutscene({HERO = hero, ...}, {}, fixCamera)` / `RunCutscene` / `EndCutscene`
+(exactly LuaQuestState::StartCutscene's native calls); helpers named by shape (`PlayHeroCutscene`); temporaries named
+after the script/def name they look up or create (`guildScorpions`, `scorpionSpawn`, `guildStagBeetle`, `count`,
+`infoCounter`). Orchard readable 1140 lines / 69 temporaries (was 2110 / 270 before the style work).
+
+Still different from Aeon's hand style, in payoff order:
+1. Named constants for `quest:ReadGlobalGameDataFloat(<offset>)` — needs an offset -> main.def field-name table
+   (`OVI_MoralityChangePerDeed` etc.); none on disk yet. Candidate source: the CGlobalGameData layout in the PDB types.
+2. `if x then` instead of `x ~= nil and not x:IsNull()` right after a lookup — ForgeFSE's `WrapScriptThingOutput` already
+   returns nil for null things, so the IsNull is redundant at that point (keep it for things held across frames).
+3. `quest:Log` breadcrumbs at phase starts; section comments (`-- TASK 1: ...`).
+4. Local helper functions for blocks repeated inside one file (Aeon's `RunAwaySequence`).
+5. Entity `while not TryAcquire` retry loops -> `me:AcquireControl()`; `or 0` defaults on state reads.
+
 ## Measuring it
 Add to READABLE_REPORT.json per function: lines, temps, labels, `IsActiveThreadTerminating` count, `require(` count, gotos.
 Drive them down; semantics stay honest through `smoke_run_unit.py --stage readable` (0 problems) and the byte-identical
