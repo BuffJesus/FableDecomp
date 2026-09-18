@@ -438,6 +438,7 @@ def normalise_typed_decompile(text: str) -> str:
                   lambda m: f'{m.group(1)}*(int *)({m.group(3)}) = *(int *)({m.group(3)}) + {m.group(4)};\n', text, flags=re.M)
     text = bind_st0_results(text)
     text = re.sub(r'::\s+(?=\w)', '::', text)   # `CScriptThing:: _Method_...(` after line joining
+    text = re.sub(r'= \((?:CCharString|int|undefined4|uint)\)&PTR_', '= &PTR_', text)   # a cast on a vtable store (the slot Ghidra typed as a string)
     # a byte flag Ghidra merged into the dword slot below it: clearing / setting the top byte
     text = re.sub(r'^([ \t]*)(\w+) = \2 & 0xffffff;', r'\1\2_b3 = 0;', text, flags=re.M)
     text = re.sub(r'^([ \t]*)(\w+) = CONCAT13\((0x[0-9a-f]+|\d+),\s*(?:\(undefined3\))?\2\);', r'\1\2_b3 = \3;', text, flags=re.M)
@@ -601,6 +602,24 @@ def fold_byte_split_pointers(text):
             break
         tail = tail.replace(f'(void *){concat}', x, 1) if f'(void *){concat}' in tail else tail.replace(concat, x, 1)
         text = head + tail
+    # the split whose reassembly an earlier rewrite already consumed (the acquire operand): the byte temporaries
+    # are dead when nothing else reads them
+    def dead_split(m):
+        u0, x, u1, u2, u3 = m.groups()
+        rest = text[:m.start()] + text[m.end():]
+        return '' if not any(re.search(r'\b' + u + r'\b', rest) for u in (u0, u1, u2, u3)) else m.group(0)
+    text = RE_BYTE_SPLIT.sub(dead_split, text)
+    return text
+
+
+def reconcile_destructor_kinds(text):
+    """The resource and movie destructors share one bsim label; when the text-order pairing could not settle it, the
+    object's own construction decides: a `RESOURCE_NewResource()` / `TryAcquire` object is released, a
+    `RESOURCE_StartMovie` object destroyed."""
+    resources = set(re.findall(r'\b(\w+) = RESOURCE_NewResource\(\)', text)) | set(re.findall(r'RESOURCE_TryAcquire\((\w+),', text))
+    movies = set(re.findall(r'\b(\w+) = RESOURCE_StartMovie\(', text))
+    text = re.sub(r'RESOURCE_DestroyMovie\((\w+)\)', lambda m: f'RESOURCE_ReleaseResource({m.group(1)})' if m.group(1) in resources - movies else m.group(0), text)
+    text = re.sub(r'RESOURCE_ReleaseResource\((\w+)\)', lambda m: f'RESOURCE_DestroyMovie({m.group(1)})' if m.group(1) in movies - resources else m.group(0), text)
     return text
 
 
@@ -1372,6 +1391,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_inline_destructors(text)
     text = canonicalise_stack_objects(text)
     text = fold_inline_destructors(text)    # again: the canonical names may only now agree across the three lines
+    text = reconcile_destructor_kinds(text)
     text = fold_sibling_slot_offsets(text)
     text = fold_offset_string_temporaries(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))

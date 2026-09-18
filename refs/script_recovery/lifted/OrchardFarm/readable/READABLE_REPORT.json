@@ -436,7 +436,7 @@
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
-      "nilReleases": 0,
+      "nilReleases": 1,
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
@@ -1579,7 +1579,7 @@
      "splitLocals": {
       "pCVar2": {
        "declarationLine": 2,
-       "originalDeclaration": "    local c_stk_11, iVar3, pCVar2, piVar1\n",
+       "originalDeclaration": "    local CStack_10, c_stk_11, iVar3, pCVar2, piVar1\n",
        "versions": {
         "pCVar2_1": [
          18
@@ -1590,13 +1590,18 @@
        }
       }
      },
-     "removedLiteralLocals": {},
+     "removedLiteralLocals": {
+      "CStack_10": {
+       "2": "    local CStack_10, c_stk_11, iVar3, pCVar2_1, pCVar2_2, piVar1\n",
+       "45": "    CStack_10 = nil\n"
+      }
+     },
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
     },
     {
      "function": "OnPersist",
-     "sourceLine": 449,
+     "sourceLine": 450,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1605,7 +1610,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 452,
+     "sourceLine": 453,
      "locals": {
       "cVar2": {
        "name": "scratchValue",
@@ -1622,7 +1627,7 @@
     },
     {
      "function": "GoOnPatrol",
-     "sourceLine": 465,
+     "sourceLine": 466,
      "locals": {
       "bVar3_1": {
        "name": "predicateResult",
@@ -1766,7 +1771,7 @@
     },
     {
      "function": "IsThingCarryingCrate",
-     "sourceLine": 498,
+     "sourceLine": 499,
      "locals": {
       "native_arg_thing": {
        "name": "thing",
@@ -1857,7 +1862,7 @@
     },
     {
      "function": "GetNearestCrateToMe",
-     "sourceLine": 526,
+     "sourceLine": 527,
      "locals": {
       "fVar5": {
        "name": "scratchValue",
@@ -1913,7 +1918,7 @@
     },
     {
      "function": "helper_DCEC50",
-     "sourceLine": 549,
+     "sourceLine": 550,
      "locals": {
       "native_arg_param_1": {
        "name": "param1",

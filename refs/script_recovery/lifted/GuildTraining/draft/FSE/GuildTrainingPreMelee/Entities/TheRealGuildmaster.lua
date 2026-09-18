@@ -4505,7 +4505,7 @@ function Main(quest, me)
     ::LAB_00d55c46::
     quest:DeregisterTimer(xStack_188)
     ::LAB_00d55c4f::
-    resources:DestroyMovie(xStack_17c)
+    resources:ReleaseResource(xStack_17c)
 end
 
 function Init(quest, me)

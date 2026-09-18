@@ -429,7 +429,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1
+    local CStack_10, bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1
     piVar1 = me:GetName()
     if piVar1 == nil then
         bVar6 = false
@@ -478,7 +478,9 @@ function Init(quest, me)
     __native_entity_state:SetStateInt("PreviousAIState", 2)
     __native_entity_state:SetStateInt("MemberState", 0)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_0"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_0")) + 1)
+    CStack_10 = nil
     __native_entity_state:SetStateThing("ThingToPatrolTo", nil)
+    CStack_10 = nil
 end
 
 function OnPersist(quest, context)

@@ -21,11 +21,11 @@ function Main(quest, me)
     local function __cleanup_LAB_00d63aa6()
         resources:DestroyMovie(pCVar8)
         quest:DeregisterTimer(xStack_188)
-        resources:DestroyMovie(xStack_184)
+        resources:ReleaseResource(xStack_184)
     end
     local function __cleanup_LAB_00d63aab()
         quest:DeregisterTimer(xStack_188)
-        resources:DestroyMovie(xStack_184)
+        resources:ReleaseResource(xStack_184)
     end
     uVar9 = 0
     u_stk_174 = 0
@@ -299,7 +299,7 @@ function Main(quest, me)
                                     resources:DestroyMovie(pCVar8)
                                     -- LAB_00d63aab_c2: (native jump target)
                                     quest:DeregisterTimer(xStack_188)
-                                    resources:DestroyMovie(xStack_184)
+                                    resources:ReleaseResource(xStack_184)
                                     return
                                 end
                                 iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -683,7 +683,7 @@ function Main(quest, me)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_94)
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:ReleaseResource(xStack_158)
+                                resources:DestroyMovie(xStack_158)
                                 goto LAB_00d63c96
                             end
                             iVar5 = me:IsPerformingScriptTask()
@@ -696,7 +696,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_94)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:ReleaseResource(xStack_158)
+                            resources:DestroyMovie(xStack_158)
                             goto LAB_00d63c96
                         end
                     end

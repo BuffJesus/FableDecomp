@@ -23,13 +23,14 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue4, ctr_90, scratchValue7, scratchValue, addNewConversation, scratchValue13
-    local timerId, scratchValue14, movie, movie2, resource, scratchValue15
+    local timerId, scratchValue14, scratchValue15, movie, resource, scratchValue16
     local function __region_LAB_00d4e853_c2()
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie2)
+        resources:DestroyMovie(movie)
     end
     local function __cleanup_LAB_00d4e91f()
         quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie)
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource)
     end
@@ -44,15 +45,15 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(me)
     if state:GetInt("BirdMode") == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef90 end
-        scratchValue15 = quest:GetAllThingsWithScriptName("BirdMarker")
-        if #scratchValue15 ~= 0 then
+        scratchValue16 = quest:GetAllThingsWithScriptName("BirdMarker")
+        if #scratchValue16 ~= 0 then
             ctr_90 = 0
             repeat
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                quest:SetThingPersistent(quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", scratchValue15[ctr_90 / 12 + 1]:GetPos(), "KillBird"), true)
+                quest:SetThingPersistent(quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", scratchValue16[ctr_90 / 12 + 1]:GetPos(), "KillBird"), true)
                 ctr_90 = ctr_90 + 12
                 scratchValue14 = scratchValue14 + 1
-            until scratchValue14 >= #scratchValue15
+            until scratchValue14 >= #scratchValue16
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         quest:SetStateInt("CurrentBirdsKilled", 0)
@@ -71,7 +72,7 @@ function Main(quest, me)
         end
         if me:IsTalkedToByHero() then
             if not quest:IsActiveThreadTerminating() then
-                movie2 = resources:StartMovie("")
+                movie = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if not state:GetBool("HaveChatted") then
@@ -91,6 +92,7 @@ function Main(quest, me)
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie)
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -101,11 +103,13 @@ function Main(quest, me)
                             if scratchValue == 1 then
                                 if not scratchValue4 then
                                     state:SetInt("BirdMode", 1)
-                                    while not resources:TryAcquire(0, hero, 4) do
+                                    scratchValue15 = resources:NewResource()
+                                    while not resources:TryAcquire(scratchValue15, hero, 4) do
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
-                                            resources:ReleaseResource(0)
+                                            resources:ReleaseResource(scratchValue15)
                                             quest:PauseAllNonScriptedEntities(false)
+                                            resources:DestroyMovie(movie)
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(resource)
                                             return
@@ -113,14 +117,14 @@ function Main(quest, me)
                                     end
                                     if not quest:IsActiveThreadTerminating() then
                                         scratchValue13 = resources:NewActorMap()
-                                        resources:SetActor(scratchValue13, "HERO", 0)
+                                        resources:SetActor(scratchValue13, "HERO", scratchValue15)
                                         resources:SetActor(scratchValue13, "ME", resource)
                                         resources:RunMacro("CS_GUILD_GULLS_INTRO", scratchValue13, false, true)
                                         resources:DestroyActorMap(scratchValue13)
-                                        resources:ReleaseResource(0)
+                                        resources:ReleaseResource(scratchValue15)
                                         __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
                                     end
-                                    resources:ReleaseResource(0)
+                                    resources:ReleaseResource(scratchValue15)
                                 end
                                 goto LAB_00d4e978
                             end
@@ -129,6 +133,7 @@ function Main(quest, me)
                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                                     if not me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_REFUSE", GROUP_SELECT_FIRST, false, true, false) then
                                         quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(movie)
                                         quest:DeregisterTimer(timerId)
                                         resources:ReleaseResource(resource)
                                         return
@@ -146,7 +151,7 @@ function Main(quest, me)
                     end
                     ::LAB_00d4e978::
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie2)
+                    resources:DestroyMovie(movie)
                 else
                     if not quest:IsActiveThreadTerminating() then
                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_BIRD_KILLER_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
@@ -155,6 +160,7 @@ function Main(quest, me)
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie)
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -165,29 +171,30 @@ function Main(quest, me)
                             if scratchValue == 1 then
                                 if not scratchValue4 then
                                     state:SetInt("BirdMode", 1)
-                                    while not resources:TryAcquire(0, hero, 4) do
+                                    scratchValue15 = resources:NewResource()
+                                    while not resources:TryAcquire(scratchValue15, hero, 4) do
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
-                                            resources:ReleaseResource(0)
+                                            resources:ReleaseResource(scratchValue15)
                                             __cleanup_LAB_00d4e91f()
                                             return
                                         end
                                     end
                                     if not quest:IsActiveThreadTerminating() then
                                         scratchValue13 = resources:NewActorMap()
-                                        resources:SetActor(scratchValue13, "HERO", 0)
+                                        resources:SetActor(scratchValue13, "HERO", scratchValue15)
                                         resources:SetActor(scratchValue13, "ME", resource)
                                         resources:RunMacro("CS_GUILD_GULLS_INTRO", scratchValue13, false, true)
                                         resources:DestroyActorMap(scratchValue13)
-                                        resources:ReleaseResource(0)
+                                        resources:ReleaseResource(scratchValue15)
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie2)
+                                        resources:DestroyMovie(movie)
                                         goto LAB_00d4e87a
                                     end
-                                    resources:ReleaseResource(0)
+                                    resources:ReleaseResource(scratchValue15)
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie2)
+                                resources:DestroyMovie(movie)
                                 goto FLOW_after_lab_00d4e5e3
                             end
                             if not scratchValue4 then
@@ -195,6 +202,7 @@ function Main(quest, me)
                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                                     if not me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_REFUSE", GROUP_SELECT_FIRST, false, true, false) then
                                         quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(movie)
                                         quest:DeregisterTimer(timerId)
                                         resources:ReleaseResource(resource)
                                         return
@@ -202,7 +210,7 @@ function Main(quest, me)
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d4e9e1 end
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie2)
+                                resources:DestroyMovie(movie)
                                 goto LAB_00d4e87a
                             end
                         end
@@ -262,19 +270,19 @@ function Main(quest, me)
                     scratchValue = quest:AddNewConversation(me, false, false)
                     if state:GetInt("CurrentBirds") == 7 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
-                        movie = resources:StartMovie("")
+                        scratchValue15 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         scratchValue7 = 0.0
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                             if not me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_DONE", GROUP_SELECT_FIRST, false, true, false) then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie)
+                                resources:DestroyMovie(scratchValue15)
                                 goto LAB_00d4ef87
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie)
+                                resources:DestroyMovie(scratchValue15)
                                 goto LAB_00d4ef87
                             end
                         end
@@ -282,7 +290,7 @@ function Main(quest, me)
                         state:SetInt("BirdMode", 3)
                         quest:ClearThingHasInformation(me)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie)
+                        resources:DestroyMovie(scratchValue15)
                     else
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
                         quest:AddPersonToConversation(scratchValue7, hero)

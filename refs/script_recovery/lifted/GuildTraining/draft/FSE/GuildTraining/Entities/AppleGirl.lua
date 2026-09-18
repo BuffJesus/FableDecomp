@@ -89,6 +89,8 @@ function Main(quest, me)
                 pCVar5 = x_stk_18
                 fret_0 = quest:GetHealth(pCVar5)
                 fVar1 = 0.0
+                x_stk_18 = nil
+                x_stk_18 = 0
                 if fVar1 < fret_0 then
                     iVar12 = 0
                     iVar11 = 1

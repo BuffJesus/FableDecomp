@@ -20,6 +20,7 @@ function Main(quest, me)
     end
     local function __cleanup_LAB_00d4e91f()
         quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_78)
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(xStack_8c)
     end
@@ -158,6 +159,7 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_78)
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -171,11 +173,12 @@ function Main(quest, me)
                             if iVar6 == 1 then
                                 if not bVar3 then
                                     __native_entity_state:SetStateInt("BirdMode", 1)
+                                    xStack_38 = resources:NewResource()
                                     bVar3 = false
                                     if bVar3 ~= 0 then
                                     end
                                     iVar7 = 4
-                                    pCVar9 = 0
+                                    pCVar9 = xStack_38
                                     pCVar5 = quest:GetHero()
                                     bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
                                     while not bVar3 do
@@ -183,15 +186,16 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
                                         if bVar3 then
-                                            resources:ReleaseResource(0)
+                                            resources:ReleaseResource(xStack_38)
                                             -- LAB_00d4e91f_c2: (native jump target)
                                             quest:PauseAllNonScriptedEntities(false)
+                                            resources:DestroyMovie(xStack_78)
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(xStack_8c)
                                             return
                                         end
                                         iVar7 = 4
-                                        pCVar9 = 0
+                                        pCVar9 = xStack_38
                                         pCVar5 = quest:GetHero()
                                         bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
                                     end
@@ -199,14 +203,14 @@ function Main(quest, me)
                                     bVar3 = not alive
                                     if not bVar3 then
                                         r1 = resources:NewActorMap()
-                                        resources:SetActor(r1, "HERO", 0)
+                                        resources:SetActor(r1, "HERO", xStack_38)
                                         resources:SetActor(r1, "ME", xStack_8c)
                                         resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
                                         resources:DestroyActorMap(r1)
-                                        resources:ReleaseResource(0)
+                                        resources:ReleaseResource(xStack_38)
                                         __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
                                     end
-                                    resources:ReleaseResource(0)
+                                    resources:ReleaseResource(xStack_38)
                                 end
                                 goto LAB_00d4e978
                             end
@@ -231,6 +235,7 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then
                                             quest:PauseAllNonScriptedEntities(false)
+                                            resources:DestroyMovie(xStack_78)
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(xStack_8c)
                                             return
@@ -267,6 +272,7 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_78)
                                 quest:DeregisterTimer(timerId)
                                 return
                             end
@@ -280,11 +286,12 @@ function Main(quest, me)
                             if iVar6 == 1 then
                                 if not bVar3 then
                                     __native_entity_state:SetStateInt("BirdMode", 1)
+                                    xStack_38 = resources:NewResource()
                                     bVar3 = false
                                     if bVar3 ~= 0 then
                                     end
                                     iVar7 = 4
-                                    pCVar9 = 0
+                                    pCVar9 = xStack_38
                                     pCVar5 = quest:GetHero()
                                     bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
                                     while not bVar3 do
@@ -292,12 +299,12 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
                                         if bVar3 then
-                                            resources:ReleaseResource(0)
+                                            resources:ReleaseResource(xStack_38)
                                             __cleanup_LAB_00d4e91f()
                                             return
                                         end
                                         iVar7 = 4
-                                        pCVar9 = 0
+                                        pCVar9 = xStack_38
                                         pCVar5 = quest:GetHero()
                                         bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
                                     end
@@ -305,16 +312,16 @@ function Main(quest, me)
                                     bVar3 = not alive
                                     if not bVar3 then
                                         r1 = resources:NewActorMap()
-                                        resources:SetActor(r1, "HERO", 0)
+                                        resources:SetActor(r1, "HERO", xStack_38)
                                         resources:SetActor(r1, "ME", xStack_8c)
                                         resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
                                         resources:DestroyActorMap(r1)
-                                        resources:ReleaseResource(0)
+                                        resources:ReleaseResource(xStack_38)
                                         quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyMovie(xStack_78)
                                         goto LAB_00d4e87a
                                     end
-                                    resources:ReleaseResource(0)
+                                    resources:ReleaseResource(xStack_38)
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_78)
@@ -341,6 +348,7 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then
                                             quest:PauseAllNonScriptedEntities(false)
+                                            resources:DestroyMovie(xStack_78)
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(xStack_8c)
                                             return

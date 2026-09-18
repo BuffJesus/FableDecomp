@@ -1498,9 +1498,11 @@
             "SetStateInt",
             "SetStateInt",
             "QUESTSTATE_SetInt",
-            "ENTITYTHING_Set"
+            "QUESTTHING_Empty",
+            "ENTITYTHING_Set",
+            "QUESTTHING_Empty"
           ],
-          "lines": 50,
+          "lines": 52,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

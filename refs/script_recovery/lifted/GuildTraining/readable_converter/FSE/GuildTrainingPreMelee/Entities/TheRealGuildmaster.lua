@@ -2399,7 +2399,7 @@ function Main(quest, me)
     ::LAB_00d55c46::
     quest:DeregisterTimer(timerId4)
     ::LAB_00d55c4f::
-    resources:DestroyMovie(resource2)
+    resources:ReleaseResource(resource2)
 end
 
 -- TheRealGuildmaster.Init (retail 0x00d51ed0)
