@@ -34,9 +34,16 @@ UNITS = [
      'verified in-game (the v5 bundle carries it, run pending). Readable stage = readable_style.py (quest-script style).'),
     ('GuildTraining', LIFTED / 'GuildTraining/readable_converter/FSE', LIFTED / 'GuildTraining/draft/FSE',
      LIFTED / 'GuildTraining/draft/CONVERSION_REPORT.json',
-     'Converter output through the typed pipeline: 152 functions, 37/37 files compile, 791 todo notes (202 non-structural, '
-     'the rest are label/goto/cleanup bookkeeping), 13 smoke-harness problems (stack-slot collisions the restore cannot '
-     'split yet). No runtime package/bindings yet; needs IsPlayerHoldingFireRangedWeaponButton + me:MsgIsHitBy(name).'),
+     'Converter output through the typed pipeline: 152 functions, 37/37 files compile, 772 todo notes (most are '
+     'label/goto/cleanup bookkeeping), 11 smoke-harness notes (stack-slot collisions the restore cannot split yet). '
+     'No runtime package/bindings yet; needs IsPlayerHoldingFireRangedWeaponButton + me:MsgIsHitBy(name). '
+     'Rebuilt 2026-09-17 night: WoodsMelee/ScorpionHome is what you read as "a Lua version of the disassembly" — compare now.'),
+    ('TraderConflict', LIFTED / 'TraderConflict/readable/FSE', LIFTED / 'TraderConflict/draft/FSE',
+     LIFTED / 'TraderConflict/draft/CONVERSION_REPORT.json',
+     'Q_TraderConflictEvil + Q_TraderConflictGood, new this night: 63 functions, 15/15 files compile, 169 todo notes, smoke '
+     'harness 0 errors on draft + readable. TraderToRescue.Main (5.5 KB, Ghidra lost its stack analysis) is the rough '
+     'one; its operands were read back from the machine code (see the journal). Needs me:MsgIsHitBy(name), '
+     'me:MsgIsHitByAnySpecialAbilityFrom(name), quest:IsPlayerHoldingLockTargetButton(), quest:TextEntryExists(key).'),
 ]
 
 DOCS = [
@@ -120,7 +127,8 @@ def readme(stamp, summaries, bundle):
               '- `docs/AEON_SPLIT_PROPOSAL.md` — the 161-cluster inventory to split the remaining scripts (ownership + sizes).',
               '- `docs/FSE_UPSTREAM_REQUIREMENTS.md` — the generic runtime primitives stock FSE needs to run this output',
               '  (native-quest replacement by name, state/thing/list bindings, frame return values, ...). Newest rows:',
-              '  `quest:IsPlayerHoldingFireRangedWeaponButton()`, `me:MsgIsHitBy(name)`, `AddQuestInfoTickByText`.',
+              '  `quest:IsPlayerHoldingFireRangedWeaponButton()`, `me:MsgIsHitBy(name)`, `me:MsgIsHitByAnySpecialAbilityFrom(name)`,',
+              '  `quest:IsPlayerHoldingLockTargetButton()`, `quest:TextEntryExists(key)`, `me:MsgExpressionPerformedTo(name)`.',
               '- `docs/READABLE_STYLE_PLAN.md` — what the readable stage does and what is still open.',
               '- `docs/AEON_LUA_PORTS.md` + `docs/NEW_OAKVALE_CROSSREF.md` — the audit of your 20 ports against the PDB and the',
               '  New Oakvale cross-reference (state names, lifetimes, RNG use).',
@@ -141,15 +149,30 @@ def readme(stamp, summaries, bundle):
               '- Helpers with no PDB name keep the bsim label of the homologous body when it is a plain method name',
               '  (`GuildTrainingWoodsMelee.EndMission` = retail 0x00D66EE0, bsim `CQ_CinemaTestScript::EndMission`) — marked in a',
               '  comment on the definition; `helper_XXXXXX` means neither the PDB nor bsim named it.',
-              '- Known residue you will still see: `x | 1` / `x & 0xfffffffe` byte-flag bookkeeping of stack objects, unsigned',
-              '  conversions (`if n < 0 then n = n + 4294967296.0 end`), `math.modf(x)` for the compiler float-to-int truncation,',
-              '  `xStack_NN`/`r1_2` names where nothing named the value, and `-- TODO(native)` lines the lowering could not place.', '']
+              '- Readable stage, second pass (2026-09-17 night), measured against your Fisherman / NewOakValeIntro ports: one',
+              '  `local hero = quest:GetHero()` per function, temporaries named after what they hold (`guildScorpions`,',
+              '  `scorpionSpawn`, `guildStagBeetle`, `count`, `infoCounter`), the retail cutscene boilerplate folded to your exact',
+              '  `quest:StartCutscene({HERO = hero, WHISPER = whisper}, {}, true)` / `RunCutscene` / `EndCutscene` (LuaQuestState::StartCutscene',
+              '  does precisely those native calls), helpers named by shape (`PlayHeroCutscene`), and every global-game-data read',
+              '  named: `quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles)` with a `SCRIPT_DEF` table at the top of the',
+              '  file carrying the retail script.bin value (`GUI_MeleeBeetles = 3856, -- 10.0`). The offset -> CScriptDef field table',
+              '  is `refs/script_recovery/script_def_offsets.json` (PDB layout minus header, three shrinking vector kinds).',
+              '- Two real bugs found on the way, both in the previous zip: Orchard\'s whisper cutscene passed the MK_OFWB_WHISPER marker',
+              '  to RunMacro instead of the actor map, and the movie / resource destructors were swapped in Guild and TraderConflict',
+              '  (one bsim label for two functions). Fixed at the converter; every unit regenerated.',
+              '- Operands the decompiler dropped are now read back from the machine code (pushes before the call site, typed against',
+              '  the binding signature): `AddNewConversation(me, false, false)`, `AddLineToConversation(id, text, me, hero, false)` ...',
+              '- Known residue you will still see: `-- TODO(native): goto LAB_...` where a jump into a sibling block could not be',
+              '  restructured, `xStack_NN`/`r1_2` names where nothing named the value, `while not TryAcquire` retry loops in',
+              '  entities (your `me:AcquireControl()`), and `nil --[[missing]]` operands where the pushes could not be typed.', '']
     if bundle:
         lines += ['## playtest-bundle/', '',
                   'The local-candidate bundle (`local-candidate-v5`): original FSE + our compatibility add-on, New Oakvale intro +',
                   'Orchard Farm as retail overrides. Not a public release; see its README.md — preflight with',
                   '`python local_test.py --game-dir <Fable dir>`, add `--launch` for a real run on a disposable profile.',
-                  'New Oakvale plays through childhood; Orchard Farm has not had its first in-game run yet.', '']
+                  'New Oakvale plays through childhood; Orchard Farm has not had its first in-game run yet (rebuilt tonight with',
+                  'the RunMacro / destructor fixes above). Your test protocol (mid-quest save+load for OnPersist, quit mid-quest',
+                  'for entity control) is what we will run it through.', '']
     lines += ['## Reproduce', '', '```', 'python tools/script_recovery/convert_quest_unit.py --unit orchard_farm',
               'python tools/script_recovery/build_readable_unit.py --unit orchard_farm',
               'python tools/script_recovery/smoke_run_unit.py --unit orchard_farm --stage readable',
