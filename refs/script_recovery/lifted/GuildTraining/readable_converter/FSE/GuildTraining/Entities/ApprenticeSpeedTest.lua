@@ -16,10 +16,11 @@ local raceMode
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue6, scratchValue, scratchValue14, scratchValue15, switch, switch6, switch7
-    local switch8, movie, scratchValue16, speedFriend, getNearestWithDefName, scratchValue18
-    local scratchValue19, scratchValue20, movie2, movie3, movie4, addQuestInfoTimer, timerId
-    local timerId2, scratchValue21, movie5, movie6, movie7
+    local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6
+    local scratchValue13, scratchValue14, scratchValue15, switch, switch6, switch7, switch8, movie
+    local scratchValue16, speedFriend, getNearestWithDefName, scratchValue18, scratchValue19
+    local scratchValue20, movie2, movie3, movie4, addQuestInfoTimer, timerId, timerId2
+    local scratchValue21, movie5, movie6, movie7
     local function __region_LAB_00d40379_c32()
         local scratchValue16 = quest:GetThingWithScriptName("RaceMarker")
         quest:MiniMapRemoveMarker(scratchValue16)
@@ -53,18 +54,20 @@ function Main(quest, me)
                 if raceMode == 0 then
                     scratchValue15 = scratchValue20 - 1
                     repeat
-                        scratchValue = scratchValue15
+                        scratchValue13 = scratchValue15
                         if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
                         if quest:GetStateInt("GameState") == 3 then
+                            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                             quest:SetThingHasInformation(me, false, true, false)
                         end
-                        if quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1 then
+                        scratchValue = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                        if scratchValue then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                             scratchValue14 = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(scratchValue14, speedFriend)
-                            if scratchValue < 5 then
+                            if scratchValue13 < 5 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                switch = scratchValue
+                                switch = scratchValue13
                                 repeat
                                     if switch == 0 then
                                         quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
@@ -102,31 +105,16 @@ function Main(quest, me)
                             ::FLOW_native_label_1::
                             quest:SetTimer(scratchValue21, 3)
                             scratchValue20 = scratchValue20 + 1
-                            scratchValue15 = scratchValue + 1
+                            scratchValue15 = scratchValue13 + 1
                         end
-                        if me:IsTalkedToByHero() then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            movie4 = resources:StartMovie("")
-                            quest:StartMovieSequence()
-                            quest:PauseAllNonScriptedEntities(true)
-                            if 0.0 < quest:GetHealth(me) then
-                                if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_BOAST", GROUP_SELECT_FIRST, false, true, false) then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie4)
-                                    quest:DeregisterTimer(timerId)
-                                    quest:DeregisterTimer(scratchValue21)
-                                    quest:DeregisterTimer(timerId2)
-                                    goto LAB_00d40749
-                                end
-                                if quest:IsActiveThreadTerminating() then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie4)
-                                    goto LAB_00d405fc
-                                end
-                            end
-                            quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_BOAST_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
-                            while scratchValue < 0 do
+                        if not me:IsTalkedToByHero() then goto continue_1 end
+                        if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                        movie4 = resources:StartMovie("")
+                        quest:StartMovieSequence()
+                        quest:PauseAllNonScriptedEntities(true)
+                        if 0.0 < quest:GetHealth(me) then
+                            me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_BOAST", GROUP_SELECT_FIRST, false, true, false)
+                            while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
@@ -134,56 +122,77 @@ function Main(quest, me)
                                     quest:DeregisterTimer(timerId)
                                     quest:DeregisterTimer(scratchValue21)
                                     quest:DeregisterTimer(timerId2)
-                                    me:ReleaseControl()
-                                    return
+                                    goto LAB_00d40749
                                 end
-                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
                                 goto LAB_00d405fc
                             end
-                            scratchValue6 = quest:IsActiveThreadTerminating()
-                            if scratchValue == 1 then
-                                if scratchValue6 then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie4)
-                                    goto LAB_00d405fc
-                                end
-                                if 0.0 < quest:GetHealth(me) then
-                                    if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_RUN", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d405d6 end
-                                    if quest:IsActiveThreadTerminating() then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie4)
-                                        goto LAB_00d405fc
-                                    end
-                                end
-                                raceMode = 1
-                                quest:SetStateBool("ReachedPlatform", false)
-                                quest:MiniMapAddMarker(quest:GetThingWithScriptName("RaceMarker"), "HUD_ORB_QUEST_VIGNETTE")
-                                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
-                                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
-                                addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
-                                quest:DisplayQuestInfo(true)
+                        end
+                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_BOAST_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+                        scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while scratchValue13 < 0 do
+                            quest:NewScriptFrame(me)
+                            if not quest:IsActiveThreadTerminating() then
+                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
                             else
-                                if scratchValue6 then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie4)
-                                    goto LAB_00d405fc
-                                end
-                                if 0.0 < quest:GetHealth(me) then
-                                    if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_REFUSE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d405d6 end
-                                    if quest:IsActiveThreadTerminating() then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie4)
-                                        goto LAB_00d405fc
-                                    end
-                                end
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie4)
+                                quest:DeregisterTimer(timerId)
+                                quest:DeregisterTimer(scratchValue21)
+                                quest:DeregisterTimer(timerId2)
+                                me:ReleaseControl()
+                                do return end
+                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
+                        end
+                        if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie4)
+                            goto LAB_00d405fc
                         end
+                        scratchValue6 = quest:IsActiveThreadTerminating()
+                        if scratchValue13 == 1 then
+                            if scratchValue6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie4)
+                                goto LAB_00d405fc
+                            end
+                            if 0.0 < quest:GetHealth(me) then
+                                if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_RUN", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d405d6 end
+                                if quest:IsActiveThreadTerminating() then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(movie4)
+                                    goto LAB_00d405fc
+                                end
+                            end
+                            raceMode = 1
+                            quest:SetStateBool("ReachedPlatform", false)
+                            quest:MiniMapAddMarker(quest:GetThingWithScriptName("RaceMarker"), "HUD_ORB_QUEST_VIGNETTE")
+                            quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
+                            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
+                            addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+                            quest:DisplayQuestInfo(true)
+                        else
+                            if scratchValue6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie4)
+                                goto LAB_00d405fc
+                            end
+                            if 0.0 < quest:GetHealth(me) then
+                                if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_REFUSE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d405d6 end
+                                if quest:IsActiveThreadTerminating() then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(movie4)
+                                    goto LAB_00d405fc
+                                end
+                            end
+                        end
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie4)
+                        ::continue_1::
                     until raceMode ~= 0
                 end
                 if quest:IsActiveThreadTerminating() then
@@ -192,33 +201,35 @@ function Main(quest, me)
                     quest:DeregisterTimer(timerId2)
                     goto LAB_00d40749
                 end
-                scratchValue = raceMode
+                scratchValue13 = raceMode
                 scratchValue19 = scratchValue20
                 while true do
                     scratchValue20 = scratchValue19
-                    if scratchValue ~= 1 then break end
+                    if scratchValue13 ~= 1 then break end
                     if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
-                    if quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1 then
-                        scratchValue = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue, speedFriend)
+                    scratchValue2 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                    if scratchValue2 then
+                        if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                        scratchValue13 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue13, speedFriend)
                         if scratchValue19 < 6 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                             switch6 = scratchValue19
                             repeat
                                 if switch6 == 1 then
-                                    quest:AddLineToConversation(scratchValue, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
                                     break
                                 elseif switch6 == 2 then
-                                    quest:AddLineToConversation(scratchValue, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
+                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SECOND_LINE", speedFriend, me, false)
                                     break
                                 elseif switch6 == 3 then
-                                    quest:AddLineToConversation(scratchValue, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_THIRD_LINE", me, speedFriend, false)
                                     break
                                 elseif switch6 == 4 then
-                                    quest:AddLineToConversation(scratchValue, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
+                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_FOURTH_LINE", speedFriend, me, false)
                                     break
                                 elseif switch6 == 5 then
-                                    quest:AddLineToConversation(scratchValue, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
+                                    quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIFTH_LINE", me, speedFriend, false)
                                     break
                                 else
                                     goto FLOW_native_label_2
@@ -232,10 +243,10 @@ function Main(quest, me)
                             end
                             if not scratchValue6 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                quest:AddLineToConversation(scratchValue, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
+                                quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_SEVENTH_LINE", me, speedFriend, false)
                             else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                quest:AddLineToConversation(scratchValue, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
+                                quest:AddLineToConversation(scratchValue13, "TEXT_QST_028_FAST_FRIEND_PRE_ARGUE_SIXTH_LINE", speedFriend, me, false)
                             end
                         end
                         ::FLOW_native_label_2::
@@ -252,10 +263,14 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if 0.0 < quest:GetHealth(me) then
-                                if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_NO_PLATFORM", GROUP_SELECT_FIRST, false, true, false) then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie5)
-                                    goto LAB_00d405fc
+                                me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_NO_PLATFORM", GROUP_SELECT_FIRST, false, true, false)
+                                while me:IsPerformingScriptTask() do
+                                    quest:NewScriptFrame(me)
+                                    if quest:IsActiveThreadTerminating() then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(movie5)
+                                        goto LAB_00d405fc
+                                    end
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
@@ -272,10 +287,14 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if 0.0 < quest:GetHealth(me) then
-                                if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_TOO_SLOW", GROUP_SELECT_FIRST, false, true, false) then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie2)
-                                    goto LAB_00d405fc
+                                me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_TOO_SLOW", GROUP_SELECT_FIRST, false, true, false)
+                                while me:IsPerformingScriptTask() do
+                                    quest:NewScriptFrame(me)
+                                    if quest:IsActiveThreadTerminating() then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(movie2)
+                                        goto LAB_00d405fc
+                                    end
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
@@ -300,10 +319,14 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if 0.0 < quest:GetHealth(me) then
-                                if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED", GROUP_SELECT_FIRST, false, true, false) then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie6)
-                                    goto LAB_00d405fc
+                                me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED", GROUP_SELECT_FIRST, false, true, false)
+                                while me:IsPerformingScriptTask() do
+                                    quest:NewScriptFrame(me)
+                                    if quest:IsActiveThreadTerminating() then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(movie6)
+                                        goto LAB_00d405fc
+                                    end
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
@@ -319,31 +342,33 @@ function Main(quest, me)
                         end
                         resources:DestroyMovie(movie)
                     end
-                    if quest:GetTimer(timerId) < 1 then
+                    if quest:GetTimer(timerId) >= 1 then scratchValue19 = scratchValue20; scratchValue13 = raceMode; goto continue_7 end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                    quest:RemoveQuestInfoElement(addQuestInfoTimer)
+                    quest:DisplayQuestInfo(false)
+                    if not quest:GetStateBool("ReachedPlatform") then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                        quest:RemoveQuestInfoElement(addQuestInfoTimer)
-                        quest:DisplayQuestInfo(false)
-                        if not quest:GetStateBool("ReachedPlatform") then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("RaceMarker"))
-                        end
-                        raceMode = 2
+                        quest:MiniMapRemoveMarker(quest:GetThingWithScriptName("RaceMarker"))
                     end
+                    raceMode = 2
                     scratchValue19 = scratchValue20
-                    scratchValue = raceMode
+                    scratchValue13 = raceMode
+                    ::continue_7::
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 if raceMode == 2 then
                     scratchValue15 = scratchValue20 - 1
                     repeat
                         if not quest:NewScriptFrame(me) then goto LAB_00d405fc end
-                        if quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1 then
+                        scratchValue3 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                        if scratchValue3 then
+                            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                             scratchValue14 = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(scratchValue14, speedFriend)
-                            scratchValue = scratchValue15
+                            scratchValue13 = scratchValue15
                             if scratchValue15 < 5 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                switch7 = scratchValue
+                                switch7 = scratchValue13
                                 repeat
                                     if switch7 == 0 then
                                         quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_APPRENTICE_PRE_ARGUE_FIRST_LINE", me, speedFriend, false)
@@ -381,103 +406,118 @@ function Main(quest, me)
                             ::FLOW_native_label_3::
                             quest:SetTimer(scratchValue21, 3)
                             scratchValue20 = scratchValue20 + 1
-                            scratchValue15 = scratchValue + 1
+                            scratchValue15 = scratchValue13 + 1
                         end
-                        if me:IsTalkedToByHero() then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                            movie3 = resources:StartMovie("")
-                            quest:StartMovieSequence()
-                            quest:PauseAllNonScriptedEntities(true)
-                            if 0.0 < quest:GetHealth(me) then
-                                if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_RETURN_FAIL", GROUP_SELECT_FIRST, false, true, false) then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie3)
-                                    goto LAB_00d405fc
-                                end
-                                if quest:IsActiveThreadTerminating() then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie3)
-                                    goto LAB_00d405fc
-                                end
-                            end
-                            quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_RETURN_FAIL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
-                            while scratchValue < 0 do
+                        if not me:IsTalkedToByHero() then goto continue_8 end
+                        if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                        movie3 = resources:StartMovie("")
+                        quest:StartMovieSequence()
+                        quest:PauseAllNonScriptedEntities(true)
+                        if 0.0 < quest:GetHealth(me) then
+                            me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_RETURN_FAIL", GROUP_SELECT_FIRST, false, true, false)
+                            while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie3)
                                     goto LAB_00d405fc
                                 end
-                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie3)
                                 goto LAB_00d405fc
                             end
-                            scratchValue6 = quest:IsActiveThreadTerminating()
-                            if scratchValue == 1 then
-                                if scratchValue6 then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie3)
-                                    goto LAB_00d405fc
-                                end
-                                if 0.0 < quest:GetHealth(me) then
-                                    if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_RUN", GROUP_SELECT_FIRST, false, true, false) then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie3)
-                                        goto LAB_00d405fc
-                                    end
-                                    if quest:IsActiveThreadTerminating() then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie3)
-                                        goto LAB_00d405fc
-                                    end
-                                end
-                                raceMode = 1
-                                quest:SetStateBool("ReachedPlatform", false)
-                                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
-                                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
-                                addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
-                                quest:MiniMapAddMarker(quest:GetThingWithScriptName("RaceMarker"), "HUD_ORB_QUEST_VIGNETTE")
+                        end
+                        quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_RETURN_FAIL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+                        scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while scratchValue13 < 0 do
+                            quest:NewScriptFrame(me)
+                            if not quest:IsActiveThreadTerminating() then
+                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
                             else
-                                if scratchValue6 then
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie3)
-                                    goto LAB_00d405fc
-                                end
-                                if 0.0 < quest:GetHealth(me) then
-                                    if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_REFUSE", GROUP_SELECT_FIRST, false, true, false) then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie3)
-                                        goto LAB_00d405fc
-                                    end
-                                    if quest:IsActiveThreadTerminating() then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie3)
-                                        goto LAB_00d405fc
-                                    end
-                                end
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie3)
+                                goto LAB_00d405fc
+                                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
+                        end
+                        if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie3)
+                            goto LAB_00d405fc
                         end
+                        scratchValue6 = quest:IsActiveThreadTerminating()
+                        if scratchValue13 == 1 then
+                            if scratchValue6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie3)
+                                goto LAB_00d405fc
+                            end
+                            if 0.0 < quest:GetHealth(me) then
+                                me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_RUN", GROUP_SELECT_FIRST, false, true, false)
+                                while me:IsPerformingScriptTask() do
+                                    quest:NewScriptFrame(me)
+                                    if quest:IsActiveThreadTerminating() then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(movie3)
+                                        goto LAB_00d405fc
+                                    end
+                                end
+                                if quest:IsActiveThreadTerminating() then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(movie3)
+                                    goto LAB_00d405fc
+                                end
+                            end
+                            raceMode = 1
+                            quest:SetStateBool("ReachedPlatform", false)
+                            quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
+                            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
+                            addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+                            quest:MiniMapAddMarker(quest:GetThingWithScriptName("RaceMarker"), "HUD_ORB_QUEST_VIGNETTE")
+                        else
+                            if scratchValue6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie3)
+                                goto LAB_00d405fc
+                            end
+                            if 0.0 < quest:GetHealth(me) then
+                                me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_REFUSE", GROUP_SELECT_FIRST, false, true, false)
+                                while me:IsPerformingScriptTask() do
+                                    quest:NewScriptFrame(me)
+                                    if quest:IsActiveThreadTerminating() then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(movie3)
+                                        goto LAB_00d405fc
+                                    end
+                                end
+                                if quest:IsActiveThreadTerminating() then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(movie3)
+                                    goto LAB_00d405fc
+                                end
+                            end
+                        end
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie3)
+                        ::continue_8::
                     until raceMode ~= 2
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 if raceMode == 3 then
                     scratchValue15 = scratchValue20 - 1
-                    scratchValue = scratchValue15
+                    scratchValue13 = scratchValue15
                     quest:NewScriptFrame(me)
                     if not quest:IsActiveThreadTerminating() then
-                        if quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1 then
+                        scratchValue4 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+                        if scratchValue4 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                             scratchValue14 = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(scratchValue14, speedFriend)
-                            if scratchValue < 5 then
+                            if scratchValue13 < 5 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
-                                switch8 = scratchValue
+                                switch8 = scratchValue13
                                 repeat
                                     if switch8 == 0 then
                                         quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", speedFriend, me, false)
@@ -515,7 +555,7 @@ function Main(quest, me)
                             ::FLOW_native_label_4::
                             quest:SetTimer(scratchValue21, 7)
                             scratchValue20 = scratchValue20 + 1
-                            scratchValue15 = scratchValue + 1
+                            scratchValue15 = scratchValue13 + 1
                         end
                         if not me:IsTalkedToByHero() then goto LAB_00d403e1 end
                         if not quest:IsActiveThreadTerminating() then
@@ -523,17 +563,23 @@ function Main(quest, me)
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
-                            while scratchValue < 0 do
-                                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d402b3 end
-                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+                            scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            while scratchValue13 < 0 do
+                                quest:NewScriptFrame(me)
+                                if not quest:IsActiveThreadTerminating() then
+                                    scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                else
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    goto FLOW_after_lab_00d402b3
+                                    scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                end
                             end
                             if quest:IsActiveThreadTerminating() then
                                 -- LAB_00d40716: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
                             else
                                 scratchValue6 = quest:IsActiveThreadTerminating()
-                                if scratchValue ~= 1 then
+                                if scratchValue13 ~= 1 then
                                     if not scratchValue6 then
                                         if 0.0 < quest:GetHealth(me) then
                                             if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d402b3 end
@@ -549,9 +595,9 @@ function Main(quest, me)
                                 end
                                 if not scratchValue6 then
                                     if 0.0 < quest:GetHealth(me) then
-                                        if not me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_YES", GROUP_SELECT_FIRST, false, true, false) then
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            goto FLOW_after_lab_00d402b3
+                                        me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_YES", GROUP_SELECT_FIRST, false, true, false)
+                                        while me:IsPerformingScriptTask() do
+                                            if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d402b3 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00d402b3 end
                                     end
@@ -569,6 +615,7 @@ function Main(quest, me)
                     end
                     goto LAB_00d405fc
                 end
+                if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 quest:NewScriptFrame(me)
                 scratchValue6 = quest:IsActiveThreadTerminating()
             end
@@ -602,16 +649,17 @@ function Main(quest, me)
         me:ReleaseControl()
         goto FLOW_after_lab_00d405fc
     end
-    scratchValue = scratchValue15
+    scratchValue13 = scratchValue15
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
-        if quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1 then
+        scratchValue5 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(scratchValue21) < 1
+        if scratchValue5 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c32 end
             scratchValue14 = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(scratchValue14, speedFriend)
-            if scratchValue < 5 then
+            if scratchValue13 < 5 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c32 end
-                switch8 = scratchValue
+                switch8 = scratchValue13
                 repeat
                     if switch8 == 0 then
                         quest:AddLineToConversation(scratchValue14, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_FIRST_LINE", speedFriend, me, false)
@@ -649,7 +697,7 @@ function Main(quest, me)
             ::FLOW_native_label_4_c32::
             quest:SetTimer(scratchValue21, 7)
             scratchValue20 = scratchValue20 + 1
-            scratchValue15 = scratchValue + 1
+            scratchValue15 = scratchValue13 + 1
         end
         if not me:IsTalkedToByHero() then goto LAB_00d403e1 end
         if not quest:IsActiveThreadTerminating() then
@@ -657,18 +705,18 @@ function Main(quest, me)
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:GiveHeroYesNoQuestion("TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
-            while scratchValue < 0 do
+            scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
+            while scratchValue13 < 0 do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d402b3_c32
-                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+                scratchValue13 = quest:MsgIsQuestionAnsweredYesOrNo()
             end
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d40716_c32: (native jump target)
                 quest:PauseAllNonScriptedEntities(false)
             else
                 scratchValue6 = quest:IsActiveThreadTerminating()
-                if scratchValue ~= 1 then
+                if scratchValue13 ~= 1 then
                     if not scratchValue6 then
                         if 0.0 < quest:GetHealth(me) then
                             me:Speak(hero, "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false)

@@ -111,7 +111,7 @@ function WatchTimeLimit(quest)
         if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); return end
         if quest:GetTimer(timerId) == 0 then
             quest:DeregisterTimer(timerId)
-            return
+            do return end
         end
     end
     quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.TCG_TimeLimit))
@@ -120,13 +120,13 @@ function WatchTimeLimit(quest)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame() then goto LAB_00dfb033 end
     end
-    if not quest:IsActiveThreadTerminating() then
-        quest:RemoveQuestInfoElement(scratchValue)
-        if 0 < quest:GetTimer(timerId) then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-            quest:SetMasterGameState("TCGMadeTimeLimit", true)
-        end
-    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00dfb033 end
+    quest:RemoveQuestInfoElement(scratchValue)
+    if 0 >= quest:GetTimer(timerId) then goto LAB_00dfb033 end
+    if not quest:IsActiveThreadTerminating() then quest:SetMasterGameState("TCGMadeTimeLimit", true); goto LAB_00dfb033 end
+    quest:DeregisterTimer(timerId)
+    do return end
+    quest:SetMasterGameState("TCGMadeTimeLimit", true)
     ::LAB_00dfb033::
     quest:DeregisterTimer(timerId)
 end
@@ -136,23 +136,23 @@ function WatchForRegionTransitions(quest)
     local scratchValue, scratchValue3
     while not quest:GetStateBool("OutroDone") do
         if not quest:NewScriptFrame() then goto LAB_00dfca72 end
-        if quest:MsgOnRegionLoaded() then
-            UpdateLiveEnemies(quest)
-            scratchValue3 = 0
-            if quest:GetStateListCount("AllCreatures") ~= 0 then
-                scratchValue = 0
-                repeat
-                    if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
-                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", scratchValue), nil --[[operand lost by the decompiler]])
-                    quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", scratchValue), false)
-                    quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", scratchValue), "FACTION_BANDITS")
-                    scratchValue3 = scratchValue3 + 1
-                    scratchValue = scratchValue + 1
-                until scratchValue3 >= quest:GetStateListCount("AllCreatures")
-            end
-            if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
-            quest:SetStateBool("EnteredNewRegion", true)
+        if not quest:MsgOnRegionLoaded() then goto continue_1 end
+        UpdateLiveEnemies(quest)
+        scratchValue3 = 0
+        if quest:GetStateListCount("AllCreatures") ~= 0 then
+            scratchValue = 0
+            repeat
+                if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
+                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", scratchValue), nil --[[operand lost by the decompiler]])
+                quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", scratchValue), false)
+                quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", scratchValue), "FACTION_BANDITS")
+                scratchValue3 = scratchValue3 + 1
+                scratchValue = scratchValue + 1
+            until scratchValue3 >= quest:GetStateListCount("AllCreatures")
         end
+        if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
+        quest:SetStateBool("EnteredNewRegion", true)
+        ::continue_1::
     end
     ::LAB_00dfca72::
 end
@@ -238,13 +238,12 @@ function WatchForTradersFreed(quest)
             quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_TRADER_CONFLICT_GOOD_OBJECTIVE_02", "BanditCampEntrance", "BanditCampEntrance")
             predicateResult = false
             AttackPeople(quest)
-            if AreAllThingsInVectorDead(this + 72) ~= 0 then
-                if quest:IsActiveThreadTerminating() then return end
-                while not quest:GetStateBool("EnteredNewRegion") do
-                    if not quest:NewScriptFrame() then return end
-                end
-                quest:SetStateBool("EnteredNewRegion", false)
+            if AreAllThingsInVectorDead(this + 72) == 0 then goto continue_1 end
+            if quest:IsActiveThreadTerminating() then return end
+            while not quest:GetStateBool("EnteredNewRegion") do
+                if not quest:NewScriptFrame() then return end
             end
+            quest:SetStateBool("EnteredNewRegion", false)
         elseif not predicateResult then
             traderToRescue = quest:GetAllThingsWithScriptName("TraderToRescue")
             if quest:IsRegionLoaded("BanditCampEntrance") then
@@ -286,6 +285,7 @@ function WatchForTradersFreed(quest)
             ::LAB_00dfd5c2::
             predicateResult = true
         end
+        ::continue_1::
     end
 end
 
@@ -390,11 +390,13 @@ function UpdateLiveEnemies(quest)
                 while p0 ~= quest:GetStateListCount("AllCreatures") do
                     -- TODO(native): cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(quest:GetStateListAt("AllCreatures", p0))
     --[[unresolved native value]]
-                    if nil ~= 0 then
+                    if nil == 0 then
+                        p0 = p0 + 1
+                    else
                         quest:StateListErase("AllCreatures", p0)
                         break
+                        p0 = p0 + 1
                     end
-                    p0 = p0 + 1
                 end
                 scratchValue9 = scratchValue9 + 1
                 scratchValue = scratchValue + 12
@@ -508,14 +510,12 @@ function AttackPeople(quest)
         quest:NewScriptFrame()
         if not quest:IsActiveThreadTerminating() then
             if not quest:NewScriptFrame() then __cleanup_LAB_00dfdd34(); return end
+            if not quest:NewScriptFrame() then quest:DeregisterTimer(scratchValue7); return end
+            if not quest:NewScriptFrame() then quest:DeregisterTimer(scratchValue7); return end
             quest:NewScriptFrame()
             if not quest:IsActiveThreadTerminating() then
-                if not quest:NewScriptFrame() then quest:DeregisterTimer(scratchValue7); return end
-                quest:NewScriptFrame()
-                if not quest:IsActiveThreadTerminating() then
-                    if quest:GetStateBool("EnteredNewRegion") then goto LAB_00dfdb8c end
-                    -- TODO(native): goto LAB_00dfd643
-                end
+                if quest:GetStateBool("EnteredNewRegion") then goto LAB_00dfdb8c end
+                -- TODO(native): goto LAB_00dfd643
             end
             quest:DeregisterTimer(scratchValue7)
             return

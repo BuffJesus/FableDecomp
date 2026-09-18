@@ -12,9 +12,16 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult6, predicateResult, ctr_64, conversationId, conversationId2
     local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
-    local questionAnswer, conversationId8, switch, movie, timerId
-    if not me:AcquireControl(4) then return end
-    if quest:IsActiveThreadTerminating() then me:ReleaseControl(); return end
+    local questionAnswer, conversationId8, switch, movie, resource, timerId
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, me, 4) do
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource)
+            do return end
+        end
+    end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     me:SetFriendsWithEverythingFlag(me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
@@ -32,47 +39,49 @@ function Main(quest, me)
             quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPLEGIRL_HELP", me, hero, false)
             quest:SetTimer(timerId, 15)
         end
-        if me:IsTalkedToByHero() then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
-            movie = resources:StartMovie("")
-            quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            if not haveChatted then
+        if not me:IsTalkedToByHero() then goto continue_2 end
+        if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
+        movie = resources:StartMovie("")
+        quest:StartMovieSequence()
+        quest:PauseAllNonScriptedEntities(true)
+        if not haveChatted then
+            if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
+            haveChatted = true
+            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
-                haveChatted = true
-                if 0.0 < quest:GetHealth(me) then
-                    if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
-                end
-                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-            else
-                if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
-                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION_AGAIN", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
             end
-            questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
-            while questionAnswer < 0 do
-                quest:NewScriptFrame(me)
-                if quest:IsActiveThreadTerminating() then
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie)
-                    quest:DeregisterTimer(timerId)
-                    return
-                end
+            quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+        else
+            if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
+            quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION_AGAIN", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+        end
+        questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+        while questionAnswer < 0 do
+            quest:NewScriptFrame(me)
+            if not quest:IsActiveThreadTerminating() then
+                questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+            else
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie)
+                quest:DeregisterTimer(timerId)
+                do return end
                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
-            if questionAnswer == 1 then
-                appleMode = 1
-                if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
-                    childAppleMode = true
-                end
-            elseif 0.0 < quest:GetHealth(me) then
-                if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
-            end
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie)
         end
+        if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
+        if questionAnswer == 1 then
+            appleMode = 1
+            if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
+                childAppleMode = true
+            end
+        elseif 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+            if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
+            if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
+        end
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie)
+        ::continue_2::
     end
     if not quest:IsActiveThreadTerminating() then
         while appleMode == 1 do
@@ -149,7 +158,7 @@ function Main(quest, me)
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(me) then
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                         if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_THANKS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3e06c end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
                     end
@@ -180,20 +189,22 @@ function Main(quest, me)
             if predicateResult then
                 quest:RemoveThing(me, false, true)
             end
-            if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
+            if not (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1) then
+                quest:NewScriptFrame(me)
+            else
                 if quest:IsActiveThreadTerminating() then break end
                 conversationId7 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId7, hero)
                 quest:AddLineToConversation(conversationId7, "TEXT_QST_028_APPLEGIRL_THANKS_AGAIN", me, hero, false)
                 quest:SetTimer(timerId, 15)
+                quest:NewScriptFrame(me)
             end
-            quest:NewScriptFrame(me)
         end
     end
     ::LAB_00d3e1b6::
     quest:DeregisterTimer(timerId)
     ::LAB_00d3e1bf::
-    me:ReleaseControl()
+    resources:ReleaseResource(resource)
     do return end
     ::LAB_00d3d948::
     quest:PauseAllNonScriptedEntities(false)

@@ -784,7 +784,10 @@ class UnitConverter:
             for kind, value in got[0]:
                 if kind == 'imm':
                     literal = self.rdata.string_at(value) if value >= 0x400000 else None
-                    rendered.append(f'"{literal}"' if literal is not None else (hex(value) if value > 9 else str(value)))
+                    if literal is None and (0x3a000000 <= value <= 0x4b000000 or 0xba000000 <= value <= 0xcb000000):
+                        rendered.append(repr(struct.unpack('<f', struct.pack('<I', value))[0]))     # a pushed float (1.0f = 0x3f800000)
+                    else:
+                        rendered.append(f'"{literal}"' if literal is not None else (hex(value) if value > 9 else str(value)))
                 elif kind == 'slot' and site.get('depth') is not None:
                     disp, after = value
                     off = -int(site['depth']) + 4 * after + disp      # entry-relative address of the slot

@@ -177,7 +177,7 @@ function Main(quest, me)
                 iVar14 = 1
                 iVar13 = 0
                 iVar12 = 1
-                iVar11 = 0x40400000
+                iVar11 = 3.0
                 pCVar7 = pCVar6:GetPos()
                 me:MoveToPosition(pCVar7, iVar11, iVar12, (iVar13 ~= 0), (iVar14 ~= 0))
                 __native_entity_state:SetStateBool("WillWoodsChatDone", true)
@@ -238,7 +238,7 @@ function Main(quest, me)
                     iVar14 = 1
                     iVar13 = 0
                     iVar12 = 1
-                    iVar11 = 0x40400000
+                    iVar11 = 3.0
                     pCVar7 = pCVar6:GetPos()
                     me:MoveToPosition(pCVar7, iVar11, iVar12, (iVar13 ~= 0), (iVar14 ~= 0))
                 end

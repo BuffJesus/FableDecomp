@@ -13,14 +13,13 @@ end
 -- SpeedFriend.Main (retail 0x00d408b0)
 function Main(quest, me)
     if not quest:NewScriptFrame(me) then return end
-    if me:AcquireControl(4) then
-        if not quest:IsActiveThreadTerminating() then
-            quest:SetIsPushableByHero(me, false)
-            repeat
-                quest:NewScriptFrame(me)
-            until quest:IsActiveThreadTerminating()
-    end
-    end
+    if not me:AcquireControl(4) then goto LAB_00d409c5 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d409c5 end
+    quest:SetIsPushableByHero(me, false)
+    repeat
+        quest:NewScriptFrame(me)
+    until quest:IsActiveThreadTerminating()
+    ::LAB_00d409c5::
     me:ReleaseControl()
 end
 

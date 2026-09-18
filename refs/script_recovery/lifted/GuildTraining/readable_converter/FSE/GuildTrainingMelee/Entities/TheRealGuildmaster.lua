@@ -25,7 +25,11 @@ function Main(quest, me)
     local resource, scratchValue14
     resource5 = resources:NewResource()
     while not resources:TryAcquire(resource5, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource5); return end
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource5)
+            do return end
+        end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d5a8e2 end
     quest:EntitySetAsKillable(me, false, true)
@@ -60,10 +64,14 @@ function Main(quest, me)
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource5)) then
-                    if not me:Speak(hero, "TEXT_QST_028_GUILDMASTER_MELEE_HIT_WHISPER", GROUP_SELECT_FIRST, false, true, false) then
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(scratchValue12)
-                        goto LAB_00d5933c
+                    me:Speak(hero, "TEXT_QST_028_GUILDMASTER_MELEE_HIT_WHISPER", GROUP_SELECT_FIRST, false, true, false)
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(scratchValue12)
+                            goto LAB_00d5933c
+                        end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -78,21 +86,21 @@ function Main(quest, me)
         else
             quest:SetStateInt("TutorialState", 2)
         end
-        if (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId3) < 1) and not me:IsPerformingScriptTask() then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d5933c end
-            conversationId = quest:AddNewConversation(me, false, false)
-            quest:AddPersonToConversation(conversationId, hero)
-            quest:SetTimer(timerId3, 10)
-            if scratchValue14 == nil then
-                quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_FIRST", me, hero, false)
-                scratchValue14 = 1
-            elseif scratchValue14 == 1 then
-                quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_SECOND", me, hero, false)
-            end
+        if not ((quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId3) < 1) and not me:IsPerformingScriptTask()) then tutorialState = quest:GetStateInt("TutorialState"); goto continue_3 end
+        if quest:IsActiveThreadTerminating() then goto LAB_00d5933c end
+        conversationId = quest:AddNewConversation(me, false, false)
+        quest:AddPersonToConversation(conversationId, hero)
+        quest:SetTimer(timerId3, 10)
+        if scratchValue14 == nil then
+            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_FIRST", me, hero, false)
+            scratchValue14 = 1
+        elseif scratchValue14 == 1 then
+            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_SECOND", me, hero, false)
         end
         tutorialState = quest:GetStateInt("TutorialState")
+        ::continue_3::
     end
     if quest:IsActiveThreadTerminating() then
         quest:DeregisterTimer(timerId3)
@@ -482,7 +490,7 @@ function Main(quest, me)
         if not quest:IsActiveThreadTerminating() then
             quest:SetMasterGameState("HeroTakingGuildTest", false)
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeOpponent"), false, true)
-            me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 0x40400000, 0, false, true)
+            me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 3.0, 0, false, true)
             quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("MeleeApprenticeMarker"):GetPos(), "MeleeApprentice")
             quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("CombatApprenticeMarker"):GetPos(), "CombatApprentice")
             quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)

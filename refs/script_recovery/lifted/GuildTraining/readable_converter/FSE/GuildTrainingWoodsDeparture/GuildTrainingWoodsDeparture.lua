@@ -54,14 +54,13 @@ function DoMission(quest)
     quest:CreateThread("WatchForLeaving")  -- native thread body CGlobal_WatchForHeroDeathScript::WatchForHeroDeath: lift it as function WatchForLeaving(quest)
     quest:CreateThread("TeleportOutHero")  -- native thread body Quest_GuildWoods_Teleport_Exit_First: lift it as function TeleportOutHero(quest)
     quest:NewScriptFrame()
-    if not quest:IsActiveThreadTerminating() and not quest:GetStateBool("MissionFailed") then
-        while not quest:GetStateBool("MissionOver") do
-            if not quest:NewScriptFrame() then return end
-        end
-        if quest:IsActiveThreadTerminating() then return end
-        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, true, false)
-        quest:SetStateBool("MissionSucceeded", true)
+    if not ((not quest:IsActiveThreadTerminating()) and (not quest:GetStateBool("MissionFailed"))) then return end
+    while not quest:GetStateBool("MissionOver") do
+        if not quest:NewScriptFrame() then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
+    quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, true, false)
+    quest:SetStateBool("MissionSucceeded", true)
 end
 
 -- Q_GuildTrainingWoodsDeparture.WatchForLeaving (retail 0x00d64000)
@@ -81,13 +80,15 @@ function TeleportOutHero(quest)
     local hero = quest:GetHero()
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        if quest:GetHealth(hero) < 6.0 then
+        if quest:GetHealth(hero) >= 6.0 then
+            quest:NewScriptFrame()
+        else
             quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP"), false)
             quest:Pause(2.0)
             quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", hero, hero, false)
             quest:ChangeHeroHealthBy(1000.0, true, false)
+            quest:NewScriptFrame()
         end
-        quest:NewScriptFrame()
     until false
 end
 

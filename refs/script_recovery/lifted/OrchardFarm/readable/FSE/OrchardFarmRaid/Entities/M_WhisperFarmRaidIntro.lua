@@ -14,12 +14,10 @@ end
 
 -- M_WhisperFarmRaidIntro.Main (retail 0x00dd1ac0)
 function Main(quest, me)
-    if not quest:GetStateBool("HeroMetWhisperBeforeFarm") then
-        if quest:IsActiveThreadTerminating() then return end
-        quest:SetStateBool("HeroMetWhisperBeforeFarm", true)
-        helpers.DoMultiplierCutscene(quest, me)
-        return
-    end
+    if quest:GetStateBool("HeroMetWhisperBeforeFarm") then return end
+    if quest:IsActiveThreadTerminating() then return end
+    quest:SetStateBool("HeroMetWhisperBeforeFarm", true)
+    helpers.DoMultiplierCutscene(quest, me)
 end
 
 -- M_WhisperFarmRaidIntro.Init (retail 0x00cdebb0)

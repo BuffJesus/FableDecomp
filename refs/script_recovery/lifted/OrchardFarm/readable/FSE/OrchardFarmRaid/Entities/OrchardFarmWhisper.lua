@@ -38,10 +38,12 @@ function Main(quest, me)
     quest:AddQuestInfoBarHealth(me, {R = 0, G = 255, B = 0, A = 255}, "HUD_WHISPER_ICON", 1.0)
     quest:EntitySetCombatType(me, "HERO_WHISPER_ATTACK_STYLE_OFARM")
     while not quest:IsActiveThreadTerminating() do
-        if quest:GetHealth(me) <= 1.0 then
+        if quest:GetHealth(me) > 1.0 then
+            quest:NewScriptFrame(me)
+        else
             quest:SetStateBool("MissionSucceeded", true)
+            quest:NewScriptFrame(me)
         end
-        quest:NewScriptFrame(me)
     end
 end
 

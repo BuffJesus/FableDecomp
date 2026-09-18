@@ -33,9 +33,8 @@ end
 
 -- KillBird.OnPredicateFail (retail 0x00d43120)
 function OnPredicateFail(quest, me)
-    if me:MsgIsKilledBy("") then
-        quest:SetStateBool("DisplayBirdKilledMessage", true)
-        quest:SetStateInt("CurrentBirdsKilled", quest:GetStateInt("CurrentBirdsKilled") + 1)
-    end
+    if not me:MsgIsKilledBy("") then return end
+    quest:SetStateBool("DisplayBirdKilledMessage", true)
+    quest:SetStateInt("CurrentBirdsKilled", quest:GetStateInt("CurrentBirdsKilled") + 1)
 end
 

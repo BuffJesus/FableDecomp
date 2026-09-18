@@ -14,15 +14,15 @@ function Main(quest, me)
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("DoneIntroduction") do
         if not quest:NewScriptFrame(me) then return end
-        if quest:GetStateBool("HeroAtWrongEntrance") then
-            quest:RemoveThing(me, false, false)
-            if 0 < quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") then
-                if quest:IsActiveThreadTerminating() then return end
-                quest:SetStateInt("Teams_" .. teamID .. "_MemberCount", quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") - 1)
-            end
-            quest:SetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState, quest:GetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState) - 1)
-            return
+        if not quest:GetStateBool("HeroAtWrongEntrance") then goto continue_1 end
+        quest:RemoveThing(me, false, false)
+        if 0 < quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") then
+            if quest:IsActiveThreadTerminating() then return end
+            quest:SetStateInt("Teams_" .. teamID .. "_MemberCount", quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") - 1)
         end
+        quest:SetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState, quest:GetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState) - 1)
+        do return end
+        ::continue_1::
     end
     if teamID == 1 and heroTeam == 1 then
         while quest:IsInCutscene() do
@@ -122,26 +122,27 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then return end
     quest:EntityStopFollowing(me)
     teamExitMarker = quest:GetNearestWithScriptName(me, "TeamExitMarker")
-    if me:AcquireControl(4) then
-        while not quest:IsActiveThreadTerminating() do
-            if not me:IsPerformingScriptTask() then
-                if teamExitMarker ~= nil and not teamExitMarker:IsNull() then
-                    p0_00 = teamExitMarker:GetPos()
-                end
-                me:MoveToPosition(p0_00, 0.5, 1, false, true)
+    if not me:AcquireControl(4) then goto LAB_00dcec33 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00dcec33 end
+    while not quest:IsActiveThreadTerminating() do
+        if not me:IsPerformingScriptTask() then
+            if teamExitMarker ~= nil and not teamExitMarker:IsNull() then
+                p0_00 = teamExitMarker:GetPos()
             end
-            if quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then
-                if not quest:IsActiveThreadTerminating() then
-                    quest:FadeOutAndKillEntity(me, true, 3.0, true)
-                    repeat
-                        quest:NewScriptFrame(me)
-                    until quest:IsActiveThreadTerminating()
-                end
-                break
-            end
-            quest:NewScriptFrame(me)
+            me:MoveToPosition(p0_00, 0.5, 1, false, true)
+        end
+        if not quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then quest:NewScriptFrame(me); goto continue_3 end
+        if not quest:IsActiveThreadTerminating() then
+            quest:FadeOutAndKillEntity(me, true, 3.0, true)
+            repeat
+                quest:NewScriptFrame(me)
+            until quest:IsActiveThreadTerminating()
+        end
+        break
+        quest:NewScriptFrame(me)
+        ::continue_3::
     end
-    end
+    ::LAB_00dcec33::
     me:ReleaseControl()
 end
 
@@ -193,13 +194,12 @@ end
 function OnPredicateFail(quest, me)
     quest:SetStateInt("Teams_" .. teamID .. "_MemberCount", quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") - 1)
     quest:SetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState, quest:GetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState) - 1)
-    if me:MsgIsKilledBy("") then
-        if teamID == 1 then
-            quest:SetMasterGameState("OrchardFarmBanditKilled", true)
-            return
-        end
-        quest:SetMasterGameState("OrchardFarmGuardKilled", true)
+    if not me:MsgIsKilledBy("") then return end
+    if teamID == 1 then
+        quest:SetMasterGameState("OrchardFarmBanditKilled", true)
+        return
     end
+    quest:SetMasterGameState("OrchardFarmGuardKilled", true)
 end
 
 -- CrateTeamMember.GoOnPatrol (retail 0x00dcec70)

@@ -81,11 +81,13 @@ function UpdateLiveEnemies(quest, me)
                 while p0 ~= quest:GetStateListCount("AllCreatures") do
                     -- TODO(native): cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(quest:GetStateListAt("AllCreatures", p0))
     --[[unresolved native value]]
-                    if nil ~= 0 then
+                    if nil == 0 then
+                        p0 = p0 + 1
+                    else
                         quest:StateListErase("AllCreatures", p0)
                         break
+                        p0 = p0 + 1
                     end
-                    p0 = p0 + 1
                 end
                 scratchValue9 = scratchValue9 + 1
                 scratchValue = scratchValue + 12

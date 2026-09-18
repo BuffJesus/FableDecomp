@@ -36,27 +36,27 @@ function Main(quest, me)
         guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
         count = #guildScorpions
         quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles) - scorpionsLeft) - count)), -1)
-        if #guildScorpions < 3 then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-            if #guildScorpions == 0 and scorpionsLeft == 0 then
-                quest:SetStateBool("ScorpionsAlive", false)
-                quest:SetMasterGameState("ScorpionsDestroyed", true)
-            elseif 0 < scorpionsLeft then
-                scorpionSpawn = quest:GetFurthestWithScriptName(hero, "ScorpionSpawn")
-                if scorpionSpawn == nil then
-                    pPosition = {x = 0, y = 0, z = 0}
-                else
-                    pPosition = scorpionSpawn:GetPos()
-                end
-                guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                if guildStagBeetle ~= nil then
-                    guildStagBeetle:SetToKillOnLevelUnload(0)
-                end
-                quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsMelee")
-                scorpionsLeft = scorpionsLeft - 1
+        if #guildScorpions >= 3 then scorpionsAlive = quest:GetStateBool("ScorpionsAlive"); goto continue_1 end
+        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+        if #guildScorpions == 0 and scorpionsLeft == 0 then
+            quest:SetStateBool("ScorpionsAlive", false)
+            quest:SetMasterGameState("ScorpionsDestroyed", true)
+        elseif 0 < scorpionsLeft then
+            scorpionSpawn = quest:GetFurthestWithScriptName(hero, "ScorpionSpawn")
+            if scorpionSpawn == nil then
+                pPosition = {x = 0, y = 0, z = 0}
+            else
+                pPosition = scorpionSpawn:GetPos()
             end
+            guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+            if guildStagBeetle ~= nil then
+                guildStagBeetle:SetToKillOnLevelUnload(0)
+            end
+            quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsMelee")
+            scorpionsLeft = scorpionsLeft - 1
         end
         scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
+        ::continue_1::
     until false
 end
 

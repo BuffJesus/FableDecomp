@@ -48,7 +48,7 @@ function Main(quest, me)
             iVar11 = 1
             iVar10 = 0
             iVar9 = 1
-            iVar8 = 0x40400000
+            iVar8 = 3.0
             p0 = pCVar6:GetPos()
             me:MoveToPosition(p0, iVar8, iVar9, (iVar10 ~= 0), (iVar11 ~= 0))
             iVar8 = me:IsPerformingScriptTask()

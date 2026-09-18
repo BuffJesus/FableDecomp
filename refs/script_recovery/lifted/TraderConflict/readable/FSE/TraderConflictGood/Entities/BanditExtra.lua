@@ -34,10 +34,9 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
         scratchValue = 3
     end
-    if math.random(0, 32767) % scratchValue == 0 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
-        quest:GiveThingBestEnemyTarget(banditGruntLevel, hero)
-    end
+    if not (math.random(0, 32767) % scratchValue == 0) then helpers.UpdateLiveEnemies(quest, me); goto LAB_00dfcbf7 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
+    quest:GiveThingBestEnemyTarget(banditGruntLevel, hero)
     helpers.UpdateLiveEnemies(quest, me)
     ::LAB_00dfcbf7::
 end

@@ -16,6 +16,7 @@ untouched for the lifter's own diagnostics.
 from __future__ import annotations
 
 import re
+import struct
 from pathlib import Path
 
 SELF = r'(?:this|param_1)'
@@ -603,7 +604,7 @@ def fold_byte_split_pointers(text):
         head, tail = text[:m.start()], text[m.end():]
         if concat not in tail:
             break
-        tail = tail.replace(f'(void *){concat}', x, 1) if f'(void *){concat}' in tail else tail.replace(concat, x, 1)
+        tail = tail.replace(f'(void *){concat}', x).replace(concat, x)    # (one split feeds every retry of the acquire)
         text = head + tail
     # the split whose reassembly an earlier rewrite already consumed (the acquire operand): the byte temporaries
     # are dead when nothing else reads them
@@ -1485,6 +1486,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     # inlined `CScriptThing::GetDataString()` into a hidden-result slot: the empty global string (DAT_0143e8ec)
     # when the thing has no Data, else the Data vcall (whose result operand Ghidra dropped)
     text = re.sub(r'CCharString::CCharString\((?:\(CCharString \*\))?&(\w+),\(CCharString(?:_bv)? \*\)&DAT_0143e8ec\);', r'\1 = ENGINE_EmptyString();', text)
+    # a float constant loaded into an integer register (`iVar7 = 0x3f800000;` then pushed as a float operand)
+    text = re.sub(r'= (0x(?:3[a-f]|4[0-9a]|b[a-f]|c[0-9a])[0-9a-f]{6});', lambda m: f'= {struct.unpack("<f", struct.pack("<I", int(m.group(1), 16)))[0]!r};', text)
     # CRT `rand()` (MSVCR71; Ghidra prints the stale registers as operands): 0..RAND_MAX
     text = re.sub(r'(?<![\w:])rand\((?:[^()]|\([^()]*\))*\)', 'ENGINE_Rand()', text)
     # a by-value string operand cast on its stack slot (`(CCharString *)&xStack_2c`) is the slot

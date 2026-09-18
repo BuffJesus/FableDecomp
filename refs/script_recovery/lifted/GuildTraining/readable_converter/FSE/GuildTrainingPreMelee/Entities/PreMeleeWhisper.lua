@@ -55,7 +55,7 @@ function Main(quest, me)
         timerId = quest:RegisterTimer()
         quest:SetTimer(timerId, 0)
         iVar11 = 1
-        iVar10 = 0x3f800000
+        iVar10 = 1.0
         pCVar5 = quest:GetHero()
         me:FollowThing(pCVar5, iVar10, (iVar11 ~= 0))
         cVar4 = quest:GetStateBool("WhisperStopFollowing")
@@ -117,7 +117,7 @@ function Main(quest, me)
                     end
                 end
                 iVar11 = 1
-                iVar10 = 0x3f800000
+                iVar10 = 1.0
                 pCVar5 = quest:GetHero()
                 me:FollowThing(pCVar5, iVar10, (iVar11 ~= 0))
                 quest:PauseAllNonScriptedEntities(false)

@@ -5,7 +5,7 @@
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local actorMap, pThingToMove, rivalHeroWhisperTeenApprentice, resource, resource2
+    local rivalHeroWhisperTeenApprentice, resource
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingMelee/Entities/TheRealGuildmaster")
     quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent")
     quest:AddEntityBinding("MeleeThunder", "GuildTrainingMelee/Entities/MeleeThunder")
@@ -16,42 +16,32 @@ function Main(quest)
     if rivalHeroWhisperTeenApprentice ~= nil and not rivalHeroWhisperTeenApprentice:IsNull() then
         rivalHeroWhisperTeenApprentice:SetFriendsWithEverythingFlag(1)
     end
-    resource2 = resources:NewResource()
-    while not resources:TryAcquire(resource2, rivalHeroWhisperTeenApprentice, 4) do
-        if not quest:NewScriptFrame() then resources:ReleaseResource(resource2); return end
-    end
-    if not quest:IsActiveThreadTerminating() then
-        quest:EntitySetAllowBossPhaseChanges(rivalHeroWhisperTeenApprentice, false)
-        resource = resources:NewResource()
-        while not resources:TryAcquire(resource, hero, 4) do
-            if not quest:NewScriptFrame() then goto LAB_00d56509 end
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, rivalHeroWhisperTeenApprentice, 4) do
+        quest:NewScriptFrame()
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource)
+            do return end
         end
-        if not quest:IsActiveThreadTerminating() then
-            actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "HERO", resource)
-            resources:SetActor(actorMap, "WHISPER", resource2)
-            pThingToMove = resources:StartMovie("")
-            quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_MELEE_INTRO", actorMap, false, true)
-            quest:FixMovieSequenceCamera(false)
-            quest:SetStateBool("TalkedToWhisper", true)
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(pThingToMove)
-            resources:DestroyActorMap(actorMap)
-            quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_03", "", "")
-            quest:AddLogbookStoryEntry(40)
-            if quest:DisplayTutorial(26) and not quest:IsActiveThreadTerminating() then
-                while not quest:MsgIsTutorialClickedPast() do
-                    if not quest:NewScriptFrame() then goto LAB_00d56509 end
-                end
-            end
-        end
-        ::LAB_00d56509::
-        resources:ReleaseResource(resource)
     end
-    resources:ReleaseResource(resource2)
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    quest:EntitySetAllowBossPhaseChanges(rivalHeroWhisperTeenApprentice, false)
+    if not hero:AcquireControl(4) then goto LAB_00d56509 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d56509 end
+    quest:StartCutscene({HERO = hero, WHISPER = rivalHeroWhisperTeenApprentice}, {}, true)
+    quest:RunCutscene("CS_GUILD_MELEE_INTRO", true, false)
+    quest:FixMovieSequenceCamera(false)
+    quest:SetStateBool("TalkedToWhisper", true)
+    quest:EndCutscene()
+    quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_03", "", "")
+    quest:AddLogbookStoryEntry(40)
+    if not (quest:DisplayTutorial(26) and not quest:IsActiveThreadTerminating()) then goto LAB_00d56509 end
+    while not quest:MsgIsTutorialClickedPast() do
+        if not quest:NewScriptFrame() then goto LAB_00d56509 end
+    end
+    ::LAB_00d56509::
+    hero:ReleaseControl()
+    resources:ReleaseResource(resource)
 end
 
 -- Q_GuildTrainingMelee.Init (retail 0x00d55da0)

@@ -14,12 +14,10 @@ end
 
 -- MK_OFI_GWLL_WHIS2.Main (retail 0x00dd1eb0)
 function Main(quest, me)
-    if not quest:GetStateBool("HeroMetWhisperBeforeFarm") and quest:GetStateInt("HeroTeam") == 0 then
-        if quest:IsActiveThreadTerminating() then return end
-        quest:SetStateBool("HeroMetWhisperBeforeFarm", true)
-        helpers.DoMultiplierCutscene(quest, me)
-        return
-    end
+    if not ((not quest:GetStateBool("HeroMetWhisperBeforeFarm")) and (quest:GetStateInt("HeroTeam") == 0)) then return end
+    if quest:IsActiveThreadTerminating() then return end
+    quest:SetStateBool("HeroMetWhisperBeforeFarm", true)
+    helpers.DoMultiplierCutscene(quest, me)
 end
 
 -- MK_OFI_GWLL_WHIS2.Init (retail 0x00cdebb0)

@@ -69,7 +69,7 @@ function Main(quest, me)
         iVar19 = 1
         iVar17 = 0
         iVar16 = 0
-        iVar15 = 0x40400000
+        iVar15 = 3.0
         pCVar8 = pCVar7:GetPos()
         me:MoveToPosition(pCVar8, iVar15, iVar16, (iVar17 ~= 0), (iVar19 ~= 0))
         quest:SetPlayerUsingRangedDummies(true)
@@ -1271,7 +1271,7 @@ function Main(quest, me)
             p4 = 1
             iVar19 = 0
             iVar17 = 0
-            iVar15 = 0x40400000
+            iVar15 = 3.0
             pCVar8 = pCVar7:GetPos()
             me:MoveToPosition(pCVar8, iVar15, iVar17, (iVar19 ~= 0), (p4 ~= 0))
             pCVar7 = quest:GetThingWithScriptName("SkillApprenticeMarker")

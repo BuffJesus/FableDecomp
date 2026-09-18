@@ -13,37 +13,37 @@ end
 -- MeleeThunder.Main (retail 0x00d58080)
 function Main(quest, me)
     while quest:GetStateInt("TutorialState") ~= 4 do
-        if not quest:NewScriptFrame(me) then me:ReleaseControl(); return end
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            me:ReleaseControl()
+            do return end
+        end
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d582ed end
+    if not me:AcquireControl(4) then goto LAB_00d582ed end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d582ed end
+    while quest:GetStateInt("TutorialState") == 4 do
+        if not quest:NewScriptFrame(me) then goto LAB_00d582ed end
+    end
+    while quest:GetStateInt("TutorialState") ~= 6 do
+        if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
     end
     if not quest:IsActiveThreadTerminating() then
-        if not me:AcquireControl(4) then goto LAB_00d582ed end
+        if not me:AcquireControl(4) then goto LAB_00d58297 end
         if not quest:IsActiveThreadTerminating() then
-            while quest:GetStateInt("TutorialState") == 4 do
-                if not quest:NewScriptFrame(me) then goto LAB_00d582ed end
+            while quest:GetStateInt("TutorialState") == 6 do
+                if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
             end
             if not quest:IsActiveThreadTerminating() then
-                while quest:GetStateInt("TutorialState") ~= 6 do
-                    if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
-                end
-                if not quest:IsActiveThreadTerminating() then
-                    if not me:AcquireControl(4) then goto LAB_00d58297 end
-                    if not quest:IsActiveThreadTerminating() then
-                        while quest:GetStateInt("TutorialState") == 6 do
-                            if not quest:NewScriptFrame(me) then goto LAB_00d58297 end
-                        end
-                        if not quest:IsActiveThreadTerminating() then
-                            repeat
-                                quest:NewScriptFrame(me)
-                            until quest:IsActiveThreadTerminating()
-                        end
-                    end
-                end
-                ::LAB_00d58297::
-                me:ReleaseControl()
-                return
+                repeat
+                    quest:NewScriptFrame(me)
+                until quest:IsActiveThreadTerminating()
             end
         end
     end
+    ::LAB_00d58297::
+    me:ReleaseControl()
+    do return end
     ::LAB_00d582ed::
     me:ReleaseControl()
 end

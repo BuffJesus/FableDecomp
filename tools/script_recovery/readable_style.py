@@ -518,17 +518,23 @@ def fold_cutscenes(lines):
             acquires = list(re.finditer(r'^\s*resources:TryAcquire\(' + re.escape(R) + r', ([^\n]+?), 4\)\n', text[:setup], re.M))
             acquire = acquires[-1] if acquires else None
             if not acquire:
-                return lines, 0
+                # the entity's own control handle (acquired by the retry loop at the top of Main, priority 4):
+                # the actor is that thing; the handle stays (fold_control_acquires takes it once the map is gone)
+                held = list(re.finditer(r'^\s*while not resources:TryAcquire\(' + re.escape(R) + r', (\w+), 4\) do\n', text[:setup], re.M))
+                if not held:
+                    return lines, 0
+                table.append((name, held[-1].group(1)))
+                continue
             table.append((name, acquire.group(1)))
             objects.add(R)
             pieces += [re.compile(r'^\s*(?:local )?' + re.escape(R) + r' = resources:NewResource\(\)\n', re.M),
                        re.compile(r'^\s*resources:TryAcquire\(' + re.escape(R) + r', [^\n]+?, 4\)\n', re.M)]
-        movie = re.search(r'^\s*(?:local )?(\w+) = resources:StartMovie\(""\)\n(\s*)quest:StartMovieSequence\(\)\n\s*quest:PauseAllNonScriptedEntities\(true\)\n(\s*quest:FixMovieSequenceCamera\(true\)\n)?',
+        movie = re.search(r'^\s*(?:(?:local )?(\w+) = )?resources:StartMovie\(""\)\n(\s*)quest:StartMovieSequence\(\)\n\s*quest:PauseAllNonScriptedEntities\(true\)\n(\s*quest:FixMovieSequenceCamera\(true\)\n)?',
                           text[text.index(f'{M} = resources:NewActorMap()'):], re.M)
         if not movie:
             return lines, 0
-        MV, indent, fix = movie.group(1), movie.group(2), bool(movie.group(3))
-        objects |= {M, MV}
+        MV, indent, fix = movie.group(1), movie.group(2), bool(movie.group(3))     # (MV None: the movie object's name was lost)
+        objects |= {M} | ({MV} if MV else set())
         macros = list(re.finditer(r'^(\s*)resources:RunMacro\(("[^"]*"|\w+), ' + re.escape(M) + r', (true|false), (true|false)\)\n', text, re.M))
         if not macros:
             return lines, 0
@@ -1157,6 +1163,19 @@ def prune_empty_else(lines):
         if m and lines[i + 1] == m.group(1) + 'end\n':
             lines[i] = ''
             count += 1
+    # `if C then <comments only> else BODY end` -> `if not C then BODY end`
+    for i in range(len(lines) - 2):
+        m = re.fullmatch(r'(\s*)if (.+) then\n', lines[i])
+        if not m:
+            continue
+        j = i + 1
+        while j < len(lines) and lines[j].strip().startswith('--'):
+            j += 1
+        if j > i and j < len(lines) and lines[j] == m.group(1) + 'else\n':
+            lines[i] = f'{m.group(1)}if {_negate(m.group(2))} then\n'
+            for k in range(i + 1, j + 1):
+                lines[k] = ''
+            count += 1
     return lines, count
 
 
@@ -1703,6 +1722,120 @@ def fold_blocking_speech(lines):
     return lines, count
 
 
+def _indent(line):
+    return len(line) - len(line.lstrip(' '))
+
+
+PLAIN_TAIL = re.compile(r'::\w+::|[\w.:]+\([^\n]*\)|\w+ = [^\n]+|return|__cleanup_\w+\(\)')
+BLOCK_OPENER = re.compile(r'(?:if .+ then|elseif .+ then|else|while .+ do|for .+ do|repeat|do)$')
+
+
+def _exit_path(lines, end_idx, level):
+    """The statements run after the `end` at end_idx (indent `level`) until the function returns, when that
+    path only falls out of if-blocks through plain statements / labels (never around a loop). None otherwise."""
+    j, tail = end_idx + 1, []
+    while True:
+        while j < len(lines) and lines[j].strip() and _indent(lines[j]) >= level:
+            if _indent(lines[j]) > level or not PLAIN_TAIL.fullmatch(lines[j].strip()):
+                return None
+            tail.append(lines[j].strip())
+            j += 1
+            if tail[-1] == 'return':
+                return tail
+        if j >= len(lines) or not lines[j].strip():
+            return None
+        closer, ci = lines[j].strip(), _indent(lines[j])
+        if ci != level - 4:
+            return None
+        if ci == 0:
+            return tail if closer == 'end' else None          # the function's own end
+        if closer == 'end' or closer.startswith('until '):
+            k = j - 1
+            while k >= 0 and not (_indent(lines[k]) == ci and lines[k].strip()):
+                k -= 1
+            if k < 0 or not BLOCK_OPENER.fullmatch(lines[k].strip()):
+                return None
+            if closer.startswith('until ') or lines[k].strip().startswith(('while ', 'for ')):
+                return ('continue', j, tail)                  # falling out of a loop body: the next iteration
+            if lines[k].strip() == 'do':
+                return None
+        elif closer == 'else' or closer.startswith('elseif '):
+            j = next((x for x in range(j + 1, len(lines)) if _indent(lines[x]) == ci and lines[x].strip() == 'end'), None)
+            if j is None:
+                return None
+        else:
+            return None
+        level = ci
+        j += 1
+
+
+def count_labels(lines):
+    """The next free continue-label number of the function."""
+    used = [int(m.group(1)) for l in lines for m in [re.fullmatch(r'\s*::continue_(\d+)::\n', l)] if m]
+    return max(used, default=0) + 1
+
+
+def flatten_tail_guards(lines):
+    """`if C then <the rest> end` whose fall-through only runs plain exit tails (`::LAB::` + cleanup + `return`,
+    or out through enclosing if-blocks to the function's end) is an early exit in a quest script:
+    `if not C then goto LAB end` / `if not C then <cleanup>; return end` with the body dedented. Retail's
+    `if (!IsActiveThreadTerminating()) { ... }` chains (TheRealGuildmaster: 130 columns) flatten this way."""
+    count = 0
+    i = 0
+    while i < len(lines):
+        m = re.fullmatch(r'(\s*)if (.+) then\n', lines[i])
+        if not m:
+            i += 1
+            continue
+        indent, cond = m.group(1), m.group(2)
+        end = next((j for j in range(i + 1, len(lines)) if lines[j] == indent + 'end\n'), None)
+        if end is None or any(re.fullmatch(re.escape(indent) + r'(?:else|elseif .+)\n', lines[j]) for j in range(i + 1, end)):
+            i += 1
+            continue
+        path = _exit_path(lines, end, len(indent))
+        if path is None:
+            i += 1
+            continue
+        body = [l[4:] if l.startswith(indent + '    ') else l for l in lines[i + 1:end]]
+        if not any(l.strip() and not l.strip().startswith('--') for l in body):
+            i += 1
+            continue
+        if isinstance(path, tuple):
+            # the fall-through is the loop's next iteration: `goto continue_N` with the label at the loop's end
+            _, closer_idx, tail = path
+            existing = re.fullmatch(r'\s*::(continue_\d+)::\n', lines[closer_idx - 1])
+            label_name = existing.group(1) if existing else f'continue_{count_labels(lines)}'
+            prefix = [x for x in tail if not x.startswith('::')]
+            if len(prefix) > 3 or any(x.startswith('::') for x in tail):
+                i += 1
+                continue
+            stmts = prefix + [f'goto {label_name}']
+            pending_label = None if existing else (closer_idx, label_name)
+        else:
+            pending_label = None
+            label = next((x for x in path if x.startswith('::')), None)
+            prefix = path[:path.index(label)] if label else [x for x in path if x != 'return']
+            if len(prefix) > 3:
+                i += 1
+                continue
+            stmts = prefix + ([f'goto {label[2:-2]}'] if label else ['return'])
+        head = f'{indent}if {_negate(cond)} then {"; ".join(stmts)} end\n'
+        statements = sum(1 for l in body if l.strip() and not l.strip().startswith(('--', '::')))
+        if statements < 2 * max(1, len([x for x in stmts if not x.startswith('goto')])) and statements < 4:
+            i += 1
+            continue                                   # a short exit body is the readable form already
+        follows = pending_label or (end + 1 < len(lines) and lines[end + 1].strip() and _indent(lines[end + 1]) >= len(indent))
+        if follows and re.fullmatch(r'(?:.*; )?return\n', body[-1].lstrip()) and body[-1].startswith(indent) and body[-1][len(indent)] != ' ':
+            body[-1] = body[-1][:-len('return\n')] + 'do return end\n'      # (a return is only legal last in its block)
+        if pending_label:
+            closer_idx, label_name = pending_label
+            lines.insert(closer_idx, ' ' * (_indent(lines[closer_idx]) + 4) + f'::{label_name}::\n')
+        lines[i:end + 1] = [head] + body
+        count += 1
+        i += 1
+    return lines, count
+
+
 def prune_self_assignments(lines):
     count = 0
     for i, l in enumerate(lines):
@@ -1814,6 +1947,7 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         total += run('copies', propagate_copies)
         total += run('selfAssignments', prune_self_assignments)
         total += run('flagClears', fold_flag_clears)
+        total += run('tailGuards', flatten_tail_guards)
         total += run('blockingSpeech', fold_blocking_speech)
         total += run('uintFixups', fold_uint_fixups)
         total += run('freshGuards', simplify_fresh_guards)

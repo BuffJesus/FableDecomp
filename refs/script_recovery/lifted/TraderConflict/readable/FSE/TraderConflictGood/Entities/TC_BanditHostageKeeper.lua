@@ -16,33 +16,30 @@ function Main(quest, me)
     local conversationID
     if not quest:NewScriptFrame(me) then return end
     if not me:AcquireControl(2) then goto LAB_00dfbcd3 end
-    if not quest:IsActiveThreadTerminating() then
-        while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
-            if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
+    while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
+        if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
+    end
+    if math.random(0, 32767) % 5 == 0 then
+        if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
+        conversationID = quest:AddNewConversation(me, false, false)
+        quest:AddPersonToConversation(conversationID, hero)
+        if quest:GetStateInt("BanditSecurityLinesSaid") == 0 then
+            quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_10", me, hero, false)
+        elseif quest:GetStateInt("BanditSecurityLinesSaid") == 1 then
+            quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, hero, false)
+        else
+            quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, hero, false)
         end
-        if not quest:IsActiveThreadTerminating() then
-            if math.random(0, 32767) % 5 == 0 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
-                conversationID = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationID, hero)
-                if quest:GetStateInt("BanditSecurityLinesSaid") == 0 then
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_10", me, hero, false)
-                elseif quest:GetStateInt("BanditSecurityLinesSaid") == 1 then
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, hero, false)
-                else
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_20", me, hero, false)
-                end
-                if quest:GetStateInt("BanditSecurityLinesSaid") < 1 then
-                    quest:SetStateInt("BanditSecurityLinesSaid", quest:GetStateInt("BanditSecurityLinesSaid") + 1)
-                else
-                    quest:SetStateInt("BanditSecurityLinesSaid", 0)
-                end
-            end
-            repeat
-                quest:NewScriptFrame(me)
-            until quest:IsActiveThreadTerminating()
+        if quest:GetStateInt("BanditSecurityLinesSaid") < 1 then
+            quest:SetStateInt("BanditSecurityLinesSaid", quest:GetStateInt("BanditSecurityLinesSaid") + 1)
+        else
+            quest:SetStateInt("BanditSecurityLinesSaid", 0)
         end
     end
+    repeat
+        quest:NewScriptFrame(me)
+    until quest:IsActiveThreadTerminating()
     ::LAB_00dfbcd3::
     me:ReleaseControl()
 end

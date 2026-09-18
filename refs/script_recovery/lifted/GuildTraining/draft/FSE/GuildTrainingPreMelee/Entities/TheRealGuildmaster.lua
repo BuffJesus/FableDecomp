@@ -196,6 +196,10 @@ function Main(quest, me)
                 goto FLOW_after_lab_00d533bb
             end
             iVar8 = 4
+            uVar16 = SUB41(xStack_14c,0)
+            uVar17 = (xStack_14c >> 8)
+            uVar18 = (xStack_14c >> 0x10)
+            uVar19 = (xStack_14c >> 0x18)
             pCVar6 = quest:GetHero()
             bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
         end
@@ -319,6 +323,10 @@ function Main(quest, me)
                             if bVar3 ~= 0 then
                             end
                             iVar8 = 4
+                            uVar16 = SUB41(xStack_14c,0)
+                            uVar17 = (xStack_14c >> 8)
+                            uVar18 = (xStack_14c >> 0x10)
+                            uVar19 = (xStack_14c >> 0x18)
                             pCVar6 = quest:GetHero()
                             bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             while not bVar3 do
@@ -330,6 +338,10 @@ function Main(quest, me)
                                     goto FLOW_after_lab_00d53a0b
                                 end
                                 iVar8 = 4
+                                uVar16 = SUB41(xStack_14c,0)
+                                uVar17 = (xStack_14c >> 8)
+                                uVar18 = (xStack_14c >> 0x10)
+                                uVar19 = (xStack_14c >> 0x18)
                                 pCVar6 = quest:GetHero()
                                 bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             end
@@ -450,6 +462,10 @@ function Main(quest, me)
                                                 if bVar3 ~= 0 then
                                                 end
                                                 iVar8 = 4
+                                                uVar16 = SUB41(xStack_14c,0)
+                                                uVar17 = (xStack_14c >> 8)
+                                                uVar18 = (xStack_14c >> 0x10)
+                                                uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
                                                 bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
@@ -640,7 +656,7 @@ function Main(quest, me)
                                                                                                         uVar18 = 0
                                                                                                         uVar19 = 0
                                                                                                         iVar8 = 0
-                                                                                                        iVar7 = 0x3f800000
+                                                                                                        iVar7 = 1.0
                                                                                                         pCVar12 = pCVar6:GetPos()
                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                         c_stk_169 = 1
@@ -768,7 +784,7 @@ function Main(quest, me)
                                                                                                                     uVar19 = 0
                                                                                                                     iVar23 = 0
                                                                                                                     iVar8 = 0
-                                                                                                                    iVar7 = 0x3f800000
+                                                                                                                    iVar7 = 1.0
                                                                                                                     pCVar12 = pCVar5:GetPos()
                                                                                                                     me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                 end
@@ -888,7 +904,7 @@ function Main(quest, me)
                                                                                                                                 uVar19 = 0
                                                                                                                                 iVar23 = 0
                                                                                                                                 iVar8 = 0
-                                                                                                                                iVar7 = 0x3f800000
+                                                                                                                                iVar7 = 1.0
                                                                                                                                 pCVar12 = pCVar5:GetPos()
                                                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                             end
@@ -1029,7 +1045,7 @@ function Main(quest, me)
                                                                                                                                 uVar19 = 0
                                                                                                                                 iVar23 = 0
                                                                                                                                 iVar8 = 0
-                                                                                                                                iVar7 = 0x3f800000
+                                                                                                                                iVar7 = 1.0
                                                                                                                                 pCVar12 = pCVar5:GetPos()
                                                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                                 goto LAB_00d5595a_c6
@@ -1174,7 +1190,7 @@ function Main(quest, me)
                                                                                                 uVar18 = 0
                                                                                                 uVar19 = 0
                                                                                                 iVar8 = 0
-                                                                                                iVar7 = 0x3f800000
+                                                                                                iVar7 = 1.0
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = 1
@@ -1293,7 +1309,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                     end
@@ -1469,7 +1485,7 @@ function Main(quest, me)
                                                                                                             uVar19 = 0
                                                                                                             iVar23 = 0
                                                                                                             iVar8 = 0
-                                                                                                            iVar7 = 0x3f800000
+                                                                                                            iVar7 = 1.0
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                         end
@@ -1484,11 +1500,11 @@ function Main(quest, me)
                                                                                                             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsMelee")
                                                                                                             if not bVar3 then
                                                                                                                 bVar3 = false
-                                                                                                                goto FLOW_after_lab_00d54f9c_782
+                                                                                                                goto FLOW_after_lab_00d54f9c_798
                                                                                                             end
                                                                                                             bVar3 = true
                                                                                                         end
-                                                                                                        ::FLOW_after_lab_00d54f9c_782::
+                                                                                                        ::FLOW_after_lab_00d54f9c_798::
                                                                                                         if bVar3 then
                                                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                                                             bVar3 = not alive
@@ -1601,7 +1617,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                     end
@@ -1696,7 +1712,7 @@ function Main(quest, me)
                                                                                                                             uVar19 = 0
                                                                                                                             iVar23 = 0
                                                                                                                             iVar8 = 0
-                                                                                                                            iVar7 = 0x3f800000
+                                                                                                                            iVar7 = 1.0
                                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         end
@@ -1827,7 +1843,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         goto LAB_00d5595a
@@ -2117,7 +2133,7 @@ function Main(quest, me)
                                                                                                 uVar18 = 0
                                                                                                 uVar19 = 0
                                                                                                 iVar8 = 0
-                                                                                                iVar7 = 0x3f800000
+                                                                                                iVar7 = 1.0
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = 1
@@ -2245,7 +2261,7 @@ function Main(quest, me)
                                                                                                             uVar19 = 0
                                                                                                             iVar23 = 0
                                                                                                             iVar8 = 0
-                                                                                                            iVar7 = 0x3f800000
+                                                                                                            iVar7 = 1.0
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                         end
@@ -2365,7 +2381,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                     end
@@ -2506,7 +2522,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         goto LAB_00d5595a_c27
@@ -2753,6 +2769,10 @@ function Main(quest, me)
                                                 if bVar3 ~= 0 then
                                                 end
                                                 iVar8 = 4
+                                                uVar16 = SUB41(xStack_14c,0)
+                                                uVar17 = (xStack_14c >> 8)
+                                                uVar18 = (xStack_14c >> 0x10)
+                                                uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
                                                 bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
@@ -2940,7 +2960,7 @@ function Main(quest, me)
                                                                                                 uVar18 = 0
                                                                                                 uVar19 = 0
                                                                                                 iVar8 = 0
-                                                                                                iVar7 = 0x3f800000
+                                                                                                iVar7 = 1.0
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = 1
@@ -3068,7 +3088,7 @@ function Main(quest, me)
                                                                                                             uVar19 = 0
                                                                                                             iVar23 = 0
                                                                                                             iVar8 = 0
-                                                                                                            iVar7 = 0x3f800000
+                                                                                                            iVar7 = 1.0
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                         end
@@ -3188,7 +3208,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                     end
@@ -3329,7 +3349,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         goto LAB_00d5595a_c28
@@ -3603,6 +3623,10 @@ function Main(quest, me)
                             if bVar3 ~= 0 then
                             end
                             iVar8 = 4
+                            uVar16 = SUB41(xStack_14c,0)
+                            uVar17 = (xStack_14c >> 8)
+                            uVar18 = (xStack_14c >> 0x10)
+                            uVar19 = (xStack_14c >> 0x18)
                             pCVar6 = quest:GetHero()
                             bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             while not bVar3 do
@@ -3611,6 +3635,10 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if bVar3 then return end  -- TODO(native): goto LAB_00d53a0b_c29
                                 iVar8 = 4
+                                uVar16 = SUB41(xStack_14c,0)
+                                uVar17 = (xStack_14c >> 8)
+                                uVar18 = (xStack_14c >> 0x10)
+                                uVar19 = (xStack_14c >> 0x18)
                                 pCVar6 = quest:GetHero()
                                 bVar3 = resources:TryAcquire(xStack_14c, pCVar6, iVar8)
                             end
@@ -3731,6 +3759,10 @@ function Main(quest, me)
                                                 if bVar3 ~= 0 then
                                                 end
                                                 iVar8 = 4
+                                                uVar16 = SUB41(xStack_14c,0)
+                                                uVar17 = (xStack_14c >> 8)
+                                                uVar18 = (xStack_14c >> 0x10)
+                                                uVar19 = (xStack_14c >> 0x18)
                                                 pCVar6 = quest:GetHero()
                                                 bVar3 = resources:TryAcquire(0, pCVar6, iVar8)
                                                 while not bVar3 do
@@ -3918,7 +3950,7 @@ function Main(quest, me)
                                                                                                 uVar18 = 0
                                                                                                 uVar19 = 0
                                                                                                 iVar8 = 0
-                                                                                                iVar7 = 0x3f800000
+                                                                                                iVar7 = 1.0
                                                                                                 pCVar12 = pCVar6:GetPos()
                                                                                                 me:MoveToPosition(pCVar12, iVar7, iVar8, false, (iVar23 ~= 0))
                                                                                                 c_stk_169 = 1
@@ -4046,7 +4078,7 @@ function Main(quest, me)
                                                                                                             uVar19 = 0
                                                                                                             iVar23 = 0
                                                                                                             iVar8 = 0
-                                                                                                            iVar7 = 0x3f800000
+                                                                                                            iVar7 = 1.0
                                                                                                             pCVar12 = pCVar5:GetPos()
                                                                                                             me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                         end
@@ -4166,7 +4198,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                     end
@@ -4307,7 +4339,7 @@ function Main(quest, me)
                                                                                                                         uVar19 = 0
                                                                                                                         iVar23 = 0
                                                                                                                         iVar8 = 0
-                                                                                                                        iVar7 = 0x3f800000
+                                                                                                                        iVar7 = 1.0
                                                                                                                         pCVar12 = pCVar5:GetPos()
                                                                                                                         me:MoveToPosition(pCVar12, iVar7, iVar8, (iVar23 ~= 0), true)
                                                                                                                         goto LAB_00d5595a_c29

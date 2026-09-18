@@ -144,25 +144,25 @@ function Main(quest, me)
                 quest:SetStateBool("HeroAttackedBandit", true)
             end
         end
-        if quest:GetStateBool("HeroAttackedBandit") then
-            if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
+        if not quest:GetStateBool("HeroAttackedBandit") then scratchValue3 = scratchValue2; goto continue_1 end
+        if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
+            if quest:IsActiveThreadTerminating() then return end
+            if math.random(0, 32767) % 5 == 0 then
                 if quest:IsActiveThreadTerminating() then return end
-                if math.random(0, 32767) % 5 == 0 then
-                    if quest:IsActiveThreadTerminating() then return end
-                    conversationId = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationId, hero)
-                    quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_SEEKING_REVENGE_10", me, hero, false)
-                end
-                quest:GiveThingBestEnemyTarget(me, hero)
-                quest:EntityUnsetThingAsAllyOfThing(me, hero)
-                quest:EntityUnsetThingAsAllyOfThing(hero, me)
-                while not quest:GetStateBool("MissionSucceeded") do
-                    if not quest:NewScriptFrame(me) then return end
-                end
-                if quest:IsActiveThreadTerminating() then return end
+                conversationId = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId, hero)
+                quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_SEEKING_REVENGE_10", me, hero, false)
             end
+            quest:GiveThingBestEnemyTarget(me, hero)
+            quest:EntityUnsetThingAsAllyOfThing(me, hero)
+            quest:EntityUnsetThingAsAllyOfThing(hero, me)
+            while not quest:GetStateBool("MissionSucceeded") do
+                if not quest:NewScriptFrame(me) then return end
+            end
+            if quest:IsActiveThreadTerminating() then return end
         end
         scratchValue3 = scratchValue2
+        ::continue_1::
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:RemoveThing(me, false, true)

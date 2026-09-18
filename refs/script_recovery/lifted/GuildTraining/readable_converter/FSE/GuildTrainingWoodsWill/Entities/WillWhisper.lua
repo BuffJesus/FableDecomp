@@ -14,22 +14,21 @@ end
 function Main(quest, me)
     if not quest:NewScriptFrame(me) then return end
     if not me:AcquireControl(4) then goto LAB_00d68acf end
-    if not quest:IsActiveThreadTerminating() then
-        quest:EntitySetAsKillable(me, false, false)
-        quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
-        quest:EntitySetInFaction(me, "FACTION_HERO")
-        quest:EntitySetAllowBossPhaseChanges(me, false)
-        while quest:GetStateBool("BanditsAlive") do
-            if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
-            if me:MsgIsHitByHero() or me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me) then
-                quest:EntitySetInFaction(me, "FACTION_HERO")
-                me:SetFriendsWithEverythingFlag(me)
-            end
-            if quest:GetStateBool("WhisperAnimate") then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end
-                quest:SetStateBool("WhisperAnimate", false)
-                me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, true, false, false)
-            end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end
+    quest:EntitySetAsKillable(me, false, false)
+    quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
+    quest:EntitySetInFaction(me, "FACTION_HERO")
+    quest:EntitySetAllowBossPhaseChanges(me, false)
+    while quest:GetStateBool("BanditsAlive") do
+        if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
+        if me:MsgIsHitByHero() or me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me) then
+            quest:EntitySetInFaction(me, "FACTION_HERO")
+            me:SetFriendsWithEverythingFlag(me)
+        end
+        if quest:GetStateBool("WhisperAnimate") then
+            if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end
+            quest:SetStateBool("WhisperAnimate", false)
+            me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, true, false, false)
         end
     end
     ::LAB_00d68acf::

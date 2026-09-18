@@ -56,21 +56,22 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then return end
     while not quest:IsActiveThreadTerminating() do
-        if quest:GetTimer(screamOutTimer) == 0 then
-            if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
-                conversationID = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationID, hero)
-                if quest:EntityGetSex(me) == 2 then
-                    if quest:IsActiveThreadTerminating() then return end
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_FEMALE_PANIC", me, hero, false)
-                else
-                    if quest:IsActiveThreadTerminating() then return end
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, hero, false)
-                end
-                quest:SetTimer(screamOutTimer, math.random(0, 32767) % 15 + 15)
+        if quest:GetTimer(screamOutTimer) ~= 0 then quest:NewScriptFrame(me); goto continue_2 end
+        if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
+            if quest:IsActiveThreadTerminating() then return end
+            conversationID = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(conversationID, hero)
+            if quest:EntityGetSex(me) == 2 then
+                if quest:IsActiveThreadTerminating() then return end
+                quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_FEMALE_PANIC", me, hero, false)
+            else
+                if quest:IsActiveThreadTerminating() then return end
+                quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, hero, false)
             end
+            quest:SetTimer(screamOutTimer, math.random(0, 32767) % 15 + 15)
         end
         quest:NewScriptFrame(me)
+        ::continue_2::
     end
 end
 

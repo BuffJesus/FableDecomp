@@ -37,7 +37,11 @@ function Main(quest, me)
     end
     resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource)
+            do return end
+        end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:SetIsPushableByHero(me, false)
@@ -108,10 +112,14 @@ function Main(quest, me)
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_MULTI_GRADE", GROUP_SELECT_FIRST, false, true, false) then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie3)
-                                __cleanup_LAB_00d505a6(); return
+                            me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_MULTI_GRADE", GROUP_SELECT_FIRST, false, true, false)
+                            while me:IsPerformingScriptTask() do
+                                quest:NewScriptFrame(me)
+                                if quest:IsActiveThreadTerminating() then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(movie3)
+                                    __cleanup_LAB_00d505a6(); do return end
+                                end
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
@@ -132,12 +140,14 @@ function Main(quest, me)
                 scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                 while scratchValue < 0 do
                     quest:NewScriptFrame(me)
-                    if quest:IsActiveThreadTerminating() then
+                    if not quest:IsActiveThreadTerminating() then
+                        scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+                    else
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
-                        __cleanup_LAB_00d505a6(); return
+                        __cleanup_LAB_00d505a6(); do return end
+                        scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
-                    scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
@@ -164,10 +174,14 @@ function Main(quest, me)
                     __cleanup_LAB_00d505a6(); return
                 end
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                    if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_INTRO", GROUP_SELECT_FIRST, false, true, false) then
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie)
-                        __cleanup_LAB_00d505a6(); return
+                    me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_INTRO", GROUP_SELECT_FIRST, false, true, false)
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie)
+                            __cleanup_LAB_00d505a6(); do return end
+                        end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -182,10 +196,14 @@ function Main(quest, me)
                         __cleanup_LAB_00d505a6(); return
                     end
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_INTRO_APLUS", GROUP_SELECT_FIRST, false, true, false) then
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie)
-                            __cleanup_LAB_00d505a6(); return
+                        me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_INTRO_APLUS", GROUP_SELECT_FIRST, false, true, false)
+                        while me:IsPerformingScriptTask() do
+                            quest:NewScriptFrame(me)
+                            if quest:IsActiveThreadTerminating() then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie)
+                                __cleanup_LAB_00d505a6(); do return end
+                            end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
@@ -248,121 +266,123 @@ function Main(quest, me)
                     quest:UpdateQuestInfoCounter(scratchValue16, quest:GetMasterGameState("WillScore"), -1)
                     scratchValue9 = quest:GetTimer(timerId2)
                 end
-                if not quest:IsActiveThreadTerminating() then
-                    while not quest:IsHeroControlledByPlayer() do
-                        if not quest:NewScriptFrame(me) then goto LAB_00d50594 end
-                    end
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                    quest:DisplayQuestInfo(false)
-                    quest:RemoveQuestInfoElement(scratchValue)
-                    quest:RemoveQuestInfoElement(scratchValue17)
-                    if scratchValue4 == 0 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                        scratchValue17 = quest:GetMasterGameState("WillScore")
-                        scratchValue14 = 0
-                        scratchValue = 0
-                        repeat
-                            scratchValue9 = scratchValue
-                            if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, scratchValue14) <= scratchValue17 then
-                                if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                                break
-                            end
-                            scratchValue14 = scratchValue14 + 1
-                            scratchValue = scratchValue9 + 1
-                        until not (scratchValue9 + 1 < 7)
-                        resource3 = resources:NewResource()
-                        while not resources:TryAcquire(resource3, hero, 4) do
-                            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); goto LAB_00d50594 end
-                        end
-                        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); goto LAB_00d50594 end
-                        actorMap = resources:NewActorMap()
-                        resources:SetActor(actorMap, "ME", resource)
-                        resources:SetActor(actorMap, "HERO", resource3)
-                        movie4 = resources:StartMovie("")
-                        quest:StartMovieSequence()
-                        quest:PauseAllNonScriptedEntities(true)
-                        quest:FixMovieSequenceCamera(true)
-                        resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_END", actorMap, false, true)
-                        resources:SetActor(actorMap, "ME", resource)
-                        switch = scratchValue9
-                        repeat
-                            if switch == 0 then
-                                if quest:GetMasterGameState("GlobalWillGrade") ~= 7 then
-                                    if not quest:IsActiveThreadTerminating() then
-                                        resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_APLUS_PRIZE", actorMap, false, true)
-                                        quest:ClearThingHasInformation(me)
-                                        goto FLOW_native_label_1
-                                    end
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie4)
-                                    resources:DestroyActorMap(actorMap)
-                                    resources:ReleaseResource(resource3)
-                                    goto LAB_00d50594
-                                end
-                                if not quest:IsActiveThreadTerminating() then resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_APLUS", actorMap, false, true); break end
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie4)
-                                resources:DestroyActorMap(actorMap)
-                                resources:ReleaseResource(resource3)
-                                goto LAB_00d50594
-                            elseif switch == 1 then
-                                resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_A", actorMap, false, true)
-                                break
-                            elseif switch == 2 then
-                                resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_B", actorMap, false, true)
-                                break
-                            elseif switch == 3 then
-                                resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_C", actorMap, false, true)
-                                break
-                            elseif switch == 4 then
-                                resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_D", actorMap, false, true)
-                                break
-                            elseif switch == 5 then
-                                resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_E", actorMap, false, true)
-                                break
-                            elseif switch == 6 then
-                                resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_F", actorMap, false, true)
-                                break
-                            else
-                                goto FLOW_native_label_1
-                            end
-                        until true
-                        ::FLOW_native_label_1::
-                        if quest:GetMasterGameState("GlobalWillGrade") < 7 - scratchValue9 then
-                            if quest:IsActiveThreadTerminating() then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie4)
-                                resources:DestroyActorMap(actorMap)
-                                resources:ReleaseResource(resource3)
-                                goto LAB_00d50594
-                            end
-                            quest:SetMasterGameState("GlobalWillGrade", 7 - scratchValue9)
-                        end
-                        quest:FixMovieSequenceCamera(false)
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie4)
-                        resources:DestroyActorMap(actorMap)
-                        resources:ReleaseResource(resource3)
-                    end
-                    quest:SetMasterGameState("HeroTakingGuildTest", false)
-                    quest:SetPlayerUsingWillDummies(false)
-                    quest:DeregisterTimer(timerId3)
-                    quest:DeregisterTimer(timerId2)
-                    goto LAB_00d503cb
+                if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
+                while not quest:IsHeroControlledByPlayer() do
+                    if not quest:NewScriptFrame(me) then goto LAB_00d50594 end
                 end
+                quest:DisplayQuestInfo(false)
+                quest:RemoveQuestInfoElement(scratchValue)
+                quest:RemoveQuestInfoElement(scratchValue17)
+                if scratchValue4 == 0 then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
+                    scratchValue17 = quest:GetMasterGameState("WillScore")
+                    scratchValue14 = 0
+                    scratchValue = 0
+                    repeat
+                        scratchValue9 = scratchValue
+                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, scratchValue14) <= scratchValue17 then
+                            if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
+                            break
+                        end
+                        scratchValue14 = scratchValue14 + 1
+                        scratchValue = scratchValue9 + 1
+                    until not (scratchValue9 + 1 < 7)
+                    resource3 = resources:NewResource()
+                    while not resources:TryAcquire(resource3, hero, 4) do
+                        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); goto LAB_00d50594 end
+                    end
+                    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); goto LAB_00d50594 end
+                    actorMap = resources:NewActorMap()
+                    resources:SetActor(actorMap, "ME", resource)
+                    resources:SetActor(actorMap, "HERO", resource3)
+                    movie4 = resources:StartMovie("")
+                    quest:StartMovieSequence()
+                    quest:PauseAllNonScriptedEntities(true)
+                    quest:FixMovieSequenceCamera(true)
+                    resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_END", actorMap, false, true)
+                    resources:SetActor(actorMap, "ME", resource)
+                    switch = scratchValue9
+                    repeat
+                        if switch == 0 then
+                            if quest:GetMasterGameState("GlobalWillGrade") ~= 7 then
+                                if not quest:IsActiveThreadTerminating() then
+                                    resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_APLUS_PRIZE", actorMap, false, true)
+                                    quest:ClearThingHasInformation(me)
+                                    goto FLOW_native_label_1
+                                end
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie4)
+                                resources:DestroyActorMap(actorMap)
+                                resources:ReleaseResource(resource3)
+                                goto LAB_00d50594
+                            end
+                            if not quest:IsActiveThreadTerminating() then resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_APLUS", actorMap, false, true); break end
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie4)
+                            resources:DestroyActorMap(actorMap)
+                            resources:ReleaseResource(resource3)
+                            goto LAB_00d50594
+                        elseif switch == 1 then
+                            resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_A", actorMap, false, true)
+                            break
+                        elseif switch == 2 then
+                            resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_B", actorMap, false, true)
+                            break
+                        elseif switch == 3 then
+                            resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_C", actorMap, false, true)
+                            break
+                        elseif switch == 4 then
+                            resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_D", actorMap, false, true)
+                            break
+                        elseif switch == 5 then
+                            resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_E", actorMap, false, true)
+                            break
+                        elseif switch == 6 then
+                            resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_F", actorMap, false, true)
+                            break
+                        else
+                            goto FLOW_native_label_1
+                        end
+                    until true
+                    ::FLOW_native_label_1::
+                    if quest:GetMasterGameState("GlobalWillGrade") < 7 - scratchValue9 then
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie4)
+                            resources:DestroyActorMap(actorMap)
+                            resources:ReleaseResource(resource3)
+                            goto LAB_00d50594
+                        end
+                        quest:SetMasterGameState("GlobalWillGrade", 7 - scratchValue9)
+                    end
+                    quest:FixMovieSequenceCamera(false)
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie4)
+                    resources:DestroyActorMap(actorMap)
+                    resources:ReleaseResource(resource3)
+                end
+                quest:SetMasterGameState("HeroTakingGuildTest", false)
+                quest:SetPlayerUsingWillDummies(false)
+                quest:DeregisterTimer(timerId3)
+                quest:DeregisterTimer(timerId2)
+                goto LAB_00d503cb
                 ::LAB_00d50594::
                 quest:DeregisterTimer(timerId3)
                 quest:DeregisterTimer(timerId2)
-            elseif not quest:IsActiveThreadTerminating() then
+            else
                 me:ClearCommands()
                 movie2 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                    if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_EARLY", GROUP_SELECT_FIRST, false, true, false) then
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie2)
-                        __cleanup_LAB_00d505a6(); return
+                    me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_EARLY", GROUP_SELECT_FIRST, false, true, false)
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie2)
+                            __cleanup_LAB_00d505a6(); do return end
+                        end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)

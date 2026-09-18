@@ -13,10 +13,9 @@ end
 -- FarmRearEntrance.Main (retail 0x00dcf4c0)
 function Main(quest, me)
     quest:NewScriptFrame(me)
-    if not quest:IsActiveThreadTerminating() and quest:GetStateBool("DoneIntroduction") then
-        if quest:IsActiveThreadTerminating() then return end
-        quest:RemoveThing(me, true, true)
-    end
+    if not ((not quest:IsActiveThreadTerminating()) and quest:GetStateBool("DoneIntroduction")) then return end
+    if quest:IsActiveThreadTerminating() then return end
+    quest:RemoveThing(me, true, true)
 end
 
 -- FarmRearEntrance.Init (retail 0x00dcf480)

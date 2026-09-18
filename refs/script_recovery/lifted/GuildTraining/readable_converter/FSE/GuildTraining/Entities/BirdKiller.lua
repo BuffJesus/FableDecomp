@@ -31,7 +31,11 @@ function Main(quest, me)
     scratchValue14 = 0
     resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource)
+            do return end
+        end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:EntitySetAsKillable(me, false, true)
@@ -84,13 +88,15 @@ function Main(quest, me)
                         scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                         while scratchValue < 0 do
                             quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
+                            if not quest:IsActiveThreadTerminating() then
+                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+                            else
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
                                 quest:DeregisterTimer(timerId)
-                                return
+                                do return end
+                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
-                            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                         if not quest:IsActiveThreadTerminating() then
                             scratchValue4 = quest:IsActiveThreadTerminating()
@@ -106,7 +112,7 @@ function Main(quest, me)
                                             resources:DestroyMovie(movie)
                                             quest:DeregisterTimer(timerId)
                                             resources:ReleaseResource(resource)
-                                            return
+                                            do return end
                                         end
                                     end
                                     if not quest:IsActiveThreadTerminating() then
@@ -125,12 +131,16 @@ function Main(quest, me)
                             if not scratchValue4 then
                                 scratchValue7 = 0.0
                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                    if not me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_REFUSE", GROUP_SELECT_FIRST, false, true, false) then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie)
-                                        quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(resource)
-                                        return
+                                    me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_REFUSE", GROUP_SELECT_FIRST, false, true, false)
+                                    while me:IsPerformingScriptTask() do
+                                        quest:NewScriptFrame(me)
+                                        if quest:IsActiveThreadTerminating() then
+                                            quest:PauseAllNonScriptedEntities(false)
+                                            resources:DestroyMovie(movie)
+                                            quest:DeregisterTimer(timerId)
+                                            resources:ReleaseResource(resource)
+                                            do return end
+                                        end
                                     end
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d4e9e1_c2 end
                                 end
@@ -152,13 +162,15 @@ function Main(quest, me)
                         scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                         while scratchValue < 0 do
                             quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
+                            if not quest:IsActiveThreadTerminating() then
+                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+                            else
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
                                 quest:DeregisterTimer(timerId)
-                                return
+                                do return end
+                                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
-                            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                         if not quest:IsActiveThreadTerminating() then
                             scratchValue4 = quest:IsActiveThreadTerminating()
@@ -171,7 +183,7 @@ function Main(quest, me)
                                         if quest:IsActiveThreadTerminating() then
                                             resources:ReleaseResource(scratchValue15)
                                             __cleanup_LAB_00d4e91f()
-                                            return
+                                            do return end
                                         end
                                     end
                                     if not quest:IsActiveThreadTerminating() then
@@ -194,12 +206,16 @@ function Main(quest, me)
                             if not scratchValue4 then
                                 scratchValue7 = 0.0
                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                    if not me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_REFUSE", GROUP_SELECT_FIRST, false, true, false) then
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie)
-                                        quest:DeregisterTimer(timerId)
-                                        resources:ReleaseResource(resource)
-                                        return
+                                    me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_REFUSE", GROUP_SELECT_FIRST, false, true, false)
+                                    while me:IsPerformingScriptTask() do
+                                        quest:NewScriptFrame(me)
+                                        if quest:IsActiveThreadTerminating() then
+                                            quest:PauseAllNonScriptedEntities(false)
+                                            resources:DestroyMovie(movie)
+                                            quest:DeregisterTimer(timerId)
+                                            resources:ReleaseResource(resource)
+                                            do return end
+                                        end
                                     end
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d4e9e1 end
                                 end
@@ -220,88 +236,94 @@ function Main(quest, me)
         ::LAB_00d4e87a::
         scratchValue = birdMode
     end
-    if not quest:IsActiveThreadTerminating() then
-        scratchValue = birdMode
-        while scratchValue == 1 do
-            if not quest:NewScriptFrame(me) then goto LAB_00d4ef87 end
-            if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
-                if currentBirds == 0 then
-                    addNewConversation = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ANY", me, hero, false)
-                else
-                    addNewConversation = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ANY_MORE", me, hero, false)
-                end
-                quest:SetTimer(timerId, 15)
-            end
-            if me:IsTalkedToByHero() then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
-                scratchValue = quest:GetStateInt("CurrentBirdsKilled")
-                if scratchValue == 1 then
-                    addNewConversation = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ONE", me, hero, false)
-                    quest:Pause(1.0)
-                    quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
-                elseif scratchValue == 0 then
-                    addNewConversation = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_NONE", me, hero, false)
-                    quest:Pause(1.0)
-                else
-                    addNewConversation = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_MORE", me, hero, false)
-                    quest:Pause(1.0)
-                    quest:GiveHeroGold(math.tointeger(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
-                end
-                currentBirds = currentBirds + quest:GetStateInt("CurrentBirdsKilled")
-                if quest:GetStateInt("CurrentBirdsKilled") ~= 0 then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
-                    quest:SetStateInt("CurrentBirdsKilled", 0)
-                    scratchValue = quest:AddNewConversation(me, false, false)
-                    if currentBirds == 7 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
-                        scratchValue15 = resources:StartMovie("")
-                        quest:StartMovieSequence()
-                        quest:PauseAllNonScriptedEntities(true)
-                        scratchValue7 = 0.0
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_DONE", GROUP_SELECT_FIRST, false, true, false) then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue15)
-                                goto LAB_00d4ef87
-                            end
-                            if quest:IsActiveThreadTerminating() then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(scratchValue15)
-                                goto LAB_00d4ef87
-                            end
-                        end
-                        quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_BirdGoldBonus))))
-                        birdMode = 3
-                        quest:ClearThingHasInformation(me)
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(scratchValue15)
-                    else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
-                        quest:AddPersonToConversation(scratchValue7, hero)
-                        quest:AddLineToConversation(false, scratchValue, me, hero)
-                        quest:Pause(1.0)
-                    end
-                end
-            end
-            scratchValue = birdMode
-        end
-        while not quest:IsActiveThreadTerminating() do
-            if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
+    if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
+    scratchValue = birdMode
+    while scratchValue == 1 do
+        if not quest:NewScriptFrame(me) then goto LAB_00d4ef87 end
+        if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
+            if currentBirds == 0 then
                 addNewConversation = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(addNewConversation, hero)
-                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_FINISHED", me, hero, false)
-                quest:SetTimer(timerId, 15)
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ANY", me, hero, false)
+            else
+                addNewConversation = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(addNewConversation, hero)
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ANY_MORE", me, hero, false)
             end
+            quest:SetTimer(timerId, 15)
+        end
+        if not me:IsTalkedToByHero() then scratchValue = birdMode; goto continue_8 end
+        if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
+        scratchValue = quest:GetStateInt("CurrentBirdsKilled")
+        if scratchValue == 1 then
+            addNewConversation = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(addNewConversation, hero)
+            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_ONE", me, hero, false)
+            quest:Pause(1.0)
+            quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
+        elseif scratchValue == 0 then
+            addNewConversation = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(addNewConversation, hero)
+            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_NONE", me, hero, false)
+            quest:Pause(1.0)
+        else
+            addNewConversation = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(addNewConversation, hero)
+            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_MORE", me, hero, false)
+            quest:Pause(1.0)
+            quest:GiveHeroGold(math.tointeger(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
+        end
+        currentBirds = currentBirds + quest:GetStateInt("CurrentBirdsKilled")
+        if quest:GetStateInt("CurrentBirdsKilled") ~= 0 then
+            if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
+            quest:SetStateInt("CurrentBirdsKilled", 0)
+            scratchValue = quest:AddNewConversation(me, false, false)
+            if currentBirds == 7 then
+                if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
+                scratchValue15 = resources:StartMovie("")
+                quest:StartMovieSequence()
+                quest:PauseAllNonScriptedEntities(true)
+                scratchValue7 = 0.0
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_DONE", GROUP_SELECT_FIRST, false, true, false)
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(scratchValue15)
+                            goto LAB_00d4ef87
+                        end
+                    end
+                    if quest:IsActiveThreadTerminating() then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(scratchValue15)
+                        goto LAB_00d4ef87
+                    end
+                end
+                quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_BirdGoldBonus))))
+                birdMode = 3
+                quest:ClearThingHasInformation(me)
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(scratchValue15)
+            else
+                if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
+                quest:AddPersonToConversation(scratchValue7, hero)
+                quest:AddLineToConversation(false, scratchValue, me, hero)
+                quest:Pause(1.0)
+            end
+        end
+        scratchValue = birdMode
+        ::continue_8::
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
+    while not quest:IsActiveThreadTerminating() do
+        if not (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1) then
+            quest:NewScriptFrame(me)
+        else
+            addNewConversation = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(addNewConversation, hero)
+            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_BIRD_KILLER_FINISHED", me, hero, false)
+            quest:SetTimer(timerId, 15)
             quest:NewScriptFrame(me)
         end
     end

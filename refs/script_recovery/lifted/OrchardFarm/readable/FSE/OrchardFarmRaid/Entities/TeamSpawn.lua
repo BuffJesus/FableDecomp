@@ -34,35 +34,34 @@ function Main(quest, me)
     while not quest:GetStateBool("WhisperSpawned") do
         if not quest:NewScriptFrame(me) then return end
         if teamID == 0 then
-            if quest:GetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer")) == 0 and quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") < teamMemberLimit then
-                quest:SetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer"), teamRespawnTime)
-                getStateInt = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
-                if quest:IsDistanceBetweenThingsOver(hero, me, 15.0) and not quest:IsCameraPosOnScreen(me:GetPos()) then
-                    if quest:IsActiveThreadTerminating() then return end
-                    i_stk_70_1 = 0
-                    if teamMemberLimit ~= getStateInt and -1 < teamMemberLimit - getStateInt then
-                        repeat
-                            if quest:IsActiveThreadTerminating() then return end
-                            quest:EntityAttachToScript(quest:CreateCreature(teamMemberDefName, me:GetPos(), teamMemberName), "Q_OrchardFarmRaid")
-                            quest:Pause(2.0)
-                            i_stk_70_1 = i_stk_70_1 + 1
-                        until not (i_stk_70_1 < teamMemberLimit - getStateInt)
-                    end
-                else
-                    if quest:IsActiveThreadTerminating() then return end
-                    i_stk_70_2 = 0
-                    if teamMemberLimit ~= getStateInt and -1 < teamMemberLimit - getStateInt then
-                        repeat
-                            if quest:IsActiveThreadTerminating() then return end
-                            quest:EntityAttachToScript(quest:CreateCreature(teamMemberDefName, otherSpawnPoint:GetPos(), teamMemberName), "Q_OrchardFarmRaid")
-                            quest:Pause(2.0)
-                            otherSpawnPoint = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
-                            i_stk_70_2 = i_stk_70_2 + 1
-                        until not (i_stk_70_2 < teamMemberLimit - getStateInt)
-                end
-                end
+            if not ((quest:GetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer")) == 0) and (quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") < teamMemberLimit)) then goto continue_1 end
+            quest:SetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer"), teamRespawnTime)
+            getStateInt = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
+            if quest:IsDistanceBetweenThingsOver(hero, me, 15.0) and not quest:IsCameraPosOnScreen(me:GetPos()) then
                 if quest:IsActiveThreadTerminating() then return end
+                i_stk_70_1 = 0
+                if teamMemberLimit ~= getStateInt and -1 < teamMemberLimit - getStateInt then
+                    repeat
+                        if quest:IsActiveThreadTerminating() then return end
+                        quest:EntityAttachToScript(quest:CreateCreature(teamMemberDefName, me:GetPos(), teamMemberName), "Q_OrchardFarmRaid")
+                        quest:Pause(2.0)
+                        i_stk_70_1 = i_stk_70_1 + 1
+                    until not (i_stk_70_1 < teamMemberLimit - getStateInt)
+                end
+            else
+                if quest:IsActiveThreadTerminating() then return end
+                i_stk_70_2 = 0
+                if teamMemberLimit ~= getStateInt and -1 < teamMemberLimit - getStateInt then
+                    repeat
+                        if quest:IsActiveThreadTerminating() then return end
+                        quest:EntityAttachToScript(quest:CreateCreature(teamMemberDefName, otherSpawnPoint:GetPos(), teamMemberName), "Q_OrchardFarmRaid")
+                        quest:Pause(2.0)
+                        otherSpawnPoint = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
+                        i_stk_70_2 = i_stk_70_2 + 1
+                    until not (i_stk_70_2 < teamMemberLimit - getStateInt)
             end
+            end
+            if quest:IsActiveThreadTerminating() then return end
         else
             if teamID == heroTeam then
                 quest:UpdateQuestInfoCounterList(banditsLeftID, (2 - quest:GetStateInt("BanditWavesSpawned")) * teamMemberLimit + quest:GetStateInt("Teams_" .. teamID .. "_MemberCount"), -1)
@@ -107,6 +106,7 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then return end
             end
         end
+        ::continue_1::
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:RemoveQuestInfoElement(banditsLeftID)
@@ -127,12 +127,11 @@ function Init(quest, me)
         scratchValue = "CREATURE_ORCHARD_FARM_GUARD"
     end
     teamMemberDefName = scratchValue
-    if teamID == quest:GetStateInt("HeroTeam") then
-        teamMemberLimit = 2
-        banditsLeftID = 0
-        teamRespawnTime = quest:ReadGlobalGameData(SCRIPT_DEF.GuardReinforcementsYourTeam)
-        return
-    end
+    if teamID ~= quest:GetStateInt("HeroTeam") then teamMemberLimit = 3; banditsLeftID = 0; teamRespawnTime = quest:ReadGlobalGameData(SCRIPT_DEF.GuardReinforcementsEnemyTeam); return end
+    teamMemberLimit = 2
+    banditsLeftID = 0
+    teamRespawnTime = quest:ReadGlobalGameData(SCRIPT_DEF.GuardReinforcementsYourTeam)
+    do return end
     teamMemberLimit = 3
     banditsLeftID = 0
     teamRespawnTime = quest:ReadGlobalGameData(SCRIPT_DEF.GuardReinforcementsEnemyTeam)

@@ -420,172 +420,168 @@ function RunTutorials(quest)
     while not resources:TryAcquire(resource4, appleMarker[0 + 1], 4) do
         if not quest:NewScriptFrame() then goto LAB_00d48800 end
     end
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d487f4 end
+    end
+    actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    resources:SetActor(actorMap, "GM", resource4)
+    movie = resources:StartMovie("")
+    quest:StartMovieSequence()
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
+    resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", actorMap, false, true)
+    quest:FixMovieSequenceCamera(false)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
+    resources:ReleaseResource(resource)
+    resources:ReleaseResource(resource4)
+    quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("FrescoDomeHSP"), false)
+    quest:SetStateBool("DomeCutsceneStart", true)
+    RunCeremonyCutscene(quest)
+    quest:GiveHeroObject("OBJECT_GUILD_SEAL_1", -1)
+    quest:SetStateBool("DomeCutsceneStart", false)
+    quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("HeroGuildComplexInsideHSP"), false)
+    while not quest:IsLevelLoaded("HeroGuildComplex") do
+        if not quest:NewScriptFrame() then goto LAB_00d496bc end
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
+    quest:FadeScreenOut(0.5, 0.0)
+    quest:OpenDoor(secretBookcase)
+    quest:SetThingPersistent(secretBookcase, true)
+    quest:SetRegionExitAsActive(getNearestWithDefName, true)
+    quest:GiveHeroExperience(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_EndGuildXP))))
+    quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
+    quest:GiveHeroObject("OBJECT_HERO_TROUSERS", -1)
+    quest:GiveHeroObject("OBJECT_HERO_SHIRT", -1)
+    quest:GiveHeroObject("OBJECT_HERO_GLOVES", -1)
+    if not quest:NewScriptFrame() then goto LAB_00d496bc end
+    quest:SetHeroAsWearing("OBJECT_HERO_BOOTS")
+    quest:SetHeroAsWearing("OBJECT_HERO_TROUSERS")
+    quest:SetHeroAsWearing("OBJECT_HERO_SHIRT")
+    quest:SetHeroAsWearing("OBJECT_HERO_GLOVES")
+    skillApprentice9 = quest:GetThingWithScriptName("SkillApprentice")
+    if skillApprentice9 ~= nil and skillApprentice9:IsAlive() then
+        if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
+        quest:RemoveThing(quest:GetThingWithScriptName("SkillApprentice"), false, true)
+    end
+    willApprentice9 = quest:GetThingWithScriptName("WillApprentice")
+    if willApprentice9 ~= nil and willApprentice9:IsAlive() then
+        if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
+        quest:RemoveThing(quest:GetThingWithScriptName("WillApprentice"), false, true)
+    end
+    quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
+    quest:RemoveThing(quest:GetThingWithScriptName("CombatApprentice"), false, true)
+    quest:RemoveThing(quest:GetThingWithScriptName("BirdKiller"), false, true)
+    -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd496f0(this);
+    quest:SetIsPushableByHero(quest:GetThingWithScriptName("TheRealGuildmaster"), false)
+    quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_14", "HeroGuildComplexInside", "")
+    timerId = quest:RegisterTimer()
+    quest:SetTimer(timerId, 10)
+    while not quest:MsgOnLeavingExperienceSpendingScreen() do
+        if not quest:NewScriptFrame() then goto LAB_00d496b3 end
+        if quest:GetTimer(timerId) == 0 then
+            conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
+            quest:AddPersonToConversation(conversationId, hero)
+            quest:AddLineToConversation(conversationId, "TheRealGuildmaster", quest:GetThingWithScriptName("TEXT_CS_028_LEAVING_TOUR_45"), hero, false)
+            quest:SetTimer(timerId, 10)
+        end
+    end
     if not quest:IsActiveThreadTerminating() then
-        resource = resources:NewResource()
-        while not resources:TryAcquire(resource, hero, 4) do
-            if not quest:NewScriptFrame() then goto LAB_00d487f4 end
+        -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);
+        quest:FadeScreenOut(0.0, 0.5)
+        quest:EntityTeleportToThing(quest:GetThingWithScriptName("M_GuildmasterMarker"), quest:GetThingWithScriptName("TheRealGuildmaster"), false)
+        while not quest:IsHeroControlledByPlayer() do
+            if not quest:NewScriptFrame() then goto LAB_00d496b3 end
         end
         if not quest:IsActiveThreadTerminating() then
-            actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "HERO", resource)
-            resources:SetActor(actorMap, "GM", resource4)
-            movie = resources:StartMovie("")
-            quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", actorMap, false, true)
-            quest:FixMovieSequenceCamera(false)
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie)
-            resources:DestroyActorMap(actorMap)
-            resources:ReleaseResource(resource)
-            resources:ReleaseResource(resource4)
-            quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("FrescoDomeHSP"), false)
-            quest:SetStateBool("DomeCutsceneStart", true)
-            RunCeremonyCutscene(quest)
-            quest:GiveHeroObject("OBJECT_GUILD_SEAL_1", -1)
-            quest:SetStateBool("DomeCutsceneStart", false)
-            quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("HeroGuildComplexInsideHSP"), false)
-            while not quest:IsLevelLoaded("HeroGuildComplex") do
-                if not quest:NewScriptFrame() then goto LAB_00d496bc end
-            end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
-            quest:FadeScreenOut(0.5, 0.0)
-            quest:OpenDoor(secretBookcase)
-            quest:SetThingPersistent(secretBookcase, true)
-            quest:SetRegionExitAsActive(getNearestWithDefName, true)
-            quest:GiveHeroExperience(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_EndGuildXP))))
-            quest:GiveHeroObject("OBJECT_HERO_BOOTS", -1)
-            quest:GiveHeroObject("OBJECT_HERO_TROUSERS", -1)
-            quest:GiveHeroObject("OBJECT_HERO_SHIRT", -1)
-            quest:GiveHeroObject("OBJECT_HERO_GLOVES", -1)
-            if not quest:NewScriptFrame() then goto LAB_00d496bc end
-            quest:SetHeroAsWearing("OBJECT_HERO_BOOTS")
-            quest:SetHeroAsWearing("OBJECT_HERO_TROUSERS")
-            quest:SetHeroAsWearing("OBJECT_HERO_SHIRT")
-            quest:SetHeroAsWearing("OBJECT_HERO_GLOVES")
-            skillApprentice9 = quest:GetThingWithScriptName("SkillApprentice")
-            if skillApprentice9 ~= nil and skillApprentice9:IsAlive() then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
-                quest:RemoveThing(quest:GetThingWithScriptName("SkillApprentice"), false, true)
-            end
-            willApprentice9 = quest:GetThingWithScriptName("WillApprentice")
-            if willApprentice9 ~= nil and willApprentice9:IsAlive() then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
-                quest:RemoveThing(quest:GetThingWithScriptName("WillApprentice"), false, true)
-            end
-            quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
-            quest:RemoveThing(quest:GetThingWithScriptName("CombatApprentice"), false, true)
-            quest:RemoveThing(quest:GetThingWithScriptName("BirdKiller"), false, true)
-            -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd496f0(this);
-            quest:SetIsPushableByHero(quest:GetThingWithScriptName("TheRealGuildmaster"), false)
-            quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_14", "HeroGuildComplexInside", "")
-            timerId = quest:RegisterTimer()
-            quest:SetTimer(timerId, 10)
-            while not quest:MsgOnLeavingExperienceSpendingScreen() do
-                if not quest:NewScriptFrame() then goto LAB_00d496b3 end
-                if quest:GetTimer(timerId) == 0 then
-                    conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
-                    quest:AddPersonToConversation(conversationId, hero)
-                    quest:AddLineToConversation(conversationId, "TheRealGuildmaster", quest:GetThingWithScriptName("TEXT_CS_028_LEAVING_TOUR_45"), hero, false)
-                    quest:SetTimer(timerId, 10)
-                end
-            end
+            quest:EntityUnsetAsOpinionSource(hero, false)
+            quest:SetHeroAsApprentice(false)
+            quest:GiveHeroExpression("EXPRESSION_FOLLOW", -1, true)
+            quest:GiveHeroExpression("EXPRESSION_WAIT", -1, true)
+            quest:SetThingAsUsable(guildDoors, true)
+            quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
+            quest:RemoveThing(quest:GetThingWithScriptName("TheRealGuildmaster"), false, true)
+            quest:RemoveThing(quest:GetThingWithScriptName("PreMeleeMaze"), false, true)
+            quest:NewScriptFrame()
             if not quest:IsActiveThreadTerminating() then
-                -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);
-                quest:FadeScreenOut(0.0, 0.5)
-                quest:EntityTeleportToThing(quest:GetThingWithScriptName("M_GuildmasterMarker"), quest:GetThingWithScriptName("TheRealGuildmaster"), false)
-                while not quest:IsHeroControlledByPlayer() do
-                    if not quest:NewScriptFrame() then goto LAB_00d496b3 end
-                end
+                quest:NewScriptFrame()
                 if not quest:IsActiveThreadTerminating() then
-                    quest:EntityUnsetAsOpinionSource(hero, false)
-                    quest:SetHeroAsApprentice(false)
-                    quest:GiveHeroExpression("EXPRESSION_FOLLOW", -1, true)
-                    quest:GiveHeroExpression("EXPRESSION_WAIT", -1, true)
-                    quest:SetThingAsUsable(guildDoors, true)
-                    quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
-                    quest:RemoveThing(quest:GetThingWithScriptName("TheRealGuildmaster"), false, true)
-                    quest:RemoveThing(quest:GetThingWithScriptName("PreMeleeMaze"), false, true)
                     quest:NewScriptFrame()
                     if not quest:IsActiveThreadTerminating() then
                         quest:NewScriptFrame()
                         if not quest:IsActiveThreadTerminating() then
                             quest:NewScriptFrame()
                             if not quest:IsActiveThreadTerminating() then
-                                quest:NewScriptFrame()
+                                quest:FadeScreenIn()
+                                quest:SetTimeOfDay(10.0)
+                                quest:SetWeaponOutCrimeEnabled(true)
+                                quest:SetGuardsIgnoreCrimes(false)
+                                quest:EnableGuards(quest:GetNearestWithDefName(hero, "VILLAGE_GUILD_COMPLEX_INSIDE"), true)
+                                quest:SetHeroSleepingAsEnabled(true)
+                                while quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", hero) do
+                                    if not quest:NewScriptFrame() then goto LAB_00d496aa end
+                                    quest:TakeObjectFromHero("OBJECT_APPLE_RED_01")
+                                end
                                 if not quest:IsActiveThreadTerminating() then
-                                    quest:NewScriptFrame()
+                                    appleRed01 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
+                                    scratchValue = 0
+                                    if #appleRed01 ~= 0 then
+                                        scratchValue5 = 0
+                                        repeat
+                                            if quest:IsActiveThreadTerminating() then goto LAB_00d496a1 end
+                                            quest:RemoveThing(theRealGuildmaster, appleRed01 + scratchValue5, false)
+                                            scratchValue = scratchValue + 1
+                                            scratchValue5 = scratchValue5 + 12
+                                        until scratchValue >= #appleRed01
+                                    end
                                     if not quest:IsActiveThreadTerminating() then
-                                        quest:FadeScreenIn()
-                                        quest:SetTimeOfDay(10.0)
-                                        quest:SetWeaponOutCrimeEnabled(true)
-                                        quest:SetGuardsIgnoreCrimes(false)
-                                        quest:EnableGuards(quest:GetNearestWithDefName(hero, "VILLAGE_GUILD_COMPLEX_INSIDE"), true)
-                                        quest:SetHeroSleepingAsEnabled(true)
-                                        while quest:IsObjectInThingsPossession("OBJECT_APPLE_RED_01", hero) do
-                                            if not quest:NewScriptFrame() then goto LAB_00d496aa end
-                                            quest:TakeObjectFromHero("OBJECT_APPLE_RED_01")
-                                        end
+                                        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
+                                        quest:NewScriptFrame()
                                         if not quest:IsActiveThreadTerminating() then
-                                            appleRed01 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
-                                            scratchValue = 0
-                                            if #appleRed01 ~= 0 then
-                                                scratchValue5 = 0
-                                                repeat
-                                                    if quest:IsActiveThreadTerminating() then goto LAB_00d496a1 end
-                                                    quest:RemoveThing(theRealGuildmaster, appleRed01 + scratchValue5, false)
-                                                    scratchValue = scratchValue + 1
-                                                    scratchValue5 = scratchValue5 + 12
-                                                until scratchValue >= #appleRed01
-                                            end
+                                            quest:NewScriptFrame()
                                             if not quest:IsActiveThreadTerminating() then
-                                                quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
                                                 quest:NewScriptFrame()
                                                 if not quest:IsActiveThreadTerminating() then
                                                     quest:NewScriptFrame()
                                                     if not quest:IsActiveThreadTerminating() then
                                                         quest:NewScriptFrame()
                                                         if not quest:IsActiveThreadTerminating() then
-                                                            quest:NewScriptFrame()
-                                                            if not quest:IsActiveThreadTerminating() then
-                                                                quest:NewScriptFrame()
+                                                            quest:AddLogbookTutorialEntry("TEXT_QST_LOG_GUILD_THEGUILD")
+                                                            if quest:DisplayTutorial(30) then
                                                                 if not quest:IsActiveThreadTerminating() then
-                                                                    quest:AddLogbookTutorialEntry("TEXT_QST_LOG_GUILD_THEGUILD")
-                                                                    if quest:DisplayTutorial(30) then
-                                                                        if not quest:IsActiveThreadTerminating() then
-                                                                            while not quest:MsgIsTutorialClickedPast() do
-                                                                                if not quest:NewScriptFrame() then goto LAB_00d496a1 end
-                                                                            end
-                                                                            if not quest:IsActiveThreadTerminating() then quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0); goto FLOW_after_lab_00d4967d end
-                                                                        end
-                                                                    else
-                                                                        quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+                                                                    while not quest:MsgIsTutorialClickedPast() do
+                                                                        if not quest:NewScriptFrame() then goto LAB_00d496a1 end
                                                                     end
-                                                                    ::FLOW_after_lab_00d4967d::
+                                                                    if not quest:IsActiveThreadTerminating() then quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0); goto FLOW_after_lab_00d4967d end
                                                                 end
+                                                            else
+                                                                quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
                                                             end
+                                                            ::FLOW_after_lab_00d4967d::
                                                         end
                                                     end
                                                 end
                                             end
-                                            ::LAB_00d496a1::
                                         end
-                                        ::LAB_00d496aa::
                                     end
+                                    ::LAB_00d496a1::
                                 end
+                                ::LAB_00d496aa::
                             end
                         end
                     end
                 end
             end
-            ::LAB_00d496b3::
-            quest:DeregisterTimer(timerId)
-            goto LAB_00d496bc
         end
-        ::LAB_00d487f4::
-        resources:ReleaseResource(resource)
     end
+    ::LAB_00d496b3::
+    quest:DeregisterTimer(timerId)
+    goto LAB_00d496bc
+    ::LAB_00d487f4::
+    resources:ReleaseResource(resource)
     ::LAB_00d48800::
     resources:ReleaseResource(resource4)
     ::LAB_00d496bc::
@@ -751,31 +747,26 @@ function CheckFriendlyAttacks(quest)
                     while not resources:TryAcquire(resource, scratchValue26, 4) do
                         if not quest:NewScriptFrame() then goto LAB_00d45db2 end
                     end
-                    if not quest:IsActiveThreadTerminating() then
-                        if hero:AcquireControl(4) then
-                            if not quest:IsActiveThreadTerminating() then
-                                actorMap = resources:NewActorMap()
-                                -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
-                                resources:SetActor(amStack_1c, "MAZE", resource)
-                                movie = resources:StartMovie("")
-                                quest:StartMovieSequence()
-                                quest:PauseAllNonScriptedEntities(true)
-                                conversationId2 = quest:AddNewConversation(hero, false, false)
-                                quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
-                                quest:Pause(2.0)
-                                quest:FixMovieSequenceCamera(true)
-                                resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
-                                quest:FixMovieSequenceCamera(false)
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie)
-                                resources:DestroyActorMap(actorMap)
-                                resources:ReleaseResource(amStack_1c)
-                                resources:ReleaseResource(conversationId2)
-                                goto LAB_00d45c9d
-                        end
-                        end
-                        hero:ReleaseControl()
-                    end
+                    if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d45db2 end
+                    actorMap = resources:NewActorMap()
+                    -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
+                    resources:SetActor(amStack_1c, "MAZE", resource)
+                    movie = resources:StartMovie("")
+                    quest:StartMovieSequence()
+                    quest:PauseAllNonScriptedEntities(true)
+                    conversationId2 = quest:AddNewConversation(hero, false, false)
+                    quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
+                    quest:Pause(2.0)
+                    quest:FixMovieSequenceCamera(true)
+                    resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
+                    quest:FixMovieSequenceCamera(false)
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    resources:DestroyActorMap(actorMap)
+                    resources:ReleaseResource(amStack_1c)
+                    resources:ReleaseResource(conversationId2)
+                    goto LAB_00d45c9d
+                    hero:ReleaseControl()
                     ::LAB_00d45db2::
                     resources:ReleaseResource(resource)
                     return
@@ -916,46 +907,27 @@ end
 -- Q_GuildTraining.RunArrivalCutscene (retail 0x00d44cb0)
 function RunArrivalCutscene(quest)
     local hero = quest:GetHero()
-    local resources = quest:RetailResources()
-    local actorMap, rivalHeroMazeCutscene, movie, resource, resource2
+    local rivalHeroMazeCutscene
     quest:SetTimeOfDay(19.0)
     if not quest:NewScriptFrame() then return end
     rivalHeroMazeCutscene = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_CUTSCENE", quest:GetThingWithScriptName("MK_GTA_MAZE1"):GetPos(), "CutsceneMaze")
-    resource2 = resources:NewResource()
-    while not resources:TryAcquire(resource2, rivalHeroMazeCutscene, 4) do
-        if not quest:NewScriptFrame() then goto LAB_00d44ec4 end
-    end
-    if not quest:IsActiveThreadTerminating() then
-        resource = resources:NewResource()
-        while not resources:TryAcquire(resource, hero, 4) do
-            if not quest:NewScriptFrame() then goto LAB_00d44ebb end
-        end
-        if not quest:IsActiveThreadTerminating() then
-            actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "MAZE", resource2)
-            resources:SetActor(actorMap, "HERO", resource)
-            movie = resources:StartMovie("")
-            quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_ARRIVE", actorMap, false, true)
-            quest:FixMovieSequenceCamera(false)
-            quest:FadeScreenOut(0.5, 0.0)
-            quest:SetAllowScreenFadingOnNextRegionChange(false)
-            quest:SetRegionTextDisplayAsActive(false)
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie)
-            resources:DestroyActorMap(actorMap)
-            resources:ReleaseResource(resource)
-            resources:ReleaseResource(resource2)
-            quest:RemoveThing(rivalHeroMazeCutscene, false, true)
-            return
-        end
-        ::LAB_00d44ebb::
-        resources:ReleaseResource(resource)
-    end
+    if not rivalHeroMazeCutscene:AcquireControl(4) then goto LAB_00d44ec4 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d44ec4 end
+    if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d44ec4 end
+    quest:StartCutscene({MAZE = rivalHeroMazeCutscene, HERO = hero}, {}, true)
+    quest:RunCutscene("CS_GUILD_ARRIVE", true, false)
+    quest:FixMovieSequenceCamera(false)
+    quest:FadeScreenOut(0.5, 0.0)
+    quest:SetAllowScreenFadingOnNextRegionChange(false)
+    quest:SetRegionTextDisplayAsActive(false)
+    quest:EndCutscene()
+    hero:ReleaseControl()
+    rivalHeroMazeCutscene:ReleaseControl()
+    quest:RemoveThing(rivalHeroMazeCutscene, false, true)
+    do return end
+    hero:ReleaseControl()
     ::LAB_00d44ec4::
-    resources:ReleaseResource(resource2)
+    rivalHeroMazeCutscene:ReleaseControl()
 end
 
 -- Q_GuildTraining.GossipSetup (retail 0x00d3b410)
@@ -993,123 +965,77 @@ end
 -- Q_GuildTraining.RunCeremonyCutscene (retail 0x00d49d50)
 function RunCeremonyCutscene(quest)
     local hero = quest:GetHero()
-    local resources = quest:RetailResources()
-    local rivalHeroWhisperApprentice, guildkeeper, movie, resource, resource4, resource5, actorMap
+    local rivalHeroWhisperApprentice, guildkeeper
     while not quest:IsLevelLoaded("FrescoDome") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     rivalHeroWhisperApprentice = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", quest:GetThingWithScriptName("MK_GTC_WHISSTART"):GetPos(), "Whisper")
     guildkeeper = quest:CreateCreature("CREATURE_GUILDKEEPER", quest:GetThingWithScriptName("MK_GTC_GMSTART"):GetPos(), "GM")
-    resource5 = resources:NewResource()
-    while not resources:TryAcquire(resource5, rivalHeroWhisperApprentice, 4) do
-        if not quest:NewScriptFrame() then goto LAB_00d4a246 end
-    end
-    if not quest:IsActiveThreadTerminating() then
-        quest:EntitySetInFaction(rivalHeroWhisperApprentice, "FACTION_HERO")
-        resource4 = resources:NewResource()
-        while not resources:TryAcquire(resource4, guildkeeper, 4) do
-            if not quest:NewScriptFrame() then goto LAB_00d4a23d end
-        end
-        if not quest:IsActiveThreadTerminating() then
-            resource = resources:NewResource()
-            while not resources:TryAcquire(resource, hero, 4) do
-                if not quest:NewScriptFrame() then goto LAB_00d4a234 end
-            end
-            if not quest:IsActiveThreadTerminating() then
-                actorMap = resources:NewActorMap()
-                resources:SetActor(actorMap, "HERO", resource)
-                resources:SetActor(actorMap, "WHIS", resource5)
-                resources:SetActor(actorMap, "GM", resource4)
-                movie = resources:StartMovie("")
-                quest:StartMovieSequence()
-                quest:PauseAllNonScriptedEntities(true)
-                quest:FixMovieSequenceCamera(true)
-                resources:RunMacro("CS_GUILD_CEREMONY", actorMap, false, true)
-                quest:FixMovieSequenceCamera(false)
-                quest:RemoveThing(guildkeeper, false, true)
-                quest:RemoveThing(rivalHeroWhisperApprentice, false, true)
-                quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie)
-                resources:DestroyActorMap(actorMap)
-            end
-            ::LAB_00d4a234::
-            resources:ReleaseResource(resource)
-        end
-        ::LAB_00d4a23d::
-        resources:ReleaseResource(resource4)
-    end
+    if not rivalHeroWhisperApprentice:AcquireControl(4) then goto LAB_00d4a246 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d4a246 end
+    quest:EntitySetInFaction(rivalHeroWhisperApprentice, "FACTION_HERO")
+    if not guildkeeper:AcquireControl(4) then goto LAB_00d4a23d end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d4a23d end
+    if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d4a23d end
+    quest:StartCutscene({HERO = hero, WHIS = rivalHeroWhisperApprentice, GM = guildkeeper}, {}, true)
+    quest:RunCutscene("CS_GUILD_CEREMONY", true, false)
+    quest:FixMovieSequenceCamera(false)
+    quest:RemoveThing(guildkeeper, false, true)
+    quest:RemoveThing(rivalHeroWhisperApprentice, false, true)
+    quest:EndCutscene()
+    hero:ReleaseControl()
+    ::LAB_00d4a23d::
+    guildkeeper:ReleaseControl()
     ::LAB_00d4a246::
-    resources:ReleaseResource(resource5)
+    rivalHeroWhisperApprentice:ReleaseControl()
 end
 
 -- Q_GuildTraining.RunSaveXPCutscene (retail 0x00d496f0)
 function RunSaveXPCutscene(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local theRealGuildmaster, movie, resource, resource2, actorMap
+    local theRealGuildmaster, resource
     theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
-    resource2 = resources:NewResource()
-    while not resources:TryAcquire(resource2, theRealGuildmaster, 4) do
-        if not quest:NewScriptFrame() then resources:ReleaseResource(resource2); return end
-    end
-    if not quest:IsActiveThreadTerminating() then
-        resource = resources:NewResource()
-        while not resources:TryAcquire(resource, hero, 4) do
-            if not quest:NewScriptFrame() then goto LAB_00d4997a end
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, theRealGuildmaster, 4) do
+        quest:NewScriptFrame()
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource)
+            do return end
         end
-        if not quest:IsActiveThreadTerminating() then
-            actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "GM", resource2)
-            resources:SetActor(actorMap, "HERO", resource)
-            movie = resources:StartMovie("")
-            quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_SAVEXP", actorMap, false, true)
-            quest:FixMovieSequenceCamera(false)
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie)
-            resources:DestroyActorMap(actorMap)
-        end
-        ::LAB_00d4997a::
-        resources:ReleaseResource(resource)
     end
-    resources:ReleaseResource(resource2)
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    if hero:AcquireControl(4) then
+        quest:StartCutscene({GM = theRealGuildmaster, HERO = hero}, {}, true)
+        quest:RunCutscene("CS_GUILD_SAVEXP", true, false)
+        quest:EndCutscene()
+    end
+    hero:ReleaseControl()
+    resources:ReleaseResource(resource)
 end
 
 -- Q_GuildTraining.RunSaveXPCutscene2 (retail 0x00d49a20)
 function RunSaveXPCutscene2(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local theRealGuildmaster, movie, resource, resource2, actorMap
+    local theRealGuildmaster, resource
     theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
-    resource2 = resources:NewResource()
-    while not resources:TryAcquire(resource2, theRealGuildmaster, 4) do
-        if not quest:NewScriptFrame() then resources:ReleaseResource(resource2); return end
-    end
-    if not quest:IsActiveThreadTerminating() then
-        resource = resources:NewResource()
-        while not resources:TryAcquire(resource, hero, 4) do
-            if not quest:NewScriptFrame() then goto LAB_00d49caa end
+    resource = resources:NewResource()
+    while not resources:TryAcquire(resource, theRealGuildmaster, 4) do
+        quest:NewScriptFrame()
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource)
+            do return end
         end
-        if not quest:IsActiveThreadTerminating() then
-            actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "GM", resource2)
-            resources:SetActor(actorMap, "HERO", resource)
-            movie = resources:StartMovie("")
-            quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_SAVEXP2", actorMap, false, true)
-            quest:FixMovieSequenceCamera(false)
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie)
-            resources:DestroyActorMap(actorMap)
-        end
-        ::LAB_00d49caa::
-        resources:ReleaseResource(resource)
     end
-    resources:ReleaseResource(resource2)
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    if hero:AcquireControl(4) then
+        quest:StartCutscene({GM = theRealGuildmaster, HERO = hero}, {}, true)
+        quest:RunCutscene("CS_GUILD_SAVEXP2", true, false)
+        quest:EndCutscene()
+    end
+    hero:ReleaseControl()
+    resources:ReleaseResource(resource)
 end
 

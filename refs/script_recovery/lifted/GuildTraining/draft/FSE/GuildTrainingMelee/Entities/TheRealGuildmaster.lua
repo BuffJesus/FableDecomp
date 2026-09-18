@@ -799,7 +799,7 @@ function Main(quest, me)
             p4 = 1
             iVar17 = 0
             iVar20 = 0
-            iVar7 = 0x40400000
+            iVar7 = 3.0
             pCVar9 = pCVar10:GetPos()
             me:MoveToPosition(pCVar9, iVar7, iVar20, (iVar17 ~= 0), (p4 ~= 0))
             pCVar10 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
