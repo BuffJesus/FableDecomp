@@ -1,42 +1,47 @@
 # RESUME HERE (after night 7, 2026-09-18)
 
-Seven commits tonight, all generic converter work, suite **1577 passed / 0 failed** with the four stale fixture
-files ignored. Headline numbers across the three units:
+Nine commits, all generic converter work, suite **1593 passed / 0 failed** with the four stale fixture files
+ignored. Across the three units:
 
 | | start of night | now |
 |---|---:|---:|
-| `scratchValue` in the emitted .lua (Guild / Trader / Orchard) | 1327 / 644 / 54 | 844 / 399 / 25 |
+| `scratchValue` in the emitted .lua (Guild / Trader / Orchard) | 1327 / 644 / 54 | 845 / 403 / 25 |
 | smoke problems (Guild / Trader / Orchard) | 11 / 11 / 0 | **1 / 8 / 0** |
 | free globals across the units | 26 | 4 (all deliberate) |
-| hoisted cleanup regions / `TODO(native): goto` sites | 40 / 158 | 48 / 131 |
+| converter scaffolding (`__native_entity_state`, `__region_LAB_*`) | in 29 of 36 files | **0** |
+| locals declared at the top instead of where computed | 903 hoisted | **881 sunk** |
 | `TryAcquire(0, ...)` / `ReleaseResource(0)` | 20+ | 0 |
+| retail enum operands spelled as bare numbers | all | 105 named |
 
-`work/AeonShare-2026-09-18.zip` (3324 KiB) and the v5 bundle are rebuilt on this output and **preflight passes**.
-The in-game run is the user's step:
+`work/AeonShare-2026-09-18.zip` (3323 KiB) and the v5 bundle are rebuilt on this output and **preflight
+passes**. The in-game run is the user's step:
 
     python work/new-oakvale-original-fse-20260912/local-candidate-v5/local_test.py \
         --game-dir "C:\Programs\Steam\steamapps\common\Fable The Lost Chapters" --launch --save-dir <saves>
 
 Worth re-testing specifically: **quit mid-quest during Guild melee training.** Those exits used to drop two
-`DeregisterTimer` calls and a `ReleaseResource` (night 7 third pass), which is the crash class Aeon reported.
+`DeregisterTimer` calls and a `ReleaseResource` (third pass), which is the crash class Aeon reported.
 
 **Resume order**
 
-1. `canonicalise_stack_objects` pre-range liveness -- the diagnosis is in the sixth-pass section below, and it
-   is the last runtime error in the units (`CheckFriendlyAttacks`). Do it first and do it carefully: every unit
-   goes through that pass.
-2. The rest of `scratchValue`: 111 temporaries whose only assignment is a plain number, 36 `X = X + 1`
-   counters, 22 `X = X | 1` bit steps that `flag_register` refuses because the slot also takes a call result.
-   Extend `USE_ROLES` in `readable_lua.py` -- the use side is the lever that pays.
-3. The goto residue as its own restructuring project, sized by `tools/script_recovery/report_goto_residue.py`
-   (131 sites: 14 empty epilogues, the rest epilogues that open their own blocks).
-4. TraderConflict's six `unknown=StateListSet` / `GetStateListCopy` / `EntitySetAsOpinionSource` need the DLL
-   rebuilt with the sidecar bindings (FSE_UPSTREAM_REQUIREMENTS.md).
+1. **`canonicalise_stack_objects` pre-range liveness** — the last runtime error in the units
+   (`CheckFriendlyAttacks`), diagnosed in the sixth-pass section. Every unit goes through that pass, so do it
+   carefully and first.
+2. **The next quest family: HangingTree** (0x00D68F00-0x00D78500, 62,976 B, 151 fns, Evil+Good). Its `lo` is
+   GuildTraining's `hi`, so the Ghidra export extends rather than re-runs, and it is the variant-pair shape the
+   converter already ships. Then HeroSouls (7 scripts, 248 fns, 0 residual bindings). The eighth-pass section
+   has the full ranking, the per-family entity lists and what registering a unit costs.
+3. **The `goto` residue** (~104 per 1000 lines, the single biggest remaining gap vs Aeon) as its own
+   restructuring project, sized by `tools/script_recovery/report_goto_residue.py`.
+4. The rest of `scratchValue` via `USE_ROLES` in `readable_lua.py`, and TraderConflict's six sidecar bindings
+   (needs the DLL rebuilt).
 
-**Running the suite**: alone (a concurrent unit rebuild fakes 400+ failures), ~27 min,
-`--ignore` the four stale fixture files `test_watch_barrels_loop.py` (78), `test_bully_proximity.py` (44),
-`test_live_father_intro.py`, `test_watch_barrels_readable.py` -- they fail on a pristine tree too. After any
-style change, check `shippedAsDraft` in the `build_readable_unit` summary: a file whose passes raise silently
+Measure progress with `tools/script_recovery/report_readable_style.py`.
+
+**Running the suite**: alone (a concurrent unit rebuild fakes 400+ failures), ~29 min, `--ignore` the four
+stale fixture files `test_watch_barrels_loop.py` (78), `test_bully_proximity.py` (44),
+`test_live_father_intro.py`, `test_watch_barrels_readable.py` — they fail on a pristine tree too. After any
+style change check `shippedAsDraft` in the `build_readable_unit` summary: a file whose passes raise silently
 ships as the raw draft.
 
 # CURRENT (night 7, eighth pass, 2026-09-18): the audit workflow's verified rules, and the next unit
