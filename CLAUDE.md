@@ -25,9 +25,11 @@ reconstruction that must compile under VC7.1 to the retail bytes.
   for retail quest scripts; audit in `docs/scripts/AEON_LUA_PORTS.md`.
 - **EgoCore** (`C:\Users\Cornelio\Documents\EgoCoreInspect\EgoCore-master`) — whole-format answer key
   for defs/meshes/anim/lipsync; check it BEFORE byte-RE.
-- **Sibling repos:** FableForge `D:\Code\FableForge` (modding toolchain, the build target),
+- **Sibling repos:** FableForge `D:\Code\FableForge` (the level/world/content editor, formerly
+  Albion Atlas; `docs/ROADMAP_1.0.md` "Resume here"), FableForge-legacy `D:\Code\FableForge-legacy`
+  (the old toolchain repo, merged into FableForge piece by piece; its `docs/modding/README.md`),
   ForgeFSE-retail-shadow `D:\Code\ForgeFSE-retail-shadow` (canonical FSE fork), Fable2RE
-  `D:\Documents\Fable2RE` (methodology). Modding docs live there (`docs/modding/README.md`).
+  `D:\Documents\Fable2RE` (methodology).
 
 ## Working rules
 - **Evidence, not assumption** — cross-check every claim against ≥2 sources; verify before asserting.
