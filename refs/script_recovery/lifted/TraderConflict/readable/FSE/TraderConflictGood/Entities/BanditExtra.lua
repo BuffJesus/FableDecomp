@@ -3,18 +3,9 @@
 
 local helpers = require("TraderConflictGood.native_quest_helpers")
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- BanditExtra.Main (retail 0x00dfca90)
 function Main(quest, me)
-    local scratchValue, getDistanceBetweenThings, banditGruntLevel, scratchValue4
+    local scratchValue, scratchValue4
     local hero = quest:GetHero()
     quest:Pause(0.5)
     if 9 < quest:GetStateListCount("AllCreatures") then
@@ -24,8 +15,8 @@ function Main(quest, me)
         return
     end
     if quest:IsActiveThreadTerminating() then return end
-    banditGruntLevel = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", me:GetPos(), "")
-    getDistanceBetweenThings = quest:GetDistanceBetweenThings(banditGruntLevel, hero) ^ 2
+    local banditGruntLevel = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", me:GetPos(), "")
+    local getDistanceBetweenThings = quest:GetDistanceBetweenThings(banditGruntLevel, hero) ^ 2
     -- TODO(native): xStack_8 = (CCharString)(int)ROUND(fVar5 * _DAT_0126b7dc + 0.5);
     if getDistanceBetweenThings * 0.06666667014360428 == scratchValue4 - 1.0 then
         -- TODO(native): xStack_8 = (CCharString)((int)xStack_8 - 1);

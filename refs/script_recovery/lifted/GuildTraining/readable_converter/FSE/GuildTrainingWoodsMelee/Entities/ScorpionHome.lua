@@ -11,7 +11,7 @@ local scorpionsLeft, flourishHint
 
 -- ScorpionHome.Main (retail 0x00d67270)
 function Main(quest, me)
-    local count, pPosition, scorpionSpawn, guildStagBeetle, guildScorpions
+    local pPosition
     local hero = quest:GetHero()
     local infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles))), 1.0)
     quest:DisplayQuestInfo(true)
@@ -33,8 +33,8 @@ function Main(quest, me)
             quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", hero, hero, false)
             quest:SetTimer(timerId, 8)
         end
-        guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
-        count = #guildScorpions
+        local guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
+        local count = #guildScorpions
         quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles) - scorpionsLeft) - count)), -1)
         if #guildScorpions >= 3 then scorpionsAlive = quest:GetStateBool("ScorpionsAlive"); goto continue_1 end
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
@@ -42,13 +42,13 @@ function Main(quest, me)
             quest:SetStateBool("ScorpionsAlive", false)
             quest:SetMasterGameState("ScorpionsDestroyed", true)
         elseif 0 < scorpionsLeft then
-            scorpionSpawn = quest:GetFurthestWithScriptName(hero, "ScorpionSpawn")
+            local scorpionSpawn = quest:GetFurthestWithScriptName(hero, "ScorpionSpawn")
             if scorpionSpawn == nil then
                 pPosition = {x = 0, y = 0, z = 0}
             else
                 pPosition = scorpionSpawn:GetPos()
             end
-            guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+            local guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
             if guildStagBeetle ~= nil then
                 guildStagBeetle:SetToKillOnLevelUnload(0)
             end

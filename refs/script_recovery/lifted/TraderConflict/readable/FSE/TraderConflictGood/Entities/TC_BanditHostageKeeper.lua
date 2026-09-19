@@ -1,19 +1,9 @@
 -- Readable native conversion: TC_BanditHostageKeeper. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- TC_BanditHostageKeeper.Main (retail 0x00dfba60)
 function Main(quest, me)
     local hero = quest:GetHero()
-    local conversationID
     if not quest:NewScriptFrame(me) then return end
     if not me:AcquireControl(2) then goto LAB_00dfbcd3 end
     if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
@@ -22,7 +12,7 @@ function Main(quest, me)
     end
     if math.random(0, 32767) % 5 == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
-        conversationID = quest:AddNewConversation(me, false, false)
+        local conversationID = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationID, hero)
         if quest:GetStateInt("BanditSecurityLinesSaid") == 0 then
             quest:AddLineToConversation(conversationID, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_10", me, hero, false)

@@ -16,7 +16,7 @@ local otherSpawnPoint
 
 -- TeamSpawn.Main (retail 0x00dcd350)
 function Main(quest, me)
-    local getStateInt, getStateInt2, scratchValue, i_stk_70_1, i_stk_70_2, guardTeamMember, entity
+    local scratchValue, i_stk_70_1, i_stk_70_2, entity
     local heroTeam = quest:GetStateInt("HeroTeam")
     local hero = quest:GetHero()
     while not quest:GetStateBool("DoneIntroduction") do
@@ -35,7 +35,7 @@ function Main(quest, me)
         if teamID == 0 then
             if not ((quest:GetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer")) == 0) and (quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") < teamMemberLimit)) then goto continue_1 end
             quest:SetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer"), teamRespawnTime)
-            getStateInt = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
+            local getStateInt = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
             if quest:IsDistanceBetweenThingsOver(hero, me, 15.0) and not quest:IsCameraPosOnScreen(me:GetPos()) then
                 if quest:IsActiveThreadTerminating() then return end
                 i_stk_70_1 = 0
@@ -71,7 +71,7 @@ function Main(quest, me)
                 quest:SetStateInt("BanditWavesSpawned", quest:GetStateInt("BanditWavesSpawned") + 1)
                 if teamID ~= heroTeam then
                     if quest:IsActiveThreadTerminating() then return end
-                    guardTeamMember = quest:GetNearestWithScriptName(hero, "GuardTeamMember")
+                    local guardTeamMember = quest:GetNearestWithScriptName(hero, "GuardTeamMember")
                     if guardTeamMember ~= nil and guardTeamMember:IsAlive() then
                         if quest:IsDistanceBetweenThingsUnder(guardTeamMember, hero, 15.0) then
                             helpers.MakeTeamMemberComment(quest, me, "NEXT_WAVE", guardTeamMember, 0)
@@ -87,7 +87,7 @@ function Main(quest, me)
                     return
                 end
                 if quest:IsActiveThreadTerminating() then return end
-                getStateInt2 = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
+                local getStateInt2 = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
                 scratchValue = 0
                 if teamMemberLimit ~= getStateInt2 and -1 < teamMemberLimit - getStateInt2 then
                     repeat
@@ -113,9 +113,9 @@ end
 
 -- TeamSpawn.Init (retail 0x00dcd1d0)
 function Init(quest, me)
-    local scratchValue, name
+    local scratchValue
     otherSpawnPoint = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
-    name = me:GetName()
+    local name = me:GetName()
     if name ~= nil and name == "BanditTeamSpawn" then
         teamID = 1
         teamMemberName = "BanditTeamMember"

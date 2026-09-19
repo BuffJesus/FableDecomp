@@ -10,14 +10,14 @@ local heroSpokenToMe, teleportToWoods
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local resource, movie, resource2
+    local movie
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
     quest:SetIsPushableByHero(me, false)
     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
     quest:EntityTeleportToThing(me, quest:GetThingWithScriptName("M_DepartureTeacherStand"), false)
-    resource2 = resources:NewResource()
+    local resource2 = resources:NewResource()
     while not resources:TryAcquire(resource2, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -27,7 +27,7 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d5134c end
     if not quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
-        resource = resources:NewResource()
+        local resource = resources:NewResource()
         while not resources:TryAcquire(resource, hero, 4) do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then

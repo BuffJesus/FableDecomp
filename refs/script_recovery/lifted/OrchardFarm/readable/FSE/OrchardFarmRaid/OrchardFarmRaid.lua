@@ -1,6 +1,9 @@
 -- Readable native conversion: Q_OrchardFarmRaid. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local TUTORIAL_CATEGORY_COMBAT_MULTIPLIER = 9  -- ETutorialCategory (Ego_r.pdb)
+local TUTORIAL_CATEGORY_FLOURISHING_MOVE = 18  -- ETutorialCategory (Ego_r.pdb)
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     ExperienceForDefeatingWhisperInOrchardFarm = 3432,  -- 500
@@ -103,9 +106,8 @@ end
 -- Q_OrchardFarmRaid.ProcessGameRulesEvil (retail 0x00dd03d0)
 function ProcessGameRulesEvil(quest)
     local hero = quest:GetHero()
-    local addQuestInfoCounter, f_stk_14_2, thing, rivalHeroWhisperOrchardFarm, mkOfwbWhisper
-    local mkOfwfWhisper
-    local function __cleanup_LAB_00dd0b11()
+    local addQuestInfoCounter, thing
+    local function ReleaseEverything()
         local thing = 0
         quest:EndCutscene()
     end
@@ -123,28 +125,28 @@ function ProcessGameRulesEvil(quest)
             quest:SetStateBool("WhisperInCutscene", true)
             quest:SetStateBool("WhisperSpawned", true)
             quest:SetQuestCardObjective("Q_OrchardFarmRaidEvil", "TEXT_QUEST_PROTECT_FARM_EVIL_OBJECTIVE_02", "", "Greatwood")
-            rivalHeroWhisperOrchardFarm = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", quest:GetThingWithScriptName("GuardTeamSpawn"):GetPos(), "OrchardFarmWhisper")
+            local rivalHeroWhisperOrchardFarm = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", quest:GetThingWithScriptName("GuardTeamSpawn"):GetPos(), "OrchardFarmWhisper")
             quest:RemoveQuestInfoElement(addQuestInfoCounter)
             quest:MiniMapAddMarker(rivalHeroWhisperOrchardFarm, "HUD_ORB_RED_SMALL")
             quest:EntityAttachToScript(rivalHeroWhisperOrchardFarm, "Q_OrchardFarmRaid")
-            mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
-            mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
+            local mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
+            local mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
             quest:StartCutscene({HERO = hero, WHISPER = rivalHeroWhisperOrchardFarm}, {}, true)
-            f_stk_14_2 = quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2
+            local f_stk_14_2 = quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2
             if f_stk_14_2 <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
-                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 quest:RunCutscene("CS_ORCHARD_EVIL_WHISPER_BACK", true, false)
             else
-                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 quest:RunCutscene("CS_ORCHARD_EVIL_WHISPER_FRONT", true, false)
             end
             quest:FixMovieSequenceCamera(false)
             if not quest:GetStateBool("ShownCombatFlourishTutorial") then
-                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd0b11(); return end
-                if quest:DisplayTutorial(18) then
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+                if quest:DisplayTutorial(TUTORIAL_CATEGORY_FLOURISHING_MOVE) then
                     if quest:IsActiveThreadTerminating() then quest:EndCutscene(); return end
                     while not quest:MsgIsTutorialClickedPast() do
-                        if not quest:NewScriptFrame() then __cleanup_LAB_00dd0b11(); return end
+                        if not quest:NewScriptFrame() then ReleaseEverything(); return end
                     end
                 end
                 quest:SetStateBool("ShownCombatFlourishTutorial", true)
@@ -193,9 +195,8 @@ end
 -- Q_OrchardFarmRaid.ProcessGameRulesGood (retail 0x00dd0f60)
 function ProcessGameRulesGood(quest)
     local hero = quest:GetHero()
-    local ePriority, addQuestInfoCounter, thing, rivalHeroWhisperOrchardFarm, mkOfwbWhisper
-    local mkOfwfWhisper
-    local function __cleanup_LAB_00dd1728()
+    local ePriority, thing
+    local function ReleaseEverything()
         local thing = 0
         quest:EndCutscene()
     end
@@ -204,7 +205,7 @@ function ProcessGameRulesGood(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:DisplayQuestInfo(true)
-    addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
+    local addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
     if quest:IsActiveThreadTerminating() then return end
     repeat
         quest:UpdateQuestInfoCounter(addQuestInfoCounter, quest:GetStateInt("CrateCount"), -1)
@@ -222,26 +223,26 @@ function ProcessGameRulesGood(quest)
             quest:SetStateBool("WhisperInCutscene", true)
             quest:SetQuestCardObjective("Q_OrchardFarmRaidGood", "TEXT_QUEST_PROTECT_FARM_OBJECTIVE_02", "", "Greatwood")
             quest:RemoveQuestInfoElement(addQuestInfoCounter)
-            rivalHeroWhisperOrchardFarm = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", quest:GetThingWithScriptName("BanditTeamSpawn"):GetPos(), "OrchardFarmWhisper")
+            local rivalHeroWhisperOrchardFarm = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ORCHARD_FARM", quest:GetThingWithScriptName("BanditTeamSpawn"):GetPos(), "OrchardFarmWhisper")
             quest:EntityAttachToScript(rivalHeroWhisperOrchardFarm, "Q_OrchardFarmRaid")
             quest:MiniMapAddMarker(rivalHeroWhisperOrchardFarm, "HUD_ORB_RED_SMALL")
-            mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
-            mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
+            local mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
+            local mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
             quest:StartCutscene({HERO = hero, WHISPER = rivalHeroWhisperOrchardFarm}, {}, true)
             if (quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2) <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
-                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 quest:RunCutscene("CS_ORCHARD_GOOD_WHISPER_BACK", true, false)
             else
-                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 quest:RunCutscene("CS_ORCHARD_GOOD_WHISPER_FRONT", true, false)
             end
             quest:FixMovieSequenceCamera(false)
             if not quest:GetStateBool("ShownCombatFlourishTutorial") then
-                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dd1728(); return end
-                if quest:DisplayTutorial(18) then
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+                if quest:DisplayTutorial(TUTORIAL_CATEGORY_FLOURISHING_MOVE) then
                     if quest:IsActiveThreadTerminating() then quest:EndCutscene(); return end
                     while not quest:MsgIsTutorialClickedPast() do
-                        if not quest:NewScriptFrame() then __cleanup_LAB_00dd1728(); return end
+                        if not quest:NewScriptFrame() then ReleaseEverything(); return end
                     end
                 end
                 quest:SetStateBool("ShownCombatFlourishTutorial", true)
@@ -298,8 +299,6 @@ function DoCutsceneIfRequired(quest)
     local heroTeam = quest:GetStateInt("HeroTeam")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local guardTeamMember, resource, resource4, resource5, movie, movie2, resource6, resource7
-    local actorMap, banditTeamMember, actorMap2
     local thing
     if heroTeam == 1 then
         if quest:IsActiveThreadTerminating() then return end
@@ -315,23 +314,23 @@ function DoCutsceneIfRequired(quest)
         end
         if quest:IsDistanceBetweenThingsUnder(thing, hero, 10.0) then
             if heroTeam == 1 then
-                banditTeamMember = quest:GetAllThingsWithScriptName("BanditTeamMember")
-                guardTeamMember = quest:GetNearestWithScriptName(thing, "GuardTeamMember")
-                resource6 = resources:NewResource()
-                resource5 = resources:NewResource()
-                resource4 = resources:NewResource()
-                resource = resources:NewResource()
+                local banditTeamMember = quest:GetAllThingsWithScriptName("BanditTeamMember")
+                local guardTeamMember = quest:GetNearestWithScriptName(thing, "GuardTeamMember")
+                local resource6 = resources:NewResource()
+                local resource5 = resources:NewResource()
+                local resource4 = resources:NewResource()
+                local resource = resources:NewResource()
                 resources:TryAcquire(resource, guardTeamMember, 4)
                 resources:TryAcquire(resource6, banditTeamMember[0 + 1], 4)
                 resources:TryAcquire(resource5, banditTeamMember[1 + 1], 4)
                 resources:TryAcquire(resource4, hero, 4)
                 quest:SheatheHeroWeapons()
-                actorMap = resources:NewActorMap()
+                local actorMap = resources:NewActorMap()
                 resources:SetActor(actorMap, "HERO", resource4)
                 resources:SetActor(actorMap, "BAN1", resource6)
                 resources:SetActor(actorMap, "BAN2", resource5)
                 resources:SetActor(actorMap, "GUARD", resource)
-                movie = resources:StartMovie("")
+                local movie = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
@@ -348,11 +347,11 @@ function DoCutsceneIfRequired(quest)
                 quest:OpenDoor(quest:GetThingWithScriptName("OF_MainGates"))
             else
                 quest:OpenDoor(quest:GetThingWithScriptName("OF_MainGates"))
-                resource7 = resources:NewResource()
+                local resource7 = resources:NewResource()
                 resources:TryAcquire(resource7, hero, 4)
-                actorMap2 = resources:NewActorMap()
+                local actorMap2 = resources:NewActorMap()
                 resources:SetActor(actorMap2[0 + 1], "HERO", resource7)
-                movie2 = resources:StartMovie("")
+                local movie2 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
@@ -426,7 +425,7 @@ function DoMultiplierCutscene(quest)
         quest:RunCutscene("CS_ORCHARD_GOOD_WHISPERINTRO_GWLL", true, false)
         quest:FixMovieSequenceCamera(false)
         if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
-        if quest:DisplayTutorial(9) then
+        if quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then
             if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
             while not quest:MsgIsTutorialClickedPast() do
                 if not quest:NewScriptFrame() then goto LAB_00dd1e70_c1 end
@@ -453,7 +452,7 @@ function DoMultiplierCutscene(quest)
             quest:RunCutscene(string, true, false)
             quest:FixMovieSequenceCamera(false)
             if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-            if not quest:DisplayTutorial(9) then quest:SetStateBool("ShownCombatMultiplierTutorial", true); goto FLOW_after_lab_00dd1d98_109 end
+            if not quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then quest:SetStateBool("ShownCombatMultiplierTutorial", true); goto FLOW_after_lab_00dd1d98_109 end
             if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
             while not quest:MsgIsTutorialClickedPast() do
                 if not quest:NewScriptFrame() then goto LAB_00dd1e70 end
@@ -468,7 +467,7 @@ function DoMultiplierCutscene(quest)
             quest:RunCutscene(string, true, false)
             quest:FixMovieSequenceCamera(false)
             if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-            if quest:DisplayTutorial(9) then
+            if quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
                 while not quest:MsgIsTutorialClickedPast() do
                     if not quest:NewScriptFrame() then goto LAB_00dd1e70 end

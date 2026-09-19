@@ -104,8 +104,7 @@ end
 
 -- Q_TraderConflictGood.WatchTimeLimit (retail 0x00dfaeb0)
 function WatchTimeLimit(quest)
-    local infoElement, timerId
-    timerId = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 5)
     while quest:GetMasterGameState("TCGTimeLimitBoastTaken") == 0 do
         if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); return end
@@ -115,7 +114,7 @@ function WatchTimeLimit(quest)
         end
     end
     quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.TCG_TimeLimit))
-    infoElement = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+    local infoElement = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
     quest:DisplayQuestInfo(true)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame() then goto LAB_00dfb033 end
@@ -159,8 +158,7 @@ end
 
 -- Q_TraderConflictGood.WatchForHittingEnemies (retail 0x00dfc630)
 function WatchForHittingEnemies(quest)
-    local predicateResult, isThingAwareOfOtherThingInAnyWay, tradersFollowing, allCreaturesIndex
-    local scratchValue2, scratchValue3
+    local predicateResult, tradersFollowing, allCreaturesIndex, scratchValue2, scratchValue3
     local hero = quest:GetHero()
     tradersFollowing = quest:GetStateInt("TradersFollowing")
     repeat
@@ -201,7 +199,7 @@ function WatchForHittingEnemies(quest)
                             if quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", 0 / 12), quest:GetStateListAt("AllCreatures", allCreaturesIndex), 20.0) then
                                 quest:GiveThingBestEnemyTarget(hero, nil --[[missing]])
                             else
-                                isThingAwareOfOtherThingInAnyWay = quest:IsThingAwareOfOtherThingInAnyWay(hero, nil --[[missing]])
+                                local isThingAwareOfOtherThingInAnyWay = quest:IsThingAwareOfOtherThingInAnyWay(hero, nil --[[missing]])
                                 if isThingAwareOfOtherThingInAnyWay then
                                     quest:GiveThingBestEnemyTarget(hero, nil --[[missing]])
                                 end
@@ -224,7 +222,7 @@ end
 
 -- Q_TraderConflictGood.WatchForTradersFreed (retail 0x00dfcc10)
 function WatchForTradersFreed(quest)
-    local predicateResult, traderToRescue, count, count2
+    local predicateResult
     while quest:GetStateInt("TradersFollowing") < 1 do
         if not quest:NewScriptFrame() then return end
     end
@@ -245,9 +243,9 @@ function WatchForTradersFreed(quest)
             end
             quest:SetStateBool("EnteredNewRegion", false)
         elseif not predicateResult then
-            traderToRescue = quest:GetAllThingsWithScriptName("TraderToRescue")
+            local traderToRescue = quest:GetAllThingsWithScriptName("TraderToRescue")
             if quest:IsRegionLoaded("BanditCampEntrance") then
-                count = #traderToRescue
+                local count = #traderToRescue
                 if count == 1 then
                     if quest:GetStateInt("TradersReachedTeleporter") < 2 then
                         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_TRADER_CONFLICT_GOOD_OBJECTIVE_03B_PLURAL", "BanditCampCentre", "BanditCampEntrance")
@@ -269,7 +267,7 @@ function WatchForTradersFreed(quest)
                     end
                 end
             elseif quest:IsRegionLoaded("BanditCampCentre") then
-                count2 = #traderToRescue
+                local count2 = #traderToRescue
                 if count2 == 1 then
                     quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_TRADER_CONFLICT_GOOD_OBJECTIVE_03B_SINGLE", "BanditCampCentre", "BanditCampEntrance")
                 elseif count2 < 2 then
@@ -310,19 +308,18 @@ end
 
 -- Q_TraderConflictGood.UpdateLiveEnemies (retail 0x00dfc320)
 function UpdateLiveEnemies(quest)
-    local isActiveThreadTerminating, isActiveThreadTerminating2, isActiveThreadTerminating3
-    local isActiveThreadTerminating4, isActiveThreadTerminating5, isActiveThreadTerminating6
-    local isActiveThreadTerminating7, isActiveThreadTerminating8, predicateResult, followers
-    local scratchValue, p0, allCreaturesIndex, scratchValue8
+    local isActiveThreadTerminating2, isActiveThreadTerminating3, isActiveThreadTerminating4
+    local isActiveThreadTerminating5, isActiveThreadTerminating6, scratchValue, p0
+    local allCreaturesIndex, scratchValue8
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
     allCreaturesIndex = 0
     while allCreaturesIndex ~= quest:GetStateListCount("AllCreatures") do
-        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+        local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         if isActiveThreadTerminating then
             return isActiveThreadTerminating
         end
-        if ((quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() == "CREATURE_NEW_CHICKEN_04") and 0 or 1) ~= 0 then
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() ~= "CREATURE_NEW_CHICKEN_04" then
             if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "TraderToRescue" then goto LAB_00dfc413 end
             isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating2 then
@@ -363,13 +360,13 @@ function UpdateLiveEnemies(quest)
             quest:StateListErase("AllCreatures", allCreaturesIndex)
             goto FLOW_after_lab_00dfc3b5
             ::LAB_00dfc537::
-            isActiveThreadTerminating7 = quest:IsActiveThreadTerminating()
+            local isActiveThreadTerminating7 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating7 then
                 return isActiveThreadTerminating7
             end
             allCreaturesIndex = allCreaturesIndex + 1
         else
-            isActiveThreadTerminating8 = quest:IsActiveThreadTerminating()
+            local isActiveThreadTerminating8 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating8 then
                 return isActiveThreadTerminating8
             end
@@ -377,11 +374,11 @@ function UpdateLiveEnemies(quest)
         end
         ::FLOW_after_lab_00dfc3b5::
     end
-    predicateResult = quest:IsActiveThreadTerminating()
+    local predicateResult = quest:IsActiveThreadTerminating()
     scratchValue = predicateResult
     if not predicateResult then
         scratchValue8 = 0
-        followers = quest:GetFollowingEntityList(quest:GetHero())
+        local followers = quest:GetFollowingEntityList(quest:GetHero())
         if #followers ~= 0 then
             scratchValue = 4
             repeat
@@ -409,17 +406,13 @@ end
 
 -- Q_TraderConflictGood.AttackPeople (retail 0x00dfd600)
 function AttackPeople(quest)
-    local scratchValue, conversationId, conversationId2, scratchValue5, scratchValue7
-    local traderToRescue, allCreatures, scratchValue9, timerId
+    local scratchValue, scratchValue5, scratchValue7, scratchValue9, timerId
     local hero = quest:GetHero()
-    local function __cleanup_LAB_00dfdc8a()
-        quest:DeregisterTimer(timerId)
-    end
-    local function __cleanup_LAB_00dfdd34()
+    local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
     end
     UpdateLiveEnemies(quest)
-    allCreatures = quest:GetStateListCopy("AllCreatures")
+    local allCreatures = quest:GetStateListCopy("AllCreatures")
     timerId = quest:RegisterTimer()
     if not quest:GetStateBool("EnteredNewRegion") then
         -- LAB_00dfd643: (native jump target)
@@ -429,7 +422,7 @@ function AttackPeople(quest)
                 scratchValue = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); goto LAB_00dfde13 end
-                    traderToRescue = quest:GetNearestWithScriptName(allCreatures[scratchValue + 1], "TraderToRescue")
+                    local traderToRescue = quest:GetNearestWithScriptName(allCreatures[scratchValue + 1], "TraderToRescue")
                     if not quest:IsEntityFollowingHero(traderToRescue) then
                         if traderToRescue ~= nil then
                             -- TODO(native): *xStack_18 = *xStack_18 - 1;
@@ -442,8 +435,8 @@ function AttackPeople(quest)
                         if quest:IsDistanceBetweenThingsUnder(allCreatures[0 + 1], traderToRescue, 15.0) or (quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[0 + 1], traderToRescue) and (traderToRescue ~= nil and not traderToRescue:IsNull()) and (traderToRescue ~= nil and traderToRescue:IsAlive())) then
                             quest:GiveThingBestEnemyTarget(allCreatures[0 + 1], traderToRescue)
                             if quest:GetTimer(timerId) == 0 then
-                                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dfdc8a(); return end
-                                conversationId = quest:AddNewConversation(allCreatures[0 + 1], false, false)
+                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
+                                local conversationId = quest:AddNewConversation(allCreatures[0 + 1], false, false)
                                 quest:AddPersonToConversation(conversationId, hero)
                                 quest:AddLineToConversation(conversationId, "TEXT_QST_B11_BANDIT_ATTACK_TRADER", allCreatures[0 + 1], hero, false)
                                 quest:SetTimer(timerId, 4)
@@ -452,8 +445,8 @@ function AttackPeople(quest)
                         else
                             quest:GiveThingBestEnemyTarget(allCreatures[0 + 1], hero)
                             if quest:GetTimer(timerId) == 0 then
-                                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00dfdc8a(); return end
-                                conversationId2 = quest:AddNewConversation(allCreatures[0 + 1], false, false)
+                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
+                                local conversationId2 = quest:AddNewConversation(allCreatures[0 + 1], false, false)
                                 quest:AddPersonToConversation(conversationId2, hero)
                                 quest:AddLineToConversation(conversationId2, "TEXT_QST_B11_BANDIT_ATTACK_HERO", allCreatures[0 + 1], hero, false)
                                 quest:SetTimer(timerId, 4)
@@ -472,7 +465,7 @@ function AttackPeople(quest)
                     end
                     if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue + 1], hero) then return end  -- TODO(native): goto LAB_00dfd841
                     if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue + 1], traderToRescue) then
-                        if ((allCreatures[scratchValue + 1]:GetName() ~= "TC_BanditGuard") and 1 or 0) ~= 0 then return end  -- TODO(native): goto LAB_00dfd841
+                        if allCreatures[scratchValue + 1]:GetName() ~= "TC_BanditGuard" then return end  -- TODO(native): goto LAB_00dfd841
                     end
                     -- TODO(native): xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);
                     scratchValue = scratchValue + 1
@@ -509,7 +502,7 @@ function AttackPeople(quest)
     else
         quest:NewScriptFrame()
         if not quest:IsActiveThreadTerminating() then
-            if not quest:NewScriptFrame() then __cleanup_LAB_00dfdd34(); return end
+            if not quest:NewScriptFrame() then DeregisterTimers(); return end
             if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); return end
             if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); return end
             quest:NewScriptFrame()

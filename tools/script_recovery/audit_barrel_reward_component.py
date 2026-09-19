@@ -11,7 +11,15 @@ from pathlib import Path
 
 
 GAME_ROOT = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters")
-FORGE = Path(r"D:\Code\FableForge\build\forge.exe")
+# FableForge 0.16 split the level editor (forge.exe) from the def tooling (forge-tools.exe); the legacy
+# repo still carries the combined binary. Take the first one that exists, so a sibling-repo rename shows up
+# as one failing resolve here rather than as "unexpected argument" from three audits.
+FORGE_CANDIDATES = (
+    Path(r"D:\Code\FableForge\build\forge-tools.exe"),
+    Path(r"D:\Code\FableForge-legacy\build\forge.exe"),
+    Path(r"D:\Code\FableForge\build\forge.exe"),
+)
+FORGE = next((p for p in FORGE_CANDIDATES if p.exists()), FORGE_CANDIDATES[0])
 SCHEMA = Path(r"D:\Code\FableForge\docs\re_reference\def_schema.json")
 GAME_BIN_SHA256 = "1241FB989A9D85A8CBD912A05D5BF86F71382F65C26B8C7E1EA5944EF0023A09"
 NAMES_BIN_SHA256 = "56D70F5D81231FC7A1A515A93FBC2F1F2AE8C3FF59E4C56DDDFA91995FCD523A"

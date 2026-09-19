@@ -1,19 +1,18 @@
 -- Generated from the same native helper bodies as the quest draft.
 local UpdateLiveEnemies, helper_DFDED0
 function UpdateLiveEnemies(quest, me)
-    local isActiveThreadTerminating, isActiveThreadTerminating2, isActiveThreadTerminating3
-    local isActiveThreadTerminating4, isActiveThreadTerminating5, isActiveThreadTerminating6
-    local isActiveThreadTerminating7, isActiveThreadTerminating8, predicateResult, followers
-    local scratchValue, p0, allCreaturesIndex, scratchValue8
+    local isActiveThreadTerminating2, isActiveThreadTerminating3, isActiveThreadTerminating4
+    local isActiveThreadTerminating5, isActiveThreadTerminating6, scratchValue, p0
+    local allCreaturesIndex, scratchValue8
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
     allCreaturesIndex = 0
     while allCreaturesIndex ~= quest:GetStateListCount("AllCreatures") do
-        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+        local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         if isActiveThreadTerminating then
             return isActiveThreadTerminating
         end
-        if ((quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() == "CREATURE_NEW_CHICKEN_04") and 0 or 1) ~= 0 then
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() ~= "CREATURE_NEW_CHICKEN_04" then
             if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "TraderToRescue" then goto LAB_00dfc413 end
             isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating2 then
@@ -54,13 +53,13 @@ function UpdateLiveEnemies(quest, me)
             quest:StateListErase("AllCreatures", allCreaturesIndex)
             goto FLOW_after_lab_00dfc3b5
             ::LAB_00dfc537::
-            isActiveThreadTerminating7 = quest:IsActiveThreadTerminating()
+            local isActiveThreadTerminating7 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating7 then
                 return isActiveThreadTerminating7
             end
             allCreaturesIndex = allCreaturesIndex + 1
         else
-            isActiveThreadTerminating8 = quest:IsActiveThreadTerminating()
+            local isActiveThreadTerminating8 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating8 then
                 return isActiveThreadTerminating8
             end
@@ -68,11 +67,11 @@ function UpdateLiveEnemies(quest, me)
         end
         ::FLOW_after_lab_00dfc3b5::
     end
-    predicateResult = quest:IsActiveThreadTerminating()
+    local predicateResult = quest:IsActiveThreadTerminating()
     scratchValue = predicateResult
     if not predicateResult then
         scratchValue8 = 0
-        followers = quest:GetFollowingEntityList(quest:GetHero())
+        local followers = quest:GetFollowingEntityList(quest:GetHero())
         if #followers ~= 0 then
             scratchValue = 4
             repeat

@@ -12,8 +12,7 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult3, scratchValue5, predicateResult4, predicateResult9, predicateResult
     local scratchValue, predicateResult15, predicateResult16, scratchValue19, addNewConversation
-    local getStateInt, infoCounter, getStateInt2, infoCounter2, getStateInt3, scratchValue31
-    local scratchValue32, resource, infoCounter3, timerId
+    local infoCounter, infoCounter2, scratchValue31, scratchValue32, resource, infoCounter3, timerId
     scratchValue31 = 0
     if not quest:NewScriptFrame(me) then return end
     if not me:AcquireControl(4) then goto LAB_00d664b9 end
@@ -74,7 +73,7 @@ function Main(quest, me)
             scratchValue32 = scratchValue32 & 0xfffffffe
         end
         if predicateResult3 then
-            getStateInt = beenHit + 1
+            local getStateInt = beenHit + 1
             beenHit = getStateInt
             if getStateInt == 7 then
                 notBeaten = false
@@ -243,7 +242,7 @@ function Main(quest, me)
                 scratchValue31 = scratchValue31 & 0xffffefff
             end
             if predicateResult then
-                getStateInt2 = beenHit + 1
+                local getStateInt2 = beenHit + 1
                 beenHit = getStateInt2
                 if getStateInt2 == 7 then
                     notBeaten = false
@@ -394,7 +393,7 @@ function Main(quest, me)
                 quest:ModifyThingHealth(me, 1000.0, false)
             else
                 if me:MsgIsHitByHeroSpecialAbility(me) then
-                    getStateInt3 = beenHit + 1
+                    local getStateInt3 = beenHit + 1
                     beenHit = getStateInt3
                     if getStateInt3 == 7 then
                         notBeaten = false

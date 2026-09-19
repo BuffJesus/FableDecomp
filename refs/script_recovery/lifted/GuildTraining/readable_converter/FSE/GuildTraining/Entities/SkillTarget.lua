@@ -16,18 +16,13 @@ local dummyNumber, speed, dummyWorth
 
 -- SkillTarget.Main (retail 0x00d41d00)
 function Main(quest, me)
-    local predicateResult4, scratchValue, predicateResult, scratchValue4, scratchValue5
-    local scratchValue6, readGlobalGameDataFloat, getTimer, conversationId, conversationId2
-    local conversationId3, conversationId4, i_stk_16c_1, pPos, theGuildmaster, skillApprentice
-    local theRealGuildmaster, skillApprentice2, scratchValue42, getAngleXY, scratchValue44, timerId
+    local predicateResult4, scratchValue, scratchValue4, scratchValue5, scratchValue6
+    local readGlobalGameDataFloat, getTimer, i_stk_16c_1, pPos, scratchValue44, timerId
     local hero = quest:GetHero()
-    local function __cleanup_LAB_00d42ef8()
+    local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
     end
-    local function __cleanup_LAB_00d42f02()
-        quest:DeregisterTimer(timerId)
-    end
-    getAngleXY = me:GetAngleXY()
+    local getAngleXY = me:GetAngleXY()
     if dummyNumber == 1 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummySegements)))
@@ -103,13 +98,13 @@ function Main(quest, me)
                 if quest:GetMasterGameState("MovingDummiesNeeded") == 1 then
                     if quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
                         if quest:IsQuestActive("Q_GuildTrainingSkill") then
-                            theGuildmaster = quest:GetThingWithScriptName("TheGuildmaster")
-                            conversationId = quest:AddNewConversation(theGuildmaster, false, false)
+                            local theGuildmaster = quest:GetThingWithScriptName("TheGuildmaster")
+                            local conversationId = quest:AddNewConversation(theGuildmaster, false, false)
                             quest:AddPersonToConversation(conversationId, hero)
                             quest:AddLineToConversation(conversationId, "TEXT_QST_028_MAZE_HIT_OUT", theGuildmaster, hero, false)
                         else
-                            skillApprentice = quest:GetThingWithScriptName("SkillApprentice")
-                            conversationId2 = quest:AddNewConversation(skillApprentice, false, false)
+                            local skillApprentice = quest:GetThingWithScriptName("SkillApprentice")
+                            local conversationId2 = quest:AddNewConversation(skillApprentice, false, false)
                             quest:AddPersonToConversation(conversationId2, hero)
                             quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPRENTICE_SKILL_HIT_OUT", skillApprentice, hero, false)
                         end
@@ -136,7 +131,7 @@ function Main(quest, me)
                         getTimer = quest:GetTimer(timerId)
                         if getTimer < 1 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                            scratchValue42 = math.random(0, 32767) & 0x80000003
+                            local scratchValue42 = math.random(0, 32767) & 0x80000003
                             scratchValue = scratchValue42 == 0
                             if scratchValue42 < 0 then
                                 scratchValue = (scratchValue42 - 1 | 0xfffffffc) == 0xffffffff
@@ -144,30 +139,30 @@ function Main(quest, me)
                             if scratchValue then
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                                 quest:SetTimer(timerId, 8)
-                                predicateResult = quest:IsActiveThreadTerminating()
+                                local predicateResult = quest:IsActiveThreadTerminating()
                                 if quest:IsQuestActive("Q_GuildTrainingSkill") then
                                     if predicateResult then
                                         quest:DeregisterTimer(timerId)
                                         return
                                     end
-                                    theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
-                                    conversationId3 = quest:AddNewConversation(theRealGuildmaster, false, false)
+                                    local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
+                                    local conversationId3 = quest:AddNewConversation(theRealGuildmaster, false, false)
                                     quest:AddPersonToConversation(conversationId3, hero)
                                     if 0.0 <= scratchValue44 then
                                         if 0.0 <= scratchValue44 then
                                             if 0.0 <= scratchValue44 then
-                                                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
+                                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                                 quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", theRealGuildmaster, hero, false)
                                             else
-                                                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
+                                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                                 quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", theRealGuildmaster, hero, false)
                                             end
                                         else
-                                            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
+                                            if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                             quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", theRealGuildmaster, hero, false)
                                         end
                                     else
-                                        if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d42ef8(); return end
+                                        if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                         quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", theRealGuildmaster, hero, false)
                                     end
                                 else
@@ -175,8 +170,8 @@ function Main(quest, me)
                                         quest:DeregisterTimer(timerId)
                                         return
                                     end
-                                    skillApprentice2 = quest:GetThingWithScriptName("SkillApprentice")
-                                    conversationId4 = quest:AddNewConversation(skillApprentice2, false, false)
+                                    local skillApprentice2 = quest:GetThingWithScriptName("SkillApprentice")
+                                    local conversationId4 = quest:AddNewConversation(skillApprentice2, false, false)
                                     quest:AddPersonToConversation(conversationId4, hero)
                                     if 0.0 <= scratchValue44 then
                                         if 0.0 <= scratchValue44 then
@@ -186,7 +181,7 @@ function Main(quest, me)
                                             else
                                                 if quest:IsActiveThreadTerminating() then
                                                     -- LAB_00d42efe: (native jump target)
-                                                    __cleanup_LAB_00d42f02(); return
+                                                    DeregisterTimers(); return
                                                 end
                                                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", skillApprentice2, hero, false)
                                             end

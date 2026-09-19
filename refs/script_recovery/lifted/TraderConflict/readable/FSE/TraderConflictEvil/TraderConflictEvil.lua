@@ -21,16 +21,11 @@ function Main(quest)
     local allCreaturesOffset, allCreaturesOffset2, allCreaturesOffset3, allCreaturesOffset4
     local allCreaturesOffset5, scratchValue13, c_stk_7d_1, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78
     local f_stk_70_1, f_stk_70_2, f_stk_70_3, f_stk_70_4, addQuestInfoCounter, scratchValue16
-    local scratchValue17, scratchValue18, scratchValue21, getActiveQuestName, scratchValue23
-    local creaturesItem, getNearestWithScriptName, oakvaleVillagerMaleFakeShopkeeper
-    local oakvaleVillagerMaleFakeShopkeeper2, banditFollower, getNearestWithScriptName2
-    local banditFollower2, getNearestWithScriptName3, bsSlumBedBrown01, scratchValue33
-    local getDataString
+    local scratchValue17, scratchValue18, getActiveQuestName, creaturesItem
+    local getNearestWithScriptName, oakvaleVillagerMaleFakeShopkeeper, getNearestWithScriptName3
+    local bsSlumBedBrown01, getDataString
     local hero = quest:GetHero()
-    local function __region_LAB_00df74f2_c16()
-        local scratchValue13 = bsSlumBedBrown01 == nil
-    end
-    local function __region_LAB_00df77e2_c16()
+    local function ReleaseEverything()
         local scratchValue13 = bsSlumBedBrown01 == nil
     end
     addQuestInfoCounter = 0
@@ -46,14 +41,14 @@ function Main(quest)
     if quest:IsActiveThreadTerminating() then return end
     quest:DeactivateQuest("V_SickChildBarrowFields", 0)
     quest:RepopulateVillage(quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS"))
-    scratchValue21 = "OPINION_SOURCE_VILLAGER_TRADER_CONFLICT_EVIL"
+    local scratchValue21 = "OPINION_SOURCE_VILLAGER_TRADER_CONFLICT_EVIL"
     -- TODO(native): EntitySetAsOpinionSource is not a ForgeFSE binding
     quest:EntitySetAsOpinionSource(hero, scratchValue21)
     quest:SetGuardsIgnoreCrimes(true)
     quest:EnableGuards(quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS"), false)
     bsSlumBedBrown01 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
     allCreaturesOffset5 = #bsSlumBedBrown01
-    scratchValue33 = allCreaturesOffset5
+    local scratchValue33 = allCreaturesOffset5
     scratchValue16 = 0
     if 0 < allCreaturesOffset5 then
         repeat
@@ -78,7 +73,7 @@ function Main(quest)
             -- TODO(native): goto LAB_00df656e
         end
     elseif not quest:IsActiveThreadTerminating() then
-        scratchValue23 = "CS_TRADERCON_EVIL_INTRO_SOUTH"
+        local scratchValue23 = "CS_TRADERCON_EVIL_INTRO_SOUTH"
         -- LAB_00df656e: (native jump target)
         PlayHeroCutscene(quest, scratchValue23)
         if not quest:GetStateBool("QuestStartScreened") then
@@ -137,7 +132,7 @@ function Main(quest)
                     if c_stk_7d_1 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
                         getActiveQuestName = "TC_Villager"
-                        oakvaleVillagerMaleFakeShopkeeper2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):GetPos(), getActiveQuestName)
+                        local oakvaleVillagerMaleFakeShopkeeper2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER", quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):GetPos(), getActiveQuestName)
                         ctr_74 = ctr_74 + 1
                         quest:SetCombatNearbyBreakOffRange(oakvaleVillagerMaleFakeShopkeeper2, 10.0)
                         quest:EntitySetInFaction(oakvaleVillagerMaleFakeShopkeeper2, "FACTION_MONSTERS")
@@ -165,7 +160,7 @@ function Main(quest)
                     if quest:GetStateListCount("AllCreatures") ~= 0 then
                         repeat
                             if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-                            if ((quest:GetStateListAt("AllCreatures", 0 / 12):GetDefName() ~= "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER") and 0 or 1) == 0 then ctr_40 = ctr_40 + 1; goto continue_1 end
+                            if quest:GetStateListAt("AllCreatures", 0 / 12):GetDefName() ~= "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER" then ctr_40 = ctr_40 + 1; goto continue_1 end
                             if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
                             addQuestInfoCounter = 0
                             if 0 ~= (quest:GetStateListCount("AllCreatures") * 12) then
@@ -190,7 +185,7 @@ function Main(quest)
                 quest:DisplayQuestInfo(true)
                 quest:SetStateInt("CounterID", quest:AddQuestInfoCounter("HUD_QUEST_ICON_GUARD", 25, 1.0))
                 quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 25, -1)
-                banditFollower = quest:GetThingWithScriptName("TC_BanditFollower")
+                local banditFollower = quest:GetThingWithScriptName("TC_BanditFollower")
                 addQuestInfoCounter = (quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
                 while addQuestInfoCounter ~= -25 and -1 < addQuestInfoCounter + 25 do
                     if not quest:NewScriptFrame() then goto LAB_00df7957 end
@@ -259,7 +254,7 @@ function Main(quest)
                         ::FLOW_after_lab_00df706d::
                         if not scratchValue13 then ctr_5c = ctr_5c + 1; ctr_78 = (allCreaturesOffset5 + 12); goto continue_9 end
                         if not quest:IsActiveThreadTerminating() then
-                            getNearestWithScriptName2 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "TC_BanditFighter")
+                            local getNearestWithScriptName2 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12), "TC_BanditFighter")
                             ctr_74 = 0
                             if quest:GetStateListCount("AllCreatures") ~= 0 then
                                 f_stk_70_2 = 0
@@ -353,7 +348,7 @@ function Main(quest)
             quest:DisplayQuestInfo(true)
             quest:SetStateInt("CounterID", quest:AddQuestInfoCounter("HUD_QUEST_ICON_GUARD", 25, 1.0))
             quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 25, -1)
-            banditFollower2 = quest:GetThingWithScriptName("TC_BanditFollower")
+            local banditFollower2 = quest:GetThingWithScriptName("TC_BanditFollower")
             addQuestInfoCounter = (quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
             while addQuestInfoCounter ~= -25 and -1 < addQuestInfoCounter + 25 do
                 if not quest:NewScriptFrame() then goto LAB_00df7957_c16 end
@@ -363,7 +358,7 @@ function Main(quest)
                 repeat
                     allCreaturesOffset5 = ctr_78
                     if quest:IsActiveThreadTerminating() then
-                        __region_LAB_00df74f2_c16(); goto LAB_00df7957_c16
+                        ReleaseEverything(); goto LAB_00df7957_c16
                     end
                     if not quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByHero() then
                         if quest:GetStateListAt("AllCreatures", allCreaturesOffset5 / 12):MsgIsHitByAnySpecialAbilityFromHero() then
@@ -455,7 +450,7 @@ function Main(quest)
             if 0 < getActiveQuestName then
                 repeat
                     if quest:IsActiveThreadTerminating() then
-                        __region_LAB_00df77e2_c16(); goto LAB_00df7957_c16
+                        ReleaseEverything(); goto LAB_00df7957_c16
                     end
                     quest:SetThingAsUsable(bsSlumBedBrown01[scratchValue18 + 1], true)
                     addQuestInfoCounter = addQuestInfoCounter + 1
@@ -503,8 +498,7 @@ end
 
 -- Q_TraderConflictEvil.WatchTimeLimit (retail 0x00df7980)
 function WatchTimeLimit(quest)
-    local infoElement, timerId
-    timerId = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 5)
     while quest:GetMasterGameState("TCETimeLimitBoastTaken") == 0 do
         if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); return end
@@ -514,7 +508,7 @@ function WatchTimeLimit(quest)
         end
     end
     quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.TCE_TimeLimit))
-    infoElement = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+    local infoElement = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
     quest:DisplayQuestInfo(true)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame() then goto LAB_00df7b03 end
@@ -532,18 +526,17 @@ end
 
 -- Q_TraderConflictEvil.UpdateLiveEnemies (retail 0x00df9b80)
 function UpdateLiveEnemies(quest)
-    local isActiveThreadTerminating, isActiveThreadTerminating2, isActiveThreadTerminating3
-    local isActiveThreadTerminating4, isActiveThreadTerminating5, predicateResult, scratchValue
-    local predicateResult4, allCreaturesIndex2, allCreaturesIndex, scratchValue7, followers
+    local isActiveThreadTerminating2, scratchValue, predicateResult4, allCreaturesIndex2
+    local allCreaturesIndex, scratchValue7
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
     allCreaturesIndex = 0
     while allCreaturesIndex ~= quest:GetStateListCount("AllCreatures") do
-        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+        local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         if isActiveThreadTerminating then
             return isActiveThreadTerminating
         end
-        if ((quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() == "CREATURE_DEMON_DOOR_FACE_01") and 0 or 1) ~= 0 then
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() ~= "CREATURE_DEMON_DOOR_FACE_01" then
             if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "TC_BanditFollower" then goto LAB_00df9c5a end
             isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating2 then
@@ -553,20 +546,20 @@ function UpdateLiveEnemies(quest)
             goto FLOW_after_lab_00df9cb3
             ::LAB_00df9c5a::
             if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "TC_BanditFighter" then
-                isActiveThreadTerminating3 = quest:IsActiveThreadTerminating()
+                local isActiveThreadTerminating3 = quest:IsActiveThreadTerminating()
                 if isActiveThreadTerminating3 then
                     return isActiveThreadTerminating3
                 end
                 quest:StateListErase("AllCreatures", allCreaturesIndex)
                 goto FLOW_after_lab_00df9cb3
             end
-            isActiveThreadTerminating4 = quest:IsActiveThreadTerminating()
+            local isActiveThreadTerminating4 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating4 then
                 return isActiveThreadTerminating4
             end
             allCreaturesIndex = allCreaturesIndex + 1
         else
-            isActiveThreadTerminating5 = quest:IsActiveThreadTerminating()
+            local isActiveThreadTerminating5 = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating5 then
                 return isActiveThreadTerminating5
             end
@@ -575,11 +568,11 @@ function UpdateLiveEnemies(quest)
         ::FLOW_after_lab_00df9cb3::
     end
     scratchValue7 = 0
-    followers = quest:GetFollowingEntityList(quest:GetHero())
+    local followers = quest:GetFollowingEntityList(quest:GetHero())
     if #followers ~= 0 then
         scratchValue = 4
         repeat
-            predicateResult = quest:IsActiveThreadTerminating()
+            local predicateResult = quest:IsActiveThreadTerminating()
             predicateResult4 = predicateResult
             if predicateResult then goto LAB_00df9dc0 end
             allCreaturesIndex2 = 0

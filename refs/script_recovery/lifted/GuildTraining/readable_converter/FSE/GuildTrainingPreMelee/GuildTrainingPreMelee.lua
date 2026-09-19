@@ -5,18 +5,18 @@
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local preMeleeMaze, preMeleeWhisper, theRealGuildmaster, resource, timerId
+    local timerId
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster")
     quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy")
     quest:AddEntityBinding("PreMeleeWhisper", "GuildTrainingPreMelee/Entities/PreMeleeWhisper")
     quest:FinalizeEntityBindings()
     quest:SetMasterGameState("GuildWarningOccuring", true)
-    preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
-    preMeleeWhisper = quest:GetThingWithScriptName("PreMeleeWhisper")
-    theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
+    local preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
+    local preMeleeWhisper = quest:GetThingWithScriptName("PreMeleeWhisper")
+    local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
     quest:GiveHeroTitle("OBJECT_HERO_TITLE_CHICKEN_CHASER")
     quest:SetStateInt("PreMeleeMode", 0)
-    resource = resources:NewResource()
+    local resource = resources:NewResource()
     while not resources:TryAcquire(resource, preMeleeMaze, 4) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then

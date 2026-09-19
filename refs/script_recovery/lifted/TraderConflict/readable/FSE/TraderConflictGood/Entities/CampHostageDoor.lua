@@ -1,15 +1,6 @@
 -- Readable native conversion: CampHostageDoor. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- CampHostageDoor.Main (retail 0x00dfc050)
 function Main(quest, me)
     quest:CloseDoor(me)

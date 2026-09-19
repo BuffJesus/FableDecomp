@@ -1,6 +1,9 @@
 -- Readable native conversion: TraderToRescue. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
+
 -- per-entity fields (native class members; one Lua state per entity instance)
 local barIndex
 
@@ -8,15 +11,14 @@ local barIndex
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, scratchValue3, scratchValue4, timeRemaining, scratchValue6, scratchValue7
-    local timeRemaining2, predicateResult2, predicateResult3, predicateResult4, predicateResult5
-    local predicateResult, predicateResult14, scratchValue, predicateResult18, predicateResult19
-    local predicateResult23, scratchValue12, isRegionLoaded, dist, health, timerId, sequence1
-    local sequence, sequence3, sequence4, getDataString, line, banditHostageKeeper, scratchValue17
-    local scratchValue18, scratchValue19, teleporterMarker, hero6, hero7, hero8, hero9, hero10
-    local scratchValue20, scratchValue21, conversationId, scratchValue22, scratchValue23
-    local scratchValue24, scratchValue25, timerId2, timerId3, scratchValue26, scratchValue27
-    local timerId4, scratchValue28, movie, movie2, movie3, timerId5, timerId6
+    local scratchValue2, scratchValue3, scratchValue4, scratchValue7, predicateResult2
+    local predicateResult3, predicateResult4, predicateResult5, predicateResult, predicateResult14
+    local scratchValue, predicateResult18, predicateResult19, predicateResult23, scratchValue12
+    local isRegionLoaded, dist, health, timerId, sequence1, sequence, getDataString, line
+    local banditHostageKeeper, scratchValue17, scratchValue18, scratchValue19, hero6, hero7, hero8
+    local hero9, hero10, scratchValue20, scratchValue21, conversationId, scratchValue22
+    local scratchValue23, scratchValue24, scratchValue25, timerId2, timerId3, scratchValue26
+    local scratchValue27, timerId4, scratchValue28, movie3, timerId6
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("IntroDone") do
         if not quest:NewScriptFrame(me) then return end
@@ -30,7 +32,7 @@ function Main(quest, me)
         scratchValue12 = me:AcquireControl(4)
     end
     if not quest:IsActiveThreadTerminating() then
-        timerId5 = quest:RegisterTimer()
+        local timerId5 = quest:RegisterTimer()
         timerId4 = quest:RegisterTimer()
         banditHostageKeeper = quest:GetNearestWithScriptName(me, "TC_BanditHostageKeeper")
         isRegionLoaded = 0
@@ -146,7 +148,7 @@ function Main(quest, me)
             end
             if predicateResult4 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
-                sequence3 = IsPlayerThreateningEntity(me) == 0 or math.random(0, 32767) % 3 ~= 0
+                local sequence3 = IsPlayerThreateningEntity(me) == 0 or math.random(0, 32767) % 3 ~= 0
                 if sequence3 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
                     conversationId = quest:AddNewConversation(me, false, false)
@@ -275,7 +277,7 @@ function Main(quest, me)
                                 scratchValue12 = me:AcquireControl(4)
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                            movie = resources:StartMovie("")
+                            local movie = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if quest:GetHealth(resources:ScriptThing(timerId3)) > 0.0 then
@@ -301,7 +303,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
                         end
-                        timeRemaining = quest:GetTimer(unaff_EBX) == 0 and IsPlayerThreateningEntity(me) ~= 0
+                        local timeRemaining = quest:GetTimer(unaff_EBX) == 0 and IsPlayerThreateningEntity(me) ~= 0
                         scratchValue4 = timeRemaining
                         if timeRemaining then
                             -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
@@ -322,7 +324,7 @@ function Main(quest, me)
                             if me:MsgIsHitByAnySpecialAbilityFrom("") then
                                 scratchValue21 = scratchValue21 | 256
                                 predicateResult = true
-                                if not me:MsgIsHitByHeroSpecialAbility(14) then
+                                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then
                                     goto FLOW_after_lab_00dff3b5
                                 end
                             end
@@ -330,7 +332,7 @@ function Main(quest, me)
                         else
                             scratchValue21 = scratchValue21 | 256
                             predicateResult = true
-                            if me:MsgIsHitByHeroSpecialAbility(14) then
+                            if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then
                                 predicateResult = false
                                 goto FLOW_after_lab_00dff3b5
                             end
@@ -348,7 +350,7 @@ function Main(quest, me)
                         if predicateResult then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                             health = quest:GetHealth(nil --[[missing]])
-                            scratchValue6 = health <= 5.0 or quest:GetTimer(scratchValue24) ~= 0
+                            local scratchValue6 = health <= 5.0 or quest:GetTimer(scratchValue24) ~= 0
                             if scratchValue6 then
                                 predicateResult14 = false
                             else
@@ -358,7 +360,7 @@ function Main(quest, me)
                                 end
                                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                                     scratchValue20 = scratchValue21 | 3584
-                                    if not me:MsgIsHitByHeroSpecialAbility(14) then
+                                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then
                                         predicateResult14 = false
                                         goto FLOW_after_lab_00dff54a
                                     end
@@ -412,7 +414,7 @@ function Main(quest, me)
                                     if not me:MsgIsHitByHero() then
                                         if me:MsgIsHitByAnySpecialAbilityFromHero() then
                                             scratchValue20 = scratchValue21 | 0x7000
-                                            if not me:MsgIsHitByHeroSpecialAbility(14) then goto LAB_00dff880 end
+                                            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dff880 end
                                         end
                                         predicateResult18 = false
                                         goto FLOW_after_lab_00dff887
@@ -442,7 +444,7 @@ function Main(quest, me)
                         if not me:MsgIsHitByHero() then
                             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                                 scratchValue20 = scratchValue21 | 0x38000
-                                if not me:MsgIsHitByHeroSpecialAbility(14) then
+                                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then
                                     predicateResult19 = true
                                     goto FLOW_after_lab_00dffa46
                                 end
@@ -461,7 +463,7 @@ function Main(quest, me)
                         if scratchValue20 & 0x8000 ~= 0 then
                             scratchValue20 = scratchValue20 & 0xffff7fff
                         end
-                        sequence4 = predicateResult19 and quest:IsActiveThreadTerminating()
+                        local sequence4 = predicateResult19 and quest:IsActiveThreadTerminating()
                         if sequence4 then goto LAB_00e005b1 end
                         if not me:MsgExpressionPerformedTo() then isRegionLoaded = not quest:IsRegionLoaded("BanditCampEntrance"); scratchValue2 = 10; goto continue_3 end
                         if scratchValue27 == nil then
@@ -474,7 +476,7 @@ function Main(quest, me)
                         ::continue_3::
                     end
                     if quest:IsActiveThreadTerminating() then break end
-                    teleporterMarker = quest:GetThingWithScriptName("TeleporterMarker")
+                    local teleporterMarker = quest:GetThingWithScriptName("TeleporterMarker")
                     -- TODO(native): CCharString::CCharString({R = 255, G = 0, B = 0, A = 255},"BanditCampEntrance",-1);
                     isRegionLoaded = quest:IsRegionLoaded("")
                     while isRegionLoaded do
@@ -498,7 +500,7 @@ function Main(quest, me)
                                 scratchValue12 = me:AcquireControl(4)
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
-                            movie2 = resources:StartMovie("")
+                            local movie2 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             movie3 = resources:ScriptThing(scratchValue24)
@@ -525,7 +527,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie2)
                         end
-                        timeRemaining2 = quest:GetTimer(unaff_EBX) == 0 and IsPlayerThreateningEntity(me) ~= 0
+                        local timeRemaining2 = quest:GetTimer(unaff_EBX) == 0 and IsPlayerThreateningEntity(me) ~= 0
                         scratchValue7 = timeRemaining2
                         if timeRemaining2 then
                             -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
@@ -543,7 +545,7 @@ function Main(quest, me)
                         if not me:MsgIsHitByHero() then
                             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                                 scratchValue21 = scratchValue20 | 0x1c0000
-                                if not me:MsgIsHitByHeroSpecialAbility(14) then
+                                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then
                                     predicateResult23 = true
                                     goto FLOW_after_lab_00e0006b
                                 end
@@ -623,7 +625,7 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then goto LAB_00e005ac end
         if not me:IsPerformingScriptTask() then
             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
-            me:MoveToThing(nil --[[missing]], 1.0, 1)
+            me:MoveToThing(nil --[[missing]], 1.0, ENTITY_MOVE_RUN)
         end
     end
     if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00e00595 end

@@ -1,25 +1,14 @@
 -- Readable native conversion: HeroBed. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- HeroBed.Main (retail 0x00d446d0)
 function Main(quest, me)
-    local count, scratchValue, scratchValue3, scratchValue4, count2, count3, scratchValue5
-    local scratchValue6, scratchValue7, bsSlumBedBrown01, guildBedApprentice01
-    local guildBedFloorPallet01
+    local scratchValue, scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue7
     scratchValue4 = 0
     quest:SetThingAsUsable(me, false)
     quest:SetThingPersistent(me, true)
-    guildBedFloorPallet01 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
-    count = #guildBedFloorPallet01
+    local guildBedFloorPallet01 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_FLOOR_PALLET_01")
+    local count = #guildBedFloorPallet01
     if 0 < count then
         scratchValue5 = 0
         repeat
@@ -32,8 +21,8 @@ function Main(quest, me)
     end
     scratchValue = 0
     if not quest:IsActiveThreadTerminating() then
-        guildBedApprentice01 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
-        count2 = #guildBedApprentice01
+        local guildBedApprentice01 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
+        local count2 = #guildBedApprentice01
         if 0 < count2 then
             scratchValue6 = 0
             repeat
@@ -46,8 +35,8 @@ function Main(quest, me)
         end
         scratchValue3 = 0
         if not quest:IsActiveThreadTerminating() then
-            bsSlumBedBrown01 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
-            count3 = #bsSlumBedBrown01
+            local bsSlumBedBrown01 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")
+            local count3 = #bsSlumBedBrown01
             if 0 < count3 then
                 scratchValue7 = 0
                 repeat

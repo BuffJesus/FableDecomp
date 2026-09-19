@@ -867,6 +867,60 @@ def inline_single_use(lines):
             return lines, count
 
 
+def _block_end(structure, start, indent):
+    """First line after `start` that dedents out of the block holding it (exclusive)."""
+    for j in range(start + 1, len(structure)):
+        if structure[j].strip() and _indent(structure[j]) < indent:
+            return j
+    return len(structure)
+
+
+def sink_hoisted_locals(lines):
+    """`local a, b, c` at the top of the function, then `b = <expr>` deep inside it, is how the lifter
+    spells a slot; Aeon declares the value where it is computed. Move the declaration onto its assignment
+    when that cannot change what any line sees.
+
+    Five conditions, all necessary: exactly one assignment; every read after it; every read inside the
+    assignment's own block (nothing between them dedents below it); no earlier closure captures the name
+    (the hoisted `ReleaseEverything()` epilogues close over `movie` / `timerId`); and no label inside the
+    new scope is the target of a `goto` from before it -- Lua 5.2+ rejects a jump into a local's scope, so
+    that last one is the difference between narrowing a scope and emitting a file that will not load.
+    """
+    structure = _structure(lines)
+    ranges = _closure_ranges(structure)
+    if ranges is None:
+        return lines, 0
+    labels = {m.group(1): i for i, l in enumerate(structure) for m in [re.fullmatch(r'\s*::(\w+)::', l)] if m}
+    gotos = [(i, m.group(1)) for i, l in enumerate(structure) for m in [re.search(r'\bgoto (\w+)\b', l)] if m]
+    count = 0
+    for name in _declared_temporaries(structure):
+        defs, reads = _reads_and_defs(structure, name)
+        if len(defs) != 1 or not reads:
+            continue
+        definition = defs[0]
+        if not re.fullmatch(r'\s*' + re.escape(name) + r'\s*=(?!=).*', structure[definition]):
+            continue                                   # a compound target, not a plain `name = expr`
+        if any(r <= definition for r in reads):
+            continue
+        indent = _indent(structure[definition])
+        end = _block_end(structure, definition, indent)
+        if max(reads) >= end:
+            continue                                   # a read outside the block would lose the binding
+        if any(a < definition and re.search(r'\b' + re.escape(name) + r'\b', ''.join(lines[a:b + 1]))
+               for a, b in ranges):
+            continue                                   # an earlier closure captured it
+        inside = {n for n, i in labels.items() if definition <= i < end}
+        if any(target in inside and at < definition for at, target in gotos):
+            continue                                   # a goto would jump into the new scope
+        _remove_declaration(lines, name)
+        lines[definition] = re.sub(r'^(\s*)' + re.escape(name) + r'\s*=', r'\1local ' + name + ' =',
+                                   lines[definition], count=1)
+        count += 1
+        if count:
+            return [l for l in lines if l != ''], count        # indices shift: rerun for the next name
+    return lines, count
+
+
 def prune_dead_defs(lines):
     """A temporary's assignment whose value no read can reach: gone when the value is a literal or a
     state query, kept as the bare call when it has effects (`quest:NewScriptFrame(me)`)."""
@@ -1546,11 +1600,17 @@ def simplify_conditions(lines):
         if line.lstrip().startswith('--'):
             continue
         new = line
-        # ((C) and 0 or 1) ~= 0  /  == 0   (the decompiler's int-valued comparison)
-        for m in reversed(list(re.finditer(r'\(\((?P<c>[^()]*(?:\([^()]*\))*[^()]*)\) and 0 or 1\) (?P<op>~=|==) 0', new))):
-            cond = m.group('c')
-            repl = f'not ({cond})' if m.group('op') == '~=' else f'({cond})'
-            new = new[:m.start()] + repl + new[m.end():]
+        # the decompiler's int-valued comparison, both ways round:
+        #   ((C) and 0 or 1) ~= 0  is  not (C)      ((C) and 1 or 0) ~= 0  is  (C)
+        for staged, negated in ((r'and 0 or 1', True), (r'and 1 or 0', False)):
+            # one nesting level, but any number of groups with text between them:
+            # `quest:GetStateListAt("L", i):GetDefName() == "X"` is two groups, not one
+            pattern = r'\(\((?P<c>(?:[^()]*\([^()]*\))*[^()]*)\) ' + staged + r'\) (?P<op>~=|==) 0'
+            for m in reversed(list(re.finditer(pattern, new))):
+                cond = m.group('c')
+                invert = (m.group('op') == '~=') == negated
+                repl = f'not ({cond})' if invert else f'({cond})'
+                new = new[:m.start()] + repl + new[m.end():]
         # not (not X) / not (a == b)
         pos = 0
         while (m := re.compile(r'\bnot \(').search(new, pos)):
@@ -1974,11 +2034,67 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         for _ in range(20):
             if not folds():
                 break
+    # after every fold that can introduce a `goto`: the jump-into-scope check must see the final jumps
+    for _ in range(40):
+        if not run('sunkLocals', sink_hoisted_locals):
+            break
+    run('cleanupClosureNames', name_cleanup_closures)
     run('parentheses', strip_redundant_parens)
     run('cosmetics', cosmetics)
     run('firstAssignments', merge_first_assignments)
     run('freeSuffixes', drop_free_suffixes)
     return ''.join(lines), stats
+
+
+RE_HOISTED_CLOSURE = re.compile(r'^(?P<ind>[ \t]*)local function (?P<name>__(?:cleanup|region)_LAB_\w+)\(\)\n')
+
+
+def _cleanup_name(body):
+    """A name for what the epilogue does, in the vocabulary of the script rather than of the jump target."""
+    verbs = {re.sub(r'\(.*', '', line).split(':')[-1] for line in body}
+    if verbs <= {'PauseAllNonScriptedEntities'}:
+        return 'ResumeEntities'
+    if verbs <= {'DeregisterTimer'}:
+        return 'DeregisterTimers'
+    if 'EndCutscene' in verbs or 'RunCutscene' in verbs:
+        return 'EndCutsceneAndRelease'
+    if verbs <= {'ReleaseResource'}:
+        return 'ReleaseControl'
+    return 'ReleaseEverything'
+
+
+def name_cleanup_closures(lines):
+    """`local function __region_LAB_00d555f3_c27()` says where retail jumped, not what runs. Name it after what
+    it does, and merge the closures whose bodies are identical - a function hoists the same one-line epilogue
+    once per jump site, and five `ResumeEntities` definitions would read worse than the labels did."""
+    order = []
+    for i, line in enumerate(lines):
+        m = RE_HOISTED_CLOSURE.match(line)
+        if not m:
+            continue
+        end = next((j for j in range(i + 1, len(lines)) if lines[j].rstrip('\n') == m.group('ind') + 'end'), None)
+        if end is None:
+            return lines, 0
+        order.append((m.group('name'), i, end, tuple(l.strip() for l in lines[i + 1:end] if l.strip())))
+    if not order:
+        return lines, 0
+    occupied = set(re.findall(r'[A-Za-z_]\w*', ''.join(lines)))
+    chosen, by_body, drop = {}, {}, set()
+    for name, i, end, body in order:
+        if body in by_body:                       # an identical epilogue: one definition serves every site
+            chosen[name] = by_body[body]
+            drop.update(range(i, end + 1))
+            continue
+        base = _cleanup_name(body)
+        pick, n = base, 2
+        while pick in occupied:
+            pick, n = f'{base}{n}', n + 1
+        occupied.add(pick)
+        by_body[body] = chosen[name] = pick
+    text = ''.join(l for k, l in enumerate(lines) if k not in drop)
+    for name, pick in chosen.items():
+        text = re.sub(r'\b' + re.escape(name) + r'\b', pick, text)
+    return text.splitlines(keepends=True), len(chosen)
 
 
 RE_ACQUIRE_LOOP = re.compile(
@@ -2101,6 +2217,66 @@ def name_script_def_reads(source):
     return new, len(used)
 
 
+def name_enum_operands(source):
+    """`me:MoveToPosition(pos, 3.0, 1, false, true)` -> `ENTITY_MOVE_RUN`: retail typed that operand, so the
+    readable output should spell it the way retail did. Values come from the Ego_r PDB
+    (`tools/script_recovery/retail_enums.py`), and only a bare integer literal in the enum's range is
+    touched - anything else (a variable, an out-of-range number) is left exactly as it was."""
+    from tools.script_recovery.retail_enums import OPERANDS, members, split_arguments
+    used = {}
+
+    def rewrite(source):
+        out, changed = [], 0
+        pos = 0
+        for m in re.finditer(r'(\w+):(\w+)\(', source):
+            if m.start() < pos:
+                continue
+            rules = [(i, e) for name, i, e in OPERANDS if name == m.group(2)]
+            if not rules:
+                continue
+            depth, j = 1, m.end()
+            while j < len(source) and depth:
+                depth += source[j] in '([{'
+                depth -= source[j] in ')]}'
+                j += 1
+            if depth:
+                continue
+            inner = source[m.end():j - 1]
+            if '\n' in inner:
+                continue                         # a wrapped call: leave it to the next round
+            spans = split_arguments(inner)
+            replaced = inner
+            for index, enum in rules:
+                if index >= len(spans):
+                    continue
+                start, stop = spans[index]
+                literal = inner[start:stop].strip()
+                if not re.fullmatch(r'\d+', literal):
+                    continue
+                name = members(enum).get(int(literal))
+                if not name:
+                    continue
+                used[name] = (enum, int(literal))
+                replaced = replaced[:start] + replaced[start:stop].replace(literal, name, 1) + replaced[stop:]
+                changed += 1
+            out.append(source[pos:m.end()] + replaced + ')')
+            pos = j
+        out.append(source[pos:])
+        return ''.join(out), changed
+
+    source, changed = rewrite(source)
+    if not used:
+        return source, 0
+    by_enum = {}
+    for name, (enum, value) in used.items():
+        by_enum.setdefault(enum, []).append((value, name))
+    rows = ''.join(f'local {name} = {value}  -- {enum} (Ego_r.pdb)\n'
+                   for enum in sorted(by_enum) for value, name in sorted(by_enum[enum]))
+    header_end = re.search(r'^(?!--)', source, re.M).start()
+    source = source[:header_end] + '\n' + rows + source[header_end:] if source[:header_end].endswith('\n') else rows + source
+    return source, changed
+
+
 def style_metrics(chunk):
     lines = [l for l in chunk.splitlines() if l.strip()]
     body = '\n'.join(lines[1:])
@@ -2152,8 +2328,12 @@ def inline_entity_fields(source):
     for k in re.findall(r'\bstate:(?:Get|Set)(?:Bool|Int|Float|String|Thing)\("(\w+)"', source):
         if k not in keys:
             keys.append(k)
-    if not keys or re.search(r'\bstate:\w+\((?!")', source):     # a non-literal key: keep the shim
+    if re.search(r'\bstate:\w+\((?!")', source):                 # a non-literal key: keep the shim
         return source, 0
+    if not keys:
+        # this entity never touches its own fields: the shim is dead scaffolding, not state
+        rest = source[:shim.start()] + source[shim.end():]
+        return (rest, 1) if not re.search(r'\bstate\b', rest) else (source, 0)
     # a function-local snapshot of a field under the field's own name (`local dummyNumber = state:GetInt("DummyNumber")`)
     # is dropped when that function never writes the field or the local: its reads read the field itself
     freed = set()
@@ -2310,6 +2490,7 @@ def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
     source, hoisted = hoist_requires(source)
     source, aliased = alias_entity_state(source)
     source, script_def = name_script_def_reads(source)
+    source, enum_operands = name_enum_operands(source)
     source, speak_methods = name_speak_methods(source)
     source, named = name_helpers_by_state(source)
     source, named_shape = name_helpers_by_shape(source)

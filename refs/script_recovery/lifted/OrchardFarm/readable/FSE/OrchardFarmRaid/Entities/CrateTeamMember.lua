@@ -1,6 +1,8 @@
 -- Readable native conversion: CrateTeamMember. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
+
 local helpers = require("OrchardFarmRaid.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
@@ -8,8 +10,7 @@ local teamID, myTeam, memberState, currentAIState, previousAIState, thingToPatro
 
 -- CrateTeamMember.Main (retail 0x00dce230)
 function Main(quest, me)
-    local predicateResult, predicateResult5, isDistanceBetweenThingsUnder, getCurrentStateGroupType
-    local p0_00, teamExitMarker, thing_38
+    local predicateResult, predicateResult5, isDistanceBetweenThingsUnder, p0_00
     local heroTeam = quest:GetStateInt("HeroTeam")
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("DoneIntroduction") do
@@ -34,7 +35,7 @@ function Main(quest, me)
     while not quest:GetStateBool("WhisperSpawned") do
         if not quest:NewScriptFrame(me) then return end
         GoOnPatrol(quest, me)
-        getCurrentStateGroupType = me:GetCurrentStateGroupType()
+        local getCurrentStateGroupType = me:GetCurrentStateGroupType()
         currentAIState = getCurrentStateGroupType
         if getCurrentStateGroupType ~= previousAIState then
             if quest:IsActiveThreadTerminating() then return end
@@ -52,7 +53,7 @@ function Main(quest, me)
         if memberState == 1 then
             if quest:GetStateThing("Teams_" .. myTeam .. "_TeamCrateCarrier"):IsDead() and quest:GetStateInt("Teams_" .. myTeam .. "_StateCounter_2") == 0 then
                 if quest:IsActiveThreadTerminating() then return end
-                thing_38 = GetNearestCrateToMe(quest, me)
+                local thing_38 = GetNearestCrateToMe(quest, me)
                 if (thing_38 ~= nil and not thing_38:IsNull()) and (thing_38 ~= nil and thing_38:IsAlive()) and not ((thing_38 ~= nil and not thing_38:IsNull()) and thing_38:IsBeingCarriedBy("")) then
                     isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                     if heroTeam == 0 and teamID == 1 then
@@ -121,7 +122,7 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:EntityStopFollowing(me)
-    teamExitMarker = quest:GetNearestWithScriptName(me, "TeamExitMarker")
+    local teamExitMarker = quest:GetNearestWithScriptName(me, "TeamExitMarker")
     if not me:AcquireControl(4) then goto LAB_00dcec33 end
     if quest:IsActiveThreadTerminating() then goto LAB_00dcec33 end
     while not quest:IsActiveThreadTerminating() do
@@ -129,7 +130,7 @@ function Main(quest, me)
             if teamExitMarker ~= nil and not teamExitMarker:IsNull() then
                 p0_00 = teamExitMarker:GetPos()
             end
-            me:MoveToPosition(p0_00, 0.5, 1, false, true)
+            me:MoveToPosition(p0_00, 0.5, ENTITY_MOVE_RUN, false, true)
         end
         if not quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then quest:NewScriptFrame(me); goto continue_3 end
         if not quest:IsActiveThreadTerminating() then
@@ -148,9 +149,8 @@ end
 
 -- CrateTeamMember.Init (retail 0x00dcdf60)
 function Init(quest, me)
-    local name
     local hero = quest:GetHero()
-    name = me:GetName()
+    local name = me:GetName()
     if name ~= nil and name == "BanditTeamMember" then
         teamID = 1
     else
@@ -243,14 +243,14 @@ end
 
 -- CrateTeamMember.GetNearestCrateToMe (retail 0x00dcedf0)
 function GetNearestCrateToMe(quest, me)
-    local getDistanceBetweenThings, crateListIndex, scratchValue2, scratchValue3, x_stk_c_1
+    local crateListIndex, scratchValue2, scratchValue3, x_stk_c_1
     scratchValue3 = 10000000.0
     x_stk_c_1 = nil
     scratchValue2 = 0
     if quest:GetStateListCount("CrateList") ~= 0 then
         crateListIndex = 0
         repeat
-            getDistanceBetweenThings = quest:GetDistanceBetweenThings(me, quest:GetStateListAt("CrateList", crateListIndex)) ^ 2
+            local getDistanceBetweenThings = quest:GetDistanceBetweenThings(me, quest:GetStateListAt("CrateList", crateListIndex)) ^ 2
             if getDistanceBetweenThings < scratchValue3 then
                 scratchValue3 = getDistanceBetweenThings
                 x_stk_c_1 = quest:GetStateListAt("CrateList", crateListIndex)

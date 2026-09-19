@@ -15,10 +15,10 @@
       "voidReturns": 0,
       "nilReleases": 1,
       "emptyIfs": 0,
-      "deadStores": 0,
+      "deadStores": 1,
       "unusedAlive": 0,
       "flagTests": 2,
-      "declarations": 4,
+      "declarations": 3,
       "decimalLiterals": 0
      }
     },
@@ -188,7 +188,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 13,
+     "sourceLine": 4,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -197,7 +197,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 37,
+     "sourceLine": 27,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -206,7 +206,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 43,
+     "sourceLine": 33,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -215,7 +215,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 46,
+     "sourceLine": 36,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -228,7 +228,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 5,
+       "splitLocals": 6,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -237,7 +237,7 @@
        "exitChecksInlined": 3,
        "frameChecks": 0,
        "inlinedTemporaries": 7,
-       "deadDefinitions": 3,
+       "deadDefinitions": 2,
        "guardWrappers": 0,
        "retryLoops": 1,
        "booleanMaterialisation": 0,
@@ -262,9 +262,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 3,
        "controlAcquires": 0,
+       "sunkLocals": 2,
+       "cleanupClosureNames": 1,
        "parentheses": 1,
        "cosmetics": 1,
-       "firstAssignments": 3,
+       "firstAssignments": 4,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
@@ -279,7 +281,7 @@
       },
       "after": {
        "lines": 23,
-       "temporaries": 2,
+       "temporaries": 0,
        "labels": 1,
        "gotos": 1,
        "terminationChecks": 2,
@@ -323,6 +325,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -384,6 +388,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -445,6 +451,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 2,
@@ -2003,7 +2011,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 9,
+     "sourceLine": 11,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2012,7 +2020,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 147,
+     "sourceLine": 149,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2021,7 +2029,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 186,
+     "sourceLine": 187,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2030,7 +2038,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 189,
+     "sourceLine": 190,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2039,7 +2047,7 @@
     },
     {
      "function": "GoOnPatrol",
-     "sourceLine": 200,
+     "sourceLine": 201,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2048,7 +2056,7 @@
     },
     {
      "function": "IsThingCarryingCrate",
-     "sourceLine": 218,
+     "sourceLine": 219,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2057,7 +2065,7 @@
     },
     {
      "function": "GetNearestCrateToMe",
-     "sourceLine": 237,
+     "sourceLine": 238,
      "locals": {
       "scratchValue": {
        "name": "getDistanceBetweenThings",
@@ -2074,7 +2082,7 @@
     },
     {
      "function": "SetMemberState",
-     "sourceLine": 258,
+     "sourceLine": 259,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2082,12 +2090,12 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 6,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -2121,9 +2129,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 15,
        "controlAcquires": 1,
+       "sunkLocals": 7,
+       "cleanupClosureNames": 0,
        "parentheses": 47,
        "cosmetics": 2,
-       "firstAssignments": 1,
+       "firstAssignments": 0,
        "freeSuffixes": 1,
        "hoistedState": 3
       },
@@ -2138,7 +2148,7 @@
       },
       "after": {
        "lines": 138,
-       "temporaries": 8,
+       "temporaries": 5,
        "labels": 3,
        "gotos": 4,
        "terminationChecks": 14,
@@ -2148,7 +2158,7 @@
      },
      "Init": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -2182,9 +2192,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 3,
+       "cleanupClosureNames": 0,
        "parentheses": 6,
        "cosmetics": 0,
-       "firstAssignments": 1,
+       "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
@@ -2198,8 +2210,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 38,
-       "temporaries": 1,
+       "lines": 37,
+       "temporaries": 0,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -2243,6 +2255,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2304,6 +2318,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 4,
        "cosmetics": 2,
        "firstAssignments": 0,
@@ -2365,9 +2381,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 1,
+       "cleanupClosureNames": 0,
        "parentheses": 8,
        "cosmetics": 1,
-       "firstAssignments": 1,
+       "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 1
       },
@@ -2426,6 +2444,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2453,7 +2473,7 @@
      },
      "GetNearestCrateToMe": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -2487,6 +2507,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 2,
+       "cleanupClosureNames": 0,
        "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2504,7 +2526,7 @@
       },
       "after": {
        "lines": 20,
-       "temporaries": 5,
+       "temporaries": 4,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -2548,6 +2570,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 4,
        "cosmetics": 2,
        "firstAssignments": 0,
@@ -2704,7 +2728,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 13,
+     "sourceLine": 4,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2713,7 +2737,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 20,
+     "sourceLine": 11,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2722,7 +2746,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 24,
+     "sourceLine": 15,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2731,7 +2755,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 27,
+     "sourceLine": 18,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2778,6 +2802,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2839,6 +2865,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2900,6 +2928,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -2961,6 +2991,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3114,7 +3146,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 15,
+     "sourceLine": 6,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3123,7 +3155,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 22,
+     "sourceLine": 13,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3132,7 +3164,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 25,
+     "sourceLine": 16,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3141,7 +3173,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 28,
+     "sourceLine": 19,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3188,6 +3220,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 1,
        "firstAssignments": 0,
@@ -3249,6 +3283,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3310,6 +3346,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3371,6 +3409,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3525,7 +3565,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 15,
+     "sourceLine": 6,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3534,7 +3574,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 22,
+     "sourceLine": 13,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3543,7 +3583,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 25,
+     "sourceLine": 16,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3552,7 +3592,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 28,
+     "sourceLine": 19,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3599,6 +3639,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 1,
        "firstAssignments": 0,
@@ -3660,6 +3702,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3721,6 +3765,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3782,6 +3828,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -4097,7 +4145,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 13,
+     "sourceLine": 4,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4106,7 +4154,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 49,
+     "sourceLine": 39,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4115,7 +4163,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 57,
+     "sourceLine": 47,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4124,7 +4172,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 60,
+     "sourceLine": 50,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4137,7 +4185,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 5,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -4171,9 +4219,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
+       "sunkLocals": 5,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 1,
+       "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
@@ -4187,8 +4237,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 35,
-       "temporaries": 2,
+       "lines": 34,
+       "temporaries": 0,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 3,
@@ -4232,6 +4282,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -4293,6 +4345,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -4354,6 +4408,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -5259,7 +5315,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 4,
+       "splitLocals": 7,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -5293,9 +5349,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 9,
        "controlAcquires": 0,
+       "sunkLocals": 8,
+       "cleanupClosureNames": 0,
        "parentheses": 15,
        "cosmetics": 0,
-       "firstAssignments": 2,
+       "firstAssignments": 0,
        "freeSuffixes": 2,
        "hoistedState": 6
       },
@@ -5310,7 +5368,7 @@
       },
       "after": {
        "lines": 96,
-       "temporaries": 8,
+       "temporaries": 5,
        "labels": 1,
        "gotos": 1,
        "terminationChecks": 14,
@@ -5320,7 +5378,7 @@
      },
      "Init": {
       "rewrites": {
-       "splitLocals": 0,
+       "splitLocals": 3,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -5354,6 +5412,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 4,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -5371,7 +5431,7 @@
       },
       "after": {
        "lines": 23,
-       "temporaries": 2,
+       "temporaries": 1,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -5415,6 +5475,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -5476,6 +5538,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -6029,7 +6093,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 3,
+     "sourceLine": 5,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6038,7 +6102,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 73,
+     "sourceLine": 75,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6051,7 +6115,7 @@
     "functions": {
      "DoMultiplierCutscene": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 6,
        "closures": 0,
        "hero": 1,
        "cutscenes": 1,
@@ -6085,9 +6149,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 8,
        "controlAcquires": 0,
+       "sunkLocals": 5,
+       "cleanupClosureNames": 0,
        "parentheses": 5,
        "cosmetics": 0,
-       "firstAssignments": 2,
+       "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 1
       },
@@ -6112,7 +6178,7 @@
      },
      "MakeTeamMemberComment": {
       "rewrites": {
-       "splitLocals": 12,
+       "splitLocals": 13,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -6146,9 +6212,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 8,
+       "cleanupClosureNames": 0,
        "parentheses": 3,
        "cosmetics": 0,
-       "firstAssignments": 10,
+       "firstAssignments": 4,
        "freeSuffixes": 0,
        "hoistedState": 1
       },
@@ -6162,8 +6230,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 20,
-       "temporaries": 1,
+       "lines": 19,
+       "temporaries": 0,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -8530,7 +8598,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 11,
+     "sourceLine": 14,
      "locals": {
       "scratchValue": {
        "name": "isRegionLoaded",
@@ -8548,7 +8616,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 46,
+     "sourceLine": 49,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8557,15 +8625,6 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 97,
-     "locals": {},
-     "splitLocals": {},
-     "removedLiteralLocals": {},
-     "inlinedLiteralLocals": {},
-     "removedLiteralLocalsAfterInlining": {}
-    },
-    {
-     "function": "ProcessGameRulesEvil",
      "sourceLine": 100,
      "locals": {},
      "splitLocals": {},
@@ -8574,8 +8633,17 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
+     "function": "ProcessGameRulesEvil",
+     "sourceLine": 103,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 188,
+     "sourceLine": 191,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8584,7 +8652,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 289,
+     "sourceLine": 292,
      "locals": {
       "scratchValue": {
        "name": "thing",
@@ -8602,7 +8670,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 381,
+     "sourceLine": 383,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8611,7 +8679,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 394,
+     "sourceLine": 396,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8620,7 +8688,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 407,
+     "sourceLine": 409,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8629,7 +8697,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 477,
+     "sourceLine": 479,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8637,7 +8705,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 3,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
@@ -8676,6 +8744,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -8737,6 +8807,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -8798,6 +8870,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -8825,7 +8899,7 @@
      },
      "ProcessGameRulesEvil": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 9,
        "closures": 1,
        "hero": 1,
        "cutscenes": 2,
@@ -8859,9 +8933,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
+       "sunkLocals": 11,
+       "cleanupClosureNames": 1,
        "parentheses": 4,
        "cosmetics": 0,
-       "firstAssignments": 2,
+       "firstAssignments": 1,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
@@ -8876,7 +8952,7 @@
       },
       "after": {
        "lines": 87,
-       "temporaries": 6,
+       "temporaries": 2,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 11,
@@ -8886,7 +8962,7 @@
      },
      "ProcessGameRulesGood": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 9,
        "closures": 1,
        "hero": 1,
        "cutscenes": 2,
@@ -8920,9 +8996,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
+       "sunkLocals": 11,
+       "cleanupClosureNames": 1,
        "parentheses": 6,
        "cosmetics": 0,
-       "firstAssignments": 2,
+       "firstAssignments": 1,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
@@ -8937,7 +9015,7 @@
       },
       "after": {
        "lines": 100,
-       "temporaries": 6,
+       "temporaries": 2,
        "labels": 1,
        "gotos": 2,
        "terminationChecks": 15,
@@ -8947,7 +9025,7 @@
      },
      "DoCutsceneIfRequired": {
       "rewrites": {
-       "splitLocals": 4,
+       "splitLocals": 15,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -8981,9 +9059,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 6,
        "controlAcquires": 0,
+       "sunkLocals": 24,
+       "cleanupClosureNames": 0,
        "parentheses": 4,
        "cosmetics": 0,
-       "firstAssignments": 2,
+       "firstAssignments": 0,
        "freeSuffixes": 1,
        "hoistedState": 1
       },
@@ -8997,8 +9077,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 91,
-       "temporaries": 12,
+       "lines": 90,
+       "temporaries": 1,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 4,
@@ -9042,6 +9122,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 1,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -9103,9 +9185,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 4,
+       "cleanupClosureNames": 0,
        "parentheses": 1,
        "cosmetics": 0,
-       "firstAssignments": 4,
+       "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 1
       },
@@ -9130,7 +9214,7 @@
      },
      "DoMultiplierCutscene": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 6,
        "closures": 0,
        "hero": 1,
        "cutscenes": 1,
@@ -9164,9 +9248,11 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 8,
        "controlAcquires": 0,
+       "sunkLocals": 5,
+       "cleanupClosureNames": 0,
        "parentheses": 5,
        "cosmetics": 0,
-       "firstAssignments": 2,
+       "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 1
       },
@@ -9225,6 +9311,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -9373,6 +9461,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -9434,6 +9524,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -9582,6 +9674,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -9643,6 +9737,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,

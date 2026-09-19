@@ -8,18 +8,9 @@ local SCRIPT_DEF = {
     TCE_GuardRangeLow = 3984,  -- 5
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- TC_GuardSpawnPoint.Main (retail 0x00df7bf0)
 function Main(quest, me)
-    local numberSpawned, scratchValue, scratchValue3, pOther, pThing, scratchValue5, scratchValue6
+    local scratchValue3, pOther, pThing, scratchValue6
     while not quest:GetStateBool("QuestStartScreened") do
         if not quest:NewScriptFrame(me) then return end
     end
@@ -30,8 +21,8 @@ function Main(quest, me)
             if not quest:IsCameraPosOnScreen(me:GetPos()) then
                 scratchValue3 = 0
                 repeat
-                    numberSpawned = quest:GetStateInt("NumberSpawned")
-                    scratchValue = 25 - quest:GetStateInt("InitialNumberInRegion")
+                    local numberSpawned = quest:GetStateInt("NumberSpawned")
+                    local scratchValue = 25 - quest:GetStateInt("InitialNumberInRegion")
                     if scratchValue == numberSpawned or scratchValue - numberSpawned < 0 then break end
                     if quest:IsActiveThreadTerminating() then return end
                     if quest:ReadGlobalGameData(SCRIPT_DEF.TCE_GuardRangeHighest) < (25 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
@@ -48,7 +39,7 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then return end
                         scratchValue6 = "CREATURE_BS_SHERIFF"
                     end
-                    scratchValue5 = quest:CreateCreature(scratchValue6, me:GetPos(), "IsAGuard")
+                    local scratchValue5 = quest:CreateCreature(scratchValue6, me:GetPos(), "IsAGuard")
                     quest:SetCombatNearbyBreakOffRange(scratchValue5, pThing)
                     quest:EntitySetInFaction(scratchValue5, "FACTION_MONSTERS")
                     quest:MiniMapAddMarker(scratchValue5, "HUD_ORB_RED_SMALL")

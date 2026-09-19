@@ -1,4 +1,6 @@
 -- Generated from the same native helper bodies as the quest draft.
+
+local TUTORIAL_CATEGORY_COMBAT_MULTIPLIER = 9  -- ETutorialCategory (Ego_r.pdb)
 local DoMultiplierCutscene, MakeTeamMemberComment
 function DoMultiplierCutscene(quest, me)
     local heroTeam = quest:GetStateInt("HeroTeam")
@@ -10,7 +12,7 @@ function DoMultiplierCutscene(quest, me)
         quest:RunCutscene("CS_ORCHARD_GOOD_WHISPERINTRO_GWLL", true, false)
         quest:FixMovieSequenceCamera(false)
         if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
-        if quest:DisplayTutorial(9) then
+        if quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then
             if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
             while not quest:MsgIsTutorialClickedPast() do
                 if not quest:NewScriptFrame(me) then goto LAB_00dd1e70_c1 end
@@ -37,7 +39,7 @@ function DoMultiplierCutscene(quest, me)
             quest:RunCutscene(string, true, false)
             quest:FixMovieSequenceCamera(false)
             if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-            if not quest:DisplayTutorial(9) then quest:SetStateBool("ShownCombatMultiplierTutorial", true); goto FLOW_after_lab_00dd1d98_109 end
+            if not quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then quest:SetStateBool("ShownCombatMultiplierTutorial", true); goto FLOW_after_lab_00dd1d98_109 end
             if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
             while not quest:MsgIsTutorialClickedPast() do
                 if not quest:NewScriptFrame(me) then goto LAB_00dd1e70 end
@@ -52,7 +54,7 @@ function DoMultiplierCutscene(quest, me)
             quest:RunCutscene(string, true, false)
             quest:FixMovieSequenceCamera(false)
             if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-            if quest:DisplayTutorial(9) then
+            if quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
                 while not quest:MsgIsTutorialClickedPast() do
                     if not quest:NewScriptFrame(me) then goto LAB_00dd1e70 end
@@ -71,10 +73,9 @@ function DoMultiplierCutscene(quest, me)
 end
 
 function MakeTeamMemberComment(quest, me, commentToMake, speaker, commentType)
-    local timeRemaining
     local commentTimer = quest:GetStateInt("CommentTimer")
     local hero = quest:GetHero()
-    timeRemaining = quest:GetTimer(commentTimer)
+    local timeRemaining = quest:GetTimer(commentTimer)
     local pSpeaker = speaker
     if 0 < timeRemaining then
         return false

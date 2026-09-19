@@ -3,15 +3,6 @@
 
 local helpers = require("OrchardFarmRaid.native_quest_helpers")
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- MK_OFI_GWLL_WHIS2.Main (retail 0x00dd1eb0)
 function Main(quest, me)
     if not ((not quest:GetStateBool("HeroMetWhisperBeforeFarm")) and (quest:GetStateInt("HeroTeam") == 0)) then return end

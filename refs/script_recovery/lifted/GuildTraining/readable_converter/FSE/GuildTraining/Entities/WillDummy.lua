@@ -6,22 +6,12 @@ local SCRIPT_DEF = {
     GUI_WillDummySpinTimer = 3864,  -- 3.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- WillDummy.Main (retail 0x00d43450)
 function Main(quest, me)
-    local angle, predicateResult, predicateResult8, conversationId, conversationId2, conversationId3
-    local conversationId4, willApprentice, willApprentice3, scratchValue7
+    local predicateResult, predicateResult8, scratchValue7
     local willHelpTimer = quest:GetStateInt("WillHelpTimer")
     local hero = quest:GetHero()
-    angle = me:GetAngleXY()
+    local angle = me:GetAngleXY()
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
         quest:NewScriptFrame(me)
@@ -60,13 +50,13 @@ function Main(quest, me)
         -- TODO(native): *piVar1 = *piVar1 + 1;
         if quest:GetTimer(willHelpTimer) < 1 then
             if quest:IsActiveThreadTerminating() then return end
-            willApprentice = quest:GetThingWithScriptName("WillApprentice")
+            local willApprentice = quest:GetThingWithScriptName("WillApprentice")
             if willApprentice ~= nil and willApprentice:IsAlive() then
-                conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("WillApprentice"), false, false)
+                local conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("WillApprentice"), false, false)
                 quest:AddPersonToConversation(conversationId, hero)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_GOOD_HIT", quest:GetThingWithScriptName("WillApprentice"), hero, false)
             else
-                conversationId2 = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
+                local conversationId2 = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
                 quest:AddPersonToConversation(conversationId2, hero)
                 quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILDMASTER_WILL_GOOD_HIT", quest:GetThingWithScriptName("TheRealGuildmaster"), hero, false)
             end
@@ -83,13 +73,13 @@ function Main(quest, me)
         quest:EntityPlayObjectAnimation(me, "GET_HIT", false)
         if quest:GetTimer(willHelpTimer) < 1 then
             if quest:IsActiveThreadTerminating() then return end
-            willApprentice3 = quest:GetThingWithScriptName("WillApprentice")
+            local willApprentice3 = quest:GetThingWithScriptName("WillApprentice")
             if willApprentice3 ~= nil and willApprentice3:IsAlive() then
-                conversationId3 = quest:AddNewConversation(quest:GetThingWithScriptName("WillApprentice"), false, false)
+                local conversationId3 = quest:AddNewConversation(quest:GetThingWithScriptName("WillApprentice"), false, false)
                 quest:AddPersonToConversation(conversationId3, hero)
                 quest:AddLineToConversation(conversationId3, "TEXT_QST_028_APPRENTICE_WILL_TROUBLE", quest:GetThingWithScriptName("WillApprentice"), hero, false)
             else
-                conversationId4 = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
+                local conversationId4 = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
                 quest:AddPersonToConversation(conversationId4, hero)
                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_GUILDMASTER_WILL_TROUBLE", quest:GetThingWithScriptName("TheRealGuildmaster"), hero, false)
             end

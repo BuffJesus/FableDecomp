@@ -3,6 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_MinHealth = 3800,  -- 6.0
@@ -15,9 +17,8 @@ local repeatMelee, badHit
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local timerId, predicateResult, predicateResult48, addNewConversation, theRealGuildmaster
-    local meleeThunder, meleeThunder2, meleeThunder3, scratchValue, movie, resource, timerId2
-    resource = resources:NewResource()
+    local timerId, predicateResult, predicateResult48, addNewConversation, scratchValue, movie
+    local resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -31,7 +32,7 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then goto LAB_00d5685e end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d5685e end
-    me:MoveToPosition(quest:GetThingWithScriptName("M_MeleeOpponentStand"):GetPos(), 3.0, 1, false, true)
+    me:MoveToPosition(quest:GetThingWithScriptName("M_MeleeOpponentStand"):GetPos(), 3.0, ENTITY_MOVE_RUN, false, true)
     while me:IsPerformingScriptTask() and not quest:GetStateBool("WhisperStopWalking") do
         if not quest:NewScriptFrame(me) then goto LAB_00d5685e end
     end
@@ -60,7 +61,8 @@ function Main(quest, me)
                 resources:ReleaseResource("")
                 return
             end
-            if 0.0 >= quest:GetHealth(resources:ScriptThing(resource)) then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie); goto continue_12 end
+            local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+            if 0.0 >= fret_0 then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie); goto continue_12 end
             me:Speak(hero, "TEXT_QST_028_WHISPER_MEET", GROUP_SELECT_FIRST, false, true, false)
             while me:IsPerformingScriptTask() do
                 quest:NewScriptFrame(me)
@@ -95,7 +97,7 @@ function Main(quest, me)
             quest:GiveThingBestEnemyTarget(me, hero)
             quest:EntitySetInFaction(me, "FACTION_BANDITS")
             me:SetFriendsWithEverythingFlag(me)
-            timerId2 = quest:RegisterTimer()
+            local timerId2 = quest:RegisterTimer()
             quest:SetTimer(timerId2, 15)
             while quest:GetStateInt("TutorialState") == 3 and quest:GetStateInt("GenericTutorialCounter") < 7 do
                 quest:NewScriptFrame(me)
@@ -259,7 +261,7 @@ function Main(quest, me)
                         end
                         if nil == nil then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                            theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
+                            local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
                             addNewConversation = quest:AddNewConversation(theRealGuildmaster, false, false)
                             quest:AddPersonToConversation(addNewConversation, hero)
                             quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_BLOCK", theRealGuildmaster, hero, false)
@@ -415,7 +417,7 @@ function Main(quest, me)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            meleeThunder = quest:GetThingWithScriptName("MeleeThunder")
+                            local meleeThunder = quest:GetThingWithScriptName("MeleeThunder")
                             addNewConversation = quest:AddNewConversation(meleeThunder, false, false)
                             quest:AddPersonToConversation(addNewConversation, hero)
                             quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_THUNDER_MELEE_DEFEND", meleeThunder, hero, false)
@@ -459,7 +461,7 @@ function Main(quest, me)
                                 goto FLOW_after_lab_00d57e76
                             else
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                                meleeThunder2 = quest:GetThingWithScriptName("MeleeThunder")
+                                local meleeThunder2 = quest:GetThingWithScriptName("MeleeThunder")
                                 addNewConversation = quest:AddNewConversation(meleeThunder2, false, false)
                                 quest:AddPersonToConversation(addNewConversation, hero)
                                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_THUNDER_MELEE_ATTACK", meleeThunder2, hero, false)
@@ -493,7 +495,7 @@ function Main(quest, me)
                                     goto FLOW_after_lab_00d57e76
                                 else
                                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                                    meleeThunder3 = quest:GetThingWithScriptName("MeleeThunder")
+                                    local meleeThunder3 = quest:GetThingWithScriptName("MeleeThunder")
                                     addNewConversation = quest:AddNewConversation(meleeThunder3, false, false)
                                     quest:AddPersonToConversation(addNewConversation, hero)
                                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_THUNDER_MELEE_FINISH", meleeThunder3, hero, false)

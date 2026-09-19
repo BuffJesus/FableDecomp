@@ -39,6 +39,114 @@ Worth re-testing specifically: **quit mid-quest during Guild melee training.** T
 style change, check `shippedAsDraft` in the `build_readable_unit` summary: a file whose passes raise silently
 ships as the raw draft.
 
+# CURRENT (night 7, eighth pass, 2026-09-18): the audit workflow's verified rules, and the next unit
+
+A 56-agent workflow audited the readable output against Aeon's ports along six dimensions and scouted the
+next quest family along four. **5 rules survived adversarial verification, 18 were refuted** -- and two of the
+refutations were worth more than the rules: one monkeypatched `tidy_blank_lines` and rebuilt Orchard to show
+that "blank lines are cosmetic" is false (the style pass runs TWO rounds, so round 1's blank-stripping is
+round 2's input and inserting blanks changes the *code*), and another showed that rewriting a `(end - begin)`
+vector guard to `#list` would have turned an unrunnable loop into a definite full-list `RemoveThing` pass.
+
+## Landed
+
+**`sink_hoisted_locals`** (342 measured legal sites; 881 locals actually sunk across the three units). The
+lifter hoists every slot into one comma list at the top of the function; Aeon declares a value where it is
+computed. A declaration moves onto its assignment only when: exactly one assignment, every read after it,
+every read inside that assignment's own block, no earlier closure captured the name, and **no `goto` from
+before the sink point targets a label inside the new scope** -- Lua 5.2+ rejects a jump into a local's scope.
+The audit put this inside the fold loop; that is wrong and the Lua compiler said so (`<goto continue_1> jumps
+into the scope of local 'fret_0'`). `fold_retry_loops` and `fold_control_acquires` *introduce* gotos, so the
+check has to run after every fold that can emit one. It now does, and both files compile.
+
+**`name_enum_operands`** + `tools/script_recovery/retail_enums.py`: `me:MoveToPosition(pos, 3.0, 1, ...)` is
+`ENTITY_MOVE_RUN`. Member values are read from `ghidra_out/ego_r_pdb.xml` at build time, never hardcoded, and
+every entry was checked against the FSE headers as a second source before being added. Four enums so far
+(EScriptEntityMoveType, EHeroAbility, ETutorialCategory, ECutsceneBehaviour) -- 105 named operands. A
+non-literal operand or an out-of-range number is left exactly as it was.
+
+**Three failing tests that were nothing to do with the converter**: FableForge 0.16 split the level editor
+(`forge.exe`) from the def tooling (`forge-tools.exe`), so `forge defs` vanished and the barrel/gold audits
+here died with "unexpected argument". `FORGE` is now resolved from a candidate list
+(`FableForge/build/forge-tools.exe`, then `FableForge-legacy/build/forge.exe`, then the old path) so the next
+sibling-repo rename shows up as one failed resolve rather than three cryptic audits.
+
+## The next unit: HangingTree, then HeroSouls
+
+The scouts agree, from `refs/script_recovery/native_clusters/*.json` + `rebuild/manifest/functions.tsv`
+(NOT `ghidra_out/coverage.tsv` -- it misses ~40% of functions in the script region):
+
+| family | bytes | fns | range | shape | new bindings |
+|---|---:|---:|---|---|---:|
+| **HangingTree** (Evil+Good) | 62,976 | 151 | 0x00D68F00-0x00D78500 | the proven Evil/Good pair, **abuts the guild export** | 1 + 1 residual |
+| **HeroSouls** (7 scripts) | 71,840 | 248 | 0x00D78500-0x00D89DA0 | the GuildTraining multi-sibling shape at scale | 2, **0 residual** |
+| HobbeCave + Minion | 120,256 | 339 | 0x00D8D640-0x00DAAC00 | two adjacent families, one Ghidra run | 1, 0 residual |
+| Prison (3 scripts) | 56,320 | 163 | 0x00DD2720-0x00DE0320 | `Q_PrisonRace` reuses the guild race logic | 1, 0 residual |
+
+HangingTree first: real bodies on both sides (151 fns vs Orchard's Evil+Good 14), the variant-pair shape the
+converter already ships, and its `lo` **is** GuildTraining's `hi`, so the Ghidra export extends rather than
+re-runs. None of the eight candidates is claimed by Aeon.
+
+**Registering a family is cheap and generic** -- a `UNITS` entry, a read-only Ghidra
+`ExportScriptTranslationUnit` over the range, `pdb-locals.exe`, then `guild_training_inventory.py`,
+`ghidra_typing_spec.py`, `ExportTypedTranslationUnit.java`, `quest_unit_evidence.py`. Everything downstream
+already takes `--unit`. Two findings from the readiness scout: `pdb_pattern` in `script_units.py` is **dead**
+(nothing reads it) and so is the FableWin PDB tsv; and `pdb-locals.exe` needs an **x86 `msdia140.dll`** (the
+`msdia100.dll` under Common Files fails with `class factory failed: 0x80040111`) -- one that works is
+`C:\Program Files\dotnet\sdk\10.0.301\TestHostNetFramework\x86\msdia140.dll`.
+
+**A scout warning I checked and dismissed**: `CSummonerToKill` appears in three HeroSouls scripts and
+`CTheRealGuildmaster` in both EndGame and GuildTrainingWill, which the scout called a file-name collision.
+It is not -- `package` comes from the per-SCRIPT unit JSON, so `FSE/GuildTrainingPreMelee/Entities/
+TheRealGuildmaster.lua` and `FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua` already coexist today.
+
+Gates: Oakvale draft and readable identical, smoke Orchard 0 / Guild 1 / TraderConflict 8, unit file syntax
+100%, `report_readable_style.py` for the residue numbers.
+
+# CURRENT (night 7, seventh pass, 2026-09-18): the scaffolding is out of the readable output
+
+Two things a reader sees immediately, both now gone from the converter units.
+
+**The per-entity state shim was dead in 29 of 36 files.** `inline_entity_fields` turns
+`state:GetInt("AppleMode")` into a file-level local `appleMode`, because ForgeFSE gives each entity
+instance its own sol::state. But it bailed with `if not keys` when an entity never touched its own
+fields -- so the ten-line shim stayed, declared and never used, at the top of every such file. It is
+dropped now when nothing reads it. (The seven files that really use it are all NewOakValeIntro, whose
+readable stage is hand-built and whose own passes match on `__native_entity_state` textually.)
+
+**`local function __region_LAB_00d555f3_c27()` now says what it does.** `name_cleanup_closures` names a
+hoisted epilogue from its body -- `ResumeEntities`, `DeregisterTimers`, `ReleaseControl`,
+`EndCutsceneAndRelease`, `ReleaseEverything` -- and *merges* the ones whose bodies are identical, because a
+function hoists the same one-line epilogue once per jump site and five `ResumeEntities` definitions would
+read worse than the labels did. Zero `__region_` / `__cleanup_` spellings left in the units.
+
+`test_readable_style.py` is new: that module had **no tests at all** while three of tonight's changes went
+into it. It covers the dead shim, fields-become-locals, the non-literal key that must keep the shim, the
+closure naming and merging, and the orphaned-comment guard from the fifth pass.
+
+`tools/script_recovery/report_readable_style.py` is new too -- it measures what is left, over code only
+(comments and string bodies blanked, so the `-- Main (retail 0x...)` headers and the `TODO(native)`
+markers do not inflate the count). Current state:
+
+| per 1000 lines | Guild | TraderConflict | Orchard |
+|---|---:|---:|---:|
+| `goto` / `::label::` | 104 | 108 | 42 |
+| `scratchValue` | 70 | 148 | 19 |
+| `predicateResult` | 15 | 46 | 11 |
+| raw slot name | 9 | 43 | 14 |
+| converter scaffolding | **0** | **0** | **0** |
+
+Aeon's ports have none of these. `goto` is the single biggest remaining gap and it is a restructuring
+project (1392 jumps: 23 backward, 926 forward-out-of-block-with-more-code, and **none** that reduce to a
+plain `return` -- checked). Orchard is the proof the pipeline can get there; the Guild/Trader gap is a
+diagnosis question, which is what the audit workflow is for.
+
+**Two proposals I verified and rejected today** rather than shipping: `quest:GetStateInt(..) ~= 0` is not
+redundant (those bindings return integers) and `do return end` is not verbose (Lua requires it when a
+return is followed by more statements in the same block). Both look like easy wins in a grep and are not.
+
+Gates: Oakvale draft and readable gates identical, smoke Orchard 0 / Guild 1 / TraderConflict 8.
+
 # CURRENT (night 7, sixth pass, 2026-09-18): one-operand vector calls, and the CheckFriendlyAttacks collision diagnosed
 
 `fold_local_thing_vectors` recognises a GSI call that fills a local `vector<CScriptThing>` and turns it into a

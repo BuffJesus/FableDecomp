@@ -3,29 +3,18 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- PreMeleeWhisper.Main (retail 0x00d524a0)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isDistanceBetweenThingsUnder, fret_0, scratchValue, scratchValue3, conversationId
-    local sequence, switch, p4, p5, hero4, hero5, preMeleeChatMarker, timerId, scratchValue5, movie
-    local preMeleeChatMarker2, resource
+    local scratchValue3, switch, p4, p5, hero4, hero5, scratchValue5
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(1)
     while not quest:GetStateBool("WhisperCutsceneFinished") do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    resource = resources:NewResource()
+    local resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -34,7 +23,7 @@ function Main(quest, me)
         end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    timerId = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     me:FollowThing(hero, 1.0, true)
     while not quest:GetStateBool("WhisperStopFollowing") do
@@ -46,11 +35,11 @@ function Main(quest, me)
         end
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then goto LAB_00d52e1b end
-            movie = resources:StartMovie("")
+            local movie = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             me:ClearCommands()
-            fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+            local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
             if 0.0 < fret_0 then
                 p5 = 0
                 p4 = 1
@@ -77,13 +66,13 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         end
-        preMeleeChatMarker = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
+        local preMeleeChatMarker = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
         hero4 = hero
         -- TODO(native): xStack_a0 = (float)puVar8[2] - *(float *)(pCVar6 + 0x8);
         if quest:IsDistanceBetweenThingsUnder(me, preMeleeChatMarker, 7.0) then
             hero5 = hero
-            isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, 7.0)
-            sequence = not isDistanceBetweenThingsUnder or 5 < quest:GetTimer(timerId) or ABS(resource) < 1.0 == (ABS(resource) == 1.0)
+            local isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, 7.0)
+            local sequence = not isDistanceBetweenThingsUnder or 5 < quest:GetTimer(timerId) or ABS(resource) < 1.0 == (ABS(resource) == 1.0)
             if sequence then goto LAB_00d52d56 end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
@@ -92,8 +81,8 @@ function Main(quest, me)
             end
             -- TODO(native): xStack_a0 = (float)tonumber(pvVar7);
             scratchValue5 = 0
-            preMeleeChatMarker2 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
-            scratchValue = 0 - preMeleeChatMarker2 >> 31
+            local preMeleeChatMarker2 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
+            local scratchValue = 0 - preMeleeChatMarker2 >> 31
             if (0 - preMeleeChatMarker2) / 12 + scratchValue ~= scratchValue then
                 scratchValue3 = 0
                 repeat
@@ -121,7 +110,7 @@ function Main(quest, me)
                 resources:ReleaseResource(resource)
                 return
             end
-            conversationId = quest:AddNewConversation(me, false, false)
+            local conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             quest:SetTimer(timerId, 10)
             switch = resource

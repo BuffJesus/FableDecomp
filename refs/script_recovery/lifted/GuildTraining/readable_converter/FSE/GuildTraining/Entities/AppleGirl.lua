@@ -10,10 +10,8 @@ local appleMode, currentApples, childAppleMode, haveChatted
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult6, predicateResult, ctr_64, conversationId, conversationId2
-    local conversationId3, conversationId4, conversationId5, conversationId6, conversationId7
-    local questionAnswer, conversationId8, switch, movie, resource, timerId
-    resource = resources:NewResource()
+    local predicateResult6, predicateResult, ctr_64, questionAnswer, conversationId8, switch, movie
+    local resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -26,7 +24,7 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
     appleMode = 0
-    timerId = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 15)
     currentApples = 0
     childAppleMode = false
@@ -34,7 +32,7 @@ function Main(quest, me)
     while appleMode == 0 do
         if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
         if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
-            conversationId = quest:AddNewConversation(me, false, false)
+            local conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPLEGIRL_HELP", me, hero, false)
             quest:SetTimer(timerId, 15)
@@ -47,7 +45,8 @@ function Main(quest, me)
         if not haveChatted then
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
             haveChatted = true
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+            local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+            if 0.0 < fret_0 then
                 if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
             end
@@ -76,9 +75,12 @@ function Main(quest, me)
             if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
                 childAppleMode = true
             end
-        elseif 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-            if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
+        else
+            local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+            if 0.0 < fret_00 then
+                if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
+                if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
+            end
         end
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
@@ -103,11 +105,11 @@ function Main(quest, me)
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
                 if currentApples == 0 then
-                    conversationId2 = quest:AddNewConversation(me, false, false)
+                    local conversationId2 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId2, hero)
                     quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPLEGIRL_ANY_APPLES", me, hero, false)
                 else
-                    conversationId3 = quest:AddNewConversation(me, false, false)
+                    local conversationId3 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId3, hero)
                     quest:AddLineToConversation(conversationId3, "TEXT_QST_028_APPLEGIRL_MORE_APPLES", me, hero, false)
                 end
@@ -124,15 +126,15 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
             if ctr_64 == 1 then
-                conversationId4 = quest:AddNewConversation(me, false, false)
+                local conversationId4 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId4, hero)
                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPLEGIRL_ONE_MORE_APPLE", me, hero, false)
             elseif ctr_64 == nil then
-                conversationId5 = quest:AddNewConversation(me, false, false)
+                local conversationId5 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId5, hero)
                 quest:AddLineToConversation(conversationId5, "TEXT_QST_028_APPLEGIRL_NO_MORE_APPLES", me, hero, false)
             else
-                conversationId6 = quest:AddNewConversation(me, false, false)
+                local conversationId6 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId6, hero)
                 quest:AddLineToConversation(conversationId6, "TEXT_QST_028_APPLEGIRL_MANY_MORE_APPLES", me, hero, false)
             end
@@ -159,7 +161,8 @@ function Main(quest, me)
                     movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    local fret_01 = quest:GetHealth(resources:ScriptThing(resource))
+                    if 0.0 < fret_01 then
                         if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_THANKS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3e06c end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
                     end
@@ -194,7 +197,7 @@ function Main(quest, me)
                 quest:NewScriptFrame(me)
             else
                 if quest:IsActiveThreadTerminating() then break end
-                conversationId7 = quest:AddNewConversation(me, false, false)
+                local conversationId7 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId7, hero)
                 quest:AddLineToConversation(conversationId7, "TEXT_QST_028_APPLEGIRL_THANKS_AGAIN", me, hero, false)
                 quest:SetTimer(timerId, 15)

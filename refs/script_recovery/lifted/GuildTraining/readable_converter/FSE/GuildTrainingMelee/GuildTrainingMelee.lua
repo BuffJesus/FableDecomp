@@ -1,22 +1,23 @@
 -- Readable native conversion: Q_GuildTrainingMelee. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local TUTORIAL_CATEGORY_MOVEMENT = 26  -- ETutorialCategory (Ego_r.pdb)
+
 -- Q_GuildTrainingMelee.Main (retail 0x00d55e90)
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local rivalHeroWhisperTeenApprentice, resource
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingMelee/Entities/TheRealGuildmaster")
     quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent")
     quest:AddEntityBinding("MeleeThunder", "GuildTrainingMelee/Entities/MeleeThunder")
     quest:FinalizeEntityBindings()
     quest:EntityTeleportToThing(quest:GetThingWithScriptName("TheRealGuildmaster"), quest:GetThingWithScriptName("M_MeleeTeacherStand"), false)
-    rivalHeroWhisperTeenApprentice = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("MK_GTWU_WHISPER"):GetPos(), "MeleeOpponent")
+    local rivalHeroWhisperTeenApprentice = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("MK_GTWU_WHISPER"):GetPos(), "MeleeOpponent")
     quest:EntitySetInFaction(rivalHeroWhisperTeenApprentice, "FACTION_HERO")
     if rivalHeroWhisperTeenApprentice ~= nil and not rivalHeroWhisperTeenApprentice:IsNull() then
         rivalHeroWhisperTeenApprentice:SetFriendsWithEverythingFlag(1)
     end
-    resource = resources:NewResource()
+    local resource = resources:NewResource()
     while not resources:TryAcquire(resource, rivalHeroWhisperTeenApprentice, 4) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
@@ -35,7 +36,7 @@ function Main(quest)
     quest:EndCutscene()
     quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_03", "", "")
     quest:AddLogbookStoryEntry(40)
-    if not (quest:DisplayTutorial(26) and not quest:IsActiveThreadTerminating()) then goto LAB_00d56509 end
+    if not (quest:DisplayTutorial(TUTORIAL_CATEGORY_MOVEMENT) and not quest:IsActiveThreadTerminating()) then goto LAB_00d56509 end
     while not quest:MsgIsTutorialClickedPast() do
         if not quest:NewScriptFrame() then goto LAB_00d56509 end
     end

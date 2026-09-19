@@ -1,19 +1,9 @@
 -- Readable native conversion: Artefact. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- Artefact.Main (retail 0x00dcdc50)
 function Main(quest, me)
-    local predicateResult2
-    predicateResult2 = false
+    local predicateResult2 = false
     local banditTeamCrateDrop = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     repeat
         if quest:IsActiveThreadTerminating() then return end

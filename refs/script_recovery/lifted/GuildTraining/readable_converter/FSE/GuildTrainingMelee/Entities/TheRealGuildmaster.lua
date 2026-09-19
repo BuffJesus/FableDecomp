@@ -3,6 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_MeleeGrades = 3764,  -- '070000000000904100007041000020410000a040000000000000a0c0000030c1'
@@ -16,18 +18,16 @@ local heroStanding, whisperStanding, whisperEarly, whisperLate
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, fret_04, fret_06, fret_07, conversationId, scratchValue9, index, switch
-    local getActiveQuestName, meleeOpponent, rivalHeroThunder, this_01, resource2, resource3
-    local scratchValue11, actorMap, resource4, resource5, actorMap2, infoCounter, resource6, timerId
-    local timerId2, movie, movie2, movie3, actorMap3, actorMap4, resource7, resource8, resource9
-    local actorMap5, movie4, resource, resource11, scratchValue
-    local function __cleanup_LAB_00d5a922()
+    local predicateResult, fret_06, fret_07, conversationId, scratchValue9, index
+    local getActiveQuestName, meleeOpponent, this_01, scratchValue11, resource4, infoCounter
+    local resource6, timerId, timerId2, resource, scratchValue
+    local function ReleaseEverything()
         resources:ReleaseResource(resource)
         quest:DeregisterTimer(timerId)
         quest:DeregisterTimer(timerId2)
         resources:ReleaseResource(resource6)
     end
-    local function __cleanup_LAB_00d5a9b5()
+    local function ReleaseEverything2()
         quest:DeregisterTimer(timerId)
         quest:DeregisterTimer(timerId2)
         resources:ReleaseResource(resource6)
@@ -135,7 +135,7 @@ function Main(quest, me)
                 quest:DeregisterTimer(timerId2)
                 goto LAB_00d5a8d9
             end
-            resource8 = resources:NewResource()
+            local resource8 = resources:NewResource()
             while not resources:TryAcquire(resource8, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
@@ -151,11 +151,11 @@ function Main(quest, me)
                 quest:DeregisterTimer(timerId2)
                 goto LAB_00d5a8d9
             end
-            actorMap3 = resources:NewActorMap()
+            local actorMap3 = resources:NewActorMap()
             resources:SetActor(actorMap3, "HERO", resource4)
             resources:SetActor(actorMap3, "TEACHER", resource6)
             resources:SetActor(actorMap3, "WHISPER", resource8)
-            movie2 = resources:StartMovie("")
+            local movie2 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
@@ -173,7 +173,7 @@ function Main(quest, me)
             timerId = quest:RegisterTimer()
             quest:SetTimer(timerId, 15)
             while quest:GetStateInt("GenericTutorialCounter") < 7 do
-                if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5a9b5(); return end
+                if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
                 if quest:GetTimer(timerId) < 1 then
                     conversationId = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId, hero)
@@ -182,23 +182,23 @@ function Main(quest, me)
                 end
                 quest:UpdateQuestInfoCounter(infoCounter, quest:GetStateInt("GenericTutorialCounter"), -1)
                 if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
-                    if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5a9b5(); return end
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
                     conversationId = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId, hero)
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_MAZE_HEAL_HERO", me, hero, false)
                     quest:ChangeHeroHealthBy(1000.0, true, false)
                 end
             end
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5a9b5(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
             quest:ClearAllRumbles()
             quest:DisplayQuestInfo(false)
             quest:RemoveQuestInfoElement(infoCounter)
             resource = resources:NewResource()
             while not resources:TryAcquire(resource, hero, 4) do
-                if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5a922(); return end
+                if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
             end
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5a922(); return end
-            resource7 = resources:NewResource()
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+            local resource7 = resources:NewResource()
             while not resources:TryAcquire(resource7, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a916
@@ -206,13 +206,13 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a916: (native jump target)
                 resources:ReleaseResource(resource7)
-                __cleanup_LAB_00d5a922(); return
+                ReleaseEverything(); return
             end
-            actorMap4 = resources:NewActorMap()
+            local actorMap4 = resources:NewActorMap()
             resources:SetActor(actorMap4, "HERO", resource)
             resources:SetActor(actorMap4, "TEACHER", resource6)
             resources:SetActor(actorMap4, "WHISPER", resource7)
-            movie = resources:StartMovie("")
+            local movie = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
@@ -228,42 +228,42 @@ function Main(quest, me)
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayGameInfo("TEXT_QST_028_MELEE_INSTRUCTIONS_BLOCK_PC")
                     while not quest:MsgIsGameInfoClickedPast() do
-                        if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5a9b5(); return end
+                        if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
                     end
                     if not quest:IsActiveThreadTerminating() then
                         -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_f4);
                         goto LAB_00d5941c
                     end
                 end
-                __cleanup_LAB_00d5a9b5(); return
+                ReleaseEverything2(); return
             end
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5a9b5(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
             quest:DisplayGameInfo("TEXT_QST_028_MELEE_INSTRUCTIONS_BLOCK")
             while not quest:MsgIsGameInfoClickedPast() do
-                if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5a9b5(); return end
+                if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
             end
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5a9b5(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
             ::LAB_00d5941c::
             quest:SetStateInt("TutorialState", 4)
             infoCounter = quest:AddQuestInfoCounter("HUD_WHISPER_ICON", 5, 1.0)
             quest:DisplayQuestInfo(true)
             while quest:GetStateInt("GenericTutorialCounter") < 5 do
-                if not quest:NewScriptFrame(me) then __cleanup_LAB_00d5a9b5(); return end
+                if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
                 quest:UpdateQuestInfoCounter(infoCounter, quest:GetStateInt("GenericTutorialCounter"), -1)
                 if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
-                    if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5a9b5(); return end
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
                     conversationId = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId, hero)
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_MAZE_HEAL_HERO", me, hero, false)
                     quest:ChangeHeroHealthBy(1000.0, true, false)
                 end
             end
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d5a9b5(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
             quest:ClearAllRumbles()
             quest:SetStateInt("TutorialState", 5)
-            rivalHeroThunder = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", quest:GetThingWithScriptName("SkillApprenticeMarker"):GetPos(), "MeleeThunder")
+            local rivalHeroThunder = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", quest:GetThingWithScriptName("SkillApprenticeMarker"):GetPos(), "MeleeThunder")
             quest:EntitySetAppearanceMorphSeed(rivalHeroThunder, 1)
-            resource5 = resources:NewResource()
+            local resource5 = resources:NewResource()
             while not resources:TryAcquire(resource5, rivalHeroThunder, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
@@ -271,9 +271,9 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then
                 -- LAB_00d5a9a7: (native jump target)
                 resources:ReleaseResource(resource5)
-                __cleanup_LAB_00d5a9b5(); return
+                ReleaseEverything2(); return
             end
-            resource11 = resources:NewResource()
+            local resource11 = resources:NewResource()
             while not resources:TryAcquire(resource11, hero, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a93f
@@ -285,7 +285,7 @@ function Main(quest, me)
                 resources:ReleaseResource(this_01)
                 -- TODO(native): goto LAB_00d5a9a7
             end
-            resource9 = resources:NewResource()
+            local resource9 = resources:NewResource()
             while not resources:TryAcquire(resource9, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a933
@@ -295,12 +295,12 @@ function Main(quest, me)
                 resources:ReleaseResource(resource9)
                 -- TODO(native): goto LAB_00d5a93f
             end
-            actorMap5 = resources:NewActorMap()
+            local actorMap5 = resources:NewActorMap()
             resources:SetActor(actorMap5, "HERO", resource11)
             resources:SetActor(actorMap5, "TEACHER", resource6)
             resources:SetActor(actorMap5, "THUNDER", resource5)
             resources:SetActor(actorMap5, "WHISPER", resource9)
-            movie3 = resources:StartMovie("")
+            local movie3 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
@@ -323,7 +323,7 @@ function Main(quest, me)
             while heroStanding and whisperStanding do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a9a7
-                fret_04 = quest:GetHealth(hero)
+                local fret_04 = quest:GetHealth(hero)
                 if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) <= fret_04 then
                     if quest:GetHealth(quest:GetThingWithScriptName("MeleeOpponent")) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                         if not quest:IsActiveThreadTerminating() then
@@ -361,7 +361,7 @@ function Main(quest, me)
             quest:ResetPlayerCreatureOnlyTarget()
             quest:SetStateInt("TutorialState", 7)
             quest:DisplayQuestInfo(false)
-            resource3 = resources:NewResource()
+            local resource3 = resources:NewResource()
             while not resources:TryAcquire(resource3, hero, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a997
@@ -371,7 +371,7 @@ function Main(quest, me)
                 -- TODO(native): this_01 = (CScriptGameResourceObjectMovieBase *)xStack_1d0;
                 -- TODO(native): goto LAB_00d5a99e
             end
-            resource2 = resources:NewResource()
+            local resource2 = resources:NewResource()
             while not resources:TryAcquire(resource2, meleeOpponent, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5a98b
@@ -382,13 +382,13 @@ function Main(quest, me)
                 -- TODO(native): goto LAB_00d5a997
             end
             quest:RemoveQuestInfoElement(infoCounter)
-            actorMap2 = resources:NewActorMap()
+            local actorMap2 = resources:NewActorMap()
             resources:SetActor(actorMap2, "HERO", resource3)
             resources:SetActor(actorMap2, "TEACHER", resource6)
             resources:SetActor(actorMap2, "THUNDER", resource5)
             resources:SetActor(actorMap2, "WHISPER", resource2)
-            actorMap = resources:NewStringMap()
-            switch = conversationId
+            local actorMap = resources:NewStringMap()
+            local switch = conversationId
             repeat
                 if switch == 0 then
                     resources:SetString(actorMap, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_APLUS")
@@ -416,7 +416,7 @@ function Main(quest, me)
                 end
             until true
             ::FLOW_native_label_1::
-            movie4 = resources:StartMovie("")
+            local movie4 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
@@ -488,7 +488,7 @@ function Main(quest, me)
         if not quest:IsActiveThreadTerminating() then
             quest:SetMasterGameState("HeroTakingGuildTest", false)
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeOpponent"), false, true)
-            me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 3.0, 0, false, true)
+            me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 3.0, ENTITY_MOVE_WALK, false, true)
             quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("MeleeApprenticeMarker"):GetPos(), "MeleeApprentice")
             quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("CombatApprenticeMarker"):GetPos(), "CombatApprentice")
             quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)

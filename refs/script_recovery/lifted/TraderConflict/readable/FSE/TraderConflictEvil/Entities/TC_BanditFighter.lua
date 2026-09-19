@@ -6,9 +6,8 @@ local hitWarning
 
 -- TC_BanditFighter.Main (retail 0x00df8970)
 function Main(quest, me)
-    local scratchValue, scratchValue2, CVar6_b0, scratchValue3, scratchValue4, scratchValue5
-    local predicateResult, predicateResult4, predicateResult6, playerEngaged, conversationID
-    local conversationId, scratchValue11
+    local scratchValue, scratchValue2, CVar6_b0, scratchValue3, scratchValue5, predicateResult
+    local predicateResult4, predicateResult6, playerEngaged, scratchValue11
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
@@ -61,7 +60,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end
             quest:ModifyThingHealth(me, 100.0, false)
         else
-            scratchValue4 = scratchValue | 16
+            local scratchValue4 = scratchValue | 16
             if me:MsgIsHitByHero() then
                 predicateResult4 = true
                 scratchValue = scratchValue4
@@ -135,7 +134,7 @@ function Main(quest, me)
         end
         if predicateResult6 then
             if not hitWarning then
-                conversationID = quest:AddNewConversation(me, false, false)
+                local conversationID = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationID, hero)
                 quest:AddLineToConversation(conversationID, "TEXT_QST_B12_BANDIT_ON_HIT_10", me, hero, false)
                 hitWarning = true
@@ -149,7 +148,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end
             if math.random(0, 32767) % 5 == 0 then
                 if quest:IsActiveThreadTerminating() then return end
-                conversationId = quest:AddNewConversation(me, false, false)
+                local conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, hero)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_B12_BANDIT_SEEKING_REVENGE_10", me, hero, false)
             end

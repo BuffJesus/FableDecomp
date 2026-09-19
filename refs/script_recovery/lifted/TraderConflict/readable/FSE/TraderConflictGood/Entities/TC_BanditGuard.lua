@@ -1,19 +1,10 @@
 -- Readable native conversion: TC_BanditGuard. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- TC_BanditGuard.Main (retail 0x00dfb320)
 function Main(quest, me)
     local hero = quest:GetHero()
-    local predicateResult, predicateResult3, conversationId, conversationId2, conversationId3
+    local predicateResult, predicateResult3
     if not quest:NewScriptFrame(me) then return end
     if not me:AcquireControl(2) then goto LAB_00dfb974 end
     if quest:IsActiveThreadTerminating() then goto LAB_00dfb974 end
@@ -47,7 +38,7 @@ function Main(quest, me)
     end
     ::FLOW_after_lab_00dfb588::
     if predicateResult then
-        conversationId = quest:AddNewConversation(me, false, false)
+        local conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
         quest:AddLineToConversation(conversationId, "TEXT_QST_B11_BANDIT_ATTACK_WEARING_BANDIT_COSTUME_10", me, hero, false)
         quest:SetStateBool("CommentedOnBanditCostume", true)
@@ -71,13 +62,13 @@ function Main(quest, me)
         end
         ::FLOW_after_lab_00dfb79f::
         if predicateResult3 then
-            conversationId2 = quest:AddNewConversation(me, false, false)
+            local conversationId2 = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId2, hero)
             quest:AddLineToConversation(conversationId2, "TEXT_QST_B11_BANDIT_ATTACK_WEARING_PART_BANDIT_COSTUME_10", me, hero, false)
             quest:SetStateBool("CommentedOnBanditCostume", true)
             goto FLOW_after_lab_00dfb630
         end
-        conversationId3 = quest:AddNewConversation(me, false, false)
+        local conversationId3 = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId3, hero)
         if quest:GetStateInt("BanditSecurityLinesSaid") == 0 then
             quest:AddLineToConversation(conversationId3, "TEXT_QST_B11_BANDIT_SECURITY_ATTACK_HERO_10", me, hero, false)

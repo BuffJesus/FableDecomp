@@ -1,15 +1,6 @@
 -- Readable native conversion: KillBird. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- KillBird.Main (retail 0x00d43190)
 function Main(quest, me)
     if not quest:NewScriptFrame(me) then return end

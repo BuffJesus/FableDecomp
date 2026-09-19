@@ -3,6 +3,10 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
+
+local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
+
 -- per-entity fields (native class members; one Lua state per entity instance)
 local willWoodsChatDone, waitingForFight
 
@@ -10,14 +14,13 @@ local willWoodsChatDone, waitingForFight
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isDistanceBetweenThingsOver, predicateResult4, predicateResult, predicateResult33, movie
-    local position, meleeApprenticeMarker, movie2, movie3, movie4, movie5, movie6, resource
-    local function __cleanup_LAB_00d419fe()
+    local predicateResult4, movie, position, movie6, resource
+    local function ReleaseEverything()
         local movie = movie6
         resources:DestroyMovie(movie)
         resources:ReleaseResource(resource)
     end
-    local function __cleanup_LAB_00d41a02()
+    local function ReleaseEverything2()
         resources:DestroyMovie(movie)
         resources:ReleaseResource(resource)
     end
@@ -35,7 +38,7 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAllowBossPhaseChanges(me, false)
     me:SetFriendsWithEverythingFlag(1)
-    meleeApprenticeMarker = quest:GetThingWithScriptName("MeleeApprenticeMarker")
+    local meleeApprenticeMarker = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     predicateResult4 = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult4 then
@@ -82,7 +85,7 @@ function Main(quest, me)
             me:ClearCommands()
             quest:EntitySheatheWeapons(me, false)
         end
-        predicateResult = quest:IsActiveThreadTerminating()
+        local predicateResult = quest:IsActiveThreadTerminating()
         if quest:IsQuestActive("Q_GuildTrainingWoodsWill") then
             if predicateResult then
                 resources:ReleaseResource(resource)
@@ -90,13 +93,13 @@ function Main(quest, me)
             end
             if not willWoodsChatDone then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos(), 3.0, 1, false, true)
+                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos(), 3.0, ENTITY_MOVE_RUN, false, true)
                 willWoodsChatDone = true
             else
                 if not me:IsTalkedToByHero() then quest:NewScriptFrame(me); predicateResult4 = quest:IsActiveThreadTerminating(); goto continue_6 end
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 me:ClearCommands()
-                movie3 = resources:StartMovie("")
+                local movie3 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -119,7 +122,7 @@ function Main(quest, me)
                 end
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie3)
-                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos(), 3.0, 1, false, true)
+                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos(), 3.0, ENTITY_MOVE_RUN, false, true)
             end
         else
             if predicateResult then
@@ -131,7 +134,7 @@ function Main(quest, me)
                 me:ClearCommands()
                 if quest:IsQuestActive("Q_GuildTrainingSkill") then
                     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                    movie5 = resources:StartMovie("")
+                    local movie5 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -141,13 +144,13 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 movie = movie5
-                                __cleanup_LAB_00d41a02(); do return end
+                                ReleaseEverything2(); do return end
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             movie = movie5
-                            __cleanup_LAB_00d41a02(); return
+                            ReleaseEverything2(); return
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
@@ -156,7 +159,7 @@ function Main(quest, me)
                 else
                     if quest:IsQuestActive("Q_GuildTrainingWill") then
                         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                        movie4 = resources:StartMovie("")
+                        local movie4 = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -166,13 +169,13 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     movie = movie4
-                                    __cleanup_LAB_00d41a02(); do return end
+                                    ReleaseEverything2(); do return end
                                 end
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 movie = movie4
-                                __cleanup_LAB_00d41a02(); return
+                                ReleaseEverything2(); return
                             end
                         end
                         quest:PauseAllNonScriptedEntities(false)
@@ -182,13 +185,13 @@ function Main(quest, me)
                     end
                     if quest:IsQuestActive("Q_GuildTrainingDeparture") then
                         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                        predicateResult33 = quest:IsActiveThreadTerminating()
+                        local predicateResult33 = quest:IsActiveThreadTerminating()
                         if quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
                             if predicateResult33 then
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            movie2 = resources:StartMovie("")
+                            local movie2 = resources:StartMovie("")
                             quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -206,7 +209,7 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     movie = movie2
-                                    __cleanup_LAB_00d41a02()
+                                    ReleaseEverything2()
                                     return
                                 end
                             end
@@ -226,12 +229,12 @@ function Main(quest, me)
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        __cleanup_LAB_00d419fe(); do return end
+                                        ReleaseEverything(); do return end
                                     end
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    __cleanup_LAB_00d419fe()
+                                    ReleaseEverything()
                                     return
                                 end
                             end
@@ -246,9 +249,9 @@ function Main(quest, me)
                 if meleeApprenticeMarker ~= nil and not meleeApprenticeMarker:IsNull() then
                     position = meleeApprenticeMarker:GetPos()
                 end
-                me:MoveToPosition(position, 3.0, 1, false, true)
+                me:MoveToPosition(position, 3.0, ENTITY_MOVE_RUN, false, true)
             end
-            isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, meleeApprenticeMarker, 4.0) and not me:IsPerformingScriptTask()
+            local isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, meleeApprenticeMarker, 4.0) and not me:IsPerformingScriptTask()
             if isDistanceBetweenThingsOver then
                 if quest:IsActiveThreadTerminating() then
                     -- LAB_00d41a07: (native jump target)
@@ -258,7 +261,7 @@ function Main(quest, me)
                 if meleeApprenticeMarker ~= nil and not meleeApprenticeMarker:IsNull() then
                     position = meleeApprenticeMarker:GetPos()
                 end
-                me:MoveToPosition(position, 3.0, 1, false, true)
+                me:MoveToPosition(position, 3.0, ENTITY_MOVE_RUN, false, true)
             end
         end
         quest:NewScriptFrame(me)

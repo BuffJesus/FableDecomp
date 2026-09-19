@@ -3,28 +3,20 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
+local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
 -- PreMeleeMaze.Main (retail 0x00d43db0)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isDistanceBetweenThingsOver, predicateResult, predicateResult5, predicateResult6
-    local msgIsHitByHero, predicateResult13, fret_0, fret_00, p0, preMeleeMazeTargetMarker, this_00
-    local movie, movie2, movie3, resource
+    local predicateResult, predicateResult5, predicateResult6, predicateResult13, fret_0, fret_00
+    local p0, this_00, movie, movie3
     predicateResult13 = false
     predicateResult = false
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(me)
-    preMeleeMazeTargetMarker = quest:GetThingWithScriptName("PreMeleeMazeTargetMarker")
-    resource = resources:NewResource()
+    local preMeleeMazeTargetMarker = quest:GetThingWithScriptName("PreMeleeMazeTargetMarker")
+    local resource = resources:NewResource()
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -52,13 +44,13 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
         end
-        isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, preMeleeMazeTargetMarker, 4.0) and not me:IsPerformingScriptTask()
+        local isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, preMeleeMazeTargetMarker, 4.0) and not me:IsPerformingScriptTask()
         if isDistanceBetweenThingsOver then
             if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
             if preMeleeMazeTargetMarker ~= nil and not preMeleeMazeTargetMarker:IsNull() then
                 p0 = preMeleeMazeTargetMarker:GetPos()
             end
-            me:MoveToPosition(p0, 3.0, 0, false, true)
+            me:MoveToPosition(p0, 3.0, ENTITY_MOVE_WALK, false, true)
         end
         if me:IsTalkedToByHero() then break end
         if me:MsgIsHitByHero() then
@@ -120,13 +112,13 @@ function Main(quest, me)
         -- LAB_00d441a3: (native jump target)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie3)
-        msgIsHitByHero = me:MsgIsHitByHero()
+        local msgIsHitByHero = me:MsgIsHitByHero()
         predicateResult = predicateResult and false
         predicateResult13 = predicateResult13 and false
         if msgIsHitByHero then
             if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
             me:ClearCommands()
-            movie2 = resources:StartMovie("")
+            local movie2 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             fret_00 = quest:GetHealth(resources:ScriptThing(resource))

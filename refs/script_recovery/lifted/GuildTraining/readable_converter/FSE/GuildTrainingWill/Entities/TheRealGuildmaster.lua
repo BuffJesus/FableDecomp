@@ -3,54 +3,33 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
+
+local HERO_ABILITY_LIGHTNING_SPELL = 11  -- EHeroAbility (Ego_r.pdb)
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_WillGrades = 3788,  -- '070000000000304100002041000000410000c040000040400000803f00000000'
     GUI_WillTimer = 3848,  -- 30.0
 }
 
-local state = {}  -- per-entity script state (__native_entity_state)
-do
-    local fields = {}
-    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do
-        state["Get" .. kind] = function(_, name) return fields[name] end
-        state["Set" .. kind] = function(_, name, value) fields[name] = value end
-    end
-end
-
 -- TheRealGuildmaster.Main (retail 0x00d5e0c0)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local timerId3, isActiveThreadTerminating, isTalkedToByHero, scratchValue4, ctr_22c, dist
-    local tutorialState, addQuestInfoCounter, scratchValue8, questionAnswer, questionAnswer2
-    local questionAnswer3, questionAnswer4, questionAnswer5, questionAnswer6, conversationId
-    local conversationId2, scratchValue, index, actorMap, willApprentice, willApprentice2
-    local willApprentice3, willApprentice4, willApprentice5, grade, guildEvilApprenticeMale
-    local guildEvilApprenticeMale2, meleeApprentice, meleeApprentice7, movie, resource, actorMap2
-    local movie2, infoElement, resource2, movie3, resource3, actorMap3, resource4, timerId6
-    local timerId7, timerId8, timerId9, timerId, resource5, resource6, actorMap4
-    local function __region_LAB_00d61ad8_c22()
+    local timerId3, isTalkedToByHero, scratchValue4, ctr_22c, dist, tutorialState, scratchValue8
+    local questionAnswer, questionAnswer2, questionAnswer3, questionAnswer4, questionAnswer5
+    local questionAnswer6, conversationId, scratchValue, index, willApprentice5, grade, resource
+    local actorMap2, movie2, infoElement, resource2, resource3, actorMap3, resource4, timerId6
+    local timerId8, timerId9, timerId, resource6
+    local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(resource2)
     end
-    local function __cleanup_LAB_00d61b0a()
+    local function ReleaseEverything2()
         quest:DeregisterTimer(timerId)
         quest:DeregisterTimer(timerId9)
         resources:ReleaseResource(resource4)
-    end
-    local function __cleanup_LAB_00d61b0a_c22()
-        quest:DeregisterTimer(timerId)
-        quest:DeregisterTimer(timerId9)
-        resources:ReleaseResource(resource4)
-    end
-    local function __region_LAB_00d61b44_c22()
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(resource2)
-    end
-    local function __region_LAB_00d61b53_c22()
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(resource2)
     end
     resource4 = resources:NewResource()
     while not resources:TryAcquire(resource4, me, 4) do
@@ -78,7 +57,7 @@ function Main(quest, me)
             resources:ReleaseResource(resource4)
             return
         end
-        me:MoveToPosition(quest:GetThingWithScriptName("M_WillTeacherStand"):GetPos(), 3.0, 0, false, true)
+        me:MoveToPosition(quest:GetThingWithScriptName("M_WillTeacherStand"):GetPos(), 3.0, ENTITY_MOVE_WALK, false, true)
         while quest:GetStateInt("TutorialState") == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d61b69 end
             if me:IsTalkedToByHero() then
@@ -97,7 +76,7 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(resource2)
-                                __cleanup_LAB_00d61b0a(); do return end
+                                ReleaseEverything2(); do return end
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
@@ -131,16 +110,16 @@ function Main(quest, me)
             repeat
                 if not quest:NewScriptFrame(me) then goto LAB_00d61b69 end
                 quest:SetStateInt("TutorialState", 2)
-                resource5 = resources:NewResource()
+                local resource5 = resources:NewResource()
                 while not resources:TryAcquire(resource5, hero, 4) do
                     if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource5); goto LAB_00d61b69 end
                 end
-                actorMap4 = resources:NewActorMap()
+                local actorMap4 = resources:NewActorMap()
                 resources:SetActor(actorMap4, "HERO", resource5)
                 resources:SetActor(actorMap4, "TEACHER", resource4)
-                quest:GiveHeroAbility(11, true)
+                quest:GiveHeroAbility(HERO_ABILITY_LIGHTNING_SPELL, true)
                 quest:SetMasterGameState("WillTrainingStarted", true)
-                movie3 = resources:StartMovie("")
+                local movie3 = resources:StartMovie("")
                 quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
@@ -200,10 +179,10 @@ function Main(quest, me)
                             quest:DeregisterTimer(timerId8)
                             goto LAB_00d61b69
                         end
-                        actorMap = resources:NewActorMap()
+                        local actorMap = resources:NewActorMap()
                         resources:SetActor(actorMap, "HERO", resource6)
                         resources:SetActor(actorMap, "TEACHER", resource4)
-                        movie = resources:StartMovie("")
+                        local movie = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:FixMovieSequenceCamera(true)
                         resources:RunMacro("CS_GUILD_WILL_TEST", actorMap, false, true)
@@ -265,13 +244,13 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d6138b end
                     ::continue_8::
                 end
-                timerId7 = quest:RegisterTimer()
+                local timerId7 = quest:RegisterTimer()
                 quest:SetTimer(timerId7, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillTimer))))
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
                 timerId6 = quest:RegisterTimer()
                 quest:SetTimer(ctr_22c, 0)
-                addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+                local addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
                 infoElement = quest:AddQuestInfoTimer(timerId6, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 scratchValue4 = 0
@@ -289,7 +268,7 @@ function Main(quest, me)
                     end
                     if quest:GetHeroWillEnergy() == 0 and quest:GetTimer(timerId) < 1 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d61379 end
-                        conversationId2 = quest:AddNewConversation(me, false, false)
+                        local conversationId2 = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(conversationId2, hero)
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILDMASTER_WILL_NO_WILL", me, hero, false)
                         quest:SetTimer(ctr_22c, 8)
@@ -401,7 +380,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d61578 end
                     if questionAnswer == 1 then
                         quest:SetMasterGameState("MeleeApprenticeNeededForCutscene", true)
-                        meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
+                        local meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
                         resource2 = resources:NewResource()
                         while not resources:TryAcquire(resource2, meleeApprentice, 4) do
                             quest:NewScriptFrame(me)
@@ -440,7 +419,7 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             goto FLOW_after_lab_00d61578
                         end
-                        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+                        local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
                         if questionAnswer2 == 1 then
                             if isActiveThreadTerminating then
                                 resources:ReleaseResource(resource2)
@@ -499,7 +478,7 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d6101c end
                     if questionAnswer3 == 1 then
                         quest:SetMasterGameState("MeleeApprenticeNeededForCutscene", true)
-                        meleeApprentice7 = quest:GetThingWithScriptName("MeleeApprentice")
+                        local meleeApprentice7 = quest:GetThingWithScriptName("MeleeApprentice")
                         resource = resources:NewResource()
                         while not resources:TryAcquire(resource, meleeApprentice7, 4) do
                             quest:NewScriptFrame(me)
@@ -545,7 +524,7 @@ function Main(quest, me)
                                 quest:ChangeHeroHealthBy(1000.0, true, false)
                                 quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
                                 quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", quest:GetThingWithScriptName("MeleeApprenticeMarker"):GetPos(), "MeleeApprentice")
-                                willApprentice3 = quest:GetThingWithScriptName("WillApprentice")
+                                local willApprentice3 = quest:GetThingWithScriptName("WillApprentice")
                                 timerId3 = willApprentice3 ~= nil and willApprentice3:IsAlive()
                                 if not timerId3 then
                                     if not quest:IsActiveThreadTerminating() then
@@ -608,11 +587,11 @@ function Main(quest, me)
                 quest:SetMasterGameState("HeroTakingGuildTest", false)
                 quest:SetStateInt("TutorialState", 4)
                 quest:SetStateBool("TestFinished", true)
-                me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, 0, resource4 ~= 0, true)
-                willApprentice = quest:GetThingWithScriptName("WillApprentice")
+                me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, ENTITY_MOVE_WALK, resource4 ~= 0, true)
+                local willApprentice = quest:GetThingWithScriptName("WillApprentice")
                 if not (willApprentice ~= nil and willApprentice:IsAlive()) then
-                    if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d61b0a_c22(); return end
-                    guildEvilApprenticeMale = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("WillApprenticeMarker"):GetPos(), "WillApprentice")
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+                    local guildEvilApprenticeMale = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("WillApprenticeMarker"):GetPos(), "WillApprentice")
                     if guildEvilApprenticeMale ~= nil then
                         guildEvilApprenticeMale:SetToKillOnLevelUnload(0)
                     end
@@ -630,7 +609,7 @@ function Main(quest, me)
                             timerId3 = false
                         end
                         if timerId3 then
-                            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d61b0a_c22(); return end
+                            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
                             quest:SetStateBool("BanditsDefeated", true)
                         end
                         if not me:IsTalkedToByHero() then goto LAB_00d61af3 end
@@ -642,7 +621,7 @@ function Main(quest, me)
                             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                             questionAnswer5 = quest:MsgIsQuestionAnsweredYesOrNo()
                             while questionAnswer5 < 0 do
-                                if not quest:NewScriptFrame(me) then __region_LAB_00d61b53_c22(); goto LAB_00d61b69 end
+                                if not quest:NewScriptFrame(me) then ReleaseEverything(); goto LAB_00d61b69 end
                                 questionAnswer5 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                             if quest:IsActiveThreadTerminating() then
@@ -656,7 +635,7 @@ function Main(quest, me)
                                         quest:PlayAVIMovie("Data\\\\Video\\\\2_guild_split_2_comp.xmv")
                                         quest:ConfiscateAllHeroWeapons()
                                         if quest:IsQuestActive("Q_GuildTrainingWoodsWill") then
-                                            if quest:IsActiveThreadTerminating() then __region_LAB_00d61b44_c22(); goto LAB_00d61b69 end
+                                            if quest:IsActiveThreadTerminating() then ReleaseEverything(); goto LAB_00d61b69 end
                                             quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
                                         end
                                         quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
@@ -666,19 +645,19 @@ function Main(quest, me)
                                         quest:ChangeHeroHealthBy(1000.0, true, false)
                                         quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
                                         quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", quest:GetThingWithScriptName("MeleeApprenticeMarker"):GetPos(), "MeleeApprentice")
-                                        __region_LAB_00d61ad8_c22()
+                                        ReleaseEverything()
                                         goto LAB_00d61af3
                                     end
                                 elseif not timerId3 then
                                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
                                         me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO", GROUP_SELECT_FIRST, false, false, 0.0 ~= 0)
                                         while me:IsPerformingScriptTask() do
-                                            if not quest:NewScriptFrame(me) then __region_LAB_00d61b44_c22(); goto LAB_00d61b69 end
+                                            if not quest:NewScriptFrame(me) then ReleaseEverything(); goto LAB_00d61b69 end
                                         end
-                                        if quest:IsActiveThreadTerminating() then __region_LAB_00d61b53_c22(); goto LAB_00d61b69 end
+                                        if quest:IsActiveThreadTerminating() then ReleaseEverything(); goto LAB_00d61b69 end
                                     end
-                                    me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, 0, true)
-                                    __region_LAB_00d61ad8_c22(); goto LAB_00d61af3
+                                    me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, ENTITY_MOVE_WALK, true)
+                                    ReleaseEverything(); goto LAB_00d61af3
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
                             end
@@ -686,7 +665,7 @@ function Main(quest, me)
                             goto LAB_00d61b69
                         end
                     end
-                    __cleanup_LAB_00d61b0a_c22(); return
+                    ReleaseEverything2(); return
                 end
                 if not quest:IsActiveThreadTerminating() then
                     quest:ActivateQuest("Q_GuildTrainingWoodsWill")
@@ -703,11 +682,11 @@ function Main(quest, me)
         quest:SetMasterGameState("HeroTakingGuildTest", false)
         quest:SetStateInt("TutorialState", 4)
         quest:SetStateBool("TestFinished", true)
-        me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, 0, resource4 ~= 0, true)
-        willApprentice2 = quest:GetThingWithScriptName("WillApprentice")
+        me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, ENTITY_MOVE_WALK, resource4 ~= 0, true)
+        local willApprentice2 = quest:GetThingWithScriptName("WillApprentice")
         if not (willApprentice2 ~= nil and willApprentice2:IsAlive()) then
-            if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d61b0a(); return end
-            guildEvilApprenticeMale2 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("WillApprenticeMarker"):GetPos(), "WillApprentice")
+            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+            local guildEvilApprenticeMale2 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("WillApprenticeMarker"):GetPos(), "WillApprentice")
             if guildEvilApprenticeMale2 ~= nil then
                 guildEvilApprenticeMale2:SetToKillOnLevelUnload(0)
             end
@@ -790,7 +769,7 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d61b53 end
                     end
-                    me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, 0, true)
+                    me:MoveToPosition(quest:GetThingWithScriptName("M_GuildmasterMarker"):GetPos(), 1.0, ENTITY_MOVE_WALK, true)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(resource2)
                     goto LAB_00d61af3
@@ -850,7 +829,7 @@ function Main(quest, me)
         quest:ChangeHeroHealthBy(1000.0, true, false)
         quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
         quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", quest:GetThingWithScriptName("MeleeApprenticeMarker"):GetPos(), "MeleeApprentice")
-        willApprentice4 = quest:GetThingWithScriptName("WillApprentice")
+        local willApprentice4 = quest:GetThingWithScriptName("WillApprentice")
         if willApprentice4 ~= nil and willApprentice4:IsAlive() then
             -- LAB_00d6144d: (native jump target)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06", "", "")

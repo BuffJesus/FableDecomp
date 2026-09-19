@@ -10,8 +10,8 @@ local SCRIPT_DEF = {
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, ctr_84, ctr_88, scratchValue2, scratchValue3, conversationId, scratchValue6
-    local scratchValue7, willWhisper, scratchValue9, resource, resource2, willBandit
+    local scratchValue, ctr_84, ctr_88, scratchValue2, scratchValue3, conversationId, scratchValue7
+    local scratchValue9, resource, resource2, willBandit
     scratchValue2 = 0
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -31,7 +31,7 @@ function Main(quest)
     end
     quest:CreateThread("DoMission")  -- native thread body 0x00D68AE0: lift it as function DoMission(quest)
     quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
-    willWhisper = quest:GetThingWithScriptName("WillWhisper")
+    local willWhisper = quest:GetThingWithScriptName("WillWhisper")
     if not willWhisper:AcquireControl(4) then goto LAB_00d685d5 end
     if quest:IsActiveThreadTerminating() then goto LAB_00d685d5 end
     willBandit = quest:GetAllThingsWithScriptName("WillBandit")
@@ -77,7 +77,7 @@ function Main(quest)
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
                 quest:GiveThingBestEnemyTarget(willBandit[scratchValue3 + 1], hero)
-                scratchValue6 = willBandit[scratchValue3 + 1]
+                local scratchValue6 = willBandit[scratchValue3 + 1]
                 quest:ModifyThingHealth(scratchValue6, 15.0 - quest:GetHealth(scratchValue6), false)
                 -- TODO(native): (**(code **)(*(int *)xStack_7c[(iVar12) / 0xc + 1] + 0x118))(0);
                 ctr_88 = ctr_88 + 1
