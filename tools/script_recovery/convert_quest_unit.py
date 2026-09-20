@@ -323,6 +323,11 @@ def _align(site, args, vtable=False, receiver_printed=False):
         # 0x00D506B0: record [0, -16, -12] for two real pushes). ~190 GSI sites across the four units.
         pushed, values = pushed[:-1], values[:-1]
     lead = len(args) - len(pushed)          # printed register arguments (this / __fastcall ecx, edx)
+    # (a truncated record on a `__thiscall` site -- the export's backward scan stopped at a call between the
+    # pushes, `CreateObject(&r, &def, GetPos(marker), &script)` -- is NOT padded into an alignment: when the
+    # call between the pushes is a vcall the export may also have charged it a stack purge it does not make
+    # (RunTutorials 0x00D46A73: depth 176 for a real 180, every recorded slot 4 too high; 0x00D464AE in the same
+    # function is exact). Those sites stay unaligned and their literals come from the lifter's pool, 2026-09-20.)
     if lead < 0 or lead > 2 or (ecx is not None and lead < 1) or (edx is not None and lead < 2):
         return None                         # a stack-loaded register that is not printed: an unprinted push is hiding
     if vtable and lead > 1:       # (lead 0: Ghidra printed the call without its receiver -- SetTimer(iStack_258, iVar7))
@@ -346,7 +351,15 @@ def _receiver_printed(text, args_start, args):
     if base in (first, '*' + first) or (first.startswith('*') and base == '*' + first):
         return True
     if re.fullmatch(r'iVar\d+', base):
-        return re.search(r'^[ \t]*' + re.escape(base) + r' = \*' + re.escape(first) + r';', text, re.M) is not None
+        # (the alias line and the printed receiver may differ only in the pointer cast Ghidra chose:
+        # `iVar9 = **(int **)((int)this + 0x40);` for the receiver `*(void **)((int)this + 0x40)`,
+        # RunTutorials 0x00D45DD0's CreateObject / CreateCreature sites -- unpaired, their string
+        # literals came out rotated)
+        cast = re.compile(r'\((?:void|int|undefined4) \*\*\)')
+        for m in re.finditer(r'^[ \t]*' + re.escape(base) + r' = \*([^\r\n]+);[ \t]*\r?$', text, re.M):
+            if cast.sub('', m.group(1).strip()) == cast.sub('', first):
+                return True
+        return False
     return False
 
 CTOR_LABELS = {'StdMap_Construct_API'}

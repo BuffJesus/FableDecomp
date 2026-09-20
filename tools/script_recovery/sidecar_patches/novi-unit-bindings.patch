@@ -278,10 +278,25 @@ index 7fbb477..11cdcaa 100644
      void Shutdown();
      void Reinitialize();
 diff --git a/FableScriptExtender/LuaQuestHost.cpp b/FableScriptExtender/LuaQuestHost.cpp
-index 59d5297..38d8e6f 100644
+index 59d5297..3611815 100644
 --- a/FableScriptExtender/LuaQuestHost.cpp
 +++ b/FableScriptExtender/LuaQuestHost.cpp
-@@ -156,6 +156,7 @@ void LuaQuestHost::Main() {
+@@ -89,8 +89,13 @@ LuaQuestHost::~LuaQuestHost() {
+         ASLR<TerminateProcesses>(0x00CB7F60)(&this->base);
+     }
+     CleanupThreads();
++    // Every lifetime: entity hosts outlive this quest host (the engine frees them
++    // with the thing, through their own refcount block) and keep m_pParentHost.
++    // Detach them now or LogQuestThreadFlags / Main read a freed LuaQuestHost
++    // (2026-09-20 v6 run: crash on the first cutscene command after
++    // GuildTrainingWoodsMelee was deleted, ScorpionHome's host still registered).
++    LuaManager::GetInstance().UnregisterQuestEntityScripts(m_pQuestState.get());
+     if(m_nativeLifetime==NativeQuestLifetime::NewOakValeIntro) {
+-        LuaManager::GetInstance().UnregisterQuestEntityScripts(m_pQuestState.get());
+         // VM finalizers may borrow quest state: release the VM while it is live.
+         m_env=sol::environment();
+         m_pLuaState.reset();
+@@ -156,6 +161,7 @@ void LuaQuestHost::Main() {
                  sol::error err = result;
                  LogToFile("!!! LUA RUNTIME ERROR in Main() of '" + m_scriptName + "': " + std::string(err.what()));
              }

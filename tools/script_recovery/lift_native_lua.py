@@ -173,6 +173,7 @@ RE_TRANSFER = re.compile(
 RE_BINDING = re.compile(
     r'(?P<var>\w+) = (?:::)?operator_new\(0x1c\);.*?'
     r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>[^"]+)",-1\);.*?'
+    r'(?:(?P=var)\[6\] = (?P<flags>\w+);\s*(?:\w+ = [^;{}]+;\s*)*\}?\s*(?:\w+ = [^;{}]+;\s*)*)?'   # binding+0x18: the factory (0xE7ED60) forwards it into CActiveEntityScriptBase::Flags (simple copies may sit between the store and the call)
     r'CScriptBase::AddEntityScriptBinding\([^,]+,(?P=var)\);\s*(?:\w+ = \w+;\s*)?(?:if \([^{]*\) \{[^}]*?_Cons_val[^}]*?\}|std::\s*_Cons_val<[^;]*?;)?', re.S)   # the EH-guarded dtor of the name temporary may be gone
 RE_CONS_VAL = re.compile(r'std::\s*_(?:Cons|Dest)_val<[^;]*?;', re.S)    # bsim-named CCharString ctor/dtor of a temporary
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
@@ -1450,6 +1451,11 @@ class Lifter:
             receiver = "me" if spec["scope"] == "Entity" else self.receiver
             call = f"{receiver}:{name}({', '.join(args)})"
             if target:
+                # a fresh definition of a stack slot ends its life as a hidden-result slot: RunTutorials
+                # 0x00D45DD0 fills the AppleMarker vector into the slot fifteen GetThingWithScriptName calls
+                # use for their by-value result, and expr() kept rewriting the vector to that stale result
+                # (`if #hero ~= 0`, 2026-09-20)
+                self.slot_results.pop(target, None)
                 self.emit(f"{self.declare(target)} = {call}")
                 kind = self.result_kind(spec.get("returnType", "void"))
                 if name == 'GetMasterGameState' and args and args[0].strip('"') in master_bool_flags():
@@ -1840,7 +1846,7 @@ class Lifter:
         if not self.live_termination:
             decompile = RE_PAIRED_TERMINATION_ALIAS.sub("", decompile)
         text = RE_BINDING.sub(
-            lambda m: (self.entities.append(m.group("name")) or f'    @@BIND {m.group("name")}\n'),
+            lambda m: (self.entities.append(m.group("name")) or f'    @@BIND {m.group("name")} {m.group("flags") or ""}\n'),
             decompile)
         thread_objects: set[str] = set()
 
@@ -2105,9 +2111,19 @@ class Lifter:
         if any(n in stripped for n in NOISE) and not structural and not stripped.startswith("@@"):
             return
         if stripped.startswith("@@BIND "):
-            name = stripped.split(" ", 1)[1]
+            parts = stripped.split(" ")
+            name, flags = parts[1], (parts[2] if len(parts) > 2 else "")
             target = getattr(self, 'binding_files', {}).get(name, f'{self.package}/Entities/{name}')
-            self.emit(f'{self.receiver}:AddEntityBinding("{name}", "{target}")')
+            # binding+0x18 -> CActiveEntityScriptBase::Flags; bit 0 keeps the entity script ALIVE across a
+            # level unload (CScriptBase::OnScriptedEntityDeactivated 0xCB88B0 early-outs on it instead of
+            # marking the script terminating + persisting). PreMelee's TheRealGuildmaster carries 1: retail's
+            # woods loop survives the Guild Woods trip and plays WOODSWON on the return (walkthrough 26:34-26:40);
+            # without the flag the sidecar unwound Main on unload and the fresh Main replayed PUNCH (v6 runs
+            # 2026-09-19/20). Unit mode only: the Oakvale draft gate stays byte-identical.
+            if self.accessor_kinds and flags and flags not in ("0", "0x0"):
+                self.emit(f'{self.receiver}:AddEntityBinding("{name}", "{target}", {int(flags, 0)})')
+            else:
+                self.emit(f'{self.receiver}:AddEntityBinding("{name}", "{target}")')
             self.calls.append("AddEntityBinding")
             return
         if stripped.startswith("@@THREAD "):

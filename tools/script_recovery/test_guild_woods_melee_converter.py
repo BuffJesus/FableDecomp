@@ -34,7 +34,7 @@ def quest_stub(lua, loaded, state, events, frames_until_done=2):
         return True
     q.NewScriptFrame = frame
     q.IsActiveThreadTerminating = lambda _: False
-    q.AddEntityBinding = lambda _, name, path: events.append(('bind', name, path))
+    q.AddEntityBinding = lambda _, name, path, *flags: events.append(('bind', name, path))
     q.FinalizeEntityBindings = lambda _: events.append('finalize')
     q.CreateThread = lambda _, name: events.append(('thread', name))
     q.GiveHeroNewQuestObjective = lambda _, *a: events.append(('objective',) + a)

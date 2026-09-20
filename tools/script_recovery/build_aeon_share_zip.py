@@ -30,20 +30,28 @@ UNITS = [
      'older untyped-pipeline output (its todo notes are mostly informational label/cleanup bookkeeping); the readable is the reviewed one.'),
     ('OrchardFarm', LIFTED / 'OrchardFarm/readable/FSE/OrchardFarmRaid', LIFTED / 'OrchardFarm/draft/FSE/OrchardFarmRaid',
      LIFTED / 'OrchardFarm/draft/CONVERSION_REPORT.json',
-     'Converter output, 46/46 functions, 0 TODO(native) in the draft; smoke harness clean on draft + readable; NOT yet '
-     'verified in-game (the v5 bundle carries it, run pending). Readable stage = readable_style.py (quest-script style).'),
+     'Q_OrchardFarmRaid + Q_OrchardFarmRaidEvil + Q_OrchardFarmRaidGood (all three), 46/46 functions, 0 TODO(native) in the '
+     'draft; smoke harness clean on draft + readable; byte-identical across every generic converter change since 2026-09-16 '
+     '(it is one of the standing regression gates). Ships as retail overrides in the bundle below; NOT yet played in-game -- '
+     'our playtests so far stopped at the Guild path. Readable stage = readable_style.py (quest-script style).'),
     ('GuildTraining', LIFTED / 'GuildTraining/readable_converter/FSE', LIFTED / 'GuildTraining/draft/FSE',
      LIFTED / 'GuildTraining/draft/CONVERSION_REPORT.json',
-     'Converter output through the typed pipeline: 152 functions, 37/37 files compile, 772 todo notes (most are '
-     'label/goto/cleanup bookkeeping), 11 smoke-harness notes (stack-slot collisions the restore cannot split yet). '
-     'No runtime package/bindings yet; needs IsPlayerHoldingFireRangedWeaponButton + me:MsgIsHitBy(name). '
-     'Rebuilt 2026-09-17 night: WoodsMelee/ScorpionHome is what you read as "a Lua version of the disassembly" — compare now.'),
+     'Converter output through the typed pipeline: 152 functions, 37/37 files compile. PLAYED IN-GAME on the bundle below '
+     '(2026-09-19/20): arrival, Guildmaster, apples, race, punch, stick, woods entry, beetles all run; the WoodsMelee entry '
+     'crash you hit was, in our output, VC7.1 exception-state flag lifted as `nil & 2` after FinalizeEntityBindings (fixed '
+     'generically). Open at the time of this zip: the post-woods Guildmaster flow (retail re-runs every Guild entity Main '
+     'when the region reloads; the woods-loop flag fix is in, the return talk is the next thing to verify).'),
     ('TraderConflict', LIFTED / 'TraderConflict/readable/FSE', LIFTED / 'TraderConflict/draft/FSE',
      LIFTED / 'TraderConflict/draft/CONVERSION_REPORT.json',
      'Q_TraderConflictEvil + Q_TraderConflictGood, new this night: 63 functions, 15/15 files compile, 169 todo notes, smoke '
      'harness 0 errors on draft + readable. TraderToRescue.Main (5.5 KB, Ghidra lost its stack analysis) is the rough '
      'one; its operands were read back from the machine code (see the journal). Needs me:MsgIsHitBy(name), '
      'me:MsgIsHitByAnySpecialAbilityFrom(name), quest:IsPlayerHoldingLockTargetButton(), quest:TextEntryExists(key).'),
+    ('Gameflow', LIFTED / 'Gameflow/readable/FSE', LIFTED / 'Gameflow/draft/FSE',
+     LIFTED / 'Gameflow/draft/CONVERSION_REPORT.json',
+     'The retail Gameflow script (0xCE6CB0..) as a converter unit: all 35 PostSavePosition stages, OnPersist carries all '
+     'four fields, resume works for 32/35 stages (700 / 1050 / 2800 still broken -- goto residue). Smoke 0/0. This is what '
+     'our v7 bundle runs INSTEAD of your LUAGameflow; v6 (this zip) runs yours. Not yet A/B tested in-game.'),
 ]
 
 DOCS = [
@@ -180,12 +188,13 @@ def readme(stamp, summaries, bundle):
               '  could not be typed.', '']
     if bundle:
         lines += ['## playtest-bundle/', '',
-                  'The local-candidate bundle (`local-candidate-v5`): original FSE + our compatibility add-on, New Oakvale intro +',
-                  'Orchard Farm as retail overrides. Not a public release; see its README.md — preflight with',
-                  '`python local_test.py --game-dir <Fable dir>`, add `--launch` for a real run on a disposable profile.',
-                  'New Oakvale plays through childhood; Orchard Farm has not had its first in-game run yet (rebuilt tonight with',
-                  'the RunMacro / destructor fixes above). Your test protocol (mid-quest save+load for OnPersist, quit mid-quest',
-                  'for entity control) is what we will run it through.', '']
+                  'The local-candidate bundle (`local-candidate-v6`): original FSE + our compatibility add-on, New Oakvale intro +',
+                  'Orchard Farm (Raid / Evil / Good) + Guild Training (all 9 quests) + Trader Conflict (Evil / Good) as retail',
+                  'overrides, and YOUR LUAGameflow.lua registered as the override of the retail Gameflow script. Not a public',
+                  'release; see its README.md — preflight with `python local_test.py --game-dir <Fable dir>`, add `--launch` for a',
+                  'real run on a disposable profile. New Oakvale plays through childhood; Guild Training plays through the beetles;',
+                  'Orchard Farm and Trader Conflict have not had their first in-game run yet. The add-on DLL still logs verbose',
+                  'lifecycle diagnostics to FableScriptExtender.log -- if something dies, that log is what we want back.', '']
     lines += ['## Reproduce', '', '```', 'python tools/script_recovery/convert_quest_unit.py --unit orchard_farm',
               'python tools/script_recovery/build_readable_unit.py --unit orchard_farm',
               'python tools/script_recovery/smoke_run_unit.py --unit orchard_farm --stage readable',
@@ -197,7 +206,7 @@ def readme(stamp, summaries, bundle):
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('--out', type=Path)
-    a.add_argument('--bundle', type=Path, default=WORK / 'new-oakvale-original-fse-20260912/local-candidate-v5')
+    a.add_argument('--bundle', type=Path, default=WORK / 'new-oakvale-original-fse-20260912/local-candidate-v6')
     a.add_argument('--no-bundle', action='store_true')
     args = a.parse_args()
     build(args.out, None if args.no_bundle else args.bundle)
