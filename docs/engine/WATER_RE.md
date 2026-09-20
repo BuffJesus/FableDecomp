@@ -63,13 +63,25 @@ u8  block[compressedLen]            // CRangeCompressor, 289 records x 0x42 (66 
 Record (the on-disk 66 B of a 0x44 `CTVertexWaterForeground`), all little-endian:
 ```
 u16 x, u16 y        // world x/y rounded (map origin + cell)
-f32 z               // round(max(worldZ + h - 0.1, 0) * 256) / 256   (ice: - 0.001 instead of 0.1)
-i16 waveS           // round((sin(wx / 2pi) + sin(wy / 2pi)) * 32767 / 2)
-i16 waveC           // same with cos
-i16 depth           // clamp((z + 0.1) - ground, 0, 2) * 32767 / 2
-f32 distToShore     // ConstructVertexDistanceToShoreArray out-param
-f32 shore[12]       // ShoreLookUpArray (12 directions); GetZeroedShoreLookUpArray = all zero
+f32 z               // floor(max(h - 0.1, 0) * 256) / 256   (ice: - 0.001 instead of 0.1); h = the vertex's water level (below)
+i16 waveS           // round((sin(a) + sin(b)) * 32767 / 2),  a = wx * f32(1/2pi) * f32(2pi), b likewise with wy, in double
+i16 waveC           // same with cos                          (world units -> turns -> radians with the float constants)
+i16 depth           // round(clamp((z + 0.1) - ground, 0, 2) * 32767 / 2)   from the QUANTISED z; ground = the baked vertex height
+f32 distToShore     // ConstructVertexDistanceToShoreArray out-param -- 0.0 in every retail record (975,086 checked)
+f32 shore[12]       // ShoreLookUpArray (12 directions); GetZeroedShoreLookUpArray = all zero; retail records all carry data
 ```
+**Audited against every retail water patch (FableForge `forge water-audit --all`, 2026-09-20; 177 maps,
+3,374 patches, 975,086 records):** the wave columns are exact with the formula above (the `/2pi` first
+read was wrong: the code goes units -> turns -> radians with float constants, the products kept in x87
+double); `depth` is exact once `ground` is the STB foreground layer's vertex height rather than the LEV's
+(the bake ran on the in-memory map; the two differ by millimetres); `z` is `floor`, not `round`, and matches
+96-99.8 % per map with the same STB ground inside the level average -- the residue (1-2 steps of 1/256 at
+shore vertices) is window-membership detail in `PeekInterpolatedWaterHeight` still to pin. `h` for a vertex
+with no interpolated level is `FindCorrectWaterLevel` = the mean of the non-zero heights within +-2 cells
+**inside the patch's own 17x17 array** (never across the patch border), else `ground - 1.0` (sunk), and the
+same `- 0.1` / floor then applies (so a sunk vertex reads `ground - 1.1`). Our CRangeCompressor port
+re-encodes 65 % of the retail blocks byte-exact (the rest differ late in the stream by one column choice,
+same length +-6 B); the raw form always decodes, which is what a new lake needs.
 `Load` (0x02e673b0) trusts every field (only `depth` goes back through `SetTargetVertexDepth`
 = i16 → float clamp 0..2). Constants: `0x0401df60` = 2.0 (max depth), `0x04022078` = 0.1,
 `0x0417cc80` = 256, `0x0434bb98` = 32767, `0x04071768` = 2pi, `0x0443b590`/`0x0447621c` = 0.001.
