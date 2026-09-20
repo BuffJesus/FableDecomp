@@ -552,6 +552,8 @@ and a re-ask on the next talk. The 19:22 run's question at the woods door before
   `shippedAsDraft: {}`; smoke Guild 1/1 (BirdKiller, baseline), Orchard 0/0, Trader 2/2, Gameflow 0/0;
   `TODO(native): goto` 1 (TraderConflictEvil); targeted set (`test_cross_branch_goto
   test_guild_woods_melee_converter test_new_oakvale_conversion test_native_switch_tree test_maze_converter`) 35 OK.
+  Full suite NOT run (machine shutdown; a pytest attempt looped on unicorn access violations in
+  test_affair_man_complete -- use the HANDOFF unittest-discover form next time).
 * Not done: no bundle rebuilt, nothing launched, nothing committed. Known residue: `PlayAVIMovie("Data\\\\Video\\\\...")`
   doubles the backslashes (the Oakvale intro has the same and its AVI plays; Win32 collapses them) -- a lifter
   string-escape quirk gated behind the Oakvale byte-identity, left alone.

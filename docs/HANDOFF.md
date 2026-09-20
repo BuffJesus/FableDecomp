@@ -4,12 +4,18 @@
 transition, arrival, apple quest, race, Guildmaster punch stage, stick stage with "?/7" tally, Guild Woods beetles
 (all ten), quest card, WOODSWON cutscene, PREMELEE_END_QUESTION all work. **Broken, next up:** after the woods
 (answering the question), no quest markers, the Guildmaster stands back at the melee position and talking to him
-REPLAYS THE PUNCH STAGE. An agent was deriving the native branch-selection state of PreMelee's TheRealGuildmaster
-Main (0x00D52E90: which state picks punch/stick/woods/end, what NO/YES do, talk-after-woods, markers) and fixing the
-converter generically with a test for both answers; its section (if it finished) is the LAST dated section of
-`docs/journal/2026-09/GUILD_ARRIVAL_PLAYTEST_2026-09-19.md`; if there is none, `git status` shows what it touched
-(native_goto_scopes.py / lift_native_lua.py / native_structured_switch.py / test_cross_branch_goto.py) -- re-run the
-gates before trusting it.
+REPLAYS THE PUNCH STAGE. Agent findings (journal section "Night: the woods loop that never ended", bytes cited):
+(a) the woods loop's exit flag stores were DROPPED -- Ghidra's ESP model drifted 4 bytes after an untyped vcall, so
+`cStack_169 = 0` after the AVI (YES) and the walk-back re-arm (NO) printed against phantom slots; readable loop was
+`repeat ... until false`. FIXED generically (`_drifted_byte_slices` in convert_quest_unit.py, two-pass
+restore_stack_operands; tests in test_cross_branch_goto.py WoodsStageTests), Guild regenerated (in commit 7cb127a).
+(b) The PUNCH replay is the entity's Main being RE-RUN FROM THE TOP when the hero returns from the woods (region
+change: OnDeactivateEntity 0x00CB88B0 unwinds it, the allocator recreates it, Main restarts; this entity persists
+nothing and Main has no guard) -- faithful to the bytes; what retail does on that return is NOT established (thread
+survives the trip, or the fresh TryAcquire parks on a lock left on the persistent CThing). **Next run decides:**
+rebuild v6/v7 (commands below), load the woods-entry autosave, kill the beetles, answer YES -> expect the AVI,
+HeroSleeps, quest end; answer NO -> walk back + re-ask on the next talk. Full suite not completed on the drift fix
+(targeted 35 OK); run it first thing (unittest-discover form; pytest loops on unicorn AVs in test_affair_man_complete).
 
 **Everything today is generic converter/sidecar work (nothing hand-edited except the two documented NOVI deviations).**
 The journal has each fix with byte evidence: split-array vectors, `_align`, CreateObject position, StartMovieSequence
