@@ -57,7 +57,7 @@ function Init(quest)
     quest:SetStateInt("RemindHeroOfObjectivesTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:SetStateInt("Teams_0_TeamReinforcementsTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:SetStateInt("Teams_1_TeamReinforcementsTimer", quest:RegisterTimer())  -- native constructor: CTimer member
-    local x_stk_c
+    local string, x_stk_c
     local bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidGood")
     if bVar2 then
         quest:AddQuestRegion("Q_OrchardFarmRaidGood", "OrchardFarm")
@@ -100,6 +100,7 @@ function Init(quest)
         quest:SetStateString("TextSystemScriptCode", "TEXT_QST_051_")
         quest:SetQuestCardObjective("Q_OrchardFarmRaidEvil", "TEXT_QUEST_PROTECT_FARM_EVIL_OBJECTIVE_01", "", "HeroGuildComplexInside")
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", false)
+        string = "GreatwoodEntrance"
     else
         bVar2 = quest:IsQuestActive("Q_OrchardFarmRaidGood")
         if not bVar2 then
@@ -109,8 +110,9 @@ function Init(quest)
         quest:SetStateString("TextSystemScriptCode", "TEXT_QST_052_")
         quest:SetQuestCardObjective("Q_OrchardFarmRaidGood", "TEXT_QUEST_PROTECT_FARM_OBJECTIVE_01", "", "Greatwood")
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodEntrance", false)
+        string = "GreatwoodLake"
     end
-    quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", true)
+    quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", string, true)
 end
 
 function OnPersist(quest, context)
@@ -575,7 +577,7 @@ function ProcessGameRulesGood(quest)
                         return
                     end
                     ReplaceQuestCards(quest)
-                    quest:RemoveQuestInfoElement(ePriority)
+                    quest:RemoveQuestInfoElement(iVar4)
                     bVar10 = true
                     pMessage = quest:GetStateString(("FailReasons_" .. quest:GetStateInt("MissionFailed")))
                     bVar3 = true

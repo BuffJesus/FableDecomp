@@ -16,15 +16,14 @@ local birdMode, haveChatted, currentBirds
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local ctr_90, conversationId, questionAnswer, timerId, scratchValue30, movie2, movie3, resource4
-    local scratchValue31
+    local ctr_90, questionAnswer, timerId, scratchValue33, movie2, movie3, resource4, scratchValue34
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource4)
     end
-    scratchValue30 = 0
+    scratchValue33 = 0
     resource4 = resources:NewResource()
     resources:PrepareResource(resource4)
     while not resources:TryAcquire(resource4, me, 4) do
@@ -41,15 +40,15 @@ function Main(quest, me)
     if birdMode == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef90 end
         local birdMarker = quest:GetAllThingsWithScriptName("BirdMarker")
-        local scratchValue = scratchValue31 - birdMarker >> 31
-        if (scratchValue31 - birdMarker) / 12 + scratchValue ~= scratchValue then
+        local scratchValue = scratchValue34 - birdMarker >> 31
+        if (scratchValue34 - birdMarker) / 12 + scratchValue ~= scratchValue then
             ctr_90 = 0
             repeat
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource4); return end
                 quest:SetThingPersistent(quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", birdMarker[ctr_90 / 12 + 1]:GetPos(), "KillBird"), true)
                 ctr_90 = ctr_90 + 12
-                scratchValue30 = scratchValue30 + 1
-            until scratchValue30 >= ((scratchValue31 - birdMarker) / 12)
+                scratchValue33 = scratchValue33 + 1
+            until scratchValue33 >= ((scratchValue34 - birdMarker) / 12)
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource4); return end
         quest:SetStateInt("CurrentBirdsKilled", 0)
@@ -60,9 +59,9 @@ function Main(quest, me)
     while birdMode == 2 do
         if not quest:NewScriptFrame(me) then goto LAB_00d4ef87 end
         if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
-            local conversationId3 = quest:AddNewConversation(me, false, false)
-            quest:AddPersonToConversation(conversationId3, hero)
-            quest:AddLineToConversation(conversationId3, "TEXT_QST_028_BIRD_KILLER_HELP", me, hero, false)
+            local conversationId2 = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(conversationId2, hero)
+            quest:AddLineToConversation(conversationId2, "TEXT_QST_028_BIRD_KILLER_HELP", me, hero, false)
             quest:SetTimer(timerId, 15)
         end
         if me:IsTalkedToByHero() then
@@ -72,7 +71,6 @@ function Main(quest, me)
                 if not haveChatted then
                     if not quest:IsActiveThreadTerminating() then
                         haveChatted = true
-                        conversationId = 0.0
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
                             me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_GREET", GROUP_SELECT_FIRST, false, true, false)
                             while me:IsPerformingScriptTask() do
@@ -138,7 +136,6 @@ function Main(quest, me)
                         goto LAB_00d4e978
                     end
                     if not predicateResult then
-                        conversationId = 0.0
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
                             me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_REFUSE", GROUP_SELECT_FIRST, false, true, false)
                             while me:IsPerformingScriptTask() do
@@ -177,13 +174,13 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then goto LAB_00d4ef87 end
         if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
             if currentBirds == 0 then
+                local conversationId3 = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId3, hero)
+                quest:AddLineToConversation(conversationId3, "TEXT_QST_028_BIRD_KILLER_ANY", me, hero, false)
+            else
                 local conversationId4 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId4, hero)
-                quest:AddLineToConversation(conversationId4, "TEXT_QST_028_BIRD_KILLER_ANY", me, hero, false)
-            else
-                local conversationId5 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId5, hero)
-                quest:AddLineToConversation(conversationId5, "TEXT_QST_028_BIRD_KILLER_ANY_MORE", me, hero, false)
+                quest:AddLineToConversation(conversationId4, "TEXT_QST_028_BIRD_KILLER_ANY_MORE", me, hero, false)
             end
             quest:SetTimer(timerId, 15)
         end
@@ -191,20 +188,20 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
             local currentBirdsKilled = quest:GetStateInt("CurrentBirdsKilled")
             if currentBirdsKilled == 1 then
-                local conversationId6 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId6, hero)
-                quest:AddLineToConversation(conversationId6, "TEXT_QST_028_BIRD_KILLER_ONE", me, hero, false)
+                local conversationId5 = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId5, hero)
+                quest:AddLineToConversation(conversationId5, "TEXT_QST_028_BIRD_KILLER_ONE", me, hero, false)
                 quest:Pause(1.0)
                 quest:GiveHeroGold(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
             elseif currentBirdsKilled == 0 then
-                local conversationId7 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId7, hero)
-                quest:AddLineToConversation(conversationId7, "TEXT_QST_028_BIRD_KILLER_NONE", me, hero, false)
+                local conversationId6 = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId6, hero)
+                quest:AddLineToConversation(conversationId6, "TEXT_QST_028_BIRD_KILLER_NONE", me, hero, false)
                 quest:Pause(1.0)
             else
-                local conversationId8 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId8, hero)
-                quest:AddLineToConversation(conversationId8, "TEXT_QST_028_BIRD_KILLER_MORE", me, hero, false)
+                local conversationId7 = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId7, hero)
+                quest:AddLineToConversation(conversationId7, "TEXT_QST_028_BIRD_KILLER_MORE", me, hero, false)
                 quest:Pause(1.0)
                 quest:GiveHeroGold(math.tointeger(math.modf(quest:GetStateInt("CurrentBirdsKilled") * quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_GoldPerBird))))
             end
@@ -212,12 +209,11 @@ function Main(quest, me)
             if quest:GetStateInt("CurrentBirdsKilled") ~= 0 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
                 quest:SetStateInt("CurrentBirdsKilled", 0)
-                local conversationId2 = quest:AddNewConversation(me, false, false)
+                local conversationId = quest:AddNewConversation(me, false, false)
                 if currentBirds == 7 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
                     local movie = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    conversationId = 0.0
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
                         me:Speak(hero, "TEXT_QST_028_BIRD_KILLER_DONE", GROUP_SELECT_FIRST, false, true, false)
                         while me:IsPerformingScriptTask() do
@@ -242,7 +238,7 @@ function Main(quest, me)
                 else
                     if quest:IsActiveThreadTerminating() then goto LAB_00d4ef87 end
                     quest:AddPersonToConversation(conversationId, hero)
-                    quest:AddLineToConversation(false, conversationId2, me, hero)
+                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_BIRD_KILLER_NOT_DONE", me, hero, false)
                     quest:Pause(1.0)
                 end
             end
@@ -253,9 +249,9 @@ function Main(quest, me)
         if not (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1) then
             quest:NewScriptFrame(me)
         else
-            local conversationId9 = quest:AddNewConversation(me, false, false)
-            quest:AddPersonToConversation(conversationId9, hero)
-            quest:AddLineToConversation(conversationId9, "TEXT_QST_028_BIRD_KILLER_FINISHED", me, hero, false)
+            local conversationId8 = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(conversationId8, hero)
+            quest:AddLineToConversation(conversationId8, "TEXT_QST_028_BIRD_KILLER_FINISHED", me, hero, false)
             quest:SetTimer(timerId, 15)
             quest:NewScriptFrame(me)
         end

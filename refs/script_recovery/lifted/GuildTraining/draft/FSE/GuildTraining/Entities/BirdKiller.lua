@@ -419,9 +419,9 @@ function Main(quest, me)
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d4ef87 end
                         pCVar5 = quest:GetHero()
-                        quest:AddPersonToConversation(fVar2, pCVar5)
+                        quest:AddPersonToConversation(iVar6, pCVar5)
                         pCVar5 = quest:GetHero()
-                        quest:AddLineToConversation(false, iVar6, me, pCVar5)
+                        quest:AddLineToConversation(iVar6, "TEXT_QST_028_BIRD_KILLER_NOT_DONE", me, pCVar5, false)
                         quest:Pause(1.0)
                     end
                 end

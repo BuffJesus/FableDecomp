@@ -39,7 +39,13 @@ end
 
 -- OrchardFarmWhisper.Init (retail 0x00dcf000)
 function Init(quest, me)
-    quest:EntitySetInFaction(me, "FACTION_BANDITS")
+    local string
+    if quest:GetStateInt("HeroTeam") == 1 then
+        string = "FACTION_GUARDS_ENEMY"
+    else
+        string = "FACTION_BANDITS"
+    end
+    quest:EntitySetInFaction(me, string)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAsAwareOfThing(me, quest:GetHero())
     quest:EntitySetAsDamageable(me, false)

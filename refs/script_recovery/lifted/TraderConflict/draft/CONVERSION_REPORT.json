@@ -1319,11 +1319,6 @@
           "Main": [
             "pThing"
           ]
-        },
-        "FSE/TraderConflictEvil/Entities/TC_BanditFighter.lua": {
-          "Main": [
-            "CVar6_b0"
-          ]
         }
       },
       "summary": {
@@ -2080,28 +2075,9 @@
             "unlifted: unaff_EBP = unaff_EBP & 0xfffffff7;",
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "PlaySoundOnThing: missing pThing (1 args for 2 params)",
-            "PlaySoundOnThing: missing pThing (1 args for 2 params)",
-            "PlaySoundOnThing: missing pThing (1 args for 2 params)",
             "unlifted: xStack_148 = (CCharString)((int)CVar13 + 1);",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "unlifted: CCharString::CCharString(ENGINE_Colour(255, 0, 0, 255),\"BanditCampEntrance\",-1);",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "EntityStopFollowing: missing spFollower (0 args for 1 params)",
-            "SetEntityAsRegionFollowing: missing spTarget (2 args for 3 params)",
-            "EntitySetAsScared: missing spThing (1 args for 2 params)",
             "Main_InitializeFourierAnalysis_4: unproven parent helper receiver or arity",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "MoveToThing: missing spTargetThing (2 args for 3 params)",
-            "RemoveThing: missing pThing (2 args for 3 params)",
             "unlifted: cVar3 = (**(xStack_124 + 0x12c))()",
             "unlifted: cVar3 = (**(xStack_124 + 0x12c))()",
             "unlifted: bVar2 = (**(*(iVar11 + 0x0) + 0x138))((me))"
@@ -2434,7 +2410,7 @@
             "NewScriptFrame",
             "SetStateBool",
             "IsActiveThreadTerminating",
-            "RESOURCE_IsAcquired",
+            "RESOURCE_PrepareResource",
             "AcquireControl",
             "IsRegionLoaded",
             "IsActiveThreadTerminating",
@@ -2476,7 +2452,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1055,
+          "lines": 1052,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3465,6 +3441,7 @@
           "Main": [
             "xStack_110",
             "xStack_114",
+            "xStack_138",
             "xStack_14c_2",
             "x_stk_170"
           ]
@@ -3502,7 +3479,7 @@
         "functionSyntaxPassed": 38,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 61
+        "todo": 42
       }
     }
   ],
@@ -3513,6 +3490,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 68
+    "todo": 49
   }
 }

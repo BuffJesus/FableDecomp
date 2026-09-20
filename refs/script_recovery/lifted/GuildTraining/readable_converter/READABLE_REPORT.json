@@ -4655,12 +4655,24 @@
         null
        ]
       },
-      "fVar2": {
-       "name": "conversationId",
-       "basis": "named by the API that consumes it",
+      "fVar2_1": {
+       "name": "scratchValue7",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
-        null,
+        null
+       ]
+      },
+      "fVar2_2": {
+       "name": "scratchValue8",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "fVar2_3": {
+       "name": "scratchValue9",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
         null
        ]
       },
@@ -4672,49 +4684,49 @@
        ]
       },
       "iVar12_1": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar12_2": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar12_3": {
-       "name": "scratchValue9",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar13_1": {
        "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar13_2": {
+      "iVar12_2": {
        "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar13_3": {
+      "iVar12_3": {
        "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar6_1": {
+      "iVar13_1": {
        "name": "scratchValue13",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar13_2": {
+       "name": "scratchValue14",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar13_3": {
+       "name": "scratchValue15",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar6_1": {
+       "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4736,7 +4748,7 @@
        ]
       },
       "iVar6_4": {
-       "name": "scratchValue14",
+       "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4765,7 +4777,7 @@
        ]
       },
       "iVar6_8": {
-       "name": "scratchValue15",
+       "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4808,14 +4820,14 @@
        ]
       },
       "iVar6_14": {
-       "name": "conversationId2",
+       "name": "conversationId",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "conversationId"
        ]
       },
       "iVar6_15": {
-       "name": "scratchValue16",
+       "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4843,112 +4855,112 @@
        ]
       },
       "iVar7_1": {
-       "name": "conversationId3",
+       "name": "conversationId2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "conversationId"
        ]
       },
       "iVar7_2": {
-       "name": "scratchValue17",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar7_3": {
-       "name": "scratchValue18",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar7_4": {
-       "name": "scratchValue19",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar7_5": {
        "name": "scratchValue20",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar7_6": {
-       "name": "conversationId4",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "conversationId"
-       ]
-      },
-      "iVar7_7": {
-       "name": "conversationId5",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "conversationId"
-       ]
-      },
-      "iVar7_8": {
-       "name": "conversationId6",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "conversationId"
-       ]
-      },
-      "iVar7_9": {
+      "iVar7_3": {
        "name": "scratchValue21",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar7_10": {
-       "name": "conversationId7",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "conversationId"
-       ]
-      },
-      "iVar7_11": {
-       "name": "conversationId8",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "conversationId"
-       ]
-      },
-      "iVar7_12": {
+      "iVar7_4": {
        "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar7_13": {
+      "iVar7_5": {
        "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar7_14": {
+      "iVar7_6": {
+       "name": "conversationId3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "iVar7_7": {
+       "name": "conversationId4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "iVar7_8": {
+       "name": "conversationId5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "iVar7_9": {
        "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
+      "iVar7_10": {
+       "name": "conversationId6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "iVar7_11": {
+       "name": "conversationId7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "iVar7_12": {
+       "name": "scratchValue25",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar7_13": {
+       "name": "scratchValue26",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar7_14": {
+       "name": "scratchValue27",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
       "iVar7_15": {
-       "name": "conversationId9",
+       "name": "conversationId8",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "conversationId"
        ]
       },
       "pCVar15_1": {
-       "name": "scratchValue25",
+       "name": "scratchValue28",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4962,14 +4974,14 @@
        ]
       },
       "pCVar15_3": {
-       "name": "scratchValue26",
+       "name": "scratchValue29",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar15_4": {
-       "name": "scratchValue27",
+       "name": "scratchValue30",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -4997,7 +5009,7 @@
        ]
       },
       "pCVar5_4": {
-       "name": "scratchValue28",
+       "name": "scratchValue31",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -5102,7 +5114,7 @@
        ]
       },
       "pCVar5_19": {
-       "name": "scratchValue29",
+       "name": "scratchValue32",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -5221,7 +5233,7 @@
        ]
       },
       "uVar10": {
-       "name": "scratchValue30",
+       "name": "scratchValue33",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -5262,19 +5274,19 @@
        ]
       },
       "x_stk_60": {
-       "name": "scratchValue31",
+       "name": "scratchValue34",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
       "x_stk_8": {
-       "name": "scratchValue32",
+       "name": "scratchValue35",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "x_stk_c": {
-       "name": "scratchValue33",
+       "name": "scratchValue36",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -5669,6 +5681,21 @@
         ]
        }
       },
+      "fVar2": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_60, x_stk_68, x_stk_8, x_stk_c\n",
+       "versions": {
+        "fVar2_1": [
+         109
+        ],
+        "fVar2_2": [
+         213
+        ],
+        "fVar2_3": [
+         352
+        ]
+       }
+      },
       "iVar12": {
        "declarationLine": 3,
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_60, x_stk_68, x_stk_8, x_stk_c\n",
@@ -5806,7 +5833,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 267,
+     "sourceLine": 264,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -5815,7 +5842,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 274,
+     "sourceLine": 271,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -5824,7 +5851,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 279,
+     "sourceLine": 276,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -5832,7 +5859,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
@@ -5845,14 +5872,14 @@
        "aliveStaging": 29,
        "exitChecksInlined": 4,
        "frameChecks": 3,
-       "inlinedTemporaries": 93,
+       "inlinedTemporaries": 96,
        "deadDefinitions": 4,
        "guardWrappers": 0,
        "retryLoops": 8,
        "booleanMaterialisation": 6,
        "booleanCompares": 0,
        "conditions": 1,
-       "literals": 3,
+       "literals": 0,
        "copies": 6,
        "selfAssignments": 1,
        "flagClears": 0,
@@ -5881,7 +5908,7 @@
       },
       "before": {
        "lines": 413,
-       "temporaries": 129,
+       "temporaries": 131,
        "labels": 11,
        "gotos": 30,
        "terminationChecks": 37,
@@ -5889,8 +5916,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 251,
-       "temporaries": 9,
+       "lines": 248,
+       "temporaries": 8,
        "labels": 11,
        "gotos": 25,
        "terminationChecks": 25,

@@ -53,6 +53,7 @@ function Init(quest)
     quest:SetStateInt("RemindHeroOfObjectivesTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:SetStateInt("Teams_0_TeamReinforcementsTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:SetStateInt("Teams_1_TeamReinforcementsTimer", quest:RegisterTimer())  -- native constructor: CTimer member
+    local string
     if quest:IsQuestActive("Q_OrchardFarmRaidGood") then
         quest:AddQuestRegion("Q_OrchardFarmRaidGood", "OrchardFarm")
     else
@@ -87,6 +88,7 @@ function Init(quest)
         quest:SetStateString("TextSystemScriptCode", "TEXT_QST_051_")
         quest:SetQuestCardObjective("Q_OrchardFarmRaidEvil", "TEXT_QUEST_PROTECT_FARM_EVIL_OBJECTIVE_01", "", "HeroGuildComplexInside")
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", false)
+        string = "GreatwoodEntrance"
     else
         if not quest:IsQuestActive("Q_OrchardFarmRaidGood") then
             return
@@ -95,8 +97,9 @@ function Init(quest)
         quest:SetStateString("TextSystemScriptCode", "TEXT_QST_052_")
         quest:SetQuestCardObjective("Q_OrchardFarmRaidGood", "TEXT_QUEST_PROTECT_FARM_OBJECTIVE_01", "", "Greatwood")
         quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodEntrance", false)
+        string = "GreatwoodLake"
     end
-    quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", "GreatwoodLake", true)
+    quest:MiniMapAllowRouteBetweenRegions("OrchardFarm", string, true)
 end
 
 -- Q_OrchardFarmRaid.OnPersist (retail 0x00dcc720)
@@ -237,7 +240,7 @@ end
 function ProcessGameRulesGood(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local ePriority, thing, resource, actorMap2, resource2, resource3
+    local thing, resource, actorMap2, resource2, resource3
     local function ReleaseEverything()
         local thing = 0
         quest:PauseAllNonScriptedEntities(false)
@@ -365,7 +368,7 @@ function ProcessGameRulesGood(quest)
         if quest:GetStateInt("MissionFailed") ~= 0 then
             if quest:IsActiveThreadTerminating() then return end
             ReplaceQuestCards(quest)
-            quest:RemoveQuestInfoElement(ePriority)
+            quest:RemoveQuestInfoElement(addQuestInfoCounter)
             quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, quest:GetStateString("FailReasons_" .. quest:GetStateInt("MissionFailed")), true)
             quest:DeactivateQuestLater("Q_OrchardFarmRaidGood", 0)
             quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)

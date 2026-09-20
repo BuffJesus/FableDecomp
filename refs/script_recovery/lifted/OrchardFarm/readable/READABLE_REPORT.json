@@ -3885,7 +3885,7 @@
       "byteIndices": 0,
       "voidReturns": 0,
       "nilReleases": 0,
-      "emptyIfs": 1,
+      "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
@@ -4118,7 +4118,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 90,
+     "sourceLine": 93,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4127,7 +4127,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 93,
+     "sourceLine": 96,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4154,7 +4154,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 47,
+     "sourceLine": 53,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4163,7 +4163,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 50,
+     "sourceLine": 56,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4251,7 +4251,7 @@
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
-       "booleanMaterialisation": 1,
+       "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
@@ -4282,8 +4282,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 11,
-       "temporaries": 0,
+       "lines": 14,
+       "temporaries": 1,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -4291,8 +4291,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 7,
-       "temporaries": 0,
+       "lines": 13,
+       "temporaries": 1,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -6314,7 +6314,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 102,
+     "sourceLine": 105,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6323,7 +6323,7 @@
     },
     {
      "function": "ProcessGameRulesEvil",
-     "sourceLine": 111,
+     "sourceLine": 114,
      "locals": {
       "bVar10_1": {
        "name": "predicateResult",
@@ -6798,7 +6798,7 @@
     },
     {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 317,
+     "sourceLine": 320,
      "locals": {
       "bVar10_1": {
        "name": "predicateResult",
@@ -7311,7 +7311,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 564,
+     "sourceLine": 567,
      "locals": {
       "bVar2_1": {
        "name": "predicateResult",
@@ -7838,7 +7838,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 735,
+     "sourceLine": 738,
      "locals": {
       "bVar1_1": {
        "name": "isActiveThreadTerminating",
@@ -7934,7 +7934,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 777,
+     "sourceLine": 780,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -7991,7 +7991,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 796,
+     "sourceLine": 799,
      "locals": {
       "bVar4_1": {
        "name": "isRegionLoaded",
@@ -8256,7 +8256,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 923,
+     "sourceLine": 926,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8292,7 +8292,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 100,
+     "sourceLine": 103,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8301,7 +8301,7 @@
     },
     {
      "function": "ProcessGameRulesEvil",
-     "sourceLine": 105,
+     "sourceLine": 108,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8310,7 +8310,7 @@
     },
     {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 232,
+     "sourceLine": 235,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8319,7 +8319,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 372,
+     "sourceLine": 375,
      "locals": {
       "scratchValue": {
        "name": "thing",
@@ -8337,7 +8337,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 461,
+     "sourceLine": 464,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8346,7 +8346,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 485,
+     "sourceLine": 488,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8355,7 +8355,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 498,
+     "sourceLine": 501,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8364,7 +8364,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 568,
+     "sourceLine": 571,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8483,8 +8483,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 53,
-       "temporaries": 0,
+       "lines": 56,
+       "temporaries": 1,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -8492,8 +8492,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 50,
-       "temporaries": 0,
+       "lines": 53,
+       "temporaries": 1,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
@@ -8682,7 +8682,7 @@
       },
       "after": {
        "lines": 139,
-       "temporaries": 6,
+       "temporaries": 5,
        "labels": 2,
        "gotos": 3,
        "terminationChecks": 16,

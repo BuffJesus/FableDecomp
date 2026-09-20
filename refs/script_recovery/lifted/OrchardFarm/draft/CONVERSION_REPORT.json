@@ -146,7 +146,7 @@
             "MiniMapAllowRouteBetweenRegions",
             "MiniMapAllowRouteBetweenRegions"
           ],
-          "lines": 58,
+          "lines": 60,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1247,7 +1247,7 @@
             "EntitySetAsDamageable",
             "EntitySetAllowBossPhaseChanges"
           ],
-          "lines": 9,
+          "lines": 12,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

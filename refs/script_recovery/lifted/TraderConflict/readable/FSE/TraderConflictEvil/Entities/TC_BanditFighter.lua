@@ -8,7 +8,7 @@ local hitWarning
 
 -- TC_BanditFighter.Main (retail 0x00df8970)
 function Main(quest, me)
-    local scratchValue, scratchValue2, CVar6_b0, scratchValue3, scratchValue4, predicateResult
+    local scratchValue, scratchValue2, scratchValue3, scratchValue4, predicateResult
     local predicateResult4, predicateResult6, playerEngaged, scratchValue10
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
@@ -120,7 +120,7 @@ function Main(quest, me)
             scratchValue2 = scratchValue2 & 0xfffffeff
             scratchValue10 = scratchValue2
         end
-        if CVar6_b0 < 0 then
+        if scratchValue2 & 128 ~= 0 then
             scratchValue2 = scratchValue2 & 0xffffff7f
             scratchValue10 = scratchValue2
         end

@@ -79,10 +79,13 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
+    local string
     if quest:GetStateInt("HeroTeam") == 1 then
+        string = "FACTION_GUARDS_ENEMY"
     else
+        string = "FACTION_BANDITS"
     end
-    quest:EntitySetInFaction(me, "FACTION_BANDITS")
+    quest:EntitySetInFaction(me, string)
     quest:EntitySetAsKillable(me, false, true)
     local pThing2 = quest:GetHero()
     quest:EntitySetAsAwareOfThing(me, pThing2)

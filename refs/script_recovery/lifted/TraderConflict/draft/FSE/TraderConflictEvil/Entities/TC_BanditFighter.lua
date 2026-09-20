@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local CVar6, CVar6_b0, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, p0, pCVar3, pCVar4, r1, xStack_2c
+    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, p0, pCVar3, pCVar4, r1, xStack_2c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -180,7 +180,7 @@ function Main(quest, me)
                         CVar6 = CVar6 & 0xfffffeff
                         xStack_2c = CVar6
                     end
-                    if CVar6_b0 < 0 then
+                    if ((CVar6 & 0x80) ~= 0) then
                         CVar6 = CVar6 & 0xffffff7f
                         xStack_2c = CVar6
                     end
