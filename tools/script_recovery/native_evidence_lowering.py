@@ -207,7 +207,10 @@ def fold_stack_colours(text: str) -> str:
         b, g, r, a = (bytes_[i] for i in range(4))
         head, scope = text[:m.start()], text[run_end:]
         # the stack slot may be reused (a CCharString later on): only the uses up to the next redefinition
-        nxt = re.search(r'^[ \t]*(?:\w+::\w+\(\(\w+ \*\)&' + re.escape(var) + r'\b|' + re.escape(var) + r'(?:\._\d_1_)? = )', scope, re.M)
+        # (the constructor may take the slot uncast and without `&` when Ghidra typed it as an array:
+        # `CCharString::CCharString(aCStack_14c,"BanditCampEntrance",-1)`, TraderToRescue 0x00DFE0F0 -- the colour
+        # ran through it and IsRegionLoaded got `ENGINE_Colour(...)` -> `""` in the readable, 2026-09-20 audit)
+        nxt = re.search(r'^[ \t]*(?:\w+::\w+\((?:\(\w+ \*\))?&?' + re.escape(var) + r'\b|' + re.escape(var) + r'(?:\._\d_1_)? = )', scope, re.M)
         use, rest = (scope[:nxt.start()], scope[nxt.start():]) if nxt else (scope, '')
         use = re.sub(r'(?:\(\w+ \*\))?&?' + re.escape(var) + r'\b', f'ENGINE_Colour({r}, {g}, {b}, {a})', use)
         # VC7.1 may load the colour's address into a register BEFORE the byte stores (`pCVar11 = &CStack_230;
@@ -246,9 +249,12 @@ def isolate_gsi_vtable_temps(text: str) -> str:
         scope = re.sub(r'\(\*\*\(code \*\*\)\(' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)
         scope = re.sub(r'\(\*\*\(code \*\*\)\(\(int\)' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)
         scope = re.sub(r'\(\*\*\(' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)     # the untyped vcall spelling `(**(X + 0x118))(`
-        if re.search(r'\b' + re.escape(var) + r'\b', scope):
-            pos = m.end()          # other uses of the same temporary: leave this load alone
-            continue
+        # (other uses of the same name inside the scope are NOT this load's value: Ghidra merged two register
+        # lifetimes -- Orchard's ProcessGameRulesGood 0x00DD0F60 reloads the counter handle `iVar4 = iStack_10`,
+        # takes the vtable into `iVar4` on the Whisper branch, and passes the handle to RemoveQuestInfoElement on
+        # the other path. Leaving the load under the register's name made the lifter treat the register as the
+        # interface alias and back-fill the handle from the pool (`RemoveQuestInfoElement(ePriority)`, 2026-09-20
+        # audit). The vcalls take the alias; every other use keeps the register and its previous definition.)
         scope = re.sub(r'\(\*\(this \+ ' + m.group(3) + r'\)', '(*(int **)(this + ' + m.group(3) + ')', scope)   # the receiver operand without its cast
         text = head[:m.start()] + f'{m.group(1)}{alias} = **(int **)(this + {m.group(3)});\n' + scope + rest
         pos = m.start() + 1
@@ -385,6 +391,13 @@ def drop_eh_state_flags(text: str) -> str:
     CVar4 | 2); ... CCharString::CCharString(&xStack_4,"DoMission",-1)`). The casts are dropped and the
     slot's flag-phase lines (everything naming it before its first constructor) move onto the register, so
     the register is the one flag the rules above see (GuildTrainingWoodsMelee Main / DoMission)."""
+    # the sign test of a byte slice is a bit test (`CVar6._0_1_ < '\0'` = bit 0x80, `._1_1_` = 0x8000): Ghidra's
+    # rendering of `test byte, 0x80` on the flag word (TraderConflictEvil CTC_BanditFighter 0x00DF8970 -- the slice
+    # became a fresh nil scalar `CVar6_b0` under the byte-store rename, 2026-09-20 audit)
+    bitwise_early = {m.group(1) for m in re.finditer(r'\(uint\)(\w+) [|&] (?:0x[0-9a-f]+|\d+)', text)}
+    text = re.sub(r"\b(\w+)\._([01])_1_ (<|>=|>) (?:'\\0'|-1)(?![\w'])",
+                  lambda m: (f"(((uint){m.group(1)} & {'0x80' if m.group(2) == '0' else '0x8000'}) {'!=' if m.group(3) == '<' else '=='} 0)"
+                             if m.group(1) in bitwise_early else m.group(0)), text)
     bitwise = {m.group(1) for m in re.finditer(r'\(uint\)(\w+) [|&] (?:0x[0-9a-f]+|\d+)', text)}    # only a name in bit ops is state (a `(CCharString)0x0` movie/handle init stays)
     text = re.sub(r'\((?:CCharString|CCharString_bv|uint|byte|uchar|int \*)\)\(\(uint\)(\w+) ([|&]) (0x[0-9a-f]+|\d+)\)', r'\1 \2 \3', text)
     text = re.sub(r'\(\(uint\)(\w+) & (0x[0-9a-f]+|\d+)\) ([!=]= 0)', r'(\1 & \2) \3', text)

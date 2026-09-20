@@ -305,6 +305,15 @@ def _call_spans(text, label):
     return spans
 
 
+
+def _balanced(text):
+    depth = 0
+    for ch in text:
+        depth += {'(': 1, ')': -1}.get(ch, 0)
+        if depth < 0:
+            return False
+    return depth == 0
+
 def _align(site, args, vtable=False, receiver_printed=False):
     '''Entry-relative slots aligned with the printed arguments of one call, or None when the printed count
     cannot be reconciled with the recorded register/push operands (a by-value slot, a hidden return pointer
@@ -900,7 +909,10 @@ class UnitConverter:
             literal = by_site.get(int(site['site'], 16))
             if vtable or literal is None or len(args) != 3:
                 continue
-            if re.fullmatch(r'(?:\(int \*\))?(?:&\w+|piVar\d+)', args[2].strip()):
+            # (`(int *)pCVar4` too: the pointer temp Ghidra also handed to the GetDataString vcall as the hidden
+            # result, TraderToRescue 0x00DFF2CF / 0x00E00118 / the _FREED_10 site -- the readable appended the stale
+            # `getDataString` local instead of the suffix, 2026-09-20 audit)
+            if re.fullmatch(r'(?:\(int \*\))?(?:&\w+|p[iC]Var\d+)', args[2].strip()):
                 edits.append((a, e, f'{args[0]},{args[1]},"{literal}"'))
         for a, e, replacement in sorted(edits, reverse=True):
             decompile = decompile[:a] + replacement + decompile[e:]
@@ -988,6 +1000,17 @@ class UnitConverter:
             except (KeyError, ValueError):
                 continue
             pushes_at[addr] = expected_pushes(c) if expected_pushes(c) is not None else len(c.get('pushedStack') or [])
+            # __fastcall string helpers with ONE stack operand that VC7.1 pushes early (TraderToRescue 0x00DFF2DB:
+            # `push "_THREATEN"` sits above the GetDataString and operator+ calls until AppendCString at 0x00DFF308
+            # consumes it): the export's backward scan stops at the calls in between and records no push, so the
+            # walk skipped nothing and the enclosing AddLineToConversation took the literal as its speaker
+            # (`(id, text, "_THREATEN", 0, me)` -> `(hero, nil)` in the readable, 2026-09-20 audit)
+            try:
+                target = int(c.get('target', '0'), 16)
+            except ValueError:
+                target = 0
+            if target in (0x99F600, 0x99F690):        # CCharString::AppendCString(ecx dest, edx src, [const char*]); operator+(ecx dest, edx lit, [const CCharString&])
+                pushes_at[addr] = 1
         by_site = {int(site['site'], 16): (a, e, args) for a, e, args, site, key, vtable in entries}
         entry = int(fn['address'], 16)
         body = None
@@ -1120,6 +1143,10 @@ class UnitConverter:
                             edits.append((head + indent, head + indent, f'{name} = '))
                     rendered.append(name or '__unknown_push')
                 elif kind == 'expr' and value is not None:
+                    # (a register traced through a copy of an already-parenthesised lea comes back double-wrapped,
+                    # `((this + 8))`: the lifter's `me` receiver shape wants one pair)
+                    while value.startswith('((') and value.endswith('))') and _balanced(value[1:-1]):
+                        value = value[1:-1]
                     rendered.append(value)
                 else:
                     rendered.append('__unknown_push')

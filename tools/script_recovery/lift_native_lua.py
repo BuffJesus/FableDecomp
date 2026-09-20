@@ -1931,6 +1931,7 @@ class Lifter:
                 if value is not None and not value.startswith('"'):
                     self.mutable_scalars.add(assignment[1])
                 elif value is not None and (re.search(r'CCharString::operator=\([^;]*,\s*' + re.escape(assignment[1]) + r'\);', text)
+                                            or re.search(r'CCharString::CCharString\([^;]*,\s*' + re.escape(assignment[1]) + r'\s*,\s*-1\s*\);', text)   # constructed into a slot (`string = "GreatwoodEntrance"` / `"GreatwoodLake"`; `CCharString(&CStack_14, string, -1)`, Orchard Init 0x00DCC140, 2026-09-20 audit)
                                             or re.search(r'(?<![\w:])(?!CCharString)[A-Za-z_][\w:]*\((?:[^;()]*,)?\s*' + re.escape(assignment[1]) + r'\s*\)', text)):
                     # a literal chosen per branch and copied into a string slot (`pOther = "GUARD_RED"; ... operator=(slot, pOther)`)
                     # or handed to a helper (`pcVar14 = "CS_INTRO_NORTH"; ... PlayCutscene(this, pcVar14)`): a real variable
