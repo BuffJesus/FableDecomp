@@ -728,6 +728,13 @@ class UnitConverter:
 
     def __init__(self, tu_path, *, flat_control=False):
         self.manifest, self.slots, self.rdata = load_manifest(), load_slots(), RData()
+        # GiveHeroObject: retail GSI slot 0x1e4 takes a third bool (`GiveHeroObject(&name, -1, true)` at Gameflow stage 0
+        # and in GuildTraining RunTutorials at the teen transition, the five OBJECT_TATTOO_CARD_*_CUSTOM_01); the SDK
+        # manifest lists two parameters and the sidecar binding (sol::optional<bool>, value_or(false)) then gave the
+        # cards as visible pickups after the split AVI (2026-09-20 v6 run). Unit mode only: the Oakvale gate stays.
+        give = self.manifest.get('GiveHeroObject', {})
+        if give and [p.get('name') for p in give.get('parameters', [])] == ['objectDefName', 'amount']:
+            give['parameters'].append({'name': 'bUnknown', 'type': 'sol::optional<bool>', 'optional': True})
         for name, spec in {**host_bindings(), **sidecar_bindings()}.items():
             self.manifest.setdefault(name, spec)
         # sol::this_state is a binding artefact, never a Lua argument: drop it for arity checks.

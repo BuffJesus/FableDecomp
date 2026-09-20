@@ -399,9 +399,9 @@ def drop_eh_state_flags(text: str) -> str:
                   lambda m: (f"(((uint){m.group(1)} & {'0x80' if m.group(2) == '0' else '0x8000'}) {'!=' if m.group(3) == '<' else '=='} 0)"
                              if m.group(1) in bitwise_early else m.group(0)), text)
     bitwise = {m.group(1) for m in re.finditer(r'\(uint\)(\w+) [|&] (?:0x[0-9a-f]+|\d+)', text)}    # only a name in bit ops is state (a `(CCharString)0x0` movie/handle init stays)
-    text = re.sub(r'\((?:CCharString|CCharString_bv|uint|byte|uchar|int \*)\)\(\(uint\)(\w+) ([|&]) (0x[0-9a-f]+|\d+)\)', r'\1 \2 \3', text)
+    text = re.sub(r'\((?:CCharString|CCharString_bv|uint|byte|uchar|int \*|undefined \*\*)\)\(\(uint\)(\w+) ([|&]) (0x[0-9a-f]+|\d+)\)', r'\1 \2 \3', text)
     text = re.sub(r'\(\(uint\)(\w+) & (0x[0-9a-f]+|\d+)\) ([!=]= 0)', r'(\1 & \2) \3', text)
-    text = re.sub(r'^([ \t]*)(\w+) = \((?:CCharString|CCharString_bv|int \*)\)(0x[0-9a-f]+|\d+);',
+    text = re.sub(r'^([ \t]*)(\w+) = \((?:CCharString|CCharString_bv|int \*|undefined \*\*)\)(0x[0-9a-f]+|\d+);',
                   lambda m: f'{m.group(1)}{m.group(2)} = {int(m.group(3), 0)};' if m.group(2) in bitwise else m.group(0), text, flags=re.M)
     # A slot that is the flag first and something else later, with NO register copy in between (GuildTrainingMelee
     # TheRealGuildmaster 0x00D58490: `int *piStack_23c` = the temp-destruction flag of the MsgIsHitByHero string,
@@ -412,27 +412,58 @@ def drop_eh_state_flags(text: str) -> str:
     phase_shapes = [re.compile(r'^[ \t]*(\w+) = \d+;[ \t]*$'),
                     re.compile(r'^[ \t]*(\w+) = \1 [|&] (?:0x[0-9a-f]+|\d+);[ \t]*$'),
                     re.compile(r'^[ \t]*(?:\} else )?if \(\((\w+) & (?:0x[0-9a-f]+|\d+)\) [!=]= 0\) \{[ \t]*$'),
-                    re.compile(r'^[ \t]*(?:CCharString|uint|byte|int|undefined4|int \*) \*?(\w+)(?: \[\d+\])?;[ \t]*$')]
+                    re.compile(r'^[ \t]*(?:CCharString|CCharString_bv|uint|byte|int|undefined4|int \*|undefined \*\*) \*?(\w+)(?: \[\d+\])?;[ \t]*$')]
     for slot in sorted(bitwise):
-        if not re.search(r'^[ \t]*' + re.escape(slot) + r' = 0;[ \t]*$', text, re.M):
-            continue
         lines = text.split('\n')
-        phase, cut = [], None
-        for i, l in enumerate(lines):
-            if not re.search(r'\b' + re.escape(slot) + r'\b', l):
+        name_re = re.compile(r'\b' + re.escape(slot) + r'\b')
+        decl_re = re.compile(r'^[ \t]*(?:CCharString|CCharString_bv|uint|byte|int|undefined4|int \*|undefined \*\*) \*?' + re.escape(slot))
+        init_re = re.compile(r'^[ \t]*' + re.escape(slot) + r' = 0;[ \t]*$')
+        set_re = re.compile(r'^[ \t]*' + re.escape(slot) + r' = ' + re.escape(slot) + r' \| ')
+        k = 0
+        # every `X = 0;` may open a flag phase: the lines naming X from there up to the first non-flag definition /
+        # address-taking (MeleeOpponent 0x00D56790: the movie handle lives in the slot FIRST, the block-stage flag
+        # later -- a phase at the start only was not enough, `movie & 1` on nil left the blocks at 0/5, 2026-09-20)
+        for start, l in enumerate(lines):
+            if not init_re.match(l):
                 continue
-            if any(sh.match(l) and sh.match(l).group(1) == slot for sh in phase_shapes):
-                phase.append(i)
+            phase = [start]
+            for i in range(start + 1, len(lines)):
+                l2 = lines[i]
+                if not name_re.search(l2) or decl_re.match(l2):
+                    continue
+                if init_re.match(l2):
+                    break                          # the next phase's own init
+                if any(sh.match(l2) and sh.match(l2).group(1) == slot for sh in phase_shapes):
+                    phase.append(i)
+                    continue
+                break
+            if not any(set_re.match(lines[i]) for i in phase):
                 continue
-            cut = i
-            break
-        if cut is None or not phase or not any(re.match(r'^[ \t]*' + re.escape(slot) + r' = ' + re.escape(slot) + r' \| ', lines[i]) for i in phase):
-            continue
-        reg = 'ehflag_' + re.sub(r'\W', '_', slot)
-        for i in phase:
-            if not re.match(r'^[ \t]*(?:CCharString|uint|byte|int|undefined4|int \*) \*?' + re.escape(slot), lines[i]):
-                lines[i] = re.sub(r'\b' + re.escape(slot) + r'\b', reg, lines[i])
+            k += 1
+            reg = 'ehflag_' + re.sub(r'\W', '_', slot) + (f'_{k}' if k > 1 else '')
+            for i in phase:
+                lines[i] = name_re.sub(reg, lines[i])
         text = '\n'.join(lines)
+        # A slot with flag shapes AND a non-flag definition (a movie / resource handle borrowed the slot between the
+        # flag's top-of-function init and its use: MeleeOpponent's `xStack_bc = RESOURCE_StartMovie("")` at line 136,
+        # `xStack_bc = xStack_bc | 1` at 369) has no contiguous phase; there the flag-shaped lines are the EH flag
+        # wherever they are (a real bit-mask variable is never also a handle).
+        lines = text.split('\n')
+        flag_lines = [i for i, l in enumerate(lines) if name_re.search(l) and not decl_re.match(l)
+                      and any(sh.match(l) and sh.match(l).group(1) == slot for sh in phase_shapes)]
+        # (a handle life of the slot: a folded object constructor, or -- this early in the pipeline -- the inline
+        # vtable stores of a movie / resource object and thing-cast reads of it)
+        other_defs = [i for i, l in enumerate(lines)
+                      if (re.match(r'^[ \t]*' + re.escape(slot) + r'(?:\[0\])? = (?:&PTR_|RESOURCE_\w+\(|ACTORMAP_New\(|STRINGMAP_New\(|QUESTTHING_Empty\(|GSI->\w+\()', l)
+                          or re.search(r'\(CScriptThing(?:_bv)? \*\)' + re.escape(slot) + r'\b', l))
+                      and i not in flag_lines]
+        if 'Stack_' in slot and other_defs and any(set_re.match(lines[i]) for i in flag_lines):
+            k += 1
+            reg = 'ehflag_' + re.sub(r'\W', '_', slot) + (f'_{k}' if k > 1 else '')
+            for i in flag_lines:
+                if not init_re.match(lines[i]) or i > other_defs[0]:      # the top-of-function init before a handle stays a harmless 0
+                    lines[i] = name_re.sub(reg, lines[i])
+            text = '\n'.join(lines)
     for m in list(re.finditer(r'^[ \t]*(\w+) = (\w+)(?: & (?:0x[0-9a-f]+|\d+))?;[ \t]*$', text, re.M)):
         reg, slot = m.group(1), m.group(2)
         if reg == slot or not re.search(r'^[ \t]*' + re.escape(slot) + r' = 0;[ \t]*$', text, re.M):
@@ -443,14 +474,16 @@ def drop_eh_state_flags(text: str) -> str:
             continue
         phase = [l for l in head.splitlines() if re.search(r'\b' + re.escape(slot) + r'\b', l)]
         flag_shapes = [re.compile(r'^[ \t]*' + re.escape(slot) + r' = \d+;[ \t]*$'),
+                       re.compile(r'^[ \t]*' + re.escape(slot) + r' = ' + re.escape(slot) + r' [|&] (?:0x[0-9a-f]+|\d+);[ \t]*$'),   # the slot's own set / clear before the register copy (WoodsWill 0x00D67890)
                        re.compile(r'^[ \t]*(?:\} else )?if \(\(' + re.escape(slot) + r' & (?:0x[0-9a-f]+|\d+)\) [!=]= 0\) \{[ \t]*$'),
                        re.compile(r'^[ \t]*' + re.escape(reg) + r' = ' + re.escape(slot) + r'(?: [|&] (?:0x[0-9a-f]+|\d+))?;[ \t]*$'),
-                       re.compile(r'^[ \t]*(?:CCharString|uint|byte|int|undefined4) ' + re.escape(slot) + r'(?: \[\d+\])?;[ \t]*$')]
+                       re.compile(r'^[ \t]*(?:CCharString|CCharString_bv|uint|byte|int|undefined4|int \*|undefined \*\*) \*?' + re.escape(slot) + r'(?: \[\d+\])?;[ \t]*$')]
         if not phase or not all(any(sh.match(l) for sh in flag_shapes) for l in phase):
             continue
         head = re.sub(r'^[ \t]*' + re.escape(reg) + r' = ' + re.escape(slot) + r';[ \t]*\r?\n', '', head, flags=re.M)
         head = re.sub(r'^([ \t]*)' + re.escape(reg) + r' = ' + re.escape(slot) + r' ([|&] (?:0x[0-9a-f]+|\d+));', lambda mm: f'{mm.group(1)}{reg} = {reg} {mm.group(2)};', head, flags=re.M)
         head = re.sub(r'^([ \t]*)' + re.escape(slot) + r' = (\d+);', lambda mm: f'{mm.group(1)}{reg} = {mm.group(2)};', head, flags=re.M)
+        head = re.sub(r'^([ \t]*)' + re.escape(slot) + r' = ' + re.escape(slot) + r' ([|&] (?:0x[0-9a-f]+|\d+));', lambda mm: f'{mm.group(1)}{reg} = {reg} {mm.group(2)};', head, flags=re.M)
         head = head.replace('(' + slot + ' & ', '(' + reg + ' & ')
         text = head + tail
     seeds = {m.group(1) for m in re.finditer(r'^[ \t]*(\w+) = !(\w+) && \2;', text, re.M)}

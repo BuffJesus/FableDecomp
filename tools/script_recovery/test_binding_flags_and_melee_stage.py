@@ -78,6 +78,27 @@ class MeleeStageTests(unittest.TestCase):
             self.assertNotRegex(text, r'RemoveThing\(\w+ \+ \w+', 'arithmetic on the apple list')
 
 
+class InGameRun3Tests(unittest.TestCase):
+    """The 13:45 v6 run: tattoo cards given as visible pickups at the teen transition, blocks stuck at 0/5."""
+
+    def test_teen_transition_tattoo_gives_are_silent(self):
+        # retail: GiveHeroObject(&name, -1, true) on GSI slot 0x1e4 (RunTutorials 0x00D45DD0 and Gameflow stage 0)
+        for p in (GUILD / 'GuildTraining/GuildTraining.lua', LIFTED / 'Gameflow/readable/FSE/Gameflow/Gameflow.lua'):
+            text = read(p)
+            self.assertRegex(text, r'GiveHeroObject\("OBJECT_TATTOO_CARD_CHEST_CUSTOM_01", -1, true\)', str(p))
+            self.assertNotRegex(text, r'GiveHeroObject\("OBJECT_TATTOO_CARD_\w+", -1\)', str(p))
+
+    def test_melee_opponent_block_stage_has_no_flag_residue(self):
+        # the EH flag borrowed the movie handle's slot (`movie & 1` on nil killed Main on the first block)
+        for stage in (GUILD, GUILD_DRAFT):
+            text = read(stage / 'GuildTrainingMelee/Entities/TheRealGuildmaster.lua'.replace('TheRealGuildmaster', 'MeleeOpponent'))
+            self.assertNotRegex(text, r'\w+ & [12]\)? ~= 0')
+            self.assertNotIn('unlifted', text)
+            self.assertIn('IsPlayerCreatureBlocking()', text)
+        will = read(GUILD / 'GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua')
+        self.assertNotRegex(will, r'scratchValue\d* & 2')
+
+
 class TraderAbilityTests(unittest.TestCase):
     def test_special_ability_enum_is_passed(self):
         for f in ('TraderConflictEvil/Entities/TC_BanditFighter.lua', 'TraderConflictEvil/Entities/TC_Villager.lua',
