@@ -48,7 +48,7 @@ function Main(quest, me)
     ::LAB_00d434fc::
     if not bVar4 then
         repeat
-            bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+            bVar4 = me:MsgIsHitByHeroSpecialAbility(0xb)
             if bVar4 then
                 goto LAB_00d43568
             else
@@ -81,7 +81,7 @@ function Main(quest, me)
     if bVar4 then
         return
     end
-    bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+    bVar4 = me:MsgIsHitByHeroSpecialAbility(0xb)
     if bVar4 then
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive

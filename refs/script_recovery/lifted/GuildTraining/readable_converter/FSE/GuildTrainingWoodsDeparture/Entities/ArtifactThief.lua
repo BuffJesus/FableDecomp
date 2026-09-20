@@ -6,6 +6,8 @@ local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_LampCost = 3860,  -- 50.0
@@ -75,7 +77,7 @@ function Main(quest, me)
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     scratchValue = scratchValue42 | 7
                     scratchValue43 = scratchValue
-                    if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00d6280c end
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d6280c end
                 end
                 predicateResult4 = false
             end
@@ -317,7 +319,7 @@ function Main(quest, me)
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue41 = scratchValue42 | 56
                 scratchValue43 = scratchValue41
-                if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00d63b21 end
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d63b21 end
             end
             predicateResult20 = false
         end

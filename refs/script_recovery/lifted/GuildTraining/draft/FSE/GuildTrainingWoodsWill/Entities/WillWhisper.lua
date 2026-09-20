@@ -51,7 +51,7 @@ function Main(quest, me)
                     if bVar4 then
                         bVar4 = true
                         bVar2 = true
-                        bVar3 = me:MsgIsHitByHeroSpecialAbility(me)
+                        bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar3 then goto LAB_00d689df end
                     end
                     bVar4 = true
@@ -72,7 +72,7 @@ function Main(quest, me)
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d68acf end
                     quest:EntitySetInFaction(me, "FACTION_HERO")
-                    me:SetFriendsWithEverythingFlag(me)
+                    me:SetFriendsWithEverythingFlag(true)
                 end
                 if quest:GetStateBool("WhisperAnimate") then
                     alive = not quest:IsActiveThreadTerminating()

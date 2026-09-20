@@ -165,7 +165,7 @@ function Main(quest, me)
                 -- TODO(native): unaff_EBP = uVar12 | 0x18;
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     -- TODO(native): unaff_EBP = uVar12 | 0x38;
-                    if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00dfe8b5 end
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dfe8b5 end
                 end
                 predicateResult5 = false
             end

@@ -38,7 +38,7 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     playerNotWarned = true
     scratchValue4 = 0
     timerId3 = quest:RegisterTimer()

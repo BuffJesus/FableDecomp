@@ -1,6 +1,8 @@
 -- Readable native conversion: WillWhisper. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- WillWhisper.Main (retail 0x00d68810)
 function Main(quest, me)
     local resources = quest:RetailResources()
@@ -22,7 +24,7 @@ function Main(quest, me)
             goto LAB_00d689df
         else
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00d689df end
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d689df end
             end
             predicateResult = false
         end
@@ -32,7 +34,7 @@ function Main(quest, me)
         ::FLOW_past_lab_00d689df::
         if predicateResult then
             quest:EntitySetInFaction(me, "FACTION_HERO")
-            me:SetFriendsWithEverythingFlag(me)
+            me:SetFriendsWithEverythingFlag(true)
         end
         if quest:GetStateBool("WhisperAnimate") then
             if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end

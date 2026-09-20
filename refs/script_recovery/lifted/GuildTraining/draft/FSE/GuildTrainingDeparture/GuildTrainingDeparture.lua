@@ -4,7 +4,7 @@
 function Main(quest)
     local pQuestName
     local alive = true
-    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingDeparture/Entities/TheRealGuildmaster")
+    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingDeparture/Entities/TheRealGuildmaster", 1)
     quest:FinalizeEntityBindings()
     local bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
     while not bVar2 do

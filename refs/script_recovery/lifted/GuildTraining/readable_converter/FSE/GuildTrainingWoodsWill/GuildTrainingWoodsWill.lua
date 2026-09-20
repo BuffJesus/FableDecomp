@@ -18,7 +18,7 @@ function Main(quest)
     quest:SetStateBool("MissionOver", false)
     quest:SetStateBool("WhisperAnimate", false)
     quest:SetStateBool("BanditsAlive", true)
-    quest:AddEntityBinding("WillWhisper", "GuildTrainingWoodsWill/Entities/WillWhisper")
+    quest:AddEntityBinding("WillWhisper", "GuildTrainingWoodsWill/Entities/WillWhisper", 1)
     quest:FinalizeEntityBindings()
     while not quest:IsLevelLoaded("GuildWoods") do
         if not quest:NewScriptFrame() then return end
@@ -86,7 +86,7 @@ function Main(quest)
                 quest:GiveThingBestEnemyTarget(willBandit[scratchValue3 + 1], hero)
                 local scratchValue6 = willBandit[scratchValue3 + 1]
                 quest:ModifyThingHealth(scratchValue6, 15.0 - quest:GetHealth(scratchValue6), false)
-                -- TODO(native): (**(code **)(*(int *)xStack_7c[(iVar12) / 0xc + 1] + 0x118))(0);
+                willBandit[scratchValue3 + 1]:SetToKillOnLevelUnload(0)
                 ctr_88 = ctr_88 + 1
                 scratchValue3 = scratchValue3 + 1
             until ctr_88 >= #willBandit

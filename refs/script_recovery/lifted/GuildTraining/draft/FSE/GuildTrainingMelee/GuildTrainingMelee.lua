@@ -5,9 +5,9 @@ function Main(quest)
     local resources = quest:RetailResources()
     local bUnknown, bVar6, iVar8, native_arg_sequence_1, pCVar4, pPosition, pThingToMove, pppuVar7, r1, xStack_10, xStack_20
     local alive = true
-    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingMelee/Entities/TheRealGuildmaster")
-    quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent")
-    quest:AddEntityBinding("MeleeThunder", "GuildTrainingMelee/Entities/MeleeThunder")
+    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingMelee/Entities/TheRealGuildmaster", 1)
+    quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent", 1)
+    quest:AddEntityBinding("MeleeThunder", "GuildTrainingMelee/Entities/MeleeThunder", 1)
     quest:FinalizeEntityBindings()
     bUnknown = 0
     pCVar4 = quest:GetThingWithScriptName("M_MeleeTeacherStand")

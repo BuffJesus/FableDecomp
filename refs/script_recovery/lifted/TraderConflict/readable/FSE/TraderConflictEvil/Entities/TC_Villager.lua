@@ -1,6 +1,8 @@
 -- Readable native conversion: TC_Villager. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- TC_Villager.Main (retail 0x00df9180)
 function Main(quest, me)
     local predicateResult, predicateResult6
@@ -23,7 +25,7 @@ function Main(quest, me)
         if not me:MsgIsHitBy("") then goto LAB_00df9372 end
         if me:MsgIsHitByHero() then goto LAB_00df9372 end
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df9372 end
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df9372 end
         end
         predicateResult = true
         goto FLOW_past_lab_00df9372
@@ -37,7 +39,7 @@ function Main(quest, me)
                 goto LAB_00df9462
             else
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df9462 end
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df9462 end
                 end
                 predicateResult6 = false
             end

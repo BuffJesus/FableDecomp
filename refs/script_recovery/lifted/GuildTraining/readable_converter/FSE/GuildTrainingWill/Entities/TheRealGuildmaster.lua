@@ -20,8 +20,8 @@ function Main(quest, me)
     local isActiveThreadTerminating, taskRunning, taskRunning4, c_stk_22d_1, c_stk_22d_2, ctr_22c
     local tutorialState, scratchValue6, questionAnswer, questionAnswer2, questionAnswer3
     local questionAnswer4, questionAnswer5, scratchValue9, index, willApprentice, willApprentice2
-    local willApprentice3, grade, resource, actorMap2, movie2, infoElement, resource2, resource3
-    local actorMap3, timerId, timerId5, timerId6, timerId7, timerId8, resource6
+    local willApprentice3, grade, resource, actorMap2, movie2, resource2, resource3, actorMap3
+    local timerId, timerId6, timerId7, timerId8, timerId9
     local resource4 = resources:NewResource()
     resources:PrepareResource(resource4)
     while not resources:TryAcquire(resource4, me, 4) do
@@ -37,15 +37,15 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, false, false)
     quest:SetPlayerUsingWillDummies(true)
     quest:SetIsPushableByHero(me, false)
-    timerId7 = quest:RegisterTimer()
     timerId8 = quest:RegisterTimer()
-    quest:SetTimer(timerId8, 0)
+    timerId9 = quest:RegisterTimer()
+    quest:SetTimer(timerId9, 0)
     ctr_22c = 0
     quest:EntitySetTargetingType(me, 26)
     if not quest:GetStateBool("TestFinished") then
         if quest:IsActiveThreadTerminating() then
+            quest:DeregisterTimer(timerId9)
             quest:DeregisterTimer(timerId8)
-            quest:DeregisterTimer(timerId7)
             resources:ReleaseResource(resource4)
             return
         end
@@ -67,8 +67,8 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(resource2)
+                                quest:DeregisterTimer(timerId9)
                                 quest:DeregisterTimer(timerId8)
-                                quest:DeregisterTimer(timerId7)
                                 resources:ReleaseResource(resource4)
                                 do return end
                             end
@@ -79,11 +79,11 @@ function Main(quest, me)
                     resources:DestroyMovie(resource2)
                 end
             end
-            if (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId8) < 1) and not me:IsPerformingScriptTask() then
+            if (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId9) < 1) and not me:IsPerformingScriptTask() then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d61b69 end
                 local conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, hero)
-                quest:SetTimer(timerId8, 10)
+                quest:SetTimer(timerId9, 10)
                 if ctr_22c == 0 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_WILL_COMMENT_FIRST", me, hero, false)
@@ -142,8 +142,8 @@ function Main(quest, me)
                     quest:AddLogbookTutorialEntryPC("TEXT_QST_LOG_COMBAT_USINGSPELLS")
                 end
                 quest:SetMasterGameState("WillScore", 0)
-                timerId6 = quest:RegisterTimer()
-                quest:SetTimer(timerId6, 0)
+                timerId7 = quest:RegisterTimer()
+                quest:SetTimer(timerId7, 0)
                 tutorialState = quest:GetStateInt("TutorialState")
                 c_stk_22d_1 = 0
                 while tutorialState == 2 do
@@ -153,15 +153,15 @@ function Main(quest, me)
                         if me:IsTalkedToByHero() then
                             c_stk_22d_1 = 1
                         end
-                        if quest:GetTimer(timerId6) < 1 then
+                        if quest:GetTimer(timerId7) < 1 then
                             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                            quest:SetTimer(timerId6, 2)
+                            quest:SetTimer(timerId7, 2)
                         end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d6138b end
                     if quest:GetMasterGameState("WillScore") ~= 0 then
                         quest:SetStateInt("TutorialState", 3)
-                        resource6 = resources:NewResource()
+                        local resource6 = resources:NewResource()
                         resources:PrepareResource(resource6)
                         while not resources:TryAcquire(resource6, hero, 4) do
                             if not quest:NewScriptFrame(me) then goto LAB_00d60aff end
@@ -170,7 +170,7 @@ function Main(quest, me)
                         goto FLOW_past_lab_00d60aff
                         ::LAB_00d60aff::
                         resources:ReleaseResource(resource6)
-                        quest:DeregisterTimer(timerId6)
+                        quest:DeregisterTimer(timerId7)
                         goto LAB_00d61b69
                         ::FLOW_past_lab_00d60aff::
                         local actorMap = resources:NewActorMap()
@@ -239,29 +239,29 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then goto LAB_00d6138b end
                     end
                 end
-                timerId5 = quest:RegisterTimer()
-                quest:SetTimer(timerId5, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillTimer))))
+                timerId6 = quest:RegisterTimer()
+                quest:SetTimer(timerId6, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillTimer))))
                 quest:SetStateInt("TutorialState", 3)
                 quest:SetMasterGameState("WillScore", 0)
                 timerId = quest:RegisterTimer()
                 quest:SetTimer(ctr_22c, 0)
                 local addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-                infoElement = quest:AddQuestInfoTimer(timerId5, "HUD_CLOCK_ICON", 1.0)
+                local infoElement = quest:AddQuestInfoTimer(timerId6, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 c_stk_22d_2 = 0
-                quest:SetTimer(timerId6, 0)
-                while 0 < quest:GetTimer(timerId5) and c_stk_22d_2 == 0 do
+                quest:SetTimer(timerId7, 0)
+                while 0 < quest:GetTimer(timerId6) and c_stk_22d_2 == 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d61379 end
-                    if quest:GetTimer(timerId6) < 1 then
+                    if quest:GetTimer(timerId7) < 1 then
                         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                        quest:SetTimer(timerId6, 2)
+                        quest:SetTimer(timerId7, 2)
                     end
                     quest:SetMasterGameState("WillTestOccuring", true)
                     if quest:GetMasterGameState("GuildWarningOccuring") then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d61379 end
                         c_stk_22d_2 = 1
                     end
-                    if quest:GetHeroWillEnergy() == 0 and quest:GetTimer(timerId8) < 1 then
+                    if quest:GetHeroWillEnergy() == 0 and quest:GetTimer(timerId9) < 1 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d61379 end
                         local conversationId2 = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(conversationId2, hero)
@@ -300,7 +300,7 @@ function Main(quest, me)
                 quest:SetStateInt("TutorialState", 0)
                 resource3 = resources:NewResource()
                 resources:PrepareResource(resource3)
-                while not resources:TryAcquire(resource6, hero, 4) do
+                while not resources:TryAcquire(resource3, hero, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00d61370 end
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d61370 end
@@ -309,12 +309,12 @@ function Main(quest, me)
                 quest:FixMovieSequenceCamera(true)
                 if c_stk_22d_2 == 0 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d6135b end
-                    infoElement = quest:GetMasterGameState("WillScore")
+                    local getMasterGameState = quest:GetMasterGameState("WillScore")
                     index = 0
                     scratchValue6 = 0
                     repeat
                         scratchValue9 = scratchValue6
-                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, index) < infoElement ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, index) == infoElement) then
+                        if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, index) < getMasterGameState ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, index) == getMasterGameState) then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d6135b end
                             break
                         end
@@ -473,8 +473,8 @@ function Main(quest, me)
                 resources:DestroyActorMap(actorMap3)
                 resources:ReleaseResource(resource3)
                 quest:DeregisterTimer(timerId)
-                quest:DeregisterTimer(timerId5)
                 quest:DeregisterTimer(timerId6)
+                quest:DeregisterTimer(timerId7)
             until not isActiveThreadTerminating
             if not quest:IsActiveThreadTerminating() then goto LAB_00d6070e end
         end
@@ -491,8 +491,8 @@ function Main(quest, me)
     willApprentice = quest:GetThingWithScriptName("WillApprentice")
     if not (willApprentice ~= nil and willApprentice:IsAlive()) then
         if quest:IsActiveThreadTerminating() then
+            quest:DeregisterTimer(timerId9)
             quest:DeregisterTimer(timerId8)
-            quest:DeregisterTimer(timerId7)
             resources:ReleaseResource(resource4)
             return
         end
@@ -521,8 +521,8 @@ function Main(quest, me)
         ::FLOW_past_lab_00d6158a::
         if isActiveThreadTerminating then
             if quest:IsActiveThreadTerminating() then
+                quest:DeregisterTimer(timerId9)
                 quest:DeregisterTimer(timerId8)
-                quest:DeregisterTimer(timerId7)
                 resources:ReleaseResource(resource4)
                 return
             end
@@ -601,8 +601,8 @@ function Main(quest, me)
     resources:DestroyMovie(resource2)
     goto LAB_00d61b69
     ::FLOW_hoist_lab_00d61b5a_3::
+    quest:DeregisterTimer(timerId9)
     quest:DeregisterTimer(timerId8)
-    quest:DeregisterTimer(timerId7)
     resources:ReleaseResource(resource4)
     do return end
     ::FLOW_hoist_lab_00d61b5a_4::
@@ -753,12 +753,12 @@ function Main(quest, me)
     resources:ReleaseResource(resource3)
     ::LAB_00d61379::
     quest:DeregisterTimer(timerId)
-    quest:DeregisterTimer(timerId5)
-    ::LAB_00d6138b::
     quest:DeregisterTimer(timerId6)
-    ::LAB_00d61b69::
-    quest:DeregisterTimer(timerId8)
+    ::LAB_00d6138b::
     quest:DeregisterTimer(timerId7)
+    ::LAB_00d61b69::
+    quest:DeregisterTimer(timerId9)
+    quest:DeregisterTimer(timerId8)
     ::LAB_00d61b7b::
     resources:ReleaseResource(resource4)
 end

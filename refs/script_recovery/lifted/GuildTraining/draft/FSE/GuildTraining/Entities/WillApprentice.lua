@@ -47,7 +47,7 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     r1 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
     quest:EntityAttachToVillage(me, r1)
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     c_stk_131 = 0
     r2 = quest:GetThingWithScriptName("WillApprenticeTargetMarker")
     xStack_150 = quest:RegisterTimer()

@@ -31,7 +31,7 @@
       "unusedAlive": 0,
       "flagTests": 5,
       "declarations": 12,
-      "decimalLiterals": 0
+      "decimalLiterals": 2
      }
     },
     {
@@ -390,7 +390,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 4,
+     "sourceLine": 6,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -399,7 +399,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 49,
+     "sourceLine": 51,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -408,7 +408,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 52,
+     "sourceLine": 54,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -417,7 +417,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 55,
+     "sourceLine": 57,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -707,7 +707,7 @@
       "unusedAlive": 0,
       "flagTests": 14,
       "declarations": 16,
-      "decimalLiterals": 12
+      "decimalLiterals": 15
      }
     },
     {
@@ -1521,7 +1521,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 7,
+     "sourceLine": 9,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1530,7 +1530,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 160,
+     "sourceLine": 162,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1539,7 +1539,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 164,
+     "sourceLine": 166,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1548,7 +1548,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 167,
+     "sourceLine": 169,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1837,7 +1837,7 @@
       "unusedAlive": 0,
       "flagTests": 9,
       "declarations": 19,
-      "decimalLiterals": 0
+      "decimalLiterals": 1
      }
     },
     {
@@ -2672,7 +2672,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 9,
+     "sourceLine": 11,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2681,7 +2681,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 116,
+     "sourceLine": 118,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2690,7 +2690,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 121,
+     "sourceLine": 123,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2699,7 +2699,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 124,
+     "sourceLine": 126,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3710,7 +3710,7 @@
       "unusedAlive": 0,
       "flagTests": 7,
       "declarations": 14,
-      "decimalLiterals": 2
+      "decimalLiterals": 4
      }
     },
     {
@@ -4244,7 +4244,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 4,
+     "sourceLine": 6,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4253,7 +4253,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 75,
+     "sourceLine": 77,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4262,7 +4262,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 78,
+     "sourceLine": 80,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4271,7 +4271,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 81,
+     "sourceLine": 83,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -9568,7 +9568,7 @@
       "unusedAlive": 0,
       "flagTests": 41,
       "declarations": 54,
-      "decimalLiterals": 35
+      "decimalLiterals": 36
      }
     },
     {

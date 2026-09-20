@@ -20,13 +20,13 @@ local SCRIPT_DEF = {
 function Main(quest)
     local allCreaturesIndex, scratchValue
     scratchValue = 0
-    quest:AddEntityBinding("TraderToRescue", "TraderConflictGood/Entities/TraderToRescue")
-    quest:AddEntityBinding("TC_BanditGuard", "TraderConflictGood/Entities/TC_BanditGuard")
-    quest:AddEntityBinding("TC_BanditHostageKeeper", "TraderConflictGood/Entities/TC_BanditHostageKeeper")
+    quest:AddEntityBinding("TraderToRescue", "TraderConflictGood/Entities/TraderToRescue", 1)
+    quest:AddEntityBinding("TC_BanditGuard", "TraderConflictGood/Entities/TC_BanditGuard", 1)
+    quest:AddEntityBinding("TC_BanditHostageKeeper", "TraderConflictGood/Entities/TC_BanditHostageKeeper", 1)
     quest:AddEntityBinding("BCMTrader", "TraderConflictGood/Entities/BCMTrader")
     quest:AddEntityBinding("BCGameMaster", "TraderConflictGood/Entities/BCGameMaster")
     quest:AddEntityBinding("BanditExtra", "TraderConflictGood/Entities/BanditExtra")
-    quest:AddEntityBinding("CampHostageDoor", "TraderConflictGood/Entities/CampHostageDoor")
+    quest:AddEntityBinding("CampHostageDoor", "TraderConflictGood/Entities/CampHostageDoor", 1)
     quest:FinalizeEntityBindings()
     while not quest:IsRegionLoaded("BanditCampEntrance") do
         if not quest:NewScriptFrame() then return end

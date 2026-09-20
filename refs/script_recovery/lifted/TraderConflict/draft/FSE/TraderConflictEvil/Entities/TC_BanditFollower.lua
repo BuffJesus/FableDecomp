@@ -137,7 +137,7 @@ function Main(quest, me)
                             bVar7 = true
                             bVar4 = true
                             bVar3 = true
-                            bVar5 = me:MsgIsHitByHeroSpecialAbility(me)
+                            bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar5 then goto LAB_00df8518 end
                         end
                         goto LAB_00df851c

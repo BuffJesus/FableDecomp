@@ -108,7 +108,7 @@ function Main(quest, me)
                 if bVar2 then
                     uVar10 = uVar9 | 7
                     u_stk_174 = uVar10
-                    bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
+                    bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar2 then goto LAB_00d6280c end
                 end
                 bVar2 = false
@@ -656,7 +656,7 @@ function Main(quest, me)
                 if bVar2 then
                     uVar10 = uVar9 | 0x38
                     u_stk_174 = uVar10
-                    bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
+                    bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar2 then goto LAB_00d63b21 end
                 end
                 bVar2 = false

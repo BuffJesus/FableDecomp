@@ -5,13 +5,13 @@ function Main(quest)
     local CVar1, CVar11, bVar10, iVar9, pCVar4, pCVar5, pQuestName, uVar8
     local alive = true
     uVar8 = 0
-    quest:AddEntityBinding("TraderToRescue", "TraderConflictGood/Entities/TraderToRescue")
-    quest:AddEntityBinding("TC_BanditGuard", "TraderConflictGood/Entities/TC_BanditGuard")
-    quest:AddEntityBinding("TC_BanditHostageKeeper", "TraderConflictGood/Entities/TC_BanditHostageKeeper")
+    quest:AddEntityBinding("TraderToRescue", "TraderConflictGood/Entities/TraderToRescue", 1)
+    quest:AddEntityBinding("TC_BanditGuard", "TraderConflictGood/Entities/TC_BanditGuard", 1)
+    quest:AddEntityBinding("TC_BanditHostageKeeper", "TraderConflictGood/Entities/TC_BanditHostageKeeper", 1)
     quest:AddEntityBinding("BCMTrader", "TraderConflictGood/Entities/BCMTrader")
     quest:AddEntityBinding("BCGameMaster", "TraderConflictGood/Entities/BCGameMaster")
     quest:AddEntityBinding("BanditExtra", "TraderConflictGood/Entities/BanditExtra")
-    quest:AddEntityBinding("CampHostageDoor", "TraderConflictGood/Entities/CampHostageDoor")
+    quest:AddEntityBinding("CampHostageDoor", "TraderConflictGood/Entities/CampHostageDoor", 1)
     quest:FinalizeEntityBindings()
     bVar10 = quest:IsRegionLoaded("BanditCampEntrance")
     while not bVar10 do

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, this_01, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_264, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
+    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_1d4, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, this_01, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_264, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
     local function __cleanup_LAB_00d5a916()
         resources:ReleaseResource(xStack_84)
@@ -158,7 +158,6 @@ function Main(quest, me)
         cVar4 = me:IsTalkedToByHero()
         if not cVar4 then
             if (not quest:GetStateBool("EarlyHitWhisper")) or (not quest:GetStateBool("WhisperArrived")) then
-                -- TODO(native): xStack_23c = (int *)((uint)xStack_23c | 1);
                 cVar4 = me:MsgIsHitByHero()
                 if cVar4 then goto LAB_00d586db end
                 bVar3 = false
@@ -169,9 +168,6 @@ function Main(quest, me)
             ::LAB_00d586db::
             bVar3 = true
             ::FLOW_past_lab_00d586db::
-            if (xStack_23c & 1) ~= 0 then
-                -- TODO(native): xStack_23c = (int *)((uint)xStack_23c & 0xfffffffe);
-            end
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -599,7 +595,7 @@ function Main(quest, me)
             quest:DisplayQuestInfo(true)
             fVar19 = 1.0
             pCVar5 = quest:GetThingWithScriptName("MeleeOpponent")
-            r4 = quest:AddQuestInfoBarHealth(pCVar5, pCVar11, "HUD_WHISPER_ICON", fVar19)
+            r4 = quest:AddQuestInfoBarHealth(pCVar5, {R = 255, G = 255, B = 255, A = 255}, "HUD_WHISPER_ICON", fVar19)
             pCVar5 = quest:GetHero()
             fret_02 = quest:GetHealth(pCVar5)
             f_stk_70 = fret_02
@@ -651,14 +647,14 @@ function Main(quest, me)
             quest:ClearAllRumbles()
             pCVar5 = quest:GetHero()
             fret_06 = quest:GetHealth(pCVar5)
-            -- TODO(native): xStack_1d4 = (CCharString)(float)fret_06;
+            f_stk_1d4 = fret_06
             fret_07 = quest:GetHealth(r1)
             ixVar13 = 0
-            -- TODO(native): xStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)xStack_1d4));
+            f_stk_1d4 = ((f_stk_74 - fret_07) - (f_stk_70 - f_stk_1d4))
             iVar7 = 0
             repeat
                 iVar6 = iVar7
-                if quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) == xStack_1d4) then
+                if quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) < f_stk_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xeb4, ixVar13) == f_stk_1d4) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then __cleanup_LAB_00d5a9a7(); return end

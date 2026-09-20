@@ -35,20 +35,20 @@ function Main(quest)
             if quest:IsActiveThreadTerminating() then return end
             quest:SetAllowScreenFadingOnNextRegionChange(true)
             quest:SetRegionTextDisplayAsActive(true)
-            quest:AddEntityBinding("AppleGirl", "GuildTraining/Entities/AppleGirl")
-            quest:AddEntityBinding("ApprenticeSpeedTest", "GuildTraining/Entities/ApprenticeSpeedTest")
-            quest:AddEntityBinding("SpeedFriend", "GuildTraining/Entities/SpeedFriend")
-            quest:AddEntityBinding("RaceMarker", "GuildTraining/Entities/RaceMarker")
-            quest:AddEntityBinding("MeleeApprentice", "GuildTraining/Entities/MeleeApprentice")
-            quest:AddEntityBinding("CombatApprentice", "GuildTraining/Entities/CombatApprentice")
-            quest:AddEntityBinding("SkillApprentice", "GuildTraining/Entities/SkillApprentice")
-            quest:AddEntityBinding("WillApprentice", "GuildTraining/Entities/WillApprentice")
-            quest:AddEntityBinding("HeroBed", "GuildTraining/Entities/HeroBed")
-            quest:AddEntityBinding("SkillTarget", "GuildTraining/Entities/SkillTarget")
-            quest:AddEntityBinding("WillDummy", "GuildTraining/Entities/WillDummy")
-            quest:AddEntityBinding("BirdKiller", "GuildTraining/Entities/BirdKiller")
-            quest:AddEntityBinding("KillBird", "GuildTraining/Entities/KillBird")
-            quest:AddEntityBinding("PreMeleeMaze", "GuildTraining/Entities/PreMeleeMaze")
+            quest:AddEntityBinding("AppleGirl", "GuildTraining/Entities/AppleGirl", 1)
+            quest:AddEntityBinding("ApprenticeSpeedTest", "GuildTraining/Entities/ApprenticeSpeedTest", 1)
+            quest:AddEntityBinding("SpeedFriend", "GuildTraining/Entities/SpeedFriend", 1)
+            quest:AddEntityBinding("RaceMarker", "GuildTraining/Entities/RaceMarker", 1)
+            quest:AddEntityBinding("MeleeApprentice", "GuildTraining/Entities/MeleeApprentice", 1)
+            quest:AddEntityBinding("CombatApprentice", "GuildTraining/Entities/CombatApprentice", 1)
+            quest:AddEntityBinding("SkillApprentice", "GuildTraining/Entities/SkillApprentice", 1)
+            quest:AddEntityBinding("WillApprentice", "GuildTraining/Entities/WillApprentice", 1)
+            quest:AddEntityBinding("HeroBed", "GuildTraining/Entities/HeroBed", 1)
+            quest:AddEntityBinding("SkillTarget", "GuildTraining/Entities/SkillTarget", 1)
+            quest:AddEntityBinding("WillDummy", "GuildTraining/Entities/WillDummy", 1)
+            quest:AddEntityBinding("BirdKiller", "GuildTraining/Entities/BirdKiller", 1)
+            quest:AddEntityBinding("KillBird", "GuildTraining/Entities/KillBird", 1)
+            quest:AddEntityBinding("PreMeleeMaze", "GuildTraining/Entities/PreMeleeMaze", 1)
             quest:FinalizeEntityBindings()
             quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
             quest:SetWeaponOutCrimeEnabled(false)
@@ -92,7 +92,7 @@ function RunTutorials(quest)
     local resources = quest:RetailResources()
     local scratchValue3, scratchValue4, meleeOpponent, meleeApprentice9, skillApprentice9
     local willApprentice9, actorMap, theRealGuildmaster, scratchValue8, scratchValue9, scratchValue
-    local movie, resource, resource4, appleMarker, timerId
+    local movie, resource, resource4, timerId
     local secretBookcase = quest:GetThingWithScriptName("SecretBookcase")
     local getNearestWithDefName = quest:GetNearestWithDefName(secretBookcase, "REGION_EXIT_POINT")
     quest:SetRegionExitAsActive(getNearestWithDefName, false)
@@ -100,7 +100,6 @@ function RunTutorials(quest)
     quest:SetHeroSleepingAsEnabled(false)
     local guildDoors = quest:GetThingWithScriptName("GuildDoors")
     quest:MiniMapAddMarker(quest:GetThingWithScriptName("TheRealGuildmaster"), "HUD_ORB_QUEST_CORE")
-    appleMarker = nil
     if quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
         if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         quest:DeactivateQuestLater("Q_GuildTrainingWoodsDeparture", 0)
@@ -154,9 +153,9 @@ function RunTutorials(quest)
         quest:SetMasterGameState("SkillTrainingStarted", false)
         local preMeleeDummy = quest:GetThingWithScriptName("PreMeleeDummy")
         if not (preMeleeDummy ~= nil and preMeleeDummy:IsAlive()) then
-            quest:CreateObject("PreMeleeDummy", quest:GetThingWithScriptName("OBJECT_STRAW_DUMMY_01"):GetPos(), "PreMeleeDummyMarker")
+            quest:CreateObject("OBJECT_STRAW_DUMMY_01", quest:GetThingWithScriptName("PreMeleeDummyMarker"):GetPos(), "PreMeleeDummy")
             scratchValue8 = 1
-            quest:EntitySetFacingAngle(quest:GetThingWithScriptName("PreMeleeDummyMarker"), quest:GetThingWithScriptName("PreMeleeDummy"):GetAngleXY(), true)
+            quest:EntitySetFacingAngle(quest:GetThingWithScriptName("PreMeleeDummy"), quest:GetThingWithScriptName("PreMeleeDummyMarker"):GetAngleXY(), true)
         end
         local meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
         if meleeApprentice ~= nil and meleeApprentice:IsAlive() then
@@ -193,7 +192,7 @@ function RunTutorials(quest)
             quest:ActivateQuest("Q_GuildTrainingPreMelee")
             quest:SetQuestAsPersistent("Q_GuildTrainingPreMelee", false)
             if not quest:NewScriptFrame() then goto LAB_00d496bc end
-            appleMarker = quest:GetAllThingsWithScriptName("AppleMarker")
+            local appleMarker = quest:GetAllThingsWithScriptName("AppleMarker")
             if #appleMarker ~= 0 then
                 scratchValue3 = 0
                 scratchValue9 = 0
@@ -306,7 +305,7 @@ function RunTutorials(quest)
         if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         local combatApprentice5 = quest:GetThingWithScriptName("CombatApprentice")
         if not (combatApprentice5 ~= nil and combatApprentice5:IsAlive()) then
-            quest:CreateCreature("CombatApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "CombatApprenticeMarker")
+            quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("CombatApprenticeMarker"):GetPos(), "CombatApprentice")
             quest:GetThingWithScriptName("CombatApprentice"):SetToKillOnLevelUnload(false)
         end
     end
@@ -326,7 +325,7 @@ function RunTutorials(quest)
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
         end
-        quest:CreateCreature("MeleeApprentice", quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"):GetPos(), "M_MeleeOpponentStand")
+        quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("M_MeleeOpponentStand"):GetPos(), "MeleeApprentice")
         local skillApprentice5 = quest:GetThingWithScriptName("SkillApprentice")
         if skillApprentice5 ~= nil and skillApprentice5:IsAlive() then
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
@@ -359,13 +358,13 @@ function RunTutorials(quest)
         quest:SetMasterGameState("MovingDummiesNeeded", true)
         local skillApprentice7 = quest:GetThingWithScriptName("SkillApprentice")
         if not (skillApprentice7 ~= nil and skillApprentice7:IsAlive()) then
-            quest:CreateCreature("SkillApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "SkillApprenticeMarker")
+            quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("SkillApprenticeMarker"):GetPos(), "SkillApprentice")
             quest:GetThingWithScriptName("SkillApprentice"):SetToKillOnLevelUnload(false)
         end
         local birdKiller7 = quest:GetThingWithScriptName("BirdKiller")
         if not (birdKiller7 ~= nil and birdKiller7:IsAlive()) then
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
-            quest:CreateCreature("BirdKiller", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "BirdKillerMarker")
+            quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("BirdKillerMarker"):GetPos(), "BirdKiller")
         end
     end
     if quest:GetStateInt("GameState") == 7 then
@@ -376,7 +375,7 @@ function RunTutorials(quest)
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
         end
-        quest:CreateCreature("MeleeApprentice", quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"):GetPos(), "M_MeleeOpponentStand")
+        quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("M_MeleeOpponentStand"):GetPos(), "MeleeApprentice")
         if not quest:IsQuestActive("Q_GuildTrainingWill") then
             if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
             quest:ActivateQuest("Q_GuildTrainingWill")
@@ -391,7 +390,7 @@ function RunTutorials(quest)
         if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         local willApprentice7 = quest:GetThingWithScriptName("WillApprentice")
         if not (willApprentice7 ~= nil and willApprentice7:IsAlive()) then
-            quest:CreateCreature("WillApprentice", quest:GetThingWithScriptName("CREATURE_GUILD_EVIL_APPRENTICE_MALE"):GetPos(), "WillApprenticeMarker")
+            quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", quest:GetThingWithScriptName("WillApprenticeMarker"):GetPos(), "WillApprentice")
             quest:GetThingWithScriptName("WillApprentice"):SetToKillOnLevelUnload(false)
         end
     end
@@ -400,7 +399,7 @@ function RunTutorials(quest)
         if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         quest:RemoveThing(quest:GetThingWithScriptName("MeleeApprentice"), false, true)
     end
-    quest:CreateCreature("MeleeApprentice", quest:GetThingWithScriptName("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"):GetPos(), "MeleeApprenticeMarker")
+    quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", quest:GetThingWithScriptName("MeleeApprenticeMarker"):GetPos(), "MeleeApprentice")
     if not quest:IsQuestActive("Q_GuildTrainingDeparture") then
         if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
         quest:ActivateQuest("Q_GuildTrainingDeparture")
@@ -418,7 +417,7 @@ function RunTutorials(quest)
     theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
     resource4 = resources:NewResource()
     resources:PrepareResource(resource4)
-    while not resources:TryAcquire(resource4, appleMarker[0 + 1], 4) do
+    while not resources:TryAcquire(resource4, theRealGuildmaster, 4) do
         if not quest:NewScriptFrame() then goto LAB_00d48800 end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d48800 end
@@ -488,14 +487,14 @@ function RunTutorials(quest)
         if quest:GetTimer(timerId) == 0 then
             local conversationId = quest:AddNewConversation(quest:GetThingWithScriptName("TheRealGuildmaster"), false, false)
             quest:AddPersonToConversation(conversationId, hero)
-            quest:AddLineToConversation(conversationId, "TheRealGuildmaster", quest:GetThingWithScriptName("TEXT_CS_028_LEAVING_TOUR_45"), hero, false)
+            quest:AddLineToConversation(conversationId, "TEXT_CS_028_LEAVING_TOUR_45", quest:GetThingWithScriptName("TheRealGuildmaster"), hero, false)
             quest:SetTimer(timerId, 10)
         end
     end
     if not quest:IsActiveThreadTerminating() then
         -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);
         quest:FadeScreenOut(0.0, 0.5)
-        quest:EntityTeleportToThing(quest:GetThingWithScriptName("M_GuildmasterMarker"), quest:GetThingWithScriptName("TheRealGuildmaster"), false)
+        quest:EntityTeleportToThing(quest:GetThingWithScriptName("TheRealGuildmaster"), quest:GetThingWithScriptName("M_GuildmasterMarker"), false)
         while not quest:IsHeroControlledByPlayer() do
             if not quest:NewScriptFrame() then goto LAB_00d496b3 end
         end
@@ -535,9 +534,9 @@ function RunTutorials(quest)
                                         scratchValue4 = 0
                                         repeat
                                             if quest:IsActiveThreadTerminating() then goto LAB_00d496a1 end
-                                            quest:RemoveThing(theRealGuildmaster, appleRed01 + scratchValue4, false)
+                                            quest:RemoveThing(appleRed01[scratchValue4 + 1], false, true)
                                             scratchValue = scratchValue + 1
-                                            scratchValue4 = scratchValue4 + 12
+                                            scratchValue4 = scratchValue4 + 1
                                         until scratchValue >= #appleRed01
                                     end
                                     if not quest:IsActiveThreadTerminating() then
@@ -596,42 +595,32 @@ function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
     local movie, actorMap, predicateResult5, predicateResult6, predicateResult, scratchValue8
     local conversationId, scratchValue9, heroWarnings, sequence, sequence22, sequence32
-    local scratchValue15, scratchValue16, scratchValue17, resource, conversationId2, thing
-    local preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
+    local scratchValue20, scratchValue, scratchValue22, resource, conversationId2, thing
     local creatures = quest:GetAllCreaturesExcludingHero()
-    scratchValue16 = 0
+    scratchValue = 0
     if #creatures ~= 0 then
         scratchValue9 = 0
         repeat
             if quest:IsActiveThreadTerminating() then goto LAB_00d452d1 end
-            -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_70)
-    --[[unresolved native value]]
-            if nil == "CREATURE_BIRD_GUILD_SPARROW" then
+            if creatures[scratchValue9 + 1]:GetDefName() == "CREATURE_BIRD_GUILD_SPARROW" then
                 goto LAB_00d45184
             else
-                -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_74)
-    --[[unresolved native value]]
-                if nil == "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE" then goto LAB_00d45184 end
-                -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_68)
-    --[[unresolved native value]]
-                if nil == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then goto LAB_00d45184 end
-                -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_6c)
-    --[[unresolved native value]]
+                if creatures[scratchValue9 + 1]:GetDefName() == "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE" then goto LAB_00d45184 end
+                if creatures[scratchValue9 + 1]:GetDefName() == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then goto LAB_00d45184 end
                 predicateResult = true
-                if nil == "CREATURE_RIVAL_HERO_MAZE" then goto LAB_00d45184 end
+                if creatures[scratchValue9 + 1]:GetDefName() == "CREATURE_RIVAL_HERO_MAZE" then goto LAB_00d45184 end
             end
             goto FLOW_past_lab_00d45184
             ::LAB_00d45184::
             predicateResult = false
             ::FLOW_past_lab_00d45184::
             if predicateResult then
-                if quest:IsActiveThreadTerminating() then return end
-                -- TODO(native): (**(code **)(*(int *)xStack_84[(iVar18) / 0xc + 1] + 0x10c))(1);
+                creatures[scratchValue9 + 1]:SetFriendsWithEverythingFlag(1)
                 quest:EntitySetAsKillable(creatures[scratchValue9 + 1], false, true)
             end
-            scratchValue16 = scratchValue16 + 1
+            scratchValue = scratchValue + 1
             scratchValue9 = scratchValue9 + 1
-        until scratchValue16 >= #creatures
+        until scratchValue >= #creatures
     end
     if not quest:IsActiveThreadTerminating() then
         repeat
@@ -642,35 +631,29 @@ function CheckFriendlyAttacks(quest)
                 end
                 scratchValue8 = 0
                 local creatures2 = quest:GetAllCreaturesExcludingHero()
-                local scratchValue = preMeleeMaze - creatures2 >> 31
-                scratchValue17 = 0
-                if (preMeleeMaze - creatures2) / 12 + scratchValue ~= scratchValue then
+                scratchValue22 = 0
+                if #creatures2 ~= 0 then
                     repeat
                         if quest:IsActiveThreadTerminating() then return end
                         if creatures2[scratchValue8 + 1]:GetDefName() == "CREATURE_BIRD_GUILD_SPARROW" then
                             goto LAB_00d4557d
                         else
                             if creatures2[scratchValue8 + 1]:GetDefName() == "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE" then goto LAB_00d4557d end
-                            -- TODO(native): pvVar12 = (**(*xStack_84[(iVar13) / 0xc + 1] + 8))(aCStack_10)
-    --[[unresolved native value]]
-                            if nil == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then goto LAB_00d4557d end
-                            -- TODO(native): pvVar12 = (**(*xStack_84[(iVar13) / 0xc + 1] + 8))(xStack_30)
-    --[[unresolved native value]]
+                            if creatures2[scratchValue8 + 1]:GetDefName() == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then goto LAB_00d4557d end
                             predicateResult5 = true
-                            if nil == "CREATURE_RIVAL_HERO_MAZE" then goto LAB_00d4557d end
+                            if creatures2[scratchValue8 + 1]:GetDefName() == "CREATURE_RIVAL_HERO_MAZE" then goto LAB_00d4557d end
                         end
                         goto FLOW_past_lab_00d4557d
                         ::LAB_00d4557d::
                         predicateResult5 = false
                         ::FLOW_past_lab_00d4557d::
                         if predicateResult5 then
-                            if quest:IsActiveThreadTerminating() then return end
-                            -- TODO(native): (**(code **)(*(int *)xStack_84[(iVar13) / 0xc + 1] + 0x10c))(1);
+                            creatures2[scratchValue8 + 1]:SetFriendsWithEverythingFlag(1)
                             quest:EntitySetAsKillable(creatures2[scratchValue8 + 1], false, true)
                         end
-                        scratchValue17 = scratchValue17 + 1
+                        scratchValue22 = scratchValue22 + 1
                         scratchValue8 = scratchValue8 + 1
-                    until scratchValue17 >= ((preMeleeMaze - creatures2) / 12)
+                    until scratchValue22 >= #creatures2
                 end
                 if quest:IsActiveThreadTerminating() then return end
             end
@@ -684,21 +667,21 @@ function CheckFriendlyAttacks(quest)
             goto FLOW_past_lab_00d456af
             ::LAB_00d456af::
             if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-            sequence = scratchValue15 ~= nil
+            sequence = scratchValue20 ~= nil
             if sequence then
                 -- TODO(native): cVar11 = (**(*uStack_9c + 0x54))("SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                 sequence = nil ~= 0
             end
             if sequence then goto LAB_00d45782 end
-            sequence22 = scratchValue15 ~= nil
+            sequence22 = scratchValue20 ~= nil
             if sequence22 then
                 -- TODO(native): cVar11 = (**(*uStack_9c + 0xa8))("SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                 sequence22 = nil ~= 0
             end
             if sequence22 then
-                sequence32 = scratchValue15 == nil
+                sequence32 = scratchValue20 == nil
                 if not sequence32 then
                     -- TODO(native): cVar11 = (**(*uStack_9c + 0xa4))(0xe,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]

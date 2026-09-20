@@ -225,7 +225,7 @@ function Main(quest, me)
                 quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_BOW", me, pCVar6, false)
                 quest:ModifyThingHealth(me, 1000.0, false)
             else
-                bVar3 = me:MsgIsHitByHeroSpecialAbility(me)
+                bVar3 = me:MsgIsHitByHeroSpecialAbility(0xb)
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -456,7 +456,7 @@ function Main(quest, me)
                             quest:SetTimer(xStack_80, 5)
                         end
                     else
-                        bVar3 = me:MsgIsHitByHeroSpecialAbility(me)
+                        bVar3 = me:MsgIsHitByHeroSpecialAbility(0xb)
                         if bVar3 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -656,7 +656,7 @@ function Main(quest, me)
                                 end
                                 goto LAB_00d664b0
                             end
-                            bVar3 = me:MsgIsHitByHeroSpecialAbility(me)
+                            bVar3 = me:MsgIsHitByHeroSpecialAbility(0xb)
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive

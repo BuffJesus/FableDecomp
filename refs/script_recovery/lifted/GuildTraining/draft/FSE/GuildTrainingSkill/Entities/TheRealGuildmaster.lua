@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214, xStack_21c, xStack_21c_b3, xStack_220, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, f_stk_1d4, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214, xStack_21c, xStack_21c_b3, xStack_220, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dab8()
         quest:PauseAllNonScriptedEntities(false)
@@ -1159,12 +1159,12 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if not bVar4 then
-                    xStack_1d4 = quest:GetMasterGameState("SkillScore")
+                    f_stk_1d4 = quest:GetMasterGameState("SkillScore")
                     ixVar13 = 0
                     iVar15 = 0
                     repeat
                         iVar16 = iVar15
-                        if quest:ReadGlobalGameDataFloatAt(0xec0, ixVar13) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xec0, ixVar13) == xStack_1d4) then
+                        if quest:ReadGlobalGameDataFloatAt(0xec0, ixVar13) < f_stk_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xec0, ixVar13) == f_stk_1d4) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then __cleanup_LAB_00d5db53(); return end
@@ -1236,7 +1236,7 @@ function Main(quest, me)
             resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", xStack_1ac, false, true)
             ::LAB_00d5d526::
             quest:SetStateInt("TutorialState", 0)
-            quest:RemoveQuestInfoElement(fVar20)
+            quest:RemoveQuestInfoElement(xStack_1d4)
             quest:Pause(2.0)
             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_SKILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
             iVar15 = quest:MsgIsQuestionAnsweredYesOrNo()

@@ -36,7 +36,7 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     scratchValue5 = 0
     local willApprenticeTargetMarker = quest:GetThingWithScriptName("WillApprenticeTargetMarker")
     timerId4 = quest:RegisterTimer()

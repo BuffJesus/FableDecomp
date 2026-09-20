@@ -37,7 +37,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource4); return end
     quest:EntitySetAsKillable(me, false, true)
     quest:SetThingHasInformation(me, false, true, false)
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     if birdMode == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef90 end
         local birdMarker = quest:GetAllThingsWithScriptName("BirdMarker")

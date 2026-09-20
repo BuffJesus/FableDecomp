@@ -188,7 +188,7 @@ function Main(quest, me)
                                 resources:ReleaseResource(xStack_a0)
                                 return
                             end
-                            quest:RemoveThing(pCVar5, (xStack_8c + iVar10), false)
+                            quest:RemoveThing(xStack_8c[(iVar10) / 0xc + 1], false, true)
                         end
                         uVar9 = uVar9 + 1
                         iVar10 = iVar10 + 0xc

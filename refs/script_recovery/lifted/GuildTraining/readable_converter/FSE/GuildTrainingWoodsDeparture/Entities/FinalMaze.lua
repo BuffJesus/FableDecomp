@@ -3,6 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local HERO_ABILITY_LIGHTNING_SPELL = 11  -- EHeroAbility (Ego_r.pdb)
+
 -- per-entity fields (native class members; one Lua state per entity instance)
 local notFighting, notBeaten, beenHit
 
@@ -157,7 +159,7 @@ function Main(quest, me)
                 quest:AddPersonToConversation(addNewConversation, hero)
                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_BOW", me, hero, false)
                 quest:ModifyThingHealth(me, 1000.0, false)
-            elseif me:MsgIsHitByHeroSpecialAbility(me) then
+            elseif me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                 if not quest:IsConversationActive(addNewConversation) then
                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -296,7 +298,7 @@ function Main(quest, me)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, hero, false)
                 end
                 quest:SetTimer(timerId, 5)
-            elseif me:MsgIsHitByHeroSpecialAbility(me) then
+            elseif me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                 if not quest:IsConversationActive(addNewConversation) then
                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -427,7 +429,7 @@ function Main(quest, me)
                 end
                 goto LAB_00d664b0
             end
-            if me:MsgIsHitByHeroSpecialAbility(me) then
+            if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
                 local getStateInt3 = beenHit + 1
                 beenHit = getStateInt3

@@ -18,10 +18,9 @@ local heroStanding, whisperStanding, whisperEarly, whisperLate
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, fret_06, fret_07, conversationId, scratchValue9, index
-    local getActiveQuestName, meleeOpponent, this_01, resource2, scratchValue11, actorMap, resource4
-    local resource5, actorMap2, infoCounter, resource6, timerId, timerId2, resource7, resource9
-    local movie4, resource, scratchValue
+    local predicateResult, conversationId, scratchValue, index, meleeOpponent, this_01, resource2
+    local actorMap, resource4, resource5, actorMap2, infoCounter, resource6, timerId, timerId2
+    local resource7, resource9, movie4, resource, scratchValue12
     local function ReleaseEverything()
         resources:ReleaseResource(resource7)
         resources:ReleaseResource(resource)
@@ -98,24 +97,19 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, false, false)
     timerId2 = quest:RegisterTimer()
     quest:SetTimer(timerId2, 0)
-    scratchValue9 = quest:GetStateInt("TutorialState")
-    scratchValue = 0
-    while scratchValue9 == 1 do
+    scratchValue = quest:GetStateInt("TutorialState")
+    scratchValue12 = 0
+    while scratchValue == 1 do
         if not quest:NewScriptFrame(me) then goto LAB_00d5933c end
         if not me:IsTalkedToByHero() then
             if not ((not quest:GetStateBool("EarlyHitWhisper")) or (not quest:GetStateBool("WhisperArrived"))) then goto LAB_00d586db end
-            -- TODO(native): xStack_23c = (int *)((uint)xStack_23c | 1);
             if me:MsgIsHitByHero() then goto LAB_00d586db end
             predicateResult = false
             goto FLOW_past_lab_00d586db
             ::LAB_00d586db::
             predicateResult = true
             ::FLOW_past_lab_00d586db::
-            if infoCounter & 1 ~= 0 then
-                -- TODO(native): xStack_23c = (int *)((uint)xStack_23c & 0xfffffffe);
-            end
             if predicateResult then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d5933c end
                 resource4 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 actorMap2 = resources:ScriptThing(resource6)
@@ -145,21 +139,21 @@ function Main(quest, me)
             quest:SetStateInt("TutorialState", 2)
         end
         if not ((quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId2) < 1) and not me:IsPerformingScriptTask()) then
-            scratchValue9 = quest:GetStateInt("TutorialState")
+            scratchValue = quest:GetStateInt("TutorialState")
         else
             if quest:IsActiveThreadTerminating() then goto LAB_00d5933c end
             conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             quest:SetTimer(timerId2, 10)
-            if scratchValue == nil then
+            if scratchValue12 == nil then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_FIRST", me, hero, false)
-                scratchValue = 1
-            elseif scratchValue == 1 then
+                scratchValue12 = 1
+            elseif scratchValue12 == 1 then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_MELEE_COMMENT_SECOND", me, hero, false)
             end
-            scratchValue9 = quest:GetStateInt("TutorialState")
+            scratchValue = quest:GetStateInt("TutorialState")
         end
     end
     if quest:IsActiveThreadTerminating() then
@@ -350,7 +344,9 @@ function Main(quest, me)
             quest:DisplayQuestInfo(false)
             quest:RemoveQuestInfoElement(infoCounter)
             quest:DisplayQuestInfo(true)
-            quest:AddQuestInfoBarHealth(quest:GetThingWithScriptName("MeleeOpponent"), getActiveQuestName, "HUD_WHISPER_ICON", 1.0)
+            quest:AddQuestInfoBarHealth(quest:GetThingWithScriptName("MeleeOpponent"), {R = 255, G = 255, B = 255, A = 255}, "HUD_WHISPER_ICON", 1.0)
+            local health = quest:GetHealth(hero)
+            local health2 = quest:GetHealth(meleeOpponent)
             while heroStanding and whisperStanding do
                 if not quest:NewScriptFrame(me) then ReleaseEverything7(); return end
                 local fret_04 = quest:GetHealth(hero)
@@ -375,19 +371,18 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then ReleaseEverything7(); return end
             quest:ClearAllRumbles()
-            -- TODO(native): xStack_1d4 = (CCharString)(float)fret_06;
             index = 0
-            -- TODO(native): xStack_1d4 = (CCharString)(float)(((float10)f_stk_74 - fret_07) - ((float10)f_stk_70 - (float10)(float)xStack_1d4));
-            scratchValue9 = 0
+            local scratchValue5 = (health2 - quest:GetHealth(meleeOpponent)) - (health - quest:GetHealth(hero))
+            scratchValue = 0
             repeat
-                conversationId = scratchValue9
-                if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) < scratchValue11 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) == scratchValue11) then
+                conversationId = scratchValue
+                if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) < scratchValue5 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) == scratchValue5) then
                     if quest:IsActiveThreadTerminating() then ReleaseEverything7(); return end
                     break
                 end
-                scratchValue9 = conversationId + 1
+                scratchValue = conversationId + 1
                 index = index + 1
-            until scratchValue9 >= 7
+            until scratchValue >= 7
             quest:ResetPlayerCreatureOnlyTarget()
             quest:SetStateInt("TutorialState", 7)
             quest:DisplayQuestInfo(false)
@@ -458,13 +453,13 @@ function Main(quest, me)
             quest:RemoveThing(quest:GetThingWithScriptName("MeleeThunder"), false, true)
             quest:Pause(2.0)
             quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_MELEE_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
-            scratchValue9 = quest:MsgIsQuestionAnsweredYesOrNo()
-            while scratchValue9 < 0 do
+            scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
+            while scratchValue < 0 do
                 if not quest:NewScriptFrame(me) then ReleaseEverything5(); return end
-                scratchValue9 = quest:MsgIsQuestionAnsweredYesOrNo()
+                scratchValue = quest:MsgIsQuestionAnsweredYesOrNo()
             end
             if quest:IsActiveThreadTerminating() then ReleaseEverything5(); return end
-            if scratchValue9 == 1 then
+            if scratchValue == 1 then
                 resources:RunMacro("CS_GUILD_MELEE_CONTINUE", actorMap2, false, true)
                 quest:SetStateBool("MeleeRepeating", false)
                 quest:SetStateBool("MeleeRepeatKnown", true)
@@ -475,7 +470,7 @@ function Main(quest, me)
                 if quest:IsObjectInThingsPossession("OBJECT_IRON_LONGSWORD", hero) then
                     if quest:IsActiveThreadTerminating() then
                         -- TODO(native): iVar7 = *xStack_23c
-                        scratchValue9 = nil --[[unresolved native value]]
+                        scratchValue = nil --[[unresolved native value]]
                         ReleaseEverything5(); return
                     end
                     quest:TakeObjectFromHero("OBJECT_IRON_LONGSWORD")

@@ -42,7 +42,7 @@ function Main(quest, me)
     end
     quest:EntitySetAsKillable(me, false, true)
     quest:SetThingHasInformation(me, false, true, false)
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     if __native_entity_state:GetStateInt("BirdMode") == 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive

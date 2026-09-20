@@ -33,7 +33,7 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_84)
         return
     end
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     quest:EntitySetAsKillable(me, false, true)
     r1 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
     quest:EntityAttachToVillage(me, r1)

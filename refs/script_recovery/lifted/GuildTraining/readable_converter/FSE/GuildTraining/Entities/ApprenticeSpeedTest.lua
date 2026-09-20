@@ -40,7 +40,7 @@ function Main(quest, me)
         quest:EntitySetAsKillable(me, false, true)
         quest:EntitySetAsKillable(speedFriend, false, true)
         quest:SetThingHasInformation(me, false, true, false)
-        me:SetFriendsWithEverythingFlag(me)
+        me:SetFriendsWithEverythingFlag(true)
         if speedFriend ~= nil and not speedFriend:IsNull() then
             speedFriend:SetFriendsWithEverythingFlag(1)
         end

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, ctr_22c, delay, dist, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_240, xStack_244, xStack_38, xStack_48, xStack_54, xStack_60
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, ctr_22c, delay, dist, fVar4, f_stk_1d4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_240, xStack_244, xStack_38, xStack_48, xStack_54, xStack_60
     local alive = true
     xStack_228 = resources:NewResource()
     resources:PrepareResource(xStack_228)
@@ -568,7 +568,7 @@ function Main(quest, me)
                 resources:PrepareResource(xStack_200)
                 iVar11 = 4
                 pCVar12 = quest:GetHero()
-                bVar6 = resources:TryAcquire(xStack_48, pCVar12, iVar11)
+                bVar6 = resources:TryAcquire(xStack_200, pCVar12, iVar11)
                 while not bVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
@@ -576,7 +576,7 @@ function Main(quest, me)
                     if bVar6 then goto LAB_00d61370 end
                     iVar11 = 4
                     pCVar12 = quest:GetHero()
-                    bVar6 = resources:TryAcquire(xStack_48, pCVar12, iVar11)
+                    bVar6 = resources:TryAcquire(xStack_200, pCVar12, iVar11)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -588,12 +588,12 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00d6135b end
-                    xStack_1d4 = quest:GetMasterGameState("WillScore")
+                    f_stk_1d4 = quest:GetMasterGameState("WillScore")
                     ixVar16 = 0
                     iVar10 = 0
                     repeat
                         iVar11 = iVar10
-                        if quest:ReadGlobalGameDataFloatAt(0xecc, ixVar16) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xecc, ixVar16) == xStack_1d4) then
+                        if quest:ReadGlobalGameDataFloatAt(0xecc, ixVar16) < f_stk_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xecc, ixVar16) == f_stk_1d4) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then goto LAB_00d6135b end

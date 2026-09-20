@@ -3,6 +3,7 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
 -- PreMeleeMaze.Main (retail 0x00d43db0)
@@ -14,7 +15,7 @@ function Main(quest, me)
     predicateResult13 = false
     predicateResult = false
     quest:EntitySetAsKillable(me, false, true)
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     local preMeleeMazeTargetMarker = quest:GetThingWithScriptName("PreMeleeMazeTargetMarker")
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -64,7 +65,7 @@ function Main(quest, me)
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 predicateResult13 = true
                 predicateResult = true
-                if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00d44243 end
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d44243 end
             end
             predicateResult13 = true
             predicateResult5 = false
@@ -93,7 +94,7 @@ function Main(quest, me)
             goto LAB_00d44498
             ::FLOW_past_lab_00d44494::
         end
-        me:SetFriendsWithEverythingFlag(me)
+        me:SetFriendsWithEverythingFlag(true)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
         quest:NewScriptFrame(me)
@@ -134,7 +135,7 @@ function Main(quest, me)
             goto LAB_00d44498
             ::FLOW_past_lab_00d44494_c1::
         end
-        me:SetFriendsWithEverythingFlag(me)
+        me:SetFriendsWithEverythingFlag(true)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
     end

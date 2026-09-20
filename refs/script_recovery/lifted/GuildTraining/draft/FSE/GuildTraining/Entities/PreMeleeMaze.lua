@@ -17,7 +17,7 @@ function Main(quest, me)
     bVar6 = false
     bVar3 = false
     quest:EntitySetAsKillable(me, false, true)
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     r1 = quest:GetThingWithScriptName("PreMeleeMazeTargetMarker")
     xStack_30 = resources:NewResource()
     resources:PrepareResource(xStack_30)
@@ -106,7 +106,7 @@ function Main(quest, me)
             if bVar6 then
                 bVar6 = true
                 bVar3 = true
-                bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+                bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar4 then goto LAB_00d44243 end
             end
             bVar6 = true
@@ -166,7 +166,7 @@ function Main(quest, me)
                 goto LAB_00d44498
                 ::FLOW_past_lab_00d44494::
             end
-            me:SetFriendsWithEverythingFlag(me)
+            me:SetFriendsWithEverythingFlag(true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_10)
         end
@@ -250,7 +250,7 @@ function Main(quest, me)
             goto LAB_00d44498
             ::FLOW_past_lab_00d44494_c1::
         end
-        me:SetFriendsWithEverythingFlag(me)
+        me:SetFriendsWithEverythingFlag(true)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_10)
     end

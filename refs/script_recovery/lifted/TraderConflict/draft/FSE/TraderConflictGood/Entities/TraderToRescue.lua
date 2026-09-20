@@ -299,7 +299,7 @@ function Main(quest, me)
                 bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar2 then
                     -- TODO(native): unaff_EBP = uVar12 | 0x38;
-                    bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
+                    bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar2 then goto LAB_00dfe8b5 end
                 end
                 bVar2 = false

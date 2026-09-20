@@ -21,7 +21,7 @@ function Main(quest, me)
         end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE"))
     appleMode = 0

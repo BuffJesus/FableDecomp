@@ -3,7 +3,7 @@
 
 -- Q_GuildTrainingWill.Main (retail 0x00d5dd40)
 function Main(quest)
-    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingWill/Entities/TheRealGuildmaster")
+    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingWill/Entities/TheRealGuildmaster", 1)
     quest:FinalizeEntityBindings()
 end
 

@@ -1,6 +1,8 @@
 -- Readable native conversion: IsAGuard. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- IsAGuard.Main (retail 0x00df9710)
 function Main(quest, me)
     local predicateResult, predicateResult7
@@ -11,7 +13,7 @@ function Main(quest, me)
             if not me:MsgIsHitBy("") then goto LAB_00df983a end
             if me:MsgIsHitByHero() then goto LAB_00df983a end
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df983a end
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df983a end
             end
             predicateResult = true
             goto FLOW_past_lab_00df983a
@@ -25,7 +27,7 @@ function Main(quest, me)
                     goto LAB_00df992a
                 else
                     if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df992a end
+                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df992a end
                     end
                     predicateResult7 = false
                 end

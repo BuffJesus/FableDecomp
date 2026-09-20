@@ -65,7 +65,7 @@ function Main(quest, me)
                         bVar3 = true
                         bVar6 = true
                         bVar8 = true
-                        bVar5 = me:MsgIsHitByHeroSpecialAbility(me)
+                        bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar5 then goto LAB_00df9372 end
                     end
                     bVar3 = true
@@ -103,7 +103,7 @@ function Main(quest, me)
                         if bVar7 then
                             bVar7 = true
                             bVar4 = true
-                            bVar5 = me:MsgIsHitByHeroSpecialAbility(me)
+                            bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar5 then goto LAB_00df9462 end
                         end
                         bVar7 = true

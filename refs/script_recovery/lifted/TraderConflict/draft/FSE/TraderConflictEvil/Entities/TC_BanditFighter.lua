@@ -57,7 +57,7 @@ function Main(quest, me)
                     bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar2 then
                         CVar6 = CVar7 | 0xf
-                        bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
+                        bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar2 then goto LAB_00df8b83 end
                     end
                     bVar2 = true
@@ -97,7 +97,7 @@ function Main(quest, me)
                         bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar2 then
                             CVar7 = CVar6 | 0x70
-                            bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
+                            bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar2 then goto LAB_00df8c73 end
                         end
                         bVar2 = false
@@ -163,7 +163,7 @@ function Main(quest, me)
                         if bVar2 then
                             CVar6 = CVar7 | 0x380
                             xStack_2c = CVar6
-                            bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
+                            bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar2 then goto LAB_00df8dcb end
                         end
                         bVar2 = false

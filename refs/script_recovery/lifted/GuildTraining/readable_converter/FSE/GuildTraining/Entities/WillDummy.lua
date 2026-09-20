@@ -1,6 +1,8 @@
 -- Readable native conversion: WillDummy. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_LIGHTNING_SPELL = 11  -- EHeroAbility (Ego_r.pdb)
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     GUI_WillDummySpinTimer = 3864,  -- 3.0
@@ -27,7 +29,7 @@ function Main(quest, me)
     ::LAB_00d434fc::
     if not predicateResult then
         repeat
-            if me:MsgIsHitByHeroSpecialAbility(me) then
+            if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
                 goto LAB_00d43568
             else
                 predicateResult6 = true
@@ -45,7 +47,7 @@ function Main(quest, me)
     do return end
     ::LAB_00d435c1::
     if quest:IsActiveThreadTerminating() then return end
-    if me:MsgIsHitByHeroSpecialAbility(me) then
+    if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
         quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
         -- TODO(native): xStack_94 = angle + (float)0.0;
         quest:EntitySetFacingAngle(me, scratchValue6, true)

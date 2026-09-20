@@ -11,7 +11,7 @@ function Main(quest)
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsMelee/Entities/ScorpionHome")
+    quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsMelee/Entities/ScorpionHome", 1)
     quest:FinalizeEntityBindings()
     quest:CreateThread("WatchForTermination")  -- native thread body CQ_HobbeCaveScript::WatchForTermination: lift it as function WatchForTermination(quest)
     quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)

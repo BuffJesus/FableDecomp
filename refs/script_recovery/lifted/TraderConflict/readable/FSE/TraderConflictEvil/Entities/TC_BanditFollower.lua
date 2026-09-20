@@ -3,6 +3,8 @@
 
 local GROUP_SELECT_RANDOM_NO_REPEAT = 2  -- ETextGroupSelectionMethod
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- per-entity fields (native class members; one Lua state per entity instance)
 local setAgainstHero, hitWarning
 
@@ -66,7 +68,7 @@ function Main(quest, me)
         end
         if setAgainstHero then goto LAB_00df851c end
         if not me:MsgIsHitByHero() then
-            if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me)) then
+            if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)) then
                 goto LAB_00df851c
             end
         end

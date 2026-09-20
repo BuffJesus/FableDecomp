@@ -1,6 +1,8 @@
 -- Readable native conversion: TC_BanditFighter. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- per-entity fields (native class members; one Lua state per entity instance)
 local hitWarning
 
@@ -30,7 +32,7 @@ function Main(quest, me)
         scratchValue = scratchValue3 | 7
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
             scratchValue = scratchValue3 | 15
-            if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df8b83 end
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8b83 end
         end
         predicateResult = true
         goto FLOW_past_lab_00df8b83
@@ -59,7 +61,7 @@ function Main(quest, me)
                 scratchValue4 = scratchValue | 48
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     scratchValue4 = scratchValue | 112
-                    if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df8c73 end
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8c73 end
                 end
                 predicateResult4 = false
                 scratchValue = scratchValue4
@@ -102,7 +104,7 @@ function Main(quest, me)
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue2 = scratchValue3 | 896
                 scratchValue10 = scratchValue2
-                if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df8dcb end
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8dcb end
             end
             predicateResult6 = false
         end

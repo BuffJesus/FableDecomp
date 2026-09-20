@@ -5,9 +5,9 @@ function Main(quest)
     local resources = quest:RetailResources()
     local bVar6, cVar1, delay, iVar5, iVar8, pCVar3, pCVar7, pQuestName, r1, r2, r3, xStack_10, xStack_20, xStack_2c, xStack_3c, xStack_4c, xStack_5c, xStack_88
     local alive = true
-    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster")
-    quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy")
-    quest:AddEntityBinding("PreMeleeWhisper", "GuildTrainingPreMelee/Entities/PreMeleeWhisper")
+    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster", 1)
+    quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy", 1)
+    quest:AddEntityBinding("PreMeleeWhisper", "GuildTrainingPreMelee/Entities/PreMeleeWhisper", 1)
     quest:FinalizeEntityBindings()
     quest:SetMasterGameState("GuildWarningOccuring", true)
     r1 = quest:GetThingWithScriptName("PreMeleeMaze")

@@ -3,7 +3,7 @@
 
 -- Q_GuildTrainingDeparture.Main (retail 0x00d50800)
 function Main(quest)
-    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingDeparture/Entities/TheRealGuildmaster")
+    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingDeparture/Entities/TheRealGuildmaster", 1)
     quest:FinalizeEntityBindings()
     while not quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") do
         if not quest:NewScriptFrame() then return end

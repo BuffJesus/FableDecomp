@@ -38,7 +38,7 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, true)
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     iVar5 = quest:RegisterTimer()
     xStack_260 = iVar5
     quest:SetTimer(xStack_260, 10)

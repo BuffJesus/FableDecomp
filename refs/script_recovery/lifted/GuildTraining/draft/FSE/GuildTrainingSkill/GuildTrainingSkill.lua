@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingSkill/Entities/TheRealGuildmaster")
+    quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingSkill/Entities/TheRealGuildmaster", 1)
     quest:FinalizeEntityBindings()
 end
 

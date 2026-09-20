@@ -47,7 +47,7 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     r1 = quest:GetNearestWithDefName(me, "VILLAGE_GUILD_COMPLEX_INSIDE")
     quest:EntityAttachToVillage(me, r1)
-    me:SetFriendsWithEverythingFlag(me)
+    me:SetFriendsWithEverythingFlag(true)
     __native_entity_state:SetStateBool("PlayerNotWarned", true)
     c_stk_14e = 0
     iVar6 = quest:RegisterTimer()

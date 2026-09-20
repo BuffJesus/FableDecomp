@@ -11,7 +11,7 @@ function Main(quest)
     quest:SetStateBool("MissionOver", false)
     quest:SetStateBool("WhisperAnimate", false)
     quest:SetStateBool("BanditsAlive", true)
-    quest:AddEntityBinding("WillWhisper", "GuildTrainingWoodsWill/Entities/WillWhisper")
+    quest:AddEntityBinding("WillWhisper", "GuildTrainingWoodsWill/Entities/WillWhisper", 1)
     quest:FinalizeEntityBindings()
     bVar3 = quest:IsLevelLoaded("GuildWoods")
     while not bVar3 do
@@ -119,7 +119,7 @@ function Main(quest)
                         bVar3 = false
                         fret_0 = quest:GetHealth(pCVar6)
                         quest:ModifyThingHealth(pCVar6, (15.0 - fret_0), bVar3)
-                        -- TODO(native): (**(code **)(*(int *)xStack_7c[(iVar12) / 0xc + 1] + 0x118))(0);
+                        xStack_7c[(iVar12) / 0xc + 1]:SetToKillOnLevelUnload(0)
                         ctr_88 = ctr_88 + 1
                         iVar12 = iVar12 + 0xc
                     until not (ctr_88 < (#xStack_7c))
