@@ -1,3 +1,44 @@
+# RESUME HERE — 2026-09-19 late evening (Guild path playtest day; read this block only, then GUILD_ARRIVAL_PLAYTEST journal)
+
+**State of play (in-game, v6 bundle = converter units + Aeon's LUAGameflow + sidecar DLL):** childhood -> Guild
+transition, arrival, apple quest, race, Guildmaster punch stage, stick stage with "?/7" tally, Guild Woods beetles
+(all ten), quest card, WOODSWON cutscene, PREMELEE_END_QUESTION all work. **Broken, next up:** after the woods
+(answering the question), no quest markers, the Guildmaster stands back at the melee position and talking to him
+REPLAYS THE PUNCH STAGE. An agent was deriving the native branch-selection state of PreMelee's TheRealGuildmaster
+Main (0x00D52E90: which state picks punch/stick/woods/end, what NO/YES do, talk-after-woods, markers) and fixing the
+converter generically with a test for both answers; its section (if it finished) is the LAST dated section of
+`docs/journal/2026-09/GUILD_ARRIVAL_PLAYTEST_2026-09-19.md`; if there is none, `git status` shows what it touched
+(native_goto_scopes.py / lift_native_lua.py / native_structured_switch.py / test_cross_branch_goto.py) -- re-run the
+gates before trusting it.
+
+**Everything today is generic converter/sidecar work (nothing hand-edited except the two documented NOVI deviations).**
+The journal has each fix with byte evidence: split-array vectors, `_align`, CreateObject position, StartMovieSequence
+duplicate (98 sites), IsAcquired/Reset -> PrepareResource (the StartScriptingEntity lock wait), race timers, ABS/x87/dtor
+label mis-typing, **cross-branch goto hoisting (120 -> 1 dropped gotos)**, PDB-typed bool master flags as Lua booleans,
+**entity OnPersist(quest, me, context)** (the crash on every save). Sidecar `sidecar-abi-v2` HEAD (patches in
+tools/script_recovery/sidecar_patches/ regenerated): GiveHeroObject 3rd bool, TryAcquire prepare+registry,
+AddLogbookTutorialEntryPC, PersistTransferStringList, and DIAGNOSTICS still on (TryAcquire enter/refused, QuestThreadFlag
+per cutscene command, [Terminating], [Interrupted], QuestLifetime, State miss/woods-flag writes, Lua Main returned) --
+cheap, keep until the guild path is clean, then strip.
+
+**Gates at last check:** Oakvale draft byte-identical; smoke Guild 1/1 (BirdKiller, pre-existing), Orchard 0/0,
+Trader 2/2, Gameflow 0/0; `TODO(native): goto` residue 1 (TraderConflictEvil); full suite 1602 OK (before the
+OnPersist/master-bool fixes; targeted sets OK after).
+
+**Bundles:** `work/new-oakvale-original-fse-20260912/local-candidate-v6` (Aeon Gameflow, control) and `-v7` (OUR
+converted Gameflow as the `Gameflow` override -- never run yet). Rebuild both after any regen:
+    python tools/script_recovery/build_unit_playtest_package.py --unit orchard_farm guild_training trader_conflict --gameflow work/aeon_lua_ports/Gameflow/FSE/LUAGameflow/LUAGameflow.lua --dll work/new-oakvale-original-fse-20260912/sidecar-abi-v2/Release/FableScriptExtender.dll --bundle work/new-oakvale-original-fse-20260912/local-candidate-v6
+    python tools/script_recovery/build_unit_playtest_package.py --unit orchard_farm guild_training trader_conflict gameflow --dll <same dll> --stage work/unit_playtest_stage_v7 --bundle work/new-oakvale-original-fse-20260912/local-candidate-v7
+A/B driver: `python tools/script_recovery/ab_playtest.py launch v6|v7` (waits for exit, archives the log to
+work/ab_runs/<bundle>-<ts>/), `compare v6 v7` (event timelines, one-side-only events, first divergence, errors).
+Save to use: profile `f645456fds` (woods-entry autosave). Retail sequence to hold against (user): talk to
+guildmaster -> ring -> punch dummy -> stick -> hit dummy -> woods -> beetles -> question -> (AVI / next stage).
+
+**Also open:** Bully teddy-first deviation + barrel-man presence gate are documented deviations in the NOVI stage;
+`skipQueryTrue` fires at every cutscene's first Speak (the advance key = retail skip flag 0x143E8F4) -- not a bug;
+`[RetailResources] TryAcquire enter` field values are garbage (wrong component-walk offsets), refused/granted lines are
+right. Nothing committed today (branch feat/novi-script-recovery) -- commit the tools/docs/refs work first thing.
+
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
 **2026-09-19 (FableForge night, 19 commits, tree clean at `b14aefc`):** resume FableForge from
