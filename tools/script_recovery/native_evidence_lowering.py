@@ -553,6 +553,26 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\*(\w+) == \(undefined \*\)0x0', r'*\1 == 0', text)
     text = re.sub(r'\(undefined \*\*\)0x0', '(int *)0x0', text)
     text = re.sub(r'return extraout_\w+;', 'return;', text)   # a void function whose EAX Ghidra guessed as a result
+    # a loop counter Ghidra typed as a pointer steps through a field: `pCStack_38 = (T *)&pCStack_38->field_0x1;`
+    # is `+= 1` (TraderConflictGood AttackPeople 0x00DFD600: the increment was a TODO and the index copy folded to
+    # `0x0`, so the bandit loop never advanced, 2026-09-20 third audit)
+    text = re.sub(r'^([ \t]*)(\w+) = \((?:[\w:]+ \*+)\)&\2->field_0x([0-9a-f]+);', lambda m: f'{m.group(1)}{m.group(2)} = {m.group(2)} + {int(m.group(3), 16)};', text, flags=re.M)
+    text = re.sub(r'^([ \t]*)(\w+) = \((?:[\w:]+ \*+)\)&\*\(int \*\)\(\2 \+ (0x[0-9a-f]+|\d+)\);', lambda m: f'{m.group(1)}{m.group(2)} = {m.group(2)} + {int(m.group(3), 0)};', text, flags=re.M)   # (the same after the field rewrite)
+    # the same slot doubles as an element pointer on the loop's exit paths (`pCStack_38 = (T *)(local_24 + (int)pCVar1 * 3)`
+    # then a Speak operand): the counter phase -- init 0, `+= k`, the `<` test, `(int)X * 3` / `X / 0xc` indexing and the
+    # statement copies `pCVar1 = X;` -- gets its own name so the lifter does not see arithmetic on a thing
+    for var in set(re.findall(r'^[ \t]*(\w*Stack_[0-9a-f]+) = \1 \+ \d+;', text, re.M)):
+        v = re.escape(var)
+        if not re.search(r'^[ \t]*' + v + r' = (?:\([\w: ]+\*+\))?0(?:x0)?;', text, re.M) or not re.search(r'\b' + v + r' < ', text):
+            continue
+        if not re.search(r'^[ \t]*' + v + r' = \([\w: ]+\*+\)\(\w+ \+ ', text, re.M):
+            continue        # no second life as an element pointer: the plain counter rules handle it
+        ctr = 'ctr_' + var.split('_', 1)[1]
+        text = re.sub(r'^([ \t]*)' + v + r' = ((?:\([\w: ]+\*+\))?0(?:x0)?);', r'\1' + ctr + r' = 0;', text, flags=re.M)
+        text = re.sub(r'^([ \t]*)' + v + r' = ' + v + r' \+ (\d+);', r'\1' + ctr + r' = ' + ctr + r' + \2;', text, flags=re.M)
+        text = re.sub(r'\b' + v + r' < ', ctr + ' < ', text)
+        text = re.sub(r'\(int\)' + v + r' \* 3\b', '(int)' + ctr + ' * 3', text)
+        text = re.sub(r'^([ \t]*)(\w+) = ' + v + r';', r'\1\2 = ' + ctr + ';', text, flags=re.M)
     # an integer counter kept in a slot Ghidra typed CCharString (a byte offset stepping through a vector):
     # `X = (CCharString)((int)X + 0xc);` with its `X = (CCharString)0x0;` start
     # an int flag toggled in a slot Ghidra typed CCharString: `X = (CCharString)(1 - (int)X);`
@@ -560,8 +580,15 @@ def normalise_typed_decompile(text: str) -> str:
     counters = set(re.findall(r'^[ \t]*(\w+) = \(CCharString\)\(\(int\)\1 \+ (?:0x[0-9a-f]+|\d+)\);', text, re.M))
     counters |= set(re.findall(r'^[ \t]*(\w+) = \(CCharString\)\(\(\(int\)\1 \+ (?:0x[0-9a-f]+|\d+)\) % \d+\);', text, re.M))   # a round-robin `x = (x + 1) % 5`
     counters |= {v for v in re.findall(r'^[ \t]*(\w+) = \d+ - \1;', text, re.M) if re.search(r'&' + re.escape(v) + r'\b', text)}   # (the toggled flag sharing a string temp's slot)
+    # an int computed into the slot (`X = (CCharString)(int)ROUND(dist * k + 0.5); if (.. == (float)(int)X - 1.0) X =
+    # (CCharString)((int)X + -1); CVar4 = X; rand() % (int)CVar4`, TraderConflictGood BanditExtra 0x00DFCA90 -- both
+    # assignments were TODOs and the modulus read nil, 2026-09-20 third audit)
+    counters |= set(re.findall(r'^[ \t]*(\w+) = \(CCharString(?:_bv)?\)\(int\)(?!\w*Stack_)\w*\(', text, re.M))
     for var in counters:
         v = re.escape(var)
+        text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString(?:_bv)?\)\(int\)(?=\w*\()', r'\1' + var + r' = ', text, flags=re.M)
+        text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString(?:_bv)?\)\(\(int\)' + v + r' \+ -1\);', r'\1' + var + r' = ' + var + r' - 1;', text, flags=re.M)
+        text = re.sub(r'\(float\)\(int\)' + v + r'\b', var, text)
         text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString\)\(\(int\)' + v + r' \+ (0x[0-9a-f]+|\d+)\);', r'\1' + var + r' = ' + var + r' + \2;', text, flags=re.M)
         text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString\)\(\(\(int\)(\w+) \+ (0x[0-9a-f]+|\d+)\) % (\d+)\);', r'\1' + var + r' = (\2 + \3) % \4;', text, flags=re.M)   # (through a register copy too: `x = (CVar3 + 1) % 5`)
         text = re.sub(r'^([ \t]*)' + v + r' = \(CCharString\)0x0;', r'\1' + var + ' = 0;', text, flags=re.M)
@@ -1220,13 +1247,13 @@ def canonicalise_stack_objects(text: str) -> str:
     bases = []
     for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)(?:_p([48c]))? = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|STRINGMAP_New|QUESTTHING_Empty)\(', text):
         shift = int(m.group(3), 16) if m.group(3) else 0
-        bases.append((m.start(), m.group(1), int(m.group(2), 16) - shift, STACK_OBJECT_SIZES[m.group(4)], m.group(0)[:m.group(0).index(' =')]))
+        bases.append((m.start(), m.group(1), int(m.group(2), 16) - shift, STACK_OBJECT_SIZES[m.group(4)], m.group(0)[:m.group(0).index(' =')], m.group(4)))
     if not bases:
         return text
     # the same stack bytes may host a different object later in the function: each object's names
     # are rewritten only from its constructor up to the next constructor whose extent overlaps
     pieces = []
-    for i, (start, prefix, boff, size, name) in enumerate(bases):
+    for i, (start, prefix, boff, size, name, _kind) in enumerate(bases):
         def overlaps(b):
             return b[2] - b[3] < boff and boff - size < b[2] and b[2] != boff   # extents (off-size, off]
         # the object's text runs from the previous overlapping construction (its members may be read
@@ -1828,6 +1855,15 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = re.sub(r'\b' + re.escape(h) + r' == \(int \*\)0x0\b', f'!__thing_valid({h})', text)
         text = re.sub(r'\b' + re.escape(h) + r' != \(int \*\)0x0\b', f'__thing_valid({h})', text)
     text = name_offset_objects(text, getattr(spec, 'call_labels', {}))
+    # bool __fastcall AreAllThingsInVectorDead(const vector<CScriptThing>&) 0xCBED00 (disassembly 2026-09-20: counts the
+    # elements that are !IsAlive() (slot 0x12c) or IsUnconscious() (0xf4), true when the count is the size) on a quest
+    # list member -- no FSE binding; expanded inline by finish_lua (TraderConflictGood WatchForTradersFreed 0x00DFCC10
+    # read `this + 72` as an undefined global, third audit)
+    for label, target in getattr(spec, 'call_labels', {}).items():
+        if target == 0xCBED00:
+            lists = getattr(spec, 'parent_lists', {})
+            text = re.sub(re.escape(label) + r'\s*\(\s*(?:\(void \*\))?\(\s*(?:\(int\))?this \+ (0x[0-9a-f]+|\d+)\s*\)\s*\)',
+                          lambda m: f'ENGINE_IsAllDead(QUESTLIST_Copy("{lists[int(m.group(1), 0)]}"))' if int(m.group(1), 0) in lists else m.group(0), text)
     text = fold_byte_split_pointers(text)
     text = fold_byte_literal_words(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
@@ -1839,6 +1875,20 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = canonicalise_stack_objects(text)
     text = fold_inline_destructors(text)    # again: the canonical names may only now agree across the three lines
     text = reconcile_destructor_kinds(text)
+    # A resource (CScriptGameResourceObjectScriptedThingBase) is modelled on the base sub-object its acquire /
+    # reset / IsAcquired calls take (`ecx = -216`), but the derived object starts one slot below and that is what
+    # its destructor gets (`ecx = -220`, GuildTrainingMelee MeleeOpponent 0x00D56ECF): a release of a slot that
+    # holds no resource while the slot one word up does releases THAT resource (the lift read `ReleaseResource("")`
+    # -- the dead `""` temporary that lived at -220 earlier -- third audit 2026-09-20)
+    resources = set(re.findall(r'^[ 	]*(\w*Stack_[0-9a-f]+) = RESOURCE_NewResource\(\)', text, re.M))
+    def release_head(m):
+        slot = m.group(2)
+        if slot in resources:
+            return m.group(0)
+        prefix, num = re.match(r'(\w*Stack_)([0-9a-f]+)$', slot).groups()
+        up = f'{prefix}{int(num, 16) - 4:x}'
+        return f'{m.group(1)}RESOURCE_ReleaseResource({up});' if up in resources else m.group(0)
+    text = re.sub(r'^([ 	]*)RESOURCE_ReleaseResource\((\w*Stack_[0-9a-f]+)\);', release_head, text, flags=re.M)
     text = fold_sibling_slot_offsets(text)
     text = fold_offset_string_temporaries(text)
     text = fold_engine_helpers(text, getattr(spec, 'call_labels', {}))
@@ -1854,6 +1904,10 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             value = float_at(int(m.group(1), 16))
             return repr(value) if value is not None and abs(value) < 1e6 else m.group(0)
         text = re.sub(r'\b_DAT_([0-9a-f]{8})\b(?=\s*(?:[<>=!]=?|\)|,|;))', dat_value, text)
+        # ... and as a factor of a float product (`fVar5 * _DAT_0126b7dc + 0.5`, BanditExtra 0x00DFCA90's rounded distance)
+        text = re.sub(r'(\bf\w+ [*/] )_DAT_([0-9a-f]{8})\b', lambda m: m.group(1) + (repr(float_at(int(m.group(2), 16))) if float_at(int(m.group(2), 16)) is not None else '_DAT_' + m.group(2)), text)
+    # Ghidra's ROUND (x87 round-to-nearest) in an integer conversion: Lua `math.floor(x + 0.5)`
+    text = re.sub(r'\bROUND\(', 'ENGINE_Round(', text)
     byte_at = getattr(spec, 'byte_at', None)
     if byte_at:
         # `DAT_x` passed as a call argument where the bytes are a 0/1 fill: a bool constant
@@ -2103,6 +2157,19 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         # 3c. Thing vectors
         for off, name in lists.items():
             begin = r'\*\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\)'
+            # a begin pointer cached in a slot (`iStack_4 = *(int *)(this + 0x48); ... (CScriptThing *)(iVar9 + iStack_4)`,
+            # TraderConflictGood WatchForHittingEnemies 0x00DFC630: the element operand of GiveThingBestEnemyTarget was
+            # lost, third audit): inline the cache into its element reads up to the slot's next definition
+            base_text = re.sub(r'\\(.)', r'\1', base)     # the family's base as text (the pattern is an escaped literal)
+            for cm in list(re.finditer(r'^[ \t]*(\w+) = ' + begin + r';[ \t]*\r?\n', text, re.M)):
+                cache = cm.group(1)
+                tail = text[cm.end():]
+                nxt = re.search(r'^[ \t]*' + re.escape(cache) + r' = ', tail, re.M)
+                scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+                scope2 = re.sub(r'\((\w+) \+ ' + re.escape(cache) + r'\)', lambda mm: f'({mm.group(1)} + *(int *)({base_text} + {off:#x}))', scope)
+                scope2 = re.sub(r'\(' + re.escape(cache) + r' \+ (\w+)\)', lambda mm: f'({mm.group(1)} + *(int *)({base_text} + {off:#x}))', scope2)
+                if scope2 != scope and not re.search(r'\b' + re.escape(cache) + r'\b', scope2):
+                    text = text[:cm.start()] + scope2 + rest
             end = r'\*\(int \*\*?\)\(' + base + r' \+ ' + off_re(off + 4) + r'\)'
             text = re.sub(r'\(uint\)\(\(' + end + r' -\s*' + begin + r'\) / 0xc\)', f'{tag}LIST_Count("{name}")', text)
             text = re.sub(end + r' -\s*' + begin, f'({tag}LIST_Count("{name}") * 0xc)', text)
@@ -2682,6 +2749,8 @@ def finish_lua(text: str) -> str:
     # Ghidra's `ABS(x)` is the x87 `fabs` (PreMeleeWhisper 0x00D5282C-0x00D5283D: `fld; fabs; fcomp [1.0]; fnstsw; test ah,0x41; jp`)
     text = re.sub(r'(?<![\w.:])ABS\(', 'math.abs(', text)
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
+    text = _expand_calls(text, 'ENGINE_Round', lambda a: f'math.floor(({a[0]}) + 0.5)' if len(a) == 1 else 'ENGINE_Round(' + ', '.join(a) + ')')
+    text = text.replace('ENGINE_IsAllDead(', '__native_all_dead(')     # the helper is defined per file by convert_quest_unit
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)
     for pattern, repl in LUA_PSEUDO:
         text = pattern.sub(repl, text)

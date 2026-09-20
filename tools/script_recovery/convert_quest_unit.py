@@ -44,6 +44,17 @@ do
     end
 end
 '''
+# bool AreAllThingsInVectorDead(const vector<CScriptThing>&) 0xCBED00 (disassembly 2026-09-20): the count of
+# elements that are !IsAlive() (slot 0x12c) or IsUnconscious() (0xf4) equals the size. A file-level helper rather
+# than an inline function expression: the readable-style passes cannot read the latter and ship the function raw.
+ALL_DEAD_HELPER = '''local function __native_all_dead(list)
+    local down = 0
+    for _, thing in ipairs(list) do
+        if (not thing:IsAlive()) or thing:IsUnconscious() then down = down + 1 end
+    end
+    return down == #list
+end
+'''
 NUMBER_TYPES = ('long', 'int', 'uint', 'unsigned long', 'unsigned int', 'short', 'EBadDeeds')
 SKIP_ROLES = {'destructor', 'GetParentScript', 'OnInterrupted', 'RegisterMain'}
 
@@ -331,6 +342,17 @@ def _align(site, args, vtable=False, receiver_printed=False):
         # (`push ebx` = EntityTeleportToThing's bool before GetThingWithScriptName / GetHero, Departure Init
         # 0x00D506B0: record [0, -16, -12] for two real pushes). ~190 GSI sites across the four units.
         pushed, values = pushed[:-1], values[:-1]
+    if not vtable and ecx is not None and len(args) == 1 + (1 if edx is not None else 0) and pushed and str(site.get('currentName', '')).startswith('CCharString::'):
+        # a direct __thiscall / __fastcall helper whose record is LONGER than its printed stack operands: the
+        # export's backward scan swallowed the pushes VC7.1 made early for the NEXT call (TraderToRescue
+        # 0x00DFF1DB: `CCharString::operator const char*(&key)` printed with its receiver only, record = Speak's
+        # four pushes; unaligned, the receiver stayed `&stack0xfffffe84` and the trader spoke the wrong line,
+        # third audit 2026-09-20). The nearest pushes (the head after the reversal) are this call's.
+        # (only the receiver-only shape of a CCharString method: with real stack operands the push order is not
+        # reliable enough to say which recorded pushes are this call's, and a resource / movie DESTRUCTOR's ecx is
+        # the derived object one word below the base the acquire calls name -- aligning those split the resource
+        # identity and broke every ACTORMAP_Set fold in CombatApprentice)
+        pushed, values = [], []
     lead = len(args) - len(pushed)          # printed register arguments (this / __fastcall ecx, edx)
     # (a truncated record on a `__thiscall` site -- the export's backward scan stopped at a call between the
     # pushes, `CreateObject(&r, &def, GetPos(marker), &script)` -- is NOT padded into an alignment: when the
@@ -1339,6 +1361,8 @@ class UnitConverter:
                     row['nativeLabels'] = sorted(lifter.lua_labels)
                 report['functions'].append(row)
                 chunks.append(function_source)
+            if any('__native_all_dead(' in c for c in chunks):
+                chunks.insert(3, ALL_DEAD_HELPER)
             source, hoisted = hoist_cleanup_regions('\n'.join(chunks))
             if hoisted:
                 report.setdefault('cleanupRegions', {})[relative] = hoisted

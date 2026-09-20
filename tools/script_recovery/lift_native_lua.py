@@ -1236,6 +1236,14 @@ class Lifter:
         others += things[len(thing_slots):]       # a thing with no thing slot is an ordinary operand
         for slot, a in zip(string_slots, stringy):
             result[slot] = a
+        # a `sol::object` slot (the sidecar's untyped int-or-string operands: EntitySetAsOpinionSource's `source`)
+        # takes a string operand the string slots did not use, before the ordinary operands
+        # (TraderConflictEvil Main 0x00DF6010: `EntitySetAsOpinionSource(hero, iVar8)` for the
+        # "OPINION_SOURCE_VILLAGER_TRADER_CONFLICT_EVIL" literal, third audit 2026-09-20)
+        leftover_strings = stringy[len(string_slots):]
+        for slot in [i for i in other_slots if result[i] is None and 'sol::object' in params[i].get('type', '')]:
+            if leftover_strings and not others:
+                result[slot] = leftover_strings.pop(0)
         for slot, a in zip([i for i in other_slots if result[i] is None], others):
             result[slot] = a
         # Shortfall from the temporaries: a thing slot takes a thing result or (as before) an
@@ -1418,6 +1426,11 @@ class Lifter:
             # local itself; dropping the `&` operand let place_args back-fill the slot from an unrelated result
             # (ApprenticeSpeedTest showed the +20 timer on the HUD clock, 2026-09-19)
             operands = [a[1:] if a.startswith("&") and self.kind_of(a[1:]) == 'number' else a for a in operands]
+            # a string BUILT into a slot that is already an emitted Lua local (`xStack_15c = ("TEXT_QST_B11_" ..
+            # name) .. tostring(n)`) and then passed by address (`TextEntryExists(&xStack_15c)`, TraderToRescue
+            # 0x00DFE0F0) is that local -- dropping it left the optional key absent (third audit, 2026-09-20)
+            operands = [a[1:] if a.startswith("&") and a[1:] in self.locals and a[1:] not in self.temps
+                        and self.kind_of(a[1:]) in ('string', None) else a for a in operands]
         raw_args = [a for a in operands if not a.startswith("&") and a not in ("this", "param_1")]
         params = None
         if spec:
