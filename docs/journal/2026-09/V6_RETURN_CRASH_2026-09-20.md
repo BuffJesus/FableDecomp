@@ -190,3 +190,43 @@ return, the YES/NO, the AVI — then the Melee stage (Whisper fight, grades) as 
 
 Gates: Oakvale identical; smoke baseline; targeted 51 OK. Third audit round launched on the regenerated tree.
 Not chased: Orchard `ProcessGameRulesEvil`'s counter slot (a Ghidra ESP mis-track at the export level).
+
+## 7. Third audit round (residue + operand lenses on the regenerated tree)
+
+Trader Conflict — the unit nobody has played, and TraderToRescue is the function where Ghidra lost its stack
+analysis — carried most of it; every confirmed item is generic:
+
+* `BanditExtra` 0x00DFCA90: the rounded distance computed into a CCharString-typed slot (`(CCharString)(int)ROUND(...)`)
+  is a counter phase (`ctr_8`); `_DAT_` float factors resolve; Ghidra's `ROUND` → `math.floor(x + 0.5)`.
+* `AttackPeople` 0x00DFD600: the pointer-typed loop index (`&pCStack_38->field_0x1` = `+ 1`) that also holds an
+  element pointer on the exit paths gets a counter name for its counter phase; the index copy no longer folds to `0x0`.
+* `WatchForTradersFreed` 0x00DFCC10: `AreAllThingsInVectorDead(&AllCreatures)` (0xCBED00; disassembly: count of
+  `!IsAlive() || IsUnconscious()` == size) expands inline over the quest list copy.
+* `WatchForHittingEnemies` 0x00DFC630: a vector begin pointer cached in a slot is inlined into its element reads.
+* TraderToRescue: `_align` trims a direct `__thiscall` site's push record to its printed operands (the export's scan
+  swallowed the NEXT call's pushes — `operator const char*(&key)` before Speak), so the on-talk Speak speaks the built
+  `_ONTALK_<n>` key; a string built into an emitted Lua local and passed by address (`TextEntryExists(&xStack_15c)`)
+  is that local.
+* TraderConflictEvil `Main`: a `sol::object` binding slot takes a leftover string operand (the opinion source).
+* Orchard `ProcessGameRulesEvil`'s counter slot stays as it is: Ghidra's ESP tracking is 4 off inside the Whisper block
+  (export-level; bytes reload the counter from entry-esp-0x14 while the squared distance sits at -0x10).
+
+Gates: Oakvale identical; Orchard 0/0, Trader **2/2 → 1/1**, Gameflow 0/0; `test_third_audit_trader_orchard.py` (7).
+
+Also from round 3, on the Melee stage's path: `MeleeOpponent` (0x00D56790) released `""` — the resource destructor
+runs on the derived object one word below the base sub-object the acquire calls name (export: dtor ecx -220, acquire
+-216), and a dead `""` temporary had lived at -220; a release of a slot with no resource while the slot one word up
+has one now releases that resource (the wider fix — extending the resource's extent — swallowed the temporary too).
+A receiver-only `CCharString::` method site whose push record holds the next call's pushes is aligned with none (the
+general trim broke every `ACTORMAP_Set` fold: resource / movie destructor `ecx` is that derived head). The
+`AreAllThingsInVectorDead` expansion is a per-file `__native_all_dead` helper typed bool (`ENGINE_IsAllDead`), not an
+inline function expression the readable passes cannot read.
+
+**Round-3 Guild backlog (verified real, later stages, not fixed):** GuildTrainingWoodsWill `Main` 0x00D67890 — the
+EH flag spelled through a `CCharString_bv` slot with a register copy in the operator_new-fail branch (`scratchValue &
+2`), the per-bandit RESOURCE ARRAY (`vector<Resource>(n, temp)` filled by `push_back(&pvStack_2c, n, temp)`, then
+`StartScriptingEntity(&bandits[i], &resources[i], 4)` and actor-map entries from elements 0/1 — a new idiom: the
+temporary's dtor lifted as `ReleaseResource(resource)` on a never-constructed local, the acquires as `TryAcquire(0 +
+scratchValue2, ...)` byte offsets, `SetActor(map, "BAN1", &0x0)`), the `vector::clear()` ladder (`while willBandit ~=
+scratchValue7`); SkillTarget 0x00D4xxxx — a damage out-parameter of a message call (`if 0.0 < scratchValue6`), the
+teleport angle operand. 36 residue + 15 operand candidates were found for Guild; only 5 verified (the per-unit cap).
